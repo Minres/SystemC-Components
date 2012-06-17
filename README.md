@@ -1,9 +1,11 @@
 txviewer
 ========
 
-A set of eclipse plugins to show transaction logs created by the SystemC 
+TxViewer is composed of a set of eclipse plugins to show transaction streams created by the SystemC 
 Verification Library (SCV). For further description of the SCV please refer to 
-http://www.accellera.org/activities/committees/systemc-verification
+http://www.accellera.org/activities/committees/systemc-verification.
+
+The viewer is in early alpha stage and not yet ready for production use!
 
 The plugins are structured as follows:
 - com.itjw.txviewer.database
@@ -17,6 +19,13 @@ The plugins are structured as follows:
 - com.itjw.txviewer.feature
 	the feature combining the plugins above into a somhow usable form
 
-To build the plugins the Eclipse SDK or PDE use used. In both cases the Groovy
+To build the plugins the Eclipse SDK or PDE can be used. In both cases the Groovy
 eclipse plugin (http://groovy.codehaus.org/Eclipse+Plugin or Market) has to be
 installed.
+
+TODO
+====
+- refactor the graphical viewer
+- add means for testing and tests
+- additional analysis means
+- VCD reader
