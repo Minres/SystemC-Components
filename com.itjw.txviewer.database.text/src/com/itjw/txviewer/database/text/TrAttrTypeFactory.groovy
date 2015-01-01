@@ -22,13 +22,13 @@ class TrAttrTypeFactory {
 		TrAttrTypeFactory.metaClass.constructor = {-> instance }
 	}
 	
-	ITrAttrType getAttrType(String name, String type){
-		def key = name+":"+type
+	ITrAttrType getAttrType(String name, String dataType, ITrAttrType.AttributeType type){
+		def key = name+":"+dataType
 		ITrAttrType res
 		if(attributes.containsKey(key)){
 			res=attributes[key]
 		} else {
-			res=new TrAttrType(name, type)
+			res=new TrAttrType(name, dataType, type)
 			attributes[key]=res
 		}
 		return res

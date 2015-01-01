@@ -17,18 +17,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.itjw.txviewer.database.ITrAttrType;
+import com.itjw.txviewer.database.ITrAttribute;
 import com.itjw.txviewer.database.ITrDb;
 import com.itjw.txviewer.database.ITrGenerator;
 import com.itjw.txviewer.database.ITrHierNode;
 import com.itjw.txviewer.database.ITrStream;
 import com.itjw.txviewer.database.InputFormatException;
 import com.itjw.txviewer.database.EventTime
+import com.itjw.txviewer.database.RelationType
 
 public class TrTextDb extends TrHierNode implements ITrDb{
 
 	private EventTime maxTime;
+	
 	def streams = []
-	def childs = []
+	
+	def relationTypes=[:]
 	
 	public String getFullName() {
 		return getName();
@@ -39,6 +44,10 @@ public class TrTextDb extends TrHierNode implements ITrDb{
 		return maxTime;
 	}
 
+	public ITrStream getStreamByName(String name){
+		streams.find{ITrStream stream-> stream.fullName == name }
+	}
+	
 	public List<ITrStream> getAllStreams() {
 		return new LinkedList<ITrStream>(streams);
 	}
@@ -90,14 +99,14 @@ public class TrTextDb extends TrHierNode implements ITrDb{
 						streamsById[id]=stream
 					} else if ((matcher = line =~ /^scv_tr_generator\s+\(ID\s+(\d+),\s+name\s+"([^"]+)",\s+scv_tr_stream\s+(\d+),$/)) {
 						def id = Integer.parseInt(matcher[0][1])
-						TrStream stream=streamsById[Integer.parseInt(matcher[0][3])]
+						ITrStream stream=streamsById[Integer.parseInt(matcher[0][3])]
 						generator=new TrGenerator(id, stream, matcher[0][2])
 						stream.generators<<generator
 						generatorsById[id]=generator
 					} else if ((matcher = line =~ /^begin_attribute \(ID (\d+), name "([^"]+)", type "([^"]+)"\)$/)) {
-						generator.begin_attrs << TrAttrType.getAttrType(matcher[0][2], matcher[0][3])
+						generator.begin_attrs << TrAttrType.getAttrType(matcher[0][2], matcher[0][3], ITrAttrType.AttributeType.BEGIN)
 					} else if ((matcher = line =~ /^end_attribute \(ID (\d+), name "([^"]+)", type "([^"]+)"\)$/)) {
-						generator.end_attrs << TrAttrType.getAttrType(matcher[0][2], matcher[0][3])
+						generator.end_attrs << TrAttrType.getAttrType(matcher[0][2], matcher[0][3], ITrAttrType.AttributeType.END)
 					}
 					break;
 				case ")":
@@ -106,7 +115,7 @@ public class TrTextDb extends TrHierNode implements ITrDb{
 				case "tx_begin"://matcher = line =~ /^tx_begin\s+(\d+)\s+(\d+)\s+(\d+)\s+([munpf]?s)/
 					def id = Integer.parseInt(tokens[1])
 					TrGenerator gen=generatorsById[Integer.parseInt(tokens[2])]
-					transaction = new Transaction(id, gen,new EventTime(Integer.parseInt(tokens[3]), tokens[4]))
+					transaction = new Transaction(id, gen.stream, gen, new EventTime(Integer.parseInt(tokens[3]), tokens[4]))
 					gen.transactions << transaction
 					transactionsById[id]= transaction
 					gen.begin_attrs_idx=0;
@@ -124,59 +133,32 @@ public class TrTextDb extends TrHierNode implements ITrDb{
 					break
 				case "tx_record_attribute"://matcher = line =~ /^tx_record_attribute\s+(\d+)\s+"([^"]+)"\s+(\S+)\s*=\s*(.+)$/
 					def id = Integer.parseInt(tokens[1])
-					transactionsById[id].attributes.add(new TrAttribute(tokens[2][1..-2], tokens[3], tokens[5..-1].join(' ')))
+					transactionsById[id].attributes<<new TrAttribute(tokens[2][1..-2], tokens[3], ITrAttrType.AttributeType.UNSPECIFIED, tokens[5..-1].join(' '))
 					break
 				case "a"://matcher = line =~ /^a\s+(.+)$/
 					if(endTransaction){
-						transaction.end_attrs << new TrAttribute(transaction.generator.end_attrs[0], tokens[1])
+						transaction.attributes << new TrAttribute(transaction.generator.end_attrs[0], tokens[1])
 					} else {
-						transaction.begin_attrs << new TrAttribute(transaction.generator.begin_attrs[0], tokens[1])
+						transaction.attributes << new TrAttribute(transaction.generator.begin_attrs[0], tokens[1])
 					}
 					break
 				case "tx_relation"://matcher = line =~ /^tx_relation\s+\"(\S+)\"\s+(\d+)\s+(\d+)$/
 					Transaction tr1= transactionsById[Integer.parseInt(tokens[2])]
 					Transaction tr2= transactionsById[Integer.parseInt(tokens[3])]
-					switch(tokens[1][1..-2]){
-						case "CHILD":
-							tr1.child<<tr2
-							tr2.parent<<tr1
-							break
-						case "PARENT":
-							tr2.child<<tr1
-							tr1.parent<<tr2
-							break
-						case "PREDECESSOR":
-							tr2.succ<<tr1
-							tr1.pred<<tr2
-							break
-						case "SUCCESSOR":
-							tr1.succ<<tr2
-							tr2.pred<<tr1
-							break
-						default:
-							println "Relationship '${tokens[1]}' not yet implemented"
-					}
+					def relType=tokens[1][1..-2]
+					if(!relationTypes.containsKey(relType)) relationTypes[relType]=new RelationType(relType)
+					def rel = new TrRelation(relationTypes[relType], tr1, tr2)
+					tr1.outgoingRelations<<rel
+					tr2.incomingRelations<<rel
 					break
 				default:
 					println "Don't know what to do with: '$line'"
 
 			}
 		}
-		linkTransactions()
 		addHierarchyNodes()
 	}
 
-	def linkTransactions(){
-		streams.generators?.flatten().each {TrGenerator gen ->
-			def sortedTx = gen.transactions.sort{it.beginTime}
-			if(sortedTx.size()>1)
-				for(int i=1;i<sortedTx.size(); i++){
-					sortedTx[i].prev= sortedTx[i-1]
-					sortedTx[i-1].next = sortedTx[i]
-				}
-		}
-	}
-	
 	def addHierarchyNodes(){
 		streams.each{ TrStream stream->
 			def hier = stream.fullName.split(/\./)

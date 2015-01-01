@@ -18,6 +18,8 @@ public interface ITrDb extends ITrHierNode {
 
 	public EventTime getMaxTime();
 	
+	public ITrStream getStreamByName(String name);
+	
 	public List<ITrStream> getAllStreams();
 	
 	public void load(InputStream inp) throws InputFormatException;

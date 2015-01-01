@@ -4,7 +4,6 @@ Bundle-Name: Transaction Database
 Bundle-SymbolicName: com.itjw.txviewer.database
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: ITJW
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: com.itjw.txviewer.database
-Require-Bundle: org.eclipse.ui.views

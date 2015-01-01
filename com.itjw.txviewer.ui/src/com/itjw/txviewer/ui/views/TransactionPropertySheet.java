@@ -8,11 +8,20 @@
  * Contributors:
  *     IT Just working - initial API and implementation
  *******************************************************************************/
-package com.itjw.txviewer.database;
+package com.itjw.txviewer.ui.views;
 
-public interface ITrAttrType {
-	enum AttributeType {UNSPECIFIED, BEGIN, END};
-	public String getName();
-	public String getDataType();
-	public AttributeType getType();
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.views.properties.PropertySheet;
+
+public class TransactionPropertySheet extends PropertySheet {
+	
+	
+	public TransactionPropertySheet() {
+		super();
+	}
+
+	@Override
+	protected boolean isImportant(IWorkbenchPart part) {
+		return part.getSite().getId().equals("com.itjw.txviewer.ui.TxEditorPart");
+	}
 }

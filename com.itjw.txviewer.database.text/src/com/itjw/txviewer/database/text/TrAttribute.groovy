@@ -10,16 +10,18 @@
  *******************************************************************************/
 package com.itjw.txviewer.database.text
 
+import com.itjw.txviewer.database.ITrAttrType;
 import com.itjw.txviewer.database.ITrAttribute
 
 class TrAttribute  implements ITrAttribute{
 	
 	TrAttrType attributeType
+
 	def value
 	
-	TrAttribute(String name, String type, value){
-		attributeType = TrAttrTypeFactory.instance.getAttrType(name, type)
-		switch(type){
+	TrAttribute(String name, String dataType, ITrAttrType.AttributeType type, value){
+		attributeType = TrAttrTypeFactory.instance.getAttrType(name, dataType, type)
+		switch(dataType){
 			case "STRING":
 			case "ENUMERATION":
 				this.value=value[1..-2]
@@ -34,7 +36,7 @@ class TrAttribute  implements ITrAttribute{
 	}
 	
 	TrAttribute(TrAttrType other, value){
-		this(other.name, other.type, value)
+		this(other.name, other.dataType, other.type, value)
 	}
 
 	@Override
@@ -43,8 +45,13 @@ class TrAttribute  implements ITrAttribute{
 	}
 
 	@Override
-	public String getType() {
+	public ITrAttrType.AttributeType getType() {
 		return attributeType.getType();
+	}
+
+		@Override
+	public String getDataType() {
+		return attributeType.getDataType();
 	}
 
 }

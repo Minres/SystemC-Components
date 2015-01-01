@@ -21,19 +21,27 @@ import com.itjw.txviewer.database.ITrStream
 import com.itjw.txviewer.database.ITransaction
 
 class TrStream extends TrHierNode implements ITrStream {
+
 	Long id;
-	TrTextDb database
-	String name;
-	String fullName;
-	String kind;
-	def generators = [];
-	def childs = []
-	private allTransactions;
 	
+	TrTextDb database
+	
+	String name;
+	
+	String fullName;
+	
+	String kind;
+	
+	def generators = [];
+	
+	def childs = []
+	
+	private allTransactions;
+
 	public TrHierNode(String name){
 		this.name=name
 	}
-	
+
 	@Override
 	public List<ITrHierNode>  getChildNodes() {
 		return childs.sort{it.name};
@@ -63,11 +71,11 @@ class TrStream extends TrHierNode implements ITrStream {
 		getTransactions().each{Transaction tx ->
 			def rowIdx = 0
 			for(rowIdx=0; rowendtime.size()<rowIdx || rowendtime[rowIdx]>tx.beginTime.value; rowIdx++);
-			if(rowendtime.size<=rowIdx){
-				rowendtime<<tx.endTime?.value?:tx.beginTime.value+1
-			} else {
-				rowendtime[rowIdx]=tx.endTime?.value?:tx.beginTime.value+1
-			}
+				if(rowendtime.size<=rowIdx){
+					rowendtime<<tx.endTime?.value?:tx.beginTime.value+1
+				} else {
+					rowendtime[rowIdx]=tx.endTime?.value?:tx.beginTime.value+1
+				}
 		}
 		return rowendtime.size()
 	}
@@ -78,5 +86,4 @@ class TrStream extends TrHierNode implements ITrStream {
 			allTransactions=generators.transactions.flatten().sort{it.beginTime.value}
 		return allTransactions
 	}
-
 }

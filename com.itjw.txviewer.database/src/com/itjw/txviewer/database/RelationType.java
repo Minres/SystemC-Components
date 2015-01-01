@@ -10,6 +10,21 @@
  *******************************************************************************/
 package com.itjw.txviewer.database;
 
-public enum RelationType {
-	PREDECESSOR, SUCCESSOR, PREVIOUS, NEXT, PARENT, CHILD;
+public class RelationType {
+	
+	private String name;
+
+	public RelationType(String name) {
+		super();
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 }

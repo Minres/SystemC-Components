@@ -11,8 +11,11 @@
 package com.itjw.txviewer.database;
 
 public class EventTime implements Comparable<EventTime>{
+	
 	public static final double NS = 1000000.0;
+	
 	public static final double MS = 1000000000.0;
+
 	private long value; // unit is femto seconds
 	
 	public EventTime(Long value, String unit){
@@ -51,6 +54,8 @@ public class EventTime implements Comparable<EventTime>{
 			this.value=value*1000000000;
 		else if("ms".compareToIgnoreCase(unit)==0)
 			this.value=value*1000000000000L;
+		else if("s".compareToIgnoreCase(unit)==0)
+			this.value=value*1000000000000000L;
 		else {
 			System.err.print("Don't know what to do with "+unit+"\n");
 		}

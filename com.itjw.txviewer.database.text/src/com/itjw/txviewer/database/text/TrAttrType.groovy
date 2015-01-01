@@ -14,14 +14,16 @@ import com.itjw.txviewer.database.ITrAttrType;
 
 class TrAttrType implements ITrAttrType {
 	String name
-	String type
+	String dataType
+	ITrAttrType.AttributeType type
 	
-	static TrAttrType getAttrType(String name, String type){
-		TrAttrTypeFactory.instance.getAttrType(name, type)
+	static TrAttrType getAttrType(String name, String dataType, ITrAttrType.AttributeType type){
+		TrAttrTypeFactory.instance.getAttrType(name, dataType, type)
 	}
 	
-	TrAttrType(String name, String type){
+	TrAttrType(String name, String dataType, ITrAttrType.AttributeType type){
 		this.name=name
+		this.dataType=dataType
 		this.type=type
 	}
 }

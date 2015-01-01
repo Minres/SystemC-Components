@@ -13,9 +13,12 @@ package com.itjw.txviewer.database.text;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
+
 import java.util.Dictionary
 import java.util.Hashtable
+
 import com.itjw.txviewer.database.ITrDb;
+import com.itjw.txviewer.database.ITransactionDbFactory;
 
 public class Activator implements BundleActivator {
 
@@ -33,7 +36,7 @@ public class Activator implements BundleActivator {
 		Activator.context = bundleContext;
 		Dictionary<String, ?> dict = new Hashtable<String, ?>();
 		dict.putAt(Constants.SERVICE_RANKING, 1);
-		context.registerService(ITrDb.class, new TrTextDb(), dict);
+		context.registerService(ITransactionDbFactory.class, new TrTextDbFactory(), dict);
 	}
 
 	/*
