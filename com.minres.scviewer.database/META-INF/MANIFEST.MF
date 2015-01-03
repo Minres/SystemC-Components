@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Transaction Database
+Bundle-SymbolicName: com.minres.scviewer.database
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: MINRES Technologies GmbH
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: com.minres.scviewer.database

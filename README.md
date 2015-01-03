@@ -1,8 +1,9 @@
-txviewer
+SCViewer
 ========
 
-TxViewer is composed of a set of eclipse plugins to show transaction streams created by the SystemC 
-Verification Library (SCV). For further description of the SCV please refer to 
+SCViewer is composed of a set of eclipse plugins to show VCD and transaction streams 
+created by the SystemC VCD trace implementation and the SystemC Verification Library (SCV).
+For further description of the SCV please refer to 
 http://www.accellera.org/activities/committees/systemc-verification.
 
 The viewer is in early alpha stage and not yet ready for production use!

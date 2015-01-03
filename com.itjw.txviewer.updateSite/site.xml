@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/com.itjw.txviewer.feature_1.0.0.201206150709.jar" id="com.itjw.txviewer.feature" version="1.0.0.201206150709">
-      <category name="com.itjw.txviewer"/>
-   </feature>
-   <category-def name="com.itjw.txviewer" label="TxViewer"/>
-</site>

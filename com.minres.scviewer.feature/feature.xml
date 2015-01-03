@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.minres.scviewer.feature"
+      label="%featureName"
+      version="1.0.0.qualifier"
+      provider-name="%providerName">
+
+   <description>
+      A viewer for SystemC Verification Library transactions. It supports
+a SQLite based recording as well as the built-in text base recording.
+   </description>
+
+   <copyright>
+      Copyright (c) 2015 MINRES Technologies GmbH.
+All rights reserved.   This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://www.minres.com/scviewer/update"/>
+      <discovery label="MINRES Website" url="http://www.minres.com"/>
+   </url>
+
+   <requires>
+      <import plugin="org.codehaus.groovy" version="1.8.6" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.util" version="1.0.500" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.ds" version="1.4.200" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.osgi.services" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.osgi"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.ui.views.properties.tabbed"/>
+      <import plugin="org.eclipse.swt"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="com.minres.scviewer.database" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.minres.scviewer.database"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.minres.scviewer.database.text"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.minres.scviewer.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.minres.scviewer.database.sqlite"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
