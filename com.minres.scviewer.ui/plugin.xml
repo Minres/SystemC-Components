@@ -21,7 +21,8 @@
             class="com.minres.scviewer.ui.TxEditorPart"
             contributorClass="com.minres.scviewer.ui.TxEditorActionBarContributor"
             extensions="txdb"
-            icon="icons/sample.gif"
+            filenames="*.txdb,*.txlog"
+            icon="icons/scviewer.gif"
             id="com.minres.scviewer.ui.TxEditorPart"
             name="Wave Viewer">
       </editor>

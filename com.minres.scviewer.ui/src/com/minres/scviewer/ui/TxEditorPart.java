@@ -136,10 +136,10 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 					}
 				}
 			}
-		} catch (InvalidSyntaxException e) {
+		} catch (Exception e) {
 		}
 		MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-				"Error loading database", "Could not find database loader implementation");
+				"Error loading database", "Could not find an usable and applicable database loader implementation");
 		database=null;
 //		if(TxEditorPlugin.getDefault().getTransactionDbFactory()!=null){
 //			database = TxEditorPlugin.getDefault().getTransactionDbFactory().createDatabase();

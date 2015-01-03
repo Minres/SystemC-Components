@@ -4,7 +4,7 @@ Bundle-Name: Graph
 Bundle-SymbolicName: com.minres.scviewer.ui;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.minres.scviewer.ui.TxEditorPlugin
-Bundle-Vendor: ITJW
+Bundle-Vendor: MINRES Technologies GmbH
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.jface.text,

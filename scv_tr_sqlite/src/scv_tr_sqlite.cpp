@@ -81,16 +81,16 @@ typedef scv_extensions_if::data_type data_type;
 
 static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason, void* data) {
     // This is called from the scv_tr_db ctor.
-    static string my_sqlite_file_name("DEFAULT_scv_tr_sqlite");
+    static string fName("DEFAULT_scv_tr_sqlite");
     switch (reason) {
     case scv_tr_db::CREATE:
-        if ((_scv_tr_db.get_name() != NULL) && (strlen(_scv_tr_db.get_name()) != 0)) {
-            my_sqlite_file_name = _scv_tr_db.get_name();
-        }
+        if ((_scv_tr_db.get_name() != NULL) && (strlen(_scv_tr_db.get_name()) != 0))
+            fName = _scv_tr_db.get_name();
         try {
-            my_sqlite_file_name+=".tx";
-            remove(my_sqlite_file_name.c_str());
-            db.open(my_sqlite_file_name.c_str());
+            if(fName.size()<5 || fName.find(".txdb", fName.size() - 5) == string::npos)
+                fName+=".txdb";
+            remove(fName.c_str());
+            db.open(fName.c_str());
 //            scv_out << "TB Transaction Recording has started, file = " << my_sqlite_file_name << endl;
             db.exec("CREATE TABLE  IF NOT EXISTS " STREAM_TABLE "(id INTEGER  NOT NULL PRIMARY KEY, name TEXT, kind TEXT);");
             db.exec("CREATE TABLE  IF NOT EXISTS " GENERATOR_TABLE "(id INTEGER  NOT NULL PRIMARY KEY, stream INTEGER REFERENCES " STREAM_TABLE "(id), name TEXT, begin_attr INTEGER, end_attr INTEGER);");

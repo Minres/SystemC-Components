@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Sqlite transaction database
+Bundle-Name: SQLite transaction database
 Bundle-SymbolicName: com.minres.scviewer.database.sqlite
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: MINRES Technologies GmbH
