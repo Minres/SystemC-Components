@@ -9,23 +9,25 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.minres.scviewer.database.EventTime;
-import com.minres.scviewer.database.ITrAttribute;
-import com.minres.scviewer.database.ITrDb;
-import com.minres.scviewer.database.ITrHierNode;
-import com.minres.scviewer.database.ITrStream;
+import com.minres.scviewer.database.HierNode;
+import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.database.IHierNode;
+import com.minres.scviewer.database.ITxStream;
+import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.InputFormatException;
 import com.minres.scviewer.database.RelationType;
 import com.minres.scviewer.database.sqlite.db.IDatabase;
+import com.minres.scviewer.database.sqlite.db.SQLiteDatabase;
 import com.minres.scviewer.database.sqlite.db.SQLiteDatabaseSelectHandler;
 import com.minres.scviewer.database.sqlite.tables.ScvSimProps;
 import com.minres.scviewer.database.sqlite.tables.ScvStream;
 import com.minres.scviewer.database.sqlite.tables.ScvTxEvent;
 
-public class SQLiteDb extends HierNode implements ITrDb {
+public class SQLiteDb extends HierNode implements IWaveformDb {
 
 	protected IDatabase database;
 	
-	protected List<ITrStream> streams;
+	protected List<IWaveform> streams;
 
 	long timeResolution=1;
 
@@ -55,13 +57,13 @@ public class SQLiteDb extends HierNode implements ITrDb {
 	}
 
 	@Override
-	public List<ITrStream> getAllStreams() {
+	public List<IWaveform> getAllWaves() {
 		if(streams==null){
 			SQLiteDatabaseSelectHandler<ScvStream> handler = new SQLiteDatabaseSelectHandler<ScvStream>(ScvStream.class, database);
-			streams=new ArrayList<ITrStream>();
+			streams=new ArrayList<IWaveform>();
 			try {
 				for(ScvStream scvStream:handler.selectObjects()){
-					streams.add(new Stream(this, scvStream));
+					streams.add(new TxStream(this, scvStream));
 				}
 			} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 					| InvocationTargetException | SQLException | IntrospectionException e) {
@@ -83,7 +85,7 @@ public class SQLiteDb extends HierNode implements ITrDb {
 				| InvocationTargetException | SQLException | IntrospectionException e) {
 			e.printStackTrace();
 		}
-		addHierarchyNodes();
+		buildHierarchyNodes();
 	}
 
 	@Override
@@ -92,31 +94,27 @@ public class SQLiteDb extends HierNode implements ITrDb {
 	}
 
 	@Override
-	public ITrStream getStreamByName(String name) {
-		 for (ITrStream n : getAllStreams()) {
-		        if (n.getName().equals(name)) {
-		            return n;
-		        }
-		    }
+	public IWaveform getStreamByName(String name) {
+		for (IWaveform n : getAllWaves())
+			if (n.getName().equals(name))
+				return n;
 		return null;
 	}
 
-	public ITrStream getStreamById(long id) {
-		 for (ITrStream n : getAllStreams()) {
-		        if (n.getId().equals(id)) {
-		            return n;
-		        }
-		    }
+	public ITxStream getStreamById(long id) {
+		for (IWaveform n : getAllWaves()) 
+			if (n.getId().equals(id))
+				return (ITxStream) n;
 		return null;
 	}
 
-	private void addHierarchyNodes() throws InputFormatException{
-		for(ITrStream stream:getAllStreams()){
+	private void buildHierarchyNodes() throws InputFormatException{
+		for(IWaveform stream:getAllWaves()){
 			String[] hier = stream.getFullName().split("\\./");
-			ITrHierNode node = this;
+			IHierNode node = this;
 			for(String name:hier){
-				ITrHierNode n1 = null;
-				 for (ITrHierNode n : node.getChildNodes()) {
+				IHierNode n1 = null;
+				 for (IHierNode n : node.getChildNodes()) {
 				        if (n.getName().equals(name)) {
 				            n1=n;
 				            break;

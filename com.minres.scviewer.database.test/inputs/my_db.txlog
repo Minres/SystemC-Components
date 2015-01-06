@@ -1,0 +1,254 @@
+scv_tr_stream (ID 1, name "pipelined_stream", kind "transactor")
+scv_tr_stream (ID 2, name "addr_stream", kind "transactor")
+scv_tr_stream (ID 3, name "data_stream", kind "transactor")
+scv_tr_generator (ID 4, name "read", scv_tr_stream 1,
+begin_attribute (ID 0, name "addr", type "UNSIGNED")
+end_attribute (ID 1, name "data", type "UNSIGNED")
+)
+scv_tr_generator (ID 5, name "write", scv_tr_stream 1,
+begin_attribute (ID 0, name "addr", type "UNSIGNED")
+end_attribute (ID 1, name "data", type "UNSIGNED")
+)
+scv_tr_generator (ID 6, name "addr", scv_tr_stream 2,
+begin_attribute (ID 0, name "addr", type "UNSIGNED")
+)
+scv_tr_generator (ID 7, name "rdata", scv_tr_stream 3,
+end_attribute (ID 0, name "data", type "UNSIGNED")
+)
+scv_tr_generator (ID 8, name "wdata", scv_tr_stream 3,
+begin_attribute (ID 0, name "data", type "UNSIGNED")
+)
+tx_begin 1 4 0 s
+a 0
+tx_record_attribute 1 "data_size" UNSIGNED = 24
+tx_begin 2 6 0 s
+a 0
+tx_relation "addr_phase" 2 1
+tx_end 2 6 180 ns
+tx_begin 3 7 180 ns
+tx_relation "data_phase" 3 1
+tx_begin 4 4 180 ns
+a 0
+tx_record_attribute 4 "data_size" UNSIGNED = 24
+tx_begin 5 6 180 ns
+a 0
+tx_relation "addr_phase" 5 4
+tx_end 5 6 300 ns
+tx_end 3 7 420 ns
+a 0
+tx_end 1 4 420 ns
+a 0
+tx_begin 6 4 420 ns
+a 1
+tx_record_attribute 6 "data_size" UNSIGNED = 24
+tx_begin 7 6 420 ns
+a 1
+tx_relation "addr_phase" 7 6
+tx_begin 8 7 420 ns
+tx_relation "data_phase" 8 4
+tx_end 7 6 480 ns
+tx_end 8 7 620 ns
+a 0
+tx_end 4 4 620 ns
+a 0
+tx_begin 9 4 620 ns
+a 1
+tx_record_attribute 9 "data_size" UNSIGNED = 24
+tx_begin 10 6 620 ns
+a 1
+tx_relation "addr_phase" 10 9
+tx_begin 11 7 620 ns
+tx_relation "data_phase" 11 6
+tx_end 11 7 700 ns
+a 1
+tx_end 6 4 700 ns
+a 1
+tx_end 10 6 760 ns
+tx_begin 12 7 760 ns
+tx_relation "data_phase" 12 9
+tx_begin 13 4 760 ns
+a 2
+tx_record_attribute 13 "data_size" UNSIGNED = 24
+tx_begin 14 6 760 ns
+a 2
+tx_relation "addr_phase" 14 13
+tx_end 14 6 880 ns
+tx_end 12 7 980 ns
+a 1
+tx_end 9 4 980 ns
+a 1
+tx_begin 15 4 980 ns
+a 2
+tx_record_attribute 15 "data_size" UNSIGNED = 24
+tx_begin 16 6 980 ns
+a 2
+tx_relation "addr_phase" 16 15
+tx_begin 17 7 980 ns
+tx_relation "data_phase" 17 13
+tx_end 16 6 1040 ns
+tx_end 17 7 1200 ns
+a 2
+tx_end 13 4 1200 ns
+a 2
+tx_begin 18 4 1200 ns
+a 120
+tx_record_attribute 18 "data_size" UNSIGNED = 24
+tx_begin 19 6 1200 ns
+a 120
+tx_relation "addr_phase" 19 18
+tx_begin 20 7 1200 ns
+tx_relation "data_phase" 20 15
+tx_end 19 6 1300 ns
+tx_end 20 7 1340 ns
+a 2
+tx_end 15 4 1340 ns
+a 2
+tx_begin 21 4 1340 ns
+a 11
+tx_record_attribute 21 "data_size" UNSIGNED = 24
+tx_begin 22 6 1340 ns
+a 11
+tx_relation "addr_phase" 22 21
+tx_begin 23 7 1340 ns
+tx_relation "data_phase" 23 18
+tx_end 23 7 1420 ns
+a 120
+tx_end 18 4 1420 ns
+a 120
+tx_end 22 6 1540 ns
+tx_begin 24 7 1540 ns
+tx_relation "data_phase" 24 21
+tx_begin 25 4 1540 ns
+a 147
+tx_record_attribute 25 "data_size" UNSIGNED = 24
+tx_begin 26 6 1540 ns
+a 147
+tx_relation "addr_phase" 26 25
+tx_end 24 7 1660 ns
+a 11
+tx_end 21 4 1660 ns
+a 11
+tx_end 26 6 1740 ns
+tx_begin 27 7 1740 ns
+tx_relation "data_phase" 27 25
+tx_begin 28 4 1740 ns
+a 99
+tx_record_attribute 28 "data_size" UNSIGNED = 24
+tx_begin 29 6 1740 ns
+a 99
+tx_relation "addr_phase" 29 28
+tx_end 29 6 1800 ns
+tx_end 27 7 1980 ns
+a 147
+tx_end 25 4 1980 ns
+a 147
+tx_begin 30 4 1980 ns
+a 55
+tx_record_attribute 30 "data_size" UNSIGNED = 24
+tx_begin 31 6 1980 ns
+a 55
+tx_relation "addr_phase" 31 30
+tx_begin 32 7 1980 ns
+tx_relation "data_phase" 32 28
+tx_end 32 7 2060 ns
+a 99
+tx_end 28 4 2060 ns
+a 99
+tx_end 31 6 2100 ns
+tx_begin 33 7 2100 ns
+tx_relation "data_phase" 33 30
+tx_begin 34 4 2100 ns
+a 126
+tx_record_attribute 34 "data_size" UNSIGNED = 24
+tx_begin 35 6 2100 ns
+a 126
+tx_relation "addr_phase" 35 34
+tx_end 33 7 2340 ns
+a 55
+tx_end 30 4 2340 ns
+a 55
+tx_end 35 6 2340 ns
+tx_begin 36 7 2340 ns
+tx_relation "data_phase" 36 34
+tx_begin 37 5 2340 ns
+a 204
+tx_record_attribute 37 "data_size" UNSIGNED = 24
+tx_begin 38 6 2340 ns
+a 204
+tx_relation "addr_phase" 38 37
+tx_end 38 6 2400 ns
+tx_end 36 7 2540 ns
+a 126
+tx_end 34 4 2540 ns
+a 126
+tx_begin 39 5 2540 ns
+a 242
+tx_record_attribute 39 "data_size" UNSIGNED = 24
+tx_begin 40 6 2540 ns
+a 242
+tx_relation "addr_phase" 40 39
+tx_begin 41 8 2540 ns
+a 211
+tx_relation "data_phase" 41 37
+tx_end 41 8 2640 ns
+tx_end 37 5 2640 ns
+a 211
+tx_end 40 6 2780 ns
+tx_begin 42 8 2780 ns
+a 58
+tx_relation "data_phase" 42 39
+tx_begin 43 5 2780 ns
+a 135
+tx_record_attribute 43 "data_size" UNSIGNED = 24
+tx_begin 44 6 2780 ns
+a 135
+tx_relation "addr_phase" 44 43
+tx_end 44 6 2960 ns
+tx_end 42 8 3 us
+tx_end 39 5 3 us
+a 58
+tx_begin 45 5 3 us
+a 26
+tx_record_attribute 45 "data_size" UNSIGNED = 24
+tx_begin 46 6 3 us
+a 26
+tx_relation "addr_phase" 46 45
+tx_begin 47 8 3 us
+a 31
+tx_relation "data_phase" 47 43
+tx_end 47 8 3140 ns
+tx_end 43 5 3140 ns
+a 31
+tx_end 46 6 3200 ns
+tx_begin 48 8 3200 ns
+a 37
+tx_relation "data_phase" 48 45
+tx_begin 49 5 3200 ns
+a 176
+tx_record_attribute 49 "data_size" UNSIGNED = 24
+tx_begin 50 6 3200 ns
+a 176
+tx_relation "addr_phase" 50 49
+tx_end 50 6 3300 ns
+tx_end 48 8 3380 ns
+tx_end 45 5 3380 ns
+a 37
+tx_begin 51 5 3380 ns
+a 58
+tx_record_attribute 51 "data_size" UNSIGNED = 24
+tx_begin 52 6 3380 ns
+a 58
+tx_relation "addr_phase" 52 51
+tx_begin 53 8 3380 ns
+a 220
+tx_relation "data_phase" 53 49
+tx_end 52 6 3440 ns
+tx_end 53 8 3560 ns
+tx_end 49 5 3560 ns
+a 220
+tx_begin 54 8 3560 ns
+a 109
+tx_relation "data_phase" 54 51
+tx_end 54 8 3660 ns
+tx_end 51 5 3660 ns
+a 109

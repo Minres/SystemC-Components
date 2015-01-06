@@ -35,9 +35,10 @@ import org.eclipse.ui.part.IPageSite;
 import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 
-import com.minres.scviewer.database.ITrHierNode;
-import com.minres.scviewer.database.ITrStream;
-import com.minres.scviewer.database.ITransaction;
+import com.minres.scviewer.database.IHierNode;
+import com.minres.scviewer.database.ITxStream;
+import com.minres.scviewer.database.ITx;
+import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.ui.TxEditorPart;
 import com.minres.scviewer.ui.views.provider.TxDbTreeContentProvider;
 import com.minres.scviewer.ui.views.provider.TxDbTreeLabelProvider;
@@ -124,10 +125,10 @@ public class TxOutlinePage extends ContentOutlinePage implements  ISelectionList
 		if(selection instanceof IStructuredSelection){
 			IStructuredSelection sel = (IStructuredSelection) selection;
 			Object obj = sel.getFirstElement();
-			menuMgr.add(makeStreamAction("Add to Wave", ISharedImages.IMG_OBJ_ADD, sel, obj instanceof ITrStream, false));
+			menuMgr.add(makeStreamAction("Add to Wave", ISharedImages.IMG_OBJ_ADD, sel, obj instanceof IWaveform, false));
 			menuMgr.add(makeStreamAction("Add all to Wave", ISharedImages.IMG_OBJ_ADD, sel, true, false));
-			menuMgr.add(makeStreamAction("Remove from Wave", ISharedImages.IMG_TOOL_DELETE, sel, obj instanceof ITrStream,true));
-			menuMgr.add(makeStreamAction("Remove all from Wave", ISharedImages.IMG_TOOL_DELETE, sel, true, true));	
+//			menuMgr.add(makeStreamAction("Remove from Wave", ISharedImages.IMG_TOOL_DELETE, sel, obj instanceof IWaveform, true));
+//			menuMgr.add(makeStreamAction("Remove all from Wave", ISharedImages.IMG_TOOL_DELETE, sel, true, true));	
 		}
 	}
 
@@ -168,8 +169,8 @@ public class TxOutlinePage extends ContentOutlinePage implements  ISelectionList
          ISelection selection = anEvent.getSelection();
          if (!selection.isEmpty()) {
              Object tmp = ((IStructuredSelection) selection).getFirstElement();
-             if (tmp instanceof ITrHierNode) {
-            	 fireSelectionChanged(new StructuredSelection((ITrHierNode) tmp));
+             if (tmp instanceof IHierNode) {
+            	 fireSelectionChanged(new StructuredSelection((IHierNode) tmp));
              }
          }
      }
@@ -179,31 +180,31 @@ public class TxOutlinePage extends ContentOutlinePage implements  ISelectionList
 			public void run() {
 				if(selection!=null)
 					for(Object obj :selection.toArray()){
-						if(obj instanceof ITrStream){
+						if(obj instanceof IWaveform){
 							if(remove)
-								editor.removeStreamFromList((ITrStream) obj);
+								editor.removeStreamFromList((IWaveform) obj);
 							else
-								editor.addStreamToList((ITrStream) obj);
-						} else if(obj instanceof ITrHierNode){
-							LinkedList<ITrHierNode> queue = new LinkedList<ITrHierNode>();
-							LinkedList<ITrStream> streams = new LinkedList<ITrStream>();
-							queue.add((ITrHierNode)obj);
+								editor.addStreamToList((IWaveform) obj);
+						} else if(obj instanceof IHierNode){
+							LinkedList<IHierNode> queue = new LinkedList<IHierNode>();
+							LinkedList<IWaveform> streams = new LinkedList<IWaveform>();
+							queue.add((IHierNode)obj);
 							while(queue.size()>0){
-								ITrHierNode n = queue.poll();
-								if(n instanceof ITrStream) streams.add((ITrStream) n);
+								IHierNode n = queue.poll();
+								if(n instanceof IWaveform) streams.add((IWaveform) n);
 								queue.addAll(n.getChildNodes());
 							}
 							if(remove)
-								editor.removeStreamsFromList(streams.toArray(new ITrStream[]{}));
+								editor.removeStreamsFromList(streams.toArray(new IWaveform[]{}));
 							else
-								editor.addStreamsToList(streams.toArray(new ITrStream[]{}));
+								editor.addStreamsToList(streams.toArray(new IWaveform[]{}));
 						}
 					}
 			}
 		};
 		action.setText(text);
 		action.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(imgDescriptor));
-		if(selection.getFirstElement() instanceof ITrStream && editor.getStreamList().contains(selection.getFirstElement()))
+		if(selection.getFirstElement() instanceof IWaveform && editor.getStreamList().contains(selection.getFirstElement()))
 			action.setEnabled(false);
 		else
 			action.setEnabled(true);

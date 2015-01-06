@@ -12,3 +12,5 @@ Require-Bundle: com.minres.scviewer.database;bundle-version="1.0.0",
 Bundle-ClassPath: .,
  sqlite-jdbc-3.8.7.jar
 Service-Component: OSGI-INF/component.xml
+Export-Package: com.minres.scviewer.database.sqlite
+Bundle-ActivationPolicy: lazy

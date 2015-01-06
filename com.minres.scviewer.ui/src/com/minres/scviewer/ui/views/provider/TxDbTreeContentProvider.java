@@ -13,19 +13,19 @@ package com.minres.scviewer.ui.views.provider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-import com.minres.scviewer.database.ITrDb;
-import com.minres.scviewer.database.ITrHierNode;
+import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.database.IHierNode;
 
 public class TxDbTreeContentProvider implements ITreeContentProvider {
 
-	private ITrDb database;
+	private IWaveformDb database;
 	
 	@Override
 	public void dispose() {	}
 
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		database=(ITrDb)newInput;
+		database=(IWaveformDb)newInput;
 	}
 
 	@Override
@@ -35,8 +35,8 @@ public class TxDbTreeContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		if(parentElement instanceof ITrHierNode){
-			return ((ITrHierNode)parentElement).getChildNodes().toArray();
+		if(parentElement instanceof IHierNode){
+			return ((IHierNode)parentElement).getChildNodes().toArray();
 		}
 		return null;
 	}

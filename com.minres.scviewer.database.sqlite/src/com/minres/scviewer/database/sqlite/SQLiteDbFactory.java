@@ -3,10 +3,10 @@ package com.minres.scviewer.database.sqlite;
 import java.io.File;
 import java.io.FileInputStream;
 
-import com.minres.scviewer.database.ITrDb;
-import com.minres.scviewer.database.ITransactionDbFactory;
+import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.database.IWaveformDbFactory;
 
-public class SQLiteDbFactory implements ITransactionDbFactory {
+public class SQLiteDbFactory implements IWaveformDbFactory {
 
 	private byte[] x = "SQLite format 3".getBytes();
 
@@ -14,7 +14,7 @@ public class SQLiteDbFactory implements ITransactionDbFactory {
 	}
 
 	@Override
-	public ITrDb createDatabase(File file) {
+	public IWaveformDb createDatabase(File file) {
 		try {
 			FileInputStream fis = new FileInputStream(file);
 			byte[] buffer = new byte[x.length];

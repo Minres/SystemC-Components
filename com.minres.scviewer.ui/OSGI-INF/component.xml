@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.minres.scviewer.ui">
-   <implementation class="com.minres.scviewer.ui.TxEditorPlugin"/>
-   <reference bind="setTransactionDbFactory" cardinality="0..n" interface="com.minres.scviewer.database.ITransactionDbFactory" name="ITransactionDbFactory" policy="dynamic" unbind="unsetTransactionDbFactory"/>
-</scr:component>

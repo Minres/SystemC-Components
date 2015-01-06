@@ -20,4 +20,3 @@ Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.ui.views.contentoutline
 Bundle-ClassPath: .,
  swing2swt.jar
-Service-Component: OSGI-INF/component.xml

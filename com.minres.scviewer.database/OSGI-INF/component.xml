@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="VCDDbFactory">
+   <implementation class="com.minres.scviewer.database.vcd.VCDDbFactory"/>
+   <service>
+      <provide interface="com.minres.scviewer.database.IWaveformDbFactory"/>
+   </service>
+</scr:component>

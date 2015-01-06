@@ -17,9 +17,10 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
 
-import com.minres.scviewer.database.ITrDb;
-import com.minres.scviewer.database.ITrHierNode;
-import com.minres.scviewer.database.ITrStream;
+import com.minres.scviewer.database.ISignal;
+import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.database.IHierNode;
+import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.ui.TxEditorPlugin;
 
 public class TxDbTreeLabelProvider implements ILabelProvider {
@@ -28,6 +29,7 @@ public class TxDbTreeLabelProvider implements ILabelProvider {
 
 	private Image database;
 	private Image stream;
+	private Image signal;
 	private Image folder;
 	
 	
@@ -36,6 +38,7 @@ public class TxDbTreeLabelProvider implements ILabelProvider {
 		database=TxEditorPlugin.createImage("database");
 		stream=TxEditorPlugin.createImage("stream");
 		folder=TxEditorPlugin.createImage("folder");
+		signal=TxEditorPlugin.createImage("signal");
 	}
 
 	@Override
@@ -48,6 +51,7 @@ public class TxDbTreeLabelProvider implements ILabelProvider {
 		if(database!=null) database.dispose();
 		if(stream!=null) stream.dispose();
 		if(folder!=null) folder.dispose();
+		if(signal!=null) signal.dispose();
 	}
 
 	@Override
@@ -62,11 +66,13 @@ public class TxDbTreeLabelProvider implements ILabelProvider {
 
 	@Override
 	public Image getImage(Object element) {
-		if(element instanceof ITrDb){
+		if(element instanceof IWaveformDb){
 			return database;
-		}else if(element instanceof ITrStream){
+		}else if(element instanceof ITxStream){
 			return stream;
-		}else if(element instanceof ITrHierNode){
+		}else if(element instanceof ISignal<?>){
+			return signal;
+		}else if(element instanceof IHierNode){
 			return folder;
 		} else
 			return null;
@@ -74,7 +80,7 @@ public class TxDbTreeLabelProvider implements ILabelProvider {
 
 	@Override
 	public String getText(Object element) {
-		return ((ITrHierNode)element).getName();
+		return ((IHierNode)element).getName();
 	}
 
 }

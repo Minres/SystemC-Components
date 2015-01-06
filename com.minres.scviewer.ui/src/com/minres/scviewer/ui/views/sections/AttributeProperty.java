@@ -44,8 +44,8 @@ import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import com.minres.scviewer.database.AssociationType;
-import com.minres.scviewer.database.ITrAttribute;
-import com.minres.scviewer.database.ITransaction;
+import com.minres.scviewer.database.ITxAttribute;
+import com.minres.scviewer.database.ITx;
 
 public class AttributeProperty extends AbstractPropertySection implements ISelectionProvider {
 
@@ -53,7 +53,7 @@ public class AttributeProperty extends AbstractPropertySection implements ISelec
 
 	private ListenerList listeners = new ListenerList();
 
-	private ITransaction iTr;
+	private ITx iTr;
 
 	private ISelection currentSelection;
 
@@ -104,19 +104,19 @@ public class AttributeProperty extends AbstractPropertySection implements ISelec
 
 		treeViewer.setAutoExpandLevel(2);
 		treeViewer.setContentProvider(new ITreeContentProvider() {
-			TreeMap<String, List<ITrAttribute>> hier = new TreeMap<String, List<ITrAttribute>>();
-			HashMap<ITrAttribute, String> parents = new HashMap<ITrAttribute, String>();
+			TreeMap<String, List<ITxAttribute>> hier = new TreeMap<String, List<ITxAttribute>>();
+			HashMap<ITxAttribute, String> parents = new HashMap<ITxAttribute, String>();
 
 			@Override
 			public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-				if (newInput instanceof  ITransaction) {
-					List<ITrAttribute> attributes = ((ITransaction)newInput).getAttributes();
+				if (newInput instanceof  ITx) {
+					List<ITxAttribute> attributes = ((ITx)newInput).getAttributes();
 					hier.clear();
 					parents.clear();
 
 					String location="Begin";
-					List<ITrAttribute> childs=new LinkedList<ITrAttribute>();
-					for (ITrAttribute attr : attributes)
+					List<ITxAttribute> childs=new LinkedList<ITxAttribute>();
+					for (ITxAttribute attr : attributes)
 						if (attr != null && attr.getType()==AssociationType.BEGIN){
 							childs.add(attr);
 							parents.put(attr, location);
@@ -124,8 +124,8 @@ public class AttributeProperty extends AbstractPropertySection implements ISelec
 					if(childs.size()>0) hier.put(location, childs);
 					
 					location="Transaction";
-					childs=new LinkedList<ITrAttribute>();
-					for (ITrAttribute attr : attributes)
+					childs=new LinkedList<ITxAttribute>();
+					for (ITxAttribute attr : attributes)
 						if (attr != null && attr.getType()==AssociationType.RECORD){
 							childs.add(attr);
 							parents.put(attr, location);
@@ -133,8 +133,8 @@ public class AttributeProperty extends AbstractPropertySection implements ISelec
 					if(childs.size()>0) hier.put(location, childs);
 
 					location="End";
-					childs=new LinkedList<ITrAttribute>();
-					for (ITrAttribute attr : attributes)
+					childs=new LinkedList<ITxAttribute>();
+					for (ITxAttribute attr : attributes)
 						if (attr != null && attr.getType()==AssociationType.END){
 							childs.add(attr);
 							parents.put(attr, location);
@@ -154,7 +154,7 @@ public class AttributeProperty extends AbstractPropertySection implements ISelec
 
 			@Override
 			public Object getParent(Object element) {
-				if (element instanceof ITrAttribute)
+				if (element instanceof ITxAttribute)
 					return parents.get(element);
 				else
 					return null;
@@ -192,8 +192,8 @@ public class AttributeProperty extends AbstractPropertySection implements ISelec
 			public String getColumnText(Object element, int columnIndex) {
 				if (columnIndex == 0 && element instanceof String)
 					return element.toString();
-				else if(element instanceof ITrAttribute){
-					ITrAttribute attr = (ITrAttribute)element;
+				else if(element instanceof ITxAttribute){
+					ITxAttribute attr = (ITxAttribute)element;
 					if (columnIndex == 1 )
 						return attr.getName();
 					else if (columnIndex == 2 )
@@ -235,8 +235,8 @@ public class AttributeProperty extends AbstractPropertySection implements ISelec
 		currentSelection = null;
 		Assert.isTrue(selection instanceof IStructuredSelection);
 		Object input = ((IStructuredSelection) selection).getFirstElement();
-		Assert.isTrue(input instanceof ITransaction);
-		iTr = (ITransaction) input;
+		Assert.isTrue(input instanceof ITx);
+		iTr = (ITx) input;
 	}
 
 	public void refresh() {

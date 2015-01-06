@@ -2,15 +2,15 @@ package com.minres.scviewer.database.text
 
 import java.io.FileInputStream;
 
-import com.minres.scviewer.database.ITrDb
-import com.minres.scviewer.database.ITransactionDbFactory;
+import com.minres.scviewer.database.IWaveformDb
+import com.minres.scviewer.database.IWaveformDbFactory;
 
-class TextDbFactory implements ITransactionDbFactory {
+class TextDbFactory implements IWaveformDbFactory {
 
 	byte[] x = "scv_tr_stream".bytes
 	
 	@Override
-	public ITrDb createDatabase(File file) {
+	public IWaveformDb createDatabase(File file) {
 		try {
 			FileInputStream fis = new FileInputStream(file);
             byte[] buffer = new byte[x.size()];

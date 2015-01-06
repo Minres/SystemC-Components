@@ -21,10 +21,10 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Layout;
 
 import com.minres.scviewer.database.EventTime;
-import com.minres.scviewer.database.ITransaction;
+import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.ui.TxEditorPlugin;
 
-public class Track extends Composite implements MouseListener {
+public class Track extends Composite implements IWaveformWidget, MouseListener {
 
 	static final int trackHeight = 50;
 	static final int trackInset = 2;
@@ -34,9 +34,9 @@ public class Track extends Composite implements MouseListener {
 	private Color lineColor;
 	private Color trackBgColor;
 	
-	private ITransaction highlightedTx=null;
+	private ITx highlightedTx=null;
 	
-	private HashMap<ITransaction, Transaction> transactionMap =  new HashMap<ITransaction, Transaction>();
+	private HashMap<ITx, Transaction> transactionMap =  new HashMap<ITx, Transaction>();
 	
 	class TrackLayoutData {
 		protected int x, y;
@@ -121,11 +121,11 @@ public class Track extends Composite implements MouseListener {
 	}
 
 
-	public void setTransactions(List<ITransaction> transactions) {
-		Vector<ITransaction> rowendtime = new Vector<ITransaction>();
-		for (ITransaction tx : transactions) {
+	public void setTransactions(List<ITx> transactions) {
+		Vector<ITx> rowendtime = new Vector<ITx>();
+		for (ITx tx : transactions) {
 			int rowIdx = 0;
-			for (ITransaction lastTx : rowendtime) {
+			for (ITx lastTx : rowendtime) {
 				if((lastTx.getEndTime().getValue()-lastTx.getBeginTime().getValue())>0){
 					if (lastTx.getEndTime().compareTo(tx.getBeginTime())<=0 )
 						break;
@@ -187,16 +187,19 @@ public class Track extends Composite implements MouseListener {
 		this.notifyListeners(SWT.MouseUp, event);
 	}
 	
-	public Transaction highlightTransaction(ITransaction tx){
-		if(highlightedTx!=null){
-			transactionMap.get(highlightedTx).highlight(false);
-			highlightedTx=null;
-		}
-		if(tx!=null && transactionMap.containsKey(tx)){
-			Transaction trans = transactionMap.get(tx);
-			trans.highlight(true);
-			highlightedTx=tx;
-			return trans;
+	public Transaction highlight(Object obj){
+		if(obj instanceof ITx){
+			ITx tx = (ITx) obj;
+			if(highlightedTx!=null){
+				transactionMap.get(highlightedTx).highlight(false);
+				highlightedTx=null;
+			}
+			if(tx!=null && transactionMap.containsKey(tx)){
+				Transaction trans = transactionMap.get(tx);
+				trans.highlight(true);
+				highlightedTx=tx;
+				return trans;
+			}
 		}
 		return null;
 	}

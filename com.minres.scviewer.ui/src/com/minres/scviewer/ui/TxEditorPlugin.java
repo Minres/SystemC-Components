@@ -24,7 +24,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.osgi.framework.BundleContext;
 
-import com.minres.scviewer.database.ITransactionDbFactory;
+import com.minres.scviewer.database.IWaveformDbFactory;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -132,22 +132,5 @@ public class TxEditorPlugin extends AbstractUIPlugin {
 	public ResourceBundle getResourceBundle() {
 		return resourceBundle;
 	}
-
-	private ITransactionDbFactory transactionDbFactory;
-	private List<ITransactionDbFactory> factories= new ArrayList<ITransactionDbFactory>();
-	public ITransactionDbFactory getTransactionDbFactory() {
-		return transactionDbFactory;
-	}
-
-	public void setTransactionDbFactory(ITransactionDbFactory transactionDbFactory) {
-		factories.add( transactionDbFactory);
-		System.out.println("Service bound");
-	}
-
-	public void unsetTransactionDbFactory(ITransactionDbFactory transactionDbFactory) {
-		factories.remove(transactionDbFactory);
-		System.out.println("Service unbound");
-	}
-
 
 }

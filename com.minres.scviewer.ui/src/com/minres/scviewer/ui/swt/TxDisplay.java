@@ -52,14 +52,17 @@ import org.eclipse.wb.swt.SWTResourceManager;
 
 import swing2swt.layout.BorderLayout;
 
-import com.minres.scviewer.database.ITrStream;
-import com.minres.scviewer.database.ITransaction;
+import com.minres.scviewer.database.ISignal;
+import com.minres.scviewer.database.ISignalChange;
+import com.minres.scviewer.database.ITxStream;
+import com.minres.scviewer.database.ITx;
+import com.minres.scviewer.database.IWaveform;
 
 public class TxDisplay implements PropertyChangeListener, ISelectionProvider, MouseListener{
 
     private ListenerList listeners = new ListenerList();
-    private ITrStream currentStreamSelection;  
-    private ITransaction currentSelection;
+    private ITxStream currentStreamSelection;  
+    private ITx currentSelection;
 	private ScrolledComposite valueListScrolled;
 	private ScrolledComposite nameListScrolled;
 	private Composite nameList;
@@ -67,10 +70,10 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 	private ScrolledComposite trackListScrolled;
 	private Composite trackList;
 	private Composite top;
-	private ArrayList<ITrStream> streams=new ArrayList<ITrStream>();
+	private ArrayList<IWaveform> streams=new ArrayList<IWaveform>();
 	private Composite trackPane;
 	private Ruler ruler;
-	private HashMap<ITrStream, Track> trackMap = new HashMap<ITrStream, Track>();
+	private HashMap<IWaveform, IWaveformWidget> trackMap = new HashMap<IWaveform, IWaveformWidget>();
 
     public TxDisplay(Composite parent) {
 		top = new Composite(parent, SWT.NONE);
@@ -207,40 +210,63 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 	}
 
 	public void streamListChanged() {
-		LinkedList<ITrStream>toAdd = new LinkedList<ITrStream>();
+		LinkedList<IWaveform>toAdd = new LinkedList<IWaveform>();
 		toAdd.addAll(streams);
 		for(Control child:trackList.getChildren()){
-			Track track = (Track) child;
-			Control c = (Control)track.getData("NAMEWIDGET");
-			ITrStream stream=(ITrStream) track.getData("STREAM");
+			IWaveform stream=(IWaveform) child.getData("WAVEFORM");
 			if(!streams.contains(stream)){
-				track.setVisible(false);
-				c.setVisible(false);
+				child.setVisible(false);
+				((Control)(child.getData("NAMEWIDGET"))).setVisible(false);
+				((Control)(child.getData("VALUEWIDGET"))).setVisible(false);
 			}else{
 				toAdd.remove(stream);
-				track.setVisible(true);
-				c.setVisible(true);
+				child.setVisible(true);
+				((Control)(child.getData("NAMEWIDGET"))).setVisible(true);
+				((Control)(child.getData("VALUEWIDGET"))).setVisible(true);
 			}
 		}
-		for(ITrStream stream: toAdd){
-			Track track = new Track(trackList,SWT.NONE);
-			track.setTransactions(stream.getTransactions());
-			track.setData("STREAM", stream);
-			track.addMouseListener(this);
-			Point trackSize = track.computeSize(SWT.DEFAULT,SWT.DEFAULT);
-			
-			Label trackName = new Label(nameList, SWT.NONE);
-			trackName.setText(stream.getFullName());
-			RowData trackNamelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
-			trackName.setLayoutData(trackNamelayoutData);
-			track.setData("NAMEWIDGET", trackName);
-			
-			Label trackValue = new Label(valueList, SWT.NONE);
-			trackValue.setText("-");
-			RowData trackValuelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
-			trackValue.setLayoutData(trackValuelayoutData);
-			track.setData("VALUEWIDGET", trackValue);
-			trackMap.put(stream, track);
+		for(IWaveform wave: toAdd){
+			if(wave instanceof ITxStream){
+				ITxStream stream = (ITxStream) wave;
+				Track track = new Track(trackList,SWT.NONE);
+				track.setTransactions(stream.getTransactions());
+				track.setData("WAVEFORM", stream);
+				track.addMouseListener(this);
+				Point trackSize = track.computeSize(SWT.DEFAULT,SWT.DEFAULT);
+				
+				Label trackName = new Label(nameList, SWT.NONE);
+				trackName.setText(stream.getFullName());
+				RowData trackNamelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
+				trackName.setLayoutData(trackNamelayoutData);
+				track.setData("NAMEWIDGET", trackName);
+				
+				Label trackValue = new Label(valueList, SWT.NONE);
+				trackValue.setText("-");
+				RowData trackValuelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
+				trackValue.setLayoutData(trackValuelayoutData);
+				track.setData("VALUEWIDGET", trackValue);
+				trackMap.put(stream, track);
+			} else if(wave instanceof ISignal<?>){
+				ISignal<ISignalChange> isignal = (ISignal<ISignalChange>) wave;
+				SignalWidget signal = new SignalWidget(trackList, SWT.NONE);
+				signal.setTransactions(isignal);
+				signal.setData("WAVEFORM", isignal);
+				signal.addMouseListener(this);
+				Point trackSize = signal.computeSize(SWT.DEFAULT,SWT.DEFAULT);
+				
+				Label trackName = new Label(nameList, SWT.NONE);
+				trackName.setText(isignal.getFullName());
+				RowData trackNamelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
+				trackName.setLayoutData(trackNamelayoutData);
+				signal.setData("NAMEWIDGET", trackName);
+				
+				Label trackValue = new Label(valueList, SWT.NONE);
+				trackValue.setText("-");
+				RowData trackValuelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
+				trackValue.setLayoutData(trackValuelayoutData);
+				signal.setData("VALUEWIDGET", trackValue);
+				trackMap.put(isignal, signal);
+			}
 		}
 		recalculateNameBounds();
 		recalculateValueBounds();		
@@ -276,9 +302,9 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 	@Override
 	public void propertyChange(PropertyChangeEvent pce) {
 		currentSelection=null;
-		ITrStream str = (ITrStream)pce.getNewValue();
-		if(str instanceof ITrStream)
-			currentStreamSelection=(ITrStream)str;
+		ITxStream str = (ITxStream)pce.getNewValue();
+		if(str instanceof ITxStream)
+			currentStreamSelection=(ITxStream)str;
 		if(currentStreamSelection!=null)
 			setSelection(getSelection());
 		else
@@ -309,15 +335,15 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 	public void setSelection(ISelection selection) {
 		if(selection instanceof IStructuredSelection){
 			Object sel =((IStructuredSelection)selection).getFirstElement();
-			if(sel instanceof ITransaction && currentSelection!=sel){
+			if(sel instanceof ITx && currentSelection!=sel){
 				if(currentSelection!=null){
-					ITrStream stream = currentSelection.getGenerator().getStream();
-					if(trackMap.containsKey(stream)) trackMap.get(stream).highlightTransaction(null);
+					ITxStream stream = currentSelection.getGenerator().getStream();
+					if(trackMap.containsKey(stream)) trackMap.get(stream).highlight(null);
 				}
-				currentSelection=(ITransaction) sel;
-				ITrStream stream = currentSelection.getGenerator().getStream();
+				currentSelection=(ITx) sel;
+				ITxStream stream = currentSelection.getGenerator().getStream();
 				if(trackMap.containsKey(stream)){
-					Transaction trans = trackMap.get(stream).highlightTransaction(currentSelection);
+					Transaction trans = trackMap.get(stream).highlight(sel);
 					trackListScrolled.showControl(trans);
 				}
 				Object[] list = listeners.getListeners();  
@@ -337,7 +363,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 		if(e.data!=null){
 			StructuredSelection sel = new StructuredSelection(((Transaction)e.data).getData());
 			setSelection(sel);
-		}else{
+		}else if(e.widget instanceof Track){
 			StructuredSelection sel = new StructuredSelection(new Object[]{ ((Track)e.widget).getData()});
 			setSelection(sel);
 		}
@@ -347,26 +373,26 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 	public void mouseUp(MouseEvent e) {		
 	}
 	
-	public boolean addStream(ITrStream paramE){
-		boolean res = streams.add(paramE);
+	public boolean addStream(IWaveform stream){
+		boolean res = streams.add(stream);
 		streamListChanged();
 		return res;
 	}
 
-	public boolean addAllStreams(ITrStream[] streams) {
+	public boolean addAllStreams(ITxStream[] streams) {
 		boolean res =  this.streams.addAll(Arrays.asList(streams));
 		streamListChanged();
 		return res;
 	}
 
-	public boolean addAllStreams(Collection<? extends ITrStream> paramCollection){
+	public boolean addAllStreams(Collection<? extends ITxStream> paramCollection){
 		boolean res =  streams.addAll(paramCollection);
 		streamListChanged();
 		return res;
 	}
 
-	public boolean removeStream(ITrStream paramObject){
-		boolean res =  streams.remove(paramObject);
+	public boolean removeStream(IWaveform obj){
+		boolean res =  streams.remove(obj);
 		streamListChanged();
 		return res;
 	}
@@ -377,11 +403,11 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 		return res;
 	}
 
-	public List<ITrStream> getStreamList(){
+	public List<IWaveform> getStreamList(){
 		return Collections.unmodifiableList(streams);
 	}
 
-	public boolean removeAllStreams(ITrStream[] streams) {
+	public boolean removeAllStreams(ITxStream[] streams) {
 		boolean res =  this.streams.removeAll(Arrays.asList(streams));
 		streamListChanged();
 		return res;

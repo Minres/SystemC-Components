@@ -70,9 +70,9 @@ public class Ruler extends Composite {
 		int end=start+e.width;
 		
 		gc.setBackground(getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
-		gc.fillRectangle(new Rectangle(0, 0, e.width, height));
+		gc.fillRectangle(new Rectangle(e.x, e.y, e.width, height));
 		gc.setBackground(headerBgColor);
-		gc.fillRectangle(new Rectangle(0, 0, e.width, height - 1));
+		gc.fillRectangle(new Rectangle(e.x, e.y, e.width, height - 1));
 		gc.setForeground(headerFgColor);
 		gc.drawLine(0, bottom, e.width, bottom);
 		

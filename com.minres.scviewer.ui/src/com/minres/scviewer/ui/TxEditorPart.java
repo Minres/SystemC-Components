@@ -13,7 +13,6 @@ package com.minres.scviewer.ui;
 import java.io.File;
 import java.util.List;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -25,7 +24,6 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.FileStoreEditorInput;
-import org.eclipse.ui.internal.ide.dialogs.IFileStoreFilter;
 import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
@@ -33,12 +31,12 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributo
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
-import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 
-import com.minres.scviewer.database.ITrDb;
-import com.minres.scviewer.database.ITrStream;
-import com.minres.scviewer.database.ITransactionDbFactory;
+import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.database.ITxStream;
+import com.minres.scviewer.database.IWaveformDbFactory;
+import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.ui.swt.TxDisplay;
 import com.minres.scviewer.ui.views.TxOutlinePage;
 
@@ -51,7 +49,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 	private TxDisplay txDisplay;
 	
 	/** This is the root of the editor's model. */
-	private ITrDb database;
+	private IWaveformDb database;
 
 	private Composite myParent;
 
@@ -85,7 +83,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 		if(getEditorInput()!=null && ((TxEditorInput) getEditorInput()).getStreamNames().size()>0 && database!=null){
 			if(MessageDialog.openConfirm(parent.getShell(), "Confirm", "Do you want the restore last state of the wave form?"))
 				for(String streamName:((TxEditorInput) getEditorInput()).getStreamNames()){
-					ITrStream stream = database.getStreamByName(streamName);
+					IWaveform stream = database.getStreamByName(streamName);
 					if(stream!=null)
 						txDisplay.addStream(stream);
 				}
@@ -126,10 +124,10 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 	protected void getTrDatabase(File file) {
 		try {
 			BundleContext context = FrameworkUtil.getBundle(this.getClass()).getBundleContext();
-			ServiceReference<?>[] serviceReferences = context.getServiceReferences(ITransactionDbFactory.class.getName(), null);
+			ServiceReference<?>[] serviceReferences = context.getServiceReferences(IWaveformDbFactory.class.getName(), null);
 			if(serviceReferences!=null){
 				for(ServiceReference<?> serviceReference:serviceReferences){
-					database = ((ITransactionDbFactory) context.getService(serviceReference)).createDatabase(file);
+					database = ((IWaveformDbFactory) context.getService(serviceReference)).createDatabase(file);
 					if(database!=null){
 						if(txDisplay !=null) database.addPropertyChangeListener(txDisplay);
 						return;
@@ -180,7 +178,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 		return super.getAdapter(type);
 	}
 
-	public ITrDb getModel() {
+	public IWaveformDb getModel() {
 		return database;
 	}
 
@@ -202,38 +200,38 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 		return false;
 	}
 
-	public ITrDb getDatabase() {
+	public IWaveformDb getDatabase() {
 		return database;
 	}
 
-	public void addStreamToList(ITrStream stream){
-		if(getEditorInput() instanceof TxEditorInput && !((TxEditorInput) getEditorInput()).getStreamNames().contains(stream.getFullName())){
-			((TxEditorInput) getEditorInput()).getStreamNames().add(stream.getFullName());
-			txDisplay.addStream(stream);
+	public void addStreamToList(IWaveform obj){
+		if(getEditorInput() instanceof TxEditorInput && !((TxEditorInput) getEditorInput()).getStreamNames().contains(obj.getFullName())){
+			((TxEditorInput) getEditorInput()).getStreamNames().add(obj.getFullName());
+			txDisplay.addStream(obj);
 		} else
-			txDisplay.addStream(stream);
+			txDisplay.addStream(obj);
 			
 	}
 	
-	public void addStreamsToList(ITrStream[] streams){
-		for(ITrStream stream:streams)
+	public void addStreamsToList(IWaveform[] iWaveforms){
+		for(IWaveform stream:iWaveforms)
 			addStreamToList(stream);
 	}
 
-	public void removeStreamFromList(ITrStream stream){
-		if(getEditorInput() instanceof TxEditorInput && ((TxEditorInput) getEditorInput()).getStreamNames().contains(stream.getFullName())){
-			((TxEditorInput) getEditorInput()).getStreamNames().remove(stream.getFullName());
-			txDisplay.removeStream(stream);
+	public void removeStreamFromList(IWaveform obj){
+		if(getEditorInput() instanceof TxEditorInput && ((TxEditorInput) getEditorInput()).getStreamNames().contains(obj.getFullName())){
+			((TxEditorInput) getEditorInput()).getStreamNames().remove(obj.getFullName());
+			txDisplay.removeStream(obj);
 		} else
-			txDisplay.removeStream(stream);
+			txDisplay.removeStream(obj);
 	}
 	
-	public void removeStreamsFromList(ITrStream[] streams){
-		for(ITrStream stream:streams)
+	public void removeStreamsFromList(IWaveform[] iWaveforms){
+		for(IWaveform stream:iWaveforms)
 			removeStreamFromList(stream);
 	}
 	
-	public List<ITrStream> getStreamList(){
+	public List<IWaveform> getStreamList(){
 		return txDisplay.getStreamList();
 	}
 

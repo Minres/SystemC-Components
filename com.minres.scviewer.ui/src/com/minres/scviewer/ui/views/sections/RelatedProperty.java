@@ -49,8 +49,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-import com.minres.scviewer.database.ITrRelation;
-import com.minres.scviewer.database.ITransaction;
+import com.minres.scviewer.database.ITxRelation;
+import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.RelationType;
 
 public class RelatedProperty extends AbstractPropertySection implements ISelectionProvider, ISelectionChangedListener {
@@ -59,7 +59,7 @@ public class RelatedProperty extends AbstractPropertySection implements ISelecti
 
 	private ListenerList listeners = new ListenerList();
 
-	private ITransaction iTr;
+	private ITx iTr;
 
 	private ISelection currentSelection;
 
@@ -105,26 +105,26 @@ public class RelatedProperty extends AbstractPropertySection implements ISelecti
 
 		treeViewer.setAutoExpandLevel(2);
 		treeViewer.setContentProvider(new ITreeContentProvider() {
-			TreeMap<String, Collection<ITrRelation>> hier = new TreeMap<String, Collection<ITrRelation>>();
-			HashMap<ITrRelation, String> parents = new HashMap<ITrRelation, String>();
+			TreeMap<String, Collection<ITxRelation>> hier = new TreeMap<String, Collection<ITxRelation>>();
+			HashMap<ITxRelation, String> parents = new HashMap<ITxRelation, String>();
 
 			@Override
 			public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-				if (newInput instanceof ITransaction) {
+				if (newInput instanceof ITx) {
 					hier.clear();
 					parents.clear();
 					String relName = "incoming";
-					Collection<ITrRelation> relSet = ((ITransaction)newInput).getIncomingRelations();
+					Collection<ITxRelation> relSet = ((ITx)newInput).getIncomingRelations();
 					if (relSet != null && relSet.size() > 0) {
 						hier.put(relName, relSet);
-						for (ITrRelation rel : relSet)
+						for (ITxRelation rel : relSet)
 							parents.put(rel, relName);
 					}
 					relName = "outgoing";
-					relSet = ((ITransaction)newInput).getOutgoingRelations();
+					relSet = ((ITx)newInput).getOutgoingRelations();
 					if (relSet != null && relSet.size() > 0) {
 						hier.put(relName, relSet);
-						for (ITrRelation rel : relSet)
+						for (ITxRelation rel : relSet)
 							parents.put(rel, relName);
 					}
 				}
@@ -141,7 +141,7 @@ public class RelatedProperty extends AbstractPropertySection implements ISelecti
 
 			@Override
 			public Object getParent(Object element) {
-				if (element instanceof ITransaction)
+				if (element instanceof ITx)
 					return parents.get(element);
 				else
 					return null;
@@ -179,14 +179,14 @@ public class RelatedProperty extends AbstractPropertySection implements ISelecti
 			public String getColumnText(Object element, int columnIndex) {
 				if (columnIndex == 0 && element instanceof String)
 					return element.toString();
-				else if (columnIndex == 1 && element instanceof ITrRelation)
-					return ((ITrRelation) element).getRelationType().getName();
-				else if (columnIndex == 2 && element instanceof ITrRelation){
-					ITrRelation rel = (ITrRelation) element;
+				else if (columnIndex == 1 && element instanceof ITxRelation)
+					return ((ITxRelation) element).getRelationType().getName();
+				else if (columnIndex == 2 && element instanceof ITxRelation){
+					ITxRelation rel = (ITxRelation) element;
 					if(rel.getTarget()==iTr) 
-						return ((ITrRelation) element).getSource().getId().toString();
+						return ((ITxRelation) element).getSource().getId().toString();
 					else
-						return ((ITrRelation) element).getTarget().getId().toString();
+						return ((ITxRelation) element).getTarget().getId().toString();
 				}
 				else
 					return null;
@@ -217,13 +217,13 @@ public class RelatedProperty extends AbstractPropertySection implements ISelecti
 //		}
 	}
 
-	private Action makeTransactionAction(final Object obj, final ITransaction transaction) {
+	private Action makeTransactionAction(final Object obj, final ITx transaction) {
 		Action action = new Action() {
 			public void run() {
-				if(obj instanceof ITrRelation){
+				if(obj instanceof ITxRelation){
 					IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-					ITransaction targetTransaction  = ((ITrRelation)obj).getSource()==transaction?
-							((ITrRelation)obj).getTarget():((ITrRelation)obj).getSource();
+					ITx targetTransaction  = ((ITxRelation)obj).getSource()==transaction?
+							((ITxRelation)obj).getTarget():((ITxRelation)obj).getSource();
 					for(IEditorReference editorRef: page.getEditorReferences()){
 						IWorkbenchPart part =editorRef.getPart(false);
 						if(editorRef.getPage().isPartVisible(part)){
@@ -245,8 +245,8 @@ public class RelatedProperty extends AbstractPropertySection implements ISelecti
 		currentSelection = null;
 		Assert.isTrue(selection instanceof IStructuredSelection);
 		Object input = ((IStructuredSelection) selection).getFirstElement();
-		Assert.isTrue(input instanceof ITransaction);
-		iTr = (ITransaction) input;
+		Assert.isTrue(input instanceof ITx);
+		iTr = (ITx) input;
 	}
 
 	public void refresh() {

@@ -16,11 +16,11 @@ import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 
-import com.minres.scviewer.database.ITransaction;
+import com.minres.scviewer.database.ITx;
 
 public class ITransactionPropertySource implements IPropertySource {
 
-	private ITransaction iTransaction;
+	private ITx iTransaction;
 
 	public final static String PROPERTY_ID = "ID";
 	public final static String PROPERTY_BEGINTIME = "BEGINTIME";
@@ -29,7 +29,7 @@ public class ITransactionPropertySource implements IPropertySource {
 	
 	protected IPropertyDescriptor[] propertyDescriptors;
 
-	public ITransactionPropertySource(ITransaction iTransaction) {
+	public ITransactionPropertySource(ITx iTransaction) {
 		this.iTransaction=iTransaction;
 		}
 

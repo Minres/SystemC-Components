@@ -16,7 +16,10 @@ public class EventTime implements Comparable<EventTime>{
 	
 	public static final double MS = 1000000000.0;
 
+	public static final EventTime ZERO = new EventTime(0L, "fs");
+	
 	private long value; // unit is femto seconds
+	
 	
 	public EventTime(Long value, String unit){
 		setValue(value, unit);

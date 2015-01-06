@@ -19,17 +19,18 @@ import java.util.TreeMap;
 
 import com.minres.scviewer.database.AssociationType;
 import com.minres.scviewer.database.DataType;
-import com.minres.scviewer.database.ITrAttrType;
-import com.minres.scviewer.database.ITrAttribute;
-import com.minres.scviewer.database.ITrDb;
-import com.minres.scviewer.database.ITrGenerator;
-import com.minres.scviewer.database.ITrHierNode;
-import com.minres.scviewer.database.ITrStream;
+import com.minres.scviewer.database.HierNode;
+import com.minres.scviewer.database.ITxAttributeType;
+import com.minres.scviewer.database.ITxAttribute;
+import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.database.ITxGenerator;
+import com.minres.scviewer.database.IHierNode;
+import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.InputFormatException;
 import com.minres.scviewer.database.EventTime
 import com.minres.scviewer.database.RelationType
 
-public class TextDb extends HierNode implements ITrDb{
+public class TextDb extends HierNode implements IWaveformDb{
 
 	private EventTime maxTime;
 	
@@ -37,6 +38,10 @@ public class TextDb extends HierNode implements ITrDb{
 	
 	def relationTypes=[:]
 	
+	public TextDb() {
+		super("TextDb");
+	}
+
 	public String getFullName() {
 		return getName();
 	}
@@ -46,21 +51,21 @@ public class TextDb extends HierNode implements ITrDb{
 		return maxTime;
 	}
 
-	public ITrStream getStreamByName(String name){
-		streams.find{ITrStream stream-> stream.fullName == name }
+	public ITxStream getStreamByName(String name){
+		streams.find{ITxStream stream-> stream.fullName == name }
 	}
 	
-	public List<ITrStream> getAllStreams() {
-		return new LinkedList<ITrStream>(streams);
+	public List<ITxStream> getAllWaves() {
+		return new LinkedList<ITxStream>(streams);
 	}
 
-	public List<ITrHierNode>  getChildNodes() {
+	public List<IHierNode>  getChildNodes() {
 		return childs.sort{it.name};
 	}
 
-	public Map<Long, ITrGenerator> getGeneratorsById() {
-		TreeMap<Long, ITrGenerator> res = new TreeMap<Long, ITrGenerator>();
-		streams.each{Stream stream -> stream.generators.each{res.put(it.id, id)} }
+	public Map<Long, ITxGenerator> getGeneratorsById() {
+		TreeMap<Long, ITxGenerator> res = new TreeMap<Long, ITxGenerator>();
+		streams.each{TxStream stream -> stream.generators.each{res.put(it.id, id)} }
 		return res;
 	}
 
@@ -78,8 +83,8 @@ public class TextDb extends HierNode implements ITrDb{
 		def streamsById = [:]
 		def generatorsById = [:]
 		def transactionsById = [:]
-		Generator generator
-		Transaction transaction
+		TxGenerator generator
+		Tx transaction
 		boolean endTransaction=false
 		def matcher
 		input.eachLine { line ->
@@ -91,19 +96,19 @@ public class TextDb extends HierNode implements ITrDb{
 				case "end_attribute":
 					if ((matcher = line =~ /^scv_tr_stream\s+\(ID (\d+),\s+name\s+"([^"]+)",\s+kind\s+"([^"]+)"\)$/)) {
 						def id = Integer.parseInt(matcher[0][1])
-						def stream = new Stream(id, this, matcher[0][2], matcher[0][3])
+						def stream = new TxStream(id, this, matcher[0][2], matcher[0][3])
 						streams<<stream
 						streamsById[id]=stream
 					} else if ((matcher = line =~ /^scv_tr_generator\s+\(ID\s+(\d+),\s+name\s+"([^"]+)",\s+scv_tr_stream\s+(\d+),$/)) {
 						def id = Integer.parseInt(matcher[0][1])
-						ITrStream stream=streamsById[Integer.parseInt(matcher[0][3])]
-						generator=new Generator(id, stream, matcher[0][2])
+						ITxStream stream=streamsById[Integer.parseInt(matcher[0][3])]
+						generator=new TxGenerator(id, stream, matcher[0][2])
 						stream.generators<<generator
 						generatorsById[id]=generator
 					} else if ((matcher = line =~ /^begin_attribute \(ID (\d+), name "([^"]+)", type "([^"]+)"\)$/)) {
-						generator.begin_attrs << AttrType.getAttrType(matcher[0][2], DataType.valueOf(matcher[0][3]), AssociationType.BEGIN)
+						generator.begin_attrs << TxAttributeType.getAttrType(matcher[0][2], DataType.valueOf(matcher[0][3]), AssociationType.BEGIN)
 					} else if ((matcher = line =~ /^end_attribute \(ID (\d+), name "([^"]+)", type "([^"]+)"\)$/)) {
-						generator.end_attrs << AttrType.getAttrType(matcher[0][2], DataType.valueOf(matcher[0][3]), AssociationType.END)
+						generator.end_attrs << TxAttributeType.getAttrType(matcher[0][2], DataType.valueOf(matcher[0][3]), AssociationType.END)
 					}
 					break;
 				case ")":
@@ -111,8 +116,8 @@ public class TextDb extends HierNode implements ITrDb{
 					break
 				case "tx_begin"://matcher = line =~ /^tx_begin\s+(\d+)\s+(\d+)\s+(\d+)\s+([munpf]?s)/
 					def id = Integer.parseInt(tokens[1])
-					Generator gen=generatorsById[Integer.parseInt(tokens[2])]
-					transaction = new Transaction(id, gen.stream, gen, new EventTime(Integer.parseInt(tokens[3]), tokens[4]))
+					TxGenerator gen=generatorsById[Integer.parseInt(tokens[2])]
+					transaction = new Tx(id, gen.stream, gen, new EventTime(Integer.parseInt(tokens[3]), tokens[4]))
 					gen.transactions << transaction
 					transactionsById[id]= transaction
 					gen.begin_attrs_idx=0;
@@ -130,21 +135,21 @@ public class TextDb extends HierNode implements ITrDb{
 					break
 				case "tx_record_attribute"://matcher = line =~ /^tx_record_attribute\s+(\d+)\s+"([^"]+)"\s+(\S+)\s*=\s*(.+)$/
 					def id = Integer.parseInt(tokens[1])
-					transactionsById[id].attributes<<new Attribute(tokens[2][1..-2], DataType.valueOf(tokens[3]), AssociationType.RECORD, tokens[5..-1].join(' '))
+					transactionsById[id].attributes<<new TxAttribute(tokens[2][1..-2], DataType.valueOf(tokens[3]), AssociationType.RECORD, tokens[5..-1].join(' '))
 					break
 				case "a"://matcher = line =~ /^a\s+(.+)$/
 					if(endTransaction){
-						transaction.attributes << new Attribute(transaction.generator.end_attrs[0], tokens[1])
+						transaction.attributes << new TxAttribute(transaction.generator.end_attrs[0], tokens[1])
 					} else {
-						transaction.attributes << new Attribute(transaction.generator.begin_attrs[0], tokens[1])
+						transaction.attributes << new TxAttribute(transaction.generator.begin_attrs[0], tokens[1])
 					}
 					break
 				case "tx_relation"://matcher = line =~ /^tx_relation\s+\"(\S+)\"\s+(\d+)\s+(\d+)$/
-					Transaction tr1= transactionsById[Integer.parseInt(tokens[2])]
-					Transaction tr2= transactionsById[Integer.parseInt(tokens[3])]
+					Tx tr1= transactionsById[Integer.parseInt(tokens[2])]
+					Tx tr2= transactionsById[Integer.parseInt(tokens[3])]
 					def relType=tokens[1][1..-2]
 					if(!relationTypes.containsKey(relType)) relationTypes[relType]=new RelationType(relType)
-					def rel = new Relation(relationTypes[relType], tr1, tr2)
+					def rel = new TxRelation(relationTypes[relType], tr1, tr2)
 					tr1.outgoingRelations<<rel
 					tr2.incomingRelations<<rel
 					break
@@ -157,9 +162,9 @@ public class TextDb extends HierNode implements ITrDb{
 	}
 
 	def addHierarchyNodes(){
-		streams.each{ Stream stream->
+		streams.each{ TxStream stream->
 			def hier = stream.fullName.split(/\./)
-			ITrHierNode node = this
+			IHierNode node = this
 			hier.each { name ->
 				def n1 = node.childNodes.find{it.name == name}
 				if(name == hier[-1]){ //leaf

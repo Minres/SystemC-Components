@@ -59,7 +59,18 @@ public:
             clk("clk"), rw("rw"), addr_req("addr_req"), addr_ack("addr_ack"), bus_addr("bus_addr"), data_rdy("data_rdy"), bus_data(
                     "bus_data") {
     }
+    virtual void trace( sc_trace_file* tf ) const;
 };
+
+void pipelined_bus_ports::trace( sc_trace_file* tf ) const {
+    sc_trace(tf, clk, clk.name());
+    sc_trace(tf, rw, rw.name());
+    sc_trace(tf, addr_req, addr_req.name());
+    sc_trace(tf, addr_ack, addr_ack.name());
+    sc_trace(tf, bus_addr, bus_addr.name());
+    sc_trace(tf, data_rdy, data_rdy.name());
+    sc_trace(tf, bus_data, bus_data.name());
+}
 
 class rw_pipelined_transactor: public rw_task_if, public pipelined_bus_ports {
 
@@ -325,7 +336,7 @@ int sc_main(int argc, char *argv[]) {
 #endif
     scv_tr_db db(fileName);
     scv_tr_db::set_default_db(&db);
-
+    sc_trace_file* tf = sc_create_vcd_trace_file("my_db");
     // create signals
     sc_clock clk("clk", 20.0, SC_NS, 0.5, 0.0, SC_NS, true);
     sc_signal<bool> rw;
@@ -350,6 +361,7 @@ int sc_main(int argc, char *argv[]) {
     tr.bus_addr(bus_addr);
     tr.data_rdy(data_rdy);
     tr.bus_data(bus_data);
+    tr.trace(tf);
 
     duv.clk(clk);
     duv.rw(rw);
@@ -358,13 +370,14 @@ int sc_main(int argc, char *argv[]) {
     duv.bus_addr(bus_addr);
     duv.data_rdy(data_rdy);
     duv.bus_data(bus_data);
+    duv.trace(tf);
 
     // Accellera SystemC >=2.2 got picky about multiple drivers.
     // Disable check for bus simulation.
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
     // run the simulation
     sc_start(1.0, SC_MS);
-
+    sc_close_vcd_trace_file(tf);
     return 0;
 }
 

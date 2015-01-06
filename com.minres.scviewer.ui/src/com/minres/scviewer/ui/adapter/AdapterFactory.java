@@ -3,7 +3,7 @@ package com.minres.scviewer.ui.adapter;
 import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.ui.views.properties.IPropertySource;
 
-import com.minres.scviewer.database.ITransaction;
+import com.minres.scviewer.database.ITx;
 
 public class AdapterFactory implements IAdapterFactory {
 
@@ -11,7 +11,7 @@ public class AdapterFactory implements IAdapterFactory {
 	@Override
 	public Object getAdapter(Object adaptableObject, Class adapterType) {
 		if (adapterType == IPropertySource.class)
-			return new ITransactionPropertySource((ITransaction) adaptableObject);
+			return new ITransactionPropertySource((ITx) adaptableObject);
 		return null;
 	}
 

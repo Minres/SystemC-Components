@@ -5,4 +5,7 @@ Bundle-SymbolicName: com.minres.scviewer.database
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: MINRES Technologies GmbH
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: com.minres.scviewer.database
+Export-Package: com.minres.scviewer.database,
+ com.minres.scviewer.database.vcd
+Service-Component: OSGI-INF/component.xml
+Bundle-ActivationPolicy: lazy

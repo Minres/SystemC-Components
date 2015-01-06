@@ -1,3 +1,5 @@
 package com.minres.scviewer.database;
 
-public enum AssociationType {BEGIN, RECORD, END}
+public enum AssociationType {
+	BEGIN, RECORD, END
+}
