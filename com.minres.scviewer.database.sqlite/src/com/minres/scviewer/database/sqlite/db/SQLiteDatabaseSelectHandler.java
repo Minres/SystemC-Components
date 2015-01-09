@@ -4,7 +4,6 @@ import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -67,7 +66,7 @@ public class SQLiteDatabaseSelectHandler<T> extends AbstractDatabaseHandler<T> {
 	 * @throws IntrospectionException
 	 * @throws InvocationTargetException
 	 */
-	public List<T> selectObjects() throws SQLException,
+	public synchronized List<T> selectObjects() throws SQLException,
 			SecurityException, IllegalArgumentException,
 			InstantiationException, IllegalAccessException,
 			IntrospectionException, InvocationTargetException {

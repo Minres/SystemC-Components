@@ -38,8 +38,6 @@ import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.internal.ole.win32.CONTROLINFO;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -55,8 +53,8 @@ import swing2swt.layout.BorderLayout;
 
 import com.minres.scviewer.database.ISignal;
 import com.minres.scviewer.database.ISignalChange;
-import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.ITx;
+import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveform;
 
 public class TxDisplay implements PropertyChangeListener, ISelectionProvider, MouseListener{

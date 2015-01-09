@@ -34,14 +34,20 @@ public class SQLiteDatabase implements IDatabase {
 
 	@Override
 	public void close(ResultSet resultSet, Statement statement, Connection connection) {
-		// TODO Auto-generated method stub
+		try {
+			resultSet.close();
+			statement.close();
+			connection.close();
+		} catch (SQLException e) {}
 
 	}
 
 	@Override
 	public void close(PreparedStatement preparedStatement, Connection connection) {
-		// TODO Auto-generated method stub
-
+		try {
+			preparedStatement.close();
+			connection.close();
+		} catch (SQLException e) {}
 	}
 
 }
