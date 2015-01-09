@@ -327,7 +327,7 @@ extern void scv_tr_sqlite_init();
 int sc_main(int argc, char *argv[]) {
     scv_startup();
 
-#if 1
+#if 0
     scv_tr_text_init();
     const char* fileName = "my_db.txlog";
 #else
