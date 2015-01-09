@@ -14,6 +14,7 @@ import com.minres.scviewer.database.ITxGenerator;
 import com.minres.scviewer.database.ITxRelation;
 import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.ITx;
+import com.minres.scviewer.database.sqlite.db.IDatabase;
 import com.minres.scviewer.database.sqlite.db.SQLiteDatabaseSelectHandler;
 import com.minres.scviewer.database.sqlite.tables.ScvTx;
 import com.minres.scviewer.database.sqlite.tables.ScvTxAttribute;
@@ -22,6 +23,7 @@ import com.minres.scviewer.database.sqlite.tables.ScvTxRelation;
 
 public class Tx implements ITx {
 
+	private IDatabase database;
 	private TxStream trStream;
 	private TxGenerator trGenerator;
 	private ScvTx scvTx;
@@ -29,7 +31,8 @@ public class Tx implements ITx {
 	private EventTime begin, end;
 	private  List<ITxRelation> incoming, outgoing;
 	
-	public Tx(TxStream trStream, TxGenerator trGenerator, ScvTx scvTx) {
+	public Tx(IDatabase database, TxStream trStream, TxGenerator trGenerator, ScvTx scvTx) {
+		this.database=database;
 		this.trStream=trStream;
 		this.trGenerator=trGenerator;
 		this.scvTx=scvTx;
@@ -54,10 +57,10 @@ public class Tx implements ITx {
 	public EventTime getBeginTime() {
 		if(begin==null){
 		SQLiteDatabaseSelectHandler<ScvTxEvent> handler = new SQLiteDatabaseSelectHandler<ScvTxEvent>(ScvTxEvent.class,
-				trStream.getDb().getDb(), "tx="+scvTx.getId()+" AND type="+ AssociationType.BEGIN.ordinal());
+				database, "tx="+scvTx.getId()+" AND type="+ AssociationType.BEGIN.ordinal());
 		try {
 			for(ScvTxEvent scvEvent:handler.selectObjects()){
-				begin= new EventTime(scvEvent.getTime()*trStream.getDb().timeResolution);
+				begin= new EventTime(scvEvent.getTime()*(Long)database.getData("TIMERESOLUTION"));
 			}
 		} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 				| InvocationTargetException | SQLException | IntrospectionException e) {
@@ -70,10 +73,10 @@ public class Tx implements ITx {
 	public EventTime getEndTime() {
 		if(end==null){
 		SQLiteDatabaseSelectHandler<ScvTxEvent> handler = new SQLiteDatabaseSelectHandler<ScvTxEvent>(ScvTxEvent.class,
-				trStream.getDb().getDb(), "tx="+scvTx.getId()+" AND type="+ AssociationType.END.ordinal());
+				database, "tx="+scvTx.getId()+" AND type="+ AssociationType.END.ordinal());
 		try {
 			for(ScvTxEvent scvEvent:handler.selectObjects()){
-				end = new EventTime(scvEvent.getTime()*trStream.getDb().timeResolution);
+				end = new EventTime(scvEvent.getTime()*(Long)database.getData("TIMERESOLUTION"));
 			}
 		} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 				| InvocationTargetException | SQLException | IntrospectionException e) {
@@ -86,7 +89,7 @@ public class Tx implements ITx {
 	public List<ITxAttribute> getAttributes() {
 		if(attributes==null){
 			SQLiteDatabaseSelectHandler<ScvTxAttribute> handler = new SQLiteDatabaseSelectHandler<ScvTxAttribute>(
-					ScvTxAttribute.class, trStream.getDb().getDb(), "tx="+scvTx.getId());
+					ScvTxAttribute.class, database, "tx="+scvTx.getId());
 			try {
 				attributes = new ArrayList<ITxAttribute>();
 				for(ScvTxAttribute scvAttribute:handler.selectObjects()){
@@ -104,7 +107,7 @@ public class Tx implements ITx {
 	public Collection<ITxRelation> getIncomingRelations() {
 		if(incoming==null){
 			SQLiteDatabaseSelectHandler<ScvTxRelation> handler = new SQLiteDatabaseSelectHandler<ScvTxRelation>(
-					ScvTxRelation.class, trStream.getDb().getDb(), "sink="+scvTx.getId());
+					ScvTxRelation.class, database, "sink="+scvTx.getId());
 			try {
 				incoming = new ArrayList<ITxRelation>();
 				for(ScvTxRelation scvRelation:handler.selectObjects()){
@@ -121,7 +124,7 @@ public class Tx implements ITx {
 	public Collection<ITxRelation> getOutgoingRelations() {
 		if(outgoing==null){
 			SQLiteDatabaseSelectHandler<ScvTxRelation> handler = new SQLiteDatabaseSelectHandler<ScvTxRelation>(
-					ScvTxRelation.class, trStream.getDb().getDb(), "src="+scvTx.getId());
+					ScvTxRelation.class, database, "src="+scvTx.getId());
 			try {
 				outgoing = new ArrayList<ITxRelation>();
 				for(ScvTxRelation scvRelation:handler.selectObjects()){
@@ -136,8 +139,9 @@ public class Tx implements ITx {
 
 	private ITxRelation createRelation(ScvTxRelation rel, boolean outgoing) {
 		long otherId = outgoing?rel.getSink():rel.getSrc();
+/*FIXME:
 		try {
-			List<ScvTx> scvTx=new SQLiteDatabaseSelectHandler<ScvTx>(ScvTx.class, trStream.getDb().getDb(), "id="+otherId).selectObjects();
+			List<ScvTx> scvTx=new SQLiteDatabaseSelectHandler<ScvTx>(ScvTx.class, database, "id="+otherId).selectObjects();
 			assert(scvTx.size()==1);
 			ITxStream stream = trStream.getDb().getStreamById(scvTx.get(0).getStream());
 			Tx that=(Tx) stream.getTransactionById(otherId);
@@ -147,7 +151,7 @@ public class Tx implements ITx {
 				return new TxRelation(trStream.getDb().getRelationType(rel.getName()), that, this);
 		} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 				| InvocationTargetException | SQLException | IntrospectionException e) {
-		}
+		}*/
 		return null;		
 	}
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="SQLiteDbFactory">
-   <implementation class="com.minres.scviewer.database.sqlite.SQLiteDbFactory"/>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="SQLiteDbLoader">
+   <implementation class="com.minres.scviewer.database.sqlite.SQLiteDbLoader"/>
    <service>
-      <provide interface="com.minres.scviewer.database.IWaveformDbFactory"/>
+      <provide interface="com.minres.scviewer.database.IWaveformDbLoader"/>
    </service>
 </scr:component>

@@ -12,6 +12,8 @@ package com.minres.scviewer.ui;
 
 import java.io.File;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -35,8 +37,9 @@ import org.osgi.framework.ServiceReference;
 
 import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.ITxStream;
-import com.minres.scviewer.database.IWaveformDbFactory;
 import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.database.WaveformDb;
+import com.minres.scviewer.ui.handler.GotoDirection;
 import com.minres.scviewer.ui.swt.TxDisplay;
 import com.minres.scviewer.ui.views.TxOutlinePage;
 
@@ -62,21 +65,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 	 */
 	@Override
 	public void createPartControl(Composite parent) {
-		myParent=parent;
-		/** Add handlers for global actions (delete, etc) */
-//		IActionBars actionBars = getEditorSite().getActionBars();
-//		actionBars.setGlobalActionHandler(WAVE_ACTION_ID,	new Action() {
-//			@Override
-//			public void runWithEvent(Event event) {
-//				System.out.println("AddToWave with event");
-//			}
-//			
-//			@Override
-//			public void run() {
-//				System.out.println("AddToWave");
-//			}
-//		});
-		
+		myParent=parent;		
 		txDisplay = new TxDisplay(parent);
 		if(database!=null) database.addPropertyChangeListener(txDisplay); 
 		getSite().setSelectionProvider(txDisplay);
@@ -98,57 +87,63 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 	 */
 	protected void setInput(IEditorInput input) {
 		super.setInput(input);
-		if(input instanceof IFileEditorInput){
-			if(!(input instanceof TxEditorInput))
-				super.setInput(new TxEditorInput(((IFileEditorInput)input).getFile()));
-			try {
-				IPath location = ((IFileEditorInput) input).getFile().getLocation();
-				if (location != null)
-					getTrDatabase(location.toFile());
-				setPartName(((IFileEditorInput) input).getFile().getName());
-			} catch (Exception e) {
-				handleLoadException(e);
-			}
-		} else if(input instanceof FileStoreEditorInput){
-			try {
-				//database.load(((FileStoreEditorInput) input).getURI().toURL().openStream());
-				File file=new File(((FileStoreEditorInput) input).getURI().getPath());
-				getTrDatabase(file);
-				setPartName(((FileStoreEditorInput) input).getName());
-			} catch (Exception e) {
-				handleLoadException(e);
-			}
-		}
-	}
-
-	protected void getTrDatabase(File file) {
 		try {
-			BundleContext context = FrameworkUtil.getBundle(this.getClass()).getBundleContext();
-			ServiceReference<?>[] serviceReferences = context.getServiceReferences(IWaveformDbFactory.class.getName(), null);
-			if(serviceReferences!=null){
-				for(ServiceReference<?> serviceReference:serviceReferences){
-					database = ((IWaveformDbFactory) context.getService(serviceReference)).createDatabase(file);
-					if(database!=null){
-						if(txDisplay !=null) database.addPropertyChangeListener(txDisplay);
-						return;
-					}
-				}
+			if(input instanceof IFileEditorInput){
+				if(!(input instanceof TxEditorInput))
+					super.setInput(new TxEditorInput(((IFileEditorInput)input).getFile()));
+				IPath location = ((IFileEditorInput) input).getFile().getLocation();
+				if (location != null) loadDatabases(location.toFile());
+			} else if(input instanceof FileStoreEditorInput){
+				File file=new File(((FileStoreEditorInput) input).getURI().getPath());
+				loadDatabases(file);
 			}
 		} catch (Exception e) {
+			handleLoadException(e);
 		}
-		MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-				"Error loading database", "Could not find an usable and applicable database loader implementation");
-		database=null;
-//		if(TxEditorPlugin.getDefault().getTransactionDbFactory()!=null){
-//			database = TxEditorPlugin.getDefault().getTransactionDbFactory().createDatabase();
-//			if(txDisplay !=null) database.addPropertyChangeListener(txDisplay);
-//		} else {
-//			MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-//					"Error loading database", "Could not find database loader implementation");
-//			database=null;
-//		}
+		if(database!=null) setPartName(database.getName());
 	}
 
+	protected void loadDatabases(File file) throws Exception {
+		database=new WaveformDb();
+		if(txDisplay !=null) database.addPropertyChangeListener(txDisplay);
+		if(database.load(file)){
+			String ext = getFileExtension(file.getName());
+			if("vcd".equals(ext.toLowerCase())){
+				File txFile = new File(renameFileExtension(file.getCanonicalPath(), "txdb"));
+				if(txFile.exists() && database.load(txFile)) return;
+				txFile = new File(renameFileExtension(file.getCanonicalPath(), "txlog"));
+				if(txFile.exists())	database.load(txFile);
+			} else if("txdb".equals(ext.toLowerCase()) || "txlog".equals(ext.toLowerCase())){
+				File txFile = new File(renameFileExtension(file.getCanonicalPath(), "vcd"));
+				if(txFile.exists()) database.load(txFile);				
+			}
+		} else {
+			MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+					"Error loading database", "Could not find an usable and applicable database loader implementation");
+			database=null;
+		}
+	}
+	
+	protected static String renameFileExtension(String source, String newExt) {
+	    String target;
+	    String currentExt = getFileExtension(source);
+	    if (currentExt.equals("")){
+	      target=source+"."+newExt;
+	    } else {
+	      target=source.replaceFirst(Pattern.quote("."+currentExt)+"$", Matcher.quoteReplacement("."+newExt));
+	    }
+	    return target;
+	  }
+
+	protected static String getFileExtension(String f) {
+	    String ext = "";
+	    int i = f.lastIndexOf('.');
+	    if (i > 0 &&  i < f.length() - 1) {
+	      ext = f.substring(i + 1);
+	    }
+	    return ext;
+	  }
+	  
 	private void handleLoadException(Exception e) {
 		MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
 				"Error loading database", e.getMessage());
@@ -247,6 +242,10 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 	@Override
 	public String getContributorId() {
 		return getSite().getId();
+	}
+
+	public void moveSelection(GotoDirection next) {
+		txDisplay.moveSelection( next);		
 	}
 
 }

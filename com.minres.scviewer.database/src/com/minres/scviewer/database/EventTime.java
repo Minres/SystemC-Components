@@ -28,7 +28,13 @@ public class EventTime implements Comparable<EventTime>{
 		}
 	}
 	
-	static final double[] scales = {1,1000.0,1000000.0,1000000000.0,1000000000000.0};
+	static final double[] scales = {
+		1,
+		1000.0,
+		1000000.0,
+		1000000000.0,
+		1000000000000.0,
+		1000000000000000.0};
 
 	public static final EventTime ZERO = new EventTime(0L);
 	

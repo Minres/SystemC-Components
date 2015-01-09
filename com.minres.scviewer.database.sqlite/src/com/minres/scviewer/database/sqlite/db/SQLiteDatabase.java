@@ -6,14 +6,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 
 public class SQLiteDatabase implements IDatabase {
 
 	protected String dbFileName;
 	
+	protected HashMap<String, Object> props;
+	
 	public SQLiteDatabase(String dbFileName) {
 		super();
 		this.dbFileName = dbFileName;
+		props = new HashMap<String, Object>();
 	}
 
 	@Override
@@ -48,6 +52,16 @@ public class SQLiteDatabase implements IDatabase {
 			preparedStatement.close();
 			connection.close();
 		} catch (SQLException e) {}
+	}
+
+	@Override
+	public void setData(String name, Object value){
+		props.put(name, value);
+	}
+	
+	@Override
+	public Object getData(String name){
+		return props.get(name);
 	}
 
 }

@@ -1,7 +1,9 @@
 package com.minres.scviewer.database;
 
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class HierNode implements IHierNode {
@@ -10,18 +12,28 @@ public class HierNode implements IHierNode {
 	
 	protected ArrayList<IHierNode> childs;
 	
-	public HierNode(String name) {
-		this.name=name;
+	protected PropertyChangeSupport pcs;
+
+	public HierNode() {
 		childs = new ArrayList<IHierNode>();
+		pcs=new PropertyChangeSupport(this);
+	}
+
+	public HierNode(String name) {
+		this();
+		this.name=name;
 	}
 
 	@Override
 	public void addPropertyChangeListener(PropertyChangeListener l) {
+		pcs.addPropertyChangeListener(l);
 	}
 
 	@Override
 	public void removePropertyChangeListener(PropertyChangeListener l) {
+		pcs.removePropertyChangeListener(l);
 	}
+
 
 	@Override
 	public String getFullName() {
@@ -41,6 +53,11 @@ public class HierNode implements IHierNode {
 	@Override
 	public List<IHierNode> getChildNodes() {
 		return childs;
+	}
+
+	@Override
+	public int compareTo(IHierNode o) {
+		return name.compareTo(o.getName());
 	}
 
 }

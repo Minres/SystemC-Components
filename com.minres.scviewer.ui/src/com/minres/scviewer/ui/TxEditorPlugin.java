@@ -24,8 +24,6 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.osgi.framework.BundleContext;
 
-import com.minres.scviewer.database.IWaveformDbFactory;
-
 /**
  * The activator class controls the plug-in life cycle
  */

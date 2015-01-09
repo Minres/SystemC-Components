@@ -45,4 +45,7 @@ public interface IDatabase {
 	 */
 	public void close(PreparedStatement preparedStatement, Connection connection);
 
+	public void setData(String name, Object value);
+	
+	public Object getData(String name); 
 } 

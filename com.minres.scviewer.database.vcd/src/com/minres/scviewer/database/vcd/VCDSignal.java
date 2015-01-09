@@ -1,6 +1,5 @@
 package com.minres.scviewer.database.vcd;
 
-import java.util.Collections;
 import java.util.NavigableSet;
 import java.util.TreeSet;
 
@@ -8,8 +7,8 @@ import com.minres.scviewer.database.EventTime;
 import com.minres.scviewer.database.HierNode;
 import com.minres.scviewer.database.ISignal;
 import com.minres.scviewer.database.ISignalChange;
-import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.SignalChange;
 
 public class VCDSignal<T extends ISignalChange> extends HierNode implements ISignal<T> {
@@ -22,20 +21,21 @@ public class VCDSignal<T extends ISignalChange> extends HierNode implements ISig
 	
 	private final int width;
 	
-	private VCDDb db;
+	private IWaveformDb db;
 
 	TreeSet<ISignalChange> values;
 	
-	public VCDSignal(String name) {
-		this(0, name, 1);
+	public VCDSignal(IWaveformDb db, String name) {
+		this(db, 0, name, 1);
 	}
 
-	public VCDSignal(int id, String name) {
-		this(id,name,1);
+	public VCDSignal(IWaveformDb db, int id, String name) {
+		this(db, id,name,1);
 	}
 
-	public VCDSignal(int id, String name, int width) {
+	public VCDSignal(IWaveformDb db, int id, String name, int width) {
 		super(name);
+		this.db=db;
 		fullName=name;
 		this.id=id;
 		this.width=width;
@@ -50,6 +50,7 @@ public class VCDSignal<T extends ISignalChange> extends HierNode implements ISig
 		assert(other instanceof VCDSignal<?>);
 		this.width=((VCDSignal<? extends ISignalChange>)other).width;
 		this.values=((VCDSignal<T>)other).values;
+		this.db=other.getDb();
 	}
 
 	@Override
@@ -89,6 +90,7 @@ public class VCDSignal<T extends ISignalChange> extends HierNode implements ISig
 		return values;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T getSignalChangeByTime(EventTime time) {
 		return (T) values.floor(new SignalChange(time));

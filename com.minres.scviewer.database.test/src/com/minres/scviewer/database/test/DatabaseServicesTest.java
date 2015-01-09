@@ -17,33 +17,20 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.minres.scviewer.database.IWaveformDb;
-import com.minres.scviewer.database.IWaveformDbFactory;
+import com.minres.scviewer.database.IWaveformDbLoader;
+import com.minres.scviewer.database.WaveformDb;
 
 public class DatabaseServicesTest {
 
-	private static CountDownLatch dependencyLatch = new CountDownLatch(3);// 1 = number of dependencies required
-	
-	private static List<IWaveformDbFactory> services=new LinkedList<IWaveformDbFactory>();
-	
-	public void bind(IWaveformDbFactory factory){
-		services.add(factory);
-		dependencyLatch.countDown();
-		// System.out.println("service added");
-	}
-	
-	public void unbind(IWaveformDbFactory factory){
-		services.remove(factory);
-	}
-	
 	@Before
 	public void setUp() throws Exception {
-		 // Wait for OSGi dependencies
-	    try {
-	      dependencyLatch.await(10, TimeUnit.SECONDS); 
-	      // Dependencies fulfilled
-	    } catch (InterruptedException ex)  {
-	      fail("OSGi dependencies unfulfilled");
-	    }
+		// Wait for OSGi dependencies
+		for (int i = 0; i < 10; i++) {
+			if (WaveformDb.getLoaders().size() == 3) // Dependencies fulfilled
+				return;
+			Thread.sleep(1000);
+		}
+		fail("OSGi dependencies unfulfilled");
     }
 
 	@After
@@ -51,48 +38,36 @@ public class DatabaseServicesTest {
 	}
 
 	@Test
-	public void testVCD() throws URISyntaxException {
+	public void testVCD() throws Exception {
 		File f = new File("inputs/my_db.vcd").getAbsoluteFile();
 		assertTrue(f.exists());
-		IWaveformDb database=null;
-		for(IWaveformDbFactory factory:services){
-			database = factory.createDatabase(f);
-			if(database!=null) break;
-		}
+		IWaveformDb database=new WaveformDb();
+		database.load(f);
 		assertNotNull(database);
-		assertEquals(3, services.size());
 		assertEquals(14,  database.getAllWaves().size());
 		assertEquals(2,  database.getChildNodes().size());
 	}
 
 	@Test
-	public void testTxSQLite() throws URISyntaxException {
+	public void testTxSQLite() throws Exception {
 		File f = new File("inputs/my_db.txdb").getAbsoluteFile();
 		assertTrue(f.exists());
-		IWaveformDb database=null;
-		for(IWaveformDbFactory factory:services){
-			database = factory.createDatabase(f);
-			if(database!=null) break;
-		}
+		IWaveformDb database=new WaveformDb();
+		database.load(f);
 		assertNotNull(database);
-		assertEquals(3, services.size());
 		assertEquals(3,  database.getAllWaves().size());
-		assertEquals(3,  database.getChildNodes().size());
+		assertEquals(1,  database.getChildNodes().size());
 	}
 
 	@Test
-	public void testTxText() throws URISyntaxException {
+	public void testTxText() throws Exception {
 		File f = new File("inputs/my_db.txlog").getAbsoluteFile();
 		assertTrue(f.exists());
-		IWaveformDb database=null;
-		for(IWaveformDbFactory factory:services){
-			database = factory.createDatabase(f);
-			if(database!=null) break;
-		}
+		IWaveformDb database=new WaveformDb();
+		database.load(f);
 		assertNotNull(database);
-		assertEquals(3, services.size());
 		assertEquals(3,  database.getAllWaves().size());
-		assertEquals(3,  database.getChildNodes().size());
+		assertEquals(1,  database.getChildNodes().size());
 	}
 
 

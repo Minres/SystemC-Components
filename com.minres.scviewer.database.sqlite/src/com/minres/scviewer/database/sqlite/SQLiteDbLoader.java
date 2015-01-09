@@ -2,6 +2,7 @@ package com.minres.scviewer.database.sqlite;
 
 import java.beans.IntrospectionException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,12 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.minres.scviewer.database.EventTime;
-import com.minres.scviewer.database.HierNode;
-import com.minres.scviewer.database.IWaveformDb;
-import com.minres.scviewer.database.IHierNode;
-import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveform;
-import com.minres.scviewer.database.InputFormatException;
+import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.database.IWaveformDbLoader;
 import com.minres.scviewer.database.RelationType;
 import com.minres.scviewer.database.sqlite.db.IDatabase;
 import com.minres.scviewer.database.sqlite.db.SQLiteDatabase;
@@ -23,7 +21,7 @@ import com.minres.scviewer.database.sqlite.tables.ScvSimProps;
 import com.minres.scviewer.database.sqlite.tables.ScvStream;
 import com.minres.scviewer.database.sqlite.tables.ScvTxEvent;
 
-public class SQLiteDb extends HierNode implements IWaveformDb {
+public class SQLiteDbLoader implements IWaveformDbLoader {
 
 	protected IDatabase database;
 	
@@ -32,13 +30,10 @@ public class SQLiteDb extends HierNode implements IWaveformDb {
 	long timeResolution=1;
 
 	private HashMap<String, RelationType> relationMap = new HashMap<String, RelationType>();
+
+	private IWaveformDb db;
 	
-	IDatabase getDb(){
-		return database;
-	}
-	
-	public SQLiteDb() {
-		super("SQLiteDb");
+	public SQLiteDbLoader() {
 	}
 
 	@Override
@@ -63,7 +58,7 @@ public class SQLiteDb extends HierNode implements IWaveformDb {
 			streams=new ArrayList<IWaveform>();
 			try {
 				for(ScvStream scvStream:handler.selectObjects()){
-					streams.add(new TxStream(this, scvStream));
+					streams.add(new TxStream(database, db, scvStream));
 				}
 			} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 					| InvocationTargetException | SQLException | IntrospectionException e) {
@@ -73,77 +68,34 @@ public class SQLiteDb extends HierNode implements IWaveformDb {
 		return streams;
 	}
 
+	private byte[] x = "SQLite format 3".getBytes();
+
 	@Override
-	public void load(File file) throws InputFormatException {
+	public boolean load(IWaveformDb db, File file) throws Exception {
+		this.db=db;
+		FileInputStream fis = new FileInputStream(file);
+		byte[] buffer = new byte[x.length];
+		int read = fis.read(buffer, 0, x.length);
+		fis.close();
+		if (read == x.length)
+			for (int i = 0; i < x.length; i++)
+				if (buffer[i] != x[i])	return false;
+
 		database=new SQLiteDatabase(file.getAbsolutePath());
+		database.setData("TIMERESOLUTION", 1L);
 		SQLiteDatabaseSelectHandler<ScvSimProps> handler = new SQLiteDatabaseSelectHandler<ScvSimProps>(ScvSimProps.class, database);
 		try {
 			for(ScvSimProps scvSimProps:handler.selectObjects()){
-				timeResolution=scvSimProps.getTime_resolution();
+				database.setData("TIMERESOLUTION", scvSimProps.getTime_resolution());
 			}
+			return true;
 		} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 				| InvocationTargetException | SQLException | IntrospectionException e) {
 			e.printStackTrace();
 		}
-		buildHierarchyNodes();
+		return false;
 	}
 
-	@Override
-	public void clear() {
-		database=null;
-	}
-
-	@Override
-	public IWaveform getStreamByName(String name) {
-		for (IWaveform n : getAllWaves())
-			if (n.getFullName().equals(name))
-				return n;
-		return null;
-	}
-
-	public ITxStream getStreamById(long id) {
-		for (IWaveform n : getAllWaves()) 
-			if (n.getId().equals(id))
-				return (ITxStream) n;
-		return null;
-	}
-
-	private void buildHierarchyNodes() throws InputFormatException{
-		for(IWaveform stream:getAllWaves()){
-			String[] hier = stream.getFullName().split("\\.");
-			IHierNode node = this;
-			for(String name:hier){
-				IHierNode n1 = null;
-				 for (IHierNode n : node.getChildNodes()) {
-				        if (n.getName().equals(name)) {
-				            n1=n;
-				            break;
-				        }
-				    }
-				if(name == hier[hier.length-1]){ //leaf
-					if(n1!=null) {
-						if(n1 instanceof HierNode){
-							node.getChildNodes().remove(n1);
-							stream.getChildNodes().addAll(n1.getChildNodes());
-						} else {
-							throw new InputFormatException();
-						}
-					}
-					stream.setName(name);
-					node.getChildNodes().add(stream);
-					node=stream;
-				} else { // intermediate
-					if(n1 != null) {
-						node=n1;
-					} else {
-						HierNode newNode = new HierNode(name);
-						node.getChildNodes().add(newNode);
-						node=newNode;
-					}
-				}
-			}
-		}
-	}
 
 	public RelationType getRelationType(String relationName) {
 		if(relationMap.containsKey(relationName)) return relationMap.get(relationName);

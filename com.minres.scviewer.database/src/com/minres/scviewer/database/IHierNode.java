@@ -13,7 +13,7 @@ package com.minres.scviewer.database;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 
-public interface IHierNode {
+public interface IHierNode extends Comparable<IHierNode>{
 	
 	/**
 	 * Attach a non-null PropertyChangeListener to this object.

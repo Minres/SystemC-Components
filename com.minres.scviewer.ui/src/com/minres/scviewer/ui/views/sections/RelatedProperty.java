@@ -12,7 +12,6 @@ package com.minres.scviewer.ui.views.sections;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.TreeMap;
 
 import org.eclipse.core.runtime.Assert;
@@ -49,9 +48,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-import com.minres.scviewer.database.ITxRelation;
 import com.minres.scviewer.database.ITx;
-import com.minres.scviewer.database.RelationType;
+import com.minres.scviewer.database.ITxRelation;
 
 public class RelatedProperty extends AbstractPropertySection implements ISelectionProvider, ISelectionChangedListener {
 

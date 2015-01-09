@@ -22,7 +22,7 @@ public interface IWaveformDb extends IHierNode {
 	
 	public List<IWaveform> getAllWaves();
 	
-	public void load(File inp) throws Exception;
+	public boolean load(File inp) throws Exception;
 
 	public void clear();
 

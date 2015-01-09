@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="VCDDbLoader">
+   <implementation class="com.minres.scviewer.database.vcd.VCDDbLoader"/>
+   <service>
+      <provide interface="com.minres.scviewer.database.IWaveformDbLoader"/>
+   </service>
+</scr:component>

@@ -107,5 +107,104 @@
             id="com.minres.scviewer.ui.TxEditorInputFactory">
       </factory>
    </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="com.minres.scviewer.ui.toolbar1">
+            <command
+                  commandId="com.minres.scviewer.ui.gotoPrev"
+                  disabledIcon="res/images/previous-green-d.png"
+                  icon="res/images/previous-green.png"
+                  label="Prev"
+                  style="push"
+                  tooltip="Go to previous event">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.minres.scviewer.ui.waveEditorActive">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.minres.scviewer.ui.gotoNext"
+                  disabledIcon="res/images/next-green-d.png"
+                  icon="res/images/next-green.png"
+                  label="Next"
+                  style="push"
+                  tooltip="Go to next event">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.minres.scviewer.ui.waveEditorActive">
+                  </reference>
+               </visibleWhen>
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            description="Go to next event"
+            id="com.minres.scviewer.ui.gotoNext"
+            name="Next">
+      </command>
+      <command
+            description="Go to previous event"
+            id="com.minres.scviewer.ui.gotoPrev"
+            name="Prev">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.minres.scviewer.ui.handler.GotoNext"
+            commandId="com.minres.scviewer.ui.gotoNext">
+         <enabledWhen>
+            <reference
+                  definitionId="com.minres.scviewer.ui.oneElementSeleted">
+            </reference>
+         </enabledWhen>
+      </handler>
+      <handler
+            class="com.minres.scviewer.ui.handler.GotoPrev"
+            commandId="com.minres.scviewer.ui.gotoPrev">
+         <enabledWhen>
+            <reference
+                  definitionId="com.minres.scviewer.ui.oneElementSeleted">
+            </reference>
+         </enabledWhen>
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="com.minres.scviewer.ui.oneElementSeleted">
+            <with
+                  variable="selection">
+               <and>
+                  <count
+                        value="1">
+                  </count>
+ 				<iterate
+           operator="or">
+       				<instanceof value="com.minres.scviewer.database.ITx"/>
+    			</iterate>      
+            </and>
+            </with>
+      </definition>
+      <definition
+            id="com.minres.scviewer.ui.waveEditorActive">
+         <with
+               variable="activeEditorId">
+            <equals
+                  value="com.minres.scviewer.ui.TxEditorPart">
+            </equals>
+         </with>
+      </definition>
+   </extension>
 
 </plugin>

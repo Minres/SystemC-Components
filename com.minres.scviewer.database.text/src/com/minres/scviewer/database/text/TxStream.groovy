@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.minres.scviewer.database.HierNode;
+import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb
 import com.minres.scviewer.database.ITxGenerator
 import com.minres.scviewer.database.IHierNode
@@ -25,7 +26,7 @@ class TxStream extends HierNode implements ITxStream {
 
 	Long id;
 	
-	TextDb database
+	IWaveformDb database
 	
 	String fullName;
 	
@@ -35,7 +36,7 @@ class TxStream extends HierNode implements ITxStream {
 	
 	private TreeSet<Tx> allTransactions;
 
-	TxStream(int id, TextDb db, String name, String kind){
+	TxStream(IWaveformDb db, int id, String name, String kind){
 		super(name)
 		this.id=id
 		this.database=db

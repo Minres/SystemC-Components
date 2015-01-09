@@ -18,6 +18,7 @@ import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IHierNode;
 import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.database.IWaveformDbLoader;
 import com.minres.scviewer.database.InputFormatException;
 import com.minres.scviewer.database.SignalChange;
 
@@ -25,18 +26,18 @@ import com.minres.scviewer.database.SignalChange;
 /**
  * The Class VCDDb.
  */
-public class VCDDb extends HierNode implements IWaveformDb, IVCDDatabaseBuilder {
+public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 
 	
 	private static final EventTime.Unit TIME_RES = EventTime.Unit.PS;
 
+	private IWaveformDb db;
+	
 	/** The module stack. */
 	private Stack<String> moduleStack;
 	
 	/** The signals. */
 	private List<IWaveform> signals;
-	
-	private HashMap<String, IWaveform> waveformLookup;
 	
 	private long maxTime;
 	
@@ -45,28 +46,29 @@ public class VCDDb extends HierNode implements IWaveformDb, IVCDDatabaseBuilder 
 	 *
 	 * @param netName the net name
 	 */
-	public VCDDb() {
-		super("VCDDb");
-		signals = new Vector<IWaveform>();
-		waveformLookup = new HashMap<String, IWaveform>();
+	public VCDDbLoader() {
 	}
 
-	/* (non-Javadoc)
-	 * @see com.minres.scviewer.database.ITrDb#getStreamByName(java.lang.String)
-	 */
-	@Override
-	public IWaveform getStreamByName(String name) {
-		return waveformLookup.get(name);
-	}
+	private byte[] x = "$date".getBytes();
 
 	/* (non-Javadoc)
 	 * @see com.minres.scviewer.database.ITrDb#load(java.io.File)
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
-	public void load(File inp) throws Exception {
+	public boolean load(IWaveformDb db, File file) throws Exception {
+		this.db=db;
+		FileInputStream fis = new FileInputStream(file);
+		byte[] buffer = new byte[x.length];
+		int read = fis.read(buffer, 0, x.length);
+		fis.close();
+		if (read == x.length)
+			for (int i = 0; i < x.length; i++)
+				if (buffer[i] != x[i])
+					return false;
+
+		signals = new Vector<IWaveform>();
 		moduleStack= new Stack<String>(); 
-		boolean res = new VCDFileParser(false).load(new FileInputStream(inp), this);
+		boolean res = new VCDFileParser(false).load(new FileInputStream(file), this);
 		moduleStack=null;
 		if(!res) throw new InputFormatException();
 		EventTime lastTime=new EventTime(maxTime, TIME_RES);
@@ -78,15 +80,7 @@ public class VCDDb extends HierNode implements IWaveformDb, IVCDDatabaseBuilder 
 				((ISignal<ISignalChange>)signal).getSignalChanges().add(lastChange);
 			}
 		}
-		buildHierarchyNodes();
-	}
-
-	/* (non-Javadoc)
-	 * @see com.minres.scviewer.database.ITrDb#clear()
-	 */
-	@Override
-	public void clear() {
-		signals.clear();
+		return true;
 	}
 
 	/* (non-Javadoc)
@@ -133,10 +127,10 @@ public class VCDDb extends HierNode implements IWaveformDb, IVCDDatabaseBuilder 
 		int id = signals.size();
 		VCDSignal<? extends ISignalChange> signal;
 		if(width==1){
-			signal = i<0 ? new VCDSignal<ISignalChangeSingle>(id, netName) :
+			signal = i<0 ? new VCDSignal<ISignalChangeSingle>(db, id, netName) :
 				new VCDSignal<ISignalChangeSingle>(signals.get(i), id, netName);
 		} else {
-			signal = i<0 ? new VCDSignal<ISignalChangeMulti>(id, netName, width) :
+			signal = i<0 ? new VCDSignal<ISignalChangeMulti>(db, id, netName, width) :
 				new VCDSignal<ISignalChangeMulti>(signals.get(i), id, netName);
 		};
 		signals.add(signal);
@@ -146,6 +140,7 @@ public class VCDDb extends HierNode implements IWaveformDb, IVCDDatabaseBuilder 
 	/* (non-Javadoc)
 	 * @see com.minres.scviewer.database.vcd.ITraceBuilder#getNetWidth(int)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public int getNetWidth(int intValue) {
 		VCDSignal<? extends ISignalChange> signal = (VCDSignal<? extends ISignalChange>) signals.get(intValue);
@@ -169,44 +164,5 @@ public class VCDDb extends HierNode implements IWaveformDb, IVCDDatabaseBuilder 
 		}
 		maxTime= Math.max(maxTime, fCurrentTime);
 	}
-
-	private void buildHierarchyNodes() throws InputFormatException{
-		for(IWaveform stream:getAllWaves()){
-			waveformLookup.put(stream.getFullName(), stream);
-			String[] hier = stream.getFullName().split("\\.");
-			IHierNode node = this;
-			for(String name:hier){
-				IHierNode n1 = null;
-				 for (IHierNode n : node.getChildNodes()) {
-				        if (n.getName().equals(name)) {
-				            n1=n;
-				            break;
-				        }
-				    }
-				if(name == hier[hier.length-1]){ //leaf
-					if(n1!=null) {
-						if(n1 instanceof HierNode){
-							node.getChildNodes().remove(n1);
-							stream.getChildNodes().addAll(n1.getChildNodes());
-						} else {
-							throw new InputFormatException();
-						}
-					}
-					stream.setName(name);
-					node.getChildNodes().add(stream);
-					node=stream;
-				} else { // intermediate
-					if(n1 != null) {
-						node=n1;
-					} else {
-						HierNode newNode = new HierNode(name);
-						node.getChildNodes().add(newNode);
-						node=newNode;
-					}
-				}
-			}
-		}
-	}
-
 
 }

@@ -13,6 +13,8 @@ import com.minres.scviewer.database.HierNode;
 import com.minres.scviewer.database.ITxGenerator;
 import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.ITx;
+import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.database.sqlite.db.IDatabase;
 import com.minres.scviewer.database.sqlite.db.SQLiteDatabaseSelectHandler;
 import com.minres.scviewer.database.sqlite.tables.ScvGenerator;
 import com.minres.scviewer.database.sqlite.tables.ScvStream;
@@ -20,9 +22,11 @@ import com.minres.scviewer.database.sqlite.tables.ScvTx;
 
 public class TxStream extends HierNode implements ITxStream {
 
+	private IDatabase database;
+
 	private String fullName;
 	
-	private SQLiteDb db;
+	private IWaveformDb db;
 	
 	private ScvStream scvStream;
 	
@@ -30,11 +34,17 @@ public class TxStream extends HierNode implements ITxStream {
 	
 	private NavigableSet<ITx> transactions;
 	
-	public TxStream(SQLiteDb trSQLiteDb, ScvStream scvStream) {
+	public TxStream(IDatabase database, IWaveformDb waveformDb, ScvStream scvStream) {
 		super(scvStream.getName());
+		this.database=database;
 		fullName=scvStream.getName();
 		this.scvStream=scvStream;
-		db=trSQLiteDb;
+		db=waveformDb;
+	}
+
+	@Override
+	public IWaveformDb getDb() {
+		return db;
 	}
 
 	@Override
@@ -53,15 +63,10 @@ public class TxStream extends HierNode implements ITxStream {
 	}
 
 	@Override
-	public SQLiteDb getDb() {
-		return db;
-	}
-
-	@Override
 	public List<ITxGenerator> getGenerators() {
 		if(generators==null){
 			SQLiteDatabaseSelectHandler<ScvGenerator> handler = new SQLiteDatabaseSelectHandler<ScvGenerator>(
-					ScvGenerator.class, db.getDb(), "stream="+scvStream.getId());
+					ScvGenerator.class, database, "stream="+scvStream.getId());
 			generators=new HashMap<Integer, TxGenerator>();
 			try {
 				for(ScvGenerator scvGenerator:handler.selectObjects()){
@@ -94,12 +99,12 @@ public class TxStream extends HierNode implements ITxStream {
 	protected void checkTransactions() {
 		if(transactions==null){
 			if(generators==null) getGenerators();
-			SQLiteDatabaseSelectHandler<ScvTx> handler = new SQLiteDatabaseSelectHandler<ScvTx>(ScvTx.class, db.getDb(),
+			SQLiteDatabaseSelectHandler<ScvTx> handler = new SQLiteDatabaseSelectHandler<ScvTx>(ScvTx.class, database,
 					"stream="+scvStream.getId());
 			transactions=new TreeSet<ITx>();
 			try {
 				for(ScvTx scvTx:handler.selectObjects()){
-					transactions.add(new Tx(this, generators.get(scvTx.getGenerator()), scvTx));
+					transactions.add(new Tx(database, this, generators.get(scvTx.getGenerator()), scvTx));
 				}
 			} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 					| InvocationTargetException | SQLException | IntrospectionException e) {

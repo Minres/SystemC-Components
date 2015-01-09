@@ -1,7 +1,6 @@
 package com.minres.scviewer.ui.swt;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.NavigableSet;
 import java.util.Vector;
 

@@ -56,6 +56,7 @@ import com.minres.scviewer.database.ISignalChange;
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.ui.handler.GotoDirection;
 
 public class TxDisplay implements PropertyChangeListener, ISelectionProvider, MouseListener{
 
@@ -63,7 +64,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 	private static final String NAMEWIDGET = "NAMEWIDGET";
 	private static final String WAVEFORM = "WAVEFORM";
 	private ListenerList listeners = new ListenerList();
-    private ITxStream currentStreamSelection;  
+    private IWaveform currentStreamSelection;  
     private ITx currentSelection;
 	private ScrolledComposite valueListScrolled;
 	private ScrolledComposite nameListScrolled;
@@ -414,6 +415,18 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 		boolean res =  this.streams.removeAll(Arrays.asList(streams));
 		streamListChanged();
 		return res;
+	}
+
+	public void moveSelection(GotoDirection direction) {
+		if(currentStreamSelection instanceof ITxStream){
+			ITx transaction=null;
+			if(direction==GotoDirection.NEXT)
+				 transaction = ((ITxStream)currentStreamSelection).getTransactions().higher(currentSelection);
+			else if(direction==GotoDirection.PREV)
+				transaction = ((ITxStream)currentStreamSelection).getTransactions().lower(currentSelection);
+			if(transaction!=null)
+				setSelection(new StructuredSelection(transaction));				
+		}
 	}
 
 }
