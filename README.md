@@ -24,7 +24,10 @@ The plugins are structured as follows:
 	outline of the DB and the properties of the transaction
 - com.minres.scviewer.feature
 	the feature combining the plugins above into a somhow usable form
-
+- scv_tr_sqlite
+	a C++ project containing the SQLite based SCV database implementation. A simple 
+	example (scv_tr_recording_example.cpp) for testig purposes is provided.
+	
 To build the plugins the Eclipse SDK or PDE can be used. In both cases the Groovy
 eclipse plugin (http://groovy.codehaus.org/Eclipse+Plugin or Market) has to be
 installed.

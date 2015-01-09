@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Stack;
 import java.util.Vector;
 
+import com.minres.scviewer.database.BitVector;
 import com.minres.scviewer.database.EventTime;
 import com.minres.scviewer.database.HierNode;
 import com.minres.scviewer.database.ISignal;
@@ -54,8 +55,8 @@ public class VCDDb extends HierNode implements IWaveformDb, IVCDDatabaseBuilder 
 	 * @see com.minres.scviewer.database.ITrDb#getStreamByName(java.lang.String)
 	 */
 	@Override
-	public ITxStream getStreamByName(String name) {
-		return null;
+	public IWaveform getStreamByName(String name) {
+		return waveformLookup.get(name);
 	}
 
 	/* (non-Javadoc)
@@ -163,7 +164,7 @@ public class VCDDb extends HierNode implements IWaveformDb, IVCDDatabaseBuilder 
 			VCDSignalChangeSingle change = new VCDSignalChangeSingle(time, decodedValues.getValue()[0]);
 			((VCDSignal<ISignalChangeSingle>)signal).addSignalChange(change);
 		} else {
-			VCDSignalChangeMulti change = new VCDSignalChangeMulti(time, new String(decodedValues.getValue()));
+			VCDSignalChangeMulti change = new VCDSignalChangeMulti(time, decodedValues);
 			((VCDSignal<VCDSignalChangeMulti>)signal).addSignalChange(change);			
 		}
 		maxTime= Math.max(maxTime, fCurrentTime);

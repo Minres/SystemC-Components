@@ -13,7 +13,7 @@ package com.minres.scviewer.database;
 import java.util.Collection;
 import java.util.List;
 
-public interface ITx {
+public interface ITx extends Comparable<ITx>{
 
 	public Long getId();
 	

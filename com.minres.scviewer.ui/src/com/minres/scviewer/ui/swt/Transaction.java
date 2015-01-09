@@ -24,7 +24,7 @@ public class Transaction extends Composite {
 	private boolean highlighted=false;
 	
 	Transaction(Composite parent, int style, int lenght) {
-		super(parent, style);
+		super(parent, style|SWT.NO_BACKGROUND);
 		this.length=lenght;
 		addDisposeListener(new DisposeListener() {
 			public void widgetDisposed(DisposeEvent e) {
@@ -53,7 +53,7 @@ public class Transaction extends Composite {
         gc.setBackground(highlighted?txHighliteBgColor:txBgColor);
         gc.setLineWidth(1);
         gc.setLineStyle(SWT.LINE_SOLID);
-		Rectangle bb = new Rectangle(0, 0, length-1, height-1);
+		Rectangle bb = new Rectangle(0, height/5, length-1, 3*height/5);
 		if(bb.width<8){
 			gc.fillRectangle(bb);
 			gc.drawRectangle(bb);

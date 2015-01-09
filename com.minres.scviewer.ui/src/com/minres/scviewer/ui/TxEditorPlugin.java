@@ -118,7 +118,8 @@ public class TxEditorPlugin extends AbstractUIPlugin {
 		case trackBgLightColor:
 			return SWTResourceManager.getColor(220, 220, 220);
 		case trackBgDarkColor:
-			return SWTResourceManager.getColor(200, 200, 200);
+//			return SWTResourceManager.getColor(200, 200, 200);
+			return SWTResourceManager.getColor(SWT.COLOR_BLACK);
 		case headerBgColor:
 			return SWTResourceManager.getColor(255, 255, 255);
 		case headerFgColor:

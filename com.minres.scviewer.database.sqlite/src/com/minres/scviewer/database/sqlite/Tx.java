@@ -151,4 +151,9 @@ public class Tx implements ITx {
 		return null;		
 	}
 
+	@Override
+	public int compareTo(ITx o) {
+		return this.getBeginTime().compareTo(o.getBeginTime());
+	}
+
 }

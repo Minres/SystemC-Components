@@ -90,9 +90,9 @@ public:
         : pipelined_bus_ports(nm)
         , addr_phase("addr_phase")
         , data_phase("data_phase")
-        , pipelined_stream("pipelined_stream", "transactor")
-        , addr_stream( "addr_stream", "transactor")
-        , data_stream("data_stream", "transactor")
+        , pipelined_stream((std::string(name()) +".pipelined_stream").c_str(), "transactor")
+        , addr_stream( (std::string(name()) +".addr_stream").c_str(), "transactor")
+        , data_stream((std::string(name()) +".data_stream").c_str(), "transactor")
         , read_gen("read", pipelined_stream, "addr", "data")
         , write_gen("write", pipelined_stream, "addr", "data")
         , addr_gen("addr", addr_stream, "addr")
@@ -327,9 +327,9 @@ extern void scv_tr_sqlite_init();
 int sc_main(int argc, char *argv[]) {
     scv_startup();
 
-#if 0
+#if 1
     scv_tr_text_init();
-    const char* fileName = "my_db.log";
+    const char* fileName = "my_db.txlog";
 #else
     scv_tr_sqlite_init();
     const char* fileName = "my_db";

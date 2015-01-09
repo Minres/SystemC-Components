@@ -2,6 +2,7 @@ package com.minres.scviewer.ui.swt;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.NavigableSet;
 import java.util.Vector;
 
 import org.eclipse.swt.SWT;
@@ -27,7 +28,7 @@ import com.minres.scviewer.ui.TxEditorPlugin;
 public class Track extends Composite implements IWaveformWidget, MouseListener {
 
 	static final int trackHeight = 50;
-	static final int trackInset = 2;
+	static final int trackInset = 1;
 	static final int txHeight = trackHeight - 2 * trackInset;
 
 	static double zoomFactor = EventTime.NS;
@@ -101,7 +102,7 @@ public class Track extends Composite implements IWaveformWidget, MouseListener {
 		});
 		TxEditorPlugin plugin=TxEditorPlugin.getDefault();	
 		lineColor=plugin.getColor(TxEditorPlugin.lineColor);
-		trackBgColor=plugin.getColor(TxEditorPlugin.trackBgLightColor);
+		trackBgColor=plugin.getColor(TxEditorPlugin.trackBgDarkColor);
 	}
 
 	
@@ -121,7 +122,7 @@ public class Track extends Composite implements IWaveformWidget, MouseListener {
 	}
 
 
-	public void setTransactions(List<ITx> transactions) {
+	public void setTransactions(NavigableSet<ITx> transactions) {
 		Vector<ITx> rowendtime = new Vector<ITx>();
 		for (ITx tx : transactions) {
 			int rowIdx = 0;
@@ -188,7 +189,7 @@ public class Track extends Composite implements IWaveformWidget, MouseListener {
 	}
 	
 	public Transaction highlight(Object obj){
-		if(obj instanceof ITx){
+		if(obj==null || obj instanceof ITx){
 			ITx tx = (ITx) obj;
 			if(highlightedTx!=null){
 				transactionMap.get(highlightedTx).highlight(false);

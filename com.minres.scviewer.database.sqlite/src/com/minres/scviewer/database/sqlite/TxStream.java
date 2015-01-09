@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.NavigableSet;
+import java.util.TreeSet;
 
 import com.minres.scviewer.database.HierNode;
 import com.minres.scviewer.database.ITxGenerator;
@@ -26,7 +28,7 @@ public class TxStream extends HierNode implements ITxStream {
 	
 	private HashMap<Integer, TxGenerator> generators;
 	
-	private List<ITx> transactions;
+	private NavigableSet<ITx> transactions;
 	
 	public TxStream(SQLiteDb trSQLiteDb, ScvStream scvStream) {
 		super(scvStream.getName());
@@ -74,7 +76,7 @@ public class TxStream extends HierNode implements ITxStream {
 	}
 
 	@Override
-	public List<ITx> getTransactions() {
+	public NavigableSet<ITx> getTransactions() {
 		checkTransactions();
 		return transactions;
 	}
@@ -94,7 +96,7 @@ public class TxStream extends HierNode implements ITxStream {
 			if(generators==null) getGenerators();
 			SQLiteDatabaseSelectHandler<ScvTx> handler = new SQLiteDatabaseSelectHandler<ScvTx>(ScvTx.class, db.getDb(),
 					"stream="+scvStream.getId());
-			transactions=new ArrayList<ITx>();
+			transactions=new TreeSet<ITx>();
 			try {
 				for(ScvTx scvTx:handler.selectObjects()){
 					transactions.add(new Tx(this, generators.get(scvTx.getGenerator()), scvTx));

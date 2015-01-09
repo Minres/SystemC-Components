@@ -3,6 +3,8 @@ package com.minres.scviewer.database.vcd;
 import java.io.*;
 import java.util.*;
 
+import com.minres.scviewer.database.BitVector;
+
 class VCDFileParser {
 	private StreamTokenizer tokenizer;
 	private IVCDDatabaseBuilder traceBuilder;

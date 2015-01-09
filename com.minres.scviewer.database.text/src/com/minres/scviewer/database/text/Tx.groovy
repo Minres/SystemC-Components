@@ -35,6 +35,7 @@ class Tx implements ITx {
 	
 	Tx(int id, TxStream stream, TxGenerator generator, EventTime begin){
 		this.id=id
+		this.stream=stream
 		this.generator=generator
 		this.beginTime=begin
 	}
@@ -47,6 +48,11 @@ class Tx implements ITx {
 	@Override
 	public Collection<ITxRelation> getOutgoingRelations() {
 		return outgoingRelations;
+	}
+
+	@Override
+	public int compareTo(ITx o) {
+		return beginTime.compareTo(o.beginTime)
 	}
 	
 }

@@ -221,7 +221,7 @@ public class AttributeProperty extends AbstractPropertySection implements ISelec
 			public void menuAboutToShow(IMenuManager mgr) {
 				ISelection selection = treeViewer.getSelection();
 				if (selection instanceof IStructuredSelection) {
-					System.out.println(((IStructuredSelection)selection).getFirstElement().toString());
+//					System.out.println(((IStructuredSelection)selection).getFirstElement().toString());
 				}
 			}
 		});

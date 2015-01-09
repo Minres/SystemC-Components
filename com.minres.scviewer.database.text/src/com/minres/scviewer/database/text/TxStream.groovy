@@ -33,7 +33,7 @@ class TxStream extends HierNode implements ITxStream {
 	
 	def generators = [];
 	
-	private allTransactions;
+	private TreeSet<Tx> allTransactions;
 
 	TxStream(int id, TextDb db, String name, String kind){
 		super(name)
@@ -68,9 +68,11 @@ class TxStream extends HierNode implements ITxStream {
 	}
 
 	@Override
-	public List<ITx> getTransactions() {
-		if(!allTransactions)
-			allTransactions=generators.transactions.flatten().sort{it.beginTime.value}
+	public NavigableSet<ITx> getTransactions() {
+		if(!allTransactions){
+			allTransactions=new TreeSet<Tx>()
+			allTransactions.addAll(generators.transactions.flatten())
+		}
 		return allTransactions
 	}
 

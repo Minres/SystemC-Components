@@ -1,5 +1,7 @@
 package com.minres.scviewer.database.vcd;
 
+import com.minres.scviewer.database.BitVector;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Interface ITraceBuilder.

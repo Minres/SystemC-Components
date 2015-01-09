@@ -1,6 +1,6 @@
-scv_tr_stream (ID 1, name "pipelined_stream", kind "transactor")
-scv_tr_stream (ID 2, name "addr_stream", kind "transactor")
-scv_tr_stream (ID 3, name "data_stream", kind "transactor")
+scv_tr_stream (ID 1, name "tr.pipelined_stream", kind "transactor")
+scv_tr_stream (ID 2, name "tr.addr_stream", kind "transactor")
+scv_tr_stream (ID 3, name "tr.data_stream", kind "transactor")
 scv_tr_generator (ID 4, name "read", scv_tr_stream 1,
 begin_attribute (ID 0, name "addr", type "UNSIGNED")
 end_attribute (ID 1, name "data", type "UNSIGNED")

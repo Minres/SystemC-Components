@@ -67,7 +67,7 @@
                id="com.minres.scviewer.ui.propertySectionAll"
                tab="com.minres.scviewer.ui.propertyTabTransaction">
             <input
-                  type="com.minres.scviewer.database.ITransaction">
+                  type="com.minres.scviewer.database.ITx">
             </input>
          </propertySection>
          <propertySection
@@ -76,7 +76,7 @@
                id="com.minres.scviewer.ui.propertySectionAttributes"
                tab="com.minres.scviewer.ui.propertyTabAttributes">
             <input
-                  type="com.minres.scviewer.database.ITransaction">
+                  type="com.minres.scviewer.database.ITx">
             </input>
          </propertySection>
          <propertySection
@@ -85,7 +85,7 @@
                id="com.minres.scviewer.ui.propertySectionRelated"
                tab="com.minres.scviewer.ui.propertyTabRelated">
             <input
-                  type="com.minres.scviewer.database.ITransaction">
+                  type="com.minres.scviewer.database.ITx">
             </input>
          </propertySection>
       </propertySections>
@@ -93,8 +93,8 @@
    <extension
          point="org.eclipse.core.runtime.adapters">
       <factory
-            adaptableType="com.minres.scviewer.database.ITransaction"
-            class="com.minres.scviewer.ui.adapter.AdapterFactory">
+            adaptableType="com.minres.scviewer.database.ITx"
+            class="com.minres.scviewer.ui.adapter.TxAdapterFactory">
          <adapter
                type="org.eclipse.ui.views.properties.IPropertySource">
          </adapter>

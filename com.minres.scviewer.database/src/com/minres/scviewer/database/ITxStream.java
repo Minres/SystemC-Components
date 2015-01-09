@@ -11,12 +11,13 @@
 package com.minres.scviewer.database;
 
 import java.util.List;
+import java.util.NavigableSet;
 
 public interface  ITxStream extends IWaveform {
 
 	public List<ITxGenerator> getGenerators();
 
-	public List<ITx> getTransactions();
+	public NavigableSet<ITx> getTransactions();
 
 	public ITx getTransactionById(long id);
 

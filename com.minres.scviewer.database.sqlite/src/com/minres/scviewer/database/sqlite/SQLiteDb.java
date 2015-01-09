@@ -96,7 +96,7 @@ public class SQLiteDb extends HierNode implements IWaveformDb {
 	@Override
 	public IWaveform getStreamByName(String name) {
 		for (IWaveform n : getAllWaves())
-			if (n.getName().equals(name))
+			if (n.getFullName().equals(name))
 				return n;
 		return null;
 	}
@@ -110,7 +110,7 @@ public class SQLiteDb extends HierNode implements IWaveformDb {
 
 	private void buildHierarchyNodes() throws InputFormatException{
 		for(IWaveform stream:getAllWaves()){
-			String[] hier = stream.getFullName().split("\\./");
+			String[] hier = stream.getFullName().split("\\.");
 			IHierNode node = this;
 			for(String name:hier){
 				IHierNode n1 = null;

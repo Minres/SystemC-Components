@@ -174,7 +174,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 
 	protected RowLayout createScrolledLayoutData(boolean center) {
 		RowLayout nameListLayout = new RowLayout(SWT.VERTICAL);
-		nameListLayout.spacing = 4;
+		nameListLayout.spacing = 2;
 		nameListLayout.marginTop = 0;
 		nameListLayout.marginRight = 0;
 		nameListLayout.marginLeft = 0;
@@ -337,11 +337,11 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 			Object sel =((IStructuredSelection)selection).getFirstElement();
 			if(sel instanceof ITx && currentSelection!=sel){
 				if(currentSelection!=null){
-					ITxStream stream = currentSelection.getGenerator().getStream();
+					ITxStream stream = currentSelection.getStream();
 					if(trackMap.containsKey(stream)) trackMap.get(stream).highlight(null);
 				}
 				currentSelection=(ITx) sel;
-				ITxStream stream = currentSelection.getGenerator().getStream();
+				ITxStream stream = currentSelection.getStream();
 				if(trackMap.containsKey(stream)){
 					Transaction trans = trackMap.get(stream).highlight(sel);
 					trackListScrolled.showControl(trans);

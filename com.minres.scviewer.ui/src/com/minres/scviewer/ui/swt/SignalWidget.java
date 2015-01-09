@@ -23,7 +23,7 @@ import com.minres.scviewer.ui.TxEditorPlugin;
 public class SignalWidget extends Canvas implements IWaveformWidget{
 
 	static final int trackHeight = 50;
-	static final int trackInset = 2;
+	static final int trackInset = 1;
 	static final int txHeight = trackHeight - 2 * trackInset;
 
 	static double zoomFactor = EventTime.NS;
@@ -32,10 +32,8 @@ public class SignalWidget extends Canvas implements IWaveformWidget{
 	private Color color0;
 	private Color color1;
 	private Color colorZ;
-	private Color colorZdark;
 	private Color colorX;
-	private Color colorXdark;
-	private Color colorC;
+	private Color colorText;
 	private long length;
 	ISignal<ISignalChange> signal;
 	
@@ -50,12 +48,10 @@ public class SignalWidget extends Canvas implements IWaveformWidget{
 		lineColor=plugin.getColor(TxEditorPlugin.lineColor);
 		trackBgColor=plugin.getColor(TxEditorPlugin.trackBgDarkColor);
 		color0=SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
-		color1=SWTResourceManager.getColor(SWT.COLOR_GREEN);
+		color1=SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
 		colorZ=SWTResourceManager.getColor(SWT.COLOR_GRAY);
 		colorX=SWTResourceManager.getColor(SWT.COLOR_RED);
-		colorZdark=SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY);
-		colorXdark=SWTResourceManager.getColor(SWT.COLOR_DARK_RED);
-		colorC=SWTResourceManager.getColor(SWT.COLOR_BLUE);
+		colorText=SWTResourceManager.getColor(SWT.COLOR_WHITE);
 	}
 
 	public void setTransactions(ISignal<ISignalChange> signal) {
@@ -97,11 +93,11 @@ public class SignalWidget extends Canvas implements IWaveformWidget{
 			switch(((ISignalChangeSingle) lastChange).getValue()){
 			case '1':
 				color=color1;
-				yOffset = trackHeight/3;
+				yOffset = trackHeight/5;
 				break;
 			case '0':
 				color=color0;
-				yOffset = 2*trackHeight/3;
+				yOffset = 4*trackHeight/5;
 				break;
 			case 'Z':
 				color=colorZ;
@@ -110,37 +106,33 @@ public class SignalWidget extends Canvas implements IWaveformWidget{
 			}
 			gc.setForeground(color);
 			int endTime= (int)(actChange.getTime().getValue()/zoomFactor);
-			gc.drawLine((int)(lastChange.getTime().getValue()/zoomFactor), yOffset,
-					endTime, yOffset);
+			gc.drawLine((int)(lastChange.getTime().getValue()/zoomFactor), yOffset,	endTime, yOffset);
 			int yNext =  trackHeight/2;
 			switch(((ISignalChangeSingle) actChange).getValue()){
 			case '1':
-				yNext = trackHeight/3;
+				yNext = trackHeight/5;
 				break;
 			case '0':
-				yNext = 2*trackHeight/3;
+				yNext = 4*trackHeight/5;
 				break;
 			default:	
 			}
-			gc.setForeground(colorC);
+//			gc.setForeground(colorC);
 			if(yOffset<yNext)
 				gc.drawLine(endTime, yOffset, endTime, yNext);
 			else
 				gc.drawLine(endTime, yNext, endTime, yOffset);
 			
 		} else if(lastChange instanceof ISignalChangeMulti){
-			int yOffsetT = trackHeight/3;
+			int yOffsetT = trackHeight/5;
 			int yOffsetM = trackHeight/2;
-			int yOffsetB = 2*trackHeight/3;
-			Color color = color1;
+			int yOffsetB = 4*trackHeight/5;
 			Color colorBorder = color0;
 			ISignalChangeMulti last = (ISignalChangeMulti) lastChange;
-			if(last.getValue().contains("X")){
-				color=colorX;
-				colorBorder=colorXdark;
-			}else if(last.getValue().contains("Z")){
-				color=colorZ;
-				colorBorder=colorZdark;
+			if(last.getValue().toString().contains("X")){
+				colorBorder=colorX;
+			}else if(last.getValue().toString().contains("Z")){
+				colorBorder=colorZ;
 			}
 			int beginTime= (int)(lastChange.getTime().getValue()/zoomFactor);
 			int endTime= (int)(actChange.getTime().getValue()/zoomFactor);
@@ -152,11 +144,12 @@ public class SignalWidget extends Canvas implements IWaveformWidget{
 					endTime-1,yOffsetB, 
 					beginTime+1,yOffsetB
 			};
-			gc.setBackground(color);
-			gc.fillPolygon(points);
 			gc.setForeground(colorBorder);
 			gc.drawPolygon(points);
-			gc.drawText(last.getValue(), beginTime+1, yOffsetT+1);
+			gc.setForeground(colorText);
+			int size = gc.getDevice().getDPI().y * gc.getFont().getFontData()[0].getHeight()/72;
+//			gc.setClipping(beginTime+3,yOffsetM-size/2-1,endTime-beginTime-4, yOffsetM+size/2+1); 
+			gc.drawText("h'"+last.getValue().toHexString(), beginTime+3, yOffsetM-size/2-1);
 		}
 	}
 
