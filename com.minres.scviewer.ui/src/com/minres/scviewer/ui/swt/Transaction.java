@@ -20,6 +20,7 @@ public class Transaction extends Composite {
 	public static Color txBgColor;
 	public static Color highliteLineColor;
 	public static Color txHighliteBgColor;
+	public static Color trackBgColor;
 	private int length;
 	private boolean highlighted=false;
 	
@@ -39,8 +40,10 @@ public class Transaction extends Composite {
 		TxEditorPlugin plugin=TxEditorPlugin.getDefault();	
 		lineColor=plugin.getColor(TxEditorPlugin.lineColor);
 		txBgColor=plugin.getColor(TxEditorPlugin.txBgColor);
+		trackBgColor=plugin.getColor(TxEditorPlugin.trackBgDarkColor);
 		highliteLineColor=plugin.getColor(TxEditorPlugin.highliteLineColor);
 		txHighliteBgColor=plugin.getColor(TxEditorPlugin.txHighliteBgColor);
+		setBackground(trackBgColor);
 	}
 
 	protected void widgetDisposed(DisposeEvent e) {
@@ -48,18 +51,20 @@ public class Transaction extends Composite {
 	
 	void paintControl(PaintEvent e) {
 		GC gc = e.gc;
+        gc.setBackground(trackBgColor);
+        gc.fillRectangle(new Rectangle(0, 0, length, height));
         gc.setForeground(highlighted?highliteLineColor:lineColor);
         gc.setFillRule(SWT.FILL_EVEN_ODD);
         gc.setBackground(highlighted?txHighliteBgColor:txBgColor);
         gc.setLineWidth(1);
         gc.setLineStyle(SWT.LINE_SOLID);
 		Rectangle bb = new Rectangle(0, height/5, length-1, 3*height/5);
-		if(bb.width<8){
+		if(bb.width<10){
 			gc.fillRectangle(bb);
 			gc.drawRectangle(bb);
 		} else {
-	        gc.fillRoundRectangle(bb.x, bb.y, bb.width, bb.height, 4, 4);
-	        gc.drawRoundRectangle(bb.x, bb.y, bb.width, bb.height, 4, 4);
+	        gc.fillRoundRectangle(bb.x, bb.y, bb.width, bb.height, 5, 5);
+	        gc.drawRoundRectangle(bb.x, bb.y, bb.width, bb.height, 5, 5);
 		}	
 	}
 

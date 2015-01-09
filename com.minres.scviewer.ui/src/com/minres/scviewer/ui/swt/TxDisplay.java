@@ -39,6 +39,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.internal.ole.win32.CONTROLINFO;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -102,7 +103,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 		});
 	
 		nameListScrolled = new ScrolledComposite(namePane, SWT.H_SCROLL | SWT.V_SCROLL);
-		nameListScrolled.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, true, true, 1, 1));
+		nameListScrolled.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		nameListScrolled.setExpandHorizontal(true);
 		nameListScrolled.setExpandVertical(true);
 		nameList = new Composite(nameListScrolled, SWT.NONE);
@@ -118,7 +119,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 			}
 		});
 		valueListScrolled = new ScrolledComposite(valuePane, SWT.H_SCROLL | SWT.V_SCROLL);
-		valueListScrolled.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, true, true, 1, 1));
+		valueListScrolled.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		valueListScrolled.setExpandHorizontal(true);
 		valueListScrolled.setExpandVertical(true);
 		valueList = new Composite(valueListScrolled, SWT.NONE);
@@ -151,20 +152,15 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 				trackListScrolled.setOrigin(trackListScrolled.getOrigin().x, y);
 			}
         });
-		trackListScrolled.getVerticalBar().addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-				int y = ((ScrollBar) e.widget).getSelection();
+		trackListScrolled.getContent().addControlListener(new ControlAdapter() {
+			@Override
+			public void controlMoved(ControlEvent e) {
+				ruler.setStartPoint(trackListScrolled.getHorizontalBar().getSelection());
+				int y = trackListScrolled.getVerticalBar().getSelection();
 				nameListScrolled.setOrigin(nameListScrolled.getOrigin().x, y);
 				valueListScrolled.setOrigin(valueListScrolled.getOrigin().x, y);
 			}
-        });
-		trackListScrolled.getHorizontalBar().addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-				int x = ((ScrollBar) e.widget).getSelection();
-				ruler.setStartPoint(x);
-			}
-        });
-
+		});
 		topSash.setWeights(new int[] {30, 70});
 		leftSash.setWeights(new int[] {75, 25});
         
@@ -247,6 +243,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 				track.setData("VALUEWIDGET", trackValue);
 				trackMap.put(stream, track);
 			} else if(wave instanceof ISignal<?>){
+				@SuppressWarnings("unchecked")
 				ISignal<ISignalChange> isignal = (ISignal<ISignalChange>) wave;
 				SignalWidget signal = new SignalWidget(trackList, SWT.NONE);
 				signal.setTransactions(isignal);
@@ -277,11 +274,8 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 
 	protected void recalculateValueBounds() {
 		if(streams.size()>0){
-			Rectangle bounds = valueListScrolled.getParent().getBounds();
 			Point size = valueList.computeSize(SWT.DEFAULT, SWT.DEFAULT);
-//			System.out.println("Value calc: "+bounds+" / "+size);
-			int corr = (int) (2.35*valueListScrolled.getHorizontalBar().getSize().y);
-			valueListScrolled.setMinSize(Math.max(bounds.width,  size.x), Math.max(bounds.height-corr,  size.y));
+			valueListScrolled.setMinSize(size);
 			valueListScrolled.setAlwaysShowScrollBars(true);
 			valueListScrolled.getVerticalBar().setVisible(false);
 		}
@@ -289,11 +283,8 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 
 	protected void recalculateNameBounds() {
 		if(streams.size()>0){
-			Rectangle bounds = nameListScrolled.getParent().getBounds();
 			Point size = nameList.computeSize(SWT.DEFAULT, SWT.DEFAULT);
-//			System.out.println("Name calc: "+bounds+" / "+size);
-			int corr = (int) (2.35*valueListScrolled.getHorizontalBar().getSize().y);
-			nameListScrolled.setMinSize(Math.max(bounds.width,  size.x), Math.max(bounds.height-corr,  size.y));
+			nameListScrolled.setMinSize(size);
 			nameListScrolled.setAlwaysShowScrollBars(true);
 			nameListScrolled.getVerticalBar().setVisible(false);
 		}

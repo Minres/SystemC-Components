@@ -114,11 +114,11 @@ public class Track extends Composite implements IWaveformWidget, MouseListener {
 		gc.setForeground(lineColor);
 		gc.setFillRule(SWT.FILL_EVEN_ODD);
 		gc.setBackground(trackBgColor);
-		gc.setLineWidth(1);
+		gc.setLineWidth(3);
 		gc.setLineStyle(SWT.LINE_SOLID);
 		gc.fillRectangle(new Rectangle(e.x, e.y, e.width, e.height));
-		for(int offset=e.y+trackHeight/2; offset<e.height; offset+=trackHeight)
-			gc.drawLine(e.x, offset, e.x+e.width, offset);
+		for(int offset=trackHeight/2; offset<e.height; offset+=trackHeight)
+			gc.drawLine(0, e.y+offset, e.x+e.width, e.y+offset);
 	}
 
 
