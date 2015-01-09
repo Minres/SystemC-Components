@@ -28,6 +28,7 @@ http://www.eclipse.org/legal/epl-v10.html
    </url>
 
    <requires>
+      <import plugin="com.minres.scviewer.database" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.codehaus.groovy" version="1.8.6" match="greaterOrEqual"/>
       <import plugin="org.eclipse.equinox.util" version="1.0.500" match="greaterOrEqual"/>
       <import plugin="org.eclipse.equinox.ds" version="1.4.200" match="greaterOrEqual"/>
@@ -42,7 +43,8 @@ http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.eclipse.ui.views.properties.tabbed"/>
       <import plugin="org.eclipse.swt"/>
       <import plugin="org.eclipse.ui.views"/>
-      <import plugin="com.minres.scviewer.database" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.ant"/>
+      <import plugin="org.junit"/>
    </requires>
 
    <plugin
@@ -72,5 +74,11 @@ http://www.eclipse.org/legal/epl-v10.html
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+
+   <plugin
+         id="org.codehaus.groovy"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
 </feature>

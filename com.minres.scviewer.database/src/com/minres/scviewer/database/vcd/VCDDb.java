@@ -28,7 +28,7 @@ import com.minres.scviewer.database.SignalChange;
 public class VCDDb extends HierNode implements IWaveformDb, IVCDDatabaseBuilder {
 
 	
-	private static final String TIME_RES = "ps";
+	private static final EventTime.Unit TIME_RES = EventTime.Unit.PS;
 
 	/** The module stack. */
 	private Stack<String> moduleStack;

@@ -48,12 +48,12 @@ public class SQLiteDb extends HierNode implements IWaveformDb {
 		try {
 			List<ScvTxEvent> event = handler.selectObjects();
 			if(event.size()>0)
-				return new EventTime(event.get(0).getTime(), "fs");
+				return new EventTime(event.get(0).getTime());
 		} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 				| InvocationTargetException | SQLException | IntrospectionException e) {
 			e.printStackTrace();
 		}
-		return new EventTime(0L, "s");
+		return EventTime.ZERO;
 	}
 
 	@Override

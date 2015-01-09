@@ -11,61 +11,59 @@
 package com.minres.scviewer.database;
 
 public class EventTime implements Comparable<EventTime>{
+	public enum Unit {
+		FS("fs"), PS("ps"), NS("ns"), US("us"), MS("ms"), SEC("s");
+		
+		private String alternative;
+		private Unit(String alternative){
+			this.alternative=alternative;
+		}
+		
+		public static Unit fromString(String text) {
+			if (text != null)
+				for (Unit b : Unit.values()) {
+					if (text.equalsIgnoreCase(b.name()) || text.equalsIgnoreCase(b.alternative)) return b;
+				}
+			return null;
+		}
+	}
 	
-	public static final double NS = 1000000.0;
-	
-	public static final double MS = 1000000000.0;
+	static final double[] scales = {1,1000.0,1000000.0,1000000000.0,1000000000000.0};
 
-	public static final EventTime ZERO = new EventTime(0L, "fs");
+	public static final EventTime ZERO = new EventTime(0L);
 	
 	private long value; // unit is femto seconds
 	
+	public EventTime(Long value){
+		this(value, Unit.FS);
+	}
 	
-	public EventTime(Long value, String unit){
-		setValue(value, unit);
+	public EventTime(Long value, Unit scale){
+		setValue(value, scale);
+	}
+	
+	public static double getScalingFactor(Unit scale){
+		return scales[scale.ordinal()];
 	}
 	
 	public long getValue(){
 		return(value);
 	}
 	
-	public double getScaledValue(double scale){
-		return value/scale;
+	public double getScaledValue(Unit scale){
+		return value/scales[scale.ordinal()];
 	}
 	
-	public double getValueNS(){
-		return getScaledValue(NS);
-	}
-
-	public double getValueMS(){
-		return getScaledValue(MS);
-	}
-
 	public void setValue(long value){
 		this.value=value;
 	}
 	
-	public void setValue(long value, String unit){
-		this.value=value;
-		if("fs".compareToIgnoreCase(unit)==0)
-			this.value=value;
-		else if("ps".compareToIgnoreCase(unit)==0)
-			this.value=value*1000;
-		else if("ns".compareToIgnoreCase(unit)==0)
-			this.value=value*1000000;
-		else if("us".compareToIgnoreCase(unit)==0)
-			this.value=value*1000000000;
-		else if("ms".compareToIgnoreCase(unit)==0)
-			this.value=value*1000000000000L;
-		else if("s".compareToIgnoreCase(unit)==0)
-			this.value=value*1000000000000000L;
-		else {
-			System.err.print("Don't know what to do with "+unit+"\n");
-		}
+	public void setValue(long value, Unit scale){
+		this.value=(long) (value*scales[scale.ordinal()]);		
 	}
 	
 	public String toString(){
-		return value/1000000 +"ns";
+		return value/scales[Unit.NS.ordinal()] +"ns";
 	}
 
 	@Override

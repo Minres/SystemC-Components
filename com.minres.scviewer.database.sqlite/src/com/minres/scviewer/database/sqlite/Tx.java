@@ -57,7 +57,7 @@ public class Tx implements ITx {
 				trStream.getDb().getDb(), "tx="+scvTx.getId()+" AND type="+ AssociationType.BEGIN.ordinal());
 		try {
 			for(ScvTxEvent scvEvent:handler.selectObjects()){
-				begin= new EventTime(scvEvent.getTime()*trStream.getDb().timeResolution, "fs");
+				begin= new EventTime(scvEvent.getTime()*trStream.getDb().timeResolution);
 			}
 		} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 				| InvocationTargetException | SQLException | IntrospectionException e) {
@@ -73,7 +73,7 @@ public class Tx implements ITx {
 				trStream.getDb().getDb(), "tx="+scvTx.getId()+" AND type="+ AssociationType.END.ordinal());
 		try {
 			for(ScvTxEvent scvEvent:handler.selectObjects()){
-				end = new EventTime(scvEvent.getTime()*trStream.getDb().timeResolution, "fs");
+				end = new EventTime(scvEvent.getTime()*trStream.getDb().timeResolution);
 			}
 		} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 				| InvocationTargetException | SQLException | IntrospectionException e) {

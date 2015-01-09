@@ -26,7 +26,7 @@ public class SignalWidget extends Canvas implements IWaveformWidget{
 	static final int trackInset = 1;
 	static final int txHeight = trackHeight - 2 * trackInset;
 
-	static double zoomFactor = EventTime.NS;
+	static double zoomFactor = EventTime.getScalingFactor(EventTime.Unit.NS);
 	private Color lineColor;
 	private Color trackBgColor;
 	private Color color0;
@@ -76,8 +76,8 @@ public class SignalWidget extends Canvas implements IWaveformWidget{
 		gc.fillRectangle(new Rectangle(e.x, e.y, e.width, e.height));
 		ISignalChange lastChange = null;
 		NavigableSet<ISignalChange> visibleChanges = signal.getSignalChangesByTimes(
-				new EventTime((long) (e.x*zoomFactor), "fs"), 
-				new EventTime((long) ((e.x+e.width)*zoomFactor), "fs"));
+				new EventTime((long) (e.x*zoomFactor)), 
+				new EventTime((long) ((e.x+e.width)*zoomFactor)));
 		for(ISignalChange actChange:visibleChanges){
 			if(lastChange!=null){
 				drawValues(e, gc, lastChange, actChange);

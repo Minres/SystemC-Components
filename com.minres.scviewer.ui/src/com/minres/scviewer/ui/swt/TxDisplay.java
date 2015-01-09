@@ -59,7 +59,10 @@ import com.minres.scviewer.database.IWaveform;
 
 public class TxDisplay implements PropertyChangeListener, ISelectionProvider, MouseListener{
 
-    private ListenerList listeners = new ListenerList();
+    private static final String VALUEWIDGET = "VALUEWIDGET";
+	private static final String NAMEWIDGET = "NAMEWIDGET";
+	private static final String WAVEFORM = "WAVEFORM";
+	private ListenerList listeners = new ListenerList();
     private ITxStream currentStreamSelection;  
     private ITx currentSelection;
 	private ScrolledComposite valueListScrolled;
@@ -207,16 +210,16 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 		LinkedList<IWaveform>toAdd = new LinkedList<IWaveform>();
 		toAdd.addAll(streams);
 		for(Control child:trackList.getChildren()){
-			IWaveform stream=(IWaveform) child.getData("WAVEFORM");
+			IWaveform stream=(IWaveform) child.getData(WAVEFORM);
 			if(!streams.contains(stream)){
 				child.setVisible(false);
-				((Control)(child.getData("NAMEWIDGET"))).setVisible(false);
-				((Control)(child.getData("VALUEWIDGET"))).setVisible(false);
+				((Control)(child.getData(NAMEWIDGET))).setVisible(false);
+				((Control)(child.getData(VALUEWIDGET))).setVisible(false);
 			}else{
 				toAdd.remove(stream);
 				child.setVisible(true);
-				((Control)(child.getData("NAMEWIDGET"))).setVisible(true);
-				((Control)(child.getData("VALUEWIDGET"))).setVisible(true);
+				((Control)(child.getData(NAMEWIDGET))).setVisible(true);
+				((Control)(child.getData(VALUEWIDGET))).setVisible(true);
 			}
 		}
 		for(IWaveform wave: toAdd){
@@ -224,7 +227,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 				ITxStream stream = (ITxStream) wave;
 				Track track = new Track(trackList,SWT.NONE);
 				track.setTransactions(stream.getTransactions());
-				track.setData("WAVEFORM", stream);
+				track.setData(WAVEFORM, stream);
 				track.addMouseListener(this);
 				Point trackSize = track.computeSize(SWT.DEFAULT,SWT.DEFAULT);
 				
@@ -232,20 +235,24 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 				trackName.setText(stream.getFullName());
 				RowData trackNamelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
 				trackName.setLayoutData(trackNamelayoutData);
-				track.setData("NAMEWIDGET", trackName);
+				trackName.setData(WAVEFORM, stream);
+				trackName.addMouseListener(this);
+				track.setData(NAMEWIDGET, trackName);
 				
 				Label trackValue = new Label(valueList, SWT.NONE);
 				trackValue.setText("-");
 				RowData trackValuelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
 				trackValue.setLayoutData(trackValuelayoutData);
-				track.setData("VALUEWIDGET", trackValue);
+				trackValue.setData(WAVEFORM, stream);
+				trackValue.addMouseListener(this);
+				track.setData(VALUEWIDGET, trackValue);
 				trackMap.put(stream, track);
 			} else if(wave instanceof ISignal<?>){
 				@SuppressWarnings("unchecked")
 				ISignal<ISignalChange> isignal = (ISignal<ISignalChange>) wave;
 				SignalWidget signal = new SignalWidget(trackList, SWT.NONE);
 				signal.setTransactions(isignal);
-				signal.setData("WAVEFORM", isignal);
+				signal.setData(WAVEFORM, isignal);
 				signal.addMouseListener(this);
 				Point trackSize = signal.computeSize(SWT.DEFAULT,SWT.DEFAULT);
 				
@@ -253,13 +260,17 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 				trackName.setText(isignal.getFullName());
 				RowData trackNamelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
 				trackName.setLayoutData(trackNamelayoutData);
-				signal.setData("NAMEWIDGET", trackName);
+				trackName.setData(WAVEFORM, isignal);
+				trackName.addMouseListener(this);
+				signal.setData(NAMEWIDGET, trackName);
 				
 				Label trackValue = new Label(valueList, SWT.NONE);
 				trackValue.setText("-");
 				RowData trackValuelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
 				trackValue.setLayoutData(trackValuelayoutData);
-				signal.setData("VALUEWIDGET", trackValue);
+				trackValue.setData(WAVEFORM, isignal);
+				trackValue.addMouseListener(this);
+				signal.setData(VALUEWIDGET, trackValue);
 				trackMap.put(isignal, signal);
 			}
 		}
@@ -353,7 +364,10 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 			StructuredSelection sel = new StructuredSelection(((Transaction)e.data).getData());
 			setSelection(sel);
 		}else if(e.widget instanceof Track){
-			StructuredSelection sel = new StructuredSelection(new Object[]{ ((Track)e.widget).getData()});
+			StructuredSelection sel = new StructuredSelection(new Object[]{ e.widget.getData(WAVEFORM)});
+			setSelection(sel);
+		}else if(e.widget instanceof Label){
+			StructuredSelection sel = new StructuredSelection(new Object[]{ e.widget.getData(WAVEFORM)});
 			setSelection(sel);
 		}
 	}

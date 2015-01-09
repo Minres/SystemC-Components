@@ -31,7 +31,7 @@ public class Track extends Composite implements IWaveformWidget, MouseListener {
 	static final int trackInset = 1;
 	static final int txHeight = trackHeight - 2 * trackInset;
 
-	static double zoomFactor = EventTime.NS;
+	static double zoomFactor = EventTime.getScalingFactor(EventTime.Unit.NS);
 	private Color lineColor;
 	private Color trackBgColor;
 	
