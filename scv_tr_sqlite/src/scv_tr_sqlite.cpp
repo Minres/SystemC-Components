@@ -1,6 +1,7 @@
-#include <string>
 #include <cstdio>
 #include <iostream>
+#include <string>
+#include <vector>
 #include "scv/scv_util.h"
 #include "scv/scv_introspection.h"
 #include "scv/scv_tr.h"
@@ -67,6 +68,7 @@ private:
 // ----------------------------------------------------------------------------
 static SQLiteDB db;
 static ostringstream stringBuilder, queryBuilder;
+static vector<vector<uint64_t>*> concurrencyLevel;
 // ----------------------------------------------------------------------------
 enum EventType {BEGIN, RECORD, END};
 typedef scv_extensions_if::data_type data_type;
@@ -94,7 +96,7 @@ static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason,
 //            scv_out << "TB Transaction Recording has started, file = " << my_sqlite_file_name << endl;
             db.exec("CREATE TABLE  IF NOT EXISTS " STREAM_TABLE "(id INTEGER  NOT NULL PRIMARY KEY, name TEXT, kind TEXT);");
             db.exec("CREATE TABLE  IF NOT EXISTS " GENERATOR_TABLE "(id INTEGER  NOT NULL PRIMARY KEY, stream INTEGER REFERENCES " STREAM_TABLE "(id), name TEXT, begin_attr INTEGER, end_attr INTEGER);");
-            db.exec("CREATE TABLE  IF NOT EXISTS " TX_TABLE "(id INTEGER  NOT NULL PRIMARY KEY, generator INTEGER REFERENCES " GENERATOR_TABLE "(id), stream INTEGER REFERENCES " STREAM_TABLE "(id));");
+            db.exec("CREATE TABLE  IF NOT EXISTS " TX_TABLE "(id INTEGER  NOT NULL PRIMARY KEY, generator INTEGER REFERENCES " GENERATOR_TABLE "(id), stream INTEGER REFERENCES " STREAM_TABLE "(id), concurrencyLevel INTEGER);");
             db.exec("CREATE TABLE  IF NOT EXISTS " TX_EVENT_TABLE "(tx INTEGER REFERENCES " TX_TABLE "(id), type INTEGER, time INTEGER);");
             db.exec("CREATE TABLE  IF NOT EXISTS " TX_ATTRIBUTE_TABLE "(tx INTEGER REFERENCES " TX_TABLE "(id), type INTEGER, name TEXT, data_type INTEGER, data_value TEXT);");
             db.exec("CREATE TABLE  IF NOT EXISTS " TX_RELATION_TABLE "(name TEXT, src INTEGER REFERENCES " TX_TABLE "(id), sink INTEGER REFERENCES " TX_TABLE "(id));");
@@ -251,17 +253,33 @@ static void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason
     if (t.get_scv_tr_stream().get_scv_tr_db() == NULL) return;
     if (t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false) return;
 
+    uint64_t id = t.get_id();
+    uint64_t streamId = t.get_scv_tr_stream().get_id();
+    vector<uint64_t>::size_type concurrencyIdx;
     const scv_extensions_if* my_exts_p;
     switch (reason) {
     case scv_tr_handle::BEGIN:{
         try {
+            if(concurrencyLevel.size()<=streamId)
+                concurrencyLevel.resize(streamId+1);
+            vector<uint64_t>* levels=concurrencyLevel[streamId];
+            if(levels==NULL){
+                levels=new vector<uint64_t>();
+                concurrencyLevel[id]=levels;
+            }
+            for(concurrencyIdx=0; concurrencyIdx<levels->size(); ++concurrencyIdx)
+                if((*levels)[concurrencyIdx]==0) break;
+            if(concurrencyIdx==levels->size())
+                levels->push_back(id);
+            else
+                (*levels)[concurrencyIdx]=id;
             queryBuilder.str("");
-            queryBuilder << "INSERT INTO " TX_TABLE " (id,generator,stream)" << " values (" << t.get_id() << "," << t.get_scv_tr_generator_base().get_id()
-                         <<","<<t.get_scv_tr_stream().get_id()<< ");";
+            queryBuilder << "INSERT INTO " TX_TABLE " (id,generator,stream, concurrencyLevel)" << " values (" << id << "," << t.get_scv_tr_generator_base().get_id()
+                         <<","<<t.get_scv_tr_stream().get_id()<< ","<< concurrencyIdx <<");";
             db.exec(queryBuilder.str().c_str());
 
             queryBuilder.str("");
-            queryBuilder << "INSERT INTO " TX_EVENT_TABLE " (tx,type,time)" << " values (" << t.get_id() << "," << BEGIN << ","
+            queryBuilder << "INSERT INTO " TX_EVENT_TABLE " (tx,type,time)" << " values (" << id << "," << BEGIN << ","
                     << t.get_begin_sc_time().value() << ");";
             db.exec(queryBuilder.str().c_str());
 
@@ -274,10 +292,14 @@ static void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason
         }
         string tmp_str =
                 t.get_scv_tr_generator_base().get_begin_attribute_name() ? t.get_scv_tr_generator_base().get_begin_attribute_name() : "";
-        recordAttributes(t.get_id(), BEGIN, tmp_str, my_exts_p);
+        recordAttributes(id, BEGIN, tmp_str, my_exts_p);
     } break;
     case scv_tr_handle::END:{
         try {
+            vector<uint64_t>* levels=concurrencyLevel[streamId];
+            for(concurrencyIdx=0; concurrencyIdx<levels->size(); ++concurrencyIdx)
+                if((*levels)[concurrencyIdx]==id) break;
+            (*levels)[concurrencyIdx]=0;
             queryBuilder.str("");
             queryBuilder << "INSERT INTO " TX_EVENT_TABLE " (tx,type,time)" << " values (" << t.get_id() << "," << END << ","
                     << t.get_end_sc_time().value() << ");";
