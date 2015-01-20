@@ -17,13 +17,15 @@ public interface ITx extends Comparable<ITx>{
 
 	public Long getId();
 	
-	public ITxStream getStream();
+	public ITxStream<ITxEvent> getStream();
 	
 	public ITxGenerator getGenerator();
 	
-	public EventTime getBeginTime();
+	public Long getBeginTime();
 	
-	public EventTime getEndTime();
+	public Long getEndTime();
+	
+	public int getConcurrencyIndex();
 	
 	public List<ITxAttribute> getAttributes();
 	

@@ -8,12 +8,12 @@ import java.util.Collection;
 import java.util.List;
 
 import com.minres.scviewer.database.AssociationType;
-import com.minres.scviewer.database.EventTime;
+import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.ITxAttribute;
+import com.minres.scviewer.database.ITxEvent;
 import com.minres.scviewer.database.ITxGenerator;
 import com.minres.scviewer.database.ITxRelation;
 import com.minres.scviewer.database.ITxStream;
-import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.sqlite.db.IDatabase;
 import com.minres.scviewer.database.sqlite.db.SQLiteDatabaseSelectHandler;
 import com.minres.scviewer.database.sqlite.tables.ScvTx;
@@ -28,7 +28,7 @@ public class Tx implements ITx {
 	private TxGenerator trGenerator;
 	private ScvTx scvTx;
 	private List<ITxAttribute> attributes;
-	private EventTime begin, end;
+	private Long begin, end;
 	private  List<ITxRelation> incoming, outgoing;
 	
 	public Tx(IDatabase database, TxStream trStream, TxGenerator trGenerator, ScvTx scvTx) {
@@ -44,7 +44,7 @@ public class Tx implements ITx {
 	}
 
 	@Override
-	public ITxStream getStream() {
+	public ITxStream<ITxEvent> getStream() {
 		return trStream;
 	}
 
@@ -54,13 +54,18 @@ public class Tx implements ITx {
 	}
 
 	@Override
-	public EventTime getBeginTime() {
+	public int getConcurrencyIndex() {
+		return scvTx.getConcurrencyLevel();
+	}
+
+	@Override
+	public Long getBeginTime() {
 		if(begin==null){
 		SQLiteDatabaseSelectHandler<ScvTxEvent> handler = new SQLiteDatabaseSelectHandler<ScvTxEvent>(ScvTxEvent.class,
 				database, "tx="+scvTx.getId()+" AND type="+ AssociationType.BEGIN.ordinal());
 		try {
 			for(ScvTxEvent scvEvent:handler.selectObjects()){
-				begin= new EventTime(scvEvent.getTime()*(Long)database.getData("TIMERESOLUTION"));
+				begin= scvEvent.getTime()*(Long)database.getData("TIMERESOLUTION");
 			}
 		} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 				| InvocationTargetException | SQLException | IntrospectionException e) {
@@ -70,13 +75,13 @@ public class Tx implements ITx {
 	}
 
 	@Override
-	public EventTime getEndTime() {
+	public Long getEndTime() {
 		if(end==null){
 		SQLiteDatabaseSelectHandler<ScvTxEvent> handler = new SQLiteDatabaseSelectHandler<ScvTxEvent>(ScvTxEvent.class,
 				database, "tx="+scvTx.getId()+" AND type="+ AssociationType.END.ordinal());
 		try {
 			for(ScvTxEvent scvEvent:handler.selectObjects()){
-				end = new EventTime(scvEvent.getTime()*(Long)database.getData("TIMERESOLUTION"));
+				end = scvEvent.getTime()*(Long)database.getData("TIMERESOLUTION");
 			}
 		} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 				| InvocationTargetException | SQLException | IntrospectionException e) {

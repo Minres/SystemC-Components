@@ -14,9 +14,9 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 
 	private List<IHierNode> childNodes;
 
-	private Map<String, IWaveform> waveforms;
+	private Map<String, IWaveform<?>> waveforms;
 
-	private EventTime maxTime;
+	private Long maxTime;
 	
 	
 	public void bind(IWaveformDbLoader loader){
@@ -34,31 +34,35 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 
 	public WaveformDb() {
 		super();
-		waveforms = new HashMap<String, IWaveform>();
-		maxTime=EventTime.ZERO;
+		waveforms = new HashMap<String, IWaveform<?>>();
+		maxTime=0L;
 	}
 
 	@Override
-	public EventTime getMaxTime() {
+	public Long getMaxTime() {
 		return maxTime;
 	}
 
 	@Override
-	public IWaveform getStreamByName(String name) {
+	public IWaveform<?> getStreamByName(String name) {
 		return waveforms.get(name);
 	}
 
 	@Override
-	public List<IWaveform> getAllWaves() {
-		return new ArrayList<IWaveform>(waveforms.values());
+	public List<IWaveform<?>> getAllWaves() {
+		return new ArrayList<IWaveform<?>>(waveforms.values());
 	}
 
 	@Override
 	public boolean load(File inp) throws Exception {
 		for(IWaveformDbLoader loader:loaders){
 			if(loader.load(this, inp)){
-				for(IWaveform w:loader.getAllWaves())
+				for(IWaveform<?> w:loader.getAllWaves()){
 					waveforms.put(w.getFullName(),w);
+				}
+				if(loader.getMaxTime()>maxTime){
+					maxTime=loader.getMaxTime();
+				}
 				buildHierarchyNodes() ;
 				if(name==null) name=getFileBasename(inp.getName());
 				pcs.firePropertyChange("WAVEFORMS", null, waveforms);
@@ -86,7 +90,7 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 
 	private void buildHierarchyNodes() throws InputFormatException{
 		childNodes= new ArrayList<IHierNode>();
-		for(IWaveform stream:getAllWaves()){
+		for(IWaveform<?> stream:getAllWaves()){
 			updateMaxTime(stream);
 			String[] hier = stream.getFullName().split("\\.");
 			IHierNode node = this;
@@ -126,14 +130,13 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 		}
 	}
 
-	private void updateMaxTime(IWaveform stream) {
-		EventTime last=null;
-		if(stream instanceof ITxStream){
-			last=((ITxStream)stream).getTransactions().last().getEndTime();
-		} else if(stream instanceof ISignal<?>){
-			last=((ISignal<ISignalChange>)stream).getSignalChanges().last().getTime();
-		}
-		if(last.getValue()>maxTime.getValue())
+	private void updateMaxTime(IWaveform<?> waveform) {
+		Long last=0L;
+		if(waveform instanceof ITxStream<?>)
+			last=((ITxStream<?>)waveform).getEvents().lastEntry().getKey();
+		else if(waveform instanceof ISignal<?>)
+			last=((ISignal<?>)waveform).getEvents().lastEntry().getKey();
+		if(last>maxTime)
 			maxTime=last;
 	}
 

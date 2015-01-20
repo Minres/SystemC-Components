@@ -10,31 +10,18 @@
  *******************************************************************************/
 package com.minres.scviewer.database.text;
 
-import java.io.InputStream;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
-import com.minres.scviewer.database.AssociationType;
-import com.minres.scviewer.database.DataType;
-import com.minres.scviewer.database.HierNode;
-import com.minres.scviewer.database.ITxAttributeType;
-import com.minres.scviewer.database.ITxAttribute;
+import com.minres.scviewer.database.AssociationType
+import com.minres.scviewer.database.DataType
+import com.minres.scviewer.database.ITxGenerator
+import com.minres.scviewer.database.ITxStream
 import com.minres.scviewer.database.IWaveform
-import com.minres.scviewer.database.IWaveformDb;
-import com.minres.scviewer.database.ITxGenerator;
-import com.minres.scviewer.database.IHierNode;
-import com.minres.scviewer.database.ITxStream;
-import com.minres.scviewer.database.IWaveformDbLoader;
-import com.minres.scviewer.database.InputFormatException;
-import com.minres.scviewer.database.EventTime
+import com.minres.scviewer.database.IWaveformDb
+import com.minres.scviewer.database.IWaveformDbLoader
 import com.minres.scviewer.database.RelationType
 
 public class TextDbLoader implements IWaveformDbLoader{
 
-	private EventTime maxTime;
+	private Long maxTime;
 
 	IWaveformDb db;
 		
@@ -46,7 +33,7 @@ public class TextDbLoader implements IWaveformDbLoader{
 	}
 
 	@Override
-	public EventTime getMaxTime() {
+	public Long getMaxTime() {
 		return maxTime;
 	}
 
@@ -74,9 +61,20 @@ public class TextDbLoader implements IWaveformDbLoader{
         	for(int i=0; i<x.size(); i++)
         		if(buffer[i]!=x[i]) return false
 		parseInput(file)
+		calculateConcurrencyIndicees()
 		return true
 	}
 
+	private stringToScale(String scale){
+		switch(scale.trim()){
+			case "fs":return 1L
+			case "ps":return 1000L
+			case "ns":return 1000000L
+			case "us":return 1000000000L
+			case "ms":return 1000000000000L
+			case "s": return 1000000000000000L
+		}
+	}
 	private def parseInput(File input){
 		def streamsById = [:]
 		def generatorsById = [:]
@@ -115,7 +113,7 @@ public class TextDbLoader implements IWaveformDbLoader{
 				case "tx_begin"://matcher = line =~ /^tx_begin\s+(\d+)\s+(\d+)\s+(\d+)\s+([munpf]?s)/
 					def id = Integer.parseInt(tokens[1])
 					TxGenerator gen=generatorsById[Integer.parseInt(tokens[2])]
-					transaction = new Tx(id, gen.stream, gen, new EventTime(Integer.parseInt(tokens[3]), EventTime.Unit.fromString(tokens[4])))
+					transaction = new Tx(id, gen.stream, gen, Long.parseLong(tokens[3])*stringToScale(tokens[4]))
 					gen.transactions << transaction
 					transactionsById[id]= transaction
 					gen.begin_attrs_idx=0;
@@ -126,7 +124,7 @@ public class TextDbLoader implements IWaveformDbLoader{
 					def id = Integer.parseInt(tokens[1])
 					transaction = transactionsById[id]
 					assert Integer.parseInt(tokens[2])==transaction.generator.id
-					transaction.endTime = new EventTime(Integer.parseInt(tokens[3]), EventTime.Unit.fromString(tokens[4]))
+					transaction.endTime = Long.parseLong(tokens[3])*stringToScale(tokens[4])
 					transaction.generator.end_attrs_idx=0;
 					maxTime = maxTime>transaction.endTime?maxTime:transaction.endTime
 					endTransaction=true
@@ -158,4 +156,7 @@ public class TextDbLoader implements IWaveformDbLoader{
 		}
 	}
 
+	private def calculateConcurrencyIndicees(){
+		streams.each{ TxStream  stream -> stream.getMaxConcurrency() }
+	}
 }

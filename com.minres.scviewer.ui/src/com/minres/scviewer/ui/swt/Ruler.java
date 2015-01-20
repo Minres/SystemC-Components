@@ -16,6 +16,9 @@ import com.minres.scviewer.ui.TxEditorPlugin;
 public class Ruler extends Composite {
 
 	static final int height = 20;
+	static final int tickY = 15;
+	static final int majorTickY = 5;
+	
 	static final int rulerTickMinor = 10;
 	static final int rulerTickMajor = 100;
 
@@ -25,6 +28,8 @@ public class Ruler extends Composite {
 	private TxEditorPlugin plugin;
 	private Color headerBgColor;
 	private Color headerFgColor;
+	private int bottom;
+	private int baselineY;
 
 	Ruler(Composite parent, int style, int lenght) {
 		super(parent, style | SWT.DOUBLE_BUFFERED);
@@ -46,6 +51,9 @@ public class Ruler extends Composite {
 				Ruler.this.paintControl(e);
 			}
 		});
+		
+		bottom=height - 2;
+		baselineY=height - 1;
 	}
 
 	public int getLength() {
@@ -66,23 +74,22 @@ public class Ruler extends Composite {
 		int startMinorIncr = start;
 		int modulo = start % rulerTickMinor;
 		startMinorIncr+=rulerTickMinor-modulo;
-		int bottom=height - 2;
 		int end=start+e.width;
 		
 		gc.setBackground(getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 		gc.fillRectangle(new Rectangle(e.x, e.y, e.width, height));
 		gc.setBackground(headerBgColor);
-		gc.fillRectangle(new Rectangle(e.x, e.y, e.width, height - 1));
+		gc.fillRectangle(new Rectangle(e.x, e.y, e.width, baselineY));
 		gc.setForeground(headerFgColor);
 		gc.drawLine(0, bottom, e.width, bottom);
 		
 		for (int tick = startMinorIncr; tick < end; tick += rulerTickMinor) {
 			int x0 = tick-start;
 			if ((tick % rulerTickMajor) == 0) {
-				gc.drawLine(x0, 10, x0, bottom);
 				gc.drawText(Integer.toString(tick), x0, 0);
+				gc.drawLine(x0, majorTickY, x0, bottom);
 			} else {
-				gc.drawLine(x0, 15, x0, bottom);
+				gc.drawLine(x0, tickY, x0, bottom);
 			}
 		}
 	}

@@ -7,8 +7,8 @@ public interface IWaveformDbLoader {
 	
 	public boolean load(IWaveformDb db, File inp) throws Exception;
 	
-	public EventTime getMaxTime();
+	public Long getMaxTime();
 	
-	public List<IWaveform> getAllWaves() ;
+	public List<IWaveform<? extends IWaveformEvent>> getAllWaves() ;
 	
 }

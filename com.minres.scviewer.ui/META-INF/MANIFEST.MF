@@ -15,7 +15,8 @@ Require-Bundle: com.minres.scviewer.database;bundle-version="1.0.0",
  org.eclipse.ui.views.properties.tabbed,
  org.eclipse.swt,
  org.eclipse.osgi,
- org.eclipse.core.expressions;bundle-version="3.4.600"
+ org.eclipse.core.expressions;bundle-version="3.4.600",
+ org.eclipse.jface
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,

@@ -10,15 +10,18 @@
  *******************************************************************************/
 package com.minres.scviewer.database;
 
+import java.util.Collection;
 import java.util.List;
-import java.util.NavigableSet;
+import java.util.NavigableMap;
 
-public interface  ITxStream extends IWaveform {
+public interface  ITxStream<T extends ITxEvent> extends IWaveform<T> {
 
 	public List<ITxGenerator> getGenerators();
 
-	public NavigableSet<ITx> getTransactions();
+	public int getMaxConcurrency();
 
-	public ITx getTransactionById(long id);
+	public NavigableMap<Long, Collection<T>> getEvents();
+
+	public Collection<T> getWaveformEventsAtTime(Long time);
 
 }

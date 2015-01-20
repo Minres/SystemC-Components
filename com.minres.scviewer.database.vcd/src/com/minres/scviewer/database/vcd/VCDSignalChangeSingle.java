@@ -1,6 +1,5 @@
 package com.minres.scviewer.database.vcd;
 
-import com.minres.scviewer.database.EventTime;
 import com.minres.scviewer.database.ISignalChangeSingle;
 import com.minres.scviewer.database.SignalChange;
 
@@ -8,7 +7,7 @@ public class VCDSignalChangeSingle extends SignalChange implements ISignalChange
 
 	private char value;
 
-	public VCDSignalChangeSingle(EventTime time, char value) {
+	public VCDSignalChangeSingle(Long time, char value) {
 		super(time);
 		this.value=value;
 	}

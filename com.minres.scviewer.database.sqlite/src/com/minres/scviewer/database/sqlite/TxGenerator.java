@@ -2,16 +2,17 @@ package com.minres.scviewer.database.sqlite;
 
 import java.util.List;
 
+import com.minres.scviewer.database.ITx;
+import com.minres.scviewer.database.ITxEvent;
 import com.minres.scviewer.database.ITxGenerator;
 import com.minres.scviewer.database.ITxStream;
-import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.sqlite.tables.ScvGenerator;
 
 public class TxGenerator implements ITxGenerator {
 
-	private ITxStream  stream;
+	private ITxStream<ITxEvent>  stream;
 	private ScvGenerator scvGenerator;
-	public TxGenerator(ITxStream  stream, ScvGenerator scvGenerator) {
+	public TxGenerator(ITxStream<ITxEvent>  stream, ScvGenerator scvGenerator) {
 		this.stream=stream;
 		this.scvGenerator=scvGenerator;
 	}
@@ -22,7 +23,7 @@ public class TxGenerator implements ITxGenerator {
 	}
 
 	@Override
-	public ITxStream getStream() {
+	public ITxStream<ITxEvent> getStream() {
 		return stream;
 	}
 

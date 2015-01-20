@@ -16,11 +16,11 @@ import java.util.List;
 
 public interface IWaveformDb extends IHierNode {
 
-	public EventTime getMaxTime();
+	public Long getMaxTime();
 	
-	public IWaveform getStreamByName(String name);
+	public IWaveform<?> getStreamByName(String name);
 	
-	public List<IWaveform> getAllWaves();
+	public List<IWaveform<?>> getAllWaves();
 	
 	public boolean load(File inp) throws Exception;
 

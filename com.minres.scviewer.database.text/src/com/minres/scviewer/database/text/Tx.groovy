@@ -10,9 +10,6 @@
  *******************************************************************************/
 package com.minres.scviewer.database.text
 
-import java.util.Collection;
-import java.util.Set
-
 import com.minres.scviewer.database.*
 
 class Tx implements ITx {
@@ -23,9 +20,11 @@ class Tx implements ITx {
 
 	TxStream stream
 	
-	EventTime beginTime
+	int concurrencyIndex
 	
-	EventTime endTime
+	Long beginTime
+	
+	Long endTime
 	
 	ArrayList<ITxAttribute> attributes = new ArrayList<ITxAttribute>()
 	
@@ -33,7 +32,7 @@ class Tx implements ITx {
 	
 	def outgoingRelations =[]
 	
-	Tx(int id, TxStream stream, TxGenerator generator, EventTime begin){
+	Tx(int id, TxStream stream, TxGenerator generator, Long begin){
 		this.id=id
 		this.stream=stream
 		this.generator=generator

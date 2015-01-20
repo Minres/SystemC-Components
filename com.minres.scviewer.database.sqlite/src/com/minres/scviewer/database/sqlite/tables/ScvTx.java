@@ -25,7 +25,16 @@ public class ScvTx {
 		this.stream = stream;
 	}
 
+	public int getConcurrencyLevel() {
+		return concurrencyLevel;
+	}
+
+	public void setConcurrencyLevel(int concurrencyLevel) {
+		this.concurrencyLevel = concurrencyLevel;
+	}
+
 	private int id;
 	private int generator;
 	private int stream;
+	private int concurrencyLevel;
 }

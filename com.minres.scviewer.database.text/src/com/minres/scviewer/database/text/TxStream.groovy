@@ -11,10 +11,15 @@
 package com.minres.scviewer.database.text
 
 import java.beans.PropertyChangeListener;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.NavigableMap;
 
+import com.google.common.collect.TreeMultimap;
 import com.minres.scviewer.database.HierNode;
+import com.minres.scviewer.database.ITxEvent;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb
 import com.minres.scviewer.database.ITxGenerator
@@ -24,24 +29,28 @@ import com.minres.scviewer.database.ITx
 
 class TxStream extends HierNode implements ITxStream {
 
-	Long id;
+	Long id
 	
 	IWaveformDb database
 	
-	String fullName;
+	String fullName
 	
-	String kind;
+	String kind
 	
-	def generators = [];
+	def generators = []
 	
-	private TreeSet<Tx> allTransactions;
-
+	int maxConcurrency
+	
+	private TreeMap<Long, List<ITxEvent>> events
+	
 	TxStream(IWaveformDb db, int id, String name, String kind){
 		super(name)
 		this.id=id
 		this.database=db
 		this.fullName=name
 		this.kind=kind
+		this.maxConcurrency=0
+		events = new TreeMap<Long, List<ITxEvent>>()
 	}
 
 	List<ITxGenerator> getGenerators(){
@@ -50,37 +59,50 @@ class TxStream extends HierNode implements ITxStream {
 
 	@Override
 	public IWaveformDb getDb() {
-		return database;
+		return database
 	}
 
-	// FIXME: maybe need to be somewhere else
-	public int getMaxConcurrrentTx() {
-		def rowendtime = [0]
-		getTransactions().each{Tx tx ->
-			def rowIdx = 0
-			for(rowIdx=0; rowendtime.size()<rowIdx || rowendtime[rowIdx]>tx.beginTime.value; rowIdx++);
-				if(rowendtime.size<=rowIdx){
-					rowendtime<<tx.endTime?.value?:tx.beginTime.value+1
-				} else {
-					rowendtime[rowIdx]=tx.endTime?.value?:tx.beginTime.value+1
+	@Override
+	public int getMaxConcurrency() {
+		if(!maxConcurrency){
+			generators.each {TxGenerator generator ->
+				generator.transactions.each{ Tx tx ->
+					putEvent(new TxEvent(ITxEvent.Type.BEGIN, tx))
+					putEvent(new TxEvent(ITxEvent.Type.END, tx))
 				}
+			}
+			def rowendtime = [0]
+			events.keySet().each{long time ->
+				def value=events.get(time)
+				def starts=value.findAll{ITxEvent event ->event.type==ITxEvent.Type.BEGIN}
+				starts.each {ITxEvent event ->
+					Tx tx = event.transaction
+					def rowIdx = 0
+					for(rowIdx=0; rowIdx<rowendtime.size() && rowendtime[rowIdx]>tx.beginTime; rowIdx++);
+					if(rowendtime.size<=rowIdx)
+						rowendtime<<tx.endTime
+					else
+						rowendtime[rowIdx]=tx.endTime
+					tx.concurrencyIndex=rowIdx
+				}
+			}
+			maxConcurrency=rowendtime.size()
 		}
-		return rowendtime.size()
+		return maxConcurrency
+	}
+
+	private putEvent(ITxEvent event){
+		if(!events.containsKey(event.time)) events.put(event.time, [])
+		events[event.time]<<event
+	}
+	
+	@Override
+	public NavigableMap getEvents() {
+		return events;
 	}
 
 	@Override
-	public NavigableSet<ITx> getTransactions() {
-		if(!allTransactions){
-			allTransactions=new TreeSet<Tx>()
-			allTransactions.addAll(generators.transactions.flatten())
-		}
-		return allTransactions
-	}
-
-	@Override
-	public ITx getTransactionById(long id) {
-		if(!allTransactions)
-			allTransactions=generators.transactions.flatten().sort{it.beginTime.value}
-		allTransactions.find{it.id==id}
+	public Collection getWaveformEventsAtTime(Long time) {
+		return events.get(time);
 	}
 }

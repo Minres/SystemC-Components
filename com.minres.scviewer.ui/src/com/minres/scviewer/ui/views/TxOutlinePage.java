@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.minres.scviewer.ui.views;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.LinkedList;
 
 import org.eclipse.jface.action.Action;
@@ -46,7 +48,7 @@ import com.minres.scviewer.ui.views.provider.TxDbTreeLabelProvider;
 /**
  * Creates an outline pagebook for this editor.
  */
-public class TxOutlinePage extends ContentOutlinePage implements  ISelectionListener, ISelectionProvider {
+public class TxOutlinePage extends ContentOutlinePage implements  ISelectionListener, ISelectionProvider, PropertyChangeListener {
 
 	public static final int ADD_TO_WAVE = 0;
 	public static final int ADD_ALL_TO_WAVE = 1;
@@ -54,7 +56,8 @@ public class TxOutlinePage extends ContentOutlinePage implements  ISelectionList
 	public static final int REMOVE_ALL_FROM_WAVE = 3;
 
 	private TxEditorPart editor;
-
+	TreeViewer contentOutlineViewer ;
+	
 	public TxOutlinePage(TxEditorPart editor) {
 		this.editor = editor;
 	}
@@ -68,7 +71,7 @@ public class TxOutlinePage extends ContentOutlinePage implements  ISelectionList
 	 */
 	public void createControl(Composite parent) {
 		super.createControl(parent);
-		TreeViewer contentOutlineViewer = getTreeViewer();
+		contentOutlineViewer = getTreeViewer();
 		contentOutlineViewer.addSelectionChangedListener(this);
 		// Set up the tree viewer
 		contentOutlineViewer.setContentProvider(new TxDbTreeContentProvider());
@@ -89,6 +92,7 @@ public class TxOutlinePage extends ContentOutlinePage implements  ISelectionList
 		getSite().getPage().addSelectionListener((ISelectionListener) this);
 		//getSite().getPage().addSelectionListener("SampleViewId",(ISelectionListener)this);
 		getSite().setSelectionProvider(this);
+		editor.getDatabase().addPropertyChangeListener(this);
 	}
 
 	/*
@@ -209,6 +213,13 @@ public class TxOutlinePage extends ContentOutlinePage implements  ISelectionList
 		else
 			action.setEnabled(true);
 		return action;
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		if("CHILDS".equals(evt.getPropertyName())) {
+			contentOutlineViewer.refresh();
+		}
 	}
 
 }

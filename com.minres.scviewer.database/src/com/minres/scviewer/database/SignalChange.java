@@ -1,36 +1,36 @@
 package com.minres.scviewer.database;
 
-public class SignalChange implements ISignalChange {
+public class SignalChange implements IWaveformEvent {
 	
-	EventTime time;
+	Long time;
 	
 	
 	public SignalChange() {
-		time=EventTime.ZERO;
+		time=0L;
 	}
 
-	public SignalChange(EventTime time) {
+	public SignalChange(Long time) {
 		super();
 		this.time = time;
 	}
 
 	@Override
-	public int compareTo(ISignalChange o) {
+	public int compareTo(IWaveformEvent o) {
 		return time.compareTo(o.getTime());
 	}
 
 	@Override
-	public EventTime getTime() {
+	public Long getTime() {
 		return time;
 	}
 
-	public void setTime(EventTime time) {
+	public void setTime(Long time) {
 		this.time = time;
 	}
 
 	@Override
-	public ISignalChange duplicate() throws CloneNotSupportedException {
-		return (ISignalChange) this.clone();
+	public IWaveformEvent duplicate() throws CloneNotSupportedException {
+		return (IWaveformEvent) this.clone();
 	}
 
 }

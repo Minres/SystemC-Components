@@ -39,9 +39,9 @@ public class SQLiteDatabase implements IDatabase {
 	@Override
 	public void close(ResultSet resultSet, Statement statement, Connection connection) {
 		try {
-			resultSet.close();
-			statement.close();
-			connection.close();
+			if(resultSet!=null) resultSet.close();
+			if(statement!=null) statement.close();
+			if(connection!=null) connection.close();
 		} catch (SQLException e) {}
 
 	}

@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.minres.scviewer.database.EventTime;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IWaveformDbLoader;
+import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.database.RelationType;
 import com.minres.scviewer.database.sqlite.db.IDatabase;
 import com.minres.scviewer.database.sqlite.db.SQLiteDatabase;
@@ -25,7 +25,7 @@ public class SQLiteDbLoader implements IWaveformDbLoader {
 
 	protected IDatabase database;
 	
-	protected List<IWaveform> streams;
+	protected List<IWaveform<? extends IWaveformEvent>> streams;
 
 	long timeResolution=1;
 
@@ -37,25 +37,25 @@ public class SQLiteDbLoader implements IWaveformDbLoader {
 	}
 
 	@Override
-	public EventTime getMaxTime() {
+	public Long getMaxTime() {
 		SQLiteDatabaseSelectHandler<ScvTxEvent> handler = new SQLiteDatabaseSelectHandler<ScvTxEvent>(ScvTxEvent.class,
-				database, "time = SELECT MAX(time) FROM ScvTxEvent");
+				database, "time = (SELECT MAX(time) FROM ScvTxEvent)");
 		try {
 			List<ScvTxEvent> event = handler.selectObjects();
 			if(event.size()>0)
-				return new EventTime(event.get(0).getTime());
+				return event.get(0).getTime();
 		} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 				| InvocationTargetException | SQLException | IntrospectionException e) {
 			e.printStackTrace();
 		}
-		return EventTime.ZERO;
+		return 0L;
 	}
 
 	@Override
-	public List<IWaveform> getAllWaves() {
+	public List<IWaveform<? extends IWaveformEvent>> getAllWaves() {
 		if(streams==null){
 			SQLiteDatabaseSelectHandler<ScvStream> handler = new SQLiteDatabaseSelectHandler<ScvStream>(ScvStream.class, database);
-			streams=new ArrayList<IWaveform>();
+			streams=new ArrayList<IWaveform<? extends IWaveformEvent>>();
 			try {
 				for(ScvStream scvStream:handler.selectObjects()){
 					streams.add(new TxStream(database, db, scvStream));

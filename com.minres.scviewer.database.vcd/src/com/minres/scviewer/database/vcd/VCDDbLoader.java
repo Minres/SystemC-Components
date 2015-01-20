@@ -2,25 +2,21 @@ package com.minres.scviewer.database.vcd;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
+import java.util.TreeMap;
 import java.util.Vector;
 
 import com.minres.scviewer.database.BitVector;
-import com.minres.scviewer.database.EventTime;
-import com.minres.scviewer.database.HierNode;
 import com.minres.scviewer.database.ISignal;
 import com.minres.scviewer.database.ISignalChange;
 import com.minres.scviewer.database.ISignalChangeMulti;
 import com.minres.scviewer.database.ISignalChangeSingle;
-import com.minres.scviewer.database.IWaveformDb;
-import com.minres.scviewer.database.IHierNode;
-import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IWaveformDbLoader;
+import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.database.InputFormatException;
-import com.minres.scviewer.database.SignalChange;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -29,7 +25,7 @@ import com.minres.scviewer.database.SignalChange;
 public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 
 	
-	private static final EventTime.Unit TIME_RES = EventTime.Unit.PS;
+	private static final Long TIME_RES = 1000L; // ps;
 
 	private IWaveformDb db;
 	
@@ -37,7 +33,7 @@ public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 	private Stack<String> moduleStack;
 	
 	/** The signals. */
-	private List<IWaveform> signals;
+	private List<IWaveform<? extends IWaveformEvent>> signals;
 	
 	private long maxTime;
 	
@@ -54,6 +50,7 @@ public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 	/* (non-Javadoc)
 	 * @see com.minres.scviewer.database.ITrDb#load(java.io.File)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean load(IWaveformDb db, File file) throws Exception {
 		this.db=db;
@@ -66,18 +63,26 @@ public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 				if (buffer[i] != x[i])
 					return false;
 
-		signals = new Vector<IWaveform>();
+		signals = new Vector<IWaveform<? extends IWaveformEvent>>();
 		moduleStack= new Stack<String>(); 
 		boolean res = new VCDFileParser(false).load(new FileInputStream(file), this);
 		moduleStack=null;
 		if(!res) throw new InputFormatException();
-		EventTime lastTime=new EventTime(maxTime, TIME_RES);
-		for(IWaveform signal:signals){
-			ISignalChange change = ((ISignal<ISignalChange>)signal).getSignalChanges().last();
-			if(lastTime.compareTo(change.getTime())>0){
-				ISignalChange lastChange = change.duplicate();
-				((SignalChange)lastChange).setTime(lastTime);
-				((ISignal<ISignalChange>)signal).getSignalChanges().add(lastChange);
+		// calculate max time of database
+		for(IWaveform<? extends IWaveformEvent> waveform:signals)
+			maxTime= Math.max(maxTime, ((ISignal<? extends ISignalChange>)waveform).getEvents().lastKey());
+		// extend signals to hav a last value set at max time
+		for(IWaveform<? extends IWaveformEvent> waveform:signals){
+			TreeMap<Long,? extends ISignalChange> events = ((VCDSignal<? extends ISignalChange>)waveform).values;
+			if(events.lastKey()<maxTime){
+				ISignalChange x = events.lastEntry().getValue();
+				if(x instanceof ISignalChangeSingle)
+					((VCDSignal<ISignalChangeSingle>)waveform).values.put(maxTime, 
+							new VCDSignalChangeSingle(maxTime, ((ISignalChangeSingle)x).getValue()));
+				else
+					if(x instanceof ISignalChangeMulti)
+						((VCDSignal<ISignalChangeMulti>)waveform).values.put(maxTime, 
+								new VCDSignalChangeMulti(maxTime, ((ISignalChangeMulti)x).getValue()));
 			}
 		}
 		return true;
@@ -87,15 +92,15 @@ public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 	 * @see com.minres.scviewer.database.ITrDb#getMaxTime()
 	 */
 	@Override
-	public EventTime getMaxTime() {
-		return new EventTime(maxTime, TIME_RES);
+	public Long getMaxTime() {
+		return maxTime* TIME_RES;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.minres.scviewer.database.ITrDb#getAllWaves()
 	 */
 	@Override
-	public List<IWaveform> getAllWaves() {
+	public List<IWaveform<? extends IWaveformEvent>> getAllWaves() {
 		return signals;
 	}
 
@@ -122,16 +127,17 @@ public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 	/* (non-Javadoc)
 	 * @see com.minres.scviewer.database.vcd.ITraceBuilder#newNet(java.lang.String, int, int)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public Integer newNet(String netName, int i, int width) {
 		int id = signals.size();
-		VCDSignal<? extends ISignalChange> signal;
+		VCDSignal<? extends IWaveformEvent> signal;
 		if(width==1){
 			signal = i<0 ? new VCDSignal<ISignalChangeSingle>(db, id, netName) :
-				new VCDSignal<ISignalChangeSingle>(signals.get(i), id, netName);
+				new VCDSignal<ISignalChangeSingle>((VCDSignal<ISignalChangeSingle>)signals.get(i), id, netName);
 		} else {
 			signal = i<0 ? new VCDSignal<ISignalChangeMulti>(db, id, netName, width) :
-				new VCDSignal<ISignalChangeMulti>(signals.get(i), id, netName);
+				new VCDSignal<ISignalChangeMulti>((VCDSignal<VCDSignalChangeMulti>)signals.get(i), id, netName);
 		};
 		signals.add(signal);
 		return id;
@@ -140,10 +146,9 @@ public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 	/* (non-Javadoc)
 	 * @see com.minres.scviewer.database.vcd.ITraceBuilder#getNetWidth(int)
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public int getNetWidth(int intValue) {
-		VCDSignal<? extends ISignalChange> signal = (VCDSignal<? extends ISignalChange>) signals.get(intValue);
+		VCDSignal<? extends IWaveformEvent> signal = (VCDSignal<? extends IWaveformEvent>) signals.get(intValue);
 		return signal.getWidth();
 	}
 
@@ -152,17 +157,14 @@ public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public void appendTransition(int intValue, long fCurrentTime, BitVector decodedValues) {
-		VCDSignal<? extends ISignalChange> signal = (VCDSignal<? extends ISignalChange>) signals.get(intValue);
-		EventTime time = new EventTime(fCurrentTime, TIME_RES);
+	public void appendTransition(int signalId, long fCurrentTime, BitVector decodedValues) {
+		VCDSignal<? extends IWaveformEvent> signal = (VCDSignal<? extends IWaveformEvent>) signals.get(signalId);
+		Long time = fCurrentTime* TIME_RES;
 		if(signal.getWidth()==1){
-			VCDSignalChangeSingle change = new VCDSignalChangeSingle(time, decodedValues.getValue()[0]);
-			((VCDSignal<ISignalChangeSingle>)signal).addSignalChange(change);
+			((VCDSignal<ISignalChangeSingle>)signal).values.put(time, new VCDSignalChangeSingle(time, decodedValues.getValue()[0]));
 		} else {
-			VCDSignalChangeMulti change = new VCDSignalChangeMulti(time, decodedValues);
-			((VCDSignal<VCDSignalChangeMulti>)signal).addSignalChange(change);			
+			((VCDSignal<VCDSignalChangeMulti>)signal).values.put(time, new VCDSignalChangeMulti(time, decodedValues));
 		}
-		maxTime= Math.max(maxTime, fCurrentTime);
 	}
 
 }

@@ -1,15 +1,18 @@
 package com.minres.scviewer.database.vcd;
 
-import java.util.NavigableSet;
-import java.util.TreeSet;
+import java.util.Collection;
+import java.util.Map.Entry;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 
-import com.minres.scviewer.database.EventTime;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.TreeMultimap;
 import com.minres.scviewer.database.HierNode;
 import com.minres.scviewer.database.ISignal;
 import com.minres.scviewer.database.ISignalChange;
+import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb;
-import com.minres.scviewer.database.SignalChange;
 
 public class VCDSignal<T extends ISignalChange> extends HierNode implements ISignal<T> {
 
@@ -23,7 +26,7 @@ public class VCDSignal<T extends ISignalChange> extends HierNode implements ISig
 	
 	private IWaveformDb db;
 
-	TreeSet<ISignalChange> values;
+	TreeMap<Long, T> values;
 	
 	public VCDSignal(IWaveformDb db, String name) {
 		this(db, 0, name, 1);
@@ -39,16 +42,16 @@ public class VCDSignal<T extends ISignalChange> extends HierNode implements ISig
 		fullName=name;
 		this.id=id;
 		this.width=width;
-		this.values=new TreeSet<ISignalChange>();
+		this.values=new TreeMap<Long, T>();
 	}
 
 	@SuppressWarnings("unchecked")
-	public VCDSignal(IWaveform other, int id, String name) {
+	public VCDSignal(IWaveform<? extends ISignalChange> other, int id, String name) {
 		super(name);
 		fullName=name;
 		this.id=id;
 		assert(other instanceof VCDSignal<?>);
-		this.width=((VCDSignal<? extends ISignalChange>)other).width;
+		this.width=((VCDSignal<? extends IWaveformEvent>)other).width;
 		this.values=((VCDSignal<T>)other).values;
 		this.db=other.getDb();
 	}
@@ -82,29 +85,19 @@ public class VCDSignal<T extends ISignalChange> extends HierNode implements ISig
 	}
 
 	public void addSignalChange(T change){
-		values.add(change);
+		values.put(change.getTime(), change);
 	}
 	
 	@Override
-	public NavigableSet<ISignalChange> getSignalChanges() {
+	public NavigableMap<Long, T> getEvents() {
 		return values;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public T getSignalChangeByTime(EventTime time) {
-		return (T) values.floor(new SignalChange(time));
+	public T getWaveformEventsAtTime(Long time) {
+		return values.get(time);
 	}
 
-	@Override
-	public NavigableSet<ISignalChange> getSignalChangesByTimes(EventTime start, EventTime end) {
-		ISignalChange low = values.floor(new SignalChange(start));
-		ISignalChange high = values.ceiling(new SignalChange(end));
-		if(high!=null)
-			return values.subSet(low, true, high, true);
-		else
-			return values.subSet(low, true, values.last(), true);
-	}
 
 
 }

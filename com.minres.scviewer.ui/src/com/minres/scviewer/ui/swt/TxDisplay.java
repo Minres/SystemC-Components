@@ -12,15 +12,15 @@ package com.minres.scviewer.ui.swt;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.NavigableMap;
+import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import org.eclipse.core.runtime.ListenerList;
+import org.eclipse.jface.resource.FontDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -33,52 +33,82 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
+import org.eclipse.swt.events.ControlListener;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.graphics.TextLayout;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.layout.RowLayout;
+import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.ScrollBar;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 import swing2swt.layout.BorderLayout;
 
 import com.minres.scviewer.database.ISignal;
-import com.minres.scviewer.database.ISignalChange;
 import com.minres.scviewer.database.ITx;
+import com.minres.scviewer.database.ITxEvent;
 import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.ui.handler.GotoDirection;
 
 public class TxDisplay implements PropertyChangeListener, ISelectionProvider, MouseListener{
-
-    private static final String VALUEWIDGET = "VALUEWIDGET";
-	private static final String NAMEWIDGET = "NAMEWIDGET";
-	private static final String WAVEFORM = "WAVEFORM";
 	private ListenerList listeners = new ListenerList();
     private IWaveform currentStreamSelection;  
     private ITx currentSelection;
+    private IWaveform currentWaveformSelection;
+
+    private ScrolledComposite nameListScrolled;
 	private ScrolledComposite valueListScrolled;
-	private ScrolledComposite nameListScrolled;
-	private Composite nameList;
-	private Composite valueList;
-	private ScrolledComposite trackListScrolled;
-	private Composite trackList;
+
+	private Canvas nameList;
+	private Canvas valueList;
+	private WaveformCanvas trackList;
+
 	private Composite top;
-	private ArrayList<IWaveform> streams=new ArrayList<IWaveform>();
+	ObservableList<IWaveform> streams;
 	private Composite trackPane;
 	private Ruler ruler;
-	private HashMap<IWaveform, IWaveformWidget> trackMap = new HashMap<IWaveform, IWaveformWidget>();
-
+	TreeMap<Integer, IWaveform> trackVerticalOffset;
+	
+//	private long maxTime=0; 
+	private Font nameFont;
+	private Font valueFont;
+	
     public TxDisplay(Composite parent) {
+    	trackVerticalOffset = new TreeMap<Integer, IWaveform>();
+    	Display d =parent.getDisplay();
+    	parent.addDisposeListener(new DisposeListener() {
+			@Override
+			public void widgetDisposed(DisposeEvent e) {
+				dispose();
+			}
+		});
+    	FontDescriptor fontDescriptor = FontDescriptor.createFrom(d.getSystemFont()).setStyle(SWT.BOLD);
+    	nameFont = fontDescriptor.createFont(d);
+    	valueFont = fontDescriptor.createFont(d);
+    	
+    	streams=new ObservableList<IWaveform>();
+    	streams.addPropertyChangeListener(this);
+    	
 		top = new Composite(parent, SWT.NONE);
 		top.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
@@ -90,97 +120,114 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 		
 		SashForm leftSash = new SashForm(composite, SWT.SMOOTH);
 		leftSash.setBackground(leftSash.getDisplay().getSystemColor( SWT.COLOR_GRAY));
-//		leftSash.addControlListener(new ControlAdapter() {
-//			public void controlResized(ControlEvent e) {
-//				recalculateNameBounds();
-//				recalculateValueBounds();
-//			}
-//		});
+
 		Composite namePane = createTextPane(leftSash, "Name");
 		namePane.setBackground(namePane.getDisplay().getSystemColor( SWT.COLOR_WIDGET_BACKGROUND));
-		namePane.addControlListener(new ControlAdapter() {
-			public void controlResized(ControlEvent e) {
-				recalculateNameBounds();
-			}
-		});
 	
 		nameListScrolled = new ScrolledComposite(namePane, SWT.H_SCROLL | SWT.V_SCROLL);
 		nameListScrolled.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-		nameListScrolled.setExpandHorizontal(true);
-		nameListScrolled.setExpandVertical(true);
-		nameList = new Composite(nameListScrolled, SWT.NONE);
-		nameList.setLayout(createScrolledLayoutData(false));
-
+		nameListScrolled.setAlwaysShowScrollBars(true);
+		nameListScrolled.addControlListener(new ControlAdapter(){
+			@Override
+			public void controlResized(ControlEvent e) {
+				nameListScrolled.getVerticalBar().setVisible(false);
+				
+			}
+		});
+		nameList = new Canvas(nameListScrolled, SWT.NONE){
+			@Override
+			public Point computeSize(int wHint, int hHint, boolean changed) {
+				Rectangle bounds= super.getClientArea();
+				return new Point(bounds.width, bounds.height);
+			}
+		};
+		nameList.addListener(SWT.Paint, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				GC gc = event.gc;
+	            Rectangle rect = ((Canvas)event.widget).getClientArea();
+	            paintNames(gc, rect);				
+			}
+		});
+		nameList.addMouseListener(this);
 		nameListScrolled.setContent(nameList);
 
 		Composite valuePane = createTextPane(leftSash, "Value");
 		valuePane.setBackground(valuePane.getDisplay().getSystemColor( SWT.COLOR_WIDGET_BACKGROUND));
-		valuePane.addControlListener(new ControlAdapter() {
-			public void controlResized(ControlEvent e) {
-				recalculateValueBounds();
-			}
-		});
 		valueListScrolled = new ScrolledComposite(valuePane, SWT.H_SCROLL | SWT.V_SCROLL);
 		valueListScrolled.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-		valueListScrolled.setExpandHorizontal(true);
-		valueListScrolled.setExpandVertical(true);
-		valueList = new Composite(valueListScrolled, SWT.NONE);
-		valueList.setLayout(createScrolledLayoutData(true));
+		valueListScrolled.setAlwaysShowScrollBars(true);
+		valueListScrolled.addControlListener(new ControlAdapter(){
+			@Override
+			public void controlResized(ControlEvent e) {
+				valueListScrolled.getVerticalBar().setVisible(false);
+				
+			}
+		});
+		valueList = new Canvas(valueListScrolled, SWT.NONE){
+			@Override
+			public Point computeSize(int wHint, int hHint, boolean changed) {
+				Rectangle bounds= super.getClientArea();
+				return new Point(bounds.width, bounds.height);
+			}
+		};
+		valueList.addListener(SWT.Paint, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				GC gc = event.gc;
+	            Rectangle rect = ((Canvas)event.widget).getClientArea();
+	            paintValues(gc, rect);				
+			}
+		});
+		valueList.addMouseListener(this);
 		valueListScrolled.setContent(valueList);
-
 		
 		trackPane = new Composite(topSash, SWT.NONE);
 		trackPane.setLayout(new BorderLayout(0, 0));
 		ruler = new Ruler(trackPane, SWT.NONE, 0);
 		ruler.setLayoutData(BorderLayout.NORTH);
+
+		trackList = new WaveformCanvas(trackPane, SWT.NONE);
+		trackList.setLayoutData(BorderLayout.CENTER);
+		trackList.streams=streams;
+		trackList.addTrackPainter(new TrackPainter(trackList));
+		trackList.setMaxTime(1);
+		trackList.addMouseListener(this);
 		
-		trackListScrolled = new ScrolledComposite(trackPane, SWT.H_SCROLL | SWT.V_SCROLL);
-		trackListScrolled.setExpandVertical(true);
-		trackListScrolled.setExpandHorizontal(true);
-		trackList = new Composite(trackListScrolled, SWT.NONE);
-		trackList.setLayout(createScrolledLayoutData(false));
-		trackListScrolled.setContent(trackList);
-        nameListScrolled.getVerticalBar().addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
+		nameListScrolled.getVerticalBar().addSelectionListener(new SelectionAdapter() {
+ 			public void widgetSelected(SelectionEvent e) {
 				int y = ((ScrollBar) e.widget).getSelection();
 				valueListScrolled.setOrigin(valueListScrolled.getOrigin().x, y);
-				trackListScrolled.setOrigin(trackListScrolled.getOrigin().x, y);
+				trackList.scrollToY(y);
 			}
         });
         valueListScrolled.getVerticalBar().addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				int y = ((ScrollBar) e.widget).getSelection();
 				nameListScrolled.setOrigin(nameListScrolled.getOrigin().x, y);
-				trackListScrolled.setOrigin(trackListScrolled.getOrigin().x, y);
+				trackList.scrollToY(y);
 			}
         });
-		trackListScrolled.getContent().addControlListener(new ControlAdapter() {
-			@Override
-			public void controlMoved(ControlEvent e) {
-				ruler.setStartPoint(trackListScrolled.getHorizontalBar().getSelection());
-				int y = trackListScrolled.getVerticalBar().getSelection();
+        trackList.getHorizontalBar().addSelectionListener(new SelectionAdapter() {
+        	public void widgetSelected(SelectionEvent e) {
+        		ruler.setStartPoint(trackList.getHorizontalBar().getSelection());
+        	}
+		});
+        trackList.getVerticalBar().addSelectionListener(new SelectionAdapter() {
+        	public void widgetSelected(SelectionEvent e) {
+				int y = trackList.getVerticalBar().getSelection();
 				nameListScrolled.setOrigin(nameListScrolled.getOrigin().x, y);
 				valueListScrolled.setOrigin(valueListScrolled.getOrigin().x, y);
-			}
+        	}
 		});
 		topSash.setWeights(new int[] {30, 70});
 		leftSash.setWeights(new int[] {75, 25});
-        
-		top.layout(true, true);
-		streamListChanged();
 	}
 
-	protected RowLayout createScrolledLayoutData(boolean center) {
-		RowLayout nameListLayout = new RowLayout(SWT.VERTICAL);
-		nameListLayout.spacing = 2;
-		nameListLayout.marginTop = 0;
-		nameListLayout.marginRight = 0;
-		nameListLayout.marginLeft = 0;
-		nameListLayout.marginBottom = 0;
-		nameListLayout.fill = true;
-		nameListLayout.wrap = false;
-		nameListLayout.center=center;
-		return nameListLayout;
+
+	protected void dispose() {
+		nameFont.dispose();
+		valueFont.dispose();
 	}
 
 	private Composite createTextPane(SashForm leftSash, String text) {
@@ -207,114 +254,55 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 		return namePane;
 	}
 
-	public void streamListChanged() {
-		LinkedList<IWaveform>toAdd = new LinkedList<IWaveform>();
-		toAdd.addAll(streams);
-		for(Control child:trackList.getChildren()){
-			IWaveform stream=(IWaveform) child.getData(WAVEFORM);
-			if(!streams.contains(stream)){
-				child.setVisible(false);
-				((Control)(child.getData(NAMEWIDGET))).setVisible(false);
-				((Control)(child.getData(VALUEWIDGET))).setVisible(false);
-			}else{
-				toAdd.remove(stream);
-				child.setVisible(true);
-				((Control)(child.getData(NAMEWIDGET))).setVisible(true);
-				((Control)(child.getData(VALUEWIDGET))).setVisible(true);
-			}
-		}
-		for(IWaveform wave: toAdd){
-			if(wave instanceof ITxStream){
-				ITxStream stream = (ITxStream) wave;
-				Track track = new Track(trackList,SWT.NONE);
-				track.setTransactions(stream.getTransactions());
-				track.setData(WAVEFORM, stream);
-				track.addMouseListener(this);
-				Point trackSize = track.computeSize(SWT.DEFAULT,SWT.DEFAULT);
-				
-				Label trackName = new Label(nameList, SWT.NONE);
-				trackName.setText(stream.getFullName());
-				RowData trackNamelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
-				trackName.setLayoutData(trackNamelayoutData);
-				trackName.setData(WAVEFORM, stream);
-				trackName.addMouseListener(this);
-				track.setData(NAMEWIDGET, trackName);
-				
-				Label trackValue = new Label(valueList, SWT.NONE);
-				trackValue.setText("-");
-				RowData trackValuelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
-				trackValue.setLayoutData(trackValuelayoutData);
-				trackValue.setData(WAVEFORM, stream);
-				trackValue.addMouseListener(this);
-				track.setData(VALUEWIDGET, trackValue);
-				trackMap.put(stream, track);
-			} else if(wave instanceof ISignal<?>){
-				@SuppressWarnings("unchecked")
-				ISignal<ISignalChange> isignal = (ISignal<ISignalChange>) wave;
-				SignalWidget signal = new SignalWidget(trackList, SWT.NONE);
-				signal.setTransactions(isignal);
-				signal.setData(WAVEFORM, isignal);
-				signal.addMouseListener(this);
-				Point trackSize = signal.computeSize(SWT.DEFAULT,SWT.DEFAULT);
-				
-				Label trackName = new Label(nameList, SWT.NONE);
-				trackName.setText(isignal.getFullName());
-				RowData trackNamelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
-				trackName.setLayoutData(trackNamelayoutData);
-				trackName.setData(WAVEFORM, isignal);
-				trackName.addMouseListener(this);
-				signal.setData(NAMEWIDGET, trackName);
-				
-				Label trackValue = new Label(valueList, SWT.NONE);
-				trackValue.setText("-");
-				RowData trackValuelayoutData = new RowData(SWT.DEFAULT, trackSize.y);
-				trackValue.setLayoutData(trackValuelayoutData);
-				trackValue.setData(WAVEFORM, isignal);
-				trackValue.addMouseListener(this);
-				signal.setData(VALUEWIDGET, trackValue);
-				trackMap.put(isignal, signal);
-			}
-		}
-		recalculateNameBounds();
-		recalculateValueBounds();		
-		Point trackSize=trackList.computeSize(SWT.DEFAULT, SWT.DEFAULT);
-		trackListScrolled.setMinSize(trackSize);
-		top.layout(true, true);
-	}
-
-	protected void recalculateValueBounds() {
-		if(streams.size()>0){
-			Point size = valueList.computeSize(SWT.DEFAULT, SWT.DEFAULT);
-			valueListScrolled.setMinSize(size);
-			valueListScrolled.setAlwaysShowScrollBars(true);
-			valueListScrolled.getVerticalBar().setVisible(false);
-		}
-	}
-
-	protected void recalculateNameBounds() {
-		if(streams.size()>0){
-			Point size = nameList.computeSize(SWT.DEFAULT, SWT.DEFAULT);
-			nameListScrolled.setMinSize(size);
-			nameListScrolled.setAlwaysShowScrollBars(true);
-			nameListScrolled.getVerticalBar().setVisible(false);
-		}
-	}
-
 	@Override
 	public void propertyChange(PropertyChangeEvent pce) {
-		currentSelection=null;
-		ITxStream str = (ITxStream)pce.getNewValue();
-		if(str instanceof ITxStream)
-			currentStreamSelection=(ITxStream)str;
-		if(currentStreamSelection!=null)
-			setSelection(getSelection());
-		else
-			setSelection(StructuredSelection.EMPTY);
+		if("size".equals(pce.getPropertyName())) {
+			updateTracklist();
+		}
+	}
+
+	protected void updateTracklist() {
+		int yoffs=0;
+		int nameMaxWidth=0;
+		int valueMaxWidth=0;
+		
+		IWaveformPainter painter=null;
+		trackVerticalOffset.clear();
+		trackList.clearAllWavefromPainter();
+		boolean even=true;
+		TextLayout tl = new TextLayout(trackList.getDisplay());
+		for(IWaveform waveform:streams){
+			int height=trackList.getTrackHeight();
+			if(waveform instanceof ITxStream){
+				height*=((ITxStream)waveform).getMaxConcurrency();
+				painter= new StreamPainter(trackList, even, height, (ITxStream) waveform);
+			} else if(waveform instanceof ISignal<?>){
+				painter= new SignalPainter(trackList, even, height, (ISignal<?>) waveform);
+			}
+			trackList.addWavefromPainter(yoffs, painter);
+			trackVerticalOffset.put(yoffs, waveform);
+			tl.setText(waveform.getFullName());
+			nameMaxWidth=Math.max(nameMaxWidth, tl.getBounds().width);
+			valueMaxWidth=nameMaxWidth;
+			yoffs+=height;
+			even=!even;
+		}
+		valueList.setSize(nameMaxWidth, yoffs);
+		nameList.setSize(valueMaxWidth, yoffs);
+		valueList.redraw();
+		nameList.redraw();
+		trackList.redraw();
+		top.layout(new Control[]{valueList, nameList, trackList});
 	}
 	
 	@Override
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
 		listeners.add(listener);		
+	}
+
+	@Override
+	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
+		listeners.remove(listener);  
 	}
 
 	@Override
@@ -328,30 +316,47 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 	}
 
 	@Override
-	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
-		listeners.remove(listener);  
-	}
-
-	@Override
 	public void setSelection(ISelection selection) {
+		boolean selectionChanged=false;
 		if(selection instanceof IStructuredSelection){
 			Object sel =((IStructuredSelection)selection).getFirstElement();
 			if(sel instanceof ITx && currentSelection!=sel){
-				if(currentSelection!=null){
-					ITxStream stream = currentSelection.getStream();
-					if(trackMap.containsKey(stream)) trackMap.get(stream).highlight(null);
-				}
 				currentSelection=(ITx) sel;
-				ITxStream stream = currentSelection.getStream();
-				if(trackMap.containsKey(stream)){
-					Transaction trans = trackMap.get(stream).highlight(sel);
-					trackListScrolled.showControl(trans);
-				}
-				Object[] list = listeners.getListeners();  
-				for (int i = 0; i < list.length; i++) {  
-					((ISelectionChangedListener) list[i]).selectionChanged(new SelectionChangedEvent(this, selection));  
-				}
+				currentWaveformSelection = currentSelection.getStream();
+				selectionChanged=true;
+			} else if(sel instanceof IWaveform && currentStreamSelection!=sel){
+				currentSelection=null;
+				currentWaveformSelection = (IWaveform) sel;
+				selectionChanged=true;
 			}
+		} else {
+			if(currentSelection!=null || currentWaveformSelection!=null) selectionChanged=true;
+			currentSelection=null;
+			currentWaveformSelection = null;			
+		}
+		if(selectionChanged){
+			Object[] list = listeners.getListeners();  
+			for (int i = 0; i < list.length; i++) {  
+				((ISelectionChangedListener) list[i]).selectionChanged(new SelectionChangedEvent(this, selection));  
+			}
+		}
+	}
+
+	public void moveSelection(GotoDirection direction) {
+		if(currentStreamSelection instanceof ITxStream<?>){
+			ITxStream<ITxEvent> stream = (ITxStream<ITxEvent>) currentStreamSelection;
+			ITx transaction=null;
+			if(direction==GotoDirection.NEXT){
+				Entry<Long, Collection<ITxEvent>> entry = stream.getEvents().higherEntry(currentSelection.getBeginTime());
+				if(entry!=null)
+					transaction = entry.getValue().iterator().next().getTransaction();
+			}else if(direction==GotoDirection.PREV){
+				Entry<Long, Collection<ITxEvent>> entry = stream.getEvents().lowerEntry(currentSelection.getBeginTime());
+				if(entry!=null)
+					transaction = entry.getValue().iterator().next().getTransaction();
+			}
+			if(transaction!=null)
+				setSelection(new StructuredSelection(transaction));				
 		}
 	}
 
@@ -361,15 +366,12 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 
 	@Override
 	public void mouseDown(MouseEvent e) {
-		if(e.data!=null){
-			StructuredSelection sel = new StructuredSelection(((Transaction)e.data).getData());
-			setSelection(sel);
-		}else if(e.widget instanceof Track){
-			StructuredSelection sel = new StructuredSelection(new Object[]{ e.widget.getData(WAVEFORM)});
-			setSelection(sel);
-		}else if(e.widget instanceof Label){
-			StructuredSelection sel = new StructuredSelection(new Object[]{ e.widget.getData(WAVEFORM)});
-			setSelection(sel);
+		if(e.widget==trackList){
+			
+		}else if(e.widget==valueList){
+			
+		}else if(e.widget==nameList){
+			
 		}
 	}
 
@@ -377,56 +379,53 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 	public void mouseUp(MouseEvent e) {		
 	}
 	
-	public boolean addStream(IWaveform stream){
-		boolean res = streams.add(stream);
-		streamListChanged();
-		return res;
-	}
-
-	public boolean addAllStreams(ITxStream[] streams) {
-		boolean res =  this.streams.addAll(Arrays.asList(streams));
-		streamListChanged();
-		return res;
-	}
-
-	public boolean addAllStreams(Collection<? extends ITxStream> paramCollection){
-		boolean res =  streams.addAll(paramCollection);
-		streamListChanged();
-		return res;
-	}
-
-	public boolean removeStream(IWaveform obj){
-		boolean res =  streams.remove(obj);
-		streamListChanged();
-		return res;
-	}
-
-	public boolean removeAllStreams(Collection<?> paramCollection){
-		boolean res =  streams.removeAll(paramCollection);
-		streamListChanged();
-		return res;
-	}
-
 	public List<IWaveform> getStreamList(){
-		return Collections.unmodifiableList(streams);
+		return streams;
 	}
 
-	public boolean removeAllStreams(ITxStream[] streams) {
-		boolean res =  this.streams.removeAll(Arrays.asList(streams));
-		streamListChanged();
-		return res;
+	protected void paintNames(GC gc, Rectangle rect) {
+		if(streams.size()>0){
+			Integer firstKey=trackVerticalOffset.floorKey(rect.y);
+			if(firstKey==null) firstKey=trackVerticalOffset.firstKey();
+			Integer lastKey = trackVerticalOffset.floorKey(rect.y+rect.height);
+			Rectangle subArea = new Rectangle(rect.x, 0, rect.width, 0);
+			if(lastKey==firstKey){
+				drawTextFormat(gc, subArea, firstKey, trackVerticalOffset.get(firstKey).getFullName());
+			}else{
+				for(Entry<Integer, IWaveform> entry : trackVerticalOffset.subMap(firstKey, true, lastKey, true).entrySet()){
+					drawTextFormat(gc, subArea, entry.getKey(), entry.getValue().getFullName());
+				}
+			}
+		}		
 	}
 
-	public void moveSelection(GotoDirection direction) {
-		if(currentStreamSelection instanceof ITxStream){
-			ITx transaction=null;
-			if(direction==GotoDirection.NEXT)
-				 transaction = ((ITxStream)currentStreamSelection).getTransactions().higher(currentSelection);
-			else if(direction==GotoDirection.PREV)
-				transaction = ((ITxStream)currentStreamSelection).getTransactions().lower(currentSelection);
-			if(transaction!=null)
-				setSelection(new StructuredSelection(transaction));				
-		}
+	protected void paintValues(GC gc, Rectangle rect) {
+		if(streams.size()>0){
+			Integer firstKey=trackVerticalOffset.floorKey(rect.y);
+			if(firstKey==null) firstKey=trackVerticalOffset.firstKey();
+			Integer lastKey = trackVerticalOffset.floorKey(rect.y+rect.height);
+			Rectangle subArea = new Rectangle(rect.x, 0, rect.width, 0);
+			if(lastKey==firstKey){
+				drawTextFormat(gc, subArea, firstKey, trackVerticalOffset.get(firstKey).getFullName());
+			}else{
+				for(Entry<Integer, IWaveform> entry : trackVerticalOffset.subMap(firstKey, true, lastKey, true).entrySet()){
+					drawTextFormat(gc, subArea, entry.getKey(), "---");
+				}
+			}
+		}		
+	}
+
+	protected void drawTextFormat(GC gc, Rectangle subArea, int yOffset, String p) {
+		Point size = gc.textExtent(p);
+		gc.drawText(p, subArea.x, subArea.y + yOffset+(trackList.getTrackHeight()-size.y)/2, true);
+	}
+
+	public long getMaxTime() {
+		return trackList.getMaxTime();
+	}
+
+	public void setMaxTime(long maxTime) {
+		this.trackList.setMaxTime(maxTime);
 	}
 
 }
