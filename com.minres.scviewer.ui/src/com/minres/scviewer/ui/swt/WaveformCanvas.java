@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 MINRES Technologies GmbH.
+ * Copyright (c) 2014, 2015 MINRES Technologies GmbH and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,10 @@
  *******************************************************************************/
 package com.minres.scviewer.ui.swt;
 
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Point2D;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import org.eclipse.swt.SWT;
@@ -26,11 +25,9 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.graphics.Region;
 import org.eclipse.swt.graphics.Transform;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
@@ -38,7 +35,10 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.ScrollBar;
 import org.eclipse.wb.swt.SWTResourceManager;
 
+import com.google.common.collect.Lists;
+import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.database.IWaveformEvent;
 
 public class WaveformCanvas extends Canvas {
 	public enum Colors {
@@ -54,25 +54,27 @@ public class WaveformCanvas extends Canvas {
 		SIGNAL1,
 		SIGNALZ,
 		SIGNALX,
-		SIGNAL_TEXT
+		SIGNAL_TEXT,
+		CURSOR
 	}
 
 	Color[] colors=new Color[Colors.values().length];
-
-	/* zooming rates in x and y direction are equal.*/
-	final float ZOOMIN_RATE = 1.1f; /* zoomin rate */
-	final float ZOOMOUT_RATE = 0.9f; /* zoomout rate */
 	
 	private int trackHeight = 50;
 	private long scaleFactor = 1000000L;
+	private int  level=6;
 	private long maxTime;
-	
 	protected Point origin; /* original size */
 	protected Transform transform;
-	
+	protected Ruler ruler;
 	protected List<IPainter> painterList;
 	TreeMap<Integer, IWaveformPainter> trackVerticalOffset;
-	List<IWaveform> streams;
+	
+	protected List<IWaveform<? extends IWaveformEvent>> streams;
+
+	ITx currentSelection;
+	IWaveform<? extends IWaveformEvent> currentWaveformSelection;
+
 
 	/**
 	 * Constructor for ScrollableCanvas.
@@ -112,8 +114,8 @@ public class WaveformCanvas extends Canvas {
 			colors[Colors.LINE.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_RED);
 			colors[Colors.LINE_HIGHLITE.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_CYAN);
 			colors[Colors.TRACK_BG_EVEN.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_BLACK);
-			colors[Colors.TRACK_BG_ODD.ordinal()]=SWTResourceManager.getColor(25,25,25);
-			colors[Colors.TRACK_BG_HIGHLITE.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_GRAY);
+			colors[Colors.TRACK_BG_ODD.ordinal()]=SWTResourceManager.getColor(40,40,40);
+			colors[Colors.TRACK_BG_HIGHLITE.ordinal()]=SWTResourceManager.getColor(40,40,80);
 			colors[Colors.TX_BG.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_GREEN);
 			colors[Colors.TX_BG_HIGHLITE.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
 			colors[Colors.TX_BORDER.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_RED);
@@ -122,7 +124,28 @@ public class WaveformCanvas extends Canvas {
 			colors[Colors.SIGNALZ.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_GRAY);
 			colors[Colors.SIGNALX.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_RED);
 			colors[Colors.SIGNAL_TEXT.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_WHITE);
+			colors[Colors.CURSOR.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_DARK_RED);
 		}	
+	}
+
+	public List<IWaveform<? extends IWaveformEvent>> getStreams() {
+		return streams;
+	}
+
+	public void setStreams(List<IWaveform<? extends IWaveformEvent>> streams) {
+		this.streams = streams;
+	}
+
+	public Ruler getRuler(){
+		return ruler;
+	}
+	
+	public void setRuler(Ruler ruler) {
+		this.ruler=ruler;
+	}
+
+	public Object getOrigin() {
+		return origin;
 	}
 
 	public long getMaxTime() {
@@ -143,20 +166,27 @@ public class WaveformCanvas extends Canvas {
 		syncScrollBars();
 	}
 
+	public void setZoomLevel(int level) {
+		this.level=level;
+		this.scaleFactor = (long) Math.pow(10, level);
+		if(ruler!=null)	ruler.setStartPoint(-origin.x*scaleFactor);
+		syncScrollBars();
+	}
+
+	public int getZoomLevel() {
+		return level;
+	}
+	
 	public long getScaleFactor() {
 		return scaleFactor;
 	}
 
-	public void setScaleFactor(long scaleFactor) {
-		this.scaleFactor = scaleFactor;
-	}
-
-	public void addTrackPainter(IPainter painter) {
+	public void addPainter(IPainter painter) {
 		painterList.add(painter);
 		redraw();
 	}
 
-	public void removeTrackPainter(IPainter painter){
+	public void removePainter(IPainter painter){
 		painterList.remove(painter);
 		redraw();
 	}
@@ -196,6 +226,7 @@ public class WaveformCanvas extends Canvas {
 	private void scrollHorizontally(ScrollBar scrollBar) {
 		if (painterList.size()==0) return;
 		origin.x= -scrollBar.getSelection();
+		if(ruler!=null)	ruler.setStartPoint(-origin.x*scaleFactor);
 		syncScrollBars();
 	}
 
@@ -271,6 +302,7 @@ public class WaveformCanvas extends Canvas {
 		}
 		vertical.setSelection(-origin.y);
 		vertical.setThumb(ch);
+		ruler.setScaleFactor(scaleFactor);
 		redraw();
 	}
 
@@ -293,5 +325,44 @@ public class WaveformCanvas extends Canvas {
 			initScrollBars();
 		}
 	}
-	
+
+	public Object getClicked(Point point) {
+		for(IPainter p:Lists.reverse(painterList)){
+			if(p instanceof TrackPainter){
+				int y= point.y-origin.y;
+				int x=point.x-origin.x;
+				Entry<Integer, IWaveformPainter> entry = trackVerticalOffset.floorEntry(y);
+				if(entry!=null){
+					if(entry.getValue() instanceof StreamPainter){
+						return ((StreamPainter)entry.getValue()).getClicked(new Point(x,y-entry.getKey()));
+					}else if(entry.getValue() instanceof SignalPainter)
+						return ((SignalPainter)entry.getValue()).getSignal();
+				}				
+			}else if(p instanceof CursorPainter){
+				if(Math.abs(point.x*scaleFactor-((CursorPainter)p).getTime())<2){
+					return p;
+				}
+			}
+		}
+		return null;
+	}
+
+	public void setSelected(ITx currentSelection, IWaveform<? extends IWaveformEvent> currentWaveformSelection) {
+		this.currentSelection=currentSelection;
+		this.currentWaveformSelection=currentWaveformSelection;
+		if(currentSelection!=null) reveal(currentSelection.getBeginTime(), currentSelection.getEndTime());
+		redraw();
+	}
+
+	public void reveal(Long beginTime, Long endTime) {
+		int lower = (int) (beginTime/scaleFactor);
+		int higher=(int) (endTime/scaleFactor);
+		Point size = getSize();
+		if(lower<-origin.x){
+			scrollToX(lower);
+		} else if(higher>(size.x-origin.x)){
+			scrollToX(higher-size.x);
+		}
+	}
+
 }

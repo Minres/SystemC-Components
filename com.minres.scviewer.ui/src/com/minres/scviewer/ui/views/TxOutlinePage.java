@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2012 IT Just working.
+ * Copyright (c) 2014, 2015 MINRES Technologies GmbH and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     IT Just working - initial API and implementation
+ *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
 package com.minres.scviewer.ui.views;
 
@@ -27,20 +27,16 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.IPageSite;
-import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 
 import com.minres.scviewer.database.IHierNode;
-import com.minres.scviewer.database.ITxStream;
-import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.ui.TxEditorPart;
 import com.minres.scviewer.ui.views.provider.TxDbTreeContentProvider;
 import com.minres.scviewer.ui.views.provider.TxDbTreeLabelProvider;
@@ -119,7 +115,7 @@ public class TxOutlinePage extends ContentOutlinePage implements  ISelectionList
 	 */
 	public void init(IPageSite pageSite) {
 		super.init(pageSite);
-		IActionBars bars = pageSite.getActionBars();
+//		IActionBars bars = pageSite.getActionBars();
 	}
 
 	private void fillContextMenu(IMenuManager menuMgr) {
@@ -181,21 +177,22 @@ public class TxOutlinePage extends ContentOutlinePage implements  ISelectionList
 
 	private Action makeStreamAction(String text, String imgDescriptor, final IStructuredSelection selection, boolean enabled, final boolean remove) {
 		Action action = new Action() {
+			@SuppressWarnings("unchecked")
 			public void run() {
 				if(selection!=null)
 					for(Object obj :selection.toArray()){
 						if(obj instanceof IWaveform){
 							if(remove)
-								editor.removeStreamFromList((IWaveform) obj);
+								editor.removeStreamFromList((IWaveform<? extends IWaveformEvent>) obj);
 							else
-								editor.addStreamToList((IWaveform) obj);
+								editor.addStreamToList((IWaveform<? extends IWaveformEvent>) obj);
 						} else if(obj instanceof IHierNode){
 							LinkedList<IHierNode> queue = new LinkedList<IHierNode>();
-							LinkedList<IWaveform> streams = new LinkedList<IWaveform>();
+							LinkedList<IWaveform<? extends IWaveformEvent>> streams = new LinkedList<IWaveform<? extends IWaveformEvent>>();
 							queue.add((IHierNode)obj);
 							while(queue.size()>0){
 								IHierNode n = queue.poll();
-								if(n instanceof IWaveform) streams.add((IWaveform) n);
+								if(n instanceof IWaveform) streams.add((IWaveform<? extends IWaveformEvent>) n);
 								queue.addAll(n.getChildNodes());
 							}
 							if(remove)

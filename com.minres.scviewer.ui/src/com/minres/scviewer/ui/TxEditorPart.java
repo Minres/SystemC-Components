@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2012 IT Just working.
+ * Copyright (c) 2014, 2015 MINRES Technologies GmbH and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     IT Just working - initial API and implementation
+ *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
 package com.minres.scviewer.ui;
 
@@ -20,12 +20,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
@@ -40,13 +38,10 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.FrameworkUtil;
-import org.osgi.framework.ServiceReference;
 
-import com.minres.scviewer.database.IWaveformDb;
-import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.database.WaveformDb;
 import com.minres.scviewer.ui.handler.GotoDirection;
 import com.minres.scviewer.ui.swt.TxDisplay;
@@ -76,19 +71,6 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 	public void createPartControl(Composite parent) {
 		myParent=parent;		
 		database=new WaveformDb();
-		txDisplay = new TxDisplay(parent);
-		txDisplay.setMaxTime(0);
-		getSite().setSelectionProvider(txDisplay);
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					loadDatabases();
-				} catch (InvocationTargetException | IOException | InterruptedException e) {
-					handleLoadException(e);
-				}
-			}
-		}).run();
 		database.addPropertyChangeListener(new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
@@ -102,6 +84,19 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 				}		
 			}
 		});
+		txDisplay = new TxDisplay(parent);
+		txDisplay.setMaxTime(0);
+		getSite().setSelectionProvider(txDisplay);
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					loadDatabases();
+				} catch (InvocationTargetException | IOException | InterruptedException e) {
+					handleLoadException(e);
+				}
+			}
+		}).run();
 	}
 
 	/*
@@ -121,23 +116,35 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 		IProgressService ps = wb.getProgressService();
 		IEditorInput input = getEditorInput();
 		File file=null;
+		boolean loadSecondary=false;
+		boolean dontAskForSecondary=false;
 		ArrayList<File> filesToLoad=new ArrayList<File>();
-		if(input instanceof IFileEditorInput){
-			file = ((IFileEditorInput) input).getFile().getLocation().toFile();
+		if(input instanceof TxEditorInput){
+			TxEditorInput txInput = (TxEditorInput) input;
+			file = txInput.getFile().getLocation().toFile();
+			loadSecondary=txInput.isSecondaryLoaded()==null||txInput.isSecondaryLoaded();
+			dontAskForSecondary=txInput.isSecondaryLoaded()!=null;
 		} else if(input instanceof FileStoreEditorInput){
 			file=new File(((FileStoreEditorInput) input).getURI().getPath());
 		}
 		if(file.exists()){
 			filesToLoad.add(file);
+			if(loadSecondary){
 			String ext = getFileExtension(file.getName());
 			if("vcd".equals(ext.toLowerCase())){
-				if(askIfToLoad(new File(renameFileExtension(file.getCanonicalPath(), "txdb"))))
+				if(dontAskForSecondary || askIfToLoad(new File(renameFileExtension(file.getCanonicalPath(), "txdb")))){
 					filesToLoad.add(new File(renameFileExtension(file.getCanonicalPath(), "txdb")));
-				else if(askIfToLoad(new File(renameFileExtension(file.getCanonicalPath(), "txlog"))))
+					if(input instanceof TxEditorInput)  ((TxEditorInput) input).setSecondaryLoaded(true);
+				}else if(dontAskForSecondary ||askIfToLoad(new File(renameFileExtension(file.getCanonicalPath(), "txlog")))){
 					filesToLoad.add(new File(renameFileExtension(file.getCanonicalPath(), "txlog")));
+					if(input instanceof TxEditorInput)  ((TxEditorInput) input).setSecondaryLoaded(true);
+				}
 			} else if("txdb".equals(ext.toLowerCase()) || "txlog".equals(ext.toLowerCase())){
-				if(askIfToLoad(new File(renameFileExtension(file.getCanonicalPath(), "vcd"))))
+				if(dontAskForSecondary || askIfToLoad(new File(renameFileExtension(file.getCanonicalPath(), "vcd")))){
 					filesToLoad.add(new File(renameFileExtension(file.getCanonicalPath(), "vcd")));
+					if(input instanceof TxEditorInput)  ((TxEditorInput) input).setSecondaryLoaded(true);
+				}
+			}
 			}
 
 		}
@@ -183,7 +190,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 		if(TxEditorPart.this.getEditorInput() instanceof TxEditorInput &&
 				((TxEditorInput) TxEditorPart.this.getEditorInput()).getStreamNames().size()>0){
 			for(String streamName:((TxEditorInput) TxEditorPart.this.getEditorInput()).getStreamNames()){
-				IWaveform stream = database.getStreamByName(streamName);
+				IWaveform<? extends IWaveformEvent> stream = database.getStreamByName(streamName);
 				if(stream!=null)
 					txDisplay.getStreamList().add(stream);
 			}
@@ -266,7 +273,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 		return database;
 	}
 
-	public void addStreamToList(IWaveform obj){
+	public void addStreamToList(IWaveform<? extends IWaveformEvent> obj){
 		if(getEditorInput() instanceof TxEditorInput && !((TxEditorInput) getEditorInput()).getStreamNames().contains(obj.getFullName())){
 			((TxEditorInput) getEditorInput()).getStreamNames().add(obj.getFullName());
 			txDisplay.getStreamList().add(obj);
@@ -275,12 +282,12 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 
 	}
 
-	public void addStreamsToList(IWaveform[] iWaveforms){
-		for(IWaveform stream:iWaveforms)
+	public void addStreamsToList(IWaveform<? extends IWaveformEvent>[] iWaveforms){
+		for(IWaveform<? extends IWaveformEvent> stream:iWaveforms)
 			addStreamToList(stream);
 	}
 
-	public void removeStreamFromList(IWaveform obj){
+	public void removeStreamFromList(IWaveform<? extends IWaveformEvent> obj){
 		if(getEditorInput() instanceof TxEditorInput && ((TxEditorInput) getEditorInput()).getStreamNames().contains(obj.getFullName())){
 			((TxEditorInput) getEditorInput()).getStreamNames().remove(obj.getFullName());
 			txDisplay.getStreamList().remove(obj);
@@ -288,12 +295,12 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 			txDisplay.getStreamList().remove(obj);
 	}
 
-	public void removeStreamsFromList(IWaveform[] iWaveforms){
-		for(IWaveform stream:iWaveforms)
+	public void removeStreamsFromList(IWaveform<? extends IWaveformEvent>[] iWaveforms){
+		for(IWaveform<? extends IWaveformEvent> stream:iWaveforms)
 			removeStreamFromList(stream);
 	}
 
-	public List<IWaveform> getStreamList(){
+	public List<IWaveform<? extends IWaveformEvent>> getStreamList(){
 		return txDisplay.getStreamList();
 	}
 
@@ -313,6 +320,18 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 
 	public void moveSelection(GotoDirection next) {
 		txDisplay.moveSelection( next);		
+	}
+
+	public void setZoomLevel(Integer level) {
+		txDisplay.setZoomLevel(level);
+	}
+
+	public void setZoomFit() {
+		txDisplay.setZoomLevel(6);		
+	}
+
+	public int getZoomLevel() {
+		return txDisplay.getZoomLevel();
 	}
 
 }

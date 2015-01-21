@@ -18,16 +18,22 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.minres.scviewer.ui.TxEditorPart;
 
-public class GotoNext extends AbstractHandler {
+public class ZoomInOut extends AbstractHandler {
+	private static final String ZOOMIN_ID = "com.minres.scviewer.ui.zoomin";
+	private static final String ZOOMOUT_ID= "com.minres.scviewer.ui.zoomout";
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IEditorPart editor = HandlerUtil.getActiveEditor(event);
 		if(editor instanceof TxEditorPart){
-			((TxEditorPart)editor).moveSelection(GotoDirection.NEXT);
+		    String id = event.getCommand().getId();
+			TxEditorPart txEditor=(TxEditorPart) editor;
+		    if (ZOOMIN_ID.compareTo(id) == 0)
+		    	txEditor.setZoomLevel(txEditor.getZoomLevel()-1);
+		    else if(ZOOMOUT_ID.compareTo(id) == 0)
+		    	txEditor.setZoomLevel(txEditor.getZoomLevel()+1);
 		}
 		return null;
 	}
-
 
 }

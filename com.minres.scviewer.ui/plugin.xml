@@ -116,8 +116,6 @@
                id="com.minres.scviewer.ui.toolbar1">
             <command
                   commandId="com.minres.scviewer.ui.gotoPrev"
-                  disabledIcon="res/images/previous-green-d.png"
-                  icon="res/images/previous-green.png"
                   label="Prev"
                   style="push"
                   tooltip="Go to previous event">
@@ -130,8 +128,6 @@
             </command>
             <command
                   commandId="com.minres.scviewer.ui.gotoNext"
-                  disabledIcon="res/images/next-green-d.png"
-                  icon="res/images/next-green.png"
                   label="Next"
                   style="push"
                   tooltip="Go to next event">
@@ -142,7 +138,156 @@
                   </reference>
                </visibleWhen>
             </command>
+           <command
+                 commandId="com.minres.scviewer.ui.zoom"
+                 id="com.minres.scviewer.ui.zoom.command"
+                 style="pulldown"
+                 tooltip="Set zoom level">
+              <visibleWhen
+                    checkEnabled="false">
+                 <reference
+                       definitionId="com.minres.scviewer.ui.waveEditorActive">
+                 </reference>
+              </visibleWhen>
+           </command>
+           <command
+                 commandId="com.minres.scviewer.ui.zoomin"
+                 label="Zoom in"
+                 style="push"
+                 tooltip="Zoom into">
+              <visibleWhen
+                    checkEnabled="false">
+                 <reference
+                       definitionId="com.minres.scviewer.ui.waveEditorActive">
+                 </reference>
+              </visibleWhen>
+           </command>
+           <command
+                 commandId="com.minres.scviewer.ui.zoomout"
+                 label="Zoom out"
+                 style="push"
+                 tooltip="Zoom out of">
+              <visibleWhen
+                    checkEnabled="false">
+                 <reference
+                       definitionId="com.minres.scviewer.ui.waveEditorActive">
+                 </reference>
+              </visibleWhen>
+           </command>
          </toolbar>
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:com.minres.scviewer.ui.zoom.command">
+         <command
+               commandId="com.minres.scviewer.ui.zoom"
+               label="100ps"
+               style="push"
+               tooltip="Resolution 100ps">
+            <parameter
+                  name="com.minres.scviewer.ui.zoom.level"
+                  value="5">
+            </parameter>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.zoom"
+               label="1ns"
+               style="push"
+               tooltip="Resolution 1ns">
+            <parameter
+                  name="com.minres.scviewer.ui.zoom.level"
+                  value="6">
+            </parameter>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.zoom"
+               label="10ns"
+               style="push"
+               tooltip="Resolution 10ns">
+            <parameter
+                  name="com.minres.scviewer.ui.zoom.level"
+                  value="7">
+            </parameter>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.zoom"
+               label="100ns"
+               style="push"
+               tooltip="Resolution 100ns">
+            <parameter
+                  name="com.minres.scviewer.ui.zoom.level"
+                  value="8">
+            </parameter>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.zoom"
+               label="1us"
+               style="push"
+               tooltip="Resolution 1us">
+            <parameter
+                  name="com.minres.scviewer.ui.zoom.level"
+                  value="9">
+            </parameter>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.zoom"
+               label="10us"
+               style="push"
+               tooltip="Resolution 10us">
+            <parameter
+                  name="com.minres.scviewer.ui.zoom.level"
+                  value="10">
+            </parameter>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.zoom"
+               label="100us"
+               style="push"
+               tooltip="Resolution 100us">
+            <parameter
+                  name="com.minres.scviewer.ui.zoom.level"
+                  value="11">
+            </parameter>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.zoom"
+               label="1ms"
+               style="push"
+               tooltip="Resolution 1ms">
+            <parameter
+                  name="com.minres.scviewer.ui.zoom.level"
+                  value="12">
+            </parameter>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.zoom"
+               label="10ms"
+               style="push"
+               tooltip="Resolution 10ms">
+            <parameter
+                  name="com.minres.scviewer.ui.zoom.level"
+                  value="13">
+            </parameter>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.zoom"
+               label="100ms"
+               style="push"
+               tooltip="Resolution 100ms">
+            <parameter
+                  name="com.minres.scviewer.ui.zoom.level"
+                  value="14">
+            </parameter>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.zoom"
+               label="1s"
+               style="push"
+               tooltip="Resolution 1s">
+            <parameter
+                  name="com.minres.scviewer.ui.zoom.level"
+                  value="15">
+            </parameter>
+         </command>
       </menuContribution>
    </extension>
    <extension
@@ -157,9 +302,37 @@
             id="com.minres.scviewer.ui.gotoPrev"
             name="Prev">
       </command>
+      <command
+            defaultHandler="com.minres.scviewer.ui.handler.Zoom"
+            description="Set the zoom level"
+            id="com.minres.scviewer.ui.zoom"
+            name="Zoom">
+         <commandParameter
+               id="com.minres.scviewer.ui.zoom.level"
+               name="level"
+               optional="true">
+         </commandParameter>
+      </command>
+      <command
+            id="com.minres.scviewer.ui.zoomin"
+            name="Zoom in">
+      </command>
+      <command
+            id="com.minres.scviewer.ui.zoomout"
+            name="Zoom out">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
+      <handler
+            class="com.minres.scviewer.ui.handler.GotoPrev"
+            commandId="com.minres.scviewer.ui.gotoPrev">
+         <enabledWhen>
+            <reference
+                  definitionId="com.minres.scviewer.ui.oneElementSeleted">
+            </reference>
+         </enabledWhen>
+      </handler>
       <handler
             class="com.minres.scviewer.ui.handler.GotoNext"
             commandId="com.minres.scviewer.ui.gotoNext">
@@ -170,11 +343,20 @@
          </enabledWhen>
       </handler>
       <handler
-            class="com.minres.scviewer.ui.handler.GotoPrev"
-            commandId="com.minres.scviewer.ui.gotoPrev">
+            class="com.minres.scviewer.ui.handler.ZoomInOut"
+            commandId="com.minres.scviewer.ui.zoomin">
          <enabledWhen>
             <reference
-                  definitionId="com.minres.scviewer.ui.oneElementSeleted">
+                  definitionId="com.minres.scviewer.ui.waveEditorActive">
+            </reference>
+         </enabledWhen>
+      </handler>
+      <handler
+            class="com.minres.scviewer.ui.handler.ZoomInOut"
+            commandId="com.minres.scviewer.ui.zoomout">
+         <enabledWhen>
+            <reference
+                  definitionId="com.minres.scviewer.ui.waveEditorActive">
             </reference>
          </enabledWhen>
       </handler>
@@ -205,6 +387,31 @@
             </equals>
          </with>
       </definition>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="com.minres.scviewer.ui.gotoPrev"
+            disabledIcon="res/images/previous-green-d.png"
+            icon="res/images/previous-green.png">
+      </image>
+      <image
+            commandId="com.minres.scviewer.ui.gotoNext"
+            disabledIcon="res/images/next-green-d.png"
+            icon="res/images/next-green.png">
+      </image>
+      <image
+            commandId="com.minres.scviewer.ui.zoom"
+            icon="res/images/zoom.png">
+      </image>
+      <image
+            commandId="com.minres.scviewer.ui.zoomin"
+            icon="res/images/zoom_in.png">
+      </image>
+      <image
+            commandId="com.minres.scviewer.ui.zoomout"
+            icon="res/images/zoom_out.png">
+      </image>
    </extension>
 
 </plugin>

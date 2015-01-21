@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2014, 2015 MINRES Technologies GmbH and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MINRES Technologies GmbH - initial API and implementation
+ *******************************************************************************/
 package com.minres.scviewer.database.sqlite;
 
 import java.beans.IntrospectionException;
@@ -16,6 +26,7 @@ import com.minres.scviewer.database.ITxRelation;
 import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.sqlite.db.IDatabase;
 import com.minres.scviewer.database.sqlite.db.SQLiteDatabaseSelectHandler;
+import com.minres.scviewer.database.sqlite.tables.ScvStream;
 import com.minres.scviewer.database.sqlite.tables.ScvTx;
 import com.minres.scviewer.database.sqlite.tables.ScvTxAttribute;
 import com.minres.scviewer.database.sqlite.tables.ScvTxEvent;
@@ -29,7 +40,7 @@ public class Tx implements ITx {
 	private ScvTx scvTx;
 	private List<ITxAttribute> attributes;
 	private Long begin, end;
-	private  List<ITxRelation> incoming, outgoing;
+	private List<ITxRelation> incoming, outgoing;
 	
 	public Tx(IDatabase database, TxStream trStream, TxGenerator trGenerator, ScvTx scvTx) {
 		this.database=database;
@@ -143,20 +154,26 @@ public class Tx implements ITx {
 	}
 
 	private ITxRelation createRelation(ScvTxRelation rel, boolean outgoing) {
-		long otherId = outgoing?rel.getSink():rel.getSrc();
-/*FIXME:
+		int otherId = outgoing?rel.getSink():rel.getSrc();
+		SQLiteDatabaseSelectHandler<ScvTx> handler = new SQLiteDatabaseSelectHandler<ScvTx>(ScvTx.class, database,
+				"id="+otherId);
 		try {
-			List<ScvTx> scvTx=new SQLiteDatabaseSelectHandler<ScvTx>(ScvTx.class, database, "id="+otherId).selectObjects();
-			assert(scvTx.size()==1);
-			ITxStream stream = trStream.getDb().getStreamById(scvTx.get(0).getStream());
-			Tx that=(Tx) stream.getTransactionById(otherId);
+			List<ScvTx> res = handler.selectObjects();
+			if(res.size()!=1) return null;
+			List<ScvStream> streams = new SQLiteDatabaseSelectHandler<ScvStream>(ScvStream.class, database,
+						"id="+res.get(0).getStream()).selectObjects();
+			if(streams.size()!=1) return null;
+			TxStream tgtStream = (TxStream) trStream.getDb().getStreamByName(streams.get(0).getName());
+			Tx that = (Tx) tgtStream.getTransactions().get(otherId);
 			if(outgoing)
-				return new TxRelation(trStream.getDb().getRelationType(rel.getName()), this, that);
+				return new TxRelation(trStream.getRelationType(rel.getName()), this, that);
 			else
-				return new TxRelation(trStream.getDb().getRelationType(rel.getName()), that, this);
+				return new TxRelation(trStream.getRelationType(rel.getName()), that, this);
 		} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
 				| InvocationTargetException | SQLException | IntrospectionException e) {
-		}*/
+			e.printStackTrace();
+		}
+
 		return null;		
 	}
 
@@ -165,4 +182,8 @@ public class Tx implements ITx {
 		return this.getBeginTime().compareTo(o.getBeginTime());
 	}
 
+	@Override
+	public String toString() {
+		return "tx#"+getId()+"@"+getBeginTime()+"-@"+getEndTime();
+	}
 }

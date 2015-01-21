@@ -15,9 +15,11 @@ import java.util.List;
 
 import com.minres.scviewer.database.ITxAttributeType
 import com.minres.scviewer.database.ITxAttribute;
+import com.minres.scviewer.database.ITxEvent;
 import com.minres.scviewer.database.ITxGenerator;
 import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.ITx;
+import com.minres.scviewer.database.IWaveformEvent;
 
 class TxGenerator implements ITxGenerator{
 	Long id
@@ -37,7 +39,7 @@ class TxGenerator implements ITxGenerator{
 		this.name=name
 	}
 	
-	ITxStream getStream(){
+	ITxStream<? extends ITxEvent> getStream(){
 		return stream;
 	}
 	

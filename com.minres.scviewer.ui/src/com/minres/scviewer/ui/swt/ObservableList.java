@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2014, 2015 MINRES Technologies GmbH and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MINRES Technologies GmbH - initial API and implementation
+ *******************************************************************************/
 package com.minres.scviewer.ui.swt;
 
 import java.beans.PropertyChangeEvent;
@@ -208,6 +218,7 @@ public class ObservableList<E> implements List<E> {
 		List<E> values = new ArrayList<E>();
 		if (c != null) {
 			for (Iterator<?> i = c.iterator(); i.hasNext();) {
+				@SuppressWarnings("unchecked")
 				E element = (E) i.next();
 				if (this.delegate.contains(element)) {
 					values.add(element);

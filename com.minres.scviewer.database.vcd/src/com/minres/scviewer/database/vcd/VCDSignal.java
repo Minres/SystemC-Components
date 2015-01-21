@@ -1,18 +1,24 @@
+/*******************************************************************************
+ * Copyright (c) 2014, 2015 MINRES Technologies GmbH and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MINRES Technologies GmbH - initial API and implementation
+ *******************************************************************************/
 package com.minres.scviewer.database.vcd;
 
-import java.util.Collection;
-import java.util.Map.Entry;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 
-import com.google.common.collect.Ordering;
-import com.google.common.collect.TreeMultimap;
 import com.minres.scviewer.database.HierNode;
 import com.minres.scviewer.database.ISignal;
 import com.minres.scviewer.database.ISignalChange;
-import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.database.IWaveformEvent;
 
 public class VCDSignal<T extends ISignalChange> extends HierNode implements ISignal<T> {
 

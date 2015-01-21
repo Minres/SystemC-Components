@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2014, 2015 MINRES Technologies GmbH and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MINRES Technologies GmbH - initial API and implementation
+ *******************************************************************************/
 package com.minres.scviewer.database.vcd;
 
 import java.io.File;
@@ -93,7 +103,7 @@ public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 	 */
 	@Override
 	public Long getMaxTime() {
-		return maxTime* TIME_RES;
+		return maxTime;
 	}
 
 	/* (non-Javadoc)
@@ -157,9 +167,9 @@ public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public void appendTransition(int signalId, long fCurrentTime, BitVector decodedValues) {
+	public void appendTransition(int signalId, long currentTime, BitVector decodedValues) {
 		VCDSignal<? extends IWaveformEvent> signal = (VCDSignal<? extends IWaveformEvent>) signals.get(signalId);
-		Long time = fCurrentTime* TIME_RES;
+		Long time = currentTime* TIME_RES;
 		if(signal.getWidth()==1){
 			((VCDSignal<ISignalChangeSingle>)signal).values.put(time, new VCDSignalChangeSingle(time, decodedValues.getValue()[0]));
 		} else {

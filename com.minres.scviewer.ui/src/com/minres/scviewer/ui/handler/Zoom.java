@@ -18,16 +18,24 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.minres.scviewer.ui.TxEditorPart;
 
-public class GotoNext extends AbstractHandler {
+public class Zoom extends AbstractHandler {
+	private static final String PARM_MSG = "com.minres.scviewer.ui.zoom.level";
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IEditorPart editor = HandlerUtil.getActiveEditor(event);
-		if(editor instanceof TxEditorPart){
-			((TxEditorPart)editor).moveSelection(GotoDirection.NEXT);
-		}
+	    String msg = event.getParameter(PARM_MSG);
+	    if (msg == null) {
+			if(editor instanceof TxEditorPart){
+				((TxEditorPart)editor).setZoomFit();
+			}
+	    } else {
+	    	Integer level = Integer.parseInt(msg);
+			if(editor instanceof TxEditorPart){
+				((TxEditorPart)editor).setZoomLevel(level);
+			}
+	    }
 		return null;
 	}
-
 
 }

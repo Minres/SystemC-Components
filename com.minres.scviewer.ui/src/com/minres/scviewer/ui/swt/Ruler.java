@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2014, 2015 MINRES Technologies GmbH and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MINRES Technologies GmbH - initial API and implementation
+ *******************************************************************************/
 package com.minres.scviewer.ui.swt;
 
 import org.eclipse.swt.SWT;
@@ -19,21 +29,26 @@ public class Ruler extends Composite {
 	static final int tickY = 15;
 	static final int majorTickY = 5;
 	
-	static final int rulerTickMinor = 10;
-	static final int rulerTickMajor = 100;
+	static final int rulerTickMinorC = 10;
+	static final int rulerTickMajorC = 100;
 
 	private int length;
-	private int start;
+	private long start;
 	
 	private TxEditorPlugin plugin;
 	private Color headerBgColor;
 	private Color headerFgColor;
 	private int bottom;
 	private int baselineY;
-
-	Ruler(Composite parent, int style, int lenght) {
+	private long scaleFactor=1000000;
+	private long rulerScaleFactor=1000000;
+	private long rulerTickMinor = rulerTickMinorC*scaleFactor;
+	private long rulerTickMajor = rulerTickMajorC*scaleFactor;
+	private String unit="";
+	
+	Ruler(Composite parent, int style) {
 		super(parent, style | SWT.DOUBLE_BUFFERED);
-		this.length=lenght;
+		this.length=0;
 		headerBgColor=getDisplay().getSystemColor(SWT.COLOR_WHITE);
 		headerFgColor=getDisplay().getSystemColor(SWT.COLOR_BLACK);
 		plugin=TxEditorPlugin.getDefault();	
@@ -71,10 +86,10 @@ public class Ruler extends Composite {
 	
 	void paintControl(PaintEvent e) {
 		GC gc = e.gc;
-		int startMinorIncr = start;
-		int modulo = start % rulerTickMinor;
+		long startMinorIncr = start;
+		long modulo = start % rulerTickMinor;
 		startMinorIncr+=rulerTickMinor-modulo;
-		int end=start+e.width;
+		long end=start+e.width*scaleFactor;
 		
 		gc.setBackground(getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 		gc.fillRectangle(new Rectangle(e.x, e.y, e.width, height));
@@ -83,10 +98,10 @@ public class Ruler extends Composite {
 		gc.setForeground(headerFgColor);
 		gc.drawLine(0, bottom, e.width, bottom);
 		
-		for (int tick = startMinorIncr; tick < end; tick += rulerTickMinor) {
-			int x0 = tick-start;
+		for (long tick = startMinorIncr; tick < end; tick += rulerTickMinor) {
+			int x0 = (int) ((tick-start)/scaleFactor);
 			if ((tick % rulerTickMajor) == 0) {
-				gc.drawText(Integer.toString(tick), x0, 0);
+				gc.drawText(Double.toString(tick/rulerScaleFactor)+unit, (int) x0, 0);
 				gc.drawLine(x0, majorTickY, x0, bottom);
 			} else {
 				gc.drawLine(x0, tickY, x0, bottom);
@@ -99,8 +114,34 @@ public class Ruler extends Composite {
 		return new Point(0, height);
 	}
 
-	public void setStartPoint(int start) {
-		this.start=start;
+	public void setStartPoint(long l) {
+		this.start=l;
+		redraw();
+	}
+
+	public void setScaleFactor(long scaleFactor) {
+		this.scaleFactor=scaleFactor;		
+		if(scaleFactor<1000L){
+			unit="fs";
+			rulerScaleFactor=(long) 1e0;
+		}else if(scaleFactor<1000000L){
+			unit="ps";			
+			rulerScaleFactor=(long) 1e3;
+		}else if(scaleFactor<1000000000L){
+			unit="ns";			
+			rulerScaleFactor=(long) 1e6;
+		}else if(scaleFactor<1000000000000L){
+			unit="us";			
+			rulerScaleFactor=(long) 1e9;
+		}else if(scaleFactor<1000000000000000L){
+			unit="ms";			
+			rulerScaleFactor=(long) 1e9;
+		}else{
+			unit="s";			
+			rulerScaleFactor=(long) 1e12;
+		}
+		this.rulerTickMinor = rulerTickMinorC*scaleFactor;
+		this.rulerTickMajor = rulerTickMajorC*scaleFactor;
 		redraw();
 	}
 }

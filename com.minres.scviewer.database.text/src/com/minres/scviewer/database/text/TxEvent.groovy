@@ -1,8 +1,8 @@
 package com.minres.scviewer.database.text;
 
-import com.minres.scviewer.database.ITx;
-import com.minres.scviewer.database.ITxEvent;
-import com.minres.scviewer.database.IWaveformEvent;
+import com.minres.scviewer.database.ITx
+import com.minres.scviewer.database.ITxEvent
+import com.minres.scviewer.database.IWaveformEvent
 
 class TxEvent implements ITxEvent {
 
@@ -27,6 +27,11 @@ class TxEvent implements ITxEvent {
 	}
 
 	Long getTime(){
-		return type==ITxEvent.Type.BEGIN?transaction.beginTime:transaction.endTime
+		type==ITxEvent.Type.BEGIN?transaction.beginTime:transaction.endTime
+	}
+
+		@Override
+	String toString() {
+		type.toString()+"@"+getTime()+" of tx #"+transaction.id;
 	}
 }

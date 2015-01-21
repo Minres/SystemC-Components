@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2012 IT Just working.
+ * Copyright (c) 2014, 2015 MINRES Technologies GmbH and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     IT Just working - initial API and implementation
+ *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
 package com.minres.scviewer.database;
 
@@ -18,7 +18,7 @@ public interface IWaveformDb extends IHierNode {
 
 	public Long getMaxTime();
 	
-	public IWaveform<?> getStreamByName(String name);
+	public IWaveform<? extends IWaveformEvent> getStreamByName(String name);
 	
 	public List<IWaveform<?>> getAllWaves();
 	

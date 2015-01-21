@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2014, 2015 MINRES Technologies GmbH and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MINRES Technologies GmbH - initial API and implementation
+ *******************************************************************************/
 package com.minres.scviewer.ui.swt;
 
 import java.util.Map.Entry;
@@ -32,7 +42,10 @@ class SignalPainter implements IWaveformPainter  {
 	}
 
 	public void paintArea(GC gc, Rectangle area) {	
-		gc.setBackground(this.waveCanvas.colors[even?WaveformCanvas.Colors.TRACK_BG_EVEN.ordinal():WaveformCanvas.Colors.TRACK_BG_ODD.ordinal()]);
+		if(waveCanvas.currentWaveformSelection!=null && waveCanvas.currentWaveformSelection.getId()==signal.getId())
+			gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TRACK_BG_HIGHLITE.ordinal()]);
+		else
+			gc.setBackground(this.waveCanvas.colors[even?WaveformCanvas.Colors.TRACK_BG_EVEN.ordinal():WaveformCanvas.Colors.TRACK_BG_ODD.ordinal()]);
 		gc.setFillRule(SWT.FILL_EVEN_ODD);
 		gc.fillRectangle(area);
 		Entry<Long, ? extends ISignalChange> firstChange=signal.getEvents().floorEntry(area.x*this.waveCanvas.getScaleFactor());
@@ -126,6 +139,10 @@ class SignalPainter implements IWaveformPainter  {
 	@Override
 	public int getMinHeight() {
 		return height;
+	}
+
+	public ISignal<? extends ISignalChange> getSignal() {
+		return signal;
 	}
 
 }

@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2014, 2015 MINRES Technologies GmbH and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MINRES Technologies GmbH - initial API and implementation
+ *******************************************************************************/
 package com.minres.scviewer.database.sqlite;
 
 import java.beans.IntrospectionException;
@@ -5,18 +15,20 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.NavigableMap;
+import java.util.TreeMap;
+import java.util.Vector;
 
-import com.google.common.collect.TreeMultimap;
 import com.minres.scviewer.database.HierNode;
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.ITxEvent;
 import com.minres.scviewer.database.ITxGenerator;
 import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.database.RelationType;
 import com.minres.scviewer.database.sqlite.db.IDatabase;
 import com.minres.scviewer.database.sqlite.db.SQLiteDatabaseSelectHandler;
 import com.minres.scviewer.database.sqlite.tables.ScvGenerator;
@@ -33,13 +45,15 @@ public class TxStream extends HierNode implements ITxStream<ITxEvent> {
 	
 	private ScvStream scvStream;
 	
-	private HashMap<Integer, TxGenerator> generators;
+	private TreeMap<Integer, TxGenerator> generators;
 	
-	private HashMap<Integer, ITx> transactions;
+	private TreeMap<Integer, ITx> transactions;
 	
 	private Integer maxConcurrency;
 	
-	private TreeMultimap<Long, ITxEvent> events;
+	private TreeMap<Long, List<ITxEvent>> events;
+
+	private RelationTypeFactory relationMap;
 	
 	public TxStream(IDatabase database, IWaveformDb waveformDb, ScvStream scvStream) {
 		super(scvStream.getName());
@@ -74,7 +88,7 @@ public class TxStream extends HierNode implements ITxStream<ITxEvent> {
 		if(generators==null){
 			SQLiteDatabaseSelectHandler<ScvGenerator> handler = new SQLiteDatabaseSelectHandler<ScvGenerator>(
 					ScvGenerator.class, database, "stream="+scvStream.getId());
-			generators=new HashMap<Integer, TxGenerator>();
+			generators=new TreeMap<Integer, TxGenerator>();
 			try {
 				for(ScvGenerator scvGenerator:handler.selectObjects()){
 					generators.put(scvGenerator.getId(), new TxGenerator(this, scvGenerator));
@@ -120,22 +134,32 @@ public class TxStream extends HierNode implements ITxStream<ITxEvent> {
 	}
 
 	@Override
-	public  NavigableMap<Long, Collection<ITxEvent>> getEvents(){
+	public  NavigableMap<Long, List<ITxEvent>> getEvents(){
 		if(events==null){
-			events=TreeMultimap.create();
+			events=new TreeMap<Long, List<ITxEvent>>();
 			for(Entry<Integer, ITx> entry:getTransactions().entrySet()){
-				events.put(entry.getValue().getBeginTime(), new TxEvent(TxEvent.Type.BEGIN, entry.getValue()));
-				events.put(entry.getValue().getBeginTime(), new TxEvent(TxEvent.Type.END, entry.getValue()));
+				putEvent(new TxEvent(TxEvent.Type.BEGIN, entry.getValue()));
+				putEvent(new TxEvent(TxEvent.Type.END, entry.getValue()));
 			}	
 		}
-		return events.asMap();
+		return events;
 	}
 
+	private void putEvent(TxEvent ev){
+		Long time = ev.getTime();
+		if(!events.containsKey(time)){
+			Vector<ITxEvent> vector=new Vector<ITxEvent>();
+			vector.add(ev);
+			events.put(time,  vector);
+		} else {
+			events.get(time).add(ev);
+		}
+	}
 
-	protected HashMap<Integer, ITx> getTransactions() {
+	protected Map<Integer, ITx> getTransactions() {
 		if(transactions==null){
 			if(generators==null) getGenerators();
-			transactions = new HashMap<Integer, ITx>();
+			transactions = new TreeMap<Integer, ITx>();
 			SQLiteDatabaseSelectHandler<ScvTx> handler = new SQLiteDatabaseSelectHandler<ScvTx>(ScvTx.class, database,
 					"stream="+scvStream.getId());
 			try {
@@ -153,6 +177,16 @@ public class TxStream extends HierNode implements ITxStream<ITxEvent> {
 	@Override
 	public Collection<ITxEvent> getWaveformEventsAtTime(Long time) {
 		return getEvents().get(time);
+	}
+
+	public void setRelationTypeFactory(RelationTypeFactory rtf) {
+		this.relationMap=rtf;
+		
+	}
+
+	public RelationType getRelationType(String name) {
+		if(relationMap!=null) return relationMap.getRelationType(name);
+		return null;
 	}
 
 }
