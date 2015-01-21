@@ -21,10 +21,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jface.action.IStatusLineManager;
+import org.eclipse.jface.action.StatusLineContributionItem;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
@@ -49,6 +52,13 @@ import com.minres.scviewer.ui.views.TxOutlinePage;
 
 public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPageContributor {
 
+	private final static String[] zoomLevel={
+		"1fs", "10fs", "100fs",
+		"1ps", "10ps", "100ps",
+		"1ns", "10ns", "100ns",
+		"1µs", "10µs", "10µs",
+		"1ms", "10ms", "100ms", "1s"};
+		
 	public static final String ID = "com.minres.scviewer.ui.TxEditorPart"; //$NON-NLS-1$
 
 	public static final String WAVE_ACTION_ID = "com.minres.scviewer.ui.action.AddToWave";
@@ -59,6 +69,8 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 	private IWaveformDb database;
 
 	private Composite myParent;
+
+	private StatusLineContributionItem zoomStatusLineItem;
 
 	public TxEditorPart() {
 	}
@@ -97,6 +109,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 				}
 			}
 		}).run();
+		zoomStatusLineItem.setText("Zoom level: "+zoomLevel[txDisplay.getZoomLevel()]);
 	}
 
 	/*
@@ -257,6 +270,11 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 		// Initialize the editor part
 		setSite(site);
 		setInput(input);
+		zoomStatusLineItem = new StatusLineContributionItem("TxEditorContributionItem");
+		IActionBars actionBars = getEditorSite().getActionBars();
+		IStatusLineManager manager = actionBars.getStatusLineManager();
+		manager.add(zoomStatusLineItem);
+		actionBars.updateActionBars();
 	}
 
 	@Override

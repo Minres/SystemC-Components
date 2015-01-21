@@ -14,12 +14,11 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Vector;
 import java.util.Map.Entry;
 import java.util.TreeMap;
+import java.util.Vector;
 
 import org.eclipse.core.runtime.ListenerList;
-import org.eclipse.jface.resource.FontDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -32,14 +31,11 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
-import org.eclipse.swt.events.DisposeEvent;
-import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
@@ -50,7 +46,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
@@ -121,6 +116,8 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 	
 		nameListScrolled = new ScrolledComposite(namePane, SWT.H_SCROLL | SWT.V_SCROLL);
 		nameListScrolled.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+		nameListScrolled.setExpandHorizontal(true);
+		nameListScrolled.setExpandVertical(true);
 		nameListScrolled.setAlwaysShowScrollBars(true);
 		nameListScrolled.addControlListener(new ControlAdapter(){
 			@Override
@@ -151,6 +148,8 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 		valuePane.setBackground(valuePane.getDisplay().getSystemColor( SWT.COLOR_WIDGET_BACKGROUND));
 		valueListScrolled = new ScrolledComposite(valuePane, SWT.H_SCROLL | SWT.V_SCROLL);
 		valueListScrolled.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+		valueListScrolled.setExpandHorizontal(true);
+		valueListScrolled.setExpandVertical(true);
 		valueListScrolled.setAlwaysShowScrollBars(true);
 		valueListScrolled.addControlListener(new ControlAdapter(){
 			@Override
@@ -281,7 +280,9 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 			even=!even;
 		}
 		nameList.setSize(nameMaxWidth+15, yoffs);
+		nameListScrolled.setMinSize(nameMaxWidth+15, yoffs);
 		valueList.setSize(calculateValueWidth(), yoffs);
+		valueListScrolled.setMinSize(calculateValueWidth(), yoffs);
 		nameList.redraw();
 		valueList.redraw();
 		trackList.redraw();
@@ -415,6 +416,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 
 	protected void paintNames(GC gc, Rectangle rect) {
 		if(streams.size()>0){
+			@SuppressWarnings("unchecked")
 			IWaveform<? extends IWaveformEvent> wave = (IWaveform<? extends IWaveformEvent>) nameList.getData(SELECTION);
 			Integer firstKey=trackVerticalOffset.floorKey(rect.y);
 			if(firstKey==null) firstKey=trackVerticalOffset.firstKey();
@@ -464,9 +466,12 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 
 	protected void drawTextFormat(GC gc, Rectangle subArea, int yOffset, String value, boolean highlite) {
 		Point size = gc.textExtent(value);
-		if(highlite)
+		if(highlite){
+			gc.setBackground(SWTResourceManager.getColor(SWT.COLOR_LIST_SELECTION));
+			gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_LIST_SELECTION_TEXT));
+			gc.fillRectangle(subArea.x, subArea.y+yOffset, subArea.width, subArea.height);
 			gc.setFont(nameFontB);
-		else
+		}else
 			gc.setFont(nameFont);
 		gc.drawText(value, subArea.x+5, subArea.y + yOffset+(trackList.getTrackHeight()-size.y)/2, true);
 	}

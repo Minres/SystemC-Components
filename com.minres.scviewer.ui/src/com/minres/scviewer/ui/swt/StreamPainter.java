@@ -50,6 +50,7 @@ class StreamPainter implements IWaveformPainter{
 
 	@SuppressWarnings("unchecked")
 	public void paintArea(GC gc, Rectangle area) {
+		if(stream.getEvents().size()==0) return;
 		if(waveCanvas.currentWaveformSelection!=null && waveCanvas.currentWaveformSelection.getId()==stream.getId())
 			gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TRACK_BG_HIGHLITE.ordinal()]);
 		else
@@ -58,12 +59,8 @@ class StreamPainter implements IWaveformPainter{
 		gc.fillRectangle(area);
 		Entry<Long, ?> firstTx=stream.getEvents().floorEntry(area.x*waveCanvas.getScaleFactor());
 		Entry<Long, ?> lastTx=stream.getEvents().ceilingEntry((area.x+area.width)*waveCanvas.getScaleFactor());
-		if(firstTx==null){
-			if(lastTx==null) return;
-			firstTx = stream.getEvents().firstEntry();
-		} else if(lastTx==null){
-			lastTx=stream.getEvents().lastEntry();
-		}
+		if(firstTx==null) firstTx = stream.getEvents().firstEntry();
+		if(lastTx==null) lastTx=stream.getEvents().lastEntry();
         gc.setFillRule(SWT.FILL_EVEN_ODD);
         gc.setLineStyle(SWT.LINE_SOLID);
         gc.setLineWidth(1);

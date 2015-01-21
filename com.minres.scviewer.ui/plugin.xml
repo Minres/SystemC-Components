@@ -220,7 +220,7 @@
          </command>
          <command
                commandId="com.minres.scviewer.ui.zoom"
-               label="1us"
+               label="1µs"
                style="push"
                tooltip="Resolution 1us">
             <parameter
@@ -230,7 +230,7 @@
          </command>
          <command
                commandId="com.minres.scviewer.ui.zoom"
-               label="10us"
+               label="10µs"
                style="push"
                tooltip="Resolution 10us">
             <parameter
@@ -240,7 +240,7 @@
          </command>
          <command
                commandId="com.minres.scviewer.ui.zoom"
-               label="100us"
+               label="100µs"
                style="push"
                tooltip="Resolution 100us">
             <parameter
