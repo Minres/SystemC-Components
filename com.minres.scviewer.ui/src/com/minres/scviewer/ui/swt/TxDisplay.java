@@ -471,8 +471,11 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 			gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_LIST_SELECTION_TEXT));
 			gc.fillRectangle(subArea.x, subArea.y+yOffset, subArea.width, subArea.height);
 			gc.setFont(nameFontB);
-		}else
+		}else{
+			gc.setBackground(SWTResourceManager.getColor(SWT.COLOR_LIST_BACKGROUND));
+			gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_LIST_FOREGROUND));
 			gc.setFont(nameFont);
+		}
 		gc.drawText(value, subArea.x+5, subArea.y + yOffset+(trackList.getTrackHeight()-size.y)/2, true);
 	}
 

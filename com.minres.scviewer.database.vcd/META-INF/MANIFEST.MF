@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Vcd
+Bundle-Name: VCD signal database
 Bundle-SymbolicName: com.minres.scviewer.database.vcd
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: MINRES Technologies GmbH

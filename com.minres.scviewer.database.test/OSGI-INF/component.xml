@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.minres.scviewer.database.test">
-   <implementation class="com.minres.scviewer.database.test.DatabaseServicesTest"/>
-   <reference bind="bind" cardinality="1..n" interface="com.minres.scviewer.database.IWaveformDbFactory" name="IWaveformDbFactory" policy="dynamic" unbind="unbind"/>
-</scr:component>

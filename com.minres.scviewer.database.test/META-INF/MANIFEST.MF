@@ -7,5 +7,4 @@ Bundle-Vendor: MINRES Technologies GnbH
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.junit,
  com.minres.scviewer.database
-Service-Component: OSGI-INF/component.xml
 Bundle-ActivationPolicy: lazy

@@ -47,7 +47,7 @@ public class Ruler extends Composite {
 	private String unit="";
 	
 	Ruler(Composite parent, int style) {
-		super(parent, style | SWT.DOUBLE_BUFFERED);
+		super(parent, style | SWT.DOUBLE_BUFFERED | SWT.NO_BACKGROUND);
 		this.length=0;
 		headerBgColor=getDisplay().getSystemColor(SWT.COLOR_WHITE);
 		headerFgColor=getDisplay().getSystemColor(SWT.COLOR_BLACK);

@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Transaction Database
+Bundle-Name: Waveform database
 Bundle-SymbolicName: com.minres.scviewer.database
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: MINRES Technologies GmbH

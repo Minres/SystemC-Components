@@ -82,7 +82,7 @@ public class WaveformCanvas extends Canvas {
 	 * @param style the style of this control.
 	 */
 	public WaveformCanvas(final Composite parent, int style) {
-		super( parent, style |SWT.NO_BACKGROUND|SWT.NO_REDRAW_RESIZE|SWT.V_SCROLL|SWT.H_SCROLL);
+		super( parent, style |SWT.DOUBLE_BUFFERED| SWT.NO_BACKGROUND|SWT.NO_REDRAW_RESIZE|SWT.V_SCROLL|SWT.H_SCROLL);
 		addControlListener(new ControlAdapter() { /* resize listener. */
 			public void controlResized(ControlEvent event) {
 				syncScrollBars();
@@ -124,7 +124,7 @@ public class WaveformCanvas extends Canvas {
 			colors[Colors.SIGNALZ.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_GRAY);
 			colors[Colors.SIGNALX.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_RED);
 			colors[Colors.SIGNAL_TEXT.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_WHITE);
-			colors[Colors.CURSOR.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_DARK_RED);
+			colors[Colors.CURSOR.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_YELLOW);
 		}	
 	}
 

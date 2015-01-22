@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/com.minres.scviewer.feature_1.0.0.201501031621.jar" id="com.minres.scviewer.feature" version="1.0.0.201501031621">
+   <feature url="features/com.minres.scviewer.feature_1.0.0.qualifier.jar" id="com.minres.scviewer.feature" version="1.0.0.qualifier">
       <category name="com.minres.scviewer"/>
    </feature>
    <category-def name="com.minres.scviewer" label="SCViewer">
