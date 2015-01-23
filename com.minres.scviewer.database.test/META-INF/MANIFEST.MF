@@ -6,5 +6,8 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: MINRES Technologies GnbH
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.junit,
- com.minres.scviewer.database
+ com.minres.scviewer.database,
+ com.minres.scviewer.database.sqlite;bundle-version="1.0.0",
+ com.minres.scviewer.database.text;bundle-version="1.0.0",
+ com.minres.scviewer.database.vcd;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy

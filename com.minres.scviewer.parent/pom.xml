@@ -19,12 +19,23 @@
 	<properties>
 		<tycho.version>0.22.0</tycho.version>
 		<tycho-extras.version>0.22.0</tycho-extras.version>
-	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<groovy-eclipse-compiler-version>2.9.1-01</groovy-eclipse-compiler-version>
+		<groovy-eclipse-batch-version>2.3.4-01</groovy-eclipse-batch-version>
 		<eclipse-repo.url>http://download.eclipse.org/releases/luna</eclipse-repo.url>
 		<groovy-repo.url>http://dist.springsource.org/release/GRECLIPSE/e4.4</groovy-repo.url>
 		<tycho-repo.url>https://oss.sonatype.org/content/groups/public/</tycho-repo.url>
 	</properties>
 
+<!-- 	<dependencies> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.codehaus.groovy</groupId> -->
+<!-- 			<artifactId>groovy-all</artifactId> -->
+<!-- 			<version>2.3.7</version> -->
+<!-- 			<type>jar</type> -->
+<!-- 			<classifier>indy</classifier> -->
+<!-- 		</dependency> -->
+<!-- 	</dependencies> -->
 
 	<repositories>
 		<repository>
@@ -53,6 +64,7 @@
 	</pluginRepositories>
 
 	<build>
+	    <sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -60,7 +72,6 @@
 				<version>${tycho.version}</version>
 				<extensions>true</extensions>
 			</plugin>
-
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
@@ -94,7 +105,6 @@
 					</environments>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-source-plugin</artifactId>
@@ -107,8 +117,15 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
 		</plugins>
-
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -124,7 +141,7 @@
 						<compilerArguments>
 							<inlineJSR />
 							<enableJavadoc />
-							<encoding>ISO-8859-1</encoding>
+							<encoding>UTF-8</encoding>
 						</compilerArguments>
 					</configuration>
 				</plugin>
@@ -139,14 +156,10 @@
 							<version>${tycho-extras.version}</version>
 						</dependency>
 					</dependencies>
-<!-- 					<configuration>
-						<strictBinIncludes>false</strictBinIncludes>
-						<format>'v'yyyyMMdd-HHmm</format>
-						<timestampProvider>jgit</timestampProvider>
-						<jgit.ignore>
-						</jgit.ignore>
-					</configuration>
- -->				</plugin>
+					<!-- <configuration> <strictBinIncludes>false</strictBinIncludes> <format>'v'yyyyMMdd-HHmm</format> 
+						<timestampProvider>jgit</timestampProvider> <jgit.ignore> </jgit.ignore> 
+						</configuration> -->
+				</plugin>
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-surefire-plugin</artifactId>
@@ -189,7 +202,10 @@
 						<baselineReplace>none</baselineReplace>
 						<baselineRepositories>
 							<repository>
-								<url>http://download.eclipse.org/eclipse/updates/4.4</url>
+								<url>${eclipse-repo.url}</url>
+							</repository>
+							<repository>
+								<url>${groovy-repo.url}</url>
 							</repository>
 						</baselineRepositories>
 					</configuration>

@@ -34,7 +34,7 @@ public class DatabaseServicesTest {
 				return;
 			Thread.sleep(1000);
 		}
-		fail("OSGi dependencies unfulfilled");
+		assertEquals("OSGi dependencies unfulfilled", 3, WaveformDb.getLoaders().size());
     }
 
 	@After
