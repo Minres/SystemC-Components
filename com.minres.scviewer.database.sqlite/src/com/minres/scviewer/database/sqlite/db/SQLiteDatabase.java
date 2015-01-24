@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.minres.scviewer.database.sqlite.db;
 
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,12 +20,27 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
+import org.sqlite.JDBC;
+
 public class SQLiteDatabase implements IDatabase {
 
 	protected String dbFileName;
 	
 	protected HashMap<String, Object> props;
 	
+    static {
+        try {
+        	URL dbUrl = SQLiteDatabase.class.getResource("/sqlite-jdbc-3.8.7.jar");
+        	ClassLoader loader = URLClassLoader.newInstance(
+        		    new URL[] { dbUrl },
+        		    SQLiteDatabase.class.getClassLoader()
+        		);
+        		Class.forName("org.sqlite.JDBC", true, loader);
+        } catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+    }
+    
 	public SQLiteDatabase(String dbFileName) {
 		super();
 		this.dbFileName = dbFileName;
