@@ -103,6 +103,10 @@ static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason,
                 fName+=".txdb";
             remove(fName.c_str());
             db.open(fName.c_str());
+            db.exec("PRAGMA synchronous=OFF");
+            db.exec("PRAGMA count_changes=OFF");
+            db.exec("PRAGMA journal_mode=MEMORY");
+            db.exec("PRAGMA temp_store=MEMORY");
 //            scv_out << "TB Transaction Recording has started, file = " << my_sqlite_file_name << endl;
             db.exec("CREATE TABLE  IF NOT EXISTS " STREAM_TABLE "(id INTEGER  NOT NULL PRIMARY KEY, name TEXT, kind TEXT);");
             db.exec("CREATE TABLE  IF NOT EXISTS " GENERATOR_TABLE "(id INTEGER  NOT NULL PRIMARY KEY, stream INTEGER REFERENCES " STREAM_TABLE "(id), name TEXT, begin_attr INTEGER, end_attr INTEGER);");
@@ -111,6 +115,7 @@ static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason,
             db.exec("CREATE TABLE  IF NOT EXISTS " TX_ATTRIBUTE_TABLE "(tx INTEGER REFERENCES " TX_TABLE "(id), type INTEGER, name TEXT, data_type INTEGER, data_value TEXT);");
             db.exec("CREATE TABLE  IF NOT EXISTS " TX_RELATION_TABLE "(name TEXT, src INTEGER REFERENCES " TX_TABLE "(id), sink INTEGER REFERENCES " TX_TABLE "(id));");
             db.exec("CREATE TABLE  IF NOT EXISTS " SIM_PROPS "(time_resolution INTEGER);");
+            db.exec("BEGIN TRANSACTION");
             queryBuilder.str("");
             queryBuilder << "INSERT INTO " SIM_PROPS " (time_resolution) values ("
                     << (long)(sc_get_time_resolution().to_seconds()*1e15) << ");";
@@ -122,6 +127,7 @@ static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason,
     case scv_tr_db::DELETE:
         try {
 //            scv_out << "Transaction Recording is closing file: " << my_sqlite_file_name << endl;
+            db.exec("COMMIT TRANSACTION");
             db.close();
         } catch (SQLiteDB::SQLiteException& e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't close recording file");
