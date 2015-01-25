@@ -8,7 +8,7 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.ui.swt;
+package com.minres.scviewer.database.swt.internal;
 
 
 public interface IWaveformPainter extends IPainter {

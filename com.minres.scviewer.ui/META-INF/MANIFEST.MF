@@ -6,6 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.minres.scviewer.ui.TxEditorPlugin
 Bundle-Vendor: MINRES Technologies GmbH
 Require-Bundle: com.minres.scviewer.database;bundle-version="1.0.0",
+ com.minres.scviewer.database.swt;bundle-version="1.0.0",
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.jface.text,
@@ -19,6 +20,4 @@ Require-Bundle: com.minres.scviewer.database;bundle-version="1.0.0",
  org.eclipse.jface
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: .,
- swing2swt.jar
 Import-Package: com.google.common.collect

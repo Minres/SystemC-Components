@@ -16,6 +16,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.handlers.HandlerUtil;
 
+import com.minres.scviewer.database.swt.GotoDirection;
 import com.minres.scviewer.ui.TxEditorPart;
 
 public class GotoNext extends AbstractHandler {

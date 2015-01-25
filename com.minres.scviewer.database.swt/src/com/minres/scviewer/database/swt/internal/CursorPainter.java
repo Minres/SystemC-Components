@@ -8,12 +8,12 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.ui.swt;
+package com.minres.scviewer.database.swt.internal;
 
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Rectangle;
 
-class CursorPainter implements IPainter {
+public class CursorPainter implements IPainter {
 	
 	/**
 	 * 
@@ -25,7 +25,7 @@ class CursorPainter implements IPainter {
 	 * @param i 
 	 * @param txDisplay
 	 */
-	CursorPainter(WaveformCanvas txDisplay, long time) {
+	public CursorPainter(WaveformCanvas txDisplay, long time) {
 		this.waveCanvas = txDisplay;
 		this.time=time;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.ui.swt;
+package com.minres.scviewer.database.swt.internal;
 
 import java.util.Map.Entry;
 import java.util.NavigableMap;
@@ -24,7 +24,7 @@ import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.database.ISignalChangeMulti;
 import com.minres.scviewer.database.ISignalChangeSingle;
 
-class SignalPainter implements IWaveformPainter  {
+public class SignalPainter implements IWaveformPainter  {
 	
 	/**
 	 * 

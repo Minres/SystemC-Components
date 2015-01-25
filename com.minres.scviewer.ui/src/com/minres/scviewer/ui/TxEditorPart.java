@@ -46,8 +46,8 @@ import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.database.WaveformDb;
-import com.minres.scviewer.ui.handler.GotoDirection;
-import com.minres.scviewer.ui.swt.TxDisplay;
+import com.minres.scviewer.database.swt.GotoDirection;
+import com.minres.scviewer.database.swt.TxDisplay;
 import com.minres.scviewer.ui.views.TxOutlinePage;
 
 public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPageContributor {
@@ -162,7 +162,8 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 
 		}
 		final File[] files=filesToLoad.toArray(new File[filesToLoad.size()]);
-		ps.busyCursorWhile(new IRunnableWithProgress() {
+		ps.run(true, false, new IRunnableWithProgress() {
+		//ps.busyCursorWhile(new IRunnableWithProgress() {
 			public void run(IProgressMonitor pm) throws InvocationTargetException {
 				pm.beginTask("Loading database "+files[0].getName(), files.length);
 				try {

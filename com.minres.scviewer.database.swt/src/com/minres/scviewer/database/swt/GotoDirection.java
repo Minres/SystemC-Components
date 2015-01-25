@@ -8,13 +8,6 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.ui.swt;
+package com.minres.scviewer.database.swt;
 
-import org.eclipse.swt.graphics.GC;
-import org.eclipse.swt.graphics.Rectangle;
-
-public interface IPainter {
-
-	void paintArea(GC gc,Rectangle area);
-	
-}
+public enum GotoDirection {PREV, NEXT}

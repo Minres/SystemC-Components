@@ -8,7 +8,7 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.ui.swt;
+package com.minres.scviewer.database.swt.internal;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,7 +25,7 @@ import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.ITxEvent;
 import com.minres.scviewer.database.ITxStream;
 
-class StreamPainter implements IWaveformPainter{
+public class StreamPainter implements IWaveformPainter{
 
 	/**
 	 * 

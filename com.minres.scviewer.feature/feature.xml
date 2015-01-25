@@ -6,8 +6,9 @@
       provider-name="%providerName">
 
    <description>
-      A viewer for SystemC Verification Library transactions. It supports
-a SQLite based recording as well as the built-in text base recording.
+      A viewer for SystemC Verification Library transactions and VCD 
+signals. It supports a SQLite based recording as well as the built-in
+text base recording.
    </description>
 
    <copyright>
@@ -80,5 +81,19 @@ http://www.eclipse.org/legal/epl-v10.html
          download-size="0"
          install-size="0"
          version="0.0.0"/>
+
+   <plugin
+         id="com.minres.scviewer.database.swt"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.minres.scviewer.database.vcd"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

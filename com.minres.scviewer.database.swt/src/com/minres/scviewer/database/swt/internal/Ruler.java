@@ -8,7 +8,7 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.ui.swt;
+package com.minres.scviewer.database.swt.internal;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
@@ -21,11 +21,9 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Composite;
 
-import com.minres.scviewer.ui.TxEditorPlugin;
-
 public class Ruler extends Composite {
 
-	static final int height = 20;
+	public static final int height = 20;
 	static final int tickY = 15;
 	static final int majorTickY = 5;
 	
@@ -35,7 +33,6 @@ public class Ruler extends Composite {
 	private int length;
 	private long start;
 	
-	private TxEditorPlugin plugin;
 	private Color headerBgColor;
 	private Color headerFgColor;
 	private int bottom;
@@ -46,16 +43,11 @@ public class Ruler extends Composite {
 	private long rulerTickMajor = rulerTickMajorC*scaleFactor;
 	private String unit="";
 	
-	Ruler(Composite parent, int style) {
+	public Ruler(Composite parent, int style) {
 		super(parent, style | SWT.DOUBLE_BUFFERED | SWT.NO_BACKGROUND);
 		this.length=0;
 		headerBgColor=getDisplay().getSystemColor(SWT.COLOR_WHITE);
 		headerFgColor=getDisplay().getSystemColor(SWT.COLOR_BLACK);
-		plugin=TxEditorPlugin.getDefault();	
-		if(plugin!=null){
-			headerBgColor=plugin.getColor(TxEditorPlugin.headerBgColor);
-			headerFgColor=plugin.getColor(TxEditorPlugin.headerFgColor);
-		}
 		addDisposeListener(new DisposeListener() {
 			public void widgetDisposed(DisposeEvent e) {
 				Ruler.this.widgetDisposed(e);

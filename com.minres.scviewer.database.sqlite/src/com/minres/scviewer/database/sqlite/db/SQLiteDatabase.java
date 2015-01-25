@@ -20,8 +20,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
-import org.sqlite.JDBC;
-
 public class SQLiteDatabase implements IDatabase {
 
 	protected String dbFileName;

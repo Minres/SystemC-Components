@@ -8,7 +8,7 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.ui.swt;
+package com.minres.scviewer.database.swt;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -60,7 +60,14 @@ import com.minres.scviewer.database.ITxEvent;
 import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformEvent;
-import com.minres.scviewer.ui.handler.GotoDirection;
+import com.minres.scviewer.database.swt.internal.CursorPainter;
+import com.minres.scviewer.database.swt.internal.IWaveformPainter;
+import com.minres.scviewer.database.swt.internal.ObservableList;
+import com.minres.scviewer.database.swt.internal.Ruler;
+import com.minres.scviewer.database.swt.internal.SignalPainter;
+import com.minres.scviewer.database.swt.internal.StreamPainter;
+import com.minres.scviewer.database.swt.internal.TrackPainter;
+import com.minres.scviewer.database.swt.internal.WaveformCanvas;
 
 public class TxDisplay implements PropertyChangeListener, ISelectionProvider, MouseListener{
 	private ListenerList listeners = new ListenerList();

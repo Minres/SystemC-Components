@@ -8,14 +8,14 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.ui.swt;
+package com.minres.scviewer.database.swt.internal;
 
 import java.util.Map.Entry;
 
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Rectangle;
 
-class TrackPainter implements IPainter {
+public class TrackPainter implements IPainter {
 	
 	/**
 	 * 
@@ -25,7 +25,7 @@ class TrackPainter implements IPainter {
 	/**
 	 * @param txDisplay
 	 */
-	TrackPainter(WaveformCanvas waveCanvas) {
+	public TrackPainter(WaveformCanvas waveCanvas) {
 		this.waveCanvas = waveCanvas;
 	}
 

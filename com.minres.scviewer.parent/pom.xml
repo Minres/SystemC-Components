@@ -10,9 +10,9 @@
 		<module>../com.minres.scviewer.database.sqlite</module>
 		<module>../com.minres.scviewer.database.text</module>
 		<module>../com.minres.scviewer.database.vcd</module>
-		<module>../com.minres.scviewer.feature</module>
+		<module>../com.minres.scviewer.database.swt</module>
 		<module>../com.minres.scviewer.ui</module>
-		
+		<module>../com.minres.scviewer.feature</module>		
 		<module>../com.minres.scviewer.updateSite</module>
 		<module>../com.minres.scviewer.database.test</module>
 	</modules>
