@@ -102,7 +102,9 @@ public class StreamPainter implements IWaveformPainter{
 				(int)(tx.getBeginTime()/this.waveCanvas.getScaleFactor()), area.y+offset+upper,
 				(int)((tx.getEndTime()-tx.getBeginTime())/this.waveCanvas.getScaleFactor()), txHeight);
 		if(bb.x+bb.width<area.x || bb.x>area.x+area.width) return;
-		if(bb.width<10){
+		if(bb.width==0){
+			gc.drawLine(bb.x, bb.y, bb.x, bb.y+bb.height);
+		} else if(bb.width<10){
 			gc.fillRectangle(bb);
 			gc.drawRectangle(bb);
 		} else {
@@ -127,6 +129,14 @@ public class StreamPainter implements IWaveformPainter{
 			}while(firstTx!=null);
 		}
 		return stream;
+	}
+
+	public ITxStream<? extends ITxEvent> getStream() {
+		return stream;
+	}
+
+	public void setStream(ITxStream<? extends ITxEvent> stream) {
+		this.stream = stream;
 	}
 
 	protected ITx getTxFromEntry(int lane, Entry<Long, List<ITxEvent>> firstTx) {

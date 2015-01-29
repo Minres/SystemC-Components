@@ -144,7 +144,7 @@ public class WaveformCanvas extends Canvas {
 		this.ruler=ruler;
 	}
 
-	public Object getOrigin() {
+	public Point getOrigin() {
 		return origin;
 	}
 
@@ -350,18 +350,30 @@ public class WaveformCanvas extends Canvas {
 	public void setSelected(ITx currentSelection, IWaveform<? extends IWaveformEvent> currentWaveformSelection) {
 		this.currentSelection=currentSelection;
 		this.currentWaveformSelection=currentWaveformSelection;
-		if(currentSelection!=null) reveal(currentSelection.getBeginTime(), currentSelection.getEndTime());
+		if(currentSelection!=null) reveal(currentSelection);
 		redraw();
 	}
 
-	public void reveal(Long beginTime, Long endTime) {
-		int lower = (int) (beginTime/scaleFactor);
-		int higher=(int) (endTime/scaleFactor);
+	public void reveal(ITx tx){
+		int lower = (int) (tx.getBeginTime()/scaleFactor);
+		int higher=(int) (tx.getEndTime()/scaleFactor);
 		Point size = getSize();
 		if(lower<-origin.x){
 			scrollToX(lower);
 		} else if(higher>(size.x-origin.x)){
 			scrollToX(higher-size.x);
+		}
+		for(Entry<Integer, IWaveformPainter> entry:trackVerticalOffset.entrySet()){
+			if(entry.getValue() instanceof StreamPainter && ((StreamPainter)entry.getValue()).getStream()==tx.getStream()){
+				int top = entry.getKey()+trackHeight*tx.getConcurrencyIndex();
+				int bottom = top+trackHeight*(tx.getConcurrencyIndex()+1);
+				if(top<-origin.y){
+					scrollToY(bottom);
+				} else if(bottom>(size.y-origin.y)){
+					scrollToY(bottom-size.y);
+				}
+		
+			}
 		}
 	}
 

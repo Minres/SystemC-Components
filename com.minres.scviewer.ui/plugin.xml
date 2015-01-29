@@ -289,6 +289,70 @@
             </parameter>
          </command>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:com.minres.scviewer.ui.TxEditorPart">
+         <command
+               commandId="com.minres.scviewer.ui.removeWave"
+               label="Remove"
+               style="push"
+               tooltip="Go to next event">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="com.minres.scviewer.ui.waveEditorActive">
+               </reference>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.zoomin"
+               label="Zoom in"
+               style="push"
+               tooltip="Zoom into">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="com.minres.scviewer.ui.waveEditorActive">
+               </reference>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.zoomout"
+               label="Zoom out"
+               style="push"
+               tooltip="Zoom out of">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="com.minres.scviewer.ui.waveEditorActive">
+               </reference>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.gotoPrev"
+               label="Prev"
+               style="push"
+               tooltip="Go to previous event">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="com.minres.scviewer.ui.waveEditorActive">
+               </reference>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="com.minres.scviewer.ui.gotoNext"
+               label="Next"
+               style="push"
+               tooltip="Go to next event">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="com.minres.scviewer.ui.waveEditorActive">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
@@ -321,6 +385,10 @@
             id="com.minres.scviewer.ui.zoomout"
             name="Zoom out">
       </command>
+      <command
+            id="com.minres.scviewer.ui.removeWave"
+            name="Remove wave">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -329,7 +397,7 @@
             commandId="com.minres.scviewer.ui.gotoPrev">
          <enabledWhen>
             <reference
-                  definitionId="com.minres.scviewer.ui.oneElementSeleted">
+                  definitionId="com.minres.scviewer.ui.oneTxSeleted">
             </reference>
          </enabledWhen>
       </handler>
@@ -338,7 +406,7 @@
             commandId="com.minres.scviewer.ui.gotoNext">
          <enabledWhen>
             <reference
-                  definitionId="com.minres.scviewer.ui.oneElementSeleted">
+                  definitionId="com.minres.scviewer.ui.oneTxSeleted">
             </reference>
          </enabledWhen>
       </handler>
@@ -360,11 +428,35 @@
             </reference>
          </enabledWhen>
       </handler>
+      <handler
+            class="com.minres.scviewer.ui.handler.RemoveHandler"
+            commandId="com.minres.scviewer.ui.removeWave">
+         <enabledWhen>
+            <reference
+                  definitionId="com.minres.scviewer.ui.oneWaveSeleted">
+            </reference>
+         </enabledWhen>
+      </handler>
    </extension>
    <extension
          point="org.eclipse.core.expressions.definitions">
       <definition
-            id="com.minres.scviewer.ui.oneElementSeleted">
+            id="com.minres.scviewer.ui.oneWaveSeleted">
+            <with
+                  variable="selection">
+               <and>
+                  <count
+                        value="1">
+                  </count>
+ 				<iterate
+           operator="or">
+       				<instanceof value="com.minres.scviewer.database.IWaveform"/>
+    			</iterate>      
+            </and>
+            </with>
+      </definition>
+      <definition
+            id="com.minres.scviewer.ui.oneTxSeleted">
             <with
                   variable="selection">
                <and>
@@ -411,6 +503,10 @@
       <image
             commandId="com.minres.scviewer.ui.zoomout"
             icon="res/images/zoom_out.png">
+      </image>
+      <image
+            commandId="com.minres.scviewer.ui.removeWave"
+            icon="res/images/cross.png">
       </image>
    </extension>
 

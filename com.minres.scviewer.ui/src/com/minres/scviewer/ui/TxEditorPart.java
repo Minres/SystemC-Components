@@ -22,11 +22,13 @@ import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.action.IStatusLineManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.StatusLineContributionItem;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
@@ -110,6 +112,18 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 			}
 		}).run();
 		zoomStatusLineItem.setText("Zoom level: "+zoomLevel[txDisplay.getZoomLevel()]);
+		
+		MenuManager menuMgr = new MenuManager("#PopupMenu");
+//		menuMgr.setRemoveAllWhenShown(true);
+//		menuMgr.addMenuListener(new IMenuListener() {
+//			public void menuAboutToShow(IMenuManager manager) {
+//				fillContextMenu(manager);
+//			}
+//		});
+		Menu menu = menuMgr.createContextMenu(txDisplay.getControl());
+		txDisplay.getControl().setMenu(menu);
+		getSite().registerContextMenu(menuMgr, txDisplay);
+
 	}
 
 	/*
@@ -332,6 +346,10 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 		});
 	}
 
+	public ISelection getSelection(){
+		return txDisplay.getSelection();
+	}
+	
 	@Override
 	public String getContributorId() {
 		return getSite().getId();
@@ -351,6 +369,11 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 
 	public int getZoomLevel() {
 		return txDisplay.getZoomLevel();
+	}
+
+	public void removeSelected() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
