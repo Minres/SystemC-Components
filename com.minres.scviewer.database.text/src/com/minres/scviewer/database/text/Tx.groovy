@@ -51,7 +51,11 @@ class Tx implements ITx {
 
 	@Override
 	public int compareTo(ITx o) {
-		return beginTime.compareTo(o.beginTime)
+		def res =beginTime.compareTo(o.beginTime)
+		if(res!=0) 
+			return res
+		else
+			return id.compareTo(o.id)
 	}
 	
 }

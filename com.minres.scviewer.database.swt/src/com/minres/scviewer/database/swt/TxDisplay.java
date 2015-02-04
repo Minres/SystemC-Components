@@ -81,566 +81,529 @@ import com.minres.scviewer.database.swt.internal.TrackPainter;
 import com.minres.scviewer.database.swt.internal.WaveformCanvas;
 
 public class TxDisplay implements PropertyChangeListener, ISelectionProvider, MouseListener {
-	private ListenerList listeners = new ListenerList();
+    private ListenerList listeners = new ListenerList();
 
-	private static final String SELECTION = "selection";
-	private ITx currentSelection;
-	private IWaveform<? extends IWaveformEvent> currentWaveformSelection;
+    private static final String SELECTION = "selection";
+    private ITx currentSelection;
+    private IWaveform<? extends IWaveformEvent> currentWaveformSelection;
 
-	private ScrolledComposite nameListScrolled;
-	private ScrolledComposite valueListScrolled;
+    private ScrolledComposite nameListScrolled;
+    private ScrolledComposite valueListScrolled;
 
-	private Canvas nameList;
-	private Canvas valueList;
-	WaveformCanvas trackList;
+    private Canvas nameList;
+    private Canvas valueList;
+    WaveformCanvas trackList;
 
-	private Composite top;
+    private Composite top;
 
-	protected ObservableList<IWaveform<? extends IWaveformEvent>> streams;
-	Vector<CursorPainter> cursorPainters;
+    protected ObservableList<IWaveform<? extends IWaveformEvent>> streams;
+    Vector<CursorPainter> cursorPainters;
 
-	private Composite trackPane;
-	private Ruler ruler;
-	TreeMap<Integer, IWaveform<? extends IWaveformEvent>> trackVerticalOffset;
-	HashMap<IWaveform<? extends IWaveformEvent>, String> actualValues;
-	// private long maxTime=0;
-	private Font nameFont, nameFontB;
+    private Composite trackPane;
+    private Ruler ruler;
+    TreeMap<Integer, IWaveform<? extends IWaveformEvent>> trackVerticalOffset;
+    HashMap<IWaveform<? extends IWaveformEvent>, String> actualValues;
+    // private long maxTime=0;
+    private Font nameFont, nameFontB;
 
-	public TxDisplay(Composite parent) {
-		trackVerticalOffset = new TreeMap<Integer, IWaveform<? extends IWaveformEvent>>();
-		actualValues = new HashMap<IWaveform<? extends IWaveformEvent>, String>();
-		cursorPainters = new Vector<CursorPainter>();
+    public TxDisplay(Composite parent) {
+        trackVerticalOffset = new TreeMap<Integer, IWaveform<? extends IWaveformEvent>>();
+        actualValues = new HashMap<IWaveform<? extends IWaveformEvent>, String>();
+        cursorPainters = new Vector<CursorPainter>();
 
-		nameFont = parent.getDisplay().getSystemFont();
-		nameFontB = SWTResourceManager.getBoldFont(nameFont);
+        nameFont = parent.getDisplay().getSystemFont();
+        nameFontB = SWTResourceManager.getBoldFont(nameFont);
 
-		streams = new ObservableList<IWaveform<? extends IWaveformEvent>>();
-		streams.addPropertyChangeListener(this);
+        streams = new ObservableList<IWaveform<? extends IWaveformEvent>>();
+        streams.addPropertyChangeListener(this);
 
-		top = new Composite(parent, SWT.NONE);
-		top.setLayout(new FillLayout(SWT.HORIZONTAL));
+        top = new Composite(parent, SWT.NONE);
+        top.setLayout(new FillLayout(SWT.HORIZONTAL));
 
-		SashForm topSash = new SashForm(top, SWT.SMOOTH);
-		topSash.setBackground(topSash.getDisplay().getSystemColor(
-				SWT.COLOR_GRAY));
+        SashForm topSash = new SashForm(top, SWT.SMOOTH);
+        topSash.setBackground(topSash.getDisplay().getSystemColor(SWT.COLOR_GRAY));
 
-		Composite composite = new Composite(topSash, SWT.NONE);
-		composite.setLayout(new FillLayout(SWT.HORIZONTAL));
+        Composite composite = new Composite(topSash, SWT.NONE);
+        composite.setLayout(new FillLayout(SWT.HORIZONTAL));
 
-		SashForm leftSash = new SashForm(composite, SWT.SMOOTH);
-		leftSash.setBackground(leftSash.getDisplay().getSystemColor(
-				SWT.COLOR_GRAY));
+        SashForm leftSash = new SashForm(composite, SWT.SMOOTH);
+        leftSash.setBackground(leftSash.getDisplay().getSystemColor(SWT.COLOR_GRAY));
 
-		Composite namePane = createTextPane(leftSash, "Name");
-		namePane.setBackground(namePane.getDisplay().getSystemColor(
-				SWT.COLOR_WIDGET_BACKGROUND));
+        Composite namePane = createTextPane(leftSash, "Name");
+        namePane.setBackground(namePane.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 
-		nameListScrolled = new ScrolledComposite(namePane, SWT.H_SCROLL
-				| SWT.V_SCROLL);
-		nameListScrolled.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
-				true, 1, 1));
-		nameListScrolled.setExpandHorizontal(true);
-		nameListScrolled.setExpandVertical(true);
-		nameListScrolled.setAlwaysShowScrollBars(true);
-		nameListScrolled.addControlListener(new ControlAdapter() {
-			@Override
-			public void controlResized(ControlEvent e) {
-				nameListScrolled.getVerticalBar().setVisible(false);
+        nameListScrolled = new ScrolledComposite(namePane, SWT.H_SCROLL | SWT.V_SCROLL);
+        nameListScrolled.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+        nameListScrolled.setExpandHorizontal(true);
+        nameListScrolled.setExpandVertical(true);
+        nameListScrolled.setAlwaysShowScrollBars(true);
+        nameListScrolled.addControlListener(new ControlAdapter() {
+            @Override
+            public void controlResized(ControlEvent e) {
+                nameListScrolled.getVerticalBar().setVisible(false);
 
-			}
-		});
-		nameList = new Canvas(nameListScrolled, SWT.NONE) {
-			@Override
-			public Point computeSize(int wHint, int hHint, boolean changed) {
-				Rectangle bounds = super.getClientArea();
-				return new Point(bounds.width, bounds.height);
-			}
-		};
-		nameList.addListener(SWT.Paint, new Listener() {
-			@Override
-			public void handleEvent(Event event) {
-				GC gc = event.gc;
-				Rectangle rect = ((Canvas) event.widget).getClientArea();
-				paintNames(gc, rect);
-			}
-		});
-		nameList.addMouseListener(this);
-		nameListScrolled.setContent(nameList);
+            }
+        });
+        nameList = new Canvas(nameListScrolled, SWT.NONE) {
+            @Override
+            public Point computeSize(int wHint, int hHint, boolean changed) {
+                Rectangle bounds = super.getClientArea();
+                return new Point(bounds.width, bounds.height);
+            }
+        };
+        nameList.addListener(SWT.Paint, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                GC gc = event.gc;
+                Rectangle rect = ((Canvas) event.widget).getClientArea();
+                paintNames(gc, rect);
+            }
+        });
+        nameList.addMouseListener(this);
+        nameListScrolled.setContent(nameList);
 
-		Composite valuePane = createTextPane(leftSash, "Value");
-		valuePane.setBackground(valuePane.getDisplay().getSystemColor(
-				SWT.COLOR_WIDGET_BACKGROUND));
-		valueListScrolled = new ScrolledComposite(valuePane, SWT.H_SCROLL
-				| SWT.V_SCROLL);
-		valueListScrolled.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
-				true, 1, 1));
-		valueListScrolled.setExpandHorizontal(true);
-		valueListScrolled.setExpandVertical(true);
-		valueListScrolled.setAlwaysShowScrollBars(true);
-		valueListScrolled.addControlListener(new ControlAdapter() {
-			@Override
-			public void controlResized(ControlEvent e) {
-				valueListScrolled.getVerticalBar().setVisible(false);
+        Composite valuePane = createTextPane(leftSash, "Value");
+        valuePane.setBackground(valuePane.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+        valueListScrolled = new ScrolledComposite(valuePane, SWT.H_SCROLL | SWT.V_SCROLL);
+        valueListScrolled.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+        valueListScrolled.setExpandHorizontal(true);
+        valueListScrolled.setExpandVertical(true);
+        valueListScrolled.setAlwaysShowScrollBars(true);
+        valueListScrolled.addControlListener(new ControlAdapter() {
+            @Override
+            public void controlResized(ControlEvent e) {
+                valueListScrolled.getVerticalBar().setVisible(false);
 
-			}
-		});
-		valueList = new Canvas(valueListScrolled, SWT.NONE) {
-			@Override
-			public Point computeSize(int wHint, int hHint, boolean changed) {
-				Rectangle bounds = super.getClientArea();
-				return new Point(bounds.width, bounds.height);
-			}
-		};
-		valueList.addListener(SWT.Paint, new Listener() {
-			@Override
-			public void handleEvent(Event event) {
-				GC gc = event.gc;
-				Rectangle rect = ((Canvas) event.widget).getClientArea();
-				paintValues(gc, rect);
-			}
-		});
-		valueList.addMouseListener(this);
-		valueListScrolled.setContent(valueList);
+            }
+        });
+        valueList = new Canvas(valueListScrolled, SWT.NONE) {
+            @Override
+            public Point computeSize(int wHint, int hHint, boolean changed) {
+                Rectangle bounds = super.getClientArea();
+                return new Point(bounds.width, bounds.height);
+            }
+        };
+        valueList.addListener(SWT.Paint, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                GC gc = event.gc;
+                Rectangle rect = ((Canvas) event.widget).getClientArea();
+                paintValues(gc, rect);
+            }
+        });
+        valueList.addMouseListener(this);
+        valueListScrolled.setContent(valueList);
 
-		trackPane = new Composite(topSash, SWT.NONE);
-		trackPane.setLayout(new BorderLayout(0, 0));
-		ruler = new Ruler(trackPane, SWT.NONE);
-		ruler.setLayoutData(BorderLayout.NORTH);
+        trackPane = new Composite(topSash, SWT.NONE);
+        trackPane.setLayout(new BorderLayout(0, 0));
+        ruler = new Ruler(trackPane, SWT.NONE);
+        ruler.setLayoutData(BorderLayout.NORTH);
 
-		trackList = new WaveformCanvas(trackPane, SWT.NONE);
-		trackList.setLayoutData(BorderLayout.CENTER);
-		trackList.setStreams(streams);
-		trackList.setRuler(ruler);
-		trackList.addPainter(new TrackPainter(trackList));
-		CursorPainter cp = new CursorPainter(trackList,
-				trackList.getScaleFactor() * 10);
-		trackList.addPainter(cp);
-		cursorPainters.add(cp);
-		trackList.setMaxTime(1);
-		trackList.addMouseListener(this);
+        trackList = new WaveformCanvas(trackPane, SWT.NONE);
+        trackList.setLayoutData(BorderLayout.CENTER);
+        trackList.setStreams(streams);
+        trackList.setRuler(ruler);
+        trackList.addPainter(new TrackPainter(trackList));
+        CursorPainter cp = new CursorPainter(trackList, trackList.getScaleFactor() * 10);
+        trackList.addPainter(cp);
+        cursorPainters.add(cp);
+        trackList.setMaxTime(1);
+        trackList.addMouseListener(this);
 
-		nameListScrolled.getVerticalBar().addSelectionListener(
-				new SelectionAdapter() {
-					public void widgetSelected(SelectionEvent e) {
-						int y = ((ScrollBar) e.widget).getSelection();
-						valueListScrolled.setOrigin(
-								valueListScrolled.getOrigin().x, y);
-						trackList.scrollToY(y);
-					}
-				});
-		valueListScrolled.getVerticalBar().addSelectionListener(
-				new SelectionAdapter() {
-					public void widgetSelected(SelectionEvent e) {
-						int y = ((ScrollBar) e.widget).getSelection();
-						nameListScrolled.setOrigin(
-								nameListScrolled.getOrigin().x, y);
-						trackList.scrollToY(y);
-					}
-				});
-		trackList.getVerticalBar().addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-				int y = trackList.getVerticalBar().getSelection();
-				nameListScrolled.setOrigin(nameListScrolled.getOrigin().x, y);
-				valueListScrolled.setOrigin(valueListScrolled.getOrigin().x, y);
-			}
-		});
-		topSash.setWeights(new int[] { 30, 70 });
-		leftSash.setWeights(new int[] { 75, 25 });
+        nameListScrolled.getVerticalBar().addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                int y = ((ScrollBar) e.widget).getSelection();
+                valueListScrolled.setOrigin(valueListScrolled.getOrigin().x, y);
+                trackList.setOrigin(trackList.getOrigin().x, y);
+            }
+        });
+        valueListScrolled.getVerticalBar().addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                int y = ((ScrollBar) e.widget).getSelection();
+                nameListScrolled.setOrigin(nameListScrolled.getOrigin().x, y);
+                trackList.setOrigin(trackList.getOrigin().x, y);
+            }
+        });
+        trackList.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                int y = trackList.getVerticalBar().getSelection();
+                nameListScrolled.setOrigin(nameListScrolled.getOrigin().x, y);
+                valueListScrolled.setOrigin(valueListScrolled.getOrigin().x, y);
+            }
+        });
+        topSash.setWeights(new int[] { 30, 70 });
+        leftSash.setWeights(new int[] { 75, 25 });
 
-		createDragSource(nameList);
-		createDragSource(valueList);
-		createDropTarget(nameList);
-		createDropTarget(valueList);
-	}
+        createDragSource(nameList);
+        createDragSource(valueList);
+        createDropTarget(nameList);
+        createDropTarget(valueList);
+    }
 
-	private Composite createTextPane(SashForm leftSash, String text) {
-		Composite namePane = new Composite(leftSash, SWT.NONE);
-		GridLayout gl_namePane = new GridLayout(1, false);
-		gl_namePane.verticalSpacing = 0;
-		gl_namePane.marginWidth = 0;
-		gl_namePane.horizontalSpacing = 0;
-		gl_namePane.marginHeight = 0;
-		namePane.setLayout(gl_namePane);
+    private Composite createTextPane(SashForm leftSash, String text) {
+        Composite namePane = new Composite(leftSash, SWT.NONE);
+        GridLayout gl_namePane = new GridLayout(1, false);
+        gl_namePane.verticalSpacing = 0;
+        gl_namePane.marginWidth = 0;
+        gl_namePane.horizontalSpacing = 0;
+        gl_namePane.marginHeight = 0;
+        namePane.setLayout(gl_namePane);
 
-		CLabel nameLabel = new CLabel(namePane, SWT.NONE);
-		GridData gd_nameLabel = new GridData(SWT.CENTER, SWT.CENTER, true,
-				false, 1, 1);
-		gd_nameLabel.heightHint = Ruler.height - 2;
-		nameLabel.setLayoutData(gd_nameLabel);
-		nameLabel.setText(text);
+        CLabel nameLabel = new CLabel(namePane, SWT.NONE);
+        GridData gd_nameLabel = new GridData(SWT.CENTER, SWT.CENTER, true, false, 1, 1);
+        gd_nameLabel.heightHint = Ruler.height - 2;
+        nameLabel.setLayoutData(gd_nameLabel);
+        nameLabel.setText(text);
 
-		Label nameSep = new Label(namePane, SWT.SEPARATOR | SWT.HORIZONTAL);
-		nameSep.setBackground(SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY));
-		nameSep.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
-		GridData gd_nameSep = new GridData(SWT.FILL, SWT.CENTER, true, false,
-				1, 1);
-		gd_nameSep.heightHint = 2;
-		nameSep.setLayoutData(gd_nameSep);
-		return namePane;
-	}
+        Label nameSep = new Label(namePane, SWT.SEPARATOR | SWT.HORIZONTAL);
+        nameSep.setBackground(SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY));
+        nameSep.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+        GridData gd_nameSep = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        gd_nameSep.heightHint = 2;
+        nameSep.setLayoutData(gd_nameSep);
+        return namePane;
+    }
 
-	@Override
-	public void propertyChange(PropertyChangeEvent pce) {
-		if ("size".equals(pce.getPropertyName())) {
-			updateTracklist();
-		}
-	}
+    @Override
+    public void propertyChange(PropertyChangeEvent pce) {
+        if ("size".equals(pce.getPropertyName())) {
+            updateTracklist();
+        }
+    }
 
-	@SuppressWarnings("unchecked")
-	protected void updateTracklist() {
-		int yoffs = 0;
-		int nameMaxWidth = 0;
-		int previousHeight=trackVerticalOffset.size()==0?0: trackVerticalOffset.lastKey();
-		IWaveformPainter painter = null;
-		trackVerticalOffset.clear();
-		actualValues.clear();
-		trackList.clearAllWavefromPainter();
-		boolean even = true;
-		TextLayout tl = new TextLayout(trackList.getDisplay());
-		tl.setFont(nameFontB);
-		for (IWaveform<? extends IWaveformEvent> waveform : streams) {
-			int height = trackList.getTrackHeight();
-			if (waveform instanceof ITxStream<?>) {
-				height *= ((ITxStream<? extends ITxEvent>) waveform).getMaxConcurrency();
-				painter = new StreamPainter(trackList, even, height, (ITxStream<? extends ITxEvent>) waveform);
-				actualValues.put(waveform, "");
-			} else if (waveform instanceof ISignal<?>) {
-				painter = new SignalPainter(trackList, even, height,
-						(ISignal<?>) waveform);
-				actualValues.put(waveform, "---");
-			}
-			trackList.addWavefromPainter(yoffs, painter);
-			trackVerticalOffset.put(yoffs, waveform);
-			tl.setText(waveform.getFullName());
-			nameMaxWidth = Math.max(nameMaxWidth, tl.getBounds().width);
-			yoffs += height;
-			even = !even;
-		}
-		nameList.setSize(nameMaxWidth + 15, yoffs);
-		nameListScrolled.setMinSize(nameMaxWidth + 15, yoffs);
-		valueList.setSize(calculateValueWidth(), yoffs);
-		valueListScrolled.setMinSize(calculateValueWidth(), yoffs);
-		nameList.redraw();
-		valueList.redraw();
-		trackList.redraw();
-		top.layout(new Control[] { valueList, nameList, trackList });
-		if(previousHeight>trackVerticalOffset.lastKey()){
-			trackList.scrollToY(trackList.getOrigin().y-(previousHeight-trackVerticalOffset.lastKey()));
-		}
-		setSelection(new StructuredSelection());
-	}
+    @SuppressWarnings("unchecked")
+    protected void updateTracklist() {
+        int yoffs = 0;
+        int nameMaxWidth = 0;
+        int previousHeight = trackVerticalOffset.size() == 0 ? 0 : trackVerticalOffset.lastKey();
+        IWaveformPainter painter = null;
+        trackVerticalOffset.clear();
+        actualValues.clear();
+        trackList.clearAllWavefromPainter();
+        boolean even = true;
+        TextLayout tl = new TextLayout(trackList.getDisplay());
+        tl.setFont(nameFontB);
+        for (IWaveform<? extends IWaveformEvent> waveform : streams) {
+            int height = trackList.getTrackHeight();
+            if (waveform instanceof ITxStream<?>) {
+                height *= ((ITxStream<? extends ITxEvent>) waveform).getMaxConcurrency();
+                painter = new StreamPainter(trackList, even, height, (ITxStream<? extends ITxEvent>) waveform);
+                actualValues.put(waveform, "");
+            } else if (waveform instanceof ISignal<?>) {
+                painter = new SignalPainter(trackList, even, height, (ISignal<?>) waveform);
+                actualValues.put(waveform, "---");
+            }
+            trackList.addWavefromPainter(yoffs, painter);
+            trackVerticalOffset.put(yoffs, waveform);
+            tl.setText(waveform.getFullName());
+            nameMaxWidth = Math.max(nameMaxWidth, tl.getBounds().width);
+            yoffs += height;
+            even = !even;
+        }
+        nameList.setSize(nameMaxWidth + 15, yoffs);
+        nameListScrolled.setMinSize(nameMaxWidth + 15, yoffs);
+        valueList.setSize(calculateValueWidth(), yoffs);
+        valueListScrolled.setMinSize(calculateValueWidth(), yoffs);
+        nameList.redraw();
+        valueList.redraw();
+        trackList.redraw();
+        top.layout(new Control[] { valueList, nameList, trackList });
+        if (previousHeight > trackVerticalOffset.lastKey()) {
+            Point o = trackList.getOrigin();
+            trackList.setOrigin(o.x, o.y - (previousHeight - trackVerticalOffset.lastKey()));
+        }
+        setSelection(new StructuredSelection());
+    }
 
-	private int calculateValueWidth() {
-		TextLayout tl = new TextLayout(trackList.getDisplay());
-		tl.setFont(nameFontB);
-		int valueMaxWidth = 0;
-		for (String v : actualValues.values()) {
-			tl.setText(v);
-			valueMaxWidth = Math.max(valueMaxWidth, tl.getBounds().width);
-		}
-		return valueMaxWidth + 15;
-	}
+    private int calculateValueWidth() {
+        TextLayout tl = new TextLayout(trackList.getDisplay());
+        tl.setFont(nameFontB);
+        int valueMaxWidth = 0;
+        for (String v : actualValues.values()) {
+            tl.setText(v);
+            valueMaxWidth = Math.max(valueMaxWidth, tl.getBounds().width);
+        }
+        return valueMaxWidth + 15;
+    }
 
-	@Override
-	public void addSelectionChangedListener(ISelectionChangedListener listener) {
-		listeners.add(listener);
-	}
+    @Override
+    public void addSelectionChangedListener(ISelectionChangedListener listener) {
+        listeners.add(listener);
+    }
 
-	@Override
-	public void removeSelectionChangedListener(
-			ISelectionChangedListener listener) {
-		listeners.remove(listener);
-	}
+    @Override
+    public void removeSelectionChangedListener(ISelectionChangedListener listener) {
+        listeners.remove(listener);
+    }
 
-	public Control getControl(){
-		return top;
-	}
-	
-	@Override
-	public ISelection getSelection() {
-		if (currentSelection != null)
-			return new StructuredSelection(currentSelection);
-		else if (currentWaveformSelection != null)
-			return new StructuredSelection(currentWaveformSelection);
-		else
-			return null;
-	}
+    public Control getControl() {
+        return top;
+    }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public void setSelection(ISelection selection) {
-		boolean selectionChanged = false;
-		if (selection instanceof IStructuredSelection) {
-			Object sel = ((IStructuredSelection) selection).getFirstElement();
-			if (sel instanceof ITx && currentSelection != sel) {
-				currentSelection = (ITx) sel;
-				currentWaveformSelection = currentSelection.getStream();
-				selectionChanged = true;
-			} else if (sel instanceof IWaveform<?>
-					&& currentWaveformSelection != sel) {
-				currentSelection = null;
-				currentWaveformSelection = (IWaveform<? extends IWaveformEvent>) sel;
-				selectionChanged = true;
-			}
-		} else {
-			if (currentSelection != null || currentWaveformSelection != null)
-				selectionChanged = true;
-			currentSelection = null;
-			currentWaveformSelection = null;
-		}
-		if(currentWaveformSelection!=null && !streams.contains(currentWaveformSelection)){
-			streams.add(currentWaveformSelection);
-		}
-		if (selectionChanged) {
-			trackList.setSelected(currentSelection, currentWaveformSelection);
-			nameList.setData(SELECTION, currentWaveformSelection);
-			valueList.redraw();
-			nameList.redraw();
-			Object[] list = listeners.getListeners();
-			for (int i = 0; i < list.length; i++) {
-				((ISelectionChangedListener) list[i]).selectionChanged(new SelectionChangedEvent(this, selection));
-			}
-		}
-	}
+    @Override
+    public ISelection getSelection() {
+        if (currentSelection != null)
+            return new StructuredSelection(currentSelection);
+        else if (currentWaveformSelection != null)
+            return new StructuredSelection(currentWaveformSelection);
+        else
+            return null;
+    }
 
-	@SuppressWarnings("unchecked")
-	public void moveSelection(GotoDirection direction) {
-		if (currentWaveformSelection instanceof ITxStream<?>) {
-			ITxStream<ITxEvent> stream = (ITxStream<ITxEvent>) currentWaveformSelection;
-			ITx transaction = null;
-			if (direction == GotoDirection.NEXT) {
-				Entry<Long, List<ITxEvent>> entry = stream.getEvents().higherEntry(currentSelection.getBeginTime());
-				if (entry != null)
-					do {
-						for (ITxEvent evt : entry.getValue()) {
-							if (evt.getType() == ITxEvent.Type.BEGIN) {
-								transaction = evt.getTransaction();
-								break;
-							}
-						}
-						if (transaction == null)
-							entry = stream.getEvents().higherEntry(entry.getKey());
-					} while (entry != null && transaction == null);
-			} else if (direction == GotoDirection.PREV) {
-				Entry<Long, List<ITxEvent>> entry = stream.getEvents().lowerEntry(currentSelection.getBeginTime());
-				if (entry != null)
-					do {
-						for (ITxEvent evt : entry.getValue()) {
-							if (evt.getType() == ITxEvent.Type.BEGIN)
-								transaction = evt.getTransaction();
-							break;
-						}
-						if (transaction == null)
-							entry = stream.getEvents().lowerEntry(entry.getKey());
-					} while (entry != null && transaction == null);
-			}
-			if (transaction != null) {
-				setSelection(new StructuredSelection(transaction));
-			}
-		}
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public void setSelection(ISelection selection) {
+        boolean selectionChanged = false;
+        if (selection instanceof IStructuredSelection) {
+            Object sel = ((IStructuredSelection) selection).getFirstElement();
+            if (sel instanceof ITx && currentSelection != sel) {
+                currentSelection = (ITx) sel;
+                currentWaveformSelection = currentSelection.getStream();
+                selectionChanged = true;
+            } else if (sel instanceof IWaveform<?> && currentWaveformSelection != sel) {
+                currentSelection = null;
+                currentWaveformSelection = (IWaveform<? extends IWaveformEvent>) sel;
+                selectionChanged = true;
+            }
+        } else {
+            if (currentSelection != null || currentWaveformSelection != null)
+                selectionChanged = true;
+            currentSelection = null;
+            currentWaveformSelection = null;
+        }
+        if (currentWaveformSelection != null && !streams.contains(currentWaveformSelection)) {
+            streams.add(currentWaveformSelection);
+        }
+        if (selectionChanged) {
+            trackList.setSelected(currentSelection, currentWaveformSelection);
+            nameList.setData(SELECTION, currentWaveformSelection);
+            valueList.redraw();
+            nameList.redraw();
+            Object[] list = listeners.getListeners();
+            for (int i = 0; i < list.length; i++) {
+                ((ISelectionChangedListener) list[i]).selectionChanged(new SelectionChangedEvent(this, selection));
+            }
+        }
+    }
 
-	@Override
-	public void mouseDoubleClick(MouseEvent e) {
-	}
+    @SuppressWarnings("unchecked")
+    public void moveSelection(GotoDirection direction) {
+        if (currentWaveformSelection instanceof ITxStream<?>) {
+            ITxStream<ITxEvent> stream = (ITxStream<ITxEvent>) currentWaveformSelection;
+            ITx transaction = null;
+            if (direction == GotoDirection.NEXT) {
+                Entry<Long, List<ITxEvent>> entry = stream.getEvents().higherEntry(currentSelection.getBeginTime());
+                if (entry != null)
+                    do {
+                        for (ITxEvent evt : entry.getValue()) {
+                            if (evt.getType() == ITxEvent.Type.BEGIN) {
+                                transaction = evt.getTransaction();
+                                break;
+                            }
+                        }
+                        if (transaction == null)
+                            entry = stream.getEvents().higherEntry(entry.getKey());
+                    } while (entry != null && transaction == null);
+            } else if (direction == GotoDirection.PREV) {
+                Entry<Long, List<ITxEvent>> entry = stream.getEvents().lowerEntry(currentSelection.getBeginTime());
+                if (entry != null)
+                    do {
+                        System.out.println(currentSelection.getBeginTime() + " -> " + entry.getKey());
+                        for (ITxEvent evt : entry.getValue()) {
+                            System.out.println("\t-> " + evt.toString());
+                            if (evt.getType() == ITxEvent.Type.BEGIN) {
+                                transaction = evt.getTransaction();
+                                break;
+                            }
+                        }
+                        if (transaction == null)
+                            entry = stream.getEvents().lowerEntry(entry.getKey());
+                    } while (entry != null && transaction == null);
+            }
+            if (transaction != null) {
+                setSelection(new StructuredSelection(transaction));
+            }
+        }
+    }
 
-	@Override
-	public void mouseDown(MouseEvent e) {
-		if(e.button==1 || e.button==3){
-			if (e.widget == trackList) {
-				Object o = trackList.getClicked(new Point(e.x, e.y));
-				if (o != null)
-					setSelection(new StructuredSelection(o));
-			} else if (e.widget == valueList || e.widget == nameList) {
-				Entry<Integer, IWaveform<? extends IWaveformEvent>> entry = trackVerticalOffset
-						.floorEntry(e.y);
-				if (entry != null)
-					setSelection(new StructuredSelection(entry.getValue()));
-			}
-		} 
-		if(e.button==3){
-			top.getMenu().setVisible(true);
-		}
-	}
+    @Override
+    public void mouseDoubleClick(MouseEvent e) {
+    }
 
-	@Override
-	public void mouseUp(MouseEvent e) {
-	}
+    @Override
+    public void mouseDown(MouseEvent e) {
+        if (e.button == 1 || e.button == 3) {
+            if (e.widget == trackList) {
+                Object o = trackList.getClicked(new Point(e.x, e.y));
+                if (o != null)
+                    setSelection(new StructuredSelection(o));
+            } else if (e.widget == valueList || e.widget == nameList) {
+                Entry<Integer, IWaveform<? extends IWaveformEvent>> entry = trackVerticalOffset.floorEntry(e.y);
+                if (entry != null)
+                    setSelection(new StructuredSelection(entry.getValue()));
+            }
+        }
+        if (e.button == 3) {
+            top.getMenu().setVisible(true);
+        }
+    }
 
-	public List<IWaveform<? extends IWaveformEvent>> getStreamList() {
-		return streams;
-	}
+    @Override
+    public void mouseUp(MouseEvent e) {
+    }
 
-	protected void paintNames(GC gc, Rectangle rect) {
-		if (streams.size() > 0) {
-			@SuppressWarnings("unchecked")
-			IWaveform<? extends IWaveformEvent> wave = (IWaveform<? extends IWaveformEvent>) nameList
-					.getData(SELECTION);
-			Integer firstKey = trackVerticalOffset.floorKey(rect.y);
-			if (firstKey == null)
-				firstKey = trackVerticalOffset.firstKey();
-			Integer lastKey = trackVerticalOffset
-					.floorKey(rect.y + rect.height);
-			Rectangle subArea = new Rectangle(rect.x, 0, rect.width,
-					trackList.getTrackHeight());
-			if (lastKey == firstKey) {
-				IWaveform<? extends IWaveformEvent> w = trackVerticalOffset
-						.get(firstKey);
-				if (w instanceof ITxStream<?>)
-					subArea.height *= ((ITxStream<?>) w).getMaxConcurrency();
-				drawTextFormat(gc, subArea, firstKey, w.getFullName(),
-						wave != null && w.getId() == wave.getId());
-			} else {
-				for (Entry<Integer, IWaveform<? extends IWaveformEvent>> entry : trackVerticalOffset
-						.subMap(firstKey, true, lastKey, true).entrySet()) {
-					IWaveform<? extends IWaveformEvent> w = entry.getValue();
-					subArea.height = trackList.getTrackHeight();
-					if (w instanceof ITxStream<?>)
-						subArea.height *= ((ITxStream<?>) w)
-								.getMaxConcurrency();
-					drawTextFormat(gc, subArea, entry.getKey(),
-							w.getFullName(),
-							wave != null && w.getId() == wave.getId());
-				}
-			}
-		}
-	}
+    public List<IWaveform<? extends IWaveformEvent>> getStreamList() {
+        return streams;
+    }
 
-	@SuppressWarnings("unchecked")
-	protected void paintValues(GC gc, Rectangle rect) {
-		if (streams.size() > 0) {
-			IWaveform<? extends IWaveformEvent> wave = (IWaveform<? extends IWaveformEvent>) nameList
-					.getData(SELECTION);
-			Integer firstKey = trackVerticalOffset.floorKey(rect.y);
-			if (firstKey == null)
-				firstKey = trackVerticalOffset.firstKey();
-			Integer lastKey = trackVerticalOffset
-					.floorKey(rect.y + rect.height);
-			Rectangle subArea = new Rectangle(rect.x, 0, rect.width,
-					trackList.getTrackHeight());
-			if (lastKey == firstKey) {
-				IWaveform<? extends IWaveformEvent> w = trackVerticalOffset
-						.get(firstKey);
-				if (w instanceof ITxStream<?>)
-					subArea.height *= ((ITxStream<?>) w).getMaxConcurrency();
-				drawTextFormat(gc, subArea, firstKey, actualValues.get(w),
-						wave != null && w.getId() == wave.getId());
-			} else {
-				for (Entry<Integer, IWaveform<? extends IWaveformEvent>> entry : trackVerticalOffset
-						.subMap(firstKey, true, lastKey, true).entrySet()) {
-					IWaveform<? extends IWaveformEvent> w = entry.getValue();
-					subArea.height = trackList.getTrackHeight();
-					if (w instanceof ITxStream<?>)
-						subArea.height *= ((ITxStream<?>) w)
-								.getMaxConcurrency();
-					drawTextFormat(gc, subArea, entry.getKey(),
-							actualValues.get(w), wave != null
-									&& w.getId() == wave.getId());
-				}
-			}
-		}
-	}
+    protected void paintNames(GC gc, Rectangle rect) {
+        if (streams.size() > 0) {
+            @SuppressWarnings("unchecked")
+            IWaveform<? extends IWaveformEvent> wave = (IWaveform<? extends IWaveformEvent>) nameList.getData(SELECTION);
+            Integer firstKey = trackVerticalOffset.floorKey(rect.y);
+            if (firstKey == null)
+                firstKey = trackVerticalOffset.firstKey();
+            Integer lastKey = trackVerticalOffset.floorKey(rect.y + rect.height);
+            Rectangle subArea = new Rectangle(rect.x, 0, rect.width, trackList.getTrackHeight());
+            if (lastKey == firstKey) {
+                IWaveform<? extends IWaveformEvent> w = trackVerticalOffset.get(firstKey);
+                if (w instanceof ITxStream<?>)
+                    subArea.height *= ((ITxStream<?>) w).getMaxConcurrency();
+                drawTextFormat(gc, subArea, firstKey, w.getFullName(), wave != null && w.getId() == wave.getId());
+            } else {
+                for (Entry<Integer, IWaveform<? extends IWaveformEvent>> entry : trackVerticalOffset.subMap(firstKey, true, lastKey, true)
+                        .entrySet()) {
+                    IWaveform<? extends IWaveformEvent> w = entry.getValue();
+                    subArea.height = trackList.getTrackHeight();
+                    if (w instanceof ITxStream<?>)
+                        subArea.height *= ((ITxStream<?>) w).getMaxConcurrency();
+                    drawTextFormat(gc, subArea, entry.getKey(), w.getFullName(), wave != null && w.getId() == wave.getId());
+                }
+            }
+        }
+    }
 
-	protected void drawTextFormat(GC gc, Rectangle subArea, int yOffset,
-			String value, boolean highlite) {
-		Point size = gc.textExtent(value);
-		if (highlite) {
-			gc.setBackground(SWTResourceManager
-					.getColor(SWT.COLOR_LIST_SELECTION));
-			gc.setForeground(SWTResourceManager
-					.getColor(SWT.COLOR_LIST_SELECTION_TEXT));
-			gc.fillRectangle(subArea.x, subArea.y + yOffset, subArea.width,
-					subArea.height);
-			gc.setFont(nameFontB);
-		} else {
-			gc.setBackground(SWTResourceManager
-					.getColor(SWT.COLOR_LIST_BACKGROUND));
-			gc.setForeground(SWTResourceManager
-					.getColor(SWT.COLOR_LIST_FOREGROUND));
-			gc.setFont(nameFont);
-		}
-		gc.drawText(
-				value,
-				subArea.x + 5,
-				subArea.y + yOffset + (trackList.getTrackHeight() - size.y) / 2,
-				true);
-	}
+    @SuppressWarnings("unchecked")
+    protected void paintValues(GC gc, Rectangle rect) {
+        if (streams.size() > 0) {
+            IWaveform<? extends IWaveformEvent> wave = (IWaveform<? extends IWaveformEvent>) nameList.getData(SELECTION);
+            Integer firstKey = trackVerticalOffset.floorKey(rect.y);
+            if (firstKey == null)
+                firstKey = trackVerticalOffset.firstKey();
+            Integer lastKey = trackVerticalOffset.floorKey(rect.y + rect.height);
+            Rectangle subArea = new Rectangle(rect.x, 0, rect.width, trackList.getTrackHeight());
+            if (lastKey == firstKey) {
+                IWaveform<? extends IWaveformEvent> w = trackVerticalOffset.get(firstKey);
+                if (w instanceof ITxStream<?>)
+                    subArea.height *= ((ITxStream<?>) w).getMaxConcurrency();
+                drawTextFormat(gc, subArea, firstKey, actualValues.get(w), wave != null && w.getId() == wave.getId());
+            } else {
+                for (Entry<Integer, IWaveform<? extends IWaveformEvent>> entry : trackVerticalOffset.subMap(firstKey, true, lastKey, true)
+                        .entrySet()) {
+                    IWaveform<? extends IWaveformEvent> w = entry.getValue();
+                    subArea.height = trackList.getTrackHeight();
+                    if (w instanceof ITxStream<?>)
+                        subArea.height *= ((ITxStream<?>) w).getMaxConcurrency();
+                    drawTextFormat(gc, subArea, entry.getKey(), actualValues.get(w), wave != null && w.getId() == wave.getId());
+                }
+            }
+        }
+    }
 
-	public long getMaxTime() {
-		return trackList.getMaxTime();
-	}
+    protected void drawTextFormat(GC gc, Rectangle subArea, int yOffset, String value, boolean highlite) {
+        Point size = gc.textExtent(value);
+        if (highlite) {
+            gc.setBackground(SWTResourceManager.getColor(SWT.COLOR_LIST_SELECTION));
+            gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_LIST_SELECTION_TEXT));
+            gc.fillRectangle(subArea.x, subArea.y + yOffset, subArea.width, subArea.height);
+            gc.setFont(nameFontB);
+        } else {
+            gc.setBackground(SWTResourceManager.getColor(SWT.COLOR_LIST_BACKGROUND));
+            gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_LIST_FOREGROUND));
+            gc.setFont(nameFont);
+        }
+        gc.drawText(value, subArea.x + 5, subArea.y + yOffset + (trackList.getTrackHeight() - size.y) / 2, true);
+    }
 
-	public void setMaxTime(long maxTime) {
-		this.trackList.setMaxTime(maxTime);
-	}
+    public long getMaxTime() {
+        return trackList.getMaxTime();
+    }
 
-	public void setZoomLevel(int scale) {
-		trackList.setZoomLevel(scale);
-	}
+    public void setMaxTime(long maxTime) {
+        this.trackList.setMaxTime(maxTime);
+    }
 
-	public int getZoomLevel() {
-		return trackList.getZoomLevel();
-	}
+    public void setZoomLevel(int scale) {
+        trackList.setZoomLevel(scale);
+    }
 
-	private void createDragSource(final Canvas sourceText) {
-		Transfer[] types = new Transfer[] { TextTransfer.getInstance() };
-		DragSource dragSource = new DragSource(sourceText, DND.DROP_MOVE);
-		dragSource.setTransfer(types);
-		dragSource.addDragListener(new DragSourceListener() {
+    public int getZoomLevel() {
+        return trackList.getZoomLevel();
+    }
 
-			public void dragStart(DragSourceEvent event) {
-				if (event.y < trackVerticalOffset.lastKey()	+ trackList.getTrackHeight()) {
-//					event.data = trackVerticalOffset.floorEntry(event.y).getValue().getFullName();
-					event.doit = true;
-//					System.out.println("dragStart at location "+new Point(event.x, event.y));
-				}
-			}
+    private void createDragSource(final Canvas sourceText) {
+        Transfer[] types = new Transfer[] { TextTransfer.getInstance() };
+        DragSource dragSource = new DragSource(sourceText, DND.DROP_MOVE);
+        dragSource.setTransfer(types);
+        dragSource.addDragListener(new DragSourceListener() {
 
-			public void dragSetData(DragSourceEvent event) {
-				event.data = trackVerticalOffset.floorEntry(event.y).getValue().getFullName();
-//				System.out.println("dragSetData with data " + event.data);
-			}
+            public void dragStart(DragSourceEvent event) {
+                if (event.y < trackVerticalOffset.lastKey() + trackList.getTrackHeight()) {
+                    // event.data =
+                    // trackVerticalOffset.floorEntry(event.y).getValue().getFullName();
+                    event.doit = true;
+                    // System.out.println("dragStart at location "+new
+                    // Point(event.x, event.y));
+                }
+            }
 
-			public void dragFinished(DragSourceEvent event) {
-				// do nothing
-			}
-		});
-	}
+            public void dragSetData(DragSourceEvent event) {
+                event.data = trackVerticalOffset.floorEntry(event.y).getValue().getFullName();
+                // System.out.println("dragSetData with data " + event.data);
+            }
 
-	private void createDropTarget(final Canvas targetText) {
-		Transfer[] types = new Transfer[] { TextTransfer.getInstance() };
-		DropTarget dropTarget = new DropTarget(targetText, DND.DROP_MOVE);
-		dropTarget.setTransfer(types);
+            public void dragFinished(DragSourceEvent event) {
+                // do nothing
+            }
+        });
+    }
 
-		dropTarget.addDropListener(new DropTargetListener() {
+    private void createDropTarget(final Canvas targetText) {
+        Transfer[] types = new Transfer[] { TextTransfer.getInstance() };
+        DropTarget dropTarget = new DropTarget(targetText, DND.DROP_MOVE);
+        dropTarget.setTransfer(types);
 
-			public void dragEnter(DropTargetEvent event) {
-			}
+        dropTarget.addDropListener(new DropTargetListener() {
 
-			public void dragLeave(DropTargetEvent event) {
-			}
+            public void dragEnter(DropTargetEvent event) {
+            }
 
-			public void dragOperationChanged(DropTargetEvent event) {
-			}
+            public void dragLeave(DropTargetEvent event) {
+            }
 
-			public void dragOver(DropTargetEvent event) {
-			}
+            public void dragOperationChanged(DropTargetEvent event) {
+            }
 
-			public void drop(DropTargetEvent event) {
-				Object data = event.data;
-				DropTarget tgt = (DropTarget) event.widget;
-				Point dropPoint = ((Canvas)tgt.getControl()).toControl(event.x, event.y);
-				String fullname1 = trackVerticalOffset.floorEntry(dropPoint.y).getValue().getFullName();
-//				System.out.println("drop with data '" + event.data +"' at location "+dropPoint + " and origin " + nameListScrolled.getOrigin());
-//				System.out.println("drop on " + fullname1);
-			}
+            public void dragOver(DropTargetEvent event) {
+            }
 
-			public void dropAccept(DropTargetEvent event) {
-				if (event.detail != DND.DROP_MOVE || event.y > trackVerticalOffset.lastKey() + trackList.getTrackHeight()) {
-					event.detail = DND.DROP_NONE;
-				}
-			}
-		});
-	}
+            public void drop(DropTargetEvent event) {
+                Object data = event.data;
+                DropTarget tgt = (DropTarget) event.widget;
+                Point dropPoint = ((Canvas) tgt.getControl()).toControl(event.x, event.y);
+                String fullname1 = trackVerticalOffset.floorEntry(dropPoint.y).getValue().getFullName();
+                // System.out.println("drop with data '" + event.data
+                // +"' at location "+dropPoint + " and origin " +
+                // nameListScrolled.getOrigin());
+                // System.out.println("drop on " + fullname1);
+            }
+
+            public void dropAccept(DropTargetEvent event) {
+                if (event.detail != DND.DROP_MOVE || event.y > trackVerticalOffset.lastKey() + trackList.getTrackHeight()) {
+                    event.detail = DND.DROP_NONE;
+                }
+            }
+        });
+    }
 
 }

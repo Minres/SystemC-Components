@@ -68,35 +68,37 @@ public class StreamPainter implements IWaveformPainter{
         for(int y1=area.y+this.waveCanvas.getTrackHeight()/2; y1<area.y+totalHeight; y1+=this.waveCanvas.getTrackHeight())
         	gc.drawLine(area.x, y1, area.x+area.width, y1);
 		if(firstTx==lastTx)
-			for(ITxEvent x:(Collection<?  extends ITxEvent>)firstTx.getValue())
-				drawTx(gc, area, x.getTransaction());					
+			for(ITxEvent txEvent:(Collection<?  extends ITxEvent>)firstTx.getValue())
+				drawTx(gc, area, txEvent.getTransaction());					
 		else{
 			seenTx.clear();
 			NavigableMap<Long,?> entries = stream.getEvents().subMap(firstTx.getKey(), true, lastTx.getKey(), true);
-			for(Entry<Long, ?> tx: entries.entrySet())
-				for(ITxEvent x:(Collection<?  extends ITxEvent>)tx.getValue()){
-					if(x.getType()==ITxEvent.Type.BEGIN)
-						seenTx.add(x.getTransaction());
-					if(x.getType()==ITxEvent.Type.END){
-						drawTx(gc, area, x.getTransaction());
-						seenTx.remove(x.getTransaction());
+			boolean highlighed=false;
+	        gc.setForeground(this.waveCanvas.colors[WaveformCanvas.Colors.LINE.ordinal()]);
+	        gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TX_BG.ordinal()]);
+			for(Entry<Long, ?> entry: entries.entrySet())
+				for(ITxEvent txEvent:(Collection<?  extends ITxEvent>)entry.getValue()){
+					if(txEvent.getType()==ITxEvent.Type.BEGIN)
+						seenTx.add(txEvent.getTransaction());
+					if(txEvent.getType()==ITxEvent.Type.END){
+						ITx tx = txEvent.getTransaction();
+						highlighed|=waveCanvas.currentSelection!=null && waveCanvas.currentSelection.getId()==tx.getId();
+						drawTx(gc, area, tx);
+						seenTx.remove(tx);
 					}
-					
 				}
 			for(ITx tx:seenTx){
 				drawTx(gc, area, tx);
+			}
+			if(highlighed){
+		        gc.setForeground(this.waveCanvas.colors[WaveformCanvas.Colors.LINE_HIGHLITE.ordinal()]);
+		        gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TX_BG_HIGHLITE.ordinal()]);
+				drawTx(gc, area, waveCanvas.currentSelection);
 			}
 		}
 	}
 
 	protected void drawTx(GC gc, Rectangle area, ITx tx) {
-		if(waveCanvas.currentSelection!=null && waveCanvas.currentSelection.getId()==tx.getId()){
-	        gc.setForeground(this.waveCanvas.colors[WaveformCanvas.Colors.LINE_HIGHLITE.ordinal()]);
-	        gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TX_BG_HIGHLITE.ordinal()]);
-		}else {
-	        gc.setForeground(this.waveCanvas.colors[WaveformCanvas.Colors.LINE.ordinal()]);
-	        gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TX_BG.ordinal()]);
-		}
 		int offset = tx.getConcurrencyIndex()*this.waveCanvas.getTrackHeight();
 		Rectangle bb = new Rectangle(
 				(int)(tx.getBeginTime()/this.waveCanvas.getScaleFactor()), area.y+offset+upper,

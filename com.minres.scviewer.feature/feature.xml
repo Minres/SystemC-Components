@@ -29,11 +29,11 @@ http://www.eclipse.org/legal/epl-v10.html
    </url>
 
    <requires>
+      <import plugin="org.eclipse.equinox.ds" version="1.4.200" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.util" version="1.0.500" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.osgi.services" version="3.4.0" match="greaterOrEqual"/>
       <import plugin="com.minres.scviewer.database" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.codehaus.groovy" version="1.8.6" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.equinox.util" version="1.0.500" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.equinox.ds" version="1.4.200" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.osgi.services" version="3.4.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.osgi"/>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.core.resources"/>
@@ -43,9 +43,14 @@ http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.eclipse.ui.ide"/>
       <import plugin="org.eclipse.ui.views.properties.tabbed"/>
       <import plugin="org.eclipse.swt"/>
-      <import plugin="org.eclipse.ui.views"/>
       <import plugin="org.apache.ant"/>
+      <import plugin="com.google.guava" version="15.0.0" match="greaterOrEqual"/>
+      <import plugin="com.minres.scviewer.database.swt" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.expressions" version="3.4.600" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface"/>
       <import plugin="org.junit"/>
+      <import plugin="org.eclipse.swt" version="3.103.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.registry"/>
    </requires>
 
    <plugin
@@ -91,6 +96,19 @@ http://www.eclipse.org/legal/epl-v10.html
 
    <plugin
          id="com.minres.scviewer.database.vcd"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.junit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.hamcrest.core"
          download-size="0"
          install-size="0"
          version="0.0.0"

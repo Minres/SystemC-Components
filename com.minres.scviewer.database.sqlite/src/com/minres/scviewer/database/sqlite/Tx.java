@@ -179,7 +179,11 @@ public class Tx implements ITx {
 
 	@Override
 	public int compareTo(ITx o) {
-		return this.getBeginTime().compareTo(o.getBeginTime());
+		int res = this.getBeginTime().compareTo(o.getBeginTime());
+		if(res!=0)	
+			return res;
+		else
+			return this.getId().compareTo(o.getId());
 	}
 
 	@Override

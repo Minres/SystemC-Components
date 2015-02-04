@@ -8,12 +8,15 @@ class TxEvent implements ITxEvent {
 
 	final ITxEvent.Type type;
 	
-	Tx transaction;
+	final Tx transaction;
+	
+	final Long time
 	
 	TxEvent(ITxEvent.Type type, ITx transaction) {
 		super();
 		this.type = type;
 		this.transaction = transaction;
+		this.time = type==ITxEvent.Type.BEGIN?transaction.beginTime:transaction.endTime
 	}
 
 	@Override
@@ -23,15 +26,11 @@ class TxEvent implements ITxEvent {
 
 	@Override
 	int compareTo(IWaveformEvent o) {
-		time.compareTo(o.getTime())
+		time.compareTo(o.time)
 	}
 
-	Long getTime(){
-		type==ITxEvent.Type.BEGIN?transaction.beginTime:transaction.endTime
-	}
-
-		@Override
+	@Override
 	String toString() {
-		type.toString()+"@"+getTime()+" of tx #"+transaction.id;
+		type.toString()+"@"+time+" of tx #"+transaction.id;
 	}
 }

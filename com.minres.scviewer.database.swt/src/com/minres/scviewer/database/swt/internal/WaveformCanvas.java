@@ -32,6 +32,7 @@ import org.eclipse.swt.graphics.Transform;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.ScrollBar;
 import org.eclipse.wb.swt.SWTResourceManager;
 
@@ -41,340 +42,348 @@ import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformEvent;
 
 public class WaveformCanvas extends Canvas {
-	public enum Colors {
-		LINE,
-		LINE_HIGHLITE,
-		TRACK_BG_EVEN,
-		TRACK_BG_HIGHLITE,
-		TRACK_BG_ODD,
-		TX_BG,
-		TX_BG_HIGHLITE,
-		TX_BORDER,
-		SIGNAL0,
-		SIGNAL1,
-		SIGNALZ,
-		SIGNALX,
-		SIGNAL_TEXT,
-		CURSOR
-	}
+    public enum Colors {
+        LINE, LINE_HIGHLITE, TRACK_BG_EVEN, TRACK_BG_HIGHLITE, TRACK_BG_ODD, TX_BG, TX_BG_HIGHLITE, TX_BORDER, SIGNAL0, SIGNAL1, SIGNALZ, SIGNALX, SIGNAL_TEXT, CURSOR
+    }
 
-	Color[] colors=new Color[Colors.values().length];
-	
-	private int trackHeight = 50;
-	private long scaleFactor = 1000000L;
-	private int  level=6;
-	private long maxTime;
-	protected Point origin; /* original size */
-	protected Transform transform;
-	protected Ruler ruler;
-	protected List<IPainter> painterList;
-	TreeMap<Integer, IWaveformPainter> trackVerticalOffset;
-	
-	protected List<IWaveform<? extends IWaveformEvent>> streams;
+    Color[] colors = new Color[Colors.values().length];
 
-	ITx currentSelection;
-	IWaveform<? extends IWaveformEvent> currentWaveformSelection;
+    private int trackHeight = 50;
+    private long scaleFactor = 1000000L;
+    private int level = 6;
+    private long maxTime;
+    protected Point origin; /* original size */
+    protected Transform transform;
+    protected Ruler ruler;
+    protected List<IPainter> painterList;
+    TreeMap<Integer, IWaveformPainter> trackVerticalOffset;
 
+    protected List<IWaveform<? extends IWaveformEvent>> streams;
 
-	/**
-	 * Constructor for ScrollableCanvas.
-	 * @param parent the parent of this control.
-	 * @param style the style of this control.
-	 */
-	public WaveformCanvas(final Composite parent, int style) {
-		super( parent, style |SWT.DOUBLE_BUFFERED| SWT.NO_BACKGROUND|SWT.NO_REDRAW_RESIZE|SWT.V_SCROLL|SWT.H_SCROLL);
-		addControlListener(new ControlAdapter() { /* resize listener. */
-			public void controlResized(ControlEvent event) {
-				syncScrollBars();
-			}
-		});
-		addPaintListener(new PaintListener() { /* paint listener. */
-			public void paintControl(final PaintEvent event) {
-				paint(event.gc);
-			}
-		});
-		painterList=new LinkedList<IPainter>();
-		origin=new Point(0,0);
-		transform = new Transform(getDisplay());
-		trackVerticalOffset=new TreeMap<Integer, IWaveformPainter>();
-		initScrollBars();
-		initColors(null);
-	}
+    ITx currentSelection;
+    IWaveform<? extends IWaveformEvent> currentWaveformSelection;
 
-	private void initColors(HashMap<Colors, RGB> colourMap){
-		Display d = getDisplay();
-		if(colourMap!=null){
-			for(Colors c:Colors.values()){
-				if(colourMap.containsKey(c)){
-					colors[c.ordinal()].dispose();
-					colors[c.ordinal()]=new Color(d, colourMap.get(c));
-				}
-			}
-		} else {
-			colors[Colors.LINE.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_RED);
-			colors[Colors.LINE_HIGHLITE.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_CYAN);
-			colors[Colors.TRACK_BG_EVEN.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_BLACK);
-			colors[Colors.TRACK_BG_ODD.ordinal()]=SWTResourceManager.getColor(40,40,40);
-			colors[Colors.TRACK_BG_HIGHLITE.ordinal()]=SWTResourceManager.getColor(40,40,80);
-			colors[Colors.TX_BG.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_GREEN);
-			colors[Colors.TX_BG_HIGHLITE.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
-			colors[Colors.TX_BORDER.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_RED);
-			colors[Colors.SIGNAL0.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
-			colors[Colors.SIGNAL1.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
-			colors[Colors.SIGNALZ.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_GRAY);
-			colors[Colors.SIGNALX.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_RED);
-			colors[Colors.SIGNAL_TEXT.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_WHITE);
-			colors[Colors.CURSOR.ordinal()]=SWTResourceManager.getColor(SWT.COLOR_YELLOW);
-		}	
-	}
+    private List<SelectionAdapter> selectionListeners;
 
-	public List<IWaveform<? extends IWaveformEvent>> getStreams() {
-		return streams;
-	}
+    /**
+     * Constructor for ScrollableCanvas.
+     * 
+     * @param parent
+     *            the parent of this control.
+     * @param style
+     *            the style of this control.
+     */
+    public WaveformCanvas(final Composite parent, int style) {
+        super(parent, style | SWT.DOUBLE_BUFFERED | SWT.NO_BACKGROUND | SWT.NO_REDRAW_RESIZE | SWT.V_SCROLL | SWT.H_SCROLL);
+        addControlListener(new ControlAdapter() { /* resize listener. */
+            public void controlResized(ControlEvent event) {
+                syncScrollBars();
+            }
+        });
+        addPaintListener(new PaintListener() { /* paint listener. */
+            public void paintControl(final PaintEvent event) {
+                paint(event.gc);
+            }
+        });
+        painterList = new LinkedList<IPainter>();
+        origin = new Point(0, 0);
+        transform = new Transform(getDisplay());
+        trackVerticalOffset = new TreeMap<Integer, IWaveformPainter>();
+        selectionListeners = new LinkedList<>();
+        initScrollBars();
+        initColors(null);
+    }
 
-	public void setStreams(List<IWaveform<? extends IWaveformEvent>> streams) {
-		this.streams = streams;
-	}
+    private void initColors(HashMap<Colors, RGB> colourMap) {
+        Display d = getDisplay();
+        if (colourMap != null) {
+            for (Colors c : Colors.values()) {
+                if (colourMap.containsKey(c)) {
+                    colors[c.ordinal()].dispose();
+                    colors[c.ordinal()] = new Color(d, colourMap.get(c));
+                }
+            }
+        } else {
+            colors[Colors.LINE.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_RED);
+            colors[Colors.LINE_HIGHLITE.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_CYAN);
+            colors[Colors.TRACK_BG_EVEN.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_BLACK);
+            colors[Colors.TRACK_BG_ODD.ordinal()] = SWTResourceManager.getColor(40, 40, 40);
+            colors[Colors.TRACK_BG_HIGHLITE.ordinal()] = SWTResourceManager.getColor(40, 40, 80);
+            colors[Colors.TX_BG.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_GREEN);
+            colors[Colors.TX_BG_HIGHLITE.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
+            colors[Colors.TX_BORDER.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_RED);
+            colors[Colors.SIGNAL0.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
+            colors[Colors.SIGNAL1.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
+            colors[Colors.SIGNALZ.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_GRAY);
+            colors[Colors.SIGNALX.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_RED);
+            colors[Colors.SIGNAL_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
+            colors[Colors.CURSOR.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_YELLOW);
+        }
+    }
 
-	public Ruler getRuler(){
-		return ruler;
-	}
-	
-	public void setRuler(Ruler ruler) {
-		this.ruler=ruler;
-	}
+    public List<IWaveform<? extends IWaveformEvent>> getStreams() {
+        return streams;
+    }
 
-	public Point getOrigin() {
-		return origin;
-	}
+    public void setStreams(List<IWaveform<? extends IWaveformEvent>> streams) {
+        this.streams = streams;
+    }
 
-	public long getMaxTime() {
-		return maxTime;
-	}
+    public Ruler getRuler() {
+        return ruler;
+    }
 
-	public void setMaxTime(long maxTime){
-		this.maxTime=maxTime;
-		syncScrollBars();
-	}
+    public void setRuler(Ruler ruler) {
+        this.ruler = ruler;
+    }
 
-	public int getTrackHeight() {
-		return trackHeight;
-	}
+    public Point getOrigin() {
+        return origin;
+    }
 
-	public void setTrackHeight(int trackHeight) {
-		this.trackHeight = trackHeight;
-		syncScrollBars();
-	}
+    public void setOrigin(Point origin) {
+        setOrigin(origin.x, origin.y);
+    }
 
-	public void setZoomLevel(int level) {
-		this.level=level;
-		this.scaleFactor = (long) Math.pow(10, level);
-		if(ruler!=null)	ruler.setStartPoint(-origin.x*scaleFactor);
-		syncScrollBars();
-	}
+    public void setOrigin(int x, int y) {
+        checkWidget();
+        ScrollBar hBar = getHorizontalBar();
+        hBar.setSelection(-x);
+        x = -hBar.getSelection();
+        ScrollBar vBar = getVerticalBar();
+        vBar.setSelection(-y);
+        y = -vBar.getSelection();
+        origin.x = x;
+        origin.y = y;
+        syncScrollBars();
+    }
 
-	public int getZoomLevel() {
-		return level;
-	}
-	
-	public long getScaleFactor() {
-		return scaleFactor;
-	}
+    public long getMaxTime() {
+        return maxTime;
+    }
 
-	public void addPainter(IPainter painter) {
-		painterList.add(painter);
-		redraw();
-	}
+    public void setMaxTime(long maxTime) {
+        this.maxTime = maxTime;
+        syncScrollBars();
+    }
 
-	public void removePainter(IPainter painter){
-		painterList.remove(painter);
-		redraw();
-	}
+    public int getTrackHeight() {
+        return trackHeight;
+    }
 
-	public void clearAllWavefromPainter() {
-		trackVerticalOffset.clear();
-		syncScrollBars();
-	}
+    public void setTrackHeight(int trackHeight) {
+        this.trackHeight = trackHeight;
+        syncScrollBars();
+    }
 
-	public void addWavefromPainter(int yoffs, IWaveformPainter painter) {
-		trackVerticalOffset.put(yoffs, painter);
-		syncScrollBars();
-	}
+    public void setZoomLevel(int level) {
+        this.level = level;
+        this.scaleFactor = (long) Math.pow(10, level);
+        if (ruler != null)
+            ruler.setStartPoint(-origin.x * scaleFactor);
+        syncScrollBars();
+    }
 
-	/**
-	 * Dispose the garbage here
-	 */
-	public void dispose() {
-		transform.dispose();
-		for(Colors c:Colors.values()) colors[c.ordinal()].dispose();
-		super.dispose();
-	}
+    public int getZoomLevel() {
+        return level;
+    }
 
-	public void scrollToY(int y){
-		ScrollBar vBar = getVerticalBar();
-		vBar.setSelection(y);
-		scrollVertically(vBar);
-	}
+    public long getScaleFactor() {
+        return scaleFactor;
+    }
 
-	public void scrollToX(int x){
-		ScrollBar hBar = getHorizontalBar();
-		hBar.setSelection(x);
-		scrollHorizontally(hBar);
-	}
-	
-	/* Scroll horizontally */
-	private void scrollHorizontally(ScrollBar scrollBar) {
-		if (painterList.size()==0) return;
-		origin.x= -scrollBar.getSelection();
-		if(ruler!=null)	ruler.setStartPoint(-origin.x*scaleFactor);
-		syncScrollBars();
-	}
+    public void addPainter(IPainter painter) {
+        painterList.add(painter);
+        redraw();
+    }
 
-	/* Scroll vertically */
-	private void scrollVertically(ScrollBar scrollBar) {
-		if (painterList.size()==0) return;
-		origin.y = -scrollBar.getSelection();
-		syncScrollBars();
-	}
+    public void removePainter(IPainter painter) {
+        painterList.remove(painter);
+        redraw();
+    }
 
-	/* Initalize the scrollbar and register listeners. */
-	private void initScrollBars() {
-		ScrollBar horizontal = getHorizontalBar();
-		horizontal.setEnabled(false);
-		horizontal.setVisible(true);
-		horizontal.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent event) {
-				scrollHorizontally((ScrollBar) event.widget);
-			}
-		});
-		ScrollBar vertical = getVerticalBar();
-		vertical.setEnabled(false);
-		vertical.setVisible(true);
-		vertical.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent event) {
-				scrollVertically((ScrollBar) event.widget);
-			}
-		});
-	}
+    public void clearAllWavefromPainter() {
+        trackVerticalOffset.clear();
+        syncScrollBars();
+    }
 
-	/**
-	 * Synchronize the scrollbar with the image. If the transform is out
-	 * of range, it will correct it. This function considers only following
-	 * factors :<b> transform, image size, client area</b>.
-	 */
-	private void syncScrollBars() {
-		if (painterList.size()==0) {
-			redraw();
-			return;
-		}
-		int height=1;
-		if(trackVerticalOffset.size()>0)
-			height=trackVerticalOffset.lastKey()+trackVerticalOffset.lastEntry().getValue().getMinHeight();
-		
-		int width = (int) (maxTime/scaleFactor);
-		ScrollBar horizontal = getHorizontalBar();
-		horizontal.setIncrement((int) (getClientArea().width / 100));
-		horizontal.setPageIncrement(getClientArea().width);
-		int cw = getClientArea().width;
-		if (width > cw) { /* image is wider than client area */
-			horizontal.setMaximum(width);
-			horizontal.setEnabled(true);
-			if (((int) - origin.x) > horizontal.getMaximum() - cw)
-				origin.x = -horizontal.getMaximum() + cw;
-		} else { /* image is narrower than client area */
-			horizontal.setEnabled(false);
-		}
-		horizontal.setSelection(-origin.x);
-		horizontal.setThumb(cw);
+    public void addWavefromPainter(int yoffs, IWaveformPainter painter) {
+        trackVerticalOffset.put(yoffs, painter);
+        syncScrollBars();
+    }
 
-		ScrollBar vertical = getVerticalBar();
-		vertical.setIncrement((int) (getClientArea().height / 100));
-		vertical.setPageIncrement((int) (getClientArea().height));
-		int ch = getClientArea().height;
-		if (height> ch) { /* image is higher than client area */
-			vertical.setMaximum(height);
-			vertical.setEnabled(true);
-			if (((int) - origin.y) > vertical.getMaximum() - ch)
-				origin.y = -vertical.getMaximum() + ch;
-		} else { /* image is less higher than client area */
-			vertical.setMaximum((int) (ch));
-			vertical.setEnabled(false);
-		}
-		vertical.setSelection(-origin.y);
-		vertical.setThumb(ch);
-		ruler.setScaleFactor(scaleFactor);
-		redraw();
-	}
+    /**
+     * Dispose the garbage here
+     */
+    public void dispose() {
+        transform.dispose();
+        for (Colors c : Colors.values())
+            colors[c.ordinal()].dispose();
+        super.dispose();
+    }
 
-	/* Paint function */
-	private void paint(GC gc) {
-		Rectangle clientRect = getClientArea(); /* Canvas' painting area */
-		clientRect.x=-origin.x;
-		clientRect.y=-origin.y;
-		// reset the transform
-		transform.identity();
-		// shift the content
-		transform.translate(origin.x, origin.y);
-		gc.setTransform(transform);
+    /* Initalize the scrollbar and register listeners. */
+    private void initScrollBars() {
+        ScrollBar horizontal = getHorizontalBar();
+        horizontal.setEnabled(false);
+        horizontal.setVisible(true);
+        horizontal.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent event) {
+                if (painterList.size() == 0)
+                    return;
+                setOrigin(-((ScrollBar) event.widget).getSelection(), origin.y);
+                if (ruler != null)
+                    ruler.setStartPoint(-origin.x * scaleFactor);
+            }
+        });
+        ScrollBar vertical = getVerticalBar();
+        vertical.setEnabled(false);
+        vertical.setVisible(true);
+        vertical.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent event) {
+                if (painterList.size() == 0)
+                    return;
+                setOrigin(origin.x, -((ScrollBar) event.widget).getSelection());
+            }
+        });
+    }
+
+    /**
+     * Synchronize the scrollbar with the image. If the transform is out of
+     * range, it will correct it. This function considers only following factors
+     * :<b> transform, image size, client area</b>.
+     */
+    private void syncScrollBars() {
+        if (painterList.size() == 0) {
+            redraw();
+            return;
+        }
+        int height = 1;
+        if (trackVerticalOffset.size() > 0)
+            height = trackVerticalOffset.lastKey() + trackVerticalOffset.lastEntry().getValue().getMinHeight();
+
+        int width = (int) (maxTime / scaleFactor);
+        ScrollBar horizontal = getHorizontalBar();
+        horizontal.setIncrement((int) (getClientArea().width / 100));
+        horizontal.setPageIncrement(getClientArea().width);
+        int cw = getClientArea().width;
+        if (width > cw) { /* image is wider than client area */
+            horizontal.setMaximum(width);
+            horizontal.setEnabled(true);
+            if (((int) -origin.x) > horizontal.getMaximum() - cw)
+                origin.x = -horizontal.getMaximum() + cw;
+        } else { /* image is narrower than client area */
+            horizontal.setEnabled(false);
+        }
+        horizontal.setSelection(-origin.x);
+        horizontal.setThumb(cw);
+
+        ScrollBar vertical = getVerticalBar();
+        vertical.setIncrement((int) (getClientArea().height / 100));
+        vertical.setPageIncrement((int) (getClientArea().height));
+        int ch = getClientArea().height;
+        if (height > ch) { /* image is higher than client area */
+            vertical.setMaximum(height);
+            vertical.setEnabled(true);
+            if (((int) -origin.y) > vertical.getMaximum() - ch)
+                origin.y = -vertical.getMaximum() + ch;
+        } else { /* image is less higher than client area */
+            vertical.setMaximum((int) (ch));
+            vertical.setEnabled(false);
+        }
+        vertical.setSelection(-origin.y);
+        vertical.setThumb(ch);
+        ruler.setScaleFactor(scaleFactor);
+        redraw();
+        Event e = new Event();
+        e.widget = this;
+        SelectionEvent ev = new SelectionEvent(e);
+        ev.x = origin.x;
+        ev.y = origin.y;
+        for (SelectionAdapter a : selectionListeners) {
+            a.widgetSelected(ev);
+        }
+
+    }
+
+    /* Paint function */
+    private void paint(GC gc) {
+        Rectangle clientRect = getClientArea(); /* Canvas' painting area */
+        clientRect.x = -origin.x;
+        clientRect.y = -origin.y;
+        // reset the transform
+        transform.identity();
+        // shift the content
+        transform.translate(origin.x, origin.y);
+        gc.setTransform(transform);
         gc.setClipping(clientRect);
-		if (painterList.size()>0 && trackVerticalOffset.size()>0) {
-			for(IPainter painter: painterList)
-				painter.paintArea(gc, clientRect);
-		} else {
-			gc.fillRectangle(clientRect);
-			initScrollBars();
-		}
-	}
+        if (painterList.size() > 0 && trackVerticalOffset.size() > 0) {
+            for (IPainter painter : painterList)
+                painter.paintArea(gc, clientRect);
+        } else {
+            gc.fillRectangle(clientRect);
+            initScrollBars();
+        }
+    }
 
-	public Object getClicked(Point point) {
-		for(IPainter p:Lists.reverse(painterList)){
-			if(p instanceof TrackPainter){
-				int y= point.y-origin.y;
-				int x=point.x-origin.x;
-				Entry<Integer, IWaveformPainter> entry = trackVerticalOffset.floorEntry(y);
-				if(entry!=null){
-					if(entry.getValue() instanceof StreamPainter){
-						return ((StreamPainter)entry.getValue()).getClicked(new Point(x,y-entry.getKey()));
-					}else if(entry.getValue() instanceof SignalPainter)
-						return ((SignalPainter)entry.getValue()).getSignal();
-				}				
-			}else if(p instanceof CursorPainter){
-				if(Math.abs(point.x*scaleFactor-((CursorPainter)p).getTime())<2){
-					return p;
-				}
-			}
-		}
-		return null;
-	}
+    public Object getClicked(Point point) {
+        for (IPainter p : Lists.reverse(painterList)) {
+            if (p instanceof TrackPainter) {
+                int y = point.y - origin.y;
+                int x = point.x - origin.x;
+                Entry<Integer, IWaveformPainter> entry = trackVerticalOffset.floorEntry(y);
+                if (entry != null) {
+                    if (entry.getValue() instanceof StreamPainter) {
+                        return ((StreamPainter) entry.getValue()).getClicked(new Point(x, y - entry.getKey()));
+                    } else if (entry.getValue() instanceof SignalPainter)
+                        return ((SignalPainter) entry.getValue()).getSignal();
+                }
+            } else if (p instanceof CursorPainter) {
+                if (Math.abs(point.x * scaleFactor - ((CursorPainter) p).getTime()) < 2) {
+                    return p;
+                }
+            }
+        }
+        return null;
+    }
 
-	public void setSelected(ITx currentSelection, IWaveform<? extends IWaveformEvent> currentWaveformSelection) {
-		this.currentSelection=currentSelection;
-		this.currentWaveformSelection=currentWaveformSelection;
-		if(currentSelection!=null) reveal(currentSelection);
-		redraw();
-	}
+    public void setSelected(ITx currentSelection, IWaveform<? extends IWaveformEvent> currentWaveformSelection) {
+        this.currentSelection = currentSelection;
+        this.currentWaveformSelection = currentWaveformSelection;
+        if (currentSelection != null)
+            reveal(currentSelection);
+        redraw();
+    }
 
-	public void reveal(ITx tx){
-		int lower = (int) (tx.getBeginTime()/scaleFactor);
-		int higher=(int) (tx.getEndTime()/scaleFactor);
-		Point size = getSize();
-		if(lower<-origin.x){
-			scrollToX(lower);
-		} else if(higher>(size.x-origin.x)){
-			scrollToX(higher-size.x);
-		}
-		for(Entry<Integer, IWaveformPainter> entry:trackVerticalOffset.entrySet()){
-			if(entry.getValue() instanceof StreamPainter && ((StreamPainter)entry.getValue()).getStream()==tx.getStream()){
-				int top = entry.getKey()+trackHeight*tx.getConcurrencyIndex();
-				int bottom = top+trackHeight*(tx.getConcurrencyIndex()+1);
-				if(top<-origin.y){
-					scrollToY(bottom);
-				} else if(bottom>(size.y-origin.y)){
-					scrollToY(bottom-size.y);
-				}
-		
-			}
-		}
-	}
+    public void reveal(ITx tx) {
+        int lower = (int) (tx.getBeginTime() / scaleFactor);
+        int higher = (int) (tx.getEndTime() / scaleFactor);
+        Point size = getSize();
+        size.x -= getVerticalBar().getSize().x + 2;
+        size.y -= getHorizontalBar().getSize().y;
+        if (lower < -origin.x) {
+            setOrigin(-lower, origin.y);
+        } else if (higher > (size.x - origin.x)) {
+            setOrigin(size.x - higher, origin.y);
+        }
+        for (Entry<Integer, IWaveformPainter> entry : trackVerticalOffset.entrySet()) {
+            if (entry.getValue() instanceof StreamPainter && ((StreamPainter) entry.getValue()).getStream() == tx.getStream()) {
+                int top = entry.getKey() + trackHeight * tx.getConcurrencyIndex();
+                int bottom = top + trackHeight;
+                if (top < -origin.y) {
+                    setOrigin(origin.x, -top);
+                } else if (bottom > (size.y - origin.y)) {
+                    setOrigin(origin.x, size.y - bottom);
+                }
+            }
+        }
+    }
 
+    public void addSelectionListener(SelectionAdapter selectionAdapter) {
+        selectionListeners.add(selectionAdapter);
+    }
+
+    public void removeSelectionListener(SelectionAdapter selectionAdapter) {
+        selectionListeners.remove(selectionAdapter);
+    }
 }

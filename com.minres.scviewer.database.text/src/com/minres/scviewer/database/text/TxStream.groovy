@@ -92,8 +92,10 @@ class TxStream extends HierNode implements ITxStream {
 	}
 
 	private putEvent(ITxEvent event){
-		if(!events.containsKey(event.time)) events.put(event.time, [])
-		events[event.time]<<event
+		if(!events.containsKey(event.time)) 
+			events.put(event.time, [event])
+		else
+			events[event.time]<<event
 	}
 	
 	@Override
