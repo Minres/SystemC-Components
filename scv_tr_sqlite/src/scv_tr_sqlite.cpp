@@ -12,6 +12,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stdexcept>
 #include "scv/scv_util.h"
 #include "scv/scv_introspection.h"
 #include "scv/scv_tr.h"
@@ -27,7 +28,6 @@ struct SQLiteDB {
         : runtime_error(msg), mnErrCode(0){
             if (doFree && msg) sqlite3_free(const_cast<char*>(msg));
         }
-        virtual ~SQLiteException()_NOEXCEPT {}
         const int errorCode() { return mnErrCode; }
         const char* errorMessage() { return what(); }
     private:
@@ -146,6 +146,8 @@ static void streamCb(const scv_tr_stream& s, scv_tr_stream::callback_reason reas
             queryBuilder << "INSERT INTO " STREAM_TABLE " (id, name, kind) values (" << s.get_id() << ",'" << s.get_name() << "','"
                     << (s.get_stream_kind() ? s.get_stream_kind() : "<unnamed>") << "');";
             db.exec(queryBuilder.str().c_str());
+            if(concurrencyLevel.size()<=s.get_id())concurrencyLevel.resize(s.get_id()+1);
+            concurrencyLevel[s.get_id()]=new vector<uint64_t>();
         } catch (SQLiteDB::SQLiteException& e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create stream");
         }
@@ -316,7 +318,10 @@ static void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason
             vector<uint64_t>* levels=concurrencyLevel[streamId];
             for(concurrencyIdx=0; concurrencyIdx<levels->size(); ++concurrencyIdx)
                 if((*levels)[concurrencyIdx]==id) break;
-            (*levels)[concurrencyIdx]=0;
+            if(concurrencyIdx==levels->size())
+                levels->push_back(id);
+            else
+                levels->at(concurrencyIdx)=id;
             queryBuilder.str("");
             queryBuilder << "INSERT INTO " TX_EVENT_TABLE " (tx,type,time)" << " values (" << t.get_id() << "," << END << ","
                     << t.get_end_sc_time().value() << ");";
