@@ -37,6 +37,7 @@ class Tx implements ITx {
 		this.stream=stream
 		this.generator=generator
 		this.beginTime=begin
+        this.endTime=begin
 	}
 	
 	@Override

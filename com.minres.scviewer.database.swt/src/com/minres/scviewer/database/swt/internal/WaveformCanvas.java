@@ -295,14 +295,7 @@ public class WaveformCanvas extends Canvas {
         vertical.setThumb(ch);
         ruler.setScaleFactor(scaleFactor);
         redraw();
-        Event e = new Event();
-        e.widget = this;
-        SelectionEvent ev = new SelectionEvent(e);
-        ev.x = origin.x;
-        ev.y = origin.y;
-        for (SelectionAdapter a : selectionListeners) {
-            a.widgetSelected(ev);
-        }
+        fireSelectionEvent();
 
     }
 
@@ -386,4 +379,21 @@ public class WaveformCanvas extends Canvas {
     public void removeSelectionListener(SelectionAdapter selectionAdapter) {
         selectionListeners.remove(selectionAdapter);
     }
+
+    /**
+     * 
+     */
+    protected void fireSelectionEvent() {
+        Event e = new Event();
+        e.widget = this;
+        e.detail=SWT.SELECTED;
+        e.type=SWT.Selection;
+        SelectionEvent ev = new SelectionEvent(e);
+        ev.x = origin.x;
+        ev.y = origin.y;
+        for (SelectionAdapter a : selectionListeners) {
+            a.widgetSelected(ev);
+        }
+    }
+
 }

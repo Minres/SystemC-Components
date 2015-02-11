@@ -85,6 +85,7 @@ public class SQLiteDbLoader implements IWaveformDbLoader {
 	@Override
 	public boolean load(IWaveformDb db, File file) throws Exception {
 		this.db=db;
+		streams=null;
 		FileInputStream fis = new FileInputStream(file);
 		byte[] buffer = new byte[x.length];
 		int read = fis.read(buffer, 0, x.length);

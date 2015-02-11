@@ -10,7 +10,6 @@
  *******************************************************************************/
 package com.minres.scviewer.database.swt;
 
-import java.awt.PageAttributes.OriginType;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
@@ -60,11 +59,11 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.ScrollBar;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 import swing2swt.layout.BorderLayout;
 
+import com.google.common.collect.Lists;
 import com.minres.scviewer.database.ISignal;
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.ITxEvent;
@@ -213,15 +212,17 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
         nameListScrolled.getVerticalBar().addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
                 int y = ((ScrollBar) e.widget).getSelection();
-                valueListScrolled.setOrigin(valueListScrolled.getOrigin().x, y);
-                trackList.setOrigin(trackList.getOrigin().x, y);
+                Point v = valueListScrolled.getOrigin();
+                valueListScrolled.setOrigin(v.x, y);
+                Point t = trackList.getOrigin();
+                trackList.setOrigin(t.x, -y);
             }
         });
         valueListScrolled.getVerticalBar().addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
                 int y = ((ScrollBar) e.widget).getSelection();
                 nameListScrolled.setOrigin(nameListScrolled.getOrigin().x, y);
-                trackList.setOrigin(trackList.getOrigin().x, y);
+                trackList.setOrigin(trackList.getOrigin().x, -y);
             }
         });
         trackList.addSelectionListener(new SelectionAdapter() {
@@ -355,15 +356,21 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
     public void setSelection(ISelection selection) {
         boolean selectionChanged = false;
         if (selection instanceof IStructuredSelection) {
-            Object sel = ((IStructuredSelection) selection).getFirstElement();
-            if (sel instanceof ITx && currentSelection != sel) {
-                currentSelection = (ITx) sel;
-                currentWaveformSelection = currentSelection.getStream();
-                selectionChanged = true;
-            } else if (sel instanceof IWaveform<?> && currentWaveformSelection != sel) {
+            if(((IStructuredSelection) selection).size()==0){
+                selectionChanged = currentSelection!=null||currentWaveformSelection!=null;                
                 currentSelection = null;
-                currentWaveformSelection = (IWaveform<? extends IWaveformEvent>) sel;
-                selectionChanged = true;
+                currentWaveformSelection = null;
+            } else {
+                Object sel = ((IStructuredSelection) selection).getFirstElement();
+                if (sel instanceof ITx && currentSelection != sel) {
+                    currentSelection = (ITx) sel;
+                    currentWaveformSelection = currentSelection.getStream();
+                    selectionChanged = true;
+                } else if (sel instanceof IWaveform<?> && currentWaveformSelection != sel) {
+                    currentSelection = null;
+                    currentWaveformSelection = (IWaveform<? extends IWaveformEvent>) sel;
+                    selectionChanged = true;
+                }
             }
         } else {
             if (currentSelection != null || currentWaveformSelection != null)
@@ -392,9 +399,20 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
             ITxStream<ITxEvent> stream = (ITxStream<ITxEvent>) currentWaveformSelection;
             ITx transaction = null;
             if (direction == GotoDirection.NEXT) {
-                Entry<Long, List<ITxEvent>> entry = stream.getEvents().higherEntry(currentSelection.getBeginTime());
-                if (entry != null)
-                    do {
+                List<ITxEvent> thisEntryList = stream.getEvents().get(currentSelection.getBeginTime());
+                boolean meFound=false;
+                for (ITxEvent evt : thisEntryList) {
+                    if (evt.getType() == ITxEvent.Type.BEGIN) {
+                        if(meFound){
+                            transaction = evt.getTransaction();
+                            break;
+                        }
+                        meFound|= evt.getTransaction().getId()==currentSelection.getId();
+                    }
+                }
+                if (transaction == null){
+                    Entry<Long, List<ITxEvent>> entry = stream.getEvents().higherEntry(currentSelection.getBeginTime());
+                    if (entry != null) do {
                         for (ITxEvent evt : entry.getValue()) {
                             if (evt.getType() == ITxEvent.Type.BEGIN) {
                                 transaction = evt.getTransaction();
@@ -404,21 +422,33 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
                         if (transaction == null)
                             entry = stream.getEvents().higherEntry(entry.getKey());
                     } while (entry != null && transaction == null);
+                }
             } else if (direction == GotoDirection.PREV) {
-                Entry<Long, List<ITxEvent>> entry = stream.getEvents().lowerEntry(currentSelection.getBeginTime());
-                if (entry != null)
-                    do {
-                        System.out.println(currentSelection.getBeginTime() + " -> " + entry.getKey());
-                        for (ITxEvent evt : entry.getValue()) {
-                            System.out.println("\t-> " + evt.toString());
-                            if (evt.getType() == ITxEvent.Type.BEGIN) {
-                                transaction = evt.getTransaction();
-                                break;
-                            }
+                List<ITxEvent> thisEntryList = stream.getEvents().get(currentSelection.getBeginTime());
+                boolean meFound=false;
+                for (ITxEvent evt :  Lists.reverse(thisEntryList)) {
+                    if (evt.getType() == ITxEvent.Type.BEGIN) {
+                        if(meFound){
+                            transaction = evt.getTransaction();
+                            break;
                         }
-                        if (transaction == null)
-                            entry = stream.getEvents().lowerEntry(entry.getKey());
-                    } while (entry != null && transaction == null);
+                        meFound|= evt.getTransaction().getId()==currentSelection.getId();
+                    }
+                }
+                if (transaction == null){
+                    Entry<Long, List<ITxEvent>> entry = stream.getEvents().lowerEntry(currentSelection.getBeginTime());
+                    if (entry != null)
+                        do {
+                            for (ITxEvent evt : Lists.reverse(entry.getValue())) {
+                                if (evt.getType() == ITxEvent.Type.BEGIN) {
+                                    transaction = evt.getTransaction();
+                                    break;
+                                }
+                            }
+                            if (transaction == null)
+                                entry = stream.getEvents().lowerEntry(entry.getKey());
+                        } while (entry != null && transaction == null);
+                }
             }
             if (transaction != null) {
                 setSelection(new StructuredSelection(transaction));

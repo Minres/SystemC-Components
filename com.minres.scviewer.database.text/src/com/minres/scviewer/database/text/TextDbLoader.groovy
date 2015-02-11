@@ -142,8 +142,8 @@ public class TextDbLoader implements IWaveformDbLoader{
 					}
 					break
 				case "tx_relation"://matcher = line =~ /^tx_relation\s+\"(\S+)\"\s+(\d+)\s+(\d+)$/
-					Tx tr1= transactionsById[Integer.parseInt(tokens[2])]
-					Tx tr2= transactionsById[Integer.parseInt(tokens[3])]
+					Tx tr2= transactionsById[Integer.parseInt(tokens[2])]
+					Tx tr1= transactionsById[Integer.parseInt(tokens[3])]
 					def relType=tokens[1][1..-2]
 					if(!relationTypes.containsKey(relType)) relationTypes[relType]=new RelationType(relType)
 					def rel = new TxRelation(relationTypes[relType], tr1, tr2)

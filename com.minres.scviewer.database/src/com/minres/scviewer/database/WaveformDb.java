@@ -142,9 +142,9 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 
 	private void updateMaxTime(IWaveform<?> waveform) {
 		Long last=0L;
-		if(waveform instanceof ITxStream<?>)
+		if(waveform instanceof ITxStream<?> && ((ITxStream<?>)waveform).getEvents().lastEntry()!=null)
 			last=((ITxStream<?>)waveform).getEvents().lastEntry().getKey();
-		else if(waveform instanceof ISignal<?>)
+		else if(waveform instanceof ISignal<?> && ((ISignal<?>)waveform).getEvents().lastEntry()!=null)
 			last=((ISignal<?>)waveform).getEvents().lastEntry().getKey();
 		if(last>maxTime)
 			maxTime=last;

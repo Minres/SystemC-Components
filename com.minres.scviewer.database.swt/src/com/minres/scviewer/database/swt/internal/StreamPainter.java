@@ -56,7 +56,7 @@ public class StreamPainter implements IWaveformPainter{
 		else
 			gc.setBackground(this.waveCanvas.colors[even?WaveformCanvas.Colors.TRACK_BG_EVEN.ordinal():WaveformCanvas.Colors.TRACK_BG_ODD.ordinal()]);
 		gc.setFillRule(SWT.FILL_EVEN_ODD);
-		gc.fillRectangle(area);
+		gc.fillRectangle(0,0,area.width, area.height);
 		Entry<Long, ?> firstTx=stream.getEvents().floorEntry(area.x*waveCanvas.getScaleFactor());
 		Entry<Long, ?> lastTx=stream.getEvents().ceilingEntry((area.x+area.width)*waveCanvas.getScaleFactor());
 		if(firstTx==null) firstTx = stream.getEvents().firstEntry();
@@ -125,7 +125,7 @@ public class StreamPainter implements IWaveformPainter{
 		Entry<Long, List<ITxEvent>> firstTx=stream.getEvents().floorEntry(point.x*waveCanvas.getScaleFactor());
 		if(firstTx!=null){
 			do {
-				ITx tx = getTxFromEntry(lane, firstTx);
+				ITx tx = getTxFromEntry(lane, point.x, firstTx);
 				if(tx!=null) return tx;
 				firstTx=stream.getEvents().lowerEntry(firstTx.getKey());
 			}while(firstTx!=null);
@@ -141,12 +141,23 @@ public class StreamPainter implements IWaveformPainter{
 		this.stream = stream;
 	}
 
-	protected ITx getTxFromEntry(int lane, Entry<Long, List<ITxEvent>> firstTx) {
+	protected ITx getTxFromEntry(int lane, int offset, Entry<Long, List<ITxEvent>> firstTx) {
+        long timePoint=offset*waveCanvas.getScaleFactor();
 		for(ITxEvent evt:firstTx.getValue()){
-			if(evt.getType()==ITxEvent.Type.BEGIN && evt.getTransaction().getConcurrencyIndex()==lane){
+		    ITx tx=evt.getTransaction();
+			if(evt.getType()==ITxEvent.Type.BEGIN && tx.getConcurrencyIndex()==lane && tx.getBeginTime()<=timePoint && tx.getEndTime()>=timePoint){
 				return evt.getTransaction();
 			}
 		}
+		// now with some fuzziness
+        timePoint=(offset-5)*waveCanvas.getScaleFactor();
+        long timePointHigh=(offset+5)*waveCanvas.getScaleFactor();
+        for(ITxEvent evt:firstTx.getValue()){
+            ITx tx=evt.getTransaction();
+            if(evt.getType()==ITxEvent.Type.BEGIN && tx.getConcurrencyIndex()==lane && tx.getBeginTime()<=timePointHigh && tx.getEndTime()>=timePoint){
+                return evt.getTransaction();
+            }
+        }
 		return null;
 	}
 

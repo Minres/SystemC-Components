@@ -358,7 +358,7 @@ static void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, voi
     if (tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false) return;
     try {
         queryBuilder.str("");
-        queryBuilder << "INSERT INTO " TX_RELATION_TABLE " (name,src,sink)"
+        queryBuilder << "INSERT INTO " TX_RELATION_TABLE " (name,sink,src)"
                 << "values ('" << tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle) << "',"
                 << tr_1.get_id() << ","<< tr_2.get_id() << ");";
         db.exec(queryBuilder.str().c_str());

@@ -63,38 +63,41 @@ public class SignalPainter implements IWaveformPainter  {
 		if(left.getValue() instanceof ISignalChangeSingle){
 			NavigableMap<Long, ? extends ISignalChange> entries=signal.getEvents().subMap(firstChange.getKey(), false, lastTx.getKey(), true);
 			for(Entry<Long, ? extends ISignalChange> right:entries.entrySet()){
-				int yOffset = this.waveCanvas.getTrackHeight()/2;
-				Color color = this.waveCanvas.colors[WaveformCanvas.Colors.SIGNALX.ordinal()];
-				switch(((ISignalChangeSingle) left.getValue()).getValue()){
-				case '1':
-					color=this.waveCanvas.colors[WaveformCanvas.Colors.SIGNAL1.ordinal()];
-					yOffset = this.waveCanvas.getTrackHeight()/5;
-					break;
-				case '0':
-					color=this.waveCanvas.colors[WaveformCanvas.Colors.SIGNAL0.ordinal()];
-					yOffset = 4*this.waveCanvas.getTrackHeight()/5;
-					break;
-				case 'Z':
-					color=this.waveCanvas.colors[WaveformCanvas.Colors.SIGNALZ.ordinal()];
-					break;
-				default:	
-				}
-				yOffset+=area.y;
-				gc.setForeground(color);
-				int xEnd= (int)(right.getKey()/this.waveCanvas.getScaleFactor());
-				gc.drawLine((int)(left.getKey()/this.waveCanvas.getScaleFactor()), yOffset, xEnd, yOffset);
-				int yNext =  this.waveCanvas.getTrackHeight()/2;
-				switch(((ISignalChangeSingle) right.getValue()).getValue()){
-				case '1':
-					yNext = this.waveCanvas.getTrackHeight()/5+area.y;
-					break;
-				case '0':
-					yNext = 4*this.waveCanvas.getTrackHeight()/5+area.y;
-					break;
-				default:	
-				}
-				gc.drawLine(xEnd, yOffset, xEnd, yNext);
-				left=right;
+			    int xEnd= (int)(right.getKey()/this.waveCanvas.getScaleFactor());
+			    int xBegin= (int)(left.getKey()/this.waveCanvas.getScaleFactor());
+			    if(xEnd>xBegin){
+			        int yOffset = this.waveCanvas.getTrackHeight()/2;
+			        Color color = this.waveCanvas.colors[WaveformCanvas.Colors.SIGNALX.ordinal()];
+			        switch(((ISignalChangeSingle) left.getValue()).getValue()){
+			        case '1':
+			            color=this.waveCanvas.colors[WaveformCanvas.Colors.SIGNAL1.ordinal()];
+			            yOffset = this.waveCanvas.getTrackHeight()/5;
+			            break;
+			        case '0':
+			            color=this.waveCanvas.colors[WaveformCanvas.Colors.SIGNAL0.ordinal()];
+			            yOffset = 4*this.waveCanvas.getTrackHeight()/5;
+			            break;
+			        case 'Z':
+			            color=this.waveCanvas.colors[WaveformCanvas.Colors.SIGNALZ.ordinal()];
+			            break;
+			        default:	
+			        }
+			        yOffset+=area.y;
+			        gc.setForeground(color);
+			        gc.drawLine(xBegin, yOffset, xEnd, yOffset);
+			        int yNext =  this.waveCanvas.getTrackHeight()/2;
+			        switch(((ISignalChangeSingle) right.getValue()).getValue()){
+			        case '1':
+			            yNext = this.waveCanvas.getTrackHeight()/5+area.y;
+			            break;
+			        case '0':
+			            yNext = 4*this.waveCanvas.getTrackHeight()/5+area.y;
+			            break;
+			        default:	
+			        }
+			        gc.drawLine(xEnd, yOffset, xEnd, yNext);
+			    }
+			    left=right;
 			}
 		} else if(left.getValue() instanceof ISignalChangeMulti){
 			NavigableMap<Long,? extends ISignalChange> entries=signal.getEvents().subMap(firstChange.getKey(), false, lastTx.getKey(), true);
