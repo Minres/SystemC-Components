@@ -12,6 +12,8 @@ package com.minres.scviewer.database.swt;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -19,6 +21,7 @@ import java.util.TreeMap;
 import java.util.Vector;
 
 import org.eclipse.core.runtime.ListenerList;
+import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -100,13 +103,15 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 
     private Composite trackPane;
     private Ruler ruler;
-    TreeMap<Integer, IWaveform<? extends IWaveformEvent>> trackVerticalOffset;
-    HashMap<IWaveform<? extends IWaveformEvent>, String> actualValues;
+    private int trackVerticalHeight;
+    private TreeMap<Integer, IWaveform<? extends IWaveformEvent>> trackVerticalOffset;
+    private HashMap<IWaveform<? extends IWaveformEvent>, String> actualValues;
     // private long maxTime=0;
     private Font nameFont, nameFontB;
 
     public TxDisplay(Composite parent) {
         trackVerticalOffset = new TreeMap<Integer, IWaveform<? extends IWaveformEvent>>();
+        trackVerticalHeight=0;
         actualValues = new HashMap<IWaveform<? extends IWaveformEvent>, String>();
         cursorPainters = new Vector<CursorPainter>();
 
@@ -267,14 +272,14 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 
     @Override
     public void propertyChange(PropertyChangeEvent pce) {
-        if ("size".equals(pce.getPropertyName())) {
+        if ("size".equals(pce.getPropertyName()) || "content".equals(pce.getPropertyName())) {
             updateTracklist();
         }
     }
 
     @SuppressWarnings("unchecked")
     protected void updateTracklist() {
-        int yoffs = 0;
+        int trackVerticalHeight = 0;
         int nameMaxWidth = 0;
         int previousHeight = trackVerticalOffset.size() == 0 ? 0 : trackVerticalOffset.lastKey();
         IWaveformPainter painter = null;
@@ -294,17 +299,17 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
                 painter = new SignalPainter(trackList, even, height, (ISignal<?>) waveform);
                 actualValues.put(waveform, "---");
             }
-            trackList.addWavefromPainter(yoffs, painter);
-            trackVerticalOffset.put(yoffs, waveform);
+            trackList.addWavefromPainter(trackVerticalHeight, painter);
+            trackVerticalOffset.put(trackVerticalHeight, waveform);
             tl.setText(waveform.getFullName());
             nameMaxWidth = Math.max(nameMaxWidth, tl.getBounds().width);
-            yoffs += height;
+            trackVerticalHeight += height;
             even = !even;
         }
-        nameList.setSize(nameMaxWidth + 15, yoffs);
-        nameListScrolled.setMinSize(nameMaxWidth + 15, yoffs);
-        valueList.setSize(calculateValueWidth(), yoffs);
-        valueListScrolled.setMinSize(calculateValueWidth(), yoffs);
+        nameList.setSize(nameMaxWidth + 15, trackVerticalHeight);
+        nameListScrolled.setMinSize(nameMaxWidth + 15, trackVerticalHeight);
+        valueList.setSize(calculateValueWidth(), trackVerticalHeight);
+        valueListScrolled.setMinSize(calculateValueWidth(), trackVerticalHeight);
         nameList.redraw();
         valueList.redraw();
         trackList.redraw();
@@ -572,23 +577,24 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
     }
 
     private void createDragSource(final Canvas sourceText) {
-        Transfer[] types = new Transfer[] { TextTransfer.getInstance() };
+        Transfer[] types = new Transfer[] { LocalSelectionTransfer.getTransfer() };
         DragSource dragSource = new DragSource(sourceText, DND.DROP_MOVE);
         dragSource.setTransfer(types);
         dragSource.addDragListener(new DragSourceListener() {
 
             public void dragStart(DragSourceEvent event) {
-                if (event.y < trackVerticalOffset.lastKey() + trackList.getTrackHeight()) {
+                if (event.y < trackVerticalHeight) {
                     // event.data =
                     // trackVerticalOffset.floorEntry(event.y).getValue().getFullName();
                     event.doit = true;
+                    LocalSelectionTransfer.getTransfer().setSelection(getSelection());
                     // System.out.println("dragStart at location "+new
                     // Point(event.x, event.y));
                 }
             }
 
             public void dragSetData(DragSourceEvent event) {
-                event.data = trackVerticalOffset.floorEntry(event.y).getValue().getFullName();
+                event.data =getSelection();
                 // System.out.println("dragSetData with data " + event.data);
             }
 
@@ -599,7 +605,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
     }
 
     private void createDropTarget(final Canvas targetText) {
-        Transfer[] types = new Transfer[] { TextTransfer.getInstance() };
+        Transfer[] types = new Transfer[] { LocalSelectionTransfer.getTransfer() };
         DropTarget dropTarget = new DropTarget(targetText, DND.DROP_MOVE);
         dropTarget.setTransfer(types);
 
@@ -618,14 +624,27 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
             }
 
             public void drop(DropTargetEvent event) {
-                Object data = event.data;
-                DropTarget tgt = (DropTarget) event.widget;
-                Point dropPoint = ((Canvas) tgt.getControl()).toControl(event.x, event.y);
-                String fullname1 = trackVerticalOffset.floorEntry(dropPoint.y).getValue().getFullName();
-                // System.out.println("drop with data '" + event.data
-                // +"' at location "+dropPoint + " and origin " +
-                // nameListScrolled.getOrigin());
-                // System.out.println("drop on " + fullname1);
+                if (LocalSelectionTransfer.getTransfer().isSupportedType(event.currentDataType)){
+                    ISelection sel = LocalSelectionTransfer.getTransfer().getSelection();
+                    if(sel!=null && sel instanceof IStructuredSelection){
+                        Object source = ((IStructuredSelection)sel).getFirstElement();
+                        DropTarget tgt = (DropTarget) event.widget;
+                        Point dropPoint = ((Canvas) tgt.getControl()).toControl(event.x, event.y);
+                        Object target = trackVerticalOffset.floorEntry(dropPoint.y).getValue();
+                        if(source instanceof IWaveform<?> && target instanceof IWaveform<?>){
+//                            int srcIdx=streams.indexOf(source);
+//                            int tgtIdx=streams.indexOf(target);
+//                            if(srcIdx<tgtIdx){
+//                                streams.rotate(srcIdx,  tgtIdx, -1);
+//                            } else {
+//                                streams.rotate(tgtIdx,  srcIdx+1, 1);
+//                            }
+                            streams.remove(source);
+                            int tgtIdx=streams.indexOf(target);
+                            streams.add(tgtIdx, (IWaveform<? extends IWaveformEvent>) source);
+                        }
+                    }
+                }
             }
 
             public void dropAccept(DropTargetEvent event) {

@@ -277,9 +277,14 @@ public class ObservableList<E> implements List<E> {
 	}
 
 	public List<E> subList(int fromIndex, int toIndex) {
-		return this.delegate.subList(fromIndex, toIndex);
+	    return this.delegate.subList(fromIndex, toIndex);
 	}
 
+	public void rotate(int fromIndex, int toIndex, int distance){
+	    Collections.rotate(this.delegate.subList(fromIndex, toIndex), distance);
+        fireElementEvent(new MultiElementUpdatedEvent(this, this.delegate.subList(fromIndex, toIndex)));
+	}
+	
 	public Object[] toArray() {
 		return this.delegate.toArray();
 	}
@@ -315,6 +320,26 @@ public class ObservableList<E> implements List<E> {
 	public boolean hasListeners(String propertyName) {
 		return this.pcs.hasListeners(propertyName);
 	}
+
+    public static class MultiElementUpdatedEvent extends ObservableList.ElementEvent {
+        /**
+         * 
+         */
+        private static final long serialVersionUID = 7819626246672640599L;
+        
+        private List<Object> values = new ArrayList<Object>();
+
+        public MultiElementUpdatedEvent(Object source, List<?> values) {
+            super(source, ObservableList.ChangeType.oldValue, ObservableList.ChangeType.newValue, 0,
+                    ObservableList.ChangeType.MULTI_UPDATED);
+            if (values != null)
+                this.values.addAll(values);
+        }
+
+        public List<?> getValues() {
+            return Collections.unmodifiableList(this.values);
+        }
+    }
 
 	public static class MultiElementRemovedEvent extends ObservableList.ElementEvent {
 		/**
@@ -439,7 +464,7 @@ public class ObservableList<E> implements List<E> {
 	}
 
 	public static enum ChangeType {
-		ADDED, UPDATED, REMOVED, CLEARED, MULTI_ADD, MULTI_REMOVE, NONE;
+		ADDED, UPDATED, REMOVED, CLEARED, MULTI_ADD, MULTI_UPDATED, MULTI_REMOVE, NONE;
 
 		public static final Object oldValue;
 		public static final Object newValue;
