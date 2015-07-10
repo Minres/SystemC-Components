@@ -30,7 +30,8 @@ public class TrackPainter implements IPainter {
 		this.waveCanvas = waveCanvas;
 	}
 
-	public void paintArea(GC gc, Rectangle area) {			
+	public void paintArea(GC gc, Rectangle a) {
+	    Rectangle area = new Rectangle(a.x, a.y+waveCanvas.rulerHeight, a.width, a.height-waveCanvas.rulerHeight);
 		gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TRACK_BG_EVEN.ordinal()]);
 		gc.setFillRule(SWT.FILL_EVEN_ODD);
 		gc.fillRectangle(area);

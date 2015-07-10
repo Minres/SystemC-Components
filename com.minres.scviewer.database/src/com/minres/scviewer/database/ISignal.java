@@ -19,6 +19,6 @@ public interface ISignal<T extends ISignalChange> extends IWaveform<T>{
 
 	public T getWaveformEventsAtTime(Long time);
 
-
+	public T getWaveformEventsBeforeTime(Long time);
 }
 

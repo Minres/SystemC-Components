@@ -72,6 +72,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 
 	private Composite myParent;
 
+    private StatusLineContributionItem cursorStatusLineItem;
 	private StatusLineContributionItem zoomStatusLineItem;
 
 	public TxEditorPart() {
@@ -100,6 +101,13 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 		});
 		txDisplay = new TxDisplay(parent);
 		txDisplay.setMaxTime(0);
+		txDisplay.addPropertyChangeListener(TxDisplay.CURSOR_PROPERTY, new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                Long time = (Long) evt.getNewValue();
+                cursorStatusLineItem.setText("Cursor: "+ time/1000000+"ns");
+            }
+        });
 		getSite().setSelectionProvider(txDisplay);
 		new Thread(new Runnable() {
 			@Override
@@ -112,7 +120,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 			}
 		}).run();
 		zoomStatusLineItem.setText("Zoom level: "+zoomLevel[txDisplay.getZoomLevel()]);
-		
+		cursorStatusLineItem.setText("Cursor: "+ txDisplay.getCursorTime()/1000000+"ns");
 		MenuManager menuMgr = new MenuManager("#PopupMenu");
 //		menuMgr.setRemoveAllWhenShown(true);
 //		menuMgr.addMenuListener(new IMenuListener() {
@@ -285,10 +293,12 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 		// Initialize the editor part
 		setSite(site);
 		setInput(input);
-		zoomStatusLineItem = new StatusLineContributionItem("TxEditorContributionItem");
+		zoomStatusLineItem = new StatusLineContributionItem("TxEditorZoomContributionItem");
+        cursorStatusLineItem = new StatusLineContributionItem("TxEditorCursorContributionItem");
 		IActionBars actionBars = getEditorSite().getActionBars();
 		IStatusLineManager manager = actionBars.getStatusLineManager();
 		manager.add(zoomStatusLineItem);
+        manager.add(cursorStatusLineItem);
 		actionBars.updateActionBars();
 	}
 

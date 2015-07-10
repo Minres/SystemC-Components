@@ -12,8 +12,7 @@ package com.minres.scviewer.database.swt;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Collection;
-import java.util.Collections;
+import java.beans.PropertyChangeSupport;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -34,12 +33,11 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSource;
+import org.eclipse.swt.dnd.DragSourceAdapter;
 import org.eclipse.swt.dnd.DragSourceEvent;
-import org.eclipse.swt.dnd.DragSourceListener;
 import org.eclipse.swt.dnd.DropTarget;
+import org.eclipse.swt.dnd.DropTargetAdapter;
 import org.eclipse.swt.dnd.DropTargetEvent;
-import org.eclipse.swt.dnd.DropTargetListener;
-import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
@@ -68,6 +66,9 @@ import swing2swt.layout.BorderLayout;
 
 import com.google.common.collect.Lists;
 import com.minres.scviewer.database.ISignal;
+import com.minres.scviewer.database.ISignalChange;
+import com.minres.scviewer.database.ISignalChangeMulti;
+import com.minres.scviewer.database.ISignalChangeSingle;
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.ITxEvent;
 import com.minres.scviewer.database.ITxStream;
@@ -76,18 +77,22 @@ import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.database.swt.internal.CursorPainter;
 import com.minres.scviewer.database.swt.internal.IWaveformPainter;
 import com.minres.scviewer.database.swt.internal.ObservableList;
-import com.minres.scviewer.database.swt.internal.Ruler;
+import com.minres.scviewer.database.swt.internal.RulerPainter;
 import com.minres.scviewer.database.swt.internal.SignalPainter;
 import com.minres.scviewer.database.swt.internal.StreamPainter;
 import com.minres.scviewer.database.swt.internal.TrackPainter;
 import com.minres.scviewer.database.swt.internal.WaveformCanvas;
 
 public class TxDisplay implements PropertyChangeListener, ISelectionProvider, MouseListener {
-    private ListenerList listeners = new ListenerList();
+    private ListenerList selectionChangedListeners = new ListenerList();
+    private PropertyChangeSupport pcs;
+
+    public static final String CURSOR_PROPERTY = "cursor time";
 
     private static final String SELECTION = "selection";
-    private ITx currentSelection;
+    private ITx currentTxSelection;
     private IWaveform<? extends IWaveformEvent> currentWaveformSelection;
+    private CursorPainter currentCursorSelection;
 
     private ScrolledComposite nameListScrolled;
     private ScrolledComposite valueListScrolled;
@@ -102,7 +107,6 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
     Vector<CursorPainter> cursorPainters;
 
     private Composite trackPane;
-    private Ruler ruler;
     private int trackVerticalHeight;
     private TreeMap<Integer, IWaveform<? extends IWaveformEvent>> trackVerticalOffset;
     private HashMap<IWaveform<? extends IWaveformEvent>, String> actualValues;
@@ -110,6 +114,8 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
     private Font nameFont, nameFontB;
 
     public TxDisplay(Composite parent) {
+        pcs=new PropertyChangeSupport(this);
+        
         trackVerticalOffset = new TreeMap<Integer, IWaveform<? extends IWaveformEvent>>();
         trackVerticalHeight=0;
         actualValues = new HashMap<IWaveform<? extends IWaveformEvent>, String>();
@@ -129,6 +135,12 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 
         Composite composite = new Composite(topSash, SWT.NONE);
         composite.setLayout(new FillLayout(SWT.HORIZONTAL));
+
+        trackPane = new Composite(topSash, SWT.NONE);
+        trackPane.setLayout(new BorderLayout(0, 0));
+
+        trackList = new WaveformCanvas(trackPane, SWT.NONE);
+        trackList.setLayoutData(BorderLayout.CENTER);
 
         SashForm leftSash = new SashForm(composite, SWT.SMOOTH);
         leftSash.setBackground(leftSash.getDisplay().getSystemColor(SWT.COLOR_GRAY));
@@ -198,16 +210,11 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
         valueList.addMouseListener(this);
         valueListScrolled.setContent(valueList);
 
-        trackPane = new Composite(topSash, SWT.NONE);
-        trackPane.setLayout(new BorderLayout(0, 0));
-        ruler = new Ruler(trackPane, SWT.NONE);
-        ruler.setLayoutData(BorderLayout.NORTH);
-
-        trackList = new WaveformCanvas(trackPane, SWT.NONE);
-        trackList.setLayoutData(BorderLayout.CENTER);
         trackList.setStreams(streams);
-        trackList.setRuler(ruler);
+        // order is important: it is bottom to top
         trackList.addPainter(new TrackPainter(trackList));
+        trackList.addPainter(new RulerPainter(
+                trackList, trackList.getDisplay().getSystemColor(SWT.COLOR_BLACK), trackList.getDisplay().getSystemColor(SWT.COLOR_WHITE)));
         CursorPainter cp = new CursorPainter(trackList, trackList.getScaleFactor() * 10);
         trackList.addPainter(cp);
         cursorPainters.add(cp);
@@ -240,10 +247,13 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
         topSash.setWeights(new int[] { 30, 70 });
         leftSash.setWeights(new int[] { 75, 25 });
 
-        createDragSource(nameList);
-        createDragSource(valueList);
-        createDropTarget(nameList);
-        createDropTarget(valueList);
+        createWaveDragSource(nameList);
+        createWaveDragSource(valueList);
+        createWaveDropTarget(nameList);
+        createWaveDropTarget(valueList);
+        //TODO: create DnD for tracklist to move painter or whatever 
+        createTrackDragSource(trackList);
+        createTrackDropTarget(trackList);
     }
 
     private Composite createTextPane(SashForm leftSash, String text) {
@@ -257,7 +267,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 
         CLabel nameLabel = new CLabel(namePane, SWT.NONE);
         GridData gd_nameLabel = new GridData(SWT.CENTER, SWT.CENTER, true, false, 1, 1);
-        gd_nameLabel.heightHint = Ruler.height - 2;
+        gd_nameLabel.heightHint = trackList.getRulerHeight() - 2;
         nameLabel.setLayoutData(gd_nameLabel);
         nameLabel.setText(text);
 
@@ -311,7 +321,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
         valueList.setSize(calculateValueWidth(), trackVerticalHeight);
         valueListScrolled.setMinSize(calculateValueWidth(), trackVerticalHeight);
         nameList.redraw();
-        valueList.redraw();
+        updateValueList();
         trackList.redraw();
         top.layout(new Control[] { valueList, nameList, trackList });
         if (previousHeight > trackVerticalOffset.lastKey()) {
@@ -332,14 +342,32 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
         return valueMaxWidth + 15;
     }
 
+    private void updateValueList(){
+        final Long time = cursorPainters.get(0).getTime();
+        for(Entry<IWaveform<? extends IWaveformEvent>, String> entry:actualValues.entrySet()){
+            if(entry.getKey() instanceof ISignal){    
+                ISignalChange event = ((ISignal<?>)entry.getKey()).getWaveformEventsBeforeTime(time);
+                if(event instanceof ISignalChangeSingle){
+                    entry.setValue("b'"+((ISignalChangeSingle)event).getValue());
+                } else if(event instanceof ISignalChangeMulti){
+                    entry.setValue("h'"+((ISignalChangeMulti)event).getValue().toHexString());
+                }
+            } /*else if(entry instanceof ITxStream){
+                Collection<?> events = ((ITxStream<?>)entry.getKey()).getWaveformEventsAtTime(time);
+                
+            }*/
+        }
+        valueList.redraw();
+    }
+    
     @Override
     public void addSelectionChangedListener(ISelectionChangedListener listener) {
-        listeners.add(listener);
+        selectionChangedListeners.add(listener);
     }
 
     @Override
     public void removeSelectionChangedListener(ISelectionChangedListener listener) {
-        listeners.remove(listener);
+        selectionChangedListeners.remove(listener);
     }
 
     public Control getControl() {
@@ -348,8 +376,10 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 
     @Override
     public ISelection getSelection() {
-        if (currentSelection != null)
-            return new StructuredSelection(currentSelection);
+        if(currentCursorSelection != null){
+            return new StructuredSelection(currentCursorSelection);            
+        }else if (currentTxSelection != null)
+            return new StructuredSelection(currentTxSelection);
         else if (currentWaveformSelection != null)
             return new StructuredSelection(currentWaveformSelection);
         else
@@ -362,36 +392,45 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
         boolean selectionChanged = false;
         if (selection instanceof IStructuredSelection) {
             if(((IStructuredSelection) selection).size()==0){
-                selectionChanged = currentSelection!=null||currentWaveformSelection!=null;                
-                currentSelection = null;
+                selectionChanged = currentTxSelection!=null||currentWaveformSelection!=null;                
+                currentTxSelection = null;
                 currentWaveformSelection = null;
+                currentCursorSelection=null;
             } else {
                 Object sel = ((IStructuredSelection) selection).getFirstElement();
-                if (sel instanceof ITx && currentSelection != sel) {
-                    currentSelection = (ITx) sel;
-                    currentWaveformSelection = currentSelection.getStream();
-                    selectionChanged = true;
+                if (sel instanceof ITx && currentTxSelection != sel) {
+                    currentTxSelection = (ITx) sel;
+                    currentWaveformSelection = currentTxSelection.getStream();
+                    currentCursorSelection=null;
+                   selectionChanged = true;
                 } else if (sel instanceof IWaveform<?> && currentWaveformSelection != sel) {
-                    currentSelection = null;
+                    currentTxSelection = null;
                     currentWaveformSelection = (IWaveform<? extends IWaveformEvent>) sel;
+                    currentCursorSelection=null;
+                    selectionChanged = true;
+                } else if (sel instanceof CursorPainter && currentCursorSelection != sel){
+                    currentTxSelection = null;
+                    currentWaveformSelection = null;                    
+                    currentCursorSelection=(CursorPainter) sel;
                     selectionChanged = true;
                 }
             }
         } else {
-            if (currentSelection != null || currentWaveformSelection != null)
+            if (currentTxSelection != null || currentWaveformSelection != null)
                 selectionChanged = true;
-            currentSelection = null;
+            currentTxSelection = null;
             currentWaveformSelection = null;
+            currentCursorSelection=null;
         }
         if (currentWaveformSelection != null && !streams.contains(currentWaveformSelection)) {
             streams.add(currentWaveformSelection);
         }
         if (selectionChanged) {
-            trackList.setSelected(currentSelection, currentWaveformSelection);
+            trackList.setSelected(currentTxSelection, currentWaveformSelection);
             nameList.setData(SELECTION, currentWaveformSelection);
             valueList.redraw();
             nameList.redraw();
-            Object[] list = listeners.getListeners();
+            Object[] list = selectionChangedListeners.getListeners();
             for (int i = 0; i < list.length; i++) {
                 ((ISelectionChangedListener) list[i]).selectionChanged(new SelectionChangedEvent(this, selection));
             }
@@ -404,7 +443,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
             ITxStream<ITxEvent> stream = (ITxStream<ITxEvent>) currentWaveformSelection;
             ITx transaction = null;
             if (direction == GotoDirection.NEXT) {
-                List<ITxEvent> thisEntryList = stream.getEvents().get(currentSelection.getBeginTime());
+                List<ITxEvent> thisEntryList = stream.getEvents().get(currentTxSelection.getBeginTime());
                 boolean meFound=false;
                 for (ITxEvent evt : thisEntryList) {
                     if (evt.getType() == ITxEvent.Type.BEGIN) {
@@ -412,11 +451,11 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
                             transaction = evt.getTransaction();
                             break;
                         }
-                        meFound|= evt.getTransaction().getId()==currentSelection.getId();
+                        meFound|= evt.getTransaction().getId()==currentTxSelection.getId();
                     }
                 }
                 if (transaction == null){
-                    Entry<Long, List<ITxEvent>> entry = stream.getEvents().higherEntry(currentSelection.getBeginTime());
+                    Entry<Long, List<ITxEvent>> entry = stream.getEvents().higherEntry(currentTxSelection.getBeginTime());
                     if (entry != null) do {
                         for (ITxEvent evt : entry.getValue()) {
                             if (evt.getType() == ITxEvent.Type.BEGIN) {
@@ -429,7 +468,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
                     } while (entry != null && transaction == null);
                 }
             } else if (direction == GotoDirection.PREV) {
-                List<ITxEvent> thisEntryList = stream.getEvents().get(currentSelection.getBeginTime());
+                List<ITxEvent> thisEntryList = stream.getEvents().get(currentTxSelection.getBeginTime());
                 boolean meFound=false;
                 for (ITxEvent evt :  Lists.reverse(thisEntryList)) {
                     if (evt.getType() == ITxEvent.Type.BEGIN) {
@@ -437,11 +476,11 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
                             transaction = evt.getTransaction();
                             break;
                         }
-                        meFound|= evt.getTransaction().getId()==currentSelection.getId();
+                        meFound|= evt.getTransaction().getId()==currentTxSelection.getId();
                     }
                 }
                 if (transaction == null){
-                    Entry<Long, List<ITxEvent>> entry = stream.getEvents().lowerEntry(currentSelection.getBeginTime());
+                    Entry<Long, List<ITxEvent>> entry = stream.getEvents().lowerEntry(currentTxSelection.getBeginTime());
                     if (entry != null)
                         do {
                             for (ITxEvent evt : Lists.reverse(entry.getValue())) {
@@ -463,20 +502,19 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 
     @Override
     public void mouseDoubleClick(MouseEvent e) {
+        if (e.button ==  1&& e.widget == trackList) {
+            Object o = trackList.getClicked(new Point(e.x, e.y));
+            if (o != null)
+                setSelection(new StructuredSelection(o));
+        }
     }
 
     @Override
     public void mouseDown(MouseEvent e) {
-        if (e.button == 1 || e.button == 3) {
-            if (e.widget == trackList) {
-                Object o = trackList.getClicked(new Point(e.x, e.y));
-                if (o != null)
-                    setSelection(new StructuredSelection(o));
-            } else if (e.widget == valueList || e.widget == nameList) {
-                Entry<Integer, IWaveform<? extends IWaveformEvent>> entry = trackVerticalOffset.floorEntry(e.y);
-                if (entry != null)
-                    setSelection(new StructuredSelection(entry.getValue()));
-            }
+        if ((e.button == 1 || e.button == 3) && (e.widget == valueList || e.widget == nameList)) {
+            Entry<Integer, IWaveform<? extends IWaveformEvent>> entry = trackVerticalOffset.floorEntry(e.y);
+            if (entry != null)
+                setSelection(new StructuredSelection(entry.getValue()));
         }
         if (e.button == 3) {
             top.getMenu().setVisible(true);
@@ -485,6 +523,13 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
 
     @Override
     public void mouseUp(MouseEvent e) {
+        if (e.button ==  1&& e.widget == trackList) {
+                CursorPainter painter = cursorPainters.get(0);
+                setCursorTime(trackList.getTimeForOffset(e.x));
+                // TODO: move outside and execute asynchronous
+                trackList.redraw();
+                updateValueList();
+        }        
     }
 
     public List<IWaveform<? extends IWaveformEvent>> getStreamList() {
@@ -576,12 +621,21 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
         return trackList.getZoomLevel();
     }
 
-    private void createDragSource(final Canvas sourceText) {
+    public void setCursorTime(long time){
+        final Long oldVal= cursorPainters.get(0).getTime();
+        cursorPainters.get(0).setTime(time);
+        pcs.firePropertyChange(CURSOR_PROPERTY, oldVal, time);
+    }
+    
+    public long getCursorTime(){
+        return cursorPainters.get(0).getTime();   
+    }
+    
+    private void createWaveDragSource(final Canvas canvas) {
         Transfer[] types = new Transfer[] { LocalSelectionTransfer.getTransfer() };
-        DragSource dragSource = new DragSource(sourceText, DND.DROP_MOVE);
+        DragSource dragSource = new DragSource(canvas, DND.DROP_MOVE);
         dragSource.setTransfer(types);
-        dragSource.addDragListener(new DragSourceListener() {
-
+        dragSource.addDragListener(new DragSourceAdapter() {
             public void dragStart(DragSourceEvent event) {
                 if (event.y < trackVerticalHeight) {
                     // event.data =
@@ -594,35 +648,19 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
             }
 
             public void dragSetData(DragSourceEvent event) {
-                event.data =getSelection();
-                // System.out.println("dragSetData with data " + event.data);
-            }
-
-            public void dragFinished(DragSourceEvent event) {
-                // do nothing
+                if (LocalSelectionTransfer.getTransfer().isSupportedType(event.dataType)) {
+                    event.data =getSelection(); 
+                }
             }
         });
     }
 
-    private void createDropTarget(final Canvas targetText) {
+    private void createWaveDropTarget(final Canvas canvas) {
         Transfer[] types = new Transfer[] { LocalSelectionTransfer.getTransfer() };
-        DropTarget dropTarget = new DropTarget(targetText, DND.DROP_MOVE);
+        DropTarget dropTarget = new DropTarget(canvas, DND.DROP_MOVE);
         dropTarget.setTransfer(types);
 
-        dropTarget.addDropListener(new DropTargetListener() {
-
-            public void dragEnter(DropTargetEvent event) {
-            }
-
-            public void dragLeave(DropTargetEvent event) {
-            }
-
-            public void dragOperationChanged(DropTargetEvent event) {
-            }
-
-            public void dragOver(DropTargetEvent event) {
-            }
-
+        dropTarget.addDropListener(new DropTargetAdapter() {
             public void drop(DropTargetEvent event) {
                 if (LocalSelectionTransfer.getTransfer().isSupportedType(event.currentDataType)){
                     ISelection sel = LocalSelectionTransfer.getTransfer().getSelection();
@@ -642,6 +680,9 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
                             streams.remove(source);
                             int tgtIdx=streams.indexOf(target);
                             streams.add(tgtIdx, (IWaveform<? extends IWaveformEvent>) source);
+                        } else if(source instanceof CursorPainter){
+                            ((CursorPainter)source).setTime(0);
+                            updateValueList();
                         }
                     }
                 }
@@ -653,6 +694,92 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
                 }
             }
         });
+    }
+    
+    private void createTrackDragSource(final Canvas canvas) {
+        Transfer[] types = new Transfer[] { LocalSelectionTransfer.getTransfer() };
+        DragSource dragSource = new DragSource(canvas, DND.DROP_MOVE);
+        dragSource.setTransfer(types);
+        dragSource.addDragListener(new DragSourceAdapter() {
+            public void dragStart(DragSourceEvent event) {
+//                System.out.println("dragStart");
+                if (currentCursorSelection!=null) {
+                    event.doit = true;
+                    LocalSelectionTransfer.getTransfer().setSelection(getSelection());
+                    currentCursorSelection.setDragging(true);
+                }
+            }
+
+            public void dragSetData(DragSourceEvent event) {
+//                System.out.println("dragSetData");
+                if (LocalSelectionTransfer.getTransfer().isSupportedType(event.dataType)) {
+                    event.data =getSelection(); 
+                }
+            }
+        });
+    }
+
+    private void createTrackDropTarget(final Canvas canvas) {
+        Transfer[] types = new Transfer[] { LocalSelectionTransfer.getTransfer() };
+        DropTarget dropTarget = new DropTarget(canvas, DND.DROP_MOVE);
+        dropTarget.setTransfer(types);
+        dropTarget.addDropListener(new DropTargetAdapter() {
+            public void drop(DropTargetEvent event) {
+//               System.out.println("drop");
+               if (LocalSelectionTransfer.getTransfer().isSupportedType(event.currentDataType)){
+                    ISelection sel = LocalSelectionTransfer.getTransfer().getSelection();
+                    if(sel!=null && sel instanceof IStructuredSelection){
+                        Object selObject = ((IStructuredSelection)sel).getFirstElement();
+                        if(selObject instanceof CursorPainter){
+                            CursorPainter painter = (CursorPainter) selObject;
+                            DropTarget tgt = (DropTarget) event.widget;
+                            Point dropPoint = ((Canvas) tgt.getControl()).toControl(event.x, event.y);
+                            // painter.setTime(trackList.getTimeForOffset(dropPoint.x));
+                            setCursorTime(trackList.getTimeForOffset(dropPoint.x));
+                            // TODO: move outside and execute asynchronous
+                            ((Canvas) tgt.getControl()).redraw();
+                            updateValueList();
+                        }
+                    }
+                }
+            }
+
+            public void dropAccept(DropTargetEvent event) {
+//                System.out.println("dropAccept");
+                if (event.detail != DND.DROP_MOVE || event.y > trackVerticalOffset.lastKey() + trackList.getTrackHeight()) {
+                    event.detail = DND.DROP_NONE;
+                }
+                if(currentCursorSelection!=null) currentCursorSelection.setDragging(false);
+            }
+        });
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        this.pcs.addPropertyChangeListener(listener);
+    }
+
+    public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+        this.pcs.addPropertyChangeListener(propertyName, listener);
+    }
+
+    public PropertyChangeListener[] getPropertyChangeListeners() {
+        return this.pcs.getPropertyChangeListeners();
+    }
+
+    public PropertyChangeListener[] getPropertyChangeListeners(String propertyName) {
+        return this.pcs.getPropertyChangeListeners(propertyName);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        this.pcs.removePropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+        this.pcs.removePropertyChangeListener(propertyName, listener);
+    }
+
+    public boolean hasListeners(String propertyName) {
+        return this.pcs.hasListeners(propertyName);
     }
 
 }

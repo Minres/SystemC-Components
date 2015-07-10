@@ -104,6 +104,11 @@ public class VCDSignal<T extends ISignalChange> extends HierNode implements ISig
 		return values.get(time);
 	}
 
+    @Override
+    public T getWaveformEventsBeforeTime(Long time) {
+        return  values.floorEntry(time).getValue();
+    }
+
 
 
 }

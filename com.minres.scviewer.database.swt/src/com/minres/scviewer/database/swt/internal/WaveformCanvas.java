@@ -43,18 +43,25 @@ import com.minres.scviewer.database.IWaveformEvent;
 
 public class WaveformCanvas extends Canvas {
     public enum Colors {
-        LINE, LINE_HIGHLITE, TRACK_BG_EVEN, TRACK_BG_HIGHLITE, TRACK_BG_ODD, TX_BG, TX_BG_HIGHLITE, TX_BORDER, SIGNAL0, SIGNAL1, SIGNALZ, SIGNALX, SIGNAL_TEXT, CURSOR
+        LINE, LINE_HIGHLITE, 
+        TRACK_BG_EVEN, TRACK_BG_ODD, TRACK_BG_HIGHLITE, 
+        TX_BG, TX_BG_HIGHLITE, TX_BORDER,
+        SIGNAL0, SIGNAL1, SIGNALZ, SIGNALX, SIGNAL_TEXT, 
+        CURSOR, CURSOR_DRAG, CURSOR_TEXT
     }
 
     Color[] colors = new Color[Colors.values().length];
 
     private int trackHeight = 50;
     private long scaleFactor = 1000000L;
+    String unit="ns";
     private int level = 6;
+    private final static String[] unitString={"fs", "ps", "ns", "µs", "ms", "s"};
+    private final static int[] unitMultiplier={1, 10, 100};
     private long maxTime;
     protected Point origin; /* original size */
     protected Transform transform;
-    protected Ruler ruler;
+    protected int rulerHeight=40;
     protected List<IPainter> painterList;
     TreeMap<Integer, IWaveformPainter> trackVerticalOffset;
 
@@ -115,9 +122,11 @@ public class WaveformCanvas extends Canvas {
             colors[Colors.SIGNAL0.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
             colors[Colors.SIGNAL1.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
             colors[Colors.SIGNALZ.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_GRAY);
-            colors[Colors.SIGNALX.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_RED);
+            colors[Colors.SIGNALX.ordinal()] = SWTResourceManager.getColor(255,  128,  182);
             colors[Colors.SIGNAL_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
-            colors[Colors.CURSOR.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_YELLOW);
+            colors[Colors.CURSOR.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_RED);
+            colors[Colors.CURSOR_DRAG.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_GRAY);
+            colors[Colors.CURSOR_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
         }
     }
 
@@ -127,14 +136,6 @@ public class WaveformCanvas extends Canvas {
 
     public void setStreams(List<IWaveform<? extends IWaveformEvent>> streams) {
         this.streams = streams;
-    }
-
-    public Ruler getRuler() {
-        return ruler;
-    }
-
-    public void setRuler(Ruler ruler) {
-        this.ruler = ruler;
     }
 
     public Point getOrigin() {
@@ -176,22 +177,32 @@ public class WaveformCanvas extends Canvas {
         syncScrollBars();
     }
 
+    public int getZoomLevel() {
+        return level;
+    }
+
     public void setZoomLevel(int level) {
         this.level = level;
         this.scaleFactor = (long) Math.pow(10, level);
-        if (ruler != null)
-            ruler.setStartPoint(-origin.x * scaleFactor);
         syncScrollBars();
-    }
-
-    public int getZoomLevel() {
-        return level;
     }
 
     public long getScaleFactor() {
         return scaleFactor;
     }
 
+    public String getUnitStr(){
+        return unitString[level/3];
+    }
+    
+    public int getUnitMultiplier(){
+        return unitMultiplier[level%3];
+    }
+    
+    public long getTimeForOffset(int xOffset){
+        return (xOffset-origin.x) * scaleFactor;
+    }
+    
     public void addPainter(IPainter painter) {
         painterList.add(painter);
         redraw();
@@ -208,7 +219,7 @@ public class WaveformCanvas extends Canvas {
     }
 
     public void addWavefromPainter(int yoffs, IWaveformPainter painter) {
-        trackVerticalOffset.put(yoffs, painter);
+        trackVerticalOffset.put(yoffs+rulerHeight, painter);
         syncScrollBars();
     }
 
@@ -232,8 +243,6 @@ public class WaveformCanvas extends Canvas {
                 if (painterList.size() == 0)
                     return;
                 setOrigin(-((ScrollBar) event.widget).getSelection(), origin.y);
-                if (ruler != null)
-                    ruler.setStartPoint(-origin.x * scaleFactor);
             }
         });
         ScrollBar vertical = getVerticalBar();
@@ -293,7 +302,6 @@ public class WaveformCanvas extends Canvas {
         }
         vertical.setSelection(-origin.y);
         vertical.setThumb(ch);
-        ruler.setScaleFactor(scaleFactor);
         redraw();
         fireSelectionEvent();
 
@@ -332,7 +340,7 @@ public class WaveformCanvas extends Canvas {
                         return ((SignalPainter) entry.getValue()).getSignal();
                 }
             } else if (p instanceof CursorPainter) {
-                if (Math.abs(point.x * scaleFactor - ((CursorPainter) p).getTime()) < 2) {
+                if (Math.abs(point.x - ((CursorPainter) p).getTime()/scaleFactor) < 2) {
                     return p;
                 }
             }
@@ -370,6 +378,14 @@ public class WaveformCanvas extends Canvas {
                 }
             }
         }
+    }
+
+    public int getRulerHeight() {
+        return rulerHeight;
+    }
+
+    public void setRulerHeight(int rulerHeight) {
+        this.rulerHeight = rulerHeight;
     }
 
     public void addSelectionListener(SelectionAdapter selectionAdapter) {

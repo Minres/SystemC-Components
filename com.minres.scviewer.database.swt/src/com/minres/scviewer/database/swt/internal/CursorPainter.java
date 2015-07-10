@@ -21,6 +21,8 @@ public class CursorPainter implements IPainter {
 	private final WaveformCanvas waveCanvas;
 	private long time;
 
+	private boolean isDragging;
+	private boolean drawTime;
 	/**
 	 * @param i 
 	 * @param txDisplay
@@ -28,6 +30,7 @@ public class CursorPainter implements IPainter {
 	public CursorPainter(WaveformCanvas txDisplay, long time) {
 		this.waveCanvas = txDisplay;
 		this.time=time;
+		drawTime=true;
 	}
 
 	public long getTime() {
@@ -38,12 +41,29 @@ public class CursorPainter implements IPainter {
 		this.time = time;
 	}
 
-	public void paintArea(GC gc, Rectangle area) {			
+	public boolean isDragging() {
+        return isDragging;
+    }
+
+    public void setDragging(boolean isDragging) {
+        this.isDragging = isDragging;
+    }
+
+    public void paintArea(GC gc, Rectangle area) {			
 			if(this.waveCanvas.streams.size()>0){
-				int x = (int) (time/waveCanvas.getScaleFactor());
+			    long scaleFactor=waveCanvas.getScaleFactor();
+				int x = (int) (time/scaleFactor);
 				if(x>=area.x && x<=(area.x+area.width)){
-					gc.setForeground(waveCanvas.colors[WaveformCanvas.Colors.CURSOR.ordinal()]);
+					gc.setForeground(
+					        waveCanvas.colors[isDragging?
+					                WaveformCanvas.Colors.CURSOR_DRAG.ordinal():
+					                    WaveformCanvas.Colors.CURSOR.ordinal()]);
 					gc.drawLine(x, area.y, x, area.y+area.height);
+					if(drawTime){
+					    gc.setBackground(waveCanvas.colors[WaveformCanvas.Colors.CURSOR.ordinal()]);
+                        gc.setForeground(waveCanvas.colors[WaveformCanvas.Colors.CURSOR_TEXT.ordinal()]);
+					    gc.drawText(Double.toString(x*waveCanvas.getUnitMultiplier())+waveCanvas.getUnitStr(), x+1, area.y);
+					}
 				}
 			}
 	}
