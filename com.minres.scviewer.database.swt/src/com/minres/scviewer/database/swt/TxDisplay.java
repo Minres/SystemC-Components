@@ -31,9 +31,11 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSource;
 import org.eclipse.swt.dnd.DragSourceAdapter;
+import org.eclipse.swt.dnd.DragSourceEffect;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DropTarget;
 import org.eclipse.swt.dnd.DropTargetAdapter;
@@ -56,6 +58,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
@@ -515,8 +518,12 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
             Entry<Integer, IWaveform<? extends IWaveformEvent>> entry = trackVerticalOffset.floorEntry(e.y);
             if (entry != null)
                 setSelection(new StructuredSelection(entry.getValue()));
-        }
-        if (e.button == 3) {
+        } else if (e.button ==  1&& e.widget == trackList) {
+            Object o = trackList.getClicked(new Point(e.x, e.y));
+            if (o != null && o instanceof CursorPainter)
+                setSelection(new StructuredSelection(o));
+
+        } else if (e.button == 3) {
             top.getMenu().setVisible(true);
         }
     }
@@ -697,9 +704,16 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
     }
     
     private void createTrackDragSource(final Canvas canvas) {
+        final Display display = canvas.getDisplay();
         Transfer[] types = new Transfer[] { LocalSelectionTransfer.getTransfer() };
         DragSource dragSource = new DragSource(canvas, DND.DROP_MOVE);
         dragSource.setTransfer(types);
+        dragSource.setDragSourceEffect(new DragSourceEffect(canvas) {
+            @Override
+            public void dragStart(DragSourceEvent event) {
+//                event.image = display.getSystemImage(SWT.ICON_INFORMATION);
+            }
+        });
         dragSource.addDragListener(new DragSourceAdapter() {
             public void dragStart(DragSourceEvent event) {
 //                System.out.println("dragStart");
@@ -750,6 +764,19 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
                     event.detail = DND.DROP_NONE;
                 }
                 if(currentCursorSelection!=null) currentCursorSelection.setDragging(false);
+            }
+            public void dragOver(DropTargetEvent event){
+                ISelection sel = LocalSelectionTransfer.getTransfer().getSelection();
+                if(sel!=null && sel instanceof IStructuredSelection){
+                    Object selObject = ((IStructuredSelection)sel).getFirstElement();
+                    if(selObject instanceof CursorPainter){
+                        DropTarget tgt = (DropTarget) event.widget;
+                        Point dropPoint = ((Canvas) tgt.getControl()).toControl(event.x, event.y);
+                        // painter.setTime(trackList.getTimeForOffset(dropPoint.x));
+                        setCursorTime(trackList.getTimeForOffset(dropPoint.x));
+                        ((Canvas) tgt.getControl()).redraw();
+                    }
+                }
             }
         });
     }
