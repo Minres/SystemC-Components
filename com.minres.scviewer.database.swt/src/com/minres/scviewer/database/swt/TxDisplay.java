@@ -31,11 +31,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.ScrolledComposite;
-import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSource;
 import org.eclipse.swt.dnd.DragSourceAdapter;
-import org.eclipse.swt.dnd.DragSourceEffect;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DropTarget;
 import org.eclipse.swt.dnd.DropTargetAdapter;
@@ -58,7 +56,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
@@ -254,7 +251,6 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
         createWaveDragSource(valueList);
         createWaveDropTarget(nameList);
         createWaveDropTarget(valueList);
-        //TODO: create DnD for tracklist to move painter or whatever 
         createTrackDragSource(trackList);
         createTrackDropTarget(trackList);
     }
@@ -531,11 +527,14 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
     @Override
     public void mouseUp(MouseEvent e) {
         if (e.button ==  1&& e.widget == trackList) {
-                CursorPainter painter = cursorPainters.get(0);
                 setCursorTime(trackList.getTimeForOffset(e.x));
-                // TODO: move outside and execute asynchronous
-                trackList.redraw();
-                updateValueList();
+                e.widget.getDisplay().asyncExec(new Runnable() {
+                    @Override
+                    public void run() {
+                        trackList.redraw();
+                        updateValueList();
+                    }
+                });
         }        
     }
 
@@ -704,19 +703,11 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
     }
     
     private void createTrackDragSource(final Canvas canvas) {
-        final Display display = canvas.getDisplay();
         Transfer[] types = new Transfer[] { LocalSelectionTransfer.getTransfer() };
         DragSource dragSource = new DragSource(canvas, DND.DROP_MOVE);
         dragSource.setTransfer(types);
-        dragSource.setDragSourceEffect(new DragSourceEffect(canvas) {
-            @Override
-            public void dragStart(DragSourceEvent event) {
-//                event.image = display.getSystemImage(SWT.ICON_INFORMATION);
-            }
-        });
         dragSource.addDragListener(new DragSourceAdapter() {
             public void dragStart(DragSourceEvent event) {
-//                System.out.println("dragStart");
                 if (currentCursorSelection!=null) {
                     event.doit = true;
                     LocalSelectionTransfer.getTransfer().setSelection(getSelection());
@@ -725,7 +716,6 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
             }
 
             public void dragSetData(DragSourceEvent event) {
-//                System.out.println("dragSetData");
                 if (LocalSelectionTransfer.getTransfer().isSupportedType(event.dataType)) {
                     event.data =getSelection(); 
                 }
@@ -739,7 +729,6 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
         dropTarget.setTransfer(types);
         dropTarget.addDropListener(new DropTargetAdapter() {
             public void drop(DropTargetEvent event) {
-//               System.out.println("drop");
                if (LocalSelectionTransfer.getTransfer().isSupportedType(event.currentDataType)){
                     ISelection sel = LocalSelectionTransfer.getTransfer().getSelection();
                     if(sel!=null && sel instanceof IStructuredSelection){
@@ -750,16 +739,19 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
                             Point dropPoint = ((Canvas) tgt.getControl()).toControl(event.x, event.y);
                             // painter.setTime(trackList.getTimeForOffset(dropPoint.x));
                             setCursorTime(trackList.getTimeForOffset(dropPoint.x));
-                            // TODO: move outside and execute asynchronous
                             ((Canvas) tgt.getControl()).redraw();
-                            updateValueList();
+                            canvas.getDisplay().asyncExec(new Runnable() {
+                                @Override
+                                public void run() {
+                                    updateValueList();
+                                }
+                            });
                         }
                     }
                 }
             }
 
             public void dropAccept(DropTargetEvent event) {
-//                System.out.println("dropAccept");
                 if (event.detail != DND.DROP_MOVE || event.y > trackVerticalOffset.lastKey() + trackList.getTrackHeight()) {
                     event.detail = DND.DROP_NONE;
                 }
@@ -772,9 +764,14 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider, Mo
                     if(selObject instanceof CursorPainter){
                         DropTarget tgt = (DropTarget) event.widget;
                         Point dropPoint = ((Canvas) tgt.getControl()).toControl(event.x, event.y);
-                        // painter.setTime(trackList.getTimeForOffset(dropPoint.x));
                         setCursorTime(trackList.getTimeForOffset(dropPoint.x));
                         ((Canvas) tgt.getControl()).redraw();
+                        canvas.getDisplay().asyncExec(new Runnable() {
+                            @Override
+                            public void run() {
+                                updateValueList();
+                            }
+                        });
                     }
                 }
             }
