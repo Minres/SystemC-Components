@@ -46,14 +46,25 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.database.IWaveformDbFactory;
 import com.minres.scviewer.database.IWaveformEvent;
-import com.minres.scviewer.database.WaveformDb;
 import com.minres.scviewer.database.swt.GotoDirection;
 import com.minres.scviewer.database.swt.TxDisplay;
 import com.minres.scviewer.ui.views.TxOutlinePage;
 
 public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPageContributor {
 
+	private IWaveformDbFactory waveformDbFactory;
+	
+	public synchronized void bind(IWaveformDbFactory factory){
+		waveformDbFactory=factory;
+	}
+
+	public synchronized void unbind(IWaveformDbFactory factory){
+		if(waveformDbFactory==factory)
+			waveformDbFactory=null;
+	}
+	
 	private final static String[] zoomLevel={
 		"1fs", "10fs", "100fs",
 		"1ps", "10ps", "100ps",
@@ -85,7 +96,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 	@Override
 	public void createPartControl(Composite parent) {
 		myParent=parent;		
-		database=new WaveformDb();
+		database=waveformDbFactory.getDatabase();
 		database.addPropertyChangeListener(new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
@@ -273,7 +284,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 	public void doSaveAs() {
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Object getAdapter(Class type) {
 		if (type == IContentOutlinePage.class) // outline page
@@ -382,8 +393,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 	}
 
 	public void removeSelected() {
-		// TODO Auto-generated method stub
-		
+		// TODO TxDisplay needs to be extended
 	}
 
 }

@@ -7,7 +7,6 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.ui.internal.misc.StringMatcher;
 
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformEvent;

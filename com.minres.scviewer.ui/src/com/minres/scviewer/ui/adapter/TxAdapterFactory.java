@@ -17,7 +17,7 @@ import com.minres.scviewer.database.ITx;
 
 public class TxAdapterFactory implements IAdapterFactory {
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Object getAdapter(Object adaptableObject, Class adapterType) {
 		if (adapterType == IPropertySource.class)
@@ -25,7 +25,7 @@ public class TxAdapterFactory implements IAdapterFactory {
 		return null;
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Class[] getAdapterList() {
 		return new Class[]{IPropertySource.class};
