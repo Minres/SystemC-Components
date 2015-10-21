@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.e4.ui.workbench.swt.E4Application"
+            description="SystemC Transaction and Waveform Viewer"
+            name="SCViewer">
+         <property
+               name="lifeCycleURI"
+               value="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.E4LifeCycle">
+         </property>
+         <property
+               name="appName"
+               value="SCViewer">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
