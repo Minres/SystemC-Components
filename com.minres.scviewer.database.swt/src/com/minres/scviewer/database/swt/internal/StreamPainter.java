@@ -51,12 +51,12 @@ public class StreamPainter implements IWaveformPainter{
 	@SuppressWarnings("unchecked")
 	public void paintArea(GC gc, Rectangle area) {
 		if(stream.getEvents().size()==0) return;
-		if(waveCanvas.currentWaveformSelection!=null && waveCanvas.currentWaveformSelection.getId()==stream.getId())
+		if(waveCanvas.currentWaveformSelection!=null && waveCanvas.currentWaveformSelection.equals(stream))
 			gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TRACK_BG_HIGHLITE.ordinal()]);
 		else
 			gc.setBackground(this.waveCanvas.colors[even?WaveformCanvas.Colors.TRACK_BG_EVEN.ordinal():WaveformCanvas.Colors.TRACK_BG_ODD.ordinal()]);
 		gc.setFillRule(SWT.FILL_EVEN_ODD);
-		gc.fillRectangle(0,0,area.width, area.height);
+		gc.fillRectangle(area);
 		Entry<Long, ?> firstTx=stream.getEvents().floorEntry(area.x*waveCanvas.getScaleFactor());
 		Entry<Long, ?> lastTx=stream.getEvents().ceilingEntry((area.x+area.width)*waveCanvas.getScaleFactor());
 		if(firstTx==null) firstTx = stream.getEvents().firstEntry();
@@ -82,7 +82,7 @@ public class StreamPainter implements IWaveformPainter{
 						seenTx.add(txEvent.getTransaction());
 					if(txEvent.getType()==ITxEvent.Type.END){
 						ITx tx = txEvent.getTransaction();
-						highlighed|=waveCanvas.currentSelection!=null && waveCanvas.currentSelection.getId()==tx.getId();
+						highlighed|=waveCanvas.currentSelection!=null && waveCanvas.currentSelection.equals(tx);
 						drawTx(gc, area, tx);
 						seenTx.remove(tx);
 					}

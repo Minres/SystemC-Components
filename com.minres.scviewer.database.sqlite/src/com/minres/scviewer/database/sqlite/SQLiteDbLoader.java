@@ -33,10 +33,6 @@ public class SQLiteDbLoader implements IWaveformDbLoader {
 
 	protected IDatabase database;
 	
-	protected List<IWaveform<? extends IWaveformEvent>> streams;
-
-	long timeResolution=1;
-
 	private RelationTypeFactory rtf = new RelationTypeFactory();
 
 	private IWaveformDb db;
@@ -63,19 +59,17 @@ public class SQLiteDbLoader implements IWaveformDbLoader {
 
 	@Override
 	public List<IWaveform<? extends IWaveformEvent>> getAllWaves() {
-		if(streams==null){
-			SQLiteDatabaseSelectHandler<ScvStream> handler = new SQLiteDatabaseSelectHandler<ScvStream>(ScvStream.class, database);
-			streams=new ArrayList<IWaveform<? extends IWaveformEvent>>();
-			try {
-				for(ScvStream scvStream:handler.selectObjects()){
-					TxStream stream = new TxStream(database, db, scvStream);
-					stream.setRelationTypeFactory(rtf);
-					streams.add(stream);
-				}
-			} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
-					| InvocationTargetException | SQLException | IntrospectionException e) {
-	//			e.printStackTrace();
+		SQLiteDatabaseSelectHandler<ScvStream> handler = new SQLiteDatabaseSelectHandler<ScvStream>(ScvStream.class, database);
+		List<IWaveform<? extends IWaveformEvent>> streams=new ArrayList<IWaveform<? extends IWaveformEvent>>();
+		try {
+			for(ScvStream scvStream:handler.selectObjects()){
+				TxStream stream = new TxStream(database, db, scvStream);
+				stream.setRelationTypeFactory(rtf);
+				streams.add(stream);
 			}
+		} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
+				| InvocationTargetException | SQLException | IntrospectionException e) {
+//			e.printStackTrace();
 		}
 		return streams;
 	}
@@ -85,7 +79,6 @@ public class SQLiteDbLoader implements IWaveformDbLoader {
 	@Override
 	public boolean load(IWaveformDb db, File file) throws Exception {
 		this.db=db;
-		streams=null;
 		FileInputStream fis = new FileInputStream(file);
 		byte[] buffer = new byte[x.length];
 		int read = fis.read(buffer, 0, x.length);

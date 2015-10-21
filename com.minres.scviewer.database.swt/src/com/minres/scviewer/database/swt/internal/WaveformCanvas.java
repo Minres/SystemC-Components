@@ -327,7 +327,8 @@ public class WaveformCanvas extends Canvas {
         }
     }
 
-    public Object getClicked(Point point) {
+    public List<Object> getClicked(Point point) {
+    	LinkedList<Object> result=new LinkedList<>();
         for (IPainter p : Lists.reverse(painterList)) {
             if (p instanceof TrackPainter) {
                 int y = point.y - origin.y;
@@ -335,17 +336,28 @@ public class WaveformCanvas extends Canvas {
                 Entry<Integer, IWaveformPainter> entry = trackVerticalOffset.floorEntry(y);
                 if (entry != null) {
                     if (entry.getValue() instanceof StreamPainter) {
-                        return ((StreamPainter) entry.getValue()).getClicked(new Point(x, y - entry.getKey()));
+                    	result.add(((StreamPainter) entry.getValue()).getClicked(new Point(x, y - entry.getKey())));
                     } else if (entry.getValue() instanceof SignalPainter)
-                        return ((SignalPainter) entry.getValue()).getSignal();
+                    	result.add(((SignalPainter) entry.getValue()).getSignal());
                 }
             } else if (p instanceof CursorPainter) {
-                if (Math.abs(point.x - ((CursorPainter) p).getTime()/scaleFactor) < 2) {
-                    return p;
+                if (Math.abs(point.x - origin.x - ((CursorPainter) p).getTime()/scaleFactor) < 2) {
+                	result.add(p);
                 }
             }
         }
-        return null;
+        return result;
+    }
+
+    public List<Object> getEntriesAtPosition(IWaveform<? extends IWaveformEvent> iWaveform, int i) {
+    	LinkedList<Object> result=new LinkedList<>();
+        int x = i - origin.x;
+        for(IPainter p: trackVerticalOffset.values()){
+        	if (p instanceof StreamPainter && ((StreamPainter)p).getStream()==iWaveform) {
+        		result.add(((StreamPainter) p).getClicked(new Point(x, trackHeight/2)));
+        	}
+        }
+        return result;
     }
 
     public void setSelected(ITx currentSelection, IWaveform<? extends IWaveformEvent> currentWaveformSelection) {
@@ -377,6 +389,18 @@ public class WaveformCanvas extends Canvas {
                     setOrigin(origin.x, size.y - bottom);
                 }
             }
+        }
+    }
+    
+    public void reveal(long time) {
+        int scaledTime = (int) (time / scaleFactor);
+        Point size = getSize();
+        size.x -= getVerticalBar().getSize().x + 2;
+        size.y -= getHorizontalBar().getSize().y;
+        if (scaledTime < -origin.x) {
+            setOrigin(-scaledTime+10, origin.y);
+        } else if (scaledTime > (size.x - origin.x)) {
+            setOrigin(size.x - scaledTime-30, origin.y);
         }
     }
 

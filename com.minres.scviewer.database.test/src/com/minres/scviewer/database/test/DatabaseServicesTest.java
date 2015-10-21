@@ -21,7 +21,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.minres.scviewer.database.IWaveformDb;
-import com.minres.scviewer.database.WaveformDb;
+import com.minres.scviewer.database.internal.WaveformDb;
 
 public class DatabaseServicesTest {
 

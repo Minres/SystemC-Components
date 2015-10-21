@@ -19,6 +19,8 @@ public class HierNode implements IHierNode {
 
 	protected String name;
 	
+	protected String parentName;
+	
 	protected ArrayList<IHierNode> childs;
 	
 	protected PropertyChangeSupport pcs;
@@ -29,8 +31,13 @@ public class HierNode implements IHierNode {
 	}
 
 	public HierNode(String name) {
+		this(name, "");
+	}
+
+	public HierNode(String name, String parentName) {
 		this();
 		this.name=name;
+		this.parentName=parentName;
 	}
 
 	@Override
@@ -46,7 +53,10 @@ public class HierNode implements IHierNode {
 
 	@Override
 	public String getFullName() {
-		return name;
+		if(parentName!=null && parentName.length()>0)
+			return parentName+"."+name;
+		else
+			return name;
 	}
 
 	@Override
@@ -57,6 +67,11 @@ public class HierNode implements IHierNode {
 	@Override
 	public void setName(String name) {
 		this.name=name;
+	}
+
+	@Override
+	public void setParentName(String name) {
+		this.parentName=name;
 	}
 
 	@Override

@@ -18,5 +18,7 @@ public interface IWaveform<T extends IWaveformEvent> extends IHierNode {
 	public String getKind();
 
 	public IWaveformDb getDb();
+	
+	public Boolean equals(IWaveform<? extends IWaveformEvent> other);
 
 }

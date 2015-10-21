@@ -17,12 +17,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
 
-import com.google.common.collect.TreeMultimap;
-import com.minres.scviewer.database.HierNode;
+import com.google.common.collect.TreeMultimap
 import com.minres.scviewer.database.ITxEvent;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb
+import com.minres.scviewer.database.IWaveformEvent
 import com.minres.scviewer.database.ITxGenerator
+import com.minres.scviewer.database.HierNode;
 import com.minres.scviewer.database.IHierNode
 import com.minres.scviewer.database.ITxStream
 import com.minres.scviewer.database.ITx
@@ -107,4 +108,10 @@ class TxStream extends HierNode implements ITxStream {
 	public Collection getWaveformEventsAtTime(Long time) {
 		return events.get(time);
 	}
+	
+	@Override
+	public Boolean equals(IWaveform<? extends IWaveformEvent> other) {
+		return(other instanceof TxStream && this.getId()==other.getId());
+	}
+
 }

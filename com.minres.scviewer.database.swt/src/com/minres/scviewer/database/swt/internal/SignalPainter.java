@@ -42,7 +42,7 @@ public class SignalPainter implements IWaveformPainter  {
 	}
 
 	public void paintArea(GC gc, Rectangle area) {	
-		if(waveCanvas.currentWaveformSelection!=null && waveCanvas.currentWaveformSelection.getId()==signal.getId())
+		if(waveCanvas.currentWaveformSelection!=null && waveCanvas.currentWaveformSelection.equals(signal))
 			gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TRACK_BG_HIGHLITE.ordinal()]);
 		else
 			gc.setBackground(this.waveCanvas.colors[even?WaveformCanvas.Colors.TRACK_BG_EVEN.ordinal():WaveformCanvas.Colors.TRACK_BG_ODD.ordinal()]);

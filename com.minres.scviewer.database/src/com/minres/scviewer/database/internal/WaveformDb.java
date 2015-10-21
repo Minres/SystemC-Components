@@ -8,7 +8,7 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.database;
+package com.minres.scviewer.database.internal;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,6 +17,17 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import com.google.common.base.Joiner;
+import com.minres.scviewer.database.HierNode;
+import com.minres.scviewer.database.IHierNode;
+import com.minres.scviewer.database.ISignal;
+import com.minres.scviewer.database.ITxStream;
+import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.database.IWaveformDbLoader;
+import com.minres.scviewer.database.IWaveformEvent;
+import com.minres.scviewer.database.InputFormatException;
 
 public class WaveformDb extends HierNode implements IWaveformDb {
 
@@ -29,11 +40,11 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 	private Long maxTime;
 	
 	
-	public void bind(IWaveformDbLoader loader){
+	public synchronized void bind(IWaveformDbLoader loader){
 		loaders.add(loader);
 	}
 
-	public void unbind(IWaveformDbLoader loader){
+	public synchronized void unbind(IWaveformDbLoader loader){
 		loaders.remove(loader);
 	}
 
@@ -73,8 +84,8 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 				if(loader.getMaxTime()>maxTime){
 					maxTime=loader.getMaxTime();
 				}
-				buildHierarchyNodes() ;
 				if(name==null) name=getFileBasename(inp.getName());
+				buildHierarchyNodes() ;
 				pcs.firePropertyChange("WAVEFORMS", null, waveforms);
 				pcs.firePropertyChange("CHILDS", null, childNodes);
 				return true;
@@ -102,16 +113,18 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 		childNodes= new ArrayList<IHierNode>();
 		for(IWaveform<?> stream:getAllWaves()){
 			updateMaxTime(stream);
-			String[] hier = stream.getFullName().split("\\.");
+			String[] hier = stream.getName().split("\\.");
 			IHierNode node = this;
+			List<String> path=new LinkedList<String>();
+			path.add(name);
 			for(String name:hier){
 				IHierNode n1 = null;
-				 for (IHierNode n : node.getChildNodes()) {
-				        if (n.getName().equals(name)) {
-				            n1=n;
-				            break;
-				        }
-				    }
+				for (IHierNode n : node.getChildNodes()) {
+					if (n.getName().equals(name)) {
+						n1=n;
+						break;
+					}
+				}
 				if(name == hier[hier.length-1]){ //leaf
 					if(n1!=null) {
 						if(n1 instanceof HierNode){
@@ -123,6 +136,7 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 						}
 					}
 					stream.setName(name);
+					stream.setParentName(Joiner.on(".").join(path));
 					node.getChildNodes().add(stream);
 					Collections.sort(node.getChildNodes());
 					node=stream;
@@ -130,12 +144,13 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 					if(n1 != null) {
 						node=n1;
 					} else {
-						HierNode newNode = new HierNode(name);
+						HierNode newNode = new HierNode(name, Joiner.on(".").join(path));
 						node.getChildNodes().add(newNode);
 						Collections.sort(node.getChildNodes());
 						node=newNode;
 					}
 				}
+				path.add(name);
 			}
 		}
 	}

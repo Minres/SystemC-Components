@@ -109,6 +109,11 @@ public class VCDSignal<T extends ISignalChange> extends HierNode implements ISig
         return  values.floorEntry(time).getValue();
     }
 
+	@Override
+	public Boolean equals(IWaveform<? extends IWaveformEvent> other) {
+		return(other instanceof VCDSignal<?> && this.getId()==other.getId());
+	}
+
 
 
 }
