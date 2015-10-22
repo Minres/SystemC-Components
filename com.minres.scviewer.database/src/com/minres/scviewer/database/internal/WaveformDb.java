@@ -12,13 +12,14 @@ package com.minres.scviewer.database.internal;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.base.Joiner;
 import com.minres.scviewer.database.HierNode;
 import com.minres.scviewer.database.IHierNode;
 import com.minres.scviewer.database.ISignal;
@@ -136,7 +137,7 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 						}
 					}
 					stream.setName(name);
-					stream.setParentName(Joiner.on(".").join(path));
+					stream.setParentName(join(path, "."));
 					node.getChildNodes().add(stream);
 					Collections.sort(node.getChildNodes());
 					node=stream;
@@ -144,7 +145,7 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 					if(n1 != null) {
 						node=n1;
 					} else {
-						HierNode newNode = new HierNode(name, Joiner.on(".").join(path));
+						HierNode newNode = new HierNode(name, join(path, "."));
 						node.getChildNodes().add(newNode);
 						Collections.sort(node.getChildNodes());
 						node=newNode;
@@ -164,5 +165,16 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 		if(last>maxTime)
 			maxTime=last;
 	}
-
+	
+	private static String join(Collection<?> col, String delim) {
+	    StringBuilder sb = new StringBuilder();
+	    Iterator<?> iter = col.iterator();
+	    if (iter.hasNext())
+	        sb.append(iter.next().toString());
+	    while (iter.hasNext()) {
+	        sb.append(delim);
+	        sb.append(iter.next().toString());
+	    }
+	    return sb.toString();
+	}
 }

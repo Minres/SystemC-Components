@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="SCViewer" uid="com.minres.scviewer.e4.application" id="com.minres.scviewer.e4.application.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
-
+<product name="SCViewer" uid="scviewer" id="com.minres.scviewer.e4.application.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -17,21 +16,33 @@
    <windowImages i16="/com.minres.scviewer.e4.application/icons/SCViewer_16x32.png" i32="/com.minres.scviewer.e4.application/icons/SCViewer_32x32.png" i48="/com.minres.scviewer.e4.application/icons/SCViewer_48x32.png" i64="/com.minres.scviewer.e4.application/icons/SCViewer_64x32.png" i128="/com.minres.scviewer.e4.application/icons/SCViewer_128x32.png" i256="/com.minres.scviewer.e4.application/icons/SCViewer_256x32.png"/>
 
 
-   <launcher>
-      <macosx icon="/com.minres.scviewer.e4.application/icons/SCViewer.icns"/>
+   <launcher name="scviewer">
+      <linux icon="icons/SCViewer_512x512.xpm"/>
+      <macosx icon="icons/SCViewer.icns"/>
       <solaris/>
-      <win useIco="true">
-         <ico path="/com.minres.scviewer.e4.application/icons/SCViewer.ico"/>
-         <bmp/>
+      <win useIco="false">
+         <ico path="icons/SCViewer.ico"/>
+         <bmp
+            winSmallHigh="icons/SCViewer_16x16@32.bmp"
+            winSmallLow="icons/SCViewer_16x16@8.bmp"
+            winMediumHigh="icons/SCViewer_32x32@32.bmp"
+            winMediumLow="icons/SCViewer_32x32@8.bmp"
+            winLargeHigh="icons/SCViewer_48x48@32.bmp"
+            winLargeLow="icons/SCViewer_48x48@8.bmp"
+            winExtraLargeHigh="icons/SCViewer_256x256@32.bmp"/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
 
    <plugins>
       <plugin id="com.ibm.icu"/>
+      <plugin id="com.minres.scviewer.database"/>
+      <plugin id="com.minres.scviewer.database.sqlite"/>
+      <plugin id="com.minres.scviewer.database.swt"/>
+      <plugin id="com.minres.scviewer.database.text"/>
+      <plugin id="com.minres.scviewer.database.vcd"/>
       <plugin id="com.minres.scviewer.e4.application"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
@@ -49,18 +60,9 @@
       <plugin id="org.eclipse.core.databinding.property"/>
       <plugin id="org.eclipse.core.expressions"/>
       <plugin id="org.eclipse.core.filesystem"/>
-      <plugin id="org.eclipse.core.filesystem.aix.ppc" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.hpux.ia64_32" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.linux.ppc" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.linux.x86" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.linux.x86_64" fragment="true"/>
       <plugin id="org.eclipse.core.filesystem.macosx" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.solaris.sparc" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.win32.x86" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.win32.x86_64" fragment="true"/>
       <plugin id="org.eclipse.core.jobs"/>
       <plugin id="org.eclipse.core.resources"/>
-      <plugin id="org.eclipse.core.resources.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.core.runtime"/>
       <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
       <plugin id="org.eclipse.e4.core.commands"/>
@@ -84,7 +86,6 @@
       <plugin id="org.eclipse.e4.ui.workbench.swt"/>
       <plugin id="org.eclipse.e4.ui.workbench3"/>
       <plugin id="org.eclipse.emf.common"/>
-      <plugin id="org.eclipse.emf.databinding"/>
       <plugin id="org.eclipse.emf.ecore"/>
       <plugin id="org.eclipse.emf.ecore.change"/>
       <plugin id="org.eclipse.emf.ecore.xmi"/>
@@ -102,29 +103,18 @@
       <plugin id="org.eclipse.osgi.compatibility.state" fragment="true"/>
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.swt"/>
-      <plugin id="org.eclipse.swt.carbon.macosx" fragment="true"/>
-      <plugin id="org.eclipse.swt.cocoa.macosx" fragment="true"/>
       <plugin id="org.eclipse.swt.cocoa.macosx.x86_64" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.linux.ppc" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.linux.ppc64" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.linux.s390" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.linux.s390x" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.linux.x86" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.linux.x86_64" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.solaris.sparc" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.solaris.x86" fragment="true"/>
-      <plugin id="org.eclipse.swt.motif.aix.ppc" fragment="true"/>
-      <plugin id="org.eclipse.swt.motif.hpux.ia64_32" fragment="true"/>
-      <plugin id="org.eclipse.swt.motif.linux.x86" fragment="true"/>
-      <plugin id="org.eclipse.swt.motif.solaris.sparc" fragment="true"/>
-      <plugin id="org.eclipse.swt.photon.qnx.x86" fragment="true"/>
-      <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true"/>
-      <plugin id="org.eclipse.swt.win32.win32.x86_64" fragment="true"/>
       <plugin id="org.w3c.css.sac"/>
       <plugin id="org.w3c.dom.events"/>
       <plugin id="org.w3c.dom.smil"/>
       <plugin id="org.w3c.dom.svg"/>
    </plugins>
 
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
+   </configurations>
 
 </product>

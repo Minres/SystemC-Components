@@ -6,76 +6,52 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
+		<module>../com.minres.scviewer.target</module>
 		<module>../com.minres.scviewer.database</module>
 		<module>../com.minres.scviewer.database.sqlite</module>
 		<module>../com.minres.scviewer.database.text</module>
 		<module>../com.minres.scviewer.database.vcd</module>
 		<module>../com.minres.scviewer.database.swt</module>
+		<module>../com.minres.scviewer.e4.application</module>
 		<module>../com.minres.scviewer.ui</module>
 		<module>../com.minres.scviewer.feature</module>		
 		<module>../com.minres.scviewer.updateSite</module>
-		<module>../com.minres.scviewer.database.test</module>
+		<module>../com.minres.scviewer.e4.product</module>
 	</modules>
 
 	<properties>
-		<tycho.version>0.22.0</tycho.version>
-		<tycho-extras.version>0.22.0</tycho-extras.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<groovy-eclipse-compiler-version>2.9.1-01</groovy-eclipse-compiler-version>
-		<groovy-eclipse-batch-version>2.3.4-01</groovy-eclipse-batch-version>
-		<eclipse-repo.url>http://download.eclipse.org/releases/luna</eclipse-repo.url>
-		<groovy-repo.url>http://dist.springsource.org/release/GRECLIPSE/e4.4</groovy-repo.url>
-		<tycho-repo.url>https://oss.sonatype.org/content/groups/public/</tycho-repo.url>
+		<tycho-version>0.23.1</tycho-version>
+		<groovy-eclipse-compiler-version>2.8.0-01</groovy-eclipse-compiler-version>
+<!-- 		<groovy-eclipse-batch-version>2.0.5</groovy-eclipse-batch-version> -->
+		<groovy-eclipse-batch-version>2.1.8-01</groovy-eclipse-batch-version>
+		
 	</properties>
-
-<!-- 	<dependencies> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.codehaus.groovy</groupId> -->
-<!-- 			<artifactId>groovy-all</artifactId> -->
-<!-- 			<version>2.3.7</version> -->
-<!-- 			<type>jar</type> -->
-<!-- 			<classifier>indy</classifier> -->
-<!-- 		</dependency> -->
-<!-- 	</dependencies> -->
-
 	<repositories>
 		<repository>
-			<id>eclipse</id>
-			<url>${eclipse-repo.url}</url>
+			<id>mars</id>
 			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/mars</url>
 		</repository>
 		<repository>
-			<id>springsource</id>
-			<url>${groovy-repo.url}</url>
+			<id>GRECLIPSE</id>
 			<layout>p2</layout>
+			<url>http://dist.springsource.org/snapshot/GRECLIPSE/e4.5</url>
 		</repository>
 	</repositories>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>tycho</id>
-			<url>${tycho-repo.url}</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<build>
-	    <sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho.version}</version>
+				<version>${tycho-version}</version>
 				<extensions>true</extensions>
 			</plugin>
+
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
 				<configuration>
 					<environments>
 						<environment>
@@ -106,113 +82,6 @@
 					</environments>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>plugin-source</id>
-						<goals>
-							<goal>plugin-source</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>target-platform-configuration</artifactId>
-					<version>${tycho.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-compiler-plugin</artifactId>
-					<version>${tycho.version}</version>
-					<configuration>
-						<compilerArguments>
-							<inlineJSR />
-							<enableJavadoc />
-							<encoding>UTF-8</encoding>
-						</compilerArguments>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-packaging-plugin</artifactId>
-					<version>${tycho.version}</version>
-					<dependencies>
-						<dependency>
-							<groupId>org.eclipse.tycho.extras</groupId>
-							<artifactId>tycho-buildtimestamp-jgit</artifactId>
-							<version>${tycho-extras.version}</version>
-						</dependency>
-					</dependencies>
-					<!-- <configuration> <strictBinIncludes>false</strictBinIncludes> <format>'v'yyyyMMdd-HHmm</format> 
-						<timestampProvider>jgit</timestampProvider> <jgit.ignore> </jgit.ignore> 
-						</configuration> -->
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-surefire-plugin</artifactId>
-					<version>${tycho.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-source-plugin</artifactId>
-					<version>${tycho.version}</version>
-					<configuration>
-						<strictSrcIncludes>false</strictSrcIncludes>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-p2-director-plugin</artifactId>
-					<version>${tycho.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-p2-repository-plugin</artifactId>
-					<version>${tycho.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho.extras</groupId>
-					<artifactId>tycho-source-feature-plugin</artifactId>
-					<version>${tycho-extras.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho.extras</groupId>
-					<artifactId>tycho-custom-bundle-plugin</artifactId>
-					<version>${tycho-extras.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-p2-plugin</artifactId>
-					<version>${tycho.version}</version>
-					<configuration>
-						<baselineMode>warn</baselineMode>
-						<baselineReplace>none</baselineReplace>
-						<baselineRepositories>
-							<repository>
-								<url>${eclipse-repo.url}</url>
-							</repository>
-							<repository>
-								<url>${groovy-repo.url}</url>
-							</repository>
-						</baselineRepositories>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
-
 </project>

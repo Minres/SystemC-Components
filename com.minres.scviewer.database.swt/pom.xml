@@ -9,4 +9,5 @@
   	<version>1.0.0-SNAPSHOT</version>
   	<relativePath>../com.minres.scviewer.parent</relativePath>
   </parent>
+  <groupId>com.minres.scviewer</groupId>
 </project>
