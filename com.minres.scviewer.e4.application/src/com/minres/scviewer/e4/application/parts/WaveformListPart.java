@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.minres.scviewer.e4.application.parts;
 
+import java.util.Arrays;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,10 +20,13 @@ import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.UIEventTopic;
+import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.services.IServiceConstants;
+import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
@@ -53,9 +58,10 @@ public class WaveformListPart implements ISelectionChangedListener {
 
 	private Text nameFilter;
 	private TableViewer txTableViewer;
-	ToolItem appendItem, insertItem;
+	ToolItem appendItem, insertItem, insertAllItem, appendAllItem;
 	WaveformAttributeFilter attributeFilter;
-	
+	int thisSelectionCount=0, otherSelectionCount=0;
+
 	@PostConstruct
 	public void createComposite(Composite parent) {
 		parent.setLayout(new GridLayout(1, false));
@@ -66,11 +72,12 @@ public class WaveformListPart implements ISelectionChangedListener {
 			@Override
 			public void modifyText(ModifyEvent e) {
 				attributeFilter.setSearchText(((Text) e.widget).getText());
+				updateButtons();
 				txTableViewer.refresh();
 			}
 		});
 		nameFilter.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		
+
 		attributeFilter = new WaveformAttributeFilter();
 
 		txTableViewer = new TableViewer(parent);
@@ -79,14 +86,27 @@ public class WaveformListPart implements ISelectionChangedListener {
 		txTableViewer.getTable().setLayoutData(new GridData(GridData.FILL_BOTH));
 		txTableViewer.addSelectionChangedListener(this);
 		txTableViewer.addFilter(attributeFilter);
-		
+
 		ToolBar toolBar = new ToolBar(parent, SWT.FLAT | SWT.RIGHT);
 		toolBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 		toolBar.setBounds(0, 0, 87, 20);
 
+		appendItem = new ToolItem(toolBar, SWT.NONE);
+		appendItem.setToolTipText("Append selected");
+		appendItem.setImage(ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/append_wave.png"));
+		appendItem.setEnabled(false);
+		appendItem.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				eventBroker.post(WaveformViewerPart.ADD_WAVEFORM,
+						((IStructuredSelection)txTableViewer.getSelection()).toList());
+
+			}
+		});
+
 		insertItem = new ToolItem(toolBar, SWT.NONE);
-		insertItem.setImage(ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/bullet_plus.png"));
-		insertItem.setText("Insert");
+		insertItem.setToolTipText("Insert selected");
+		insertItem.setImage(ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/insert_wave.png"));
 		insertItem.setEnabled(false);
 		insertItem.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -96,15 +116,33 @@ public class WaveformListPart implements ISelectionChangedListener {
 
 			}
 		});
-		appendItem = new ToolItem(toolBar, SWT.NONE);
-		appendItem.setImage(ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/bullet_plus.png"));
-		appendItem.setText("Append");
-		appendItem.setEnabled(false);
-		appendItem.addSelectionListener(new SelectionAdapter() {
+		new ToolItem(toolBar, SWT.SEPARATOR);
+
+		appendAllItem = new ToolItem(toolBar, SWT.NONE);
+		appendAllItem.setToolTipText("Append all");
+		appendAllItem.setImage(ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/append_all_waves.png"));
+		appendAllItem.setEnabled(false);
+
+		new ToolItem(toolBar, SWT.SEPARATOR);
+		appendAllItem.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				eventBroker.post(WaveformViewerPart.ADD_WAVEFORM,
-						((IStructuredSelection)txTableViewer.getSelection()).toList());
+				Object[] all = getFilteredChildren(txTableViewer);
+				if(all.length>0)
+					eventBroker.post(WaveformViewerPart.ADD_WAVEFORM, Arrays.asList(all));
+
+			}
+		});
+		insertAllItem = new ToolItem(toolBar, SWT.NONE);
+		insertAllItem.setToolTipText("Insert all");
+		insertAllItem.setImage(ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/insert_all_waves.png"));
+		insertAllItem.setEnabled(false);
+		insertAllItem.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Object[] all = getFilteredChildren(txTableViewer);
+				if(all.length>0)
+					eventBroker.post(WaveformViewerPart.ADD_WAVEFORM, Arrays.asList(all));
 
 			}
 		});
@@ -119,6 +157,7 @@ public class WaveformListPart implements ISelectionChangedListener {
 	@Inject @Optional
 	public void  getStatusEvent(@UIEventTopic(WaveformViewerPart.ACTIVE_NODE) Object o) {
 		txTableViewer.setInput(o);
+		updateButtons();
 	}
 
 	@Override
@@ -131,50 +170,79 @@ public class WaveformListPart implements ISelectionChangedListener {
 		switch(selection.size()){
 		case 0:
 			appendItem.setEnabled(false);
-			insertItem.setEnabled(false);
 			break;
 		case 1:
 			selectionService.setSelection(selection.getFirstElement());
-			appendItem.setEnabled(true);
 			break;
 		default:
 			selectionService.setSelection(selection.toList());
-			appendItem.setEnabled(true);
 			break;
 		}
+		thisSelectionCount=selection.toList().size();
+		updateButtons();
 	}
 
 	@Inject
-	public void setSelection(@Named(IServiceConstants.ACTIVE_SELECTION) @Optional Object object){
-		if(txTableViewer!=null && !insertItem.isDisposed() && !appendItem.isDisposed())
-			if(object instanceof ITx && appendItem.isEnabled()){
-				insertItem.setEnabled(true);
-			} else if(object instanceof IWaveform<?> && appendItem.isEnabled()){
-				insertItem.setEnabled(true);
-			} else {
-				insertItem.setEnabled(false);
-			}
+	public void setSelection(@Named(IServiceConstants.ACTIVE_SELECTION) @Optional Object object, EPartService partService){
+		MPart part = partService.getActivePart();
+		if(part!=null && part.getObject() != this)
+			otherSelectionCount = (object instanceof IWaveform<?> || object instanceof ITx)?1:0;
+		updateButtons();
 	}
-	
+
+	private void updateButtons() {
+		if(txTableViewer!=null && !insertItem.isDisposed() && !appendItem.isDisposed() && 
+				!appendAllItem.isDisposed() && !insertAllItem.isDisposed()){
+			Object[] all = getFilteredChildren(txTableViewer);
+			appendItem.setEnabled(thisSelectionCount>0);
+			appendAllItem.setEnabled(all.length>0);
+			insertItem.setEnabled(thisSelectionCount>0 && otherSelectionCount>0);
+			insertAllItem.setEnabled(all.length>0 && otherSelectionCount>0);
+		}
+	}
+
 	public class WaveformAttributeFilter extends ViewerFilter {
 
-		  private String searchString;
+		private String searchString;
 
-		  public void setSearchText(String s) {
-		    this.searchString = ".*" + s + ".*";
-		  }
-
-		  @Override
-		  public boolean select(Viewer viewer, Object parentElement, Object element) {
-		    if (searchString == null || searchString.length() == 0) {
-		      return true;
-		    }
-		    IWaveform<?> p = (IWaveform<?>) element;
-		    if (p.getName().matches(searchString)) {
-		      return true;
-		    }
-		    return false;
-		  }
+		public void setSearchText(String s) {
+			this.searchString = ".*" + s + ".*";
 		}
 
+		@Override
+		public boolean select(Viewer viewer, Object parentElement, Object element) {
+			if (searchString == null || searchString.length() == 0) {
+				return true;
+			}
+			IWaveform<?> p = (IWaveform<?>) element;
+			if (p.getName().matches(searchString)) {
+				return true;
+			}
+			return false;
+		}
+	}
+
+	protected Object[] getFilteredChildren(TableViewer viewer){
+		Object parent = viewer.getInput();
+		if(parent==null) return new Object[0];
+		Object[] result = null;
+		if (parent != null) {
+			IStructuredContentProvider cp = (IStructuredContentProvider) viewer.getContentProvider();
+			if (cp != null) {
+				result = cp.getElements(parent);
+				if(result==null) return new Object[0];
+				for (int i = 0, n = result.length; i < n; ++i) {
+					if(result[i]==null) return new Object[0];
+				}
+			}
+		}
+		ViewerFilter[] filters = viewer.getFilters();
+		if (filters != null) {
+			for (ViewerFilter f:filters) {
+				Object[] filteredResult = f.filter(viewer, parent, result);
+				result = filteredResult;
+			}
+		}
+		return result;
+	}
 }

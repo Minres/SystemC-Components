@@ -21,20 +21,36 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.minres.scviewer.database.IWaveformDb;
-import com.minres.scviewer.database.internal.WaveformDb;
+import com.minres.scviewer.database.IWaveformDbFactory;
 
 public class DatabaseServicesTest {
 
+
+	private static IWaveformDbFactory waveformDbFactory;
+
+	private IWaveformDb waveformDb;
+	
+	public synchronized void setFactory(IWaveformDbFactory service) {
+		waveformDbFactory = service;
+	}
+
+	public synchronized void unsetFactory(IWaveformDbFactory service) {
+		if (waveformDbFactory == service) {
+			waveformDbFactory = null;
+		}
+	}
+	
 	@Before
 	public void setUp() throws Exception {
+		waveformDb=waveformDbFactory.getDatabase();
 		// Wait for OSGi dependencies
-		for (int i = 0; i < 10; i++) {
-			if (WaveformDb.getLoaders().size() == 3) // Dependencies fulfilled
-				return;
-			Thread.sleep(1000);
-		}
-		assertEquals("OSGi dependencies unfulfilled", 3, WaveformDb.getLoaders().size());
-    }
+//		for (int i = 0; i < 10; i++) {
+//			if (waveformDb.size() == 3) // Dependencies fulfilled
+//				return;
+//			Thread.sleep(1000);
+//		}
+//		assertEquals("OSGi dependencies unfulfilled", 3, WaveformDb.getLoaders().size());
+	}
 
 	@After
 	public void tearDown() throws Exception {
@@ -44,33 +60,30 @@ public class DatabaseServicesTest {
 	public void testVCD() throws Exception {
 		File f = new File("inputs/my_db.vcd").getAbsoluteFile();
 		assertTrue(f.exists());
-		IWaveformDb database=new WaveformDb();
-		database.load(f);
-		assertNotNull(database);
-		assertEquals(14,  database.getAllWaves().size());
-		assertEquals(2,  database.getChildNodes().size());
+		waveformDb.load(f);
+		assertNotNull(waveformDb);
+		assertEquals(14,  waveformDb.getAllWaves().size());
+		assertEquals(2,  waveformDb.getChildNodes().size());
 	}
 
 	@Test
 	public void testTxSQLite() throws Exception {
 		File f = new File("inputs/my_db.txdb").getAbsoluteFile();
 		assertTrue(f.exists());
-		IWaveformDb database=new WaveformDb();
-		database.load(f);
-		assertNotNull(database);
-		assertEquals(3,  database.getAllWaves().size());
-		assertEquals(1,  database.getChildNodes().size());
+		waveformDb.load(f);
+		assertNotNull(waveformDb);
+		assertEquals(3,  waveformDb.getAllWaves().size());
+		assertEquals(1,  waveformDb.getChildNodes().size());
 	}
 
 	@Test
 	public void testTxText() throws Exception {
 		File f = new File("inputs/my_db.txlog").getAbsoluteFile();
 		assertTrue(f.exists());
-		IWaveformDb database=new WaveformDb();
-		database.load(f);
-		assertNotNull(database);
-		assertEquals(3,  database.getAllWaves().size());
-		assertEquals(1,  database.getChildNodes().size());
+		waveformDb.load(f);
+		assertNotNull(waveformDb);
+		assertEquals(3,  waveformDb.getAllWaves().size());
+		assertEquals(1,  waveformDb.getChildNodes().size());
 	}
 
 

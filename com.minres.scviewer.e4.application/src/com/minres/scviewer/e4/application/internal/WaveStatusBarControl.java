@@ -82,8 +82,8 @@ public class WaveStatusBarControl extends StatusBarControl {
 		super(sync);
 		zoomContribution = new TextContributionItem("Z:", 150);
 		cursorContribution = new TextContributionItem("C:", 120);
-		manager.appendToGroup(StatusLineManager.BEGIN_GROUP,cursorContribution);
-		manager.appendToGroup(StatusLineManager.MIDDLE_GROUP, zoomContribution);
+		manager.prependToGroup(StatusLineManager.BEGIN_GROUP,cursorContribution);
+		manager.appendToGroup(StatusLineManager.BEGIN_GROUP, zoomContribution);
 	}
 
 	@Inject

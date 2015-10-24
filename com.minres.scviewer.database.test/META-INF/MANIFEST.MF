@@ -11,3 +11,4 @@ Require-Bundle: org.junit,
  com.minres.scviewer.database.text;bundle-version="1.0.0",
  com.minres.scviewer.database.vcd;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
+Service-Component: OSGI-INF/component.xml

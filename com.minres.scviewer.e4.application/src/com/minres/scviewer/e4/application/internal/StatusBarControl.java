@@ -14,20 +14,23 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
-import org.eclipse.core.internal.preferences.BundleDefaultPreferences;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.core.runtime.jobs.ProgressProvider;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.di.UISynchronize;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolControl;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.jface.action.StatusLineManager;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.ProgressBar;
+import org.osgi.service.prefs.PreferencesService;
 
 public class StatusBarControl {
 
@@ -36,12 +39,15 @@ public class StatusBarControl {
 	public static final String CURSOR_TIME="CursorPosUpdate";
 
 	@Inject	EModelService modelService;
-	@Inject	@Optional IEclipsePreferences preferences;
+
+	@Inject	@Optional PreferencesService osgiPreverences;
+
 	private final UISynchronize sync;
 
 	protected StatusLineManager manager;
 
 	private SyncedProgressMonitor monitor;
+	private ProgressBar progressBar;
 
 	@Inject
 	public StatusBarControl(UISynchronize sync) {
@@ -74,8 +80,11 @@ public class StatusBarControl {
 	 * @param toolControl
 	 */
 	private void createProgressBar(Composite parent, MToolControl toolControl) {
-		manager.createControl(parent);
-		monitor=new SyncedProgressMonitor(manager.getProgressMonitor());
+		new Label(parent, SWT.NONE);
+		progressBar = new ProgressBar(parent, SWT.SMOOTH);
+		progressBar.setBounds(100, 10, 200, 20);
+		new Label(parent, SWT.NONE);
+		monitor=new SyncedProgressMonitor(progressBar);
 		Job.getJobManager().setProgressProvider(new ProgressProvider() {
 			@Override
 			public IProgressMonitor createMonitor(Job job) {
@@ -89,12 +98,7 @@ public class StatusBarControl {
 	 * @param toolControl
 	 */
 	private void createHeapStatus(Composite parent, MToolControl toolControl) {
-		if(preferences==null){
-			preferences=new BundleDefaultPreferences();
-			preferences.putInt(IHeapStatusConstants.PREF_UPDATE_INTERVAL, 100);
-			preferences.putBoolean(IHeapStatusConstants.PREF_SHOW_MAX, true);
-		}
-		new HeapStatus(parent, preferences);
+		new HeapStatus(parent, osgiPreverences.getSystemPreferences());
 	}
 
 	/**
@@ -113,26 +117,19 @@ public class StatusBarControl {
 		}
 	} 
 
-	private final class SyncedProgressMonitor implements IProgressMonitor {
+	private final class SyncedProgressMonitor extends NullProgressMonitor {
 
-		IProgressMonitor delegate;
-		private boolean cancelled;
+		// thread-Safe via thread confinement of the UI-Thread 
+		// (means access only via UI-Thread)
+		private long runningTasks = 0L;
+		private ProgressBar progressBar;
 
-		SyncedProgressMonitor(IProgressMonitor delegate){
-			this.delegate=delegate;
-		}
-
-		public IProgressMonitor addJob(Job job){
-			if(job != null){
-				job.addJobChangeListener(new JobChangeAdapter() {
-					@Override
-					public void done(IJobChangeEvent event) {	            
-						// clean-up
-						event.getJob().removeJobChangeListener(this);
-					}
-				});
-			}
-			return this;
+		public SyncedProgressMonitor(ProgressBar progressBar) {
+			super();
+			this.progressBar = progressBar;
+			runningTasks=0;
+			progressBar.setSelection(0);
+			progressBar.setEnabled(false);
 		}
 
 		@Override
@@ -140,7 +137,15 @@ public class StatusBarControl {
 			sync.syncExec(new Runnable() {
 				@Override
 				public void run() {
-					delegate.beginTask(name, totalWork);
+					if(runningTasks <= 0) {  // --- no task is running at the moment ---
+						progressBar.setEnabled(false);
+						progressBar.setSelection(0);
+						progressBar.setMaximum(totalWork);
+					} else { // --- other tasks are running ---
+						progressBar.setMaximum(progressBar.getMaximum() + totalWork);
+					}
+					runningTasks++;
+					progressBar.setToolTipText("Currently running: " + runningTasks + "\nLast task: " + name);
 				}
 			});
 		}
@@ -150,7 +155,7 @@ public class StatusBarControl {
 			sync.syncExec(new Runnable() {
 				@Override
 				public void run() {
-					delegate.worked(work);
+					progressBar.setSelection(progressBar.getSelection() + work);
 				}
 			});
 		}
@@ -160,21 +165,13 @@ public class StatusBarControl {
 			sync.syncExec(new Runnable() {
 				@Override
 				public void run() {
-					delegate.done();
+					progressBar.setSelection(0);
+					progressBar.setMaximum(1);
+					progressBar.setEnabled(false);
 				}
 			});
 		}
-
-		@Override
-		public void internalWorked(final double work) {
-			sync.syncExec(new Runnable() {
-				@Override
-				public void run() {
-					delegate.internalWorked(work);
-				}
-			});
-		}
-
+/*
 		@Override
 		public boolean isCanceled() {
 			sync.syncExec(new Runnable() {
@@ -195,25 +192,30 @@ public class StatusBarControl {
 				}
 			});
 		}
+*/
+		public IProgressMonitor addJob(Job job){
+			if(job != null){
+				job.addJobChangeListener(new JobChangeAdapter() {
+					@Override
+					public void done(IJobChangeEvent event) {
+						sync.syncExec(new Runnable() {
 
-		@Override
-		public void setTaskName(final String name) {
-			sync.syncExec(new Runnable() {
-				@Override
-				public void run() {
-					delegate.setTaskName(name);
-				}
-			});
-		}
-
-		@Override
-		public void subTask(final String name) {
-			sync.syncExec(new Runnable() {
-				@Override
-				public void run() {
-					delegate.subTask(name);
-				}
-			});
+							@Override
+							public void run() {
+								runningTasks--;
+								if (runningTasks > 0){	// --- some tasks are still running ---
+									progressBar.setToolTipText("Currently running: " + runningTasks);
+								} else { // --- all tasks are done (a reset of selection could also be done) ---
+									progressBar.setToolTipText("No background progress running.");
+								}
+							}
+						});
+						// clean-up
+						event.getJob().removeJobChangeListener(this);
+					}
+				});
+			}
+			return this;
 		}
 	}
 }

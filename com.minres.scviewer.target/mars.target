@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="Mars Platform" sequenceNumber="125">
+<?pde version="3.8"?><target name="Mars Platform" sequenceNumber="130">
 <locations>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.codehaus.groovy18.feature.feature.group" version="2.9.2.xx-201508121448-e45"/>
-<repository location="http://dist.springsource.org/snapshot/GRECLIPSE/e4.5"/>
-</location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.rcp.sdk.id" version="4.5.1.M20150904-0015"/>
 <unit id="org.eclipse.equinox.executable.feature.group" version="3.6.200.v20150602-1417"/>
 <unit id="org.eclipse.rcptt.core.feature.group" version="2.0.1.201508201020"/>
 <unit id="org.eclipse.platform.sdk" version="4.5.1.M20150904-0015"/>
 <repository location="http://download.eclipse.org/releases/mars"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.codehaus.groovy24.feature.feature.group" version="2.9.2.xx-201508121448-e45"/>
+<repository location="http://dist.springsource.org/snapshot/GRECLIPSE/e4.5"/>
 </location>
 </locations>
 <environment>

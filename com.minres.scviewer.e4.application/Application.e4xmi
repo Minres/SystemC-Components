@@ -98,15 +98,13 @@
       </children>
     </trimBars>
     <trimBars xmi:id="_JHMt8HS8EeWBq8z1Dv39LA" elementId="org.eclipse.ui.trim.status" side="Bottom">
-      <persistedState key="height" value="50"/>
-      <children xsi:type="menu:ToolControl" xmi:id="_YsBi8HfLEeWwZ-9vrAR2UQ" elementId="org.eclipse.ui.StatusLine" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.internal.WaveStatusBarControl"/>
-      <children xsi:type="menu:ToolControl" xmi:id="_76uUAF9tEeO-yojH_y4TJA" elementId="Spacer Glue" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
-        <tags>glue</tags>
-        <tags>move_after:PerspectiveSpacer</tags>
-        <tags>SHOW_RESTORE_MENU</tags>
+      <children xsi:type="menu:ToolControl" xmi:id="_YsBi8HfLEeWwZ-9vrAR2UQ" elementId="org.eclipse.ui.StatusLine" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.internal.WaveStatusBarControl">
+        <tags>stretch</tags>
       </children>
       <children xsi:type="menu:ToolControl" xmi:id="_VZzJMHdHEeWwZ-9vrAR2UQ" elementId="org.eclipse.ui.HeapStatus" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.internal.StatusBarControl"/>
-      <children xsi:type="menu:ToolControl" xmi:id="_y0ZS0HfzEeWwZ-9vrAR2UQ" elementId="org.eclipse.ui.ProgressBar" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.internal.StatusBarControl"/>
+      <children xsi:type="menu:ToolControl" xmi:id="_y0ZS0HfzEeWwZ-9vrAR2UQ" elementId="org.eclipse.ui.ProgressBar" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.internal.StatusBarControl">
+        <tags>Draggable</tags>
+      </children>
     </trimBars>
   </children>
   <handlers xmi:id="_95PfvXNmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.handler.quitCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.QuitHandler" command="_95PfvHNmEeWBq8z1Dv39LA"/>

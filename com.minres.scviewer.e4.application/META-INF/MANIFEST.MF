@@ -23,7 +23,8 @@ Require-Bundle: javax.inject;bundle-version="1.0.0",
  org.eclipse.osgi.services;bundle-version="3.5.0",
  org.eclipse.core.jobs,
  org.eclipse.osgi,
- com.google.guava
+ com.google.guava,
+ org.eclipse.equinox.preferences
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: com.minres.scviewer.database,
  javax.inject;version="1.0.0"

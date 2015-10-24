@@ -33,6 +33,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.wb.swt.ResourceManager;
+import org.osgi.service.prefs.Preferences;
 
 /**
  * The Heap Status control, which shows the heap usage statistics in the window trim.
@@ -46,7 +47,7 @@ public class HeapStatus extends Composite {
 	private Image disabledGcImage;
 	private Color bgCol, usedMemCol, lowMemCol, freeMemCol, topLeftCol, bottomRightCol, sepCol, textCol, markCol, armCol;
     private Canvas button;
-	private IEclipsePreferences prefStore;
+	private Preferences preferences;
 	private int updateInterval;
 	private boolean showMax;
     private long totalMem;
@@ -86,10 +87,10 @@ public class HeapStatus extends Composite {
 		@Override
 		public void preferenceChange(PreferenceChangeEvent event) {
 			if (IHeapStatusConstants.PREF_UPDATE_INTERVAL.equals(event.getKey())) {
-				setUpdateIntervalInMS(prefStore.getInt(IHeapStatusConstants.PREF_UPDATE_INTERVAL, 100));
+				setUpdateIntervalInMS(preferences.getInt(IHeapStatusConstants.PREF_UPDATE_INTERVAL, 100));
 			}
 			else if (IHeapStatusConstants.PREF_SHOW_MAX.equals(event.getKey())) {
-				showMax = prefStore.getBoolean(IHeapStatusConstants.PREF_SHOW_MAX, true);
+				showMax = preferences.getBoolean(IHeapStatusConstants.PREF_SHOW_MAX, true);
 			}
 			
 		}
@@ -103,14 +104,15 @@ public class HeapStatus extends Composite {
      * @param parent the parent composite
      * @param preferences the preference store
      */
-	public HeapStatus(Composite parent, IEclipsePreferences preferences) {
+	public HeapStatus(Composite parent, Preferences preferences) {
 		super(parent, SWT.NONE);
 
 		maxMem = getMaxMem();
 		maxMemKnown = maxMem != Long.MAX_VALUE;
 
-        this.prefStore = preferences;
-        preferences.addPreferenceChangeListener(prefListener);
+        this.preferences = preferences;
+        if(this.preferences instanceof IEclipsePreferences)
+        	((IEclipsePreferences)this.preferences).addPreferenceChangeListener(prefListener);
 
         setUpdateIntervalInMS(preferences.getInt(IHeapStatusConstants.PREF_UPDATE_INTERVAL, 100));
         showMax = preferences.getBoolean(IHeapStatusConstants.PREF_SHOW_MAX, true);
@@ -263,7 +265,8 @@ public class HeapStatus extends Composite {
 	}
 
 	private void doDispose() {
-        prefStore.removePreferenceChangeListener(prefListener);
+		if(preferences instanceof IEclipsePreferences)
+        	((IEclipsePreferences)preferences).removePreferenceChangeListener(prefListener);
     	if (gcImage != null) {
 			gcImage.dispose();
 		}
@@ -591,7 +594,7 @@ public class HeapStatus extends Composite {
 
         @Override
 		public void run() {
-            prefStore.putBoolean(IHeapStatusConstants.PREF_SHOW_MAX, isChecked());
+            preferences.putBoolean(IHeapStatusConstants.PREF_SHOW_MAX, isChecked());
             redraw();
         }
     }

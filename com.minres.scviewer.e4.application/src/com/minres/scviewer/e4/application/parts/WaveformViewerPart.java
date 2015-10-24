@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -155,9 +156,10 @@ public class WaveformViewerPart {
 			protected IStatus run( IProgressMonitor monitor) {
 				// convert to SubMonitor and set total number of work units
 				SubMonitor subMonitor = SubMonitor.convert(monitor, filesToLoad.size());
+				subMonitor.setTaskName("Loading database");
 				try {
 					for(File file: filesToLoad){
-//				        TimeUnit.SECONDS.sleep(20);
+				        TimeUnit.SECONDS.sleep(2);
 						database.load(file);
 						database.addPropertyChangeListener(txDisplay);
 						subMonitor.worked(1);
@@ -169,6 +171,8 @@ public class WaveformViewerPart {
 					e.printStackTrace();
 					return Status.CANCEL_STATUS;
 				}
+				subMonitor.done();
+				monitor.done();
 				return Status.OK_STATUS;
 			}
 		};
@@ -271,7 +275,7 @@ public class WaveformViewerPart {
 
 	@Inject @Optional
 	public void  getAddWaveformEvent(@UIEventTopic(WaveformViewerPart.ADD_WAVEFORM) Object o) {
-		Object sel = selectionService.getSelection();
+		Object sel = o==null?selectionService.getSelection():o;
 		if(sel instanceof List<?>)
 			for(Object el:((List<?>)sel)){
 				if(el instanceof IWaveform<?>) 
