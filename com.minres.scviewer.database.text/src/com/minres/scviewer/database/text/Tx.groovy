@@ -59,4 +59,9 @@ class Tx implements ITx {
 			return id.compareTo(o.id)
 	}
 	
+	@Override
+	public String toString() {
+		return "tx#"+getId()+"["+getBeginTime()/1000000+"ns - "+getEndTime()/1000000+"ns]";
+	}
+
 }

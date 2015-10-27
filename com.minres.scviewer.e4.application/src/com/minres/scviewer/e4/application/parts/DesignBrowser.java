@@ -23,9 +23,7 @@ import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
@@ -45,6 +43,7 @@ public class DesignBrowser implements ISelectionChangedListener {
 
 	private TreeViewer contentOutlineViewer;
 
+
 	private PropertyChangeListener l = new PropertyChangeListener() {
 		@Override
 		public void propertyChange(PropertyChangeEvent evt) {
@@ -58,6 +57,7 @@ public class DesignBrowser implements ISelectionChangedListener {
 			}
 		}
 	};
+
 	
 	@PostConstruct
 	public void createComposite(Composite parent) {
@@ -73,38 +73,22 @@ public class DesignBrowser implements ISelectionChangedListener {
 	@Focus
 	public void setFocus() {
 		contentOutlineViewer.getTree().setFocus();
-		setSelection(contentOutlineViewer.getSelection());
+		selectionService.setSelection(contentOutlineViewer.getSelection());
 	}
 
 	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
-		setSelection(event.getSelection());
-	}
-
-	protected void setSelection(ISelection iSelection) {
-		IStructuredSelection selection = (IStructuredSelection)iSelection;
-		switch(selection.size()){
-		case 0:
-			eventBroker.post(WaveformViewerPart.ACTIVE_NODE, null);
-			break;
-		case 1:
-			eventBroker.post(WaveformViewerPart.ACTIVE_NODE, selection.getFirstElement());
-			selectionService.setSelection(selection.getFirstElement());
-			break;
-		default:
-			eventBroker.post(WaveformViewerPart.ACTIVE_NODE, selection.getFirstElement());
-			selectionService.setSelection(selection.toList());
-			break;
-		}
+		selectionService.setSelection(event.getSelection());
 	}
 
 	@SuppressWarnings("unchecked")
 	@Inject @Optional
-	public void  getStatusEvent(@UIEventTopic(WaveformViewerPart.ACTIVE_DATABASE) IWaveformDb database) {
+	public void  getStatusEvent(@UIEventTopic(WaveformViewerPart.ACTIVE_WAVEFORMVIEW) WaveformViewerPart waveformViewerPart) {
+		IWaveformDb database = waveformViewerPart.getDatabase();
 		Object input = contentOutlineViewer.getInput();
 		if(input!=null && input instanceof List<?>)
 			((List<IWaveformDb>)input).get(0).removePropertyChangeListener(l);
-		contentOutlineViewer.setInput(Arrays.asList(new IWaveformDb[]{database}));
+		contentOutlineViewer.setInput(database.isLoaded()?Arrays.asList(new IWaveformDb[]{database}):null);
 		// Set up the tree viewer
 		database.addPropertyChangeListener(l);
 	} 

@@ -27,4 +27,7 @@ public class RelationType {
 		this.name = name;
 	}
 	
+	public String toString(){
+		return name;
+	}
 }

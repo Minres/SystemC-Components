@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,12 +41,12 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.widgets.Composite;
 
-import com.minres.scviewer.database.IHierNode;
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb;
@@ -59,9 +58,7 @@ import com.minres.scviewer.e4.application.internal.StatusBarControl;
 
 public class WaveformViewerPart {
 
-	public static final String ACTIVE_DATABASE="Active_Database";
-	public static final String ACTIVE_NODE="ActiveNode";
-	public static final String ACTIVE_NODE_PATH="ActiveNodePath";
+	public static final String ACTIVE_WAVEFORMVIEW="Active_Waveform_View";
 	public static final String ADD_WAVEFORM="AddWaveform";
 
 	protected static final String DATABASE_FILE = "DATABASE_FILE";
@@ -83,12 +80,10 @@ public class WaveformViewerPart {
 	@Inject	private IEventBroker eventBroker;
 
 	@Inject EMenuService menuService;
-	
-	@Inject	ESelectionService selectionService;
-	
-	private IWaveformDb database;
 
-	private IHierNode activeNode;
+	@Inject	ESelectionService selectionService;
+
+	private IWaveformDb database;
 
 	private Composite myParent;
 
@@ -128,12 +123,7 @@ public class WaveformViewerPart {
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
 				if(event.getSelection() instanceof IStructuredSelection)
-					for(Object o:((IStructuredSelection)event.getSelection()).toList()){
-						if(o instanceof ITx || o instanceof IWaveform<?>){
-							selectionService.setSelection(o);
-							return;
-						}
-					}
+					selectionService.setSelection(event.getSelection());
 			}
 		});
 		filesToLoad=new ArrayList<File>();
@@ -159,7 +149,7 @@ public class WaveformViewerPart {
 				subMonitor.setTaskName("Loading database");
 				try {
 					for(File file: filesToLoad){
-				        TimeUnit.SECONDS.sleep(2);
+						//TimeUnit.SECONDS.sleep(2);
 						database.load(file);
 						database.addPropertyChangeListener(txDisplay);
 						subMonitor.worked(1);
@@ -237,8 +227,6 @@ public class WaveformViewerPart {
 			persistedState.put(DATABASE_FILE+index, file.getAbsolutePath());
 			index++;
 		}
-		if(activeNode!=null)
-			persistedState.put(ACTIVE_NODE_PATH, activeNode.getFullName());
 		persistedState.put(SHOWN_WAVEFORM+"S", Integer.toString(txDisplay.getStreamList().size()));
 		index=0;
 		for(IWaveform<? extends IWaveformEvent> waveform:txDisplay.getStreamList()){
@@ -249,8 +237,6 @@ public class WaveformViewerPart {
 
 	protected void restoreState() {
 		updateAll();
-		String hierName = persistedState.get(ACTIVE_NODE_PATH);
-		if(hierName!=null) eventBroker.post(ACTIVE_NODE_PATH, hierName);
 		Integer waves = persistedState.containsKey(SHOWN_WAVEFORM+"S")?Integer.parseInt(persistedState.get(SHOWN_WAVEFORM+"S")):0;
 		List<IWaveform<? extends IWaveformEvent>> res = new LinkedList<>();
 		for(int i=0; i<waves;i++){
@@ -259,33 +245,24 @@ public class WaveformViewerPart {
 		}
 		if(res.size()>0) txDisplay.getStreamList().addAll(res);
 	}
-	
+
 	private void updateAll() {
-		eventBroker.post(ACTIVE_DATABASE, database);
+		eventBroker.post(ACTIVE_WAVEFORMVIEW, this);
 		eventBroker.post(StatusBarControl.ZOOM_LEVEL, zoomLevel[txDisplay.getZoomLevel()]);
 		eventBroker.post(StatusBarControl.CURSOR_TIME, Long.toString(txDisplay.getCursorTime()/1000000)+"ns");
 	}
 
 	@Inject @Optional
-	public void  getActiveNodeEvent(@UIEventTopic(WaveformViewerPart.ACTIVE_NODE) Object o, MPart activePart) {
-		if(o instanceof IHierNode){
-			activeNode=(IHierNode) o;
-		}
-	}
-
-	@Inject @Optional
 	public void  getAddWaveformEvent(@UIEventTopic(WaveformViewerPart.ADD_WAVEFORM) Object o) {
 		Object sel = o==null?selectionService.getSelection():o;
-		if(sel instanceof List<?>)
-			for(Object el:((List<?>)sel)){
+		if(sel instanceof IStructuredSelection)
+			for(Object el:((IStructuredSelection)sel).toArray()){
 				if(el instanceof IWaveform<?>) 
-					addStreamToList((IWaveform<?>) el);
+					addStreamToList((IWaveform<?>) el, false);
 			}
-		else if(sel instanceof IWaveform<?> )
-			addStreamToList((IWaveform<?>) sel);
 	}
 
-/*	
+	/*	
     @Inject 
 	public void setWaveform(@Optional @Named( IServiceConstants.ACTIVE_SELECTION) IWaveform<?> waveform, 
 			@Optional @Named( IServiceConstants.ACTIVE_PART) MPart part) {
@@ -293,7 +270,7 @@ public class WaveformViewerPart {
 			txDisplay.setSelection(waveform==null?new StructuredSelection():new StructuredSelection(waveform)); 
 		}
 	}
-*/
+	 */
 	protected boolean askIfToLoad(File txFile) {
 		if(txFile.exists() &&
 				MessageDialog.openQuestion(myParent.getDisplay().getActiveShell(), "Database open", 
@@ -326,17 +303,29 @@ public class WaveformViewerPart {
 	public IWaveformDb getModel() {
 		return database;
 	}
+
 	public IWaveformDb getDatabase() {
 		return database;
 	}
 
-	public void addStreamToList(IWaveform<? extends IWaveformEvent> obj){
-		txDisplay.getStreamList().add(obj);
+	public void addStreamToList(IWaveform<? extends IWaveformEvent> obj, boolean insert){
+		addStreamsToList(new IWaveform<?>[]{obj}, insert);
 	}
 
-	public void addStreamsToList(IWaveform<? extends IWaveformEvent>[] iWaveforms){
+	public void addStreamsToList(IWaveform<? extends IWaveformEvent>[] iWaveforms, boolean insert){
+		List<IWaveform<? extends IWaveformEvent>> streams= new LinkedList<>();
 		for(IWaveform<? extends IWaveformEvent> stream:iWaveforms)
-			addStreamToList(stream);
+			streams.add(stream);
+		IStructuredSelection selection = (IStructuredSelection) txDisplay.getSelection();
+		if(selection.size()==0)
+			txDisplay.getStreamList().addAll(streams);
+		else {
+			IWaveform<?> selectedStream = (selection.getFirstElement() instanceof ITx)?
+					((ITx)selection.getFirstElement()).getStream():(IWaveform<?>)selection.getFirstElement();
+			int index = txDisplay.getStreamList().indexOf(selectedStream);
+			if(!insert) index++;
+			txDisplay.getStreamList().addAll(index, streams);
+		}
 	}
 
 	public void removeStreamFromList(IWaveform<? extends IWaveformEvent> obj){
@@ -355,7 +344,7 @@ public class WaveformViewerPart {
 	public void moveSelected(int i) {
 		txDisplay.moveSelected(i);
 	}
-	
+
 	public void moveSelection(GotoDirection direction) {
 		txDisplay.moveSelection(direction);
 	}
@@ -379,5 +368,15 @@ public class WaveformViewerPart {
 		return txDisplay.getZoomLevel();
 	}
 
+	public ISelection getSelection() {
+		return txDisplay.getSelection();
+	}
+
+	public void setSelection(IStructuredSelection structuredSelection) {
+		txDisplay.setSelection(structuredSelection, true);
+	}
+
+	public String getScaledTime(Long time) {
+		return txDisplay.getScaledTime(time);
+	}
 }
-	

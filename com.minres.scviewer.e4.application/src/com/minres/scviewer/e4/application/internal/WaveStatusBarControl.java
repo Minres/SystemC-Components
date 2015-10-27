@@ -10,8 +10,6 @@
  *******************************************************************************/
 package com.minres.scviewer.e4.application.internal;
 
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -22,6 +20,7 @@ import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.jface.action.StatusLineManager;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.GridData;
@@ -87,13 +86,19 @@ public class WaveStatusBarControl extends StatusBarControl {
 	}
 
 	@Inject
-	public void setSelection(@Named(IServiceConstants.ACTIVE_SELECTION)@Optional Object obj){
-		//		if(status!=null ) status.setText(obj==null?"":obj.toString());
-		if(manager!=null ){
-			if(obj instanceof List<?>){
-				manager.setMessage(""+((List<?>)obj).size()+" Elements");
-			} else 
-				manager.setMessage(obj==null?"":obj.getClass().getSimpleName()+" selected");
+	public void setSelection(@Named(IServiceConstants.ACTIVE_SELECTION)@Optional IStructuredSelection selection){
+		if(manager!=null && selection!=null){
+			switch(selection.size()){
+			case 0:
+				manager.setMessage("");
+				break;
+			case 1:
+				manager.setMessage(selection.getFirstElement().getClass().getSimpleName()+" selected");
+				break;
+			default:
+				manager.setMessage(""+selection.size()+" Elements");
+				break;
+			}
 		}
 	}
 

@@ -34,6 +34,8 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 
 	private static List<IWaveformDbLoader> loaders=new LinkedList<IWaveformDbLoader>();
 
+	private boolean loaded;
+
 	private List<IHierNode> childNodes;
 
 	private Map<String, IWaveform<?>> waveforms;
@@ -89,6 +91,7 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 				buildHierarchyNodes() ;
 				pcs.firePropertyChange("WAVEFORMS", null, waveforms);
 				pcs.firePropertyChange("CHILDS", null, childNodes);
+				loaded = true;
 				return true;
 			}
 		}		
@@ -108,6 +111,11 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 	public void clear() {
 		waveforms.clear();
 		childNodes.clear();
+		loaded=false;
+	}
+
+	public boolean isLoaded() {
+		return loaded;
 	}
 
 	private void buildHierarchyNodes() throws InputFormatException{

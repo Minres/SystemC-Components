@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Application
+Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: com.minres.scviewer.e4.application;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: MINRES Technologies GmbH
+Bundle-Vendor: %Bundle-Vendor
 Require-Bundle: javax.inject;bundle-version="1.0.0",
  org.eclipse.core.runtime;bundle-version="3.11.1",
  org.eclipse.swt;bundle-version="3.104.1",
@@ -24,7 +24,9 @@ Require-Bundle: javax.inject;bundle-version="1.0.0",
  org.eclipse.core.jobs,
  org.eclipse.osgi,
  com.google.guava,
- org.eclipse.equinox.preferences
+ org.eclipse.equinox.preferences,
+ org.eclipse.core.expressions,
+ org.eclipse.e4.core.commands;bundle-version="0.11.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: com.minres.scviewer.database,
  javax.inject;version="1.0.0"

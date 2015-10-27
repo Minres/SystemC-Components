@@ -24,6 +24,8 @@ public interface IWaveformDb extends IHierNode {
 	
 	public boolean load(File inp) throws Exception;
 
+	public boolean isLoaded();
+
 	public void clear();
 
 }

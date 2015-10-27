@@ -188,6 +188,6 @@ public class Tx implements ITx {
 
 	@Override
 	public String toString() {
-		return "tx#"+getId()+"@"+getBeginTime()+"-@"+getEndTime();
+		return "tx#"+getId()+"["+getBeginTime()/1000000+"ns - "+getEndTime()/1000000+"ns]";
 	}
 }

@@ -10,25 +10,33 @@
  *******************************************************************************/
 package com.minres.scviewer.e4.application.parts;
 
-import java.util.Arrays;
+import java.lang.annotation.Annotation;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.di.annotations.CanExecute;
+import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -45,22 +53,37 @@ import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.wb.swt.ResourceManager;
 
+import com.minres.scviewer.database.IHierNode;
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.e4.application.handlers.AddWaveformHandler;
 import com.minres.scviewer.e4.application.provider.TxDbContentProvider;
 import com.minres.scviewer.e4.application.provider.TxDbLabelProvider;
 
 public class WaveformListPart implements ISelectionChangedListener {
 
+	private static final String POPUP_ID="com.minres.scviewer.e4.application.parts.WaveformList.popupmenu";
+
 	@Inject IEventBroker eventBroker;
 
 	@Inject	ESelectionService selectionService;
 
+	@Inject EMenuService menuService;
+
+	@Inject IEclipseContext eclipseCtx;
+
+
 	private Text nameFilter;
+
 	private TableViewer txTableViewer;
+
 	ToolItem appendItem, insertItem, insertAllItem, appendAllItem;
+
 	WaveformAttributeFilter attributeFilter;
+
 	int thisSelectionCount=0, otherSelectionCount=0;
+
+	private WaveformViewerPart waveformViewerPart;
 
 	@PostConstruct
 	public void createComposite(Composite parent) {
@@ -86,40 +109,64 @@ public class WaveformListPart implements ISelectionChangedListener {
 		txTableViewer.getTable().setLayoutData(new GridData(GridData.FILL_BOTH));
 		txTableViewer.addSelectionChangedListener(this);
 		txTableViewer.addFilter(attributeFilter);
+		txTableViewer.addDoubleClickListener(new IDoubleClickListener() {
+			@Override
+			public void doubleClick(DoubleClickEvent event) {
+				AddWaveformHandler myHandler = new AddWaveformHandler();
+				Object result = runCommand(myHandler, CanExecute.class, "after", false);
+				if(result!=null && (Boolean)result)
+					ContextInjectionFactory.invoke(myHandler, Execute.class, eclipseCtx);
+			}
+		});
+		menuService.registerContextMenu(txTableViewer.getControl(), POPUP_ID);
 
 		ToolBar toolBar = new ToolBar(parent, SWT.FLAT | SWT.RIGHT);
 		toolBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 		toolBar.setBounds(0, 0, 87, 20);
 
 		appendItem = new ToolItem(toolBar, SWT.NONE);
-		appendItem.setToolTipText("Append selected");
+		appendItem.setToolTipText("Append after");
 		appendItem.setImage(ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/append_wave.png"));
 		appendItem.setEnabled(false);
 		appendItem.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				/*
 				eventBroker.post(WaveformViewerPart.ADD_WAVEFORM,
 						((IStructuredSelection)txTableViewer.getSelection()).toList());
-
+				ECommandService commandService = eclipseCtx.get(ECommandService.class);
+				EHandlerService handlerService = eclipseCtx.get(EHandlerService.class); 
+				HashMap<String,Object> param=new HashMap<>();
+				param.clear();
+				//param.put("where", "after");
+				ParameterizedCommand myCommand = commandService.createCommand(COMMAND_ID, param);
+				if(myCommand!=null)handlerService.executeHandler(myCommand);
+				 */
+				AddWaveformHandler myHandler = new AddWaveformHandler();
+				Object result = runCommand(myHandler, CanExecute.class, "after", false);
+				if(result!=null && (Boolean)result)
+					ContextInjectionFactory.invoke(myHandler, Execute.class, eclipseCtx);
 			}
+
 		});
 
 		insertItem = new ToolItem(toolBar, SWT.NONE);
-		insertItem.setToolTipText("Insert selected");
+		insertItem.setToolTipText("Insert before");
 		insertItem.setImage(ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/insert_wave.png"));
 		insertItem.setEnabled(false);
 		insertItem.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				eventBroker.post(WaveformViewerPart.ADD_WAVEFORM,
-						((IStructuredSelection)txTableViewer.getSelection()).toList());
-
+				AddWaveformHandler myHandler = new AddWaveformHandler();
+				Object result = runCommand(myHandler, CanExecute.class, "before", false);
+				if(result!=null && (Boolean)result)
+					ContextInjectionFactory.invoke(myHandler, Execute.class, eclipseCtx);
 			}
 		});
 		new ToolItem(toolBar, SWT.SEPARATOR);
 
 		appendAllItem = new ToolItem(toolBar, SWT.NONE);
-		appendAllItem.setToolTipText("Append all");
+		appendAllItem.setToolTipText("Append all after");
 		appendAllItem.setImage(ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/append_all_waves.png"));
 		appendAllItem.setEnabled(false);
 
@@ -128,22 +175,34 @@ public class WaveformListPart implements ISelectionChangedListener {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				Object[] all = getFilteredChildren(txTableViewer);
-				if(all.length>0)
-					eventBroker.post(WaveformViewerPart.ADD_WAVEFORM, Arrays.asList(all));
-
+				if(all.length>0){
+					Object oldSel=selectionService.getSelection();
+					selectionService.setSelection(new StructuredSelection(all));
+					AddWaveformHandler myHandler = new AddWaveformHandler();
+					Object result = runCommand(myHandler, CanExecute.class, "after", false);
+					if(result!=null && (Boolean)result)
+						ContextInjectionFactory.invoke(myHandler, Execute.class, eclipseCtx);
+					selectionService.setSelection(oldSel);
+				}
 			}
 		});
 		insertAllItem = new ToolItem(toolBar, SWT.NONE);
-		insertAllItem.setToolTipText("Insert all");
+		insertAllItem.setToolTipText("Insert all before");
 		insertAllItem.setImage(ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/insert_all_waves.png"));
 		insertAllItem.setEnabled(false);
 		insertAllItem.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				Object[] all = getFilteredChildren(txTableViewer);
-				if(all.length>0)
-					eventBroker.post(WaveformViewerPart.ADD_WAVEFORM, Arrays.asList(all));
-
+				if(all.length>0){
+					Object oldSel=selectionService.getSelection();
+					selectionService.setSelection(new StructuredSelection(all));
+					AddWaveformHandler myHandler = new AddWaveformHandler();
+					Object result = runCommand(myHandler, CanExecute.class, "before", false);
+					if(result!=null && (Boolean)result)
+						ContextInjectionFactory.invoke(myHandler, Execute.class, eclipseCtx);
+					selectionService.setSelection(oldSel);
+				}
 			}
 		});
 	}
@@ -155,8 +214,8 @@ public class WaveformListPart implements ISelectionChangedListener {
 	}
 
 	@Inject @Optional
-	public void  getStatusEvent(@UIEventTopic(WaveformViewerPart.ACTIVE_NODE) Object o) {
-		txTableViewer.setInput(o);
+	public void  getStatusEvent(@UIEventTopic(WaveformViewerPart.ACTIVE_WAVEFORMVIEW) WaveformViewerPart part) {
+		this.waveformViewerPart=part;
 		updateButtons();
 	}
 
@@ -167,37 +226,40 @@ public class WaveformListPart implements ISelectionChangedListener {
 
 	protected void setSelection(ISelection iSelection) {
 		IStructuredSelection selection = (IStructuredSelection)iSelection;
-		switch(selection.size()){
-		case 0:
+		if(selection.size()==0){
 			appendItem.setEnabled(false);
-			break;
-		case 1:
-			selectionService.setSelection(selection.getFirstElement());
-			break;
-		default:
-			selectionService.setSelection(selection.toList());
-			break;
 		}
+		selectionService.setSelection(selection);
 		thisSelectionCount=selection.toList().size();
 		updateButtons();
 	}
 
 	@Inject
-	public void setSelection(@Named(IServiceConstants.ACTIVE_SELECTION) @Optional Object object, EPartService partService){
+	public void setSelection(@Named(IServiceConstants.ACTIVE_SELECTION) @Optional IStructuredSelection selection, EPartService partService){
 		MPart part = partService.getActivePart();
-		if(part!=null && part.getObject() != this)
-			otherSelectionCount = (object instanceof IWaveform<?> || object instanceof ITx)?1:0;
+		if(part!=null && part.getObject() != this && selection!=null){
+			if( selection instanceof IStructuredSelection) {
+				Object object= ((IStructuredSelection)selection).getFirstElement();			
+				if(object instanceof IHierNode&& !(object instanceof IWaveform<?>))
+					txTableViewer.setInput(object);
+				otherSelectionCount = (object instanceof IWaveform<?> || object instanceof ITx)?1:0;
+			}
+		}
 		updateButtons();
 	}
 
 	private void updateButtons() {
 		if(txTableViewer!=null && !insertItem.isDisposed() && !appendItem.isDisposed() && 
 				!appendAllItem.isDisposed() && !insertAllItem.isDisposed()){
-			Object[] all = getFilteredChildren(txTableViewer);
-			appendItem.setEnabled(thisSelectionCount>0);
-			appendAllItem.setEnabled(all.length>0);
-			insertItem.setEnabled(thisSelectionCount>0 && otherSelectionCount>0);
-			insertAllItem.setEnabled(all.length>0 && otherSelectionCount>0);
+			AddWaveformHandler myHandler = new AddWaveformHandler();
+			Object result = runCommand(myHandler, CanExecute.class, "after", false);
+			appendItem.setEnabled(result instanceof Boolean && (Boolean)result);
+			result = runCommand(myHandler, CanExecute.class, "after", true);
+			appendAllItem.setEnabled(result instanceof Boolean && (Boolean)result);
+			result = runCommand(myHandler, CanExecute.class, "before", false);
+			insertItem.setEnabled(result instanceof Boolean && (Boolean)result);
+			result = runCommand(myHandler, CanExecute.class, "before", true);
+			insertAllItem.setEnabled(result instanceof Boolean && (Boolean)result);
 		}
 	}
 
@@ -222,6 +284,10 @@ public class WaveformListPart implements ISelectionChangedListener {
 		}
 	}
 
+	public Object[] getFilteredChildren(){
+		return getFilteredChildren(txTableViewer);
+	}
+	
 	protected Object[] getFilteredChildren(TableViewer viewer){
 		Object parent = viewer.getInput();
 		if(parent==null) return new Object[0];
@@ -245,4 +311,17 @@ public class WaveformListPart implements ISelectionChangedListener {
 		}
 		return result;
 	}
+
+	public WaveformViewerPart getActiveWaveformViewerPart() {
+		return waveformViewerPart;
+	}
+
+	protected Object runCommand(AddWaveformHandler myHandler, Class<? extends Annotation> annotation, String where, Boolean all) {
+		ContextInjectionFactory.inject(myHandler, eclipseCtx);
+		eclipseCtx.set(AddWaveformHandler.PARAM_WHERE_ID, where);
+		eclipseCtx.set(AddWaveformHandler.PARAM_ALL_ID, all.toString());
+		Object result = ContextInjectionFactory.invoke(myHandler, annotation, eclipseCtx);
+		return result;
+	}
+
 }

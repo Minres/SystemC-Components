@@ -18,6 +18,7 @@ import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
+import org.eclipse.jface.viewers.IStructuredSelection;
 
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.IWaveform;
@@ -29,8 +30,12 @@ public class MoveWaveformHandler {
 
 	@CanExecute
 	public Boolean canExecute(ESelectionService selectionService){
-		Object o = selectionService.getSelection();
-		return o instanceof IWaveform<?> || o instanceof ITx;
+		Object sel = selectionService.getSelection();
+		if( sel instanceof IStructuredSelection) {
+			Object o= ((IStructuredSelection)sel).getFirstElement();
+			return o instanceof IWaveform<?> || o instanceof ITx;
+		}
+		return false;
 	}
 	
 	@Execute
