@@ -47,17 +47,18 @@ public class WaveformCanvas extends Canvas {
         TRACK_BG_EVEN, TRACK_BG_ODD, TRACK_BG_HIGHLITE, 
         TX_BG, TX_BG_HIGHLITE, TX_BORDER,
         SIGNAL0, SIGNAL1, SIGNALZ, SIGNALX, SIGNAL_TEXT, 
-        CURSOR, CURSOR_DRAG, CURSOR_TEXT
+        CURSOR, CURSOR_DRAG, CURSOR_TEXT,
+        MARKER, MARKER_TEXT
     }
 
     Color[] colors = new Color[Colors.values().length];
 
     private int trackHeight = 50;
-    private long scaleFactor = 1000000L;
+    private long scaleFactor = 1000000L; // 1ns
     String unit="ns";
-    private int level = 6;
-    private final static String[] unitString={"fs", "ps", "ns", "µs", "ms", "s"};
-    private final static int[] unitMultiplier={1, 10, 100};
+    private int level = 12;
+    public final static String[] unitString={"fs", "ps", "ns", "µs", "ms"};//, "s"};
+    public final static int[] unitMultiplier={1, 3, 10, 30, 100, 300};
     private long maxTime;
     protected Point origin; /* original size */
     protected Transform transform;
@@ -127,6 +128,8 @@ public class WaveformCanvas extends Canvas {
             colors[Colors.CURSOR.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_RED);
             colors[Colors.CURSOR_DRAG.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_GRAY);
             colors[Colors.CURSOR_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
+            colors[Colors.MARKER.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY);
+            colors[Colors.MARKER_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
         }
     }
 
@@ -180,23 +183,36 @@ public class WaveformCanvas extends Canvas {
     public int getZoomLevel() {
         return level;
     }
+    
+    public int getMaxZoomLevel(){
+    	return unitMultiplier.length*unitString.length-1;
+    }
 
     public void setZoomLevel(int level) {
-        this.level = level;
-        this.scaleFactor = (long) Math.pow(10, level);
-        syncScrollBars();
+    	if(level<unitMultiplier.length*unitString.length){
+    		this.level = level;
+    		this.scaleFactor = (long) Math.pow(10, level/2);
+    		if(level%2==1) this.scaleFactor*=3;
+    		syncScrollBars();
+    	}
     }
 
     public long getScaleFactor() {
         return scaleFactor;
     }
 
-    public String getUnitStr(){
-        return unitString[level/3];
+    public long getScaleFactorPow10() {
+    	int scale = level/unitMultiplier.length;
+    	double res = Math.pow(1000, scale);
+    	return (long) res;
     }
-    
+
+    public String getUnitStr(){
+        return unitString[level/unitMultiplier.length];
+    }
+     
     public int getUnitMultiplier(){
-        return unitMultiplier[level%3];
+        return unitMultiplier[level%unitMultiplier.length];
     }
     
     public long getTimeForOffset(int xOffset){

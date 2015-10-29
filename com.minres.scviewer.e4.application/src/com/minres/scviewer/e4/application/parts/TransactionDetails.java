@@ -378,7 +378,7 @@ public class TransactionDetails {
 						res.add(new Object[]{
 								rel.getRelationType(), 
 								rel.getSource().getGenerator().getName(), 
-								txToString(rel.getSource())});
+								rel.getSource()});
 					}
 					return res.toArray();
 				} else if(propertyHolder.type == Type.OUT_REL){
@@ -387,7 +387,7 @@ public class TransactionDetails {
 						res.add(new Object[]{
 								rel.getRelationType(), 
 								rel.getTarget().getGenerator().getName(), 
-								txToString(rel.getTarget())});
+								rel.getTarget()});
 					}
 					return res.toArray();
 				}
@@ -447,6 +447,8 @@ public class TransactionDetails {
 				}else if(element instanceof Object[]){
 					Object[] elements = (Object[]) element;
 					return new StyledString(elements[field].toString());
+				} else if(element instanceof ITx){
+					return new StyledString(txToString((ITx) element));
 				}else 
 					return new StyledString("");					
 			}

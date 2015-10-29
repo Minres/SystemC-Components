@@ -41,17 +41,17 @@ public class DesignBrowser implements ISelectionChangedListener {
 	
 	@Inject	ESelectionService selectionService;
 
-	private TreeViewer contentOutlineViewer;
+	private TreeViewer treeViewer;
 
 
 	private PropertyChangeListener l = new PropertyChangeListener() {
 		@Override
 		public void propertyChange(PropertyChangeEvent evt) {
 			if("CHILDS".equals(evt.getPropertyName())){
-				contentOutlineViewer.getTree().getDisplay().asyncExec(new Runnable() {					
+				treeViewer.getTree().getDisplay().asyncExec(new Runnable() {					
 					@Override
 					public void run() {
-						contentOutlineViewer.refresh();
+						treeViewer.refresh();
 					}
 				});
 			}
@@ -62,18 +62,19 @@ public class DesignBrowser implements ISelectionChangedListener {
 	@PostConstruct
 	public void createComposite(Composite parent) {
 		parent.setLayout(new GridLayout(1, false));
-		contentOutlineViewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-		contentOutlineViewer.addSelectionChangedListener(this);
-		contentOutlineViewer.getTree().setLayoutData(new GridData(GridData.FILL_BOTH));
-		contentOutlineViewer.setContentProvider(new TxDbContentProvider());
-		contentOutlineViewer.setLabelProvider(new TxDbLabelProvider());
-		contentOutlineViewer.setUseHashlookup(true);
+		treeViewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+		treeViewer.addSelectionChangedListener(this);
+		treeViewer.getTree().setLayoutData(new GridData(GridData.FILL_BOTH));
+		treeViewer.setContentProvider(new TxDbContentProvider());
+		treeViewer.setLabelProvider(new TxDbLabelProvider());
+		treeViewer.setUseHashlookup(true);
+		treeViewer.setAutoExpandLevel(2);
 	}
 
 	@Focus
 	public void setFocus() {
-		contentOutlineViewer.getTree().setFocus();
-		selectionService.setSelection(contentOutlineViewer.getSelection());
+		treeViewer.getTree().setFocus();
+		selectionService.setSelection(treeViewer.getSelection());
 	}
 
 	@Override
@@ -85,10 +86,10 @@ public class DesignBrowser implements ISelectionChangedListener {
 	@Inject @Optional
 	public void  getStatusEvent(@UIEventTopic(WaveformViewerPart.ACTIVE_WAVEFORMVIEW) WaveformViewerPart waveformViewerPart) {
 		IWaveformDb database = waveformViewerPart.getDatabase();
-		Object input = contentOutlineViewer.getInput();
+		Object input = treeViewer.getInput();
 		if(input!=null && input instanceof List<?>)
 			((List<IWaveformDb>)input).get(0).removePropertyChangeListener(l);
-		contentOutlineViewer.setInput(database.isLoaded()?Arrays.asList(new IWaveformDb[]{database}):null);
+		treeViewer.setInput(database.isLoaded()?Arrays.asList(new IWaveformDb[]{database}):null);
 		// Set up the tree viewer
 		database.addPropertyChangeListener(l);
 	} 

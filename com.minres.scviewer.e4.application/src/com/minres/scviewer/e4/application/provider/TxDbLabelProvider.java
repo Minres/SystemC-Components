@@ -20,6 +20,7 @@ import org.eclipse.wb.swt.ResourceManager;
 
 import com.minres.scviewer.database.IHierNode;
 import com.minres.scviewer.database.ISignal;
+import com.minres.scviewer.database.ISignalChangeMulti;
 import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveformDb;
 
@@ -27,10 +28,7 @@ public class TxDbLabelProvider implements ILabelProvider {
 
 	private List<ILabelProviderListener> listeners = new ArrayList<ILabelProviderListener>();
 
-	private Image database;
-	private Image stream;
-	private Image signal;
-	private Image folder;
+	private Image database, stream, signal, folder, wave;
 	
 	
 	public TxDbLabelProvider() {
@@ -39,6 +37,7 @@ public class TxDbLabelProvider implements ILabelProvider {
 		stream=ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/stream.png");
 		folder=ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/folder.png");
 		signal=ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/signal.png");
+		wave=ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/wave.png");
 	}
 
 	@Override
@@ -52,6 +51,7 @@ public class TxDbLabelProvider implements ILabelProvider {
 		if(stream!=null) stream.dispose();
 		if(folder!=null) folder.dispose();
 		if(signal!=null) signal.dispose();
+		if(wave!=null) wave.dispose();
 	}
 
 	@Override
@@ -71,7 +71,11 @@ public class TxDbLabelProvider implements ILabelProvider {
 		}else if(element instanceof ITxStream){
 			return stream;
 		}else if(element instanceof ISignal<?>){
-			return signal;
+			Object o = ((ISignal<?>)element).getEvents().firstEntry().getValue();
+			if(o instanceof ISignalChangeMulti)
+				return wave;
+			else 
+				return signal;
 		}else if(element instanceof IHierNode){
 			return folder;
 		} else

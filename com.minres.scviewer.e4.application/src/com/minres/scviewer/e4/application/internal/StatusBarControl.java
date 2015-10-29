@@ -35,8 +35,6 @@ import org.osgi.service.prefs.PreferencesService;
 public class StatusBarControl {
 
 	public static final String STATUS_UPDATE="StatusUpdate";
-	public static final String ZOOM_LEVEL="ZoomLevelUpdate";
-	public static final String CURSOR_TIME="CursorPosUpdate";
 
 	@Inject	EModelService modelService;
 

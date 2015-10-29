@@ -35,11 +35,16 @@ public class RulerPainter implements IPainter {
         String unit=waveCanvas.getUnitStr();
         int unitMultiplier=waveCanvas.getUnitMultiplier();
         long scaleFactor=waveCanvas.getScaleFactor();
+        long zoomLevel = waveCanvas.getZoomLevel();
         long start=area.x*scaleFactor;
         long end=start+area.width*scaleFactor;
 
         long rulerTickMinor = rulerTickMinorC*scaleFactor;
         long rulerTickMajor = rulerTickMajorC*scaleFactor;
+        if(zoomLevel%3==1){
+        	rulerTickMinor/=3;
+        	rulerTickMajor/=3;
+        }
         int minorTickY = waveCanvas.rulerHeight-5;
         int majorTickY = waveCanvas.rulerHeight-15;
         int textY=waveCanvas.rulerHeight-20;

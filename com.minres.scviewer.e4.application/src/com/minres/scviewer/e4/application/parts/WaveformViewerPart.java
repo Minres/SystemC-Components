@@ -54,7 +54,7 @@ import com.minres.scviewer.database.IWaveformDbFactory;
 import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.database.swt.GotoDirection;
 import com.minres.scviewer.database.swt.TxDisplay;
-import com.minres.scviewer.e4.application.internal.StatusBarControl;
+import com.minres.scviewer.e4.application.internal.WaveStatusBarControl;
 
 public class WaveformViewerPart {
 
@@ -64,12 +64,7 @@ public class WaveformViewerPart {
 	protected static final String DATABASE_FILE = "DATABASE_FILE";
 	protected static final String SHOWN_WAVEFORM = "SHOWN_WAVEFORM";
 
-	private final static String[] zoomLevel={
-			"1fs", "10fs", "100fs",
-			"1ps", "10ps", "100ps",
-			"1ns", "10ns", "100ns",
-			"1µs", "10µs", "10µs",
-			"1ms", "10ms", "100ms", "1s"};
+	private String[] zoomLevel;
 
 	public static final String ID = "com.minres.scviewer.ui.TxEditorPart"; //$NON-NLS-1$
 
@@ -115,8 +110,19 @@ public class WaveformViewerPart {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				Long time = (Long) evt.getNewValue();
-				eventBroker.post(StatusBarControl.CURSOR_TIME, ""+ time/1000000+"ns");
+				eventBroker.post(WaveStatusBarControl.CURSOR_TIME, txDisplay.getScaledTime(time));
+				long marker=txDisplay.getActMarkerTime();
+				eventBroker.post(WaveStatusBarControl.MARKER_DIFF, txDisplay.getScaledTime(time-marker));
 
+			}
+		});
+		txDisplay.addPropertyChangeListener(TxDisplay.MARKER_PROPERTY, new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				Long time = (Long) evt.getNewValue();
+				eventBroker.post(WaveStatusBarControl.MARKER_TIME, txDisplay.getScaledTime(time));
+				long cursor=txDisplay.getCursorTime();
+				eventBroker.post(WaveStatusBarControl.MARKER_DIFF, txDisplay.getScaledTime(cursor-time));
 			}
 		});
 		txDisplay.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -126,6 +132,7 @@ public class WaveformViewerPart {
 					selectionService.setSelection(event.getSelection());
 			}
 		});
+		zoomLevel=txDisplay.getZoomLevels();
 		filesToLoad=new ArrayList<File>();
 		persistedState = part.getPersistedState();
 		Integer files = persistedState.containsKey(DATABASE_FILE+"S")?Integer.parseInt(persistedState.get(DATABASE_FILE+"S")):0;
@@ -134,7 +141,7 @@ public class WaveformViewerPart {
 		}
 		if(filesToLoad.size()>0)
 			loadDatabase();
-		eventBroker.post(StatusBarControl.ZOOM_LEVEL, zoomLevel[txDisplay.getZoomLevel()]);
+		eventBroker.post(WaveStatusBarControl.ZOOM_LEVEL, zoomLevel[txDisplay.getZoomLevel()]);
 		menuService.registerContextMenu(txDisplay.getNameControl(), "com.minres.scviewer.e4.application.popupmenu.namecontext");
 		menuService.registerContextMenu(txDisplay.getValueControl(), "com.minres.scviewer.e4.application.popupmenu.namecontext");
 		menuService.registerContextMenu(txDisplay.getWaveformControl(), "com.minres.scviewer.e4.application.popupmenu.wavecontext");
@@ -248,8 +255,12 @@ public class WaveformViewerPart {
 
 	private void updateAll() {
 		eventBroker.post(ACTIVE_WAVEFORMVIEW, this);
-		eventBroker.post(StatusBarControl.ZOOM_LEVEL, zoomLevel[txDisplay.getZoomLevel()]);
-		eventBroker.post(StatusBarControl.CURSOR_TIME, Long.toString(txDisplay.getCursorTime()/1000000)+"ns");
+		eventBroker.post(WaveStatusBarControl.ZOOM_LEVEL, zoomLevel[txDisplay.getZoomLevel()]);
+		long cursor=txDisplay.getCursorTime();
+		long marker=txDisplay.getActMarkerTime();
+		eventBroker.post(WaveStatusBarControl.CURSOR_TIME, txDisplay.getScaledTime(cursor));
+		eventBroker.post(WaveStatusBarControl.MARKER_TIME, txDisplay.getScaledTime(marker));
+		eventBroker.post(WaveStatusBarControl.MARKER_DIFF, txDisplay.getScaledTime(cursor-marker));
 	}
 
 	@Inject @Optional
@@ -356,13 +367,11 @@ public class WaveformViewerPart {
 		if(level<0) level=0;
 		if(level>zoomLevel.length-1) level=zoomLevel.length-1;
 		txDisplay.setZoomLevel(level);
-		eventBroker.post(StatusBarControl.ZOOM_LEVEL, zoomLevel[txDisplay.getZoomLevel()]);
-	}
+		updateAll();	}
 
 	public void setZoomFit() {
 		txDisplay.setZoomLevel(6);		
-		eventBroker.post(StatusBarControl.ZOOM_LEVEL, zoomLevel[txDisplay.getZoomLevel()]);
-	}
+		updateAll();	}
 
 	public int getZoomLevel() {
 		return txDisplay.getZoomLevel();

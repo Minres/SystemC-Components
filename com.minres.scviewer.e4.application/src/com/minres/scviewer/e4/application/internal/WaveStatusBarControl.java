@@ -29,9 +29,10 @@ import org.eclipse.swt.widgets.Composite;
 
 public class WaveStatusBarControl extends StatusBarControl {
 
-	public static final String STATUS_UPDATE="StatusUpdate";
 	public static final String ZOOM_LEVEL="ZoomLevelUpdate";
 	public static final String CURSOR_TIME="CursorPosUpdate";
+	public static final String MARKER_TIME="MarkerPosUpdate";
+	public static final String MARKER_DIFF="MarlerDiffUpdate";
 
 	@Inject
 	EModelService modelService;
@@ -74,14 +75,18 @@ public class WaveStatusBarControl extends StatusBarControl {
 
 	}
 
-	TextContributionItem zoomContribution, cursorContribution;
+	TextContributionItem cursorContribution, markerContribution, markerDiffContribution, zoomContribution;
 
 	@Inject
 	public WaveStatusBarControl(UISynchronize sync) {
 		super(sync);
-		zoomContribution = new TextContributionItem("Z:", 150);
-		cursorContribution = new TextContributionItem("C:", 120);
-		manager.prependToGroup(StatusLineManager.BEGIN_GROUP,cursorContribution);
+		cursorContribution = new TextContributionItem("C:", 80);
+		markerContribution = new TextContributionItem("M:", 80);
+		markerDiffContribution = new TextContributionItem("C-M:", 80);
+		zoomContribution = new TextContributionItem("Z:", 80);
+		manager.appendToGroup(StatusLineManager.BEGIN_GROUP,cursorContribution);
+		manager.appendToGroup(StatusLineManager.BEGIN_GROUP,markerContribution);
+		manager.appendToGroup(StatusLineManager.BEGIN_GROUP,markerDiffContribution);
 		manager.appendToGroup(StatusLineManager.BEGIN_GROUP, zoomContribution);
 	}
 
@@ -110,6 +115,16 @@ public class WaveStatusBarControl extends StatusBarControl {
 	@Inject @Optional
 	public void  getCursorEvent(@UIEventTopic(CURSOR_TIME) String text) {
 		cursorContribution.setText(text);
+	} 
+
+	@Inject @Optional
+	public void  getMarkerEvent(@UIEventTopic(MARKER_TIME) String text) {
+		markerContribution.setText(text);
+	} 
+
+	@Inject @Optional
+	public void  getDiffEvent(@UIEventTopic(MARKER_DIFF) String text) {
+		markerDiffContribution.setText(text);
 	} 
 
 }

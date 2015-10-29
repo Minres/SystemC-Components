@@ -10,27 +10,31 @@
  *******************************************************************************/
 package com.minres.scviewer.database.swt.internal;
 
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Rectangle;
 
 public class CursorPainter implements IPainter {
-	
+
 	/**
 	 * 
 	 */
 	private final WaveformCanvas waveCanvas;
+	
 	private long time;
 
 	private boolean isDragging;
-	private boolean drawTime;
+	
+	public final int id;
+	
 	/**
 	 * @param i 
 	 * @param txDisplay
 	 */
-	public CursorPainter(WaveformCanvas txDisplay, long time) {
+	public CursorPainter(WaveformCanvas txDisplay, long time, int id) {
 		this.waveCanvas = txDisplay;
 		this.time=time;
-		drawTime=true;
+		this.id=id;
 	}
 
 	public long getTime() {
@@ -42,29 +46,30 @@ public class CursorPainter implements IPainter {
 	}
 
 	public boolean isDragging() {
-        return isDragging;
-    }
-
-    public void setDragging(boolean isDragging) {
-        this.isDragging = isDragging;
-    }
-
-    public void paintArea(GC gc, Rectangle area) {			
-			if(this.waveCanvas.streams.size()>0){
-			    long scaleFactor=waveCanvas.getScaleFactor();
-				int x = (int) (time/scaleFactor);
-				if(x>=area.x && x<=(area.x+area.width)){
-					gc.setForeground(
-					        waveCanvas.colors[isDragging?
-					                WaveformCanvas.Colors.CURSOR_DRAG.ordinal():
-					                    WaveformCanvas.Colors.CURSOR.ordinal()]);
-					gc.drawLine(x, area.y, x, area.y+area.height);
-					if(drawTime){
-					    gc.setBackground(waveCanvas.colors[WaveformCanvas.Colors.CURSOR.ordinal()]);
-                        gc.setForeground(waveCanvas.colors[WaveformCanvas.Colors.CURSOR_TEXT.ordinal()]);
-					    gc.drawText(Double.toString(x*waveCanvas.getUnitMultiplier())+waveCanvas.getUnitStr(), x+1, area.y);
-					}
-				}
-			}
+		return isDragging;
 	}
+
+	public void setDragging(boolean isDragging) {
+		this.isDragging = isDragging;
+	}
+
+	public void paintArea(GC gc, Rectangle area) {			
+		if(this.waveCanvas.streams.size()>0){
+			long scaleFactor=waveCanvas.getScaleFactor();
+			int x = (int) (time/scaleFactor);
+			int top = id<0?area.y:area.y+15;
+			Color drawColor=waveCanvas.colors[id<0?WaveformCanvas.Colors.CURSOR.ordinal():WaveformCanvas.Colors.MARKER.ordinal()];
+			Color dragColor = waveCanvas.colors[WaveformCanvas.Colors.CURSOR_DRAG.ordinal()];
+			Color textColor=waveCanvas.colors[id<0?WaveformCanvas.Colors.CURSOR_TEXT.ordinal():WaveformCanvas.Colors.MARKER_TEXT.ordinal()];
+			if(x>=area.x && x<=(area.x+area.width)){
+				gc.setForeground(isDragging?dragColor:drawColor);
+				gc.drawLine(x, top, x, area.y+area.height);
+				gc.setBackground(drawColor);
+				gc.setForeground(textColor);
+				Double dTime=new Double(time);
+				gc.drawText((dTime/waveCanvas.getScaleFactorPow10())+waveCanvas.getUnitStr(), x+1, top);
+			}
+		}
+	}
+
 }

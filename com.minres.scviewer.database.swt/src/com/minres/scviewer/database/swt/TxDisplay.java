@@ -93,7 +93,9 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider  {
 	
 	private PropertyChangeSupport pcs;
 
-	public static final String CURSOR_PROPERTY = "cursor time";
+	public static final String CURSOR_PROPERTY = "cursor_time";
+
+	public static final String MARKER_PROPERTY = "marker_time";
 
 	private static final String SELECTION = "selection";
 	
@@ -117,6 +119,8 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider  {
 	
 	Vector<CursorPainter> cursorPainters;
 
+	int selectedMarker = 0;
+	
 	private Composite trackPane;
 	
 	private int trackVerticalHeight;
@@ -171,37 +175,8 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider  {
 		public void mouseUp(MouseEvent e) {
 			if (e.button ==  1) {
 				if(Math.abs(e.x-start.x)<3 && Math.abs(e.y-start.y)<3){				
-					long time= waveformList.getTimeForOffset(e.x);
-					long scaling=5*waveformList.getScaleFactor();
-					for(Object o:waveformList.getClicked(start)){
-						Entry<Long, ?> floorEntry=null, ceilEntry=null;
-						if(o instanceof ISignal<?>){
-							NavigableMap<Long, ?> map = ((ISignal<?>)o).getEvents();
-							floorEntry = map.floorEntry(time);
-							ceilEntry = map.ceilingEntry(time);
-						} else if (o instanceof ITxStream<?>){
-							NavigableMap<Long, ?> map = ((ITxStream<?>)o).getEvents();
-							floorEntry = map.floorEntry(time);
-							ceilEntry = map.ceilingEntry(time);
-						} else if(o instanceof ITx){
-							NavigableMap<Long, ?> map = ((ITx)o).getStream().getEvents();
-							floorEntry = map.floorEntry(time);
-							ceilEntry = map.ceilingEntry(time);
-						}
-						if(floorEntry!=null && time-floorEntry.getKey()>scaling)
-							floorEntry=null;
-						if(ceilEntry!=null && ceilEntry.getKey()-time>scaling)
-							ceilEntry=null;
-						if(ceilEntry==null && floorEntry!=null){
-							time=floorEntry.getKey();
-						}else if(ceilEntry!=null && floorEntry==null){
-							time=ceilEntry.getKey();
-						}else if(ceilEntry!=null && floorEntry!=null){
-							time=time-floorEntry.getKey()<ceilEntry.getKey()-time?floorEntry.getKey(): ceilEntry.getKey();
-						}
-					}
 					// first set time
-					setCursorTime(time);
+					setCursorTime(snapOffsetToEvent(e));
 					// then set selection and reveal
 					setSelection(new StructuredSelection(initialSelected));
 					e.widget.getDisplay().asyncExec(new Runnable() {
@@ -212,7 +187,49 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider  {
 						}
 					});
 				}
+			}else	if (e.button ==  2) {
+				setMarkerTime(snapOffsetToEvent(e), selectedMarker);
+				e.widget.getDisplay().asyncExec(new Runnable() {
+					@Override
+					public void run() {
+						waveformList.redraw();
+						updateValueList();
+					}
+				});
 			}        
+		}
+
+		protected long snapOffsetToEvent(MouseEvent e) {
+			long time= waveformList.getTimeForOffset(e.x);
+			long scaling=5*waveformList.getScaleFactor();
+			for(Object o:waveformList.getClicked(start)){
+				Entry<Long, ?> floorEntry=null, ceilEntry=null;
+				if(o instanceof ISignal<?>){
+					NavigableMap<Long, ?> map = ((ISignal<?>)o).getEvents();
+					floorEntry = map.floorEntry(time);
+					ceilEntry = map.ceilingEntry(time);
+				} else if (o instanceof ITxStream<?>){
+					NavigableMap<Long, ?> map = ((ITxStream<?>)o).getEvents();
+					floorEntry = map.floorEntry(time);
+					ceilEntry = map.ceilingEntry(time);
+				} else if(o instanceof ITx){
+					NavigableMap<Long, ?> map = ((ITx)o).getStream().getEvents();
+					floorEntry = map.floorEntry(time);
+					ceilEntry = map.ceilingEntry(time);
+				}
+				if(floorEntry!=null && time-floorEntry.getKey()>scaling)
+					floorEntry=null;
+				if(ceilEntry!=null && ceilEntry.getKey()-time>scaling)
+					ceilEntry=null;
+				if(ceilEntry==null && floorEntry!=null){
+					time=floorEntry.getKey();
+				}else if(ceilEntry!=null && floorEntry==null){
+					time=ceilEntry.getKey();
+				}else if(ceilEntry!=null && floorEntry!=null){
+					time=time-floorEntry.getKey()<ceilEntry.getKey()-time?floorEntry.getKey(): ceilEntry.getKey();
+				}
+			}
+			return time;
 		}
 	};
 
@@ -318,9 +335,12 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider  {
 		waveformList.addPainter(new TrackPainter(waveformList));
 		waveformList.addPainter(new RulerPainter(
 				waveformList, waveformList.getDisplay().getSystemColor(SWT.COLOR_BLACK), waveformList.getDisplay().getSystemColor(SWT.COLOR_WHITE)));
-		CursorPainter cp = new CursorPainter(waveformList, waveformList.getScaleFactor() * 10);
+		CursorPainter cp = new CursorPainter(waveformList, waveformList.getScaleFactor() * 10, cursorPainters.size()-1);
 		waveformList.addPainter(cp);
 		cursorPainters.add(cp);
+		CursorPainter marker = new CursorPainter(waveformList, waveformList.getScaleFactor() * 100, cursorPainters.size()-1);
+		waveformList.addPainter(marker);
+		cursorPainters.add(marker);
 		waveformList.setMaxTime(1);
 		waveformList.addMouseListener(waveformMouseListener);
 
@@ -780,6 +800,7 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider  {
 
 	public void setZoomLevel(int scale) {
 		waveformList.setZoomLevel(scale);
+		waveformList.reveal(getCursorTime());
 	}
 
 	public int getZoomLevel() {
@@ -792,8 +813,24 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider  {
 		pcs.firePropertyChange(CURSOR_PROPERTY, oldVal, time);
 	}
 
+	public void setMarkerTime(long time, int index){
+		if(cursorPainters.size()>index+1){
+			final Long oldVal= cursorPainters.get(1+index).getTime();
+			cursorPainters.get(1+index).setTime(time);
+			pcs.firePropertyChange(MARKER_PROPERTY, oldVal, time);
+		}
+	}
+
 	public long getCursorTime(){
 		return cursorPainters.get(0).getTime();   
+	}
+
+	public long getActMarkerTime(){
+		return getMarkerTime(selectedMarker);
+	}
+
+	public long getMarkerTime(int index){
+		return cursorPainters.get(index+1).getTime();   
 	}
 
 	private void createStreamDragSource(final Canvas canvas) {
@@ -837,13 +874,6 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider  {
 						Object target = trackVerticalOffset.floorEntry(dropPoint.y).getValue();
 						if(source instanceof IWaveform<?> && target instanceof IWaveform<?>){
 							IWaveform<? extends IWaveformEvent> srcWave=(IWaveform<? extends IWaveformEvent>) source;
-							//                            int srcIdx=streams.indexOf(source);
-							//                            int tgtIdx=streams.indexOf(target);
-							//                            if(srcIdx<tgtIdx){
-							//                                streams.rotate(srcIdx,  tgtIdx, -1);
-							//                            } else {
-							//                                streams.rotate(tgtIdx,  srcIdx+1, 1);
-							//                            }
 							int srcIdx=streams.indexOf(srcWave);
 							streams.remove(source);
 							int tgtIdx=streams.indexOf(target);
@@ -878,8 +908,10 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider  {
 		dragSource.setTransfer(types);
 		dragSource.addDragListener(new DragSourceAdapter() {
 			public void dragStart(DragSourceEvent event) {
+				System.out.println("dragStart");
 				event.doit = false;
-				for(Object o:waveformList.getClicked(new Point(event.x, event.y))){
+				List<Object> clicked = waveformList.getClicked(new Point(event.x, event.y));
+				for(Object o:clicked){
 					if(o instanceof CursorPainter){
 						LocalSelectionTransfer.getTransfer().setSelection(new StructuredSelection(o));
 						((CursorPainter)o).setDragging(true);
@@ -907,8 +939,9 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider  {
 					ISelection sel = LocalSelectionTransfer.getTransfer().getSelection();
 					if(sel!=null && sel instanceof IStructuredSelection &&
 							((IStructuredSelection)sel).getFirstElement() instanceof CursorPainter){
-						((CursorPainter)((IStructuredSelection)sel).getFirstElement()).setDragging(false);
-						updateWaveform(canvas, event);
+						CursorPainter painter = (CursorPainter)((IStructuredSelection)sel).getFirstElement();
+						painter.setDragging(false);
+						updateWaveform(canvas, event, painter);
 					}
 				}
 			}
@@ -924,13 +957,21 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider  {
 				ISelection sel = LocalSelectionTransfer.getTransfer().getSelection();
 				if(sel!=null && sel instanceof IStructuredSelection &&
 						((IStructuredSelection)sel).getFirstElement() instanceof CursorPainter){
-					updateWaveform(canvas, event);
+					updateWaveform(canvas, event, (CursorPainter) ((IStructuredSelection)sel).getFirstElement());
 				}
 			}
 
-			protected void updateWaveform(final Canvas canvas, DropTargetEvent event) {
+			protected void updateWaveform(final Canvas canvas, DropTargetEvent event, CursorPainter painter) {
 				Point dropPoint = canvas.toControl(event.x, event.y);
-				setCursorTime(waveformList.getTimeForOffset(dropPoint.x));
+				long time = waveformList.getTimeForOffset(dropPoint.x);
+				final Long oldVal= painter.getTime();
+				painter.setTime(time);
+				if(painter.id<0){
+					pcs.firePropertyChange(CURSOR_PROPERTY, oldVal, time);
+				}else{
+					pcs.firePropertyChange(MARKER_PROPERTY, oldVal, time);
+					pcs.firePropertyChange(MARKER_PROPERTY+painter.id, oldVal, time);
+				}
 				canvas.getDisplay().asyncExec(new Runnable() {
 					@Override
 					public void run() {
@@ -973,9 +1014,20 @@ public class TxDisplay implements PropertyChangeListener, ISelectionProvider  {
 		return this.pcs.hasListeners(propertyName);
 	}
 
-	public String getScaledTime(Long time) {
+	public String getScaledTime(long time) {
 		StringBuilder sb = new StringBuilder();
-		return sb.append(time/waveformList.getScaleFactor()).append(waveformList.getUnitStr()).toString();
+		Double dTime=new Double(time);
+		return sb.append(dTime/waveformList.getScaleFactorPow10()).append(waveformList.getUnitStr()).toString();
 	}
 
+	public String[] getZoomLevels(){
+		String[] res = new String[WaveformCanvas.unitMultiplier.length*WaveformCanvas.unitString.length];
+		int index=0;
+		for(String unit:WaveformCanvas.unitString){
+			for(int factor:WaveformCanvas.unitMultiplier){
+				res[index++]= new Integer(factor).toString()+unit;
+			}
+		}
+		return res;
+	}
 }

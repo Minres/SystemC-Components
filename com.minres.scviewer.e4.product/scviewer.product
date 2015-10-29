@@ -15,13 +15,11 @@
 
    <windowImages i16="/com.minres.scviewer.e4.application/icons/SCViewer_16x32.png" i32="/com.minres.scviewer.e4.application/icons/SCViewer_32x32.png" i48="/com.minres.scviewer.e4.application/icons/SCViewer_48x32.png" i64="/com.minres.scviewer.e4.application/icons/SCViewer_64x32.png" i128="/com.minres.scviewer.e4.application/icons/SCViewer_128x32.png" i256="/com.minres.scviewer.e4.application/icons/SCViewer_256x32.png"/>
 
-
    <launcher name="scviewer">
       <linux icon="icons/SCViewer_512x512.xpm"/>
       <macosx icon="icons/SCViewer.icns"/>
       <solaris/>
       <win useIco="false">
-         <ico path="icons/SCViewer.ico"/>
          <bmp
             winSmallHigh="icons/SCViewer_16x16@32.bmp"
             winSmallLow="icons/SCViewer_16x16@8.bmp"

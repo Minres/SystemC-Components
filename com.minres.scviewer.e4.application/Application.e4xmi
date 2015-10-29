@@ -166,30 +166,22 @@
     </menus>
     <menus xsi:type="menu:PopupMenu" xmi:id="_CxJvAHXGEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.popupmenu.wavecontext" label="Wave Menu">
       <children xsi:type="menu:HandledMenuItem" xmi:id="_7HrlwHXREeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.moveup" label="Move up" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/up_blue.png" command="_N_sOkHXHEeWwZ-9vrAR2UQ">
-        <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_orHK4HsCEeWVM_sKoXvptg" coreExpressionId="com.minres.scviewer.e4.application.oneWaveSeleted"/>
         <parameters xmi:id="_snsmsHaYEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.2" name="com.minres.scviewer.e4.application.command.movewaveformupCommand.parameter.dir" value="up"/>
       </children>
       <children xsi:type="menu:HandledMenuItem" xmi:id="_8MkxQHXREeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.movedown" label="Move down" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/down_blue.png" command="_N_sOkHXHEeWwZ-9vrAR2UQ">
-        <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_sSb24HsCEeWVM_sKoXvptg" coreExpressionId="com.minres.scviewer.e4.application.oneWaveSeleted"/>
         <parameters xmi:id="_uZBaYHaYEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.3" name="com.minres.scviewer.e4.application.command.movewaveformupCommand.parameter.dir" value="down"/>
       </children>
-      <children xsi:type="menu:HandledMenuItem" xmi:id="_7Hz3sHXIEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.remove" label="Remove" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/cross.png" command="_WUZ2wHXHEeWwZ-9vrAR2UQ">
-        <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_uusd8HsCEeWVM_sKoXvptg" coreExpressionId="com.minres.scviewer.e4.application.oneWaveSeleted"/>
-      </children>
+      <children xsi:type="menu:HandledMenuItem" xmi:id="_7Hz3sHXIEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.remove" label="Remove" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/cross.png" command="_WUZ2wHXHEeWwZ-9vrAR2UQ"/>
       <children xsi:type="menu:HandledMenuItem" xmi:id="_h4B6YHcZEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.nextevent" label="Next event" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/play_blue.png" command="_79rx4HabEeWwZ-9vrAR2UQ">
-        <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_mDkrcHsDEeWVM_sKoXvptg" coreExpressionId="com.minres.scviewer.e4.application.oneWaveSeleted"/>
         <parameters xmi:id="_rKkcwHcZEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.6" name="com.minres.scviewer.e4.application.command.navigateEventCommand.parameter.dir" value="next"/>
       </children>
       <children xsi:type="menu:HandledMenuItem" xmi:id="_kU1UAHcZEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.previousevent" label="Previous event" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/reverse_blue.png" command="_79rx4HabEeWwZ-9vrAR2UQ">
-        <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_mdnjIHsDEeWVM_sKoXvptg" coreExpressionId="com.minres.scviewer.e4.application.oneWaveSeleted"/>
         <parameters xmi:id="_tJOh0HcZEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.7" name="com.minres.scviewer.e4.application.command.navigateEventCommand.parameter.dir" value="prev"/>
       </children>
       <children xsi:type="menu:HandledMenuItem" xmi:id="_33qXsHabEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.nextchange" label="Next Tx" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/play_green.png" command="_Gn3lEHXKEeWwZ-9vrAR2UQ">
-        <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_m2RTsHsDEeWVM_sKoXvptg" coreExpressionId="com.minres.scviewer.e4.application.oneTxSeleted"/>
         <parameters xmi:id="_33qXsXabEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.4" name="com.minres.scviewer.e4.application.command.navigateTransCommand.parameter.dir" value="next"/>
       </children>
       <children xsi:type="menu:HandledMenuItem" xmi:id="_4ZeEQHabEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.previouschange" label="Previous Tx" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/reverse_green.png" command="_Gn3lEHXKEeWwZ-9vrAR2UQ">
-        <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_nReB8HsDEeWVM_sKoXvptg" coreExpressionId="com.minres.scviewer.e4.application.oneTxSeleted"/>
         <parameters xmi:id="_4ZeEQXabEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.5" name="com.minres.scviewer.e4.application.command.navigateTransCommand.parameter.dir" value="prev"/>
       </children>
     </menus>
