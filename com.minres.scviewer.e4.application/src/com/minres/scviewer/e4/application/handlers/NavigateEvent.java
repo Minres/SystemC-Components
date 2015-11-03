@@ -22,7 +22,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.IWaveform;
-import com.minres.scviewer.database.swt.GotoDirection;
+import com.minres.scviewer.database.ui.GotoDirection;
 import com.minres.scviewer.e4.application.parts.WaveformViewerPart;
 
 public class NavigateEvent {

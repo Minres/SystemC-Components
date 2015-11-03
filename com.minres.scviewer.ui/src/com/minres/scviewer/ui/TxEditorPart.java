@@ -48,8 +48,9 @@ import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IWaveformDbFactory;
 import com.minres.scviewer.database.IWaveformEvent;
-import com.minres.scviewer.database.swt.GotoDirection;
 import com.minres.scviewer.database.swt.TxDisplay;
+import com.minres.scviewer.database.ui.GotoDirection;
+import com.minres.scviewer.database.ui.IWaveformPanel;
 import com.minres.scviewer.ui.views.TxOutlinePage;
 
 public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPageContributor {
@@ -112,7 +113,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 		});
 		txDisplay = new TxDisplay(parent);
 		txDisplay.setMaxTime(0);
-		txDisplay.addPropertyChangeListener(TxDisplay.CURSOR_PROPERTY, new PropertyChangeListener() {
+		txDisplay.addPropertyChangeListener(IWaveformPanel.CURSOR_PROPERTY, new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 Long time = (Long) evt.getNewValue();

@@ -52,8 +52,9 @@ import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IWaveformDbFactory;
 import com.minres.scviewer.database.IWaveformEvent;
-import com.minres.scviewer.database.swt.GotoDirection;
 import com.minres.scviewer.database.swt.TxDisplay;
+import com.minres.scviewer.database.ui.GotoDirection;
+import com.minres.scviewer.database.ui.IWaveformPanel;
 import com.minres.scviewer.e4.application.internal.WaveStatusBarControl;
 
 public class WaveformViewerPart {
@@ -70,7 +71,7 @@ public class WaveformViewerPart {
 
 	public static final String WAVE_ACTION_ID = "com.minres.scviewer.ui.action.AddToWave";
 
-	private TxDisplay txDisplay;
+	private IWaveformPanel waveformPane;
 
 	@Inject	private IEventBroker eventBroker;
 
@@ -98,41 +99,41 @@ public class WaveformViewerPart {
 					myParent.getDisplay().syncExec(new Runnable() {						
 						@Override
 						public void run() {
-							txDisplay.setMaxTime(database.getMaxTime());
+							waveformPane.setMaxTime(database.getMaxTime());
 						}
 					});
 				}		
 			}
 		});
-		txDisplay = new TxDisplay(parent);
-		txDisplay.setMaxTime(0);
-		txDisplay.addPropertyChangeListener(TxDisplay.CURSOR_PROPERTY, new PropertyChangeListener() {
+		waveformPane = new TxDisplay(parent);
+		waveformPane.setMaxTime(0);
+		waveformPane.addPropertyChangeListener(IWaveformPanel.CURSOR_PROPERTY, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				Long time = (Long) evt.getNewValue();
-				eventBroker.post(WaveStatusBarControl.CURSOR_TIME, txDisplay.getScaledTime(time));
-				long marker=txDisplay.getActMarkerTime();
-				eventBroker.post(WaveStatusBarControl.MARKER_DIFF, txDisplay.getScaledTime(time-marker));
+				eventBroker.post(WaveStatusBarControl.CURSOR_TIME, waveformPane.getScaledTime(time));
+				long marker=waveformPane.getActMarkerTime();
+				eventBroker.post(WaveStatusBarControl.MARKER_DIFF, waveformPane.getScaledTime(time-marker));
 
 			}
 		});
-		txDisplay.addPropertyChangeListener(TxDisplay.MARKER_PROPERTY, new PropertyChangeListener() {
+		waveformPane.addPropertyChangeListener(IWaveformPanel.MARKER_PROPERTY, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				Long time = (Long) evt.getNewValue();
-				eventBroker.post(WaveStatusBarControl.MARKER_TIME, txDisplay.getScaledTime(time));
-				long cursor=txDisplay.getCursorTime();
-				eventBroker.post(WaveStatusBarControl.MARKER_DIFF, txDisplay.getScaledTime(cursor-time));
+				eventBroker.post(WaveStatusBarControl.MARKER_TIME, waveformPane.getScaledTime(time));
+				long cursor=waveformPane.getCursorTime();
+				eventBroker.post(WaveStatusBarControl.MARKER_DIFF, waveformPane.getScaledTime(cursor-time));
 			}
 		});
-		txDisplay.addSelectionChangedListener(new ISelectionChangedListener() {
+		waveformPane.addSelectionChangedListener(new ISelectionChangedListener() {
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
 				if(event.getSelection() instanceof IStructuredSelection)
 					selectionService.setSelection(event.getSelection());
 			}
 		});
-		zoomLevel=txDisplay.getZoomLevels();
+		zoomLevel=waveformPane.getZoomLevels();
 		filesToLoad=new ArrayList<File>();
 		persistedState = part.getPersistedState();
 		Integer files = persistedState.containsKey(DATABASE_FILE+"S")?Integer.parseInt(persistedState.get(DATABASE_FILE+"S")):0;
@@ -141,10 +142,10 @@ public class WaveformViewerPart {
 		}
 		if(filesToLoad.size()>0)
 			loadDatabase();
-		eventBroker.post(WaveStatusBarControl.ZOOM_LEVEL, zoomLevel[txDisplay.getZoomLevel()]);
-		menuService.registerContextMenu(txDisplay.getNameControl(), "com.minres.scviewer.e4.application.popupmenu.namecontext");
-		menuService.registerContextMenu(txDisplay.getValueControl(), "com.minres.scviewer.e4.application.popupmenu.namecontext");
-		menuService.registerContextMenu(txDisplay.getWaveformControl(), "com.minres.scviewer.e4.application.popupmenu.wavecontext");
+		eventBroker.post(WaveStatusBarControl.ZOOM_LEVEL, zoomLevel[waveformPane.getZoomLevel()]);
+		menuService.registerContextMenu(waveformPane.getNameControl(), "com.minres.scviewer.e4.application.popupmenu.namecontext");
+		menuService.registerContextMenu(waveformPane.getValueControl(), "com.minres.scviewer.e4.application.popupmenu.namecontext");
+		menuService.registerContextMenu(waveformPane.getWaveformControl(), "com.minres.scviewer.e4.application.popupmenu.wavecontext");
 	}
 
 	protected void loadDatabase() {
@@ -158,7 +159,7 @@ public class WaveformViewerPart {
 					for(File file: filesToLoad){
 						//TimeUnit.SECONDS.sleep(2);
 						database.load(file);
-						database.addPropertyChangeListener(txDisplay);
+						database.addPropertyChangeListener(waveformPane);
 						subMonitor.worked(1);
 						if(monitor.isCanceled()) return Status.CANCEL_STATUS;
 					}
@@ -180,7 +181,7 @@ public class WaveformViewerPart {
 					myParent.getDisplay().asyncExec(new Runnable() {						
 						@Override
 						public void run() {
-							txDisplay.setMaxTime(database.getMaxTime());
+							waveformPane.setMaxTime(database.getMaxTime());
 							restoreState();
 						}
 					});
@@ -234,9 +235,9 @@ public class WaveformViewerPart {
 			persistedState.put(DATABASE_FILE+index, file.getAbsolutePath());
 			index++;
 		}
-		persistedState.put(SHOWN_WAVEFORM+"S", Integer.toString(txDisplay.getStreamList().size()));
+		persistedState.put(SHOWN_WAVEFORM+"S", Integer.toString(waveformPane.getStreamList().size()));
 		index=0;
-		for(IWaveform<? extends IWaveformEvent> waveform:txDisplay.getStreamList()){
+		for(IWaveform<? extends IWaveformEvent> waveform:waveformPane.getStreamList()){
 			persistedState.put(SHOWN_WAVEFORM+index, waveform.getFullName());
 			index++;
 		}
@@ -250,17 +251,17 @@ public class WaveformViewerPart {
 			IWaveform<? extends IWaveformEvent> waveform = database.getStreamByName(persistedState.get(SHOWN_WAVEFORM+i));
 			if(waveform!=null) res.add(waveform);
 		}
-		if(res.size()>0) txDisplay.getStreamList().addAll(res);
+		if(res.size()>0) waveformPane.getStreamList().addAll(res);
 	}
 
 	private void updateAll() {
 		eventBroker.post(ACTIVE_WAVEFORMVIEW, this);
-		eventBroker.post(WaveStatusBarControl.ZOOM_LEVEL, zoomLevel[txDisplay.getZoomLevel()]);
-		long cursor=txDisplay.getCursorTime();
-		long marker=txDisplay.getActMarkerTime();
-		eventBroker.post(WaveStatusBarControl.CURSOR_TIME, txDisplay.getScaledTime(cursor));
-		eventBroker.post(WaveStatusBarControl.MARKER_TIME, txDisplay.getScaledTime(marker));
-		eventBroker.post(WaveStatusBarControl.MARKER_DIFF, txDisplay.getScaledTime(cursor-marker));
+		eventBroker.post(WaveStatusBarControl.ZOOM_LEVEL, zoomLevel[waveformPane.getZoomLevel()]);
+		long cursor=waveformPane.getCursorTime();
+		long marker=waveformPane.getActMarkerTime();
+		eventBroker.post(WaveStatusBarControl.CURSOR_TIME, waveformPane.getScaledTime(cursor));
+		eventBroker.post(WaveStatusBarControl.MARKER_TIME, waveformPane.getScaledTime(marker));
+		eventBroker.post(WaveStatusBarControl.MARKER_DIFF, waveformPane.getScaledTime(cursor-marker));
 	}
 
 	@Inject @Optional
@@ -327,20 +328,20 @@ public class WaveformViewerPart {
 		List<IWaveform<? extends IWaveformEvent>> streams= new LinkedList<>();
 		for(IWaveform<? extends IWaveformEvent> stream:iWaveforms)
 			streams.add(stream);
-		IStructuredSelection selection = (IStructuredSelection) txDisplay.getSelection();
+		IStructuredSelection selection = (IStructuredSelection) waveformPane.getSelection();
 		if(selection.size()==0)
-			txDisplay.getStreamList().addAll(streams);
+			waveformPane.getStreamList().addAll(streams);
 		else {
 			IWaveform<?> selectedStream = (selection.getFirstElement() instanceof ITx)?
 					((ITx)selection.getFirstElement()).getStream():(IWaveform<?>)selection.getFirstElement();
-			int index = txDisplay.getStreamList().indexOf(selectedStream);
+			int index = waveformPane.getStreamList().indexOf(selectedStream);
 			if(!insert) index++;
-			txDisplay.getStreamList().addAll(index, streams);
+			waveformPane.getStreamList().addAll(index, streams);
 		}
 	}
 
 	public void removeStreamFromList(IWaveform<? extends IWaveformEvent> obj){
-		txDisplay.getStreamList().remove(obj);
+		waveformPane.getStreamList().remove(obj);
 	}
 
 	public void removeStreamsFromList(IWaveform<? extends IWaveformEvent>[] iWaveforms){
@@ -349,43 +350,43 @@ public class WaveformViewerPart {
 	}
 
 	public List<IWaveform<? extends IWaveformEvent>> getStreamList(){
-		return txDisplay.getStreamList();
+		return waveformPane.getStreamList();
 	}
 
 	public void moveSelected(int i) {
-		txDisplay.moveSelected(i);
+		waveformPane.moveSelected(i);
 	}
 
 	public void moveSelection(GotoDirection direction) {
-		txDisplay.moveSelection(direction);
+		waveformPane.moveSelection(direction);
 	}
 
 	public void moveCursor(GotoDirection direction) {
-		txDisplay.moveCursor(direction);	}
+		waveformPane.moveCursor(direction);	}
 
 	public void setZoomLevel(Integer level) {
 		if(level<0) level=0;
 		if(level>zoomLevel.length-1) level=zoomLevel.length-1;
-		txDisplay.setZoomLevel(level);
+		waveformPane.setZoomLevel(level);
 		updateAll();	}
 
 	public void setZoomFit() {
-		txDisplay.setZoomLevel(6);		
+		waveformPane.setZoomLevel(6);		
 		updateAll();	}
 
 	public int getZoomLevel() {
-		return txDisplay.getZoomLevel();
+		return waveformPane.getZoomLevel();
 	}
 
 	public ISelection getSelection() {
-		return txDisplay.getSelection();
+		return waveformPane.getSelection();
 	}
 
 	public void setSelection(IStructuredSelection structuredSelection) {
-		txDisplay.setSelection(structuredSelection, true);
+		waveformPane.setSelection(structuredSelection, true);
 	}
 
 	public String getScaledTime(Long time) {
-		return txDisplay.getScaledTime(time);
+		return waveformPane.getScaledTime(time);
 	}
 }

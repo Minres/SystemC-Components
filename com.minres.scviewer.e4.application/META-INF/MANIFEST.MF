@@ -14,7 +14,7 @@ Require-Bundle: javax.inject;bundle-version="1.0.0",
  org.eclipse.e4.core.di;bundle-version="1.5.0",
  org.eclipse.e4.ui.di;bundle-version="1.1.0",
  org.eclipse.e4.core.contexts;bundle-version="1.4.0",
- com.minres.scviewer.database.swt;bundle-version="1.0.0",
+ com.minres.scviewer.database.ui.swt;bundle-version="1.0.0",
  com.minres.scviewer.database;bundle-version="1.0.0",
  org.eclipse.equinox.ds;bundle-version="1.4.300",
  org.eclipse.equinox.util;bundle-version="1.0.500",
@@ -26,7 +26,8 @@ Require-Bundle: javax.inject;bundle-version="1.0.0",
  com.google.guava,
  org.eclipse.equinox.preferences,
  org.eclipse.core.expressions,
- org.eclipse.e4.core.commands;bundle-version="0.11.0"
+ org.eclipse.e4.core.commands;bundle-version="0.11.0",
+ com.minres.scviewer.database.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: com.minres.scviewer.database,
  javax.inject;version="1.0.0"

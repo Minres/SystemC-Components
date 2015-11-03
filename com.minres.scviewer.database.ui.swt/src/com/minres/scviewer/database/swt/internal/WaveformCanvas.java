@@ -400,7 +400,7 @@ public class WaveformCanvas extends Canvas {
                 int top = entry.getKey() + trackHeight * tx.getConcurrencyIndex();
                 int bottom = top + trackHeight;
                 if (top < -origin.y) {
-                    setOrigin(origin.x, -top);
+                    setOrigin(origin.x, -(top-trackHeight));
                 } else if (bottom > (size.y - origin.y)) {
                     setOrigin(origin.x, size.y - bottom);
                 }

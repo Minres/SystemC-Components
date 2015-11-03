@@ -21,7 +21,7 @@ import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
 import com.minres.scviewer.database.ITx;
-import com.minres.scviewer.database.swt.GotoDirection;
+import com.minres.scviewer.database.ui.GotoDirection;
 import com.minres.scviewer.e4.application.parts.WaveformViewerPart;
 
 public class NavigateTrans {

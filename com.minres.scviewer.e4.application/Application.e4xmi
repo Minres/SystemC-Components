@@ -5,7 +5,7 @@
       <children xsi:type="advanced:Perspective" xmi:id="_95QGx3NmEeWBq8z1Dv39LA">
         <children xsi:type="basic:PartSashContainer" xmi:id="_95QGyHNmEeWBq8z1Dv39LA" horizontal="true">
           <children xsi:type="basic:PartSashContainer" xmi:id="_61hA8HTPEeWwZ-9vrAR2UQ" elementId="" containerData="20">
-            <children xsi:type="basic:Part" xmi:id="_95QGynNmEeWBq8z1Dv39LA" containerData="10" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.DesignBrowser" label="Design Browser"/>
+            <children xsi:type="basic:Part" xmi:id="_95QGynNmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.parts.DesignBrowser" containerData="10" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.DesignBrowser" label="Design Browser"/>
             <children xsi:type="basic:Part" xmi:id="_8KyKwHTPEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parts.WaveformList" containerData="9" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.WaveformListPart" label="Waveform List">
               <handlers xmi:id="_Bx9s0Hr-EeWVM_sKoXvptg" elementId="com.minres.scviewer.e4.application.handler.addWaveformCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.AddWaveformHandler" command="_2PehEHr9EeWVM_sKoXvptg"/>
               <menus xsi:type="menu:PopupMenu" xmi:id="_G6xAYHsDEeWVM_sKoXvptg" elementId="com.minres.scviewer.e4.application.parts.WaveformList.popupmenu">
@@ -30,7 +30,7 @@
           </children>
           <children xsi:type="basic:PartSashContainer" xmi:id="_uT9BIHgtEeWwZ-9vrAR2UQ" elementId="" containerData="80">
             <children xsi:type="basic:PartStack" xmi:id="_95QGyXNmEeWBq8z1Dv39LA" elementId="org.eclipse.editorss" containerData="75"/>
-            <children xsi:type="basic:Part" xmi:id="_vtfm8HgtEeWwZ-9vrAR2UQ" elementId="" containerData="25" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.TransactionDetails"/>
+            <children xsi:type="basic:Part" xmi:id="_vtfm8HgtEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parts.WaveformDetails" containerData="25" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.TransactionDetails" label="Waveform Details"/>
           </children>
         </children>
       </children>
@@ -74,7 +74,6 @@
         <children xsi:type="menu:HandledMenuItem" xmi:id="_95QGxXNmEeWBq8z1Dv39LA" label="About" command="_95PfxnNmEeWBq8z1Dv39LA"/>
       </children>
     </mainMenu>
-    <sharedElements xsi:type="basic:Part" xmi:id="_Oae6kHcvEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.part.0"/>
     <trimBars xmi:id="_95QGy3NmEeWBq8z1Dv39LA" elementId="org.eclipse.ui.main.toolbar">
       <children xsi:type="menu:ToolBar" xmi:id="_95QGzHNmEeWBq8z1Dv39LA" elementId="toolbar:org.eclipse.ui.main.toolbar">
         <children xsi:type="menu:HandledToolItem" xmi:id="_95QGzXNmEeWBq8z1Dv39LA" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/folder_database.png" command="_95PfwHNmEeWBq8z1Dv39LA"/>

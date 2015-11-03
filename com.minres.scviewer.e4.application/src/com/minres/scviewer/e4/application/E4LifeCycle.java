@@ -94,13 +94,14 @@ public class E4LifeCycle {
 		@Inject EModelService modelService;
 		@Inject EPartService partService;
 		public void openViewForFile(String name){
+			File file = new File(name);
 			MPart part = partService.createPart("com.minres.scviewer.e4.application.partdescriptor.waveformviewer");
-			part.setLabel(name);
+			part.setLabel(file.getName());
 			MPartStack partStack = (MPartStack)modelService.find("org.eclipse.editorss", app);
 			partStack.getChildren().add(part);
 			partService.showPart(part, PartState.ACTIVATE);
 			IEclipseContext ctx=part.getContext();
-			ctx.modify("input", new File(name));
+			ctx.modify("input", file);
 			ctx.declareModifiable("input");
 		}
 	}

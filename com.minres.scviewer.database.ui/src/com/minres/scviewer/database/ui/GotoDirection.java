@@ -8,6 +8,6 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.database.swt;
+package com.minres.scviewer.database.ui;
 
 public enum GotoDirection {PREV, NEXT}

@@ -45,7 +45,8 @@ http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.eclipse.swt"/>
       <import plugin="org.apache.ant"/>
       <import plugin="com.google.guava" version="15.0.0" match="greaterOrEqual"/>
-      <import plugin="com.minres.scviewer.database.swt" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="com.minres.scviewer.database.ui" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="com.minres.scviewer.database.ui.swt" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.expressions" version="3.4.600" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jface"/>
       <import plugin="org.junit"/>
@@ -88,7 +89,14 @@ http://www.eclipse.org/legal/epl-v10.html
          version="0.0.0"/>
 
    <plugin
-         id="com.minres.scviewer.database.swt"
+         id="com.minres.scviewer.database.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.minres.scviewer.database.ui.swt"
          download-size="0"
          install-size="0"
          version="0.0.0"

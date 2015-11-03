@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Database UI
+Bundle-SymbolicName: com.minres.scviewer.database.ui
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: MINRES Technologies GmbH
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: com.minres.scviewer.database.ui
+Require-Bundle: com.minres.scviewer.database,
+ org.eclipse.jface

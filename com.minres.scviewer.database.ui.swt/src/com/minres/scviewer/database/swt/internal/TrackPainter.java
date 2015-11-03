@@ -11,6 +11,7 @@
 package com.minres.scviewer.database.swt.internal;
 
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.GC;
@@ -35,18 +36,19 @@ public class TrackPainter implements IPainter {
 		gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TRACK_BG_EVEN.ordinal()]);
 		gc.setFillRule(SWT.FILL_EVEN_ODD);
 		gc.fillRectangle(area);
+		TreeMap<Integer, IWaveformPainter> offsets = this.waveCanvas.trackVerticalOffset;
 		if(this.waveCanvas.streams.size()>0){
-			Integer firstKey=this.waveCanvas.trackVerticalOffset.floorKey(area.y);
-			if(firstKey==null) firstKey=this.waveCanvas.trackVerticalOffset.firstKey();
-			Integer lastKey = this.waveCanvas.trackVerticalOffset.floorKey(area.y+area.height);
+			Integer firstKey=offsets.floorKey(area.y);
+			if(firstKey==null) firstKey=offsets.firstKey();
+			Integer lastKey = offsets.floorKey(area.y+area.height);
 			Rectangle subArea = new Rectangle(area.x, 0, area.width, 0);
 			if(lastKey==firstKey){
 				subArea.y=firstKey;
-				IWaveformPainter p = this.waveCanvas.trackVerticalOffset.get(firstKey);
+				IWaveformPainter p = offsets.get(firstKey);
 				subArea.height=p.getMinHeight();
 				p.paintArea(gc, subArea);
 			}else{
-				for(Entry<Integer, IWaveformPainter> entry : this.waveCanvas.trackVerticalOffset.subMap(firstKey, true, lastKey, true).entrySet()){
+				for(Entry<Integer, IWaveformPainter> entry : offsets.subMap(firstKey, true, lastKey, true).entrySet()){
 					subArea.y=entry.getKey();
 					subArea.height=entry.getValue().getMinHeight();
 					entry.getValue().paintArea(gc, subArea);

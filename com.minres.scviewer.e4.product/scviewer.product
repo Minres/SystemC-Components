@@ -38,8 +38,9 @@
       <plugin id="com.ibm.icu"/>
       <plugin id="com.minres.scviewer.database"/>
       <plugin id="com.minres.scviewer.database.sqlite"/>
-      <plugin id="com.minres.scviewer.database.swt"/>
       <plugin id="com.minres.scviewer.database.text"/>
+      <plugin id="com.minres.scviewer.database.ui"/>
+      <plugin id="com.minres.scviewer.database.ui.swt"/>
       <plugin id="com.minres.scviewer.database.vcd"/>
       <plugin id="com.minres.scviewer.e4.application"/>
       <plugin id="javax.annotation"/>

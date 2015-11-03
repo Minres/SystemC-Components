@@ -39,7 +39,7 @@ public class OpenHandler {
 //				part.setContributionURI("bundleclass://com.minres.scviewer.e4.application/"+
 //						WaveformViewerPart.class.getName());
 				MPart part = partService .createPart("com.minres.scviewer.e4.application.partdescriptor.waveformviewer");
-				part.setLabel(fileName);
+				part.setLabel(file.getName());
 								
 
 				MPartStack partStack = (MPartStack)modelService.find("org.eclipse.editorss", app);
