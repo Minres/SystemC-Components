@@ -48,21 +48,26 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.widgets.Composite;
 
 import com.minres.scviewer.database.ITx;
+import com.minres.scviewer.database.ITxEvent;
+import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IWaveformDbFactory;
 import com.minres.scviewer.database.IWaveformEvent;
-import com.minres.scviewer.database.swt.TxDisplay;
+import com.minres.scviewer.database.swt.WaveformViewerFactory;
 import com.minres.scviewer.database.ui.GotoDirection;
-import com.minres.scviewer.database.ui.IWaveformPanel;
+import com.minres.scviewer.database.ui.IWaveformViewer;
+import com.minres.scviewer.database.ui.TrackEntry;
 import com.minres.scviewer.e4.application.internal.WaveStatusBarControl;
 
 public class WaveformViewerPart {
 
 	public static final String ACTIVE_WAVEFORMVIEW="Active_Waveform_View";
+	
 	public static final String ADD_WAVEFORM="AddWaveform";
 
 	protected static final String DATABASE_FILE = "DATABASE_FILE";
+
 	protected static final String SHOWN_WAVEFORM = "SHOWN_WAVEFORM";
 
 	private String[] zoomLevel;
@@ -71,7 +76,9 @@ public class WaveformViewerPart {
 
 	public static final String WAVE_ACTION_ID = "com.minres.scviewer.ui.action.AddToWave";
 
-	private IWaveformPanel waveformPane;
+	WaveformViewerFactory factory = new WaveformViewerFactory();
+
+	private IWaveformViewer waveformPane;
 
 	@Inject	private IEventBroker eventBroker;
 
@@ -105,9 +112,9 @@ public class WaveformViewerPart {
 				}		
 			}
 		});
-		waveformPane = new TxDisplay(parent);
+		waveformPane = factory.createPanel(parent);
 		waveformPane.setMaxTime(0);
-		waveformPane.addPropertyChangeListener(IWaveformPanel.CURSOR_PROPERTY, new PropertyChangeListener() {
+		waveformPane.addPropertyChangeListener(IWaveformViewer.CURSOR_PROPERTY, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				Long time = (Long) evt.getNewValue();
@@ -117,7 +124,7 @@ public class WaveformViewerPart {
 
 			}
 		});
-		waveformPane.addPropertyChangeListener(IWaveformPanel.MARKER_PROPERTY, new PropertyChangeListener() {
+		waveformPane.addPropertyChangeListener(IWaveformViewer.MARKER_PROPERTY, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				Long time = (Long) evt.getNewValue();
@@ -237,8 +244,8 @@ public class WaveformViewerPart {
 		}
 		persistedState.put(SHOWN_WAVEFORM+"S", Integer.toString(waveformPane.getStreamList().size()));
 		index=0;
-		for(IWaveform<? extends IWaveformEvent> waveform:waveformPane.getStreamList()){
-			persistedState.put(SHOWN_WAVEFORM+index, waveform.getFullName());
+		for(TrackEntry trackEntry:waveformPane.getStreamList()){
+			persistedState.put(SHOWN_WAVEFORM+index, trackEntry.waveform.getFullName());
 			index++;
 		}
 	} 
@@ -246,10 +253,10 @@ public class WaveformViewerPart {
 	protected void restoreState() {
 		updateAll();
 		Integer waves = persistedState.containsKey(SHOWN_WAVEFORM+"S")?Integer.parseInt(persistedState.get(SHOWN_WAVEFORM+"S")):0;
-		List<IWaveform<? extends IWaveformEvent>> res = new LinkedList<>();
+		List<TrackEntry> res = new LinkedList<>();
 		for(int i=0; i<waves;i++){
 			IWaveform<? extends IWaveformEvent> waveform = database.getStreamByName(persistedState.get(SHOWN_WAVEFORM+i));
-			if(waveform!=null) res.add(waveform);
+			if(waveform!=null) res.add(new TrackEntry(waveform));
 		}
 		if(res.size()>0) waveformPane.getStreamList().addAll(res);
 	}
@@ -325,32 +332,30 @@ public class WaveformViewerPart {
 	}
 
 	public void addStreamsToList(IWaveform<? extends IWaveformEvent>[] iWaveforms, boolean insert){
-		List<IWaveform<? extends IWaveformEvent>> streams= new LinkedList<>();
+		List<TrackEntry> streams= new LinkedList<>();
 		for(IWaveform<? extends IWaveformEvent> stream:iWaveforms)
-			streams.add(stream);
+			streams.add(new TrackEntry(stream));
 		IStructuredSelection selection = (IStructuredSelection) waveformPane.getSelection();
-		if(selection.size()==0)
+		if(selection.size()==0){
 			waveformPane.getStreamList().addAll(streams);
-		else {
-			IWaveform<?> selectedStream = (selection.getFirstElement() instanceof ITx)?
-					((ITx)selection.getFirstElement()).getStream():(IWaveform<?>)selection.getFirstElement();
-			int index = waveformPane.getStreamList().indexOf(selectedStream);
+		}else {
+			Object first=selection.getFirstElement();
+			IWaveform<?> stream = (first instanceof ITx)?((ITx)first).getStream():(IWaveform<?>)first;
+			TrackEntry trackEntry=waveformPane.getEntryForStream(stream);
+			int index = waveformPane.getStreamList().indexOf(trackEntry);
 			if(!insert) index++;
 			waveformPane.getStreamList().addAll(index, streams);
 		}
 	}
 
-	public void removeStreamFromList(IWaveform<? extends IWaveformEvent> obj){
-		waveformPane.getStreamList().remove(obj);
+	public void removeStreamFromList(IWaveform<? extends IWaveformEvent> stream){
+		TrackEntry trackEntry=waveformPane.getEntryForStream(stream);
+		waveformPane.getStreamList().remove(trackEntry);
 	}
 
 	public void removeStreamsFromList(IWaveform<? extends IWaveformEvent>[] iWaveforms){
 		for(IWaveform<? extends IWaveformEvent> stream:iWaveforms)
 			removeStreamFromList(stream);
-	}
-
-	public List<IWaveform<? extends IWaveformEvent>> getStreamList(){
-		return waveformPane.getStreamList();
 	}
 
 	public void moveSelected(int i) {

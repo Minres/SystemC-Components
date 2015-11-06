@@ -20,29 +20,28 @@ import org.eclipse.swt.graphics.Rectangle;
 
 import com.minres.scviewer.database.ISignal;
 import com.minres.scviewer.database.ISignalChange;
-import com.minres.scviewer.database.IWaveformEvent;
+import com.minres.scviewer.database.ui.TrackEntry;
 import com.minres.scviewer.database.ISignalChangeMulti;
 import com.minres.scviewer.database.ISignalChangeSingle;
+import com.minres.scviewer.database.IWaveform;
 
-public class SignalPainter implements IWaveformPainter  {
+public class SignalPainter extends TrackPainter  {
 	
 	/**
 	 * 
 	 */
 	private final WaveformCanvas waveCanvas;
 	private ISignal<? extends ISignalChange> signal;
-	private int height;
-	private boolean even;
 
-	public SignalPainter(WaveformCanvas txDisplay, boolean even, int height, ISignal<? extends IWaveformEvent> signal) {
+	@SuppressWarnings("unchecked")
+	public SignalPainter(WaveformCanvas txDisplay, boolean even, TrackEntry trackEntry) {
+		super(trackEntry, even);
 		this.waveCanvas = txDisplay;
-		this.signal=signal;
-		this.height=height;
-		this.even=even;
+		this.signal=trackEntry.getSignal();
 	}
 
 	public void paintArea(GC gc, Rectangle area) {	
-		if(waveCanvas.currentWaveformSelection!=null && waveCanvas.currentWaveformSelection.equals(signal))
+		if(trackEntry.selected)
 			gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TRACK_BG_HIGHLITE.ordinal()]);
 		else
 			gc.setBackground(this.waveCanvas.colors[even?WaveformCanvas.Colors.TRACK_BG_EVEN.ordinal():WaveformCanvas.Colors.TRACK_BG_ODD.ordinal()]);
@@ -139,10 +138,6 @@ public class SignalPainter implements IWaveformPainter  {
 		}
 	}
 
-	@Override
-	public int getMinHeight() {
-		return height;
-	}
 
 	public ISignal<? extends ISignalChange> getSignal() {
 		return signal;

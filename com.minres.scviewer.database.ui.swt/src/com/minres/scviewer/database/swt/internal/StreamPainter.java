@@ -24,34 +24,36 @@ import org.eclipse.swt.graphics.Rectangle;
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.ITxEvent;
 import com.minres.scviewer.database.ITxStream;
+import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.database.ui.TrackEntry;
 
-public class StreamPainter implements IWaveformPainter{
+public class StreamPainter extends TrackPainter{
 
 	/**
 	 * 
 	 */
 	private final WaveformCanvas waveCanvas;
 	private ITxStream<? extends ITxEvent> stream;
-	private int height, upper, txHeight;
+	private int txBase, txHeight;
 	private int totalHeight;
 	private boolean even;
 	private TreeSet<ITx> seenTx;
 
-	public StreamPainter(WaveformCanvas txDisplay, boolean even, int height, ITxStream<? extends ITxEvent> stream) {
-		this.waveCanvas = txDisplay;
-		this.stream=stream;
-		this.height=height;
-		this.upper=this.waveCanvas.getTrackHeight()/5;
-		this.txHeight=3*this.waveCanvas.getTrackHeight()/5;
-		this.totalHeight=stream.getMaxConcurrency()*this.waveCanvas.getTrackHeight();
-		this.even=even;
+	@SuppressWarnings("unchecked")
+	public StreamPainter(WaveformCanvas waveCanvas, boolean even, TrackEntry trackEntry) {
+		super(trackEntry, even);
+		this.waveCanvas = waveCanvas;
+		this.stream=trackEntry.getStream();
 		this.seenTx=new TreeSet<ITx>();
 	}
 
 	@SuppressWarnings("unchecked")
 	public void paintArea(GC gc, Rectangle area) {
 		if(stream.getEvents().size()==0) return;
-		if(waveCanvas.currentWaveformSelection!=null && waveCanvas.currentWaveformSelection.equals(stream))
+		int trackHeight=trackEntry.height/stream.getMaxConcurrency();
+		txBase=trackHeight/5;
+		txHeight=trackHeight*3/5;
+		if(trackEntry.selected)
 			gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TRACK_BG_HIGHLITE.ordinal()]);
 		else
 			gc.setBackground(this.waveCanvas.colors[even?WaveformCanvas.Colors.TRACK_BG_EVEN.ordinal():WaveformCanvas.Colors.TRACK_BG_ODD.ordinal()]);
@@ -65,7 +67,7 @@ public class StreamPainter implements IWaveformPainter{
         gc.setLineStyle(SWT.LINE_SOLID);
         gc.setLineWidth(1);
         gc.setForeground(this.waveCanvas.colors[WaveformCanvas.Colors.LINE.ordinal()]);
-        for(int y1=area.y+this.waveCanvas.getTrackHeight()/2; y1<area.y+totalHeight; y1+=this.waveCanvas.getTrackHeight())
+        for(int y1=area.y+trackHeight/2; y1<area.y+trackEntry.height; y1+=trackHeight)
         	gc.drawLine(area.x, y1, area.x+area.width, y1);
 		if(firstTx==lastTx)
 			for(ITxEvent txEvent:(Collection<?  extends ITxEvent>)firstTx.getValue())
@@ -101,7 +103,7 @@ public class StreamPainter implements IWaveformPainter{
 	protected void drawTx(GC gc, Rectangle area, ITx tx) {
 		int offset = tx.getConcurrencyIndex()*this.waveCanvas.getTrackHeight();
 		Rectangle bb = new Rectangle(
-				(int)(tx.getBeginTime()/this.waveCanvas.getScaleFactor()), area.y+offset+upper,
+				(int)(tx.getBeginTime()/this.waveCanvas.getScaleFactor()), area.y+offset+txBase,
 				(int)((tx.getEndTime()-tx.getBeginTime())/this.waveCanvas.getScaleFactor()), txHeight);
 		if(bb.x+bb.width<area.x || bb.x>area.x+area.width) return;
 		if(bb.width==0){
@@ -115,12 +117,7 @@ public class StreamPainter implements IWaveformPainter{
 		}
 	}
 
-	@Override
-	public int getMinHeight() {
-		return height;
-	}
-
-	public Object getClicked(Point point) {
+	public ITx getClicked(Point point) {
 		int lane=point.y/waveCanvas.getTrackHeight();
 		Entry<Long, List<ITxEvent>> firstTx=stream.getEvents().floorEntry(point.x*waveCanvas.getScaleFactor());
 		if(firstTx!=null){
@@ -130,7 +127,7 @@ public class StreamPainter implements IWaveformPainter{
 				firstTx=stream.getEvents().lowerEntry(firstTx.getKey());
 			}while(firstTx!=null);
 		}
-		return stream;
+		return null;
 	}
 
 	public ITxStream<? extends ITxEvent> getStream() {

@@ -8,6 +8,4 @@
   	<relativePath>../com.minres.scviewer.parent</relativePath>
   </parent>
   <packaging>eclipse-plugin</packaging>
-  <version>1.0.0-SNAPSHOT</version>
-  <groupId>com.minres.scviewer</groupId>
-</project>
+  </project>

@@ -10,4 +10,4 @@
  *******************************************************************************/
 package com.minres.scviewer.database.ui;
 
-public enum GotoDirection {PREV, NEXT}
+public enum GotoDirection {PREV, NEXT, UP, DOWN}

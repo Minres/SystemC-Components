@@ -8,16 +8,19 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.database.swt.internal;
+package com.minres.scviewer.database.swt;
 
-import com.minres.scviewer.database.ui.TrackEntry;
+import org.eclipse.swt.widgets.Composite;
 
-public interface IWaveformPainter extends IPainter {
-	
-	public int getHeight();
+import com.minres.scviewer.database.swt.internal.WaveformViewer;
+import com.minres.scviewer.database.ui.IWaveformViewer;
+import com.minres.scviewer.database.ui.IWaveformViewerFactory;
 
-	public int getVerticalOffset();
+public class WaveformViewerFactory implements IWaveformViewerFactory {
 
-	public TrackEntry getTrackEntry();
+	@Override
+	public IWaveformViewer createPanel(Composite parent) {
+		return new WaveformViewer(parent);
+	}
 
 }

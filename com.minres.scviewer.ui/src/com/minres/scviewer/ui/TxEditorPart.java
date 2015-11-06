@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -48,9 +49,10 @@ import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IWaveformDbFactory;
 import com.minres.scviewer.database.IWaveformEvent;
-import com.minres.scviewer.database.swt.TxDisplay;
+import com.minres.scviewer.database.swt.WaveformViewerFactory;
 import com.minres.scviewer.database.ui.GotoDirection;
-import com.minres.scviewer.database.ui.IWaveformPanel;
+import com.minres.scviewer.database.ui.IWaveformViewer;
+import com.minres.scviewer.database.ui.TrackEntry;
 import com.minres.scviewer.ui.views.TxOutlinePage;
 
 public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPageContributor {
@@ -77,7 +79,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 
 	public static final String WAVE_ACTION_ID = "com.minres.scviewer.ui.action.AddToWave";
 
-	private TxDisplay txDisplay;
+	private IWaveformViewer txDisplay;
 
 	/** This is the root of the editor's model. */
 	private IWaveformDb database;
@@ -111,9 +113,10 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 				}		
 			}
 		});
-		txDisplay = new TxDisplay(parent);
+		WaveformViewerFactory factory = new WaveformViewerFactory();
+		txDisplay = factory.createPanel(parent);
 		txDisplay.setMaxTime(0);
-		txDisplay.addPropertyChangeListener(IWaveformPanel.CURSOR_PROPERTY, new PropertyChangeListener() {
+		txDisplay.addPropertyChangeListener(IWaveformViewer.CURSOR_PROPERTY, new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 Long time = (Long) evt.getNewValue();
@@ -237,11 +240,13 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 		txDisplay.setMaxTime(database.getMaxTime());
 		if(TxEditorPart.this.getEditorInput() instanceof TxEditorInput &&
 				((TxEditorInput) TxEditorPart.this.getEditorInput()).getStreamNames().size()>0){
+			LinkedList<TrackEntry> entries= new LinkedList<>();
 			for(String streamName:((TxEditorInput) TxEditorPart.this.getEditorInput()).getStreamNames()){
 				IWaveform<? extends IWaveformEvent> stream = database.getStreamByName(streamName);
 				if(stream!=null)
-					txDisplay.getStreamList().add(stream);
+					entries.add(new TrackEntry(stream));
 			}
+			txDisplay.getStreamList().addAll(entries);
 		}
 	}
 
@@ -331,9 +336,9 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 	public void addStreamToList(IWaveform<? extends IWaveformEvent> obj){
 		if(getEditorInput() instanceof TxEditorInput && !((TxEditorInput) getEditorInput()).getStreamNames().contains(obj.getFullName())){
 			((TxEditorInput) getEditorInput()).getStreamNames().add(obj.getFullName());
-			txDisplay.getStreamList().add(obj);
+			txDisplay.getStreamList().add(new TrackEntry(obj));
 		} else
-			txDisplay.getStreamList().add(obj);
+			txDisplay.getStreamList().add(new TrackEntry(obj));
 
 	}
 
@@ -355,7 +360,7 @@ public class TxEditorPart extends EditorPart implements ITabbedPropertySheetPage
 			removeStreamFromList(stream);
 	}
 
-	public List<IWaveform<? extends IWaveformEvent>> getStreamList(){
+	public List<TrackEntry> getStreamList(){
 		return txDisplay.getStreamList();
 	}
 

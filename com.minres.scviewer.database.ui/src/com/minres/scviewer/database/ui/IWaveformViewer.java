@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2015 MINRES Technologies GmbH and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MINRES Technologies GmbH - initial API and implementation
+ *******************************************************************************/
 package com.minres.scviewer.database.ui;
 
 import java.beans.PropertyChangeListener;
@@ -9,9 +19,8 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.swt.widgets.Control;
 
 import com.minres.scviewer.database.IWaveform;
-import com.minres.scviewer.database.IWaveformEvent;
 
-public interface IWaveformPanel extends PropertyChangeListener, ISelectionProvider{
+public interface IWaveformViewer extends PropertyChangeListener, ISelectionProvider{
 
 	String CURSOR_PROPERTY = "cursor_time";
 	String MARKER_PROPERTY = "marker_time";
@@ -38,8 +47,10 @@ public interface IWaveformPanel extends PropertyChangeListener, ISelectionProvid
 
 	void moveCursor(GotoDirection direction);
 
-	List<IWaveform<? extends IWaveformEvent>> getStreamList();
+	List<TrackEntry> getStreamList();
 
+	public TrackEntry getEntryForStream(IWaveform<?> source);
+	
 	void moveSelected(int i);
 
 	long getMaxTime();

@@ -54,7 +54,7 @@ public class CursorPainter implements IPainter {
 	}
 
 	public void paintArea(GC gc, Rectangle area) {			
-		if(this.waveCanvas.streams.size()>0){
+		if(this.waveCanvas.painterList.size()>0){
 			long scaleFactor=waveCanvas.getScaleFactor();
 			int x = (int) (time/scaleFactor);
 			int top = id<0?area.y:area.y+15;

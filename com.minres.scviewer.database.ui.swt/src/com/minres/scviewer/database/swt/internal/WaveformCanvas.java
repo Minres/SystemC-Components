@@ -10,11 +10,11 @@
  *******************************************************************************/
 package com.minres.scviewer.database.swt.internal;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.TreeMap;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlAdapter;
@@ -54,25 +54,38 @@ public class WaveformCanvas extends Canvas {
     Color[] colors = new Color[Colors.values().length];
 
     private int trackHeight = 50;
+    
     private long scaleFactor = 1000000L; // 1ns
+    
     String unit="ns";
+    
     private int level = 12;
+    
     public final static String[] unitString={"fs", "ps", "ns", "µs", "ms"};//, "s"};
+    
     public final static int[] unitMultiplier={1, 3, 10, 30, 100, 300};
+    
     private long maxTime;
+    
     protected Point origin; /* original size */
+    
     protected Transform transform;
+    
     protected int rulerHeight=40;
+    
     protected List<IPainter> painterList;
-    TreeMap<Integer, IWaveformPainter> trackVerticalOffset;
-
-    protected List<IWaveform<? extends IWaveformEvent>> streams;
-
+    
     ITx currentSelection;
-    IWaveform<? extends IWaveformEvent> currentWaveformSelection;
-
+    
     private List<SelectionAdapter> selectionListeners;
 
+	private RulerPainter rulerPainter;
+
+	private TrackAreaPainter trackAreaPainter;
+
+	private List<CursorPainter> cursorPainters;
+
+	private HashMap<IWaveform<?>, IWaveformPainter> wave2painterMap;
     /**
      * Constructor for ScrollableCanvas.
      * 
@@ -96,12 +109,31 @@ public class WaveformCanvas extends Canvas {
         painterList = new LinkedList<IPainter>();
         origin = new Point(0, 0);
         transform = new Transform(getDisplay());
-        trackVerticalOffset = new TreeMap<Integer, IWaveformPainter>();
         selectionListeners = new LinkedList<>();
+        cursorPainters= new ArrayList<>();
+        wave2painterMap=new HashMap<>();
+        
         initScrollBars();
         initColors(null);
+		// order is important: it is bottom to top
+        trackAreaPainter=new TrackAreaPainter(this);
+        painterList.add(trackAreaPainter);
+        rulerPainter=new RulerPainter(this, getDisplay().getSystemColor(SWT.COLOR_BLACK), getDisplay().getSystemColor(SWT.COLOR_WHITE));
+        painterList.add(rulerPainter);
+		CursorPainter cp = new CursorPainter(this, scaleFactor * 10, cursorPainters.size()-1);
+		painterList.add(cp);
+		cursorPainters.add(cp);
+		CursorPainter marker = new CursorPainter(this, scaleFactor * 100, cursorPainters.size()-1);
+		painterList.add(marker);
+		cursorPainters.add(marker);
+		wave2painterMap=new HashMap<>();
     }
 
+	public void addCursoPainter(CursorPainter cursorPainter){
+		painterList.add(cursorPainter);
+		cursorPainters.add(cursorPainter);
+	}
+	
     private void initColors(HashMap<Colors, RGB> colourMap) {
         Display d = getDisplay();
         if (colourMap != null) {
@@ -131,14 +163,6 @@ public class WaveformCanvas extends Canvas {
             colors[Colors.MARKER.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY);
             colors[Colors.MARKER_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
         }
-    }
-
-    public List<IWaveform<? extends IWaveformEvent>> getStreams() {
-        return streams;
-    }
-
-    public void setStreams(List<IWaveform<? extends IWaveformEvent>> streams) {
-        this.streams = streams;
     }
 
     public Point getOrigin() {
@@ -229,17 +253,23 @@ public class WaveformCanvas extends Canvas {
         redraw();
     }
 
-    public void clearAllWavefromPainter() {
-        trackVerticalOffset.clear();
+    public void clearAllWaveformPainter() {
+        trackAreaPainter.getTrackVerticalOffset().clear();
+        wave2painterMap.clear();
         syncScrollBars();
     }
 
-    public void addWavefromPainter(int yoffs, IWaveformPainter painter) {
-        trackVerticalOffset.put(yoffs+rulerHeight, painter);
+    public void addWaveformPainter(IWaveformPainter painter) {
+        trackAreaPainter.addTrackPainter(painter);
+        wave2painterMap.put(painter.getTrackEntry().waveform, painter);
         syncScrollBars();
     }
 
-    /**
+    public List<CursorPainter> getCursorPainters() {
+		return cursorPainters;
+	}
+
+	/**
      * Dispose the garbage here
      */
     public void dispose() {
@@ -278,15 +308,12 @@ public class WaveformCanvas extends Canvas {
      * range, it will correct it. This function considers only following factors
      * :<b> transform, image size, client area</b>.
      */
-    private void syncScrollBars() {
+    public void syncScrollBars() {
         if (painterList.size() == 0) {
             redraw();
             return;
         }
-        int height = 1;
-        if (trackVerticalOffset.size() > 0)
-            height = trackVerticalOffset.lastKey() + trackVerticalOffset.lastEntry().getValue().getMinHeight();
-
+        int height = trackAreaPainter.getHeight();
         int width = (int) (maxTime / scaleFactor);
         ScrollBar horizontal = getHorizontalBar();
         horizontal.setIncrement((int) (getClientArea().width / 100));
@@ -334,7 +361,7 @@ public class WaveformCanvas extends Canvas {
         transform.translate(origin.x, origin.y);
         gc.setTransform(transform);
         gc.setClipping(clientRect);
-        if (painterList.size() > 0 && trackVerticalOffset.size() > 0) {
+        if (painterList.size() > 0 ) {
             for (IPainter painter : painterList)
                 painter.paintArea(gc, clientRect);
         } else {
@@ -346,15 +373,17 @@ public class WaveformCanvas extends Canvas {
     public List<Object> getClicked(Point point) {
     	LinkedList<Object> result=new LinkedList<>();
         for (IPainter p : Lists.reverse(painterList)) {
-            if (p instanceof TrackPainter) {
+            if (p instanceof TrackAreaPainter) {
                 int y = point.y - origin.y;
                 int x = point.x - origin.x;
-                Entry<Integer, IWaveformPainter> entry = trackVerticalOffset.floorEntry(y);
+                Entry<Integer, IWaveformPainter> entry = trackAreaPainter.getTrackVerticalOffset().floorEntry(y);
                 if (entry != null) {
                     if (entry.getValue() instanceof StreamPainter) {
-                    	result.add(((StreamPainter) entry.getValue()).getClicked(new Point(x, y - entry.getKey())));
-                    } else if (entry.getValue() instanceof SignalPainter)
-                    	result.add(((SignalPainter) entry.getValue()).getSignal());
+                    	ITx tx = ((StreamPainter) entry.getValue()).getClicked(new Point(x, y - entry.getKey()));
+                    	if(tx!=null)
+                    		result.add(tx);
+                    } 
+                    result.add(entry.getValue().getTrackEntry());
                 }
             } else if (p instanceof CursorPainter) {
                 if (Math.abs(point.x - origin.x - ((CursorPainter) p).getTime()/scaleFactor) < 2) {
@@ -368,7 +397,7 @@ public class WaveformCanvas extends Canvas {
     public List<Object> getEntriesAtPosition(IWaveform<? extends IWaveformEvent> iWaveform, int i) {
     	LinkedList<Object> result=new LinkedList<>();
         int x = i - origin.x;
-        for(IPainter p: trackVerticalOffset.values()){
+        for(IPainter p: wave2painterMap.values()){
         	if (p instanceof StreamPainter && ((StreamPainter)p).getStream()==iWaveform) {
         		result.add(((StreamPainter) p).getClicked(new Point(x, trackHeight/2)));
         	}
@@ -376,9 +405,8 @@ public class WaveformCanvas extends Canvas {
         return result;
     }
 
-    public void setSelected(ITx currentSelection, IWaveform<? extends IWaveformEvent> currentWaveformSelection) {
+    public void setSelected(ITx currentSelection) {
         this.currentSelection = currentSelection;
-        this.currentWaveformSelection = currentWaveformSelection;
         if (currentSelection != null)
             reveal(currentSelection);
         redraw();
@@ -395,9 +423,9 @@ public class WaveformCanvas extends Canvas {
         } else if (higher > (size.x - origin.x)) {
             setOrigin(size.x - higher, origin.y);
         }
-        for (Entry<Integer, IWaveformPainter> entry : trackVerticalOffset.entrySet()) {
-            if (entry.getValue() instanceof StreamPainter && ((StreamPainter) entry.getValue()).getStream() == tx.getStream()) {
-                int top = entry.getKey() + trackHeight * tx.getConcurrencyIndex();
+        for (IWaveformPainter painter : wave2painterMap.values()) {
+            if (painter instanceof StreamPainter && ((StreamPainter) painter).getStream() == tx.getStream()) {
+                int top = painter.getVerticalOffset() + trackHeight * tx.getConcurrencyIndex();
                 int bottom = top + trackHeight;
                 if (top < -origin.y) {
                     setOrigin(origin.x, -(top-trackHeight));
