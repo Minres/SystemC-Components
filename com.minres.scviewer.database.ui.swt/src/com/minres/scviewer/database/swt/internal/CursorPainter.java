@@ -14,7 +14,10 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Rectangle;
 
-public class CursorPainter implements IPainter {
+import com.minres.scviewer.database.ui.ICursor;
+import com.minres.scviewer.database.ui.WaveformColors;
+
+public class CursorPainter implements IPainter, ICursor {
 
 	/**
 	 * 
@@ -58,9 +61,9 @@ public class CursorPainter implements IPainter {
 			long scaleFactor=waveCanvas.getScaleFactor();
 			int x = (int) (time/scaleFactor);
 			int top = id<0?area.y:area.y+15;
-			Color drawColor=waveCanvas.colors[id<0?WaveformCanvas.Colors.CURSOR.ordinal():WaveformCanvas.Colors.MARKER.ordinal()];
-			Color dragColor = waveCanvas.colors[WaveformCanvas.Colors.CURSOR_DRAG.ordinal()];
-			Color textColor=waveCanvas.colors[id<0?WaveformCanvas.Colors.CURSOR_TEXT.ordinal():WaveformCanvas.Colors.MARKER_TEXT.ordinal()];
+			Color drawColor=waveCanvas.colors[id<0?WaveformColors.CURSOR.ordinal():WaveformColors.MARKER.ordinal()];
+			Color dragColor = waveCanvas.colors[WaveformColors.CURSOR_DRAG.ordinal()];
+			Color textColor=waveCanvas.colors[id<0?WaveformColors.CURSOR_TEXT.ordinal():WaveformColors.MARKER_TEXT.ordinal()];
 			if(x>=area.x && x<=(area.x+area.width)){
 				gc.setForeground(isDragging?dragColor:drawColor);
 				gc.drawLine(x, top, x, area.y+area.height);

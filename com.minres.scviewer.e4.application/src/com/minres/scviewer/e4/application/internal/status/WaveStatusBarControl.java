@@ -8,7 +8,7 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.e4.application.internal;
+package com.minres.scviewer.e4.application.internal.status;
 
 import javax.inject.Inject;
 import javax.inject.Named;

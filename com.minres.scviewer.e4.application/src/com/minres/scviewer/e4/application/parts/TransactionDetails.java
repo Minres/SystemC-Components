@@ -321,7 +321,7 @@ public class TransactionDetails {
 		}
 	}
 
-	enum Type {TIMES, PROPS, IN_REL, OUT_REL}
+	enum Type {PROPS, ATTRS, IN_REL, OUT_REL}
 
 	class TreeNode{
 		public Type type;
@@ -334,8 +334,8 @@ public class TransactionDetails {
 
 		public String toString(){
 			switch(type){
-			case TIMES:      return "Times";
-			case PROPS:	     return "Attributes";
+			case PROPS:      return "Properties";
+			case ATTRS:	     return "Attributes";
 			case IN_REL:     return "Incoming relations";
 			case OUT_REL:    return "Outgoing relations";
 			}
@@ -355,8 +355,8 @@ public class TransactionDetails {
 		@Override
 		public Object[] getElements(Object element) {
 			return new Object[]{
-					new TreeNode((ITx)element, Type.TIMES),  
 					new TreeNode((ITx)element, Type.PROPS),  
+					new TreeNode((ITx)element, Type.ATTRS),  
 					new TreeNode((ITx)element, Type.IN_REL),
 					new TreeNode((ITx)element, Type.OUT_REL)
 			};
@@ -366,11 +366,14 @@ public class TransactionDetails {
 		public Object[] getChildren(Object element) {
 			if(element instanceof TreeNode){
 				TreeNode propertyHolder=(TreeNode) element;
-				if(propertyHolder.type == Type.TIMES)
+				if(propertyHolder.type == Type.PROPS){
 					return new Object[][]{
-							{"Start time", "", timeToString(propertyHolder.element.getBeginTime())},
-							{"End time", "", timeToString(propertyHolder.element.getEndTime())}};
-				else if(propertyHolder.type == Type.PROPS)
+						{"Name", "String", propertyHolder.element.getStream().getFullName()},
+						{"Type", "String", propertyHolder.element.getGenerator().getName()},
+						{"Start time", "Time", timeToString(propertyHolder.element.getBeginTime())},
+						{"End time", "Time", timeToString(propertyHolder.element.getEndTime())}
+					};
+				}else if(propertyHolder.type == Type.ATTRS)
 					return propertyHolder.element.getAttributes().toArray();
 				else if(propertyHolder.type == Type.IN_REL){
 					Vector<Object[] > res = new Vector<>();

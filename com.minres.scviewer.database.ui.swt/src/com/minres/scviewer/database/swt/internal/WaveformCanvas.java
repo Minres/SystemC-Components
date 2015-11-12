@@ -40,18 +40,11 @@ import com.google.common.collect.Lists;
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformEvent;
+import com.minres.scviewer.database.ui.WaveformColors;
 
 public class WaveformCanvas extends Canvas {
-    public enum Colors {
-        LINE, LINE_HIGHLITE, 
-        TRACK_BG_EVEN, TRACK_BG_ODD, TRACK_BG_HIGHLITE, 
-        TX_BG, TX_BG_HIGHLITE, TX_BORDER,
-        SIGNAL0, SIGNAL1, SIGNALZ, SIGNALX, SIGNAL_TEXT, 
-        CURSOR, CURSOR_DRAG, CURSOR_TEXT,
-        MARKER, MARKER_TEXT
-    }
-
-    Color[] colors = new Color[Colors.values().length];
+	
+    Color[] colors = new Color[WaveformColors.values().length];
 
     private int trackHeight = 50;
     
@@ -134,34 +127,34 @@ public class WaveformCanvas extends Canvas {
 		cursorPainters.add(cursorPainter);
 	}
 	
-    private void initColors(HashMap<Colors, RGB> colourMap) {
+    public void initColors(HashMap<WaveformColors, RGB> colourMap) {
         Display d = getDisplay();
         if (colourMap != null) {
-            for (Colors c : Colors.values()) {
+            for (WaveformColors c : WaveformColors.values()) {
                 if (colourMap.containsKey(c)) {
-                    colors[c.ordinal()].dispose();
                     colors[c.ordinal()] = new Color(d, colourMap.get(c));
                 }
             }
+            redraw();
         } else {
-            colors[Colors.LINE.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_RED);
-            colors[Colors.LINE_HIGHLITE.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_CYAN);
-            colors[Colors.TRACK_BG_EVEN.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_BLACK);
-            colors[Colors.TRACK_BG_ODD.ordinal()] = SWTResourceManager.getColor(40, 40, 40);
-            colors[Colors.TRACK_BG_HIGHLITE.ordinal()] = SWTResourceManager.getColor(40, 40, 80);
-            colors[Colors.TX_BG.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_GREEN);
-            colors[Colors.TX_BG_HIGHLITE.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
-            colors[Colors.TX_BORDER.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_RED);
-            colors[Colors.SIGNAL0.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
-            colors[Colors.SIGNAL1.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
-            colors[Colors.SIGNALZ.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_GRAY);
-            colors[Colors.SIGNALX.ordinal()] = SWTResourceManager.getColor(255,  128,  182);
-            colors[Colors.SIGNAL_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
-            colors[Colors.CURSOR.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_RED);
-            colors[Colors.CURSOR_DRAG.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_GRAY);
-            colors[Colors.CURSOR_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
-            colors[Colors.MARKER.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY);
-            colors[Colors.MARKER_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
+            colors[WaveformColors.LINE.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_RED);
+            colors[WaveformColors.LINE_HIGHLITE.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_CYAN);
+            colors[WaveformColors.TRACK_BG_EVEN.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_BLACK);
+            colors[WaveformColors.TRACK_BG_ODD.ordinal()] = SWTResourceManager.getColor(40, 40, 40);
+            colors[WaveformColors.TRACK_BG_HIGHLITE.ordinal()] = SWTResourceManager.getColor(40, 40, 80);
+            colors[WaveformColors.TX_BG.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_GREEN);
+            colors[WaveformColors.TX_BG_HIGHLITE.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
+            colors[WaveformColors.TX_BORDER.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_RED);
+            colors[WaveformColors.SIGNAL0.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
+            colors[WaveformColors.SIGNAL1.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN);
+            colors[WaveformColors.SIGNALZ.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_GRAY);
+            colors[WaveformColors.SIGNALX.ordinal()] = SWTResourceManager.getColor(255,  128,  182);
+            colors[WaveformColors.SIGNAL_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
+            colors[WaveformColors.CURSOR.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_RED);
+            colors[WaveformColors.CURSOR_DRAG.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_GRAY);
+            colors[WaveformColors.CURSOR_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
+            colors[WaveformColors.MARKER.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY);
+            colors[WaveformColors.MARKER_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
         }
     }
 
@@ -274,7 +267,7 @@ public class WaveformCanvas extends Canvas {
      */
     public void dispose() {
         transform.dispose();
-        for (Colors c : Colors.values())
+        for (WaveformColors c : WaveformColors.values())
             colors[c.ordinal()].dispose();
         super.dispose();
     }

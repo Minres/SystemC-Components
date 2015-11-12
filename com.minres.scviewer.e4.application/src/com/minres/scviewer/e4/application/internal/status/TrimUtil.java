@@ -8,7 +8,7 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.e4.application.internal;
+package com.minres.scviewer.e4.application.internal.status;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;

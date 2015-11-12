@@ -11,11 +11,13 @@
 package com.minres.scviewer.database.ui;
 
 import java.beans.PropertyChangeListener;
+import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Control;
 
 import com.minres.scviewer.database.IWaveform;
@@ -25,62 +27,65 @@ public interface IWaveformViewer extends PropertyChangeListener, ISelectionProvi
 	String CURSOR_PROPERTY = "cursor_time";
 	String MARKER_PROPERTY = "marker_time";
 
-	void addSelectionChangedListener(ISelectionChangedListener listener);
+	public void addSelectionChangedListener(ISelectionChangedListener listener);
 
-	void removeSelectionChangedListener(ISelectionChangedListener listener);
+	public void removeSelectionChangedListener(ISelectionChangedListener listener);
 
-	Control getControl();
+	public Control getControl();
 
-	Control getNameControl();
+	public Control getNameControl();
 
-	Control getValueControl();
+	public Control getValueControl();
 
-	Control getWaveformControl();
+	public Control getWaveformControl();
 
-	ISelection getSelection();
+	public ISelection getSelection();
 
-	void setSelection(ISelection selection);
+	public void setSelection(ISelection selection);
 
-	void setSelection(ISelection selection, boolean addIfNeeded);
+	public void setSelection(ISelection selection, boolean addIfNeeded);
 
-	void moveSelection(GotoDirection direction);
+	public void moveSelection(GotoDirection direction);
 
-	void moveCursor(GotoDirection direction);
+	public void moveCursor(GotoDirection direction);
 
-	List<TrackEntry> getStreamList();
+	public List<TrackEntry> getStreamList();
 
 	public TrackEntry getEntryForStream(IWaveform<?> source);
 	
-	void moveSelected(int i);
+	public void moveSelected(int i);
 
-	long getMaxTime();
+	public long getMaxTime();
 
-	void setMaxTime(long maxTime);
+	public void setMaxTime(long maxTime);
 
-	void setZoomLevel(int scale);
+	public void setZoomLevel(int scale);
 
-	int getZoomLevel();
+	public int getZoomLevel();
 
-	void setCursorTime(long time);
+	public void setCursorTime(long time);
 
-	void setMarkerTime(long time, int index);
+	public void setMarkerTime(long time, int index);
 
-	long getCursorTime();
+	public long getCursorTime();
 
-	long getActMarkerTime();
+	public long getSelectedMarkerTime();
 
-	long getMarkerTime(int index);
+	public long getMarkerTime(int index);
 
-	void addPropertyChangeListener(PropertyChangeListener listener);
+	public void addPropertyChangeListener(PropertyChangeListener listener);
 
-	void addPropertyChangeListener(String propertyName, PropertyChangeListener listener);
+	public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener);
 
-	void removePropertyChangeListener(PropertyChangeListener listener);
+	public void removePropertyChangeListener(PropertyChangeListener listener);
 
-	void removePropertyChangeListener(String propertyName, PropertyChangeListener listener);
+	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener);
 
-	String getScaledTime(long time);
+	public String getScaledTime(long time);
 
-	String[] getZoomLevels();
+	public String[] getZoomLevels();
 
+	public List<ICursor> getCursorList();
+
+	public void setColors(HashMap<WaveformColors, RGB> colourMap);
 }

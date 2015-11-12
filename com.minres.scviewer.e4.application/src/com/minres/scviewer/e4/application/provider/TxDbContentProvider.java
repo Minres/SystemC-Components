@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.minres.scviewer.e4.application.provider;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -23,25 +24,40 @@ import com.minres.scviewer.database.IWaveform;
 public class TxDbContentProvider implements ITreeContentProvider {
 
 	//	private List<HierNode> nodes;
-	private boolean showNodes=false;
+	private boolean showNodes;
+
+	public TxDbContentProvider() {
+		super();
+		this.showNodes = false;
+	}
+
+	public TxDbContentProvider(boolean showNodes) {
+		super();
+		this.showNodes = showNodes;
+	}
 
 	@Override
 	public void dispose() {	}
 
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		showNodes=!(newInput instanceof IHierNode);
+//		showNodes=!(newInput instanceof IHierNode);
 	}
 
 	@Override
 	public Object[] getElements(Object inputElement) {
 		if(inputElement instanceof IHierNode){
-			return Collections2.filter(((IHierNode)inputElement).getChildNodes(), new Predicate<IHierNode>(){
+			Collection<IHierNode> res = Collections2.filter(((IHierNode)inputElement).getChildNodes(), new Predicate<IHierNode>(){
 				@Override
 				public boolean apply(IHierNode arg0) {
-					return (arg0 instanceof IWaveform<?>)!=showNodes;
+					if(showNodes){
+						return arg0 instanceof IWaveform<?>;
+					} else{
+						return arg0.getChildNodes().size()!=0;
+					}
 				}
-			}).toArray();
+			});
+			return res.toArray();
 		}else if(inputElement instanceof List<?>)
 			return ((List<?>)inputElement).toArray();
 		else
@@ -60,7 +76,6 @@ public class TxDbContentProvider implements ITreeContentProvider {
 
 	@Override
 	public boolean hasChildren(Object element) {
-		//		Object[] obj = getChildren(element);
 		Object[] obj = getElements(element);
 		return obj == null ? false : obj.length > 0;
 	}

@@ -104,7 +104,7 @@ public class WaveformListPart implements ISelectionChangedListener {
 		attributeFilter = new WaveformAttributeFilter();
 
 		txTableViewer = new TableViewer(parent);
-		txTableViewer.setContentProvider(new TxDbContentProvider());
+		txTableViewer.setContentProvider(new TxDbContentProvider(true));
 		txTableViewer.setLabelProvider(new TxDbLabelProvider());
 		txTableViewer.getTable().setLayoutData(new GridData(GridData.FILL_BOTH));
 		txTableViewer.addSelectionChangedListener(this);
@@ -240,7 +240,7 @@ public class WaveformListPart implements ISelectionChangedListener {
 		if(part!=null && part.getObject() != this && selection!=null){
 			if( selection instanceof IStructuredSelection) {
 				Object object= ((IStructuredSelection)selection).getFirstElement();			
-				if(object instanceof IHierNode&& !(object instanceof IWaveform<?>))
+				if(object instanceof IHierNode&& ((IHierNode)object).getChildNodes().size()!=0)
 					txTableViewer.setInput(object);
 				otherSelectionCount = (object instanceof IWaveform<?> || object instanceof ITx)?1:0;
 			}

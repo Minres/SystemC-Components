@@ -10,6 +10,10 @@ Require-Bundle: org.eclipse.swt;bundle-version="3.103.1",
  com.google.guava;bundle-version="15.0.0",
  org.eclipse.jface,
  org.eclipse.equinox.registry,
- com.minres.scviewer.database.ui
+ com.minres.scviewer.database.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.osgi
 Export-Package: com.minres.scviewer.database.swt
 Bundle-ClassPath: .
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: com.minres.scviewer.database.swt.DatabaseUiPlugin

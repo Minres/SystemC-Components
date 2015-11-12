@@ -20,10 +20,10 @@ import org.eclipse.swt.graphics.Rectangle;
 
 import com.minres.scviewer.database.ISignal;
 import com.minres.scviewer.database.ISignalChange;
-import com.minres.scviewer.database.ui.TrackEntry;
 import com.minres.scviewer.database.ISignalChangeMulti;
 import com.minres.scviewer.database.ISignalChangeSingle;
-import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.database.ui.TrackEntry;
+import com.minres.scviewer.database.ui.WaveformColors;
 
 public class SignalPainter extends TrackPainter  {
 	
@@ -33,7 +33,6 @@ public class SignalPainter extends TrackPainter  {
 	private final WaveformCanvas waveCanvas;
 	private ISignal<? extends ISignalChange> signal;
 
-	@SuppressWarnings("unchecked")
 	public SignalPainter(WaveformCanvas txDisplay, boolean even, TrackEntry trackEntry) {
 		super(trackEntry, even);
 		this.waveCanvas = txDisplay;
@@ -42,9 +41,9 @@ public class SignalPainter extends TrackPainter  {
 
 	public void paintArea(GC gc, Rectangle area) {	
 		if(trackEntry.selected)
-			gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TRACK_BG_HIGHLITE.ordinal()]);
+			gc.setBackground(this.waveCanvas.colors[WaveformColors.TRACK_BG_HIGHLITE.ordinal()]);
 		else
-			gc.setBackground(this.waveCanvas.colors[even?WaveformCanvas.Colors.TRACK_BG_EVEN.ordinal():WaveformCanvas.Colors.TRACK_BG_ODD.ordinal()]);
+			gc.setBackground(this.waveCanvas.colors[even?WaveformColors.TRACK_BG_EVEN.ordinal():WaveformColors.TRACK_BG_ODD.ordinal()]);
 		gc.setFillRule(SWT.FILL_EVEN_ODD);
 		gc.fillRectangle(area);
 		Entry<Long, ? extends ISignalChange> firstChange=signal.getEvents().floorEntry(area.x*this.waveCanvas.getScaleFactor());
@@ -55,7 +54,7 @@ public class SignalPainter extends TrackPainter  {
 		} else if(lastTx==null){
 			lastTx=signal.getEvents().lastEntry();
 		}
-		gc.setForeground(this.waveCanvas.colors[WaveformCanvas.Colors.LINE.ordinal()]);
+		gc.setForeground(this.waveCanvas.colors[WaveformColors.LINE.ordinal()]);
 		gc.setLineStyle(SWT.LINE_SOLID);
 		gc.setLineWidth(1);
 		Entry<Long, ? extends ISignalChange> left=firstChange;
@@ -66,18 +65,18 @@ public class SignalPainter extends TrackPainter  {
 			    int xBegin= (int)(left.getKey()/this.waveCanvas.getScaleFactor());
 			    if(xEnd>xBegin){
 			        int yOffset = this.waveCanvas.getTrackHeight()/2;
-			        Color color = this.waveCanvas.colors[WaveformCanvas.Colors.SIGNALX.ordinal()];
+			        Color color = this.waveCanvas.colors[WaveformColors.SIGNALX.ordinal()];
 			        switch(((ISignalChangeSingle) left.getValue()).getValue()){
 			        case '1':
-			            color=this.waveCanvas.colors[WaveformCanvas.Colors.SIGNAL1.ordinal()];
+			            color=this.waveCanvas.colors[WaveformColors.SIGNAL1.ordinal()];
 			            yOffset = this.waveCanvas.getTrackHeight()/5;
 			            break;
 			        case '0':
-			            color=this.waveCanvas.colors[WaveformCanvas.Colors.SIGNAL0.ordinal()];
+			            color=this.waveCanvas.colors[WaveformColors.SIGNAL0.ordinal()];
 			            yOffset = 4*this.waveCanvas.getTrackHeight()/5;
 			            break;
 			        case 'Z':
-			            color=this.waveCanvas.colors[WaveformCanvas.Colors.SIGNALZ.ordinal()];
+			            color=this.waveCanvas.colors[WaveformColors.SIGNALZ.ordinal()];
 			            break;
 			        default:	
 			        }
@@ -104,12 +103,12 @@ public class SignalPainter extends TrackPainter  {
 				int yOffsetT = this.waveCanvas.getTrackHeight()/5+area.y;
 				int yOffsetM = this.waveCanvas.getTrackHeight()/2+area.y;
 				int yOffsetB = 4*this.waveCanvas.getTrackHeight()/5+area.y;
-				Color colorBorder = this.waveCanvas.colors[WaveformCanvas.Colors.SIGNAL0.ordinal()];
+				Color colorBorder = this.waveCanvas.colors[WaveformColors.SIGNAL0.ordinal()];
 				ISignalChangeMulti last = (ISignalChangeMulti) left.getValue();
 				if(last.getValue().toString().contains("X")){
-					colorBorder=this.waveCanvas.colors[WaveformCanvas.Colors.SIGNALX.ordinal()];
+					colorBorder=this.waveCanvas.colors[WaveformColors.SIGNALX.ordinal()];
 				}else if(last.getValue().toString().contains("Z")){
-					colorBorder=this.waveCanvas.colors[WaveformCanvas.Colors.SIGNALZ.ordinal()];
+					colorBorder=this.waveCanvas.colors[WaveformColors.SIGNALZ.ordinal()];
 				}
 				int beginTime= (int)(left.getKey()/this.waveCanvas.getScaleFactor());
 				int endTime= (int)(right.getKey()/this.waveCanvas.getScaleFactor());
@@ -123,7 +122,7 @@ public class SignalPainter extends TrackPainter  {
 				};
 				gc.setForeground(colorBorder);
 				gc.drawPolygon(points);
-				gc.setForeground(this.waveCanvas.colors[WaveformCanvas.Colors.SIGNAL_TEXT.ordinal()]);
+				gc.setForeground(this.waveCanvas.colors[WaveformColors.SIGNAL_TEXT.ordinal()]);
 				int size = gc.getDevice().getDPI().y * gc.getFont().getFontData()[0].getHeight()/72;
 				if(beginTime<area.x) beginTime=area.x;
 				int width=endTime-beginTime;

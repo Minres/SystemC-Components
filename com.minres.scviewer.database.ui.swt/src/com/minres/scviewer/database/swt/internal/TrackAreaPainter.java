@@ -17,6 +17,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Rectangle;
 
+import com.minres.scviewer.database.ui.WaveformColors;
+
 public class TrackAreaPainter implements IPainter {
 	
 	/**
@@ -35,7 +37,7 @@ public class TrackAreaPainter implements IPainter {
 
 	public void paintArea(GC gc, Rectangle a) {
 	    Rectangle area = new Rectangle(a.x, a.y+waveCanvas.rulerHeight, a.width, a.height-waveCanvas.rulerHeight);
-		gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TRACK_BG_EVEN.ordinal()]);
+		gc.setBackground(this.waveCanvas.colors[WaveformColors.TRACK_BG_EVEN.ordinal()]);
 		gc.setFillRule(SWT.FILL_EVEN_ODD);
 		gc.fillRectangle(area);
 		if(trackVerticalOffset.size()>0){

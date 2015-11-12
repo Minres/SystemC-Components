@@ -15,6 +15,7 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -32,43 +33,60 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences.IPreferenceChangeListener;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences.PreferenceChangeEvent;
 import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.core.di.extensions.Preference;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.PersistState;
 import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.services.EMenuService;
+import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 
 import com.minres.scviewer.database.ITx;
-import com.minres.scviewer.database.ITxEvent;
-import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IWaveformDbFactory;
 import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.database.swt.WaveformViewerFactory;
 import com.minres.scviewer.database.ui.GotoDirection;
+import com.minres.scviewer.database.ui.ICursor;
 import com.minres.scviewer.database.ui.IWaveformViewer;
 import com.minres.scviewer.database.ui.TrackEntry;
-import com.minres.scviewer.e4.application.internal.WaveStatusBarControl;
+import com.minres.scviewer.database.ui.WaveformColors;
+import com.minres.scviewer.e4.application.internal.status.WaveStatusBarControl;
+import com.minres.scviewer.e4.application.internal.util.FileMonitor;
+import com.minres.scviewer.e4.application.internal.util.IFileChangeListener;
+import com.minres.scviewer.e4.application.internal.util.IModificationChecker;
+import com.minres.scviewer.e4.application.preferences.DefaultValuesInitializer;
+import com.minres.scviewer.e4.application.preferences.PreferenceConstants;
 
-public class WaveformViewerPart {
+@SuppressWarnings("restriction")
+public class WaveformViewerPart implements IFileChangeListener, IPreferenceChangeListener {
 
 	public static final String ACTIVE_WAVEFORMVIEW="Active_Waveform_View";
-	
+
 	public static final String ADD_WAVEFORM="AddWaveform";
 
 	protected static final String DATABASE_FILE = "DATABASE_FILE";
-
 	protected static final String SHOWN_WAVEFORM = "SHOWN_WAVEFORM";
+	protected static final String SHOWN_CURSOR = "SHOWN_CURSOR";
+	protected static final String ZOOM_LEVEL = "ZOOM_LEVEL";
+
+	protected static final long FILE_CHECK_INTERVAL=60000;
 
 	private String[] zoomLevel;
 
@@ -86,7 +104,15 @@ public class WaveformViewerPart {
 
 	@Inject	ESelectionService selectionService;
 
+	@Inject EPartService ePartService;
+
+	@Inject  @Preference(nodePath = PreferenceConstants.PREFERENCES_SCOPE) IEclipsePreferences prefs;
+	
 	private IWaveformDb database;
+
+	private boolean checkForUpdates;
+	
+	private MPart myPart;
 
 	private Composite myParent;
 
@@ -94,9 +120,13 @@ public class WaveformViewerPart {
 
 	Map<String, String> persistedState;
 
+	FileMonitor fileMonitor = new FileMonitor();
+
+	IModificationChecker fileChecker;
 
 	@PostConstruct
 	public void createComposite(MPart part, Composite parent, IWaveformDbFactory dbFactory) {
+		myPart=part;
 		myParent=parent;	
 		database=dbFactory.getDatabase();
 		database.addPropertyChangeListener(new PropertyChangeListener() {
@@ -119,7 +149,7 @@ public class WaveformViewerPart {
 			public void propertyChange(PropertyChangeEvent evt) {
 				Long time = (Long) evt.getNewValue();
 				eventBroker.post(WaveStatusBarControl.CURSOR_TIME, waveformPane.getScaledTime(time));
-				long marker=waveformPane.getActMarkerTime();
+				long marker=waveformPane.getSelectedMarkerTime();
 				eventBroker.post(WaveStatusBarControl.MARKER_DIFF, waveformPane.getScaledTime(time-marker));
 
 			}
@@ -141,6 +171,8 @@ public class WaveformViewerPart {
 			}
 		});
 		zoomLevel=waveformPane.getZoomLevels();
+		setupColors();
+		checkForUpdates=prefs.getBoolean(PreferenceConstants.DATABASE_RELOAD, true);
 		filesToLoad=new ArrayList<File>();
 		persistedState = part.getPersistedState();
 		Integer files = persistedState.containsKey(DATABASE_FILE+"S")?Integer.parseInt(persistedState.get(DATABASE_FILE+"S")):0;
@@ -148,14 +180,51 @@ public class WaveformViewerPart {
 			filesToLoad.add(new File(persistedState.get(DATABASE_FILE+i)));
 		}
 		if(filesToLoad.size()>0)
-			loadDatabase();
+			loadDatabase(persistedState);
 		eventBroker.post(WaveStatusBarControl.ZOOM_LEVEL, zoomLevel[waveformPane.getZoomLevel()]);
 		menuService.registerContextMenu(waveformPane.getNameControl(), "com.minres.scviewer.e4.application.popupmenu.namecontext");
 		menuService.registerContextMenu(waveformPane.getValueControl(), "com.minres.scviewer.e4.application.popupmenu.namecontext");
 		menuService.registerContextMenu(waveformPane.getWaveformControl(), "com.minres.scviewer.e4.application.popupmenu.wavecontext");
+		ePartService.addPartListener(new PartListener(){
+			@Override
+			public void partActivated(MPart part) {
+				if (part == myPart) {
+					if(fileChecker!=null) fileChecker.check();
+					updateAll();
+				}
+			}
+		});
+		prefs.addPreferenceChangeListener(this);
 	}
 
-	protected void loadDatabase() {
+	@Override
+	public void preferenceChange(PreferenceChangeEvent event) {
+		if(PreferenceConstants.DATABASE_RELOAD.equals(event.getKey())){
+			checkForUpdates = (Boolean) event.getNewValue();
+			fileChecker=null;
+			if(checkForUpdates) 
+				fileChecker=fileMonitor.addFileChangeListener(WaveformViewerPart.this,filesToLoad, FILE_CHECK_INTERVAL);
+			else
+				fileMonitor.removeFileChangeListener(this);
+		} else {
+			setupColors();
+		}
+	}
+
+	protected void setupColors() {
+		DefaultValuesInitializer initializer = new DefaultValuesInitializer();
+		HashMap<WaveformColors, RGB> colorPref=new HashMap<>();
+		for (WaveformColors c : WaveformColors.values()) {
+			String prefValue=prefs.get(c.name() + "_COLOR", 
+					StringConverter.asString(initializer.colors[c.ordinal()].getRGB()));
+			RGB rgb = StringConverter.asRGB(prefValue);
+			colorPref.put(c, rgb);
+		}		
+		waveformPane.setColors(colorPref);
+	}
+
+	protected void loadDatabase(final Map<String, String> state) {
+		fileMonitor.removeFileChangeListener(this);
 		Job job = new Job(" My Job") {
 			@Override
 			protected IStatus run( IProgressMonitor monitor) {
@@ -189,12 +258,32 @@ public class WaveformViewerPart {
 						@Override
 						public void run() {
 							waveformPane.setMaxTime(database.getMaxTime());
-							restoreState();
+							if(state!=null) restoreWaveformViewerState(state);
+							fileChecker=null;
+							if(checkForUpdates) fileChecker=fileMonitor.addFileChangeListener(
+									WaveformViewerPart.this,filesToLoad, FILE_CHECK_INTERVAL);
 						}
 					});
 			}
 		});
 		job.schedule(0);
+	}
+
+	@Override
+	public void fileChanged(List<File> file) {
+		final Display display = myParent.getDisplay();
+		display.asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				if(MessageDialog.openQuestion(display.getActiveShell(), "Database re-load", "Would you like to reload the database?")){
+					Map<String, String> state = new HashMap<>();
+					saveWaveformViewerState(state);
+					waveformPane.getStreamList().clear();
+					database.clear();
+					if(filesToLoad.size()>0) loadDatabase(state);
+				}
+			}
+		});
 	}
 
 	@Inject
@@ -222,15 +311,15 @@ public class WaveformViewerPart {
 				}
 			}
 			if(filesToLoad.size()>0)
-				loadDatabase();
+				loadDatabase(persistedState);
 		}
 	}
 
 	@Focus
 	public void setFocus() {
 		myParent.setFocus();
-		updateAll();
 	}
+
 
 	@PersistState
 	public void saveState(MPart part) {
@@ -242,30 +331,57 @@ public class WaveformViewerPart {
 			persistedState.put(DATABASE_FILE+index, file.getAbsolutePath());
 			index++;
 		}
+		saveWaveformViewerState(persistedState);
+	}
+
+	protected void saveWaveformViewerState(Map<String, String> persistedState) {
+		Integer index;
 		persistedState.put(SHOWN_WAVEFORM+"S", Integer.toString(waveformPane.getStreamList().size()));
 		index=0;
 		for(TrackEntry trackEntry:waveformPane.getStreamList()){
 			persistedState.put(SHOWN_WAVEFORM+index, trackEntry.waveform.getFullName());
 			index++;
 		}
+		List<ICursor> cursors = waveformPane.getCursorList();
+		persistedState.put(SHOWN_CURSOR+"S", Integer.toString(cursors.size()));
+		index=0;
+		for(ICursor cursor:cursors){
+			persistedState.put(SHOWN_CURSOR+index, Long.toString(cursor.getTime()));
+			index++;
+		}
+		persistedState.put(ZOOM_LEVEL, Integer.toString(waveformPane.getZoomLevel()));
 	} 
 
-	protected void restoreState() {
+	protected void restoreWaveformViewerState(Map<String, String> state) {
 		updateAll();
-		Integer waves = persistedState.containsKey(SHOWN_WAVEFORM+"S")?Integer.parseInt(persistedState.get(SHOWN_WAVEFORM+"S")):0;
+		Integer waves = state.containsKey(SHOWN_WAVEFORM+"S")?Integer.parseInt(state.get(SHOWN_WAVEFORM+"S")):0;
 		List<TrackEntry> res = new LinkedList<>();
 		for(int i=0; i<waves;i++){
-			IWaveform<? extends IWaveformEvent> waveform = database.getStreamByName(persistedState.get(SHOWN_WAVEFORM+i));
+			IWaveform<? extends IWaveformEvent> waveform = database.getStreamByName(state.get(SHOWN_WAVEFORM+i));
 			if(waveform!=null) res.add(new TrackEntry(waveform));
 		}
 		if(res.size()>0) waveformPane.getStreamList().addAll(res);
+		Integer cursorLength = state.containsKey(SHOWN_CURSOR+"S")?Integer.parseInt(state.get(SHOWN_CURSOR+"S")):0;
+		List<ICursor> cursors = waveformPane.getCursorList();
+		if(cursorLength==cursors.size()){
+			for(int i=0; i<cursorLength;i++){
+				Long time = Long.parseLong(state.get(SHOWN_CURSOR+i));
+				cursors.get(i).setTime(time);
+			}
+		}
+		if(state.containsKey(ZOOM_LEVEL)){
+			try {
+				Integer scale = Integer.parseInt(state.get(ZOOM_LEVEL));
+				waveformPane.setZoomLevel(scale);
+			} catch(NumberFormatException e){}
+		}
 	}
 
 	private void updateAll() {
 		eventBroker.post(ACTIVE_WAVEFORMVIEW, this);
 		eventBroker.post(WaveStatusBarControl.ZOOM_LEVEL, zoomLevel[waveformPane.getZoomLevel()]);
 		long cursor=waveformPane.getCursorTime();
-		long marker=waveformPane.getActMarkerTime();
+		long marker=waveformPane.getSelectedMarkerTime();
 		eventBroker.post(WaveStatusBarControl.CURSOR_TIME, waveformPane.getScaledTime(cursor));
 		eventBroker.post(WaveStatusBarControl.MARKER_TIME, waveformPane.getScaledTime(marker));
 		eventBroker.post(WaveStatusBarControl.MARKER_DIFF, waveformPane.getScaledTime(cursor-marker));
@@ -281,15 +397,7 @@ public class WaveformViewerPart {
 			}
 	}
 
-	/*	
-    @Inject 
-	public void setWaveform(@Optional @Named( IServiceConstants.ACTIVE_SELECTION) IWaveform<?> waveform, 
-			@Optional @Named( IServiceConstants.ACTIVE_PART) MPart part) {
-		if (txDisplay!= null && part.getObject()!=this) {
-			txDisplay.setSelection(waveform==null?new StructuredSelection():new StructuredSelection(waveform)); 
-		}
-	}
-	 */
+
 	protected boolean askIfToLoad(File txFile) {
 		if(txFile.exists() &&
 				MessageDialog.openQuestion(myParent.getDisplay().getActiveShell(), "Database open", 
@@ -394,4 +502,5 @@ public class WaveformViewerPart {
 	public String getScaledTime(Long time) {
 		return waveformPane.getScaledTime(time);
 	}
+
 }

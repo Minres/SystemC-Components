@@ -8,22 +8,24 @@
  * Contributors:
  *     MINRES Technologies GmbH - initial API and implementation
  *******************************************************************************/
-package com.minres.scviewer.e4.application.internal;
+
+
+package com.minres.scviewer.e4.application.internal.util;
+
+import java.io.File;
+import java.util.List;
+
 /**
- * Preference constants for the heap status.
- *
- * @since 3.1
+ * Listener interested in {@link File} changes.
+ * 
+ * @author Pascal Essiembre
  */
-public interface IHeapStatusConstants {
-
+public interface IFileChangeListener {
 	/**
-	 * Preference key for the update interval (value in milliseconds).
+	 * Invoked when a file changes.
+	 * 
+	 * @param fileName
+	 *          name of changed file.
 	 */
-    String PREF_UPDATE_INTERVAL = "HeapStatus.updateInterval"; //$NON-NLS-1$
-
-    /**
-     * Preference key for whether to show max heap, if available (value is boolean).
-     */
-    String PREF_SHOW_MAX = "HeapStatus.showMax";   //$NON-NLS-1$
-
+	public void fileChanged(List<File> file);
 }

@@ -24,8 +24,8 @@ import org.eclipse.swt.graphics.Rectangle;
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.ITxEvent;
 import com.minres.scviewer.database.ITxStream;
-import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.ui.TrackEntry;
+import com.minres.scviewer.database.ui.WaveformColors;
 
 public class StreamPainter extends TrackPainter{
 
@@ -35,11 +35,9 @@ public class StreamPainter extends TrackPainter{
 	private final WaveformCanvas waveCanvas;
 	private ITxStream<? extends ITxEvent> stream;
 	private int txBase, txHeight;
-	private int totalHeight;
 	private boolean even;
 	private TreeSet<ITx> seenTx;
 
-	@SuppressWarnings("unchecked")
 	public StreamPainter(WaveformCanvas waveCanvas, boolean even, TrackEntry trackEntry) {
 		super(trackEntry, even);
 		this.waveCanvas = waveCanvas;
@@ -54,9 +52,9 @@ public class StreamPainter extends TrackPainter{
 		txBase=trackHeight/5;
 		txHeight=trackHeight*3/5;
 		if(trackEntry.selected)
-			gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TRACK_BG_HIGHLITE.ordinal()]);
+			gc.setBackground(this.waveCanvas.colors[WaveformColors.TRACK_BG_HIGHLITE.ordinal()]);
 		else
-			gc.setBackground(this.waveCanvas.colors[even?WaveformCanvas.Colors.TRACK_BG_EVEN.ordinal():WaveformCanvas.Colors.TRACK_BG_ODD.ordinal()]);
+			gc.setBackground(this.waveCanvas.colors[even?WaveformColors.TRACK_BG_EVEN.ordinal():WaveformColors.TRACK_BG_ODD.ordinal()]);
 		gc.setFillRule(SWT.FILL_EVEN_ODD);
 		gc.fillRectangle(area);
 		Entry<Long, ?> firstTx=stream.getEvents().floorEntry(area.x*waveCanvas.getScaleFactor());
@@ -66,7 +64,7 @@ public class StreamPainter extends TrackPainter{
         gc.setFillRule(SWT.FILL_EVEN_ODD);
         gc.setLineStyle(SWT.LINE_SOLID);
         gc.setLineWidth(1);
-        gc.setForeground(this.waveCanvas.colors[WaveformCanvas.Colors.LINE.ordinal()]);
+        gc.setForeground(this.waveCanvas.colors[WaveformColors.LINE.ordinal()]);
         for(int y1=area.y+trackHeight/2; y1<area.y+trackEntry.height; y1+=trackHeight)
         	gc.drawLine(area.x, y1, area.x+area.width, y1);
 		if(firstTx==lastTx)
@@ -76,8 +74,8 @@ public class StreamPainter extends TrackPainter{
 			seenTx.clear();
 			NavigableMap<Long,?> entries = stream.getEvents().subMap(firstTx.getKey(), true, lastTx.getKey(), true);
 			boolean highlighed=false;
-	        gc.setForeground(this.waveCanvas.colors[WaveformCanvas.Colors.LINE.ordinal()]);
-	        gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TX_BG.ordinal()]);
+	        gc.setForeground(this.waveCanvas.colors[WaveformColors.LINE.ordinal()]);
+	        gc.setBackground(this.waveCanvas.colors[WaveformColors.TX_BG.ordinal()]);
 			for(Entry<Long, ?> entry: entries.entrySet())
 				for(ITxEvent txEvent:(Collection<?  extends ITxEvent>)entry.getValue()){
 					if(txEvent.getType()==ITxEvent.Type.BEGIN)
@@ -93,8 +91,8 @@ public class StreamPainter extends TrackPainter{
 				drawTx(gc, area, tx);
 			}
 			if(highlighed){
-		        gc.setForeground(this.waveCanvas.colors[WaveformCanvas.Colors.LINE_HIGHLITE.ordinal()]);
-		        gc.setBackground(this.waveCanvas.colors[WaveformCanvas.Colors.TX_BG_HIGHLITE.ordinal()]);
+		        gc.setForeground(this.waveCanvas.colors[WaveformColors.LINE_HIGHLITE.ordinal()]);
+		        gc.setBackground(this.waveCanvas.colors[WaveformColors.TX_BG_HIGHLITE.ordinal()]);
 				drawTx(gc, area, waveCanvas.currentSelection);
 			}
 		}

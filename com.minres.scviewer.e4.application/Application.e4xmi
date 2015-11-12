@@ -70,6 +70,9 @@
           </children>
         </children>
       </children>
+      <children xsi:type="menu:Menu" xmi:id="_JTXBgIl_EeWxJ_wPkM6yGQ" elementId="com.minres.scviewer.e4.application.menu.window" label="Window">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_JTXBgYl_EeWxJ_wPkM6yGQ" elementId="" label="Preferences" command="_AxH6sIl_EeWxJ_wPkM6yGQ"/>
+      </children>
       <children xsi:type="menu:Menu" xmi:id="_95QGxHNmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.menu.help" label="Help">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_95QGxXNmEeWBq8z1Dv39LA" label="About" command="_95PfxnNmEeWBq8z1Dv39LA"/>
       </children>
@@ -117,13 +120,13 @@
       </children>
     </trimBars>
     <trimBars xmi:id="_JHMt8HS8EeWBq8z1Dv39LA" elementId="org.eclipse.ui.trim.status" side="Bottom">
-      <children xsi:type="menu:ToolControl" xmi:id="_YsBi8HfLEeWwZ-9vrAR2UQ" elementId="org.eclipse.ui.StatusLine" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.internal.WaveStatusBarControl">
+      <children xsi:type="menu:ToolControl" xmi:id="_YsBi8HfLEeWwZ-9vrAR2UQ" elementId="org.eclipse.ui.StatusLine" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.internal.status.WaveStatusBarControl">
         <tags>stretch</tags>
       </children>
-      <children xsi:type="menu:ToolControl" xmi:id="_VZzJMHdHEeWwZ-9vrAR2UQ" elementId="org.eclipse.ui.HeapStatus" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.internal.StatusBarControl">
+      <children xsi:type="menu:ToolControl" xmi:id="_VZzJMHdHEeWwZ-9vrAR2UQ" elementId="org.eclipse.ui.HeapStatus" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.internal.status.StatusBarControl">
         <tags>Draggable</tags>
       </children>
-      <children xsi:type="menu:ToolControl" xmi:id="_y0ZS0HfzEeWwZ-9vrAR2UQ" elementId="org.eclipse.ui.ProgressBar" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.internal.StatusBarControl">
+      <children xsi:type="menu:ToolControl" xmi:id="_y0ZS0HfzEeWwZ-9vrAR2UQ" elementId="org.eclipse.ui.ProgressBar" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.internal.status.StatusBarControl">
         <tags>Draggable</tags>
       </children>
     </trimBars>
@@ -133,6 +136,7 @@
   <handlers xmi:id="_95PfxHNmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.handler.saveCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.SaveHandler" command="_95Pfw3NmEeWBq8z1Dv39LA"/>
   <handlers xmi:id="_95Pfx3NmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.handler.aboutCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.AboutHandler" command="_95PfxnNmEeWBq8z1Dv39LA"/>
   <handlers xmi:id="_3ZZhsHXHEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handler.selectallCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.SelectAllHandler" command="_bV-TMHXHEeWwZ-9vrAR2UQ"/>
+  <handlers xmi:id="_CTcpEIl_EeWxJ_wPkM6yGQ" elementId="com.minres.scviewer.e4.application.handler.preferences" contributionURI="bundleclass://com.opcoach.e4.preferences/com.opcoach.e4.preferences.handlers.E4PreferencesHandler" command="_AxH6sIl_EeWxJ_wPkM6yGQ"/>
   <bindingTables xmi:id="_95PfvnNmEeWBq8z1Dv39LA" bindingContext="_95PfuXNmEeWBq8z1Dv39LA">
     <bindings xmi:id="_95Pfv3NmEeWBq8z1Dv39LA" keySequence="M1+Q" command="_95PfvHNmEeWBq8z1Dv39LA"/>
     <bindings xmi:id="_95PfwnNmEeWBq8z1Dv39LA" keySequence="M1+O" command="_95PfwHNmEeWBq8z1Dv39LA"/>
@@ -207,6 +211,7 @@
     <parameters xmi:id="_6KsZcHr9EeWVM_sKoXvptg" elementId="com.minres.scviewer.e4.application.command.addwaveform.where" name="where" optional="false"/>
     <parameters xmi:id="_7T1TcHwIEeWv0Y5uF2QN5w" elementId="com.minres.scviewer.e4.application.command.addwaveform.all" name="all" typeId="" optional="false"/>
   </commands>
+  <commands xmi:id="_AxH6sIl_EeWxJ_wPkM6yGQ" elementId="org.eclipse.ui.window.preferences" commandName="Preferences"/>
   <addons xmi:id="_95PfsnNmEeWBq8z1Dv39LA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_95Pfs3NmEeWBq8z1Dv39LA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_95PftHNmEeWBq8z1Dv39LA" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
@@ -214,4 +219,5 @@
   <addons xmi:id="_95PftnNmEeWBq8z1Dv39LA" elementId="org.eclipse.e4.ui.workbench.handler.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
   <addons xmi:id="_95Pft3NmEeWBq8z1Dv39LA" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
   <addons xmi:id="_95PfuHNmEeWBq8z1Dv39LA" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+  <addons xmi:id="_zSk-cIkcEeWxJ_wPkM6yGQ" elementId="org.eclipse.e4.ui.workbenc‌​h.addons.dndaddon.DnDAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.dndaddon.DnDAddon"/>
 </application:Application>

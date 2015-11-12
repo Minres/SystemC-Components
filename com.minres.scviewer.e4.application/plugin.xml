@@ -64,5 +64,25 @@
          </with>
       </definition>
    </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.minres.scviewer.e4.application.preferences.DefaultValuesInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="com.opcoach.e4.preferences.e4PreferencePages">
+       <page
+            class="com.minres.scviewer.e4.application.preferences.SCViewerPreferencesPage"
+            id="com.minres.scviewer.e4.application.preferences.scviewer"
+            name="SCViewer Page">
+      </page>
+      <page
+            class="com.minres.scviewer.e4.application.preferences.WaveformPreferencesPage"
+            id="com.minres.scviewer.e4.application.preferences.waveform"
+            name="Waveform view"
+            category="com.minres.scviewer.e4.application.preferences.scviewer">
+      </page>
+   </extension>
 
 </plugin>
