@@ -20,6 +20,10 @@
                name="windowImages"
                value="icons/SCViewer_16x32.png,icons/SCViewer_32x32.png,icons/SCViewer_48x32.png,icons/SCViewer_64x32.png,icons/SCViewer_128x32.png,icons/SCViewer_256x32.png">
          </property>
+         <property
+               name="applicationCSS"
+               value="platform:/plugin/com.minres.scviewer.e4.application/css/default.css">
+         </property>
       </product>
    </extension>
    <extension

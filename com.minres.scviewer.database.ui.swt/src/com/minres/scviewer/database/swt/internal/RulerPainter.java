@@ -14,24 +14,27 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 public class RulerPainter implements IPainter {
     protected WaveformCanvas waveCanvas;
     
     static final int rulerTickMinorC = 10;
     static final int rulerTickMajorC = 100;
-    
-    private Color headerBgColor;
-    private Color headerFgColor;
-   
-    public RulerPainter(WaveformCanvas waveCanvas, Color headerFgColor, Color headerBgColor) {
+       
+    public RulerPainter(WaveformCanvas waveCanvas) {
         this.waveCanvas=waveCanvas;
-        this.headerBgColor=headerBgColor;
-        this.headerFgColor=headerFgColor;
     }
 
     @Override
     public void paintArea(GC gc, Rectangle area) {
+    	Color headerFgColor=waveCanvas.getDisplay().getSystemColor(SWT.COLOR_WIDGET_FOREGROUND);
+    	if(headerFgColor.isDisposed())
+    		headerFgColor=SWTResourceManager.getColor(0,0,0);
+    	Color headerBgColor = waveCanvas.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND);
+    	if(headerBgColor.isDisposed())
+    		headerBgColor=SWTResourceManager.getColor(255,255,255);
         String unit=waveCanvas.getUnitStr();
         int unitMultiplier=waveCanvas.getUnitMultiplier();
         long scaleFactor=waveCanvas.getScaleFactor();

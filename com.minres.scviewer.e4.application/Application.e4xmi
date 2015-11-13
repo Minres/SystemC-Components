@@ -137,6 +137,7 @@
   <handlers xmi:id="_95Pfx3NmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.handler.aboutCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.AboutHandler" command="_95PfxnNmEeWBq8z1Dv39LA"/>
   <handlers xmi:id="_3ZZhsHXHEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handler.selectallCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.SelectAllHandler" command="_bV-TMHXHEeWwZ-9vrAR2UQ"/>
   <handlers xmi:id="_CTcpEIl_EeWxJ_wPkM6yGQ" elementId="com.minres.scviewer.e4.application.handler.preferences" contributionURI="bundleclass://com.opcoach.e4.preferences/com.opcoach.e4.preferences.handlers.E4PreferencesHandler" command="_AxH6sIl_EeWxJ_wPkM6yGQ"/>
+  <handlers xmi:id="_UUnX8IoNEeWxJ_wPkM6yGQ" elementId="com.minres.scviewer.e4.application.handler.set_them" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.ThemeSetHandler" command="_KlGlsIoNEeWxJ_wPkM6yGQ"/>
   <bindingTables xmi:id="_95PfvnNmEeWBq8z1Dv39LA" bindingContext="_95PfuXNmEeWBq8z1Dv39LA">
     <bindings xmi:id="_95Pfv3NmEeWBq8z1Dv39LA" keySequence="M1+Q" command="_95PfvHNmEeWBq8z1Dv39LA"/>
     <bindings xmi:id="_95PfwnNmEeWBq8z1Dv39LA" keySequence="M1+O" command="_95PfwHNmEeWBq8z1Dv39LA"/>
@@ -212,6 +213,9 @@
     <parameters xmi:id="_7T1TcHwIEeWv0Y5uF2QN5w" elementId="com.minres.scviewer.e4.application.command.addwaveform.all" name="all" typeId="" optional="false"/>
   </commands>
   <commands xmi:id="_AxH6sIl_EeWxJ_wPkM6yGQ" elementId="org.eclipse.ui.window.preferences" commandName="Preferences"/>
+  <commands xmi:id="_KlGlsIoNEeWxJ_wPkM6yGQ" elementId="com.minres.scviewer.e4.application.command.set_them" commandName="Set Theme">
+    <parameters xmi:id="_O8Z9IIoNEeWxJ_wPkM6yGQ" elementId="com.minres.scviewer.e4.application.command.theme.parameter.id" name="themeId"/>
+  </commands>
   <addons xmi:id="_95PfsnNmEeWBq8z1Dv39LA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_95Pfs3NmEeWBq8z1Dv39LA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_95PftHNmEeWBq8z1Dv39LA" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

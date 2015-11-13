@@ -96,6 +96,8 @@ public class WaveformViewer implements IWaveformViewer  {
 	
 	private ScrolledComposite valueListScrolled;
 
+	private Control namePaneHeader;
+
 	private Canvas nameList;
 	
 	private Canvas valueList;
@@ -239,10 +241,11 @@ public class WaveformViewer implements IWaveformViewer  {
 		waveformCanvas = new WaveformCanvas(topSash, SWT.NONE);
 
 		SashForm leftSash = new SashForm(composite, SWT.SMOOTH);
-		leftSash.setBackground(leftSash.getDisplay().getSystemColor(SWT.COLOR_GRAY));
+		leftSash.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
 
 		Composite namePane = createTextPane(leftSash, "Name");
-		namePane.setBackground(namePane.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+		namePaneHeader= namePane.getChildren()[0];
+		namePane.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_BACKGROUND));
 
 		nameListScrolled = new ScrolledComposite(namePane, SWT.H_SCROLL | SWT.V_SCROLL);
 		nameListScrolled.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
@@ -275,7 +278,7 @@ public class WaveformViewer implements IWaveformViewer  {
 		nameListScrolled.setContent(nameList);
 
 		Composite valuePane = createTextPane(leftSash, "Value");
-		valuePane.setBackground(valuePane.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+		valuePane.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_BACKGROUND));
 		valueListScrolled = new ScrolledComposite(valuePane, SWT.H_SCROLL | SWT.V_SCROLL);
 		valueListScrolled.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		valueListScrolled.setExpandHorizontal(true);
@@ -805,8 +808,8 @@ public class WaveformViewer implements IWaveformViewer  {
 			gc.fillRectangle(subArea.x, subArea.y + yOffset, subArea.width, subArea.height);
 			gc.setFont(nameFontB);
 		} else {
-			gc.setBackground(SWTResourceManager.getColor(SWT.COLOR_LIST_BACKGROUND));
-			gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_LIST_FOREGROUND));
+			gc.setBackground(namePaneHeader.getBackground());
+			gc.setForeground(namePaneHeader.getForeground());
 			gc.setFont(nameFont);
 		}
 		gc.drawText(value, subArea.x + 5, subArea.y + yOffset + (waveformCanvas.getTrackHeight() - size.y) / 2, true);

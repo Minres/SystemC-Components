@@ -111,7 +111,7 @@ public class WaveformCanvas extends Canvas {
 		// order is important: it is bottom to top
         trackAreaPainter=new TrackAreaPainter(this);
         painterList.add(trackAreaPainter);
-        rulerPainter=new RulerPainter(this, getDisplay().getSystemColor(SWT.COLOR_BLACK), getDisplay().getSystemColor(SWT.COLOR_WHITE));
+        rulerPainter=new RulerPainter(this);
         painterList.add(rulerPainter);
 		CursorPainter cp = new CursorPainter(this, scaleFactor * 10, cursorPainters.size()-1);
 		painterList.add(cp);

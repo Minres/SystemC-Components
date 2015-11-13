@@ -33,6 +33,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.wb.swt.ResourceManager;
+import org.eclipse.wb.swt.SWTResourceManager;
 import org.osgi.service.prefs.Preferences;
 
 /**
@@ -128,12 +129,12 @@ public class HeapStatus extends Composite {
 			disabledGcImage = new Image(display, gcImage, SWT.IMAGE_DISABLE);
 		}
 		usedMemCol = display.getSystemColor(SWT.COLOR_INFO_BACKGROUND);
-		lowMemCol = new Color(display, 255, 70, 70);  // medium red
-		freeMemCol = new Color(display, 255, 190, 125);  // light orange
-		bgCol = display.getSystemColor(SWT.COLOR_WIDGET_BACKGROUND);
-		sepCol = topLeftCol = armCol = display.getSystemColor(SWT.COLOR_WIDGET_NORMAL_SHADOW);
-		bottomRightCol = display.getSystemColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW);
-		markCol = textCol = display.getSystemColor(SWT.COLOR_INFO_FOREGROUND);
+		lowMemCol = SWTResourceManager.getColor(255, 70, 70);  // medium red
+		freeMemCol = SWTResourceManager.getColor(255, 190, 125);  // light orange
+		bgCol = SWTResourceManager.getColor(SWT.COLOR_WIDGET_BACKGROUND);
+		sepCol = topLeftCol = armCol = SWTResourceManager.getColor(SWT.COLOR_WIDGET_NORMAL_SHADOW);
+		bottomRightCol = SWTResourceManager.getColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW);
+		markCol = textCol = SWTResourceManager.getColor(SWT.COLOR_INFO_FOREGROUND);
 
 		createContextMenu();
 
@@ -272,13 +273,6 @@ public class HeapStatus extends Composite {
 		}
 		if (disabledGcImage != null) {
 			disabledGcImage.dispose();
-		}
-
-        if (lowMemCol != null) {
-			lowMemCol.dispose();
-		}
-        if (freeMemCol != null) {
-			freeMemCol.dispose();
 		}
 	}
 
@@ -469,7 +463,9 @@ public class HeapStatus extends Composite {
         int tw = (int) (sw * totalMem / maxMem); // current total mem width
         int tx = x + 1 + tw; // current total mem right edge
 
-        gc.setBackground(bgCol);
+        if (bgCol != null) {
+			gc.setBackground(bgCol);
+		}
         gc.fillRectangle(rect);
         gc.setForeground(sepCol);
 		gc.drawLine(dx, y, dx, y + h);
