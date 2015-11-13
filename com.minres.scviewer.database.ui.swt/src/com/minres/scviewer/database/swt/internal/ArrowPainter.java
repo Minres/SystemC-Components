@@ -11,38 +11,141 @@
 package com.minres.scviewer.database.swt.internal;
 
 import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.graphics.Path;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.widgets.Display;
 
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.ITxRelation;
+import com.minres.scviewer.database.ITxStream;
+import com.minres.scviewer.database.ui.WaveformColors;
 
 public class ArrowPainter implements IPainter {
 
-	private WaveformCanvas waveCanvas;
+	private final int xCtrlOffset=50;
 	
+	private final int yCtrlOffset=30;
+
+	private WaveformCanvas waveCanvas;
+
 	private ITx tx;
 
-	private Collection<ITxRelation> incoming;
+	private List<Rectangle> iRect;
 
-	private Collection<ITxRelation> outgoing;
+	private List<Rectangle> oRect;
 
-	public  ArrowPainter(WaveformCanvas waveCanvas, ITx tx) {
-		this.waveCanvas = waveCanvas;
-		this.tx=tx;
-		this.incoming = tx.getIncomingRelations();
-		this.outgoing = tx.getOutgoingRelations();
-
-	}
+	private Rectangle txRectangle;
 	
+	long scaleFactor;
+	
+	boolean deferredUpdate;
+
+	public  ArrowPainter(WaveformCanvas waveCanvas) {
+		this.waveCanvas = waveCanvas;
+		setTx(null);
+	}
+
+	public ITx getTx() {
+		return tx;
+	}
+
+	public void setTx(ITx newTx) {
+		this.tx = newTx;
+		iRect=new LinkedList<>();
+		oRect=new LinkedList<>();
+		scaleFactor=waveCanvas.getScaleFactor();
+		if(tx!=null){
+			calculateGeometries();
+		}
+	}
+
+	protected void calculateGeometries() {
+		deferredUpdate=false;
+		ITxStream<?> stream=tx.getStream();
+		IWaveformPainter painter=waveCanvas.wave2painterMap.get(stream);
+		if(painter==null){ // stream has been added but painter not yet created
+			deferredUpdate=true;
+			return;
+		}
+		int laneHeight=painter.getHeight()/stream.getMaxConcurrency();
+		txRectangle = new Rectangle(
+				(int)(tx.getBeginTime()/scaleFactor),
+				waveCanvas.rulerHeight+painter.getVerticalOffset()+laneHeight*tx.getConcurrencyIndex(),
+				(int)((tx.getEndTime()-tx.getBeginTime())/scaleFactor),
+				laneHeight);
+		deriveGeom(tx.getIncomingRelations(), iRect, false);
+		deriveGeom(tx.getOutgoingRelations(), oRect, true);
+	}
+
+	protected void deriveGeom(Collection<ITxRelation> relations, List<Rectangle> res, boolean useTarget) {
+		for(ITxRelation iTxRelation: relations){
+			ITx otherTx = useTarget?iTxRelation.getTarget():iTxRelation.getSource();
+			if(waveCanvas.wave2painterMap.containsKey(otherTx.getStream())){
+				ITxStream<?> stream=otherTx.getStream();
+				IWaveformPainter painter=waveCanvas.wave2painterMap.get(stream);
+				int laneHeight=painter.getHeight()/stream.getMaxConcurrency();
+				Rectangle bb = new Rectangle(
+						(int)(otherTx.getBeginTime()/scaleFactor), 
+						waveCanvas.rulerHeight+painter.getVerticalOffset()+laneHeight*otherTx.getConcurrencyIndex(),
+						(int)((otherTx.getEndTime()-otherTx.getBeginTime())/scaleFactor), 
+						laneHeight);
+				res.add(bb);
+			}
+		}
+	}
+
 	@Override
 	public void paintArea(GC gc, Rectangle area) {
-		Rectangle txRectangle = getBounds(tx);
+		Color fgColor=waveCanvas.colors[WaveformColors.REL_ARROW.ordinal()];
+		if(deferredUpdate || (tx!=null && waveCanvas.getScaleFactor()!=scaleFactor)){
+			scaleFactor=waveCanvas.getScaleFactor();
+			calculateGeometries();
+		}
+		for(Rectangle srcRectangle:iRect){
+			Point target = drawPath(gc, fgColor, srcRectangle, txRectangle);
+			gc.drawLine(target.x-8,target.y-5, target.x,target.y);
+			gc.drawLine(target.x-8,target.y+5, target.x,target.y);
+		}
+		for(Rectangle tgtRectangle:oRect){
+			Point target = drawPath(gc, fgColor, txRectangle, tgtRectangle);
+			gc.drawLine(target.x-8,target.y-5, target.x,target.y);
+			gc.drawLine(target.x-8,target.y+5, target.x,target.y);
+		}
 	}
 
-	private Rectangle getBounds(ITx tx) {
-		return null;
-	}
+	protected Point drawPath(GC gc, Color fgColor, Rectangle srcRectangle, Rectangle tgtRectangle) {
+		Point point1=new Point(0, srcRectangle.y+srcRectangle.height/2);
+		Point point2=new Point(0, tgtRectangle.y+tgtRectangle.height/2);
 
+		point1.x = srcRectangle.x;
+		point2.x = tgtRectangle.x;
+
+		if(point2.x>point1.x+srcRectangle.width) point1.x+=srcRectangle.width;
+		if(point1.x>point2.x+tgtRectangle.width) point2.x+=tgtRectangle.width;
+
+		Path path=new Path(Display.getCurrent());
+		path.moveTo(point1.x,point1.y);
+		if(point1.y==point2.y){
+			Point center=new Point((point1.x+point2.x)/2, point1.y-yCtrlOffset);
+			path.cubicTo(point1.x+xCtrlOffset, point1.y, 
+					center.x-xCtrlOffset, center.y, 
+					center.x, center.y);
+			path.cubicTo(center.x+xCtrlOffset, center.y, 
+					point2.x-xCtrlOffset, point2.y, 
+					point2.x, point2.y);
+		} else
+			path.cubicTo(point1.x+xCtrlOffset, point1.y, point2.x-xCtrlOffset, point2.y, point2.x, point2.y);
+		gc.setAntialias(SWT.ON);
+		gc.setForeground(fgColor);
+		gc.drawPath(path);
+		path.dispose();
+		return point2;
+	}
 }

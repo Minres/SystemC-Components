@@ -76,9 +76,11 @@ public class WaveformCanvas extends Canvas {
 
 	private TrackAreaPainter trackAreaPainter;
 
+	private ArrowPainter arrowPainter;
+
 	private List<CursorPainter> cursorPainters;
 
-	private HashMap<IWaveform<?>, IWaveformPainter> wave2painterMap;
+	HashMap<IWaveform<?>, IWaveformPainter> wave2painterMap;
     /**
      * Constructor for ScrollableCanvas.
      * 
@@ -113,6 +115,8 @@ public class WaveformCanvas extends Canvas {
         painterList.add(trackAreaPainter);
         rulerPainter=new RulerPainter(this);
         painterList.add(rulerPainter);
+        arrowPainter=new ArrowPainter(this);
+        painterList.add(arrowPainter);
 		CursorPainter cp = new CursorPainter(this, scaleFactor * 10, cursorPainters.size()-1);
 		painterList.add(cp);
 		cursorPainters.add(cp);
@@ -155,6 +159,7 @@ public class WaveformCanvas extends Canvas {
             colors[WaveformColors.CURSOR_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
             colors[WaveformColors.MARKER.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY);
             colors[WaveformColors.MARKER_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
+            colors[WaveformColors.REL_ARROW.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_YELLOW);
         }
     }
 
@@ -210,8 +215,12 @@ public class WaveformCanvas extends Canvas {
     		this.level = level;
     		this.scaleFactor = (long) Math.pow(10, level/2);
     		if(level%2==1) this.scaleFactor*=3;
+    		ITx tx = arrowPainter.getTx();
+    		arrowPainter.setTx(null);
     		syncScrollBars();
-    	}
+    		arrowPainter.setTx(tx);
+    		redraw();
+   	}
     }
 
     public long getScaleFactor() {
@@ -402,6 +411,7 @@ public class WaveformCanvas extends Canvas {
         this.currentSelection = currentSelection;
         if (currentSelection != null)
             reveal(currentSelection);
+        arrowPainter.setTx(currentSelection);
         redraw();
     }
 
