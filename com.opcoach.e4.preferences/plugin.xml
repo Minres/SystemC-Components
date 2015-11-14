@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="e4PreferencePages" name="e4PreferencePages" schema="schema/e4PreferencePages.exsd"/>
+   <extension-point id="e4PreferenceStoreProvider" name="e4PreferenceStoreProvider" schema="schema/e4PreferenceStoreProvider.exsd"/>
+
+</plugin>

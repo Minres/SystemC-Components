@@ -43,6 +43,7 @@
       <plugin id="com.minres.scviewer.database.ui.swt"/>
       <plugin id="com.minres.scviewer.database.vcd"/>
       <plugin id="com.minres.scviewer.e4.application"/>
+      <plugin id="com.opcoach.e4.preferences"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
       <plugin id="javax.xml"/>

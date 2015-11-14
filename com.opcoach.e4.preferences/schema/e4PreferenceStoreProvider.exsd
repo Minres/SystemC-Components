@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.opcoach.e4.preferences" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="com.opcoach.e4.preferences" id="e4PreferenceStoreProvider" name="e4PreferenceStoreProvider"/>
+      </appinfo>
+      <documentation>
+         This extension point is used to associate a preference store to a plugin. 
+You can choose either to implement the IPreferenceStoreProvider interface or to give the ID of the IPreferenceStore to use (stored in the workbench context of your E4 application). 
+If this extension point is not used, a default ScopedPreferenceStore will be used for the preference page. 
+
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="preferenceStoreProvider" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="preferenceStoreProvider">
+      <complexType>
+         <attribute name="pluginId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Set here the plugin Id concerned by this extension. 
+Must be a valid plugin ID (control will be done at runtime)
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  Set a class to get the IPreferenceStore for the defined pluginID. 
+This parameter is optional if you use the contextId attribute.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":com.opcoach.e4.preferences.IPreferenceStoreProvider"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="idInWorkbenchContext" type="string">
+            <annotation>
+               <documentation>
+                  If no class is defined, you can set here the ID of the IPreferenceStore available in the context. 
+This object must be set in the workbenchContext using an Addon for instance, with the following code (in addon): 
+
+@PostContextCreate
+public void initMyAddon(IEclipseContext ctx)
+{
+    IPreferenceStore ps = new ... .  // The code to create your pref store
+    ctx.set(ID set in this extension,  ps);
+}
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         The definition could be like the following : 
+
+pluginId=&quot;yourPluginID&quot;
+provider=&quot;a class implementing IPreferenceStoreProvider&quot;
+
+
+Or using the key in context (usefull to share the same preference store between plugins) : 
+
+pluginId=&quot;yourPluginID&quot;
+keyInContext=&quot;the key of the IPreferenceStore stored in context&quot;
+
+
+
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         @OPCoach 2014
+      </documentation>
+   </annotation>
+
+</schema>
