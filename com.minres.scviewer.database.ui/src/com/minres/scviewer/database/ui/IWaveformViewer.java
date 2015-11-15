@@ -21,11 +21,15 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Control;
 
 import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.database.RelationType;
 
 public interface IWaveformViewer extends PropertyChangeListener, ISelectionProvider{
 
 	String CURSOR_PROPERTY = "cursor_time";
+	
 	String MARKER_PROPERTY = "marker_time";
+	
+	public static final RelationType NEXT_PREV_IN_STREAM = RelationType.create("Prev/Next in stream"); 
 
 	public void addSelectionChangedListener(ISelectionChangedListener listener);
 
@@ -47,13 +51,17 @@ public interface IWaveformViewer extends PropertyChangeListener, ISelectionProvi
 
 	public void moveSelection(GotoDirection direction);
 
+	public void moveSelection(GotoDirection direction, RelationType relationType);
+
 	public void moveCursor(GotoDirection direction);
 
 	public List<TrackEntry> getStreamList();
 
 	public TrackEntry getEntryForStream(IWaveform<?> source);
 	
-	public void moveSelected(int i);
+	public void moveSelectedTrack(int i);
+	
+    public void setHighliteRelation(RelationType relationType);
 
 	public long getMaxTime();
 

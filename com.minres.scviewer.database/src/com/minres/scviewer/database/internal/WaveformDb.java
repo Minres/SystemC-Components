@@ -29,6 +29,7 @@ import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IWaveformDbLoader;
 import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.database.InputFormatException;
+import com.minres.scviewer.database.RelationType;
 
 public class WaveformDb extends HierNode implements IWaveformDb {
 
@@ -38,6 +39,8 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 
 	private List<IHierNode> childNodes;
 
+	private List<RelationType> relationTypes;
+	
 	private Map<String, IWaveform<?>> waveforms;
 
 	private Long maxTime;
@@ -59,6 +62,7 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 	public WaveformDb() {
 		super();
 		waveforms = new HashMap<String, IWaveform<?>>();
+		relationTypes=new ArrayList<>();
 		maxTime=0L;
 	}
 
@@ -89,6 +93,7 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 				}
 				if(name==null) name=getFileBasename(inp.getName());
 				buildHierarchyNodes() ;
+				relationTypes.addAll(loader.getAllRelationTypes());
 				pcs.firePropertyChange("WAVEFORMS", null, waveforms);
 				pcs.firePropertyChange("CHILDS", null, childNodes);
 				loaded = true;
@@ -184,5 +189,10 @@ public class WaveformDb extends HierNode implements IWaveformDb {
 	        sb.append(iter.next().toString());
 	    }
 	    return sb.toString();
+	}
+
+	@Override
+	public List<RelationType> getAllRelationTypes() {
+		return relationTypes;
 	}
 }

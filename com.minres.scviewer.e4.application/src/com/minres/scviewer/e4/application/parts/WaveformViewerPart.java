@@ -57,10 +57,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 
 import com.minres.scviewer.database.ITx;
+import com.minres.scviewer.database.ITxRelation;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IWaveformDbFactory;
 import com.minres.scviewer.database.IWaveformEvent;
+import com.minres.scviewer.database.RelationType;
 import com.minres.scviewer.database.swt.WaveformViewerFactory;
 import com.minres.scviewer.database.ui.GotoDirection;
 import com.minres.scviewer.database.ui.ICursor;
@@ -87,7 +89,7 @@ public class WaveformViewerPart implements IFileChangeListener, IPreferenceChang
 	protected static final String ZOOM_LEVEL = "ZOOM_LEVEL";
 
 	protected static final long FILE_CHECK_INTERVAL = 60000;
-
+	
 	private String[] zoomLevel;
 
 	public static final String ID = "com.minres.scviewer.ui.TxEditorPart"; //$NON-NLS-1$
@@ -125,6 +127,10 @@ public class WaveformViewerPart implements IFileChangeListener, IPreferenceChang
 	ArrayList<File> filesToLoad;
 
 	Map<String, String> persistedState;
+
+	private Object browserState;
+
+	private RelationType navigationRelationType=IWaveformViewer.NEXT_PREV_IN_STREAM ;
 
 	FileMonitor fileMonitor = new FileMonitor();
 
@@ -487,11 +493,16 @@ public class WaveformViewerPart implements IFileChangeListener, IPreferenceChang
 	}
 
 	public void moveSelected(int i) {
-		waveformPane.moveSelected(i);
+		waveformPane.moveSelectedTrack(i);
 	}
 
-	public void moveSelection(GotoDirection direction) {
-		waveformPane.moveSelection(direction);
+	
+	public void moveSelection(GotoDirection direction ) {
+		moveSelection(direction, navigationRelationType); 
+	}
+
+	public void moveSelection(GotoDirection direction, RelationType relationType) {
+		waveformPane.moveSelection(direction, relationType);
 	}
 
 	public void moveCursor(GotoDirection direction) {
@@ -526,6 +537,55 @@ public class WaveformViewerPart implements IFileChangeListener, IPreferenceChang
 
 	public String getScaledTime(Long time) {
 		return waveformPane.getScaledTime(time);
+	}
+
+	public void storeDesignBrowerState(Object browserState) {
+		this.browserState=browserState;
+	}
+
+	public Object retrieveDesignBrowerState() {
+		return browserState;
+	}
+
+	public List<RelationType> getAllRelationTypes() {
+		List<RelationType> res =new ArrayList<>();
+		res.add(IWaveformViewer.NEXT_PREV_IN_STREAM);
+		res.addAll(database.getAllRelationTypes());
+		return res;
+	}
+
+	public List<RelationType> getSelectionRelationTypes() {
+		List<RelationType> res =new ArrayList<>();
+		res.add(IWaveformViewer.NEXT_PREV_IN_STREAM);
+		ISelection selection = waveformPane.getSelection();
+		if(selection instanceof IStructuredSelection && !selection.isEmpty()){
+			IStructuredSelection sel=(IStructuredSelection) selection;
+			if(sel.getFirstElement() instanceof ITx){
+				ITx tx = (ITx) sel.getFirstElement();
+				for(ITxRelation rel:tx.getIncomingRelations()){
+					if(!res.contains(rel.getRelationType()))
+						res.add(rel.getRelationType());
+				}
+				for(ITxRelation rel:tx.getOutgoingRelations()){
+					if(!res.contains(rel.getRelationType()))
+						res.add(rel.getRelationType());
+				}
+			}
+		}
+		return res;
+	}
+
+	public RelationType getRelationTypeFilter() {
+		return navigationRelationType;
+	}
+
+	public void setNavigationRelationType(String relationName) {
+		setNavigationRelationType(RelationType.create(relationName));
+	}
+
+	public void setNavigationRelationType(RelationType relationType) {
+		if(navigationRelationType!=relationType) waveformPane.setHighliteRelation(relationType);
+		navigationRelationType=relationType;
 	}
 
 }

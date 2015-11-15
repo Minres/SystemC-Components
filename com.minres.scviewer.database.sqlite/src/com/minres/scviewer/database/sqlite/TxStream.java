@@ -55,7 +55,7 @@ public class TxStream extends HierNode implements ITxStream<ITxEvent> {
 	
 	private TreeMap<Long, List<ITxEvent>> events;
 
-	private RelationTypeFactory relationMap;
+	private List<RelationType> usedRelationsList;
 	
 	public TxStream(IDatabase database, IWaveformDb waveformDb, ScvStream scvStream) {
 		super(scvStream.getName());
@@ -181,14 +181,14 @@ public class TxStream extends HierNode implements ITxStream<ITxEvent> {
 		return getEvents().get(time);
 	}
 
-	public void setRelationTypeFactory(RelationTypeFactory rtf) {
-		this.relationMap=rtf;
-		
+	public void setRelationTypeList(List<RelationType> usedRelationsList){
+		this.usedRelationsList=usedRelationsList;
 	}
-
+	
 	public RelationType getRelationType(String name) {
-		if(relationMap!=null) return relationMap.getRelationType(name);
-		return null;
+		RelationType relType=RelationType.create(name);
+		if(!usedRelationsList.contains(relType)) usedRelationsList.add(relType);
+		return relType;
 	}
 
 	@Override

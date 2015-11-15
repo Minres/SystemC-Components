@@ -40,6 +40,8 @@ import com.google.common.collect.Lists;
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformEvent;
+import com.minres.scviewer.database.RelationType;
+import com.minres.scviewer.database.ui.IWaveformViewer;
 import com.minres.scviewer.database.ui.WaveformColors;
 
 public class WaveformCanvas extends Canvas {
@@ -115,7 +117,7 @@ public class WaveformCanvas extends Canvas {
         painterList.add(trackAreaPainter);
         rulerPainter=new RulerPainter(this);
         painterList.add(rulerPainter);
-        arrowPainter=new ArrowPainter(this);
+        arrowPainter=new ArrowPainter(this, IWaveformViewer.NEXT_PREV_IN_STREAM);
         painterList.add(arrowPainter);
 		CursorPainter cp = new CursorPainter(this, scaleFactor * 10, cursorPainters.size()-1);
 		painterList.add(cp);
@@ -159,10 +161,19 @@ public class WaveformCanvas extends Canvas {
             colors[WaveformColors.CURSOR_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
             colors[WaveformColors.MARKER.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY);
             colors[WaveformColors.MARKER_TEXT.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_WHITE);
-            colors[WaveformColors.REL_ARROW.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_YELLOW);
+            colors[WaveformColors.REL_ARROW.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_MAGENTA);
+            colors[WaveformColors.REL_ARROW_HIGHLITE.ordinal()] = SWTResourceManager.getColor(255, 128, 255);
         }
     }
 
+    public void setHighliteRelation(RelationType relationType){
+    	if(arrowPainter!=null){
+    		boolean redraw = arrowPainter.getHighlightType()!=relationType; 
+    		arrowPainter.setHighlightType(relationType);
+    		if(redraw) redraw();
+    	}
+    }
+    
     public Point getOrigin() {
         return origin;
     }

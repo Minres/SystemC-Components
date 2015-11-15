@@ -22,6 +22,8 @@ public interface IWaveformDb extends IHierNode {
 	
 	public List<IWaveform<?>> getAllWaves();
 	
+	public List<RelationType> getAllRelationTypes();
+	
 	public boolean load(File inp) throws Exception;
 
 	public boolean isLoaded();

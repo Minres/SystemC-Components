@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.minres.scviewer.database.text;
 
+import java.util.Collection;
+
 import com.minres.scviewer.database.AssociationType
 import com.minres.scviewer.database.DataType
 import com.minres.scviewer.database.ITxGenerator
@@ -145,7 +147,7 @@ public class TextDbLoader implements IWaveformDbLoader{
 					Tx tr2= transactionsById[Integer.parseInt(tokens[2])]
 					Tx tr1= transactionsById[Integer.parseInt(tokens[3])]
 					def relType=tokens[1][1..-2]
-					if(!relationTypes.containsKey(relType)) relationTypes[relType]=new RelationType(relType)
+					if(!relationTypes.containsKey(relType)) relationTypes[relType]=RelationType.create(relType)
 					def rel = new TxRelation(relationTypes[relType], tr1, tr2)
 					tr1.outgoingRelations<<rel
 					tr2.incomingRelations<<rel
@@ -160,4 +162,10 @@ public class TextDbLoader implements IWaveformDbLoader{
 	private def calculateConcurrencyIndicees(){
 		streams.each{ TxStream  stream -> stream.getMaxConcurrency() }
 	}
+	
+	
+	public Collection<RelationType> getAllRelationTypes(){
+		return relationTypes.values();
+	}
+
 }

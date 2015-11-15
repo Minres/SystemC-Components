@@ -12,6 +12,8 @@ package com.minres.scviewer.database.vcd;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 import java.util.TreeMap;
@@ -27,6 +29,7 @@ import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IWaveformDbLoader;
 import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.database.InputFormatException;
+import com.minres.scviewer.database.RelationType;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -175,6 +178,11 @@ public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 		} else {
 			((VCDSignal<VCDSignalChangeMulti>)signal).values.put(time, new VCDSignalChangeMulti(time, decodedValues));
 		}
+	}
+	
+	@Override
+	public Collection<RelationType> getAllRelationTypes(){
+		return Collections.emptyList();
 	}
 
 }

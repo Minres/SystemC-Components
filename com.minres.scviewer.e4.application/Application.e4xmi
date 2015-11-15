@@ -4,29 +4,26 @@
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_95QGxnNmEeWBq8z1Dv39LA">
       <children xsi:type="advanced:Perspective" xmi:id="_95QGx3NmEeWBq8z1Dv39LA">
         <children xsi:type="basic:PartSashContainer" xmi:id="_95QGyHNmEeWBq8z1Dv39LA" horizontal="true">
-          <children xsi:type="basic:PartSashContainer" xmi:id="_61hA8HTPEeWwZ-9vrAR2UQ" elementId="" containerData="20">
-            <children xsi:type="basic:Part" xmi:id="_95QGynNmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.parts.DesignBrowser" containerData="10" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.DesignBrowser" label="Design Browser"/>
-            <children xsi:type="basic:Part" xmi:id="_8KyKwHTPEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parts.WaveformList" containerData="9" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.WaveformListPart" label="Waveform List">
-              <handlers xmi:id="_Bx9s0Hr-EeWVM_sKoXvptg" elementId="com.minres.scviewer.e4.application.handler.addWaveformCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.AddWaveformHandler" command="_2PehEHr9EeWVM_sKoXvptg"/>
-              <menus xsi:type="menu:PopupMenu" xmi:id="_G6xAYHsDEeWVM_sKoXvptg" elementId="com.minres.scviewer.e4.application.parts.WaveformList.popupmenu">
-                <children xsi:type="menu:HandledMenuItem" xmi:id="_swdo8Hr9EeWVM_sKoXvptg" elementId="com.minres.scviewer.e4.application.handledmenuitem.append" label="Append after" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/append_wave.png" command="_2PehEHr9EeWVM_sKoXvptg">
-                  <parameters xmi:id="_IA_lcHr_EeWVM_sKoXvptg" elementId="com.minres.scviewer.e4.application.parameter.21" name="com.minres.scviewer.e4.application.command.addwaveform.where" value="after"/>
-                  <parameters xmi:id="_B6hTkHwJEeWv0Y5uF2QN5w" elementId="com.minres.scviewer.e4.application.parameter.25" name="com.minres.scviewer.e4.application.command.addwaveform.all" value="false"/>
-                </children>
-                <children xsi:type="menu:HandledMenuItem" xmi:id="_twC2oHr9EeWVM_sKoXvptg" elementId="com.minres.scviewer.e4.application.handledmenuitem.insertbefore" label="Insert before" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/insert_wave.png" command="_2PehEHr9EeWVM_sKoXvptg">
-                  <parameters xmi:id="_KQPEMHr_EeWVM_sKoXvptg" elementId="com.minres.scviewer.e4.application.parameter.22" name="com.minres.scviewer.e4.application.command.addwaveform.where" value="before"/>
-                  <parameters xmi:id="_Em0hwHwJEeWv0Y5uF2QN5w" elementId="com.minres.scviewer.e4.application.parameter.26" name="com.minres.scviewer.e4.application.command.addwaveform.all" value="false"/>
-                </children>
-                <children xsi:type="menu:HandledMenuItem" xmi:id="_uMoE8Hr9EeWVM_sKoXvptg" elementId="com.minres.scviewer.e4.application.handledmenuitem.appendall" label="Append all" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/append_all_waves.png" command="_2PehEHr9EeWVM_sKoXvptg">
-                  <parameters xmi:id="_LpOQYHr_EeWVM_sKoXvptg" elementId="com.minres.scviewer.e4.application.parameter.23" name="com.minres.scviewer.e4.application.command.addwaveform.where" value="after"/>
-                  <parameters xmi:id="_G-T9kHwJEeWv0Y5uF2QN5w" elementId="com.minres.scviewer.e4.application.parameter.27" name="com.minres.scviewer.e4.application.command.addwaveform.all" value="true"/>
-                </children>
-                <children xsi:type="menu:HandledMenuItem" xmi:id="_ukpjYHr9EeWVM_sKoXvptg" elementId="com.minres.scviewer.e4.application.handledmenuitem.insertall" label="Insert All" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/insert_all_waves.png" command="_2PehEHr9EeWVM_sKoXvptg">
-                  <parameters xmi:id="_M9U8kHr_EeWVM_sKoXvptg" elementId="com.minres.scviewer.e4.application.parameter.24" name="com.minres.scviewer.e4.application.command.addwaveform.where" value="before"/>
-                  <parameters xmi:id="_ckAToHwJEeWv0Y5uF2QN5w" elementId="com.minres.scviewer.e4.application.parameter.28" name="com.minres.scviewer.e4.application.command.addwaveform.all" value="true"/>
-                </children>
-              </menus>
-            </children>
+          <children xsi:type="basic:Part" xmi:id="_95QGynNmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.parts.DesignBrowser" containerData="20" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.DesignBrowser" label="Design Browser">
+            <handlers xmi:id="_JIWOYIq-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.handler.addWaveformCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.AddWaveformHandler" command="_2PehEHr9EeWVM_sKoXvptg"/>
+            <menus xsi:type="menu:PopupMenu" xmi:id="_HvUl8Iq-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.parts.DesignBrowser.popupmenu">
+              <children xsi:type="menu:HandledMenuItem" xmi:id="_HvUl8Yq-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.handledmenuitem.append" label="Append after" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/append_wave.png" command="_2PehEHr9EeWVM_sKoXvptg">
+                <parameters xmi:id="_HvUl8oq-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.parameter.21" name="com.minres.scviewer.e4.application.command.addwaveform.where" value="after"/>
+                <parameters xmi:id="_HvUl84q-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.parameter.25" name="com.minres.scviewer.e4.application.command.addwaveform.all" value="false"/>
+              </children>
+              <children xsi:type="menu:HandledMenuItem" xmi:id="_HvUl9Iq-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.handledmenuitem.insertbefore" label="Insert before" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/insert_wave.png" command="_2PehEHr9EeWVM_sKoXvptg">
+                <parameters xmi:id="_HvUl9Yq-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.parameter.22" name="com.minres.scviewer.e4.application.command.addwaveform.where" value="before"/>
+                <parameters xmi:id="_HvUl9oq-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.parameter.26" name="com.minres.scviewer.e4.application.command.addwaveform.all" value="false"/>
+              </children>
+              <children xsi:type="menu:HandledMenuItem" xmi:id="_HvUl94q-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.handledmenuitem.appendall" label="Append all" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/append_all_waves.png" command="_2PehEHr9EeWVM_sKoXvptg">
+                <parameters xmi:id="_HvUl-Iq-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.parameter.23" name="com.minres.scviewer.e4.application.command.addwaveform.where" value="after"/>
+                <parameters xmi:id="_HvUl-Yq-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.parameter.27" name="com.minres.scviewer.e4.application.command.addwaveform.all" value="true"/>
+              </children>
+              <children xsi:type="menu:HandledMenuItem" xmi:id="_HvUl-oq-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.handledmenuitem.insertall" label="Insert All" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/insert_all_waves.png" command="_2PehEHr9EeWVM_sKoXvptg">
+                <parameters xmi:id="_HvUl-4q-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.parameter.24" name="com.minres.scviewer.e4.application.command.addwaveform.where" value="before"/>
+                <parameters xmi:id="_HvUl_Iq-EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.parameter.28" name="com.minres.scviewer.e4.application.command.addwaveform.all" value="true"/>
+              </children>
+            </menus>
           </children>
           <children xsi:type="basic:PartSashContainer" xmi:id="_uT9BIHgtEeWwZ-9vrAR2UQ" elementId="" containerData="80">
             <children xsi:type="basic:PartStack" xmi:id="_95QGyXNmEeWBq8z1Dv39LA" elementId="org.eclipse.editorss" containerData="75"/>
@@ -50,7 +47,7 @@
             <parameters xmi:id="_5bKwsHguEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.16" name="com.minres.scviewer.e4.application.command.movewaveformupCommand.parameter.dir" value="up"/>
           </children>
           <children xsi:type="menu:HandledMenuItem" xmi:id="_7BRy4HguEeWwZ-9vrAR2UQ" elementId="" label="Move Waveform down" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/down_blue.png" command="_N_sOkHXHEeWwZ-9vrAR2UQ">
-            <parameters xmi:id="_7BRy4XguEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.16" name="com.minres.scviewer.e4.application.command.movewaveformupCommand.parameter.dir" value="down"/>
+            <parameters xmi:id="_7BRy4XguEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.29" name="com.minres.scviewer.e4.application.command.movewaveformupCommand.parameter.dir" value="down"/>
           </children>
         </children>
         <children xsi:type="menu:Menu" xmi:id="_ZywtoHgwEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.menu.cursor" label="Cursor ...">
@@ -79,42 +76,48 @@
     </mainMenu>
     <trimBars xmi:id="_95QGy3NmEeWBq8z1Dv39LA" elementId="org.eclipse.ui.main.toolbar">
       <children xsi:type="menu:ToolBar" xmi:id="_95QGzHNmEeWBq8z1Dv39LA" elementId="toolbar:org.eclipse.ui.main.toolbar">
-        <children xsi:type="menu:HandledToolItem" xmi:id="_95QGzXNmEeWBq8z1Dv39LA" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/folder_database.png" command="_95PfwHNmEeWBq8z1Dv39LA"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_95QGznNmEeWBq8z1Dv39LA" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/save_edit.png" command="_95Pfw3NmEeWBq8z1Dv39LA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_95QGzXNmEeWBq8z1Dv39LA" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/folder_database.png" tooltip="Open new database" command="_95PfwHNmEeWBq8z1Dv39LA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_95QGznNmEeWBq8z1Dv39LA" toBeRendered="false" visible="false" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/save_edit.png" command="_95Pfw3NmEeWBq8z1Dv39LA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_VUv_AHckEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.toolbar.0">
-        <children xsi:type="menu:HandledToolItem" xmi:id="_EboiQHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.removestream" label="Remove Stream" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/cross.png" command="_WUZ2wHXHEeWwZ-9vrAR2UQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_EboiQHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.removestream" label="Remove Stream" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/cross.png" tooltip="Remove stream/waveform from list" command="_WUZ2wHXHEeWwZ-9vrAR2UQ"/>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_rLVjAHgwEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.toolbarseparator.2"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_FE0CIHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.movestreamup" label="Move Stream up" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/up_blue.png" command="_N_sOkHXHEeWwZ-9vrAR2UQ">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_FE0CIHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.movestreamup" label="Move Stream up" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/up_blue.png" tooltip="Move stream/waveform in list up" command="_N_sOkHXHEeWwZ-9vrAR2UQ">
           <parameters xmi:id="_S_M5YHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.8" name="com.minres.scviewer.e4.application.command.movewaveformupCommand.parameter.dir" value="up"/>
         </children>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_FrGmEHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.movestreamdown" label="Move Stream down" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/down_blue.png" command="_N_sOkHXHEeWwZ-9vrAR2UQ">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_FrGmEHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.movestreamdown" label="Move Stream down" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/down_blue.png" tooltip="Move stream/waveform in list down" command="_N_sOkHXHEeWwZ-9vrAR2UQ">
           <parameters xmi:id="_VA_yAHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.9" name="com.minres.scviewer.e4.application.command.movewaveformupCommand.parameter.dir" value="down"/>
         </children>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_srcD0HgwEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.toolbarseparator.3"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_GKi7IHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.previousevent" label="Previous Event" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/reverse_blue.png" command="_79rx4HabEeWwZ-9vrAR2UQ">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_GKi7IHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.previousevent" label="Previous Event" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/reverse_blue.png" tooltip="Navigate to previous event in stream/waveform" command="_79rx4HabEeWwZ-9vrAR2UQ">
           <parameters xmi:id="_XS7YYHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.10" name="com.minres.scviewer.e4.application.command.navigateEventCommand.parameter.dir" value="prev"/>
         </children>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_GjlGMHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.nextevent" label="Next Event" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/play_blue.png" command="_79rx4HabEeWwZ-9vrAR2UQ">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_GjlGMHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.nextevent" label="Next Event" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/play_blue.png" tooltip="Navigate to next event in stream/waveform" command="_79rx4HabEeWwZ-9vrAR2UQ">
           <parameters xmi:id="_ZzTqcHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.11" name="com.minres.scviewer.e4.application.command.navigateEventCommand.parameter.dir" value="next"/>
         </children>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_tcxaIHgwEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.toolbarseparator.4"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_HdKZkHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.previoustransaction" label="Previous Transaction" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/reverse_green.png" command="_Gn3lEHXKEeWwZ-9vrAR2UQ">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_HdKZkHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.previoustransaction" label="Previous Transaction" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/reverse_green.png" tooltip="Navigate to previous transaction" command="_Gn3lEHXKEeWwZ-9vrAR2UQ">
           <parameters xmi:id="_cuGAkHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.12" name="com.minres.scviewer.e4.application.command.navigateTransCommand.parameter.dir" value="prev"/>
         </children>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_H7bp8HcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.nexttransaction" label="Next Transaction" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/play_green.png" command="_Gn3lEHXKEeWwZ-9vrAR2UQ">
+        <children xsi:type="menu:ToolControl" xmi:id="_LtQhcIuKEeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.toolcontrol.0" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.elements.RelationTypeToolControl"/>
+        <children xsi:type="menu:DirectToolItem" xmi:id="_Z7ZQkIuJEeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.directtoolitem.nextprevinstream" toBeRendered="false" visible="false" label="Next/Prev in stream" enabled="false">
+          <menu xmi:id="_aPyMMIuJEeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.menu.2">
+            <children xsi:type="menu:DynamicMenuContribution" xmi:id="_cnNWkIuJEeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.dynamicmenucontribution.2" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.NavigateContribution"/>
+          </menu>
+        </children>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_H7bp8HcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.nexttransaction" label="Next Transaction" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/play_green.png" tooltip="Navigate to next transaction" command="_Gn3lEHXKEeWwZ-9vrAR2UQ">
           <parameters xmi:id="_fiO8IHcjEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.13" name="com.minres.scviewer.e4.application.command.navigateTransCommand.parameter.dir" value="next"/>
         </children>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_oQdMUHcqEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.toolbar.1">
-        <children xsi:type="menu:HandledToolItem" xmi:id="_5DrGQHf4EeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.zoomfit" label="Zoom out" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/zoom.png" command="_693GoHcqEeWwZ-9vrAR2UQ">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_5DrGQHf4EeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.zoomfit" label="Zoom out" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/zoom.png" tooltip="Restore default zoom level" command="_693GoHcqEeWwZ-9vrAR2UQ">
           <parameters xmi:id="_5DrGQXf4EeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.14" name="com.minres.scviewer.e4.application.command.zoomcommand.parameter.level" value="fit"/>
         </children>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_p1AvUHcqEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.toolbarseparator.1"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_XMQPAHcrEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.zoomin" label="Zoom in" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/zoom_in.png" command="_693GoHcqEeWwZ-9vrAR2UQ">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_XMQPAHcrEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.zoomin" label="Zoom in" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/zoom_in.png" tooltip="Zoom in by a factor of 3" command="_693GoHcqEeWwZ-9vrAR2UQ">
           <parameters xmi:id="_fi5w4HcrEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.15" name="com.minres.scviewer.e4.application.command.zoomcommand.parameter.level" value="in"/>
         </children>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_XqTc8HcrEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.zoomout" label="Zoom out" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/zoom_out.png" command="_693GoHcqEeWwZ-9vrAR2UQ">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_XqTc8HcrEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledtoolitem.zoomout" label="Zoom out" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/zoom_out.png" tooltip="Zoom out by a factor of 3" command="_693GoHcqEeWwZ-9vrAR2UQ">
           <parameters xmi:id="_d7OBYHcrEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.14" name="com.minres.scviewer.e4.application.command.zoomcommand.parameter.level" value="out"/>
         </children>
       </children>
@@ -138,6 +141,7 @@
   <handlers xmi:id="_3ZZhsHXHEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handler.selectallCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.SelectAllHandler" command="_bV-TMHXHEeWwZ-9vrAR2UQ"/>
   <handlers xmi:id="_CTcpEIl_EeWxJ_wPkM6yGQ" elementId="com.minres.scviewer.e4.application.handler.preferences" contributionURI="bundleclass://com.opcoach.e4.preferences/com.opcoach.e4.preferences.handlers.E4PreferencesHandler" command="_AxH6sIl_EeWxJ_wPkM6yGQ"/>
   <handlers xmi:id="_UUnX8IoNEeWxJ_wPkM6yGQ" elementId="com.minres.scviewer.e4.application.handler.set_them" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.ThemeSetHandler" command="_KlGlsIoNEeWxJ_wPkM6yGQ"/>
+  <handlers xmi:id="_V4EscIuGEeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.handler.setreleationtype" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.SetRelationTypeHandler" command="_E9lUgIt2EeWid7xO48ZBXw"/>
   <bindingTables xmi:id="_95PfvnNmEeWBq8z1Dv39LA" bindingContext="_95PfuXNmEeWBq8z1Dv39LA">
     <bindings xmi:id="_95Pfv3NmEeWBq8z1Dv39LA" keySequence="M1+Q" command="_95PfvHNmEeWBq8z1Dv39LA"/>
     <bindings xmi:id="_95PfwnNmEeWBq8z1Dv39LA" keySequence="M1+O" command="_95PfwHNmEeWBq8z1Dv39LA"/>
@@ -156,15 +160,15 @@
     <handlers xmi:id="_2Ai4YHXHEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handler.movewaveformupCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.MoveWaveformHandler" command="_N_sOkHXHEeWwZ-9vrAR2UQ"/>
     <handlers xmi:id="_Du1NAHcrEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handler.zoomCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.ZoomHandler" command="_693GoHcqEeWwZ-9vrAR2UQ"/>
     <menus xsi:type="menu:PopupMenu" xmi:id="_TwzrsHWSEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.popupmenu.namecontext" label="Name Menu">
-      <children xsi:type="menu:HandledMenuItem" xmi:id="_Vco7YHWSEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.moveup" label="Move up" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/up_blue.png" command="_N_sOkHXHEeWwZ-9vrAR2UQ">
+      <children xsi:type="menu:HandledMenuItem" xmi:id="_Vco7YHWSEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.moveup" label="Move up" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/up_blue.png" tooltip="Move stream/waveform in list up" command="_N_sOkHXHEeWwZ-9vrAR2UQ">
         <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_elFdcHr_EeWVM_sKoXvptg" coreExpressionId="com.minres.scviewer.e4.application.oneWaveSeleted"/>
         <parameters xmi:id="_qNG5kHZWEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.0" name="com.minres.scviewer.e4.application.command.movewaveformupCommand.parameter.dir" value="up"/>
       </children>
-      <children xsi:type="menu:HandledMenuItem" xmi:id="_UlTbMHXIEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.movedown" label="Move down" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/down_blue.png" command="_N_sOkHXHEeWwZ-9vrAR2UQ">
+      <children xsi:type="menu:HandledMenuItem" xmi:id="_UlTbMHXIEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.movedown" label="Move down" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/down_blue.png" tooltip="Move stream/waveform in list down" command="_N_sOkHXHEeWwZ-9vrAR2UQ">
         <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_eBN0AHsCEeWVM_sKoXvptg" coreExpressionId="com.minres.scviewer.e4.application.oneWaveSeleted"/>
         <parameters xmi:id="_soO4MHZWEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.parameter.1" name="com.minres.scviewer.e4.application.command.movewaveformupCommand.parameter.dir" value="down"/>
       </children>
-      <children xsi:type="menu:HandledMenuItem" xmi:id="_Vj4jUHXIEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.remove" label="Remove" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/cross.png" command="_WUZ2wHXHEeWwZ-9vrAR2UQ">
+      <children xsi:type="menu:HandledMenuItem" xmi:id="_Vj4jUHXIEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handledmenuitem.remove" label="Remove" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/cross.png" tooltip="Remove stream/waveform from list" command="_WUZ2wHXHEeWwZ-9vrAR2UQ">
         <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_f6MH0HsCEeWVM_sKoXvptg" coreExpressionId="com.minres.scviewer.e4.application.oneWaveSeleted"/>
       </children>
     </menus>
@@ -199,7 +203,7 @@
   </commands>
   <commands xmi:id="_WUZ2wHXHEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.command.deletewaveformCommand" commandName="deleteWaveformCommand"/>
   <commands xmi:id="_bV-TMHXHEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.command.selectallCommand" commandName="selectAllCommand"/>
-  <commands xmi:id="_Gn3lEHXKEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.command.navigateTransCommand" commandName="navigateTransCommand">
+  <commands xmi:id="_Gn3lEHXKEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.command.navigateTransCommand" commandName="navigateTransCommand" description="Navigate to related transaction">
     <parameters xmi:id="_howw0HXQEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.command.navigateTransCommand.parameter.dir" name="direction" optional="false"/>
   </commands>
   <commands xmi:id="_79rx4HabEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.command.navigateEventCommand" commandName="navigateEventCommand">
@@ -214,7 +218,10 @@
   </commands>
   <commands xmi:id="_AxH6sIl_EeWxJ_wPkM6yGQ" elementId="org.eclipse.ui.window.preferences" commandName="Preferences"/>
   <commands xmi:id="_KlGlsIoNEeWxJ_wPkM6yGQ" elementId="com.minres.scviewer.e4.application.command.set_them" commandName="Set Theme">
-    <parameters xmi:id="_O8Z9IIoNEeWxJ_wPkM6yGQ" elementId="com.minres.scviewer.e4.application.command.theme.parameter.id" name="themeId"/>
+    <parameters xmi:id="_O8Z9IIoNEeWxJ_wPkM6yGQ" elementId="com.minres.scviewer.e4.application.command.theme.parameter.id" name="themeId" optional="false"/>
+  </commands>
+  <commands xmi:id="_E9lUgIt2EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.command.setrelationtype" commandName="SetRelationType">
+    <parameters xmi:id="_xnW7IIt_EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.commandparameter.relationName" name="relationName" optional="false"/>
   </commands>
   <addons xmi:id="_95PfsnNmEeWBq8z1Dv39LA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_95Pfs3NmEeWBq8z1Dv39LA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>

@@ -10,11 +10,26 @@
  *******************************************************************************/
 package com.minres.scviewer.database;
 
+import java.util.HashMap;
+
 public class RelationType {
+	
+	private static HashMap<String, RelationType> registry = new HashMap<>();
 	
 	private String name;
 
-	public RelationType(String name) {
+	public static RelationType create(String name){
+		if(registry.containsKey(name)){
+			return registry.get(name);
+		}else{
+			RelationType relType = new RelationType(name);
+			registry.put(name, relType);
+			return relType;
+		}
+		
+	}
+	
+	private RelationType(String name) {
 		super();
 		this.name = name;
 	}
@@ -29,5 +44,10 @@ public class RelationType {
 	
 	public String toString(){
 		return name;
+	}
+	
+	@Override
+	public int hashCode() {
+		return name.hashCode();
 	}
 }

@@ -26,9 +26,7 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Creatable;
 import org.eclipse.e4.core.services.contributions.IContributionFactory;
 import org.eclipse.e4.core.services.log.Logger;
-import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IPreferenceNode;
-import org.eclipse.jface.preference.IPreferencePage;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceManager;
 import org.eclipse.jface.preference.PreferenceNode;
@@ -41,6 +39,7 @@ import org.eclipse.swt.widgets.Label;
 import com.opcoach.e4.preferences.IPreferenceStoreProvider;
 import com.opcoach.e4.preferences.ScopedPreferenceStore;
 
+@SuppressWarnings("restriction")
 @Creatable
 public class E4PreferenceRegistry
 {

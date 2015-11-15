@@ -13,6 +13,7 @@ package com.minres.scviewer.database.swt.internal;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -73,9 +74,11 @@ import com.minres.scviewer.database.ISignalChangeMulti;
 import com.minres.scviewer.database.ISignalChangeSingle;
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.ITxEvent;
+import com.minres.scviewer.database.ITxRelation;
 import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformEvent;
+import com.minres.scviewer.database.RelationType;
 import com.minres.scviewer.database.ui.GotoDirection;
 import com.minres.scviewer.database.ui.ICursor;
 import com.minres.scviewer.database.ui.IWaveformViewer;
@@ -83,39 +86,39 @@ import com.minres.scviewer.database.ui.TrackEntry;
 import com.minres.scviewer.database.ui.WaveformColors;
 
 public class WaveformViewer implements IWaveformViewer  {
-	
-    private ListenerList selectionChangedListeners = new ListenerList();
-	
+
+	private ListenerList selectionChangedListeners = new ListenerList();
+
 	private PropertyChangeSupport pcs;
 
 	private ITx currentTxSelection;
-	
+
 	private TrackEntry currentWaveformSelection;
 
 	private ScrolledComposite nameListScrolled;
-	
+
 	private ScrolledComposite valueListScrolled;
 
 	private Control namePaneHeader;
 
 	private Canvas nameList;
-	
+
 	private Canvas valueList;
-	
+
 	WaveformCanvas waveformCanvas;
 
 	private Composite top;
 
 	protected ObservableList<TrackEntry> streams;
-	
+
 	int selectedMarker = 0;
-	
+
 	private int trackVerticalHeight;
-	
+
 	private TreeMap<Integer, TrackEntry> trackVerticalOffset;
-	
+
 	private HashMap<IWaveform<? extends IWaveformEvent>, String> actualValues;
-	
+
 	private Font nameFont, nameFontB;
 
 	protected MouseListener nameValueMouseListener = new MouseAdapter() {
@@ -136,7 +139,7 @@ public class WaveformViewer implements IWaveformViewer  {
 	protected MouseListener waveformMouseListener = new MouseAdapter(){
 		Point start;
 		List<Object> initialSelected;
-		
+
 		@Override
 		public void mouseDown(MouseEvent e) {
 			start=new Point(e.x, e.y);
@@ -462,10 +465,10 @@ public class WaveformViewer implements IWaveformViewer  {
 				if(firstTx!=null){
 					do {
 						for(ITxEvent evt:firstTx.getValue()){
-						    ITx tx=evt.getTransaction();
+							ITx tx=evt.getTransaction();
 							if(evt.getType()==ITxEvent.Type.BEGIN && tx.getBeginTime()<=time && tx.getEndTime()>=time){
 								if(resultsList[tx.getConcurrencyIndex()]==null)
-								resultsList[tx.getConcurrencyIndex()]= evt.getTransaction();
+									resultsList[tx.getConcurrencyIndex()]= evt.getTransaction();
 							}
 						}
 						firstTx=stream.getEvents().lowerEntry(firstTx.getKey());
@@ -480,7 +483,7 @@ public class WaveformViewer implements IWaveformViewer  {
 					}
 					entry.setValue(value);
 				}
-            }
+			}
 		}
 		valueList.redraw();
 	}
@@ -491,7 +494,7 @@ public class WaveformViewer implements IWaveformViewer  {
 		}
 		return true;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see com.minres.scviewer.database.swt.IWaveformPanel#addSelectionChangedListener(org.eclipse.jface.viewers.ISelectionChangedListener)
 	 */
@@ -560,7 +563,7 @@ public class WaveformViewer implements IWaveformViewer  {
 	public void setSelection(ISelection selection) {
 		setSelection(selection, false);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see com.minres.scviewer.database.swt.IWaveformPanel#setSelection(org.eclipse.jface.viewers.ISelection, boolean)
 	 */
@@ -613,10 +616,10 @@ public class WaveformViewer implements IWaveformViewer  {
 		IStructuredSelection selection=currentTxSelection!=null?
 				new StructuredSelection(new Object[]{currentTxSelection, currentWaveformSelection.waveform}):
 					new StructuredSelection(currentWaveformSelection.waveform);
-		Object[] list = selectionChangedListeners.getListeners();
-		for (int i = 0; i < list.length; i++) {
-			((ISelectionChangedListener) list[i]).selectionChanged(new SelectionChangedEvent(this, selection));
-		}
+				Object[] list = selectionChangedListeners.getListeners();
+				for (int i = 0; i < list.length; i++) {
+					((ISelectionChangedListener) list[i]).selectionChanged(new SelectionChangedEvent(this, selection));
+				}
 	}
 
 	/* (non-Javadoc)
@@ -624,63 +627,91 @@ public class WaveformViewer implements IWaveformViewer  {
 	 */
 	@Override
 	public void moveSelection(GotoDirection direction) {
-		if (currentWaveformSelection.isStream()) {
-			ITxStream<? extends ITxEvent> stream = currentWaveformSelection.getStream();
-			ITx transaction = null;
-			if (direction == GotoDirection.NEXT) {
-				List<ITxEvent> thisEntryList = stream.getEvents().get(currentTxSelection.getBeginTime());
-				boolean meFound=false;
-				for (ITxEvent evt : thisEntryList) {
-					if (evt.getType() == ITxEvent.Type.BEGIN) {
-						if(meFound){
-							transaction = evt.getTransaction();
-							break;
-						}
-						meFound|= evt.getTransaction().equals(currentTxSelection);
-					}
-				}
-				if (transaction == null){
-					Entry<Long, List<ITxEvent>> entry = stream.getEvents().higherEntry(currentTxSelection.getBeginTime());
-					if (entry != null) do {
-						for (ITxEvent evt : entry.getValue()) {
-							if (evt.getType() == ITxEvent.Type.BEGIN) {
+		moveSelection(direction, NEXT_PREV_IN_STREAM) ;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.minres.scviewer.database.swt.IWaveformPanel#moveSelection(com.minres.scviewer.database.swt.GotoDirection, com.minres.scviewer.database.RelationType)
+	 */
+	@Override
+	public void moveSelection(GotoDirection direction, RelationType relationType) {
+		if (currentWaveformSelection!=null && currentWaveformSelection.isStream() && currentTxSelection!=null) {
+			if(relationType.equals(IWaveformViewer.NEXT_PREV_IN_STREAM)){
+				ITxStream<? extends ITxEvent> stream = currentWaveformSelection.getStream();
+				ITx transaction = null;
+				if (direction == GotoDirection.NEXT) {
+					List<ITxEvent> thisEntryList = stream.getEvents().get(currentTxSelection.getBeginTime());
+					boolean meFound=false;
+					for (ITxEvent evt : thisEntryList) {
+						if (evt.getType() == ITxEvent.Type.BEGIN) {
+							if(meFound){
 								transaction = evt.getTransaction();
 								break;
 							}
+							meFound|= evt.getTransaction().equals(currentTxSelection);
 						}
-						if (transaction == null)
-							entry = stream.getEvents().higherEntry(entry.getKey());
-					} while (entry != null && transaction == null);
-				}
-			} else if (direction == GotoDirection.PREV) {
-				List<ITxEvent> thisEntryList = stream.getEvents().get(currentTxSelection.getBeginTime());
-				boolean meFound=false;
-				for (ITxEvent evt :  Lists.reverse(thisEntryList)) {
-					if (evt.getType() == ITxEvent.Type.BEGIN) {
-						if(meFound){
-							transaction = evt.getTransaction();
-							break;
-						}
-						meFound|= evt.getTransaction().equals(currentTxSelection);
 					}
-				}
-				if (transaction == null){
-					Entry<Long, List<ITxEvent>> entry = stream.getEvents().lowerEntry(currentTxSelection.getBeginTime());
-					if (entry != null)
-						do {
-							for (ITxEvent evt : Lists.reverse(entry.getValue())) {
+					if (transaction == null){
+						Entry<Long, List<ITxEvent>> entry = stream.getEvents().higherEntry(currentTxSelection.getBeginTime());
+						if (entry != null) do {
+							for (ITxEvent evt : entry.getValue()) {
 								if (evt.getType() == ITxEvent.Type.BEGIN) {
 									transaction = evt.getTransaction();
 									break;
 								}
 							}
 							if (transaction == null)
-								entry = stream.getEvents().lowerEntry(entry.getKey());
+								entry = stream.getEvents().higherEntry(entry.getKey());
 						} while (entry != null && transaction == null);
+					}
+				} else if (direction == GotoDirection.PREV) {
+					List<ITxEvent> thisEntryList = stream.getEvents().get(currentTxSelection.getBeginTime());
+					boolean meFound=false;
+					for (ITxEvent evt :  Lists.reverse(thisEntryList)) {
+						if (evt.getType() == ITxEvent.Type.BEGIN) {
+							if(meFound){
+								transaction = evt.getTransaction();
+								break;
+							}
+							meFound|= evt.getTransaction().equals(currentTxSelection);
+						}
+					}
+					if (transaction == null){
+						Entry<Long, List<ITxEvent>> entry = stream.getEvents().lowerEntry(currentTxSelection.getBeginTime());
+						if (entry != null)
+							do {
+								for (ITxEvent evt : Lists.reverse(entry.getValue())) {
+									if (evt.getType() == ITxEvent.Type.BEGIN) {
+										transaction = evt.getTransaction();
+										break;
+									}
+								}
+								if (transaction == null)
+									entry = stream.getEvents().lowerEntry(entry.getKey());
+							} while (entry != null && transaction == null);
+					}
 				}
-			}
-			if (transaction != null) {
-				setSelection(new StructuredSelection(transaction));
+				if (transaction != null) {
+					setSelection(new StructuredSelection(transaction));
+				}
+			} else {
+				if (direction == GotoDirection.NEXT) {
+					Collection<ITxRelation>  outRel=currentTxSelection.getOutgoingRelations();
+					for(ITxRelation rel:outRel){
+						if(relationType.equals(rel.getRelationType())){
+							setSelection(new StructuredSelection(rel.getTarget()), true);
+							return;
+						}
+					}
+				} else if (direction == GotoDirection.PREV) {
+					Collection<ITxRelation>  inRel=currentTxSelection.getIncomingRelations();
+					for(ITxRelation rel:inRel){
+						if(relationType.equals(rel.getRelationType())){
+							setSelection(new StructuredSelection(rel.getSource()), true);
+							return;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -706,7 +737,7 @@ public class WaveformViewer implements IWaveformViewer  {
 				waveformCanvas.redraw();
 			}
 		}
-	
+
 	}
 
 	/* (non-Javadoc)
@@ -721,7 +752,7 @@ public class WaveformViewer implements IWaveformViewer  {
 	 * @see com.minres.scviewer.database.swt.IWaveformPanel#moveSelected(int)
 	 */
 	@Override
-	public void moveSelected(int i) {
+	public void moveSelectedTrack(int i) {
 		if(currentWaveformSelection!=null){
 			ITx selectedTx=currentTxSelection;
 			TrackEntry selectedWaveform=currentWaveformSelection;
@@ -815,6 +846,11 @@ public class WaveformViewer implements IWaveformViewer  {
 		gc.drawText(value, subArea.x + 5, subArea.y + yOffset + (waveformCanvas.getTrackHeight() - size.y) / 2, true);
 	}
 
+	
+    public void setHighliteRelation(RelationType relationType){
+    	this.waveformCanvas.setHighliteRelation(relationType);
+    }
+    
 	/* (non-Javadoc)
 	 * @see com.minres.scviewer.database.swt.IWaveformPanel#getMaxTime()
 	 */
@@ -885,7 +921,7 @@ public class WaveformViewer implements IWaveformViewer  {
 	public long getSelectedMarkerTime(){
 		return getMarkerTime(selectedMarker);
 	}
-	
+
 	@Override
 	public List<ICursor> getCursorList(){
 		List<ICursor> cursors = new LinkedList<>();

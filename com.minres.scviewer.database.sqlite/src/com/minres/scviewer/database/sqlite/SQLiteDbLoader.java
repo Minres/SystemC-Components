@@ -16,12 +16,14 @@ import java.io.FileInputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import com.minres.scviewer.database.IWaveform;
 import com.minres.scviewer.database.IWaveformDb;
 import com.minres.scviewer.database.IWaveformDbLoader;
 import com.minres.scviewer.database.IWaveformEvent;
+import com.minres.scviewer.database.RelationType;
 import com.minres.scviewer.database.sqlite.db.IDatabase;
 import com.minres.scviewer.database.sqlite.db.SQLiteDatabase;
 import com.minres.scviewer.database.sqlite.db.SQLiteDatabaseSelectHandler;
@@ -33,7 +35,7 @@ public class SQLiteDbLoader implements IWaveformDbLoader {
 
 	protected IDatabase database;
 	
-	private RelationTypeFactory rtf = new RelationTypeFactory();
+	private List<RelationType> usedRelationsList = new ArrayList<>();
 
 	private IWaveformDb db;
 	
@@ -64,7 +66,7 @@ public class SQLiteDbLoader implements IWaveformDbLoader {
 		try {
 			for(ScvStream scvStream:handler.selectObjects()){
 				TxStream stream = new TxStream(database, db, scvStream);
-				stream.setRelationTypeFactory(rtf);
+				stream.setRelationTypeList(usedRelationsList);
 				streams.add(stream);
 			}
 		} catch (SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException
@@ -102,4 +104,10 @@ public class SQLiteDbLoader implements IWaveformDbLoader {
 		}
 		return false;
 	}
+	
+	@Override
+	public Collection<RelationType> getAllRelationTypes(){
+		return usedRelationsList;
+	}
+
 }
