@@ -40,15 +40,11 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.wb.swt.ResourceManager;
 import org.eclipse.wb.swt.SWTResourceManager;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class AboutDialog.
  */
 public class AboutDialog extends Dialog {
 
-	/** The styled text. */
-//	protected StyledText styledText;
-	
 	/** The product title. */
 	private String productTitle=
 			"\nSCViewer - a SystemC waveform viewer\n\nVersion: 1.0\n";
@@ -64,8 +60,7 @@ public class AboutDialog extends Dialog {
 	/**
 	 * Create the dialog.
 	 *
-	 * @param parent the parent
-	 * @param style the style
+	 * @param parentShell the parent shell
 	 */
 	@Inject
 	public AboutDialog(Shell parentShell) {
@@ -75,6 +70,9 @@ public class AboutDialog extends Dialog {
 
 	/**
 	 * Create contents of the dialog.
+	 *
+	 * @param parent the parent
+	 * @return the control
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
@@ -153,6 +151,9 @@ public class AboutDialog extends Dialog {
 		return composite;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.dialogs.Dialog#createButtonsForButtonBar(org.eclipse.swt.widgets.Composite)
+	 */
 	protected void createButtonsForButtonBar(Composite parent) {
 		// create OK button
 		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.CLOSE_LABEL,	true);

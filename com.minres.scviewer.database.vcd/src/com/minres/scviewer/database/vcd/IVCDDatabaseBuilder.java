@@ -12,9 +12,8 @@ package com.minres.scviewer.database.vcd;
 
 import com.minres.scviewer.database.BitVector;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Interface ITraceBuilder.
+ * The Interface IVCDDatabaseBuilder. It allows to add VCD events into the database
  */
 public interface IVCDDatabaseBuilder {
 

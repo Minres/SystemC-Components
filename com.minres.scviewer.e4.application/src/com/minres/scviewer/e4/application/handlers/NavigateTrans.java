@@ -22,7 +22,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.ui.GotoDirection;
-import com.minres.scviewer.e4.application.parts.WaveformViewerPart;
+import com.minres.scviewer.e4.application.parts.WaveformViewer;
 
 public class NavigateTrans {
 
@@ -42,11 +42,11 @@ public class NavigateTrans {
 	public void execute(@Named(PARAMTER_ID) String param, EPartService partService) {
 		MPart part = partService.getActivePart();
 		Object obj = part.getObject();
-		if(obj instanceof WaveformViewerPart){
+		if(obj instanceof WaveformViewer){
 			if("next".equalsIgnoreCase(param))
-				((WaveformViewerPart)obj).moveSelection(GotoDirection.NEXT);
+				((WaveformViewer)obj).moveSelection(GotoDirection.NEXT);
 			else if("prev".equalsIgnoreCase(param))
-				((WaveformViewerPart)obj).moveSelection(GotoDirection.PREV);
+				((WaveformViewer)obj).moveSelection(GotoDirection.PREV);
 		}
 	}
 }

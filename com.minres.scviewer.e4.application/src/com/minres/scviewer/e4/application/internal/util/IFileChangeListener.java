@@ -18,14 +18,13 @@ import java.util.List;
 /**
  * Listener interested in {@link File} changes.
  * 
- * @author Pascal Essiembre
  */
 public interface IFileChangeListener {
+	
 	/**
 	 * Invoked when a file changes.
-	 * 
-	 * @param fileName
-	 *          name of changed file.
+	 *
+	 * @param file the file
 	 */
 	public void fileChanged(List<File> file);
 }

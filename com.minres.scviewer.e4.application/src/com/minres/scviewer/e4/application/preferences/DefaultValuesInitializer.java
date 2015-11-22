@@ -21,10 +21,17 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import com.minres.scviewer.database.ui.WaveformColors;
 import com.opcoach.e4.preferences.ScopedPreferenceStore;
 
+/**
+ * The Class DefaultValuesInitializer.
+ */
 public class DefaultValuesInitializer extends AbstractPreferenceInitializer {
 
+    /** The default colors. */
     public final Color[] colors = new Color[WaveformColors.values().length];
 
+	/**
+	 * Instantiates a new default values initializer.
+	 */
 	public DefaultValuesInitializer() {
         colors[WaveformColors.LINE.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_RED);
         colors[WaveformColors.LINE_HIGHLITE.ordinal()] = SWTResourceManager.getColor(SWT.COLOR_CYAN);
@@ -48,6 +55,9 @@ public class DefaultValuesInitializer extends AbstractPreferenceInitializer {
         colors[WaveformColors.REL_ARROW_HIGHLITE.ordinal()] = SWTResourceManager.getColor(255, 128, 255);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer#initializeDefaultPreferences()
+	 */
 	@Override
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = new ScopedPreferenceStore(InstanceScope.INSTANCE, PreferenceConstants.PREFERENCES_SCOPE);

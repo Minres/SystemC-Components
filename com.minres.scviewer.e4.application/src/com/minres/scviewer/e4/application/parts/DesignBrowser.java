@@ -72,36 +72,55 @@ import com.minres.scviewer.e4.application.handlers.AddWaveformHandler;
 import com.minres.scviewer.e4.application.provider.TxDbContentProvider;
 import com.minres.scviewer.e4.application.provider.TxDbLabelProvider;
 
+/**
+ * The Class DesignBrowser. It contains the design tree, a list of Streams & signals and a few buttons to 
+ * add them them to the waveform view 
+ */
 public class DesignBrowser {
 
+	/** The Constant POPUP_ID. */
 	private static final String POPUP_ID="com.minres.scviewer.e4.application.parts.DesignBrowser.popupmenu";
 
+	/** The event broker. */
 	@Inject IEventBroker eventBroker;
 	
+	/** The selection service. */
 	@Inject	ESelectionService selectionService;
 
+	/** The menu service. */
 	@Inject EMenuService menuService;
 
+	/** The eclipse ctx. */
 	@Inject IEclipseContext eclipseCtx;
 	
+	/** The sash form. */
 	private SashForm sashForm;
 	
+	/** The top. */
 	Composite top;
 
+	/** The bottom. */
 	private Composite bottom;
 	
+	/** The tree viewer. */
 	private TreeViewer treeViewer;
 
+	/** The name filter. */
 	private Text nameFilter;
 
+	/** The tx table viewer. */
 	private TableViewer txTableViewer;
 
+	/** The append all item. */
 	ToolItem appendItem, insertItem, insertAllItem, appendAllItem;
 
+	/** The attribute filter. */
 	WaveformAttributeFilter attributeFilter;
 
+	/** The other selection count. */
 	int thisSelectionCount=0, otherSelectionCount=0;
 
+	/** The tree viewer pcl. */
 	private PropertyChangeListener treeViewerPCL = new PropertyChangeListener() {
 		@Override
 		public void propertyChange(PropertyChangeEvent evt) {
@@ -116,8 +135,10 @@ public class DesignBrowser {
 		}
 	};
 
-	private WaveformViewerPart waveformViewerPart;
+	/** The waveform viewer part. */
+	private WaveformViewer waveformViewerPart;
 
+	/** The sash paint listener. */
 	protected PaintListener sashPaintListener=new PaintListener() {					
 		@Override
 		public void paintControl(PaintEvent e) {
@@ -132,6 +153,11 @@ public class DesignBrowser {
 	};
 
 	
+	/**
+	 * Creates the composite.
+	 *
+	 * @param parent the parent
+	 */
 	@PostConstruct
 	public void createComposite(Composite parent) {
 		sashForm = new SashForm(parent, SWT.BORDER | SWT.SMOOTH | SWT.VERTICAL);
@@ -151,6 +177,11 @@ public class DesignBrowser {
 		});
 	}
 	
+	/**
+	 * Creates the tree viewer composite.
+	 *
+	 * @param parent the parent
+	 */
 	public void createTreeViewerComposite(Composite parent) {
 		parent.setLayout(new GridLayout(1, false));
 		treeViewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
@@ -175,6 +206,11 @@ public class DesignBrowser {
 		});
 	}
 
+	/**
+	 * Creates the table composite.
+	 *
+	 * @param parent the parent
+	 */
 	public void createTableComposite(Composite parent) {
 		parent.setLayout(new GridLayout(1, false));
 
@@ -293,6 +329,9 @@ public class DesignBrowser {
 		});
 	}
 
+	/**
+	 * Sets the focus.
+	 */
 	@Focus
 	public void setFocus() {
 		txTableViewer.getTable().setFocus();
@@ -305,9 +344,15 @@ public class DesignBrowser {
 		updateButtons();
 	}
 
+	/**
+	 * Gets the status event.
+	 *
+	 * @param waveformViewerPart the waveform viewer part
+	 * @return the status event
+	 */
 	@SuppressWarnings("unchecked")
 	@Inject @Optional
-	public void  getStatusEvent(@UIEventTopic(WaveformViewerPart.ACTIVE_WAVEFORMVIEW) WaveformViewerPart waveformViewerPart) {
+	public void  getActiveWaveformViewerEvent(@UIEventTopic(WaveformViewer.ACTIVE_WAVEFORMVIEW) WaveformViewer waveformViewerPart) {
 		if(this.waveformViewerPart!=null)
 			this.waveformViewerPart.storeDesignBrowerState(new DBState());
 		this.waveformViewerPart=waveformViewerPart;
@@ -328,6 +373,12 @@ public class DesignBrowser {
 		database.addPropertyChangeListener(treeViewerPCL);
 	} 
 
+	/**
+	 * Sets the selection.
+	 *
+	 * @param selection the selection
+	 * @param partService the part service
+	 */
 	@Inject
 	public void setSelection(@Named(IServiceConstants.ACTIVE_SELECTION) @Optional IStructuredSelection selection, EPartService partService){
 		MPart part = partService.getActivePart();
@@ -342,6 +393,9 @@ public class DesignBrowser {
 		updateButtons();
 	}
 
+	/**
+	 * Update buttons.
+	 */
 	private void updateButtons() {
 		if(txTableViewer!=null && !insertItem.isDisposed() && !appendItem.isDisposed() && 
 				!appendAllItem.isDisposed() && !insertAllItem.isDisposed()){
@@ -357,14 +411,26 @@ public class DesignBrowser {
 		}
 	}
 
+	/**
+	 * The Class WaveformAttributeFilter.
+	 */
 	public class WaveformAttributeFilter extends ViewerFilter {
 
+		/** The search string. */
 		private String searchString;
 
+		/**
+		 * Sets the search text.
+		 *
+		 * @param s the new search text
+		 */
 		public void setSearchText(String s) {
 			this.searchString = ".*" + s + ".*";
 		}
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+		 */
 		@Override
 		public boolean select(Viewer viewer, Object parentElement, Object element) {
 			if (searchString == null || searchString.length() == 0) {
@@ -378,6 +444,12 @@ public class DesignBrowser {
 		}
 	}
 
+	/**
+	 * Gets the filtered children.
+	 *
+	 * @param viewer the viewer
+	 * @return the filtered children
+	 */
 	protected Object[] getFilteredChildren(TableViewer viewer){
 		Object parent = viewer.getInput();
 		if(parent==null) return new Object[0];
@@ -402,32 +474,60 @@ public class DesignBrowser {
 		return result;
 	}
 
+	/**
+	 * Run command.
+	 *
+	 * @param handler the handler
+	 * @param annotation the annotation
+	 * @param where the where
+	 * @param all the all
+	 * @return the object
+	 */
 	protected Object runCommand(AddWaveformHandler handler, Class<? extends Annotation> annotation, String where, Boolean all) {
 		ContextInjectionFactory.inject(handler, eclipseCtx);
 		eclipseCtx.set(AddWaveformHandler.PARAM_WHERE_ID, where);
 		eclipseCtx.set(AddWaveformHandler.PARAM_ALL_ID, all.toString());
 		eclipseCtx.set(DesignBrowser.class, this);
-		eclipseCtx.set(WaveformViewerPart.class, waveformViewerPart);
+		eclipseCtx.set(WaveformViewer.class, waveformViewerPart);
 		Object result = ContextInjectionFactory.invoke(handler, annotation, eclipseCtx);
 		return result;
 	}
 
+	/**
+	 * Gets the filtered children.
+	 *
+	 * @return the filtered children
+	 */
 	public Object[] getFilteredChildren() {
 		return getFilteredChildren(txTableViewer);
 	}
 
-	public WaveformViewerPart getActiveWaveformViewerPart() {
+	/**
+	 * Gets the active waveform viewer part.
+	 *
+	 * @return the active waveform viewer part
+	 */
+	public WaveformViewer getActiveWaveformViewerPart() {
 		return waveformViewerPart;
 	}
 	
+	/**
+	 * The Class DBState.
+	 */
 	class DBState {
 		
+		/**
+		 * Instantiates a new DB state.
+		 */
 		public DBState() {
 			this.expandedElements=treeViewer.getExpandedElements();
 			this.treeSelection=treeViewer.getSelection();
 			this.tableSelection=txTableViewer.getSelection();
 		}
 		
+		/**
+		 * Apply.
+		 */
 		public void apply() {
 			treeViewer.setExpandedElements(expandedElements);
 			treeViewer.setSelection(treeSelection, true);
@@ -435,8 +535,13 @@ public class DesignBrowser {
 			
 		}
 
+		/** The expanded elements. */
 		private Object[] expandedElements;
+		
+		/** The tree selection. */
 		private ISelection treeSelection;
+		
+		/** The table selection. */
 		private ISelection tableSelection;
 	}
 };

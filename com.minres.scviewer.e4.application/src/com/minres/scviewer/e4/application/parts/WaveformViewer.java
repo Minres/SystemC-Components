@@ -76,7 +76,6 @@ import com.minres.scviewer.e4.application.internal.util.IModificationChecker;
 import com.minres.scviewer.e4.application.preferences.DefaultValuesInitializer;
 import com.minres.scviewer.e4.application.preferences.PreferenceConstants;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WaveformViewerPart.
  */

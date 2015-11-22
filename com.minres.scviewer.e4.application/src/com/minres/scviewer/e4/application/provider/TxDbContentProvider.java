@@ -21,29 +21,50 @@ import com.google.common.collect.Collections2;
 import com.minres.scviewer.database.IHierNode;
 import com.minres.scviewer.database.IWaveform;
 
+/**
+ * The Class TxDbContentProvider providing the tree content of a database for the respective viewer.
+ */
 public class TxDbContentProvider implements ITreeContentProvider {
 
+	/** The show nodes. */
 	//	private List<HierNode> nodes;
 	private boolean showNodes;
 
+	/**
+	 * Instantiates a new tx db content provider.
+	 */
 	public TxDbContentProvider() {
 		super();
 		this.showNodes = false;
 	}
 
+	/**
+	 * Instantiates a new tx db content provider.
+	 *
+	 * @param showNodes the show nodes
+	 */
 	public TxDbContentProvider(boolean showNodes) {
 		super();
 		this.showNodes = showNodes;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.IContentProvider#dispose()
+	 */
 	@Override
 	public void dispose() {	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+	 */
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 //		showNodes=!(newInput instanceof IHierNode);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.ITreeContentProvider#getElements(java.lang.Object)
+	 */
 	@Override
 	public Object[] getElements(Object inputElement) {
 		if(inputElement instanceof IHierNode){
@@ -64,16 +85,25 @@ public class TxDbContentProvider implements ITreeContentProvider {
 			return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
+	 */
 	@Override
 	public Object[] getChildren(Object parentElement) {
 		return getElements(parentElement);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
+	 */
 	@Override
 	public Object getParent(Object element) {
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
+	 */
 	@Override
 	public boolean hasChildren(Object element) {
 		Object[] obj = getElements(element);

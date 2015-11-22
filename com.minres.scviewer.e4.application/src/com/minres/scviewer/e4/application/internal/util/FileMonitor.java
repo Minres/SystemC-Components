@@ -18,17 +18,16 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-// TODO: Auto-generated Javadoc
 /**
  * Class monitoring a {@link File} for changes.
  * 
- * @author Pascal Essiembre
  */
 public class FileMonitor {
 
 	/** The timer. */
 	private Timer timer;
 
+	/** The enabled. */
 	private boolean enabled;
 	
 	/** The timer entries. */
@@ -96,10 +95,20 @@ public class FileMonitor {
 		if(enabled) listener.fileChanged(file);
 	}
 
+	/**
+	 * Checks if is enabled.
+	 *
+	 * @return true, if is enabled
+	 */
 	public boolean isEnabled() {
 		return enabled;
 	}
 
+	/**
+	 * Sets the enabled.
+	 *
+	 * @param enabled the new enabled
+	 */
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}

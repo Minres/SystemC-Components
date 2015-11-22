@@ -24,13 +24,21 @@ import com.minres.scviewer.database.ISignalChangeMulti;
 import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveformDb;
 
+/**
+ * The Class TxDbLabelProvider providing the labels for the respective viewers.
+ */
 public class TxDbLabelProvider implements ILabelProvider {
 
+	/** The listeners. */
 	private List<ILabelProviderListener> listeners = new ArrayList<ILabelProviderListener>();
 
+	/** The wave. */
 	private Image database, stream, signal, folder, wave;
 	
 	
+	/**
+	 * Instantiates a new tx db label provider.
+	 */
 	public TxDbLabelProvider() {
 		super();
 		database=ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/database.png");
@@ -40,11 +48,17 @@ public class TxDbLabelProvider implements ILabelProvider {
 		wave=ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/wave.png");
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
+	 */
 	@Override
 	public void addListener(ILabelProviderListener listener) {
 		  listeners.add(listener);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#dispose()
+	 */
 	@Override
 	public void dispose() {
 		if(database!=null) database.dispose();
@@ -54,16 +68,25 @@ public class TxDbLabelProvider implements ILabelProvider {
 		if(wave!=null) wave.dispose();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#isLabelProperty(java.lang.Object, java.lang.String)
+	 */
 	@Override
 	public boolean isLabelProperty(Object element, String property) {
 		  return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#removeListener(org.eclipse.jface.viewers.ILabelProviderListener)
+	 */
 	@Override
 	public void removeListener(ILabelProviderListener listener) {
 		  listeners.remove(listener);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.ILabelProvider#getImage(java.lang.Object)
+	 */
 	@Override
 	public Image getImage(Object element) {
 		if(element instanceof IWaveformDb){
@@ -82,6 +105,9 @@ public class TxDbLabelProvider implements ILabelProvider {
 			return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.ILabelProvider#getText(java.lang.Object)
+	 */
 	@Override
 	public String getText(Object element) {
 		return ((IHierNode)element).getName();

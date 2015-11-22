@@ -18,7 +18,7 @@ import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
 import com.minres.scviewer.database.IWaveform;
-import com.minres.scviewer.e4.application.parts.WaveformViewerPart;
+import com.minres.scviewer.e4.application.parts.WaveformViewer;
 
 public class DeleteWaveformHandler {
 	
@@ -32,8 +32,8 @@ public class DeleteWaveformHandler {
 	public void execute(ESelectionService selectionService, MPart activePart) {
 		Object o = activePart.getObject();
 		Object sel = selectionService.getSelection();
-		if(o instanceof WaveformViewerPart && ((IStructuredSelection)sel).getFirstElement() instanceof IWaveform<?>){
-			((WaveformViewerPart)o).removeStreamFromList((IWaveform<?>) ((IStructuredSelection)sel).getFirstElement());
+		if(o instanceof WaveformViewer && ((IStructuredSelection)sel).getFirstElement() instanceof IWaveform<?>){
+			((WaveformViewer)o).removeStreamFromList((IWaveform<?>) ((IStructuredSelection)sel).getFirstElement());
 		}	
 	}	
 }

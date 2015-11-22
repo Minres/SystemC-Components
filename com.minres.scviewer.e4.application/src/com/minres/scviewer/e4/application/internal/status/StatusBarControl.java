@@ -32,21 +32,37 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.ProgressBar;
 import org.osgi.service.prefs.PreferencesService;
 
+/**
+ * The Class StatusBarControl.
+ */
 public class StatusBarControl {
 
+	/** The Constant STATUS_UPDATE. */
 	public static final String STATUS_UPDATE="StatusUpdate";
 
+	/** The model service. */
 	@Inject	EModelService modelService;
 
+	/** The osgi preverences. */
 	@Inject	@Optional PreferencesService osgiPreverences;
 
+	/** The sync. */
 	private final UISynchronize sync;
 
+	/** The manager. */
 	protected StatusLineManager manager;
 
+	/** The monitor. */
 	private SyncedProgressMonitor monitor;
+	
+	/** The progress bar. */
 	private ProgressBar progressBar;
 
+	/**
+	 * Instantiates a new status bar control.
+	 *
+	 * @param sync the sync
+	 */
 	@Inject
 	public StatusBarControl(UISynchronize sync) {
 		this.sync=sync;
@@ -54,6 +70,12 @@ public class StatusBarControl {
 		manager.update(true);
 	}
 
+	/**
+	 * Creates the widget.
+	 *
+	 * @param parent the parent
+	 * @param toolControl the tool control
+	 */
 	@PostConstruct
 	void createWidget(Composite parent, MToolControl toolControl) {
 		if (toolControl.getElementId().equals("org.eclipse.ui.StatusLine")) { //$NON-NLS-1$
@@ -65,6 +87,9 @@ public class StatusBarControl {
 		}
 	}
 
+	/**
+	 * Destroy.
+	 */
 	@PreDestroy
 	void destroy() {
 		if (manager != null) {
@@ -74,8 +99,10 @@ public class StatusBarControl {
 	}
 
 	/**
-	 * @param parent
-	 * @param toolControl
+	 * Creates the progress bar.
+	 *
+	 * @param parent the parent
+	 * @param toolControl the tool control
 	 */
 	private void createProgressBar(Composite parent, MToolControl toolControl) {
 		new Label(parent, SWT.NONE);
@@ -92,22 +119,32 @@ public class StatusBarControl {
 	}
 
 	/**
-	 * @param parent
-	 * @param toolControl
+	 * Creates the heap status.
+	 *
+	 * @param parent the parent
+	 * @param toolControl the tool control
 	 */
 	private void createHeapStatus(Composite parent, MToolControl toolControl) {
 		new HeapStatus(parent, osgiPreverences.getSystemPreferences());
 	}
 
 	/**
-	 * @param parent
-	 * @param toolControl
+	 * Creates the status line.
+	 *
+	 * @param parent the parent
+	 * @param toolControl the tool control
 	 */
 	private void createStatusLine(Composite parent, MToolControl toolControl) {
 		//		IEclipseContext context = modelService.getContainingContext(toolControl);
 		manager.createControl(parent);
 	}
 
+	/**
+	 * Gets the status event.
+	 *
+	 * @param text the text
+	 * @return the status event
+	 */
 	@Inject @Optional
 	public void  getStatusEvent(@UIEventTopic(STATUS_UPDATE) String text) {
 		if(manager!=null ){
@@ -115,13 +152,24 @@ public class StatusBarControl {
 		}
 	} 
 
+	/**
+	 * The Class SyncedProgressMonitor.
+	 */
 	private final class SyncedProgressMonitor extends NullProgressMonitor {
 
 		// thread-Safe via thread confinement of the UI-Thread 
+		/** The running tasks. */
 		// (means access only via UI-Thread)
 		private long runningTasks = 0L;
+		
+		/** The progress bar. */
 		private ProgressBar progressBar;
 
+		/**
+		 * Instantiates a new synced progress monitor.
+		 *
+		 * @param progressBar the progress bar
+		 */
 		public SyncedProgressMonitor(ProgressBar progressBar) {
 			super();
 			this.progressBar = progressBar;
@@ -130,6 +178,9 @@ public class StatusBarControl {
 			progressBar.setEnabled(false);
 		}
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.core.runtime.NullProgressMonitor#beginTask(java.lang.String, int)
+		 */
 		@Override
 		public void beginTask(final String name, final int totalWork) {
 			sync.syncExec(new Runnable() {
@@ -148,6 +199,9 @@ public class StatusBarControl {
 			});
 		}
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.core.runtime.NullProgressMonitor#worked(int)
+		 */
 		@Override
 		public void worked(final int work) {
 			sync.syncExec(new Runnable() {
@@ -158,6 +212,9 @@ public class StatusBarControl {
 			});
 		}
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.core.runtime.NullProgressMonitor#done()
+		 */
 		@Override
 		public void done() {
 			sync.syncExec(new Runnable() {
@@ -169,6 +226,13 @@ public class StatusBarControl {
 				}
 			});
 		}
+
+/**
+ * Adds the job.
+ *
+ * @param job the job
+ * @return the i progress monitor
+ */
 /*
 		@Override
 		public boolean isCanceled() {
