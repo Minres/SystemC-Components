@@ -20,6 +20,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.minres.scviewer.database.IHierNode;
 import com.minres.scviewer.database.IWaveform;
+import com.minres.scviewer.database.IWaveformDb;
 
 /**
  * The Class TxDbContentProvider providing the tree content of a database for the respective viewer.
@@ -79,9 +80,11 @@ public class TxDbContentProvider implements ITreeContentProvider {
 				}
 			});
 			return res.toArray();
-		}else if(inputElement instanceof List<?>)
+		}else if(inputElement instanceof List<?>){
 			return ((List<?>)inputElement).toArray();
-		else
+		}else if(inputElement instanceof IWaveformDb){
+			return new Object[]{};
+		} else
 			return null;
 	}
 

@@ -23,6 +23,7 @@ import com.minres.scviewer.database.ISignal;
 import com.minres.scviewer.database.ISignalChangeMulti;
 import com.minres.scviewer.database.ITxStream;
 import com.minres.scviewer.database.IWaveformDb;
+import com.minres.scviewer.e4.application.parts.LoadingWaveformDb;
 
 /**
  * The Class TxDbLabelProvider providing the labels for the respective viewers.
@@ -33,7 +34,7 @@ public class TxDbLabelProvider implements ILabelProvider {
 	private List<ILabelProviderListener> listeners = new ArrayList<ILabelProviderListener>();
 
 	/** The wave. */
-	private Image database, stream, signal, folder, wave;
+	private Image loadinDatabase, database, stream, signal, folder, wave;
 	
 	
 	/**
@@ -41,6 +42,7 @@ public class TxDbLabelProvider implements ILabelProvider {
 	 */
 	public TxDbLabelProvider() {
 		super();
+		loadinDatabase=ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/database_go.png");
 		database=ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/database.png");
 		stream=ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/stream.png");
 		folder=ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/folder.png");
@@ -61,6 +63,7 @@ public class TxDbLabelProvider implements ILabelProvider {
 	 */
 	@Override
 	public void dispose() {
+		if(loadinDatabase!=null) database.dispose();
 		if(database!=null) database.dispose();
 		if(stream!=null) stream.dispose();
 		if(folder!=null) folder.dispose();
@@ -90,7 +93,10 @@ public class TxDbLabelProvider implements ILabelProvider {
 	@Override
 	public Image getImage(Object element) {
 		if(element instanceof IWaveformDb){
-			return database;
+			if(element instanceof LoadingWaveformDb)
+				return loadinDatabase;
+			else
+				return database;
 		}else if(element instanceof ITxStream){
 			return stream;
 		}else if(element instanceof ISignal<?>){

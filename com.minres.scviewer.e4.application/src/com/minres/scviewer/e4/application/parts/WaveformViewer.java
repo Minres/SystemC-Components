@@ -297,22 +297,21 @@ public class WaveformViewer implements IFileChangeListener, IPreferenceChangeLis
 	 */
 	protected void loadDatabase(final Map<String, String> state) {
 		fileMonitor.removeFileChangeListener(this);
-		Job job = new Job(" My Job") {
+		Job job = new Job("Database Load Job") {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				// convert to SubMonitor and set total number of work units
-				SubMonitor subMonitor = SubMonitor.convert(monitor, filesToLoad.size());
-				subMonitor.setTaskName("Loading database");
+				SubMonitor subMonitor = SubMonitor.convert(monitor, filesToLoad.size()+1);
 				try {
+					subMonitor.worked(1);
 					for (File file : filesToLoad) {
-						// TimeUnit.SECONDS.sleep(2);
+						subMonitor.setTaskName("Loading "+file.getName());
 						database.load(file);
 						database.addPropertyChangeListener(waveformPane);
 						subMonitor.worked(1);
 						if (monitor.isCanceled())
 							return Status.CANCEL_STATUS;
 					}
-					// sleep a second
 				} catch (Exception e) {
 					database = null;
 					e.printStackTrace();

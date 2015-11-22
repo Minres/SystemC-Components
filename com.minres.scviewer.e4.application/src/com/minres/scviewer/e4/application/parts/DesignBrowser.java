@@ -363,7 +363,7 @@ public class DesignBrowser {
 			if(db==database) return; // do nothing if old and new daabase is the same
 			((List<IWaveformDb>)input).get(0).removePropertyChangeListener(treeViewerPCL);
 		}
-		treeViewer.setInput(database.isLoaded()?Arrays.asList(new IWaveformDb[]{database}):null);
+		treeViewer.setInput(Arrays.asList(database.isLoaded()?new IWaveformDb[]{database}:new IWaveformDb[]{new LoadingWaveformDb()}));
 		Object state=this.waveformViewerPart.retrieveDesignBrowerState();
 		if(state!=null && state instanceof DBState) 
 			((DBState)state).apply();
