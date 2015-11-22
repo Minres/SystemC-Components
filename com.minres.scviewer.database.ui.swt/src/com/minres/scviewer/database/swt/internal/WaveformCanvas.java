@@ -222,16 +222,32 @@ public class WaveformCanvas extends Canvas {
     }
 
     public void setZoomLevel(int level) {
+    	long oldScaleFactor=scaleFactor;
     	if(level<unitMultiplier.length*unitString.length){
     		this.level = level;
     		this.scaleFactor = (long) Math.pow(10, level/2);
     		if(level%2==1) this.scaleFactor*=3;
     		ITx tx = arrowPainter.getTx();
     		arrowPainter.setTx(null);
+    		/*
+    		 * xc = tc/oldScaleFactor
+    		 * xoffs = xc+origin.x
+    		 * xcn = tc/newScaleFactor
+    		 * t0n = (xcn-xoffs)*scaleFactor
+    		 */
+    		long tc=cursorPainters.get(0).getTime(); // cursor time
+    		long xc=tc/oldScaleFactor; // cursor total x-offset
+    		long xoffs=xc+origin.x; // cursor offset relative to left border
+    		long xcn=tc/scaleFactor; // new total x-offset
+    		long originX=xcn-xoffs;
+    		if(originX>0)
+    			origin.x=(int) -originX; // new cursor time offset relative to left border
+    		else
+    			origin.x=0;
     		syncScrollBars();
-    		arrowPainter.setTx(tx);
+    		arrowPainter.setTx(tx);    		
     		redraw();
-   	}
+    	}
     }
 
     public long getScaleFactor() {
