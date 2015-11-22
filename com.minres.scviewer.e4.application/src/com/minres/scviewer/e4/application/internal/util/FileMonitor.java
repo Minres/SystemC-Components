@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+// TODO: Auto-generated Javadoc
 /**
  * Class monitoring a {@link File} for changes.
  * 
@@ -25,8 +26,12 @@ import java.util.TimerTask;
  */
 public class FileMonitor {
 
+	/** The timer. */
 	private Timer timer;
 
+	private boolean enabled;
+	
+	/** The timer entries. */
 	private Hashtable<String, FileSetMonitorTask> timerEntries;
 
 	/**
@@ -36,17 +41,16 @@ public class FileMonitor {
 		// Create timer, run timer thread as daemon.
 		timer = new Timer(true);
 		timerEntries = new Hashtable<String, FileSetMonitorTask>();
+		enabled=true;
 	}
 
 	/**
 	 * Adds a monitored file with a FileChangeListener.
-	 * 
-	 * @param listener
-	 *          listener to notify when the file changed.
-	 * @param fileName
-	 *          name of the file to monitor.
-	 * @param period
-	 *          polling period in milliseconds.
+	 *
+	 * @param listener          listener to notify when the file changed.
+	 * @param file the file
+	 * @param period          polling period in milliseconds.
+	 * @return the i modification checker
 	 */
 	public IModificationChecker addFileChangeListener(IFileChangeListener listener, File file, long period) {
 		return addFileChangeListener(listener, Arrays.asList(new File[]{file}), period);
@@ -55,12 +59,11 @@ public class FileMonitor {
 	/**
 	 * Adds a monitored file with a FileChangeListener.
 	 * List<File> filesToLoad
-	 * @param listener
-	 *          listener to notify when the file changed.
-	 * @param fileName
-	 *          name of the file to monitor.
-	 * @param period
-	 *          polling period in milliseconds.
+	 *
+	 * @param listener          listener to notify when the file changed.
+	 * @param files the files
+	 * @param period          polling period in milliseconds.
+	 * @return the i modification checker
 	 */
 	public IModificationChecker addFileChangeListener(IFileChangeListener listener, List<File> files, long period) {
 		removeFileChangeListener(listener);
@@ -90,7 +93,15 @@ public class FileMonitor {
 	 *          the file that changed
 	 */
 	protected void fireFileChangeEvent(IFileChangeListener listener, List<File> file) {
-		listener.fileChanged(file);
+		if(enabled) listener.fileChanged(file);
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	/**
@@ -98,14 +109,25 @@ public class FileMonitor {
 	 */
 	class FileSetMonitorTask extends TimerTask implements IModificationChecker{
 
+		/** The listener. */
 		IFileChangeListener listener;
 
+		/** The monitored files. */
 		private List<File> monitoredFiles;
 
+		/** The last modified times. */
 		private List<Long> lastModifiedTimes;
 
+		/** The period. */
 		public final long period;
 
+		/**
+		 * Instantiates a new file set monitor task.
+		 *
+		 * @param listener the listener
+		 * @param monitoredFiles the monitored files
+		 * @param period the period
+		 */
 		public FileSetMonitorTask(IFileChangeListener listener, List<File> monitoredFiles, long period) {
 			this.period=period;
 			this.monitoredFiles = monitoredFiles;
@@ -120,10 +142,16 @@ public class FileMonitor {
 			}
 		}
 
+		/* (non-Javadoc)
+		 * @see java.util.TimerTask#run()
+		 */
 		public void run() {
 			check();
 		}
 
+		/* (non-Javadoc)
+		 * @see com.minres.scviewer.e4.application.internal.util.IModificationChecker#check()
+		 */
 		public void check() {
 			boolean res = false;
 			for(int i=0; i<monitoredFiles.size(); ++i){
