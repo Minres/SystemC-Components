@@ -134,6 +134,9 @@
       </children>
     </trimBars>
   </children>
+  <children xsi:type="basic:Dialog" xmi:id="_8BTkQIytEeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.dialog.aboutscviewer" toBeRendered="false" visible="false" selectedElement="__VNlAIytEeWid7xO48ZBXw" label="About SCViewer" y="600">
+    <children xsi:type="basic:Part" xmi:id="__VNlAIytEeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.part.0" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.AboutDialog"/>
+  </children>
   <handlers xmi:id="_95PfvXNmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.handler.quitCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.QuitHandler" command="_95PfvHNmEeWBq8z1Dv39LA"/>
   <handlers xmi:id="_95PfwXNmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.handler.openCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.OpenHandler" command="_95PfwHNmEeWBq8z1Dv39LA"/>
   <handlers xmi:id="_95PfxHNmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.handler.saveCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.SaveHandler" command="_95Pfw3NmEeWBq8z1Dv39LA"/>
@@ -152,7 +155,7 @@
     <children xmi:id="_95PfunNmEeWBq8z1Dv39LA" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
     <children xmi:id="_95Pfu3NmEeWBq8z1Dv39LA" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
-  <descriptors xmi:id="_KicY0HRMEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.partdescriptor.waveformviewer" label="SCViewer" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/scviewer.png" allowMultiple="true" category="General" closeable="true" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.WaveformViewerPart">
+  <descriptors xmi:id="_KicY0HRMEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.partdescriptor.waveformviewer" label="SCViewer" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/scviewer.png" allowMultiple="true" category="General" closeable="true" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.WaveformViewer">
     <tags>categoryTag:General</tags>
     <handlers xmi:id="_BSIuEHacEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handler.navigateEventCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.NavigateEvent" command="_79rx4HabEeWwZ-9vrAR2UQ"/>
     <handlers xmi:id="_JpdGwHXKEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handler.navigateTransCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.NavigateTrans" command="_Gn3lEHXKEeWwZ-9vrAR2UQ"/>

@@ -16,45 +16,44 @@ import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+
+import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Canvas;
-import org.eclipse.swt.widgets.Dialog;
-import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.wb.swt.ResourceManager;
 import org.eclipse.wb.swt.SWTResourceManager;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AboutDialog.
+ */
 public class AboutDialog extends Dialog {
 
-	protected int result;
-	protected Shell shell;
-	private Color white;
-	protected StyledText styledText;
-	/*
-	Eclipse IDE for Java Developers
-
-Version: Mars.1 Release (4.5.1)
-Build id: 20150924-1200
-(c) Copyright Eclipse contributors and others 2000, 2015.  All rights reserved. Eclipse and the Eclipse logo are trademarks of the Eclipse Foundation, Inc., https://www.eclipse.org/. The Eclipse logo cannot be altered without Eclipse's permission. Eclipse logos are provided for use under the Eclipse logo and trademark guidelines, https://www.eclipse.org/logotm/. Oracle and Java are trademarks or registered trademarks of Oracle and/or its affiliates. Other names may be trademarks of their respective owners.
-	*/
+	/** The styled text. */
+//	protected StyledText styledText;
+	
+	/** The product title. */
 	private String productTitle=
 			"\nSCViewer - a SystemC waveform viewer\n\nVersion: 1.0\n";
+	
+	/** The copyright text. */
 	private String copyrightText="\nCopyright (c) 2015 MINRES Technologies GmbH and others.\n"+
 					"\n"+
 					"All rights reserved. MINRES and the MINRES logo are trademarks of MINRES Technologies GmbH, http://www.minres.com/ . "+
@@ -64,44 +63,33 @@ Build id: 20150924-1200
 
 	/**
 	 * Create the dialog.
-	 * @param parent
-	 * @param style
+	 *
+	 * @param parent the parent
+	 * @param style the style
 	 */
-	public AboutDialog(Shell parent, int style) {
-		super(parent, style);
-		setText("SWT Dialog");
-		white=SWTResourceManager.getColor(SWT.COLOR_WHITE);
-	}
-
-	/**
-	 * Open the dialog.
-	 * @return the result
-	 */
-	public int open() {
-		createContents();
-		shell.open();
-		shell.layout();
-		Display display = getParent().getDisplay();
-		while (!shell.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
-			}
-		}
-		return result;
+	@Inject
+	public AboutDialog(Shell parentShell) {
+		super(parentShell);
+		
 	}
 
 	/**
 	 * Create contents of the dialog.
 	 */
-	private void createContents() {
-		shell = new Shell(getParent(), getStyle());
-		shell.setSize(600, 300);
-		shell.setText(getText());
-		shell.setLayout(new GridLayout(2, false));
+	@Override
+	protected Control createDialogArea(Composite parent) {
+		Composite composite = new Composite(parent, SWT.NONE);
+		GridData gd_composite = new GridData(SWT.LEFT, SWT.FILL, true, true);
+		gd_composite.widthHint = 600;
+		gd_composite.heightHint =250;
+		composite.setLayoutData(gd_composite);
+		composite.setLayout(new GridLayout(2, false));
+		
+		final Color white=SWTResourceManager.getColor(SWT.COLOR_WHITE);
 		final Image scviewerLogo=ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/SCViewer_logo.png");
 		final Image minresLogo=ResourceManager.getPluginImage("com.minres.scviewer.e4.application", "icons/Minres_logo.png");
 
-		Canvas canvas = new Canvas(shell,SWT.NO_REDRAW_RESIZE);
+		Canvas canvas = new Canvas(composite,SWT.NO_REDRAW_RESIZE);
 		GridData gd_canvas = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_canvas.widthHint = 200;
 		gd_canvas.heightHint =250;
@@ -115,7 +103,7 @@ Build id: 20150924-1200
 			}
 		});
 
-		styledText = new StyledText(shell, SWT.BORDER);
+		StyledText styledText = new StyledText(composite, SWT.BORDER);
 		styledText.setEditable(false);
 		GridData gd_styledText = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
 		styledText.setLayoutData(gd_styledText);
@@ -151,8 +139,8 @@ Build id: 20150924-1200
 				// links are activated on mouse down when the control key is held down 
 //				if ((event.stateMask & SWT.MOD1) != 0) {
 					try {
-						int offset = styledText.getOffsetAtLocation(new Point (event.x, event.y));
-						StyleRange style = styledText.getStyleRangeAtOffset(offset);
+						int offset = ((StyledText)event.widget).getOffsetAtLocation(new Point (event.x, event.y));
+						StyleRange style = ((StyledText)event.widget).getStyleRangeAtOffset(offset);
 						if (style != null && style.underline && style.underlineStyle == SWT.UNDERLINE_LINK) {
 							Desktop.getDesktop().browse(new java.net.URI(style.data.toString()));
 						}
@@ -162,23 +150,22 @@ Build id: 20150924-1200
 		});
 		
 		styleRange.start = 0;
-		new Label(shell, SWT.NONE);
-
-		Button okButton = new Button(shell, SWT.NONE);
-		okButton.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		okButton.setBounds(0, 0, 94, 28);
-		okButton.setText("Close");
-		okButton.setFocus();
-		okButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if(!shell.isDisposed()) shell.dispose();
-			}
-		});
+		return composite;
+	}
+	
+	protected void createButtonsForButtonBar(Composite parent) {
+		// create OK button
+		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.CLOSE_LABEL,	true);
 	}
 
-	public static boolean open(Shell parent, int style) {
-		AboutDialog dialog = new AboutDialog(parent, style | SWT.SHEET);
-		return dialog.open() == 0;
+	/**
+	 * Open the dialog.
+	 * @return the result
+	 */
+	@PostConstruct
+	@Override
+	public int open() {
+		return super.open();
 	}
+	
 }
