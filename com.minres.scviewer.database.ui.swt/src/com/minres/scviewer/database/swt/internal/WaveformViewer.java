@@ -20,6 +20,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.NavigableMap;
+import java.util.NoSuchElementException;
 import java.util.TreeMap;
 
 import org.eclipse.core.runtime.ListenerList;
@@ -772,52 +773,56 @@ public class WaveformViewer implements IWaveformViewer  {
 
 	protected void paintNames(GC gc, Rectangle rect) {
 		if (streams.size() > 0) {
-			Integer firstKey = trackVerticalOffset.floorKey(rect.y);
-			if (firstKey == null)
-				firstKey = trackVerticalOffset.firstKey();
-			Integer lastKey = trackVerticalOffset.floorKey(rect.y + rect.height);
-			Rectangle subArea = new Rectangle(rect.x, 0, rect.width, waveformCanvas.getTrackHeight());
-			if (lastKey == firstKey) {
-				TrackEntry trackEntry=trackVerticalOffset.get(firstKey);
-				IWaveform<? extends IWaveformEvent> w = trackEntry.waveform;
-				if (w instanceof ITxStream<?>)
-					subArea.height *= ((ITxStream<?>) w).getMaxConcurrency();
-				drawTextFormat(gc, subArea, firstKey, w.getFullName(), trackEntry.selected);
-			} else {
-				for (Entry<Integer, TrackEntry> entry : trackVerticalOffset.subMap(firstKey, true, lastKey, true).entrySet()) {
-					IWaveform<? extends IWaveformEvent> w = entry.getValue().waveform;
-					subArea.height = waveformCanvas.getTrackHeight();
+			try {
+				Integer firstKey = trackVerticalOffset.floorKey(rect.y);
+				if (firstKey == null)
+					firstKey = trackVerticalOffset.firstKey();
+				Integer lastKey = trackVerticalOffset.floorKey(rect.y + rect.height);
+				Rectangle subArea = new Rectangle(rect.x, 0, rect.width, waveformCanvas.getTrackHeight());
+				if (lastKey == firstKey) {
+					TrackEntry trackEntry=trackVerticalOffset.get(firstKey);
+					IWaveform<? extends IWaveformEvent> w = trackEntry.waveform;
 					if (w instanceof ITxStream<?>)
 						subArea.height *= ((ITxStream<?>) w).getMaxConcurrency();
-					drawTextFormat(gc, subArea, entry.getKey(), w.getFullName(), entry.getValue().selected);
+					drawTextFormat(gc, subArea, firstKey, w.getFullName(), trackEntry.selected);
+				} else {
+					for (Entry<Integer, TrackEntry> entry : trackVerticalOffset.subMap(firstKey, true, lastKey, true).entrySet()) {
+						IWaveform<? extends IWaveformEvent> w = entry.getValue().waveform;
+						subArea.height = waveformCanvas.getTrackHeight();
+						if (w instanceof ITxStream<?>)
+							subArea.height *= ((ITxStream<?>) w).getMaxConcurrency();
+						drawTextFormat(gc, subArea, entry.getKey(), w.getFullName(), entry.getValue().selected);
+					}
 				}
-			}
+			}catch(NoSuchElementException e){}
 		}
 	}
 
 	protected void paintValues(GC gc, Rectangle rect) {
 		if (streams.size() > 0) {
-			Integer firstKey = trackVerticalOffset.floorKey(rect.y);
-			if (firstKey == null)
-				firstKey = trackVerticalOffset.firstKey();
-			Integer lastKey = trackVerticalOffset.floorKey(rect.y + rect.height);
-			Rectangle subArea = new Rectangle(rect.x, 0, rect.width, waveformCanvas.getTrackHeight());
-			if (lastKey == firstKey) {
-				TrackEntry trackEntry=trackVerticalOffset.get(firstKey);
-				IWaveform<? extends IWaveformEvent> w = trackEntry.waveform;
-				if (w instanceof ITxStream<?>)
-					subArea.height *= ((ITxStream<?>) w).getMaxConcurrency();
-				drawValue(gc, subArea, firstKey, actualValues.get(w), trackEntry.selected);
-			} else {
-				for (Entry<Integer, TrackEntry> entry : trackVerticalOffset.subMap(firstKey, true, lastKey, true)
-						.entrySet()) {
-					IWaveform<? extends IWaveformEvent> w = entry.getValue().waveform;
-					subArea.height = waveformCanvas.getTrackHeight();
+			try {
+				Integer firstKey = trackVerticalOffset.floorKey(rect.y);
+				if (firstKey == null)
+					firstKey = trackVerticalOffset.firstKey();
+				Integer lastKey = trackVerticalOffset.floorKey(rect.y + rect.height);
+				Rectangle subArea = new Rectangle(rect.x, 0, rect.width, waveformCanvas.getTrackHeight());
+				if (lastKey == firstKey) {
+					TrackEntry trackEntry=trackVerticalOffset.get(firstKey);
+					IWaveform<? extends IWaveformEvent> w = trackEntry.waveform;
 					if (w instanceof ITxStream<?>)
 						subArea.height *= ((ITxStream<?>) w).getMaxConcurrency();
-					drawValue(gc, subArea, entry.getKey(), actualValues.get(w), entry.getValue().selected);
+					drawValue(gc, subArea, firstKey, actualValues.get(w), trackEntry.selected);
+				} else {
+					for (Entry<Integer, TrackEntry> entry : trackVerticalOffset.subMap(firstKey, true, lastKey, true)
+							.entrySet()) {
+						IWaveform<? extends IWaveformEvent> w = entry.getValue().waveform;
+						subArea.height = waveformCanvas.getTrackHeight();
+						if (w instanceof ITxStream<?>)
+							subArea.height *= ((ITxStream<?>) w).getMaxConcurrency();
+						drawValue(gc, subArea, entry.getKey(), actualValues.get(w), entry.getValue().selected);
+					}
 				}
-			}
+			}catch(NoSuchElementException e){}
 		}
 	}
 
@@ -846,11 +851,11 @@ public class WaveformViewer implements IWaveformViewer  {
 		gc.drawText(value, subArea.x + 5, subArea.y + yOffset + (waveformCanvas.getTrackHeight() - size.y) / 2, true);
 	}
 
-	
-    public void setHighliteRelation(RelationType relationType){
-    	this.waveformCanvas.setHighliteRelation(relationType);
-    }
-    
+
+	public void setHighliteRelation(RelationType relationType){
+		this.waveformCanvas.setHighliteRelation(relationType);
+	}
+
 	/* (non-Javadoc)
 	 * @see com.minres.scviewer.database.swt.IWaveformPanel#getMaxTime()
 	 */

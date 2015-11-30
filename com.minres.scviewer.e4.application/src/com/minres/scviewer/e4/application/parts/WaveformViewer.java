@@ -13,12 +13,17 @@ package com.minres.scviewer.e4.application.parts;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -426,6 +431,40 @@ public class WaveformViewer implements IFileChangeListener, IPreferenceChangeLis
 		saveWaveformViewerState(persistedState);
 	}
 
+	public void saveState(String fileName){
+		Map<String, String> persistedState = new HashMap<>();
+		persistedState.put(DATABASE_FILE + "S", Integer.toString(filesToLoad.size()));
+		Integer index = 0;
+		for (File file : filesToLoad) {
+			persistedState.put(DATABASE_FILE + index, file.getAbsolutePath());
+			index++;
+		}
+		saveWaveformViewerState(persistedState);
+		Properties props = new Properties();
+		props.putAll(persistedState);
+		try {
+			FileOutputStream out = new FileOutputStream(fileName);
+			props.store(out, "Written by SCViewer");
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void loadState(String fileName){
+		Properties props = new Properties();
+		try {
+			FileInputStream in = new FileInputStream(fileName);
+			props.load(in);
+			in.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		HashMap<String, String> propMap = new HashMap<String, String>((Map) props);
+		restoreWaveformViewerState(propMap);
+	}
+	
 	/**
 	 * Save waveform viewer state.
 	 *
