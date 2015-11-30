@@ -77,7 +77,7 @@ public interface IWaveformViewer extends PropertyChangeListener, ISelectionProvi
 
 	public long getCursorTime();
 
-	public long getSelectedMarkerTime();
+	public int getSelectedMarkerId();
 
 	public long getMarkerTime(int index);
 
@@ -96,4 +96,8 @@ public interface IWaveformViewer extends PropertyChangeListener, ISelectionProvi
 	public List<ICursor> getCursorList();
 
 	public void setColors(HashMap<WaveformColors, RGB> colourMap);
+
+	public long getBaselineTime();
+
+	public void setBaselineTime(Long scale);
 }

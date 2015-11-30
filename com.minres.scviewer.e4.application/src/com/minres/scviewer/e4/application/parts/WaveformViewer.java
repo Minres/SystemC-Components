@@ -105,6 +105,9 @@ public class WaveformViewer implements IFileChangeListener, IPreferenceChangeLis
 	/** The Constant ZOOM_LEVEL. */
 	protected static final String ZOOM_LEVEL = "ZOOM_LEVEL";
 
+	/** The Constant BASE_LINE_TIME. */
+	protected static final String BASE_LINE_TIME = "BASE_LINE_TIME";
+
 	/** The Constant FILE_CHECK_INTERVAL. */
 	protected static final long FILE_CHECK_INTERVAL = 60000;
 	
@@ -209,7 +212,7 @@ public class WaveformViewer implements IFileChangeListener, IPreferenceChangeLis
 			public void propertyChange(PropertyChangeEvent evt) {
 				Long time = (Long) evt.getNewValue();
 				eventBroker.post(WaveStatusBarControl.CURSOR_TIME, waveformPane.getScaledTime(time));
-				long marker = waveformPane.getSelectedMarkerTime();
+				long marker = waveformPane.getMarkerTime(waveformPane.getSelectedMarkerId());
 				eventBroker.post(WaveStatusBarControl.MARKER_DIFF, waveformPane.getScaledTime(time - marker));
 
 			}
@@ -486,6 +489,7 @@ public class WaveformViewer implements IFileChangeListener, IPreferenceChangeLis
 			index++;
 		}
 		persistedState.put(ZOOM_LEVEL, Integer.toString(waveformPane.getZoomLevel()));
+		persistedState.put(BASE_LINE_TIME, Long.toString(waveformPane.getBaselineTime()));
 	}
 
 	/**
@@ -494,8 +498,7 @@ public class WaveformViewer implements IFileChangeListener, IPreferenceChangeLis
 	 * @param state the state
 	 */
 	protected void restoreWaveformViewerState(Map<String, String> state) {
-		updateAll();
-		Integer waves = state.containsKey(SHOWN_WAVEFORM + "S") ? Integer.parseInt(state.get(SHOWN_WAVEFORM + "S")) : 0;
+		Integer waves = state.containsKey(SHOWN_WAVEFORM+"S") ? Integer.parseInt(state.get(SHOWN_WAVEFORM + "S")):0;
 		List<TrackEntry> res = new LinkedList<>();
 		for (int i = 0; i < waves; i++) {
 			IWaveform<? extends IWaveformEvent> waveform = database.getStreamByName(state.get(SHOWN_WAVEFORM + i));
@@ -504,8 +507,7 @@ public class WaveformViewer implements IFileChangeListener, IPreferenceChangeLis
 		}
 		if (res.size() > 0)
 			waveformPane.getStreamList().addAll(res);
-		Integer cursorLength = state.containsKey(SHOWN_CURSOR + "S") ? Integer.parseInt(state.get(SHOWN_CURSOR + "S"))
-				: 0;
+		Integer cursorLength = state.containsKey(SHOWN_CURSOR+"S")?Integer.parseInt(state.get(SHOWN_CURSOR + "S")):0;
 		List<ICursor> cursors = waveformPane.getCursorList();
 		if (cursorLength == cursors.size()) {
 			for (int i = 0; i < cursorLength; i++) {
@@ -520,16 +522,24 @@ public class WaveformViewer implements IFileChangeListener, IPreferenceChangeLis
 			} catch (NumberFormatException e) {
 			}
 		}
+		if (state.containsKey(BASE_LINE_TIME)) {
+			try {
+				Long scale = Long.parseLong(state.get(BASE_LINE_TIME));
+				waveformPane.setBaselineTime(scale);
+			} catch (NumberFormatException e) {
+			}
+		}
+		updateAll();
 	}
 
 	/**
-	 * Update all.
+	 * Update all status elements by posting respective events.
 	 */
 	private void updateAll() {
 		eventBroker.post(ACTIVE_WAVEFORMVIEW, this);
 		eventBroker.post(WaveStatusBarControl.ZOOM_LEVEL, zoomLevel[waveformPane.getZoomLevel()]);
 		long cursor = waveformPane.getCursorTime();
-		long marker = waveformPane.getSelectedMarkerTime();
+		long marker = waveformPane.getMarkerTime(waveformPane.getSelectedMarkerId());
 		eventBroker.post(WaveStatusBarControl.CURSOR_TIME, waveformPane.getScaledTime(cursor));
 		eventBroker.post(WaveStatusBarControl.MARKER_TIME, waveformPane.getScaledTime(marker));
 		eventBroker.post(WaveStatusBarControl.MARKER_DIFF, waveformPane.getScaledTime(cursor - marker));

@@ -923,8 +923,8 @@ public class WaveformViewer implements IWaveformViewer  {
 	 * @see com.minres.scviewer.database.swt.IWaveformPanel#getActMarkerTime()
 	 */
 	@Override
-	public long getSelectedMarkerTime(){
-		return getMarkerTime(selectedMarker);
+	public int getSelectedMarkerId(){
+		return selectedMarker;
 	}
 
 	@Override
@@ -1167,5 +1167,17 @@ public class WaveformViewer implements IWaveformViewer  {
 	@Override
 	public void setColors(HashMap<WaveformColors, RGB> colourMap) {
 		waveformCanvas.initColors(colourMap);
+	}
+
+	@Override
+	public long getBaselineTime() {
+		return -waveformCanvas.getScaleFactorPow10()*waveformCanvas.getOrigin().x;
+	}
+
+	@Override
+	public void setBaselineTime(Long time) {
+		Point origin = waveformCanvas.getOrigin();
+		origin.x=(int) (-time/waveformCanvas.getScaleFactorPow10());	
+		waveformCanvas.setOrigin(origin);
 	}
 }
