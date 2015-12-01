@@ -21,19 +21,32 @@ import com.minres.scviewer.database.IHierNode;
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.ITxAttribute;
 
+/**
+ * The Class TxPropertiesContentProvider. Not used atm
+ */
 public class TxPropertiesContentProvider implements IStructuredContentProvider {
 
+	/** The show nodes. */
 	//	private List<HierNode> nodes;
 	private boolean showNodes=false;
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.IContentProvider#dispose()
+	 */
 	@Override
 	public void dispose() {	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+	 */
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		showNodes=!(newInput instanceof IHierNode);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
+	 */
 	@Override
 	public Object[] getElements(Object inputElement) {
 		if(inputElement instanceof ITx){

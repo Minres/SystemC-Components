@@ -11,8 +11,6 @@
 package com.minres.scviewer.e4.application.internal.status;
 /**
  * Preference constants for the heap status.
- *
- * @since 3.1
  */
 public interface IHeapStatusConstants {
 

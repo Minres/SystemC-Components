@@ -34,8 +34,13 @@
     </children>
     <mainMenu xmi:id="_95PfyXNmEeWBq8z1Dv39LA" elementId="menu:org.eclipse.ui.main.menu">
       <children xsi:type="menu:Menu" xmi:id="_95QGwHNmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.menu.file" label="File">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_VJG3YHgvEeWwZ-9vrAR2UQ" elementId="" label="Open" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/folder_database.png" command="_95PfwHNmEeWBq8z1Dv39LA"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_95QGwnNmEeWBq8z1Dv39LA" label="Save" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/save_edit.png" command="_95Pfw3NmEeWBq8z1Dv39LA"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_VJG3YHgvEeWwZ-9vrAR2UQ" elementId="" label="Open Database" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/folder_database.png" command="_95PfwHNmEeWBq8z1Dv39LA"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_e7MOYJedEeW09eyIbHsdvg" elementId="" label="Load settings" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/folder_page.png" command="_7-AIMJebEeW09eyIbHsdvg">
+          <parameters xmi:id="_4vtYgJehEeW09eyIbHsdvg" elementId="com.minres.scviewer.e4.application.parameter.30" name="com.minres.scviewer.e4.application.commandparameter.loadStore" value="load"/>
+        </children>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_95QGwnNmEeWBq8z1Dv39LA" label="Save settings" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/script_save.png" command="_7-AIMJebEeW09eyIbHsdvg">
+          <parameters xmi:id="_61QIsJehEeW09eyIbHsdvg" elementId="com.minres.scviewer.e4.application.parameter.31" name="com.minres.scviewer.e4.application.commandparameter.loadStore" value="store"/>
+        </children>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_95QGw3NmEeWBq8z1Dv39LA" label="Quit" command="_95PfvHNmEeWBq8z1Dv39LA"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_ZyHC0HgvEeWwZ-9vrAR2UQ" elementId="" label="Edit">
@@ -77,6 +82,9 @@
     <trimBars xmi:id="_95QGy3NmEeWBq8z1Dv39LA" elementId="org.eclipse.ui.main.toolbar">
       <children xsi:type="menu:ToolBar" xmi:id="_95QGzHNmEeWBq8z1Dv39LA" elementId="toolbar:org.eclipse.ui.main.toolbar">
         <children xsi:type="menu:HandledToolItem" xmi:id="_95QGzXNmEeWBq8z1Dv39LA" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/folder_database.png" tooltip="Open new database" command="_95PfwHNmEeWBq8z1Dv39LA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_o9UBUJeiEeW09eyIbHsdvg" elementId="com.minres.scviewer.e4.application.handledtoolitem.loadsettings" label="Load settings" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/folder_page.png" command="_7-AIMJebEeW09eyIbHsdvg">
+          <parameters xmi:id="_tQZAEJeiEeW09eyIbHsdvg" elementId="com.minres.scviewer.e4.application.parameter.32" name="com.minres.scviewer.e4.application.commandparameter.loadStore" value="load"/>
+        </children>
         <children xsi:type="menu:HandledToolItem" xmi:id="_95QGznNmEeWBq8z1Dv39LA" toBeRendered="false" visible="false" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/save_edit.png" command="_95Pfw3NmEeWBq8z1Dv39LA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_VUv_AHckEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.toolbar.0">
@@ -134,6 +142,9 @@
       </children>
     </trimBars>
   </children>
+  <children xsi:type="basic:Dialog" xmi:id="_8BTkQIytEeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.dialog.aboutscviewer" toBeRendered="false" visible="false" selectedElement="__VNlAIytEeWid7xO48ZBXw" label="About SCViewer" y="600">
+    <children xsi:type="basic:Part" xmi:id="__VNlAIytEeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.part.0" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.AboutDialog"/>
+  </children>
   <handlers xmi:id="_95PfvXNmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.handler.quitCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.QuitHandler" command="_95PfvHNmEeWBq8z1Dv39LA"/>
   <handlers xmi:id="_95PfwXNmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.handler.openCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.OpenHandler" command="_95PfwHNmEeWBq8z1Dv39LA"/>
   <handlers xmi:id="_95PfxHNmEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.handler.saveCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.SaveHandler" command="_95Pfw3NmEeWBq8z1Dv39LA"/>
@@ -142,6 +153,7 @@
   <handlers xmi:id="_CTcpEIl_EeWxJ_wPkM6yGQ" elementId="com.minres.scviewer.e4.application.handler.preferences" contributionURI="bundleclass://com.opcoach.e4.preferences/com.opcoach.e4.preferences.handlers.E4PreferencesHandler" command="_AxH6sIl_EeWxJ_wPkM6yGQ"/>
   <handlers xmi:id="_UUnX8IoNEeWxJ_wPkM6yGQ" elementId="com.minres.scviewer.e4.application.handler.set_them" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.ThemeSetHandler" command="_KlGlsIoNEeWxJ_wPkM6yGQ"/>
   <handlers xmi:id="_V4EscIuGEeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.handler.setreleationtype" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.SetRelationTypeHandler" command="_E9lUgIt2EeWid7xO48ZBXw"/>
+  <handlers xmi:id="__99WoJebEeW09eyIbHsdvg" elementId="com.minres.scviewer.e4.application.handler.loadStoreSettings" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.LoadStoreSettingsHandler" command="_7-AIMJebEeW09eyIbHsdvg"/>
   <bindingTables xmi:id="_95PfvnNmEeWBq8z1Dv39LA" bindingContext="_95PfuXNmEeWBq8z1Dv39LA">
     <bindings xmi:id="_95Pfv3NmEeWBq8z1Dv39LA" keySequence="M1+Q" command="_95PfvHNmEeWBq8z1Dv39LA"/>
     <bindings xmi:id="_95PfwnNmEeWBq8z1Dv39LA" keySequence="M1+O" command="_95PfwHNmEeWBq8z1Dv39LA"/>
@@ -152,7 +164,7 @@
     <children xmi:id="_95PfunNmEeWBq8z1Dv39LA" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
     <children xmi:id="_95Pfu3NmEeWBq8z1Dv39LA" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
-  <descriptors xmi:id="_KicY0HRMEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.partdescriptor.waveformviewer" label="SCViewer" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/scviewer.png" allowMultiple="true" category="General" closeable="true" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.WaveformViewerPart">
+  <descriptors xmi:id="_KicY0HRMEeWBq8z1Dv39LA" elementId="com.minres.scviewer.e4.application.partdescriptor.waveformviewer" label="SCViewer" iconURI="platform:/plugin/com.minres.scviewer.e4.application/icons/scviewer.png" allowMultiple="true" category="General" closeable="true" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.parts.WaveformViewer">
     <tags>categoryTag:General</tags>
     <handlers xmi:id="_BSIuEHacEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handler.navigateEventCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.NavigateEvent" command="_79rx4HabEeWwZ-9vrAR2UQ"/>
     <handlers xmi:id="_JpdGwHXKEeWwZ-9vrAR2UQ" elementId="com.minres.scviewer.e4.application.handler.navigateTransCommand" contributionURI="bundleclass://com.minres.scviewer.e4.application/com.minres.scviewer.e4.application.handlers.NavigateTrans" command="_Gn3lEHXKEeWwZ-9vrAR2UQ"/>
@@ -222,6 +234,9 @@
   </commands>
   <commands xmi:id="_E9lUgIt2EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.command.setrelationtype" commandName="SetRelationType">
     <parameters xmi:id="_xnW7IIt_EeWid7xO48ZBXw" elementId="com.minres.scviewer.e4.application.commandparameter.relationName" name="relationName" optional="false"/>
+  </commands>
+  <commands xmi:id="_7-AIMJebEeW09eyIbHsdvg" elementId="com.minres.scviewer.e4.application.command.loadStoreSettings" commandName="loadStoreSettings">
+    <parameters xmi:id="_wxY3EJehEeW09eyIbHsdvg" elementId="com.minres.scviewer.e4.application.commandparameter.loadStore" name="loadStore"/>
   </commands>
   <addons xmi:id="_95PfsnNmEeWBq8z1Dv39LA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_95Pfs3NmEeWBq8z1Dv39LA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>

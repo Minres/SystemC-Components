@@ -15,13 +15,21 @@ import org.eclipse.jface.preference.FieldEditorPreferencePage;
 
 import com.minres.scviewer.database.ui.WaveformColors;
 
-/** A sample preference page to show how it works */
+/**
+ *  The WaveformView preference page to show the colors to use.
+ */
 public class WaveformPreferencesPage extends FieldEditorPreferencePage {
 
+	/**
+	 * Instantiates a new waveform preferences page.
+	 */
 	public WaveformPreferencesPage() {
 		super(GRID);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.preference.FieldEditorPreferencePage#createFieldEditors()
+	 */
 	@Override
 	protected void createFieldEditors() {
 

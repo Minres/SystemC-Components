@@ -31,15 +31,16 @@ import com.minres.scviewer.database.IWaveformEvent;
 import com.minres.scviewer.database.InputFormatException;
 import com.minres.scviewer.database.RelationType;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class VCDDb.
  */
 public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 
 	
+	/** The Constant TIME_RES. */
 	private static final Long TIME_RES = 1000L; // ps;
 
+	/** The db. */
 	private IWaveformDb db;
 	
 	/** The module stack. */
@@ -48,17 +49,17 @@ public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 	/** The signals. */
 	private List<IWaveform<? extends IWaveformEvent>> signals;
 	
+	/** The max time. */
 	private long maxTime;
 	
 	/**
 	 * Instantiates a new VCD db.
-	 *
-	 * @param netName the net name
 	 */
 	public VCDDbLoader() {
 	}
 
-	private byte[] x = "$date".getBytes();
+	/** The date bytes. */
+	private byte[] dateBytes = "$date".getBytes();
 
 	/* (non-Javadoc)
 	 * @see com.minres.scviewer.database.ITrDb#load(java.io.File)
@@ -68,12 +69,12 @@ public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 	public boolean load(IWaveformDb db, File file) throws Exception {
 		this.db=db;
 		FileInputStream fis = new FileInputStream(file);
-		byte[] buffer = new byte[x.length];
-		int read = fis.read(buffer, 0, x.length);
+		byte[] buffer = new byte[dateBytes.length];
+		int read = fis.read(buffer, 0, dateBytes.length);
 		fis.close();
-		if (read == x.length)
-			for (int i = 0; i < x.length; i++)
-				if (buffer[i] != x[i])
+		if (read == dateBytes.length)
+			for (int i = 0; i < dateBytes.length; i++)
+				if (buffer[i] != dateBytes[i])
 					return false;
 
 		signals = new Vector<IWaveform<? extends IWaveformEvent>>();
@@ -180,6 +181,9 @@ public class VCDDbLoader implements IWaveformDbLoader, IVCDDatabaseBuilder {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.minres.scviewer.database.IWaveformDbLoader#getAllRelationTypes()
+	 */
 	@Override
 	public Collection<RelationType> getAllRelationTypes(){
 		return Collections.emptyList();

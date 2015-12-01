@@ -34,7 +34,7 @@ import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 
 /**
- * This is a stub implementation containing e4 LifeCycle annotated methods.<br />
+ * This implementation contains e4 LifeCycle annotated methods.<br />
  * There is a corresponding entry in <em>plugin.xml</em> (under the
  * <em>org.eclipse.core.runtime.products' extension point</em>) that references
  * this class.
@@ -42,10 +42,21 @@ import org.osgi.service.event.EventHandler;
 @SuppressWarnings("restriction")
 public class E4LifeCycle {
 
+	/**
+	 * Post construct.
+	 *
+	 * @param eventBroker the event broker
+	 */
 	@PostConstruct
 	private static void postConstruct(final IEventBroker eventBroker) {
 	}
 
+	/**
+	 * Post context create.  Open a database if given on command line using the OpenViewHandler
+	 *
+	 * @param appContext the app context
+	 * @param eventBroker the event broker
+	 */
 	@PostContextCreate
 	void postContextCreate(IApplicationContext appContext, final IEventBroker eventBroker) {
 		final String[] args = (String[])appContext.getArguments().get(IApplicationContext.APPLICATION_ARGS); 
@@ -66,18 +77,40 @@ public class E4LifeCycle {
 			}
 		});
 	}
+	
+	/**
+	 * Pre save.
+	 *
+	 * @param workbenchContext the workbench context
+	 */
 	@PreSave
 	void preSave(IEclipseContext workbenchContext) {
 	}
 
+	/**
+	 * Process additions.
+	 *
+	 * @param workbenchContext the workbench context
+	 */
 	@ProcessAdditions
 	void processAdditions(IEclipseContext workbenchContext) {
 	}
 
+	/**
+	 * Process removals.
+	 *
+	 * @param workbenchContext the workbench context
+	 */
 	@ProcessRemovals
 	void processRemovals(IEclipseContext workbenchContext) {
 	}
 
+	/**
+	 * Join.
+	 *
+	 * @param tokens the tokens
+	 * @return the string
+	 */
 	String join(String[] tokens){
 		StringBuilder sb = new StringBuilder();
 		boolean first=true;
@@ -89,10 +122,25 @@ public class E4LifeCycle {
 		return sb.toString();
 	}
 	
+	/**
+	 * The Class OpenViewHandler.
+	 */
 	private class OpenViewHandler {
+		
+		/** The app. */
 		@Inject MApplication app;
+		
+		/** The model service. */
 		@Inject EModelService modelService;
+		
+		/** The part service. */
 		@Inject EPartService partService;
+		
+		/**
+		 * Open view for file.
+		 *
+		 * @param name the name
+		 */
 		public void openViewForFile(String name){
 			File file = new File(name);
 			MPart part = partService.createPart("com.minres.scviewer.e4.application.partdescriptor.waveformviewer");

@@ -27,23 +27,50 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
+/**
+ * The Class WaveStatusBarControl.
+ */
 public class WaveStatusBarControl extends StatusBarControl {
 
+	/** The Constant ZOOM_LEVEL. */
 	public static final String ZOOM_LEVEL="ZoomLevelUpdate";
+	
+	/** The Constant CURSOR_TIME. */
 	public static final String CURSOR_TIME="CursorPosUpdate";
+	
+	/** The Constant MARKER_TIME. */
 	public static final String MARKER_TIME="MarkerPosUpdate";
+	
+	/** The Constant MARKER_DIFF. */
 	public static final String MARKER_DIFF="MarlerDiffUpdate";
 
+	/** The model service. */
 	@Inject
 	EModelService modelService;
 
+	/**
+	 * The Class TextContributionItem.
+	 */
 	class TextContributionItem extends ContributionItem {
 
+		/** The label string. */
 		final String labelString;
+		
+		/** The width. */
 		final int width;
+		
+		/** The text. */
 		CLabel label, text;
+		
+		/** The content. */
 		private String content;
 
+		/**
+		 * Instantiates a new text contribution item.
+		 *
+		 * @param labelString the label string
+		 * @param width the width
+		 */
 		public TextContributionItem(String labelString, int width) {
 			super();
 			this.labelString = labelString;
@@ -51,6 +78,9 @@ public class WaveStatusBarControl extends StatusBarControl {
 			content="";
 		}
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.jface.action.ContributionItem#fill(org.eclipse.swt.widgets.Composite)
+		 */
 		@Override
 		public void fill(Composite parent) {
 			Composite box=new Composite(parent, SWT.NONE);
@@ -63,11 +93,19 @@ public class WaveStatusBarControl extends StatusBarControl {
 			text.setLayoutData(layoutData);
 		}
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.jface.action.ContributionItem#isDynamic()
+		 */
 		@Override
 		public boolean isDynamic() {
 			return true;
 		}
 
+		/**
+		 * Sets the text.
+		 *
+		 * @param message the new text
+		 */
 		public void setText(String message){
 			this.content=message;
 			if(text!=null && !text.isDisposed()) text.setText(content);
@@ -75,8 +113,14 @@ public class WaveStatusBarControl extends StatusBarControl {
 
 	}
 
+	/** The zoom contribution. */
 	TextContributionItem cursorContribution, markerContribution, markerDiffContribution, zoomContribution;
 
+	/**
+	 * Instantiates a new wave status bar control.
+	 *
+	 * @param sync the sync
+	 */
 	@Inject
 	public WaveStatusBarControl(UISynchronize sync) {
 		super(sync);
@@ -90,6 +134,11 @@ public class WaveStatusBarControl extends StatusBarControl {
 		manager.appendToGroup(StatusLineManager.BEGIN_GROUP, zoomContribution);
 	}
 
+	/**
+	 * Sets the selection.
+	 *
+	 * @param selection the new selection
+	 */
 	@Inject
 	public void setSelection(@Named(IServiceConstants.ACTIVE_SELECTION)@Optional IStructuredSelection selection){
 		if(manager!=null && selection!=null){
@@ -107,21 +156,45 @@ public class WaveStatusBarControl extends StatusBarControl {
 		}
 	}
 
+	/**
+	 * Gets the zoom event.
+	 *
+	 * @param text the text
+	 * @return the zoom event
+	 */
 	@Inject @Optional
 	public void  getZoomEvent(@UIEventTopic(ZOOM_LEVEL) String text) {
 		zoomContribution.setText(text);
 	} 
 
+	/**
+	 * Gets the cursor event.
+	 *
+	 * @param text the text
+	 * @return the cursor event
+	 */
 	@Inject @Optional
 	public void  getCursorEvent(@UIEventTopic(CURSOR_TIME) String text) {
 		cursorContribution.setText(text);
 	} 
 
+	/**
+	 * Gets the marker event.
+	 *
+	 * @param text the text
+	 * @return the marker event
+	 */
 	@Inject @Optional
 	public void  getMarkerEvent(@UIEventTopic(MARKER_TIME) String text) {
 		markerContribution.setText(text);
 	} 
 
+	/**
+	 * Gets the diff event.
+	 *
+	 * @param text the text
+	 * @return the diff event
+	 */
 	@Inject @Optional
 	public void  getDiffEvent(@UIEventTopic(MARKER_DIFF) String text) {
 		markerDiffContribution.setText(text);

@@ -22,7 +22,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.IWaveform;
-import com.minres.scviewer.e4.application.parts.WaveformViewerPart;
+import com.minres.scviewer.e4.application.parts.WaveformViewer;
 
 public class MoveWaveformHandler {
 
@@ -42,11 +42,11 @@ public class MoveWaveformHandler {
 	public void execute(@Named(PARAMETER_ID) String param, EPartService partService) {
 		MPart part = partService.getActivePart();
 		Object obj = part.getObject();
-		if(obj instanceof WaveformViewerPart){
+		if(obj instanceof WaveformViewer){
 			if("up".equalsIgnoreCase(param))
-				((WaveformViewerPart)obj).moveSelected(-1);
+				((WaveformViewer)obj).moveSelected(-1);
 			else if("down".equalsIgnoreCase(param))
-				((WaveformViewerPart)obj).moveSelected(1);
+				((WaveformViewer)obj).moveSelected(1);
 		}
 	}
 		

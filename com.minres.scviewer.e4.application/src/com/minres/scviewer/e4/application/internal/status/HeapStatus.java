@@ -38,35 +38,75 @@ import org.osgi.service.prefs.Preferences;
 
 /**
  * The Heap Status control, which shows the heap usage statistics in the window trim.
- *
- * @since 3.1
+ * Part of the code is taken from the eclipse internal implementation
  */
 public class HeapStatus extends Composite {
 
+	/** The armed. */
 	private boolean armed;
+	
+	/** The gc image. */
 	private Image gcImage;
+	
+	/** The disabled gc image. */
 	private Image disabledGcImage;
+	
+	/** The arm col. */
 	private Color bgCol, usedMemCol, lowMemCol, freeMemCol, topLeftCol, bottomRightCol, sepCol, textCol, markCol, armCol;
+    
+    /** The button. */
     private Canvas button;
+	
+	/** The preferences. */
 	private Preferences preferences;
+	
+	/** The update interval. */
 	private int updateInterval;
+	
+	/** The show max. */
 	private boolean showMax;
+    
+    /** The total mem. */
     private long totalMem;
+    
+    /** The prev total mem. */
     private long prevTotalMem = -1L;
+    
+    /** The prev used mem. */
     private long prevUsedMem = -1L;
+    
+    /** The has changed. */
     private boolean hasChanged;
+    
+    /** The used mem. */
     private long usedMem;
+    
+    /** The mark. */
     private long mark = -1;
+    
+    /** The img bounds. */
     // start with 12x12
 	private Rectangle imgBounds = new Rectangle(0,0,12,12);
+	
+	/** The max mem. */
 	private long maxMem = Long.MAX_VALUE;
+	
+	/** The max mem known. */
 	private boolean maxMemKnown;
+	
+	/** The low mem threshold. */
 	private float lowMemThreshold = 0.05f;
+	
+	/** The show low mem threshold. */
 	private boolean showLowMemThreshold = true;
+	
+	/** The update tooltip. */
 	private boolean updateTooltip = false;
 
+	/** The is in gc. */
 	protected volatile boolean isInGC = false;
 
+    /** The timer. */
     private final Runnable timer = new Runnable() {
         @Override
 		public void run() {
@@ -84,6 +124,7 @@ public class HeapStatus extends Composite {
         }
     };
 
+    /** The pref listener. */
     private final IPreferenceChangeListener prefListener = new IPreferenceChangeListener() {
 		@Override
 		public void preferenceChange(PreferenceChangeEvent event) {
@@ -215,6 +256,9 @@ public class HeapStatus extends Composite {
 		});
    	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.swt.widgets.Control#setBackground(org.eclipse.swt.graphics.Color)
+	 */
 	@Override
 	public void setBackground(Color color) {
 		bgCol = color;
@@ -222,6 +266,9 @@ public class HeapStatus extends Composite {
 		button.update();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.swt.widgets.Control#setForeground(org.eclipse.swt.graphics.Color)
+	 */
 	@Override
 	public void setForeground(Color color) {
 		if (color == null) {
@@ -234,6 +281,9 @@ public class HeapStatus extends Composite {
 		button.update();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.swt.widgets.Control#getForeground()
+	 */
 	@Override
 	public Color getForeground() {
 		if (usedMemCol != null) {
@@ -244,6 +294,8 @@ public class HeapStatus extends Composite {
 
 	/**
 	 * Returns the maximum memory limit, or Long.MAX_VALUE if the max is not known.
+	 *
+	 * @return the max mem
 	 */
 	private long getMaxMem() {
 		long max = Long.MAX_VALUE;
@@ -261,10 +313,18 @@ public class HeapStatus extends Composite {
 		return max;
 	}
 
+	/**
+	 * Sets the update interval in ms.
+	 *
+	 * @param interval the new update interval in ms
+	 */
 	private void setUpdateIntervalInMS(int interval) {
 		updateInterval = Math.max(100, interval);
 	}
 
+	/**
+	 * Do dispose.
+	 */
 	private void doDispose() {
 		if(preferences instanceof IEclipsePreferences)
         	((IEclipsePreferences)preferences).removePreferenceChangeListener(prefListener);
@@ -276,6 +336,9 @@ public class HeapStatus extends Composite {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.swt.widgets.Composite#computeSize(int, int, boolean)
+	 */
 	@Override
 	public Point computeSize(int wHint, int hHint, boolean changed) {
         GC gc = new GC(this);
@@ -291,6 +354,11 @@ public class HeapStatus extends Composite {
 		return new Point(p.x + 15, height);
 	}
 
+    /**
+     * Arm.
+     *
+     * @param armed the armed
+     */
     private void arm(boolean armed) {
         if (this.armed == armed) {
 			return;
@@ -300,6 +368,11 @@ public class HeapStatus extends Composite {
         button.update();
     }
 
+	/**
+	 * Gc running.
+	 *
+	 * @param isInGC the is in gc
+	 */
 	private void gcRunning(boolean isInGC) {
 		if (this.isInGC == isInGC) {
 			return;
@@ -310,7 +383,7 @@ public class HeapStatus extends Composite {
 	}
 
     /**
-     * Creates the context menu
+     * Creates the context menu.
      */
     private void createContextMenu() {
         MenuManager menuMgr = new MenuManager();
@@ -325,6 +398,11 @@ public class HeapStatus extends Composite {
         setMenu(menu);
     }
 
+    /**
+     * Fill menu.
+     *
+     * @param menuMgr the menu mgr
+     */
     private void fillMenu(IMenuManager menuMgr) {
         menuMgr.add(new SetMarkAction());
         menuMgr.add(new ClearMarkAction());
@@ -354,6 +432,9 @@ public class HeapStatus extends Composite {
         redraw();
     }
 
+    /**
+     * Gc.
+     */
     private void gc() {
 		gcRunning(true);
 		Thread t = new Thread() {
@@ -373,6 +454,9 @@ public class HeapStatus extends Composite {
 		t.start();
     }
 
+    /**
+     * Busy gc.
+     */
     private void busyGC() {
         for (int i = 0; i < 2; ++i) {
 	        System.gc();
@@ -380,6 +464,11 @@ public class HeapStatus extends Composite {
         }
     }
 
+    /**
+     * Paint button.
+     *
+     * @param gc the gc
+     */
     private void paintButton(GC gc) {
         Rectangle rect = button.getClientArea();
 		if (isInGC) {
@@ -399,6 +488,11 @@ public class HeapStatus extends Composite {
         }
     }
 
+    /**
+     * Paint composite.
+     *
+     * @param gc the gc
+     */
     private void paintComposite(GC gc) {
 		if (showMax && maxMemKnown) {
 			paintCompositeMaxKnown(gc);
@@ -407,6 +501,11 @@ public class HeapStatus extends Composite {
 		}
     }
 
+    /**
+     * Paint composite max unknown.
+     *
+     * @param gc the gc
+     */
     private void paintCompositeMaxUnknown(GC gc) {
         Rectangle rect = getClientArea();
         int x = rect.x;
@@ -449,6 +548,11 @@ public class HeapStatus extends Composite {
         }
     }
 
+    /**
+     * Paint composite max known.
+     *
+     * @param gc the gc
+     */
     private void paintCompositeMaxKnown(GC gc) {
         Rectangle rect = getClientArea();
         int x = rect.x;
@@ -509,6 +613,14 @@ public class HeapStatus extends Composite {
         }
     }
 
+	/**
+	 * Paint mark.
+	 *
+	 * @param gc the gc
+	 * @param x the x
+	 * @param y the y
+	 * @param h the h
+	 */
 	private void paintMark(GC gc, int x, int y, int h) {
         gc.setForeground(markCol);
 		gc.drawLine(x, y+1, x, y+h-2);
@@ -516,6 +628,9 @@ public class HeapStatus extends Composite {
 		gc.drawLine(x-1, y+h-2, x+1, y+h-2);
 	}
 
+    /**
+     * Update stats.
+     */
     private void updateStats() {
         Runtime runtime = Runtime.getRuntime();
         totalMem = runtime.totalMemory();
@@ -533,6 +648,9 @@ public class HeapStatus extends Composite {
         }
     }
 
+    /**
+     * Update tool tip.
+     */
     private void updateToolTip() {
     	String usedStr = convertToMegString(usedMem);
     	String totalStr = convertToMegString(totalMem);
@@ -546,6 +664,9 @@ public class HeapStatus extends Composite {
 
     /**
      * Converts the given number of bytes to a printable number of megabytes (rounded up).
+     *
+     * @param numBytes the num bytes
+     * @return the string
      */
     private String convertToMegString(long numBytes) {
         return new Long(convertToMeg(numBytes)).toString()+"M";
@@ -553,41 +674,74 @@ public class HeapStatus extends Composite {
 
     /**
      * Converts the given number of bytes to the corresponding number of megabytes (rounded up).
+     *
+     * @param numBytes the num bytes
+     * @return the long
      */
 	private long convertToMeg(long numBytes) {
 		return (numBytes + (512 * 1024)) / (1024 * 1024);
 	}
 
 
+    /**
+     * The Class SetMarkAction.
+     */
     class SetMarkAction extends Action {
+        
+        /**
+         * Instantiates a new sets the mark action.
+         */
         SetMarkAction() {
             super("&Set Mark");
         }
 
+        /* (non-Javadoc)
+         * @see org.eclipse.jface.action.Action#run()
+         */
         @Override
 		public void run() {
             setMark();
         }
     }
 
+    /**
+     * The Class ClearMarkAction.
+     */
     class ClearMarkAction extends Action {
+        
+        /**
+         * Instantiates a new clear mark action.
+         */
         ClearMarkAction() {
             super("&Clear Mark");
         }
 
+        /* (non-Javadoc)
+         * @see org.eclipse.jface.action.Action#run()
+         */
         @Override
 		public void run() {
             clearMark();
         }
     }
 
+    /**
+     * The Class ShowMaxAction.
+     */
     class ShowMaxAction extends Action {
-    	ShowMaxAction() {
+    	
+	    /**
+	     * Instantiates a new show max action.
+	     */
+	    ShowMaxAction() {
             super("Show &Max Heap", IAction.AS_CHECK_BOX);
             setEnabled(maxMemKnown);
             setChecked(showMax);
         }
 
+        /* (non-Javadoc)
+         * @see org.eclipse.jface.action.Action#run()
+         */
         @Override
 		public void run() {
             preferences.putBoolean(IHeapStatusConstants.PREF_SHOW_MAX, isChecked());
@@ -595,13 +749,22 @@ public class HeapStatus extends Composite {
         }
     }
 
+    /**
+     * The Class CloseHeapStatusAction.
+     */
     class CloseHeapStatusAction extends Action{
 
-    	CloseHeapStatusAction(){
+    	/**
+	     * Instantiates a new close heap status action.
+	     */
+	    CloseHeapStatusAction(){
     		super("&Close");
     	}
 
-    	@Override
+    	/* (non-Javadoc)
+	     * @see org.eclipse.jface.action.Action#run()
+	     */
+	    @Override
 		public void run(){
 //			WorkbenchWindow wbw = (WorkbenchWindow) PlatformUI.getWorkbench()
 //					.getActiveWorkbenchWindow();

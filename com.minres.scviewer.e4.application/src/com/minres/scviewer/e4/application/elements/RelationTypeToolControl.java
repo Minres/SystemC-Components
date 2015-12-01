@@ -32,24 +32,41 @@ import org.eclipse.swt.widgets.Composite;
 import com.minres.scviewer.database.ITx;
 import com.minres.scviewer.database.RelationType;
 import com.minres.scviewer.e4.application.parts.PartListener;
-import com.minres.scviewer.e4.application.parts.WaveformViewerPart;
+import com.minres.scviewer.e4.application.parts.WaveformViewer;
 
+/**
+ * The Class RelationTypeToolControl allowing to control which TX relation is used for navigation.
+ */
 public class RelationTypeToolControl extends PartListener implements ISelectionChangedListener {
 	
+	/** The part service. */
 	EPartService partService;
 	
+	/** The combo viewer. */
 	ComboViewer comboViewer;
 	
-	WaveformViewerPart waveformViewerPart;
+	/** The waveform viewer part. */
+	WaveformViewer waveformViewerPart;
 	
+	/** The dummy. */
 	RelationType dummy = RelationType.create("------------");
 	
+	/**
+	 * Instantiates a new relation type tool control.
+	 *
+	 * @param partService the part service
+	 */
 	@Inject
 	public RelationTypeToolControl(EPartService partService) {
 		this.partService=partService;
 		partService.addPartListener(this);
 	}
 	
+	/**
+	 * Creates the gui.
+	 *
+	 * @param parent the parent
+	 */
 	@PostConstruct
 	public void createGui(Composite parent) {
 	    comboViewer = new ComboViewer(parent, SWT.NONE);
@@ -62,10 +79,13 @@ public class RelationTypeToolControl extends PartListener implements ISelectionC
 	    comboViewer.addSelectionChangedListener(this);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.minres.scviewer.e4.application.parts.PartListener#partActivated(org.eclipse.e4.ui.model.application.ui.basic.MPart)
+	 */
 	@Override
 	public void partActivated(MPart part) {
-		if(part.getObject() instanceof WaveformViewerPart){
-			waveformViewerPart=(WaveformViewerPart) part.getObject();
+		if(part.getObject() instanceof WaveformViewer){
+			waveformViewerPart=(WaveformViewer) part.getObject();
 			checkSelection(waveformViewerPart.getSelection());
 		} else {
 			waveformViewerPart=null;
@@ -73,14 +93,25 @@ public class RelationTypeToolControl extends PartListener implements ISelectionC
 		}
 	}
 
+	/**
+	 * Sets the selection.
+	 *
+	 * @param selection the selection
+	 * @param partService the part service
+	 */
 	@Inject
 	public void setSelection(@Named(IServiceConstants.ACTIVE_SELECTION) @Optional IStructuredSelection selection, EPartService partService){
 		MPart part = partService.getActivePart();
-		if(part!=null && part.getObject() instanceof WaveformViewerPart && comboViewer!=null){
+		if(part!=null && part.getObject() instanceof WaveformViewer && comboViewer!=null){
 			checkSelection(selection);
 		}
 	}
 
+	/**
+	 * Check selection.
+	 *
+	 * @param selection the selection
+	 */
 	protected void checkSelection(ISelection selection) {
 		if( selection instanceof IStructuredSelection) {
 			Object object= ((IStructuredSelection)selection).getFirstElement();			
@@ -94,11 +125,14 @@ public class RelationTypeToolControl extends PartListener implements ISelectionC
 		comboViewer.getCombo().setEnabled(false);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+	 */
 	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		MPart part = partService.getActivePart();
-		if(part!=null && part.getObject() instanceof WaveformViewerPart && !event.getSelection().isEmpty()){
-			WaveformViewerPart waveformViewerPart=(WaveformViewerPart) part.getObject();
+		if(part!=null && part.getObject() instanceof WaveformViewer && !event.getSelection().isEmpty()){
+			WaveformViewer waveformViewerPart=(WaveformViewer) part.getObject();
 			if(event.getSelection() instanceof IStructuredSelection){
 				waveformViewerPart.setNavigationRelationType(
 						(RelationType)((IStructuredSelection)event.getSelection()).getFirstElement());

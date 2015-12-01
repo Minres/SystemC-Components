@@ -13,13 +13,22 @@ package com.minres.scviewer.e4.application.preferences;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 
-/** A sample preference page to show how it works */
+
+/**
+ * The Class SCViewerPreferencesPage showing the SCViewer top preferences.
+ */
 public class SCViewerPreferencesPage extends FieldEditorPreferencePage {
 
+	/**
+	 * Instantiates a new SC viewer preferences page.
+	 */
 	public SCViewerPreferencesPage() {
 		super(GRID);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.preference.FieldEditorPreferencePage#createFieldEditors()
+	 */
 	@Override
 	protected void createFieldEditors() {
 

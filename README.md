@@ -25,8 +25,10 @@ The plugins are structured as follows:
 - com.minres.scviewer.feature
 	the feature combining the plugins above into a somhow usable form
 - scv_tr_sqlite
-	a C++ project containing the SQLite based SCV database implementation. A simple 
-	example (scv_tr_recording_example.cpp) for testig purposes is provided.
+	a C++ project containing the SQLite based SCV database implementation and the scv4tlm 
+	socket implementations.
+	A simple example (scv_tr_recording_example.cpp) for testig purposes of the database is
+	provided. 
 	
 To build the plugins the Eclipse SDK or PDE can be used. In both cases the Groovy
 eclipse plugin (http://groovy.codehaus.org/Eclipse+Plugin or Market) has to be
@@ -34,6 +36,7 @@ installed.
 
 TODO
 ====
-- refactor the graphical viewer (again)
 - add more tests
-- additional analysis means
+- move to feature based product to allow automatic updates
+- improve graphics
+- catch-up e3 plugin to functionality of e4 product

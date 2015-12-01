@@ -18,7 +18,7 @@ import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 
-import com.minres.scviewer.e4.application.parts.WaveformViewerPart;
+import com.minres.scviewer.e4.application.parts.WaveformViewer;
 
 public class ZoomHandler {
 
@@ -33,8 +33,8 @@ public class ZoomHandler {
 	public void execute(@Named(PARAMTER_ID) String level, EPartService partService) {
 		MPart part = partService.getActivePart();
 		Object obj = part.getObject();
-		if(obj instanceof WaveformViewerPart){
-			WaveformViewerPart waveformViewerPart = (WaveformViewerPart) obj;
+		if(obj instanceof WaveformViewer){
+			WaveformViewer waveformViewerPart = (WaveformViewer) obj;
 			int zoomLevel = waveformViewerPart.getZoomLevel();
 			if("in".equalsIgnoreCase(level))
 				waveformViewerPart.setZoomLevel(zoomLevel-1);

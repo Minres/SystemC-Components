@@ -57,32 +57,51 @@ import com.minres.scviewer.database.ITxAttribute;
 import com.minres.scviewer.database.ITxRelation;
 import com.minres.scviewer.e4.application.provider.TxPropertiesLabelProvider;
 
+/**
+ * The Class TransactionDetails shows the details of a selected transaction. 
+ */
 public class TransactionDetails {
 
+	/** The Constant COLUMN_FIRST. */
 	// Column constants
 	public static final int COLUMN_FIRST = 0;
 
+	/** The Constant COLUMN_SECOND. */
 	public static final int COLUMN_SECOND = 1;
 
+	/** The Constant COLUMN_THIRD. */
 	public static final int COLUMN_THIRD = 2;
 
+	/** The event broker. */
 	@Inject IEventBroker eventBroker;
 
+	/** The selection service. */
 	@Inject	ESelectionService selectionService;
 
+	/** The name filter. */
 	private Text nameFilter;
 
+	/** The tree viewer. */
 	private TreeViewer treeViewer;
 
+	/** The col3. */
 	private TreeViewerColumn col1, col2, col3;
 
+	/** The attribute filter. */
 	TxAttributeFilter attributeFilter;
 	
+	/** The view sorter. */
 	TxAttributeViewerSorter viewSorter;
 
-	private WaveformViewerPart waveformViewerPart;
+	/** The waveform viewer part. */
+	private WaveformViewer waveformViewerPart;
 
 
+	/**
+	 * Creates the composite.
+	 *
+	 * @param parent the parent
+	 */
 	@PostConstruct
 	public void createComposite(final Composite parent) {
 		parent.setLayout(new GridLayout(1, false));
@@ -207,16 +226,30 @@ public class TransactionDetails {
 		});
 	}
 
+	/**
+	 * Sets the focus.
+	 */
 	@Focus
 	public void setFocus() {
 		treeViewer.getTree().setFocus();
 	}
 
+	/**
+	 * Gets the status event.
+	 *
+	 * @param part the part
+	 * @return the status event
+	 */
 	@Inject @Optional
-	public void  getStatusEvent(@UIEventTopic(WaveformViewerPart.ACTIVE_WAVEFORMVIEW) WaveformViewerPart part) {
+	public void  getStatusEvent(@UIEventTopic(WaveformViewer.ACTIVE_WAVEFORMVIEW) WaveformViewer part) {
 		this.waveformViewerPart=part;
 	}
 
+	/**
+	 * Sets the selection.
+	 *
+	 * @param selection the new selection
+	 */
 	@Inject
 	public void setSelection(@Named(IServiceConstants.ACTIVE_SELECTION) @Optional IStructuredSelection selection){
 		if(treeViewer!=null && selection!=null && !treeViewer.getTree().isDisposed()){
@@ -231,10 +264,22 @@ public class TransactionDetails {
 		}
 	}
 
+	/**
+	 * Time to string.
+	 *
+	 * @param time the time
+	 * @return the string
+	 */
 	String timeToString(Long time){
 		return waveformViewerPart.getScaledTime(time);
 	}
 
+	/**
+	 * Tx to string.
+	 *
+	 * @param tx the tx
+	 * @return the string
+	 */
 	String txToString(ITx tx){
 		StringBuilder sb = new StringBuilder();
 		sb.append("tx#").append(tx.getId()).append("[").append(timeToString(tx.getBeginTime())).
@@ -242,21 +287,29 @@ public class TransactionDetails {
 		return sb.toString();
 	}
 	
+	/**
+	 * The Class TxAttributeViewerSorter.
+	 */
 	class TxAttributeViewerSorter extends ViewerSorter {
+		
+		/** The Constant ASCENDING. */
 		private static final int ASCENDING = 0;
 
+		/** The Constant DESCENDING. */
 		private static final int DESCENDING = 1;
 
+		/** The column. */
 		private int column;
 
+		/** The direction. */
 		private int direction;
 
 		/**
 		 * Does the sort. If it's a different column from the previous sort, do an
 		 * ascending sort. If it's the same column as the last sort, toggle the sort
 		 * direction.
-		 * 
-		 * @param column
+		 *
+		 * @param column the column
 		 */
 		public void doSort(int column) {
 			if (column == this.column) {
@@ -270,7 +323,12 @@ public class TransactionDetails {
 		}
 
 		/**
-		 * Compares the object for sorting
+		 * Compares the object for sorting.
+		 *
+		 * @param viewer the viewer
+		 * @param e1 the e1
+		 * @param e2 the e2
+		 * @return the int
 		 */
 		@SuppressWarnings("unchecked")
 		public int compare(Viewer viewer, Object e1, Object e2) {
@@ -297,14 +355,26 @@ public class TransactionDetails {
 		}
 	}
 
+	/**
+	 * The Class TxAttributeFilter.
+	 */
 	class TxAttributeFilter extends ViewerFilter {
 
+		/** The search string. */
 		private String searchString;
 
+		/**
+		 * Sets the search text.
+		 *
+		 * @param s the new search text
+		 */
 		public void setSearchText(String s) {
 			this.searchString = ".*" + s + ".*";
 		}
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+		 */
 		@Override
 		public boolean select(Viewer viewer, Object parentElement, Object element) {
 			if (searchString == null || searchString.length() == 0) {
@@ -321,17 +391,40 @@ public class TransactionDetails {
 		}
 	}
 
-	enum Type {PROPS, ATTRS, IN_REL, OUT_REL}
+	/**
+	 * The Enum Type.
+	 */
+	enum Type {/** The props. */
+PROPS, /** The attrs. */
+ ATTRS, /** The in rel. */
+ IN_REL, /** The out rel. */
+ OUT_REL}
 
+	/**
+	 * The Class TreeNode.
+	 */
 	class TreeNode{
+		
+		/** The type. */
 		public Type type;
+		
+		/** The element. */
 		public ITx element;
 
+		/**
+		 * Instantiates a new tree node.
+		 *
+		 * @param element the element
+		 * @param type the type
+		 */
 		public TreeNode(ITx element, Type type){
 			this.element=element;
 			this.type=type;
 		}
 
+		/* (non-Javadoc)
+		 * @see java.lang.Object#toString()
+		 */
 		public String toString(){
 			switch(type){
 			case PROPS:      return "Properties";
@@ -343,15 +436,27 @@ public class TransactionDetails {
 		}
 	}
 
+	/**
+	 * The Class TransactionTreeContentProvider.
+	 */
 	class TransactionTreeContentProvider implements ITreeContentProvider {
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.jface.viewers.IContentProvider#dispose()
+		 */
 		@Override
 		public void dispose() {	}
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+		 */
 		@Override
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.jface.viewers.ITreeContentProvider#getElements(java.lang.Object)
+		 */
 		@Override
 		public Object[] getElements(Object element) {
 			return new Object[]{
@@ -362,6 +467,9 @@ public class TransactionDetails {
 			};
 		}
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
+		 */
 		@Override
 		public Object[] getChildren(Object element) {
 			if(element instanceof TreeNode){
@@ -398,11 +506,17 @@ public class TransactionDetails {
 			return null;
 		}
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
+		 */
 		@Override
 		public Object getParent(Object element) {
 			return null;
 		}
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
+		 */
 		@Override
 		public boolean hasChildren(Object element) {
 			return getChildren(element)!=null;
@@ -410,16 +524,35 @@ public class TransactionDetails {
 
 	}
 
+	/**
+	 * The Class AttributeLabelProvider.
+	 */
 	class AttributeLabelProvider extends LabelProvider implements IStyledLabelProvider {
+		
+		/** The field. */
 		final int field;
+		
+		/** The Constant NAME. */
 		public static final int NAME=0;
+		
+		/** The Constant TYPE. */
 		public static final int TYPE=1;
+		
+		/** The Constant VALUE. */
 		public static final int VALUE=2;
 
+		/**
+		 * Instantiates a new attribute label provider.
+		 *
+		 * @param field the field
+		 */
 		public  AttributeLabelProvider(int field) {
 			this.field=field;
 		}
 
+		/* (non-Javadoc)
+		 * @see org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider#getStyledText(java.lang.Object)
+		 */
 		@Override
 		public StyledString getStyledText(Object element) {
 			switch(field){

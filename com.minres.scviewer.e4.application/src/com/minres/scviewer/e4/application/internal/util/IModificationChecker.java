@@ -10,8 +10,14 @@
  *******************************************************************************/
 package com.minres.scviewer.e4.application.internal.util;
 
+/**
+ * The Interface IModificationChecker. Allows to trigger a check independent of the timer
+ */
 public interface IModificationChecker {
 
+	/**
+	 * Check.
+	 */
 	public void check();
 
 }

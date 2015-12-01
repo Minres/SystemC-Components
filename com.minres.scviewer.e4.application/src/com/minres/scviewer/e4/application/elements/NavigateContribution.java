@@ -27,19 +27,31 @@ import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 
 import com.minres.scviewer.database.RelationType;
-import com.minres.scviewer.e4.application.parts.WaveformViewerPart;
+import com.minres.scviewer.e4.application.parts.WaveformViewer;
 
+/**
+ * The Class NavigateContribution. Currently not used in Application.e4xmi
+ */
 public class NavigateContribution {
+	
+	/** The part service. */
 	@Inject EPartService partService;
 	
+	/**
+	 * About to show.
+	 *
+	 * @param items the items
+	 * @param application the application
+	 * @param modelService the model service
+	 */
 	@AboutToShow
 	public void aboutToShow(List<MMenuElement> items, MApplication application, EModelService modelService) {
 //		modelService.getActivePerspective(window)
 //		modelService.findElements(application,"myID",MPart.class,	EModelService.IN_ACTIVE_PERSPECTIVE);
 		// MDirectMenuItem dynamicItem = MMenuFactory.INSTANCE.createDirectMenuItem();
 		MPart part = partService.getActivePart();
-		if(part.getObject()instanceof WaveformViewerPart){
-			WaveformViewerPart waveformViewerPart = (WaveformViewerPart) part.getObject();
+		if(part.getObject()instanceof WaveformViewer){
+			WaveformViewer waveformViewerPart = (WaveformViewer) part.getObject();
 			RelationType relationTypeFilter = waveformViewerPart.getRelationTypeFilter();
 			MCommand command = modelService.findElements(application, 
 					"com.minres.scviewer.e4.application.command.setrelationtype", MCommand.class, null).get(0);

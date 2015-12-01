@@ -27,8 +27,9 @@ public class OpenHandler {
 
 	@Execute
 	public void execute(Shell shell, MApplication app, EModelService modelService, EPartService partService){
-		FileDialog dialog = new FileDialog(shell, SWT.MULTI);
-		dialog.setFilterExtensions (new String []{"vcd", "txdb", "txlog"});
+		FileDialog dialog = new FileDialog(shell, SWT.OPEN | SWT.MULTI);
+//		dialog.setFilterExtensions (new String []{"vcd", "txdb", "txlog"});
+		dialog.setFilterExtensions (new String []{"*.vcd;*.txdb;*.txlog"});
 		dialog.open();
 		String path = dialog.getFilterPath();
 		for(String fileName: dialog.getFileNames()){
@@ -36,8 +37,7 @@ public class OpenHandler {
 			if(file.exists()){
 //				MPart part = MBasicFactory.INSTANCE.createPart();
 //				part.setLabel(fileName);
-//				part.setContributionURI("bundleclass://com.minres.scviewer.e4.application/"+
-//						WaveformViewerPart.class.getName());
+//				part.setContributionURI("bundleclass://com.minres.scviewer.e4.application/"+ WaveformViewerPart.class.getName());
 				MPart part = partService .createPart("com.minres.scviewer.e4.application.partdescriptor.waveformviewer");
 				part.setLabel(file.getName());
 								
