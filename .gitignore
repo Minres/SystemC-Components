@@ -3,3 +3,8 @@
 /.recommenders/
 /RemoteSystemsTempFiles/
 /*.zip
+SCViewer initiator_target.launch
+SCViewer.xcf
+SCViewer_1.png
+*.launch
+copyrightLog.txt
