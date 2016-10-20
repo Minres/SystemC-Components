@@ -24,4 +24,11 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>scv4tlm</name>
+			<type>2</type>
+			<location>/home/developer/git/SC-Snippets/scv4tlm</location>
+		</link>
+	</linkedResources>
 </projectDescription>
