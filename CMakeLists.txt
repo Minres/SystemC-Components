@@ -15,6 +15,7 @@ else()
 endif()
 
 if(SCV_FOUND)   
+    add_definitions(-DWITH_SCV)
     link_directories(${SCV_LIBRARY_DIRS})
     add_subdirectory (src)
     add_subdirectory (example)
