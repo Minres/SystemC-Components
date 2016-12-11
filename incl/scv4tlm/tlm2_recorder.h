@@ -19,11 +19,11 @@
 
 #include <scv.h>
 #include <tlm>
-#include "tlm_gp_data_ext.h"
-#include "tlm_recording_extension.h"
 #include <map>
 #include <string>
 #include <vector>
+#include "../../../sc-components/incl/scv4tlm/tlm_gp_data_ext.h"
+#include "../../../sc-components/incl/scv4tlm/tlm_recording_extension.h"
 
 namespace scv4tlm {
 

@@ -1,5 +1,17 @@
 cmake_minimum_required (VERSION 2.8.12)
-project (SC-Components)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../cmake) # main (top) cmake dir
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
+set(CMAKE_CXX_STANDARD 11) # compromise, SystemC does not compile with C++14
+
+project (sc-comp)
+
+# Set the version number of your project here (format is MAJOR.MINOR.PATCHLEVEL - e.g. 1.0.0)
+set(VERSION_MAJOR "0")
+set(VERSION_MINOR "0")
+set(VERSION_PATCH "1")
+set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
+
+include(Common)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 

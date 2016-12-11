@@ -19,7 +19,8 @@
 
 #include <tlm_utils/simple_initiator_socket.h>
 #include <tlm_utils/simple_target_socket.h>
-#include "tlm2_recorder.h"
+
+#include "../../../sc-components/incl/scv4tlm/tlm2_recorder.h"
 
 namespace scv4tlm {
 /*! \brief The TLM2 transaction recorder

@@ -21,6 +21,7 @@
 #include "scv/scv_util.h"
 #include "scv/scv_introspection.h"
 #include "scv/scv_tr.h"
+
 #include "sqlite3.h"
 // ----------------------------------------------------------------------------
 #define SQLITEWRAPPER_ERROR 1000
