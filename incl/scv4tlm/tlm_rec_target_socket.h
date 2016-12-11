@@ -17,9 +17,8 @@
 #ifndef TLM_REC_TARGET_SOCKET_H_
 #define TLM_REC_TARGET_SOCKET_H_
 
+#include "tlm2_recorder.h"
 #include <tlm_core/tlm_2/tlm_sockets/tlm_target_socket.h>
-
-#include "../../../sc-components/incl/scv4tlm/tlm2_recorder.h"
 
 namespace scv4tlm {
 template<unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types, int N = 1

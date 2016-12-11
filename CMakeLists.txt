@@ -3,7 +3,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../cmake)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
 set(CMAKE_CXX_STANDARD 11) # compromise, SystemC does not compile with C++14
 
-project (sc-comp)
+project (sc-components)
 
 # Set the version number of your project here (format is MAJOR.MINOR.PATCHLEVEL - e.g. 1.0.0)
 set(VERSION_MAJOR "0")
