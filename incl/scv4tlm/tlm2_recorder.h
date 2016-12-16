@@ -233,7 +233,7 @@ private:
 			}
 			return (tlm_recording_payload*) ptr;
 		}
-		void free(typename TYPES::tlm_payload_type* trans) {
+		void free(tlm::tlm_generic_payload* trans) {
 			trans->reset();
 			if (!empties) {
 				empties = new access;

@@ -109,7 +109,7 @@ private:
         }
 
         void invalidate_direct_mem_ptr(sc_dt::uint64 s, sc_dt::uint64 e) {
-            return m_owner->bw_invalidate_direct_mem_ptr(s, e);
+             m_owner->bw_invalidate_direct_mem_ptr(s, e);
         }
 
     private:
