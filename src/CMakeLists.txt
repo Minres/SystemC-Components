@@ -7,7 +7,9 @@ set(LIB_SOURCES
     scv_tr_sqlite/scv_tr_sqlite.cpp
     scv_tr_sqlite/sqlite3.c
 )
-
+if ( ZLIB_FOUND )
+set(LIB_SOURCES ${LIB_SOURCES} scv_tr_compressed.cpp)
+endif( ZLIB_FOUND )
 
 # Define two variables in order not to repeat ourselves.
 set(LIBRARY_NAME sc-components)

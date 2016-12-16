@@ -119,7 +119,7 @@ public:
 		(this->get_base_export())(ifs);
 	}
 
-	void setExtensionRecording(tlm_extensions_recording_if<TYPES>* extensionRecording){
+	void setExtensionRecording(tlm2_extensions_recording_if<TYPES>* extensionRecording){
 		recorder.setExtensionRecording(extensionRecording);
 	}
 

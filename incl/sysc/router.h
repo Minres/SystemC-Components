@@ -14,8 +14,10 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #include "tlm.h"
-#include "tlm_utils/simple_initiator_socket.h"
-#include "tlm_utils/simple_target_socket.h"
+#include <scv4tlm/tlm_rec_initiator_socket.h>
+#include <scv4tlm/tlm_rec_target_socket.h>
+#include <scv4tlm/initiator_mixin.h>
+#include <scv4tlm/target_mixin.h>
 #pragma GCC diagnostic pop
 #include <limits>
 
@@ -23,13 +25,14 @@ namespace sysc {
 
 template<unsigned BUSWIDTH = 32, unsigned SLAVES=1, unsigned MASTERS=1>
 struct router: sc_core::sc_module {
-    using target_sckt = tlm_utils::simple_target_socket_tagged<router, BUSWIDTH>;
-    using intor_sckt = tlm_utils::simple_initiator_socket_tagged<router, BUSWIDTH>;
+    using intor_sckt  = scv4tlm::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<BUSWIDTH>>;
+    using target_sckt = scv4tlm::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>>;
 
     target_sckt target_sockets[MASTERS];
     intor_sckt  initiator_sockets[SLAVES];
 
     router(const sc_core::sc_module_name& nm);
+
     ~router() {}
 
     void set_initiator_base(size_t idx, uint64_t base){ibases[idx]=base;}
@@ -63,13 +66,17 @@ router<BUSWIDTH, SLAVES, MASTERS>::router(const sc_core::sc_module_name& nm)
 : sc_module(nm), addr_decoder(std::numeric_limits<unsigned>::max())
   {
     for (size_t i = 0; i < MASTERS; ++i) {
-        target_sockets[i].register_b_transport(this, &router::b_transport, i);
-        target_sockets[i].register_get_direct_mem_ptr(this, &router::get_direct_mem_ptr, i);
-        target_sockets[i].register_transport_dbg(this, &router::transport_dbg, i);
+        target_sockets[i].register_b_transport(
+                std::bind(&router::b_transport, this, i, std::placeholders::_1, std::placeholders::_2));
+        target_sockets[i].register_get_direct_mem_ptr(
+                std::bind(&router::get_direct_mem_ptr, this, i, std::placeholders::_1, std::placeholders::_2));
+        target_sockets[i].register_transport_dbg(
+                std::bind(&router::transport_dbg, this, i, std::placeholders::_1));
         ibases[i]=0ULL;
     }
     for (size_t i = 0; i < SLAVES; ++i) {
-        initiator_sockets[i].register_invalidate_direct_mem_ptr(this, &router::invalidate_direct_mem_ptr, i);
+        initiator_sockets[i].register_invalidate_direct_mem_ptr(
+                std::bind(&router::invalidate_direct_mem_ptr, this, i, std::placeholders::_1, std::placeholders::_2));
         tranges[i].base=0ULL;
         tranges[i].size=0ULL;
         tranges[i].remap=false;

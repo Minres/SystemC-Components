@@ -16,8 +16,8 @@ include(Common)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
 find_package(Threads)
-find_package(SystemC)
-
+find_package(SystemC REQUIRED)
+find_package(ZLIB)
 if(SystemC_FOUND)
     include_directories(${SystemC_INCLUDE_DIRS})
     link_directories(${SystemC_LIBRARY_DIRS}
@@ -25,6 +25,10 @@ if(SystemC_FOUND)
 else()
     message( FATAL_ERROR "SystemC library not found." )
 endif()
+
+if ( ZLIB_FOUND )
+    include_directories( ${ZLIB_INCLUDE_DIRS} )
+endif( ZLIB_FOUND )
 
 if(SCV_FOUND)   
     add_definitions(-DWITH_SCV)

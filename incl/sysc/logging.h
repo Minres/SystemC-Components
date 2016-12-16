@@ -9,6 +9,7 @@
 #define INCL_SYSC_LOGGING_H_
 
 #include <util/logging.h>
+#include <systemc>
 
 namespace logging {
 template <typename T>

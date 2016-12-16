@@ -19,6 +19,7 @@
 
 #include "tlm_gp_data_ext.h"
 #include "tlm_recording_extension.h"
+#include <tlm_utils/peq_with_cb_and_phase.h>
 #include <scv.h>
 #include <tlm>
 #include <map>
@@ -201,14 +202,14 @@ private:
 		uint64 id;
 		tlm_recording_payload& operator=(const typename TYPES::tlm_payload_type& x){
 			id=(uint64)&x;
-			set_command(x.get_command());
-			set_address(x.get_address());
-			set_data_ptr(x.get_data_ptr());
-			set_data_length(x.get_data_length());
-			set_response_status(x.get_response_status());
-			set_byte_enable_ptr(x.get_byte_enable_ptr());
-			set_byte_enable_length(x.get_byte_enable_length());
-			set_streaming_width(x.get_streaming_width());
+			this->set_command(x.get_command());
+			this->set_address(x.get_address());
+			this->set_data_ptr(x.get_data_ptr());
+			this->set_data_length(x.get_data_length());
+			this->set_response_status(x.get_response_status());
+			this->set_byte_enable_ptr(x.get_byte_enable_ptr());
+			this->set_byte_enable_length(x.get_byte_enable_length());
+			this->set_streaming_width(x.get_streaming_width());
 			return (*this);
 
 		}
