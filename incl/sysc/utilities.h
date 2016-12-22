@@ -17,15 +17,12 @@
 #pragma GCC diagnostic pop
 
 #define MOD(X) X(#X)
-#define MOD_A1(X,A) X(#X, A)
-#define MOD_A2(X,A,B) X(#X,A,B)
-#define MOD_A3(X,A,B,C) X(#X,A,B,C)
-#define MOD_A4(X,A,B,C,D) X(#X,A,B,C,D)
-#define SCPIN(X) X(#X)
-#define SCPINVEC(X,A) X(#X,A)
+#define MOD_A(X,...) X(#X,__VA_ARGS__)
 #define ATTR(X) X(#X)
+#define SCPIN(X) X(#X)
+#define SCPIN_A(X,...) X(#X,__VA_ARGS__)
 #define SIG(X) X(#X)
-#define SIGVEC(X,A) X(#X,A)
+#define SIG_A(X,...) X(#X,__VA_ARGS__)
 #define SOCKET(X) X(#X)
 
 #define TRACE_VAR(F, X)    sc_core::sc_trace(F, X, std::string(this->name())+"." #X)
