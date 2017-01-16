@@ -26,13 +26,14 @@ else()
     message( FATAL_ERROR "SystemC library not found." )
 endif()
 
-if ( ZLIB_FOUND )
+if(ZLIB_FOUND)
     include_directories( ${ZLIB_INCLUDE_DIRS} )
-endif( ZLIB_FOUND )
+endif(ZLIB_FOUND)
 
 if(SCV_FOUND)   
     add_definitions(-DWITH_SCV)
     link_directories(${SCV_LIBRARY_DIRS})
-    add_subdirectory (src)
     add_subdirectory (example)
 endif(SCV_FOUND)
+
+add_subdirectory (src)

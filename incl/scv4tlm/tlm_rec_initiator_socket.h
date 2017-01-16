@@ -29,7 +29,7 @@ template<unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_typ
 #endif
 		>
 #ifndef WITH_SCV
-using tlm_rec_target_socket  = tlm::tlm_initiator_socket<BUSWIDTH,TYPES,N
+using tlm_rec_initiator_socket  = tlm::tlm_initiator_socket<BUSWIDTH,TYPES,N
 #if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)
 , POL
 #endif

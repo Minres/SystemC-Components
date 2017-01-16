@@ -21,7 +21,9 @@ tracer::tracer(std::string&& name, file_type type, bool enable)
 :sc_core::sc_module(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
 , enabled(enable)
 , trf(nullptr)
+#ifdef WITH_SCV
 , txdb(nullptr)
+#endif
 {
 	if(type!=NONE){
 	    std::stringstream ss;
@@ -54,7 +56,9 @@ void tracer::end_of_elaboration(){
 
 tracer::~tracer() {
 	if(trf) sc_close_vcd_trace_file(trf);
+#ifdef WITH_SCV
 	delete txdb;
+#endif
 }
 
 void tracer::descend(const std::vector<sc_object*>& objects) {
