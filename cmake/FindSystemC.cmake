@@ -47,13 +47,13 @@ FIND_FILE(_SCV_HEADER_FILE
   PATH_SUFFIXES sysc/kernel
 )
 
-if(DEFINED _SYSTEMC_HEADER_FILE)
+if(NOT _SYSTEMC_HEADER_FILE STREQUAL _SYSTEMC_HEADER_FILE-NOTFOUND)
   set(SystemC_FOUND TRUE)
-endif(DEFINED _SYSTEMC_HEADER_FILE)
+endif(NOT _SYSTEMC_HEADER_FILE STREQUAL _SYSTEMC_HEADER_FILE-NOTFOUND)
 
-if(DEFINED _SCV_HEADER_FILE)
+if(NOT _SCV_HEADER_FILE STREQUAL _SCV_HEADER_FILE-NOTFOUND)
   set(SCV_FOUND TRUE)
-endif(DEFINED _SCV_HEADER_FILE)
+endif(NOT _SCV_HEADER_FILE STREQUAL _SCV_HEADER_FILE-NOTFOUND)
 
 FIND_PATH(SystemC_INCLUDE_DIRS
   NAMES systemc.h
@@ -68,7 +68,7 @@ FIND_PATH(SystemC_LIBRARY_DIR
 )
 
 FIND_PATH(SCV_INCLUDE_DIRS
-  NAMES systemc.h
+  NAMES scv.h
   HINTS ${_SYSTEMC_HINTS}
   PATHS ${_SYSTEMC_PATHS}
 )
@@ -79,12 +79,13 @@ FIND_PATH(SCV_LIBRARY_DIRS
   PATHS ${_SYSTEMC_PATHS}
 )
 
-set(SystemC_LIBRARIES systemc)
-set(SCV_LIBRARIES scv)
-
-message(STATUS "SystemC header files are taken from ${SystemC_INCLUDE_DIRS}")
-message(STATUS "SystemC library is taken from ${SystemC_LIBRARIES}")
-if(SCV_FOUND)
-    message(STATUS "SCV header files are taken from ${SCV_INCLUDE_DIRS}")
-    message(STATUS "SCV library is taken from ${SCV_LIBRARIES}")
-endif(SCV_FOUND)
+if(SystemC_FOUND)
+        set(SystemC_LIBRARIES systemc)
+        message(STATUS "SystemC header files are taken from ${SystemC_INCLUDE_DIRS}")
+        message(STATUS "SystemC library is taken from ${SystemC_LIBRARY_DIR}")
+        if(SCV_FOUND)
+            set(SCV_LIBRARIES scv)
+            message(STATUS "SCV header files are taken from ${SCV_INCLUDE_DIRS}")
+            message(STATUS "SCV library is taken from ${SCV_LIBRARY_DIRS}")
+        endif(SCV_FOUND)
+endif(SystemC_FOUND)
