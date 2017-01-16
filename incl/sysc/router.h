@@ -67,16 +67,20 @@ router<BUSWIDTH, SLAVES, MASTERS>::router(const sc_core::sc_module_name& nm)
   {
     for (size_t i = 0; i < MASTERS; ++i) {
         target_sockets[i].register_b_transport(
-                std::bind(&router::b_transport, this, i, std::placeholders::_1, std::placeholders::_2));
-        target_sockets[i].register_get_direct_mem_ptr(
-                std::bind(&router::get_direct_mem_ptr, this, i, std::placeholders::_1, std::placeholders::_2));
+                [=](tlm::tlm_generic_payload& trans, sc_core::sc_time& delay)->void {this->b_transport(i, trans, delay);
+        });
+        target_sockets[i].register_get_direct_mem_ptr([=](tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data)->bool {
+            return this->get_direct_mem_ptr(i, trans, dmi_data);
+        });
         target_sockets[i].register_transport_dbg(
-                std::bind(&router::transport_dbg, this, i, std::placeholders::_1));
+                [=](tlm::tlm_generic_payload& trans)->unsigned {return this->transport_dbg(i, trans);
+        });
         ibases[i]=0ULL;
     }
     for (size_t i = 0; i < SLAVES; ++i) {
         initiator_sockets[i].register_invalidate_direct_mem_ptr(
-                std::bind(&router::invalidate_direct_mem_ptr, this, i, std::placeholders::_1, std::placeholders::_2));
+                [=](sc_dt::uint64 start_range, sc_dt::uint64 end_range)->void {this->invalidate_direct_mem_ptr(i, start_range, end_range);
+        });
         tranges[i].base=0ULL;
         tranges[i].size=0ULL;
         tranges[i].remap=false;

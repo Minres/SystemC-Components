@@ -135,8 +135,7 @@ struct sc_register_masked: public sc_register<DATATYPE> {
 
 		sc_register_masked(sc_core::sc_module_name nm, DATATYPE& storage, const DATATYPE reset_val, resettable& owner)
 		: sc_register<DATATYPE>(nm, storage, reset_val, owner, RDMASK, WRMASK)
-	    {
-	    }
+	    { }
 };
 }
 
