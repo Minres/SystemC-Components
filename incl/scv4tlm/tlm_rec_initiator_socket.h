@@ -17,7 +17,9 @@
 #ifndef TLM_REC_INITIATOR_SOCKET_H_
 #define TLM_REC_INITIATOR_SOCKET_H_
 
+#ifdef WITH_SCV
 #include "tlm2_recorder.h"
+#endif
 #include <tlm_core/tlm_2/tlm_sockets/tlm_initiator_socket.h>
 
 namespace scv4tlm {
@@ -26,6 +28,13 @@ template<unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_typ
 		, sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND
 #endif
 		>
+#ifndef WITH_SCV
+using tlm_rec_target_socket  = tlm::tlm_initiator_socket<BUSWIDTH,TYPES,N
+#if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)
+, POL
+#endif
+		>;
+#else
 class tlm_rec_initiator_socket: public tlm::tlm_initiator_socket<BUSWIDTH
 , TYPES
 , N
@@ -126,7 +135,7 @@ public:
 protected:
 	scv4tlm::tlm2_recorder<TYPES> recorder;
 };
-
+#endif
 }
 // namespace scv4tlm
 

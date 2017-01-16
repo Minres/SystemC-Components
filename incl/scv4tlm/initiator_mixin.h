@@ -2,6 +2,7 @@
 #define __INITIATOR_MIXIN_H__
 
 #include <tlm>
+#include <functional>
 #include <sstream>
 
 namespace scv4tlm {
