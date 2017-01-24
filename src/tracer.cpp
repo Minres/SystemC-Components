@@ -38,7 +38,7 @@ tracer::tracer(std::string&& name, file_type type, bool enable)
 	        break;
 		case COMPRESSED:
 		    scv_tr_compressed_init();
-            ss << ".txlgz";
+            ss << ".txlog";
 		    break;
 		case SQLITE:
 		    scv_tr_sqlite_init();
