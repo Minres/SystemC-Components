@@ -11,7 +11,7 @@
 #ifdef WITH_SCV
 #include <scv.h>
 #endif
-
+#include <systemc>
 #include <vector>
 #include <string>
 
