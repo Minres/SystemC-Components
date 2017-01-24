@@ -25,6 +25,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <regex>
 
 namespace scv4tlm {
 
@@ -307,6 +308,11 @@ private:
 	scv_tr_generator<sc_dt::uint64, sc_dt::uint64>* dmi_trInvalidateHandle;
 
 	tlm2_extensions_recording_if<TYPES>* extensionRecording;
+
+	std::string get_fixed_basename(){
+		static const std::regex pat("_rec$");
+		return regex_replace(std::string(this->name()), pat, "");
+	}
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -322,7 +328,7 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, 
 		return;
 	}
 	if (b_streamHandle == NULL) {
-		string basename(this->name());
+		string basename(get_fixed_basename());
 		b_streamHandle = new scv_tr_stream((basename + ".blocking").c_str(), "TRANSACTOR", m_db);
 		b_trHandle[tlm::TLM_READ_COMMAND] = new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("read", *b_streamHandle, "start_delay",
 				"end_delay");
@@ -361,7 +367,7 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, 
 		h.add_relation(rel_str(PREDECESSOR_SUCCESSOR), preExt->txHandle);
 	}
 	scv_tr_handle preTx(preExt->txHandle);
-
+	preExt->txHandle=h;
 	fw_port->b_transport(trans, delay);
 	trans.get_extension(preExt);
 	if (preExt->get_creator() == this) {
@@ -392,8 +398,8 @@ template< typename TYPES>
 void tlm2_recorder<TYPES>::btx_cb(tlm_recording_payload& rec_parts, const typename TYPES::tlm_phase_type& phase) {
 	scv_tr_handle h;
 	if (b_trTimedHandle[0] == NULL) {
-		std::string basename(this->name());
-		b_streamHandleTimed = new scv_tr_stream((basename + ".blocking_annotated").c_str(), "TRANSACTOR", m_db);
+		std::string basename(get_fixed_basename());
+		b_streamHandleTimed = new scv_tr_stream((basename + ".bl_t_ann").c_str(), "TRANSACTOR", m_db);
 		b_trTimedHandle[0] = new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("read", *b_streamHandleTimed);
 		b_trTimedHandle[1] = new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("write", *b_streamHandleTimed);
 		b_trTimedHandle[2] = new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("ignore", *b_streamHandleTimed);
@@ -439,7 +445,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(
 		return fw_port->nb_transport_fw(trans, phase, delay);
 	// initialize stream and generator if not yet done
 	if (nb_streamHandle[FW] == NULL) {
-		string basename(this->name());
+		string basename(get_fixed_basename());
 		nb_streamHandle[FW] = new scv_tr_stream((basename + ".nb_forward").c_str(), "TRANSACTOR", m_db);
 		nb_fw_trHandle[tlm::TLM_READ_COMMAND] = new scv_tr_generator<tlm::tlm_phase_enum, tlm::tlm_sync_enum>("read", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
 		nb_fw_trHandle[tlm::TLM_WRITE_COMMAND] = new scv_tr_generator<tlm::tlm_phase_enum, tlm::tlm_sync_enum>("write", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
@@ -523,7 +529,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
 	if (!isRecordingEnabled())
 		return bw_port->nb_transport_bw(trans, phase, delay);
 	if (nb_streamHandle[BW] == NULL) {
-		string basename(this->name());
+		string basename(get_fixed_basename());
 		nb_streamHandle[BW] = new scv_tr_stream((basename + ".nb_backward").c_str(), "TRANSACTOR", m_db);
 		nb_bw_trHandle[0] = new scv_tr_generator<tlm::tlm_phase_enum, tlm::tlm_sync_enum>("read", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
 		nb_bw_trHandle[1] = new scv_tr_generator<tlm::tlm_phase_enum, tlm::tlm_sync_enum>("write", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
@@ -594,15 +600,15 @@ void tlm2_recorder<TYPES>::nbtx_cb(tlm_recording_payload& rec_parts, const typen
 	scv_tr_handle h;
 	std::map<uint64, scv_tr_handle>::iterator it;
 	if (nb_streamHandleTimed[FW] == NULL) {
-		std::string basename(this->name());
-		nb_streamHandleTimed[FW] = new scv_tr_stream((basename + ".nb_request_annotated").c_str(), "TRANSACTOR", m_db);
+		std::string basename(get_fixed_basename());
+		nb_streamHandleTimed[FW] = new scv_tr_stream((basename + ".nb_req_t_ann").c_str(), "TRANSACTOR", m_db);
 		nb_txReqHandle[0] = new scv_tr_generator<>("read", *nb_streamHandleTimed[FW]);
 		nb_txReqHandle[1] = new scv_tr_generator<>("write", *nb_streamHandleTimed[FW]);
 		nb_txReqHandle[2] = new scv_tr_generator<>("ignore", *nb_streamHandleTimed[FW]);
 	}
 	if (nb_streamHandleTimed[BW] == NULL) {
-		std::string basename(this->name());
-		nb_streamHandleTimed[BW] = new scv_tr_stream((basename + ".nb_response_annotated").c_str(), "TRANSACTOR", m_db);
+		std::string basename(get_fixed_basename());
+		nb_streamHandleTimed[BW] = new scv_tr_stream((basename + ".nb_resp_t_ann").c_str(), "TRANSACTOR", m_db);
 		nb_txRespHandle[0] = new scv_tr_generator<>("read", *nb_streamHandleTimed[BW]);
 		nb_txRespHandle[1] = new scv_tr_generator<>("write", *nb_streamHandleTimed[BW]);
 		nb_txRespHandle[2] = new scv_tr_generator<>("ignore", *nb_streamHandleTimed[BW]);
@@ -676,7 +682,7 @@ bool tlm2_recorder<TYPES>::get_direct_mem_ptr(typename TYPES::tlm_payload_type& 
 		return fw_port->get_direct_mem_ptr(trans, dmi_data);
 	}
 	if (dmi_streamHandle == NULL) {
-		string basename(this->name());
+		string basename(get_fixed_basename());
 		dmi_streamHandle = new scv_tr_stream((basename + ".dmi").c_str(), "TRANSACTOR", m_db);
 		dmi_trGetHandle = new scv_tr_generator<tlm_gp_data, tlm_dmi_data>("get_dmi_ptr", *b_streamHandle, "trans",
 				"dmi_data");
@@ -701,7 +707,7 @@ void tlm2_recorder<TYPES>::invalidate_direct_mem_ptr(sc_dt::uint64 start_addr, s
 		return;
 	}
 	if (dmi_streamHandle == NULL) {
-		string basename(this->name());
+		string basename(get_fixed_basename());
 		dmi_streamHandle = new scv_tr_stream((basename + ".dmi").c_str(), "TRANSACTOR", m_db);
 		dmi_trGetHandle = new scv_tr_generator<tlm_gp_data, tlm_dmi_data>("get_dmi_ptr", *b_streamHandle, "trans",
 				"dmi_data");
