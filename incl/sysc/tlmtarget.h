@@ -10,10 +10,8 @@
 
 #include <util/range_lut.h>
 #include "resource_access_if.h"
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#include <tlm_utils/simple_target_socket.h>
-#pragma GCC diagnostic pop
+#include <scv4tlm/tlm_rec_target_socket.h>
+#include <scv4tlm/target_mixin.h>
 #include <array>
 
 namespace sysc {
@@ -26,15 +24,15 @@ struct addr_range {
 
 template<unsigned int BUSWIDTH=32, unsigned RANGES=1>
 struct tlm_target {
-    typedef tlm_target<BUSWIDTH, RANGES> this_type;
+	using this_type = tlm_target<BUSWIDTH, RANGES>;
 
-    tlm_target(sc_core::sc_time& clock, std::array<addr_range, RANGES> addr_rngs);
+	tlm_target(sc_core::sc_time& clock, std::array<addr_range, RANGES> addr_rngs);
 
     virtual ~tlm_target(){};
 
-    tlm_utils::simple_target_socket<this_type, BUSWIDTH> socket;
+    scv4tlm::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>> socket;
 
-    void b_tranport_cb(tlm::tlm_generic_payload&, sc_core::sc_time&);
+	void b_tranport_cb(tlm::tlm_generic_payload&, sc_core::sc_time&);
 
     unsigned int tranport_dbg_cb(tlm::tlm_generic_payload&);
 
@@ -54,8 +52,12 @@ inline sysc::tlm_target<BUSWIDTH,RANGES>::tlm_target(sc_core::sc_time& clock, st
 , clk(clock)
 , socket_map(nullptr)
 {
-    socket.register_b_transport(this, &this_type::b_tranport_cb);
-    socket.register_transport_dbg(this, &this_type::tranport_dbg_cb);
+    socket.register_b_transport([=](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay)->void {
+    	this->b_tranport_cb(gp, delay);
+    });
+    socket.register_transport_dbg([=](tlm::tlm_generic_payload& gp)->unsigned {
+    	return this->tranport_dbg_cb(gp);
+    });
 }
 
 template<unsigned int BUSWIDTH, unsigned RANGES>

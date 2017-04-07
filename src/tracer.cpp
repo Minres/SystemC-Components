@@ -25,33 +25,35 @@ tracer::tracer(std::string&& name, file_type type, bool enable)
 , txdb(nullptr)
 #endif
 {
-	if(type!=NONE){
-	    std::stringstream ss;
-	    ss<<name;
+	if(enabled){
 		trf =  sc_create_vcd_trace_file(name.c_str());
 		trf->set_time_unit(1, SC_NS);
+	}
 #ifdef WITH_SCV
+	if(type!=NONE){
+		std::stringstream ss;
+		ss<<name;
 		switch(type){
 		case TEXT:
-	        scv_tr_text_init();
-	        ss << ".txlog";
-	        break;
+			scv_tr_text_init();
+			ss << ".txlog";
+			break;
 		case COMPRESSED:
-		    scv_tr_compressed_init();
-            ss << ".txlog";
-		    break;
+			scv_tr_compressed_init();
+			ss << ".txlog";
+			break;
 		case SQLITE:
-		    scv_tr_sqlite_init();
-		    break;
+			scv_tr_sqlite_init();
+			break;
 		}
 		txdb = new scv_tr_db(ss.str().c_str());
 		scv_tr_db::set_default_db(txdb);
-#endif
 	}
+#endif
 }
 
 void tracer::end_of_elaboration(){
-    if(enabled) descend(sc_get_top_level_objects(sc_curr_simcontext));
+	if(enabled) descend(sc_get_top_level_objects(sc_curr_simcontext));
 }
 
 tracer::~tracer() {
