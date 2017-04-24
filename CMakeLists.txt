@@ -28,6 +28,8 @@ endif()
 
 if(ZLIB_FOUND)
     include_directories( ${ZLIB_INCLUDE_DIRS} )
+    #link_directories(${ZLIB_LIBRARY_DIRS})
+    message( STATUS "ZLib found at ${ZLIB_INCLUDE_DIRS}." )
 endif(ZLIB_FOUND)
 
 if(SCV_FOUND)   
