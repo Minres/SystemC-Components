@@ -30,6 +30,8 @@ struct tlm_target {
 
     tlm_target(sc_core::sc_time& clock, std::array<addr_range, RANGES> addr_rngs);
 
+    tlm_target(sc_core::sc_time& clock);
+
     virtual ~tlm_target(){};
 
     tlm_utils::simple_target_socket<this_type, BUSWIDTH> socket;
@@ -51,6 +53,17 @@ template<unsigned int BUSWIDTH, unsigned RANGES>
 inline sysc::tlm_target<BUSWIDTH,RANGES>::tlm_target(sc_core::sc_time& clock, std::array<addr_range, RANGES> addr_rngs)
 :socket("socket")
 , addr_ranges(addr_rngs)
+, clk(clock)
+, socket_map(nullptr)
+{
+    socket.register_b_transport(this, &this_type::b_tranport_cb);
+    socket.register_transport_dbg(this, &this_type::tranport_dbg_cb);
+}
+
+template<unsigned int BUSWIDTH, unsigned RANGES>
+inline sysc::tlm_target<BUSWIDTH,RANGES>::tlm_target(sc_core::sc_time& clock)
+:socket("socket")
+, addr_ranges({})
 , clk(clock)
 , socket_map(nullptr)
 {

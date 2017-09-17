@@ -13,8 +13,8 @@
 
 namespace sysc {
 
-struct resettable {
-    virtual ~resettable(){}
+struct resetable {
+    virtual ~resetable(){}
 
     void reset_start(){
         in_reset=true;
