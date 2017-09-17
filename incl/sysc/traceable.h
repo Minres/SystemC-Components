@@ -14,9 +14,9 @@ namespace sc_core {
 
 namespace sysc {
 
-class tracable {
+class traceable {
 public:
-    virtual ~tracable(){};
+    virtual ~traceable(){};
     virtual void trace(sc_core::sc_trace_file* trf) = 0;
 };
 
