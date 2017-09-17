@@ -10,9 +10,12 @@
 
 #include <systemc>
 
-#include "resettable.h"
+#include "resetable.h"
 #include "resource_access_if.h"
-#include "tracable.h"
+#include "traceable.h"
+
+#include <functional>
+
 namespace sysc {
 
 template<typename DATATYPE>
@@ -24,12 +27,12 @@ template<typename DATATYPE>
 struct sc_register:
 		public sc_core::sc_object,
 		public resource_access_if,
-		public tracable
+		public traceable
 		{
 
 	using this_reg_type = struct sc_register<DATATYPE>;
 
-	sc_register(sc_core::sc_module_name nm, DATATYPE& storage, const DATATYPE reset_val, resettable& owner,
+	sc_register(sc_core::sc_module_name nm, DATATYPE& storage, const DATATYPE reset_val, resetable& owner,
 			DATATYPE rdmask = get_max_uval<DATATYPE>(), DATATYPE wrmask = get_max_uval<DATATYPE>())
 	: sc_core::sc_object(nm)
 	, storage(storage)
@@ -52,7 +55,7 @@ struct sc_register:
 
     bool write(const uint8_t* data, size_t length){
         if(length!=sizeof(DATATYPE))return false;
-        auto temp(*static_cast<const DATATYPE*>(data));
+        auto temp(*reinterpret_cast<const DATATYPE*>(data));
         if(wr_cb) return wr_cb(*this, temp);
         storage=(temp&wrmask) | (storage&~wrmask);
         return true;
@@ -62,19 +65,19 @@ struct sc_register:
         if(length!=sizeof(DATATYPE))return false;
         auto temp(storage);
         if(rd_cb) return rd_cb(*this, temp);
-        *static_cast<DATATYPE*>(data)=temp&rdmask;
+        *reinterpret_cast<DATATYPE*>(data)=temp&rdmask;
         return true;
     }
 
     bool write_dbg(const uint8_t* data, size_t length){
         if(length!=sizeof(DATATYPE))return false;
-        storage=*static_cast<const DATATYPE*>(data);
+        storage=*reinterpret_cast<const DATATYPE*>(data);
         return true;
     }
 
     bool read_dbg(uint8_t* data, size_t length) const {
         if(length!=sizeof(DATATYPE))return false;
-        *static_cast<DATATYPE*>(data)=storage;
+        *reinterpret_cast<DATATYPE*>(data)=storage;
         return true;
     }
 
@@ -133,7 +136,7 @@ template<
 	>
 struct sc_register_masked: public sc_register<DATATYPE> {
 
-		sc_register_masked(sc_core::sc_module_name nm, DATATYPE& storage, const DATATYPE reset_val, resettable& owner)
+		sc_register_masked(sc_core::sc_module_name nm, DATATYPE& storage, const DATATYPE reset_val, resetable& owner)
 		: sc_register<DATATYPE>(nm, storage, reset_val, owner, RDMASK, WRMASK)
 	    { }
 };

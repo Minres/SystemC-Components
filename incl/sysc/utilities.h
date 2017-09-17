@@ -8,7 +8,7 @@
 #ifndef SYSC_UTILITIES_H_
 #define SYSC_UTILITIES_H_
 
-#include "tracable.h"
+#include "traceable.h"
 
 // pragmas to disable the deprecated warnings for SystemC headers
 #pragma GCC diagnostic push
@@ -16,6 +16,7 @@
 #include <systemc>
 #pragma GCC diagnostic pop
 
+#define NAMED(X,...) X(#X,##__VA_ARGS__)
 #define MOD(X) X(#X)
 #define MOD_A(X,...) X(#X,__VA_ARGS__)
 #define ATTR(X) X(#X)
