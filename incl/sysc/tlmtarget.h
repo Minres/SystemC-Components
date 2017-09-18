@@ -70,14 +70,8 @@ protected:
 
 } /* namespace sysc */
 
-<<<<<<< HEAD
-<<<<<<< bcf60df833cc8e5511ef55899997acc251e28aee
-template<unsigned int BUSWIDTH, unsigned RANGES>
-inline sysc::tlm_target<BUSWIDTH,RANGES>::tlm_target(sc_core::sc_time& clock, std::array<addr_range, RANGES> addr_rngs)
-=======
 template<unsigned int BUSWIDTH>
 inline sysc::tlm_target<BUSWIDTH>::tlm_target(sc_core::sc_time& clock)
->>>>>>> branch 'develop' of https://github.com/Minres/SystemC-Components.git
 :socket("socket")
 , clk(clock)
 , socket_map(nullptr)
@@ -88,20 +82,6 @@ inline sysc::tlm_target<BUSWIDTH>::tlm_target(sc_core::sc_time& clock)
     socket.register_transport_dbg([=](tlm::tlm_generic_payload& gp)->unsigned {
     	return this->tranport_dbg_cb(gp);
     });
-}
-
-template<unsigned int BUSWIDTH, unsigned RANGES>
-inline sysc::tlm_target<BUSWIDTH,RANGES>::tlm_target(sc_core::sc_time& clock)
-=======
-template<unsigned int BUSWIDTH>
-inline sysc::tlm_target<BUSWIDTH>::tlm_target(sc_core::sc_time& clock)
->>>>>>> Fixed tlm_target structure
-:socket("socket")
-, clk(clock)
-, socket_map(nullptr)
-{
-    socket.register_b_transport(this, &this_type::b_tranport_cb);
-    socket.register_transport_dbg(this, &this_type::tranport_dbg_cb);
 }
 
 template<unsigned int BUSWIDTH>

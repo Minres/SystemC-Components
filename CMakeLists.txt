@@ -35,7 +35,6 @@ endif(ZLIB_FOUND)
 if(SCV_FOUND)   
     add_definitions(-DWITH_SCV)
     link_directories(${SCV_LIBRARY_DIRS})
-    add_subdirectory (example)
 endif(SCV_FOUND)
 
 add_subdirectory (src)
