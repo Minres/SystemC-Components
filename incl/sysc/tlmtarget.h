@@ -28,8 +28,6 @@ struct tlm_target {
 
     tlm_target(sc_core::sc_time& clock);
 
-    virtual ~tlm_target(){};
-
     scv4tlm::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>> socket;
 
     void b_tranport_cb(tlm::tlm_generic_payload&, sc_core::sc_time&);
@@ -72,11 +70,15 @@ protected:
 
 } /* namespace sysc */
 
+<<<<<<< HEAD
 <<<<<<< bcf60df833cc8e5511ef55899997acc251e28aee
 template<unsigned int BUSWIDTH, unsigned RANGES>
 inline sysc::tlm_target<BUSWIDTH,RANGES>::tlm_target(sc_core::sc_time& clock, std::array<addr_range, RANGES> addr_rngs)
+=======
+template<unsigned int BUSWIDTH>
+inline sysc::tlm_target<BUSWIDTH>::tlm_target(sc_core::sc_time& clock)
+>>>>>>> branch 'develop' of https://github.com/Minres/SystemC-Components.git
 :socket("socket")
-, addr_ranges(addr_rngs)
 , clk(clock)
 , socket_map(nullptr)
 {
