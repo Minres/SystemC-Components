@@ -15,6 +15,7 @@
 #include "traceable.h"
 
 #include <functional>
+#include <limits>
 
 namespace sysc {
 

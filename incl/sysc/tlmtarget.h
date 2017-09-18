@@ -24,15 +24,11 @@ struct addr_range {
     uint64_t base, size;
 };
 
-template<unsigned int BUSWIDTH=32, unsigned RANGES=1>
+template<unsigned int BUSWIDTH=32>
 struct tlm_target {
-    typedef tlm_target<BUSWIDTH, RANGES> this_type;
-
-    tlm_target(sc_core::sc_time& clock, std::array<addr_range, RANGES> addr_rngs);
+    typedef tlm_target<BUSWIDTH> this_type;
 
     tlm_target(sc_core::sc_time& clock);
-
-    virtual ~tlm_target(){};
 
     tlm_utils::simple_target_socket<this_type, BUSWIDTH> socket;
 
@@ -40,19 +36,45 @@ struct tlm_target {
 
     unsigned int tranport_dbg_cb(tlm::tlm_generic_payload&);
 
-    const std::array<addr_range, RANGES> addr_ranges;
-
 protected:
     sc_core::sc_time& clk;
     util::range_lut<resource_access_if*> socket_map;
 };
 
+template<unsigned BUSWIDTH=32>
+struct target_memory_map_entry {
+    sysc::tlm_target<BUSWIDTH>* target;
+    sc_dt::uint64 start;
+    sc_dt::uint64 size;
+};
+
+template<unsigned int BUSWIDTH=32, unsigned RANGES=1>
+struct tlm_multi_rangetarget: public tlm_target<BUSWIDTH> {
+    typedef tlm_multi_rangetarget<BUSWIDTH, RANGES> this_type;
+
+    tlm_multi_rangetarget(sc_core::sc_time& clock, std::array<addr_range, RANGES> addr_rngs)
+    :tlm_target<BUSWIDTH>(clock)
+    , addr_ranges(addr_rngs)
+    {
+    }
+
+    tlm_multi_rangetarget(sc_core::sc_time& clock)
+    :tlm_target<BUSWIDTH>(clock)
+        , addr_ranges({})
+    {
+    }
+
+    const std::array<addr_range, RANGES> addr_ranges;
+
+protected:
+    util::range_lut<resource_access_if*> socket_map;
+};
+
 } /* namespace sysc */
 
-template<unsigned int BUSWIDTH, unsigned RANGES>
-inline sysc::tlm_target<BUSWIDTH,RANGES>::tlm_target(sc_core::sc_time& clock, std::array<addr_range, RANGES> addr_rngs)
+template<unsigned int BUSWIDTH>
+inline sysc::tlm_target<BUSWIDTH>::tlm_target(sc_core::sc_time& clock)
 :socket("socket")
-, addr_ranges(addr_rngs)
 , clk(clock)
 , socket_map(nullptr)
 {
@@ -60,19 +82,8 @@ inline sysc::tlm_target<BUSWIDTH,RANGES>::tlm_target(sc_core::sc_time& clock, st
     socket.register_transport_dbg(this, &this_type::tranport_dbg_cb);
 }
 
-template<unsigned int BUSWIDTH, unsigned RANGES>
-inline sysc::tlm_target<BUSWIDTH,RANGES>::tlm_target(sc_core::sc_time& clock)
-:socket("socket")
-, addr_ranges({})
-, clk(clock)
-, socket_map(nullptr)
-{
-    socket.register_b_transport(this, &this_type::b_tranport_cb);
-    socket.register_transport_dbg(this, &this_type::tranport_dbg_cb);
-}
-
-template<unsigned int BUSWIDTH, unsigned RANGES>
-void sysc::tlm_target<BUSWIDTH,RANGES>::b_tranport_cb(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) {
+template<unsigned int BUSWIDTH>
+void sysc::tlm_target<BUSWIDTH>::b_tranport_cb(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) {
     resource_access_if* ra = socket_map.getEntry(gp.get_address());
     if(ra){
         if(gp.get_data_length()==ra->size() && gp.get_byte_enable_ptr()==0 && gp.get_data_length()==gp.get_streaming_width()){
@@ -92,8 +103,8 @@ void sysc::tlm_target<BUSWIDTH,RANGES>::b_tranport_cb(tlm::tlm_generic_payload& 
     delay+=clk;
 }
 
-template<unsigned int BUSWIDTH, unsigned RANGES>
-unsigned int sysc::tlm_target<BUSWIDTH,RANGES>::tranport_dbg_cb(tlm::tlm_generic_payload& gp) {
+template<unsigned int BUSWIDTH>
+unsigned int sysc::tlm_target<BUSWIDTH>::tranport_dbg_cb(tlm::tlm_generic_payload& gp) {
     resource_access_if* ra = socket_map.getEntry(gp.get_address());
     if(ra){
         if(gp.get_data_length()==ra->size() && gp.get_byte_enable_ptr()==0 && gp.get_data_length()==gp.get_streaming_width()){

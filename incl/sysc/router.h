@@ -8,7 +8,7 @@
 #ifndef SYSC_AVR_ROUTER_H_
 #define SYSC_AVR_ROUTER_H_
 
-#include <util/range_lut.h>
+#include "util/range_lut.h"
 #include "utilities.h"
 // pragmas to disable the deprecated warnings for SystemC headers
 #pragma GCC diagnostic push
