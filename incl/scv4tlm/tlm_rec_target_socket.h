@@ -20,7 +20,7 @@
 #ifdef WITH_SCV
 #include "tlm2_recorder.h"
 #endif
-#include <tlm_core/tlm_2/tlm_sockets/tlm_target_socket.h>
+#include <tlm.h>
 
 namespace scv4tlm {
 template<unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types, int N = 1
