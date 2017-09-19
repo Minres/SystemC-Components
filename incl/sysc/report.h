@@ -32,6 +32,8 @@
 
 namespace sysc {
 
+namespace log=logging;
+
 void init_logging();
 
 template <typename T>
@@ -39,10 +41,13 @@ class Log: public logging::Log<T>{
 public:
     Log(){};
 
-    std::ostringstream& get(logging::log_level level = logging::info){
-        this->os << /*"- " <<*/ logging::now_time();
-        this->os << " " << logging::Log<T>::to_string(level) << " - ["<<std::setw(16)<<sc_core::sc_time_stamp()<<"] ";
+    std::ostringstream& get(logging::log_level level = logging::INFO){
+        std::ios init(NULL);
+        init.copyfmt(this->os);
+        this->os << logging::now_time() << " " << std::setw(7) <<std::left << logging::Log<T>::to_string(level)<<std::right
+                << " ["<<std::setw(20)<<sc_core::sc_time_stamp()<<"] ";
         logging::Log<T>::get_last_log_level()=level;
+        this->os.copyfmt(init);
         return this->os;
     };
 

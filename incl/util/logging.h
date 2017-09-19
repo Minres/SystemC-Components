@@ -44,7 +44,7 @@
 #include <stdio.h>
 #include <sys/time.h>
 
-#define LEVELS(FOO) FOO(none) FOO(fatal) FOO(error) FOO(warning) FOO(info) FOO(debug) FOO(trace)
+#define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE)
 #define DO_DESCRIPTION(e)  #e,
 #define DO_ENUM(e)  e,
 
@@ -63,9 +63,9 @@ public:
 		os << std::endl;
 		T::output(os.str());
 		//TODO: use a more specific exception
-		if(get_last_log_level() == fatal) throw std::exception();
+		if(get_last_log_level() == FATAL) throw std::exception();
 	};
-    std::ostringstream& get(log_level level = info){
+    std::ostringstream& get(log_level level = INFO){
 		os << "- " << now_time();
 		os << " " << to_string(level) << ": ";
 		get_last_log_level()=level;
@@ -73,22 +73,22 @@ public:
 	};
 public:
     static log_level& reporting_level(){
-		static log_level reportingLevel = warning;
+		static log_level reportingLevel = WARNING;
 		return reportingLevel;
 	}
     static std::string to_string(log_level level){
 		return std::string(get_log_level_cstr()[level]);
 	};
     static log_level from_string(const std::string& level) {
-		for(unsigned int i=none; i<=trace; i++)
+		for(unsigned int i=NONE; i<=TRACE; i++)
 			if(!strncasecmp(level.c_str(), (const char*)(get_log_level_cstr()+i), strlen((const char*)get_log_level_cstr()+i))) return i;
-		Log<T>().Get(warning) << "Unknown logging level '" << level << "'. Using INFO level as default.";
-		return info;
+		Log<T>().Get(WARNING) << "Unknown logging level '" << level << "'. Using INFO level as default.";
+		return INFO;
 	}
 
 protected:
     log_level& get_last_log_level(){
-		static log_level level = trace;
+		static log_level level = TRACE;
 		return level;
 	}
 	static const char* const * get_log_level_cstr(){
@@ -131,7 +131,7 @@ class FILELOG_DECLSPEC Logger : public Log<Output2FILE> {};
 //typedef Log<Output2FILE> Logger;
 
 #ifndef FILELOG_MAX_LEVEL
-#define FILELOG_MAX_LEVEL logging::trace
+#define FILELOG_MAX_LEVEL logging::TRACE
 #endif
 
 #define LOG(level) \

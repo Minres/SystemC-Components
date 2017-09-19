@@ -38,19 +38,19 @@ static const std::string compose_message(const sc_report& rep){
         os << ": " << rep.get_msg();
     if( rep.get_severity() > SC_INFO ){
         char line_number_str[16];
-        os <<  "(file: " << rep.get_file_name() << ":" << rep.get_line_number()<<")";
+        os <<  " [FILE:" << rep.get_file_name() << ":" << rep.get_line_number()<<"]";
         sc_simcontext* simc = sc_get_curr_simcontext();
         if( simc && sc_is_running() ){
             const char* proc_name = rep.get_process_name();
             if( proc_name )
-                os <<   "(process: " << proc_name << " @ " << rep.get_time().to_string()<<")";
+                os <<   "[PROCESS:" << proc_name << "]";
         }
     }
     return os.str();
 }
 
 static void report_handler(const sc_report& rep, const sc_actions& actions){
-    const logging::log_level map[] = {logging::info, logging::warning, logging::error, logging::fatal};
+    const logging::log_level map[] = {logging::INFO, logging::WARNING, logging::ERROR, logging::FATAL};
     if ( actions & SC_DISPLAY )
         LOG(map[rep.get_severity()]) << compose_message(rep);
     //    if ( (actions & SC_LOG) && log_file_name ) {
