@@ -18,7 +18,7 @@
 #define TLM_GP_DATA_EXT_H_
 
 #include "tlm_gp_data.h"
-#include "scv.h"
+#include <scv.h>
 
 template<>
 class scv_extensions<tlm::tlm_command> : public scv_enum_base<tlm::tlm_command> {

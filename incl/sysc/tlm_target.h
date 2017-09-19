@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Copyright 2016 MINRES Technologies GmbH
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 /*
  * tlmtarget.h
  *
@@ -5,13 +20,13 @@
  *      Author: developer
  */
 
-#ifndef SYSC_TLMTARGET_H_
-#define SYSC_TLMTARGET_H_
+#ifndef _SYSC_TLM_TARGET_H_
+#define _SYSC_TLM_TARGET_H_
 
 #include <util/range_lut.h>
 #include "resource_access_if.h"
 #include <scv4tlm/tlm_rec_target_socket.h>
-#include <scv4tlm/target_mixin.h>
+#include <sysc/target_mixin.h>
 #include <array>
 
 namespace sysc {
@@ -28,11 +43,15 @@ struct tlm_target {
 
     tlm_target(sc_core::sc_time& clock);
 
-    scv4tlm::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>> socket;
+    sysc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>> socket;
 
     void b_tranport_cb(tlm::tlm_generic_payload&, sc_core::sc_time&);
 
     unsigned int tranport_dbg_cb(tlm::tlm_generic_payload&);
+
+    void addResource(resource_access_if& i, uint64_t base_addr, uint64_t size){
+        socket_map.addEntry(&i, base_addr, size);
+    }
 
 protected:
     sc_core::sc_time& clk;
@@ -86,7 +105,7 @@ inline sysc::tlm_target<BUSWIDTH>::tlm_target(sc_core::sc_time& clock)
 
 template<unsigned int BUSWIDTH>
 void sysc::tlm_target<BUSWIDTH>::b_tranport_cb(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) {
-    resource_access_if* ra = socket_map.getEntry(gp.get_address());
+    auto* ra = socket_map.getEntry(gp.get_address());
     if(ra){
         if(gp.get_data_length()==ra->size() && gp.get_byte_enable_ptr()==0 && gp.get_data_length()==gp.get_streaming_width()){
             if(gp.get_command()== tlm::TLM_READ_COMMAND){
@@ -107,7 +126,7 @@ void sysc::tlm_target<BUSWIDTH>::b_tranport_cb(tlm::tlm_generic_payload& gp, sc_
 
 template<unsigned int BUSWIDTH>
 unsigned int sysc::tlm_target<BUSWIDTH>::tranport_dbg_cb(tlm::tlm_generic_payload& gp) {
-    resource_access_if* ra = socket_map.getEntry(gp.get_address());
+    auto* ra = socket_map.getEntry(gp.get_address());
     if(ra){
         if(gp.get_data_length()==ra->size() && gp.get_byte_enable_ptr()==0 && gp.get_data_length()==gp.get_streaming_width()){
             if(gp.get_command()== tlm::TLM_READ_COMMAND){
@@ -122,4 +141,4 @@ unsigned int sysc::tlm_target<BUSWIDTH>::tranport_dbg_cb(tlm::tlm_generic_payloa
     return 0;
 }
 
-#endif /* SYSC_TLMTARGET_H_ */
+#endif /* _SYSC_TLM_TARGET_H_ */

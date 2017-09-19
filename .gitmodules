@@ -1,0 +1,6 @@
+[submodule "incl/sr_signal"]
+	path = incl/sr_signal
+	url = https://github.com/socrocket/sr_signal.git
+[submodule "incl/sr_report"]
+	path = incl/sr_report
+	url = https://github.com/socrocket/sr_report.git

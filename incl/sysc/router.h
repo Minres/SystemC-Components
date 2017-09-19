@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Copyright 2016 MINRES Technologies GmbH
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 /*
  * router.h
  *
@@ -5,19 +20,19 @@
  *      Author: eyck
  */
 
-#ifndef SYSC_AVR_ROUTER_H_
-#define SYSC_AVR_ROUTER_H_
+#ifndef _SYSC_ROUTER_H_
+#define _SYSC_ROUTER_H_
 
-#include "util/range_lut.h"
+#include <util/range_lut.h>
 #include "utilities.h"
 // pragmas to disable the deprecated warnings for SystemC headers
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#include "tlm.h"
+#include <tlm.h>
 #include <scv4tlm/tlm_rec_initiator_socket.h>
 #include <scv4tlm/tlm_rec_target_socket.h>
-#include <scv4tlm/initiator_mixin.h>
-#include <scv4tlm/target_mixin.h>
+#include <sysc/initiator_mixin.h>
+#include <sysc/target_mixin.h>
 #include <sysc/utils/sc_vector.h>
 #pragma GCC diagnostic pop
 #include <limits>
@@ -26,8 +41,8 @@ namespace sysc {
 
 template<unsigned BUSWIDTH = 32>
 struct router: sc_core::sc_module {
-    using intor_sckt  = scv4tlm::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<BUSWIDTH>>;
-    using target_sckt = scv4tlm::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>>;
+    using intor_sckt  = sysc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<BUSWIDTH>>;
+    using target_sckt = sysc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>>;
 
     sc_core::sc_vector<target_sckt> target;
     sc_core::sc_vector<intor_sckt>  initiator;

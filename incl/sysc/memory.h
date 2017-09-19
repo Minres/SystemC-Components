@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Copyright 2016 MINRES Technologies GmbH
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 /*
  * memory.h
  *
@@ -5,14 +20,14 @@
  *      Author: eyck
  */
 
-#ifndef SYSC_AVR_MEMORY_H_
-#define SYSC_AVR_MEMORY_H_
+#ifndef _SYSC_MEMORY_H_
+#define _SYSC_MEMORY_H_
 
 // Needed for the simple_target_socket
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
 #include "utilities.h"
-#include "logging.h"
+#include <util/logging.h>
 #include <tlm.h>
 #include <tlm_utils/simple_target_socket.h>
 
@@ -95,4 +110,4 @@ int memory<SIZE,BUSWIDTH,LOG_ACCESS>::handle_operation(tlm::tlm_generic_payload&
 
 }  // namespace sysc
 
-#endif /* SYSC_AVR_MEMORY_H_ */
+#endif /* _SYSC_MEMORY_H_ */

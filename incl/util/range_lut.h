@@ -38,6 +38,7 @@
 #include <map>
 #include <stdexcept>
 #include <string>
+#include <sstream>
 #include <iostream>
 #include <iomanip>
 #include <exception>

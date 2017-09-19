@@ -65,6 +65,7 @@ tracer::~tracer() {
 
 void tracer::descend(const std::vector<sc_object*>& objects) {
 	for(auto obj: objects){
+	    const char* name = obj->name();
 		traceable* t = dynamic_cast<traceable*>(obj);
 		if(t) t->trace(trf);
 		const char* kind = obj->kind();

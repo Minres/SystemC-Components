@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Copyright 2016 MINRES Technologies GmbH
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 /*
  * utilities.h
  *
@@ -5,8 +20,8 @@
  *      Author: eyck
  */
 
-#ifndef SYSC_UTILITIES_H_
-#define SYSC_UTILITIES_H_
+#ifndef _SYSC_UTILITIES_H_
+#define _SYSC_UTILITIES_H_
 
 #include "traceable.h"
 
@@ -17,14 +32,7 @@
 #pragma GCC diagnostic pop
 
 #define NAMED(X,...) X(#X,##__VA_ARGS__)
-#define MOD(X) X(#X)
-#define MOD_A(X,...) X(#X,__VA_ARGS__)
-#define ATTR(X) X(#X)
-#define SCPIN(X) X(#X)
-#define SCPIN_A(X,...) X(#X,__VA_ARGS__)
-#define SIG(X) X(#X)
-#define SIG_A(X,...) X(#X,__VA_ARGS__)
-#define SOCKET(X) X(#X)
+#define NAMEDD(T,X,...) X(new T(#X,##__VA_ARGS__))
 
 #define TRACE_VAR(F, X)    sc_core::sc_trace(F, X, std::string(this->name())+"." #X)
 #define TRACE_ARR(F, X, I) sc_core::sc_trace(F, X[I], (std::string(this->name())+"." #X "("+std::to_string(I)+")").c_str());
@@ -51,4 +59,4 @@ inline sc_core::sc_time operator"" _ps  ( unsigned long long val ){return sc_cor
 inline sc_core::sc_time operator"" _fs  ( long double val )       {return sc_core::sc_time(val, sc_core::SC_FS);}
 inline sc_core::sc_time operator"" _fs  ( unsigned long long val ){return sc_core::sc_time(double(val), sc_core::SC_FS);}
 
-#endif /* SYSC_UTILITIES_H_ */
+#endif /* _SYSC_UTILITIES_H_ */
