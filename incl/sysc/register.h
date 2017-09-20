@@ -244,14 +244,14 @@ using sc_register = impl::sc_register<typename impl::helper<DATATYPE>::Type>;
 
 
 template<typename DATATYPE, size_t SIZE, size_t START=0>
-struct sc_register_field: public indexed_resource_access_if {
+struct sc_register_indexed: public indexed_resource_access_if {
 
     using BASE_DATA_TYPE = typename impl::helper<DATATYPE>::Type;
 
     using value_type = sc_register<DATATYPE>;
     using pointer = value_type*;
 
-    sc_register_field(sc_core::sc_module_name nm, std::array<DATATYPE, SIZE>& storage, const DATATYPE reset_val, resetable& owner,
+    sc_register_indexed(sc_core::sc_module_name nm, std::array<DATATYPE, SIZE>& storage, const DATATYPE reset_val, resetable& owner,
             BASE_DATA_TYPE rdmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed?-1:std::numeric_limits<BASE_DATA_TYPE>::max(),
                     BASE_DATA_TYPE wrmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed?-1:std::numeric_limits<BASE_DATA_TYPE>::max())
     {
@@ -263,7 +263,7 @@ struct sc_register_field: public indexed_resource_access_if {
         }
     }
 
-    ~sc_register_field(){
+    ~sc_register_indexed(){
         for(size_t idx=START; idx<(START+SIZE); ++idx){
             (_reg_field+idx)->~sc_register<DATATYPE>();
         }
