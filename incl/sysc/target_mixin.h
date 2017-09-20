@@ -41,7 +41,7 @@ public:
     /**
      *
      */
-    target_mixin() : target_mixin(sc_core::sc_gen_unique_name("simple_target_socket")), m_current_transaction(nullptr) { }
+    target_mixin() : target_mixin(sc_core::sc_gen_unique_name("simple_target_socket")) { }
     /**
      *
      * @param n
