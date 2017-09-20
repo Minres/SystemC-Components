@@ -29,18 +29,28 @@
 namespace sysc {
 
 struct resetable {
+    /**
+     *
+     */
     virtual ~resetable(){}
-
+    /**
+     *
+     */
     void reset_start(){
         in_reset=true;
         for(auto res:resources) res->reset();
     }
-
+    /**
+     *
+     */
     void reset_stop(){
         for(auto res:resources) res->reset();
         in_reset=false;
     }
-
+    /**
+     *
+     * @param res
+     */
     void register_resource(resource_access_if* res){
         resources.push_back(res);
     }

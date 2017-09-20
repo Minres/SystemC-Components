@@ -29,17 +29,97 @@
 namespace sysc {
 
 struct resource_access_if {
+    /**
+     *
+     */
     virtual ~resource_access_if(){}
+    /**
+     *
+     * @return
+     */
     virtual size_t size() const = 0;
+    /**
+     *
+     */
     virtual void reset() = 0;
     // functional accesses
-    virtual bool write(const uint8_t* data, size_t length) = 0;
-    virtual bool read(uint8_t* data, size_t length) const = 0;
+    /**
+     *
+     * @param data
+     * @param length
+     * @param offset
+     * @return
+     */
+    virtual bool write(const uint8_t* data, size_t length, uint64_t offset=0) = 0;
+    /**
+     *
+     * @param data
+     * @param length
+     * @param offset
+     * @return
+     */
+    virtual bool read(uint8_t* data, size_t length, uint64_t offset=0) const = 0;
     // non-functional/debug accesses
-    virtual bool write_dbg(const uint8_t* data, size_t length) = 0;
-    virtual bool read_dbg(uint8_t* data, size_t length) const = 0;
+    /**
+     *
+     * @param data
+     * @param length
+     * @param offset
+     * @return
+     */
+    virtual bool write_dbg(const uint8_t* data, size_t length, uint64_t offset=0) = 0;
+    /**
+     *
+     * @param data
+     * @param length
+     * @param offset
+     * @return
+     */
+    virtual bool read_dbg(uint8_t* data, size_t length, uint64_t offset=0) const = 0;
 };
 
+struct indexed_resource_access_if {
+    using value_type = resource_access_if;
+    using pointer = value_type*;
+    using const_pointer = const value_type*;
+    using reference = value_type&;
+    using const_reference = const value_type&;
+    using iterator = resource_access_if*;
+    using const_iterator = const resource_access_if*;
+    /**
+     *
+     */
+    virtual ~indexed_resource_access_if(){}
+    /**
+     *
+     * @return
+     */
+    virtual size_t size() = 0;
+    // Element access.
+    /**
+     *
+     * @param __n
+     * @return
+     */
+    virtual reference       operator[](size_t __n) noexcept = 0;
+    /**
+     *
+     * @param __n
+     * @return
+     */
+    virtual const_reference operator[](size_t __n) const noexcept = 0;
+    /**
+     *
+     * @param __n
+     * @return
+     */
+    virtual reference       at(size_t __n) = 0;
+    /**
+     *
+     * @param __n
+     * @return
+     */
+    virtual const_reference at(size_t __n) const = 0;
+};
 }
-
 #endif /* _SYSC_RESOURCE_ACCESS_IF_H_ */

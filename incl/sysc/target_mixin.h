@@ -38,8 +38,14 @@ public:
     typedef tlm::tlm_bw_transport_if<TYPES> bw_interface_type;
 
 public:
-    target_mixin() : target_mixin(sc_core::sc_gen_unique_name("simple_target_socket")) { }
-
+    /**
+     *
+     */
+    target_mixin() : target_mixin(sc_core::sc_gen_unique_name("simple_target_socket")), m_current_transaction(nullptr) { }
+    /**
+     *
+     * @param n
+     */
     explicit target_mixin(const char* n)
             : base_type(n), m_fw_process(this), m_bw_process(this), m_current_transaction(nullptr) {
         bind(m_fw_process);
@@ -48,26 +54,42 @@ public:
     using base_type::bind;
 
     // bw transport must come thru us.
+    /**
+     *
+     * @return
+     */
     tlm::tlm_bw_transport_if<TYPES> * operator ->() {
         return &m_bw_process;
     }
-
     // REGISTER_XXX
+    /**
+     *
+     * @param cb
+     */
     void register_nb_transport_fw(std::function<sync_enum_type (transaction_type&, phase_type&, sc_core::sc_time&)> cb) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
         m_fw_process.set_nb_transport_ptr(cb);
     }
-
+    /**
+     *
+     * @param cb
+     */
     void register_b_transport(std::function<void(transaction_type&, sc_core::sc_time&)> cb) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
         m_fw_process.set_b_transport_ptr(cb);
     }
-
+    /**
+     *
+     * @param cb
+     */
     void register_transport_dbg(std::function<unsigned int(transaction_type&)> cb) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
         m_fw_process.set_transport_dbg_ptr(cb);
     }
-
+    /**
+     *
+     * @param cb
+     */
     void register_get_direct_mem_ptr(std::function<bool(transaction_type&, tlm::tlm_dmi&)> cb) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
         m_fw_process.set_get_direct_mem_ptr(cb);

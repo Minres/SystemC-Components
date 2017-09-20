@@ -31,7 +31,14 @@ namespace sysc {
 
 class traceable {
 public:
+    /**
+     *
+     */
     virtual ~traceable(){};
+    /**
+     *
+     * @param trf
+     */
     virtual void trace(sc_core::sc_trace_file* trf) = 0;
 };
 

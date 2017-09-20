@@ -43,11 +43,17 @@ public:
             : BASE_TYPE(n), bw_if(this->name()) {
         this->m_export.bind(bw_if);
     }
-
+    /**
+     *
+     * @param cb the callback function
+     */
     void register_nb_transport_bw(std::function<sync_enum_type(transaction_type&, phase_type&, sc_core::sc_time&)> cb) {
         bw_if.set_transport_function(cb);
     }
-
+    /**
+     *
+     * @param cb the callback function
+     */
     void register_invalidate_direct_mem_ptr(std::function<void(sc_dt::uint64, sc_dt::uint64)> cb) {
         bw_if.set_invalidate_direct_mem_function(cb);
     }

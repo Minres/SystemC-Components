@@ -33,14 +33,24 @@
 namespace sysc {
 
 namespace log=logging;
-
+/**
+ *
+ */
 void init_logging();
 
+/**
+ *
+ */
 template <typename T>
 class Log: public logging::Log<T>{
 public:
     Log(){};
 
+    /**
+     *
+     * @param level
+     * @return
+     */
     std::ostringstream& get(logging::log_level level = logging::INFO){
         std::ios init(NULL);
         init.copyfmt(this->os);
@@ -56,6 +66,11 @@ public:
 class FILELOG_DECLSPEC Logger : public Log<logging::Output2FILE> {
     static std::once_flag once;
 public:
+    /**
+     *
+     *
+     * @return
+     */
     static logging::log_level& reporting_level(){
         std::call_once(once, [](){ init_logging();});
         return logging::Log<logging::Output2FILE>::reporting_level();

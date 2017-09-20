@@ -27,7 +27,6 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
 #include "utilities.h"
-#include <util/logging.h>
 #include <tlm.h>
 #include <tlm_utils/simple_target_socket.h>
 

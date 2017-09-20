@@ -38,8 +38,20 @@ class sc_trace_file;
 namespace sysc {
 
 struct tracer: public sc_core::sc_module {
+    /**
+     *
+     */
     enum file_type { NONE, TEXT, COMPRESSED, SQLITE};
+    /**
+     *
+     * @param
+     * @param
+     * @param enable
+     */
     tracer(std::string&&, file_type, bool enable=true);
+    /**
+     *
+     */
     virtual ~tracer();
 protected:
     void end_of_elaboration();

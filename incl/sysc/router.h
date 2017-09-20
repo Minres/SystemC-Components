@@ -43,26 +43,77 @@ template<unsigned BUSWIDTH = 32>
 struct router: sc_core::sc_module {
     using intor_sckt  = sysc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<BUSWIDTH>>;
     using target_sckt = sysc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>>;
-
+    /**
+     *
+     */
     sc_core::sc_vector<target_sckt> target;
+    /**
+     *
+     */
     sc_core::sc_vector<intor_sckt>  initiator;
-
+    /**
+     *
+     * @param nm
+     * @param slave_cnt
+     * @param master_cnt
+     */
     router(const sc_core::sc_module_name& nm, unsigned slave_cnt=1, unsigned master_cnt=1);
-
+    /**
+     *
+     */
     ~router() {}
-
+    /**
+     *
+     * @param idx
+     * @param base
+     */
     void set_initiator_base(size_t idx, uint64_t base){ibases[idx]=base;}
+    /**
+     *
+     * @param idx
+     */
 
     void set_default_target(size_t idx){default_idx=idx;}
     // bind target socket hierarchically
+    /**
+     *
+     * @param idx
+     * @param base
+     * @param size
+     * @param remap
+     */
     void add_target_range(size_t idx, uint64_t base, uint64_t size, bool remap=true);
     // tagged blocking transport method
+    /**
+     *
+     * @param i
+     * @param trans
+     * @param delay
+     */
     void b_transport(int i, tlm::tlm_generic_payload& trans, sc_core::sc_time& delay);
     // tagged forward DMI method
+    /**
+     *
+     * @param i
+     * @param trans
+     * @param dmi_data
+     * @return
+     */
     bool get_direct_mem_ptr(int i, tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data);
     // tagged debug transaction method
+    /**
+     *
+     * @param i
+     * @param trans
+     */
     unsigned transport_dbg(int i, tlm::tlm_generic_payload& trans);
     // Tagged backward DMI method
+    /**
+     *
+     * @param id
+     * @param start_range
+     * @param end_range
+     */
     void invalidate_direct_mem_ptr(int id, sc_dt::uint64 start_range, sc_dt::uint64 end_range);
 
 protected:
