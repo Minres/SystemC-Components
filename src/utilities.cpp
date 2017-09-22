@@ -11,7 +11,7 @@ void sc_trace(sc_trace_file *tf, const sc_time &t, const std::string &name) { sc
 
 void sc_trace(sc_trace_file *tf, const sc_time &t, const char *name) { sc_trace(tf, t.value(), name); }
 template <> void sc_trace(sc_trace_file *tf, const sc_in<sc_time> &port, const std::string &name) {
-    const sc_signal_in_if<sc_time> *iface = 0;
+    const sc_signal_in_if<sc_time> *iface = nullptr;
     if (sc_get_curr_simcontext()->elaboration_done()) {
         iface = DCAST<const sc_signal_in_if<sc_time> *>(port.get_interface());
     }
@@ -23,7 +23,7 @@ template <> void sc_trace(sc_trace_file *tf, const sc_in<sc_time> &port, const s
 }
 
 template <> void sc_trace(sc_trace_file *tf, const sc_inout<sc_time> &port, const std::string &name) {
-    const sc_signal_in_if<sc_time> *iface = 0;
+    const sc_signal_in_if<sc_time> *iface = nullptr;
     if (sc_get_curr_simcontext()->elaboration_done()) {
         iface = DCAST<const sc_signal_in_if<sc_time> *>(port.get_interface());
     }

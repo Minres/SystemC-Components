@@ -60,7 +60,7 @@ template <unsigned BUSWIDTH = 32> struct router : sc_core::sc_module {
     /**
      *
      */
-    ~router() {}
+    ~router() = default;
     /**
      *
      * @param idx

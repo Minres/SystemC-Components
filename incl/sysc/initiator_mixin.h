@@ -26,11 +26,11 @@ namespace sysc {
 
 template <typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types> class initiator_mixin : public BASE_TYPE {
 public:
-    typedef typename TYPES::tlm_payload_type transaction_type;
-    typedef typename TYPES::tlm_phase_type phase_type;
-    typedef tlm::tlm_sync_enum sync_enum_type;
-    typedef tlm::tlm_fw_transport_if<TYPES> fw_interface_type;
-    typedef tlm::tlm_bw_transport_if<TYPES> bw_interface_type;
+    using transaction_type = typename TYPES::tlm_payload_type;
+    using phase_type = typename TYPES::tlm_phase_type;
+    using sync_enum_type = tlm::tlm_sync_enum;
+    using fw_interface_type = tlm::tlm_fw_transport_if<TYPES>;
+    using bw_interface_type = tlm::tlm_bw_transport_if<TYPES>;
 
 public:
     initiator_mixin() : BASE_TYPE(sc_core::sc_gen_unique_name("initiator_mixin_socket")), bw_if(this->name()) {
@@ -57,8 +57,8 @@ public:
 private:
     class bw_transport_if : public tlm::tlm_bw_transport_if<TYPES> {
     public:
-        typedef std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)> transport_fct;
-        typedef std::function<void(sc_dt::uint64, sc_dt::uint64)> invalidate_dmi_fct;
+        using transport_fct = std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)>;
+        using invalidate_dmi_fct = std::function<void(sc_dt::uint64, sc_dt::uint64)>;
 
         bw_transport_if(const std::string &name) : m_name(name), m_transport_ptr(0), m_invalidate_direct_mem_ptr(0) {}
 

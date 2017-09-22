@@ -92,7 +92,7 @@ template <unsigned BUSWIDTH = 32> struct target_memory_map_entry {
 };
 
 template <unsigned int BUSWIDTH = 32, unsigned RANGES = 1> struct tlm_multi_rangetarget : public tlm_target<BUSWIDTH> {
-    typedef tlm_multi_rangetarget<BUSWIDTH, RANGES> this_type;
+    using this_type =  tlm_multi_rangetarget<BUSWIDTH, RANGES>;
 
     tlm_multi_rangetarget(sc_core::sc_time &clock, std::array<addr_range, RANGES> addr_rngs)
         : tlm_target<BUSWIDTH>(clock), addr_ranges(addr_rngs) {}
@@ -124,7 +124,7 @@ void sysc::tlm_target<BUSWIDTH>::b_tranport_cb(tlm::tlm_generic_payload &gp, sc_
         gp.set_response_status(tlm::TLM_BURST_ERROR_RESPONSE);
         if (gp.get_data_length() == ra->size()) {
             gp.set_response_status(tlm::TLM_BYTE_ENABLE_ERROR_RESPONSE);
-            if (gp.get_byte_enable_ptr() == 0) {
+            if (gp.get_byte_enable_ptr() == nullptr) {
                 gp.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
                 if (gp.get_data_length() == gp.get_streaming_width()) {
                     if (gp.get_command() == tlm::TLM_READ_COMMAND) {
@@ -151,7 +151,7 @@ unsigned int sysc::tlm_target<BUSWIDTH>::tranport_dbg_cb(tlm::tlm_generic_payloa
     uint64_t base = 0;
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());
     if (ra) {
-        if (gp.get_data_length() == ra->size() && gp.get_byte_enable_ptr() == 0 &&
+        if (gp.get_data_length() == ra->size() && gp.get_byte_enable_ptr() == nullptr &&
             gp.get_data_length() == gp.get_streaming_width()) {
             if (gp.get_command() == tlm::TLM_READ_COMMAND) {
                 if (ra->read_dbg(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra->size()))

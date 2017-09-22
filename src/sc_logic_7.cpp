@@ -32,9 +32,9 @@ void sc_logic_7::invalid_value(int i) {
 
 void sc_logic_7::invalid_01() const {
     if ((int)m_val == Log_Z) {
-        SC_REPORT_WARNING(sc_core::SC_ID_LOGIC_Z_TO_BOOL_, 0);
+        SC_REPORT_WARNING(sc_core::SC_ID_LOGIC_Z_TO_BOOL_, "");
     } else {
-        SC_REPORT_WARNING(sc_core::SC_ID_LOGIC_X_TO_BOOL_, 0);
+        SC_REPORT_WARNING(sc_core::SC_ID_LOGIC_X_TO_BOOL_, "");
     }
 }
 

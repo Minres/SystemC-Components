@@ -102,9 +102,9 @@ public:
 
     // constructors
 
-    sc_logic_7() : m_val(Log_U) {}
+    sc_logic_7() = default;
 
-    sc_logic_7(const sc_logic_7 &a) : m_val(a.m_val) {}
+    sc_logic_7(const sc_logic_7 &a) = default;
 
     sc_logic_7(sc_logic_7_value_t v) : m_val(to_value(v)) {}
 
@@ -118,7 +118,7 @@ public:
 
     // destructor
 
-    ~sc_logic_7() {}
+    ~sc_logic_7() = default;
 
 // (bitwise) assignment operators
 
@@ -135,10 +135,7 @@ public:
     DEFN_ASN_OP_T(op, int)                                                                                             \
     DEFN_ASN_OP_T(op, const ::sc_dt::sc_bit &)
 
-    sc_logic_7 &operator=(const sc_logic_7 &a) {
-        m_val = a.m_val;
-        return *this;
-    }
+    sc_logic_7 &operator=(const sc_logic_7 &a) = default;
 
     sc_logic_7 &operator&=(const sc_logic_7 &b) {
         m_val = and_table[m_val][b.m_val];
@@ -220,7 +217,7 @@ public:
     static void operator delete[](void *p, std::size_t sz) { sc_core::sc_mempool::release(p, sz); }
 
 private:
-    sc_logic_7_value_t m_val;
+    sc_logic_7_value_t m_val = Log_U;
 
 private:
     // disabled

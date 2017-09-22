@@ -35,12 +35,12 @@
 #ifndef _UTIL_LOGGING_H_
 #define _UTIL_LOGGING_H_
 
-#include <assert.h>
+#include <cassert>
 #include <cstring>
 #include <iterator>
 #include <mutex>
 #include <sstream>
-#include <stdio.h>
+#include <cstdio>
 #include <string>
 #include <sys/time.h>
 #include <vector>
@@ -64,7 +64,7 @@ inline std::string now_time();
 
 template <typename T> class Log {
 public:
-    Log(){};
+    Log() = default;
 
     Log(const Log &) = delete;
 
@@ -197,7 +197,7 @@ inline std::string now_time() {
     tm r = {0};
     strftime(buffer, sizeof(buffer), "%X", localtime_r(&t, &r));
     struct timeval tv;
-    gettimeofday(&tv, 0);
+    gettimeofday(&tv, nullptr);
     char result[100] = {0};
     sprintf(result, "%s.%03ld", buffer, (long)tv.tv_usec / 1000);
     return result;

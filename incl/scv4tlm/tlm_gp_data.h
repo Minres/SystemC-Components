@@ -29,15 +29,11 @@ struct tlm_gp_data {
 
     // Default constructor
     tlm_gp_data()
-        : address(0), command(tlm::TLM_IGNORE_COMMAND), data(0), data_length(0),
-          response_status(tlm::TLM_INCOMPLETE_RESPONSE), dmi(false), byte_enable(0), byte_enable_length(0),
-          streaming_width(0), gp_option(tlm::TLM_MIN_PAYLOAD), m_extensions(tlm::max_num_extensions()), m_ref_count(0) {
+        : m_extensions(tlm::max_num_extensions()) {
     }
 
     explicit tlm_gp_data(tlm::tlm_mm_interface *mm)
-        : address(0), command(tlm::TLM_IGNORE_COMMAND), data(0), data_length(0),
-          response_status(tlm::TLM_INCOMPLETE_RESPONSE), dmi(false), byte_enable(0), byte_enable_length(0),
-          streaming_width(0), gp_option(tlm::TLM_MIN_PAYLOAD), m_extensions(tlm::max_num_extensions()), m_ref_count(0) {
+        : m_extensions(tlm::max_num_extensions()) {
     }
 
     int get_ref_count() const { return m_ref_count; }
@@ -150,7 +146,7 @@ public:
                 if (byte_enable_length == 8 && data_length % 8 == 0) {
                     // Optimized implementation copies 64-bit words by masking
                     for (unsigned int i = 0; i < data_length; i += 8) {
-                        typedef sc_dt::uint64 *u;
+                        using u = sc_dt::uint64*;
                         *reinterpret_cast<u>(&data[i]) &= ~*reinterpret_cast<u>(byte_enable);
                         *reinterpret_cast<u>(&data[i]) |=
                             *reinterpret_cast<u>(&other.get_data_ptr()[i]) & *reinterpret_cast<u>(byte_enable);
@@ -158,7 +154,7 @@ public:
                 } else if (byte_enable_length == 4 && data_length % 4 == 0) {
                     // Optimized implementation copies 32-bit words by masking
                     for (unsigned int i = 0; i < data_length; i += 4) {
-                        typedef unsigned int *u;
+                        using u = unsigned int *;
                         *reinterpret_cast<u>(&data[i]) &= ~*reinterpret_cast<u>(byte_enable);
                         *reinterpret_cast<u>(&data[i]) |=
                             *reinterpret_cast<u>(&other.get_data_ptr()[i]) & *reinterpret_cast<u>(byte_enable);
@@ -315,16 +311,16 @@ public:
     /* - m_streaming_width  :                                                */
     /* --------------------------------------------------------------------- */
 
-    sc_dt::uint64 address;
-    tlm::tlm_command command;
-    unsigned char *data;
-    unsigned int data_length;
-    tlm::tlm_response_status response_status;
-    bool dmi;
-    unsigned char *byte_enable;
-    unsigned int byte_enable_length;
-    unsigned int streaming_width;
-    tlm::tlm_gp_option gp_option;
+    sc_dt::uint64 address{0};
+    tlm::tlm_command command{tlm::TLM_IGNORE_COMMAND};
+    unsigned char *data{nullptr};
+    unsigned int data_length{0};
+    tlm::tlm_response_status response_status{tlm::TLM_INCOMPLETE_RESPONSE};
+    bool dmi{false};
+    unsigned char *byte_enable{nullptr};
+    unsigned int byte_enable_length{0};
+    unsigned int streaming_width{0};
+    tlm::tlm_gp_option gp_option{tlm::TLM_MIN_PAYLOAD};
 
 public:
     /* --------------------------------------------------------------------- */
@@ -422,13 +418,11 @@ public:
 
 private:
     tlm::tlm_array<tlm::tlm_extension_base *> m_extensions;
-    unsigned int m_ref_count;
+    unsigned int m_ref_count{0};
 };
 
 struct tlm_dmi_data {
-    tlm_dmi_data()
-        : dmi_ptr(0), dmi_start_address(0), dmi_end_address(0), dmi_access(tlm::tlm_dmi::DMI_ACCESS_NONE),
-          dmi_read_latency(0), dmi_write_latency(0) {}
+    tlm_dmi_data() = default;
 
     tlm_dmi_data(tlm::tlm_dmi &dmi_data)
         : dmi_ptr(dmi_data.get_dmi_ptr()), dmi_start_address(dmi_data.get_start_address()),
@@ -440,12 +434,12 @@ struct tlm_dmi_data {
     //--------------
     virtual ~tlm_dmi_data() {}
 
-    unsigned char *dmi_ptr;
-    sc_dt::uint64 dmi_start_address;
-    sc_dt::uint64 dmi_end_address;
-    tlm::tlm_dmi::dmi_access_e dmi_access;
-    sc_dt::uint64 dmi_read_latency;
-    sc_dt::uint64 dmi_write_latency;
+    unsigned char *dmi_ptr{nullptr};
+    sc_dt::uint64 dmi_start_address{0};
+    sc_dt::uint64 dmi_end_address{0};
+    tlm::tlm_dmi::dmi_access_e dmi_access{tlm::tlm_dmi::DMI_ACCESS_NONE};
+    sc_dt::uint64 dmi_read_latency{0};
+    sc_dt::uint64 dmi_write_latency{0};
 };
 }
 #endif /* TLM_GP_DATA_H_ */

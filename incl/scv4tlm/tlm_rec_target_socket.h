@@ -50,20 +50,18 @@ class tlm_rec_target_socket : public tlm::tlm_target_socket<BUSWIDTH, TYPES, N
     }
 
 public:
-    typedef tlm::tlm_fw_transport_if<TYPES> fw_interface_type;
-    typedef tlm::tlm_bw_transport_if<TYPES> bw_interface_type;
-    typedef sc_core::sc_port<bw_interface_type, N
+    using fw_interface_type = tlm::tlm_fw_transport_if<TYPES>;
+    using bw_interface_type = tlm::tlm_bw_transport_if<TYPES>;
+    using port_type = sc_core::sc_port<bw_interface_type, N
 #if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)
                              ,
                              POL
 #endif
-                             >
-        port_type;
+                             >;
 
-    typedef sc_core::sc_export<fw_interface_type> export_type;
-    typedef tlm::tlm_base_initiator_socket_b<BUSWIDTH, fw_interface_type, bw_interface_type> base_initiator_socket_type;
-
-    typedef tlm::tlm_base_target_socket_b<BUSWIDTH, fw_interface_type, bw_interface_type> base_type;
+    using export_type = sc_core::sc_export<fw_interface_type>;
+    using base_initiator_socket_type = tlm::tlm_base_initiator_socket_b<BUSWIDTH, fw_interface_type, bw_interface_type>;
+    using base_type = tlm::tlm_base_target_socket_b<BUSWIDTH, fw_interface_type, bw_interface_type>;
 
     tlm_rec_target_socket()
         : tlm::tlm_target_socket<BUSWIDTH, TYPES, N
@@ -85,7 +83,7 @@ public:
           recorder(gen_name(name, "rec").c_str()) {
     }
 
-    virtual ~tlm_rec_target_socket() {}
+    virtual ~tlm_rec_target_socket() = default;
 
     virtual const char *kind() const { return "tlm_rec_target_socket"; }
     //

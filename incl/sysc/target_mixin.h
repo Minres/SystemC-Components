@@ -31,11 +31,11 @@ template <typename base_type, typename TYPES = tlm::tlm_base_protocol_types> cla
     friend class bw_process;
 
 public:
-    typedef typename TYPES::tlm_payload_type transaction_type;
-    typedef typename TYPES::tlm_phase_type phase_type;
-    typedef tlm::tlm_sync_enum sync_enum_type;
-    typedef tlm::tlm_fw_transport_if<TYPES> fw_interface_type;
-    typedef tlm::tlm_bw_transport_if<TYPES> bw_interface_type;
+    using transaction_type = typename TYPES::tlm_payload_type;
+    using phase_type = typename TYPES::tlm_phase_type ;
+    using sync_enum_type = tlm::tlm_sync_enum;
+    using fw_interface_type = tlm::tlm_fw_transport_if<TYPES> ;
+    using bw_interface_type = tlm::tlm_bw_transport_if<TYPES>;
 
 public:
     /**
@@ -133,7 +133,7 @@ private:
                     return tlm::TLM_COMPLETED;
 
                 } else {
-                    assert(0);
+                    assert(false);
                     exit(1);
                 }
 
@@ -151,10 +151,10 @@ private:
 
     class fw_process : public tlm::tlm_fw_transport_if<TYPES>, public tlm::tlm_mm_interface {
     public:
-        typedef std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)> NBTransportPtr;
-        typedef std::function<void(transaction_type &, sc_core::sc_time &)> BTransportPtr;
-        typedef std::function<unsigned int(transaction_type &)> TransportDbgPtr;
-        typedef std::function<bool(transaction_type &, tlm::tlm_dmi &)> GetDirectMemPtr;
+        using NBTransportPtr = std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)>;
+        using BTransportPtr = std::function<void(transaction_type &, sc_core::sc_time &)>;
+        using TransportDbgPtr = std::function<unsigned int(transaction_type &)>;
+        using GetDirectMemPtr = std::function<bool(transaction_type &, tlm::tlm_dmi &)>;
 
         fw_process(target_mixin *p_own)
             : m_name(p_own->name()), m_owner(p_own), m_nb_transport_ptr(0), m_b_transport_ptr(0),
@@ -235,7 +235,7 @@ private:
                     return tlm::TLM_COMPLETED;
 
                 } else {
-                    assert(0);
+                    assert(false);
                     exit(1);
                     //          return tlm::TLM_COMPLETED;   ///< unreachable code
                 }
@@ -326,7 +326,7 @@ private:
 
         class process_handle_list {
         public:
-            process_handle_list() {}
+            process_handle_list() = default;
 
             ~process_handle_list() {
                 for (typename std::vector<process_handle_class *>::iterator it = v.begin(), end = v.end(); it != end;
@@ -357,7 +357,7 @@ private:
 
         void nb2b_thread(process_handle_class *h) {
 
-            while (1) {
+            while (true) {
                 transaction_type *trans = h->m_trans;
                 sc_core::sc_time t = sc_core::SC_ZERO_TIME;
 
@@ -433,13 +433,13 @@ private:
                         }
 
                         default:
-                            assert(0);
+                            assert(false);
                             exit(1);
                         };
                         break;
 
                     default:
-                        assert(0);
+                        assert(false);
                         exit(1);
                     };
                 }

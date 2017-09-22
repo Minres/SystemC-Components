@@ -52,10 +52,10 @@ struct tracer : public sc_core::sc_module {
     /**
      *
      */
-    virtual ~tracer();
+    virtual ~tracer() override;
 
 protected:
-    void end_of_elaboration();
+    void end_of_elaboration() override;
     virtual void descend(const std::vector<sc_core::sc_object *> &);
     virtual void try_trace_signal(sc_core::sc_object *);
     virtual void try_trace_port(sc_core::sc_object *);

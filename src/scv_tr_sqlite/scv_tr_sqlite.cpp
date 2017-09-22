@@ -41,7 +41,7 @@ struct SQLiteDB {
         int mnErrCode;
     };
 
-    SQLiteDB() : busyTimeoutMs(60000), db(NULL) {}
+    SQLiteDB() = default;
 
     void open(const string szFile) {
         int nRet = sqlite3_open(szFile.c_str(), &db);
@@ -49,12 +49,12 @@ struct SQLiteDB {
         sqlite3_busy_timeout(db, busyTimeoutMs);
     }
 
-    inline bool isOpen() { return db != NULL; }
+    inline bool isOpen() { return db != nullptr; }
 
     void close() {
         if (db) {
             if (sqlite3_close(db) == SQLITE_OK)
-                db = 0;
+                db = nullptr;
             else
                 throw SQLiteException(SQLITEWRAPPER_ERROR, "Unable to close database", false);
         }
@@ -64,8 +64,8 @@ struct SQLiteDB {
 
     int exec(const char *szSQL) {
         checkDB();
-        char *szError = 0;
-        int nRet = sqlite3_exec(db, szSQL, 0, 0, &szError);
+        char *szError = nullptr;
+        int nRet = sqlite3_exec(db, szSQL, nullptr, nullptr, &szError);
         if (nRet == SQLITE_OK)
             return sqlite3_changes(db);
         else
@@ -78,8 +78,8 @@ protected:
     }
 
 private:
-    int busyTimeoutMs;
-    sqlite3 *db;
+    int busyTimeoutMs{60000};
+    sqlite3 *db{nullptr};
 };
 // ----------------------------------------------------------------------------
 static SQLiteDB db;
@@ -87,7 +87,7 @@ static ostringstream stringBuilder, queryBuilder;
 static vector<vector<uint64_t> *> concurrencyLevel;
 // ----------------------------------------------------------------------------
 enum EventType { BEGIN, RECORD, END };
-typedef scv_extensions_if::data_type data_type;
+using data_type = scv_extensions_if::data_type;
 // ----------------------------------------------------------------------------
 #define SIM_PROPS "ScvSimProps"
 #define STREAM_TABLE "ScvStream"
@@ -102,7 +102,7 @@ static void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason,
     static string fName("DEFAULT_scv_tr_sqlite");
     switch (reason) {
     case scv_tr_db::CREATE:
-        if ((_scv_tr_db.get_name() != NULL) && (strlen(_scv_tr_db.get_name()) != 0)) fName = _scv_tr_db.get_name();
+        if ((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0)) fName = _scv_tr_db.get_name();
         try {
             if (fName.size() < 5 || fName.find(".txdb", fName.size() - 5) == string::npos) fName += ".txdb";
             remove(fName.c_str());
@@ -116,10 +116,10 @@ static void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason,
             // scv_out << "TB Transaction Recording has started, file = " <<
             // my_sqlite_file_name << endl;
             db.exec("CREATE TABLE  IF NOT EXISTS " STREAM_TABLE
-                    "(id INTEGER  NOT NULL PRIMARY KEY, name TEXT, kind TEXT);");
-            db.exec("CREATE TABLE  IF NOT EXISTS " GENERATOR_TABLE "(id INTEGER  NOT NULL PRIMARY KEY, stream INTEGER "
+                    "(id INTEGER  NOT nullptr PRIMARY KEY, name TEXT, kind TEXT);");
+            db.exec("CREATE TABLE  IF NOT EXISTS " GENERATOR_TABLE "(id INTEGER  NOT nullptr PRIMARY KEY, stream INTEGER "
                     "REFERENCES " STREAM_TABLE "(id), name TEXT, begin_attr INTEGER, end_attr INTEGER);");
-            db.exec("CREATE TABLE  IF NOT EXISTS " TX_TABLE "(id INTEGER  NOT NULL PRIMARY KEY, generator INTEGER "
+            db.exec("CREATE TABLE  IF NOT EXISTS " TX_TABLE "(id INTEGER  NOT nullptr PRIMARY KEY, generator INTEGER "
                     "REFERENCES " GENERATOR_TABLE "(id), stream INTEGER REFERENCES " STREAM_TABLE
                     "(id), concurrencyLevel INTEGER);");
             db.exec("CREATE TABLE  IF NOT EXISTS " TX_EVENT_TABLE "(tx INTEGER REFERENCES " TX_TABLE
@@ -194,7 +194,7 @@ inline void recordAttribute(uint64_t id, EventType event, const string &name, da
 }
 // ----------------------------------------------------------------------------
 static void recordAttributes(uint64_t id, EventType eventType, string &prefix, const scv_extensions_if *my_exts_p) {
-    if (my_exts_p == 0) return;
+    if (my_exts_p == nullptr) return;
     string name;
     if (prefix == "") {
         name = my_exts_p->get_name();
@@ -279,7 +279,7 @@ static void generatorCb(const scv_tr_generator_base &g, scv_tr_generator_base::c
 // ----------------------------------------------------------------------------
 static void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason reason, void *data) {
     if (!db.isOpen()) return;
-    if (t.get_scv_tr_stream().get_scv_tr_db() == NULL) return;
+    if (t.get_scv_tr_stream().get_scv_tr_db() == nullptr) return;
     if (t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false) return;
 
     uint64_t id = t.get_id();
@@ -291,7 +291,7 @@ static void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason
         try {
             if (concurrencyLevel.size() <= streamId) concurrencyLevel.resize(streamId + 1);
             vector<uint64_t> *levels = concurrencyLevel[streamId];
-            if (levels == NULL) {
+            if (levels == nullptr) {
                 levels = new vector<uint64_t>();
                 concurrencyLevel[id] = levels;
             }
@@ -316,7 +316,7 @@ static void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, e.errorMessage());
         }
         my_exts_p = t.get_begin_exts_p();
-        if (my_exts_p == NULL) {
+        if (my_exts_p == nullptr) {
             my_exts_p = t.get_scv_tr_generator_base().get_begin_exts_p();
         }
         string tmp_str = t.get_scv_tr_generator_base().get_begin_attribute_name()
@@ -342,7 +342,7 @@ static void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create transaction end");
         }
         my_exts_p = t.get_end_exts_p();
-        if (my_exts_p == NULL) {
+        if (my_exts_p == nullptr) {
             my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();
         }
         string tmp_str = t.get_scv_tr_generator_base().get_end_attribute_name()
@@ -356,7 +356,7 @@ static void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason
 // ----------------------------------------------------------------------------
 static void attributeCb(const scv_tr_handle &t, const char *name, const scv_extensions_if *ext, void *data) {
     if (!db.isOpen()) return;
-    if (t.get_scv_tr_stream().get_scv_tr_db() == NULL) return;
+    if (t.get_scv_tr_stream().get_scv_tr_db() == nullptr) return;
     if (t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false) return;
     string tmp_str(name == 0 ? "" : name);
     recordAttributes(t.get_id(), RECORD, tmp_str, ext);
@@ -365,7 +365,7 @@ static void attributeCb(const scv_tr_handle &t, const char *name, const scv_exte
 static void relationCb(const scv_tr_handle &tr_1, const scv_tr_handle &tr_2, void *data,
                        scv_tr_relation_handle_t relation_handle) {
     if (!db.isOpen()) return;
-    if (tr_1.get_scv_tr_stream().get_scv_tr_db() == NULL) return;
+    if (tr_1.get_scv_tr_stream().get_scv_tr_db() == nullptr) return;
     if (tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false) return;
     try {
         queryBuilder.str("");

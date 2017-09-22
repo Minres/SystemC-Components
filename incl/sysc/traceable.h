@@ -34,7 +34,7 @@ public:
     /**
      *
      */
-    virtual ~traceable(){};
+    virtual ~traceable() = default;
     /**
      *
      * @param trf

@@ -48,7 +48,7 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct tlm2_extensions_
      */
     virtual void recordEndTx(scv_tr_handle &handle, typename TYPES::tlm_payload_type &payload) = 0;
 
-    virtual ~tlm2_extensions_recording_if() {}
+    virtual ~tlm2_extensions_recording_if()= default;
 };
 /*! \brief The TLM2 transaction recorder
  *
@@ -105,7 +105,7 @@ public:
           nb_bw_trHandle(3), nb_txRespHandle(3), dmi_streamHandle(NULL), dmi_trGetHandle(NULL),
           dmi_trInvalidateHandle(NULL), extensionRecording(NULL) {}
 
-    virtual ~tlm2_recorder() {
+    virtual ~tlm2_recorder() override{
         delete b_streamHandle;
         delete b_streamHandleTimed;
         for (size_t i = 0; i < b_trTimedHandle.size(); ++i) delete b_trTimedHandle[i];
@@ -224,7 +224,7 @@ private:
             }
             return (tlm_recording_payload *)ptr;
         }
-        void free(tlm::tlm_generic_payload *trans) {
+        void free(tlm::tlm_generic_payload *trans) override{
             trans->reset();
             if (!empties) {
                 empties = new access;
@@ -248,8 +248,8 @@ private:
     RecodingMemoryManager *mm;
     //! peq type definition
     struct recording_types {
-        typedef tlm_recording_payload tlm_payload_type;
-        typedef typename TYPES::tlm_phase_type tlm_phase_type;
+        using tlm_payload_type = tlm_recording_payload;
+        using tlm_phase_type = typename TYPES::tlm_phase_type;
     };
     //! event queue to hold time points of blocking transactions
     tlm_utils::peq_with_cb_and_phase<tlm2_recorder, recording_types> b_timed_peq;

@@ -49,7 +49,7 @@ private:
 
 public:
     /// @brief Constructor.
-    thread_syncronizer() {}
+    thread_syncronizer() = default;
 
     /// @brief Destructor.
     ~thread_syncronizer() {

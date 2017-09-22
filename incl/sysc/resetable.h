@@ -32,7 +32,7 @@ struct resetable {
     /**
      *
      */
-    virtual ~resetable() {}
+    virtual ~resetable() = default;
     /**
      *
      */

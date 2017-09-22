@@ -45,7 +45,7 @@ void init_logging();
  */
 template <typename T> class Log : public logging::Log<T> {
 public:
-    Log(){};
+    Log() = default;
 
     Log(const Log &) = delete;
 

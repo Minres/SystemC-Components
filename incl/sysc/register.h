@@ -196,7 +196,7 @@ struct sc_register : public sc_core::sc_object, public resource_access_if, publi
      *
      * @param trf
      */
-    void trace(sc_core::sc_trace_file *trf) { sc_trace(trf, storage, this->name()); }
+    void trace(sc_core::sc_trace_file *trf) override { sc_trace(trf, storage, this->name()); }
 
     const DATATYPE res_val;
     const DATATYPE rdmask;
@@ -235,7 +235,7 @@ struct sc_register_indexed : public indexed_resource_access_if {
         }
     }
 
-    ~sc_register_indexed() {
+    ~sc_register_indexed() override {
         for (size_t idx = START; idx < (START + SIZE); ++idx) {
             (_reg_field + idx)->~sc_register<DATATYPE>();
         }

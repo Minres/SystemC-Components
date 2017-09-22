@@ -32,12 +32,12 @@ struct resource_access_if {
     /**
      *
      */
-    virtual ~resource_access_if() {}
+    virtual ~resource_access_if() = default;
     /**
      *
      * @return
      */
-    virtual size_t size() const = 0;
+    virtual std::size_t size() const = 0;
     /**
      *
      */
@@ -50,7 +50,7 @@ struct resource_access_if {
      * @param offset
      * @return
      */
-    virtual bool write(const uint8_t *data, size_t length, uint64_t offset = 0) = 0;
+    virtual bool write(const uint8_t *data, std::size_t length, uint64_t offset = 0) = 0;
     /**
      *
      * @param data
@@ -58,7 +58,7 @@ struct resource_access_if {
      * @param offset
      * @return
      */
-    virtual bool read(uint8_t *data, size_t length, uint64_t offset = 0) const = 0;
+    virtual bool read(uint8_t *data, std::size_t length, uint64_t offset = 0) const = 0;
     // non-functional/debug accesses
     /**
      *
@@ -67,7 +67,7 @@ struct resource_access_if {
      * @param offset
      * @return
      */
-    virtual bool write_dbg(const uint8_t *data, size_t length, uint64_t offset = 0) = 0;
+    virtual bool write_dbg(const uint8_t *data, std::size_t length, uint64_t offset = 0) = 0;
     /**
      *
      * @param data
@@ -75,7 +75,7 @@ struct resource_access_if {
      * @param offset
      * @return
      */
-    virtual bool read_dbg(uint8_t *data, size_t length, uint64_t offset = 0) const = 0;
+    virtual bool read_dbg(uint8_t *data, std::size_t length, uint64_t offset = 0) const = 0;
 };
 
 struct indexed_resource_access_if {
@@ -89,37 +89,37 @@ struct indexed_resource_access_if {
     /**
      *
      */
-    virtual ~indexed_resource_access_if() {}
+    virtual ~indexed_resource_access_if() = default;
     /**
      *
      * @return
      */
-    virtual size_t size() = 0;
+    virtual std::size_t size() = 0;
     // Element access.
     /**
      *
      * @param __n
      * @return
      */
-    virtual reference operator[](size_t __n) noexcept = 0;
+    virtual reference operator[](std::size_t __n) noexcept = 0;
     /**
      *
      * @param __n
      * @return
      */
-    virtual const_reference operator[](size_t __n) const noexcept = 0;
+    virtual const_reference operator[](std::size_t __n) const noexcept = 0;
     /**
      *
      * @param __n
      * @return
      */
-    virtual reference at(size_t __n) = 0;
+    virtual reference at(std::size_t __n) = 0;
     /**
      *
      * @param __n
      * @return
      */
-    virtual const_reference at(size_t __n) const = 0;
+    virtual const_reference at(std::size_t __n) const = 0;
 };
 }
 #endif /* _SYSC_RESOURCE_ACCESS_IF_H_ */
