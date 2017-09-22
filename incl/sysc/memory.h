@@ -35,26 +35,25 @@ namespace sysc {
 
 // simple memory model
 
-template<unsigned SIZE, unsigned BUSWIDTH=32, bool LOG_ACCESS=false>
-struct memory: sc_core::sc_module {
+template <unsigned SIZE, unsigned BUSWIDTH = 32, bool LOG_ACCESS = false> struct memory : sc_core::sc_module {
 
     tlm_utils::simple_target_socket<memory, BUSWIDTH> socket;
 
-    memory(const sc_core::sc_module_name& nm);
+    memory(const sc_core::sc_module_name &nm);
 
-    void b_transport(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay);
+    void b_transport(tlm::tlm_generic_payload &trans, sc_core::sc_time &delay);
 
-    unsigned transport_dbg(tlm::tlm_generic_payload& trans);
+    unsigned transport_dbg(tlm::tlm_generic_payload &trans);
 
 protected:
     uint8_t mem[SIZE];
 
 private:
-    int handle_operation(tlm::tlm_generic_payload& trans);
+    int handle_operation(tlm::tlm_generic_payload &trans);
 };
 
-template<unsigned SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
-memory<SIZE,BUSWIDTH,LOG_ACCESS>::memory(const sc_core::sc_module_name& nm):sc_module(nm),NAMED(socket) {
+template <unsigned SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
+memory<SIZE, BUSWIDTH, LOG_ACCESS>::memory(const sc_core::sc_module_name &nm) : sc_module(nm), NAMED(socket) {
     // Register callback for incoming b_transport interface method call
     socket.register_b_transport(this, &memory::b_transport);
     socket.register_transport_dbg(this, &memory::transport_dbg);
@@ -62,43 +61,45 @@ memory<SIZE,BUSWIDTH,LOG_ACCESS>::memory(const sc_core::sc_module_name& nm):sc_m
     for (size_t i = 0; i < SIZE; i++) mem[i] = rand() % 256;
 }
 
-template<unsigned SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
-void memory<SIZE,BUSWIDTH,LOG_ACCESS>::b_transport(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
+template <unsigned SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
+void memory<SIZE, BUSWIDTH, LOG_ACCESS>::b_transport(tlm::tlm_generic_payload &trans, sc_core::sc_time &delay) {
     handle_operation(trans);
 }
 
-template<unsigned SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
-unsigned memory<SIZE,BUSWIDTH,LOG_ACCESS>::transport_dbg(tlm::tlm_generic_payload& trans) {
+template <unsigned SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
+unsigned memory<SIZE, BUSWIDTH, LOG_ACCESS>::transport_dbg(tlm::tlm_generic_payload &trans) {
     return handle_operation(trans);
 }
 
-template<unsigned SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
-int memory<SIZE,BUSWIDTH,LOG_ACCESS>::handle_operation(tlm::tlm_generic_payload& trans) {
+template <unsigned SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
+int memory<SIZE, BUSWIDTH, LOG_ACCESS>::handle_operation(tlm::tlm_generic_payload &trans) {
     sc_dt::uint64 adr = trans.get_address();
-    unsigned char* ptr = trans.get_data_ptr();
-    unsigned       len = trans.get_data_length();
-    unsigned char* byt = trans.get_byte_enable_ptr();
-    unsigned       wid = trans.get_streaming_width();
+    unsigned char *ptr = trans.get_data_ptr();
+    unsigned len = trans.get_data_length();
+    unsigned char *byt = trans.get_byte_enable_ptr();
+    unsigned wid = trans.get_streaming_width();
     // check address range and check for unsupported features,
     //   i.e. byte enables, streaming, and bursts
     // Can ignore DMI hint and extensions
-    if (adr+len > sc_dt::uint64(SIZE)){
-        SC_REPORT_ERROR("TLM-2","generic payload transaction exceeeds memory size");
+    if (adr + len > sc_dt::uint64(SIZE)) {
+        SC_REPORT_ERROR("TLM-2", "generic payload transaction exceeeds memory size");
         trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
         return 0;
     }
-    if (adr+len > sc_dt::uint64(SIZE) || byt != 0 || wid < len){
-        SC_REPORT_ERROR("TLM-2","generic payload transaction not supported");
+    if (adr + len > sc_dt::uint64(SIZE) || byt != 0 || wid < len) {
+        SC_REPORT_ERROR("TLM-2", "generic payload transaction not supported");
         trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
         return 0;
     }
 
     tlm::tlm_command cmd = trans.get_command();
-    if(LOG_ACCESS){
-        if(adr>=0x20 && adr<0x60)
-            LOG(WARNING)<<(cmd==tlm::TLM_READ_COMMAND?"read":"write")<<" access to addr 0x"<<std::hex<<adr-0x20<<"(0x"<<(adr)<<")"<<std::dec;
+    if (LOG_ACCESS) {
+        if (adr >= 0x20 && adr < 0x60)
+            LOG(WARNING) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex
+                         << adr - 0x20 << "(0x" << (adr) << ")" << std::dec;
         else
-            LOG(WARNING)<<(cmd==tlm::TLM_READ_COMMAND?"read":"write")<<" access to addr 0x"<<std::hex<<adr<<std::dec;
+            LOG(WARNING) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr
+                         << std::dec;
     }
     if (cmd == tlm::TLM_READ_COMMAND)
         memcpy(ptr, mem + adr, len);
@@ -108,6 +109,6 @@ int memory<SIZE,BUSWIDTH,LOG_ACCESS>::handle_operation(tlm::tlm_generic_payload&
     return len;
 }
 
-}  // namespace sysc
+} // namespace sysc
 
 #endif /* _SYSC_MEMORY_H_ */

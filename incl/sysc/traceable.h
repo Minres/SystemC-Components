@@ -24,7 +24,7 @@
 #define _SYSC_TRACABLE_H_
 
 namespace sc_core {
-    class sc_trace_file;
+class sc_trace_file;
 }
 
 namespace sysc {
@@ -39,7 +39,7 @@ public:
      *
      * @param trf
      */
-    virtual void trace(sc_core::sc_trace_file* trf) = 0;
+    virtual void trace(sc_core::sc_trace_file *trf) = 0;
 };
 
 } /* namespace sysc */

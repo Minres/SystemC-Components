@@ -18,14 +18,13 @@
 #define _SYSC_INITIATOR_MIXIN_H__
 
 #include "utilities.h"
-#include <tlm>
 #include <functional>
 #include <sstream>
+#include <tlm>
 
 namespace sysc {
 
-template<typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types>
-class initiator_mixin: public BASE_TYPE {
+template <typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types> class initiator_mixin : public BASE_TYPE {
 public:
     typedef typename TYPES::tlm_payload_type transaction_type;
     typedef typename TYPES::tlm_phase_type phase_type;
@@ -34,20 +33,17 @@ public:
     typedef tlm::tlm_bw_transport_if<TYPES> bw_interface_type;
 
 public:
-    initiator_mixin()
-            : BASE_TYPE(sc_core::sc_gen_unique_name("initiator_mixin_socket")), bw_if(this->name()) {
+    initiator_mixin() : BASE_TYPE(sc_core::sc_gen_unique_name("initiator_mixin_socket")), bw_if(this->name()) {
         this->m_export.bind(bw_if);
     }
 
-    explicit initiator_mixin(const char* n)
-            : BASE_TYPE(n), bw_if(this->name()) {
-        this->m_export.bind(bw_if);
-    }
+    explicit initiator_mixin(const char *n) : BASE_TYPE(n), bw_if(this->name()) { this->m_export.bind(bw_if); }
     /**
      *
      * @param cb the callback function
      */
-    void register_nb_transport_bw(std::function<sync_enum_type(transaction_type&, phase_type&, sc_core::sc_time&)> cb) {
+    void
+    register_nb_transport_bw(std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)> cb) {
         bw_if.set_transport_function(cb);
     }
     /**
@@ -59,14 +55,12 @@ public:
     }
 
 private:
-    class bw_transport_if: public tlm::tlm_bw_transport_if<TYPES> {
+    class bw_transport_if : public tlm::tlm_bw_transport_if<TYPES> {
     public:
-        typedef std::function<sync_enum_type(transaction_type&, phase_type&, sc_core::sc_time&)> transport_fct;
-        typedef std::function<void (sc_dt::uint64, sc_dt::uint64)> invalidate_dmi_fct;
+        typedef std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)> transport_fct;
+        typedef std::function<void(sc_dt::uint64, sc_dt::uint64)> invalidate_dmi_fct;
 
-        bw_transport_if(const std::string& name)
-                : m_name(name), m_transport_ptr(0), m_invalidate_direct_mem_ptr(0) {
-        }
+        bw_transport_if(const std::string &name) : m_name(name), m_transport_ptr(0), m_invalidate_direct_mem_ptr(0) {}
 
         void set_transport_function(transport_fct p) {
             if (m_transport_ptr) {
@@ -88,13 +82,12 @@ private:
             }
         }
 
-        sync_enum_type nb_transport_bw(transaction_type& trans, phase_type& phase, sc_core::sc_time& t) {
-            if (m_transport_ptr)
-                return m_transport_ptr(trans, phase, t);
+        sync_enum_type nb_transport_bw(transaction_type &trans, phase_type &phase, sc_core::sc_time &t) {
+            if (m_transport_ptr) return m_transport_ptr(trans, phase, t);
             std::stringstream s;
             s << m_name << ": no transport callback registered";
             SC_REPORT_ERROR("/OSCI_TLM-2/initiator_mixin", s.str().c_str());
-            return tlm::TLM_ACCEPTED;   ///< unreachable code
+            return tlm::TLM_ACCEPTED; ///< unreachable code
         }
 
         void invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) {
@@ -111,7 +104,6 @@ private:
 private:
     bw_transport_if bw_if;
 };
-
 }
 
 #endif //_SYSC_INITIATOR_MIXIN_H__

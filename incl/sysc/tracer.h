@@ -27,41 +27,42 @@
 #ifdef WITH_SCV
 #include <scv.h>
 #endif
-#include <vector>
 #include <string>
+#include <vector>
 
-namespace sc_core{
+namespace sc_core {
 class sc_object;
 class sc_trace_file;
 }
 
 namespace sysc {
 
-struct tracer: public sc_core::sc_module {
+struct tracer : public sc_core::sc_module {
     /**
      *
      */
-    enum file_type { NONE, TEXT, COMPRESSED, SQLITE};
+    enum file_type { NONE, TEXT, COMPRESSED, SQLITE };
     /**
      *
      * @param
      * @param
      * @param enable
      */
-    tracer(std::string&&, file_type, bool enable=true);
+    tracer(std::string &&, file_type, bool enable = true);
     /**
      *
      */
     virtual ~tracer();
+
 protected:
     void end_of_elaboration();
-    virtual void descend(const std::vector<sc_core::sc_object*>&);
-    virtual void try_trace_signal(sc_core::sc_object*);
-    virtual void try_trace_port(sc_core::sc_object*);
+    virtual void descend(const std::vector<sc_core::sc_object *> &);
+    virtual void try_trace_signal(sc_core::sc_object *);
+    virtual void try_trace_port(sc_core::sc_object *);
     bool enabled;
-    sc_core::sc_trace_file* trf;
+    sc_core::sc_trace_file *trf;
 #ifdef WITH_SCV
-    scv_tr_db* txdb;
+    scv_tr_db *txdb;
 #endif
 };
 

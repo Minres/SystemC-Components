@@ -32,7 +32,7 @@ struct resource_access_if {
     /**
      *
      */
-    virtual ~resource_access_if(){}
+    virtual ~resource_access_if() {}
     /**
      *
      * @return
@@ -50,7 +50,7 @@ struct resource_access_if {
      * @param offset
      * @return
      */
-    virtual bool write(const uint8_t* data, size_t length, uint64_t offset=0) = 0;
+    virtual bool write(const uint8_t *data, size_t length, uint64_t offset = 0) = 0;
     /**
      *
      * @param data
@@ -58,7 +58,7 @@ struct resource_access_if {
      * @param offset
      * @return
      */
-    virtual bool read(uint8_t* data, size_t length, uint64_t offset=0) const = 0;
+    virtual bool read(uint8_t *data, size_t length, uint64_t offset = 0) const = 0;
     // non-functional/debug accesses
     /**
      *
@@ -67,7 +67,7 @@ struct resource_access_if {
      * @param offset
      * @return
      */
-    virtual bool write_dbg(const uint8_t* data, size_t length, uint64_t offset=0) = 0;
+    virtual bool write_dbg(const uint8_t *data, size_t length, uint64_t offset = 0) = 0;
     /**
      *
      * @param data
@@ -75,21 +75,21 @@ struct resource_access_if {
      * @param offset
      * @return
      */
-    virtual bool read_dbg(uint8_t* data, size_t length, uint64_t offset=0) const = 0;
+    virtual bool read_dbg(uint8_t *data, size_t length, uint64_t offset = 0) const = 0;
 };
 
 struct indexed_resource_access_if {
     using value_type = resource_access_if;
-    using pointer = value_type*;
-    using const_pointer = const value_type*;
-    using reference = value_type&;
-    using const_reference = const value_type&;
-    using iterator = resource_access_if*;
-    using const_iterator = const resource_access_if*;
+    using pointer = value_type *;
+    using const_pointer = const value_type *;
+    using reference = value_type &;
+    using const_reference = const value_type &;
+    using iterator = resource_access_if *;
+    using const_iterator = const resource_access_if *;
     /**
      *
      */
-    virtual ~indexed_resource_access_if(){}
+    virtual ~indexed_resource_access_if() {}
     /**
      *
      * @return
@@ -101,7 +101,7 @@ struct indexed_resource_access_if {
      * @param __n
      * @return
      */
-    virtual reference       operator[](size_t __n) noexcept = 0;
+    virtual reference operator[](size_t __n) noexcept = 0;
     /**
      *
      * @param __n
@@ -113,7 +113,7 @@ struct indexed_resource_access_if {
      * @param __n
      * @return
      */
-    virtual reference       at(size_t __n) = 0;
+    virtual reference at(size_t __n) = 0;
     /**
      *
      * @param __n

@@ -32,31 +32,30 @@ struct resetable {
     /**
      *
      */
-    virtual ~resetable(){}
+    virtual ~resetable() {}
     /**
      *
      */
-    void reset_start(){
-        in_reset=true;
-        for(auto res:resources) res->reset();
+    void reset_start() {
+        in_reset = true;
+        for (auto res : resources) res->reset();
     }
     /**
      *
      */
-    void reset_stop(){
-        for(auto res:resources) res->reset();
-        in_reset=false;
+    void reset_stop() {
+        for (auto res : resources) res->reset();
+        in_reset = false;
     }
     /**
      *
      * @param res
      */
-    void register_resource(resource_access_if* res){
-        resources.push_back(res);
-    }
+    void register_resource(resource_access_if *res) { resources.push_back(res); }
+
 protected:
-    std::vector<resource_access_if*> resources;
-    bool in_reset=false;
+    std::vector<resource_access_if *> resources;
+    bool in_reset = false;
 };
 
 } /* namespace sysc */
