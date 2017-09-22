@@ -52,7 +52,9 @@ static const std::string compose_message(const sc_report& rep){
 static void report_handler(const sc_report& rep, const sc_actions& actions){
     const logging::log_level map[] = {logging::INFO, logging::WARNING, logging::ERROR, logging::FATAL};
     if ( actions & SC_DISPLAY )
-        LOG(map[rep.get_severity()]) << compose_message(rep);
+        if (map[rep.get_severity()] > FILELOG_MAX_LEVEL) ;\
+        else if (map[rep.get_severity()] > LOGGER(SystemC)::reporting_level() || !LOG_OUTPUT(SystemC)::stream()) ; \
+        else LOGGER(SystemC)().get(map[rep.get_severity()])<< compose_message(rep);
     //    if ( (actions & SC_LOG) && log_file_name ) {
     //        if ( !log_stream ) log_stream = new ::std::ofstream(log_file_name); // ios::trunc
     //        *log_stream << rep.get_time() << ": " << my_report_compose_message(rep) << ::std::endl;

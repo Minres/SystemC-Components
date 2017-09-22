@@ -42,6 +42,7 @@
 #include <cstring>
 #include <mutex>
 #include <stdio.h>
+#include <assert.h>
 #include <sys/time.h>
 
 #define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE)
@@ -53,32 +54,51 @@ namespace logging {
 static const char * const buffer[] = { LEVELS(DO_DESCRIPTION)};
 enum log_level { LEVELS(DO_ENUM) };
 
+inline
+log_level as_log_level(int l){
+    assert(l>=NONE && l<=TRACE);
+    const log_level m[]={NONE,FATAL,ERROR,WARNING,INFO,DEBUG,TRACE};
+    return m[l];
+}
+
 inline std::string now_time();
 
 template <typename T>
 class Log{
 public:
 	Log(){};
+
+    Log(const Log&) = delete;
+
+    Log& operator =(const Log&) = delete;
+
     virtual ~Log(){
 		os << std::endl;
 		T::output(os.str());
 		//TODO: use a more specific exception
 		if(get_last_log_level() == FATAL) throw std::exception();
-	};
-    std::ostringstream& get(log_level level = INFO){
-		os << "- " << now_time();
-		os << " " << to_string(level) << ": ";
+	}
+
+    std::ostringstream& get(log_level level = INFO, const char* category=""){
+		if(print_time()) os << "- " << now_time();
+		if(print_severity()){
+		    os << " " << to_string(level);
+	        if(strlen(category)) os<<"/"<<category;
+	        os<< ": ";
+		}
 		get_last_log_level()=level;
 		return os;
 	};
-public:
+
     static log_level& reporting_level(){
 		static log_level reportingLevel = WARNING;
 		return reportingLevel;
 	}
+
     static std::string to_string(log_level level){
 		return std::string(get_log_level_cstr()[level]);
 	};
+
     static log_level from_string(const std::string& level) {
 		for(unsigned int i=NONE; i<=TRACE; i++)
 			if(!strncasecmp(level.c_str(), (const char*)(get_log_level_cstr()+i), strlen((const char*)get_log_level_cstr()+i))) return i;
@@ -86,6 +106,15 @@ public:
 		return INFO;
 	}
 
+    static bool& print_time(){
+        static bool flag=true;
+        return flag;
+    }
+
+    static bool& print_severity(){
+        static bool flag=true;
+        return flag;
+    }
 protected:
     log_level& get_last_log_level(){
 		static log_level level = TRACE;
@@ -95,12 +124,10 @@ protected:
 		return buffer;
 	};
     std::ostringstream os;
-private:
-    Log(const Log&);
-    Log& operator =(const Log&);
 };
 
-struct Output2FILE {
+template<typename CATEGORY>
+struct Output2FILE: CATEGORY {
     static FILE*& stream(){
 		static FILE* pStream = stderr;
 		return pStream;
@@ -114,6 +141,7 @@ struct Output2FILE {
 		fflush(pStream);
 	}
 };
+class DEFAULT {};
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)
 #   if defined (BUILDING_FILELOG_DLL)
@@ -127,17 +155,24 @@ struct Output2FILE {
 #   define FILELOG_DECLSPEC
 #endif // _WIN32
 
-class FILELOG_DECLSPEC Logger : public Log<Output2FILE> {};
-//typedef Log<Output2FILE> Logger;
 
 #ifndef FILELOG_MAX_LEVEL
 #define FILELOG_MAX_LEVEL logging::TRACE
 #endif
 
-#define LOG(level) \
-    if (level > FILELOG_MAX_LEVEL) ;\
-    else if (level > logging::Logger::reporting_level() || !logging::Output2FILE::stream()) ; \
-    else logging::Logger().get(level)
+#define LOGGER(CATEGORY) logging::Log<logging::Output2FILE<logging::CATEGORY>>
+#define LOG_OUTPUT(CATEGORY) logging::Output2FILE<logging::CATEGORY>
+
+#define LOG(LEVEL) \
+    if (logging::LEVEL > FILELOG_MAX_LEVEL) ;\
+    else if (logging::LEVEL > LOGGER(DEFAULT)::reporting_level() || !LOG_OUTPUT(DEFAULT)::stream()) ; \
+    else LOGGER(DEFAULT)().get(logging::LEVEL)
+
+#define CLOG(LEVEL, CATEGORY) \
+    if (logging::LEVEL > FILELOG_MAX_LEVEL) ;\
+    else if (logging::LEVEL > LOGGER(CATEGORY)::reporting_level() || !LOG_OUTPUT(CATEGORY)::stream()) ; \
+    else LOGGER(CATEGORY)().get(logging::LEVEL,#CATEGORY)
+
 
 #if defined(WIN32)
 

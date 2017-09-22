@@ -27,6 +27,7 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
 #include "utilities.h"
+#include <sysc/report.h>
 #include <tlm.h>
 #include <tlm_utils/simple_target_socket.h>
 
@@ -53,7 +54,7 @@ private:
 };
 
 template<unsigned SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
-memory<SIZE,BUSWIDTH,LOG_ACCESS>::memory(const sc_core::sc_module_name& nm):sc_module(nm),SOCKET(socket) {
+memory<SIZE,BUSWIDTH,LOG_ACCESS>::memory(const sc_core::sc_module_name& nm):sc_module(nm),NAMED(socket) {
     // Register callback for incoming b_transport interface method call
     socket.register_b_transport(this, &memory::b_transport);
     socket.register_transport_dbg(this, &memory::transport_dbg);
@@ -95,9 +96,9 @@ int memory<SIZE,BUSWIDTH,LOG_ACCESS>::handle_operation(tlm::tlm_generic_payload&
     tlm::tlm_command cmd = trans.get_command();
     if(LOG_ACCESS){
         if(adr>=0x20 && adr<0x60)
-            LOG(logging::warning)<<(cmd==tlm::TLM_READ_COMMAND?"read":"write")<<" access to addr 0x"<<std::hex<<adr-0x20<<"(0x"<<(adr)<<")"<<std::dec;
+            LOG(WARNING)<<(cmd==tlm::TLM_READ_COMMAND?"read":"write")<<" access to addr 0x"<<std::hex<<adr-0x20<<"(0x"<<(adr)<<")"<<std::dec;
         else
-            LOG(logging::warning)<<(cmd==tlm::TLM_READ_COMMAND?"read":"write")<<" access to addr 0x"<<std::hex<<adr<<std::dec;
+            LOG(WARNING)<<(cmd==tlm::TLM_READ_COMMAND?"read":"write")<<" access to addr 0x"<<std::hex<<adr<<std::dec;
     }
     if (cmd == tlm::TLM_READ_COMMAND)
         memcpy(ptr, mem + adr, len);

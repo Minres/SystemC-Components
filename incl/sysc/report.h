@@ -30,6 +30,9 @@
 #include <iomanip>
 
 
+namespace logging {
+struct SystemC {};
+}
 namespace sysc {
 
 namespace log=logging;
@@ -45,6 +48,11 @@ template <typename T>
 class Log: public logging::Log<T>{
 public:
     Log(){};
+
+
+    Log(const Log&) = delete;
+
+    Log& operator =(const Log&) = delete;
 
     /**
      *
@@ -63,7 +71,7 @@ public:
 
 };
 
-class FILELOG_DECLSPEC Logger : public Log<logging::Output2FILE> {
+class FILELOG_DECLSPEC Logger : public Log<logging::Output2FILE<log::SystemC>> {
     static std::once_flag once;
 public:
     /**
@@ -73,17 +81,16 @@ public:
      */
     static logging::log_level& reporting_level(){
         std::call_once(once, [](){ init_logging();});
-        return logging::Log<logging::Output2FILE>::reporting_level();
+        return logging::Log<logging::Output2FILE<log::SystemC>>::reporting_level();
     }
 };
 
 }
 
 #undef LOG
-#define LOG(level) \
-        if (level > FILELOG_MAX_LEVEL) ;\
-        else if (level > logging::Logger::reporting_level() || !logging::Output2FILE::stream()) ; \
-        else sysc::Logger().get(level)
-
+#define LOG(LEVEL) \
+        if (logging::LEVEL > FILELOG_MAX_LEVEL) ;\
+        else if (logging::LEVEL > LOGGER(SystemC)::reporting_level() || !LOG_OUTPUT(SystemC)::stream()) ; \
+        else LOGGER(SystemC)().get(logging::LEVEL)
 
 #endif /* _SYSC_REPORT_H_ */
