@@ -54,10 +54,10 @@ namespace logging {
 static const char *const buffer[] = {LEVELS(DO_DESCRIPTION)};
 enum log_level { LEVELS(DO_ENUM) };
 
-inline log_level as_log_level(int l) {
-    assert(l >= NONE && l <= TRACE);
+inline log_level as_log_level(int logLevel) {
+    assert(logLevel >= NONE && logLevel <= TRACE);
     const log_level m[] = {NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE};
-    return m[l];
+    return m[logLevel];
 }
 
 inline std::string now_time();

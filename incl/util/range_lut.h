@@ -126,7 +126,7 @@ template <typename T> inline void range_lut<T>::addEntry(T i, uint64_t base_addr
     auto iter = lut.find(base_addr);
     if (iter != lut.end() && iter->second.index != null_entry) throw std::runtime_error("range already mapped");
 
-    uint64_t eaddr = base_addr + size - 1;
+    auto eaddr = base_addr + size - 1;
     if (eaddr < base_addr) throw std::runtime_error("address wrap-around occurred");
 
     lut[base_addr] = lut_entry{i, size > 1 ? BEGIN_RANGE : SINGLE_BYTE_RANGE};
@@ -134,26 +134,22 @@ template <typename T> inline void range_lut<T>::addEntry(T i, uint64_t base_addr
 }
 
 template <typename T> inline bool range_lut<T>::removeEntry(T i) {
-    throw std::exception();
-    //    auto iter = rlut.find(i);
-    //    if (iter != rlut.end()) {
-    //        uint64_t baddr = iter->second;
-    //        auto beg_iter = lut.find(baddr);
-    //        if (beg_iter->second.type == SINGLE_BYTE_RANGE) {
-    //            lut.erase(beg_iter);
-    //        } else {
-    //            auto end_iter = beg_iter;
-    //            ++end_iter;
-    //            lut.erase(beg_iter, ++end_iter);
-    //        }
-    //        rlut.erase(iter);
-    //        return true;
-    //    }
+    auto start = lut.begin();
+    while(start->second.index != i && start != lut.end()) start++;
+    if (start != lut.end()) {
+        if(start->second.type == SINGLE_BYTE_RANGE){
+            lut.erase(start);
+        } else {
+            auto  end = start+2;
+            lut.erase(start, end);
+        }
+        return true;
+    }
     return false;
 }
 
 template <typename T> inline void range_lut<T>::validate() {
-    bool mapped = false;
+    auto mapped = false;
     for (auto iter = lut.begin(); iter != lut.end(); iter++) {
         switch (iter->second.type) {
         case SINGLE_BYTE_RANGE:
