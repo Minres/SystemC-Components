@@ -92,7 +92,7 @@ template <unsigned BUSWIDTH = 32> struct target_memory_map_entry {
 };
 
 template <unsigned int BUSWIDTH = 32, unsigned RANGES = 1> struct tlm_multi_rangetarget : public tlm_target<BUSWIDTH> {
-    using this_type =  tlm_multi_rangetarget<BUSWIDTH, RANGES>;
+    using this_type = tlm_multi_rangetarget<BUSWIDTH, RANGES>;
 
     tlm_multi_rangetarget(sc_core::sc_time &clock, std::array<addr_range, RANGES> addr_rngs)
         : tlm_target<BUSWIDTH>(clock), addr_ranges(addr_rngs) {}

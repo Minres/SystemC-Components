@@ -28,13 +28,9 @@ struct tlm_gp_data {
     //---------------
 
     // Default constructor
-    tlm_gp_data()
-        : m_extensions(tlm::max_num_extensions()) {
-    }
+    tlm_gp_data() : m_extensions(tlm::max_num_extensions()) {}
 
-    explicit tlm_gp_data(tlm::tlm_mm_interface *mm)
-        : m_extensions(tlm::max_num_extensions()) {
-    }
+    explicit tlm_gp_data(tlm::tlm_mm_interface *mm) : m_extensions(tlm::max_num_extensions()) {}
 
     int get_ref_count() const { return m_ref_count; }
 
@@ -146,7 +142,7 @@ public:
                 if (byte_enable_length == 8 && data_length % 8 == 0) {
                     // Optimized implementation copies 64-bit words by masking
                     for (unsigned int i = 0; i < data_length; i += 8) {
-                        using u = sc_dt::uint64*;
+                        using u = sc_dt::uint64 *;
                         *reinterpret_cast<u>(&data[i]) &= ~*reinterpret_cast<u>(byte_enable);
                         *reinterpret_cast<u>(&data[i]) |=
                             *reinterpret_cast<u>(&other.get_data_ptr()[i]) & *reinterpret_cast<u>(byte_enable);

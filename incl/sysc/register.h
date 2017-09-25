@@ -26,6 +26,7 @@
 #include "resetable.h"
 #include "resource_access_if.h"
 #include "utilities.h"
+#include <memory>
 
 #include <functional>
 #include <limits>

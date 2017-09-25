@@ -36,11 +36,11 @@
 #define _UTIL_LOGGING_H_
 
 #include <cassert>
+#include <cstdio>
 #include <cstring>
 #include <iterator>
 #include <mutex>
 #include <sstream>
-#include <cstdio>
 #include <string>
 #include <sys/time.h>
 #include <vector>

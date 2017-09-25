@@ -32,9 +32,9 @@ template <typename base_type, typename TYPES = tlm::tlm_base_protocol_types> cla
 
 public:
     using transaction_type = typename TYPES::tlm_payload_type;
-    using phase_type = typename TYPES::tlm_phase_type ;
+    using phase_type = typename TYPES::tlm_phase_type;
     using sync_enum_type = tlm::tlm_sync_enum;
-    using fw_interface_type = tlm::tlm_fw_transport_if<TYPES> ;
+    using fw_interface_type = tlm::tlm_fw_transport_if<TYPES>;
     using bw_interface_type = tlm::tlm_bw_transport_if<TYPES>;
 
 public:

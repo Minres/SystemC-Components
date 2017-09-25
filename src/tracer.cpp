@@ -119,7 +119,7 @@ void tracer::try_trace_signal(sc_core::sc_object *obj) {
 #undef GEN_TRACE
 #define GEN_TRACE(X)                                                                                                   \
     {                                                                                                                  \
-        auto* sig = dynamic_cast<sc_core::sc_signal<X> *>(obj);                                       \
+        auto *sig = dynamic_cast<sc_core::sc_signal<X> *>(obj);                                                        \
         if (sig) sc_core::sc_trace(trf, sig->read(), std::string(sig->name()));                                        \
     }
     GEN_TRACE_STD;
@@ -130,7 +130,7 @@ void tracer::try_trace_port(sc_core::sc_object *obj) {
 #undef GEN_TRACE
 #define GEN_TRACE(X)                                                                                                   \
     {                                                                                                                  \
-        auto* in_port = dynamic_cast<sc_core::sc_in<X> *>(obj);                                           \
+        auto *in_port = dynamic_cast<sc_core::sc_in<X> *>(obj);                                                        \
         if (in_port) {                                                                                                 \
             sc_core::sc_trace(trf, *in_port, std::string(in_port->name()));                                            \
             return;                                                                                                    \
@@ -141,7 +141,7 @@ void tracer::try_trace_port(sc_core::sc_object *obj) {
 #undef GEN_TRACE
 #define GEN_TRACE(X)                                                                                                   \
     {                                                                                                                  \
-        auto* io_port = dynamic_cast<sc_core::sc_inout<X> *>(obj);                                     \
+        auto *io_port = dynamic_cast<sc_core::sc_inout<X> *>(obj);                                                     \
         if (io_port) {                                                                                                 \
             sc_core::sc_trace(trf, *io_port, std::string(io_port->name()));                                            \
             return;                                                                                                    \

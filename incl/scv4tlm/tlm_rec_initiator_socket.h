@@ -51,16 +51,16 @@ class tlm_rec_initiator_socket : public tlm::tlm_initiator_socket<BUSWIDTH, TYPE
 
 public:
     using fw_interface_type = tlm::tlm_fw_transport_if<TYPES>;
-    using bw_interface_type =tlm::tlm_bw_transport_if<TYPES> ;
+    using bw_interface_type = tlm::tlm_bw_transport_if<TYPES>;
     using port_type = sc_core::sc_port<fw_interface_type, N
 #if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)
-                             ,POL
+                                       ,
+                                       POL
 #endif
-                             >
-        ;
+                                       >;
     using export_type = sc_core::sc_export<bw_interface_type>;
-    using base_target_socket_type = tlm::tlm_base_target_socket_b<BUSWIDTH, fw_interface_type, bw_interface_type> ;
-    using base_type = tlm::tlm_base_initiator_socket_b<BUSWIDTH, fw_interface_type, bw_interface_type> ;
+    using base_target_socket_type = tlm::tlm_base_target_socket_b<BUSWIDTH, fw_interface_type, bw_interface_type>;
+    using base_type = tlm::tlm_base_initiator_socket_b<BUSWIDTH, fw_interface_type, bw_interface_type>;
 
     tlm_rec_initiator_socket()
         : tlm::tlm_initiator_socket<BUSWIDTH, TYPES, N

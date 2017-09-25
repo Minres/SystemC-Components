@@ -135,12 +135,12 @@ template <typename T> inline void range_lut<T>::addEntry(T i, uint64_t base_addr
 
 template <typename T> inline bool range_lut<T>::removeEntry(T i) {
     auto start = lut.begin();
-    while(start->second.index != i && start != lut.end()) start++;
+    while (start->second.index != i && start != lut.end()) start++;
     if (start != lut.end()) {
-        if(start->second.type == SINGLE_BYTE_RANGE){
+        if (start->second.type == SINGLE_BYTE_RANGE) {
             lut.erase(start);
         } else {
-            auto  end = start+2;
+            auto end = start + 2;
             lut.erase(start, end);
         }
         return true;

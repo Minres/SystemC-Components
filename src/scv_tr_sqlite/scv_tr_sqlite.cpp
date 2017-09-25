@@ -117,7 +117,8 @@ static void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason,
             // my_sqlite_file_name << endl;
             db.exec("CREATE TABLE  IF NOT EXISTS " STREAM_TABLE
                     "(id INTEGER  NOT nullptr PRIMARY KEY, name TEXT, kind TEXT);");
-            db.exec("CREATE TABLE  IF NOT EXISTS " GENERATOR_TABLE "(id INTEGER  NOT nullptr PRIMARY KEY, stream INTEGER "
+            db.exec("CREATE TABLE  IF NOT EXISTS " GENERATOR_TABLE
+                    "(id INTEGER  NOT nullptr PRIMARY KEY, stream INTEGER "
                     "REFERENCES " STREAM_TABLE "(id), name TEXT, begin_attr INTEGER, end_attr INTEGER);");
             db.exec("CREATE TABLE  IF NOT EXISTS " TX_TABLE "(id INTEGER  NOT nullptr PRIMARY KEY, generator INTEGER "
                     "REFERENCES " GENERATOR_TABLE "(id), stream INTEGER REFERENCES " STREAM_TABLE

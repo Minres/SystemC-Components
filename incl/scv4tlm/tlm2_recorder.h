@@ -48,7 +48,7 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct tlm2_extensions_
      */
     virtual void recordEndTx(scv_tr_handle &handle, typename TYPES::tlm_payload_type &payload) = 0;
 
-    virtual ~tlm2_extensions_recording_if()= default;
+    virtual ~tlm2_extensions_recording_if() = default;
 };
 /*! \brief The TLM2 transaction recorder
  *
@@ -105,7 +105,7 @@ public:
           nb_bw_trHandle(3), nb_txRespHandle(3), dmi_streamHandle(NULL), dmi_trGetHandle(NULL),
           dmi_trInvalidateHandle(NULL), extensionRecording(NULL) {}
 
-    virtual ~tlm2_recorder() override{
+    virtual ~tlm2_recorder() override {
         delete b_streamHandle;
         delete b_streamHandleTimed;
         for (size_t i = 0; i < b_trTimedHandle.size(); ++i) delete b_trTimedHandle[i];
@@ -224,7 +224,7 @@ private:
             }
             return (tlm_recording_payload *)ptr;
         }
-        void free(tlm::tlm_generic_payload *trans) override{
+        void free(tlm::tlm_generic_payload *trans) override {
             trans->reset();
             if (!empties) {
                 empties = new access;

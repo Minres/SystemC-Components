@@ -54,10 +54,10 @@ public:
     using bw_interface_type = tlm::tlm_bw_transport_if<TYPES>;
     using port_type = sc_core::sc_port<bw_interface_type, N
 #if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)
-                             ,
-                             POL
+                                       ,
+                                       POL
 #endif
-                             >;
+                                       >;
 
     using export_type = sc_core::sc_export<fw_interface_type>;
     using base_initiator_socket_type = tlm::tlm_base_initiator_socket_b<BUSWIDTH, fw_interface_type, bw_interface_type>;

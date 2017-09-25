@@ -12,7 +12,7 @@ using namespace sc_core;
 
 static const std::string compose_message(const sc_report &rep) {
     std::stringstream os;
-    auto* srr = dynamic_cast<sr_report *>(const_cast<sc_report *>(&rep));
+    auto *srr = dynamic_cast<sr_report *>(const_cast<sc_report *>(&rep));
     if (srr) {
         for (std::vector<v::pair>::const_iterator iter = srr->pairs.begin(); iter != srr->pairs.end(); iter++) {
             os << '[' << iter->name << ':';
