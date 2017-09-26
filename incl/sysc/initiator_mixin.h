@@ -33,11 +33,17 @@ public:
     using bw_interface_type = tlm::tlm_bw_transport_if<TYPES>;
 
 public:
-    initiator_mixin() : BASE_TYPE(sc_core::sc_gen_unique_name("initiator_mixin_socket")), bw_if(this->name()) {
+    initiator_mixin()
+    : BASE_TYPE(sc_core::sc_gen_unique_name("initiator_mixin_socket"))
+    , bw_if(this->name()) {
         this->m_export.bind(bw_if);
     }
 
-    explicit initiator_mixin(const char *n) : BASE_TYPE(n), bw_if(this->name()) { this->m_export.bind(bw_if); }
+    explicit initiator_mixin(const char *n)
+    : BASE_TYPE(n)
+    , bw_if(this->name()) {
+        this->m_export.bind(bw_if);
+    }
     /**
      *
      * @param cb the callback function
@@ -60,7 +66,10 @@ private:
         using transport_fct = std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)>;
         using invalidate_dmi_fct = std::function<void(sc_dt::uint64, sc_dt::uint64)>;
 
-        bw_transport_if(const std::string &name) : m_name(name), m_transport_ptr(0), m_invalidate_direct_mem_ptr(0) {}
+        bw_transport_if(const std::string &name)
+        : m_name(name)
+        , m_transport_ptr(0)
+        , m_invalidate_direct_mem_ptr(0) {}
 
         void set_transport_function(transport_fct p) {
             if (m_transport_ptr) {

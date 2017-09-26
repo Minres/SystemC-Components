@@ -95,9 +95,12 @@ template <unsigned int BUSWIDTH = 32, unsigned RANGES = 1> struct tlm_multi_rang
     using this_type = tlm_multi_rangetarget<BUSWIDTH, RANGES>;
 
     tlm_multi_rangetarget(sc_core::sc_time &clock, std::array<addr_range, RANGES> addr_rngs)
-        : tlm_target<BUSWIDTH>(clock), addr_ranges(addr_rngs) {}
+    : tlm_target<BUSWIDTH>(clock)
+    , addr_ranges(addr_rngs) {}
 
-    tlm_multi_rangetarget(sc_core::sc_time &clock) : tlm_target<BUSWIDTH>(clock), addr_ranges({}) {}
+    tlm_multi_rangetarget(sc_core::sc_time &clock)
+    : tlm_target<BUSWIDTH>(clock)
+    , addr_ranges({}) {}
 
     const std::array<addr_range, RANGES> addr_ranges;
 
@@ -109,7 +112,9 @@ protected:
 
 template <unsigned int BUSWIDTH>
 inline sysc::tlm_target<BUSWIDTH>::tlm_target(sc_core::sc_time &clock)
-    : socket("socket"), clk(clock), socket_map(std::make_pair(nullptr, 0)) {
+: socket("socket")
+, clk(clock)
+, socket_map(std::make_pair(nullptr, 0)) {
     socket.register_b_transport(
         [=](tlm::tlm_generic_payload &gp, sc_core::sc_time &delay) -> void { this->b_tranport_cb(gp, delay); });
     socket.register_transport_dbg([=](tlm::tlm_generic_payload &gp) -> unsigned { return this->tranport_dbg_cb(gp); });

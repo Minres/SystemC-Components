@@ -97,13 +97,28 @@ public:
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
     tlm2_recorder(const char *name, bool recording_enabled = true, scv_tr_db *tr_db = scv_tr_db::get_default_db())
-        : sc_core::sc_object(name), enable("enable", recording_enabled), enableTimed("enableTimed", recording_enabled),
-          fw_port(sc_core::sc_gen_unique_name("fw")), bw_port(sc_core::sc_gen_unique_name("bw")),
-          mm(new RecodingMemoryManager()), b_timed_peq(this, &tlm2_recorder::btx_cb),
-          nb_timed_peq(this, &tlm2_recorder::nbtx_cb), m_db(tr_db), b_streamHandle(NULL), b_streamHandleTimed(NULL),
-          b_trTimedHandle(3), nb_streamHandle(2), nb_streamHandleTimed(2), nb_fw_trHandle(3), nb_txReqHandle(3),
-          nb_bw_trHandle(3), nb_txRespHandle(3), dmi_streamHandle(NULL), dmi_trGetHandle(NULL),
-          dmi_trInvalidateHandle(NULL), extensionRecording(NULL) {}
+    : sc_core::sc_object(name)
+    , enable("enable", recording_enabled)
+    , enableTimed("enableTimed", recording_enabled)
+    , fw_port(sc_core::sc_gen_unique_name("fw"))
+    , bw_port(sc_core::sc_gen_unique_name("bw"))
+    , mm(new RecodingMemoryManager())
+    , b_timed_peq(this, &tlm2_recorder::btx_cb)
+    , nb_timed_peq(this, &tlm2_recorder::nbtx_cb)
+    , m_db(tr_db)
+    , b_streamHandle(NULL)
+    , b_streamHandleTimed(NULL)
+    , b_trTimedHandle(3)
+    , nb_streamHandle(2)
+    , nb_streamHandleTimed(2)
+    , nb_fw_trHandle(3)
+    , nb_txReqHandle(3)
+    , nb_bw_trHandle(3)
+    , nb_txRespHandle(3)
+    , dmi_streamHandle(NULL)
+    , dmi_trGetHandle(NULL)
+    , dmi_trInvalidateHandle(NULL)
+    , extensionRecording(NULL) {}
 
     virtual ~tlm2_recorder() override {
         delete b_streamHandle;
@@ -208,11 +223,16 @@ private:
             this->set_streaming_width(x.get_streaming_width());
             return (*this);
         }
-        explicit tlm_recording_payload(tlm::tlm_mm_interface *mm) : TYPES::tlm_payload_type(mm), parent(), id(0) {}
+        explicit tlm_recording_payload(tlm::tlm_mm_interface *mm)
+        : TYPES::tlm_payload_type(mm)
+        , parent()
+        , id(0) {}
     };
     //! \brief Memory manager for the tlm_recording_payload
     struct RecodingMemoryManager : public tlm::tlm_mm_interface {
-        RecodingMemoryManager() : free_list(0), empties(0) {}
+        RecodingMemoryManager()
+        : free_list(0)
+        , empties(0) {}
         tlm_recording_payload *allocate() {
             typename TYPES::tlm_payload_type *ptr;
             if (free_list) {

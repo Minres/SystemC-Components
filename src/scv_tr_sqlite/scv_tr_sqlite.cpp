@@ -31,7 +31,9 @@ using namespace std;
 
 struct SQLiteDB {
     struct SQLiteException : public runtime_error {
-        SQLiteException(const int nErrCode, const char *msg, bool doFree = true) : runtime_error(msg), mnErrCode(0) {
+        SQLiteException(const int nErrCode, const char *msg, bool doFree = true)
+        : runtime_error(msg)
+        , mnErrCode(0) {
             if (doFree && msg) sqlite3_free(const_cast<char *>(msg));
         }
         const int errorCode() { return mnErrCode; }

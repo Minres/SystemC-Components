@@ -129,8 +129,13 @@ protected:
 
 template <unsigned BUSWIDTH>
 router<BUSWIDTH>::router(const sc_core::sc_module_name &nm, unsigned slave_cnt, unsigned master_cnt)
-    : sc_module(nm), target("target", master_cnt), initiator("intor", slave_cnt), ibases(master_cnt),
-      tranges(slave_cnt), mutexes(slave_cnt), addr_decoder(std::numeric_limits<unsigned>::max()) {
+: sc_module(nm)
+, target("target", master_cnt)
+, initiator("intor", slave_cnt)
+, ibases(master_cnt)
+, tranges(slave_cnt)
+, mutexes(slave_cnt)
+, addr_decoder(std::numeric_limits<unsigned>::max()) {
     for (size_t i = 0; i < target.size(); ++i) {
         target[i].register_b_transport([=](tlm::tlm_generic_payload &trans, sc_core::sc_time &delay) -> void {
             this->b_transport(i, trans, delay);

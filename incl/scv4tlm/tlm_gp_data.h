@@ -28,9 +28,11 @@ struct tlm_gp_data {
     //---------------
 
     // Default constructor
-    tlm_gp_data() : m_extensions(tlm::max_num_extensions()) {}
+    tlm_gp_data()
+    : m_extensions(tlm::max_num_extensions()) {}
 
-    explicit tlm_gp_data(tlm::tlm_mm_interface *mm) : m_extensions(tlm::max_num_extensions()) {}
+    explicit tlm_gp_data(tlm::tlm_mm_interface *mm)
+    : m_extensions(tlm::max_num_extensions()) {}
 
     int get_ref_count() const { return m_ref_count; }
 
@@ -41,19 +43,35 @@ struct tlm_gp_data {
     };
 
     tlm_gp_data(const tlm::tlm_generic_payload &x)
-        : address(x.get_address()), command(x.get_command()), data(x.get_data_ptr()), data_length(x.get_data_length()),
-          response_status(x.get_response_status()), dmi(x.is_dmi_allowed()), byte_enable(x.get_byte_enable_ptr()),
-          byte_enable_length(x.get_byte_enable_length()), streaming_width(x.get_streaming_width()),
-          gp_option(x.get_gp_option()), m_extensions(tlm::max_num_extensions()), m_ref_count(0) {}
+    : address(x.get_address())
+    , command(x.get_command())
+    , data(x.get_data_ptr())
+    , data_length(x.get_data_length())
+    , response_status(x.get_response_status())
+    , dmi(x.is_dmi_allowed())
+    , byte_enable(x.get_byte_enable_ptr())
+    , byte_enable_length(x.get_byte_enable_length())
+    , streaming_width(x.get_streaming_width())
+    , gp_option(x.get_gp_option())
+    , m_extensions(tlm::max_num_extensions())
+    , m_ref_count(0) {}
 
 private:
     // disabled copy ctor and assignment operator.
     // Copy constructor
     tlm_gp_data(const tlm_gp_data &x)
-        : address(x.get_address()), command(x.get_command()), data(x.get_data_ptr()), data_length(x.get_data_length()),
-          response_status(x.get_response_status()), dmi(x.is_dmi_allowed()), byte_enable(x.get_byte_enable_ptr()),
-          byte_enable_length(x.get_byte_enable_length()), streaming_width(x.get_streaming_width()),
-          gp_option(x.gp_option), m_extensions(tlm::max_num_extensions()), m_ref_count(0) {}
+    : address(x.get_address())
+    , command(x.get_command())
+    , data(x.get_data_ptr())
+    , data_length(x.get_data_length())
+    , response_status(x.get_response_status())
+    , dmi(x.is_dmi_allowed())
+    , byte_enable(x.get_byte_enable_ptr())
+    , byte_enable_length(x.get_byte_enable_length())
+    , streaming_width(x.get_streaming_width())
+    , gp_option(x.gp_option)
+    , m_extensions(tlm::max_num_extensions())
+    , m_ref_count(0) {}
 
 public:
     // Assignment operator needed for SCV introspection
@@ -421,10 +439,12 @@ struct tlm_dmi_data {
     tlm_dmi_data() = default;
 
     tlm_dmi_data(tlm::tlm_dmi &dmi_data)
-        : dmi_ptr(dmi_data.get_dmi_ptr()), dmi_start_address(dmi_data.get_start_address()),
-          dmi_end_address(dmi_data.get_end_address()), dmi_access(dmi_data.get_granted_access()),
-          dmi_read_latency(dmi_data.get_read_latency().value()),
-          dmi_write_latency(dmi_data.get_write_latency().value()) {}
+    : dmi_ptr(dmi_data.get_dmi_ptr())
+    , dmi_start_address(dmi_data.get_start_address())
+    , dmi_end_address(dmi_data.get_end_address())
+    , dmi_access(dmi_data.get_granted_access())
+    , dmi_read_latency(dmi_data.get_read_latency().value())
+    , dmi_write_latency(dmi_data.get_write_latency().value()) {}
     //--------------
     // Destructor
     //--------------

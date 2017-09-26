@@ -97,7 +97,9 @@ template <typename T, int BaseOffset, int BitsPerItem, int NumItems> struct BitF
         int offset;
 
     public:
-        Element(T &value, int offset) : value(value), offset(offset) {}
+        Element(T &value, int offset)
+        : value(value)
+        , offset(offset) {}
         T mask() const { return Maximum << offset; }
 
         operator T() const { return (value >> offset) & Maximum; }

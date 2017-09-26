@@ -59,7 +59,8 @@ public:
      * constructor or the lookup table
      * @param null_entry the entry to be used for empty slots
      */
-    range_lut(T null_entry) : null_entry(null_entry) {}
+    range_lut(T null_entry)
+    : null_entry(null_entry) {}
     /**
      * add an T to the lut covering the range starting at base_addr until
      * base_addr+size-1

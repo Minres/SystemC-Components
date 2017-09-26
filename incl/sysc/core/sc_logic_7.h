@@ -106,15 +106,20 @@ public:
 
     sc_logic_7(const sc_logic_7 &a) = default;
 
-    sc_logic_7(sc_logic_7_value_t v) : m_val(to_value(v)) {}
+    sc_logic_7(sc_logic_7_value_t v)
+    : m_val(to_value(v)) {}
 
-    explicit sc_logic_7(bool a) : m_val(to_value(a)) {}
+    explicit sc_logic_7(bool a)
+    : m_val(to_value(a)) {}
 
-    explicit sc_logic_7(char a) : m_val(to_value(a)) {}
+    explicit sc_logic_7(char a)
+    : m_val(to_value(a)) {}
 
-    explicit sc_logic_7(int a) : m_val(to_value(a)) {}
+    explicit sc_logic_7(int a)
+    : m_val(to_value(a)) {}
 
-    explicit sc_logic_7(const ::sc_dt::sc_bit &a) : m_val(to_value(a.to_bool())) {}
+    explicit sc_logic_7(const ::sc_dt::sc_bit &a)
+    : m_val(to_value(a.to_bool())) {}
 
     // destructor
 

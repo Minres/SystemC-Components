@@ -18,10 +18,11 @@ using namespace sc_core;
 namespace sysc {
 
 tracer::tracer(std::string &&name, file_type type, bool enable)
-    : sc_core::sc_module(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer"))), enabled(enable), trf(nullptr)
+: sc_core::sc_module(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
+, enabled(enable)
+, trf(nullptr)
 #ifdef WITH_SCV
-      ,
-      txdb(nullptr)
+, txdb(nullptr)
 #endif
 {
     if (enabled) {

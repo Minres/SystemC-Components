@@ -41,13 +41,17 @@ public:
     /**
      *
      */
-    target_mixin() : target_mixin(sc_core::sc_gen_unique_name("simple_target_socket")) {}
+    target_mixin()
+    : target_mixin(sc_core::sc_gen_unique_name("simple_target_socket")) {}
     /**
      *
      * @param n
      */
     explicit target_mixin(const char *n)
-        : base_type(n), m_fw_process(this), m_bw_process(this), m_current_transaction(nullptr) {
+    : base_type(n)
+    , m_fw_process(this)
+    , m_bw_process(this)
+    , m_current_transaction(nullptr) {
         bind(m_fw_process);
     }
 
@@ -108,7 +112,8 @@ private:
     // Needed to detect transaction end when called from b_transport.
     class bw_process : public tlm::tlm_bw_transport_if<TYPES> {
     public:
-        bw_process(target_mixin *p_own) : m_owner(p_own) {}
+        bw_process(target_mixin *p_own)
+        : m_owner(p_own) {}
 
         sync_enum_type nb_transport_bw(transaction_type &trans, phase_type &phase, sc_core::sc_time &t) {
             typename std::map<transaction_type *, sc_core::sc_event *>::iterator it;
@@ -157,9 +162,14 @@ private:
         using GetDirectMemPtr = std::function<bool(transaction_type &, tlm::tlm_dmi &)>;
 
         fw_process(target_mixin *p_own)
-            : m_name(p_own->name()), m_owner(p_own), m_nb_transport_ptr(0), m_b_transport_ptr(0),
-              m_transport_dbg_ptr(0), m_get_direct_mem_ptr(0), m_peq(sc_core::sc_gen_unique_name("m_peq")),
-              m_response_in_progress(false) {
+        : m_name(p_own->name())
+        , m_owner(p_own)
+        , m_nb_transport_ptr(0)
+        , m_b_transport_ptr(0)
+        , m_transport_dbg_ptr(0)
+        , m_get_direct_mem_ptr(0)
+        , m_peq(sc_core::sc_gen_unique_name("m_peq"))
+        , m_response_in_progress(false) {
             sc_core::sc_spawn_options opts;
             opts.set_sensitivity(&m_peq.get_event());
             sc_core::sc_spawn(sc_bind(&fw_process::b2nb_thread, this), sc_core::sc_gen_unique_name("b2nb_thread"),
@@ -317,7 +327,9 @@ private:
 
         class process_handle_class {
         public:
-            explicit process_handle_class(transaction_type *trans) : m_trans(trans), m_suspend(false) {}
+            explicit process_handle_class(transaction_type *trans)
+            : m_trans(trans)
+            , m_suspend(false) {}
 
             transaction_type *m_trans;
             sc_core::sc_event m_e;

@@ -66,7 +66,9 @@ struct tlm_recording_extension : public tlm::tlm_extension<tlm_recording_extensi
      * \param creator_ is the pointer to the owner of this extension (usually an
      * instance of scv_tlm2_recorder).
      */
-    tlm_recording_extension(scv_tr_handle handle, void *creator_) : txHandle(handle), creator(creator_) {}
+    tlm_recording_extension(scv_tr_handle handle, void *creator_)
+    : txHandle(handle)
+    , creator(creator_) {}
     /*! \brief accessor to the owner, the property is read only.
      *
      */

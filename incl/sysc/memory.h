@@ -53,7 +53,9 @@ private:
 };
 
 template <unsigned SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
-memory<SIZE, BUSWIDTH, LOG_ACCESS>::memory(const sc_core::sc_module_name &nm) : sc_module(nm), NAMED(socket) {
+memory<SIZE, BUSWIDTH, LOG_ACCESS>::memory(const sc_core::sc_module_name &nm)
+: sc_module(nm)
+, NAMED(socket) {
     // Register callback for incoming b_transport interface method call
     socket.register_b_transport(this, &memory::b_transport);
     socket.register_transport_dbg(this, &memory::transport_dbg);

@@ -64,23 +64,23 @@ public:
     using base_type = tlm::tlm_base_target_socket_b<BUSWIDTH, fw_interface_type, bw_interface_type>;
 
     tlm_rec_target_socket()
-        : tlm::tlm_target_socket<BUSWIDTH, TYPES, N
+    : tlm::tlm_target_socket<BUSWIDTH, TYPES, N
 #if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)
-                                 ,
-                                 POL
+                             ,
+                             POL
 #endif
-                                 >(),
-          recorder() {
+                             >()
+    , recorder() {
     }
 
     explicit tlm_rec_target_socket(const char *name)
-        : tlm::tlm_target_socket<BUSWIDTH, TYPES, N
+    : tlm::tlm_target_socket<BUSWIDTH, TYPES, N
 #if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)
-                                 ,
-                                 POL
+                             ,
+                             POL
 #endif
-                                 >(name),
-          recorder(gen_name(name, "rec").c_str()) {
+                             >(name)
+    , recorder(gen_name(name, "rec").c_str()) {
     }
 
     virtual ~tlm_rec_target_socket() = default;

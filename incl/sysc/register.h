@@ -70,7 +70,11 @@ struct sc_register : public sc_core::sc_object, public resource_access_if, publi
      */
     sc_register(sc_core::sc_module_name nm, DATATYPE &storage, const DATATYPE reset_val, resetable &owner,
                 DATATYPE rdmask = get_max_uval<DATATYPE>(), DATATYPE wrmask = get_max_uval<DATATYPE>())
-        : sc_core::sc_object(nm), res_val(reset_val), rdmask(rdmask), wrmask(wrmask), storage(storage) {
+    : sc_core::sc_object(nm)
+    , res_val(reset_val)
+    , rdmask(rdmask)
+    , wrmask(wrmask)
+    , storage(storage) {
         owner.register_resource(this);
     }
     /**
@@ -278,7 +282,7 @@ template <typename DATATYPE, DATATYPE WRMASK = impl::get_max_uval<DATATYPE>(),
 struct sc_register_masked : public sc_register<DATATYPE> {
 
     sc_register_masked(sc_core::sc_module_name nm, DATATYPE &storage, const DATATYPE reset_val, resetable &owner)
-        : sc_register<DATATYPE>(nm, storage, reset_val, owner, RDMASK, WRMASK) {}
+    : sc_register<DATATYPE>(nm, storage, reset_val, owner, RDMASK, WRMASK) {}
 };
 }
 
