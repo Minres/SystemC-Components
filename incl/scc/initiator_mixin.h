@@ -17,12 +17,12 @@
 #ifndef _SYSC_INITIATOR_MIXIN_H__
 #define _SYSC_INITIATOR_MIXIN_H__
 
-#include "utilities.h"
 #include <functional>
 #include <sstream>
 #include <tlm>
+#include "scc/utilities.h"
 
-namespace sysc {
+namespace scc {
 
 template <typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types> class initiator_mixin : public BASE_TYPE {
 public:

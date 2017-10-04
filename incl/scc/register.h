@@ -23,15 +23,15 @@
 #ifndef _SYSC_REGISTER_H_
 #define _SYSC_REGISTER_H_
 
-#include "resetable.h"
-#include "resource_access_if.h"
-#include "utilities.h"
 #include <memory>
 
 #include <functional>
 #include <limits>
+#include "scc/resetable.h"
+#include "scc/resource_access_if.h"
+#include "scc/utilities.h"
 
-namespace sysc {
+namespace scc {
 
 namespace impl {
 

@@ -20,8 +20,9 @@
  *      Author: ubuntu
  */
 
+#include "scc/report.h"
+
 #include <sr_report/sr_report.h>
-#include <sysc/report.h>
 
 using namespace sc_core;
 
@@ -85,7 +86,7 @@ static void report_handler(const sc_report &rep, const sc_actions &actions) {
     if (actions & SC_DISPLAY)
         if (map[rep.get_severity()] <= logging::Log<logging::Output2FILE<logging::SystemC>>::reporting_level() &&
             logging::Output2FILE<logging::SystemC>::stream())
-            sysc::Log<logging::Output2FILE<logging::SystemC>>().get(map[rep.get_severity()], "SystemC")
+            scc::Log<logging::Output2FILE<logging::SystemC>>().get(map[rep.get_severity()], "SystemC")
                 << compose_message(rep);
     //    if ( (actions & SC_LOG) && log_file_name ) {
     //        if ( !log_stream ) log_stream = new ::std::ofstream(log_file_name);
@@ -98,4 +99,4 @@ static void report_handler(const sc_report &rep, const sc_actions &actions) {
     if (actions & SC_THROW) throw rep;
 }
 
-void sysc::init_logging() { sc_report_handler::set_handler(report_handler); }
+void scc::init_logging() { sc_report_handler::set_handler(report_handler); }

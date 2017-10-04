@@ -25,14 +25,14 @@
 
 #include <iomanip>
 #include <sstream>
-#include <sysc/utilities.h>
 #include <sysc/utils/sc_report.h>
 #include <util/logging.h>
+#include "scc/utilities.h"
 
 namespace logging {
 struct SystemC {};
 }
-namespace sysc {
+namespace scc {
 
 namespace log = logging;
 /**
@@ -96,13 +96,13 @@ public:
 #define LOG(LEVEL)                                                                                                     \
     if (logging::LEVEL <= logging::Log<logging::Output2FILE<logging::SystemC>>::reporting_level() &&                   \
         LOG_OUTPUT(SystemC)::stream())                                                                                 \
-    sysc::Log<logging::Output2FILE<logging::SystemC>>().get(logging::LEVEL, "SystemC")
+    scc::Log<logging::Output2FILE<logging::SystemC>>().get(logging::LEVEL, "SystemC")
 
 #ifdef CLOG
 #undef CLOG
 #endif
 #define CLOG(LEVEL, CATEGORY)                                                                                          \
     if (logging::LEVEL <= LOGGER(CATEGORY)::reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                       \
-    sysc::Log<logging::Output2FILE<logging::CATEGORY>>().get(logging::LEVEL, #CATEGORY)
+    scc::Log<logging::Output2FILE<logging::CATEGORY>>().get(logging::LEVEL, #CATEGORY)
 
 #endif /* _SYSC_REPORT_H_ */

@@ -23,25 +23,25 @@
 #ifndef _SYSC_ROUTER_H_
 #define _SYSC_ROUTER_H_
 
-#include "utilities.h"
 #include <util/range_lut.h>
+#include "scc/utilities.h"
 // pragmas to disable the deprecated warnings for SystemC headers
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #include <scv4tlm/tlm_rec_initiator_socket.h>
 #include <scv4tlm/tlm_rec_target_socket.h>
-#include <sysc/initiator_mixin.h>
-#include <sysc/target_mixin.h>
+#include "scc/initiator_mixin.h"
+#include "scc/target_mixin.h"
 #include <sysc/utils/sc_vector.h>
 #include <tlm.h>
 #pragma GCC diagnostic pop
 #include <limits>
 
-namespace sysc {
+namespace scc {
 
 template <unsigned BUSWIDTH = 32> struct router : sc_core::sc_module {
-    using intor_sckt = sysc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<BUSWIDTH>>;
-    using target_sckt = sysc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>>;
+    using intor_sckt = scc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<BUSWIDTH>>;
+    using target_sckt = scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>>;
     /**
      *
      */
@@ -245,6 +245,6 @@ void router<BUSWIDTH>::invalidate_direct_mem_ptr(int id, sc_dt::uint64 start_ran
     }
 }
 
-} // namespace sysc
+} // namespace scc
 
 #endif /* SYSC_AVR_ROUTER_H_ */

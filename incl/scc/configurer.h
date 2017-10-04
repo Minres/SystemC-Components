@@ -23,11 +23,11 @@
 #ifndef _SYSC_CONFIGURER_H_
 #define _SYSC_CONFIGURER_H_
 
-#include "report.h"
-#include "utilities.h"
 #include <json/json.h>
+#include "scc/report.h"
+#include "scc/utilities.h"
 
-namespace sysc {
+namespace scc {
 
 class configurer : public sc_core::sc_module {
 public:

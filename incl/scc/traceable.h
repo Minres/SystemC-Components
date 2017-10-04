@@ -14,51 +14,34 @@
  * limitations under the License.
  *******************************************************************************/
 /*
- * resettable.h
+ * tracable.h
  *
- *  Created on: Nov 16, 2016
+ *  Created on: Nov 9, 2016
  *      Author: developer
  */
 
-#ifndef _SYSC_RESETTABLE_H_
-#define _SYSC_RESETTABLE_H_
+#ifndef _SYSC_TRACABLE_H_
+#define _SYSC_TRACABLE_H_
 
-#include "resource_access_if.h"
-#include <vector>
+namespace sc_core {
+class sc_trace_file;
+}
 
-namespace sysc {
+namespace scc {
 
-struct resetable {
+class traceable {
+public:
     /**
      *
      */
-    virtual ~resetable() = default;
+    virtual ~traceable() = default;
     /**
      *
+     * @param trf
      */
-    void reset_start() {
-        _in_reset = true;
-        for (auto res : resources) res->reset();
-    }
-    /**
-     *
-     */
-    void reset_stop() {
-        for (auto res : resources) res->reset();
-        _in_reset = false;
-    }
-    bool in_reset() { return _in_reset; }
-    /**
-     *
-     * @param res
-     */
-    void register_resource(resource_access_if *res) { resources.push_back(res); }
-
-protected:
-    std::vector<resource_access_if *> resources;
-    bool _in_reset = false;
+    virtual void trace(sc_core::sc_trace_file *trf) = 0;
 };
 
-} /* namespace sysc */
+} /* namespace scc */
 
-#endif /* _SYSC_RESETTABLE_H_ */
+#endif /* _SYSC_TRACABLE_H_ */

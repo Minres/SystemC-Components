@@ -14,58 +14,51 @@
  * limitations under the License.
  *******************************************************************************/
 /*
- * tracer.h
+ * resettable.h
  *
- *  Created on: Nov 9, 2016
+ *  Created on: Nov 16, 2016
  *      Author: developer
  */
 
-#ifndef _SYSC_TRACER_H_
-#define _SYSC_TRACER_H_
+#ifndef _SYSC_RESETTABLE_H_
+#define _SYSC_RESETTABLE_H_
 
-#include "utilities.h"
-#ifdef WITH_SCV
-#include <scv.h>
-#endif
-#include <string>
 #include <vector>
+#include "scc/resource_access_if.h"
 
-namespace sc_core {
-class sc_object;
-class sc_trace_file;
-}
+namespace scc {
 
-namespace sysc {
-
-struct tracer : public sc_core::sc_module {
+struct resetable {
     /**
      *
      */
-    enum file_type { NONE, TEXT, COMPRESSED, SQLITE };
-    /**
-     *
-     * @param
-     * @param
-     * @param enable
-     */
-    tracer(std::string &&, file_type, bool enable = true);
+    virtual ~resetable() = default;
     /**
      *
      */
-    virtual ~tracer() override;
+    void reset_start() {
+        _in_reset = true;
+        for (auto res : resources) res->reset();
+    }
+    /**
+     *
+     */
+    void reset_stop() {
+        for (auto res : resources) res->reset();
+        _in_reset = false;
+    }
+    bool in_reset() { return _in_reset; }
+    /**
+     *
+     * @param res
+     */
+    void register_resource(resource_access_if *res) { resources.push_back(res); }
 
 protected:
-    void end_of_elaboration() override;
-    virtual void descend(const std::vector<sc_core::sc_object *> &);
-    virtual void try_trace_signal(sc_core::sc_object *);
-    virtual void try_trace_port(sc_core::sc_object *);
-    bool enabled;
-    sc_core::sc_trace_file *trf;
-#ifdef WITH_SCV
-    scv_tr_db *txdb;
-#endif
+    std::vector<resource_access_if *> resources;
+    bool _in_reset = false;
 };
 
-} /* namespace sysc */
+} /* namespace scc */
 
-#endif /* _SYSC_TRACER_H_ */
+#endif /* _SYSC_RESETTABLE_H_ */

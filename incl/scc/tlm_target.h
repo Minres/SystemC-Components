@@ -23,13 +23,13 @@
 #ifndef _SYSC_TLM_TARGET_H_
 #define _SYSC_TLM_TARGET_H_
 
-#include "resource_access_if.h"
 #include <array>
 #include <scv4tlm/tlm_rec_target_socket.h>
-#include <sysc/target_mixin.h>
 #include <util/range_lut.h>
+#include "scc/resource_access_if.h"
+#include "scc/target_mixin.h"
 
-namespace sysc {
+namespace scc {
 /**
  * a simple access-width based bus interface (no DMI support)
  */
@@ -47,7 +47,7 @@ template <unsigned int BUSWIDTH = 32> struct tlm_target {
     /**
      *
      */
-    sysc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>> socket;
+    scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>> socket;
     /**
      *
      * @param
@@ -86,7 +86,7 @@ protected:
 };
 
 template <unsigned BUSWIDTH = 32> struct target_memory_map_entry {
-    sysc::tlm_target<BUSWIDTH> *target;
+    scc::tlm_target<BUSWIDTH> *target;
     sc_dt::uint64 start;
     sc_dt::uint64 size;
 };
@@ -108,10 +108,10 @@ protected:
     util::range_lut<resource_access_if *> socket_map;
 };
 
-} /* namespace sysc */
+} /* namespace scc */
 
 template <unsigned int BUSWIDTH>
-inline sysc::tlm_target<BUSWIDTH>::tlm_target(sc_core::sc_time &clock)
+inline scc::tlm_target<BUSWIDTH>::tlm_target(sc_core::sc_time &clock)
 : socket("socket")
 , clk(clock)
 , socket_map(std::make_pair(nullptr, 0)) {
@@ -121,7 +121,7 @@ inline sysc::tlm_target<BUSWIDTH>::tlm_target(sc_core::sc_time &clock)
 }
 
 template <unsigned int BUSWIDTH>
-void sysc::tlm_target<BUSWIDTH>::b_tranport_cb(tlm::tlm_generic_payload &gp, sc_core::sc_time &delay) {
+void scc::tlm_target<BUSWIDTH>::b_tranport_cb(tlm::tlm_generic_payload &gp, sc_core::sc_time &delay) {
     resource_access_if *ra = nullptr;
     uint64_t base = 0;
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());
@@ -151,7 +151,7 @@ void sysc::tlm_target<BUSWIDTH>::b_tranport_cb(tlm::tlm_generic_payload &gp, sc_
 }
 
 template <unsigned int BUSWIDTH>
-unsigned int sysc::tlm_target<BUSWIDTH>::tranport_dbg_cb(tlm::tlm_generic_payload &gp) {
+unsigned int scc::tlm_target<BUSWIDTH>::tranport_dbg_cb(tlm::tlm_generic_payload &gp) {
     resource_access_if *ra = nullptr;
     uint64_t base = 0;
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());

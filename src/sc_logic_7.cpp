@@ -20,11 +20,11 @@
  *      Author: developer
  */
 
-#include <sysc/core/sc_logic_7.h>
+#include "scc/core/sc_logic_7.h"
 
 #include "sysc/datatypes/bit/sc_bit_ids.h"
 
-namespace sysc {
+namespace scc {
 namespace sc_dt {
 
 void sc_logic_7::invalid_value(sc_logic_7_value_t v) {
@@ -111,4 +111,4 @@ const sc_logic_7 SC_LOGIC7_Z(Log_Z);
 const sc_logic_7 SC_LOGIC7_X(Log_X);
 
 } // namespace sc_dt
-} // namespace sysc
+} // namespace scc

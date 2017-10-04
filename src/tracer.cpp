@@ -20,17 +20,17 @@
  *      Author: developer
  */
 
-#include <sysc/scv_tr_db.h>
-#include <sysc/tracer.h>
-#include <sysc/utilities.h>
+#include "scc/tracer.h"
 
 #include <cstring>
 #include <iostream>
 #include <sstream>
+#include "scc/scv_tr_db.h"
+#include "scc/utilities.h"
 
 using namespace sc_core;
 
-namespace sysc {
+namespace scc {
 
 tracer::tracer(std::string &&name, file_type type, bool enable)
 : sc_core::sc_module(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
@@ -167,4 +167,4 @@ void tracer::try_trace_port(sc_core::sc_object *obj) {
     GEN_TRACE_FX
 }
 
-} /* namespace sysc */
+} /* namespace scc */

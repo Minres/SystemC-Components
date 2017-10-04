@@ -14,34 +14,58 @@
  * limitations under the License.
  *******************************************************************************/
 /*
- * tracable.h
+ * tracer.h
  *
  *  Created on: Nov 9, 2016
  *      Author: developer
  */
 
-#ifndef _SYSC_TRACABLE_H_
-#define _SYSC_TRACABLE_H_
+#ifndef _SYSC_TRACER_H_
+#define _SYSC_TRACER_H_
+
+#include "scc/utilities.h"
+#ifdef WITH_SCV
+#include <scv.h>
+#endif
+#include <string>
+#include <vector>
 
 namespace sc_core {
+class sc_object;
 class sc_trace_file;
 }
 
-namespace sysc {
+namespace scc {
 
-class traceable {
-public:
+struct tracer : public sc_core::sc_module {
     /**
      *
      */
-    virtual ~traceable() = default;
+    enum file_type { NONE, TEXT, COMPRESSED, SQLITE };
     /**
      *
-     * @param trf
+     * @param
+     * @param
+     * @param enable
      */
-    virtual void trace(sc_core::sc_trace_file *trf) = 0;
+    tracer(std::string &&, file_type, bool enable = true);
+    /**
+     *
+     */
+    virtual ~tracer() override;
+
+protected:
+    void end_of_elaboration() override;
+    virtual void descend(const std::vector<sc_core::sc_object *> &);
+    virtual void try_trace_signal(sc_core::sc_object *);
+    virtual void try_trace_port(sc_core::sc_object *);
+    bool enabled;
+    sc_core::sc_trace_file *trf;
+#ifdef WITH_SCV
+    scv_tr_db *txdb;
+#endif
 };
 
-} /* namespace sysc */
+} /* namespace scc */
 
-#endif /* _SYSC_TRACABLE_H_ */
+#endif /* _SYSC_TRACER_H_ */

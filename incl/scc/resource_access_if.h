@@ -26,7 +26,7 @@
 #include <cstddef>
 #include <cstdint>
 
-namespace sysc {
+namespace scc {
 
 struct resource_access_if {
     /**

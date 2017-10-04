@@ -29,7 +29,7 @@
 #include "sysc/utils/sc_iostream.h"
 #include "sysc/utils/sc_mempool.h"
 
-namespace sysc {
+namespace scc {
 namespace sc_dt {
 
 // classes defined in this module
@@ -290,6 +290,6 @@ extern const sc_logic_7 SC_LOGIC7_Z;
 extern const sc_logic_7 SC_LOGIC7_X;
 
 } // namespace sc_dt
-} // namespace sysc
+} // namespace scc
 
 #endif /* INCL_SYSC_CORE_SC_LOGIC_7_H_ */

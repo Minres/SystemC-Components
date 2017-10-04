@@ -26,20 +26,20 @@
 // Needed for the simple_target_socket
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
-#include "report.h"
-#include "target_mixin.h"
-#include "utilities.h"
+#include "scc/report.h"
+#include "scc/target_mixin.h"
+#include "scc/utilities.h"
 #include <tlm.h>
 #include <util/sparse_array.h>
 
-namespace sysc {
+namespace scc {
 
 // simple memory model
 // TODO: add attributes/parameters to configure access time and type (DMI allowed, read only, etc)
 template <unsigned long long SIZE, unsigned BUSWIDTH = 32, bool LOG_ACCESS = false>
 class memory : public sc_core::sc_module {
 public:
-    sysc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target;
+    scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target;
 
     memory(const sc_core::sc_module_name &nm);
 
@@ -126,6 +126,6 @@ inline bool memory<SIZE, BUSWIDTH, LOG_ACCESS>::handle_dmi(tlm::tlm_generic_payl
     return true;
 }
 
-} // namespace sysc
+} // namespace scc
 
 #endif /* _SYSC_MEMORY_H_ */

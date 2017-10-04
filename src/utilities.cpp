@@ -19,7 +19,7 @@
  *  Created on: Nov 5, 2016
  *      Author: eyck
  */
-#include <sysc/utilities.h>
+#include "scc/utilities.h"
 
 namespace sc_core {
 void sc_trace(sc_trace_file *tf, const sc_time &t, const std::string &name) {

@@ -21,10 +21,10 @@
 #endif
 
 #include <sstream>
-#include <sysc/utilities.h>
+#include "scc/utilities.h"
 #include <tlm_utils/peq_with_get.h>
 
-namespace sysc {
+namespace scc {
 
 template <typename base_type, typename TYPES = tlm::tlm_base_protocol_types> class target_mixin : public base_type {
     friend class fw_process;
