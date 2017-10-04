@@ -77,11 +77,11 @@ public:
         if (get_last_log_level() == FATAL) throw std::exception();
     }
 
-    std::ostringstream &get(log_level level = INFO, const char *category = "") {
+    std::ostringstream &get(log_level level = INFO, const char *category = "DEFAULT") {
         if (print_time()) os << "- " << now_time();
         if (print_severity()) {
             os << " " << to_string(level);
-            if (strlen(category)) os << "/" << category;
+            //if (strlen(category)) os << "[" << category<<"]";
             os << ": ";
         }
         get_last_log_level() = level;
@@ -158,22 +158,16 @@ class DEFAULT {};
 #define LOGGER(CATEGORY) logging::Log<logging::Output2FILE<logging::CATEGORY>>
 #define LOG_OUTPUT(CATEGORY) logging::Output2FILE<logging::CATEGORY>
 
-#define LOG(LEVEL)                                                                                                     \
-    if (logging::LEVEL > FILELOG_MAX_LEVEL)                                                                            \
-        ;                                                                                                              \
-    else if (logging::LEVEL > LOGGER(DEFAULT)::reporting_level() || !LOG_OUTPUT(DEFAULT)::stream())                    \
-        ;                                                                                                              \
-    else                                                                                                               \
+#ifndef LOG
+#define LOG(LEVEL)                                                                             \
+    if (logging::LEVEL <= LOGGER(DEFAULT)::reporting_level() && LOG_OUTPUT(DEFAULT)::stream()) \
         LOGGER(DEFAULT)().get(logging::LEVEL)
-
-#define CLOG(LEVEL, CATEGORY)                                                                                          \
-    if (logging::LEVEL > FILELOG_MAX_LEVEL)                                                                            \
-        ;                                                                                                              \
-    else if (logging::LEVEL > LOGGER(CATEGORY)::reporting_level() || !LOG_OUTPUT(CATEGORY)::stream())                  \
-        ;                                                                                                              \
-    else                                                                                                               \
+#endif
+#ifndef CLOG
+#define CLOG(LEVEL, CATEGORY)                                                                    \
+    if (logging::LEVEL <= LOGGER(CATEGORY)::reporting_level() && LOG_OUTPUT(CATEGORY)::stream()) \
         LOGGER(CATEGORY)().get(logging::LEVEL, #CATEGORY)
-
+#endif
 #if defined(WIN32)
 
 #include <windows.h>

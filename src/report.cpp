@@ -68,12 +68,8 @@ static const std::string compose_message(const sc_report &rep) {
 static void report_handler(const sc_report &rep, const sc_actions &actions) {
     const logging::log_level map[] = {logging::INFO, logging::WARNING, logging::ERROR, logging::FATAL};
     if (actions & SC_DISPLAY)
-        if (map[rep.get_severity()] > FILELOG_MAX_LEVEL)
-            ;
-        else if (map[rep.get_severity()] > LOGGER(SystemC)::reporting_level() || !LOG_OUTPUT(SystemC)::stream())
-            ;
-        else
-            LOGGER(SystemC)().get(map[rep.get_severity()]) << compose_message(rep);
+       if (map[rep.get_severity()] <= logging::Log<logging::Output2FILE<logging::SystemC>>::reporting_level() && logging::Output2FILE<logging::SystemC>::stream())
+            sysc::Log<logging::Output2FILE<logging::SystemC>>().get(map[rep.get_severity()], "SystemC")<< compose_message(rep);
     //    if ( (actions & SC_LOG) && log_file_name ) {
     //        if ( !log_stream ) log_stream = new ::std::ofstream(log_file_name);
     //        // ios::trunc
@@ -85,6 +81,7 @@ static void report_handler(const sc_report &rep, const sc_actions &actions) {
     if (actions & SC_THROW) throw rep;
 }
 
-void sysc::init_logging() { sc_report_handler::set_handler(report_handler); }
+void sysc::init_logging() {
+    sc_report_handler::set_handler(report_handler);
+}
 
-std::once_flag sysc::Logger::once;
