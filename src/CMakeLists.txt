@@ -5,6 +5,8 @@ set(LIB_SOURCES
     tracer.cpp
     utilities.cpp
     report.cpp
+    jsoncpp.cpp
+    configurer.cpp
     ${PROJECT_SOURCE_DIR}/incl/sr_report/sr_report.cpp
 )
 
