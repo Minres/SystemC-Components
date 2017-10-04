@@ -62,9 +62,9 @@ public:
         if (this->print_time()) this->os << "- " << log::now_time();
         if (this->print_severity()) {
             this->os << " " << std::setw(7) << std::left << this->to_string(level);
-            //if (strlen(category))
+            // if (strlen(category))
             //    this->os << "[" << std::setw(10) << category<<"]";
-            //else
+            // else
             //    this->os << "            ";
             this->os << std::right;
         }
@@ -75,8 +75,7 @@ public:
     };
 };
 
-template<typename CATEGORY = log::SystemC>
-class FILELOG_DECLSPEC Logger : public Log<log::Output2FILE<CATEGORY>> {
+template <typename CATEGORY = log::SystemC> class FILELOG_DECLSPEC Logger : public Log<log::Output2FILE<CATEGORY>> {
 public:
     /**
      *
@@ -95,14 +94,15 @@ public:
 #undef LOG
 #endif
 #define LOG(LEVEL)                                                                                                     \
-    if (logging::LEVEL <= logging::Log<logging::Output2FILE<logging::SystemC>>::reporting_level() && LOG_OUTPUT(SystemC)::stream())  \
-        sysc::Log<logging::Output2FILE<logging::SystemC>>().get(logging::LEVEL, "SystemC")
+    if (logging::LEVEL <= logging::Log<logging::Output2FILE<logging::SystemC>>::reporting_level() &&                   \
+        LOG_OUTPUT(SystemC)::stream())                                                                                 \
+    sysc::Log<logging::Output2FILE<logging::SystemC>>().get(logging::LEVEL, "SystemC")
 
 #ifdef CLOG
 #undef CLOG
 #endif
-#define CLOG(LEVEL, CATEGORY)                                                                    \
-    if (logging::LEVEL <= LOGGER(CATEGORY)::reporting_level() && LOG_OUTPUT(CATEGORY)::stream()) \
-        sysc::Log<logging::Output2FILE<logging::CATEGORY>>().get(logging::LEVEL, #CATEGORY)
+#define CLOG(LEVEL, CATEGORY)                                                                                          \
+    if (logging::LEVEL <= LOGGER(CATEGORY)::reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                       \
+    sysc::Log<logging::Output2FILE<logging::CATEGORY>>().get(logging::LEVEL, #CATEGORY)
 
 #endif /* _SYSC_REPORT_H_ */

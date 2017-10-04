@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Copyright 2017 MINRES Technologies GmbH
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 /*
  * report.cpp
  *
@@ -68,8 +83,10 @@ static const std::string compose_message(const sc_report &rep) {
 static void report_handler(const sc_report &rep, const sc_actions &actions) {
     const logging::log_level map[] = {logging::INFO, logging::WARNING, logging::ERROR, logging::FATAL};
     if (actions & SC_DISPLAY)
-       if (map[rep.get_severity()] <= logging::Log<logging::Output2FILE<logging::SystemC>>::reporting_level() && logging::Output2FILE<logging::SystemC>::stream())
-            sysc::Log<logging::Output2FILE<logging::SystemC>>().get(map[rep.get_severity()], "SystemC")<< compose_message(rep);
+        if (map[rep.get_severity()] <= logging::Log<logging::Output2FILE<logging::SystemC>>::reporting_level() &&
+            logging::Output2FILE<logging::SystemC>::stream())
+            sysc::Log<logging::Output2FILE<logging::SystemC>>().get(map[rep.get_severity()], "SystemC")
+                << compose_message(rep);
     //    if ( (actions & SC_LOG) && log_file_name ) {
     //        if ( !log_stream ) log_stream = new ::std::ofstream(log_file_name);
     //        // ios::trunc
@@ -81,7 +98,4 @@ static void report_handler(const sc_report &rep, const sc_actions &actions) {
     if (actions & SC_THROW) throw rep;
 }
 
-void sysc::init_logging() {
-    sc_report_handler::set_handler(report_handler);
-}
-
+void sysc::init_logging() { sc_report_handler::set_handler(report_handler); }

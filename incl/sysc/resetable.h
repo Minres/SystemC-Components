@@ -47,9 +47,7 @@ struct resetable {
         for (auto res : resources) res->reset();
         _in_reset = false;
     }
-    bool in_reset(){
-        return _in_reset;
-    }
+    bool in_reset() { return _in_reset; }
     /**
      *
      * @param res

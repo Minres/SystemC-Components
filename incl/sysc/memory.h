@@ -26,11 +26,11 @@
 // Needed for the simple_target_socket
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
-#include "utilities.h"
-#include "target_mixin.h"
 #include "report.h"
-#include <util/sparse_array.h>
+#include "target_mixin.h"
+#include "utilities.h"
 #include <tlm.h>
+#include <util/sparse_array.h>
 
 namespace sysc {
 
@@ -39,7 +39,6 @@ namespace sysc {
 template <unsigned long long SIZE, unsigned BUSWIDTH = 32, bool LOG_ACCESS = false>
 class memory : public sc_core::sc_module {
 public:
-
     sysc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target;
 
     memory(const sc_core::sc_module_name &nm);
@@ -60,9 +59,8 @@ memory<SIZE, BUSWIDTH, LOG_ACCESS>::memory(const sc_core::sc_module_name &nm)
     target.register_b_transport([=](tlm::tlm_generic_payload &gp, sc_core::sc_time &delay) -> void {
         auto count = this->handle_operation(gp);
     });
-    target.register_transport_dbg([this](tlm::tlm_generic_payload &gp) -> unsigned {
-        return this->handle_operation(gp);
-    });
+    target.register_transport_dbg(
+        [this](tlm::tlm_generic_payload &gp) -> unsigned { return this->handle_operation(gp); });
     target.register_get_direct_mem_ptr([this](tlm::tlm_generic_payload &gp, tlm::tlm_dmi &dmi_data) -> bool {
         return this->handle_dmi(gp, dmi_data);
     });
@@ -98,8 +96,8 @@ int memory<SIZE, BUSWIDTH, LOG_ACCESS>::handle_operation(tlm::tlm_generic_payloa
             LOG(WARNING) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr
                          << std::dec;
     }
-    if (cmd == tlm::TLM_READ_COMMAND){
-        if(mem.is_allocated(adr)){
+    if (cmd == tlm::TLM_READ_COMMAND) {
+        if (mem.is_allocated(adr)) {
             const auto &p = mem(adr / mem.page_size);
             auto offs = adr & mem.page_addr_mask;
             std::copy(p.data() + offs, p.data() + offs + len, ptr);
@@ -107,7 +105,7 @@ int memory<SIZE, BUSWIDTH, LOG_ACCESS>::handle_operation(tlm::tlm_generic_payloa
             // no allocated page so return randomized data
             for (size_t i = 0; i < len; i++) ptr[i] = rand() % 256;
         }
-    }else if (cmd == tlm::TLM_WRITE_COMMAND){
+    } else if (cmd == tlm::TLM_WRITE_COMMAND) {
         auto &p = mem(adr / mem.page_size);
         auto offs = adr & mem.page_addr_mask;
         std::copy(ptr, ptr + len, p.data() + offs);
@@ -117,12 +115,12 @@ int memory<SIZE, BUSWIDTH, LOG_ACCESS>::handle_operation(tlm::tlm_generic_payloa
     return len;
 }
 
-template<unsigned long long SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
-inline bool memory<SIZE, BUSWIDTH, LOG_ACCESS>::handle_dmi(tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data) {
+template <unsigned long long SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
+inline bool memory<SIZE, BUSWIDTH, LOG_ACCESS>::handle_dmi(tlm::tlm_generic_payload &gp, tlm::tlm_dmi &dmi_data) {
     auto &p = mem(gp.get_address() / mem.page_size);
     dmi_data.set_start_address(gp.get_address() & ~mem.page_addr_mask);
-    //TODO: fix to provide the correct end address
-    dmi_data.set_end_address(dmi_data.get_start_address()+mem.page_size-1);
+    // TODO: fix to provide the correct end address
+    dmi_data.set_end_address(dmi_data.get_start_address() + mem.page_size - 1);
     dmi_data.set_dmi_ptr(p.data());
     dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);
     return true;

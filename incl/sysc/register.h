@@ -98,12 +98,11 @@ struct sc_register : public sc_core::sc_object, public resource_access_if, publi
      * @return
      */
     bool write(const uint8_t *data, size_t length, uint64_t offset) override {
-        assert("Access out of range" && offset+length <= sizeof(DATATYPE));
+        assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
-        auto beg = reinterpret_cast<uint8_t*>(&temp)+offset;
-        std::copy(data, data+length, beg);
-        if (wr_cb)
-            return wr_cb(*this, temp);
+        auto beg = reinterpret_cast<uint8_t *>(&temp) + offset;
+        std::copy(data, data + length, beg);
+        if (wr_cb) return wr_cb(*this, temp);
         storage = (temp & wrmask) | (storage & ~wrmask);
         return true;
     }
@@ -115,14 +114,14 @@ struct sc_register : public sc_core::sc_object, public resource_access_if, publi
      * @return
      */
     bool read(uint8_t *data, size_t length, uint64_t offset) const override {
-        assert("Access out of range" && offset+length <= sizeof(DATATYPE));
+        assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
         if (rd_cb) {
-            if(!rd_cb(*this, temp)) return false;
+            if (!rd_cb(*this, temp)) return false;
         } else
-            temp&= rdmask;
-        auto beg = reinterpret_cast<uint8_t*>(&temp)+offset;
-        std::copy(beg, beg+length, data);
+            temp &= rdmask;
+        auto beg = reinterpret_cast<uint8_t *>(&temp) + offset;
+        std::copy(beg, beg + length, data);
         return true;
     }
     /**
