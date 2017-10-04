@@ -151,4 +151,8 @@ inline sc_core::sc_time operator"" _fs(long double val) { return sc_core::sc_tim
  */
 inline sc_core::sc_time operator"" _fs(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_FS); }
 
+inline constexpr uint64_t operator"" _kB(unsigned long long val) { return val * 1<<10; }
+inline constexpr uint64_t operator"" _MB(unsigned long long val) { return val * 1<<20; }
+inline constexpr uint64_t operator"" _GB(unsigned long long val) { return val * 1<<30; }
+
 #endif /* _SYSC_UTILITIES_H_ */
