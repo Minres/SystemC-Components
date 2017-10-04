@@ -208,8 +208,9 @@ bool router<BUSWIDTH>::get_direct_mem_ptr(int i, tlm::tlm_generic_payload &trans
     }
     bool status = initiator[idx]->get_direct_mem_ptr(trans, dmi_data);
     // Calculate DMI address of target in system address space
-    dmi_data.set_start_address(dmi_data.get_start_address() - ibases[i] + tranges[idx].remap ? tranges[idx].base : 0);
-    dmi_data.set_end_address(dmi_data.get_end_address() - ibases[i] + tranges[idx].remap ? tranges[idx].base : 0);
+    auto offset = tranges[idx].remap ? tranges[idx].base : 0;
+    dmi_data.set_start_address(dmi_data.get_start_address() - ibases[i] + offset);
+    dmi_data.set_end_address(dmi_data.get_end_address() - ibases[i] + offset);
     return status;
 }
 template <unsigned BUSWIDTH> unsigned router<BUSWIDTH>::transport_dbg(int i, tlm::tlm_generic_payload &trans) {

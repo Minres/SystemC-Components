@@ -49,6 +49,8 @@ template <typename T, uint64_t SIZE, int lower_width = 24> struct sparse_array {
 
     const uint64_t page_size = (1 << lower_width);
 
+    const unsigned page_count=1+SIZE/page_size;
+
     const uint64_t page_addr_width = lower_width;
 
     using page_type = std::array<T, 1 << lower_width>;
@@ -67,9 +69,15 @@ template <typename T, uint64_t SIZE, int lower_width = 24> struct sparse_array {
     }
 
     page_type &operator()(uint32_t page_nr) {
-        assert(page_nr < (SIZE / (1 << lower_width)));
+        assert(page_nr < page_count);
         if (arr[page_nr] == nullptr) arr[page_nr] = new page_type();
         return *(arr[page_nr]);
+    }
+
+    bool is_allocated(uint32_t addr){
+        assert(addr < SIZE);
+        T nr = addr >> lower_width;
+        return arr[nr] != nullptr;
     }
 
     uint64_t size() { return SIZE; }

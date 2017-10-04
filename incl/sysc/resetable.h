@@ -37,7 +37,7 @@ struct resetable {
      *
      */
     void reset_start() {
-        in_reset = true;
+        _in_reset = true;
         for (auto res : resources) res->reset();
     }
     /**
@@ -45,7 +45,10 @@ struct resetable {
      */
     void reset_stop() {
         for (auto res : resources) res->reset();
-        in_reset = false;
+        _in_reset = false;
+    }
+    bool in_reset(){
+        return _in_reset;
     }
     /**
      *
@@ -55,7 +58,7 @@ struct resetable {
 
 protected:
     std::vector<resource_access_if *> resources;
-    bool in_reset = false;
+    bool _in_reset = false;
 };
 
 } /* namespace sysc */
