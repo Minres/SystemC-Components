@@ -1,7 +1,7 @@
 SystemC-Components (SCC)
 ========================
 
-SCC is supposed to be a light weight productivity llibrary for SystemC and TLM 2.0 based modelling tasks.
+SCC is supposed to be a light weight productivity library for SystemC and TLM 2.0 based modeling tasks using C++11.
 * scv4tlm - Tracing TLM2 Sockets
 
   TLM2.0 compliant sockets which can be configured to trace transactions passing thru them using the SCV transaction recording facilities. The project is set-up to be used with Eclipse CDT and its build system

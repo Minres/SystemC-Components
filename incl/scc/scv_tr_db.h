@@ -8,7 +8,13 @@
 #ifndef _SCV4TLM_SCV_TR_DB_H_
 #define _SCV4TLM_SCV_TR_DB_H_
 
-extern void scv_tr_sqlite_init();
-extern void scv_tr_compressed_init();
+/**
+ *
+ */
+void scv_tr_sqlite_init();
+/**
+ *
+ */
+void scv_tr_compressed_init();
 
 #endif /* _SCV4TLM_SCV_TR_DB_H_ */

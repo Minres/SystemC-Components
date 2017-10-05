@@ -1,0 +1,72 @@
+/*******************************************************************************
+ * Copyright 2017 MINRES Technologies GmbH
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
+
+#ifndef _SPARSE_ARRAY_H_
+#define _SPARSE_ARRAY_H_
+
+#include <array>
+#include <cassert>
+
+namespace util {
+
+/**
+ *  a simple array which allocates memory in 16MB chunks
+ */
+template <typename T, uint64_t SIZE, int lower_width = 24> struct sparse_array {
+
+    const uint64_t page_addr_mask = (1 << lower_width) - 1;
+
+    const uint64_t page_size = (1 << lower_width);
+
+    const unsigned page_count = 1 + SIZE / page_size;
+
+    const uint64_t page_addr_width = lower_width;
+
+    using page_type = std::array<T, 1 << lower_width>;
+
+    sparse_array() { arr.fill(nullptr); }
+
+    ~sparse_array() {
+        for (auto i : arr) delete i;
+    }
+
+    T &operator[](uint32_t addr) {
+        assert(addr < SIZE);
+        T nr = addr >> lower_width;
+        if (arr[nr] == nullptr) arr[nr] = new page_type();
+        return arr[nr]->at(addr & page_addr_mask);
+    }
+
+    page_type &operator()(uint32_t page_nr) {
+        assert(page_nr < page_count);
+        if (arr[page_nr] == nullptr) arr[page_nr] = new page_type();
+        return *(arr[page_nr]);
+    }
+
+    bool is_allocated(uint32_t addr) {
+        assert(addr < SIZE);
+        T nr = addr >> lower_width;
+        return arr[nr] != nullptr;
+    }
+
+    uint64_t size() { return SIZE; }
+
+protected:
+    std::array<page_type *, SIZE / (1 << lower_width) + 1> arr;
+};
+}
+
+#endif /* _SPARSE_ARRAY_H_ */
