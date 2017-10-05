@@ -56,7 +56,7 @@ public:
         os << std::endl;
         T::output(os.str());
         // TODO: use a more specific exception
-        if (get_last_log_level() == FATAL) throw std::exception();
+        if (get_last_log_level() == FATAL) abort();
     }
 
     std::ostringstream &get(log_level level = INFO, const char *category = "DEFAULT") {
