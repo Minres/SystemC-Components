@@ -7,7 +7,6 @@ set(LIB_SOURCES
     report.cpp
     jsoncpp.cpp
     configurer.cpp
-    ${PROJECT_SOURCE_DIR}/incl/sr_report/sr_report.cpp
 )
 
 if(SCV_FOUND)   

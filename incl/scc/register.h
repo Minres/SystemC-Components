@@ -27,6 +27,7 @@
 
 #include <functional>
 #include <limits>
+#include <sstream>
 #include "scc/resetable.h"
 #include "scc/resource_access_if.h"
 #include "scc/utilities.h"

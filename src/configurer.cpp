@@ -22,7 +22,7 @@
 
 #include "scc/configurer.h"
 
-#include <istream>
+#include <fstream>
 
 #include "scc/report.h"
 

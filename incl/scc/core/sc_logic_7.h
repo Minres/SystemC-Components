@@ -26,7 +26,6 @@
 
 #include "sysc/datatypes/bit/sc_bit.h"
 #include "sysc/kernel/sc_macros.h"
-#include "sysc/utils/sc_iostream.h"
 #include "sysc/utils/sc_mempool.h"
 
 namespace scc {
