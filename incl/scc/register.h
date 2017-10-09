@@ -31,6 +31,7 @@
 #include "scc/resetable.h"
 #include "scc/resource_access_if.h"
 #include "scc/utilities.h"
+#include "util/delegate.h"
 
 namespace scc {
 
@@ -216,6 +217,9 @@ private:
     DATATYPE &storage;
     std::function<bool(const this_type &, DATATYPE &)> rd_cb;
     std::function<bool(this_type &, DATATYPE &)> wr_cb;
+
+    util::delegate<bool(const this_type &, DATATYPE &)> rd_dlgt;
+    util::delegate<bool(this_type &, DATATYPE &)> wr_dlgt;
 };
 }
 
