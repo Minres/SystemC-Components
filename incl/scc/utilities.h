@@ -31,6 +31,8 @@
 #include <systemc>
 #pragma GCC diagnostic pop
 
+#include <locale>
+
 #define NAMED(X, ...) X(#X, ##__VA_ARGS__)
 #define NAMEDD(T, X, ...) X(new T(#X, ##__VA_ARGS__))
 
@@ -154,5 +156,47 @@ inline sc_core::sc_time operator"" _fs(unsigned long long val) { return sc_core:
 inline constexpr uint64_t operator"" _kB(unsigned long long val) { return val * 1 << 10; }
 inline constexpr uint64_t operator"" _MB(unsigned long long val) { return val * 1 << 20; }
 inline constexpr uint64_t operator"" _GB(unsigned long long val) { return val * 1 << 30; }
+
+namespace scc {
+
+inline bool icompare(std::string const& a, std::string const& b){
+    if (a.length()==b.length()) {
+        return std::equal(b.begin(), b.end(), a.begin(),  [](unsigned char a, unsigned char b) -> bool {
+            return std::tolower(a) == std::tolower(b);
+        });
+    } else {
+        return false;
+    }
+}
+
+inline sc_core::sc_time parse_from_string(std::string value, std::string unit) noexcept {
+    std::string::size_type offs{0};
+    double t_val=std::stod(value, &offs);
+    if(offs>0){
+        if(icompare(unit, "fs")) return t_val * 1_fs;
+        if(icompare(unit, "ps")) return t_val * 1_ps;
+        if(icompare(unit, "ns")) return t_val * 1_ns;
+        if(icompare(unit, "us")) return t_val * 1_us;
+        if(icompare(unit, "ms")) return t_val * 1_ms;
+        if(icompare(unit, "s")) return t_val * 1_sec;
+    }
+    return sc_core::SC_ZERO_TIME;
+}
+
+inline sc_core::sc_time parse_from_string(std::string value) noexcept {
+    std::string::size_type offs{0};
+    double t_val=std::stod(value, &offs);
+    if(offs>0){
+        std::string unit=value.substr(offs);
+        if(icompare(unit, "fs")) return t_val * 1_fs;
+        if(icompare(unit, "ps")) return t_val * 1_ps;
+        if(icompare(unit, "ns")) return t_val * 1_ns;
+        if(icompare(unit, "us")) return t_val * 1_us;
+        if(icompare(unit, "ms")) return t_val * 1_ms;
+        if(icompare(unit, "s")) return t_val * 1_sec;
+    }
+    return sc_core::SC_ZERO_TIME;
+}
+}
 
 #endif /* _SYSC_UTILITIES_H_ */
