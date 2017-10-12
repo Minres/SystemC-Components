@@ -61,19 +61,19 @@ public:
      * get number of entries in the lookup table
      * @return the size of the underlying container
      */
-    size_t size() { return lut.size(); }
+    size_t size() { return m_size; }
     /**
      * remove all entries from the lut
      */
-    void clear() { lut.clear(); }
+    void clear() { m_lut.clear(); }
     /**
      * get the entry T associated with a given address
      * @param addr the address
      * @return the entry belonging to the address
      */
     inline T getEntry(uint64_t addr) {
-        auto iter = lut.lower_bound(addr);
-        return (iter != lut.end() && (iter->second.type == END_RANGE || iter->first == addr)) ? iter->second.index
+        auto iter = m_lut.lower_bound(addr);
+        return (iter != m_lut.end() && (iter->second.type == END_RANGE || iter->first == addr)) ? iter->second.index
                                                                                               : null_entry;
     }
     /**
@@ -92,7 +92,8 @@ public:
     const T null_entry;
 
 protected:
-    Loki::AssocVector<uint64_t, lut_entry> lut;
+    Loki::AssocVector<uint64_t, lut_entry> m_lut;
+    size_t m_size;
 };
 
 /**
@@ -106,26 +107,28 @@ template <typename T> std::ostream &operator<<(std::ostream &os, range_lut<T> &l
 }
 
 template <typename T> inline void range_lut<T>::addEntry(T i, uint64_t base_addr, uint64_t size) {
-    auto iter = lut.find(base_addr);
-    if (iter != lut.end() && iter->second.index != null_entry) throw std::runtime_error("range already mapped");
+    auto iter = m_lut.find(base_addr);
+    if (iter != m_lut.end() && iter->second.index != null_entry) throw std::runtime_error("range already mapped");
 
     auto eaddr = base_addr + size - 1;
     if (eaddr < base_addr) throw std::runtime_error("address wrap-around occurred");
 
-    lut[base_addr] = lut_entry{i, size > 1 ? BEGIN_RANGE : SINGLE_BYTE_RANGE};
-    if (size > 1) lut[eaddr] = lut_entry{i, END_RANGE};
+    m_lut[base_addr] = lut_entry{i, size > 1 ? BEGIN_RANGE : SINGLE_BYTE_RANGE};
+    if (size > 1) m_lut[eaddr] = lut_entry{i, END_RANGE};
+    ++m_size;
 }
 
 template <typename T> inline bool range_lut<T>::removeEntry(T i) {
-    auto start = lut.begin();
-    while (start->second.index != i && start != lut.end()) start++;
-    if (start != lut.end()) {
+    auto start = m_lut.begin();
+    while (start->second.index != i && start != m_lut.end()) start++;
+    if (start != m_lut.end()) {
         if (start->second.type == SINGLE_BYTE_RANGE) {
-            lut.erase(start);
+            m_lut.erase(start);
         } else {
             auto end = start + 2;
-            lut.erase(start, end);
+            m_lut.erase(start, end);
         }
+        --m_size;
         return true;
     }
     return false;
@@ -133,7 +136,7 @@ template <typename T> inline bool range_lut<T>::removeEntry(T i) {
 
 template <typename T> inline void range_lut<T>::validate() {
     auto mapped = false;
-    for (auto iter = lut.begin(); iter != lut.end(); iter++) {
+    for (auto iter = m_lut.begin(); iter != m_lut.end(); iter++) {
         switch (iter->second.type) {
         case SINGLE_BYTE_RANGE:
             if (iter->second.index != null_entry && mapped)
@@ -160,7 +163,7 @@ template <typename T> inline void range_lut<T>::validate() {
 
 template <typename T> inline std::__cxx11::string range_lut<T>::toString() {
     std::ostringstream buf;
-    for (auto iter = lut.begin(); iter != lut.end(); ++iter) {
+    for (auto iter = m_lut.begin(); iter != m_lut.end(); ++iter) {
         switch (iter->second.type) {
         case BEGIN_RANGE:
             if (iter->second.index != null_entry) {
