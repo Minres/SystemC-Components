@@ -59,11 +59,11 @@ public:
         if (get_last_log_level() == FATAL) abort();
     }
 
-    std::ostringstream &get(log_level level = INFO, const char *category = "DEFAULT") {
+    std::ostringstream &get(log_level level = INFO, const char *category = "") {
         if (print_time()) os << "- " << now_time();
         if (print_severity()) {
             os << " " << to_string(level);
-            // if (strlen(category)) os << "[" << category<<"]";
+            if (strlen(category)) os << "[" << category<<"]";
             os << ": ";
         }
         get_last_log_level() = level;

@@ -18,6 +18,7 @@
 #define _UTIL_ITIES_H_
 
 #include <bitset>
+#include <vector>
 #include <type_traits>
 
 // some helper functions
@@ -32,6 +33,7 @@ inline constexpr typename std::make_signed<T>::type signed_bit_sub(T v) {
     return ret;
 }
 
+namespace util {
 // according to
 // http://graphics.stanford.edu/~seander/bithacks.html#ZerosOnRightMultLookup
 static const int MultiplyDeBruijnBitPosition[32] = {0,  1,  28, 2,  29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4,  8,
@@ -48,4 +50,27 @@ constexpr size_t bit_count(uint32_t u) {
     return ((uCount + (uCount >> 3)) & 030707070707) % 63;
 }
 
+inline std::vector<std::string> split(const std::string &s, char seperator) {
+    std::vector<std::string> output;
+    std::string::size_type prev_pos = 0, pos = 0;
+    while ((pos = s.find(seperator, pos)) != std::string::npos) {
+        std::string substring(s.substr(prev_pos, pos - prev_pos));
+        output.push_back(substring);
+        prev_pos = ++pos;
+    }
+    output.push_back(s.substr(prev_pos, pos - prev_pos)); // Last word
+    return output;
+}
+
+//std::vector<std::string> split(std::string& str, char split_char){
+//    std::vector<std::string> res;
+//    auto split_pos=str.find_first_of(split_char);
+//    decltype(split_pos) start{0};
+//    while(start!=str.length()){
+//        res.push_back(str.substr(start, start-split_pos));
+//        start=std::min(split_pos+1, str.length());
+//    }
+//    return res;
+//}
+}
 #endif /* _UTIL_ITIES_H_ */
