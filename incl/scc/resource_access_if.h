@@ -28,7 +28,8 @@
 
 namespace scc {
 
-struct resource_access_if {
+class resource_access_if {
+public:
     /**
      *
      */
@@ -78,7 +79,8 @@ struct resource_access_if {
     virtual bool read_dbg(uint8_t *data, std::size_t length, uint64_t offset = 0) const = 0;
 };
 
-struct indexed_resource_access_if {
+class indexed_resource_access_if {
+public:
     using value_type = resource_access_if;
     using pointer = value_type *;
     using const_pointer = const value_type *;

@@ -35,7 +35,8 @@ namespace scv4tlm {
  * register custom recorder functionality
  * to also record the payload extensions
  */
-template <typename TYPES = tlm::tlm_base_protocol_types> struct tlm2_extensions_recording_if {
+template <typename TYPES = tlm::tlm_base_protocol_types> class tlm2_extensions_recording_if {
+public:
     /*! \brief recording attributes in extensions at the beginning, it is intended
      * to be overload as it does nothing
      *
@@ -85,9 +86,9 @@ public:
      *        If this database is not initialized (e.g. by not calling
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
-    tlm2_recorder(bool recording_enabled = true, scv_tr_db *tr_db = scv_tr_db::get_default_db()) {
-        this->tlm2_recorder::tlm2_recorder(sc_core::sc_gen_unique_name("tlm2_recorder"), recording_enabled, tr_db);
-    }
+    tlm2_recorder(bool recording_enabled = true, scv_tr_db *tr_db = scv_tr_db::get_default_db())
+    : tlm2_recorder(sc_core::sc_gen_unique_name("tlm2_recorder"), recording_enabled, tr_db)
+    { }
     /*! \brief The constructor of the component
      *
      * \param name is the SystemC module name of the recorder
@@ -206,9 +207,10 @@ public:
     }
 
 private:
-    //! \brief the struct to hold the information to be recorded on the timed
+    //! \brief the class to hold the information to be recorded on the timed
     //! streams
-    struct tlm_recording_payload : public TYPES::tlm_payload_type {
+    class tlm_recording_payload : public TYPES::tlm_payload_type {
+    public:
         scv_tr_handle parent;
         uint64 id;
         tlm_recording_payload &operator=(const typename TYPES::tlm_payload_type &x) {
@@ -229,7 +231,8 @@ private:
         , id(0) {}
     };
     //! \brief Memory manager for the tlm_recording_payload
-    struct RecodingMemoryManager : public tlm::tlm_mm_interface {
+    class RecodingMemoryManager : public tlm::tlm_mm_interface {
+    public:
         RecodingMemoryManager()
         : free_list(0)
         , empties(0) {}

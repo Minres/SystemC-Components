@@ -43,7 +43,8 @@ inline const char *rel_str(tx_rel rel) { return (tx_rel_str[rel]); }
  * containing a valid handle it links the generated
  * SCV transdaction to the found one using the \ref PREDECESSOR releationship
  */
-struct tlm_recording_extension : public tlm::tlm_extension<tlm_recording_extension> {
+class tlm_recording_extension : public tlm::tlm_extension<tlm_recording_extension> {
+public:
     /*! \brief clone the given extension and duplicate the SCV transaction handle.
      *
      */

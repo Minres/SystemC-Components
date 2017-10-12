@@ -467,7 +467,8 @@ private:
         }
 
     private:
-        struct mm_end_event_ext : public tlm::tlm_extension<mm_end_event_ext> {
+        class mm_end_event_ext : public tlm::tlm_extension<mm_end_event_ext> {
+        public:
             tlm::tlm_extension_base *clone() const { return NULL; }
             void free() {}
             void copy_from(tlm::tlm_extension_base const &) {}

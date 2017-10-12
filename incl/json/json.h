@@ -1025,7 +1025,8 @@ private:
     Value &resolveReference(const char *key);
     Value &resolveReference(const char *key, const char *end);
 
-    struct CommentInfo {
+    class CommentInfo {
+    public:
         CommentInfo();
         ~CommentInfo();
 

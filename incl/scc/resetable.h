@@ -28,7 +28,8 @@
 
 namespace scc {
 
-struct resetable {
+class resetable {
+public:
     /**
      *
      */

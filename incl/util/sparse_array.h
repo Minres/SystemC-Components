@@ -25,8 +25,8 @@ namespace util {
 /**
  *  a simple array which allocates memory in 16MB chunks
  */
-template <typename T, uint64_t SIZE, int lower_width = 24> struct sparse_array {
-
+template <typename T, uint64_t SIZE, int lower_width = 24> class sparse_array {
+public:
     const uint64_t page_addr_mask = (1 << lower_width) - 1;
 
     const uint64_t page_size = (1 << lower_width);

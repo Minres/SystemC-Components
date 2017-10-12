@@ -22,7 +22,8 @@
 
 namespace scv4tlm {
 
-struct tlm_gp_data {
+class tlm_gp_data {
+public:
     //---------------
     // Constructors
     //---------------
@@ -435,7 +436,8 @@ private:
     unsigned int m_ref_count{0};
 };
 
-struct tlm_dmi_data {
+class tlm_dmi_data {
+public:
     tlm_dmi_data() = default;
 
     tlm_dmi_data(tlm::tlm_dmi &dmi_data)

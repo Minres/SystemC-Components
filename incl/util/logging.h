@@ -105,7 +105,8 @@ protected:
     std::ostringstream os;
 };
 
-template <typename CATEGORY> struct Output2FILE : CATEGORY {
+template <typename CATEGORY> class Output2FILE : CATEGORY {
+public:
     static FILE *&stream() {
         static FILE *pStream = stderr;
         return pStream;

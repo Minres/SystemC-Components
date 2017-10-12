@@ -37,7 +37,8 @@ struct addr_range {
     uint64_t base, size;
 };
 
-template <unsigned int BUSWIDTH = 32> struct tlm_target {
+template <unsigned int BUSWIDTH = 32> class tlm_target {
+public:
     using this_type = tlm_target<BUSWIDTH>;
     /**
      *
@@ -91,7 +92,8 @@ template <unsigned BUSWIDTH = 32> struct target_memory_map_entry {
     sc_dt::uint64 size;
 };
 
-template <unsigned int BUSWIDTH = 32, unsigned RANGES = 1> struct tlm_multi_rangetarget : public tlm_target<BUSWIDTH> {
+template <unsigned int BUSWIDTH = 32, unsigned RANGES = 1> class tlm_multi_rangetarget : public tlm_target<BUSWIDTH> {
+public:
     using this_type = tlm_multi_rangetarget<BUSWIDTH, RANGES>;
 
     tlm_multi_rangetarget(sc_core::sc_time &clock, std::array<addr_range, RANGES> addr_rngs)

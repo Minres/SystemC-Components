@@ -188,7 +188,7 @@ public:
     }
 
 private:
-    friend struct ::std::hash<delegate>;
+    friend class ::std::hash<delegate>;
 
     using deleter_type = void (*)(void *);
 
@@ -221,14 +221,14 @@ private:
         return (static_cast<C const *>(object_ptr)->*method_ptr)(::std::forward<A>(args)...);
     }
 
-    template <typename> struct is_member_pair : std::false_type {};
+    template <typename> class is_member_pair : std::false_type {};
 
-    template <class C> struct is_member_pair<::std::pair<C *const, R (C::*const)(A...)>> : std::true_type {};
+    template <class C> class is_member_pair<::std::pair<C *const, R (C::*const)(A...)>> : std::true_type {};
 
-    template <typename> struct is_const_member_pair : std::false_type {};
+    template <typename> class is_const_member_pair : std::false_type {};
 
     template <class C>
-    struct is_const_member_pair<::std::pair<C const *const, R (C::*const)(A...) const>> : std::true_type {};
+    class is_const_member_pair<::std::pair<C const *const, R (C::*const)(A...) const>> : std::true_type {};
 
     template <typename T>
     static typename ::std::enable_if<!(is_member_pair<T>{} || is_const_member_pair<T>{}), R>::type
@@ -245,7 +245,8 @@ private:
 } // namespace util
 
 namespace std {
-template <typename R, typename... A> struct hash<util::delegate<R(A...)>> {
+template <typename R, typename... A> class hash<util::delegate<R(A...)>> {
+public:
     size_t operator()(util::delegate<R(A...)> const &d) const noexcept {
         auto const seed(hash<void *>()(d.object_ptr_));
 

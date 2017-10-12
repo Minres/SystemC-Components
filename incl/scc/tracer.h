@@ -37,7 +37,8 @@ class sc_trace_file;
 
 namespace scc {
 
-struct tracer : public sc_core::sc_module {
+class tracer : public sc_core::sc_module {
+public:
     /**
      *
      */

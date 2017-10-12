@@ -30,7 +30,7 @@
 #include "scc/utilities.h"
 
 namespace logging {
-struct SystemC {};
+class SystemC {};
 }
 namespace scc {
 

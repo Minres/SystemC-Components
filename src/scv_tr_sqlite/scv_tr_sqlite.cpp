@@ -29,8 +29,10 @@
 // ----------------------------------------------------------------------------
 using namespace std;
 
-struct SQLiteDB {
-    struct SQLiteException : public runtime_error {
+class SQLiteDB {
+public:
+    class SQLiteException : public runtime_error {
+    public:
         SQLiteException(const int nErrCode, const char *msg, bool doFree = true)
         : runtime_error(msg)
         , mnErrCode(0) {

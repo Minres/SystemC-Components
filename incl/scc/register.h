@@ -37,16 +37,18 @@ namespace scc {
 
 namespace impl {
 
-template <typename T, bool = std::is_integral<T>::value> struct helper {};
+template <typename T, bool = std::is_integral<T>::value> class helper {};
 
-template <typename T> struct helper<T, true> {
+template <typename T> class helper<T, true> {
+public:
     using Type = T;
     template <typename Type> constexpr Type get_max_uval() {
         return std::numeric_limits<Type>::is_signed ? -1 : std::numeric_limits<Type>::max();
     }
 };
 
-template <typename T> struct helper<T, false> {
+template <typename T> class helper<T, false> {
+public:
     using Type = typename T::StorageType;
     template <typename Type> constexpr Type get_max_uval() {
         return std::numeric_limits<Type>::is_signed ? -1 : std::numeric_limits<Type>::max();
@@ -58,9 +60,9 @@ template <typename Type> constexpr Type get_max_uval() {
 }
 
 template <typename DATATYPE>
-struct sc_register : public sc_core::sc_object, public resource_access_if, public traceable {
-
-    using this_type = struct sc_register<DATATYPE>;
+class sc_register : public sc_core::sc_object, public resource_access_if, public traceable {
+public:
+    using this_type = class sc_register<DATATYPE>;
     /**
      *
      * @param nm
@@ -226,8 +228,8 @@ private:
 template <typename DATATYPE> using sc_register = impl::sc_register<typename impl::helper<DATATYPE>::Type>;
 
 template <typename DATATYPE, size_t SIZE, size_t START = 0>
-struct sc_register_indexed : public indexed_resource_access_if {
-
+class sc_register_indexed : public indexed_resource_access_if {
+public:
     using BASE_DATA_TYPE = typename impl::helper<DATATYPE>::Type;
 
     using value_type = sc_register<DATATYPE>;
@@ -288,8 +290,8 @@ private:
 
 template <typename DATATYPE, DATATYPE WRMASK = impl::get_max_uval<DATATYPE>(),
           DATATYPE RDMASK = impl::get_max_uval<DATATYPE>()>
-struct sc_register_masked : public sc_register<DATATYPE> {
-
+class sc_register_masked : public sc_register<DATATYPE> {
+public:
     sc_register_masked(sc_core::sc_module_name nm, DATATYPE &storage, const DATATYPE reset_val, resetable &owner)
     : sc_register<DATATYPE>(nm, storage, reset_val, owner, RDMASK, WRMASK) {}
 };
