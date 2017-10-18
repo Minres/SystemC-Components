@@ -78,7 +78,7 @@ public:
     scv_extensions<unsigned char *> data;
     scv_extensions<unsigned int> data_length;
     scv_extensions<tlm::tlm_response_status> response_status;
-    scv_extensions<bool> dmi;
+    scv_extensions<bool> dmi_allowed;
     scv_extensions<unsigned char *> byte_enable;
     scv_extensions<unsigned int> byte_enable_length;
     scv_extensions<unsigned int> streaming_width;
@@ -91,7 +91,7 @@ public:
         SCV_FIELD(data);
         SCV_FIELD(data_length);
         SCV_FIELD(response_status);
-        SCV_FIELD(dmi);
+        SCV_FIELD(dmi_allowed);
         SCV_FIELD(byte_enable);
         SCV_FIELD(byte_enable_length);
         SCV_FIELD(streaming_width);
