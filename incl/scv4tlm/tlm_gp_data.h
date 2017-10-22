@@ -114,6 +114,12 @@ public:
         return "TLM_UNKNOWN_RESPONSE";
     }
 
+    uint64_t get_data_value(){
+    	uint64_t buf=0;
+    	//FIXME: this is endianess dependent
+    	for(size_t i = 0; i<data_length; i++) buf+=(*(data+i))<<i*8;
+    	return buf;
+    }
     // attributes are public so that scv_extension mechanism works
     sc_dt::uint64 address{0};
     tlm::tlm_command command{tlm::TLM_IGNORE_COMMAND};

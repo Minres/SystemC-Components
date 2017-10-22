@@ -384,6 +384,8 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type &trans, 
     }
     scv_tr_handle preTx{preExt->txHandle};
     preExt->txHandle = h;
+    if(trans.get_command()==tlm::TLM_WRITE_COMMAND && tgd.data_length<8)
+    	h.record_attribute("trans.data_value", tgd.get_data_value());
     fw_port->b_transport(trans, delay);
     trans.get_extension(preExt);
     if (preExt->get_creator() == this) {
@@ -395,16 +397,9 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type &trans, 
     }
 
     tgd.response_status=trans.get_response_status();
-    if(trans.get_command()==tlm::TLM_READ_COMMAND)
-
     h.record_attribute("trans", tgd);
-    if(tgd.data_length<8){
-    	uint64_t buf=0;
-    	//FIXME: this is endianess dependent
-    	for(size_t i = 0; i<tgd.data_length; i++)
-    		buf+=(*tgd.data)<<i*8;
-    	h.record_attribute("trans.data_value", buf);
-    }
+    if(trans.get_command()==tlm::TLM_READ_COMMAND && tgd.data_length<8)
+    	h.record_attribute("trans.data_value", tgd.get_data_value());
     if (extensionRecording) extensionRecording->recordEndTx(h, trans);
     // End the transaction
     b_trHandle[trans.get_command()]->end_transaction(h, delay.value(), sc_time_stamp());
