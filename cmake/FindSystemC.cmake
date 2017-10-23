@@ -61,7 +61,7 @@ FIND_PATH(SystemC_INCLUDE_DIRS
   PATHS ${_SYSTEMC_PATHS}
 )
 
-FIND_PATH(SystemC_LIBRARY_DIR
+FIND_PATH(SystemC_LIBRARY_DIRS
   NAMES libsystemc.a
   HINTS ${_SYSTEMC_HINTS}
   PATHS ${_SYSTEMC_PATHS}
@@ -82,7 +82,7 @@ FIND_PATH(SCV_LIBRARY_DIRS
 if(SystemC_FOUND)
         set(SystemC_LIBRARIES systemc)
         message(STATUS "SystemC header files are taken from ${SystemC_INCLUDE_DIRS}")
-        message(STATUS "SystemC library is taken from ${SystemC_LIBRARY_DIR}")
+        message(STATUS "SystemC library is taken from ${SystemC_LIBRARY_DIRS}")
         if(SCV_FOUND)
             set(SCV_LIBRARIES scv)
             message(STATUS "SCV header files are taken from ${SCV_INCLUDE_DIRS}")
