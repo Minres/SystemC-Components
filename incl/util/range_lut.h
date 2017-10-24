@@ -161,7 +161,7 @@ template <typename T> inline void range_lut<T>::validate() {
     }
 }
 
-template <typename T> inline std::__cxx11::string range_lut<T>::toString() {
+template <typename T> inline std::string range_lut<T>::toString() {
     std::ostringstream buf;
     for (auto iter = m_lut.begin(); iter != m_lut.end(); ++iter) {
         switch (iter->second.type) {
