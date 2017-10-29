@@ -1,7 +1,6 @@
 cmake_minimum_required (VERSION 2.8.12)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../cmake) # main (top) cmake dir
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
-set(CMAKE_CXX_STANDARD 11) # compromise, SystemC does not compile with C++14
 
 project (sc-components)
 
@@ -34,6 +33,7 @@ endif(ZLIB_FOUND)
 
 if(SCV_FOUND)   
     add_definitions(-DWITH_SCV)
+    include_directories(${SCV_INCLUDE_DIRS})
     link_directories(${SCV_LIBRARY_DIRS})
 endif(SCV_FOUND)
 

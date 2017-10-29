@@ -18,6 +18,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <sstream>
 // clang-format off
 #include "scv/scv_util.h"
 #include "scv/scv_introspection.h"
