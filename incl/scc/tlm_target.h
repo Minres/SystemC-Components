@@ -136,10 +136,10 @@ void scc::tlm_target<BUSWIDTH>::b_tranport_cb(tlm::tlm_generic_payload &gp, sc_c
                 gp.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
                 if (gp.get_data_length() == gp.get_streaming_width()) {
                     if (gp.get_command() == tlm::TLM_READ_COMMAND) {
-                        if (ra->read(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra->size()))
+                        if (ra->read(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base)))
                             gp.set_response_status(tlm::TLM_OK_RESPONSE);
                     } else if (gp.get_command() == tlm::TLM_WRITE_COMMAND) {
-                        if (ra->write(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra->size()))
+                        if (ra->write(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base)))
                             gp.set_response_status(tlm::TLM_OK_RESPONSE);
                     } else {
                         gp.set_response_status(tlm::TLM_COMMAND_ERROR_RESPONSE);
