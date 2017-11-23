@@ -21,10 +21,9 @@
  */
 
 #include "scc/configurer.h"
+#include "scc/report.h"
 
 #include <fstream>
-
-#include "scc/report.h"
 
 scc::configurer::configurer(const std::string &filename)
 : base_type(sc_core::sc_module_name("configurer")) {
@@ -42,16 +41,33 @@ scc::configurer::configurer(const std::string &filename)
     }
 }
 
+void scc::configurer::dump_hierarchy(sc_core::sc_object* obj, std::ostream& os) {
+	if (obj) {
+		os << obj->name() << " of type " << typeid(*obj).name() << "\n";
+		for (auto *o : obj->get_child_objects()) dump_hierarchy(o, os);
+	} else {
+		for (auto *o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext)) dump_hierarchy(o, os);
+	}
+}
+
+void scc::configurer::configure() {
+    for (auto *o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext)) {
+        Json::Value &val = root[o->name()];
+        if (!val.isNull()) configure_sc_object(o, val);
+    }
+}
+
 void scc::configurer::configure_sc_object(sc_core::sc_object *obj, Json::Value &hier_val) {
     sc_core::sc_attr_base *ab = dynamic_cast<sc_core::sc_attr_base *>(obj);
     if (ab != nullptr) {
-
+    	set_value(ab, hier_val);
     } else {
         sc_core::sc_module *mod = dynamic_cast<sc_core::sc_module *>(obj);
         if (mod != nullptr) {
             for (auto *o : mod->get_child_objects()) {
-                Json::Value &val = root[o->basename()];
-                if (!val.isNull()) configure_sc_object(o, val);
+                Json::Value &val = hier_val[o->basename()];
+                if (!val.isNull())
+                    configure_sc_object(o, val);
             }
         }
     }
@@ -86,9 +102,17 @@ Json::Value &scc::configurer::get_value_from_hierarchy(const std::string &hier_n
     return get_value_from_hierarchy(hier_name.substr(npos + 1, hier_name.size()), val);
 }
 
+void scc::configurer::set_configuration_value(sc_core::sc_attr_base* attr_base, sc_core::sc_module* owner) {
+    std::string name(owner->name());
+    name += ".";
+    name += attr_base->name();
+    Json::Value &val = get_value_from_hierarchy(name);
+    if (!val.isNull()) set_value(attr_base, val);
+}
+
 Json::Value &scc::configurer::get_value_from_hierarchy(const std::string &hier_name, Json::Value &value) {
     size_t npos = hier_name.find_first_of('.');
     Json::Value &val = value[hier_name.substr(0, npos)];
-    if (val.isNull() || npos == hier_name.size()) return val;
+    if (val.isNull() || npos == std::string::npos || !val.isObject()) return val;
     return get_value_from_hierarchy(hier_name.substr(npos + 1, hier_name.size()), val);
 }

@@ -32,22 +32,13 @@ namespace scc {
 class configurer : public sc_core::sc_module {
 public:
     using base_type = sc_core::sc_module;
+
     configurer(const std::string &filename);
 
-    void configure() {
-        for (auto *o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext)) {
-            Json::Value &val = root[o->name()];
-            if (!val.isNull()) configure_sc_object(o, val);
-        }
-    }
-    void dump_hierarchy(sc_core::sc_object *obj = nullptr, std::ostream &os = std::cout) {
-        if (obj) {
-            os << obj->name() << " of type " << typeid(*obj).name() << "\n";
-            for (auto *o : obj->get_child_objects()) dump_hierarchy(o, os);
-        } else {
-            for (auto *o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext)) dump_hierarchy(o, os);
-        }
-    }
+    void configure();
+
+    void dump_hierarchy(sc_core::sc_object *obj = nullptr, std::ostream &os = std::cout);
+
     template <typename T> void set_value(const std::string &hier_name, T value) {
         size_t pos = hier_name.find_last_of('.');
         sc_core::sc_module *mod =
@@ -62,13 +53,7 @@ public:
         }
     }
 
-    void set_configuration_value(sc_core::sc_attr_base *attr_base, sc_core::sc_module *owner) {
-        std::string name(owner->name());
-        name += ".";
-        name += attr_base->name();
-        Json::Value &val = get_value_from_hierarchy(name);
-        if (!val.isNull()) set_value(attr_base, val);
-    }
+    void set_configuration_value(sc_core::sc_attr_base *attr_base, sc_core::sc_module *owner);
 
     static configurer &instance() {
         configurer *inst = dynamic_cast<configurer *>(sc_core::sc_find_object("configurer"));
