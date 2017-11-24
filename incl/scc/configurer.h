@@ -37,7 +37,9 @@ public:
 
     void configure();
 
-    void dump_hierarchy(sc_core::sc_object *obj = nullptr, std::ostream &os = std::cout);
+    void dump_hierarchy(std::ostream &os = std::cout, sc_core::sc_object *obj = nullptr);
+
+    void dump_configuration(std::ostream &os = std::cout, sc_core::sc_object *obj = nullptr);
 
     template <typename T> void set_value(const std::string &hier_name, T value) {
         size_t pos = hier_name.find_last_of('.');
@@ -62,6 +64,8 @@ public:
     }
 
 protected:
+    void dump_configuration(std::ostream& os, sc_core::sc_object* obj, Json::Value& node);
+
     void configure_sc_object(sc_core::sc_object *obj, Json::Value &hier_val);
 
     void set_value(sc_core::sc_attr_base *attr_base, Json::Value &hier_val);

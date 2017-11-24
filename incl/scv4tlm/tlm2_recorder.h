@@ -121,7 +121,10 @@ public:
     , dmi_trGetHandle(NULL)
     , dmi_trInvalidateHandle(NULL)
     , extensionRecording(NULL)
-    , fixed_basename(regex_replace(sc_core::sc_object::name(), pat, "")){}
+    , fixed_basename(regex_replace(sc_core::sc_object::name(), pat, "")){
+    	this->add_attribute(enable);
+    	this->add_attribute(enableTimed);
+    }
 
     virtual ~tlm2_recorder() override {
         delete b_streamHandle;

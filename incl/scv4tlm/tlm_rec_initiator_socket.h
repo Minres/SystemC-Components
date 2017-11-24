@@ -79,7 +79,7 @@ public:
                                 POL
 #endif
                                 >(name)
-    , recorder(gen_name(name, "rec").c_str()) {
+    , recorder(gen_name(name, "tx_recording").c_str()) {
     }
 
     virtual ~tlm_rec_initiator_socket() {}

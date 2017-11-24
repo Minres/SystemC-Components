@@ -41,13 +41,57 @@ scc::configurer::configurer(const std::string &filename)
     }
 }
 
-void scc::configurer::dump_hierarchy(sc_core::sc_object* obj, std::ostream& os) {
+void scc::configurer::dump_hierarchy(std::ostream& os, sc_core::sc_object* obj) {
 	if (obj) {
 		os << obj->name() << " of type " << typeid(*obj).name() << "\n";
-		for (auto *o : obj->get_child_objects()) dump_hierarchy(o, os);
+		for (auto *o : obj->get_child_objects()) dump_hierarchy(os);
 	} else {
-		for (auto *o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext)) dump_hierarchy(o, os);
+		for (auto *o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext)) dump_hierarchy(os, o);
 	}
+}
+
+inline
+const std::vector<sc_core::sc_object*>& get_sc_objects(sc_core::sc_object* obj = nullptr){
+	if(obj)
+		return obj->get_child_objects();
+	else
+		return sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext);
+}
+void scc::configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj) {
+	Json::Value root{Json::objectValue};
+	for (auto *o : get_sc_objects(obj)){
+		dump_configuration(os, o, root);
+	}
+	// For convenience, use `writeString()` with a specialized builder.
+	Json::StreamWriterBuilder wbuilder;
+	wbuilder["indentation"] = "\t";
+	os<< root;
+}
+
+#define CHECK_N_ASSIGN_VAL(TYPE, ATTR)                                \
+    {                                                                 \
+        auto *a = dynamic_cast<sc_core::sc_attribute<TYPE> *>(ATTR);  \
+        if (a != nullptr) {node[a->name()]= a->value;continue;}       \
+    }
+
+void scc::configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj, Json::Value& parent) {
+	auto mod = dynamic_cast<sc_core::sc_module*>(obj);
+	Json::Value node{Json::objectValue};
+	for(sc_core::sc_attr_base* attr_base : obj->attr_cltn()){
+		CHECK_N_ASSIGN_VAL(int, attr_base);
+		CHECK_N_ASSIGN_VAL(unsigned, attr_base);
+		CHECK_N_ASSIGN_VAL(int64_t, attr_base);
+		CHECK_N_ASSIGN_VAL(uint64_t, attr_base);
+		CHECK_N_ASSIGN_VAL(bool, attr_base);
+		CHECK_N_ASSIGN_VAL(float, attr_base);
+		CHECK_N_ASSIGN_VAL(double, attr_base);
+		CHECK_N_ASSIGN_VAL(std::string, attr_base);
+		CHECK_N_ASSIGN_VAL(char *, attr_base);
+	}
+	for (auto *o : get_sc_objects(obj))
+		dump_configuration(os, o, node);
+	if(!node.empty())
+		parent[obj->basename()]=node;
 }
 
 void scc::configurer::configure() {
@@ -92,7 +136,6 @@ void scc::configurer::set_value(sc_core::sc_attr_base *attr_base, Json::Value &h
     CHECK_N_ASSIGN(double, attr_base, hier_val.asDouble());
     CHECK_N_ASSIGN(std::string, attr_base, hier_val.asString());
     CHECK_N_ASSIGN(char *, attr_base, strdup(hier_val.asCString()));
-    CHECK_N_ASSIGN(bool, attr_base, hier_val.asBool());
 }
 
 Json::Value &scc::configurer::get_value_from_hierarchy(const std::string &hier_name) {
