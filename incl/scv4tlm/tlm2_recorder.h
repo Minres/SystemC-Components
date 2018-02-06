@@ -26,6 +26,7 @@
 #include <tlm>
 #include <tlm_utils/peq_with_cb_and_phase.h>
 #include <vector>
+#include <array>
 
 namespace scv4tlm {
 
@@ -298,7 +299,7 @@ private:
     //! blocking transaction recording stream handle
     scv_tr_stream *b_streamHandle;
     //! transaction generator handle for blocking transactions
-    scv_tr_generator<sc_dt::uint64, sc_dt::uint64> *b_trHandle[3];
+	std::array<scv_tr_generator<sc_dt::uint64,sc_dt::uint64> *,3> b_trHandle;
     //! timed blocking transaction recording stream handle
     scv_tr_stream *b_streamHandleTimed;
     //! transaction generator handle for blocking transactions with annotated

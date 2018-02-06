@@ -33,12 +33,12 @@
 
 namespace logging {
 
-static const char *const buffer[] = {LEVELS(DO_DESCRIPTION)};
+static std::array<const char*const ,7> buffer = { {LEVELS(DO_DESCRIPTION)} };
 enum log_level { LEVELS(DO_ENUM) };
 
 inline log_level as_log_level(int logLevel) {
     assert(logLevel >= NONE && logLevel <= TRACE);
-    const log_level m[] = {NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE};
+	std::array<const log_level, 7> m = { { NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE } };
     return m[logLevel];
 }
 
@@ -101,7 +101,10 @@ protected:
         static log_level level = TRACE;
         return level;
     }
-    static const char *const *get_log_level_cstr() { return buffer; };
+	static const char * const *get_log_level_cstr() {
+		return buffer.data();
+	}
+	;
     std::ostringstream os;
 };
 
@@ -154,6 +157,7 @@ class DEFAULT {};
 #if defined(WIN32)
 
 #include <windows.h>
+#include <array>
 
 inline std::string now_time() {
     const int MAX_LEN = 200;
@@ -168,16 +172,16 @@ inline std::string now_time() {
 #else
 
 inline std::string now_time() {
-    char buffer[11];
+	static std::array<char, 11> buffer;
+	static std::array<char, 100> result;
     time_t t;
     time(&t);
     tm r = {0};
-    strftime(buffer, sizeof(buffer), "%X", localtime_r(&t, &r));
+	strftime(buffer.data(), buffer.size(), "%X", localtime_r(&t, &r));
     struct timeval tv;
     gettimeofday(&tv, nullptr);
-    char result[100] = {0};
-    sprintf(result, "%s.%03ld", buffer, (long)tv.tv_usec / 1000);
-    return result;
+	sprintf(result.data(), "%s.%03ld", buffer.data(), (long) tv.tv_usec / 1000);
+	return result.data();
 }
 
 #endif // WIN32

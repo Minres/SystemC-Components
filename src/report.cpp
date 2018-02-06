@@ -1,3 +1,4 @@
+#include <array>
 /*******************************************************************************
  * Copyright 2017 MINRES Technologies GmbH
  *
@@ -68,7 +69,7 @@ static const std::string compose_message(const sc_report &rep) {
     os << rep.get_msg_type();
     if (*rep.get_msg()) os << ": " << rep.get_msg();
     if (rep.get_severity() > SC_INFO) {
-        char line_number_str[16];
+		std::array<char, 16> line_number_str;
         os << " [FILE:" << rep.get_file_name() << ":" << rep.get_line_number() << "]";
         sc_simcontext *simc = sc_get_curr_simcontext();
         if (simc && sc_is_running()) {
@@ -80,7 +81,7 @@ static const std::string compose_message(const sc_report &rep) {
 }
 
 static void report_handler(const sc_report &rep, const sc_actions &actions) {
-    const logging::log_level map[] = {logging::INFO, logging::WARNING, logging::ERROR, logging::FATAL};
+	std::array<const logging::log_level, 4> map = { { logging::INFO, logging::WARNING, logging::ERROR, logging::FATAL } };
     if (actions & SC_DISPLAY)
         if (map[rep.get_severity()] <= logging::Log<logging::Output2FILE<logging::SystemC>>::reporting_level() &&
             logging::Output2FILE<logging::SystemC>::stream())

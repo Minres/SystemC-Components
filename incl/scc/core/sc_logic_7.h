@@ -23,6 +23,7 @@
 #ifndef INCL_SYSC_CORE_SC_LOGIC_7_H_
 #define INCL_SYSC_CORE_SC_LOGIC_7_H_
 #include <cstdio>
+#include <array>
 
 #include "sysc/datatypes/bit/sc_bit.h"
 #include "sysc/kernel/sc_macros.h"
@@ -92,12 +93,12 @@ private:
 public:
     // conversion tables
 
-    static const sc_logic_7_value_t char_to_logic[128];
-    static const char logic_to_char[7];
-    static const sc_logic_7_value_t and_table[7][7];
-    static const sc_logic_7_value_t or_table[7][7];
-    static const sc_logic_7_value_t xor_table[7][7];
-    static const sc_logic_7_value_t not_table[7];
+	static std::array<const sc_logic_7_value_t, 128> char_to_logic;
+	static std::array<const char, 7> logic_to_char;
+	static std::array<std::array<const sc_logic_7_value_t, 7>, 7> and_table;
+	static std::array<std::array<const sc_logic_7_value_t, 7>, 7> or_table;
+	static std::array<std::array<const sc_logic_7_value_t, 7>, 7> xor_table;
+	static std::array<const sc_logic_7_value_t, 7> not_table;
 
     // constructors
 

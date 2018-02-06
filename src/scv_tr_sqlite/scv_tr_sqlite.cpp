@@ -19,6 +19,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <array>
 // clang-format off
 #include "scv/scv_util.h"
 #include "scv/scv_introspection.h"
@@ -26,7 +27,7 @@
 // clang-format on
 #include "sqlite3.h"
 // ----------------------------------------------------------------------------
-#define SQLITEWRAPPER_ERROR 1000
+constexpr auto SQLITEWRAPPER_ERROR = 1000;
 // ----------------------------------------------------------------------------
 using namespace std;
 
@@ -65,7 +66,10 @@ public:
         }
     }
 
-    inline int exec(const string szSQL) { return exec(szSQL.c_str()); };
+	inline int exec(const string szSQL) {
+		return exec(szSQL);
+	}
+	;
 
     int exec(const char *szSQL) {
         checkDB();
@@ -111,7 +115,7 @@ static void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason,
         try {
             if (fName.size() < 5 || fName.find(".txdb", fName.size() - 5) == string::npos) fName += ".txdb";
             remove(fName.c_str());
-            db.open(fName.c_str());
+			db.open(fName);
             // performance related according to
             // http://blog.quibb.org/2010/08/fast-bulk-inserts-into-sqlite/
             db.exec("PRAGMA synchronous=OFF");
@@ -141,7 +145,7 @@ static void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason,
             queryBuilder.str("");
             queryBuilder << "INSERT INTO " SIM_PROPS " (time_resolution) values ("
                          << (long)(sc_get_time_resolution().to_seconds() * 1e15) << ");";
-            db.exec(queryBuilder.str().c_str());
+			db.exec(queryBuilder.str());
         } catch (SQLiteDB::SQLiteException &e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open recording file");
         }
@@ -167,7 +171,7 @@ static void streamCb(const scv_tr_stream &s, scv_tr_stream::callback_reason reas
             queryBuilder.str("");
             queryBuilder << "INSERT INTO " STREAM_TABLE " (id, name, kind) values (" << s.get_id() << ",'"
                          << s.get_name() << "','" << (s.get_stream_kind() ? s.get_stream_kind() : "<unnamed>") << "');";
-            db.exec(queryBuilder.str().c_str());
+			db.exec(queryBuilder.str());
             if (concurrencyLevel.size() <= s.get_id()) concurrencyLevel.resize(s.get_id() + 1);
             concurrencyLevel[s.get_id()] = new vector<uint64_t>();
         } catch (SQLiteDB::SQLiteException &e) {
@@ -181,7 +185,7 @@ void recordAttribute(uint64_t id, EventType event, const string &name, data_type
         queryBuilder.str("");
         queryBuilder << "INSERT INTO " TX_ATTRIBUTE_TABLE " (tx,type,name,data_type,data_value)"
                      << " values (" << id << "," << event << ",'" << name << "'," << type << ",'" << value << "');";
-        db.exec(queryBuilder.str().c_str());
+		db.exec(queryBuilder.str());
     } catch (SQLiteDB::SQLiteException &e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create attribute entry");
     }
@@ -262,9 +266,9 @@ static void recordAttributes(uint64_t id, EventType eventType, string &prefix, c
         }
         break;
     default: {
-        char tmpString[100];
-        sprintf(tmpString, "Unsupported attribute type = %d", my_exts_p->get_type());
-        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, tmpString);
+		std::array<char, 100> tmpString;
+		sprintf(tmpString.data(), "Unsupported attribute type = %d", my_exts_p->get_type());
+		_scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, tmpString.data());
     }
     }
 }
@@ -276,7 +280,7 @@ static void generatorCb(const scv_tr_generator_base &g, scv_tr_generator_base::c
             queryBuilder << "INSERT INTO " GENERATOR_TABLE " (id,stream, name)"
                          << " values (" << g.get_id() << "," << g.get_scv_tr_stream().get_id() << ",'" << g.get_name()
                          << "');";
-            db.exec(queryBuilder.str().c_str());
+			db.exec(queryBuilder.str());
         } catch (SQLiteDB::SQLiteException &e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create generator entry");
         }
@@ -311,12 +315,12 @@ static void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason
             queryBuilder << "INSERT INTO " TX_TABLE " (id,generator,stream, concurrencyLevel)"
                          << " values (" << id << "," << t.get_scv_tr_generator_base().get_id() << ","
                          << t.get_scv_tr_stream().get_id() << "," << concurrencyIdx << ");";
-            db.exec(queryBuilder.str().c_str());
+			db.exec(queryBuilder.str());
 
             queryBuilder.str("");
             queryBuilder << "INSERT INTO " TX_EVENT_TABLE " (tx,type,time)"
                          << " values (" << id << "," << BEGIN << "," << t.get_begin_sc_time().value() << ");";
-            db.exec(queryBuilder.str().c_str());
+			db.exec(queryBuilder.str());
 
         } catch (SQLiteDB::SQLiteException &e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, e.errorMessage());
@@ -342,7 +346,7 @@ static void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason
             queryBuilder.str("");
             queryBuilder << "INSERT INTO " TX_EVENT_TABLE " (tx,type,time)"
                          << " values (" << t.get_id() << "," << END << "," << t.get_end_sc_time().value() << ");";
-            db.exec(queryBuilder.str().c_str());
+			db.exec(queryBuilder.str());
 
         } catch (SQLiteDB::SQLiteException &e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create transaction end");
@@ -378,7 +382,7 @@ static void relationCb(const scv_tr_handle &tr_1, const scv_tr_handle &tr_2, voi
         queryBuilder << "INSERT INTO " TX_RELATION_TABLE " (name,sink,src)"
                      << "values ('" << tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle)
                      << "'," << tr_1.get_id() << "," << tr_2.get_id() << ");";
-        db.exec(queryBuilder.str().c_str());
+		db.exec(queryBuilder.str());
 
     } catch (SQLiteDB::SQLiteException &e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create transaction relation");

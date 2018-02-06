@@ -18,6 +18,7 @@
 #define TLM_RECORDING_EXTENSION_H_
 
 #include <scv.h>
+#include <array>
 
 namespace scv4tlm {
 
@@ -27,7 +28,7 @@ enum tx_rel {
     PREDECESSOR_SUCCESSOR /*!< indicates predecessor successor relationship */
 };
 //! the string representation of the tx_rel
-static char const *tx_rel_str[] = {"PARENT/CHILD", "PRED/SUCC"};
+static std::array<const char*, 2> tx_rel_str = { { "PARENT/CHILD", "PRED/SUCC" } };
 /*! \brief cast the tx_rel enum to a string
  *
  * \param tc_rel is the relationship enum
