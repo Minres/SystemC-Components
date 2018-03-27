@@ -25,14 +25,19 @@
 
 #include <fstream>
 
+
 scc::configurer::configurer(const std::string &filename)
-: base_type(sc_core::sc_module_name("configurer")) {
-    if (filename.length() > 0) {
+: base_type("configurer")
+, cci_originator("configurer")
+, cci_broker(cci::cci_get_global_broker(cci_originator))
+{
+	if (filename.length() > 0) {
         std::ifstream is(filename);
         if (is.is_open()) {
             try {
                 is >> root;
-            } catch (Json::RuntimeError &e) {
+            	traverse_json_tree(root, "");
+           } catch (Json::RuntimeError &e) {
                 LOG(ERROR) << "Could not parse input file " << filename << ", reason: " << e.what();
             }
         } else {
@@ -57,6 +62,7 @@ const std::vector<sc_core::sc_object*>& get_sc_objects(sc_core::sc_object* obj =
 	else
 		return sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext);
 }
+
 void scc::configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj) {
 	Json::Value root{Json::objectValue};
 	for (auto *o : get_sc_objects(obj)){
@@ -99,6 +105,7 @@ void scc::configurer::configure() {
         Json::Value &val = root[o->name()];
         if (!val.isNull()) configure_sc_object(o, val);
     }
+	//traverse_json_tree(root, "");
 }
 
 void scc::configurer::configure_sc_object(sc_core::sc_object *obj, Json::Value &hier_val) {
@@ -145,6 +152,13 @@ Json::Value &scc::configurer::get_value_from_hierarchy(const std::string &hier_n
     return get_value_from_hierarchy(hier_name.substr(npos + 1, hier_name.size()), val);
 }
 
+Json::Value &scc::configurer::get_value_from_hierarchy(const std::string &hier_name, Json::Value &value) {
+    size_t npos = hier_name.find_first_of('.');
+    Json::Value &val = value[hier_name.substr(0, npos)];
+    if (val.isNull() || npos == std::string::npos || !val.isObject()) return val;
+    return get_value_from_hierarchy(hier_name.substr(npos + 1, hier_name.size()), val);
+}
+
 void scc::configurer::set_configuration_value(sc_core::sc_attr_base* attr_base, sc_core::sc_module* owner) {
     std::string name(owner->name());
     name += ".";
@@ -153,9 +167,53 @@ void scc::configurer::set_configuration_value(sc_core::sc_attr_base* attr_base, 
     if (!val.isNull()) set_value(attr_base, val);
 }
 
-Json::Value &scc::configurer::get_value_from_hierarchy(const std::string &hier_name, Json::Value &value) {
-    size_t npos = hier_name.find_first_of('.');
-    Json::Value &val = value[hier_name.substr(0, npos)];
-    if (val.isNull() || npos == std::string::npos || !val.isObject()) return val;
-    return get_value_from_hierarchy(hier_name.substr(npos + 1, hier_name.size()), val);
+void scc::configurer::traverse_json_tree( const Json::Value &node, std::string prefix) {
+    if( node.size() > 0 ) {
+        for( Json::Value::const_iterator itr = node.begin() ; itr != node.end() ; ++itr) {
+    	    if(!itr.key().isString()) return;
+    	    std::string key_name=itr.key().asString();
+			std::string hier_name{prefix.size()?prefix+"."+key_name:key_name};
+  			Json::Value val = node[key_name];
+  			if (val.isNull() || val.isArray())
+  				return;
+  			else if(val.isObject())
+  				traverse_json_tree(*itr, hier_name);
+  			else {
+  	    	    cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
+  				if(param_handle.is_valid()) {
+  					if( val.isString() ) {
+  						param_handle.set_cci_value(cci::cci_value(val.asString()));
+  					} else if( val.isBool() ) {
+  						param_handle.set_cci_value(cci::cci_value(val.asBool()));
+  					} else if( val.isInt() ) {
+  						param_handle.set_cci_value(cci::cci_value(val.asInt()));
+  					} else if( val.isInt64() ) {
+  						param_handle.set_cci_value(cci::cci_value(val.asInt64()));
+  					} else if( val.isUInt() ) {
+  						param_handle.set_cci_value(cci::cci_value(val.asUInt()));
+  					} else if( val.isUInt64() ) {
+  						param_handle.set_cci_value(cci::cci_value(val.asUInt64()));
+  					} else if( val.isDouble() ) {
+  						param_handle.set_cci_value(cci::cci_value(val.asDouble()));
+  					}
+  				} else {
+  					if( val.isString() ) {
+  						cci_broker.set_preset_cci_value(hier_name, cci::cci_value(val.asString()));
+  					} else if( val.isBool() ) {
+  						cci_broker.set_preset_cci_value(hier_name, cci::cci_value(val.asBool()));
+  					} else if( val.isInt() ) {
+  						cci_broker.set_preset_cci_value(hier_name, cci::cci_value(val.asInt()));
+  					} else if( val.isInt64() ) {
+  						cci_broker.set_preset_cci_value(hier_name, cci::cci_value(val.asInt64()));
+  					} else if( val.isUInt() ) {
+  						cci_broker.set_preset_cci_value(hier_name, cci::cci_value(val.asUInt()));
+  					} else if( val.isUInt64() ) {
+  						cci_broker.set_preset_cci_value(hier_name, cci::cci_value(val.asUInt64()));
+  					} else if( val.isDouble() ) {
+  						cci_broker.set_preset_cci_value(hier_name, cci::cci_value(val.asDouble()));
+  					}
+  				}
+  			}
+        }
+    }
 }

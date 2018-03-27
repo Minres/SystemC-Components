@@ -19,10 +19,16 @@ find_package(SystemC REQUIRED)
 find_package(ZLIB)
 if(SystemC_FOUND)
     include_directories(${SystemC_INCLUDE_DIRS})
-    link_directories(${SystemC_LIBRARY_DIRS}
-)
+    link_directories(${SystemC_LIBRARY_DIRS})
 else()
     message( FATAL_ERROR "SystemC library not found." )
+endif()
+
+if(CCI_FOUND)
+    include_directories(${CCI_INCLUDE_DIRS})
+    link_directories(${CCI_LIBRARY_DIRS})
+else()
+    message( FATAL_ERROR "SystemC CCI library not found." )
 endif()
 
 if(ZLIB_FOUND)
