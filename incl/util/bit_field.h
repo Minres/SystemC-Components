@@ -31,8 +31,7 @@ freely, subject to the following restrictions:
 // All members are public to simplify compliance with sections 9.0.7 and
 // 9.5.1 of the C++11 standard, thereby avoiding undefined behavior.
 //---------------------------------------------------------
-template <typename T, int Offset, int Bits> class BitFieldMember {
-public:
+template <typename T, int Offset, int Bits> struct BitFieldMember {
     T value;
 
     static_assert(Offset + Bits <= (int)sizeof(T) * 8, "Member exceeds bitfield boundaries");
