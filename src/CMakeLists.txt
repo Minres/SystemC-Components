@@ -22,5 +22,5 @@ set(LIBRARY_NAME sc-components)
 # Define the library
 add_library(${LIBRARY_NAME} ${LIB_SOURCES})
 # Make sure the compiler can find include files for our library
-# when other libraries or executables link to Hello
-target_include_directories (sc-components PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../incl)
+# when other libraries or executables link to sc_components
+target_include_directories (sc-components PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../incl)
