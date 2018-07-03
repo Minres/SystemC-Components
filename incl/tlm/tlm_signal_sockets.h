@@ -18,13 +18,13 @@ class tlm_signal_gp;
 
 template<typename SIG=bool>
 class tlm_signal_fw_transport_if: public virtual sc_core::sc_interface {
-  virtual void b_transport(tlm_signal_gp<SIG>& gp, sc_core::sc_time& delay) = 0;
-  virtual tlm_phase nb_transport_fw(tlm_signal_gp<SIG>& gp, sc_core::sc_time& delay) = 0;
+  virtual void b_transport(tlm_signal_gp<SIG>&, sc_core::sc_time&) = 0;
+  virtual tlm_sync_enum nb_transport_fw(tlm_signal_gp<SIG>&, tlm_phase&, sc_core::sc_time&) = 0;
 };
 
 template<typename SIG=bool>
 class tlm_signal_bw_transport_if: public virtual sc_core::sc_interface {
-    virtual tlm_phase nb_transport_bw(tlm_signal_gp<SIG>& gp, sc_core::sc_time& dela) = 0;
+    virtual tlm_sync_enum nb_transport_bw(tlm_signal_gp<SIG>&, tlm_phase&, sc_core::sc_time&) = 0;
 };
 
 template <typename SIG=bool>

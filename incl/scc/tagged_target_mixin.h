@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-#ifndef __TARGET_MIXIN_H__
-#define __TARGET_MIXIN_H__
+#ifndef __TAGGED_TARGET_MIXIN_H__
+#define __TAGGED_TARGET_MIXIN_H__
 
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES // needed for sc_spawn
 #define SC_INCLUDE_DYNAMIC_PROCESSES
@@ -28,7 +28,7 @@
 namespace scc {
 
 template <typename base_type, typename TYPES = tlm::tlm_base_protocol_types>
-class target_mixin : public base_type {
+class tagged_target_mixin : public base_type {
     friend class fw_process;
     friend class bw_process;
 
@@ -43,13 +43,13 @@ public:
     /**
      *
      */
-    target_mixin()
-    : target_mixin(sc_core::sc_gen_unique_name("target_mixin_socket")) {}
+    tagged_target_mixin()
+    : tagged_target_mixin(sc_core::sc_gen_unique_name("tagged_target_socket")) {}
     /**
      *
      * @param n
      */
-    explicit target_mixin(const char *n)
+    explicit tagged_target_mixin(const char *n)
     : base_type(n)
     , m_fw_process(this)
     , m_bw_process(this)
@@ -69,35 +69,39 @@ public:
     /**
      *
      * @param cb
+     * @param tag the tag to return upon calling
      */
     void
-    register_nb_transport_fw(std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)> cb) {
+    register_nb_transport_fw(std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)> cb, unsigned int tag) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
-        m_fw_process.set_nb_transport_ptr(cb);
+        m_fw_process.set_nb_transport_ptr(cb, tag);
     }
     /**
      *
      * @param cb
+     * @param tag the tag to return upon calling
      */
-    void register_b_transport(std::function<void(transaction_type &, sc_core::sc_time &)> cb) {
+    void register_b_transport(std::function<void(unsigned int, transaction_type &, sc_core::sc_time &)> cb, unsigned int tag) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
-        m_fw_process.set_b_transport_ptr(cb);
+        m_fw_process.set_b_transport_ptr(cb, tag);
     }
     /**
      *
      * @param cb
+     * @param tag the tag to return upon calling
      */
-    void register_transport_dbg(std::function<unsigned int(transaction_type &)> cb) {
+    void register_transport_dbg(std::function<unsigned int(unsigned int, transaction_type &)> cb, unsigned int tag) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
-        m_fw_process.set_transport_dbg_ptr(cb);
+        m_fw_process.set_transport_dbg_ptr(cb, tag);
     }
     /**
      *
      * @param cb
+     * @param tag the tag to return upon calling
      */
-    void register_get_direct_mem_ptr(std::function<bool(transaction_type &, tlm::tlm_dmi &)> cb) {
+    void register_get_direct_mem_ptr(std::function<bool(unsigned int, transaction_type &, tlm::tlm_dmi &)> cb, unsigned int tag) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
-        m_fw_process.set_get_direct_mem_ptr(cb);
+        m_fw_process.set_get_direct_mem_ptr(cb, tag);
     }
 
 private:
@@ -114,7 +118,7 @@ private:
     // Needed to detect transaction end when called from b_transport.
     class bw_process : public tlm::tlm_bw_transport_if<TYPES> {
     public:
-        bw_process(target_mixin *p_own)
+        bw_process(tagged_target_mixin *p_own)
         : m_owner(p_own) {}
 
         sync_enum_type nb_transport_bw(transaction_type &trans, phase_type &phase, sc_core::sc_time &t) {
@@ -153,23 +157,23 @@ private:
         }
 
     private:
-        target_mixin *m_owner;
+        tagged_target_mixin *m_owner;
     };
 
     class fw_process : public tlm::tlm_fw_transport_if<TYPES>, public tlm::tlm_mm_interface {
     public:
-        using NBTransportPtr = std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)>;
-        using BTransportPtr = std::function<void(transaction_type &, sc_core::sc_time &)>;
-        using TransportDbgPtr = std::function<unsigned int(transaction_type &)>;
-        using GetDirectMemPtr = std::function<bool(transaction_type &, tlm::tlm_dmi &)>;
+        using NBTransportPtr = std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)>;
+        using BTransportPtr = std::function<void(unsigned int, transaction_type &, sc_core::sc_time &)>;
+        using TransportDbgPtr = std::function<unsigned int(unsigned int, transaction_type &)>;
+        using GetDirectMemPtr = std::function<bool(unsigned int, transaction_type &, tlm::tlm_dmi &)>;
 
-        fw_process(target_mixin *p_own)
+        fw_process(tagged_target_mixin *p_own)
         : m_name(p_own->name())
         , m_owner(p_own)
-        , m_nb_transport_ptr(0)
-        , m_b_transport_ptr(0)
-        , m_transport_dbg_ptr(0)
-        , m_get_direct_mem_ptr(0)
+        , m_nb_transport_ptr(nullptr)
+        , m_b_transport_ptr(nullptr)
+        , m_transport_dbg_ptr(nullptr)
+        , m_get_direct_mem_ptr(nullptr)
         , m_peq(sc_core::sc_gen_unique_name("m_peq"))
         , m_response_in_progress(false) {
             sc_core::sc_spawn_options opts;
@@ -178,50 +182,54 @@ private:
                               &opts);
         }
 
-        void set_nb_transport_ptr(NBTransportPtr p) {
+        void set_nb_transport_ptr(NBTransportPtr p, unsigned int tag) {
             if (m_nb_transport_ptr) {
                 std::stringstream s;
                 s << m_name << ": non-blocking callback allready registered";
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_nb_transport_ptr = p;
+                tags[1]=tag;
             }
         }
 
-        void set_b_transport_ptr(BTransportPtr p) {
+        void set_b_transport_ptr(BTransportPtr p, unsigned int tag) {
             if (m_b_transport_ptr) {
                 std::stringstream s;
                 s << m_name << ": blocking callback allready registered";
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_b_transport_ptr = p;
-            }
+                tags[0]=tag;
+           }
         }
 
-        void set_transport_dbg_ptr(TransportDbgPtr p) {
+        void set_transport_dbg_ptr(TransportDbgPtr p, unsigned int tag) {
             if (m_transport_dbg_ptr) {
                 std::stringstream s;
                 s << m_name << ": debug callback allready registered";
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_transport_dbg_ptr = p;
-            }
+                tags[2]=tag;
+           }
         }
 
-        void set_get_direct_mem_ptr(GetDirectMemPtr p) {
+        void set_get_direct_mem_ptr(GetDirectMemPtr p, unsigned int tag) {
             if (m_get_direct_mem_ptr) {
                 std::stringstream s;
                 s << m_name << ": get DMI pointer callback allready registered";
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_get_direct_mem_ptr = p;
+                tags[3]=tag;
             }
         }
         // Interface implementation
         sync_enum_type nb_transport_fw(transaction_type &trans, phase_type &phase, sc_core::sc_time &t) {
             if (m_nb_transport_ptr) {
                 // forward call
-                return m_nb_transport_ptr(trans, phase, t);
+                return m_nb_transport_ptr(tags[1], trans, phase, t);
             } else if (m_b_transport_ptr) {
                 if (phase == tlm::BEGIN_REQ) {
                     // prepare thread to do blocking call
@@ -263,7 +271,7 @@ private:
         void b_transport(transaction_type &trans, sc_core::sc_time &t) {
             if (m_b_transport_ptr) {
                 // forward call
-                m_b_transport_ptr(trans, t);
+                m_b_transport_ptr(tags[0], trans, t);
                 return;
 
             } else if (m_nb_transport_ptr) {
@@ -303,7 +311,7 @@ private:
         unsigned int transport_dbg(transaction_type &trans) {
             if (m_transport_dbg_ptr) {
                 // forward call
-                return m_transport_dbg_ptr(trans);
+                return m_transport_dbg_ptr(tags[2], trans);
             } else {
                 // No debug support
                 return 0;
@@ -313,7 +321,7 @@ private:
         bool get_direct_mem_ptr(transaction_type &trans, tlm::tlm_dmi &dmi_data) {
             if (m_get_direct_mem_ptr) {
                 // forward call
-                return m_get_direct_mem_ptr(trans, dmi_data);
+                return m_get_direct_mem_ptr(tags[3], trans, dmi_data);
 
             } else {
                 // No DMI support
@@ -376,7 +384,7 @@ private:
                 sc_core::sc_time t = sc_core::SC_ZERO_TIME;
 
                 // forward call
-                m_b_transport_ptr(*trans, t);
+                m_b_transport_ptr(tags[0], *trans, t);
 
                 sc_core::wait(t);
 
@@ -407,7 +415,7 @@ private:
                     phase_type phase = tlm::BEGIN_REQ;
                     sc_core::sc_time t = sc_core::SC_ZERO_TIME;
 
-                    switch (m_nb_transport_ptr(*trans, phase, t)) {
+                    switch (m_nb_transport_ptr(tags[1], *trans, phase, t)) {
                     case tlm::TLM_COMPLETED: {
                         // notify transaction is finished
                         typename std::map<transaction_type *, sc_core::sc_event *>::iterator it =
@@ -435,7 +443,7 @@ private:
                             phase = tlm::END_RESP;
                             sc_core::wait(t); // This line is a bug fix added in TLM-2.0.2
                             t = sc_core::SC_ZERO_TIME;
-                            m_nb_transport_ptr(*trans, phase, t);
+                            m_nb_transport_ptr(tags[1], *trans, phase, t);
 
                             // notify transaction is finished
                             typename std::map<transaction_type *, sc_core::sc_event *>::iterator it =
@@ -479,7 +487,8 @@ private:
 
     private:
         const std::string m_name;
-        target_mixin *m_owner;
+        tagged_target_mixin *m_owner;
+        unsigned int tags[4];//bl, nb, dbg, dmi
         NBTransportPtr m_nb_transport_ptr;
         BTransportPtr m_b_transport_ptr;
         TransportDbgPtr m_transport_dbg_ptr;
@@ -498,4 +507,4 @@ private:
 };
 }
 
-#endif //__TARGET_MIXIN_H__
+#endif //__TAGGED_TARGET_MIXIN_H__
