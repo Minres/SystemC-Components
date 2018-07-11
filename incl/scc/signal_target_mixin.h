@@ -27,17 +27,18 @@
 
 namespace scc {
 
-template <typename base_type, typename SIG=bool, typename TYPES = tlm::tlm_signal_baseprotocol_types<SIG>>
-class signal_target_mixin : public base_type {
+template <typename BASE_TYPE>
+class signal_target_mixin : public BASE_TYPE {
     friend class fw_process;
     friend class bw_process;
 
 public:
-    using transaction_type = typename TYPES::tlm_payload_type;
-    using phase_type = typename TYPES::tlm_phase_type;
+    using tlm_signal_type = typename BASE_TYPE::tlm_signal_type;
+    using transaction_type = typename BASE_TYPE::transaction_type;
+    using phase_type = typename BASE_TYPE::phase_type;
     using sync_enum_type = tlm::tlm_sync_enum;
-    using fw_interface_type = tlm::tlm_signal_fw_transport_if<TYPES>;
-    using bw_interface_type = tlm::tlm_signal_bw_transport_if<TYPES>;
+    using fw_interface_type = tlm::tlm_signal_fw_transport_if<tlm_signal_type, typename BASE_TYPE::protocol_types>;
+    using bw_interface_type = tlm::tlm_signal_bw_transport_if<tlm_signal_type, typename BASE_TYPE::protocol_types>;
 
 public:
     /**
@@ -50,21 +51,21 @@ public:
      * @param n
      */
     explicit signal_target_mixin(const char *n)
-    : base_type(n)
+    : BASE_TYPE(n)
     , m_fw_process(this)
     , m_bw_process(this)
-    , m_current_transaction(nullptr) {
+    {
         bind(m_fw_process);
     }
 
-    using base_type::bind;
+    using BASE_TYPE::bind;
 
     // bw transport must come thru us.
     /**
      *
      * @return
      */
-    tlm::tlm_signal_bw_transport_if<SIG> *operator->() { return &m_bw_process; }
+    bw_interface_type *operator->() { return &m_bw_process; }
     // REGISTER_XXX
     /**
      *
@@ -80,7 +81,7 @@ public:
      * @param cb
      */
     void
-    register_nb_transport_fw(std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)> cb, unsigned int tag) {
+    register_nb_transport_fw(std::function<sync_enum_type(unsigned int,transaction_type &, phase_type &, sc_core::sc_time &)> cb, unsigned int tag) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
         m_fw_process.set_nb_transport_ptr(cb, tag);
     }
@@ -96,7 +97,7 @@ public:
      *
      * @param cb
      */
-    void register_b_transport(std::function<void(transaction_type &, sc_core::sc_time &)> cb, unsigned int tag) {
+    void register_b_transport(std::function<void(unsigned int,transaction_type &, sc_core::sc_time &)> cb, unsigned int tag) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
         m_fw_process.set_b_transport_ptr(cb, tag);
     }
@@ -104,12 +105,12 @@ public:
 private:
     // make call on bw path.
     sync_enum_type bw_nb_transport(transaction_type &trans, phase_type &phase, sc_core::sc_time &t) {
-        return base_type::operator->()->nb_transport_bw(trans, phase, t);
+        return BASE_TYPE::operator->()->nb_transport_bw(trans, phase, t);
     }
 
     // Helper class to handle bw path calls
     // Needed to detect transaction end when called from b_transport.
-    class bw_process : public tlm::tlm_signal_bw_transport_if<SIG> {
+    class bw_process : public bw_interface_type {
     public:
         bw_process(signal_target_mixin *p_own)
         : m_owner(p_own) {}
@@ -135,7 +136,7 @@ private:
         signal_target_mixin *m_owner;
     };
 
-    class fw_process : public tlm::tlm_signal_fw_transport_if<SIG>, public tlm::tlm_mm_interface {
+    class fw_process : public fw_interface_type, public tlm::tlm_base_mm_interface {
     public:
         using NBTransportPtr = std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)>;
         using BTransportPtr = std::function<void(transaction_type &, sc_core::sc_time &)>;
@@ -143,12 +144,9 @@ private:
         using BTransportTaggedPtr = std::function<void(unsigned int,transaction_type &, sc_core::sc_time &)>;
 
         fw_process(signal_target_mixin *p_own)
-        : m_name(p_own->name())
-        , m_owner(p_own)
-        , m_nb_transport_ptr(0)
-        , m_b_transport_ptr(0)
+        : m_owner(p_own)
         , m_peq(sc_core::sc_gen_unique_name("m_peq"))
-        , m_response_in_progress(false) {
+        {
             sc_core::sc_spawn_options opts;
             opts.set_sensitivity(&m_peq.get_event());
             sc_core::sc_spawn(sc_bind(&fw_process::b2nb_thread, this), sc_core::sc_gen_unique_name("b2nb_thread"),
@@ -158,17 +156,17 @@ private:
         void set_nb_transport_ptr(NBTransportPtr p) {
             if (m_nb_transport_ptr || m_nb_transport_tagged_ptr) {
                 std::stringstream s;
-                s << m_name << ": non-blocking callback allready registered";
+                s << m_owner->name() << ": non-blocking callback allready registered";
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_nb_transport_ptr = p;
             }
         }
 
-        void set_nb_transport_ptr(NBTransportPtr p, unsigned int tag) {
+        void set_nb_transport_ptr(NBTransportTaggedPtr p, unsigned int tag) {
             if (m_nb_transport_ptr || m_nb_transport_tagged_ptr) {
                 std::stringstream s;
-                s << m_name << ": non-blocking callback allready registered";
+                s << m_owner->name() << ": non-blocking callback allready registered";
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_nb_transport_tagged_ptr = p;
@@ -179,21 +177,21 @@ private:
         void set_b_transport_ptr(BTransportPtr p) {
             if (m_b_transport_ptr || m_b_transport_tagged_ptr) {
                 std::stringstream s;
-                s << m_name << ": blocking callback allready registered";
+                s << m_owner->name() << ": blocking callback allready registered";
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_b_transport_ptr = p;
             }
         }
 
-        void set_b_transport_ptr(BTransportPtr p, unsigned int tag) {
+        void set_b_transport_ptr(BTransportTaggedPtr p, unsigned int tag) {
             if (m_b_transport_ptr || m_b_transport_tagged_ptr) {
                 std::stringstream s;
-                s << m_name << ": blocking callback allready registered";
+                s << m_owner->name() << ": blocking callback allready registered";
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_b_transport_tagged_ptr = p;
-                tags[1]=tag;
+                tags[0]=tag;
             }
         }
 
@@ -204,8 +202,8 @@ private:
                 return m_nb_transport_ptr(trans, phase, t);
             } else if (m_nb_transport_tagged_ptr) {
                 // forward call
-                return m_nb_transport_ptr(tags[1], trans, phase, t);
-            } else if (m_b_transport_ptr) {
+                return m_nb_transport_tagged_ptr(tags[1], trans, phase, t);
+            } else if (m_b_transport_ptr || m_b_transport_tagged_ptr) {
                 if (phase == tlm::BEGIN_REQ) {
                     // prepare thread to do blocking call
                     process_handle_class *ph = m_process_handle.get_handle(&trans);
@@ -235,7 +233,7 @@ private:
 
             } else {
                 std::stringstream s;
-                s << m_name << ": no non-blocking transport callback registered";
+                s << m_owner->name() << ": no non-blocking transport callback registered";
                 SC_REPORT_ERROR("/OSCI_TLM-2/simple_socket", s.str().c_str());
             }
             return tlm::TLM_ACCEPTED; ///< unreachable code
@@ -276,7 +274,7 @@ private:
                 }
             } else {
                 std::stringstream s;
-                s << m_name << ": no blocking transport callback registered";
+                s << m_owner->name() << ": no blocking transport callback registered";
                 SC_REPORT_ERROR("/OSCI_TLM-2/simple_socket", s.str().c_str());
             }
         }
@@ -395,7 +393,7 @@ private:
             }
         }
 
-        void free(tlm::tlm_generic_payload *trans) {
+        void free(tlm::tlm_generic_payload_base *trans) {
             mm_end_event_ext *ext = trans->template get_extension<mm_end_event_ext>();
             assert(ext);
             // notif event first before freeing extensions (reset)
@@ -413,14 +411,14 @@ private:
         };
 
     private:
-        const std::string m_name;
         signal_target_mixin *m_owner;
-        NBTransportPtr m_nb_transport_ptr;
-        NBTransportTaggedPtr m_nb_transport_tagged_ptr;
-        BTransportPtr m_b_transport_ptr;
-        BTransportTaggedPtr m_b_transport_tagged_ptr;
+        NBTransportPtr m_nb_transport_ptr = nullptr;
+        NBTransportTaggedPtr m_nb_transport_tagged_ptr = nullptr;
+        BTransportPtr m_b_transport_ptr = nullptr;
+        BTransportTaggedPtr m_b_transport_tagged_ptr = nullptr;
+        std::array<unsigned int, 2> tags = {0,0};
         tlm_utils::peq_with_get<transaction_type> m_peq;
-        bool m_response_in_progress;
+        bool m_response_in_progress=false;
         sc_core::sc_event m_end_response;
     };
 
@@ -429,8 +427,17 @@ private:
     bw_process m_bw_process;
     std::map<transaction_type *, sc_core::sc_event *> m_pending_trans;
     sc_core::sc_event m_end_request;
-    transaction_type *m_current_transaction;
+    transaction_type *m_current_transaction=nullptr;
 };
+}
+
+#include <sysc/datatypes/bit/sc_logic.h>
+namespace scc {
+using tlm_signal_bool_in = signal_target_mixin<tlm::tlm_signal_target_socket<bool>>;
+using tlm_signal_logic_in = signal_target_mixin<tlm::tlm_signal_target_socket<sc_dt::sc_logic>>;
+using tlm_signal_bool_opt_in = signal_target_mixin<tlm::tlm_signal_opt_target_socket<bool>>;
+using tlm_signal_logic_opt_in = signal_target_mixin<tlm::tlm_signal_opt_target_socket<sc_dt::sc_logic>>;
+
 }
 
 #endif //__SIGNAL_TARGET_MIXIN_H__
