@@ -17,10 +17,10 @@
 #ifndef __SIGNAL_INITIATOR_MIXIN_H__
 #define __SIGNAL_INITIATOR_MIXIN_H__
 
-#include <functional>
-#include <sstream>
 #include "scc/utilities.h"
 #include <tlm/tlm_signal.h>
+#include <functional>
+#include <sstream>
 
 namespace scc {
 
@@ -36,36 +36,35 @@ public:
 
 public:
     signal_initiator_mixin()
-    : BASE_TYPE(sc_core::sc_gen_unique_name("initiator_mixin_socket"))
-    , error_if_no_nb_callback(false)
-    , bw_if(this)
-    {
-        this->m_export.bind(bw_if);
-    }
+    : signal_initiator_mixin(sc_core::sc_gen_unique_name("signal_initiator_mixinn_socket")){}
 
     explicit signal_initiator_mixin(const char *n)
     : BASE_TYPE(n)
-    , error_if_no_nb_callback(false)
-    , bw_if(this) {
-        this->m_export.bind(bw_if);
+    , error_if_no_callback(false)
+    , bw_if(this)
+    {
+        bind(bw_if);
     }
+
+    using BASE_TYPE::bind;
+
     /**
      *
      * @param cb the callback function
      */
-    void register_nb_transport_bw(std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)> cb) {
-        bw_if.set_transport_function(cb);
+    void register_nb_transport(std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)> cb) {
+        bw_if.set_nb_transport_ptr(cb);
     }
 
     /**
      *
      * @param cb the callback function
      */
-    void register_nb_transport_bw(std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)> cb, unsigned int tag) {
-        bw_if.set_transport_function(cb);
+    void register_nb_transport(std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)> cb, unsigned int tag) {
+        bw_if.set_nb_transport_ptr(cb);
     }
 
-    bool error_if_no_nb_callback;
+    bool error_if_no_callback;
 
 private:
     class bw_transport_if : public bw_interface_type {
@@ -77,21 +76,21 @@ private:
         : m_owner(owner)
         {}
 
-        void set_transport_function(transport_fct p) {
+        void set_nb_transport_ptr(transport_fct p) {
             if (m_transport_ptr || m_transport_tagged_ptr) {
                 std::stringstream s;
                 s << m_owner->name() << ": non-blocking callback allready registered";
-                SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
+                SC_REPORT_WARNING("/OSCI_TLM-2/signal_initiator_mixin", s.str().c_str());
             } else {
                 m_transport_ptr = p;
             }
         }
 
-        void set_transport_function(transport_fct p, unsigned int tag) {
+        void set_nb_transport_ptr(transport_fct p, unsigned int tag) {
             if (m_transport_ptr || m_transport_tagged_ptr) {
                 std::stringstream s;
                 s << m_owner->name() << ": non-blocking callback allready registered";
-                SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
+                SC_REPORT_WARNING("/OSCI_TLM-2/signal_initiator_mixin", s.str().c_str());
             } else {
                 m_transport_tagged_ptr = p;
                 this->tag=tag;
@@ -103,12 +102,12 @@ private:
                 return m_transport_ptr(trans, phase, t);
             else if (m_transport_tagged_ptr)
                 return m_transport_tagged_ptr(tag, trans, phase, t);
-            else if(m_owner->error_if_no_nb_callback){
+            else if(m_owner->error_if_no_callback){
                 std::stringstream s;
                 s << m_owner->name() << ": no transport callback registered";
                 SC_REPORT_ERROR("/OSCI_TLM-2/signal_initiator_mixin", s.str().c_str());
             }
-            return tlm::TLM_ACCEPTED;
+            return tlm::TLM_COMPLETED;
         }
 
     private:
