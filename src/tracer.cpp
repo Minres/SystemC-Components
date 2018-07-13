@@ -42,7 +42,7 @@ tracer::tracer(std::string &&name, file_type type, bool enable)
 {
     if (enabled) {
         trf = sc_create_vcd_trace_file(name.c_str());
-        trf->set_time_unit(1, SC_NS);
+        trf->set_time_unit(1, SC_PS);
     }
 #ifdef WITH_SCV
     if (type != NONE) {
@@ -88,6 +88,8 @@ void tracer::descend(const std::vector<sc_object *> &objects) {
             try_trace_signal(obj);
         } else if (strcmp(kind, "sc_inout") == 0 || strcmp(kind, "sc_in") == 0 || strcmp(kind, "sc_port") == 0) {
             try_trace_port(obj);
+        } else if (strcmp(kind, "tlm_signal") == 0) {
+            obj->trace(trf);
         }
         descend(obj->get_child_objects());
     }

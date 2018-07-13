@@ -20,8 +20,8 @@
  *      Author: developer
  */
 
-#ifndef _SYSC_TRACABLE_H_
-#define _SYSC_TRACABLE_H_
+#ifndef _SCC_TRACABLE_H_
+#define _SCC_TRACABLE_H_
 
 namespace sc_core {
 class sc_trace_file;
@@ -37,11 +37,11 @@ public:
     virtual ~traceable() = default;
     /**
      *
-     * @param trf
+     * @param trf the tracefile to use
      */
     virtual void trace(sc_core::sc_trace_file *trf) = 0;
 };
 
 } /* namespace scc */
 
-#endif /* _SYSC_TRACABLE_H_ */
+#endif /* _SCC_TRACABLE_H_ */

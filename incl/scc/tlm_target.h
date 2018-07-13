@@ -82,8 +82,9 @@ public:
         }
     }
 
-protected:
+private:
     sc_core::sc_time &clk;
+protected:
     util::range_lut<std::pair<resource_access_if *, uint64_t>> socket_map;
 };
 
