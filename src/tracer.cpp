@@ -111,6 +111,8 @@ void tracer::descend(const std::vector<sc_object *> &objects) {
     GEN_TRACE(unsigned long);                                                                                          \
     GEN_TRACE(long long);                                                                                              \
     GEN_TRACE(unsigned long long);                                                                                     \
+    GEN_TRACE(float);                                                                                                  \
+    GEN_TRACE(double);                                                                                                 \
     GEN_TRACE(sc_dt::int64);                                                                                           \
     GEN_TRACE(sc_dt::uint64);                                                                                          \
     GEN_TRACE(sc_core::sc_time);                                                                                       \
