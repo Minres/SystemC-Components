@@ -209,7 +209,7 @@ public:
      *
      * @param trf
      */
-    void trace(sc_core::sc_trace_file *trf) override { sc_trace(trf, storage, this->name()); }
+    void trace(sc_core::sc_trace_file *trf) const override { sc_trace(trf, storage, this->name()); }
 
     const DATATYPE res_val;
     const DATATYPE rdmask;
