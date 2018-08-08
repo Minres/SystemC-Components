@@ -3,10 +3,12 @@ set(LIB_HEADERS ${LibHeaders} )
 set(LIB_SOURCES
     sc_logic_7.cpp
     tracer.cpp
+    configurable_tracer.cpp
     utilities.cpp
     report.cpp
     jsoncpp.cpp
     configurer.cpp
+    perf_estimator.cpp
 )
 
 if(SCV_FOUND)   

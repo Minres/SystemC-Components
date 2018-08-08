@@ -23,11 +23,12 @@
 #ifndef _SYSC_REPORT_H_
 #define _SYSC_REPORT_H_
 
+#include <sysc/utils/sc_report.h>
+#include "scc/utilities.h"
+#include <util/logging.h>
+#include <sysc/kernel/sc_time.h>
 #include <iomanip>
 #include <sstream>
-#include <sysc/utils/sc_report.h>
-#include <util/logging.h>
-#include "scc/utilities.h"
 
 namespace logging {
 class SystemC {};
@@ -68,11 +69,34 @@ public:
             //    this->os << "            ";
             this->os << std::right;
         }
-        this->os << " [" << std::setw(20) << sc_core::sc_time_stamp() << "] ";
+        this->os << " [" << std::setw(20) << time2string(sc_core::sc_time_stamp()) << "] ";
         this->os.copyfmt(init);
         log::Log<T>::get_last_log_level() = level;
         return this->os;
     };
+protected:
+    std::string time2string(const sc_core::sc_time& t) const{
+        const std::array<const char*, 6> time_units{"fs", "ps", "ns", "us", "ms", "s "};
+        const std::array<uint64_t, 6> multiplier{1ULL, 1000ULL, 1000ULL*1000, 1000ULL*1000*1000, 1000ULL*1000*1000*1000, 1000ULL*1000*1000*1000*1000};
+        std::ostringstream oss;
+        const sc_core::sc_time_tuple tt{t};
+        const auto val = tt.value();
+        if ( !val ) {
+            oss << "0 s";
+        } else {
+            const unsigned scale = tt.unit();
+            const auto fs_val = val*multiplier[scale];
+            for(int j = multiplier.size()-1; j>=scale; --j){
+                if(fs_val>multiplier[j]){
+                    const auto i = val/multiplier[j-scale];
+                    const auto f = val%multiplier[j-scale];
+                    oss<<i<<'.'<<std::setw(3*(j-scale))<<std::setfill('0')<<std::left<<f<<' ' << time_units[j];
+                    break;
+                }
+            }
+        }
+        return oss.str();
+    }
 };
 
 template <typename CATEGORY = log::SystemC> class FILELOG_DECLSPEC Logger : public Log<log::Output2FILE<CATEGORY>> {
