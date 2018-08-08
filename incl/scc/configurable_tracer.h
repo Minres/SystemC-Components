@@ -14,34 +14,40 @@
  * limitations under the License.
  *******************************************************************************/
 /*
- * tracable.h
+ * tracer.h
  *
  *  Created on: Nov 9, 2016
  *      Author: developer
  */
 
-#ifndef _SCC_TRACABLE_H_
-#define _SCC_TRACABLE_H_
+#ifndef _SCC_CONFIGURABLE_TRACER_H_
+#define _SCC_CONFIGURABLE_TRACER_H_
 
-namespace sc_core {
-class sc_trace_file;
-}
+#include "scc/tracer.h"
+#include <cci_configuration>
 
 namespace scc {
 
-class traceable {
+class configurable_tracer : public scc::tracer {
 public:
     /**
      *
+     * @param name basename of the trace file(s)
+     * @param type type of trace file for transactions
+     * @param enable enable VCD (signal based) tracing
      */
-    virtual ~traceable() = default;
-    /**
-     *
-     * @param trf the tracefile to use
-     */
-    virtual void trace(sc_core::sc_trace_file *trf) const = 0;
+    configurable_tracer(std::string &&, file_type, bool = true);
+
+    ~configurable_tracer();
+
+protected:
+    void descend(const sc_core::sc_object *) override;
+    bool get_trace_enabled(const sc_core::sc_object*, bool =false );
+    void augment_object_hierarchical(const sc_core::sc_object*);
+    cci::cci_originator cci_originator;
+    cci::cci_broker_handle cci_broker;
+    std::vector<cci::cci_param_untyped*> params;
 };
 
 } /* namespace scc */
-
-#endif /* _SCC_TRACABLE_H_ */
+#endif /* _SCC_CONFIGURABLE_TRACER_H_ */

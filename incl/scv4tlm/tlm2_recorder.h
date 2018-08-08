@@ -69,7 +69,7 @@ public:
     SC_HAS_PROCESS(tlm2_recorder<TYPES>);
 
     //! \brief the attribute to selectively enable/disable recording
-    sc_core::sc_attribute<bool> enable;
+    sc_core::sc_attribute<bool> enableTracing;
 
     //! \brief the attribute to selectively enable/disable timed recording
     sc_core::sc_attribute<bool> enableTimed;
@@ -101,7 +101,7 @@ public:
      */
     tlm2_recorder(const char *name, bool recording_enabled = true, scv_tr_db *tr_db = scv_tr_db::get_default_db())
     : sc_core::sc_object(name)
-    , enable("enable", recording_enabled)
+    , enableTracing("enableTracing", recording_enabled)
     , enableTimed("enableTimed", recording_enabled)
     , fw_port(sc_core::sc_gen_unique_name("fw"))
     , bw_port(sc_core::sc_gen_unique_name("bw"))
@@ -123,7 +123,7 @@ public:
     , dmi_trInvalidateHandle(NULL)
     , extensionRecording(NULL)
     , fixed_basename(regex_replace(sc_core::sc_object::name(), pat, "")){
-    	this->add_attribute(enable);
+    	this->add_attribute(enableTracing);
     	this->add_attribute(enableTimed);
     }
 
@@ -206,7 +206,7 @@ public:
      * \return if true transaction recording is enabled otherwise transaction
      * recording is bypassed
      */
-    const bool isRecordingEnabled() const { return m_db != NULL && enable.value; }
+    const bool isRecordingEnabled() const { return m_db != NULL && enableTracing.value; }
 
     void setExtensionRecording(tlm2_extensions_recording_if<TYPES> *extensionRecording) {
         this->extensionRecording = extensionRecording;
