@@ -23,10 +23,10 @@
 #ifndef _SYSC_CONFIGURER_H_
 #define _SYSC_CONFIGURER_H_
 
-#include <cci_configuration>
-#include <json/json.h>
 #include "scc/report.h"
 #include "scc/utilities.h"
+#include <cci_configuration>
+#include <json/json.h>
 
 namespace scc {
 
@@ -71,7 +71,7 @@ public:
   	    }
     }
 
-    void set_configuration_value(sc_core::sc_attr_base *attr_base, sc_core::sc_module *owner);
+    void set_configuration_value(sc_core::sc_attr_base *attr_base, sc_core::sc_object *owner);
 
     static configurer &instance() {
         configurer *inst = dynamic_cast<configurer *>(sc_core::sc_find_object("configurer"));
@@ -82,7 +82,7 @@ public:
 protected:
     void dump_configuration(std::ostream& os, sc_core::sc_object* obj, Json::Value& node);
 
-    void configure_sc_object(sc_core::sc_object *obj, Json::Value &hier_val);
+    void configure_sc_attribute_hierarchical(sc_core::sc_object *obj, Json::Value &hier_val);
 
     void set_value(sc_core::sc_attr_base *attr_base, Json::Value &hier_val);
 
@@ -90,7 +90,7 @@ protected:
 
     Json::Value &get_value_from_hierarchy(const std::string &hier_name, Json::Value &val);
 
-    void traverse_json_tree(const Json::Value &root, std::string prefix);
+    void configure_cci_hierarchical(const Json::Value &root, std::string prefix);
 
     Json::Value root;
 
