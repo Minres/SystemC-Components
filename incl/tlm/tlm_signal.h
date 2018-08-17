@@ -101,7 +101,7 @@ tlm_sync_enum tlm::tlm_signal<SIG, TYPES, N>::nb_transport_bw(payload_type& gp, 
 template<typename SIG, typename TYPES, int N>
 void tlm::tlm_signal<SIG, TYPES, N>::que_cb(){
     while(auto oi = que.get_next())
-        value.write(oi.value());
+        value.write(oi.get());
 }
 
 }

@@ -29,9 +29,13 @@ template <unsigned int bit, unsigned int width, typename T> inline constexpr T b
 
 template <unsigned int bit, unsigned int width, typename T>
 inline constexpr typename std::make_signed<T>::type signed_bit_sub(T v) {
+#if __cplusplus < 201402L
+    return ((v << (sizeof(T) * 8 - bit - width)) >> (sizeof(T) * 8 - width));
+#else
     typename std::make_signed<T>::type r = v << (sizeof(T) * 8 - bit - width);
     typename std::make_signed<T>::type ret = (r >> (sizeof(T) * 8 - width));
     return ret;
+#endif
 }
 
 namespace util {
@@ -47,10 +51,19 @@ template <size_t N> constexpr size_t find_first(std::bitset<N> &bits) {
 
 // according to
 // https://stackoverflow.com/questions/8871204/count-number-of-1s-in-binary-representation
+#if __cplusplus < 201402L
+constexpr size_t uCount(uint32_t u){
+    return u - ((u >> 1) & 033333333333) - ((u >> 2) & 011111111111);
+}
+constexpr size_t bit_count(uint32_t u) {
+    return ((uCount(u) + (uCount(u) >> 3)) & 030707070707) % 63;
+}
+#else
 constexpr size_t bit_count(uint32_t u) {
     size_t uCount = u - ((u >> 1) & 033333333333) - ((u >> 2) & 011111111111);
     return ((uCount + (uCount >> 3)) & 030707070707) % 63;
 }
+#endif
 
 inline std::vector<std::string> split(const std::string &s, char seperator) {
     std::vector<std::string> output;
