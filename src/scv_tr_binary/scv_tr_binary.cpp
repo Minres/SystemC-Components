@@ -339,7 +339,7 @@ void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason, void *
     case scv_tr_db::CREATE:
         if ((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0)) fName = _scv_tr_db.get_name();
         try {
-            if (fName.size() < 5 || fName.find(".txb", fName.size() - 5) == string::npos) fName += ".txd";
+            if (fName.size() < 5 || fName.find(".txb", fName.size() - 5) == string::npos) fName += ".txb";
             db = new Database(fName);
         } catch (...) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open recording file");
