@@ -57,6 +57,10 @@ tracer::tracer(std::string &&name, file_type type, bool enable)
             scv_tr_compressed_init();
             ss << ".txlog";
             break;
+        case BINARY:
+            scv_tr_binary_init();
+            ss << ".txb";
+            break;
         case SQLITE:
             scv_tr_sqlite_init();
             break;
