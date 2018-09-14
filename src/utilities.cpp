@@ -22,6 +22,7 @@
 #include "scc/utilities.h"
 
 namespace sc_core {
+#if SC_VERSION_MAJOR<=2 && SC_VERSION_MINOR<=3 && SC_VERSION_PATCH<2
 void sc_trace(sc_trace_file *tf, const sc_time &t, const std::string &name) {
     sc_trace(tf, reinterpret_cast<const sc_core::sc_time::value_type *>(&t), name);
 }
@@ -29,7 +30,7 @@ void sc_trace(sc_trace_file *tf, const sc_time &t, const std::string &name) {
 void sc_trace(sc_trace_file *tf, const sc_time &t, const char *name) {
     sc_trace(tf, reinterpret_cast<const sc_core::sc_time::value_type *>(&t), name);
 }
-
+#endif
 template <> void sc_trace(sc_trace_file *tf, const sc_in<sc_time> &port, const std::string &name) {
     const sc_signal_in_if<sc_time> *iface = nullptr;
     if (sc_get_curr_simcontext()->elaboration_done()) {

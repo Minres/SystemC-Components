@@ -43,6 +43,7 @@
 
 namespace sc_core {
 // needed to be able to use sc_time as signal value
+#if SC_VERSION_MAJOR<=2 && SC_VERSION_MINOR<=3 && SC_VERSION_PATCH<2
 /**
  *
  * @param
@@ -57,6 +58,7 @@ void sc_trace(sc_trace_file *, const sc_time &, const std::string &);
  * @param
  */
 void sc_trace(sc_trace_file *, const sc_time &, const char *);
+#endif
 /**
  *
  * @param
