@@ -40,6 +40,10 @@ public:
 
     ~configurable_tracer();
 
+    void add_control(){
+        for(auto* o:sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
+            augment_object_hierarchical(o);
+    }
 protected:
     void descend(const sc_core::sc_object *) override;
     bool get_trace_enabled(const sc_core::sc_object*, bool =false );

@@ -15,8 +15,8 @@ configurable_tracer::configurable_tracer(std::string&& name, file_type type, boo
 , cci_originator("configurable_tracer")
 , cci_broker(cci::cci_get_global_broker(cci_originator))
 {
-    for(auto* o:sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
-        augment_object_hierarchical(o);
+//    for(auto* o:sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
+//        augment_object_hierarchical(o);
 }
 
 scc::configurable_tracer::~configurable_tracer() {
@@ -61,7 +61,7 @@ bool scc::configurable_tracer::get_trace_enabled(const sc_core::sc_object* obj, 
 }
 
 void configurable_tracer::augment_object_hierarchical(const sc_core::sc_object* obj) {
-    if(dynamic_cast<const sc_core::sc_module*>(obj)!=nullptr){
+    if(dynamic_cast<const sc_core::sc_module*>(obj)!=nullptr || dynamic_cast<const scc::traceable*>(obj)!=nullptr ){
         auto* attr=obj->get_attribute("enableTracing");
         if(attr==nullptr || dynamic_cast<const sc_core::sc_attribute<bool>*>(attr)==nullptr){ //check if we have no sc_attribute
             std::string hier_name {obj->name()};
