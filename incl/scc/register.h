@@ -91,7 +91,7 @@ public:
      */
     void reset() override {
         DATATYPE r(res_val);
-        if (wr_cb) wr_cb(*this, r);
+        if (wr_cb) wr_cb(*this, r, sc_core::SC_ZERO_TIME);
         storage = r;
     }
     /**
@@ -101,12 +101,12 @@ public:
      * @param offset
      * @return
      */
-    bool write(const uint8_t *data, size_t length, uint64_t offset) override {
+    bool write(const uint8_t *data, size_t length, uint64_t offset, sc_core::sc_time d) override {
         assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
         auto beg = reinterpret_cast<uint8_t *>(&temp) + offset;
         std::copy(data, data + length, beg);
-        if (wr_cb) return wr_cb(*this, temp);
+        if (wr_cb) return wr_cb(*this, temp, d);
         storage = (temp & wrmask) | (storage & ~wrmask);
         return true;
     }
@@ -117,11 +117,11 @@ public:
      * @param offset
      * @return
      */
-    bool read(uint8_t *data, size_t length, uint64_t offset) const override {
+    bool read(uint8_t *data, size_t length, uint64_t offset, sc_core::sc_time d) const override {
         assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
         if (rd_cb) {
-            if (!rd_cb(*this, temp)) return false;
+            if (!rd_cb(*this, temp, d)) return false;
         } else
             temp &= rdmask;
         auto beg = reinterpret_cast<uint8_t *>(&temp) + offset;
@@ -199,12 +199,26 @@ public:
      *
      * @param read_cb
      */
-    void set_read_cb(std::function<bool(const this_type &, DATATYPE &)> read_cb) { rd_cb = read_cb; }
+    void set_read_cb(std::function<bool(const this_type &, DATATYPE &)> read_cb) {
+        rd_cb = [read_cb](const this_type &reg, DATATYPE& data, sc_core::sc_time delay){read_cb(reg, data);};
+    }
+    /**
+     *
+     * @param read_cb
+     */
+    void set_read_cb(std::function<bool(const this_type &, DATATYPE &, sc_core::sc_time)> read_cb) { rd_cb = read_cb; }
     /**
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(this_type &, DATATYPE &)> write_cb) { wr_cb = write_cb; }
+    void set_write_cb(std::function<bool(this_type &, DATATYPE &)> write_cb) {
+        wr_cb = [write_cb](this_type &reg, DATATYPE& data, sc_core::sc_time delay){write_cb(reg, data);};
+    }
+    /**
+     *
+     * @param write_cb
+     */
+    void set_write_cb(std::function<bool(this_type &, DATATYPE &, sc_core::sc_time)> write_cb) { wr_cb = write_cb; }
     /**
      *
      * @param trf
@@ -217,11 +231,11 @@ public:
 
 private:
     DATATYPE &storage;
-    std::function<bool(const this_type &, DATATYPE &)> rd_cb;
-    std::function<bool(this_type &, DATATYPE &)> wr_cb;
+    std::function<bool(const this_type &, DATATYPE &, sc_core::sc_time)> rd_cb;
+    std::function<bool(this_type &, DATATYPE &, sc_core::sc_time)> wr_cb;
 
-    util::delegate<bool(const this_type &, DATATYPE &)> rd_dlgt;
-    util::delegate<bool(this_type &, DATATYPE &)> wr_dlgt;
+    util::delegate<bool(const this_type &, DATATYPE &, sc_core::sc_time)> rd_dlgt;
+    util::delegate<bool(this_type &, DATATYPE &, sc_core::sc_time)> wr_dlgt;
 };
 }
 
@@ -264,7 +278,15 @@ public:
         for (std::unique_ptr<sc_register<DATATYPE>> reg : *this) reg->add_read_cb(read_cb);
     }
 
+    void set_read_cb(std::function<bool(const sc_register<DATATYPE> &, DATATYPE &, sc_core::sc_time)> read_cb) {
+        for (std::unique_ptr<sc_register<DATATYPE>> reg : *this) reg->add_read_cb(read_cb);
+    }
+
     void set_write_cb(std::function<bool(sc_register<DATATYPE> &, DATATYPE &)> write_cb) {
+        for (std::unique_ptr<sc_register<DATATYPE>> reg : *this) reg->add_write_cb(write_cb);
+    }
+
+    void set_write_cb(std::function<bool(sc_register<DATATYPE> &, DATATYPE &, sc_core::sc_time)> write_cb) {
         for (std::unique_ptr<sc_register<DATATYPE>> reg : *this) reg->add_write_cb(write_cb);
     }
 

@@ -23,6 +23,7 @@
 #ifndef _SYSC_RESOURCE_ACCESS_IF_H_
 #define _SYSC_RESOURCE_ACCESS_IF_H_
 
+#include <sysc/kernel/sc_time.h>
 #include <cstddef>
 #include <cstdint>
 
@@ -51,7 +52,7 @@ public:
      * @param offset
      * @return
      */
-    virtual bool write(const uint8_t *data, std::size_t length, uint64_t offset = 0) = 0;
+    virtual bool write(const uint8_t *data, std::size_t length, uint64_t offset = 0, sc_core::sc_time d=sc_core::SC_ZERO_TIME) = 0;
     /**
      *
      * @param data
@@ -59,7 +60,7 @@ public:
      * @param offset
      * @return
      */
-    virtual bool read(uint8_t *data, std::size_t length, uint64_t offset = 0) const = 0;
+    virtual bool read(uint8_t *data, std::size_t length, uint64_t offset = 0, sc_core::sc_time d=sc_core::SC_ZERO_TIME) const = 0;
     // non-functional/debug accesses
     /**
      *
