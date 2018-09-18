@@ -154,18 +154,14 @@ void tracer::try_trace_port(const sc_core::sc_object *obj) {
 #undef GEN_TRACE
 #define GEN_TRACE(X)                                                                                                   \
     {                                                                                                                  \
-        const auto *in_port = dynamic_cast<const sc_core::sc_in<X> *>(obj);                                                        \
+        const auto* in_port = dynamic_cast<const sc_core::sc_in<X> *>(obj);                                            \
         if (in_port) {                                                                                                 \
             sc_core::sc_trace(trf, *in_port, std::string(in_port->name()));                                            \
             return;                                                                                                    \
         }                                                                                                              \
-    }
-    GEN_TRACE_STD;
-    GEN_TRACE_FX
-#undef GEN_TRACE
-#define GEN_TRACE(X)                                                                                                   \
+    }                                                                                                                  \
     {                                                                                                                  \
-        const auto *io_port = dynamic_cast<const sc_core::sc_inout<X> *>(obj);                                                     \
+        const auto* io_port = dynamic_cast<const sc_core::sc_inout<X> *>(obj);                                         \
         if (io_port) {                                                                                                 \
             sc_core::sc_trace(trf, *io_port, std::string(io_port->name()));                                            \
             return;                                                                                                    \
@@ -173,6 +169,7 @@ void tracer::try_trace_port(const sc_core::sc_object *obj) {
     }
     GEN_TRACE_STD;
     GEN_TRACE_FX
+#undef GEN_TRACE
 }
 
 } /* namespace scc */

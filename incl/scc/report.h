@@ -35,98 +35,48 @@ class SystemC {};
 }
 namespace scc {
 
-namespace log = logging;
 /**
  *
  */
 void init_logging();
 
-/**
- *
- */
-template <typename T> class Log : public log::Log<T> {
-public:
-    Log() = default;
+template<sc_core::sc_severity SEVERITY>
+struct ScLogger {
+    ScLogger(const char* file, int line, sc_core::sc_verbosity level=sc_core::SC_MEDIUM):t(nullptr), file(file), line(line), level(level){};
 
-    Log(const Log &) = delete;
+    ScLogger() = delete;
 
-    Log &operator=(const Log &) = delete;
+    ScLogger(const ScLogger &) = delete;
 
-    /**
-     *
-     * @param level
-     * @return
-     */
-    std::ostringstream &get(log::log_level level = log::INFO, const char *category = "") {
-        std::ios init(NULL);
-        init.copyfmt(this->os);
-        if (this->print_time()) this->os << "- " << log::now_time();
-        if (this->print_severity()) {
-            this->os << " " << std::setw(7) << std::left << this->to_string(level);
-            // if (strlen(category))
-            //    this->os << "[" << std::setw(10) << category<<"]";
-            // else
-            //    this->os << "            ";
-            this->os << std::right;
-        }
-        this->os << " [" << std::setw(20) << time2string(sc_core::sc_time_stamp()) << "] ";
-        this->os.copyfmt(init);
-        log::Log<T>::get_last_log_level() = level;
-        return this->os;
-    };
+    ScLogger &operator=(const ScLogger &) = delete;
+
+    virtual ~ScLogger() {
+      ::sc_core::sc_report_handler::report(SEVERITY, t?t:"SystemC", os.str().c_str(), level, file , line );
+    }
+
+    inline
+    ScLogger& type(){return *this;}
+
+    inline
+    ScLogger& type(const char* t){this->t=t; return *this;}
+
+    inline
+    std::ostringstream& get() {return os;};
+
 protected:
-    std::string time2string(const sc_core::sc_time& t) const{
-        const std::array<const char*, 6> time_units{"fs", "ps", "ns", "us", "ms", "s "};
-        const std::array<uint64_t, 6> multiplier{1ULL, 1000ULL, 1000ULL*1000, 1000ULL*1000*1000, 1000ULL*1000*1000*1000, 1000ULL*1000*1000*1000*1000};
-        std::ostringstream oss;
-        const sc_core::sc_time_tuple tt{t};
-        const auto val = tt.value();
-        if ( !val ) {
-            oss << "0 s";
-        } else {
-            const unsigned scale = tt.unit();
-            const auto fs_val = val*multiplier[scale];
-            for(int j = multiplier.size()-1; j>=scale; --j){
-                if(fs_val>multiplier[j]){
-                    const auto i = val/multiplier[j-scale];
-                    const auto f = val%multiplier[j-scale];
-                    oss<<i<<'.'<<std::setw(3*(j-scale))<<std::setfill('0')<<std::left<<f<<' ' << time_units[j];
-                    break;
-                }
-            }
-        }
-        return oss.str();
-    }
+    std::ostringstream os;
+    char* t;
+    const char* file;
+    const int line;
+    const sc_core::sc_verbosity level;
 };
 
-template <typename CATEGORY = log::SystemC> class FILELOG_DECLSPEC Logger : public Log<log::Output2FILE<CATEGORY>> {
-public:
-    /**
-     *
-     *
-     * @return
-     */
-    static log::log_level &reporting_level() {
-        static std::once_flag once;
-        std::call_once(once, []() { init_logging(); });
-        return log::Log<log::Output2FILE<log::SystemC>>::reporting_level();
-    }
-};
+#define SCTRACE(...) if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)   ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_FULL).type(__VA_ARGS__).get()
+#define SCDEBUG(...) if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)  ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_DEBUG).type(__VA_ARGS__).get()
+#define SCINFO(...)  if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM) ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCWARN(...)  ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__,__LINE__,sc_core::SC_MEDIUM, ##__VA_ARGS__).get()
+#define SCERR(...)   ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__,__LINE__,sc_core::SC_MEDIUM, ##__VA_ARGS__).get()
+
 }
-
-#ifdef LOG
-#undef LOG
-#endif
-#define LOG(LEVEL)                                                                                                     \
-    if (logging::LEVEL <= logging::Log<logging::Output2FILE<logging::SystemC>>::reporting_level() &&                   \
-        LOG_OUTPUT(SystemC)::stream())                                                                                 \
-    scc::Log<logging::Output2FILE<logging::SystemC>>().get(logging::LEVEL, "SystemC")
-
-#ifdef CLOG
-#undef CLOG
-#endif
-#define CLOG(LEVEL, CATEGORY)                                                                                          \
-    if (logging::LEVEL <= LOGGER(CATEGORY)::reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                       \
-    scc::Log<logging::Output2FILE<logging::CATEGORY>>().get(logging::LEVEL, #CATEGORY)
 
 #endif /* _SYSC_REPORT_H_ */
