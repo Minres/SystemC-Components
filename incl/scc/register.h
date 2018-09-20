@@ -200,7 +200,7 @@ public:
      * @param read_cb
      */
     void set_read_cb(std::function<bool(const this_type &, DATATYPE &)> read_cb) {
-        rd_cb = [read_cb](const this_type &reg, DATATYPE& data, sc_core::sc_time delay){read_cb(reg, data);};
+        rd_cb = [read_cb](const this_type &reg, DATATYPE& data, sc_core::sc_time delay){return read_cb(reg, data);};
     }
     /**
      *
@@ -212,7 +212,7 @@ public:
      * @param write_cb
      */
     void set_write_cb(std::function<bool(this_type &, DATATYPE &)> write_cb) {
-        wr_cb = [write_cb](this_type &reg, DATATYPE& data, sc_core::sc_time delay){write_cb(reg, data);};
+        wr_cb = [write_cb](this_type &reg, DATATYPE& data, sc_core::sc_time delay){return write_cb(reg, data);};
     }
     /**
      *
