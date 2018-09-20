@@ -58,7 +58,7 @@ struct ScLogger {
     ScLogger& type(){return *this;}
 
     inline
-    ScLogger& type(const char* t){this->t=t; return *this;}
+    ScLogger& type(const char* t){this->t=const_cast<char*>(t); return *this;}
 
     inline
     std::ostringstream& get() {return os;};
@@ -71,11 +71,12 @@ protected:
     const sc_core::sc_verbosity level;
 };
 
-#define SCTRACE(...) if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)   ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_FULL).type(__VA_ARGS__).get()
-#define SCDEBUG(...) if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)  ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_DEBUG).type(__VA_ARGS__).get()
-#define SCINFO(...)  if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM) ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
-#define SCWARN(...)  ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__,__LINE__,sc_core::SC_MEDIUM, ##__VA_ARGS__).get()
-#define SCERR(...)   ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__,__LINE__,sc_core::SC_MEDIUM, ##__VA_ARGS__).get()
+#define SCDBGTRC(...) if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)   ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_DEBUG).type(__VA_ARGS__).get()
+#define SCTRACE(...)  if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)   ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_FULL).type(__VA_ARGS__).get()
+#define SCDEBUG(...)  if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_HIGH)  ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_HIGH).type(__VA_ARGS__).get()
+#define SCINFO(...)   if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM) ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCWARN(...)   ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__,__LINE__,sc_core::SC_MEDIUM, ##__VA_ARGS__).get()
+#define SCERR(...)    ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__,__LINE__,sc_core::SC_MEDIUM, ##__VA_ARGS__).get()
 
 }
 

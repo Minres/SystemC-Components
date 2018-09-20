@@ -17,6 +17,7 @@
 #ifndef _UTIL_LOGGING_H_
 #define _UTIL_LOGGING_H_
 
+#include <iomanip>
 #include <cassert>
 #include <cstdio>
 #include <cstring>
@@ -24,8 +25,8 @@
 #include <mutex>
 #include <sstream>
 #include <string>
-#include <sys/time.h>
 #include <vector>
+#include <sys/time.h>
 
 #define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE)
 #define DO_DESCRIPTION(e) #e,
@@ -60,9 +61,9 @@ public:
     }
 
     std::ostringstream &get(log_level level = INFO, const char *category = "") {
-        if (print_time()) os << "- " << now_time();
+        if (print_time()) os << "- " << now_time()<< " ";
         if (print_severity()) {
-            os << " " << to_string(level);
+            os  << std::setw(7)<<std::left<<to_string(level);
             if (strlen(category)) os << "[" << category<<"]";
             os << ": ";
         }

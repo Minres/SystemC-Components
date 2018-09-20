@@ -52,7 +52,7 @@ std::string time2string(const sc_core::sc_time& t) {
 
 const std::string compose_message(const sc_report &rep) {
     std::stringstream os;
-    os << " [" << std::setw(20) << time2string(sc_core::sc_time_stamp()) << "] ";
+    os << "[" << std::setw(20) << time2string(sc_core::sc_time_stamp()) << "] ";
     if (rep.get_id() >= 0)
         os << "(" << "IWEF"[rep.get_severity()] << rep.get_id() << ") ";
     os << rep.get_msg_type();
@@ -70,8 +70,8 @@ const std::string compose_message(const sc_report &rep) {
 }
 
 inline log_level verbosity2log(int verb){
-    if(verb>=sc_core::SC_DEBUG) return TRACE;
-    if(verb>=sc_core::SC_FULL) return DEBUG;
+    if(verb>=sc_core::SC_FULL) return TRACE;
+    if(verb>=sc_core::SC_HIGH) return DEBUG;
     return INFO;
 }
 
