@@ -27,12 +27,19 @@ template <unsigned int bit, unsigned int width, typename T> inline constexpr T b
     return (v >> bit) & ((T(1) << width) - 1);
 }
 
-template <typename T, unsigned B>
-inline T signextend(const T x) {
-  struct {T x:B;} s;
-  return s.x = x;
+#if __cplusplus < 201402L
+template <typename T, unsigned B> inline constexpr T signextend(const T x) {
+#else
+template <typename T, unsigned B> inline constexpr T signextend(const typename std::make_unsigned<T>::type x) {
+#endif
+  struct X {
+      T x:B;
+      X(T x_):x(x_){}
+  } s(x);
+  return s.x;
 }
 
+// according to http://graphics.stanford.edu/~seander/bithacks.html#FixedSignExtend
 template <unsigned int bit, unsigned int width, typename T>
 inline constexpr typename std::make_signed<T>::type signed_bit_sub(T v) {
 #if __cplusplus < 201402L
