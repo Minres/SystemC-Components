@@ -64,9 +64,11 @@ struct tlm_managed_extension {
     }
     struct pool {
         static void* allocate(){
-            if(free_list.size()>0)
-                return free_list.pop_back();
-            else
+            if(free_list.size()>0){
+                auto ret = free_list.back();
+                free_list.pop_back();
+                return ret;
+            } else
                 return calloc(1, sizeof(type));
         }
 
