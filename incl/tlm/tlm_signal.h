@@ -88,6 +88,7 @@ tlm_sync_enum tlm::tlm_signal<SIG, TYPES, N>::nb_transport_fw(payload_type& gp, 
     for(size_t i=0; i<p.size(); ++i){
         p.get_interface(i)->nb_transport_fw(gp, phase, delay);
     }
+    return TLM_COMPLETED;
 }
 
 template<typename SIG, typename TYPES, int N>
@@ -96,6 +97,7 @@ tlm_sync_enum tlm::tlm_signal<SIG, TYPES, N>::nb_transport_bw(payload_type& gp, 
     for(size_t i=0; i<p.size(); ++i){
         p.get_interface(i)->nb_transport_bw(gp, phase, delay);
     }
+    return TLM_COMPLETED;
 }
 
 template<typename SIG, typename TYPES, int N>
