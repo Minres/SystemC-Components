@@ -28,7 +28,7 @@ template <unsigned int bit, unsigned int width, typename T> inline constexpr T b
 }
 
 #if __cplusplus < 201402L
-template <typename T, unsigned B> inline constexpr T signextend(const T x) {
+template <typename T, unsigned B> inline T signextend(const T x) {
 #else
 template <typename T, unsigned B> inline constexpr T signextend(const typename std::make_unsigned<T>::type x) {
 #endif
