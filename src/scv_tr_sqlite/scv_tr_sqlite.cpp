@@ -67,9 +67,14 @@ public:
     }
 
 	inline int exec(const string szSQL) {
-		return exec(szSQL);
+		return exec(szSQL.c_str());
 	}
-	;
+	inline sqlite3_stmt* prepare(const string szSQL){
+	    sqlite3_stmt* ret=nullptr;
+	    const  char* tail;
+        sqlite3_prepare_v2(db,  szSQL.c_str(), szSQL.size(), &ret, &tail);
+        return ret;
+	}
 
     int exec(const char *szSQL) {
         checkDB();
@@ -79,6 +84,16 @@ public:
             return sqlite3_changes(db);
         else
             throw SQLiteException(nRet, szError);
+    }
+
+    int exec(sqlite3_stmt* stmt) {
+        checkDB();
+        int nRet = sqlite3_step(stmt);
+        if (nRet == SQLITE_OK) {
+            sqlite3_reset(stmt);
+            return sqlite3_changes(db);
+        } else
+            throw SQLiteException(nRet, sqlite3_errmsg(db));
     }
 
 protected:
@@ -94,6 +109,8 @@ private:
 static SQLiteDB db;
 static ostringstream stringBuilder, queryBuilder;
 static vector<vector<uint64_t> *> concurrencyLevel;
+static sqlite3_stmt* stream_stmt;
+
 // ----------------------------------------------------------------------------
 enum EventType { BEGIN, RECORD, END };
 using data_type = scv_extensions_if::data_type;
@@ -107,6 +124,7 @@ using data_type = scv_extensions_if::data_type;
 #define TX_RELATION_TABLE "ScvTxRelation"
 
 static void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason, void *data) {
+    char * tail = 0;
     // This is called from the scv_tr_db ctor.
     static string fName("DEFAULT_scv_tr_sqlite");
     switch (reason) {
@@ -146,6 +164,7 @@ static void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason,
             queryBuilder << "INSERT INTO " SIM_PROPS " (time_resolution) values ("
                          << (long)(sc_get_time_resolution().to_seconds() * 1e15) << ");";
 			db.exec(queryBuilder.str());
+			stream_stmt = db.prepare("INSERT INTO " STREAM_TABLE " (id, name, kind) values (@ID, @NAME, @KIND)");
         } catch (SQLiteDB::SQLiteException &e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open recording file");
         }
@@ -168,10 +187,10 @@ static void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason,
 static void streamCb(const scv_tr_stream &s, scv_tr_stream::callback_reason reason, void *data) {
     if (reason == scv_tr_stream::CREATE && db.isOpen()) {
         try {
-            queryBuilder.str("");
-            queryBuilder << "INSERT INTO " STREAM_TABLE " (id, name, kind) values (" << s.get_id() << ",'"
-                         << s.get_name() << "','" << (s.get_stream_kind() ? s.get_stream_kind() : "<unnamed>") << "');";
-			db.exec(queryBuilder.str());
+			sqlite3_bind_int64(stream_stmt, 1, s.get_id());
+            sqlite3_bind_text(stream_stmt, 2, s.get_name(), -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(stream_stmt, 3, s.get_stream_kind() ? s.get_stream_kind() : "<unnamed>", -1, SQLITE_TRANSIENT);
+            db.exec(stream_stmt);
             if (concurrencyLevel.size() <= s.get_id()) concurrencyLevel.resize(s.get_id() + 1);
             concurrencyLevel[s.get_id()] = new vector<uint64_t>();
         } catch (SQLiteDB::SQLiteException &e) {
