@@ -36,9 +36,9 @@ class SystemC {};
 namespace scc {
 
 /**
- *
+ * initializes the SystemC logging system to use logging::Logger with a particular logging level
  */
-void init_logging();
+void init_logging(logging::log_level level=logging::WARNING);
 
 template<sc_core::sc_severity SEVERITY>
 struct ScLogger {
@@ -75,8 +75,8 @@ protected:
 #define SCTRACE(...)  if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)   ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_FULL).type(__VA_ARGS__).get()
 #define SCDEBUG(...)  if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_HIGH)  ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_HIGH).type(__VA_ARGS__).get()
 #define SCINFO(...)   if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM) ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
-#define SCWARN(...)   ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__,__LINE__,sc_core::SC_MEDIUM, ##__VA_ARGS__).get()
-#define SCERR(...)    ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__,__LINE__,sc_core::SC_MEDIUM, ##__VA_ARGS__).get()
+#define SCWARN(...)   ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__,__LINE__,sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCERR(...)    ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__,__LINE__,sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 
 }
 
