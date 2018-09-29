@@ -112,7 +112,7 @@ protected:
 template <typename CATEGORY> class Output2FILE : CATEGORY {
 public:
     static FILE *&stream() {
-        static FILE *pStream = stderr;
+        static FILE *pStream = stdout;
         return pStream;
     }
     static void output(const std::string &msg) {
