@@ -89,7 +89,7 @@ protected:
 };
 
 template <unsigned BUSWIDTH = 32> struct target_memory_map_entry {
-    scc::tlm_target<BUSWIDTH> *target;
+    tlm::tlm_target_socket<BUSWIDTH>& target;
     sc_dt::uint64 start;
     sc_dt::uint64 size;
 };

@@ -35,6 +35,7 @@
 
 #define NAMED(X, ...) X(#X, ##__VA_ARGS__)
 #define NAMEDD(T, X, ...) X(new T(#X, ##__VA_ARGS__))
+#define CREATE(T, X, I, ...)  X(T::create<I>(#X, ##__VA_ARGS__))
 
 #define TRACE_VAR(F, X) sc_core::sc_trace(F, X, std::string(this->name()) + "." #X)
 #define TRACE_ARR(F, X, I)                                                                                             \
