@@ -10,6 +10,7 @@
 
 #include "tlm_signal_gp.h"
 #include "tlm_signal_sockets.h"
+#include <scc/peq.h>
 
 namespace tlm {
 

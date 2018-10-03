@@ -9,6 +9,7 @@
 #define _TLM_TLM_SIGNAL_GP_H_
 
 #include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
+#include <deque>
 
 namespace tlm {
 
@@ -179,6 +180,32 @@ struct tlm_signal_gp: public tlm_generic_payload_base {
     void                 set_response_status(const tlm_response_status response_status){m_response_status = response_status;}
     std::string          get_response_string() const;
 
+    struct gp_mm : public tlm::tlm_base_mm_interface {
+        tlm::tlm_signal_gp<SIG>* create(){
+            if(pool.size()){
+                auto ret = pool.front();
+                pool.pop_front();
+                return ret;
+            } else
+                return new tlm::tlm_signal_gp<SIG>(this);
+        }
+        void free(tlm_generic_payload_base* gp) override {
+            auto t = dynamic_cast<tlm::tlm_signal_gp<SIG>*>(gp);
+            t->free_all_extensions();
+            pool.push_back(t);
+        }
+        ~gp_mm(){
+            for(auto n: pool) delete n;
+        }
+    private:
+        std::deque<tlm::tlm_signal_gp<SIG>*> pool;
+
+    };
+
+    static tlm::tlm_signal_gp<SIG>* create(){
+        static gp_mm mm;
+        return mm.create();
+    }
 
 protected:
     tlm_command m_command;

@@ -8,7 +8,6 @@
 #ifndef _TLM_TLM_SIGNAL_SOCKETS_H_
 #define _TLM_TLM_SIGNAL_SOCKETS_H_
 
-#include <scc/peq.h>
 #include "scc/report.h"
 
 #include <tlm_core/tlm_2/tlm_sockets/tlm_initiator_socket.h>
