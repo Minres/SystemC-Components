@@ -23,7 +23,7 @@
 #ifndef _SCC_CONFIGURABLE_TRACER_H_
 #define _SCC_CONFIGURABLE_TRACER_H_
 
-#include "scc/tracer.h"
+#include "tracer.h"
 #include <cci_configuration>
 
 namespace scc {

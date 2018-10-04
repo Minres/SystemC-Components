@@ -23,11 +23,11 @@
 #ifndef _SYSC_TLM_TARGET_H_
 #define _SYSC_TLM_TARGET_H_
 
-#include "scc/utilities.h"
+#include "utilities.h"
 #include "scv4tlm/tlm_rec_target_socket.h"
 #include "util/range_lut.h"
-#include "scc/resource_access_if.h"
-#include "scc/target_mixin.h"
+#include "resource_access_if.h"
+#include "target_mixin.h"
 #include <array>
 
 namespace scc {

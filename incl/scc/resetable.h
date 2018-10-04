@@ -24,7 +24,7 @@
 #define _SYSC_RESETTABLE_H_
 
 #include <vector>
-#include "scc/resource_access_if.h"
+#include "resource_access_if.h"
 
 namespace scc {
 

@@ -21,7 +21,7 @@
 #endif
 
 #include <sstream>
-#include "scc/utilities.h"
+#include "utilities.h"
 #include <tlm>
 #include <tlm_utils/peq_with_get.h>
 

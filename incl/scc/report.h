@@ -24,7 +24,7 @@
 #define _SYSC_REPORT_H_
 
 #include <sysc/utils/sc_report.h>
-#include "scc/utilities.h"
+#include "utilities.h"
 #include <util/logging.h>
 #include <sysc/kernel/sc_time.h>
 #include <iomanip>
@@ -77,6 +77,7 @@ protected:
 #define SCINFO(...)   if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM) ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__,__LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 #define SCWARN(...)   ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__,__LINE__,sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 #define SCERR(...)    ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__,__LINE__,sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCFATAL(...)    ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__,__LINE__,sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 
 }
 

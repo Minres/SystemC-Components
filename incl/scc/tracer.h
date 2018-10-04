@@ -23,7 +23,7 @@
 #ifndef _SCC_TRACER_H_
 #define _SCC_TRACER_H_
 
-#include "scc/utilities.h"
+#include "utilities.h"
 #ifdef WITH_SCV
 #include <scv.h>
 #endif

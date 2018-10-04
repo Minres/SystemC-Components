@@ -26,9 +26,9 @@
 // Needed for the simple_target_socket
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
-#include "scc/report.h"
-#include "scc/target_mixin.h"
-#include "scc/utilities.h"
+#include "report.h"
+#include "target_mixin.h"
+#include "utilities.h"
 #include <tlm.h>
 #include <util/sparse_array.h>
 

@@ -24,11 +24,11 @@
 #define _SYSC_ROUTER_H_
 
 #include "util/range_lut.h"
-#include "scc/utilities.h"
+#include "utilities.h"
 #include "scv4tlm/tlm_rec_initiator_socket.h"
 #include "scv4tlm/tlm_rec_target_socket.h"
-#include "scc/initiator_mixin.h"
-#include "scc/target_mixin.h"
+#include "initiator_mixin.h"
+#include "target_mixin.h"
 #include <sysc/utils/sc_vector.h>
 #include <tlm.h>
 #include <limits>

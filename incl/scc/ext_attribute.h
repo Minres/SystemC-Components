@@ -23,8 +23,8 @@
 #ifndef _SYSC_EXT_ATTRIBUTE_H_
 #define _SYSC_EXT_ATTRIBUTE_H_
 
-#include "scc/configurer.h"
-#include "scc/utilities.h"
+#include "configurer.h"
+#include "utilities.h"
 
 namespace scc {
 template <typename T> class ext_attribute : public sc_core::sc_attribute<T> {

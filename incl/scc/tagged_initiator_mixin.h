@@ -19,7 +19,7 @@
 
 #include <functional>
 #include <sstream>
-#include "scc/utilities.h"
+#include "utilities.h"
 #include <tlm>
 
 namespace scc {

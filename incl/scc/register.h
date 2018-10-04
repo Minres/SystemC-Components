@@ -28,9 +28,9 @@
 #include <functional>
 #include <limits>
 #include <sstream>
-#include "scc/resetable.h"
-#include "scc/resource_access_if.h"
-#include "scc/utilities.h"
+#include "resetable.h"
+#include "resource_access_if.h"
+#include "utilities.h"
 #include "util/delegate.h"
 
 namespace scc {

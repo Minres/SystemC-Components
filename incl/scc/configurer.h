@@ -23,8 +23,8 @@
 #ifndef _SYSC_CONFIGURER_H_
 #define _SYSC_CONFIGURER_H_
 
-#include "scc/report.h"
-#include "scc/utilities.h"
+#include "report.h"
+#include "utilities.h"
 #include <cci_configuration>
 #include <json/json.h>
 

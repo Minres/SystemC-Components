@@ -16,7 +16,7 @@
 #ifndef __SIGNAL_TARGET_MIXIN_H__
 #define __SIGNAL_TARGET_MIXIN_H__
 
-#include "scc/utilities.h"
+#include "utilities.h"
 #include <tlm/tlm_signal.h>
 #include <functional>
 #include <sstream>

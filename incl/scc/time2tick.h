@@ -8,7 +8,7 @@
 #ifndef _SCC_TIME2TICK_H_
 #define _SCC_TIME2TICK_H_
 
-#include <scc/utilities.h>
+#include "utilities.h"
 
 class time2tick: public sc_core::sc_module {
     SC_HAS_PROCESS(time2tick);
