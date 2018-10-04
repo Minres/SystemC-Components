@@ -216,7 +216,7 @@ function(_find_verilator)
         ${VERILATOR_INCLUDE_DIR}/verilated_dpi.cpp
         ${VERILATOR_INCLUDE_DIR}/verilated_vcd_c.cpp
         ${VERILATOR_INCLUDE_DIR}/verilated_vcd_sc.cpp
-        #${CMAKE_CURRENT_LIST_DIR}/verilator_callbacks.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/../src/verilator_callbacks.cpp
     )
 
     set_target_properties(verilated PROPERTIES
