@@ -33,9 +33,16 @@
 
 #include <locale>
 
-#define NAMED(X, ...) X(#X, ##__VA_ARGS__)
-#define NAMEDD(T, X, ...) X(new T(#X, ##__VA_ARGS__))
-#define CREATE(T, X, I, ...)  X(T::create<I>(#X, ##__VA_ARGS__))
+#if __cplusplus < 201402L
+template<typename T, typename... Args>
+std::unique_ptr<T> make_unique(Args&&... args){
+    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+}
+#endif
+
+#define NAMED(X, ...)         X(#X, ##__VA_ARGS__)
+#define NAMEDD(X, T, ...)     X(make_unique<T>(#X, ##__VA_ARGS__))
+#define NAMEDC(X, T, I, ...)  X(T::create<I>(#X, ##__VA_ARGS__))
 
 #define TRACE_VAR(F, X) sc_core::sc_trace(F, X, std::string(this->name()) + "." #X)
 #define TRACE_ARR(F, X, I)                                                                                             \
