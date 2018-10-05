@@ -24,6 +24,7 @@
 #define _SYSC_UTILITIES_H_
 
 #include "traceable.h"
+#include <memory>
 
 // pragmas to disable the deprecated warnings for SystemC headers
 #pragma GCC diagnostic push
