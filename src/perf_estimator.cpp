@@ -40,9 +40,11 @@ void perf_estimator::end_of_simulation() {
     unsigned long long elapsed_wall = (eos.wall_clock_stamp-sos.wall_clock_stamp).total_microseconds();
     unsigned long long elapsed_proc = (unsigned long long)((eos.proc_clock_stamp-sos.proc_clock_stamp)*1000000);
     unsigned long long elapsed_sim  = (unsigned long long)(now.to_seconds()*1000000.);
-    double wall_perf = elapsed_wall/elapsed_sim;
-    double proc_perf = elapsed_proc/elapsed_sim;
-    LOG(INFO)<<"Wall clock (process clock) based simulation real time factor is "<<wall_perf<<"("<<proc_perf<<")";
+    if(elapsed_sim>0){
+        double wall_perf = elapsed_wall/elapsed_sim;
+        double proc_perf = elapsed_proc/elapsed_sim;
+        LOG(INFO)<<"Wall clock (process clock) based simulation real time factor is "<<wall_perf<<"("<<proc_perf<<")";
+    }
 }
 
 } /* namespace scc */
