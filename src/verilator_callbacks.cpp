@@ -11,11 +11,10 @@
 void vl_stop (const char* filename, int linenum, const char* hier) {
     Verilated::gotFinish(true);
     Verilated::flushCall();
-    sc_stop();
-}
+    if (!sc_core::sc_end_of_simulation_invoked()) sc_core::sc_stop();}
 
 void vl_finish (const char* filename, int linenum, const char* hier) {
     Verilated::gotFinish(true);
     Verilated::flushCall();
-    sc_stop();
+    if (!sc_core::sc_end_of_simulation_invoked()) sc_core::sc_stop();
 }

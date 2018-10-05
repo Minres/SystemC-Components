@@ -16,7 +16,7 @@
 namespace tlm {
 
 template<typename TYPE>
-class tlm_signal2sc_signal:
+struct tlm_signal2sc_signal:
         public sc_core::sc_module,
         public tlm_signal_fw_transport_if<TYPE, tlm_signal_baseprotocol_types<TYPE>> {
 
@@ -30,7 +30,11 @@ class tlm_signal2sc_signal:
 
     sc_core::sc_out<TYPE> s_o;
 
-    tlm_signal2sc_signal(sc_core::sc_module_name nm) : sc_core::sc_module(nm) {
+    tlm_signal2sc_signal(sc_core::sc_module_name nm)
+    : sc_core::sc_module(nm)
+    , NAMED(t_i)
+    , NAMED(s_o)
+    {
         t_i.bind(*this);
         SC_METHOD(que_cb);
         sensitive<<que.event();
@@ -50,7 +54,7 @@ private:
 };
 
 template<typename TYPE>
-class sc_signal2tlm_signal:
+struct sc_signal2tlm_signal:
         public sc_core::sc_module,
         public tlm_signal_bw_transport_if<TYPE, tlm_signal_baseprotocol_types<TYPE>> {
 
@@ -64,7 +68,11 @@ class sc_signal2tlm_signal:
 
     tlm_signal_initiator_socket<TYPE> t_o;
 
-    sc_signal2tlm_signal(sc_core::sc_module_name nm) : sc_core::sc_module(nm) {
+    sc_signal2tlm_signal(sc_core::sc_module_name nm)
+    : sc_core::sc_module(nm)
+    , NAMED(s_i)
+    , NAMED(t_o)
+    {
         t_o.bind(*this);
         SC_METHOD(sig_cb);
         sensitive<<s_i;
