@@ -25,11 +25,15 @@ scc::configurable_tracer::~configurable_tracer() {
 
 
 void configurable_tracer::descend(const sc_core::sc_object* obj) {
+    if(obj==this) return;
     const char *kind = obj->kind();
     if (strcmp(kind, "sc_signal") == 0) {
         try_trace_signal(obj);
         return;
-    } else if (strcmp(kind, "sc_inout") == 0 || strcmp(kind, "sc_in") == 0 || strcmp(kind, "sc_port") == 0) {
+    } else if (strcmp(kind, "sc_inout") == 0 ||
+            strcmp(kind, "sc_out") == 0 ||
+            strcmp(kind, "sc_in") == 0 ||
+            strcmp(kind, "sc_port") == 0) {
         try_trace_port(obj);
         return;
     } else if (strcmp(kind, "tlm_signal") == 0) {
