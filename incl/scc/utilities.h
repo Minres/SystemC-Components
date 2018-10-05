@@ -44,7 +44,7 @@ std::unique_ptr<T> make_unique(Args&&... args){
 #endif
 
 #define NAMED(X, ...)         X(#X, ##__VA_ARGS__)
-#define NAMEDD(X, T, ...)     X(make_unique<T>(#X, ##__VA_ARGS__))
+#define NAMEDD(X, T, ...)     X(std::make_unique<T>(#X, ##__VA_ARGS__))
 #define NAMEDC(X, T, I, ...)  X(T::create<I>(#X, ##__VA_ARGS__))
 
 #define TRACE_VAR(F, X) sc_core::sc_trace(F, X, std::string(this->name()) + "." #X)
