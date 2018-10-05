@@ -54,7 +54,7 @@ public:
         gp->set_value(value);
         gp->acquire();
         tlm::tlm_phase phase{tlm::BEGIN_REQ};
-        auto delay{sc_core::SC_ZERO_TIME};
+        sc_core::sc_time delay{sc_core::SC_ZERO_TIME};
         (*this)->nb_transport_fw(*gp, phase, delay);
         gp->release();
     }
