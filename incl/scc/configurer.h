@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2017 MINRES Technologies GmbH
+ * Copyright 2017, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,13 +38,13 @@ public:
 
     configurer() = delete;
 
-    configurer(const configurer&) = delete;
+    configurer(const configurer &) = delete;
 
-    configurer(configurer&&) = delete;
+    configurer(configurer &&) = delete;
 
-    configurer& operator=(const configurer&) = delete;
+    configurer &operator=(const configurer &) = delete;
 
-    configurer& operator=(configurer&&) = delete;
+    configurer &operator=(configurer &&) = delete;
 
     void configure();
 
@@ -53,22 +53,22 @@ public:
     void dump_configuration(std::ostream &os = std::cout, sc_core::sc_object *obj = nullptr);
 
     template <typename T> void set_value(const std::string &hier_name, T value) {
-  	    cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
-  	    if(param_handle.is_valid()) {
-  	    	param_handle.set_cci_value(cci::cci_value(value));
-  	    } else {
-  	    	size_t pos = hier_name.find_last_of('.');
-  	    	sc_core::sc_module *mod =
-  	    			dynamic_cast<sc_core::sc_module *>(sc_core::sc_find_object(hier_name.substr(0, pos).c_str()));
-  	    	if (mod != nullptr) {
-  	    		sc_core::sc_attribute<T> *attr =
-  	    				dynamic_cast<sc_core::sc_attribute<T> *>(mod->get_attribute(hier_name.substr(pos + 1)));
-  	    		if (attr != nullptr)
-  	    			attr->value = value;
-  	    		else
-  	    			LOG(ERROR) << "Could not set attribute value " << hier_name;
-  	    	}
-  	    }
+        cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
+        if (param_handle.is_valid()) {
+            param_handle.set_cci_value(cci::cci_value(value));
+        } else {
+            size_t pos = hier_name.find_last_of('.');
+            sc_core::sc_module *mod =
+                dynamic_cast<sc_core::sc_module *>(sc_core::sc_find_object(hier_name.substr(0, pos).c_str()));
+            if (mod != nullptr) {
+                sc_core::sc_attribute<T> *attr =
+                    dynamic_cast<sc_core::sc_attribute<T> *>(mod->get_attribute(hier_name.substr(pos + 1)));
+                if (attr != nullptr)
+                    attr->value = value;
+                else
+                    LOG(ERROR) << "Could not set attribute value " << hier_name;
+            }
+        }
     }
 
     void set_configuration_value(sc_core::sc_attr_base *attr_base, sc_core::sc_object *owner);
@@ -80,7 +80,7 @@ public:
     }
 
 protected:
-    void dump_configuration(std::ostream& os, sc_core::sc_object* obj, Json::Value& node);
+    void dump_configuration(std::ostream &os, sc_core::sc_object *obj, Json::Value &node);
 
     void configure_sc_attribute_hierarchical(sc_core::sc_object *obj, Json::Value &hier_val);
 

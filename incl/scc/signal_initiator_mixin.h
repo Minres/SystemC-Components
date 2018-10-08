@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,14 +18,13 @@
 #define __SIGNAL_INITIATOR_MIXIN_H__
 
 #include "utilities.h"
-#include <tlm/tlm_signal.h>
 #include <functional>
 #include <sstream>
+#include <tlm/tlm_signal.h>
 
 namespace scc {
 
-template <typename BASE_TYPE>
-class signal_initiator_mixin : public BASE_TYPE {
+template <typename BASE_TYPE> class signal_initiator_mixin : public BASE_TYPE {
 public:
     using tlm_signal_type = typename BASE_TYPE::tlm_signal_type;
     using transaction_type = typename BASE_TYPE::transaction_type;
@@ -36,20 +35,19 @@ public:
 
 public:
     signal_initiator_mixin()
-    : signal_initiator_mixin(sc_core::sc_gen_unique_name("signal_initiator_mixinn_socket")){}
+    : signal_initiator_mixin(sc_core::sc_gen_unique_name("signal_initiator_mixinn_socket")) {}
 
     explicit signal_initiator_mixin(const char *n)
     : BASE_TYPE(n)
     , error_if_no_callback(false)
-    , bw_if(this)
-    {
+    , bw_if(this) {
         bind(bw_if);
     }
 
     using BASE_TYPE::bind;
 
-    void write_now(tlm_signal_type value){
-        auto*  gp = tlm::tlm_signal_gp<tlm_signal_type>::create();
+    void write_now(tlm_signal_type value) {
+        auto *gp = tlm::tlm_signal_gp<tlm_signal_type>::create();
         gp->set_command(tlm::TLM_WRITE_COMMAND);
         gp->set_value(value);
         gp->acquire();
@@ -59,12 +57,11 @@ public:
         gp->release();
     }
 
-    template<typename EXT_TYPE>
-    void write_now(tlm_signal_type value, EXT_TYPE* ext){
-        auto*  gp = tlm::tlm_signal_gp<tlm_signal_type>::create();
+    template <typename EXT_TYPE> void write_now(tlm_signal_type value, EXT_TYPE *ext) {
+        auto *gp = tlm::tlm_signal_gp<tlm_signal_type>::create();
         gp->set_command(tlm::TLM_WRITE_COMMAND);
         gp->set_value(value);
-        if(ext) gp->set_extension(ext);
+        if (ext) gp->set_extension(ext);
         gp->acquire();
         tlm::tlm_phase phase{tlm::BEGIN_REQ};
         sc_core::sc_time delay{sc_core::SC_ZERO_TIME};
@@ -84,7 +81,9 @@ public:
      *
      * @param cb the callback function
      */
-    void register_nb_transport(std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)> cb, unsigned int tag) {
+    void register_nb_transport(
+        std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)> cb,
+        unsigned int tag) {
         bw_if.set_nb_transport_ptr(cb);
     }
 
@@ -93,12 +92,12 @@ public:
 private:
     class bw_transport_if : public bw_interface_type {
     public:
-        using transport_fct        = std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)>;
-        using transport_tagged_fct = std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)>;
+        using transport_fct = std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)>;
+        using transport_tagged_fct =
+            std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)>;
 
-        bw_transport_if(const signal_initiator_mixin* owner)
-        : m_owner(owner)
-        {}
+        bw_transport_if(const signal_initiator_mixin *owner)
+        : m_owner(owner) {}
 
         void set_nb_transport_ptr(transport_fct p) {
             if (m_transport_ptr || m_transport_tagged_ptr) {
@@ -117,7 +116,7 @@ private:
                 SC_REPORT_WARNING("/OSCI_TLM-2/signal_initiator_mixin", s.str().c_str());
             } else {
                 m_transport_tagged_ptr = p;
-                this->tag=tag;
+                this->tag = tag;
             }
         }
 
@@ -126,7 +125,7 @@ private:
                 return m_transport_ptr(trans, phase, t);
             else if (m_transport_tagged_ptr)
                 return m_transport_tagged_ptr(tag, trans, phase, t);
-            else if(m_owner->error_if_no_callback){
+            else if (m_owner->error_if_no_callback) {
                 std::stringstream s;
                 s << m_owner->name() << ": no transport callback registered";
                 SC_REPORT_ERROR("/OSCI_TLM-2/signal_initiator_mixin", s.str().c_str());
@@ -135,10 +134,10 @@ private:
         }
 
     private:
-        const signal_initiator_mixin* m_owner;
-        unsigned int tag=0;
-        transport_fct m_transport_ptr=nullptr;
-        transport_tagged_fct m_transport_tagged_ptr=nullptr;
+        const signal_initiator_mixin *m_owner;
+        unsigned int tag = 0;
+        transport_fct m_transport_ptr = nullptr;
+        transport_tagged_fct m_transport_tagged_ptr = nullptr;
     };
 
 private:
@@ -153,6 +152,5 @@ using tlm_signal_bool_out = signal_initiator_mixin<tlm::tlm_signal_initiator_soc
 using tlm_signal_logic_out = signal_initiator_mixin<tlm::tlm_signal_initiator_socket<sc_dt::sc_logic>>;
 using tlm_signal_bool_opt_out = signal_initiator_mixin<tlm::tlm_signal_opt_initiator_socket<bool>>;
 using tlm_signal_logic_opt_out = signal_initiator_mixin<tlm::tlm_signal_opt_initiator_socket<sc_dt::sc_logic>>;
-
 }
 #endif //__SIGNAL_INITIATOR_MIXIN_H__

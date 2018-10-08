@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 #ifndef TLM_RECORDING_EXTENSION_H_
 #define TLM_RECORDING_EXTENSION_H_
 
-#include <scv.h>
 #include <array>
+#include <scv.h>
 
 namespace scv4tlm {
 
@@ -28,7 +28,7 @@ enum tx_rel {
     PREDECESSOR_SUCCESSOR /*!< indicates predecessor successor relationship */
 };
 //! the string representation of the tx_rel
-static std::array<const char*, 2> tx_rel_str = { { "PARENT/CHILD", "PRED/SUCC" } };
+static std::array<const char *, 2> tx_rel_str = {{"PARENT/CHILD", "PRED/SUCC"}};
 /*! \brief cast the tx_rel enum to a string
  *
  * \param tc_rel is the relationship enum

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,15 +23,15 @@
 #ifndef _SYSC_ROUTER_H_
 #define _SYSC_ROUTER_H_
 
-#include "util/range_lut.h"
-#include "utilities.h"
+#include "initiator_mixin.h"
 #include "scv4tlm/tlm_rec_initiator_socket.h"
 #include "scv4tlm/tlm_rec_target_socket.h"
-#include "initiator_mixin.h"
 #include "target_mixin.h"
+#include "util/range_lut.h"
+#include "utilities.h"
+#include <limits>
 #include <sysc/utils/sc_vector.h>
 #include <tlm.h>
-#include <limits>
 #include <unordered_map>
 
 namespace scc {
@@ -76,7 +76,7 @@ public:
      * @param idx
      * @param name
      */
-    void set_target_name(size_t idx, std::string name){ target_name_lut.insert(std::make_pair(name, idx));}
+    void set_target_name(size_t idx, std::string name) { target_name_lut.insert(std::make_pair(name, idx)); }
     /**
      *
      * @param idx
@@ -93,13 +93,13 @@ public:
      * @param remap
      */
     void add_target_range(size_t idx, uint64_t base, uint64_t size, bool remap = true);
-   /**
-     * tagged blocking transport method
-     *
-     * @param i
-     * @param trans
-     * @param delay
-     */
+    /**
+      * tagged blocking transport method
+      *
+      * @param i
+      * @param trans
+      * @param delay
+      */
     void b_transport(int i, tlm::tlm_generic_payload &trans, sc_core::sc_time &delay);
     /**
      * tagged forward DMI method
@@ -182,13 +182,14 @@ template <unsigned BUSWIDTH>
 void router<BUSWIDTH>::add_target_range(std::string name, uint64_t base, uint64_t size, bool remap) {
     auto it = target_name_lut.find(name);
 #ifndef NDEBUG
-    //sc_assert(it!=target_name_lut.end());
-    if(it==target_name_lut.end()){
-        std::stringstream ss; ss<<"No target index entry for '"<<name<<"' found ";
-        ::sc_core::sc_assertion_failed(ss.str().c_str(),__FILE__,__LINE__);
+    // sc_assert(it!=target_name_lut.end());
+    if (it == target_name_lut.end()) {
+        std::stringstream ss;
+        ss << "No target index entry for '" << name << "' found ";
+        ::sc_core::sc_assertion_failed(ss.str().c_str(), __FILE__, __LINE__);
     }
 #endif
-    auto idx=it->second;
+    auto idx = it->second;
     tranges[idx].base = base;
     tranges[idx].size = size;
     tranges[idx].remap = remap;

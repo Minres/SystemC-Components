@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
 #ifndef _SCC_TAGGED_INITIATOR_MIXIN_H__
 #define _SCC_TAGGED_INITIATOR_MIXIN_H__
 
+#include "utilities.h"
 #include <functional>
 #include <sstream>
-#include "utilities.h"
 #include <tlm>
 
 namespace scc {
@@ -50,8 +50,9 @@ public:
      * @param cb the callback function
      * @param tag the tag to return upon calling
      */
-    void
-    register_nb_transport_bw(std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)> cb, unsigned int tag) {
+    void register_nb_transport_bw(
+        std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)> cb,
+        unsigned int tag) {
         bw_if.set_transport_function(cb, tag);
     }
     /**
@@ -59,14 +60,16 @@ public:
      * @param cb the callback function
      * @param tag the tag to return upon calling
      */
-    void register_invalidate_direct_mem_ptr(std::function<void(unsigned int, sc_dt::uint64, sc_dt::uint64)> cb, unsigned int tag) {
+    void register_invalidate_direct_mem_ptr(std::function<void(unsigned int, sc_dt::uint64, sc_dt::uint64)> cb,
+                                            unsigned int tag) {
         bw_if.set_invalidate_direct_mem_function(cb, tag);
     }
 
 private:
     class bw_transport_if : public tlm::tlm_bw_transport_if<TYPES> {
     public:
-        using transport_fct = std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)>;
+        using transport_fct =
+            std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)>;
         using invalidate_dmi_fct = std::function<void(unsigned int, sc_dt::uint64, sc_dt::uint64)>;
 
         bw_transport_if(const std::string &name)
@@ -81,7 +84,7 @@ private:
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_transport_ptr = p;
-                tags[0]=tag;
+                tags[0] = tag;
             }
         }
 
@@ -92,7 +95,7 @@ private:
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_invalidate_direct_mem_ptr = p;
-                tags[1]=tag;
+                tags[1] = tag;
             }
         }
 
@@ -111,7 +114,7 @@ private:
 
     private:
         const std::string m_name;
-        unsigned int tags[2];//dbg, dmi
+        unsigned int tags[2]; // dbg, dmi
         transport_fct m_transport_ptr;
         invalidate_dmi_fct m_invalidate_direct_mem_ptr;
     };

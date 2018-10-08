@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,11 +23,11 @@
 #ifndef _SYSC_TLM_TARGET_H_
 #define _SYSC_TLM_TARGET_H_
 
-#include "utilities.h"
-#include "scv4tlm/tlm_rec_target_socket.h"
-#include "util/range_lut.h"
 #include "resource_access_if.h"
+#include "scv4tlm/tlm_rec_target_socket.h"
 #include "target_mixin.h"
+#include "util/range_lut.h"
+#include "utilities.h"
 #include <array>
 
 namespace scc {
@@ -84,12 +84,13 @@ public:
 
 private:
     sc_core::sc_time &clk;
+
 protected:
     util::range_lut<std::pair<resource_access_if *, uint64_t>> socket_map;
 };
 
 template <unsigned BUSWIDTH = 32> struct target_memory_map_entry {
-    tlm::tlm_target_socket<BUSWIDTH>& target;
+    tlm::tlm_target_socket<BUSWIDTH> &target;
     sc_dt::uint64 start;
     sc_dt::uint64 size;
 };
@@ -154,8 +155,7 @@ void scc::tlm_target<BUSWIDTH>::b_tranport_cb(tlm::tlm_generic_payload &gp, sc_c
     delay += clk;
 }
 
-template <unsigned int BUSWIDTH>
-unsigned int scc::tlm_target<BUSWIDTH>::tranport_dbg_cb(tlm::tlm_generic_payload &gp) {
+template <unsigned int BUSWIDTH> unsigned int scc::tlm_target<BUSWIDTH>::tranport_dbg_cb(tlm::tlm_generic_payload &gp) {
     resource_access_if *ra = nullptr;
     uint64_t base = 0;
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());

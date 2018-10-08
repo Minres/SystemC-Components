@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ public:
 
 protected:
     void end_of_elaboration() override;
-    virtual void descend(const sc_core::sc_object*);
+    virtual void descend(const sc_core::sc_object *);
     virtual void try_trace_signal(const sc_core::sc_object *);
     virtual void try_trace_port(const sc_core::sc_object *);
     bool enabled;

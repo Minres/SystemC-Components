@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2015 MINRES Technologies GmbH
+ * Copyright 2014, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
+#include <array>
 #include <cstdio>
 #include <iostream>
+#include <sstream>
 #include <stdexcept>
 #include <string>
 #include <vector>
-#include <sstream>
-#include <array>
 // clang-format off
 #include "scv/scv_util.h"
 #include "scv/scv_introspection.h"
@@ -36,8 +36,8 @@ public:
     class SQLiteException : public runtime_error {
     public:
         SQLiteException(const int nErrCode, const char *msg, bool doFree = true)
-    : runtime_error(msg)
-    , mnErrCode(0) {
+        : runtime_error(msg)
+        , mnErrCode(0) {
             if (doFree && msg) sqlite3_free(const_cast<char *>(msg));
         }
         const int errorCode() { return mnErrCode; }
@@ -60,29 +60,25 @@ public:
     void close() {
         if (db) {
             int nRet = sqlite3_close(db);
-            if ( nRet == SQLITE_OK)
+            if (nRet == SQLITE_OK)
                 db = nullptr;
-            else if(nRet== SQLITE_BUSY){
-                while (nRet == SQLITE_BUSY){ // maybe include _LOCKED
-                    sqlite3_stmt *stmt = sqlite3_next_stmt(db, NULL);
-                    if (stmt)
-                        sqlite3_finalize(stmt); // don't trap, can't handle it anyway
+            else if (nRet == SQLITE_BUSY) {
+                while (nRet == SQLITE_BUSY) { // maybe include _LOCKED
+                    sqlite3_stmt *stmt = sqlite3_next_stmt(db, nullptr);
+                    if (stmt) sqlite3_finalize(stmt); // don't trap, can't handle it anyway
                     nRet = sqlite3_close(db);
                 }
-                if (nRet != SQLITE_OK)
-                    throw SQLiteException(SQLITEWRAPPER_ERROR, "Unable to close database", false);
+                if (nRet != SQLITE_OK) throw SQLiteException(SQLITEWRAPPER_ERROR, "Unable to close database", false);
             } else
                 throw SQLiteException(SQLITEWRAPPER_ERROR, "Unable to close database", false);
         }
     }
 
-    inline int exec(const string szSQL) {
-        return exec(szSQL.c_str());
-    }
-    inline sqlite3_stmt* prepare(const string szSQL){
-        sqlite3_stmt* ret=nullptr;
-        const  char* tail;
-        sqlite3_prepare_v2(db,  szSQL.c_str(), szSQL.size(), &ret, &tail);
+    inline int exec(const string szSQL) { return exec(szSQL.c_str()); }
+    inline sqlite3_stmt *prepare(const string szSQL) {
+        sqlite3_stmt *ret = nullptr;
+        const char *tail;
+        sqlite3_prepare_v2(db, szSQL.c_str(), szSQL.size(), &ret, &tail);
         return ret;
     }
 
@@ -96,22 +92,22 @@ public:
             throw SQLiteException(nRet, szError);
     }
 
-    int exec(sqlite3_stmt* stmt) {
+    int exec(sqlite3_stmt *stmt) {
         checkDB();
         int nRet = sqlite3_step(stmt);
-        if (nRet == SQLITE_OK || nRet==SQLITE_DONE) {
+        if (nRet == SQLITE_OK || nRet == SQLITE_DONE) {
             sqlite3_reset(stmt);
             return sqlite3_changes(db);
         } else
             throw SQLiteException(nRet, sqlite3_errmsg(db));
     }
 
-    protected:
+protected:
     inline void checkDB() {
         if (!db) throw SQLiteException(SQLITEWRAPPER_ERROR, "Database not open", false);
     }
 
-    private:
+private:
     int busyTimeoutMs{60000};
     sqlite3 *db{nullptr};
 };
@@ -134,7 +130,7 @@ using data_type = scv_extensions_if::data_type;
 #define TX_RELATION_TABLE "ScvTxRelation"
 
 static void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason, void *data) {
-    char * tail = 0;
+    char *tail = nullptr;
     // This is called from the scv_tr_db ctor.
     static string fName("DEFAULT_scv_tr_sqlite");
     switch (reason) {
@@ -154,8 +150,7 @@ static void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason,
             // my_sqlite_file_name << endl;
             db.exec("CREATE TABLE  IF NOT EXISTS " STREAM_TABLE
                     "(id INTEGER  NOT null PRIMARY KEY, name TEXT, kind TEXT);");
-            db.exec("CREATE TABLE  IF NOT EXISTS " GENERATOR_TABLE
-                    "(id INTEGER  NOT null PRIMARY KEY, stream INTEGER "
+            db.exec("CREATE TABLE  IF NOT EXISTS " GENERATOR_TABLE "(id INTEGER  NOT null PRIMARY KEY, stream INTEGER "
                     "REFERENCES " STREAM_TABLE "(id), name TEXT, begin_attr INTEGER, end_attr INTEGER);");
             db.exec("CREATE TABLE  IF NOT EXISTS " TX_TABLE "(id INTEGER  NOT null PRIMARY KEY, generator INTEGER "
                     "REFERENCES " GENERATOR_TABLE "(id), stream INTEGER REFERENCES " STREAM_TABLE
@@ -172,21 +167,19 @@ static void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason,
             db.exec("BEGIN TRANSACTION");
             queryBuilder.str("");
             queryBuilder << "INSERT INTO " SIM_PROPS " (time_resolution) values ("
-                    << (long)(sc_get_time_resolution().to_seconds() * 1e15) << ");";
+                         << (long)(sc_get_time_resolution().to_seconds() * 1e15) << ");";
             db.exec(queryBuilder.str());
-            stream_stmt = db.prepare("INSERT INTO " STREAM_TABLE
-                    " (id, name, kind) values (@ID,@NAME,@KIND);");
+            stream_stmt = db.prepare("INSERT INTO " STREAM_TABLE " (id, name, kind) values (@ID,@NAME,@KIND);");
             gen_stmt = db.prepare("INSERT INTO " GENERATOR_TABLE " (id,stream, name)"
-                    " values (@ID,@STRM_DI,@NAME);");
+                                  " values (@ID,@STRM_DI,@NAME);");
             tx_stmt = db.prepare("INSERT INTO " TX_TABLE " (id,generator,stream, concurrencyLevel)"
-                    " values (@ID,@GEN_ID,@STREAM_ID,@CONC_LEVEL);");
+                                 " values (@ID,@GEN_ID,@STREAM_ID,@CONC_LEVEL);");
             evt_stmt = db.prepare("INSERT INTO " TX_EVENT_TABLE " (tx,type,time)"
-                    " values (@TX_ID,@TYPE,@TIMESTAMP);");
-            attr_stmt = db.prepare("INSERT INTO " TX_ATTRIBUTE_TABLE
-                    " (tx,type,name,data_type,data_value) "
-                    "values (@ID,@EVENTID,@NAME,@TYPE,@VALUE);");
+                                  " values (@TX_ID,@TYPE,@TIMESTAMP);");
+            attr_stmt = db.prepare("INSERT INTO " TX_ATTRIBUTE_TABLE " (tx,type,name,data_type,data_value) "
+                                   "values (@ID,@EVENTID,@NAME,@TYPE,@VALUE);");
             rel_stmt = db.prepare("INSERT INTO " TX_RELATION_TABLE " (name,sink,src)"
-                    "values (@NAME,@ID1,@ID2);");
+                                  "values (@NAME,@ID1,@ID2);");
 
         } catch (SQLiteDB::SQLiteException &e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open recording file");
@@ -212,7 +205,8 @@ static void streamCb(const scv_tr_stream &s, scv_tr_stream::callback_reason reas
         try {
             sqlite3_bind_int64(stream_stmt, 1, s.get_id());
             sqlite3_bind_text(stream_stmt, 2, s.get_name(), -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(stream_stmt, 3, s.get_stream_kind() ? s.get_stream_kind() : "<unnamed>", -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(stream_stmt, 3, s.get_stream_kind() ? s.get_stream_kind() : "<unnamed>", -1,
+                              SQLITE_TRANSIENT);
             db.exec(stream_stmt);
             if (concurrencyLevel.size() <= s.get_id()) concurrencyLevel.resize(s.get_id() + 1);
             concurrencyLevel[s.get_id()] = new vector<uint64_t>();
@@ -253,7 +247,7 @@ static void recordAttributes(uint64_t id, EventType eventType, string &prefix, c
     if (prefix == "") {
         name = my_exts_p->get_name();
     } else {
-        if ((my_exts_p->get_name() == 0) || (strlen(my_exts_p->get_name()) == 0)) {
+        if ((my_exts_p->get_name() == nullptr) || (strlen(my_exts_p->get_name()) == 0)) {
             name = prefix;
         } else {
             name = prefix + "." + my_exts_p->get_name();
@@ -272,7 +266,7 @@ static void recordAttributes(uint64_t id, EventType eventType, string &prefix, c
     } break;
     case scv_extensions_if::ENUMERATION:
         recordAttribute(id, eventType, name, scv_extensions_if::ENUMERATION,
-                my_exts_p->get_enum_string((int)(my_exts_p->get_integer())));
+                        my_exts_p->get_enum_string((int)(my_exts_p->get_integer())));
         break;
     case scv_extensions_if::BOOLEAN:
         recordAttribute(id, eventType, name, scv_extensions_if::BOOLEAN, my_exts_p->get_bool() ? "TRUE" : "FALSE");
@@ -374,8 +368,8 @@ static void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason
             my_exts_p = t.get_scv_tr_generator_base().get_begin_exts_p();
         }
         string tmp_str = t.get_scv_tr_generator_base().get_begin_attribute_name()
-                                     ? t.get_scv_tr_generator_base().get_begin_attribute_name()
-                                             : "";
+                             ? t.get_scv_tr_generator_base().get_begin_attribute_name()
+                             : "";
         recordAttributes(id, BEGIN, tmp_str, my_exts_p);
     } break;
     case scv_tr_handle::END: {
@@ -401,8 +395,8 @@ static void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason
             my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();
         }
         string tmp_str = t.get_scv_tr_generator_base().get_end_attribute_name()
-                                     ? t.get_scv_tr_generator_base().get_end_attribute_name()
-                                             : "";
+                             ? t.get_scv_tr_generator_base().get_end_attribute_name()
+                             : "";
         recordAttributes(t.get_id(), END, tmp_str, my_exts_p);
     } break;
     default:;
@@ -413,17 +407,18 @@ static void attributeCb(const scv_tr_handle &t, const char *name, const scv_exte
     if (!db.isOpen()) return;
     if (t.get_scv_tr_stream().get_scv_tr_db() == nullptr) return;
     if (t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false) return;
-    string tmp_str(name == 0 ? "" : name);
+    string tmp_str(name == nullptr ? "" : name);
     recordAttributes(t.get_id(), RECORD, tmp_str, ext);
 }
 // ----------------------------------------------------------------------------
 static void relationCb(const scv_tr_handle &tr_1, const scv_tr_handle &tr_2, void *data,
-        scv_tr_relation_handle_t relation_handle) {
+                       scv_tr_relation_handle_t relation_handle) {
     if (!db.isOpen()) return;
     if (tr_1.get_scv_tr_stream().get_scv_tr_db() == nullptr) return;
     if (tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false) return;
     try {
-        sqlite3_bind_text(rel_stmt, 1, tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(rel_stmt, 1, tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), -1,
+                          SQLITE_TRANSIENT);
         sqlite3_bind_int64(rel_stmt, 2, tr_1.get_id());
         sqlite3_bind_int64(rel_stmt, 3, tr_2.get_id());
         db.exec(rel_stmt);

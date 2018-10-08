@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,15 +20,14 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif
 
-#include <sstream>
 #include "utilities.h"
+#include <sstream>
 #include <tlm>
 #include <tlm_utils/peq_with_get.h>
 
 namespace scc {
 
-template <typename base_type, typename TYPES = tlm::tlm_base_protocol_types>
-class target_mixin : public base_type {
+template <typename base_type, typename TYPES = tlm::tlm_base_protocol_types> class target_mixin : public base_type {
     friend class fw_process;
     friend class bw_process;
 

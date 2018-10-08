@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,13 +25,13 @@
 
 #include <memory>
 
+#include "resetable.h"
+#include "resource_access_if.h"
+#include "util/delegate.h"
+#include "utilities.h"
 #include <functional>
 #include <limits>
 #include <sstream>
-#include "resetable.h"
-#include "resource_access_if.h"
-#include "utilities.h"
-#include "util/delegate.h"
 
 namespace scc {
 
@@ -81,6 +81,9 @@ public:
     , storage(storage) {
         owner.register_resource(this);
     }
+
+    ~sc_register() = default;
+
     /**
      *
      * @return
@@ -200,7 +203,7 @@ public:
      * @param read_cb
      */
     void set_read_cb(std::function<bool(const this_type &, DATATYPE &)> read_cb) {
-        rd_cb = [read_cb](const this_type &reg, DATATYPE& data, sc_core::sc_time delay){return read_cb(reg, data);};
+        rd_cb = [read_cb](const this_type &reg, DATATYPE &data, sc_core::sc_time delay) { return read_cb(reg, data); };
     }
     /**
      *
@@ -212,7 +215,7 @@ public:
      * @param write_cb
      */
     void set_write_cb(std::function<bool(this_type &, DATATYPE &)> write_cb) {
-        wr_cb = [write_cb](this_type &reg, DATATYPE& data, sc_core::sc_time delay){return write_cb(reg, data);};
+        wr_cb = [write_cb](this_type &reg, DATATYPE &data, sc_core::sc_time delay) { return write_cb(reg, data); };
     }
     /**
      *
@@ -250,9 +253,10 @@ public:
     using pointer = value_type *;
 
     sc_register_indexed(sc_core::sc_module_name nm, std::array<DATATYPE, SIZE> &storage, const DATATYPE reset_val,
-                        resetable &owner, BASE_DATA_TYPE rdmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed
-                                                                      ? -1
-                                                                      : std::numeric_limits<BASE_DATA_TYPE>::max(),
+                        resetable &owner,
+                        BASE_DATA_TYPE rdmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed
+                                                    ? -1
+                                                    : std::numeric_limits<BASE_DATA_TYPE>::max(),
                         BASE_DATA_TYPE wrmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed
                                                     ? -1
                                                     : std::numeric_limits<BASE_DATA_TYPE>::max()) {
@@ -266,9 +270,8 @@ public:
     }
 
     ~sc_register_indexed() override {
-        for (size_t idx = START; idx < (START + SIZE); ++idx) {
-            (_reg_field + idx)->~sc_register<DATATYPE>();
-        }
+//        for (size_t idx = START; idx < (START + SIZE); ++idx)
+//            (_reg_field + idx)->~sc_register<DATATYPE>();
         free(_reg_field);
     }
 

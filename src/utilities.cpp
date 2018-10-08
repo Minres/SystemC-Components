@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2017 MINRES Technologies GmbH
+ * Copyright 2017, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
 #include "scc/utilities.h"
 
 namespace sc_core {
-#if SC_VERSION_MAJOR<=2 && SC_VERSION_MINOR<=3 && SC_VERSION_PATCH<2
+#if SC_VERSION_MAJOR <= 2 && SC_VERSION_MINOR <= 3 && SC_VERSION_PATCH < 2
 void sc_trace(sc_trace_file *tf, const sc_time &t, const std::string &name) {
     sc_trace(tf, reinterpret_cast<const sc_core::sc_time::value_type *>(&t), name);
 }

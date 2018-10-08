@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +23,9 @@
 #ifndef _SYSC_RESOURCE_ACCESS_IF_H_
 #define _SYSC_RESOURCE_ACCESS_IF_H_
 
-#include <sysc/kernel/sc_time.h>
 #include <cstddef>
 #include <cstdint>
+#include <sysc/kernel/sc_time.h>
 
 namespace scc {
 
@@ -52,7 +52,8 @@ public:
      * @param offset
      * @return
      */
-    virtual bool write(const uint8_t *data, std::size_t length, uint64_t offset = 0, sc_core::sc_time d=sc_core::SC_ZERO_TIME) = 0;
+    virtual bool write(const uint8_t *data, std::size_t length, uint64_t offset = 0,
+                       sc_core::sc_time d = sc_core::SC_ZERO_TIME) = 0;
     /**
      *
      * @param data
@@ -60,7 +61,8 @@ public:
      * @param offset
      * @return
      */
-    virtual bool read(uint8_t *data, std::size_t length, uint64_t offset = 0, sc_core::sc_time d=sc_core::SC_ZERO_TIME) const = 0;
+    virtual bool read(uint8_t *data, std::size_t length, uint64_t offset = 0,
+                      sc_core::sc_time d = sc_core::SC_ZERO_TIME) const = 0;
     // non-functional/debug accesses
     /**
      *

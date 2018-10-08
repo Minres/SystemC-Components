@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2017 MINRES Technologies GmbH
+ * Copyright 2017, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,11 @@
 
 #include "scc/tracer.h"
 
+#include "scc/scv_tr_db.h"
+#include "scc/utilities.h"
 #include <cstring>
 #include <iostream>
 #include <sstream>
-#include "scc/scv_tr_db.h"
-#include "scc/utilities.h"
 
 using namespace sc_core;
 
@@ -73,8 +73,7 @@ tracer::tracer(std::string &&name, file_type type, bool enable)
 
 void tracer::end_of_elaboration() {
     if (enabled)
-        for (auto o : sc_get_top_level_objects(sc_curr_simcontext))
-            descend(o);
+        for (auto o : sc_get_top_level_objects(sc_curr_simcontext)) descend(o);
 }
 
 tracer::~tracer() {
@@ -84,9 +83,9 @@ tracer::~tracer() {
 #endif
 }
 
-void tracer::descend(const sc_object* obj) {
+void tracer::descend(const sc_object *obj) {
     const char *name = obj->name();
-    const traceable *t = dynamic_cast<const traceable *>(obj);
+    const auto *t = dynamic_cast<const traceable *>(obj);
     if (t) t->trace(trf);
     const char *kind = obj->kind();
     if (strcmp(kind, "sc_signal") == 0) {
@@ -143,7 +142,7 @@ void tracer::try_trace_signal(const sc_core::sc_object *obj) {
 #undef GEN_TRACE
 #define GEN_TRACE(X)                                                                                                   \
     {                                                                                                                  \
-        const auto *sig = dynamic_cast<const sc_core::sc_signal<X> *>(obj);                                                        \
+        const auto *sig = dynamic_cast<const sc_core::sc_signal<X> *>(obj);                                            \
         if (sig) sc_core::sc_trace(trf, sig->read(), std::string(sig->name()));                                        \
     }
     GEN_TRACE_STD;
@@ -154,14 +153,14 @@ void tracer::try_trace_port(const sc_core::sc_object *obj) {
 #undef GEN_TRACE
 #define GEN_TRACE(X)                                                                                                   \
     {                                                                                                                  \
-        const auto* in_port = dynamic_cast<const sc_core::sc_in<X> *>(obj);                                            \
+        const auto *in_port = dynamic_cast<const sc_core::sc_in<X> *>(obj);                                            \
         if (in_port) {                                                                                                 \
             sc_core::sc_trace(trf, *in_port, std::string(in_port->name()));                                            \
             return;                                                                                                    \
         }                                                                                                              \
     }                                                                                                                  \
     {                                                                                                                  \
-        const auto* io_port = dynamic_cast<const sc_core::sc_inout<X> *>(obj);                                         \
+        const auto *io_port = dynamic_cast<const sc_core::sc_inout<X> *>(obj);                                         \
         if (io_port) {                                                                                                 \
             sc_core::sc_trace(trf, *io_port, std::string(io_port->name()));                                            \
             return;                                                                                                    \

@@ -177,7 +177,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
     if (prefix_name == "") {
         full_name = my_exts_p->get_name();
     } else {
-        if ((my_exts_p->get_name() == 0) || (strlen(my_exts_p->get_name()) == 0)) {
+        if ((my_exts_p->get_name() == nullptr) || (strlen(my_exts_p->get_name()) == 0)) {
             full_name = prefix_name;
         } else {
             full_name = prefix_name + "." + my_exts_p->get_name();
@@ -228,7 +228,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                gzprintf(my_text_file_p, "%s \"%s\" ENUMERATION = ", exts_kind.c_str(), full_name.c_str());
+                gzprintf(my_text_file_p, R"(%s "%s" ENUMERATION = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
             }
@@ -250,7 +250,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                gzprintf(my_text_file_p, "%s \"%s\" BOOLEAN = ", exts_kind.c_str(), full_name.c_str());
+                gzprintf(my_text_file_p, R"(%s "%s" BOOLEAN = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
             }
@@ -274,7 +274,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                gzprintf(my_text_file_p, "%s \"%s\" INTEGER = ", exts_kind.c_str(), full_name.c_str());
+                gzprintf(my_text_file_p, R"(%s "%s" INTEGER = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
             }
@@ -301,7 +301,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                gzprintf(my_text_file_p, "%s \"%s\" UNSIGNED = ", exts_kind.c_str(), full_name.c_str());
+                gzprintf(my_text_file_p, R"(%s "%s" UNSIGNED = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
             }
@@ -332,7 +332,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                gzprintf(my_text_file_p, "%s \"%s\" POINTER = ", exts_kind.c_str(), full_name.c_str());
+                gzprintf(my_text_file_p, R"(%s "%s" POINTER = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
             }
@@ -353,7 +353,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                gzprintf(my_text_file_p, "%s \"%s\" STRING = ", exts_kind.c_str(), full_name.c_str());
+                gzprintf(my_text_file_p, R"(%s "%s" STRING = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
             }
@@ -374,7 +374,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                gzprintf(my_text_file_p, "%s \"%s\" FLOATING_POINT_NUMBER = ", exts_kind.c_str(), full_name.c_str());
+                gzprintf(my_text_file_p, R"(%s "%s" FLOATING_POINT_NUMBER = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
             }
@@ -395,7 +395,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                gzprintf(my_text_file_p, "%s \"%s\" BIT_VECTOR = ", exts_kind.c_str(), full_name.c_str());
+                gzprintf(my_text_file_p, R"(%s "%s" BIT_VECTOR = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
             }
@@ -418,7 +418,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                gzprintf(my_text_file_p, "%s \"%s\" LOGIC_VECTOR = ", exts_kind.c_str(), full_name.c_str());
+                gzprintf(my_text_file_p, R"(%s "%s" LOGIC_VECTOR = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
             }
@@ -446,10 +446,10 @@ static void do_attributes(bool declare_attributes, // If false then print the va
     } break;
 
     default: {
-		std::array<char, 100> tmpString;
-		sprintf(tmpString.data(), "Unsupported attribute type = %d", my_exts_p->get_type());
+        std::array<char, 100> tmpString;
+        sprintf(tmpString.data(), "Unsupported attribute type = %d", my_exts_p->get_type());
 
-		_scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, tmpString.data());
+        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, tmpString.data());
     }
     }
 }
@@ -585,11 +585,11 @@ static void scv_tr_handle_record_attribute_cbf(const scv_tr_handle &t, const cha
         tmp_str = attribute_name;
     }
 
-	std::array<char, 100> tmp_str2;
-	sprintf(tmp_str2.data(), "tx_record_attribute " scv_tr_TEXT_LLU, t.get_id());
-	std::string exts_kind = tmp_str2.data();
+    std::array<char, 100> tmp_str2;
+    sprintf(tmp_str2.data(), "tx_record_attribute " scv_tr_TEXT_LLU, t.get_id());
+    std::string exts_kind = tmp_str2.data();
 
-    do_attributes(false, false, true, tmp_str, exts_kind, my_exts_p, 0);
+    do_attributes(false, false, true, tmp_str, exts_kind, my_exts_p, nullptr);
 }
 
 // ----------------------------------------------------------------------------

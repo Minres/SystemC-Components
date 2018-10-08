@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif
 
-#include <sstream>
 #include "utilities.h"
+#include <sstream>
 #include <tlm>
 #include <tlm_utils/peq_with_get.h>
 
@@ -71,8 +71,9 @@ public:
      * @param cb
      * @param tag the tag to return upon calling
      */
-    void
-    register_nb_transport_fw(std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)> cb, unsigned int tag) {
+    void register_nb_transport_fw(
+        std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)> cb,
+        unsigned int tag) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
         m_fw_process.set_nb_transport_ptr(cb, tag);
     }
@@ -81,7 +82,8 @@ public:
      * @param cb
      * @param tag the tag to return upon calling
      */
-    void register_b_transport(std::function<void(unsigned int, transaction_type &, sc_core::sc_time &)> cb, unsigned int tag) {
+    void register_b_transport(std::function<void(unsigned int, transaction_type &, sc_core::sc_time &)> cb,
+                              unsigned int tag) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
         m_fw_process.set_b_transport_ptr(cb, tag);
     }
@@ -99,7 +101,8 @@ public:
      * @param cb
      * @param tag the tag to return upon calling
      */
-    void register_get_direct_mem_ptr(std::function<bool(unsigned int, transaction_type &, tlm::tlm_dmi &)> cb, unsigned int tag) {
+    void register_get_direct_mem_ptr(std::function<bool(unsigned int, transaction_type &, tlm::tlm_dmi &)> cb,
+                                     unsigned int tag) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
         m_fw_process.set_get_direct_mem_ptr(cb, tag);
     }
@@ -162,7 +165,8 @@ private:
 
     class fw_process : public tlm::tlm_fw_transport_if<TYPES>, public tlm::tlm_mm_interface {
     public:
-        using NBTransportPtr = std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)>;
+        using NBTransportPtr =
+            std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)>;
         using BTransportPtr = std::function<void(unsigned int, transaction_type &, sc_core::sc_time &)>;
         using TransportDbgPtr = std::function<unsigned int(unsigned int, transaction_type &)>;
         using GetDirectMemPtr = std::function<bool(unsigned int, transaction_type &, tlm::tlm_dmi &)>;
@@ -189,7 +193,7 @@ private:
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_nb_transport_ptr = p;
-                tags[1]=tag;
+                tags[1] = tag;
             }
         }
 
@@ -200,8 +204,8 @@ private:
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_b_transport_ptr = p;
-                tags[0]=tag;
-           }
+                tags[0] = tag;
+            }
         }
 
         void set_transport_dbg_ptr(TransportDbgPtr p, unsigned int tag) {
@@ -211,8 +215,8 @@ private:
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_transport_dbg_ptr = p;
-                tags[2]=tag;
-           }
+                tags[2] = tag;
+            }
         }
 
         void set_get_direct_mem_ptr(GetDirectMemPtr p, unsigned int tag) {
@@ -222,7 +226,7 @@ private:
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
             } else {
                 m_get_direct_mem_ptr = p;
-                tags[3]=tag;
+                tags[3] = tag;
             }
         }
         // Interface implementation
@@ -488,7 +492,7 @@ private:
     private:
         const std::string m_name;
         tagged_target_mixin *m_owner;
-        unsigned int tags[4];//bl, nb, dbg, dmi
+        unsigned int tags[4]; // bl, nb, dbg, dmi
         NBTransportPtr m_nb_transport_ptr;
         BTransportPtr m_b_transport_ptr;
         TransportDbgPtr m_transport_dbg_ptr;

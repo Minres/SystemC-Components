@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2017 MINRES Technologies GmbH
+ * Copyright 2017, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@
 #ifndef _UTIL_ITIES_H_
 #define _UTIL_ITIES_H_
 
-#include <bitset>
-#include <vector>
-#include <type_traits>
 #include <array>
+#include <bitset>
+#include <type_traits>
+#include <vector>
 
 // some helper functions
 template <unsigned int bit, unsigned int width, typename T> inline constexpr T bit_sub(T v) {
@@ -32,11 +32,12 @@ template <typename T, unsigned B> inline T signextend(const T x) {
 #else
 template <typename T, unsigned B> inline constexpr T signextend(const typename std::make_unsigned<T>::type x) {
 #endif
-  struct X {
-      T x:B;
-      X(T x_):x(x_){}
-  } s(x);
-  return s.x;
+    struct X {
+        T x : B;
+        X(T x_)
+        : x(x_) {}
+    } s(x);
+    return s.x;
 }
 
 // according to http://graphics.stanford.edu/~seander/bithacks.html#FixedSignExtend
@@ -54,9 +55,9 @@ inline constexpr typename std::make_signed<T>::type signed_bit_sub(T v) {
 namespace util {
 // according to
 // http://graphics.stanford.edu/~seander/bithacks.html#ZerosOnRightMultLookup
-static std::array<const int, 32> MultiplyDeBruijnBitPosition = { {
-		0,  1,  28, 2,  29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4,  8,
-        31, 27, 13, 23, 21, 19, 16, 7, 26, 12, 18, 6,  11, 5,  10, 9 } };
+static std::array<const int, 32> MultiplyDeBruijnBitPosition = {{0,  1,  28, 2,  29, 14, 24, 3,  30, 22, 20,
+                                                                 15, 25, 17, 4,  8,  31, 27, 13, 23, 21, 19,
+                                                                 16, 7,  26, 12, 18, 6,  11, 5,  10, 9}};
 template <size_t N> constexpr size_t find_first(std::bitset<N> &bits) {
     static_assert(N <= 32, "find_first only supports bitsets smaller than 33");
     return MultiplyDeBruijnBitPosition[((uint32_t)((bits.to_ulong() & -bits.to_ulong()) * 0x077CB531U)) >> 27];
@@ -65,12 +66,8 @@ template <size_t N> constexpr size_t find_first(std::bitset<N> &bits) {
 // according to
 // https://stackoverflow.com/questions/8871204/count-number-of-1s-in-binary-representation
 #if __cplusplus < 201402L
-constexpr size_t uCount(uint32_t u){
-    return u - ((u >> 1) & 033333333333) - ((u >> 2) & 011111111111);
-}
-constexpr size_t bit_count(uint32_t u) {
-    return ((uCount(u) + (uCount(u) >> 3)) & 030707070707) % 63;
-}
+constexpr size_t uCount(uint32_t u) { return u - ((u >> 1) & 033333333333) - ((u >> 2) & 011111111111); }
+constexpr size_t bit_count(uint32_t u) { return ((uCount(u) + (uCount(u) >> 3)) & 030707070707) % 63; }
 #else
 constexpr size_t bit_count(uint32_t u) {
     size_t uCount = u - ((u >> 1) & 033333333333) - ((u >> 2) & 011111111111);
@@ -90,7 +87,7 @@ inline std::vector<std::string> split(const std::string &s, char seperator) {
     return output;
 }
 
-//std::vector<std::string> split(std::string& str, char split_char){
+// std::vector<std::string> split(std::string& str, char split_char){
 //    std::vector<std::string> res;
 //    auto split_pos=str.find_first_of(split_char);
 //    decltype(split_pos) start{0};

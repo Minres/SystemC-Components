@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@
 
 #include "tlm_gp_data_ext.h"
 #include "tlm_recording_extension.h"
+#include <array>
 #include <map>
 #include <regex>
 #include <scv.h>
@@ -26,7 +27,6 @@
 #include <tlm>
 #include <tlm_utils/peq_with_cb_and_phase.h>
 #include <vector>
-#include <array>
 
 namespace scv4tlm {
 
@@ -65,8 +65,9 @@ class tlm2_recorder : public virtual tlm::tlm_fw_transport_if<TYPES>,
                       public virtual tlm::tlm_bw_transport_if<TYPES>,
                       public sc_core::sc_object {
     const std::regex pat{"_rec$"};
+
 public:
-    SC_HAS_PROCESS(tlm2_recorder<TYPES>);
+    SC_HAS_PROCESS(tlm2_recorder<TYPES>);// NOLINT
 
     //! \brief the attribute to selectively enable/disable recording
     sc_core::sc_attribute<bool> enableTracing;
@@ -89,8 +90,7 @@ public:
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
     tlm2_recorder(bool recording_enabled = true, scv_tr_db *tr_db = scv_tr_db::get_default_db())
-    : tlm2_recorder(sc_core::sc_gen_unique_name("tlm2_recorder"), recording_enabled, tr_db)
-    { }
+    : tlm2_recorder(sc_core::sc_gen_unique_name("tlm2_recorder"), recording_enabled, tr_db) {}
     /*! \brief The constructor of the component
      *
      * \param name is the SystemC module name of the recorder
@@ -122,9 +122,9 @@ public:
     , dmi_trGetHandle(NULL)
     , dmi_trInvalidateHandle(NULL)
     , extensionRecording(NULL)
-    , fixed_basename(regex_replace(sc_core::sc_object::name(), pat, "")){
-    	this->add_attribute(enableTracing);
-    	this->add_attribute(enableTimed);
+    , fixed_basename(regex_replace(sc_core::sc_object::name(), pat, "")) {
+        this->add_attribute(enableTracing);
+        this->add_attribute(enableTimed);
     }
 
     virtual ~tlm2_recorder() override {
@@ -299,7 +299,7 @@ private:
     //! blocking transaction recording stream handle
     scv_tr_stream *b_streamHandle;
     //! transaction generator handle for blocking transactions
-	std::array<scv_tr_generator<sc_dt::uint64,sc_dt::uint64> *,3> b_trHandle;
+    std::array<scv_tr_generator<sc_dt::uint64, sc_dt::uint64> *, 3> b_trHandle;
     //! timed blocking transaction recording stream handle
     scv_tr_stream *b_streamHandleTimed;
     //! transaction generator handle for blocking transactions with annotated
@@ -388,8 +388,8 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type &trans, 
     }
     scv_tr_handle preTx{preExt->txHandle};
     preExt->txHandle = h;
-    if(trans.get_command()==tlm::TLM_WRITE_COMMAND && tgd.data_length<8)
-    	h.record_attribute("trans.data_value", tgd.get_data_value());
+    if (trans.get_command() == tlm::TLM_WRITE_COMMAND && tgd.data_length < 8)
+        h.record_attribute("trans.data_value", tgd.get_data_value());
     fw_port->b_transport(trans, delay);
     trans.get_extension(preExt);
     if (preExt->get_creator() == this) {
@@ -400,10 +400,10 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type &trans, 
         preExt->txHandle = preTx;
     }
 
-    tgd.response_status=trans.get_response_status();
+    tgd.response_status = trans.get_response_status();
     h.record_attribute("trans", tgd);
-    if(trans.get_command()==tlm::TLM_READ_COMMAND && tgd.data_length<8)
-    	h.record_attribute("trans.data_value", tgd.get_data_value());
+    if (trans.get_command() == tlm::TLM_READ_COMMAND && tgd.data_length < 8)
+        h.record_attribute("trans.data_value", tgd.get_data_value());
     if (extensionRecording) extensionRecording->recordEndTx(h, trans);
     // End the transaction
     b_trHandle[trans.get_command()]->end_transaction(h, delay.value(), sc_time_stamp());
@@ -511,13 +511,13 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
     /*************************************************************************
      * handle recording
      *************************************************************************/
-    tgd.response_status=trans.get_response_status();
+    tgd.response_status = trans.get_response_status();
     h.record_attribute("trans", tgd);
-    if(tgd.data_length<8){
-    	uint64_t buf=0;
-    	//FIXME: this is endianess dependent
-    	for(size_t i = 0; i<tgd.data_length; i++) buf+=(*tgd.data)<<i*8;
-    	h.record_attribute("trans.data_value", buf);
+    if (tgd.data_length < 8) {
+        uint64_t buf = 0;
+        // FIXME: this is endianess dependent
+        for (size_t i = 0; i < tgd.data_length; i++) buf += (*tgd.data) << i * 8;
+        h.record_attribute("trans.data_value", buf);
     }
     if (extensionRecording) extensionRecording->recordEndTx(h, trans);
     h.record_attribute("tlm_phase[return_path]", (tlm::tlm_phase_enum)(unsigned)phase);
@@ -596,13 +596,13 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
     /*************************************************************************
      * handle recording
      *************************************************************************/
-    tgd.response_status=trans.get_response_status();
+    tgd.response_status = trans.get_response_status();
     h.record_attribute("trans", tgd);
-    if(tgd.data_length<8){
-    	uint64_t buf=0;
-    	//FIXME: this is endianess dependent
-    	for(size_t i = 0; i<tgd.data_length; i++) buf+=(*tgd.data)<<i*8;
-    	h.record_attribute("trans.data_value", buf);
+    if (tgd.data_length < 8) {
+        uint64_t buf = 0;
+        // FIXME: this is endianess dependent
+        for (size_t i = 0; i < tgd.data_length; i++) buf += (*tgd.data) << i * 8;
+        h.record_attribute("trans.data_value", buf);
     }
     if (extensionRecording) extensionRecording->recordEndTx(h, trans);
     // phase and delay are already recorded
@@ -713,9 +713,8 @@ bool tlm2_recorder<TYPES>::get_direct_mem_ptr(typename TYPES::tlm_payload_type &
     if (!isRecordingEnabled()) {
         return fw_port->get_direct_mem_ptr(trans, dmi_data);
     }
-    if (!dmi_streamHandle)
-        dmi_streamHandle = new scv_tr_stream((fixed_basename + "_dmi").c_str(), "TRANSACTOR", m_db);
-    if(!dmi_trGetHandle)
+    if (!dmi_streamHandle) dmi_streamHandle = new scv_tr_stream((fixed_basename + "_dmi").c_str(), "TRANSACTOR", m_db);
+    if (!dmi_trGetHandle)
         dmi_trGetHandle =
             new scv_tr_generator<tlm_gp_data, tlm_dmi_data>("get_dmi_ptr", *dmi_streamHandle, "trans", "dmi_data");
     scv_tr_handle h = dmi_trGetHandle->begin_transaction(tlm_gp_data(trans));
@@ -735,11 +734,10 @@ void tlm2_recorder<TYPES>::invalidate_direct_mem_ptr(sc_dt::uint64 start_addr, s
         bw_port->invalidate_direct_mem_ptr(start_addr, end_addr);
         return;
     }
-    if (!dmi_streamHandle)
-        dmi_streamHandle = new scv_tr_stream((fixed_basename + "_dmi").c_str(), "TRANSACTOR", m_db);
-    if(!dmi_trInvalidateHandle)
-        dmi_trInvalidateHandle = new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("invalidate_dmi_ptr", *dmi_streamHandle,
-                                                                                    "start_delay", "end_delay");
+    if (!dmi_streamHandle) dmi_streamHandle = new scv_tr_stream((fixed_basename + "_dmi").c_str(), "TRANSACTOR", m_db);
+    if (!dmi_trInvalidateHandle)
+        dmi_trInvalidateHandle = new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>(
+            "invalidate_dmi_ptr", *dmi_streamHandle, "start_delay", "end_delay");
 
     scv_tr_handle h = dmi_trInvalidateHandle->begin_transaction(start_addr);
     bw_port->invalidate_direct_mem_ptr(start_addr, end_addr);
