@@ -46,8 +46,9 @@ public:
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal based) tracing
+     * @param default value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string &&, file_type, bool = true);
+    configurable_tracer(std::string &&, file_type, bool = true, bool = false);
 
     ~configurable_tracer();
 
@@ -56,6 +57,7 @@ public:
     }
 
 protected:
+    const bool default_trace_enable;
     void descend(const sc_core::sc_object *) override;
     bool get_trace_enabled(const sc_core::sc_object *, bool = false);
     void augment_object_hierarchical(const sc_core::sc_object *);

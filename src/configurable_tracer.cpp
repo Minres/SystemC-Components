@@ -35,10 +35,12 @@
 
 using namespace scc;
 
-configurable_tracer::configurable_tracer(std::string &&name, file_type type, bool enable_vcd)
+configurable_tracer::configurable_tracer(std::string &&name, file_type type, bool enable_vcd, bool default_enable)
 : tracer(std::move(name), type, enable_vcd)
 , cci_originator("configurable_tracer")
-, cci_broker(cci::cci_get_global_broker(cci_originator)) {
+, cci_broker(cci::cci_get_global_broker(cci_originator))
+, default_trace_enable(default_enable)
+{
     //    for(auto* o:sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
     //        augment_object_hierarchical(o);
 }
@@ -63,7 +65,7 @@ void configurable_tracer::descend(const sc_core::sc_object *obj) {
     } else if (strcmp(kind, "sc_vector") == 0) {
         return;
     }
-    auto trace_enable = get_trace_enabled(obj, false);
+    auto trace_enable = get_trace_enabled(obj, default_trace_enable);
     if (trace_enable) obj->trace(trf);
     for (auto o : obj->get_child_objects())
         if (trace_enable ||
@@ -94,7 +96,7 @@ void configurable_tracer::augment_object_hierarchical(const sc_core::sc_object *
             hier_name += ".enableTracing";
             auto h = cci_broker.get_param_handle(hier_name);
             if (!h.is_valid()) // we have no cci_param so create one
-                params.push_back(new cci::cci_param<bool>(hier_name, false, "", cci::CCI_ABSOLUTE_NAME,
+                params.push_back(new cci::cci_param<bool>(hier_name, default_trace_enable, "", cci::CCI_ABSOLUTE_NAME,
                                                           cci::cci_originator(obj->name())));
         }
         for (auto *o : obj->get_child_objects()) augment_object_hierarchical(o);
