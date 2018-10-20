@@ -51,26 +51,39 @@ scc::configurable_tracer::~configurable_tracer() {
 
 void configurable_tracer::descend(const sc_core::sc_object *obj) {
     if (obj == this) return;
-    const char *kind = obj->kind();
-    if (strcmp(kind, "sc_signal") == 0) {
-        try_trace_signal(obj);
-        return;
-    } else if (strcmp(kind, "sc_inout") == 0 || strcmp(kind, "sc_out") == 0 || strcmp(kind, "sc_in") == 0 ||
-               strcmp(kind, "sc_port") == 0) {
-        try_trace_port(obj);
-        return;
-    } else if (strcmp(kind, "tlm_signal") == 0) {
-        obj->trace(trf);
-        return;
-    } else if (strcmp(kind, "sc_vector") == 0) {
-        return;
-    }
-    auto trace_enable = get_trace_enabled(obj, default_trace_enable);
-    if (trace_enable) obj->trace(trf);
-    for (auto o : obj->get_child_objects())
-        if (trace_enable ||
-            strcmp(o->kind(), "sc_module") == 0) // descend if tracing is enabled or child is a sc_module
+    const auto* tr = dynamic_cast<const scc::traceable*>(obj);
+    auto trace_enable = tr?false:get_trace_enabled(obj, default_trace_enable);
+    for (auto o : obj->get_child_objects()){
+        const char *kind = o->kind();
+        if (strcmp(kind, "sc_signal") == 0) {
+            if(trace_enable)
+                try_trace_signal(o);
+            continue;
+        } else if (strcmp(kind, "sc_inout") == 0 ||
+                strcmp(kind, "sc_out") == 0 ||
+                strcmp(kind, "sc_in") == 0 ||
+                strcmp(kind, "sc_port") == 0) {
+            if(trace_enable)
+                try_trace_port(o);
+            continue;
+        } else if (strcmp(kind, "tlm_signal") == 0) {
+            if(trace_enable)
+                o->trace(trf);
+            continue;
+        } else if (strcmp(kind, "sc_vector") == 0 || strcmp(kind, "sc_export") == 0) {
+            continue;
+        } else if (strcmp(kind, "sc_module") == 0) {
+            const auto* str = dynamic_cast<const scc::traceable*>(o);
+            if(str && get_trace_enabled(o, default_trace_enable))
+                str->trace(trf);
             descend(o);
+        } else {
+            auto obj_trace_enable = get_trace_enabled(o, default_trace_enable);
+            if (obj_trace_enable)
+                o->trace(trf);
+            descend(o);
+        }
+    }
 }
 
 bool scc::configurable_tracer::get_trace_enabled(const sc_core::sc_object *obj, bool fall_back) {
