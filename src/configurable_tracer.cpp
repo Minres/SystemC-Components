@@ -35,7 +35,7 @@
 
 using namespace scc;
 
-configurable_tracer::configurable_tracer(std::string &&name, file_type type, bool enable_vcd, bool default_enable)
+configurable_tracer::configurable_tracer(const std::string &&name, file_type type, bool enable_vcd, bool default_enable)
 : tracer(std::move(name), type, enable_vcd)
 , cci_originator("configurable_tracer")
 , cci_broker(cci::cci_get_global_broker(cci_originator))

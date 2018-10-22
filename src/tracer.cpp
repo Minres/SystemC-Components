@@ -33,7 +33,7 @@ using namespace sc_core;
 
 namespace scc {
 
-tracer::tracer(std::string &&name, file_type type, bool enable)
+tracer::tracer(const std::string &&name, file_type type, bool enable)
 : sc_core::sc_module(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
 , enabled(enable)
 , trf(nullptr)

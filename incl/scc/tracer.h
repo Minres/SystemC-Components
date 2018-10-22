@@ -49,7 +49,7 @@ public:
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal based) tracing
      */
-    tracer(std::string &&, file_type, bool = true);
+    tracer(const std::string &&, file_type, bool = true);
     /**
      *
      */
