@@ -137,7 +137,6 @@ static void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason,
     case scv_tr_db::CREATE:
         if ((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0)) fName = _scv_tr_db.get_name();
         try {
-            if (fName.size() < 5 || fName.find(".txdb", fName.size() - 5) == string::npos) fName += ".txdb";
             remove(fName.c_str());
             db.open(fName);
             // performance related according to

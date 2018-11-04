@@ -64,6 +64,11 @@ tracer::tracer(const std::string &&name, file_type type, bool enable)
             break;
         case SQLITE:
             scv_tr_sqlite_init();
+            ss << ".txdb";
+            break;
+        case LEVEL:
+            scv_tr_ldb_init();
+            ss << ".txldb";
             break;
         }
         txdb = new scv_tr_db(ss.str().c_str());
