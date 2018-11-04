@@ -13,309 +13,265 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
+#include "leveldb/db.h"
+#include <json/json.h>
+
 #include <array>
-#include <boost/filesystem.hpp>
 #include <cmath>
 #include <cstdio>
 #include <cstring>
 #include <fcntl.h>
 #include <iostream>
+#include <iomanip>
 #include <sstream>
 #include <stdexcept>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#include <cassert>
 // clang-format off
 #include "scv/scv_util.h"
 #include "scv/scv_introspection.h"
 #include "scv/scv_tr.h"
 // clang-format on
 // ----------------------------------------------------------------------------
-constexpr auto SQLITEWRAPPER_ERROR = 1000;
 // ----------------------------------------------------------------------------
 using namespace std;
-/**
- * Record structure:
- * timing file
- * ===========
- * 20kB chunks, containing records of fixed length 20bytes, little endian encoded:
- * 32bit type, 64bit time, 64bit file offset
- *     types: 00 - fill
- *            01 - signal change
- *            02 - transaction start
- *            03 - zero length transaction (start & end)
- *            04 - transaction end
- *
- * data file
- * ===========
- * 1MB chunks containing records of variable length, little endian encoded
- * record type(4)
- *     0 - fill:        0x0( until end of chunk).
- *     1 - transaction: id(8), generator(8),concurrencyLevel(4)
- *     2 - attribute:   tx_id(8),type(2),name(8),data_type(2),data_value(8)
- *     3 - ext. attr.:  tx_id(8),type(2),name(8),data_type(2),data_value(8),data_value(4)
- *     4 - relation:    name(8), src id(8), tgt id(8)
- *
- * control file
- * ==============
- * record type(4)
- *     0 - fill:        0x0(...).
- *     1 - string map:  id(8), length(4), value(...)
- *     2 - stream:      id(8), name(8), kind(8)
- *     3 - generator:   id(8), name(8), stream_id(8)
- *
- *
- */
-// ----------------------------------------------------------------------------
+using namespace leveldb;
+using namespace Json;
+
 #ifdef _MSC_VER
 #define scv_tr_TEXT_LLU "%I64u"
 #define scv_tr_TEXT_LLX "%I64x"
+#define scv_tr_TEXT_16LLX "%016I64x"
 #else
 #define scv_tr_TEXT_LLU "%llu"
 #define scv_tr_TEXT_LLX "%llx"
+#define scv_tr_TEXT_16LLX "%016lx"
 #endif
 
 // ----------------------------------------------------------------------------
 enum EventType { BEGIN, RECORD, END };
+const char* EventTypeStr[] = { "BEGIN", "RECORD", "END" };
 using data_type = scv_extensions_if::data_type;
 // ----------------------------------------------------------------------------
 namespace {
 
-struct ByteBufferWriter {
-    ByteBufferWriter(size_t reserve = 32) { buf.reserve(reserve); }
-    template <typename T> ByteBufferWriter &append(const T &v) {
-        const auto *ptr = reinterpret_cast<const unsigned char *>(&v);
-        for (size_t i = 0; i < sizeof(T); ++i, ++ptr) buf.push_back(*ptr);
-        return *this;
-    }
+struct Database {
 
-    size_t length() { return buf.size(); }
+    Database(const string &name):key_len(1024) {
+        wbuilder.settings_["indentation"]="";
+        CharReaderBuilder::strictMode(&rbuilder.settings_);
+        Options options;
+        options.create_if_missing = true;
+        options.compression = kSnappyCompression;
+        DestroyDB(name, options);
+        if(!DB::Open(options, name, &db).ok())
+            throw runtime_error("Could not create database");
+        key_buf=new char[key_len];
+   }
 
-    unsigned char *operator()() { return buf.data(); }
-
-    void write(int file_des) {
-        ssize_t written = ::write(file_des, buf.data(), buf.size());
-        if (written != buf.size()) throw std::runtime_error("not written"); // TODO: implement error handling
-    }
-
-private:
-    std::vector<unsigned char> buf;
-};
-
-template <> ByteBufferWriter &ByteBufferWriter::append<std::string>(const std::string &v) {
-    auto it = buf.end();
-    buf.resize(buf.size() + v.length());
-    std::copy(v.begin(), v.end(), it);
-    return *this;
-}
-
-const int open_flags{O_WRONLY | O_CREAT | O_TRUNC};
-const auto open_mode{00644};
-
-struct ControlBuffer {
-    ControlBuffer(const boost::filesystem::path &name) {
-        file_des = open(name.string().c_str(), open_flags, open_mode);
-    }
-
-    ~ControlBuffer() { close(file_des); }
-
-    uint64_t getIdOf(const std::string &str) {
-        auto strid = std::hash<std::string>{}(str);
-        if (lookup.find(strid) == lookup.end()) {
-            ByteBufferWriter bw(sizeof(uint32_t) + sizeof(strid) + sizeof(uint32_t) + str.length());
-            bw.append<uint32_t>(1U).append(strid).append<uint32_t>(str.length()).append(str).write(file_des);
-            lookup.insert(strid);
-        }
-        return strid;
-    }
-
-    void writeStream(uint64_t id, std::string &name, std::string &kind) {
-        ByteBufferWriter bw;
-        bw.append<uint32_t>(2U).append(id).append(getIdOf(name)).append(getIdOf(kind)).write(file_des);
-    }
-
-    void writeGenerator(uint64_t id, std::string &name, uint64_t stream) {
-        ByteBufferWriter bw;
-        bw.append<uint32_t>(3U).append(id).append(getIdOf(name)).append(stream).write(file_des);
-    }
-
-private:
-    int file_des = 0;
-    std::unordered_set<uint64_t> lookup;
-};
-
-class DataBuffer {
-public:
-    DataBuffer(const boost::filesystem::path &name) { file_des = open(name.string().c_str(), open_flags, open_mode); }
-
-    ~DataBuffer() {
-        if (bufTail > 0) {
-            std::fill(buf.data() + bufTail, buf.data() + buf.size(), 0);
-            write(file_des, buf.data(), buf.size());
-        }
-        close(file_des);
-    }
-
-    uint64_t writeTx(uint64_t id, uint64_t generator, uint64_t concurrencyLevel) {
-        // type(4)=1, id(8), generator(8),concurrencyLevel(4)
-        ByteBufferWriter bw;
-        bw.append<uint32_t>(1U).append(id).append(generator).append(concurrencyLevel);
-        return append(bw(), bw.length());
-    }
-
-    void writeAttribute(uint64_t id, EventType event, uint64_t name, data_type typ, uint64_t value) {
-        // type(4)=2, tx_id(8),type(2),name(8),data_type(2),data_value(8)
-        ByteBufferWriter bw;
-        bw.append<uint32_t>(2U).append(id).append(event).append(name).append(static_cast<uint16_t>(typ)).append(value);
-        append(bw(), bw.length());
-    }
-
-    void writeAttribute(uint64_t id, EventType event, uint64_t name, data_type typ, uint64_t value0, uint32_t value1) {
-        // type(4)=3, tx_id(8),type(2),name(8),data_type(2),data_value(8)
-        ByteBufferWriter bw;
-        bw.append<uint32_t>(3U)
-            .append(id)
-            .append(event)
-            .append(name)
-            .append(static_cast<uint16_t>(typ))
-            .append(value0)
-            .append(value1);
-        append(bw(), bw.length());
-    }
-
-    void writeRelation(uint64_t name, uint64_t src, uint64_t sink) {
-        // type(4)=4, id(8), src(8), tgt(8)
-        ByteBufferWriter bw;
-        bw.append<uint32_t>(4U).append(name).append(src).append(sink);
-        append(bw(), bw.length());
+    ~Database(){
+        delete db;
+        delete key_buf;
     }
     /**
-     * returns the offset of the record
+     *
+     * @param key   the database key
+     * @param val   the JSON Value to write
      */
-    template <typename T> uint64_t append(const T &val) {
-        return append(reinterpret_cast<const unsigned char *>(&val), sizeof(T));
+    inline bool writeEntry(string& key, Value& val){
+        return db->Put(write_options, Slice(key.c_str(), key.size()), writeString(wbuilder, val)).ok();
     }
-
-    uint64_t getActualFilePos() { return blockCount * buf.size() + bufTail; }
-
-private:
-    uint64_t append(const unsigned char *p, size_t len) {
-        if ((bufTail + len) > buf.size()) {
-            std::fill(buf.data() + bufTail, buf.data() + buf.size(), 0);
-            ssize_t written = write(file_des, buf.data(), buf.size());
-            if (written != buf.size()) throw std::runtime_error("not written"); // TODO: implement error handling
-            blockCount++;
-            bufTail = 0;
+    /**
+     *
+     * @param key   the database key
+     * @param val   the JSON Value to write
+     */
+    inline bool writeEntry(string&& key, Value& val){
+        return db->Put(write_options, Slice(key.c_str(), key.size()), writeString(wbuilder, val)).ok();
+    }
+    /**
+     *
+     * @param id    stream id
+     * @param name  stream name
+     * @param kind  stream kind
+     */
+    inline void writeStream(uint64_t id, string name, string kind) {
+        auto len = sprintf(key_buf, "s~" scv_tr_TEXT_16LLX, id);
+        Value node{objectValue};
+        node["id"]=id;
+        node["name"]=name;
+        node["kind"]=kind;
+        db->Put(write_options, Slice(key_buf, len), writeString(wbuilder, node));
+    }
+    /**
+     *
+     * @param id        generator id
+     * @param name
+     * @param stream
+     */
+    inline void writeGenerator(uint64_t id, string name, uint64_t stream) {
+        auto len = sprintf(key_buf, "sg~" scv_tr_TEXT_16LLX "~" scv_tr_TEXT_16LLX, stream, id);
+        Value node{objectValue};
+        node["id"]=id;
+        node["name"]=name;
+        node["stream"]=stream;
+        db->Put(write_options, Slice(key_buf, len), writeString(wbuilder, node));
+    }
+    /**
+     *
+     * @param id        transaction id
+     * @param generator
+     * @param concurrencyLevel
+     */
+    inline void writeTransaction(uint64_t id, uint64_t stream_id, uint64_t generator_id, uint64_t concurrencyLevel) {
+        Value val{objectValue};
+        val["id"]=id;
+        val["s"]=stream_id;
+        val["g"]=generator_id;
+        val["conc"]=concurrencyLevel;
+        db->Put(write_options, Slice(key_buf, sprintf(key_buf, "sgx~" scv_tr_TEXT_16LLX "~" scv_tr_TEXT_16LLX "~" scv_tr_TEXT_16LLX,
+                stream_id, generator_id, id)), "");
+        tx_lut[id]=val;
+        //db->Put(write_options, Slice(key, sprintf(key, "x~" scv_tr_TEXT_16LLX, id)), writeString(wbuilder, val));
+    }
+    /**
+     *
+     * @param id        transaction id
+     * @param streamid  stream transaction id
+     * @param type
+     * @param time
+     */
+    inline void writeTxTimepoint(uint64_t id, uint64_t streamid, EventType type, uint64_t time) {
+        string value;
+        Value node{arrayValue};
+        auto len = sprintf(key_buf, "st~" scv_tr_TEXT_16LLX "~" scv_tr_TEXT_16LLX "~%s", streamid, time, EventTypeStr[type]);
+        if (db->Get(read_options, key_buf, &value).ok() && rbuilder.newCharReader()->parse(value.data(), value.data()+value.size(), &node, nullptr)){
+            node[node.size()]= Value(id);
+        } else {
+            node[0u]= Value(id);
         }
-        uint64_t ret = blockCount * buf.size() + bufTail;
-        std::copy(p, p + len, buf.data() + bufTail);
-        bufTail += len;
-        return ret;
+        db->Put(write_options, Slice(key_buf, len), writeString(wbuilder, node));
+        updateTx(id, type, time);
     }
 
-    int file_des = 0;
-    size_t blockCount = 0;
-    size_t bufTail = 0;
-    std::array<unsigned char, 1024 * 1024> buf;
-};
-
-struct TimingBuffer {
-    TimingBuffer(const boost::filesystem::path &name) { file_des = open(name.string().c_str(), open_flags, open_mode); }
-
-    ~TimingBuffer() {
-        if (bufTail > 0) {
-            std::fill(buf.data() + bufTail, buf.data() + buf.size(), 0);
-            write(file_des, buf.data(), buf.size());
+    inline void updateTx(uint64_t id, EventType type, uint64_t time){
+        static const char* typeStr[] = { "START_TIME", "", "END_TIME" };
+        auto& node = tx_lut[id];
+        node[typeStr[type]]=time;
+        if(type==END){
+            db->Put(write_options, Slice(key_buf, sprintf(key_buf, "x~" scv_tr_TEXT_16LLX, id)), writeString(wbuilder, node));
+            tx_lut.erase(id);
         }
-        close(file_des);
     }
 
-    void append(uint32_t type, uint64_t time, uint64_t file_offset) {
-        const size_t len = sizeof(type) + sizeof(time) + sizeof(file_offset);
-        if ((bufTail + len) > buf.size()) {
-            std::fill(buf.data() + bufTail, buf.data() + buf.size(), 0);
-            ssize_t written = write(file_des, buf.data(), buf.size());
-            if (written != buf.size()) throw std::runtime_error("not written"); // TODO: implement error handling
-            bufTail = 0;
+    inline void updateTx(uint64_t id, Value&& val){
+        auto len = sprintf(key_buf, "x~" scv_tr_TEXT_16LLX, id);
+        auto& node = tx_lut[id];
+        auto& arrNode = node["attr"];
+        if(arrNode.isNull()){
+            Value newNode{arrayValue};
+            newNode.append(val);
+            node["attr"]=newNode;
+        } else {
+            arrNode.append(val);
         }
-        ByteBufferWriter bw(len);
-        bw.append(type).append(time).append(file_offset);
-        std::copy(bw(), bw() + bw.length(), buf.data() + bufTail);
-        bufTail += len;
     }
 
-private:
-    int file_des = 0;
-    size_t bufTail = 0;
-    std::array<unsigned char, 20 * 1024> buf;
-};
-
-class Base {
-protected:
-    boost::filesystem::path dir;
-    Base(const std::string &name)
-    : dir(name.c_str()) {
-        if (boost::filesystem::exists(dir)) boost::filesystem::remove_all(dir);
-        boost::filesystem::create_directory(dir);
-    }
-};
-
-struct Database : Base {
-    ControlBuffer c;
-    DataBuffer d;
-    TimingBuffer t;
-
-    Database(const std::string &name)
-    : Base(name)
-    , c(dir / "c")
-    , d(dir / "d")
-    , t(dir / "t") {}
-
-    inline uint64_t getIdOf(const std::string &str) { return c.getIdOf(str); }
-
-    inline void writeStream(uint64_t id, std::string name, std::string kind) { c.writeStream(id, name, kind); }
-
-    inline void writeGenerator(uint64_t id, std::string name, uint64_t stream) { c.writeGenerator(id, name, stream); }
-
-    inline uint64_t writeTransaction(uint64_t id, uint64_t generator, uint64_t concurrencyLevel) {
-        return d.writeTx(id, generator, concurrencyLevel);
-    }
-
-    inline void writeTxTimepoint(uint64_t id, int type, uint64_t time, uint64_t file_offset) {
-        t.append(type, time, file_offset);
-    }
-
+    /**
+     *
+     * @param id        transaction id
+     * @param event
+     * @param name
+     * @param type
+     * @param value
+     */
     inline void writeAttribute(uint64_t id, EventType event, const string &name, data_type type, const string &value) {
-        d.writeAttribute(id, event, c.getIdOf(name), type, c.getIdOf(value));
+        Value val;
+        val["name"]=name;
+        val["type"]=type;
+        val["value"]=value;
+        val["assoc"]=event;
+        updateTx(id, move(val));
     }
-
+    /**
+     *
+     * @param id        transaction id
+     * @param event
+     * @param name
+     * @param type
+     * @param value
+     */
     inline void writeAttribute(uint64_t id, EventType event, const string &name, data_type type, uint64_t value) {
-        d.writeAttribute(id, event, c.getIdOf(name), type, value);
+        Value val;
+        val["name"]=name;
+        val["type"]=type;
+        val["value"]=value;
+        val["assoc"]=event;
+        updateTx(id, move(val));
     }
-
+    /**
+     *
+     * @param id        transaction id
+     * @param event
+     * @param name
+     * @param type
+     * @param value
+     */
     inline void writeAttribute(uint64_t id, EventType event, const string &name, data_type type, double value) {
-        int exponent;
-        const double mantissa = frexp(value, &exponent);
+        Value val;
+        val["name"]=name;
+        val["type"]=type;
+        val["value"]=value;
+        val["assoc"]=event;
+        updateTx(id, move(val));
+   }
+    /**
+     *
+     * @param name
+     * @param sink_id
+     * @param src_id
+     */
+    inline void writeRelation(const string &name, uint64_t sink_id, uint64_t src_id) {
+        if(key_len<(name.size()+32+5)){ //reallocate buffer if needed, making sure no buffer overflow
+            delete key_buf;
+            key_len=name.size()+32+5;
+            key_buf = new char[key_len];
+        }
+        db->Put(write_options, Slice(key_buf, sprintf(key_buf, "ro~" scv_tr_TEXT_16LLX "~" scv_tr_TEXT_16LLX "~%s", src_id, sink_id, name.c_str())), "");
+        db->Put(write_options, Slice(key_buf, sprintf(key_buf, "ri~" scv_tr_TEXT_16LLX "~" scv_tr_TEXT_16LLX "~%s", sink_id, src_id, name.c_str())), "");
     }
-
-    inline void writeRelation(const std::string &name, uint64_t sink_id, uint64_t src_id) {
-        d.writeRelation(c.getIdOf(name), src_id, sink_id);
-    }
+private:
+    DB* db;
+    ReadOptions read_options;
+    WriteOptions write_options;
+    char* key_buf;
+    size_t key_len;
+    StreamWriterBuilder wbuilder;
+    CharReaderBuilder rbuilder;
+    unordered_map<uint64_t, Value> tx_lut;
 };
 
-vector<vector<uint64_t> *> concurrencyLevel;
+vector<vector<uint64_t>> concurrencyLevel;
+
 Database *db;
-std::unordered_map<uint64_t, uint64_t> id2offset;
 
 void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason, void *data) {
     // This is called from the scv_tr_db ctor.
     static string fName("DEFAULT_scv_tr_sqlite");
     switch (reason) {
     case scv_tr_db::CREATE:
-        if ((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0)) fName = _scv_tr_db.get_name();
+        if ((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0))
+            fName = _scv_tr_db.get_name();
         try {
             db = new Database(fName);
+            Value val{objectValue};
+            val["resolution"]=(long)(sc_get_time_resolution().to_seconds() * 1e15);
+            db->writeEntry("__config", val);
+        } catch (runtime_error& e) {
+            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, e.what());
         } catch (...) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open recording file");
         }
@@ -336,7 +292,7 @@ void streamCb(const scv_tr_stream &s, scv_tr_stream::callback_reason reason, voi
     if (reason == scv_tr_stream::CREATE) {
         try {
             db->writeStream(s.get_id(), s.get_name(), s.get_stream_kind());
-        } catch (std::runtime_error &e) {
+        } catch (runtime_error &e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create stream");
         }
     }
@@ -345,7 +301,7 @@ void streamCb(const scv_tr_stream &s, scv_tr_stream::callback_reason reason, voi
 void recordAttribute(uint64_t id, EventType event, const string &name, data_type type, const string &value) {
     try {
         db->writeAttribute(id, event, name, type, value);
-    } catch (std::runtime_error &e) {
+    } catch (runtime_error &e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create attribute entry");
     }
 }
@@ -353,7 +309,7 @@ void recordAttribute(uint64_t id, EventType event, const string &name, data_type
 void recordAttribute(uint64_t id, EventType event, const string &name, data_type type, long long value) {
     try {
         db->writeAttribute(id, event, name, type, static_cast<uint64_t>(value));
-    } catch (std::runtime_error &e) {
+    } catch (runtime_error &e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create attribute entry");
     }
 }
@@ -361,7 +317,7 @@ void recordAttribute(uint64_t id, EventType event, const string &name, data_type
 inline void recordAttribute(uint64_t id, EventType event, const string &name, data_type type, double value) {
     try {
         db->writeAttribute(id, event, name, type, value);
-    } catch (std::runtime_error &e) {
+    } catch (runtime_error &e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create attribute entry");
     }
 }
@@ -429,7 +385,7 @@ void recordAttributes(uint64_t id, EventType eventType, string &prefix, const sc
         }
         break;
     default: {
-        std::array<char, 100> tmpString;
+        array<char, 100> tmpString;
         sprintf(tmpString.data(), "Unsupported attribute type = %d", my_exts_p->get_type());
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, tmpString.data());
     }
@@ -440,7 +396,7 @@ void generatorCb(const scv_tr_generator_base &g, scv_tr_generator_base::callback
     if (reason == scv_tr_generator_base::CREATE && db) {
         try {
             db->writeGenerator(g.get_id(), g.get_name(), g.get_scv_tr_stream().get_id());
-        } catch (std::runtime_error &e) {
+        } catch (runtime_error &e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create generator entry");
         }
     }
@@ -459,21 +415,16 @@ void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason reason
     case scv_tr_handle::BEGIN: {
         try {
             if (concurrencyLevel.size() <= streamId) concurrencyLevel.resize(streamId + 1);
-            vector<uint64_t> *levels = concurrencyLevel.at(streamId);
-            if (levels == nullptr) {
-                levels = new vector<uint64_t>();
-                concurrencyLevel[id] = levels;
-            }
-            for (concurrencyIdx = 0; concurrencyIdx < levels->size(); ++concurrencyIdx)
-                if ((*levels)[concurrencyIdx] == 0) break;
-            if (concurrencyIdx == levels->size())
-                levels->push_back(id);
+            vector<uint64_t>& levels = concurrencyLevel.at(streamId);
+            for (concurrencyIdx = 0; concurrencyIdx < levels.size(); ++concurrencyIdx) //find a free slot
+                if (levels[concurrencyIdx] == 0) break;
+            if (concurrencyIdx == levels.size())
+                levels.push_back(id);
             else
-                (*levels)[concurrencyIdx] = id;
-            auto offset = db->writeTransaction(id, t.get_scv_tr_generator_base().get_id(), concurrencyIdx);
-            db->writeTxTimepoint(id, BEGIN, t.get_begin_sc_time().value(), offset);
-            id2offset[id] = offset;
-        } catch (std::runtime_error &e) {
+                levels[concurrencyIdx] = id;
+            db->writeTransaction(id, t.get_scv_tr_stream().get_id(), t.get_scv_tr_generator_base().get_id(), concurrencyIdx);
+            db->writeTxTimepoint(id, t.get_scv_tr_stream().get_id(), BEGIN, t.get_begin_sc_time().value());
+        } catch (runtime_error &e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, e.what());
         }
         my_exts_p = t.get_begin_exts_p();
@@ -486,19 +437,6 @@ void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason reason
         }
     } break;
     case scv_tr_handle::END: {
-        try {
-            vector<uint64_t> *levels = concurrencyLevel[streamId];
-            for (concurrencyIdx = 0; concurrencyIdx < levels->size(); ++concurrencyIdx)
-                if ((*levels)[concurrencyIdx] == id) break;
-            if (concurrencyIdx == levels->size())
-                levels->push_back(id);
-            else
-                (*levels)[concurrencyIdx] = id;
-            db->writeTxTimepoint(id, END, t.get_begin_sc_time().value(), id2offset[id]);
-            id2offset.erase(id);
-        } catch (std::runtime_error &e) {
-            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create transaction end");
-        }
         my_exts_p = t.get_end_exts_p();
         if (my_exts_p == nullptr) my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();
         if (my_exts_p) {
@@ -506,6 +444,18 @@ void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason reason
                                  ? t.get_scv_tr_generator_base().get_end_attribute_name()
                                  : "";
             recordAttributes(t.get_id(), END, tmp_str, my_exts_p);
+        }
+        try {
+            db->writeTxTimepoint(id, t.get_scv_tr_stream().get_id(), END, t.get_end_sc_time().value());
+            vector<uint64_t>& levels = concurrencyLevel[streamId];
+            for (concurrencyIdx = 0; concurrencyIdx < levels.size(); ++concurrencyIdx)
+                if (levels[concurrencyIdx] == id) break;
+            if (concurrencyIdx == levels.size())
+                levels.push_back(0);
+            else
+                levels[concurrencyIdx] = 0;
+        } catch (runtime_error &e) {
+            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create transaction end");
         }
     } break;
     default:;
@@ -528,13 +478,13 @@ void relationCb(const scv_tr_handle &tr_1, const scv_tr_handle &tr_2, void *data
     try {
         db->writeRelation(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), tr_1.get_id(),
                           tr_2.get_id());
-    } catch (std::runtime_error &e) {
+    } catch (runtime_error &e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create transaction relation");
     }
 }
 } // namespace
 // ----------------------------------------------------------------------------
-void scv_tr_binary_init() {
+void scv_tr_ldb_init() {
     scv_tr_db::register_class_cb(dbCb);
     scv_tr_stream::register_class_cb(streamCb);
     scv_tr_generator_base::register_class_cb(generatorCb);

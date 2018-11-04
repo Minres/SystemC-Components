@@ -18,17 +18,21 @@
 #define _SCC_SCV_TR_DB_H_
 
 /**
- *
+ * initializes the infrastructure to use a SQLite based transaction recording database
  */
 void scv_tr_sqlite_init();
 /**
- *
+ *initializes the infrastructure to use a compressed text based transaction recording database
  */
 void scv_tr_compressed_init();
 
 /**
- *
+ *initializes the infrastructure to use a binary transaction recording database
  */
 void scv_tr_binary_init();
+/**
+ * initializes the infrastructure to use a LevelDB based transaction recording database
+ */
+void scv_tr_ldb_init();
 
 #endif /* _SCC_SCV_TR_DB_H_ */
