@@ -9,15 +9,17 @@ set(LIB_SOURCES
     jsoncpp.cpp
     configurer.cpp
     perf_estimator.cpp
-    scv_tr_binary/scv_tr_binary.cpp
 )
 
 if(SCV_FOUND)
     if(ZLIB_FOUND)
         set(LIB_SOURCES ${LIB_SOURCES} scv_tr_compressed.cpp)
     endif(ZLIB_FOUND)
-    if(CONAN_LEVELDB_ROOT)
-	    set(LIB_SOURCES ${LIB_SOURCES} scv_tr_ldb/scv_tr_ldb.cpp )
+    if(FALSE)
+    	set(LIB_SOURCES ${LIB_SOURCES} scv_tr_binary/scv_tr_binary.cpp)
+	    if(CONAN_LEVELDB_ROOT)
+		    set(LIB_SOURCES ${LIB_SOURCES} scv_tr_ldb/scv_tr_ldb.cpp )
+	    endif()
     endif()
     set(LIB_SOURCES ${LIB_SOURCES} scv_tr_sqlite/scv_tr_sqlite.cpp scv_tr_sqlite/sqlite3.c )
 endif(SCV_FOUND)

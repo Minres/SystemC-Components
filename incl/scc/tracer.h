@@ -42,7 +42,7 @@ public:
     /**
      *
      */
-    enum file_type { NONE, TEXT, COMPRESSED, BINARY, SQLITE, LEVEL };
+    enum file_type { NONE, TEXT, COMPRESSED, SQLITE/*, BINARY, LEVEL*/ };
     /**
      *
      * @param name basename of the trace file(s)

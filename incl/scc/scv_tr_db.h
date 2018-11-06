@@ -26,6 +26,7 @@ void scv_tr_sqlite_init();
  */
 void scv_tr_compressed_init();
 
+#ifdef USE_EXTENDED_DB
 /**
  *initializes the infrastructure to use a binary transaction recording database
  */
@@ -34,5 +35,6 @@ void scv_tr_binary_init();
  * initializes the infrastructure to use a LevelDB based transaction recording database
  */
 void scv_tr_ldb_init();
+#endif
 
 #endif /* _SCC_SCV_TR_DB_H_ */
