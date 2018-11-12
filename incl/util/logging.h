@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2017 MINRES Technologies GmbH
+ * Copyright 2017, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@
 #include <cassert>
 #include <cstdio>
 #include <cstring>
+#include <iomanip>
 #include <iterator>
 #include <mutex>
 #include <sstream>
@@ -33,12 +34,12 @@
 
 namespace logging {
 
-static std::array<const char*const ,7> buffer = { {LEVELS(DO_DESCRIPTION)} };
+static std::array<const char *const, 7> buffer = {{LEVELS(DO_DESCRIPTION)}};
 enum log_level { LEVELS(DO_ENUM) };
 
 inline log_level as_log_level(int logLevel) {
     assert(logLevel >= NONE && logLevel <= TRACE);
-	std::array<const log_level, 7> m = { { NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE } };
+    std::array<const log_level, 7> m = {{NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE}};
     return m[logLevel];
 }
 
@@ -60,10 +61,10 @@ public:
     }
 
     std::ostringstream &get(log_level level = INFO, const char *category = "") {
-        if (print_time()) os << "- " << now_time();
+        if (print_time()) os << "- " << now_time() << " ";
         if (print_severity()) {
-            os << " " << to_string(level);
-            if (strlen(category)) os << "[" << category<<"]";
+            os << std::setw(7) << std::left << to_string(level);
+            if (strlen(category)) os << "[" << category << "]";
             os << ": ";
         }
         get_last_log_level() = level;
@@ -81,7 +82,7 @@ public:
         for (unsigned int i = NONE; i <= TRACE; i++)
             if (!strncasecmp(level.c_str(), (const char *)(get_log_level_cstr() + i),
                              strlen((const char *)get_log_level_cstr() + i)))
-                return i;
+                return static_cast<log_level>(i);
         Log<T>().Get(WARNING) << "Unknown logging level '" << level << "'. Using INFO level as default.";
         return INFO;
     }
@@ -101,17 +102,14 @@ protected:
         static log_level level = TRACE;
         return level;
     }
-	static const char * const *get_log_level_cstr() {
-		return buffer.data();
-	}
-	;
+    static const char *const *get_log_level_cstr() { return buffer.data(); };
     std::ostringstream os;
 };
 
 template <typename CATEGORY> class Output2FILE : CATEGORY {
 public:
     static FILE *&stream() {
-        static FILE *pStream = stderr;
+        static FILE *pStream = stdout;
         return pStream;
     }
     static void output(const std::string &msg) {
@@ -156,8 +154,8 @@ class DEFAULT {};
 #endif
 #if defined(WIN32)
 
-#include <windows.h>
 #include <array>
+#include <windows.h>
 
 inline std::string now_time() {
     const int MAX_LEN = 200;
@@ -172,16 +170,16 @@ inline std::string now_time() {
 #else
 
 inline std::string now_time() {
-	static std::array<char, 11> buffer;
-	static std::array<char, 100> result;
+    static std::array<char, 11> buffer;
+    static std::array<char, 100> result;
     time_t t;
     time(&t);
     tm r = {0};
-	strftime(buffer.data(), buffer.size(), "%X", localtime_r(&t, &r));
+    strftime(buffer.data(), buffer.size(), "%X", localtime_r(&t, &r));
     struct timeval tv;
     gettimeofday(&tv, nullptr);
-	sprintf(result.data(), "%s.%03ld", buffer.data(), (long) tv.tv_usec / 1000);
-	return result.data();
+    sprintf(result.data(), "%s.%03ld", buffer.data(), (long)tv.tv_usec / 1000);
+    return result.data();
 }
 
 #endif // WIN32

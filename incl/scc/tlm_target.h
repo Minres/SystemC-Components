@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,11 +23,11 @@
 #ifndef _SYSC_TLM_TARGET_H_
 #define _SYSC_TLM_TARGET_H_
 
-#include "scc/utilities.h"
+#include "resource_access_if.h"
 #include "scv4tlm/tlm_rec_target_socket.h"
+#include "target_mixin.h"
 #include "util/range_lut.h"
-#include "scc/resource_access_if.h"
-#include "scc/target_mixin.h"
+#include "utilities.h"
 #include <array>
 
 namespace scc {
@@ -82,13 +82,15 @@ public:
         }
     }
 
-protected:
+private:
     sc_core::sc_time &clk;
+
+protected:
     util::range_lut<std::pair<resource_access_if *, uint64_t>> socket_map;
 };
 
 template <unsigned BUSWIDTH = 32> struct target_memory_map_entry {
-    scc::tlm_target<BUSWIDTH> *target;
+    tlm::tlm_target_socket<BUSWIDTH> &target;
     sc_dt::uint64 start;
     sc_dt::uint64 size;
 };
@@ -136,10 +138,10 @@ void scc::tlm_target<BUSWIDTH>::b_tranport_cb(tlm::tlm_generic_payload &gp, sc_c
                 gp.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
                 if (gp.get_data_length() == gp.get_streaming_width()) {
                     if (gp.get_command() == tlm::TLM_READ_COMMAND) {
-                        if (ra->read(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base)))
+                        if (ra->read(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base), delay))
                             gp.set_response_status(tlm::TLM_OK_RESPONSE);
                     } else if (gp.get_command() == tlm::TLM_WRITE_COMMAND) {
-                        if (ra->write(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base)))
+                        if (ra->write(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base), delay))
                             gp.set_response_status(tlm::TLM_OK_RESPONSE);
                     } else {
                         gp.set_response_status(tlm::TLM_COMMAND_ERROR_RESPONSE);
@@ -153,8 +155,7 @@ void scc::tlm_target<BUSWIDTH>::b_tranport_cb(tlm::tlm_generic_payload &gp, sc_c
     delay += clk;
 }
 
-template <unsigned int BUSWIDTH>
-unsigned int scc::tlm_target<BUSWIDTH>::tranport_dbg_cb(tlm::tlm_generic_payload &gp) {
+template <unsigned int BUSWIDTH> unsigned int scc::tlm_target<BUSWIDTH>::tranport_dbg_cb(tlm::tlm_generic_payload &gp) {
     resource_access_if *ra = nullptr;
     uint64_t base = 0;
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());

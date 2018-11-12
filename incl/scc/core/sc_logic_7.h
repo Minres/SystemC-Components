@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,8 +22,8 @@
 
 #ifndef INCL_SYSC_CORE_SC_LOGIC_7_H_
 #define INCL_SYSC_CORE_SC_LOGIC_7_H_
-#include <cstdio>
 #include <array>
+#include <cstdio>
 
 #include "sysc/datatypes/bit/sc_bit.h"
 #include "sysc/kernel/sc_macros.h"
@@ -93,12 +93,12 @@ private:
 public:
     // conversion tables
 
-	static std::array<const sc_logic_7_value_t, 128> char_to_logic;
-	static std::array<const char, 7> logic_to_char;
-	static std::array<std::array<const sc_logic_7_value_t, 7>, 7> and_table;
-	static std::array<std::array<const sc_logic_7_value_t, 7>, 7> or_table;
-	static std::array<std::array<const sc_logic_7_value_t, 7>, 7> xor_table;
-	static std::array<const sc_logic_7_value_t, 7> not_table;
+    static std::array<const sc_logic_7_value_t, 128> char_to_logic;
+    static std::array<const char, 7> logic_to_char;
+    static std::array<std::array<const sc_logic_7_value_t, 7>, 7> and_table;
+    static std::array<std::array<const sc_logic_7_value_t, 7>, 7> or_table;
+    static std::array<std::array<const sc_logic_7_value_t, 7>, 7> xor_table;
+    static std::array<const sc_logic_7_value_t, 7> not_table;
 
     // constructors
 

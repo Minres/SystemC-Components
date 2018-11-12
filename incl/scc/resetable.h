@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,8 @@
 #ifndef _SYSC_RESETTABLE_H_
 #define _SYSC_RESETTABLE_H_
 
+#include "resource_access_if.h"
 #include <vector>
-#include "scc/resource_access_if.h"
 
 namespace scc {
 

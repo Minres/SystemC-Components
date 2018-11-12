@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2017 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ namespace scv4tlm {
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types>
 class tlm2_recorder_module : public sc_core::sc_module, public tlm2_recorder<TYPES> {
 public:
-    SC_HAS_PROCESS(tlm2_recorder_module);
+    SC_HAS_PROCESS(tlm2_recorder_module);// NOLINT
     //! The target socket of the recorder to be bound to the initiator
     tlm::tlm_target_socket<BUSWIDTH, TYPES, 1> target;
     //! The initiator to be bound to the target socket

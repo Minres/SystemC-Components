@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2017 MINRES Technologies GmbH
+ * Copyright 2017, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,11 @@
  *      Author: eyck
  */
 
-#ifndef _SYSC_EXT_ATTRIBUTE_H_
-#define _SYSC_EXT_ATTRIBUTE_H_
+#ifndef _SCC_EXT_ATTRIBUTE_H_
+#define _SCC_EXT_ATTRIBUTE_H_
 
-#include "scc/configurer.h"
-#include "scc/utilities.h"
+#include "configurer.h"
+#include "utilities.h"
 
 namespace scc {
 template <typename T> class ext_attribute : public sc_core::sc_attribute<T> {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,8 @@
 #ifndef _SYSC_UTILITIES_H_
 #define _SYSC_UTILITIES_H_
 
-#include "scc/traceable.h"
+#include "traceable.h"
+#include <memory>
 
 // pragmas to disable the deprecated warnings for SystemC headers
 #pragma GCC diagnostic push
@@ -33,8 +34,17 @@
 
 #include <locale>
 
+#if __cplusplus < 201402L
+namespace std {
+template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args &&... args) {
+    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+}
+}
+#endif
+
 #define NAMED(X, ...) X(#X, ##__VA_ARGS__)
-#define NAMEDD(T, X, ...) X(new T(#X, ##__VA_ARGS__))
+#define NAMEDD(X, T, ...) X(std::make_unique<T>(#X, ##__VA_ARGS__))
+#define NAMEDC(X, T, I, ...) X(T::create<I>(#X, ##__VA_ARGS__))
 
 #define TRACE_VAR(F, X) sc_core::sc_trace(F, X, std::string(this->name()) + "." #X)
 #define TRACE_ARR(F, X, I)                                                                                             \
@@ -43,6 +53,7 @@
 
 namespace sc_core {
 // needed to be able to use sc_time as signal value
+#if SC_VERSION_MAJOR <= 2 && SC_VERSION_MINOR <= 3 && SC_VERSION_PATCH < 2
 /**
  *
  * @param
@@ -57,6 +68,7 @@ void sc_trace(sc_trace_file *, const sc_time &, const std::string &);
  * @param
  */
 void sc_trace(sc_trace_file *, const sc_time &, const char *);
+#endif
 /**
  *
  * @param
@@ -159,11 +171,10 @@ inline constexpr uint64_t operator"" _GB(unsigned long long val) { return val * 
 
 namespace scc {
 
-inline bool icompare(std::string const& a, std::string const& b){
-    if (a.length()==b.length()) {
-        return std::equal(b.begin(), b.end(), a.begin(),  [](unsigned char a, unsigned char b) -> bool {
-            return std::tolower(a) == std::tolower(b);
-        });
+inline bool icompare(std::string const &a, std::string const &b) {
+    if (a.length() == b.length()) {
+        return std::equal(b.begin(), b.end(), a.begin(),
+                          [](unsigned char a, unsigned char b) -> bool { return std::tolower(a) == std::tolower(b); });
     } else {
         return false;
     }
@@ -171,29 +182,29 @@ inline bool icompare(std::string const& a, std::string const& b){
 
 inline sc_core::sc_time parse_from_string(std::string value, std::string unit) noexcept {
     std::string::size_type offs{0};
-    double t_val=std::stod(value, &offs);
-    if(offs>0){
-        if(icompare(unit, "fs")) return t_val * 1_fs;
-        if(icompare(unit, "ps")) return t_val * 1_ps;
-        if(icompare(unit, "ns")) return t_val * 1_ns;
-        if(icompare(unit, "us")) return t_val * 1_us;
-        if(icompare(unit, "ms")) return t_val * 1_ms;
-        if(icompare(unit, "s")) return t_val * 1_sec;
+    double t_val = std::stod(value, &offs);
+    if (offs > 0) {
+        if (icompare(unit, "fs")) return t_val * 1_fs;
+        if (icompare(unit, "ps")) return t_val * 1_ps;
+        if (icompare(unit, "ns")) return t_val * 1_ns;
+        if (icompare(unit, "us")) return t_val * 1_us;
+        if (icompare(unit, "ms")) return t_val * 1_ms;
+        if (icompare(unit, "s")) return t_val * 1_sec;
     }
     return sc_core::SC_ZERO_TIME;
 }
 
 inline sc_core::sc_time parse_from_string(std::string value) noexcept {
     std::string::size_type offs{0};
-    double t_val=std::stod(value, &offs);
-    if(offs>0){
-        std::string unit=value.substr(offs);
-        if(icompare(unit, "fs")) return t_val * 1_fs;
-        if(icompare(unit, "ps")) return t_val * 1_ps;
-        if(icompare(unit, "ns")) return t_val * 1_ns;
-        if(icompare(unit, "us")) return t_val * 1_us;
-        if(icompare(unit, "ms")) return t_val * 1_ms;
-        if(icompare(unit, "s")) return t_val * 1_sec;
+    double t_val = std::stod(value, &offs);
+    if (offs > 0) {
+        std::string unit = value.substr(offs);
+        if (icompare(unit, "fs")) return t_val * 1_fs;
+        if (icompare(unit, "ps")) return t_val * 1_ps;
+        if (icompare(unit, "ns")) return t_val * 1_ns;
+        if (icompare(unit, "us")) return t_val * 1_us;
+        if (icompare(unit, "ms")) return t_val * 1_ms;
+        if (icompare(unit, "s")) return t_val * 1_sec;
     }
     return sc_core::SC_ZERO_TIME;
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@
 #ifndef _SYSC_INITIATOR_MIXIN_H__
 #define _SYSC_INITIATOR_MIXIN_H__
 
+#include "utilities.h"
 #include <functional>
 #include <sstream>
 #include <tlm>
-#include "scc/utilities.h"
 
 namespace scc {
 

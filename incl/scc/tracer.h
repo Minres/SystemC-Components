@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 MINRES Technologies GmbH
+ * Copyright 2016, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,10 +20,10 @@
  *      Author: developer
  */
 
-#ifndef _SYSC_TRACER_H_
-#define _SYSC_TRACER_H_
+#ifndef _SCC_TRACER_H_
+#define _SCC_TRACER_H_
 
-#include "scc/utilities.h"
+#include "utilities.h"
 #ifdef WITH_SCV
 #include <scv.h>
 #endif
@@ -42,14 +42,14 @@ public:
     /**
      *
      */
-    enum file_type { NONE, TEXT, COMPRESSED, SQLITE };
+    enum file_type { NONE, TEXT, COMPRESSED, SQLITE/*, BINARY, LEVEL*/ };
     /**
      *
-     * @param
-     * @param
-     * @param enable
+     * @param name basename of the trace file(s)
+     * @param type type of trace file for transactions
+     * @param enable enable VCD (signal based) tracing
      */
-    tracer(std::string &&, file_type, bool enable = true);
+    tracer(const std::string &&, file_type, bool = true);
     /**
      *
      */
@@ -57,9 +57,9 @@ public:
 
 protected:
     void end_of_elaboration() override;
-    virtual void descend(const std::vector<sc_core::sc_object *> &);
-    virtual void try_trace_signal(sc_core::sc_object *);
-    virtual void try_trace_port(sc_core::sc_object *);
+    virtual void descend(const sc_core::sc_object *);
+    virtual void try_trace_signal(const sc_core::sc_object *);
+    virtual void try_trace_port(const sc_core::sc_object *);
     bool enabled;
     sc_core::sc_trace_file *trf;
 #ifdef WITH_SCV
@@ -69,4 +69,4 @@ protected:
 
 } /* namespace scc */
 
-#endif /* _SYSC_TRACER_H_ */
+#endif /* _SCC_TRACER_H_ */

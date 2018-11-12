@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2017 MINRES Technologies GmbH
+ * Copyright 2017, 2018 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@
 #include <exception>
 #include <iomanip>
 #include <iostream>
-#include <loki/AssocVector.h>
 #include <map>
 #include <sstream>
 #include <stdexcept>
@@ -74,7 +73,7 @@ public:
     inline T getEntry(uint64_t addr) {
         auto iter = m_lut.lower_bound(addr);
         return (iter != m_lut.end() && (iter->second.type == END_RANGE || iter->first == addr)) ? iter->second.index
-                                                                                              : null_entry;
+                                                                                                : null_entry;
     }
     /**
      * validate the lookup table wrt. overlaps
@@ -92,7 +91,8 @@ public:
     const T null_entry;
 
 protected:
-    Loki::AssocVector<uint64_t, lut_entry> m_lut;
+    // Loki::AssocVector<uint64_t, lut_entry> m_lut;
+    std::map<uint64_t, lut_entry> m_lut;
     size_t m_size;
 };
 
@@ -125,7 +125,9 @@ template <typename T> inline bool range_lut<T>::removeEntry(T i) {
         if (start->second.type == SINGLE_BYTE_RANGE) {
             m_lut.erase(start);
         } else {
-            auto end = start + 2;
+            auto end = start;
+            end++;
+            end++;
             m_lut.erase(start, end);
         }
         --m_size;
