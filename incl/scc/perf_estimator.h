@@ -21,8 +21,13 @@
 #include <systemc>
 
 namespace scc {
-
+/**
+ * a performance estimator
+ * it records the time stamps a various time points (start and end of simulation) and calculates
+ * some performance figures
+ */
 class perf_estimator : public sc_core::sc_module {
+    //! some internal data structure to record a time stamp
     struct time_stamp {
         boost::posix_time::ptime wall_clock_stamp;
         double proc_clock_stamp;
@@ -44,14 +49,22 @@ class perf_estimator : public sc_core::sc_module {
     };
 
 public:
+    //! yes, we have some SystemC processes
     SC_HAS_PROCESS(perf_estimator);// NOLINT
+    /**
+     * default constructor
+     */
     perf_estimator();
+    /**
+     * the destructor
+     */
     virtual ~perf_estimator();
 
 protected:
+    //! SystemC callbacks
     void start_of_simulation() override;
     void end_of_simulation() override;
-
+    //! the recorded time stamps
     time_stamp sos, eos;
 };
 

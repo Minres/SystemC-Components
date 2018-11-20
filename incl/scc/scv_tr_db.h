@@ -22,13 +22,13 @@
  */
 void scv_tr_sqlite_init();
 /**
- *initializes the infrastructure to use a compressed text based transaction recording database
+ * initializes the infrastructure to use a compressed text based transaction recording database
  */
 void scv_tr_compressed_init();
 
 #ifdef USE_EXTENDED_DB
 /**
- *initializes the infrastructure to use a binary transaction recording database
+ * initializes the infrastructure to use a binary transaction recording database
  */
 void scv_tr_binary_init();
 /**

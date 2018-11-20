@@ -13,12 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * tracable.h
- *
- *  Created on: Nov 9, 2016
- *      Author: developer
- */
 
 #ifndef _SCC_TRACABLE_H_
 #define _SCC_TRACABLE_H_
@@ -28,14 +22,18 @@ class sc_trace_file;
 }
 
 namespace scc {
-
+/**
+ * interface defining a traceable component, this overlaps with the trace function of sc_core::sc_object
+ * in fact it is a signalling interface
+ */
 class traceable {
 public:
     /**
-     *
+     * the destructor
      */
     virtual ~traceable() = default;
     /**
+     * trace the elements of the object to the trace file
      *
      * @param trf the tracefile to use
      */

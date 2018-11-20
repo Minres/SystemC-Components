@@ -13,12 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * memory.h
- *
- *  Created on: Nov 4, 2016
- *      Author: eyck
- */
 
 #ifndef _SYSC_MEMORY_H_
 #define _SYSC_MEMORY_H_
@@ -34,20 +28,31 @@
 
 namespace scc {
 
-// simple memory model
-// TODO: add attributes/parameters to configure access time and type (DMI allowed, read only, etc)
+/**
+ *  simple memory model
+ *
+ *  TODO: add some more attributes/parameters to configure access time and type (DMI allowed, read only, etc)
+ */
 template <unsigned long long SIZE, unsigned BUSWIDTH = 32, bool LOG_ACCESS = false>
 class memory : public sc_core::sc_module {
 public:
+    //! the target socket to connect to TLM
     scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target;
-
+    /**
+     * constructor with explicit instance name
+     *
+     * @param nm
+     */
     memory(const sc_core::sc_module_name &nm);
 
 protected:
+    //! the real memory structure
     util::sparse_array<uint8_t, SIZE> mem;
 
 private:
+    //!! handle the memory operation independent on interface function used
     int handle_operation(tlm::tlm_generic_payload &trans);
+    //! handle the dmi functionality
     bool handle_dmi(tlm::tlm_generic_payload &gp, tlm::tlm_dmi &dmi_data);
 };
 

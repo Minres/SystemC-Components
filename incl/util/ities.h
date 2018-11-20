@@ -74,7 +74,13 @@ constexpr size_t bit_count(uint32_t u) {
     return ((uCount + (uCount >> 3)) & 030707070707) % 63;
 }
 #endif
-
+/**
+ * split a given string using specified separator
+ *
+ * @param s the string to split
+ * @param separator the separator char
+ * @return vector of splitted strings
+ */
 inline std::vector<std::string> split(const std::string &s, char seperator) {
     std::vector<std::string> output;
     std::string::size_type prev_pos = 0, pos = 0;
@@ -86,16 +92,5 @@ inline std::vector<std::string> split(const std::string &s, char seperator) {
     output.push_back(s.substr(prev_pos, pos - prev_pos)); // Last word
     return output;
 }
-
-// std::vector<std::string> split(std::string& str, char split_char){
-//    std::vector<std::string> res;
-//    auto split_pos=str.find_first_of(split_char);
-//    decltype(split_pos) start{0};
-//    while(start!=str.length()){
-//        res.push_back(str.substr(start, start-split_pos));
-//        start=std::min(split_pos+1, str.length());
-//    }
-//    return res;
-//}
 }
 #endif /* _UTIL_ITIES_H_ */

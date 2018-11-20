@@ -41,11 +41,11 @@ template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args &&..
 }
 }
 #endif
-
+//! macros to simplify constructor lists
 #define NAMED(X, ...) X(#X, ##__VA_ARGS__)
 #define NAMEDD(X, T, ...) X(std::make_unique<T>(#X, ##__VA_ARGS__))
 #define NAMEDC(X, T, I, ...) X(T::create<I>(#X, ##__VA_ARGS__))
-
+//! macros to simplify declaration of members to trace
 #define TRACE_VAR(F, X) sc_core::sc_trace(F, X, std::string(this->name()) + "." #X)
 #define TRACE_ARR(F, X, I)                                                                                             \
     sc_core::sc_trace(F, X[I], (std::string(this->name()) + "." #X "(" + std::to_string(I) + ")").c_str());
@@ -70,33 +70,32 @@ void sc_trace(sc_trace_file *, const sc_time &, const std::string &);
 void sc_trace(sc_trace_file *, const sc_time &, const char *);
 #endif
 /**
+ * trace function for sc_time
  *
- * @param
- * @param
- * @param
+ * @param the trace file
+ * @param the data to trace
+ * @param the hierarchical name of the data
  */
 template <> void sc_trace(sc_trace_file *, const sc_in<sc_time> &, const std::string &);
 /**
+ * trace function for sc_time
  *
- * @param
- * @param
- * @param
+ * @param the trace file
+ * @param the port carrying the data to trace
+ * @param the hierarchical name of the data
  */
 template <> void sc_trace(sc_trace_file *, const sc_inout<sc_time> &, const std::string &);
-/**
- *
- * @param val
- * @return
- */
 }
-// user-define literals for easy time creation
+// user-defined literals for easy time creation
 /**
+ * UDL for second
  *
  * @param val
  * @return
  */
 inline sc_core::sc_time operator"" _sec(long double val) { return sc_core::sc_time(val, sc_core::SC_SEC); }
 /**
+ * UDL for second
  *
  * @param val
  * @return
@@ -105,72 +104,90 @@ inline sc_core::sc_time operator"" _sec(unsigned long long val) {
     return sc_core::sc_time(double(val), sc_core::SC_SEC);
 }
 /**
+ * UDL for millisecond
  *
  * @param val
  * @return
  */
 inline sc_core::sc_time operator"" _ms(long double val) { return sc_core::sc_time(val, sc_core::SC_MS); }
 /**
+ * UDL for millisecond
  *
  * @param val
  * @return
  */
 inline sc_core::sc_time operator"" _ms(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_MS); }
 /**
+ * UDL for microsecond
  *
  * @param val
  * @return
  */
 inline sc_core::sc_time operator"" _us(long double val) { return sc_core::sc_time(val, sc_core::SC_US); }
 /**
+ * UDL for microsecond
  *
  * @param val
  * @return
  */
 inline sc_core::sc_time operator"" _us(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_US); }
 /**
+ * UDL for nanosecond
  *
  * @param val
  * @return
  */
 inline sc_core::sc_time operator"" _ns(long double val) { return sc_core::sc_time(val, sc_core::SC_NS); }
 /**
+ * UDL for nanosecond
  *
  * @param val
  * @return
  */
 inline sc_core::sc_time operator"" _ns(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_NS); }
 /**
+ * UDL for picosecond
  *
  * @param val
  * @return
  */
 inline sc_core::sc_time operator"" _ps(long double val) { return sc_core::sc_time(val, sc_core::SC_PS); }
 /**
+ * UDL for picosecond
  *
  * @param val
  * @return
  */
 inline sc_core::sc_time operator"" _ps(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_PS); }
 /**
+ * UDL for femtosecond
  *
  * @param val
  * @return
  */
 inline sc_core::sc_time operator"" _fs(long double val) { return sc_core::sc_time(val, sc_core::SC_FS); }
 /**
+ * UDL for femtosecond
  *
  * @param val
  * @return
  */
 inline sc_core::sc_time operator"" _fs(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_FS); }
-
+//! UDL for kilobyte
 inline constexpr uint64_t operator"" _kB(unsigned long long val) { return val * 1 << 10; }
+//! UDL for megabyte
 inline constexpr uint64_t operator"" _MB(unsigned long long val) { return val * 1 << 20; }
+//! UDL for gigabyte
 inline constexpr uint64_t operator"" _GB(unsigned long long val) { return val * 1 << 30; }
 
 namespace scc {
-
+/**
+ * case-insensitive string compare
+ *
+ * @param a string a
+ * @param b string b
+ * @return result of std::equal
+ */
 inline bool icompare(std::string const &a, std::string const &b) {
     if (a.length() == b.length()) {
         return std::equal(b.begin(), b.end(), a.begin(),
@@ -179,7 +196,13 @@ inline bool icompare(std::string const &a, std::string const &b) {
         return false;
     }
 }
-
+/**
+ * parse a time value from given strings
+ *
+ * @param value the string to parse
+ * @param unit the unit string
+ * @return the parsed sc_core::sc_time value
+ */
 inline sc_core::sc_time parse_from_string(std::string value, std::string unit) noexcept {
     std::string::size_type offs{0};
     double t_val = std::stod(value, &offs);
@@ -193,7 +216,12 @@ inline sc_core::sc_time parse_from_string(std::string value, std::string unit) n
     }
     return sc_core::SC_ZERO_TIME;
 }
-
+/**
+ * parse a time value from a given string
+ *
+ * @param value the string to parse
+ * @return the parsed sc_core::sc_time value
+ */
 inline sc_core::sc_time parse_from_string(std::string value) noexcept {
     std::string::size_type offs{0};
     double t_val = std::stod(value, &offs);
