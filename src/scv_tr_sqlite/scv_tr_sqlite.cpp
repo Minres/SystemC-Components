@@ -20,6 +20,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <fmt/format.h>
 // clang-format off
 #include "scv/scv_util.h"
 #include "scv/scv_introspection.h"
@@ -113,7 +114,6 @@ private:
 };
 // ----------------------------------------------------------------------------
 static SQLiteDB db;
-static ostringstream stringBuilder, queryBuilder;
 static vector<vector<uint64_t> *> concurrencyLevel;
 static sqlite3_stmt *stream_stmt, *gen_stmt, *tx_stmt, *evt_stmt, *attr_stmt, *rel_stmt;
 
@@ -164,10 +164,8 @@ static void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason,
                     "(id), sink INTEGER REFERENCES " TX_TABLE "(id));");
             db.exec("CREATE TABLE  IF NOT EXISTS " SIM_PROPS "(time_resolution INTEGER);");
             db.exec("BEGIN TRANSACTION");
-            queryBuilder.str("");
-            queryBuilder << "INSERT INTO " SIM_PROPS " (time_resolution) values ("
-                         << (long)(sc_get_time_resolution().to_seconds() * 1e15) << ");";
-            db.exec(queryBuilder.str());
+            db.exec(fmt::format(
+                    "INSERT INTO " SIM_PROPS " (time_resolution) values ({});", (long)(sc_get_time_resolution().to_seconds() * 1e15)));
             stream_stmt = db.prepare("INSERT INTO " STREAM_TABLE " (id, name, kind) values (@ID,@NAME,@KIND);");
             gen_stmt = db.prepare("INSERT INTO " GENERATOR_TABLE " (id,stream, name)"
                                   " values (@ID,@STRM_DI,@NAME);");
@@ -229,15 +227,11 @@ void recordAttribute(uint64_t id, EventType event, const string &name, data_type
 }
 // ----------------------------------------------------------------------------
 inline void recordAttribute(uint64_t id, EventType event, const string &name, data_type type, long long value) {
-    stringBuilder.str("");
-    stringBuilder << value;
-    recordAttribute(id, event, name, type, stringBuilder.str());
+    recordAttribute(id, event, name, type, fmt::format("{}", value));
 }
 // ----------------------------------------------------------------------------
 inline void recordAttribute(uint64_t id, EventType event, const string &name, data_type type, double value) {
-    stringBuilder.str("");
-    stringBuilder << value;
-    recordAttribute(id, event, name, type, stringBuilder.str());
+    recordAttribute(id, event, name, type, fmt::format("{}", value));
 }
 // ----------------------------------------------------------------------------
 static void recordAttributes(uint64_t id, EventType eventType, string &prefix, const scv_extensions_if *my_exts_p) {
