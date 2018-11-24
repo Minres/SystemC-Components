@@ -110,7 +110,7 @@ public:
      * @param d annotated delay if loosly-timed access
      * @return true if access is successful
      */
-    bool write(const uint8_t *data, size_t length, uint64_t offset, sc_core::sc_time d) override {
+    bool write(const uint8_t *data, size_t length, uint64_t offset = 0, sc_core::sc_time d = sc_core::SC_ZERO_TIME) override {
         assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
         auto beg = reinterpret_cast<uint8_t *>(&temp) + offset;
@@ -128,7 +128,7 @@ public:
      * @param d annotated delay if loosly-timed access
      * @return true if access is successful
      */
-    bool read(uint8_t *data, size_t length, uint64_t offset, sc_core::sc_time d) const override {
+    bool read(uint8_t *data, size_t length, uint64_t offset = 0, sc_core::sc_time d = sc_core::SC_ZERO_TIME) const override {
         assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
         if (rd_cb) {
@@ -147,7 +147,7 @@ public:
      * @param offset offset within register
      * @return true if access is successful
      */
-    bool write_dbg(const uint8_t *data, size_t length, uint64_t offset) override {
+    bool write_dbg(const uint8_t *data, size_t length, uint64_t offset=0) override {
         assert("Offset out of range" && offset == 0);
         if (length != sizeof(DATATYPE)) return false;
         storage = *reinterpret_cast<const DATATYPE *>(data);
@@ -161,7 +161,7 @@ public:
      * @param offset offset within register
      * @return true if access is successful
      */
-    bool read_dbg(uint8_t *data, size_t length, uint64_t offset) const override {
+    bool read_dbg(uint8_t *data, size_t length, uint64_t offset=0) const override {
         assert("Offset out of range" && offset == 0);
         if (length != sizeof(DATATYPE)) return false;
         *reinterpret_cast<DATATYPE *>(data) = storage;
