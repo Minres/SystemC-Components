@@ -13,12 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * resettable.h
- *
- *  Created on: Nov 16, 2016
- *      Author: developer
- */
 
 #ifndef _SYSC_RESETTABLE_H_
 #define _SYSC_RESETTABLE_H_
@@ -31,27 +25,33 @@ namespace scc {
 class resetable {
 public:
     /**
-     *
+     * the default destructor
      */
     virtual ~resetable() = default;
     /**
-     *
+     * begin the reset state
      */
     void reset_start() {
         _in_reset = true;
         for (auto res : resources) res->reset();
     }
     /**
-     *
+     * finish the reset state
      */
     void reset_stop() {
         for (auto res : resources) res->reset();
         _in_reset = false;
     }
+    /**
+     * get the current state of this reset domain
+     *
+     * @return tru if reset is active
+     */
     bool in_reset() { return _in_reset; }
     /**
+     * register a resource with this reset domain
      *
-     * @param res
+     * @param res the resource belonging to this reset domain
      */
     void register_resource(resource_access_if *res) { resources.push_back(res); }
 

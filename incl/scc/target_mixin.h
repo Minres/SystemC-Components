@@ -26,10 +26,12 @@
 #include <tlm_utils/peq_with_get.h>
 
 namespace scc {
-
-template <typename base_type, typename TYPES = tlm::tlm_base_protocol_types> class target_mixin : public base_type {
-    friend class fw_process;
-    friend class bw_process;
+/**
+ * an target socket mixin adding default implementation of callback functions similar to tlm::simple_target_socket
+ */
+template <typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types> class target_mixin : public BASE_TYPE {
+//    friend class fw_process;
+//    friend class bw_process;
 
 public:
     using transaction_type = typename TYPES::tlm_payload_type;
@@ -40,32 +42,32 @@ public:
 
 public:
     /**
-     *
+     * default constructor
      */
     target_mixin()
     : target_mixin(sc_core::sc_gen_unique_name("target_mixin_socket")) {}
     /**
+     * constructor with explicit instance name
      *
      * @param n
      */
-    explicit target_mixin(const char *n)
-    : base_type(n)
+    explicit target_mixin(const sc_core::sc_module_name &n)
+    : BASE_TYPE(n)
     , m_fw_process(this)
     , m_bw_process(this)
     , m_current_transaction(nullptr) {
         bind(m_fw_process);
     }
-
-    using base_type::bind;
-
-    // bw transport must come thru us.
+    //! make bind of base class available
+    using BASE_TYPE::bind;
     /**
+     * return the bw_process interface
      *
      * @return
      */
     tlm::tlm_bw_transport_if<TYPES> *operator->() { return &m_bw_process; }
-    // REGISTER_XXX
     /**
+     * register a non-blocking forward path callback function
      *
      * @param cb
      */
@@ -75,6 +77,7 @@ public:
         m_fw_process.set_nb_transport_ptr(cb);
     }
     /**
+     * register a blocking forward path callback function
      *
      * @param cb
      */
@@ -91,6 +94,7 @@ public:
         m_fw_process.set_transport_dbg_ptr(cb);
     }
     /**
+     * register a DMI callback function
      *
      * @param cb
      */
@@ -102,11 +106,11 @@ public:
 private:
     // make call on bw path.
     sync_enum_type bw_nb_transport(transaction_type &trans, phase_type &phase, sc_core::sc_time &t) {
-        return base_type::operator->()->nb_transport_bw(trans, phase, t);
+        return BASE_TYPE::operator->()->nb_transport_bw(trans, phase, t);
     }
 
     void bw_invalidate_direct_mem_ptr(sc_dt::uint64 s, sc_dt::uint64 e) {
-        base_type::operator->()->invalidate_direct_mem_ptr(s, e);
+        BASE_TYPE::operator->()->invalidate_direct_mem_ptr(s, e);
     }
 
     // Helper class to handle bw path calls

@@ -13,12 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * tracer.h
- *
- *  Created on: Nov 9, 2016
- *      Author: developer
- */
 
 #ifndef _SCC_TRACER_H_
 #define _SCC_TRACER_H_
@@ -36,22 +30,25 @@ class sc_trace_file;
 }
 
 namespace scc {
-
+/**
+ * a component traversing the SystemC object hierarchy and tracing the objects
+ */
 class tracer : public sc_core::sc_module {
 public:
     /**
-     *
+     * enum defining the transaction trace output type
      */
     enum file_type { NONE, TEXT, COMPRESSED, SQLITE/*, BINARY, LEVEL*/ };
     /**
+     * the constructor
      *
-     * @param name basename of the trace file(s)
+     * @param name base name of the trace file(s)
      * @param type type of trace file for transactions
-     * @param enable enable VCD (signal based) tracing
+     * @param enable enable VCD (signal and POD) tracing
      */
     tracer(const std::string &&, file_type, bool = true);
     /**
-     *
+     * the destructor
      */
     virtual ~tracer() override;
 

@@ -37,7 +37,7 @@ using namespace scc;
 
 configurable_tracer::configurable_tracer(const std::string &&name, file_type type, bool enable_vcd, bool default_enable)
 : tracer(std::move(name), type, enable_vcd)
-, cci_originator("configurable_tracer")
+, cci_originator(this->name())
 , cci_broker(cci::cci_get_global_broker(cci_originator))
 , default_trace_enable(default_enable)
 {
@@ -109,8 +109,7 @@ void configurable_tracer::augment_object_hierarchical(const sc_core::sc_object *
             hier_name += ".enableTracing";
             auto h = cci_broker.get_param_handle(hier_name);
             if (!h.is_valid()) // we have no cci_param so create one
-                params.push_back(new cci::cci_param<bool>(hier_name, default_trace_enable, "", cci::CCI_ABSOLUTE_NAME,
-                                                          cci::cci_originator(obj->name())));
+                params.push_back(new cci::cci_param<bool>(hier_name, default_trace_enable, "", cci::CCI_ABSOLUTE_NAME, cci_originator));
         }
         for (auto *o : obj->get_child_objects()) augment_object_hierarchical(o);
     }

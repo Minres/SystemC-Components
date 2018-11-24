@@ -13,12 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * atrribute_mixin.h
- *
- *  Created on: 27.09.2017
- *      Author: eyck
- */
 
 #ifndef _SCC_EXT_ATTRIBUTE_H_
 #define _SCC_EXT_ATTRIBUTE_H_
@@ -27,28 +21,50 @@
 #include "utilities.h"
 
 namespace scc {
+/**
+ * extended attribute inheriting from sc_attribute
+ */
 template <typename T> class ext_attribute : public sc_core::sc_attribute<T> {
 public:
     using base_type = sc_core::sc_attribute<T>;
-
+    /**
+     * create an extended attribute based on name and owner with default value
+     *
+     * @param name_
+     * @param owner
+     */
     ext_attribute(const std::string &name_, sc_core::sc_module *owner)
     : base_type(name_)
     , owner(owner) {
         owner->add_attribute(*this);
         configurer::instance().set_configuration_value(this, owner);
     }
-
+    /**
+     * create an extended attribute based on name, value and owner
+     *
+     * @param name_
+     * @param value_
+     * @param owner
+     */
     ext_attribute(const std::string &name_, const T &value_, sc_core::sc_module *owner)
     : base_type(name_, value_)
     , owner(owner) {
         owner->add_attribute(*this);
         configurer::instance().set_configuration_value(this, owner);
     }
-
+    /**
+     * no copy constructor
+     *
+     * @param a
+     */
     ext_attribute(const ext_attribute<T> &a) = delete;
-
+    /**
+     * a default destructor
+     */
     ~ext_attribute() = default;
-
+    /**
+     * the owner of this attribute (a backward reference)
+     */
     const sc_core::sc_module *owner;
 };
 };

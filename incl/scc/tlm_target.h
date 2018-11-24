@@ -13,12 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * tlmtarget.h
- *
- *  Created on: Nov 16, 2016
- *      Author: developer
- */
 
 #ifndef _SYSC_TLM_TARGET_H_
 #define _SYSC_TLM_TARGET_H_
@@ -42,43 +36,47 @@ template <unsigned int BUSWIDTH = 32> class tlm_target {
 public:
     using this_type = tlm_target<BUSWIDTH>;
     /**
+     * the constructor
      *
      * @param clock
      */
     tlm_target(sc_core::sc_time &clock);
     /**
-     *
+     * the socket
      */
     scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>> socket;
     /**
+     * the blocking transport callback
      *
      * @param
      * @param
      */
     void b_tranport_cb(tlm::tlm_generic_payload &, sc_core::sc_time &);
     /**
+     * the debug transport callback
      *
      * @param
      * @return
      */
     unsigned int tranport_dbg_cb(tlm::tlm_generic_payload &);
     /**
+     * add a resource to this target at a certain address within the socket address range
      *
-     * @param i
-     * @param base_addr
+     * @param rai the resource to add
+     * @param base_addr the offset of the resource (from address 0)
      */
-    void addResource(resource_access_if &i, uint64_t base_addr) {
-        socket_map.addEntry(std::make_pair(&i, base_addr), base_addr, i.size());
+    void addResource(resource_access_if &rai, uint64_t base_addr) {
+        socket_map.addEntry(std::make_pair(&rai, base_addr), base_addr, rai.size());
     }
     /**
-     *
-     * @param ii
-     * @param base_addr
+     * add an indexed resource to this target at a certain address within the socket address range
+     * @param irai the resource to add
+     * @param base_addr the offset of the resource (from address 0)
      */
-    void addResource(indexed_resource_access_if &ii, uint64_t base_addr) {
-        for (size_t idx = 0; idx < ii.size(); ++idx) {
-            socket_map.addEntry(std::make_pair(&ii[idx], base_addr), base_addr, ii[idx].size());
-            base_addr += ii[idx].size();
+    void addResource(indexed_resource_access_if &irai, uint64_t base_addr) {
+        for (size_t idx = 0; idx < irai.size(); ++idx) {
+            socket_map.addEntry(std::make_pair(&irai[idx], base_addr), base_addr, irai[idx].size());
+            base_addr += irai[idx].size();
         }
     }
 
@@ -88,29 +86,21 @@ private:
 protected:
     util::range_lut<std::pair<resource_access_if *, uint64_t>> socket_map;
 };
-
+/**
+ * helper structure to define a address range for a socket
+ */
 template <unsigned BUSWIDTH = 32> struct target_memory_map_entry {
     tlm::tlm_target_socket<BUSWIDTH> &target;
     sc_dt::uint64 start;
     sc_dt::uint64 size;
 };
-
-template <unsigned int BUSWIDTH = 32, unsigned RANGES = 1> class tlm_multi_rangetarget : public tlm_target<BUSWIDTH> {
-public:
-    using this_type = tlm_multi_rangetarget<BUSWIDTH, RANGES>;
-
-    tlm_multi_rangetarget(sc_core::sc_time &clock, std::array<addr_range, RANGES> addr_rngs)
-    : tlm_target<BUSWIDTH>(clock)
-    , addr_ranges(addr_rngs) {}
-
-    tlm_multi_rangetarget(sc_core::sc_time &clock)
-    : tlm_target<BUSWIDTH>(clock)
-    , addr_ranges({}) {}
-
-    const std::array<addr_range, RANGES> addr_ranges;
-
-protected:
-    util::range_lut<resource_access_if *> socket_map;
+/**
+ * helper structure to define a named address range
+ */
+template <unsigned BUSWIDTH = 32> struct target_name_map_entry {
+    std::string   name;
+    sc_dt::uint64 start;
+    sc_dt::uint64 size;
 };
 
 } /* namespace scc */

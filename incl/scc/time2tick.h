@@ -20,12 +20,22 @@
 #include "utilities.h"
 
 namespace scc {
+/**
+ * translate a tick-less clock (sc_time based) to boolean clock
+ */
 struct time2tick : public sc_core::sc_module {
+    //! yes, we have processes
     SC_HAS_PROCESS(time2tick);// NOLINT
+    //! the clock input
     sc_core::sc_in<sc_core::sc_time> clk_i;
+    //! the clock output
     sc_core::sc_out<bool> clk_o;
-
-    time2tick(sc_core::sc_module_name nm)
+    /**
+     * the constructor
+     *
+     * @param nm
+     */
+    explicit time2tick(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm) {
         SC_THREAD(clocker);
     }

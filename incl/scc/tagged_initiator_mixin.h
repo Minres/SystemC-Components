@@ -23,7 +23,9 @@
 #include <tlm>
 
 namespace scc {
-
+/**
+ *
+ */
 template <typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types>
 class tagged_initiator_mixin : public BASE_TYPE {
 public:
@@ -34,12 +36,18 @@ public:
     using bw_interface_type = tlm::tlm_bw_transport_if<TYPES>;
 
 public:
+    /**
+     *
+     */
     tagged_initiator_mixin()
     : BASE_TYPE(sc_core::sc_gen_unique_name("tagged_initiator_socket"))
     , bw_if(this->name()) {
         this->m_export.bind(bw_if);
     }
-
+    /**
+     *
+     * @param n
+     */
     explicit tagged_initiator_mixin(const char *n)
     : BASE_TYPE(n)
     , bw_if(this->name()) {

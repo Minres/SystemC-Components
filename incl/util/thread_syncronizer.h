@@ -21,7 +21,10 @@
 #include <future>
 #include <queue>
 #include <stdexcept>
-
+namespace util {
+/**
+ * executes a function in another thread
+ */
 class thread_syncronizer {
 private:
     std::queue<std::function<void()>> tasks_;
@@ -30,24 +33,43 @@ private:
     std::condition_variable condition_;
 
 public:
-    /// @brief Constructor.
+    /**
+     * the constructor.
+     */
     thread_syncronizer() = default;
-
-    /// @brief Destructor.
+    /**
+     * the destructor
+     */
     ~thread_syncronizer() {
         // Set running flag to false then notify all threads.
         condition_.notify_all();
     }
-
+    /**
+     * check if the synchronizer can handle functions
+     *
+     * @return true if it can handle a new request
+     */
     bool is_ready() { return ready.load(std::memory_order_acquire); }
-
+    /**
+     * enqueue a function to be executed in the other thread and wait for completion
+     *
+     * @param f the functor to execute
+     * @param args the arguments to pass to the functor
+     * @return the result of the function
+     */
     template <class F, class... Args>
     typename std::result_of<F(Args...)>::type enqueue_and_wait(F &&f, Args &&... args) {
         auto res = enqueue(f, args...);
         res.wait();
         return res.get();
     }
-
+    /**
+     * enqueue a function to be executed in the other thread
+     *
+     * @param f the functor to execute
+     * @param args the arguments to pass to the functor
+     * @return the future holding the result of the execution
+     */
     template <class F, class... Args>
     auto enqueue(F &&f, Args &&... args) -> std::future<typename std::result_of<F(Args...)>::type> {
         using return_type = typename std::result_of<F(Args...)>::type;
@@ -62,7 +84,9 @@ public:
         condition_.notify_one();
         return res;
     }
-    /// @brief execute the next task in queue but do not wait for the next one
+    /**
+     * execute the next task in queue but do not wait for the next one
+     */
     void execute() {
         if (tasks_.empty()) return;
         {
@@ -81,8 +105,9 @@ public:
             } // Suppress all exceptions.
         }
     }
-
-    /// @brief execute the next task in queue or wait for the next one
+    /**
+     *  execute the next task in queue or wait for the next one
+     */
     void executeNext() {
         ready.store(true, std::memory_order_release);
         // Wait on condition variable while the task is empty
@@ -95,4 +120,5 @@ public:
         ready.store(false, std::memory_order_release);
     }
 };
+}
 #endif /* _THREAD_SYNCRONIZER_H_ */

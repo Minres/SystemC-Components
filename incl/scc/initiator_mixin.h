@@ -23,7 +23,9 @@
 #include <tlm>
 
 namespace scc {
-
+/**
+ * an initiator socket mixin adding default implementation of callback functions similar to tlm::simple_initiator_socket
+ */
 template <typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types> class initiator_mixin : public BASE_TYPE {
 public:
     using transaction_type = typename TYPES::tlm_payload_type;
@@ -33,26 +35,31 @@ public:
     using bw_interface_type = tlm::tlm_bw_transport_if<TYPES>;
 
 public:
+    /**
+     * the default constructor automatically generating a name
+     */
     initiator_mixin()
-    : BASE_TYPE(sc_core::sc_gen_unique_name("initiator_mixin_socket"))
-    , bw_if(this->name()) {
-        this->m_export.bind(bw_if);
-    }
-
-    explicit initiator_mixin(const char *n)
-    : BASE_TYPE(n)
+    : initiator_mixin(sc_core::sc_gen_unique_name("initiator_mixin_socket")) {}
+    /**
+     * constructor with explicit instance name
+     *
+     * @param name the instance name
+     */
+    explicit initiator_mixin(const sc_core::sc_module_name &name)
+    : BASE_TYPE(name)
     , bw_if(this->name()) {
         this->m_export.bind(bw_if);
     }
     /**
+     * register a non-blocking backward path callback function
      *
      * @param cb the callback function
      */
-    void
-    register_nb_transport_bw(std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)> cb) {
+    void register_nb_transport_bw(std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)> cb) {
         bw_if.set_transport_function(cb);
     }
     /**
+     * register an invalidate DMI callback function
      *
      * @param cb the callback function
      */
