@@ -2,6 +2,7 @@ FILE(GLOB LibHeaders *.h)
 set(LIB_HEADERS ${LibHeaders} )
 set(LIB_SOURCES
     sc_logic_7.cpp
+    tracer_base.cpp
     tracer.cpp
     configurable_tracer.cpp
     utilities.cpp
@@ -9,6 +10,7 @@ set(LIB_SOURCES
     jsoncpp.cpp
     configurer.cpp
     perf_estimator.cpp
+    value_registry.cpp
 )
 
 if(SCV_FOUND)

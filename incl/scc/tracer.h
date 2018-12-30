@@ -17,7 +17,7 @@
 #ifndef _SCC_TRACER_H_
 #define _SCC_TRACER_H_
 
-#include "utilities.h"
+#include "tracer_base.h"
 #ifdef WITH_SCV
 #include <scv.h>
 #endif
@@ -33,7 +33,7 @@ namespace scc {
 /**
  * a component traversing the SystemC object hierarchy and tracing the objects
  */
-class tracer : public sc_core::sc_module {
+class tracer : public tracer_base {
 public:
     /**
      * enum defining the transaction trace output type
@@ -54,11 +54,7 @@ public:
 
 protected:
     void end_of_elaboration() override;
-    virtual void descend(const sc_core::sc_object *);
-    virtual void try_trace_signal(const sc_core::sc_object *);
-    virtual void try_trace_port(const sc_core::sc_object *);
     bool enabled;
-    sc_core::sc_trace_file *trf;
 #ifdef WITH_SCV
     scv_tr_db *txdb;
 #endif
