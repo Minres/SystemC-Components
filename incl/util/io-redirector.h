@@ -21,7 +21,7 @@ public:
 
     bool is_active();
 
-    std::string get_output();
+    std::string get_output(bool blocking = false);
 
     static IoRedirector& get(){
         static IoRedirector inst;

@@ -98,7 +98,7 @@ void IoRedirector::stop() {
     m_capturing = false;
 }
 
-std::string IoRedirector::get_output() {
+std::string IoRedirector::get_output(bool blocking) {
     std::lock_guard<std::mutex> lock(m_mutex);
     char msg[1024];
     if(m_capturing){
@@ -114,7 +114,10 @@ std::string IoRedirector::get_output() {
             bytesRead = read(m_pipe[READ], buf, bufSize-1);
 #else
             int flags = fcntl(m_pipe[READ], F_GETFL, 0);
-            fcntl(m_pipe[READ], F_SETFL, flags | O_NONBLOCK);
+            if(blocking)
+                fcntl(m_pipe[READ], F_SETFL, flags &  ~O_NONBLOCK);
+            else
+                fcntl(m_pipe[READ], F_SETFL, flags | O_NONBLOCK);
             bytesRead = read(m_pipe[READ], buf, bufSize - 1);
 #endif
             if (bytesRead > 0) {
