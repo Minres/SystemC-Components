@@ -34,7 +34,7 @@ namespace scc {
  *
  * @param level the logging level
  */
-void init_logging(logging::log_level level = logging::WARNING);
+void init_logging(logging::log_level level = logging::WARNING, bool print_time = false);
 /**
  * the logger class
  */

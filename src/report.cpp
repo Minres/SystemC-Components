@@ -96,7 +96,7 @@ void report_handler(const sc_report &rep, const sc_actions &actions) {
 }
 }
 
-void scc::init_logging(logging::log_level level) {
+void scc::init_logging(logging::log_level level, bool print_time) {
     const std::array<int, 8> verbosity = {SC_NONE,   // Logging::NONE
                                           SC_LOW,    // Logging::FATAL
                                           SC_LOW,    // Logging::ERROR
@@ -106,6 +106,7 @@ void scc::init_logging(logging::log_level level) {
                                           SC_FULL,   // logging::TRACE
                                           SC_DEBUG}; // logging::TRACE+1
     LOGGER(SystemC)::reporting_level() = level;
+    LOGGER(SystemC)::print_time() = print_time;
     sc_report_handler::set_verbosity_level(verbosity[level]);
     sc_report_handler::set_handler(report_handler);
 }
