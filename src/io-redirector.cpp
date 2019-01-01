@@ -24,8 +24,6 @@
 #include <poll.h>
 #include <thread>
 #endif
-#include <cstdio>
-#include <cstring>
 
 IoRedirector::IoRedirector()
 : m_oldStdOut(0)
@@ -103,8 +101,6 @@ void IoRedirector::stop() {
 std::string IoRedirector::get_output() {
     std::lock_guard<std::mutex> lock(m_mutex);
     char msg[1024];
-    sprintf(msg, "IoRedirector::get_output\n");
-    write(m_oldStdErr, msg, strlen(msg));
     if(m_capturing){
         std::string ret;
         char buf[bufSize];
@@ -121,8 +117,6 @@ std::string IoRedirector::get_output() {
             fcntl(m_pipe[READ], F_SETFL, flags | O_NONBLOCK);
             bytesRead = read(m_pipe[READ], buf, bufSize - 1);
 #endif
-            sprintf(msg, "IoRedirector: read %d bytes\n", bytesRead);
-            write(m_oldStdErr, msg, strlen(msg));
             if (bytesRead > 0) {
                 buf[bytesRead] = 0;
                 ret += buf;
@@ -132,12 +126,8 @@ std::string IoRedirector::get_output() {
                     if (fd_blocked) std::this_thread::sleep_for(std::chrono::milliseconds(10));
                 }
         } while (fd_blocked || bytesRead == (bufSize - 1));
-        const char* msg1 = "IoRedirector::get_output returned\n";
-        write(m_oldStdErr, msg1, strlen(msg1));
         return ret;
     } else{
-        const char* msg1 = "IoRedirector::get_output fineshed\n";
-        write(m_oldStdErr, msg1, strlen(msg1));
         return m_captured;
     }
 }

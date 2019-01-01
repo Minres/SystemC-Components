@@ -34,13 +34,15 @@
 
 #include <locale>
 
-#if __cplusplus < 201402L
-namespace std {
+namespace scc {
 template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args &&... args) {
+#if __cplusplus < 201402L
     return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
-}
-}
+#else
+    return std::make_unique<T>(std::forward<Args>(args)...);
 #endif
+}
+}
 //! macros to simplify constructor lists
 #define NAMED(X, ...) X(#X, ##__VA_ARGS__)
 #define NAMEDD(X, T, ...) X(std::make_unique<T>(#X, ##__VA_ARGS__))
