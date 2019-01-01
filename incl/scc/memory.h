@@ -95,10 +95,10 @@ int memory<SIZE, BUSWIDTH, LOG_ACCESS>::handle_operation(tlm::tlm_generic_payloa
     tlm::tlm_command cmd = trans.get_command();
     if (LOG_ACCESS) {
         if (adr >= 0x20 && adr < 0x60)
-            LOG(WARNING) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex
+            SCWARN() << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex
                          << adr - 0x20 << "(0x" << (adr) << ")" << std::dec;
         else
-            LOG(WARNING) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr
+            SCWARN() << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr
                          << std::dec;
     }
     if (cmd == tlm::TLM_READ_COMMAND) {

@@ -108,7 +108,7 @@ private:
         }
 
         sync_enum_type nb_transport_bw(transaction_type &trans, phase_type &phase, sc_core::sc_time &t) {
-            if (m_transport_ptr) return m_transport_ptr(tag[0], trans, phase, t);
+            if (m_transport_ptr) return m_transport_ptr(tags[0], trans, phase, t);
             std::stringstream s;
             s << m_name << ": no transport callback registered";
             SC_REPORT_ERROR("/OSCI_TLM-2/tagged_initiator_mixin", s.str().c_str());
@@ -117,7 +117,7 @@ private:
 
         void invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) {
             if (m_invalidate_direct_mem_ptr) // forward call
-                m_invalidate_direct_mem_ptr(tag[1], start_range, end_range);
+                m_invalidate_direct_mem_ptr(tags[1], start_range, end_range);
         }
 
     private:

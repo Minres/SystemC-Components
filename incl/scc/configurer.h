@@ -102,7 +102,7 @@ public:
                 if (attr != nullptr)
                     attr->value = value;
                 else
-                    LOG(ERROR) << "Could not set attribute value " << hier_name;
+                    SCERR() << "Could not set attribute value " << hier_name;
             }
         }
     }

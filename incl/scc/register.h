@@ -38,7 +38,7 @@ template <typename T, bool = std::is_integral<T>::value> class helper {};
 template <typename T> class helper<T, true> {
 public:
     using Type = T;
-    template <typename Type> constexpr Type get_max_uval() {
+    template <typename Type> constexpr Type get_max_uval() const {
         return std::numeric_limits<Type>::is_signed ? -1 : std::numeric_limits<Type>::max();
     }
 };
@@ -46,7 +46,7 @@ public:
 template <typename T> class helper<T, false> {
 public:
     using Type = typename T::StorageType;
-    template <typename Type> constexpr Type get_max_uval() {
+    template <typename Type> constexpr Type get_max_uval() const {
         return std::numeric_limits<Type>::is_signed ? -1 : std::numeric_limits<Type>::max();
     }
 };
