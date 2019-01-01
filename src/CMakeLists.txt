@@ -11,6 +11,7 @@ set(LIB_SOURCES
     configurer.cpp
     perf_estimator.cpp
     value_registry.cpp
+    io-redirector.cpp
 )
 
 if(SCV_FOUND)
