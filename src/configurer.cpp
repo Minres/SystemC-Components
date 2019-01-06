@@ -22,6 +22,8 @@
 
 #include "scc/configurer.h"
 #include "scc/report.h"
+#include <cci_configuration>
+#include <cci_utils/broker.h>
 
 #include <boost/algorithm/string/predicate.hpp>
 #include <fstream>
@@ -233,4 +235,8 @@ void scc::configurer::configure_cci_hierarchical(const Json::Value &node, std::s
             }
         }
     }
+}
+
+void scc::init_cci(std::string name) {
+    cci::cci_register_broker(new cci_utils::broker("Global Broker"));
 }

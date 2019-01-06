@@ -13,12 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * configurer.h
- *
- *  Created on: 27.09.2017
- *      Author: eyck
- */
 
 #ifndef _SYSC_CONFIGURER_H_
 #define _SYSC_CONFIGURER_H_
@@ -30,28 +24,72 @@
 
 namespace scc {
 
+void init_cci(std::string name = "Global Broker");
+/**
+ * a class to configure a design hierarchy using a JSON input file
+ */
 class configurer : public sc_core::sc_object {
 public:
     using base_type = sc_core::sc_object;
-
+    /**
+     * create a configurer using a JSON input file
+     * @param filename
+     */
     configurer(const std::string &filename);
-
+    /**
+     * no default constructor
+     */
     configurer() = delete;
-
+    /**
+     * no copy constructor
+     *
+     * @param
+     */
     configurer(const configurer &) = delete;
-
+    /**
+     * no move constructor
+     *
+     * @param
+     */
     configurer(configurer &&) = delete;
-
+    /**
+     * no copy assignment
+     *
+     * @param
+     * @return
+     */
     configurer &operator=(const configurer &) = delete;
-
+    /**
+     * no move assignment
+     *
+     * @param
+     * @return
+     */
     configurer &operator=(configurer &&) = delete;
-
+    /**
+     * configure the design hierarchy using the input file
+     */
     void configure();
-
+    /**
+     * dump the design hierarchy as text
+     *
+     * @param os the output stream, std::cout by default
+     * @param obj if not null specifies the root object of the dump
+     */
     void dump_hierarchy(std::ostream &os = std::cout, sc_core::sc_object *obj = nullptr);
-
+    /**
+     * dump the parameters of a design hierarchy to output stream
+     *
+     * @param os the output stream, std::cout by default
+     * @param obj if not null specifies the root object of the dump
+     */
     void dump_configuration(std::ostream &os = std::cout, sc_core::sc_object *obj = nullptr);
-
+    /**
+     * set a value a some attribute (sc_attribute or cci_param)
+     *
+     * @param hier_name the hierarchical name of the attribute
+     * @param value the value to put
+     */
     template <typename T> void set_value(const std::string &hier_name, T value) {
         cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
         if (param_handle.is_valid()) {
@@ -66,13 +104,22 @@ public:
                 if (attr != nullptr)
                     attr->value = value;
                 else
-                    LOG(ERROR) << "Could not set attribute value " << hier_name;
+                    SCERR() << "Could not set attribute value " << hier_name;
             }
         }
     }
-
+    /**
+     * set a value of an sc_attribute from given configuration
+     *
+     * @param attr_base
+     * @param owner
+     */
     void set_configuration_value(sc_core::sc_attr_base *attr_base, sc_core::sc_object *owner);
-
+    /**
+     * find the configurer in the design hierarchy
+     *
+     * @return
+     */
     static configurer &instance() {
         configurer *inst = dynamic_cast<configurer *>(sc_core::sc_find_object("configurer"));
         sc_assert("No configurer instantiated when using it" && inst != nullptr);

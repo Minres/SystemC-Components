@@ -13,12 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * router.h
- *
- *  Created on: Nov 5, 2016
- *      Author: eyck
- */
 
 #ifndef _SYSC_ROUTER_H_
 #define _SYSC_ROUTER_H_
@@ -41,14 +35,15 @@ public:
     using intor_sckt = scc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<BUSWIDTH>>;
     using target_sckt = scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>>;
     /**
-     *
+     * the array of target sockets
      */
     sc_core::sc_vector<target_sckt> target;
     /**
-     *
+     * the array of initiator sockets
      */
     sc_core::sc_vector<intor_sckt> initiator;
     /**
+     * constructs a router
      *
      * @param nm
      * @param slave_cnt
@@ -60,24 +55,55 @@ public:
      */
     ~router() = default;
     /**
+     * bind the initiator socket of the router to some target giving a base and size
+     *
+     * @param socket
+     * @param idx
+     * @param base
+     * @param size
+     * @param remap
+     */
+    template<typename TYPE>
+    void bind_target(TYPE& socket, size_t idx, uint64_t base, uint64_t size, bool remap = true){
+        set_target_range(idx, base, size, remap);
+        initiator[idx].bind(socket);
+    }
+    /**
+     * bind the initiator socket of the router to some target and name it
+     *
+     * @param socket
+     * @param idx
+     * @param name
+     */
+    template<typename TYPE>
+    void bind_target(TYPE& socket, size_t idx, std::string name){
+        set_target_name(idx, name);
+        initiator[idx].bind(socket);
+    }
+    /**
+     * define a base address of a socket. This will be added to the address of each access
+     * coming thru this socket
      *
      * @param idx
      * @param base
      */
     void set_initiator_base(size_t idx, uint64_t base) { ibases[idx] = base; }
     /**
+     * define the default target socket. If no target address range is hit the access is routed to this socket.
+     * If this is not defined a address error response is generated
      *
      * @param idx
      */
     void set_default_target(size_t idx) { default_idx = idx; }
     /**
-     * establish a mapping between socket naem name and socket index
+     * establish a mapping between socket name and socket index
      *
      * @param idx
      * @param name
      */
     void set_target_name(size_t idx, std::string name) { target_name_lut.insert(std::make_pair(name, idx)); }
     /**
+     * establish a mapping between a named socket and a target address range
      *
      * @param idx
      * @param base
@@ -86,13 +112,14 @@ public:
      */
     void add_target_range(std::string name, uint64_t base, uint64_t size, bool remap = true);
     /**
+     * establish a mapping between a socket and a target address range
      *
      * @param name
      * @param base
      * @param size
      * @param remap
      */
-    void add_target_range(size_t idx, uint64_t base, uint64_t size, bool remap = true);
+    void set_target_range(size_t idx, uint64_t base, uint64_t size, bool remap = true);
     /**
       * tagged blocking transport method
       *
@@ -110,8 +137,8 @@ public:
      * @return
      */
     bool get_direct_mem_ptr(int i, tlm::tlm_generic_payload &trans, tlm::tlm_dmi &dmi_data);
-    // tagged debug transaction method
     /**
+     * tagged debug transaction method
      *
      * @param i
      * @param trans
@@ -171,7 +198,7 @@ router<BUSWIDTH>::router(const sc_core::sc_module_name &nm, unsigned slave_cnt, 
 }
 
 template <unsigned BUSWIDTH>
-void router<BUSWIDTH>::add_target_range(size_t idx, uint64_t base, uint64_t size, bool remap) {
+void router<BUSWIDTH>::set_target_range(size_t idx, uint64_t base, uint64_t size, bool remap) {
     tranges[idx].base = base;
     tranges[idx].size = size;
     tranges[idx].remap = remap;

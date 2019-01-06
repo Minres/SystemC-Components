@@ -13,17 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * tracer.h
- *
- *  Created on: Nov 9, 2016
- *      Author: developer
- */
 
 #ifndef _SCC_TRACER_H_
 #define _SCC_TRACER_H_
 
-#include "utilities.h"
+#include "tracer_base.h"
 #ifdef WITH_SCV
 #include <scv.h>
 #endif
@@ -36,32 +30,31 @@ class sc_trace_file;
 }
 
 namespace scc {
-
-class tracer : public sc_core::sc_module {
+/**
+ * a component traversing the SystemC object hierarchy and tracing the objects
+ */
+class tracer : public tracer_base {
 public:
     /**
-     *
+     * enum defining the transaction trace output type
      */
     enum file_type { NONE, TEXT, COMPRESSED, SQLITE/*, BINARY, LEVEL*/ };
     /**
+     * the constructor
      *
-     * @param name basename of the trace file(s)
+     * @param name base name of the trace file(s)
      * @param type type of trace file for transactions
-     * @param enable enable VCD (signal based) tracing
+     * @param enable enable VCD (signal and POD) tracing
      */
     tracer(const std::string &&, file_type, bool = true);
     /**
-     *
+     * the destructor
      */
     virtual ~tracer() override;
 
 protected:
     void end_of_elaboration() override;
-    virtual void descend(const sc_core::sc_object *);
-    virtual void try_trace_signal(const sc_core::sc_object *);
-    virtual void try_trace_port(const sc_core::sc_object *);
     bool enabled;
-    sc_core::sc_trace_file *trf;
 #ifdef WITH_SCV
     scv_tr_db *txdb;
 #endif

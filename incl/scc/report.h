@@ -13,12 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * logging.h
- *
- *  Created on: Nov 24, 2016
- *      Author: developer
- */
 
 #ifndef _SYSC_REPORT_H_
 #define _SYSC_REPORT_H_
@@ -37,34 +31,83 @@ namespace scc {
 
 /**
  * initializes the SystemC logging system to use logging::Logger with a particular logging level
+ *
+ * @param level the logging level
  */
-void init_logging(logging::log_level level = logging::WARNING);
-
+void init_logging(logging::log_level level = logging::WARNING, bool print_time = false);
+/**
+ * the logger class
+ */
 template <sc_core::sc_severity SEVERITY> struct ScLogger {
+    /**
+     * the constructor
+     *
+     * @param file file where the log entry originates
+     * @param line the line where the log entry originates
+     * @param level the log level
+     */
     ScLogger(const char *file, int line, sc_core::sc_verbosity level = sc_core::SC_MEDIUM)
     : t(nullptr)
     , file(file)
     , line(line)
     , level(level){};
-
+    /**
+     * no default constructor
+     */
     ScLogger() = delete;
-
+    /**
+     * no copy constructor
+     * @param
+     */
     ScLogger(const ScLogger &) = delete;
-
+    /**
+     * no move constructor
+     * @param
+     */
+    ScLogger(ScLogger &&) = delete;
+    /**
+     * no copy assignment
+     * @param
+     * @return
+     */
     ScLogger &operator=(const ScLogger &) = delete;
-
+    /**
+     * no move assignment
+     * @param
+     * @return
+     */
+    ScLogger &operator=(ScLogger &&) = delete;
+    /**
+     * the destructor generating the SystemC report
+     */
     virtual ~ScLogger() {
         ::sc_core::sc_report_handler::report(SEVERITY, t ? t : "SystemC", os.str().c_str(), level, file, line);
     }
-
-    inline ScLogger &type() { return *this; }
-
+    /**
+     * reset the category of the log entry
+     *
+     * @return
+     */
+    inline ScLogger &type() {
+        this->t=nullptr;
+        return *this;
+    }
+    /**
+     * set the category of the log entry
+     *
+     * @param t
+     * @return
+     */
     inline ScLogger &type(const char *t) {
         this->t = const_cast<char *>(t);
         return *this;
     }
-
-    inline std::ostringstream &get() { return os; };
+    /**
+     * return the underlying ostringstream
+     *
+     * @return the output stream collecting the log message
+     */
+    inline std::ostream &get() { return os; };
 
 protected:
     std::ostringstream os;
@@ -73,22 +116,28 @@ protected:
     const int line;
     const sc_core::sc_verbosity level;
 };
-
+//! macro for debug trace lavel output
 #define SCDBGTRC(...)                                                                                                  \
     if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)                                      \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_DEBUG).type(__VA_ARGS__).get()
+//! macro for trace level output
 #define SCTRACE(...)                                                                                                   \
     if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)                                       \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_FULL).type(__VA_ARGS__).get()
+//! macro for debug level output
 #define SCDEBUG(...)                                                                                                   \
     if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_HIGH)                                       \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_HIGH).type(__VA_ARGS__).get()
+//! macro for info level output
 #define SCINFO(...)                                                                                                    \
     if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM)                                     \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+//! macro for warning level output
 #define SCWARN(...)                                                                                                    \
     ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+//! macro for error level output
 #define SCERR(...) ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+//! macro for fatal message output
 #define SCFATAL(...)                                                                                                   \
     ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 }

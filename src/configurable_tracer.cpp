@@ -37,7 +37,7 @@ using namespace scc;
 
 configurable_tracer::configurable_tracer(const std::string &&name, file_type type, bool enable_vcd, bool default_enable)
 : tracer(std::move(name), type, enable_vcd)
-, cci_originator("configurable_tracer")
+, cci_originator(this->name())
 , cci_broker(cci::cci_get_global_broker(cci_originator))
 , default_trace_enable(default_enable)
 {
@@ -49,7 +49,7 @@ scc::configurable_tracer::~configurable_tracer() {
     for (auto ptr : params) delete ptr;
 }
 
-void configurable_tracer::descend(const sc_core::sc_object *obj) {
+void configurable_tracer::descend(const sc_core::sc_object *obj, bool trace_all) {
     if (obj == this) return;
     const auto* tr = dynamic_cast<const scc::traceable*>(obj);
     auto trace_enable = tr?false:get_trace_enabled(obj, default_trace_enable);
@@ -73,9 +73,8 @@ void configurable_tracer::descend(const sc_core::sc_object *obj) {
         } else if (strcmp(kind, "sc_vector") == 0 || strcmp(kind, "sc_export") == 0) {
             continue;
         } else if (strcmp(kind, "sc_module") == 0) {
-            const auto* str = dynamic_cast<const scc::traceable*>(o);
-            if(str && get_trace_enabled(o, default_trace_enable))
-                str->trace(trf);
+            if(dynamic_cast<const scc::traceable*>(o) && get_trace_enabled(o, default_trace_enable))
+                o->trace(trf);
             descend(o);
         } else {
             auto obj_trace_enable = get_trace_enabled(o, default_trace_enable);
@@ -109,8 +108,7 @@ void configurable_tracer::augment_object_hierarchical(const sc_core::sc_object *
             hier_name += ".enableTracing";
             auto h = cci_broker.get_param_handle(hier_name);
             if (!h.is_valid()) // we have no cci_param so create one
-                params.push_back(new cci::cci_param<bool>(hier_name, default_trace_enable, "", cci::CCI_ABSOLUTE_NAME,
-                                                          cci::cci_originator(obj->name())));
+                params.push_back(new cci::cci_param<bool>(hier_name, default_trace_enable, "", cci::CCI_ABSOLUTE_NAME, cci_originator));
         }
         for (auto *o : obj->get_child_objects()) augment_object_hierarchical(o);
     }

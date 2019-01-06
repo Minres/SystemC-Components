@@ -38,10 +38,13 @@
 #include <cci_configuration>
 
 namespace scc {
-
+/**
+ *
+ */
 class configurable_tracer : public scc::tracer {
 public:
     /**
+     * constructs a tracer object
      *
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
@@ -49,24 +52,42 @@ public:
      * @param default value of attribute enableTracing if not defined by module or CCIs
      */
     configurable_tracer(const std::string&&, file_type, bool = true, bool = false);
-
+    /**
+     * constructs a tracer object
+     *
+     * @param name basename of the trace file(s)
+     * @param type type of trace file for transactions
+     * @param enable enable VCD (signal based) tracing
+     * @param default value of attribute enableTracing if not defined by module or CCIs
+     */
     configurable_tracer(const std::string& name, file_type type, bool enable_vcd = true, bool default_enable = false)
     :configurable_tracer(std::string(name), type, enable_vcd, default_enable)
     {}
-
+    /**
+     * destructor
+     */
     ~configurable_tracer();
-
+    /**
+     * adds default trace control attribute of name 'enableTracing' to each sc_module in a design hierarchy
+     */
     void add_control() {
         for (auto *o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext)) augment_object_hierarchical(o);
     }
 
 protected:
+    //! the default for tracing if no attribute is configured
     const bool default_trace_enable;
-    void descend(const sc_core::sc_object *) override;
+    //! depth-first walk thru the design hierarchy and trace signals resp. call trace() function
+    void descend(const sc_core::sc_object *, bool trace_all = false) override;
+    //! check for existence of 'enableTracing' attribute and return value of default otherwise
     bool get_trace_enabled(const sc_core::sc_object *, bool = false);
+    //! add the 'enableTracing' attribute to sc_module
     void augment_object_hierarchical(const sc_core::sc_object *);
+    //! the originator of cci values
     cci::cci_originator cci_originator;
+    //! the cci broker
     cci::cci_broker_handle cci_broker;
+    //! array of created cci parameter
     std::vector<cci::cci_param_untyped *> params;
 };
 

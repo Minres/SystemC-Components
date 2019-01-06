@@ -26,18 +26,21 @@
 #include <string>
 
 namespace util {
-
+/**
+ * range based lookup table
+ */
 template <typename T> class range_lut {
+    //! the type of lut entry
     enum entry_type { BEGIN_RANGE = 1, END_RANGE = 2, SINGLE_BYTE_RANGE = 3 };
-
+    //! the lut entry
     struct lut_entry {
         T index;
         entry_type type;
     };
-
 public:
     /**
      * constructor or the lookup table
+     *
      * @param null_entry the entry to be used for empty slots
      */
     range_lut(T null_entry)
@@ -45,6 +48,7 @@ public:
     /**
      * add an T to the lut covering the range starting at base_addr until
      * base_addr+size-1
+     *
      * @param i the entry
      * @param base_addr the base address
      * @param size the size of the occupied range
@@ -52,12 +56,14 @@ public:
     void addEntry(T i, uint64_t base_addr, uint64_t size);
     /**
      * remove an entry with value i of type T
+     *
      * @param i the entry to be found
      * @return true if the entry is found and removed, false otherwise
      */
     bool removeEntry(T i);
     /**
      * get number of entries in the lookup table
+     *
      * @return the size of the underlying container
      */
     size_t size() { return m_size; }
@@ -67,6 +73,7 @@ public:
     void clear() { m_lut.clear(); }
     /**
      * get the entry T associated with a given address
+     *
      * @param addr the address
      * @return the entry belonging to the address
      */
@@ -82,14 +89,12 @@ public:
     /**
      * create a textual representation of the address map (address range->entry
      * association)
+     *
      * @return
      */
     std::string toString();
-    /**
-     * the null entry
-     */
+    //!the null entry
     const T null_entry;
-
 protected:
     // Loki::AssocVector<uint64_t, lut_entry> m_lut;
     std::map<uint64_t, lut_entry> m_lut;
@@ -98,6 +103,7 @@ protected:
 
 /**
  * overloaded stream operator
+ *
  * @param os the output stream
  * @return the stream
  */
@@ -180,7 +186,6 @@ template <typename T> inline std::string range_lut<T>::toString() {
     }
     return buf.str();
 }
-
 } // namespace util
 
 #endif /* _RANGE_LUT_H_ */

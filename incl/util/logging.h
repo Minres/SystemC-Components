@@ -28,39 +28,70 @@
 #include <sys/time.h>
 #include <vector>
 
+//! log level definitions
 #define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE)
 #define DO_DESCRIPTION(e) #e,
 #define DO_ENUM(e) e,
 
 namespace logging {
-
+//! array holding string representations of log levels
 static std::array<const char *const, 7> buffer = {{LEVELS(DO_DESCRIPTION)}};
+//! enum defining the log levels
 enum log_level { LEVELS(DO_ENUM) };
-
+/**
+ * safely convert an integer into a log level
+ * @param logLevel the integer
+ * @return the log level
+ */
 inline log_level as_log_level(int logLevel) {
     assert(logLevel >= NONE && logLevel <= TRACE);
     std::array<const log_level, 7> m = {{NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE}};
     return m[logLevel];
 }
-
+/**
+ * get the current host time as string
+ * @return
+ */
 inline std::string now_time();
-
+/**
+ * the logger class
+ */
 template <typename T> class Log {
 public:
+    /**
+     * default constructor
+     */
     Log() = default;
-
+    /**
+     * no copy constructor
+     *
+     * @param
+     */
     Log(const Log &) = delete;
-
+    /**
+     * no copy assignment constructor
+     *
+     * @param
+     * @return
+     */
     Log &operator=(const Log &) = delete;
-
+    /**
+     * the destructor
+     */
     virtual ~Log() {
         os << std::endl;
         T::output(os.str());
         // TODO: use a more specific exception
         if (get_last_log_level() == FATAL) abort();
     }
-
-    std::ostringstream &get(log_level level = INFO, const char *category = "") {
+    /**
+     * get the underlying ostringstream for a certain log level and category
+     *
+     * @param level the log level
+     * @param category the category string
+     * @return the underlying output stream
+     */
+    std::ostream &get(log_level level = INFO, const char *category = "") {
         if (print_time()) os << "- " << now_time() << " ";
         if (print_severity()) {
             os << std::setw(7) << std::left << to_string(level);
@@ -70,14 +101,28 @@ public:
         get_last_log_level() = level;
         return os;
     };
-
+    /**
+     * get a reference to the configured logging level
+     *
+     * @return the logging level
+     */
     static log_level &reporting_level() {
         static log_level reportingLevel = WARNING;
         return reportingLevel;
     }
-
+    /**
+     * translate a lg level to a string
+     *
+     * @param level the log level
+     * @return the string representing the log level
+     */
     static std::string to_string(log_level level) { return std::string(get_log_level_cstr()[level]); };
-
+    /**
+     * parse a log level from a string
+     *
+     * @param level the string representing the log level
+     * @return the log level
+     */
     static log_level from_string(const std::string &level) {
         for (unsigned int i = NONE; i <= TRACE; i++)
             if (!strncasecmp(level.c_str(), (const char *)(get_log_level_cstr() + i),
@@ -86,12 +131,20 @@ public:
         Log<T>().Get(WARNING) << "Unknown logging level '" << level << "'. Using INFO level as default.";
         return INFO;
     }
-
+    /**
+     * get the reference to the flag indicating if the current host time should be part of the log
+     *
+     * @return the print time flag
+     */
     static bool &print_time() {
         static bool flag = true;
         return flag;
     }
-
+    /**
+     * get the reference to the flag indicating if severity should be part of the log
+     *
+     * @return the print severity flag
+     */
     static bool &print_severity() {
         static bool flag = true;
         return flag;
@@ -105,13 +158,25 @@ protected:
     static const char *const *get_log_level_cstr() { return buffer.data(); };
     std::ostringstream os;
 };
-
+/**
+ * the output writer
+ */
 template <typename CATEGORY> class Output2FILE : CATEGORY {
 public:
+    /**
+     * get the file handle of the underlying output file (or stdout)
+     *
+     * @return the file handle
+     */
     static FILE *&stream() {
         static FILE *pStream = stdout;
         return pStream;
     }
+    /**
+     * write an output string to the file
+     *
+     * @param msg the string to write
+     */
     static void output(const std::string &msg) {
         static std::mutex mtx;
         std::lock_guard<std::mutex> lock(mtx);
@@ -121,6 +186,7 @@ public:
         fflush(pStream);
     }
 };
+//! the default logging category
 class DEFAULT {};
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)
@@ -178,12 +244,13 @@ inline std::string now_time() {
     strftime(buffer.data(), buffer.size(), "%X", localtime_r(&t, &r));
     struct timeval tv;
     gettimeofday(&tv, nullptr);
+    memset(result.data(), 100, 1);
     sprintf(result.data(), "%s.%03ld", buffer.data(), (long)tv.tv_usec / 1000);
     return result.data();
 }
 
 #endif // WIN32
-// a print function for a vector
+//! a print function for a vector
 template <typename T> std::ostream &operator<<(std::ostream &stream, const std::vector<T> &vector) {
     copy(vector.begin(), vector.end(), std::ostream_iterator<T>(stream, ","));
     return stream;
@@ -194,6 +261,7 @@ template <typename T> std::ostream &operator<<(std::ostream &stream, const std::
 #undef CAT
 
 #ifndef NDEBUG
+//! check only in debug mode
 #define ASSERT(condition, message)                                                                                     \
     do {                                                                                                               \
         if (!(condition)) {                                                                                            \
@@ -207,7 +275,7 @@ template <typename T> std::ostream &operator<<(std::ostream &stream, const std::
     do {                                                                                                               \
     } while (false)
 #endif
-
+//! check always
 #define CHECK(condition, message)                                                                                      \
     do {                                                                                                               \
         if (!(condition)) {                                                                                            \

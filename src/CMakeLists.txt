@@ -1,7 +1,8 @@
-FILE(GLOB LibHeaders *.h)
+FILE(GLOB LibHeaders ../incl/*/*.h)
 set(LIB_HEADERS ${LibHeaders} )
 set(LIB_SOURCES
     sc_logic_7.cpp
+    tracer_base.cpp
     tracer.cpp
     configurable_tracer.cpp
     utilities.cpp
@@ -9,6 +10,8 @@ set(LIB_SOURCES
     jsoncpp.cpp
     configurer.cpp
     perf_estimator.cpp
+    value_registry.cpp
+    io-redirector.cpp
 )
 
 if(SCV_FOUND)
@@ -28,7 +31,36 @@ endif(SCV_FOUND)
 set(LIBRARY_NAME sc-components)
 
 # Define the library
-add_library(${LIBRARY_NAME} ${LIB_SOURCES})
-# Make sure the compiler can find include files for our library
-# when other libraries or executables link to sc_components
+if(ENABLE_SHARED)
+	add_library(${LIBRARY_NAME} SHARED ${LIB_SOURCES})
+	include_directories(${SystemC_INCLUDE_DIRS})	
+	include_directories(${CCI_INCLUDE_DIRS})
+	if(SCV_FOUND)   
+	    add_definitions(-DWITH_SCV)
+	    include_directories(${SCV_INCLUDE_DIRS})
+	endif()
+	set_target_properties(${LIBRARY_NAME} PROPERTIES
+	  VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
+	  FRAMEWORK FALSE
+	  PUBLIC_HEADER "${LIB_HEADERS}" # specify the public headers
+	)
+	target_link_libraries(${LIBRARY_NAME} ${CCI_LIBRARIES} )
+	if(SCV_FOUND)
+	    link_directories(${LIBRARY_NAME})
+	    target_link_libraries (${LIBRARY_NAME} ${SCV_LIBRARIES})
+	endif()
+	target_link_libraries(${LIBRARY_NAME} ${SystemC_LIBRARIES} )
+	# build a separate JSON linrary for the use in non-systemc based systems
+	add_library(jsoncpp jsoncpp.cpp)
+	FILE(GLOB JsonLibHeaders ../incl/json/*.h)
+	set_target_properties(jsoncpp PROPERTIES
+	  VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
+	  FRAMEWORK FALSE
+	  PUBLIC_HEADER "${JsonLibHeaders}" # specify the public headers
+	)
+	target_include_directories (jsoncpp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../incl)
+else()
+	add_library(${LIBRARY_NAME} ${LIB_SOURCES})
+endif()
 target_include_directories (sc-components PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../incl)
+

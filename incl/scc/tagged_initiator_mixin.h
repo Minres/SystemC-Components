@@ -23,7 +23,9 @@
 #include <tlm>
 
 namespace scc {
-
+/**
+ *
+ */
 template <typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types>
 class tagged_initiator_mixin : public BASE_TYPE {
 public:
@@ -34,12 +36,18 @@ public:
     using bw_interface_type = tlm::tlm_bw_transport_if<TYPES>;
 
 public:
+    /**
+     *
+     */
     tagged_initiator_mixin()
     : BASE_TYPE(sc_core::sc_gen_unique_name("tagged_initiator_socket"))
     , bw_if(this->name()) {
         this->m_export.bind(bw_if);
     }
-
+    /**
+     *
+     * @param n
+     */
     explicit tagged_initiator_mixin(const char *n)
     : BASE_TYPE(n)
     , bw_if(this->name()) {
@@ -100,7 +108,7 @@ private:
         }
 
         sync_enum_type nb_transport_bw(transaction_type &trans, phase_type &phase, sc_core::sc_time &t) {
-            if (m_transport_ptr) return m_transport_ptr(tag[0], trans, phase, t);
+            if (m_transport_ptr) return m_transport_ptr(tags[0], trans, phase, t);
             std::stringstream s;
             s << m_name << ": no transport callback registered";
             SC_REPORT_ERROR("/OSCI_TLM-2/tagged_initiator_mixin", s.str().c_str());
@@ -109,7 +117,7 @@ private:
 
         void invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) {
             if (m_invalidate_direct_mem_ptr) // forward call
-                m_invalidate_direct_mem_ptr(tag[1], start_range, end_range);
+                m_invalidate_direct_mem_ptr(tags[1], start_range, end_range);
         }
 
     private:
