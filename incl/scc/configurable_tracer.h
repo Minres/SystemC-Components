@@ -78,7 +78,7 @@ protected:
     //! the default for tracing if no attribute is configured
     const bool default_trace_enable;
     //! depth-first walk thru the design hierarchy and trace signals resp. call trace() function
-    void descend(const sc_core::sc_object *) override;
+    void descend(const sc_core::sc_object *, bool trace_all = false) override;
     //! check for existence of 'enableTracing' attribute and return value of default otherwise
     bool get_trace_enabled(const sc_core::sc_object *, bool = false);
     //! add the 'enableTracing' attribute to sc_module

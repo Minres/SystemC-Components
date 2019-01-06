@@ -49,7 +49,7 @@ scc::configurable_tracer::~configurable_tracer() {
     for (auto ptr : params) delete ptr;
 }
 
-void configurable_tracer::descend(const sc_core::sc_object *obj) {
+void configurable_tracer::descend(const sc_core::sc_object *obj, bool trace_all) {
     if (obj == this) return;
     const auto* tr = dynamic_cast<const scc::traceable*>(obj);
     auto trace_enable = tr?false:get_trace_enabled(obj, default_trace_enable);
@@ -73,9 +73,8 @@ void configurable_tracer::descend(const sc_core::sc_object *obj) {
         } else if (strcmp(kind, "sc_vector") == 0 || strcmp(kind, "sc_export") == 0) {
             continue;
         } else if (strcmp(kind, "sc_module") == 0) {
-            const auto* str = dynamic_cast<const scc::traceable*>(o);
-            if(str && get_trace_enabled(o, default_trace_enable))
-                str->trace(trf);
+            if(dynamic_cast<const scc::traceable*>(o) && get_trace_enabled(o, default_trace_enable))
+                o->trace(trf);
             descend(o);
         } else {
             auto obj_trace_enable = get_trace_enabled(o, default_trace_enable);

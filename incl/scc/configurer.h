@@ -23,6 +23,8 @@
 #include <json/json.h>
 
 namespace scc {
+
+void init_cci(std::string name = "Global Broker");
 /**
  * a class to configure a design hierarchy using a JSON input file
  */

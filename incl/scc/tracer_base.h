@@ -23,7 +23,7 @@ protected:
 
     virtual void try_trace_port(const sc_core::sc_object *);
 
-    virtual void descend(const sc_core::sc_object *);
+    virtual void descend(const sc_core::sc_object *, bool trace_all = false);
 
     sc_core::sc_trace_file *trf;
 };

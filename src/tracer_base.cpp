@@ -26,19 +26,23 @@
 using namespace sc_core;
 using namespace scc;
 
-void tracer_base::descend(const sc_object *obj) {
+void tracer_base::descend(const sc_object *obj, bool trace_all) {
+    if(obj==(sc_core::sc_object*)this) return;
     const char *name = obj->name();
-    const auto *t = dynamic_cast<const traceable *>(obj);
-    if (t) t->trace(trf);
     const char *kind = obj->kind();
     if (strcmp(kind, "sc_signal") == 0) {
         try_trace_signal(obj);
-    } else if (strcmp(kind, "sc_inout") == 0 || strcmp(kind, "sc_in") == 0 || strcmp(kind, "sc_port") == 0) {
+        return;
+    } else if (strcmp(kind, "sc_out") == 0 || strcmp(kind, "sc_inout") == 0 || strcmp(kind, "sc_in") == 0 || strcmp(kind, "sc_port") == 0) {
         try_trace_port(obj);
+        return;
     } else if (strcmp(kind, "tlm_signal") == 0) {
         obj->trace(trf);
-    }
-    for (auto o : obj->get_child_objects()) descend(o);
+        return;
+    } else  if ((strcmp(kind, "sc_module") == 0 && trace_all) || dynamic_cast<const traceable *>(obj))
+        obj->trace(trf);
+    for (auto o : obj->get_child_objects())
+        descend(o, trace_all);
 }
 
 #ifndef GEN_TRACE

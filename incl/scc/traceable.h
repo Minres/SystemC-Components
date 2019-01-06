@@ -17,27 +17,30 @@
 #ifndef _SCC_TRACABLE_H_
 #define _SCC_TRACABLE_H_
 
-namespace sc_core {
-class sc_trace_file;
-}
+#include <cci_cfg/cci_param_typed.h>
 
 namespace scc {
 /**
  * interface defining a traceable component, this overlaps with the trace function of sc_core::sc_object
- * in fact it is a signalling interface
+ * in fact it is a signaling interface
  */
 class traceable {
 public:
+    /**
+     * the constructor initializing the param
+     */
+    traceable():enableTracing("enableTracing", true){}
     /**
      * the destructor
      */
     virtual ~traceable() = default;
     /**
-     * trace the elements of the object to the trace file
      *
-     * @param trf the tracefile to use
      */
-    virtual void trace(sc_core::sc_trace_file *trf) const = 0;
+    bool is_trace_enabled(){ return enableTracing.get_value();}
+
+protected:
+    cci::cci_param<bool> enableTracing;
 };
 
 } /* namespace scc */
