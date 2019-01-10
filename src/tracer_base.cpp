@@ -21,6 +21,7 @@
  */
 
 #include "scc/tracer_base.h"
+#include <string.h>
 
 
 using namespace sc_core;
