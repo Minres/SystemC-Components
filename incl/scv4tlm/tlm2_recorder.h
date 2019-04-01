@@ -29,28 +29,73 @@
 #include <vector>
 
 namespace scv4tlm {
-
 /*! \brief The TLM2 transaction extensions recorder interface
  *
  * This interface is used by the TLM2 transaction recorder. It can be used to
  * register custom recorder functionality
  * to also record the payload extensions
  */
-template <typename TYPES = tlm::tlm_base_protocol_types> class tlm2_extensions_recording_if {
+template <typename TYPES = tlm::tlm_base_protocol_types>
+class tlm2_extensions_recording_if {
 public:
     /*! \brief recording attributes in extensions at the beginning, it is intended
      * to be overload as it does nothing
      *
      */
-    virtual void recordBeginTx(scv_tr_handle &handle, typename TYPES::tlm_payload_type &payload) = 0;
+    virtual void recordBeginTx(scv_tr_handle &handle, typename TYPES::tlm_payload_type &trans) = 0;
 
     /*! \brief recording attributes in extensions at the end, it is intended to be
      * overload as it does nothing
      *
      */
-    virtual void recordEndTx(scv_tr_handle &handle, typename TYPES::tlm_payload_type &payload) = 0;
+    virtual void recordEndTx(scv_tr_handle &handle, typename TYPES::tlm_payload_type &trans) = 0;
 
     virtual ~tlm2_extensions_recording_if() = default;
+};
+/*! \brief The TLM2 transaction extensions recorder registry
+ *
+ * This registry is used by the TLM2 transaction recorder. It can be used to
+ * register custom recorder functionality
+ * to also record the payload extensions
+ */
+template <typename TYPES = tlm::tlm_base_protocol_types>
+class tlm2_extension_recording_registry {
+public:
+    static tlm2_extension_recording_registry& inst(){
+        static tlm2_extension_recording_registry reg;
+        return reg;
+    }
+
+    void register_ext_rec(size_t id, tlm2_extensions_recording_if<TYPES>* ext){
+        if(id>=ext_rec.size()) ext_rec.resize(id+1);
+        if(ext_rec[id]) delete ext_rec[id];
+        ext_rec[id]=ext;
+    }
+
+    const std::vector<tlm2_extensions_recording_if<TYPES>*>& get(){
+        return ext_rec;
+    }
+
+    inline void recordBeginTx(size_t id, scv_tr_handle &handle, typename TYPES::tlm_payload_type &trans){
+       if(ext_rec.size()>id && ext_rec[id])
+           ext_rec[id]->recordBeginTx(handle, trans);
+    }
+
+    /*! \brief recording attributes in extensions at the end, it is intended to be
+     * overload as it does nothing
+     *
+     */
+    inline void recordEndTx(size_t id, scv_tr_handle &handle, typename TYPES::tlm_payload_type &trans){
+        if(ext_rec.size()>id && ext_rec[id])
+            ext_rec[id]->recordEndTx(handle, trans);
+    }
+
+private:
+    tlm2_extension_recording_registry()=default;
+    ~tlm2_extension_recording_registry(){
+        for(auto& ext: ext_rec) delete(ext);
+    }
+    std::vector<tlm2_extensions_recording_if<TYPES>*>ext_rec;
 };
 /*! \brief The TLM2 transaction recorder
  *
@@ -64,7 +109,7 @@ template <typename TYPES = tlm::tlm_base_protocol_types>
 class tlm2_recorder : public virtual tlm::tlm_fw_transport_if<TYPES>,
                       public virtual tlm::tlm_bw_transport_if<TYPES>,
                       public sc_core::sc_object {
-    const std::regex pat{"_rec$"};
+    const std::regex regex_pat{"_rec$"};
 
 public:
     SC_HAS_PROCESS(tlm2_recorder<TYPES>);// NOLINT
@@ -121,8 +166,8 @@ public:
     , dmi_streamHandle(NULL)
     , dmi_trGetHandle(NULL)
     , dmi_trInvalidateHandle(NULL)
-    , extensionRecording(NULL)
-    , fixed_basename(regex_replace(sc_core::sc_object::name(), pat, "")) {
+//    , fixed_basename(std::regex_replace(std::string(sc_core::sc_object::name()), regex_pat, std::string(""))) {
+    , fixed_basename(sc_core::sc_object::name()) {
         this->add_attribute(enableTracing);
         this->add_attribute(enableTimed);
     }
@@ -140,7 +185,6 @@ public:
         delete dmi_streamHandle;
         delete dmi_trGetHandle;
         delete dmi_trInvalidateHandle;
-        delete extensionRecording;
     }
 
     // TLM-2.0 interface methods for initiator and target sockets, surrounded with
@@ -207,10 +251,6 @@ public:
      * recording is bypassed
      */
     const bool isRecordingEnabled() const { return m_db != NULL && enableTracing.value; }
-
-    void setExtensionRecording(tlm2_extensions_recording_if<TYPES> *extensionRecording) {
-        this->extensionRecording = extensionRecording;
-    }
 
 private:
     //! \brief the class to hold the information to be recorded on the timed
@@ -313,13 +353,13 @@ private:
     //! non-blocking transaction recording stream handle
     std::vector<scv_tr_stream *> nb_streamHandleTimed;
     //! transaction generator handle for forward non-blocking transactions
-    std::vector<scv_tr_generator<tlm::tlm_phase_enum, tlm::tlm_sync_enum> *> nb_fw_trHandle;
+    std::vector<scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum> *> nb_fw_trHandle;
     //! transaction generator handle for forward non-blocking transactions with
     //! annotated delays
     std::vector<scv_tr_generator<> *> nb_txReqHandle;
     map<uint64, scv_tr_handle> nbtx_req_handle_map;
     //! transaction generator handle for backward non-blocking transactions
-    std::vector<scv_tr_generator<tlm::tlm_phase_enum, tlm::tlm_sync_enum> *> nb_bw_trHandle;
+    std::vector<scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum> *> nb_bw_trHandle;
     //! transaction generator handle for backward non-blocking transactions with
     //! annotated delays
     std::vector<scv_tr_generator<> *> nb_txRespHandle;
@@ -330,8 +370,6 @@ private:
     //! transaction generator handle for DMI transactions
     scv_tr_generator<tlm_gp_data, tlm_dmi_data> *dmi_trGetHandle;
     scv_tr_generator<sc_dt::uint64, sc_dt::uint64> *dmi_trInvalidateHandle;
-
-    tlm2_extensions_recording_if<TYPES> *extensionRecording;
 
     const std::string fixed_basename;
 };
@@ -376,13 +414,17 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type &trans, 
         b_timed_peq.notify(*req, tlm::BEGIN_REQ, delay);
     }
 
-    if (extensionRecording) extensionRecording->recordBeginTx(h, trans);
+    for(auto& extensionRecording: scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
+        if (extensionRecording) extensionRecording->recordBeginTx(h, trans);
     tlm_recording_extension *preExt = NULL;
 
     trans.get_extension(preExt);
     if (preExt == NULL) { // we are the first recording this transaction
         preExt = new tlm_recording_extension(h, this);
-        trans.set_extension(preExt);
+        if(trans.has_mm())
+            trans.set_auto_extension(preExt);
+        else
+            trans.set_extension(preExt);
     } else {
         h.add_relation(rel_str(PREDECESSOR_SUCCESSOR), preExt->txHandle);
     }
@@ -391,11 +433,12 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type &trans, 
     if (trans.get_command() == tlm::TLM_WRITE_COMMAND && tgd.data_length < 8)
         h.record_attribute("trans.data_value", tgd.get_data_value());
     fw_port->b_transport(trans, delay);
-    trans.get_extension(preExt);
-    if (preExt->get_creator() == this) {
+    if (preExt && preExt->get_creator() == this) {
         // clean-up the extension if this is the original creator
-        delete preExt;
-        trans.set_extension((tlm_recording_extension *)NULL);
+        if(!trans.has_mm()){
+            delete preExt;
+            trans.set_extension((tlm_recording_extension *)NULL);
+        }
     } else {
         preExt->txHandle = preTx;
     }
@@ -404,7 +447,8 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type &trans, 
     h.record_attribute("trans", tgd);
     if (trans.get_command() == tlm::TLM_READ_COMMAND && tgd.data_length < 8)
         h.record_attribute("trans.data_value", tgd.get_data_value());
-    if (extensionRecording) extensionRecording->recordEndTx(h, trans);
+    for(auto& extensionRecording: scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
+        if (extensionRecording) extensionRecording->recordEndTx(h, trans);
     // End the transaction
     b_trHandle[trans.get_command()]->end_transaction(h, delay.value(), sc_time_stamp());
     // and now the stuff for the timed tx
@@ -466,33 +510,35 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
     // initialize stream and generator if not yet done
     if (nb_streamHandle[FW] == NULL) {
         nb_streamHandle[FW] = new scv_tr_stream((fixed_basename + "_nb_fw").c_str(), "TRANSACTOR", m_db);
-        nb_fw_trHandle[tlm::TLM_READ_COMMAND] = new scv_tr_generator<tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
+        nb_fw_trHandle[tlm::TLM_READ_COMMAND] = new scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
             "read", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
-        nb_fw_trHandle[tlm::TLM_WRITE_COMMAND] = new scv_tr_generator<tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
+        nb_fw_trHandle[tlm::TLM_WRITE_COMMAND] = new scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
             "write", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
-        nb_fw_trHandle[tlm::TLM_IGNORE_COMMAND] = new scv_tr_generator<tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
+        nb_fw_trHandle[tlm::TLM_IGNORE_COMMAND] = new scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
             "ignore", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
     }
     /*************************************************************************
      * prepare recording
      *************************************************************************/
     // Get a handle for the new transaction
-    scv_tr_handle h = nb_fw_trHandle[trans.get_command()]->begin_transaction((tlm::tlm_phase_enum)(unsigned)phase);
+    scv_tr_handle h = nb_fw_trHandle[trans.get_command()]->begin_transaction((scv4tlm::tlm_phase_enum)(unsigned)phase);
     tlm_recording_extension *preExt = NULL;
     trans.get_extension(preExt);
-    if (phase == tlm::BEGIN_REQ && preExt == NULL) { // we are the first recording this transaction
+    if (preExt == NULL) { // we are the first recording this transaction
         preExt = new tlm_recording_extension(h, this);
-        trans.set_extension(preExt);
-    } else if (preExt != NULL) {
+        if(trans.has_mm())
+            trans.set_auto_extension(preExt);
+        else
+            trans.set_extension(preExt);
+    } else {
         // link handle if we have a predecessor
         h.add_relation(rel_str(PREDECESSOR_SUCCESSOR), preExt->txHandle);
-    } else {
-        sc_assert(preExt != NULL && "ERROR on forward path in phase other than tlm::BEGIN_REQ");
     }
     // update the extension
-    preExt->txHandle = h;
+    if(preExt) preExt->txHandle = h;
     h.record_attribute("delay", delay.to_string());
-    if (extensionRecording) extensionRecording->recordBeginTx(h, trans);
+    for(auto& extensionRecording: scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
+        if (extensionRecording) extensionRecording->recordBeginTx(h, trans);
     tlm_gp_data tgd(trans);
     /*************************************************************************
      * do the timed notification
@@ -519,15 +565,18 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
         for (size_t i = 0; i < tgd.data_length; i++) buf += (*tgd.data) << i * 8;
         h.record_attribute("trans.data_value", buf);
     }
-    if (extensionRecording) extensionRecording->recordEndTx(h, trans);
-    h.record_attribute("tlm_phase[return_path]", (tlm::tlm_phase_enum)(unsigned)phase);
+    for(auto& extensionRecording: scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
+        if (extensionRecording) extensionRecording->recordEndTx(h, trans);
+    h.record_attribute("tlm_phase[return_path]", (scv4tlm::tlm_phase_enum)(unsigned)phase);
     h.record_attribute("delay[return_path]", delay.to_string());
     // get the extension and free the memory if it was mine
     if (status == tlm::TLM_COMPLETED || (status == tlm::TLM_ACCEPTED && phase == tlm::END_RESP)) {
         trans.get_extension(preExt);
-        if (preExt->get_creator() == this) {
-            delete preExt;
-            trans.set_extension((tlm_recording_extension *)NULL);
+        if (preExt && preExt->get_creator() == this) {
+            if(!trans.has_mm()){
+                delete preExt;
+                trans.set_extension((tlm_recording_extension *)NULL);
+            }
         }
         /*************************************************************************
          * do the timed notification if req. finished here
@@ -557,27 +606,30 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
     if (!isRecordingEnabled()) return bw_port->nb_transport_bw(trans, phase, delay);
     if (nb_streamHandle[BW] == NULL) {
         nb_streamHandle[BW] = new scv_tr_stream((fixed_basename + "_nb_bw").c_str(), "TRANSACTOR", m_db);
-        nb_bw_trHandle[0] = new scv_tr_generator<tlm::tlm_phase_enum, tlm::tlm_sync_enum>("read", *nb_streamHandle[BW],
-                                                                                          "tlm_phase", "tlm_sync");
-        nb_bw_trHandle[1] = new scv_tr_generator<tlm::tlm_phase_enum, tlm::tlm_sync_enum>("write", *nb_streamHandle[BW],
-                                                                                          "tlm_phase", "tlm_sync");
-        nb_bw_trHandle[2] = new scv_tr_generator<tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
-            "ignore", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
+        nb_bw_trHandle[tlm::TLM_READ_COMMAND] = new scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
+                "read", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
+        nb_bw_trHandle[tlm::TLM_WRITE_COMMAND] = new scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
+                "write", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
+        nb_bw_trHandle[tlm::TLM_IGNORE_COMMAND] = new scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
+                "ignore", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
     }
     /*************************************************************************
      * prepare recording
      *************************************************************************/
     tlm_recording_extension *preExt = NULL;
     trans.get_extension(preExt);
-    sc_assert(preExt != NULL && "ERROR on backward path");
+    //sc_assert(preExt != NULL && "ERROR on backward path");
     // Get a handle for the new transaction
-    scv_tr_handle h = nb_bw_trHandle[trans.get_command()]->begin_transaction((tlm::tlm_phase_enum)(unsigned)phase);
+    scv_tr_handle h = nb_bw_trHandle[trans.get_command()]->begin_transaction((scv4tlm::tlm_phase_enum)(unsigned)phase);
     // link handle if we have a predecessor and that's not ourself
-    h.add_relation(rel_str(PREDECESSOR_SUCCESSOR), preExt->txHandle);
-    // and set the extension handle to this transaction
-    preExt->txHandle = h;
+    if(preExt) {
+        h.add_relation(rel_str(PREDECESSOR_SUCCESSOR), preExt->txHandle);
+        // and set the extension handle to this transaction
+        preExt->txHandle = h;
+    }
     h.record_attribute("delay", delay.to_string());
-    if (extensionRecording) extensionRecording->recordBeginTx(h, trans);
+    for(auto& extensionRecording: scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
+        if (extensionRecording) extensionRecording->recordBeginTx(h, trans);
     tlm_gp_data tgd(trans);
     /*************************************************************************
      * do the timed notification
@@ -604,19 +656,21 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
         for (size_t i = 0; i < tgd.data_length; i++) buf += (*tgd.data) << i * 8;
         h.record_attribute("trans.data_value", buf);
     }
-    if (extensionRecording) extensionRecording->recordEndTx(h, trans);
+    for(auto& extensionRecording: scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
+        if (extensionRecording) extensionRecording->recordEndTx(h, trans);
     // phase and delay are already recorded
-    h.record_attribute("phase_upd", (tlm::tlm_phase_enum)(unsigned)phase);
-    h.record_attribute("delay_upd", delay.to_string());
+    h.record_attribute("tlm_phase[return_path]", (scv4tlm::tlm_phase_enum)(unsigned)phase);
+    h.record_attribute("delay[return_path]", delay.to_string());
     // End the transaction
     nb_bw_trHandle[trans.get_command()]->end_transaction(h, status);
     if (status == tlm::TLM_COMPLETED || (status == tlm::TLM_UPDATED && phase == tlm::END_RESP)) {
         // the transaction is finished
-        trans.get_extension(preExt);
-        if (preExt->get_creator() == this) {
+        if (preExt && preExt->get_creator() == this) {
+            if(!trans.has_mm()){
             // clean-up the extension if this is the original creator
             delete preExt;
             trans.set_extension((tlm_recording_extension *)NULL);
+            }
         }
         /*************************************************************************
          * do the timed notification if req. finished here
@@ -702,7 +756,8 @@ void tlm2_recorder<TYPES>::nbtx_cb(tlm_recording_payload &rec_parts, const typen
         }
         break;
     default:
-        sc_assert(!"phase not supported!");
+        //sc_assert(!"phase not supported!");
+        break;
     }
     rec_parts.release();
     return;
