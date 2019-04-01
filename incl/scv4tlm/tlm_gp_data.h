@@ -155,5 +155,9 @@ public:
     sc_dt::uint64 dmi_read_latency{0};
     sc_dt::uint64 dmi_write_latency{0};
 };
+
+enum tlm_phase_enum { UNINITIALIZED_PHASE=0, BEGIN_REQ=1, END_REQ, BEGIN_RESP, END_RESP,
+    CUSTOM1, CUSTOM2, CUSTOM3, CUSTOM4, CUSTOM5, CUSTOM6};
+
 }
 #endif /* TLM_GP_DATA_H_ */

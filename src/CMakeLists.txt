@@ -2,17 +2,21 @@ FILE(GLOB LibHeaders ../incl/*/*.h)
 set(LIB_HEADERS ${LibHeaders} )
 set(LIB_SOURCES
     sc_logic_7.cpp
-    tracer_base.cpp
-    tracer.cpp
-    configurable_tracer.cpp
     utilities.cpp
     report.cpp
-    jsoncpp.cpp
-    configurer.cpp
     perf_estimator.cpp
-    value_registry.cpp
     io-redirector.cpp
 )
+if(CCI_FOUND)
+    set(LIB_SOURCES ${LIB_SOURCES} 
+	    tracer_base.cpp
+	    tracer.cpp
+	    configurable_tracer.cpp
+	    configurer.cpp
+    	jsoncpp.cpp
+    	value_registry.cpp
+    )
+endif()
 
 if(SCV_FOUND)
     if(ZLIB_FOUND)

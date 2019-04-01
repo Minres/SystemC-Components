@@ -20,7 +20,7 @@
 #ifdef WITH_SCV
 #include "tlm2_recorder.h"
 #endif
-#include <tlm.h>
+#include <tlm>
 
 namespace scv4tlm {
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types, int N = 1
@@ -70,7 +70,7 @@ public:
                              POL
 #endif
                              >()
-    , recorder() {
+    , recorder(gen_name(this->name(), "tx").c_str()) {
     }
 
     explicit tlm_rec_target_socket(const char *name)
@@ -80,7 +80,7 @@ public:
                              POL
 #endif
                              >(name)
-    , recorder(gen_name(name, "tx_recording").c_str()) {
+    , recorder(gen_name(name, "tx").c_str()) {
     }
 
     virtual ~tlm_rec_target_socket() = default;
@@ -116,7 +116,9 @@ public:
     //
     bw_interface_type *operator->() { return &recorder; }
 
-    scv4tlm::tlm2_recorder<TYPES> &get_recorder() { return recorder; }
+    void setExtensionRecording(tlm2_extensions_recording_if<TYPES> *extensionRecording) {
+        recorder.setExtensionRecording(extensionRecording);
+    }
 
 protected:
     scv4tlm::tlm2_recorder<TYPES> recorder;

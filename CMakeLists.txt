@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.3)
+cmake_minimum_required(VERSION 2.8)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../cmake) # main (top) cmake dir
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
 
@@ -27,8 +27,8 @@ endif()
 if(CCI_FOUND)
     include_directories(${CCI_INCLUDE_DIRS})
     link_directories(${CCI_LIBRARY_DIRS})
-else()
-    message( FATAL_ERROR "SystemC CCI library not found." )
+#else()
+#    message( FATAL_ERROR "SystemC CCI library not found." )
 endif()
 
 if(ZLIB_FOUND)

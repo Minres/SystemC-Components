@@ -14,8 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _UTIL_LOGGING_H_
-#define _UTIL_LOGGING_H_
+#pragma once
 
 #include <cassert>
 #include <cstdio>
@@ -29,13 +28,13 @@
 #include <vector>
 
 //! log level definitions
-#define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE)
+#define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE) L(DBGTRACE)
 #define DO_DESCRIPTION(e) #e,
 #define DO_ENUM(e) e,
 
 namespace logging {
 //! array holding string representations of log levels
-static std::array<const char *const, 7> buffer = {{LEVELS(DO_DESCRIPTION)}};
+static std::array<const char *const, 8> buffer = {{LEVELS(DO_DESCRIPTION)}};
 //! enum defining the log levels
 enum log_level { LEVELS(DO_ENUM) };
 /**
@@ -45,7 +44,7 @@ enum log_level { LEVELS(DO_ENUM) };
  */
 inline log_level as_log_level(int logLevel) {
     assert(logLevel >= NONE && logLevel <= TRACE);
-    std::array<const log_level, 7> m = {{NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE}};
+    std::array<const log_level, 8> m = {{NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE, DBGTRACE}};
     return m[logLevel];
 }
 /**
@@ -82,7 +81,7 @@ public:
         os << std::endl;
         T::output(os.str());
         // TODO: use a more specific exception
-        if (get_last_log_level() == FATAL) abort();
+        if (get_last_log_level() == FATAL && abort_on_fatal()) throw std::runtime_error(os.str());
     }
     /**
      * get the underlying ostringstream for a certain log level and category
@@ -96,7 +95,7 @@ public:
         if (print_severity()) {
             os << std::setw(7) << std::left << to_string(level);
             if (strlen(category)) os << "[" << category << "]";
-            os << ": ";
+            os << ": "<<std::internal;
         }
         get_last_log_level() = level;
         return os;
@@ -109,6 +108,15 @@ public:
     static log_level &reporting_level() {
         static log_level reportingLevel = WARNING;
         return reportingLevel;
+    }
+    /**
+     * get a reference to the abort on fatal flag
+     *
+     * @return the logging level
+     */
+    static bool &abort_on_fatal() {
+        static bool flag = false;
+        return flag;
     }
     /**
      * translate a lg level to a string
@@ -262,7 +270,7 @@ template <typename T> std::ostream &operator<<(std::ostream &stream, const std::
 
 #ifndef NDEBUG
 //! check only in debug mode
-#define ASSERT(condition, message)                                                                                     \
+#define SCCASSERT(condition, message)                                                                                     \
     do {                                                                                                               \
         if (!(condition)) {                                                                                            \
             logging::Logger().Get(logging::fatal) << "Assertion `" #condition "` failed in " << __FILE__ << " line "   \
@@ -271,7 +279,7 @@ template <typename T> std::ostream &operator<<(std::ostream &stream, const std::
         }                                                                                                              \
     } while (false)
 #else
-#define ASSERT(condition, message)                                                                                     \
+#define SCCASSERT(condition, message)                                                                                     \
     do {                                                                                                               \
     } while (false)
 #endif
@@ -285,4 +293,3 @@ template <typename T> std::ostream &operator<<(std::ostream &stream, const std::
         }                                                                                                              \
     } while (false)
 
-#endif /* _UTIL_LOGGING_H_ */

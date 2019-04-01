@@ -51,14 +51,20 @@ public:
     }
 };
 
-template <> class scv_extensions<tlm::tlm_phase_enum> : public scv_enum_base<tlm::tlm_phase_enum> {
+template <> class scv_extensions<scv4tlm::tlm_phase_enum> : public scv_enum_base<scv4tlm::tlm_phase_enum> {
 public:
-    SCV_ENUM_CTOR(tlm::tlm_phase_enum) {
-        SCV_ENUM(tlm::UNINITIALIZED_PHASE);
-        SCV_ENUM(tlm::BEGIN_REQ);
-        SCV_ENUM(tlm::END_REQ);
-        SCV_ENUM(tlm::BEGIN_RESP);
-        SCV_ENUM(tlm::END_RESP);
+    SCV_ENUM_CTOR(scv4tlm::tlm_phase_enum) {
+        SCV_ENUM(scv4tlm::UNINITIALIZED_PHASE);
+        SCV_ENUM(scv4tlm::BEGIN_REQ);
+        SCV_ENUM(scv4tlm::END_REQ);
+        SCV_ENUM(scv4tlm::BEGIN_RESP);
+        SCV_ENUM(scv4tlm::END_RESP);
+        SCV_ENUM(scv4tlm::CUSTOM1);
+        SCV_ENUM(scv4tlm::CUSTOM2);
+        SCV_ENUM(scv4tlm::CUSTOM3);
+        SCV_ENUM(scv4tlm::CUSTOM4);
+        SCV_ENUM(scv4tlm::CUSTOM5);
+        SCV_ENUM(scv4tlm::CUSTOM6);
     }
 };
 

@@ -1,4 +1,3 @@
-#include <array>
 /*******************************************************************************
  * Copyright 2017, 2018 MINRES Technologies GmbH
  *
@@ -21,12 +20,35 @@
  *      Author: ubuntu
  */
 
-#include "scc/report.h"
+#include <scc/report.h>
+#include <tuple>
+#include <array>
 
 using namespace sc_core;
 using namespace logging;
 
 namespace {
+std::tuple<sc_core::sc_time::value_type, sc_core::sc_time_unit> get_tuple(const sc_core::sc_time& t){
+    auto val = t.value();
+    auto tr  = (uint64_t)(sc_core::sc_time::from_value(1).to_seconds()*1E15);
+    auto scale = 0U;
+    while( ( tr % 10 ) == 0 ) {
+        tr /= 10;
+        scale++;
+    }
+    sc_assert( tr == 1 );
+
+    auto tu = scale / 3;
+    while( tu < SC_SEC && ( val % 10 ) == 0 ) {
+        val /= 10;
+        scale++;
+        tu += ( 0 == ( scale % 3 ) );
+    }
+    for( scale %= 3; scale != 0 ; scale-- )
+        val *= 10;
+    return std::make_tuple(val, static_cast<sc_time_unit>( tu ));
+}
+
 std::string time2string(const sc_core::sc_time &t) {
     const std::array<const char *, 6> time_units{"fs", "ps", "ns", "us", "ms", "s "};
     const std::array<uint64_t, 6> multiplier{1ULL,
@@ -36,12 +58,12 @@ std::string time2string(const sc_core::sc_time &t) {
                                              1000ULL * 1000 * 1000 * 1000,
                                              1000ULL * 1000 * 1000 * 1000 * 1000};
     std::ostringstream oss;
-    const sc_core::sc_time_tuple tt{t};
-    const auto val = tt.value();
-    if (!val) {
+    if (!t.value()) {
         oss << "0 s";
     } else {
-        const unsigned scale = tt.unit();
+        const auto tt = get_tuple(t);
+        const auto val = std::get<0>(tt);
+        const auto scale = std::get<1>(tt);
         const auto fs_val = val * multiplier[scale];
         for (int j = multiplier.size() - 1; j >= scale; --j) {
             if (fs_val > multiplier[j]) {
@@ -94,6 +116,42 @@ void report_handler(const sc_report &rep, const sc_actions &actions) {
     if (actions & SC_ABORT) abort();
     if (actions & SC_THROW) throw rep;
 }
+
+class log_stream_buf: public std::stringbuf {
+public:
+    log_stream_buf(std::ostream& os, logging::log_level level):os(os), level(level){
+        old_buf=os.rdbuf(this); //save and redirect
+    }
+    ~log_stream_buf(){
+        os.rdbuf(old_buf); // restore
+    }
+    void reset(){
+        os.rdbuf(old_buf); // restore
+        old_buf=nullptr;
+    }
+protected:
+    std::streamsize xsputn(const char_type* s, std::streamsize n) override {
+        auto sz = std::stringbuf::xsputn(s, n);
+        if (s[n-1]=='\n'){
+            if(logging::INFO <= Log<Output2FILE<STDIO>>::reporting_level() && Output2FILE<STDIO>::stream()){
+                auto timestr = time2string(sc_core::sc_time_stamp());
+                std::istringstream buf(str());
+                std::string line;
+                while(getline(buf, line)) {
+                    Log<Output2FILE<STDIO>>().get(logging::INFO, "") << "[" << std::setw(20) << timestr << "] "<<line;
+                }
+            }
+            str(std::string(""));
+            //setp(pbase(), epptr());
+        }
+        return sz;
+    }
+    std::ostream& os;
+    logging::log_level level;
+    std::streambuf* old_buf;
+};
+log_stream_buf cout_redirect(std::cout, logging::INFO);
+log_stream_buf cerr_redirect(std::cerr, logging::ERROR);
 }
 
 void scc::init_logging(logging::log_level level, bool print_time) {
@@ -105,8 +163,13 @@ void scc::init_logging(logging::log_level level, bool print_time) {
                                           SC_HIGH,   // logging::DEBUG
                                           SC_FULL,   // logging::TRACE
                                           SC_DEBUG}; // logging::TRACE+1
+    LOGGER(DEFAULT)::reporting_level() = level;
     LOGGER(SystemC)::reporting_level() = level;
     LOGGER(SystemC)::print_time() = print_time;
+    LOGGER(SystemC)::abort_on_fatal() = false;
     sc_report_handler::set_verbosity_level(verbosity[level]);
     sc_report_handler::set_handler(report_handler);
+    LOGGER(STDIO)::reporting_level() = level;
+    LOGGER(STDIO)::print_time() = print_time;
+    LOGGER(STDIO)::abort_on_fatal() = false;
 }

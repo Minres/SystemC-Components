@@ -20,7 +20,7 @@
 #ifdef WITH_SCV
 #include "tlm2_recorder.h"
 #endif
-#include <tlm.h>
+#include <tlm>
 
 namespace scv4tlm {
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types, int N = 1
@@ -79,7 +79,7 @@ public:
                                 POL
 #endif
                                 >(name)
-    , recorder(gen_name(name, "tx_recording").c_str()) {
+    , recorder(gen_name(name, "tx").c_str()) {
     }
 
     virtual ~tlm_rec_initiator_socket() {}
