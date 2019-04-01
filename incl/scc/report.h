@@ -26,6 +26,7 @@
 
 namespace logging {
 class SystemC {};
+class STDIO {};
 }
 namespace scc {
 
@@ -103,6 +104,16 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
         return *this;
     }
     /**
+     * set the category of the log entry
+     *
+     * @param t
+     * @return
+     */
+    inline ScLogger &type(const std::string& t) {
+        this->t = const_cast<char *>(t.c_str());
+        return *this;
+    }
+    /**
      * return the underlying ostringstream
      *
      * @return the output stream collecting the log message
@@ -140,6 +151,19 @@ protected:
 //! macro for fatal message output
 #define SCFATAL(...)                                                                                                   \
     ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+
+inline std::string padded(std::string str, size_t width, bool show_ellipsis=true) {
+    assert(width>7);
+    if (str.length() > width) {
+        if (show_ellipsis){
+            auto pos = str.size()-(width-6);
+            return str.substr(0, 3) + "..."+str.substr(pos, str.size()-pos);
+        } else
+            return str.substr(0, width);
+    } else {
+        return str+std::string(width-str.size(), ' ');
+    }
+}
 }
 
 #endif /* _SYSC_REPORT_H_ */
