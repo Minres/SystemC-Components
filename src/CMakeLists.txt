@@ -35,36 +35,33 @@ endif(SCV_FOUND)
 set(LIBRARY_NAME sc-components)
 
 # Define the library
-if(ENABLE_SHARED)
-	add_library(${LIBRARY_NAME} SHARED ${LIB_SOURCES})
-	include_directories(${SystemC_INCLUDE_DIRS})	
-	include_directories(${CCI_INCLUDE_DIRS})
-	if(SCV_FOUND)   
-	    add_definitions(-DWITH_SCV)
-	    include_directories(${SCV_INCLUDE_DIRS})
-	endif()
-	set_target_properties(${LIBRARY_NAME} PROPERTIES
-	  VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
-	  FRAMEWORK FALSE
-	  PUBLIC_HEADER "${LIB_HEADERS}" # specify the public headers
-	)
+add_library(${LIBRARY_NAME} ${LIB_SOURCES})
+target_include_directories (${LIBRARY_NAME} PUBLIC ${SystemC_INCLUDE_DIRS})	
+target_include_directories (${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../incl)
+if(CCI_FOUND)
+	target_include_directories (${LIBRARY_NAME} PUBLIC ${CCI_INCLUDE_DIRS})
 	target_link_libraries(${LIBRARY_NAME} ${CCI_LIBRARIES} )
-	if(SCV_FOUND)
-	    link_directories(${LIBRARY_NAME})
-	    target_link_libraries (${LIBRARY_NAME} ${SCV_LIBRARIES})
-	endif()
-	target_link_libraries(${LIBRARY_NAME} ${SystemC_LIBRARIES} )
-	# build a separate JSON linrary for the use in non-systemc based systems
-	add_library(jsoncpp jsoncpp.cpp)
-	FILE(GLOB JsonLibHeaders ../incl/json/*.h)
-	set_target_properties(jsoncpp PROPERTIES
-	  VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
-	  FRAMEWORK FALSE
-	  PUBLIC_HEADER "${JsonLibHeaders}" # specify the public headers
-	)
-	target_include_directories (jsoncpp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../incl)
-else()
-	add_library(${LIBRARY_NAME} ${LIB_SOURCES})
 endif()
-target_include_directories (sc-components PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../incl)
+if(SCV_FOUND)   
+    add_definitions(-DWITH_SCV)
+	target_include_directories (${LIBRARY_NAME} PUBLIC ${SCV_INCLUDE_DIRS})
+    target_link_libraries (${LIBRARY_NAME} ${SCV_LIBRARIES})
+    target_link_libraries (${LIBRARY_NAME} fmt)
+endif()
+set_target_properties(${LIBRARY_NAME} PROPERTIES
+  VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
+  FRAMEWORK FALSE
+  PUBLIC_HEADER "${LIB_HEADERS}" # specify the public headers
+)
+target_link_libraries(${LIBRARY_NAME} ${SystemC_LIBRARIES} )
+
+# build a separate JSON linrary for the use in non-systemc based systems
+add_library(jsoncpp jsoncpp.cpp)
+FILE(GLOB JsonLibHeaders ../incl/json/*.h)
+set_target_properties(jsoncpp PROPERTIES
+  VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
+  FRAMEWORK FALSE
+  PUBLIC_HEADER "${JsonLibHeaders}" # specify the public headers
+)
+target_include_directories (jsoncpp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../incl)
 
