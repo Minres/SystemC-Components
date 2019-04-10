@@ -116,42 +116,35 @@ void report_handler(const sc_report &rep, const sc_actions &actions) {
     if (actions & SC_ABORT) abort();
     if (actions & SC_THROW) throw rep;
 }
+}
 
-class log_stream_buf: public std::stringbuf {
-public:
-    log_stream_buf(std::ostream& os, logging::log_level level):os(os), level(level){
-        old_buf=os.rdbuf(this); //save and redirect
-    }
-    ~log_stream_buf(){
-        os.rdbuf(old_buf); // restore
-    }
-    void reset(){
-        os.rdbuf(old_buf); // restore
-        old_buf=nullptr;
-    }
-protected:
-    std::streamsize xsputn(const char_type* s, std::streamsize n) override {
-        auto sz = std::stringbuf::xsputn(s, n);
-        if (s[n-1]=='\n'){
-            if(logging::INFO <= Log<Output2FILE<STDIO>>::reporting_level() && Output2FILE<STDIO>::stream()){
-                auto timestr = time2string(sc_core::sc_time_stamp());
-                std::istringstream buf(str());
-                std::string line;
-                while(getline(buf, line)) {
-                    Log<Output2FILE<STDIO>>().get(logging::INFO, "") << "[" << std::setw(20) << timestr << "] "<<line;
-                }
+scc::stream_redirection::stream_redirection(std::ostream& os, logging::log_level level):os(os), level(level){
+    old_buf=os.rdbuf(this); //save and redirect
+}
+
+scc::stream_redirection::~stream_redirection(){
+    os.rdbuf(old_buf); // restore
+}
+
+void scc::stream_redirection::reset(){
+    os.rdbuf(old_buf); // restore
+    old_buf=nullptr;
+}
+
+std::streamsize scc::stream_redirection::xsputn(const char_type* s, std::streamsize n) {
+    auto sz = std::stringbuf::xsputn(s, n);
+    if (s[n-1]=='\n'){
+        if(logging::INFO <= Log<Output2FILE<STDIO>>::reporting_level() && Output2FILE<STDIO>::stream()){
+            auto timestr = time2string(sc_core::sc_time_stamp());
+            std::istringstream buf(str());
+            std::string line;
+            while(getline(buf, line)) {
+                Log<Output2FILE<STDIO>>().get(logging::INFO, "") << "[" << std::setw(20) << timestr << "] "<<line;
             }
-            str(std::string(""));
-            //setp(pbase(), epptr());
         }
-        return sz;
+        str(std::string(""));
     }
-    std::ostream& os;
-    logging::log_level level;
-    std::streambuf* old_buf;
-};
-log_stream_buf cout_redirect(std::cout, logging::INFO);
-log_stream_buf cerr_redirect(std::cerr, logging::ERROR);
+    return sz;
 }
 
 void scc::init_logging(logging::log_level level, bool print_time) {
@@ -162,14 +155,17 @@ void scc::init_logging(logging::log_level level, bool print_time) {
                                           SC_MEDIUM, // Logging::INFO
                                           SC_HIGH,   // logging::DEBUG
                                           SC_FULL,   // logging::TRACE
-                                          SC_DEBUG}; // logging::TRACE+1
+                                          SC_DEBUG}; // logging::DBGTRACE
     LOGGER(DEFAULT)::reporting_level() = level;
     LOGGER(SystemC)::reporting_level() = level;
     LOGGER(SystemC)::print_time() = print_time;
     LOGGER(SystemC)::abort_on_fatal() = false;
+    sc_report_handler::set_actions(SC_ERROR, SC_DEFAULT_ERROR_ACTIONS | SC_DISPLAY);
+    sc_report_handler::set_actions(SC_FATAL, SC_DEFAULT_FATAL_ACTIONS);
     sc_report_handler::set_verbosity_level(verbosity[level]);
     sc_report_handler::set_handler(report_handler);
     LOGGER(STDIO)::reporting_level() = level;
     LOGGER(STDIO)::print_time() = print_time;
     LOGGER(STDIO)::abort_on_fatal() = false;
 }
+

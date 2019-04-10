@@ -36,7 +36,7 @@ template <typename T> struct tlm_managed_extension {
 
     using type = T;
 
-    template <typename... Args> static type *alloacte(Args &&... args) {
+    template <typename... Args> static type *allocate(Args &&... args) {
         auto *ret = new (pool::allocate()) type(std::forward<Args>(args)...);
         ret->is_pooled = true;
         return ret;
@@ -79,14 +79,12 @@ template <typename T> struct tlm_managed_extension {
     };
 
 protected:
-    tlm_managed_extension()
-    : is_pooled(false) {}
-    tlm_managed_extension(const tlm_managed_extension &)
-    : is_pooled(false) {}
+    tlm_managed_extension() = default;
+    tlm_managed_extension(const tlm_managed_extension &) = default;
     tlm_managed_extension &operator=(const tlm_managed_extension &other) { return *this; }
 
 private:
-    bool is_pooled;
+    bool is_pooled{false};
 };
 }
 #endif /* SC_COMPONENTS_INCL_TLM_TLM_EXTENSIONS_H_ */

@@ -164,6 +164,19 @@ inline std::string padded(std::string str, size_t width, bool show_ellipsis=true
         return str+std::string(width-str.size(), ' ');
     }
 }
+
+class stream_redirection: public std::stringbuf {
+public:
+    stream_redirection(std::ostream& os, logging::log_level level);
+    ~stream_redirection();
+    void reset();
+protected:
+    std::streamsize xsputn(const char_type* s, std::streamsize n) override;
+    std::ostream& os;
+    logging::log_level level;
+    std::streambuf* old_buf;
+};
+
 }
 
 #endif /* _SYSC_REPORT_H_ */
