@@ -20,6 +20,7 @@
 #include <memory>
 
 #include "resetable.h"
+#include "traceable.h"
 #include "resource_access_if.h"
 #include "util/delegate.h"
 #include "utilities.h"
@@ -234,7 +235,7 @@ public:
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(this_type &, DATATYPE &)> write_cb) {
+    void set_write_cb(std::function<bool(this_type &, const DATATYPE &)> write_cb) {
         wr_cb = [write_cb](this_type &reg, DATATYPE &data, sc_core::sc_time delay) { return write_cb(reg, data); };
     }
     /**
@@ -242,7 +243,7 @@ public:
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(this_type &, DATATYPE &, sc_core::sc_time)> write_cb) { wr_cb = write_cb; }
+    void set_write_cb(std::function<bool(this_type &, const DATATYPE &, sc_core::sc_time)> write_cb) { wr_cb = write_cb; }
     /**
      * trace the register value to the given trace file
      *

@@ -32,6 +32,7 @@
  ******************************************************************************/
 
 #include "scc/configurable_tracer.h"
+#include "scc/traceable.h"
 
 using namespace scc;
 

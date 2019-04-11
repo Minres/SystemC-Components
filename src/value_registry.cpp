@@ -9,6 +9,7 @@
 #include <sysc/datatypes/fx/sc_fxval.h>
 #include <sysc/datatypes/fx/sc_fxnum.h>
 #include <string>
+#include <cstring>
 #include <sstream>
 #include <unordered_map>
 

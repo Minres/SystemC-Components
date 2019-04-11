@@ -20,6 +20,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#define FMT_HEADER_ONLY
 #include <fmt/format.h>
 // clang-format off
 #include "scv/scv_util.h"

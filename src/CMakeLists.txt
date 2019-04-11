@@ -46,7 +46,7 @@ if(SCV_FOUND)
     add_definitions(-DWITH_SCV)
 	target_include_directories (${LIBRARY_NAME} PUBLIC ${SCV_INCLUDE_DIRS})
     target_link_libraries (${LIBRARY_NAME} ${SCV_LIBRARIES})
-    target_link_libraries (${LIBRARY_NAME} fmt)
+#    target_link_libraries (${LIBRARY_NAME} fmt)
 endif()
 set_target_properties(${LIBRARY_NAME} PROPERTIES
   VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.

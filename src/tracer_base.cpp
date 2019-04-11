@@ -21,6 +21,7 @@
  */
 
 #include "scc/tracer_base.h"
+#include "scc/traceable.h"
 #include <string.h>
 
 
