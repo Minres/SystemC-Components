@@ -435,9 +435,9 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type &trans, 
     fw_port->b_transport(trans, delay);
     if (preExt && preExt->get_creator() == this) {
         // clean-up the extension if this is the original creator
+        trans.set_extension((tlm_recording_extension *)NULL);
         if(!trans.has_mm()){
             delete preExt;
-            trans.set_extension((tlm_recording_extension *)NULL);
         }
     } else {
         preExt->txHandle = preTx;
@@ -573,9 +573,9 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
     if (status == tlm::TLM_COMPLETED || (status == tlm::TLM_ACCEPTED && phase == tlm::END_RESP)) {
         trans.get_extension(preExt);
         if (preExt && preExt->get_creator() == this) {
-            if(!trans.has_mm()){
+            trans.set_extension((tlm_recording_extension *)NULL);
+           if(!trans.has_mm()){
                 delete preExt;
-                trans.set_extension((tlm_recording_extension *)NULL);
             }
         }
         /*************************************************************************
@@ -666,10 +666,10 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
     if (status == tlm::TLM_COMPLETED || (status == tlm::TLM_UPDATED && phase == tlm::END_RESP)) {
         // the transaction is finished
         if (preExt && preExt->get_creator() == this) {
-            if(!trans.has_mm()){
             // clean-up the extension if this is the original creator
-            delete preExt;
             trans.set_extension((tlm_recording_extension *)NULL);
+            if(!trans.has_mm()){
+                delete preExt;
             }
         }
         /*************************************************************************
