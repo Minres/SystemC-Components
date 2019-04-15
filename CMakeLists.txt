@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 2.8)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../cmake) # main (top) cmake dir
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
 
 project (sc-components)
@@ -12,35 +11,12 @@ set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
 include(Common)
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+if(NOT SystemCPackage)
+	set(SystemCPackage SystemC)
+endif()
 
 find_package(Threads)
-find_package(SystemC REQUIRED)
 find_package(ZLIB)
-if(SystemC_FOUND)
-    include_directories(${SystemC_INCLUDE_DIRS})
-    link_directories(${SystemC_LIBRARY_DIRS})
-else()
-    message( FATAL_ERROR "SystemC library not found." )
-endif()
-
-if(CCI_FOUND)
-    include_directories(${CCI_INCLUDE_DIRS})
-    link_directories(${CCI_LIBRARY_DIRS})
-#else()
-#    message( FATAL_ERROR "SystemC CCI library not found." )
-endif()
-
-if(ZLIB_FOUND)
-    include_directories( ${ZLIB_INCLUDE_DIRS} )
-    #link_directories(${ZLIB_LIBRARY_DIRS})
-    message( STATUS "ZLib found at ${ZLIB_INCLUDE_DIRS}." )
-endif(ZLIB_FOUND)
-
-if(SCV_FOUND)   
-    add_definitions(-DWITH_SCV)
-    include_directories(${SCV_INCLUDE_DIRS})
-    link_directories(${SCV_LIBRARY_DIRS})
-endif(SCV_FOUND)
+find_package(${SystemCPackage} REQUIRED)
 
 add_subdirectory (src)
