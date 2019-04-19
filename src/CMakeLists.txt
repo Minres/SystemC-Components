@@ -35,6 +35,9 @@ endif(SCV_FOUND)
 
 # Define two variables in order not to repeat ourselves.
 set(LIBRARY_NAME sc-components)
+if(${CMAKE_VERSION} VERSION_LESS "3.13.0") 
+	link_directories(${SystemC_LIBRARY_DIRS})
+endif()
 
 # Define the library
 add_library(${LIBRARY_NAME} ${LIB_SOURCES})
