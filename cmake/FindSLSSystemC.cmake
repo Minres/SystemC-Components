@@ -111,7 +111,11 @@ if(SystemC_FOUND)
 	#see https://gitlab.kitware.com/cmake/community/wikis/FAQ#how-do-i-use-a-different-compiler
    	#set(CMAKE_CXX_COMPILER $ENV{SNPS_VP_HOME}/common/bin/g++)
    	set(SystemC_INCLUDE_DIRS ${TLM_INCLUDE_DIRS} ${SystemC_INCLUDE_DIRS})
-    set(SystemC_LIBRARIES SnpsVPExt SnpsVP tbb omniORB4 omnithread dwarf elf) 
+    set(SystemC_LIBRARIES SnpsVPExt SnpsVP tbb omniORB4 omniDynamic4 omnithread dwarf elf)     
+    #-L${SNPS_VP_HOME}/IP_common/common_debug/lib/linux.gcc-4.8.3-64 
+    #-lipdebug 
+    #-L${SNPS_VP_HOME}/IP/SBLGCCI_BL/Internal/lib/linux.gcc-4.8.3-64 
+    #-lsblgcci    
     if(SCV_FOUND)
         set(SCV_LIBRARIES ${SystemC_LIBRARIES})
     endif(SCV_FOUND)
