@@ -88,6 +88,10 @@ if(SCV_FOUND)
 	endif()
 endif()
 
+if(ZLIB_FOUND)
+    target_link_libraries (${LIBRARY_NAME} ${ZLIB_LIBRARIES})
+endif(ZLIB_FOUND)
+
 target_include_directories (${LIBRARY_NAME} PUBLIC ${SystemC_INCLUDE_DIRS})	
 target_link_libraries(${LIBRARY_NAME} ${SystemC_LIBRARIES} )
 if(NOT ${CMAKE_VERSION} VERSION_LESS "3.13.0") 
