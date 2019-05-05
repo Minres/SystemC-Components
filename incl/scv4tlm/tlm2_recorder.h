@@ -67,6 +67,7 @@ public:
     }
 
     void register_ext_rec(size_t id, tlm2_extensions_recording_if<TYPES>* ext){
+    	if(id==0) return;
         if(id>=ext_rec.size()) ext_rec.resize(id+1);
         if(ext_rec[id]) delete ext_rec[id];
         ext_rec[id]=ext;

@@ -28,6 +28,7 @@ set(LIB_SOURCES
     src/report.cpp
     src/perf_estimator.cpp
     src/io-redirector.cpp
+    src/ordered_semaphore.cpp
 )
 
 if(CCI_FOUND)
@@ -109,6 +110,7 @@ set_target_properties(jsoncpp PROPERTIES
 target_include_directories (jsoncpp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
 
 install(TARGETS ${LIBRARY_NAME} jsoncpp
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib/static)
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
