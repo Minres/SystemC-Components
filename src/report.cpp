@@ -69,7 +69,7 @@ std::string time2string(const sc_core::sc_time &t) {
             if (fs_val >= multiplier[j]) {
                 const auto i = val / multiplier[j - scale];
                 const auto f = val % multiplier[j - scale];
-                oss << i << '.' << std::setw(3 * (j - scale)) << std::setfill('0') << std::left << f << ' '
+                oss << i << '.' << std::setw(3 * (j - scale)) << std::setfill('0') << std::right << f << ' '
                     << time_units[j];
                 break;
             }
