@@ -91,6 +91,56 @@ inline std::vector<std::string> split(const std::string &s, char seperator) {
     }
     output.push_back(s.substr(prev_pos, pos - prev_pos)); // Last word
     return output;
+/* could also be done similar to this
+	// construct a stream from the string
+	std::stringstream ss(str);
+	// use stream iterators to copy the stream to the vector as whitespace separated strings
+	std::istream_iterator<std::string> it(ss);
+	std::istream_iterator<std::string> end;
+	std::vector<std::string> results(it, end);
+	return results;
+*/
+}
+/**
+ * compare two string ignoring case
+ * @param string a to compare
+ * @param string b to compare
+ * @result true if the are equal otherwise false
+ */
+inline
+bool iequals(const std::string& a, const std::string& b) {
+#if __cplusplus < 201402L
+    auto sz = a.size();
+    if (b.size() != sz)
+        return false;
+    for (auto i = 0U; i < sz; ++i)
+        if (tolower(a[i]) != tolower(b[i]))
+            return false;
+    return true;
+#else
+     return std::equal(a.begin(), a.end(), b.begin(), b.end(),
+    		 [](char a, char b) {return tolower(a) == tolower(b);});
+#endif
+}
+/**
+ * pad a string to a given length by either cutting of the overflow or inserting an ellipsis
+ *
+ * @param string to adjust
+ * @param width of the targeted field
+ * @param use ellipsis (...) when shortening
+ * @result string with the given length
+ */
+inline std::string padded(std::string str, size_t width, bool show_ellipsis=true) {
+    assert(width>7);
+    if (str.length() > width) {
+        if (show_ellipsis){
+            auto pos = str.size()-(width-6);
+            return str.substr(0, 3) + "..."+str.substr(pos, str.size()-pos);
+        } else
+            return str.substr(0, width);
+    } else {
+        return str+std::string(width-str.size(), ' ');
+    }
 }
 }
 #endif /* _UTIL_ITIES_H_ */
