@@ -46,7 +46,7 @@ ordered_semaphore::report_error( const char* id, const char* add_msg ) const
 
 ordered_semaphore::ordered_semaphore( int init_value_ )
 : sc_core::sc_object( sc_core::sc_gen_unique_name( "semaphore" ) ),
-  m_free( (std::string(SC_KERNEL_EVENT_PREFIX)+"_free_event").c_str() ),
+  m_free( (std::string("$$$$kernel_event$$$$_")+"_free_event").c_str() ),
   m_value( init_value_ )
 {
 	if( m_value < 0 ) {
@@ -56,7 +56,7 @@ ordered_semaphore::ordered_semaphore( int init_value_ )
 
 ordered_semaphore::ordered_semaphore( const char* name_, int init_value_ )
 : sc_object( name_ ),
-  m_free( (std::string(SC_KERNEL_EVENT_PREFIX)+"_free_event").c_str() ),
+  m_free( (std::string("$$$$kernel_event$$$$_")+"_free_event").c_str() ),
   m_value( init_value_ )
 {
 	if( m_value < 0 ) {

@@ -12,6 +12,9 @@
 #include <sysc/tracing/sc_trace.h>
 #include <sysc/kernel/sc_simcontext.h>
 #include <sstream>
+#ifndef SC_API
+#define SC_API
+#endif
 
 namespace scc {
 struct value_registry_if {
