@@ -81,7 +81,8 @@ public:
         os << std::endl;
         T::output(os.str());
         // TODO: use a more specific exception
-        if (get_last_log_level() == FATAL && abort_on_fatal()) throw std::runtime_error(os.str());
+        if (get_last_log_level() == FATAL && abort_on_fatal())
+            abort();
     }
     /**
      * get the underlying ostringstream for a certain log level and category

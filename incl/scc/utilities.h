@@ -237,6 +237,31 @@ inline sc_core::sc_time parse_from_string(std::string value) noexcept {
     }
     return sc_core::SC_ZERO_TIME;
 }
+
+#ifdef ASM
+#include <stdint.h>
+static inline unsigned ilog2(uint32_t x) {
+  uint32_t y;
+  asm ( "\tbsr %1, %0\n"
+      : "=r"(y)
+      : "r" (x)
+  );
+  return y;
+}
+#else
+#include <limits.h>
+inline unsigned ilog2 (uint32_t val) {
+    if (val == 0) return std::numeric_limits<uint32_t>::max();
+    if (val == 1) return 0;
+    auto ret = 0U;
+    while (val > 1) {
+        val >>= 1;
+        ++ret;
+    }
+    return ret;
+}
+#endif
+
 }
 
 #endif /* _SYSC_UTILITIES_H_ */

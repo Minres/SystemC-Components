@@ -23,6 +23,7 @@
 #include <sysc/kernel/sc_time.h>
 #include <sysc/utils/sc_report.h>
 #include <util/logging.h>
+#include <util/ities.h>
 
 namespace logging {
 class SystemC {};
@@ -152,18 +153,20 @@ protected:
 #define SCFATAL(...)                                                                                                   \
     ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 
-inline std::string padded(std::string str, size_t width, bool show_ellipsis=true) {
-    assert(width>7);
-    if (str.length() > width) {
-        if (show_ellipsis){
-            auto pos = str.size()-(width-6);
-            return str.substr(0, 3) + "..."+str.substr(pos, str.size()-pos);
-        } else
-            return str.substr(0, width);
-    } else {
-        return str+std::string(width-str.size(), ' ');
-    }
-}
+#define SCMOD util::padded(this->name(), 24)
+
+class stream_redirection: public std::stringbuf {
+public:
+    stream_redirection(std::ostream& os, logging::log_level level);
+    ~stream_redirection();
+    void reset();
+protected:
+    std::streamsize xsputn(const char_type* s, std::streamsize n) override;
+    std::ostream& os;
+    logging::log_level level;
+    std::streambuf* old_buf;
+};
+
 }
 
 #endif /* _SYSC_REPORT_H_ */

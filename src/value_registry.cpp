@@ -9,6 +9,7 @@
 #include <sysc/datatypes/fx/sc_fxval.h>
 #include <sysc/datatypes/fx/sc_fxnum.h>
 #include <string>
+#include <cstring>
 #include <sstream>
 #include <unordered_map>
 
@@ -16,7 +17,9 @@ using namespace sc_core;
 using namespace scc;
 
 std::ostream& operator<<(std::ostream& os, const sc_event& evt){
+#if SYSTEMC_VERSION >= 20181013
     os<<evt.triggered();
+#endif
     return os;
 }
 
@@ -58,8 +61,10 @@ public:
         } \
     }
 
+#if SYSTEMC_VERSION >= 20181013
     DECL_TRACE_METHOD_A( sc_event )
     DECL_TRACE_METHOD_A( sc_time )
+#endif
 
     //DECL_TRACE_METHOD_A( bool )
     void trace(const bool& object, const std::string& name ) override {
