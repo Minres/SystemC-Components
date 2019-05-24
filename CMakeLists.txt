@@ -31,7 +31,10 @@ set(LIB_SOURCES
     src/ordered_semaphore.cpp
 )
 
+message("Using SystemC libraries at ${SystemC_LIBRARIES}")
+
 if(CCI_FOUND)
+	message("Using SystemC CCI libraries at ${CCI_LIBRARY_DIRS}")
     set(LIB_SOURCES ${LIB_SOURCES} 
 	    src/tracer_base.cpp
 	    src/tracer.cpp
@@ -43,6 +46,7 @@ if(CCI_FOUND)
 endif()
 
 if(SCV_FOUND)
+ 	message("Using SCV libraries at ${SCV_LIBRARY_DIRS}")
     if(ZLIB_FOUND)
         set(LIB_SOURCES ${LIB_SOURCES} src/scv_tr_compressed.cpp)
     endif(ZLIB_FOUND)
