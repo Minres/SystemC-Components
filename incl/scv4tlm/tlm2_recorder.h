@@ -354,13 +354,13 @@ private:
     //! non-blocking transaction recording stream handle
     std::vector<scv_tr_stream *> nb_streamHandleTimed;
     //! transaction generator handle for forward non-blocking transactions
-    std::vector<scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum> *> nb_fw_trHandle;
+    std::vector<scv_tr_generator<std::string, tlm::tlm_sync_enum> *> nb_fw_trHandle;
     //! transaction generator handle for forward non-blocking transactions with
     //! annotated delays
     std::vector<scv_tr_generator<> *> nb_txReqHandle;
     map<uint64, scv_tr_handle> nbtx_req_handle_map;
     //! transaction generator handle for backward non-blocking transactions
-    std::vector<scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum> *> nb_bw_trHandle;
+    std::vector<scv_tr_generator<std::string, tlm::tlm_sync_enum> *> nb_bw_trHandle;
     //! transaction generator handle for backward non-blocking transactions with
     //! annotated delays
     std::vector<scv_tr_generator<> *> nb_txRespHandle;
@@ -373,6 +373,12 @@ private:
     scv_tr_generator<sc_dt::uint64, sc_dt::uint64> *dmi_trInvalidateHandle;
 
     const std::string fixed_basename;
+    inline std::string phase2string(const tlm::tlm_phase& p){
+    	std::stringstream ss;
+    	ss<<p;
+    	return ss.str();
+    }
+
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -511,18 +517,18 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
     // initialize stream and generator if not yet done
     if (nb_streamHandle[FW] == NULL) {
         nb_streamHandle[FW] = new scv_tr_stream((fixed_basename + "_nb_fw").c_str(), "TRANSACTOR", m_db);
-        nb_fw_trHandle[tlm::TLM_READ_COMMAND] = new scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
+        nb_fw_trHandle[tlm::TLM_READ_COMMAND] = new scv_tr_generator<std::string, tlm::tlm_sync_enum>(
             "read", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
-        nb_fw_trHandle[tlm::TLM_WRITE_COMMAND] = new scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
+        nb_fw_trHandle[tlm::TLM_WRITE_COMMAND] = new scv_tr_generator<std::string, tlm::tlm_sync_enum>(
             "write", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
-        nb_fw_trHandle[tlm::TLM_IGNORE_COMMAND] = new scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
+        nb_fw_trHandle[tlm::TLM_IGNORE_COMMAND] = new scv_tr_generator<std::string, tlm::tlm_sync_enum>(
             "ignore", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
     }
     /*************************************************************************
      * prepare recording
      *************************************************************************/
     // Get a handle for the new transaction
-    scv_tr_handle h = nb_fw_trHandle[trans.get_command()]->begin_transaction((scv4tlm::tlm_phase_enum)(unsigned)phase);
+    scv_tr_handle h = nb_fw_trHandle[trans.get_command()]->begin_transaction(phase2string(phase));
     tlm_recording_extension *preExt = NULL;
     trans.get_extension(preExt);
     if (preExt == NULL) { // we are the first recording this transaction
@@ -559,6 +565,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
      * handle recording
      *************************************************************************/
     tgd.response_status = trans.get_response_status();
+    h.record_attribute("trans.hash", reinterpret_cast<uintptr_t>(&trans));
     h.record_attribute("trans", tgd);
     if (tgd.data_length < 8) {
         uint64_t buf = 0;
@@ -568,7 +575,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
     }
     for(auto& extensionRecording: scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
         if (extensionRecording) extensionRecording->recordEndTx(h, trans);
-    h.record_attribute("tlm_phase[return_path]", (scv4tlm::tlm_phase_enum)(unsigned)phase);
+    h.record_attribute("tlm_phase[return_path]", phase2string(phase));
     h.record_attribute("delay[return_path]", delay.to_string());
     // get the extension and free the memory if it was mine
     if (status == tlm::TLM_COMPLETED || (status == tlm::TLM_ACCEPTED && phase == tlm::END_RESP)) {
@@ -607,11 +614,11 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
     if (!isRecordingEnabled()) return bw_port->nb_transport_bw(trans, phase, delay);
     if (nb_streamHandle[BW] == NULL) {
         nb_streamHandle[BW] = new scv_tr_stream((fixed_basename + "_nb_bw").c_str(), "TRANSACTOR", m_db);
-        nb_bw_trHandle[tlm::TLM_READ_COMMAND] = new scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
+        nb_bw_trHandle[tlm::TLM_READ_COMMAND] = new scv_tr_generator<std::string, tlm::tlm_sync_enum>(
                 "read", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
-        nb_bw_trHandle[tlm::TLM_WRITE_COMMAND] = new scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
+        nb_bw_trHandle[tlm::TLM_WRITE_COMMAND] = new scv_tr_generator<std::string, tlm::tlm_sync_enum>(
                 "write", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
-        nb_bw_trHandle[tlm::TLM_IGNORE_COMMAND] = new scv_tr_generator<scv4tlm::tlm_phase_enum, tlm::tlm_sync_enum>(
+        nb_bw_trHandle[tlm::TLM_IGNORE_COMMAND] = new scv_tr_generator<std::string, tlm::tlm_sync_enum>(
                 "ignore", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
     }
     /*************************************************************************
@@ -621,7 +628,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
     trans.get_extension(preExt);
     //sc_assert(preExt != NULL && "ERROR on backward path");
     // Get a handle for the new transaction
-    scv_tr_handle h = nb_bw_trHandle[trans.get_command()]->begin_transaction((scv4tlm::tlm_phase_enum)(unsigned)phase);
+    scv_tr_handle h = nb_bw_trHandle[trans.get_command()]->begin_transaction(phase2string(phase));
     // link handle if we have a predecessor and that's not ourself
     if(preExt) {
         h.add_relation(rel_str(PREDECESSOR_SUCCESSOR), preExt->txHandle);
@@ -650,6 +657,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
      * handle recording
      *************************************************************************/
     tgd.response_status = trans.get_response_status();
+    h.record_attribute("trans.hash", reinterpret_cast<uintptr_t>(&trans));
     h.record_attribute("trans", tgd);
     if (tgd.data_length < 8) {
         uint64_t buf = 0;
@@ -660,7 +668,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
     for(auto& extensionRecording: scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
         if (extensionRecording) extensionRecording->recordEndTx(h, trans);
     // phase and delay are already recorded
-    h.record_attribute("tlm_phase[return_path]", (scv4tlm::tlm_phase_enum)(unsigned)phase);
+    h.record_attribute("tlm_phase[return_path]", phase2string(phase));
     h.record_attribute("delay[return_path]", delay.to_string());
     // End the transaction
     nb_bw_trHandle[trans.get_command()]->end_transaction(h, status);

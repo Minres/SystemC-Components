@@ -19,6 +19,7 @@
 
 #include <array>
 #include <scv.h>
+#include <tlm>
 
 namespace scv4tlm {
 
