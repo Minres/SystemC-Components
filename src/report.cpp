@@ -87,12 +87,11 @@ const std::string compose_message(const sc_report &rep) {
     os << rep.get_msg_type();
     if (*rep.get_msg()) os << ": " << rep.get_msg();
     if (rep.get_severity() > SC_INFO) {
-        std::array<char, 16> line_number_str;
-        os << " [FILE:" << rep.get_file_name() << ":" << rep.get_line_number() << "]";
+        os << "\n         [FILE:" << rep.get_file_name() << ":" << rep.get_line_number() << "]";
         sc_simcontext *simc = sc_get_curr_simcontext();
         if (simc && sc_is_running()) {
             const char *proc_name = rep.get_process_name();
-            if (proc_name) os << "[PROCESS:" << proc_name << "]";
+            if (proc_name) os << "\n         [PROCESS:" << proc_name << "]";
         }
     }
     return os.str();
