@@ -77,6 +77,9 @@ public:
                 }
             }
         }
+    DECL_TRACE_METHOD_A( sc_event )
+    DECL_TRACE_METHOD_A( sc_time )
+
     DECL_TRACE_METHOD_A( sc_dt::sc_bit )
     DECL_TRACE_METHOD_A( sc_dt::sc_logic )
 

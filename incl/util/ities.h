@@ -21,6 +21,7 @@
 #include <bitset>
 #include <type_traits>
 #include <vector>
+#include <assert.h>
 
 // some helper functions
 template <unsigned int bit, unsigned int width, typename T> inline constexpr T bit_sub(T v) {

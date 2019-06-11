@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
 
-project (sc-components)
+project (scc)
 
 # Set the version number of your project here (format is MAJOR.MINOR.PATCHLEVEL - e.g. 1.0.0)
 set(VERSION_MAJOR "0")
@@ -60,7 +60,7 @@ if(SCV_FOUND)
 endif(SCV_FOUND)
 
 # Define two variables in order not to repeat ourselves.
-set(LIBRARY_NAME sc-components)
+set(LIBRARY_NAME scc)
 if(${CMAKE_VERSION} VERSION_LESS "3.13.0") 
 	link_directories(${SystemC_LIBRARY_DIRS})
 endif()
