@@ -63,7 +63,6 @@ endif()
 
 # Define the library
 add_library(${LIBRARY_NAME} ${LIB_SOURCES})
-
 target_include_directories (${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
 set_target_properties(${LIBRARY_NAME} PROPERTIES
   VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
@@ -100,16 +99,26 @@ if(NOT ${CMAKE_VERSION} VERSION_LESS "3.13.0")
 endif()
 
 # build a separate JSON library for the use in non-systemc based systems
-add_library(jsoncpp src/jsoncpp.cpp)
+add_library(jsoncpp STATIC src/jsoncpp.cpp)
+target_include_directories (jsoncpp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
 FILE(GLOB JsonLibHeaders incl/json/*.h)
 set_target_properties(jsoncpp PROPERTIES
   VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
   FRAMEWORK FALSE
   PUBLIC_HEADER "${JsonLibHeaders}" # specify the public headers
 )
-target_include_directories (jsoncpp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
 
-install(TARGETS ${LIBRARY_NAME} jsoncpp
+# build a separate SCC-UTIL library for the use in non-systemc based systems
+add_library(scc-util STATIC src/io-redirector.cpp)
+target_include_directories (scc-util PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
+FILE(GLOB SccUtilHeaders incl/util/*.h)
+set_target_properties(scc-util PROPERTIES
+  VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
+  FRAMEWORK FALSE
+  PUBLIC_HEADER "${SccUtilHeaders}" # specify the public headers
+)
+
+install(TARGETS ${LIBRARY_NAME} jsoncpp scc-util
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib/static
