@@ -71,7 +71,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
     }
 
 private:
-    std::map<const sc_core::sc_time, TYPE> m_scheduled_events;
+    std::multimap<const sc_core::sc_time, TYPE> m_scheduled_events;
     sc_core::sc_event m_event;
 };
 }

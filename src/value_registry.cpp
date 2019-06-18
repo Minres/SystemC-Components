@@ -61,11 +61,6 @@ public:
         } \
     }
 
-#if SYSTEMC_VERSION >= 20181013
-    DECL_TRACE_METHOD_A( sc_event )
-    DECL_TRACE_METHOD_A( sc_time )
-#endif
-
     //DECL_TRACE_METHOD_A( bool )
     void trace(const bool& object, const std::string& name ) override {
             if(sc_core::sc_find_object(name.c_str()) == nullptr) {
@@ -77,6 +72,9 @@ public:
                 }
             }
         }
+    DECL_TRACE_METHOD_A( sc_event )
+    DECL_TRACE_METHOD_A( sc_time )
+
     DECL_TRACE_METHOD_A( sc_dt::sc_bit )
     DECL_TRACE_METHOD_A( sc_dt::sc_logic )
 

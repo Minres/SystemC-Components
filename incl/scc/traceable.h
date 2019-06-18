@@ -29,7 +29,7 @@ public:
     /**
      * the constructor initializing the param
      */
-    traceable():enableTracing("enableTracing", true){}
+    traceable() = default;
     /**
      * the destructor
      */
@@ -37,10 +37,7 @@ public:
     /**
      *
      */
-    bool is_trace_enabled(){ return enableTracing.get_value();}
-
-protected:
-    cci::cci_param<bool> enableTracing;
+    virtual bool is_trace_enabled(){ return true;}
 };
 
 } /* namespace scc */
