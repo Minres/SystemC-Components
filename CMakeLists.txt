@@ -11,6 +11,17 @@ set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
 include(Common)
 
+# build a separate SCC-UTIL library for the use in non-systemc based systems
+add_library(scc-util STATIC src/io-redirector.cpp)
+target_include_directories (scc-util PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
+FILE(GLOB SccUtilHeaders incl/util/*.h)
+set_target_properties(scc-util PROPERTIES
+  VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
+  FRAMEWORK FALSE
+  PUBLIC_HEADER "${SccUtilHeaders}" # specify the public headers
+)
+
+
 if(NOT SystemCPackage)
 	set(SystemCPackage SystemC)
 endif()
@@ -61,7 +72,7 @@ if(${CMAKE_VERSION} VERSION_LESS "3.13.0")
 	link_directories(${SystemC_LIBRARY_DIRS})
 endif()
 
-# Define the library
+# Define the scc library
 add_library(${LIBRARY_NAME} ${LIB_SOURCES})
 target_include_directories (${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
 set_target_properties(${LIBRARY_NAME} PROPERTIES
@@ -69,6 +80,8 @@ set_target_properties(${LIBRARY_NAME} PROPERTIES
   FRAMEWORK FALSE
   PUBLIC_HEADER "${LIB_HEADERS}" # specify the public headers
 )
+
+target_link_libraries(${LIBRARY_NAME} scc-util )
 
 if(CCI_FOUND)
     target_compile_definitions(${LIBRARY_NAME} PUBLIC -DWITH_CCI)
@@ -106,16 +119,6 @@ set_target_properties(jsoncpp PROPERTIES
   VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
   FRAMEWORK FALSE
   PUBLIC_HEADER "${JsonLibHeaders}" # specify the public headers
-)
-
-# build a separate SCC-UTIL library for the use in non-systemc based systems
-add_library(scc-util STATIC src/io-redirector.cpp)
-target_include_directories (scc-util PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
-FILE(GLOB SccUtilHeaders incl/util/*.h)
-set_target_properties(scc-util PROPERTIES
-  VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
-  FRAMEWORK FALSE
-  PUBLIC_HEADER "${SccUtilHeaders}" # specify the public headers
 )
 
 install(TARGETS ${LIBRARY_NAME} jsoncpp scc-util
