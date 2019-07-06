@@ -30,9 +30,6 @@ find_package(Threads)
 find_package(ZLIB)
 find_package(${SystemCPackage} REQUIRED)
 
-FILE(GLOB LibHeaders incl/*.h incl/*/*.h)
-set(LIB_HEADERS ${LibHeaders} )
-
 set(LIB_SOURCES
     src/sc_logic_7.cpp
     src/utilities.cpp
@@ -75,10 +72,11 @@ endif()
 # Define the scc library
 add_library(${LIBRARY_NAME} ${LIB_SOURCES})
 target_include_directories (${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
+FILE(GLOB LibHeaders incl/*.h)
 set_target_properties(${LIBRARY_NAME} PROPERTIES
   VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
   FRAMEWORK FALSE
-  PUBLIC_HEADER "${LIB_HEADERS}" # specify the public headers
+  PUBLIC_HEADER "${LibHeaders}" # specify the public headers
 )
 
 target_link_libraries(${LIBRARY_NAME} scc-util )
@@ -121,11 +119,23 @@ set_target_properties(jsoncpp PROPERTIES
   PUBLIC_HEADER "${JsonLibHeaders}" # specify the public headers
 )
 
-install(TARGETS ${LIBRARY_NAME} jsoncpp scc-util
+install(TARGETS jsoncpp
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib/static
-        # PUBLIC_HEADER DESTINATION include
+        PUBLIC_HEADER DESTINATION include/json
+        )
+install(TARGETS scc-util
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib/static
+        PUBLIC_HEADER DESTINATION include/util
+        )
+install(TARGETS ${LIBRARY_NAME}
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib/static
+        PUBLIC_HEADER DESTINATION include
         )
 install(
     DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/incl/
