@@ -125,4 +125,9 @@ install(TARGETS ${LIBRARY_NAME} jsoncpp scc-util
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib/static
-        PUBLIC_HEADER DESTINATION include)
+        # PUBLIC_HEADER DESTINATION include
+        )
+install(
+    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/incl/
+    DESTINATION include
+    FILES_MATCHING PATTERN "*")
