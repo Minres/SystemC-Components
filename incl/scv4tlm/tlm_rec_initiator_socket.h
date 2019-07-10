@@ -79,7 +79,9 @@ public:
                                 POL
 #endif
                                 >(name)
-    , recorder(gen_name(name, "tx").c_str()) {
+	, fw_port(sc_core::sc_gen_unique_name("fw"))
+	, bw_port(sc_core::sc_gen_unique_name("bw"))
+    , recorder(gen_name(name, "tx").c_str(), fw_port, bw_port) {
     }
 
     virtual ~tlm_rec_initiator_socket() {}
@@ -95,10 +97,10 @@ public:
     virtual void bind(base_target_socket_type &s) {
         // initiator.port -> target.export
         (this->get_base_port())(recorder);
-        recorder.fw_port(s.get_base_interface());
+        fw_port(s.get_base_interface());
         // target.port -> initiator.export
         (s.get_base_port())(recorder);
-        recorder.bw_port(this->get_base_interface());
+        bw_port(this->get_base_interface());
     }
     //
     // Bind initiator socket to initiator socket (hierarchical bind)
@@ -107,10 +109,10 @@ public:
     virtual void bind(base_type &s) {
         // port
         (this->get_base_port())(recorder);
-        recorder.fw_port(s.get_base_port());
+        fw_port(s.get_base_port());
         // export
         (s.get_base_export())(recorder);
-        recorder.bw_port(this->get_base_export());
+        bw_port(this->get_base_export());
     }
 
     //
@@ -124,6 +126,8 @@ public:
     }
 
 protected:
+    sc_core::sc_port<tlm::tlm_fw_transport_if<TYPES>> fw_port;
+    sc_core::sc_port<tlm::tlm_bw_transport_if<TYPES>> bw_port;
     scv4tlm::tlm2_recorder<TYPES> recorder;
 };
 #endif

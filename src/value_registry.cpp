@@ -23,7 +23,11 @@ std::ostream& operator<<(std::ostream& os, const sc_event& evt){
     return os;
 }
 
-
+#if SC_VERSION_MAJOR <= 2 && SC_VERSION_MINOR <= 3 && SC_VERSION_PATCH < 2
+#define OVERRIDE
+#else
+#define OVERRIDE override
+#endif
 class SC_API value_registry_impl: public sc_trace_file {
 public:
     // Constructor
@@ -40,7 +44,7 @@ public:
         }while(pos>0 && mod == nullptr);
         return mod;
     }
-#define DECL_TRACE_METHOD_A(tp) void trace(const tp& object, const std::string& name ) override { \
+#define DECL_TRACE_METHOD_A(tp) void trace(const tp& object, const std::string& name ) OVERRIDE { \
         if(sc_core::sc_find_object(name.c_str()) != nullptr) {  \
             if(sc_module* mod = get_mod4name(name)){ \
                 sc_get_curr_simcontext()->hierarchy_push(mod); \
@@ -50,7 +54,7 @@ public:
             } \
         } \
     }
-#define DECL_TRACE_METHOD_B(tp) void trace(const tp& object, const std::string& name, int width ) override { \
+#define DECL_TRACE_METHOD_B(tp) void trace(const tp& object, const std::string& name, int width ) OVERRIDE { \
         if(sc_core::sc_find_object(name.c_str()) != nullptr) {  \
             if(sc_module* mod = get_mod4name(name)){ \
                 sc_get_curr_simcontext()->hierarchy_push(mod); \

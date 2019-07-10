@@ -27,7 +27,6 @@
 
 #include <boost/algorithm/string/predicate.hpp>
 #include <fstream>
-#include <regex>
 
 scc::configurer::configurer(const std::string &filename)
 : base_type("configurer")
@@ -39,6 +38,7 @@ scc::configurer::configurer(const std::string &filename)
             try {
                 is >> root;
                 configure_cci_hierarchical(root, "");
+                config_valid=true;
             } catch (Json::RuntimeError &e) {
                 LOG(ERROR) << "Could not parse input file " << filename << ", reason: " << e.what();
             }
@@ -67,12 +67,16 @@ inline const std::vector<sc_core::sc_object *> &get_sc_objects(sc_core::sc_objec
 void scc::configurer::dump_configuration(std::ostream &os, sc_core::sc_object *obj) {
     Json::Value root{Json::objectValue};
     for (auto *o : get_sc_objects(obj)) {
-        dump_configuration(os, o, root);
+        dump_configuration(o, root);
     }
     // For convenience, use `writeString()` with a specialized builder.
     Json::StreamWriterBuilder wbuilder;
     wbuilder["indentation"] = "\t";
-    os << root;
+    wbuilder["enableYAMLCompatibility"] = true;
+    wbuilder["commentStyle"] ="None";
+    wbuilder.newStreamWriter()->write(root, &os);
+    // another (default) option:
+    // os << root;
 }
 
 #define CHECK_N_ASSIGN_VAL(TYPE, ATTR)                                                                                 \
@@ -84,7 +88,7 @@ void scc::configurer::dump_configuration(std::ostream &os, sc_core::sc_object *o
         }                                                                                                              \
     }
 
-void scc::configurer::dump_configuration(std::ostream &os, sc_core::sc_object *obj, Json::Value &parent) {
+void scc::configurer::dump_configuration(sc_core::sc_object *obj, Json::Value &parent) {
     auto mod = dynamic_cast<sc_core::sc_module *>(obj);
     Json::Value node{Json::objectValue};
     for (sc_core::sc_attr_base *attr_base : obj->attr_cltn()) {
@@ -98,11 +102,16 @@ void scc::configurer::dump_configuration(std::ostream &os, sc_core::sc_object *o
         CHECK_N_ASSIGN_VAL(std::string, attr_base);
         CHECK_N_ASSIGN_VAL(char *, attr_base);
     }
-    std::string hier_name{obj->name()};
-    std::regex re{hier_name.append(R"(\.[^.]*$)")};
-    cci::cci_param_predicate pred(
-        [re](cci::cci_param_untyped_handle h) -> bool { return std::regex_search(std::string(h.name()), re); });
-    for (auto &h : cci_broker.get_param_handles(pred)) {
+    const std::string hier_name{obj->name()};
+    cci::cci_param_predicate pred{[hier_name](cci::cci_param_untyped_handle h) -> bool {
+    	std::string h_name {h.name()};
+    	auto sep = hier_name.length();
+    	return 	h_name.compare(0, sep-1, hier_name)==0 && // begins with hier_name
+				h_name[sep]=='.' && // has additional part
+				h_name.substr(sep+1).find('.')==h_name.npos; // but no other hierarchy separator
+    }};
+    auto handles = cci_broker.get_param_handles(pred);
+    for (auto &h : handles) {
         auto value = h.get_cci_value();
         auto paramname = std::string{h.name()};
         auto basename = paramname.substr(paramname.find_last_of('.') + 1);
@@ -121,15 +130,17 @@ void scc::configurer::dump_configuration(std::ostream &os, sc_core::sc_object *o
         else if (value.is_string())
             node[basename] = value.get_string().c_str();
     }
-    for (auto *o : get_sc_objects(obj)) dump_configuration(os, o, node);
+    for (auto *o : get_sc_objects(obj)) dump_configuration(o, node);
     if (!node.empty()) parent[obj->basename()] = node;
 }
 
 void scc::configurer::configure() {
-    for (auto *o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext)) {
-        Json::Value &val = root[o->name()];
-        if (!val.isNull()) configure_sc_attribute_hierarchical(o, val);
-    }
+	if(config_valid)
+		for (auto *o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext)) {
+			Json::Value &val = root[o->name()];
+			if (!val.isNull())
+				configure_sc_attribute_hierarchical(o, val);
+		}
 }
 
 void scc::configurer::configure_sc_attribute_hierarchical(sc_core::sc_object *obj, Json::Value &hier_val) {

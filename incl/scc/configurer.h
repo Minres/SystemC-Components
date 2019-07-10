@@ -127,7 +127,7 @@ public:
     }
 
 protected:
-    void dump_configuration(std::ostream &os, sc_core::sc_object *obj, Json::Value &node);
+    void dump_configuration(sc_core::sc_object *obj, Json::Value &node);
 
     void configure_sc_attribute_hierarchical(sc_core::sc_object *obj, Json::Value &hier_val);
 
@@ -138,6 +138,8 @@ protected:
     Json::Value &get_value_from_hierarchy(const std::string &hier_name, Json::Value &val);
 
     void configure_cci_hierarchical(const Json::Value &root, std::string prefix);
+
+    bool config_valid{false};
 
     Json::Value root;
 

@@ -13,8 +13,8 @@
 struct tlm_id_extension : public tlm::tlm_extension<tlm_id_extension> {
     virtual tlm_extension_base *clone() const { tlm_id_extension *t = new tlm_id_extension(this->id);return t; }
     virtual void copy_from(tlm_extension_base const &from) { id = static_cast<tlm_id_extension const &>(from).id; }
-    tlm_id_extension(unsigned i) : id(i) {}
-    unsigned id;
+    tlm_id_extension(uintptr_t i) : id(i) {}
+    uintptr_t id;
 };
 
 inline intptr_t getId(tlm::tlm_generic_payload& gp){

@@ -122,10 +122,10 @@ public:
     sc_core::sc_attribute<bool> enableTimed;
 
     //! \brief the port where fw accesses are forwarded to
-    sc_core::sc_port<tlm::tlm_fw_transport_if<TYPES>> fw_port;
+    sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_port;
 
     //! \brief the port where bw accesses are forwarded to
-    sc_core::sc_port<tlm::tlm_bw_transport_if<TYPES>> bw_port;
+    sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port;
 
     /*! \brief The constructor of the component
      *
@@ -135,8 +135,10 @@ public:
      *        If this database is not initialized (e.g. by not calling
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
-    tlm2_recorder(bool recording_enabled = true, scv_tr_db *tr_db = scv_tr_db::get_default_db())
-    : tlm2_recorder(sc_core::sc_gen_unique_name("tlm2_recorder"), recording_enabled, tr_db) {}
+    tlm2_recorder(sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_port,
+    		sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port,
+			bool recording_enabled = true, scv_tr_db *tr_db = scv_tr_db::get_default_db())
+    : tlm2_recorder(sc_core::sc_gen_unique_name("tlm2_recorder"), fw_port, bw_port, recording_enabled, tr_db) {}
     /*! \brief The constructor of the component
      *
      * \param name is the SystemC module name of the recorder
@@ -145,12 +147,14 @@ public:
      *        If this database is not initialized (e.g. by not calling
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
-    tlm2_recorder(const char *name, bool recording_enabled = true, scv_tr_db *tr_db = scv_tr_db::get_default_db())
+    tlm2_recorder(const char *name, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_port,
+    		sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port,
+			bool recording_enabled = true, scv_tr_db *tr_db = scv_tr_db::get_default_db())
     : sc_core::sc_object(name)
     , enableTracing("enableTracing", recording_enabled)
     , enableTimed("enableTimed", recording_enabled)
-    , fw_port(sc_core::sc_gen_unique_name("fw"))
-    , bw_port(sc_core::sc_gen_unique_name("bw"))
+    , fw_port(fw_port)
+    , bw_port(bw_port)
     , mm(new RecodingMemoryManager())
     , b_timed_peq(this, &tlm2_recorder::btx_cb)
     , nb_timed_peq(this, &tlm2_recorder::nbtx_cb)
