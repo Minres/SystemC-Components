@@ -17,25 +17,22 @@ struct tlm_id_extension : public tlm::tlm_extension<tlm_id_extension> {
     uintptr_t id;
 };
 
-inline intptr_t getId(tlm::tlm_generic_payload& gp){
-//    auto ext = gp.get_extension<tlm_id_extension>();
-//    if(ext)
-//        return ext->id;
-//    else
-        return (intptr_t)&gp;
+inline uintptr_t getId(tlm::tlm_generic_payload& gp){
+   if(auto ext = gp.get_extension<tlm_id_extension>())
+        return ext->id;
+    else
+        return (uintptr_t)&gp;
 }
 
-inline intptr_t getId(tlm::tlm_generic_payload* gp){
-//    auto ext = gp->get_extension<tlm_id_extension>();
-//    if(ext)
-//        return ext->id;
-//    else
-        return (intptr_t)gp;
+inline uintptr_t getId(tlm::tlm_generic_payload* gp){
+    if(auto ext = gp->get_extension<tlm_id_extension>())
+        return ext->id;
+    else
+        return (uintptr_t)gp;
 }
 
-inline void setId(tlm::tlm_generic_payload& gp, unsigned id){
-    auto ext = gp.get_extension<tlm_id_extension>();
-    if(ext)
+inline void setId(tlm::tlm_generic_payload& gp, uintptr_t id){
+    if(auto ext = gp.get_extension<tlm_id_extension>())
         ext->id=id;
     else
         if(gp.has_mm())
