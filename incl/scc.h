@@ -36,8 +36,10 @@
 #include "scc/signal_initiator_mixin.h"
 #include "scc/signal_target_mixin.h"
 #include "scc/tagged_target_mixin.h"
+#ifdef WITH_CCI
 #include "scc/configurable_tracer.h"
 #include "scc/configurer.h"
+#endif
 #include "scc/ext_attribute.h"
 #include "scc/initiator_mixin.h"
 #include "scc/memory.h"

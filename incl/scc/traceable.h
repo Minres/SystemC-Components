@@ -17,8 +17,6 @@
 #ifndef _SCC_TRACABLE_H_
 #define _SCC_TRACABLE_H_
 
-#include <cci_cfg/cci_param_typed.h>
-
 namespace scc {
 /**
  * interface defining a traceable component, this overlaps with the trace function of sc_core::sc_object

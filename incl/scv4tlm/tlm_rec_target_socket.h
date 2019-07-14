@@ -80,7 +80,7 @@ public:
                              POL
 #endif
                              >(name)
-    , recorder(gen_name(name, "tx").c_str()) {
+    , recorder(gen_name(name, "tx").c_str(), fw_port, this->get_base_port()) {
     }
 
     virtual ~tlm_rec_target_socket() = default;
@@ -105,7 +105,7 @@ public:
         export_type *exp = &this->get_base_export();
         if (this == exp) {
             export_type::bind(recorder); // non-virtual function call
-            recorder.fw_port(ifs);
+            fw_port(ifs);
             recorder.bw_port(this->get_base_port());
         } else {
             exp->bind(ifs);
@@ -121,6 +121,7 @@ public:
     }
 
 protected:
+    sc_core::sc_port<fw_interface_type> fw_port;
     scv4tlm::tlm2_recorder<TYPES> recorder;
 };
 #endif
