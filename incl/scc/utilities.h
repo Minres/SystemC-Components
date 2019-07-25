@@ -48,7 +48,7 @@ template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args &&..
 }
 //! macros to simplify constructor lists
 #define NAMED(X, ...) X(#X, ##__VA_ARGS__)
-#define NAMEDD(X, T, ...) X(std::make_unique<T>(#X, ##__VA_ARGS__))
+#define NAMEDD(X, T, ...) X(scc::make_unique<T>(#X, ##__VA_ARGS__))
 #define NAMEDC(X, T, I, ...) X(T::create<I>(#X, ##__VA_ARGS__))
 //! macros to simplify declaration of members to trace
 #define TRACE_VAR(F, X) sc_core::sc_trace(F, X, std::string(this->name()) + "." #X)

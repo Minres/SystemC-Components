@@ -106,7 +106,6 @@ public:
         if (this == exp) {
             export_type::bind(recorder); // non-virtual function call
             fw_port(ifs);
-            recorder.bw_port(this->get_base_port());
         } else {
             exp->bind(ifs);
         }
