@@ -25,6 +25,7 @@ inline uintptr_t getId(tlm::tlm_generic_payload& gp){
 }
 
 inline uintptr_t getId(tlm::tlm_generic_payload* gp){
+	if(!gp) return 0;
     if(auto ext = gp->get_extension<tlm_id_extension>())
         return ext->id;
     else

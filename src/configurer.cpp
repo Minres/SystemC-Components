@@ -25,7 +25,6 @@
 #include <cci_configuration>
 #include <cci_utils/broker.h>
 
-#include <boost/algorithm/string/predicate.hpp>
 #include <fstream>
 
 scc::configurer::configurer(const std::string &filename)
