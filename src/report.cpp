@@ -78,13 +78,14 @@ std::string time2string(const sc_core::sc_time &t) {
     return oss.str();
 }
 
+unsigned type_field_wdth = 24;
 const std::string compose_message(const sc_report &rep) {
     std::stringstream os;
     os << "[" << std::setw(20) << time2string(sc_core::sc_time_stamp()) << "] ";
     if (rep.get_id() >= 0)
-        os << "("
-           << "IWEF"[rep.get_severity()] << rep.get_id() << ") ";
-    os << rep.get_msg_type();
+        os << "(" << "IWEF"[rep.get_severity()] << rep.get_id() << ") "<<rep.get_msg_type();
+    else
+      os << util::padded(rep.get_msg_type(), 24);
     if (*rep.get_msg()) os << ": " << rep.get_msg();
     if (rep.get_severity() > SC_INFO) {
         os << "\n         [FILE:" << rep.get_file_name() << ":" << rep.get_line_number() << "]";
@@ -146,7 +147,7 @@ std::streamsize scc::stream_redirection::xsputn(const char_type* s, std::streams
     return sz;
 }
 
-void scc::init_logging(logging::log_level level, bool print_time) {
+void scc::init_logging(logging::log_level level, unsigned type_field_width, bool print_time) {
     const std::array<int, 8> verbosity = {SC_NONE,   // Logging::NONE
                                           SC_LOW,    // Logging::FATAL
                                           SC_LOW,    // Logging::ERROR
@@ -155,6 +156,7 @@ void scc::init_logging(logging::log_level level, bool print_time) {
                                           SC_HIGH,   // logging::DEBUG
                                           SC_FULL,   // logging::TRACE
                                           SC_DEBUG}; // logging::DBGTRACE
+    type_field_wdth = type_field_width;
     LOGGER(DEFAULT)::reporting_level() = level;
     LOGGER(SystemC)::reporting_level() = level;
     LOGGER(SystemC)::print_time() = print_time;

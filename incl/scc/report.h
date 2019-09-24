@@ -36,7 +36,7 @@ namespace scc {
  *
  * @param level the logging level
  */
-void init_logging(logging::log_level level = logging::WARNING, bool print_time = false);
+void init_logging(logging::log_level level = logging::WARNING, unsigned type_field_width = 24, bool print_time = false);
 /**
  * the logger class
  */
@@ -155,7 +155,7 @@ protected:
 //! macro for fatal message output
 #define SCCFATAL(...) ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 
-#define SCMOD util::padded(this->name(), 24)
+#define SCMOD this->name()
 
 /**
  * deprecated logging macros, may cause macro name clashes
