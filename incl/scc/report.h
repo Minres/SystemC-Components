@@ -44,14 +44,17 @@ struct LogConfig {
   bool print_sys_time{false};
   bool print_sim_time{true};
   bool print_severity{true};
+  bool colored_output{true};
   std::string log_file_name{""};
 
-  LogConfig& setLogLevel(logging::log_level);
-  LogConfig& setFieldWidth( unsigned);
-  LogConfig& setPrintSysTime(bool);
-  LogConfig& setPrintSimTime(bool);
-  LogConfig& setPrintSeverity(bool);
-  LogConfig& setLogFileName(std::string&&);
+  LogConfig& logLevel(logging::log_level);
+  LogConfig& fieldWidth( unsigned);
+  LogConfig& printSysTime(bool);
+  LogConfig& printSimTime(bool);
+  LogConfig& printSeverity(bool);
+  LogConfig& coloredOutput(bool);
+  LogConfig& logFileName(std::string&&);
+  LogConfig& logFileName(std::string&);
 };
 /**
  * initializes the SystemC logging system with a particular configuration

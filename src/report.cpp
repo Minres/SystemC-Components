@@ -212,7 +212,7 @@ static void configure_logging() {
     sc_report_handler::set_handler(report_handler);
     spdlog::init_thread_pool(8192U, 1U); // queue with 8k items and 1 backing thread.
     log_cfg.console_logger = spdlog::stdout_color_mt<spdlog::async_factory>("console_logger");
-    log_cfg.console_logger->set_pattern("[%L] %v");
+    log_cfg.console_logger->set_pattern(log_cfg.colored_output?"%^[%L] %v%$":"[%L] %v");
     log_cfg.console_logger->set_level(
         static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
     if(log_cfg.log_file_name.size()){
@@ -239,32 +239,43 @@ void scc::init_logging(const scc::LogConfig& log_config){
   configure_logging();
 }
 
-scc::LogConfig& scc::LogConfig::setLogLevel(logging::log_level log_level) {
+scc::LogConfig& scc::LogConfig::logLevel(logging::log_level log_level) {
   this->level=log_level;
   return *this;
 }
 
-scc::LogConfig& scc::LogConfig::setFieldWidth(unsigned width) {
+scc::LogConfig& scc::LogConfig::fieldWidth(unsigned width) {
   this->msg_type_field_width=width;
   return *this;
 }
 
-scc::LogConfig& scc::LogConfig::setPrintSysTime(bool enable) {
+scc::LogConfig& scc::LogConfig::printSysTime(bool enable) {
   this->print_sys_time=enable;
   return *this;
 }
 
-scc::LogConfig& scc::LogConfig::setPrintSimTime(bool enable) {
+scc::LogConfig& scc::LogConfig::printSimTime(bool enable) {
   this->print_sim_time=enable;
   return *this;
 }
 
-scc::LogConfig& scc::LogConfig::setPrintSeverity(bool enable) {
+scc::LogConfig& scc::LogConfig::printSeverity(bool enable) {
   this->print_severity=enable;
   return *this;
 }
 
-scc::LogConfig& scc::LogConfig::setLogFileName(string&& name) {
+scc::LogConfig& scc::LogConfig::logFileName(string&& name) {
   this->log_file_name=name;
   return *this;
 }
+
+scc::LogConfig& scc::LogConfig::logFileName(string& name) {
+  this->log_file_name=name;
+  return *this;
+}
+
+scc::LogConfig& scc::LogConfig::coloredOutput(bool enable) {
+  this->colored_output=enable;
+  return *this;
+}
+
