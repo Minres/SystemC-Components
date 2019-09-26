@@ -25,18 +25,40 @@
 #include <util/logging.h>
 #include <util/ities.h>
 
-namespace logging {
-class SystemC {};
-class STDIO {};
-}
 namespace scc {
 
 /**
- * initializes the SystemC logging system to use logging::Logger with a particular logging level
+ * initializes the SystemC logging system with a particular logging level
  *
  * @param level the logging level
+ * @param type_field_width width of the message type field in output, setting to zero suppresses the message type
+ * @param print_time wheter to print the system time stamp
  */
 void init_logging(logging::log_level level = logging::WARNING, unsigned type_field_width = 24, bool print_time = false);
+/**
+ * the configuration class for the logging setup
+ */
+struct LogConfig {
+  logging::log_level level{logging::WARNING};
+  unsigned msg_type_field_width{24};
+  bool print_sys_time{false};
+  bool print_sim_time{true};
+  bool print_severity{true};
+  std::string log_file_name{""};
+
+  LogConfig& setLogLevel(logging::log_level);
+  LogConfig& setFieldWidth( unsigned);
+  LogConfig& setPrintSysTime(bool);
+  LogConfig& setPrintSimTime(bool);
+  LogConfig& setPrintSeverity(bool);
+  LogConfig& setLogFileName(std::string&&);
+};
+/**
+ * initializes the SystemC logging system with a particular configuration
+ *
+ * @param log_config the logging configuration
+ */
+void init_logging(const LogConfig& log_config);
 /**
  * the logger class
  */
@@ -203,6 +225,7 @@ public:
     void reset();
 protected:
     std::streamsize xsputn(const char_type* s, std::streamsize n) override;
+    int sync() override;
     std::ostream& os;
     logging::log_level level;
     std::streambuf* old_buf;
