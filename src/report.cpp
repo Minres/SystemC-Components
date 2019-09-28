@@ -27,6 +27,8 @@
 #include <spdlog/sinks/basic_file_sink.h>
 #include <tuple>
 #include <array>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 using namespace sc_core;
@@ -154,7 +156,12 @@ void report_handler(const sc_report &rep, const sc_actions &actions) {
     if (actions & SC_DISPLAY) log2logger(*log_cfg.console_logger, rep);
     if ((actions & SC_LOG) && log_cfg.file_logger) log2logger(*log_cfg.file_logger, rep);
     if (actions & SC_STOP) sc_stop();
-    if (actions & SC_ABORT) abort();
+    if (actions & SC_ABORT) {
+      log_cfg.console_logger->flush();
+      if(log_cfg.file_logger) log_cfg.file_logger->flush();
+      std::this_thread::sleep_for(std::chrono::milliseconds(10));
+      abort();
+    }
     if (actions & SC_THROW) throw rep;
 }
 }
