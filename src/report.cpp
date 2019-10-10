@@ -29,6 +29,18 @@
 #include <array>
 #include <chrono>
 #include <thread>
+#ifdef __GNUC__
+  #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100  + __GNUC_PATCHLEVEL__)
+  #if GCC_VERSION < 40900
+    #define USE_C_REGEX
+  #endif
+#endif
+
+#ifdef USE_C_REGEX
+  #include <regex.h>
+#else
+  #include <regex>
+#endif
 
 using namespace std;
 using namespace sc_core;
@@ -38,9 +50,21 @@ namespace {
 struct ExtLogConfig: public scc::LogConfig {
   shared_ptr<spdlog::logger> file_logger;
   shared_ptr<spdlog::logger> console_logger;
+#ifdef USE_C_REGEX
+  regex_t start_state;
+#else
+  regex reg_ex;
+#endif
   ExtLogConfig& operator=(const scc::LogConfig& o){
     scc::LogConfig::operator=(o);
     return *this;
+  }
+  bool match(const char* type){
+#ifdef USE_C_REGEX
+    return regexec(&start_state, type, 0, NULL, 0)==0;
+#else
+    return regex_search(type, reg_ex);
+#endif
   }
 } log_cfg;
 
@@ -94,7 +118,8 @@ string time2string(const sc_core::sc_time &t) {
     return oss.str();
 }
 
-const string compose_message(const sc_report &rep) {
+const string compose_message(const sc_report &rep, bool force=false) {
+  if(log_cfg.log_filter_regex.length()==0 || force || log_cfg.match(rep.get_msg_type())){
     stringstream os;
     if(log_cfg.print_sim_time) os << "[" << setw(20) << time2string(sc_core::sc_time_stamp()) << "] ";
     if (rep.get_id() >= 0)
@@ -111,6 +136,8 @@ const string compose_message(const sc_report &rep) {
         }
     }
     return os.str();
+  } else
+    return "";
 }
 
 inline log_level verbosity2log(int verb) {
@@ -124,21 +151,29 @@ inline void log2logger(spdlog::logger& logger, const sc_report &rep){
   case SC_INFO:
     switch(rep.get_verbosity()){
     case sc_core::SC_DEBUG:
-    case sc_core::SC_FULL:
-      logger.trace(compose_message(rep));
+    case sc_core::SC_FULL:{
+      auto msg = compose_message(rep);
+      if(msg.size()) logger.trace(msg);
       return;
-    case sc_core::SC_HIGH:
-      logger.debug(compose_message(rep));
+    }
+    case sc_core::SC_HIGH:{
+      auto msg = compose_message(rep);
+      if(msg.size()) logger.debug(msg);
       return;
-    default:
-      logger.info(compose_message(rep));
+    }
+    default:{
+      auto msg = compose_message(rep);
+      if(msg.size()) logger.info(msg);
+      return;
+    }
     }
     return;
-  case SC_WARNING: logger.warn(compose_message(rep));return;
-  case SC_ERROR:   logger.error(compose_message(rep));return;
-  case SC_FATAL:   logger.critical(compose_message(rep));return;
+    case SC_WARNING: logger.warn(compose_message(rep, true));return;
+    case SC_ERROR:   logger.error(compose_message(rep, true));return;
+    case SC_FATAL:   logger.critical(compose_message(rep, true));return;
   }
 }
+
 inline void log2logger(spdlog::logger& logger, logging::log_level lvl, const string& msg){
   switch(lvl){
   case logging::DBGTRACE:
@@ -159,7 +194,7 @@ void report_handler(const sc_report &rep, const sc_actions &actions) {
     if (actions & SC_ABORT) {
       log_cfg.console_logger->flush();
       if(log_cfg.file_logger) log_cfg.file_logger->flush();
-      std::this_thread::sleep_for(std::chrono::milliseconds(10));
+      this_thread::sleep_for(chrono::milliseconds(10));
       abort();
     }
     if (actions & SC_THROW) throw rep;
@@ -232,6 +267,13 @@ static void configure_logging() {
       log_cfg.file_logger->set_level(
           static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
     }
+    if(log_cfg.log_filter_regex.size()){
+#ifdef USE_C_REGEX
+     regcomp(&log_cfg.start_state, log_cfg.log_filter_regex.c_str(), REG_EXTENDED);
+#else
+      log_cfg.reg_ex=regex(log_cfg.log_filter_regex, regex::basic|regex::icase);
+#endif
+    }
 }
 
 void scc::init_logging(logging::log_level level, unsigned type_field_width, bool print_time) {
@@ -286,3 +328,12 @@ scc::LogConfig& scc::LogConfig::coloredOutput(bool enable) {
   return *this;
 }
 
+scc::LogConfig& scc::LogConfig::logFilterRegex(string&& expr) {
+  this->log_filter_regex=expr;
+  return *this;
+}
+
+scc::LogConfig& scc::LogConfig::logFilterRegex(string& expr) {
+  this->log_filter_regex=expr;
+  return *this;
+}

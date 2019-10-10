@@ -46,6 +46,7 @@ struct LogConfig {
   bool print_severity{true};
   bool colored_output{true};
   std::string log_file_name{""};
+  std::string log_filter_regex{""};
 
   LogConfig& logLevel(logging::log_level);
   LogConfig& fieldWidth( unsigned);
@@ -55,6 +56,8 @@ struct LogConfig {
   LogConfig& coloredOutput(bool);
   LogConfig& logFileName(std::string&&);
   LogConfig& logFileName(std::string&);
+  LogConfig& logFilterRegex(std::string&&);
+  LogConfig& logFilterRegex(std::string&);
 };
 /**
  * initializes the SystemC logging system with a particular configuration
