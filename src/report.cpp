@@ -271,7 +271,7 @@ static void configure_logging() {
 #ifdef USE_C_REGEX
      regcomp(&log_cfg.start_state, log_cfg.log_filter_regex.c_str(), REG_EXTENDED);
 #else
-      log_cfg.reg_ex=regex(log_cfg.log_filter_regex, regex::basic|regex::icase);
+     log_cfg.reg_ex=regex(log_cfg.log_filter_regex, regex::extended|regex::icase);
 #endif
     }
 }
