@@ -123,7 +123,7 @@ const string compose_message(const sc_report &rep, bool force=false) {
     stringstream os;
     if(log_cfg.print_sim_time) os << "[" << setw(20) << time2string(sc_core::sc_time_stamp()) << "] ";
     if (rep.get_id() >= 0)
-        os << "(" << "IWEF"[rep.get_severity()] << rep.get_id() << ") "<<rep.get_msg_type();
+        os << "(" << "IWEF"[rep.get_severity()] << rep.get_id() << ") "<<rep.get_msg_type() << ": ";
     else if(log_cfg.msg_type_field_width)
       os << util::padded(rep.get_msg_type(), log_cfg.msg_type_field_width) << ": ";
     if (*rep.get_msg()) os  << rep.get_msg();

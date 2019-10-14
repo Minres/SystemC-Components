@@ -132,7 +132,7 @@ bool iequals(const std::string& a, const std::string& b) {
  * @result string with the given length
  */
 inline std::string padded(std::string str, size_t width, bool show_ellipsis=true) {
-    assert(width>7);
+    if(width<7) return str;
     if (str.length() > width) {
         if (show_ellipsis){
             auto pos = str.size()-(width-6);
