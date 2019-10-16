@@ -161,7 +161,7 @@ protected:
  * logging macros
  */
 //! macro for debug trace level output
-#define SCCDBGTRC(...)                                                                                 \
+#define SCCTRACEALL(...)                                                                                 \
     if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)                      \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_DEBUG).type(__VA_ARGS__).get()
 //! macro for trace level output
