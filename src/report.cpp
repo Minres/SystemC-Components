@@ -190,7 +190,7 @@ inline void log2logger(spdlog::logger& logger, logging::log_level lvl, const str
 void report_handler(const sc_report &rep, const sc_actions &actions) {
     if (actions & SC_DISPLAY) log2logger(*log_cfg.console_logger, rep);
     if ((actions & SC_LOG) && log_cfg.file_logger) log2logger(*log_cfg.file_logger, rep);
-    if (actions & SC_STOP) sc_stop();
+    if (actions & SC_STOP) if(sc_is_running()) sc_stop();
     if (actions & SC_ABORT) {
       log_cfg.console_logger->flush();
       if(log_cfg.file_logger) log_cfg.file_logger->flush();
