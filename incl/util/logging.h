@@ -28,7 +28,7 @@
 #include <vector>
 
 //! log level definitions
-#define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE) L(DBGTRACE)
+#define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE) L(TRACEALL)
 #define DO_DESCRIPTION(e) #e,
 #define DO_ENUM(e) e,
 
@@ -36,15 +36,15 @@ namespace logging {
 //! array holding string representations of log levels
 static std::array<const char *const, 8> buffer = {{LEVELS(DO_DESCRIPTION)}};
 //! enum defining the log levels
-enum log_level { LEVELS(DO_ENUM) };
+enum log_level { LEVELS(DO_ENUM) DBGTRACE=TRACEALL };
 /**
  * safely convert an integer into a log level
  * @param logLevel the integer
  * @return the log level
  */
 inline log_level as_log_level(int logLevel) {
-    assert(logLevel >= NONE && logLevel <= TRACE);
-    std::array<const log_level, 8> m = {{NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE, DBGTRACE}};
+    assert(logLevel >= NONE && logLevel <= TRACEALL);
+    std::array<const log_level, 8> m = {{NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE, TRACEALL}};
     return m[logLevel];
 }
 /**
