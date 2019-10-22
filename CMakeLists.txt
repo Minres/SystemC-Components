@@ -37,6 +37,8 @@ set(LIB_SOURCES
     src/perf_estimator.cpp
     src/io-redirector.cpp
     src/ordered_semaphore.cpp
+    src/configurer.cpp
+    src/jsoncpp.cpp
 )
 
 if(CCI_FOUND)
@@ -44,8 +46,6 @@ if(CCI_FOUND)
 	    src/tracer_base.cpp
 	    src/tracer.cpp
 	    src/configurable_tracer.cpp
-	    src/configurer.cpp
-    	src/jsoncpp.cpp
     	src/value_registry.cpp
     )
 endif()
