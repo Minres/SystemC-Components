@@ -19,7 +19,9 @@
 
 #include "report.h"
 #include "utilities.h"
+#ifdef WITH_CCI
 #include <cci_configuration>
+#endif
 #include <json/json.h>
 
 namespace scc {
@@ -91,10 +93,12 @@ public:
      * @param value the value to put
      */
     template <typename T> void set_value(const std::string &hier_name, T value) {
+#ifdef WITH_CCI
         cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
         if (param_handle.is_valid()) {
             param_handle.set_cci_value(cci::cci_value(value));
         } else {
+#endif
             size_t pos = hier_name.find_last_of('.');
             sc_core::sc_module *mod =
                 dynamic_cast<sc_core::sc_module *>(sc_core::sc_find_object(hier_name.substr(0, pos).c_str()));
@@ -106,7 +110,9 @@ public:
                 else
                     SCERR() << "Could not set attribute value " << hier_name;
             }
+#ifdef WITH_CCI
         }
+#endif
     }
     /**
      * set a value of an sc_attribute from given configuration
@@ -143,8 +149,10 @@ protected:
 
     Json::Value root;
 
+#ifdef WITH_CCI
     cci::cci_originator cci_originator;
     cci::cci_broker_handle cci_broker;
+#endif
 };
 }
 

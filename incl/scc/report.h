@@ -25,18 +25,46 @@
 #include <util/logging.h>
 #include <util/ities.h>
 
-namespace logging {
-class SystemC {};
-class STDIO {};
-}
 namespace scc {
 
 /**
- * initializes the SystemC logging system to use logging::Logger with a particular logging level
+ * initializes the SystemC logging system with a particular logging level
  *
  * @param level the logging level
+ * @param type_field_width width of the message type field in output, setting to zero suppresses the message type
+ * @param print_time wheter to print the system time stamp
  */
-void init_logging(logging::log_level level = logging::WARNING, bool print_time = false);
+void init_logging(logging::log_level level = logging::WARNING, unsigned type_field_width = 24, bool print_time = false);
+/**
+ * the configuration class for the logging setup
+ */
+struct LogConfig {
+  logging::log_level level{logging::WARNING};
+  unsigned msg_type_field_width{24};
+  bool print_sys_time{false};
+  bool print_sim_time{true};
+  bool print_severity{true};
+  bool colored_output{true};
+  std::string log_file_name{""};
+  std::string log_filter_regex{""};
+
+  LogConfig& logLevel(logging::log_level);
+  LogConfig& fieldWidth( unsigned);
+  LogConfig& printSysTime(bool);
+  LogConfig& printSimTime(bool);
+  LogConfig& printSeverity(bool);
+  LogConfig& coloredOutput(bool);
+  LogConfig& logFileName(std::string&&);
+  LogConfig& logFileName(std::string&);
+  LogConfig& logFilterRegex(std::string&&);
+  LogConfig& logFilterRegex(std::string&);
+};
+/**
+ * initializes the SystemC logging system with a particular configuration
+ *
+ * @param log_config the logging configuration
+ */
+void init_logging(const LogConfig& log_config);
 /**
  * the logger class
  */
@@ -128,33 +156,80 @@ protected:
     const int line;
     const sc_core::sc_verbosity level;
 };
-//! macro for debug trace lavel output
-#define SCDBGTRC(...)                                                                                                  \
-    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)                                      \
+
+/**
+ * logging macros
+ */
+//! macro for debug trace level output
+#define SCCTRACEALL(...)                                                                                 \
+    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)                      \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_DEBUG).type(__VA_ARGS__).get()
 //! macro for trace level output
-#define SCTRACE(...)                                                                                                   \
-    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)                                       \
+#define SCCTRACE(...)                                                                                 \
+    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)                      \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_FULL).type(__VA_ARGS__).get()
 //! macro for debug level output
-#define SCDEBUG(...)                                                                                                   \
-    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_HIGH)                                       \
+#define SCCDEBUG(...)                                                                                 \
+    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_HIGH)                      \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_HIGH).type(__VA_ARGS__).get()
 //! macro for info level output
-#define SCINFO(...)                                                                                                    \
-    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM)                                     \
+#define SCCINFO(...)                                                                                  \
+    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM)                    \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for warning level output
-#define SCWARN(...)                                                                                                    \
-    ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCCWARN(...) ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for error level output
-#define SCERR(...) ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCCERR(...) ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for fatal message output
-#define SCFATAL(...)                                                                                                   \
-    ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCCFATAL(...) ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 
-#define SCMOD util::padded(this->name(), 24)
+#ifdef NDEBUG
+#define SCC_ASSERT(expr) ((void) 0)
+#else
+#define SCC_ASSERT(expr) ((void)((expr) ? 0 : (SC_REPORT_FATAL( ::sc_core::SC_ID_ASSERTION_FAILED_, #expr ), 0)))
+#endif
 
+#define SCMOD this->name()
+
+/**
+ * deprecated logging macros, may cause macro name clashes
+ */
+//! macro for debug trace level output
+#ifndef SCDBGTRC
+#define SCDBGTRC(...)                                                                                  \
+    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)                      \
+    ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_DEBUG).type(__VA_ARGS__).get()
+#endif
+//! macro for trace level output
+#ifndef SCTRACE
+#define SCTRACE(...)                                                                                  \
+    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)                      \
+    ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_FULL).type(__VA_ARGS__).get()
+//! macro for debug level output
+#endif
+#ifndef SCDEBUG
+#define SCDEBUG(...)                                                                                  \
+    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_HIGH)                      \
+    ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_HIGH).type(__VA_ARGS__).get()
+#endif
+//! macro for info level output
+#ifndef SCINFO
+#define SCINFO(...)                                                                                    \
+    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM)                     \
+    ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+//! macro for warning level output
+#endif
+#ifndef SCWARN
+#define SCWARN(...) ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#endif
+//! macro for error level output
+#ifndef SCERR
+#define SCERR(...) ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#endif
+//! macro for fatal message output
+#ifndef SCFATAL
+#define SCFATAL(...) ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#endif
 class stream_redirection: public std::stringbuf {
 public:
     stream_redirection(std::ostream& os, logging::log_level level);
@@ -162,6 +237,7 @@ public:
     void reset();
 protected:
     std::streamsize xsputn(const char_type* s, std::streamsize n) override;
+    int sync() override;
     std::ostream& os;
     logging::log_level level;
     std::streambuf* old_buf;

@@ -37,6 +37,8 @@ set(LIB_SOURCES
     src/perf_estimator.cpp
     src/io-redirector.cpp
     src/ordered_semaphore.cpp
+    src/configurer.cpp
+    src/jsoncpp.cpp
 )
 
 if(CCI_FOUND)
@@ -44,8 +46,6 @@ if(CCI_FOUND)
 	    src/tracer_base.cpp
 	    src/tracer.cpp
 	    src/configurable_tracer.cpp
-	    src/configurer.cpp
-    	src/jsoncpp.cpp
     	src/value_registry.cpp
     )
 endif()
@@ -79,7 +79,12 @@ set_target_properties(${LIBRARY_NAME} PROPERTIES
   PUBLIC_HEADER "${LibHeaders}" # specify the public headers
 )
 
-target_link_libraries(${LIBRARY_NAME} scc-util )
+target_link_libraries(${LIBRARY_NAME} scc-util ${CMAKE_DL_LIBS})
+if(${CMAKE_VERSION} VERSION_LESS "3.2.0")    
+    target_link_libraries(${LIBRARY_NAME} ${CMAKE_THREAD_LIBS_INIT})
+else()
+    target_link_libraries(${LIBRARY_NAME} Threads::Threads)
+endif()
 
 if(CCI_FOUND)
     target_compile_definitions(${LIBRARY_NAME} PUBLIC -DWITH_CCI)
