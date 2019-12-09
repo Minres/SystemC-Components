@@ -25,6 +25,7 @@
 #include <spdlog/async.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/basic_file_sink.h>
+#include <fstream>
 #include <tuple>
 #include <array>
 #include <chrono>
