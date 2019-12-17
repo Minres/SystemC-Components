@@ -319,6 +319,11 @@ scc::LogConfig& scc::LogConfig::printSeverity(bool enable) {
   return *this;
 }
 
+scc::LogConfig& scc::LogConfig::printMsgType(bool enable) {
+  this->print_msg_type=enable;
+  return *this;
+}
+
 scc::LogConfig& scc::LogConfig::logFileName(string&& name) {
   this->log_file_name=name;
   return *this;

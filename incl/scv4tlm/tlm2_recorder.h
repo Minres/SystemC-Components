@@ -418,10 +418,6 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type &trans, 
         (*req) = trans;
         req->parent = h;
         req->id = h.get_id();
-#ifdef DEBUG
-        cout << "notify addition of parent with id " << req->id << " to btx_handle_map with delay " << delay
-             << std::endl;
-#endif
         b_timed_peq.notify(*req, tlm::BEGIN_REQ, delay);
     }
 
@@ -464,10 +460,6 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type &trans, 
     b_trHandle[trans.get_command()]->end_transaction(h, delay.value(), sc_time_stamp());
     // and now the stuff for the timed tx
     if (enableTimed.value) {
-#ifdef DEBUG
-        cout << "notify removal of parent with id " << req->id << " to btx_handle_map with delay " << delay
-             << std::endl;
-#endif
         b_timed_peq.notify(*req, tlm::END_RESP, delay);
     }
 }
@@ -491,15 +483,9 @@ void tlm2_recorder<TYPES>::btx_cb(tlm_recording_payload &rec_parts, const typena
         h = b_trTimedHandle[rec_parts.get_command()]->begin_transaction(rec_parts.get_command());
         h.record_attribute("trans", tgd);
         h.add_relation(rel_str(PARENT_CHILD), rec_parts.parent);
-#ifdef DEBUG
-        cout << "adding parent with id " << rec_parts.id << " to btx_handle_map" << std::endl;
-#endif
         btx_handle_map[rec_parts.id] = h;
     } break;
     case tlm::END_RESP: {
-#ifdef DEBUG
-        cout << "retrieving parent with id " << rec_parts.id << " from btx_handle_map" << std::endl;
-#endif
         std::map<uint64, scv_tr_handle>::iterator it = btx_handle_map.find(rec_parts.id);
         sc_assert(it != btx_handle_map.end());
         h = it->second;
@@ -719,15 +705,9 @@ void tlm2_recorder<TYPES>::nbtx_cb(tlm_recording_payload &rec_parts, const typen
         h = nb_txReqHandle[rec_parts.get_command()]->begin_transaction();
         h.record_attribute("trans", tgd);
         h.add_relation(rel_str(PARENT_CHILD), rec_parts.parent);
-#ifdef NBDEBUG
-        cout << "adding parent with id " << rec_parts.id << " to nbtx_req_handle_map" << std::endl;
-#endif
         nbtx_req_handle_map[rec_parts.id] = h;
         break;
     case tlm::END_REQ:
-#ifdef NBDEBUG
-        cout << "retrieving parent with id " << rec_parts.id << " from nbtx_req_handle_map" << std::endl;
-#endif
         it = nbtx_req_handle_map.find(rec_parts.id);
         sc_assert(it != nbtx_req_handle_map.end());
         h = it->second;
@@ -736,9 +716,6 @@ void tlm2_recorder<TYPES>::nbtx_cb(tlm_recording_payload &rec_parts, const typen
         nbtx_last_req_handle_map[rec_parts.id] = h;
         break;
     case tlm::BEGIN_RESP:
-#ifdef NBDEBUG
-        cout << "retrieving parent with id " << rec_parts.id << " from nbtx_req_handle_map" << std::endl;
-#endif
         it = nbtx_req_handle_map.find(rec_parts.id);
         if (it != nbtx_req_handle_map.end()) {
             h = it->second;
@@ -758,9 +735,6 @@ void tlm2_recorder<TYPES>::nbtx_cb(tlm_recording_payload &rec_parts, const typen
         }
         break;
     case tlm::END_RESP:
-#ifdef NBDEBUG
-        cout << "retrieving parent with id " << rec_parts.id << " from nbtx_req_handle_map" << std::endl;
-#endif
         it = nbtx_req_handle_map.find(rec_parts.id);
         if (it != nbtx_req_handle_map.end()) {
             h = it->second;
