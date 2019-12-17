@@ -41,7 +41,7 @@ initiator<WIDTH>::initiator(const sc_module_name& nm): sc_module(nm) {
 
 template<unsigned WIDTH>
 inline void initiator<WIDTH>::bus_task() {
-    sc_dt::sc_biguint<WIDTH> data{0};
+    data_t data{0};
     while(1){
         wait(inqueue.get_event());
         while(auto* trans = inqueue.get_next_transaction()){

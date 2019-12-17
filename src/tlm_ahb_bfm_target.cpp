@@ -69,7 +69,7 @@ void target<WIDTH>::bfm_thread() {
                 }
                 if(data_payload){
                     auto* ext = data_payload->get_extension<ahb_extension>();
-                    sc_dt::sc_biguint<WIDTH> data{0};
+                    data_t data{0};
                     auto offset = WIDTH/8*beat_cnt;
                     if(data_payload->is_write()){
                         data = HWDATA_i.read();
