@@ -29,7 +29,7 @@ using namespace sc_core;
 using namespace scc;
 
 void tracer_base::descend(const sc_object *obj, bool trace_all) {
-    if(obj==(sc_core::sc_object*)this) return;
+    if(obj==this) return;
     const char *name = obj->name();
     const char *kind = obj->kind();
     if (strcmp(kind, "sc_signal") == 0) {
@@ -69,13 +69,7 @@ void tracer_base::descend(const sc_object *obj, bool trace_all) {
     GEN_TRACE(sc_dt::uint64);       \
     GEN_TRACE(sc_core::sc_time);    \
     GEN_TRACE(sc_dt::sc_bit);       \
-    GEN_TRACE(sc_dt::sc_logic);     \
-    GEN_TRACE(sc_dt::sc_int_base);  \
-    GEN_TRACE(sc_dt::sc_uint_base); \
-    GEN_TRACE(sc_dt::sc_signed);    \
-    GEN_TRACE(sc_dt::sc_unsigned);  \
-    GEN_TRACE(sc_dt::sc_bv_base);   \
-    GEN_TRACE(sc_dt::sc_lv_base)
+    GEN_TRACE(sc_dt::sc_logic);
 
 #ifdef SC_INCLUDE_FX
 #define GEN_TRACE_FX                                                                                                   \

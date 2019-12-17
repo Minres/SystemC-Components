@@ -254,7 +254,7 @@ static inline unsigned ilog2(uint32_t x) {
 }
 #else
 #include <limits.h>
-inline unsigned ilog2 (uint32_t val) {
+inline constexpr unsigned ilog2 (uint32_t val) {
     if (val == 0) return std::numeric_limits<uint32_t>::max();
     if (val == 1) return 0;
     auto ret = 0U;

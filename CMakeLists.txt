@@ -39,6 +39,8 @@ set(LIB_SOURCES
     src/ordered_semaphore.cpp
     src/configurer.cpp
     src/jsoncpp.cpp
+    src/tlm_ahb_bfm_initiator.cpp
+    src/tlm_ahb_bfm_target.cpp
 )
 
 if(CCI_FOUND)

@@ -114,9 +114,13 @@ void scc::configurer::dump_configuration(sc_core::sc_object *obj, Json::Value &p
     cci::cci_param_predicate pred{[hier_name](cci::cci_param_untyped_handle h) -> bool {
     	std::string h_name {h.name()};
     	auto sep = hier_name.length();
-    	return 	h_name.compare(0, sep-1, hier_name)==0 && // begins with hier_name
-				h_name[sep]=='.' && // has additional part
-				h_name.substr(sep+1).find('.')==h_name.npos; // but no other hierarchy separator
+    	if(h_name.length()>hier_name.length()){
+            auto path_match = h_name.compare(0, sep, hier_name)==0; // begins with hier_name
+            auto sep_match = h_name[sep]=='.' ; // has additional part
+            auto tail_nomatch = h_name.substr(sep+1).find('.')==h_name.npos; // but no other hierarchy separator
+            return path_match && sep_match && tail_nomatch;
+    	} else
+    	    return false;
     }};
     auto handles = cci_broker.get_param_handles(pred);
     for (auto &h : handles) {
