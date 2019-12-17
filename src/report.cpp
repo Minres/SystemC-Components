@@ -260,7 +260,14 @@ static void configure_logging() {
     sc_report_handler::set_handler(report_handler);
     spdlog::init_thread_pool(8192U, 1U); // queue with 8k items and 1 backing thread.
     log_cfg.console_logger = spdlog::stdout_color_mt<spdlog::async_factory>("console_logger");
-    log_cfg.console_logger->set_pattern(log_cfg.colored_output?"%^[%L] %v%$":"[%L] %v");
+    auto logger_fmt = log_cfg.print_severity?"[%L] %v":"%v";
+    if(log_cfg.colored_output){
+      std::ostringstream os;
+      os<<"%^"<<logger_fmt<<"%$";
+      log_cfg.console_logger->set_pattern(os.str());
+    } else
+      log_cfg.console_logger->set_pattern("[%L] %v");
+
     log_cfg.console_logger->set_level(
         static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
     if(log_cfg.log_file_name.size()){
