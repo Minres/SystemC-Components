@@ -28,11 +28,9 @@ public:
 
 protected:
 
-    virtual void try_trace_signal(const sc_core::sc_object *);
-
-    virtual void try_trace_port(const sc_core::sc_object *);
-
     virtual void descend(const sc_core::sc_object *, bool trace_all = false);
+
+    static void try_trace(sc_core::sc_trace_file* trace_file, const sc_object* object);
 
     sc_core::sc_trace_file *trf;
 };

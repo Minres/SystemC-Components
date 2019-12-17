@@ -50,31 +50,26 @@ scc::configurable_tracer::~configurable_tracer() {
     for (auto ptr : params) delete ptr;
 }
 
-void configurable_tracer::descend(const sc_core::sc_object *o, bool trace_all) {
-    if (o == this) return;
-    const auto* tr = dynamic_cast<const scc::traceable*>(o);
-    auto trace_enable = tr?tr->is_trace_enabled():get_trace_enabled(o, default_trace_enable);
-    const char *kind = o->kind();
-    if (strcmp(kind, "sc_signal") == 0 || strcmp(kind, "sc_clock") == 0) {
+void configurable_tracer::descend(const sc_core::sc_object *obj, bool trace_all) {
+    if (obj == this) return;
+    const auto* tr = dynamic_cast<const scc::traceable*>(obj);
+    auto trace_enable = tr?tr->is_trace_enabled():get_trace_enabled(obj, default_trace_enable);
+    const char *kind = obj->kind();
+    if (strcmp(kind, "tlm_signal") == 0) {
+        if(trace_enable) obj->trace(trf);
+        return;
+    } else if (strcmp(kind, "sc_vector") == 0) {
         if(trace_enable)
-            try_trace_signal(o);
-    } else if (strcmp(kind, "sc_inout") == 0 ||
-            strcmp(kind, "sc_out") == 0 ||
-            strcmp(kind, "sc_in") == 0 ||
-            strcmp(kind, "sc_port") == 0) {
+            for (auto o : obj->get_child_objects())
+                descend(o, trace_all);
+        return;
+    } else  if (strcmp(kind, "sc_module") == 0){
         if(trace_enable)
-            try_trace_port(o);
-    } else if (strcmp(kind, "tlm_signal") == 0) {
-        if(trace_enable)
-            o->trace(trf);
-        //    } else if (strcmp(kind, "sc_vector") == 0 || strcmp(kind, "sc_export") == 0) {
-        //        continue;
+            obj->trace(trf);
+        for (auto o : obj->get_child_objects())
+            descend(o, trace_all);
     } else
-        if (strcmp(kind, "sc_module") == 0 && trace_enable)
-            o->trace(trf);
-        for (auto obj : o->get_child_objects()){
-            descend(obj);
-        }
+        if(trace_enable) try_trace(trf, obj);
 }
 
 bool scc::configurable_tracer::get_trace_enabled(const sc_core::sc_object *obj, bool fall_back) {
