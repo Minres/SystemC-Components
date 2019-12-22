@@ -80,9 +80,12 @@ set_target_properties(verilated PROPERTIES
 )
 
 target_include_directories(verilated SYSTEM PRIVATE
-    ${VERILATOR_INCLUDE_DIR}
     ${VERILATOR_INCLUDE_DIR}/vltstd
     ${SYSTEMC_INCLUDE_DIRS}
+)
+
+target_include_directories(verilated SYSTEM PUBLIC
+    ${VERILATOR_INCLUDE_DIR}
 )
 
 if (CMAKE_CXX_COMPILER_ID MATCHES GNU)
