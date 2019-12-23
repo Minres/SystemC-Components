@@ -200,7 +200,7 @@ void report_handler(const sc_report &rep, const sc_actions &actions) {
     if (actions & SC_ABORT) {
       log_cfg.console_logger->flush();
       if(log_cfg.file_logger) log_cfg.file_logger->flush();
-      this_thread::sleep_for(chrono::milliseconds(10));
+      this_thread::sleep_for(chrono::milliseconds(100));
       abort();
     }
     if (actions & SC_THROW) throw rep;
@@ -267,7 +267,8 @@ static void configure_logging() {
       log_cfg.console_logger->set_pattern(os.str());
     } else
       log_cfg.console_logger->set_pattern("[%L] %v");
-
+    log_cfg.console_logger->flush_on(spdlog::level::err);
+    log_cfg.console_logger->flush_on(spdlog::level::critical);
     log_cfg.console_logger->set_level(
         static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
     if(log_cfg.log_file_name.size()){
