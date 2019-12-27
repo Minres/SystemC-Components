@@ -71,7 +71,9 @@ void tracer_base::try_trace(sc_trace_file* trace_file, const sc_object* object) 
 
     if(try_trace_obj<float>(trace_file, object)) return;
     if(try_trace_obj<double>(trace_file, object)) return;
+#if (SYSTEMC_VERSION>=20171012)
     if(try_trace_obj<sc_time>(trace_file, object)) return;
+#endif
     if(try_trace_obj<sc_bit>(trace_file, object)) return;
     if(try_trace_obj<sc_logic>(trace_file, object)) return;
 
