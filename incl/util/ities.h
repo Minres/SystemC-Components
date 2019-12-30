@@ -143,5 +143,25 @@ inline std::string padded(std::string str, size_t width, bool show_ellipsis=true
         return str+std::string(width-str.size(), ' ');
     }
 }
+/**
+ * return filename portion of a given path (as string)
+ * @param path
+ * @param delims
+ * @return
+ */
+template<class T>
+inline T base_name(T const & path, T const & delims = "/\\") {
+  return path.substr(path.find_last_of(delims) + 1);
+}
+/**
+ * return the basename (without extension) of a file name (as string)
+ * @param filename
+ * @return
+ */
+template<class T>
+inline T remove_ext(T const & filename) {
+  typename T::size_type const p(filename.find_last_of('.'));
+  return p > 0 && p != T::npos ? filename.substr(0, p) : filename;
+}
 }
 #endif /* _UTIL_ITIES_H_ */
