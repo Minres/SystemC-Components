@@ -22,6 +22,7 @@
 #include <type_traits>
 #include <vector>
 #include <assert.h>
+#include <sys/stat.h>
 
 // some helper functions
 template <unsigned int bit, unsigned int width, typename T> inline constexpr T bit_sub(T v) {
@@ -144,9 +145,28 @@ inline std::string padded(std::string str, size_t width, bool show_ellipsis=true
     }
 }
 /**
- * return filename portion of a given path (as string)
+ * checks if a file exists
+ * @param name the file name
+ * @return true if file exists and can be opened
+ */
+inline bool file_exists (const std::string& name) {
+  struct stat buffer;
+  return (stat (name.c_str(), &buffer) == 0);
+}
+/**
+ * return directory name portion of a given path (as string)
  * @param path
- * @param delims
+ * @param delims the path delimiters to use
+ * @return
+ */
+template<class T>
+inline T dir_name(T const & path, T const & delims = "/\\") {
+  return path.substr(0, path.find_last_of(delims));
+}
+/**
+ * return file name portion of a given path (as string)
+ * @param path
+ * @param delims the path delimiters to use
  * @return
  */
 template<class T>
@@ -154,7 +174,7 @@ inline T base_name(T const & path, T const & delims = "/\\") {
   return path.substr(path.find_last_of(delims) + 1);
 }
 /**
- * return the basename (without extension) of a file name (as string)
+ * return the base name (without extension) of a file name (as string)
  * @param filename
  * @return
  */
