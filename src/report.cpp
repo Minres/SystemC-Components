@@ -119,14 +119,14 @@ string time2string(const sc_core::sc_time &t) {
     return oss.str();
 }
 
-const string compose_message(const sc_report &rep, bool force=false) {
-  if(log_cfg.log_filter_regex.length()==0 || force || log_cfg.match(rep.get_msg_type())){
+const string compose_message(const sc_report &rep, const scc::LogConfig& cfg) {
+  if(rep.get_severity()>SC_INFO || cfg.log_filter_regex.length()==0 || log_cfg.match(rep.get_msg_type())){
     stringstream os;
-    if(log_cfg.print_sim_time) os << "[" << setw(20) << time2string(sc_core::sc_time_stamp()) << "] ";
+    if(cfg.print_sim_time) os << "[" << setw(20) << time2string(sc_core::sc_time_stamp()) << "] ";
     if (rep.get_id() >= 0)
         os << "(" << "IWEF"[rep.get_severity()] << rep.get_id() << ") "<<rep.get_msg_type() << ": ";
-    else if(log_cfg.msg_type_field_width)
-      os << util::padded(rep.get_msg_type(), log_cfg.msg_type_field_width) << ": ";
+    else if(cfg.msg_type_field_width)
+      os << util::padded(rep.get_msg_type(), cfg.msg_type_field_width) << ": ";
     if (*rep.get_msg()) os  << rep.get_msg();
     if (rep.get_severity() > SC_INFO) {
         os << "\n         [FILE:" << rep.get_file_name() << ":" << rep.get_line_number() << "]";
@@ -147,31 +147,21 @@ inline log_level verbosity2log(int verb) {
     return INFO;
 }
 
-inline void log2logger(spdlog::logger& logger, const sc_report &rep){
+inline void log2logger(spdlog::logger& logger, const sc_report &rep, const scc::LogConfig& cfg){
+  auto msg = compose_message(rep, cfg);
+  if(!msg.size()) return;
   switch(rep.get_severity()){
   case SC_INFO:
     switch(rep.get_verbosity()){
     case sc_core::SC_DEBUG:
-    case sc_core::SC_FULL:{
-      auto msg = compose_message(rep);
-      if(msg.size()) logger.trace(msg);
-      return;
+    case sc_core::SC_FULL: logger.trace(msg); break;
+    case sc_core::SC_HIGH: logger.debug(msg); break;
+    default: logger.info(msg); break;
     }
-    case sc_core::SC_HIGH:{
-      auto msg = compose_message(rep);
-      if(msg.size()) logger.debug(msg);
-      return;
-    }
-    default:{
-      auto msg = compose_message(rep);
-      if(msg.size()) logger.info(msg);
-      return;
-    }
-    }
-    return;
-    case SC_WARNING: logger.warn(compose_message(rep, true));return;
-    case SC_ERROR:   logger.error(compose_message(rep, true));return;
-    case SC_FATAL:   logger.critical(compose_message(rep, true));return;
+    break;
+  case SC_WARNING: logger.warn(msg);break;
+  case SC_ERROR:   logger.error(msg);break;
+  case SC_FATAL:   logger.critical(msg);break;
   }
 }
 
@@ -190,9 +180,13 @@ inline void log2logger(spdlog::logger& logger, logging::log_level lvl, const str
 
 void report_handler(const sc_report &rep, const sc_actions &actions) {
     if ((actions & SC_DISPLAY) && (!log_cfg.file_logger || rep.get_verbosity() < SC_HIGH ))
-        log2logger(*log_cfg.console_logger, rep);
-    if ((actions & SC_LOG) && log_cfg.file_logger )
-        log2logger(*log_cfg.file_logger, rep);
+        log2logger(*log_cfg.console_logger, rep, log_cfg);
+    if ((actions & SC_LOG) && log_cfg.file_logger ){
+        scc::LogConfig lcfg(log_cfg);
+        lcfg.print_sim_time=true;
+        if(!lcfg.msg_type_field_width)lcfg.msg_type_field_width=24;
+        log2logger(*log_cfg.file_logger, rep, lcfg);
+    }
     if (actions & SC_STOP) {
       if(sc_is_running()) sc_stop();
       log_cfg.console_logger->flush();
@@ -316,7 +310,7 @@ scc::LogConfig& scc::LogConfig::logLevel(logging::log_level log_level) {
   return *this;
 }
 
-scc::LogConfig& scc::LogConfig::fieldWidth(unsigned width) {
+scc::LogConfig& scc::LogConfig::msgTypeFieldWidth(unsigned width) {
   this->msg_type_field_width=width;
   return *this;
 }
@@ -333,11 +327,6 @@ scc::LogConfig& scc::LogConfig::printSimTime(bool enable) {
 
 scc::LogConfig& scc::LogConfig::printSeverity(bool enable) {
   this->print_severity=enable;
-  return *this;
-}
-
-scc::LogConfig& scc::LogConfig::printMsgType(bool enable) {
-  this->print_msg_type=enable;
   return *this;
 }
 
