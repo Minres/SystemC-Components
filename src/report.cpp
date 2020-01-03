@@ -189,8 +189,10 @@ inline void log2logger(spdlog::logger& logger, logging::log_level lvl, const str
 }
 
 void report_handler(const sc_report &rep, const sc_actions &actions) {
-    if (actions & SC_DISPLAY) log2logger(*log_cfg.console_logger, rep);
-    if ((actions & SC_LOG) && log_cfg.file_logger) log2logger(*log_cfg.file_logger, rep);
+    if ((actions & SC_DISPLAY) && (!log_cfg.file_logger || rep.get_verbosity() < SC_HIGH ))
+        log2logger(*log_cfg.console_logger, rep);
+    if ((actions & SC_LOG) && log_cfg.file_logger )
+        log2logger(*log_cfg.file_logger, rep);
     if (actions & SC_STOP) {
       if(sc_is_running()) sc_stop();
       log_cfg.console_logger->flush();
@@ -228,17 +230,32 @@ streamsize scc::stream_redirection::xsputn(const char_type* s, streamsize n) {
     return sz;
 }
 
+static const array<sc_severity, 8> severity = {
+    SC_FATAL,   // Logging::NONE
+    SC_FATAL,   // Logging::FATAL
+    SC_ERROR,   // Logging::ERROR
+    SC_WARNING, // Logging::WARNING
+    SC_INFO,    // Logging::INFO
+    SC_INFO,    // logging::DEBUG
+    SC_INFO,    // logging::TRACE
+    SC_INFO};   // logging::DBGTRACE
+static const array<int, 8> verbosity = {
+    SC_NONE,   // Logging::NONE
+    SC_LOW,    // Logging::FATAL
+    SC_LOW,    // Logging::ERROR
+    SC_LOW,    // Logging::WARNING
+    SC_MEDIUM, // Logging::INFO
+    SC_HIGH,   // logging::DEBUG
+    SC_FULL,   // logging::TRACE
+    SC_DEBUG}; // logging::DBGTRACE
+
 int scc::stream_redirection::sync(){
   if(level <= log_cfg.level){
       auto timestr = time2string(sc_core::sc_time_stamp());
       istringstream buf(str());
       string line;
       while(getline(buf, line)) {
-        stringstream os;
-        if(log_cfg.print_sim_time) os << "[" << setw(20) << time2string(sc_core::sc_time_stamp()) << "] ";
-        os  << line;
-        log2logger(*log_cfg.console_logger, level, os.str());
-        if (log_cfg.file_logger) log2logger(*log_cfg.file_logger, level, os.str());
+        ::sc_core::sc_report_handler::report(severity[level], "SystemC", line.c_str(), verbosity[level], "", 0);
       }
       str(string(""));
   }
@@ -246,14 +263,6 @@ int scc::stream_redirection::sync(){
 }
 
 static void configure_logging() {
-    const array<int, 8> verbosity = { SC_NONE,   // Logging::NONE
-                                      SC_LOW,    // Logging::FATAL
-                                      SC_LOW,    // Logging::ERROR
-                                      SC_LOW,    // Logging::WARNING
-                                      SC_MEDIUM, // Logging::INFO
-                                      SC_HIGH,   // logging::DEBUG
-                                      SC_FULL,   // logging::TRACE
-                                      SC_DEBUG}; // logging::DBGTRACE
     sc_report_handler::set_actions(SC_ERROR, SC_DEFAULT_ERROR_ACTIONS | SC_DISPLAY);
     sc_report_handler::set_actions(SC_FATAL, SC_DEFAULT_FATAL_ACTIONS);
     sc_report_handler::set_verbosity_level(verbosity[log_cfg.level]);
