@@ -41,12 +41,12 @@ set(LIB_SOURCES
     src/jsoncpp.cpp
     src/tlm_ahb_bfm_initiator.cpp
     src/tlm_ahb_bfm_target.cpp
+    src/tracer_base.cpp
+    src/tracer.cpp
 )
 
 if(CCI_FOUND)
     set(LIB_SOURCES ${LIB_SOURCES} 
-	    src/tracer_base.cpp
-	    src/tracer.cpp
 	    src/configurable_tracer.cpp
     	src/value_registry.cpp
     )
