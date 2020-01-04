@@ -46,6 +46,16 @@ configurable_tracer::configurable_tracer(const std::string &&name, file_type typ
     //        augment_object_hierarchical(o);
 }
 
+configurable_tracer::configurable_tracer(const std::string &&name, file_type type, sc_core::sc_trace_file* tf, bool default_enable)
+: tracer(std::move(name), type, tf)
+, cci_originator(this->name())
+, cci_broker(cci::cci_get_global_broker(cci_originator))
+, default_trace_enable(default_enable)
+{
+    //    for(auto* o:sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
+    //        augment_object_hierarchical(o);
+}
+
 scc::configurable_tracer::~configurable_tracer() {
     for (auto ptr : params) delete ptr;
 }

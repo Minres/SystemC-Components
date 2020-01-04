@@ -8,6 +8,7 @@
 #include <tlm/ahb/bfm/target.h>
 #include <tlm/ahb/ahb_tlm.h>
 #include <tlm/tlm_mm.h>
+#include <scc/report.h>
 #include <scc/utilities.h>
 
 using namespace tlm::ahb::bfm;
@@ -47,7 +48,8 @@ void target<WIDTH>::bfm_thread() {
                     ext->set_protection(HPROT_i.read());
                     ext->set_burst(HBURST_i.read());
                     size_t size=HSIZE_i.read();
-                    sc_assert(size<=log_width);
+                    if(size>log_width)
+                        SCCERR(SCMOD)<<"Access size ("<<size<<") is larger than bus width ("<<log_width<<")!";
                     unsigned length = (1<<size)*(1<<ext->get_burst());
                     gp->set_data_length(length);
                     gp->set_streaming_width(length);

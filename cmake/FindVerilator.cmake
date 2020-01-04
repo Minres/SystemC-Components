@@ -79,13 +79,10 @@ set_target_properties(verilated PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
 )
 
-target_include_directories(verilated SYSTEM PRIVATE
-    ${VERILATOR_INCLUDE_DIR}/vltstd
-    ${SYSTEMC_INCLUDE_DIRS}
-)
-
 target_include_directories(verilated SYSTEM PUBLIC
+    ${VERILATOR_INCLUDE_DIR}/vltstd
     ${VERILATOR_INCLUDE_DIR}
+    ${SYSTEMC_INCLUDE_DIRS}
 )
 
 if (CMAKE_CXX_COMPILER_ID MATCHES GNU)
