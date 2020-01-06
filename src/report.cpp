@@ -335,7 +335,7 @@ scc::LogConfig& scc::LogConfig::logFileName(string&& name) {
   return *this;
 }
 
-scc::LogConfig& scc::LogConfig::logFileName(string& name) {
+scc::LogConfig& scc::LogConfig::logFileName(const string& name) {
   this->log_file_name=name;
   return *this;
 }
@@ -350,7 +350,7 @@ scc::LogConfig& scc::LogConfig::logFilterRegex(string&& expr) {
   return *this;
 }
 
-scc::LogConfig& scc::LogConfig::logFilterRegex(string& expr) {
+scc::LogConfig& scc::LogConfig::logFilterRegex(const string& expr) {
   this->log_filter_regex=expr;
   return *this;
 }

@@ -55,9 +55,9 @@ struct LogConfig {
   LogConfig& printSeverity(bool);
   LogConfig& coloredOutput(bool);
   LogConfig& logFileName(std::string&&);
-  LogConfig& logFileName(std::string&);
+  LogConfig& logFileName(const std::string&);
   LogConfig& logFilterRegex(std::string&&);
-  LogConfig& logFilterRegex(std::string&);
+  LogConfig& logFilterRegex(const std::string&);
 };
 /**
  * initializes the SystemC logging system with a particular configuration
