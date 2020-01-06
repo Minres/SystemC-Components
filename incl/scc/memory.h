@@ -51,7 +51,7 @@ public:
         operation_cb=cb;
     }
 
-    bool set_dmi_callback(std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> cb){
+    void set_dmi_callback(std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> cb){
         dmi_cb=cb;
     }
 protected:
