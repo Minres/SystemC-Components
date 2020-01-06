@@ -103,6 +103,35 @@ inline std::vector<std::string> split(const std::string &s, char seperator) {
 	return results;
 */
 }
+
+/*! note: delimiter cannot contain NUL characters
+ */
+template <typename Range, typename Value = typename Range::value_type>
+std::string join(Range const& elements, const char *const delimiter) {
+    std::ostringstream os;
+    auto b = std::begin(elements), e = std::end(elements);
+    if (b != e) {
+        std::copy(b, std::prev(e), std::ostream_iterator<Value>(os, delimiter));
+        b = std::prev(e);
+    }
+    if (b != e)
+        os << *b;
+    return os.str();
+}
+
+/*! note: imput is assumed to not contain NUL characters
+ */
+template <typename Input, typename Output, typename Value = typename Output::value_type>
+void split(char delimiter, Output &output, Input const& input) {
+    for (auto cur = std::begin(input), beg = cur; ; ++cur) {
+        if (cur == std::end(input) || *cur == delimiter || !*cur) {
+            output.insert(std::end(output), Value(beg, cur));
+            if (cur == std::end(input) || !*cur)
+                break;
+            beg = std::next(cur);
+        }
+    }
+}
 /**
  * compare two string ignoring case
  * @param string a to compare
