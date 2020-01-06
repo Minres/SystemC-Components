@@ -28,20 +28,26 @@ target<WIDTH>::~target() {
 template<unsigned WIDTH>
 void target<WIDTH>::bfm_thread() {
     tlm::tlm_mm<>& mm = tlm_mm<>::get();
-    tlm::tlm_generic_payload* addr_payload=nullptr, *data_payload=nullptr;
     auto const log_width = scc::ilog2(WIDTH/8);
     auto beat_cnt = 0U;
+    wait(SC_ZERO_TIME);
     while(1){
         wait();
         if(!HRESETn_i.read()){
             HREADY_o.write(true);
+            data_payload=nullptr;
+            addr_payload=nullptr;
         } else  {
             if(HSEL_i.read()){
                 if(HTRANS_i.read()>0x1){ // HTRANS/BUSY or IDLE check
                     auto* gp=mm.allocate();
                     gp->acquire();
                     gp->set_address(HADDR_i.read());
-                    gp->set_command(HWRITE_i.read()?tlm::TLM_WRITE_COMMAND:tlm::TLM_READ_COMMAND);
+                    if(HWRITE_i.read())
+                        gp->set_write();
+                    else
+                        gp->set_read();
+                    //gp->set_command(HWRITE_i.read()?tlm::TLM_WRITE_COMMAND:tlm::TLM_READ_COMMAND);
                     auto* ext = new ahb_extension();
                     gp->set_extension(ext);
                     ext->set_locked(HMASTLOCK_i.read());
@@ -65,39 +71,42 @@ void target<WIDTH>::bfm_thread() {
                         addr_payload = gp;
                     }
                 }
+                if(data_payload && data_payload->is_write()) handle_data_phase(beat_cnt);
                 if(!data_payload){
                     data_payload=addr_payload;
                     addr_payload=nullptr;
                 }
-                if(data_payload){
-                    auto* ext = data_payload->get_extension<ahb_extension>();
-                    data_t data{0};
-                    auto offset = WIDTH/8*beat_cnt;
-                    if(data_payload->is_write()){
-                        data = HWDATA_i.read();
-                        for(size_t i=0, j=0;j<WIDTH/8; i+=8, ++j, ++offset)
-                            *(uint8_t*)(data_payload->get_data_ptr()+offset)=data.range(i+7,i).to_uint();
-                    } else {
-                        for(size_t j=0, k=0;k<WIDTH/8; j+=8, ++k, ++offset)
-                            data.range(j+7,j)=*(uint8_t*)(data_payload->get_data_ptr()+offset);
-                        HRDATA_o.write(data);
-
-                    }
-                    if(++beat_cnt==1<<ext->get_burst()){
-                        if(data_payload->is_write()){
-                            sc_time delay;
-                            isckt->b_transport(*data_payload, delay);
-                        }
-                        beat_cnt=0;
-                        data_payload->release();
-                        data_payload=nullptr;
-                    }
-                }
+                if(data_payload && data_payload->is_read()) handle_data_phase(beat_cnt);
             }
         }
     }
 }
 
+template<unsigned WIDTH>
+void target<WIDTH>::handle_data_phase(unsigned& beat_cnt){
+    auto* ext = data_payload->get_extension<ahb_extension>();
+    data_t data{0};
+    auto offset = WIDTH/8*beat_cnt;
+    if(data_payload->is_write()){
+        data = HWDATA_i.read();
+        for(size_t i=0, j=0;j<WIDTH/8; i+=8, ++j, ++offset)
+            *(uint8_t*)(data_payload->get_data_ptr()+offset)=data.range(i+7,i).to_uint();
+    } else {
+        for(size_t j=0, k=0;k<WIDTH/8; j+=8, ++k, ++offset)
+            data.range(j+7,j)=*(uint8_t*)(data_payload->get_data_ptr()+offset);
+        HRDATA_o.write(data);
+
+    }
+    if(++beat_cnt==1<<ext->get_burst()){
+        if(data_payload->is_write()){
+            sc_time delay;
+            isckt->b_transport(*data_payload, delay);
+        }
+        beat_cnt=0;
+        data_payload->release();
+        data_payload=nullptr;
+    }
+}
 template class tlm::ahb::bfm::target<32>;
 template class tlm::ahb::bfm::target<64>;
 template class tlm::ahb::bfm::target<128>;

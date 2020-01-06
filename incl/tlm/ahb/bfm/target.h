@@ -41,6 +41,9 @@ public:
     virtual ~target();
 private:
     void bfm_thread();
+    void handle_data_phase(unsigned& beat_cnt);
+    tlm::tlm_generic_payload* addr_payload{nullptr};
+    tlm::tlm_generic_payload* data_payload{nullptr};
     sc_core::sc_fifo<tlm::tlm_generic_payload*> active{"active_tx", 1};
 };
 
