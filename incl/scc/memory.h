@@ -33,7 +33,7 @@ namespace scc {
  *
  *  TODO: add some more attributes/parameters to configure access time and type (DMI allowed, read only, etc)
  */
-template <unsigned long long SIZE, unsigned BUSWIDTH = 32, bool LOG_ACCESS = false>
+template <unsigned long long SIZE, unsigned BUSWIDTH = 32>
 class memory : public sc_core::sc_module {
 public:
     //! the target socket to connect to TLM
@@ -45,34 +45,46 @@ public:
      */
     memory(const sc_core::sc_module_name &nm);
 
+    constexpr unsigned long long getSize() const {return SIZE;}
+
+    void set_operation_callback(std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&)> cb){
+        operation_cb=cb;
+    }
+
+    bool set_dmi_callback(std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> cb){
+        dmi_cb=cb;
+    }
 protected:
     //! the real memory structure
     util::sparse_array<uint8_t, SIZE> mem;
 
-private:
+public:
     //!! handle the memory operation independent on interface function used
     int handle_operation(tlm::tlm_generic_payload &trans);
     //! handle the dmi functionality
     bool handle_dmi(tlm::tlm_generic_payload &gp, tlm::tlm_dmi &dmi_data);
+    std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&)> operation_cb;
+    std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> dmi_cb;
 };
 
-template <unsigned long long SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
-memory<SIZE, BUSWIDTH, LOG_ACCESS>::memory(const sc_core::sc_module_name &nm)
+template <unsigned long long SIZE, unsigned BUSWIDTH>
+memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name &nm)
 : sc_module(nm)
 , NAMED(target) {
     // Register callback for incoming b_transport interface method call
-    target.register_b_transport([=](tlm::tlm_generic_payload &gp, sc_core::sc_time &delay) -> void {
-        auto count = this->handle_operation(gp);
+    target.register_b_transport([this](tlm::tlm_generic_payload &gp, sc_core::sc_time &delay) -> void {
+        operation_cb?operation_cb(*this, gp):handle_operation(gp);
     });
-    target.register_transport_dbg(
-        [this](tlm::tlm_generic_payload &gp) -> unsigned { return this->handle_operation(gp); });
+    target.register_transport_dbg([this](tlm::tlm_generic_payload &gp) -> unsigned {
+        return operation_cb?operation_cb(*this, gp):handle_operation(gp);
+    });
     target.register_get_direct_mem_ptr([this](tlm::tlm_generic_payload &gp, tlm::tlm_dmi &dmi_data) -> bool {
-        return this->handle_dmi(gp, dmi_data);
+        return dmi_cb?dmi_cb(*this, gp, dmi_data):handle_dmi(gp, dmi_data);
     });
 }
 
-template <unsigned long long SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
-int memory<SIZE, BUSWIDTH, LOG_ACCESS>::handle_operation(tlm::tlm_generic_payload &trans) {
+template <unsigned long long SIZE, unsigned BUSWIDTH>
+int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload &trans) {
     sc_dt::uint64 adr = trans.get_address();
     uint8_t *ptr = trans.get_data_ptr();
     unsigned len = trans.get_data_length();
@@ -93,14 +105,7 @@ int memory<SIZE, BUSWIDTH, LOG_ACCESS>::handle_operation(tlm::tlm_generic_payloa
     }
 
     tlm::tlm_command cmd = trans.get_command();
-    if (LOG_ACCESS) {
-        if (adr >= 0x20 && adr < 0x60)
-            SCWARN() << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex
-                         << adr - 0x20 << "(0x" << (adr) << ")" << std::dec;
-        else
-            SCWARN() << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr
-                         << std::dec;
-    }
+    SCCTRACE(SCMOD) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr;
     if (cmd == tlm::TLM_READ_COMMAND) {
         if (mem.is_allocated(adr)) {
             const auto &p = mem(adr / mem.page_size);
@@ -120,8 +125,8 @@ int memory<SIZE, BUSWIDTH, LOG_ACCESS>::handle_operation(tlm::tlm_generic_payloa
     return len;
 }
 
-template <unsigned long long SIZE, unsigned BUSWIDTH, bool LOG_ACCESS>
-inline bool memory<SIZE, BUSWIDTH, LOG_ACCESS>::handle_dmi(tlm::tlm_generic_payload &gp, tlm::tlm_dmi &dmi_data) {
+template <unsigned long long SIZE, unsigned BUSWIDTH>
+inline bool memory<SIZE, BUSWIDTH>::handle_dmi(tlm::tlm_generic_payload &gp, tlm::tlm_dmi &dmi_data) {
     auto &p = mem(gp.get_address() / mem.page_size);
     dmi_data.set_start_address(gp.get_address() & ~mem.page_addr_mask);
     // TODO: fix to provide the correct end address
