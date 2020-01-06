@@ -58,7 +58,13 @@ mark_as_advanced(VERILATOR_INCLUDE_DIR)
 find_package_handle_standard_args(Verilator REQUIRED_VARS
     VERILATOR_EXECUTABLE VERILATOR_COVERAGE_EXECUTABLE VERILATOR_INCLUDE_DIR)
 
-add_library(verilated STATIC
+set_source_files_properties(
+    ${VERILATOR_INCLUDE_DIR}/verilated_cov.cpp
+    PROPERTIES
+    COMPILE_DEFINITIONS "VM_COVERAGE=1"
+)
+
+set(SOURCES 
     ${VERILATOR_INCLUDE_DIR}/verilated.cpp
     ${VERILATOR_INCLUDE_DIR}/verilated_cov.cpp
     ${VERILATOR_INCLUDE_DIR}/verilated_dpi.cpp
@@ -66,11 +72,7 @@ add_library(verilated STATIC
     ${VERILATOR_INCLUDE_DIR}/verilated_vcd_sc.cpp
 )
 
-set_source_files_properties(
-    ${VERILATOR_INCLUDE_DIR}/verilated_cov.cpp
-    PROPERTIES
-    COMPILE_DEFINITIONS "VM_COVERAGE=1"
-)
+add_library(verilated STATIC ${SOURCES})
 
 target_link_libraries(verilated PRIVATE systemc)
 
@@ -115,4 +117,52 @@ if (CMAKE_CXX_COMPILER_ID MATCHES GNU)
     )
 elseif (CMAKE_CXX_COMPILER_ID MATCHES Clang)
     target_compile_options(verilated PRIVATE -Wno-everything)
+endif()
+
+add_library(verilated_custom STATIC ${SOURCES})
+
+target_link_libraries(verilated_custom PRIVATE systemc)
+
+set_target_properties(verilated_custom PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
+    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
+)
+
+target_include_directories(verilated_custom SYSTEM PUBLIC
+    ${VERILATOR_INCLUDE_DIR}/vltstd
+    ${VERILATOR_INCLUDE_DIR}
+    ${SYSTEMC_INCLUDE_DIRS}
+)
+
+target_compile_definitions(verilated_custom PRIVATE VL_USER_FINISH VL_USER_STOP VL_USER_FATAL)
+if (CMAKE_CXX_COMPILER_ID MATCHES GNU)
+    target_compile_options(verilated_custom PRIVATE
+        -Wno-attributes
+        -Wno-cast-qual
+        -Wno-cast-equal
+        -Wno-float-equal
+        -Wno-suggest-override
+        -Wno-conversion
+        -Wno-unused-parameter
+        -Wno-effc++
+        -Wno-format
+        -Wno-format-nonliteral
+        -Wno-missing-declarations
+        -Wno-old-style-cast
+        -Wno-shadow
+        -Wno-sign-conversion
+        -Wno-strict-overflow
+        -Wno-suggest-attribute=noreturn
+        -Wno-suggest-final-methods
+        -Wno-suggest-final-types
+        -Wno-switch-default
+        -Wno-switch-enum
+        -Wno-undef
+        -Wno-inline
+        -Wno-variadic-macros
+        -Wno-suggest-attribute=format
+        -Wno-zero-as-null-pointer-constant
+    )
+elseif (CMAKE_CXX_COMPILER_ID MATCHES Clang)
+    target_compile_options(verilated_custom PRIVATE -Wno-everything)
 endif()
