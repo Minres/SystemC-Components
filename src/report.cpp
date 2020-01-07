@@ -267,7 +267,9 @@ static void configure_logging() {
     sc_report_handler::set_verbosity_level(verbosity[log_cfg.level]);
     sc_report_handler::set_handler(report_handler);
     spdlog::init_thread_pool(8192U, 1U); // queue with 8k items and 1 backing thread.
-    log_cfg.console_logger = spdlog::stdout_color_mt<spdlog::async_factory>("console_logger");
+    log_cfg.console_logger = log_cfg.log_async ?
+        spdlog::stdout_color_mt<spdlog::async_factory>("console_logger") :
+        spdlog::stdout_color_mt("console_logger") ;
     auto logger_fmt = log_cfg.print_severity?"[%L] %v":"%v";
     if(log_cfg.colored_output){
       std::ostringstream os;
@@ -308,6 +310,12 @@ void scc::init_logging(logging::log_level level, unsigned type_field_width, bool
 void scc::init_logging(const scc::LogConfig& log_config){
   log_cfg=log_config;
   configure_logging();
+}
+
+void scc::set_logging_level(logging::log_level level){
+  log_cfg.level = level;
+  sc_report_handler::set_verbosity_level(verbosity[log_cfg.level]);
+  log_cfg.console_logger->set_level(static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
 }
 
 scc::LogConfig& scc::LogConfig::logLevel(logging::log_level log_level) {
@@ -357,5 +365,10 @@ scc::LogConfig& scc::LogConfig::logFilterRegex(string&& expr) {
 
 scc::LogConfig& scc::LogConfig::logFilterRegex(const string& expr) {
   this->log_filter_regex=expr;
+  return *this;
+}
+
+scc::LogConfig& scc::LogConfig::logAsync(bool v) {
+  this->log_async=v;
   return *this;
 }
