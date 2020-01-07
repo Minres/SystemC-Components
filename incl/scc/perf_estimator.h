@@ -49,8 +49,6 @@ class perf_estimator : public sc_core::sc_module {
     };
 
 public:
-    //! yes, we have some SystemC processes
-    SC_HAS_PROCESS(perf_estimator);// NOLINT
     /**
      * default constructor
      */
@@ -62,10 +60,11 @@ public:
 
 protected:
     //! SystemC callbacks
+    void end_of_elaboration() override;
     void start_of_simulation() override;
     void end_of_simulation() override;
     //! the recorded time stamps
-    time_stamp sos, eos;
+    time_stamp soc, eoe, sos, eos;
 };
 
 } /* namespace scc */

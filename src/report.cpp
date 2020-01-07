@@ -200,6 +200,11 @@ void report_handler(const sc_report &rep, const sc_actions &actions) {
       abort();
     }
     if (actions & SC_THROW) throw rep;
+    if(!sc_is_running()) {
+      log_cfg.console_logger->flush();
+      if(log_cfg.file_logger) log_cfg.file_logger->flush();
+      this_thread::sleep_for(chrono::milliseconds(10));
+    }
 }
 }
 
