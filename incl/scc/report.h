@@ -47,17 +47,20 @@ struct LogConfig {
   bool colored_output{true};
   std::string log_file_name{""};
   std::string log_filter_regex{""};
+  bool log_async{true};
 
   LogConfig& logLevel(logging::log_level);
-  LogConfig& fieldWidth( unsigned);
+  LogConfig& msgTypeFieldWidth(unsigned);
   LogConfig& printSysTime(bool);
   LogConfig& printSimTime(bool);
   LogConfig& printSeverity(bool);
   LogConfig& coloredOutput(bool);
   LogConfig& logFileName(std::string&&);
-  LogConfig& logFileName(std::string&);
+  LogConfig& logFileName(const std::string&);
   LogConfig& logFilterRegex(std::string&&);
-  LogConfig& logFilterRegex(std::string&);
+  LogConfig& logFilterRegex(const std::string&);
+  LogConfig& logAsync(bool);
+
 };
 /**
  * initializes the SystemC logging system with a particular configuration
@@ -65,6 +68,12 @@ struct LogConfig {
  * @param log_config the logging configuration
  */
 void init_logging(const LogConfig& log_config);
+/**
+ * sets the SystemC logging level
+ *
+ * @param level the logging level
+ */
+void set_logging_level(logging::log_level level);
 /**
  * the logger class
  */

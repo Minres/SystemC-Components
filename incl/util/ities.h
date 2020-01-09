@@ -22,6 +22,7 @@
 #include <type_traits>
 #include <vector>
 #include <assert.h>
+#include <sys/stat.h>
 
 // some helper functions
 template <unsigned int bit, unsigned int width, typename T> inline constexpr T bit_sub(T v) {
@@ -102,6 +103,35 @@ inline std::vector<std::string> split(const std::string &s, char seperator) {
 	return results;
 */
 }
+
+/*! note: delimiter cannot contain NUL characters
+ */
+template <typename Range, typename Value = typename Range::value_type>
+std::string join(Range const& elements, const char *const delimiter) {
+    std::ostringstream os;
+    auto b = std::begin(elements), e = std::end(elements);
+    if (b != e) {
+        std::copy(b, std::prev(e), std::ostream_iterator<Value>(os, delimiter));
+        b = std::prev(e);
+    }
+    if (b != e)
+        os << *b;
+    return os.str();
+}
+
+/*! note: imput is assumed to not contain NUL characters
+ */
+template <typename Input, typename Output, typename Value = typename Output::value_type>
+void split(char delimiter, Output &output, Input const& input) {
+    for (auto cur = std::begin(input), beg = cur; ; ++cur) {
+        if (cur == std::end(input) || *cur == delimiter || !*cur) {
+            output.insert(std::end(output), Value(beg, cur));
+            if (cur == std::end(input) || !*cur)
+                break;
+            beg = std::next(cur);
+        }
+    }
+}
 /**
  * compare two string ignoring case
  * @param string a to compare
@@ -142,6 +172,45 @@ inline std::string padded(std::string str, size_t width, bool show_ellipsis=true
     } else {
         return str+std::string(width-str.size(), ' ');
     }
+}
+/**
+ * checks if a file exists
+ * @param name the file name
+ * @return true if file exists and can be opened
+ */
+inline bool file_exists (const std::string& name) {
+  struct stat buffer;
+  return (stat (name.c_str(), &buffer) == 0);
+}
+/**
+ * return directory name portion of a given path (as string)
+ * @param path
+ * @param delims the path delimiters to use
+ * @return
+ */
+template<class T>
+inline T dir_name(T const & path, T const & delims = "/\\") {
+  return path.substr(0, path.find_last_of(delims));
+}
+/**
+ * return file name portion of a given path (as string)
+ * @param path
+ * @param delims the path delimiters to use
+ * @return
+ */
+template<class T>
+inline T base_name(T const & path, T const & delims = "/\\") {
+  return path.substr(path.find_last_of(delims) + 1);
+}
+/**
+ * return the base name (without extension) of a file name (as string)
+ * @param filename
+ * @return
+ */
+template<class T>
+inline T remove_ext(T const & filename) {
+  typename T::size_type const p(filename.find_last_of('.'));
+  return p > 0 && p != T::npos ? filename.substr(0, p) : filename;
 }
 }
 #endif /* _UTIL_ITIES_H_ */

@@ -35,7 +35,7 @@ public:
     /**
      *
      */
-    virtual bool is_trace_enabled(){ return true;}
+    virtual bool is_trace_enabled() const { return true;}
 };
 
 } /* namespace scc */

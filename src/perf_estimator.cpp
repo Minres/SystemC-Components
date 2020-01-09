@@ -32,9 +32,15 @@ namespace scc {
 using namespace sc_core;
 
 perf_estimator::perf_estimator()
-: sc_module(sc_module_name(sc_gen_unique_name("perf_estimator", true))) {}
+: sc_module(sc_module_name(sc_gen_unique_name("perf_estimator", true))) {soc.set();}
 
-perf_estimator::~perf_estimator() = default;
+perf_estimator::~perf_estimator() {
+  time_stamp eod; eod.set();
+  SCCINFO() << "constr & elab time: " <<(eoe.proc_clock_stamp - soc.proc_clock_stamp);
+  SCCINFO() << "simulation time:    " <<(eos.proc_clock_stamp - sos.proc_clock_stamp);
+}
+
+void perf_estimator::end_of_elaboration() {eoe.set();}
 
 void perf_estimator::start_of_simulation() { sos.set(); }
 
@@ -47,7 +53,7 @@ void perf_estimator::end_of_simulation() {
     if (elapsed_sim > 0) {
         double wall_perf = elapsed_wall / elapsed_sim;
         double proc_perf = elapsed_proc / elapsed_sim;
-        LOG(INFO) << "Wall clock (process clock) based simulation real time factor is " << wall_perf << "(" << proc_perf
+        SCCINFO(SCMOD) << "Wall clock (process clock) based simulation real time factor is " << wall_perf << "(" << proc_perf
                   << ")";
     }
 }

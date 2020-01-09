@@ -26,6 +26,7 @@
 #include <string>
 #include <sys/time.h>
 #include <vector>
+#include <cstring>
 
 //! log level definitions
 #define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE) L(TRACEALL)
@@ -46,6 +47,22 @@ inline log_level as_log_level(int logLevel) {
     assert(logLevel >= NONE && logLevel <= TRACEALL);
     std::array<const log_level, 8> m = {{NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE, TRACEALL}};
     return m[logLevel];
+}
+/**
+ * read a log level from input stream e.g. used by boost::lexical_cast
+ * @param is input stream holding the string representation
+ * @param val the value holding the resulting value
+ * @return the input stream
+ */
+inline std::istream & operator>>(std::istream & is,  log_level& val){
+  std::string buf; is >> buf;
+  for(auto i=0U; i<=log_level::TRACEALL; ++i){
+    if(strcmp(buf.c_str(), buffer[i])==0) {
+      val=as_log_level(i);
+      return is;
+    }
+  }
+  return is;
 }
 /**
  * get the current host time as string
