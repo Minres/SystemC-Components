@@ -188,20 +188,14 @@ void report_handler(const sc_report &rep, const sc_actions &actions) {
         log2logger(*log_cfg.file_logger, rep, lcfg);
     }
     if (actions & SC_STOP) {
-      if(sc_is_running()) sc_stop();
-      log_cfg.console_logger->flush();
-      if(log_cfg.file_logger) log_cfg.file_logger->flush();
       this_thread::sleep_for(chrono::milliseconds(log_cfg.level*10));
+      if(sc_is_running()) sc_stop();
     }
     if (actions & SC_ABORT) {
-      log_cfg.console_logger->flush();
-      if(log_cfg.file_logger) log_cfg.file_logger->flush();
       this_thread::sleep_for(chrono::milliseconds(log_cfg.level*20));
       abort();
     }
     if (actions & SC_THROW) {
-      log_cfg.console_logger->flush();
-      if(log_cfg.file_logger) log_cfg.file_logger->flush();
       this_thread::sleep_for(chrono::milliseconds(log_cfg.level*20));
       throw rep;
     }
@@ -282,8 +276,7 @@ static void configure_logging() {
       log_cfg.console_logger->set_pattern(os.str());
     } else
       log_cfg.console_logger->set_pattern("[%L] %v");
-    log_cfg.console_logger->flush_on(spdlog::level::err);
-    log_cfg.console_logger->flush_on(spdlog::level::critical);
+    log_cfg.console_logger->flush_on(spdlog::level::warn);
     log_cfg.console_logger->set_level(
         static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
     if(log_cfg.log_file_name.size()){
@@ -295,6 +288,7 @@ static void configure_logging() {
           spdlog::basic_logger_mt<spdlog::async_factory>("file_logger", log_cfg.log_file_name):
           spdlog::basic_logger_mt("file_logger", log_cfg.log_file_name);
       log_cfg.file_logger->set_pattern("[%8l] %v");
+      log_cfg.file_logger->flush_on(spdlog::level::warn);
       log_cfg.file_logger->set_level(
           static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
     }
