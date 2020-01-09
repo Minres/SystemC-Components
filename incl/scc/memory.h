@@ -25,6 +25,7 @@
 #include "utilities.h"
 #include <tlm.h>
 #include <util/sparse_array.h>
+#include <util/mt19937_rng.h>
 
 namespace scc {
 
@@ -113,7 +114,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload &trans) {
             std::copy(p.data() + offs, p.data() + offs + len, ptr);
         } else {
             // no allocated page so return randomized data
-            for (size_t i = 0; i < len; i++) ptr[i] = rand() % 256;
+            for (size_t i = 0; i < len; i++) ptr[i] = util::MT19937::uniform() % 256;
         }
     } else if (cmd == tlm::TLM_WRITE_COMMAND) {
         auto &p = mem(adr / mem.page_size);

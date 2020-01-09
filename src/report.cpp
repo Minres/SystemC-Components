@@ -191,19 +191,24 @@ void report_handler(const sc_report &rep, const sc_actions &actions) {
       if(sc_is_running()) sc_stop();
       log_cfg.console_logger->flush();
       if(log_cfg.file_logger) log_cfg.file_logger->flush();
-      this_thread::sleep_for(chrono::milliseconds(10));
+      this_thread::sleep_for(chrono::milliseconds(log_cfg.level*10));
     }
     if (actions & SC_ABORT) {
       log_cfg.console_logger->flush();
       if(log_cfg.file_logger) log_cfg.file_logger->flush();
-      this_thread::sleep_for(chrono::milliseconds(100));
+      this_thread::sleep_for(chrono::milliseconds(log_cfg.level*20));
       abort();
     }
-    if (actions & SC_THROW) throw rep;
+    if (actions & SC_THROW) {
+      log_cfg.console_logger->flush();
+      if(log_cfg.file_logger) log_cfg.file_logger->flush();
+      this_thread::sleep_for(chrono::milliseconds(log_cfg.level*20));
+      throw rep;
+    }
     if(!sc_is_running()) {
       log_cfg.console_logger->flush();
       if(log_cfg.file_logger) log_cfg.file_logger->flush();
-      this_thread::sleep_for(chrono::milliseconds(10));
+      this_thread::sleep_for(chrono::milliseconds(log_cfg.level*10));
     }
 }
 }
@@ -266,7 +271,7 @@ static void configure_logging() {
     sc_report_handler::set_actions(SC_FATAL, SC_DEFAULT_FATAL_ACTIONS);
     sc_report_handler::set_verbosity_level(verbosity[log_cfg.level]);
     sc_report_handler::set_handler(report_handler);
-    spdlog::init_thread_pool(8192U, 1U); // queue with 8k items and 1 backing thread.
+    spdlog::init_thread_pool(1024U, log_cfg.log_file_name.size()?2U:1U); // queue with 8k items and 1 backing thread.
     log_cfg.console_logger = log_cfg.log_async ?
         spdlog::stdout_color_mt<spdlog::async_factory>("console_logger") :
         spdlog::stdout_color_mt("console_logger") ;
@@ -286,7 +291,9 @@ static void configure_logging() {
         ofstream ofs;
         ofs.open (log_cfg.log_file_name, ios::out | ios::trunc);
       }
-      log_cfg.file_logger = spdlog::basic_logger_mt<spdlog::async_factory>("file_logger", log_cfg.log_file_name);
+      log_cfg.file_logger = log_cfg.log_async ?
+          spdlog::basic_logger_mt<spdlog::async_factory>("file_logger", log_cfg.log_file_name):
+          spdlog::basic_logger_mt("file_logger", log_cfg.log_file_name);
       log_cfg.file_logger->set_pattern("[%8l] %v");
       log_cfg.file_logger->set_level(
           static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
