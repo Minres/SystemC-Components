@@ -21,6 +21,8 @@
 #include <bitset>
 #include <type_traits>
 #include <vector>
+#include <iterator>
+#include <sstream>
 #include <assert.h>
 #include <sys/stat.h>
 

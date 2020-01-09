@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _SYSC_REPORT_H_
-#define _SYSC_REPORT_H_
+#ifndef _SCC_REPORT_H_
+#define _SCC_REPORT_H_
 
 #include "utilities.h"
 #include <iomanip>
@@ -254,4 +254,4 @@ protected:
 
 }
 
-#endif /* _SYSC_REPORT_H_ */
+#endif /* _SCC_REPORT_H_ */
