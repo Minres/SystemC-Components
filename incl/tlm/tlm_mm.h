@@ -74,6 +74,10 @@ typename tlm_mm<TYPES>::gp_t* tlm_mm<TYPES>::allocate() {
     } else {
         ptr = new gp_t(this);
     }
+    ptr->set_mm(this);
+    ptr->reset();
+    ptr->set_data_ptr(nullptr);
+    ptr->set_byte_enable_ptr(nullptr);
     return ptr;
 }
 
