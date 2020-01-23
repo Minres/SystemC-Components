@@ -11,9 +11,26 @@
 #include <tlm>
 
 namespace tlm {
+template<typename T>
+class pool_allocator {
+public:
+    enum {CHUNK_SIZE=4096};
+
+    void* allocate();
+
+    void free(void* p);
+
+    void resize();
+
+private:
+    using chunk_type = uint8_t[sizeof(T)];
+    std::vector<std::array<chunk_type, CHUNK_SIZE>*> chunks;
+    std::deque<void*> free_list;
+};
+
 template<typename TYPES = tlm_base_protocol_types>
 class tlm_mm: public tlm::tlm_mm_interface {
-    using gp_t = typename TYPES::tlm_payload_type;
+    using payload_type = typename TYPES::tlm_payload_type;
 public:
     /**
      * @brief accessor function of the singleton
@@ -29,14 +46,14 @@ public:
      * @brief get a plain tlm_payload_type without extensions
      * @return the tlm_payload_type
      */
-    gp_t* allocate();
+    payload_type* allocate();
     /**
      * @brief get a tlm_payload_type with registered extension
      * @return the tlm_payload_type
      */
     template<typename PEXT>
-    gp_t* allocate(){
-        gp_t* ptr = allocate();
+    payload_type* allocate(){
+        auto* ptr = allocate();
         ptr->set_auto_extension(new PEXT);
         return ptr;
     }
@@ -44,18 +61,34 @@ public:
      * @brief return the extension into the memory pool (removing the extensions)
      * @param trans the returning transaction
      */
-    void  free(gp_t* trans) override;
+    void  free(payload_type* trans) override;
 
 private:
     tlm_mm(){}
-    struct access{
-        gp_t* trans;
-        tlm_mm::access* next;
-        tlm_mm::access* prev;
-    };
-    access* free_list = nullptr;
-    access* empties = nullptr;
+    pool_allocator<payload_type> allocator;
 };
+
+template<typename T>
+inline void* pool_allocator<T>::allocate() {
+    if (!free_list.size()) resize();
+    auto ret = free_list.back();
+    free_list.pop_back();
+    memset(ret, 0, sizeof(T));
+    return ret;
+}
+
+template<typename T>
+inline void pool_allocator<T>::free(void *p) {
+    if (p) free_list.push_back(p);
+}
+
+template<typename T>
+inline void pool_allocator<T>::resize() {
+    auto* chunk = new std::array<chunk_type, CHUNK_SIZE>();
+    chunks.push_back(chunk);
+    for (auto& p : *chunk)
+        free_list.push_back(&p[0]);
+}
 
 template<typename TYPES>
 tlm_mm<TYPES>& tlm_mm<TYPES>::get() {
@@ -64,37 +97,17 @@ tlm_mm<TYPES>& tlm_mm<TYPES>::get() {
 }
 
 template<typename TYPES>
-typename tlm_mm<TYPES>::gp_t* tlm_mm<TYPES>::allocate() {
-    gp_t* ptr;
-    if (free_list) {
-        ptr = free_list->trans;
-        empties = free_list;
-        free_list = free_list->next;
-        ptr->reset();
-    } else {
-        ptr = new gp_t(this);
-    }
-    ptr->set_mm(this);
-    ptr->reset();
-    ptr->set_data_ptr(nullptr);
-    ptr->set_byte_enable_ptr(nullptr);
-    return ptr;
+typename tlm_mm<TYPES>::payload_type* tlm_mm<TYPES>::allocate() {
+    auto* ptr = allocator.allocate();
+    return new (ptr) payload_type(this);
 }
 
 template<typename TYPES>
-void tlm_mm<TYPES>::free(gp_t* trans) {
-    trans->free_all_extensions();
+void tlm_mm<TYPES>::free(payload_type* trans) {
     trans->reset();
-    if (!empties) {
-        empties = new access;
-        empties->next = free_list;
-        empties->prev = nullptr;
-        if (free_list)
-            free_list->prev = empties;
-    }
-    free_list = empties;
-    free_list->trans = trans;
-    empties = free_list->prev;
+    trans->~payload_type();
+    allocator.free(trans);
 }
+
 }
 #endif /* _TLM_TLM_MM_H_ */
