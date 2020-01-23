@@ -79,7 +79,7 @@ struct ahb_extension:  public tlm::tlm_extension<ahb_extension>
      * @brief the copy constructor
      * @param the extension to copy from
      */
-    ahb_extension(const ahb_extension* o){}
+    ahb_extension(const ahb_extension &o) = default;
     /**
      * @brief the clone function to create deep copies of
      * @return pointer to heap-allocated extension
@@ -169,7 +169,7 @@ inline void ahb_extension::set_burst(burst_e b) {
 }
 
 inline tlm::tlm_extension_base* ahb_extension::clone() const {
-    return new ahb_extension(this);
+    return new ahb_extension(*this);
 }
 
 inline void ahb_extension::copy_from(const tlm::tlm_extension_base& ext) {
