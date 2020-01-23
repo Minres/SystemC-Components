@@ -43,6 +43,7 @@ struct LogConfig {
   unsigned msg_type_field_width{24};
   bool print_sys_time{false};
   bool print_sim_time{true};
+  bool print_delta{false};
   bool print_severity{true};
   bool colored_output{true};
   std::string log_file_name{""};
@@ -53,6 +54,7 @@ struct LogConfig {
   LogConfig& msgTypeFieldWidth(unsigned);
   LogConfig& printSysTime(bool);
   LogConfig& printSimTime(bool);
+  LogConfig& printDelta(bool);
   LogConfig& printSeverity(bool);
   LogConfig& coloredOutput(bool);
   LogConfig& logFileName(std::string&&);

@@ -122,7 +122,12 @@ string time2string(const sc_core::sc_time &t) {
 const string compose_message(const sc_report &rep, const scc::LogConfig& cfg) {
   if(rep.get_severity()>SC_INFO || cfg.log_filter_regex.length()==0 || log_cfg.match(rep.get_msg_type())){
     stringstream os;
-    if(cfg.print_sim_time) os << "[" << setw(20) << time2string(sc_core::sc_time_stamp()) << "] ";
+    if(cfg.print_sim_time){
+      os << "[" << setw(20) << time2string(sc_core::sc_time_stamp());
+      if(cfg.print_delta)
+        os <<"("<<sc_core::sc_delta_count()<<")";
+      os << "] ";
+    }
     if (rep.get_id() >= 0)
         os << "(" << "IWEF"[rep.get_severity()] << rep.get_id() << ") "<<rep.get_msg_type() << ": ";
     else if(cfg.msg_type_field_width)
@@ -336,6 +341,11 @@ scc::LogConfig& scc::LogConfig::printSysTime(bool enable) {
 
 scc::LogConfig& scc::LogConfig::printSimTime(bool enable) {
   this->print_sim_time=enable;
+  return *this;
+}
+
+scc::LogConfig& scc::LogConfig::printDelta(bool enable) {
+  this->print_delta=enable;
   return *this;
 }
 

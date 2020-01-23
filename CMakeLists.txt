@@ -1,13 +1,21 @@
 cmake_minimum_required(VERSION 2.8)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
 
-project (scc)
-
 # Set the version number of your project here (format is MAJOR.MINOR.PATCHLEVEL - e.g. 1.0.0)
 set(VERSION_MAJOR "0")
 set(VERSION_MINOR "0")
 set(VERSION_PATCH "1")
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
+
+if(${CMAKE_VERSION} VERSION_LESS "3.0") 
+    project(scc)
+else()
+    if(POLICY CMP0048)
+      cmake_policy(SET CMP0048 NEW) # CMake 3.0.0
+    endif()
+    project(scc VERSION ${VERSION})
+endif()
+
 
 include(Common)
 
