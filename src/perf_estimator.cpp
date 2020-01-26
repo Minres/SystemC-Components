@@ -36,8 +36,8 @@ perf_estimator::perf_estimator()
 
 perf_estimator::~perf_estimator() {
   time_stamp eod; eod.set();
-  SCCINFO() << "constr & elab time: " <<(eoe.proc_clock_stamp - soc.proc_clock_stamp);
-  SCCINFO() << "simulation time:    " <<(eos.proc_clock_stamp - sos.proc_clock_stamp);
+  SCCINFO(SCMOD) << "constr & elab time: " <<(eoe.proc_clock_stamp - soc.proc_clock_stamp)<<"s";
+  SCCINFO(SCMOD) << "simulation time:    " <<(eos.proc_clock_stamp - sos.proc_clock_stamp)<<"s";
 }
 
 void perf_estimator::end_of_elaboration() {eoe.set();}

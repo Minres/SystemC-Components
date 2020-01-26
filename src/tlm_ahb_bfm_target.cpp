@@ -39,8 +39,9 @@ void target<WIDTH>::bfm_thread() {
             addr_payload=nullptr;
         } else  {
             if(HSEL_i.read()){
+                tlm::tlm_generic_payload* gp{nullptr};
                 if(HTRANS_i.read()>0x1){ // HTRANS/BUSY or IDLE check
-                    auto* gp=mm.allocate();
+                    gp=mm.allocate();
                     gp->acquire();
                     gp->set_address(HADDR_i.read());
                     if(HWRITE_i.read())
@@ -60,10 +61,6 @@ void target<WIDTH>::bfm_thread() {
                     gp->set_data_length(length);
                     gp->set_streaming_width(length);
                     gp->set_data_ptr(new uint8_t[length]);
-                    if(gp->is_read()){
-                        sc_time delay;
-                        isckt->b_transport(*gp, delay);
-                    }
                     if(addr_payload)
                         HREADY_o.write(false);
                     else {
@@ -72,6 +69,10 @@ void target<WIDTH>::bfm_thread() {
                     }
                 }
                 if(data_payload && data_payload->is_write()) handle_data_phase(beat_cnt);
+                if(gp && gp->is_read()){
+                    sc_time delay;
+                    isckt->b_transport(*gp, delay);
+                }
                 if(!data_payload){
                     data_payload=addr_payload;
                     addr_payload=nullptr;
@@ -84,16 +85,20 @@ void target<WIDTH>::bfm_thread() {
 
 template<unsigned WIDTH>
 void target<WIDTH>::handle_data_phase(unsigned& beat_cnt){
+    auto const width = WIDTH/8;
     auto* ext = data_payload->get_extension<ahb_extension>();
+    auto start_offs = data_payload->get_address()&(width-1);
+    sc_assert((start_offs+data_payload->get_data_length())<=width);
     data_t data{0};
-    auto offset = WIDTH/8*beat_cnt;
+    auto offset = width*beat_cnt;
+    auto len = std::min(data_payload->get_data_length(), width);
     if(data_payload->is_write()){
         data = HWDATA_i.read();
-        for(size_t i=0, j=0;j<WIDTH/8; i+=8, ++j, ++offset)
+        for(size_t i=start_offs*8, j=0; j<len; i+=8, ++j, ++offset)
             *(uint8_t*)(data_payload->get_data_ptr()+offset)=data.range(i+7,i).to_uint();
     } else {
-        for(size_t j=0, k=0;k<WIDTH/8; j+=8, ++k, ++offset)
-            data.range(j+7,j)=*(uint8_t*)(data_payload->get_data_ptr()+offset);
+        for(size_t i=start_offs*8, j=0; j<len; i+=8, ++j, ++offset)
+            data.range(i+7,i)=*(uint8_t*)(data_payload->get_data_ptr()+offset);
         HRDATA_o.write(data);
 
     }

@@ -8,26 +8,15 @@
 #ifndef _TLM_TLM_MM_H_
 #define _TLM_TLM_MM_H_
 
+#include <util/pool_allocator.h>
 #include <tlm>
 
 namespace tlm {
-template<typename T>
-class pool_allocator {
-public:
-    enum {CHUNK_SIZE=4096};
 
-    void* allocate();
-
-    void free(void* p);
-
-    void resize();
-
-private:
-    using chunk_type = uint8_t[sizeof(T)];
-    std::vector<std::array<chunk_type, CHUNK_SIZE>*> chunks;
-    std::deque<void*> free_list;
-};
-
+/**
+ * a tlm memory manager which can be used as singleton or as local memory manager. It uses the pool_allocator
+ * as singleton.
+ */
 template<typename TYPES = tlm_base_protocol_types>
 class tlm_mm: public tlm::tlm_mm_interface {
     using payload_type = typename TYPES::tlm_payload_type;
@@ -38,10 +27,30 @@ public:
      */
     static tlm_mm& get();
     /**
-     * @brief remove the copy constructor
+     * @brief default constructor
      * @param
      */
-    tlm_mm(tlm_mm& ) = delete;
+    tlm_mm():allocator(util::pool_allocator<payload_type>::get()){}
+    /**
+     * @brief deleted copy constructor
+     * @param
+     */
+    tlm_mm(const tlm_mm& ) = delete;
+    /**
+     * @brief deleted move copy constructor
+     * @param
+     */
+    tlm_mm(tlm_mm&& ) = delete;
+    /**
+     * @brief deleted copy assignment
+     * @param
+     */
+    tlm_mm& operator=(const tlm_mm& other) = delete;
+    /**
+     * @brief deleted move assignment
+     * @param
+     */
+    tlm_mm& operator=(tlm_mm&& other) = delete;
     /**
      * @brief get a plain tlm_payload_type without extensions
      * @return the tlm_payload_type
@@ -64,31 +73,8 @@ public:
     void  free(payload_type* trans) override;
 
 private:
-    tlm_mm(){}
-    pool_allocator<payload_type> allocator;
+    util::pool_allocator<payload_type>& allocator;
 };
-
-template<typename T>
-inline void* pool_allocator<T>::allocate() {
-    if (!free_list.size()) resize();
-    auto ret = free_list.back();
-    free_list.pop_back();
-    memset(ret, 0, sizeof(T));
-    return ret;
-}
-
-template<typename T>
-inline void pool_allocator<T>::free(void *p) {
-    if (p) free_list.push_back(p);
-}
-
-template<typename T>
-inline void pool_allocator<T>::resize() {
-    auto* chunk = new std::array<chunk_type, CHUNK_SIZE>();
-    chunks.push_back(chunk);
-    for (auto& p : *chunk)
-        free_list.push_back(&p[0]);
-}
 
 template<typename TYPES>
 tlm_mm<TYPES>& tlm_mm<TYPES>::get() {
