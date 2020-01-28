@@ -21,9 +21,10 @@
 #endif
 
 #include "utilities.h"
-#include <sstream>
 #include <tlm>
 #include <tlm_utils/peq_with_get.h>
+#include <sstream>
+#include <functional>
 
 namespace scc {
 /**
