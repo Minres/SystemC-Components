@@ -8,6 +8,8 @@
 #ifndef _UTIL_POOL_ALLOCATOR_H_
 #define _UTIL_POOL_ALLOCATOR_H_
 
+#include <deque>
+#include <vector>
 
 namespace util {
 template<typename T>
