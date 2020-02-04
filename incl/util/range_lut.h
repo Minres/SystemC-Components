@@ -98,7 +98,7 @@ public:
 protected:
     // Loki::AssocVector<uint64_t, lut_entry> m_lut;
     std::map<uint64_t, lut_entry> m_lut;
-    size_t m_size;
+    size_t m_size{0};
 };
 
 /**
