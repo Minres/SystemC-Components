@@ -10,6 +10,9 @@
 
 #include <util/pool_allocator.h>
 #include <tlm>
+#ifdef HAVE_GETENV
+#include <cstdlib>
+#endif
 
 namespace tlm {
 
@@ -52,6 +55,10 @@ public:
      */
     tlm_mm& operator=(tlm_mm&& other) = delete;
     /**
+     * @brief destructor
+     */
+    ~tlm_mm();
+    /**
      * @brief get a plain tlm_payload_type without extensions
      * @return the tlm_payload_type
      */
@@ -86,6 +93,18 @@ template<typename TYPES>
 typename tlm_mm<TYPES>::payload_type* tlm_mm<TYPES>::allocate() {
     auto* ptr = allocator.allocate();
     return new (ptr) payload_type(this);
+}
+
+template<typename TYPES>
+inline tlm_mm<TYPES>::~tlm_mm() {
+#ifdef HAVE_GETENV
+  auto* check = getenv ("TLM_MM_CHECK");
+  if(check && strcasecmp(check, "INFO")){
+      auto diff = allocator.get_capacity()-allocator.get_free_entries_count();
+      if(diff)
+        std::cout<<__FUNCTION__<<": detected memory leak upon destruction, "<<diff<<" of "<< allocator.get_capacity()<<" entries are not free'd"<<std::endl;
+  }
+#endif
 }
 
 template<typename TYPES>

@@ -38,6 +38,10 @@ find_package(Threads)
 find_package(ZLIB)
 find_package(${SystemCPackage} REQUIRED)
 
+include(CheckSymbolExists)
+# Check for function getenv()
+check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)
+
 set(LIB_SOURCES
     src/sc_logic_7.cpp
     src/utilities.cpp
@@ -82,6 +86,9 @@ endif()
 # Define the scc library
 add_library(${LIBRARY_NAME} ${LIB_SOURCES})
 target_include_directories (${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
+if(HAVE_GETENV)
+	target_compile_definitions(${LIBRARY_NAME} PUBLIC HAVE_GETENV)
+endif()
 FILE(GLOB LibHeaders incl/*.h)
 set_target_properties(${LIBRARY_NAME} PROPERTIES
   VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.

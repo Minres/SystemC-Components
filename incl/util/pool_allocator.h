@@ -12,10 +12,9 @@
 #include <vector>
 
 namespace util {
-template<typename T>
+template<typename T, unsigned CHUNK_SIZE=4096>
 class pool_allocator {
 public:
-    enum {CHUNK_SIZE=4096};
 
     void* allocate();
 
@@ -35,6 +34,10 @@ public:
         static pool_allocator inst;
         return inst;
     }
+
+    size_t get_capacity();
+
+    size_t get_free_entries_count();
 private:
     pool_allocator() = default;
     using chunk_type = uint8_t[sizeof(T)];
@@ -42,8 +45,8 @@ private:
     std::deque<void*> free_list;
 };
 
-template<typename T>
-inline void* pool_allocator<T>::allocate() {
+template<typename T, unsigned CHUNK_SIZE>
+inline void* pool_allocator<T, CHUNK_SIZE>::allocate() {
     if (!free_list.size()) resize();
     auto ret = free_list.back();
     free_list.pop_back();
@@ -51,21 +54,30 @@ inline void* pool_allocator<T>::allocate() {
     return ret;
 }
 
-template<typename T>
-inline void pool_allocator<T>::free(void *p) {
+template<typename T, unsigned CHUNK_SIZE>
+inline void pool_allocator<T, CHUNK_SIZE>::free(void *p) {
     if (p) free_list.push_back(p);
 }
 
-template<typename T>
-inline void pool_allocator<T>::resize() {
+template<typename T, unsigned CHUNK_SIZE>
+inline void pool_allocator<T, CHUNK_SIZE>::resize() {
     auto* chunk = new std::array<chunk_type, CHUNK_SIZE>();
     chunks.push_back(chunk);
     for (auto& p : *chunk)
         free_list.push_back(&p[0]);
 }
 
-
+template<typename T, unsigned CHUNK_SIZE>
+inline size_t pool_allocator<T, CHUNK_SIZE>::get_capacity() {
+  return chunks.size()*CHUNK_SIZE;
 }
 
+template<typename T, unsigned CHUNK_SIZE>
+inline size_t pool_allocator<T, CHUNK_SIZE>::get_free_entries_count() {
+  return free_list.size();
+}
+
+
+}
 
 #endif /* _UTIL_POOL_ALLOCATOR_H_ */
