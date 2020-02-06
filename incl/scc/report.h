@@ -77,6 +77,12 @@ void init_logging(const LogConfig& log_config);
  */
 void set_logging_level(logging::log_level level);
 /**
+ * sets the cycle base for logging. If this is set the logging prints cycles instead of times
+ *
+ * @param level the logging level
+ */
+void set_cycle_base(sc_core::sc_time period);
+/**
  * the logger class
  */
 template <sc_core::sc_severity SEVERITY> struct ScLogger {
