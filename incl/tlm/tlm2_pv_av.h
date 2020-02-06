@@ -8,6 +8,7 @@
 #ifndef _TLM_TLM2_PV_AV_H_
 #define _TLM_TLM2_PV_AV_H_
 
+#include <util/ities.h>
 #include <tlm>
 #include <memory>
 
@@ -37,13 +38,13 @@ public:
   }
 
   void bind_pv(target_socket_type& tsck){
-    pv_isck=scc::make_unique<initiator_socket_type>(sc_core::sc_gen_unique_name("pv_isck"));
+    pv_isck=util::make_unique<initiator_socket_type>(sc_core::sc_gen_unique_name("pv_isck"));
     pv_isck->bind(*this);
     pv_isck->bind(tsck);
   }
 
   void bind_av(TSOCKET_TYPE& tsck){
-    av_isck=scc::make_unique<initiator_socket_type>(sc_core::sc_gen_unique_name("av_isck"));
+    av_isck=util::make_unique<initiator_socket_type>(sc_core::sc_gen_unique_name("av_isck"));
     av_isck->bind(*this);
     av_isck->bind(tsck);
   }
@@ -117,13 +118,13 @@ public:
   }
 
   void bind_pv(initiator_socket_type& isck){
-    pv_tsck=scc::make_unique<target_socket_type>(sc_core::sc_gen_unique_name("pv_tsck"));
+    pv_tsck=util::make_unique<target_socket_type>(sc_core::sc_gen_unique_name("pv_tsck"));
     pv_tsck->bind(*this);
     isck(*pv_tsck);
   }
 
   void bind_av(initiator_socket_type& isck){
-    av_tsck=scc::make_unique<target_socket_type>(sc_core::sc_gen_unique_name("av_tsck"));
+    av_tsck=util::make_unique<target_socket_type>(sc_core::sc_gen_unique_name("av_tsck"));
     av_tsck->bind(*this);
     isck(*av_tsck);
   }

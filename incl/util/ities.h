@@ -21,6 +21,9 @@
 #include <bitset>
 #include <type_traits>
 #include <vector>
+#include <sstream>
+#include <iterator>
+#include <memory>
 #include <assert.h>
 #include <sys/stat.h>
 
@@ -55,6 +58,15 @@ inline constexpr typename std::make_signed<T>::type signed_bit_sub(T v) {
 }
 
 namespace util {
+
+template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args &&... args) {
+#if __cplusplus < 201402L
+    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+#else
+    return std::make_unique<T>(std::forward<Args>(args)...);
+#endif
+}
+
 // according to
 // http://graphics.stanford.edu/~seander/bithacks.html#ZerosOnRightMultLookup
 static std::array<const int, 32> MultiplyDeBruijnBitPosition = {{0,  1,  28, 2,  29, 14, 24, 3,  30, 22, 20,
