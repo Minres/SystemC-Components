@@ -1,5 +1,15 @@
 macro(setup_conan)
-  set (CONAN_BUILD_TYPE ${ARGN})
+  set(options Release Debug)
+  set(oneValueArgs PROFILE)
+  cmake_parse_arguments(MARGS "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN} )
+  if(MARGS_Release)
+  	set (CONAN_BUILD_TYPE Release)
+  elseif(MARGS_Debug)
+    set (CONAN_BUILD_TYPE Debug)
+  elseif(MARGS_RelWithDebInfo)
+    set (CONAN_BUILD_TYPE RelWithDebInfo) 
+  endif()
+
   find_program(conan conan)
   if(NOT EXISTS ${conan})
     message(FATAL_ERROR "Conan is required. Please see README.md")
@@ -20,7 +30,11 @@ macro(setup_conan)
     message(FATAL_ERROR "Unknown compiler: ${CMAKE_CXX_COMPILER_ID}")
   endif()
 
-  string(SUBSTRING ${CMAKE_CXX_COMPILER_VERSION} 0 3 compiler_version)
+  if (NOT "$ENV{CONAN_PROFILE_NAME}" STREQUAL "")
+    set(CONAN_PROFILE "-pr" "$ENV{CONAN_PROFILE_NAME}" CACHE INTERNAL "Copied from environment variable")
+  else()
+    set(CONAN_PROFILE "-pr" "default" CACHE INTERNAL "Copied from environment variable")
+  endif()
 
   set(conanfile ${CMAKE_SOURCE_DIR}/conanfile.txt)
   set(conanfile_cmake ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
@@ -37,11 +51,11 @@ macro(setup_conan)
   endif()
 
   if(CMAKE_CXX_STANDARD EQUAL 98)
-    execute_process(COMMAND ${conan} install --build=missing
+    execute_process(COMMAND ${conan} install --build=missing ${CONAN_PROFILE}
 	    -s build_type=${CONAN_BUILD_TYPE} -s compiler.libcxx=${compiler_libcxx}
 	    ${CMAKE_SOURCE_DIR} RESULT_VARIABLE return_code)
   else()
-    execute_process(COMMAND ${conan} install --build=missing
+    execute_process(COMMAND ${conan} install --build=missing ${CONAN_PROFILE}
         -s build_type=${CONAN_BUILD_TYPE}
 	    ${CMAKE_SOURCE_DIR} RESULT_VARIABLE return_code)
   endif()
