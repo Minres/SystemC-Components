@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2018 MINRES Technologies GmbH
+ * Copyright 2018, 2020 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,19 +52,26 @@ public:
     /**
      * default constructor
      */
-    perf_estimator();
+    perf_estimator(): perf_estimator(sc_core::SC_ZERO_TIME){}
+    /**
+     * default constructor
+     */
+    perf_estimator(sc_core::sc_time heart_beat): perf_estimator(sc_core::sc_gen_unique_name("perf_estimator", true), heart_beat){}
     /**
      * the destructor
      */
     virtual ~perf_estimator();
 
 protected:
+    perf_estimator(const sc_core::sc_module_name& nm, sc_core::sc_time heart_beat);
     //! SystemC callbacks
     void end_of_elaboration() override;
     void start_of_simulation() override;
     void end_of_simulation() override;
     //! the recorded time stamps
     time_stamp soc, eoe, sos, eos;
+    sc_core::sc_time beat_delay;
+    void beat();
 };
 
 } /* namespace scc */

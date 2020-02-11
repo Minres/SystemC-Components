@@ -3332,7 +3332,15 @@ Value Value::removeMember(const char *key) {
     removeMember(key, key + strlen(key), &removed);
     return removed; // still null if removeMember() did nothing
 }
-Value Value::removeMember(const JSONCPP_STRING &key) { return removeMember(key.c_str()); }
+Value Value::removeMember(const JSONCPP_STRING &key) {
+    JSON_ASSERT_MESSAGE(type_ == nullValue || type_ == objectValue,
+                        "in Json::Value::removeMember(): requires objectValue");
+    if (type_ == nullValue) return nullSingleton();
+
+    Value removed; // null
+    removeMember(key.c_str(), key.c_str() + key.length(), &removed);
+    return removed; // still null if removeMember() did nothing
+}
 
 bool Value::removeIndex(ArrayIndex index, Value *removed) {
     if (type_ != arrayValue) {

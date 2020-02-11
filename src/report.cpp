@@ -35,6 +35,11 @@
   #if GCC_VERSION < 40900
     #define USE_C_REGEX
   #endif
+#define likely(x) __builtin_expect(x, 1)
+#define unlikely(x) __builtin_expect(x, 0)
+#else
+#define likely(x) x
+#define unlikely(x) x
 #endif
 
 #ifdef USE_C_REGEX
@@ -56,6 +61,7 @@ struct ExtLogConfig: public scc::LogConfig {
 #else
   regex reg_ex;
 #endif
+  sc_time cycle_base{0, SC_NS};
   ExtLogConfig& operator=(const scc::LogConfig& o){
     scc::LogConfig::operator=(o);
     return *this;
@@ -69,9 +75,9 @@ struct ExtLogConfig: public scc::LogConfig {
   }
 } log_cfg;
 
-tuple<sc_core::sc_time::value_type, sc_core::sc_time_unit> get_tuple(const sc_core::sc_time& t){
+tuple<sc_time::value_type, sc_time_unit> get_tuple(const sc_time& t){
     auto val = t.value();
-    auto tr  = (uint64_t)(sc_core::sc_time::from_value(1).to_seconds()*1E15);
+    auto tr  = (uint64_t)(sc_time::from_value(1).to_seconds()*1E15);
     auto scale = 0U;
     while( ( tr % 10 ) == 0 ) {
         tr /= 10;
@@ -90,7 +96,7 @@ tuple<sc_core::sc_time::value_type, sc_core::sc_time_unit> get_tuple(const sc_co
     return make_tuple(val, static_cast<sc_time_unit>( tu ));
 }
 
-string time2string(const sc_core::sc_time &t) {
+string time2string(const sc_time &t) {
     const array<const char *, 6> time_units{"fs", "ps", "ns", "us", "ms", "s "};
     const array<uint64_t, 6> multiplier{1ULL,
                                         1000ULL,
@@ -118,12 +124,18 @@ string time2string(const sc_core::sc_time &t) {
     }
     return oss.str();
 }
-
 const string compose_message(const sc_report &rep, const scc::LogConfig& cfg) {
   if(rep.get_severity()>SC_INFO || cfg.log_filter_regex.length()==0 || log_cfg.match(rep.get_msg_type())){
     stringstream os;
-    if(cfg.print_sim_time) os << "[" << setw(20) << time2string(sc_core::sc_time_stamp()) << "] ";
-    if (rep.get_id() >= 0)
+    if(likely(cfg.print_sim_time)){
+      if(unlikely(log_cfg.cycle_base.value()))
+        os << fmt::format("[{:>7}] ", sc_time_stamp().value()/log_cfg.cycle_base.value());
+      else if(unlikely(cfg.print_delta))
+        os << fmt::format("[{:>20}({:5})] ", time2string(sc_time_stamp()), sc_delta_count());
+      else
+        os << fmt::format("[{:>20}] ", time2string(sc_time_stamp()));
+    }
+    if(unlikely(rep.get_id() >= 0))
         os << "(" << "IWEF"[rep.get_severity()] << rep.get_id() << ") "<<rep.get_msg_type() << ": ";
     else if(cfg.msg_type_field_width)
       os << util::padded(rep.get_msg_type(), cfg.msg_type_field_width) << ": ";
@@ -142,8 +154,8 @@ const string compose_message(const sc_report &rep, const scc::LogConfig& cfg) {
 }
 
 inline log_level verbosity2log(int verb) {
-    if (verb >= sc_core::SC_FULL) return TRACE;
-    if (verb >= sc_core::SC_HIGH) return DEBUG;
+    if (verb >= SC_FULL) return TRACE;
+    if (verb >= SC_HIGH) return DEBUG;
     return INFO;
 }
 
@@ -153,9 +165,9 @@ inline void log2logger(spdlog::logger& logger, const sc_report &rep, const scc::
   switch(rep.get_severity()){
   case SC_INFO:
     switch(rep.get_verbosity()){
-    case sc_core::SC_DEBUG:
-    case sc_core::SC_FULL: logger.trace(msg); break;
-    case sc_core::SC_HIGH: logger.debug(msg); break;
+    case SC_DEBUG:
+    case SC_FULL: logger.trace(msg); break;
+    case SC_HIGH: logger.debug(msg); break;
     default: logger.info(msg); break;
     }
     break;
@@ -249,11 +261,11 @@ static const array<int, 8> verbosity = {
 
 int scc::stream_redirection::sync(){
   if(level <= log_cfg.level){
-      auto timestr = time2string(sc_core::sc_time_stamp());
+      auto timestr = time2string(sc_time_stamp());
       istringstream buf(str());
       string line;
       while(getline(buf, line)) {
-        ::sc_core::sc_report_handler::report(severity[level], "SystemC", line.c_str(), verbosity[level], "", 0);
+        ::sc_report_handler::report(severity[level], "SystemC", line.c_str(), verbosity[level], "", 0);
       }
       str(string(""));
   }
@@ -287,7 +299,10 @@ static void configure_logging() {
       log_cfg.file_logger = log_cfg.log_async ?
           spdlog::basic_logger_mt<spdlog::async_factory>("file_logger", log_cfg.log_file_name):
           spdlog::basic_logger_mt("file_logger", log_cfg.log_file_name);
-      log_cfg.file_logger->set_pattern("[%8l] %v");
+      if(log_cfg.print_severity)
+        log_cfg.file_logger->set_pattern("[%8l] %v");
+      else
+        log_cfg.file_logger->set_pattern("%v");
       log_cfg.file_logger->flush_on(spdlog::level::warn);
       log_cfg.file_logger->set_level(
           static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
@@ -319,6 +334,10 @@ void scc::set_logging_level(logging::log_level level){
   log_cfg.console_logger->set_level(static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
 }
 
+void scc::set_cycle_base(sc_time period){
+  log_cfg.cycle_base=period;
+}
+
 scc::LogConfig& scc::LogConfig::logLevel(logging::log_level log_level) {
   this->level=log_level;
   return *this;
@@ -336,6 +355,11 @@ scc::LogConfig& scc::LogConfig::printSysTime(bool enable) {
 
 scc::LogConfig& scc::LogConfig::printSimTime(bool enable) {
   this->print_sim_time=enable;
+  return *this;
+}
+
+scc::LogConfig& scc::LogConfig::printDelta(bool enable) {
+  this->print_delta=enable;
   return *this;
 }
 

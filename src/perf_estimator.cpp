@@ -31,13 +31,22 @@
 namespace scc {
 using namespace sc_core;
 
-perf_estimator::perf_estimator()
-: sc_module(sc_module_name(sc_gen_unique_name("perf_estimator", true))) {soc.set();}
+SC_HAS_PROCESS(perf_estimator);
+
+perf_estimator::perf_estimator(const sc_module_name& nm, sc_time beat_delay_)
+: sc_module(nm)
+, beat_delay(beat_delay_)
+{
+  soc.set();
+  if(beat_delay.value()){
+    SC_METHOD(beat);
+  }
+}
 
 perf_estimator::~perf_estimator() {
   time_stamp eod; eod.set();
-  SCCINFO() << "constr & elab time: " <<(eoe.proc_clock_stamp - soc.proc_clock_stamp);
-  SCCINFO() << "simulation time:    " <<(eos.proc_clock_stamp - sos.proc_clock_stamp);
+  SCCINFO(SCMOD) << "constr & elab time: " <<(eoe.proc_clock_stamp - soc.proc_clock_stamp)<<"s";
+  SCCINFO(SCMOD) << "simulation time:    " <<(eos.proc_clock_stamp - sos.proc_clock_stamp)<<"s";
 }
 
 void perf_estimator::end_of_elaboration() {eoe.set();}
@@ -58,6 +67,10 @@ void perf_estimator::end_of_simulation() {
     }
 }
 
+void perf_estimator::beat(){
+  SCCINFO(SCMOD)<<"Heart beat";
+  next_trigger(beat_delay);
+}
 } /* namespace scc */
 
 double scc::perf_estimator::time_stamp::get_cpu_time() {

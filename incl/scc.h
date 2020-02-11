@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2018 MINRES Technologies GmbH
+ * Copyright 2018, 2019, 2020 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,9 +69,11 @@
 #endif
 
 #include "tlm/tlm_extensions.h"
+#include "tlm/tlm_id.h"
 #include "tlm/tlm_signal.h"
 #include "tlm/tlm_signal_conv.h"
 #include "tlm/tlm_signal_gp.h"
 #include "tlm/tlm_signal_sockets.h"
+#include "tlm/tlm2_pv_av.h"
 
 #endif /* _SCC_H_ */

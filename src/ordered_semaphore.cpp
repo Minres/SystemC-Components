@@ -21,6 +21,8 @@
 
 namespace scc {
 
+using namespace sc_core;
+
 // ----------------------------------------------------------------------------
 //  CLASS : sc_semaphore
 //
@@ -28,17 +30,22 @@ namespace scc {
 // ----------------------------------------------------------------------------
 
 // error reporting
-
+namespace {
+std::string gen_unique_event_name(const char* modifier){
+  auto str = std::string("$$$$kernel_event$$$$_")+"_"+modifier;
+  return std::string(sc_core::sc_gen_unique_name(str.c_str(), false));
+}
+}
 void
 ordered_semaphore::report_error( const char* id, const char* add_msg ) const
 {
-	char msg[BUFSIZ];
-	if( add_msg != 0 ) {
-		std::sprintf( msg, "%s: semaphore '%s'", add_msg, name() );
-	} else {
-		std::sprintf( msg, "semaphore '%s'", name() );
-	}
-	SC_REPORT_ERROR( id, msg );
+    char msg[BUFSIZ];
+    if( add_msg != 0 ) {
+        std::sprintf( msg, "%s: semaphore '%s'", add_msg, name() );
+    } else {
+        std::sprintf( msg, "semaphore '%s'", name() );
+    }
+    SC_REPORT_ERROR( id, msg );
 }
 
 
@@ -46,22 +53,22 @@ ordered_semaphore::report_error( const char* id, const char* add_msg ) const
 
 ordered_semaphore::ordered_semaphore( int init_value_ )
 : sc_core::sc_object( sc_core::sc_gen_unique_name( "semaphore" ) ),
-  m_free( (std::string("$$$$kernel_event$$$$_")+"_free_event").c_str() ),
+  m_free(gen_unique_event_name("free_event").c_str() ),
   m_value( init_value_ )
 {
-	if( m_value < 0 ) {
-		report_error( sc_core::SC_ID_INVALID_SEMAPHORE_VALUE_ );
-	}
+    if( m_value < 0 ) {
+        report_error( sc_core::SC_ID_INVALID_SEMAPHORE_VALUE_ );
+    }
 }
 
 ordered_semaphore::ordered_semaphore( const char* name_, int init_value_ )
 : sc_object( name_ ),
-  m_free( (std::string("$$$$kernel_event$$$$_")+"_free_event").c_str() ),
+  m_free(gen_unique_event_name("free_event").c_str() ),
   m_value( init_value_ )
 {
-	if( m_value < 0 ) {
-		report_error( sc_core::SC_ID_INVALID_SEMAPHORE_VALUE_ );
-	}
+    if( m_value < 0 ) {
+        report_error( sc_core::SC_ID_INVALID_SEMAPHORE_VALUE_ );
+    }
 }
 
 
@@ -72,12 +79,12 @@ ordered_semaphore::ordered_semaphore( const char* name_, int init_value_ )
 int
 ordered_semaphore::wait()
 {
-	queue.push_back(sc_core::sc_get_current_process_handle());
-	while( in_use() ) {
-		sc_core::wait( m_free);
-	}
-	-- m_value;
-	return 0;
+    queue.push_back(sc_core::sc_get_current_process_handle());
+    while( in_use() ) {
+        sc_core::wait( m_free);
+    }
+    -- m_value;
+    return 0;
 }
 
 
@@ -86,11 +93,11 @@ ordered_semaphore::wait()
 int
 ordered_semaphore::trywait()
 {
-	if( in_use() ) {
-		return -1;
-	}
-	-- m_value;
-	return 0;
+    if( in_use() ) {
+        return -1;
+    }
+    -- m_value;
+    return 0;
 }
 
 
@@ -99,9 +106,9 @@ ordered_semaphore::trywait()
 int
 ordered_semaphore::post()
 {
-	++m_value;
-	m_free.notify();
-	return 0;
+    ++m_value;
+    m_free.notify();
+    return 0;
 }
 
 } // namespace sc_core

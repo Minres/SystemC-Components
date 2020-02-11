@@ -1,13 +1,21 @@
 cmake_minimum_required(VERSION 2.8)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
 
-project (scc)
-
 # Set the version number of your project here (format is MAJOR.MINOR.PATCHLEVEL - e.g. 1.0.0)
 set(VERSION_MAJOR "0")
 set(VERSION_MINOR "0")
 set(VERSION_PATCH "1")
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
+
+if(${CMAKE_VERSION} VERSION_LESS "3.0") 
+    project(scc)
+else()
+    if(POLICY CMP0048)
+      cmake_policy(SET CMP0048 NEW) # CMake 3.0.0
+    endif()
+    project(scc VERSION ${VERSION})
+endif()
+
 
 include(Common)
 
@@ -29,6 +37,10 @@ endif()
 find_package(Threads)
 find_package(ZLIB)
 find_package(${SystemCPackage} REQUIRED)
+
+include(CheckSymbolExists)
+# Check for function getenv()
+check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)
 
 set(LIB_SOURCES
     src/sc_logic_7.cpp
@@ -74,6 +86,9 @@ endif()
 # Define the scc library
 add_library(${LIBRARY_NAME} ${LIB_SOURCES})
 target_include_directories (${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
+if(HAVE_GETENV)
+	target_compile_definitions(${LIBRARY_NAME} PUBLIC HAVE_GETENV)
+endif()
 FILE(GLOB LibHeaders incl/*.h)
 set_target_properties(${LIBRARY_NAME} PROPERTIES
   VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
