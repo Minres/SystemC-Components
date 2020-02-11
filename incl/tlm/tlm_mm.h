@@ -17,8 +17,8 @@
 #ifndef _TLM_TLM_MM_H_
 #define _TLM_TLM_MM_H_
 
-#include <util/pool_allocator.h>
 #include <tlm>
+#include <util/pool_allocator.h>
 #ifdef HAVE_GETENV
 #include <cstdlib>
 #endif
@@ -29,9 +29,9 @@ namespace tlm {
  * a tlm memory manager which can be used as singleton or as local memory manager. It uses the pool_allocator
  * as singleton.
  */
-template<typename TYPES = tlm_base_protocol_types>
-class tlm_mm: public tlm::tlm_mm_interface {
+template <typename TYPES = tlm_base_protocol_types> class tlm_mm : public tlm::tlm_mm_interface {
     using payload_type = typename TYPES::tlm_payload_type;
+
 public:
     /**
      * @brief accessor function of the singleton
@@ -42,17 +42,18 @@ public:
      * @brief default constructor
      * @param
      */
-    tlm_mm():allocator(util::pool_allocator<payload_type>::get()){}
+    tlm_mm()
+    : allocator(util::pool_allocator<payload_type>::get()) {}
     /**
      * @brief deleted copy constructor
      * @param
      */
-    tlm_mm(const tlm_mm& ) = delete;
+    tlm_mm(const tlm_mm&) = delete;
     /**
      * @brief deleted move copy constructor
      * @param
      */
-    tlm_mm(tlm_mm&& ) = delete;
+    tlm_mm(tlm_mm&&) = delete;
     /**
      * @brief deleted copy assignment
      * @param
@@ -76,8 +77,7 @@ public:
      * @brief get a tlm_payload_type with registered extension
      * @return the tlm_payload_type
      */
-    template<typename PEXT>
-    payload_type* allocate(){
+    template <typename PEXT> payload_type* allocate() {
         auto* ptr = allocate();
         ptr->set_auto_extension(new PEXT);
         return ptr;
@@ -86,42 +86,39 @@ public:
      * @brief return the extension into the memory pool (removing the extensions)
      * @param trans the returning transaction
      */
-    void  free(payload_type* trans) override;
+    void free(payload_type* trans) override;
 
 private:
     util::pool_allocator<payload_type>& allocator;
 };
 
-template<typename TYPES>
-tlm_mm<TYPES>& tlm_mm<TYPES>::get() {
+template <typename TYPES> tlm_mm<TYPES>& tlm_mm<TYPES>::get() {
     static tlm_mm<TYPES> mm;
     return mm;
 }
 
-template<typename TYPES>
-typename tlm_mm<TYPES>::payload_type* tlm_mm<TYPES>::allocate() {
+template <typename TYPES> typename tlm_mm<TYPES>::payload_type* tlm_mm<TYPES>::allocate() {
     auto* ptr = allocator.allocate();
-    return new (ptr) payload_type(this);
+    return new(ptr) payload_type(this);
 }
 
-template<typename TYPES>
-inline tlm_mm<TYPES>::~tlm_mm() {
+template <typename TYPES> inline tlm_mm<TYPES>::~tlm_mm() {
 #ifdef HAVE_GETENV
-  auto* check = getenv ("TLM_MM_CHECK");
-  if(check && strcasecmp(check, "INFO")){
-      auto diff = allocator.get_capacity()-allocator.get_free_entries_count();
-      if(diff)
-        std::cout<<__FUNCTION__<<": detected memory leak upon destruction, "<<diff<<" of "<< allocator.get_capacity()<<" entries are not free'd"<<std::endl;
-  }
+    auto* check = getenv("TLM_MM_CHECK");
+    if(check && strcasecmp(check, "INFO")) {
+        auto diff = allocator.get_capacity() - allocator.get_free_entries_count();
+        if(diff)
+            std::cout << __FUNCTION__ << ": detected memory leak upon destruction, " << diff << " of "
+                      << allocator.get_capacity() << " entries are not free'd" << std::endl;
+    }
 #endif
 }
 
-template<typename TYPES>
-void tlm_mm<TYPES>::free(payload_type* trans) {
+template <typename TYPES> void tlm_mm<TYPES>::free(payload_type* trans) {
     trans->reset();
     trans->~payload_type();
     allocator.free(trans);
 }
 
-}
+} // namespace tlm
 #endif /* _TLM_TLM_MM_H_ */

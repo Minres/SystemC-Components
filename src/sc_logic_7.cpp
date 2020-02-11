@@ -47,7 +47,7 @@ void sc_logic_7::invalid_value(int i) {
 }
 
 void sc_logic_7::invalid_01() const {
-    if ((int)m_val == Log_Z) {
+    if((int)m_val == Log_Z) {
         SC_REPORT_WARNING(sc_core::SC_ID_LOGIC_Z_TO_BOOL_, "");
     } else {
         SC_REPORT_WARNING(sc_core::SC_ID_LOGIC_X_TO_BOOL_, "");
@@ -110,7 +110,7 @@ std::array<const sc_logic_7_value_t, 7> sc_logic_7::not_table = {{Log_1, Log_0, 
 
 // other methods
 
-void sc_logic_7::scan(::std::istream &is) {
+void sc_logic_7::scan(::std::istream& is) {
     char c;
     is >> c;
     *this = c;

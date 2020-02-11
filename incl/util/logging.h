@@ -26,7 +26,6 @@
 #include <string>
 #include <sys/time.h>
 #include <vector>
-#include <cstring>
 
 //! log level definitions
 #define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE) L(TRACEALL)
@@ -35,9 +34,9 @@
 
 namespace logging {
 //! array holding string representations of log levels
-static std::array<const char *const, 8> buffer = {{LEVELS(DO_DESCRIPTION)}};
+static std::array<const char* const, 8> buffer = {{LEVELS(DO_DESCRIPTION)}};
 //! enum defining the log levels
-enum log_level { LEVELS(DO_ENUM) DBGTRACE=TRACEALL };
+enum log_level { LEVELS(DO_ENUM) DBGTRACE = TRACEALL };
 /**
  * safely convert an integer into a log level
  * @param logLevel the integer
@@ -54,15 +53,16 @@ inline log_level as_log_level(int logLevel) {
  * @param val the value holding the resulting value
  * @return the input stream
  */
-inline std::istream & operator>>(std::istream & is,  log_level& val){
-  std::string buf; is >> buf;
-  for(auto i=0U; i<=log_level::TRACEALL; ++i){
-    if(strcmp(buf.c_str(), buffer[i])==0) {
-      val=as_log_level(i);
-      return is;
+inline std::istream& operator>>(std::istream& is, log_level& val) {
+    std::string buf;
+    is >> buf;
+    for(auto i = 0U; i <= log_level::TRACEALL; ++i) {
+        if(strcmp(buf.c_str(), buffer[i]) == 0) {
+            val = as_log_level(i);
+            return is;
+        }
     }
-  }
-  return is;
+    return is;
 }
 /**
  * get the current host time as string
@@ -83,14 +83,14 @@ public:
      *
      * @param
      */
-    Log(const Log &) = delete;
+    Log(const Log&) = delete;
     /**
      * no copy assignment constructor
      *
      * @param
      * @return
      */
-    Log &operator=(const Log &) = delete;
+    Log& operator=(const Log&) = delete;
     /**
      * the destructor
      */
@@ -98,7 +98,7 @@ public:
         os << std::endl;
         T::output(os.str());
         // TODO: use a more specific exception
-        if (get_last_log_level() == FATAL && abort_on_fatal())
+        if(get_last_log_level() == FATAL && abort_on_fatal())
             abort();
     }
     /**
@@ -108,12 +108,14 @@ public:
      * @param category the category string
      * @return the underlying output stream
      */
-    std::ostream &get(log_level level = INFO, const char *category = "") {
-        if (print_time()) os << "- " << now_time() << " ";
-        if (print_severity()) {
+    std::ostream& get(log_level level = INFO, const char* category = "") {
+        if(print_time())
+            os << "- " << now_time() << " ";
+        if(print_severity()) {
             os << std::setw(7) << std::left << to_string(level);
-            if (strlen(category)) os << "[" << category << "]";
-            os << ": "<<std::internal;
+            if(strlen(category))
+                os << "[" << category << "]";
+            os << ": " << std::internal;
         }
         get_last_log_level() = level;
         return os;
@@ -123,7 +125,7 @@ public:
      *
      * @return the logging level
      */
-    static log_level &reporting_level() {
+    static log_level& reporting_level() {
         static log_level reportingLevel = WARNING;
         return reportingLevel;
     }
@@ -132,7 +134,7 @@ public:
      *
      * @return the logging level
      */
-    static bool &abort_on_fatal() {
+    static bool& abort_on_fatal() {
         static bool flag = false;
         return flag;
     }
@@ -149,10 +151,10 @@ public:
      * @param level the string representing the log level
      * @return the log level
      */
-    static log_level from_string(const std::string &level) {
-        for (unsigned int i = NONE; i <= TRACE; i++)
-            if (!strncasecmp(level.c_str(), (const char *)(get_log_level_cstr() + i),
-                             strlen((const char *)get_log_level_cstr() + i)))
+    static log_level from_string(const std::string& level) {
+        for(unsigned int i = NONE; i <= TRACE; i++)
+            if(!strncasecmp(level.c_str(), (const char*)(get_log_level_cstr() + i),
+                            strlen((const char*)get_log_level_cstr() + i)))
                 return static_cast<log_level>(i);
         Log<T>().Get(WARNING) << "Unknown logging level '" << level << "'. Using INFO level as default.";
         return INFO;
@@ -162,7 +164,7 @@ public:
      *
      * @return the print time flag
      */
-    static bool &print_time() {
+    static bool& print_time() {
         static bool flag = true;
         return flag;
     }
@@ -171,17 +173,17 @@ public:
      *
      * @return the print severity flag
      */
-    static bool &print_severity() {
+    static bool& print_severity() {
         static bool flag = true;
         return flag;
     }
 
 protected:
-    log_level &get_last_log_level() {
+    log_level& get_last_log_level() {
         static log_level level = TRACE;
         return level;
     }
-    static const char *const *get_log_level_cstr() { return buffer.data(); };
+    static const char* const* get_log_level_cstr() { return buffer.data(); };
     std::ostringstream os;
 };
 /**
@@ -194,8 +196,8 @@ public:
      *
      * @return the file handle
      */
-    static FILE *&stream() {
-        static FILE *pStream = stdout;
+    static FILE*& stream() {
+        static FILE* pStream = stdout;
         return pStream;
     }
     /**
@@ -203,11 +205,12 @@ public:
      *
      * @param msg the string to write
      */
-    static void output(const std::string &msg) {
+    static void output(const std::string& msg) {
         static std::mutex mtx;
         std::lock_guard<std::mutex> lock(mtx);
-        FILE *pStream = stream();
-        if (!pStream) return;
+        FILE* pStream = stream();
+        if(!pStream)
+            return;
         fprintf(pStream, "%s", msg.c_str());
         fflush(pStream);
     }
@@ -236,12 +239,12 @@ class DEFAULT {};
 
 #ifndef LOG
 #define LOG(LEVEL)                                                                                                     \
-    if (logging::LEVEL <= LOGGER(DEFAULT)::reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                         \
+    if(logging::LEVEL <= LOGGER(DEFAULT)::reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                          \
     LOGGER(DEFAULT)().get(logging::LEVEL)
 #endif
 #ifndef CLOG
 #define CLOG(LEVEL, CATEGORY)                                                                                          \
-    if (logging::LEVEL <= LOGGER(CATEGORY)::reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                       \
+    if(logging::LEVEL <= LOGGER(CATEGORY)::reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                        \
     LOGGER(CATEGORY)().get(logging::LEVEL, #CATEGORY)
 #endif
 #if defined(WIN32)
@@ -252,7 +255,8 @@ class DEFAULT {};
 inline std::string now_time() {
     const int MAX_LEN = 200;
     char buffer[MAX_LEN];
-    if (GetTimeFormatA(LOCALE_USER_DEFAULT, 0, 0, "HH':'mm':'ss", buffer, MAX_LEN) == 0) return "Error in now_time()";
+    if(GetTimeFormatA(LOCALE_USER_DEFAULT, 0, 0, "HH':'mm':'ss", buffer, MAX_LEN) == 0)
+        return "Error in now_time()";
     char result[100] = {0};
     static DWORD first = GetTickCount();
     std::sprintf(result, "%s.%03ld", buffer, (long)(GetTickCount() - first) % 1000);
@@ -277,37 +281,36 @@ inline std::string now_time() {
 
 #endif // WIN32
 //! a print function for a vector
-template <typename T> std::ostream &operator<<(std::ostream &stream, const std::vector<T> &vector) {
+template <typename T> std::ostream& operator<<(std::ostream& stream, const std::vector<T>& vector) {
     copy(vector.begin(), vector.end(), std::ostream_iterator<T>(stream, ","));
     return stream;
 }
 
-} // namespace
+} // namespace logging
 #undef LEVELS
 #undef CAT
 
 #ifndef NDEBUG
 //! check only in debug mode
-#define SCCASSERT(condition, message)                                                                                     \
+#define SCCASSERT(condition, message)                                                                                  \
     do {                                                                                                               \
-        if (!(condition)) {                                                                                            \
+        if(!(condition)) {                                                                                             \
             logging::Logger().Get(logging::fatal) << "Assertion `" #condition "` failed in " << __FILE__ << " line "   \
                                                   << __LINE__ << ": " << message << std::endl;                         \
             std::terminate();                                                                                          \
         }                                                                                                              \
-    } while (false)
+    } while(false)
 #else
-#define SCCASSERT(condition, message)                                                                                     \
+#define SCCASSERT(condition, message)                                                                                  \
     do {                                                                                                               \
-    } while (false)
+    } while(false)
 #endif
 //! check always
 #define CHECK(condition, message)                                                                                      \
     do {                                                                                                               \
-        if (!(condition)) {                                                                                            \
+        if(!(condition)) {                                                                                             \
             logging::Logger().Get(logging::fatal) << "Check of `" #condition "` failed in " << __FILE__ << " line "    \
                                                   << __LINE__ << ": " << message << std::endl;                         \
             std::terminate();                                                                                          \
         }                                                                                                              \
-    } while (false)
-
+    } while(false)

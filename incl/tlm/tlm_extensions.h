@@ -24,9 +24,9 @@ namespace tlm {
 template <typename T> struct tlm_unmanaged_extension : public tlm_extension<T> {
     using type = T;
 
-    tlm_extension_base *clone() const override { return new type(static_cast<const T &>(*this)); }
+    tlm_extension_base* clone() const override { return new type(static_cast<const T&>(*this)); }
 
-    void copy_from(tlm_extension_base const &other) override { this->operator=(static_cast<const type &>(other)); }
+    void copy_from(tlm_extension_base const& other) override { this->operator=(static_cast<const type&>(other)); }
 
 protected:
     tlm_unmanaged_extension(){};
@@ -36,26 +36,26 @@ template <typename T> struct tlm_managed_extension {
 
     using type = T;
 
-    template <typename... Args> static type *allocate(Args &&... args) {
-        auto *ret = new (pool::allocate()) type(std::forward<Args>(args)...);
+    template <typename... Args> static type* allocate(Args&&... args) {
+        auto* ret = new(pool::allocate()) type(std::forward<Args>(args)...);
         ret->is_pooled = true;
         return ret;
     }
 
-    static type *allocate() {
-        auto *ret = new (pool::allocate()) type();
+    static type* allocate() {
+        auto* ret = new(pool::allocate()) type();
         ret->is_pooled = true;
         return ret;
     }
 
-    tlm_extension_base *clone() const {
+    tlm_extension_base* clone() const {
         return allocate(); // Maybe static_cast<const T&>(*this)
     }
 
-    void copy_from(tlm_extension_base const &other) { this->operator=(static_cast<const type &>(other)); }
+    void copy_from(tlm_extension_base const& other) { this->operator=(static_cast<const type&>(other)); }
 
     void free() {
-        if (is_pooled) {
+        if(is_pooled) {
             this->~type();
             pool::dealllocate(this);
         } else {
@@ -63,8 +63,8 @@ template <typename T> struct tlm_managed_extension {
         }
     }
     struct pool {
-        static void *allocate() {
-            if (free_list.size() > 0) {
+        static void* allocate() {
+            if(free_list.size() > 0) {
                 auto ret = free_list.back();
                 free_list.pop_back();
                 return ret;
@@ -72,19 +72,19 @@ template <typename T> struct tlm_managed_extension {
                 return calloc(1, sizeof(type));
         }
 
-        static void dealllocate(void *p) { free_list.push_back(p); }
+        static void dealllocate(void* p) { free_list.push_back(p); }
 
     private:
-        static std::vector<void *> free_list;
+        static std::vector<void*> free_list;
     };
 
 protected:
     tlm_managed_extension() = default;
-    tlm_managed_extension(const tlm_managed_extension &) = default;
-    tlm_managed_extension &operator=(const tlm_managed_extension &other) { return *this; }
+    tlm_managed_extension(const tlm_managed_extension&) = default;
+    tlm_managed_extension& operator=(const tlm_managed_extension& other) { return *this; }
 
 private:
     bool is_pooled{false};
 };
-}
+} // namespace tlm
 #endif /* SC_COMPONENTS_INCL_TLM_TLM_EXTENSIONS_H_ */

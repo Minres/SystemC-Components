@@ -22,8 +22,8 @@
 
 #include "scc/tracer.h"
 
-#include "scc/scv_tr_db.h"
 #include "scc/report.h"
+#include "scc/scv_tr_db.h"
 #include "scc/utilities.h"
 #include <cstring>
 #include <iostream>
@@ -32,7 +32,7 @@
 using namespace sc_core;
 using namespace scc;
 
-tracer::tracer(const std::string &&name, file_type type, bool enable)
+tracer::tracer(const std::string&& name, file_type type, bool enable)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
 , enabled(enable)
 , owned(true)
@@ -40,15 +40,15 @@ tracer::tracer(const std::string &&name, file_type type, bool enable)
 , txdb(nullptr)
 #endif
 {
-    if (enabled) {
+    if(enabled) {
         trf = sc_create_vcd_trace_file(name.c_str());
         trf->set_time_unit(1, SC_PS);
     }
 #ifdef WITH_SCV
-    if (type != NONE) {
+    if(type != NONE) {
         std::stringstream ss;
         ss << name;
-        switch (type) {
+        switch(type) {
         case TEXT:
             scv_tr_text_init();
             ss << ".txlog";
@@ -68,21 +68,21 @@ tracer::tracer(const std::string &&name, file_type type, bool enable)
 #endif
 }
 
-tracer::tracer(const std::string &&name, file_type type, sc_core::sc_trace_file* tf)
+tracer::tracer(const std::string&& name, file_type type, sc_core::sc_trace_file* tf)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
-, enabled(tf!=nullptr)
+, enabled(tf != nullptr)
 , owned(false)
 #ifdef WITH_SCV
 , txdb(nullptr)
 #endif
 {
-    if (tf)
+    if(tf)
         trf = tf;
 #ifdef WITH_SCV
-    if (type != NONE) {
+    if(type != NONE) {
         std::stringstream ss;
         ss << name;
-        switch (type) {
+        switch(type) {
         case TEXT:
             scv_tr_text_init();
             ss << ".txlog";
@@ -103,12 +103,14 @@ tracer::tracer(const std::string &&name, file_type type, sc_core::sc_trace_file*
 }
 
 void tracer::end_of_elaboration() {
-    if (enabled)
-        for (auto o : sc_get_top_level_objects(sc_curr_simcontext)) descend(o, true);
+    if(enabled)
+        for(auto o : sc_get_top_level_objects(sc_curr_simcontext))
+            descend(o, true);
 }
 
 tracer::~tracer() {
-    if (trf && owned) sc_close_vcd_trace_file(trf);
+    if(trf && owned)
+        sc_close_vcd_trace_file(trf);
 #ifdef WITH_SCV
     delete txdb;
 #endif

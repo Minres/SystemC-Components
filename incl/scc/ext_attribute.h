@@ -33,7 +33,7 @@ public:
      * @param name_
      * @param owner
      */
-    ext_attribute(const std::string &name_, sc_core::sc_module *owner)
+    ext_attribute(const std::string& name_, sc_core::sc_module* owner)
     : base_type(name_)
     , owner(owner) {
         owner->add_attribute(*this);
@@ -46,7 +46,7 @@ public:
      * @param value_
      * @param owner
      */
-    ext_attribute(const std::string &name_, const T &value_, sc_core::sc_module *owner)
+    ext_attribute(const std::string& name_, const T& value_, sc_core::sc_module* owner)
     : base_type(name_, value_)
     , owner(owner) {
         owner->add_attribute(*this);
@@ -57,7 +57,7 @@ public:
      *
      * @param a
      */
-    ext_attribute(const ext_attribute<T> &a) = delete;
+    ext_attribute(const ext_attribute<T>& a) = delete;
     /**
      * a default destructor
      */
@@ -65,8 +65,8 @@ public:
     /**
      * the owner of this attribute (a backward reference)
      */
-    const sc_core::sc_module *owner;
+    const sc_core::sc_module* owner;
 };
-};
+}; // namespace scc
 
 #endif /* _SYSC_EXT_ATTRIBUTE_H_ */

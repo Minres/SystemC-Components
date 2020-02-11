@@ -34,7 +34,7 @@ class perf_estimator : public sc_core::sc_module {
         time_stamp()
         : wall_clock_stamp(boost::posix_time::microsec_clock::universal_time())
         , proc_clock_stamp(get_cpu_time()) {}
-        time_stamp &operator=(const time_stamp &o) {
+        time_stamp& operator=(const time_stamp& o) {
             wall_clock_stamp = o.wall_clock_stamp;
             proc_clock_stamp = o.proc_clock_stamp;
             return *this;
@@ -52,11 +52,13 @@ public:
     /**
      * default constructor
      */
-    perf_estimator(): perf_estimator(sc_core::SC_ZERO_TIME){}
+    perf_estimator()
+    : perf_estimator(sc_core::SC_ZERO_TIME) {}
     /**
      * default constructor
      */
-    perf_estimator(sc_core::sc_time heart_beat): perf_estimator(sc_core::sc_gen_unique_name("perf_estimator", true), heart_beat){}
+    perf_estimator(sc_core::sc_time heart_beat)
+    : perf_estimator(sc_core::sc_gen_unique_name("perf_estimator", true), heart_beat) {}
     /**
      * the destructor
      */

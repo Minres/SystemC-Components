@@ -20,21 +20,21 @@
  *      Author: ubuntu
  */
 
-#include <spdlog/spdlog.h>
-#include <spdlog/async.h>
-#include <spdlog/sinks/stdout_color_sinks.h>
-#include <spdlog/sinks/basic_file_sink.h>
-#include <scc/report.h>
-#include <fstream>
-#include <tuple>
 #include <array>
 #include <chrono>
+#include <fstream>
+#include <scc/report.h>
+#include <spdlog/async.h>
+#include <spdlog/sinks/basic_file_sink.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/spdlog.h>
 #include <thread>
+#include <tuple>
 #ifdef __GNUC__
-  #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100  + __GNUC_PATCHLEVEL__)
-  #if GCC_VERSION < 40900
-    #define USE_C_REGEX
-  #endif
+#define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
+#if GCC_VERSION < 40900
+#define USE_C_REGEX
+#endif
 #define likely(x) __builtin_expect(x, 1)
 #define unlikely(x) __builtin_expect(x, 0)
 #else
@@ -43,9 +43,9 @@
 #endif
 
 #ifdef USE_C_REGEX
-  #include <regex.h>
+#include <regex.h>
 #else
-  #include <regex>
+#include <regex>
 #endif
 
 using namespace std;
@@ -53,51 +53,51 @@ using namespace sc_core;
 using namespace logging;
 
 namespace {
-struct ExtLogConfig: public scc::LogConfig {
-  shared_ptr<spdlog::logger> file_logger;
-  shared_ptr<spdlog::logger> console_logger;
+struct ExtLogConfig : public scc::LogConfig {
+    shared_ptr<spdlog::logger> file_logger;
+    shared_ptr<spdlog::logger> console_logger;
 #ifdef USE_C_REGEX
-  regex_t start_state;
+    regex_t start_state;
 #else
-  regex reg_ex;
+    regex reg_ex;
 #endif
-  sc_time cycle_base{0, SC_NS};
-  ExtLogConfig& operator=(const scc::LogConfig& o){
-    scc::LogConfig::operator=(o);
-    return *this;
-  }
-  bool match(const char* type){
+    sc_time cycle_base{0, SC_NS};
+    ExtLogConfig& operator=(const scc::LogConfig& o) {
+        scc::LogConfig::operator=(o);
+        return *this;
+    }
+    bool match(const char* type) {
 #ifdef USE_C_REGEX
-    return regexec(&start_state, type, 0, NULL, 0)==0;
+        return regexec(&start_state, type, 0, NULL, 0) == 0;
 #else
-    return regex_search(type, reg_ex);
+        return regex_search(type, reg_ex);
 #endif
-  }
+    }
 } log_cfg;
 
-tuple<sc_time::value_type, sc_time_unit> get_tuple(const sc_time& t){
+tuple<sc_time::value_type, sc_time_unit> get_tuple(const sc_time& t) {
     auto val = t.value();
-    auto tr  = (uint64_t)(sc_time::from_value(1).to_seconds()*1E15);
+    auto tr = (uint64_t)(sc_time::from_value(1).to_seconds() * 1E15);
     auto scale = 0U;
-    while( ( tr % 10 ) == 0 ) {
+    while((tr % 10) == 0) {
         tr /= 10;
         scale++;
     }
-    sc_assert( tr == 1 );
+    sc_assert(tr == 1);
 
     auto tu = scale / 3;
-    while( tu < SC_SEC && ( val % 10 ) == 0 ) {
+    while(tu < SC_SEC && (val % 10) == 0) {
         val /= 10;
         scale++;
-        tu += ( 0 == ( scale % 3 ) );
+        tu += (0 == (scale % 3));
     }
-    for( scale %= 3; scale != 0 ; scale-- )
+    for(scale %= 3; scale != 0; scale--)
         val *= 10;
-    return make_tuple(val, static_cast<sc_time_unit>( tu ));
+    return make_tuple(val, static_cast<sc_time_unit>(tu));
 }
 
-string time2string(const sc_time &t) {
-    const array<const char *, 6> time_units{"fs", "ps", "ns", "us", "ms", "s "};
+string time2string(const sc_time& t) {
+    const array<const char*, 6> time_units{"fs", "ps", "ns", "us", "ms", "s "};
     const array<uint64_t, 6> multiplier{1ULL,
                                         1000ULL,
                                         1000ULL * 1000,
@@ -105,171 +105,202 @@ string time2string(const sc_time &t) {
                                         1000ULL * 1000 * 1000 * 1000,
                                         1000ULL * 1000 * 1000 * 1000 * 1000};
     ostringstream oss;
-    if (!t.value()) {
+    if(!t.value()) {
         oss << "0 s";
     } else {
         const auto tt = get_tuple(t);
         const auto val = get<0>(tt);
         const auto scale = get<1>(tt);
         const auto fs_val = val * multiplier[scale];
-        for (int j = multiplier.size() - 1; j >= scale; --j) {
-            if (fs_val >= multiplier[j]) {
+        for(int j = multiplier.size() - 1; j >= scale; --j) {
+            if(fs_val >= multiplier[j]) {
                 const auto i = val / multiplier[j - scale];
                 const auto f = val % multiplier[j - scale];
-                oss << i << '.' << setw(3 * (j - scale)) << setfill('0') << right << f << ' '
-                    << time_units[j];
+                oss << i << '.' << setw(3 * (j - scale)) << setfill('0') << right << f << ' ' << time_units[j];
                 break;
             }
         }
     }
     return oss.str();
 }
-const string compose_message(const sc_report &rep, const scc::LogConfig& cfg) {
-  if(rep.get_severity()>SC_INFO || cfg.log_filter_regex.length()==0 || log_cfg.match(rep.get_msg_type())){
-    stringstream os;
-    if(likely(cfg.print_sim_time)){
-      if(unlikely(log_cfg.cycle_base.value()))
-        os << fmt::format("[{:>7}] ", sc_time_stamp().value()/log_cfg.cycle_base.value());
-      else if(unlikely(cfg.print_delta))
-        os << fmt::format("[{:>20}({:5})] ", time2string(sc_time_stamp()), sc_delta_count());
-      else
-        os << fmt::format("[{:>20}] ", time2string(sc_time_stamp()));
-    }
-    if(unlikely(rep.get_id() >= 0))
-        os << "(" << "IWEF"[rep.get_severity()] << rep.get_id() << ") "<<rep.get_msg_type() << ": ";
-    else if(cfg.msg_type_field_width)
-      os << util::padded(rep.get_msg_type(), cfg.msg_type_field_width) << ": ";
-    if (*rep.get_msg()) os  << rep.get_msg();
-    if (rep.get_severity() > SC_INFO) {
-        os << "\n         [FILE:" << rep.get_file_name() << ":" << rep.get_line_number() << "]";
-        sc_simcontext *simc = sc_get_curr_simcontext();
-        if (simc && sc_is_running()) {
-            const char *proc_name = rep.get_process_name();
-            if (proc_name) os << "\n         [PROCESS:" << proc_name << "]";
+const string compose_message(const sc_report& rep, const scc::LogConfig& cfg) {
+    if(rep.get_severity() > SC_INFO || cfg.log_filter_regex.length() == 0 || log_cfg.match(rep.get_msg_type())) {
+        stringstream os;
+        if(likely(cfg.print_sim_time)) {
+            if(unlikely(log_cfg.cycle_base.value()))
+                os << fmt::format("[{:>7}] ", sc_time_stamp().value() / log_cfg.cycle_base.value());
+            else if(unlikely(cfg.print_delta))
+                os << fmt::format("[{:>20}({:5})] ", time2string(sc_time_stamp()), sc_delta_count());
+            else
+                os << fmt::format("[{:>20}] ", time2string(sc_time_stamp()));
         }
-    }
-    return os.str();
-  } else
-    return "";
+        if(unlikely(rep.get_id() >= 0))
+            os << "("
+               << "IWEF"[rep.get_severity()] << rep.get_id() << ") " << rep.get_msg_type() << ": ";
+        else if(cfg.msg_type_field_width)
+            os << util::padded(rep.get_msg_type(), cfg.msg_type_field_width) << ": ";
+        if(*rep.get_msg())
+            os << rep.get_msg();
+        if(rep.get_severity() > SC_INFO) {
+            os << "\n         [FILE:" << rep.get_file_name() << ":" << rep.get_line_number() << "]";
+            sc_simcontext* simc = sc_get_curr_simcontext();
+            if(simc && sc_is_running()) {
+                const char* proc_name = rep.get_process_name();
+                if(proc_name)
+                    os << "\n         [PROCESS:" << proc_name << "]";
+            }
+        }
+        return os.str();
+    } else
+        return "";
 }
 
 inline log_level verbosity2log(int verb) {
-    if (verb >= SC_FULL) return TRACE;
-    if (verb >= SC_HIGH) return DEBUG;
+    if(verb >= SC_FULL)
+        return TRACE;
+    if(verb >= SC_HIGH)
+        return DEBUG;
     return INFO;
 }
 
-inline void log2logger(spdlog::logger& logger, const sc_report &rep, const scc::LogConfig& cfg){
-  auto msg = compose_message(rep, cfg);
-  if(!msg.size()) return;
-  switch(rep.get_severity()){
-  case SC_INFO:
-    switch(rep.get_verbosity()){
-    case SC_DEBUG:
-    case SC_FULL: logger.trace(msg); break;
-    case SC_HIGH: logger.debug(msg); break;
-    default: logger.info(msg); break;
+inline void log2logger(spdlog::logger& logger, const sc_report& rep, const scc::LogConfig& cfg) {
+    auto msg = compose_message(rep, cfg);
+    if(!msg.size())
+        return;
+    switch(rep.get_severity()) {
+    case SC_INFO:
+        switch(rep.get_verbosity()) {
+        case SC_DEBUG:
+        case SC_FULL:
+            logger.trace(msg);
+            break;
+        case SC_HIGH:
+            logger.debug(msg);
+            break;
+        default:
+            logger.info(msg);
+            break;
+        }
+        break;
+    case SC_WARNING:
+        logger.warn(msg);
+        break;
+    case SC_ERROR:
+        logger.error(msg);
+        break;
+    case SC_FATAL:
+        logger.critical(msg);
+        break;
     }
-    break;
-  case SC_WARNING: logger.warn(msg);break;
-  case SC_ERROR:   logger.error(msg);break;
-  case SC_FATAL:   logger.critical(msg);break;
-  }
 }
 
-inline void log2logger(spdlog::logger& logger, logging::log_level lvl, const string& msg){
-  switch(lvl){
-  case logging::DBGTRACE:
-  case logging::TRACE:   logger.trace(msg); return;
-  case logging::DEBUG:   logger.debug(msg); return;
-  case logging::INFO:    logger.info(msg); return;
-  case logging::WARNING: logger.warn(msg); return;
-  case logging::ERROR:   logger.error(msg); return;
-  case logging::FATAL:   logger.critical(msg); return;
-  }
-
+inline void log2logger(spdlog::logger& logger, logging::log_level lvl, const string& msg) {
+    switch(lvl) {
+    case logging::DBGTRACE:
+    case logging::TRACE:
+        logger.trace(msg);
+        return;
+    case logging::DEBUG:
+        logger.debug(msg);
+        return;
+    case logging::INFO:
+        logger.info(msg);
+        return;
+    case logging::WARNING:
+        logger.warn(msg);
+        return;
+    case logging::ERROR:
+        logger.error(msg);
+        return;
+    case logging::FATAL:
+        logger.critical(msg);
+        return;
+    }
 }
 
-void report_handler(const sc_report &rep, const sc_actions &actions) {
-    if ((actions & SC_DISPLAY) && (!log_cfg.file_logger || rep.get_verbosity() < SC_HIGH ))
+void report_handler(const sc_report& rep, const sc_actions& actions) {
+    if((actions & SC_DISPLAY) && (!log_cfg.file_logger || rep.get_verbosity() < SC_HIGH))
         log2logger(*log_cfg.console_logger, rep, log_cfg);
-    if ((actions & SC_LOG) && log_cfg.file_logger ){
+    if((actions & SC_LOG) && log_cfg.file_logger) {
         scc::LogConfig lcfg(log_cfg);
-        lcfg.print_sim_time=true;
-        if(!lcfg.msg_type_field_width)lcfg.msg_type_field_width=24;
+        lcfg.print_sim_time = true;
+        if(!lcfg.msg_type_field_width)
+            lcfg.msg_type_field_width = 24;
         log2logger(*log_cfg.file_logger, rep, lcfg);
     }
-    if (actions & SC_STOP) {
-      this_thread::sleep_for(chrono::milliseconds(log_cfg.level*10));
-      if(sc_is_running()) sc_stop();
+    if(actions & SC_STOP) {
+        this_thread::sleep_for(chrono::milliseconds(log_cfg.level * 10));
+        if(sc_is_running())
+            sc_stop();
     }
-    if (actions & SC_ABORT) {
-      this_thread::sleep_for(chrono::milliseconds(log_cfg.level*20));
-      abort();
+    if(actions & SC_ABORT) {
+        this_thread::sleep_for(chrono::milliseconds(log_cfg.level * 20));
+        abort();
     }
-    if (actions & SC_THROW) {
-      this_thread::sleep_for(chrono::milliseconds(log_cfg.level*20));
-      throw rep;
+    if(actions & SC_THROW) {
+        this_thread::sleep_for(chrono::milliseconds(log_cfg.level * 20));
+        throw rep;
     }
     if(!sc_is_running()) {
-      log_cfg.console_logger->flush();
-      if(log_cfg.file_logger) log_cfg.file_logger->flush();
-      this_thread::sleep_for(chrono::milliseconds(log_cfg.level*10));
+        log_cfg.console_logger->flush();
+        if(log_cfg.file_logger)
+            log_cfg.file_logger->flush();
+        this_thread::sleep_for(chrono::milliseconds(log_cfg.level * 10));
     }
 }
+} // namespace
+
+scc::stream_redirection::stream_redirection(ostream& os, logging::log_level level)
+: os(os)
+, level(level) {
+    old_buf = os.rdbuf(this); // save and redirect
 }
 
-scc::stream_redirection::stream_redirection(ostream& os, logging::log_level level):os(os), level(level){
-    old_buf=os.rdbuf(this); //save and redirect
-}
-
-scc::stream_redirection::~stream_redirection(){
+scc::stream_redirection::~stream_redirection() {
     os.rdbuf(old_buf); // restore
 }
 
-void scc::stream_redirection::reset(){
+void scc::stream_redirection::reset() {
     os.rdbuf(old_buf); // restore
-    old_buf=nullptr;
+    old_buf = nullptr;
 }
 
 streamsize scc::stream_redirection::xsputn(const char_type* s, streamsize n) {
     auto sz = stringbuf::xsputn(s, n);
-    if (s[n-1]=='\n'){
-      sync();
+    if(s[n - 1] == '\n') {
+        sync();
     }
     return sz;
 }
 
-static const array<sc_severity, 8> severity = {
-    SC_FATAL,   // Logging::NONE
-    SC_FATAL,   // Logging::FATAL
-    SC_ERROR,   // Logging::ERROR
-    SC_WARNING, // Logging::WARNING
-    SC_INFO,    // Logging::INFO
-    SC_INFO,    // logging::DEBUG
-    SC_INFO,    // logging::TRACE
-    SC_INFO};   // logging::DBGTRACE
-static const array<int, 8> verbosity = {
-    SC_NONE,   // Logging::NONE
-    SC_LOW,    // Logging::FATAL
-    SC_LOW,    // Logging::ERROR
-    SC_LOW,    // Logging::WARNING
-    SC_MEDIUM, // Logging::INFO
-    SC_HIGH,   // logging::DEBUG
-    SC_FULL,   // logging::TRACE
-    SC_DEBUG}; // logging::DBGTRACE
+static const array<sc_severity, 8> severity = {SC_FATAL,   // Logging::NONE
+                                               SC_FATAL,   // Logging::FATAL
+                                               SC_ERROR,   // Logging::ERROR
+                                               SC_WARNING, // Logging::WARNING
+                                               SC_INFO,    // Logging::INFO
+                                               SC_INFO,    // logging::DEBUG
+                                               SC_INFO,    // logging::TRACE
+                                               SC_INFO};   // logging::DBGTRACE
+static const array<int, 8> verbosity = {SC_NONE,           // Logging::NONE
+                                        SC_LOW,            // Logging::FATAL
+                                        SC_LOW,            // Logging::ERROR
+                                        SC_LOW,            // Logging::WARNING
+                                        SC_MEDIUM,         // Logging::INFO
+                                        SC_HIGH,           // logging::DEBUG
+                                        SC_FULL,           // logging::TRACE
+                                        SC_DEBUG};         // logging::DBGTRACE
 
-int scc::stream_redirection::sync(){
-  if(level <= log_cfg.level){
-      auto timestr = time2string(sc_time_stamp());
-      istringstream buf(str());
-      string line;
-      while(getline(buf, line)) {
-        ::sc_report_handler::report(severity[level], "SystemC", line.c_str(), verbosity[level], "", 0);
-      }
-      str(string(""));
-  }
-  return 0; //Success
+int scc::stream_redirection::sync() {
+    if(level <= log_cfg.level) {
+        auto timestr = time2string(sc_time_stamp());
+        istringstream buf(str());
+        string line;
+        while(getline(buf, line)) {
+            ::sc_report_handler::report(severity[level], "SystemC", line.c_str(), verbosity[level], "", 0);
+        }
+        str(string(""));
+    }
+    return 0; // Success
 }
 
 static void configure_logging() {
@@ -277,123 +308,122 @@ static void configure_logging() {
     sc_report_handler::set_actions(SC_FATAL, SC_DEFAULT_FATAL_ACTIONS);
     sc_report_handler::set_verbosity_level(verbosity[log_cfg.level]);
     sc_report_handler::set_handler(report_handler);
-    spdlog::init_thread_pool(1024U, log_cfg.log_file_name.size()?2U:1U); // queue with 8k items and 1 backing thread.
-    log_cfg.console_logger = log_cfg.log_async ?
-        spdlog::stdout_color_mt<spdlog::async_factory>("console_logger") :
-        spdlog::stdout_color_mt("console_logger") ;
-    auto logger_fmt = log_cfg.print_severity?"[%L] %v":"%v";
-    if(log_cfg.colored_output){
-      std::ostringstream os;
-      os<<"%^"<<logger_fmt<<"%$";
-      log_cfg.console_logger->set_pattern(os.str());
+    spdlog::init_thread_pool(1024U,
+                             log_cfg.log_file_name.size() ? 2U : 1U); // queue with 8k items and 1 backing thread.
+    log_cfg.console_logger = log_cfg.log_async ? spdlog::stdout_color_mt<spdlog::async_factory>("console_logger")
+                                               : spdlog::stdout_color_mt("console_logger");
+    auto logger_fmt = log_cfg.print_severity ? "[%L] %v" : "%v";
+    if(log_cfg.colored_output) {
+        std::ostringstream os;
+        os << "%^" << logger_fmt << "%$";
+        log_cfg.console_logger->set_pattern(os.str());
     } else
-      log_cfg.console_logger->set_pattern("[%L] %v");
+        log_cfg.console_logger->set_pattern("[%L] %v");
     log_cfg.console_logger->flush_on(spdlog::level::warn);
     log_cfg.console_logger->set_level(
         static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
-    if(log_cfg.log_file_name.size()){
-      {
-        ofstream ofs;
-        ofs.open (log_cfg.log_file_name, ios::out | ios::trunc);
-      }
-      log_cfg.file_logger = log_cfg.log_async ?
-          spdlog::basic_logger_mt<spdlog::async_factory>("file_logger", log_cfg.log_file_name):
-          spdlog::basic_logger_mt("file_logger", log_cfg.log_file_name);
-      if(log_cfg.print_severity)
-        log_cfg.file_logger->set_pattern("[%8l] %v");
-      else
-        log_cfg.file_logger->set_pattern("%v");
-      log_cfg.file_logger->flush_on(spdlog::level::warn);
-      log_cfg.file_logger->set_level(
-          static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
+    if(log_cfg.log_file_name.size()) {
+        {
+            ofstream ofs;
+            ofs.open(log_cfg.log_file_name, ios::out | ios::trunc);
+        }
+        log_cfg.file_logger = log_cfg.log_async
+                                  ? spdlog::basic_logger_mt<spdlog::async_factory>("file_logger", log_cfg.log_file_name)
+                                  : spdlog::basic_logger_mt("file_logger", log_cfg.log_file_name);
+        if(log_cfg.print_severity)
+            log_cfg.file_logger->set_pattern("[%8l] %v");
+        else
+            log_cfg.file_logger->set_pattern("%v");
+        log_cfg.file_logger->flush_on(spdlog::level::warn);
+        log_cfg.file_logger->set_level(
+            static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
     }
-    if(log_cfg.log_filter_regex.size()){
+    if(log_cfg.log_filter_regex.size()) {
 #ifdef USE_C_REGEX
-     regcomp(&log_cfg.start_state, log_cfg.log_filter_regex.c_str(), REG_EXTENDED);
+        regcomp(&log_cfg.start_state, log_cfg.log_filter_regex.c_str(), REG_EXTENDED);
 #else
-     log_cfg.reg_ex=regex(log_cfg.log_filter_regex, regex::extended|regex::icase);
+        log_cfg.reg_ex = regex(log_cfg.log_filter_regex, regex::extended | regex::icase);
 #endif
     }
 }
 
 void scc::init_logging(logging::log_level level, unsigned type_field_width, bool print_time) {
-  log_cfg.msg_type_field_width = type_field_width;
-  log_cfg.print_sys_time = print_time;
-  log_cfg.level = level;
-  configure_logging();
+    log_cfg.msg_type_field_width = type_field_width;
+    log_cfg.print_sys_time = print_time;
+    log_cfg.level = level;
+    configure_logging();
 }
 
-void scc::init_logging(const scc::LogConfig& log_config){
-  log_cfg=log_config;
-  configure_logging();
+void scc::init_logging(const scc::LogConfig& log_config) {
+    log_cfg = log_config;
+    configure_logging();
 }
 
-void scc::set_logging_level(logging::log_level level){
-  log_cfg.level = level;
-  sc_report_handler::set_verbosity_level(verbosity[log_cfg.level]);
-  log_cfg.console_logger->set_level(static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
+void scc::set_logging_level(logging::log_level level) {
+    log_cfg.level = level;
+    sc_report_handler::set_verbosity_level(verbosity[log_cfg.level]);
+    log_cfg.console_logger->set_level(
+        static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
 }
 
-void scc::set_cycle_base(sc_time period){
-  log_cfg.cycle_base=period;
-}
+void scc::set_cycle_base(sc_time period) { log_cfg.cycle_base = period; }
 
 scc::LogConfig& scc::LogConfig::logLevel(logging::log_level log_level) {
-  this->level=log_level;
-  return *this;
+    this->level = log_level;
+    return *this;
 }
 
 scc::LogConfig& scc::LogConfig::msgTypeFieldWidth(unsigned width) {
-  this->msg_type_field_width=width;
-  return *this;
+    this->msg_type_field_width = width;
+    return *this;
 }
 
 scc::LogConfig& scc::LogConfig::printSysTime(bool enable) {
-  this->print_sys_time=enable;
-  return *this;
+    this->print_sys_time = enable;
+    return *this;
 }
 
 scc::LogConfig& scc::LogConfig::printSimTime(bool enable) {
-  this->print_sim_time=enable;
-  return *this;
+    this->print_sim_time = enable;
+    return *this;
 }
 
 scc::LogConfig& scc::LogConfig::printDelta(bool enable) {
-  this->print_delta=enable;
-  return *this;
+    this->print_delta = enable;
+    return *this;
 }
 
 scc::LogConfig& scc::LogConfig::printSeverity(bool enable) {
-  this->print_severity=enable;
-  return *this;
+    this->print_severity = enable;
+    return *this;
 }
 
 scc::LogConfig& scc::LogConfig::logFileName(string&& name) {
-  this->log_file_name=name;
-  return *this;
+    this->log_file_name = name;
+    return *this;
 }
 
 scc::LogConfig& scc::LogConfig::logFileName(const string& name) {
-  this->log_file_name=name;
-  return *this;
+    this->log_file_name = name;
+    return *this;
 }
 
 scc::LogConfig& scc::LogConfig::coloredOutput(bool enable) {
-  this->colored_output=enable;
-  return *this;
+    this->colored_output = enable;
+    return *this;
 }
 
 scc::LogConfig& scc::LogConfig::logFilterRegex(string&& expr) {
-  this->log_filter_regex=expr;
-  return *this;
+    this->log_filter_regex = expr;
+    return *this;
 }
 
 scc::LogConfig& scc::LogConfig::logFilterRegex(const string& expr) {
-  this->log_filter_regex=expr;
-  return *this;
+    this->log_filter_regex = expr;
+    return *this;
 }
 
 scc::LogConfig& scc::LogConfig::logAsync(bool v) {
-  this->log_async=v;
-  return *this;
+    this->log_async = v;
+    return *this;
 }

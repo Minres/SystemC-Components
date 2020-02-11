@@ -20,8 +20,8 @@
 #include <memory>
 
 #include "resetable.h"
-#include "traceable.h"
 #include "resource_access_if.h"
+#include "traceable.h"
 #include "util/delegate.h"
 #include "utilities.h"
 #include <functional>
@@ -75,7 +75,7 @@ public:
      * @param rdmask the SW read mask
      * @param wrmask the SW write mask
      */
-    sc_register(sc_core::sc_module_name nm, DATATYPE &storage, const DATATYPE reset_val, resetable &owner,
+    sc_register(sc_core::sc_module_name nm, DATATYPE& storage, const DATATYPE reset_val, resetable& owner,
                 DATATYPE rdmask = get_max_uval<DATATYPE>(), DATATYPE wrmask = get_max_uval<DATATYPE>())
     : sc_core::sc_object(nm)
     , res_val(reset_val)
@@ -99,7 +99,8 @@ public:
      */
     void reset() override {
         DATATYPE r(res_val);
-        if (wr_cb) wr_cb(*this, r, sc_core::SC_ZERO_TIME);
+        if(wr_cb)
+            wr_cb(*this, r, sc_core::SC_ZERO_TIME);
         storage = r;
     }
     /**
@@ -111,12 +112,14 @@ public:
      * @param d annotated delay if loosly-timed access
      * @return true if access is successful
      */
-    bool write(const uint8_t *data, size_t length, uint64_t offset = 0, sc_core::sc_time d = sc_core::SC_ZERO_TIME) override {
+    bool write(const uint8_t* data, size_t length, uint64_t offset = 0,
+               sc_core::sc_time d = sc_core::SC_ZERO_TIME) override {
         assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
-        auto beg = reinterpret_cast<uint8_t *>(&temp) + offset;
+        auto beg = reinterpret_cast<uint8_t*>(&temp) + offset;
         std::copy(data, data + length, beg);
-        if (wr_cb) return wr_cb(*this, temp, d);
+        if(wr_cb)
+            return wr_cb(*this, temp, d);
         storage = (temp & wrmask) | (storage & ~wrmask);
         return true;
     }
@@ -129,14 +132,16 @@ public:
      * @param d annotated delay if loosly-timed access
      * @return true if access is successful
      */
-    bool read(uint8_t *data, size_t length, uint64_t offset = 0, sc_core::sc_time d = sc_core::SC_ZERO_TIME) const override {
+    bool read(uint8_t* data, size_t length, uint64_t offset = 0,
+              sc_core::sc_time d = sc_core::SC_ZERO_TIME) const override {
         assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
-        if (rd_cb) {
-            if (!rd_cb(*this, temp, d)) return false;
+        if(rd_cb) {
+            if(!rd_cb(*this, temp, d))
+                return false;
         } else
             temp &= rdmask;
-        auto beg = reinterpret_cast<uint8_t *>(&temp) + offset;
+        auto beg = reinterpret_cast<uint8_t*>(&temp) + offset;
         std::copy(beg, beg + length, data);
         return true;
     }
@@ -148,10 +153,11 @@ public:
      * @param offset offset within register
      * @return true if access is successful
      */
-    bool write_dbg(const uint8_t *data, size_t length, uint64_t offset=0) override {
+    bool write_dbg(const uint8_t* data, size_t length, uint64_t offset = 0) override {
         assert("Offset out of range" && offset == 0);
-        if (length != sizeof(DATATYPE)) return false;
-        storage = *reinterpret_cast<const DATATYPE *>(data);
+        if(length != sizeof(DATATYPE))
+            return false;
+        storage = *reinterpret_cast<const DATATYPE*>(data);
         return true;
     }
     /**
@@ -162,10 +168,11 @@ public:
      * @param offset offset within register
      * @return true if access is successful
      */
-    bool read_dbg(uint8_t *data, size_t length, uint64_t offset=0) const override {
+    bool read_dbg(uint8_t* data, size_t length, uint64_t offset = 0) const override {
         assert("Offset out of range" && offset == 0);
-        if (length != sizeof(DATATYPE)) return false;
-        *reinterpret_cast<DATATYPE *>(data) = storage;
+        if(length != sizeof(DATATYPE))
+            return false;
+        *reinterpret_cast<DATATYPE*>(data) = storage;
         return true;
     }
     /**
@@ -190,7 +197,7 @@ public:
      * @param other the data
      * @return
      */
-    this_type &operator=(DATATYPE other) {
+    this_type& operator=(DATATYPE other) {
         storage = other;
         return *this;
     }
@@ -200,7 +207,7 @@ public:
      * @param other
      * @return
      */
-    this_type &operator|=(DATATYPE other) {
+    this_type& operator|=(DATATYPE other) {
         storage |= other;
         return *this;
     }
@@ -210,7 +217,7 @@ public:
      * @param other
      * @return
      */
-    this_type &operator&=(DATATYPE other) {
+    this_type& operator&=(DATATYPE other) {
         storage &= other;
         return *this;
     }
@@ -220,36 +227,36 @@ public:
      *
      * @param read_cb
      */
-    void set_read_cb(std::function<bool(const this_type &, DATATYPE &)> read_cb) {
-        rd_cb = [read_cb](const this_type &reg, DATATYPE &data, sc_core::sc_time delay) { return read_cb(reg, data); };
+    void set_read_cb(std::function<bool(const this_type&, DATATYPE&)> read_cb) {
+        rd_cb = [read_cb](const this_type& reg, DATATYPE& data, sc_core::sc_time delay) { return read_cb(reg, data); };
     }
     /**
      * set the read callback triggered upon a read request
      *
      * @param read_cb
      */
-    void set_read_cb(std::function<bool(const this_type &, DATATYPE &, sc_core::sc_time)> read_cb) { rd_cb = read_cb; }
+    void set_read_cb(std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time)> read_cb) { rd_cb = read_cb; }
     /**
      * set the write callback triggered upon a write request without forwarding the annotated time
      * this is primary for backward compatibility
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(this_type &, const DATATYPE &)> write_cb) {
-        wr_cb = [write_cb](this_type &reg, DATATYPE &data, sc_core::sc_time delay) { return write_cb(reg, data); };
+    void set_write_cb(std::function<bool(this_type&, const DATATYPE&)> write_cb) {
+        wr_cb = [write_cb](this_type& reg, DATATYPE& data, sc_core::sc_time delay) { return write_cb(reg, data); };
     }
     /**
      * set the write callback triggered upon a write request
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(this_type &, const DATATYPE &, sc_core::sc_time)> write_cb) { wr_cb = write_cb; }
+    void set_write_cb(std::function<bool(this_type&, const DATATYPE&, sc_core::sc_time)> write_cb) { wr_cb = write_cb; }
     /**
      * trace the register value to the given trace file
      *
      * @param trf
      */
-    void trace(sc_core::sc_trace_file *trf) const override { sc_trace(trf, storage, this->name()); }
+    void trace(sc_core::sc_trace_file* trf) const override { sc_trace(trf, storage, this->name()); }
     //! the reset value
     const DATATYPE res_val;
     //! the SW read mask
@@ -258,14 +265,14 @@ public:
     const DATATYPE wrmask;
 
 private:
-    DATATYPE &storage;
-    std::function<bool(const this_type &, DATATYPE &, sc_core::sc_time)> rd_cb;
-    std::function<bool(this_type &, DATATYPE &, sc_core::sc_time)> wr_cb;
+    DATATYPE& storage;
+    std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time)> rd_cb;
+    std::function<bool(this_type&, DATATYPE&, sc_core::sc_time)> wr_cb;
 
-    util::delegate<bool(const this_type &, DATATYPE &, sc_core::sc_time)> rd_dlgt;
-    util::delegate<bool(this_type &, DATATYPE &, sc_core::sc_time)> wr_dlgt;
+    util::delegate<bool(const this_type&, DATATYPE&, sc_core::sc_time)> rd_dlgt;
+    util::delegate<bool(this_type&, DATATYPE&, sc_core::sc_time)> wr_dlgt;
 };
-}
+} // namespace impl
 //! import the implementation into the scc namespace
 template <typename DATATYPE> using sc_register = impl::sc_register<typename impl::helper<DATATYPE>::Type>;
 /**
@@ -277,7 +284,7 @@ public:
     using BASE_DATA_TYPE = typename impl::helper<DATATYPE>::Type;
 
     using value_type = sc_register<DATATYPE>;
-    using pointer = value_type *;
+    using pointer = value_type*;
     /**
      * the constructor
      *
@@ -288,8 +295,8 @@ public:
      * @param rdmask
      * @param wrmask
      */
-    sc_register_indexed(sc_core::sc_module_name nm, std::array<DATATYPE, SIZE> &storage, const DATATYPE reset_val,
-                        resetable &owner,
+    sc_register_indexed(sc_core::sc_module_name nm, std::array<DATATYPE, SIZE>& storage, const DATATYPE reset_val,
+                        resetable& owner,
                         BASE_DATA_TYPE rdmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed
                                                     ? -1
                                                     : std::numeric_limits<BASE_DATA_TYPE>::max(),
@@ -297,19 +304,17 @@ public:
                                                     ? -1
                                                     : std::numeric_limits<BASE_DATA_TYPE>::max()) {
         _reg_field = reinterpret_cast<pointer>(malloc(SIZE * sizeof(value_type)));
-        for (size_t idx = START; idx < (START + SIZE); ++idx) {
+        for(size_t idx = START; idx < (START + SIZE); ++idx) {
             std::stringstream ss;
             ss << nm << idx;
-            new (_reg_field + idx)
-                sc_register<DATATYPE>(sc_core::sc_module_name(ss.str().c_str()), storage[idx], reset_val, owner, rdmask, wrmask);
+            new(_reg_field + idx) sc_register<DATATYPE>(sc_core::sc_module_name(ss.str().c_str()), storage[idx],
+                                                        reset_val, owner, rdmask, wrmask);
         }
     }
     /**
      * the destructor
      */
-    ~sc_register_indexed() override {
-        free(_reg_field);
-    }
+    ~sc_register_indexed() override { free(_reg_field); }
     /**
      * get the size of the register file
      *
@@ -322,16 +327,18 @@ public:
      *
      * @param read_cb
      */
-    void set_read_cb(std::function<bool(const sc_register<DATATYPE> &, DATATYPE &)> read_cb) {
-        for (std::unique_ptr<sc_register<DATATYPE>> reg : *this) reg->add_read_cb(read_cb);
+    void set_read_cb(std::function<bool(const sc_register<DATATYPE>&, DATATYPE&)> read_cb) {
+        for(std::unique_ptr<sc_register<DATATYPE>> reg : *this)
+            reg->add_read_cb(read_cb);
     }
     /**
      * set the read callback triggered upon a read request
      *
      * @param read_cb
      */
-    void set_read_cb(std::function<bool(const sc_register<DATATYPE> &, DATATYPE &, sc_core::sc_time)> read_cb) {
-        for (std::unique_ptr<sc_register<DATATYPE>> reg : *this) reg->add_read_cb(read_cb);
+    void set_read_cb(std::function<bool(const sc_register<DATATYPE>&, DATATYPE&, sc_core::sc_time)> read_cb) {
+        for(std::unique_ptr<sc_register<DATATYPE>> reg : *this)
+            reg->add_read_cb(read_cb);
     }
     /**
      * set the write callback triggered upon a write request without forwarding the annotated time
@@ -339,16 +346,18 @@ public:
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(sc_register<DATATYPE> &, DATATYPE &)> write_cb) {
-        for (std::unique_ptr<sc_register<DATATYPE>> reg : *this) reg->add_write_cb(write_cb);
+    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE&)> write_cb) {
+        for(std::unique_ptr<sc_register<DATATYPE>> reg : *this)
+            reg->add_write_cb(write_cb);
     }
     /**
      * set the write callback triggered upon a write request
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(sc_register<DATATYPE> &, DATATYPE &, sc_core::sc_time)> write_cb) {
-        for (std::unique_ptr<sc_register<DATATYPE>> reg : *this) reg->add_write_cb(write_cb);
+    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE&, sc_core::sc_time)> write_cb) {
+        for(std::unique_ptr<sc_register<DATATYPE>> reg : *this)
+            reg->add_write_cb(write_cb);
     }
     /**
      * Element access operator
@@ -380,13 +389,13 @@ public:
      * @param idx
      * @return the data reference at the index
      */
-   const_reference at(size_t idx) const override {
+    const_reference at(size_t idx) const override {
         assert("access out of bound" && idx < SIZE);
         return *(_reg_field + idx);
     }
 
 private:
-    value_type *_reg_field;
+    value_type* _reg_field;
 };
 /**
  * alias class to map template argument read an write mask to constructor arguments
@@ -395,9 +404,9 @@ template <typename DATATYPE, DATATYPE WRMASK = impl::get_max_uval<DATATYPE>(),
           DATATYPE RDMASK = impl::get_max_uval<DATATYPE>()>
 class sc_register_masked : public sc_register<DATATYPE> {
 public:
-    sc_register_masked(sc_core::sc_module_name nm, DATATYPE &storage, const DATATYPE reset_val, resetable &owner)
+    sc_register_masked(sc_core::sc_module_name nm, DATATYPE& storage, const DATATYPE reset_val, resetable& owner)
     : sc_register<DATATYPE>(nm, storage, reset_val, owner, RDMASK, WRMASK) {}
 };
-}
+} // namespace scc
 
 #endif /* _SYSC_REGISTER_H_ */

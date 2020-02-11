@@ -45,7 +45,8 @@ public:
      * the destructor
      */
     ~sparse_array() {
-        for (auto i : arr) delete i;
+        for(auto i : arr)
+            delete i;
     }
     /**
      * element access operator
@@ -53,10 +54,11 @@ public:
      * @param addr address to access
      * @return the data type reference
      */
-    T &operator[](uint32_t addr) {
+    T& operator[](uint32_t addr) {
         assert(addr < SIZE);
         T nr = addr >> lower_width;
-        if (arr[nr] == nullptr) arr[nr] = new page_type();
+        if(arr[nr] == nullptr)
+            arr[nr] = new page_type();
         return arr[nr]->at(addr & page_addr_mask);
     }
     /**
@@ -65,9 +67,10 @@ public:
      * @param page_nr the page number ot fetch
      * @return reference to page
      */
-    page_type &operator()(uint32_t page_nr) {
+    page_type& operator()(uint32_t page_nr) {
         assert(page_nr < page_count);
-        if (arr[page_nr] == nullptr) arr[page_nr] = new page_type();
+        if(arr[page_nr] == nullptr)
+            arr[page_nr] = new page_type();
         return *(arr[page_nr]);
     }
     /**
@@ -87,9 +90,10 @@ public:
      * @return the size
      */
     uint64_t size() { return SIZE; }
+
 protected:
-    std::array<page_type *, SIZE / (1 << lower_width) + 1> arr;
+    std::array<page_type*, SIZE / (1 << lower_width) + 1> arr;
 };
-}
+} // namespace util
 
 #endif /* _SPARSE_ARRAY_H_ */

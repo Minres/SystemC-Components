@@ -81,11 +81,11 @@ template <> class scv_extensions<scv4tlm::tlm_gp_data> : public scv_extensions_b
 public:
     scv_extensions<sc_dt::uint64> address;
     scv_extensions<tlm::tlm_command> command;
-    scv_extensions<unsigned char *> data;
+    scv_extensions<unsigned char*> data;
     scv_extensions<unsigned int> data_length;
     scv_extensions<tlm::tlm_response_status> response_status;
     scv_extensions<bool> dmi_allowed;
-    scv_extensions<unsigned char *> byte_enable;
+    scv_extensions<unsigned char*> byte_enable;
     scv_extensions<unsigned int> byte_enable_length;
     scv_extensions<unsigned int> streaming_width;
     scv_extensions<tlm::tlm_gp_option> gp_option;
@@ -117,7 +117,7 @@ public:
 
 template <> class scv_extensions<scv4tlm::tlm_dmi_data> : public scv_extensions_base<scv4tlm::tlm_dmi_data> {
 public:
-    scv_extensions<unsigned char *> dmi_ptr;
+    scv_extensions<unsigned char*> dmi_ptr;
     scv_extensions<sc_dt::uint64> dmi_start_address;
     scv_extensions<sc_dt::uint64> dmi_end_address;
     scv_extensions<tlm::tlm_dmi::dmi_access_e> dmi_access;

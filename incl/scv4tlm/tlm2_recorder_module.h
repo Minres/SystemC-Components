@@ -35,7 +35,7 @@ namespace scv4tlm {
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types>
 class tlm2_recorder_module : public sc_core::sc_module, public tlm2_recorder<TYPES> {
 public:
-    SC_HAS_PROCESS(tlm2_recorder_module);// NOLINT
+    SC_HAS_PROCESS(tlm2_recorder_module); // NOLINT
     //! The target socket of the recorder to be bound to the initiator
     tlm::tlm_target_socket<BUSWIDTH, TYPES, 1> ts;
     //! The initiator to be bound to the target socket
@@ -50,7 +50,7 @@ public:
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
     tlm2_recorder_module(sc_core::sc_module_name name, bool recording_enabled = true,
-                         scv_tr_db *tr_db = scv_tr_db::get_default_db())
+                         scv_tr_db* tr_db = scv_tr_db::get_default_db())
     : sc_module(name)
     , is("is")
     , ts("ts")
@@ -61,8 +61,7 @@ public:
     }
 
     virtual ~tlm2_recorder_module() {}
-
 };
-} // namespace
+} // namespace scv4tlm
 
 #endif /* TLM2_RECORDER_MODULE_H_ */

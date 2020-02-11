@@ -99,21 +99,21 @@
 
 static gzFile my_text_file_p = nullptr;
 
-static void scv_tr_db_cbf(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason, void *user_data_p) {
+static void scv_tr_db_cbf(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason, void* user_data_p) {
     // This is called from the scv_tr_db ctor.
 
     static std::string my_text_file_name("DEFAULT_scv_tr_TEXT.txt");
 
-    switch (reason) {
+    switch(reason) {
 
     case scv_tr_db::CREATE:
-        if ((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0)) {
+        if((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0)) {
             my_text_file_name = _scv_tr_db.get_name();
         }
 
         my_text_file_p = gzopen(my_text_file_name.c_str(), "wb");
 
-        if (my_text_file_p == nullptr) {
+        if(my_text_file_p == nullptr) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open text recording file");
         } else {
             scv_out << "TB Transaction Recording has started, file = " << my_text_file_name << endl;
@@ -121,7 +121,7 @@ static void scv_tr_db_cbf(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reaso
         break;
 
     case scv_tr_db::DELETE:
-        if (my_text_file_p != nullptr) {
+        if(my_text_file_p != nullptr) {
             scv_out << "Transaction Recording is closing file: " << my_text_file_name << endl;
             gzclose(my_text_file_p);
             my_text_file_p = nullptr;
@@ -135,10 +135,11 @@ static void scv_tr_db_cbf(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reaso
 
 // ----------------------------------------------------------------------------
 
-static void scv_tr_stream_cbf(const scv_tr_stream &s, scv_tr_stream::callback_reason reason, void *user_data_p) {
-    if (reason == scv_tr_stream::CREATE) {
+static void scv_tr_stream_cbf(const scv_tr_stream& s, scv_tr_stream::callback_reason reason, void* user_data_p) {
+    if(reason == scv_tr_stream::CREATE) {
 
-        if (my_text_file_p == nullptr) return;
+        if(my_text_file_p == nullptr)
+            return;
 
         gzprintf(my_text_file_p, "scv_tr_stream (ID " scv_tr_TEXT_LLU ", name \"%s\", kind \"%s\")\n", s.get_id(),
                  s.get_name(), s.get_stream_kind() ? s.get_stream_kind() : "<no_stream_kind>");
@@ -150,11 +151,11 @@ static void scv_tr_stream_cbf(const scv_tr_stream &s, scv_tr_stream::callback_re
 //#define TRACE_DO_ATTRIBUTES
 
 static void do_attributes(bool declare_attributes, // If false then print the values
-                          bool undefined_values, bool is_record_attribute, std::string &prefix_name,
-                          const std::string &exts_kind, const scv_extensions_if *my_exts_p,
-                          int *index) // The attribute index number
+                          bool undefined_values, bool is_record_attribute, std::string& prefix_name,
+                          const std::string& exts_kind, const scv_extensions_if* my_exts_p,
+                          int* index) // The attribute index number
 {
-// This function can be called recursively, for nested data types.
+    // This function can be called recursively, for nested data types.
 
 #ifdef TRACE_DO_ATTRIBUTES
     cout << "Entering do_attributes\n";
@@ -162,29 +163,31 @@ static void do_attributes(bool declare_attributes, // If false then print the va
     cout << "  undefined_values = " << undefined_values << endl;
     cout << "  prefix_name = " << prefix_name << endl;
     cout << "  exts_kind = " << exts_kind << endl;
-    if (index) cout << "  index = " << *index << endl;
-    if (my_exts_p) {
+    if(index)
+        cout << "  index = " << *index << endl;
+    if(my_exts_p) {
         cout << "  my_exts_p->get_name() = " << my_exts_p->get_name() << endl;
     } else {
         cout << " my_exts_p = 0\n";
     }
 #endif
 
-    if (my_exts_p == nullptr) return;
+    if(my_exts_p == nullptr)
+        return;
 
     std::string full_name;
 
-    if (prefix_name == "") {
+    if(prefix_name == "") {
         full_name = my_exts_p->get_name();
     } else {
-        if ((my_exts_p->get_name() == nullptr) || (strlen(my_exts_p->get_name()) == 0)) {
+        if((my_exts_p->get_name() == nullptr) || (strlen(my_exts_p->get_name()) == 0)) {
             full_name = prefix_name;
         } else {
             full_name = prefix_name + "." + my_exts_p->get_name();
         }
     }
 
-    if (full_name == "") {
+    if(full_name == "") {
         full_name = "<anonymous>";
     }
 
@@ -193,7 +196,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
     cout << "  my_exts_p->get_type() = " << my_exts_p->get_type() << endl;
 #endif
 
-    switch (my_exts_p->get_type()) {
+    switch(my_exts_p->get_type()) {
 
     case scv_extensions_if::RECORD: {
 #ifdef TRACE_DO_ATTRIBUTES
@@ -203,10 +206,10 @@ static void do_attributes(bool declare_attributes, // If false then print the va
         int num_fields = my_exts_p->get_num_fields();
         int field_counter;
 
-        if (num_fields > 0) {
-            for (field_counter = 0; field_counter < num_fields; field_counter++) {
+        if(num_fields > 0) {
+            for(field_counter = 0; field_counter < num_fields; field_counter++) {
 
-                const scv_extensions_if *field_data_p = my_exts_p->get_field(field_counter);
+                const scv_extensions_if* field_data_p = my_exts_p->get_field(field_counter);
 
                 do_attributes(declare_attributes, undefined_values, is_record_attribute, prefix_name, exts_kind,
                               field_data_p, index);
@@ -219,15 +222,15 @@ static void do_attributes(bool declare_attributes, // If false then print the va
         cout << "  scv_extensions_if::ENUMERATION\n";
 #endif
 
-        if (declare_attributes) {
+        if(declare_attributes) {
             gzprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"ENUMERATION\")\n",
                      exts_kind.c_str(), // begin_attribute or end_attribute
                      *index, full_name.c_str());
             (*index)++;
-        } else if (undefined_values) {
+        } else if(undefined_values) {
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
-            if (is_record_attribute) {
+            if(is_record_attribute) {
                 gzprintf(my_text_file_p, R"(%s "%s" ENUMERATION = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
@@ -241,15 +244,15 @@ static void do_attributes(bool declare_attributes, // If false then print the va
         cout << "  scv_extensions_if::BOOLEAN\n";
 #endif
 
-        if (declare_attributes) {
+        if(declare_attributes) {
             gzprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"BOOLEAN\")\n",
                      exts_kind.c_str(), // begin_attribute or end_attribute
                      *index, full_name.c_str());
             (*index)++;
-        } else if (undefined_values) {
+        } else if(undefined_values) {
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
-            if (is_record_attribute) {
+            if(is_record_attribute) {
                 gzprintf(my_text_file_p, R"(%s "%s" BOOLEAN = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
@@ -265,20 +268,20 @@ static void do_attributes(bool declare_attributes, // If false then print the va
         cout << "  get_bitwidth() = " << my_exts_p->get_bitwidth() << endl;
 #endif
 
-        if (declare_attributes) {
+        if(declare_attributes) {
             gzprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"INTEGER\")\n",
                      exts_kind.c_str(), // begin_attribute or end_attribute
                      *index, full_name.c_str());
             (*index)++;
-        } else if (undefined_values) {
+        } else if(undefined_values) {
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
-            if (is_record_attribute) {
+            if(is_record_attribute) {
                 gzprintf(my_text_file_p, R"(%s "%s" INTEGER = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
             }
-            if (my_exts_p->get_bitwidth() == 64) {
+            if(my_exts_p->get_bitwidth() == 64) {
                 gzprintf(my_text_file_p, scv_tr_TEXT_LLU "\n", my_exts_p->get_integer());
             } else {
                 auto tmp_int = (int)my_exts_p->get_integer();
@@ -292,15 +295,15 @@ static void do_attributes(bool declare_attributes, // If false then print the va
         cout << "  scv_extensions_if::UNSIGNED\n";
 #endif
 
-        if (declare_attributes) {
+        if(declare_attributes) {
             gzprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"UNSIGNED\")\n",
                      exts_kind.c_str(), // begin_attribute or end_attribute
                      *index, full_name.c_str());
             (*index)++;
-        } else if (undefined_values) {
+        } else if(undefined_values) {
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
-            if (is_record_attribute) {
+            if(is_record_attribute) {
                 gzprintf(my_text_file_p, R"(%s "%s" UNSIGNED = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
@@ -314,7 +317,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
         cout << "  scv_extensions_if::POINTER\n";
 #endif
 
-        const scv_extensions_if *field_data_p = my_exts_p->get_pointer();
+        const scv_extensions_if* field_data_p = my_exts_p->get_pointer();
 
 #ifdef TRACE_DO_ATTRIBUTES
         cout << "  field_data_p = " << (long)field_data_p << endl;
@@ -323,15 +326,15 @@ static void do_attributes(bool declare_attributes, // If false then print the va
         // Extensions are not yet implemented for pointers, so the only thing
         // to do here is to simply print the value of the pointer.
 
-        if (declare_attributes) {
+        if(declare_attributes) {
             gzprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"POINTER\")\n",
                      exts_kind.c_str(), // begin_attribute or end_attribute
                      *index, full_name.c_str());
             (*index)++;
-        } else if (undefined_values) {
+        } else if(undefined_values) {
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
-            if (is_record_attribute) {
+            if(is_record_attribute) {
                 gzprintf(my_text_file_p, R"(%s "%s" POINTER = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
@@ -344,15 +347,15 @@ static void do_attributes(bool declare_attributes, // If false then print the va
 #ifdef TRACE_DO_ATTRIBUTES
         cout << "  scv_extensions_if::STRING\n";
 #endif
-        if (declare_attributes) {
+        if(declare_attributes) {
             gzprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"STRING\")\n",
                      exts_kind.c_str(), // begin_attribute or end_attribute
                      *index, full_name.c_str());
             (*index)++;
-        } else if (undefined_values) {
+        } else if(undefined_values) {
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
-            if (is_record_attribute) {
+            if(is_record_attribute) {
                 gzprintf(my_text_file_p, R"(%s "%s" STRING = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
@@ -365,15 +368,15 @@ static void do_attributes(bool declare_attributes, // If false then print the va
 #ifdef TRACE_DO_ATTRIBUTES
         cout << "  scv_extensions_if::FLOATING_POINT_NUMBER\n";
 #endif
-        if (declare_attributes) {
+        if(declare_attributes) {
             gzprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"FLOATING_POINT_NUMBER\")\n",
                      exts_kind.c_str(), // begin_attribute or end_attribute
                      *index, full_name.c_str());
             (*index)++;
-        } else if (undefined_values) {
+        } else if(undefined_values) {
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
-            if (is_record_attribute) {
+            if(is_record_attribute) {
                 gzprintf(my_text_file_p, R"(%s "%s" FLOATING_POINT_NUMBER = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
@@ -386,15 +389,15 @@ static void do_attributes(bool declare_attributes, // If false then print the va
 #ifdef TRACE_DO_ATTRIBUTES
         cout << "  scv_extensions_if::BIT_VECTOR\n";
 #endif
-        if (declare_attributes) {
+        if(declare_attributes) {
             gzprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"BIT_VECTOR[%d]\")\n",
                      exts_kind.c_str(), // begin_attribute or end_attribute
                      *index, full_name.c_str(), my_exts_p->get_bitwidth());
             (*index)++;
-        } else if (undefined_values) {
+        } else if(undefined_values) {
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
-            if (is_record_attribute) {
+            if(is_record_attribute) {
                 gzprintf(my_text_file_p, R"(%s "%s" BIT_VECTOR = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
@@ -409,15 +412,15 @@ static void do_attributes(bool declare_attributes, // If false then print the va
 #ifdef TRACE_DO_ATTRIBUTES
         cout << "  scv_extensions_if::LOGIC_VECTOR\n";
 #endif
-        if (declare_attributes) {
+        if(declare_attributes) {
             gzprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"LOGIC_VECTOR[%d]\")\n",
                      exts_kind.c_str(), // begin_attribute or end_attribute
                      *index, full_name.c_str(), my_exts_p->get_bitwidth());
             (*index)++;
-        } else if (undefined_values) {
+        } else if(undefined_values) {
             gzprintf(my_text_file_p, "a UNDEFINED\n");
         } else {
-            if (is_record_attribute) {
+            if(is_record_attribute) {
                 gzprintf(my_text_file_p, R"(%s "%s" LOGIC_VECTOR = )", exts_kind.c_str(), full_name.c_str());
             } else {
                 gzprintf(my_text_file_p, "a ");
@@ -436,9 +439,9 @@ static void do_attributes(bool declare_attributes, // If false then print the va
 
         int array_elt_index = 0;
 
-        for (; array_elt_index < my_exts_p->get_array_size(); array_elt_index++) {
+        for(; array_elt_index < my_exts_p->get_array_size(); array_elt_index++) {
 
-            const scv_extensions_if *field_data_p = my_exts_p->get_array_elt(array_elt_index);
+            const scv_extensions_if* field_data_p = my_exts_p->get_array_elt(array_elt_index);
 
             do_attributes(declare_attributes, undefined_values, is_record_attribute, prefix_name, exts_kind,
                           field_data_p, index);
@@ -456,17 +459,18 @@ static void do_attributes(bool declare_attributes, // If false then print the va
 
 // ----------------------------------------------------------------------------
 
-static void scv_tr_generator_cbf(const scv_tr_generator_base &g, scv_tr_generator_base::callback_reason reason,
-                                 void *user_data_p) {
+static void scv_tr_generator_cbf(const scv_tr_generator_base& g, scv_tr_generator_base::callback_reason reason,
+                                 void* user_data_p) {
 #ifdef scv_tr_TRACE
     cout << "Entering scv_tr_generator_cbf\n";
 #endif
 
-    if (reason != scv_tr_generator_base::CREATE) {
+    if(reason != scv_tr_generator_base::CREATE) {
         return;
     }
 
-    if (my_text_file_p == nullptr) return;
+    if(my_text_file_p == nullptr)
+        return;
 
     gzprintf(my_text_file_p,
              "scv_tr_generator (ID " scv_tr_TEXT_LLU ", name \"%s\", scv_tr_stream " scv_tr_TEXT_LLU ",\n", g.get_id(),
@@ -475,15 +479,15 @@ static void scv_tr_generator_cbf(const scv_tr_generator_base &g, scv_tr_generato
     std::string exts_kind;
     int index = 0;
 
-    const scv_extensions_if *my_begin_exts_p = g.get_begin_exts_p();
-    if (my_begin_exts_p != nullptr) {
+    const scv_extensions_if* my_begin_exts_p = g.get_begin_exts_p();
+    if(my_begin_exts_p != nullptr) {
         exts_kind = "begin_attribute";
         std::string tmp_str = g.get_begin_attribute_name() ? g.get_begin_attribute_name() : "";
         do_attributes(true, false, false, tmp_str, exts_kind, my_begin_exts_p, &index);
     }
 
-    const scv_extensions_if *my_end_exts_p = g.get_end_exts_p();
-    if (my_end_exts_p != nullptr) {
+    const scv_extensions_if* my_end_exts_p = g.get_end_exts_p();
+    if(my_end_exts_p != nullptr) {
         exts_kind = "end_attribute";
         std::string tmp_str = g.get_end_attribute_name() ? g.get_end_attribute_name() : "";
         do_attributes(true, false, false, tmp_str, exts_kind, my_end_exts_p, &index);
@@ -498,8 +502,9 @@ static void scv_tr_generator_cbf(const scv_tr_generator_base &g, scv_tr_generato
 
 // ----------------------------------------------------------------------------
 
-static void scv_tr_handle_cbf(const scv_tr_handle &t, scv_tr_handle::callback_reason reason, void *user_data_p) {
-    if (my_text_file_p == nullptr) return;
+static void scv_tr_handle_cbf(const scv_tr_handle& t, scv_tr_handle::callback_reason reason, void* user_data_p) {
+    if(my_text_file_p == nullptr)
+        return;
 
     int i = 0;
 
@@ -508,12 +513,14 @@ static void scv_tr_handle_cbf(const scv_tr_handle &t, scv_tr_handle::callback_re
 
     // First check to be sure transaction recording is enabled:
     //
-    if (t.get_scv_tr_stream().get_scv_tr_db() == nullptr) return;
-    if (t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false) return;
+    if(t.get_scv_tr_stream().get_scv_tr_db() == nullptr)
+        return;
+    if(t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
+        return;
 
-    const scv_extensions_if *my_exts_p;
+    const scv_extensions_if* my_exts_p;
 
-    switch (reason) {
+    switch(reason) {
 
     case scv_tr_handle::BEGIN: {
         // The beginning of a transaction
@@ -525,7 +532,7 @@ static void scv_tr_handle_cbf(const scv_tr_handle &t, scv_tr_handle::callback_re
         std::string exts_kind = "begin_attributes";
         bool default_values = false;
 
-        if (my_exts_p == nullptr) {
+        if(my_exts_p == nullptr) {
             // For this transaction, the default attributes are used.
             my_exts_p = t.get_scv_tr_generator_base().get_begin_exts_p();
             default_values = true;
@@ -549,7 +556,7 @@ static void scv_tr_handle_cbf(const scv_tr_handle &t, scv_tr_handle::callback_re
         std::string exts_kind = "end_attributes";
         bool default_values = false;
 
-        if (my_exts_p == nullptr) {
+        if(my_exts_p == nullptr) {
             // For this transaction, the default attributes are used.
             my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();
             default_values = true;
@@ -568,18 +575,21 @@ static void scv_tr_handle_cbf(const scv_tr_handle &t, scv_tr_handle::callback_re
 
 // ----------------------------------------------------------------------------
 
-static void scv_tr_handle_record_attribute_cbf(const scv_tr_handle &t, const char *attribute_name,
-                                               const scv_extensions_if *my_exts_p, void *user_data_p) {
+static void scv_tr_handle_record_attribute_cbf(const scv_tr_handle& t, const char* attribute_name,
+                                               const scv_extensions_if* my_exts_p, void* user_data_p) {
     // First check to be sure transaction recording is enabled:
     //
-    if (t.get_scv_tr_stream().get_scv_tr_db() == nullptr) return;
-    if (t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false) return;
+    if(t.get_scv_tr_stream().get_scv_tr_db() == nullptr)
+        return;
+    if(t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
+        return;
 
-    if (my_text_file_p == nullptr) return;
+    if(my_text_file_p == nullptr)
+        return;
 
     std::string tmp_str;
 
-    if (attribute_name == nullptr) {
+    if(attribute_name == nullptr) {
         tmp_str = "";
     } else {
         tmp_str = attribute_name;
@@ -594,7 +604,7 @@ static void scv_tr_handle_record_attribute_cbf(const scv_tr_handle &t, const cha
 
 // ----------------------------------------------------------------------------
 
-static void scv_tr_handle_relation_cbf(const scv_tr_handle &tr_1, const scv_tr_handle &tr_2, void *user_data_p,
+static void scv_tr_handle_relation_cbf(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* user_data_p,
                                        scv_tr_relation_handle_t relation_handle) {
 #ifdef scv_tr_TRACE
     cout << "Entering transaction_cbf\n";
@@ -602,12 +612,15 @@ static void scv_tr_handle_relation_cbf(const scv_tr_handle &tr_1, const scv_tr_h
 
     // First check to be sure transaction recording is enabled:
     //
-    if (tr_1.get_scv_tr_stream().get_scv_tr_db() == nullptr) return;
-    if (tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false) return;
+    if(tr_1.get_scv_tr_stream().get_scv_tr_db() == nullptr)
+        return;
+    if(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
+        return;
 
-    if (my_text_file_p == nullptr) return;
+    if(my_text_file_p == nullptr)
+        return;
 
-    if (my_text_file_p) {
+    if(my_text_file_p) {
         gzprintf(my_text_file_p, "tx_relation \"%s\" " scv_tr_TEXT_LLU " " scv_tr_TEXT_LLU "\n",
                  tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), tr_1.get_id(),
                  tr_2.get_id());

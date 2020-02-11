@@ -37,9 +37,9 @@ public:
     };
 
     // disabled copy ctor
-    tlm_gp_data(const tlm_gp_data &x) = default;
+    tlm_gp_data(const tlm_gp_data& x) = default;
 
-    tlm_gp_data(const tlm::tlm_generic_payload &x)
+    tlm_gp_data(const tlm::tlm_generic_payload& x)
     : address(x.get_address())
     , command(x.get_command())
     , data(x.get_data_ptr())
@@ -52,7 +52,7 @@ public:
     , gp_option(x.get_gp_option()) {}
 
     // Assignment operator needed for SCV introspection
-    tlm_gp_data &operator=(const tlm_gp_data &x) {
+    tlm_gp_data& operator=(const tlm_gp_data& x) {
         command = x.command;
         address = x.address;
         data = x.data;
@@ -71,7 +71,7 @@ public:
      * @param other the tlm_generic_payload to update
      * @param replace_pointers if set to true the ownership of the data and byte_enable pointers is transferred
      */
-    void update_generic_payload(tlm::tlm_generic_payload &other, bool transfer_ownership = false) {
+    void update_generic_payload(tlm::tlm_generic_payload& other, bool transfer_ownership = false) {
         other.set_command(command);
         other.set_address(address);
         other.set_data_length(data_length);
@@ -80,7 +80,7 @@ public:
         other.set_gp_option(gp_option);
         other.set_dmi_allowed(dmi_allowed);
         other.set_response_status(response_status);
-        if (transfer_ownership) {
+        if(transfer_ownership) {
             other.set_byte_enable_ptr(byte_enable);
             other.set_data_ptr(data);
             byte_enable = nullptr;
@@ -94,7 +94,7 @@ public:
     virtual ~tlm_gp_data() {}
 
     std::string get_response_string() const {
-        switch (response_status) {
+        switch(response_status) {
         case tlm::TLM_OK_RESPONSE:
             return "TLM_OK_RESPONSE";
         case tlm::TLM_INCOMPLETE_RESPONSE:
@@ -116,17 +116,18 @@ public:
     uint64_t get_data_value() {
         uint64_t buf = 0;
         // FIXME: this is endianess dependent
-        for (size_t i = 0; i < data_length; i++) buf += (*(data + i)) << i * 8;
+        for(size_t i = 0; i < data_length; i++)
+            buf += (*(data + i)) << i * 8;
         return buf;
     }
     // attributes are public so that scv_extension mechanism works
     sc_dt::uint64 address{0};
     tlm::tlm_command command{tlm::TLM_IGNORE_COMMAND};
-    unsigned char *data{nullptr};
+    unsigned char* data{nullptr};
     unsigned int data_length{0};
     tlm::tlm_response_status response_status{tlm::TLM_INCOMPLETE_RESPONSE};
     bool dmi_allowed{false};
-    unsigned char *byte_enable{nullptr};
+    unsigned char* byte_enable{nullptr};
     unsigned int byte_enable_length{0};
     unsigned int streaming_width{0};
     tlm::tlm_gp_option gp_option{tlm::TLM_MIN_PAYLOAD};
@@ -136,7 +137,7 @@ class tlm_dmi_data {
 public:
     tlm_dmi_data() = default;
 
-    tlm_dmi_data(tlm::tlm_dmi &dmi_data)
+    tlm_dmi_data(tlm::tlm_dmi& dmi_data)
     : dmi_ptr(dmi_data.get_dmi_ptr())
     , dmi_start_address(dmi_data.get_start_address())
     , dmi_end_address(dmi_data.get_end_address())
@@ -148,7 +149,7 @@ public:
     //--------------
     virtual ~tlm_dmi_data() {}
 
-    unsigned char *dmi_ptr{nullptr};
+    unsigned char* dmi_ptr{nullptr};
     sc_dt::uint64 dmi_start_address{0};
     sc_dt::uint64 dmi_end_address{0};
     tlm::tlm_dmi::dmi_access_e dmi_access{tlm::tlm_dmi::DMI_ACCESS_NONE};
@@ -156,8 +157,19 @@ public:
     sc_dt::uint64 dmi_write_latency{0};
 };
 
-enum tlm_phase_enum { UNINITIALIZED_PHASE=0, BEGIN_REQ=1, END_REQ, BEGIN_RESP, END_RESP,
-    CUSTOM1, CUSTOM2, CUSTOM3, CUSTOM4, CUSTOM5, CUSTOM6};
+enum tlm_phase_enum {
+    UNINITIALIZED_PHASE = 0,
+    BEGIN_REQ = 1,
+    END_REQ,
+    BEGIN_RESP,
+    END_RESP,
+    CUSTOM1,
+    CUSTOM2,
+    CUSTOM3,
+    CUSTOM4,
+    CUSTOM5,
+    CUSTOM6
+};
 
-}
+} // namespace scv4tlm
 #endif /* TLM_GP_DATA_H_ */

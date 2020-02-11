@@ -36,12 +36,12 @@ template <typename SIG = bool> struct tlm_signal_baseprotocol_types {
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>>
 struct tlm_signal_fw_transport_if : public virtual sc_core::sc_interface {
     // virtual void b_transport(typename TYPES::tlm_payload_type&, sc_core::sc_time&) = 0;
-    virtual tlm_sync_enum nb_transport_fw(typename TYPES::tlm_payload_type &, tlm_phase &, sc_core::sc_time &) = 0;
+    virtual tlm_sync_enum nb_transport_fw(typename TYPES::tlm_payload_type&, tlm_phase&, sc_core::sc_time&) = 0;
 };
 
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>>
 struct tlm_signal_bw_transport_if : public virtual sc_core::sc_interface {
-    virtual tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type &, tlm_phase &, sc_core::sc_time &) = 0;
+    virtual tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type&, tlm_phase&, sc_core::sc_time&) = 0;
 };
 
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>, int N = 1,
@@ -57,11 +57,11 @@ struct tlm_signal_initiator_socket : public tlm_base_initiator_socket<0, tlm_sig
     : tlm_base_initiator_socket<0, tlm_signal_fw_transport_if<SIG, TYPES>, tlm_signal_bw_transport_if<SIG, TYPES>, N,
                                 POL>() {}
 
-    explicit tlm_signal_initiator_socket(const char *name)
+    explicit tlm_signal_initiator_socket(const char* name)
     : tlm_base_initiator_socket<0, tlm_signal_fw_transport_if<SIG, TYPES>, tlm_signal_bw_transport_if<SIG, TYPES>, N,
                                 POL>(name) {}
 
-    virtual const char *kind() const { return "tlm_signal_initiator_socket"; }
+    virtual const char* kind() const { return "tlm_signal_initiator_socket"; }
 
     virtual sc_core::sc_type_index get_protocol_types() const { return typeid(TYPES); }
 };
@@ -82,17 +82,17 @@ struct tlm_signal_target_socket : public tlm_base_target_socket<0, tlm_signal_fw
     tlm_signal_target_socket()
     : tlm_base_target_socket<0, tlm_signal_fw_transport_if<TYPES>, tlm_signal_bw_transport_if<TYPES>, N, POL>() {}
 
-    explicit tlm_signal_target_socket(const char *name)
+    explicit tlm_signal_target_socket(const char* name)
     : tlm_base_target_socket<0, tlm_signal_fw_transport_if<SIG, TYPES>, tlm_signal_bw_transport_if<SIG, TYPES>, N, POL>(
           name) {}
 
-    virtual const char *kind() const { return "tlm_signal_target_socket"; }
+    virtual const char* kind() const { return "tlm_signal_target_socket"; }
 
     virtual sc_core::sc_type_index get_protocol_types() const { return typeid(TYPES); }
 };
 
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>, int N = 1>
 using tlm_signal_opt_target_socket = struct tlm_signal_target_socket<SIG, TYPES, N, sc_core::SC_ZERO_OR_MORE_BOUND>;
-}
+} // namespace tlm
 
 #endif /* _TLM_TLM_SIGNAL_SOCKETS_H_ */

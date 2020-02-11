@@ -38,14 +38,14 @@
 #include <locale>
 
 namespace scc {
-template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args &&... args) {
+template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args&&... args) {
 #if __cplusplus < 201402L
     return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
 #else
     return std::make_unique<T>(std::forward<Args>(args)...);
 #endif
 }
-}
+} // namespace scc
 //! macros to simplify constructor lists
 #define NAMED(X, ...) X(#X, ##__VA_ARGS__)
 #define NAMEDD(X, T, ...) X(scc::make_unique<T>(#X, ##__VA_ARGS__))
@@ -65,14 +65,14 @@ namespace sc_core {
  * @param
  * @param
  */
-void sc_trace(sc_trace_file *, const sc_time &, const std::string &);
+void sc_trace(sc_trace_file*, const sc_time&, const std::string&);
 /**
  *
  * @param
  * @param
  * @param
  */
-void sc_trace(sc_trace_file *, const sc_time &, const char *);
+void sc_trace(sc_trace_file*, const sc_time&, const char*);
 #endif
 /**
  * trace function for sc_time
@@ -81,7 +81,7 @@ void sc_trace(sc_trace_file *, const sc_time &, const char *);
  * @param the data to trace
  * @param the hierarchical name of the data
  */
-template <> void sc_trace(sc_trace_file *, const sc_in<sc_time> &, const std::string &);
+template <> void sc_trace(sc_trace_file*, const sc_in<sc_time>&, const std::string&);
 /**
  * trace function for sc_time
  *
@@ -89,8 +89,8 @@ template <> void sc_trace(sc_trace_file *, const sc_in<sc_time> &, const std::st
  * @param the port carrying the data to trace
  * @param the hierarchical name of the data
  */
-template <> void sc_trace(sc_trace_file *, const sc_inout<sc_time> &, const std::string &);
-}
+template <> void sc_trace(sc_trace_file*, const sc_inout<sc_time>&, const std::string&);
+} // namespace sc_core
 // user-defined literals for easy time creation
 /**
  * UDL for second
@@ -193,8 +193,8 @@ namespace scc {
  * @param b string b
  * @return result of std::equal
  */
-inline bool icompare(std::string const &a, std::string const &b) {
-    if (a.length() == b.length()) {
+inline bool icompare(std::string const& a, std::string const& b) {
+    if(a.length() == b.length()) {
         return std::equal(b.begin(), b.end(), a.begin(),
                           [](unsigned char a, unsigned char b) -> bool { return std::tolower(a) == std::tolower(b); });
     } else {
@@ -211,13 +211,19 @@ inline bool icompare(std::string const &a, std::string const &b) {
 inline sc_core::sc_time parse_from_string(std::string value, std::string unit) noexcept {
     std::string::size_type offs{0};
     double t_val = std::stod(value, &offs);
-    if (offs > 0) {
-        if (icompare(unit, "fs")) return t_val * 1_fs;
-        if (icompare(unit, "ps")) return t_val * 1_ps;
-        if (icompare(unit, "ns")) return t_val * 1_ns;
-        if (icompare(unit, "us")) return t_val * 1_us;
-        if (icompare(unit, "ms")) return t_val * 1_ms;
-        if (icompare(unit, "s")) return t_val * 1_sec;
+    if(offs > 0) {
+        if(icompare(unit, "fs"))
+            return t_val * 1_fs;
+        if(icompare(unit, "ps"))
+            return t_val * 1_ps;
+        if(icompare(unit, "ns"))
+            return t_val * 1_ns;
+        if(icompare(unit, "us"))
+            return t_val * 1_us;
+        if(icompare(unit, "ms"))
+            return t_val * 1_ms;
+        if(icompare(unit, "s"))
+            return t_val * 1_sec;
     }
     return sc_core::SC_ZERO_TIME;
 }
@@ -230,14 +236,20 @@ inline sc_core::sc_time parse_from_string(std::string value, std::string unit) n
 inline sc_core::sc_time parse_from_string(std::string value) noexcept {
     std::string::size_type offs{0};
     double t_val = std::stod(value, &offs);
-    if (offs > 0) {
+    if(offs > 0) {
         std::string unit = value.substr(offs);
-        if (icompare(unit, "fs")) return t_val * 1_fs;
-        if (icompare(unit, "ps")) return t_val * 1_ps;
-        if (icompare(unit, "ns")) return t_val * 1_ns;
-        if (icompare(unit, "us")) return t_val * 1_us;
-        if (icompare(unit, "ms")) return t_val * 1_ms;
-        if (icompare(unit, "s")) return t_val * 1_sec;
+        if(icompare(unit, "fs"))
+            return t_val * 1_fs;
+        if(icompare(unit, "ps"))
+            return t_val * 1_ps;
+        if(icompare(unit, "ns"))
+            return t_val * 1_ns;
+        if(icompare(unit, "us"))
+            return t_val * 1_us;
+        if(icompare(unit, "ms"))
+            return t_val * 1_ms;
+        if(icompare(unit, "s"))
+            return t_val * 1_sec;
     }
     return sc_core::SC_ZERO_TIME;
 }
@@ -245,24 +257,23 @@ inline sc_core::sc_time parse_from_string(std::string value) noexcept {
 #ifdef ASM
 #include <stdint.h>
 static inline unsigned ilog2(uint32_t x) {
-  uint32_t y;
-  asm ( "\tbsr %1, %0\n"
-      : "=r"(y)
-      : "r" (x)
-  );
-  return y;
+    uint32_t y;
+    asm("\tbsr %1, %0\n" : "=r"(y) : "r"(x));
+    return y;
 }
 #else
 #include <limits.h>
 #if __cplusplus < 201402L
-inline unsigned ilog2 (uint32_t val) {
+inline unsigned ilog2(uint32_t val) {
 #else
-inline constexpr unsigned ilog2 (uint32_t val) {
+inline constexpr unsigned ilog2(uint32_t val) {
 #endif
-    if (val == 0) return std::numeric_limits<uint32_t>::max();
-    if (val == 1) return 0;
+    if(val == 0)
+        return std::numeric_limits<uint32_t>::max();
+    if(val == 1)
+        return 0;
     auto ret = 0U;
-    while (val > 1) {
+    while(val > 1) {
         val >>= 1;
         ++ret;
     }
@@ -270,27 +281,15 @@ inline constexpr unsigned ilog2 (uint32_t val) {
 }
 #endif
 
-template<typename T>
-inline T get_value(sc_core::sc_attribute<T>& a){
-	return a.value;
-}
+template <typename T> inline T get_value(sc_core::sc_attribute<T>& a) { return a.value; }
 
-template<typename T>
-inline void set_value(sc_core::sc_attribute<T>& a, T&& value){
-	a.value=value;
-}
+template <typename T> inline void set_value(sc_core::sc_attribute<T>& a, T&& value) { a.value = value; }
 
 #ifdef WITH_CCI
-template<typename T>
-inline T get_value(cci::cci_param_typed<T>& a){
-	return a.get_value();
-}
+template <typename T> inline T get_value(cci::cci_param_typed<T>& a) { return a.get_value(); }
 
-template<typename T>
-inline void set_value(cci::cci_param_typed<T>& a, T&& value){
-	a.set_value(value);
-}
+template <typename T> inline void set_value(cci::cci_param_typed<T>& a, T&& value) { a.set_value(value); }
 #endif
-}
+} // namespace scc
 
 #endif /* _SYSC_UTILITIES_H_ */

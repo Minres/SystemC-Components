@@ -37,6 +37,7 @@ template <typename T> class range_lut {
         T index;
         entry_type type;
     };
+
 public:
     /**
      * constructor or the lookup table
@@ -93,8 +94,9 @@ public:
      * @return
      */
     std::string toString();
-    //!the null entry
+    //! the null entry
     const T null_entry;
+
 protected:
     // Loki::AssocVector<uint64_t, lut_entry> m_lut;
     std::map<uint64_t, lut_entry> m_lut;
@@ -107,28 +109,32 @@ protected:
  * @param os the output stream
  * @return the stream
  */
-template <typename T> std::ostream &operator<<(std::ostream &os, range_lut<T> &lut) {
+template <typename T> std::ostream& operator<<(std::ostream& os, range_lut<T>& lut) {
     os << lut.toString();
     return os;
 }
 
 template <typename T> inline void range_lut<T>::addEntry(T i, uint64_t base_addr, uint64_t size) {
     auto iter = m_lut.find(base_addr);
-    if (iter != m_lut.end() && iter->second.index != null_entry) throw std::runtime_error("range already mapped");
+    if(iter != m_lut.end() && iter->second.index != null_entry)
+        throw std::runtime_error("range already mapped");
 
     auto eaddr = base_addr + size - 1;
-    if (eaddr < base_addr) throw std::runtime_error("address wrap-around occurred");
+    if(eaddr < base_addr)
+        throw std::runtime_error("address wrap-around occurred");
 
     m_lut[base_addr] = lut_entry{i, size > 1 ? BEGIN_RANGE : SINGLE_BYTE_RANGE};
-    if (size > 1) m_lut[eaddr] = lut_entry{i, END_RANGE};
+    if(size > 1)
+        m_lut[eaddr] = lut_entry{i, END_RANGE};
     ++m_size;
 }
 
 template <typename T> inline bool range_lut<T>::removeEntry(T i) {
     auto start = m_lut.begin();
-    while (start->second.index != i && start != m_lut.end()) start++;
-    if (start != m_lut.end()) {
-        if (start->second.type == SINGLE_BYTE_RANGE) {
+    while(start->second.index != i && start != m_lut.end())
+        start++;
+    if(start != m_lut.end()) {
+        if(start->second.type == SINGLE_BYTE_RANGE) {
             m_lut.erase(start);
         } else {
             auto end = start;
@@ -144,23 +150,23 @@ template <typename T> inline bool range_lut<T>::removeEntry(T i) {
 
 template <typename T> inline void range_lut<T>::validate() {
     auto mapped = false;
-    for (auto iter = m_lut.begin(); iter != m_lut.end(); iter++) {
-        switch (iter->second.type) {
+    for(auto iter = m_lut.begin(); iter != m_lut.end(); iter++) {
+        switch(iter->second.type) {
         case SINGLE_BYTE_RANGE:
-            if (iter->second.index != null_entry && mapped)
+            if(iter->second.index != null_entry && mapped)
                 throw std::runtime_error("range overlap: begin range while in mapped range");
 
             break;
         case BEGIN_RANGE:
-            if (iter->second.index != null_entry) {
-                if (mapped) {
+            if(iter->second.index != null_entry) {
+                if(mapped) {
                     throw std::runtime_error("range overlap: begin range while in mapped range");
                 }
                 mapped = true;
             }
             break;
         case END_RANGE:
-            if (!mapped) {
+            if(!mapped) {
                 throw std::runtime_error("range overlap: end range while in unmapped region");
             }
             mapped = false;
@@ -171,10 +177,10 @@ template <typename T> inline void range_lut<T>::validate() {
 
 template <typename T> inline std::string range_lut<T>::toString() {
     std::ostringstream buf;
-    for (auto iter = m_lut.begin(); iter != m_lut.end(); ++iter) {
-        switch (iter->second.type) {
+    for(auto iter = m_lut.begin(); iter != m_lut.end(); ++iter) {
+        switch(iter->second.type) {
         case BEGIN_RANGE:
-            if (iter->second.index != null_entry) {
+            if(iter->second.index != null_entry) {
                 buf << "  from 0x" << std::setw(sizeof(uint64_t) * 2) << std::setfill('0') << std::uppercase << std::hex
                     << iter->first << std::dec;
             }

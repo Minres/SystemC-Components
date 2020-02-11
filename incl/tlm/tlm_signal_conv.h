@@ -32,7 +32,7 @@ struct tlm_signal2sc_signal : public sc_core::sc_module,
     using payload_type = typename protocol_types::tlm_payload_type;
     using phase_type = typename protocol_types::tlm_phase_type;
 
-    SC_HAS_PROCESS(tlm_signal2sc_signal);// NOLINT
+    SC_HAS_PROCESS(tlm_signal2sc_signal); // NOLINT
 
     tlm_signal_target_socket<TYPE> t_i;
 
@@ -48,13 +48,14 @@ struct tlm_signal2sc_signal : public sc_core::sc_module,
     }
 
 private:
-    tlm_sync_enum nb_transport_fw(payload_type &gp, phase_type &phase, sc_core::sc_time &delay) {
+    tlm_sync_enum nb_transport_fw(payload_type& gp, phase_type& phase, sc_core::sc_time& delay) {
         que.notify(gp.get_value(), delay);
         return TLM_COMPLETED;
     }
 
     void que_cb() {
-        while (auto oi = que.get_next()) s_o.write(oi.get());
+        while(auto oi = que.get_next())
+            s_o.write(oi.get());
     }
     scc::peq<TYPE> que;
 };
@@ -67,7 +68,7 @@ struct sc_signal2tlm_signal : public sc_core::sc_module,
     using payload_type = typename protocol_types::tlm_payload_type;
     using phase_type = typename protocol_types::tlm_phase_type;
 
-    SC_HAS_PROCESS(sc_signal2tlm_signal);// NOLINT
+    SC_HAS_PROCESS(sc_signal2tlm_signal); // NOLINT
 
     sc_core::sc_in<TYPE> s_i;
 
@@ -83,19 +84,19 @@ struct sc_signal2tlm_signal : public sc_core::sc_module,
     }
 
 private:
-    tlm_sync_enum nb_transport_bw(payload_type &gp, phase_type &phase, sc_core::sc_time &delay) {
+    tlm_sync_enum nb_transport_bw(payload_type& gp, phase_type& phase, sc_core::sc_time& delay) {
         return TLM_COMPLETED;
     }
 
     void sig_cb() {
         tlm::tlm_phase phase(tlm::BEGIN_REQ);
         sc_core::sc_time delay;
-        auto *gp = payload_type::create();
+        auto* gp = payload_type::create();
         gp->acquire();
         gp->set_value(s_i.read());
         t_o->nb_transport_fw(*gp, phase, delay);
         gp->release();
     }
 };
-}
+} // namespace tlm
 #endif /* _TLM_TLM_SIGNAL_CONV_H_ */

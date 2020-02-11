@@ -27,7 +27,7 @@
 namespace sc_core {
 class sc_object;
 class sc_trace_file;
-}
+} // namespace sc_core
 
 namespace scc {
 /**
@@ -38,7 +38,7 @@ public:
     /**
      * enum defining the transaction trace output type
      */
-    enum file_type { NONE, TEXT, COMPRESSED, SQLITE/*, BINARY, LEVEL*/ };
+    enum file_type { NONE, TEXT, COMPRESSED, SQLITE /*, BINARY, LEVEL*/ };
     /**
      * the constructor
      *
@@ -46,7 +46,7 @@ public:
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal and POD) tracing
      */
-    tracer(const std::string &&, file_type, bool = true);
+    tracer(const std::string&&, file_type, bool = true);
     /**
      * the constructor
      *
@@ -54,7 +54,7 @@ public:
      * @param type type of trace file for transactions
      * @param the trace file to use for signal and POD tracing
      */
-    tracer(const std::string &&, file_type, sc_core::sc_trace_file* = nullptr);
+    tracer(const std::string&&, file_type, sc_core::sc_trace_file* = nullptr);
     /**
      * the destructor
      */
@@ -65,7 +65,7 @@ protected:
     bool enabled{false};
     bool owned{false};
 #ifdef WITH_SCV
-    scv_tr_db *txdb;
+    scv_tr_db* txdb;
 #endif
 };
 

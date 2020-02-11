@@ -21,19 +21,19 @@
 
 namespace scc {
 
-class tracer_base  : public sc_core::sc_module {
+class tracer_base : public sc_core::sc_module {
 public:
-
-    tracer_base(const sc_core::sc_module_name& nm ) :sc_core::sc_module(nm), trf(nullptr){}
+    tracer_base(const sc_core::sc_module_name& nm)
+    : sc_core::sc_module(nm)
+    , trf(nullptr) {}
 
 protected:
-
-    virtual void descend(const sc_core::sc_object *, bool trace_all = false);
+    virtual void descend(const sc_core::sc_object*, bool trace_all = false);
 
     static void try_trace(sc_core::sc_trace_file* trace_file, const sc_object* object);
 
-    sc_core::sc_trace_file *trf;
+    sc_core::sc_trace_file* trf;
 };
 
-}
+} // namespace scc
 #endif /* _SCC_TRACER_BASE_H_ */

@@ -20,9 +20,9 @@
 #if defined(_WIN32)
 #include <Windows.h>
 #elif defined(__unix__) || defined(__unix) || defined(unix) || (defined(__MACH__) && defined(__APPLE__))
+#include <ctime>
 #include <sys/resource.h>
 #include <sys/times.h>
-#include <ctime>
 #include <unistd.h>
 #else
 #error "Cannot compile file because of an unknown method to retrieve OS time."
@@ -35,21 +35,21 @@ SC_HAS_PROCESS(perf_estimator);
 
 perf_estimator::perf_estimator(const sc_module_name& nm, sc_time beat_delay_)
 : sc_module(nm)
-, beat_delay(beat_delay_)
-{
-  soc.set();
-  if(beat_delay.value()){
-    SC_METHOD(beat);
-  }
+, beat_delay(beat_delay_) {
+    soc.set();
+    if(beat_delay.value()) {
+        SC_METHOD(beat);
+    }
 }
 
 perf_estimator::~perf_estimator() {
-  time_stamp eod; eod.set();
-  SCCINFO(SCMOD) << "constr & elab time: " <<(eoe.proc_clock_stamp - soc.proc_clock_stamp)<<"s";
-  SCCINFO(SCMOD) << "simulation time:    " <<(eos.proc_clock_stamp - sos.proc_clock_stamp)<<"s";
+    time_stamp eod;
+    eod.set();
+    SCCINFO(SCMOD) << "constr & elab time: " << (eoe.proc_clock_stamp - soc.proc_clock_stamp) << "s";
+    SCCINFO(SCMOD) << "simulation time:    " << (eos.proc_clock_stamp - sos.proc_clock_stamp) << "s";
 }
 
-void perf_estimator::end_of_elaboration() {eoe.set();}
+void perf_estimator::end_of_elaboration() { eoe.set(); }
 
 void perf_estimator::start_of_simulation() { sos.set(); }
 
@@ -59,17 +59,17 @@ void perf_estimator::end_of_simulation() {
     unsigned long long elapsed_wall = (eos.wall_clock_stamp - sos.wall_clock_stamp).total_microseconds();
     auto elapsed_proc = (unsigned long long)((eos.proc_clock_stamp - sos.proc_clock_stamp) * 1000000);
     auto elapsed_sim = (unsigned long long)(now.to_seconds() * 1000000.);
-    if (elapsed_sim > 0) {
+    if(elapsed_sim > 0) {
         double wall_perf = elapsed_wall / elapsed_sim;
         double proc_perf = elapsed_proc / elapsed_sim;
-        SCCINFO(SCMOD) << "Wall clock (process clock) based simulation real time factor is " << wall_perf << "(" << proc_perf
-                  << ")";
+        SCCINFO(SCMOD) << "Wall clock (process clock) based simulation real time factor is " << wall_perf << "("
+                       << proc_perf << ")";
     }
 }
 
-void perf_estimator::beat(){
-  SCCINFO(SCMOD)<<"Heart beat";
-  next_trigger(beat_delay);
+void perf_estimator::beat() {
+    SCCINFO(SCMOD) << "Heart beat";
+    next_trigger(beat_delay);
 }
 } /* namespace scc */
 
@@ -79,9 +79,9 @@ double scc::perf_estimator::time_stamp::get_cpu_time() {
     FILETIME exit_time;
     FILETIME kernel_time;
     FILETIME user_time;
-    if (GetProcessTimes(GetCurrentProcess(), &create_tiem, &exit_time, &kernel_time, &user_time) != -1) {
+    if(GetProcessTimes(GetCurrentProcess(), &create_tiem, &exit_time, &kernel_time, &user_time) != -1) {
         SYSTEMTIME system_time;
-        if (FileTimeToSystemTime(&user_time, system_time) != -1)
+        if(FileTimeToSystemTime(&user_time, system_time) != -1)
             return (double)system_time.wHour * 3600.0 + (double)system_time.wMinute * 60.0 +
                    (double)system_time.wSecond + (double)system_time.wMilliseconds / 1000.;
     }
@@ -91,7 +91,7 @@ double scc::perf_estimator::time_stamp::get_cpu_time() {
         clockid_t id;
         struct timespec stamp;
 #if _POSIX_CPUTIME > 0
-        if (clock_getcpuclockid(0, &id) == -1)
+        if(clock_getcpuclockid(0, &id) == -1)
 #endif
 #if defined(CLOCK_PROCESS_CPUTIME_ID)
             id = CLOCK_PROCESS_CPUTIME_ID;
@@ -100,14 +100,14 @@ double scc::perf_estimator::time_stamp::get_cpu_time() {
 #else
         id = (clockid_t)-1;
 #endif
-        if (id != (clockid_t)-1 && clock_gettime(id, &stamp) != -1)
+        if(id != (clockid_t)-1 && clock_gettime(id, &stamp) != -1)
             return (double)stamp.tv_sec + (double)stamp.tv_nsec / 1000000000.0;
     }
 #endif
 #if defined(RUSAGE_SELF)
     {
         struct rusage usage;
-        if (getrusage(RUSAGE_SELF, &usage) != -1)
+        if(getrusage(RUSAGE_SELF, &usage) != -1)
             return (double)usage.ru_utime.tv_sec + (double)usage.ru_utime.tv_usec / 1000000.0;
     }
 #endif
@@ -115,13 +115,15 @@ double scc::perf_estimator::time_stamp::get_cpu_time() {
     {
         const double ticks = (double)sysconf(_SC_CLK_TCK);
         struct tms s;
-        if (times(&s) != (clock_t)-1) return (double)s.tms_utime / ticks;
+        if(times(&s) != (clock_t)-1)
+            return (double)s.tms_utime / ticks;
     }
 #endif
 #if defined(CLOCKS_PER_SEC)
     {
         clock_t c = clock();
-        if (c != (clock_t)-1) return (double)c / (double)CLOCKS_PER_SEC;
+        if(c != (clock_t)-1)
+            return (double)c / (double)CLOCKS_PER_SEC;
     }
 #endif
 #endif

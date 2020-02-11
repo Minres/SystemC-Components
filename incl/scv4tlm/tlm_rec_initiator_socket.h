@@ -43,7 +43,7 @@ class tlm_rec_initiator_socket : public tlm::tlm_initiator_socket<BUSWIDTH, TYPE
                                                                   POL
 #endif
                                                                   > {
-    static std::string gen_name(const char *first, const char *second) {
+    static std::string gen_name(const char* first, const char* second) {
         std::stringstream ss;
         ss << first << "_" << second;
         return ss.str();
@@ -72,21 +72,21 @@ public:
     , recorder() {
     }
 
-    explicit tlm_rec_initiator_socket(const char *name)
+    explicit tlm_rec_initiator_socket(const char* name)
     : tlm::tlm_initiator_socket<BUSWIDTH, TYPES, N
 #if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)
                                 ,
                                 POL
 #endif
                                 >(name)
-	, fw_port(sc_core::sc_gen_unique_name("fw"))
-	, bw_port(sc_core::sc_gen_unique_name("bw"))
+    , fw_port(sc_core::sc_gen_unique_name("fw"))
+    , bw_port(sc_core::sc_gen_unique_name("bw"))
     , recorder(gen_name(name, "tx").c_str(), fw_port, bw_port) {
     }
 
     virtual ~tlm_rec_initiator_socket() {}
 
-    virtual const char *kind() const { return "tlm_rec_target_socket"; }
+    virtual const char* kind() const { return "tlm_rec_target_socket"; }
     //
     // Bind initiator socket to target socket
     // - Binds the port of the initiator socket to the export of the target
@@ -94,7 +94,7 @@ public:
     // - Binds the port of the target socket to the export of the initiator
     //   socket
     //
-    virtual void bind(base_target_socket_type &s) {
+    virtual void bind(base_target_socket_type& s) {
         // initiator.port -> target.export
         (this->get_base_port())(recorder);
         fw_port(s.get_base_interface());
@@ -106,7 +106,7 @@ public:
     // Bind initiator socket to initiator socket (hierarchical bind)
     // - Binds both the export and the port
     //
-    virtual void bind(base_type &s) {
+    virtual void bind(base_type& s) {
         // port
         (this->get_base_port())(recorder);
         fw_port(s.get_base_port());
@@ -119,9 +119,9 @@ public:
     // Bind interface to socket
     // - Binds the interface to the export of this socket
     //
-    virtual void bind(bw_interface_type &ifs) { (this->get_base_export())(ifs); }
+    virtual void bind(bw_interface_type& ifs) { (this->get_base_export())(ifs); }
 
-    void setExtensionRecording(tlm2_extensions_recording_if<TYPES> *extensionRecording) {
+    void setExtensionRecording(tlm2_extensions_recording_if<TYPES>* extensionRecording) {
         recorder.setExtensionRecording(extensionRecording);
     }
 
@@ -131,7 +131,7 @@ protected:
     scv4tlm::tlm2_recorder<TYPES> recorder;
 };
 #endif
-}
+} // namespace scv4tlm
 // namespace scv4tlm
 
 #endif /* TLM_REC_TARGET_SOCKET_H_ */

@@ -58,7 +58,7 @@ public:
      * @return the result of the function
      */
     template <class F, class... Args>
-    typename std::result_of<F(Args...)>::type enqueue_and_wait(F &&f, Args &&... args) {
+    typename std::result_of<F(Args...)>::type enqueue_and_wait(F&& f, Args&&... args) {
         auto res = enqueue(f, args...);
         res.wait();
         return res.get();
@@ -71,7 +71,7 @@ public:
      * @return the future holding the result of the execution
      */
     template <class F, class... Args>
-    auto enqueue(F &&f, Args &&... args) -> std::future<typename std::result_of<F(Args...)>::type> {
+    auto enqueue(F&& f, Args&&... args) -> std::future<typename std::result_of<F(Args...)>::type> {
         using return_type = typename std::result_of<F(Args...)>::type;
         auto task = std::make_shared<std::packaged_task<return_type()>>(
             std::bind(std::forward<F>(f), std::forward<Args>(args)...));
@@ -88,7 +88,8 @@ public:
      * execute the next task in queue but do not wait for the next one
      */
     void execute() {
-        if (tasks_.empty()) return;
+        if(tasks_.empty())
+            return;
         {
             std::unique_lock<std::mutex> lock(mutex_);
             // Copy task locally and remove from the queue. This is done within
@@ -101,7 +102,7 @@ public:
             // Run the task.
             try {
                 functor();
-            } catch (...) {
+            } catch(...) {
             } // Suppress all exceptions.
         }
     }
@@ -112,7 +113,7 @@ public:
         ready.store(true, std::memory_order_release);
         // Wait on condition variable while the task is empty
         std::unique_lock<std::mutex> lock(mutex_);
-        while (tasks_.empty() && ready.load(std::memory_order_acquire)) {
+        while(tasks_.empty() && ready.load(std::memory_order_acquire)) {
             condition_.wait_for(lock, std::chrono::milliseconds(10));
         }
         lock.unlock();
@@ -120,5 +121,5 @@ public:
         ready.store(false, std::memory_order_release);
     }
 };
-}
+} // namespace util
 #endif /* _THREAD_SYNCRONIZER_H_ */

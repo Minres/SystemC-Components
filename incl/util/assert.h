@@ -22,16 +22,16 @@
 #ifndef NDEBUG
 #define ASSERT(condition, message)                                                                                     \
     do {                                                                                                               \
-        if (!(condition)) {                                                                                            \
+        if(!(condition)) {                                                                                             \
             LOG(FATAL) << "Assertion `" #condition "` failed in " << __FILE__ << " line " << __LINE__ << ": "          \
                        << message << std::endl;                                                                        \
             std::terminate();                                                                                          \
         }                                                                                                              \
-    } while (false)
+    } while(false)
 #else
 #define ASSERT(condition, message)                                                                                     \
     do {                                                                                                               \
-    } while (false)
+    } while(false)
 #endif
 
 #endif /* _ASSERT_H_ */

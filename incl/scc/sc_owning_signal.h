@@ -21,52 +21,52 @@
 #include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 namespace scc {
 
-template<  class T, sc_core::sc_writer_policy POL = sc_core::SC_ONE_WRITER>
-class sc_owning_signal : public sc_core::sc_signal<T*,POL>
-{
+template <class T, sc_core::sc_writer_policy POL = sc_core::SC_ONE_WRITER>
+class sc_owning_signal : public sc_core::sc_signal<T*, POL> {
 protected:
-    using policy_type = sc_core::sc_writer_policy_check<POL> ;
-    using super = sc_core::sc_signal<T*,POL>;
+    using policy_type = sc_core::sc_writer_policy_check<POL>;
+    using super = sc_core::sc_signal<T*, POL>;
     using type = T*;
+
 public: // constructors and destructor:
-
     sc_owning_signal()
-    : sc_core::sc_signal<T*,POL>( sc_core::sc_gen_unique_name( "signal" ) )
-    {}
+    : sc_core::sc_signal<T*, POL>(sc_core::sc_gen_unique_name("signal")) {}
 
-    explicit sc_owning_signal( const char* name_ )
-    : sc_core::sc_signal<T*,POL>( name_ )
-    {}
+    explicit sc_owning_signal(const char* name_)
+    : sc_core::sc_signal<T*, POL>(name_) {}
 
-    sc_owning_signal( const char* name_, T* initial_value_ )
-      : sc_core::sc_signal<T*,POL>( name_ )
-    {}
+    sc_owning_signal(const char* name_, T* initial_value_)
+    : sc_core::sc_signal<T*, POL>(name_) {}
 
-    virtual ~sc_owning_signal(){}
+    virtual ~sc_owning_signal() {}
 
     // write the new value
-    void write( const type& value_) override {
-        bool value_changed = !( super::m_cur_val == value_ );
-        if ( !policy_type::check_write(this, value_changed) ) return;
+    void write(const type& value_) override {
+        bool value_changed = !(super::m_cur_val == value_);
+        if(!policy_type::check_write(this, value_changed))
+            return;
         // release a potentially previosu written value
-        if(super::m_new_val && super::m_new_val != super::m_cur_val && super::m_new_val->has_mm()) super::m_new_val->release();
+        if(super::m_new_val && super::m_new_val != super::m_cur_val && super::m_new_val->has_mm())
+            super::m_new_val->release();
         super::m_new_val = value_;
         // acquire the scheduled value
-        if(super::m_new_val && super::m_new_val->has_mm()) super::m_new_val->acquire();
-        if( value_changed ) super::request_update();
+        if(super::m_new_val && super::m_new_val->has_mm())
+            super::m_new_val->acquire();
+        if(value_changed)
+            super::request_update();
     }
 
-    using super::operator =;
-protected:
+    using super::operator=;
 
+protected:
     void update() override {
-        if( !( super::m_new_val == super::m_cur_val ) ) {
-          if(super::m_cur_val && super::m_cur_val->has_mm()) super::m_cur_val->release();
-          super::update();
+        if(!(super::m_new_val == super::m_cur_val)) {
+            if(super::m_cur_val && super::m_cur_val->has_mm())
+                super::m_cur_val->release();
+            super::update();
         }
     }
-
 };
 
-}
+} // namespace scc
 #endif /* _SCC_SC_SIGNAL_GP_H_ */

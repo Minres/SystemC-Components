@@ -42,7 +42,7 @@ public:
      *
      * @param n
      */
-    explicit signal_target_mixin(const char *n)
+    explicit signal_target_mixin(const char* n)
     : BASE_TYPE(n)
     , error_if_no_callback(true)
     , fw_if(this) {
@@ -55,7 +55,7 @@ public:
      *
      * @param cb
      */
-    void register_nb_transport(std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)> cb) {
+    void register_nb_transport(std::function<sync_enum_type(transaction_type&, phase_type&, sc_core::sc_time&)> cb) {
         fw_if.set_nb_transport_ptr(cb);
     }
     /**
@@ -63,7 +63,7 @@ public:
      * @param cb
      */
     void register_nb_transport(
-        std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)> cb,
+        std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)> cb,
         unsigned int tag) {
         fw_if.set_nb_transport_ptr(cb, tag);
     }
@@ -72,21 +72,21 @@ public:
 
 private:
     // make call on bw path.
-    sync_enum_type bw_nb_transport(transaction_type &trans, phase_type &phase, sc_core::sc_time &t) {
+    sync_enum_type bw_nb_transport(transaction_type& trans, phase_type& phase, sc_core::sc_time& t) {
         return BASE_TYPE::operator->()->nb_transport_bw(trans, phase, t);
     }
 
     class fw_process_if : public fw_interface_type {
     public:
-        using transport_fct = std::function<sync_enum_type(transaction_type &, phase_type &, sc_core::sc_time &)>;
+        using transport_fct = std::function<sync_enum_type(transaction_type&, phase_type&, sc_core::sc_time&)>;
         using transport_tagged_fct =
-            std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)>;
+            std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)>;
 
-        fw_process_if(const signal_target_mixin *p_own)
+        fw_process_if(const signal_target_mixin* p_own)
         : m_owner(p_own) {}
 
         void set_nb_transport_ptr(transport_fct p) {
-            if (m_transport_ptr || m_transport_tagged_ptr) {
+            if(m_transport_ptr || m_transport_tagged_ptr) {
                 std::stringstream s;
                 s << m_owner->name() << ": non-blocking callback allready registered";
                 SC_REPORT_WARNING("/OSCI_TLM-2/signal_target_mixin", s.str().c_str());
@@ -96,7 +96,7 @@ private:
         }
 
         void set_nb_transport_ptr(transport_tagged_fct p, unsigned int tag) {
-            if (m_transport_ptr || m_transport_tagged_ptr) {
+            if(m_transport_ptr || m_transport_tagged_ptr) {
                 std::stringstream s;
                 s << m_owner->name() << ": non-blocking callback allready registered";
                 SC_REPORT_WARNING("/OSCI_TLM-2/signal_target_mixin", s.str().c_str());
@@ -107,14 +107,14 @@ private:
         }
 
         // Interface implementation
-        sync_enum_type nb_transport_fw(transaction_type &trans, phase_type &phase, sc_core::sc_time &t) {
-            if (m_transport_ptr) {
+        sync_enum_type nb_transport_fw(transaction_type& trans, phase_type& phase, sc_core::sc_time& t) {
+            if(m_transport_ptr) {
                 // forward call
                 return m_transport_ptr(trans, phase, t);
-            } else if (m_transport_tagged_ptr) {
+            } else if(m_transport_tagged_ptr) {
                 // forward call
                 return m_transport_tagged_ptr(tag, trans, phase, t);
-            } else if (m_owner->error_if_no_callback) {
+            } else if(m_owner->error_if_no_callback) {
                 std::stringstream s;
                 s << m_owner->name() << ": no transport callback registered";
                 SC_REPORT_ERROR("/OSCI_TLM-2/signal_target_mixin", s.str().c_str());
@@ -123,7 +123,7 @@ private:
         }
 
     private:
-        const signal_target_mixin *m_owner;
+        const signal_target_mixin* m_owner;
         unsigned int tag = 0;
         transport_fct m_transport_ptr = nullptr;
         transport_tagged_fct m_transport_tagged_ptr = nullptr;
@@ -132,7 +132,7 @@ private:
 private:
     fw_process_if fw_if;
 };
-}
+} // namespace scc
 
 #include <sysc/datatypes/bit/sc_logic.h>
 namespace scc {
@@ -140,6 +140,6 @@ using tlm_signal_bool_in = signal_target_mixin<tlm::tlm_signal_target_socket<boo
 using tlm_signal_logic_in = signal_target_mixin<tlm::tlm_signal_target_socket<sc_dt::sc_logic>>;
 using tlm_signal_bool_opt_in = signal_target_mixin<tlm::tlm_signal_opt_target_socket<bool>>;
 using tlm_signal_logic_opt_in = signal_target_mixin<tlm::tlm_signal_opt_target_socket<sc_dt::sc_logic>>;
-}
+} // namespace scc
 
 #endif //__SIGNAL_TARGET_MIXIN_H__

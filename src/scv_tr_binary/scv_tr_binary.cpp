@@ -84,26 +84,28 @@ namespace {
 
 struct ByteBufferWriter {
     ByteBufferWriter(size_t reserve = 32) { buf.reserve(reserve); }
-    template <typename T> ByteBufferWriter &append(const T &v) {
-        const auto *ptr = reinterpret_cast<const unsigned char *>(&v);
-        for (size_t i = 0; i < sizeof(T); ++i, ++ptr) buf.push_back(*ptr);
+    template <typename T> ByteBufferWriter& append(const T& v) {
+        const auto* ptr = reinterpret_cast<const unsigned char*>(&v);
+        for(size_t i = 0; i < sizeof(T); ++i, ++ptr)
+            buf.push_back(*ptr);
         return *this;
     }
 
     size_t length() { return buf.size(); }
 
-    unsigned char *operator()() { return buf.data(); }
+    unsigned char* operator()() { return buf.data(); }
 
     void write(int file_des) {
         ssize_t written = ::write(file_des, buf.data(), buf.size());
-        if (written != buf.size()) throw std::runtime_error("not written"); // TODO: implement error handling
+        if(written != buf.size())
+            throw std::runtime_error("not written"); // TODO: implement error handling
     }
 
 private:
     std::vector<unsigned char> buf;
 };
 
-template <> ByteBufferWriter &ByteBufferWriter::append<std::string>(const std::string &v) {
+template <> ByteBufferWriter& ByteBufferWriter::append<std::string>(const std::string& v) {
     auto it = buf.end();
     buf.resize(buf.size() + v.length());
     std::copy(v.begin(), v.end(), it);
@@ -114,15 +116,15 @@ const int open_flags{O_WRONLY | O_CREAT | O_TRUNC};
 const auto open_mode{00644};
 
 struct ControlBuffer {
-    ControlBuffer(const boost::filesystem::path &name) {
+    ControlBuffer(const boost::filesystem::path& name) {
         file_des = open(name.string().c_str(), open_flags, open_mode);
     }
 
     ~ControlBuffer() { close(file_des); }
 
-    uint64_t getIdOf(const std::string &str) {
+    uint64_t getIdOf(const std::string& str) {
         auto strid = std::hash<std::string>{}(str);
-        if (lookup.find(strid) == lookup.end()) {
+        if(lookup.find(strid) == lookup.end()) {
             ByteBufferWriter bw(sizeof(uint32_t) + sizeof(strid) + sizeof(uint32_t) + str.length());
             bw.append<uint32_t>(1U).append(strid).append<uint32_t>(str.length()).append(str).write(file_des);
             lookup.insert(strid);
@@ -130,12 +132,12 @@ struct ControlBuffer {
         return strid;
     }
 
-    void writeStream(uint64_t id, std::string &name, std::string &kind) {
+    void writeStream(uint64_t id, std::string& name, std::string& kind) {
         ByteBufferWriter bw;
         bw.append<uint32_t>(2U).append(id).append(getIdOf(name)).append(getIdOf(kind)).write(file_des);
     }
 
-    void writeGenerator(uint64_t id, std::string &name, uint64_t stream) {
+    void writeGenerator(uint64_t id, std::string& name, uint64_t stream) {
         ByteBufferWriter bw;
         bw.append<uint32_t>(3U).append(id).append(getIdOf(name)).append(stream).write(file_des);
     }
@@ -147,10 +149,10 @@ private:
 
 class DataBuffer {
 public:
-    DataBuffer(const boost::filesystem::path &name) { file_des = open(name.string().c_str(), open_flags, open_mode); }
+    DataBuffer(const boost::filesystem::path& name) { file_des = open(name.string().c_str(), open_flags, open_mode); }
 
     ~DataBuffer() {
-        if (bufTail > 0) {
+        if(bufTail > 0) {
             std::fill(buf.data() + bufTail, buf.data() + buf.size(), 0);
             write(file_des, buf.data(), buf.size());
         }
@@ -193,18 +195,19 @@ public:
     /**
      * returns the offset of the record
      */
-    template <typename T> uint64_t append(const T &val) {
-        return append(reinterpret_cast<const unsigned char *>(&val), sizeof(T));
+    template <typename T> uint64_t append(const T& val) {
+        return append(reinterpret_cast<const unsigned char*>(&val), sizeof(T));
     }
 
     uint64_t getActualFilePos() { return blockCount * buf.size() + bufTail; }
 
 private:
-    uint64_t append(const unsigned char *p, size_t len) {
-        if ((bufTail + len) > buf.size()) {
+    uint64_t append(const unsigned char* p, size_t len) {
+        if((bufTail + len) > buf.size()) {
             std::fill(buf.data() + bufTail, buf.data() + buf.size(), 0);
             ssize_t written = write(file_des, buf.data(), buf.size());
-            if (written != buf.size()) throw std::runtime_error("not written"); // TODO: implement error handling
+            if(written != buf.size())
+                throw std::runtime_error("not written"); // TODO: implement error handling
             blockCount++;
             bufTail = 0;
         }
@@ -221,10 +224,10 @@ private:
 };
 
 struct TimingBuffer {
-    TimingBuffer(const boost::filesystem::path &name) { file_des = open(name.string().c_str(), open_flags, open_mode); }
+    TimingBuffer(const boost::filesystem::path& name) { file_des = open(name.string().c_str(), open_flags, open_mode); }
 
     ~TimingBuffer() {
-        if (bufTail > 0) {
+        if(bufTail > 0) {
             std::fill(buf.data() + bufTail, buf.data() + buf.size(), 0);
             write(file_des, buf.data(), buf.size());
         }
@@ -233,10 +236,11 @@ struct TimingBuffer {
 
     void append(uint32_t type, uint64_t time, uint64_t file_offset) {
         const size_t len = sizeof(type) + sizeof(time) + sizeof(file_offset);
-        if ((bufTail + len) > buf.size()) {
+        if((bufTail + len) > buf.size()) {
             std::fill(buf.data() + bufTail, buf.data() + buf.size(), 0);
             ssize_t written = write(file_des, buf.data(), buf.size());
-            if (written != buf.size()) throw std::runtime_error("not written"); // TODO: implement error handling
+            if(written != buf.size())
+                throw std::runtime_error("not written"); // TODO: implement error handling
             bufTail = 0;
         }
         ByteBufferWriter bw(len);
@@ -254,9 +258,10 @@ private:
 class Base {
 protected:
     boost::filesystem::path dir;
-    Base(const std::string &name)
+    Base(const std::string& name)
     : dir(name.c_str()) {
-        if (boost::filesystem::exists(dir)) boost::filesystem::remove_all(dir);
+        if(boost::filesystem::exists(dir))
+            boost::filesystem::remove_all(dir);
         boost::filesystem::create_directory(dir);
     }
 };
@@ -266,13 +271,13 @@ struct Database : Base {
     DataBuffer d;
     TimingBuffer t;
 
-    Database(const std::string &name)
+    Database(const std::string& name)
     : Base(name)
     , c(dir / "c")
     , d(dir / "d")
     , t(dir / "t") {}
 
-    inline uint64_t getIdOf(const std::string &str) { return c.getIdOf(str); }
+    inline uint64_t getIdOf(const std::string& str) { return c.getIdOf(str); }
 
     inline void writeStream(uint64_t id, std::string name, std::string kind) { c.writeStream(id, name, kind); }
 
@@ -286,44 +291,45 @@ struct Database : Base {
         t.append(type, time, file_offset);
     }
 
-    inline void writeAttribute(uint64_t id, EventType event, const string &name, data_type type, const string &value) {
+    inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, const string& value) {
         d.writeAttribute(id, event, c.getIdOf(name), type, c.getIdOf(value));
     }
 
-    inline void writeAttribute(uint64_t id, EventType event, const string &name, data_type type, uint64_t value) {
+    inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, uint64_t value) {
         d.writeAttribute(id, event, c.getIdOf(name), type, value);
     }
 
-    inline void writeAttribute(uint64_t id, EventType event, const string &name, data_type type, double value) {
+    inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, double value) {
         int exponent;
         const double mantissa = frexp(value, &exponent);
     }
 
-    inline void writeRelation(const std::string &name, uint64_t sink_id, uint64_t src_id) {
+    inline void writeRelation(const std::string& name, uint64_t sink_id, uint64_t src_id) {
         d.writeRelation(c.getIdOf(name), src_id, sink_id);
     }
 };
 
-vector<vector<uint64_t> *> concurrencyLevel;
-Database *db;
+vector<vector<uint64_t>*> concurrencyLevel;
+Database* db;
 std::unordered_map<uint64_t, uint64_t> id2offset;
 
-void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason, void *data) {
+void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason, void* data) {
     // This is called from the scv_tr_db ctor.
     static string fName("DEFAULT_scv_tr_sqlite");
-    switch (reason) {
+    switch(reason) {
     case scv_tr_db::CREATE:
-        if ((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0)) fName = _scv_tr_db.get_name();
+        if((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0))
+            fName = _scv_tr_db.get_name();
         try {
             db = new Database(fName);
-        } catch (...) {
+        } catch(...) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open recording file");
         }
         break;
     case scv_tr_db::DELETE:
         try {
             delete db;
-        } catch (...) {
+        } catch(...) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't close recording file");
         }
         break;
@@ -332,59 +338,61 @@ void dbCb(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason, void *
     }
 }
 // ----------------------------------------------------------------------------
-void streamCb(const scv_tr_stream &s, scv_tr_stream::callback_reason reason, void *data) {
-    if (reason == scv_tr_stream::CREATE) {
+void streamCb(const scv_tr_stream& s, scv_tr_stream::callback_reason reason, void* data) {
+    if(reason == scv_tr_stream::CREATE) {
         try {
             db->writeStream(s.get_id(), s.get_name(), s.get_stream_kind());
-        } catch (std::runtime_error &e) {
+        } catch(std::runtime_error& e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create stream");
         }
     }
 }
 // ----------------------------------------------------------------------------
-void recordAttribute(uint64_t id, EventType event, const string &name, data_type type, const string &value) {
+void recordAttribute(uint64_t id, EventType event, const string& name, data_type type, const string& value) {
     try {
         db->writeAttribute(id, event, name, type, value);
-    } catch (std::runtime_error &e) {
+    } catch(std::runtime_error& e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create attribute entry");
     }
 }
 // ----------------------------------------------------------------------------
-void recordAttribute(uint64_t id, EventType event, const string &name, data_type type, long long value) {
+void recordAttribute(uint64_t id, EventType event, const string& name, data_type type, long long value) {
     try {
         db->writeAttribute(id, event, name, type, static_cast<uint64_t>(value));
-    } catch (std::runtime_error &e) {
+    } catch(std::runtime_error& e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create attribute entry");
     }
 }
 // ----------------------------------------------------------------------------
-inline void recordAttribute(uint64_t id, EventType event, const string &name, data_type type, double value) {
+inline void recordAttribute(uint64_t id, EventType event, const string& name, data_type type, double value) {
     try {
         db->writeAttribute(id, event, name, type, value);
-    } catch (std::runtime_error &e) {
+    } catch(std::runtime_error& e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create attribute entry");
     }
 }
 // ----------------------------------------------------------------------------
-void recordAttributes(uint64_t id, EventType eventType, string &prefix, const scv_extensions_if *my_exts_p) {
-    if (my_exts_p == nullptr) return;
+void recordAttributes(uint64_t id, EventType eventType, string& prefix, const scv_extensions_if* my_exts_p) {
+    if(my_exts_p == nullptr)
+        return;
     string name;
-    if (prefix == "") {
+    if(prefix == "") {
         name = my_exts_p->get_name();
     } else {
-        if ((my_exts_p->get_name() == nullptr) || (strlen(my_exts_p->get_name()) == 0)) {
+        if((my_exts_p->get_name() == nullptr) || (strlen(my_exts_p->get_name()) == 0)) {
             name = prefix;
         } else {
             name = prefix + "." + my_exts_p->get_name();
         }
     }
-    if (name == "") name = "<unnamed>";
-    switch (my_exts_p->get_type()) {
+    if(name == "")
+        name = "<unnamed>";
+    switch(my_exts_p->get_type()) {
     case scv_extensions_if::RECORD: {
         int num_fields = my_exts_p->get_num_fields();
-        if (num_fields > 0) {
-            for (int field_counter = 0; field_counter < num_fields; field_counter++) {
-                const scv_extensions_if *field_data_p = my_exts_p->get_field(field_counter);
+        if(num_fields > 0) {
+            for(int field_counter = 0; field_counter < num_fields; field_counter++) {
+                const scv_extensions_if* field_data_p = my_exts_p->get_field(field_counter);
                 recordAttributes(id, eventType, prefix, field_data_p);
             }
         }
@@ -423,8 +431,8 @@ void recordAttributes(uint64_t id, EventType eventType, string &prefix, const sc
         recordAttribute(id, eventType, name, scv_extensions_if::LOGIC_VECTOR, tmp_lv.to_string());
     } break;
     case scv_extensions_if::ARRAY:
-        for (int array_elt_index = 0; array_elt_index < my_exts_p->get_array_size(); array_elt_index++) {
-            const scv_extensions_if *field_data_p = my_exts_p->get_array_elt(array_elt_index);
+        for(int array_elt_index = 0; array_elt_index < my_exts_p->get_array_size(); array_elt_index++) {
+            const scv_extensions_if* field_data_p = my_exts_p->get_array_elt(array_elt_index);
             recordAttributes(id, eventType, prefix, field_data_p);
         }
         break;
@@ -436,49 +444,55 @@ void recordAttributes(uint64_t id, EventType eventType, string &prefix, const sc
     }
 }
 // ----------------------------------------------------------------------------
-void generatorCb(const scv_tr_generator_base &g, scv_tr_generator_base::callback_reason reason, void *data) {
-    if (reason == scv_tr_generator_base::CREATE && db) {
+void generatorCb(const scv_tr_generator_base& g, scv_tr_generator_base::callback_reason reason, void* data) {
+    if(reason == scv_tr_generator_base::CREATE && db) {
         try {
             db->writeGenerator(g.get_id(), g.get_name(), g.get_scv_tr_stream().get_id());
-        } catch (std::runtime_error &e) {
+        } catch(std::runtime_error& e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create generator entry");
         }
     }
 }
 // ----------------------------------------------------------------------------
-void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason reason, void *data) {
-    if (!db) return;
-    if (t.get_scv_tr_stream().get_scv_tr_db() == nullptr) return;
-    if (t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false) return;
+void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason reason, void* data) {
+    if(!db)
+        return;
+    if(t.get_scv_tr_stream().get_scv_tr_db() == nullptr)
+        return;
+    if(t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
+        return;
 
     uint64_t id = t.get_id();
     uint64_t streamId = t.get_scv_tr_stream().get_id();
     vector<uint64_t>::size_type concurrencyIdx;
-    const scv_extensions_if *my_exts_p;
-    switch (reason) {
+    const scv_extensions_if* my_exts_p;
+    switch(reason) {
     case scv_tr_handle::BEGIN: {
         try {
-            if (concurrencyLevel.size() <= streamId) concurrencyLevel.resize(streamId + 1);
-            vector<uint64_t> *levels = concurrencyLevel.at(streamId);
-            if (levels == nullptr) {
+            if(concurrencyLevel.size() <= streamId)
+                concurrencyLevel.resize(streamId + 1);
+            vector<uint64_t>* levels = concurrencyLevel.at(streamId);
+            if(levels == nullptr) {
                 levels = new vector<uint64_t>();
                 concurrencyLevel[id] = levels;
             }
-            for (concurrencyIdx = 0; concurrencyIdx < levels->size(); ++concurrencyIdx)
-                if ((*levels)[concurrencyIdx] == 0) break;
-            if (concurrencyIdx == levels->size())
+            for(concurrencyIdx = 0; concurrencyIdx < levels->size(); ++concurrencyIdx)
+                if((*levels)[concurrencyIdx] == 0)
+                    break;
+            if(concurrencyIdx == levels->size())
                 levels->push_back(id);
             else
                 (*levels)[concurrencyIdx] = id;
             auto offset = db->writeTransaction(id, t.get_scv_tr_generator_base().get_id(), concurrencyIdx);
             db->writeTxTimepoint(id, BEGIN, t.get_begin_sc_time().value(), offset);
             id2offset[id] = offset;
-        } catch (std::runtime_error &e) {
+        } catch(std::runtime_error& e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, e.what());
         }
         my_exts_p = t.get_begin_exts_p();
-        if (my_exts_p == nullptr) my_exts_p = t.get_scv_tr_generator_base().get_begin_exts_p();
-        if (my_exts_p) {
+        if(my_exts_p == nullptr)
+            my_exts_p = t.get_scv_tr_generator_base().get_begin_exts_p();
+        if(my_exts_p) {
             string tmp_str = t.get_scv_tr_generator_base().get_begin_attribute_name()
                                  ? t.get_scv_tr_generator_base().get_begin_attribute_name()
                                  : "";
@@ -487,21 +501,23 @@ void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason reason
     } break;
     case scv_tr_handle::END: {
         try {
-            vector<uint64_t> *levels = concurrencyLevel[streamId];
-            for (concurrencyIdx = 0; concurrencyIdx < levels->size(); ++concurrencyIdx)
-                if ((*levels)[concurrencyIdx] == id) break;
-            if (concurrencyIdx == levels->size())
+            vector<uint64_t>* levels = concurrencyLevel[streamId];
+            for(concurrencyIdx = 0; concurrencyIdx < levels->size(); ++concurrencyIdx)
+                if((*levels)[concurrencyIdx] == id)
+                    break;
+            if(concurrencyIdx == levels->size())
                 levels->push_back(id);
             else
                 (*levels)[concurrencyIdx] = id;
             db->writeTxTimepoint(id, END, t.get_begin_sc_time().value(), id2offset[id]);
             id2offset.erase(id);
-        } catch (std::runtime_error &e) {
+        } catch(std::runtime_error& e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create transaction end");
         }
         my_exts_p = t.get_end_exts_p();
-        if (my_exts_p == nullptr) my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();
-        if (my_exts_p) {
+        if(my_exts_p == nullptr)
+            my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();
+        if(my_exts_p) {
             string tmp_str = t.get_scv_tr_generator_base().get_end_attribute_name()
                                  ? t.get_scv_tr_generator_base().get_end_attribute_name()
                                  : "";
@@ -512,23 +528,29 @@ void transactionCb(const scv_tr_handle &t, scv_tr_handle::callback_reason reason
     }
 }
 // ----------------------------------------------------------------------------
-void attributeCb(const scv_tr_handle &t, const char *name, const scv_extensions_if *ext, void *data) {
-    if (!db) return;
-    if (t.get_scv_tr_stream().get_scv_tr_db() == nullptr) return;
-    if (t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false) return;
+void attributeCb(const scv_tr_handle& t, const char* name, const scv_extensions_if* ext, void* data) {
+    if(!db)
+        return;
+    if(t.get_scv_tr_stream().get_scv_tr_db() == nullptr)
+        return;
+    if(t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
+        return;
     string tmp_str(name == nullptr ? "" : name);
     recordAttributes(t.get_id(), RECORD, tmp_str, ext);
 }
 // ----------------------------------------------------------------------------
-void relationCb(const scv_tr_handle &tr_1, const scv_tr_handle &tr_2, void *data,
+void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data,
                 scv_tr_relation_handle_t relation_handle) {
-    if (!db) return;
-    if (tr_1.get_scv_tr_stream().get_scv_tr_db() == nullptr) return;
-    if (tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false) return;
+    if(!db)
+        return;
+    if(tr_1.get_scv_tr_stream().get_scv_tr_db() == nullptr)
+        return;
+    if(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
+        return;
     try {
         db->writeRelation(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), tr_1.get_id(),
                           tr_2.get_id());
-    } catch (std::runtime_error &e) {
+    } catch(std::runtime_error& e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create transaction relation");
     }
 }

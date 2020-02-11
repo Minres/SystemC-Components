@@ -18,11 +18,12 @@
 #define _UTIL_IO_REDIRECTOR_H_
 
 #include <fcntl.h>
-#include <stdio.h>
 #include <mutex>
+#include <stdio.h>
 
 class IoRedirector {
     enum { bufSize = 1024 };
+
 public:
     void start();
 
@@ -32,10 +33,11 @@ public:
 
     std::string get_output(bool blocking = false);
 
-    static IoRedirector& get(){
+    static IoRedirector& get() {
         static IoRedirector inst;
         return inst;
     }
+
 private:
     enum PIPES { READ, WRITE };
 
@@ -44,7 +46,7 @@ private:
     int copy_fd(int fd);
     void create_pipes();
     void copy_fd_to(int src_fd, int destfd);
-    void close_fd(int & fd);
+    void close_fd(int& fd);
 
     int m_pipe[2];
     int m_oldStdOut;

@@ -33,13 +33,15 @@ public:
      */
     void reset_start() {
         _in_reset = true;
-        for (auto res : resources) res->reset();
+        for(auto res : resources)
+            res->reset();
     }
     /**
      * finish the reset state
      */
     void reset_stop() {
-        for (auto res : resources) res->reset();
+        for(auto res : resources)
+            res->reset();
         _in_reset = false;
     }
     /**
@@ -53,10 +55,10 @@ public:
      *
      * @param res the resource belonging to this reset domain
      */
-    void register_resource(resource_access_if *res) { resources.push_back(res); }
+    void register_resource(resource_access_if* res) { resources.push_back(res); }
 
 protected:
-    std::vector<resource_access_if *> resources;
+    std::vector<resource_access_if*> resources;
     bool _in_reset = false;
 };
 

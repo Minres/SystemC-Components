@@ -22,8 +22,8 @@
 #include <sstream>
 #include <sysc/kernel/sc_time.h>
 #include <sysc/utils/sc_report.h>
-#include <util/logging.h>
 #include <util/ities.h>
+#include <util/logging.h>
 
 namespace scc {
 
@@ -39,30 +39,29 @@ void init_logging(logging::log_level level = logging::WARNING, unsigned type_fie
  * the configuration class for the logging setup
  */
 struct LogConfig {
-  logging::log_level level{logging::WARNING};
-  unsigned msg_type_field_width{24};
-  bool print_sys_time{false};
-  bool print_sim_time{true};
-  bool print_delta{false};
-  bool print_severity{true};
-  bool colored_output{true};
-  std::string log_file_name{""};
-  std::string log_filter_regex{""};
-  bool log_async{true};
+    logging::log_level level{logging::WARNING};
+    unsigned msg_type_field_width{24};
+    bool print_sys_time{false};
+    bool print_sim_time{true};
+    bool print_delta{false};
+    bool print_severity{true};
+    bool colored_output{true};
+    std::string log_file_name{""};
+    std::string log_filter_regex{""};
+    bool log_async{true};
 
-  LogConfig& logLevel(logging::log_level);
-  LogConfig& msgTypeFieldWidth(unsigned);
-  LogConfig& printSysTime(bool);
-  LogConfig& printSimTime(bool);
-  LogConfig& printDelta(bool);
-  LogConfig& printSeverity(bool);
-  LogConfig& coloredOutput(bool);
-  LogConfig& logFileName(std::string&&);
-  LogConfig& logFileName(const std::string&);
-  LogConfig& logFilterRegex(std::string&&);
-  LogConfig& logFilterRegex(const std::string&);
-  LogConfig& logAsync(bool);
-
+    LogConfig& logLevel(logging::log_level);
+    LogConfig& msgTypeFieldWidth(unsigned);
+    LogConfig& printSysTime(bool);
+    LogConfig& printSimTime(bool);
+    LogConfig& printDelta(bool);
+    LogConfig& printSeverity(bool);
+    LogConfig& coloredOutput(bool);
+    LogConfig& logFileName(std::string&&);
+    LogConfig& logFileName(const std::string&);
+    LogConfig& logFilterRegex(std::string&&);
+    LogConfig& logFilterRegex(const std::string&);
+    LogConfig& logAsync(bool);
 };
 /**
  * initializes the SystemC logging system with a particular configuration
@@ -93,7 +92,7 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
      * @param line the line where the log entry originates
      * @param level the log level
      */
-    ScLogger(const char *file, int line, sc_core::sc_verbosity level = sc_core::SC_MEDIUM)
+    ScLogger(const char* file, int line, sc_core::sc_verbosity level = sc_core::SC_MEDIUM)
     : t(nullptr)
     , file(file)
     , line(line)
@@ -106,24 +105,24 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
      * no copy constructor
      * @param
      */
-    ScLogger(const ScLogger &) = delete;
+    ScLogger(const ScLogger&) = delete;
     /**
      * no move constructor
      * @param
      */
-    ScLogger(ScLogger &&) = delete;
+    ScLogger(ScLogger&&) = delete;
     /**
      * no copy assignment
      * @param
      * @return
      */
-    ScLogger &operator=(const ScLogger &) = delete;
+    ScLogger& operator=(const ScLogger&) = delete;
     /**
      * no move assignment
      * @param
      * @return
      */
-    ScLogger &operator=(ScLogger &&) = delete;
+    ScLogger& operator=(ScLogger&&) = delete;
     /**
      * the destructor generating the SystemC report
      */
@@ -135,8 +134,8 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
      *
      * @return
      */
-    inline ScLogger &type() {
-        this->t=nullptr;
+    inline ScLogger& type() {
+        this->t = nullptr;
         return *this;
     }
     /**
@@ -145,8 +144,8 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
      * @param t
      * @return
      */
-    inline ScLogger &type(const char *t) {
-        this->t = const_cast<char *>(t);
+    inline ScLogger& type(const char* t) {
+        this->t = const_cast<char*>(t);
         return *this;
     }
     /**
@@ -155,8 +154,8 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
      * @param t
      * @return
      */
-    inline ScLogger &type(const std::string& t) {
-        this->t = const_cast<char *>(t.c_str());
+    inline ScLogger& type(const std::string& t) {
+        this->t = const_cast<char*>(t.c_str());
         return *this;
     }
     /**
@@ -164,12 +163,12 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
      *
      * @return the output stream collecting the log message
      */
-    inline std::ostream &get() { return os; };
+    inline std::ostream& get() { return os; };
 
 protected:
     std::ostringstream os;
-    char *t;
-    const char *file;
+    char* t;
+    const char* file;
     const int line;
     const sc_core::sc_verbosity level;
 };
@@ -178,32 +177,34 @@ protected:
  * logging macros
  */
 //! macro for debug trace level output
-#define SCCTRACEALL(...)                                                                                 \
-    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)                      \
+#define SCCTRACEALL(...)                                                                                               \
+    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)                                       \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_DEBUG).type(__VA_ARGS__).get()
 //! macro for trace level output
-#define SCCTRACE(...)                                                                                 \
-    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)                      \
+#define SCCTRACE(...)                                                                                                  \
+    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)                                        \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_FULL).type(__VA_ARGS__).get()
 //! macro for debug level output
-#define SCCDEBUG(...)                                                                                 \
-    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_HIGH)                      \
+#define SCCDEBUG(...)                                                                                                  \
+    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_HIGH)                                        \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_HIGH).type(__VA_ARGS__).get()
 //! macro for info level output
-#define SCCINFO(...)                                                                                  \
-    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM)                    \
+#define SCCINFO(...)                                                                                                   \
+    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM)                                      \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for warning level output
-#define SCCWARN(...) ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCCWARN(...)                                                                                                   \
+    ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for error level output
 #define SCCERR(...) ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for fatal message output
-#define SCCFATAL(...) ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCCFATAL(...)                                                                                                  \
+    ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 
 #ifdef NDEBUG
-#define SCC_ASSERT(expr) ((void) 0)
+#define SCC_ASSERT(expr) ((void)0)
 #else
-#define SCC_ASSERT(expr) ((void)((expr) ? 0 : (SC_REPORT_FATAL( ::sc_core::SC_ID_ASSERTION_FAILED_, #expr ), 0)))
+#define SCC_ASSERT(expr) ((void)((expr) ? 0 : (SC_REPORT_FATAL(::sc_core::SC_ID_ASSERTION_FAILED_, #expr), 0)))
 #endif
 
 #define SCMOD this->name()
@@ -213,31 +214,32 @@ protected:
  */
 //! macro for debug trace level output
 #ifndef SCDBGTRC
-#define SCDBGTRC(...)                                                                                  \
-    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)                      \
+#define SCDBGTRC(...)                                                                                                  \
+    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)                                       \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_DEBUG).type(__VA_ARGS__).get()
 #endif
 //! macro for trace level output
 #ifndef SCTRACE
-#define SCTRACE(...)                                                                                  \
-    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)                      \
+#define SCTRACE(...)                                                                                                   \
+    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)                                        \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_FULL).type(__VA_ARGS__).get()
 //! macro for debug level output
 #endif
 #ifndef SCDEBUG
-#define SCDEBUG(...)                                                                                  \
-    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_HIGH)                      \
+#define SCDEBUG(...)                                                                                                   \
+    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_HIGH)                                        \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_HIGH).type(__VA_ARGS__).get()
 #endif
 //! macro for info level output
 #ifndef SCINFO
-#define SCINFO(...)                                                                                    \
-    if (::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM)                     \
+#define SCINFO(...)                                                                                                    \
+    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM)                                      \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for warning level output
 #endif
 #ifndef SCWARN
-#define SCWARN(...) ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCWARN(...)                                                                                                    \
+    ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 #endif
 //! macro for error level output
 #ifndef SCERR
@@ -245,13 +247,15 @@ protected:
 #endif
 //! macro for fatal message output
 #ifndef SCFATAL
-#define SCFATAL(...) ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCFATAL(...)                                                                                                   \
+    ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 #endif
-class stream_redirection: public std::stringbuf {
+class stream_redirection : public std::stringbuf {
 public:
     stream_redirection(std::ostream& os, logging::log_level level);
     ~stream_redirection();
     void reset();
+
 protected:
     std::streamsize xsputn(const char_type* s, std::streamsize n) override;
     int sync() override;
@@ -260,6 +264,6 @@ protected:
     std::streambuf* old_buf;
 };
 
-}
+} // namespace scc
 
 #endif /* _SCC_REPORT_H_ */

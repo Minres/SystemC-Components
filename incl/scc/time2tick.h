@@ -25,7 +25,7 @@ namespace scc {
  */
 struct time2tick : public sc_core::sc_module {
     //! yes, we have processes
-    SC_HAS_PROCESS(time2tick);// NOLINT
+    SC_HAS_PROCESS(time2tick); // NOLINT
     //! the clock input
     sc_core::sc_in<sc_core::sc_time> clk_i;
     //! the clock output
@@ -43,9 +43,9 @@ struct time2tick : public sc_core::sc_module {
 private:
     sc_core::sc_time clk_period;
     void clocker() {
-        while (true) {
+        while(true) {
             auto t = clk_i.read();
-            if (t == sc_core::SC_ZERO_TIME) {
+            if(t == sc_core::SC_ZERO_TIME) {
                 wait(clk_i.value_changed_event());
                 t = clk_i.read();
             }
@@ -56,5 +56,5 @@ private:
         }
     }
 };
-}
+} // namespace scc
 #endif /* _SCC_TIME2TICK_H_ */

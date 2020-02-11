@@ -18,14 +18,14 @@
 #define _UTIL_ITIES_H_
 
 #include <array>
+#include <assert.h>
 #include <bitset>
-#include <type_traits>
-#include <vector>
-#include <sstream>
 #include <iterator>
 #include <memory>
-#include <assert.h>
+#include <sstream>
 #include <sys/stat.h>
+#include <type_traits>
+#include <vector>
 
 // some helper functions
 template <unsigned int bit, unsigned int width, typename T> inline constexpr T bit_sub(T v) {
@@ -59,7 +59,7 @@ inline constexpr typename std::make_signed<T>::type signed_bit_sub(T v) {
 
 namespace util {
 
-template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args &&... args) {
+template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args&&... args) {
 #if __cplusplus < 201402L
     return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
 #else
@@ -72,7 +72,7 @@ template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args &&..
 static std::array<const int, 32> MultiplyDeBruijnBitPosition = {{0,  1,  28, 2,  29, 14, 24, 3,  30, 22, 20,
                                                                  15, 25, 17, 4,  8,  31, 27, 13, 23, 21, 19,
                                                                  16, 7,  26, 12, 18, 6,  11, 5,  10, 9}};
-template <size_t N> constexpr size_t find_first(std::bitset<N> &bits) {
+template <size_t N> constexpr size_t find_first(std::bitset<N>& bits) {
     static_assert(N <= 32, "find_first only supports bitsets smaller than 33");
     return MultiplyDeBruijnBitPosition[((uint32_t)((bits.to_ulong() & -bits.to_ulong()) * 0x077CB531U)) >> 27];
 }
@@ -95,38 +95,38 @@ constexpr size_t bit_count(uint32_t u) {
  * @param separator the separator char
  * @return vector of splitted strings
  */
-inline std::vector<std::string> split(const std::string &s, char seperator) {
+inline std::vector<std::string> split(const std::string& s, char seperator) {
     std::vector<std::string> output;
     std::string::size_type prev_pos = 0, pos = 0;
-    while ((pos = s.find(seperator, pos)) != std::string::npos) {
+    while((pos = s.find(seperator, pos)) != std::string::npos) {
         std::string substring(s.substr(prev_pos, pos - prev_pos));
         output.push_back(substring);
         prev_pos = ++pos;
     }
     output.push_back(s.substr(prev_pos, pos - prev_pos)); // Last word
     return output;
-/* could also be done similar to this
-	// construct a stream from the string
-	std::stringstream ss(str);
-	// use stream iterators to copy the stream to the vector as whitespace separated strings
-	std::istream_iterator<std::string> it(ss);
-	std::istream_iterator<std::string> end;
-	std::vector<std::string> results(it, end);
-	return results;
-*/
+    /* could also be done similar to this
+        // construct a stream from the string
+        std::stringstream ss(str);
+        // use stream iterators to copy the stream to the vector as whitespace separated strings
+        std::istream_iterator<std::string> it(ss);
+        std::istream_iterator<std::string> end;
+        std::vector<std::string> results(it, end);
+        return results;
+    */
 }
 
 /*! note: delimiter cannot contain NUL characters
  */
 template <typename Range, typename Value = typename Range::value_type>
-std::string join(Range const& elements, const char *const delimiter) {
+std::string join(Range const& elements, const char* const delimiter) {
     std::ostringstream os;
     auto b = std::begin(elements), e = std::end(elements);
-    if (b != e) {
+    if(b != e) {
         std::copy(b, std::prev(e), std::ostream_iterator<Value>(os, delimiter));
         b = std::prev(e);
     }
-    if (b != e)
+    if(b != e)
         os << *b;
     return os.str();
 }
@@ -134,11 +134,11 @@ std::string join(Range const& elements, const char *const delimiter) {
 /*! note: imput is assumed to not contain NUL characters
  */
 template <typename Input, typename Output, typename Value = typename Output::value_type>
-void split(char delimiter, Output &output, Input const& input) {
-    for (auto cur = std::begin(input), beg = cur; ; ++cur) {
-        if (cur == std::end(input) || *cur == delimiter || !*cur) {
+void split(char delimiter, Output& output, Input const& input) {
+    for(auto cur = std::begin(input), beg = cur;; ++cur) {
+        if(cur == std::end(input) || *cur == delimiter || !*cur) {
             output.insert(std::end(output), Value(beg, cur));
-            if (cur == std::end(input) || !*cur)
+            if(cur == std::end(input) || !*cur)
                 break;
             beg = std::next(cur);
         }
@@ -150,19 +150,17 @@ void split(char delimiter, Output &output, Input const& input) {
  * @param string b to compare
  * @result true if the are equal otherwise false
  */
-inline
-bool iequals(const std::string& a, const std::string& b) {
+inline bool iequals(const std::string& a, const std::string& b) {
 #if __cplusplus < 201402L
     auto sz = a.size();
-    if (b.size() != sz)
+    if(b.size() != sz)
         return false;
-    for (auto i = 0U; i < sz; ++i)
-        if (tolower(a[i]) != tolower(b[i]))
+    for(auto i = 0U; i < sz; ++i)
+        if(tolower(a[i]) != tolower(b[i]))
             return false;
     return true;
 #else
-     return std::equal(a.begin(), a.end(), b.begin(), b.end(),
-    		 [](char a, char b) {return tolower(a) == tolower(b);});
+    return std::equal(a.begin(), a.end(), b.begin(), b.end(), [](char a, char b) { return tolower(a) == tolower(b); });
 #endif
 }
 /**
@@ -173,16 +171,17 @@ bool iequals(const std::string& a, const std::string& b) {
  * @param use ellipsis (...) when shortening
  * @result string with the given length
  */
-inline std::string padded(std::string str, size_t width, bool show_ellipsis=true) {
-    if(width<7) return str;
-    if (str.length() > width) {
-        if (show_ellipsis){
-            auto pos = str.size()-(width-6);
-            return str.substr(0, 3) + "..."+str.substr(pos, str.size()-pos);
+inline std::string padded(std::string str, size_t width, bool show_ellipsis = true) {
+    if(width < 7)
+        return str;
+    if(str.length() > width) {
+        if(show_ellipsis) {
+            auto pos = str.size() - (width - 6);
+            return str.substr(0, 3) + "..." + str.substr(pos, str.size() - pos);
         } else
             return str.substr(0, width);
     } else {
-        return str+std::string(width-str.size(), ' ');
+        return str + std::string(width - str.size(), ' ');
     }
 }
 /**
@@ -190,9 +189,9 @@ inline std::string padded(std::string str, size_t width, bool show_ellipsis=true
  * @param name the file name
  * @return true if file exists and can be opened
  */
-inline bool file_exists (const std::string& name) {
-  struct stat buffer;
-  return (stat (name.c_str(), &buffer) == 0);
+inline bool file_exists(const std::string& name) {
+    struct stat buffer;
+    return (stat(name.c_str(), &buffer) == 0);
 }
 /**
  * return directory name portion of a given path (as string)
@@ -200,9 +199,8 @@ inline bool file_exists (const std::string& name) {
  * @param delims the path delimiters to use
  * @return
  */
-template<class T>
-inline T dir_name(T const & path, T const & delims = "/\\") {
-  return path.substr(0, path.find_last_of(delims));
+template <class T> inline T dir_name(T const& path, T const& delims = "/\\") {
+    return path.substr(0, path.find_last_of(delims));
 }
 /**
  * return file name portion of a given path (as string)
@@ -210,19 +208,17 @@ inline T dir_name(T const & path, T const & delims = "/\\") {
  * @param delims the path delimiters to use
  * @return
  */
-template<class T>
-inline T base_name(T const & path, T const & delims = "/\\") {
-  return path.substr(path.find_last_of(delims) + 1);
+template <class T> inline T base_name(T const& path, T const& delims = "/\\") {
+    return path.substr(path.find_last_of(delims) + 1);
 }
 /**
  * return the base name (without extension) of a file name (as string)
  * @param filename
  * @return
  */
-template<class T>
-inline T remove_ext(T const & filename) {
-  typename T::size_type const p(filename.find_last_of('.'));
-  return p > 0 && p != T::npos ? filename.substr(0, p) : filename;
+template <class T> inline T remove_ext(T const& filename) {
+    typename T::size_type const p(filename.find_last_of('.'));
+    return p > 0 && p != T::npos ? filename.substr(0, p) : filename;
 }
-}
+} // namespace util
 #endif /* _UTIL_ITIES_H_ */

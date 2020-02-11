@@ -30,12 +30,12 @@
 #include "json/json-forwards.h"
 #include "json/json.h"
 //#include "scc/core/sc_logic_7.h"
-#include "scc/utilities.h"
-#include "scc/report.h"
 #include "scc/peq.h"
+#include "scc/report.h"
 #include "scc/signal_initiator_mixin.h"
 #include "scc/signal_target_mixin.h"
 #include "scc/tagged_target_mixin.h"
+#include "scc/utilities.h"
 #ifdef WITH_CCI
 #include "scc/configurable_tracer.h"
 #include "scc/configurer.h"
@@ -68,12 +68,12 @@
 #include "scv4tlm/tlm_recording_extension.h"
 #endif
 
+#include "tlm/tlm2_pv_av.h"
 #include "tlm/tlm_extensions.h"
 #include "tlm/tlm_id.h"
 #include "tlm/tlm_signal.h"
 #include "tlm/tlm_signal_conv.h"
 #include "tlm/tlm_signal_gp.h"
 #include "tlm/tlm_signal_sockets.h"
-#include "tlm/tlm2_pv_av.h"
 
 #endif /* _SCC_H_ */

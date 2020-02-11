@@ -43,7 +43,7 @@ class tlm_rec_target_socket : public tlm::tlm_target_socket<BUSWIDTH, TYPES, N
                                                             POL
 #endif
                                                             > {
-    static std::string gen_name(const char *first, const char *second) {
+    static std::string gen_name(const char* first, const char* second) {
         std::stringstream ss;
         ss << first << "_" << second;
         return ss.str();
@@ -73,7 +73,7 @@ public:
     , recorder(gen_name(this->name(), "tx").c_str()) {
     }
 
-    explicit tlm_rec_target_socket(const char *name)
+    explicit tlm_rec_target_socket(const char* name)
     : tlm::tlm_target_socket<BUSWIDTH, TYPES, N
 #if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)
                              ,
@@ -85,12 +85,12 @@ public:
 
     virtual ~tlm_rec_target_socket() = default;
 
-    virtual const char *kind() const { return "tlm_rec_target_socket"; }
+    virtual const char* kind() const { return "tlm_rec_target_socket"; }
     //
     // Bind target socket to target socket (hierarchical bind)
     // - Binds both the export and the port
     //
-    virtual void bind(base_type &s) {
+    virtual void bind(base_type& s) {
         // export
         (this->get_base_export())(s.get_base_export()); // will be handled by bind(fw_interface_type& ifs)
         // port
@@ -101,9 +101,9 @@ public:
     // Bind interface to socket
     // - Binds the interface to the export
     //
-    virtual void bind(fw_interface_type &ifs) {
-        export_type *exp = &this->get_base_export();
-        if (this == exp) {
+    virtual void bind(fw_interface_type& ifs) {
+        export_type* exp = &this->get_base_export();
+        if(this == exp) {
             export_type::bind(recorder); // non-virtual function call
             fw_port(ifs);
         } else {
@@ -113,9 +113,9 @@ public:
     //
     // Forward to 'operator->()' of port class
     //
-    bw_interface_type *operator->() { return &recorder; }
+    bw_interface_type* operator->() { return &recorder; }
 
-    void setExtensionRecording(tlm2_extensions_recording_if<TYPES> *extensionRecording) {
+    void setExtensionRecording(tlm2_extensions_recording_if<TYPES>* extensionRecording) {
         recorder.setExtensionRecording(extensionRecording);
     }
 
@@ -124,7 +124,7 @@ protected:
     scv4tlm::tlm2_recorder<TYPES> recorder;
 };
 #endif
-}
+} // namespace scv4tlm
 // namespace scv4tlm
 
 #endif /* TLM_REC_TARGET_SOCKET_H_ */

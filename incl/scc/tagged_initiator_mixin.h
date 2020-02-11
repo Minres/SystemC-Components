@@ -48,7 +48,7 @@ public:
      *
      * @param n
      */
-    explicit tagged_initiator_mixin(const char *n)
+    explicit tagged_initiator_mixin(const char* n)
     : BASE_TYPE(n)
     , bw_if(this->name()) {
         this->m_export.bind(bw_if);
@@ -59,7 +59,7 @@ public:
      * @param tag the tag to return upon calling
      */
     void register_nb_transport_bw(
-        std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)> cb,
+        std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)> cb,
         unsigned int tag) {
         bw_if.set_transport_function(cb, tag);
     }
@@ -77,16 +77,16 @@ private:
     class bw_transport_if : public tlm::tlm_bw_transport_if<TYPES> {
     public:
         using transport_fct =
-            std::function<sync_enum_type(unsigned int, transaction_type &, phase_type &, sc_core::sc_time &)>;
+            std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)>;
         using invalidate_dmi_fct = std::function<void(unsigned int, sc_dt::uint64, sc_dt::uint64)>;
 
-        bw_transport_if(const std::string &name)
+        bw_transport_if(const std::string& name)
         : m_name(name)
         , m_transport_ptr(0)
         , m_invalidate_direct_mem_ptr(0) {}
 
         void set_transport_function(transport_fct p, unsigned int tag) {
-            if (m_transport_ptr) {
+            if(m_transport_ptr) {
                 std::stringstream s;
                 s << m_name << ": non-blocking callback allready registered";
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
@@ -97,7 +97,7 @@ private:
         }
 
         void set_invalidate_direct_mem_function(invalidate_dmi_fct p, unsigned int tag) {
-            if (m_invalidate_direct_mem_ptr) {
+            if(m_invalidate_direct_mem_ptr) {
                 std::stringstream s;
                 s << m_name << ": invalidate DMI callback allready registered";
                 SC_REPORT_WARNING("/OSCI_TLM-2/simple_socket", s.str().c_str());
@@ -107,8 +107,9 @@ private:
             }
         }
 
-        sync_enum_type nb_transport_bw(transaction_type &trans, phase_type &phase, sc_core::sc_time &t) {
-            if (m_transport_ptr) return m_transport_ptr(tags[0], trans, phase, t);
+        sync_enum_type nb_transport_bw(transaction_type& trans, phase_type& phase, sc_core::sc_time& t) {
+            if(m_transport_ptr)
+                return m_transport_ptr(tags[0], trans, phase, t);
             std::stringstream s;
             s << m_name << ": no transport callback registered";
             SC_REPORT_ERROR("/OSCI_TLM-2/tagged_initiator_mixin", s.str().c_str());
@@ -116,7 +117,7 @@ private:
         }
 
         void invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) {
-            if (m_invalidate_direct_mem_ptr) // forward call
+            if(m_invalidate_direct_mem_ptr) // forward call
                 m_invalidate_direct_mem_ptr(tags[1], start_range, end_range);
         }
 
@@ -130,6 +131,6 @@ private:
 private:
     bw_transport_if bw_if;
 };
-}
+} // namespace scc
 
 #endif //_SCC_TAGGED_INITIATOR_MIXIN_H__

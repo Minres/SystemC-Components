@@ -51,7 +51,7 @@ public:
      * @param d the annotated delay
      * @return true it the access is successful
      */
-    virtual bool write(const uint8_t *data, std::size_t length, uint64_t offset = 0,
+    virtual bool write(const uint8_t* data, std::size_t length, uint64_t offset = 0,
                        sc_core::sc_time d = sc_core::SC_ZERO_TIME) = 0;
     /**
      * read the data from the resource
@@ -62,7 +62,7 @@ public:
      * @param d the annotated delay
      * @return true it the access is successful
      */
-    virtual bool read(uint8_t *data, std::size_t length, uint64_t offset = 0,
+    virtual bool read(uint8_t* data, std::size_t length, uint64_t offset = 0,
                       sc_core::sc_time d = sc_core::SC_ZERO_TIME) const = 0;
     // non-functional/debug accesses
     /**
@@ -73,7 +73,7 @@ public:
      * @param offset offset of the data to write
      * @return true it the access is successful
      */
-    virtual bool write_dbg(const uint8_t *data, std::size_t length, uint64_t offset = 0) = 0;
+    virtual bool write_dbg(const uint8_t* data, std::size_t length, uint64_t offset = 0) = 0;
     /**
      * debug read the data from the resource
      *
@@ -82,7 +82,7 @@ public:
      * @param offset offset of the data to read
      * @return true it the access is successful
      */
-    virtual bool read_dbg(uint8_t *data, std::size_t length, uint64_t offset = 0) const = 0;
+    virtual bool read_dbg(uint8_t* data, std::size_t length, uint64_t offset = 0) const = 0;
 };
 /**
  * interface defining access to an indexed resource
@@ -90,12 +90,12 @@ public:
 class indexed_resource_access_if {
 public:
     using value_type = resource_access_if;
-    using pointer = value_type *;
-    using const_pointer = const value_type *;
-    using reference = value_type &;
-    using const_reference = const value_type &;
-    using iterator = resource_access_if *;
-    using const_iterator = const resource_access_if *;
+    using pointer = value_type*;
+    using const_pointer = const value_type*;
+    using reference = value_type&;
+    using const_reference = const value_type&;
+    using iterator = resource_access_if*;
+    using const_iterator = const resource_access_if*;
     /**
      * the destructor
      */
@@ -134,5 +134,5 @@ public:
      */
     virtual const_reference at(std::size_t idx) const = 0;
 };
-}
+} // namespace scc
 #endif /* _SYSC_RESOURCE_ACCESS_IF_H_ */

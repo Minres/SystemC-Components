@@ -44,31 +44,31 @@ template <typename T, int Offset, int Bits> struct BitFieldMember {
 
     operator T() const { return (value >> Offset) & Maximum; }
 
-    BitFieldMember &operator=(T v) {
+    BitFieldMember& operator=(T v) {
         assert(v <= Maximum); // v must fit inside the bitfield member
         value = (value & ~Mask) | (v << Offset);
         return *this;
     }
 
-    BitFieldMember &operator+=(T v) {
+    BitFieldMember& operator+=(T v) {
         assert(T(*this) + v <= Maximum); // result must fit inside the bitfield member
         value += v << Offset;
         return *this;
     }
 
-    BitFieldMember &operator-=(T v) {
+    BitFieldMember& operator-=(T v) {
         assert(T(*this) >= v); // result must not underflow
         value -= v << Offset;
         return *this;
     }
 
-    BitFieldMember &operator++() { return *this += 1; }
+    BitFieldMember& operator++() { return *this += 1; }
     BitFieldMember operator++(int) { // postfix form
         BitFieldMember tmp(*this);
         operator++();
         return tmp;
     }
-    BitFieldMember &operator--() { return *this -= 1; }
+    BitFieldMember& operator--() { return *this -= 1; }
     BitFieldMember operator--(int) { // postfix form
         BitFieldMember tmp(*this);
         operator--();
@@ -94,42 +94,42 @@ public:
 
     class Element {
     private:
-        T &value;
+        T& value;
         int offset;
 
     public:
-        Element(T &value, int offset)
+        Element(T& value, int offset)
         : value(value)
         , offset(offset) {}
         T mask() const { return Maximum << offset; }
 
         operator T() const { return (value >> offset) & Maximum; }
 
-        Element &operator=(T v) {
+        Element& operator=(T v) {
             assert(v <= Maximum); // v must fit inside the bitfield member
             value = (value & ~mask()) | (v << offset);
             return *this;
         }
 
-        Element &operator+=(T v) {
+        Element& operator+=(T v) {
             assert(T(*this) + v <= Maximum); // result must fit inside the bitfield member
             value += v << offset;
             return *this;
         }
 
-        Element &operator-=(T v) {
+        Element& operator-=(T v) {
             assert(T(*this) >= v); // result must not underflow
             value -= v << offset;
             return *this;
         }
 
-        Element &operator++() { return *this += 1; }
+        Element& operator++() { return *this += 1; }
         Element operator++(int) { // postfix form
             Element tmp(*this);
             operator++();
             return tmp;
         }
-        Element &operator--() { return *this -= 1; }
+        Element& operator--() { return *this -= 1; }
         Element operator--(int) { // postfix form
             Element tmp(*this);
             operator--();
@@ -160,11 +160,11 @@ public:
         };                                                                                                             \
         Wrapper st;                                                                                                    \
         typeName(T v = 0) { st.value = v; }                                                                            \
-        typeName &operator=(T v) {                                                                                     \
+        typeName& operator=(T v) {                                                                                     \
             st.value = v;                                                                                              \
             return *this;                                                                                              \
         }                                                                                                              \
-        operator T &() { return st.value; }                                                                            \
+        operator T&() { return st.value; }                                                                             \
         operator T() const { return st.value; }                                                                        \
         using StorageType = T;
 
