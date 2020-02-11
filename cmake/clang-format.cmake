@@ -16,18 +16,19 @@ foreach (SOURCE_FILE ${ALL_SOURCE_FILES})
     endforeach ()
 endforeach ()
 
-add_custom_target(clangformat
-    COMMENT "Running clang-format to change files"
-    COMMAND ${CLANG_FORMAT_BIN} -i ${ALL_SOURCE_FILES}
-)
+set(FORMAT_TARGET_NAME format)
+if(NOT CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+	set(FORMAT_TARGET_NAME format-${PROJECT_NAME})
+endif()
 
-add_custom_target(format
+add_custom_target(${FORMAT_TARGET_NAME}
     COMMENT "Running clang-format to change files"
     COMMAND ${CLANG_FORMAT_BIN} -style=file -i ${ALL_SOURCE_FILES}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 
-add_custom_target(format-check
+add_custom_target(${FORMAT_TARGET_NAME}-check
     COMMENT "Checking clang-format changes"
     # Use ! to negate the result for correct output
     COMMAND !
