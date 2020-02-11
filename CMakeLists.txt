@@ -37,6 +37,8 @@ endif()
 find_package(Threads)
 find_package(ZLIB)
 find_package(${SystemCPackage} REQUIRED)
+set(CLANG_FORMAT_EXCLUDE_PATTERNS "/spdlog/" "/json/" "jsoncpp.cpp")
+find_package(ClangFormat)
 
 include(CheckSymbolExists)
 # Check for function getenv()

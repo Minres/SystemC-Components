@@ -18,17 +18,12 @@ endforeach ()
 
 add_custom_target(clangformat
     COMMENT "Running clang-format to change files"
-        COMMAND ${CLANG_FORMAT_BIN}
-        -i
-        ${ALL_SOURCE_FILES}
+    COMMAND ${CLANG_FORMAT_BIN} -i ${ALL_SOURCE_FILES}
 )
 
 add_custom_target(format
     COMMENT "Running clang-format to change files"
-    COMMAND ${CLANG_FORMAT_BIN}
-    -style=file
-    -i
-    ${ALL_SOURCE_FILES}
+    COMMAND ${CLANG_FORMAT_BIN} -style=file -i ${ALL_SOURCE_FILES}
 )
 
 
