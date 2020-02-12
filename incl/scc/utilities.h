@@ -24,6 +24,7 @@
 #define _SYSC_UTILITIES_H_
 
 #include <memory>
+#include <limits>
 
 // pragmas to disable the deprecated warnings for SystemC headers
 #pragma GCC diagnostic push
@@ -254,20 +255,15 @@ inline sc_core::sc_time parse_from_string(std::string value) noexcept {
     return sc_core::SC_ZERO_TIME;
 }
 
-#ifdef ASM
-#include <stdint.h>
-static inline unsigned ilog2(uint32_t x) {
-    uint32_t y;
-    asm("\tbsr %1, %0\n" : "=r"(y) : "r"(x));
-    return y;
-}
-#else
-#include <limits.h>
 #if __cplusplus < 201402L
 inline unsigned ilog2(uint32_t val) {
 #else
 inline constexpr unsigned ilog2(uint32_t val) {
 #endif
+#ifdef __GNUG__
+     return sizeof(uint32_t)*8-1-__builtin_clz(static_cast<unsigned>(val));
+#else
+
     if(val == 0)
         return std::numeric_limits<uint32_t>::max();
     if(val == 1)
@@ -278,8 +274,8 @@ inline constexpr unsigned ilog2(uint32_t val) {
         ++ret;
     }
     return ret;
-}
 #endif
+}
 
 template <typename T> inline T get_value(sc_core::sc_attribute<T>& a) { return a.value; }
 
