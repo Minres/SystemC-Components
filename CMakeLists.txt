@@ -80,57 +80,56 @@ if(SCV_FOUND)
 endif(SCV_FOUND)
 
 # Define two variables in order not to repeat ourselves.
-set(LIBRARY_NAME scc)
 if(${CMAKE_VERSION} VERSION_LESS "3.13.0") 
 	link_directories(${SystemC_LIBRARY_DIRS})
 endif()
 
 # Define the scc library
-add_library(${LIBRARY_NAME} ${LIB_SOURCES})
-target_include_directories (${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
+add_library(scc ${LIB_SOURCES})
+target_include_directories (scc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
 if(HAVE_GETENV)
-	target_compile_definitions(${LIBRARY_NAME} PUBLIC HAVE_GETENV)
+	target_compile_definitions(scc PUBLIC HAVE_GETENV)
 endif()
 FILE(GLOB LibHeaders incl/*.h)
-set_target_properties(${LIBRARY_NAME} PROPERTIES
+set_target_properties(scc PROPERTIES
   VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
   FRAMEWORK FALSE
   PUBLIC_HEADER "${LibHeaders}" # specify the public headers
 )
 
-target_link_libraries(${LIBRARY_NAME} scc-util ${CMAKE_DL_LIBS})
+target_link_libraries(scc scc-util ${CMAKE_DL_LIBS})
 if(${CMAKE_VERSION} VERSION_LESS "3.2.0")    
-    target_link_libraries(${LIBRARY_NAME} ${CMAKE_THREAD_LIBS_INIT})
+    target_link_libraries(scc ${CMAKE_THREAD_LIBS_INIT})
 else()
-    target_link_libraries(${LIBRARY_NAME} Threads::Threads)
+    target_link_libraries(scc Threads::Threads)
 endif()
 
 if(CCI_FOUND)
-    target_compile_definitions(${LIBRARY_NAME} PUBLIC -DWITH_CCI)
-	target_include_directories (${LIBRARY_NAME} PUBLIC ${CCI_INCLUDE_DIRS})
-	target_link_libraries(${LIBRARY_NAME} ${CCI_LIBRARIES} )
+    target_compile_definitions(scc PUBLIC -DWITH_CCI)
+	target_include_directories (scc PUBLIC ${CCI_INCLUDE_DIRS})
+	target_link_libraries(scc ${CCI_LIBRARIES} )
 	if(NOT ${CMAKE_VERSION} VERSION_LESS "3.13.0") 
-		target_link_directories(${LIBRARY_NAME} PUBLIC ${CCI_LIBRARY_DIRS})
+		target_link_directories(scc PUBLIC ${CCI_LIBRARY_DIRS})
 	endif()
 endif()
 
 if(SCV_FOUND)   
-    target_compile_definitions(${LIBRARY_NAME} PUBLIC -DWITH_SCV)
-	target_include_directories (${LIBRARY_NAME} PUBLIC ${SCV_INCLUDE_DIRS})
-    target_link_libraries (${LIBRARY_NAME} ${SCV_LIBRARIES})
+    target_compile_definitions(scc PUBLIC -DWITH_SCV)
+	target_include_directories (scc PUBLIC ${SCV_INCLUDE_DIRS})
+    target_link_libraries (scc ${SCV_LIBRARIES})
 	if(NOT ${CMAKE_VERSION} VERSION_LESS "3.13.0") 
-		target_link_directories(${LIBRARY_NAME} PUBLIC ${SCV_LIBRARY_DIRS})
+		target_link_directories(scc PUBLIC ${SCV_LIBRARY_DIRS})
 	endif()
 endif()
 
 if(ZLIB_FOUND)
-    target_link_libraries (${LIBRARY_NAME} ${ZLIB_LIBRARIES})
+    target_link_libraries (scc ${ZLIB_LIBRARIES})
 endif(ZLIB_FOUND)
 
-target_include_directories (${LIBRARY_NAME} PUBLIC ${SystemC_INCLUDE_DIRS})	
-target_link_libraries(${LIBRARY_NAME} ${SystemC_LIBRARIES} )
+target_include_directories (scc PUBLIC ${SystemC_INCLUDE_DIRS})	
+target_link_libraries(scc ${SystemC_LIBRARIES} )
 if(NOT ${CMAKE_VERSION} VERSION_LESS "3.13.0") 
-	target_link_directories(${LIBRARY_NAME} PUBLIC ${SystemC_LIBRARY_DIRS})
+	target_link_directories(scc PUBLIC ${SystemC_LIBRARY_DIRS})
 endif()
 
 # build a separate JSON library for the use in non-systemc based systems
@@ -155,7 +154,7 @@ install(TARGETS scc-util
         ARCHIVE DESTINATION lib/static
         PUBLIC_HEADER DESTINATION include/util
         )
-install(TARGETS ${LIBRARY_NAME}
+install(TARGETS scc
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib/static
