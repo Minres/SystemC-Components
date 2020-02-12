@@ -10,6 +10,9 @@
 
 #include <deque>
 #include <vector>
+#ifdef HAVE_GETENV
+#include <cstdlib>
+#endif
 
 namespace util {
 template <typename T, unsigned CHUNK_SIZE = 4096> class pool_allocator {
@@ -24,14 +27,13 @@ public:
 
     pool_allocator(pool_allocator&&) = delete;
 
+    ~pool_allocator();
+
     pool_allocator& operator=(const pool_allocator&) = delete;
 
     pool_allocator& operator=(pool_allocator&&) = delete;
 
-    static pool_allocator& get() {
-        static pool_allocator inst;
-        return inst;
-    }
+    static pool_allocator& get();
 
     size_t get_capacity();
 
@@ -43,6 +45,23 @@ private:
     std::vector<std::array<chunk_type, CHUNK_SIZE>*> chunks;
     std::deque<void*> free_list;
 };
+
+template<typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>& pool_allocator<T, CHUNK_SIZE>::get() {
+  static pool_allocator inst;
+  return inst;
+}
+
+template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>::~pool_allocator() {
+#ifdef HAVE_GETENV
+    auto* check = getenv("TLM_MM_CHECK");
+    if(check && strcasecmp(check, "INFO")) {
+        auto diff = get_capacity() - get_free_entries_count();
+        if(diff)
+            std::cout << __FUNCTION__ << ": detected memory leak upon destruction, " << diff << " of "
+                      << get_capacity() << " entries are not free'd" << std::endl;
+    }
+#endif
+}
 
 template <typename T, unsigned CHUNK_SIZE> inline void* pool_allocator<T, CHUNK_SIZE>::allocate() {
     if(!free_list.size())
