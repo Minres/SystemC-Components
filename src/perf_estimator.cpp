@@ -68,7 +68,8 @@ void perf_estimator::end_of_simulation() {
 }
 
 void perf_estimator::beat() {
-    SCCINFO(SCMOD) << "Heart beat";
+    if(sc_time_stamp().value())
+      SCCINFO(SCMOD) << "Heart beat";
     next_trigger(beat_delay);
 }
 } /* namespace scc */
