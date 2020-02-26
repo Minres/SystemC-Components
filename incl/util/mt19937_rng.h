@@ -28,7 +28,27 @@ public:
         return u(inst());
     }
     /**
-     * generates the next random integer number with normal distribution (similar to rand() )
+     * generates the next random integer number with uniform distribution in the range of the given type
+     * @return
+     */
+    template<typename T>
+    static T uniform() {
+        std::uniform_int_distribution<T> u;
+        return u(inst());
+    }
+    /**
+     * generates the next random integer number with uniform distribution between (and including) min and max
+     * @param min the lower limit of the interval
+     * @param max the upper limit of the interval
+     * @return
+     */
+    static uint64_t uniform(uint64_t min, uint64_t max) {
+        assert(min<max);
+        std::uniform_int_distribution<uint64_t> u(min, max);
+        return u(inst());
+    }
+    /**
+     * generates the next random double precision float number with normal distribution (similar to rand() )
      * @return
      */
     static double normal() {
