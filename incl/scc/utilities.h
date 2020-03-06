@@ -23,8 +23,8 @@
 #ifndef _SYSC_UTILITIES_H_
 #define _SYSC_UTILITIES_H_
 
-#include <memory>
 #include <limits>
+#include <memory>
 
 // pragmas to disable the deprecated warnings for SystemC headers
 #pragma GCC diagnostic push
@@ -261,7 +261,7 @@ inline unsigned ilog2(uint32_t val) {
 inline constexpr unsigned ilog2(uint32_t val) {
 #endif
 #ifdef __GNUG__
-     return sizeof(uint32_t)*8-1-__builtin_clz(static_cast<unsigned>(val));
+    return sizeof(uint32_t) * 8 - 1 - __builtin_clz(static_cast<unsigned>(val));
 #else
 
     if(val == 0)

@@ -46,9 +46,9 @@ private:
     std::deque<void*> free_list;
 };
 
-template<typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>& pool_allocator<T, CHUNK_SIZE>::get() {
-  static pool_allocator inst;
-  return inst;
+template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>& pool_allocator<T, CHUNK_SIZE>::get() {
+    static pool_allocator inst;
+    return inst;
 }
 
 template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>::~pool_allocator() {
@@ -57,8 +57,8 @@ template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>::~pool_
     if(check && strcasecmp(check, "INFO")) {
         auto diff = get_capacity() - get_free_entries_count();
         if(diff)
-            std::cout << __FUNCTION__ << ": detected memory leak upon destruction, " << diff << " of "
-                      << get_capacity() << " entries are not free'd" << std::endl;
+            std::cout << __FUNCTION__ << ": detected memory leak upon destruction, " << diff << " of " << get_capacity()
+                      << " entries are not free'd" << std::endl;
     }
 #endif
 }

@@ -47,6 +47,7 @@ check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)
 set(LIB_SOURCES
     src/sc_logic_7.cpp
     src/utilities.cpp
+    src/watchdog.cpp
     src/report.cpp
     src/perf_estimator.cpp
     src/io-redirector.cpp

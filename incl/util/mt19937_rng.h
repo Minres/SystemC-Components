@@ -31,8 +31,7 @@ public:
      * generates the next random integer number with uniform distribution in the range of the given type
      * @return
      */
-    template<typename T>
-    static T uniform() {
+    template <typename T> static T uniform() {
         std::uniform_int_distribution<T> u;
         return u(inst());
     }
@@ -43,7 +42,7 @@ public:
      * @return
      */
     static uint64_t uniform(uint64_t min, uint64_t max) {
-        assert(min<max);
+        assert(min < max);
         std::uniform_int_distribution<uint64_t> u(min, max);
         return u(inst());
     }
