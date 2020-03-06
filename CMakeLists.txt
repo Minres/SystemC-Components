@@ -47,7 +47,6 @@ check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)
 set(LIB_SOURCES
     src/sc_logic_7.cpp
     src/utilities.cpp
-    src/watchdog.cpp
     src/report.cpp
     src/perf_estimator.cpp
     src/io-redirector.cpp
@@ -59,6 +58,9 @@ set(LIB_SOURCES
     src/tracer_base.cpp
     src/tracer.cpp
 )
+if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
+set(LIB_SOURCES ${LIB_SOURCES} src/watchdog.cpp)
+endif()
 
 if(CCI_FOUND)
     set(LIB_SOURCES ${LIB_SOURCES} 
