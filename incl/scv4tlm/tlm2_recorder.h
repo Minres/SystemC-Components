@@ -272,7 +272,7 @@ private:
         scv_tr_handle parent;
         uint64 id;
         tlm_recording_payload& operator=(const typename TYPES::tlm_payload_type& x) {
-            id = static_cast<uintptr_t>(&x);
+            id = reinterpret_cast<uintptr_t>(&x);
             this->set_command(x.get_command());
             this->set_address(x.get_address());
             this->set_data_ptr(x.get_data_ptr());
