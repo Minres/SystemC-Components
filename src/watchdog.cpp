@@ -10,7 +10,8 @@
 using namespace util;
 using namespace std::chrono;
 
-watchdog::watchdog(system_clock::duration timeout, std::function<void(void)> alarm_cb, system_clock::duration sleep_duration)
+watchdog::watchdog(system_clock::duration timeout, std::function<void(void)> alarm_cb,
+                   system_clock::duration sleep_duration)
 : timeout(timeout)
 , alarm_cb(alarm_cb)
 , sleep_duration(sleep_duration) {
@@ -20,7 +21,7 @@ watchdog::watchdog(system_clock::duration timeout, std::function<void(void)> ala
 }
 
 watchdog::watchdog(system_clock::duration timeout, std::function<void(void)> alarm)
-: watchdog(timeout, alarm, timeout/10){};
+: watchdog(timeout, alarm, timeout / 10){};
 
 watchdog::~watchdog() {
     live.store(false);

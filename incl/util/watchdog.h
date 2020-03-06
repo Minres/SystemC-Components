@@ -22,7 +22,8 @@ public:
     /**
      * constructor
      * @param timeout until the watch dog is going to expire
-     * @param alarm_cb the function to be called once the watch dog expires, upon expiration the watch dog goes into idle state
+     * @param alarm_cb the function to be called once the watch dog expires, upon expiration the watch dog goes into
+     * idle state
      * @param sleep_duration the granularity to check expiration
      */
     watchdog(std::chrono::system_clock::duration timeout, std::function<void(void)> alarm_cb,
@@ -30,7 +31,8 @@ public:
     /**
      *
      * @param timeout timeout until the watch dog is going to expire
-     * @param alarm the function to be called once the watch dog expires, upon expiration the watch dog goes into idle state
+     * @param alarm the function to be called once the watch dog expires, upon expiration the watch dog goes into idle
+     * state
      */
     watchdog(std::chrono::system_clock::duration timeout, std::function<void(void)> alarm);
     /**
@@ -61,9 +63,9 @@ private:
     std::chrono::system_clock::duration timeout;
     std::chrono::system_clock::duration sleep_duration;
     std::function<void(void)> alarm_cb;
-    std::atomic_bool idle{ true };
-    std::atomic_bool live{ true };
-    std::atomic<std::chrono::system_clock::time_point> touched{ std::chrono::system_clock::now() };
+    std::atomic_bool idle{true};
+    std::atomic_bool live{true};
+    std::atomic<std::chrono::system_clock::time_point> touched{std::chrono::system_clock::now()};
     std::thread guard_thread;
     std::mutex guard_mutex;
     std::condition_variable wakeup;
