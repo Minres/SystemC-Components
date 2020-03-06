@@ -27,7 +27,7 @@
 
 namespace scc {
 struct value_registry_if {
-    struct value_holder {
+    struct value_holder { // @suppress("Class has a virtual method and non-virtual destructor")
         const std::string name;
         virtual std::string to_string() = 0;
         value_holder(const std::string& name)

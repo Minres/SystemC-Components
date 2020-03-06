@@ -74,7 +74,7 @@ static std::array<const int, 32> MultiplyDeBruijnBitPosition = {{0,  1,  28, 2, 
                                                                  16, 7,  26, 12, 18, 6,  11, 5,  10, 9}};
 template <size_t N> constexpr size_t find_first(std::bitset<N>& bits) {
     static_assert(N <= 32, "find_first only supports bitsets smaller than 33");
-    return MultiplyDeBruijnBitPosition[((uint32_t)((bits.to_ulong() & -bits.to_ulong()) * 0x077CB531U)) >> 27];
+    return MultiplyDeBruijnBitPosition[static_cast<uint32_t>((bits.to_ulong() & -bits.to_ulong()) * 0x077CB531U) >> 27];
 }
 
 // according to
@@ -97,7 +97,8 @@ constexpr size_t bit_count(uint32_t u) {
  */
 inline std::vector<std::string> split(const std::string& s, char seperator) {
     std::vector<std::string> output;
-    std::string::size_type prev_pos = 0, pos = 0;
+    std::string::size_type prev_pos = 0;
+    std::string::size_type pos = 0;
     while((pos = s.find(seperator, pos)) != std::string::npos) {
         std::string substring(s.substr(prev_pos, pos - prev_pos));
         output.push_back(substring);
@@ -121,7 +122,8 @@ inline std::vector<std::string> split(const std::string& s, char seperator) {
 template <typename Range, typename Value = typename Range::value_type>
 std::string join(Range const& elements, const char* const delimiter) {
     std::ostringstream os;
-    auto b = std::begin(elements), e = std::end(elements);
+    auto b = std::begin(elements);
+    auto e = std::end(elements);
     if(b != e) {
         std::copy(b, std::prev(e), std::ostream_iterator<Value>(os, delimiter));
         b = std::prev(e);

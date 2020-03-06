@@ -272,7 +272,7 @@ private:
         scv_tr_handle parent;
         uint64 id;
         tlm_recording_payload& operator=(const typename TYPES::tlm_payload_type& x) {
-            id = (uint64)&x;
+            id = static_cast<unitptr_t>(&x);
             this->set_command(x.get_command());
             this->set_address(x.get_address());
             this->set_data_ptr(x.get_data_ptr());
@@ -303,7 +303,7 @@ private:
             } else {
                 ptr = new tlm_recording_payload(this);
             }
-            return (tlm_recording_payload*)ptr;
+            return static_cast<tlm_recording_payload*>(ptr);
         }
         void free(tlm::tlm_generic_payload* trans) override {
             trans->reset();
@@ -450,7 +450,7 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, 
     fw_port->b_transport(trans, delay);
     if(preExt && preExt->get_creator() == this) {
         // clean-up the extension if this is the original creator
-        trans.set_extension((tlm_recording_extension*)NULL);
+        trans.set_extension(static_cast<tlm_recording_extension*>(nullptr));
         if(!trans.has_mm()) {
             delete preExt;
         }
@@ -585,7 +585,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
     if(status == tlm::TLM_COMPLETED || (status == tlm::TLM_ACCEPTED && phase == tlm::END_RESP)) {
         trans.get_extension(preExt);
         if(preExt && preExt->get_creator() == this) {
-            trans.set_extension((tlm_recording_extension*)NULL);
+            trans.set_extension(static_cast<tlm_recording_extension*>(nullptr));
             if(!trans.has_mm()) {
                 delete preExt;
             }
@@ -684,7 +684,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
         // the transaction is finished
         if(preExt && preExt->get_creator() == this) {
             // clean-up the extension if this is the original creator
-            trans.set_extension((tlm_recording_extension*)NULL);
+            trans.set_extension(static_cast<tlm_recording_extension*>(nullptr));
             if(!trans.has_mm()) {
                 delete preExt;
             }

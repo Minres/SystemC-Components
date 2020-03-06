@@ -70,8 +70,10 @@ protected:
             avail_cb();
     }
 
-    std::deque<T> in_queue, out_queue;
-    std::function<void(void)> avail_cb, empty_cb;
+    std::deque<T> in_queue;
+    std::deque<T> out_queue;
+    std::function<void(void)> avail_cb;
+    std::function<void(void)> empty_cb;
 };
 
 } /* namespace scc */

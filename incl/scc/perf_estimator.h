@@ -71,7 +71,10 @@ protected:
     void start_of_simulation() override;
     void end_of_simulation() override;
     //! the recorded time stamps
-    time_stamp soc, eoe, sos, eos;
+    time_stamp soc;
+    time_stamp eoe;
+    time_stamp sos;
+    time_stamp eos;
     sc_core::sc_time beat_delay;
     void beat();
 };
