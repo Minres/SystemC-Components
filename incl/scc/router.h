@@ -208,12 +208,15 @@ template <unsigned BUSWIDTH>
 void router<BUSWIDTH>::add_target_range(std::string name, uint64_t base, uint64_t size, bool remap) {
     auto it = target_name_lut.find(name);
 #ifndef NDEBUG
-    // sc_assert(it!=target_name_lut.end());
+#if(SYSTEMC_VERSION >= 20171012)
     if(it == target_name_lut.end()) {
         std::stringstream ss;
         ss << "No target index entry for '" << name << "' found ";
         ::sc_core::sc_assertion_failed(ss.str().c_str(), __FILE__, __LINE__);
     }
+#else
+    sc_assert(it!=target_name_lut.end());
+#endif
 #endif
     auto idx = it->second;
     tranges[idx].base = base;
