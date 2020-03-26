@@ -71,6 +71,13 @@ if(CCI_FOUND)
 endif()
 
 if(SCV_FOUND)
+	if(TARGET fmt::fmt)
+		set(FMT_TGT fmt::fmt)
+	elseif(TARGET CONAN_PKG::fmt)
+		set(FMT_TGT CONAN_PKG::fmt)
+	else()
+		set(FMT_TGT "")
+	endif()
     if(ZLIB_FOUND)
         set(LIB_SOURCES ${LIB_SOURCES} src/scv_tr_compressed.cpp)
     endif(ZLIB_FOUND)
@@ -80,7 +87,9 @@ if(SCV_FOUND)
 		    set(LIB_SOURCES ${LIB_SOURCES} src/scv_tr_ldb/scv_tr_ldb.cpp )
 	    endif()
     endif()
-    set(LIB_SOURCES ${LIB_SOURCES} src/scv_tr_sqlite/scv_tr_sqlite.cpp src/scv_tr_sqlite/sqlite3.c )
+    if(NOT FMT_TGT EQUAL "")
+    	set(LIB_SOURCES ${LIB_SOURCES} src/scv_tr_sqlite/scv_tr_sqlite.cpp src/scv_tr_sqlite/sqlite3.c )
+    endif()
 endif(SCV_FOUND)
 
 # Define two variables in order not to repeat ourselves.
@@ -101,7 +110,7 @@ set_target_properties(scc PROPERTIES
   PUBLIC_HEADER "incl/scc.h" # specify the public headers
 )
 
-target_link_libraries(scc scc-util ${CMAKE_DL_LIBS})
+target_link_libraries(scc scc-util ${FMT_TGT} ${CMAKE_DL_LIBS})
 if(${CMAKE_VERSION} VERSION_LESS "3.2.0")    
     target_link_libraries(scc ${CMAKE_THREAD_LIBS_INIT})
 else()
