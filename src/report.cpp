@@ -129,12 +129,17 @@ const string compose_message(const sc_report& rep, const scc::LogConfig& cfg) {
     if(rep.get_severity() > SC_INFO || cfg.log_filter_regex.length() == 0 || log_cfg.match(rep.get_msg_type())) {
         stringstream os;
         if(likely(cfg.print_sim_time)) {
-            if(unlikely(log_cfg.cycle_base.value()))
-                os << fmt::format("[{:>7}] ", sc_time_stamp().value() / log_cfg.cycle_base.value());
-            else if(unlikely(cfg.print_delta))
-                os << fmt::format("[{:>20}({:5})] ", time2string(sc_time_stamp()), sc_delta_count());
-            else
-                os << fmt::format("[{:>20}] ", time2string(sc_time_stamp()));
+        	if(unlikely(log_cfg.cycle_base.value())){
+        		if(unlikely(cfg.print_delta))
+        			os << fmt::format("[{:>7}({:5})] ", sc_time_stamp().value() / log_cfg.cycle_base.value(), sc_delta_count());
+        		else
+        			os << fmt::format("[{:>7}] ", sc_time_stamp().value() / log_cfg.cycle_base.value());
+        	} else {
+        		if(unlikely(cfg.print_delta))
+        			os << fmt::format("[{:>20}({:5})] ", time2string(sc_time_stamp()), sc_delta_count());
+        		else
+        			os << fmt::format("[{:>20}] ", time2string(sc_time_stamp()));
+        	}
         }
         if(unlikely(rep.get_id() >= 0))
             os << "("

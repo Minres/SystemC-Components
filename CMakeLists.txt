@@ -18,6 +18,7 @@ endif()
 
 
 include(Common)
+include(GNUInstallDirs)
 
 # build a separate SCC-UTIL library for the use in non-systemc based systems
 add_library(scc-util STATIC src/io-redirector.cpp)
@@ -94,11 +95,10 @@ target_include_directories (scc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 if(HAVE_GETENV)
 	target_compile_definitions(scc PUBLIC HAVE_GETENV)
 endif()
-FILE(GLOB LibHeaders incl/*.h)
 set_target_properties(scc PROPERTIES
   VERSION ${VERSION}  # ${VERSION} was defined in the main CMakeLists.
   FRAMEWORK FALSE
-  PUBLIC_HEADER "${LibHeaders}" # specify the public headers
+  PUBLIC_HEADER "incl/scc.h" # specify the public headers
 )
 
 target_link_libraries(scc scc-util ${CMAKE_DL_LIBS})
@@ -147,24 +147,24 @@ set_target_properties(jsoncpp PROPERTIES
 )
 
 install(TARGETS jsoncpp
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib/static
-        PUBLIC_HEADER DESTINATION include/json
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/json
         )
 install(TARGETS scc-util
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib/static
-        PUBLIC_HEADER DESTINATION include/util
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/util
         )
 install(TARGETS scc
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib/static
-        PUBLIC_HEADER DESTINATION include
+        RUNTIME DESTINATION ${CMAKE_INSTALL_LCMAKE_INSTALL_BINDIRIBDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
 install(
-    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/incl/
-    DESTINATION include
+    DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}/incl/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     FILES_MATCHING PATTERN "*")

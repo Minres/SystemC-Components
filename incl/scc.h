@@ -32,8 +32,6 @@
 //#include "scc/core/sc_logic_7.h"
 #include "scc/peq.h"
 #include "scc/report.h"
-#include "scc/signal_initiator_mixin.h"
-#include "scc/signal_target_mixin.h"
 #include "scc/tagged_target_mixin.h"
 #include "scc/utilities.h"
 #ifdef WITH_CCI
@@ -71,9 +69,13 @@
 #include "tlm/tlm2_pv_av.h"
 #include "tlm/tlm_extensions.h"
 #include "tlm/tlm_id.h"
+#if(SYSTEMC_VERSION >= 20171012)
+#include "scc/signal_initiator_mixin.h"
+#include "scc/signal_target_mixin.h"
 #include "tlm/tlm_signal.h"
 #include "tlm/tlm_signal_conv.h"
 #include "tlm/tlm_signal_gp.h"
 #include "tlm/tlm_signal_sockets.h"
+#endif
 
 #endif /* _SCC_H_ */

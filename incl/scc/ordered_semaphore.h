@@ -52,6 +52,13 @@ public:
 
     virtual const char* kind() const { return "sc_semaphore_ordered"; }
 
+    struct lock {
+        lock(scc::ordered_semaphore& sem) :sem(sem){ sem.wait();}
+        ~lock(){sem.post();}
+    private:
+        scc::ordered_semaphore& sem;
+    };
+
 protected:
     // support methods
 
