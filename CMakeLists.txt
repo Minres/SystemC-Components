@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.11)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
 
 # Set the version number of your project here (format is MAJOR.MINOR.PATCHLEVEL - e.g. 1.0.0)
@@ -90,6 +90,7 @@ endif()
 # Define the scc library
 add_library(scc ${LIB_SOURCES})
 target_include_directories (scc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
+target_include_directories (scc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 if(HAVE_GETENV)
 	target_compile_definitions(scc PUBLIC HAVE_GETENV)
 endif()
