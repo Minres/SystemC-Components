@@ -32,7 +32,7 @@ set_target_properties(scc-util PROPERTIES
 
 
 if(NOT SystemCPackage)
-	set(SystemCPackage SystemC)
+	set(SystemCPackage OSCISystemC)
 endif()
 
 find_package(Threads)
