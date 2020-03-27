@@ -24,12 +24,10 @@
 #include <chrono>
 #include <fstream>
 #include <scc/report.h>
-#define SPDLOG_HEADER_ONLY
 #include "spdlog/spdlog.h"
 #include "spdlog/async.h"
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
-#undef SPDLOG_HEADER_ONLY
 #include <thread>
 #include <tuple>
 #ifdef __GNUC__
