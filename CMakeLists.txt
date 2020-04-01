@@ -32,8 +32,23 @@ set_target_properties(scc-util PROPERTIES
 
 
 if(NOT SystemCPackage)
-	set(SystemCPackage OSCISystemC)
+	if(TARGET SystemC::SystemC)
+		set(SystemCPackage SystemC)
+	else()
+		set(SystemCPackage OSCISystemC)
+	endif()
 endif()
+
+message("Using ${SystemCPackage} package")
+if(TARGET SystemCVerification::SystemCVerification)
+    set(SCV_FOUND TRUE)
+endif()
+if(TARGET SystemC-CCI::SystemC-CCI)
+    set(CCI_FOUND TRUE)
+endif()
+
+
+
 
 find_package(Threads)
 find_package(ZLIB)
@@ -93,7 +108,7 @@ else()
 	message("Using built-in version of fmt")
 endif()
 
-if(SCV_FOUND)
+if(SCV_FOUND )
     if(ZLIB_FOUND)
         set(LIB_SOURCES ${LIB_SOURCES} src/scv_tr_compressed.cpp)
     endif(ZLIB_FOUND)
