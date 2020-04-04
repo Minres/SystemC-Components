@@ -19,7 +19,7 @@ find_program(CLANG_FORMAT_BIN NAMES ${CLANG_FORMAT_BIN_NAME})
 
 include(FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(
-    CLANG_FORMAT
+    ClangFormat
     DEFAULT_MSG 
     CLANG_FORMAT_BIN)
 
