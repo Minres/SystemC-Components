@@ -37,8 +37,9 @@ class tracer : public tracer_base {
 public:
     /**
      * enum defining the transaction trace output type
+     * CUSTOM means the caller needs to initialize the database driver (scv_tr_text_init() or alike)
      */
-    enum file_type { NONE, TEXT, COMPRESSED, SQLITE /*, BINARY, LEVEL*/ };
+    enum file_type { NONE, TEXT, COMPRESSED, SQLITE, CUSTOM };
     /**
      * the constructor
      *
