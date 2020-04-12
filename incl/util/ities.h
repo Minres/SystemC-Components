@@ -120,7 +120,7 @@ inline std::vector<std::string> split(const std::string& s, char seperator) {
 /*! note: delimiter cannot contain NUL characters
  */
 template <typename Range, typename Value = typename Range::value_type>
-std::string join(Range const& elements, const char* const delimiter) {
+std::string join(Range const& elements, char const* const delimiter) {
     std::ostringstream os;
     auto b = std::begin(elements);
     auto e = std::end(elements);
