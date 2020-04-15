@@ -270,7 +270,7 @@ inline std::string now_time() {
     static std::array<char, 100> result;
     time_t t;
     time(&t);
-    tm r{};
+    tm r{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, nullptr};
     strftime(buffer.data(), buffer.size(), "%X", localtime_r(&t, &r));
     struct timeval tv;
     gettimeofday(&tv, nullptr);
