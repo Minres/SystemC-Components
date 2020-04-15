@@ -83,4 +83,11 @@ private:
     ordered_semaphore& operator=(const ordered_semaphore&);
 };
 
+template<unsigned CAPACITY>
+struct ordered_semaphore_t : public ordered_semaphore {
+    explicit ordered_semaphore_t():ordered_semaphore(CAPACITY){}
+    ordered_semaphore_t(const char* name_):ordered_semaphore(name_, CAPACITY){}
+
+};
+
 } // namespace scc
