@@ -82,6 +82,27 @@ void set_logging_level(logging::log_level level);
  */
 void set_cycle_base(sc_core::sc_time period);
 /**
+ * return the global verbosity level
+ * @return
+ */
+inline sc_core::sc_verbosity get_log_verbosity(){
+    return static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
+}
+/**
+ * return a scope specific verbosity level if defined. Otherwise the global verbosity level
+ * @param t
+ * @return
+ */
+sc_core::sc_verbosity get_log_verbosity(std::string const& t);
+/**
+ * return an scope specific verbosity level if defined. Otherwise the global verbosity level
+ * @param t
+ * @return
+ */
+inline sc_core::sc_verbosity get_log_verbosity(char const* t){
+    return get_log_verbosity(std::string(t));
+}
+/**
  * the logger class
  */
 template <sc_core::sc_severity SEVERITY> struct ScLogger {
@@ -144,7 +165,7 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
      * @param t
      * @return
      */
-    inline ScLogger& type(const char* t) {
+    inline ScLogger& type(char const* t) {
         this->t = const_cast<char*>(t);
         return *this;
     }
@@ -154,7 +175,7 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
      * @param t
      * @return
      */
-    inline ScLogger& type(const std::string& t) {
+    inline ScLogger& type(std::string const& t) {
         this->t = const_cast<char*>(t.c_str());
         return *this;
     }
@@ -178,19 +199,19 @@ protected:
  */
 //! macro for debug trace level output
 #define SCCTRACEALL(...)                                                                                               \
-    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)                                       \
+    if(::scc::get_log_verbosity() >= sc_core::SC_DEBUG)                                       \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_DEBUG).type(__VA_ARGS__).get()
 //! macro for trace level output
 #define SCCTRACE(...)                                                                                                  \
-    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)                                        \
+    if(::scc::get_log_verbosity() >= sc_core::SC_FULL)                                        \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_FULL).type(__VA_ARGS__).get()
 //! macro for debug level output
 #define SCCDEBUG(...)                                                                                                  \
-    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_HIGH)                                        \
+    if(::scc::get_log_verbosity() >= sc_core::SC_HIGH)                                        \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_HIGH).type(__VA_ARGS__).get()
 //! macro for info level output
 #define SCCINFO(...)                                                                                                   \
-    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM)                                      \
+    if(::scc::get_log_verbosity() >= sc_core::SC_MEDIUM)                                      \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for warning level output
 #define SCCWARN(...)                                                                                                   \
@@ -215,25 +236,25 @@ protected:
 //! macro for debug trace level output
 #ifndef SCDBGTRC
 #define SCDBGTRC(...)                                                                                                  \
-    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_DEBUG)                                       \
+    if(::scc::get_log_verbosity() >= sc_core::SC_DEBUG)                                       \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_DEBUG).type(__VA_ARGS__).get()
 #endif
 //! macro for trace level output
 #ifndef SCTRACE
 #define SCTRACE(...)                                                                                                   \
-    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_FULL)                                        \
+    if(::scc::get_log_verbosity() >= sc_core::SC_FULL)                                        \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_FULL).type(__VA_ARGS__).get()
 //! macro for debug level output
 #endif
 #ifndef SCDEBUG
 #define SCDEBUG(...)                                                                                                   \
-    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_HIGH)                                        \
+    if(::scc::get_log_verbosity() >= sc_core::SC_HIGH)                                        \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_HIGH).type(__VA_ARGS__).get()
 #endif
 //! macro for info level output
 #ifndef SCINFO
 #define SCINFO(...)                                                                                                    \
-    if(::sc_core::sc_report_handler::get_verbosity_level() >= sc_core::SC_MEDIUM)                                      \
+    if(::scc::get_log_verbosity() >= sc_core::SC_MEDIUM)                                      \
     ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for warning level output
 #endif

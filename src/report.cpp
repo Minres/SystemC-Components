@@ -24,6 +24,10 @@
 #include <chrono>
 #include <fstream>
 #include <scc/report.h>
+#ifdef WITH_CCI
+#include <cci_configuration>
+#include <cci_utils/broker.h>
+#endif
 #include "spdlog/spdlog.h"
 #include "spdlog/async.h"
 #include "spdlog/sinks/basic_file_sink.h"
@@ -286,14 +290,14 @@ static const array<sc_severity, 8> severity = {SC_FATAL,   // Logging::NONE
                                                SC_INFO,    // logging::DEBUG
                                                SC_INFO,    // logging::TRACE
                                                SC_INFO};   // logging::DBGTRACE
-static const array<int, 8> verbosity = {SC_NONE,           // Logging::NONE
-                                        SC_LOW,            // Logging::FATAL
-                                        SC_LOW,            // Logging::ERROR
-                                        SC_LOW,            // Logging::WARNING
-                                        SC_MEDIUM,         // Logging::INFO
-                                        SC_HIGH,           // logging::DEBUG
-                                        SC_FULL,           // logging::TRACE
-                                        SC_DEBUG};         // logging::DBGTRACE
+static const array<sc_verbosity, 8> verbosity = {SC_NONE,           // Logging::NONE
+                                                 SC_LOW,            // Logging::FATAL
+                                                 SC_LOW,            // Logging::ERROR
+                                                 SC_LOW,            // Logging::WARNING
+                                                 SC_MEDIUM,         // Logging::INFO
+                                                 SC_HIGH,           // logging::DEBUG
+                                                 SC_FULL,           // logging::TRACE
+                                                 SC_DEBUG};         // logging::DBGTRACE
 
 int scc::stream_redirection::sync() {
     if(level <= log_cfg.level) {
@@ -431,4 +435,14 @@ scc::LogConfig& scc::LogConfig::logFilterRegex(const string& expr) {
 scc::LogConfig& scc::LogConfig::logAsync(bool v) {
     this->log_async = v;
     return *this;
+}
+
+sc_core::sc_verbosity scc::get_log_verbosity(std::string const& t){
+//#ifdef WITH_CCI
+//    static cci::cci_broker_handle cci_broker(cci::cci_get_global_broker(cci::cci_originator("SCC_LOGGING")));
+//    auto h = cci_broker.get_param_handle<unsigned>(t+".log_level");
+//    if(h.is_valid())
+//        return verbosity.at(std::min<unsigned>(h.get_value(), verbosity.size()-1));
+//#endif
+    return static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
 }
