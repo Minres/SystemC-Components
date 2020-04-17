@@ -403,7 +403,7 @@ private:
 
 template <typename TYPES>
 void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, sc_core::sc_time& delay) {
-    tlm_recording_payload* req;
+    tlm_recording_payload* req{nullptr};
     if(!isRecordingEnabled()) {
         fw_port->b_transport(trans, delay);
         return;
