@@ -110,8 +110,14 @@ template <typename TYPES = tlm::tlm_base_protocol_types>
 class tlm2_recorder : public virtual tlm::tlm_fw_transport_if<TYPES>,
                       public virtual tlm::tlm_bw_transport_if<TYPES>,
                       public sc_core::sc_object {
-    const std::regex regex_pat{"_rec$"};
-
+    std::string get_parent(char const* hier_name){
+        std::string ret(hier_name);
+        auto pos = ret.rfind('.');
+        if(pos==std::string::npos)
+            return ret;
+        else
+            return ret.substr(0, pos);
+    }
 public:
     SC_HAS_PROCESS(tlm2_recorder<TYPES>); // NOLINT
 
@@ -171,8 +177,7 @@ public:
     , dmi_streamHandle(NULL)
     , dmi_trGetHandle(NULL)
     , dmi_trInvalidateHandle(NULL)
-    //    , fixed_basename(std::regex_replace(std::string(sc_core::sc_object::name()), regex_pat, std::string(""))) {
-    , fixed_basename(sc_core::sc_object::name()) {
+    , fixed_basename(get_parent(sc_core::sc_object::name())) {
         this->add_attribute(enableTracing);
         this->add_attribute(enableTimed);
     }
@@ -593,13 +598,15 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
         /*************************************************************************
          * do the timed notification if req. finished here
          *************************************************************************/
-        tlm_recording_payload* req = mm->allocate();
-        req->acquire();
-        (*req) = trans;
-        req->parent = h;
-        nb_timed_peq.notify(*req, (status == tlm::TLM_COMPLETED && phase == tlm::BEGIN_REQ) ? tlm::END_RESP : phase,
-                            delay);
-    } else if(status == tlm::TLM_UPDATED) {
+        if(enableTimed.value){
+            tlm_recording_payload* req = mm->allocate();
+            req->acquire();
+            (*req) = trans;
+            req->parent = h;
+            nb_timed_peq.notify(*req, (status == tlm::TLM_COMPLETED && phase == tlm::BEGIN_REQ) ? tlm::END_RESP : phase,
+                    delay);
+        }
+    } else if(enableTimed.value && status == tlm::TLM_UPDATED) {
         tlm_recording_payload* req = mm->allocate();
         req->acquire();
         (*req) = trans;
@@ -692,11 +699,13 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
         /*************************************************************************
          * do the timed notification if req. finished here
          *************************************************************************/
-        tlm_recording_payload* req = mm->allocate();
-        req->acquire();
-        (*req) = trans;
-        req->parent = h;
-        nb_timed_peq.notify(*req, phase, delay);
+        if(enableTimed.value) {
+            tlm_recording_payload* req = mm->allocate();
+            req->acquire();
+            (*req) = trans;
+            req->parent = h;
+            nb_timed_peq.notify(*req, phase, delay);
+        }
     }
     return status;
 }
