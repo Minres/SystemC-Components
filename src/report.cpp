@@ -34,6 +34,7 @@
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include <thread>
 #include <tuple>
+#include <unordered_map>
 #ifdef __GNUC__
 #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 #if GCC_VERSION < 40900
@@ -164,12 +165,9 @@ const string compose_message(const sc_report& rep, const scc::LogConfig& cfg) {
         return "";
 }
 
-inline log_level verbosity2log(int verb) {
-    if(verb >= SC_FULL)
-        return TRACE;
-    if(verb >= SC_HIGH)
-        return DEBUG;
-    return INFO;
+inline int get_verbosity(const sc_report& rep){
+    return rep.get_verbosity()>sc_core::SC_NONE && rep.get_verbosity()<sc_core::SC_LOW?
+            rep.get_verbosity()*10:rep.get_verbosity();
 }
 
 inline void log2logger(spdlog::logger& logger, const sc_report& rep, const scc::LogConfig& cfg) {
@@ -178,7 +176,7 @@ inline void log2logger(spdlog::logger& logger, const sc_report& rep, const scc::
         return;
     switch(rep.get_severity()) {
     case SC_INFO:
-        switch(rep.get_verbosity()) {
+        switch(get_verbosity(rep)) {
         case SC_DEBUG:
         case SC_FULL:
             logger.trace(msg);
@@ -228,7 +226,7 @@ inline void log2logger(spdlog::logger& logger, logging::log_level lvl, const str
 }
 
 void report_handler(const sc_report& rep, const sc_actions& actions) {
-    if((actions & SC_DISPLAY) && (!log_cfg.file_logger || rep.get_verbosity() < SC_HIGH))
+    if((actions & SC_DISPLAY) && (!log_cfg.file_logger || get_verbosity(rep) < SC_HIGH))
         log2logger(*log_cfg.console_logger, rep, log_cfg);
     if((actions & SC_LOG) && log_cfg.file_logger) {
         scc::LogConfig lcfg(log_cfg);
@@ -329,8 +327,7 @@ static void configure_logging() {
     } else
         log_cfg.console_logger->set_pattern("[%L] %v");
     log_cfg.console_logger->flush_on(spdlog::level::warn);
-    log_cfg.console_logger->set_level(
-        static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
+    log_cfg.console_logger->set_level(spdlog::level::level_enum::trace);
     if(log_cfg.log_file_name.size()) {
         {
             ofstream ofs;
@@ -344,8 +341,7 @@ static void configure_logging() {
         else
             log_cfg.file_logger->set_pattern("%v");
         log_cfg.file_logger->flush_on(spdlog::level::warn);
-        log_cfg.file_logger->set_level(
-            static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
+        log_cfg.file_logger->set_level(spdlog::level::level_enum::trace);
     }
     if(log_cfg.log_filter_regex.size()) {
 #ifdef USE_C_REGEX
@@ -438,11 +434,25 @@ scc::LogConfig& scc::LogConfig::logAsync(bool v) {
 }
 
 sc_core::sc_verbosity scc::get_log_verbosity(std::string const& t){
-//#ifdef WITH_CCI
-//    static cci::cci_broker_handle cci_broker(cci::cci_get_global_broker(cci::cci_originator("SCC_LOGGING")));
-//    auto h = cci_broker.get_param_handle<unsigned>(t+".log_level");
-//    if(h.is_valid())
-//        return verbosity.at(std::min<unsigned>(h.get_value(), verbosity.size()-1));
-//#endif
-    return static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
+#ifdef WITH_CCI
+    static std::unordered_map<std::string,sc_core::sc_verbosity> lut;
+    auto b = (t=="caiu0");
+    auto it = lut.find(t);
+    if(it!=lut.end()) return it->second;
+    auto h = cci::cci_get_broker().get_param_handle<unsigned>(t+".log_level");
+    if(h.is_valid()){
+        sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_value(), verbosity.size()-1));
+        lut[t]=ret;
+        return ret;
+    } else {
+        auto val = cci::cci_get_broker().get_preset_cci_value(t+".log_level");
+        sc_core::sc_verbosity ret =  val.is_int()?
+                verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size()-1)):
+                static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
+        lut[t]=ret;
+        return ret;
+    }
+#else
+        return static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
+#endif
 }
