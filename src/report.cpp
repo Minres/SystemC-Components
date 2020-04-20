@@ -438,21 +438,23 @@ sc_core::sc_verbosity scc::get_log_verbosity(std::string const& t){
     static std::unordered_map<std::string,sc_core::sc_verbosity> lut;
     auto b = (t=="caiu0");
     auto it = lut.find(t);
-    if(it!=lut.end()) return it->second;
-    auto h = cci::cci_get_broker().get_param_handle<unsigned>(t+".log_level");
-    if(h.is_valid()){
-        sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_value(), verbosity.size()-1));
-        lut[t]=ret;
-        return ret;
-    } else {
-        auto val = cci::cci_get_broker().get_preset_cci_value(t+".log_level");
-        sc_core::sc_verbosity ret =  val.is_int()?
-                verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size()-1)):
-                static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
-        lut[t]=ret;
-        return ret;
+    if(it!=lut.end())
+        return it->second;
+    if(sc_core::sc_get_current_object()){
+        auto h = cci::cci_get_broker().get_param_handle<unsigned>(t+".log_level");
+        if(h.is_valid()){
+            sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_value(), verbosity.size()-1));
+            lut[t]=ret;
+            return ret;
+        } else {
+            auto val = cci::cci_get_broker().get_preset_cci_value(t+".log_level");
+            sc_core::sc_verbosity ret =  val.is_int()?
+                    verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size()-1)):
+                    static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
+            lut[t]=ret;
+            return ret;
+        }
     }
-#else
-        return static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
 #endif
+    return static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
 }
