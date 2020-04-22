@@ -19,6 +19,7 @@
 
 #include "tlm_gp_data_ext.h"
 #include "tlm_recording_extension.h"
+#include <tlm/tlm_mm.h>
 #include <array>
 #include <map>
 #include <regex>
@@ -51,6 +52,7 @@ public:
 
     virtual ~tlm2_extensions_recording_if() = default;
 };
+
 /*! \brief The TLM2 transaction extensions recorder registry
  *
  * This registry is used by the TLM2 transaction recorder. It can be used to
@@ -98,6 +100,39 @@ private:
     }
     std::vector<tlm2_extensions_recording_if<TYPES>*> ext_rec;
 };
+//! implementation detail
+namespace impl {
+//! \brief the class to hold the information to be recorded on the timed
+//! streams
+template <typename TYPES = tlm::tlm_base_protocol_types>
+class tlm_recording_payload : public TYPES::tlm_payload_type {
+public:
+    scv_tr_handle parent;
+    uint64 id;
+    tlm_recording_payload& operator=(const typename TYPES::tlm_payload_type& x) {
+        id = reinterpret_cast<uintptr_t>(&x);
+        this->set_command(x.get_command());
+        this->set_address(x.get_address());
+        this->set_data_ptr(x.get_data_ptr());
+        this->set_data_length(x.get_data_length());
+        this->set_response_status(x.get_response_status());
+        this->set_byte_enable_ptr(x.get_byte_enable_ptr());
+        this->set_byte_enable_length(x.get_byte_enable_length());
+        this->set_streaming_width(x.get_streaming_width());
+        return (*this);
+    }
+    explicit tlm_recording_payload(tlm::tlm_mm_interface* mm)
+    : TYPES::tlm_payload_type(mm)
+    , parent()
+    , id(0) {}
+};
+template <typename TYPES = tlm::tlm_base_protocol_types>
+struct tlm_recording_types {
+    using tlm_payload_type = tlm_recording_payload<TYPES>;
+    using tlm_phase_type = typename TYPES::tlm_phase_type;
+};
+
+}
 /*! \brief The TLM2 transaction recorder
  *
  * This module records all TLM transaction to a SCV transaction stream for
@@ -119,6 +154,10 @@ class tlm2_recorder : public virtual tlm::tlm_fw_transport_if<TYPES>,
             return ret.substr(0, pos);
     }
 public:
+    using recording_types = impl::tlm_recording_types<TYPES>;
+    using mm = tlm::tlm_mm<recording_types>;
+    using tlm_recording_payload = impl::tlm_recording_payload<TYPES>;
+
     SC_HAS_PROCESS(tlm2_recorder<TYPES>); // NOLINT
 
     //! \brief the attribute to selectively enable/disable recording
@@ -161,7 +200,6 @@ public:
     , enableTimed("enableTimed", recording_enabled)
     , fw_port(fw_port)
     , bw_port(bw_port)
-    , mm(new RecodingMemoryManager())
     , b_timed_peq(this, &tlm2_recorder::btx_cb)
     , nb_timed_peq(this, &tlm2_recorder::nbtx_cb)
     , m_db(tr_db)
@@ -270,74 +308,6 @@ public:
     const bool isRecordingEnabled() const { return m_db != NULL && enableTracing.value; }
 
 private:
-    //! \brief the class to hold the information to be recorded on the timed
-    //! streams
-    class tlm_recording_payload : public TYPES::tlm_payload_type {
-    public:
-        scv_tr_handle parent;
-        uint64 id;
-        tlm_recording_payload& operator=(const typename TYPES::tlm_payload_type& x) {
-            id = reinterpret_cast<uintptr_t>(&x);
-            this->set_command(x.get_command());
-            this->set_address(x.get_address());
-            this->set_data_ptr(x.get_data_ptr());
-            this->set_data_length(x.get_data_length());
-            this->set_response_status(x.get_response_status());
-            this->set_byte_enable_ptr(x.get_byte_enable_ptr());
-            this->set_byte_enable_length(x.get_byte_enable_length());
-            this->set_streaming_width(x.get_streaming_width());
-            return (*this);
-        }
-        explicit tlm_recording_payload(tlm::tlm_mm_interface* mm)
-        : TYPES::tlm_payload_type(mm)
-        , parent()
-        , id(0) {}
-    };
-    //! \brief Memory manager for the tlm_recording_payload
-    class RecodingMemoryManager : public tlm::tlm_mm_interface {
-    public:
-        RecodingMemoryManager()
-        : free_list(0)
-        , empties(0) {}
-        tlm_recording_payload* allocate() {
-            typename TYPES::tlm_payload_type* ptr;
-            if(free_list) {
-                ptr = free_list->trans;
-                empties = free_list;
-                free_list = free_list->next;
-            } else {
-                ptr = new tlm_recording_payload(this);
-            }
-            return static_cast<tlm_recording_payload*>(ptr);
-        }
-        void free(tlm::tlm_generic_payload* trans) override {
-            trans->reset();
-            if(!empties) {
-                empties = new access;
-                empties->next = free_list;
-                empties->prev = 0;
-                if(free_list)
-                    free_list->prev = empties;
-            }
-            free_list = empties;
-            free_list->trans = trans;
-            empties = free_list->prev;
-        }
-
-    private:
-        struct access {
-            typename TYPES::tlm_payload_type* trans;
-            access* next;
-            access* prev;
-        };
-        access *free_list, *empties;
-    };
-    RecodingMemoryManager* mm;
-    //! peq type definition
-    struct recording_types {
-        using tlm_payload_type = tlm_recording_payload;
-        using tlm_phase_type = typename TYPES::tlm_phase_type;
-    };
     //! event queue to hold time points of blocking transactions
     tlm_utils::peq_with_cb_and_phase<tlm2_recorder, recording_types> b_timed_peq;
     //! event queue to hold time points of non-blocking transactions
@@ -425,7 +395,7 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, 
      * do the timed notification
      *************************************************************************/
     if(enableTimed.value) {
-        req = mm->allocate();
+        req = mm::get().allocate();
         req->acquire();
         (*req) = trans;
         req->parent = h;
@@ -558,7 +528,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
      * do the timed notification
      *************************************************************************/
     if(enableTimed.value) {
-        tlm_recording_payload* req = mm->allocate();
+        auto* req = mm::get().allocate();
         req->acquire();
         (*req) = trans;
         req->parent = h;
@@ -599,7 +569,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
          * do the timed notification if req. finished here
          *************************************************************************/
         if(enableTimed.value){
-            tlm_recording_payload* req = mm->allocate();
+            tlm_recording_payload* req = mm::get().allocate();
             req->acquire();
             (*req) = trans;
             req->parent = h;
@@ -607,7 +577,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
                     delay);
         }
     } else if(enableTimed.value && status == tlm::TLM_UPDATED) {
-        tlm_recording_payload* req = mm->allocate();
+        tlm_recording_payload* req = mm::get().allocate();
         req->acquire();
         (*req) = trans;
         req->parent = h;
@@ -656,7 +626,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
      * do the timed notification
      *************************************************************************/
     if(enableTimed.value) {
-        tlm_recording_payload* req = mm->allocate();
+        tlm_recording_payload* req = mm::get().allocate();
         req->acquire();
         (*req) = trans;
         req->parent = h;
@@ -700,7 +670,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
          * do the timed notification if req. finished here
          *************************************************************************/
         if(enableTimed.value) {
-            tlm_recording_payload* req = mm->allocate();
+            tlm_recording_payload* req = mm::get().allocate();
             req->acquire();
             (*req) = trans;
             req->parent = h;

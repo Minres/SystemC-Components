@@ -83,7 +83,7 @@ public:
      * @brief return the extension into the memory pool (removing the extensions)
      * @param trans the returning transaction
      */
-    void free(payload_type* trans) override;
+    void free(tlm::tlm_generic_payload* trans) override;
 
 private:
     util::pool_allocator<payload_type>& allocator;
@@ -99,9 +99,9 @@ template <typename TYPES> typename tlm_mm<TYPES>::payload_type* tlm_mm<TYPES>::a
     return new(ptr) payload_type(this);
 }
 
-template <typename TYPES> void tlm_mm<TYPES>::free(payload_type* trans) {
+template <typename TYPES> void tlm_mm<TYPES>::free(tlm::tlm_generic_payload* trans) {
     trans->reset();
-    trans->~payload_type();
+    trans->~tlm_generic_payload();
     allocator.free(trans);
 }
 

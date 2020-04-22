@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016, 2017 MINRES Technologies GmbH
+ * Copyright 2016, 2017, 2020 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,43 +28,37 @@ public:
     // Constructors
     //---------------
 
-    // Default constructor
+    explicit tlm_gp_data(tlm::tlm_generic_payload const& o)
+    : address(o.get_address())
+    , command(o.get_command())
+    , data(o.get_data_ptr())
+    , data_length(o.get_data_length())
+    , response_status(o.get_response_status())
+    , dmi_allowed(o.is_dmi_allowed())
+    , byte_enable(o.get_byte_enable_ptr())
+    , byte_enable_length(o.get_byte_enable_length())
+    , streaming_width(o.get_streaming_width())
+    , gp_option(o.get_gp_option()) {}
+
     tlm_gp_data() = default;
+
+    tlm_gp_data(tlm_gp_data const& x) = default;
+
+    tlm_gp_data(tlm_gp_data && x) = default;
+
+    tlm_gp_data& operator=(tlm_gp_data const& x) = default;
+
+    tlm_gp_data& operator=(tlm_gp_data && x) = default;
+
+    //--------------
+    // Destructor
+    //--------------
+    virtual ~tlm_gp_data() {}
 
     void reset() {
         // should the other members be reset too?
         gp_option = tlm::TLM_MIN_PAYLOAD;
     };
-
-    // disabled copy ctor
-    tlm_gp_data(const tlm_gp_data& x) = default;
-
-    tlm_gp_data(const tlm::tlm_generic_payload& x)
-    : address(x.get_address())
-    , command(x.get_command())
-    , data(x.get_data_ptr())
-    , data_length(x.get_data_length())
-    , response_status(x.get_response_status())
-    , dmi_allowed(x.is_dmi_allowed())
-    , byte_enable(x.get_byte_enable_ptr())
-    , byte_enable_length(x.get_byte_enable_length())
-    , streaming_width(x.get_streaming_width())
-    , gp_option(x.get_gp_option()) {}
-
-    // Assignment operator needed for SCV introspection
-    tlm_gp_data& operator=(const tlm_gp_data& x) {
-        command = x.command;
-        address = x.address;
-        data = x.data;
-        data_length = x.data_length;
-        response_status = x.response_status;
-        byte_enable = x.byte_enable;
-        byte_enable_length = x.byte_enable_length;
-        streaming_width = x.streaming_width;
-        gp_option = x.gp_option;
-        dmi_allowed = x.dmi_allowed;
-        return (*this);
-    }
 
     /**
      * update the payload from the tlm_gp_data. Esp. usefull when used in randomization.
@@ -87,11 +81,6 @@ public:
             data = nullptr;
         }
     }
-
-    //--------------
-    // Destructor
-    //--------------
-    virtual ~tlm_gp_data() {}
 
     std::string get_response_string() const {
         switch(response_status) {

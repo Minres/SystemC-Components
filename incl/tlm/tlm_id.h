@@ -19,12 +19,15 @@
 #include <cstdint>
 #include <tlm>
 
-struct tlm_id_extension : public tlm::tlm_extension<tlm_id_extension> {
+namespace tlm {
+
+struct tlm_id_extension : public tlm_extension<tlm_id_extension> {
     virtual tlm_extension_base* clone() const {
         tlm_id_extension* t = new tlm_id_extension(this->id);
         return t;
     }
     virtual void copy_from(tlm_extension_base const& from) { id = static_cast<tlm_id_extension const&>(from).id; }
+    tlm_id_extension(void* i):tlm_id_extension(reinterpret_cast<uintptr_t>(i)){}
     tlm_id_extension(uintptr_t i)
     : id(i) {}
     uintptr_t id;
@@ -53,4 +56,6 @@ inline void setId(tlm::tlm_generic_payload& gp, uintptr_t id) {
         gp.set_auto_extension(new tlm_id_extension(id));
     else
         gp.set_extension(new tlm_id_extension(id));
+}
+
 }
