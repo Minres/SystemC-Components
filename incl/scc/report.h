@@ -49,6 +49,7 @@ struct LogConfig {
     std::string log_file_name{""};
     std::string log_filter_regex{""};
     bool log_async{true};
+    bool dont_create_broker{false};
 
     LogConfig& logLevel(logging::log_level);
     LogConfig& msgTypeFieldWidth(unsigned);
@@ -62,6 +63,7 @@ struct LogConfig {
     LogConfig& logFilterRegex(std::string&&);
     LogConfig& logFilterRegex(const std::string&);
     LogConfig& logAsync(bool);
+    LogConfig& dontCreateBroker(bool);
 };
 /**
  * initializes the SystemC logging system with a particular configuration

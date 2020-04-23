@@ -311,6 +311,11 @@ int scc::stream_redirection::sync() {
 }
 
 static void configure_logging() {
+#ifdef WITH_CCI
+    if(!log_cfg.dont_create_broker)
+        cci::cci_register_broker(new cci_utils::broker("SCCBroker"));
+#endif
+
     sc_report_handler::set_actions(SC_ERROR, SC_DEFAULT_ERROR_ACTIONS | SC_DISPLAY);
     sc_report_handler::set_actions(SC_FATAL, SC_DEFAULT_FATAL_ACTIONS);
     sc_report_handler::set_verbosity_level(verbosity[log_cfg.level]);
@@ -430,6 +435,11 @@ scc::LogConfig& scc::LogConfig::logFilterRegex(const string& expr) {
 
 scc::LogConfig& scc::LogConfig::logAsync(bool v) {
     this->log_async = v;
+    return *this;
+}
+
+scc::LogConfig& scc::LogConfig::dontCreateBroker(bool v) {
+    this->dont_create_broker = v;
     return *this;
 }
 
