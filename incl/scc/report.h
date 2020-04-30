@@ -232,47 +232,6 @@ protected:
 
 #define SCMOD this->name()
 
-/**
- * deprecated logging macros, may cause macro name clashes
- */
-//! macro for debug trace level output
-#ifndef SCDBGTRC
-#define SCDBGTRC(...)                                                                                                  \
-    if(::scc::get_log_verbosity() >= sc_core::SC_DEBUG)                                       \
-    ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_DEBUG).type(__VA_ARGS__).get()
-#endif
-//! macro for trace level output
-#ifndef SCTRACE
-#define SCTRACE(...)                                                                                                   \
-    if(::scc::get_log_verbosity() >= sc_core::SC_FULL)                                        \
-    ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_FULL).type(__VA_ARGS__).get()
-//! macro for debug level output
-#endif
-#ifndef SCDEBUG
-#define SCDEBUG(...)                                                                                                   \
-    if(::scc::get_log_verbosity() >= sc_core::SC_HIGH)                                        \
-    ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_HIGH).type(__VA_ARGS__).get()
-#endif
-//! macro for info level output
-#ifndef SCINFO
-#define SCINFO(...)                                                                                                    \
-    if(::scc::get_log_verbosity() >= sc_core::SC_MEDIUM)                                      \
-    ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
-//! macro for warning level output
-#endif
-#ifndef SCWARN
-#define SCWARN(...)                                                                                                    \
-    ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
-#endif
-//! macro for error level output
-#ifndef SCERR
-#define SCERR(...) ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
-#endif
-//! macro for fatal message output
-#ifndef SCFATAL
-#define SCFATAL(...)                                                                                                   \
-    ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
-#endif
 class stream_redirection : public std::stringbuf {
 public:
     stream_redirection(std::ostream& os, logging::log_level level);
