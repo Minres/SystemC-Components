@@ -18,21 +18,24 @@
 #define _SCC_TRACER_BASE_H_
 
 #include "utilities.h"
+#include <sysc/tracing/sc_trace.h>
 
 namespace scc {
 
 class tracer_base : public sc_core::sc_module {
 public:
     tracer_base(const sc_core::sc_module_name& nm)
-    : sc_core::sc_module(nm)
-    , trf(nullptr) {}
+    : sc_core::sc_module(nm) {}
+
+    tracer_base(const sc_core::sc_module_name& nm, sc_core::sc_trace_file* tf)
+    : sc_core::sc_module(nm), trf(tf) {}
 
 protected:
     virtual void descend(const sc_core::sc_object*, bool trace_all = false);
 
     static void try_trace(sc_core::sc_trace_file* trace_file, const sc_object* object);
 
-    sc_core::sc_trace_file* trf;
+    sc_core::sc_trace_file* trf{nullptr};
 };
 
 } // namespace scc

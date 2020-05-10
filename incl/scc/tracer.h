@@ -61,9 +61,18 @@ public:
      */
     virtual ~tracer() override;
 
+    const sc_core::sc_trace_file* get_trace_file() const {
+        return trf;
+    }
+
+    void set_trace_file(sc_core::sc_trace_file* trf) {
+        if(this->trf && owned) sc_core::sc_close_vcd_trace_file(this->trf);
+        this->trf = trf;
+        owned=false;
+    }
+
 protected:
     void end_of_elaboration() override;
-    bool enabled{false};
     bool owned{false};
 #ifdef WITH_SCV
     scv_tr_db* txdb;

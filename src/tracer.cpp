@@ -34,13 +34,12 @@ using namespace scc;
 
 tracer::tracer(const std::string&& name, file_type type, bool enable)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
-, enabled(enable)
 , owned(true)
 #ifdef WITH_SCV
 , txdb(nullptr)
 #endif
 {
-    if(enabled) {
+    if(enable) {
         trf = sc_create_vcd_trace_file(name.c_str());
         trf->set_time_unit(1, SC_PS);
     }
@@ -71,15 +70,12 @@ tracer::tracer(const std::string&& name, file_type type, bool enable)
 }
 
 tracer::tracer(const std::string&& name, file_type type, sc_core::sc_trace_file* tf)
-: tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
-, enabled(tf != nullptr)
+: tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")), tf)
 , owned(false)
 #ifdef WITH_SCV
 , txdb(nullptr)
 #endif
 {
-    if(tf)
-        trf = tf;
 #ifdef WITH_SCV
     if(type != NONE) {
         std::stringstream ss;
@@ -105,7 +101,7 @@ tracer::tracer(const std::string&& name, file_type type, sc_core::sc_trace_file*
 }
 
 void tracer::end_of_elaboration() {
-    if(enabled)
+    if(trf)
         for(auto o : sc_get_top_level_objects(sc_curr_simcontext))
             descend(o, true);
 }
