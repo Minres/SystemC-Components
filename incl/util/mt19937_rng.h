@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <random>
+#include <assert.h>
 
 namespace util {
 class MT19937 {
