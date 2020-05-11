@@ -138,10 +138,11 @@ const string compose_message(const sc_report& rep, const scc::LogConfig& cfg) {
         		else
         			os << fmt::format("[{:>7}] ", sc_time_stamp().value() / log_cfg.cycle_base.value());
         	} else {
+        		auto str = time2string(sc_time_stamp());
         		if(unlikely(cfg.print_delta))
-        			os << fmt::format("[{:>20}({:5})] ", time2string(sc_time_stamp()), sc_delta_count());
+        			os << "[" << std::setw(20) << str << "(" << std::setw(5) << sc_delta_count() << ")]";
         		else
-        			os << fmt::format("[{:>20}] ", time2string(sc_time_stamp()));
+        			os << "[" << std::setw(20) << str << "]";
         	}
         }
         if(unlikely(rep.get_id() >= 0))
