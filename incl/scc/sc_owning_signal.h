@@ -33,10 +33,10 @@ public: // constructors and destructor:
     : sc_core::sc_signal<T*, POL>(sc_core::sc_gen_unique_name("signal")) {}
 
     explicit sc_owning_signal(const char* name_)
-    : sc_core::sc_signal<T*, POL>(name_) {}
+    : sc_core::sc_signal<T*, POL>(name_, nullptr) {}
 
     sc_owning_signal(const char* name_, T* initial_value_)
-    : sc_core::sc_signal<T*, POL>(name_) {}
+    : sc_core::sc_signal<T*, POL>(name_, initial_value_) {}
 
     virtual ~sc_owning_signal() {}
 
