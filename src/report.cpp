@@ -140,9 +140,9 @@ const string compose_message(const sc_report& rep, const scc::LogConfig& cfg) {
         	} else {
         		auto str = time2string(sc_time_stamp());
         		if(unlikely(cfg.print_delta))
-        			os << "[" << std::setw(20) << str << "(" << std::setw(5) << sc_delta_count() << ")]";
+        			os << "[" << std::setw(20) << str << "(" << std::setw(5) << sc_delta_count() << ")] ";
         		else
-        			os << "[" << std::setw(20) << str << "]";
+        			os << "[" << std::setw(20) << str << "] ";
         	}
         }
         if(unlikely(rep.get_id() >= 0))
@@ -249,7 +249,7 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
         this_thread::sleep_for(chrono::milliseconds(log_cfg.level * 20));
         throw rep;
     }
-    if(!sc_is_running()) {
+    if(sc_time_stamp().value() && !sc_is_running()) {
         log_cfg.console_logger->flush();
         if(log_cfg.file_logger)
             log_cfg.file_logger->flush();
@@ -446,22 +446,23 @@ scc::LogConfig& scc::LogConfig::dontCreateBroker(bool v) {
 
 sc_core::sc_verbosity scc::get_log_verbosity(std::string const& t){
 #ifdef WITH_CCI
-    static std::unordered_map<std::string,sc_core::sc_verbosity> lut;
-    auto b = (t=="caiu0");
+    static std::unordered_map<std::string, sc_core::sc_verbosity> lut;
     auto it = lut.find(t);
     if(it!=lut.end())
         return it->second;
     if(sc_core::sc_get_current_object()){
-        auto h = cci::cci_get_broker().get_param_handle<unsigned>(t+".log_level");
+    	auto param_name = std::string(t)+".log_level";
+        auto h = cci::cci_get_broker().get_param_handle<unsigned>(param_name);
         if(h.is_valid()){
             sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_value(), verbosity.size()-1));
             lut[t]=ret;
             return ret;
         } else {
-            auto val = cci::cci_get_broker().get_preset_cci_value(t+".log_level");
+            auto val = cci::cci_get_broker().get_preset_cci_value(param_name);
+            auto global_verb = static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
             sc_core::sc_verbosity ret =  val.is_int()?
                     verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size()-1)):
-                    static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
+					global_verb;
             lut[t]=ret;
             return ret;
         }
