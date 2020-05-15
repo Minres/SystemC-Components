@@ -13,8 +13,8 @@ using namespace std::chrono;
 watchdog::watchdog(system_clock::duration timeout, std::function<void(void)> alarm_cb,
                    system_clock::duration sleep_duration)
 : timeout(timeout)
-, alarm_cb(alarm_cb)
-, sleep_duration(sleep_duration) {
+, sleep_duration(sleep_duration)
+, alarm_cb(alarm_cb) {
     idle.store(true);
     live.store(true);
     guard_thread = std::thread(std::bind(&watchdog::guard, this));

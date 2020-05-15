@@ -276,6 +276,10 @@ protected:
 class stream_redirection : public std::stringbuf {
 public:
     stream_redirection(std::ostream& os, logging::log_level level);
+    stream_redirection(scc::stream_redirection const&) = delete;
+    stream_redirection& operator=(scc::stream_redirection const&) = delete;
+    stream_redirection(scc::stream_redirection&&) = delete;
+    stream_redirection& operator=(scc::stream_redirection&&) = delete;
     ~stream_redirection();
     void reset();
 
@@ -284,7 +288,7 @@ protected:
     int sync() override;
     std::ostream& os;
     logging::log_level level;
-    std::streambuf* old_buf;
+    std::streambuf* old_buf{nullptr};
 };
 
 } // namespace scc

@@ -52,8 +52,8 @@ public:
     tlm2_recorder_module(sc_core::sc_module_name name, bool recording_enabled = true,
                          scv_tr_db* tr_db = scv_tr_db::get_default_db())
     : sc_module(name)
-    , is("is")
     , ts("ts")
+    , is("is")
     , tlm2_recorder<TYPES>(is.get_base_port(), ts.get_base_port(), recording_enabled, tr_db) {
         // bind the sockets to the module
         is.bind(*this);
