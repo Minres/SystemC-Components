@@ -203,23 +203,23 @@ inline void log2logger(spdlog::logger& logger, const sc_report& rep, const scc::
 
 inline void log2logger(spdlog::logger& logger, scc::log lvl, const string& msg) {
     switch(lvl) {
-    case log::DBGTRACE:
-    case log::TRACE:
+    case scc::log::DBGTRACE:
+    case scc::log::TRACE:
         logger.trace(msg);
         return;
-    case log::DEBUG:
+    case scc::log::DEBUG:
         logger.debug(msg);
         return;
-    case log::INFO:
+    case scc::log::INFO:
         logger.info(msg);
         return;
-    case log::WARNING:
+    case scc::log::WARNING:
         logger.warn(msg);
         return;
-    case log::ERROR:
+    case scc::log::ERROR:
         logger.error(msg);
         return;
-    case log::FATAL:
+    case scc::log::FATAL:
         logger.critical(msg);
         return;
     }
@@ -280,22 +280,22 @@ streamsize scc::stream_redirection::xsputn(const char_type* s, streamsize n) {
     return sz;
 }
 
-static const array<sc_severity, 8> severity = {SC_FATAL,   // log::NONE
-                                               SC_FATAL,   // log::FATAL
-                                               SC_ERROR,   // log::ERROR
-                                               SC_WARNING, // log::WARNING
-                                               SC_INFO,    // log::INFO
-                                               SC_INFO,    // log::DEBUG
-                                               SC_INFO,    // log::TRACE
-                                               SC_INFO};   // log::DBGTRACE
-static const array<sc_verbosity, 8> verbosity = {SC_NONE,           // log::NONE
-                                                 SC_LOW,            // log::FATAL
-                                                 SC_LOW,            // log::ERROR
-                                                 SC_LOW,            // log::WARNING
-                                                 SC_MEDIUM,         // log::INFO
-                                                 SC_HIGH,           // log::DEBUG
-                                                 SC_FULL,           // log::TRACE
-                                                 SC_DEBUG};         // log::DBGTRACE
+static const array<sc_severity, 8> severity = {SC_FATAL,   // scc::log::NONE
+                                               SC_FATAL,   // scc::log::FATAL
+                                               SC_ERROR,   // scc::log::ERROR
+                                               SC_WARNING, // scc::log::WARNING
+                                               SC_INFO,    // scc::log::INFO
+                                               SC_INFO,    // scc::log::DEBUG
+                                               SC_INFO,    // scc::log::TRACE
+                                               SC_INFO};   // scc::log::DBGTRACE
+static const array<sc_verbosity, 8> verbosity = {SC_NONE,           // scc::log::NONE
+                                                 SC_LOW,            // scc::log::FATAL
+                                                 SC_LOW,            // scc::log::ERROR
+                                                 SC_LOW,            // scc::log::WARNING
+                                                 SC_MEDIUM,         // scc::log::INFO
+                                                 SC_HIGH,           // scc::log::DEBUG
+                                                 SC_FULL,           // scc::log::TRACE
+                                                 SC_DEBUG};         // scc::log::DBGTRACE
 
 int scc::stream_redirection::sync() {
     if(level <= log_cfg.level) {
