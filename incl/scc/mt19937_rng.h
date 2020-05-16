@@ -5,8 +5,8 @@
  *      Author: eyck
  */
 
-#ifndef _UTIL_MT19937_RNG_H_
-#define _UTIL_MT19937_RNG_H_
+#ifndef _SCC_MT19937_RNG_H_
+#define _SCC_MT19937_RNG_H_
 
 #include <iostream>
 #include <random>
@@ -70,4 +70,4 @@ private:
 
 
 } // namespace scc
-#endif /* _UTIL_MT19937_RNG_H_ */
+#endif /* _SCC_MT19937_RNG_H_ */

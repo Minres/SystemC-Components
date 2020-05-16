@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <random>
+#include <cassert>
 
 namespace util {
 class MT19937 {

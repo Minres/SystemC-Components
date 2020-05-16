@@ -23,8 +23,8 @@
 #include "report.h"
 #include "target_mixin.h"
 #include "utilities.h"
+#include "mt19937_rng.h"
 #include <tlm.h>
-#include <scc/mt19937_rng.h>
 #include <util/sparse_array.h>
 
 namespace scc {

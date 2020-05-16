@@ -43,10 +43,10 @@ scc::configurer::configurer(const std::string& filename)
                 configure_cci_hierarchical(root, "");
                 config_valid = true;
             } catch(Json::RuntimeError& e) {
-                LOG(ERROR) << "Could not parse input file " << filename << ", reason: " << e.what();
+                SCCERR() << "Could not parse input file " << filename << ", reason: " << e.what();
             }
         } else {
-            LOG(ERROR) << "Could not open input file " << filename;
+            SCCERR() << "Could not open input file " << filename;
         }
     }
 }
