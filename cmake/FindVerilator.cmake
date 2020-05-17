@@ -28,7 +28,7 @@ if (VERILATOR_FOUND)
 endif()
 
 find_package(PackageHandleStandardArgs REQUIRED)
-find_package(SystemC)
+find_package(OSCISystemC)
 
 find_program(VERILATOR_EXECUTABLE verilator
     HINTS $ENV{VERILATOR_ROOT}
