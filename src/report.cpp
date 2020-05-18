@@ -129,7 +129,8 @@ string time2string(const sc_time& t) {
     return oss.str();
 }
 const string compose_message(const sc_report& rep, const scc::LogConfig& cfg) {
-    if(rep.get_severity() >= SC_INFO || cfg.log_filter_regex.length() == 0 || log_cfg.match(rep.get_msg_type())) {
+    if(rep.get_severity() > SC_INFO || cfg.log_filter_regex.length() == 0 ||
+            rep.get_verbosity() == sc_core::SC_MEDIUM || log_cfg.match(rep.get_msg_type())) {
         stringstream os;
         if(likely(cfg.print_sim_time)) {
         	if(unlikely(log_cfg.cycle_base.value())){
