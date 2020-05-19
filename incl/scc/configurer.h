@@ -108,7 +108,7 @@ public:
                 if(attr != nullptr)
                     attr->value = value;
                 else
-                    SCERR() << "Could not set attribute value " << hier_name;
+                    SCCERR() << "Could not set attribute value " << hier_name;
             }
 #ifdef WITH_CCI
         }
