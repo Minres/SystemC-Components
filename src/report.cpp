@@ -227,6 +227,7 @@ inline void log2logger(spdlog::logger& logger, scc::log lvl, const string& msg) 
 }
 
 void report_handler(const sc_report& rep, const sc_actions& actions) {
+    static bool sc_stop_called = false;
     if((actions & SC_DISPLAY) && (!log_cfg.file_logger || get_verbosity(rep) < SC_HIGH))
         log2logger(*log_cfg.console_logger, rep, log_cfg);
     if((actions & SC_LOG) && log_cfg.file_logger) {
@@ -238,8 +239,10 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
     }
     if(actions & SC_STOP) {
         this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 10));
-        if(sc_is_running())
+        if(sc_is_running() && !sc_stop_called){
             sc_stop();
+            sc_stop_called=true;
+        }
     }
     if(actions & SC_ABORT) {
         this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 20));
