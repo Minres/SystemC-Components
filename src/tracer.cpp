@@ -107,7 +107,7 @@ tracer::tracer(const std::string&& name, file_type type, sc_core::sc_trace_file*
 void tracer::end_of_elaboration() {
     if(enabled)
         for(auto o : sc_get_top_level_objects(sc_curr_simcontext))
-            descend(o, true);
+            descend(o, enabled);
 }
 
 tracer::~tracer() {

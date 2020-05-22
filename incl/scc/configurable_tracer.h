@@ -86,6 +86,8 @@ protected:
     bool get_trace_enabled(const sc_core::sc_object*, bool = false);
     //! add the 'enableTracing' attribute to sc_module
     void augment_object_hierarchical(const sc_core::sc_object*);
+
+    void end_of_elaboration() override;
     //! the originator of cci values
     cci::cci_originator cci_originator;
     //! the cci broker
