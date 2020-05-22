@@ -111,7 +111,7 @@ string time2string(const sc_time& t) {
                                         1000ULL * 1000 * 1000 * 1000 * 1000};
     ostringstream oss;
     if(!t.value()) {
-        oss << "0 s";
+        oss << "0 s ";
     } else {
         const auto tt = get_tuple(t);
         const auto val = get<0>(tt);
@@ -135,14 +135,15 @@ const string compose_message(const sc_report& rep, const scc::LogConfig& cfg) {
         if(likely(cfg.print_sim_time)) {
         	if(unlikely(log_cfg.cycle_base.value())){
         		if(unlikely(cfg.print_delta))
-        			os << fmt::format("[{:>7}({:5})] ", sc_time_stamp().value() / log_cfg.cycle_base.value(), sc_delta_count());
+        			os << "["<<std::setw(7)<<std::setfill(' ')<<sc_time_stamp().value() / log_cfg.cycle_base.value()<<"("<<setw(5)<<sc_delta_count()<<")]";
         		else
-        			os << fmt::format("[{:>7}] ", sc_time_stamp().value() / log_cfg.cycle_base.value());
-        	} else {
+        			os << "["<<std::setw(7)<<std::setfill(' ')<<sc_time_stamp().value() / log_cfg.cycle_base.value()<<"]";
+       	} else {
+        		auto t = time2string(sc_time_stamp());
         		if(unlikely(cfg.print_delta))
-        			os << fmt::format("[{:>20}({:5})] ", time2string(sc_time_stamp()), sc_delta_count());
+        			os << "["<<std::setw(20)<<std::setfill(' ')<<t<<"("<<setw(5)<<sc_delta_count()<<")]";
         		else
-        			os << fmt::format("[{:>20}] ", time2string(sc_time_stamp()));
+        			os << "["<<std::setw(20)<<std::setfill(' ')<<t<<"]";
         	}
         }
         if(unlikely(rep.get_id() >= 0))
