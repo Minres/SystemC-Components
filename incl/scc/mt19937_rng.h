@@ -5,21 +5,21 @@
  *      Author: eyck
  */
 
-#ifndef _UTIL_MT19937_RNG_H_
-#define _UTIL_MT19937_RNG_H_
+#ifndef _SCC_MT19937_RNG_H_
+#define _SCC_MT19937_RNG_H_
 
 #include <iostream>
 #include <random>
-#include <cassert>
+#include <assert.h>
 
-namespace util {
+namespace scc {
 class MT19937 {
 public:
     /**
      * Seeds the mersenne twister PRNG with the given value
      * @param new_seed
      */
-    static void seed(uint64_t new_seed = std::mt19937_64::default_seed) { inst().seed(new_seed); }
+    static void seed(uint64_t new_seed = std::mt19937_64::default_seed);
     /**
      * generates the next random integer number with uniform distribution (similar to rand() )
      * @return
@@ -65,10 +65,9 @@ public:
     }
 
 private:
-    static std::mt19937_64& inst() {
-        static std::mt19937_64 rng;
-        return rng;
-    }
+    static std::mt19937_64& inst() ;
 };
-} // namespace util
-#endif /* _UTIL_MT19937_RNG_H_ */
+
+
+} // namespace scc
+#endif /* _SCC_MT19937_RNG_H_ */

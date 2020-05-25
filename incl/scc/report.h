@@ -23,9 +23,48 @@
 #include <sysc/kernel/sc_time.h>
 #include <sysc/utils/sc_report.h>
 #include <util/ities.h>
-#include <util/logging.h>
+
+//! log level definitions
+#define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE) L(TRACEALL)
+#define DO_DESCRIPTION(e) #e,
+#define DO_ENUM(e) e,
 
 namespace scc {
+//! array holding string representations of log levels
+static std::array<const char* const, 8> buffer = {{LEVELS(DO_DESCRIPTION)}};
+//! enum defining the log levels
+enum class log { LEVELS(DO_ENUM) DBGTRACE = TRACEALL };
+/**
+ * safely convert an integer into a log level
+ * @param logLevel the integer
+ * @return the log level
+ */
+inline log as_log(int logLevel) {
+    assert(logLevel >= static_cast<int>(log::NONE) && logLevel <= static_cast<int>(log::TRACEALL));
+    std::array<const log, 8> m = {{log::NONE, log::FATAL, log::ERROR, log::WARNING, log::INFO, log::DEBUG, log::TRACE, log::TRACEALL}};
+    return m[logLevel];
+}
+/**
+ * read a log level from input stream e.g. used by boost::lexical_cast
+ * @param is input stream holding the string representation
+ * @param val the value holding the resulting value
+ * @return the input stream
+ */
+inline std::istream& operator>>(std::istream& is, log& val) {
+    std::string buf;
+    is >> buf;
+    for(auto i = 0U; i <= static_cast<unsigned>(log::TRACEALL); ++i) {
+        if(strcmp(buf.c_str(), buffer[i]) == 0) {
+            val = as_log(i);
+            return is;
+        }
+    }
+    return is;
+}
+inline std::ostream& operator<<(std::ostream& os, log const& val) {
+    os<<buffer[static_cast<unsigned>(val)];
+    return os;
+}
 
 /**
  * initializes the SystemC logging system with a particular logging level
@@ -34,12 +73,12 @@ namespace scc {
  * @param type_field_width width of the message type field in output, setting to zero suppresses the message type
  * @param print_time wheter to print the system time stamp
  */
-void init_logging(logging::log_level level = logging::WARNING, unsigned type_field_width = 24, bool print_time = false);
+void init_logging(log level = log::WARNING, unsigned type_field_width = 24, bool print_time = false);
 /**
  * the configuration class for the logging setup
  */
 struct LogConfig {
-    logging::log_level level{logging::WARNING};
+    log level{log::WARNING};
     unsigned msg_type_field_width{24};
     bool print_sys_time{false};
     bool print_sim_time{true};
@@ -51,7 +90,7 @@ struct LogConfig {
     bool log_async{true};
     bool dont_create_broker{false};
 
-    LogConfig& logLevel(logging::log_level);
+    LogConfig& logLevel(log);
     LogConfig& msgTypeFieldWidth(unsigned);
     LogConfig& printSysTime(bool);
     LogConfig& printSimTime(bool);
@@ -76,7 +115,7 @@ void init_logging(const LogConfig& log_config);
  *
  * @param level the logging level
  */
-void set_logging_level(logging::log_level level);
+void set_logging_level(log level);
 /**
  * sets the cycle base for logging. If this is set the logging prints cycles instead of times
  *
@@ -234,7 +273,11 @@ protected:
 
 class stream_redirection : public std::stringbuf {
 public:
-    stream_redirection(std::ostream& os, logging::log_level level);
+    stream_redirection(std::ostream& os, scc::log level);
+    stream_redirection(scc::stream_redirection const&) = delete;
+    stream_redirection& operator=(scc::stream_redirection const&) = delete;
+    stream_redirection(scc::stream_redirection&&) = delete;
+    stream_redirection& operator=(scc::stream_redirection&&) = delete;
     ~stream_redirection();
     void reset();
 
@@ -242,8 +285,8 @@ protected:
     std::streamsize xsputn(const char_type* s, std::streamsize n) override;
     int sync() override;
     std::ostream& os;
-    logging::log_level level;
-    std::streambuf* old_buf;
+    log level;
+    std::streambuf* old_buf{nullptr};
 };
 
 } // namespace scc

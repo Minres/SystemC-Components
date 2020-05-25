@@ -72,6 +72,7 @@ set(LIB_SOURCES
     src/tlm_ahb_bfm_target.cpp
     src/tracer_base.cpp
     src/tracer.cpp
+    src/mt19937_rng.cpp
 )
 
 if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)

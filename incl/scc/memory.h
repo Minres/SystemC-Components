@@ -23,8 +23,8 @@
 #include "report.h"
 #include "target_mixin.h"
 #include "utilities.h"
+#include "mt19937_rng.h"
 #include <tlm.h>
-#include <util/mt19937_rng.h>
 #include <util/sparse_array.h>
 
 namespace scc {
@@ -115,7 +115,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans) {
         } else {
             // no allocated page so return randomized data
             for(size_t i = 0; i < len; i++)
-                ptr[i] = util::MT19937::uniform() % 256;
+                ptr[i] = scc::MT19937::uniform() % 256;
         }
     } else if(cmd == tlm::TLM_WRITE_COMMAND) {
         auto& p = mem(adr / mem.page_size);

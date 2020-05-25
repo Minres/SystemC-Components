@@ -46,7 +46,7 @@ public:
 
     void pop_front() {
         out_queue.pop_front();
-        if(empty_cb)
+        if(empty_cb && !out_queue.size())
             empty_cb();
     }
 

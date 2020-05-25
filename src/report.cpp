@@ -55,7 +55,7 @@
 
 using namespace std;
 using namespace sc_core;
-using namespace logging;
+using namespace scc;
 
 namespace {
 struct ExtLogConfig : public scc::LogConfig {
@@ -111,7 +111,7 @@ string time2string(const sc_time& t) {
                                         1000ULL * 1000 * 1000 * 1000 * 1000};
     ostringstream oss;
     if(!t.value()) {
-        oss << "0 s";
+        oss << "0 s ";
     } else {
         const auto tt = get_tuple(t);
         const auto val = get<0>(tt);
@@ -129,20 +129,21 @@ string time2string(const sc_time& t) {
     return oss.str();
 }
 const string compose_message(const sc_report& rep, const scc::LogConfig& cfg) {
-    if(rep.get_severity() > SC_INFO || cfg.log_filter_regex.length() == 0 || log_cfg.match(rep.get_msg_type())) {
+    if(rep.get_severity() > SC_INFO || cfg.log_filter_regex.length() == 0 ||
+            rep.get_verbosity() == sc_core::SC_MEDIUM || log_cfg.match(rep.get_msg_type())) {
         stringstream os;
         if(likely(cfg.print_sim_time)) {
         	if(unlikely(log_cfg.cycle_base.value())){
         		if(unlikely(cfg.print_delta))
-        			os << fmt::format("[{:>7}({:5})] ", sc_time_stamp().value() / log_cfg.cycle_base.value(), sc_delta_count());
+        			os << "["<<std::setw(7)<<std::setfill(' ')<<sc_time_stamp().value() / log_cfg.cycle_base.value()<<"("<<setw(5)<<sc_delta_count()<<")]";
         		else
-        			os << fmt::format("[{:>7}] ", sc_time_stamp().value() / log_cfg.cycle_base.value());
-        	} else {
-        		auto str = time2string(sc_time_stamp());
+        			os << "["<<std::setw(7)<<std::setfill(' ')<<sc_time_stamp().value() / log_cfg.cycle_base.value()<<"]";
+       	} else {
+        		auto t = time2string(sc_time_stamp());
         		if(unlikely(cfg.print_delta))
-        			os << "[" << std::setw(20) << str << "(" << std::setw(5) << sc_delta_count() << ")] ";
+        			os << "["<<std::setw(20)<<std::setfill(' ')<<t<<"("<<setw(5)<<sc_delta_count()<<")]";
         		else
-        			os << "[" << std::setw(20) << str << "] ";
+        			os << "["<<std::setw(20)<<std::setfill(' ')<<t<<"]";
         	}
         }
         if(unlikely(rep.get_id() >= 0))
@@ -202,31 +203,32 @@ inline void log2logger(spdlog::logger& logger, const sc_report& rep, const scc::
     }
 }
 
-inline void log2logger(spdlog::logger& logger, logging::log_level lvl, const string& msg) {
+inline void log2logger(spdlog::logger& logger, scc::log lvl, const string& msg) {
     switch(lvl) {
-    case logging::DBGTRACE:
-    case logging::TRACE:
+    case scc::log::DBGTRACE:
+    case scc::log::TRACE:
         logger.trace(msg);
         return;
-    case logging::DEBUG:
+    case scc::log::DEBUG:
         logger.debug(msg);
         return;
-    case logging::INFO:
+    case scc::log::INFO:
         logger.info(msg);
         return;
-    case logging::WARNING:
+    case scc::log::WARNING:
         logger.warn(msg);
         return;
-    case logging::ERROR:
+    case scc::log::ERROR:
         logger.error(msg);
         return;
-    case logging::FATAL:
+    case scc::log::FATAL:
         logger.critical(msg);
         return;
     }
 }
 
 void report_handler(const sc_report& rep, const sc_actions& actions) {
+    static bool sc_stop_called = false;
     if((actions & SC_DISPLAY) && (!log_cfg.file_logger || get_verbosity(rep) < SC_HIGH))
         log2logger(*log_cfg.console_logger, rep, log_cfg);
     if((actions & SC_LOG) && log_cfg.file_logger) {
@@ -237,28 +239,30 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
         log2logger(*log_cfg.file_logger, rep, lcfg);
     }
     if(actions & SC_STOP) {
-        this_thread::sleep_for(chrono::milliseconds(log_cfg.level * 10));
-        if(sc_is_running())
+        this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 10));
+        if(sc_is_running() && !sc_stop_called){
             sc_stop();
+            sc_stop_called=true;
+        }
     }
     if(actions & SC_ABORT) {
-        this_thread::sleep_for(chrono::milliseconds(log_cfg.level * 20));
+        this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 20));
         abort();
     }
     if(actions & SC_THROW) {
-        this_thread::sleep_for(chrono::milliseconds(log_cfg.level * 20));
+        this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 20));
         throw rep;
     }
     if(sc_time_stamp().value() && !sc_is_running()) {
         log_cfg.console_logger->flush();
         if(log_cfg.file_logger)
             log_cfg.file_logger->flush();
-        this_thread::sleep_for(chrono::milliseconds(log_cfg.level * 10));
+        this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 10));
     }
 }
 } // namespace
 
-scc::stream_redirection::stream_redirection(ostream& os, logging::log_level level)
+scc::stream_redirection::stream_redirection(ostream& os, log level)
 : os(os)
 , level(level) {
     old_buf = os.rdbuf(this); // save and redirect
@@ -281,22 +285,22 @@ streamsize scc::stream_redirection::xsputn(const char_type* s, streamsize n) {
     return sz;
 }
 
-static const array<sc_severity, 8> severity = {SC_FATAL,   // Logging::NONE
-                                               SC_FATAL,   // Logging::FATAL
-                                               SC_ERROR,   // Logging::ERROR
-                                               SC_WARNING, // Logging::WARNING
-                                               SC_INFO,    // Logging::INFO
-                                               SC_INFO,    // logging::DEBUG
-                                               SC_INFO,    // logging::TRACE
-                                               SC_INFO};   // logging::DBGTRACE
-static const array<sc_verbosity, 8> verbosity = {SC_NONE,           // Logging::NONE
-                                                 SC_LOW,            // Logging::FATAL
-                                                 SC_LOW,            // Logging::ERROR
-                                                 SC_LOW,            // Logging::WARNING
-                                                 SC_MEDIUM,         // Logging::INFO
-                                                 SC_HIGH,           // logging::DEBUG
-                                                 SC_FULL,           // logging::TRACE
-                                                 SC_DEBUG};         // logging::DBGTRACE
+static const array<sc_severity, 8> severity = {SC_FATAL,   // scc::log::NONE
+                                               SC_FATAL,   // scc::log::FATAL
+                                               SC_ERROR,   // scc::log::ERROR
+                                               SC_WARNING, // scc::log::WARNING
+                                               SC_INFO,    // scc::log::INFO
+                                               SC_INFO,    // scc::log::DEBUG
+                                               SC_INFO,    // scc::log::TRACE
+                                               SC_INFO};   // scc::log::DBGTRACE
+static const array<sc_verbosity, 8> verbosity = {SC_NONE,           // scc::log::NONE
+                                                 SC_LOW,            // scc::log::FATAL
+                                                 SC_LOW,            // scc::log::ERROR
+                                                 SC_LOW,            // scc::log::WARNING
+                                                 SC_MEDIUM,         // scc::log::INFO
+                                                 SC_HIGH,           // scc::log::DEBUG
+                                                 SC_FULL,           // scc::log::TRACE
+                                                 SC_DEBUG};         // scc::log::DBGTRACE
 
 int scc::stream_redirection::sync() {
     if(level <= log_cfg.level) {
@@ -304,7 +308,7 @@ int scc::stream_redirection::sync() {
         istringstream buf(str());
         string line;
         while(getline(buf, line)) {
-            ::sc_report_handler::report(severity[level], "SystemC", line.c_str(), verbosity[level], "", 0);
+            ::sc_report_handler::report(severity[static_cast<unsigned>(level)], "SystemC", line.c_str(), verbosity[static_cast<unsigned>(level)], "", 0);
         }
         str(string(""));
     }
@@ -319,7 +323,7 @@ static void configure_logging() {
 
     sc_report_handler::set_actions(SC_ERROR, SC_DEFAULT_ERROR_ACTIONS | SC_DISPLAY);
     sc_report_handler::set_actions(SC_FATAL, SC_DEFAULT_FATAL_ACTIONS);
-    sc_report_handler::set_verbosity_level(verbosity[log_cfg.level]);
+    sc_report_handler::set_verbosity_level(verbosity[static_cast<unsigned>(log_cfg.level)]);
     sc_report_handler::set_handler(report_handler);
     spdlog::init_thread_pool(1024U,
                              log_cfg.log_file_name.size() ? 2U : 1U); // queue with 8k items and 1 backing thread.
@@ -358,7 +362,7 @@ static void configure_logging() {
     }
 }
 
-void scc::init_logging(logging::log_level level, unsigned type_field_width, bool print_time) {
+void scc::init_logging(scc::log level, unsigned type_field_width, bool print_time) {
     log_cfg.msg_type_field_width = type_field_width;
     log_cfg.print_sys_time = print_time;
     log_cfg.level = level;
@@ -370,17 +374,17 @@ void scc::init_logging(const scc::LogConfig& log_config) {
     configure_logging();
 }
 
-void scc::set_logging_level(logging::log_level level) {
+void scc::set_logging_level(scc::log level) {
     log_cfg.level = level;
-    sc_report_handler::set_verbosity_level(verbosity[log_cfg.level]);
+    sc_report_handler::set_verbosity_level(verbosity[static_cast<unsigned>(level)]);
     log_cfg.console_logger->set_level(
-        static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, log_cfg.level)));
+        static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, static_cast<int>(log_cfg.level))));
 }
 
 void scc::set_cycle_base(sc_time period) { log_cfg.cycle_base = period; }
 
-scc::LogConfig& scc::LogConfig::logLevel(logging::log_level log_level) {
-    this->level = log_level;
+scc::LogConfig& scc::LogConfig::logLevel(scc::log level) {
+    this->level = level;
     return *this;
 }
 

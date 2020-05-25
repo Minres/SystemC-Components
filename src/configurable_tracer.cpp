@@ -34,6 +34,7 @@
 #include "scc/configurable_tracer.h"
 #include "scc/traceable.h"
 
+using namespace sc_core;
 using namespace scc;
 
 configurable_tracer::configurable_tracer(const std::string&& name, file_type type, bool enable_vcd, bool default_enable)
@@ -60,27 +61,27 @@ scc::configurable_tracer::~configurable_tracer() {
         delete ptr;
 }
 
-void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace_all) {
+void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
     if(obj == this)
         return;
-    const auto* tr = dynamic_cast<const scc::traceable*>(obj);
-    auto trace_enable = tr ? tr->is_trace_enabled() : get_trace_enabled(obj, default_trace_enable);
     const char* kind = obj->kind();
     if(strcmp(kind, "tlm_signal") == 0) {
-        if(trace_enable)
+        if(trace)
             obj->trace(trf);
         return;
     } else if(strcmp(kind, "sc_vector") == 0) {
-        if(trace_enable)
+        if(trace)
             for(auto o : obj->get_child_objects())
-                descend(o, trace_all);
+                descend(o, trace);
         return;
     } else if(strcmp(kind, "sc_module") == 0) {
+        const auto* tr = dynamic_cast<const scc::traceable*>(obj);
+        auto trace_enable = tr ? tr->is_trace_enabled() : get_trace_enabled(obj, default_trace_enable);
         if(trace_enable)
             obj->trace(trf);
         for(auto o : obj->get_child_objects())
-            descend(o, trace_all);
-    } else if(trace_enable)
+            descend(o, trace_enable);
+    } else if(trace)
         try_trace(trf, obj);
 }
 
@@ -113,4 +114,10 @@ void configurable_tracer::augment_object_hierarchical(const sc_core::sc_object* 
         for(auto* o : obj->get_child_objects())
             augment_object_hierarchical(o);
     }
+}
+
+void configurable_tracer::end_of_elaboration() {
+    if(enabled)
+        for(auto o : sc_get_top_level_objects(sc_curr_simcontext))
+            descend(o, default_trace_enable);
 }
