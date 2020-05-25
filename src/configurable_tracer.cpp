@@ -117,7 +117,7 @@ void configurable_tracer::augment_object_hierarchical(const sc_core::sc_object* 
 }
 
 void configurable_tracer::end_of_elaboration() {
-    if(enabled)
+    if(trf)
         for(auto o : sc_get_top_level_objects(sc_curr_simcontext))
             descend(o, default_trace_enable);
 }
