@@ -33,24 +33,33 @@ class ordered_semaphore : public sc_core::sc_semaphore_if, public sc_core::sc_ob
 public:
     // constructors
 
-    explicit ordered_semaphore(int init_value_);
-    ordered_semaphore(const char* name_, int init_value_);
+    explicit ordered_semaphore(unsigned init_value_);
+
+    ordered_semaphore(const char* name_, unsigned init_value_);
+
+    ordered_semaphore(const ordered_semaphore&) = delete;
+
+    ordered_semaphore& operator=(const ordered_semaphore&) = delete;
 
     // interface methods
 
     // lock (take) the semaphore, block if not available
-    virtual int wait();
+    int wait() override;
 
     // lock (take) the semaphore, return -1 if not available
-    virtual int trywait();
+    int trywait() override;
 
     // unlock (give) the semaphore
-    virtual int post();
+    int post() override;
+
+    unsigned get_capacity() { return capacity; }
+
+    void set_capacity(unsigned capacity);
 
     // get the value of the semaphore
-    virtual int get_value() const { return m_value; }
+    int get_value() const override { return value; }
 
-    virtual const char* kind() const { return "sc_semaphore_ordered"; }
+    const char* kind() const override { return "sc_semaphore_ordered"; }
 
     struct lock {
         lock(scc::ordered_semaphore& sem) :sem(sem){ sem.wait();}
@@ -63,7 +72,7 @@ protected:
     // support methods
 
     bool in_use() {
-        bool avail = m_value > 0 && queue.front() == sc_core::sc_get_current_process_handle();
+        bool avail = value > 0 && queue.front() == sc_core::sc_get_current_process_handle();
         if(avail)
             queue.pop_front();
         return (!avail);
@@ -73,14 +82,10 @@ protected:
     void report_error(const char* id, const char* add_msg = 0) const;
 
 protected:
-    sc_core::sc_event m_free; // event to block on when m_value is negative
-    int m_value;              // current value of the semaphore
+    sc_core::sc_event free_evt; // event to block on when m_value is negative
+    int value;              // current value of the semaphore
+    unsigned capacity;
     std::deque<sc_core::sc_process_handle> queue;
-
-private:
-    // disabled
-    ordered_semaphore(const ordered_semaphore&);
-    ordered_semaphore& operator=(const ordered_semaphore&);
 };
 
 template<unsigned CAPACITY>
