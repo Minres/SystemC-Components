@@ -16,7 +16,7 @@
 
 #include "sysc/communication/sc_communication_ids.h"
 #include "sysc/kernel/sc_wait.h"
-#include "sysc/utils/sc_report.h"
+#include "scc/report.h"
 #include <scc/ordered_semaphore.h>
 
 namespace scc {
@@ -36,6 +36,18 @@ std::string gen_unique_event_name(const char* modifier) {
     return std::string(sc_core::sc_gen_unique_name(str.c_str(), false));
 }
 } // namespace
+
+void ordered_semaphore::set_capacity(unsigned c) {
+    if(typeid(*this)==typeid(ordered_semaphore)){
+        auto diff = static_cast<int>(capacity) - static_cast<int>(c);
+        capacity=c;
+        value-=diff;
+        if(value>0) free_evt.notify();
+    } else {
+        SCCWARN(SCMOD) << "cannot resize fixed size ordered semaphore";
+    }
+}
+
 void ordered_semaphore::report_error(const char* id, const char* add_msg) const {
     char msg[BUFSIZ];
     if(add_msg != 0) {
@@ -48,22 +60,21 @@ void ordered_semaphore::report_error(const char* id, const char* add_msg) const 
 
 // constructors
 
-ordered_semaphore::ordered_semaphore(int init_value_)
+ordered_semaphore::ordered_semaphore(unsigned init_value_)
 : sc_core::sc_object(sc_core::sc_gen_unique_name("semaphore"))
-, m_free(gen_unique_event_name("free_event").c_str())
-, m_value(init_value_) {
-    if(m_value < 0) {
+, free_evt(gen_unique_event_name("free_event").c_str())
+, value(init_value_)
+, capacity(init_value_) {
+    if(value < 0) {
         report_error(sc_core::SC_ID_INVALID_SEMAPHORE_VALUE_);
     }
 }
 
-ordered_semaphore::ordered_semaphore(const char* name_, int init_value_)
+ordered_semaphore::ordered_semaphore(const char* name_, unsigned init_value_)
 : sc_object(name_)
-, m_free(gen_unique_event_name("free_event").c_str())
-, m_value(init_value_) {
-    if(m_value < 0) {
-        report_error(sc_core::SC_ID_INVALID_SEMAPHORE_VALUE_);
-    }
+, free_evt(gen_unique_event_name("free_event").c_str())
+, value(init_value_)
+, capacity(init_value_){
 }
 
 // interface methods
@@ -73,9 +84,9 @@ ordered_semaphore::ordered_semaphore(const char* name_, int init_value_)
 int ordered_semaphore::wait() {
     queue.push_back(sc_core::sc_get_current_process_handle());
     while(in_use()) {
-        sc_core::wait(m_free);
+        sc_core::wait(free_evt);
     }
-    --m_value;
+    --value;
     return 0;
 }
 
@@ -85,15 +96,15 @@ int ordered_semaphore::trywait() {
     if(in_use()) {
         return -1;
     }
-    --m_value;
+    --value;
     return 0;
 }
 
 // unlock (give) the semaphore
 
 int ordered_semaphore::post() {
-    ++m_value;
-    m_free.notify();
+    ++value;
+    if(value>0) free_evt.notify();
     return 0;
 }
 
