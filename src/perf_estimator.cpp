@@ -49,7 +49,7 @@ perf_estimator::~perf_estimator() {
     SCCINFO(SCMOD) << "simulation time:    " << (eos.proc_clock_stamp - sos.proc_clock_stamp) << "s";
     if(cycle_period.value()){
         uint64_t cycles = sc_time_stamp().value()/cycle_period.value();
-        SCCINFO(SCMOD) << "simulation speed:   " << (sc_time_stamp().value()?cycles/(eos.proc_clock_stamp - soc.proc_clock_stamp):0.0d) << " cycles/s";
+        SCCINFO(SCMOD) << "simulation speed:   " << (sc_time_stamp().value()?cycles/(eos.proc_clock_stamp - soc.proc_clock_stamp):0.0) << " cycles/s";
     }
 }
 

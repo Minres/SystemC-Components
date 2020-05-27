@@ -223,8 +223,7 @@ public:
     virtual ~tlm2_recorder() override {
         delete b_streamHandle;
         delete b_streamHandleTimed;
-        for(size_t i = 0; i < b_trTimedHandle.size(); ++i)
-            delete b_trTimedHandle[i];
+        for(auto* p: b_trTimedHandle) delete p;//NOLINT
         for(size_t i = 0; i < nb_streamHandle.size(); ++i)
             delete nb_streamHandle[i];
         for(size_t i = 0; i < nb_streamHandleTimed.size(); ++i)

@@ -44,7 +44,7 @@ template <unsigned WIDTH> inline void initiator<WIDTH>::bus_task() {
         wait(inqueue.get_event());
         while(auto* trans = inqueue.get_next_transaction()) {
             addr_phase.lock();
-            auto* ext = trans->get_extension<ahb_extension>();
+            auto* ext = trans->template get_extension<ahb_extension>();
             HADDR_o.write(trans->get_address());
             HWRITE_o.write(trans->is_write());
             HMASTLOCK_o.write(ext->is_locked());

@@ -55,7 +55,7 @@ void scc::configurer::dump_hierarchy(std::ostream& os, sc_core::sc_object* obj) 
     if(obj) {
         os << obj->name() << " of type " << typeid(*obj).name() << "\n";
         for(auto* o : obj->get_child_objects())
-            dump_hierarchy(os);
+            dump_hierarchy(os, o);
     } else {
         for(auto* o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
             dump_hierarchy(os, o);
@@ -97,13 +97,13 @@ void scc::configurer::dump_configuration(sc_core::sc_object* obj, Json::Value& p
     auto mod = dynamic_cast<sc_core::sc_module*>(obj);
     Json::Value node{Json::objectValue};
     for(sc_core::sc_attr_base* attr_base : obj->attr_cltn()) {
-        volatile bool res = check_n_assign<int>(node, attr_base) || check_n_assign<unsigned>(node, attr_base) ||
-                            check_n_assign<long>(node, attr_base) || check_n_assign<unsigned long>(node, attr_base) ||
-                            check_n_assign<long long, int64_t>(node, attr_base) ||
-                            check_n_assign<unsigned long long, uint64_t>(node, attr_base) ||
-                            check_n_assign<bool>(node, attr_base) || check_n_assign<float>(node, attr_base) ||
-                            check_n_assign<double>(node, attr_base) || check_n_assign<std::string>(node, attr_base) ||
-                            check_n_assign<char*>(node, attr_base);
+        check_n_assign<int>(node, attr_base) || check_n_assign<unsigned>(node, attr_base) ||
+                check_n_assign<long>(node, attr_base) || check_n_assign<unsigned long>(node, attr_base) ||
+                check_n_assign<long long, int64_t>(node, attr_base) ||
+                check_n_assign<unsigned long long, uint64_t>(node, attr_base) ||
+                check_n_assign<bool>(node, attr_base) || check_n_assign<float>(node, attr_base) ||
+                check_n_assign<double>(node, attr_base) || check_n_assign<std::string>(node, attr_base) ||
+                check_n_assign<char*>(node, attr_base);
     }
 #ifdef WITH_CCI
     const std::string hier_name{obj->name()};

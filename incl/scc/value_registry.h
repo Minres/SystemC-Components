@@ -51,7 +51,10 @@ struct sc_variable : sc_core::sc_object {
     virtual std::string to_string() const = 0;
 };
 
-template <typename T> struct sc_variable_t : public sc_variable {
+inline std::ostream& operator<<(std::ostream& os, sc_core::sc_event const&){ return os;}
+
+template <typename T>
+struct sc_variable_t : public sc_variable {
     const T& value;
 
     sc_variable_t(const std::string& name, const T& value)
@@ -68,7 +71,7 @@ template <typename T> struct sc_variable_t : public sc_variable {
 template <typename T> struct sc_variable_masked_t : public sc_variable {
     const T& value;
 
-    const T& mask;
+    const T mask;
 
     sc_variable_masked_t(const std::string& name, const T& value, int width)
     : sc_variable(name.c_str())

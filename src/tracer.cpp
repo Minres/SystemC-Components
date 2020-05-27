@@ -93,6 +93,8 @@ tracer::tracer(const std::string&& name, file_type type, sc_core::sc_trace_file*
             scv_tr_sqlite_init();
             ss << ".txdb";
             break;
+        default:
+            break;
         }
         txdb = new scv_tr_db(ss.str().c_str());
         scv_tr_db::set_default_db(txdb);

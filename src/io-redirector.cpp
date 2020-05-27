@@ -69,7 +69,6 @@ void IoRedirector::stop() {
     int bytesRead = 0;
     bool fd_blocked(false);
     do {
-        bytesRead = 0;
         fd_blocked = false;
 #ifdef _MSC_VER
         if(!eof(m_pipe[READ]))
@@ -107,7 +106,6 @@ std::string IoRedirector::get_output(bool blocking) {
         int bytesRead = 0;
         bool fd_blocked(false);
         do {
-            bytesRead = 0;
             fd_blocked = false;
 #ifdef _MSC_VER
             if(!eof(m_pipe[READ]))

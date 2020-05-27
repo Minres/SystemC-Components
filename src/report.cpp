@@ -200,6 +200,8 @@ inline void log2logger(spdlog::logger& logger, const sc_report& rep, const scc::
     case SC_FATAL:
         logger.critical(msg);
         break;
+    default:
+        break;
     }
 }
 
@@ -224,6 +226,8 @@ inline void log2logger(spdlog::logger& logger, scc::log lvl, const string& msg) 
     case scc::log::FATAL:
         logger.critical(msg);
         return;
+    default:
+        break;
     }
 }
 
