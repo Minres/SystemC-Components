@@ -94,7 +94,7 @@ double scc::perf_estimator::time_stamp::get_cpu_time() {
 #if _POSIX_TIMERS > 0
     {
         clockid_t id;
-        struct timespec stamp;
+        struct timespec stamp{};
 #if _POSIX_CPUTIME > 0
         if(clock_getcpuclockid(0, &id) == -1)
 #endif
@@ -111,7 +111,7 @@ double scc::perf_estimator::time_stamp::get_cpu_time() {
 #endif
 #if defined(RUSAGE_SELF)
     {
-        struct rusage usage;
+        struct rusage usage{};
         if(getrusage(RUSAGE_SELF, &usage) != -1)
             return (double)usage.ru_utime.tv_sec + (double)usage.ru_utime.tv_usec / 1000000.0;
     }

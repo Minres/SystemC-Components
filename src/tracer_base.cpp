@@ -22,7 +22,7 @@
 
 #include "scc/tracer_base.h"
 #include "scc/traceable.h"
-#include <string.h>
+#include <cstring>
 #include <systemc>
 
 using namespace sc_core;

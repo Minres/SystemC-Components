@@ -7,6 +7,8 @@
 
 #include <util/watchdog.h>
 
+#include <utility>
+
 using namespace util;
 using namespace std::chrono;
 
@@ -14,7 +16,7 @@ watchdog::watchdog(system_clock::duration timeout, std::function<void(void)> ala
                    system_clock::duration sleep_duration)
 : timeout(timeout)
 , sleep_duration(sleep_duration)
-, alarm_cb(alarm_cb) {
+, alarm_cb(std::move(alarm_cb)) {
     idle.store(true);
     live.store(true);
     guard_thread = std::thread(std::bind(&watchdog::guard, this));

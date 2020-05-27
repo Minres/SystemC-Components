@@ -476,7 +476,7 @@ namespace Json {
  */
 class JSON_API Exception : public std::exception {
 public:
-    Exception(JSONCPP_STRING const &msg);
+    Exception(JSONCPP_STRING msg);
     ~Exception() JSONCPP_NOEXCEPT JSONCPP_OVERRIDE;
     char const *what() const JSONCPP_NOEXCEPT JSONCPP_OVERRIDE;
 
@@ -681,8 +681,8 @@ private:
 
         char const *cstr_; // actually, a prefixed string, unless policy is noDup
         union {
-            ArrayIndex index_;
-            StringStorage storage_;
+            ArrayIndex index_; // NOLINT
+            StringStorage storage_; // NOLINT
         };
     };
 

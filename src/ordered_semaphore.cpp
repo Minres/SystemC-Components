@@ -50,7 +50,7 @@ void ordered_semaphore::set_capacity(unsigned c) {
 
 void ordered_semaphore::report_error(const char* id, const char* add_msg) const {
     char msg[BUFSIZ];
-    if(add_msg != 0) {
+    if(add_msg != nullptr) {
         std::sprintf(msg, "%s: semaphore '%s'", add_msg, name());
     } else {
         std::sprintf(msg, "semaphore '%s'", name());

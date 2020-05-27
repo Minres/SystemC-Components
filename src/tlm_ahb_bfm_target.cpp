@@ -22,14 +22,14 @@ target<WIDTH>::target(const sc_module_name& nm)
     sensitive << HCLK_i.pos();
 }
 
-template <unsigned WIDTH> target<WIDTH>::~target() {}
+template <unsigned WIDTH> target<WIDTH>::~target() = default;
 
 template <unsigned WIDTH> void target<WIDTH>::bfm_thread() {
     tlm::tlm_mm<>& mm = tlm_mm<>::get();
     auto const log_width = scc::ilog2(WIDTH / 8);
     auto beat_cnt = 0U;
     wait(SC_ZERO_TIME);
-    while(1) {
+    while(true) {
         wait();
         if(!HRESETn_i.read()) {
             HREADY_o.write(true);

@@ -31,8 +31,8 @@ IoRedirector::IoRedirector()
 , m_capturing(false) {
     // make stdout & stderr streams unbuffered
     std::lock_guard<std::mutex> lock(m_mutex);
-    setvbuf(stdout, NULL, _IONBF, 0);
-    setvbuf(stderr, NULL, _IONBF, 0);
+    setvbuf(stdout, nullptr, _IONBF, 0);
+    setvbuf(stderr, nullptr, _IONBF, 0);
 }
 
 void IoRedirector::start() {
@@ -65,7 +65,7 @@ void IoRedirector::stop() {
     copy_fd_to(m_oldStdOut, fileno(stdout));
     copy_fd_to(m_oldStdErr, fileno(stderr));
 
-    char buf[bufSize];
+    std::array<char, bufSize> buf;
     int bytesRead = 0;
     bool fd_blocked(false);
     do {
@@ -76,11 +76,11 @@ void IoRedirector::stop() {
 #else
         int flags = fcntl(m_pipe[READ], F_GETFL, 0);
         fcntl(m_pipe[READ], F_SETFL, flags & ~O_NONBLOCK);
-        bytesRead = read(m_pipe[READ], buf, bufSize - 1);
+        bytesRead = read(m_pipe[READ], buf.data(), bufSize - 1);
 #endif
         if(bytesRead > 0) {
             buf[bytesRead] = 0;
-            m_captured += buf;
+            m_captured += buf.data();
         } else if(bytesRead < 0) {
             fd_blocked = (errno == EAGAIN || errno == EWOULDBLOCK || errno == EINTR);
             if(fd_blocked)
@@ -99,10 +99,9 @@ void IoRedirector::stop() {
 
 std::string IoRedirector::get_output(bool blocking) {
     std::lock_guard<std::mutex> lock(m_mutex);
-    char msg[1024];
     if(m_capturing) {
         std::string ret;
-        char buf[bufSize];
+        std::array<char, bufSize> buf;
         int bytesRead = 0;
         bool fd_blocked(false);
         do {
@@ -116,11 +115,11 @@ std::string IoRedirector::get_output(bool blocking) {
                 fcntl(m_pipe[READ], F_SETFL, flags & ~O_NONBLOCK);
             else
                 fcntl(m_pipe[READ], F_SETFL, flags | O_NONBLOCK);
-            bytesRead = read(m_pipe[READ], buf, bufSize - 1);
+            bytesRead = read(m_pipe[READ], buf.data(), bufSize - 1);
 #endif
             if(bytesRead > 0) {
                 buf[bytesRead] = 0;
-                ret += buf;
+                ret += buf.data();
             } else if(bytesRead < 0) {
                 fd_blocked = errno == EINTR;
                 if(fd_blocked)

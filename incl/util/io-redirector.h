@@ -48,7 +48,7 @@ private:
     void copy_fd_to(int src_fd, int destfd);
     void close_fd(int& fd);
 
-    int m_pipe[2];
+    int m_pipe[2]{};
     int m_oldStdOut;
     int m_oldStdErr;
     bool m_capturing;

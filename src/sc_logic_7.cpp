@@ -29,19 +29,19 @@ namespace scc {
 namespace sc_dt {
 
 void sc_logic_7::invalid_value(sc_logic_7_value_t v) {
-    std::array<char, BUFSIZ> msg;
+    std::array<char, BUFSIZ> msg{};
     std::sprintf(msg.data(), "sc_logic_7( %d )", v);
     msg.data();
 }
 
 void sc_logic_7::invalid_value(char c) {
-    std::array<char, BUFSIZ> msg;
+    std::array<char, BUFSIZ> msg{};
     std::sprintf(msg.data(), "sc_logic_7( '%c' )", c);
     msg.data();
 }
 
 void sc_logic_7::invalid_value(int i) {
-    std::array<char, BUFSIZ> msg;
+    std::array<char, BUFSIZ> msg{};
     std::sprintf(msg.data(), "sc_logic_7( %d )", i);
     msg.data();
 }

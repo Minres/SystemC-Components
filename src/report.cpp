@@ -62,7 +62,7 @@ struct ExtLogConfig : public scc::LogConfig {
     shared_ptr<spdlog::logger> file_logger;
     shared_ptr<spdlog::logger> console_logger;
 #ifdef USE_C_REGEX
-    regex_t start_state;
+    regex_t start_state{};
 #else
     regex reg_ex;
 #endif
@@ -73,7 +73,7 @@ struct ExtLogConfig : public scc::LogConfig {
     }
     bool match(const char* type) {
 #ifdef USE_C_REGEX
-        return regexec(&start_state, type, 0, NULL, 0) == 0;
+        return regexec(&start_state, type, 0, nullptr, 0) == 0;
 #else
         return regex_search(type, reg_ex);
 #endif

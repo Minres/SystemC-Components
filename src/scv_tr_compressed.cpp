@@ -449,7 +449,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
     } break;
 
     default: {
-        std::array<char, 100> tmpString;
+        std::array<char, 100> tmpString{};
         sprintf(tmpString.data(), "Unsupported attribute type = %d", my_exts_p->get_type());
 
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, tmpString.data());
@@ -595,7 +595,7 @@ static void scv_tr_handle_record_attribute_cbf(const scv_tr_handle& t, const cha
         tmp_str = attribute_name;
     }
 
-    std::array<char, 100> tmp_str2;
+    std::array<char, 100> tmp_str2{};
     sprintf(tmp_str2.data(), "tx_record_attribute " scv_tr_TEXT_LLU, t.get_id());
     std::string exts_kind = tmp_str2.data();
 

@@ -31,7 +31,7 @@ std::ostream& operator<<(std::ostream& os, const sc_event& evt) {
 class SC_API value_registry_impl : public sc_trace_file {
 public:
     // Constructor
-    value_registry_impl() {}
+    value_registry_impl() = default;
 
     sc_module* get_mod4name(const std::string& name) const {
         sc_module* mod = nullptr;
@@ -139,7 +139,7 @@ public:
     const sc_dt::uint64& event_trigger_stamp(const sc_event& event) const { return dummy; }
 
     // Flush results and close file
-    virtual ~value_registry_impl() {
+    ~value_registry_impl() override {
         for(auto kv : holder)
             delete kv.second;
     }

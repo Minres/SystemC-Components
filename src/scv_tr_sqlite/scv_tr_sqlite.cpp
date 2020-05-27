@@ -309,7 +309,7 @@ static void recordAttributes(uint64_t id, EventType eventType, string& prefix, c
         }
         break;
     default: {
-        std::array<char, 100> tmpString;
+        std::array<char, 100> tmpString{};
         sprintf(tmpString.data(), "Unsupported attribute type = %d", my_exts_p->get_type());
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, tmpString.data());
     }

@@ -17,11 +17,11 @@ initiator<WIDTH>::initiator(const sc_module_name& nm)
 : sc_module(nm) {
     SC_HAS_PROCESS(initiator);
     sc_core::sc_get_curr_simcontext()->create_thread_process(
-        "bus_task_0", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task), this, 0);
+        "bus_task_0", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task), this, nullptr);
     sc_core::sc_get_curr_simcontext()->create_thread_process(
-        "bus_task_1", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task), this, 0);
+        "bus_task_1", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task), this, nullptr);
     sc_core::sc_get_curr_simcontext()->create_thread_process(
-        "bus_task_2", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task), this, 0);
+        "bus_task_2", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task), this, nullptr);
     tsckt.register_nb_transport_fw([this](tlm::tlm_generic_payload& payload, tlm::tlm_phase& phase,
                                           sc_core::sc_time& delay) -> tlm::tlm_sync_enum {
         if(phase == BEGIN_REQ) {
@@ -40,7 +40,7 @@ initiator<WIDTH>::initiator(const sc_module_name& nm)
 
 template <unsigned WIDTH> inline void initiator<WIDTH>::bus_task() {
     data_t data{0};
-    while(1) {
+    while(true) {
         wait(inqueue.get_event());
         while(auto* trans = inqueue.get_next_transaction()) {
             addr_phase.lock();

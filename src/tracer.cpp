@@ -71,7 +71,6 @@ tracer::tracer(const std::string&& name, file_type type, bool enable)
 
 tracer::tracer(const std::string&& name, file_type type, sc_core::sc_trace_file* tf)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")), tf)
-, owned(false)
 #ifdef WITH_SCV
 , txdb(nullptr)
 #endif
