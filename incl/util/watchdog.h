@@ -6,7 +6,16 @@
  */
 
 #pragma one
+#ifdef __clang__
+#include <bits/c++config.h>
+#if __GLIBCXX__ == 20150623
+#define noexcept
+#endif
+#endif
 #include <atomic>
+#ifdef noexcept
+#undef noexcept
+#endif
 #include <chrono>
 #include <condition_variable>
 #include <functional>
