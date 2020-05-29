@@ -17,6 +17,8 @@
 #define _CRT_NO_VA_START_VALIDATION
 #endif
 
+namespace util {
+
 inline std::string strprintf(const std::string& format, ...)
 {
     va_list args;
@@ -30,5 +32,5 @@ inline std::string strprintf(const std::string& format, ...)
     return &vec[0];
 }
 
-
+}
 #endif /* SCC_INCL_UTIL_STRPRINTF_H_ */

@@ -18,6 +18,7 @@
 #include "sysc/kernel/sc_wait.h"
 #include "scc/report.h"
 #include <scc/ordered_semaphore.h>
+#include <util/strprintf.h>
 
 namespace scc {
 
@@ -49,13 +50,8 @@ void ordered_semaphore::set_capacity(unsigned c) {
 }
 
 void ordered_semaphore::report_error(const char* id, const char* add_msg) const {
-    char msg[BUFSIZ];
-    if(add_msg != nullptr) {
-        std::sprintf(msg, "%s: semaphore '%s'", add_msg, name());
-    } else {
-        std::sprintf(msg, "semaphore '%s'", name());
-    }
-    SC_REPORT_ERROR(id, msg);
+    auto msg = add_msg? util::strprintf("semaphore '%s'", name()):util::strprintf("%s: semaphore '%s'", add_msg, name());
+    SC_REPORT_ERROR(id, msg.c_str());
 }
 
 // constructors
