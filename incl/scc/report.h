@@ -24,16 +24,11 @@
 #include <sysc/utils/sc_report.h>
 #include <util/ities.h>
 
-//! log level definitions
-#define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE) L(TRACEALL)
-#define DO_DESCRIPTION(e) #e,
-#define DO_ENUM(e) e,
-
 namespace scc {
 //! array holding string representations of log levels
-static std::array<const char* const, 8> buffer = {{LEVELS(DO_DESCRIPTION)}};
+static std::array<const char* const, 8> buffer = {{"NONE", "FATAL", "ERROR", "WARNING", "INFO", "DEBUG", "TRACE", "TRACEALL"}};
 //! enum defining the log levels
-enum class log { LEVELS(DO_ENUM) DBGTRACE = TRACEALL };
+enum class log { NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE, TRACEALL, DBGTRACE = TRACEALL };
 /**
  * safely convert an integer into a log level
  * @param logLevel the integer
