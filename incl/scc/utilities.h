@@ -25,6 +25,7 @@
 
 #include <limits>
 #include <memory>
+#include "sc_variable.h"
 
 // pragmas to disable the deprecated warnings for SystemC headers
 #pragma GCC diagnostic push
@@ -91,6 +92,11 @@ template <> void sc_trace(sc_trace_file*, const sc_in<sc_time>&, const std::stri
  * @param the hierarchical name of the data
  */
 template <> void sc_trace(sc_trace_file*, const sc_inout<sc_time>&, const std::string&);
+
+
+template <typename T> void sc_trace(sc_trace_file* trf, const scc::sc_variable_t<T>& v, const std::string& name){
+    sc_trace(trf, v.value, name);
+}
 } // namespace sc_core
 // user-defined literals for easy time creation
 /**
