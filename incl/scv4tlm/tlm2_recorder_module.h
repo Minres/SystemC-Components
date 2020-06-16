@@ -37,10 +37,11 @@ class tlm2_recorder_module : public sc_core::sc_module, public tlm2_recorder<TYP
 public:
     SC_HAS_PROCESS(tlm2_recorder_module); // NOLINT
     //! The target socket of the recorder to be bound to the initiator
-    tlm::tlm_target_socket<BUSWIDTH, TYPES, 1> ts;
+    tlm::tlm_target_socket<BUSWIDTH, TYPES, 1> ts{"ts"};
     //! The initiator to be bound to the target socket
-    tlm::tlm_initiator_socket<BUSWIDTH, TYPES, 1> is;
-
+    tlm::tlm_initiator_socket<BUSWIDTH, TYPES, 1> is{"is"};
+    //! (optional) port to get the clock period
+    sc_port<sc_signal_in_if<bool>,1,SC_ZERO_OR_MORE_BOUND> clk_i{"clk_i"};
     /*! \brief The constructor of the component
      *
      * \param name is the SystemC module name of the recorder
@@ -52,8 +53,6 @@ public:
     tlm2_recorder_module(sc_core::sc_module_name name, bool recording_enabled = true,
                          scv_tr_db* tr_db = scv_tr_db::get_default_db())
     : sc_module(name)
-    , ts("ts")
-    , is("is")
     , tlm2_recorder<TYPES>(is.get_base_port(), ts.get_base_port(), recording_enabled, tr_db) {
         // bind the sockets to the module
         is.bind(*this);
@@ -61,6 +60,11 @@ public:
     }
 
     virtual ~tlm2_recorder_module() {}
+
+private:
+    void end_of_elaboration() override {
+        tlm2_recorder<TYPES>::clk_if = dynamic_cast<sc_core::sc_clock*>(clk_i.get_interface());
+    }
 };
 } // namespace scv4tlm
 
