@@ -19,6 +19,7 @@
 #include <cassert>
 #include <cstdio>
 #include <cstring>
+#include <iostream>
 #include <iomanip>
 #include <iterator>
 #include <mutex>
@@ -200,6 +201,11 @@ public:
         static FILE* pStream = stdout;
         return pStream;
     }
+
+    static std::ostream*& ostream() {
+        static std::ostream* oStream{nullptr};
+        return oStream;
+    }
     /**
      * write an output string to the file
      *
@@ -208,11 +214,16 @@ public:
     static void output(const std::string& msg) {
         static std::mutex mtx;
         std::lock_guard<std::mutex> lock(mtx);
-        FILE* pStream = stream();
-        if(!pStream)
-            return;
-        fprintf(pStream, "%s", msg.c_str());
-        fflush(pStream);
+        std::ostream* ostr = ostream();
+        if(ostr){
+            *ostr<<msg;
+        } else {
+            FILE* pStream = stream();
+            if(pStream){
+                fprintf(pStream, "%s", msg.c_str());
+                fflush(pStream);
+            }
+        }
     }
 };
 //! the default logging category
