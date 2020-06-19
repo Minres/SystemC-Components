@@ -89,6 +89,7 @@ public:
     scv_extensions<unsigned int> byte_enable_length;
     scv_extensions<unsigned int> streaming_width;
     scv_extensions<tlm::tlm_gp_option> gp_option;
+    scv_extensions<uintptr_t> uid;
 
     SCV_EXTENSIONS_CTOR(scv4tlm::tlm_gp_data) {
         // must be in order
@@ -102,6 +103,7 @@ public:
         SCV_FIELD(byte_enable_length);
         SCV_FIELD(streaming_width);
         SCV_FIELD(gp_option);
+        SCV_FIELD(uid);
     }
 };
 

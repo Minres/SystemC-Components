@@ -38,7 +38,8 @@ public:
     , byte_enable(o.get_byte_enable_ptr())
     , byte_enable_length(o.get_byte_enable_length())
     , streaming_width(o.get_streaming_width())
-    , gp_option(o.get_gp_option()) {}
+    , gp_option(o.get_gp_option())
+    , uid(reinterpret_cast<uintptr_t>(&o)) {}
 
     tlm_gp_data() = default;
 
@@ -120,6 +121,7 @@ public:
     unsigned int byte_enable_length{0};
     unsigned int streaming_width{0};
     tlm::tlm_gp_option gp_option{tlm::TLM_MIN_PAYLOAD};
+    uintptr_t uid;
 };
 
 class tlm_dmi_data {
