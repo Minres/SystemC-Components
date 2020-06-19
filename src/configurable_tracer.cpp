@@ -37,13 +37,13 @@
 using namespace sc_core;
 using namespace scc;
 
+#define EN_TRACING_STR "enableTracing"
+
 configurable_tracer::configurable_tracer(const std::string&& name, file_type type, bool enable_vcd, bool default_enable)
 : tracer(std::move(name), type, enable_vcd)
 , cci_originator(this->name())
 , cci_broker(cci::cci_get_global_broker(cci_originator))
 , default_trace_enable(default_enable) {
-    //    for(auto* o:sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
-    //        augment_object_hierarchical(o);
 }
 
 configurable_tracer::configurable_tracer(const std::string&& name, file_type type, sc_core::sc_trace_file* tf,
@@ -52,8 +52,6 @@ configurable_tracer::configurable_tracer(const std::string&& name, file_type typ
 , cci_originator(this->name())
 , cci_broker(cci::cci_get_global_broker(cci_originator))
 , default_trace_enable(default_enable) {
-    //    for(auto* o:sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
-    //        augment_object_hierarchical(o);
 }
 
 scc::configurable_tracer::~configurable_tracer() {
@@ -75,24 +73,28 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
                 descend(o, trace);
         return;
     } else if(strcmp(kind, "sc_module") == 0) {
-        const auto* tr = dynamic_cast<const scc::traceable*>(obj);
-        auto trace_enable = tr ? tr->is_trace_enabled() : get_trace_enabled(obj, default_trace_enable);
+        auto trace_enable = get_trace_enabled(obj, default_trace_enable);
         if(trace_enable)
             obj->trace(trf);
         for(auto o : obj->get_child_objects())
             descend(o, trace_enable);
+    } else if(const auto* tr = dynamic_cast<const scc::traceable*>(obj)) {
+        if(tr->is_trace_enabled())
+            obj->trace(trf);
+        for(auto o : obj->get_child_objects())
+            descend(o, tr->is_trace_enabled());
     } else if(trace)
         try_trace(trf, obj);
 }
 
 bool scc::configurable_tracer::get_trace_enabled(const sc_core::sc_object* obj, bool fall_back) {
-    auto* attr = obj->get_attribute("enableTracing");
+    auto* attr = obj->get_attribute(EN_TRACING_STR);
     if(attr != nullptr && dynamic_cast<const sc_core::sc_attribute<bool>*>(attr) != nullptr) {
         const auto* a = dynamic_cast<const sc_core::sc_attribute<bool>*>(attr);
         return a->value;
     } else {
         std::string hier_name{obj->name()};
-        auto h = cci_broker.get_param_handle(hier_name.append(".enableTracing"));
+        auto h = cci_broker.get_param_handle(hier_name.append("." EN_TRACING_STR));
         if(h.is_valid())
             return h.get_cci_value().get_bool();
     }
@@ -101,11 +103,11 @@ bool scc::configurable_tracer::get_trace_enabled(const sc_core::sc_object* obj, 
 
 void configurable_tracer::augment_object_hierarchical(const sc_core::sc_object* obj) {
     if(dynamic_cast<const sc_core::sc_module*>(obj) != nullptr || dynamic_cast<const scc::traceable*>(obj) != nullptr) {
-        auto* attr = obj->get_attribute("enableTracing");
+        auto* attr = obj->get_attribute(EN_TRACING_STR);
         if(attr == nullptr ||
            dynamic_cast<const sc_core::sc_attribute<bool>*>(attr) == nullptr) { // check if we have no sc_attribute
             std::string hier_name{obj->name()};
-            hier_name += ".enableTracing";
+            hier_name += "." EN_TRACING_STR;
             auto h = cci_broker.get_param_handle(hier_name);
             if(!h.is_valid()) // we have no cci_param so create one
                 params.push_back(new cci::cci_param<bool>(hier_name, default_trace_enable, "", cci::CCI_ABSOLUTE_NAME,
