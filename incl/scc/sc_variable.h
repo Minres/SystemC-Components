@@ -34,8 +34,9 @@ struct sc_variable : sc_core::sc_object {
 
     const char* kind() const { return "sc_variable"; }
 
-    virtual std::string to_string() const = 0;
+    virtual std::string to_string() const {return "";};
 };
+
 
 template <typename T>
 struct sc_variable_t : public sc_variable {
@@ -47,9 +48,45 @@ struct sc_variable_t : public sc_variable {
     : sc_variable(name.c_str())
     , value(value) {}
 
-    std::string to_string() const {
+    std::string to_string() const override {
         std::stringstream ss;
         ss << value;
+        return ss.str();
+    }
+};
+
+template <typename T>
+struct sc_variable_t<std::vector<T>> : public sc_variable {
+    const std::vector<T>& value;
+
+    const std::vector<T>& operator*(){return value;}
+
+    sc_variable_t(std::string const& name, std::vector<T> const& value)
+    : sc_variable(name.c_str())
+    , value(value) {}
+
+    std::string to_string() const override {
+        std::stringstream ss;
+        for(const T& e: value)
+            ss<<e<<",";
+        return ss.str();
+    }
+};
+
+template <typename T, size_t S>
+struct sc_variable_t<std::array<T, S>> : public sc_variable {
+    const std::array<T, S>& value;
+
+    const std::array<T, S>& operator*(){return value;}
+
+    sc_variable_t(std::string const& name, std::array<T, S> const& value)
+    : sc_variable(name.c_str())
+    , value(value) {}
+
+    std::string to_string() const override {
+        std::stringstream ss;
+        for(const T& e: value)
+            ss<<e<<",";
         return ss.str();
     }
 };

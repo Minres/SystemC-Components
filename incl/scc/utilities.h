@@ -25,6 +25,7 @@
 
 #include <limits>
 #include <memory>
+#include <array>
 #include "sc_variable.h"
 
 // pragmas to disable the deprecated warnings for SystemC headers
@@ -96,6 +97,22 @@ template <> void sc_trace(sc_trace_file*, const sc_inout<sc_time>&, const std::s
 
 template <typename T> void sc_trace(sc_trace_file* trf, const scc::sc_variable_t<T>& v, const std::string& name){
     sc_trace(trf, v.value, name);
+}
+
+template <typename T> void sc_trace(sc_trace_file* trf, const scc::sc_variable_t<std::vector<T>>& v, const std::string& name){
+    auto i = 0U;
+    for(T& e :v.value){
+        std::stringstream ss; ss<<name<<"["<<i++<<"]";
+        sc_trace(trf, e, ss.str());
+    }
+}
+
+template <typename T, std::size_t _Nm> void sc_trace(sc_trace_file* trf, const scc::sc_variable_t<std::array<T, _Nm>>& v, const std::string& name){
+    auto i = 0U;
+    for(T& e :v.value){
+        std::stringstream ss; ss<<name<<"["<<i++<<"]";
+        sc_trace(trf, e, ss.str());
+    }
 }
 } // namespace sc_core
 // user-defined literals for easy time creation
