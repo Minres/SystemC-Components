@@ -55,8 +55,6 @@ template <typename T> inline bool try_trace_obj(sc_trace_file* trace_file, const
         return true;
     if(trace_helper<sc_core::sc_signal<T, SC_UNCHECKED_WRITERS>>(trace_file, object))
         return true;
-    if(trace_helper<scc::sc_variable_t<T>>(trace_file, object))
-        return true;
     if(trace_helper<T>(trace_file, object))
         return true;
     return false;
