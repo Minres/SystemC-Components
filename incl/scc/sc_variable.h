@@ -53,6 +53,10 @@ struct sc_variable_t : public sc_variable {
         ss << value;
         return ss.str();
     }
+
+    void trace( sc_core::sc_trace_file* tf ) const override {
+        sc_trace(tf, value, name());
+    }
 };
 
 template <typename T>
@@ -70,6 +74,14 @@ struct sc_variable_t<std::vector<T>> : public sc_variable {
         for(const T& e: value)
             ss<<e<<",";
         return ss.str();
+    }
+
+    void trace( sc_core::sc_trace_file* tf ) const override {
+        auto i = 0U;
+        for(T const& e :value){
+            std::stringstream ss; ss<<name()<<"("<<i++<<")";
+            sc_trace(tf, e, ss.str());
+        }
     }
 };
 
@@ -89,6 +101,14 @@ struct sc_variable_t<std::array<T, S>> : public sc_variable {
             ss<<e<<",";
         return ss.str();
     }
+
+    void trace( sc_core::sc_trace_file* tf ) const override {
+        auto i = 0U;
+        for(T const& e :value){
+            std::stringstream ss; ss<<name()<<"("<<i++<<")";
+            sc_trace(tf, e, ss.str());
+        }
+    }
 };
 
 template <typename T> struct sc_variable_masked_t : public sc_variable {
@@ -105,6 +125,10 @@ template <typename T> struct sc_variable_masked_t : public sc_variable {
         std::stringstream ss;
         ss << (value & mask);
         return ss.str();
+    }
+
+    void trace( sc_core::sc_trace_file* tf ) const override {
+        sc_trace(tf, value, name());
     }
 };
 

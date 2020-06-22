@@ -78,6 +78,10 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
             obj->trace(trf);
         for(auto o : obj->get_child_objects())
             descend(o, trace_enable);
+
+    } else if(strcmp(kind, "sc_variable") == 0) {
+        if(trace)
+            obj->trace(trf);
     } else if(const auto* tr = dynamic_cast<const scc::traceable*>(obj)) {
         if(tr->is_trace_enabled())
             obj->trace(trf);
