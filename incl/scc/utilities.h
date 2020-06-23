@@ -76,6 +76,16 @@ void sc_trace(sc_trace_file*, const sc_time&, const std::string&);
  * @param
  */
 void sc_trace(sc_trace_file*, const sc_time&, const char*);
+
+/**
+ * comatibility for SC2.3.1
+ *
+ * @param
+ * @param
+ * @param
+ */
+inline void sc_trace(sc_core::sc_trace_file*&, const sc_core::sc_event&, const char*){}
+
 #endif
 /**
  * trace function for sc_time
