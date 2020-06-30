@@ -59,6 +59,24 @@ struct sc_variable_t : public sc_variable {
     }
 };
 
+template <>
+struct sc_variable_t<sc_core::sc_event> : public sc_variable {
+    const sc_core::sc_event& value;
+
+    const sc_core::sc_event& operator*(){return value;}
+
+    sc_variable_t(const std::string& name, const sc_core::sc_event& value)
+    : sc_variable(name.c_str())
+    , value(value) {}
+
+    std::string to_string() const override {
+        return "";
+     }
+
+    void trace( sc_core::sc_trace_file* tf ) const override {
+    }
+};
+
 template <typename T>
 struct sc_variable_t<std::vector<T>> : public sc_variable {
     const std::vector<T>& value;
