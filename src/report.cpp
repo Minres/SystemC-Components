@@ -385,6 +385,10 @@ void scc::set_logging_level(scc::log level) {
         static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, static_cast<int>(log_cfg.level))));
 }
 
+scc::log scc::get_logging_level(){
+    return log_cfg.level;
+}
+
 void scc::set_cycle_base(sc_time period) { log_cfg.cycle_base = period; }
 
 scc::LogConfig& scc::LogConfig::logLevel(scc::log level) {
