@@ -112,6 +112,12 @@ void init_logging(const LogConfig& log_config);
  */
 void set_logging_level(log level);
 /**
+ * sets the SystemC logging level
+ *
+ * @param level the logging level
+ */
+log get_logging_level();
+/**
  * sets the cycle base for logging. If this is set the logging prints cycles instead of times
  *
  * @param level the logging level

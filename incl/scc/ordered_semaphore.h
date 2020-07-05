@@ -33,9 +33,9 @@ class ordered_semaphore : public sc_core::sc_semaphore_if, public sc_core::sc_ob
 public:
     // constructors
 
-    explicit ordered_semaphore(unsigned init_value_);
+    explicit ordered_semaphore(unsigned init_value_=1);
 
-    ordered_semaphore(const char* name_, unsigned init_value_);
+    ordered_semaphore(const char* name_, unsigned init_value_=1);
 
     ordered_semaphore(const ordered_semaphore&) = delete;
 

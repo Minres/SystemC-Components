@@ -18,9 +18,11 @@
 #define _SCC_VALUE_REGISTRY_H_
 
 #include "tracer_base.h"
+#include "sc_variable.h"
 #include <sstream>
 #include <sysc/kernel/sc_simcontext.h>
 #include <sysc/tracing/sc_trace.h>
+
 #ifndef SC_API
 #define SC_API
 #endif
@@ -39,50 +41,6 @@ struct value_registry_if {
     virtual value_holder& get_value(std::string& name) const = 0;
 
     virtual ~value_registry_if() {}
-};
-
-struct sc_variable : sc_core::sc_object {
-
-    sc_variable(const char* name)
-    : sc_core::sc_object(name) {}
-
-    const char* kind() const { return "sc_variable"; }
-
-    virtual std::string to_string() const = 0;
-};
-
-inline std::ostream& operator<<(std::ostream& os, sc_core::sc_event const&){ return os;}
-
-template <typename T>
-struct sc_variable_t : public sc_variable {
-    const T& value;
-
-    sc_variable_t(const std::string& name, const T& value)
-    : sc_variable(name.c_str())
-    , value(value) {}
-
-    std::string to_string() const {
-        std::stringstream ss;
-        ss << value;
-        return ss.str();
-    }
-};
-
-template <typename T> struct sc_variable_masked_t : public sc_variable {
-    const T& value;
-
-    const T mask;
-
-    sc_variable_masked_t(const std::string& name, const T& value, int width)
-    : sc_variable(name.c_str())
-    , value(value)
-    , mask((1 << width) - 1) {}
-
-    std::string to_string() const {
-        std::stringstream ss;
-        ss << (value & mask);
-        return ss.str();
-    }
 };
 
 class SC_API value_registry : protected tracer_base {

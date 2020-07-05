@@ -118,10 +118,13 @@ void scc::configurer::dump_configuration(sc_core::sc_object* obj, Json::Value& p
         } else
             return false;
     }};
+    auto log_lvl_name = hier_name+".log_level";
     auto handles = cci_broker.get_param_handles(pred);
+    auto log_lvl_set = false;
     for(auto& h : handles) {
         auto value = h.get_cci_value();
         auto paramname = std::string{h.name()};
+        if(paramname==log_lvl_name) log_lvl_set=true;
         auto basename = paramname.substr(paramname.find_last_of('.') + 1);
         if(value.is_bool())
             node[basename] = value.get_bool();
@@ -137,6 +140,11 @@ void scc::configurer::dump_configuration(sc_core::sc_object* obj, Json::Value& p
             node[basename] = value.get_double();
         else if(value.is_string())
             node[basename] = value.get_string().c_str();
+    }
+    if(!log_lvl_set && mod){
+        auto val = cci_broker.get_preset_cci_value(log_lvl_name);
+        auto global_verb = static_cast<int>(scc::get_logging_level());
+        node["log_level"] = val.is_int()? val.get_int() : global_verb;
     }
 #endif
     for(auto* o : get_sc_objects(obj))

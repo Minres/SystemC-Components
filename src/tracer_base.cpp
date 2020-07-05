@@ -20,8 +20,9 @@
  *      Author: developer
  */
 
-#include "scc/tracer_base.h"
-#include "scc/traceable.h"
+#include <scc/tracer_base.h>
+#include <scc/traceable.h>
+#include <scc/sc_variable.h>
 #include <cstring>
 #include <systemc>
 
@@ -31,8 +32,7 @@ using namespace scc;
 
 template <typename T, typename std::enable_if<std::is_class<T>::value, int>::type = 0>
 inline bool trace_helper(sc_trace_file* trace_file, const sc_object* object) {
-    auto ptr = dynamic_cast<const T*>(object);
-    if(ptr) {
+    if(auto* ptr = dynamic_cast<const T*>(object)) {
         sc_core::sc_trace(trace_file, *ptr, object->name());
         return true;
     }
