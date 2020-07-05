@@ -28,7 +28,17 @@ if (VERILATOR_FOUND)
 endif()
 
 find_package(PackageHandleStandardArgs REQUIRED)
-find_package(OSCISystemC)
+
+if(NOT SystemCPackage)
+    if(TARGET SystemC::SystemC)
+        set(SystemCPackage SystemC)
+    else()
+        set(SystemCPackage OSCISystemC)
+    endif()
+endif()
+
+message("Using ${SystemCPackage} package in verilator")
+find_package(${SystemCPackage} REQUIRED)
 
 find_program(VERILATOR_EXECUTABLE verilator
     HINTS $ENV{VERILATOR_ROOT}
@@ -74,8 +84,6 @@ set(SOURCES
 
 add_library(verilated STATIC ${SOURCES})
 
-target_link_libraries(verilated PRIVATE systemc)
-
 set_target_properties(verilated PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
@@ -84,8 +92,8 @@ set_target_properties(verilated PROPERTIES
 target_include_directories(verilated SYSTEM PUBLIC
     ${VERILATOR_INCLUDE_DIR}/vltstd
     ${VERILATOR_INCLUDE_DIR}
-    ${SYSTEMC_INCLUDE_DIRS}
 )
+target_include_directories (verilated PUBLIC ${SystemC_INCLUDE_DIRS})    
 
 if (CMAKE_CXX_COMPILER_ID MATCHES GNU)
     target_compile_options(verilated PRIVATE
@@ -119,9 +127,10 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES Clang)
     target_compile_options(verilated PRIVATE -Wno-everything)
 endif()
 
-add_library(verilated_custom STATIC ${SOURCES})
+target_link_libraries(verilated PUBLIC ${SystemC_LIBRARIES} )
 
-target_link_libraries(verilated_custom PRIVATE systemc)
+
+add_library(verilated_custom STATIC ${SOURCES})
 
 set_target_properties(verilated_custom PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
@@ -131,8 +140,8 @@ set_target_properties(verilated_custom PROPERTIES
 target_include_directories(verilated_custom SYSTEM PUBLIC
     ${VERILATOR_INCLUDE_DIR}/vltstd
     ${VERILATOR_INCLUDE_DIR}
-    ${SYSTEMC_INCLUDE_DIRS}
 )
+target_include_directories (verilated_custom PUBLIC ${SystemC_INCLUDE_DIRS})    
 
 target_compile_definitions(verilated_custom PRIVATE VL_USER_FINISH VL_USER_STOP VL_USER_FATAL)
 if (CMAKE_CXX_COMPILER_ID MATCHES GNU)
@@ -166,3 +175,5 @@ if (CMAKE_CXX_COMPILER_ID MATCHES GNU)
 elseif (CMAKE_CXX_COMPILER_ID MATCHES Clang)
     target_compile_options(verilated_custom PRIVATE -Wno-everything)
 endif()
+
+target_link_libraries(verilated_custom PUBLIC ${SystemC_LIBRARIES} )
