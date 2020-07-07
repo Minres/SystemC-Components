@@ -76,7 +76,6 @@ public:
         for(auto* o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
             augment_object_hierarchical(o);
     }
-
 protected:
     //! the default for tracing if no attribute is configured
     const bool default_trace_enable;

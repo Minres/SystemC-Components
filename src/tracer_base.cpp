@@ -44,168 +44,173 @@ inline bool trace_helper(sc_trace_file*, const sc_object*) {
     return false;
 }
 
-template <typename T> inline bool try_trace_obj(sc_trace_file* trace_file, const sc_object* object) {
-    if(trace_helper<sc_core::sc_in<T>>(trace_file, object))
-        return true;
-    if(trace_helper<sc_core::sc_out<T>>(trace_file, object))
-        return true;
-    if(trace_helper<sc_core::sc_signal<T, SC_ONE_WRITER>>(trace_file, object))
-        return true;
-    if(trace_helper<sc_core::sc_signal<T, SC_MANY_WRITERS>>(trace_file, object))
-        return true;
-    if(trace_helper<sc_core::sc_signal<T, SC_UNCHECKED_WRITERS>>(trace_file, object))
-        return true;
-    if(trace_helper<T>(trace_file, object))
-        return true;
+template <typename T> inline bool try_trace_obj(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) {
+    if((types_to_trace & trace_types::PORTS) == trace_types::PORTS) {
+        if(trace_helper<sc_core::sc_in<T>>(trace_file, object))
+            return true;
+        if(trace_helper<sc_core::sc_out<T>>(trace_file, object))
+            return true;
+    }
+    if((types_to_trace & trace_types::SIGNALS) == trace_types::SIGNALS) {
+        if(trace_helper<sc_core::sc_signal<T, SC_ONE_WRITER>>(trace_file, object))
+            return true;
+        if(trace_helper<sc_core::sc_signal<T, SC_MANY_WRITERS>>(trace_file, object))
+            return true;
+        if(trace_helper<sc_core::sc_signal<T, SC_UNCHECKED_WRITERS>>(trace_file, object))
+            return true;
+    }
+    if((types_to_trace & trace_types::OBJECTS) == trace_types::OBJECTS)
+        if(trace_helper<T>(trace_file, object))
+            return true;
     return false;
 }
 
-void tracer_base::try_trace(sc_trace_file* trace_file, const sc_object* object) {
-    if(try_trace_obj<bool>(trace_file, object))
+void tracer_base::try_trace(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) {
+    if(try_trace_obj<bool>(trace_file, object, types_to_trace))
         return;
 
-    if(try_trace_obj<char>(trace_file, object))
+    if(try_trace_obj<char>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<unsigned char>(trace_file, object))
-        return;
-
-    if(try_trace_obj<short>(trace_file, object))
-        return;
-    if(try_trace_obj<unsigned short>(trace_file, object))
+    if(try_trace_obj<unsigned char>(trace_file, object, types_to_trace))
         return;
 
-    if(try_trace_obj<int>(trace_file, object))
+    if(try_trace_obj<short>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<unsigned int>(trace_file, object))
-        return;
-
-    if(try_trace_obj<long>(trace_file, object))
-        return;
-    if(try_trace_obj<unsigned long>(trace_file, object))
+    if(try_trace_obj<unsigned short>(trace_file, object, types_to_trace))
         return;
 
-    if(try_trace_obj<long long>(trace_file, object))
+    if(try_trace_obj<int>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<unsigned long long>(trace_file, object))
+    if(try_trace_obj<unsigned int>(trace_file, object, types_to_trace))
         return;
 
-    if(try_trace_obj<float>(trace_file, object))
+    if(try_trace_obj<long>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<double>(trace_file, object))
+    if(try_trace_obj<unsigned long>(trace_file, object, types_to_trace))
+        return;
+
+    if(try_trace_obj<long long>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<unsigned long long>(trace_file, object, types_to_trace))
+        return;
+
+    if(try_trace_obj<float>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<double>(trace_file, object, types_to_trace))
         return;
 #if(SYSTEMC_VERSION >= 20171012)
-    if(try_trace_obj<sc_time>(trace_file, object))
+    if(try_trace_obj<sc_time>(trace_file, object, types_to_trace))
         return;
 #endif
-    if(try_trace_obj<sc_bit>(trace_file, object))
+    if(try_trace_obj<sc_bit>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_logic>(trace_file, object))
-        return;
-
-    if(try_trace_obj<sc_uint<1>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_uint<2>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_uint<3>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_uint<4>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_uint<8>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_uint<16>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_uint<32>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_uint<64>>(trace_file, object))
+    if(try_trace_obj<sc_logic>(trace_file, object, types_to_trace))
         return;
 
-    if(try_trace_obj<sc_int<1>>(trace_file, object))
+    if(try_trace_obj<sc_uint<1>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_int<2>>(trace_file, object))
+    if(try_trace_obj<sc_uint<2>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_int<3>>(trace_file, object))
+    if(try_trace_obj<sc_uint<3>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_int<4>>(trace_file, object))
+    if(try_trace_obj<sc_uint<4>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_int<8>>(trace_file, object))
+    if(try_trace_obj<sc_uint<8>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_int<16>>(trace_file, object))
+    if(try_trace_obj<sc_uint<16>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_int<32>>(trace_file, object))
+    if(try_trace_obj<sc_uint<32>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_int<64>>(trace_file, object))
-        return;
-
-    if(try_trace_obj<sc_biguint<32>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_biguint<64>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_biguint<128>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_biguint<256>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_biguint<512>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_biguint<1024>>(trace_file, object))
+    if(try_trace_obj<sc_uint<64>>(trace_file, object, types_to_trace))
         return;
 
-    if(try_trace_obj<sc_bigint<32>>(trace_file, object))
+    if(try_trace_obj<sc_int<1>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_bigint<64>>(trace_file, object))
+    if(try_trace_obj<sc_int<2>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_bigint<128>>(trace_file, object))
+    if(try_trace_obj<sc_int<3>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_bigint<256>>(trace_file, object))
+    if(try_trace_obj<sc_int<4>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_bigint<512>>(trace_file, object))
+    if(try_trace_obj<sc_int<8>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_bigint<1024>>(trace_file, object))
+    if(try_trace_obj<sc_int<16>>(trace_file, object, types_to_trace))
         return;
-
-    if(try_trace_obj<sc_bv<1>>(trace_file, object))
+    if(try_trace_obj<sc_int<32>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_bv<2>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_bv<3>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_bv<4>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_bv<8>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_bv<16>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_bv<32>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_bv<64>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_bv<128>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_bv<256>>(trace_file, object))
-        return;
-    if(try_trace_obj<sc_bv<512>>(trace_file, object))
+    if(try_trace_obj<sc_int<64>>(trace_file, object, types_to_trace))
         return;
 
-    if(try_trace_obj<sc_lv<1>>(trace_file, object))
+    if(try_trace_obj<sc_biguint<32>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_lv<2>>(trace_file, object))
+    if(try_trace_obj<sc_biguint<64>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_lv<3>>(trace_file, object))
+    if(try_trace_obj<sc_biguint<128>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_lv<4>>(trace_file, object))
+    if(try_trace_obj<sc_biguint<256>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_lv<8>>(trace_file, object))
+    if(try_trace_obj<sc_biguint<512>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_lv<16>>(trace_file, object))
+    if(try_trace_obj<sc_biguint<1024>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_lv<32>>(trace_file, object))
+
+    if(try_trace_obj<sc_bigint<32>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_lv<64>>(trace_file, object))
+    if(try_trace_obj<sc_bigint<64>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_lv<128>>(trace_file, object))
+    if(try_trace_obj<sc_bigint<128>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_lv<256>>(trace_file, object))
+    if(try_trace_obj<sc_bigint<256>>(trace_file, object, types_to_trace))
         return;
-    if(try_trace_obj<sc_lv<512>>(trace_file, object))
+    if(try_trace_obj<sc_bigint<512>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_bigint<1024>>(trace_file, object, types_to_trace))
+        return;
+
+    if(try_trace_obj<sc_bv<1>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_bv<2>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_bv<3>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_bv<4>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_bv<8>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_bv<16>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_bv<32>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_bv<64>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_bv<128>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_bv<256>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_bv<512>>(trace_file, object, types_to_trace))
+        return;
+
+    if(try_trace_obj<sc_lv<1>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_lv<2>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_lv<3>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_lv<4>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_lv<8>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_lv<16>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_lv<32>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_lv<64>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_lv<128>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_lv<256>>(trace_file, object, types_to_trace))
+        return;
+    if(try_trace_obj<sc_lv<512>>(trace_file, object, types_to_trace))
         return;
 }
 
@@ -225,5 +230,5 @@ void tracer_base::descend(const sc_object* obj, bool trace_all) {
         for(auto o : obj->get_child_objects())
             descend(o, trace_all);
     } else
-        try_trace(trf, obj);
+        try_trace(trf, obj, types_to_trace);
 }
