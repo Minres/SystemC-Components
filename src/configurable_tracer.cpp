@@ -63,7 +63,7 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
     if(obj == this)
         return;
     const char* kind = obj->kind();
-    if(strcmp(kind, "tlm_signal") == 0) {
+    if((types_to_trace & trace_types::SIGNALS)==trace_types::SIGNALS && strcmp(kind, "tlm_signal") == 0) {
         if(trace)
             obj->trace(trf);
         return;
@@ -79,7 +79,7 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
         for(auto o : obj->get_child_objects())
             descend(o, trace_enable);
 
-    } else if(strcmp(kind, "sc_variable") == 0) {
+    } else if((types_to_trace & trace_types::VARIABLES)== trace_types::VARIABLES && strcmp(kind, "sc_variable") == 0) {
         if(trace)
             obj->trace(trf);
     } else if(const auto* tr = dynamic_cast<const scc::traceable*>(obj)) {
@@ -88,7 +88,7 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
         for(auto o : obj->get_child_objects())
             descend(o, tr->is_trace_enabled());
     } else if(trace)
-        try_trace(trf, obj);
+        try_trace(trf, obj, types_to_trace);
 }
 
 bool scc::configurable_tracer::get_trace_enabled(const sc_core::sc_object* obj, bool fall_back) {
