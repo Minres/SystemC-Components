@@ -37,30 +37,56 @@ template <class TYPE> struct peq : public sc_core::sc_object {
 
     explicit peq(const char* name)
     : sc_core::sc_object(name) {}
-
-    void notify(const TYPE& trans, const sc_core::sc_time& t) {
-        m_scheduled_events.insert(pair_type(t + sc_core::sc_time_stamp(), trans));
+    /**
+     * non-blocking push. Inserts entry into the queue with time based notification
+     *
+     * @param entry data to insert
+     */
+    void notify(const TYPE& entry, const sc_core::sc_time& t) {
+        m_scheduled_events.insert(pair_type(t + sc_core::sc_time_stamp(), entry));
         m_event.notify(t);
     }
-
-    void notify(const TYPE& trans) {
-        m_scheduled_events.insert(pair_type(sc_core::sc_time_stamp(), trans));
+    /**
+     * non-blocking push. Inserts entry into the queue with immediate notification
+     *
+     * @param entry data to insert
+     */
+    void notify(const TYPE& entry) {
+        m_scheduled_events.insert(pair_type(sc_core::sc_time_stamp(), entry));
         m_event.notify(); // immediate notification
     }
-
+    /**
+     * non-blocking get
+     *
+     * @return optional copy of the head element
+     */
     boost::optional<TYPE> get_next() {
         if(m_scheduled_events.empty())
             return boost::none;
         ;
         sc_core::sc_time now = sc_core::sc_time_stamp();
         if(m_scheduled_events.begin()->first <= now) {
-            auto trans = m_scheduled_events.begin()->second;
+            auto entry = m_scheduled_events.begin()->second;
             m_scheduled_events.erase(m_scheduled_events.begin());
-            return trans;
+            return entry;
         }
         m_event.notify(m_scheduled_events.begin()->first - now);
         return boost::none;
         ;
+    }
+    /**
+     * blocking get
+     *
+     * @return copy of the next entry.
+     */
+    TYPE get() {
+        while(m_scheduled_events.empty() || m_scheduled_events.begin()->first >= sc_core::sc_time_stamp()) {
+            ::sc_core::wait(m_event, simcontext());
+        }
+        auto entry = m_scheduled_events.begin()->second;
+        m_scheduled_events.erase(m_scheduled_events.begin());
+        m_event.notify(m_scheduled_events.begin()->first - sc_core::sc_time_stamp());
+        return entry;
     }
 
     sc_core::sc_event& event() { return m_event; }
