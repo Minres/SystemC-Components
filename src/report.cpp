@@ -264,6 +264,18 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
         this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 10));
     }
 }
+
+
+//BKDR hash algorithm
+uint64_t  char_hash(char const* str) {
+    constexpr int seed = 131;//31  131 1313 13131131313 etc//
+    uint64_t hash = 0;
+    while(*str){
+        hash = (hash * seed) + (*str);
+        str ++;
+    }
+    return hash;
+}
 } // namespace
 
 scc::stream_redirection::stream_redirection(ostream& os, log level)
@@ -456,18 +468,19 @@ scc::LogConfig& scc::LogConfig::dontCreateBroker(bool v) {
     return *this;
 }
 
-sc_core::sc_verbosity scc::get_log_verbosity(std::string const& t){
+sc_core::sc_verbosity scc::get_log_verbosity(char const* str){
 #ifdef WITH_CCI
-    static std::unordered_map<std::string, sc_core::sc_verbosity> lut;
-    auto it = lut.find(t);
+    static std::unordered_map<uint64_t, sc_core::sc_verbosity> lut;
+    auto k = char_hash(str);
+    auto it = lut.find(k);
     if(it!=lut.end())
         return it->second;
     if(sc_core::sc_get_current_object()){
-    	auto param_name = std::string(t)+".log_level";
+    	auto param_name = std::string(str)+".log_level";
         auto h = cci::cci_get_broker().get_param_handle<unsigned>(param_name);
         if(h.is_valid()){
             sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_value(), verbosity.size()-1));
-            lut[t]=ret;
+            lut[k]=ret;
             return ret;
         } else {
             auto val = cci::cci_get_broker().get_preset_cci_value(param_name);
@@ -475,7 +488,7 @@ sc_core::sc_verbosity scc::get_log_verbosity(std::string const& t){
             sc_core::sc_verbosity ret =  val.is_int()?
                     verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size()-1)):
 					global_verb;
-            lut[t]=ret;
+            lut[k]=ret;
             return ret;
         }
     }
