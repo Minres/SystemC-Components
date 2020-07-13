@@ -63,16 +63,15 @@ template <class TYPE> struct peq : public sc_core::sc_object {
     boost::optional<TYPE> get_next() {
         if(m_scheduled_events.empty())
             return boost::none;
-        ;
         sc_core::sc_time now = sc_core::sc_time_stamp();
-        if(m_scheduled_events.begin()->first <= now) {
+        if(m_scheduled_events.begin()->first > now){
+            m_event.notify(m_scheduled_events.begin()->first - now);
+            return boost::none;
+        } else {
             auto entry = m_scheduled_events.begin()->second;
             m_scheduled_events.erase(m_scheduled_events.begin());
             return entry;
         }
-        m_event.notify(m_scheduled_events.begin()->first - now);
-        return boost::none;
-        ;
     }
     /**
      * blocking get
@@ -80,12 +79,11 @@ template <class TYPE> struct peq : public sc_core::sc_object {
      * @return copy of the next entry.
      */
     TYPE get() {
-        while(m_scheduled_events.empty() || m_scheduled_events.begin()->first >= sc_core::sc_time_stamp()) {
-            ::sc_core::wait(m_event, simcontext());
+        while(!has_next()) {
+            sc_core::wait(event());
         }
         auto entry = m_scheduled_events.begin()->second;
         m_scheduled_events.erase(m_scheduled_events.begin());
-        m_event.notify(m_scheduled_events.begin()->first - sc_core::sc_time_stamp());
         return entry;
     }
 
@@ -98,6 +96,16 @@ template <class TYPE> struct peq : public sc_core::sc_object {
     }
 
 private:
+    bool has_next() {
+        if(m_scheduled_events.empty()) return false;
+        sc_core::sc_time now = sc_core::sc_time_stamp();
+        if(m_scheduled_events.begin()->first > now){
+            m_event.notify(m_scheduled_events.begin()->first - now);
+            return false;
+        } else {
+            return true;
+        }
+    }
     std::multimap<const sc_core::sc_time, TYPE> m_scheduled_events;
     sc_core::sc_event m_event;
 };
