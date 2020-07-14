@@ -56,6 +56,12 @@ public: // constructors and destructor:
             super::request_update();
     }
 
+    void clear(){
+        super::m_new_val = nullptr;
+        if(super::m_new_val!=super::m_cur_val)
+            super::request_update();
+    }
+
     using super::operator=;
 
 protected:

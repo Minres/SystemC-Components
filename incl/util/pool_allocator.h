@@ -10,6 +10,7 @@
 
 #include <deque>
 #include <vector>
+#include <array>
 #ifdef HAVE_GETENV
 #include <cstdlib>
 #endif
