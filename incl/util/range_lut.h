@@ -67,18 +67,18 @@ public:
      *
      * @return the size of the underlying container
      */
-    size_t size() { return m_size; }
+    size_t size() const { return m_size; }
     /**
      * remove all entries from the lut
      */
-    void clear() { m_lut.clear(); }
+    void clear() { m_lut.clear(); m_size=0;}
     /**
      * get the entry T associated with a given address
      *
      * @param addr the address
      * @return the entry belonging to the address
      */
-    inline T getEntry(uint64_t addr) {
+    inline T getEntry(uint64_t addr) const {
         auto iter = m_lut.lower_bound(addr);
         return (iter != m_lut.end() && (iter->second.type == END_RANGE || iter->first == addr)) ? iter->second.index
                                                                                                 : null_entry;
@@ -86,14 +86,14 @@ public:
     /**
      * validate the lookup table wrt. overlaps
      */
-    void validate();
+    void validate() const;
     /**
      * create a textual representation of the address map (address range->entry
      * association)
      *
      * @return
      */
-    std::string toString();
+    std::string toString() const;
     //! the null entry
     const T null_entry;
 
@@ -148,7 +148,7 @@ template <typename T> inline bool range_lut<T>::removeEntry(T i) {
     return false;
 }
 
-template <typename T> inline void range_lut<T>::validate() {
+template <typename T> inline void range_lut<T>::validate() const {
     auto mapped = false;
     for(auto iter = m_lut.begin(); iter != m_lut.end(); iter++) {
         switch(iter->second.type) {
@@ -175,7 +175,7 @@ template <typename T> inline void range_lut<T>::validate() {
     }
 }
 
-template <typename T> inline std::string range_lut<T>::toString() {
+template <typename T> inline std::string range_lut<T>::toString() const {
     std::ostringstream buf;
     for(auto iter = m_lut.begin(); iter != m_lut.end(); ++iter) {
         switch(iter->second.type) {
