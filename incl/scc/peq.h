@@ -95,7 +95,6 @@ template <class TYPE> struct peq : public sc_core::sc_object {
         m_event.cancel();
     }
 
-private:
     bool has_next() {
         if(m_scheduled_events.empty()) return false;
         sc_core::sc_time now = sc_core::sc_time_stamp();
@@ -106,6 +105,7 @@ private:
             return true;
         }
     }
+private:
     std::multimap<const sc_core::sc_time, TYPE> m_scheduled_events;
     sc_core::sc_event m_event;
 };
