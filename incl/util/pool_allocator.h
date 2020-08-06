@@ -11,6 +11,7 @@
 #include <deque>
 #include <vector>
 #include <array>
+#include <mutex>
 #ifdef HAVE_GETENV
 #include <cstdlib>
 #endif
@@ -45,6 +46,7 @@ private:
     using chunk_type = uint8_t[sizeof(T)];
     std::vector<std::array<chunk_type, CHUNK_SIZE>*> chunks;
     std::deque<void*> free_list;
+    std::mutex payload_mtx;
 };
 
 template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>& pool_allocator<T, CHUNK_SIZE>::get() {
@@ -65,6 +67,7 @@ template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>::~pool_
 }
 
 template <typename T, unsigned CHUNK_SIZE> inline void* pool_allocator<T, CHUNK_SIZE>::allocate() {
+    std::lock_guard<std::mutex> lk(payload_mtx);
     if(!free_list.size())
         resize();
     auto ret = free_list.back();
@@ -74,6 +77,7 @@ template <typename T, unsigned CHUNK_SIZE> inline void* pool_allocator<T, CHUNK_
 }
 
 template <typename T, unsigned CHUNK_SIZE> inline void pool_allocator<T, CHUNK_SIZE>::free(void* p) {
+    std::lock_guard<std::mutex> lk(payload_mtx);
     if(p)
         free_list.push_back(p);
 }
