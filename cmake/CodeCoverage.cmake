@@ -220,7 +220,7 @@ function(setup_target_for_coverage_lcov)
     endif() # NOT GENHTML_PATH
 
     # Set base directory (as absolute path), or default to PROJECT_SOURCE_DIR
-    if(${Coverage_BASE_DIRECTORY})
+    if(Coverage_BASE_DIRECTORY)
         get_filename_component(BASEDIR ${Coverage_BASE_DIRECTORY} ABSOLUTE)
     else()
         set(BASEDIR ${PROJECT_SOURCE_DIR})
@@ -316,7 +316,7 @@ function(setup_target_for_coverage_gcovr_xml)
     endif() # NOT GCOVR_PATH
 
     # Set base directory (as absolute path), or default to PROJECT_SOURCE_DIR
-    if(${Coverage_BASE_DIRECTORY})
+    if(Coverage_BASE_DIRECTORY)
         get_filename_component(BASEDIR ${Coverage_BASE_DIRECTORY} ABSOLUTE)
     else()
         set(BASEDIR ${PROJECT_SOURCE_DIR})
@@ -388,12 +388,12 @@ function(setup_target_for_coverage_gcovr_html)
     endif() # NOT GCOVR_PATH
 
     # Set base directory (as absolute path), or default to PROJECT_SOURCE_DIR
-    if(${Coverage_BASE_DIRECTORY})
+    if(Coverage_BASE_DIRECTORY)
         get_filename_component(BASEDIR ${Coverage_BASE_DIRECTORY} ABSOLUTE)
     else()
         set(BASEDIR ${PROJECT_SOURCE_DIR})
     endif()
-
+	
     # Collect excludes (CMake 3.4+: Also compute absolute paths)
     set(GCOVR_EXCLUDES "")
     foreach(EXCLUDE ${Coverage_EXCLUDE} ${COVERAGE_EXCLUDES} ${COVERAGE_GCOVR_EXCLUDES})
