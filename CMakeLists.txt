@@ -71,6 +71,8 @@ set(LIB_SOURCES
     src/jsoncpp.cpp
     src/tlm_ahb_bfm_initiator.cpp
     src/tlm_ahb_bfm_target.cpp
+    src/ahb_initiator.cpp
+ 	src/ahb_target.cpp
     src/tracer_base.cpp
     src/tracer.cpp
     src/mt19937_rng.cpp

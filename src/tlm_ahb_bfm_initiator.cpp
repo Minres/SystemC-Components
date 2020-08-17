@@ -9,7 +9,7 @@
 #include <tlm/ahb/ahb_tlm.h>
 #include <tlm/ahb/bfm/initiator.h>
 
-using namespace tlm::ahb::bfm;
+using namespace ahb::bfm;
 using namespace sc_core;
 
 template <unsigned WIDTH>
@@ -24,7 +24,7 @@ initiator<WIDTH>::initiator(const sc_module_name& nm)
         "bus_task_2", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task), this, nullptr);
     tsckt.register_nb_transport_fw([this](tlm::tlm_generic_payload& payload, tlm::tlm_phase& phase,
                                           sc_core::sc_time& delay) -> tlm::tlm_sync_enum {
-        if(phase == BEGIN_REQ) {
+        if(phase == tlm::BEGIN_REQ) {
             if(payload.has_mm())
                 payload.acquire();
             auto* ext = payload.get_extension<ahb_extension>();
@@ -49,7 +49,7 @@ template <unsigned WIDTH> inline void initiator<WIDTH>::bus_task() {
             HWRITE_o.write(trans->is_write());
             HMASTLOCK_o.write(ext->is_locked());
             HPROT_o.write(ext->get_protection());
-            HBURST_o.write(ext->get_burst());
+            HBURST_o.write(static_cast<unsigned>(ext->get_burst()));
             auto log_bytes = scc::ilog2(trans->get_data_length());
             auto log_width = scc::ilog2(WIDTH / 8);
             size_t size = 0;
@@ -60,7 +60,7 @@ template <unsigned WIDTH> inline void initiator<WIDTH>::bus_task() {
             HTRANS_o.write(static_cast<unsigned>(trans_e::NONSEQ));
             wait(HCLK_i.posedge_event());
             data_phase.lock();
-            tlm_phase phase{END_REQ};
+            tlm::tlm_phase phase{tlm::END_REQ};
             sc_time delay;
             tsckt->nb_transport_bw(*trans, phase, delay);
             addr_phase.unlock();
@@ -85,7 +85,7 @@ template <unsigned WIDTH> inline void initiator<WIDTH>::bus_task() {
                         *(uint8_t*)(trans->get_data_ptr() + offset) = data.range(j + 7, j).to_uint();
                 }
             }
-            phase = BEGIN_RESP;
+            phase = tlm::BEGIN_RESP;
             delay = SC_ZERO_TIME;
             tsckt->nb_transport_bw(*trans, phase, delay);
             if(trans->has_mm())
@@ -96,9 +96,9 @@ template <unsigned WIDTH> inline void initiator<WIDTH>::bus_task() {
     }
 }
 
-template class tlm::ahb::bfm::initiator<32>;
-template class tlm::ahb::bfm::initiator<64>;
-template class tlm::ahb::bfm::initiator<128>;
-template class tlm::ahb::bfm::initiator<256>;
-template class tlm::ahb::bfm::initiator<512>;
-template class tlm::ahb::bfm::initiator<1024>;
+template class ahb::bfm::initiator<32>;
+template class ahb::bfm::initiator<64>;
+template class ahb::bfm::initiator<128>;
+template class ahb::bfm::initiator<256>;
+template class ahb::bfm::initiator<512>;
+template class ahb::bfm::initiator<1024>;
