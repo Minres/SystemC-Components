@@ -19,7 +19,7 @@
 namespace ahb {
 namespace pe {
 
-class ahb_initiator_b : public sc_core::sc_module {
+class ahb_initiator_b : public sc_core::sc_module, public tlm::tlm_bw_transport_if<tlm::tlm_base_protocol_types> {
 public:
     SC_HAS_PROCESS(ahb_initiator_b);
 
@@ -64,6 +64,8 @@ public:
 
     ahb_initiator_b& operator=(ahb_initiator_b&&) = delete;
 
+    void snoop_resp(payload_type& trans, bool sync = false){}
+
     //! Read address valid to next read address valid
     sc_core::sc_attribute<unsigned> artv{"artv", 0};
     //! Write address valid to next write address valid
@@ -95,9 +97,9 @@ protected:
     };
     std::unordered_map<payload_type*, tx_state*> tx_state_by_id;
 
-    scc::ordered_semaphore addr_chnl{1};
+    scc::ordered_semaphore_t<1> addr_chnl;
 
-    scc::ordered_semaphore data_chnl{1};
+    scc::ordered_semaphore_t<1> data_chnl;
 
     sc_core::sc_event any_tx_finished;
 

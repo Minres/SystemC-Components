@@ -35,12 +35,13 @@
 #define _TLM_APB_PE_APB_INITIATOR_H_
 
 #include <tlm>
-#include <tlm_utils/peq_with_get.h>
+#include <scc/peq.h>
+#include <scc/ordered_semaphore.h>
 
 namespace apb {
 namespace pe {
 
-class apb_initiator_b : public sc_core::sc_module {
+class apb_initiator_b : public sc_core::sc_module, public tlm::tlm_bw_transport_if<tlm::tlm_base_protocol_types> {
 public:
     SC_HAS_PROCESS(apb_initiator_b);
 
@@ -86,17 +87,13 @@ public:
     apb_initiator_b& operator=(apb_initiator_b&&) = delete;
 
 protected:
-    unsigned calculate_beats(payload_type& p) {
-        sc_assert(p.get_data_length() > 0);
-        return p.get_data_length() < transfer_width_in_bytes ? 1 : p.get_data_length() / transfer_width_in_bytes;
-    }
-
     const size_t transfer_width_in_bytes;
-
-    const  bool coherent;
 
     sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& socket_fw;
 
+    scc::peq<std::tuple<payload_type*, tlm::tlm_phase>> peq;
+
+    scc::ordered_semaphore_t<1> chnl;
 
     sc_core::sc_event any_tx_finished;
 
@@ -115,7 +112,7 @@ private:
  */
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types, int N = 1,
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND>
-class apb3_initiator : public apb_initiator_b {
+class apb_initiator : public apb_initiator_b {
 public:
     using base = apb_initiator_b;
 
@@ -125,21 +122,21 @@ public:
      * @brief the constructor
      * @param socket reference to the initiator socket used to send and receive transactions
      */
-    apb3_initiator(const sc_core::sc_module_name& nm, tlm::tlm_initiator_socket<BUSWIDTH, TYPES, N, POL>& socket_)
+    apb_initiator(const sc_core::sc_module_name& nm, tlm::tlm_initiator_socket<BUSWIDTH, TYPES, N, POL>& socket_)
     : apb_initiator_b(nm, socket_.get_base_port(), BUSWIDTH, false)
     , socket(socket_) {
         socket(*this);
     }
 
-    apb3_initiator() = delete;
+    apb_initiator() = delete;
 
-    apb3_initiator(apb3_initiator const&) = delete;
+    apb_initiator(apb_initiator const&) = delete;
 
-    apb3_initiator(apb3_initiator&&) = delete;
+    apb_initiator(apb_initiator&&) = delete;
 
-    apb3_initiator& operator=(apb3_initiator const&) = delete;
+    apb_initiator& operator=(apb_initiator const&) = delete;
 
-    apb3_initiator& operator=(apb3_initiator&&) = delete;
+    apb_initiator& operator=(apb_initiator&&) = delete;
 
 private:
     tlm::tlm_initiator_socket<BUSWIDTH, TYPES, N, POL>& socket;
