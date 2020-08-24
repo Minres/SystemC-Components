@@ -113,10 +113,10 @@ public:
         id = reinterpret_cast<uintptr_t>(&x);
         this->set_command(x.get_command());
         this->set_address(x.get_address());
-        this->set_data_ptr(x.get_data_ptr());
+        this->set_data_ptr(nullptr);
         this->set_data_length(x.get_data_length());
         this->set_response_status(x.get_response_status());
-        this->set_byte_enable_ptr(x.get_byte_enable_ptr());
+        this->set_byte_enable_ptr(nullptr);
         this->set_byte_enable_length(x.get_byte_enable_length());
         this->set_streaming_width(x.get_streaming_width());
         return (*this);

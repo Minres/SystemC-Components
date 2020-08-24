@@ -70,12 +70,12 @@ public:
 
 protected:
     // support methods
-
     bool in_use() {
-        bool avail = value > 0 && queue.front() == sc_core::sc_get_current_process_handle();
-        if(avail)
+        if(value > 0 && queue.front() == sc_core::sc_get_current_process_handle()){
             queue.pop_front();
-        return (!avail);
+            return false;
+        } else
+            return true;
     }
 
     // error reporting
