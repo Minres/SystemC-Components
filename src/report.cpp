@@ -35,6 +35,7 @@
 #include <thread>
 #include <tuple>
 #include <unordered_map>
+#include <mutex>
 #ifdef __GNUC__
 #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 #if GCC_VERSION < 40900
@@ -78,7 +79,9 @@ struct ExtLogConfig : public scc::LogConfig {
         return regex_search(type, reg_ex);
 #endif
     }
-} log_cfg;
+};
+
+thread_local ExtLogConfig log_cfg;
 
 tuple<sc_time::value_type, sc_time_unit> get_tuple(const sc_time& t) {
     auto val = t.value();
@@ -232,7 +235,7 @@ inline void log2logger(spdlog::logger& logger, scc::log lvl, const string& msg) 
 }
 
 void report_handler(const sc_report& rep, const sc_actions& actions) {
-    static bool sc_stop_called = false;
+    thread_local bool sc_stop_called = false;
     if((actions & SC_DISPLAY) && (!log_cfg.file_logger || get_verbosity(rep) < SC_HIGH))
         log2logger(*log_cfg.console_logger, rep, log_cfg);
     if((actions & SC_LOG) && log_cfg.file_logger) {
@@ -331,7 +334,10 @@ int scc::stream_redirection::sync() {
     return 0; // Success
 }
 
+static std::mutex cfg_guard;
 static void configure_logging() {
+	std::lock_guard<mutex> lock(cfg_guard);
+	static bool spdlog_initialized = false;
 #ifdef WITH_CCI
     if(!log_cfg.dont_create_broker)
         cci::cci_register_broker(new cci_utils::broker("SCCBroker"));
@@ -341,33 +347,40 @@ static void configure_logging() {
     sc_report_handler::set_actions(SC_FATAL, SC_DEFAULT_FATAL_ACTIONS);
     sc_report_handler::set_verbosity_level(verbosity[static_cast<unsigned>(log_cfg.level)]);
     sc_report_handler::set_handler(report_handler);
-    spdlog::init_thread_pool(1024U,
+    if(!spdlog_initialized) {
+    	spdlog::init_thread_pool(1024U,
                              log_cfg.log_file_name.size() ? 2U : 1U); // queue with 8k items and 1 backing thread.
-    log_cfg.console_logger = log_cfg.log_async ? spdlog::stdout_color_mt<spdlog::async_factory>("console_logger")
+    	log_cfg.console_logger = log_cfg.log_async ? spdlog::stdout_color_mt<spdlog::async_factory>("console_logger")
                                                : spdlog::stdout_color_mt("console_logger");
-    auto logger_fmt = log_cfg.print_severity ? "[%L] %v" : "%v";
-    if(log_cfg.colored_output) {
-        std::ostringstream os;
-        os << "%^" << logger_fmt << "%$";
-        log_cfg.console_logger->set_pattern(os.str());
-    } else
-        log_cfg.console_logger->set_pattern("[%L] %v");
-    log_cfg.console_logger->flush_on(spdlog::level::warn);
-    log_cfg.console_logger->set_level(spdlog::level::level_enum::trace);
-    if(log_cfg.log_file_name.size()) {
-        {
-            ofstream ofs;
-            ofs.open(log_cfg.log_file_name, ios::out | ios::trunc);
-        }
-        log_cfg.file_logger = log_cfg.log_async
-                                  ? spdlog::basic_logger_mt<spdlog::async_factory>("file_logger", log_cfg.log_file_name)
-                                  : spdlog::basic_logger_mt("file_logger", log_cfg.log_file_name);
-        if(log_cfg.print_severity)
-            log_cfg.file_logger->set_pattern("[%8l] %v");
-        else
-            log_cfg.file_logger->set_pattern("%v");
-        log_cfg.file_logger->flush_on(spdlog::level::warn);
-        log_cfg.file_logger->set_level(spdlog::level::level_enum::trace);
+		auto logger_fmt = log_cfg.print_severity ? "[%L] %v" : "%v";
+		if(log_cfg.colored_output) {
+			std::ostringstream os;
+			os << "%^" << logger_fmt << "%$";
+			log_cfg.console_logger->set_pattern(os.str());
+		} else
+			log_cfg.console_logger->set_pattern("[%L] %v");
+		log_cfg.console_logger->flush_on(spdlog::level::warn);
+		log_cfg.console_logger->set_level(spdlog::level::level_enum::trace);
+		if(log_cfg.log_file_name.size()) {
+			{
+				ofstream ofs;
+				ofs.open(log_cfg.log_file_name, ios::out | ios::trunc);
+			}
+			log_cfg.file_logger = log_cfg.log_async
+									  ? spdlog::basic_logger_mt<spdlog::async_factory>("file_logger", log_cfg.log_file_name)
+									  : spdlog::basic_logger_mt("file_logger", log_cfg.log_file_name);
+			if(log_cfg.print_severity)
+				log_cfg.file_logger->set_pattern("[%8l] %v");
+			else
+				log_cfg.file_logger->set_pattern("%v");
+			log_cfg.file_logger->flush_on(spdlog::level::warn);
+			log_cfg.file_logger->set_level(spdlog::level::level_enum::trace);
+		}
+		spdlog_initialized = true;
+    } else {
+    	log_cfg.console_logger = spdlog::get("console_logger");
+    	if(log_cfg.log_file_name.size())
+    		log_cfg.file_logger    = spdlog::get("file_logger");
     }
     if(log_cfg.log_filter_regex.size()) {
 #ifdef USE_C_REGEX
@@ -470,7 +483,7 @@ scc::LogConfig& scc::LogConfig::dontCreateBroker(bool v) {
 
 sc_core::sc_verbosity scc::get_log_verbosity(char const* str){
 #ifdef WITH_CCI
-    static std::unordered_map<uint64_t, sc_core::sc_verbosity> lut;
+    thread_local std::unordered_map<uint64_t, sc_core::sc_verbosity> lut;
     auto k = char_hash(str);
     auto it = lut.find(k);
     if(it!=lut.end())

@@ -35,7 +35,7 @@
 
 namespace logging {
 //! array holding string representations of log levels
-static std::array<const char* const, 8> buffer = {{LEVELS(DO_DESCRIPTION)}};
+static const std::array<const char* const, 8> buffer = {{LEVELS(DO_DESCRIPTION)}};
 //! enum defining the log levels
 enum log_level { LEVELS(DO_ENUM) DBGTRACE = TRACEALL };
 /**
@@ -127,7 +127,7 @@ public:
      * @return the logging level
      */
     static log_level& reporting_level() {
-        static log_level reportingLevel = WARNING;
+        thread_local log_level reportingLevel = WARNING;
         return reportingLevel;
     }
     /**
@@ -136,7 +136,7 @@ public:
      * @return the logging level
      */
     static bool& abort_on_fatal() {
-        static bool flag = false;
+        thread_local bool flag = false;
         return flag;
     }
     /**
@@ -166,7 +166,7 @@ public:
      * @return the print time flag
      */
     static bool& print_time() {
-        static bool flag = true;
+        thread_local bool flag = true;
         return flag;
     }
     /**
@@ -175,13 +175,13 @@ public:
      * @return the print severity flag
      */
     static bool& print_severity() {
-        static bool flag = true;
+        thread_local bool flag = true;
         return flag;
     }
 
 protected:
     log_level& get_last_log_level() {
-        static log_level level = TRACE;
+        thread_local log_level level = TRACE;
         return level;
     }
     static const char* const* get_log_level_cstr() { return buffer.data(); };
@@ -198,12 +198,12 @@ public:
      * @return the file handle
      */
     static FILE*& stream() {
-        static FILE* pStream = stdout;
+        thread_local FILE* pStream = stdout;
         return pStream;
     }
 
     static std::ostream*& ostream() {
-        static std::ostream* oStream{nullptr};
+        thread_local std::ostream* oStream{nullptr};
         return oStream;
     }
     /**

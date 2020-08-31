@@ -50,7 +50,7 @@ private:
 };
 
 template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>& pool_allocator<T, CHUNK_SIZE>::get() {
-    static pool_allocator inst;
+    static thread_local pool_allocator inst;
     return inst;
 }
 

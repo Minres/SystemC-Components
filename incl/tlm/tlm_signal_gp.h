@@ -185,7 +185,7 @@ template <typename SIG = bool> struct tlm_signal_gp : public tlm_generic_payload
     };
 
     static tlm::tlm_signal_gp<SIG>* create() {
-        static gp_mm mm;
+        static thread_local gp_mm mm;
         return mm.create();
     }
 

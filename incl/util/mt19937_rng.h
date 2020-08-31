@@ -66,7 +66,7 @@ public:
 
 private:
     static std::mt19937_64& inst() {
-        static std::mt19937_64 rng;
+        static thread_local std::mt19937_64 rng;
         return rng;
     }
 };
