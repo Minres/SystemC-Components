@@ -303,18 +303,17 @@ public:
                         BASE_DATA_TYPE wrmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed
                                                     ? -1
                                                     : std::numeric_limits<BASE_DATA_TYPE>::max()) {
-        _reg_field = reinterpret_cast<pointer>(malloc(SIZE * sizeof(value_type)));
-        for(size_t idx = START; idx < (START + SIZE); ++idx) {
-            std::stringstream ss;
-            ss << nm << idx;
-            new(_reg_field + idx) sc_register<DATATYPE>(sc_core::sc_module_name(ss.str().c_str()), storage[idx],
-                                                        reset_val, owner, rdmask, wrmask);
-        }
+
+    	_reg_field.init(START+SIZE, [&](const char* name, size_t idx)->pointer
+    			{
+    				return new sc_register<DATATYPE>(name, storage[idx], reset_val, owner, rdmask, wrmask);
+    			});
     }
+
     /**
      * the destructor
      */
-    ~sc_register_indexed() override { free(_reg_field); }
+    ~sc_register_indexed() override { }
     /**
      * get the size of the register file
      *
@@ -365,14 +364,14 @@ public:
      * @param idx the index
      * @return the data reference at the index
      */
-    reference operator[](size_t idx) noexcept override { return *(_reg_field + idx); }
+    reference operator[](size_t idx) noexcept override { return _reg_field[idx]; }
     /**
      * const element access operator
      *
      * @param idx
      * @return the data reference at the index
      */
-    const_reference operator[](size_t idx) const noexcept override { return *(_reg_field + idx); }
+    const_reference operator[](size_t idx) const noexcept override { return _reg_field[idx]; }
     /**
      * Element access operator
      *
@@ -381,7 +380,7 @@ public:
      */
     reference at(size_t idx) override {
         assert("access out of bound" && idx < SIZE);
-        return *(_reg_field + idx);
+        return _reg_field[idx];
     }
     /**
      * const element access operator
@@ -391,11 +390,11 @@ public:
      */
     const_reference at(size_t idx) const override {
         assert("access out of bound" && idx < SIZE);
-        return *(_reg_field + idx);
+        return _reg_field[idx];
     }
 
 private:
-    value_type* _reg_field;
+    sc_core::sc_vector<value_type> _reg_field;
 };
 /**
  * alias class to map template argument read an write mask to constructor arguments
