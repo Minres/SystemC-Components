@@ -327,8 +327,8 @@ public:
      * @param read_cb
      */
     void set_read_cb(std::function<bool(const sc_register<DATATYPE>&, DATATYPE&)> read_cb) {
-        for(std::unique_ptr<sc_register<DATATYPE>> reg : *this)
-            reg->add_read_cb(read_cb);
+        for(auto& reg : _reg_field)
+            reg.set_read_cb(read_cb);
     }
     /**
      * set the read callback triggered upon a read request
@@ -336,8 +336,8 @@ public:
      * @param read_cb
      */
     void set_read_cb(std::function<bool(const sc_register<DATATYPE>&, DATATYPE&, sc_core::sc_time)> read_cb) {
-        for(std::unique_ptr<sc_register<DATATYPE>> reg : *this)
-            reg->add_read_cb(read_cb);
+        for(auto& reg : _reg_field)
+            reg.set_read_cb(read_cb);
     }
     /**
      * set the write callback triggered upon a write request without forwarding the annotated time
@@ -345,18 +345,18 @@ public:
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE&)> write_cb) {
-        for(std::unique_ptr<sc_register<DATATYPE>> reg : *this)
-            reg->add_write_cb(write_cb);
+    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const &)> write_cb) {
+        for(auto& reg : _reg_field)
+            reg.set_write_cb(write_cb);
     }
     /**
      * set the write callback triggered upon a write request
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE&, sc_core::sc_time)> write_cb) {
-        for(std::unique_ptr<sc_register<DATATYPE>> reg : *this)
-            reg->add_write_cb(write_cb);
+    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const &, sc_core::sc_time)> write_cb) {
+        for(auto& reg : _reg_field)
+            reg.set_write_cb(write_cb);
     }
     /**
      * Element access operator
