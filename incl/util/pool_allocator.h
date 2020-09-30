@@ -55,6 +55,7 @@ template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>& pool_a
 }
 
 template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>::~pool_allocator() {
+    std::lock_guard<std::mutex> lk(payload_mtx);
 #ifdef HAVE_GETENV
     auto* check = getenv("TLM_MM_CHECK");
     if(check && strcasecmp(check, "INFO")) {
