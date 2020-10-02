@@ -65,6 +65,10 @@ public:
         return trf;
     }
 
+    sc_core::sc_trace_file* get_trace_file() {
+        return trf;
+    }
+
     void set_trace_file(sc_core::sc_trace_file* trf) {
         if(this->trf && owned) sc_core::sc_close_vcd_trace_file(this->trf);
         this->trf = trf;

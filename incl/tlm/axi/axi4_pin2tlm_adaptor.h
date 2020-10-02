@@ -1,7 +1,9 @@
 #ifndef AXI_PIN2TLM_ADAPTOR_H_
 #define AXI_PIN2TLM_ADAPTOR_H_
 
-#include "tlm_utils/simple_initiator_socket.h"
+#include "scv4tlm/tlm_rec_initiator_socket.h"
+#include <scc/initiator_mixin.h>
+
 #include <systemc>
 #include <tlm>
 
@@ -14,7 +16,7 @@ public:
 
     axi_pin2tlm_adaptor(sc_core::sc_module_name nm);
 
-    tlm_utils::simple_initiator_socket<axi_pin2tlm_adaptor> output_socket{"output_socket"};
+    scc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<32>> output_socket{"output_socket"};
 
     sc_core::sc_in<bool> clk_i{"clk_i"};
     sc_core::sc_in<bool> resetn_i{"resetn_i"};

@@ -2,7 +2,9 @@
 #ifndef AXI_BFM__INITIATOR_H_
 #define AXI_BFM__INITIATOR_H_
 
-#include "tlm_utils/simple_target_socket.h"
+#include "scv4tlm/tlm_rec_target_socket.h"
+#include <scc/target_mixin.h>
+
 #include <systemc>
 #include <tlm>
 
@@ -15,7 +17,7 @@ public:
 
     axi4_tlm2pin_adaptor(sc_core::sc_module_name nm);
 
-    tlm_utils::simple_target_socket<axi4_tlm2pin_adaptor> input_socket{"input_socket"};
+    scc::target_mixin<scv4tlm::tlm_rec_target_socket<32>> input_socket{"input_socket"};
 
     sc_core::sc_in<bool> clk_i{"clk_i"};
     sc_core::sc_in<bool> resetn_i{"resetn_i"};

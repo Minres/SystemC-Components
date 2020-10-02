@@ -4,10 +4,11 @@
 using namespace axi_bfm;
 using namespace sc_core;
 
+
 axi4_tlm2pin_adaptor::axi4_tlm2pin_adaptor(sc_module_name nm)
 : sc_module(nm)
 {
-    input_socket.register_b_transport(this, &axi4_tlm2pin_adaptor::b_transport);
+    input_socket.register_b_transport([this](tlm::tlm_generic_payload& generic_payload, sc_core::sc_time& delay)->void{b_transport(generic_payload, delay);});
 
     SC_THREAD(write_addr_channel);
     SC_THREAD(write_data_channel);
@@ -19,11 +20,17 @@ axi4_tlm2pin_adaptor::axi4_tlm2pin_adaptor(sc_module_name nm)
 void axi4_tlm2pin_adaptor::write_addr_channel() {
     while(true) {
         aw_len_o.write(1); // All AXI4-Lite transactions are of burst length 1
+        aw_valid_o.write(false);
         wait(wr_queue.get_event());
         while(auto* trans = wr_queue.get_next_transaction()) {
             aw_addr_o.write(trans->get_address());
             aw_valid_o.write(true);
-            if (aw_ready_i.negedge()) wait(aw_ready_i.posedge_event());
+            wait(clk_i.posedge_event());
+            if (!aw_ready_i.read()) {
+                wait(aw_ready_i.posedge_event());
+            } else {
+                wait(clk_i.posedge_event());
+            }
             aw_valid_o.write(false);
         }
     }
@@ -32,13 +39,14 @@ void axi4_tlm2pin_adaptor::write_addr_channel() {
 void axi4_tlm2pin_adaptor::write_data_channel() {
     sc_dt::sc_biguint<512> data{0};
     while(true) {
+        w_valid_o.write(false);
         wait(wr_queue.get_event());
         while(auto* trans = wr_queue.get_next_transaction()) {
             w_valid_o.write(true);
             for(size_t j = 0, k = 0, offset = 0; k < 32 / 8; j += 8, ++k, ++offset)
                 data.range(j + 7, j) = *(uint8_t*)(trans->get_data_ptr() + offset);
             w_data_o.write(data);
-            if (w_ready_i.negedge()) wait(w_ready_i.posedge_event());
+            if (!w_ready_i.read()) wait(w_ready_i.posedge_event());
 
             w_valid_o.write(false);
         }
