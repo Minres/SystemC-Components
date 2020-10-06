@@ -74,14 +74,12 @@ public:
     void b_transport(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay);
 
 private:
-    void write_addr_channel();
-    void write_data_channel();
+    void reset();
+    void write_addr_channel(const tlm::tlm_generic_payload& trans);
+    void write_data_channel(const tlm::tlm_generic_payload& trans);
     void write_resp_channel();
-    void read_addr_channel();
-    void read_data_channel();
-
-    tlm_utils::peq_with_get<tlm::tlm_generic_payload> wr_queue{"wr_queue"};
-    tlm_utils::peq_with_get<tlm::tlm_generic_payload> rd_queue{"rd_queue"};
+    void read_addr_channel(const tlm::tlm_generic_payload& trans);
+    void read_data_channel(tlm::tlm_generic_payload& trans);
 
     enum { OKAY = 0x0, EXOKAY = 0x1, SLVERR = 0x2, DECERR = 0x3 };
 
