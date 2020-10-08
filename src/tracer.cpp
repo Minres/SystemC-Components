@@ -34,7 +34,6 @@ using namespace scc;
 
 tracer::tracer(const std::string&& name, file_type type, bool enable)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
-, owned(true)
 #ifdef WITH_SCV
 , txdb(nullptr)
 #endif
@@ -42,39 +41,8 @@ tracer::tracer(const std::string&& name, file_type type, bool enable)
     if(enable) {
         trf = sc_create_vcd_trace_file(name.c_str());
         trf->set_time_unit(1, SC_PS);
+        owned=true;
     }
-#ifdef WITH_SCV
-    if(type != NONE) {
-        std::stringstream ss;
-        ss << name;
-        switch(type) {
-        case TEXT:
-            scv_tr_text_init();
-            ss << ".txlog";
-            break;
-        case COMPRESSED:
-            scv_tr_compressed_init();
-            ss << ".txlog";
-            break;
-        case SQLITE:
-            scv_tr_sqlite_init();
-            ss << ".txdb";
-            break;
-        default:
-            break;
-        }
-        txdb = new scv_tr_db(ss.str().c_str());
-        scv_tr_db::set_default_db(txdb);
-    }
-#endif
-}
-
-tracer::tracer(const std::string&& name, file_type type, sc_core::sc_trace_file* tf)
-: tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")), tf)
-#ifdef WITH_SCV
-, txdb(nullptr)
-#endif
-{
 #ifdef WITH_SCV
     if(type != NONE) {
         std::stringstream ss;
@@ -108,8 +76,6 @@ void tracer::end_of_elaboration() {
 }
 
 tracer::~tracer() {
-    if(trf && owned)
-        sc_close_vcd_trace_file(trf);
 #ifdef WITH_SCV
     delete txdb;
 #endif

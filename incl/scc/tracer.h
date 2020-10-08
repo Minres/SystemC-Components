@@ -49,31 +49,12 @@ public:
      */
     tracer(const std::string&&, file_type, bool = true);
     /**
-     * the constructor
-     *
-     * @param name base name of the trace file(s)
-     * @param type type of trace file for transactions
-     * @param the trace file to use for signal and POD tracing
-     */
-    tracer(const std::string&&, file_type, sc_core::sc_trace_file* = nullptr);
-    /**
      * the destructor
      */
     virtual ~tracer() override;
 
-    const sc_core::sc_trace_file* get_trace_file() const {
-        return trf;
-    }
-
-    void set_trace_file(sc_core::sc_trace_file* trf) {
-        if(this->trf && owned) sc_core::sc_close_vcd_trace_file(this->trf);
-        this->trf = trf;
-        owned=false;
-    }
-
 protected:
     void end_of_elaboration() override;
-    bool owned{false};
 #ifdef WITH_SCV
     scv_tr_db* txdb;
 #endif
