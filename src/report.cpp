@@ -351,7 +351,7 @@ static void configure_logging() {
         os << "%^" << logger_fmt << "%$";
         log_cfg.console_logger->set_pattern(os.str());
     } else
-        log_cfg.console_logger->set_pattern("[%L] %v");
+        log_cfg.console_logger->set_pattern(logger_fmt);
     log_cfg.console_logger->flush_on(spdlog::level::warn);
     log_cfg.console_logger->set_level(spdlog::level::level_enum::trace);
     if(log_cfg.log_file_name.size()) {
