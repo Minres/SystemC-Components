@@ -19,7 +19,7 @@ public:
     scc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<32>> output_socket{"output_socket"};
 
     sc_core::sc_in<bool> clk_i{"clk_i"};
-    sc_core::sc_in<bool> resetn_i{"resetn_i"};
+    sc_core::sc_in<bool> reset_i{"resetn_i"};
 
     // Write address channel signals
     sc_core::sc_in<bool>                   aw_id_i       {"aw_id_i"};
