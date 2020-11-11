@@ -40,8 +40,6 @@ public:
     tlm::tlm_target_socket<BUSWIDTH, TYPES, 1> ts{"ts"};
     //! The initiator to be bound to the target socket
     tlm::tlm_initiator_socket<BUSWIDTH, TYPES, 1> is{"is"};
-    //! (optional) port to get the clock period
-    sc_port<sc_signal_in_if<bool>,1,SC_ZERO_OR_MORE_BOUND> clk_i{"clk_i"};
     /*! \brief The constructor of the component
      *
      * \param name is the SystemC module name of the recorder
@@ -61,10 +59,6 @@ public:
 
     virtual ~tlm2_recorder_module() {}
 
-private:
-    void end_of_elaboration() override {
-        tlm2_recorder<TYPES>::clk_if = dynamic_cast<sc_core::sc_clock*>(clk_i.get_interface());
-    }
 };
 } // namespace scv4tlm
 

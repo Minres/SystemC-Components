@@ -306,10 +306,6 @@ public:
      */
     const bool isRecordingEnabled() const { return m_db != NULL && enableTracing.value; }
 
-protected:
-    sc_core::sc_clock* clk_if{nullptr};
-    sc_core::sc_time period{};
-
 private:
     //! event queue to hold time points of blocking transactions
     tlm_utils::peq_with_cb_and_phase<tlm2_recorder, recording_types> b_timed_peq;
@@ -339,7 +335,6 @@ private:
     std::map<uint64, scv_tr_handle> btx_handle_map;
 
     enum DIR { FW, BW };
-    scv_tr_generator<>* clk_gen{nullptr};
     //! non-blocking transaction recording stream handle
     std::vector<scv_tr_stream*> nb_streamHandle;
     //! non-blocking transaction recording stream handle
@@ -502,17 +497,6 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
             "write", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
         nb_fw_trHandle[tlm::TLM_IGNORE_COMMAND] = new scv_tr_generator<std::string, tlm::tlm_sync_enum>(
             "ignore", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
-        if(clk_if){
-            clk_gen = new scv_tr_generator<>{"clock", *nb_streamHandle[FW]};
-        }
-    }
-    if(clk_if && clk_if->period()!=period) {
-        auto hndl = clk_gen->begin_transaction();
-        hndl.record_attribute("old_period", period/sc_core::sc_time(1, sc_core::SC_PS));
-        hndl.record_attribute("new_period", clk_if->period()/sc_core::sc_time(1, sc_core::SC_PS));
-        hndl.record_attribute("unit", "ps");
-        hndl.end_transaction();
-        period=clk_if->period();
     }
     /*************************************************************************
      * prepare recording
