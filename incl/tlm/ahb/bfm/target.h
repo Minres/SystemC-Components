@@ -11,7 +11,6 @@
 #include <scc/initiator_mixin.h>
 #include <tlm>
 
-namespace tlm {
 namespace ahb {
 namespace bfm {
 
@@ -50,6 +49,5 @@ private:
 
 } /* namespace bfm */
 } /* namespace ahb */
-} /* namespace tlm */
 
 #endif /* AHB_TARGET_BFM_H_ */

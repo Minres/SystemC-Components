@@ -13,7 +13,6 @@
 #include <tlm_utils/peq_with_get.h>
 #include <type_traits>
 
-namespace tlm {
 namespace ahb {
 namespace bfm {
 
@@ -55,6 +54,5 @@ private:
 
 } /* namespace bfm */
 } /* namespace ahb */
-} /* namespace tlm */
 
 #endif /* AHB_TARGET_BFM_H_ */

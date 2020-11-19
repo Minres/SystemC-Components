@@ -11,7 +11,7 @@
 #include <tlm/ahb/bfm/target.h>
 #include <tlm/tlm_mm.h>
 
-using namespace tlm::ahb::bfm;
+using namespace ahb::bfm;
 using namespace sc_core;
 
 template <unsigned WIDTH>
@@ -25,7 +25,7 @@ target<WIDTH>::target(const sc_module_name& nm)
 template <unsigned WIDTH> target<WIDTH>::~target() = default;
 
 template <unsigned WIDTH> void target<WIDTH>::bfm_thread() {
-    tlm::tlm_mm<>& mm = tlm_mm<>::get();
+    tlm::tlm_mm<>& mm = tlm::tlm_mm<>::get();
     auto const log_width = scc::ilog2(WIDTH / 8);
     auto beat_cnt = 0U;
     wait(SC_ZERO_TIME);
@@ -51,11 +51,11 @@ template <unsigned WIDTH> void target<WIDTH>::bfm_thread() {
                     gp->set_extension(ext);
                     ext->set_locked(HMASTLOCK_i.read());
                     ext->set_protection(HPROT_i.read());
-                    ext->set_burst(HBURST_i.read());
+                    ext->set_burst(static_cast<ahb::burst_e>(HBURST_i.read().to_uint()));
                     size_t size = HSIZE_i.read();
                     if(size > log_width)
                         SCCERR(SCMOD) << "Access size (" << size << ") is larger than bus width (" << log_width << ")!";
-                    unsigned length = (1 << size) * (1 << ext->get_burst());
+                    unsigned length = (1 << size) * (1 << static_cast<unsigned>(ext->get_burst()));
                     gp->set_data_length(length);
                     gp->set_streaming_width(length);
                     gp->set_data_ptr(new uint8_t[length]);
@@ -100,7 +100,7 @@ template <unsigned WIDTH> void target<WIDTH>::handle_data_phase(unsigned& beat_c
             data.range(i + 7, i) = *(uint8_t*)(data_payload->get_data_ptr() + offset);
         HRDATA_o.write(data);
     }
-    if(++beat_cnt == 1 << ext->get_burst()) {
+    if(++beat_cnt == 1 << static_cast<unsigned>(ext->get_burst())) {
         if(data_payload->is_write()) {
             sc_time delay;
             isckt->b_transport(*data_payload, delay);
@@ -110,9 +110,9 @@ template <unsigned WIDTH> void target<WIDTH>::handle_data_phase(unsigned& beat_c
         data_payload = nullptr;
     }
 }
-template class tlm::ahb::bfm::target<32>;
-template class tlm::ahb::bfm::target<64>;
-template class tlm::ahb::bfm::target<128>;
-template class tlm::ahb::bfm::target<256>;
-template class tlm::ahb::bfm::target<512>;
-template class tlm::ahb::bfm::target<1024>;
+template class ahb::bfm::target<32>;
+template class ahb::bfm::target<64>;
+template class ahb::bfm::target<128>;
+template class ahb::bfm::target<256>;
+template class ahb::bfm::target<512>;
+template class ahb::bfm::target<1024>;

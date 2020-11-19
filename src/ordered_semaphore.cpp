@@ -99,7 +99,10 @@ int ordered_semaphore::trywait() {
 // unlock (give) the semaphore
 
 int ordered_semaphore::post() {
-    ++value;
+    if(value==capacity)
+        SCCWARN(SCMOD)<<"post() called on entirely free semaphore!";
+    else
+        ++value;
     if(value>0) free_evt.notify();
     return 0;
 }

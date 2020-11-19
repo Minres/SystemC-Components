@@ -12,7 +12,6 @@
 #include <cstdint>
 #include <tlm>
 
-namespace tlm {
 namespace ahb {
 
 enum class lock_e : uint8_t { NORMAL = 0x0, EXLUSIVE = 0x1, LOCKED = 0x2 };
@@ -51,9 +50,7 @@ struct ahb_extension : public tlm::tlm_extension<ahb_extension> {
     uint8_t get_protection() const;
     void set_protection(uint8_t);
 
-    uint8_t get_burst() const;
-    burst_e get_burst_e() const;
-    void set_burst(uint8_t);
+    burst_e get_burst() const;
     void set_burst(burst_e);
 
     /**
@@ -84,6 +81,15 @@ private:
     burst_e burst{burst_e::SINGLE};
 };
 
+/**
+ * definition of the additional protocol phases
+ */
+DECLARE_EXTENDED_PHASE(BEGIN_PARTIAL_RESP);
+DECLARE_EXTENDED_PHASE(END_PARTIAL_RESP);
+
+/*****************************************************************************
+ * Implementation details
+ *****************************************************************************/
 inline bool ahb_extension::is_instruction() const { return prot & INSTR; }
 
 inline void ahb_extension::set_instruction(bool instr) {
@@ -128,14 +134,7 @@ inline bool ahb_extension::is_locked() const { return lock == lock_e::LOCKED; }
 
 inline void ahb_extension::set_locked(bool locked) { lock = locked ? lock_e::LOCKED : lock_e::NORMAL; }
 
-inline uint8_t ahb_extension::get_burst() const { return static_cast<uint8_t>(burst); }
-
-inline burst_e ahb_extension::get_burst_e() const { return burst; }
-
-inline void ahb_extension::set_burst(uint8_t b) {
-    assert(b <= static_cast<uint8_t>(burst_e::INCR16));
-    burst = static_cast<burst_e>(b);
-}
+inline burst_e ahb_extension::get_burst() const { return burst; }
 
 inline void ahb_extension::set_burst(burst_e b) { burst = b; }
 
@@ -148,6 +147,5 @@ inline void ahb_extension::copy_from(const tlm::tlm_extension_base& ext) {
 }
 
 } // namespace ahb
-} // namespace tlm
 
-#endif /* SYSTEMC_COMPONENTS_AHB_TLM_H_ */
+#endif /* _AHB_TLM_H_ */

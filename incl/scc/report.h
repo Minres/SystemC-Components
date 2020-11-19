@@ -131,6 +131,12 @@ inline sc_core::sc_verbosity get_log_verbosity(){
     return static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
 }
 /**
+ * return an scope specific verbosity level if defined. Otherwise the global verbosity level
+ * @param t
+ * @return
+ */
+sc_core::sc_verbosity get_log_verbosity(char const* t);
+/**
  * return a scope specific verbosity level if defined. Otherwise the global verbosity level
  * @param t
  * @return
@@ -138,12 +144,6 @@ inline sc_core::sc_verbosity get_log_verbosity(){
 inline sc_core::sc_verbosity get_log_verbosity(std::string const& t){
     return get_log_verbosity(t.c_str());
 }
-/**
- * return an scope specific verbosity level if defined. Otherwise the global verbosity level
- * @param t
- * @return
- */
-sc_core::sc_verbosity get_log_verbosity(char const* t);
 /**
  * the logger class
  */

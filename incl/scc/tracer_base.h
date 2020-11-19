@@ -39,11 +39,27 @@ public:
     tracer_base(const sc_core::sc_module_name& nm)
     : sc_core::sc_module(nm) {}
 
-    tracer_base(const sc_core::sc_module_name& nm, sc_core::sc_trace_file* tf)
-    : sc_core::sc_module(nm), trf(tf) {}
+    tracer_base(const sc_core::sc_module_name& nm, sc_core::sc_trace_file* tf, bool owned=true)
+    : sc_core::sc_module(nm), trf(tf), owned(owned) {}
+
+    ~tracer_base(){
+        if(trf && owned)
+            sc_close_vcd_trace_file(trf);
+    }
 
     void set_trace_types(trace_types t){
         types_to_trace=t;
+    }
+
+    const sc_core::sc_trace_file* get_trace_file() const {
+        return trf;
+    }
+
+    void set_trace_file(sc_core::sc_trace_file* trf) {
+        if(this->trf && owned)
+            sc_close_vcd_trace_file(trf);
+        this->trf=trf;
+        owned=false;
     }
 
 protected:
@@ -52,6 +68,8 @@ protected:
     static void try_trace(sc_core::sc_trace_file* trace_file, const sc_core::sc_object* object, trace_types t);
 
     sc_core::sc_trace_file* trf{nullptr};
+
+    bool owned{false};
 
     trace_types types_to_trace{trace_types::ALL};
 };

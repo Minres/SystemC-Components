@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef TLM_RECORDING_EXTENSION_H_
-#define TLM_RECORDING_EXTENSION_H_
+#ifndef _SCV4TLM_TLM_RECORDING_EXTENSION_H_
+#define _SCV4TLM_TLM_RECORDING_EXTENSION_H_
 
 #include <array>
 #include <scv.h>
