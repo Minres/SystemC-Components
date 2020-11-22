@@ -40,7 +40,7 @@ std::string pretty_print(axi::axi4_extension& gp, tlm::tlm_phase_enum phase, std
     std::ostringstream msg;
     msg.str("");
 
-    unsigned int id = gp.get_id();
+    //unsigned int id = gp.get_id();
     // unsigned int user = gp.get_user();
     /*  bool exclusive    = gp.is_exclusive();
     bool bufferable   = gp.is_bufferable();
@@ -73,7 +73,7 @@ std::string pretty_print(axi::axi4_extension& gp, tlm::tlm_phase_enum phase, std
     bool snoop_error         = gp.is_snoop_error();
     bool snoop_was_unique    = gp.is_snoop_was_unique();
     */
-    msg << "ID = " << id;
+    //msg << "ID = " << id;
 
     return msg.str();
 }
@@ -81,7 +81,7 @@ std::string pretty_print(axi::axi4_extension& gp, tlm::tlm_phase_enum phase, std
 std::string print(axi::axi4_extension& gp) {
     std::ostringstream msg;
     // msg.str("");
-    unsigned int id = gp.get_id();
+    //unsigned int id = gp.get_id();
     // unsigned int user = gp.get_user();
     /* bool exclusive    = gp.is_exclusive();
     bool bufferable   = gp.is_bufferable();
@@ -113,7 +113,7 @@ std::string print(axi::axi4_extension& gp) {
     bool snoop_data_transfer = gp.is_snoop_data_transfer();
     bool snoop_error         = gp.is_snoop_error();
     bool snoop_was_unique    = gp.is_snoop_was_unique(); */
-    msg << " ID: " << id;
+    //msg << " ID: " << id;
     // msg << " USER: " << user;
 
     return msg.str();

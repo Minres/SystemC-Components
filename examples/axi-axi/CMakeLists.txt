@@ -35,7 +35,7 @@ add_executable(${APP_NAME} sc_main.cpp)
 
 target_include_directories (${APP_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../incl)
 target_include_directories (${APP_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../..)
-target_link_libraries (${APP_NAME} PUBLIC axi-tlm)
+target_link_libraries (${APP_NAME} PUBLIC tlm2-interfaces)
 target_link_libraries (${APP_NAME} PUBLIC scc)
 target_link_libraries (${APP_NAME} PUBLIC scc-util)
 target_link_libraries (${APP_NAME} PUBLIC )

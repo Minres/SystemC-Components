@@ -20,7 +20,7 @@ link_directories(${SCV_LIBRARY_DIRS} ${SystemC_LIBRARY_DIRS})
 
 add_executable(${APP_NAME} Adapter.cpp sc_main.cpp AXIreport.cpp Target_axi.cpp TLM2report.cpp)
 
-target_link_libraries (${APP_NAME} LINK_PUBLIC axi-tlm)
+target_link_libraries (${APP_NAME} LINK_PUBLIC tlm2-interfaces)
 target_link_libraries (${APP_NAME} LINK_PUBLIC ${Boost_LIBRARIES} )
 target_link_libraries (${APP_NAME} LINK_PUBLIC ${CMAKE_THREAD_LIBS_INIT})
 if(NOT TCMALLOC_LIB STREQUAL TCMALLOC_LIB-NOTFOUND)

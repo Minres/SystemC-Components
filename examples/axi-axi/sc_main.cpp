@@ -60,7 +60,7 @@ public:
         sc_assert(len < (SOCKET_WIDTH / 8) || len % (SOCKET_WIDTH / 8) == 0);
         ext->set_length((len * 8 - 1) / SOCKET_WIDTH);
         ext->set_burst(len * 8 > SOCKET_WIDTH ? axi::burst_e::INCR : axi::burst_e::FIXED);
-        ext->set_id(id);
+        //ext->set_id(id);
         return trans;
     }
 
