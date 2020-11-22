@@ -21,3 +21,37 @@ SCC is supposed to be a light weight productivity library for SystemC and TLM 2.
 * sysc::router
 
   a simple component to route TLM2.0 accesses of a set of masters to a set of targets based on generic payload addresses
+
+build instructions
+==================
+
+the repo is cmake based. Make sure that you have at least cmake 3.12 installed.
+
+There is a dependency on SystemC. For some capabilities SCV is required, but this
+can be selected during build time. 
+
+The suggested build flow is:
+
+- create a build directory and enter into it
+- execute cmmake with applicable options 
+- execute build
+- install build
+- run tests
+
+For example:
+
+setenv WORKAREA `pwd`
+setenv LIB_VERSION gcc-6.3.0-SystemC-2.3.3.O2
+setenv SYSTEMC_HOME /workarea3/SystemC/systemc-2.3.3-gcc-6.3.0-c++14-install
+setenv SCV_HOME ${SYSTEMC_HOME}
+setenv TLM_HOME ${SYSTEMC_HOME}/include
+setenv GCC_HOME /workarea3/gcc-6.3.0-install
+setenv PATH ${GCC_HOME}/bin:${PATH}
+setenv CC ${GCC_HOME}/bin/gcc
+setenv CXX ${GCC_HOME}/bin/g++
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$WORKAREA/install/$LIB_VERSION -DENABLE_SCV=ON ..
+make 
+make install
+make test
