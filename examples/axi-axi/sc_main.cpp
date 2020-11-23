@@ -59,27 +59,30 @@ public:
         ext->set_size(scc::ilog2(std::min<size_t>(len, SOCKET_WIDTH / 8)));
         sc_assert(len < (SOCKET_WIDTH / 8) || len % (SOCKET_WIDTH / 8) == 0);
         ext->set_length((len * 8 - 1) / SOCKET_WIDTH);
-        ext->set_burst(len * 8 > SOCKET_WIDTH ? axi::burst_e::INCR : axi::burst_e::FIXED);
-        //ext->set_id(id);
+        //ext->set_burst(len * 8 > SOCKET_WIDTH ? axi::burst_e::INCR : axi::burst_e::FIXED);
+        ext->set_burst(axi::burst_e::INCR);
+        ext->set_id(common::id_type::CTRL,id);
         return trans;
     }
 
     void run() {
-        unsigned int addr = 0;
-        unsigned int NumberOfIterations = 1000;
+        unsigned int StartAddr          = 0;
+        unsigned int ResetCycles        = 10;
+	unsigned int BurstLengthByte    = 16;
+	unsigned int NumberOfIterations = 1000;
         rst.write(false);
-        for(size_t i = 0; i < 9; ++i)
+        for(size_t i = 0; i < ResetCycles; ++i)
             wait(clk.posedge_event());
         rst.write(true);
         wait(clk.posedge_event());
         std::array<uint8_t, 256> data;
-        wait(10, SC_NS);
+        wait(clk.posedge_event());
         for(int i = 0; i < NumberOfIterations; ++i) {
             SCCDEBUG("testbench") << "executing transactions in iteration " << i;
             { // 1
-                auto trans = prepare_trans(16);
+                auto trans = prepare_trans(BurstLengthByte);
                 trans->set_command(tlm::TLM_READ_COMMAND);
-                trans->set_address(addr);
+                trans->set_address(StartAddr);
                 trans->set_data_ptr(data.data());
                 trans->acquire();
                 intor_pe.transport(*trans, false);
@@ -87,23 +90,11 @@ public:
                     SCCERR() << "Invalid response status" << trans->get_response_string();
                 trans->release();
             }
-            addr += 8;
+	    StartAddr += BurstLengthByte;
             { // 2
-                auto trans = prepare_trans(8);
-                trans->set_command(tlm::TLM_READ_COMMAND);
-                trans->set_address(addr);
-                trans->set_data_ptr(data.data());
-                trans->acquire();
-                intor_pe.transport(*trans, false);
-                if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
-                    SCCERR() << "Invalid response status" << trans->get_response_string();
-                trans->release();
-            }
-            addr += 8;
-            { // 3
-                auto trans = prepare_trans(16);
+                auto trans = prepare_trans(BurstLengthByte);
                 trans->set_command(tlm::TLM_WRITE_COMMAND);
-                trans->set_address(addr);
+                trans->set_address(StartAddr);
                 trans->set_data_ptr(data.data());
                 trans->acquire();
                 intor_pe.transport(*trans, false);
@@ -111,45 +102,9 @@ public:
                     SCCERR() << "Invalid response status" << trans->get_response_string();
                 trans->release();
             }
-            addr += 8;
-            { // 4
-                auto trans = prepare_trans(8);
-                trans->set_command(tlm::TLM_WRITE_COMMAND);
-                trans->set_address(addr);
-                trans->set_data_ptr(data.data());
-                trans->acquire();
-                intor_pe.transport(*trans, false);
-                if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
-                    SCCERR() << "Invalid response status" << trans->get_response_string();
-                trans->release();
-            }
-            addr += 8;
-            { // 5
-                auto trans = prepare_trans(32);
-                trans->set_command(tlm::TLM_READ_COMMAND);
-                trans->set_address(addr);
-                trans->set_data_ptr(data.data());
-                trans->acquire();
-                intor_pe.transport(*trans, false);
-                if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
-                    SCCERR() << "Invalid response status" << trans->get_response_string();
-                trans->release();
-            }
-            addr += 8;
-            { // 6
-                auto trans = prepare_trans(32);
-                trans->set_command(tlm::TLM_WRITE_COMMAND);
-                trans->set_address(addr);
-                trans->set_data_ptr(data.data());
-                trans->acquire();
-                intor_pe.transport(*trans, false);
-                if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
-                    SCCERR() << "Invalid response status " << trans->get_response_string();
-                trans->release();
-            }
-            addr += 8;
+            StartAddr += BurstLengthByte;
         }
-        wait(100_ns);
+        wait(100, SC_NS);
         sc_stop();
     }
 

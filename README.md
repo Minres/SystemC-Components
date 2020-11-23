@@ -46,6 +46,7 @@ git checkout adding-examples
 git clone https://github.com/Arteris-IP/tlm2-interfaces.git
 cd tlm2-interfaces/
 git checkout adding-examples
+cd ..
 
 setenv WORKAREA `pwd`
 setenv SYSTEMC_HOME /workarea3/SystemC/systemc-2.3.3-gcc-6.3.0-c++14-install
@@ -60,5 +61,6 @@ mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$WORKAREA/install/$LIB_VERSION -DENABLE_SCV=ON ..
 make 
-make install
-make test
+./examples/ace-axi/ace_ace_test
+./examples/axi-axi/axi_axi_test
+

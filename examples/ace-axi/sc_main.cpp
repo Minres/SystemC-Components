@@ -10,13 +10,13 @@
 #include <scv.h>
 #include <scv/scv_tr.h>
 #endif
-#include "Adapter.h"
+//#include "Adapter.h"
 #include "scc/report.h"
 #include "tlm/tlm_id.h"
 #include <array>
 #include <axi/pe/simple_initiator.h>
-//#include <axi/pe/simple_target.h>
-#include <Target_axi.h>
+#include <axi/pe/simple_target.h>
+#include <ace_axi_adapt.h>
 #include <tlm/tlm_mm.h>
 
 using namespace axi;
@@ -32,27 +32,29 @@ public:
     sc_core::sc_signal<bool> rst{"rst"};
     axi::ace_initiator_socket<SOCKET_WIDTH> intor{"intor"};
 #ifdef WITH_SCV
-  //scv4axi::ace_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
-  scv4axi::axi_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
+    //scv4axi::ace_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
+    scv4axi::axi_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
 #endif
-  //axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
-    TLM2_COMMON::Adapter<SOCKET_WIDTH, SOCKET_WIDTH> Adapter1{"Adapter1"};
+    axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
+  //TLM2_COMMON::Adapter<SOCKET_WIDTH, SOCKET_WIDTH> Adapter1{"Adapter1"};
+  ace_axi_adapt<SOCKET_WIDTH> Adapter1{"Adapter1"};
 
     testbench(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm)
     , intor_pe("intor_pe", intor)
-      //, tgt_pe("tgt_pe", tgt) {
-    , tgt_pe("tgt_pe") {
+      , tgt_pe("tgt_pe", tgt) {
+      // , tgt_pe("tgt_pe") {
         SC_THREAD(run);
         intor_pe.clk_i(clk);
-        //tgt_pe.clk_i(clk);
-        tgt_pe.Clk(clk);
+        tgt_pe.clk_i(clk);
+        //tgt_pe.Clk(clk);
 #ifdef WITH_SCV
         //intor(intor_rec.tsckt);
-        intor(Adapter1.target_socket);
-        //intor_rec.isckt(Adapter1.target_socket);
-        Adapter1.initiator_socket(intor_rec.tsckt);
-        intor_rec.isckt(tgt_pe.axi);
+        intor(Adapter1.tsckt);
+        //intor_rec.isckt(Adapter1.tsckt);
+        Adapter1.isckt(intor_rec.tsckt);
+        //intor_rec.isckt(tgt_pe.axi);
+        intor_rec.isckt(tgt);
 #else
         //intor(tgt);
 #endif
@@ -71,95 +73,59 @@ public:
         ext->set_length((len * 8 - 1) / SOCKET_WIDTH);
         //ext->set_burst(len * 8 > SOCKET_WIDTH ? axi::burst_e::INCR : axi::burst_e::FIXED);
         ext->set_burst(axi::burst_e::INCR);
-        //ext->set_id(id);
+        ext->set_id(common::id_type::CTRL,id);
         return trans;
     }
 
     void run() {
+        unsigned int StartAddr          = 0;
+        unsigned int ResetCycles        = 10;
+	unsigned int BurstLengthByte    = 16;
+	unsigned int NumberOfIterations = 1000;
         rst.write(false);
-        for(size_t i = 0; i < 9; ++i)
+        for(size_t i = 0; i < ResetCycles; ++i)
             wait(clk.posedge_event());
         rst.write(true);
         wait(clk.posedge_event());
         std::array<uint8_t, 256> data;
         wait(10, SC_NS);
-        { // 1
-            auto trans = prepare_trans(16);
+        for(int i = 0; i < NumberOfIterations; ++i) {
+	  SCCDEBUG("testbench") << "executing transactions in iteration " << i;
+	  { // 1
+            auto trans = prepare_trans(BurstLengthByte);
             SCCDEBUG(SCMOD) << "generating transactions " << trans;
             trans->set_command(tlm::TLM_READ_COMMAND);
-            trans->set_address(0);
+            trans->set_address(StartAddr);
             trans->set_data_ptr(data.data());
             trans->acquire();
             intor_pe.transport(*trans, false);
             if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
-                SCCERR() << "Invalid response status" << trans->get_response_string();
+	      SCCERR() << "Invalid response status" << trans->get_response_string();
             trans->release();
-        }
-        { // 2
-            auto trans = prepare_trans(8);
+	    StartAddr += BurstLengthByte;
+	  }
+	  { // 2
+            auto trans = prepare_trans(BurstLengthByte);
             SCCDEBUG(SCMOD) << "generating transactions " << trans;
-            trans->set_command(tlm::TLM_READ_COMMAND);
-            trans->set_address(8);
-            trans->set_data_ptr(data.data());
-            trans->acquire();
-            intor_pe.transport(*trans, false);
-            if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
-                SCCERR() << "Invalid response status" << trans->get_response_string();
-            trans->release();
-        }
-        { // 3
-            auto trans = prepare_trans(16);
             trans->set_command(tlm::TLM_WRITE_COMMAND);
-            trans->set_address(16);
-            trans->set_data_ptr(data.data());
-            //trans->acquire();
-            intor_pe.transport(*trans, false);
-            if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
-                SCCERR() << "Invalid response status" << trans->get_response_string();
-            //trans->release();
-        }
-        { // 4
-            auto trans = prepare_trans(8);
-	    SCCDEBUG(SCMOD) << "generating transactions " << trans;
-	    trans->set_command(tlm::TLM_WRITE_COMMAND);
-            trans->set_address(8);
+            trans->set_address(BurstLengthByte);
             trans->set_data_ptr(data.data());
             trans->acquire();
             intor_pe.transport(*trans, false);
             if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
-                SCCERR() << "Invalid response status" << trans->get_response_string();
+	      SCCERR() << "Invalid response status" << trans->get_response_string();
             trans->release();
-        }
-        { // 5
-            auto trans = prepare_trans(32);
-            trans->set_command(tlm::TLM_READ_COMMAND);
-            trans->set_address(32);
-            trans->set_data_ptr(data.data());
-            trans->acquire();
-            intor_pe.transport(*trans, false);
-            if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
-                SCCERR() << "Invalid response status" << trans->get_response_string();
-            trans->release();
-        }
-        { // 6
-            auto trans = prepare_trans(32);
-            trans->set_command(tlm::TLM_WRITE_COMMAND);
-            trans->set_address(32);
-            trans->set_data_ptr(data.data());
-            trans->acquire();
-            intor_pe.transport(*trans, false);
-            if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
-                SCCERR() << "Invalid response status " << trans->get_response_string();
-            trans->release();
-        }
+	    StartAddr += BurstLengthByte;
+	  }
+	}
         wait(100_ns);
         sc_stop();
     }
 
 private:
     axi::pe::simple_ace_initiator<SOCKET_WIDTH> intor_pe;
-  //axi::pe::simple_target<SOCKET_WIDTH> tgt_pe;
-    Target_axi<SOCKET_WIDTH> tgt_pe;
+  axi::pe::simple_target<SOCKET_WIDTH> tgt_pe;
+  //Target_axi<SOCKET_WIDTH> tgt_pe;
     unsigned id{0};
 };
 
@@ -172,7 +138,6 @@ int sc_main(int argc, char* argv[]) {
 		      .dontCreateBroker(true)
 		      .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
-    //scc::stream_redirection cout_redirect(std::cout, logging::INFO);
 #ifdef WITH_SCV
     scv_startup();
     scv_tr_text_init();
@@ -180,7 +145,7 @@ int sc_main(int argc, char* argv[]) {
     scv_tr_db::set_default_db(db);
 #endif
     testbench mstr("master");
-    sc_core::sc_start(10_us);
+    sc_core::sc_start(10_ms);
     SCCINFO() << "Finished";
 #ifdef WITH_SCV
     delete db;
