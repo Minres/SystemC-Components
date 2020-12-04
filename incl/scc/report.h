@@ -18,11 +18,12 @@
 #define _SCC_REPORT_H_
 
 #include "utilities.h"
-#include <iomanip>
-#include <sstream>
 #include <sysc/kernel/sc_time.h>
 #include <sysc/utils/sc_report.h>
 #include <util/ities.h>
+#include <cstring>
+#include <iomanip>
+#include <sstream>
 
 namespace scc {
 //! array holding string representations of log levels
