@@ -19,12 +19,12 @@
 
 #include "tlm_gp_data_ext.h"
 #include "tlm_recording_extension.h"
-#include <tlm/tlm_mm.h>
 #include <array>
 #include <map>
 #include <regex>
 #include <scv.h>
 #include <string>
+#include <tlm/tlm_mm.h>
 #include <tlm>
 #include <tlm_utils/peq_with_cb_and_phase.h>
 #include <vector>
@@ -104,8 +104,7 @@ private:
 namespace impl {
 //! \brief the class to hold the information to be recorded on the timed
 //! streams
-template <typename TYPES = tlm::tlm_base_protocol_types>
-class tlm_recording_payload : public TYPES::tlm_payload_type {
+template <typename TYPES = tlm::tlm_base_protocol_types> class tlm_recording_payload : public TYPES::tlm_payload_type {
 public:
     scv_tr_handle parent;
     uint64 id;
@@ -126,13 +125,12 @@ public:
     , parent()
     , id(0) {}
 };
-template <typename TYPES = tlm::tlm_base_protocol_types>
-struct tlm_recording_types {
+template <typename TYPES = tlm::tlm_base_protocol_types> struct tlm_recording_types {
     using tlm_payload_type = tlm_recording_payload<TYPES>;
     using tlm_phase_type = typename TYPES::tlm_phase_type;
 };
 
-}
+} // namespace impl
 /*! \brief The TLM2 transaction recorder
  *
  * This module records all TLM transaction to a SCV transaction stream for
@@ -145,14 +143,15 @@ template <typename TYPES = tlm::tlm_base_protocol_types>
 class tlm2_recorder : public virtual tlm::tlm_fw_transport_if<TYPES>,
                       public virtual tlm::tlm_bw_transport_if<TYPES>,
                       public sc_core::sc_object {
-    std::string get_parent(char const* hier_name){
+    std::string get_parent(char const* hier_name) {
         std::string ret(hier_name);
         auto pos = ret.rfind('.');
-        if(pos==std::string::npos)
+        if(pos == std::string::npos)
             return ret;
         else
             return ret.substr(0, pos);
     }
+
 public:
     using recording_types = impl::tlm_recording_types<TYPES>;
     using mm = tlm::tlm_mm<recording_types>;
@@ -223,7 +222,8 @@ public:
     virtual ~tlm2_recorder() override {
         delete b_streamHandle;
         delete b_streamHandleTimed;
-        for(auto* p: b_trTimedHandle) delete p;//NOLINT
+        for(auto* p : b_trTimedHandle)
+            delete p; // NOLINT
         for(size_t i = 0; i < nb_streamHandle.size(); ++i)
             delete nb_streamHandle[i];
         for(size_t i = 0; i < nb_streamHandleTimed.size(); ++i)
@@ -567,13 +567,13 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
         /*************************************************************************
          * do the timed notification if req. finished here
          *************************************************************************/
-        if(enableTimed.value){
+        if(enableTimed.value) {
             tlm_recording_payload* req = mm::get().allocate();
             req->acquire();
             (*req) = trans;
             req->parent = h;
             nb_timed_peq.notify(*req, (status == tlm::TLM_COMPLETED && phase == tlm::BEGIN_REQ) ? tlm::END_RESP : phase,
-                    delay);
+                                delay);
         }
     } else if(enableTimed.value && status == tlm::TLM_UPDATED) {
         tlm_recording_payload* req = mm::get().allocate();

@@ -87,7 +87,7 @@ private:
     bool is_pooled{false};
 };
 
-struct data_buffer: public tlm::tlm_extension<data_buffer> {
+struct data_buffer : public tlm::tlm_extension<data_buffer> {
 
     tlm_extension_base* clone() const override {
         data_buffer* ext = new data_buffer;
@@ -95,8 +95,9 @@ struct data_buffer: public tlm::tlm_extension<data_buffer> {
     }
     void copy_from(tlm_extension_base const& from) override { buffer_ = static_cast<data_buffer const&>(from).buffer_; }
 
-    void set_size(uint8_t size){ buffer_.resize(size); }
-    unsigned char * get_buf_ptr() {return buffer_.data();}
+    void set_size(uint8_t size) { buffer_.resize(size); }
+    unsigned char* get_buf_ptr() { return buffer_.data(); }
+
 private:
     std::vector<unsigned char> buffer_;
 };

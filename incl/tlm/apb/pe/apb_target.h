@@ -33,10 +33,9 @@
 
 #ifndef _TLM_APB_PE_APB_TARGET_H_
 
-#include <tlm>
 #include <functional>
 #include <scc/ordered_semaphore.h>
-
+#include <tlm>
 
 namespace apb {
 namespace pe {
@@ -85,8 +84,9 @@ protected:
      * @param port
      * @param transfer_width
      */
-    explicit apb_target_b(const sc_core::sc_module_name& nm, sc_core::sc_port_b<tlm::tlm_bw_transport_if<tlm::tlm_base_protocol_types>>& port,
-                             size_t transfer_width);
+    explicit apb_target_b(const sc_core::sc_module_name& nm,
+                          sc_core::sc_port_b<tlm::tlm_bw_transport_if<tlm::tlm_base_protocol_types>>& port,
+                          size_t transfer_width);
 
     apb_target_b() = delete;
 
@@ -97,7 +97,6 @@ protected:
     apb_target_b& operator=(apb_target_b const&) = delete;
 
     apb_target_b& operator=(apb_target_b&&) = delete;
-
 
     tlm::tlm_generic_payload* active_tx{nullptr};
     void response();
@@ -124,7 +123,7 @@ public:
      */
     apb_target(tlm::tlm_target_socket<BUSWIDTH, TYPES, N, POL>& socket)
     : // @suppress("Class members should be properly initialized")
-    	apb_target(sc_core::sc_gen_unique_name("simple_target"), socket) {}
+        apb_target(sc_core::sc_gen_unique_name("simple_target"), socket) {}
 
     apb_target(const sc_core::sc_module_name& nm, tlm::tlm_target_socket<BUSWIDTH, TYPES, N, POL>& socket)
     : apb_target_b(nm, socket.get_base_port(), BUSWIDTH)
@@ -147,6 +146,6 @@ private:
 };
 
 } // namespace pe
-} // namespace ahb
+} // namespace apb
 
 #endif /*_TLM_APB_PE_APB_TARGET_H_*/

@@ -7,7 +7,7 @@ struct {
     std::unordered_map<void*, std::mt19937_64> inst;
     uint64_t seed{std::mt19937_64::default_seed};
 } rng;
-};
+}; // namespace
 
 std::mt19937_64& scc::MT19937::inst() {
     if(auto* obj = sc_core::sc_get_current_object()) {
@@ -24,8 +24,9 @@ std::mt19937_64& scc::MT19937::inst() {
     }
 }
 
-void scc::MT19937::seed(uint64_t new_seed){
-    rng.seed=new_seed;
+void scc::MT19937::seed(uint64_t new_seed) {
+    rng.seed = new_seed;
     rng.global.seed(new_seed);
-    for(auto& e: rng.inst) e.second.seed(new_seed);
+    for(auto& e : rng.inst)
+        e.second.seed(new_seed);
 }

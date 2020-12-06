@@ -31,12 +31,11 @@
  *       eyck@minres.com - initial API and implementation
  ******************************************************************************/
 
-
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
-#include <tlm/ahb/pe/ahb_target.h>
 #include <scc/report.h>
 #include <systemc>
+#include <tlm/ahb/pe/ahb_target.h>
 #include <tuple>
 
 using namespace sc_core;
@@ -48,8 +47,9 @@ using namespace ahb::pe;
  * target
  ******************************************************************************/
 
-ahb_target_b::ahb_target_b(const sc_core::sc_module_name& nm, sc_core::sc_port_b<tlm::tlm_bw_transport_if<tlm_base_protocol_types>>& port,
-                                 size_t transfer_width)
+ahb_target_b::ahb_target_b(const sc_core::sc_module_name& nm,
+                           sc_core::sc_port_b<tlm::tlm_bw_transport_if<tlm_base_protocol_types>>& port,
+                           size_t transfer_width)
 : sc_module(nm)
 , socket_bw(port) {
     add_attribute(wr_data_accept_delay);
@@ -59,12 +59,9 @@ ahb_target_b::ahb_target_b(const sc_core::sc_module_name& nm, sc_core::sc_port_b
     add_attribute(wr_resp_delay);
     dont_initialize();
     sensitive << clk_i.pos();
-
 }
 
-void ahb_target_b::end_of_elaboration() {
-    clk_if = dynamic_cast<sc_core::sc_clock*>(clk_i.get_interface());
-}
+void ahb_target_b::end_of_elaboration() { clk_if = dynamic_cast<sc_core::sc_clock*>(clk_i.get_interface()); }
 
 void ahb_target_b::b_transport(payload_type& trans, sc_time& t) {
     auto latency = operation_cb ? operation_cb(trans) : trans.is_read() ? rd_resp_delay.value : wr_resp_delay.value;
@@ -76,8 +73,8 @@ void ahb_target_b::b_transport(payload_type& trans, sc_time& t) {
     }
 }
 
-tlm_sync_enum ahb_target_b::nb_transport_fw(payload_type& trans, phase_type& phase, sc_time& t){
-	//TODO:
+tlm_sync_enum ahb_target_b::nb_transport_fw(payload_type& trans, phase_type& phase, sc_time& t) {
+    // TODO:
 }
 
 bool ahb_target_b::get_direct_mem_ptr(payload_type& trans, tlm_dmi& dmi_data) {
@@ -87,14 +84,13 @@ bool ahb_target_b::get_direct_mem_ptr(payload_type& trans, tlm_dmi& dmi_data) {
 
 unsigned int ahb_target_b::transport_dbg(payload_type& trans) { return 0; }
 
-
-void ahb_target_b::operation_resp(payload_type& trans, bool sync){
-    //TODO
+void ahb_target_b::operation_resp(payload_type& trans, bool sync) {
+    // TODO
 }
 
 void ahb_target_b::send_resp_thread() {
     while(true) {
         // waiting for responses to send
-        //TODO
+        // TODO
     }
 }

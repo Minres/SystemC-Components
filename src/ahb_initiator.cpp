@@ -5,9 +5,9 @@
  *      Author: eyckj
  */
 
+#include <scc/report.h>
 #include <tlm/ahb/pe/ahb_initiator.h>
 #include <tlm/atp/timing_params.h>
-#include <scc/report.h>
 
 using namespace sc_core;
 using namespace ahb;
@@ -19,8 +19,8 @@ uint8_t log2n(uint8_t siz) { return ((siz > 1) ? 1 + log2n(siz >> 1) : 0); }
 } // anonymous namespace
 
 ahb_initiator_b::ahb_initiator_b(sc_core::sc_module_name nm,
-        sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port,
-        size_t transfer_width, bool coherent)
+                                 sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port,
+                                 size_t transfer_width, bool coherent)
 : sc_module(nm)
 , socket_fw(port)
 , transfer_width_in_bytes(transfer_width / 8)
@@ -36,7 +36,6 @@ ahb_initiator_b::~ahb_initiator_b() {
     for(auto& e : tx_state_by_id)
         delete e.second;
 }
-
 
 tlm::tlm_sync_enum ahb_initiator_b::nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t) {
 
@@ -81,41 +80,42 @@ void ahb_initiator_b::transport(payload_type& trans, bool blocking) {
 
         auto* ext = trans.get_extension<ahb::ahb_extension>();
         /// Timing
-        auto delay_in_cycles = trans.is_read() ? timing_e ? timing_e->artv : artv.value : timing_e ? timing_e->awtv : awtv.value;
+        auto delay_in_cycles =
+            trans.is_read() ? timing_e ? timing_e->artv : artv.value : timing_e ? timing_e->awtv : awtv.value;
         for(unsigned i = 0; i < delay_in_cycles; ++i)
             wait(clk_i.posedge_event());
         auto burst_length = 0U;
-        switch(ext->get_burst()){
+        switch(ext->get_burst()) {
         case ahb::burst_e::SINGLE:
-            burst_length=1;
+            burst_length = 1;
             break;
         case ahb::burst_e::INCR:
-            burst_length=1;
+            burst_length = 1;
             break;
         case ahb::burst_e::WRAP4:
         case ahb::burst_e::INCR4:
-            burst_length=4;
+            burst_length = 4;
             break;
         case ahb::burst_e::WRAP8:
         case ahb::burst_e::INCR8:
-            burst_length=8;
+            burst_length = 8;
             break;
         case ahb::burst_e::WRAP16:
         case ahb::burst_e::INCR16:
-            burst_length=16;
+            burst_length = 16;
             break;
         }
         tlm::tlm_phase next_phase{tlm::UNINITIALIZED_PHASE};
         addr_chnl.wait();
-            SCCTRACE(SCMOD) << "starting read address phase of tx with id=" << &trans;
-            auto res = send(trans, txs, tlm::BEGIN_REQ);
-            if(res == ahb::BEGIN_PARTIAL_RESP || res == tlm::BEGIN_RESP)
-                next_phase=res;
-            else if(res != tlm::END_REQ)
-                SCCERR(SCMOD)<<"target did not repsond with END_REQ to a BEGIN_REQ";
-            wait(clk_i.posedge_event());
+        SCCTRACE(SCMOD) << "starting read address phase of tx with id=" << &trans;
+        auto res = send(trans, txs, tlm::BEGIN_REQ);
+        if(res == ahb::BEGIN_PARTIAL_RESP || res == tlm::BEGIN_RESP)
+            next_phase = res;
+        else if(res != tlm::END_REQ)
+            SCCERR(SCMOD) << "target did not repsond with END_REQ to a BEGIN_REQ";
+        wait(clk_i.posedge_event());
         auto finished = false;
-        const auto exp_burst_length=burst_length;
+        const auto exp_burst_length = burst_length;
         data_chnl.wait();
         addr_chnl.post();
         do {
@@ -134,10 +134,12 @@ void ahb_initiator_b::transport(payload_type& trans, bool blocking) {
                 sc_time delay = clk_if ? clk_if->period() - 1_ps : SC_ZERO_TIME;
                 socket_fw->nb_transport_fw(trans, phase, delay);
                 if(burst_length)
-                    SCCWARN(SCMOD) << "got wrong number of burst beats, expected "<<exp_burst_length<<", got "<<exp_burst_length-burst_length;
+                    SCCWARN(SCMOD) << "got wrong number of burst beats, expected " << exp_burst_length << ", got "
+                                   << exp_burst_length - burst_length;
                 wait(clk_i.posedge_event());
                 finished = true;
-            } else if(std::get<0>(entry) == &trans && std::get<1>(entry) == ahb::BEGIN_PARTIAL_RESP) { // RDAT without CRESP case
+            } else if(std::get<0>(entry) == &trans &&
+                      std::get<1>(entry) == ahb::BEGIN_PARTIAL_RESP) { // RDAT without CRESP case
                 SCCTRACE(SCMOD) << "received beat of tx with id=" << &trans;
                 auto delay_in_cycles = timing_e ? timing_e->rbr : rbr.value;
                 for(unsigned i = 0; i < delay_in_cycles; ++i)
@@ -159,4 +161,3 @@ void ahb_initiator_b::transport(payload_type& trans, bool blocking) {
     }
     SCCTRACE(SCMOD) << "finished transport req for id=" << &trans;
 }
-

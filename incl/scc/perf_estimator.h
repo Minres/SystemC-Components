@@ -64,7 +64,7 @@ public:
      */
     virtual ~perf_estimator();
 
-    void set_cycle_time(sc_core::sc_time cycle_period) {this->cycle_period=cycle_period;};
+    void set_cycle_time(sc_core::sc_time cycle_period) { this->cycle_period = cycle_period; };
 
 protected:
     perf_estimator(const sc_core::sc_module_name& nm, sc_core::sc_time heart_beat);

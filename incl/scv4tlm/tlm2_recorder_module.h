@@ -58,7 +58,6 @@ public:
     }
 
     virtual ~tlm2_recorder_module() {}
-
 };
 } // namespace scv4tlm
 

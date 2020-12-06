@@ -27,7 +27,8 @@ struct tlm_id_extension : public tlm_extension<tlm_id_extension> {
         return t;
     }
     virtual void copy_from(tlm_extension_base const& from) { id = static_cast<tlm_id_extension const&>(from).id; }
-    tlm_id_extension(void* i):tlm_id_extension(reinterpret_cast<uintptr_t>(i)){}
+    tlm_id_extension(void* i)
+    : tlm_id_extension(reinterpret_cast<uintptr_t>(i)) {}
     tlm_id_extension(uintptr_t i)
     : id(i) {}
     uintptr_t id;
@@ -58,4 +59,4 @@ inline void setId(tlm::tlm_generic_payload& gp, uintptr_t id) {
         gp.set_extension(new tlm_id_extension(id));
 }
 
-}
+} // namespace tlm

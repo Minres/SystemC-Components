@@ -20,10 +20,10 @@
 // Needed for the simple_target_socket
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
+#include "mt19937_rng.h"
 #include "report.h"
 #include "target_mixin.h"
 #include "utilities.h"
-#include "mt19937_rng.h"
 #include <tlm.h>
 #include <util/sparse_array.h>
 

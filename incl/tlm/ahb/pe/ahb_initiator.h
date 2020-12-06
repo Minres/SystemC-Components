@@ -8,10 +8,10 @@
 #ifndef _TLM_AHB_PE_AHB_INITIATOR_H_
 #define _TLM_AHB_PE_AHB_INITIATOR_H_
 
-#include <tlm/ahb/ahb_tlm.h>
 #include <scc/ordered_semaphore.h>
 #include <scc/peq.h>
 #include <systemc>
+#include <tlm/ahb/ahb_tlm.h>
 #include <tlm_utils/peq_with_get.h>
 #include <tuple>
 #include <unordered_map>
@@ -49,7 +49,8 @@ public:
      */
     void transport(payload_type& trans, bool blocking);
 
-    ahb_initiator_b(sc_core::sc_module_name nm, sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port,
+    ahb_initiator_b(sc_core::sc_module_name nm,
+                    sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port,
                     size_t transfer_width, bool coherent);
 
     virtual ~ahb_initiator_b();
@@ -64,7 +65,7 @@ public:
 
     ahb_initiator_b& operator=(ahb_initiator_b&&) = delete;
 
-    void snoop_resp(payload_type& trans, bool sync = false){}
+    void snoop_resp(payload_type& trans, bool sync = false) {}
 
     //! Read address valid to next read address valid
     sc_core::sc_attribute<unsigned> artv{"artv", 0};
@@ -76,6 +77,7 @@ public:
     sc_core::sc_attribute<unsigned> rbr{"rbr", 0};
     //! Write response valid to ready
     sc_core::sc_attribute<unsigned> br{"br", 0};
+
 protected:
     unsigned calculate_beats(payload_type& p) {
         sc_assert(p.get_data_length() > 0);
@@ -84,7 +86,7 @@ protected:
 
     const size_t transfer_width_in_bytes;
 
-    const  bool coherent;
+    const bool coherent;
 
     sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& socket_fw;
 
@@ -93,7 +95,7 @@ protected:
     struct tx_state {
         payload_type* active_tx{nullptr};
         scc::peq<std::tuple<payload_type*, tlm::tlm_phase>> peq;
-        //scc::ordered_semaphore mtx{1};
+        // scc::ordered_semaphore mtx{1};
     };
     std::unordered_map<payload_type*, tx_state*> tx_state_by_id;
 

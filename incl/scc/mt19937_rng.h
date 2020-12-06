@@ -8,9 +8,9 @@
 #ifndef _SCC_MT19937_RNG_H_
 #define _SCC_MT19937_RNG_H_
 
+#include <assert.h>
 #include <iostream>
 #include <random>
-#include <assert.h>
 
 namespace scc {
 class MT19937 {
@@ -65,9 +65,8 @@ public:
     }
 
 private:
-    static std::mt19937_64& inst() ;
+    static std::mt19937_64& inst();
 };
-
 
 } // namespace scc
 #endif /* _SCC_MT19937_RNG_H_ */

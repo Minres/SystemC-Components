@@ -71,7 +71,10 @@ public:
     /**
      * remove all entries from the lut
      */
-    void clear() { m_lut.clear(); m_size=0;}
+    void clear() {
+        m_lut.clear();
+        m_size = 0;
+    }
     /**
      * get the entry T associated with a given address
      *

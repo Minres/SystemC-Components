@@ -35,14 +35,14 @@ template <typename SIG = bool> struct tlm_signal_baseprotocol_types {
 
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>>
 struct tlm_signal_fw_transport_if : public virtual sc_core::sc_interface {
-	typedef TYPES protocol_types;
+    typedef TYPES protocol_types;
     // virtual void b_transport(typename TYPES::tlm_payload_type&, sc_core::sc_time&) = 0;
     virtual tlm_sync_enum nb_transport_fw(typename TYPES::tlm_payload_type&, tlm_phase&, sc_core::sc_time&) = 0;
 };
 
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>>
 struct tlm_signal_bw_transport_if : public virtual sc_core::sc_interface {
-	typedef TYPES protocol_types;
+    typedef TYPES protocol_types;
     virtual tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type&, tlm_phase&, sc_core::sc_time&) = 0;
 };
 

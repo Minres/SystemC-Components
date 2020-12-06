@@ -203,7 +203,7 @@ inline bool file_exists(const std::string& name) {
  */
 template <class T> inline T dir_name(T const& path, T const& delims = "/\\") {
     auto pos = path.find_last_of(delims);
-    return pos>path.length()?".":path.substr(0, pos);
+    return pos > path.length() ? "." : path.substr(0, pos);
 }
 /**
  * return file name portion of a given path (as string)
@@ -213,7 +213,7 @@ template <class T> inline T dir_name(T const& path, T const& delims = "/\\") {
  */
 template <class T> inline T base_name(T const& path, T const& delims = "/\\") {
     auto pos = path.find_last_of(delims);
-    return pos>path.length()?path:path.substr(pos + 1);
+    return pos > path.length() ? path : path.substr(pos + 1);
 }
 /**
  * return the base name (without extension) of a file name (as string)

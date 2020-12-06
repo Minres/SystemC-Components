@@ -8,19 +8,17 @@
 #ifndef SCC_INCL_UTIL_STRPRINTF_H_
 #define SCC_INCL_UTIL_STRPRINTF_H_
 
-
-#include <vector>
-#include <string>
-#include <iostream>
 #include <cstdarg>
+#include <iostream>
+#include <string>
+#include <vector>
 #ifdef MSVC
 #define _CRT_NO_VA_START_VALIDATION
 #endif
 
 namespace util {
 
-inline std::string strprintf(const std::string& format, ...)
-{
+inline std::string strprintf(const std::string& format, ...) {
     va_list args;
     va_start(args, format);
     size_t len = std::vsnprintf(NULL, 0, format.c_str(), args);
@@ -32,5 +30,5 @@ inline std::string strprintf(const std::string& format, ...)
     return &vec[0];
 }
 
-}
+} // namespace util
 #endif /* SCC_INCL_UTIL_STRPRINTF_H_ */

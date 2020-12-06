@@ -41,7 +41,7 @@ tracer::tracer(const std::string&& name, file_type type, bool enable)
     if(enable) {
         trf = sc_create_vcd_trace_file(name.c_str());
         trf->set_time_unit(1, SC_PS);
-        owned=true;
+        owned = true;
     }
 #ifdef WITH_SCV
     if(type != NONE) {

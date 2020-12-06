@@ -64,7 +64,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
         if(m_scheduled_events.empty())
             return boost::none;
         sc_core::sc_time now = sc_core::sc_time_stamp();
-        if(m_scheduled_events.begin()->first > now){
+        if(m_scheduled_events.begin()->first > now) {
             m_event.notify(m_scheduled_events.begin()->first - now);
             return boost::none;
         } else {
@@ -96,15 +96,17 @@ template <class TYPE> struct peq : public sc_core::sc_object {
     }
 
     bool has_next() {
-        if(m_scheduled_events.empty()) return false;
+        if(m_scheduled_events.empty())
+            return false;
         sc_core::sc_time now = sc_core::sc_time_stamp();
-        if(m_scheduled_events.begin()->first > now){
+        if(m_scheduled_events.begin()->first > now) {
             m_event.notify(m_scheduled_events.begin()->first - now);
             return false;
         } else {
             return true;
         }
     }
+
 private:
     std::multimap<const sc_core::sc_time, TYPE> m_scheduled_events;
     sc_core::sc_event m_event;

@@ -304,16 +304,15 @@ public:
                                                     ? -1
                                                     : std::numeric_limits<BASE_DATA_TYPE>::max()) {
 
-    	_reg_field.init(START+SIZE, [&](const char* name, size_t idx)->pointer
-    			{
-    				return new sc_register<DATATYPE>(name, storage[idx], reset_val, owner, rdmask, wrmask);
-    			});
+        _reg_field.init(START + SIZE, [&](const char* name, size_t idx) -> pointer {
+            return new sc_register<DATATYPE>(name, storage[idx], reset_val, owner, rdmask, wrmask);
+        });
     }
 
     /**
      * the destructor
      */
-    ~sc_register_indexed() override { }
+    ~sc_register_indexed() override {}
     /**
      * get the size of the register file
      *
@@ -345,7 +344,7 @@ public:
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const &)> write_cb) {
+    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const&)> write_cb) {
         for(auto& reg : _reg_field)
             reg.set_write_cb(write_cb);
     }
@@ -354,7 +353,7 @@ public:
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const &, sc_core::sc_time)> write_cb) {
+    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const&, sc_core::sc_time)> write_cb) {
         for(auto& reg : _reg_field)
             reg.set_write_cb(write_cb);
     }

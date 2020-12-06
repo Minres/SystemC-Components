@@ -19,8 +19,8 @@
 #include <cassert>
 #include <cstdio>
 #include <cstring>
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <iterator>
 #include <mutex>
 #include <sstream>
@@ -215,11 +215,11 @@ public:
         static std::mutex mtx;
         std::lock_guard<std::mutex> lock(mtx);
         std::ostream* ostr = ostream();
-        if(ostr){
-            *ostr<<msg;
+        if(ostr) {
+            *ostr << msg;
         } else {
             FILE* pStream = stream();
-            if(pStream){
+            if(pStream) {
                 fprintf(pStream, "%s", msg.c_str());
                 fflush(pStream);
             }

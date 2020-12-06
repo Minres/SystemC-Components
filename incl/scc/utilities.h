@@ -23,10 +23,10 @@
 #ifndef _SYSC_UTILITIES_H_
 #define _SYSC_UTILITIES_H_
 
+#include "sc_variable.h"
+#include <array>
 #include <limits>
 #include <memory>
-#include <array>
-#include "sc_variable.h"
 
 // pragmas to disable the deprecated warnings for SystemC headers
 #pragma GCC diagnostic push
@@ -84,7 +84,7 @@ void sc_trace(sc_trace_file*, const sc_time&, const char*);
  * @param
  * @param
  */
-inline void sc_trace(sc_core::sc_trace_file*&, const sc_core::sc_event&, const char*){}
+inline void sc_trace(sc_core::sc_trace_file*&, const sc_core::sc_event&, const char*) {}
 
 #endif
 /**
@@ -301,37 +301,27 @@ template <typename T> inline void set_value(cci::cci_param_typed<T>& a, T&& valu
 #endif
 } // namespace scc
 
-#define declare_method_process_cl(handle, name, host_tag, func)        \
-    {		                                                    \
-		::sc_core::sc_spawn_options opt; \
-		opt.dont_initialize();\
-		opt.spawn_method();\
-        ::sc_core::sc_process_handle handle =                      \
-	    ::sc_core::sc_spawn(func, name,  &opt); \
-        this->sensitive << handle;                                        \
-        this->sensitive_pos << handle;                                    \
-        this->sensitive_neg << handle;                                    \
+#define declare_method_process_cl(handle, name, host_tag, func)                                                        \
+    {                                                                                                                  \
+        ::sc_core::sc_spawn_options opt;                                                                               \
+        opt.dont_initialize();                                                                                         \
+        opt.spawn_method();                                                                                            \
+        ::sc_core::sc_process_handle handle = ::sc_core::sc_spawn(func, name, &opt);                                   \
+        this->sensitive << handle;                                                                                     \
+        this->sensitive_pos << handle;                                                                                 \
+        this->sensitive_neg << handle;                                                                                 \
     }
 
-#define declare_thread_process_cl(handle, name, host_tag, func)        \
-    {                                                               \
-		::sc_core::sc_spawn_options opt; \
-		::sc_core::sc_process_handle handle =                      \
-		::sc_core::sc_spawn(func, name,  &opt); \
-		this->sensitive << handle;                                        \
-		this->sensitive_pos << handle;                                    \
+#define declare_thread_process_cl(handle, name, host_tag, func)                                                        \
+    {                                                                                                                  \
+        ::sc_core::sc_spawn_options opt;                                                                               \
+        ::sc_core::sc_process_handle handle = ::sc_core::sc_spawn(func, name, &opt);                                   \
+        this->sensitive << handle;                                                                                     \
+        this->sensitive_pos << handle;                                                                                 \
     }
 
-#define SC_METHOD_CL(name, func)                                                       \
-    declare_method_process_cl( name ## _handle,                                  \
-                            #name,                                            \
-                            SC_CURRENT_USER_MODULE,                           \
-                            func )
+#define SC_METHOD_CL(name, func) declare_method_process_cl(name##_handle, #name, SC_CURRENT_USER_MODULE, func)
 
-#define SC_THREAD_CL(name, func)                                                       \
-    declare_thread_process_cl( name ## _handle,                                  \
-                            #name,                                            \
-                            SC_CURRENT_USER_MODULE,                           \
-                            func )
+#define SC_THREAD_CL(name, func) declare_thread_process_cl(name##_handle, #name, SC_CURRENT_USER_MODULE, func)
 
 #endif /* _SYSC_UTILITIES_H_ */

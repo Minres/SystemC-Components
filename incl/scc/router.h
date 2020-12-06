@@ -215,7 +215,7 @@ void router<BUSWIDTH>::add_target_range(std::string name, uint64_t base, uint64_
         ::sc_core::sc_assertion_failed(ss.str().c_str(), __FILE__, __LINE__);
     }
 #else
-    sc_assert(it!=target_name_lut.end());
+    sc_assert(it != target_name_lut.end());
 #endif
 #endif
     auto idx = it->second;

@@ -33,9 +33,9 @@ class ordered_semaphore : public sc_core::sc_semaphore_if, public sc_core::sc_ob
 public:
     // constructors
 
-    explicit ordered_semaphore(unsigned init_value_=1);
+    explicit ordered_semaphore(unsigned init_value_ = 1);
 
-    ordered_semaphore(const char* name_, unsigned init_value_=1);
+    ordered_semaphore(const char* name_, unsigned init_value_ = 1);
 
     ordered_semaphore(const ordered_semaphore&) = delete;
 
@@ -62,8 +62,12 @@ public:
     const char* kind() const override { return "sc_semaphore_ordered"; }
 
     struct lock {
-        lock(scc::ordered_semaphore& sem) :sem(sem){ sem.wait();}
-        ~lock(){sem.post();}
+        lock(scc::ordered_semaphore& sem)
+        : sem(sem) {
+            sem.wait();
+        }
+        ~lock() { sem.post(); }
+
     private:
         scc::ordered_semaphore& sem;
     };
@@ -71,7 +75,7 @@ public:
 protected:
     // support methods
     bool in_use() {
-        if(value > 0 && queue.front() == sc_core::sc_get_current_process_handle()){
+        if(value > 0 && queue.front() == sc_core::sc_get_current_process_handle()) {
             queue.pop_front();
             return false;
         } else
@@ -83,16 +87,16 @@ protected:
 
 protected:
     sc_core::sc_event free_evt; // event to block on when m_value is negative
-    int value;              // current value of the semaphore
+    int value;                  // current value of the semaphore
     unsigned capacity;
     std::deque<sc_core::sc_process_handle> queue;
 };
 
-template<unsigned CAPACITY>
-struct ordered_semaphore_t : public ordered_semaphore {
-    explicit ordered_semaphore_t():ordered_semaphore(CAPACITY){}
-    ordered_semaphore_t(const char* name_):ordered_semaphore(name_, CAPACITY){}
-
+template <unsigned CAPACITY> struct ordered_semaphore_t : public ordered_semaphore {
+    explicit ordered_semaphore_t()
+    : ordered_semaphore(CAPACITY) {}
+    ordered_semaphore_t(const char* name_)
+    : ordered_semaphore(name_, CAPACITY) {}
 };
 
 } // namespace scc

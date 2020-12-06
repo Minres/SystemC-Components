@@ -22,15 +22,21 @@
 #include <type_traits>
 
 namespace scc {
-enum class trace_types: unsigned {
-    NONE=0x0, SIGNALS=0x1, PORTS=0x2, SOCKETS=0x4, VARIABLES=0x8, OBJECTS=0x10, ALL=0xff
+enum class trace_types : unsigned {
+    NONE = 0x0,
+    SIGNALS = 0x1,
+    PORTS = 0x2,
+    SOCKETS = 0x4,
+    VARIABLES = 0x8,
+    OBJECTS = 0x10,
+    ALL = 0xff
 };
 
-inline trace_types operator | (trace_types lhs, trace_types rhs) {
+inline trace_types operator|(trace_types lhs, trace_types rhs) {
     return static_cast<trace_types>(static_cast<unsigned>(lhs) | static_cast<unsigned>(rhs));
 }
 
-inline trace_types operator & (trace_types lhs, trace_types rhs) {
+inline trace_types operator&(trace_types lhs, trace_types rhs) {
     return static_cast<trace_types>(static_cast<unsigned>(lhs) & static_cast<unsigned>(rhs));
 }
 
@@ -39,27 +45,25 @@ public:
     tracer_base(const sc_core::sc_module_name& nm)
     : sc_core::sc_module(nm) {}
 
-    tracer_base(const sc_core::sc_module_name& nm, sc_core::sc_trace_file* tf, bool owned=true)
-    : sc_core::sc_module(nm), trf(tf), owned(owned) {}
+    tracer_base(const sc_core::sc_module_name& nm, sc_core::sc_trace_file* tf, bool owned = true)
+    : sc_core::sc_module(nm)
+    , trf(tf)
+    , owned(owned) {}
 
-    ~tracer_base(){
+    ~tracer_base() {
         if(trf && owned)
             sc_close_vcd_trace_file(trf);
     }
 
-    void set_trace_types(trace_types t){
-        types_to_trace=t;
-    }
+    void set_trace_types(trace_types t) { types_to_trace = t; }
 
-    const sc_core::sc_trace_file* get_trace_file() const {
-        return trf;
-    }
+    const sc_core::sc_trace_file* get_trace_file() const { return trf; }
 
     void set_trace_file(sc_core::sc_trace_file* trf) {
         if(this->trf && owned)
             sc_close_vcd_trace_file(trf);
-        this->trf=trf;
-        owned=false;
+        this->trf = trf;
+        owned = false;
     }
 
 protected:

@@ -56,9 +56,9 @@ public: // constructors and destructor:
             super::request_update();
     }
 
-    void clear(){
+    void clear() {
         super::m_new_val = nullptr;
-        if(super::m_new_val!=super::m_cur_val)
+        if(super::m_new_val != super::m_cur_val)
             super::request_update();
     }
 

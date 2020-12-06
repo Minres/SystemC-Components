@@ -101,7 +101,7 @@ template <typename TYPES> typename tlm_mm<TYPES>::payload_type* tlm_mm<TYPES>::a
 
 template <typename TYPES> void tlm_mm<TYPES>::free(tlm::tlm_generic_payload* trans) {
     if(trans->get_data_ptr())
-        delete [] trans->get_data_ptr();
+        delete[] trans->get_data_ptr();
     trans->set_data_ptr(nullptr);
     trans->reset();
     trans->~tlm_generic_payload();

@@ -45,11 +45,11 @@ public:
 
     tlm_gp_data(tlm_gp_data const& x) = default;
 
-    tlm_gp_data(tlm_gp_data && x) = default;
+    tlm_gp_data(tlm_gp_data&& x) = default;
 
     tlm_gp_data& operator=(tlm_gp_data const& x) = default;
 
-    tlm_gp_data& operator=(tlm_gp_data && x) = default;
+    tlm_gp_data& operator=(tlm_gp_data&& x) = default;
 
     //--------------
     // Destructor
