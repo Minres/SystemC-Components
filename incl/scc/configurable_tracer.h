@@ -22,7 +22,12 @@
 
 namespace scc {
 /**
+ * @class configurable_tracer
+ * @brief configurable tracer for automatic port and signal tracing
  *
+ * This class traverses the SystemC object hierarchy and registers all signals and ports found with the tracing
+ * infrastructure. Using a sc_core::sc_attribute or a CCI param named "enableTracing" this can be switch on or off
+ * on a per module basis
  */
 class configurable_tracer : public scc::tracer {
 public:
@@ -32,16 +37,16 @@ public:
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal based) tracing
-     * @param default value of attribute enableTracing if not defined by module or CCIs
+     * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(const std::string&&, file_type, bool = true, bool = false);
+    configurable_tracer(const std::string&& name, file_type type, bool enable = true, bool default_enable = false);
     /**
      * constructs a tracer object
      *
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
-     * @param enable enable VCD (signal based) tracing
-     * @param default value of attribute enableTracing if not defined by module or CCIs
+     * @param enable_vcd enable VCD (signal based) tracing
+     * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
     configurable_tracer(const std::string& name, file_type type, bool enable_vcd = true, bool default_enable = false)
     : configurable_tracer(std::string(name), type, enable_vcd, default_enable) {}
@@ -50,17 +55,17 @@ public:
      *
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
-     * @param the trace file to use for signal and POD tracing
-     * @param default value of attribute enableTracing if not defined by module or CCIs
+     * @param tf the trace file to use for signal and POD tracing
+     * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(const std::string&&, file_type, sc_core::sc_trace_file* = nullptr, bool = false);
+    configurable_tracer(const std::string&& name, file_type type, sc_core::sc_trace_file* tf = nullptr, bool default_enable = false);
     /**
      * constructs a tracer object
      *
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
-     * @param enable enable VCD (signal based) tracing
-     * @param default value of attribute enableTracing if not defined by module or CCIs
+     * @param tf the trace file to use for signal and POD tracing
+     * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
     configurable_tracer(const std::string& name, file_type type, sc_core::sc_trace_file* tf = nullptr,
                         bool default_enable = false)
@@ -76,6 +81,7 @@ public:
         for(auto* o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
             augment_object_hierarchical(o);
     }
+
 protected:
     //! the default for tracing if no attribute is configured
     const bool default_trace_enable;

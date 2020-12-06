@@ -47,9 +47,11 @@ perf_estimator::~perf_estimator() {
     eod.set();
     SCCINFO(SCMOD) << "constr & elab time: " << (eoe.proc_clock_stamp - soc.proc_clock_stamp) << "s";
     SCCINFO(SCMOD) << "simulation time:    " << (eos.proc_clock_stamp - sos.proc_clock_stamp) << "s";
-    if(cycle_period.value()){
-        uint64_t cycles = sc_time_stamp().value()/cycle_period.value();
-        SCCINFO(SCMOD) << "simulation speed:   " << (sc_time_stamp().value()?cycles/(eos.proc_clock_stamp - soc.proc_clock_stamp):0.0) << " cycles/s";
+    if(cycle_period.value()) {
+        uint64_t cycles = sc_time_stamp().value() / cycle_period.value();
+        SCCINFO(SCMOD) << "simulation speed:   "
+                       << (sc_time_stamp().value() ? cycles / (eos.proc_clock_stamp - soc.proc_clock_stamp) : 0.0)
+                       << " cycles/s";
     }
 }
 
@@ -94,7 +96,7 @@ double scc::perf_estimator::time_stamp::get_cpu_time() {
 #if _POSIX_TIMERS > 0
     {
         clockid_t id;
-        struct timespec stamp{};
+        struct timespec stamp {};
 #if _POSIX_CPUTIME > 0
         if(clock_getcpuclockid(0, &id) == -1)
 #endif
@@ -111,7 +113,7 @@ double scc::perf_estimator::time_stamp::get_cpu_time() {
 #endif
 #if defined(RUSAGE_SELF)
     {
-        struct rusage usage{};
+        struct rusage usage {};
         if(getrusage(RUSAGE_SELF, &usage) != -1)
             return (double)usage.ru_utime.tv_sec + (double)usage.ru_utime.tv_usec / 1000000.0;
     }

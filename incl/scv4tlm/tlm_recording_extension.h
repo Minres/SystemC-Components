@@ -32,18 +32,18 @@ enum tx_rel {
 static std::array<const char*, 2> tx_rel_str = {{"PARENT/CHILD", "PRED/SUCC"}};
 /*! \brief cast the tx_rel enum to a string
  *
- * \param tc_rel is the relationship enum
+ * \param rel is the relationship enum
  */
 inline const char* rel_str(tx_rel rel) { return (tx_rel_str[rel]); }
-
-/*! \brief generic payload extension class holding the handle of the last
- * recorded SCV transaction
+/**
+ * @class tlm_recording_extension
+ * @brief generic payload extension class holding the handle of the last recorded SCV transaction
  *
- * This extension is been used in the \ref scv_tlm2_recorder. The recorder
+ * This extension is been used in the \ref tlm2_recorder. The recorder
  * stores the handle to the generated SCV transaction and
- * forwrds it along with the generic payload. If the recorder finds an extension
+ * forwards it along with the generic payload. If the recorder finds an extension
  * containing a valid handle it links the generated
- * SCV transdaction to the found one using the \ref PREDECESSOR releationship
+ * SCV transaction to the found one using the \ref PREDECESSOR_SUCCESSOR relationship
  */
 class tlm_recording_extension : public tlm::tlm_extension<tlm_recording_extension> {
 public:

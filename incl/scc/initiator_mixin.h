@@ -24,7 +24,13 @@
 
 namespace scc {
 /**
+ * @class initiator_mixin
+ * @brief initiator socket mixin
+ *
  * an initiator socket mixin adding default implementation of callback functions similar to tlm::simple_initiator_socket
+ *
+ * @tparam BASE_TYPE
+ * @tparam TYPES
  */
 template <typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types> class initiator_mixin : public BASE_TYPE {
 public:

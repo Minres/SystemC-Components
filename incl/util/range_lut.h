@@ -71,7 +71,10 @@ public:
     /**
      * remove all entries from the lut
      */
-    void clear() { m_lut.clear(); m_size=0;}
+    void clear() {
+        m_lut.clear();
+        m_size = 0;
+    }
     /**
      * get the entry T associated with a given address
      *
@@ -107,6 +110,7 @@ protected:
  * overloaded stream operator
  *
  * @param os the output stream
+ * @param lut the lookup table to print
  * @return the stream
  */
 template <typename T> std::ostream& operator<<(std::ostream& os, range_lut<T>& lut) {

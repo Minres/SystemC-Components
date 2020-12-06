@@ -8,11 +8,19 @@
 #ifndef _SCC_MT19937_RNG_H_
 #define _SCC_MT19937_RNG_H_
 
+#include <assert.h>
 #include <iostream>
 #include <random>
-#include <assert.h>
 
 namespace scc {
+/**
+ * @class MT19937
+ * @brief a mersenne-twister based random number generator
+ *
+ * This random number generator provides various distribution of random numbers being specific to the SystemC process invoking the
+ * generator function. This makes the generator independent of the order of invocation in a delta cycle and allows to replay with the
+ * same seed
+ */
 class MT19937 {
 public:
     /**
@@ -65,9 +73,8 @@ public:
     }
 
 private:
-    static std::mt19937_64& inst() ;
+    static std::mt19937_64& inst();
 };
-
 
 } // namespace scc
 #endif /* _SCC_MT19937_RNG_H_ */

@@ -19,8 +19,8 @@
 #include <cassert>
 #include <cstdio>
 #include <cstring>
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <iterator>
 #include <mutex>
 #include <sstream>
@@ -75,25 +75,16 @@ inline std::string now_time();
  */
 template <typename T> class Log {
 public:
-    /**
-     * default constructor
-     */
+
     Log() = default;
-    /**
-     * no copy constructor
-     *
-     * @param
-     */
+
     Log(const Log&) = delete;
-    /**
-     * no copy assignment constructor
-     *
-     * @param
-     * @return
-     */
+
     Log& operator=(const Log&) = delete;
     /**
-     * the destructor
+     * @fn  ~Log()
+     * @brief the destructor
+     *
      */
     virtual ~Log() {
         os << std::endl;
@@ -215,11 +206,11 @@ public:
         static std::mutex mtx;
         std::lock_guard<std::mutex> lock(mtx);
         std::ostream* ostr = ostream();
-        if(ostr){
-            *ostr<<msg;
+        if(ostr) {
+            *ostr << msg;
         } else {
             FILE* pStream = stream();
-            if(pStream){
+            if(pStream) {
                 fprintf(pStream, "%s", msg.c_str());
                 fflush(pStream);
             }

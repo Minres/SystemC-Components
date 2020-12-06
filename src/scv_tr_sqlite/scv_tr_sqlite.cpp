@@ -173,7 +173,8 @@ static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason,
             db.exec("CREATE TABLE  IF NOT EXISTS " SIM_PROPS "(time_resolution INTEGER);");
             db.exec("BEGIN TRANSACTION");
             std::ostringstream ss;
-            ss<<"INSERT INTO " SIM_PROPS " (time_resolution) values ("<<(long)(sc_get_time_resolution().to_seconds() * 1e15)<<");";
+            ss << "INSERT INTO " SIM_PROPS " (time_resolution) values ("
+               << (long)(sc_get_time_resolution().to_seconds() * 1e15) << ");";
             db.exec(ss.str().c_str());
             stream_stmt = db.prepare("INSERT INTO " STREAM_TABLE " (id, name, kind) values (@ID,@NAME,@KIND);");
             gen_stmt = db.prepare("INSERT INTO " GENERATOR_TABLE " (id,stream, name)"

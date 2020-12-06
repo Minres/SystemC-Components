@@ -95,11 +95,11 @@ constexpr size_t bit_count(uint32_t u) {
  * @param separator the separator char
  * @return vector of splitted strings
  */
-inline std::vector<std::string> split(const std::string& s, char seperator) {
+inline std::vector<std::string> split(const std::string& s, char separator) {
     std::vector<std::string> output;
     std::string::size_type prev_pos = 0;
     std::string::size_type pos = 0;
-    while((pos = s.find(seperator, pos)) != std::string::npos) {
+    while((pos = s.find(separator, pos)) != std::string::npos) {
         std::string substring(s.substr(prev_pos, pos - prev_pos));
         output.push_back(substring);
         prev_pos = ++pos;
@@ -147,9 +147,11 @@ void split(char delimiter, Output& output, Input const& input) {
     }
 }
 /**
- * compare two string ignoring case
- * @param string a to compare
- * @param string b to compare
+ * @fn bool iequals(const std::string&, const std::string&)
+ * @brief compare two string ignoring case
+ *
+ * @param a string a to compare
+ * @param b string b to compare
  * @result true if the are equal otherwise false
  */
 inline bool iequals(const std::string& a, const std::string& b) {
@@ -166,12 +168,13 @@ inline bool iequals(const std::string& a, const std::string& b) {
 #endif
 }
 /**
- * pad a string to a given length by either cutting of the overflow or inserting an ellipsis
+ * @fn std::string padded(std::string, size_t, bool=true)
+ * @brief pad a string to a given length by either cutting of the overflow or inserting an ellipsis
  *
- * @param string to adjust
+ * @param str string to adjust
  * @param width of the targeted field
- * @param use ellipsis (...) when shortening
- * @result string with the given length
+ * @param show_ellipsis use ellipsis (...) when shortening
+ * @return string with the given length
  */
 inline std::string padded(std::string str, size_t width, bool show_ellipsis = true) {
     if(width < 7)
@@ -203,7 +206,7 @@ inline bool file_exists(const std::string& name) {
  */
 template <class T> inline T dir_name(T const& path, T const& delims = "/\\") {
     auto pos = path.find_last_of(delims);
-    return pos>path.length()?".":path.substr(0, pos);
+    return pos > path.length() ? "." : path.substr(0, pos);
 }
 /**
  * return file name portion of a given path (as string)
@@ -213,7 +216,7 @@ template <class T> inline T dir_name(T const& path, T const& delims = "/\\") {
  */
 template <class T> inline T base_name(T const& path, T const& delims = "/\\") {
     auto pos = path.find_last_of(delims);
-    return pos>path.length()?path:path.substr(pos + 1);
+    return pos > path.length() ? path : path.substr(pos + 1);
 }
 /**
  * return the base name (without extension) of a file name (as string)

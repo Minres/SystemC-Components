@@ -17,8 +17,8 @@
 #ifndef _SCC_VALUE_REGISTRY_H_
 #define _SCC_VALUE_REGISTRY_H_
 
-#include "tracer_base.h"
 #include "sc_variable.h"
+#include "tracer_base.h"
 #include <sstream>
 #include <sysc/kernel/sc_simcontext.h>
 #include <sysc/tracing/sc_trace.h>

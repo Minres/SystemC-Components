@@ -22,48 +22,111 @@
 #include <deque>
 #include <sysc/kernel/sc_process_handle.h>
 
+#ifndef SC_API
+#define SC_API
+#endif
+
 namespace scc {
-// ----------------------------------------------------------------------------
-//  CLASS : sc_semaphore
-//
-//  The sc_semaphore primitive channel class.
-// ----------------------------------------------------------------------------
-
-class ordered_semaphore : public sc_core::sc_semaphore_if, public sc_core::sc_object {
+/**
+ * @class ordered_semaphore
+ * @brief The ordered_semaphore primitive channel class.
+ *
+ * The ordered semaphore acts like an ordinary semaphore. It gives the guarantee that access is granted in the order of arrival (FCFS)
+ */
+class SC_API ordered_semaphore : public sc_core::sc_semaphore_if, public sc_core::sc_object {
 public:
-    // constructors
-
-    explicit ordered_semaphore(unsigned init_value_=1);
-
-    ordered_semaphore(const char* name_, unsigned init_value_=1);
+    /**
+     * @fn  ordered_semaphore(unsigned=1)
+     * @brief constructor of an un-named semaphore
+     *
+     * @param init_value initial capacity of the semaphore
+     */
+    explicit ordered_semaphore(unsigned init_value = 1);
+    /**
+     * @fn  ordered_semaphore(const char*, unsigned=1)
+     * @brief constructor of an un-named semaphore
+     *
+     * @param name the SystemC name
+     * @param init_value initial capacity of the semaphore
+     */
+    ordered_semaphore(const char* name, unsigned init_value = 1);
 
     ordered_semaphore(const ordered_semaphore&) = delete;
 
     ordered_semaphore& operator=(const ordered_semaphore&) = delete;
-
-    // interface methods
-
-    // lock (take) the semaphore, block if not available
+    /**
+     * @fn int wait()
+     * @brief lock (take) the semaphore, block if not available
+     *
+     * @return value after locking
+     */
     int wait() override;
-
-    // lock (take) the semaphore, return -1 if not available
+    /**
+     * @fn int trywait()
+     * @brief lock (take) the semaphore, return -1 if not available
+     *
+     * @return value after locking or -1 if the semaphore could not be locked
+     */
     int trywait() override;
-
-    // unlock (give) the semaphore
+    /**
+     * @fn int post()
+     * @brief unlock (give) the semaphore
+     *
+     * @return value after posting
+     */
     int post() override;
-
+    /**
+     * @fn unsigned get_capacity()
+     * @brief retrieve the initial capacity of the semaphore
+     *
+     */
     unsigned get_capacity() { return capacity; }
-
+    /**
+     * @fn void set_capacity(unsigned)
+     * @brief change the capacity
+     *
+     * @param capacity the new capacity
+     */
     void set_capacity(unsigned capacity);
-
-    // get the value of the semaphore
+    /**
+     * @fn int get_value()const
+     * @brief get the value of the semaphore
+     *
+     * @return current value
+     */
     int get_value() const override { return value; }
-
+    /**
+     * @fn const char* kind()const
+     * @brief kind of this SastemC object
+     *
+     * @return
+     */
     const char* kind() const override { return "sc_semaphore_ordered"; }
-
+    /**
+     * @struct lock
+     * @brief a lock for the semaphore
+     *
+     * it allows to use lock/unlock a semaphore in RTTI style
+     *
+     */
     struct lock {
-        lock(scc::ordered_semaphore& sem) :sem(sem){ sem.wait();}
-        ~lock(){sem.post();}
+        /**
+         * @fn  lock(scc::ordered_semaphore&)
+         * @brief lock the given semahore, wait if not free
+         *
+         * @param sem the semaphore
+         */
+        lock(scc::ordered_semaphore& sem)
+        : sem(sem) {
+            sem.wait();
+        }
+        /**
+         * @fn  ~lock()
+         * @brief unlock the semaphore
+         *
+         */
+        ~lock() { sem.post(); }
+
     private:
         scc::ordered_semaphore& sem;
     };
@@ -71,7 +134,7 @@ public:
 protected:
     // support methods
     bool in_use() {
-        if(value > 0 && queue.front() == sc_core::sc_get_current_process_handle()){
+        if(value > 0 && queue.front() == sc_core::sc_get_current_process_handle()) {
             queue.pop_front();
             return false;
         } else
@@ -83,16 +146,16 @@ protected:
 
 protected:
     sc_core::sc_event free_evt; // event to block on when m_value is negative
-    int value;              // current value of the semaphore
+    int value;                  // current value of the semaphore
     unsigned capacity;
     std::deque<sc_core::sc_process_handle> queue;
 };
 
-template<unsigned CAPACITY>
-struct ordered_semaphore_t : public ordered_semaphore {
-    explicit ordered_semaphore_t():ordered_semaphore(CAPACITY){}
-    ordered_semaphore_t(const char* name_):ordered_semaphore(name_, CAPACITY){}
-
+template <unsigned CAPACITY> struct ordered_semaphore_t : public ordered_semaphore {
+    explicit ordered_semaphore_t()
+    : ordered_semaphore(CAPACITY) {}
+    ordered_semaphore_t(const char* name_)
+    : ordered_semaphore(name_, CAPACITY) {}
 };
 
 } // namespace scc

@@ -53,14 +53,8 @@ struct ahb_extension : public tlm::tlm_extension<ahb_extension> {
     burst_e get_burst() const;
     void set_burst(burst_e);
 
-    /**
-     * @brief the default constructor
-     */
     ahb_extension() = default;
-    /**
-     * @brief the copy constructor
-     * @param the extension to copy from
-     */
+
     ahb_extension(const ahb_extension& o) = default;
     /**
      * @brief the clone function to create deep copies of

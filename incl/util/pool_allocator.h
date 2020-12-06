@@ -8,10 +8,10 @@
 #ifndef _UTIL_POOL_ALLOCATOR_H_
 #define _UTIL_POOL_ALLOCATOR_H_
 
-#include <deque>
-#include <vector>
 #include <array>
+#include <deque>
 #include <mutex>
+#include <vector>
 #ifdef HAVE_GETENV
 #include <cstdlib>
 #endif
