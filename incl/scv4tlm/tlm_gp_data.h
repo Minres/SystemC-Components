@@ -64,7 +64,7 @@ public:
     /**
      * update the payload from the tlm_gp_data. Esp. usefull when used in randomization.
      * @param other the tlm_generic_payload to update
-     * @param replace_pointers if set to true the ownership of the data and byte_enable pointers is transferred
+     * @param transfer_ownership if set to true the ownership of the data and byte_enable pointers is transferred
      */
     void update_generic_payload(tlm::tlm_generic_payload& other, bool transfer_ownership = false) {
         other.set_command(command);

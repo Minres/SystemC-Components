@@ -130,11 +130,13 @@ public:
     using phase_type = base::phase_type;
     /**
      * @brief the constructor
+     *
+     * @param nm the module name
      * @param socket reference to the initiator socket used to send and receive transactions
      */
-    ahb3_initiator(const sc_core::sc_module_name& nm, tlm::tlm_initiator_socket<BUSWIDTH, TYPES, N, POL>& socket_)
-    : ahb_initiator_b(nm, socket_.get_base_port(), BUSWIDTH, false)
-    , socket(socket_) {
+    ahb3_initiator(const sc_core::sc_module_name& nm, tlm::tlm_initiator_socket<BUSWIDTH, TYPES, N, POL>& socket)
+    : ahb_initiator_b(nm, socket.get_base_port(), BUSWIDTH, false)
+    , socket(socket) {
         socket(*this);
     }
 

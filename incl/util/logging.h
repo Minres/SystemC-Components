@@ -75,25 +75,16 @@ inline std::string now_time();
  */
 template <typename T> class Log {
 public:
-    /**
-     * default constructor
-     */
+
     Log() = default;
-    /**
-     * no copy constructor
-     *
-     * @param
-     */
+
     Log(const Log&) = delete;
-    /**
-     * no copy assignment constructor
-     *
-     * @param
-     * @return
-     */
+
     Log& operator=(const Log&) = delete;
     /**
-     * the destructor
+     * @fn  ~Log()
+     * @brief the destructor
+     *
      */
     virtual ~Log() {
         os << std::endl;

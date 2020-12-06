@@ -195,8 +195,8 @@ public:
         return true;
     }
     /**
-     * @fn  operator #0()const
-     * @brief cast operatorto get underlying storage
+     * @fn  operator DATATYPE()const
+     * @brief cast operator to get underlying storage
      *
      */
     operator DATATYPE() const { return storage; }
@@ -215,7 +215,7 @@ public:
      */
     void put(DATATYPE data) const { storage = data; }
     /**
-     * @fn this_type operator =&(DATATYPE)
+     * @fn this_type& operator =(DATATYPE)
      * @brief assignment operator
      *
      * @param other the new value
@@ -226,7 +226,7 @@ public:
         return *this;
     }
     /**
-     * @fn this_type operator |=&(DATATYPE)
+     * @fn this_type& operator |=(DATATYPE)
      * @brief unary or
      *
      * @param other the other value
@@ -237,7 +237,7 @@ public:
         return *this;
     }
     /**
-         * @fn this_type operator &=&(DATATYPE)
+         * @fn this_type& operator &=(DATATYPE)
      * @brief unary and
      *
      * @param other the other value

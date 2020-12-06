@@ -45,7 +45,7 @@ inline log as_log(int logLevel) {
     return m[logLevel];
 }
 /**
- * @fn std::istream operator >>&(std::istream&, log&)
+ * @fn std::istream& operator >>(std::istream&, log&)
  * @brief read a log level from input stream e.g. used by boost::lexical_cast
  *
  * @param is input stream holding the string representation
@@ -64,7 +64,7 @@ inline std::istream& operator>>(std::istream& is, log& val) {
     return is;
 }
 /**
- * @fn std::ostream operator <<&(std::ostream&, const log&)
+ * @fn std::ostream& operator <<(std::ostream&, const log&)
  * @brief output the textual representation of the log level
  *
  * @param os output stream
@@ -219,7 +219,7 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
         ::sc_core::sc_report_handler::report(SEVERITY, t ? t : "SystemC", os.str().c_str(), level, file, line);
     }
     /**
-     * @fn ScLogger type&()
+     * @fn ScLogger& type()
      * @brief reset the category of the log entry
      *
      * @return reference to self for chaining
@@ -229,7 +229,7 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
         return *this;
     }
     /**
-     * @fn ScLogger type&(const char*)
+     * @fn ScLogger& type(const char*)
      * @brief set the category of the log entry
      *
      * @param t type of th elog entry
@@ -240,7 +240,7 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
         return *this;
     }
     /**
-     * @fn ScLogger type&(std::string const&)
+     * @fn ScLogger& type(std::string const&)
      * @brief set the category of the log entry
      *
      * @param t type of th elog entry
@@ -251,7 +251,7 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
         return *this;
     }
     /**
-     * @fn std::ostream get&()
+     * @fn std::ostream& get()
      * @brief  get the underlying ostringstream
      *
      * @return the output stream collecting the log message

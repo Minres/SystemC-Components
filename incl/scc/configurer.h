@@ -43,35 +43,15 @@ public:
      * @param filename
      */
     configurer(const std::string& filename);
-    /**
-     * deleted default constructor
-     */
+
     configurer() = delete;
-    /**
-     * deleted copy constructor
-     *
-     * @param the other configurer
-     */
+
     configurer(const configurer&) = delete;
-    /**
-     * no move constructor
-     *
-     * @param
-     */
+
     configurer(configurer&&) = delete;
-    /**
-     * no copy assignment
-     *
-     * @param the other configurer
-     * @return ref to self
-     */
+
     configurer& operator=(const configurer&) = delete;
-    /**
-     * no move assignment
-     *
-     * @param the other configurer
-     * @return ref to self
-     */
+
     configurer& operator=(configurer&&) = delete;
     /**
      * configure the design hierarchy using the input file. Apply the values to

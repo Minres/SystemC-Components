@@ -62,47 +62,34 @@ template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args&&...
 namespace sc_core {
 // needed to be able to use sc_time as signal value
 #if SC_VERSION_MAJOR <= 2 && SC_VERSION_MINOR <= 3 && SC_VERSION_PATCH < 2
-/**
- *
- * @param
- * @param
- * @param
- */
+
 void sc_trace(sc_trace_file*, const sc_time&, const std::string&);
-/**
- *
- * @param
- * @param
- * @param
- */
+
 void sc_trace(sc_trace_file*, const sc_time&, const char*);
 
 /**
  * comatibility for SC2.3.1
  *
- * @param
- * @param
- * @param
  */
 inline void sc_trace(sc_core::sc_trace_file*&, const sc_core::sc_event&, const char*) {}
 
 #endif
 /**
- * trace function for sc_time
+ * @brief trace function for sc_time
  *
- * @param the trace file
- * @param the data to trace
- * @param the hierarchical name of the data
+ * @param tf the trace file
+ * @param value the data to trace
+ * @param name the hierarchical name of the data
  */
-template <> void sc_trace(sc_trace_file*, const sc_in<sc_time>&, const std::string&);
+template <> void sc_trace(sc_trace_file* tf , const sc_in<sc_time>& value, const std::string& name);
 /**
  * trace function for sc_time
  *
- * @param the trace file
- * @param the port carrying the data to trace
- * @param the hierarchical name of the data
+ * @param tf the trace file
+ * @param value the port carrying the data to trace
+ * @param name the hierarchical name of the data
  */
-template <> void sc_trace(sc_trace_file*, const sc_inout<sc_time>&, const std::string&);
+template <> void sc_trace(sc_trace_file* tf, const sc_inout<sc_time>& value, const std::string& name);
 
 } // namespace sc_core
 // user-defined literals for easy time creation

@@ -110,6 +110,7 @@ protected:
  * overloaded stream operator
  *
  * @param os the output stream
+ * @param lut the lookup table to print
  * @return the stream
  */
 template <typename T> std::ostream& operator<<(std::ostream& os, range_lut<T>& lut) {

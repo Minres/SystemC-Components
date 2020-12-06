@@ -102,14 +102,14 @@ public:
      */
     void set_trace_types(trace_types t) { types_to_trace = t; }
     /**
-     * @fn const sc_core::sc_trace_file get_trace_file*()const
+     * @fn const sc_core::sc_trace_file* get_trace_file()const
      * @brief get the tracefile used by this tracer
      *
      * @return the tracefile
      */
     const sc_core::sc_trace_file* get_trace_file() const { return trf; }
     /**
-     * @fn const sc_core::sc_trace_file get_trace_file*()const
+     * @fn const sc_core::sc_trace_file* get_trace_file()const
      * @brief get the tracefile used by this tracer
      *
      * @return the tracefile

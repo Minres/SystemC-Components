@@ -141,8 +141,8 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct tlm_recording_ty
  */
 template <typename TYPES = tlm::tlm_base_protocol_types>
 class tlm2_recorder : public virtual tlm::tlm_fw_transport_if<TYPES>,
-                      public virtual tlm::tlm_bw_transport_if<TYPES>,
-                      public sc_core::sc_object {
+public virtual tlm::tlm_bw_transport_if<TYPES>,
+public sc_core::sc_object {
     std::string get_parent(char const* hier_name) {
         std::string ret(hier_name);
         auto pos = ret.rfind('.');
@@ -171,29 +171,38 @@ public:
     //! \brief the port where bw accesses are forwarded to
     sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port;
 
-    /*! \brief The constructor of the component
+    /**
+     * @fn  tlm2_recorder(sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>&, sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>&, bool=true, scv_tr_db*=scv_tr_db::get_default_db())
+     * @brief The constructor of the component
      *
-     * \param name is the SystemC module name of the recorder
-     * \param tr_db is a pointer to a transaction recording database. If none is
+     * @param fw_port the forward port to use in the forward path
+     * @param bw_port the backward port to use in the backward path
+     * @param recording_enabled if true recording is enabled by default
+     * @param tr_db is a pointer to a transaction recording database. If none is
      * provided the default one is retrieved.
      *        If this database is not initialized (e.g. by not calling
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
     tlm2_recorder(sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_port,
-                  sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port, bool recording_enabled = true,
-                  scv_tr_db* tr_db = scv_tr_db::get_default_db())
+            sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port, bool recording_enabled = true,
+            scv_tr_db* tr_db = scv_tr_db::get_default_db())
     : tlm2_recorder(sc_core::sc_gen_unique_name("tlm2_recorder"), fw_port, bw_port, recording_enabled, tr_db) {}
-    /*! \brief The constructor of the component
+    /**
+     * @fn  tlm2_recorder(const char*, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>&, sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>&, bool=true, scv_tr_db*=scv_tr_db::get_default_db())
+     * @brief
      *
-     * \param name is the SystemC module name of the recorder
-     * \param tr_db is a pointer to a transaction recording database. If none is
+     * @param name is the SystemC module name of the recorder
+     * @param fw_port the forward port to use in the forward path
+     * @param bw_port the backward port to use in the backward path
+     * @param recording_enabled if true recording is enabled by default
+     * @param tr_db is a pointer to a transaction recording database. If none is
      * provided the default one is retrieved.
      *        If this database is not initialized (e.g. by not calling
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
     tlm2_recorder(const char* name, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_port,
-                  sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port, bool recording_enabled = true,
-                  scv_tr_db* tr_db = scv_tr_db::get_default_db())
+            sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port, bool recording_enabled = true,
+            scv_tr_db* tr_db = scv_tr_db::get_default_db())
     : sc_core::sc_object(name)
     , enableTracing("enableTracing", recording_enabled)
     , enableTimed("enableTimed", recording_enabled)
@@ -253,7 +262,7 @@ public:
      * \return the sync state of the transaction
      */
     tlm::tlm_sync_enum nb_transport_fw(typename TYPES::tlm_payload_type& trans,
-                                               typename TYPES::tlm_phase_type& phase, sc_core::sc_time& delay) override;
+            typename TYPES::tlm_phase_type& phase, sc_core::sc_time& delay) override;
 
     /*! \brief The non-blocking backward transport function
      *
@@ -265,7 +274,7 @@ public:
      * \return the sync state of the transaction
      */
     tlm::tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type& trans,
-                                               typename TYPES::tlm_phase_type& phase, sc_core::sc_time& delay) override;
+            typename TYPES::tlm_phase_type& phase, sc_core::sc_time& delay) override;
 
     /*! \brief The blocking transport function
      *
@@ -380,11 +389,11 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, 
     if(b_streamHandle == NULL) {
         b_streamHandle = new scv_tr_stream((fixed_basename + "_bl").c_str(), "TRANSACTOR", m_db);
         b_trHandle[tlm::TLM_READ_COMMAND] =
-            new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("read", *b_streamHandle, "start_delay", "end_delay");
+                new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("read", *b_streamHandle, "start_delay", "end_delay");
         b_trHandle[tlm::TLM_WRITE_COMMAND] =
-            new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("write", *b_streamHandle, "start_delay", "end_delay");
+                new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("write", *b_streamHandle, "start_delay", "end_delay");
         b_trHandle[tlm::TLM_IGNORE_COMMAND] =
-            new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("ignore", *b_streamHandle, "start_delay", "end_delay");
+                new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("ignore", *b_streamHandle, "start_delay", "end_delay");
     }
     // Get a handle for the new transaction
     scv_tr_handle h = b_trHandle[trans.get_command()]->begin_transaction(delay.value(), sc_time_stamp());
@@ -453,11 +462,11 @@ void tlm2_recorder<TYPES>::btx_cb(tlm_recording_payload& rec_parts, const typena
     if(b_trTimedHandle[0] == NULL) {
         b_streamHandleTimed = new scv_tr_stream((fixed_basename + "_bl_timed").c_str(), "TRANSACTOR", m_db);
         b_trTimedHandle[0] =
-            new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("read", *b_streamHandleTimed);
+                new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("read", *b_streamHandleTimed);
         b_trTimedHandle[1] =
-            new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("write", *b_streamHandleTimed);
+                new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("write", *b_streamHandleTimed);
         b_trTimedHandle[2] =
-            new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("ignore", *b_streamHandleTimed);
+                new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("ignore", *b_streamHandleTimed);
     }
     // Now process outstanding recordings
     switch(phase) {
@@ -484,19 +493,19 @@ void tlm2_recorder<TYPES>::btx_cb(tlm_recording_payload& rec_parts, const typena
 
 template <typename TYPES>
 tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payload_type& trans,
-                                                         typename TYPES::tlm_phase_type& phase,
-                                                         sc_core::sc_time& delay) {
+        typename TYPES::tlm_phase_type& phase,
+        sc_core::sc_time& delay) {
     if(!isRecordingEnabled())
         return fw_port->nb_transport_fw(trans, phase, delay);
     // initialize stream and generator if not yet done
     if(nb_streamHandle[FW] == NULL) {
         nb_streamHandle[FW] = new scv_tr_stream((fixed_basename + "_nb_fw").c_str(), "TRANSACTOR", m_db);
         nb_fw_trHandle[tlm::TLM_READ_COMMAND] = new scv_tr_generator<std::string, tlm::tlm_sync_enum>(
-            "read", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
+                "read", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
         nb_fw_trHandle[tlm::TLM_WRITE_COMMAND] = new scv_tr_generator<std::string, tlm::tlm_sync_enum>(
-            "write", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
+                "write", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
         nb_fw_trHandle[tlm::TLM_IGNORE_COMMAND] = new scv_tr_generator<std::string, tlm::tlm_sync_enum>(
-            "ignore", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
+                "ignore", *nb_streamHandle[FW], "tlm_phase", "tlm_sync");
     }
     /*************************************************************************
      * prepare recording
@@ -573,7 +582,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
             (*req) = trans;
             req->parent = h;
             nb_timed_peq.notify(*req, (status == tlm::TLM_COMPLETED && phase == tlm::BEGIN_REQ) ? tlm::END_RESP : phase,
-                                delay);
+                    delay);
         }
     } else if(enableTimed.value && status == tlm::TLM_UPDATED) {
         tlm_recording_payload* req = mm::get().allocate();
@@ -589,18 +598,18 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
 
 template <typename TYPES>
 tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payload_type& trans,
-                                                         typename TYPES::tlm_phase_type& phase,
-                                                         sc_core::sc_time& delay) {
+        typename TYPES::tlm_phase_type& phase,
+        sc_core::sc_time& delay) {
     if(!isRecordingEnabled())
         return bw_port->nb_transport_bw(trans, phase, delay);
     if(nb_streamHandle[BW] == NULL) {
         nb_streamHandle[BW] = new scv_tr_stream((fixed_basename + "_nb_bw").c_str(), "TRANSACTOR", m_db);
         nb_bw_trHandle[tlm::TLM_READ_COMMAND] = new scv_tr_generator<std::string, tlm::tlm_sync_enum>(
-            "read", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
+                "read", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
         nb_bw_trHandle[tlm::TLM_WRITE_COMMAND] = new scv_tr_generator<std::string, tlm::tlm_sync_enum>(
-            "write", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
+                "write", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
         nb_bw_trHandle[tlm::TLM_IGNORE_COMMAND] = new scv_tr_generator<std::string, tlm::tlm_sync_enum>(
-            "ignore", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
+                "ignore", *nb_streamHandle[BW], "tlm_phase", "tlm_sync");
     }
     /*************************************************************************
      * prepare recording
@@ -755,7 +764,7 @@ bool tlm2_recorder<TYPES>::get_direct_mem_ptr(typename TYPES::tlm_payload_type& 
         dmi_streamHandle = new scv_tr_stream((fixed_basename + "_dmi").c_str(), "TRANSACTOR", m_db);
     if(!dmi_trGetHandle)
         dmi_trGetHandle =
-            new scv_tr_generator<tlm_gp_data, tlm_dmi_data>("get_dmi_ptr", *dmi_streamHandle, "trans", "dmi_data");
+                new scv_tr_generator<tlm_gp_data, tlm_dmi_data>("get_dmi_ptr", *dmi_streamHandle, "trans", "dmi_data");
     scv_tr_handle h = dmi_trGetHandle->begin_transaction(tlm_gp_data(trans));
     bool status = fw_port->get_direct_mem_ptr(trans, dmi_data);
     dmi_trGetHandle->end_transaction(h, tlm_dmi_data(dmi_data));
@@ -777,7 +786,7 @@ void tlm2_recorder<TYPES>::invalidate_direct_mem_ptr(sc_dt::uint64 start_addr, s
         dmi_streamHandle = new scv_tr_stream((fixed_basename + "_dmi").c_str(), "TRANSACTOR", m_db);
     if(!dmi_trInvalidateHandle)
         dmi_trInvalidateHandle = new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>(
-            "invalidate_dmi_ptr", *dmi_streamHandle, "start_delay", "end_delay");
+                "invalidate_dmi_ptr", *dmi_streamHandle, "start_delay", "end_delay");
 
     scv_tr_handle h = dmi_trInvalidateHandle->begin_transaction(start_addr);
     bw_port->invalidate_direct_mem_ptr(start_addr, end_addr);

@@ -81,6 +81,8 @@ public:
 protected:
     /**
      * the constructor. Protected as it should only be called by derived classes
+     *
+     * @param nm the module name
      * @param port
      * @param transfer_width
      */

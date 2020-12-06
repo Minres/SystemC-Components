@@ -37,26 +37,26 @@ namespace scc {
  */
 struct sc_variable : sc_core::sc_object {
     /**
-         * @fn  sc_variable(const char*)
+     * @fn  sc_variable(const char*)
      * @brief named contructor
      *
      * @param name the name
      */
     sc_variable(const char* name)
-    : sc_core::sc_object(name) {}
-/**
- * @fn const char kind*()const
- * @brief get the kind of this sc_object
- *
- * @return the kind string
- */
+            : sc_core::sc_object(name) {}
+    /**
+     * @fn const char* kind()const
+     * @brief get the kind of this sc_object
+     *
+     * @return the kind string
+     */
     const char* kind() const { return "sc_variable"; }
-/**
- * @fn std::string to_string()const
- * @brief retrieve the textual representation of the value
- *
- * @return
- */
+    /**
+     * @fn std::string to_string()const
+     * @brief retrieve the textual representation of the value
+     *
+     * @return
+     */
     virtual std::string to_string() const { return ""; };
 };
 /**
@@ -69,39 +69,39 @@ template <typename T> struct sc_variable_t : public sc_variable {
     //! the wrapped value
     const T& value;
     /**
-         * @fn const T operator *&()
+     * @fn const T& operator *()
      * @brief get a reference to the wrapped value
      *
      * @return
      */
     const T& operator*() { return value; }
-/**
- * @fn  sc_variable_t(const std::string&, const T&)
- * @brief constructor taking a name and a reference of the variable to be wrapped
- *
- * @param name the name
- * @param value the variable reference to be wrapped
- */
+    /**
+     * @fn  sc_variable_t(const std::string&, const T&)
+     * @brief constructor taking a name and a reference of the variable to be wrapped
+     *
+     * @param name the name
+     * @param value the variable reference to be wrapped
+     */
     sc_variable_t(const std::string& name, const T& value)
     : sc_variable(name.c_str())
     , value(value) {}
-/**
- * @fn std::string to_string()const
- * @brief create a textual representation of the wrapped value
- *
- * @return the string representing the value
- */
+    /**
+     * @fn std::string to_string()const
+     * @brief create a textual representation of the wrapped value
+     *
+     * @return the string representing the value
+     */
     std::string to_string() const override {
         std::stringstream ss;
         ss << value;
         return ss.str();
     }
-/**
- * @fn void trace(sc_core::sc_trace_file*)const
- * @brief register the value with the SystemC trace implementation
- *
- * @param tf
- */
+    /**
+     * @fn void trace(sc_core::sc_trace_file*)const
+     * @brief register the value with the SystemC trace implementation
+     *
+     * @param tf
+     */
     void trace(sc_core::sc_trace_file* tf) const override { sc_trace(tf, value, name()); }
 };
 /**
@@ -157,8 +157,10 @@ template <typename T> struct sc_variable_t<std::vector<T>> : public sc_variable 
 };
 /**
  * @struct sc_variable_t
- * @brief specialization of  \ref template <typename T> struct sc_variable_t for \ref std::array<T, S>
+ * @brief specialization of sc_variable_t for std::array
  *
+ * @tparam T data type of the array
+ * @tparam S size of the array
  */
 template <typename T, size_t S> struct sc_variable_t<std::array<T, S>> : public sc_variable {
     const std::array<T, S>& value;
@@ -186,7 +188,7 @@ template <typename T, size_t S> struct sc_variable_t<std::array<T, S>> : public 
     }
 };
 /**
- * @struct sc_variable_t
+ * @struct sc_variable_masked_t
  * @brief the sc_variable for a particular plain data type with limited bit width
  *
  * @tparam T the data type of the wrapped value

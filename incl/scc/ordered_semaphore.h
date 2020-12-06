@@ -96,7 +96,7 @@ public:
      */
     int get_value() const override { return value; }
     /**
-     * @fn const char kind*()const
+     * @fn const char* kind()const
      * @brief kind of this SastemC object
      *
      * @return

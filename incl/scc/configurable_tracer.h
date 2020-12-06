@@ -45,7 +45,7 @@ public:
      *
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
-     * @param enable enable VCD (signal based) tracing
+     * @param enable_vcd enable VCD (signal based) tracing
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
     configurable_tracer(const std::string& name, file_type type, bool enable_vcd = true, bool default_enable = false)
@@ -55,16 +55,16 @@ public:
      *
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
-     * @param the trace file to use for signal and POD tracing
+     * @param tf the trace file to use for signal and POD tracing
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(const std::string&&, file_type, sc_core::sc_trace_file* = nullptr, bool default_enable = false);
+    configurable_tracer(const std::string&& name, file_type type, sc_core::sc_trace_file* tf = nullptr, bool default_enable = false);
     /**
      * constructs a tracer object
      *
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
-     * @param enable enable VCD (signal based) tracing
+     * @param tf the trace file to use for signal and POD tracing
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
     configurable_tracer(const std::string& name, file_type type, sc_core::sc_trace_file* tf = nullptr,

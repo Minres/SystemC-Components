@@ -110,7 +110,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
         return entry;
     }
     /**
-     * @fn sc_core::sc_event event&()
+     * @fn sc_core::sc_event& event()
      * @brief get the available event
      *
      * @return reference to the event
