@@ -7,24 +7,47 @@ include(Common)
 include(GNUInstallDirs)
 
 find_package(Doxygen)
-if (DOXYGEN_FOUND)
-    # set input and output files
-    set(DOXYGEN_IN ${scc_SOURCE_DIR}/doc/Doxyfile.in)
-    set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
 
-    # request to configure the file
-    configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
-    message("Doxygen build enabled")
+if(BUILD_SCC_DOCUMENTATION)
+    if(NOT DOXYGEN_FOUND)
+        message(FATAL_ERROR "Doxygen is needed to build the documentation.")
+    endif()
+	
+	set(DOXYGEN_PROJECT_BRIEF "SystemC components library")
+	set(DOXYGEN_USE_MDFILE_AS_MAINPAGE  README.md)
+	# exclude json code
+	set(DOXYGEN_EXCLUDE_PATTERNS  */json/*)
+	# doxygen settings can be set here, prefixed with "DOXYGEN_"
+	set(DOXYGEN_SOURCE_BROWSER YES)
+	set(DOXYGEN_EXTRACT_ALL NO)
+	set(DOXYGEN_EXTRACT_PRIVATE NO)
+	set(DOXYGEN_SEARCHENGINE NO)
+	set(DOXYGEN_GENERATE_HTML YES)
+	set(DOXYGEN_GENERATE_MAN NO)
+	set(DOXYGEN_GENERATE_LATEX NO)
+	set(DOXYGEN_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/docs")
+	# this target will only be built if specifically asked to.
+	# run "make api-docs" to create the doxygen documentation
+	doxygen_add_docs(
+	    scc-docs
+	    ${PROJECT_SOURCE_DIR}/incl ${PROJECT_SOURCE_DIR}/README.md
+	    COMMENT "Generate API-documents for NoteSearch."
+	)
 
-    # note the option ALL which allows to build the docs together with the application
-    add_custom_target( doc_doxygen ALL
-        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
-        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-        COMMENT "Generating API documentation with Doxygen"
-        VERBATIM )
-else (DOXYGEN_FOUND)
-  message("Doxygen need to be installed to generate the doxygen documentation")
-endif (DOXYGEN_FOUND)
+    #set(doxyfile_in ${CMAKE_CURRENT_SOURCE_DIR}/doc/Doxyfile.in)
+    #set(doxyfile ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+    #configure_file(${doxyfile_in} ${doxyfile} @ONLY)
+    #add_custom_target(doc_scc
+    #    COMMAND ${DOXYGEN_EXECUTABLE} ${doxyfile}
+    #    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    #    COMMENT "Generating API documentation with Doxygen"
+    #    VERBATIM)
+
+    install(DIRECTORY ${PROJECT_BINARY_DIR}/docs DESTINATION share/doc)
+endif()
+
+
 ###############################################################################
 # build a separate SCC-UTIL library for the use in non-systemc based systems
 ###############################################################################
