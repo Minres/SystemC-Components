@@ -22,9 +22,13 @@
 
 namespace scc {
 /**
- * a performance estimator
- * it records the time stamps a various time points (start and end of simulation) and calculates
- * some performance figures
+ * @class perf_estimator
+ * @brief a performance estimator
+ *
+ * It records the time stamps a various time points (start and end of simulation) and calculates
+ * some performance figures. Optionally it provides a heart beat which periodically calls a functor
+ * If a cycle time is provides it calculates also the cycles per (wall clock) second
+ *
  */
 class perf_estimator : public sc_core::sc_module {
     //! some internal data structure to record a time stamp
@@ -50,21 +54,33 @@ class perf_estimator : public sc_core::sc_module {
 
 public:
     /**
-     * default constructor
+     * @fn  perf_estimator()
+     * @brief default constructor creating an unnamed perf_estimator
+     *
      */
     perf_estimator()
     : perf_estimator(sc_core::SC_ZERO_TIME) {}
     /**
-     * default constructor
+     * @fn  perf_estimator(sc_core::sc_time)
+     * @brief default constructor creating an unnamed perf_estimator having a heart beat
+     *
+     * @param heart_beat
      */
     perf_estimator(sc_core::sc_time heart_beat)
     : perf_estimator(sc_core::sc_gen_unique_name("perf_estimator", true), heart_beat) {}
     /**
-     * the destructor
+     * @fn  ~perf_estimator()
+     * @brief destructor
+     *
      */
     virtual ~perf_estimator();
-
-    void set_cycle_time(sc_core::sc_time cycle_period) {this->cycle_period=cycle_period;};
+    /**
+     * @fn void set_cycle_time(sc_core::sc_time)
+     * @brief set the cycle time for cylces per second calculation
+     *
+     * @param cycle_period
+     */
+    void set_cycle_time(sc_core::sc_time cycle_period) { this->cycle_period = cycle_period; };
 
 protected:
     perf_estimator(const sc_core::sc_module_name& nm, sc_core::sc_time heart_beat);

@@ -98,12 +98,11 @@ void scc::configurer::dump_configuration(sc_core::sc_object* obj, Json::Value& p
     Json::Value node{Json::objectValue};
     for(sc_core::sc_attr_base* attr_base : obj->attr_cltn()) {
         check_n_assign<int>(node, attr_base) || check_n_assign<unsigned>(node, attr_base) ||
-                check_n_assign<long>(node, attr_base) || check_n_assign<unsigned long>(node, attr_base) ||
-                check_n_assign<long long, int64_t>(node, attr_base) ||
-                check_n_assign<unsigned long long, uint64_t>(node, attr_base) ||
-                check_n_assign<bool>(node, attr_base) || check_n_assign<float>(node, attr_base) ||
-                check_n_assign<double>(node, attr_base) || check_n_assign<std::string>(node, attr_base) ||
-                check_n_assign<char*>(node, attr_base);
+            check_n_assign<long>(node, attr_base) || check_n_assign<unsigned long>(node, attr_base) ||
+            check_n_assign<long long, int64_t>(node, attr_base) ||
+            check_n_assign<unsigned long long, uint64_t>(node, attr_base) || check_n_assign<bool>(node, attr_base) ||
+            check_n_assign<float>(node, attr_base) || check_n_assign<double>(node, attr_base) ||
+            check_n_assign<std::string>(node, attr_base) || check_n_assign<char*>(node, attr_base);
     }
 #ifdef WITH_CCI
     const std::string hier_name{obj->name()};
@@ -118,13 +117,14 @@ void scc::configurer::dump_configuration(sc_core::sc_object* obj, Json::Value& p
         } else
             return false;
     }};
-    auto log_lvl_name = hier_name+".log_level";
+    auto log_lvl_name = hier_name + ".log_level";
     auto handles = cci_broker.get_param_handles(pred);
     auto log_lvl_set = false;
     for(auto& h : handles) {
         auto value = h.get_cci_value();
         auto paramname = std::string{h.name()};
-        if(paramname==log_lvl_name) log_lvl_set=true;
+        if(paramname == log_lvl_name)
+            log_lvl_set = true;
         auto basename = paramname.substr(paramname.find_last_of('.') + 1);
         if(value.is_bool())
             node[basename] = value.get_bool();
@@ -141,10 +141,10 @@ void scc::configurer::dump_configuration(sc_core::sc_object* obj, Json::Value& p
         else if(value.is_string())
             node[basename] = value.get_string().c_str();
     }
-    if(!log_lvl_set && mod){
+    if(!log_lvl_set && mod) {
         auto val = cci_broker.get_preset_cci_value(log_lvl_name);
         auto global_verb = static_cast<int>(scc::get_logging_level());
-        node["log_level"] = val.is_int()? val.get_int() : global_verb;
+        node["log_level"] = val.is_int() ? val.get_int() : global_verb;
     }
 #endif
     for(auto* o : get_sc_objects(obj))

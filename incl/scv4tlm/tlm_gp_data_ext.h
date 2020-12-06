@@ -22,58 +22,58 @@
 
 template <> class scv_extensions<tlm::tlm_command> : public scv_enum_base<tlm::tlm_command> {
 public:
-    SCV_ENUM_CTOR(tlm::tlm_command) {//NOLINT
-        SCV_ENUM(tlm::TLM_READ_COMMAND);//NOLINT
-        SCV_ENUM(tlm::TLM_WRITE_COMMAND);//NOLINT
-        SCV_ENUM(tlm::TLM_IGNORE_COMMAND);//NOLINT
+    SCV_ENUM_CTOR(tlm::tlm_command) {      // NOLINT
+        SCV_ENUM(tlm::TLM_READ_COMMAND);   // NOLINT
+        SCV_ENUM(tlm::TLM_WRITE_COMMAND);  // NOLINT
+        SCV_ENUM(tlm::TLM_IGNORE_COMMAND); // NOLINT
     }
 };
 
 template <> class scv_extensions<tlm::tlm_response_status> : public scv_enum_base<tlm::tlm_response_status> {
 public:
-    SCV_ENUM_CTOR(tlm::tlm_response_status) {//NOLINT
-        SCV_ENUM(tlm::TLM_OK_RESPONSE);//NOLINT
-        SCV_ENUM(tlm::TLM_INCOMPLETE_RESPONSE);//NOLINT
-        SCV_ENUM(tlm::TLM_GENERIC_ERROR_RESPONSE);//NOLINT
-        SCV_ENUM(tlm::TLM_ADDRESS_ERROR_RESPONSE);//NOLINT
-        SCV_ENUM(tlm::TLM_COMMAND_ERROR_RESPONSE);//NOLINT
-        SCV_ENUM(tlm::TLM_BURST_ERROR_RESPONSE);//NOLINT
-        SCV_ENUM(tlm::TLM_BYTE_ENABLE_ERROR_RESPONSE);//NOLINT
+    SCV_ENUM_CTOR(tlm::tlm_response_status) {          // NOLINT
+        SCV_ENUM(tlm::TLM_OK_RESPONSE);                // NOLINT
+        SCV_ENUM(tlm::TLM_INCOMPLETE_RESPONSE);        // NOLINT
+        SCV_ENUM(tlm::TLM_GENERIC_ERROR_RESPONSE);     // NOLINT
+        SCV_ENUM(tlm::TLM_ADDRESS_ERROR_RESPONSE);     // NOLINT
+        SCV_ENUM(tlm::TLM_COMMAND_ERROR_RESPONSE);     // NOLINT
+        SCV_ENUM(tlm::TLM_BURST_ERROR_RESPONSE);       // NOLINT
+        SCV_ENUM(tlm::TLM_BYTE_ENABLE_ERROR_RESPONSE); // NOLINT
     }
 };
 
 template <> class scv_extensions<tlm::tlm_gp_option> : public scv_enum_base<tlm::tlm_gp_option> {
 public:
-    SCV_ENUM_CTOR(tlm::tlm_gp_option) {//NOLINT
-        SCV_ENUM(tlm::TLM_MIN_PAYLOAD);//NOLINT
-        SCV_ENUM(tlm::TLM_FULL_PAYLOAD);//NOLINT
-        SCV_ENUM(tlm::TLM_FULL_PAYLOAD_ACCEPTED);//NOLINT
+    SCV_ENUM_CTOR(tlm::tlm_gp_option) {           // NOLINT
+        SCV_ENUM(tlm::TLM_MIN_PAYLOAD);           // NOLINT
+        SCV_ENUM(tlm::TLM_FULL_PAYLOAD);          // NOLINT
+        SCV_ENUM(tlm::TLM_FULL_PAYLOAD_ACCEPTED); // NOLINT
     }
 };
 
 template <> class scv_extensions<scv4tlm::tlm_phase_enum> : public scv_enum_base<scv4tlm::tlm_phase_enum> {
 public:
-    SCV_ENUM_CTOR(scv4tlm::tlm_phase_enum) {//NOLINT
-        SCV_ENUM(scv4tlm::UNINITIALIZED_PHASE);//NOLINT
-        SCV_ENUM(scv4tlm::BEGIN_REQ);//NOLINT
-        SCV_ENUM(scv4tlm::END_REQ);//NOLINT
-        SCV_ENUM(scv4tlm::BEGIN_RESP);//NOLINT
-        SCV_ENUM(scv4tlm::END_RESP);//NOLINT
-        SCV_ENUM(scv4tlm::CUSTOM1);//NOLINT
-        SCV_ENUM(scv4tlm::CUSTOM2);//NOLINT
-        SCV_ENUM(scv4tlm::CUSTOM3);//NOLINT
-        SCV_ENUM(scv4tlm::CUSTOM4);//NOLINT
-        SCV_ENUM(scv4tlm::CUSTOM5);//NOLINT
-        SCV_ENUM(scv4tlm::CUSTOM6);//NOLINT
+    SCV_ENUM_CTOR(scv4tlm::tlm_phase_enum) {    // NOLINT
+        SCV_ENUM(scv4tlm::UNINITIALIZED_PHASE); // NOLINT
+        SCV_ENUM(scv4tlm::BEGIN_REQ);           // NOLINT
+        SCV_ENUM(scv4tlm::END_REQ);             // NOLINT
+        SCV_ENUM(scv4tlm::BEGIN_RESP);          // NOLINT
+        SCV_ENUM(scv4tlm::END_RESP);            // NOLINT
+        SCV_ENUM(scv4tlm::CUSTOM1);             // NOLINT
+        SCV_ENUM(scv4tlm::CUSTOM2);             // NOLINT
+        SCV_ENUM(scv4tlm::CUSTOM3);             // NOLINT
+        SCV_ENUM(scv4tlm::CUSTOM4);             // NOLINT
+        SCV_ENUM(scv4tlm::CUSTOM5);             // NOLINT
+        SCV_ENUM(scv4tlm::CUSTOM6);             // NOLINT
     }
 };
 
 template <> class scv_extensions<tlm::tlm_sync_enum> : public scv_enum_base<tlm::tlm_sync_enum> {
 public:
-    SCV_ENUM_CTOR(tlm::tlm_sync_enum) {//NOLINT
-        SCV_ENUM(tlm::TLM_ACCEPTED);//NOLINT
-        SCV_ENUM(tlm::TLM_UPDATED);//NOLINT
-        SCV_ENUM(tlm::TLM_COMPLETED);//NOLINT
+    SCV_ENUM_CTOR(tlm::tlm_sync_enum) { // NOLINT
+        SCV_ENUM(tlm::TLM_ACCEPTED);    // NOLINT
+        SCV_ENUM(tlm::TLM_UPDATED);     // NOLINT
+        SCV_ENUM(tlm::TLM_COMPLETED);   // NOLINT
     }
 };
 
@@ -109,11 +109,11 @@ public:
 
 template <> class scv_extensions<tlm::tlm_dmi::dmi_access_e> : public scv_enum_base<tlm::tlm_dmi::dmi_access_e> {
 public:
-    SCV_ENUM_CTOR(tlm::tlm_dmi::dmi_access_e) {//NOLINT
-        SCV_ENUM(tlm::tlm_dmi::DMI_ACCESS_NONE);//NOLINT
-        SCV_ENUM(tlm::tlm_dmi::DMI_ACCESS_READ);//NOLINT
-        SCV_ENUM(tlm::tlm_dmi::DMI_ACCESS_WRITE);//NOLINT
-        SCV_ENUM(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);//NOLINT
+    SCV_ENUM_CTOR(tlm::tlm_dmi::dmi_access_e) {        // NOLINT
+        SCV_ENUM(tlm::tlm_dmi::DMI_ACCESS_NONE);       // NOLINT
+        SCV_ENUM(tlm::tlm_dmi::DMI_ACCESS_READ);       // NOLINT
+        SCV_ENUM(tlm::tlm_dmi::DMI_ACCESS_WRITE);      // NOLINT
+        SCV_ENUM(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE); // NOLINT
     }
 };
 

@@ -2,12 +2,11 @@
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
-#include <tlm/ahb/ahb_tlm.h>
 #include <array>
 #include <functional>
 #include <scc/ordered_semaphore.h>
+#include <tlm/ahb/ahb_tlm.h>
 #include <unordered_set>
-
 
 namespace ahb {
 namespace pe {
@@ -23,7 +22,8 @@ public:
 
     sc_core::sc_in<bool> clk_i{"clk_i"};
     /**
-     * @brief the latency between between BEGIN(_PARTIAL)_REQ and END(_PARTIAL)_REQ (AWVALID to AWREADY and WVALID to WREADY)
+     * @brief the latency between between BEGIN(_PARTIAL)_REQ and END(_PARTIAL)_REQ (AWVALID to AWREADY and WVALID to
+     * WREADY)
      */
     sc_core::sc_attribute<unsigned> wr_data_accept_delay{"wr_data_accept_delay", 0};
     /**
@@ -35,11 +35,13 @@ public:
      */
     sc_core::sc_attribute<unsigned> rd_data_beat_delay{"rd_data_beat_delay", 0};
     /**
-     * @brief the latency between request and response phase. Will be overwritten by the return of the callback function (if registered)
+     * @brief the latency between request and response phase. Will be overwritten by the return of the callback function
+     * (if registered)
      */
     sc_core::sc_attribute<unsigned> rd_resp_delay{"rd_resp_delay", 0};
     /**
-     * @brief the latency between request and response phase. Will be overwritten by the return of the callback function (if registered)
+     * @brief the latency between request and response phase. Will be overwritten by the return of the callback function
+     * (if registered)
      */
     sc_core::sc_attribute<unsigned> wr_resp_delay{"wr_resp_delay", 0};
 
@@ -79,11 +81,14 @@ public:
 protected:
     /**
      * the constructor. Protected as it should only be called by derived classes
+     *
+     * @param nm the module name
      * @param port
      * @param transfer_width
      */
-    explicit ahb_target_b(const sc_core::sc_module_name& nm, sc_core::sc_port_b<tlm::tlm_bw_transport_if<tlm::tlm_base_protocol_types>>& port,
-                             size_t transfer_width);
+    explicit ahb_target_b(const sc_core::sc_module_name& nm,
+                          sc_core::sc_port_b<tlm::tlm_bw_transport_if<tlm::tlm_base_protocol_types>>& port,
+                          size_t transfer_width);
 
     ahb_target_b() = delete;
 
@@ -94,7 +99,6 @@ protected:
     ahb_target_b& operator=(ahb_target_b const&) = delete;
 
     ahb_target_b& operator=(ahb_target_b&&) = delete;
-
 
     void send_resp_thread();
 

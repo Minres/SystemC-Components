@@ -21,15 +21,22 @@
 #include <vector>
 
 namespace scc {
-
+/**
+ * @class resetable
+ * @brief base class for components having a reset
+ *
+ * This class forms a reset domain which is a set of components (sc_modules) having the same reset.
+ * sc_modules using sc_registers should inherit from this class as well so that all registers get the respective reset.
+ *
+ */
 class resetable {
 public:
-    /**
-     * the default destructor
-     */
+
     virtual ~resetable() = default;
     /**
-     * begin the reset state
+     * @fn void reset_start()
+     * @brief distributes the begin of the reset to all registered components and set the reset state
+     *
      */
     void reset_start() {
         _in_reset = true;
@@ -37,7 +44,9 @@ public:
             res->reset();
     }
     /**
-     * finish the reset state
+     * @fn void reset_stop()
+     * @brief distributes the end of the reset to all registered components and finishes the reset state
+     *
      */
     void reset_stop() {
         for(auto res : resources)
@@ -45,13 +54,15 @@ public:
         _in_reset = false;
     }
     /**
-     * get the current state of this reset domain
+     * @fn bool in_reset()
+     * @brief get the current state of this reset domain
      *
-     * @return tru if reset is active
+     * @return true if reset state is active
      */
     bool in_reset() { return _in_reset; }
     /**
-     * register a resource with this reset domain
+     * @fn void register_resource(resource_access_if*)
+     * @brief register a resource with this reset domain
      *
      * @param res the resource belonging to this reset domain
      */

@@ -16,13 +16,16 @@
 
 #ifndef _SCC_SCV_TR_DB_H_
 #define _SCC_SCV_TR_DB_H_
-
 /**
- * initializes the infrastructure to use a SQLite based transaction recording database
+ * @fn void scv_tr_sqlite_init()
+ * @brief initializes the infrastructure to use a SQLite based transaction recording database
+ *
  */
 void scv_tr_sqlite_init();
 /**
- * initializes the infrastructure to use a compressed text based transaction recording database
+ * @fn void scv_tr_compressed_init()
+ * @brief initializes the infrastructure to use a compressed text based transaction recording database
+ *
  */
 void scv_tr_compressed_init();
 

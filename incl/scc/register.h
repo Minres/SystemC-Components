@@ -57,16 +57,22 @@ template <typename Type> constexpr Type get_max_uval() {
 }
 
 /**
- * a simple register implementation taking a certain data type. The sc_register does not hold the value itself,
- * this needs to be provided. It only provides som resource access interface and handled callbacks for read and
+ * @class sc_register
+ * @brief a simple register implementation
+ *
+ * A simple register implementation taking a certain data type. The sc_register does not hold the value itself,
+ * the data storage needs to be provided. It only provides some resource access interface and handled callbacks for read and
  * write accesses
+ *
+ * @tparam DATATYPE
  */
 template <typename DATATYPE>
 class sc_register : public sc_core::sc_object, public resource_access_if, public traceable {
 public:
     using this_type = class sc_register<DATATYPE>;
     /**
-     * the constructor
+     * @fn  sc_register(sc_core::sc_module_name, DATATYPE&, const DATATYPE, resetable&, DATATYPE=get_max_uval<DATATYPE>(), DATATYPE=get_max_uval<DATATYPE>())
+     * @brief the constructor
      *
      * @param nm the instance name
      * @param storage the storage data structure
@@ -85,17 +91,22 @@ public:
         owner.register_resource(this);
     }
     /**
-     * the destructor
+     * @fn  ~sc_register()
+     * @brief desctructor
+     *
      */
     ~sc_register() = default;
-
     /**
+     * @fn size_t size()const
+     * @brief get the size of this register in bytes
      *
      * @return
      */
     size_t size() const override { return sizeof(DATATYPE); }
     /**
-     * reset the register
+     * @fn void reset()
+     * @brief reset the register
+     *
      */
     void reset() override {
         DATATYPE r(res_val);
@@ -104,12 +115,13 @@ public:
         storage = r;
     }
     /**
-     * write function from resource_access_if
+     * @fn bool write(const uint8_t*, size_t, uint64_t=0, sc_core::sc_time=sc_core::SC_ZERO_TIME)
+     * @brief write function from resource_access_if
      *
-     * @param data data to write
-     * @param length size of data to write
-     * @param offset offset within register
-     * @param d annotated delay if loosly-timed access
+     * @param data to be written
+     * @param length of data to be written in bytes
+     * @param offset of the write to the baseaddress of the register
+     * @param d offset of the time in a time domain wrt. the SystemC simulator time (e.g. when using loosly-timed modeling)
      * @return true if access is successful
      */
     bool write(const uint8_t* data, size_t length, uint64_t offset = 0,
@@ -124,12 +136,13 @@ public:
         return true;
     }
     /**
-     * read function from resource_access_if
+     * @fn bool read(uint8_t*, size_t, uint64_t=0, sc_core::sc_time=sc_core::SC_ZERO_TIME)const
+     * @brief read function from resource_access_if
      *
-     * @param data data buffer to read
-     * @param length size of data to read
-     * @param offset offset within register
-     * @param d annotated delay if loosly-timed access
+     * @param data to be read
+     * @param length of data to be written in bytes
+     * @param offset of the write to the baseaddress of the register
+     * @param d offset of the time in a time domain wrt. the SystemC simulator time (e.g. when using loosly-timed modeling)
      * @return true if access is successful
      */
     bool read(uint8_t* data, size_t length, uint64_t offset = 0,
@@ -146,11 +159,14 @@ public:
         return true;
     }
     /**
-     * debug write function from resource_access_if
+     * @fn bool write_dbg(const uint8_t*, size_t, uint64_t=0)
+     * @brief debug write function from resource_access_if
      *
-     * @param data data to write
-     * @param length size of data to write
-     * @param offset offset within register
+     * This access should not cause any side effect!
+     *
+     * @param data to be written
+     * @param length of data to be written in bytes
+     * @param offset of the write to the baseaddress of the register
      * @return true if access is successful
      */
     bool write_dbg(const uint8_t* data, size_t length, uint64_t offset = 0) override {
@@ -161,11 +177,14 @@ public:
         return true;
     }
     /**
-     * debug read function from resource_access_if
+     * @fn bool read_dbg(uint8_t*, size_t, uint64_t=0)const
+     * @brief debug read function from resource_access_if
      *
-     * @param data data buffer to read
-     * @param length size of data to read
-     * @param offset offset within register
+     * This access should not cause any side effect!
+     *
+     * @param data to be read
+     * @param length of data to be written in bytes
+     * @param offset of the write to the baseaddress of the register
      * @return true if access is successful
      */
     bool read_dbg(uint8_t* data, size_t length, uint64_t offset = 0) const override {
@@ -176,75 +195,99 @@ public:
         return true;
     }
     /**
-     * cast operator
+     * @fn  operator DATATYPE()const
+     * @brief cast operator to get underlying storage
+     *
      */
     operator DATATYPE() const { return storage; }
     /**
-     * get the storage
+     * @fn DATATYPE get()const
+     * @brief get the underlying storage
      *
-     * @return copy of the underlying datatype
+     * @return
      */
     DATATYPE get() const { return storage; }
     /**
-     * put value to storage
+     * @fn void put(DATATYPE)const
+     * @brief write to the underlying storage
      *
-     * @param data the data to store
+     * @param data the new value
      */
     void put(DATATYPE data) const { storage = data; }
     /**
-     * copy assignment
+     * @fn this_type& operator =(DATATYPE)
+     * @brief assignment operator
      *
-     * @param other the data
-     * @return
+     * @param other the new value
+     * @return reference to this
      */
     this_type& operator=(DATATYPE other) {
         storage = other;
         return *this;
     }
     /**
-     * unary or
+     * @fn this_type& operator |=(DATATYPE)
+     * @brief unary or
      *
-     * @param other
-     * @return
+     * @param other the other value
+     * @return reference to this
      */
     this_type& operator|=(DATATYPE other) {
         storage |= other;
         return *this;
     }
     /**
-     * unary and
+         * @fn this_type& operator &=(DATATYPE)
+     * @brief unary and
      *
-     * @param other
-     * @return
+     * @param other the other value
+     * @return reference to this
      */
     this_type& operator&=(DATATYPE other) {
         storage &= other;
         return *this;
     }
     /**
-     * set the read callback triggered upon a read request without forwarding the annotated time
+     * @fn void set_read_cb(std::function<bool (const this_type&, DATATYPE&)>)
+     * @brief set the read callback
+     *
+     * The read callback is triggered upon a read request without forwarding the annotated time
      * this is primary for backward compatibility
      *
-     * @param read_cb
+     * @param read_cb the callback functor
      */
     void set_read_cb(std::function<bool(const this_type&, DATATYPE&)> read_cb) {
         rd_cb = [read_cb](const this_type& reg, DATATYPE& data, sc_core::sc_time delay) { return read_cb(reg, data); };
     }
     /**
-     * set the read callback triggered upon a read request
+     * @fn void set_read_cb(std::function<bool (const this_type&, DATATYPE&, sc_core::sc_time)>)
+     * @brief set the read callback
      *
-     * @param read_cb
+     * The read callback functor triggered upon a read request.
+     *
+     * @param read_cb the callback functor
      */
     void set_read_cb(std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time)> read_cb) { rd_cb = read_cb; }
     /**
-     * set the write callback triggered upon a write request without forwarding the annotated time
+     * @fn void set_write_cb(std::function<bool (this_type&, const DATATYPE&)>)
+     * @brief set the write callback
+     *
+     * The write callback functor is triggered upon a write request without forwarding the annotated time
      * this is primary for backward compatibility
      *
-     * @param write_cb
+     * @param write_cb the callback functor
      */
     void set_write_cb(std::function<bool(this_type&, const DATATYPE&)> write_cb) {
         wr_cb = [write_cb](this_type& reg, DATATYPE& data, sc_core::sc_time delay) { return write_cb(reg, data); };
     }
+    /**
+     * @fn void set_write_cb(std::function<bool (this_type&, const DATATYPE&, sc_core::sc_time)>)
+     * @brief set the write callback
+     *
+     * The write callback functor is triggered upon a write request.
+     *
+     * @param write_cb the callback functor
+     */
     /**
      * set the write callback triggered upon a write request
      *
@@ -252,16 +295,17 @@ public:
      */
     void set_write_cb(std::function<bool(this_type&, const DATATYPE&, sc_core::sc_time)> write_cb) { wr_cb = write_cb; }
     /**
-     * trace the register value to the given trace file
+     * @fn void trace(sc_core::sc_trace_file*)const
+     * @brief trace the register value to the given trace file
      *
-     * @param trf
+     * @param trf the trace file
      */
     void trace(sc_core::sc_trace_file* trf) const override { sc_trace(trf, storage, this->name()); }
-    //! the reset value
+    //! \brief the reset value
     const DATATYPE res_val;
-    //! the SW read mask
+    //! \brief the SW read mask
     const DATATYPE rdmask;
-    //! the SW write mask
+    //! \brief the SW write mask
     const DATATYPE wrmask;
 
 private:
@@ -304,16 +348,15 @@ public:
                                                     ? -1
                                                     : std::numeric_limits<BASE_DATA_TYPE>::max()) {
 
-    	_reg_field.init(START+SIZE, [&](const char* name, size_t idx)->pointer
-    			{
-    				return new sc_register<DATATYPE>(name, storage[idx], reset_val, owner, rdmask, wrmask);
-    			});
+        _reg_field.init(START + SIZE, [&](const char* name, size_t idx) -> pointer {
+            return new sc_register<DATATYPE>(name, storage[idx], reset_val, owner, rdmask, wrmask);
+        });
     }
 
     /**
      * the destructor
      */
-    ~sc_register_indexed() override { }
+    ~sc_register_indexed() override {}
     /**
      * get the size of the register file
      *
@@ -345,7 +388,7 @@ public:
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const &)> write_cb) {
+    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const&)> write_cb) {
         for(auto& reg : _reg_field)
             reg.set_write_cb(write_cb);
     }
@@ -354,7 +397,7 @@ public:
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const &, sc_core::sc_time)> write_cb) {
+    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const&, sc_core::sc_time)> write_cb) {
         for(auto& reg : _reg_field)
             reg.set_write_cb(write_cb);
     }

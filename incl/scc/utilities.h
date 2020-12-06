@@ -23,10 +23,10 @@
 #ifndef _SYSC_UTILITIES_H_
 #define _SYSC_UTILITIES_H_
 
+#include "sc_variable.h"
+#include <array>
 #include <limits>
 #include <memory>
-#include <array>
-#include "sc_variable.h"
 
 // pragmas to disable the deprecated warnings for SystemC headers
 #pragma GCC diagnostic push
@@ -62,47 +62,34 @@ template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args&&...
 namespace sc_core {
 // needed to be able to use sc_time as signal value
 #if SC_VERSION_MAJOR <= 2 && SC_VERSION_MINOR <= 3 && SC_VERSION_PATCH < 2
-/**
- *
- * @param
- * @param
- * @param
- */
+
 void sc_trace(sc_trace_file*, const sc_time&, const std::string&);
-/**
- *
- * @param
- * @param
- * @param
- */
+
 void sc_trace(sc_trace_file*, const sc_time&, const char*);
 
 /**
  * comatibility for SC2.3.1
  *
- * @param
- * @param
- * @param
  */
-inline void sc_trace(sc_core::sc_trace_file*&, const sc_core::sc_event&, const char*){}
+inline void sc_trace(sc_core::sc_trace_file*&, const sc_core::sc_event&, const char*) {}
 
 #endif
 /**
- * trace function for sc_time
+ * @brief trace function for sc_time
  *
- * @param the trace file
- * @param the data to trace
- * @param the hierarchical name of the data
+ * @param tf the trace file
+ * @param value the data to trace
+ * @param name the hierarchical name of the data
  */
-template <> void sc_trace(sc_trace_file*, const sc_in<sc_time>&, const std::string&);
+template <> void sc_trace(sc_trace_file* tf , const sc_in<sc_time>& value, const std::string& name);
 /**
  * trace function for sc_time
  *
- * @param the trace file
- * @param the port carrying the data to trace
- * @param the hierarchical name of the data
+ * @param tf the trace file
+ * @param value the port carrying the data to trace
+ * @param name the hierarchical name of the data
  */
-template <> void sc_trace(sc_trace_file*, const sc_inout<sc_time>&, const std::string&);
+template <> void sc_trace(sc_trace_file* tf, const sc_inout<sc_time>& value, const std::string& name);
 
 } // namespace sc_core
 // user-defined literals for easy time creation
@@ -301,37 +288,27 @@ template <typename T> inline void set_value(cci::cci_param_typed<T>& a, T&& valu
 #endif
 } // namespace scc
 
-#define declare_method_process_cl(handle, name, host_tag, func)        \
-    {		                                                    \
-		::sc_core::sc_spawn_options opt; \
-		opt.dont_initialize();\
-		opt.spawn_method();\
-        ::sc_core::sc_process_handle handle =                      \
-	    ::sc_core::sc_spawn(func, name,  &opt); \
-        this->sensitive << handle;                                        \
-        this->sensitive_pos << handle;                                    \
-        this->sensitive_neg << handle;                                    \
+#define declare_method_process_cl(handle, name, host_tag, func)                                                        \
+    {                                                                                                                  \
+        ::sc_core::sc_spawn_options opt;                                                                               \
+        opt.dont_initialize();                                                                                         \
+        opt.spawn_method();                                                                                            \
+        ::sc_core::sc_process_handle handle = ::sc_core::sc_spawn(func, name, &opt);                                   \
+        this->sensitive << handle;                                                                                     \
+        this->sensitive_pos << handle;                                                                                 \
+        this->sensitive_neg << handle;                                                                                 \
     }
 
-#define declare_thread_process_cl(handle, name, host_tag, func)        \
-    {                                                               \
-		::sc_core::sc_spawn_options opt; \
-		::sc_core::sc_process_handle handle =                      \
-		::sc_core::sc_spawn(func, name,  &opt); \
-		this->sensitive << handle;                                        \
-		this->sensitive_pos << handle;                                    \
+#define declare_thread_process_cl(handle, name, host_tag, func)                                                        \
+    {                                                                                                                  \
+        ::sc_core::sc_spawn_options opt;                                                                               \
+        ::sc_core::sc_process_handle handle = ::sc_core::sc_spawn(func, name, &opt);                                   \
+        this->sensitive << handle;                                                                                     \
+        this->sensitive_pos << handle;                                                                                 \
     }
 
-#define SC_METHOD_CL(name, func)                                                       \
-    declare_method_process_cl( name ## _handle,                                  \
-                            #name,                                            \
-                            SC_CURRENT_USER_MODULE,                           \
-                            func )
+#define SC_METHOD_CL(name, func) declare_method_process_cl(name##_handle, #name, SC_CURRENT_USER_MODULE, func)
 
-#define SC_THREAD_CL(name, func)                                                       \
-    declare_thread_process_cl( name ## _handle,                                  \
-                            #name,                                            \
-                            SC_CURRENT_USER_MODULE,                           \
-                            func )
+#define SC_THREAD_CL(name, func) declare_thread_process_cl(name##_handle, #name, SC_CURRENT_USER_MODULE, func)
 
 #endif /* _SYSC_UTILITIES_H_ */

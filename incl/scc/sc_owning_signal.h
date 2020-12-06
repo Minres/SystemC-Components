@@ -20,7 +20,13 @@
 #include <sysc/communication/sc_signal.h>
 #include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 namespace scc {
-
+/**
+ * @class sc_owning_signal
+ * @brief sc_signal which takes ownership of the data (acquire()/release())
+ *
+ * @tparam T
+ * @tparam POL
+ */
 template <class T, sc_core::sc_writer_policy POL = sc_core::SC_ONE_WRITER>
 class sc_owning_signal : public sc_core::sc_signal<T*, POL> {
 protected:
@@ -56,9 +62,9 @@ public: // constructors and destructor:
             super::request_update();
     }
 
-    void clear(){
+    void clear() {
         super::m_new_val = nullptr;
-        if(super::m_new_val!=super::m_cur_val)
+        if(super::m_new_val != super::m_cur_val)
             super::request_update();
     }
 

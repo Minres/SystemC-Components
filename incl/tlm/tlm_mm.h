@@ -23,8 +23,11 @@
 namespace tlm {
 
 /**
- * a tlm memory manager which can be used as singleton or as local memory manager. It uses the pool_allocator
- * as singleton.
+ * @class tlm_mm
+ * @brief a tlm memory manager
+ *
+ * This memory manager can be used as singleton or as local memory manager. It uses the pool_allocator
+ * as singleton to maximize reuse
  */
 template <typename TYPES = tlm_base_protocol_types> class tlm_mm : public tlm::tlm_mm_interface {
     using payload_type = typename TYPES::tlm_payload_type;
@@ -35,35 +38,18 @@ public:
      * @return
      */
     static tlm_mm& get();
-    /**
-     * @brief default constructor
-     * @param
-     */
+
     tlm_mm()
     : allocator(util::pool_allocator<payload_type>::get()) {}
-    /**
-     * @brief deleted copy constructor
-     * @param
-     */
+
     tlm_mm(const tlm_mm&) = delete;
-    /**
-     * @brief deleted move copy constructor
-     * @param
-     */
+
     tlm_mm(tlm_mm&&) = delete;
-    /**
-     * @brief deleted copy assignment
-     * @param
-     */
+
     tlm_mm& operator=(const tlm_mm& other) = delete;
-    /**
-     * @brief deleted move assignment
-     * @param
-     */
+
     tlm_mm& operator=(tlm_mm&& other) = delete;
-    /**
-     * @brief destructor
-     */
+
     ~tlm_mm() = default;
     /**
      * @brief get a plain tlm_payload_type without extensions
@@ -101,7 +87,7 @@ template <typename TYPES> typename tlm_mm<TYPES>::payload_type* tlm_mm<TYPES>::a
 
 template <typename TYPES> void tlm_mm<TYPES>::free(tlm::tlm_generic_payload* trans) {
     if(trans->get_data_ptr())
-        delete [] trans->get_data_ptr();
+        delete[] trans->get_data_ptr();
     trans->set_data_ptr(nullptr);
     trans->reset();
     trans->~tlm_generic_payload();

@@ -8,9 +8,9 @@
 #ifndef _UTIL_MT19937_RNG_H_
 #define _UTIL_MT19937_RNG_H_
 
+#include <cassert>
 #include <iostream>
 #include <random>
-#include <cassert>
 
 namespace util {
 class MT19937 {

@@ -20,10 +20,10 @@
  *      Author: developer
  */
 
-#include <scc/tracer_base.h>
-#include <scc/traceable.h>
-#include <scc/sc_variable.h>
 #include <cstring>
+#include <scc/sc_variable.h>
+#include <scc/traceable.h>
+#include <scc/tracer_base.h>
 #include <systemc>
 
 using namespace sc_core;
@@ -44,7 +44,8 @@ inline bool trace_helper(sc_trace_file*, const sc_object*) {
     return false;
 }
 
-template <typename T> inline bool try_trace_obj(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) {
+template <typename T>
+inline bool try_trace_obj(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) {
     if((types_to_trace & trace_types::PORTS) == trace_types::PORTS) {
         if(trace_helper<sc_core::sc_in<T>>(trace_file, object))
             return true;

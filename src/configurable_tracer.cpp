@@ -43,16 +43,14 @@ configurable_tracer::configurable_tracer(const std::string&& name, file_type typ
 : tracer(std::move(name), type, enable_vcd)
 , cci_originator(this->name())
 , cci_broker(cci::cci_get_global_broker(cci_originator))
-, default_trace_enable(default_enable) {
-}
+, default_trace_enable(default_enable) {}
 
 configurable_tracer::configurable_tracer(const std::string&& name, file_type type, sc_core::sc_trace_file* tf,
                                          bool default_enable)
 : tracer(std::move(name), type, tf)
 , cci_originator(this->name())
 , cci_broker(cci::cci_get_global_broker(cci_originator))
-, default_trace_enable(default_enable) {
-}
+, default_trace_enable(default_enable) {}
 
 scc::configurable_tracer::~configurable_tracer() {
     for(auto ptr : params)
@@ -63,7 +61,7 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
     if(obj == this)
         return;
     const char* kind = obj->kind();
-    if((types_to_trace & trace_types::SIGNALS)==trace_types::SIGNALS && strcmp(kind, "tlm_signal") == 0) {
+    if((types_to_trace & trace_types::SIGNALS) == trace_types::SIGNALS && strcmp(kind, "tlm_signal") == 0) {
         if(trace)
             obj->trace(trf);
         return;
@@ -79,7 +77,7 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
         for(auto o : obj->get_child_objects())
             descend(o, trace_enable);
 
-    } else if((types_to_trace & trace_types::VARIABLES)== trace_types::VARIABLES && strcmp(kind, "sc_variable") == 0) {
+    } else if((types_to_trace & trace_types::VARIABLES) == trace_types::VARIABLES && strcmp(kind, "sc_variable") == 0) {
         if(trace)
             obj->trace(trf);
     } else if(const auto* tr = dynamic_cast<const scc::traceable*>(obj)) {

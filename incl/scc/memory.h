@@ -20,19 +20,26 @@
 // Needed for the simple_target_socket
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
+#include "mt19937_rng.h"
 #include "report.h"
 #include "target_mixin.h"
 #include "utilities.h"
-#include "mt19937_rng.h"
 #include <tlm.h>
 #include <util/sparse_array.h>
 
 namespace scc {
 
 /**
- *  simple memory model
+ * @class memory
+ * @brief simple TLM2.0 LT memory model
  *
- *  TODO: add some more attributes/parameters to configure access time and type (DMI allowed, read only, etc)
+ * This model uses the \ref util::sparse_array as backing store. Therefore it can have an arbitrary size since only pages for accessed
+ * addresses are allocated.
+ *
+ * TODO: add some more attributes/parameters to configure access time and type (DMI allowed, read only, etc)
+ *
+ * @tparam SIZE size of the memery
+ * @tparam BUSWIDTH bus width of the socket
  */
 template <unsigned long long SIZE, unsigned BUSWIDTH = 32> class memory : public sc_core::sc_module {
 public:
@@ -44,13 +51,27 @@ public:
      * @param nm
      */
     memory(const sc_core::sc_module_name& nm);
-
+    /**
+     * @fn unsigned long long getSize()const
+     * @brief return the size of the array
+     *
+     */
     constexpr unsigned long long getSize() const { return SIZE; }
-
+    /**
+     * @fn void set_operation_callback(std::function<int (memory<SIZE,BUSWIDTH>&, tlm::tlm_generic_payload&)>)
+     * @brief allows to register a callback or functor being invoked upon an access to the memory
+     *
+     * @param cb the callback function or functor
+     */
     void set_operation_callback(std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&)> cb) {
         operation_cb = cb;
     }
-
+    /**
+     * @fn void set_dmi_callback(std::function<int (memory<SIZE,BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)>)
+     * @brief allows to register a callback or functor being invoked upon a direct memory access (DMI) to the memory
+     *
+     * @param cb the callback function or functor
+     */
     void set_dmi_callback(std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> cb) {
         dmi_cb = cb;
     }
