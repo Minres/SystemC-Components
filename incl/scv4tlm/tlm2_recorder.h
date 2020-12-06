@@ -252,8 +252,8 @@ public:
      * \param delay is the annotated delay
      * \return the sync state of the transaction
      */
-    virtual tlm::tlm_sync_enum nb_transport_fw(typename TYPES::tlm_payload_type& trans,
-                                               typename TYPES::tlm_phase_type& phase, sc_core::sc_time& delay);
+    tlm::tlm_sync_enum nb_transport_fw(typename TYPES::tlm_payload_type& trans,
+                                               typename TYPES::tlm_phase_type& phase, sc_core::sc_time& delay) override;
 
     /*! \brief The non-blocking backward transport function
      *
@@ -264,8 +264,8 @@ public:
      * \param delay is the annotated delay
      * \return the sync state of the transaction
      */
-    virtual tlm::tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type& trans,
-                                               typename TYPES::tlm_phase_type& phase, sc_core::sc_time& delay);
+    tlm::tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type& trans,
+                                               typename TYPES::tlm_phase_type& phase, sc_core::sc_time& delay) override;
 
     /*! \brief The blocking transport function
      *
@@ -275,7 +275,7 @@ public:
      * \param trans is the generic payload of the transaction
      * \param delay is the annotated delay
      */
-    virtual void b_transport(typename TYPES::tlm_payload_type& trans, sc_core::sc_time& delay);
+    void b_transport(typename TYPES::tlm_payload_type& trans, sc_core::sc_time& delay) override;
 
     /*! \brief The direct memory interface forward function
      *
@@ -284,21 +284,21 @@ public:
      * \param dmi_data is the structure holding the dmi information
      * \return if the dmi structure is valid
      */
-    virtual bool get_direct_mem_ptr(typename TYPES::tlm_payload_type& trans, tlm::tlm_dmi& dmi_data);
+    bool get_direct_mem_ptr(typename TYPES::tlm_payload_type& trans, tlm::tlm_dmi& dmi_data) override;
     /*! \brief The direct memory interface backward function
      *
      * This type of transaction is just forwarded and not recorded.
      * \param start_addr is the start address of the memory area being invalid
      * \param end_addr is the end address of the memory area being invalid
      */
-    virtual void invalidate_direct_mem_ptr(sc_dt::uint64 start_addr, sc_dt::uint64 end_addr);
+    void invalidate_direct_mem_ptr(sc_dt::uint64 start_addr, sc_dt::uint64 end_addr) override;
     /*! \brief The debug transportfunction
      *
      * This type of transaction is just forwarded and not recorded.
      * \param trans is the generic payload of the transaction
      * \return the sync state of the transaction
      */
-    virtual unsigned int transport_dbg(typename TYPES::tlm_payload_type& trans);
+    unsigned int transport_dbg(typename TYPES::tlm_payload_type& trans) override;
     /*! \brief get the current state of transaction recording
      *
      * \return if true transaction recording is enabled otherwise transaction

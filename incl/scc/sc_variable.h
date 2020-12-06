@@ -135,7 +135,7 @@ template <typename T> struct sc_variable_masked_t : public sc_variable {
     , value(value)
     , mask((1 << width) - 1) {}
 
-    std::string to_string() const {
+    std::string to_string() const override{
         std::stringstream ss;
         ss << (value & mask);
         return ss.str();

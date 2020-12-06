@@ -67,7 +67,7 @@ void ahb_target_b::b_transport(payload_type& trans, sc_time& t) {
     auto latency = operation_cb ? operation_cb(trans) : trans.is_read() ? rd_resp_delay.value : wr_resp_delay.value;
     trans.set_dmi_allowed(false);
     trans.set_response_status(tlm::TLM_OK_RESPONSE);
-    auto* i = clk_i.get_interface();
+    clk_if = dynamic_cast<sc_core::sc_clock*>(clk_i.get_interface());
     if(clk_if) {
         t += clk_if->period() * latency;
     }
@@ -75,6 +75,7 @@ void ahb_target_b::b_transport(payload_type& trans, sc_time& t) {
 
 tlm_sync_enum ahb_target_b::nb_transport_fw(payload_type& trans, phase_type& phase, sc_time& t) {
     // TODO:
+    return tlm::TLM_COMPLETED;
 }
 
 bool ahb_target_b::get_direct_mem_ptr(payload_type& trans, tlm_dmi& dmi_data) {

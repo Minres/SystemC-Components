@@ -61,7 +61,7 @@ void apb_target_b::b_transport(payload_type& trans, sc_time& t) {
         operation_cb(trans);
     trans.set_dmi_allowed(false);
     trans.set_response_status(tlm::TLM_OK_RESPONSE);
-    auto* i = clk_i.get_interface();
+    clk_if = dynamic_cast<sc_core::sc_clock*>(clk_i.get_interface());
     if(clk_if) {
         t += 1 * clk_if->period();
     }
