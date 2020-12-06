@@ -21,7 +21,9 @@
 
 namespace scc {
 /**
- * translate a tick-less clock (sc_time based) to boolean clock
+ * @struct time2tick
+ * @brief translate a tick-less clock (sc_time based) to boolean clock
+ *
  */
 struct time2tick : public sc_core::sc_module {
     //! yes, we have processes
@@ -33,7 +35,7 @@ struct time2tick : public sc_core::sc_module {
     /**
      * the constructor
      *
-     * @param nm
+     * @param nm the name
      */
     explicit time2tick(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm) {

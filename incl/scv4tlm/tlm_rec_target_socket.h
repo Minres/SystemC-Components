@@ -83,7 +83,7 @@ public:
     , recorder(gen_name(name, "tx").c_str(), fw_port, this->get_base_port()) {
     }
 
-    virtual ~tlm_rec_target_socket() = default;//NOLINT
+    virtual ~tlm_rec_target_socket() = default; // NOLINT
 
     virtual const char* kind() const { return "tlm_rec_target_socket"; }
     //

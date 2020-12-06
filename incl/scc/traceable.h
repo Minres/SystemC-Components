@@ -19,21 +19,22 @@
 
 namespace scc {
 /**
- * interface defining a traceable component, this overlaps with the trace function of sc_core::sc_object
- * in fact it is a signaling interface
+ * @class traceable
+ * @brief interface defining a traceable component
+ *
+ * This overlaps with the trace function of sc_core::sc_object. In fact it serves as a signaling interface
  */
 class traceable {
 public:
-    /**
-     * the constructor initializing the param
-     */
+
     traceable() = default;
-    /**
-     * the destructor
-     */
+
     virtual ~traceable() = default;
     /**
+     * @fn bool is_trace_enabled()const
+     * @brief returns of this component shall be traced
      *
+     * @return true if this component shall be traced
      */
     virtual bool is_trace_enabled() const { return true; }
 };

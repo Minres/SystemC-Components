@@ -23,59 +23,73 @@
 
 namespace scc {
 /**
- * interface defining access to a resource
+ * @class resource_access_if
+ * @brief interface defining access to a resource e.g. a register
+ *
  */
 class resource_access_if {
 public:
-    /**
-     * the destructor
-     */
+
     virtual ~resource_access_if() = default;
     /**
-     * return the size of the resource
+     * @fn std::size_t size()const =0
+     * @brief return the size of the resource
      *
      * @return the size
      */
     virtual std::size_t size() const = 0;
     /**
-     * reset the resource
+     * @fn void reset()=0
+     * @brief reset the resource
+     *
      */
     virtual void reset() = 0;
-    // functional accesses
     /**
-     * write to the resource
+     * \defgroup FuncAcc functional accesses
+     * @{
+     */
+    /**
+     * @fn bool write(const uint8_t*, std::size_t, uint64_t=0, sc_core::sc_time=sc_core::SC_ZERO_TIME)=0
+     * @brief write to the resource
      *
-     * @param data data to write
-     * @param length length of data to write
-     * @param offset offset of the data to write
+     * @param data  to write
+     * @param length  of data to write
+     * @param offset  of the data to write
      * @param d the annotated delay
      * @return true it the access is successful
      */
     virtual bool write(const uint8_t* data, std::size_t length, uint64_t offset = 0,
-                       sc_core::sc_time d = sc_core::SC_ZERO_TIME) = 0;
+            sc_core::sc_time d = sc_core::SC_ZERO_TIME) = 0;
     /**
-     * read the data from the resource
+     * @fn bool read(uint8_t*, std::size_t, uint64_t=0, sc_core::sc_time=sc_core::SC_ZERO_TIME)const =0
+     * @brief read the data from the resource
      *
      * @param data buffer to read the data into
-     * @param length length of data to read
-     * @param offset offset of the data to read
+     * @param length  of data to read
+     * @param offset  of the data to read
      * @param d the annotated delay
      * @return true it the access is successful
      */
     virtual bool read(uint8_t* data, std::size_t length, uint64_t offset = 0,
-                      sc_core::sc_time d = sc_core::SC_ZERO_TIME) const = 0;
-    // non-functional/debug accesses
+            sc_core::sc_time d = sc_core::SC_ZERO_TIME) const = 0;
+    /**@}*/
     /**
-     * debug write to the resource
+     * \defgroup NonFuncAcc non-functional accesses
+     * @{
+     */
+    /**
+     * @fn bool write_dbg(const uint8_t*, std::size_t, uint64_t=0)=0
+     * @brief debug write to the resource
      *
-     * @param data data to write
-     * @param length length of data to write
-     * @param offset offset of the data to write
+     * @param data to write
+     * @param length of data to write
+     * @param offset of the data to write
      * @return true it the access is successful
      */
     virtual bool write_dbg(const uint8_t* data, std::size_t length, uint64_t offset = 0) = 0;
     /**
-     * debug read the data from the resource
+     * @fn bool read_dbg(uint8_t*, std::size_t, uint64_t=0)const =0
+     * @brief debug read the data from the resource
      *
      * @param data buffer to read the data into
      * @param length length of data to read
@@ -83,9 +97,12 @@ public:
      * @return true it the access is successful
      */
     virtual bool read_dbg(uint8_t* data, std::size_t length, uint64_t offset = 0) const = 0;
+    /**@}*/
 };
 /**
- * interface defining access to an indexed resource
+ * @class indexed_resource_access_if
+ * @brief interface defining access to an indexed resource e.g. register file
+ *
  */
 class indexed_resource_access_if {
 public:
@@ -96,41 +113,45 @@ public:
     using const_reference = const value_type&;
     using iterator = resource_access_if*;
     using const_iterator = const resource_access_if*;
-    /**
-     * the destructor
-     */
+
     virtual ~indexed_resource_access_if() = default;
     /**
-     * get the size of the resource
-     * @return
+     * @fn std::size_t size()=0
+     * @brief get the size of the resource
+     *
+     * @return size of the resource in bytes
      */
     virtual std::size_t size() = 0;
     /**
-     * Element access.
+     * @fn reference operator [](std::size_t)=0
+     * @brief get value at index
      *
-     * @param idx
-     * @return the data
+     * @param idx the index
+     * @return the value
      */
     virtual reference operator[](std::size_t idx) noexcept = 0;
     /**
-     * const element access.
+     * @fn const_reference operator [](std::size_t)const =0
+     * @brief get value at index
      *
-     * @param idx
-     * @return the data
+     * @param idx the index
+     * @return the value
      */
     virtual const_reference operator[](std::size_t idx) const noexcept = 0;
     /**
-     * Element access.
+     * @fn reference operator [](std::size_t)=0
+     * @brief get value at index with range checking
      *
-     * @param idx
-     * @return the data
+     * @param idx the index
+     * @return the value
      */
     virtual reference at(std::size_t idx) = 0;
     /**
-     * const element access.
+     * @fn const_reference operator [](std::size_t)const =0
+     * @brief get value at index with range checking
      *
-     * @param idx
-     * @return the data
+     * @param idx the index
+     * @return the value
      */
     virtual const_reference at(std::size_t idx) const = 0;
 };

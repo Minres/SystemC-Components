@@ -34,9 +34,9 @@
 #ifndef _TLM_APB_PE_APB_INITIATOR_H_
 #define _TLM_APB_PE_APB_INITIATOR_H_
 
-#include <tlm>
-#include <scc/peq.h>
 #include <scc/ordered_semaphore.h>
+#include <scc/peq.h>
+#include <tlm>
 
 namespace apb {
 namespace pe {
@@ -71,7 +71,8 @@ public:
      */
     void transport(payload_type& trans, bool blocking);
 
-    apb_initiator_b(sc_core::sc_module_name nm, sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port,
+    apb_initiator_b(sc_core::sc_module_name nm,
+                    sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port,
                     size_t transfer_width, bool coherent);
 
     virtual ~apb_initiator_b();
@@ -120,11 +121,13 @@ public:
     using phase_type = base::phase_type;
     /**
      * @brief the constructor
+     *
+     * @param nm the module name
      * @param socket reference to the initiator socket used to send and receive transactions
      */
-    apb_initiator(const sc_core::sc_module_name& nm, tlm::tlm_initiator_socket<BUSWIDTH, TYPES, N, POL>& socket_)
-    : apb_initiator_b(nm, socket_.get_base_port(), BUSWIDTH, false)
-    , socket(socket_) {
+    apb_initiator(const sc_core::sc_module_name& nm, tlm::tlm_initiator_socket<BUSWIDTH, TYPES, N, POL>& socket)
+    : apb_initiator_b(nm, socket.get_base_port(), BUSWIDTH, false)
+    , socket(socket) {
         socket(*this);
     }
 

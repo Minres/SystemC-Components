@@ -14,9 +14,9 @@
  * limitations under the License.
  *******************************************************************************/
 
+#include "scc/report.h"
 #include "sysc/communication/sc_communication_ids.h"
 #include "sysc/kernel/sc_wait.h"
-#include "scc/report.h"
 #include <scc/ordered_semaphore.h>
 #include <util/strprintf.h>
 
@@ -39,18 +39,20 @@ std::string gen_unique_event_name(const char* modifier) {
 } // namespace
 
 void ordered_semaphore::set_capacity(unsigned c) {
-    if(typeid(*this)==typeid(ordered_semaphore)){
+    if(typeid(*this) == typeid(ordered_semaphore)) {
         auto diff = static_cast<int>(capacity) - static_cast<int>(c);
-        capacity=c;
-        value-=diff;
-        if(value>0) free_evt.notify();
+        capacity = c;
+        value -= diff;
+        if(value > 0)
+            free_evt.notify();
     } else {
         SCCWARN(SCMOD) << "cannot resize fixed size ordered semaphore";
     }
 }
 
 void ordered_semaphore::report_error(const char* id, const char* add_msg) const {
-    auto msg = add_msg? util::strprintf("semaphore '%s'", name()):util::strprintf("%s: semaphore '%s'", add_msg, name());
+    auto msg =
+        add_msg ? util::strprintf("semaphore '%s'", name()) : util::strprintf("%s: semaphore '%s'", add_msg, name());
     SC_REPORT_ERROR(id, msg.c_str());
 }
 
@@ -70,8 +72,7 @@ ordered_semaphore::ordered_semaphore(const char* name_, unsigned init_value_)
 : sc_object(name_)
 , free_evt(gen_unique_event_name("free_event").c_str())
 , value(init_value_)
-, capacity(init_value_){
-}
+, capacity(init_value_) {}
 
 // interface methods
 
@@ -83,7 +84,7 @@ int ordered_semaphore::wait() {
         sc_core::wait(free_evt);
     }
     --value;
-    return 0;
+    return value;
 }
 
 // lock (take) the semaphore, return -1 if not available
@@ -93,18 +94,19 @@ int ordered_semaphore::trywait() {
         return -1;
     }
     --value;
-    return 0;
+    return value;
 }
 
 // unlock (give) the semaphore
 
 int ordered_semaphore::post() {
-    if(value==capacity)
-        SCCWARN(SCMOD)<<"post() called on entirely free semaphore!";
+    if(value == capacity)
+        SCCWARN(SCMOD) << "post() called on entirely free semaphore!";
     else
         ++value;
-    if(value>0) free_evt.notify();
-    return 0;
+    if(value > 0)
+        free_evt.notify();
+    return value;
 }
 
 } // namespace scc

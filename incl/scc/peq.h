@@ -24,39 +24,61 @@
 
 namespace scc {
 /**
- * a simple priority event queue with a copy of the original value
+ * @struct peq
+ * @brief priority event queue
+ *
+ * A simple priority event queue with a copy of the original value
+ *
+ * @tparam TYPE the type name of the object to keep in th equeue
  */
 template <class TYPE> struct peq : public sc_core::sc_object {
 
     static_assert(std::is_copy_constructible<TYPE>::value, "TYPE needs to be copy-constructible");
 
     using pair_type = std::pair<const sc_core::sc_time, TYPE>;
-
+    /**
+      * @fn  peq()
+     * @brief default constructor creating a unnamed peq
+     *
+     */
     peq()
     : sc_core::sc_object(sc_core::sc_gen_unique_name("peq")) {}
-
+/**
+ * @fn  peq(const char*)
+ * @brief named peq constructor
+ *
+ * @param name
+ */
     explicit peq(const char* name)
     : sc_core::sc_object(name) {}
     /**
-     * non-blocking push. Inserts entry into the queue with time based notification
+     * @fn void notify(const TYPE&, const sc_core::sc_time&)
+     * @brief non-blocking push.
      *
-     * @param entry data to insert
+     * Inserts entry into the queue with time based notification
+     *
+     * @param entry the value to insert
+     * @param t the delay for calling get
      */
     void notify(const TYPE& entry, const sc_core::sc_time& t) {
         m_scheduled_events.insert(pair_type(t + sc_core::sc_time_stamp(), entry));
         m_event.notify(t);
     }
     /**
-     * non-blocking push. Inserts entry into the queue with immediate notification
+     * @fn void notify(const TYPE&)
+     * @brief non-blocking push
      *
-     * @param entry data to insert
+     * Inserts entry into the queue with immediate notification
+     *
+     * @param entry the value to insert
      */
     void notify(const TYPE& entry) {
         m_scheduled_events.insert(pair_type(sc_core::sc_time_stamp(), entry));
         m_event.notify(); // immediate notification
     }
     /**
-     * non-blocking get
+     * @fn boost::optional<TYPE> get_next()
+     * @brief non-blocking get
      *
      * @return optional copy of the head element
      */
@@ -64,7 +86,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
         if(m_scheduled_events.empty())
             return boost::none;
         sc_core::sc_time now = sc_core::sc_time_stamp();
-        if(m_scheduled_events.begin()->first > now){
+        if(m_scheduled_events.begin()->first > now) {
             m_event.notify(m_scheduled_events.begin()->first - now);
             return boost::none;
         } else {
@@ -74,7 +96,8 @@ template <class TYPE> struct peq : public sc_core::sc_object {
         }
     }
     /**
-     * blocking get
+     * @fn TYPE get()
+     * @brief blocking get
      *
      * @return copy of the next entry.
      */
@@ -86,25 +109,40 @@ template <class TYPE> struct peq : public sc_core::sc_object {
         m_scheduled_events.erase(m_scheduled_events.begin());
         return entry;
     }
-
+    /**
+     * @fn sc_core::sc_event& event()
+     * @brief get the available event
+     *
+     * @return reference to the event
+     */
     sc_core::sc_event& event() { return m_event; }
-
-    // Cancel all events from the event queue
+    /**
+     * @fn void cancel_all()
+     * @brief cancel all events from the event queue
+     *
+     */
     void cancel_all() {
         m_scheduled_events.clear();
         m_event.cancel();
     }
-
+    /**
+     * @fn bool has_next()
+     * @brief check if value is available at current time
+     *
+     * @return true if data is available for \ref get()
+     */
     bool has_next() {
-        if(m_scheduled_events.empty()) return false;
+        if(m_scheduled_events.empty())
+            return false;
         sc_core::sc_time now = sc_core::sc_time_stamp();
-        if(m_scheduled_events.begin()->first > now){
+        if(m_scheduled_events.begin()->first > now) {
             m_event.notify(m_scheduled_events.begin()->first - now);
             return false;
         } else {
             return true;
         }
     }
+
 private:
     std::multimap<const sc_core::sc_time, TYPE> m_scheduled_events;
     sc_core::sc_event m_event;

@@ -43,6 +43,7 @@ public:
     /*! \brief The constructor of the component
      *
      * \param name is the SystemC module name of the recorder
+     * \param recording_enabled if true the recorder is enabled after construction
      * \param tr_db is a pointer to a transaction recording database. If none is
      * provided the default one is retrieved.
      *        If this database is not initialized (e.g. by not calling
@@ -58,7 +59,6 @@ public:
     }
 
     virtual ~tlm2_recorder_module() {}
-
 };
 } // namespace scv4tlm
 

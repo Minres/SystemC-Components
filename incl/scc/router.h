@@ -29,39 +29,43 @@
 #include <unordered_map>
 
 namespace scc {
-
+/**
+ * @class router
+ * @brief a TLM2.0 router for loosly-timed (LT) models
+ *
+ * It uses the scv4tlm::tlm_rec_initiator_socket so that incoming and outgoing accesses can be traced using SCV
+ *
+ * @tparam BUSWIDTH the width of the bus
+ */
 template <unsigned BUSWIDTH = 32> class router : sc_core::sc_module {
 public:
     using intor_sckt = scc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<BUSWIDTH>>;
     using target_sckt = scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>>;
-    /**
-     * the array of target sockets
-     */
+    //! \brief the array of target sockets
     sc_core::sc_vector<target_sckt> target;
-    /**
-     * the array of initiator sockets
-     */
+    //! \brief  the array of initiator sockets
     sc_core::sc_vector<intor_sckt> initiator;
     /**
-     * constructs a router
+     * @fn  router(const sc_core::sc_module_name&, unsigned=1, unsigned=1)
+     * @brief constructs a router
      *
-     * @param nm
-     * @param slave_cnt
-     * @param master_cnt
+     * @param nm the component name
+     * @param slave_cnt number of slaves to be connected
+     * @param master_cnt number of masters to be connected
      */
     router(const sc_core::sc_module_name& nm, unsigned slave_cnt = 1, unsigned master_cnt = 1);
-    /**
-     *
-     */
+
     ~router() = default;
     /**
-     * bind the initiator socket of the router to some target giving a base and size
+     * @fn void bind_target(TYPE&, size_t, uint64_t, uint64_t, bool=true)
+     * @brief bind the initiator socket of the router to some target giving a base and size
      *
-     * @param socket
-     * @param idx
-     * @param base
-     * @param size
-     * @param remap
+     * @tparam TYPE the socket type to bind
+     * @param socket the target socket to bind
+     * @param idx number of the target
+     * @param base base address of the target
+     * @param size size of the address range occupied by the target
+     * @param remap if true address will be rewritten in accesses to be 0-based at the target
      */
     template <typename TYPE>
     void bind_target(TYPE& socket, size_t idx, uint64_t base, uint64_t size, bool remap = true) {
@@ -69,86 +73,100 @@ public:
         initiator[idx].bind(socket);
     }
     /**
-     * bind the initiator socket of the router to some target and name it
+     * @fn void bind_target(TYPE&, size_t, std::string)
+     * @brief bind the initiator socket of the router to some target and name it
      *
-     * @param socket
-     * @param idx
-     * @param name
+     * @tparam TYPE the socket type to bind
+     * @param socket the target socket to bind
+     * @param idx number of the target
+     * @param name of the binding
      */
     template <typename TYPE> void bind_target(TYPE& socket, size_t idx, std::string name) {
         set_target_name(idx, name);
         initiator[idx].bind(socket);
     }
     /**
-     * define a base address of a socket. This will be added to the address of each access
-     * coming thru this socket
+     * @fn void set_initiator_base(size_t, uint64_t)
+     * @brief define a base address of a socket
+     *
+     * This will be added to the address of each access coming thru this socket
      *
      * @param idx
      * @param base
      */
     void set_initiator_base(size_t idx, uint64_t base) { ibases[idx] = base; }
     /**
-     * define the default target socket. If no target address range is hit the access is routed to this socket.
+     * @fn void set_default_target(size_t)
+     * @brief define the default target socket
+     *
+     * If no target address range is hit the access is routed to this socket.
      * If this is not defined a address error response is generated
      *
-     * @param idx
+     * @param idx the default target
      */
     void set_default_target(size_t idx) { default_idx = idx; }
     /**
-     * establish a mapping between socket name and socket index
+     * @fn void set_target_name(size_t, std::string)
+     * @brief establish a mapping between socket name and socket index
      *
-     * @param idx
-     * @param name
+     * @param idx the index of the socket
+     * @param name the name of the connection
      */
     void set_target_name(size_t idx, std::string name) { target_name_lut.insert(std::make_pair(name, idx)); }
     /**
-     * establish a mapping between a named socket and a target address range
+     * @fn void add_target_range(std::string, uint64_t, uint64_t, bool=true)
+     * @brief establish a mapping between a named socket and a target address range
      *
-     * @param idx
-     * @param base
-     * @param size
-     * @param remap
+     * @param name
+     * @param base base address of the target
+     * @param size size of the address range occupied by the target
+     * @param remap if true address will be rewritten in accesses to be 0-based at the target
      */
     void add_target_range(std::string name, uint64_t base, uint64_t size, bool remap = true);
     /**
-     * establish a mapping between a socket and a target address range
+     * @fn void set_target_range(size_t, uint64_t, uint64_t, bool=true)
+     * @brief establish a mapping between a socket and a target address range
      *
-     * @param name
-     * @param base
-     * @param size
-     * @param remap
+     * @param idx
+     * @param base base address of the target
+     * @param size size of the address range occupied by the target
+     * @param remap if true address will be rewritten in accesses to be 0-based at the target
      */
     void set_target_range(size_t idx, uint64_t base, uint64_t size, bool remap = true);
     /**
-     * tagged blocking transport method
+     * @fn void b_transport(int, tlm::tlm_generic_payload&, sc_core::sc_time&)
+     * @brief tagged blocking transport method
      *
-     * @param i
-     * @param trans
-     * @param delay
+     * @param i the tag
+     * @param trans the incoming transaction
+     * @param delay the annotated delay
      */
     void b_transport(int i, tlm::tlm_generic_payload& trans, sc_core::sc_time& delay);
     /**
-     * tagged forward DMI method
+     * @fn bool get_direct_mem_ptr(int, tlm::tlm_generic_payload&, tlm::tlm_dmi&)
+     * @brief tagged forward DMI method
      *
-     * @param i
-     * @param trans
+     * @param i the tag
+     * @param trans the incoming transaction
      * @param dmi_data
      * @return
      */
     bool get_direct_mem_ptr(int i, tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data);
     /**
-     * tagged debug transaction method
+     * @fn unsigned transport_dbg(int, tlm::tlm_generic_payload&)
+     * @brief tagged debug transaction method
      *
-     * @param i
-     * @param trans
+     * @param i the tag
+     * @param trans the incoming transaction
      */
     unsigned transport_dbg(int i, tlm::tlm_generic_payload& trans);
     /**
-     * Tagged backward DMI method
+     * @fn void invalidate_direct_mem_ptr(int, sc_dt::uint64, sc_dt::uint64)
+     * @brief tagged backward DMI method
      *
-     * @param id
-     * @param start_range
-     * @param end_range
+     * @param id the tag
+     * @param start_range address range start address
+     * @param end_range address range end address
      */
     void invalidate_direct_mem_ptr(int id, sc_dt::uint64 start_range, sc_dt::uint64 end_range);
 
@@ -182,14 +200,14 @@ router<BUSWIDTH>::router(const sc_core::sc_module_name& nm, unsigned slave_cnt, 
             return this->get_direct_mem_ptr(i, trans, dmi_data);
         });
         target[i].register_transport_dbg(
-            [=](tlm::tlm_generic_payload& trans) -> unsigned { return this->transport_dbg(i, trans); });
+                [=](tlm::tlm_generic_payload& trans) -> unsigned { return this->transport_dbg(i, trans); });
         ibases[i] = 0ULL;
     }
     for(size_t i = 0; i < initiator.size(); ++i) {
         initiator[i].register_invalidate_direct_mem_ptr(
-            [=](sc_dt::uint64 start_range, sc_dt::uint64 end_range) -> void {
-                this->invalidate_direct_mem_ptr(i, start_range, end_range);
-            });
+                [=](sc_dt::uint64 start_range, sc_dt::uint64 end_range) -> void {
+            this->invalidate_direct_mem_ptr(i, start_range, end_range);
+        });
         tranges[i].base = 0ULL;
         tranges[i].size = 0ULL;
         tranges[i].remap = false;
@@ -215,7 +233,7 @@ void router<BUSWIDTH>::add_target_range(std::string name, uint64_t base, uint64_
         ::sc_core::sc_assertion_failed(ss.str().c_str(), __FILE__, __LINE__);
     }
 #else
-    sc_assert(it!=target_name_lut.end());
+    sc_assert(it != target_name_lut.end());
 #endif
 #endif
     auto idx = it->second;

@@ -6,6 +6,48 @@ project(scc VERSION 0.9.0 LANGUAGES CXX C)
 include(Common)
 include(GNUInstallDirs)
 
+find_package(Doxygen)
+option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
+
+if(BUILD_SCC_DOCUMENTATION)
+    if(NOT DOXYGEN_FOUND)
+        message(FATAL_ERROR "Doxygen is needed to build the documentation.")
+    endif()
+	
+	set(DOXYGEN_PROJECT_BRIEF "SystemC components library")
+	set(DOXYGEN_USE_MDFILE_AS_MAINPAGE  README.md)
+	# exclude json code
+	set(DOXYGEN_EXCLUDE_PATTERNS  */json/*)
+	# doxygen settings can be set here, prefixed with "DOXYGEN_"
+	set(DOXYGEN_SOURCE_BROWSER YES)
+	set(DOXYGEN_EXTRACT_ALL NO)
+	set(DOXYGEN_EXTRACT_PRIVATE NO)
+	set(DOXYGEN_SEARCHENGINE NO)
+	set(DOXYGEN_GENERATE_HTML YES)
+	set(DOXYGEN_GENERATE_MAN NO)
+	set(DOXYGEN_GENERATE_LATEX NO)
+	set(DOXYGEN_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/docs")
+	# this target will only be built if specifically asked to.
+	# run "make api-docs" to create the doxygen documentation
+	doxygen_add_docs(
+	    scc-docs
+	    ${PROJECT_SOURCE_DIR}/incl ${PROJECT_SOURCE_DIR}/README.md
+	    COMMENT "Generate API-documents for NoteSearch."
+	)
+
+    #set(doxyfile_in ${CMAKE_CURRENT_SOURCE_DIR}/doc/Doxyfile.in)
+    #set(doxyfile ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+    #configure_file(${doxyfile_in} ${doxyfile} @ONLY)
+    #add_custom_target(doc_scc
+    #    COMMAND ${DOXYGEN_EXECUTABLE} ${doxyfile}
+    #    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    #    COMMENT "Generating API documentation with Doxygen"
+    #    VERBATIM)
+
+    install(DIRECTORY ${PROJECT_BINARY_DIR}/docs DESTINATION share/doc)
+endif()
+
+
 ###############################################################################
 # build a separate SCC-UTIL library for the use in non-systemc based systems
 ###############################################################################
@@ -53,7 +95,7 @@ find_package(Boost REQUIRED COMPONENTS date_time)
 find_package(ZLIB REQUIRED)
 find_package(${SystemCPackage} REQUIRED)
 
-set(CLANG_FORMAT_EXCLUDE_PATTERNS "/spdlog/" "/json/" "jsoncpp.cpp" "sqlite3")
+set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "/json/" "jsoncpp.cpp" "sqlite3")
 find_package(ClangFormat)
 
 include(CheckSymbolExists)

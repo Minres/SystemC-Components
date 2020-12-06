@@ -5,8 +5,7 @@ using namespace axi_bfm;
 using namespace sc_core;
 
 axi_pin2tlm_adaptor::axi_pin2tlm_adaptor(sc_module_name nm)
-: sc_module(nm)
-{
+: sc_module(nm) {
     SC_THREAD(bus_thread)
     sensitive << clk_i.pos();
 }
@@ -26,13 +25,13 @@ void axi_pin2tlm_adaptor::bus_thread() {
             ar_ready_o.write(true);
         } else {
             // Handle read request
-            if (ar_valid_i.read()) {
+            if(ar_valid_i.read()) {
                 ar_ready_o.write(false);
                 uint32_t length = ar_len_i.read();
                 uint32_t addr = ar_addr_i.read();
                 payload.set_command(tlm::TLM_READ_COMMAND);
                 wait(clk_i.posedge());
-                for (int l = 0; l < length; ++l) {
+                for(int l = 0; l < length; ++l) {
                     payload.set_address(addr);
                     payload.set_data_length(64);
                     payload.set_streaming_width(64);
@@ -51,7 +50,7 @@ void axi_pin2tlm_adaptor::bus_thread() {
             }
 
             // Handle write request
-            if (aw_valid_i.read() && w_valid_i.read()) {
+            if(aw_valid_i.read() && w_valid_i.read()) {
                 aw_ready_o.write(true);
                 w_ready_o.write(true);
                 b_valid_o.write(false);
