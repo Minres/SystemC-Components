@@ -53,7 +53,7 @@ find_package(Boost REQUIRED COMPONENTS date_time)
 find_package(ZLIB REQUIRED)
 find_package(${SystemCPackage} REQUIRED)
 
-set(CLANG_FORMAT_EXCLUDE_PATTERNS "/spdlog/" "/json/" "jsoncpp.cpp" "sqlite3")
+set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "/json/" "jsoncpp.cpp" "sqlite3")
 find_package(ClangFormat)
 
 include(CheckSymbolExists)

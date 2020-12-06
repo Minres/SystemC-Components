@@ -20,6 +20,7 @@
 #include <sysc/kernel/sc_simcontext.h>
 #include <sysc/tracing/sc_trace.h>
 #include <sstream>
+#include <array>
 
 #ifndef SC_API
 #define SC_API
