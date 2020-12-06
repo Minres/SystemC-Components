@@ -26,41 +26,50 @@
 
 namespace scc {
 /**
- * a simple access-width based bus interface (no DMI support)
+ * @struct addr_range
+ * @brief struct representing address range
+ *
  */
 struct addr_range {
     uint64_t base, size;
 };
-
+/**
+ * @class tlm_target
+ * @brief a simple access-width based bus interface (no DMI support)
+ *
+ * @tparam BUSWIDTH
+ */
 template <unsigned int BUSWIDTH = 32> class tlm_target {
 public:
     using this_type = tlm_target<BUSWIDTH>;
     /**
-     * the constructor
+     * @fn  tlm_target(sc_core::sc_time&)
+     * @brief the constructor
      *
-     * @param clock
+     * @param clock the clock period of the component
      */
     tlm_target(sc_core::sc_time& clock);
-    /**
-     * the socket
-     */
+    //! the target socket
     scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>> socket;
     /**
-     * the blocking transport callback
+     * @fn void b_tranport_cb(tlm::tlm_generic_payload&, sc_core::sc_time&)
+     * @brief the blocking transport callback
      *
-     * @param
-     * @param
+     * @param gp the generic payload
+     * @param d the delay in the local time domain
      */
-    void b_tranport_cb(tlm::tlm_generic_payload&, sc_core::sc_time&);
+    void b_tranport_cb(tlm::tlm_generic_payload& gp, sc_core::sc_time& d);
     /**
-     * the debug transport callback
+     * @fn unsigned int tranport_dbg_cb(tlm::tlm_generic_payload&)
+     * @brief the debug transport callback
      *
-     * @param
-     * @return
+     * @param gp the generic payload
+     * @return number of transferred bytes
      */
-    unsigned int tranport_dbg_cb(tlm::tlm_generic_payload&);
+    unsigned int tranport_dbg_cb(tlm::tlm_generic_payload& gp);
     /**
-     * add a resource to this target at a certain address within the socket address range
+     * @fn void addResource(resource_access_if&, uint64_t)
+     * @brief add a resource to this target at a certain address within the socket address range
      *
      * @param rai the resource to add
      * @param base_addr the offset of the resource (from address 0)
@@ -69,7 +78,8 @@ public:
         socket_map.addEntry(std::make_pair(&rai, base_addr), base_addr, rai.size());
     }
     /**
-     * add an indexed resource to this target at a certain address within the socket address range
+     * @fn void addResource(indexed_resource_access_if&, uint64_t)
+     * @brief add an indexed resource to this target at a certain address within the socket address range
      * @param irai the resource to add
      * @param base_addr the offset of the resource (from address 0)
      */
@@ -111,7 +121,7 @@ inline scc::tlm_target<BUSWIDTH>::tlm_target(sc_core::sc_time& clock)
 , clk(clock)
 , socket_map(std::make_pair(nullptr, 0)) {
     socket.register_b_transport(
-        [=](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void { this->b_tranport_cb(gp, delay); });
+            [=](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void { this->b_tranport_cb(gp, delay); });
     socket.register_transport_dbg([=](tlm::tlm_generic_payload& gp) -> unsigned { return this->tranport_dbg_cb(gp); });
 }
 
@@ -151,7 +161,7 @@ template <unsigned int BUSWIDTH> unsigned int scc::tlm_target<BUSWIDTH>::tranpor
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());
     if(ra) {
         if(gp.get_data_length() == ra->size() && gp.get_byte_enable_ptr() == nullptr &&
-           gp.get_data_length() == gp.get_streaming_width()) {
+                gp.get_data_length() == gp.get_streaming_width()) {
             if(gp.get_command() == tlm::TLM_READ_COMMAND) {
                 if(ra->read_dbg(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra->size()))
                     return gp.get_data_length();

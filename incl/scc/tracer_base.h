@@ -22,43 +22,106 @@
 #include <type_traits>
 
 namespace scc {
+/**
+ * @enum trace_types
+ * @brief identifies the various type to be traced
+ *
+ */
 enum class trace_types : unsigned {
-    NONE = 0x0,
-    SIGNALS = 0x1,
-    PORTS = 0x2,
-    SOCKETS = 0x4,
-    VARIABLES = 0x8,
-    OBJECTS = 0x10,
-    ALL = 0xff
+    NONE = 0x0,     /**< NONE */
+            SIGNALS = 0x1,  /**< SIGNALS */
+            PORTS = 0x2,    /**< PORTS */
+            SOCKETS = 0x4,  /**< SOCKETS */
+            VARIABLES = 0x8,/**< VARIABLES */
+            OBJECTS = 0x10, /**< OBJECTS */
+            ALL = 0xff      /**< ALL */
 };
-
+/**
+ * @fn trace_types operator |(trace_types, trace_types)
+ * @brief operator overload to allow boolean or operations on \ref trace_types
+ *
+ * @param lhs left hand side
+ * @param rhs right hand side
+ * @return result
+ */
 inline trace_types operator|(trace_types lhs, trace_types rhs) {
     return static_cast<trace_types>(static_cast<unsigned>(lhs) | static_cast<unsigned>(rhs));
 }
-
+/**
+ * @fn trace_types operator &(trace_types, trace_types)
+ * @brief operator overload to allow boolean and operations on \ref trace_types
+ *
+ * @param lhs left hand side
+ * @param rhs right hand side
+ * @return result
+ */
 inline trace_types operator&(trace_types lhs, trace_types rhs) {
     return static_cast<trace_types>(static_cast<unsigned>(lhs) & static_cast<unsigned>(rhs));
 }
-
+/**
+ * @class tracer_base
+ * @brief base class for automatic tracer
+ *
+ */
 class tracer_base : public sc_core::sc_module {
 public:
+    /**
+     * @fn  tracer_base(const sc_core::sc_module_name&)
+     * @brief named constructor
+     *
+     * @param nm the instance name
+     */
     tracer_base(const sc_core::sc_module_name& nm)
     : sc_core::sc_module(nm) {}
-
+    /**
+     * @fn  tracer_base(const sc_core::sc_module_name&, sc_core::sc_trace_file*, bool=true)
+     * @brief named constructor with trace file
+     *
+     * @param nm the instance name of the tracer
+     * @param tf the trace file
+     * @param owned if true the tracefile is owned by the tracer and closed upon simulation end
+     */
     tracer_base(const sc_core::sc_module_name& nm, sc_core::sc_trace_file* tf, bool owned = true)
     : sc_core::sc_module(nm)
     , trf(tf)
     , owned(owned) {}
-
+    /**
+     * @fn  ~tracer_base()
+     * @brief destructor
+     *
+     */
     ~tracer_base() {
         if(trf && owned)
             sc_close_vcd_trace_file(trf);
     }
-
+    /**
+     * @fn void set_trace_types(trace_types)
+     * @brief set the types to trace
+     *
+     * @param t
+     */
     void set_trace_types(trace_types t) { types_to_trace = t; }
-
+    /**
+     * @fn const sc_core::sc_trace_file get_trace_file*()const
+     * @brief get the tracefile used by this tracer
+     *
+     * @return the tracefile
+     */
     const sc_core::sc_trace_file* get_trace_file() const { return trf; }
-
+    /**
+     * @fn const sc_core::sc_trace_file get_trace_file*()const
+     * @brief get the tracefile used by this tracer
+     *
+     * @return the tracefile
+     */
+    sc_core::sc_trace_file* get_trace_file() { return trf; }
+    /**
+     * @fn void set_trace_file(sc_core::sc_trace_file*)
+     * @brief set the trace file of this tracer
+     *
+     * The provided file is not owned by the tracer. Hence the caller is responsible for closing the tracefile
+     * @param trf
+     */
     void set_trace_file(sc_core::sc_trace_file* trf) {
         if(this->trf && owned)
             sc_close_vcd_trace_file(trf);

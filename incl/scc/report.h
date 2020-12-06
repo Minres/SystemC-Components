@@ -26,14 +26,16 @@
 #include <util/ities.h>
 
 namespace scc {
-//! array holding string representations of log levels
+//! \brief array holding string representations of log levels
 static std::array<const char* const, 8> buffer = {
     {"NONE", "FATAL", "ERROR", "WARNING", "INFO", "DEBUG", "TRACE", "TRACEALL"}};
-//! enum defining the log levels
+//! \brief enum defining the log levels
 enum class log { NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE, TRACEALL, DBGTRACE = TRACEALL };
 /**
- * safely convert an integer into a log level
- * @param logLevel the integer
+ * @fn log as_log(int)
+ * @brief safely convert an integer into a log level
+ *
+ * @param logLevel the logging level
  * @return the log level
  */
 inline log as_log(int logLevel) {
@@ -43,7 +45,9 @@ inline log as_log(int logLevel) {
     return m[logLevel];
 }
 /**
- * read a log level from input stream e.g. used by boost::lexical_cast
+ * @fn std::istream operator >>&(std::istream&, log&)
+ * @brief read a log level from input stream e.g. used by boost::lexical_cast
+ *
  * @param is input stream holding the string representation
  * @param val the value holding the resulting value
  * @return the input stream
@@ -59,21 +63,32 @@ inline std::istream& operator>>(std::istream& is, log& val) {
     }
     return is;
 }
+/**
+ * @fn std::ostream operator <<&(std::ostream&, const log&)
+ * @brief output the textual representation of the log level
+ *
+ * @param os output stream
+ * @param val logging level
+ * @return reference to the stream for chaining
+ */
 inline std::ostream& operator<<(std::ostream& os, log const& val) {
     os << buffer[static_cast<unsigned>(val)];
     return os;
 }
-
 /**
- * initializes the SystemC logging system with a particular logging level
+ * @fn void init_logging(log=log::WARNING, unsigned=24, bool=false)
+ * @brief initializes the SystemC logging system with a particular logging level
  *
- * @param level the logging level
- * @param type_field_width width of the message type field in output, setting to zero suppresses the message type
- * @param print_time wheter to print the system time stamp
+ * @param level the log level
+ * @param type_field_width the with of the type field in the output
+ * @param print_time whether to print the system time stamp
  */
 void init_logging(log level = log::WARNING, unsigned type_field_width = 24, bool print_time = false);
 /**
- * the configuration class for the logging setup
+ * @struct LogConfig
+ * @brief the configuration class for the logging setup
+ *
+ * using this class allows to configure the logging output in many aspects. The class follows the builder pattern.
  */
 struct LogConfig {
     log level{log::WARNING};
@@ -103,127 +118,141 @@ struct LogConfig {
     LogConfig& dontCreateBroker(bool);
 };
 /**
- * initializes the SystemC logging system with a particular configuration
+ * @fn void init_logging(const LogConfig&)
+ * @brief initializes the SystemC logging system with a particular configuration
  *
  * @param log_config the logging configuration
  */
 void init_logging(const LogConfig& log_config);
 /**
- * sets the SystemC logging level
+ * @fn void set_logging_level(log)
+ * @brief sets the SystemC logging level
  *
  * @param level the logging level
  */
 void set_logging_level(log level);
 /**
- * sets the SystemC logging level
+ * @fn log get_logging_level()
+ * @brief get the SystemC logging level
  *
- * @param level the logging level
+ * @return the logging level
  */
 log get_logging_level();
 /**
- * sets the cycle base for logging. If this is set the logging prints cycles instead of times
+ * @fn void set_cycle_base(sc_core::sc_time)
+ * @brief sets the cycle base for cycle based logging
  *
- * @param level the logging level
+ * if this is set to a non-SC_ZERO_TIME value all logging timestamps are printed as cyles (multiple of this value)
+ *
+ * @param period the cycle period
  */
 void set_cycle_base(sc_core::sc_time period);
 /**
- * return the global verbosity level
- * @return
+ * @fn sc_core::sc_verbosity get_log_verbosity()
+ * @brief get the global verbosity level
+ *
+ * @return the global verbosity level
  */
 inline sc_core::sc_verbosity get_log_verbosity() {
     return static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
 }
 /**
- * return an scope specific verbosity level if defined. Otherwise the global verbosity level
- * @param t
- * @return
+ * @fn sc_core::sc_verbosity get_log_verbosity(const char*)
+ * @brief get the scope-based verbosity level
+ *
+ * The function returns a scope specific verbosity level if defined (e.g. by using a CCI param named "log_level").
+ * Otherwise the global verbosity level is being returned
+ *
+ * @param t the SystemC hierarchy scope name
+ * @return the verbosity level
  */
 sc_core::sc_verbosity get_log_verbosity(char const* t);
 /**
- * return a scope specific verbosity level if defined. Otherwise the global verbosity level
- * @param t
- * @return
+ * @fn sc_core::sc_verbosity get_log_verbosity(const char*)
+ * @brief get the scope-based verbosity level
+ *
+ * The function returns a scope specific verbosity level if defined (e.g. by using a CCI param named "log_level").
+ * Otherwise the global verbosity level is being returned
+ *
+ * @param t the SystemC hierarchy scope name
+ * @return the verbosity level
  */
 inline sc_core::sc_verbosity get_log_verbosity(std::string const& t) { return get_log_verbosity(t.c_str()); }
 /**
- * the logger class
+ * @struct ScLogger
+ * @brief the logger class
+ *
+ * The ScLogger creates a RTTI based output stream to be used similar to std::cout
+ *
+ * @tparam SEVERITY
  */
 template <sc_core::sc_severity SEVERITY> struct ScLogger {
     /**
-     * the constructor
+     * @fn  ScLogger(const char*, int, int=sc_core::SC_MEDIUM)
+     * @brief
      *
-     * @param file file where the log entry originates
-     * @param line the line where the log entry originates
-     * @param level the log level
+     * @param file where the log entry originates
+     * @param line number where the log entry originates
+     * @param verbosity the log level
      */
     ScLogger(const char* file, int line, int verbosity = sc_core::SC_MEDIUM)
     : t(nullptr)
     , file(file)
     , line(line)
     , level(verbosity){};
-    /**
-     * no default constructor
-     */
+
     ScLogger() = delete;
-    /**
-     * no copy constructor
-     * @param
-     */
+
     ScLogger(const ScLogger&) = delete;
-    /**
-     * no move constructor
-     * @param
-     */
+
     ScLogger(ScLogger&&) = delete;
-    /**
-     * no copy assignment
-     * @param
-     * @return
-     */
+
     ScLogger& operator=(const ScLogger&) = delete;
-    /**
-     * no move assignment
-     * @param
-     * @return
-     */
+
     ScLogger& operator=(ScLogger&&) = delete;
     /**
-     * the destructor generating the SystemC report
+     * @fn  ~ScLogger()
+     * @brief the destructor generating the SystemC report
+     *
      */
     virtual ~ScLogger() {
         ::sc_core::sc_report_handler::report(SEVERITY, t ? t : "SystemC", os.str().c_str(), level, file, line);
     }
     /**
-     * reset the category of the log entry
+     * @fn ScLogger type&()
+     * @brief reset the category of the log entry
      *
-     * @return
+     * @return reference to self for chaining
      */
     inline ScLogger& type() {
         this->t = nullptr;
         return *this;
     }
     /**
-     * set the category of the log entry
+     * @fn ScLogger type&(const char*)
+     * @brief set the category of the log entry
      *
-     * @param t
-     * @return
+     * @param t type of th elog entry
+     * @return reference to self for chaining
      */
     inline ScLogger& type(char const* t) {
         this->t = const_cast<char*>(t);
         return *this;
     }
     /**
-     * set the category of the log entry
+     * @fn ScLogger type&(std::string const&)
+     * @brief set the category of the log entry
      *
-     * @param t
-     * @return
+     * @param t type of th elog entry
+     * @return reference to self for chaining
      */
     inline ScLogger& type(std::string const& t) {
         this->t = const_cast<char*>(t.c_str());
         return *this;
     }
     /**
-     * return the underlying ostringstream
+     * @fn std::ostream get&()
+     * @brief  get the underlying ostringstream
      *
      * @return the output stream collecting the log message
      */
@@ -270,17 +299,44 @@ protected:
 #else
 #define SCC_ASSERT(expr) ((void)((expr) ? 0 : (SC_REPORT_FATAL(::sc_core::SC_ID_ASSERTION_FAILED_, #expr), 0)))
 #endif
-
+//! get the name of the sc_object/sc_module
 #define SCMOD this->name()
-
+/**
+ * @class stream_redirection
+ * @brief stream redirector
+ *
+ * the stream redirector allows to redirect std::cout and std::cerr into SystemC log messages
+ *
+ */
 class stream_redirection : public std::stringbuf {
 public:
+    /**
+     * @fn  stream_redirection(std::ostream&, scc::log)
+     * @brief constructor redirecting the given stream to a SystemC log message of given llog level
+     *
+     * @param os the stream to be redirected
+     * @param level the log level to use
+     */
     stream_redirection(std::ostream& os, scc::log level);
+
     stream_redirection(scc::stream_redirection const&) = delete;
+
     stream_redirection& operator=(scc::stream_redirection const&) = delete;
+
     stream_redirection(scc::stream_redirection&&) = delete;
+
     stream_redirection& operator=(scc::stream_redirection&&) = delete;
+    /**
+     * @fn  ~stream_redirection()
+     * @brief destructor restoring the output stream buffer
+     *
+     */
     ~stream_redirection();
+    /**
+     * @fn void reset()
+     * @brief reset the stream redirection and restore output buffer of the stream
+     *
+     */
     void reset();
 
 protected:

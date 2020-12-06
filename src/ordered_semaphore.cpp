@@ -84,7 +84,7 @@ int ordered_semaphore::wait() {
         sc_core::wait(free_evt);
     }
     --value;
-    return 0;
+    return value;
 }
 
 // lock (take) the semaphore, return -1 if not available
@@ -94,7 +94,7 @@ int ordered_semaphore::trywait() {
         return -1;
     }
     --value;
-    return 0;
+    return value;
 }
 
 // unlock (give) the semaphore
@@ -106,7 +106,7 @@ int ordered_semaphore::post() {
         ++value;
     if(value > 0)
         free_evt.notify();
-    return 0;
+    return value;
 }
 
 } // namespace scc

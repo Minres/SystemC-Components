@@ -21,7 +21,15 @@
 #include <sysc/communication/sc_prim_channel.h>
 
 namespace scc {
-
+/**
+ * @class fifo_w_cb
+ * @brief fifo with callbacks
+ *
+ * A fifo with callbacks upon running empty or being filled. The registered callbacks are triggered if the fifo is empty or if an
+ * element is inserted. This can be used to control the sensitivity of processes reading this fifo.
+ *
+ * @tparam T the type name of the elements to be store in the fifo
+ */
 template <typename T> class fifo_w_cb : public sc_core::sc_prim_channel {
 public:
     fifo_w_cb()

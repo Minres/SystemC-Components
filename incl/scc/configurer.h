@@ -28,7 +28,12 @@ namespace scc {
 
 void init_cci(std::string name = "Global Broker");
 /**
- * a class to configure a design hierarchy using a JSON input file
+ * @class configurer
+ * @brief design configuration reader
+ *
+ * A class to configure a design hierarchy using a JSON input file. It reads a file and
+ * and stores its values into a CCI broker. It can apply the value also to sc_attribute
+ * once the design is installed.
  */
 class configurer : public sc_core::sc_object {
 public:
@@ -39,13 +44,13 @@ public:
      */
     configurer(const std::string& filename);
     /**
-     * no default constructor
+     * deleted default constructor
      */
     configurer() = delete;
     /**
-     * no copy constructor
+     * deleted copy constructor
      *
-     * @param
+     * @param the other configurer
      */
     configurer(const configurer&) = delete;
     /**
@@ -57,19 +62,20 @@ public:
     /**
      * no copy assignment
      *
-     * @param
-     * @return
+     * @param the other configurer
+     * @return ref to self
      */
     configurer& operator=(const configurer&) = delete;
     /**
      * no move assignment
      *
-     * @param
-     * @return
+     * @param the other configurer
+     * @return ref to self
      */
     configurer& operator=(configurer&&) = delete;
     /**
-     * configure the design hierarchy using the input file
+     * configure the design hierarchy using the input file. Apply the values to
+     * sc_core::sc_attribute in th edsign hierarchy
      */
     void configure();
     /**
@@ -124,7 +130,7 @@ public:
     /**
      * find the configurer in the design hierarchy
      *
-     * @return
+     * @return reference to the singleton
      */
     static configurer& instance() {
         configurer* inst = dynamic_cast<configurer*>(sc_core::sc_find_object("configurer"));

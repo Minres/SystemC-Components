@@ -31,38 +31,33 @@ class sc_trace_file;
 
 namespace scc {
 /**
- * a component traversing the SystemC object hierarchy and tracing the objects
+ * @class tracer
+ * @brief a component traversing the SystemC object hierarchy and tracing the objects
+ *
  */
 class tracer : public tracer_base {
 public:
     /**
-     * enum defining the transaction trace output type
+     * @enum file_type
+     * @brief defines the transaction trace output type
+     *
      * CUSTOM means the caller needs to initialize the database driver (scv_tr_text_init() or alike)
      */
     enum file_type { NONE, TEXT, COMPRESSED, SQLITE, CUSTOM };
     /**
-     * the constructor
+     * @fn  tracer(const std::string&&, file_type, bool=true)
+     * @brief the constructor
      *
      * @param name base name of the trace file(s)
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal and POD) tracing
      */
-    tracer(const std::string&&, file_type, bool = true);
+    tracer(const std::string&& name, file_type type, bool enable = true);
     /**
-     * the destructor
+     * @fn  ~tracer()
+     * @brief the destructor
      */
     virtual ~tracer() override;
-
-    const sc_core::sc_trace_file* get_trace_file() const { return trf; }
-
-    sc_core::sc_trace_file* get_trace_file() { return trf; }
-
-    void set_trace_file(sc_core::sc_trace_file* trf) {
-        if(this->trf && owned)
-            sc_core::sc_close_vcd_trace_file(this->trf);
-        this->trf = trf;
-        owned = false;
-    }
 
 protected:
     void end_of_elaboration() override;

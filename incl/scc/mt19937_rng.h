@@ -13,6 +13,14 @@
 #include <random>
 
 namespace scc {
+/**
+ * @class MT19937
+ * @brief a mersenne-twister based random number generator
+ *
+ * This random number generator provides various distribution of random numbers being specific to the SystemC process invoking the
+ * generator function. This makes the generator independent of the order of invocation in a delta cycle and allows to replay with the
+ * same seed
+ */
 class MT19937 {
 public:
     /**
