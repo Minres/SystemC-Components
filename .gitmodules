@@ -1,0 +1,3 @@
+[submodule "axi_chi"]
+	path = axi_chi
+	url = https://github.com/Arteris-IP/tlm2-interfaces.git
