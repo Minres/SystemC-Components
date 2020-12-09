@@ -61,7 +61,7 @@ public:
         ext->set_length((len * 8 - 1) / SOCKET_WIDTH);
         //ext->set_burst(len * 8 > SOCKET_WIDTH ? axi::burst_e::INCR : axi::burst_e::FIXED);
         ext->set_burst(axi::burst_e::INCR);
-        ext->set_id(common::id_type::CTRL,id);
+        ext->set_id(id);
         return trans;
     }
 
