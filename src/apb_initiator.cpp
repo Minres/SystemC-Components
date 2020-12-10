@@ -6,8 +6,8 @@
  */
 
 #include <scc/report.h>
-#include <tlm/apb/pe/apb_initiator.h>
-#include <tlm/atp/timing_params.h>
+#include <apb/pe/apb_initiator.h>
+#include <atp/timing_params.h>
 
 using namespace sc_core;
 using namespace apb;

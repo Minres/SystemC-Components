@@ -6,8 +6,8 @@
  */
 
 #include <scc/utilities.h>
-#include <tlm/ahb/ahb_tlm.h>
-#include <tlm/ahb/bfm/initiator.h>
+#include <ahb/ahb_tlm.h>
+#include <ahb/bfm/initiator.h>
 
 using namespace ahb::bfm;
 using namespace sc_core;

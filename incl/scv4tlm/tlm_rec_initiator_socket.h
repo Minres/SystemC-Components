@@ -18,7 +18,7 @@
 #define TLM_REC_INITIATOR_SOCKET_H_
 
 #ifdef WITH_SCV
-#include "tlm2_recorder.h"
+#include "tlm_recorder.h"
 #endif
 #include <tlm>
 
@@ -121,14 +121,14 @@ public:
     //
     virtual void bind(bw_interface_type& ifs) { (this->get_base_export())(ifs); }
 
-    void setExtensionRecording(tlm2_extensions_recording_if<TYPES>* extensionRecording) {
+    void setExtensionRecording(tlm_extensions_recording_if<TYPES>* extensionRecording) {
         recorder.setExtensionRecording(extensionRecording);
     }
 
 protected:
     sc_core::sc_port<tlm::tlm_fw_transport_if<TYPES>> fw_port;
     sc_core::sc_port<tlm::tlm_bw_transport_if<TYPES>> bw_port;
-    scv4tlm::tlm2_recorder<TYPES> recorder;
+    scv4tlm::tlm_recorder<TYPES> recorder;
 };
 #endif
 } // namespace scv4tlm

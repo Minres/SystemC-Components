@@ -7,8 +7,8 @@
 
 #include <scc/report.h>
 #include <scc/utilities.h>
-#include <tlm/ahb/ahb_tlm.h>
-#include <tlm/ahb/bfm/target.h>
+#include <ahb/ahb_tlm.h>
+#include <ahb/bfm/target.h>
 #include <tlm/tlm_mm.h>
 
 using namespace ahb::bfm;

@@ -1,5 +1,5 @@
 
-#include <tlm/axi/axi4_tlm2pin_adaptor.h>
+#include <axi/axi4_tlm2pin_adaptor.h>
 
 using namespace axi_bfm;
 using namespace sc_core;
