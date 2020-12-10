@@ -5,7 +5,7 @@
 #include <array>
 #include <functional>
 #include <scc/ordered_semaphore.h>
-#include <tlm/ahb/ahb_tlm.h>
+#include <ahb/ahb_tlm.h>
 #include <unordered_set>
 
 namespace ahb {

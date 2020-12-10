@@ -18,7 +18,7 @@
 #define TLM_REC_TARGET_SOCKET_H_
 
 #ifdef WITH_SCV
-#include "tlm2_recorder.h"
+#include "tlm_recorder.h"
 #endif
 #include <tlm>
 
@@ -115,13 +115,13 @@ public:
     //
     bw_interface_type* operator->() { return &recorder; }
 
-    void setExtensionRecording(tlm2_extensions_recording_if<TYPES>* extensionRecording) {
+    void setExtensionRecording(tlm_extensions_recording_if<TYPES>* extensionRecording) {
         recorder.setExtensionRecording(extensionRecording);
     }
 
 protected:
     sc_core::sc_port<fw_interface_type> fw_port;
-    scv4tlm::tlm2_recorder<TYPES> recorder;
+    scv4tlm::tlm_recorder<TYPES> recorder;
 };
 #endif
 } // namespace scv4tlm

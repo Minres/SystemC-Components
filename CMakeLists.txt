@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 3.11)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
 
-project(scc VERSION 0.9.0 LANGUAGES CXX C)
+project(scc VERSION 1.0.0 LANGUAGES CXX C)
+
+option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
 
 include(Common)
 include(GNUInstallDirs)
 
 find_package(Doxygen)
-option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
 
 if(BUILD_SCC_DOCUMENTATION)
     if(NOT DOXYGEN_FOUND)
@@ -24,27 +25,17 @@ if(BUILD_SCC_DOCUMENTATION)
 	set(DOXYGEN_EXTRACT_PRIVATE NO)
 	set(DOXYGEN_SEARCHENGINE NO)
 	set(DOXYGEN_GENERATE_HTML YES)
-	set(DOXYGEN_GENERATE_MAN NO)
+	set(DOXYGEN_GENERATE_MAN YES)
 	set(DOXYGEN_GENERATE_LATEX NO)
 	set(DOXYGEN_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/docs")
 	# this target will only be built if specifically asked to.
-	# run "make api-docs" to create the doxygen documentation
+	# run "make scc-docs" to create the doxygen documentation
 	doxygen_add_docs(
 	    scc-docs
 	    ${PROJECT_SOURCE_DIR}/incl ${PROJECT_SOURCE_DIR}/README.md
-	    COMMENT "Generate API-documents for NoteSearch."
+	    ALL COMMENT "Generate API-documents for SCC."
 	)
-
-    #set(doxyfile_in ${CMAKE_CURRENT_SOURCE_DIR}/doc/Doxyfile.in)
-    #set(doxyfile ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
-    #configure_file(${doxyfile_in} ${doxyfile} @ONLY)
-    #add_custom_target(doc_scc
-    #    COMMAND ${DOXYGEN_EXECUTABLE} ${doxyfile}
-    #    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    #    COMMENT "Generating API documentation with Doxygen"
-    #    VERBATIM)
-
-    install(DIRECTORY ${PROJECT_BINARY_DIR}/docs DESTINATION share/doc)
+    install(DIRECTORY ${PROJECT_BINARY_DIR}/docs TYPE DOC)
 endif()
 
 
@@ -260,3 +251,9 @@ install(TARGETS jsoncpp
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/json
         )
+###############################################################################
+# build tlm-interfaces
+###############################################################################
+add_subdirectory(axi_chi)
+add_subdirectory(examples)
+        

@@ -187,6 +187,23 @@ inline constexpr uint64_t operator"" _MB(unsigned long long val) { return val * 
 inline constexpr uint64_t operator"" _GB(unsigned long long val) { return val * 1 << 30; }
 
 namespace scc {
+inline char* legalize_name(char* const name ){
+    char* ptr = name;
+    while(*ptr){
+        if (*ptr == '.' || std::isspace(*ptr)) {
+            *ptr = '_';
+        }
+        ptr++;
+    }
+    return name;
+}
+inline std::string legalize_name(std::string const& name ){
+    std::string ret;
+    for(auto c:name){
+        ret+=(c == '.' || std::isspace(c))?'_':c;
+    }
+    return ret;
+}
 /**
  * case-insensitive string compare
  *

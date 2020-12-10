@@ -6,8 +6,8 @@
  */
 
 #include <scc/report.h>
-#include <tlm/ahb/pe/ahb_initiator.h>
-#include <tlm/atp/timing_params.h>
+#include <ahb/pe/ahb_initiator.h>
+#include <atp/timing_params.h>
 
 using namespace sc_core;
 using namespace ahb;

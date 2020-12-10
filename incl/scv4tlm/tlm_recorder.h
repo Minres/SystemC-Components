@@ -19,6 +19,7 @@
 
 #include "tlm_gp_data_ext.h"
 #include "tlm_recording_extension.h"
+#include "tlm_extension_recording_registry.h"
 #include <array>
 #include <map>
 #include <regex>
@@ -30,76 +31,6 @@
 #include <vector>
 
 namespace scv4tlm {
-/*! \brief The TLM2 transaction extensions recorder interface
- *
- * This interface is used by the TLM2 transaction recorder. It can be used to
- * register custom recorder functionality
- * to also record the payload extensions
- */
-template <typename TYPES = tlm::tlm_base_protocol_types> class tlm2_extensions_recording_if {
-public:
-    /*! \brief recording attributes in extensions at the beginning, it is intended
-     * to be overload as it does nothing
-     *
-     */
-    virtual void recordBeginTx(scv_tr_handle& handle, typename TYPES::tlm_payload_type& trans) = 0;
-
-    /*! \brief recording attributes in extensions at the end, it is intended to be
-     * overload as it does nothing
-     *
-     */
-    virtual void recordEndTx(scv_tr_handle& handle, typename TYPES::tlm_payload_type& trans) = 0;
-
-    virtual ~tlm2_extensions_recording_if() = default;
-};
-
-/*! \brief The TLM2 transaction extensions recorder registry
- *
- * This registry is used by the TLM2 transaction recorder. It can be used to
- * register custom recorder functionality
- * to also record the payload extensions
- */
-template <typename TYPES = tlm::tlm_base_protocol_types> class tlm2_extension_recording_registry {
-public:
-    static tlm2_extension_recording_registry& inst() {
-        static tlm2_extension_recording_registry reg;
-        return reg;
-    }
-
-    void register_ext_rec(size_t id, tlm2_extensions_recording_if<TYPES>* ext) {
-        if(id == 0)
-            return;
-        if(id >= ext_rec.size())
-            ext_rec.resize(id + 1);
-        if(ext_rec[id])
-            delete ext_rec[id];
-        ext_rec[id] = ext;
-    }
-
-    const std::vector<tlm2_extensions_recording_if<TYPES>*>& get() { return ext_rec; }
-
-    inline void recordBeginTx(size_t id, scv_tr_handle& handle, typename TYPES::tlm_payload_type& trans) {
-        if(ext_rec.size() > id && ext_rec[id])
-            ext_rec[id]->recordBeginTx(handle, trans);
-    }
-
-    /*! \brief recording attributes in extensions at the end, it is intended to be
-     * overload as it does nothing
-     *
-     */
-    inline void recordEndTx(size_t id, scv_tr_handle& handle, typename TYPES::tlm_payload_type& trans) {
-        if(ext_rec.size() > id && ext_rec[id])
-            ext_rec[id]->recordEndTx(handle, trans);
-    }
-
-private:
-    tlm2_extension_recording_registry() = default;
-    ~tlm2_extension_recording_registry() {
-        for(auto& ext : ext_rec)
-            delete(ext);
-    }
-    std::vector<tlm2_extensions_recording_if<TYPES>*> ext_rec;
-};
 //! implementation detail
 namespace impl {
 //! \brief the class to hold the information to be recorded on the timed
@@ -136,11 +67,11 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct tlm_recording_ty
  * This module records all TLM transaction to a SCV transaction stream for
  * further viewing and analysis.
  * The handle of the created transaction is storee in an tlm_extension so that
- * another instance of the scv_tlm2_recorder
+ * another instance of the scv_tlm_recorder
  * e.g. further down the opath can link to it.
  */
 template <typename TYPES = tlm::tlm_base_protocol_types>
-class tlm2_recorder : public virtual tlm::tlm_fw_transport_if<TYPES>,
+class tlm_recorder : public virtual tlm::tlm_fw_transport_if<TYPES>,
 public virtual tlm::tlm_bw_transport_if<TYPES>,
 public sc_core::sc_object {
     std::string get_parent(char const* hier_name) {
@@ -157,7 +88,7 @@ public:
     using mm = tlm::tlm_mm<recording_types>;
     using tlm_recording_payload = impl::tlm_recording_payload<TYPES>;
 
-    SC_HAS_PROCESS(tlm2_recorder<TYPES>); // NOLINT
+    SC_HAS_PROCESS(tlm_recorder<TYPES>); // NOLINT
 
     //! \brief the attribute to selectively enable/disable recording
     sc_core::sc_attribute<bool> enableTracing;
@@ -172,7 +103,7 @@ public:
     sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port;
 
     /**
-     * @fn  tlm2_recorder(sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>&, sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>&, bool=true, scv_tr_db*=scv_tr_db::get_default_db())
+     * @fn  tlm_recorder(sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>&, sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>&, bool=true, scv_tr_db*=scv_tr_db::get_default_db())
      * @brief The constructor of the component
      *
      * @param fw_port the forward port to use in the forward path
@@ -183,12 +114,12 @@ public:
      *        If this database is not initialized (e.g. by not calling
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
-    tlm2_recorder(sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_port,
+    tlm_recorder(sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_port,
             sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port, bool recording_enabled = true,
             scv_tr_db* tr_db = scv_tr_db::get_default_db())
-    : tlm2_recorder(sc_core::sc_gen_unique_name("tlm2_recorder"), fw_port, bw_port, recording_enabled, tr_db) {}
+    : tlm_recorder(sc_core::sc_gen_unique_name("tlm_recorder"), fw_port, bw_port, recording_enabled, tr_db) {}
     /**
-     * @fn  tlm2_recorder(const char*, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>&, sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>&, bool=true, scv_tr_db*=scv_tr_db::get_default_db())
+     * @fn  tlm_recorder(const char*, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>&, sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>&, bool=true, scv_tr_db*=scv_tr_db::get_default_db())
      * @brief
      *
      * @param name is the SystemC module name of the recorder
@@ -200,7 +131,7 @@ public:
      *        If this database is not initialized (e.g. by not calling
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
-    tlm2_recorder(const char* name, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_port,
+    tlm_recorder(const char* name, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_port,
             sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port, bool recording_enabled = true,
             scv_tr_db* tr_db = scv_tr_db::get_default_db())
     : sc_core::sc_object(name)
@@ -208,8 +139,8 @@ public:
     , enableTimed("enableTimed", recording_enabled)
     , fw_port(fw_port)
     , bw_port(bw_port)
-    , b_timed_peq(this, &tlm2_recorder::btx_cb)
-    , nb_timed_peq(this, &tlm2_recorder::nbtx_cb)
+    , b_timed_peq(this, &tlm_recorder::btx_cb)
+    , nb_timed_peq(this, &tlm_recorder::nbtx_cb)
     , m_db(tr_db)
     , b_streamHandle(NULL)
     , b_streamHandleTimed(NULL)
@@ -228,7 +159,7 @@ public:
         this->add_attribute(enableTimed);
     }
 
-    virtual ~tlm2_recorder() override {
+    virtual ~tlm_recorder() override {
         delete b_streamHandle;
         delete b_streamHandleTimed;
         for(auto* p : b_trTimedHandle)
@@ -317,9 +248,9 @@ public:
 
 private:
     //! event queue to hold time points of blocking transactions
-    tlm_utils::peq_with_cb_and_phase<tlm2_recorder, recording_types> b_timed_peq;
+    tlm_utils::peq_with_cb_and_phase<tlm_recorder, recording_types> b_timed_peq;
     //! event queue to hold time points of non-blocking transactions
-    tlm_utils::peq_with_cb_and_phase<tlm2_recorder, recording_types> nb_timed_peq;
+    tlm_utils::peq_with_cb_and_phase<tlm_recorder, recording_types> nb_timed_peq;
     /*! \brief The thread processing the blocking accesses with their annotated
      * times
      *  to generate the timed view of blocking tx
@@ -380,7 +311,7 @@ private:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 template <typename TYPES>
-void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, sc_core::sc_time& delay) {
+void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, sc_core::sc_time& delay) {
     tlm_recording_payload* req{nullptr};
     if(!isRecordingEnabled()) {
         fw_port->b_transport(trans, delay);
@@ -411,7 +342,7 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, 
         b_timed_peq.notify(*req, tlm::BEGIN_REQ, delay);
     }
 
-    for(auto& extensionRecording : scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
+    for(auto& extensionRecording : scv4tlm::tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordBeginTx(h, trans);
     tlm_recording_extension* preExt = NULL;
@@ -445,7 +376,7 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, 
     h.record_attribute("trans", tgd);
     if(trans.get_command() == tlm::TLM_READ_COMMAND && tgd.data_length < 8)
         h.record_attribute("trans.data_value", tgd.get_data_value());
-    for(auto& extensionRecording : scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
+    for(auto& extensionRecording : scv4tlm::tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordEndTx(h, trans);
     // End the transaction
@@ -457,7 +388,7 @@ void tlm2_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, 
 }
 
 template <typename TYPES>
-void tlm2_recorder<TYPES>::btx_cb(tlm_recording_payload& rec_parts, const typename TYPES::tlm_phase_type& phase) {
+void tlm_recorder<TYPES>::btx_cb(tlm_recording_payload& rec_parts, const typename TYPES::tlm_phase_type& phase) {
     scv_tr_handle h;
     if(b_trTimedHandle[0] == NULL) {
         b_streamHandleTimed = new scv_tr_stream((fixed_basename + "_bl_timed").c_str(), "TRANSACTOR", m_db);
@@ -492,7 +423,7 @@ void tlm2_recorder<TYPES>::btx_cb(tlm_recording_payload& rec_parts, const typena
 }
 
 template <typename TYPES>
-tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payload_type& trans,
+tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payload_type& trans,
         typename TYPES::tlm_phase_type& phase,
         sc_core::sc_time& delay) {
     if(!isRecordingEnabled())
@@ -528,7 +459,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
     if(preExt)
         preExt->txHandle = h;
     h.record_attribute("delay", delay.to_string());
-    for(auto& extensionRecording : scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
+    for(auto& extensionRecording : scv4tlm::tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordBeginTx(h, trans);
     tlm_gp_data tgd(trans);
@@ -559,7 +490,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
             buf += (*tgd.data) << i * 8;
         h.record_attribute("trans.data_value", buf);
     }
-    for(auto& extensionRecording : scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
+    for(auto& extensionRecording : scv4tlm::tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordEndTx(h, trans);
     h.record_attribute("tlm_phase[return_path]", phase2string(phase));
@@ -597,7 +528,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_pay
 }
 
 template <typename TYPES>
-tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payload_type& trans,
+tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payload_type& trans,
         typename TYPES::tlm_phase_type& phase,
         sc_core::sc_time& delay) {
     if(!isRecordingEnabled())
@@ -626,7 +557,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
         preExt->txHandle = h;
     }
     h.record_attribute("delay", delay.to_string());
-    for(auto& extensionRecording : scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
+    for(auto& extensionRecording : scv4tlm::tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordBeginTx(h, trans);
     tlm_gp_data tgd(trans);
@@ -657,7 +588,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
             buf += (*tgd.data) << i * 8;
         h.record_attribute("trans.data_value", buf);
     }
-    for(auto& extensionRecording : scv4tlm::tlm2_extension_recording_registry<TYPES>::inst().get())
+    for(auto& extensionRecording : scv4tlm::tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordEndTx(h, trans);
     // phase and delay are already recorded
@@ -689,7 +620,7 @@ tlm::tlm_sync_enum tlm2_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_pay
 }
 
 template <typename TYPES>
-void tlm2_recorder<TYPES>::nbtx_cb(tlm_recording_payload& rec_parts, const typename TYPES::tlm_phase_type& phase) {
+void tlm_recorder<TYPES>::nbtx_cb(tlm_recording_payload& rec_parts, const typename TYPES::tlm_phase_type& phase) {
     scv_tr_handle h;
     std::map<uint64, scv_tr_handle>::iterator it;
     if(nb_streamHandleTimed[FW] == NULL) {
@@ -756,7 +687,7 @@ void tlm2_recorder<TYPES>::nbtx_cb(tlm_recording_payload& rec_parts, const typen
 }
 
 template <typename TYPES>
-bool tlm2_recorder<TYPES>::get_direct_mem_ptr(typename TYPES::tlm_payload_type& trans, tlm::tlm_dmi& dmi_data) {
+bool tlm_recorder<TYPES>::get_direct_mem_ptr(typename TYPES::tlm_payload_type& trans, tlm::tlm_dmi& dmi_data) {
     if(!isRecordingEnabled()) {
         return fw_port->get_direct_mem_ptr(trans, dmi_data);
     }
@@ -777,7 +708,7 @@ bool tlm2_recorder<TYPES>::get_direct_mem_ptr(typename TYPES::tlm_payload_type& 
  * \param end_addr is the end address of the memory area being invalid
  */
 template <typename TYPES>
-void tlm2_recorder<TYPES>::invalidate_direct_mem_ptr(sc_dt::uint64 start_addr, sc_dt::uint64 end_addr) {
+void tlm_recorder<TYPES>::invalidate_direct_mem_ptr(sc_dt::uint64 start_addr, sc_dt::uint64 end_addr) {
     if(!isRecordingEnabled()) {
         bw_port->invalidate_direct_mem_ptr(start_addr, end_addr);
         return;
@@ -799,7 +730,7 @@ void tlm2_recorder<TYPES>::invalidate_direct_mem_ptr(sc_dt::uint64 start_addr, s
  * \param trans is the generic payload of the transaction
  * \return the sync state of the transaction
  */
-template <typename TYPES> unsigned int tlm2_recorder<TYPES>::transport_dbg(typename TYPES::tlm_payload_type& trans) {
+template <typename TYPES> unsigned int tlm_recorder<TYPES>::transport_dbg(typename TYPES::tlm_payload_type& trans) {
     unsigned int count = fw_port->transport_dbg(trans);
     return count;
 }

@@ -35,7 +35,7 @@
 
 #include <scc/report.h>
 #include <systemc>
-#include <tlm/ahb/pe/ahb_target.h>
+#include <ahb/pe/ahb_target.h>
 #include <tuple>
 
 using namespace sc_core;

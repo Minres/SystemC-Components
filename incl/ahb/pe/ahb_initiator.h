@@ -11,7 +11,7 @@
 #include <scc/ordered_semaphore.h>
 #include <scc/peq.h>
 #include <systemc>
-#include <tlm/ahb/ahb_tlm.h>
+#include <ahb/ahb_tlm.h>
 #include <tlm_utils/peq_with_get.h>
 #include <tuple>
 #include <unordered_map>
