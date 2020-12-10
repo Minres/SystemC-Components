@@ -44,9 +44,11 @@ void axi4_tlm2pin_adaptor::write_resp_channel() {
 }
 
 void axi4_tlm2pin_adaptor::read_addr_channel(const tlm::tlm_generic_payload& trans) {
+    // The Master puts an address on the Read Address channel as well as asserting ARVALID,indicating the address is valid.
     ar_addr_o.write(trans.get_address());
     ar_valid_o.write(true);
 
+    // The Slave asserts ARREADY, indicating that it is ready to receive the address on the bus.
     if(!ar_ready_i.read()) {
         wait(ar_ready_i.posedge_event());
     } else {
@@ -57,8 +59,10 @@ void axi4_tlm2pin_adaptor::read_addr_channel(const tlm::tlm_generic_payload& tra
 
 void axi4_tlm2pin_adaptor::read_data_channel(tlm::tlm_generic_payload& trans) {
     sc_dt::sc_biguint<512> data{0};
-
+    // The Master asserts RREADY, indicating the master is ready to receive data from the slave.
     r_ready_o.write(true);
+
+    // The Slave puts the requested data on the Read Data channel and asserts RVALID, indicating the data in the channel is valid.
     if(!r_valid_i.read()) {
         wait(r_valid_i.posedge_event());
     }
@@ -66,6 +70,10 @@ void axi4_tlm2pin_adaptor::read_data_channel(tlm::tlm_generic_payload& trans) {
     data = r_data_i.read();
     for(size_t j = 0, k = 0, offset = 0; k < 32 / 8; j += 8, ++k, ++offset)
         *(uint8_t*)(trans.get_data_ptr() + offset) = data.range(j + 7, j).to_uint();
+
+    // Since both RREADY and RVALID are asserted, the next rising clock edge completes the transaction.
+    wait(clk_i.posedge_event());
+
     r_ready_o.write(false);
 }
 

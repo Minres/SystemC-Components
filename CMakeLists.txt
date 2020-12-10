@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 3.11)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
 
-project(scc VERSION 0.9.0 LANGUAGES CXX C)
+project(scc VERSION 1.0.0 LANGUAGES CXX C)
+
+option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
 
 include(Common)
 include(GNUInstallDirs)
 
 find_package(Doxygen)
-option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
 
 if(BUILD_SCC_DOCUMENTATION)
     if(NOT DOXYGEN_FOUND)
@@ -254,4 +255,5 @@ install(TARGETS jsoncpp
 # build tlm-interfaces
 ###############################################################################
 add_subdirectory(axi_chi)
+add_subdirectory(examples)
         

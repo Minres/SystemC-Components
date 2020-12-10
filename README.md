@@ -21,3 +21,46 @@ SCC is supposed to be a light weight productivity library for SystemC and TLM 2.
 * sysc::router
 
   a simple component to route TLM2.0 accesses of a set of masters to a set of targets based on generic payload addresses
+
+build instructions
+==================
+
+the repo is cmake based. Make sure that you have at least cmake 3.12 installed.
+
+There is a dependency on SystemC. For some capabilities SCV is required, but this
+can be selected during build time. 
+
+The suggested build flow is:
+
+- create a build directory and enter into it
+- execute cmake with applicable options 
+- execute build
+- install build
+- run tests
+
+For example:
+
+git clone https://github.com/Minres/SystemC-Components.git
+cd SystemC-Components/
+git checkout adding-examples
+git clone https://github.com/Arteris-IP/tlm2-interfaces.git
+cd tlm2-interfaces/
+git checkout adding-examples
+cd ..
+
+setenv WORKAREA `pwd`
+setenv SYSTEMC_HOME /workarea3/SystemC/systemc-2.3.3-gcc-6.3.0-c++14-install
+setenv GCC_HOME     /workarea3/gcc-6.3.0-install
+setenv SCV_HOME ${SYSTEMC_HOME}
+setenv TLM_HOME ${SYSTEMC_HOME}/include
+setenv PATH     ${GCC_HOME}/bin:${PATH}
+setenv CC       ${GCC_HOME}/bin/gcc
+setenv CXX      ${GCC_HOME}/bin/g++
+setenv LD_LIBRARY_PATH ${GCC_HOME}/lib64
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$WORKAREA/install/$LIB_VERSION -DENABLE_SCV=ON ..
+make 
+./examples/ace-axi/ace_ace_test
+./examples/axi-axi/axi_axi_test
+

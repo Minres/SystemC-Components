@@ -195,7 +195,7 @@ inline std::string padded(std::string str, size_t width, bool show_ellipsis = tr
  * @return true if file exists and can be opened
  */
 inline bool file_exists(const std::string& name) {
-    struct stat buffer;
+    struct stat buffer{};
     return (stat(name.c_str(), &buffer) == 0);
 }
 /**

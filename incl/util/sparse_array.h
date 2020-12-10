@@ -70,7 +70,7 @@ public:
     page_type& operator()(uint32_t page_nr) {
         assert(page_nr < page_count);
         if(arr[page_nr] == nullptr)
-            arr[page_nr] = new page_type();
+            arr.at(page_nr) = new page_type();
         return *(arr[page_nr]);
     }
     /**
@@ -82,7 +82,7 @@ public:
     bool is_allocated(uint32_t addr) {
         assert(addr < SIZE);
         T nr = addr >> lower_width;
-        return arr[nr] != nullptr;
+        return arr.at(nr) != nullptr;
     }
     /**
      * get the size of the array
