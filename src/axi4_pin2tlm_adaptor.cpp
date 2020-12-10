@@ -1,5 +1,6 @@
+
+#include "axi/axi4_pin2tlm_adaptor.h"
 #include <scc/report.h>
-#include "tlm/axi/axi4_pin2tlm_adaptor.h"
 
 using namespace axi_bfm;
 using namespace sc_core;
