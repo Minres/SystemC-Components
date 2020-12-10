@@ -21,6 +21,8 @@
 #include <cstring>
 #include <iomanip>
 #include <sstream>
+#include <iostream>
+#include <cstring>
 #include <sysc/kernel/sc_time.h>
 #include <sysc/utils/sc_report.h>
 #include <util/ities.h>
@@ -56,7 +58,7 @@ inline std::istream& operator>>(std::istream& is, log& val) {
     std::string buf;
     is >> buf;
     for(auto i = 0U; i <= static_cast<unsigned>(log::TRACEALL); ++i) {
-        if(strcmp(buf.c_str(), buffer[i]) == 0) {
+        if(std::strcmp(buf.c_str(), buffer[i]) == 0) {
             val = as_log(i);
             return is;
         }
