@@ -2,21 +2,25 @@ SET(_COMMON_HINTS
   "[HKEY_LOCAL_MACHINE\\SOFTWARE\\SystemC\\2.3;SystemcHome]/include"
   ${SYSTEMC_PREFIX}/include
   ${SYSTEMC_PREFIX}/lib
+  ${SYSTEMC_PREFIX}/lib64
   ${SYSTEMC_PREFIX}/lib-linux
   ${SYSTEMC_PREFIX}/lib-linux64
   ${SYSTEMC_PREFIX}/lib-macos
   $ENV{SYSTEMC_PREFIX}/include
   $ENV{SYSTEMC_PREFIX}/lib
+  $ENV{SYSTEMC_PREFIX}/lib64
   $ENV{SYSTEMC_PREFIX}/lib-linux
   $ENV{SYSTEMC_PREFIX}/lib-linux64
   $ENV{SYSTEMC_PREFIX}/lib-macos
   $ENV{SYSTEMC_HOME}/include
   $ENV{SYSTEMC_HOME}/lib
+  $ENV{SYSTEMC_HOME}/lib64
   $ENV{SYSTEMC_HOME}/lib-linux
   $ENV{SYSTEMC_HOME}/lib-linux64
   $ENV{SYSTEMC_HOME}/lib-macos
   ${CMAKE_INSTALL_PREFIX}/include
   ${CMAKE_INSTALL_PREFIX}/lib
+  ${CMAKE_INSTALL_PREFIX}/lib64
   ${CMAKE_INSTALL_PREFIX}/lib-linux
   ${CMAKE_INSTALL_PREFIX}/lib-linux64
   ${CMAKE_INSTALL_PREFIX}/lib-macos
@@ -35,8 +39,15 @@ SET(_SYSTEMC_HINTS
 SET(_SCV_HINTS
   ${CONAN_INCLUDE_DIRS_SYSTEMCVERIFICATION}
   ${CONAN_LIB_DIRS_SYSTEMCVERIFICATION}
+  ${SCV_PREFIX}/include
+  ${SCV_PREFIX}/lib
+  ${SCV_PREFIX}/lib64
+  ${SCV_PREFIX}/lib-linux
+  ${SCV_PREFIX}/lib-linux64
+  ${SCV_PREFIX}/lib-macos
   $ENV{SCV_HOME}/include
   $ENV{SCV_HOME}/lib
+  $ENV{SCV_HOME}/lib64
   $ENV{SCV_HOME}/lib-linux
   $ENV{SCV_HOME}/lib-linux64
   $ENV{SCV_HOME}/lib-macos
@@ -46,9 +57,15 @@ SET(_SCV_HINTS
 SET(_CCI_HINTS
   ${CONAN_INCLUDE_DIRS_SYSTEMC-CCI}
   ${CONAN_LIB_DIRS_SYSTEMC-CCI}
+  ${CCI_PREFIX}/include
+  ${CCI_PREFIX}/lib
+  ${CCI_PREFIX}/lib64
+  ${CCI_PREFIX}/lib-linux
+  ${CCI_PREFIX}/lib-linux64
+  ${CCI_PREFIX}/lib-macos
   $ENV{CCI_HOME}/include
-  $ENV{CCI_HOME}/src
   $ENV{CCI_HOME}/lib
+  $ENV{CCI_HOME}/lib64
   $ENV{CCI_HOME}/lib-linux
   $ENV{CCI_HOME}/lib-linux64
   $ENV{CCI_HOME}/lib-macos
