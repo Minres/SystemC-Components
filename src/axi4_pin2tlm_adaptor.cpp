@@ -22,6 +22,7 @@ void axi_pin2tlm_adaptor::bus_thread() {
         wait();
         if(reset_i.read()) {
             r_valid_o.write(false);
+            r_last_o.write(false);
             b_valid_o.write(false);
             ar_ready_o.write(true);
         } else {
@@ -43,11 +44,14 @@ void axi_pin2tlm_adaptor::bus_thread() {
                     }
                     r_data_o.write(read_data);
                     r_valid_o.write(true);
+                    if(l==length)
+                        r_last_o.write(true);
                     wait(clk_i.posedge());
                     addr += 64;
                 }
                 ar_ready_o.write(true);
                 r_valid_o.write(false);
+                r_last_o.write(false);
             }
 
             // Handle write request
@@ -87,6 +91,7 @@ void axi_pin2tlm_adaptor::bus_thread() {
 
                     wait(clk_i.posedge());
                 }
+                b_valid_o.write(false);
             }
         }
     }
