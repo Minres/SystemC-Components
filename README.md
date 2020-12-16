@@ -40,13 +40,9 @@ The suggested build flow is:
 
 For example:
 
-git clone https://github.com/Minres/SystemC-Components.git
+```
+git clone --recursive https://github.com/Minres/SystemC-Components.git
 cd SystemC-Components/
-git checkout adding-examples
-git clone https://github.com/Arteris-IP/tlm2-interfaces.git
-cd tlm2-interfaces/
-git checkout adding-examples
-cd ..
 
 setenv WORKAREA `pwd`
 setenv SYSTEMC_HOME /workarea3/SystemC/systemc-2.3.3-gcc-6.3.0-c++14-install
@@ -64,3 +60,4 @@ make
 ./examples/ace-axi/ace_ace_test
 ./examples/axi-axi/axi_axi_test
 
+```
