@@ -97,6 +97,9 @@ public:
                     SCCERR() << "Could not set attribute value " << hier_name;
             }
 #ifdef WITH_CCI
+            else {
+                cci_broker.set_preset_cci_value(hier_name, cci::cci_value(value));
+            }
         }
 #endif
     }
