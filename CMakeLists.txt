@@ -130,6 +130,7 @@ set(LIB_SOURCES
     src/mt19937_rng.cpp
     src/axi4_pin2tlm_adaptor.cpp
     src/axi4_tlm2pin_adaptor.cpp
+    src/parallel_pe.cpp
 )
 
 if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
