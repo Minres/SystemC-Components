@@ -66,6 +66,26 @@ install(TARGETS scc-util
 )
 
 ###############################################################################
+# build a separate JSON library for the use in non-systemc based systems
+###############################################################################
+add_library(jsoncpp STATIC src/jsoncpp.cpp)
+target_include_directories (jsoncpp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
+
+FILE(GLOB JsonLibHeaders incl/json/*.h)
+set_target_properties(jsoncpp PROPERTIES
+    VERSION 1.8.3
+    FRAMEWORK FALSE
+    PUBLIC_HEADER "${JsonLibHeaders}" # specify the public headers
+)
+
+install(TARGETS jsoncpp
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/json
+        )
+
+###############################################################################
 # build the SCC
 ###############################################################################
 if(NOT SystemCPackage)
@@ -87,6 +107,8 @@ if(TARGET SystemC-CCI::SystemC-CCI)
     set(CCI_LIBRARIES SystemC-CCI::SystemC-CCI)
 endif()
 
+set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "/json/" "jsoncpp.cpp" "sqlite3")
+find_package(ClangFormat)
 find_package(Threads)
 find_package(Boost REQUIRED COMPONENTS system) # header only libraries must not be added herefind_package(ZLIB REQUIRED)
 find_package(${SystemCPackage} REQUIRED)
@@ -101,11 +123,6 @@ if(SystemC_FOUND)
             message(STATUS "CCI headers at ${CCI_INCLUDE_DIRS}")
             message(STATUS "CCI library at ${CCI_LIBRARY_DIRS}")
         endif()
-endif(SystemC_FOUND)
-
-set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "/json/" "jsoncpp.cpp" "sqlite3")
-find_package(ClangFormat)
-
 include(CheckSymbolExists)
 # Check for function getenv()
 check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)
@@ -249,29 +266,10 @@ install(
     DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}/incl/
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     FILES_MATCHING PATTERN "*")
-
-###############################################################################
-# build a separate JSON library for the use in non-systemc based systems
-###############################################################################
-add_library(jsoncpp STATIC src/jsoncpp.cpp)
-target_include_directories (jsoncpp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
-
-FILE(GLOB JsonLibHeaders incl/json/*.h)
-set_target_properties(jsoncpp PROPERTIES
-    VERSION 1.8.3
-    FRAMEWORK FALSE
-    PUBLIC_HEADER "${JsonLibHeaders}" # specify the public headers
-)
-
-install(TARGETS jsoncpp
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/json
-        )
 ###############################################################################
 # build tlm-interfaces
 ###############################################################################
 add_subdirectory(axi_chi)
 add_subdirectory(examples)
-        
+endif(SystemC_FOUND)
+
