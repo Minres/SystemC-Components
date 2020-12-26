@@ -90,6 +90,7 @@ void axi4_tlm2pin_adaptor::b_transport(tlm::tlm_generic_payload& trans, sc_core:
         read_addr_channel(trans);
         read_data_channel(trans);
     }
+    trans.set_response_status(tlm::TLM_OK_RESPONSE);
 }
 
 void axi_bfm::axi4_tlm2pin_adaptor::reset() {
