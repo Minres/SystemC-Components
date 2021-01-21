@@ -40,6 +40,7 @@ The suggested build flow is:
 
 For example:
 
+```
 git clone https://github.com/Minres/SystemC-Components.git
 cd SystemC-Components/
 git checkout adding-examples
@@ -63,4 +64,4 @@ cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$WORKAREA/install/$LIB_VER
 make 
 ./examples/ace-axi/ace_ace_test
 ./examples/axi-axi/axi_axi_test
-
+```
