@@ -22,6 +22,7 @@ void axi_pin2tlm_adaptor::bus_thread() {
         wait();
         if(reset_i.read()) {
             r_valid_o.write(false);
+            r_last_o.write(false);
             b_valid_o.write(false);
             ar_ready_o.write(true);
         } else {
@@ -43,19 +44,22 @@ void axi_pin2tlm_adaptor::bus_thread() {
                     }
                     r_data_o.write(read_data);
                     r_valid_o.write(true);
-                    wait(clk_i.posedge());
+                    if(l==length)
+                        r_last_o.write(true);
+                    wait();
                     addr += 64;
+                    r_valid_o.write(false);
                 }
                 ar_ready_o.write(true);
-                r_valid_o.write(false);
+                r_last_o.write(false);
             }
 
             // Handle write request
             if(aw_valid_i.read() && w_valid_i.read()) {
                 aw_ready_o.write(true);
-                w_ready_o.write(true);
                 b_valid_o.write(false);
-                wait(clk_i.posedge());
+                w_ready_o.write(true);
+                wait();
 
                 auto length = aw_len_i.read();
                 auto addr = aw_addr_i.read();
@@ -67,6 +71,7 @@ void axi_pin2tlm_adaptor::bus_thread() {
                 payload.set_address(addr);
 
                 for (int l = 0; l <= length; l++) {
+                    w_ready_o.write(false);
                     write_data = w_data_i.read();
                     for (size_t i=0, j = 0; i < 8; j += num_bytes, i++) {
                     	output_data[i] = write_data.range(j + num_bytes - 1, j).to_uint64();
@@ -78,15 +83,16 @@ void axi_pin2tlm_adaptor::bus_thread() {
                     addr += num_bytes;
                     payload.set_address(addr);
 
+                    w_ready_o.write(true);
                     if (w_last_i.read()) {
                         aw_ready_o.write(false);
                         w_ready_o.write(false);
                         b_resp_o.write(OKAY);
                         b_valid_o.write(true);
                     }
-
-                    wait(clk_i.posedge());
+                    wait();
                 }
+                b_valid_o.write(false);
             }
         }
     }
