@@ -5,8 +5,14 @@ project(scc VERSION 1.0.0 LANGUAGES CXX C)
 
 option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
 
+option(BUILD_STAND_ALONE "Do a standalone build and do not rely on a parent project providing needed libraries" FALSE)
 include(Common)
 include(GNUInstallDirs)
+if(BUILD_STAND_ALONE)
+	include(Conan)
+	setup_conan(TARGETS)
+endif()
+
 
 find_package(Doxygen)
 
@@ -60,7 +66,7 @@ install(TARGETS scc-util
 )
 
 ###############################################################################
-# build a SCC
+# build the SCC
 ###############################################################################
 if(NOT SystemCPackage)
     if(TARGET SystemC::SystemC)
@@ -82,9 +88,20 @@ if(TARGET SystemC-CCI::SystemC-CCI)
 endif()
 
 find_package(Threads)
-find_package(Boost REQUIRED COMPONENTS date_time)
-find_package(ZLIB REQUIRED)
+find_package(Boost REQUIRED COMPONENTS system) # header only libraries must not be added herefind_package(ZLIB REQUIRED)
 find_package(${SystemCPackage} REQUIRED)
+if(SystemC_FOUND)
+        message(STATUS "SystemC headers at ${SystemC_INCLUDE_DIRS}")
+        message(STATUS "SystemC library at ${SystemC_LIBRARY_DIRS}")
+        if(SCV_FOUND)
+            message(STATUS "SCV headers at ${SCV_INCLUDE_DIRS}")
+            message(STATUS "SCV library at ${SCV_LIBRARY_DIRS}")
+        endif(SCV_FOUND)
+        if(CCI_FOUND)
+            message(STATUS "CCI headers at ${CCI_INCLUDE_DIRS}")
+            message(STATUS "CCI library at ${CCI_LIBRARY_DIRS}")
+        endif()
+endif(SystemC_FOUND)
 
 set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "/json/" "jsoncpp.cpp" "sqlite3")
 find_package(ClangFormat)
