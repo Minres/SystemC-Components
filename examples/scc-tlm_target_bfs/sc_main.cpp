@@ -70,7 +70,7 @@ private:
   uint32_t action_on_statusread(void){return 0;}
 
 public:
-  tlm_target_bfs_example(sc_core::sc_module_name name, scc::tlm_target_bfs_params_t&& params, testbench* owner = nullptr)
+  tlm_target_bfs_example(sc_core::sc_module_name name, scc::tlm_target_bfs_params&& params, testbench* owner = nullptr)
   : tlm_target_bfs(name, std::move(params), owner) {
     reset();
     /*

@@ -21,6 +21,7 @@
 
 using namespace axi;
 using namespace axi::pe;
+using namespace sc_core;
 
 const unsigned SOCKET_WIDTH = 64;
 
