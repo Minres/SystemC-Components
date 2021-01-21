@@ -1,27 +1,28 @@
+/*******************************************************************************
+* Copyright 2021, 2021 Chair of Electronic Design Automation, TU Munich
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*******************************************************************************/
 /**
  * @Author: Philip Dachs
  * @Date:   2019-06-19T12:30:13+02:00
- * @Filename: peripheral_register_base.h
- * @Last modified by:   Johannes Geier (johannes.geier@tum.de)
+ * @Filename: tlm_target_bfs_register_base.h
+ * @Last modified by:   Johannes Geier (contact: johannes.geier@tum.de)
  * @Last modified time: 2021-01-20T18:11:00+02:00
- * @Copyright: Copyright (c) 2019
-  Chair of Electronic Design Automation, TU Munich
+*/
 
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  THE SOFTWARE.
-
- */
-
-#ifndef __MMP_PERIPHERAL_REGISTER_BASE_H__
-#define __MMP_PERIPHERAL_REGISTER_BASE_H__
+#ifndef __SCC_TLM_TARGET_BFS_REGISTER_BASE_H__
+#define __SCC_TLM_TARGET_BFS_REGISTER_BASE_H__
 
 #include <algorithm>
 #include <cstddef>
@@ -38,18 +39,15 @@
 #include <boost/preprocessor/stringize.hpp>
 #include <boost/preprocessor/tuple/elem.hpp>
 
-//#include "etissvp/base-tlmcomp/xreport.hpp"
-//#include "etissvp/etissvp.h"
-
-#include "scc/resetable.h"
-#include "scc/resource_access_if.h"
-#include "scc/tlm_target.h"
+#include "resetable.h"
+#include "resource_access_if.h"
+#include "tlm_target.h"
 #include "sysc/kernel/sc_module_name.h"
 #include "sysc/kernel/sc_object.h"
 
-#define ID_MMP_PERIPHERAL_REGISTER_BASE "mmp: Peripheral Register Base"
+#define ID_SCC_TLM_TARGET_BFS_REGISTER_BASE "scc: tlm target bitfield support register base"
 
-namespace mmp {
+namespace scc {
 
 /**
  * @brief Abstract baseclass for bitfield
@@ -354,10 +352,10 @@ class bitfield : public abstract_bitfield<datatype_t> {
  *                  urid and not by regname and bitfield name.
  */
 template <typename derived_t, bool use_URID = false>
-class peripheral_register_base : public sc_core::sc_object,
+class tlm_target_bfs_register_base : public sc_core::sc_object,
                                  public scc::resetable {
  public:
-  peripheral_register_base(sc_core::sc_module_name name)
+  tlm_target_bfs_register_base(sc_core::sc_module_name name)
       : sc_core::sc_object{name} {}
 
   template <unsigned buswidth>
@@ -380,7 +378,7 @@ class peripheral_register_base : public sc_core::sc_object,
                        return name.compare(reg.basename()) == 0;
                      });
     if (found == asDerived().registers.end()){
-      SC_REPORT_FATAL(ID_MMP_PERIPHERAL_REGISTER_BASE, ("Register "+ name + " not found").c_str());
+      SC_REPORT_FATAL(ID_SCC_TLM_TARGET_BFS_REGISTER_BASE, ("Register "+ name + " not found").c_str());
     }
     return *found;
   }
@@ -400,7 +398,7 @@ class peripheral_register_base : public sc_core::sc_object,
           return regname.compare(bf.reg.basename()) == 0 && name == bf.name;
         });
     if (found == asDerived().bitfields.end()){
-      SC_REPORT_FATAL(ID_MMP_PERIPHERAL_REGISTER_BASE, ("Bitfield " + name +
+      SC_REPORT_FATAL(ID_SCC_TLM_TARGET_BFS_REGISTER_BASE, ("Bitfield " + name +
                                   " in register " + regname + " not found").c_str());
     }
     return *found;
@@ -417,7 +415,7 @@ class peripheral_register_base : public sc_core::sc_object,
         asDerived().bitfields.begin(), asDerived().bitfields.end(),
         [urid](const bitfield<uint32_t>& bf) { return urid == bf.urid; });
     if (found == asDerived().bitfields.end()) {
-      SC_REPORT_FATAL(ID_MMP_PERIPHERAL_REGISTER_BASE, ("Bitfield with urid " + urid + " not found").c_str());
+      SC_REPORT_FATAL(ID_SCC_TLM_TARGET_BFS_REGISTER_BASE, ("Bitfield with urid " + urid + " not found").c_str());
     }
     return *found;
   }
@@ -440,7 +438,7 @@ class peripheral_register_base : public sc_core::sc_object,
     } else {
       bitfield<uint32_t>& result = getBitfieldByName(regname, name);
       if (result.urid != urid) {
-        SC_REPORT_WARNING(ID_MMP_PERIPHERAL_REGISTER_BASE, ("URID of register is " + result.urid + " but " + urid
+        SC_REPORT_WARNING(ID_SCC_TLM_TARGET_BFS_REGISTER_BASE, ("URID of register is " + result.urid + " but " + urid
            + " was passed").c_str());
       }
       return result;
@@ -451,7 +449,7 @@ class peripheral_register_base : public sc_core::sc_object,
   derived_t& asDerived() { return static_cast<derived_t&>(*this); }
 };
 
-}  // namespace mmp
+}  // namespace scc
 
 /**
  * @brief Implementation detail. Not for general use
@@ -541,4 +539,4 @@ class peripheral_register_base : public sc_core::sc_object,
 #define REGISTER_ARRAY(basename, offset, size, count) \
   BOOST_PP_REPEAT(count, REGISTER_ARRAY_ELEMENT, (basename, offset, size))
 
-#endif // __MMP_PERIPHERAL_REGISTER_BASE_H__
+#endif // __SCC_TLM_TARGET_BFS_REGISTER_BASE_H__
