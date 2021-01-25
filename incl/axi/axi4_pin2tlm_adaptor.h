@@ -9,13 +9,14 @@
 
 namespace axi_bfm {
 
+template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types>
 class axi_pin2tlm_adaptor : public sc_core::sc_module {
 public:
     SC_HAS_PROCESS(axi_pin2tlm_adaptor);
 
     axi_pin2tlm_adaptor(sc_core::sc_module_name nm);
 
-    scc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<32>> output_socket{"output_socket"};
+    scc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<BUSWIDTH,TYPES>,TYPES> output_socket{"output_socket"};
 
     sc_core::sc_in<bool> clk_i{"clk_i"};
     sc_core::sc_in<bool> reset_i{"resetn_i"};
@@ -35,8 +36,8 @@ public:
     sc_core::sc_in<sc_dt::sc_uint<8>> aw_len_i{"aw_len_i"};
 
     // write data channel signals
-    sc_core::sc_in<sc_dt::sc_biguint<512>> w_data_i{"w_data_i"};
-    sc_core::sc_in<sc_dt::sc_uint<64>> w_strb_i{"w_strb_i"};
+    sc_core::sc_in<sc_dt::sc_uint<BUSWIDTH>> w_data_i{"w_data_i"};
+    sc_core::sc_in<sc_dt::sc_uint<4>> w_strb_i{"w_strb_i"};
     sc_core::sc_in<bool> w_last_i{"w_last_i"};
     sc_core::sc_in<bool> w_valid_i{"w_valid_i"};
     sc_core::sc_out<bool> w_ready_o{"w_ready_o"};
@@ -63,7 +64,7 @@ public:
 
     // Read data channel signals
     sc_core::sc_out<bool> r_id_o{"r_id_o"};
-    sc_core::sc_out<sc_dt::sc_biguint<512>> r_data_o{"r_data_o"};
+    sc_core::sc_out<sc_dt::sc_uint<BUSWIDTH>> r_data_o{"r_data_o"};
     sc_core::sc_out<sc_dt::sc_uint<2>> r_resp_o{"r_resp_o"};
     sc_core::sc_out<bool> r_last_o{"r_last_o"};
     sc_core::sc_out<bool> r_valid_o{"r_valid_o"};
@@ -74,6 +75,106 @@ private:
 
     enum { OKAY = 0x0, EXOKAY = 0x1, SLVERR = 0x2, DECERR = 0x3 };
 };
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// Class definition
+/////////////////////////////////////////////////////////////////////////////////////////
+template <unsigned int BUSWIDTH, typename TYPES>
+inline axi_pin2tlm_adaptor<BUSWIDTH,TYPES>::axi_pin2tlm_adaptor::axi_pin2tlm_adaptor(sc_core::sc_module_name nm)
+: sc_module(nm) {
+    SC_THREAD(bus_thread)
+    sensitive << clk_i.pos();
+}
+
+
+template <unsigned int BUSWIDTH, typename TYPES>
+inline void axi_pin2tlm_adaptor<BUSWIDTH,TYPES>::axi_pin2tlm_adaptor::bus_thread() {
+    tlm::tlm_generic_payload payload;
+    sc_core::sc_time delay = sc_core::SC_ZERO_TIME;
+    sc_dt::sc_biguint<512> read_data{0};
+    sc_dt::sc_biguint<512> write_data{0};
+    uint8_t r_data_buf[64]{0};
+    uint64_t output_data[8]{0};
+    while(true) {
+        wait();
+        if(reset_i.read()) {
+            r_valid_o.write(false);
+            r_last_o.write(false);
+            b_valid_o.write(false);
+            ar_ready_o.write(true);
+        } else {
+            // Handle read request
+            if(ar_valid_i.read()) {
+                ar_ready_o.write(false);
+                uint32_t length = ar_len_i.read();
+                uint32_t addr = ar_addr_i.read();
+                payload.set_command(tlm::TLM_READ_COMMAND);
+                for (int l = 0; l <= length; l++) {
+                    payload.set_address(addr);
+                    payload.set_data_length(64);
+                    payload.set_streaming_width(64);
+                    payload.set_data_ptr(r_data_buf);
+                    output_socket->b_transport(payload, delay);
+
+                    for(size_t i = 0, j = 0; j < 64; i += 8, j++) {
+                        read_data.range(i + 7, i) = *(uint8_t*)(payload.get_data_ptr() + j);
+                    }
+                    r_data_o.write(read_data);
+                    r_valid_o.write(true);
+                    if(l==length)
+                        r_last_o.write(true);
+                    wait();
+                    addr += 64;
+                    r_valid_o.write(false);
+                }
+                ar_ready_o.write(true);
+                r_last_o.write(false);
+            }
+
+            // Handle write request
+            if(aw_valid_i.read() && w_valid_i.read()) {
+                aw_ready_o.write(true);
+                b_valid_o.write(false);
+                w_ready_o.write(true);
+                wait();
+
+                auto length = aw_len_i.read();
+                auto addr = aw_addr_i.read();
+                auto num_bytes = 1 << aw_size_i.read();
+
+                payload.set_data_length(num_bytes);
+                payload.set_streaming_width(num_bytes);
+                payload.set_command(tlm::TLM_WRITE_COMMAND);
+                payload.set_address(addr);
+
+                for (int l = 0; l <= length; l++) {
+                    w_ready_o.write(false);
+                    write_data = w_data_i.read();
+                    for (size_t i=0, j = 0; i < 8; j += num_bytes, i++) {
+                    	output_data[i] = write_data.range(j + num_bytes - 1, j).to_uint64();
+                    	SCCDEBUG(SCMOD) << "Addr: 0x" << std::hex << payload.get_address() << " Value: 0x" << output_data[i];
+                    }
+                    payload.set_data_ptr((unsigned char *)&output_data);
+
+                    output_socket->b_transport(payload, delay);
+                    addr += num_bytes;
+                    payload.set_address(addr);
+
+                    w_ready_o.write(true);
+                    if (w_last_i.read()) {
+                        aw_ready_o.write(false);
+                        w_ready_o.write(false);
+                        b_resp_o.write(OKAY);
+                        b_valid_o.write(true);
+                    }
+                    wait();
+                }
+                b_valid_o.write(false);
+            }
+        }
+    }
+}
 
 } // namespace axi_bfm
 
