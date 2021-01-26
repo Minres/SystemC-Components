@@ -98,7 +98,7 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH,TYPES>::axi_pin2tlm_adaptor::bus_thread
     uint64_t output_data[8]{0};
     while(true) {
         wait();
-        if(reset_i.read()) {
+        if(!reset_i.read()) {
             r_valid_o.write(false);
             r_last_o.write(false);
             b_valid_o.write(false);
@@ -153,7 +153,7 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH,TYPES>::axi_pin2tlm_adaptor::bus_thread
                     write_data = w_data_i.read();
                     for (size_t i=0, j = 0; i < 8; j += num_bytes, i++) {
                     	output_data[i] = write_data.range(j + num_bytes - 1, j).to_uint64();
-                    	SCCDEBUG(SCMOD) << "Addr: 0x" << std::hex << payload.get_address() << " Value: 0x" << output_data[i];
+//                    	SCCDEBUG(SCMOD) << "Addr: 0x" << std::hex << payload.get_address() << " Value: 0x" << output_data[i];
                     }
                     payload.set_data_ptr((unsigned char *)&output_data);
 
