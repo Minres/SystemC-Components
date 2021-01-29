@@ -11,6 +11,7 @@
 #include <scv/scv_tr.h>
 #endif
 #include "scc/report.h"
+#include <scc/configurable_tracer.h>
 #include "tlm/tlm_id.h"
 #include <array>
 #include <axi/pe/simple_initiator.h>
@@ -39,12 +40,12 @@ public:
     axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
 
     // pin level adaptors
-    axi_bfm::axi_pin2tlm_adaptor<SOCKET_WIDTH,axi_protocol_types> 	pin2tlm_adaptor{"pin2tlm_adaptor"};
+    axi_bfm::axi_pin2tlm_adaptor<SOCKET_WIDTH> 	pin2tlm_adaptor{"pin2tlm_adaptor"};
     axi_bfm::axi4_tlm2pin_adaptor<SOCKET_WIDTH>	tlm2pin_adaptor{"tlm2pin_adaptor"};
 
     sc_signal  <bool>           axi_aw_valid_s    {"axi_aw_valid_s"};
     sc_signal  <bool>           axi_aw_ready_s    {"axi_aw_ready_s"};
-    sc_signal  <bool>           axi_aw_id_s       {"axi_aw_id_s"};
+    sc_signal  <sc_uint<32>>    axi_aw_id_s       {"axi_aw_id_s"};
     sc_signal  <sc_uint<8> >    axi_aw_len_s      {"axi_aw_len_s"};
     sc_signal  <sc_uint<3> >    axi_aw_size_s     {"axi_aw_size_s"};
     sc_signal  <sc_uint<2> >    axi_aw_burst_s    {"axi_aw_burst_s"};
@@ -58,11 +59,11 @@ public:
     sc_signal  <bool>           axi_w_last_s      {"axi_w_last_s"};
     sc_signal  <bool>           axi_b_valid_s     {"axi_b_valid_s"};
     sc_signal  <bool>           axi_b_ready_s     {"axi_b_ready_s"};
-    sc_signal  <bool>           axi_b_id_s        {"axi_b_id_s"};
+    sc_signal  <sc_uint<32>>    axi_b_id_s        {"axi_b_id_s"};
     sc_signal  <sc_uint<2> >    axi_b_resp_s      {"axi_b_resp_s"};
     sc_signal  <bool>           axi_ar_valid_s    {"axi_ar_valid_s"};
     sc_signal  <bool>           axi_ar_ready_s    {"axi_ar_ready_s"};
-    sc_signal  <bool>           axi_ar_id_s       {"axi_ar_id_s"};
+    sc_signal  <sc_uint<32>>    axi_ar_id_s       {"axi_ar_id_s"};
     sc_signal  <sc_uint<8> >    axi_ar_len_s      {"axi_ar_len_s"};
     sc_signal  <sc_uint<3> >    axi_ar_size_s     {"axi_ar_size_s"};
     sc_signal  <sc_uint<2> >    axi_ar_burst_s    {"axi_ar_burst_s"};
@@ -73,7 +74,7 @@ public:
     sc_signal  <sc_uint<4> >    axi_ar_region_s   {"axi_ar_region_s"};
     sc_signal  <bool>           axi_r_valid_s     {"axi_r_valid_s"};
     sc_signal  <bool>           axi_r_ready_s     {"axi_r_ready_s"};
-    sc_signal  <bool>           axi_r_id_s        {"axi_r_id_s"};
+    sc_signal  <sc_uint<32>>    axi_r_id_s        {"axi_r_id_s"};
     sc_signal  <sc_uint<2> >    axi_r_resp_s      {"axi_r_resp_s"};
     sc_signal  <bool>           axi_r_last_s      {"axi_r_last_s"};
     sc_signal  <sc_uint<32> >   axi_aw_addr_s     {"axi_aw_addr_s"};
@@ -98,7 +99,7 @@ public:
 #endif
         pin2tlm_adaptor.clk_i(clk);
         tlm2pin_adaptor.clk_i(clk);
-        pin2tlm_adaptor.reset_i(rst);
+        pin2tlm_adaptor.resetn_i(rst);
         tlm2pin_adaptor.resetn_i(rst);
 
         tlm2pin_adaptor.aw_id_o		(axi_aw_id_s);
@@ -257,16 +258,26 @@ int sc_main(int argc, char* argv[]) {
 		      scc::LogConfig()
 		      .logLevel(static_cast<scc::log>(7))
 		      .logAsync(false)
-		      .dontCreateBroker(true)
+		      .dontCreateBroker(false)
 		      .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
+
+    ///////////////////////////////////////////////////////////////////////////
+    // set up tracing & transaction recording
+    ///////////////////////////////////////////////////////////////////////////
+    scc::configurable_tracer trace("axi_pinlevel",
+            scc::tracer::file_type::NONE, // bit3-bit1 define the kind of transaction trace
+            1, // bit0 enables vcd
+            true);
+
 #ifdef WITH_SCV
     scv_startup();
     scv_tr_text_init();
-    scv_tr_db* db = new scv_tr_db("axi_axi_test.txlog");
+    scv_tr_db* db = new scv_tr_db("axi_pinlevel.txlog");
     scv_tr_db::set_default_db(db);
 #endif
     testbench mstr("master");
+
     sc_core::sc_start(1_ms);
     SCCINFO() << "Finished";
 #ifdef WITH_SCV
