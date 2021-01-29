@@ -12,6 +12,7 @@
 
 // TODO: export functionality into base class
 // TODO: data transfer
+// TODO: burst conversion
 
 namespace axi_bfm {
 

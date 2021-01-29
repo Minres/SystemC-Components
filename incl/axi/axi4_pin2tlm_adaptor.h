@@ -124,11 +124,10 @@ inline axi_pin2tlm_adaptor<BUSWIDTH>::axi_pin2tlm_adaptor::axi_pin2tlm_adaptor(s
 template <unsigned int BUSWIDTH>
 inline void axi_pin2tlm_adaptor<BUSWIDTH>::axi_pin2tlm_adaptor::bus_thread() {
     constexpr auto buswidth_in_bytes = BUSWIDTH / 8;
-
     sc_core::sc_time delay = sc_core::SC_ZERO_TIME;
     sc_dt::sc_biguint<BUSWIDTH> read_beat{0};
     sc_dt::sc_biguint<BUSWIDTH> write_data{0};
-    uint64_t output_data[8]{0};
+
     while(true) {
         wait();
 
@@ -136,7 +135,11 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH>::axi_pin2tlm_adaptor::bus_thread() {
 			r_valid_o.write(false);
 			r_last_o.write(false);
 		}
+		if(b_ready_i.read()) {
+			b_valid_o.write(false);
+		}
 		ar_ready_o.write(false);
+		w_ready_o.write(false);
 
 		if (ar_valid_i.read() && read_trans.phase == tlm::UNINITIALIZED_PHASE) { // IDLE state
 		    auto trans = tlm::tlm_mm<axi::axi_protocol_types>::get().allocate<axi::axi4_extension>();
@@ -158,7 +161,12 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH>::axi_pin2tlm_adaptor::bus_thread() {
 			trans->set_data_ptr(r_data_buf);
 		    ext->set_size(ar_size_i.read());
 		    ext->set_length(length);
-		    ext->set_burst(axi::burst_e::INCR);
+		    auto burst{axi::burst_e::WRAP};
+		    if (ar_burst_i.read() == 0)
+		    	burst = axi::burst_e::FIXED;
+		    else if (ar_burst_i.read() == 1)
+		    	burst = axi::burst_e::INCR;
+		    ext->set_burst(burst);
 		    ext->set_id(ar_id_i.read());
 			output_socket->nb_transport_fw(*read_trans.payload, read_trans.phase, delay);
 			ar_ready_o.write(true);
@@ -190,45 +198,52 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH>::axi_pin2tlm_adaptor::bus_thread() {
 			}
 		}
 
-		// Handle write request
-		if(aw_valid_i.read() && w_valid_i.read()) {
+		if(aw_valid_i.read() && write_trans.phase == tlm::UNINITIALIZED_PHASE) {
 			aw_ready_o.write(true);
-			b_valid_o.write(false);
-			w_ready_o.write(true);
-			wait();
-
+		    auto trans = tlm::tlm_mm<axi::axi_protocol_types>::get().allocate<axi::axi4_extension>();
+		    auto ext = trans->get_extension<axi::axi4_extension>();
 			auto length = aw_len_i.read();
 			auto addr = aw_addr_i.read();
 			auto num_bytes = 1 << aw_size_i.read();
+			auto buf_size = num_bytes * (length+1);
+			uint8_t* w_data_buf = new uint8_t[buf_size];
 
-//			payload.set_data_length(num_bytes);
-//			payload.set_streaming_width(num_bytes);
-//			payload.set_command(tlm::TLM_WRITE_COMMAND);
-//			payload.set_address(addr);
 
-			for (int l = 0; l <= length; l++) {
-				w_ready_o.write(false);
-				write_data = w_data_i.read();
-				for (size_t i=0, j = 0; i < 8; j += num_bytes, i++) {
-					output_data[i] = write_data.range(j + num_bytes - 1, j).to_uint64();
-//                    	SCCDEBUG(SCMOD) << "Addr: 0x" << std::hex << payload.get_address() << " Value: 0x" << output_data[i];
-				}
-//				payload.set_data_ptr((unsigned char *)&output_data);
-//
-//				output_socket->b_transport(payload, delay);
-//				addr += num_bytes;
-//				payload.set_address(addr);
+			write_trans.phase = axi::BEGIN_PARTIAL_REQ;
+			write_trans.payload= trans;
 
-				w_ready_o.write(true);
-				if (w_last_i.read()) {
-					aw_ready_o.write(false);
-					w_ready_o.write(false);
-					b_resp_o.write(OKAY);
-					b_valid_o.write(true);
-				}
-				wait();
+		    trans->acquire();
+			trans->set_address(addr);
+		    trans->set_data_length(buf_size);
+		    trans->set_streaming_width(buf_size);
+			trans->set_command(tlm::TLM_WRITE_COMMAND);
+			trans->set_data_ptr(w_data_buf);
+		    ext->set_size(aw_size_i.read());
+		    ext->set_length(length);
+		    auto burst{axi::burst_e::WRAP};
+		    if (aw_burst_i.read() == 0)
+		    	burst = axi::burst_e::FIXED;
+		    else if (aw_burst_i.read() == 1)
+		    	burst = axi::burst_e::INCR;
+		    ext->set_burst(burst);
+		    ext->set_id(aw_id_i.read());
+		}
+		else if(write_trans.payload && w_valid_i.read() && write_trans.phase == axi::BEGIN_PARTIAL_REQ) {
+			w_ready_o.write(true);
+			write_data = w_data_i.read();
+			auto num_bytes = 1 << aw_size_i.read();
+			auto data_ptr  = write_trans.payload->get_data_ptr();
+			for (size_t i=0, j = 0; i < 8; j += num_bytes, i++) {
+				data_ptr[i] = write_data.range(j + num_bytes - 1, j).to_uint64();
 			}
-			b_valid_o.write(false);
+
+			if (w_last_i.read()) {
+				write_trans.phase = tlm::BEGIN_REQ;
+				aw_ready_o.write(false);
+				b_resp_o.write(OKAY);
+				b_valid_o.write(true);
+			}
+			output_socket->nb_transport_fw(*write_trans.payload, write_trans.phase, delay);
 		}
     }
 }
@@ -236,14 +251,20 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH>::axi_pin2tlm_adaptor::bus_thread() {
 template <unsigned int BUSWIDTH>
 inline tlm::tlm_sync_enum axi_pin2tlm_adaptor<BUSWIDTH>::axi_pin2tlm_adaptor::nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t) {
 	SCCTRACE(SCMOD) << phase << " of "<<(trans.is_read()?"RD":"WR")<<" trans (axi_id:"<<axi::get_axi_id(trans)<<")";
-
+	tlm::tlm_sync_enum status{tlm::TLM_ACCEPTED};
 	if(trans.is_read()){
 		read_trans.phase = phase;
 	} else {
 		write_trans.phase= phase;
+		if (phase == tlm::BEGIN_RESP) {
+			phase = tlm::END_RESP;
+			status = tlm::TLM_UPDATED;
+			write_trans.payload->release();
+			write_trans.reset();
+		}
 	}
 
-	return tlm::TLM_ACCEPTED;
+	return status;
 }
 
 template <unsigned int BUSWIDTH>
@@ -253,6 +274,7 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH>::axi_pin2tlm_adaptor::reset() {
     r_last_o.write(false);
     b_valid_o.write(false);
     ar_ready_o.write(true);
+    aw_ready_o.write(false);
 }
 
 } // namespace axi_bfm
