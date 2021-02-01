@@ -57,8 +57,8 @@
 #include "scc/value_registry.h"
 
 #ifdef WITH_SCV
-#include "scv4tlm/tlm2_recorder.h"
-#include "scv4tlm/tlm2_recorder_module.h"
+#include "scv4tlm/tlm_recorder.h"
+#include "scv4tlm/tlm_recorder_module.h"
 #include "scv4tlm/tlm_gp_data.h"
 #include "scv4tlm/tlm_gp_data_ext.h"
 #include "scv4tlm/tlm_rec_initiator_socket.h"
