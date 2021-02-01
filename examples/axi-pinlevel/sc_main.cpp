@@ -79,9 +79,9 @@ public:
     sc_signal  <bool>           axi_r_last_s      {"axi_r_last_s"};
     sc_signal  <sc_uint<32> >   axi_aw_addr_s     {"axi_aw_addr_s"};
     sc_signal  <sc_uint<32> >   axi_ar_addr_s     {"axi_ar_addr_s"};
-    sc_signal  <sc_uint<4> >   axi_w_strb_s      {"axi_w_strb_s"};
-    sc_signal  <sc_uint<SOCKET_WIDTH> >   axi_w_data_s  {"axi_w_data_s"};
-    sc_signal  <sc_uint<SOCKET_WIDTH> >   axi_r_data_s  {"axi_r_data_s"};
+    sc_signal  <sc_uint<SOCKET_WIDTH/8> >   axi_w_strb_s      {"axi_w_strb_s"};
+    sc_signal  <sc_biguint<SOCKET_WIDTH> >   axi_w_data_s  {"axi_w_data_s"};
+    sc_signal  <sc_biguint<SOCKET_WIDTH> >   axi_r_data_s  {"axi_r_data_s"};
 
     testbench(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm)

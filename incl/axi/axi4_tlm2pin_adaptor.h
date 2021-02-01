@@ -46,8 +46,8 @@ public:
     sc_core::sc_out<sc_dt::sc_uint<8>> aw_len_o{"aw_len_o"};
 
     // write data channel signals
-    sc_core::sc_out<sc_dt::sc_uint<BUSWIDTH>> w_data_o{"w_data_o"};
-    sc_core::sc_out<sc_dt::sc_uint<4>> w_strb_o{"w_strb_o"};
+    sc_core::sc_out<sc_dt::sc_biguint<BUSWIDTH>> w_data_o{"w_data_o"};
+    sc_core::sc_out<sc_dt::sc_uint<BUSWIDTH/8>> w_strb_o{"w_strb_o"};
     sc_core::sc_out<bool> w_last_o{"w_last_o"};
     sc_core::sc_out<bool> w_valid_o{"w_valid_o"};
     sc_core::sc_in<bool> w_ready_i{"w_ready_i"};
@@ -74,7 +74,7 @@ public:
 
     // Read data channel signals
     sc_core::sc_in<sc_dt::sc_uint<32>> r_id_i{"r_id_i"};
-    sc_core::sc_in<sc_dt::sc_uint<BUSWIDTH>> r_data_i{"r_data_i"};
+    sc_core::sc_in<sc_dt::sc_biguint<BUSWIDTH>> r_data_i{"r_data_i"};
     sc_core::sc_in<sc_dt::sc_uint<2>> r_resp_i{"r_resp_i"};
     sc_core::sc_in<bool> r_last_i{"r_last_i"};
     sc_core::sc_in<bool> r_valid_i{"r_valid_i"};
@@ -104,8 +104,6 @@ private:
 
     void reset();
     void bus_thread();
-
-    enum { OKAY = 0x0, EXOKAY = 0x1, SLVERR = 0x2, DECERR = 0x3 };
 };
 
 
@@ -147,7 +145,7 @@ inline tlm::tlm_sync_enum axi4_tlm2pin_adaptor<BUSWIDTH>::nb_transport_fw(payloa
     	    ar_id_o.write(ext->get_id());
     	    ar_len_o.write(ext->get_length());
     	    ar_size_o.write(ext->get_size());
-    	    ar_burst_o.write(static_cast<int>(ext->get_burst()));
+    	    ar_burst_o.write(axi::to_int(ext->get_burst()));
     	    ar_lock_o.write(ext->is_exclusive());
     	    ar_cache_o.write(ext->get_cache());
     	    ar_prot_o.write(ext->get_prot());
@@ -170,7 +168,7 @@ inline tlm::tlm_sync_enum axi4_tlm2pin_adaptor<BUSWIDTH>::nb_transport_fw(payloa
     	    aw_addr_o.write(trans.get_address());
     	    aw_len_o.write(ext->get_length());
     	    aw_size_o.write(ext->get_size());
-    	    aw_burst_o.write(static_cast<int>(ext->get_burst()));
+    	    aw_burst_o.write(axi::to_int(ext->get_burst()));
     	    aw_lock_o.write(ext->is_exclusive());
     	    aw_cache_o.write(ext->get_cache());
     	    aw_prot_o.write(ext->get_prot());
@@ -259,7 +257,7 @@ inline void axi4_tlm2pin_adaptor<BUSWIDTH>::bus_thread() {
         	SCCTRACE(SCMOD) << write_trans.phase << " of backward trans " << std::hex << write_trans.payload << std::dec <<" (axi_id:"<<axi::get_axi_id(write_trans.payload)<<")";
     	}
     	else if((write_trans.phase == tlm::END_REQ) && b_valid_i.read()) {
-    	    sc_assert(b_resp_i.read() == OKAY);
+    	    sc_assert(b_resp_i.read() == axi::to_int(axi::resp_e::OKAY));
             aw_valid_o.write(false);
             w_valid_o.write(false);
     	    b_ready_o.write(false);
