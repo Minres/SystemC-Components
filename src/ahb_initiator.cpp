@@ -80,8 +80,10 @@ void ahb_initiator_b::transport(payload_type& trans, bool blocking) {
 
         auto* ext = trans.get_extension<ahb::ahb_extension>();
         /// Timing
-        auto delay_in_cycles =
-            trans.is_read() ? timing_e ? timing_e->artv : artv.value : timing_e ? timing_e->awtv : awtv.value;
+        auto delay_in_cycles = trans.is_read() ?
+                (timing_e ? timing_e->artv : artv.value) :
+                (timing_e ? timing_e->awtv : awtv.value);
+        if(delay_in_cycles) delay_in_cycles--; // one cycle implicitly executed
         for(unsigned i = 0; i < delay_in_cycles; ++i)
             wait(clk_i.posedge_event());
         auto burst_length = 0U;
