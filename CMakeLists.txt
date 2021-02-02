@@ -145,8 +145,6 @@ set(LIB_SOURCES
     src/tracer_base.cpp
     src/tracer.cpp
     src/mt19937_rng.cpp
-    src/axi4_pin2tlm_adaptor.cpp
-    src/axi4_tlm2pin_adaptor.cpp
     src/parallel_pe.cpp
 )
 
