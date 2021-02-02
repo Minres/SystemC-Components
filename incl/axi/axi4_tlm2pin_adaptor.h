@@ -12,7 +12,7 @@
 
 // TODO: export functionality into base class
 // TODO: data transfer
-// TODO: burst conversion
+// TODO: multiple transactions in parallel
 
 namespace axi_bfm {
 
@@ -184,6 +184,8 @@ inline tlm::tlm_sync_enum axi4_tlm2pin_adaptor<BUSWIDTH>::nb_transport_fw(payloa
             w_strb_o.write(trans.get_byte_enable_length());
             w_data_o.write(data);
             w_valid_o.write(true);
+    	    b_ready_o.write(true);
+
 
             if(w_ready_i.read() && phase==axi::BEGIN_PARTIAL_REQ) {
             	phase = axi::END_PARTIAL_REQ;
@@ -203,7 +205,6 @@ inline tlm::tlm_sync_enum axi4_tlm2pin_adaptor<BUSWIDTH>::nb_transport_fw(payloa
             trans.release();
         write_trans.reset();
         status = tlm::TLM_ACCEPTED;
-	    b_ready_o.write(true);
     } else if(phase == tlm::END_REQ) { // snoop access resp
     } else if(phase == axi::BEGIN_PARTIAL_RESP || phase == tlm::BEGIN_RESP) {
     }
@@ -266,7 +267,6 @@ inline void axi4_tlm2pin_adaptor<BUSWIDTH>::bus_thread() {
         	SCCTRACE(SCMOD) << write_trans.phase << " of backward trans " << std::hex << write_trans.payload << std::dec <<" (axi_id:"<<axi::get_axi_id(write_trans.payload)<<")";
         	if (ret == tlm::TLM_UPDATED && write_trans.phase == tlm::END_RESP) {
         		write_trans.reset();
-        	    b_ready_o.write(true);
         	}
     	}
     }
@@ -278,7 +278,7 @@ inline void axi4_tlm2pin_adaptor<BUSWIDTH>::reset() {
 	SCCTRACE(SCMOD) << "Reset adapter";
     aw_valid_o.write(false);
     w_valid_o.write(false);
-    b_ready_o.write(true);
+    b_ready_o.write(false);
     r_ready_o.write(false);
     aw_len_o.write(1); // All AXI4-Lite transactions are of burst length 1
     ar_len_o.write(1); // All AXI4-Lite transactions are of burst length 1
