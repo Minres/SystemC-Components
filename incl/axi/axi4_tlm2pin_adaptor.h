@@ -217,6 +217,10 @@ inline void axi4_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::bus_thread() {
 
 	if (aw_ready_i.read())
 	    aw_valid_o.write(false);
+	if (w_ready_i.read()) {
+        w_valid_o.write(false);
+        w_last_o.write(false);
+	}
 
     if(read_trans.payload) {
         if(read_trans.phase == tlm::BEGIN_REQ && ar_ready_i.read()) {
@@ -229,15 +233,17 @@ inline void axi4_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::bus_thread() {
         else if((read_trans.phase == tlm::END_REQ || read_trans.phase == axi::BEGIN_PARTIAL_RESP) && r_valid_i.read()) {
         	ar_valid_o.write(false);
             auto data = r_data_i.read();
-            for(size_t j = 0, k = 0, offset = 0; k < 32 / 8; j += 8, ++k, ++offset)
-                *(uint8_t*)(read_trans.payload->get_data_ptr() + offset) = data.range(j + 7, j).to_uint();
-
+            for(size_t j = 0, k = 0; k < BUSWIDTH / 8; j += 8, ++k) {
+                *(uint8_t*)(read_trans.payload->get_data_ptr() + k) = data.range(j + 7, j).to_uint();
+            }
             // Since both RREADY and RVALID are asserted, the next rising clock edge completes the transaction.
             r_ready_o.write(false);
 
             read_trans.phase = tlm::BEGIN_RESP;
-            if(!r_last_i.read())
+            if(!r_last_i.read()) {
             	read_trans.phase = axi::BEGIN_PARTIAL_RESP;
+                r_ready_o.write(true);
+            }
 
         	auto ret = input_socket->nb_transport_bw(*read_trans.payload, read_trans.phase, delay);
         	SCCTRACE(SCMOD) << read_trans.phase << " of backward trans " << std::hex << read_trans.payload << std::dec <<" (axi_id:"<<axi::get_axi_id(read_trans.payload)<<")";
@@ -255,15 +261,11 @@ inline void axi4_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::bus_thread() {
     if(write_trans.payload) {
     	if((write_trans.phase == axi::BEGIN_PARTIAL_REQ || write_trans.phase == tlm::BEGIN_REQ) && w_ready_i.read()) {
     		write_trans.phase = (write_trans.phase==axi::BEGIN_PARTIAL_REQ) ? axi::END_PARTIAL_REQ : tlm::END_REQ;
-            if(write_trans.phase == tlm::END_REQ)
-            	w_last_o.write(true);
         	auto ret = input_socket->nb_transport_bw(*write_trans.payload, write_trans.phase, delay);
         	SCCTRACE(SCMOD) << write_trans.phase << " of backward trans " << std::hex << write_trans.payload << std::dec <<" (axi_id:"<<axi::get_axi_id(write_trans.payload)<<")";
     	}
-    	else if((write_trans.phase == tlm::END_REQ) && b_valid_i.read()) {
+    	if((write_trans.phase == tlm::END_REQ) && b_valid_i.read()) {
     	    sc_assert(b_resp_i.read() == axi::to_int(axi::resp_e::OKAY));
-            aw_valid_o.write(false);
-            w_valid_o.write(false);
     	    b_ready_o.write(false);
     	    w_last_o.write(false);
             write_trans.phase = tlm::BEGIN_RESP;

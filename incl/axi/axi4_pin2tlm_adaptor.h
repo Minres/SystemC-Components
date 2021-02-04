@@ -131,16 +131,17 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::axi_pin2tlm_adapt
     while(true) {
         wait();
 
+        if (ar_valid_i.read())
+    		ar_ready_o.write(false);
 		if(r_ready_i.read()) {
 			r_valid_o.write(false);
 			r_last_o.write(false);
 		}
-		if(b_ready_i.read()) {
+		if(b_ready_i.read())
 			b_valid_o.write(false);
-		}
-		ar_ready_o.write(false);
-
-		if(!w_valid_i.read())
+		if(aw_valid_i.read())
+			aw_ready_o.write(false);
+		if(w_valid_i.read())
 			w_ready_o.write(false);
 
 		if (ar_valid_i.read() && read_trans.phase == tlm::UNINITIALIZED_PHASE) { // IDLE state
@@ -231,7 +232,7 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::axi_pin2tlm_adapt
 		    ext->set_qos(aw_qos_i.read());
 		    ext->set_region(aw_region_i.read());
 		}
-		else if(write_trans.payload && w_valid_i.read() && write_trans.phase == axi::BEGIN_PARTIAL_REQ) {
+		if(write_trans.payload && w_valid_i.read() && write_trans.phase == axi::BEGIN_PARTIAL_REQ) {
 			w_ready_o.write(true);
 			write_data = w_data_i.read();
 			auto num_bytes = 1 << aw_size_i.read();
@@ -243,7 +244,6 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::axi_pin2tlm_adapt
 
 			if (w_last_i.read()) {
 				write_trans.phase = tlm::BEGIN_REQ;
-				aw_ready_o.write(false);
 				b_resp_o.write(OKAY);
 				b_valid_o.write(true);
 			}
