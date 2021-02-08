@@ -16,8 +16,8 @@
 #include <array>
 #include <axi/pe/simple_initiator.h>
 #include <axi/pe/simple_target.h>
-#include <axi/axi4_pin2tlm_adaptor.h>
-#include <axi/axi4_tlm2pin_adaptor.h>
+#include <axi/axi_pin2tlm_adaptor.h>
+#include <axi/axi_tlm2pin_adaptor.h>
 #include <tlm/tlm_mm.h>
 
 using namespace sc_core;
@@ -41,7 +41,7 @@ public:
 
     // pin level adaptors
     axi_bfm::axi_pin2tlm_adaptor<SOCKET_WIDTH> 	pin2tlm_adaptor{"pin2tlm_adaptor"};
-    axi_bfm::axi4_tlm2pin_adaptor<SOCKET_WIDTH>	tlm2pin_adaptor{"tlm2pin_adaptor"};
+    axi_bfm::axi_tlm2pin_adaptor<SOCKET_WIDTH>	tlm2pin_adaptor{"tlm2pin_adaptor"};
 
     sc_signal  <bool>           axi_aw_valid_s    {"axi_aw_valid_s"};
     sc_signal  <bool>           axi_aw_ready_s    {"axi_aw_ready_s"};
