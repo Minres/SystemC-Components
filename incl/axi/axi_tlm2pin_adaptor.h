@@ -171,29 +171,23 @@ inline tlm::tlm_sync_enum axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::nb_
             w_strb_o.write(trans.get_byte_enable_length());
             w_data_o.write(data);
             w_valid_o.write(true);
-    	    b_ready_o.write(true);
 
     	    if(phase == tlm::BEGIN_REQ)
             	w_last_o.write(true);
 
-            if(w_ready_i.read()) {
-        		phase = (phase==axi::BEGIN_PARTIAL_REQ) ? axi::END_PARTIAL_REQ : tlm::END_REQ;
-            	status = tlm::TLM_UPDATED;
-                aw_valid_o.write(false);
-                w_valid_o.write(false);
-            }
+    		phase = (phase==axi::BEGIN_PARTIAL_REQ) ? axi::END_PARTIAL_REQ : tlm::END_REQ;
+        	status = tlm::TLM_UPDATED;
 
-			register_trans(axi_id, trans, phase);
+        	auto it = active_transactions.find(axi_id);
+        	if (it == active_transactions.end())
+        		register_trans(axi_id, trans, phase);
+        	else
+        		it->second->phase = phase;
         }
     } else if(phase == axi::END_PARTIAL_RESP) {
     } else if(phase == tlm::END_RESP) {
     	trans.set_response_status(tlm::TLM_OK_RESPONSE);
-
     	active_transactions.erase(axi_id);
-
-    	if(trans.has_mm())
-            trans.release();
-
     	status = tlm::TLM_ACCEPTED;
     }
     return status;
@@ -213,6 +207,7 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::bus_thread() {
 		ar_valid_o.write(false);
 	}
 	r_ready_o.write(false);
+	b_ready_o.write(false);
 
 	// The Slave puts the requested data on the Read Data channel and asserts RVALID, indicating the data in the channel is valid.
 	if(r_valid_i.read()){
@@ -246,9 +241,9 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::bus_thread() {
 	if(b_valid_i.read()) {
 		unsigned id = b_id_i.read();
 		auto write_trans = get_active_trans(id);
-		if((write_trans->phase == tlm::END_REQ)) {
+		if(write_trans->phase == tlm::END_REQ) {
 			sc_assert(b_resp_i.read() == axi::to_int(axi::resp_e::OKAY));
-			b_ready_o.write(false);
+			b_ready_o.write(true);
 			w_last_o.write(false);
 			write_trans->phase = tlm::BEGIN_RESP;
 			auto ret = input_socket->nb_transport_bw(*write_trans->payload, write_trans->phase, delay);
@@ -269,8 +264,8 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::reset() {
 	w_last_o.write(false);
 	b_ready_o.write(false);
     r_ready_o.write(false);
-    aw_len_o.write(1); // All AXI4-Lite transactions are of burst length 1
-    ar_len_o.write(1); // All AXI4-Lite transactions are of burst length 1
+    aw_len_o.write(0);
+    ar_len_o.write(0);
 }
 
 template<unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH>

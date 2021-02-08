@@ -136,8 +136,8 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::axi_pin2tlm_adapt
 			b_valid_o.write(false);
 		if(aw_valid_i.read())
 			aw_ready_o.write(false);
-		if(w_valid_i.read())
-			w_ready_o.write(false);
+
+		w_ready_o.write(false);
 
 		if (ar_valid_i.read()) {
 			unsigned id = ar_id_i.read();
@@ -213,6 +213,9 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::axi_pin2tlm_adapt
 		if(w_valid_i.read()){
 			unsigned id = aw_id_i.read();
 			auto write_trans = get_active_trans(id);
+			payload_type* p = write_trans->payload;
+		    auto ext = p->get_extension<axi::axi4_extension>();
+		    sc_assert(ext && "axi4_extension missing");
 			w_ready_o.write(true);
 			write_data = w_data_i.read();
 			auto num_bytes = 1 << aw_size_i.read();
@@ -224,10 +227,12 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::axi_pin2tlm_adapt
 
 			if (w_last_i.read()) {
 				write_trans->phase = tlm::BEGIN_REQ;
-				b_resp_o.write(axi::to_int(axi::resp_e::OKAY));
+				b_resp_o.write(axi::to_int(ext->get_resp()));
 				b_valid_o.write(true);
+				b_id_o.write(id);
 			}
 			output_socket->nb_transport_fw(*write_trans->payload, write_trans->phase, delay);
+			SCCTRACE(SCMOD) << "FW: " << write_trans->phase << " of WR (axi_id:"<<id<<")";
 		}
     }
 }
@@ -237,13 +242,13 @@ inline tlm::tlm_sync_enum axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::axi
 	auto id = axi::get_axi_id(trans);
     auto active_trans = get_active_trans(id);
 	SCCTRACE(SCMOD) << "Enter bw status: " << phase << " of "<<(trans.is_read()?"RD":"WR")<<" trans (axi_id:"<<id<<")";
+	axi::axi4_extension* ext;
+	trans.get_extension(ext);
+	sc_assert(ext && "axi4_extension missing");
 	tlm::tlm_sync_enum status{tlm::TLM_ACCEPTED};
 	if(trans.is_read()){
 	    sc_dt::sc_biguint<BUSWIDTH> read_beat{0};
 	    constexpr auto buswidth_in_bytes = BUSWIDTH / 8;
-		axi::axi4_extension* ext;
-		trans.get_extension(ext);
-		sc_assert(ext && "axi4_extension missing");
 
 		if ((phase == axi::BEGIN_PARTIAL_RESP && ext->get_length()>1) || phase == tlm::BEGIN_RESP) { // send a single beat
 
@@ -271,11 +276,14 @@ inline tlm::tlm_sync_enum axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH>::axi
 			phase = axi::END_PARTIAL_RESP;
 			status = tlm::TLM_UPDATED;
 		}
-	} else { // WRITE transection
+	} else { // WRITE transaction
 		if (phase == tlm::BEGIN_RESP) {
 			phase = tlm::END_RESP;
 			status = tlm::TLM_UPDATED;
 			active_transactions.erase(id);
+			b_valid_o.write(true);
+			b_id_o.write(id);
+			b_resp_o.write(axi::to_int(ext->get_resp()));
 		}
 	}
 	active_trans->phase= phase;
