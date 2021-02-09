@@ -76,6 +76,12 @@ template <size_t N> constexpr size_t find_first(std::bitset<N>& bits) {
     static_assert(N <= 32, "find_first only supports bitsets smaller than 33");
     return MultiplyDeBruijnBitPosition[static_cast<uint32_t>((bits.to_ulong() & -bits.to_ulong()) * 0x077CB531U) >> 27];
 }
+template <typename T> T leftmost_one(T n) {
+    for(T mask = 1; mask < sizeof(T) * 8; mask <<= 1)
+        n |= (n >> mask);
+    return n - (n >> 1);
+}
+
 
 // according to
 // https://stackoverflow.com/questions/8871204/count-number-of-1s-in-binary-representation
@@ -145,6 +151,38 @@ void split(char delimiter, Output& output, Input const& input) {
             beg = std::next(cur);
         }
     }
+}
+/**
+ * trim the left side of a given string
+ * @param str the string to trim
+ * @param chars set of chars to trim away
+ * @return
+ */
+inline
+std::string& ltrim(std::string& str, const std::string& chars = "\t\n\v\f\r "){
+    str.erase(0, str.find_first_not_of(chars));
+    return str;
+}
+/**
+ * trim the right side of a given string
+ * @param str the string to trim
+ * @param chars set of chars to trim away
+ * @return
+ */
+inline
+std::string& rtrim(std::string& str, const std::string& chars = "\t\n\v\f\r "){
+    str.erase(str.find_last_not_of(chars) + 1);
+    return str;
+}
+/**
+ * trim the both sides of a given string
+ * @param str the string to trim
+ * @param chars set of chars to trim away
+ * @return
+ */
+inline
+std::string& trim(std::string& str, const std::string& chars = "\t\n\v\f\r "){
+    return ltrim(rtrim(str, chars), chars);
 }
 /**
  * @fn bool iequals(const std::string&, const std::string&)
