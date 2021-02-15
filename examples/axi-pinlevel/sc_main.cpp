@@ -40,8 +40,8 @@ public:
     axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
 
     // pin level adaptors
-    axi_bfm::axi_pin2tlm_adaptor<SOCKET_WIDTH> 	pin2tlm_adaptor{"pin2tlm_adaptor"};
-    axi_bfm::axi_tlm2pin_adaptor<SOCKET_WIDTH>	tlm2pin_adaptor{"tlm2pin_adaptor"};
+    axi::axi_pin2tlm_adaptor<SOCKET_WIDTH> 	pin2tlm_adaptor{"pin2tlm_adaptor"};
+    axi::axi_tlm2pin_adaptor<SOCKET_WIDTH>	tlm2pin_adaptor{"tlm2pin_adaptor"};
 
     sc_signal  <bool>           axi_aw_valid_s    {"axi_aw_valid_s"};
     sc_signal  <bool>           axi_aw_ready_s    {"axi_aw_ready_s"};
@@ -258,7 +258,11 @@ int sc_main(int argc, char* argv[]) {
 		      scc::LogConfig()
 		      .logLevel(static_cast<scc::log>(7))
 		      .logAsync(false)
+#ifdef WITH_CCI
 		      .dontCreateBroker(false)
+#else
+		      .dontCreateBroker(true)
+#endif
 		      .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
 

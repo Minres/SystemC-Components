@@ -16,7 +16,7 @@
 
 
 // TODO: check aquire/release
-namespace axi_bfm {
+namespace axi {
 
 template <unsigned int BUSWIDTH = 32, unsigned int ADDRWIDTH = 32, unsigned int IDWIDTH = 32>
 class axi_pin2tlm_adaptor : public sc_core::sc_module {
