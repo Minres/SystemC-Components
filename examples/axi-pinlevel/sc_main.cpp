@@ -10,8 +10,10 @@
 #include <scv.h>
 #include <scv/scv_tr.h>
 #endif
-#include "scc/report.h"
+#ifdef WITH_CCI
 #include <scc/configurable_tracer.h>
+#endif
+#include "scc/report.h"
 #include "tlm/tlm_id.h"
 #include <array>
 #include <axi/pe/simple_initiator.h>
@@ -265,7 +267,7 @@ int sc_main(int argc, char* argv[]) {
 #endif
 		      .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
-
+#ifdef WITH_CCI
     ///////////////////////////////////////////////////////////////////////////
     // set up tracing & transaction recording
     ///////////////////////////////////////////////////////////////////////////
@@ -273,7 +275,7 @@ int sc_main(int argc, char* argv[]) {
             scc::tracer::file_type::NONE, // bit3-bit1 define the kind of transaction trace
             1, // bit0 enables vcd
             true);
-
+#endif
 #ifdef WITH_SCV
     scv_startup();
     scv_tr_text_init();
