@@ -39,7 +39,7 @@ public:
      * @param enable enable VCD (signal based) tracing
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(const std::string&& name, file_type type, bool enable = true, bool default_enable = false);
+    configurable_tracer(std::string const&& name, file_type type, bool enable = true, bool default_enable = false);
     /**
      * constructs a tracer object
      *
@@ -48,7 +48,7 @@ public:
      * @param enable_vcd enable VCD (signal based) tracing
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(const std::string& name, file_type type, bool enable_vcd = true, bool default_enable = false)
+    configurable_tracer(std::string const& name, file_type type, bool enable_vcd = true, bool default_enable = false)
     : configurable_tracer(std::string(name), type, enable_vcd, default_enable) {}
     /**
      * constructs a tracer object
@@ -58,7 +58,7 @@ public:
      * @param tf the trace file to use for signal and POD tracing
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(const std::string&& name, file_type type, sc_core::sc_trace_file* tf = nullptr, bool default_enable = false);
+    configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf = nullptr, bool default_enable = false);
     /**
      * constructs a tracer object
      *
@@ -67,7 +67,7 @@ public:
      * @param tf the trace file to use for signal and POD tracing
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(const std::string& name, file_type type, sc_core::sc_trace_file* tf = nullptr,
+    configurable_tracer(std::string const& name, file_type type, sc_core::sc_trace_file* tf = nullptr,
                         bool default_enable = false)
     : configurable_tracer(std::string(name), type, tf, default_enable) {}
     /**
