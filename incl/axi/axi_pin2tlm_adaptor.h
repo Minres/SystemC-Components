@@ -21,8 +21,11 @@ class axi_pin2tlm_adaptor : public sc_core::sc_module {
 public:
     using payload_type = axi::axi_protocol_types::tlm_payload_type;
     using phase_type = axi::axi_protocol_types::tlm_phase_type;
+
     template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
-    using sc_inout_opt = sc_core::sc_port<sc_core::sc_signal_inout_if<TYPE>,N,SC_ZERO_OR_MORE_BOUND>;
+    using sc_in_opt = sc_core::sc_port<sc_core::sc_signal_in_if<TYPE>,N,sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
+    using sc_out_opt = sc_core::sc_port<sc_core::sc_signal_write_if<TYPE>,N,sc_core::SC_ZERO_OR_MORE_BOUND>;
 
     SC_HAS_PROCESS(axi_pin2tlm_adaptor);
 
@@ -47,7 +50,7 @@ public:
     sc_core::sc_in<sc_dt::sc_uint<4>> aw_qos_i{"Aaw_qos_i"};
     sc_core::sc_in<sc_dt::sc_uint<4>> aw_region_i{"aw_region_i"};
     sc_core::sc_in<sc_dt::sc_uint<8>> aw_len_i{"aw_len_i"};
-    sc_inout_opt<USERWIDTH>aw_user_i{"aw_user_i"};
+    sc_in_opt<USERWIDTH>aw_user_i{"aw_user_i"};
 
     // write data channel signals
     sc_core::sc_in<sc_dt::sc_biguint<BUSWIDTH>> w_data_i{"w_data_i"};
@@ -55,14 +58,14 @@ public:
     sc_core::sc_in<bool> w_last_i{"w_last_i"};
     sc_core::sc_in<bool> w_valid_i{"w_valid_i"};
     sc_core::sc_out<bool> w_ready_o{"w_ready_o"};
-    sc_inout_opt<USERWIDTH>w_user_i{"w_user_i"};
+    sc_in_opt<USERWIDTH>w_user_i{"w_user_i"};
 
     // write response channel signals
     sc_core::sc_out<bool> b_valid_o{"b_valid_o"};
     sc_core::sc_in<bool> b_ready_i{"b_ready_i"};
     sc_core::sc_out<sc_dt::sc_uint<IDWIDTH>> b_id_o{"b_id_o"};
     sc_core::sc_out<sc_dt::sc_uint<2>> b_resp_o{"b_resp_o"};
-    sc_inout_opt<USERWIDTH>b_user_o{"b_user_o"};
+    sc_out_opt<USERWIDTH>b_user_o{"b_user_o"};
 
     // read address channel signals
     sc_core::sc_in<sc_dt::sc_uint<IDWIDTH>> ar_id_i{"ar_id_i"};
@@ -77,7 +80,7 @@ public:
     sc_core::sc_in<sc_dt::sc_uint<4>> ar_region_i{"ar_region_i"};
     sc_core::sc_in<bool> ar_valid_i{"ar_valid_i"};
     sc_core::sc_out<bool> ar_ready_o{"ar_ready_o"};
-    sc_inout_opt<USERWIDTH>ar_user_i{"ar_user_i"};
+    sc_in_opt<USERWIDTH>ar_user_i{"ar_user_i"};
 
     // Read data channel signals
     sc_core::sc_out<sc_dt::sc_uint<IDWIDTH>> r_id_o{"r_id_o"};
@@ -86,7 +89,7 @@ public:
     sc_core::sc_out<bool> r_last_o{"r_last_o"};
     sc_core::sc_out<bool> r_valid_o{"r_valid_o"};
     sc_core::sc_in<bool> r_ready_i{"r_ready_i"};
-    sc_inout_opt<USERWIDTH>r_user_o{"r_user_o"};
+    sc_out_opt<USERWIDTH>r_user_o{"r_user_o"};
 
     tlm::tlm_sync_enum nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t);
 

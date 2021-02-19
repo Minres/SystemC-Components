@@ -17,20 +17,15 @@
 
 namespace axi {
 
-template <unsigned int BUSWIDTH = 32, unsigned int ADDRWIDTH = 32, unsigned int IDWIDTH = 32, unsigned int USERWIDTH = 0>
-class axi_tlm2pin_adaptor : public sc_core::sc_module {
+template <unsigned int BUSWIDTH = 32, unsigned int ADDRWIDTH = 32>
+class axi4lite_tlm2pin_adaptor : public sc_core::sc_module {
 public:
-    SC_HAS_PROCESS(axi_tlm2pin_adaptor);
+    SC_HAS_PROCESS(axi4lite_tlm2pin_adaptor);
 
     using payload_type = axi::axi_protocol_types::tlm_payload_type;
     using phase_type = axi::axi_protocol_types::tlm_phase_type;
 
-    template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
-    using sc_in_opt = sc_core::sc_port<sc_core::sc_signal_in_if<TYPE>,N,sc_core::SC_ZERO_OR_MORE_BOUND>;
-    template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
-    using sc_out_opt = sc_core::sc_port<sc_core::sc_signal_write_if<TYPE>,N,sc_core::SC_ZERO_OR_MORE_BOUND>;
-
-    axi_tlm2pin_adaptor(sc_core::sc_module_name nm);
+    axi4lite_tlm2pin_adaptor(sc_core::sc_module_name nm);
 
     scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH, axi::axi_protocol_types>, axi::axi_protocol_types>
         input_socket{"input_socket"};
@@ -39,58 +34,33 @@ public:
     sc_core::sc_in<bool> resetn_i{"resetn_i"};
 
     // Write address channel signals
-    sc_core::sc_out<sc_dt::sc_uint<IDWIDTH>> aw_id_o{"aw_id_o"};
     sc_core::sc_out<sc_dt::sc_uint<ADDRWIDTH>> aw_addr_o{"aw_addr_o"};
     sc_core::sc_in<bool> aw_ready_i{"aw_ready_i"};
-    sc_core::sc_out<bool> aw_lock_o{"aw_lock_o"};
     sc_core::sc_out<bool> aw_valid_o{"aw_valid_o"};
     sc_core::sc_out<sc_dt::sc_uint<3>> aw_prot_o{"aw_prot_o"};
-    sc_core::sc_out<sc_dt::sc_uint<3>> aw_size_o{"aw_size_o"};
-    sc_core::sc_out<sc_dt::sc_uint<4>> aw_cache_o{"aw_cache_o"};
-    sc_core::sc_out<sc_dt::sc_uint<2>> aw_burst_o{"aw_burst_o"};
-    sc_core::sc_out<sc_dt::sc_uint<4>> aw_qos_o{"aw_qos_o"};
-    sc_core::sc_out<sc_dt::sc_uint<4>> aw_region_o{"aw_region_o"};
-    sc_core::sc_out<sc_dt::sc_uint<8>> aw_len_o{"aw_len_o"};
-    sc_out_opt<USERWIDTH>aw_user_o{"aw_user_o"};
 
     // write data channel signals
     sc_core::sc_out<sc_dt::sc_biguint<BUSWIDTH>> w_data_o{"w_data_o"};
     sc_core::sc_out<sc_dt::sc_uint<BUSWIDTH / 8>> w_strb_o{"w_strb_o"};
-    sc_core::sc_out<bool> w_last_o{"w_last_o"};
     sc_core::sc_out<bool> w_valid_o{"w_valid_o"};
     sc_core::sc_in<bool> w_ready_i{"w_ready_i"};
-    sc_out_opt<USERWIDTH>w_user_o{"w_user_o"};
 
     // write response channel signals
     sc_core::sc_in<bool> b_valid_i{"b_valid_i"};
     sc_core::sc_out<bool> b_ready_o{"b_ready_o"};
-    sc_core::sc_in<sc_dt::sc_uint<IDWIDTH>> b_id_i{"b_id_i"};
     sc_core::sc_in<sc_dt::sc_uint<2>> b_resp_i{"b_resp_i"};
-    sc_in_opt<USERWIDTH>b_user_i{"b_user_i"};
 
     // read address channel signals
-    sc_core::sc_out<sc_dt::sc_uint<IDWIDTH>> ar_id_o{"ar_id_o"};
-    sc_core::sc_out<sc_dt::sc_uint<ADDRWIDTH>> ar_addr_o{"ar_addr_o"};
-    sc_core::sc_out<sc_dt::sc_uint<8>> ar_len_o{"ar_len_o"};
-    sc_core::sc_out<sc_dt::sc_uint<3>> ar_size_o{"ar_size_o"};
-    sc_core::sc_out<sc_dt::sc_uint<2>> ar_burst_o{"ar_burst_o"};
-    sc_core::sc_out<bool> ar_lock_o{"ar_lock_o"};
-    sc_core::sc_out<sc_dt::sc_uint<4>> ar_cache_o{"ar_cache_o"};
-    sc_core::sc_out<sc_dt::sc_uint<3>> ar_prot_o{"ar_prot_o"};
-    sc_core::sc_out<sc_dt::sc_uint<4>> ar_qos_o{"ar_qos_o"};
-    sc_core::sc_out<sc_dt::sc_uint<4>> ar_region_o{"ar_region_o"};
     sc_core::sc_out<bool> ar_valid_o{"ar_valid_o"};
     sc_core::sc_in<bool> ar_ready_i{"ar_ready_i"};
-    sc_out_opt<USERWIDTH>ar_user_o{"ar_user_o"};
+    sc_core::sc_out<sc_dt::sc_uint<ADDRWIDTH>> ar_addr_o{"ar_addr_o"};
+    sc_core::sc_out<sc_dt::sc_uint<3>> ar_prot_o{"ar_prot_o"};
 
     // Read data channel signals
-    sc_core::sc_in<sc_dt::sc_uint<IDWIDTH>> r_id_i{"r_id_i"};
     sc_core::sc_in<sc_dt::sc_biguint<BUSWIDTH>> r_data_i{"r_data_i"};
     sc_core::sc_in<sc_dt::sc_uint<2>> r_resp_i{"r_resp_i"};
-    sc_core::sc_in<bool> r_last_i{"r_last_i"};
     sc_core::sc_in<bool> r_valid_i{"r_valid_i"};
     sc_core::sc_out<bool> r_ready_o{"r_ready_o"};
-    sc_in_opt<USERWIDTH>r_user_i{"r_user_i"};
 
     tlm::tlm_sync_enum nb_transport_fw(payload_type& trans, phase_type& phase, sc_core::sc_time& t);
 
@@ -118,8 +88,8 @@ private:
 /////////////////////////////////////////////////////////////////////////////////////////
 // Class definition
 /////////////////////////////////////////////////////////////////////////////////////////
-template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH, unsigned int USERWIDTH>
-inline axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_tlm2pin_adaptor(sc_core::sc_module_name nm)
+template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH>
+inline axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::axi4lite_tlm2pin_adaptor(sc_core::sc_module_name nm)
 : sc_module(nm) {
     input_socket.register_nb_transport_fw(
         [this](payload_type& trans, phase_type& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
@@ -130,8 +100,8 @@ inline axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_tlm2pin
     sensitive << clk_i.pos() << resetn_i.neg();
 }
 
-template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH, unsigned int USERWIDTH>
-inline tlm::tlm_sync_enum axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::nb_transport_fw(payload_type& trans,
+template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH>
+inline tlm::tlm_sync_enum axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::nb_transport_fw(payload_type& trans,
                                                                                              phase_type& phase,
                                                                                              sc_core::sc_time& t) {
     if(trans.has_mm())
@@ -171,8 +141,8 @@ inline tlm::tlm_sync_enum axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USER
     return status;
 }
 
-template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH, unsigned int USERWIDTH>
-inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::bus_thread() {
+template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH>
+inline void axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::bus_thread() {
     auto delay = sc_core::SC_ZERO_TIME;
 
     if(!resetn_i.read()) { // active-low reset
@@ -180,7 +150,6 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::bus_th
         ar_valid_o.write(false);
         aw_valid_o.write(false);
         w_valid_o.write(false);
-        w_last_o.write(false);
         b_ready_o.write(false);
         r_ready_o.write(false);
     } else {
@@ -188,7 +157,6 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::bus_th
             aw_valid_o.write(false);
         if(w_ready_i.read()) {
             w_valid_o.write(false);
-            w_last_o.write(false);
         }
         if(ar_ready_i.read()) {
             ar_valid_o.write(false);
@@ -205,22 +173,11 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::bus_th
                 sc_assert(ext && "axi4_extension missing");
 
                 ar_addr_o.write(p->get_address());
-                ar_id_o.write(ext->get_id());
-                ar_len_o.write(ext->get_length());
-                ar_size_o.write(ext->get_size());
-                ar_burst_o.write(axi::to_int(ext->get_burst()));
-                ar_lock_o.write(ext->is_exclusive());
-                ar_cache_o.write(ext->get_cache());
                 ar_prot_o.write(ext->get_prot());
-                ar_qos_o.write(ext->get_qos());
-                ar_region_o.write(ext->get_region());
-                if(ar_user_o.get_interface()) // optional user interface
-                	ar_user_o->write(ext->get_user(common::id_type::CTRL));
                 ar_valid_o.write(true);
 
                 read_trans->phase = tlm::END_REQ;
-                SCCTRACE(SCMOD) << read_trans->phase << " RD BW trans: " << p << " addr: " << p->get_address()
-                                << " axi_id: " << ext->get_id();
+                SCCTRACE(SCMOD) << read_trans->phase << " RD BW trans: " << p << " addr: " << p->get_address();
                 input_socket->nb_transport_bw(*read_trans->payload, read_trans->phase, delay);
                 break;
             }
@@ -235,18 +192,8 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::bus_th
                 sc_assert(ext && "axi4_extension missing");
 
                 if(write_trans->beat_cnt == 0) {
-                    aw_id_o.write(ext->get_id());
                     aw_addr_o.write(p->get_address());
-                    aw_len_o.write(ext->get_length());
-                    aw_size_o.write(ext->get_size());
-                    aw_burst_o.write(axi::to_int(ext->get_burst()));
-                    aw_lock_o.write(ext->is_exclusive());
-                    aw_cache_o.write(ext->get_cache());
                     aw_prot_o.write(ext->get_prot());
-                    aw_qos_o.write(ext->get_qos());
-                    aw_region_o.write(ext->get_region());
-                    if(aw_user_o.get_interface())
-                    	aw_user_o->write(ext->get_user(common::id_type::CTRL));
                     aw_valid_o.write(true);
                 }
                 write_trans->beat_cnt++;
@@ -259,16 +206,10 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::bus_th
                 w_strb_o.write(p->get_byte_enable_length());
                 w_data_o.write(data);
                 w_valid_o.write(true);
-                if(w_user_o.get_interface()) // optional user interface
-                	w_user_o->write(ext->get_user(common::id_type::DATA));
-
-                if(write_trans->phase == tlm::BEGIN_REQ)
-                    w_last_o.write(true);
 
                 write_trans->phase =
                     (write_trans->phase == axi::BEGIN_PARTIAL_REQ) ? axi::END_PARTIAL_REQ : tlm::END_REQ;
-                SCCTRACE(SCMOD) << write_trans->phase << " RD BW trans: " << p << " addr: " << p->get_address()
-                                << " axi_id: " << ext->get_id();
+                SCCTRACE(SCMOD) << write_trans->phase << " RD BW trans: " << p << " addr: " << p->get_address();
                 input_socket->nb_transport_bw(*write_trans->payload, write_trans->phase, delay);
                 break;
             }
@@ -277,10 +218,9 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::bus_th
         // The Slave puts the requested data on the Read Data channel and asserts RVALID,
         // indicating the data in the channel is valid.
         if(r_valid_i.read()) {
-            unsigned id = r_id_i.read();
-            auto it = active_r_transactions.find(id);
+            auto it = active_r_transactions.find(0);
             if(it == active_r_transactions.end())
-                SCCFATAL(SCMOD) << "Invalid read transaction ID " << id;
+                SCCFATAL(SCMOD) << "Invalid transaction";
 
             auto read_trans = it->second.front();
             if(read_trans->payload == nullptr)
@@ -295,23 +235,13 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::bus_th
                 // The Master asserts RREADY, indicating the master is ready to receive data from the slave.
                 r_ready_o.write(true);
                 read_trans->phase = axi::BEGIN_PARTIAL_RESP;
-                if(r_last_i.read()) {
-                    read_trans->phase = tlm::BEGIN_RESP;
-                }
-                if(r_user_i.get_interface()) { // optional user interface
-                    payload_type* p = read_trans->payload;
-                    auto ext = p->get_extension<axi::axi4_extension>();
-                    sc_assert(ext && "axi4_extension missing");
-                    ext->set_user(common::id_type::DATA, r_user_i->read());
-                }
 
                 auto ret = input_socket->nb_transport_bw(*read_trans->payload, read_trans->phase, delay);
-                SCCTRACE(SCMOD) << read_trans->phase << " bw trans " << std::hex << read_trans->payload << std::dec
-                                << " (axi_id:" << id << ")";
+                SCCTRACE(SCMOD) << read_trans->phase << " bw trans " << std::hex << read_trans->payload;
 
                 // EDN_RESP indicates the last phase of the AXI Read transaction
                 if(ret == tlm::TLM_UPDATED && read_trans->phase == tlm::END_RESP) {
-                    remove_trans(id, read_trans->payload->is_read());
+                    remove_trans(0, read_trans->payload->is_read());
                     if(read_trans->payload->has_mm())
                         read_trans->payload->release();
                 }
@@ -319,42 +249,33 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::bus_th
         }
 
         if(b_valid_i.read()) {
-            unsigned id = b_id_i.read();
-            auto it = active_w_transactions.find(id);
-            if(it == active_w_transactions.end())
-                SCCFATAL(SCMOD) << "Invalid transaction ID " << id;
+            auto it = active_w_transactions.find(0);
+            if(it != active_w_transactions.end()) {
+                auto write_trans = it->second.front();
+                if(write_trans->payload == nullptr)
+                    SCCERR(SCMOD) << "Invalid transaction";
 
-            auto write_trans = it->second.front();
-            if(write_trans->payload == nullptr)
-                SCCERR(SCMOD) << "Invalid transaction";
-
-            if(write_trans->phase == tlm::END_REQ) {
-                sc_assert(b_resp_i.read() == axi::to_int(axi::resp_e::OKAY));
-                if(b_user_i.get_interface()) { // optional user interface
-                    payload_type* p = write_trans->payload;
-                    auto ext = p->get_extension<axi::axi4_extension>();
-                    sc_assert(ext && "axi4_extension missing");
-                    ext->set_user(common::id_type::RESP, b_user_i->read());
-                }
-                b_ready_o.write(true);
-                write_trans->phase = tlm::BEGIN_RESP;
-                auto ret = input_socket->nb_transport_bw(*write_trans->payload, write_trans->phase, delay);
-                SCCTRACE(SCMOD) << write_trans->phase << " bw trans " << std::hex << write_trans->payload << std::dec
-                                << " (axi_id:" << id << ")";
-                if(ret == tlm::TLM_UPDATED && write_trans->phase == tlm::END_RESP) {
-                    remove_trans(id, write_trans->payload->is_read());
+                if(write_trans->phase == tlm::END_REQ) {
+                    sc_assert(b_resp_i.read() == axi::to_int(axi::resp_e::OKAY));
+                    b_ready_o.write(true);
+                    write_trans->phase = tlm::BEGIN_RESP;
+                    auto ret = input_socket->nb_transport_bw(*write_trans->payload, write_trans->phase, delay);
+                    SCCTRACE(SCMOD) << write_trans->phase << " bw trans " << std::hex << write_trans->payload;
+                    if(ret == tlm::TLM_UPDATED && write_trans->phase == tlm::END_RESP) {
+                        remove_trans(0, write_trans->payload->is_read());
+                    }
                 }
             }
         }
     }
 }
 
-template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH, unsigned int USERWIDTH>
-void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::remove_trans(const unsigned id, const bool is_read) {
+template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH>
+void axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::remove_trans(const unsigned id, const bool is_read) {
     if(is_read) {
         auto it = active_r_transactions.find(id);
         if(it == active_r_transactions.end())
-            SCCFATAL(SCMOD) << "Invalid read transaction ID " << id;
+            SCCFATAL(SCMOD) << "Trans allready removed";
 
         it->second.pop();
         if(it->second.empty())
@@ -370,8 +291,8 @@ void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::remove_trans(
     }
 }
 
-template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH, unsigned int USERWIDTH>
-void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::register_trans(unsigned int axi_id, payload_type& trans,
+template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH>
+void axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::register_trans(unsigned int axi_id, payload_type& trans,
                                                                        phase_type& phase) {
     auto th = std::make_shared<trans_handle>();
     th->payload = &trans;
