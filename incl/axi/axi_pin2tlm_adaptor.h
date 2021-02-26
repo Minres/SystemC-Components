@@ -106,6 +106,8 @@ private:
         phase_type phase = tlm::UNINITIALIZED_PHASE;
         //! beat counter
         unsigned beat_cnt = 0;
+        //! transaction status
+        bool running = false;
     };
 
     std::unordered_map<uint8_t, std::queue<std::shared_ptr<trans_handle>>> active_w_transactions;
@@ -135,7 +137,6 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
     sc_dt::sc_biguint<BUSWIDTH> write_data{0};
 
     if(!resetn_i.read()) { // active-low reset
-        SCCTRACE(SCMOD) << "Reset adapter";
         r_valid_o.write(false);
         r_last_o.write(false);
         b_valid_o.write(false);
@@ -205,8 +206,10 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
                 read_trans->phase =
                     (read_trans->phase == axi::BEGIN_PARTIAL_RESP) ? axi::END_PARTIAL_RESP : tlm::END_RESP;
 
-                for(size_t i = 0, j = 0; j < ext->get_size(); i += 8, j++) {
-                    read_beat.range(i + 7, i) = *(uint8_t*)(p->get_data_ptr() + j);
+                auto beat_size = 1 << ar_size_i.read();
+                for(size_t i = 0, j = 0; j < beat_size; i += 8, j++) {
+                	auto offset = beat_size * read_trans->beat_cnt + j;
+                    read_beat.range(i + 7, i) = *(p->get_data_ptr() + offset);
                 }
 
                 auto id = ext->get_id();
@@ -218,9 +221,9 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
                 r_data_o.write(read_beat);
                 r_valid_o.write(true);
 
-                p->set_address(p->get_address() + BUSWIDTH / 8);
                 output_socket->nb_transport_fw(*p, read_trans->phase, delay);
-                SCCTRACE(SCMOD) << read_trans->phase << " of RD trans (axi_id:" << id << ")";
+                SCCTRACE(SCMOD) << read_trans->phase << " of RD trans (axi_id:" << id << ") beat:" << read_trans->beat_cnt;
+                read_trans->beat_cnt++;
 
                 // EDN_RESP indicates the last phase of the AXI Read transaction
                 if(read_trans->phase == tlm::END_RESP) {
@@ -248,13 +251,15 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
             }
             auto write_trans = it->second.front();
             payload_type* p = write_trans->payload;
-            if(write_trans->beat_cnt == 0) {
+            if(!write_trans->running) {
+            	write_trans->running = true;
                 aw_ready_o.write(true);
+                w_ready_o.write(true);
                 auto ext = p->get_extension<axi::axi4_extension>();
-                auto length = aw_len_i.read();
+                auto length = aw_len_i.read() + 1;
                 auto addr = aw_addr_i.read();
                 auto num_bytes = 1 << aw_size_i.read();
-                auto buf_size = num_bytes * (length + 1);
+                auto buf_size = num_bytes * length;
                 uint8_t* w_data_buf = new uint8_t[buf_size];
 
                 p->acquire();
@@ -274,7 +279,6 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
                 ext->set_region(aw_region_i.read());
                 if(aw_user_i.get_interface()) // optional user interface
                 	ext->set_user(common::id_type::CTRL, aw_user_i->read());
-                write_trans->beat_cnt++;
             }
         }
 
@@ -286,25 +290,29 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
                 payload_type* p = write_trans->payload;
                 auto ext = p->get_extension<axi::axi4_extension>();
                 sc_assert(ext && "axi4_extension missing");
-                write_trans->beat_cnt++;
                 w_ready_o.write(true);
                 write_data = w_data_i.read();
                 auto num_bytes = 1 << aw_size_i.read();
-                write_trans->payload->set_byte_enable_length(w_strb_i.read());
+                p->set_byte_enable_length(w_strb_i.read());
 
                 if(w_user_i.get_interface()) // optional user interface
                 	ext->set_user(common::id_type::DATA, w_user_i->read());
 
                 auto data_ptr = write_trans->payload->get_data_ptr();
-                for(size_t i = 0, j = 0; i < 8; j += num_bytes, i++) {
-                    data_ptr[i] = write_data.range(j + num_bytes - 1, j).to_uint64();
-                }
 
                 if(w_last_i.read()) {
                     write_trans->phase = tlm::BEGIN_REQ;
+                    write_trans->running = false;
+                    SCCTRACE(SCMOD) << "Write last beat " << write_trans->beat_cnt;
+                }
+
+                for(size_t i = 0, j = num_bytes * write_trans->beat_cnt; j < (num_bytes * (write_trans->beat_cnt+1)); i += 8, j++) {
+                	sc_assert(p->get_data_length() > j);
+                	*(p->get_data_ptr() + j) = write_data.range(i + 7, i).to_uint64();
                 }
                 output_socket->nb_transport_fw(*write_trans->payload, write_trans->phase, delay);
-                SCCTRACE(SCMOD) << "FW: " << write_trans->phase << " of WR (axi_id:" << id << ")";
+                SCCTRACE(SCMOD) << "FW: " << write_trans->phase << " of WR (axi_id:" << id << "). Beat:" << write_trans->beat_cnt;
+                write_trans->beat_cnt++;
             }
         }
 
@@ -343,12 +351,10 @@ template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH, u
 inline tlm::tlm_sync_enum axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pin2tlm_adaptor::nb_transport_bw(
     payload_type& trans, phase_type& phase, sc_core::sc_time& t) {
     auto id = axi::get_axi_id(trans);
-    SCCTRACE(SCMOD) << "BW call: " << phase << " of " << (trans.is_read() ? "RD" : "WR") << " trans (axi_id:" << id
-                    << ")";
+    SCCTRACE(SCMOD) << "BW: " << phase << " of " << (trans.is_read() ? "RD" : "WR") << " trans (axi_id:" << id << ")";
     axi::axi4_extension* ext;
     trans.get_extension(ext);
     sc_assert(ext && "axi4_extension missing");
-    tlm::tlm_sync_enum status{tlm::TLM_ACCEPTED};
     if(trans.is_read()) {
         auto it = active_r_transactions.find(id);
         if(it == active_r_transactions.end())
@@ -362,7 +368,7 @@ inline tlm::tlm_sync_enum axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USER
         auto active_trans = it->second.front();
         active_trans->phase = phase;
     }
-    return status;
+    return tlm::TLM_ACCEPTED;
 }
 
 template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH, unsigned int USERWIDTH>

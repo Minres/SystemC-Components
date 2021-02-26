@@ -176,7 +176,6 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::bus_th
     auto delay = sc_core::SC_ZERO_TIME;
 
     if(!resetn_i.read()) { // active-low reset
-        SCCTRACE(SCMOD) << "Reset adapter";
         ar_valid_o.write(false);
         aw_valid_o.write(false);
         w_valid_o.write(false);

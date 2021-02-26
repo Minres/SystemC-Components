@@ -13,7 +13,6 @@
 #include <unordered_map>
 
 // TODO: export functionality into base class
-// TODO: verify data transfer
 
 namespace axi {
 
@@ -126,7 +125,6 @@ inline tlm::tlm_sync_enum axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::nb_tran
                     register_trans(trans, phase);
             }
         }
-    } else if(phase == axi::END_PARTIAL_RESP) {
     } else if(phase == tlm::END_RESP) {
         trans.set_response_status(tlm::TLM_OK_RESPONSE);
         if(trans.is_read())
@@ -146,7 +144,6 @@ inline void axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::bus_thread() {
     auto delay = sc_core::SC_ZERO_TIME;
 
     if(!resetn_i.read()) { // active-low reset
-        SCCTRACE(SCMOD) << "Reset adapter";
         ar_valid_o.write(false);
         aw_valid_o.write(false);
         w_valid_o.write(false);
@@ -223,7 +220,7 @@ inline void axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::bus_thread() {
             if(read_trans->payload == nullptr)
                 SCCERR(SCMOD) << "Invalid transaction";
 
-            if(read_trans->phase == tlm::END_REQ || read_trans->phase == axi::BEGIN_PARTIAL_RESP) {
+            if(read_trans->phase == tlm::END_REQ) {
                 auto data = r_data_i.read();
                 for(size_t j = 0, k = 0; k < BUSWIDTH / 8; j += 8, ++k) {
                     *(uint8_t*)(read_trans->payload->get_data_ptr() + k) = data.range(j + 7, j).to_uint();
@@ -231,7 +228,7 @@ inline void axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::bus_thread() {
 
                 // The Master asserts RREADY, indicating the master is ready to receive data from the slave.
                 r_ready_o.write(true);
-                read_trans->phase = axi::BEGIN_PARTIAL_RESP;
+                read_trans->phase = tlm::BEGIN_RESP;
 
                 auto ret = input_socket->nb_transport_bw(*read_trans->payload, read_trans->phase, delay);
                 SCCTRACE(SCMOD) << read_trans->phase << " bw trans " << std::hex << read_trans->payload;
