@@ -138,6 +138,8 @@ protected:
 
     Json::Value root;
 
+    void simulation_phase_callback() override;
+    void check_config_hierarchical(Json::Value const&, std::string const&);
 #ifdef WITH_CCI
     cci::cci_originator cci_originator;
     cci::cci_broker_handle cci_broker;
