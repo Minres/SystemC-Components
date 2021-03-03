@@ -32,8 +32,8 @@
 #include <tlm>
 #include <tlm_utils/peq_with_cb_and_phase.h>
 
+//! SCV components for TLM2.0
 namespace scv4tlm {
-//! implementation detail
 namespace impl {
 //! \brief the class to hold the information to be recorded on the timed
 //! streams
