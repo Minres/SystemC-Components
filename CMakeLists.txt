@@ -38,7 +38,7 @@ if(BUILD_SCC_DOCUMENTATION)
 	# run "make scc-docs" to create the doxygen documentation
 	doxygen_add_docs(
 	    scc-docs
-	    ${PROJECT_SOURCE_DIR}/incl ${PROJECT_SOURCE_DIR}/README.md
+	    ${PROJECT_SOURCE_DIR}/incl ${PROJECT_SOURCE_DIR}/axi_chi ${PROJECT_SOURCE_DIR}/README.md
 	    ALL COMMENT "Generate API-documents for SCC."
 	)
     install(DIRECTORY ${PROJECT_BINARY_DIR}/docs TYPE DOC)
