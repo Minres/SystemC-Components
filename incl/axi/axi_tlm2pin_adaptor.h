@@ -12,12 +12,10 @@
 #include <queue>
 #include <unordered_map>
 
-// TODO: export functionality into base class
-// TODO: verify data transfer
-
 namespace axi {
 
-template <unsigned int BUSWIDTH = 32, unsigned int ADDRWIDTH = 32, unsigned int IDWIDTH = 32, unsigned int USERWIDTH = 0>
+template <unsigned int BUSWIDTH = 32, unsigned int ADDRWIDTH = 32, unsigned int IDWIDTH = 32,
+          unsigned int USERWIDTH = 0>
 class axi_tlm2pin_adaptor : public sc_core::sc_module {
 public:
     SC_HAS_PROCESS(axi_tlm2pin_adaptor);
@@ -26,9 +24,9 @@ public:
     using phase_type = axi::axi_protocol_types::tlm_phase_type;
 
     template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
-    using sc_in_opt = sc_core::sc_port<sc_core::sc_signal_in_if<TYPE>,N,sc_core::SC_ZERO_OR_MORE_BOUND>;
+    using sc_in_opt = sc_core::sc_port<sc_core::sc_signal_in_if<TYPE>, N, sc_core::SC_ZERO_OR_MORE_BOUND>;
     template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
-    using sc_out_opt = sc_core::sc_port<sc_core::sc_signal_write_if<TYPE>,N,sc_core::SC_ZERO_OR_MORE_BOUND>;
+    using sc_out_opt = sc_core::sc_port<sc_core::sc_signal_write_if<TYPE>, N, sc_core::SC_ZERO_OR_MORE_BOUND>;
 
     axi_tlm2pin_adaptor(sc_core::sc_module_name nm);
 
@@ -51,7 +49,7 @@ public:
     sc_core::sc_out<sc_dt::sc_uint<4>> aw_qos_o{"aw_qos_o"};
     sc_core::sc_out<sc_dt::sc_uint<4>> aw_region_o{"aw_region_o"};
     sc_core::sc_out<sc_dt::sc_uint<8>> aw_len_o{"aw_len_o"};
-    sc_out_opt<USERWIDTH>aw_user_o{"aw_user_o"};
+    sc_out_opt<USERWIDTH> aw_user_o{"aw_user_o"};
 
     // write data channel signals
     sc_core::sc_out<sc_dt::sc_biguint<BUSWIDTH>> w_data_o{"w_data_o"};
@@ -59,14 +57,14 @@ public:
     sc_core::sc_out<bool> w_last_o{"w_last_o"};
     sc_core::sc_out<bool> w_valid_o{"w_valid_o"};
     sc_core::sc_in<bool> w_ready_i{"w_ready_i"};
-    sc_out_opt<USERWIDTH>w_user_o{"w_user_o"};
+    sc_out_opt<USERWIDTH> w_user_o{"w_user_o"};
 
     // write response channel signals
     sc_core::sc_in<bool> b_valid_i{"b_valid_i"};
     sc_core::sc_out<bool> b_ready_o{"b_ready_o"};
     sc_core::sc_in<sc_dt::sc_uint<IDWIDTH>> b_id_i{"b_id_i"};
     sc_core::sc_in<sc_dt::sc_uint<2>> b_resp_i{"b_resp_i"};
-    sc_in_opt<USERWIDTH>b_user_i{"b_user_i"};
+    sc_in_opt<USERWIDTH> b_user_i{"b_user_i"};
 
     // read address channel signals
     sc_core::sc_out<sc_dt::sc_uint<IDWIDTH>> ar_id_o{"ar_id_o"};
@@ -81,7 +79,7 @@ public:
     sc_core::sc_out<sc_dt::sc_uint<4>> ar_region_o{"ar_region_o"};
     sc_core::sc_out<bool> ar_valid_o{"ar_valid_o"};
     sc_core::sc_in<bool> ar_ready_i{"ar_ready_i"};
-    sc_out_opt<USERWIDTH>ar_user_o{"ar_user_o"};
+    sc_out_opt<USERWIDTH> ar_user_o{"ar_user_o"};
 
     // Read data channel signals
     sc_core::sc_in<sc_dt::sc_uint<IDWIDTH>> r_id_i{"r_id_i"};
@@ -90,7 +88,7 @@ public:
     sc_core::sc_in<bool> r_last_i{"r_last_i"};
     sc_core::sc_in<bool> r_valid_i{"r_valid_i"};
     sc_core::sc_out<bool> r_ready_o{"r_ready_o"};
-    sc_in_opt<USERWIDTH>r_user_i{"r_user_i"};
+    sc_in_opt<USERWIDTH> r_user_i{"r_user_i"};
 
     tlm::tlm_sync_enum nb_transport_fw(payload_type& trans, phase_type& phase, sc_core::sc_time& t);
 
@@ -131,9 +129,9 @@ inline axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_tlm2pin
 }
 
 template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH, unsigned int USERWIDTH>
-inline tlm::tlm_sync_enum axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::nb_transport_fw(payload_type& trans,
-                                                                                             phase_type& phase,
-                                                                                             sc_core::sc_time& t) {
+inline tlm::tlm_sync_enum
+axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::nb_transport_fw(payload_type& trans, phase_type& phase,
+                                                                              sc_core::sc_time& t) {
     if(trans.has_mm())
         trans.acquire();
 
@@ -214,7 +212,7 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::bus_th
                 ar_qos_o.write(ext->get_qos());
                 ar_region_o.write(ext->get_region());
                 if(ar_user_o.get_interface()) // optional user interface
-                	ar_user_o->write(ext->get_user(common::id_type::CTRL));
+                    ar_user_o->write(ext->get_user(common::id_type::CTRL));
                 ar_valid_o.write(true);
 
                 read_trans->phase = tlm::END_REQ;
@@ -245,7 +243,7 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::bus_th
                     aw_qos_o.write(ext->get_qos());
                     aw_region_o.write(ext->get_region());
                     if(aw_user_o.get_interface())
-                    	aw_user_o->write(ext->get_user(common::id_type::CTRL));
+                        aw_user_o->write(ext->get_user(common::id_type::CTRL));
                     aw_valid_o.write(true);
                 }
                 write_trans->beat_cnt++;
@@ -259,7 +257,7 @@ inline void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::bus_th
                 w_data_o.write(data);
                 w_valid_o.write(true);
                 if(w_user_o.get_interface()) // optional user interface
-                	w_user_o->write(ext->get_user(common::id_type::DATA));
+                    w_user_o->write(ext->get_user(common::id_type::DATA));
 
                 if(write_trans->phase == tlm::BEGIN_REQ)
                     w_last_o.write(true);
@@ -370,8 +368,9 @@ void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::remove_trans(
 }
 
 template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH, unsigned int USERWIDTH>
-void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::register_trans(unsigned int axi_id, payload_type& trans,
-                                                                       phase_type& phase) {
+void axi_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::register_trans(unsigned int axi_id,
+                                                                                  payload_type& trans,
+                                                                                  phase_type& phase) {
     auto th = std::make_shared<trans_handle>();
     th->payload = &trans;
     th->phase = phase;

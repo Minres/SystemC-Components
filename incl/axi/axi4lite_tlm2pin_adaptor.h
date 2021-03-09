@@ -12,8 +12,6 @@
 #include <queue>
 #include <unordered_map>
 
-// TODO: export functionality into base class
-
 namespace axi {
 
 template <unsigned int BUSWIDTH = 32, unsigned int ADDRWIDTH = 32>
@@ -100,8 +98,8 @@ inline axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::axi4lite_tlm2pin_adaptor(s
 
 template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH>
 inline tlm::tlm_sync_enum axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::nb_transport_fw(payload_type& trans,
-                                                                                             phase_type& phase,
-                                                                                             sc_core::sc_time& t) {
+                                                                                         phase_type& phase,
+                                                                                         sc_core::sc_time& t) {
     if(trans.has_mm())
         trans.acquire();
 
@@ -128,9 +126,9 @@ inline tlm::tlm_sync_enum axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::nb_tran
     } else if(phase == tlm::END_RESP) {
         trans.set_response_status(tlm::TLM_OK_RESPONSE);
         if(trans.is_read())
-        	active_r_transactions.pop();
+            active_r_transactions.pop();
         else
-        	active_w_transactions.pop();
+            active_w_transactions.pop();
 
         if(trans.has_mm())
             trans.release();
@@ -187,7 +185,7 @@ inline void axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::bus_thread() {
                 auto ext = p->get_extension<axi::axi4_extension>();
                 sc_assert(ext && "axi4_extension missing");
 
-                if(write_trans->beat_cnt == 0) { //TODO: check if required for axi lite
+                if(write_trans->beat_cnt == 0) { // TODO: check if required for axi lite
                     aw_addr_o.write(p->get_address());
                     aw_prot_o.write(ext->get_prot());
                     aw_valid_o.write(true);
@@ -255,7 +253,7 @@ inline void axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::bus_thread() {
                     auto ret = input_socket->nb_transport_bw(*write_trans->payload, write_trans->phase, delay);
                     SCCTRACE(SCMOD) << write_trans->phase << " bw trans " << std::hex << write_trans->payload;
                     if(ret == tlm::TLM_UPDATED && write_trans->phase == tlm::END_RESP) {
-                    	active_w_transactions.pop();
+                        active_w_transactions.pop();
                     }
                 }
             }

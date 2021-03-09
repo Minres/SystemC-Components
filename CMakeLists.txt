@@ -140,8 +140,10 @@ set(LIB_SOURCES
     src/tlm_ahb_bfm_target.cpp
     src/ahb_initiator.cpp
     src/apb_initiator.cpp
+    src/axi_initiator.cpp
  	src/ahb_target.cpp
- 	src/apb_target.cpp
+    src/apb_target.cpp
+    src/axi_target.cpp
     src/tracer_base.cpp
     src/tracer.cpp
     src/mt19937_rng.cpp
@@ -207,6 +209,7 @@ add_library(scc ${LIB_SOURCES})
 target_include_directories (scc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
 target_include_directories (scc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories (scc PUBLIC ${Boost_INCLUDE_DIRS})
+target_include_directories (scc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/axi_chi)
 if(HAVE_GETENV)
     target_compile_definitions(scc PUBLIC HAVE_GETENV)
 endif()
