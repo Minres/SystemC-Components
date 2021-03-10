@@ -269,9 +269,9 @@ private:
     //! transaction generator handle for DMI transactions
     scv_tr_generator<tlm_gp_data, tlm_dmi_data>* dmi_trGetHandle{nullptr};
     scv_tr_generator<sc_dt::uint64, sc_dt::uint64>* dmi_trInvalidateHandle{nullptr};
-protected:
+public:
     void initialize_streams() {
-        if(isRecordingEnabled()){
+        if(isRecordingEnabled() && !b_streamHandle){
             b_streamHandle = new scv_tr_stream((fixed_basename + "_bl").c_str(), "[TLM][base-protocol][b]", m_db);
             b_trHandle[tlm::TLM_READ_COMMAND] =
                     new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("read", *b_streamHandle, "start_delay", "end_delay");
@@ -322,7 +322,7 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
     if(!isRecordingEnabled()) {
         fw_port->b_transport(trans, delay);
         return;
-    }
+    } else if(!b_streamHandle) initialize_streams();
     // Get a handle for the new transaction
     scv_tr_handle h = b_trHandle[trans.get_command()]->begin_transaction(delay.value(), sc_time_stamp());
     tlm_gp_data tgd(trans);
@@ -416,6 +416,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
         sc_core::sc_time& delay) {
     if(!isRecordingEnabled())
         return fw_port->nb_transport_fw(trans, phase, delay);
+    else  if(!nb_streamHandle) initialize_streams();
     /*************************************************************************
      * prepare recording
      *************************************************************************/
@@ -511,6 +512,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
         sc_core::sc_time& delay) {
     if(!isRecordingEnabled())
         return bw_port->nb_transport_bw(trans, phase, delay);
+    else  if(!nb_streamHandle) initialize_streams();
     /*************************************************************************
      * prepare recording
      *************************************************************************/
@@ -644,6 +646,7 @@ template <typename TYPES>
 bool tlm_recorder<TYPES>::get_direct_mem_ptr(typename TYPES::tlm_payload_type& trans, tlm::tlm_dmi& dmi_data) {
     if(!(m_db && enableDmiTracing.value))
         return fw_port->get_direct_mem_ptr(trans, dmi_data);
+    else  if(!b_streamHandle) initialize_streams();
     scv_tr_handle h = dmi_trGetHandle->begin_transaction(tlm_gp_data(trans));
     bool status = fw_port->get_direct_mem_ptr(trans, dmi_data);
     dmi_trGetHandle->end_transaction(h, tlm_dmi_data(dmi_data));
