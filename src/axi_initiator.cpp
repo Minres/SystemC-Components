@@ -26,15 +26,17 @@ void axi_initiator_base::b_transport(tlm::tlm_generic_payload &trans, sc_core::s
 
 tlm::tlm_generic_payload* axi_initiator_base::create_axi_trans(tlm::tlm_generic_payload &p) {
 	tlm::tlm_generic_payload *trans = nullptr;
+	uint8_t *data_buf = nullptr;
 	axi::axi4_extension *ext = new axi::axi4_extension;
 	if (p.has_mm()) {
 		p.acquire();
 		trans = &p;
 	} else {
 		trans = tlm::tlm_mm<>::get().allocate();
-		uint8_t *data_buf = new uint8_t[trans->get_data_length()];
-		trans->set_data_ptr(data_buf);
 		trans->deep_copy_from(p);
+		data_buf = new uint8_t[trans->get_data_length()];
+		std::copy(p.get_data_ptr(), p.get_data_ptr()+p.get_data_length(), data_buf);
+		trans->set_data_ptr(data_buf);
 	}
 	setId(*trans, id++);
 	trans->set_extension(ext);
