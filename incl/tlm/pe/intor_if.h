@@ -12,6 +12,13 @@
 
 namespace tlm {
 namespace pe {
+/**
+ * enum to express expectations and capabilities. NB means no backpressure (aka non-blocking)
+ *
+ */
+enum class type {NB, BL};
+
+template<type TYPE>
 struct intor_fw: public sc_core::sc_interface {
     /**
      * execute the transport of the payload. Independent of the underlying layer this function is blocking
@@ -29,6 +36,7 @@ struct intor_fw: public sc_core::sc_interface {
     virtual void snoop_resp(tlm::tlm_generic_payload& payload, bool sync = false) = 0;
 };
 
+template<type TYPE>
 struct intor_bw: public sc_core::sc_interface {
     /**
      * callback from the pe top if there is a backward transaction e.g. a snoop
@@ -39,6 +47,11 @@ struct intor_bw: public sc_core::sc_interface {
     virtual unsigned transport(tlm::tlm_generic_payload& payload) = 0;
 
 };
+
+struct intor_fw_b: public intor_fw<type::BL>{};
+struct intor_fw_nb: public intor_fw<type::NB>{};
+struct intor_bw_b: public intor_bw<type::BL>{};
+struct intor_bw_nb: public intor_bw<type::NB>{};
 }
 }
 

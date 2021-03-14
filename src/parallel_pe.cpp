@@ -14,7 +14,6 @@ using namespace sc_core;
 
 parallel_pe::parallel_pe(sc_core::sc_module_name const& nm): sc_module(nm) {
     fw_i.bind(*this);
-
 }
 
 parallel_pe::~parallel_pe() {
