@@ -5,7 +5,7 @@
  *      Author: eyck
  */
 
-#include <util/io-redirector.h>
+#include "io-redirector.h"
 #ifdef _MSC_VER
 #include <io.h>
 #define popen _popen

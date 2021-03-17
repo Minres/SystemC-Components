@@ -46,46 +46,6 @@ endif()
 
 
 ###############################################################################
-# build a separate SCC-UTIL library for the use in non-systemc based systems
-###############################################################################
-add_library(scc-util STATIC src/io-redirector.cpp)
-target_include_directories (scc-util PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
-
-FILE(GLOB SccUtilHeaders incl/util/*.h)
-set_target_properties(scc-util PROPERTIES
-    VERSION ${PROJECT_VERSION}  # ${VERSION} was defined in the main CMakeLists.
-    FRAMEWORK FALSE
-    PUBLIC_HEADER "${SccUtilHeaders}" # specify the public headers
-)
-
-install(TARGETS scc-util
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/util
-)
-
-###############################################################################
-# build a separate JSON library for the use in non-systemc based systems
-###############################################################################
-add_library(jsoncpp STATIC src/jsoncpp.cpp)
-target_include_directories (jsoncpp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
-
-FILE(GLOB JsonLibHeaders incl/json/*.h)
-set_target_properties(jsoncpp PROPERTIES
-    VERSION 1.8.3
-    FRAMEWORK FALSE
-    PUBLIC_HEADER "${JsonLibHeaders}" # specify the public headers
-)
-
-install(TARGETS jsoncpp
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/json
-        )
-
-###############################################################################
 # build the SCC
 ###############################################################################
 if(NOT SystemCPackage)
@@ -107,7 +67,7 @@ if(TARGET SystemC-CCI::SystemC-CCI)
     set(CCI_LIBRARIES SystemC-CCI::SystemC-CCI)
 endif()
 
-set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "/json/" "jsoncpp.cpp" "sqlite3")
+set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "sqlite3")
 find_package(ClangFormat)
 find_package(Threads)
 find_package(Boost REQUIRED COMPONENTS system) # header only libraries must not be added herefind_package(ZLIB REQUIRED)
@@ -132,10 +92,8 @@ set(LIB_SOURCES
     src/utilities.cpp
     src/report.cpp
     src/perf_estimator.cpp
-    src/io-redirector.cpp
     src/ordered_semaphore.cpp
     src/configurer.cpp
-    src/jsoncpp.cpp
     src/tlm_ahb_bfm_initiator.cpp
     src/tlm_ahb_bfm_target.cpp
     src/ahb_initiator.cpp
@@ -219,6 +177,7 @@ if(ZLIB_FOUND)
     target_compile_definitions(scc PRIVATE WITH_ZLIB)
 endif()
 target_link_libraries(scc PUBLIC scc-util ${CMAKE_DL_LIBS})
+target_link_libraries(scc PUBLIC jsoncpp  ${CMAKE_DL_LIBS})
 target_link_libraries(scc PUBLIC ${Boost_LIBRARIES})
 target_link_libraries(scc PUBLIC ${FMT_TARGET} ${SPDLOG_TARGET})
 target_link_libraries(scc PUBLIC Threads::Threads)
@@ -273,5 +232,7 @@ install(
 ###############################################################################
 add_subdirectory(axi_chi)
 add_subdirectory(examples)
+add_subdirectory(src/common)
+add_subdirectory(third_party)
 endif(SystemC_FOUND)
 
