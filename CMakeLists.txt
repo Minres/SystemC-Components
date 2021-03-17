@@ -167,7 +167,7 @@ add_library(scc ${LIB_SOURCES})
 target_include_directories (scc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
 target_include_directories (scc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories (scc PUBLIC ${Boost_INCLUDE_DIRS})
-target_include_directories (scc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/axi_chi)
+target_include_directories (scc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/third_party/axi_chi)
 if(HAVE_GETENV)
     target_compile_definitions(scc PUBLIC HAVE_GETENV)
 endif()
@@ -228,9 +228,8 @@ install(
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     FILES_MATCHING PATTERN "*")
 ###############################################################################
-# build tlm-interfaces
+# subdirectories
 ###############################################################################
-add_subdirectory(axi_chi)
 add_subdirectory(examples)
 add_subdirectory(src/common)
 add_subdirectory(third_party)

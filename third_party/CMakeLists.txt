@@ -20,4 +20,10 @@ install(TARGETS jsoncpp
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/json
-        )                 
+        )
+        
+###############################################################################
+# build tlm-interfaces
+###############################################################################
+add_subdirectory(axi_chi)
+                 
