@@ -94,14 +94,6 @@ set(LIB_SOURCES
     src/perf_estimator.cpp
     src/ordered_semaphore.cpp
     src/configurer.cpp
-    src/tlm_ahb_bfm_initiator.cpp
-    src/tlm_ahb_bfm_target.cpp
-    src/ahb_initiator.cpp
-    src/apb_initiator.cpp
-    src/axi_initiator.cpp
- 	src/ahb_target.cpp
-    src/apb_target.cpp
-    src/axi_target.cpp
     src/tracer_base.cpp
     src/tracer.cpp
     src/mt19937_rng.cpp
@@ -167,7 +159,6 @@ add_library(scc ${LIB_SOURCES})
 target_include_directories (scc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
 target_include_directories (scc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories (scc PUBLIC ${Boost_INCLUDE_DIRS})
-target_include_directories (scc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/third_party/axi_chi)
 if(HAVE_GETENV)
     target_compile_definitions(scc PUBLIC HAVE_GETENV)
 endif()
@@ -178,6 +169,7 @@ if(ZLIB_FOUND)
 endif()
 target_link_libraries(scc PUBLIC scc-util ${CMAKE_DL_LIBS})
 target_link_libraries(scc PUBLIC jsoncpp  ${CMAKE_DL_LIBS})
+target_link_libraries(scc PUBLIC busses   ${CMAKE_DL_LIBS})
 target_link_libraries(scc PUBLIC ${Boost_LIBRARIES})
 target_link_libraries(scc PUBLIC ${FMT_TARGET} ${SPDLOG_TARGET})
 target_link_libraries(scc PUBLIC Threads::Threads)
@@ -232,6 +224,7 @@ install(
 ###############################################################################
 add_subdirectory(examples)
 add_subdirectory(src/common)
+add_subdirectory(src/bus_interfaces)
 add_subdirectory(third_party)
 endif(SystemC_FOUND)
 
