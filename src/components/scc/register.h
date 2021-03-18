@@ -21,9 +21,9 @@
 
 #include "resetable.h"
 #include "resource_access_if.h"
-#include "traceable.h"
+#include "scc/traceable.h"
 #include "util/delegate.h"
-#include "utilities.h"
+#include "scc/utilities.h"
 #include <functional>
 #include <limits>
 #include <sstream>

@@ -8,7 +8,7 @@
 #ifndef _INITIATOR_H_
 #define _INITIATOR_H_
 
-#include <scc/target_mixin.h>
+#include <tlm/target_mixin.h>
 #include <tlm>
 #include <tlm_utils/peq_with_get.h>
 #include <type_traits>

@@ -8,7 +8,7 @@
 #ifndef _TARGET_H_
 #define _TARGET_H_
 
-#include <scc/initiator_mixin.h>
+#include <tlm/initiator_mixin.h>
 #include <tlm>
 
 namespace ahb {

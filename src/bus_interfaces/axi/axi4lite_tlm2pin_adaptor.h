@@ -3,7 +3,7 @@
 
 #include "scv4tlm/tlm_rec_target_socket.h"
 #include <axi/axi_tlm.h>
-#include <scc/target_mixin.h>
+#include <tlm/target_mixin.h>
 
 #include <systemc>
 #include <tlm>

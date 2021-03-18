@@ -23,7 +23,7 @@
 #include "scc/tracer.h"
 
 #include "scc/report.h"
-#include "scc/scv_tr_db.h"
+#include "scv/scv_tr_db.h"
 #include "scc/utilities.h"
 #include <cstring>
 #include <iostream>

@@ -17,12 +17,12 @@
 #ifndef _SYSC_ROUTER_H_
 #define _SYSC_ROUTER_H_
 
-#include "initiator_mixin.h"
+#include "tlm/initiator_mixin.h"
 #include "scv4tlm/tlm_rec_initiator_socket.h"
 #include "scv4tlm/tlm_rec_target_socket.h"
-#include "target_mixin.h"
+#include "tlm/target_mixin.h"
 #include "util/range_lut.h"
-#include "utilities.h"
+#include "scc/utilities.h"
 #include <limits>
 #include <sysc/utils/sc_vector.h>
 #include <tlm.h>

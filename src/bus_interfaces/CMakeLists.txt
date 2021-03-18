@@ -15,7 +15,7 @@ set(LIB_SOURCES
 
 add_library(busses STATIC ${LIB_SOURCES})
 target_include_directories (busses PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(busses PRIVATE tlm-interfaces  ${CMAKE_DL_LIBS})
+target_link_libraries(busses PRIVATE tlm-interfaces sysc)
 
 set_target_properties(busses PROPERTIES
     FRAMEWORK FALSE

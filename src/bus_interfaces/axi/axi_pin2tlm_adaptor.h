@@ -1,7 +1,7 @@
 #pragma once
 
 #include <axi/axi_tlm.h>
-#include <scc/initiator_mixin.h>
+#include <tlm/initiator_mixin.h>
 #include <scc/report.h>
 #include <scv4tlm/tlm_rec_initiator_socket.h>
 #include <tlm/tlm_id.h>

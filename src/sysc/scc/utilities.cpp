@@ -19,7 +19,7 @@
  *  Created on: Nov 5, 2016
  *      Author: eyck
  */
-#include "scc/utilities.h"
+#include "utilities.h"
 
 namespace sc_core {
 #if SC_VERSION_MAJOR <= 2 && SC_VERSION_MINOR <= 3 && SC_VERSION_PATCH < 2

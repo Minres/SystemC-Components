@@ -48,68 +48,17 @@ endif()
 ###############################################################################
 # build the SCC
 ###############################################################################
-if(NOT SystemCPackage)
-    if(TARGET SystemC::SystemC)
-        set(SystemCPackage SystemC)
-    else()
-        set(SystemCPackage OSCISystemC)
-    endif()
-endif()
-
-message("Using ${SystemCPackage} package")
-
-if(TARGET SystemCVerification::SystemCVerification)
-    set(SCV_FOUND TRUE)
-    set(SCV_LIBRARIES SystemCVerification::SystemCVerification)
-endif()
-if(TARGET SystemC-CCI::SystemC-CCI)
-    set(CCI_FOUND TRUE)
-    set(CCI_LIBRARIES SystemC-CCI::SystemC-CCI)
-endif()
 
 set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "sqlite3")
 find_package(ClangFormat)
-find_package(Threads)
 find_package(Boost REQUIRED COMPONENTS system) # header only libraries must not be added herefind_package(ZLIB REQUIRED)
-find_package(${SystemCPackage} REQUIRED)
-if(SystemC_FOUND)
-        message(STATUS "SystemC headers at ${SystemC_INCLUDE_DIRS}")
-        message(STATUS "SystemC library at ${SystemC_LIBRARY_DIRS}")
-        if(SCV_FOUND)
-            message(STATUS "SCV headers at ${SCV_INCLUDE_DIRS}")
-            message(STATUS "SCV library at ${SCV_LIBRARY_DIRS}")
-        endif(SCV_FOUND)
-        if(CCI_FOUND)
-            message(STATUS "CCI headers at ${CCI_INCLUDE_DIRS}")
-            message(STATUS "CCI library at ${CCI_LIBRARY_DIRS}")
-        endif()
 include(CheckSymbolExists)
 # Check for function getenv()
 check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)
 
 set(LIB_SOURCES
-    src/sc_logic_7.cpp
-    src/utilities.cpp
-    src/report.cpp
-    src/perf_estimator.cpp
-    src/ordered_semaphore.cpp
-    src/configurer.cpp
-    src/tracer_base.cpp
-    src/tracer.cpp
     src/mt19937_rng.cpp
-    src/parallel_pe.cpp
 )
-
-if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
-set(LIB_SOURCES ${LIB_SOURCES} src/watchdog.cpp)
-endif()
-
-if(CCI_FOUND)
-    set(LIB_SOURCES ${LIB_SOURCES} 
-        src/configurable_tracer.cpp
-        src/value_registry.cpp
-    )
-endif()
 
 # check which version of spdlog to use.
 if(TARGET spdlog::spdlog)
@@ -136,19 +85,6 @@ else()
     message("Using built-in version of fmt")
 endif()
 
-if(SCV_FOUND )
-    if(ZLIB_FOUND)
-        set(LIB_SOURCES ${LIB_SOURCES} src/scv_tr_compressed.cpp)
-    endif(ZLIB_FOUND)
-    if(FALSE)
-        set(LIB_SOURCES ${LIB_SOURCES} src/scv_tr_binary/scv_tr_binary.cpp)
-        if(CONAN_LEVELDB_ROOT)
-            set(LIB_SOURCES ${LIB_SOURCES} src/scv_tr_ldb/scv_tr_ldb.cpp )
-        endif()
-    endif()
-    set(LIB_SOURCES ${LIB_SOURCES} src/scv_tr_sqlite/scv_tr_sqlite.cpp src/scv_tr_sqlite/sqlite3.c )
-endif()
-
 # Define two variables in order not to repeat ourselves.
 if(${CMAKE_VERSION} VERSION_LESS "3.13.0") 
     link_directories(${SystemC_LIBRARY_DIRS})
@@ -167,42 +103,14 @@ if(ZLIB_FOUND)
     target_link_libraries(scc PUBLIC ${ZLIB_LIBRARIES})
     target_compile_definitions(scc PRIVATE WITH_ZLIB)
 endif()
-target_link_libraries(scc PUBLIC scc-util ${CMAKE_DL_LIBS})
+target_link_libraries(scc PUBLIC scc-util sysc components busses)
 target_link_libraries(scc PUBLIC jsoncpp  ${CMAKE_DL_LIBS})
-target_link_libraries(scc PUBLIC busses   ${CMAKE_DL_LIBS})
 target_link_libraries(scc PUBLIC ${Boost_LIBRARIES})
 target_link_libraries(scc PUBLIC ${FMT_TARGET} ${SPDLOG_TARGET})
-target_link_libraries(scc PUBLIC Threads::Threads)
-
-if(CCI_FOUND)
-	message("Building SCC with CCI support")
-    target_compile_definitions(scc PUBLIC -DWITH_CCI)
-    target_include_directories (scc PUBLIC ${CCI_INCLUDE_DIRS})
-    target_link_libraries(scc PUBLIC ${CCI_LIBRARIES} )
-    if(NOT ${CMAKE_VERSION} VERSION_LESS "3.13.0") 
-        target_link_directories(scc PUBLIC ${CCI_LIBRARY_DIRS})
-    endif()
-endif()
-
-if(SCV_FOUND)   
-	message("Building SCC with SCV support")
-    target_compile_definitions(scc PUBLIC -DWITH_SCV)
-    target_include_directories (scc PUBLIC ${SCV_INCLUDE_DIRS})
-    target_link_libraries (scc PUBLIC ${SCV_LIBRARIES})
-    if(NOT ${CMAKE_VERSION} VERSION_LESS "3.13.0") 
-        target_link_directories(scc PUBLIC ${SCV_LIBRARY_DIRS})
-    endif()
-endif()
 
 if(ZLIB_FOUND)
     target_link_libraries (scc PUBLIC ${ZLIB_LIBRARIES})
 endif(ZLIB_FOUND)
-
-target_include_directories (scc PUBLIC ${SystemC_INCLUDE_DIRS})    
-target_link_libraries(scc PUBLIC ${SystemC_LIBRARIES} )
-if(NOT ${CMAKE_VERSION} VERSION_LESS "3.13.0") 
-    target_link_directories(scc PUBLIC ${SystemC_LIBRARY_DIRS})
-endif()
 
 set_target_properties(scc PROPERTIES
 	VERSION ${PROJECT_VERSION}
@@ -225,6 +133,7 @@ install(
 add_subdirectory(examples)
 add_subdirectory(src/common)
 add_subdirectory(src/bus_interfaces)
+add_subdirectory(src/components)
+add_subdirectory(src/sysc)
 add_subdirectory(third_party)
-endif(SystemC_FOUND)
 

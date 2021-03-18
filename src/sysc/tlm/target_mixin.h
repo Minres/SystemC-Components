@@ -20,7 +20,7 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif
 
-#include "utilities.h"
+#include "scc/utilities.h"
 #include <functional>
 #include <sstream>
 #include <tlm>

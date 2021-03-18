@@ -19,9 +19,9 @@
 
 #include "resource_access_if.h"
 #include "scv4tlm/tlm_rec_target_socket.h"
-#include "target_mixin.h"
+#include "tlm/target_mixin.h"
 #include "util/range_lut.h"
-#include "utilities.h"
+#include "scc/utilities.h"
 #include <array>
 
 namespace scc {
