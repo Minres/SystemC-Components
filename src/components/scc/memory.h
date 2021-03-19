@@ -20,7 +20,7 @@
 // Needed for the simple_target_socket
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
-#include "util/mt19937_rng.h"
+#include "scc/mt19937_rng.h"
 #include "scc/report.h"
 #include "tlm/target_mixin.h"
 #include "scc/utilities.h"
@@ -136,7 +136,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans) {
         } else {
             // no allocated page so return randomized data
             for(size_t i = 0; i < len; i++)
-                ptr[i] = util::MT19937::uniform() % 256;
+                ptr[i] = scc::MT19937::uniform() % 256;
         }
     } else if(cmd == tlm::TLM_WRITE_COMMAND) {
         auto& p = mem(adr / mem.page_size);

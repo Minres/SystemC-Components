@@ -46,6 +46,7 @@ set(LIB_SOURCES
     scc/report.cpp
     scc/ordered_semaphore.cpp
     scc/value_registry.cpp
+    scc/mt19937_rng.cpp
     tlm/pe/parallel_pe.cpp
 )
 
@@ -74,6 +75,12 @@ target_link_libraries(sysc PRIVATE scc-util jsoncpp)
 target_include_directories (sysc PUBLIC ${SystemC_INCLUDE_DIRS})    
 target_link_libraries(sysc PUBLIC ${SystemC_LIBRARIES} )
 target_link_libraries(sysc PUBLIC Threads::Threads)
+
+if(ZLIB_FOUND)
+    target_include_directories(sysc PUBLIC ${ZLIB_INCLUDE_DIRS})
+    target_link_libraries(sysc PUBLIC ${ZLIB_LIBRARIES})
+    target_compile_definitions(sysc PRIVATE WITH_ZLIB)
+endif()
 
 if(CCI_FOUND)
 	message("Building SCC with CCI support")

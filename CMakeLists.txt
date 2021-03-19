@@ -56,10 +56,6 @@ include(CheckSymbolExists)
 # Check for function getenv()
 check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)
 
-set(LIB_SOURCES
-    src/mt19937_rng.cpp
-)
-
 # check which version of spdlog to use.
 if(TARGET spdlog::spdlog)
     set(SPDLOG_TARGET spdlog::spdlog)
@@ -91,31 +87,22 @@ if(${CMAKE_VERSION} VERSION_LESS "3.13.0")
 endif()
 
 # Define the scc library
-add_library(scc ${LIB_SOURCES})
-target_include_directories (scc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/incl)
-target_include_directories (scc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_include_directories (scc PUBLIC ${Boost_INCLUDE_DIRS})
+add_library(scc INTERFACE)
+target_include_directories (scc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_include_directories (scc INTERFACE ${Boost_INCLUDE_DIRS})
 if(HAVE_GETENV)
-    target_compile_definitions(scc PUBLIC HAVE_GETENV)
+    target_compile_definitions(scc INTERFACE HAVE_GETENV)
 endif()
-if(ZLIB_FOUND)
-    target_include_directories(scc PUBLIC ${ZLIB_INCLUDE_DIRS})
-    target_link_libraries(scc PUBLIC ${ZLIB_LIBRARIES})
-    target_compile_definitions(scc PRIVATE WITH_ZLIB)
-endif()
-target_link_libraries(scc PUBLIC scc-util sysc components busses)
-target_link_libraries(scc PUBLIC jsoncpp  ${CMAKE_DL_LIBS})
-target_link_libraries(scc PUBLIC ${Boost_LIBRARIES})
-target_link_libraries(scc PUBLIC ${FMT_TARGET} ${SPDLOG_TARGET})
 
-if(ZLIB_FOUND)
-    target_link_libraries (scc PUBLIC ${ZLIB_LIBRARIES})
-endif(ZLIB_FOUND)
+target_link_libraries(scc INTERFACE scc-util sysc components busses)
+target_link_libraries(scc INTERFACE jsoncpp  ${CMAKE_DL_LIBS})
+target_link_libraries(scc INTERFACE ${Boost_LIBRARIES})
+target_link_libraries(scc INTERFACE ${FMT_TARGET} ${SPDLOG_TARGET})
 
 set_target_properties(scc PROPERTIES
 	VERSION ${PROJECT_VERSION}
   FRAMEWORK FALSE
-  PUBLIC_HEADER "incl/scc.h" # specify the public headers
+  PUBLIC_HEADER "scc.h" # specify the public headers
 )
 install(TARGETS scc
         RUNTIME DESTINATION ${CMAKE_INSTALL_LCMAKE_INSTALL_BINDIRIBDIR}
