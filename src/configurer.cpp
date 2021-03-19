@@ -29,7 +29,7 @@
 #include <fstream>
 
 scc::configurer::configurer(const std::string& filename)
-: base_type("configurer")
+: base_type(sc_core::sc_module_name("configurer"))
 #ifdef WITH_CCI
 , cci_originator("configurer")
 , cci_broker(cci::cci_get_global_broker(cci_originator))
@@ -49,7 +49,7 @@ scc::configurer::configurer(const std::string& filename)
             SCCERR() << "Could not open input file " << filename;
         }
     }
-    register_simulation_phase_callback(sc_core::sc_status::SC_END_OF_ELABORATION);
+    //register_simulation_phase_callback(sc_core::sc_status::SC_END_OF_ELABORATION);
 }
 
 void scc::configurer::dump_hierarchy(std::ostream& os, sc_core::sc_object* obj) {
@@ -274,10 +274,6 @@ void scc::configurer::configure_cci_hierarchical(const Json::Value& node, std::s
 #endif
         }
     }
-}
-
-void scc::configurer::simulation_phase_callback(){
-    check_config_hierarchical(root, "");
 }
 
 void scc::configurer::check_config_hierarchical(Json::Value const& node, std::string const& prefix) {
