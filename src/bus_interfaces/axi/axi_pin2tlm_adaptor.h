@@ -1,11 +1,11 @@
 #pragma once
 
 #include <axi/axi_tlm.h>
-#include <tlm/initiator_mixin.h>
+#include <scc/tlm/initiator_mixin.h>
 #include <scc/report.h>
-#include <scv4tlm/tlm_rec_initiator_socket.h>
-#include <tlm/tlm_id.h>
-#include <tlm/tlm_mm.h>
+#include <scc/tlm/scv4tlm/tlm_rec_initiator_socket.h>
+#include <scc/tlm/tlm_id.h>
+#include <scc/tlm/tlm_mm.h>
 
 #include <systemc>
 #include <tlm>

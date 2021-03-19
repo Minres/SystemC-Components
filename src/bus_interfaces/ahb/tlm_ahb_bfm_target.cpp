@@ -9,7 +9,7 @@
 #include <scc/utilities.h>
 #include <ahb/ahb_tlm.h>
 #include <ahb/bfm/target.h>
-#include <tlm/tlm_mm.h>
+#include <scc/tlm/tlm_mm.h>
 
 using namespace ahb::bfm;
 using namespace sc_core;

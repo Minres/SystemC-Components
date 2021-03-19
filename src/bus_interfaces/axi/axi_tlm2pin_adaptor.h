@@ -1,9 +1,9 @@
 
 #pragma once
 
-#include "scv4tlm/tlm_rec_target_socket.h"
+#include "scc/tlm/scv4tlm/tlm_rec_target_socket.h"
 #include <axi/axi_tlm.h>
-#include <tlm/target_mixin.h>
+#include <scc/tlm/target_mixin.h>
 
 #include <systemc>
 #include <tlm>

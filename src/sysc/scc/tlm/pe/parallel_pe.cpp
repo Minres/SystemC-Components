@@ -6,7 +6,7 @@
  */
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
-#include <tlm/pe/parallel_pe.h>
+#include <scc/tlm/pe/parallel_pe.h>
 
 namespace tlm {
 namespace pe {

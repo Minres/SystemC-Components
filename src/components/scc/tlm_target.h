@@ -18,8 +18,8 @@
 #define _SYSC_TLM_TARGET_H_
 
 #include "resource_access_if.h"
-#include "scv4tlm/tlm_rec_target_socket.h"
-#include "tlm/target_mixin.h"
+#include "scc/tlm/scv4tlm/tlm_rec_target_socket.h"
+#include "scc/tlm/target_mixin.h"
 #include "util/range_lut.h"
 #include "scc/utilities.h"
 #include <array>

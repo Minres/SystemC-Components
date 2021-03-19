@@ -11,12 +11,12 @@
 #include <scv/scv_tr.h>
 #endif
 #include "scc/report.h"
-#include "tlm/tlm_id.h"
+#include "scc/tlm/tlm_id.h"
 #include <array>
 #include <axi/pe/simple_initiator.h>
 #include <axi/pe/simple_target.h>
 #include <ace_axi_adapt.h>
-#include <tlm/tlm_mm.h>
+#include <scc/tlm/tlm_mm.h>
 #include <cstdint>
 
 using namespace sc_core;

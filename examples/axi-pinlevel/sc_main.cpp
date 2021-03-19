@@ -14,13 +14,13 @@
 #include <scc/configurable_tracer.h>
 #endif
 #include "scc/report.h"
-#include "tlm/tlm_id.h"
+#include <scc/tlm/tlm_id.h>
 #include <array>
 #include <axi/pe/simple_initiator.h>
 #include <axi/pe/simple_target.h>
 #include <axi/axi_pin2tlm_adaptor.h>
 #include <axi/axi_tlm2pin_adaptor.h>
-#include <tlm/tlm_mm.h>
+#include <scc/tlm/tlm_mm.h>
 
 using namespace sc_core;
 using namespace sc_dt;

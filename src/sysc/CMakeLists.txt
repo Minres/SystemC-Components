@@ -47,20 +47,20 @@ set(LIB_SOURCES
     scc/ordered_semaphore.cpp
     scc/value_registry.cpp
     scc/mt19937_rng.cpp
-    tlm/pe/parallel_pe.cpp
+    scc/tlm/pe/parallel_pe.cpp
 )
 
 if(SCV_FOUND )
     if(ZLIB_FOUND)
-        set(LIB_SOURCES ${LIB_SOURCES} scv/scv_tr_compressed.cpp)
+        set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_compressed.cpp)
     endif(ZLIB_FOUND)
     if(FALSE)
-        set(LIB_SOURCES ${LIB_SOURCES} scv/scv_tr_binary/scv_tr_binary.cpp)
+        set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_binary/scv_tr_binary.cpp)
         if(CONAN_LEVELDB_ROOT)
-            set(LIB_SOURCES ${LIB_SOURCES} scv/scv_tr_ldb/scv_tr_ldb.cpp )
+            set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_ldb/scv_tr_ldb.cpp )
         endif()
     endif()
-    set(LIB_SOURCES ${LIB_SOURCES} scv/scv_tr_sqlite/scv_tr_sqlite.cpp scv/scv_tr_sqlite/sqlite3.c )
+    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_sqlite/scv_tr_sqlite.cpp scc/scv/scv_tr_sqlite/sqlite3.c )
 endif()
 if(CCI_FOUND)
     set(LIB_SOURCES ${LIB_SOURCES} 

@@ -22,7 +22,7 @@
 
 #include "scc/mt19937_rng.h"
 #include "scc/report.h"
-#include "tlm/target_mixin.h"
+#include "scc/tlm/target_mixin.h"
 #include "scc/utilities.h"
 #include <tlm.h>
 #include <util/sparse_array.h>

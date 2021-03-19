@@ -1,8 +1,8 @@
 
 #include "axi/axi_initiator.h"
 #include "scc/report.h"
-#include "tlm/tlm_mm.h"
-#include "tlm/tlm_id.h"
+#include "scc/tlm/tlm_mm.h"
+#include "scc/tlm/tlm_id.h"
 
 
 using namespace axi;
