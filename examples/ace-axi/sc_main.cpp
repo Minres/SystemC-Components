@@ -11,12 +11,12 @@
 #include <scv/scv_tr.h>
 #endif
 #include "scc/report.h"
-#include "scc/tlm/tlm_id.h"
+#include "tlm/scc/tlm_id.h"
 #include <array>
 #include <axi/pe/simple_initiator.h>
 #include <axi/pe/simple_target.h>
 #include <ace_axi_adapt.h>
-#include <scc/tlm/tlm_mm.h>
+#include <tlm/scc/tlm_mm.h>
 #include <cstdint>
 
 using namespace sc_core;
@@ -62,8 +62,8 @@ public:
     }
 
     tlm::tlm_generic_payload* prepare_trans(size_t len, uint8_t const* data= nullptr) {
-        auto trans = tlm::tlm_mm<>::get().allocate<axi::axi4_extension>();
-        setId(*trans, id++);
+        auto trans = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>();
+        tlm::scc::setId(*trans, id++);
         auto ext = trans->get_extension<axi::axi4_extension>();
         trans->set_data_length(len);
         trans->set_data_ptr(new uint8_t[len]);

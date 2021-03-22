@@ -1,8 +1,8 @@
 
 #include "axi/axi_initiator.h"
 #include "scc/report.h"
-#include "scc/tlm/tlm_mm.h"
-#include "scc/tlm/tlm_id.h"
+#include "tlm/scc/tlm_mm.h"
+#include "tlm/scc/tlm_id.h"
 
 
 using namespace axi;
@@ -32,13 +32,13 @@ tlm::tlm_generic_payload* axi_initiator_base::create_axi_trans(tlm::tlm_generic_
 		p.acquire();
 		trans = &p;
 	} else {
-		trans = tlm::tlm_mm<>::get().allocate();
+		trans = tlm::scc::tlm_mm<>::get().allocate();
 		trans->deep_copy_from(p);
 		data_buf = new uint8_t[trans->get_data_length()];
 		std::copy(p.get_data_ptr(), p.get_data_ptr()+p.get_data_length(), data_buf);
 		trans->set_data_ptr(data_buf);
 	}
-	setId(*trans, id++);
+	tlm::scc::setId(*trans, id++);
 	trans->set_extension(ext);
 	auto len = trans->get_data_length();
 	ext->set_size(scc::ilog2(std::min<size_t>(len, buswidth / 8)));

@@ -47,7 +47,7 @@ set(LIB_SOURCES
     scc/ordered_semaphore.cpp
     scc/value_registry.cpp
     scc/mt19937_rng.cpp
-    scc/tlm/pe/parallel_pe.cpp
+    tlm/scc/pe/parallel_pe.cpp
 )
 
 if(SCV_FOUND )

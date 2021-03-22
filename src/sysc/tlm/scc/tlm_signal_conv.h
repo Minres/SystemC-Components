@@ -23,7 +23,7 @@
 #include <scc/peq.h>
 
 namespace tlm {
-
+namespace scc {
 template <typename TYPE>
 struct tlm_signal2sc_signal : public sc_core::sc_module,
                               public tlm_signal_fw_transport_if<TYPE, tlm_signal_baseprotocol_types<TYPE>> {
@@ -98,5 +98,6 @@ private:
         gp->release();
     }
 };
+}  // namespace scc
 } // namespace tlm
 #endif /* _TLM_TLM_SIGNAL_CONV_H_ */

@@ -20,7 +20,7 @@
 #include <tlm>
 
 namespace tlm {
-
+namespace scc {
 struct tlm_id_extension : public tlm_extension<tlm_id_extension> {
     virtual tlm_extension_base* clone() const {
         tlm_id_extension* t = new tlm_id_extension(this->id);
@@ -58,5 +58,5 @@ inline void setId(tlm::tlm_generic_payload& gp, uintptr_t id) {
     else
         gp.set_extension(new tlm_id_extension(id));
 }
-
+}  // namespace scc
 } // namespace tlm

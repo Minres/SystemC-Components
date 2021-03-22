@@ -8,7 +8,7 @@
 #ifndef _TARGET_H_
 #define _TARGET_H_
 
-#include <scc/tlm/initiator_mixin.h>
+#include <tlm/scc/initiator_mixin.h>
 #include <tlm>
 
 namespace ahb {
@@ -34,7 +34,7 @@ public:
     sc_core::sc_out<bool> HREADY_o{"HREADY_o"};
     sc_core::sc_out<bool> HRESP_o{"HRESP_o"};
 
-    scc::initiator_mixin<tlm::tlm_initiator_socket<WIDTH>> isckt{"isckt"};
+    tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<WIDTH>> isckt{"isckt"};
 
     target(const sc_core::sc_module_name& nm);
     virtual ~target();

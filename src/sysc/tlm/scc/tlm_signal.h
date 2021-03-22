@@ -22,7 +22,7 @@
 #include <scc/peq.h>
 
 namespace tlm {
-
+namespace scc {
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>, int N = 32>
 struct tlm_signal : public sc_core::sc_module,
                     public tlm_signal_fw_transport_if<SIG, TYPES>,
@@ -78,7 +78,7 @@ struct tlm_signal : public sc_core::sc_module,
 
 private:
     void que_cb();
-    scc::peq<tlm_signal_type> que;
+    ::scc::peq<tlm_signal_type> que;
     sc_core::sc_signal<tlm_signal_type> value;
 };
 
@@ -87,7 +87,7 @@ template <typename SIG, typename TYPES, int N> void tlm_signal<SIG, TYPES, N>::t
 }
 
 template <typename SIG, typename TYPES, int N>
-tlm_sync_enum tlm::tlm_signal<SIG, TYPES, N>::nb_transport_fw(payload_type& gp, phase_type& phase,
+tlm_sync_enum tlm_signal<SIG, TYPES, N>::nb_transport_fw(payload_type& gp, phase_type& phase,
                                                               sc_core::sc_time& delay) {
     que.notify(gp.get_value(), delay);
     auto& p = out.get_base_port();
@@ -98,7 +98,7 @@ tlm_sync_enum tlm::tlm_signal<SIG, TYPES, N>::nb_transport_fw(payload_type& gp, 
 }
 
 template <typename SIG, typename TYPES, int N>
-tlm_sync_enum tlm::tlm_signal<SIG, TYPES, N>::nb_transport_bw(payload_type& gp, phase_type& phase,
+tlm_sync_enum tlm_signal<SIG, TYPES, N>::nb_transport_bw(payload_type& gp, phase_type& phase,
                                                               sc_core::sc_time& delay) {
     auto& p = in.get_base_port();
     for(size_t i = 0; i < p.size(); ++i) {
@@ -107,9 +107,10 @@ tlm_sync_enum tlm::tlm_signal<SIG, TYPES, N>::nb_transport_bw(payload_type& gp, 
     return TLM_COMPLETED;
 }
 
-template <typename SIG, typename TYPES, int N> void tlm::tlm_signal<SIG, TYPES, N>::que_cb() {
+template <typename SIG, typename TYPES, int N> void tlm_signal<SIG, TYPES, N>::que_cb() {
     while(auto oi = que.get_next())
         value.write(oi.get());
 }
+}  // namespace scc
 } // namespace tlm
 #endif /* _TLM_TLM_SIGNAL_H_ */

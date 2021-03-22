@@ -1,9 +1,9 @@
 
 #pragma once
 
-#include "scc/tlm/scv4tlm/tlm_rec_target_socket.h"
+#include "tlm/scc/scv4tlm/tlm_rec_target_socket.h"
 #include <axi/axi_tlm.h>
-#include <scc/tlm/target_mixin.h>
+#include <tlm/scc/target_mixin.h>
 
 #include <systemc>
 #include <tlm>
@@ -24,7 +24,7 @@ public:
 
     axi4lite_tlm2pin_adaptor(sc_core::sc_module_name nm);
 
-    scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH, axi::axi_protocol_types>, axi::axi_protocol_types>
+    tlm::scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH, axi::axi_protocol_types>, axi::axi_protocol_types>
         input_socket{"input_socket"};
 
     sc_core::sc_in<bool> clk_i{"clk_i"};

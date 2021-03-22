@@ -1,11 +1,11 @@
 #pragma once
 
 #include <axi/axi_tlm.h>
-#include <scc/tlm/initiator_mixin.h>
+#include <tlm/scc/initiator_mixin.h>
 #include <scc/report.h>
-#include <scc/tlm/scv4tlm/tlm_rec_initiator_socket.h>
-#include <scc/tlm/tlm_id.h>
-#include <scc/tlm/tlm_mm.h>
+#include <tlm/scc/scv4tlm/tlm_rec_initiator_socket.h>
+#include <tlm/scc/tlm_id.h>
+#include <tlm/scc/tlm_mm.h>
 
 #include <systemc>
 #include <tlm>
@@ -32,7 +32,7 @@ public:
 
     axi_pin2tlm_adaptor(sc_core::sc_module_name nm);
 
-    scc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<BUSWIDTH, axi::axi_protocol_types>, axi::axi_protocol_types>
+    tlm::scc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<BUSWIDTH, axi::axi_protocol_types>, axi::axi_protocol_types>
         output_socket{"output_socket"};
 
     sc_core::sc_in<bool> clk_i{"clk_i"};
@@ -160,7 +160,7 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
 
             auto it = active_r_transactions.find(id);
             if(it == active_r_transactions.end()) {
-                payload_type* payload = tlm::tlm_mm<axi::axi_protocol_types>::get().allocate<axi::axi4_extension>();
+                payload_type* payload = tlm::scc::tlm_mm<axi::axi_protocol_types>::get().allocate<axi::axi4_extension>();
                 auto ext = payload->get_extension<axi::axi4_extension>();
                 auto addr = ar_addr_i.read();
                 auto length = ar_len_i.read();
@@ -247,7 +247,7 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
             unsigned id = aw_id_i.read();
             auto it = active_w_transactions.find(id);
             if(it == active_w_transactions.end()) {
-                payload_type* trans = tlm::tlm_mm<axi::axi_protocol_types>::get().allocate<axi::axi4_extension>();
+                payload_type* trans = tlm::scc::tlm_mm<axi::axi_protocol_types>::get().allocate<axi::axi4_extension>();
                 register_trans(id, *trans, axi::BEGIN_PARTIAL_REQ);
                 it = active_w_transactions.find(id);
             }

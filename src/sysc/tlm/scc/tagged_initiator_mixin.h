@@ -22,6 +22,7 @@
 #include <sstream>
 #include <tlm>
 
+namespace tlm {
 namespace scc {
 /**
  *
@@ -132,5 +133,6 @@ private:
     bw_transport_if bw_if;
 };
 } // namespace scc
+}  // namespace tlm
 
 #endif //_SCC_TAGGED_INITIATOR_MIXIN_H__

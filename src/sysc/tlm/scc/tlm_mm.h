@@ -21,7 +21,7 @@
 #include <util/pool_allocator.h>
 
 namespace tlm {
-
+namespace scc {
 /**
  * @class tlm_mm
  * @brief a tlm memory manager
@@ -94,5 +94,6 @@ template <typename TYPES> void tlm_mm<TYPES>::free(tlm::tlm_generic_payload* tra
     allocator.free(trans);
 }
 
+}  // namespace scc
 } // namespace tlm
 #endif /* _TLM_TLM_MM_H_ */

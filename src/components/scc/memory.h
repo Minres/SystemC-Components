@@ -22,7 +22,7 @@
 
 #include "scc/mt19937_rng.h"
 #include "scc/report.h"
-#include "scc/tlm/target_mixin.h"
+#include "tlm/scc/target_mixin.h"
 #include "scc/utilities.h"
 #include <tlm.h>
 #include <util/sparse_array.h>
@@ -44,7 +44,7 @@ namespace scc {
 template <unsigned long long SIZE, unsigned BUSWIDTH = 32> class memory : public sc_core::sc_module {
 public:
     //! the target socket to connect to TLM
-    scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target;
+	tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target;
     /**
      * constructor with explicit instance name
      *

@@ -22,6 +22,7 @@
 #include <sstream>
 #include <tlm>
 
+namespace tlm {
 namespace scc {
 /**
  * @class initiator_mixin
@@ -128,5 +129,6 @@ private:
     bw_transport_if bw_if;
 };
 } // namespace scc
+}  // namespace tlm
 
 #endif //_SYSC_INITIATOR_MIXIN_H__

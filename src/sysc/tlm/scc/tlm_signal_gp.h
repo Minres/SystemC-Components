@@ -21,7 +21,7 @@
 #include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 
 namespace tlm {
-
+namespace scc {
 struct tlm_generic_payload_base;
 
 class tlm_base_mm_interface {
@@ -161,17 +161,17 @@ template <typename SIG = bool> struct tlm_signal_gp : public tlm_generic_payload
     void set_response_status(const tlm_response_status response_status) { m_response_status = response_status; }
     std::string get_response_string() const;
 
-    struct gp_mm : public tlm::tlm_base_mm_interface {
-        tlm::tlm_signal_gp<SIG>* create() {
+    struct gp_mm : public tlm_base_mm_interface {
+        tlm_signal_gp<SIG>* create() {
             if(pool.size()) {
                 auto ret = pool.front();
                 pool.pop_front();
                 return ret;
             } else
-                return new tlm::tlm_signal_gp<SIG>(this);
+                return new tlm_signal_gp<SIG>(this);
         }
         void free(tlm_generic_payload_base* gp) override {
-            auto t = dynamic_cast<tlm::tlm_signal_gp<SIG>*>(gp);
+            auto t = dynamic_cast<tlm_signal_gp<SIG>*>(gp);
             t->free_all_extensions();
             pool.push_back(t);
         }
@@ -181,10 +181,10 @@ template <typename SIG = bool> struct tlm_signal_gp : public tlm_generic_payload
         }
 
     private:
-        std::deque<tlm::tlm_signal_gp<SIG>*> pool;
+        std::deque<tlm_signal_gp<SIG>*> pool;
     };
 
-    static tlm::tlm_signal_gp<SIG>* create() {
+    static tlm_signal_gp<SIG>* create() {
         static thread_local gp_mm mm;
         return mm.create();
     }
@@ -318,5 +318,6 @@ inline void tlm_generic_payload_base::copy_extensions_from(const tlm_generic_pay
 }
 
 inline void tlm_generic_payload_base::resize_extensions() { m_extensions.expand(max_num_extensions()); }
+}  // namespace scc
 } // namespace tlm
 #endif /* _TLM_TLM_SIGNAL_GP_H_ */

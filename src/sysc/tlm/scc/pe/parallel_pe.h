@@ -12,6 +12,7 @@
 #include <tlm>
 #include <deque>
 namespace tlm {
+namespace scc {
 namespace pe {
 
 class parallel_pe: public sc_core::sc_module, public intor_fw_nb {
@@ -47,6 +48,7 @@ private:
 };
 
 } /* namespace pe */
+}  // namespace scc
 } /* namespace tlm */
 
 #endif /* SCC_INCL_TLM_PE_PARALLEL_PE_H_ */

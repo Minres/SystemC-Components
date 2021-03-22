@@ -6,9 +6,10 @@
  */
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
-#include <scc/tlm/pe/parallel_pe.h>
+#include "parallel_pe.h"
 
 namespace tlm {
+namespace scc {
 namespace pe {
 using namespace sc_core;
 
@@ -49,4 +50,5 @@ void parallel_pe::transport(tlm::tlm_generic_payload &payload, bool lt_transport
 }
 
 } /* namespace pe */
+}  // namespace scc
 } /* namespace tlm */

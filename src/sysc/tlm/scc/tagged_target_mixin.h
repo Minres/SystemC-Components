@@ -25,6 +25,7 @@
 #include <tlm>
 #include <tlm_utils/peq_with_get.h>
 
+namespace tlm {
 namespace scc {
 
 template <typename base_type, typename TYPES = tlm::tlm_base_protocol_types>
@@ -163,7 +164,7 @@ private:
         tagged_target_mixin* m_owner;
     };
 
-    class fw_process : public tlm::tlm_fw_transport_if<TYPES>, public tlm::tlm_mm_interface {
+    class fw_process : public tlm::tlm_fw_transport_if<TYPES>, public tlm::scc::tlm_mm_interface {
     public:
         using NBTransportPtr =
             std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)>;
@@ -510,5 +511,6 @@ private:
     transaction_type* m_current_transaction;
 };
 } // namespace scc
+}  // namespace tlm
 
 #endif //__TAGGED_TARGET_MIXIN_H__

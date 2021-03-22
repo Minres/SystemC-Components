@@ -11,6 +11,7 @@
 #include <tlm>
 
 namespace tlm {
+namespace scc {
 namespace pe {
 /**
  * enum to express expectations and capabilities. NB means no backpressure (aka non-blocking)
@@ -53,6 +54,7 @@ struct intor_fw_nb: public intor_fw<type::NB>{};
 struct intor_bw_b: public intor_bw<type::BL>{};
 struct intor_bw_nb: public intor_bw<type::NB>{};
 }
+}  // namespace scc
 }
 
 

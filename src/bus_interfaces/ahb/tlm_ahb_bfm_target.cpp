@@ -9,7 +9,7 @@
 #include <scc/utilities.h>
 #include <ahb/ahb_tlm.h>
 #include <ahb/bfm/target.h>
-#include <scc/tlm/tlm_mm.h>
+#include <tlm/scc/tlm_mm.h>
 
 using namespace ahb::bfm;
 using namespace sc_core;
@@ -25,7 +25,7 @@ target<WIDTH>::target(const sc_module_name& nm)
 template <unsigned WIDTH> target<WIDTH>::~target() = default;
 
 template <unsigned WIDTH> void target<WIDTH>::bfm_thread() {
-    tlm::tlm_mm<>& mm = tlm::tlm_mm<>::get();
+    tlm::scc::tlm_mm<>& mm = tlm::scc::tlm_mm<>::get();
     auto const log_width = scc::ilog2(WIDTH / 8);
     auto beat_cnt = 0U;
     wait(SC_ZERO_TIME);

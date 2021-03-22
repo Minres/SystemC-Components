@@ -26,6 +26,7 @@
 #include <tlm>
 #include <tlm_utils/peq_with_get.h>
 
+namespace tlm {
 namespace scc {
 /**
  * an target socket mixin adding default implementation of callback functions similar to tlm::simple_target_socket
@@ -500,5 +501,6 @@ private:
     transaction_type* m_current_transaction;
 };
 } // namespace scc
+}  // namespace tlm
 
 #endif //__TARGET_MIXIN_H__

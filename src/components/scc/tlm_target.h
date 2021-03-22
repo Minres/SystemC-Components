@@ -18,8 +18,8 @@
 #define _SYSC_TLM_TARGET_H_
 
 #include "resource_access_if.h"
-#include "scc/tlm/scv4tlm/tlm_rec_target_socket.h"
-#include "scc/tlm/target_mixin.h"
+#include "tlm/scc/scv4tlm/tlm_rec_target_socket.h"
+#include "tlm/scc/target_mixin.h"
 #include "util/range_lut.h"
 #include "scc/utilities.h"
 #include <array>
@@ -50,7 +50,7 @@ public:
      */
     tlm_target(sc_core::sc_time& clock);
     //! the target socket
-    scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>> socket;
+    tlm::scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>> socket;
     /**
      * @fn void b_tranport_cb(tlm::tlm_generic_payload&, sc_core::sc_time&)
      * @brief the blocking transport callback

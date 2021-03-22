@@ -22,7 +22,7 @@
 #include <util/ities.h>
 
 namespace tlm {
-
+namespace scc {
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm_base_protocol_types, int N = 1,
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND,
           typename TSOCKET_TYPE = tlm::tlm_target_socket<BUSWIDTH, TYPES, N, POL>,
@@ -168,6 +168,7 @@ private:
     std::unique_ptr<target_socket_type> av_tsck;
 };
 
+}  // namespace scc
 } /* namespace tlm */
 
 #endif /* OSCI_LIB_SCC_INCL_TLM_TLM2_PV_AV_TARGET_ADAPTER_H_ */

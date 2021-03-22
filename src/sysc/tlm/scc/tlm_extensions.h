@@ -20,7 +20,7 @@
 #include "tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h"
 
 namespace tlm {
-
+namespace scc {
 template <typename T> struct tlm_unmanaged_extension : public tlm_extension<T> {
     using type = T;
 
@@ -102,5 +102,6 @@ private:
     std::vector<unsigned char> buffer_;
 };
 
+}  // namespace scc
 } // namespace tlm
 #endif /* SC_COMPONENTS_INCL_TLM_TLM_EXTENSIONS_H_ */

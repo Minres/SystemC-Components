@@ -53,7 +53,7 @@ public:
         this->set_streaming_width(x.get_streaming_width());
         return (*this);
     }
-    explicit tlm_recording_payload(tlm::tlm_mm_interface* mm)
+    explicit tlm_recording_payload(tlm::scc::tlm_mm_interface* mm)
     : TYPES::tlm_payload_type(mm)
     , parent()
     , id(0) {}
@@ -84,7 +84,7 @@ public sc_core::sc_object {
 
 public:
     using recording_types = impl::tlm_recording_types<TYPES>;
-    using mm = tlm::tlm_mm<recording_types>;
+    using mm = tlm::scc::tlm_mm<recording_types>;
     using tlm_recording_payload = impl::tlm_recording_payload<TYPES>;
 
     //! \brief the attribute to selectively enable/disable recording

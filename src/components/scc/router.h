@@ -17,10 +17,10 @@
 #ifndef _SYSC_ROUTER_H_
 #define _SYSC_ROUTER_H_
 
-#include "scc/tlm/initiator_mixin.h"
-#include "scc/tlm/scv4tlm/tlm_rec_initiator_socket.h"
-#include "scc/tlm/scv4tlm/tlm_rec_target_socket.h"
-#include "scc/tlm/target_mixin.h"
+#include "tlm/scc/initiator_mixin.h"
+#include "tlm/scc/scv4tlm/tlm_rec_initiator_socket.h"
+#include "tlm/scc/scv4tlm/tlm_rec_target_socket.h"
+#include "tlm/scc/target_mixin.h"
 #include "util/range_lut.h"
 #include "scc/utilities.h"
 #include <limits>
@@ -39,8 +39,8 @@ namespace scc {
  */
 template <unsigned BUSWIDTH = 32> class router : sc_core::sc_module {
 public:
-    using intor_sckt = scc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<BUSWIDTH>>;
-    using target_sckt = scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>>;
+    using intor_sckt = tlm::scc::initiator_mixin<scv4tlm::tlm_rec_initiator_socket<BUSWIDTH>>;
+    using target_sckt = tlm::scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>>;
     //! \brief the array of target sockets
     sc_core::sc_vector<target_sckt> target;
     //! \brief  the array of initiator sockets

@@ -8,7 +8,7 @@
 #ifndef _INITIATOR_H_
 #define _INITIATOR_H_
 
-#include <scc/tlm/target_mixin.h>
+#include <tlm/scc/target_mixin.h>
 #include <tlm>
 #include <tlm_utils/peq_with_get.h>
 #include <type_traits>
@@ -35,7 +35,7 @@ public:
     sc_core::sc_in<bool> HREADY_i{"HREADY_i"};
     sc_core::sc_in<bool> HRESP_i{"HRESP_i"};
 
-    scc::target_mixin<tlm::tlm_target_socket<WIDTH>> tsckt{"tsckt"};
+    tlm::scc::target_mixin<tlm::tlm_target_socket<WIDTH>> tsckt{"tsckt"};
 
     initiator(const sc_core::sc_module_name& nm);
     virtual ~initiator() = default;
