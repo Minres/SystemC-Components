@@ -44,7 +44,7 @@ void ordered_semaphore::set_capacity(unsigned c) {
         capacity = c;
         value -= diff;
         if(value > 0)
-            free_evt.notify();
+            free_evt.notify(sc_core::SC_ZERO_TIME);
     } else {
         SCCWARN(SCMOD) << "cannot resize fixed size ordered semaphore";
     }

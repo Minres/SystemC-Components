@@ -3,18 +3,18 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # 
 
 project(scc VERSION 1.0.0 LANGUAGES CXX C)
 
-option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
+find_package(Doxygen)
+
+option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 
 option(BUILD_STAND_ALONE "Do a standalone build and do not rely on a parent project providing needed libraries" FALSE)
+
 include(Common)
 include(GNUInstallDirs)
 if(BUILD_STAND_ALONE)
 	include(Conan)
 	setup_conan(TARGETS)
 endif()
-
-
-find_package(Doxygen)
 
 if(BUILD_SCC_DOCUMENTATION)
     if(NOT DOXYGEN_FOUND)
@@ -33,15 +33,15 @@ if(BUILD_SCC_DOCUMENTATION)
 	set(DOXYGEN_GENERATE_HTML YES)
 	set(DOXYGEN_GENERATE_MAN YES)
 	set(DOXYGEN_GENERATE_LATEX NO)
-	set(DOXYGEN_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/docs")
+	set(DOXYGEN_OUTPUT_DIRECTORY "${scc_BINARY_DIR}/scc")
 	# this target will only be built if specifically asked to.
 	# run "make scc-docs" to create the doxygen documentation
 	doxygen_add_docs(
 	    scc-docs
-	    ${PROJECT_SOURCE_DIR}/incl ${PROJECT_SOURCE_DIR}/README.md
+	    ${PROJECT_SOURCE_DIR}/incl ${PROJECT_SOURCE_DIR}/axi_chi/axi  ${PROJECT_SOURCE_DIR}/axi_chi/chi  ${PROJECT_SOURCE_DIR}/README.md
 	    ALL COMMENT "Generate API-documents for SCC."
 	)
-    install(DIRECTORY ${PROJECT_BINARY_DIR}/docs TYPE DOC)
+    install(DIRECTORY ${scc_BINARY_DIR}/scc DESTINATION ${CMAKE_INSTALL_DOCDIR}/)
 endif()
 
 

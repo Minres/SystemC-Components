@@ -18,7 +18,7 @@
 #define _SCC_SC_SIGNAL_GP_H_
 
 #include <sysc/communication/sc_signal.h>
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
+#include <tlm>
 namespace scc {
 /**
  * @class sc_owning_signal

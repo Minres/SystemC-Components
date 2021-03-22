@@ -239,14 +239,16 @@ inline void log2logger(spdlog::logger& logger, scc::log lvl, const string& msg) 
 
 void report_handler(const sc_report& rep, const sc_actions& actions) {
     thread_local bool sc_stop_called = false;
-    if((actions & SC_DISPLAY) && (!log_cfg.file_logger || get_verbosity(rep) < SC_HIGH))
-        log2logger(*log_cfg.console_logger, rep, log_cfg);
-    if((actions & SC_LOG) && log_cfg.file_logger) {
-        scc::LogConfig lcfg(log_cfg);
-        lcfg.print_sim_time = true;
-        if(!lcfg.msg_type_field_width)
-            lcfg.msg_type_field_width = 24;
-        log2logger(*log_cfg.file_logger, rep, lcfg);
+    if(rep.get_severity()== sc_core::SC_INFO || !log_cfg.report_only_first_error || sc_report_handler::get_count(SC_ERROR)<2) {
+        if((actions & SC_DISPLAY) && (!log_cfg.file_logger || get_verbosity(rep) < SC_HIGH))
+            log2logger(*log_cfg.console_logger, rep, log_cfg);
+        if((actions & SC_LOG) && log_cfg.file_logger) {
+            scc::LogConfig lcfg(log_cfg);
+            lcfg.print_sim_time = true;
+            if(!lcfg.msg_type_field_width)
+                lcfg.msg_type_field_width = 24;
+            log2logger(*log_cfg.file_logger, rep, lcfg);
+        }
     }
     if(actions & SC_STOP) {
         this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 10));
@@ -481,6 +483,12 @@ scc::LogConfig& scc::LogConfig::dontCreateBroker(bool v) {
     this->dont_create_broker = v;
     return *this;
 }
+
+scc:: LogConfig& scc::LogConfig::reportOnlyFirstError(bool v){
+    this->report_only_first_error = v;
+    return *this;
+}
+
 
 sc_core::sc_verbosity scc::get_log_verbosity(char const* str) {
 #ifdef WITH_CCI

@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
-add_subdirectory(ace-axi)
-add_subdirectory(axi-axi)
+if(NOT HAS_PCT)
+	add_subdirectory(ace-axi)
+	add_subdirectory(axi-axi)
+endif()
 add_subdirectory(axi-pinlevel)
