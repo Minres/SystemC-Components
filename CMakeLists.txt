@@ -100,8 +100,6 @@ target_link_libraries(scc INTERFACE ${Boost_LIBRARIES})
 target_link_libraries(scc INTERFACE ${FMT_TARGET} ${SPDLOG_TARGET})
 
 set_target_properties(scc PROPERTIES
-	VERSION ${PROJECT_VERSION}
-  FRAMEWORK FALSE
   PUBLIC_HEADER "scc.h" # specify the public headers
 )
 install(TARGETS scc
