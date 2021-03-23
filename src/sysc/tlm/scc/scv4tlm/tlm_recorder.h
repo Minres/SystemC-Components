@@ -28,7 +28,7 @@
 #include <regex>
 #include <scv.h>
 #include <string>
-#include <tlm/tlm_mm.h>
+#include <tlm/scc/tlm_mm.h>
 #include <tlm>
 #include <tlm_utils/peq_with_cb_and_phase.h>
 
@@ -53,7 +53,7 @@ public:
         this->set_streaming_width(x.get_streaming_width());
         return (*this);
     }
-    explicit tlm_recording_payload(tlm::scc::tlm_mm_interface* mm)
+    explicit tlm_recording_payload(tlm::tlm_mm_interface* mm)
     : TYPES::tlm_payload_type(mm)
     , parent()
     , id(0) {}

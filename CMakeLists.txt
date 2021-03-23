@@ -95,7 +95,7 @@ if(HAVE_GETENV)
 endif()
 
 target_link_libraries(scc INTERFACE scc-util sysc components busses)
-target_link_libraries(scc INTERFACE jsoncpp  ${CMAKE_DL_LIBS})
+target_link_libraries(scc INTERFACE jsoncpp)
 target_link_libraries(scc INTERFACE ${Boost_LIBRARIES})
 target_link_libraries(scc INTERFACE ${FMT_TARGET} ${SPDLOG_TARGET})
 
