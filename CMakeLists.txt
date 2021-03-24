@@ -3,7 +3,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # 
 
 project(scc VERSION 1.0.0 LANGUAGES CXX C)
 
-find_package(Doxygen)
+# find_package(Doxygen)
 
 option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 
@@ -17,6 +17,7 @@ if(BUILD_STAND_ALONE)
 endif()
 
 if(BUILD_SCC_DOCUMENTATION)
+find_package(Doxygen)
     if(NOT DOXYGEN_FOUND)
         message(FATAL_ERROR "Doxygen is needed to build the documentation.")
     endif()
@@ -110,7 +111,7 @@ endif()
 set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "/json/" "jsoncpp.cpp" "sqlite3")
 find_package(ClangFormat)
 find_package(Threads)
-find_package(Boost REQUIRED COMPONENTS system) # header only libraries must not be added herefind_package(ZLIB REQUIRED)
+find_package(Boost 1.59 REQUIRED COMPONENTS system) # header only libraries must not be added herefind_package(ZLIB REQUIRED)
 find_package(${SystemCPackage} REQUIRED)
 if(SystemC_FOUND)
         message(STATUS "SystemC headers at ${SystemC_INCLUDE_DIRS}")
