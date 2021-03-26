@@ -21,6 +21,8 @@
 #include <tlm_utils/simple_initiator_socket.h>
 #include <tlm_utils/simple_target_socket.h>
 
+namespace tlm {
+namespace scc {
 namespace scv4tlm {
 /*! \brief The TLM2 transaction recorder
  *
@@ -61,5 +63,7 @@ public:
     virtual ~tlm_recorder_module() {}
 };
 } // namespace scv4tlm
+} // namespace scc
+} // namespace tlm
 
 #endif /* TLM2_RECORDER_MODULE_H_ */

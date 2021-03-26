@@ -20,6 +20,8 @@
 #include <assert.h>
 #include <tlm>
 
+namespace tlm {
+namespace scc {
 namespace scv4tlm {
 
 class tlm_gp_data {
@@ -163,4 +165,6 @@ enum tlm_phase_enum {
 };
 
 } // namespace scv4tlm
+} // namespace scc
+} // namespace tlm
 #endif /* TLM_GP_DATA_H_ */

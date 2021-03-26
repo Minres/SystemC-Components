@@ -21,6 +21,8 @@
 #include <scv.h>
 #include <tlm>
 
+namespace tlm {
+namespace scc {
 namespace scv4tlm {
 
 //! transaction relationships
@@ -86,5 +88,7 @@ private:
     void* creator;
 };
 } // namespace scv4tlm
+} // namespace scc
+} // namespace tlm
 
 #endif /* TLM_RECORDING_EXTENSION_H_ */

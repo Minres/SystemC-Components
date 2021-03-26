@@ -32,6 +32,8 @@
 #include <tlm>
 #include <tlm_utils/peq_with_cb_and_phase.h>
 
+namespace tlm {
+namespace scc {
 namespace scv4tlm {
 //! implementation detail
 namespace impl {
@@ -696,5 +698,7 @@ template <typename TYPES> unsigned int tlm_recorder<TYPES>::transport_dbg(typena
 }
 
 } // namespace scv4tlm
+}  // namespace scc
+}  // namespace tlm
 
 #endif /* TLM2_RECORDER_H_ */

@@ -22,6 +22,8 @@
 #endif
 #include <tlm>
 
+namespace tlm {
+namespace scc {
 namespace scv4tlm {
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types, int N = 1
 #if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)
@@ -132,6 +134,7 @@ protected:
 };
 #endif
 } // namespace scv4tlm
-// namespace scv4tlm
+} // namespace scc
+} // namespace tlm
 
 #endif /* TLM_REC_TARGET_SOCKET_H_ */

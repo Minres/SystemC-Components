@@ -50,7 +50,7 @@ public:
      */
     tlm_target(sc_core::sc_time& clock);
     //! the target socket
-    tlm::scc::target_mixin<scv4tlm::tlm_rec_target_socket<BUSWIDTH>> socket;
+    tlm::scc::target_mixin<tlm::scc::scv4tlm::tlm_rec_target_socket<BUSWIDTH>> socket;
     /**
      * @fn void b_tranport_cb(tlm::tlm_generic_payload&, sc_core::sc_time&)
      * @brief the blocking transport callback

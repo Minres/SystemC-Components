@@ -20,6 +20,8 @@
 #include <scv.h>
 #include <tlm>
 
+namespace tlm {
+namespace scc {
 namespace scv4tlm {
 /*! \brief The TLM transaction extensions recorder interface
  *
@@ -93,5 +95,6 @@ private:
 };
 
 } // namespace scv4tlm
-
+} // namespace scc
+} // namespace tlm
 #endif /* TLM_RECORDER_REGISTRY_H_ */
