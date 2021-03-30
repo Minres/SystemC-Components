@@ -17,8 +17,8 @@
 #ifndef TLM_GP_DATA_EXT_H_
 #define TLM_GP_DATA_EXT_H_
 
-#include "tlm_gp_data.h"
 #include <scv.h>
+#include <tlm/scc/scv/tlm_gp_data.h>
 
 template <> class scv_extensions<tlm::tlm_command> : public scv_enum_base<tlm::tlm_command> {
 public:
@@ -51,20 +51,20 @@ public:
     }
 };
 
-template <> class scv_extensions<tlm::scc::scv4tlm::tlm_phase_enum> : public scv_enum_base<tlm::scc::scv4tlm::tlm_phase_enum> {
+template <> class scv_extensions<tlm::scc::scv::tlm_phase_enum> : public scv_enum_base<tlm::scc::scv::tlm_phase_enum> {
 public:
-    SCV_ENUM_CTOR(tlm::scc::scv4tlm::tlm_phase_enum) {    // NOLINT
-        SCV_ENUM(tlm::scc::scv4tlm::UNINITIALIZED_PHASE); // NOLINT
-        SCV_ENUM(tlm::scc::scv4tlm::BEGIN_REQ);           // NOLINT
-        SCV_ENUM(tlm::scc::scv4tlm::END_REQ);             // NOLINT
-        SCV_ENUM(tlm::scc::scv4tlm::BEGIN_RESP);          // NOLINT
-        SCV_ENUM(tlm::scc::scv4tlm::END_RESP);            // NOLINT
-        SCV_ENUM(tlm::scc::scv4tlm::CUSTOM1);             // NOLINT
-        SCV_ENUM(tlm::scc::scv4tlm::CUSTOM2);             // NOLINT
-        SCV_ENUM(tlm::scc::scv4tlm::CUSTOM3);             // NOLINT
-        SCV_ENUM(tlm::scc::scv4tlm::CUSTOM4);             // NOLINT
-        SCV_ENUM(tlm::scc::scv4tlm::CUSTOM5);             // NOLINT
-        SCV_ENUM(tlm::scc::scv4tlm::CUSTOM6);             // NOLINT
+    SCV_ENUM_CTOR(tlm::scc::scv::tlm_phase_enum) {    // NOLINT
+        SCV_ENUM(tlm::scc::scv::UNINITIALIZED_PHASE); // NOLINT
+        SCV_ENUM(tlm::scc::scv::BEGIN_REQ);           // NOLINT
+        SCV_ENUM(tlm::scc::scv::END_REQ);             // NOLINT
+        SCV_ENUM(tlm::scc::scv::BEGIN_RESP);          // NOLINT
+        SCV_ENUM(tlm::scc::scv::END_RESP);            // NOLINT
+        SCV_ENUM(tlm::scc::scv::CUSTOM1);             // NOLINT
+        SCV_ENUM(tlm::scc::scv::CUSTOM2);             // NOLINT
+        SCV_ENUM(tlm::scc::scv::CUSTOM3);             // NOLINT
+        SCV_ENUM(tlm::scc::scv::CUSTOM4);             // NOLINT
+        SCV_ENUM(tlm::scc::scv::CUSTOM5);             // NOLINT
+        SCV_ENUM(tlm::scc::scv::CUSTOM6);             // NOLINT
     }
 };
 
@@ -77,7 +77,7 @@ public:
     }
 };
 
-template <> class scv_extensions<tlm::scc::scv4tlm::tlm_gp_data> : public scv_extensions_base<tlm::scc::scv4tlm::tlm_gp_data> {
+template <> class scv_extensions<tlm::scc::scv::tlm_gp_data> : public scv_extensions_base<tlm::scc::scv::tlm_gp_data> {
 public:
     scv_extensions<sc_dt::uint64> address;
     scv_extensions<tlm::tlm_command> command;
@@ -91,7 +91,7 @@ public:
     scv_extensions<tlm::tlm_gp_option> gp_option;
     scv_extensions<uintptr_t> uid;
 
-    SCV_EXTENSIONS_CTOR(tlm::scc::scv4tlm::tlm_gp_data) {
+    SCV_EXTENSIONS_CTOR(tlm::scc::scv::tlm_gp_data) {
         // must be in order
         SCV_FIELD(address);
         SCV_FIELD(command);
@@ -117,7 +117,7 @@ public:
     }
 };
 
-template <> class scv_extensions<tlm::scc::scv4tlm::tlm_dmi_data> : public scv_extensions_base<tlm::scc::scv4tlm::tlm_dmi_data> {
+template <> class scv_extensions<tlm::scc::scv::tlm_dmi_data> : public scv_extensions_base<tlm::scc::scv::tlm_dmi_data> {
 public:
     scv_extensions<unsigned char*> dmi_ptr;
     scv_extensions<sc_dt::uint64> dmi_start_address;
@@ -125,7 +125,7 @@ public:
     scv_extensions<tlm::tlm_dmi::dmi_access_e> dmi_access;
     scv_extensions<sc_dt::uint64> dmi_read_latency;
     scv_extensions<sc_dt::uint64> dmi_write_latency;
-    SCV_EXTENSIONS_CTOR(tlm::scc::scv4tlm::tlm_dmi_data) {
+    SCV_EXTENSIONS_CTOR(tlm::scc::scv::tlm_dmi_data) {
         // must be in order
         SCV_FIELD(dmi_ptr);
         SCV_FIELD(dmi_start_address);

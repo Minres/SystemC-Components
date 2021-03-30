@@ -22,7 +22,7 @@
 
 namespace tlm {
 namespace scc {
-namespace scv4tlm {
+namespace scv {
 /*! \brief The TLM transaction extensions recorder interface
  *
  * This interface is used by the TLM transaction recorder. It can be used to

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2018, 2019, 2020, 2021 MINRES Technologies GmbH
+ * Copyright 2021 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,19 @@
 
 #pragma once
 
-#include "bus_interfaces/scc_bus_interfaces.h"
-#include "common/scc_util.h"
-#include "components/scc_components.h"
-#include "sysc/scc_sysc.h"
+#include "ahb/ahb_tlm.h"
+#include "ahb/bfm/initiator.h"
+#include "ahb/bfm/target.h"
+#include "ahb/pe/ahb_initiator.h"
+#include "ahb/pe/ahb_target.h"
 
+#include "apb/pe/apb_initiator.h"
+#include "apb/pe/apb_target.h"
 
+#include "atp/timing_params.h"
+
+#include "axi/axi_initiator.h"
+#include "axi/axi_target.h"
+#include "axi/axi_pin2tlm_adaptor.h"
+#include "axi/axi_tlm2pin_adaptor.h"
+#include "axi/axi4lite_tlm2pin_adaptor.h"

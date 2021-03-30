@@ -18,13 +18,13 @@
 #define TLM_REC_INITIATOR_SOCKET_H_
 
 #ifdef WITH_SCV
-#include "tlm_recorder.h"
+#include <tlm/scc/scv/tlm_recorder.h>
 #endif
 #include <tlm>
 
 namespace tlm {
 namespace scc {
-namespace scv4tlm {
+namespace scv {
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types, int N = 1
 #if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)
           ,
@@ -130,7 +130,7 @@ public:
 protected:
     sc_core::sc_port<tlm::tlm_fw_transport_if<TYPES>> fw_port;
     sc_core::sc_port<tlm::tlm_bw_transport_if<TYPES>> bw_port;
-    scv4tlm::tlm_recorder<TYPES> recorder;
+    scv::tlm_recorder<TYPES> recorder;
 };
 #endif
 } // namespace scv4tlm

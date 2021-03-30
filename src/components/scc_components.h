@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2018, 2019, 2020, 2021 MINRES Technologies GmbH
+ * Copyright 2021 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,10 @@
 
 #pragma once
 
-#include "bus_interfaces/scc_bus_interfaces.h"
-#include "common/scc_util.h"
-#include "components/scc_components.h"
-#include "sysc/scc_sysc.h"
-
+#include "scc/memory.h"
+#include "scc/register.h"
+#include "scc/resetable.h"
+#include "scc/resource_access_if.h"
+#include "scc/router.h"
+#include "scc/tlm_target.h"
 

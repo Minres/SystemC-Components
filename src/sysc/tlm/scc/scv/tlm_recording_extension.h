@@ -23,7 +23,7 @@
 
 namespace tlm {
 namespace scc {
-namespace scv4tlm {
+namespace scv {
 
 //! transaction relationships
 enum tx_rel {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2018, 2019, 2020, 2021 MINRES Technologies GmbH
+ * Copyright 2021 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,17 @@
 
 #pragma once
 
-#include "bus_interfaces/scc_bus_interfaces.h"
-#include "common/scc_util.h"
-#include "components/scc_components.h"
-#include "sysc/scc_sysc.h"
-
+#include "util/assert.h"
+#include "util/bit_field.h"
+#include "util/delegate.h"
+#include "util/io-redirector.h"
+#include "util/ities.h"
+#include "util/logging.h"
+#include "util/mt19937_rng.h"
+#include "util/pool_allocator.h"
+#include "util/range_lut.h"
+#include "util/sparse_array.h"
+#include "util/strprintf.h"
+#include "util/thread_syncronizer.h"
+#include "util/watchdog.h"
 

@@ -22,7 +22,7 @@
 
 namespace tlm {
 namespace scc {
-namespace scv4tlm {
+namespace scv {
 
 class tlm_gp_data {
 public:

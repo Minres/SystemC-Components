@@ -3,7 +3,7 @@
 #include <axi/axi_tlm.h>
 #include <tlm/scc/initiator_mixin.h>
 #include <scc/report.h>
-#include <tlm/scc/scv4tlm/tlm_rec_initiator_socket.h>
+#include <tlm/scc/scv/tlm_rec_initiator_socket.h>
 #include <tlm/scc/tlm_id.h>
 #include <tlm/scc/tlm_mm.h>
 
@@ -32,7 +32,7 @@ public:
 
     axi_pin2tlm_adaptor(sc_core::sc_module_name nm);
 
-    tlm::scc::initiator_mixin<tlm::scc::scv4tlm::tlm_rec_initiator_socket<BUSWIDTH, axi::axi_protocol_types>, axi::axi_protocol_types>
+    tlm::scc::initiator_mixin<tlm::scc::scv::tlm_rec_initiator_socket<BUSWIDTH, axi::axi_protocol_types>, axi::axi_protocol_types>
         output_socket{"output_socket"};
 
     sc_core::sc_in<bool> clk_i{"clk_i"};

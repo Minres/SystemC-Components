@@ -17,13 +17,13 @@
 #ifndef TLM2_RECORDER_MODULE_H_
 #define TLM2_RECORDER_MODULE_H_
 
-#include "tlm_recorder.h"
+#include <tlm/scc/scv/tlm_recorder.h>
 #include <tlm_utils/simple_initiator_socket.h>
 #include <tlm_utils/simple_target_socket.h>
 
 namespace tlm {
 namespace scc {
-namespace scv4tlm {
+namespace scv {
 /*! \brief The TLM2 transaction recorder
  *
  * This module records all TLM transaction to a SCV transaction stream for
