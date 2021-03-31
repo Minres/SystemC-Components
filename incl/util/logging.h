@@ -118,7 +118,7 @@ public:
      * @return the logging level
      */
     static log_level& reporting_level() {
-        thread_local log_level reportingLevel = WARNING;
+        static log_level reportingLevel = WARNING;
         return reportingLevel;
     }
     /**
@@ -127,7 +127,7 @@ public:
      * @return the logging level
      */
     static bool& abort_on_fatal() {
-        thread_local bool flag = false;
+        static bool flag = false;
         return flag;
     }
     /**
@@ -157,7 +157,7 @@ public:
      * @return the print time flag
      */
     static bool& print_time() {
-        thread_local bool flag = true;
+        static bool flag = true;
         return flag;
     }
     /**
@@ -166,13 +166,13 @@ public:
      * @return the print severity flag
      */
     static bool& print_severity() {
-        thread_local bool flag = true;
+        static bool flag = true;
         return flag;
     }
 
 protected:
     log_level& get_last_log_level() {
-        thread_local log_level level = TRACE;
+        static log_level level = TRACE;
         return level;
     }
     static const char* const* get_log_level_cstr() { return buffer.data(); };
@@ -189,12 +189,12 @@ public:
      * @return the file handle
      */
     static FILE*& stream() {
-        thread_local FILE* pStream = stdout;
+        static FILE* pStream = stdout;
         return pStream;
     }
 
     static std::ostream*& ostream() {
-        thread_local std::ostream* oStream{nullptr};
+        static std::ostream* oStream{nullptr};
         return oStream;
     }
     /**
