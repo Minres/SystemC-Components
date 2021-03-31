@@ -3,7 +3,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # 
 
 project(scc VERSION 1.0.0 LANGUAGES CXX C)
 
-find_package(Doxygen)
+# find_package(Doxygen)
 
 option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 
@@ -17,6 +17,7 @@ if(BUILD_STAND_ALONE)
 endif()
 
 if(BUILD_SCC_DOCUMENTATION)
+find_package(Doxygen)
     if(NOT DOXYGEN_FOUND)
         message(FATAL_ERROR "Doxygen is needed to build the documentation.")
     endif()
