@@ -3,9 +3,9 @@
 
 #pragma once
 
-#include "spdlog/details/log_msg_buffer.h"
-#include "spdlog/details/mpmc_blocking_q.h"
-#include "spdlog/details/os.h"
+#include <spdlog/details/log_msg_buffer.h>
+#include <spdlog/details/mpmc_blocking_q.h>
+#include <spdlog/details/os.h>
 
 #include <chrono>
 #include <memory>
@@ -27,7 +27,7 @@ enum class async_msg_type
     terminate
 };
 
-#include "spdlog/details/log_msg_buffer.h"
+#include <spdlog/details/log_msg_buffer.h>
 // Async msg to move to/from the queue
 // Movable only. should never be copied
 struct async_msg : log_msg_buffer
@@ -79,7 +79,7 @@ struct async_msg : log_msg_buffer
     {}
 };
 
-class thread_pool
+class SPDLOG_API thread_pool
 {
 public:
     using item_type = async_msg;
@@ -97,6 +97,7 @@ public:
     void post_log(async_logger_ptr &&worker_ptr, const details::log_msg &msg, async_overflow_policy overflow_policy);
     void post_flush(async_logger_ptr &&worker_ptr, async_overflow_policy overflow_policy);
     size_t overrun_counter();
+    size_t queue_size();
 
 private:
     q_type q_;
