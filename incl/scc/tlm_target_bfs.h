@@ -45,6 +45,7 @@ typedef struct tlm_target_bfs_params {
   size_t size{0};
   size_t num_irqs{0};
   size_t num_regs{0};
+  tlm_target_bfs_params(void) : base_addr(), size(), num_irqs(), num_regs() {}
   tlm_target_bfs_params( uint64_t base_addr, size_t size, size_t num_irqs, size_t num_regs)
   : base_addr(base_addr)
   , size(size)
