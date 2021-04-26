@@ -35,8 +35,8 @@ public:
     {"R2", 0x08} /* a 32 bit register @ at peripheral base address + 0x8 */
   }};
   /* Individual named bitfields of tlm_target_bfs_example' registers */
-  std::array<scc::bitfield<uint32_t>, 5> bitfields{{
-    {getRegister("R0"), "R0", 0, 32,"regs.R0"} /* a 32-bit field inside R0 register [31:0]*/ ,
+  std::array<scc::bitfield<uint32_t>, 4> bitfields{{
+    //{getRegister("R0"), "R0", 0, 32,"regs.R0"} /* a 32-bit field inside R0 register [31:0]*/ ,
     {getRegister("R1"), "BITFIELD_0", 0, 1, "regs.R1.BF0"} /* a 1-bit field inside R1 register [0:0]*/ ,
     {getRegister("R1"), "BITFIELD_1", 3, 3, "regs.R1.BF1"} /* a 3-bit field inside R1 register [5:3]*/  ,
     {getRegister("R2"), "BITFIELD_0", 0, 16, "regs.R2.BF0"} /* a 16-bit field inside R1 register [15:0]*/ ,
@@ -53,7 +53,7 @@ class tlm_target_bfs_example: public scc::tlm_target_bfs<tlm_target_bfs_register
   SC_HAS_PROCESS(tlm_target_bfs_example);
 
 private:
-  scc::bitfield<uint32_t>& r_io_{regs->getBitfield("R0", "R0", "regs.R0")};
+  scc::bitfield_register<uint32_t>& r_io_{regs->getRegister("R0")};
   scc::bitfield<uint32_t>& r_inputconfig_{regs->getBitfield("R1", "BITFIELD_0", "regs.R1.BF0")};
   scc::bitfield<uint32_t>& r_outputconfig_{regs->getBitfield("R1", "BITFIELD_1", "regs.R1.BF1")};
   scc::bitfield<uint32_t>& r_control_{regs->getBitfield("R2", "BITFIELD_0", "regs.R2.BF0")};
@@ -86,16 +86,20 @@ public:
       } else {
         do_somethingelse();
       }
-      SC_REPORT_INFO("", "New Control Value Set");
+      SCCINFO() << "r_control_ " << "write: 0x" << std::hex << r_control_ << std::endl;
+    });
+    r_control_.setReadCallback([this](const scc::bitfield<uint32_t>&) {
+      SCCINFO() << "r_control_ " << "read: 0x" << std::hex << r_control_ << std::endl;
+      return(r_control_.get());
     });
     r_status_.setReadCallback([this](const scc::bitfield<uint32_t>&) {
+      SCCINFO() << "r_status_ " << "read: 0x" << std::hex << r_status_ << std::endl;
       return(action_on_statusread());
     });
-    r_io_.setReadCallback([this](const scc::bitfield<uint32_t>&) {
-      SCCINFO() << "r_io_ " << "read: 0x" << std::hex << r_io_.get() << std::endl;
-      return(r_io_.get());
+    r_io_.setReadCallback([this](const scc::bitfield_register<uint32_t>&, uint32_t& result) {
+      SCCINFO() << "r_io_ " << "read: 0x" << std::hex << result << std::endl;
     });
-    r_io_.setWriteCallback([this](scc::bitfield<uint32_t>&, uint32_t& valueToWrite) {
+    r_io_.setWriteCallback([this](scc::bitfield_register<uint32_t>&, uint32_t& valueToWrite) {
       SCCINFO() << "r_io_ " << "write: 0x" << std::hex << valueToWrite << std::endl;
     });
   }
@@ -150,7 +154,7 @@ public:
         for(auto& [dut_name, dut_instance]: duts_){
           std::cout << "test " << dut_name << std::endl;
 
-          /* WRITE test */
+          /* WRITE test callback-able complete register (R0) */
           auto trans = prepare_trans(4);
           trans->set_command(tlm::TLM_WRITE_COMMAND);
           trans->set_address(0); // r_io_
@@ -163,12 +167,11 @@ public:
           uint32_t in = *((uint32_t*)trans->get_data_ptr());
           trans->release();
 
-          /* READ test */
+          /* READ test callback-able complete register (R0) */
           trans = prepare_trans(4);
           trans->set_command(tlm::TLM_READ_COMMAND);
           trans->set_address(0);
           trans->acquire();
-        //  sc_core::sc_time t{0, sc_core::SC_NS};
           (*intor_)->b_transport(*trans, t);
           if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
               SCCERR() << "Invalid response status" << trans->get_response_string();
@@ -177,6 +180,39 @@ public:
             SCCERR() << "Invalid response value " << "out[0x" << std::hex << out << "] != in[0x" << in << "]";
           else
             SCCINFO() << "Read-back successfull " << "out[0x" << std::hex << out << "] == in[0x" << in << "]";
+          trans->release();
+          
+          /* WRITE test callback-able bitfield regs.R2.BF0 alias control */
+          trans = prepare_trans(2);
+          trans->set_command(tlm::TLM_WRITE_COMMAND);
+          trans->set_address(8); // r_control_
+          trans->acquire();
+          *((uint16_t*)trans->get_data_ptr()) = 0x4321;
+          (*intor_)->b_transport(*trans, t);
+          if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
+              SCCERR() << "Invalid response status" << trans->get_response_string();
+          trans->release();
+          
+          /* READ test callback-able register. Activates two bitfields status + control */
+          trans = prepare_trans(4);
+          trans->set_command(tlm::TLM_READ_COMMAND);
+          trans->set_address(8); // r_control_ + r_status_
+          trans->acquire();
+          (*intor_)->b_transport(*trans, t);
+          if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
+              SCCERR() << "Invalid response status" << trans->get_response_string();
+          SCCINFO() << ">R:8(4) := 0x" << std::hex << *(uint32_t*)trans->get_data_ptr() << std::endl;
+          trans->release();
+          
+          /* READ test callback-able register. Activate only status bitfield */
+          trans = prepare_trans(2);
+          trans->set_command(tlm::TLM_READ_COMMAND);
+          trans->set_address(10); // r_control_ + r_status_
+          trans->acquire();
+          (*intor_)->b_transport(*trans, t);
+          if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
+              SCCERR() << "Invalid response status" << trans->get_response_string();
+          SCCINFO() << ">R:10(2) := 0x" << std::hex << *(uint16_t*)trans->get_data_ptr() << std::endl;
           trans->release();
         }
 
