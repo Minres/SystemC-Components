@@ -68,8 +68,8 @@ class abstract_bitfield {
   virtual datatype_t read() = 0;
 
   constexpr bool affected(size_t byteOffset, size_t byteLength) const noexcept {
-    return (byteOffset * 8 <= bitOffset + bitSize) &&
-           (bitOffset <= (byteOffset + byteLength) * 8);
+    return (byteOffset * 8 < bitOffset + bitSize) &&
+           (bitOffset < (byteOffset + byteLength) * 8);
   }
 
   constexpr datatype_t mask() const noexcept {
