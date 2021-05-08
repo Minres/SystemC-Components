@@ -49,7 +49,7 @@ macro(setup_conan)
 	  set(CONAN_BUILD_TYPE -s build_type=${CMAKE_BUILD_TYPE})
     endif()
   endif()
-  message("STDCXX=${CMAKE_CXX_STANDARD}")
+
   if(NOT ${CMAKE_CXX_STANDARD})
     set(CONAN_CXXSTD "")
   else()
@@ -60,7 +60,7 @@ macro(setup_conan)
     endif()
   endif()
 
-  message("Running conan as '${conan} install ${CMAKE_SOURCE_DIR} --build=missing ${CONAN_PROFILE} ${CONAN_COMPILER} ${CONAN_CXXSTD} ${CONAN_BUILD_TYPE}'")
+  #message("Running conan as '${conan} install ${CMAKE_SOURCE_DIR} --build=missing ${CONAN_PROFILE} ${CONAN_COMPILER} ${CONAN_CXXSTD} ${CONAN_BUILD_TYPE}'")
   execute_process(
     COMMAND ${conan} install ${CMAKE_SOURCE_DIR} --build=missing ${CONAN_PROFILE} ${CONAN_COMPILER} ${CONAN_CXXSTD} ${CONAN_BUILD_TYPE}
     RESULT_VARIABLE return_code)

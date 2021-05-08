@@ -4,7 +4,7 @@ project(components VERSION 0.0.1 LANGUAGES CXX)
 
 add_library(components INTERFACE)
 target_include_directories (components INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(components INTERFACE sysc)
+target_link_libraries(components INTERFACE scc-sysc)
 
 set_target_properties(components PROPERTIES
     PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/*

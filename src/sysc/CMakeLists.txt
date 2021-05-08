@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(sysc VERSION 0.0.1 LANGUAGES CXX)
+project(scc-sysc VERSION 0.0.1 LANGUAGES CXX)
 
 find_package(Threads)
 find_package(Boost REQUIRED COMPONENTS date_time)
@@ -69,49 +69,50 @@ if(CCI_FOUND)
     )
 endif()
 
-add_library(sysc STATIC ${LIB_SOURCES})
-target_include_directories (sysc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${Boost_INCLUDE_DIRS})
-target_link_libraries(sysc PRIVATE scc-util jsoncpp ${CMAKE_DL_LIBS})
+add_library(scc-sysc STATIC ${LIB_SOURCES})
+target_include_directories (scc-sysc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${Boost_INCLUDE_DIRS})
+target_link_libraries(scc-sysc PUBLIC scc-util jsoncpp ${CMAKE_DL_LIBS})
 
 
-target_include_directories (sysc PUBLIC ${SystemC_INCLUDE_DIRS})    
-target_link_libraries(sysc PUBLIC ${SystemC_LIBRARIES} )
-target_link_libraries(sysc PUBLIC Threads::Threads)
+target_include_directories (scc-sysc PUBLIC ${SystemC_INCLUDE_DIRS})    
+target_link_directories(scc-sysc PUBLIC ${SystemC_LIBRARY_DIRS})
+target_link_libraries(scc-sysc PUBLIC ${SystemC_LIBRARIES} )
+target_link_libraries(scc-sysc PUBLIC Threads::Threads)
 
 if(ZLIB_FOUND)
-    target_include_directories(sysc PUBLIC ${ZLIB_INCLUDE_DIRS})
-    target_link_libraries(sysc PUBLIC ${ZLIB_LIBRARIES})
-    target_compile_definitions(sysc PRIVATE WITH_ZLIB)
+    target_include_directories(scc-sysc PUBLIC ${ZLIB_INCLUDE_DIRS})
+    target_link_libraries(scc-sysc PUBLIC ${ZLIB_LIBRARIES})
+    target_compile_definitions(scc-sysc PRIVATE WITH_ZLIB)
 endif()
 
 if(CCI_FOUND)
 	message("Building SCC with CCI support")
-    target_compile_definitions(sysc PUBLIC -DWITH_CCI)
-    target_include_directories (sysc PUBLIC ${CCI_INCLUDE_DIRS})
-    target_link_libraries(sysc PUBLIC ${CCI_LIBRARIES} )
+    target_compile_definitions(scc-sysc PUBLIC -DWITH_CCI)
+    target_include_directories (scc-sysc PUBLIC ${CCI_INCLUDE_DIRS})
+    target_link_libraries(scc-sysc PUBLIC ${CCI_LIBRARIES} )
     if(NOT ${CMAKE_VERSION} VERSION_LESS "3.13.0") 
-        target_link_directories(sysc PUBLIC ${CCI_LIBRARY_DIRS})
+        target_link_directories(scc-sysc PUBLIC ${CCI_LIBRARY_DIRS})
     endif()
 endif()
 
 if(SCV_FOUND)   
 	message("Building SCC with SCV support")
-    target_compile_definitions(sysc PUBLIC -DWITH_SCV)
-    target_include_directories (sysc PUBLIC ${SCV_INCLUDE_DIRS})
-    target_link_libraries (sysc PUBLIC ${SCV_LIBRARIES})
+    target_compile_definitions(scc-sysc PUBLIC -DWITH_SCV)
+    target_include_directories (scc-sysc PUBLIC ${SCV_INCLUDE_DIRS})
+    target_link_libraries (scc-sysc PUBLIC ${SCV_LIBRARIES})
     if(NOT ${CMAKE_VERSION} VERSION_LESS "3.13.0") 
-        target_link_directories(sysc PUBLIC ${SCV_LIBRARY_DIRS})
+        target_link_directories(scc-sysc PUBLIC ${SCV_LIBRARY_DIRS})
     endif()
 endif()
 
-set_target_properties(sysc PROPERTIES
+set_target_properties(scc-sysc PROPERTIES
     FRAMEWORK FALSE
     PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/*
 )
 
-install(TARGETS sysc
+install(TARGETS scc-sysc
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sysc
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/scc
         )
