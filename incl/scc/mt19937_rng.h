@@ -25,11 +25,22 @@ class MT19937 {
 public:
     /**
      * Seeds the mersenne twister PRNG with the given value
+     *
      * @param new_seed
      */
     static void seed(uint64_t new_seed = std::mt19937_64::default_seed);
     /**
+     * By default each SystemC process has its own MT rng with a modified seed based on the
+     * process name. If set to true each MT rng gets exactly the same seed thus producing the
+     * same sequence.
+     *
+     * @param enable use the same seed for all MT rng instances
+     */
+    static void enable_global_seed(bool enable);
+
+    /**
      * generates the next random integer number with uniform distribution (similar to rand() )
+     *
      * @return
      */
     static uint64_t uniform() {
@@ -38,6 +49,7 @@ public:
     }
     /**
      * generates the next random integer number with uniform distribution in the range of the given type
+     *
      * @return
      */
     template <typename T> static T uniform() {
@@ -46,6 +58,7 @@ public:
     }
     /**
      * generates the next random integer number with uniform distribution between (and including) min and max
+     *
      * @param min the lower limit of the interval
      * @param max the upper limit of the interval
      * @return
@@ -57,6 +70,7 @@ public:
     }
     /**
      * generates the next random double precision float number with normal distribution (similar to rand() )
+     *
      * @return
      */
     static double normal() {
@@ -65,6 +79,7 @@ public:
     }
     /**
      * generates the next random integer number with log normal distribution (similar to rand() )
+     *
      * @return
      */
     static double lognormal() {

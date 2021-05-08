@@ -14,7 +14,7 @@
 namespace tlm {
 namespace pe {
 
-class parallel_pe: public sc_core::sc_module, public intor_fw {
+class parallel_pe: public sc_core::sc_module, public intor_fw_nb {
     struct thread_unit {
         sc_core::sc_event evt;
         tlm::tlm_generic_payload* gp{nullptr};
@@ -25,11 +25,11 @@ class parallel_pe: public sc_core::sc_module, public intor_fw {
     };
 public:
 
-    sc_core::sc_export<intor_fw> fw_i{"fw_i"};
+    sc_core::sc_export<intor_fw_nb> fw_i{"fw_i"};
 
-    sc_core::sc_port<intor_fw> fw_o{"fw_o"};
+    sc_core::sc_port<intor_bw_nb> bw_o{"bw_o"};
 
-    sc_core::sc_port<intor_bw> bw_o{"bw_o"};
+    sc_core::sc_port<intor_fw_b> fw_o{"fw_o"};
 
     parallel_pe(sc_core::sc_module_name const& nm);
 
