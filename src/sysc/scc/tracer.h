@@ -52,7 +52,7 @@ public:
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal and POD) tracing
      */
-    tracer(const std::string&& name, file_type type, bool enable = true);
+    tracer(std::string const&& name, file_type type, bool enable = true);
     /**
      * @fn  tracer(const std::string&, file_type, bool=true)
      * @brief the constructor
@@ -61,9 +61,8 @@ public:
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal and POD) tracing
      */
-    tracer(const std::string& name, file_type type, bool enable = true)
-    : tracer(std::string{name}, type, enable)
-    {};
+    tracer(std::string const& name, file_type type, bool enable = true)
+    :tracer(std::string(name), type, enable){}
     /**
      * @fn  ~tracer()
      * @brief the destructor

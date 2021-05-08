@@ -12,6 +12,7 @@
 #include <cstdint>
 #include <tlm>
 
+//! TLM2.0 components modeling APB
 namespace ahb {
 
 enum class lock_e : uint8_t { NORMAL = 0x0, EXLUSIVE = 0x1, LOCKED = 0x2 };

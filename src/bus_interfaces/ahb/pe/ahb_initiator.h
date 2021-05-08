@@ -16,7 +16,9 @@
 #include <tuple>
 #include <unordered_map>
 
+//! TLM2.0 components modeling AHB
 namespace ahb {
+//! protocol engine implementations
 namespace pe {
 
 class ahb_initiator_b : public sc_core::sc_module, public tlm::tlm_bw_transport_if<tlm::tlm_base_protocol_types> {

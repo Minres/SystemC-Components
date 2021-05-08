@@ -8,7 +8,9 @@
 #include <ahb/ahb_tlm.h>
 #include <unordered_set>
 
+//! TLM2.0 components modeling AHB
 namespace ahb {
+//! protocol engine implementations
 namespace pe {
 /**
  * the target protocol engine base class

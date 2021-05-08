@@ -35,9 +35,9 @@ void init_cci(std::string name = "Global Broker");
  * and stores its values into a CCI broker. It can apply the value also to sc_attribute
  * once the design is installed.
  */
-class configurer : public sc_core::sc_object {
+class configurer : public sc_core::sc_module {
 public:
-    using base_type = sc_core::sc_object;
+    using base_type = sc_core::sc_module;
     /**
      * create a configurer using a JSON input file
      * @param filename
@@ -138,6 +138,16 @@ protected:
 
     Json::Value root;
 
+#ifdef WITH_SIM_PHASE_CALLBACKS
+    void simulation_phase_callback() override {
+        check_config_hierarchical(root, "");
+    }
+#endif
+    void end_of_elaboration() override {
+        check_config_hierarchical(root, "");
+    }
+
+    void check_config_hierarchical(Json::Value const&, std::string const&);
 #ifdef WITH_CCI
     cci::cci_originator cci_originator;
     cci::cci_broker_handle cci_broker;

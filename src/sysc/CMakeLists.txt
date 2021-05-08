@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.12)
 project(sysc VERSION 0.0.1 LANGUAGES CXX)
 
 find_package(Threads)
+find_package(Boost REQUIRED COMPONENTS date_time)
 
 if(NOT SystemCPackage)
     if(TARGET SystemC::SystemC)
@@ -69,8 +70,9 @@ if(CCI_FOUND)
 endif()
 
 add_library(sysc STATIC ${LIB_SOURCES})
-target_include_directories (sysc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (sysc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${Boost_INCLUDE_DIRS})
 target_link_libraries(sysc PRIVATE scc-util jsoncpp ${CMAKE_DL_LIBS})
+
 
 target_include_directories (sysc PUBLIC ${SystemC_INCLUDE_DIRS})    
 target_link_libraries(sysc PUBLIC ${SystemC_LIBRARIES} )
