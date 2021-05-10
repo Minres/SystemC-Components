@@ -20,7 +20,7 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif
 
-#include "utilities.h"
+#include <scc/utilities.h>
 #include <sstream>
 #include <tlm>
 #include <tlm_utils/peq_with_get.h>
@@ -164,7 +164,7 @@ private:
         tagged_target_mixin* m_owner;
     };
 
-    class fw_process : public tlm::tlm_fw_transport_if<TYPES>, public tlm::scc::tlm_mm_interface {
+    class fw_process : public tlm::tlm_fw_transport_if<TYPES>, public tlm::tlm_mm_interface {
     public:
         using NBTransportPtr =
             std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)>;

@@ -57,7 +57,7 @@ private:
         while(auto oi = que.get_next())
             s_o.write(oi.get());
     }
-    scc::peq<TYPE> que;
+    ::scc::peq<TYPE> que;
 };
 
 template <typename TYPE>

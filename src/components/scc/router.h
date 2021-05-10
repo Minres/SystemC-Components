@@ -33,7 +33,7 @@ namespace scc {
  * @class router
  * @brief a TLM2.0 router for loosly-timed (LT) models
  *
- * It uses the scv4tlm::tlm_rec_initiator_socket so that incoming and outgoing accesses can be traced using SCV
+ * It uses the tlm::scc::scv::tlm_rec_initiator_socket so that incoming and outgoing accesses can be traced using SCV
  *
  * @tparam BUSWIDTH the width of the bus
  */
