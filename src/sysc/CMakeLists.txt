@@ -105,14 +105,15 @@ if(SCV_FOUND)
     endif()
 endif()
 
-set_target_properties(scc-sysc PROPERTIES
-    FRAMEWORK FALSE
-    PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/*
-)
-
-install(TARGETS scc-sysc
+install(TARGETS scc-sysc COMPONENT sysc
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/scc
         )
+        
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}" COMPONENT sysc
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
+        FILES_MATCHING # install only matched files
+        PATTERN "*.h" # select header files
+        )
+        

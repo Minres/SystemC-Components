@@ -101,25 +101,25 @@ target_link_libraries(scc INTERFACE ${Boost_LIBRARIES})
 target_link_libraries(scc INTERFACE ${FMT_TARGET} ${SPDLOG_TARGET})
 
 set_target_properties(scc PROPERTIES
-  PUBLIC_HEADER "scc.h" # specify the public headers
+	  PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
 )
-install(TARGETS scc
-        RUNTIME DESTINATION ${CMAKE_INSTALL_LCMAKE_INSTALL_BINDIRIBDIR}
+
+install(TARGETS scc 
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
-install(
-    DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}/incl/
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-    FILES_MATCHING PATTERN "*")
+
 ###############################################################################
 # subdirectories
 ###############################################################################
-add_subdirectory(examples)
 add_subdirectory(src/common)
 add_subdirectory(src/bus_interfaces)
 add_subdirectory(src/components)
 add_subdirectory(src/sysc)
 add_subdirectory(third_party)
+if(NOT SCC_LIB_ONLY)
+	add_subdirectory(examples)
+endif()
 

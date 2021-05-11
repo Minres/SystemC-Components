@@ -17,14 +17,15 @@ add_library(busses STATIC ${LIB_SOURCES})
 target_include_directories (busses PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(busses PRIVATE tlm-interfaces scc-sysc)
 
-set_target_properties(busses PROPERTIES
-    FRAMEWORK FALSE
-    PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/*
-)
-
-install(TARGETS busses
+install(TARGETS busses COMPONENT busses
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/busses
         )
+        
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}" COMPONENT busses
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
+        FILES_MATCHING # install only matched files
+        PATTERN "*.h" # select header files
+        )
+        
