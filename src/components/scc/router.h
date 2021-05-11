@@ -161,14 +161,14 @@ public:
      */
     unsigned transport_dbg(int i, tlm::tlm_generic_payload& trans);
     /**
-     * @fn void invalidate_direct_mem_ptr(int, sc_dt::uint64, sc_dt::uint64)
+     * @fn void invalidate_direct_mem_ptr(int, ::sc_dt::uint64, ::sc_dt::uint64)
      * @brief tagged backward DMI method
      *
      * @param id the tag
      * @param start_range address range start address
      * @param end_range address range end address
      */
-    void invalidate_direct_mem_ptr(int id, sc_dt::uint64 start_range, sc_dt::uint64 end_range);
+    void invalidate_direct_mem_ptr(int id, ::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range);
 
 protected:
     struct range_entry {
@@ -205,7 +205,7 @@ router<BUSWIDTH>::router(const sc_core::sc_module_name& nm, unsigned slave_cnt, 
     }
     for(size_t i = 0; i < initiator.size(); ++i) {
         initiator[i].register_invalidate_direct_mem_ptr(
-                [=](sc_dt::uint64 start_range, sc_dt::uint64 end_range) -> void {
+                [=](::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) -> void {
             this->invalidate_direct_mem_ptr(i, start_range, end_range);
         });
         tranges[i].base = 0ULL;
@@ -245,7 +245,7 @@ void router<BUSWIDTH>::add_target_range(std::string name, uint64_t base, uint64_
 
 template <unsigned BUSWIDTH>
 void router<BUSWIDTH>::b_transport(int i, tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
-    sc_dt::uint64 address = trans.get_address();
+    ::sc_dt::uint64 address = trans.get_address();
     if(ibases[i]) {
         address += ibases[i];
         trans.set_address(address);
@@ -268,7 +268,7 @@ void router<BUSWIDTH>::b_transport(int i, tlm::tlm_generic_payload& trans, sc_co
 }
 template <unsigned BUSWIDTH>
 bool router<BUSWIDTH>::get_direct_mem_ptr(int i, tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) {
-    sc_dt::uint64 address = trans.get_address();
+    ::sc_dt::uint64 address = trans.get_address();
     if(ibases[i]) {
         address += ibases[i];
         trans.set_address(address);
@@ -292,7 +292,7 @@ bool router<BUSWIDTH>::get_direct_mem_ptr(int i, tlm::tlm_generic_payload& trans
     return status;
 }
 template <unsigned BUSWIDTH> unsigned router<BUSWIDTH>::transport_dbg(int i, tlm::tlm_generic_payload& trans) {
-    sc_dt::uint64 address = trans.get_address();
+    ::sc_dt::uint64 address = trans.get_address();
     if(ibases[i]) {
         address += ibases[i];
         trans.set_address(address);
@@ -312,12 +312,12 @@ template <unsigned BUSWIDTH> unsigned router<BUSWIDTH>::transport_dbg(int i, tlm
     return initiator[idx]->transport_dbg(trans);
 }
 template <unsigned BUSWIDTH>
-void router<BUSWIDTH>::invalidate_direct_mem_ptr(int id, sc_dt::uint64 start_range, sc_dt::uint64 end_range) {
+void router<BUSWIDTH>::invalidate_direct_mem_ptr(int id, ::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) {
     // Reconstruct address range in system memory map
-    sc_dt::uint64 bw_start_range = start_range;
+    ::sc_dt::uint64 bw_start_range = start_range;
     if(tranges[id].remap)
         bw_start_range += tranges[id].base;
-    sc_dt::uint64 bw_end_range = end_range;
+    ::sc_dt::uint64 bw_end_range = end_range;
     if(tranges[id].remap)
         bw_end_range += tranges[id].base;
     for(size_t i = 0; i < target.size(); ++i) {

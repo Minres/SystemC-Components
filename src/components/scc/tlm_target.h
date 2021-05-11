@@ -101,16 +101,16 @@ protected:
  */
 template <unsigned BUSWIDTH = 32> struct target_memory_map_entry {
     tlm::tlm_target_socket<BUSWIDTH>& target;
-    sc_dt::uint64 start;
-    sc_dt::uint64 size;
+    ::sc_dt::uint64 start;
+    ::sc_dt::uint64 size;
 };
 /**
  * helper structure to define a named address range
  */
 template <unsigned BUSWIDTH = 32> struct target_name_map_entry {
     std::string name;
-    sc_dt::uint64 start;
-    sc_dt::uint64 size;
+    ::sc_dt::uint64 start;
+    ::sc_dt::uint64 size;
 };
 
 } /* namespace scc */
