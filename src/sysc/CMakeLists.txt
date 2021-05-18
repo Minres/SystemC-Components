@@ -69,7 +69,7 @@ if(CCI_FOUND)
     )
 endif()
 
-add_library(scc-sysc STATIC ${LIB_SOURCES})
+add_library(scc-sysc ${LIB_SOURCES})
 target_include_directories (scc-sysc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${Boost_INCLUDE_DIRS})
 target_link_libraries(scc-sysc PUBLIC scc-util jsoncpp ${CMAKE_DL_LIBS})
 
