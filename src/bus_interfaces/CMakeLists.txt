@@ -13,7 +13,7 @@ set(LIB_SOURCES
     axi/axi_target.cpp
 )
 
-add_library(busses STATIC ${LIB_SOURCES})
+add_library(busses ${LIB_SOURCES})
 target_include_directories (busses PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(busses PRIVATE tlm-interfaces scc-sysc)
 
