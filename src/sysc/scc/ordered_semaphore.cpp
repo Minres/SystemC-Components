@@ -32,7 +32,7 @@ using namespace sc_core;
 
 // error reporting
 namespace {
-std::string gen_unique_event_name(const char* modifier) {
+auto gen_unique_event_name(const char* modifier) -> std::string {
     auto str = std::string("$$$$kernel_event$$$$_") + "_" + modifier;
     return std::string(sc_core::sc_gen_unique_name(str.c_str(), false));
 }
@@ -78,7 +78,7 @@ ordered_semaphore::ordered_semaphore(const char* name_, unsigned init_value_)
 
 // lock (take) the semaphore, block if not available
 
-int ordered_semaphore::wait() {
+auto ordered_semaphore::wait() -> int {
     queue.at(0).push_back(sc_core::sc_get_current_process_handle());
     while(in_use()) {
         sc_core::wait(free_evt);
@@ -87,7 +87,7 @@ int ordered_semaphore::wait() {
     return value;
 }
 
-int ordered_semaphore::wait(unsigned priority) {
+auto ordered_semaphore::wait(unsigned priority) -> int {
     queue.at(priority).push_back(sc_core::sc_get_current_process_handle());
     while(in_use()) {
         sc_core::wait(free_evt);
@@ -98,7 +98,7 @@ int ordered_semaphore::wait(unsigned priority) {
 
 // lock (take) the semaphore, return -1 if not available
 
-int ordered_semaphore::trywait() {
+auto ordered_semaphore::trywait() -> int {
     if(in_use()) {
         return -1;
     }
@@ -108,7 +108,7 @@ int ordered_semaphore::trywait() {
 
 // unlock (give) the semaphore
 
-int ordered_semaphore::post() {
+auto ordered_semaphore::post() -> int {
     if(value == capacity)
         SCCWARN(SCMOD) << "post() called on entirely free semaphore!";
     else

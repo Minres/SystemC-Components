@@ -68,11 +68,11 @@ struct ExtLogConfig : public scc::LogConfig {
     regex reg_ex;
 #endif
     sc_time cycle_base{0, SC_NS};
-    ExtLogConfig& operator=(const scc::LogConfig& o) {
+    auto operator=(const scc::LogConfig& o) -> ExtLogConfig& {
         scc::LogConfig::operator=(o);
         return *this;
     }
-    bool match(const char* type) {
+    auto match(const char* type) -> bool {
 #ifdef USE_C_REGEX
         return regexec(&start_state, type, 0, nullptr, 0) == 0;
 #else
@@ -83,7 +83,7 @@ struct ExtLogConfig : public scc::LogConfig {
 
 thread_local ExtLogConfig log_cfg;
 
-tuple<sc_time::value_type, sc_time_unit> get_tuple(const sc_time& t) {
+auto get_tuple(const sc_time& t) -> tuple<sc_time::value_type, sc_time_unit> {
     auto val = t.value();
     auto tr = (uint64_t)(sc_time::from_value(1).to_seconds() * 1E15);
     auto scale = 0U;
@@ -104,7 +104,7 @@ tuple<sc_time::value_type, sc_time_unit> get_tuple(const sc_time& t) {
     return make_tuple(val, static_cast<sc_time_unit>(tu));
 }
 
-string time2string(const sc_time& t) {
+auto time2string(const sc_time& t) -> string {
     const array<const char*, 6> time_units{"fs", "ps", "ns", "us", "ms", "s "};
     const array<uint64_t, 6> multiplier{1ULL,
                                         1000ULL,
@@ -131,7 +131,7 @@ string time2string(const sc_time& t) {
     }
     return oss.str();
 }
-const string compose_message(const sc_report& rep, const scc::LogConfig& cfg) {
+auto compose_message(const sc_report& rep, const scc::LogConfig& cfg) -> const string {
     if(rep.get_severity() > SC_INFO || cfg.log_filter_regex.length() == 0 ||
        rep.get_verbosity() == sc_core::SC_MEDIUM || log_cfg.match(rep.get_msg_type())) {
         stringstream os;
@@ -173,7 +173,7 @@ const string compose_message(const sc_report& rep, const scc::LogConfig& cfg) {
         return "";
 }
 
-inline int get_verbosity(const sc_report& rep) {
+inline auto get_verbosity(const sc_report& rep) -> int {
     return rep.get_verbosity() > sc_core::SC_NONE && rep.get_verbosity() < sc_core::SC_LOW ? rep.get_verbosity() * 10
                                                                                            : rep.get_verbosity();
 }
@@ -274,7 +274,7 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
 }
 
 // BKDR hash algorithm
-uint64_t char_hash(char const* str) {
+auto char_hash(char const* str) -> uint64_t {
     constexpr int seed = 131; // 31  131 1313 13131131313 etc//
     uint64_t hash = 0;
     while(*str) {
@@ -300,7 +300,7 @@ void scc::stream_redirection::reset() {
     old_buf = nullptr;
 }
 
-streamsize scc::stream_redirection::xsputn(const char_type* s, streamsize n) {
+auto scc::stream_redirection::xsputn(const char_type* s, streamsize n) -> streamsize {
     auto sz = stringbuf::xsputn(s, n);
     if(s[n - 1] == '\n') {
         sync();
@@ -325,7 +325,7 @@ static const array<sc_verbosity, 8> verbosity = {SC_NONE,   // scc::log::NONE
                                                  SC_FULL,   // scc::log::TRACE
                                                  SC_DEBUG}; // scc::log::DBGTRACE
 
-int scc::stream_redirection::sync() {
+auto scc::stream_redirection::sync() -> int {
     if(level <= log_cfg.level) {
         auto timestr = time2string(sc_time_stamp());
         istringstream buf(str());
@@ -415,81 +415,81 @@ void scc::set_logging_level(scc::log level) {
         SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, static_cast<int>(log_cfg.level))));
 }
 
-scc::log scc::get_logging_level() { return log_cfg.level; }
+auto scc::get_logging_level() -> scc::log { return log_cfg.level; }
 
 void scc::set_cycle_base(sc_time period) { log_cfg.cycle_base = period; }
 
-scc::LogConfig& scc::LogConfig::logLevel(scc::log level) {
+auto scc::LogConfig::logLevel(scc::log level) -> scc::LogConfig& {
     this->level = level;
     return *this;
 }
 
-scc::LogConfig& scc::LogConfig::msgTypeFieldWidth(unsigned width) {
+auto scc::LogConfig::msgTypeFieldWidth(unsigned width) -> scc::LogConfig& {
     this->msg_type_field_width = width;
     return *this;
 }
 
-scc::LogConfig& scc::LogConfig::printSysTime(bool enable) {
+auto scc::LogConfig::printSysTime(bool enable) -> scc::LogConfig& {
     this->print_sys_time = enable;
     return *this;
 }
 
-scc::LogConfig& scc::LogConfig::printSimTime(bool enable) {
+auto scc::LogConfig::printSimTime(bool enable) -> scc::LogConfig& {
     this->print_sim_time = enable;
     return *this;
 }
 
-scc::LogConfig& scc::LogConfig::printDelta(bool enable) {
+auto scc::LogConfig::printDelta(bool enable) -> scc::LogConfig& {
     this->print_delta = enable;
     return *this;
 }
 
-scc::LogConfig& scc::LogConfig::printSeverity(bool enable) {
+auto scc::LogConfig::printSeverity(bool enable) -> scc::LogConfig& {
     this->print_severity = enable;
     return *this;
 }
 
-scc::LogConfig& scc::LogConfig::logFileName(string&& name) {
+auto scc::LogConfig::logFileName(string&& name) -> scc::LogConfig& {
     this->log_file_name = name;
     return *this;
 }
 
-scc::LogConfig& scc::LogConfig::logFileName(const string& name) {
+auto scc::LogConfig::logFileName(const string& name) -> scc::LogConfig& {
     this->log_file_name = name;
     return *this;
 }
 
-scc::LogConfig& scc::LogConfig::coloredOutput(bool enable) {
+auto scc::LogConfig::coloredOutput(bool enable) -> scc::LogConfig& {
     this->colored_output = enable;
     return *this;
 }
 
-scc::LogConfig& scc::LogConfig::logFilterRegex(string&& expr) {
+auto scc::LogConfig::logFilterRegex(string&& expr) -> scc::LogConfig& {
     this->log_filter_regex = expr;
     return *this;
 }
 
-scc::LogConfig& scc::LogConfig::logFilterRegex(const string& expr) {
+auto scc::LogConfig::logFilterRegex(const string& expr) -> scc::LogConfig& {
     this->log_filter_regex = expr;
     return *this;
 }
 
-scc::LogConfig& scc::LogConfig::logAsync(bool v) {
+auto scc::LogConfig::logAsync(bool v) -> scc::LogConfig& {
     this->log_async = v;
     return *this;
 }
 
-scc::LogConfig& scc::LogConfig::dontCreateBroker(bool v) {
+auto scc::LogConfig::dontCreateBroker(bool v) -> scc::LogConfig& {
     this->dont_create_broker = v;
     return *this;
 }
 
-scc:: LogConfig& scc::LogConfig::reportOnlyFirstError(bool v){
+auto scc::LogConfig::reportOnlyFirstError(bool v) -> scc:: LogConfig&{
     this->report_only_first_error = v;
     return *this;
 }
 
-sc_core::sc_verbosity scc::get_log_verbosity(char const* str) {
+auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
 #ifdef WITH_CCI
     thread_local std::unordered_map<uint64_t, sc_core::sc_verbosity> lut;
     auto k = char_hash(str);

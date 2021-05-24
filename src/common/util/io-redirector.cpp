@@ -51,7 +51,7 @@ void IoRedirector::start() {
 #endif
 }
 
-bool IoRedirector::is_active() {
+auto IoRedirector::is_active() -> bool {
     std::lock_guard<std::mutex> lock(m_mutex);
     return m_capturing;
 }
@@ -97,7 +97,7 @@ void IoRedirector::stop() {
     m_capturing = false;
 }
 
-std::string IoRedirector::get_output(bool blocking) {
+auto IoRedirector::get_output(bool blocking) -> std::string {
     std::lock_guard<std::mutex> lock(m_mutex);
     if(m_capturing) {
         std::string ret;
@@ -132,7 +132,7 @@ std::string IoRedirector::get_output(bool blocking) {
     }
 }
 
-int IoRedirector::copy_fd(int fd) {
+auto IoRedirector::copy_fd(int fd) -> int {
     int ret = -1;
     bool fd_blocked = false;
     do {

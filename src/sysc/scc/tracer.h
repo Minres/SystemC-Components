@@ -19,7 +19,7 @@
 
 #include "tracer_base.h"
 #ifdef WITH_SCV
-#include <scv.h>
+class scv_tr_db;
 #endif
 #include <string>
 #include <vector>
@@ -62,7 +62,7 @@ public:
      * @param enable enable VCD (signal and POD) tracing
      */
     tracer(std::string const& name, file_type type, bool enable = true)
-    :tracer(std::string(name), type, enable){}
+    : tracer(std::string(name), type, enable) {}
     /**
      * @fn  ~tracer()
      * @brief the destructor

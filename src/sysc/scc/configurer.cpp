@@ -63,7 +63,7 @@ void scc::configurer::dump_hierarchy(std::ostream& os, sc_core::sc_object* obj) 
     }
 }
 
-inline const std::vector<sc_core::sc_object*>& get_sc_objects(sc_core::sc_object* obj = nullptr) {
+inline auto get_sc_objects(sc_core::sc_object* obj = nullptr) -> const std::vector<sc_core::sc_object*>& {
     if(obj)
         return obj->get_child_objects();
     else
@@ -85,7 +85,7 @@ void scc::configurer::dump_configuration(std::ostream& os, sc_core::sc_object* o
     // os << root;
 }
 
-template <typename T, typename T1 = T> bool check_n_assign(Json::Value& node, sc_core::sc_attr_base* attr_base) {
+template <typename T, typename T1 = T> auto check_n_assign(Json::Value& node, sc_core::sc_attr_base* attr_base) -> bool {
     auto* a = dynamic_cast<sc_core::sc_attribute<T>*>(attr_base);
     if(a != nullptr) {
         node[a->name()] = T1(a->value);
@@ -197,7 +197,7 @@ void scc::configurer::set_value(sc_core::sc_attr_base* attr_base, Json::Value& h
     CHECK_N_ASSIGN(char*, attr_base, strdup(hier_val.asCString()));
 }
 
-Json::Value& scc::configurer::get_value_from_hierarchy(const std::string& hier_name) {
+auto scc::configurer::get_value_from_hierarchy(const std::string& hier_name) -> Json::Value& {
     size_t npos = hier_name.find_first_of('.');
     Json::Value& val = root[hier_name.substr(0, npos)];
     if(val.isNull() || npos == hier_name.size())
@@ -205,7 +205,7 @@ Json::Value& scc::configurer::get_value_from_hierarchy(const std::string& hier_n
     return get_value_from_hierarchy(hier_name.substr(npos + 1, hier_name.size()), val);
 }
 
-Json::Value& scc::configurer::get_value_from_hierarchy(const std::string& hier_name, Json::Value& value) {
+auto scc::configurer::get_value_from_hierarchy(const std::string& hier_name, Json::Value& value) -> Json::Value& {
     size_t npos = hier_name.find_first_of('.');
     Json::Value& val = value[hier_name.substr(0, npos)];
     if(val.isNull() || npos == std::string::npos || !val.isObject())

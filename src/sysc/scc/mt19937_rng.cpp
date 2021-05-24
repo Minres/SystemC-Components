@@ -10,7 +10,7 @@ struct {
 } rng;
 }; // namespace
 
-std::mt19937_64& scc::MT19937::inst() {
+auto scc::MT19937::inst() -> std::mt19937_64& {
     if(auto* obj = sc_core::sc_get_current_object()) {
         auto sz = rng.inst.size();
         auto& ret = rng.inst[obj];

@@ -80,7 +80,7 @@ void perf_estimator::beat() {
 }
 } /* namespace scc */
 
-double scc::perf_estimator::time_stamp::get_cpu_time() {
+auto scc::perf_estimator::time_stamp::get_cpu_time() -> double {
 #if defined(_WIN32)
     FILETIME create_time;
     FILETIME exit_time;

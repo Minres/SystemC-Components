@@ -16,7 +16,7 @@
 using namespace sc_core;
 using namespace scc;
 
-std::ostream& operator<<(std::ostream& os, const sc_event& evt) {
+auto operator<<(std::ostream& os, const sc_event& evt) -> std::ostream& {
 #if SYSTEMC_VERSION >= 20181013
     os << evt.triggered();
 #endif
@@ -33,7 +33,7 @@ public:
     // Constructor
     value_registry_impl() = default;
 
-    sc_module* get_mod4name(const std::string& name) const {
+    auto get_mod4name(const std::string& name) const -> sc_module* {
         sc_module* mod = nullptr;
         sc_object* obj = sc_find_object(name.c_str());
         if(obj)
@@ -136,7 +136,7 @@ public:
     void cycle(bool delta_cycle) override {}
 
     // Helper for event tracing
-    const sc_dt::uint64& event_trigger_stamp(const sc_event& event) const { return dummy; }
+    auto event_trigger_stamp(const sc_event& event) const -> const sc_dt::uint64& { return dummy; }
 
     // Flush results and close file
     ~value_registry_impl() override {
@@ -156,7 +156,7 @@ value_registry::value_registry()
 
 scc::value_registry::~value_registry() { delete dynamic_cast<value_registry_impl*>(trf); }
 
-std::vector<std::string> scc::value_registry::get_names() const {
+auto scc::value_registry::get_names() const -> std::vector<std::string> {
     auto& holder = dynamic_cast<value_registry_impl*>(trf)->holder;
     std::vector<std::string> keys;
     keys.reserve(holder.size());
@@ -165,7 +165,7 @@ std::vector<std::string> scc::value_registry::get_names() const {
     return keys;
 }
 
-const sc_variable* scc::value_registry::get_value(std::string name) const {
+auto scc::value_registry::get_value(std::string name) const -> const sc_variable* {
     auto* reg = dynamic_cast<value_registry_impl*>(trf);
     auto it = reg->holder.find(name);
     if(it != reg->holder.end()) {

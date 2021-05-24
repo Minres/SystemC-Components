@@ -23,10 +23,14 @@
 #include "scc/tracer.h"
 
 #include "scc/report.h"
-#include "scv/scv_tr_db.h"
 #include "scc/utilities.h"
+#ifdef WITH_SCV
+#include "scv/scv_tr_db.h"
+#include <scv.h>
+#endif
 #include <cstring>
 #include <iostream>
+#include <scv/scv_tr.h>
 #include <sstream>
 
 using namespace sc_core;
@@ -59,8 +63,10 @@ tracer::tracer(std::string const&& name, file_type type, bool enable)
             ss << ".txlog";
             break;
         case SQLITE:
+#if 0
             scv_tr_sqlite_init();
             ss << ".txdb";
+#endif
             break;
         default:
             break;

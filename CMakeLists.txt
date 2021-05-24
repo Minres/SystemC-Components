@@ -12,6 +12,7 @@ option(BUILD_STAND_ALONE "Do a standalone build and do not rely on a parent proj
 include(Common)
 include(GNUInstallDirs)
 if(BUILD_STAND_ALONE)
+	option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
 	include(Conan)
 	setup_conan(TARGETS)
 endif()
@@ -52,6 +53,21 @@ endif()
 
 set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "sqlite3")
 find_package(ClangFormat)
+if (ENABLE_CLANG_TIDY)
+    find_program (CLANG_TIDY_EXE NAMES "clang-tidy" PATHS /usr/bin )
+    if (CLANG_TIDY_EXE)
+        message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
+        set(CLANG_TIDY_CHECKS "-*,modernize-*")
+        set(DO_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=${CLANG_TIDY_CHECKS};-header-filter='${CMAKE_SOURCE_DIR}/*';-fix"
+            CACHE STRING "" FORCE)
+        #set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=${CLANG_TIDY_CHECKS};-header-filter='${CMAKE_SOURCE_DIR}/*';-fix"
+        #    CACHE STRING "" FORCE)
+    else()
+        message(AUTHOR_WARNING "clang-tidy not found!")
+        set(CMAKE_CXX_CLANG_TIDY "" CACHE STRING "" FORCE) # delete it
+    endif()
+endif()
+
 find_package(Boost REQUIRED COMPONENTS system) # header only libraries must not be added herefind_package(ZLIB REQUIRED)
 include(CheckSymbolExists)
 # Check for function getenv()

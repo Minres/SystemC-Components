@@ -19,7 +19,7 @@ watchdog::watchdog(system_clock::duration timeout, std::function<void(void)> ala
 , alarm_cb(std::move(alarm_cb)) {
     idle.store(true);
     live.store(true);
-    guard_thread = std::thread(std::bind(&watchdog::guard, this));
+    guard_thread = std::thread([this] { guard(); });
 }
 
 watchdog::watchdog(system_clock::duration timeout, std::function<void(void)> alarm)

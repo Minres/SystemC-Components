@@ -89,7 +89,7 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
         try_trace(trf, obj, types_to_trace);
 }
 
-bool scc::configurable_tracer::get_trace_enabled(const sc_core::sc_object* obj, bool fall_back) {
+auto scc::configurable_tracer::get_trace_enabled(const sc_core::sc_object* obj, bool fall_back) -> bool {
     auto* attr = obj->get_attribute(EN_TRACING_STR);
     if(attr != nullptr && dynamic_cast<const sc_core::sc_attribute<bool>*>(attr) != nullptr) {
         const auto* a = dynamic_cast<const sc_core::sc_attribute<bool>*>(attr);

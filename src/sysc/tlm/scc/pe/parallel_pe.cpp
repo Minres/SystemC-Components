@@ -17,8 +17,7 @@ parallel_pe::parallel_pe(sc_core::sc_module_name const& nm): sc_module(nm) {
     fw_i.bind(*this);
 }
 
-parallel_pe::~parallel_pe() {
-}
+parallel_pe::~parallel_pe() = default;
 
 void parallel_pe::transport(tlm::tlm_generic_payload &payload, bool lt_transport) {
     if(!waiting_ids.size()) {

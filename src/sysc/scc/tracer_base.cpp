@@ -31,7 +31,7 @@ using namespace sc_dt;
 using namespace scc;
 
 template <typename T, typename std::enable_if<std::is_class<T>::value, int>::type = 0>
-inline bool trace_helper(sc_trace_file* trace_file, const sc_object* object) {
+inline auto trace_helper(sc_trace_file* trace_file, const sc_object* object) -> bool {
     if(auto* ptr = dynamic_cast<const T*>(object)) {
         sc_core::sc_trace(trace_file, *ptr, object->name());
         return true;
@@ -40,12 +40,12 @@ inline bool trace_helper(sc_trace_file* trace_file, const sc_object* object) {
 }
 
 template <typename T, typename std::enable_if<!std::is_class<T>::value, unsigned>::type = 0>
-inline bool trace_helper(sc_trace_file*, const sc_object*) {
+inline auto trace_helper(sc_trace_file*, const sc_object*) -> bool {
     return false;
 }
 
 template <typename T>
-inline bool try_trace_obj(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) {
+inline auto try_trace_obj(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) -> bool {
     if((types_to_trace & trace_types::PORTS) == trace_types::PORTS) {
         if(trace_helper<sc_core::sc_in<T>>(trace_file, object))
             return true;
