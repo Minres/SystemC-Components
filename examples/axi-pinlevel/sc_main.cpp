@@ -37,7 +37,7 @@ public:
     sc_core::sc_signal<bool> rst{"rst"};
     axi::axi_initiator_socket<SOCKET_WIDTH> intor{"intor"};
 #ifdef WITH_SCV
-    scv4axi::axi_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
+    axi::scv::axi_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
 #endif
     axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
 

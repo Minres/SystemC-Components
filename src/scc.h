@@ -16,9 +16,9 @@
 
 #pragma once
 
-#include "bus_interfaces/scc_bus_interfaces.h"
-#include "common/scc_util.h"
-#include "components/scc_components.h"
-#include "sysc/scc_sysc.h"
+#include "scc_util.h"
+#include "scc_sysc.h"
+#include "scc_bus_interfaces.h"
+#include "scc_components.h"
 
 

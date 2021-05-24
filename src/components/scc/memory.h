@@ -107,7 +107,7 @@ memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
 
 template <unsigned long long SIZE, unsigned BUSWIDTH>
 int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans) {
-    sc_dt::uint64 adr = trans.get_address();
+    ::sc_dt::uint64 adr = trans.get_address();
     uint8_t* ptr = trans.get_data_ptr();
     unsigned len = trans.get_data_length();
     uint8_t* byt = trans.get_byte_enable_ptr();
@@ -115,12 +115,12 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans) {
     // check address range and check for unsupported features,
     //   i.e. byte enables, streaming, and bursts
     // Can ignore DMI hint and extensions
-    if(adr + len > sc_dt::uint64(SIZE)) {
+    if(adr + len > ::sc_dt::uint64(SIZE)) {
         SC_REPORT_ERROR("TLM-2", "generic payload transaction exceeeds memory size");
         trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
         return 0;
     }
-    if(adr + len > sc_dt::uint64(SIZE) || byt != 0 || wid < len) {
+    if(adr + len > ::sc_dt::uint64(SIZE) || byt != 0 || wid < len) {
         SC_REPORT_ERROR("TLM-2", "generic payload transaction not supported");
         trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
         return 0;

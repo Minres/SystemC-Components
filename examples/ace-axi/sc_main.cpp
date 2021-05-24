@@ -33,8 +33,8 @@ public:
     sc_core::sc_signal<bool> rst{"rst"};
     axi::ace_initiator_socket<SOCKET_WIDTH> intor{"intor"};
 #ifdef WITH_SCV
-    //scv4axi::ace_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
-    scv4axi::axi_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
+    //axi::scv::ace_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
+    axi::scv::axi_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
 #endif
     axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
   //TLM2_COMMON::Adapter<SOCKET_WIDTH, SOCKET_WIDTH> Adapter1{"Adapter1"};

@@ -17,7 +17,7 @@
 #ifndef _SCC_TAGGED_INITIATOR_MIXIN_H__
 #define _SCC_TAGGED_INITIATOR_MIXIN_H__
 
-#include "utilities.h"
+#include <scc/utilities.h>
 #include <functional>
 #include <sstream>
 #include <tlm>
