@@ -30,7 +30,6 @@
 #endif
 #include <cstring>
 #include <iostream>
-#include <scv/scv_tr.h>
 #include <sstream>
 
 using namespace sc_core;
