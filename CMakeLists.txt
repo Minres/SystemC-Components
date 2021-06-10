@@ -273,6 +273,8 @@ install(
 # build tlm-interfaces
 ###############################################################################
 add_subdirectory(axi_chi)
-add_subdirectory(examples)
+if(NOT HAS_PCT)
+    add_subdirectory(examples)
+endif()
 endif(SystemC_FOUND)
 
