@@ -45,6 +45,15 @@ inline auto trace_helper(sc_trace_file*, const sc_object*) -> bool {
 }
 
 template <typename T>
+inline auto variable_trace_helper(sc_trace_file* trace_file, const sc_object* object) -> bool {
+    if(auto* ptr = dynamic_cast<const sc_variable*>(object)) {
+        ptr->trace(trace_file);
+        return true;
+    }
+    return false;
+}
+
+template <typename T>
 inline auto try_trace_obj(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) -> bool {
     if((types_to_trace & trace_types::PORTS) == trace_types::PORTS) {
         if(trace_helper<sc_core::sc_in<T>>(trace_file, object))
@@ -58,6 +67,10 @@ inline auto try_trace_obj(sc_trace_file* trace_file, const sc_object* object, tr
         if(trace_helper<sc_core::sc_signal<T, SC_MANY_WRITERS>>(trace_file, object))
             return true;
         if(trace_helper<sc_core::sc_signal<T, SC_UNCHECKED_WRITERS>>(trace_file, object))
+            return true;
+    }
+    if((types_to_trace & trace_types::VARIABLES) == trace_types::VARIABLES) {
+        if(variable_trace_helper<T>(trace_file, object))
             return true;
     }
     if((types_to_trace & trace_types::OBJECTS) == trace_types::OBJECTS)

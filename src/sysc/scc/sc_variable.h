@@ -214,4 +214,21 @@ template <typename T> struct sc_variable_masked_t : public sc_variable {
 
 } // namespace scc
 
+namespace sc_core {
+template< class T >
+inline void sc_trace( sc_trace_file* tf, const scc::sc_variable_t<T>& object, const char* name ) { object.trace(tf); }
+template< class T >
+inline void sc_trace( sc_trace_file* tf, const scc::sc_variable_t<T>* object, const char* name ) { object->trace(tf); }
+
+template< class T >
+inline void sc_trace( sc_trace_file* tf, const scc::sc_variable_t<std::vector<T>>& object, const char* name ) { object.trace(tf); }
+template< class T >
+inline void sc_trace( sc_trace_file* tf, const scc::sc_variable_t<std::vector<T>>* object, const char* name ) { object->trace(tf); }
+
+template< class T, size_t S >
+inline void sc_trace( sc_trace_file* tf, const scc::sc_variable_t<std::array<T, S>>& object, const char* name ) { object.trace(tf); }
+template< class T, size_t S >
+inline void sc_trace( sc_trace_file* tf, const scc::sc_variable_t<std::array<T, S>>* object, const char* name ) { object->trace(tf); }
+
+}
 #endif /* _SCC_SC_VARIABLE_H_ */
