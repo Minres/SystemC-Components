@@ -40,6 +40,8 @@ public:
      * @fn  ordered_semaphore(unsigned=1)
      * @brief constructor of an un-named semaphore
      *
+     * If the initial value is 0 the semaphore has an unlimited capacity but is initially empty
+     *
      * @param init_value initial capacity of the semaphore
      */
     explicit ordered_semaphore(unsigned init_value = 1);
