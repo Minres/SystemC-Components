@@ -48,6 +48,7 @@ set(LIB_SOURCES
     scc/ordered_semaphore.cpp
     scc/value_registry.cpp
     scc/mt19937_rng.cpp
+    scc/sc_thread_pool.cpp
     tlm/scc/pe/parallel_pe.cpp
 )
 
