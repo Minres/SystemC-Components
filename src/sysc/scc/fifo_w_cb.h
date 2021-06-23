@@ -67,6 +67,7 @@ public:
     void set_avail_cb(std::function<void(void)> f) { avail_cb = f; }
     void set_empty_cb(std::function<void(void)> f) { empty_cb = f; }
 
+    const sc_core::sc_event& data_written_event() {return data_written_event;}
 protected:
     // the update method (does nothing by default)
     virtual void update() {
@@ -76,12 +77,14 @@ protected:
         in_queue.clear();
         if(avail_cb)
             avail_cb();
+        data_written_evt.notify(sc_core::SC_ZERO_TIME);
     }
 
     std::deque<T> in_queue;
     std::deque<T> out_queue;
     std::function<void(void)> avail_cb;
     std::function<void(void)> empty_cb;
+    sc_core::sc_event data_written_evt;
 };
 
 } /* namespace scc */

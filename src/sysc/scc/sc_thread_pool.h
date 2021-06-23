@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef OSCI_LIB_SCC_SRC_SYSC_SCC_SC_THREAD_POOL_H_
-#define OSCI_LIB_SCC_SRC_SYSC_SCC_SC_THREAD_POOL_H_
+#ifndef SYSC_SCC_SC_THREAD_POOL_H_
+#define SYSC_SCC_SC_THREAD_POOL_H_
 #include <systemc>
 #include <cci_configuration>
 #include <functional>
@@ -38,4 +38,4 @@ private:
 };
 } /* namespace scc */
 
-#endif /* OSCI_LIB_SCC_SRC_SYSC_SCC_SC_THREAD_POOL_H_ */
+#endif /* SYSC_SCC_SC_THREAD_POOL_H_ */
