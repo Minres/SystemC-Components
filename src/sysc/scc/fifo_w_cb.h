@@ -66,7 +66,7 @@ public:
 
     void set_avail_cb(std::function<void(void)> f) { avail_cb = f; }
     void set_empty_cb(std::function<void(void)> f) { empty_cb = f; }
-#ifdef CWR_SYSTEMC
+#ifndef CWR_SYSTEMC
     inline sc_core::sc_event const& data_written_event() const {return data_written_event;}
 #endif
 protected:
