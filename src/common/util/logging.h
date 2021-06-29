@@ -251,12 +251,12 @@ class DEFAULT {};
 
 #ifndef LOG
 #define LOG(LEVEL)                                                                                                     \
-    if(logging::LEVEL <= LOGGER(DEFAULT)::reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                          \
+    if(logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                          \
     LOGGER(DEFAULT)().get(logging::LEVEL)
 #endif
 #ifndef CLOG
 #define CLOG(LEVEL, CATEGORY)                                                                                          \
-    if(logging::LEVEL <= LOGGER(CATEGORY)::reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                        \
+    if(logging::LEVEL <= LOGGER(CATEGORY)::get_reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                        \
     LOGGER(CATEGORY)().get(logging::LEVEL, #CATEGORY)
 #endif
 #if defined(WIN32)
