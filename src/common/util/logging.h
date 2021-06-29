@@ -27,6 +27,7 @@
 #include <string>
 #include <sys/time.h>
 #include <vector>
+#include <atomic>
 
 //! log level definitions
 #define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE) L(TRACEALL)
@@ -117,9 +118,18 @@ public:
      *
      * @return the logging level
      */
-    static log_level& reporting_level() {
-        static log_level reportingLevel = WARNING;
+    static std::atomic<log_level>& reporting_level() {
+        static std::atomic<log_level> reportingLevel = WARNING;
         return reportingLevel;
+    }
+    /**
+     * get a reference to the configured logging level
+     *
+     * @return the logging level
+     */
+    static log_level get_reporting_level() {
+        static std::atomic<log_level> reportingLevel = WARNING;
+        return reporting_level().load(std::memory_order_relaxed);
     }
     /**
      * get a reference to the abort on fatal flag
