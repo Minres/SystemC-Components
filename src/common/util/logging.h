@@ -119,7 +119,7 @@ public:
      * @return the logging level
      */
     static std::atomic<log_level>& reporting_level() {
-        static std::atomic<log_level> reportingLevel = WARNING;
+        static std::atomic<log_level> reportingLevel{WARNING};
         return reportingLevel;
     }
     /**
@@ -128,7 +128,6 @@ public:
      * @return the logging level
      */
     static log_level get_reporting_level() {
-        static std::atomic<log_level> reportingLevel = WARNING;
         return reporting_level().load(std::memory_order_relaxed);
     }
     /**
@@ -175,14 +174,14 @@ public:
      *
      * @return the print severity flag
      */
-    static bool& print_severity() {
-        static bool flag = true;
+    static std::atomic<bool>& print_severity() {
+        static std::atomic<bool> flag{true};
         return flag;
     }
 
 protected:
-    log_level& get_last_log_level() {
-        static log_level level = TRACE;
+    std::atomic<log_level>& get_last_log_level() {
+        static std::atomic<log_level> level{TRACE};
         return level;
     }
     static const char* const* get_log_level_cstr() { return buffer.data(); };
@@ -198,13 +197,13 @@ public:
      *
      * @return the file handle
      */
-    static FILE*& stream() {
-        static FILE* pStream = stdout;
+    static std::atomic<FILE*>& stream() {
+        static std::atomic<FILE*> pStream{stdout};
         return pStream;
     }
 
-    static std::ostream*& ostream() {
-        static std::ostream* oStream{nullptr};
+    static std::atomic<std::ostream*>& ostream() {
+        static std::atomic<std::ostream*> oStream{nullptr};
         return oStream;
     }
     /**
