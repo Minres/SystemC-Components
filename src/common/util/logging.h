@@ -135,8 +135,8 @@ public:
      *
      * @return the logging level
      */
-    static bool& abort_on_fatal() {
-        static bool flag = false;
+    static std::atomic<bool>& abort_on_fatal() {
+        static std::atomic<bool> flag = false;
         return flag;
     }
     /**
@@ -165,8 +165,8 @@ public:
      *
      * @return the print time flag
      */
-    static bool& print_time() {
-        static bool flag = true;
+    static std::atomic<bool>& print_time() {
+        static std::atomic<bool> flag = true;
         return flag;
     }
     /**
@@ -277,8 +277,10 @@ inline std::string now_time() {
 #else
 
 inline std::string now_time() {
+    static std::mutex mtx;
     static std::array<char, 11> buffer;
     static std::array<char, 100> result;
+    std::lock_guard lck(mtx);
     time_t t;
     time(&t);
     tm r{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, nullptr};
