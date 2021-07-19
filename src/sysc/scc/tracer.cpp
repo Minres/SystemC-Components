@@ -62,7 +62,7 @@ tracer::tracer(std::string const&& name, file_type type, bool enable)
             ss << ".txlog";
             break;
         case SQLITE:
-#if 0
+#if WITH_SQLITE
             scv_tr_sqlite_init();
             ss << ".txdb";
 #endif
