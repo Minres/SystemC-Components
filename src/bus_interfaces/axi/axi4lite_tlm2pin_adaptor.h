@@ -211,31 +211,30 @@ inline void axi4lite_tlm2pin_adaptor<BUSWIDTH, ADDRWIDTH>::bus_thread() {
         // The Slave puts the requested data on the Read Data channel and asserts RVALID,
         // indicating the data in the channel is valid.
         if(r_valid_i.read()) {
-            if(active_r_transactions.empty())
-                SCCFATAL(SCMOD) << "Invalid transaction";
+            if(!active_r_transactions.empty()) {
+                auto read_trans = active_r_transactions.front();
+                if(read_trans->payload == nullptr)
+                    SCCERR(SCMOD) << "Invalid transaction";
 
-            auto read_trans = active_r_transactions.front();
-            if(read_trans->payload == nullptr)
-                SCCERR(SCMOD) << "Invalid transaction";
+                if(read_trans->phase == tlm::END_REQ) {
+                    auto data = r_data_i.read();
+                    for(size_t j = 0, k = 0; k < BUSWIDTH / 8; j += 8, ++k) {
+                        *(uint8_t*)(read_trans->payload->get_data_ptr() + k) = data.range(j + 7, j).to_uint();
+                    }
 
-            if(read_trans->phase == tlm::END_REQ) {
-                auto data = r_data_i.read();
-                for(size_t j = 0, k = 0; k < BUSWIDTH / 8; j += 8, ++k) {
-                    *(uint8_t*)(read_trans->payload->get_data_ptr() + k) = data.range(j + 7, j).to_uint();
-                }
+                    // The Master asserts RREADY, indicating the master is ready to receive data from the slave.
+                    r_ready_o.write(true);
+                    read_trans->phase = tlm::BEGIN_RESP;
 
-                // The Master asserts RREADY, indicating the master is ready to receive data from the slave.
-                r_ready_o.write(true);
-                read_trans->phase = tlm::BEGIN_RESP;
+                    auto ret = input_socket->nb_transport_bw(*read_trans->payload, read_trans->phase, delay);
+                    SCCTRACE(SCMOD) << read_trans->phase << " bw trans " << std::hex << read_trans->payload;
 
-                auto ret = input_socket->nb_transport_bw(*read_trans->payload, read_trans->phase, delay);
-                SCCTRACE(SCMOD) << read_trans->phase << " bw trans " << std::hex << read_trans->payload;
-
-                // EDN_RESP indicates the last phase of the AXI Read transaction
-                if(ret == tlm::TLM_UPDATED && read_trans->phase == tlm::END_RESP) {
-                    active_r_transactions.pop();
-                    if(read_trans->payload->has_mm())
-                        read_trans->payload->release();
+                    // EDN_RESP indicates the last phase of the AXI Read transaction
+                    if(ret == tlm::TLM_UPDATED && read_trans->phase == tlm::END_RESP) {
+                        active_r_transactions.pop();
+                        if(read_trans->payload->has_mm())
+                            read_trans->payload->release();
+                    }
                 }
             }
         }

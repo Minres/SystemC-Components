@@ -5,6 +5,8 @@ project(scc-sysc VERSION 0.0.1 LANGUAGES CXX)
 find_package(Threads)
 find_package(Boost REQUIRED COMPONENTS date_time)
 
+option(ENABLE_SQLITE "Enable SQLite backend for SCV" OFF)
+
 if(NOT SystemCPackage)
     if(TARGET SystemC::SystemC)
         set(SystemCPackage SystemC)
@@ -55,17 +57,15 @@ if(SCV_FOUND )
     if(ZLIB_FOUND)
         set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_compressed.cpp)
     endif(ZLIB_FOUND)
-    if(FALSE)
+    if(ENABLE_SQLITE)
         set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_binary.cpp)
-        if(CONAN_LEVELDB_ROOT)
-            set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_ldb.cpp )
-        endif()
 	    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_sqlite.cpp scc/scv/sqlite3.c )
     endif()
 endif()
 if(CCI_FOUND)
     set(LIB_SOURCES ${LIB_SOURCES} 
         scc/configurable_tracer.cpp
+        scc/sc_thread_pool.cpp
     )
 endif()
 
@@ -102,6 +102,9 @@ if(SCV_FOUND)
     target_link_libraries (${PROJECT_NAME} PUBLIC ${SCV_LIBRARIES})
     if(NOT ${CMAKE_VERSION} VERSION_LESS "3.13.0") 
         target_link_directories(${PROJECT_NAME} PUBLIC ${SCV_LIBRARY_DIRS})
+    endif()
+    if(ENABLE_SQLITE)
+        target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SQLITE)
     endif()
 endif()
 

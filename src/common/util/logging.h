@@ -27,6 +27,7 @@
 #include <string>
 #include <sys/time.h>
 #include <vector>
+#include <atomic>
 
 //! log level definitions
 #define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE) L(TRACEALL)
@@ -117,17 +118,25 @@ public:
      *
      * @return the logging level
      */
-    static log_level& reporting_level() {
-        static log_level reportingLevel = WARNING;
+    static std::atomic<log_level>& reporting_level() {
+        static std::atomic<log_level> reportingLevel{WARNING};
         return reportingLevel;
+    }
+    /**
+     * get a reference to the configured logging level
+     *
+     * @return the logging level
+     */
+    static log_level get_reporting_level() {
+        return reporting_level().load(std::memory_order_relaxed);
     }
     /**
      * get a reference to the abort on fatal flag
      *
      * @return the logging level
      */
-    static bool& abort_on_fatal() {
-        static bool flag = false;
+    static std::atomic<bool>& abort_on_fatal() {
+        static std::atomic<bool> flag{false};
         return flag;
     }
     /**
@@ -156,8 +165,8 @@ public:
      *
      * @return the print time flag
      */
-    static bool& print_time() {
-        static bool flag = true;
+    static std::atomic<bool>& print_time() {
+        static std::atomic<bool> flag{true};
         return flag;
     }
     /**
@@ -165,14 +174,14 @@ public:
      *
      * @return the print severity flag
      */
-    static bool& print_severity() {
-        static bool flag = true;
+    static std::atomic<bool>& print_severity() {
+        static std::atomic<bool> flag{true};
         return flag;
     }
 
 protected:
-    log_level& get_last_log_level() {
-        static log_level level = TRACE;
+    std::atomic<log_level>& get_last_log_level() {
+        static std::atomic<log_level> level{TRACE};
         return level;
     }
     static const char* const* get_log_level_cstr() { return buffer.data(); };
@@ -188,13 +197,13 @@ public:
      *
      * @return the file handle
      */
-    static FILE*& stream() {
-        static FILE* pStream = stdout;
+    static std::atomic<FILE*>& stream() {
+        static std::atomic<FILE*> pStream{stdout};
         return pStream;
     }
 
-    static std::ostream*& ostream() {
-        static std::ostream* oStream{nullptr};
+    static std::atomic<std::ostream*>& ostream() {
+        static std::atomic<std::ostream*> oStream{nullptr};
         return oStream;
     }
     /**
@@ -241,12 +250,12 @@ class DEFAULT {};
 
 #ifndef LOG
 #define LOG(LEVEL)                                                                                                     \
-    if(logging::LEVEL <= LOGGER(DEFAULT)::reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                          \
+    if(logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                          \
     LOGGER(DEFAULT)().get(logging::LEVEL)
 #endif
 #ifndef CLOG
 #define CLOG(LEVEL, CATEGORY)                                                                                          \
-    if(logging::LEVEL <= LOGGER(CATEGORY)::reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                        \
+    if(logging::LEVEL <= LOGGER(CATEGORY)::get_reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                        \
     LOGGER(CATEGORY)().get(logging::LEVEL, #CATEGORY)
 #endif
 #if defined(WIN32)
@@ -268,8 +277,10 @@ inline std::string now_time() {
 #else
 
 inline std::string now_time() {
+    static std::mutex mtx;
     static std::array<char, 11> buffer;
     static std::array<char, 100> result;
+    std::lock_guard<std::mutex> lck(mtx);
     time_t t;
     time(&t);
     tm r{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, nullptr};
