@@ -1,0 +1,191 @@
+                SystemC Verification Library (Release 2.0.1)
+                ============================================
+
+-------------------------------------------------------------------------------
+                                IMPORTANT
+
+1. This is the production release of SCV 2.0.1. This release contains an
+   implementation of the verification extensions for Accellera Systems
+   Initiative (Accellera) SystemC versions 2.3.1, 2.3.0 (both compliant with
+   IEEE Std 1666-2011 (tm)), and version 2.2.0 (compliant with
+   IEEE Std 1666-2005 (tm)).
+
+   Examples are provided in the examples directory.
+
+2. This release is supported on the following platforms for which it has
+   been well tested:
+
+    o 64-bit Linux (x86_64)
+      + RedHat Enterprise Linux 5
+        - GNU C++ compiler versions GCC 4.1.1/4.5.2/4.8.1 and
+          Accellera SystemC 2.3.1/2.3.0
+        - GNU C++ compiler versions GCC 4.4.7 and
+          Accellera SystemC 2.3.1
+        - GNU C++ compiler versions GCC 3.4.4/4.3.2/4.4.0/4.6.1 and
+          Accellera SystemC 2.3.1/2.3.0/2.2.0
+
+      + RedHat Enterprise Linux 6
+        - GNU C++ compiler versions GCC 4.5.2/4.7.2/4.8.1 and
+          Accellera SystemC 2.3.1/2.3.0
+        - GNU C++ compiler versions GCC 4.4.7 and
+          Accellera SystemC 2.3.1
+        - GNU C++ compiler versions GCC 4.7.2/4.8.1 and
+          Accellera SystemC 2.3.1/2.3.0/2.2.0
+
+      + Scientific Linux 6
+        - GNU C++ compiler versions GCC 4.4.6 and
+          Accellera SystemC 2.3.1
+
+      + Ubuntu 12.04 LTS
+        - GNU C++ compiler versions GCC 4.5.2 and
+          Accellera SystemC 2.3.0/2.3.1
+
+        - GNU C++ compiler versions GCC 4.6.2 and
+          Accellera SystemC 2.3.1
+
+    o 64-bit Linux with 32-bit compiler (i686) (--host=i686-linux-gnu)
+      + RedHat Enterprise Linux 5
+        - GNU C++ compiler versions GCC 4.1.1/4.5.2/4.8.1 and
+          Accellera SystemC 2.3.1/2.3.0
+
+      + RedHat Enterprise Linux 6
+        - GNU C++ compiler versions GCC 4.1.1/4.5.2/4.8.1 and
+          Accellera SystemC 2.3.1/2.3.0
+
+      + Scientific Linux 5
+        - GNU C++ compiler versions GCC 4.2.1 and
+          Accellera SystemC 2.3.1
+
+      + Scientific Linux 6
+        - GNU C++ compiler versions GCC 4.4.6 and
+          Accellera SystemC 2.3.1
+
+      + Ubuntu 12.04 LTS
+        - GNU C++ compiler versions GCC 4.5.2 and
+          Accellera SystemC 2.3.1/2.3.0
+
+    o 64-bit Mac OS X (x86_64)
+      (10.6 Snow Leopard, 10.8 Mountain Lion, 10.9 Mavericks)
+      - Apple LLVM version 5.0 (based on LLVM 3.3svn) and
+        Accellera SystemC 2.3.1/2.2.0;
+      - Apple GNU C++ compiler version gcc-4.2.1 and Accellera SystemC 2.3.1;
+
+    o 32-bit Mac OS X (i686)
+      (10.6 Snow Leopard, 10.8 Mountain Lion)
+      - Apple LLVM version 5.0 (based on LLVM 3.3svn) and
+        Accellera SystemC 2.3.1/2.2.0;
+      - Apple GNU C++ compiler version GCC 4.2.1 and Accellera SystemC 2.3.1;
+
+    o 32-bit Mac OS X (powerpc)
+      (10.6 Snow Leopard, executed with Rosetta)
+      - Apple GNU C++ compiler version GCC 4.2.1 and Accellera SystemC 2.3.1;
+
+    o 64-bit Oracle Solaris 11 (SPARC T4)
+      - GNU C++ compiler version GCC 3.4.3 and Accellera SystemC 2.3.1;
+
+    o 64-bit Windows 7 SP1 (x86_64), with 32-bit compiler (i686)
+      - MinGW32 (Msys 1.0.17(0.48/3/2) 32-bit) GNU C++ compiler
+        versions 4.1.1/4.6.2 and Accellera SystemC 2.3.1/2.3.0
+
+      - MinGW32 GNU C++ compiler version 4.6.2 and Accellera SystemC 2.3.1
+
+      - Microsoft Visual Studio 2005 SP1 (8.0) (Win32) and
+        Accellera SystemC 2.3.1
+
+      - Microsoft Visual Studio 2008 Express SP1 (9.0) (Win32) and
+        Accellera SystemC 2.3.1/2.3.0/2.2.0
+        
+      - Microsoft Visual Studio 2010 Express SP1 (10.0) (Win32) and
+        Accellera SystemC 2.3.1/2.3.0/2.2.0
+
+      - Microsoft Visual Studio 2012 Express Update 4 (11.0) (Win32) and
+        Accellera SystemC 2.3.1
+
+      - Microsoft Visual Studio 2013 Express Update 1 (12.0) (Win32) and
+        Accellera SystemC 2.3.1
+        
+    o 64-bit Windows 7 SP1 (x86_64)
+      - Microsoft Visual Studio 2005 SP1 (8.0) (Win64) and
+        Accellera SystemC 2.3.1
+
+      - Microsoft Visual Studio 2012 Express Update 4 (11.0) (Win64) and
+        Accellera SystemC 2.3.1
+
+      - Microsoft Visual Studio 2013 Express Update 1 (12.0) (Win64) and
+        Accellera SystemC 2.3.1
+
+  Please note that using old OSCI SystemC 2.2.0 with recent GCCs may require
+  patches not present in the official release.
+
+  This release has not yet been tested or is known not to work as expected
+  on the following formerly supported platforms:
+
+    o GNU C++ compiler versions prior to 3.4.x (all platforms)
+    o HP-UX 11.00 or later with GNU C++ or HP C++ compiler
+    o Sun/Oracle Solaris with Sun Studio C++ compiler
+    o Mac OS X prior 10.6 Snow Leopard with GNU C++ compiler
+    o Microsoft Visual C++ versions prior to 8.0 (2005)
+
+-------------------------------------------------------------------------------
+
+Licensing and Copyright
+
+   See the separate LICENSE and NOTICE files to determine your rights and
+   responsiblities for using SystemC.
+
+User Documentation
+
+   You can find documentation for this release in the docs directory;
+   here is a brief description of each document:
+
+   scv/date03a2.pdf -- A tutorial introduction to SCV, presented at DATE
+   2003.
+
+   scv/intro_slides.pdf -- A set of slides introducing SCV.
+
+   scv/scv_random_white_paper4.pdf -- An introduction to SCV's facilities
+   for constrained randomization.
+
+   scv/scvref/vwg_1_0e.pdf -- The latest version of the SCV specification.
+
+Installation
+
+   See the separate INSTALL file that provides system information and
+   installation instructions.
+
+Release Notes
+
+   See the separate RELEASENOTES file that provides up-to-date information
+   about this release of SCV.
+
+Examples
+
+   You can find SCV examples in the examples directory; the examples README
+   (examples/README in the distribution, examples/scv/README in an
+   installation) contains a brief description of each of the examples.
+
+Additional information
+
+   SystemC has a web site at
+
+       http://www.accellera.org/
+
+   Discussion forum: http://forums.accellera.org/
+
+   You can post bugs and suggestions of general interest to the forum.
+   When reporting bugs please specify the following information (if
+   applicable):
+
+      1) SystemC version
+      2) platform, compiler, flags
+      3) description of the problem
+      4) steps to reproduce the problem
+      5) compile/runtime warnings and errors
+      6) code sample, not more than 100 lines to demonstrate the problem
+
+   Note: All bugs will only be tested against the latest publicly available
+         version of the product.
+
+   Note: All C++ compilers that SystemC supports have bugs of different
+         degree of severity. We cannot fix those bugs. Please report them to
+         the compiler vendor.

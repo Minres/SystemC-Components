@@ -1,0 +1,184 @@
+                     Release Notes for SCV 2.0.1
+                     ===========================
+
+CONTENTS
+========
+
+  1) What's new in this release?
+
+  2) Bug fixes and enhancements
+
+  3) Other changes
+
+  4) Known limitations
+
+  5) Beta features
+
+  6) Deprecated features
+
+
+1) What's new in this release?
+==============================
+
+This is an update of the SCV 1.0p2 release of the SystemC verification library.
+The primary purpose of this update is to support the Accellera Systems
+Initiative (Accellera) SystemC versions 2.3.1 and 2.3.0 (compliant with
+IEEE Std 1666-2011 (tm)) as well as the old Accellera SystemC version 2.2.0
+(compliant with IEEE Std 1666-2005 (tm)).
+
+Support for recent compilers is also included. This includes an experimental
+support for Microsoft Visual C++ 64-bit builds (with SystemC 2.3.1).
+
+
+2) Bug fixes and enhancements
+=============================
+
+o The SCV introspection extensions classes now always provide an
+  ostream output operator.
+
+o Memory leaks and potential use of garbage values were found in SCV
+  and CUDD through the Clang static analyzer and fixed. Implementation
+  assumptions that may lead to undefined behavior have rendered
+  explicit by inserting assertions.
+
+o Code, which triggered compiler warnings on recent C++ compilers, has
+  been fixed.
+
+o The SCV headers include now less unused external headers.
+
+o The code base has been cleaned up by removing code specific to very
+  old (non-standard-conforming) C++ compilers and associated
+  preprocessor macros.
+
+o The configure script has been cleaned up by removing many tests for
+  unused libraries.
+
+o For backward compatibility reasons, the scv.h still contains a
+  'using namespace std' statement, which is bad coding practice, as it
+  exposes all symbols from all included C++ standard libraries so that
+  they can potentially conflict with user code. However, it is now
+  possible to avoid namespace pollution, when including scv.h, by
+  defining the symbol SCV_DISABLE_USING_NAMESPACES. Then, the scv.h
+  header does not anymore import as a side effect all symbols from the
+  std namespace into the global namespace. Only those symbols from std
+  remain, which are already imported by systemc.h. In future versions,
+  we expect to deliver a <scv> header that will not pollute namespaces
+  by default and that will be the recommended header for using the
+  SCV library.
+
+
+3) Other changes
+================
+
+o Support for SystemC versions pre-dating OSCI SystemC 2.2 and thus the
+  IEEE Std 1666-2005 has been removed.
+
+o The class template _scv_CstructMethods<T> defined in
+  src/scv/_scv_data_structure.h has been excluded from compilation, as
+  its implementation is questionable and it is neither used in the SCV
+  nor the accompanying examples.
+
+o The original implementation of scv_report and all associated
+  internal classes have been removed. Support for the deprecated
+  scv_report and SCV_REPORT_* macros remains through aliases to the
+  corresponding SystemC sc_report functions and macros.
+
+o Support for the non-C++-standard hash<T> container (provided by some
+  old implementations of the STL in the header <hash_map.h>) has been
+  removed.
+
+o Support for using the long-deprecated and non-C++-standard header
+  <iostream.h> for I/O operation has been removed.
+
+
+4) Known limitations
+====================
+
+o There are still differences between the SCV installation process and
+  the one for the SystemC core library. See the file INSTALL for
+  details.
+
+o Introspection is not supported for fixed point data types
+  (scv_fixed<>, etc). This means that randomization can not be
+  done for these types.
+
+o Constrained randomization cannot be done with floating point types.
+  However, simple constraints can be done with floating point types,
+  so it is possible to get similar effects by overloading the next()
+  method in a constraint which includes floating point types.
+
+  For example:
+    struct constraint : public scv_constraint_base {
+      scv_smart_ptr<double> d;
+      scv_smart_ptr<int> i;
+      SCV_CONSTRAINT_CTOR(constraint) {
+        SCV_CONSTRAINT( d() < 0.01 && i() < 10 );
+      }
+    };
+
+  must be written as:
+    struct constraint : public scv_constraint_base {
+      scv_smart_ptr<double> d;
+      scv_smart_ptr<int> i;
+      SCV_CONSTRAINT_CTOR(constraint) {
+        d->keep_only(-FLT_MAX/2, 0.01);
+        SCV_CONSTRAINT( i() < 10 );
+      }
+    };
+
+o Complex constraints which use arithmethic operators may take
+  a long time to solve. Constraints involving multiplication operations
+  should be limited to 8 bit by 8 bit numbers. Larger than this will
+  cause simulations to effectively hang. For example, the following
+  constraint will never finish due to the two 32 bit by 32 bit
+  multiplications:
+
+    struct constraint : public scv_constraint_base {
+      scv_smart_ptr<int> a, b, c;
+      SCV_CONSTRAINT_CTOR(constraint) {
+        SCV_CONSTRAINT( (a() * b()) < (b() * c()) );
+      }
+    };
+
+o We do not support smart pointers to arrays. You can work around
+  this limitation by wrapping a struct around the array.
+
+o We do not implement scv_connect(). This function creates a
+  connection between a SystemC and an HDL signal. It is intended
+  that vendor implementations of SystemC will include an scv_connect()
+  that supports connections with specific HDL simulators.
+
+o We have not run our full regression suite using VC++, and are not
+  prepared to claim full support under Windows.
+
+o Certain compiler versions (e.g., gcc 4.1.2 of RHEL 5) issue warnings
+  like "dereferencing type-punned pointer will break strict-aliasing
+  rules" when compiling the CUDD 2.3.0 library, which is part of the
+  SCV implementation. These warnings are triggered by the calls to the
+  CUDD function st_lookup(). They seem to be a false positive and can
+  be silenced by adding -Wno-strict-aliasing to the CFLAGS environment
+  variable. With -fno-strict-aliasing, optimizations profiting from
+  the strict-aliasing rules are turned off that risk to break code.
+
+
+5) Beta features
+================
+
+The SCV library consists of the following set of features:
+
+o Simple constrainted randomization
+o Complex constrained randomization (multi-variable constraints)
+o Random distributions and distribution ranges
+o Composite and enumerated datatype introspection
+o Transaction recording
+o Verification datastructure
+o Messaging
+
+
+6) Deprecated features
+======================
+
+The SCV_REPORT_INFO, SCV_REPORT_WARNING, SCV_REPORT_ERROR and SCV_REPORT_FATAL
+macros are now typedefs for the corresponding SC_REPORT_* macros. New
+applications should use SC_REPORT_* (as specified in the IEEE 1666(tm) standard)
+rather than SCV_REPORT_*.
