@@ -145,7 +145,7 @@
 #define _SCV_IMPLEMENT_RW_FULL(type_id) \
   _SCV_IMPLEMENT_RW(type_id); \
   virtual void _set_instance_core_wrap(void * p) {} \
-  type_id * _instance; \
+  type_id * _instance{nullptr}; \
 
 // ----------------------------------------
 // specialization for records
@@ -177,7 +177,7 @@ public:
   void write(const T& rhs) { *_get_instance() = rhs; this->trigger_value_change_cb(); }
 
 public:
-  T * _instance;
+  T * _instance{nullptr};
 };
 
 template<typename T>
@@ -335,7 +335,7 @@ public:
   }
   const int * get_instance() const { return _instance; }
 
-  int * _instance;
+  int * _instance{nullptr};
 };
 
 
@@ -499,7 +499,7 @@ public: \
   void write(const T& rhs) { *_get_instance() = rhs; this->trigger_value_change_cb(); } \
   \
 public: \
-  T * _instance; \
+  T * _instance{nullptr}; \
 
 
 #define _SCV_EXT_RW_FC_N_ASSIGN(type_name,arg_name) \

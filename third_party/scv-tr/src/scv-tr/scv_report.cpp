@@ -75,11 +75,11 @@ void _scv_message::message(_scv_message_desc **desc_pp, ...)
 
   const char *tag = desc_p->get_tag();
   const char *format = desc_p->get_format();
-  scv_severity severity = desc_p->get_severity();
-  scv_actions actions = desc_p->get_actions();
+  sc_core::sc_severity severity = desc_p->get_severity();
+  sc_core::sc_actions actions = desc_p->get_actions();
 
-  scv_actions hold = scv_report_handler::force(0);
-  scv_report_handler::force(hold|actions);
+  sc_core::sc_actions hold = sc_core::sc_report_handler::force(0);
+  sc_core::sc_report_handler::force(hold|actions);
 
   static char formattedMessageString[20000];
   std::va_list ap;
@@ -87,9 +87,9 @@ void _scv_message::message(_scv_message_desc **desc_pp, ...)
   vsprintf(formattedMessageString,format,ap);
   va_end(ap);
 
-  scv_report_handler::report(severity,tag,formattedMessageString,"unknown",0);
+  sc_core::sc_report_handler::report(severity,tag,formattedMessageString,"unknown",0);
 
-  scv_report_handler::force(hold);
+  sc_core::sc_report_handler::force(hold);
 }
 
 void _scv_message::setup()
@@ -98,17 +98,17 @@ void _scv_message::setup()
   if ( first_time ) first_time = false;
   else return;
 #define _SCV_DEFERR(code, number, string, severity, stack_action) \
-  code##_base = new _scv_message_desc(#code,string,xlat_severity(severity),SCV_DO_NOTHING);
+  code##_base = new _scv_message_desc(#code,string,xlat_severity(severity),sc_core::SC_DO_NOTHING);
 #include "scv_messages.h"
 #undef _SCV_DEFERR
 }
 
-scv_severity _scv_message::xlat_severity(severity_level severity)
+sc_core::sc_severity _scv_message::xlat_severity(severity_level severity)
 {
   switch ( severity ) {
-    case INFO    : return SCV_INFO;
-    case WARNING : return SCV_WARNING;
-    case ERROR   : return SCV_ERROR;
-    default	 : return SCV_FATAL;
+    case INFO    : return sc_core::SC_INFO;
+    case WARNING : return sc_core::SC_WARNING;
+    case ERROR   : return sc_core::SC_ERROR;
+    default	 : return sc_core::SC_FATAL;
   }
 }

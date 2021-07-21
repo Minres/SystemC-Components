@@ -49,8 +49,6 @@
 #define SC_FX_EXCLUDE_OTHER
 #endif
 
-#include "scv_util.h"
-
 #include "scv_introspection.h"
 
 class scv_debug {
@@ -66,8 +64,6 @@ public:
   static _scv_message_desc **code;
 #include "scv_messages.h"
 #undef _SCV_DEFERR
-
-void _scv_constraint_wrapup(scv_extensions_if* e);
 
 // ----------------------------------------
 // mimic _scv_message for _SCV_INTROSPECTION_ONLY
@@ -252,9 +248,6 @@ void _scv_extension_util::print(ostream& o, int details, int indent) const {
     _scv_message::message(_scv_message::INTERNAL_ERROR,"Unrecognized data introspection type.");
     break;
   } 
-}
-void _scv_extension_util::show(int details, int indent) const {
-  print(scv_out,details,indent);
 }
 
 bool _scv_extension_util::has_valid_extensions() const { return true; }

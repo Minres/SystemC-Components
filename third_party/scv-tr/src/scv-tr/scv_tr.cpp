@@ -57,7 +57,6 @@
 #include <map>
 #include <string>
 #include "scv_report.h"
-#include "scv_debug.h"
 
 // ----------------------------------------------------------------------------
 
@@ -585,14 +584,12 @@ void scv_tr_db::print(ostream& o, int details, int indent) const {
 // ----------------------------------------------------------------------------
 
 void scv_tr_db::show(int details, int indent) const {
-  this->print(scv_out, details, indent);
+  this->print(std::cout, details, indent);
 }
 
 // ----------------------------------------------------------------------------
 
 void scv_tr_db::set_debug(int d) {
-  scv_debug::set_facility_level(scv_debug::RECORDING, d);
-
   _scv_tr_db_core::debug = d;
 }
 
@@ -700,7 +697,7 @@ void scv_tr_stream::print(ostream& o, int details, int indent) const {
 // ----------------------------------------------------------------------------
 
 void scv_tr_stream::show(int details, int indent) const {
-  this->print(scv_out, details, indent);
+  this->print(std::cout, details, indent);
 }
 
 // ----------------------------------------------------------------------------
@@ -1034,7 +1031,7 @@ void scv_tr_handle::print(ostream& o, int details, int indent) const {
 // ----------------------------------------------------------------------------
 
 void scv_tr_handle::show(int details, int indent) const {
-  this->print(scv_out, details, indent);
+  this->print(std::cout, details, indent);
 }
 
 // ----------------------------------------------------------------------------
@@ -1285,7 +1282,7 @@ void scv_tr_generator_base::_end_transaction(const scv_tr_handle& t,
   if (t._scv_tr_handle_core_p == NULL) return;
 
   if (t._scv_tr_handle_core_p->is_active == false) {
-    scv_out << "Error in scv_tr_generator_base::end_transaction, transaction "
+      std::cout << "Error in scv_tr_generator_base::end_transaction, transaction "
                "is not active.\n";
     return;
   }
@@ -1438,7 +1435,7 @@ const scv_extensions_if* scv_tr_generator_base::get_begin_exts_p() const {
   //
   if (my_exts_p->get_type() == scv_extensions_if::RECORD) {
     if ((my_exts_p->get_field(0)->get_type() == scv_extensions_if::INTEGER) &&
-        (!strcmp(my_exts_p->get_field(0)->get_name(), "_default_field_"))) {
+        (!strcmp(my_exts_p->get_field(0)->basename(), "_default_field_"))) {
       return NULL;
     }
   }
@@ -1493,7 +1490,7 @@ void scv_tr_generator_base::print(ostream& o, int details, int indent) const {
 // ----------------------------------------------------------------------------
 
 void scv_tr_generator_base::show(int details, int indent) const {
-  this->print(scv_out, details, indent);
+  this->print(std::cout, details, indent);
 }
 
 // ----------------------------------------------------------------------------

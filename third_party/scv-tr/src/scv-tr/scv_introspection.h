@@ -48,11 +48,11 @@
 
 #include "systemc.h"
 
-#include "scv_object_if.h"
 #include "scv_report.h"
 #include <cassert>
 #include <list>
 #include <string>
+#include <memory>
 
 // specific stuff for randomization extensions
 template<typename T> class scv_extensions ;
@@ -60,13 +60,9 @@ class scv_constraint_base;
 class scv_extensions_if;
 class scv_smart_ptr_if;
 class _scv_constraint_data;
-class scv_expression;
 
 template<typename T> class scv_bag {};
 class scv_random {};
-
-// specific stuff for scv_smart_ptr 
-#include "scv_shared_ptr.h"
 
 // ----------------------------------------
 // test sc_uint<N> without SystemC
@@ -92,7 +88,7 @@ public:
 // overall interface for the extensions 
 class scv_extensions_if;
 
-#define _SCV_INTROSPECTION_BASE scv_object_if
+#define _SCV_INTROSPECTION_BASE sc_core::sc_object
 
 // ----------------------------------------
 // utilities supporting all extensions
@@ -101,11 +97,8 @@ class scv_extension_util_if : public _SCV_INTROSPECTION_BASE {
 public:
   // scv_object_if's interface is also available 
   //
-  // const char *get_name() const;
-  // const char *kind() const;
-  // void print();
-  // void show();
-  //
+  virtual const char *get_name() const = 0;
+  virtual void print(std::ostream& o=std::cout, int details=0, int indent=0) const = 0;
   virtual bool has_valid_extensions() const = 0;
   virtual bool is_dynamic() const = 0;
   virtual std::string get_short_name() const = 0;
@@ -249,12 +242,12 @@ public:
 
 public: // internal
   class callback_base {
-    int *_children;
-    int _id;
+    int *_children{nullptr};
+    int _id{0};
   public:  
     virtual void execute(scv_extensions_if*,callback_reason) = 0;
     virtual callback_base *duplicate() const = 0;
-    callback_base() : _id(0) {} 
+    callback_base() {}
     virtual ~callback_base() { if (_children) delete[] _children; }
     int get_id() { return _id; }
     void set_id(int i) { _id = i; }
@@ -299,19 +292,6 @@ public:
 
 #undef _SCV_INTROSPECTION_BASE
 #define _SCV_INTROSPECTION_BASE scv_extensions_if
-
-
-class scv_expression_core_base {};
-template<typename T>
-class scv_expression_core : public scv_expression_core_base { 
-public:
-  scv_expression_core(scv_extensions_if*) {}
-};
-class scv_expression {
-public:
-  scv_expression() {}
-  scv_expression(scv_expression_core_base*) {}
-};
 
 
 // implementation details
@@ -362,13 +342,6 @@ public:
 
 
 
-#define _SCV_PAREN_OPERATOR(type_name)                                   \
-  scv_expression operator()() {                                          \
-    return scv_expression(new scv_expression_core<type_name>(this));                \
-  }
-
-
-
 // supporting macros
 #define SCV_EXTENSIONS(type_name)                                        \
   template<>                                                             \
@@ -392,7 +365,6 @@ public:
     write(rhs); return *this;                                            \
   }                                                                      \
   operator const type_name&() const { return *(type_name*)_get_instance(); } \
-  _SCV_PAREN_OPERATOR(type_name)                                         \
   virtual void _set_instance_core_wrap(void *p) { _set_instance_core((type_name*)p); } \
   void _set_instance_core(type_name *_scv_object_with_introspection)
 
@@ -424,7 +396,6 @@ public:
     write(rhs); return *this;                                            \
   }                                                                      \
   operator type_name() const { return *(type_name*)_get_instance(); }    \
-  _SCV_PAREN_OPERATOR(type_name)                                         \
   bool _init() { __init(); return true; }                                \
   void __init()
 
@@ -450,83 +421,18 @@ ostream& operator<<(ostream& os, const scv_extensions<T>& data) {
 // overloaded function call problem.
 // ----------------------------------------
 template <typename T>
-scv_extensions<T> scv_get_extensions(T& d);
-
-template <typename T>
-const scv_extensions<T> scv_get_const_extensions(const T& d);
-
-// ----------------------------------------
-// the scv_smart_ptr template
-// ----------------------------------------
-class scv_smart_ptr_if : public scv_object_if {
-public:
-  virtual scv_extensions_if *get_extensions_ptr() = 0;
-  virtual const scv_extensions_if *get_extensions_ptr() const = 0;
+scv_extensions<T> scv_get_extensions(T& d) {
+  scv_extensions<T> e;
+  e._set_instance(&d);
+  return e;
 };
 
 template <typename T>
-class scv_smart_ptr : public scv_smart_ptr_if {
-public:
-  scv_extensions<T>& operator*() { return *tmp_; }
-  const scv_extensions<T>& operator*() const { return *tmp_; }
-  scv_extensions<T> *operator->() { return tmp_; }
-  const scv_extensions<T> *operator->() const { return tmp_; }
-  scv_expression operator()() { return (*tmp_)(); }
-  const T& read() const { tmp_->initialize(); return *data_; }
-  void write(const T& rhs) { *tmp_ = rhs; }
-
-public:
-  scv_smart_ptr();
-  scv_smart_ptr(const std::string& name);
-  scv_smart_ptr(const char *name);
-  scv_smart_ptr(T *data);
-  scv_smart_ptr(T *data, const std::string& name);
-  scv_smart_ptr(T *data, const char *name);
-  scv_smart_ptr(const scv_smart_ptr<T>& rhs); 
-  scv_smart_ptr(
-    scv_shared_ptr<T> data,
-    scv_shared_ptr< scv_extensions<T> > ext,
-    scv_extensions<T> *tmp
-  );
-  virtual ~scv_smart_ptr();
-
-public:
-  template<typename T2>
-  operator scv_smart_ptr<T2> () { return scv_smart_ptr<T2>(data_,ext_,tmp_); }
-
-public:
-  virtual scv_extensions_if *get_extensions_ptr() { return tmp_; }
-  virtual const scv_extensions_if *get_extensions_ptr() const { return tmp_; }
-
-public:
-  scv_smart_ptr& operator=(const scv_smart_ptr& rhs);
-
-public:
-  virtual const char *get_name() const { return tmp_->get_name(); }
-  virtual const char *kind() const { return tmp_->kind(); }
-
-  virtual void print(ostream& o=scv_out, int details=0, int indent=0) const {
-    tmp_->print(o,details,indent);
-  }
-  virtual void show(int details=0, int indent=0) const {
-    tmp_->show(details,indent);
-  }
-
-public: // private
-  const T *get_value() const { return &*data_; }
-  T *get_value() { return &*data_; }
-
-private:
-  scv_smart_ptr(scv_shared_ptr<T> data);
-  scv_shared_ptr<T> data_;
-  scv_shared_ptr< scv_extensions<T> > ext_;
-  scv_extensions<T> *tmp_;
-
-  friend class scv_constraint_base;
-  void init();
+const scv_extensions<T> scv_get_const_extensions(const T& d) {
+  scv_extensions<T> e;
+  e._set_instance((T*)&d);
+  return e;
 };
 
-// implementation details
-#include "_scv_smart_ptr.h"
 
 #endif

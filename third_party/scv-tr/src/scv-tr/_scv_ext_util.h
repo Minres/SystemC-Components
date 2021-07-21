@@ -55,16 +55,15 @@ public:
   }
 
   // scv_object_if
-  virtual const char *get_name() const;
-  virtual const char *kind() const;
-  virtual void print(ostream& o= scv_out, int details=0, int indent=0) const;
-  virtual void show(int details=0, int indent=0) const;
+  const char *get_name() const override;
+  const char *kind() const override;
+  void print(ostream& o= std::cout, int details=0, int indent=0) const override;
 
   // extension "util"
-  virtual bool has_valid_extensions() const;
-  virtual bool is_dynamic() const;
-  virtual std::string get_short_name() const;
-  virtual void set_name(const char * s);
+  bool has_valid_extensions() const override;;
+  bool is_dynamic() const override;;
+  std::string get_short_name() const override;;
+  void set_name(const char * s) override;;
   virtual void _set_name(const std::string& s);
 
 public: // non-virtual for fast execution

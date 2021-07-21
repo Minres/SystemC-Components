@@ -50,40 +50,6 @@
 #define _SCV_REPORT_H
 
 #include <systemc>
-// Previous SCV versions provided an own scv_report infrastructure,
-// which has been superseeded by SystemC sc_core::sc_report.
-
-typedef sc_core::sc_actions scv_actions;
-typedef sc_core::sc_report scv_report;
-typedef sc_core::sc_report_handler scv_report_handler;
-typedef sc_core::sc_severity scv_severity;
-typedef const char *scv_msg_type;
-
-#define SCV_INFO sc_core::SC_INFO
-#define SCV_WARNING sc_core::SC_WARNING
-#define SCV_ERROR sc_core::SC_ERROR
-#define SCV_FATAL sc_core::SC_FATAL
-
-#define SCV_UNSPECIFIED sc_core::SC_UNSPECIFIED
-#define SCV_DO_NOTHING sc_core::SC_DO_NOTHING
-#define SCV_THROW sc_core::SC_THROW
-#define SCV_LOG sc_core::SC_LOG
-#define SCV_DISPLAY sc_core::SC_DISPLAY
-#define SCV_CACHE_REPORT sc_core::SC_CACHE_REPORT
-#define SCV_INTERRUPT sc_core::SC_INTERRUPT
-#define SCV_STOP sc_core::SC_STOP
-#define SCV_ABORT sc_core::SC_ABORT
-
-#define SCV_DEFAULT_INFO_ACTIONS sc_core::SC_DEFAULT_INFO_ACTIONS
-#define SCV_DEFAULT_WARNING_ACTIONS sc_core::SC_DEFAULT_WARNING_ACTIONS
-#define SCV_DEFAULT_ERROR_ACTIONS sc_core::SC_DEFAULT_ERROR_ACTIONS
-#define SCV_DEFAULT_FATAL_ACTIONS sc_core::SC_DEFAULT_FATAL_ACTIONS
-
-#define SCV_REPORT_INFO SC_REPORT_INFO
-#define SCV_REPORT_WARNING SC_REPORT_WARNING
-#define SCV_REPORT_ERROR SC_REPORT_ERROR
-#define SCV_REPORT_FATAL SC_REPORT_FATAL
-
 
 //
 // Translation layer for _scv_message messages
@@ -93,25 +59,19 @@ typedef const char *scv_msg_type;
 class _scv_message_desc {
 public:
   _scv_message_desc(
-    std::string tag, std::string format, scv_severity severity, scv_actions actions
+    std::string tag, std::string format, sc_core::sc_severity severity, sc_core::sc_actions actions
   ) : _tag(tag), _format(format), _severity(severity), _actions(actions) {}
   const char *get_tag() const { return _tag.c_str(); }
   const char *get_format() const { return _format.c_str(); }
-  scv_severity get_severity() const { return _severity; }
+  sc_core::sc_severity get_severity() const { return _severity; }
   unsigned get_actions() const { return _actions; }
 private:
   std::string _tag;
   std::string _format;
-  scv_severity _severity;
-  scv_actions _actions;
+  sc_core::sc_severity _severity;
+  sc_core::sc_actions _actions;
 };
 
-
-#if defined(_MSC_VER) || defined(_WIN32)
-#  ifdef ERROR
-#    undef ERROR //defined in wingdi.h
-#  endif
-#endif
 
 class _scv_message {
 public:
@@ -131,7 +91,7 @@ public:
 
   // Used internally by the SystemC Verification Standard to report exceptions
   static void message(_scv_message_desc **desc_pp, ... );
-  static scv_severity xlat_severity(severity_level severity);
+  static sc_core::sc_severity xlat_severity(severity_level severity);
 
 private:
   static void setup();

@@ -76,7 +76,6 @@ tx_relation <"relation_name"> <tx_id_1> <tx_id_2>
  */
 
 #include <string>
-#include "scv_util.h"
 #include "scv_introspection.h"
 #include "scv_tr.h"
 
@@ -119,14 +118,14 @@ static void scv_tr_db_cbf(
                 _scv_message::TRANSACTION_RECORDING_INTERNAL,
                 "Can't open text recording file");
     } else {
-      scv_out << "TB Transaction Recording has started, file = " <<
+        std::cout << "TB Transaction Recording has started, file = " <<
 		my_text_file_name << endl;
     }
     break;
 
   case scv_tr_db::DELETE:
     if (my_text_file_p != NULL) {
-      scv_out << "Transaction Recording is closing file: " <<
+        std::cout << "Transaction Recording is closing file: " <<
                 my_text_file_name << endl;
       fclose(my_text_file_p);
 

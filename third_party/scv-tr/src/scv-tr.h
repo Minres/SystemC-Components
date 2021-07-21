@@ -42,19 +42,14 @@
 
  *****************************************************************************/
 
-#ifndef SCV_H
-#define SCV_H
+#ifndef SCV_TR_H
+#define SCV_TR_H
 
-#include "scv/scv_util.h"
-#include "scv/scv_debug.h"
-//#include "scv/scv_expression.h"
-#include "scv/scv_introspection.h"
-#include "scv/scv_report.h"
-#include "scv/scv_object_if.h"
-#include "scv/scv_shared_ptr.h"
-#include "scv/scv_tr.h"
-#include "scv/scv_kit_date.h"
-#include "scv/scv_ver.h"
+#include "scv-tr/scv_introspection.h"
+#include "scv-tr/scv_report.h"
+#include "scv-tr/scv_tr.h"
+#include "scv-tr/scv_kit_date.h"
+#include "scv-tr/scv_ver.h"
 
 #endif
 

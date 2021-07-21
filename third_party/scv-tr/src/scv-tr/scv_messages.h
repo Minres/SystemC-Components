@@ -60,47 +60,6 @@ _SCV_DEFERR(INTERNAL_ERROR,41,\
            _scv_message::ERROR,"short")
 
 //
-// Bags
-//
-
-_SCV_DEFERR(BAG_ZERO_UNMARKED_OBJECTS,2,\
-           "There are no marked objects in scv_bag '%s'.",\
-           _scv_message::WARNING,"short")
-
-_SCV_DEFERR(BAG_ZERO_MARKED_OBJECTS,3,\
-           "There are no unmarked objects in scv_bag '%s'.", \
-           _scv_message::WARNING,"short")
-
-_SCV_DEFERR(BAG_INVALID_PEEK_ERASE,4,\
-           "An object can be removed from a bag only if it was referenced by peek_next or peek_random. \nThere is no such object in scv_bag '%s'.",\
-           _scv_message::WARNING,"short")
-
-_SCV_DEFERR(BAG_INVALID_PEEK_RETURN,5,
-           "An object can be returned in a bag only if it was referenced by peek_next or peek_random. \nThere is no such object in scv_bag '%s'.",\
-           _scv_message::ERROR,"short")
-
-_SCV_DEFERR(BAG_INVALID_ADD_ARGUMENT,6,\
-           "The second argument for scv_bag::add must be a non-zero positive integer; the actual argument passed in this call was '%d'.",\
-           _scv_message::ERROR,"none")
-
-_SCV_DEFERR(BAG_INVALID_PEEK_MARK,7,\
-           "An object can be marked in a bag only if it was referenced by peek_next or peek_random. \nThere is no such object in scv_bag '%s'.",\
-           _scv_message::WARNING,"short")
-
-_SCV_DEFERR(BAG_INVALID_PEEK_UNMARK,8,\
-           "An object can be unmarked in a bag only if it was referenced by peek_next or peek_random. \nThere is no such object in scv_bag '%s'.",\
-           _scv_message::WARNING,"short")
-
-//
-// Empty data structures
-//
-
-_SCV_DEFERR(EMPTY_BAG,9,"There is no object to peek at and return from scv_bag '%s'.",\
-           _scv_message::ERROR,"short")
-
-_SCV_DEFERR(EMPTY_LIST,10,"%s was called on an empty %s, '%s'.",_scv_message::ERROR,"short")
-
-//
 // Transactions
 //
 
@@ -111,14 +70,6 @@ _SCV_DEFERR(TRANSACTION_RECORDING_INTERNAL,34,\
 _SCV_DEFERR(TRANSACTION_RECORDING_INTERNAL_FATAL,51,\
         "An internal error occurred in transaction recording:\n'%s'",\
         _scv_message::FATAL,"short")
-
-//
-// Expression
-//
-
-_SCV_DEFERR(EXPRESSION_ILLEGAL_EXTRACTION,38,\
-           "%s cannot be extracted from an expression.",\
-           _scv_message::ERROR,"short")
 
 //
 // Introspection
