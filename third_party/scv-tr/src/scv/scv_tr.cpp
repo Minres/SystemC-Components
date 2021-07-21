@@ -56,6 +56,8 @@
 #include <list>
 #include <map>
 #include <string>
+#include "scv_report.h"
+#include "scv_debug.h"
 
 // ----------------------------------------------------------------------------
 
@@ -64,14 +66,13 @@
 // ----------------------------------------------------------------------------
 using namespace std;
 using namespace sc_core;
-using namespace trtx;
 static void scv_tr_null_scv_tr_db_message() {
   static bool message_given = false;
 
   if (message_given == false) {
     message_given = true;
 
-    SC_scv_message::message(
+    _scv_message::message(
         _scv_message::TRANSACTION_RECORDING_INTERNAL,
         "The scv_tr_db argument to a scv_tr method is NULL");
   }

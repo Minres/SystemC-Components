@@ -41,9 +41,9 @@
 
  *****************************************************************************/
 
-#include "scv/scv_util.h"
-#include "scv/scv_introspection.h"
-#include "scv/scv_debug.h"
+#include "scv_util.h"
+#include "scv_introspection.h"
+#include "scv_debug.h"
 
 int scv_expression::_debug = scv_debug::INITIAL_DEBUG_LEVEL;
 

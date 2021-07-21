@@ -4,10 +4,10 @@ project(scv-tr VERSION 0.0.1 LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} 
 	scv/scv_debug.cpp
-	scv/scv_expression.cpp
-	scv/scv_init_seed.cpp
+	#scv/scv_expression.cpp
+	#scv/scv_init_seed.cpp
 	scv/scv_introspection.cpp
-	scv/scv_random.cpp
+	#scv/scv_random.cpp
 	scv/scv_report.cpp
 	scv/scv_tr_text.cpp
 	scv/scv_tr.cpp

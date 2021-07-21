@@ -49,7 +49,6 @@
 #define _SCV_OSTREAM(type_name)                                      \
   friend std::ostream& operator<<(std::ostream& os,                  \
                                   const scv_extensions< type_name >& e) { \
-    const_cast<scv_extensions< type_name >& >(e).initialize();       \
     os << *e._get_instance(); return os;                             \
   }
 
@@ -60,7 +59,6 @@ public:
   scv_extensions<bool>& operator=(bool b)
     { *_get_instance() = b; trigger_value_change_cb(); return *this; }
   operator bool() const {
-    const_cast<scv_extensions<bool> * >(this)->initialize();
     return *_get_instance();
   }
   _SCV_OSTREAM(bool)
@@ -120,7 +118,6 @@ public:                                                             \
     --*_get_instance(); trigger_value_change_cb(); return tmp; \
   } \
   operator type_name() const { \
-    const_cast<scv_extensions< type_name > * >(this)->initialize(); \
     return *_get_instance(); \
   } \
   _SCV_OSTREAM(type_name) \
@@ -172,7 +169,6 @@ public:                                                            \
     *_get_instance() /= i; trigger_value_change_cb(); return *this; \
   }                                                                \
   operator type_name() const { \
-    const_cast<scv_extensions< type_name > * >(this)->initialize(); \
     return *_get_instance(); \
   }                                                                \
   _SCV_OSTREAM(type_name) \
@@ -284,11 +280,11 @@ _SCV_TAG_FINAL_COMPONENT(test_uint<N> );
 
 #define _SCV_IMPL { *this->_get_instance() = v; this->trigger_value_change_cb(); return *this; }
 #define _SCV_IMPL1 { *this->_get_instance() = *(v._get_instance()); this->trigger_value_change_cb(); return *this; }
-#define _SCV_IMPL2(op) { this->initialize(); *this->_get_instance() op v; this->trigger_value_change_cb(); return *this; }
+#define _SCV_IMPL2(op) { *this->_get_instance() op v; this->trigger_value_change_cb(); return *this; }
 #define _SCV_IMPL3(op) { u.initialize(); v.initialize(); return *u._get_instance() op *v._get_instance(); }
 #define _SCV_IMPL4(op) { u.initialize(); return *u._get_instance() op v; }
 #define _SCV_IMPL5(op) { v.initialize(); return u op *v._get_instance(); }
-#define _SCV_MAP(return_type,method) return_type method() const { this->initialize(); return this->_get_instance()->method(); }
+#define _SCV_MAP(return_type,method) return_type method() const { return this->_get_instance()->method(); }
 
 using namespace sc_dt;
 
@@ -298,7 +294,7 @@ using namespace sc_dt;
 
 #define _SCV_SIGNED_SELFOP(op,src_type) \
   return_type& operator op (src_type i) \
-    { this->initialize(); *this->_get_instance() += i; this->trigger_value_change_cb(); return *this; } \
+    {  *this->_get_instance() += i; this->trigger_value_change_cb(); return *this; } \
 
 #define _SCV_SIGNED_SELFOPS(op) \
   _SCV_SIGNED_SELFOP(op,const sc_signed&) \
@@ -332,7 +328,7 @@ using namespace sc_dt;
 
 #define _SCV_SIGNED_INTERFACE(type_name) \
 public: \
-  operator const type_name&() const { this->initialize(); return *this->_get_instance(); } \
+  operator const type_name&() const { return *this->_get_instance(); } \
   typedef scv_extensions< type_name > return_type; \
   return_type& operator=(const return_type& i) \
     { *this->_get_instance() = *(i._get_instance()); this->trigger_value_change_cb(); return *this; } \
@@ -374,32 +370,32 @@ public: \
   _SCV_MAP(double,to_double) \
   _SCV_INT_DEPRECATED(type_name) \
   const std::string to_string(sc_numrep numrep=SC_DEC) const \
-    { this->initialize(); return this->_get_instance()->to_string(numrep); } \
+    {  return this->_get_instance()->to_string(numrep); } \
   const std::string to_string(sc_numrep numrep, bool w_prefix) const \
-    { this->initialize(); return this->_get_instance()->to_string(numrep,w_prefix); } \
+    {  return this->_get_instance()->to_string(numrep,w_prefix); } \
   void scan( istream& is = cin ) \
     { this->_get_instance()->scan(is); this->trigger_value_change_cb(); } \
   void dump( ostream& os = cout ) const \
-    { this->initialize(); this->_get_instance()->dump(os); } \
+    {  this->_get_instance()->dump(os); } \
   _SCV_MAP(int,length) \
   _SCV_MAP(bool,iszero) \
   _SCV_MAP(bool,sign) \
   bool test(int i) const \
-    { this->initialize(); return this->_get_instance()->test(i); } \
+    {  return this->_get_instance()->test(i); } \
   void set(int i) \
-    { this->initialize(); this->_get_instance()->set(i); this->trigger_value_change_cb(); } \
+    {  this->_get_instance()->set(i); this->trigger_value_change_cb(); } \
   void clear(int i) \
-    { this->initialize(); this->_get_instance()->clear(i); this->trigger_value_change_cb(); } \
+    {  this->_get_instance()->clear(i); this->trigger_value_change_cb(); } \
   void set(int i, bool v) \
-    { this->initialize(); this->_get_instance()->set(i,v); this->trigger_value_change_cb(); } \
+    {  this->_get_instance()->set(i,v); this->trigger_value_change_cb(); } \
   void invert(int i) \
-    { this->initialize(); this->_get_instance()->invert(i); this->trigger_value_change_cb(); } \
+    {  this->_get_instance()->invert(i); this->trigger_value_change_cb(); } \
   void reverse() \
-    { this->initialize(); this->_get_instance()->reverse(); this->trigger_value_change_cb(); } \
+    {  this->_get_instance()->reverse(); this->trigger_value_change_cb(); } \
   void get_packed_rep(sc_dt::sc_digit *buf) const \
-    { this->initialize(); this->_get_instance()->get_packed_rep(buf); } \
+    {  this->_get_instance()->get_packed_rep(buf); } \
   void set_packed_rep(sc_dt::sc_digit *buf) \
-    { this->initialize(); this->_get_instance()->set_packed_rep(buf); this->trigger_value_change_cb(); } \
+    {  this->_get_instance()->set_packed_rep(buf); this->trigger_value_change_cb(); } \
   _SCV_SIGNED_SELFOPS(+=) \
   _SCV_SIGNED_SELFOPS(-=) \
   _SCV_SIGNED_SELFOPS(*=) \
@@ -437,15 +433,15 @@ _SCV_TAG_FINAL_COMPONENT(sc_unsigned);
 
 #define _SCV_INT_BASE_INTERFACE(type_name) \
 public: \
-  operator const type_name&() const { this->initialize(); return *this->_get_instance(); } \
+  operator const type_name&() const {  return *this->_get_instance(); } \
   typedef scv_extensions< type_name > return_type; \
-  void invalid_length() const { this->initialize(); this->invalid_length(); } \
-  void invalid_index(int i) const { this->initialize(); this->invalid_index(i); } \
-  void invalid_range(int l, int r) const { this->initialize(); this->invalid_range(l,r); } \
-  void check_length() const { this->initialize(); this->check_length(); } \
-  void check_index(int i) const { this->initialize(); this->check_index(i); } \
-  void check_range(int l, int r) const { this->initialize(); this->check_range(l,r); } \
-  void extend_sign() { this->initialize(); this->extend_sign(); } \
+  void invalid_length() const {  this->invalid_length(); } \
+  void invalid_index(int i) const {  this->invalid_index(i); } \
+  void invalid_range(int l, int r) const {  this->invalid_range(l,r); } \
+  void check_length() const {  this->check_length(); } \
+  void check_index(int i) const {  this->check_index(i); } \
+  void check_range(int l, int r) const {  this->check_range(l,r); } \
+  void extend_sign() {  this->extend_sign(); } \
   return_type& operator=(const return_type& i) \
     { *this->_get_instance() = *(i._get_instance()); this->trigger_value_change_cb(); return *this; } \
   _SCV_BASE_ASSIGN(int_type) \
@@ -486,11 +482,11 @@ public: \
     --*this->_get_instance(); this->trigger_value_change_cb(); return tmp; \
   } \
   bool test(int i) const \
-    { this->initialize(); return this->_get_instance()->test(i); } \
+    {  return this->_get_instance()->test(i); } \
   void set(int i) \
-    { this->initialize(); this->_get_instance()->set(i); this->trigger_value_change_cb(); } \
+    {  this->_get_instance()->set(i); this->trigger_value_change_cb(); } \
   void set(int i, bool v) \
-    { this->initialize(); this->_get_instance()->set(i,v); this->trigger_value_change_cb(); } \
+    {  this->_get_instance()->set(i,v); this->trigger_value_change_cb(); } \
   _SCV_MAP(int,length) \
   _SCV_MAP(bool,and_reduce) \
   _SCV_MAP(bool,nand_reduce) \
@@ -508,9 +504,9 @@ public: \
   _SCV_MAP(uint64,to_uint64) \
   _SCV_MAP(double,to_double) \
   const std::string to_string(sc_numrep numrep=SC_DEC) const \
-    { this->initialize(); return this->_get_instance()->to_string(numrep); } \
+    {  return this->_get_instance()->to_string(numrep); } \
   const std::string to_string(sc_numrep numrep, bool w_prefix) const \
-    { this->initialize(); return this->_get_instance()->to_string(numrep,w_prefix); } \
+    {  return this->_get_instance()->to_string(numrep,w_prefix); } \
   void scan( istream& is = cin ) \
     { this->_get_instance()->scan(is); this->trigger_value_change_cb(); } \
   _SCV_OSTREAM(type_name) \
@@ -530,7 +526,7 @@ _SCV_TAG_FINAL_COMPONENT(sc_uint_base);
 
 #define _SCV_BIT_BASE_INTERFACE(type_name) \
 public: \
-  operator const type_name&() const { this->initialize(); return *this->_get_instance(); } \
+  operator const type_name&() const {  return *this->_get_instance(); } \
   typedef scv_extensions< type_name > return_type; \
   return_type& operator=(const return_type& i) \
     { *this->_get_instance() = *(i._get_instance()); this->trigger_value_change_cb(); return *this; } \
@@ -553,19 +549,19 @@ public: \
   _SCV_MAP(int,length) \
   _SCV_MAP(int,size) \
   sc_logic_value_t get_bit(int i) const \
-    { this->initialize(); return sc_dt::sc_logic_value_t(this->_get_instance()->get_bit(i)); } \
+    {  return sc_dt::sc_logic_value_t(this->_get_instance()->get_bit(i)); } \
   void set_bit(int i, sc_logic_value_t v) \
-    { this->initialize(); this->_get_instance()->set_bit(i,v); this->trigger_value_change_cb(); } \
+    {  this->_get_instance()->set_bit(i,v); this->trigger_value_change_cb(); } \
   unsigned long get_word(int i) const \
-    { this->initialize(); return this->_get_instance()->get_word(i); } \
+    {  return this->_get_instance()->get_word(i); } \
   void set_word(int i, unsigned long w) \
-    { this->initialize(); this->_get_instance()->set_word(i,w); this->trigger_value_change_cb(); } \
+    {  this->_get_instance()->set_word(i,w); this->trigger_value_change_cb(); } \
   unsigned long get_cword(int i) const \
-    { this->initialize(); return this->_get_instance()->get_cword(i); } \
+    {  return this->_get_instance()->get_cword(i); } \
   void set_cword(int i, unsigned long w) \
-    { this->initialize(); this->_get_instance()->set_cword(i,w); this->trigger_value_change_cb(); } \
+    {  this->_get_instance()->set_cword(i,w); this->trigger_value_change_cb(); } \
   void clean_tail() \
-    { this->initialize(); this->_get_instance()->clean_tail(); this->trigger_value_change_cb(); } \
+    {  this->_get_instance()->clean_tail(); this->trigger_value_change_cb(); } \
   _SCV_MAP(bool,is_01) \
   _SCV_OSTREAM(type_name) \
   _SCV_PAREN_OPERATOR(type_name)
@@ -594,13 +590,7 @@ public:
 
   return_type& operator=(const return_type& v) _SCV_IMPL1
   // from class sc_uint
-#ifndef _SCV_INTROSPECTION_ONLY
-  return_type& operator = (uint_type                    v) _SCV_IMPL
-#endif
   return_type& operator = (const sc_uint_base&          v) _SCV_IMPL
-#ifndef _SCV_INTROSPECTION_ONLY
-  return_type& operator = (const sc_uint_subref&        v) _SCV_IMPL
-#endif
   return_type& operator = (const sc_signed&             v) _SCV_IMPL
   return_type& operator = (const sc_unsigned&           v) _SCV_IMPL
 #ifdef SC_INCLUDE_FX
@@ -611,32 +601,17 @@ public:
 #endif
   return_type& operator = ( const sc_bv_base&           v) _SCV_IMPL
   return_type& operator = ( const sc_lv_base&           v) _SCV_IMPL
-#ifndef _SCV_INTROSPECTION_ONLY
-  return_type& operator += (uint_type v) _SCV_IMPL2(+=)
-  return_type& operator -= (uint_type v) _SCV_IMPL2(-=)
-  return_type& operator *= (uint_type v) _SCV_IMPL2(*=)
-  return_type& operator /= (uint_type v) _SCV_IMPL2(/=)
-  return_type& operator %= (uint_type v) _SCV_IMPL2(%=)
-  return_type& operator &= (uint_type v) _SCV_IMPL2(&=)
-  return_type& operator |= (uint_type v) _SCV_IMPL2(|=)
-  return_type& operator ^= (uint_type v) _SCV_IMPL2(^=)
-  return_type& operator <<= (uint_type v) _SCV_IMPL2(<<=)
-  return_type& operator >>= (uint_type v) _SCV_IMPL2(>>=)
-#endif
 
   return_type& operator ++ () // prefix
-  { this->initialize(); ++*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
+  {  ++*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
   const return_type operator ++ (int) // postfix
-  { this->initialize(); sc_uint<W> tmp = *this->_get_instance()++; this->trigger_value_change_cb(); return tmp; }
+  {  sc_uint<W> tmp = *this->_get_instance()++; this->trigger_value_change_cb(); return tmp; }
   return_type& operator -- () // prefix
-  { this->initialize(); --*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
+  {  --*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
   const return_type operator -- (int) // postfix
-  { this->initialize(); sc_uint<W> tmp = *this->_get_instance()--; this->trigger_value_change_cb(); return tmp; }
+  {  sc_uint<W> tmp = *this->_get_instance()--; this->trigger_value_change_cb(); return tmp; }
 
   // from class sc_uint_base
-#ifndef _SCV_INTROSPECTION_ONLY
-  operator uint_type() const { this->initialize(); return this->_get_instance()->operator uint_type(); }
-#endif
 
   _SCV_MAP(int,bitwidth);
   _SCV_MAP(int,length);
@@ -648,20 +623,17 @@ public:
   _SCV_MAP(long,long_low);
   _SCV_MAP(long,long_high);
 #endif
-  bool test(int i) const { this->initialize(); return this->_get_instance()->test(i); }
-  void set(int i) { this->initialize(); this->_get_instance()->set(i); this->trigger_value_change_cb(); }
-  void set(int i, bool v) { this->initialize(); this->_get_instance()->set(i,v); this->trigger_value_change_cb(); }
+  bool test(int i) const {  return this->_get_instance()->test(i); }
+  void set(int i) {  this->_get_instance()->set(i); this->trigger_value_change_cb(); }
+  void set(int i, bool v) {  this->_get_instance()->set(i,v); this->trigger_value_change_cb(); }
   // sc_uint_bitref operator [] (int i)
-  bool operator [] (int i) const { this->initialize(); return this->_get_instance()->operator [](i); }
+  bool operator [] (int i) const {  return this->_get_instance()->operator [](i); }
   //  sc_uint_subref range(int left, int right);
-#ifndef _SCV_INTROSPECTION_ONLY
-  uint_type range(int left, int right) const { this->initialize(); return this->_get_instance()->range(left,right); }
-#endif
 
   // operator ==, !=, <, <=, >, >= should be handled by uint_type();
   // operator +, -, etc. as well.
 
-  //  void print( ostream& os ) const { this->initialize(); this->_get_instance()->print(os); }
+  //  void print( ostream& os ) const {  this->_get_instance()->print(os); }
 };
 
 template<int W>
@@ -674,13 +646,7 @@ public:
 
   return_type& operator=(const return_type& v) _SCV_IMPL1
   // from class sc_int
-#ifndef _SCV_INTROSPECTION_ONLY
-  return_type& operator = (int_type                     v) _SCV_IMPL
-#endif
   return_type& operator = (const sc_int_base&           v) _SCV_IMPL
-#ifndef _SCV_INTROSPECTION_ONLY
-  return_type& operator = (const sc_int_subref&         v) _SCV_IMPL
-#endif
   return_type& operator = (const sc_signed&             v) _SCV_IMPL
   return_type& operator = (const sc_unsigned&           v) _SCV_IMPL
 #ifdef SC_INCLUDE_FX
@@ -691,32 +657,17 @@ public:
 #endif
   return_type& operator = ( const sc_bv_base&           v) _SCV_IMPL
   return_type& operator = ( const sc_lv_base&           v) _SCV_IMPL
-#ifndef _SCV_INTROSPECTION_ONLY
-  return_type& operator += (int_type v) _SCV_IMPL2(+=)
-  return_type& operator -= (int_type v) _SCV_IMPL2(-=)
-  return_type& operator *= (int_type v) _SCV_IMPL2(*=)
-  return_type& operator /= (int_type v) _SCV_IMPL2(/=)
-  return_type& operator %= (int_type v) _SCV_IMPL2(%=)
-  return_type& operator &= (int_type v) _SCV_IMPL2(&=)
-  return_type& operator |= (int_type v) _SCV_IMPL2(|=)
-  return_type& operator ^= (int_type v) _SCV_IMPL2(^=)
-  return_type& operator <<= (int_type v) _SCV_IMPL2(<<=)
-  return_type& operator >>= (int_type v) _SCV_IMPL2(>>=)
-#endif
 
   return_type& operator ++ () // prefix
-  { this->initialize(); ++*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
+  {  ++*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
   const return_type operator ++ (int) // postfix
-  { this->initialize(); sc_int<W> tmp = *this->_get_instance()++; this->trigger_value_change_cb(); return tmp; }
+  {  sc_int<W> tmp = *this->_get_instance()++; this->trigger_value_change_cb(); return tmp; }
   return_type& operator -- () // prefix
-  { this->initialize(); --*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
+  {  --*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
   const return_type operator -- (int) // postfix
-  { this->initialize(); sc_int<W> tmp = *this->_get_instance()--; this->trigger_value_change_cb(); return tmp; }
+  {  sc_int<W> tmp = *this->_get_instance()--; this->trigger_value_change_cb(); return tmp; }
 
   // from class sc_int_base
-#ifndef _SCV_INTROSPECTION_ONLY
-  operator int_type() const { this->initialize(); return this->_get_instance()->operator int_type(); }
-#endif
 
   _SCV_MAP(int,bitwidth);
   _SCV_MAP(int,length);
@@ -728,20 +679,17 @@ public:
   _SCV_MAP(long,long_low);
   _SCV_MAP(long,long_high);
 #endif
-  bool test(int i) const { this->initialize(); return this->_get_instance()->test(i); }
-  void set(int i) { this->initialize(); this->_get_instance()->set(i); this->trigger_value_change_cb(); }
-  void set(int i, bool v) { this->initialize(); this->_get_instance()->set(i,v); this->trigger_value_change_cb(); }
+  bool test(int i) const {  return this->_get_instance()->test(i); }
+  void set(int i) {  this->_get_instance()->set(i); this->trigger_value_change_cb(); }
+  void set(int i, bool v) {  this->_get_instance()->set(i,v); this->trigger_value_change_cb(); }
   // sc_int_bitref operator [] (int i)
-  bool operator [] (int i) const { this->initialize(); return this->_get_instance()->operator [](i); }
+  bool operator [] (int i) const {  return this->_get_instance()->operator [](i); }
   //  sc_int_subref range(int left, int right);
-#ifndef _SCV_INTROSPECTION_ONLY
-  int_type range(int left, int right) const { this->initialize(); return this->_get_instance()->range(left,right); }
-#endif
 
   // operator ==, !=, <, <=, >, >= should be handled by int_type();
   // operator +, -, etc. as well.
 
-  //  void print( ostream& os ) const { this->initialize(); this->_get_instance()->print(os); }
+  //  void print( ostream& os ) const {  this->_get_instance()->print(os); }
 };
 
 // sc_biguint and sc_bigint are exactly the same.
@@ -757,13 +705,7 @@ public:
   return_type& operator=(const return_type& v) _SCV_IMPL1
   return_type& operator=(const sc_biguint<W>&      v) _SCV_IMPL
   return_type& operator=(const sc_unsigned&        v) _SCV_IMPL
-#ifndef _SCV_INTROSPECTION_ONLY
-  return_type& operator=(const sc_unsigned_subref& v) _SCV_IMPL
-#endif
   return_type& operator=(const sc_signed&          v) _SCV_IMPL
-#ifndef _SCV_INTROSPECTION_ONLY
-  return_type& operator=(const sc_signed_subref&   v) _SCV_IMPL
-#endif
   return_type& operator=(const char*               v) _SCV_IMPL
   return_type& operator=(int64                     v) _SCV_IMPL
   return_type& operator=(uint64                    v) _SCV_IMPL
@@ -893,26 +835,26 @@ public:
   return_type& operator >>= (const sc_uint_base& v) _SCV_IMPL2(>>=)
 
   return_type& operator ++ ()
-  { this->initialize(); ++*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
+  {  ++*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
   const sc_unsigned operator ++ (int)
-  { this->initialize(); sc_biguint<W> tmp = *this->_get_instance()++; this->trigger_value_change_cb(); return tmp; }
+  {  sc_biguint<W> tmp = *this->_get_instance()++; this->trigger_value_change_cb(); return tmp; }
   return_type& operator -- ()
-  { this->initialize(); --*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
+  {  --*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
   const sc_unsigned operator -- (int)
-  { this->initialize(); sc_biguint<W> tmp = *this->_get_instance()--; this->trigger_value_change_cb(); return tmp; }
+  {  sc_biguint<W> tmp = *this->_get_instance()--; this->trigger_value_change_cb(); return tmp; }
   //  sc_unsigned_bitref operator [] (int i)
   const bool operator [] (int i) const
-  { this->initialize(); return this->_get_instance()->operator [](i); }
+  {  return this->_get_instance()->operator [](i); }
   const sc_unsigned range(int i, int j) const
-  { this->initialize(); return this->_get_instance()->range(i,j); }
+  {  return this->_get_instance()->range(i,j); }
   //  sc_unsigned_subref operator () (int i, int j)
   const sc_unsigned operator () (int i, int j) const
-  { this->initialize(); return this->_get_instance()->operator ()(i,j); }
+  {  return this->_get_instance()->operator ()(i,j); }
 
   std::string to_string(sc_numrep base = SC_DEC, bool formatted = false) const
-  { this->initialize(); return this->_get_instance()->to_string(base,formatted); }
+  {  return this->_get_instance()->to_string(base,formatted); }
   std::string to_string(int base, bool formatted = false) const
-  { this->initialize(); return this->_get_instance()->to_string(base,formatted); }
+  {  return this->_get_instance()->to_string(base,formatted); }
 
   _SCV_MAP(int64,to_int64);
   _SCV_MAP(uint64,to_uint64);
@@ -925,23 +867,23 @@ public:
   _SCV_MAP(unsigned int,to_unsigned);
   _SCV_MAP(unsigned int,to_unsigned_int);
   _SCV_MAP(double,to_double);
-  //  void print() const { this->initialize(); this->_get_instance()->print(); }
-  //  void print(ostream &os) const { this->initialize(); this->_get_instance()->print(os); }
-  void dump() const { this->initialize(); this->_get_instance()->dump(); };
-  void dump(ostream &os) const { this->initialize(); this->_get_instance()->dump(os); };
+  //  void print() const {  this->_get_instance()->print(); }
+  //  void print(ostream &os) const {  this->_get_instance()->print(os); }
+  void dump() const {  this->_get_instance()->dump(); };
+  void dump(ostream &os) const {  this->_get_instance()->dump(os); };
   _SCV_MAP(int,length);
   _SCV_MAP(bool,iszero);
   _SCV_MAP(bool,sign);
-  bool test(int i) const { this->initialize(); return this->_get_instance()->test(i); }
-  void set(int i) { this->initialize(); this->_get_instance()->set(i); this->trigger_value_change_cb(); }
-  void clear(int i) { this->initialize(); this->_get_instance()->clear(i); this->trigger_value_change_cb(); }
-  void set(int i, bool v) { this->initialize(); this->_get_instance()->set(i,v); this->trigger_value_change_cb(); }
-  void invert(int i) { this->initialize(); this->_get_instance()->invert(i); this->trigger_value_change_cb(); }
-  void reverse() { this->initialize(); this->_get_instance()->reverse(); this->trigger_value_change_cb(); }
-  void get_packed_rep(sc_dt::sc_digit *buf) const { this->initialize(); this->_get_instance()->get_packet_ref(buf); }
+  bool test(int i) const {  return this->_get_instance()->test(i); }
+  void set(int i) {  this->_get_instance()->set(i); this->trigger_value_change_cb(); }
+  void clear(int i) {  this->_get_instance()->clear(i); this->trigger_value_change_cb(); }
+  void set(int i, bool v) {  this->_get_instance()->set(i,v); this->trigger_value_change_cb(); }
+  void invert(int i) {  this->_get_instance()->invert(i); this->trigger_value_change_cb(); }
+  void reverse() {  this->_get_instance()->reverse(); this->trigger_value_change_cb(); }
+  void get_packed_rep(sc_dt::sc_digit *buf) const {  this->_get_instance()->get_packet_ref(buf); }
   void set_packed_rep(sc_dt::sc_digit *buf) { this->_get_instance()->get_packet_ref(buf); this->trigger_value_change_cb(); }
 
-  operator const sc_unsigned&() const { this->initialize(); return *this->_get_instance(); }
+  operator const sc_unsigned&() const {  return *this->_get_instance(); }
 };
 
 template<int W>
@@ -955,13 +897,7 @@ public:
   return_type& operator=(const return_type& v) _SCV_IMPL1
   return_type& operator=(const sc_bigint<W>&       v) _SCV_IMPL
   return_type& operator=(const sc_unsigned&        v) _SCV_IMPL
-#ifndef _SCV_INTROSPECTION_ONLY
-  return_type& operator=(const sc_unsigned_subref& v) _SCV_IMPL
-#endif
   return_type& operator=(const sc_signed&          v) _SCV_IMPL
-#ifndef _SCV_INTROSPECTION_ONLY
-  return_type& operator=(const sc_signed_subref&   v) _SCV_IMPL
-#endif
   return_type& operator=(const char*               v) _SCV_IMPL
   return_type& operator=(int64                     v) _SCV_IMPL
   return_type& operator=(uint64                    v) _SCV_IMPL
@@ -1092,26 +1028,26 @@ public:
   return_type& operator >>= (const sc_uint_base& v) _SCV_IMPL2(>>=)
 
   return_type& operator ++ ()
-  { this->initialize(); ++*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
+  {  ++*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
   const sc_unsigned operator ++ (int)
-  { this->initialize(); sc_bigint<W> tmp = *this->_get_instance()++; this->trigger_value_change_cb(); return tmp; }
+  {  sc_bigint<W> tmp = *this->_get_instance()++; this->trigger_value_change_cb(); return tmp; }
   return_type& operator -- ()
-  { this->initialize(); --*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
+  {  --*this->_get_instance(); this->trigger_value_change_cb(); return *this; }
   const sc_unsigned operator -- (int)
-  { this->initialize(); sc_bigint<W> tmp = *this->_get_instance()--; this->trigger_value_change_cb(); return tmp; }
+  {  sc_bigint<W> tmp = *this->_get_instance()--; this->trigger_value_change_cb(); return tmp; }
   //  sc_unsigned_bitref operator [] (int i)
   const bool operator [] (int i) const
-  { this->initialize(); return this->_get_instance()->operator [](i); }
+  {  return this->_get_instance()->operator [](i); }
   const sc_unsigned range(int i, int j) const
-  { this->initialize(); return this->_get_instance()->range(i,j); }
+  {  return this->_get_instance()->range(i,j); }
   //  sc_unsigned_subref operator () (int i, int j)
   const sc_unsigned operator () (int i, int j) const
-  { this->initialize(); return this->_get_instance()->operator ()(i,j); }
+  {  return this->_get_instance()->operator ()(i,j); }
 
   std::string to_string(sc_numrep base = SC_DEC, bool formatted = false) const
-  { this->initialize(); return this->_get_instance()->to_string(base,formatted); }
+  {  return this->_get_instance()->to_string(base,formatted); }
   std::string to_string(int base, bool formatted = false) const
-  { this->initialize(); return this->_get_instance()->to_string(base,formatted); }
+  {  return this->_get_instance()->to_string(base,formatted); }
 
   _SCV_MAP(int64,to_int64);
   _SCV_MAP(uint64,to_uint64);
@@ -1124,23 +1060,23 @@ public:
   _SCV_MAP(unsigned int,to_unsigned);
   _SCV_MAP(unsigned int,to_unsigned_int);
   _SCV_MAP(double,to_double);
-  //  void print() const { this->initialize(); this->_get_instance()->print(); }
-  //  void print(ostream &os) const { this->initialize(); this->_get_instance()->print(os); }
-  void dump() const { this->initialize(); this->_get_instance()->dump(); };
-  void dump(ostream &os) const { this->initialize(); this->_get_instance()->dump(os); };
+  //  void print() const {  this->_get_instance()->print(); }
+  //  void print(ostream &os) const {  this->_get_instance()->print(os); }
+  void dump() const {  this->_get_instance()->dump(); };
+  void dump(ostream &os) const {  this->_get_instance()->dump(os); };
   _SCV_MAP(int,length);
   _SCV_MAP(bool,iszero);
   _SCV_MAP(bool,sign);
-  bool test(int i) const { this->initialize(); return this->_get_instance()->test(i); }
-  void set(int i) { this->initialize(); this->_get_instance()->set(i); this->trigger_value_change_cb(); }
-  void clear(int i) { this->initialize(); this->_get_instance()->clear(i); this->trigger_value_change_cb(); }
-  void set(int i, bool v) { this->initialize(); this->_get_instance()->set(i,v); this->trigger_value_change_cb(); }
-  void invert(int i) { this->initialize(); this->_get_instance()->invert(i); this->trigger_value_change_cb(); }
-  void reverse() { this->initialize(); this->_get_instance()->reverse(); this->trigger_value_change_cb(); }
-  void get_packed_rep(sc_dt::sc_digit *buf) const { this->initialize(); this->_get_instance()->get_packet_ref(buf); }
+  bool test(int i) const {  return this->_get_instance()->test(i); }
+  void set(int i) {  this->_get_instance()->set(i); this->trigger_value_change_cb(); }
+  void clear(int i) {  this->_get_instance()->clear(i); this->trigger_value_change_cb(); }
+  void set(int i, bool v) {  this->_get_instance()->set(i,v); this->trigger_value_change_cb(); }
+  void invert(int i) {  this->_get_instance()->invert(i); this->trigger_value_change_cb(); }
+  void reverse() {  this->_get_instance()->reverse(); this->trigger_value_change_cb(); }
+  void get_packed_rep(sc_dt::sc_digit *buf) const {  this->_get_instance()->get_packet_ref(buf); }
   void set_packed_rep(sc_dt::sc_digit *buf) { this->_get_instance()->get_packet_ref(buf); this->trigger_value_change_cb(); }
 
-  operator const sc_signed&() const { this->initialize(); return *this->_get_instance(); }
+  operator const sc_signed&() const {  return *this->_get_instance(); }
 };
 
 template<>
@@ -1170,8 +1106,8 @@ public:
   return_type& operator ^= ( char v ) _SCV_IMPL2(^=)
   _SCV_MAP(bool,to_bool);
   _SCV_MAP(char,to_char);
-  //  void print( ostream& os) const { this->initialize(); return this->_get_instance()->print(os); }
-  operator const sc_bit&() const { this->initialize(); return *this->_get_instance(); }
+  //  void print( ostream& os) const {  return this->_get_instance()->print(os); }
+  operator const sc_bit&() const {  return *this->_get_instance(); }
 };
 
 template<>
@@ -1191,16 +1127,16 @@ public:
   return_type& operator &= ( const sc_logic& v ) _SCV_IMPL2(&=)
   return_type& operator |= ( const sc_logic& v ) _SCV_IMPL2(|=)
   return_type& operator ^= ( const sc_logic& v ) _SCV_IMPL2(^=)
-  bool operator == ( const sc_logic& r ) const { this->initialize(); return *this->_get_instance() == r; }
-  bool operator == ( char r ) const { this->initialize(); return *this->_get_instance() == r; }
-  bool operator != ( const sc_logic& r ) const { this->initialize(); return *this->_get_instance() != r; }
-  bool operator != ( char r ) const { this->initialize(); return *this->_get_instance() != r; }
+  bool operator == ( const sc_logic& r ) const { return *this->_get_instance() == r; }
+  bool operator == ( char r ) const { return *this->_get_instance() == r; }
+  bool operator != ( const sc_logic& r ) const { return *this->_get_instance() != r; }
+  bool operator != ( char r ) const {  return *this->_get_instance() != r; }
   _SCV_MAP(char,to_char);
   _SCV_MAP(bool,is_01);
   _SCV_MAP(bool,to_bool);
-  //  void print( ostream& os ) const { this->initialize(); this->_get_instance()->print(os); }
+  //  void print( ostream& os ) const {  this->_get_instance()->print(os); }
 
-  operator const sc_logic&() const { this->initialize(); return *this->_get_instance(); }
+  operator const sc_logic&() const {  return *this->_get_instance(); }
 };
 
 template<int W>
@@ -1208,7 +1144,7 @@ class scv_extensions< sc_bv<W> >
   : public scv_extensions_base< sc_bv<W> > {
 public:
   _SCV_PAREN_OPERATOR(sc_bv<W>)
-  operator const sc_bv<W>&() const { this->initialize(); return *this->_get_instance(); }
+  operator const sc_bv<W>&() const {  return *this->_get_instance(); }
 
   typedef scv_extensions< sc_bv<W> > return_type;
 
@@ -1234,18 +1170,18 @@ public:
   return_type& operator=( const sc_uint<W>& v) _SCV_IMPL
 
   void resize(unsigned long new_size)
-  { this->initialize(); this->_get_instance()->resize(new_size); this->trigger_value_change_cb(); }
+  {  this->_get_instance()->resize(new_size); this->trigger_value_change_cb(); }
 
   // from sc_bv_base
-  long get_bit(unsigned n) const { this->initialize(); return this->_get_instance()->get_bit(n); }
+  long get_bit(unsigned n) const {  return this->_get_instance()->get_bit(n); }
   void set_bit(unsigned bit_number, long value)
-  { this->initialize(); this->_get_instance()->set_bit(bit_number,value); this->trigger_value_change_cb(); }
-  unsigned long get_word(unsigned i) const { this->initialize(); return this->_get_instance()->get_word(i); }
+  {  this->_get_instance()->set_bit(bit_number,value); this->trigger_value_change_cb(); }
+  unsigned long get_word(unsigned i) const {  return this->_get_instance()->get_word(i); }
   void set_word(unsigned i, unsigned long w)
-  { this->initialize(); this->_get_instance()->set_word(i,w); this->trigger_value_change_cb(); }
-  unsigned long get_cword(unsigned i) const { this->initialize(); return this->_get_instance()->get_cword(i); }
+  {  this->_get_instance()->set_word(i,w); this->trigger_value_change_cb(); }
+  unsigned long get_cword(unsigned i) const {  return this->_get_instance()->get_cword(i); }
   void set_cword(unsigned i, unsigned long w)
-  { this->initialize(); this->_get_instance()->set_cword(i,w); this->trigger_value_change_cb(); }
+  {  this->_get_instance()->set_cword(i,w); this->trigger_value_change_cb(); }
   _SCV_MAP(int,length);
 
   return_type& operator &= ( const sc_unsigned& v ) _SCV_IMPL2(&=)
@@ -1277,11 +1213,11 @@ public:
   return_type& operator ^= ( const char* v ) _SCV_IMPL2(^=)
 
   sc_bv_base operator & ( const char* s ) const
-  { this->initialize(); return *this->_get_instance() & s; }
+  {  return *this->_get_instance() & s; }
   sc_bv_base operator | ( const char* s ) const
-  { this->initialize(); return *this->_get_instance() | s; }
+  {  return *this->_get_instance() | s; }
   sc_bv_base operator ^ ( const char* s ) const
-  { this->initialize(); return *this->_get_instance() ^ s; }
+  {  return *this->_get_instance() ^ s; }
 
   friend return_type operator & ( const char* s, const return_type& b )
   { b.initialize(); return *b._get_instance() & s; }
@@ -1290,7 +1226,7 @@ public:
   friend return_type operator ^ ( const char* s, const return_type& b )
   { b.initialize(); return *b._get_instance() ^ s; }
 
-  void set(unsigned long v=0) { this->initialize(); this->_get_instance()->set(v); this->trigger_value_change_cb(); }
+  void set(unsigned long v=0) {  this->_get_instance()->set(v); this->trigger_value_change_cb(); }
 
 };
 
@@ -1299,7 +1235,7 @@ class scv_extensions< sc_lv<W> >
   : public scv_extensions_base< sc_lv<W> > {
 public:
   _SCV_PAREN_OPERATOR(sc_lv<W>)
-  operator const sc_lv<W>&() const { this->initialize(); return *this->_get_instance(); }
+  operator const sc_lv<W>&() const {  return *this->_get_instance(); }
 
   typedef scv_extensions< sc_lv<W> > return_type;
 
@@ -1326,18 +1262,18 @@ public:
   return_type& operator=( const sc_uint<W>& v) _SCV_IMPL
 
   void resize(unsigned long new_size)
-  { this->initialize(); this->_get_instance()->resize(new_size); this->trigger_value_change_cb(); }
+  {  this->_get_instance()->resize(new_size); this->trigger_value_change_cb(); }
 
   // from sc_bv_base
-  long get_bit(unsigned n) const { this->initialize(); return this->_get_instance()->get_bit(n); }
+  long get_bit(unsigned n) const {  return this->_get_instance()->get_bit(n); }
   void set_bit(unsigned bit_number, long value)
-  { this->initialize(); this->_get_instance()->set_bit(bit_number,value); this->trigger_value_change_cb(); }
-  unsigned long get_word(unsigned i) const { this->initialize(); return this->_get_instance()->get_word(i); }
+  {  this->_get_instance()->set_bit(bit_number,value); this->trigger_value_change_cb(); }
+  unsigned long get_word(unsigned i) const {  return this->_get_instance()->get_word(i); }
   void set_word(unsigned i, unsigned long w)
-  { this->initialize(); this->_get_instance()->set_word(i,w); this->trigger_value_change_cb(); }
-  unsigned long get_cword(unsigned i) const { this->initialize(); return this->_get_instance()->get_cword(i); }
+  {  this->_get_instance()->set_word(i,w); this->trigger_value_change_cb(); }
+  unsigned long get_cword(unsigned i) const {  return this->_get_instance()->get_cword(i); }
   void set_cword(unsigned i, unsigned long w)
-  { this->initialize(); this->_get_instance()->set_cword(i,w); this->trigger_value_change_cb(); }
+  {  this->_get_instance()->set_cword(i,w); this->trigger_value_change_cb(); }
   _SCV_MAP(int,length);
 
   return_type& operator &= ( const sc_unsigned& v ) _SCV_IMPL2(&=)
@@ -1369,11 +1305,11 @@ public:
   return_type& operator ^= ( const char* v ) _SCV_IMPL2(^=)
 
   sc_bv_base operator & ( const char* s ) const
-  { this->initialize(); return *this->_get_instance() & s; }
+  {  return *this->_get_instance() & s; }
   sc_bv_base operator | ( const char* s ) const
-  { this->initialize(); return *this->_get_instance() | s; }
+  {  return *this->_get_instance() | s; }
   sc_bv_base operator ^ ( const char* s ) const
-  { this->initialize(); return *this->_get_instance() ^ s; }
+  {  return *this->_get_instance() ^ s; }
 
   friend return_type operator & ( const char* s, const return_type& b )
   { b.initialize(); return *b._get_instance() & s; }
@@ -1382,7 +1318,7 @@ public:
   friend return_type operator ^ ( const char* s, const return_type& b )
   { b.initialize(); return *b._get_instance() ^ s; }
 
-  bool is_01() { this->initialize(); return this->_get_instance()->is_01(); } // this should have been "const"
+  bool is_01() {  return this->_get_instance()->is_01(); } // this should have been "const"
 
 };
 

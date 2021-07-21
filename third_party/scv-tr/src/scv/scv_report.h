@@ -49,6 +49,7 @@
 #ifndef _SCV_REPORT_H
 #define _SCV_REPORT_H
 
+#include <systemc>
 // Previous SCV versions provided an own scv_report infrastructure,
 // which has been superseeded by SystemC sc_core::sc_report.
 
@@ -58,25 +59,25 @@ typedef sc_core::sc_report_handler scv_report_handler;
 typedef sc_core::sc_severity scv_severity;
 typedef const char *scv_msg_type;
 
-#define SCV_INFO SC_INFO
-#define SCV_WARNING SC_WARNING
-#define SCV_ERROR SC_ERROR
-#define SCV_FATAL SC_FATAL
+#define SCV_INFO sc_core::SC_INFO
+#define SCV_WARNING sc_core::SC_WARNING
+#define SCV_ERROR sc_core::SC_ERROR
+#define SCV_FATAL sc_core::SC_FATAL
 
-#define SCV_UNSPECIFIED SC_UNSPECIFIED
-#define SCV_DO_NOTHING SC_DO_NOTHING
-#define SCV_THROW SC_THROW
-#define SCV_LOG SC_LOG
-#define SCV_DISPLAY SC_DISPLAY
-#define SCV_CACHE_REPORT SC_CACHE_REPORT
-#define SCV_INTERRUPT SC_INTERRUPT
-#define SCV_STOP SC_STOP
-#define SCV_ABORT SC_ABORT
+#define SCV_UNSPECIFIED sc_core::SC_UNSPECIFIED
+#define SCV_DO_NOTHING sc_core::SC_DO_NOTHING
+#define SCV_THROW sc_core::SC_THROW
+#define SCV_LOG sc_core::SC_LOG
+#define SCV_DISPLAY sc_core::SC_DISPLAY
+#define SCV_CACHE_REPORT sc_core::SC_CACHE_REPORT
+#define SCV_INTERRUPT sc_core::SC_INTERRUPT
+#define SCV_STOP sc_core::SC_STOP
+#define SCV_ABORT sc_core::SC_ABORT
 
-#define SCV_DEFAULT_INFO_ACTIONS SC_DEFAULT_INFO_ACTIONS
-#define SCV_DEFAULT_WARNING_ACTIONS SC_DEFAULT_WARNING_ACTIONS
-#define SCV_DEFAULT_ERROR_ACTIONS SC_DEFAULT_ERROR_ACTIONS
-#define SCV_DEFAULT_FATAL_ACTIONS SC_DEFAULT_FATAL_ACTIONS
+#define SCV_DEFAULT_INFO_ACTIONS sc_core::SC_DEFAULT_INFO_ACTIONS
+#define SCV_DEFAULT_WARNING_ACTIONS sc_core::SC_DEFAULT_WARNING_ACTIONS
+#define SCV_DEFAULT_ERROR_ACTIONS sc_core::SC_DEFAULT_ERROR_ACTIONS
+#define SCV_DEFAULT_FATAL_ACTIONS sc_core::SC_DEFAULT_FATAL_ACTIONS
 
 #define SCV_REPORT_INFO SC_REPORT_INFO
 #define SCV_REPORT_WARNING SC_REPORT_WARNING
@@ -125,7 +126,7 @@ public:
 #define _SCV_DEFERR(code, number, string, severity, actions) \
   static _scv_message_desc *code##_base; \
   static _scv_message_desc **code;
-#include "scv/scv_messages.h"
+#include "scv_messages.h"
 #undef _SCV_DEFERR
 
   // Used internally by the SystemC Verification Standard to report exceptions

@@ -49,6 +49,7 @@
 #define SCV_OBJECT_IF_H
 
 #include <iostream>
+#include "scv_util.h"
 
 class scv_object_if {
 public:

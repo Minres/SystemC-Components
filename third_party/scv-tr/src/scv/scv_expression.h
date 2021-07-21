@@ -54,8 +54,8 @@
 #ifndef SCV_EXPRESSION_H
 #define SCV_EXPRESSION_H
 
-#include "scv/scv_object_if.h"
-#include "scv/scv_shared_ptr.h"
+#include "scv_object_if.h"
+#include "scv_shared_ptr.h"
 #include <list>
 
 namespace sc_core {

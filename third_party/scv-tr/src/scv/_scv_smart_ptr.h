@@ -131,16 +131,10 @@ template <typename T> scv_smart_ptr<T>::scv_smart_ptr(
 void _scv_constraint_wrapup(scv_extensions_if* e);
 
 template <typename T> scv_smart_ptr<T>::~scv_smart_ptr() {
-#ifndef _SCV_INTROSPECTION_ONLY
-  //_scv_constraint_wrapup(&*ext_);
-#endif
 }
 
 template <typename T> void scv_smart_ptr<T>::init() {
   ext_->_set_dynamic();
-#ifndef _SCV_INTROSPECTION_ONLY
-  ::_scv_insert_smart_ptr(this);
-#endif
 }
 
 template <typename T> scv_smart_ptr<T>& 

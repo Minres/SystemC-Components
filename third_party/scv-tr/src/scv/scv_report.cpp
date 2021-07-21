@@ -47,7 +47,7 @@
 //
 // This must be included before any system headers.
 //
-#include "scv.h"
+#include "scv_report.h"
 
 #include <cstdarg>
 #include <string>
@@ -62,7 +62,7 @@
 #define _SCV_DEFERR(code, number, string, severity, stack_action) \
   _scv_message_desc *_scv_message::code##_base = 0; \
   _scv_message_desc **_scv_message::code = &_scv_message::code##_base;
-#include "scv/scv_messages.h"
+#include "scv_messages.h"
 #undef _SCV_DEFERR
 
 
@@ -99,7 +99,7 @@ void _scv_message::setup()
   else return;
 #define _SCV_DEFERR(code, number, string, severity, stack_action) \
   code##_base = new _scv_message_desc(#code,string,xlat_severity(severity),SCV_DO_NOTHING);
-#include "scv/scv_messages.h"
+#include "scv_messages.h"
 #undef _SCV_DEFERR
 }
 

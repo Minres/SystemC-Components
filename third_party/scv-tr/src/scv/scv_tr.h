@@ -107,12 +107,7 @@
 #ifndef SCV_TR_H
 #define SCV_TR_H 
 
-#if defined(_MSC_VER) || defined(_WIN32)
-#  ifdef DELETE
-#    undef DELETE // defined in winnt.h
-#  endif
-#endif
-
+#include "scv_introspection.h"
 // ----------------------------------------------------------------------------
 //
 // The following is the default template parameter for the

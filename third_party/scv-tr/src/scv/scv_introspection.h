@@ -23,11 +23,7 @@
 
   scv_introspection.h -- 
   The public interface for the introspection facility.
- 
-  You can use this facility without the other SCV facilities
-  by using #include "scv/scv_introspection.h" and
-  -D_SCV_INTROSPECTION_ONLY on your compilation line.
- 
+
 
   Original Authors (Cadence Design Systems, Inc):
   Norris Ip, Dean Shea, John Rose, Jasvinder Singh, William Paulsen,
@@ -50,32 +46,10 @@
 #ifndef SCV_INTROSPECTION_H
 #define SCV_INTROSPECTION_H
 
-#if defined(_MSC_VER)
-#pragma warning( push )
-#pragma warning( disable: 4244 )
-#pragma warning( disable: 4267 )
-#endif
-
 #include "systemc.h"
 
-#if defined(_MSC_VER)
-#pragma warning( pop )
-#endif
-
-#include "scv/scv_object_if.h"
-
-// ----------------------------------------
-// configuration
-// ----------------------------------------
-
-// compiler configuration
-#if defined( __HP_aCC )
-#ifndef _INCLUDE_LONGLONG
-#define _INCLUDE_LONGLONG
-#endif
-#endif
-
-// utilities
+#include "scv_object_if.h"
+#include "scv_report.h"
 #include <cassert>
 #include <list>
 #include <string>
@@ -88,59 +62,11 @@ class scv_smart_ptr_if;
 class _scv_constraint_data;
 class scv_expression;
 
-#ifndef _SCV_INTROSPECTION_ONLY
-#include "scv/scv_report.h"
-#include "scv/scv_bag.h"
-#include "scv/scv_random.h"
-#else
 template<typename T> class scv_bag {};
 class scv_random {};
-enum scv_severity {
-  SCV_INFO = 0,	// informative only
-  SCV_WARNING,	// indicates potentially incorrect condition
-  SCV_ERROR,	// indicates a definite problem
-  SCV_FATAL	// indicates a problem from which we cannot recover
-};
-class _scv_message_desc {
-friend class _scv_message;
-private:
-  _scv_message_desc(std::string tag, std::string format, scv_severity severity, unsigned actions)
-    : _tag(tag), _format(format), _severity(severity), _actions(actions) {}
-  const char *get_tag() const { return _tag.c_str(); }
-  const char *get_format() const { return _format.c_str(); }
-  scv_severity get_severity() const { return _severity; }
-  unsigned get_actions() const { return _actions; }
-  std::string _tag;
-  std::string _format;
-  scv_severity _severity;
-  unsigned _actions;
-};
-class _scv_message {
-public:
-  enum severity_level { INFO, WARNING, ERROR, FATAL };
-
-  enum response_level {
-    NONE_SPECIFIED, ENABLE_MESSAGE, SUPPRESS_MESSAGE
-  };
-
-  enum stack_print {
-    NO_STACK, SHORT_STACK, LONG_STACK
-  };
-
-// Message types are actually pointers to descriptors
-#define _SCV_DEFERR(code, number, string, severity, printStack) \
-  static _scv_message_desc *code##_base; \
-  static _scv_message_desc **code;
-#include "scv_messages.h"
-#undef _SCV_DEFERR
-
-  // Used internally by SystemC Verification Standard to report exceptions
-  static void message(_scv_message_desc **desc_pp, ... ) { scv_out << "exception received" << endl; }
-};
-#endif
 
 // specific stuff for scv_smart_ptr 
-#include "scv/scv_shared_ptr.h"
+#include "scv_shared_ptr.h"
 
 // ----------------------------------------
 // test sc_uint<N> without SystemC
@@ -298,44 +224,6 @@ public:
 class _scv_dynamic_data;
 
 // ----------------------------------------
-// dynamic extension to perform randomization
-// ----------------------------------------
-class scv_extension_rand_if : public _SCV_INTROSPECTION_BASE {
-public:
-  enum mode_t {
-    RANDOM,
-    SCAN,
-    RANDOM_AVOID_DUPLICATE,
-    DISTRIBUTION
-  };
-public: 
-  virtual void next() = 0; 
-  virtual void disable_randomization() = 0;
-  virtual void enable_randomization() = 0;
-  virtual bool is_randomization_enabled() = 0;
-  virtual void use_constraint(scv_extensions_if*) = 0;
-  virtual void set_random(scv_shared_ptr<scv_random> gen) = 0;
-  virtual scv_shared_ptr<scv_random> get_random(void) = 0;
-  virtual scv_expression form_expression() const = 0;
-
-public: // implementation (private)
-  virtual _scv_constraint_data *get_constraint_data() =0;
-  virtual void get_generator() =0;
-  virtual void set_constraint(scv_constraint_base*) = 0;
-  virtual void set_constraint(bool mode=true) = 0;
-  virtual void set_extension(scv_extensions_if *e = NULL) = 0;
-  virtual void set_distribution_from(scv_extensions_if*) = 0;
-  virtual _scv_dynamic_data *get_dynamic_data() = 0;
-  virtual void updated() = 0;
-  virtual void uninitialize() = 0;
-  virtual void initialize() const = 0;
-  virtual bool is_initialized() const = 0;
-};
-
-#undef _SCV_INTROSPECTION_BASE
-#define _SCV_INTROSPECTION_BASE scv_extension_rand_if
-
-// ----------------------------------------
 // dynamic extension to perform value change callback
 // ----------------------------------------
 #if defined(_MSC_VER) || defined(_WIN32)
@@ -413,9 +301,6 @@ public:
 #define _SCV_INTROSPECTION_BASE scv_extensions_if
 
 
-#ifndef _SCV_INTROSPECTION_ONLY
-#include "scv/scv_expression.h"
-#else
 class scv_expression_core_base {};
 template<typename T>
 class scv_expression_core : public scv_expression_core_base { 
@@ -427,11 +312,10 @@ public:
   scv_expression() {}
   scv_expression(scv_expression_core_base*) {}
 };
-#endif
 
 
 // implementation details
-#include "scv/_scv_ext_comp.h"
+#include "_scv_ext_comp.h"
 
 // to be used as base class of your composite type
 template<typename T>
@@ -446,8 +330,6 @@ class scv_enum_base : public _SCV_INTROSPECTION_BASE_ENUM {
 public:
   scv_enum_base() {}
   virtual ~scv_enum_base() {
-    if (this->_has_dynamic_data() && this->_get_dynamic_data()->dist_)
-      delete _get_distribution();
   }
   virtual std::list<const char *>& _get_names() const { static std::list<const char *> _names; return _names; }
   virtual std::list<int>& _get_values() const { static std::list<int> _values; return _values; }
@@ -465,84 +347,6 @@ public:
     return (T *) _instance;
   }
   const T *get_instance() const { return (T*)_instance; }
-  virtual _scv_distribution<T> *_get_distribution() {         
-    return (_scv_distribution<T> *) _get_dynamic_data()->dist_;
-  }                                                                    
-  void _set_distribution(_scv_distribution<T>* d) {
-    _scv_distribution<T> * dist = _get_distribution();
-    _scv_constraint_data * cdata = get_constraint_data();
-    if (!dist) { 
-      this->_get_dynamic_data()->dist_ = new _scv_distribution<T>; 
-      dist = _get_distribution();
-    } else {
-      dist->reset_distribution();
-    }
-    if (d->dist_) {
-      dist->set_mode(*d->dist_, cdata, this);
-    } else if (d->dist_r_) {
-      dist->set_mode(*d->dist_r_, cdata, this);
-    } else {
-      _scv_message::message(_scv_message::INTERNAL_ERROR, "_set_distribution(enum)");
-    }
-  }
-  void set_distribution_from(scv_extensions_if* e) {
-    _scv_distribution<T> *dist = (_scv_distribution<T>*)
-      e->get_dynamic_data()->dist_;
-    _set_distribution(dist);
-  }
-  void set_mode(scv_bag<std::pair<T, T> >& d){               
-    _reset_keep_only_distribution();                                   
-    if (!_get_distribution())                                          
-      _get_dynamic_data()->dist_ = new _scv_distribution<T>;   
-    _get_distribution()->set_mode(d,this);                             
-  }                                                                    
-  void set_mode(scv_bag<T>& d) { 
-    _reset_keep_only_distribution(); 
-    if (!_get_distribution())       
-      _get_dynamic_data()->dist_ = new _scv_distribution<T>;   
-    _get_distribution()->set_mode(d,this);                             
-  }                                                                    
-  void set_mode(scv_extensions_if::mode_t t) {                          
-    if (!_get_distribution()) 
-      _get_dynamic_data()->dist_ = new _scv_distribution<T>;  
-    if (!check_mode(t, this, get_name(), _get_distribution()))   
-      return;
-    else 
-      get_constraint_data()->set_ext_mode(t, 0, 0); 
-  }
-  virtual void _reset_bag_distribution() {                             
-    if (_get_distribution()) 
-      _get_distribution()->reset_distribution();  
-  }
-  virtual void generate_value_() {                                     
-    if (!_get_distribution()) 
-      _get_dynamic_data()->dist_ = new _scv_distribution<T>; 
-    _get_distribution()->generate_value_(this,get_constraint_data()); 
-    return;                                                            
-  }                                                                    
-  void keep_only(const T& value)  {                            
-    keep_only(value, value);  
-  }                                                                    
-  void keep_only(const T& lb, const T& ub) {           
-    _reset_bag_distribution(); 
-    _scv_keep_range(this, lb, ub, false); 
-  }                                                                    
-  void keep_only(const std::list<T>& vlist) {                       
-    _reset_bag_distribution(); 
-    _scv_keep_range_list_enum(this, vlist, false);
-  }                                                                    
-  void keep_out(const T& value){                               
-    _reset_bag_distribution();
-    keep_out(value, value); 
-  }                                                                    
-  void keep_out(const T& lb, const T& ub) {            
-    _reset_bag_distribution();  
-    _scv_keep_range(this, lb, ub, true); 
-  }                                                                    
-  void keep_out(const std::list<T>& vlist) {                        
-    _reset_bag_distribution(); 
-    _scv_keep_range_list_enum(this, vlist, true);  
-  }                                                                    
 };
 
 // to be specialized for user-specified datatype
@@ -560,7 +364,7 @@ public:
 
 #define _SCV_PAREN_OPERATOR(type_name)                                   \
   scv_expression operator()() {                                          \
-    return scv_expression(new scv_expression_core(this));                \
+    return scv_expression(new scv_expression_core<type_name>(this));                \
   }
 
 
@@ -637,7 +441,7 @@ ostream& operator<<(ostream& os, const scv_extensions<T>& data) {
 #endif
 
 // implementation details
-#include "scv/_scv_introspection.h"
+#include "_scv_introspection.h"
 
 // ----------------------------------------
 // various access interface to access an extension object
@@ -723,6 +527,6 @@ private:
 };
 
 // implementation details
-#include "scv/_scv_smart_ptr.h"
+#include "_scv_smart_ptr.h"
 
 #endif

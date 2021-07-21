@@ -47,10 +47,11 @@
 #ifndef SCV_ASSOCIATIVE_ARRAY_H
 #define SCV_ASSOCIATIVE_ARRAY_H
 
-#include "scv/_scv_data_structure.h"
-#include "scv/scv_util.h"
-#include "scv/scv_random.h"
+#include "_scv_data_structure.h"
+#include "scv_util.h"
 #include <map>
+#include <list>
+
 
 template <class Data>   // needed for scv_random.cpp
 std::ostream& operator<<(std::ostream&os, const std::list<Data> & t) {

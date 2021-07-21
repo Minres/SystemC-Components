@@ -60,9 +60,9 @@
 
 #include <string>
 
-#include "scv/scv_object_if.h"
-#include "scv/scv_util.h"
-#include "scv/scv_debug.h"
+#include "scv_object_if.h"
+#include "scv_util.h"
+#include "scv_debug.h"
 
 
 // Don't compile _scv_CstructMethods<T> due to its questionable implementation.

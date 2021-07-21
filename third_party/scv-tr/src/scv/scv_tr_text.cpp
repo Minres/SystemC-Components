@@ -76,9 +76,9 @@ tx_relation <"relation_name"> <tx_id_1> <tx_id_2>
  */
 
 #include <string>
-#include "scv/scv_util.h"
-#include "scv/scv_introspection.h"
-#include "scv/scv_tr.h"
+#include "scv_util.h"
+#include "scv_introspection.h"
+#include "scv_tr.h"
 
 // ----------------------------------------------------------------------------
 

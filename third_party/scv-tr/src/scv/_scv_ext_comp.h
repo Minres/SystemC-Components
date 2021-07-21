@@ -87,9 +87,7 @@ public:
   void execute_callbacks(scv_extensions_if *, scv_extensions_if::callback_reason);
 };
 
-#ifdef _SCV_INTROSPECTION_ONLY
 #include <cstdio>
-#endif
 
 inline std::string _scv_ext_util_get_string(int i) {
   char tmp[128];
@@ -155,11 +153,10 @@ inline const char * _scv_ext_util_get_name(const char* format, const char* name)
   _SCV_SYSTEMC_BASIC_TYPE_SPECIALIZATION()
 
 // implementation details
-#include "scv/_scv_ext_util.h"
-#include "scv/_scv_ext_type.h"
-#include "scv/_scv_ext_rw.h"
-#include "scv/_scv_ext_rand.h"
-#include "scv/_scv_ext_callbacks.h"
+#include "_scv_ext_util.h"
+#include "_scv_ext_type.h"
+#include "_scv_ext_rw.h"
+#include "_scv_ext_callbacks.h"
 
 #undef _SCV_SYSTEMC_BASIC_TYPE_SPECIALIZATION
 #undef _SCV_BASIC_TYPE_SPECIALIZATION

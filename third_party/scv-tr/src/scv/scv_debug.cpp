@@ -47,12 +47,11 @@
 #include <algorithm>
 #include <ctime>
 
-#include "scv/scv_util.h"
-#include "scv/scv_debug.h"
-#include "scv/scv_constraint.h"
-#include "scv/scv_report.h"
-#include "scv/scv_tr.h"
-
+#include "scv_util.h"
+#include "scv_debug.h"
+#include "scv_report.h"
+#include "scv_tr.h"
+#include "_scv_data_structure.h"
 #define SCV_DEBUG_DEFAULT_TRACE_FILE "scv_debug.log"
 
 #ifdef _MSC_VER
@@ -213,9 +212,6 @@ void scv_debug::set_level_for_classes(int facility, int level)
     case scv_debug::MESSAGES :
 	 break;
     case scv_debug::RANDOMIZATION :
-         scv_random::set_debug(level);
-         scv_expression::set_debug(level);
-         scv_constraint_base::set_debug(level);
 	 break;
     case scv_debug::RECORDING :
          scv_tr_db::set_debug(level);

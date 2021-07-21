@@ -42,17 +42,17 @@
 
  *****************************************************************************/
 
-#include "scv/scv_util.h"
-#include "scv/_scv_associative_array.h"
-#include "scv/scv_report.h"
+#include "scv_util.h"
+#include "_scv_associative_array.h"
+#include "scv_report.h"
 #include <cstring>
 
 /* ************************************************************************** */
 
 // For cdsIdent:
 
-#include "scv/scv_kit_date.h"
-#include "scv/scv_ver.h"
+#include "scv_kit_date.h"
+#include "scv_ver.h"
 
 #ifndef SCV_VERSION
 #define SCV_VERSION "<SCV_VERSION undefined>"
@@ -77,15 +77,10 @@ static struct {
 //
 
 
-bool _scv_startup_called = false;
-
-extern void scv_constraint_startup();
-
 bool scv_startup()
 {
   static bool first = true;
   if ( first ) {
-    scv_constraint_startup();
     first = false;
   }
   return true;
@@ -126,7 +121,7 @@ const std::string _scv_make_unique_name(const std::string& name, int id)
 //
 
 
-_scv_process_name_server_t *_scv_process_name_server = 0;
+_scv_process_name_server_t *_scv_process_name_server = nullptr;
 
 void _scv_set_process_name_server(_scv_process_name_server_t *server)
 { _scv_process_name_server = server; }

@@ -45,18 +45,13 @@
 #ifndef SCV_H
 #define SCV_H
 
-#include <systemc>             // for future SystemC name cleanup
-
 #include "scv/scv_util.h"
-#include "scv/scv_bag.h"
 #include "scv/scv_debug.h"
 #include "scv/scv_expression.h"
 #include "scv/scv_introspection.h"
 #include "scv/scv_report.h"
 #include "scv/scv_object_if.h"
-#include "scv/scv_random.h"
 #include "scv/scv_shared_ptr.h"
-#include "scv/scv_sparse_array.h"
 #include "scv/scv_tr.h"
 #include "scv/scv_kit_date.h"
 #include "scv/scv_ver.h"

@@ -89,8 +89,8 @@
 
 #include <cstdio>
 
-#include "scv/scv_object_if.h"
-#include "scv/scv_util.h"
+#include "scv_object_if.h"
+#include "scv_util.h"
 
 #define _scv_trace(arg) if ((arg)) \
 scv_out << "_scv_trace at file " << __FILE__ << " line " << __LINE__ << " "

@@ -230,7 +230,7 @@ public:
 // ----------------------------------------
 #define _SCV_EXT_CALLBACKS_FC_D(basic_type,type_id)                           \
 class _scv_extension_callbacks_ ## type_id  \
-: public scv_extension_rand<basic_type> {  \
+: public scv_extension_rw<basic_type> {  \
 public:  \
   _scv_extension_callbacks_ ## type_id();  \
   virtual ~_scv_extension_callbacks_ ## type_id();  \
@@ -254,7 +254,7 @@ class scv_extension_callbacks<basic_type>                    \
 #define _SCV_EXT_CALLBACKS_FC_N_D(basic_type)                         \
 template<int N>                                              \
 class scv_extension_callbacks<basic_type<N> >                \
-  : public scv_extension_rand<basic_type<N> > {  \
+  : public scv_extension_rw<basic_type<N> > {  \
 public:  \
   scv_extension_callbacks() {}  \
   virtual ~scv_extension_callbacks() {  \

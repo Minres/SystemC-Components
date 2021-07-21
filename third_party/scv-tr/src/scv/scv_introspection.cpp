@@ -49,13 +49,10 @@
 #define SC_FX_EXCLUDE_OTHER
 #endif
 
-#include "scv/scv_util.h"
+#include "scv_util.h"
 
-#include "scv/scv_introspection.h"
+#include "scv_introspection.h"
 
-#ifndef _SCV_INTROSPECTION_ONLY
-#include "scv/scv_debug.h"
-#else
 class scv_debug {
 public:
   enum dummy {
@@ -69,22 +66,18 @@ public:
   static _scv_message_desc **code;
 #include "scv_messages.h"
 #undef _SCV_DEFERR
-#endif
 
 void _scv_constraint_wrapup(scv_extensions_if* e);
 
 // ----------------------------------------
 // mimic _scv_message for _SCV_INTROSPECTION_ONLY
 // ----------------------------------------
-#ifdef _SCV_INTROSPECTION_ONLY
-
 struct scv_error_data
 {
   const char* error_name;
   const int error_number;
   const char* error_string;
 };
-#endif
 
 static int s_introspection_debug_level = scv_debug::INITIAL_DEBUG_LEVEL;
 
@@ -399,129 +392,6 @@ _SCV_DEFAULT_RW_SYSC(_scv_extension_rw_enum,enum)
 // -> need to be fixed
 // ----------------------------------------
 
-void _scv_extension_rand_enum::next() { uninitialize(); initialize(); }
-void _scv_extension_rand_enum::disable_randomization() {
-  assert(_is_dynamic());
-  _get_dynamic_data()->disable_randomization_ = true;
-  _get_dynamic_data()->undefined_ = false;
-} 
-void _scv_extension_rand_enum::enable_randomization() {
-  assert(_is_dynamic());
-  _get_dynamic_data()->disable_randomization_ = false;
-  uninitialize();
-}
-bool _scv_extension_rand_enum::is_randomization_enabled() { 
-  if (!_is_dynamic()) return false;
-  if (_has_dynamic_data()) return !_get_dynamic_data()->disable_randomization_;
-  return true;
-}
-void _scv_extension_rand_enum::set_random(scv_shared_ptr<scv_random> r) {
-  _SCV_CHECK_DYNAMIC(set_random,return);
-  get_constraint_data()->set_random(r);
-}
-scv_shared_ptr<scv_random> _scv_extension_rand_enum::get_random(void){
-#ifndef _SCV_INTROSPECTION_ONLY
-  _SCV_CHECK_DYNAMIC(get_random,return scv_shared_ptr<scv_random>());
-  return get_constraint_data()->get_random(this);
-#else
-  return scv_shared_ptr<scv_random>();
-#endif
-}
-scv_expression _scv_extension_rand_enum::form_expression() const {
-  _scv_message::message(_scv_message::INTROSPECTION_INVALID_EXPRESSION,"enum",get_name());
-  return scv_expression();
-}
-void _scv_extension_rand_enum::use_constraint(scv_smart_ptr_if& s) {
-  use_constraint(s.get_extensions_ptr());
-}
-void _scv_extension_rand_enum::use_constraint(scv_extensions_if* e) {
-  _scv_use_constraint(this, e);
-}
-#ifndef _SCV_INTROSPECTION_ONLY
-void _scv_extension_rand_enum::reset_distribution() {
-  _reset_bag_distribution();
-  _reset_keep_only_distribution();
-}
-#endif
-void _scv_extension_rand_enum::uninitialize() {
-  if (_get_dynamic_data()->disable_randomization_ == true) return ;
-  _get_dynamic_data()->undefined_ = true;
-#ifndef _SCV_INTROSPECTION_ONLY
-    if (get_constraint_data()->get_mode() == _scv_constraint_data::EXTENSION) {
-      get_constraint_data()->get_extension()->uninitialize();
-    }
-#endif
-}
-void _scv_extension_rand_enum::initialize() const {
-  if (_is_dynamic() && _get_dynamic_data()->undefined_) {
-    const_cast<_scv_extension_rand_enum*>(this)->generate_value_();
-    const_cast<_scv_extension_rand_enum*>(this)->_get_dynamic_data()->undefined_ = false;
-  }
-}
-bool _scv_extension_rand_enum::is_initialized() const { 
-  return !(_get_dynamic_data()->undefined_); 
-}
-void _scv_extension_rand_enum::updated() {
-  _get_dynamic_data()->undefined_ = false;
-}
-void _scv_extension_rand_enum::set_constraint(scv_constraint_base* c) {
-#ifndef _SCV_INTROSPECTION_ONLY
-  get_constraint_data()->set_constraint(c);
-#endif
-}
-
-#ifndef _SCV_INTROSPECTION_ONLY
-extern void _scv_set_constraint(scv_extensions_if* s, bool mode);
-#else
-void _scv_set_constraint(scv_extensions_if* s, bool mode) {}
-#endif
-
-void _scv_extension_rand_enum::set_constraint(bool mode) {
-  _scv_set_constraint(this, mode);
-}
-
-void _scv_extension_rand_enum::set_extension(scv_extensions_if* e) {
-#ifndef _SCV_INTROSPECTION_ONLY
-  get_constraint_data()->set_extension(e);
-  get_constraint_data()->set_mode(_scv_constraint_data::EXTENSION);
-#endif
-}
-
-_scv_constraint_data * _scv_extension_rand_enum::get_constraint_data() {
-  if (!_get_dynamic_data()->cdata_) {
-    _get_dynamic_data()->cdata_ = new _scv_constraint_data;
-  }
-  return _get_dynamic_data()->cdata_;
-}
-
-void _scv_extension_rand_enum::get_generator(void) {
-#ifndef _SCV_INTROSPECTION_ONLY
-  if (get_constraint_data()->get_gen_type() == _scv_constraint_data::EMPTY) {
-    _scv_constraint_range_generator_unsigned * gen = 
-      get_constraint_data()->get_unsigned_generator(this); 
-    if (gen) scv_out << ""; 
-    get_constraint_data()->set_mode(_scv_constraint_data::NO_CONSTRAINT);
-  }
-  return;
-#endif
-}
-
-void _scv_extension_rand_enum::_reset_keep_only_distribution() {
-#ifndef _SCV_INTROSPECTION_ONLY
-  get_constraint_data()->reset_distribution(this);
-#endif
-}
-
-#ifndef _SCV_INTROSPECTION_ONLY
-void _scv_extension_rand_enum::set_value_mode(_scv_constraint_data::gen_mode m) {
-  get_constraint_data()->set_mode(m);
-}
-template <typename T>
-bool check_mode(scv_extensions_if::mode_t t,
-  scv_extensions_if* e, const std::string& name,
-   _scv_distribution<T> * dist);
-#endif
-
 
 // ----------------------------------------
 // _scv_extension_callbacks_enum
@@ -710,7 +580,7 @@ _SCV_EXT_TYPE_D_FC_I(sc_bv_base,sc_bv_base,BIT_VECTOR);
     if (this->get_bitwidth() != v.length()) \
       _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, \
 			  "sc_bv_base","get_value"); \
-    this->initialize(); v = *(this->_get_instance()); \
+     v = *(this->_get_instance()); \
   }					           \
   void _scv_extension_rw_ ## type_id::assign(const sc_lv_base& v) { \
     if (this->get_bitwidth() != v.length()) \
@@ -724,7 +594,7 @@ _SCV_EXT_TYPE_D_FC_I(sc_bv_base,sc_bv_base,BIT_VECTOR);
     if (this->get_bitwidth() != v.length()) \
       _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, \
 			  "sc_lv_base","get_value"); \
-    this->initialize(); v = *(this->_get_instance()); \
+     v = *(this->_get_instance()); \
   }						   \
 
 #else
@@ -949,7 +819,7 @@ _SCV_EXT_RW_FC_I(std::string,string,dummy);
     if (v.length() != 1)
       _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA,
 			  "sc_bv_base","get_value");
-    this->initialize();
+
     if (this->_get_instance()->to_bool())
       v.set_bit(0,sc_dt::Log_1);
     else
@@ -990,7 +860,7 @@ _SCV_EXT_RW_FC_I(std::string,string,dummy);
     if (v.length() != 1)
       _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA,
 			  "sc_bv_base","get_value");
-    this->initialize(); v.set_bit(0,this->_get_instance()->value());
+     v.set_bit(0,this->_get_instance()->value());
   }
 
 
@@ -1126,277 +996,6 @@ _SCV_EXT_RW_FC_ASSIGNS_V(sc_bv_base,sc_bv_base)
 //////////////////////////////////////////////////////////////////////
 
 
-
-#define _SCV_EXT_RAND_FC_COMMON_I(T, type_id) \
-  void _scv_extension_rand_ ## type_id::next() { uninitialize(); initialize(); } \
-  void _scv_extension_rand_ ## type_id::initialize() const { \
-    if (this->_is_dynamic() && this->_get_dynamic_data()->undefined_) { \
-      const_cast<_scv_extension_rand_ ## type_id*>(this)->generate_value_(); \
-      const_cast<_scv_extension_rand_ ## type_id*>(this)->_get_dynamic_data()->undefined_ = false; \
-    } \
-  }; \
-  void _scv_extension_rand_ ## type_id::disable_randomization() { \
-    assert(this->_is_dynamic()); \
-    this->_get_dynamic_data()->disable_randomization_ = true; \
-    this->_get_dynamic_data()->undefined_ = false; \
-  } \
-  void _scv_extension_rand_ ## type_id::enable_randomization() { \
-    assert(this->_is_dynamic()); \
-    this->_get_dynamic_data()->disable_randomization_ = false; \
-    uninitialize(); \
-  } \
-  bool _scv_extension_rand_ ## type_id::is_randomization_enabled() { \
-    if (!this->_is_dynamic()) return false; \
-    if (this->_has_dynamic_data()) return !this->_get_dynamic_data()->disable_randomization_; \
-    return true; \
-  } \
-  scv_expression _scv_extension_rand_ ## type_id::form_expression() const { \
-    return scv_expression(new scv_expression_core((scv_extensions_if*)(this))); \
-  } \
-  void _scv_extension_rand_ ## type_id::updated() { \
-    this->_get_dynamic_data()->undefined_ = false; \
-  } \
-  bool _scv_extension_rand_ ## type_id::is_initialized() const { \
-    return !this->_get_dynamic_data()->undefined_; \
-  } \
-  void _scv_extension_rand_ ## type_id::set_random(scv_shared_ptr<scv_random> gen) { \
-    get_constraint_data()->set_random(gen); \
-  } \
-  void _scv_extension_rand_ ## type_id::use_constraint(scv_smart_ptr_if& s) { \
-    use_constraint(_scv_get_extension(s)); \
-  } \
-  void _scv_extension_rand_ ## type_id::use_constraint(scv_extensions_if* e) { \
-    _scv_use_constraint(this, e); \
-    return; \
-  } \
-  _scv_extension_rand_ ## type_id::_scv_extension_rand_ ## type_id() {} 
-
-
-#ifndef _SCV_INTROSPECTION_ONLY
-
-#define _SCV_EXT_RAND_FC_EXTRA1_I(T, type_id) \
-  void _scv_extension_rand_ ## type_id::set_value_mode(_scv_constraint_data::gen_mode m) { \
-    get_constraint_data()->set_mode(m); \
-    if (m == _scv_constraint_data::DISTRIBUTION ||  \
-        m == _scv_constraint_data::DISTRIBUTION_RANGE) { \
-      get_constraint_data()->set_ext_mode(scv_extensions_if::DISTRIBUTION); \
-    } \
-  } \
-  void _scv_extension_rand_ ## type_id::keep_only(const T& value) { \
-    _reset_bag_distribution(); \
-    _scv_keep_range(this, value, value, false); \
-  } \
-  void _scv_extension_rand_ ## type_id::keep_only(const T& lb, const T& ub) { \
-    _reset_bag_distribution(); \
-    _scv_keep_range(this, lb, ub, false); \
-  } \
-  void _scv_extension_rand_ ## type_id::keep_only(const std::list<T>& vlist) { \
-    _reset_bag_distribution(); \
-    _scv_keep_range(this, vlist); \
-  } \
-  void _scv_extension_rand_ ## type_id::keep_out(const T& value) { \
-    _reset_bag_distribution(); \
-    _scv_keep_range(this, value, value, true); \
-  } \
-  void _scv_extension_rand_ ## type_id::keep_out(const T& lb, const T& ub) { \
-    _reset_bag_distribution(); \
-    _scv_keep_range(this, lb, ub, true); \
-  } \
-  void _scv_extension_rand_ ## type_id::keep_out(const std::list<T>& vlist) { \
-    _reset_bag_distribution(); \
-    std::list<T>::const_iterator i; \
-    for (i = vlist.begin(); i != vlist.end(); i++) { \
-      _scv_keep_range(this, *i, *i, true); \
-    } \
-  } \
-  _scv_distribution<T> * _scv_extension_rand_ ## type_id::_get_distribution() { \
-    return (_scv_distribution<T> *) this->_get_dynamic_data()->dist_; \
-  } \
-  void _scv_extension_rand_ ## type_id::_set_distribution(_scv_distribution<T>* d) { \
-    _scv_distribution<T> * dist = _get_distribution(); \
-    _scv_constraint_data * cdata = get_constraint_data(); \
-    if (!dist) { \
-      this->_get_dynamic_data()->dist_ = new _scv_distribution<T>; \
-      dist = _get_distribution(); \
-    } else { \
-      dist->reset_distribution(); \
-    } \
-    if (d->dist_) { \
-      dist->set_mode(*d->dist_, cdata, this); \
-    } else if (d->dist_r_) { \
-      dist->set_mode(*d->dist_r_, cdata, this); \
-    } else { \
-      _scv_message::message(_scv_message::INTERNAL_ERROR, "_set_distribution(base)"); \
-    } \
-  } \
-  _scv_extension_rand_ ## type_id::~_scv_extension_rand_ ## type_id() { \
-    if (this->_has_dynamic_data() && this->_get_dynamic_data()->dist_) \
-      delete _get_distribution(); \
-    if (this->_has_dynamic_data() && this->_get_dynamic_data()->cdata_) { \
-      if (this->_get_dynamic_data()->cdata_->get_constraint()) { \
-        _scv_constraint_wrapup(this); \
-      } \
-      delete this->_get_dynamic_data()->cdata_; \
-    } \
-  } \
-  void _scv_extension_rand_ ## type_id::set_mode(scv_extensions_if::mode_t t) { \
-    int lb, ub; lb =0; ub =0; \
-    if (!_get_distribution()) { \
-      this->_get_dynamic_data()->dist_ = new _scv_distribution<T>; \
-    } \
-    if (!check_mode(t, this, this->get_name(), _get_distribution())) \
-      return; \
-    else   \
-      this->get_constraint_data()->set_ext_mode(t, lb, ub); \
-  } \
-  void _scv_extension_rand_ ## type_id::set_mode(scv_bag<std::pair<T, T> >& d) { \
-    _reset_keep_only_distribution(); \
-    if (!_get_distribution()) { this->_get_dynamic_data()->dist_ = new _scv_distribution<T>; } \
-    _get_distribution()->set_mode(d,this->get_constraint_data(),this); \
-  } \
-  void _scv_extension_rand_ ## type_id::set_mode(scv_bag<T>& d) { \
-    _reset_keep_only_distribution(); \
-    if (!_get_distribution()) { this->_get_dynamic_data()->dist_ = new _scv_distribution<T>; } \
-    _get_distribution()->set_mode(d,this->get_constraint_data(),this); \
-  } \
-  void _scv_extension_rand_ ## type_id::reset_distribution() { \
-    _reset_bag_distribution(); \
-    _reset_keep_only_distribution(); \
-  } \
-  scv_extensions_if::mode_t _scv_extension_rand_ ## type_id::get_mode(void) { \
-    return this->get_constraint_data()->get_ext_mode(); \
-  } \
-  void _scv_extension_rand_ ## type_id::_reset_bag_distribution() { \
-    if (_get_distribution()) { \
-      _get_distribution()->reset_distribution(); \
-    } \
-  } \
-  void _scv_extension_rand_ ## type_id::_reset_keep_only_distribution() { \
-    this->get_constraint_data()->reset_distribution(this); \
-  }  
-
-
-#define _SCV_EXT_RAND_FC_EXTRA2_I(T, type_id) \
-  void _scv_extension_rand_ ## type_id::uninitialize() { \
-    assert(this->_is_dynamic()); \
-    if (this->_get_dynamic_data()->disable_randomization_ == true) return ; \
-    this->_get_dynamic_data()->undefined_ = true; \
-    if (get_constraint_data()->get_mode() == _scv_constraint_data::EXTENSION) { \
-      get_constraint_data()->get_extension()->uninitialize(); \
-    } \
-  } \
-  scv_shared_ptr<scv_random> _scv_extension_rand_ ## type_id::get_random(void) { \
-    return get_constraint_data()->get_random(this); \
-  } \
-  void _scv_extension_rand_ ## type_id::set_constraint(scv_constraint_base* c) { \
-    get_constraint_data()->set_constraint(c); \
-  } \
-  void _scv_extension_rand_ ## type_id::set_constraint(bool mode) { \
-    _scv_set_constraint(this, mode); \
-  } \
-  void _scv_extension_rand_ ## type_id::set_extension(scv_extensions_if * e) { \
-    get_constraint_data()->set_extension(e); \
-    get_constraint_data()->set_mode(_scv_constraint_data::EXTENSION); \
-  } \
-  _scv_constraint_data * _scv_extension_rand_ ## type_id::get_constraint_data() { \
-    assert(this->_is_dynamic()); \
-    if (!this->_get_dynamic_data()->cdata_) { \
-      this->_get_dynamic_data()->cdata_ = new _scv_constraint_data; \
-    } \
-    return this->_get_dynamic_data()->cdata_; \
-  } \
-  void _scv_extension_rand_ ## type_id::get_generator(void) { \
-    if (get_constraint_data()->get_gen_type() == _scv_constraint_data::EMPTY) { \
-      T* dummy_value = new T; \
-      _scv_keep_range(this, *dummy_value, *dummy_value, false, true); \
-      get_constraint_data()->set_mode(_scv_constraint_data::NO_CONSTRAINT); \
-      delete dummy_value; \
-    } \
-    return; \
-  } \
-  void _scv_extension_rand_ ## type_id::set_distribution_from(scv_extensions_if* e) { \
-    _scv_distribution<T> *dist = (_scv_distribution<T>*) \
-      e->get_dynamic_data()->dist_; \
-    _set_distribution(dist); \
-  } \
-  void _scv_extension_rand_ ## type_id::generate_value_() { \
-    if (!_get_distribution()) { this->_get_dynamic_data()->dist_ = new _scv_distribution<T>; } \
-    _get_distribution()->generate_value_(this,this->get_constraint_data()); \
-    return; \
-  }
-
-#else
-
-#define _SCV_EXT_RAND_FC_EXTRA1_I(T, type_id)
-
-#define _SCV_EXT_RAND_FC_EXTRA2_I(T, type_id) \
-  void _scv_extension_rand_ ## type_id::uninitialize() { \
-    assert(this->_is_dynamic()); \
-    if (this->_get_dynamic_data()->disable_randomization_ == true) return ; \
-    this->_get_dynamic_data()->undefined_ = true; \
-  } \
-  scv_shared_ptr<scv_random> _scv_extension_rand_ ## type_id::get_random(void) { \
-  } \
-  void _scv_extension_rand_ ## type_id::set_constraint(scv_constraint_base* c) { \
-  } \
-  void _scv_extension_rand_ ## type_id::set_constraint(bool mode) { \
-  } \
-  void _scv_extension_rand_ ## type_id::set_extension(scv_extensions_if * e) { \
-  } \
-  _scv_constraint_data * _scv_extension_rand_ ## type_id::get_constraint_data() { \
-  } \
-  void _scv_extension_rand_ ## type_id::get_generator(void) { \
-  } \
-  void _scv_extension_rand_ ## type_id::generate_value_() { \
-  } 
-
-#endif
-
-
-#define _SCV_EXT_RAND_FC_I(T, type_id) \
-  _SCV_EXT_RAND_FC_COMMON_I(T, type_id) \
-  _SCV_EXT_RAND_FC_EXTRA1_I(T, type_id) \
-  _SCV_EXT_RAND_FC_EXTRA2_I(T, type_id)
-
-
-#define _SCV_EXT_RAND_FC_1_I(T, type_id) \
-  _SCV_EXT_RAND_FC_COMMON_I(T, type_id) \
-  _SCV_EXT_RAND_FC_EXTRA1_I(T, type_id) \
-  _SCV_EXT_RAND_FC_EXTRA2_I(T, type_id)
-
-
-#define _SCV_EXT_RAND_FC_D_I(T, type_id) \
-  _SCV_EXT_RAND_FC_COMMON_I(T, type_id) \
-  _SCV_EXT_RAND_FC_EXTRA1_I(T, type_id) \
-  _SCV_EXT_RAND_FC_EXTRA2_I(T, type_id)
-
-
-_SCV_EXT_RAND_FC_I(bool,bool);                   
-_SCV_EXT_RAND_FC_I(char,char);                   
-_SCV_EXT_RAND_FC_I(unsigned char,unsigned_char);
-_SCV_EXT_RAND_FC_I(short,short);
-_SCV_EXT_RAND_FC_I(unsigned short,unsigned_short);
-_SCV_EXT_RAND_FC_I(int,int);
-_SCV_EXT_RAND_FC_I(unsigned int,unsigned_int);
-_SCV_EXT_RAND_FC_I(long,long);
-_SCV_EXT_RAND_FC_I(unsigned long,unsigned_long);
-_SCV_EXT_RAND_FC_I(long long,long_long);
-_SCV_EXT_RAND_FC_I(unsigned long long,unsigned_long_long);
-_SCV_EXT_RAND_FC_I(float,float);
-_SCV_EXT_RAND_FC_I(double,double);
-_SCV_EXT_RAND_FC_I(std::string,string);
-
-
-#if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
-_SCV_EXT_RAND_FC_1_I(sc_bit,sc_bit);
-_SCV_EXT_RAND_FC_1_I(sc_logic,sc_logic);
-_SCV_EXT_RAND_FC_D_I(sc_signed,sc_signed);
-_SCV_EXT_RAND_FC_D_I(sc_unsigned,sc_unsigned);
-_SCV_EXT_RAND_FC_D_I(sc_int_base,sc_int_base);
-_SCV_EXT_RAND_FC_D_I(sc_uint_base,sc_uint_base);
-_SCV_EXT_RAND_FC_D_I(sc_lv_base,sc_lv_base);
-_SCV_EXT_RAND_FC_D_I(sc_bv_base,sc_bv_base);
-#endif
 
 
 //////////////////////////////////////////////////////////////////////

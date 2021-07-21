@@ -40,6 +40,7 @@
 
  *****************************************************************************/
 
+#include "scv_report.h"
 // ----------------------------------------
 // a first class in the hierarchy that contains class variables.
 // ----------------------------------------
@@ -69,7 +70,6 @@ public:
 public: // non-virtual for fast execution
   inline void trigger_value_change_cb() {
     if (_is_dynamic()) {
-      this->updated();
       this->_get_dynamic_data()
 	->execute_callbacks(this, scv_extensions_if::VALUE_CHANGE);
     }

@@ -48,17 +48,7 @@
 #include <iostream>
 #include <string>
 
-#if defined(_MSC_VER)
-#pragma warning( push )
-#pragma warning( disable: 4244 )
-#pragma warning( disable: 4267 )
-#endif
-
-#include "systemc"
-
-#if defined(_MSC_VER)
-#pragma warning( pop )
-#endif
+#include <systemc>
 
 int _scv_make_unique_id(const std::string& name, const std::string& kind);
 const std::string _scv_make_unique_name(const std::string& name, int id);
@@ -69,7 +59,6 @@ const std::string _scv_make_unique_name(const std::string& name, int id);
 //
 
 typedef const char *(_scv_process_name_server_t)(sc_core::sc_process_handle proc_p);
-extern _scv_process_name_server_t *_scv_process_name_server;
 void _scv_set_process_name_server(_scv_process_name_server_t *);
 const char *_scv_get_process_name(const sc_core::sc_process_handle proc_p);
 
@@ -80,10 +69,7 @@ const char *scv_get_process_name(sc_core::sc_process_handle proc_p);
 // scv_startup
 //
 
-#define SCV_STARTUP() { \
-  static bool dummy = scv_startup(); \
-  if (0) cout << dummy << endl; \
-}
+#define SCV_STARTUP() { static bool dummy = scv_startup(); }
 
 bool scv_startup();
 
@@ -92,17 +78,7 @@ bool scv_startup();
 //
 
 extern std::ostream *_scv_out_p;
-#define scv_out (*_scv_out_p)
 
-// Keep for backward compatibility
-//
-// tb_status (for regression convenience)
-//
-#define tb_status cout
-#define TBS_INFO "%%TB_STATUS_INFO: "
-#define TBS_WARNING "%%TB_STATUS_WARNING: "
-#define TBS_ERROR "%%TB_STATUS_ERROR: "
-#define TBS_SUCCESS "%%TB_STATUS_SUCCESS: "
-#define TBS_FAIL "%%TB_STATUS_FAIL: "
+#define scv_out (*_scv_out_p)
 
 #endif
