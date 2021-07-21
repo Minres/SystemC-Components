@@ -47,7 +47,7 @@
 
 #include "scv/scv_util.h"
 #include "scv/scv_debug.h"
-#include "scv/scv_expression.h"
+//#include "scv/scv_expression.h"
 #include "scv/scv_introspection.h"
 #include "scv/scv_report.h"
 #include "scv/scv_object_if.h"

@@ -26,4 +26,4 @@ install(TARGETS jsoncpp
 # build tlm-interfaces
 ###############################################################################
 add_subdirectory(axi_chi)
-                 
+add_subdirectory(scv-tr)

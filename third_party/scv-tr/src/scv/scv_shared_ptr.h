@@ -175,9 +175,9 @@ bool operator!=(const scv_shared_ptr<T>& a, const scv_shared_ptr<T>& b) {
   return !(a==b);
 }
 template <class T>
-ostream& operator<<(ostream& os, const scv_shared_ptr<T>& a) {
+std::ostream& operator<<(std::ostream& os, const scv_shared_ptr<T>& a) {
     //os << *a._coreP << endl;
-    os << *a << endl;
+    os << *a << std::endl;
     return os;
 }
 

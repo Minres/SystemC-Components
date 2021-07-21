@@ -18,7 +18,11 @@
 #define _SCV4TLM_TLM_RECORDING_EXTENSION_H_
 
 #include <array>
+#ifdef WITH_SCV
 #include <scv.h>
+#else
+#include <scv-tr.h>
+#endif
 #include <tlm>
 
 namespace tlm {

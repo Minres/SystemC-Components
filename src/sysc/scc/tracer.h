@@ -18,11 +18,10 @@
 #define _SCC_TRACER_H_
 
 #include "tracer_base.h"
-#ifdef WITH_SCV
-class scv_tr_db;
-#endif
 #include <string>
 #include <vector>
+
+class scv_tr_db;
 
 namespace sc_core {
 class sc_object;
@@ -71,9 +70,7 @@ public:
 
 protected:
     void end_of_elaboration() override;
-#ifdef WITH_SCV
     scv_tr_db* txdb;
-#endif
 };
 
 } /* namespace scc */

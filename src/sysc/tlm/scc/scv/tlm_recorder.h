@@ -23,7 +23,11 @@
 #include <array>
 #include <unordered_map>
 #include <regex>
+#ifdef WITH_SCV
 #include <scv.h>
+#else
+#include <scv-tr.h>
+#endif
 #include <string>
 #include <tlm/scc/tlm_mm.h>
 #include <tlm>
@@ -263,8 +267,8 @@ private:
     std::array<scv_tr_generator<std::string, std::string>*, 2> nb_trHandle{{nullptr, nullptr}};
     //! transaction generator handle for non-blocking transactions with annotated delays
     std::array<scv_tr_generator<>*, 2> nb_trTimedHandle{{nullptr, nullptr}};
-    map<uint64, scv_tr_handle> nbtx_req_handle_map;
-    map<uint64, scv_tr_handle> nbtx_last_req_handle_map;
+    std::map<uint64, scv_tr_handle> nbtx_req_handle_map;
+    std::map<uint64, scv_tr_handle> nbtx_last_req_handle_map;
 
     //! dmi transaction recording stream handle
     scv_tr_stream* dmi_streamHandle{nullptr};

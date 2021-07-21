@@ -36,7 +36,6 @@
 #include "scc/tracer_base.h"
 #include "scc/utilities.h"
 #include "scc/value_registry.h"
-#ifdef WITH_SCV
 #include "scc/scv/scv_tr_db.h"
 #include "scc/scv/sqlite3.h"
 #include "tlm/scc/scv/tlm_recorder.h"
@@ -47,7 +46,6 @@
 #include "tlm/scc/scv/tlm_rec_target_socket.h"
 #include "tlm/scc/scv/tlm_recording_extension.h"
 #include "tlm/scc/scv/tlm_extension_recording_registry.h"
-#endif
 
 #include "tlm/scc/initiator_mixin.h"
 #include "tlm/scc/tlm2_pv_av.h"

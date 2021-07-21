@@ -17,7 +17,11 @@
 #ifndef TLM_RECORDER_REGISTRY_H_
 #define TLM_RECORDER_REGISTRY_H_
 
+#ifdef WITH_SCV
 #include <scv.h>
+#else
+#include <scv-tr.h>
+#endif
 #include <tlm>
 
 namespace tlm {
