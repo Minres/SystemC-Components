@@ -75,15 +75,8 @@ private:
 
 class _scv_message {
 public:
-
-  enum severity_level { INFO, WARNING, ERROR, FATAL };
-
-  enum response_level {
-    NONE_SPECIFIED, ENABLE_MESSAGE, SUPPRESS_MESSAGE
-  };
-
 // Message types are actually pointers to descriptors
-#define _SCV_DEFERR(code, number, string, severity, actions) \
+#define _SCV_DEFERR(code, number, string, severity) \
   static _scv_message_desc *code##_base; \
   static _scv_message_desc **code;
 #include "scv_messages.h"
@@ -91,10 +84,9 @@ public:
 
   // Used internally by the SystemC Verification Standard to report exceptions
   static void message(_scv_message_desc **desc_pp, ... );
-  static sc_core::sc_severity xlat_severity(severity_level severity);
 
 private:
-  static void setup();
+  static bool setup();
 };
 
 

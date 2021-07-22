@@ -45,7 +45,7 @@
 // If you add any error messages start at 69 and change these comments.
 //
 
-_SCV_DEFERR(ALL_USER_MESSAGES,1,"",_scv_message::ERROR,"none")
+_SCV_DEFERR(ALL_USER_MESSAGES,1,"",sc_core::SC_ERROR)
 
 //
 // Generic
@@ -53,11 +53,11 @@ _SCV_DEFERR(ALL_USER_MESSAGES,1,"",_scv_message::ERROR,"none")
 
 _SCV_DEFERR(NOT_IMPLEMENTED_YET,40,\
            "The \"%s\" feature is not implemented yet.",\
-           _scv_message::ERROR,"short")
+           sc_core::SC_ERROR)
 
 _SCV_DEFERR(INTERNAL_ERROR,41,\
            "An internal error has occurred; please submit a bug report: %s.",\
-           _scv_message::ERROR,"short")
+           sc_core::SC_ERROR)
 
 //
 // Transactions
@@ -65,11 +65,11 @@ _SCV_DEFERR(INTERNAL_ERROR,41,\
 
 _SCV_DEFERR(TRANSACTION_RECORDING_INTERNAL,34,\
 	"An internal error occurred in transaction recording:\n'%s'",\
-	_scv_message::ERROR,"short")
+	sc_core::SC_ERROR)
 
 _SCV_DEFERR(TRANSACTION_RECORDING_INTERNAL_FATAL,51,\
         "An internal error occurred in transaction recording:\n'%s'",\
-        _scv_message::FATAL,"short")
+        sc_core::SC_FATAL)
 
 //
 // Introspection
@@ -77,49 +77,49 @@ _SCV_DEFERR(TRANSACTION_RECORDING_INTERNAL_FATAL,51,\
 
 _SCV_DEFERR(INTROSPECTION_INVALID_EXTENSIONS,39,\
 	  "A valid extension (scv_extensions<T>) has not been defined for your composite/enum type.",
-	  _scv_message::ERROR,"short")
+	  sc_core::SC_ERROR)
 
 _SCV_DEFERR(INTROSPECTION_INVALID_INDEX,42,\
 	  "The value %d is an invalid index for %s %s.",\
-	  _scv_message::ERROR,"short")
+	  sc_core::SC_ERROR)
 
 _SCV_DEFERR(INTROSPECTION_NULL_POINTER,43,\
 	  "The NULL value in pointer %s cannot be dereferenced.",\
-	  _scv_message::ERROR,"short")
+	  sc_core::SC_ERROR)
 
 _SCV_DEFERR(INTROSPECTION_BAD_CALLBACK_REMOVAL,44,\
 	  "Cannot remove an invalid callback.",\
-	  _scv_message::ERROR,"short")
+	  sc_core::SC_ERROR)
 
 _SCV_DEFERR(INTROSPECTION_INVALID_DYNAMIC_EXTENSIONS,45,\
 	  "Cannot access dynamic extensions (%s) from objects other than scv_smart_ptr.",\
-	  _scv_message::ERROR,"short")
+	  sc_core::SC_ERROR)
 
 _SCV_DEFERR(INTROSPECTION_INVALID_EXPRESSION,46,\
 	  "Cannot generate expression from %s %s.",\
-	  _scv_message::ERROR,"short")
+	  sc_core::SC_ERROR)
 
 _SCV_DEFERR(INTROSPECTION_INVALID_READ_WRITE,47,\
 	  "Cannot use %s() to perform the %s operation on %s %s.",\
-	  _scv_message::ERROR,"short")
+	  sc_core::SC_ERROR)
 
 _SCV_DEFERR(INTROSPECTION_INVALID_ENUM_VALUE,48,\
 	  "Cannot obtain an enum string of type %s from integer value %d.",\
-	  _scv_message::ERROR,"short")
+	  sc_core::SC_ERROR)
 
 _SCV_DEFERR(INTROSPECTION_GET_INSTANCE_USAGE,49,\
 	  "You are accessing a data object through get_instance(), which bypasses the value change callback mechanism. If you are actually changing the data object, you should also call trigger_value_change_cb() explicitly.",\
-	  _scv_message::WARNING,"short")
+	  sc_core::SC_WARNING)
 
 _SCV_DEFERR(INTROSPECTION_INVALID_ENUM_STRING,50,\
 	  "Cannot assign invalid string \"%s\" to an enum.",\
-	  _scv_message::ERROR,"short")
+	  sc_core::SC_ERROR)
 
 _SCV_DEFERR(INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA,57,\
 	  "The %s argument does not have the same width as the data; illegal call to %s",\
-	  _scv_message::ERROR,"short")
+	  sc_core::SC_ERROR)
 
 _SCV_DEFERR(INTROSPECTION_EMPTY_DISTRIBUTION,58,\
 	  "Setting mode to DISTRIBUTION for '%s' without adding a scv_bag<T> OR scv_bag<pair<T, T> > object. The setting will be ignored.",\
-	  _scv_message::ERROR,"short")
+	  sc_core::SC_ERROR)
 

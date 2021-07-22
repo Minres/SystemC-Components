@@ -59,8 +59,8 @@
 //
 
 
-#define _SCV_DEFERR(code, number, string, severity, stack_action) \
-  _scv_message_desc *_scv_message::code##_base = 0; \
+#define _SCV_DEFERR(code, number, string, severity) \
+  _scv_message_desc *_scv_message::code##_base = nullptr; \
   _scv_message_desc **_scv_message::code = &_scv_message::code##_base;
 #include "scv_messages.h"
 #undef _SCV_DEFERR
@@ -69,7 +69,7 @@
 void _scv_message::message(_scv_message_desc **desc_pp, ...)
 {
   // make sure desc is defined
-  _scv_message::setup();
+  static bool res = _scv_message::setup();
 
   _scv_message_desc *desc_p = *desc_pp;
 
@@ -92,23 +92,12 @@ void _scv_message::message(_scv_message_desc **desc_pp, ...)
   sc_core::sc_report_handler::force(hold);
 }
 
-void _scv_message::setup()
+bool _scv_message::setup()
 {
-  static bool first_time = true;
-  if ( first_time ) first_time = false;
-  else return;
-#define _SCV_DEFERR(code, number, string, severity, stack_action) \
-  code##_base = new _scv_message_desc(#code,string,xlat_severity(severity),sc_core::SC_DO_NOTHING);
+#define _SCV_DEFERR(code, number, string, severity) \
+  code##_base = new _scv_message_desc(#code,string,severity,sc_core::SC_DO_NOTHING);
 #include "scv_messages.h"
 #undef _SCV_DEFERR
+  return true;
 }
 
-sc_core::sc_severity _scv_message::xlat_severity(severity_level severity)
-{
-  switch ( severity ) {
-    case INFO    : return sc_core::SC_INFO;
-    case WARNING : return sc_core::SC_WARNING;
-    case ERROR   : return sc_core::SC_ERROR;
-    default	 : return sc_core::SC_FATAL;
-  }
-}

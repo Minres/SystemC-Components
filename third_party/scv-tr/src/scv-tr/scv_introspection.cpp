@@ -59,7 +59,7 @@ public:
   };
   static void set_facility_level(dummy, int i = 0) {}
 };
-#define _SCV_DEFERR(code, number, string, severity, printStack) \
+#define _SCV_DEFERR(code, number, string, severity) \
   static _scv_message_desc *code##_base = 0; \
   static _scv_message_desc **code;
 #include "scv_messages.h"
