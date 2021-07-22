@@ -29,8 +29,7 @@ namespace scc {
 sc_thread_pool::sc_thread_pool():sc_core::sc_object(sc_core::sc_gen_unique_name("pool")) {
 }
 
-sc_thread_pool::~sc_thread_pool() {
-}
+sc_thread_pool::~sc_thread_pool() = default;
 
 void sc_thread_pool::execute(std::function<void(void)> fct) {
     sc_core::sc_spawn_options opts;
