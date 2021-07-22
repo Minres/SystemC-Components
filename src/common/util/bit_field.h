@@ -155,7 +155,9 @@ public:
 //---------------------------------------------------------
 #define BEGIN_BF_DECL(typeName, T)                                                                                     \
     union typeName {                                                                                                   \
-        struct { T val; } backing;                                                                                     \
+        struct {                                                                                                       \
+            T val;                                                                                                     \
+        } backing;                                                                                                     \
         typeName(T v = 0) { backing.val = v; }                                                                         \
         typeName& operator=(T v) {                                                                                     \
             backing.val = v;                                                                                           \

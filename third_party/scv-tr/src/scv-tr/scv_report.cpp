@@ -50,54 +50,48 @@
 #include "scv_report.h"
 
 #include <cstdarg>
-#include <string>
 #include <map>
-
+#include <string>
 
 //
 // Implementation of _scv_message
 //
 
-
-#define _SCV_DEFERR(code, number, string, severity) \
-  _scv_message_desc *_scv_message::code##_base = nullptr; \
-  _scv_message_desc **_scv_message::code = &_scv_message::code##_base;
+#define _SCV_DEFERR(code, number, string, severity)                                                                    \
+    _scv_message_desc* _scv_message::code##_base = nullptr;                                                            \
+    _scv_message_desc** _scv_message::code = &_scv_message::code##_base;
 #include "scv_messages.h"
 #undef _SCV_DEFERR
 
+void _scv_message::message(_scv_message_desc** desc_pp, ...) {
+    // make sure desc is defined
+    static bool res = _scv_message::setup();
 
-void _scv_message::message(_scv_message_desc **desc_pp, ...)
-{
-  // make sure desc is defined
-  static bool res = _scv_message::setup();
+    _scv_message_desc* desc_p = *desc_pp;
 
-  _scv_message_desc *desc_p = *desc_pp;
+    const char* tag = desc_p->get_tag();
+    const char* format = desc_p->get_format();
+    sc_core::sc_severity severity = desc_p->get_severity();
+    sc_core::sc_actions actions = desc_p->get_actions();
 
-  const char *tag = desc_p->get_tag();
-  const char *format = desc_p->get_format();
-  sc_core::sc_severity severity = desc_p->get_severity();
-  sc_core::sc_actions actions = desc_p->get_actions();
+    sc_core::sc_actions hold = sc_core::sc_report_handler::force(0);
+    sc_core::sc_report_handler::force(hold | actions);
 
-  sc_core::sc_actions hold = sc_core::sc_report_handler::force(0);
-  sc_core::sc_report_handler::force(hold|actions);
+    static char formattedMessageString[20000];
+    std::va_list ap;
+    va_start(ap, desc_pp);
+    vsprintf(formattedMessageString, format, ap);
+    va_end(ap);
 
-  static char formattedMessageString[20000];
-  std::va_list ap;
-  va_start(ap,desc_pp);
-  vsprintf(formattedMessageString,format,ap);
-  va_end(ap);
+    sc_core::sc_report_handler::report(severity, tag, formattedMessageString, "unknown", 0);
 
-  sc_core::sc_report_handler::report(severity,tag,formattedMessageString,"unknown",0);
-
-  sc_core::sc_report_handler::force(hold);
+    sc_core::sc_report_handler::force(hold);
 }
 
-bool _scv_message::setup()
-{
-#define _SCV_DEFERR(code, number, string, severity) \
-  code##_base = new _scv_message_desc(#code,string,severity,sc_core::SC_DO_NOTHING);
+bool _scv_message::setup() {
+#define _SCV_DEFERR(code, number, string, severity)                                                                    \
+    code##_base = new _scv_message_desc(#code, string, severity, sc_core::SC_DO_NOTHING);
 #include "scv_messages.h"
 #undef _SCV_DEFERR
-  return true;
+    return true;
 }
-

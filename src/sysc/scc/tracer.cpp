@@ -39,8 +39,7 @@ using namespace scc;
 
 tracer::tracer(std::string const&& name, file_type type, bool enable)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
-, txdb(nullptr)
-{
+, txdb(nullptr) {
     if(enable) {
         trf = sc_create_vcd_trace_file(name.c_str());
         trf->set_time_unit(1, SC_PS);
@@ -80,6 +79,4 @@ void tracer::end_of_elaboration() {
             descend(o, true);
 }
 
-tracer::~tracer() {
-    delete txdb;
-}
+tracer::~tracer() { delete txdb; }

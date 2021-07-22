@@ -31,7 +31,6 @@ namespace scc {
  */
 class resetable {
 public:
-
     virtual ~resetable() = default;
     /**
      * @fn void reset_start()

@@ -5,9 +5,9 @@
  *      Author: developer
  */
 
-#include <scc/utilities.h>
 #include <ahb/ahb_tlm.h>
 #include <ahb/bfm/initiator.h>
+#include <scc/utilities.h>
 
 using namespace ahb::bfm;
 using namespace sc_core;

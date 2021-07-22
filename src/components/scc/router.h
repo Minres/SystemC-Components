@@ -17,15 +17,15 @@
 #ifndef _SYSC_ROUTER_H_
 #define _SYSC_ROUTER_H_
 
+#include "scc/utilities.h"
 #include "tlm/scc/initiator_mixin.h"
 #include "tlm/scc/target_mixin.h"
 #include "util/range_lut.h"
-#include "scc/utilities.h"
 #include <limits>
 #include <sysc/utils/sc_vector.h>
+#include <tlm.h>
 #include <tlm/scc/scv/tlm_rec_initiator_socket.h>
 #include <tlm/scc/scv/tlm_rec_target_socket.h>
-#include <tlm.h>
 #include <unordered_map>
 
 namespace scc {
@@ -200,14 +200,14 @@ router<BUSWIDTH>::router(const sc_core::sc_module_name& nm, unsigned slave_cnt, 
             return this->get_direct_mem_ptr(i, trans, dmi_data);
         });
         target[i].register_transport_dbg(
-                [=](tlm::tlm_generic_payload& trans) -> unsigned { return this->transport_dbg(i, trans); });
+            [=](tlm::tlm_generic_payload& trans) -> unsigned { return this->transport_dbg(i, trans); });
         ibases[i] = 0ULL;
     }
     for(size_t i = 0; i < initiator.size(); ++i) {
         initiator[i].register_invalidate_direct_mem_ptr(
-                [=](::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) -> void {
-            this->invalidate_direct_mem_ptr(i, start_range, end_range);
-        });
+            [=](::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) -> void {
+                this->invalidate_direct_mem_ptr(i, start_range, end_range);
+            });
         tranges[i].base = 0ULL;
         tranges[i].size = 0ULL;
         tranges[i].remap = false;

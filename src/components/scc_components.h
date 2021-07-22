@@ -22,4 +22,3 @@
 #include "scc/resource_access_if.h"
 #include "scc/router.h"
 #include "scc/tlm_target.h"
-

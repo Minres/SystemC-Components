@@ -27,8 +27,8 @@
 
 #include "atp/timing_params.h"
 
-#include "axi/axi_initiator.h"
-#include "axi/axi_target.h"
-#include "axi/axi_pin2tlm_adaptor.h"
-#include "axi/axi_tlm2pin_adaptor.h"
 #include "axi/axi4lite_tlm2pin_adaptor.h"
+#include "axi/axi_initiator.h"
+#include "axi/axi_pin2tlm_adaptor.h"
+#include "axi/axi_target.h"
+#include "axi/axi_tlm2pin_adaptor.h"

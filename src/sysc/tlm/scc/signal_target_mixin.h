@@ -60,7 +60,8 @@ public:
         fw_if.set_nb_transport_ptr(cb);
     }
     /**
-     * @fn void register_nb_transport(std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)>, unsigned int)
+     * @fn void register_nb_transport(std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&,
+     * sc_core::sc_time&)>, unsigned int)
      * @brief register a functor for nb_transport_fw call
      *
      * @param cb the callback functor

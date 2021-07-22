@@ -98,7 +98,7 @@ private:
     std::vector<tlm_extensions_recording_if<TYPES>*> ext_rec;
 };
 
-} // namespace scv4tlm
+} // namespace scv
 } // namespace scc
 } // namespace tlm
 #endif /* TLM_RECORDER_REGISTRY_H_ */

@@ -81,8 +81,8 @@
 #include "scv/scv_introspection.h"
 #include "scv/scv_tr.h"
 // clang-format on
-#include <zlib.h>
 #include <array>
+#include <zlib.h>
 // ----------------------------------------------------------------------------
 
 #ifdef _MSC_VER
@@ -155,7 +155,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
                           const std::string& exts_kind, const scv_extensions_if* my_exts_p,
                           int* index) // The attribute index number
 {
-// This function can be called recursively, for nested data types.
+    // This function can be called recursively, for nested data types.
 
 #ifdef TRACE_DO_ATTRIBUTES
     cout << "Entering do_attributes\n";

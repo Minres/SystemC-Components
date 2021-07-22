@@ -121,7 +121,8 @@ public:
     }
 };
 
-template <> class scv_extensions<tlm::scc::scv::tlm_dmi_data> : public scv_extensions_base<tlm::scc::scv::tlm_dmi_data> {
+template <>
+class scv_extensions<tlm::scc::scv::tlm_dmi_data> : public scv_extensions_base<tlm::scc::scv::tlm_dmi_data> {
 public:
     scv_extensions<unsigned char*> dmi_ptr;
     scv_extensions<sc_dt::uint64> dmi_start_address;

@@ -91,7 +91,7 @@ private:
     //! the owner of this transaction
     void* creator;
 };
-} // namespace scv4tlm
+} // namespace scv
 } // namespace scc
 } // namespace tlm
 

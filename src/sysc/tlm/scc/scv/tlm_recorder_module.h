@@ -52,9 +52,10 @@ public:
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
     tlm_recorder_module(sc_core::sc_module_name name, bool recording_enabled = true,
-                         scv_tr_db* tr_db = scv_tr_db::get_default_db())
+                        scv_tr_db* tr_db = scv_tr_db::get_default_db())
     : sc_module(name)
-    , tlm_recorder<TYPES>(sc_core::sc_object::name(), is.get_base_port(), ts.get_base_port(), recording_enabled, tr_db) {
+    , tlm_recorder<TYPES>(sc_core::sc_object::name(), is.get_base_port(), ts.get_base_port(), recording_enabled,
+                          tr_db) {
         add_attribute(this->enableTracing);
         add_attribute(this->enableTimedTracing);
         add_attribute(this->enableDmiTracing);
@@ -65,12 +66,11 @@ public:
     }
 
     virtual ~tlm_recorder_module() {}
+
 private:
-    void start_of_simulation() override {
-    	tlm_recorder<TYPES>::initialize_streams();
-    }
+    void start_of_simulation() override { tlm_recorder<TYPES>::initialize_streams(); }
 };
-} // namespace scv4tlm
+} // namespace scv
 } // namespace scc
 } // namespace tlm
 

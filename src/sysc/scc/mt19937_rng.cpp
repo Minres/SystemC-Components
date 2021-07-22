@@ -35,6 +35,4 @@ void scc::MT19937::seed(uint64_t new_seed) {
         e.second.seed(new_seed);
 }
 
-void scc::MT19937::enable_global_seed(bool enable) {
-    rng.global_seed=enable;
-}
+void scc::MT19937::enable_global_seed(bool enable) { rng.global_seed = enable; }

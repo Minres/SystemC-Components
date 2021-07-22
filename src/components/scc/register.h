@@ -22,8 +22,8 @@
 #include "resetable.h"
 #include "resource_access_if.h"
 #include "scc/traceable.h"
-#include "util/delegate.h"
 #include "scc/utilities.h"
+#include "util/delegate.h"
 #include <functional>
 #include <limits>
 #include <sstream>
@@ -61,8 +61,8 @@ template <typename Type> constexpr Type get_max_uval() {
  * @brief a simple register implementation
  *
  * A simple register implementation taking a certain data type. The sc_register does not hold the value itself,
- * the data storage needs to be provided. It only provides some resource access interface and handled callbacks for read and
- * write accesses
+ * the data storage needs to be provided. It only provides some resource access interface and handled callbacks for read
+ * and write accesses
  *
  * @tparam DATATYPE
  */
@@ -71,7 +71,8 @@ class sc_register : public sc_core::sc_object, public resource_access_if, public
 public:
     using this_type = class sc_register<DATATYPE>;
     /**
-     * @fn  sc_register(sc_core::sc_module_name, DATATYPE&, const DATATYPE, resetable&, DATATYPE=get_max_uval<DATATYPE>(), DATATYPE=get_max_uval<DATATYPE>())
+     * @fn  sc_register(sc_core::sc_module_name, DATATYPE&, const DATATYPE, resetable&,
+     * DATATYPE=get_max_uval<DATATYPE>(), DATATYPE=get_max_uval<DATATYPE>())
      * @brief the constructor
      *
      * @param nm the instance name
@@ -121,7 +122,8 @@ public:
      * @param data to be written
      * @param length of data to be written in bytes
      * @param offset of the write to the baseaddress of the register
-     * @param d offset of the time in a time domain wrt. the SystemC simulator time (e.g. when using loosly-timed modeling)
+     * @param d offset of the time in a time domain wrt. the SystemC simulator time (e.g. when using loosly-timed
+     * modeling)
      * @return true if access is successful
      */
     bool write(const uint8_t* data, size_t length, uint64_t offset = 0,
@@ -142,7 +144,8 @@ public:
      * @param data to be read
      * @param length of data to be written in bytes
      * @param offset of the write to the baseaddress of the register
-     * @param d offset of the time in a time domain wrt. the SystemC simulator time (e.g. when using loosly-timed modeling)
+     * @param d offset of the time in a time domain wrt. the SystemC simulator time (e.g. when using loosly-timed
+     * modeling)
      * @return true if access is successful
      */
     bool read(uint8_t* data, size_t length, uint64_t offset = 0,
@@ -237,7 +240,7 @@ public:
         return *this;
     }
     /**
-         * @fn this_type& operator &=(DATATYPE)
+     * @fn this_type& operator &=(DATATYPE)
      * @brief unary and
      *
      * @param other the other value

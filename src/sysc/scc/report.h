@@ -20,9 +20,8 @@
 #include "utilities.h"
 #include <cstring>
 #include <iomanip>
-#include <sstream>
 #include <iostream>
-#include <cstring>
+#include <sstream>
 #include <sysc/kernel/sc_time.h>
 #include <sysc/utils/sc_report.h>
 #include <util/ities.h>
@@ -109,7 +108,7 @@ struct LogConfig {
     LogConfig& logLevel(log);
     LogConfig& msgTypeFieldWidth(unsigned);
     LogConfig& printSysTime(bool = true);
-    LogConfig& printSimTime(bool= true);
+    LogConfig& printSimTime(bool = true);
     LogConfig& printDelta(bool = true);
     LogConfig& printSeverity(bool = true);
     LogConfig& coloredOutput(bool = true);
@@ -120,7 +119,6 @@ struct LogConfig {
     LogConfig& logAsync(bool = true);
     LogConfig& dontCreateBroker(bool = true);
     LogConfig& reportOnlyFirstError(bool = true);
-
 };
 /**
  * @fn void init_logging(const LogConfig&)

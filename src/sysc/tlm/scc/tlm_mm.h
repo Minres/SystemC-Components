@@ -94,6 +94,6 @@ template <typename TYPES> void tlm_mm<TYPES>::free(tlm::tlm_generic_payload* tra
     allocator.free(trans);
 }
 
-}  // namespace scc
+} // namespace scc
 } // namespace tlm
 #endif /* _TLM_TLM_MM_H_ */

@@ -8,10 +8,10 @@
 #ifndef _TLM_AHB_PE_AHB_INITIATOR_H_
 #define _TLM_AHB_PE_AHB_INITIATOR_H_
 
+#include <ahb/ahb_tlm.h>
 #include <scc/ordered_semaphore.h>
 #include <scc/peq.h>
 #include <systemc>
-#include <ahb/ahb_tlm.h>
 #include <tlm_utils/peq_with_get.h>
 #include <tuple>
 #include <unordered_map>

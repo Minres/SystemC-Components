@@ -164,7 +164,7 @@ enum tlm_phase_enum {
     CUSTOM6
 };
 
-} // namespace scv4tlm
+} // namespace scv
 } // namespace scc
 } // namespace tlm
 #endif /* TLM_GP_DATA_H_ */

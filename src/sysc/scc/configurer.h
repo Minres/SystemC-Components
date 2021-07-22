@@ -139,13 +139,9 @@ protected:
     Json::Value root;
 
 #ifdef WITH_SIM_PHASE_CALLBACKS
-    void simulation_phase_callback() override {
-        check_config_hierarchical(root, "");
-    }
+    void simulation_phase_callback() override { check_config_hierarchical(root, ""); }
 #endif
-    void end_of_elaboration() override {
-        check_config_hierarchical(root, "");
-    }
+    void end_of_elaboration() override { check_config_hierarchical(root, ""); }
 
     void check_config_hierarchical(Json::Value const&, std::string const&);
 #ifdef WITH_CCI

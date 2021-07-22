@@ -37,18 +37,18 @@ template <class TYPE> struct peq : public sc_core::sc_object {
 
     using pair_type = std::pair<const sc_core::sc_time, TYPE>;
     /**
-      * @fn  peq()
+     * @fn  peq()
      * @brief default constructor creating a unnamed peq
      *
      */
     peq()
     : sc_core::sc_object(sc_core::sc_gen_unique_name("peq")) {}
-/**
- * @fn  peq(const char*)
- * @brief named peq constructor
- *
- * @param name
- */
+    /**
+     * @fn  peq(const char*)
+     * @brief named peq constructor
+     *
+     * @param name
+     */
     explicit peq(const char* name)
     : sc_core::sc_object(name) {}
     /**

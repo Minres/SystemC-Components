@@ -129,6 +129,6 @@ private:
     bw_transport_if bw_if;
 };
 } // namespace scc
-}  // namespace tlm
+} // namespace tlm
 
 #endif //_SYSC_INITIATOR_MIXIN_H__
