@@ -68,7 +68,7 @@ if (ENABLE_CLANG_TIDY)
     endif()
 endif()
 
-find_package(Boost REQUIRED COMPONENTS system) # header only libraries must not be added herefind_package(ZLIB REQUIRED)
+find_package(Boost REQUIRED COMPONENTS system date_time) # header only libraries must not be added here
 include(CheckSymbolExists)
 # Check for function getenv()
 check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)
@@ -105,15 +105,19 @@ endif()
 
 # Define the scc library
 add_library(scc INTERFACE)
-target_include_directories (scc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_include_directories (scc INTERFACE ${Boost_INCLUDE_DIRS})
 if(HAVE_GETENV)
     target_compile_definitions(scc INTERFACE HAVE_GETENV)
 endif()
 
+target_include_directories (scc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+if(TARGET Boost::date_time)
+	target_link_libraries(scc INTERFACE Boost::date_time)
+else()
+	target_include_directories(scc INTERFACE ${Boost_INCLUDE_DIRS})
+	target_link_libraries(scc INTERFACE ${Boost_datetime_LIBRARY})
+endif()
 target_link_libraries(scc INTERFACE scc-util scc-sysc components busses)
 target_link_libraries(scc INTERFACE jsoncpp)
-target_link_libraries(scc INTERFACE ${Boost_LIBRARIES})
 target_link_libraries(scc INTERFACE ${FMT_TARGET} ${SPDLOG_TARGET})
 
 set_target_properties(scc PROPERTIES
