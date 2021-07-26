@@ -24,7 +24,7 @@ apb_initiator_b::apb_initiator_b(sc_core::sc_module_name nm,
 , socket_fw(port)
 , transfer_width_in_bytes(transfer_width / 8) {}
 
-apb_initiator_b::~apb_initiator_b() {}
+apb_initiator_b::~apb_initiator_b() = default;
 
 tlm::tlm_sync_enum apb_initiator_b::nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t) {
 

@@ -26,7 +26,7 @@ void axi_initiator_base::b_transport(tlm::tlm_generic_payload& trans, sc_core::s
 tlm::tlm_generic_payload* axi_initiator_base::create_axi_trans(tlm::tlm_generic_payload& p) {
     tlm::tlm_generic_payload* trans = nullptr;
     uint8_t* data_buf = nullptr;
-    axi::axi4_extension* ext = new axi::axi4_extension;
+    auto* ext = new axi::axi4_extension;
     if(p.has_mm()) {
         p.acquire();
         trans = &p;
