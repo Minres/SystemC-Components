@@ -21,7 +21,7 @@
  *      Author: developer
  */
 
-#include "scc/sc_logic_7.h"
+#include "sc_logic_7.h"
 
 #include "sysc/datatypes/bit/sc_bit_ids.h"
 

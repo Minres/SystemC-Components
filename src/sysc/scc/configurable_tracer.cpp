@@ -31,8 +31,8 @@
  *       eyck@minres.com - initial API and implementation
  ******************************************************************************/
 
-#include "scc/configurable_tracer.h"
-#include "scc/traceable.h"
+#include "configurable_tracer.h"
+#include "traceable.h"
 
 using namespace sc_core;
 using namespace scc;

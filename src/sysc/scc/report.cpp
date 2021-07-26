@@ -23,7 +23,7 @@
 #include <array>
 #include <chrono>
 #include <fstream>
-#include <scc/report.h>
+#include "report.h"
 #ifdef WITH_CCI
 #include <cci_configuration>
 #include <cci_utils/broker.h>
