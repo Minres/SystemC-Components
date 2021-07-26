@@ -56,7 +56,7 @@
 //
 // Implementation of _scv_message
 //
-
+namespace scv_tr {
 #define _SCV_DEFERR(code, number, string, severity)                                                                    \
     _scv_message_desc* _scv_message::code##_base = nullptr;                                                            \
     _scv_message_desc** _scv_message::code = &_scv_message::code##_base;
@@ -77,13 +77,13 @@ void _scv_message::message(_scv_message_desc** desc_pp, ...) {
     sc_core::sc_actions hold = sc_core::sc_report_handler::force(0);
     sc_core::sc_report_handler::force(hold | actions);
 
-    static char formattedMessageString[20000];
+    static std::array<char, 20000> formattedMessageString;
     std::va_list ap;
     va_start(ap, desc_pp);
-    vsprintf(formattedMessageString, format, ap);
+    vsprintf(formattedMessageString.data(), format, ap);
     va_end(ap);
 
-    sc_core::sc_report_handler::report(severity, tag, formattedMessageString, "unknown", 0);
+    sc_core::sc_report_handler::report(severity, tag, formattedMessageString.data(), "unknown", 0);
 
     sc_core::sc_report_handler::force(hold);
 }
@@ -94,4 +94,5 @@ bool _scv_message::setup() {
 #include "scv_messages.h"
 #undef _SCV_DEFERR
     return true;
+}
 }

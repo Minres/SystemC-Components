@@ -50,6 +50,7 @@
 #endif
 
 #include "scv_introspection.h"
+namespace scv_tr {
 
 class scv_debug {
 public:
@@ -96,7 +97,7 @@ _scv_dynamic_data::~_scv_dynamic_data() {
 
 void _scv_dynamic_data::execute_callbacks(scv_extensions_if* obj, scv_extensions_if::callback_reason r) {
     std::list<_scv_dynamic_data::callback_base*>::iterator i;
-    std::list<_scv_dynamic_data::callback_base*>::iterator e = _callbacks.end();
+    auto e = _callbacks.end();
     for(i = _callbacks.begin(); i != e; ++i) {
         (*i)->execute(obj, r);
     }
@@ -259,7 +260,7 @@ void _scv_extension_util::_set_name(const std::string& s) { _name = s; }
 
 _scv_dynamic_data* _scv_extension_util::_get_dynamic_data() {
     if(!_is_dynamic())
-        return 0;
+        return nullptr;
     if(_data == (_scv_dynamic_data*)1)
         _data = new _scv_dynamic_data();
     return _data;
@@ -267,7 +268,7 @@ _scv_dynamic_data* _scv_extension_util::_get_dynamic_data() {
 _scv_dynamic_data* _scv_extension_util::get_dynamic_data() { return _get_dynamic_data(); }
 const _scv_dynamic_data* _scv_extension_util::_get_dynamic_data() const {
     if(!_is_dynamic())
-        return 0;
+        return nullptr;
     if(_data == (_scv_dynamic_data*)1)
         _data = new _scv_dynamic_data();
     return _data;
@@ -280,7 +281,7 @@ void _scv_extension_util::_set_parent(_scv_extension_util* p, const std::string&
     }
 }
 void _scv_extension_util::_set_dynamic() {
-    if(_data == 0)
+    if(_data == nullptr)
         _data = (_scv_dynamic_data*)1;
 }
 
@@ -318,15 +319,15 @@ void _scv_extension_type_enum::get_enum_details(std::list<const char*>& names, s
 const char* _scv_extension_type_enum::get_enum_string(int e) const { return _get_enum_string(e); }
 
 int _scv_extension_type_enum::get_num_fields() const { return 0; }
-scv_extensions_if* _scv_extension_type_enum::get_field(unsigned) { return 0; }
-const scv_extensions_if* _scv_extension_type_enum::get_field(unsigned) const { return 0; }
+scv_extensions_if* _scv_extension_type_enum::get_field(unsigned) { return nullptr; }
+const scv_extensions_if* _scv_extension_type_enum::get_field(unsigned) const { return nullptr; }
 
-scv_extensions_if* _scv_extension_type_enum::get_pointer() { return 0; }
-const scv_extensions_if* _scv_extension_type_enum::get_pointer() const { return 0; }
+scv_extensions_if* _scv_extension_type_enum::get_pointer() { return nullptr; }
+const scv_extensions_if* _scv_extension_type_enum::get_pointer() const { return nullptr; }
 
 int _scv_extension_type_enum::get_array_size() const { return 0; }
-scv_extensions_if* _scv_extension_type_enum::get_array_elt(int) { return 0; }
-const scv_extensions_if* _scv_extension_type_enum::get_array_elt(int) const { return 0; }
+scv_extensions_if* _scv_extension_type_enum::get_array_elt(int) { return nullptr; }
+const scv_extensions_if* _scv_extension_type_enum::get_array_elt(int) const { return nullptr; }
 
 // ----------------------------------------
 // _scv_extension_rw_enum
@@ -392,8 +393,8 @@ void _scv_extension_rw_enum::assign(const std::string& s) { assert(s.c_str()); }
 void _scv_extension_rw_enum::assign(const char* s) {
     std::list<int>& values = _get_values();
     std::list<const char*>& names = _get_names();
-    std::list<int>::iterator i = values.begin();
-    std::list<const char*>::iterator j = names.begin();
+    auto i = values.begin();
+    auto j = names.begin();
     while(j != names.end() && 0 != strcmp(*j, s)) {
         ++i;
         ++j;
@@ -1050,5 +1051,5 @@ _SCV_EXT_CALLBACKS_FC_D_I(sc_uint_base, sc_uint_base);
 _SCV_EXT_CALLBACKS_FC_D_I(sc_lv_base, sc_lv_base);
 _SCV_EXT_CALLBACKS_FC_D_I(sc_bv_base, sc_bv_base);
 #endif
-
+}
 //////////////////////////////////////////////////////////////////////

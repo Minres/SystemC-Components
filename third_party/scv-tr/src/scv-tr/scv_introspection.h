@@ -53,6 +53,7 @@
 #include <list>
 #include <memory>
 #include <string>
+namespace scv_tr {
 
 // specific stuff for randomization extensions
 template <typename T> class scv_extensions;
@@ -444,5 +445,5 @@ template <typename T> const scv_extensions<T> scv_get_const_extensions(const T& 
     e._set_instance((T*)&d);
     return e;
 };
-
+}
 #endif

@@ -50,7 +50,7 @@
 #define _SCV_REPORT_H
 
 #include <systemc>
-
+namespace scv_tr {
 //
 // Translation layer for _scv_message messages
 //
@@ -89,5 +89,5 @@ public:
 private:
     static bool setup();
 };
-
+}
 #endif // ! _SCV_REPORT_H

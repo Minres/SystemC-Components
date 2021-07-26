@@ -108,6 +108,8 @@
 #define SCV_TRX_H
 
 #include "scv_introspection.h"
+
+namespace scv_tr {
 // ----------------------------------------------------------------------------
 //
 // The following is the default template parameter for the
@@ -836,5 +838,5 @@ private:
 };
 
 // ----------------------------------------------------------------------------
-
+}
 #endif // SCV_TR_H

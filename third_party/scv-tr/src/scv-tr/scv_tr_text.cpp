@@ -79,6 +79,7 @@ tx_relation <"relation_name"> <tx_id_1> <tx_id_2>
 #include "scv_tr.h"
 #include <string>
 
+using namespace scv_tr;
 // ----------------------------------------------------------------------------
 
 #ifdef _MSC_VER
@@ -93,7 +94,7 @@ tx_relation <"relation_name"> <tx_id_1> <tx_id_2>
 
 // ----------------------------------------------------------------------------
 
-static FILE* my_text_file_p = NULL;
+static FILE* my_text_file_p = nullptr;
 
 static void scv_tr_db_cbf(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason, void* user_data_p) {
     // This is called from the scv_tr_db ctor.
@@ -103,13 +104,13 @@ static void scv_tr_db_cbf(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reaso
     switch(reason) {
 
     case scv_tr_db::CREATE:
-        if((_scv_tr_db.get_name() != NULL) && (strlen(_scv_tr_db.get_name()) != 0)) {
+        if((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0)) {
             my_text_file_name = _scv_tr_db.get_name();
         }
 
         my_text_file_p = fopen(my_text_file_name.c_str(), "w");
 
-        if(my_text_file_p == NULL) {
+        if(my_text_file_p == nullptr) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open text recording file");
         } else {
             std::cout << "TB Transaction Recording has started, file = " << my_text_file_name << endl;
@@ -117,11 +118,11 @@ static void scv_tr_db_cbf(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reaso
         break;
 
     case scv_tr_db::DELETE:
-        if(my_text_file_p != NULL) {
+        if(my_text_file_p != nullptr) {
             std::cout << "Transaction Recording is closing file: " << my_text_file_name << endl;
             fclose(my_text_file_p);
 
-            my_text_file_p = NULL;
+            my_text_file_p = nullptr;
         }
         break;
 
@@ -135,7 +136,7 @@ static void scv_tr_db_cbf(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reaso
 static void scv_tr_stream_cbf(const scv_tr_stream& s, scv_tr_stream::callback_reason reason, void* user_data_p) {
     if(reason == scv_tr_stream::CREATE) {
 
-        if(my_text_file_p == NULL)
+        if(my_text_file_p == nullptr)
             return;
 
         fprintf(my_text_file_p, "scv_tr_stream (ID " scv_tr_TEXT_LLU ", name \"%s\", kind \"%s\")\n", s.get_id(),
@@ -169,7 +170,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
     }
 #endif
 
-    if(my_exts_p == 0)
+    if(my_exts_p == nullptr)
         return;
 
     std::string full_name;
@@ -177,7 +178,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
     if(prefix_name == "") {
         full_name = my_exts_p->get_name();
     } else {
-        if((my_exts_p->get_name() == 0) || (strlen(my_exts_p->get_name()) == 0)) {
+        if((my_exts_p->get_name() == nullptr) || (strlen(my_exts_p->get_name()) == 0)) {
             full_name = prefix_name;
         } else {
             full_name = prefix_name + "." + my_exts_p->get_name();
@@ -466,7 +467,7 @@ static void scv_tr_generator_cbf(const scv_tr_generator_base& g, scv_tr_generato
         return;
     }
 
-    if(my_text_file_p == NULL)
+    if(my_text_file_p == nullptr)
         return;
 
     fprintf(my_text_file_p,
@@ -477,14 +478,14 @@ static void scv_tr_generator_cbf(const scv_tr_generator_base& g, scv_tr_generato
     int index = 0;
 
     const scv_extensions_if* my_begin_exts_p = g.get_begin_exts_p();
-    if(my_begin_exts_p != NULL) {
+    if(my_begin_exts_p != nullptr) {
         exts_kind = "begin_attribute";
         std::string tmp_str = g.get_begin_attribute_name() ? g.get_begin_attribute_name() : "";
         do_attributes(true, false, false, tmp_str, exts_kind, my_begin_exts_p, &index);
     }
 
     const scv_extensions_if* my_end_exts_p = g.get_end_exts_p();
-    if(my_end_exts_p != NULL) {
+    if(my_end_exts_p != nullptr) {
         exts_kind = "end_attribute";
         std::string tmp_str = g.get_end_attribute_name() ? g.get_end_attribute_name() : "";
         do_attributes(true, false, false, tmp_str, exts_kind, my_end_exts_p, &index);
@@ -500,7 +501,7 @@ static void scv_tr_generator_cbf(const scv_tr_generator_base& g, scv_tr_generato
 // ----------------------------------------------------------------------------
 
 static void scv_tr_handle_cbf(const scv_tr_handle& t, scv_tr_handle::callback_reason reason, void* user_data_p) {
-    if(my_text_file_p == NULL)
+    if(my_text_file_p == nullptr)
         return;
 
     int i = 0;
@@ -510,7 +511,7 @@ static void scv_tr_handle_cbf(const scv_tr_handle& t, scv_tr_handle::callback_re
 
     // First check to be sure transaction recording is enabled:
     //
-    if(t.get_scv_tr_stream().get_scv_tr_db() == NULL)
+    if(t.get_scv_tr_stream().get_scv_tr_db() == nullptr)
         return;
     if(t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
         return;
@@ -529,7 +530,7 @@ static void scv_tr_handle_cbf(const scv_tr_handle& t, scv_tr_handle::callback_re
         std::string exts_kind = "begin_attributes";
         bool default_values = false;
 
-        if(my_exts_p == NULL) {
+        if(my_exts_p == nullptr) {
             // For this transaction, the default attributes are used.
             my_exts_p = t.get_scv_tr_generator_base().get_begin_exts_p();
             default_values = true;
@@ -553,7 +554,7 @@ static void scv_tr_handle_cbf(const scv_tr_handle& t, scv_tr_handle::callback_re
         std::string exts_kind = "end_attributes";
         bool default_values = false;
 
-        if(my_exts_p == NULL) {
+        if(my_exts_p == nullptr) {
             // For this transaction, the default attributes are used.
             my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();
             default_values = true;
@@ -576,17 +577,17 @@ static void scv_tr_handle_record_attribute_cbf(const scv_tr_handle& t, const cha
                                                const scv_extensions_if* my_exts_p, void* user_data_p) {
     // First check to be sure transaction recording is enabled:
     //
-    if(t.get_scv_tr_stream().get_scv_tr_db() == NULL)
+    if(t.get_scv_tr_stream().get_scv_tr_db() == nullptr)
         return;
     if(t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
         return;
 
-    if(my_text_file_p == NULL)
+    if(my_text_file_p == nullptr)
         return;
 
     std::string tmp_str;
 
-    if(attribute_name == 0) {
+    if(attribute_name == nullptr) {
         tmp_str = "";
     } else {
         tmp_str = attribute_name;
@@ -596,7 +597,7 @@ static void scv_tr_handle_record_attribute_cbf(const scv_tr_handle& t, const cha
     sprintf(tmp_str2, "tx_record_attribute " scv_tr_TEXT_LLU, t.get_id());
     std::string exts_kind = tmp_str2;
 
-    do_attributes(false, false, true, tmp_str, exts_kind, my_exts_p, 0);
+    do_attributes(false, false, true, tmp_str, exts_kind, my_exts_p, nullptr);
 }
 
 // ----------------------------------------------------------------------------
@@ -609,12 +610,12 @@ static void scv_tr_handle_relation_cbf(const scv_tr_handle& tr_1, const scv_tr_h
 
     // First check to be sure transaction recording is enabled:
     //
-    if(tr_1.get_scv_tr_stream().get_scv_tr_db() == NULL)
+    if(tr_1.get_scv_tr_stream().get_scv_tr_db() == nullptr)
         return;
     if(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
         return;
 
-    if(my_text_file_p == NULL)
+    if(my_text_file_p == nullptr)
         return;
 
     if(my_text_file_p) {
@@ -626,7 +627,7 @@ static void scv_tr_handle_relation_cbf(const scv_tr_handle& tr_1, const scv_tr_h
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
-
+namespace scv_tr {
 void scv_tr_text_init() {
     scv_tr_db::register_class_cb(scv_tr_db_cbf);
 
@@ -640,6 +641,6 @@ void scv_tr_text_init() {
 
     scv_tr_handle::register_relation_cb(scv_tr_handle_relation_cbf);
 }
-
+}
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
