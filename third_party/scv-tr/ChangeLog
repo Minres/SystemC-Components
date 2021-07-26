@@ -1,0 +1,72 @@
+SCV (2.0 public_review)
+
+    Bugfixes:
+
+    General Improvements:
+        * Support for Accellera Systems Initiative (Accellera) SystemC 2.3.0
+        * Support for 64-bit build process 
+
+
+SCV (1.0p2-sysc2.2)
+
+    Bugfixes:
+
+        General Improvements:
+        * Ported code to compile with SystemC 2.1v1.and SystemC 2.2
+        * Support for gcc 3.4.x and 4.1.x compilers
+        
+SCV (OSCI Beta 4)
+
+    Bugfixes:
+        * SCV documentation now gets copied into the install
+          tree.
+        * Fixed PCR 593509, regarding coredumps while using
+          constraints.
+
+    General Improvements:
+        * Initial port to MS VC++.  Requires version 7.1.
+        * Initial support for SC 2.1 beta.  When build with
+          SC 2.1, SCV will make scv_report an alias for 
+          sc_report.
+        * Added a README which briefly describes each
+          example, to the examples directory.
+
+
+SCV (OSCI Beta 3)
+
+    Bugfixes:
+        * Fixed several bugs in randomization.  
+        * Fixed description of scv_sparse_array ctor in the
+          SCV specification.
+        * Fixed assignment from derived to base classes in
+          shared and smart pointers.
+        * Make clean, distclean, and uninstall are now
+          more thorough.  
+        * scv_report will now create a log file (if the 
+          user provides a name for one).
+
+    General Improvements:
+        * Eliminated archaic usages which had caused us to 
+          use -Wno-deprecated, from SCV code; removed 
+          -Wno-deprecated.  
+        * aCC 3.37 and 3.39 now work.
+
+
+SCV (OSCI Beta 2)
+
+    Bugfixes:
+
+    General Improvements:
+        * Added introspection support for SystemC non-templated
+          base classes.  This does not include support for 
+          randomization.
+
+
+SCV (01.10)
+
+    Bugfixes:
+        * dshea, 2002-10-30, Fixed PCR 481305, about compiler
+          errors using extensions to an enum.
+
+    General Improvements:
+

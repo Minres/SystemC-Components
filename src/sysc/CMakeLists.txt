@@ -34,17 +34,15 @@ set(LIB_SOURCES
     scc/ordered_semaphore.cpp
     scc/value_registry.cpp
     scc/mt19937_rng.cpp
+    scc/scv/scv_tr_binary.cpp
     tlm/scc/pe/parallel_pe.cpp
 )
 
-if(SCV_FOUND )
-    if(ZLIB_FOUND)
-        set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_compressed.cpp)
-    endif(ZLIB_FOUND)
-    if(ENABLE_SQLITE)
-        set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_binary.cpp)
-	    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_sqlite.cpp scc/scv/sqlite3.c )
-    endif()
+if(ZLIB_FOUND)
+    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_compressed.cpp)
+endif()
+if(ENABLE_SQLITE)
+    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_sqlite.cpp scc/scv/sqlite3.c )
 endif()
 if(CCI_FOUND)
     set(LIB_SOURCES ${LIB_SOURCES} 
@@ -91,6 +89,12 @@ if(SCV_FOUND)
     if(NOT ${CMAKE_VERSION} VERSION_LESS "3.13.0") 
         target_link_directories(${PROJECT_NAME} PUBLIC ${SCV_LIBRARY_DIRS})
     endif()
+    if(ENABLE_SQLITE)
+        target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SQLITE)
+    endif()
+else()
+	message("Building SCC with SCV-TR support")
+    target_link_libraries (${PROJECT_NAME} PUBLIC scv-tr)
     if(ENABLE_SQLITE)
         target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SQLITE)
     endif()

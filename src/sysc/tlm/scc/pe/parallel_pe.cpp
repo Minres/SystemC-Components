@@ -13,35 +13,38 @@ namespace scc {
 namespace pe {
 using namespace sc_core;
 
-parallel_pe::parallel_pe(sc_core::sc_module_name const& nm): sc_module(nm) {
+parallel_pe::parallel_pe(sc_core::sc_module_name const& nm)
+: sc_module(nm) {
     fw_i.bind(*this);
 }
 
 parallel_pe::~parallel_pe() = default;
 
-void parallel_pe::transport(tlm::tlm_generic_payload &payload, bool lt_transport) {
+void parallel_pe::transport(tlm::tlm_generic_payload& payload, bool lt_transport) {
     if(!waiting_ids.size()) {
         auto id = threads.size();
-        threads.resize(threads.size()+1);
+        threads.resize(threads.size() + 1);
         thread_unit& tu = threads.back();
-        tu.hndl = sc_core::sc_spawn([this, id]() -> void {
-            auto& tu = threads[id];
-            while(true){
-                fw_o->transport(*tu.gp, tu.lt_transport);
-                bw_o->transport(*tu.gp);
-                if(tu.gp->has_mm()) tu.gp->release();
-                tu.gp=nullptr;
-                waiting_ids.push_back(id);
-                wait(tu.evt);
-            }
-        },
-        sc_core::sc_gen_unique_name("execute"));
-        tu.gp=&payload;
+        tu.hndl = sc_core::sc_spawn(
+            [this, id]() -> void {
+                auto& tu = threads[id];
+                while(true) {
+                    fw_o->transport(*tu.gp, tu.lt_transport);
+                    bw_o->transport(*tu.gp);
+                    if(tu.gp->has_mm())
+                        tu.gp->release();
+                    tu.gp = nullptr;
+                    waiting_ids.push_back(id);
+                    wait(tu.evt);
+                }
+            },
+            sc_core::sc_gen_unique_name("execute"));
+        tu.gp = &payload;
     } else {
         auto& tu = threads[waiting_ids.front()];
         waiting_ids.pop_front();
-        tu.gp=&payload;
-        tu.lt_transport= lt_transport;
+        tu.gp = &payload;
+        tu.lt_transport = lt_transport;
         tu.evt.notify();
     }
     if(payload.has_mm())
@@ -49,5 +52,5 @@ void parallel_pe::transport(tlm::tlm_generic_payload &payload, bool lt_transport
 }
 
 } /* namespace pe */
-}  // namespace scc
+} // namespace scc
 } /* namespace tlm */

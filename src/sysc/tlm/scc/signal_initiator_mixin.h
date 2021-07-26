@@ -78,7 +78,8 @@ public:
         bw_if.set_nb_transport_ptr(cb);
     }
     /**
-     * @fn void register_nb_transport(std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)>, unsigned int)
+     * @fn void register_nb_transport(std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&,
+     * sc_core::sc_time&)>, unsigned int)
      * @brief register a functor for nb_transport_bw call
      *
      * @param cb  the callback function
@@ -147,7 +148,7 @@ private:
     bw_transport_if bw_if;
 };
 } // namespace scc
-}  // namespace tlm
+} // namespace tlm
 
 #include <sysc/datatypes/bit/sc_logic.h>
 namespace tlm {
@@ -157,5 +158,5 @@ using tlm_signal_logic_out = signal_initiator_mixin<tlm_signal_initiator_socket<
 using tlm_signal_bool_opt_out = signal_initiator_mixin<tlm_signal_opt_initiator_socket<bool>>;
 using tlm_signal_logic_opt_out = signal_initiator_mixin<tlm_signal_opt_initiator_socket<sc_dt::sc_logic>>;
 } // namespace scc
-}  // namespace tlm
+} // namespace tlm
 #endif //__SIGNAL_INITIATOR_MIXIN_H__

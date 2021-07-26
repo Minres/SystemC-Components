@@ -17,8 +17,8 @@
 #ifndef _SCC_TAGGED_INITIATOR_MIXIN_H__
 #define _SCC_TAGGED_INITIATOR_MIXIN_H__
 
-#include <scc/utilities.h>
 #include <functional>
+#include <scc/utilities.h>
 #include <sstream>
 #include <tlm>
 
@@ -133,6 +133,6 @@ private:
     bw_transport_if bw_if;
 };
 } // namespace scc
-}  // namespace tlm
+} // namespace tlm
 
 #endif //_SCC_TAGGED_INITIATOR_MIXIN_H__

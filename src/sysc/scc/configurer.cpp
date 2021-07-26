@@ -49,7 +49,7 @@ scc::configurer::configurer(const std::string& filename)
             SCCERR() << "Could not open input file " << filename;
         }
     }
-    //register_simulation_phase_callback(sc_core::sc_status::SC_END_OF_ELABORATION);
+    // register_simulation_phase_callback(sc_core::sc_status::SC_END_OF_ELABORATION);
 }
 
 void scc::configurer::dump_hierarchy(std::ostream& os, sc_core::sc_object* obj) {
@@ -85,7 +85,8 @@ void scc::configurer::dump_configuration(std::ostream& os, sc_core::sc_object* o
     // os << root;
 }
 
-template <typename T, typename T1 = T> auto check_n_assign(Json::Value& node, sc_core::sc_attr_base* attr_base) -> bool {
+template <typename T, typename T1 = T>
+auto check_n_assign(Json::Value& node, sc_core::sc_attr_base* attr_base) -> bool {
     auto* a = dynamic_cast<sc_core::sc_attribute<T>*>(attr_base);
     if(a != nullptr) {
         node[a->name()] = T1(a->value);
@@ -282,24 +283,25 @@ void scc::configurer::check_config_hierarchical(Json::Value const& node, std::st
             if(!itr.key().isString())
                 return;
             std::string key_name = itr.key().asString();
-            if(key_name=="log_level") continue; // virtual attribute
+            if(key_name == "log_level")
+                continue; // virtual attribute
             std::string hier_name{prefix.size() ? prefix + "." + key_name : key_name};
             Json::Value val = node[key_name];
             if(val.isNull() || val.isArray())
                 continue;
-            else if(val.isObject()){
+            else if(val.isObject()) {
                 if(!sc_core::sc_find_object(hier_name.c_str()))
-                    SCCFATAL(this->name())<<"Illegal hierarchy name: '"<<hier_name<<"'";
+                    SCCFATAL(this->name()) << "Illegal hierarchy name: '" << hier_name << "'";
                 check_config_hierarchical(*itr, hier_name);
             }
 #ifdef WITH_CCI
             else {
                 auto* obj = sc_core::sc_find_object(prefix.c_str());
                 auto* attr = obj->get_attribute(key_name);
-                if(!attr){
+                if(!attr) {
                     cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
                     if(!param_handle.is_valid()) {
-                        SCCFATAL(this->name())<<"Illegal parameter name: '"<<hier_name<<"'";
+                        SCCFATAL(this->name()) << "Illegal parameter name: '" << hier_name << "'";
                     }
                 }
             }

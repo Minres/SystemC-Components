@@ -27,3 +27,19 @@ macro(setup_conan)
   include(${CONAN_CMAKE_LIST_DIR}/conan.cmake)
   set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_BINARY_DIR})
 endmacro()
+
+function(conan_configure)
+    conan_cmake_generate_conanfile(OFF ${ARGV})
+endfunction()
+
+macro(conan_install)
+	conan_cmake_autodetect(settings)
+	if(CMAKE_CXX_STANDARD)
+		set(settings ${settings} compiler.cppstd=${CMAKE_CXX_STANDARD})
+	endif()
+	message("Conan settings are ${settings}")
+	conan_cmake_install(PATH_OR_REFERENCE .
+	                    BUILD missing
+	                    REMOTE conan-center
+	                    SETTINGS ${settings})
+endmacro()

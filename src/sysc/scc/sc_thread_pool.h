@@ -16,13 +16,13 @@
 
 #ifndef SYSC_SCC_SC_THREAD_POOL_H_
 #define SYSC_SCC_SC_THREAD_POOL_H_
-#include <systemc>
 #include <cci_configuration>
 #include <functional>
+#include <systemc>
 
 namespace scc {
 
-class sc_thread_pool:sc_core::sc_object {
+class sc_thread_pool : sc_core::sc_object {
 public:
     sc_thread_pool();
     virtual ~sc_thread_pool();
@@ -34,7 +34,6 @@ public:
 private:
     sc_core::sc_fifo<std::function<void(void)>> dispatch_queue{"dispatch_queue"};
     unsigned thread_avail{0}, thread_active{0};
-
 };
 } /* namespace scc */
 

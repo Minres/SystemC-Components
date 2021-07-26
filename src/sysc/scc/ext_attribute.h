@@ -25,7 +25,8 @@ namespace scc {
  * @class ext_attribute
  * @brief extended sc_attribute
  *
- * extended attribute inheriting from sc_attribute. The attribute consults with the \ref scc::configurer to retrieve a default value
+ * extended attribute inheriting from sc_attribute. The attribute consults with the \ref scc::configurer to retrieve a
+ default value
  * upon construction
 
  * @tparam T type name of value to hold in the attribute

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <axi/axi_tlm.h>
-#include <tlm/scc/initiator_mixin.h>
 #include <scc/report.h>
+#include <tlm/scc/initiator_mixin.h>
 #include <tlm/scc/scv/tlm_rec_initiator_socket.h>
 #include <tlm/scc/tlm_id.h>
 #include <tlm/scc/tlm_mm.h>
@@ -32,7 +32,8 @@ public:
 
     axi_pin2tlm_adaptor(sc_core::sc_module_name nm);
 
-    tlm::scc::initiator_mixin<tlm::scc::scv::tlm_rec_initiator_socket<BUSWIDTH, axi::axi_protocol_types>, axi::axi_protocol_types>
+    tlm::scc::initiator_mixin<tlm::scc::scv::tlm_rec_initiator_socket<BUSWIDTH, axi::axi_protocol_types>,
+                              axi::axi_protocol_types>
         output_socket{"output_socket"};
 
     sc_core::sc_in<bool> clk_i{"clk_i"};
@@ -160,7 +161,8 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
 
             auto it = active_r_transactions.find(id);
             if(it == active_r_transactions.end()) {
-                payload_type* payload = tlm::scc::tlm_mm<axi::axi_protocol_types>::get().allocate<axi::axi4_extension>();
+                payload_type* payload =
+                    tlm::scc::tlm_mm<axi::axi_protocol_types>::get().allocate<axi::axi4_extension>();
                 auto ext = payload->get_extension<axi::axi4_extension>();
                 auto addr = ar_addr_i.read();
                 auto length = ar_len_i.read();

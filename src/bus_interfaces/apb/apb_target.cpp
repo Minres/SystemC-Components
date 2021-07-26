@@ -31,9 +31,9 @@
  *       eyck@minres.com - initial API and implementation
  ******************************************************************************/
 
+#include <apb/pe/apb_target.h>
 #include <scc/report.h>
 #include <systemc>
-#include <apb/pe/apb_target.h>
 #include <tuple>
 
 using namespace sc_core;

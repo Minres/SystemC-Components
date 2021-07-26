@@ -77,12 +77,15 @@
 
 #include <string>
 // clang-format off
-#include "scv/scv_util.h"
-#include "scv/scv_introspection.h"
-#include "scv/scv_tr.h"
+#ifdef WITH_SCV
+#include <scv.h>
+#else
+#include <scv-tr.h>
+using namespace scv_tr;
+#endif
 // clang-format on
-#include <zlib.h>
 #include <array>
+#include <zlib.h>
 // ----------------------------------------------------------------------------
 
 #ifdef _MSC_VER
@@ -116,13 +119,13 @@ static void scv_tr_db_cbf(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reaso
         if(my_text_file_p == nullptr) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open text recording file");
         } else {
-            scv_out << "TB Transaction Recording has started, file = " << my_text_file_name << endl;
+            std::clog << "TB Transaction Recording has started, file = " << my_text_file_name << endl;
         }
         break;
 
     case scv_tr_db::DELETE:
         if(my_text_file_p != nullptr) {
-            scv_out << "Transaction Recording is closing file: " << my_text_file_name << endl;
+            std::clog << "Transaction Recording is closing file: " << my_text_file_name << endl;
             gzclose(my_text_file_p);
             my_text_file_p = nullptr;
         }
@@ -155,7 +158,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
                           const std::string& exts_kind, const scv_extensions_if* my_exts_p,
                           int* index) // The attribute index number
 {
-// This function can be called recursively, for nested data types.
+    // This function can be called recursively, for nested data types.
 
 #ifdef TRACE_DO_ATTRIBUTES
     cout << "Entering do_attributes\n";

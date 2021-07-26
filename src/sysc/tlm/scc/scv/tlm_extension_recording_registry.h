@@ -17,12 +17,19 @@
 #ifndef TLM_RECORDER_REGISTRY_H_
 #define TLM_RECORDER_REGISTRY_H_
 
+#ifdef WITH_SCV
 #include <scv.h>
+#else
+#include <scv-tr.h>
+#endif
 #include <tlm>
 
 namespace tlm {
 namespace scc {
 namespace scv {
+#ifndef WITH_SCV
+using namespace scv_tr;
+#endif
 /*! \brief The TLM transaction extensions recorder interface
  *
  * This interface is used by the TLM transaction recorder. It can be used to
@@ -94,7 +101,7 @@ private:
     std::vector<tlm_extensions_recording_if<TYPES>*> ext_rec;
 };
 
-} // namespace scv4tlm
+} // namespace scv
 } // namespace scc
 } // namespace tlm
 #endif /* TLM_RECORDER_REGISTRY_H_ */

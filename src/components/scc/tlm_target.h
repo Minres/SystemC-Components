@@ -17,12 +17,12 @@
 #ifndef _SYSC_TLM_TARGET_H_
 #define _SYSC_TLM_TARGET_H_
 
-#include <tlm/scc/scv/tlm_rec_target_socket.h>
 #include "resource_access_if.h"
+#include "scc/utilities.h"
 #include "tlm/scc/target_mixin.h"
 #include "util/range_lut.h"
-#include "scc/utilities.h"
 #include <array>
+#include <tlm/scc/scv/tlm_rec_target_socket.h>
 
 namespace scc {
 /**
@@ -121,7 +121,7 @@ inline scc::tlm_target<BUSWIDTH>::tlm_target(sc_core::sc_time& clock)
 , clk(clock)
 , socket_map(std::make_pair(nullptr, 0)) {
     socket.register_b_transport(
-            [=](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void { this->b_tranport_cb(gp, delay); });
+        [=](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void { this->b_tranport_cb(gp, delay); });
     socket.register_transport_dbg([=](tlm::tlm_generic_payload& gp) -> unsigned { return this->tranport_dbg_cb(gp); });
 }
 
@@ -161,7 +161,7 @@ template <unsigned int BUSWIDTH> unsigned int scc::tlm_target<BUSWIDTH>::tranpor
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());
     if(ra) {
         if(gp.get_data_length() == ra->size() && gp.get_byte_enable_ptr() == nullptr &&
-                gp.get_data_length() == gp.get_streaming_width()) {
+           gp.get_data_length() == gp.get_streaming_width()) {
             if(gp.get_command() == tlm::TLM_READ_COMMAND) {
                 if(ra->read_dbg(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra->size()))
                     return gp.get_data_length();

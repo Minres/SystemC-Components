@@ -22,8 +22,8 @@
 
 #include "scc/mt19937_rng.h"
 #include "scc/report.h"
-#include "tlm/scc/target_mixin.h"
 #include "scc/utilities.h"
+#include "tlm/scc/target_mixin.h"
 #include <tlm.h>
 #include <util/sparse_array.h>
 
@@ -33,8 +33,8 @@ namespace scc {
  * @class memory
  * @brief simple TLM2.0 LT memory model
  *
- * This model uses the \ref util::sparse_array as backing store. Therefore it can have an arbitrary size since only pages for accessed
- * addresses are allocated.
+ * This model uses the \ref util::sparse_array as backing store. Therefore it can have an arbitrary size since only
+ * pages for accessed addresses are allocated.
  *
  * TODO: add some more attributes/parameters to configure access time and type (DMI allowed, read only, etc)
  *
@@ -44,7 +44,7 @@ namespace scc {
 template <unsigned long long SIZE, unsigned BUSWIDTH = 32> class memory : public sc_core::sc_module {
 public:
     //! the target socket to connect to TLM
-	tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target;
+    tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target;
     /**
      * constructor with explicit instance name
      *

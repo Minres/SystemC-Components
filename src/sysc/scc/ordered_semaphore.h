@@ -19,8 +19,8 @@
 #include "sysc/communication/sc_semaphore_if.h"
 #include "sysc/kernel/sc_event.h"
 #include "sysc/kernel/sc_object.h"
-#include <deque>
 #include <array>
+#include <deque>
 #include <sysc/kernel/sc_process_handle.h>
 
 #ifndef SC_API
@@ -32,7 +32,8 @@ namespace scc {
  * @class ordered_semaphore
  * @brief The ordered_semaphore primitive channel class.
  *
- * The ordered semaphore acts like an ordinary semaphore. It gives the guarantee that access is granted in the order of arrival (FCFS)
+ * The ordered semaphore acts like an ordinary semaphore. It gives the guarantee that access is granted in the order of
+ * arrival (FCFS)
  */
 class SC_API ordered_semaphore : public sc_core::sc_semaphore_if, public sc_core::sc_object {
 public:
@@ -149,8 +150,8 @@ public:
 protected:
     // support methods
     bool in_use() {
-        if(value > 0){
-            if(queue[1].size()){
+        if(value > 0) {
+            if(queue[1].size()) {
                 if(queue[1].front() == sc_core::sc_get_current_process_handle()) {
                     queue[1].pop_front();
                     return false;

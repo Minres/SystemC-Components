@@ -24,9 +24,12 @@
 
 #include "scc/report.h"
 #include "scc/utilities.h"
-#ifdef WITH_SCV
 #include "scv/scv_tr_db.h"
+#ifdef WITH_SCV
 #include <scv.h>
+#else
+#include <scv-tr.h>
+using namespace scv_tr;
 #endif
 #include <cstring>
 #include <iostream>
@@ -37,16 +40,12 @@ using namespace scc;
 
 tracer::tracer(std::string const&& name, file_type type, bool enable)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
-#ifdef WITH_SCV
-, txdb(nullptr)
-#endif
-{
+, txdb(nullptr) {
     if(enable) {
         trf = sc_create_vcd_trace_file(name.c_str());
         trf->set_time_unit(1, SC_PS);
         owned = true;
     }
-#ifdef WITH_SCV
     if(type != NONE) {
         std::stringstream ss;
         ss << name;
@@ -73,7 +72,6 @@ tracer::tracer(std::string const&& name, file_type type, bool enable)
         txdb = new scv_tr_db(ss.str().c_str());
         scv_tr_db::set_default_db(txdb);
     }
-#endif
 }
 
 void tracer::end_of_elaboration() {
@@ -82,8 +80,4 @@ void tracer::end_of_elaboration() {
             descend(o, true);
 }
 
-tracer::~tracer() {
-#ifdef WITH_SCV
-    delete txdb;
-#endif
-}
+tracer::~tracer() { delete txdb; }

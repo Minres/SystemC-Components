@@ -87,8 +87,7 @@ template <typename SIG, typename TYPES, int N> void tlm_signal<SIG, TYPES, N>::t
 }
 
 template <typename SIG, typename TYPES, int N>
-tlm_sync_enum tlm_signal<SIG, TYPES, N>::nb_transport_fw(payload_type& gp, phase_type& phase,
-                                                              sc_core::sc_time& delay) {
+tlm_sync_enum tlm_signal<SIG, TYPES, N>::nb_transport_fw(payload_type& gp, phase_type& phase, sc_core::sc_time& delay) {
     que.notify(gp.get_value(), delay);
     auto& p = out.get_base_port();
     for(size_t i = 0; i < p.size(); ++i) {
@@ -98,8 +97,7 @@ tlm_sync_enum tlm_signal<SIG, TYPES, N>::nb_transport_fw(payload_type& gp, phase
 }
 
 template <typename SIG, typename TYPES, int N>
-tlm_sync_enum tlm_signal<SIG, TYPES, N>::nb_transport_bw(payload_type& gp, phase_type& phase,
-                                                              sc_core::sc_time& delay) {
+tlm_sync_enum tlm_signal<SIG, TYPES, N>::nb_transport_bw(payload_type& gp, phase_type& phase, sc_core::sc_time& delay) {
     auto& p = in.get_base_port();
     for(size_t i = 0; i < p.size(); ++i) {
         p.get_interface(i)->nb_transport_bw(gp, phase, delay);
@@ -111,6 +109,6 @@ template <typename SIG, typename TYPES, int N> void tlm_signal<SIG, TYPES, N>::q
     while(auto oi = que.get_next())
         value.write(oi.get());
 }
-}  // namespace scc
+} // namespace scc
 } // namespace tlm
 #endif /* _TLM_TLM_SIGNAL_H_ */

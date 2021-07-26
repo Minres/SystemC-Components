@@ -168,7 +168,7 @@ private:
     std::unique_ptr<target_socket_type> av_tsck;
 };
 
-}  // namespace scc
+} // namespace scc
 } /* namespace tlm */
 
 #endif /* OSCI_LIB_SCC_INCL_TLM_TLM2_PV_AV_TARGET_ADAPTER_H_ */

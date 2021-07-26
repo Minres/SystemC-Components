@@ -58,5 +58,5 @@ inline void setId(tlm::tlm_generic_payload& gp, uintptr_t id) {
     else
         gp.set_extension(new tlm_id_extension(id));
 }
-}  // namespace scc
+} // namespace scc
 } // namespace tlm

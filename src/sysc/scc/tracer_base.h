@@ -28,13 +28,13 @@ namespace scc {
  *
  */
 enum class trace_types : unsigned {
-    NONE = 0x0,     /**< NONE */
-            SIGNALS = 0x1,  /**< SIGNALS */
-            PORTS = 0x2,    /**< PORTS */
-            SOCKETS = 0x4,  /**< SOCKETS */
-            VARIABLES = 0x8,/**< VARIABLES */
-            OBJECTS = 0x10, /**< OBJECTS */
-            ALL = 0xff      /**< ALL */
+    NONE = 0x0,      /**< NONE */
+    SIGNALS = 0x1,   /**< SIGNALS */
+    PORTS = 0x2,     /**< PORTS */
+    SOCKETS = 0x4,   /**< SOCKETS */
+    VARIABLES = 0x8, /**< VARIABLES */
+    OBJECTS = 0x10,  /**< OBJECTS */
+    ALL = 0xff       /**< ALL */
 };
 /**
  * @fn trace_types operator |(trace_types, trace_types)

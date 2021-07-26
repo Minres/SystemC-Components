@@ -26,7 +26,6 @@ namespace scc {
  */
 class traceable {
 public:
-
     traceable() = default;
 
     virtual ~traceable() = default;

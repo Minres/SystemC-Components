@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include <atomic>
 #include <cassert>
 #include <cstdio>
 #include <cstring>
@@ -27,7 +28,6 @@
 #include <string>
 #include <sys/time.h>
 #include <vector>
-#include <atomic>
 
 //! log level definitions
 #define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE) L(TRACEALL)
@@ -76,7 +76,6 @@ inline std::string now_time();
  */
 template <typename T> class Log {
 public:
-
     Log() = default;
 
     Log(const Log&) = delete;
@@ -127,9 +126,7 @@ public:
      *
      * @return the logging level
      */
-    static log_level get_reporting_level() {
-        return reporting_level().load(std::memory_order_relaxed);
-    }
+    static log_level get_reporting_level() { return reporting_level().load(std::memory_order_relaxed); }
     /**
      * get a reference to the abort on fatal flag
      *
@@ -250,12 +247,12 @@ class DEFAULT {};
 
 #ifndef LOG
 #define LOG(LEVEL)                                                                                                     \
-    if(logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                          \
+    if(logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                      \
     LOGGER(DEFAULT)().get(logging::LEVEL)
 #endif
 #ifndef CLOG
 #define CLOG(LEVEL, CATEGORY)                                                                                          \
-    if(logging::LEVEL <= LOGGER(CATEGORY)::get_reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                        \
+    if(logging::LEVEL <= LOGGER(CATEGORY)::get_reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                    \
     LOGGER(CATEGORY)().get(logging::LEVEL, #CATEGORY)
 #endif
 #if defined(WIN32)

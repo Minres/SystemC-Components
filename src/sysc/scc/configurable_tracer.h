@@ -58,7 +58,8 @@ public:
      * @param tf the trace file to use for signal and POD tracing
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf = nullptr, bool default_enable = false);
+    configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf = nullptr,
+                        bool default_enable = false);
     /**
      * constructs a tracer object
      *

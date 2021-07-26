@@ -102,6 +102,6 @@ private:
     std::vector<unsigned char> buffer_;
 };
 
-}  // namespace scc
+} // namespace scc
 } // namespace tlm
 #endif /* SC_COMPONENTS_INCL_TLM_TLM_EXTENSIONS_H_ */

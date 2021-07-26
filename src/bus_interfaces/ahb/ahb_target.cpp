@@ -33,9 +33,9 @@
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
+#include <ahb/pe/ahb_target.h>
 #include <scc/report.h>
 #include <systemc>
-#include <ahb/pe/ahb_target.h>
 #include <tuple>
 
 using namespace sc_core;
