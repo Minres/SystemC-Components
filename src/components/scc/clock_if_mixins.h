@@ -44,7 +44,7 @@ public:
     tickless_clock(sc_core::sc_module_name& nm) : BASE(nm) {
         SC_HAS_PROCESS(tickless_clock<BASE>);
         SC_METHOD(clock_cb);
-        sensitive << clk_i;
+        this->sensitive << clk_i;
     }
 
 private:
