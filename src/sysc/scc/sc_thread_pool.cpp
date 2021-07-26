@@ -22,7 +22,7 @@ inline std::ostream& operator<<(std::ostream& os, std::function<void()>&) { retu
 } // namespace sc_core
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
-#include <scc/sc_thread_pool.h>
+#include "sc_thread_pool.h"
 
 namespace scc {
 

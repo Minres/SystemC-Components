@@ -6,7 +6,7 @@
  */
 
 #include <cstring>
-#include <scc/value_registry.h>
+#include "value_registry.h"
 #include <sstream>
 #include <string>
 #include <sysc/datatypes/fx/sc_fxnum.h>

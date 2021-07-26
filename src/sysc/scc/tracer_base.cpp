@@ -21,9 +21,9 @@
  */
 
 #include <cstring>
-#include <scc/sc_variable.h>
-#include <scc/traceable.h>
-#include <scc/tracer_base.h>
+#include "sc_variable.h"
+#include "traceable.h"
+#include "tracer_base.h"
 #include <systemc>
 
 using namespace sc_core;

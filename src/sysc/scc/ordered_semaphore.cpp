@@ -14,10 +14,10 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "scc/report.h"
+#include "report.h"
 #include "sysc/communication/sc_communication_ids.h"
 #include "sysc/kernel/sc_wait.h"
-#include <scc/ordered_semaphore.h>
+#include "ordered_semaphore.h"
 #include <util/strprintf.h>
 
 namespace scc {

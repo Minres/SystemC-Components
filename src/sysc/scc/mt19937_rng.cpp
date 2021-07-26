@@ -1,4 +1,4 @@
-#include <scc/mt19937_rng.h>
+#include "mt19937_rng.h"
 #include <systemc>
 #include <unordered_map>
 namespace {

@@ -20,8 +20,8 @@
  *      Author: eyck
  */
 
-#include "scc/configurer.h"
-#include "scc/report.h"
+#include "configurer.h"
+#include "report.h"
 #ifdef WITH_CCI
 #include <cci_configuration>
 #include <cci_utils/broker.h>
