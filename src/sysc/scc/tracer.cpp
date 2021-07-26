@@ -29,6 +29,7 @@
 #include <scv.h>
 #else
 #include <scv-tr.h>
+using namespace scv_tr;
 #endif
 #include <cstring>
 #include <iostream>

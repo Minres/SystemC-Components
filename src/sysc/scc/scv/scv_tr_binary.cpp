@@ -27,9 +27,12 @@
 #include <unordered_set>
 #include <vector>
 // clang-format off
-#include "scv/scv_util.h"
-#include "scv/scv_introspection.h"
-#include "scv/scv_tr.h"
+#ifdef WITH_SCV
+#include <scv.h>
+#else
+#include <scv-tr.h>
+using namespace scv_tr;
+#endif
 // clang-format on
 // ----------------------------------------------------------------------------
 constexpr auto SQLITEWRAPPER_ERROR = 1000;

@@ -23,11 +23,12 @@
 #ifndef FMT_HEADER_ONLY
 #define FMT_HEADER_ONLY
 #endif
-// clang-format off
-#include "scv/scv_util.h"
-#include "scv/scv_introspection.h"
-#include "scv/scv_tr.h"
-// clang-format on
+#ifdef WITH_SCV
+#include <scv.h>
+#else
+#include <scv-tr.h>
+using namespace scv_tr;
+#endif
 #include "sqlite3.h"
 // ----------------------------------------------------------------------------
 constexpr auto SQLITEWRAPPER_ERROR = 1000;

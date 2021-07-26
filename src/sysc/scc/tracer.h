@@ -21,7 +21,11 @@
 #include <string>
 #include <vector>
 
+#ifdef WITH_SCV
 class scv_tr_db;
+#else
+namespace scv_tr {class scv_tr_db; }
+#endif
 
 namespace sc_core {
 class sc_object;
@@ -70,7 +74,11 @@ public:
 
 protected:
     void end_of_elaboration() override;
+#ifdef WITH_SCV
     scv_tr_db* txdb;
+#else
+    scv_tr::scv_tr_db* txdb;
+#endif
 };
 
 } /* namespace scc */

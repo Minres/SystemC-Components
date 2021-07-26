@@ -50,14 +50,14 @@ set(LIB_SOURCES
     scc/ordered_semaphore.cpp
     scc/value_registry.cpp
     scc/mt19937_rng.cpp
+    scc/scv/scv_tr_binary.cpp
     tlm/scc/pe/parallel_pe.cpp
 )
 
 if(ZLIB_FOUND)
     set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_compressed.cpp)
-endif(ZLIB_FOUND)
+endif()
 if(ENABLE_SQLITE)
-    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_binary.cpp)
     set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_sqlite.cpp scc/scv/sqlite3.c )
 endif()
 if(CCI_FOUND)
