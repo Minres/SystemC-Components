@@ -85,15 +85,7 @@ void scv_extensions_if::set_debug(int i) {
 // ----------------------------------------
 // dynamic data
 // ----------------------------------------
-_scv_dynamic_data::~_scv_dynamic_data() {
-    /*
-    std::list<_scv_dynamic_data::callback_base*>::iterator i;
-    std::list<_scv_dynamic_data::callback_base*>::iterator e = _callbacks.end();
-    for (i = _callbacks.begin(); i != e; ++i) {
-      delete *i;
-    }
-    */
-}
+_scv_dynamic_data::~_scv_dynamic_data() = default;
 
 void _scv_dynamic_data::execute_callbacks(scv_extensions_if* obj, scv_extensions_if::callback_reason r) {
     std::list<_scv_dynamic_data::callback_base*>::iterator i;
@@ -841,9 +833,9 @@ void _scv_extension_rw_sc_bit::get_value(sc_lv_base& v) const { _SCV_RW_ERROR(ge
 _SCV_EXT_RW_FC_BASE_I(sc_logic, sc_logic);
 _SCV_EXT_RW_FC_ASSIGNS_I(sc_logic, sc_logic);
 std::string _scv_extension_rw_sc_logic::get_string() const {
-    char str_val[2];
-    sprintf(str_val, "%c", this->_get_instance()->to_char());
-    return std::string(str_val);
+    std::array<char, 2> str_val;
+    sprintf(str_val.data(), "%c", this->_get_instance()->to_char());
+    return str_val.data();
 }
 void _scv_extension_rw_sc_logic::assign(const sc_bv_base& v) { _SCV_RW_ERROR(assign, sc_bv_base, sc_logic); }
 void _scv_extension_rw_sc_logic::get_value(sc_bv_base& v) const { _SCV_RW_ERROR(get_value, sc_lv_base, sc_logic); }

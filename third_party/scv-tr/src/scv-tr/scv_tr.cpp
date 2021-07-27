@@ -295,11 +295,7 @@ _scv_tr_handle_core::_scv_tr_handle_core()
     this->ref_count = 1;
 }
 
-_scv_tr_handle_core::~_scv_tr_handle_core() {
-#ifdef scv_tr_TRACE
-    cout << "In _scv_tr_handle_core dtor\n";
-#endif
-}
+_scv_tr_handle_core::~_scv_tr_handle_core() = default;
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------

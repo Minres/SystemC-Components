@@ -25,8 +25,7 @@
 #include <fstream>
 #include "report.h"
 #ifdef WITH_CCI
-#include <cci_configuration>
-#include <cci_utils/broker.h>
+#include "configurer.h"
 #endif
 #include "spdlog/async.h"
 #include "spdlog/sinks/basic_file_sink.h"
@@ -346,7 +345,7 @@ static void configure_logging() {
     static bool spdlog_initialized = false;
 #ifdef WITH_CCI
     if(!log_cfg.dont_create_broker)
-        cci::cci_register_broker(new cci_utils::broker("SCCBroker"));
+        scc::init_cci("SCCBroker");
 #endif
 
     sc_report_handler::set_actions(SC_ERROR, SC_DEFAULT_ERROR_ACTIONS | SC_DISPLAY);
