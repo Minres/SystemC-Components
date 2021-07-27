@@ -33,6 +33,7 @@ protected:
         auto clk_if=dynamic_cast<sc_core::sc_clock*>(clk_i.get_interface());
         sc_assert(clk_if!=nullptr);
         this->set_clock_period(clk_if->period());
+        BASE::end_of_elaboration();
     }
 };
 
