@@ -309,22 +309,22 @@ _SCV_EXT_TYPE_N_FC_D(test_uint<N>, UNSIGNED);
 #endif
 
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
-_SCV_EXT_TYPE_N_FC_D(sc_int<N>, INTEGER);
-_SCV_EXT_TYPE_N_FC_D(sc_bigint<N>, INTEGER);
-_SCV_EXT_TYPE_N_FC_D(sc_uint<N>, UNSIGNED);
-_SCV_EXT_TYPE_N_FC_D(sc_biguint<N>, UNSIGNED);
-_SCV_EXT_TYPE_1_FC_D(sc_bit, sc_bit);
-_SCV_EXT_TYPE_N_FC_D(sc_bv<N>, BIT_VECTOR);
-_SCV_EXT_TYPE_1_FC_D(sc_logic, sc_logic);
-_SCV_EXT_TYPE_N_FC_D(sc_lv<N>, LOGIC_VECTOR);
+_SCV_EXT_TYPE_N_FC_D(sc_dt::sc_int<N>, INTEGER);
+_SCV_EXT_TYPE_N_FC_D(sc_dt::sc_bigint<N>, INTEGER);
+_SCV_EXT_TYPE_N_FC_D(sc_dt::sc_uint<N>, UNSIGNED);
+_SCV_EXT_TYPE_N_FC_D(sc_dt::sc_biguint<N>, UNSIGNED);
+_SCV_EXT_TYPE_1_FC_D(sc_dt::sc_bit, sc_bit);
+_SCV_EXT_TYPE_N_FC_D(sc_dt::sc_bv<N>, BIT_VECTOR);
+_SCV_EXT_TYPE_1_FC_D(sc_dt::sc_logic, sc_logic);
+_SCV_EXT_TYPE_N_FC_D(sc_dt::sc_lv<N>, LOGIC_VECTOR);
 // SCV_EXT_TYPE_N_FC_D(sc_fixed,FIXED_POINTER_INTEGER);
 // SCV_EXT_TYPE_N_FC_D(sc_ufixed,UNSIGNED_FIXED_POINTER_INTEGER);
-_SCV_EXT_TYPE_D_FC_D(sc_signed, sc_signed);
-_SCV_EXT_TYPE_D_FC_D(sc_unsigned, sc_unsigned);
-_SCV_EXT_TYPE_D_FC_D(sc_int_base, sc_int_base);
-_SCV_EXT_TYPE_D_FC_D(sc_uint_base, sc_uint_base);
-_SCV_EXT_TYPE_D_FC_D(sc_lv_base, sc_lv_base);
-_SCV_EXT_TYPE_D_FC_D(sc_bv_base, sc_bv_base);
+_SCV_EXT_TYPE_D_FC_D(sc_dt::sc_signed, sc_signed);
+_SCV_EXT_TYPE_D_FC_D(sc_dt::sc_unsigned, sc_unsigned);
+_SCV_EXT_TYPE_D_FC_D(sc_dt::sc_int_base, sc_int_base);
+_SCV_EXT_TYPE_D_FC_D(sc_dt::sc_uint_base, sc_uint_base);
+_SCV_EXT_TYPE_D_FC_D(sc_dt::sc_lv_base, sc_lv_base);
+_SCV_EXT_TYPE_D_FC_D(sc_dt::sc_bv_base, sc_bv_base);
 #endif
 
 #undef _SCV_EXT_TYPE_FC_D

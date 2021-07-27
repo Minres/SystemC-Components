@@ -60,7 +60,7 @@ public:
     // scv_object_if
     const char* get_name() const override;
     const char* kind() const override;
-    void print(ostream& o = std::cout, int details = 0, int indent = 0) const override;
+    void print(std::ostream& o = std::cout, int details = 0, int indent = 0) const override;
 
     // extension "util"
     bool has_valid_extensions() const override;

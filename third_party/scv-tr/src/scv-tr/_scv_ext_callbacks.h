@@ -263,20 +263,20 @@ _SCV_EXT_CALLBACKS_FC_D(std::string, string);
 _SCV_EXT_CALLBACKS_FC_N_D(test_uint);
 
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
-_SCV_EXT_CALLBACKS_FC_1_D(sc_bit, sc_bit);
-_SCV_EXT_CALLBACKS_FC_1_D(sc_logic, sc_logic);
-_SCV_EXT_CALLBACKS_FC_N_D(sc_int);
-_SCV_EXT_CALLBACKS_FC_N_D(sc_uint);
-_SCV_EXT_CALLBACKS_FC_N_D(sc_bigint);
-_SCV_EXT_CALLBACKS_FC_N_D(sc_biguint);
-_SCV_EXT_CALLBACKS_FC_N_D(sc_bv);
-_SCV_EXT_CALLBACKS_FC_N_D(sc_lv);
-_SCV_EXT_CALLBACKS_FC_D(sc_signed, sc_signed);
-_SCV_EXT_CALLBACKS_FC_D(sc_unsigned, sc_unsigned);
-_SCV_EXT_CALLBACKS_FC_D(sc_int_base, sc_int_base);
-_SCV_EXT_CALLBACKS_FC_D(sc_uint_base, sc_uint_base);
-_SCV_EXT_CALLBACKS_FC_D(sc_lv_base, sc_lv_base);
-_SCV_EXT_CALLBACKS_FC_D(sc_bv_base, sc_bv_base);
+_SCV_EXT_CALLBACKS_FC_1_D(sc_dt::sc_bit, sc_bit);
+_SCV_EXT_CALLBACKS_FC_1_D(sc_dt::sc_logic, sc_logic);
+_SCV_EXT_CALLBACKS_FC_N_D(sc_dt::sc_int);
+_SCV_EXT_CALLBACKS_FC_N_D(sc_dt::sc_uint);
+_SCV_EXT_CALLBACKS_FC_N_D(sc_dt::sc_bigint);
+_SCV_EXT_CALLBACKS_FC_N_D(sc_dt::sc_biguint);
+_SCV_EXT_CALLBACKS_FC_N_D(sc_dt::sc_bv);
+_SCV_EXT_CALLBACKS_FC_N_D(sc_dt::sc_lv);
+_SCV_EXT_CALLBACKS_FC_D(sc_dt::sc_signed, sc_signed);
+_SCV_EXT_CALLBACKS_FC_D(sc_dt::sc_unsigned, sc_unsigned);
+_SCV_EXT_CALLBACKS_FC_D(sc_dt::sc_int_base, sc_int_base);
+_SCV_EXT_CALLBACKS_FC_D(sc_dt::sc_uint_base, sc_uint_base);
+_SCV_EXT_CALLBACKS_FC_D(sc_dt::sc_lv_base, sc_lv_base);
+_SCV_EXT_CALLBACKS_FC_D(sc_dt::sc_bv_base, sc_bv_base);
 
 // SCV_EXT_CALLBACKS_FC_N_D(tag,sc_fixed);
 // SCV_EXT_CALLBACKS_FC_N_D(tag,sc_ufixed);

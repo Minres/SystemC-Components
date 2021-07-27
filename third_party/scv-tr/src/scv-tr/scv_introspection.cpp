@@ -112,7 +112,7 @@ const char* _scv_extension_util::kind() const {
     static const std::string s = "scv_extensions_if";
     return s.c_str();
 }
-void _scv_extension_util::print(ostream& o, int details, int indent) const {
+void _scv_extension_util::print(std::ostream& o, int details, int indent) const {
     std::string space = "";
     for(int i = 0; i < indent; ++i)
         space += " ";
@@ -121,23 +121,23 @@ void _scv_extension_util::print(ostream& o, int details, int indent) const {
     case BOOLEAN:
         if(get_bool()) {
             if(details == 0)
-                o << space << "true" << endl;
+                o << space << "true" << std::endl;
             else
                 o << space << get_short_name() << ":"
-                  << "true" << endl;
+                  << "true" << std::endl;
         } else {
             if(details == 0)
-                o << space << "false" << endl;
+                o << space << "false" << std::endl;
             else
                 o << space << get_short_name() << ":"
-                  << "false" << endl;
+                  << "false" << std::endl;
         }
         break;
     case ENUMERATION:
         if(details == 0)
-            o << space << get_enum_string((int)get_integer()) << endl;
+            o << space << get_enum_string((int)get_integer()) << std::endl;
         else
-            o << space << get_short_name() << ":" << get_enum_string((int)get_integer()) << endl;
+            o << space << get_short_name() << ":" << get_enum_string((int)get_integer()) << std::endl;
         break;
     case INTEGER:
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
@@ -145,16 +145,16 @@ void _scv_extension_util::print(ostream& o, int details, int indent) const {
             sc_bv_base v(get_bitwidth());
             get_value(v);
             if(details == 0)
-                o << space << v << endl;
+                o << space << v << std::endl;
             else
-                o << space << get_short_name() << ":" << v << endl;
+                o << space << get_short_name() << ":" << v << std::endl;
             return;
         }
 #endif
         if(details == 0)
-            o << space << get_integer() << endl;
+            o << space << get_integer() << std::endl;
         else
-            o << space << get_short_name() << ":" << get_integer() << endl;
+            o << space << get_short_name() << ":" << get_integer() << std::endl;
         break;
     case UNSIGNED:
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
@@ -162,22 +162,22 @@ void _scv_extension_util::print(ostream& o, int details, int indent) const {
             sc_bv_base v(get_bitwidth());
             get_value(v);
             if(details == 0)
-                o << space << v << endl;
+                o << space << v << std::endl;
             else
-                o << space << get_short_name() << ":" << v << endl;
+                o << space << get_short_name() << ":" << v <<std::endl;
             return;
         }
 #endif
         if(details == 0)
-            o << space << get_unsigned() << endl;
+            o << space << get_unsigned() << std::endl;
         else
-            o << space << get_short_name() << ":" << get_unsigned() << endl;
+            o << space << get_short_name() << ":" << get_unsigned() << std::endl;
         break;
     case FLOATING_POINT_NUMBER:
         if(details == 0)
-            o << space << get_double() << endl;
+            o << space << get_double() << std::endl;
         else
-            o << space << get_short_name() << ":" << get_double() << endl;
+            o << space << get_short_name() << ":" << get_double() << std::endl;
         break;
     case BIT_VECTOR:
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
@@ -185,9 +185,9 @@ void _scv_extension_util::print(ostream& o, int details, int indent) const {
         sc_bv_base v(get_bitwidth());
         get_value(v);
         if(details == 0)
-            o << space << v << endl;
+            o << space << v << std::endl;
         else
-            o << space << get_short_name() << ":" << v << endl;
+            o << space << get_short_name() << ":" << v << std::endl;
     }
 #endif
     break;
@@ -197,9 +197,9 @@ void _scv_extension_util::print(ostream& o, int details, int indent) const {
         sc_lv_base v(get_bitwidth());
         get_value(v);
         if(details == 0)
-            o << space << v << endl;
+            o << space << v << std::endl;
         else
-            o << space << get_short_name() << ":" << v << endl;
+            o << space << get_short_name() << ":" << v << std::endl;
     }
 #endif
     break;
@@ -212,38 +212,38 @@ void _scv_extension_util::print(ostream& o, int details, int indent) const {
     case RECORD: {
         int size = get_num_fields();
         if(get_short_name() != "")
-            o << space << get_short_name() << " {" << endl;
+            o << space << get_short_name() << " {" << std::endl;
         else
-            o << space << "{" << endl;
+            o << space << "{" << std::endl;
         if(size) {
             for(int i = 0; i < size; ++i)
                 get_field(i)->print(o, 1, indent + 2);
         }
-        o << space << "}" << endl;
+        o << space << "}" << std::endl;
         break;
     }
     case POINTER:
         if(details == 0)
-            o << space << "(pointer)" << endl;
+            o << space << "(pointer)" << std::endl;
         else
-            o << space << get_short_name() << ": (pointer)" << endl;
+            o << space << get_short_name() << ": (pointer)" << std::endl;
         break;
     case ARRAY: {
         if(get_short_name() != "")
-            o << space << get_short_name() << " {" << endl;
+            o << space << get_short_name() << " {" << std::endl;
         else
-            o << space << "{" << endl;
+            o << space << "{" << std::endl;
         int size = get_array_size();
         for(int i = 0; i < size; ++i)
             get_array_elt(i)->print(o, 1, indent + 2);
-        o << space << "}" << endl;
+        o << space << "}" << std::endl;
         break;
     }
     case STRING:
         if(details == 0)
-            o << space << get_string() << endl;
+            o << space << get_string() << std::endl;
         else
-            o << space << get_short_name() << ":" << get_string() << endl;
+            o << space << get_short_name() << ":" << get_string() << std::endl;
         break;
     default:
         _scv_message::message(_scv_message::INTERNAL_ERROR, "Unrecognized data introspection type.");
@@ -1042,14 +1042,14 @@ _SCV_EXT_CALLBACKS_FC_I(double, double);
 _SCV_EXT_CALLBACKS_FC_I(std::string, string);
 
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
-_SCV_EXT_CALLBACKS_FC_1_I(sc_bit, sc_bit);
-_SCV_EXT_CALLBACKS_FC_1_I(sc_logic, sc_logic);
-_SCV_EXT_CALLBACKS_FC_D_I(sc_signed, sc_signed);
-_SCV_EXT_CALLBACKS_FC_D_I(sc_unsigned, sc_unsigned);
-_SCV_EXT_CALLBACKS_FC_D_I(sc_int_base, sc_int_base);
-_SCV_EXT_CALLBACKS_FC_D_I(sc_uint_base, sc_uint_base);
-_SCV_EXT_CALLBACKS_FC_D_I(sc_lv_base, sc_lv_base);
-_SCV_EXT_CALLBACKS_FC_D_I(sc_bv_base, sc_bv_base);
+_SCV_EXT_CALLBACKS_FC_1_I(sc_dt::sc_bit, sc_bit);
+_SCV_EXT_CALLBACKS_FC_1_I(sc_dt::sc_logic, sc_logic);
+_SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_signed, sc_signed);
+_SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_unsigned, sc_unsigned);
+_SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_int_base, sc_int_base);
+_SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_uint_base, sc_uint_base);
+_SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_lv_base, sc_lv_base);
+_SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_bv_base, sc_bv_base);
 #endif
 }
 //////////////////////////////////////////////////////////////////////

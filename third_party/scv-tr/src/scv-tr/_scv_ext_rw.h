@@ -60,10 +60,10 @@
 
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
 #define _SCV_DEFAULT_RW_SYSC                                                                                           \
-    virtual void assign(const sc_bv_base& v) { assert(0); }                                                            \
-    virtual void get_value(sc_bv_base& v) const { assert(0); }                                                         \
-    virtual void assign(const sc_lv_base& v) { assert(0); }                                                            \
-    virtual void get_value(sc_lv_base& v) const { assert(0); }
+    virtual void assign(const sc_dt::sc_bv_base& v) { assert(0); }                                                     \
+    virtual void get_value(sc_dt::sc_bv_base& v) const { assert(0); }                                                  \
+    virtual void assign(const sc_dt::sc_lv_base& v) { assert(0); }                                                     \
+    virtual void get_value(sc_dt::sc_lv_base& v) const { assert(0); }
 #else
 #define _SCV_DEFAULT_RW_SYSC
 #endif
@@ -109,10 +109,10 @@
 
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
 #define _SCV_INTROSPECTION_RW_FC_D_SYSC                                                                                \
-    virtual void assign(const sc_bv_base& v);                                                                          \
-    virtual void get_value(sc_bv_base& v) const;                                                                       \
-    virtual void assign(const sc_lv_base& v);                                                                          \
-    virtual void get_value(sc_lv_base& v) const;
+    virtual void assign(const sc_dt::sc_bv_base& v);                                                                          \
+    virtual void get_value(sc_dt::sc_bv_base& v) const;                                                                       \
+    virtual void assign(const sc_dt::sc_lv_base& v);                                                                          \
+    virtual void get_value(sc_dt::sc_lv_base& v) const;
 #else
 #define _SCV_INTROSPECTION_RW_FC_D_SYSC
 #endif
@@ -279,17 +279,17 @@ template <typename T, int N> std::string scv_extension_rw<T[N]>::get_string() co
 }
 
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
-template <typename T, int N> void scv_extension_rw<T[N]>::assign(const sc_bv_base& v) {
-    _SCV_RW_ERROR(assign, sc_bv_base, array);
+template <typename T, int N> void scv_extension_rw<T[N]>::assign(const sc_dt::sc_bv_base& v) {
+    _SCV_RW_ERROR(assign, sc_dt::sc_bv_base, array);
 }
-template <typename T, int N> void scv_extension_rw<T[N]>::get_value(sc_bv_base& v) const {
-    _SCV_RW_ERROR(get_value, sc_bv_base, array);
+template <typename T, int N> void scv_extension_rw<T[N]>::get_value(sc_dt::sc_bv_base& v) const {
+    _SCV_RW_ERROR(get_value, sc_dt::sc_bv_base, array);
 }
-template <typename T, int N> void scv_extension_rw<T[N]>::assign(const sc_lv_base& v) {
-    _SCV_RW_ERROR(assign, sc_lv_base, array);
+template <typename T, int N> void scv_extension_rw<T[N]>::assign(const sc_dt::sc_lv_base& v) {
+    _SCV_RW_ERROR(assign, sc_dt::sc_lv_base, array);
 }
-template <typename T, int N> void scv_extension_rw<T[N]>::get_value(sc_lv_base& v) const {
-    _SCV_RW_ERROR(get_value, sc_lv_base, array);
+template <typename T, int N> void scv_extension_rw<T[N]>::get_value(sc_dt::sc_lv_base& v) const {
+    _SCV_RW_ERROR(get_value, sc_dt::sc_lv_base, array);
 }
 #endif
 // ----------------------------------------
@@ -360,10 +360,10 @@ public:
 
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
 #define _SCV_EXT_RW_FC_COMMON_SYSC_D                                                                                   \
-    virtual void assign(const sc_bv_base& v);                                                                          \
-    virtual void get_value(sc_bv_base& v) const;                                                                       \
-    virtual void assign(const sc_lv_base& v);                                                                          \
-    virtual void get_value(sc_lv_base& v) const;
+    virtual void assign(const sc_dt::sc_bv_base& v);                                                                          \
+    virtual void get_value(sc_dt::sc_bv_base& v) const;                                                                       \
+    virtual void assign(const sc_dt::sc_lv_base& v);                                                                          \
+    virtual void get_value(sc_dt::sc_lv_base& v) const;
 #else
 #define _SCV_EXT_RW_FC_COMMON_SYSC_D
 #endif
@@ -468,20 +468,20 @@ _SCV_EXT_RW_FC_D(std::string, string)
 // sc_bit
 // --------------
 
-_SCV_EXT_RW_FC_D(sc_bit, sc_bit)
+_SCV_EXT_RW_FC_D(sc_dt::sc_bit, sc_bit)
 
 // --------------
 // sc_logic
 // --------------
 
-_SCV_EXT_RW_FC_D(sc_logic, sc_logic)
+_SCV_EXT_RW_FC_D(sc_dt::sc_logic, sc_logic)
 
-_SCV_EXT_RW_FC_D(sc_signed, sc_signed)
-_SCV_EXT_RW_FC_D(sc_unsigned, sc_unsigned)
-_SCV_EXT_RW_FC_D(sc_int_base, sc_int_base)
-_SCV_EXT_RW_FC_D(sc_uint_base, sc_uint_base)
-_SCV_EXT_RW_FC_D(sc_lv_base, sc_lv_base)
-_SCV_EXT_RW_FC_D(sc_bv_base, sc_bv_base)
+_SCV_EXT_RW_FC_D(sc_dt::sc_signed, sc_signed)
+_SCV_EXT_RW_FC_D(sc_dt::sc_unsigned, sc_unsigned)
+_SCV_EXT_RW_FC_D(sc_dt::sc_int_base, sc_int_base)
+_SCV_EXT_RW_FC_D(sc_dt::sc_uint_base, sc_uint_base)
+_SCV_EXT_RW_FC_D(sc_dt::sc_lv_base, sc_lv_base)
+_SCV_EXT_RW_FC_D(sc_dt::sc_bv_base, sc_bv_base)
 
 // --------------
 // sc_int and sc_uint (begin)
@@ -562,25 +562,25 @@ public:                                                                         
     virtual std::string get_string() const { return this->get_instance()->to_string(); }
 
 #define _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(type_name)                                                                       \
-    virtual void assign(const sc_bv_base& v) {                                                                         \
+    virtual void assign(const sc_dt::sc_bv_base& v) {                                                                         \
         if(this->get_bitwidth() != v.length())                                                                         \
             _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, "sc_bv_base", "assign");    \
         *(this->_get_instance()) = v;                                                                                  \
         this->trigger_value_change_cb();                                                                               \
     }                                                                                                                  \
-    virtual void get_value(sc_bv_base& v) const {                                                                      \
+    virtual void get_value(sc_dt::sc_bv_base& v) const {                                                                      \
         if(this->get_bitwidth() != v.length())                                                                         \
             _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, "sc_bv_base", "get_value"); \
         this->initialize();                                                                                            \
         v = *(this->_get_instance());                                                                                  \
     }                                                                                                                  \
-    virtual void assign(const sc_lv_base& v) {                                                                         \
+    virtual void assign(const sc_dt::sc_lv_base& v) {                                                                         \
         if(this->get_bitwidth() != v.length())                                                                         \
             _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, "sc_lv_base", "assign");    \
         *(this->_get_instance()) = v;                                                                                  \
         this->trigger_value_change_cb();                                                                               \
     }                                                                                                                  \
-    virtual void get_value(sc_lv_base& v) const {                                                                      \
+    virtual void get_value(sc_dt::sc_lv_base& v) const {                                                                      \
         if(this->get_bitwidth() != v.length())                                                                         \
             _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, "sc_lv_base", "get_value"); \
         this->initialize();                                                                                            \
@@ -590,131 +590,131 @@ public:                                                                         
 // --------------
 // sc_int
 // --------------
-template <int N> class scv_extension_rw<sc_int<N>> : public scv_extension_type<sc_int<N>> {
+template <int N> class scv_extension_rw<sc_dt::sc_int<N>> : public scv_extension_type<sc_dt::sc_int<N>> {
 public:
     scv_extension_rw() {}
     virtual ~scv_extension_rw() {}
 
 public:
-    _SCV_EXT_RW_FC_N_BASE(sc_int<N>)
-    _SCV_EXT_RW_FC_N_ASSIGNS(sc_int)
-    _SCV_EXT_RW_FC_N_BAD_ASSIGN(sc_int, const std::string&)
-    _SCV_EXT_RW_FC_N_BAD_ASSIGN(sc_int, const char*)
-    _SCV_EXT_RW_FC_N_ASSIGNS_GET(sc_int<N>)
-    _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(sc_int)
+    _SCV_EXT_RW_FC_N_BASE(sc_dt::sc_int<N>)
+    _SCV_EXT_RW_FC_N_ASSIGNS(sc_dt::sc_int)
+    _SCV_EXT_RW_FC_N_BAD_ASSIGN(sc_dt::sc_int, const std::string&)
+    _SCV_EXT_RW_FC_N_BAD_ASSIGN(sc_dt::sc_int, const char*)
+    _SCV_EXT_RW_FC_N_ASSIGNS_GET(sc_dt::sc_int<N>)
+    _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(sc_dt::sc_int)
 };
 
 // --------------
 // sc_uint
 // --------------
-template <int N> class scv_extension_rw<sc_uint<N>> : public scv_extension_type<sc_uint<N>> {
+template <int N> class scv_extension_rw<sc_dt::sc_uint<N>> : public scv_extension_type<sc_dt::sc_uint<N>> {
 public:
     scv_extension_rw() {}
     virtual ~scv_extension_rw() {}
 
 public:
-    _SCV_EXT_RW_FC_N_BASE(sc_uint<N>)
-    _SCV_EXT_RW_FC_N_ASSIGNS(sc_uint)
-    _SCV_EXT_RW_FC_N_BAD_ASSIGN(sc_uint, const std::string&)
-    _SCV_EXT_RW_FC_N_BAD_ASSIGN(sc_uint, const char*)
-    _SCV_EXT_RW_FC_N_ASSIGNS_GET(sc_uint<N>)
-    _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(sc_uint)
+    _SCV_EXT_RW_FC_N_BASE(sc_dt::sc_uint<N>)
+    _SCV_EXT_RW_FC_N_ASSIGNS(sc_dt::sc_uint)
+    _SCV_EXT_RW_FC_N_BAD_ASSIGN(sc_dt::sc_uint, const std::string&)
+    _SCV_EXT_RW_FC_N_BAD_ASSIGN(sc_dt::sc_uint, const char*)
+    _SCV_EXT_RW_FC_N_ASSIGNS_GET(sc_dt::sc_uint<N>)
+    _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(sc_dt::sc_uint)
 };
 
 // --------------
 // sc_bigint
 // --------------
-template <int N> class scv_extension_rw<sc_bigint<N>> : public scv_extension_type<sc_bigint<N>> {
+template <int N> class scv_extension_rw<sc_dt::sc_bigint<N>> : public scv_extension_type<sc_dt::sc_bigint<N>> {
 public:
     scv_extension_rw() {}
     virtual ~scv_extension_rw() {}
 
 public:
-    _SCV_EXT_RW_FC_N_BASE(sc_bigint<N>)
-    _SCV_EXT_RW_FC_N_ASSIGNS(sc_bigint)
-    _SCV_EXT_RW_FC_N_ASSIGNS_STRING(sc_bigint)
-    _SCV_EXT_RW_FC_N_ASSIGNS_GET(sc_bigint<N>)
-    _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(sc_bigint)
+    _SCV_EXT_RW_FC_N_BASE(sc_dt::sc_bigint<N>)
+    _SCV_EXT_RW_FC_N_ASSIGNS(sc_dt::sc_bigint)
+    _SCV_EXT_RW_FC_N_ASSIGNS_STRING(sc_dt::sc_bigint)
+    _SCV_EXT_RW_FC_N_ASSIGNS_GET(sc_dt::sc_bigint<N>)
+    _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(sc_dt::sc_bigint)
 };
 
 // --------------
 // sc_biguint
 // --------------
-template <int N> class scv_extension_rw<sc_biguint<N>> : public scv_extension_type<sc_biguint<N>> {
+template <int N> class scv_extension_rw<sc_dt::sc_biguint<N>> : public scv_extension_type<sc_dt::sc_biguint<N>> {
 public:
     scv_extension_rw() {}
     virtual ~scv_extension_rw() {}
 
 public:
-    _SCV_EXT_RW_FC_N_BASE(sc_biguint<N>)
-    _SCV_EXT_RW_FC_N_ASSIGNS(sc_biguint)
-    _SCV_EXT_RW_FC_N_ASSIGNS_STRING(sc_biguint)
-    _SCV_EXT_RW_FC_N_ASSIGNS_GET(sc_biguint<N>)
-    _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(sc_biguint)
+    _SCV_EXT_RW_FC_N_BASE(sc_dt::sc_biguint<N>)
+    _SCV_EXT_RW_FC_N_ASSIGNS(sc_dt::sc_biguint)
+    _SCV_EXT_RW_FC_N_ASSIGNS_STRING(sc_dt::sc_biguint)
+    _SCV_EXT_RW_FC_N_ASSIGNS_GET(sc_dt::sc_biguint<N>)
+    _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(sc_dt::sc_biguint)
 };
 
 // --------------
 // sc_bv
 // --------------
-template <int N> class scv_extension_rw<sc_bv<N>> : public scv_extension_type<sc_bv<N>> {
+template <int N> class scv_extension_rw<sc_dt::sc_bv<N>> : public scv_extension_type<sc_dt::sc_bv<N>> {
 public:
     scv_extension_rw() {}
     virtual ~scv_extension_rw() {}
 
 public:
-    _SCV_EXT_RW_FC_N_BASE(sc_bv<N>)
-    _SCV_EXT_RW_FC_N_ASSIGNS(sc_bv)
+    _SCV_EXT_RW_FC_N_BASE(sc_dt::sc_bv<N>)
+    _SCV_EXT_RW_FC_N_ASSIGNS(sc_dt::sc_bv)
     _SCV_EXT_RW_FC_N_ASSIGNS_STRING(sc_bv)
     virtual bool get_bool() const { return *(this->_get_instance()) != 0; }
     virtual long long get_integer() const {
-        static sc_bigint<N> tmp;
+        static sc_dt::sc_bigint<N> tmp;
         tmp = *this->_get_instance();
         return tmp.to_int64();
     }
     virtual unsigned long long get_unsigned() const {
-        static sc_bigint<N> tmp;
+        static sc_dt::sc_bigint<N> tmp;
         tmp = *this->_get_instance();
         return tmp.to_uint64();
     }
     virtual double get_double() const {
-        static sc_bigint<N> tmp;
+        static sc_dt::sc_bigint<N> tmp;
         tmp = *this->_get_instance();
         return tmp.to_double();
     }
     virtual std::string get_string() const { return this->get_instance()->to_string(); }
-    _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(sc_bv);
+    _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(sc_dt::sc_bv);
 };
 
 // --------------
 // sc_lv
 // --------------
-template <int N> class scv_extension_rw<sc_lv<N>> : public scv_extension_type<sc_lv<N>> {
+template <int N> class scv_extension_rw<sc_dt::sc_lv<N>> : public scv_extension_type<sc_dt::sc_lv<N>> {
 public:
     scv_extension_rw() {}
     virtual ~scv_extension_rw() {}
 
 public:
-    _SCV_EXT_RW_FC_N_BASE(sc_lv<N>)
-    _SCV_EXT_RW_FC_N_ASSIGNS(sc_lv)
+    _SCV_EXT_RW_FC_N_BASE(sc_dt::sc_lv<N>)
+    _SCV_EXT_RW_FC_N_ASSIGNS(sc_dt::sc_lv)
     _SCV_EXT_RW_FC_N_ASSIGNS_STRING(sc_lv)
     virtual bool get_bool() const { return *(this->_get_instance()) != 0; }
     virtual long long get_integer() const {
-        static sc_bigint<N> tmp;
+        static sc_dt::sc_bigint<N> tmp;
         tmp = *this->_get_instance();
         return tmp.to_int64();
     }
     virtual unsigned long long get_unsigned() const {
-        static sc_bigint<N> tmp;
+        static sc_dt::sc_bigint<N> tmp;
         tmp = *this->_get_instance();
         return tmp.to_uint64();
     }
     virtual double get_double() const {
-        static sc_bigint<N> tmp;
+        static sc_dt::sc_bigint<N> tmp;
         tmp = *this->_get_instance();
         return tmp.to_double();
     }
     virtual std::string get_string() const { return this->get_instance()->to_string(); }
-    _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(sc_lv);
+    _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(sc_dt::sc_lv);
 };
 
 // --------------

@@ -46,7 +46,7 @@
 #ifndef SCV_INTROSPECTION_H
 #define SCV_INTROSPECTION_H
 
-#include "systemc.h"
+#include <systemc>
 
 #include "scv_report.h"
 #include <cassert>
@@ -213,10 +213,10 @@ public:
     virtual std::string get_string() const = 0;
 
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
-    virtual void assign(const sc_bv_base& v) = 0;
-    virtual void get_value(sc_bv_base& v) const = 0;
-    virtual void assign(const sc_lv_base& v) = 0;
-    virtual void get_value(sc_lv_base& v) const = 0;
+    virtual void assign(const sc_dt::sc_bv_base& v) = 0;
+    virtual void get_value(sc_dt::sc_bv_base& v) const = 0;
+    virtual void assign(const sc_dt::sc_lv_base& v) = 0;
+    virtual void get_value(sc_dt::sc_lv_base& v) const = 0;
 #endif
 };
 
@@ -396,7 +396,7 @@ public:
     scv_extensions() {                                                                                                 \
         static bool dummy = _init();                                                                                   \
         if(0)                                                                                                          \
-            cout << dummy;                                                                                             \
+            std::cout << dummy;                                                                                             \
     }                                                                                                                  \
     scv_extensions(const scv_extensions& rhs) { _set_instance(rhs._get_instance()); }                                  \
     virtual ~scv_extensions() {}                                                                                       \
@@ -419,7 +419,7 @@ public:
 
 // convenient functions for extensions
 #if !defined(__HP_aCC)
-template <typename T> ostream& operator<<(ostream& os, const scv_extensions<T>& data) {
+template <typename T> std::ostream& operator<<(std::ostream& os, const scv_extensions<T>& data) {
     os << *data._get_instance();
     return os;
 }

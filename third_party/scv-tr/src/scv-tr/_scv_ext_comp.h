@@ -111,20 +111,20 @@ inline const char* _scv_ext_util_get_name(const char* format, const char* name) 
 // ----------------------------------------
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
 #define _SCV_SYSTEMC_BASIC_TYPE_SPECIALIZATION()                                                                       \
-    _SCV_COMPONENT_1(sc_bit);                                                                                          \
-    _SCV_COMPONENT_1(sc_logic);                                                                                        \
-    _SCV_COMPONENT_N(sc_int);                                                                                          \
-    _SCV_COMPONENT_N(sc_uint);                                                                                         \
-    _SCV_COMPONENT_N(sc_bigint);                                                                                       \
-    _SCV_COMPONENT_N(sc_biguint);                                                                                      \
-    _SCV_COMPONENT_N(sc_bv);                                                                                           \
-    _SCV_COMPONENT_N(sc_lv);                                                                                           \
-    _SCV_COMPONENT(sc_signed);                                                                                         \
-    _SCV_COMPONENT(sc_unsigned);                                                                                       \
-    _SCV_COMPONENT(sc_int_base);                                                                                       \
-    _SCV_COMPONENT(sc_uint_base);                                                                                      \
-    _SCV_COMPONENT(sc_lv_base);                                                                                        \
-    _SCV_COMPONENT(sc_bv_base);
+    _SCV_COMPONENT_1(sc_dt::sc_bit);                                                                                          \
+    _SCV_COMPONENT_1(sc_dt::sc_logic);                                                                                        \
+    _SCV_COMPONENT_N(sc_dt::sc_int);                                                                                          \
+    _SCV_COMPONENT_N(sc_dt::sc_uint);                                                                                         \
+    _SCV_COMPONENT_N(sc_dt::sc_bigint);                                                                                       \
+    _SCV_COMPONENT_N(sc_dt::sc_biguint);                                                                                      \
+    _SCV_COMPONENT_N(sc_dt::sc_bv);                                                                                           \
+    _SCV_COMPONENT_N(sc_dt::sc_lv);                                                                                           \
+    _SCV_COMPONENT(sc_dt::sc_signed);                                                                                         \
+    _SCV_COMPONENT(sc_dt::sc_unsigned);                                                                                       \
+    _SCV_COMPONENT(sc_dt::sc_int_base);                                                                                       \
+    _SCV_COMPONENT(sc_dt::sc_uint_base);                                                                                      \
+    _SCV_COMPONENT(sc_dt::sc_lv_base);                                                                                        \
+    _SCV_COMPONENT(sc_dt::sc_bv_base);
 
 // SCV_COMPONENT_N(tag,sc_fixed);
 // SCV_COMPONENT_N(tag,sc_ufixed);

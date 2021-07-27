@@ -10,4 +10,10 @@ add_library(${PROJECT_NAME}
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_include_directories(${PROJECT_NAME} PUBLIC $ENV{SYSTEMC_HOME}/include)
+if(TARGET SystemC::systemc)
+    target_link_libraries(${PROJECT_NAME} SystemC::systemc)
+elseif(TARGET CONAN_PKG::systemc)
+    target_link_libraries(${PROJECT_NAME} CONAN_PKG::systemc)
+else()
+	target_include_directories(${PROJECT_NAME} PUBLIC $ENV{SYSTEMC_HOME}/include)
+endif()

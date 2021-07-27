@@ -171,7 +171,7 @@ public:
     //   the values of the argument to set_time() are presumed to be
     //   in units of time_scale.  The default is SC_FS.
     //
-    scv_tr_db(const char* recording_file_name, const sc_time_unit& = SC_FS);
+    scv_tr_db(const char* recording_file_name, const sc_core::sc_time_unit& = sc_core::SC_FS);
 
     // The dtor closes the recording database.
     //
@@ -208,7 +208,7 @@ public:
     void set_recording(bool) const;
     bool get_recording() const;
 
-    void print(ostream& o, int details = 0, int indent = 0) const;
+    void print(std::ostream& o, int details = 0, int indent = 0) const;
     void show(int details = 0, int indent = 0) const;
     static void set_debug(int debug);
     static int get_debug();
@@ -274,7 +274,7 @@ public:
     //
     static void remove_callback(callback_h);
 
-    void print(ostream& o, int details = 0, int indent = 0) const;
+    void print(std::ostream& o, int details = 0, int indent = 0) const;
     void show(int details = 0, int indent = 0) const;
     static void set_debug(int debug);
     static int get_debug();
@@ -342,21 +342,21 @@ public:
     // when the scv_tr_generator was defined to have no begin attributes.
     // (ie, the default was used for the T_begin template parameter.)
     //
-    void end_transaction() { this->_end_transaction(NULL, sc_time_stamp()); }
+    void end_transaction() { this->_end_transaction(NULL, sc_core::sc_time_stamp()); }
 
     // End this transaction at the current simulation time, and specify the
     // values of the end attributes.
     //
     template <class T_end> void end_transaction(const scv_tr_handle& t, const T_end& end_attribute_values) {
         scv_extensions<T_end> ext = scv_get_const_extensions(end_attribute_values);
-        this->_end_transaction(&ext, sc_time_stamp());
+        this->_end_transaction(&ext, sc_core::sc_time_stamp());
     }
 
     // End this transaction at a simulation time that is in the past, and
     // specify the values of the end attributes.
     //
     template <class T_end>
-    void end_transaction(const scv_tr_handle& t, const T_end& end_attribute_values, const sc_time& end_sc_time) {
+    void end_transaction(const scv_tr_handle& t, const T_end& end_attribute_values, const sc_core::sc_time& end_sc_time) {
         scv_extensions<T_end> ext = scv_get_const_extensions(end_attribute_values);
         this->_end_transaction(&ext, end_sc_time);
     }
@@ -436,7 +436,7 @@ public:
     //
     uint64 get_id() const;
 
-    void print(ostream& o, int details = 0, int indent = 0) const;
+    void print(std::ostream& o, int details = 0, int indent = 0) const;
     void show(int details = 0, int indent = 0) const;
     static void set_debug(int debug);
     static int get_debug();
@@ -469,8 +469,8 @@ public:
 
     // Return the begin and end time of this transaction.
     //
-    const sc_time& get_begin_sc_time() const;
-    const sc_time& get_end_sc_time() const;
+    const sc_core::sc_time& get_begin_sc_time() const;
+    const sc_core::sc_time& get_end_sc_time() const;
 
     // Return the stream on which this transaction occurs:
     //
@@ -485,7 +485,7 @@ private:
     _scv_tr_handle_core* _scv_tr_handle_core_p;
     friend class scv_tr_generator_base;
     template <class T1, class T2> friend class scv_tr_generator;
-    void _end_transaction(const scv_extensions_if*, const sc_time& end_sc_time) const;
+    void _end_transaction(const scv_extensions_if*, const sc_core::sc_time& end_sc_time) const;
     static const char* _kind;
     void _record_attribute(const char* attribute_name, const scv_extensions_if*);
 };
@@ -528,7 +528,7 @@ public:
 
     // TBD: Need callbacks on specific transaction objects
 
-    void print(ostream& o, int details = 0, int indent = 0) const;
+    void print(std::ostream& o, int details = 0, int indent = 0) const;
     void show(int details = 0, int indent = 0) const;
     static void set_debug(int debug);
     static int get_debug();
@@ -557,10 +557,10 @@ private:
     _scv_tr_generator_core* _scv_tr_generator_core_p;
 
 public:
-    scv_tr_handle _begin_transaction(const scv_extensions_if*, const sc_time&, scv_tr_relation_handle_t relation_handle,
+    scv_tr_handle _begin_transaction(const scv_extensions_if*, const sc_core::sc_time&, scv_tr_relation_handle_t relation_handle,
                                      const scv_tr_handle* other_handle_p = NULL) const;
 
-    void _end_transaction(const scv_tr_handle& t, const scv_extensions_if*, const sc_time& end_sc_time) const;
+    void _end_transaction(const scv_tr_handle& t, const scv_extensions_if*, const sc_core::sc_time& end_sc_time) const;
 
 public:
     // To be called only from scv_tr_generator:
@@ -647,7 +647,7 @@ public:
     //
     //   The begin time of this transaction is the current simulation time.
     //
-    scv_tr_handle begin_transaction() { return this->_begin_transaction(NULL, sc_time_stamp(), 0); }
+    scv_tr_handle begin_transaction() { return this->_begin_transaction(NULL, sc_core::sc_time_stamp(), 0); }
 
     // This method starts a transaction with these characteristics:
     //
@@ -665,11 +665,11 @@ public:
     //
     scv_tr_handle begin_transaction(scv_tr_relation_handle_t relation_handle,
                                     const scv_tr_handle& other_transaction_handle) {
-        return this->_begin_transaction(NULL, sc_time_stamp(), relation_handle, &other_transaction_handle);
+        return this->_begin_transaction(NULL, sc_core::sc_time_stamp(), relation_handle, &other_transaction_handle);
     }
 
     scv_tr_handle begin_transaction(const char* relation_name, const scv_tr_handle& other_transaction_handle) {
-        return this->_begin_transaction(NULL, sc_time_stamp(),
+        return this->_begin_transaction(NULL, sc_core::sc_time_stamp(),
                                         get_scv_tr_stream().get_scv_tr_db()->create_relation(relation_name),
                                         &other_transaction_handle);
     }
@@ -683,7 +683,7 @@ public:
     //
     scv_tr_handle begin_transaction(const T_begin& begin_attribute_values) {
         scv_extensions<T_begin> ext = scv_get_const_extensions(begin_attribute_values);
-        return this->_begin_transaction(&ext, sc_time_stamp(), 0);
+        return this->_begin_transaction(&ext, sc_core::sc_time_stamp(), 0);
     }
 
     // This method starts a transaction with these characteristics:
@@ -698,13 +698,13 @@ public:
     scv_tr_handle begin_transaction(const T_begin& begin_attribute_values, scv_tr_relation_handle_t relation_handle,
                                     const scv_tr_handle& other_transaction_handle) {
         scv_extensions<T_begin> ext = scv_get_const_extensions(begin_attribute_values);
-        return this->_begin_transaction(&ext, sc_time_stamp(), relation_handle, &other_transaction_handle);
+        return this->_begin_transaction(&ext, sc_core::sc_time_stamp(), relation_handle, &other_transaction_handle);
     }
 
     scv_tr_handle begin_transaction(const T_begin& begin_attribute_values, const char* relation_name,
                                     const scv_tr_handle& other_transaction_handle) {
         scv_extensions<T_begin> ext = scv_get_const_extensions(begin_attribute_values);
-        return this->_begin_transaction(&ext, sc_time_stamp(),
+        return this->_begin_transaction(&ext, sc_core::sc_time_stamp(),
                                         get_scv_tr_stream().get_scv_tr_db()->create_relation(relation_name),
                                         &other_transaction_handle);
     }
@@ -722,7 +722,7 @@ public:
     //   argument.   This time must be less than or equal to the current
     //   simulation time.  This allows you to start a transaction in the past.
     //
-    scv_tr_handle begin_transaction(const sc_time& begin_sc_time) {
+    scv_tr_handle begin_transaction(const sc_core::sc_time& begin_sc_time) {
         return this->_begin_transaction(NULL, begin_sc_time, 0);
     }
 
@@ -741,12 +741,12 @@ public:
     //
     //   The new transaction has the "relation_name" to other_transaction_handle.
     //
-    scv_tr_handle begin_transaction(const sc_time& begin_sc_time, scv_tr_relation_handle_t relation_handle,
+    scv_tr_handle begin_transaction(const sc_core::sc_time& begin_sc_time, scv_tr_relation_handle_t relation_handle,
                                     const scv_tr_handle& other_transaction_handle) {
         return this->_begin_transaction(NULL, begin_sc_time, relation_handle, &other_transaction_handle);
     }
 
-    scv_tr_handle begin_transaction(const sc_time& begin_sc_time, const char* relation_name,
+    scv_tr_handle begin_transaction(const sc_core::sc_time& begin_sc_time, const char* relation_name,
                                     const scv_tr_handle& other_transaction_handle) {
         return this->_begin_transaction(NULL, begin_sc_time,
                                         get_scv_tr_stream().get_scv_tr_db()->create_relation(relation_name),
@@ -762,7 +762,7 @@ public:
     //   argument.   This time must be less than or equal to the current
     //   simulation time.  This allows you to start a transaction in the past.
     //
-    scv_tr_handle begin_transaction(const T_begin& begin_attribute_values, const sc_time& begin_sc_time) {
+    scv_tr_handle begin_transaction(const T_begin& begin_attribute_values, const sc_core::sc_time& begin_sc_time) {
         scv_extensions<T_begin> ext = scv_get_const_extensions(begin_attribute_values);
         return this->_begin_transaction(&ext, begin_sc_time, 0);
     }
@@ -776,14 +776,14 @@ public:
     //   argument.   This time must be less than or equal to the current
     //   simulation time.  This allows you to start a transaction in the past.
     //
-    scv_tr_handle begin_transaction(const T_begin& begin_attribute_values, const sc_time& begin_sc_time,
+    scv_tr_handle begin_transaction(const T_begin& begin_attribute_values, const sc_core::sc_time& begin_sc_time,
                                     scv_tr_relation_handle_t relation_handle,
                                     const scv_tr_handle& other_transaction_handle) {
         scv_extensions<T_begin> ext = scv_get_const_extensions(begin_attribute_values);
         return this->_begin_transaction(&ext, begin_sc_time, relation_handle, &other_transaction_handle);
     }
 
-    scv_tr_handle begin_transaction(const T_begin& begin_attribute_values, const sc_time& begin_sc_time,
+    scv_tr_handle begin_transaction(const T_begin& begin_attribute_values, const sc_core::sc_time& begin_sc_time,
                                     const char* relation_name, const scv_tr_handle& other_transaction_handle) {
         scv_extensions<T_begin> ext = scv_get_const_extensions(begin_attribute_values);
         return this->_begin_transaction(&ext, begin_sc_time,
@@ -799,14 +799,14 @@ public:
     // when this scv_tr_generator was defined to have no begin attributes.
     // (ie, the default was used for the T_begin template parameter.)
     //
-    void end_transaction(const scv_tr_handle& t) { this->_end_transaction(t, NULL, sc_time_stamp()); }
+    void end_transaction(const scv_tr_handle& t) { this->_end_transaction(t, NULL, sc_core::sc_time_stamp()); }
 
     // End a transaction at the current simulation time, and specify the
     // values of the end attributes.
     //
     void end_transaction(const scv_tr_handle& t, const T_end& end_attribute_values) {
         scv_extensions<T_end> ext = scv_get_const_extensions(end_attribute_values);
-        this->_end_transaction(t, &ext, sc_time_stamp());
+        this->_end_transaction(t, &ext, sc_core::sc_time_stamp());
     }
 
     // End a transaction at a simulation time that is in the past.
@@ -815,14 +815,14 @@ public:
     // when this scv_tr_generator was defined to have no begin attributes.
     // (ie, the default was used for the T_begin template parameter.)
     //
-    void end_transaction(const scv_tr_handle& t, const sc_time& end_sc_time) {
+    void end_transaction(const scv_tr_handle& t, const sc_core::sc_time& end_sc_time) {
         this->_end_transaction(t, NULL, end_sc_time);
     }
 
     // End a transaction at a simulation time that is in the past, and
     // specify the values of the end attributes.
     //
-    void end_transaction(const scv_tr_handle& t, const T_end& end_attribute_values, const sc_time& end_sc_time) {
+    void end_transaction(const scv_tr_handle& t, const T_end& end_attribute_values, const sc_core::sc_time& end_sc_time) {
         scv_extensions<T_end> ext = scv_get_const_extensions(end_attribute_values);
         this->_end_transaction(t, &ext, end_sc_time);
     }
