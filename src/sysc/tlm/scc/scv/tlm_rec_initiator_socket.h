@@ -61,7 +61,7 @@ public:
                                 POL
 #endif
                                 >()
-    , recorder() {
+    , recorder(this->name(), fw_port, bw_port) {
     }
 
     explicit tlm_rec_initiator_socket(const char* name)
@@ -73,7 +73,7 @@ public:
                                 >(name)
     , fw_port(sc_core::sc_gen_unique_name("fw"))
     , bw_port(sc_core::sc_gen_unique_name("bw"))
-    , recorder(gen_name(name, "tx").c_str(), fw_port, bw_port) {
+    , recorder(this->name(), fw_port, bw_port) {
     }
 
     virtual ~tlm_rec_initiator_socket() {}

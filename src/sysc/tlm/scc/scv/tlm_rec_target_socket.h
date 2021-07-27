@@ -62,7 +62,7 @@ public:
                              POL
 #endif
                              >()
-    , recorder(gen_name(this->name(), "tx").c_str()) {
+    , recorder(this->name(), fw_port, this->get_base_port()) {
     }
 
     explicit tlm_rec_target_socket(const char* name)
@@ -72,7 +72,7 @@ public:
                              POL
 #endif
                              >(name)
-    , recorder(gen_name(name, "tx").c_str(), fw_port, this->get_base_port()) {
+    , recorder(this->name(), fw_port, this->get_base_port()) {
     }
 
     virtual ~tlm_rec_target_socket() = default; // NOLINT

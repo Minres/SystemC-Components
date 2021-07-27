@@ -341,7 +341,7 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
     } else if(!b_streamHandle)
         initialize_streams();
     // Get a handle for the new transaction
-    scv_tr_handle h = b_trHandle[trans.get_command()]->begin_transaction(delay.value(), sc_time_stamp());
+    scv_tr_handle h = b_trHandle[trans.get_command()]->begin_transaction(delay.value(), sc_core::sc_time_stamp());
     tlm_gp_data tgd(trans);
 
     /*************************************************************************
@@ -394,7 +394,7 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
         if(extensionRecording)
             extensionRecording->recordEndTx(h, trans);
     // End the transaction
-    b_trHandle[trans.get_command()]->end_transaction(h, delay.value(), sc_time_stamp());
+    b_trHandle[trans.get_command()]->end_transaction(h, delay.value(), sc_core::sc_time_stamp());
     // and now the stuff for the timed tx
     if(b_streamHandleTimed) {
         b_timed_peq.notify(*req, tlm::END_RESP, delay);
