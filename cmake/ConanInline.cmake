@@ -15,7 +15,9 @@ macro(setup_conan)
   execute_process(COMMAND ${conan} --version
                   OUTPUT_VARIABLE CONAN_VERSION_OUTPUT)
   string(REGEX MATCHALL "[0-9.]+" CONAN_VERSION ${CONAN_VERSION_OUTPUT})
-  #message(STATUS "Conan version is ${CONAN_VERSION}")
+  if (CONAN_VERSION NOT VERSION_GREATER_EQUAL 1.36)
+  	message(FATAL_ERROR "Please upgrade your conan to a version greater or equal 1.36")
+  endif()
  
   if(NOT EXISTS ${CONAN_CMAKE_LIST_DIR}/conan.cmake)
     message("Downloading conan.cmake to ${CONAN_CMAKE_LIST_DIR}")  
@@ -37,7 +39,6 @@ macro(conan_install)
 	if(CMAKE_CXX_STANDARD)
 		set(settings ${settings} compiler.cppstd=${CMAKE_CXX_STANDARD})
 	endif()
-	message("Conan settings are ${settings}")
 	conan_cmake_install(PATH_OR_REFERENCE .
 	                    BUILD missing
 	                    REMOTE conan-center
