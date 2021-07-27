@@ -29,16 +29,7 @@ endif()
 
 find_package(PackageHandleStandardArgs REQUIRED)
 
-if(NOT SystemCPackage)
-    if(TARGET SystemC::SystemC)
-        set(SystemCPackage SystemC)
-    else()
-        set(SystemCPackage OSCISystemC)
-    endif()
-endif()
-
-message("Using ${SystemCPackage} package in verilator")
-find_package(${SystemCPackage} REQUIRED)
+include(FindSystemCPackage)
 
 find_program(VERILATOR_EXECUTABLE verilator
     HINTS $ENV{VERILATOR_ROOT}
@@ -93,7 +84,6 @@ target_include_directories(verilated SYSTEM PUBLIC
     ${VERILATOR_INCLUDE_DIR}/vltstd
     ${VERILATOR_INCLUDE_DIR}
 )
-target_include_directories (verilated PUBLIC ${SystemC_INCLUDE_DIRS})    
 
 if (CMAKE_CXX_COMPILER_ID MATCHES GNU)
     target_compile_options(verilated PRIVATE
@@ -127,6 +117,10 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES Clang)
     target_compile_options(verilated PRIVATE -Wno-everything)
 endif()
 
+if(SystemC_INCLUDE_DIRS)
+    target_include_directories (verilated PUBLIC ${SystemC_INCLUDE_DIRS})    
+    target_link_directories(verilated PUBLIC ${SystemC_LIBRARY_DIRS})
+endif()
 target_link_libraries(verilated PUBLIC ${SystemC_LIBRARIES} )
 
 
@@ -141,7 +135,6 @@ target_include_directories(verilated_custom SYSTEM PUBLIC
     ${VERILATOR_INCLUDE_DIR}/vltstd
     ${VERILATOR_INCLUDE_DIR}
 )
-target_include_directories (verilated_custom PUBLIC ${SystemC_INCLUDE_DIRS})    
 
 target_compile_definitions(verilated_custom PRIVATE VL_USER_FINISH VL_USER_STOP VL_USER_FATAL)
 if (CMAKE_CXX_COMPILER_ID MATCHES GNU)
@@ -176,4 +169,8 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES Clang)
     target_compile_options(verilated_custom PRIVATE -Wno-everything)
 endif()
 
+if(SystemC_INCLUDE_DIRS)
+    target_include_directories (verilated_custom PUBLIC ${SystemC_INCLUDE_DIRS})    
+    target_link_directories(verilated_custom PUBLIC ${SystemC_LIBRARY_DIRS})
+endif()
 target_link_libraries(verilated_custom PUBLIC ${SystemC_LIBRARIES} )
