@@ -28,6 +28,9 @@
 namespace tlm {
 namespace scc {
 namespace scv {
+#ifndef WITH_SCV
+using namespace scv_tr;
+#endif
 
 //! transaction relationships
 enum tx_rel {

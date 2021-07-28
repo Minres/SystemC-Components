@@ -104,8 +104,8 @@
  *
  */
 
-#ifndef SCV_TRX_H
-#define SCV_TRX_H
+#ifndef SCV_TR_SCV_TR_H
+#define SCV_TR_SCV_TR_H
 
 #include "scv_introspection.h"
 
@@ -839,4 +839,4 @@ private:
 
 // ----------------------------------------------------------------------------
 }
-#endif // SCV_TR_H
+#endif // SCV_TR_SCV_TR_H

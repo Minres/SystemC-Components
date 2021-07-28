@@ -42,8 +42,8 @@
 
  *****************************************************************************/
 
-#ifndef SCV_TR_H
-#define SCV_TR_H
+#ifndef _SCV_TR_H
+#define _SCV_TR_H
 
 #include "scv-tr/scv_introspection.h"
 #include "scv-tr/scv_kit_date.h"

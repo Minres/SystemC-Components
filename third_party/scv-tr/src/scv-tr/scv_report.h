@@ -46,8 +46,8 @@
 
  *****************************************************************************/
 
-#ifndef _SCV_REPORT_H
-#define _SCV_REPORT_H
+#ifndef _SCV_TR_REPORT_H
+#define _SCV_TR_REPORT_H
 
 #include <systemc>
 namespace scv_tr {
@@ -90,4 +90,4 @@ private:
     static bool setup();
 };
 }
-#endif // ! _SCV_REPORT_H
+#endif // ! _SCV_TR_REPORT_H

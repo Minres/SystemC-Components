@@ -28,7 +28,7 @@ namespace tlm {
 namespace scc {
 namespace scv {
 #ifndef WITH_SCV
-using namespace scv_tr;
+using namespace ::scv_tr;
 #endif
 /*! \brief The TLM transaction extensions recorder interface
  *

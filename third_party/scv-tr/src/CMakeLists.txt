@@ -19,3 +19,22 @@ elseif(TARGET CONAN_PKG::systemc)
 else()
 	target_include_directories(${PROJECT_NAME} PUBLIC $ENV{SYSTEMC_HOME}/include)
 endif()
+
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    VERSION ${PROJECT_VERSION}
+    FRAMEWORK FALSE
+    PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/scv-tr.h
+)
+
+install(TARGETS ${PROJECT_NAME} COMPONENT scv-tr
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        )
+        
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scv-tr COMPONENT scv-tr
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
+        FILES_MATCHING # install only matched files
+        PATTERN "*.h" # select header files
+        )

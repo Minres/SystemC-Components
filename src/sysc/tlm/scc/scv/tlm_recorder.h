@@ -18,7 +18,6 @@
 #define TLM2_RECORDER_H_
 
 #include "tlm_extension_recording_registry.h"
-#include "tlm_gp_data_ext.h"
 #include "tlm_recording_extension.h"
 #include <array>
 #include <regex>
@@ -36,6 +35,14 @@
 namespace tlm {
 namespace scc {
 namespace scv {
+#ifndef WITH_SCV
+using namespace scv_tr;
+#endif
+
+void record(scv_tr_handle&, tlm::tlm_generic_payload&);
+void record(scv_tr_handle&, tlm::tlm_phase&);
+void record(scv_tr_handle&, tlm::tlm_sync_enum);
+void record(scv_tr_handle&, tlm::tlm_dmi&);
 //! implementation detail
 namespace impl {
 //! \brief the class to hold the information to be recorded on the timed
@@ -255,7 +262,7 @@ private:
     scv_tr_stream* b_streamHandleTimed{nullptr};
     //! transaction generator handle for blocking transactions with annotated
     //! delays
-    std::array<scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>*, 3> b_trTimedHandle{
+    std::array<scv_tr_generator<>*, 3> b_trTimedHandle{
         {nullptr, nullptr, nullptr}};
     std::unordered_map<uint64, scv_tr_handle> btx_handle_map;
 
@@ -274,7 +281,7 @@ private:
     //! dmi transaction recording stream handle
     scv_tr_stream* dmi_streamHandle{nullptr};
     //! transaction generator handle for DMI transactions
-    scv_tr_generator<tlm_gp_data, tlm_dmi_data>* dmi_trGetHandle{nullptr};
+    scv_tr_generator<>* dmi_trGetHandle{nullptr};
     scv_tr_generator<sc_dt::uint64, sc_dt::uint64>* dmi_trInvalidateHandle{nullptr};
 
 public:
@@ -290,12 +297,9 @@ public:
             if(enableTimedTracing.value) {
                 b_streamHandleTimed =
                     new scv_tr_stream((fixed_basename + "_bl_timed").c_str(), "[TLM][base-protocol][b][timed]", m_db);
-                b_trTimedHandle[tlm::TLM_READ_COMMAND] =
-                    new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("read", *b_streamHandleTimed);
-                b_trTimedHandle[tlm::TLM_WRITE_COMMAND] =
-                    new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("write", *b_streamHandleTimed);
-                b_trTimedHandle[tlm::TLM_IGNORE_COMMAND] =
-                    new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("ignore", *b_streamHandleTimed);
+                b_trTimedHandle[tlm::TLM_READ_COMMAND] = new scv_tr_generator<>("read", *b_streamHandleTimed);
+                b_trTimedHandle[tlm::TLM_WRITE_COMMAND] = new scv_tr_generator<>("write", *b_streamHandleTimed);
+                b_trTimedHandle[tlm::TLM_IGNORE_COMMAND] = new scv_tr_generator<>("ignore", *b_streamHandleTimed);
             }
             nb_streamHandle = new scv_tr_stream((fixed_basename + "_nb").c_str(), "[TLM][base-protocol][nb]", m_db);
             nb_trHandle[FW] = new scv_tr_generator<std::string, std::string>("fw", *nb_streamHandle, "tlm_phase",
@@ -312,7 +316,7 @@ public:
                 dmi_streamHandle =
                     new scv_tr_stream((fixed_basename + "_dmi").c_str(), "[TLM][base-protocol][dmi]", m_db);
                 dmi_trGetHandle =
-                    new scv_tr_generator<tlm_gp_data, tlm_dmi_data>("get", *dmi_streamHandle, "trans", "dmi_data");
+                    new scv_tr_generator<>("get", *dmi_streamHandle);
                 dmi_trInvalidateHandle = new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>(
                     "invalidate", *dmi_streamHandle, "start_addr", "end_addr");
             }
@@ -342,8 +346,6 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
         initialize_streams();
     // Get a handle for the new transaction
     scv_tr_handle h = b_trHandle[trans.get_command()]->begin_transaction(delay.value(), sc_core::sc_time_stamp());
-    tlm_gp_data tgd(trans);
-
     /*************************************************************************
      * do the timed notification
      *************************************************************************/
@@ -373,8 +375,8 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
     }
     scv_tr_handle preTx{preExt->txHandle};
     preExt->txHandle = h;
-    if(trans.get_command() == tlm::TLM_WRITE_COMMAND && tgd.data_length < 8)
-        h.record_attribute("trans.data_value", tgd.get_data_value());
+    if(trans.get_command() == tlm::TLM_WRITE_COMMAND && trans.get_data_length() < 8)
+        h.record_attribute("trans.data_value", *static_cast<uint64_t*>(trans.get_data_ptr()));
     fw_port->b_transport(trans, delay);
     if(preExt && preExt->get_creator() == this) {
         // clean-up the extension if this is the original creator
@@ -385,11 +387,9 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
     } else {
         preExt->txHandle = preTx;
     }
-
-    tgd.response_status = trans.get_response_status();
-    h.record_attribute("trans", tgd);
-    if(trans.get_command() == tlm::TLM_READ_COMMAND && tgd.data_length < 8)
-        h.record_attribute("trans.data_value", tgd.get_data_value());
+    record(h, trans);
+    if(trans.get_command() == tlm::TLM_READ_COMMAND && trans.get_data_length() < 8)
+        h.record_attribute("trans.data_value", *static_cast<uint64_t*>(trans.get_data_ptr()));
     for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordEndTx(h, trans);
@@ -407,9 +407,7 @@ void tlm_recorder<TYPES>::btx_cb(tlm_recording_payload& rec_parts, const typenam
     // Now process outstanding recordings
     switch(phase) {
     case tlm::BEGIN_REQ: {
-        tlm_gp_data tgd(rec_parts);
-        h = b_trTimedHandle[rec_parts.get_command()]->begin_transaction(rec_parts.get_command());
-        h.record_attribute("trans", tgd);
+        h = b_trTimedHandle[rec_parts.get_command()]->begin_transaction();
         h.add_relation(rel_str(PARENT_CHILD), rec_parts.parent);
         btx_handle_map[rec_parts.id] = h;
     } break;
@@ -418,7 +416,8 @@ void tlm_recorder<TYPES>::btx_cb(tlm_recording_payload& rec_parts, const typenam
         sc_assert(it != btx_handle_map.end());
         h = it->second;
         btx_handle_map.erase(it);
-        h.end_transaction(h, rec_parts.get_response_status());
+        record(h, rec_parts);
+        h.end_transaction();
         rec_parts.release();
     } break;
     default:
@@ -459,7 +458,6 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
     for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordBeginTx(h, trans);
-    tlm_gp_data tgd(trans);
     /*************************************************************************
      * do the timed notification
      *************************************************************************/
@@ -478,17 +476,9 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
      * handle recording
      *************************************************************************/
     h.record_attribute("trans.uid", reinterpret_cast<uintptr_t>(&trans));
-    h.record_attribute("tlm_sync", status);
+    record(h, status);
     h.record_attribute("delay[return_path]", delay.to_string());
-    tgd.response_status = trans.get_response_status();
-    h.record_attribute("trans", tgd);
-    if(tgd.data_length < 8) {
-        uint64_t buf = 0;
-        // FIXME: this is endianess dependent
-        for(size_t i = 0; i < tgd.data_length; i++)
-            buf += (*tgd.data) << i * 8;
-        h.record_attribute("trans.data_value", buf);
-    }
+    record(h, trans);
     for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordEndTx(h, trans);
@@ -550,7 +540,6 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
     for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordBeginTx(h, trans);
-    tlm_gp_data tgd(trans);
     /*************************************************************************
      * do the timed notification
      *************************************************************************/
@@ -569,17 +558,9 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
      * handle recording
      *************************************************************************/
     h.record_attribute("trans.uid", reinterpret_cast<uintptr_t>(&trans));
-    h.record_attribute("tlm_sync", status);
+    record(h, status);
     h.record_attribute("delay[return_path]", delay.to_string());
-    tgd.response_status = trans.get_response_status();
-    h.record_attribute("trans", tgd);
-    if(tgd.data_length < 8) {
-        uint64_t buf = 0;
-        // FIXME: this is endianess dependent
-        for(size_t i = 0; i < tgd.data_length; i++)
-            buf += (*tgd.data) << i * 8;
-        h.record_attribute("trans.data_value", buf);
-    }
+    record(h, trans);
     for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordEndTx(h, trans);
@@ -612,11 +593,10 @@ template <typename TYPES>
 void tlm_recorder<TYPES>::nbtx_cb(tlm_recording_payload& rec_parts, const typename TYPES::tlm_phase_type& phase) {
     scv_tr_handle h;
     std::map<uint64, scv_tr_handle>::iterator it;
-    tlm_gp_data tgd(rec_parts);
     switch(phase) { // Now process outstanding recordings
     case tlm::BEGIN_REQ:
         h = nb_trTimedHandle[REQ]->begin_transaction(rel_str(PARENT_CHILD), rec_parts.parent);
-        h.record_attribute("trans", tgd);
+        record(h, rec_parts);
         nbtx_req_handle_map[rec_parts.id] = h;
         break;
     case tlm::END_REQ:
@@ -636,7 +616,7 @@ void tlm_recorder<TYPES>::nbtx_cb(tlm_recording_payload& rec_parts, const typena
             nbtx_last_req_handle_map[rec_parts.id] = h;
         }
         h = nb_trTimedHandle[RESP]->begin_transaction(rel_str(PARENT_CHILD), rec_parts.parent);
-        h.record_attribute("trans", tgd);
+        record(h, rec_parts);
         nbtx_req_handle_map[rec_parts.id] = h;
         it = nbtx_last_req_handle_map.find(rec_parts.id);
         if(it != nbtx_last_req_handle_map.end()) {
@@ -667,9 +647,11 @@ bool tlm_recorder<TYPES>::get_direct_mem_ptr(typename TYPES::tlm_payload_type& t
         return fw_port->get_direct_mem_ptr(trans, dmi_data);
     else if(!b_streamHandle)
         initialize_streams();
-    scv_tr_handle h = dmi_trGetHandle->begin_transaction(tlm_gp_data(trans));
+    scv_tr_handle h = dmi_trGetHandle->begin_transaction();
     bool status = fw_port->get_direct_mem_ptr(trans, dmi_data);
-    dmi_trGetHandle->end_transaction(h, tlm_dmi_data(dmi_data));
+    record(h, trans);
+    record(h, dmi_data);
+    h.end_transaction();
     return status;
 }
 /*! \brief The direct memory interface backward function

@@ -43,8 +43,8 @@
 
  *****************************************************************************/
 
-#ifndef SCV_INTROSPECTION_H
-#define SCV_INTROSPECTION_H
+#ifndef SCV_TR_INTROSPECTION_H
+#define SCV_TR_INTROSPECTION_H
 
 #include <systemc>
 

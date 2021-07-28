@@ -28,35 +28,28 @@
  NO AUTOMATIC CHANGE LOG IS GENERATED, EXPLICIT CHANGE LOG AT END OF FILE
  *****************************************************************************/
 
-#ifndef SCV_VER_H
-#define SCV_VER_H
+#ifndef SCV_TR_VER_H
+#define SCV_TR_VER_H
 
-#define SCV_SHORT_RELEASE_DATE 20140417
+#define SCV_TR_SHORT_RELEASE_DATE 20140417
 
-#define SCV_VERSION_ORIGINATOR "Accellera"
-#define SCV_VERSION_MAJOR 2
-#define SCV_VERSION_MINOR 0
-#define SCV_VERSION_PATCH 0
-#define SCV_IS_PRERELEASE 0
+#define SCV_TR_VERSION_ORIGINATOR "Accellera"
+#define SCV_TR_VERSION_MAJOR 2
+#define SCV_TR_VERSION_MINOR 0
+#define SCV_TR_VERSION_PATCH 0
+#define SCV_TR_IS_PRERELEASE 0
 
 // token stringification
 
-#define SCV_STRINGIFY_HELPER_(Arg) SCV_STRINGIFY_HELPER_DEFERRED_(Arg)
-#define SCV_STRINGIFY_HELPER_DEFERRED_(Arg) SCV_STRINGIFY_HELPER_MORE_DEFERRED_(Arg)
-#define SCV_STRINGIFY_HELPER_MORE_DEFERRED_(Arg) #Arg
+#define SCV_TR_STRINGIFY_HELPER_(Arg) SCV_TR_STRINGIFY_HELPER_DEFERRED_(Arg)
+#define SCV_TR_STRINGIFY_HELPER_DEFERRED_(Arg) SCV_TR_STRINGIFY_HELPER_MORE_DEFERRED_(Arg)
+#define SCV_TR_STRINGIFY_HELPER_MORE_DEFERRED_(Arg) #Arg
 
-#define SCV_VERSION_RELEASE_DATE SCV_STRINGIFY_HELPER_(SCV_SHORT_RELEASE_DATE)
+#define SCV_TR_VERSION_RELEASE_DATE SCV_TR_STRINGIFY_HELPER_(SCV_TR_SHORT_RELEASE_DATE)
 
-#if(SCV_IS_PRERELEASE == 1)
-#define SCV_VERSION_PRERELEASE "pub_rev"
-#define SCV_VERSION                                                                                                    \
-    SCV_STRINGIFY_HELPER_(SCV_VERSION_MAJOR.SCV_VERSION_MINOR.SCV_VERSION_PATCH)                                       \
-    "_" SCV_VERSION_PRERELEASE "_" SCV_VERSION_RELEASE_DATE "-" SCV_VERSION_ORIGINATOR
-#else
-#define SCV_VERSION_PRERELEASE "" // nothing
-#define SCV_VERSION                                                                                                    \
-    SCV_STRINGIFY_HELPER_(SCV_VERSION_MAJOR.SCV_VERSION_MINOR.SCV_VERSION_PATCH)                                       \
-    "-" SCV_VERSION_ORIGINATOR
-#endif
+#define SCV_TR_VERSION_PRERELEASE "" // nothing
+#define SCV_TR_VERSION                                                                                                    \
+    SCV_TR_STRINGIFY_HELPER_(SCV_TR_VERSION_MAJOR.SCV_TR_VERSION_MINOR.SCV_TR_VERSION_PATCH)                                       \
+    "-" SCV_TR_VERSION_ORIGINATOR
 
 #endif
