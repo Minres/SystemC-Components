@@ -1,10 +1,8 @@
 
 set(CONAN_CMAKE_LIST_DIR ${CMAKE_CURRENT_LIST_DIR})
 
-macro(setup_conan)
+macro(conan_check)
   # for backwards compatibility
-  set(options Release Debug RelWithDebInfo TARGETS) 
-  set(oneValueArgs PROFILE)
   cmake_parse_arguments(MARGS "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN} )
  
   find_program(conan conan)
@@ -15,8 +13,8 @@ macro(setup_conan)
   execute_process(COMMAND ${conan} --version
                   OUTPUT_VARIABLE CONAN_VERSION_OUTPUT)
   string(REGEX MATCHALL "[0-9.]+" CONAN_VERSION ${CONAN_VERSION_OUTPUT})
-  if (CONAN_VERSION NOT VERSION_GREATER_EQUAL 1.36)
-  	message(FATAL_ERROR "Please upgrade your conan to a version greater or equal 1.36")
+  if (NOT (CONAN_VERSION VERSION_GREATER_EQUAL 1.36.0))
+    message(FATAL_ERROR "Please upgrade your conan to a version greater or equal 1.36")
   endif()
  
   if(NOT EXISTS ${CONAN_CMAKE_LIST_DIR}/conan.cmake)
@@ -25,9 +23,29 @@ macro(setup_conan)
          TIMEOUT 60  # seconds
     )
   endif()
- 
   include(${CONAN_CMAKE_LIST_DIR}/conan.cmake)
   set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_BINARY_DIR})
+endmacro()
+
+macro(conan_setup)
+  set(options Release Debug RelWithDebInfo TARGETS) 
+  set(oneValueArgs PROFILE)
+  cmake_parse_arguments(MARGS "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN} )
+ 
+
+  set(conanfile_cmake ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+  set(conanfile_cmake_paths ${CMAKE_BINARY_DIR}/conan_paths.cmake)
+
+  if(EXISTS "${conanfile_cmake_paths}")
+    include(${conanfile_cmake_paths})
+  elseif(EXISTS "${conanfile_cmake}")
+    include(${conanfile_cmake})
+    if( MARGS_TARGETS)
+      conan_basic_setup(TARGETS)
+    else()
+      conan_basic_setup()
+    endif()
+  endif()
 endmacro()
 
 function(conan_configure)
