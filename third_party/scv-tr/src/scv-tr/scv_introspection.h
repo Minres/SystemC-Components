@@ -53,6 +53,7 @@
 #include <list>
 #include <memory>
 #include <string>
+#include <cstring>
 namespace scv_tr {
 
 // specific stuff for randomization extensions

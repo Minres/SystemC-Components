@@ -23,6 +23,11 @@ macro(conan_check)
          TIMEOUT 60  # seconds
     )
   endif()
+  if("${CMAKE_BUILD_TYPE}" STREQUAL "")
+      set(CMAKE_BUILD_TYPE Release)
+  endif()
+  
+  
   include(${CONAN_CMAKE_LIST_DIR}/conan.cmake)
   set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_BINARY_DIR})
 endmacro()

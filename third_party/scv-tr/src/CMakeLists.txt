@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.12)
 
 project(scv-tr VERSION 0.0.1 LANGUAGES CXX)
 
+include(GNUInstallDirs)
+
 add_library(${PROJECT_NAME} 
 	scv-tr/scv_introspection.cpp
 	scv-tr/scv_report.cpp
