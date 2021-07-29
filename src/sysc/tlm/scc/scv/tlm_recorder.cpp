@@ -57,8 +57,8 @@ void record(scv_tr_handle& handle, tlm::tlm_dmi& o){
     handle.record_attribute("trans.start_address",o.get_start_address());
     handle.record_attribute("trans.end_address",o.get_end_address());
     handle.record_attribute("trans.granted_access",dmi2char.at(o.get_granted_access()));
-    handle.record_attribute("trans.read_latency",o.get_read_latency().value());
-    handle.record_attribute("trans.write_latency",o.get_write_latency().value());
+    handle.record_attribute("trans.read_latency",o.get_read_latency().to_string());
+    handle.record_attribute("trans.write_latency",o.get_write_latency().to_string());
 
 }
 }

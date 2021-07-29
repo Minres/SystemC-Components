@@ -378,8 +378,6 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
     }
     scv_tr_handle preTx{preExt->txHandle};
     preExt->txHandle = h;
-    if(trans.get_command() == tlm::TLM_WRITE_COMMAND && trans.get_data_length() < 8)
-        h.record_attribute("trans.data_value", *static_cast<uint64_t*>(trans.get_data_ptr()));
     fw_port->b_transport(trans, delay);
     if(preExt && preExt->get_creator() == this) {
         // clean-up the extension if this is the original creator
@@ -391,8 +389,6 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
         preExt->txHandle = preTx;
     }
     record(h, trans);
-    if(trans.get_command() == tlm::TLM_READ_COMMAND && trans.get_data_length() < 8)
-        h.record_attribute("trans.data_value", *static_cast<uint64_t*>(trans.get_data_ptr()));
     for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordEndTx(h, trans);
