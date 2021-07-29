@@ -156,6 +156,9 @@ public:
     , fixed_basename(name) {}
 
     virtual ~tlm_recorder() override {
+        btx_handle_map.clear();
+        nbtx_req_handle_map.clear();
+        nbtx_last_req_handle_map.clear();
         delete b_streamHandle;
         for(auto* p : b_trHandle)
             delete p; // NOLINT
@@ -275,8 +278,8 @@ private:
     std::array<scv_tr_generator<std::string, std::string>*, 2> nb_trHandle{{nullptr, nullptr}};
     //! transaction generator handle for non-blocking transactions with annotated delays
     std::array<scv_tr_generator<>*, 2> nb_trTimedHandle{{nullptr, nullptr}};
-    std::map<uint64, scv_tr_handle> nbtx_req_handle_map;
-    std::map<uint64, scv_tr_handle> nbtx_last_req_handle_map;
+    std::unordered_map<uint64, scv_tr_handle> nbtx_req_handle_map;
+    std::unordered_map<uint64, scv_tr_handle> nbtx_last_req_handle_map;
 
     //! dmi transaction recording stream handle
     scv_tr_stream* dmi_streamHandle{nullptr};
@@ -592,7 +595,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
 template <typename TYPES>
 void tlm_recorder<TYPES>::nbtx_cb(tlm_recording_payload& rec_parts, const typename TYPES::tlm_phase_type& phase) {
     scv_tr_handle h;
-    std::map<uint64, scv_tr_handle>::iterator it;
+    std::unordered_map<uint64, scv_tr_handle>::iterator it;
     switch(phase) { // Now process outstanding recordings
     case tlm::BEGIN_REQ:
         h = nb_trTimedHandle[REQ]->begin_transaction(rel_str(PARENT_CHILD), rec_parts.parent);

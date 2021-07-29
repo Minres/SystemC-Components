@@ -35,6 +35,7 @@ set(LIB_SOURCES
     scc/value_registry.cpp
     scc/mt19937_rng.cpp
     scc/scv/scv_tr_binary.cpp
+    tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp
 )
 
