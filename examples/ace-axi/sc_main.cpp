@@ -37,14 +37,12 @@ public:
     axi::scv::axi_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
 #endif
     axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
-    // TLM2_COMMON::Adapter<SOCKET_WIDTH, SOCKET_WIDTH> Adapter1{"Adapter1"};
     ace_axi_adapt<SOCKET_WIDTH> Adapter1{"Adapter1"};
 
     testbench(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm)
     , intor_pe("intor_pe", intor)
     , tgt_pe("tgt_pe", tgt) {
-        // , tgt_pe("tgt_pe") {
         SC_THREAD(run);
         intor_pe.clk_i(clk);
         tgt_pe.clk_i(clk);
@@ -57,7 +55,8 @@ public:
         // intor_rec.isckt(tgt_pe.axi);
         intor_rec.isckt(tgt);
 #else
-        // intor(tgt);
+        intor(Adapter1.tsckt);
+        Adapter1.isckt(tgt);
 #endif
     }
 
@@ -135,7 +134,10 @@ private:
 int sc_main(int argc, char* argv[]) {
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
     scc::init_logging(
-        scc::LogConfig().logLevel(static_cast<scc::log>(7)).logAsync(false).dontCreateBroker(true).coloredOutput(true));
+            scc::LogConfig()
+            .logLevel(static_cast<scc::log>(7))
+            .logAsync(false)
+            .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
 #ifdef WITH_SCV
     scv_startup();
