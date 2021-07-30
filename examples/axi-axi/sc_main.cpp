@@ -13,7 +13,7 @@
 #include "scc/report.h"
 #include "tlm/scc/tlm_id.h"
 #include <array>
-#include <axi/pe/simple_initiator.h>
+#include <axi/pe/axi_initiator.h>
 #include <axi/pe/simple_target.h>
 #include <tlm/scc/tlm_mm.h>
 
@@ -35,6 +35,16 @@ public:
 #endif
     axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
 
+private:
+    axi::pe::axi_initiator<SOCKET_WIDTH> intor_pe;
+    axi::pe::simple_target<SOCKET_WIDTH> tgt_pe;
+    unsigned id{0};
+  unsigned int StartAddr{0};
+  unsigned int ResetCycles{10};
+  unsigned int BurstLengthByte{16};
+  unsigned int NumberOfIterations{1};
+
+public:
     testbench(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm)
     , intor_pe("intor_pe", intor)
@@ -66,10 +76,6 @@ public:
     }
 
     void run() {
-        unsigned int StartAddr          = 0;
-        unsigned int ResetCycles        = 10;
-	unsigned int BurstLengthByte    = 16;
-	unsigned int NumberOfIterations = 1000;
         rst.write(false);
         for(size_t i = 0; i < ResetCycles; ++i)
             wait(clk.posedge_event());
@@ -108,10 +114,6 @@ public:
         sc_stop();
     }
 
-private:
-    axi::pe::simple_axi_initiator<SOCKET_WIDTH> intor_pe;
-    axi::pe::simple_target<SOCKET_WIDTH> tgt_pe;
-    unsigned id{0};
 };
 
 int sc_main(int argc, char* argv[]) {
@@ -120,7 +122,6 @@ int sc_main(int argc, char* argv[]) {
 		      scc::LogConfig()
 		      .logLevel(static_cast<scc::log>(7))
 		      .logAsync(false)
-		      .dontCreateBroker(true)
 		      .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
 #ifdef WITH_SCV
@@ -129,7 +130,7 @@ int sc_main(int argc, char* argv[]) {
     scv_tr_db* db = new scv_tr_db("axi_axi_test.txlog");
     scv_tr_db::set_default_db(db);
 #endif
-    testbench mstr("master");
+    testbench tb("tb");
     sc_core::sc_start(1_ms);
     SCCINFO() << "Finished";
 #ifdef WITH_SCV
