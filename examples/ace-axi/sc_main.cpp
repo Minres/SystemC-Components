@@ -40,7 +40,6 @@ public:
 #endif
     axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
     ace_axi_adapt<SOCKET_WIDTH> Adapter1{"Adapter1"};
-
     testbench(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm)
     , intor_pe("intor_pe", intor)
