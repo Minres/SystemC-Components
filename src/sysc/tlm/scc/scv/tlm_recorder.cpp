@@ -5,12 +5,11 @@
  *      Author: eyckj
  */
 
+#define SC_INCLUDE_DYNAMIC_PROCESSES
 #include "tlm_recorder.h"
 #include "tlm_extension_recording_registry.h"
 #include <tlm>
-#ifndef WITH_SCV
-#define SCVNS() scv_tr::
-#endif
+
 namespace tlm {
 namespace scc {
 namespace scv {
@@ -23,7 +22,7 @@ const std::array<std::string, 4> dmi2char{{"DMI_ACCESS_NONE", "DMI_ACCESS_READ",
 const std::array<std::string, 3> sync2char{{"ACCEPTED","UPDATED","COMPLETED"}};
 
 }
-void record(scv_tr_handle& handle, tlm::tlm_generic_payload& o){
+void record(SCVNS scv_tr_handle& handle, tlm::tlm_generic_payload& o){
     handle.record_attribute("trans.address",o.get_address());
     handle.record_attribute("trans.cmd",cmd2char.at(o.get_command()));
     handle.record_attribute("trans.data_ptr",o.get_data_ptr());
@@ -42,17 +41,17 @@ void record(scv_tr_handle& handle, tlm::tlm_generic_payload& o){
         handle.record_attribute("trans.data_value", buf);
     }
 }
-void record(scv_tr_handle& handle, tlm::tlm_phase& o){
+void record(SCVNS scv_tr_handle& handle, tlm::tlm_phase& o){
     unsigned id = o;
     if(id<phase2char.size())
         handle.record_attribute("phase",phase2char[id]);
     else
         handle.record_attribute("phase_id",id);
 }
-void record(scv_tr_handle& handle, tlm::tlm_sync_enum o){
+void record(SCVNS scv_tr_handle& handle, tlm::tlm_sync_enum o){
     handle.record_attribute("tlm_sync",sync2char.at(o));
 }
-void record(scv_tr_handle& handle, tlm::tlm_dmi& o){
+void record(SCVNS scv_tr_handle& handle, tlm::tlm_dmi& o){
     handle.record_attribute("trans.dmi_ptr",o.get_dmi_ptr());
     handle.record_attribute("trans.start_address",o.get_start_address());
     handle.record_attribute("trans.end_address",o.get_end_address());

@@ -79,7 +79,7 @@ tx_relation <"relation_name"> <tx_id_1> <tx_id_2>
 #include "scv_tr.h"
 #include <string>
 
-using namespace scv_tr;
+namespace scv_tr{
 // ----------------------------------------------------------------------------
 
 #ifdef _MSC_VER
@@ -627,7 +627,6 @@ static void scv_tr_handle_relation_cbf(const scv_tr_handle& tr_1, const scv_tr_h
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
-namespace scv_tr {
 void scv_tr_text_init() {
     scv_tr_db::register_class_cb(scv_tr_db_cbf);
 

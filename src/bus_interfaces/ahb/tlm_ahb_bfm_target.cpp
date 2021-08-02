@@ -5,6 +5,7 @@
  *      Author: developer
  */
 
+#define SC_INCLUDE_DYNAMIC_PROCESSES
 #include <ahb/ahb_tlm.h>
 #include <ahb/bfm/target.h>
 #include <scc/report.h>

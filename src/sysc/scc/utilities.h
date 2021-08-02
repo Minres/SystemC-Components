@@ -62,13 +62,18 @@ template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args&&...
 namespace sc_core {
 // needed to be able to use sc_time as signal value
 #if SC_VERSION_MAJOR <= 2 && SC_VERSION_MINOR <= 3 && SC_VERSION_PATCH < 2
+#define HAS_NO_TIME_TRACE
+#endif
+#ifdef NCSC
+#define HAS_NO_TIME_TRACE
+#endif
+
+#ifdef HAS_NO_TIME_TRACE
 
 void sc_trace(sc_trace_file*, const sc_time&, const std::string&);
 
-void sc_trace(sc_trace_file*, const sc_time&, const char*);
-
 /**
- * comatibility for SC2.3.1
+ * compatibility for SC2.3.1
  *
  */
 inline void sc_trace(sc_core::sc_trace_file*&, const sc_core::sc_event&, const char*) {}

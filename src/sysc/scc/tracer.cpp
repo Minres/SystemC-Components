@@ -76,7 +76,7 @@ tracer::tracer(std::string const&& name, file_type type, bool enable)
 
 void tracer::end_of_elaboration() {
     if(trf)
-        for(auto o : sc_get_top_level_objects(sc_curr_simcontext))
+        for(auto o : sc_get_top_level_objects())
             descend(o, true);
 }
 

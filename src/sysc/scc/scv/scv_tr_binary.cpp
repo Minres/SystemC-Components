@@ -31,7 +31,7 @@
 #include <scv.h>
 #else
 #include <scv-tr.h>
-using namespace scv_tr;
+namespace scv_tr {
 #endif
 // clang-format on
 // ----------------------------------------------------------------------------
@@ -568,3 +568,6 @@ void scv_tr_binary_init() {
     scv_tr_handle::register_relation_cb(relationCb);
 }
 // ----------------------------------------------------------------------------
+#ifndef WITH_SCV
+}
+#endif

@@ -5,6 +5,8 @@
  *      Author:
  */
 
+#define SC_INCLUDE_DYNAMIC_PROCESSES
+
 #ifdef WITH_SCV
 #include <axi/scv/recorder_modules.h>
 #include <scv.h>

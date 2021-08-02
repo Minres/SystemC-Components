@@ -28,7 +28,9 @@ namespace tlm {
 namespace scc {
 namespace scv {
 #ifndef WITH_SCV
-using namespace ::scv_tr;
+#ifndef SCVNS
+#define SCVNS ::scv_tr::
+#endif
 #endif
 /*! \brief The TLM transaction extensions recorder interface
  *
@@ -42,13 +44,13 @@ public:
      * to be overload as it does nothing
      *
      */
-    virtual void recordBeginTx(scv_tr_handle& handle, typename TYPES::tlm_payload_type& trans) = 0;
+    virtual void recordBeginTx(SCVNS scv_tr_handle& handle, typename TYPES::tlm_payload_type& trans) = 0;
 
     /*! \brief recording attributes in extensions at the end, it is intended to be
      * overload as it does nothing
      *
      */
-    virtual void recordEndTx(scv_tr_handle& handle, typename TYPES::tlm_payload_type& trans) = 0;
+    virtual void recordEndTx(SCVNS scv_tr_handle& handle, typename TYPES::tlm_payload_type& trans) = 0;
 
     virtual ~tlm_extensions_recording_if() = default;
 };
@@ -78,7 +80,7 @@ public:
 
     const std::vector<tlm_extensions_recording_if<TYPES>*>& get() { return ext_rec; }
 
-    inline void recordBeginTx(size_t id, scv_tr_handle& handle, typename TYPES::tlm_payload_type& trans) {
+    inline void recordBeginTx(size_t id, SCVNS scv_tr_handle& handle, typename TYPES::tlm_payload_type& trans) {
         if(ext_rec.size() > id && ext_rec[id])
             ext_rec[id]->recordBeginTx(handle, trans);
     }
@@ -87,7 +89,7 @@ public:
      * overload as it does nothing
      *
      */
-    inline void recordEndTx(size_t id, scv_tr_handle& handle, typename TYPES::tlm_payload_type& trans) {
+    inline void recordEndTx(size_t id, SCVNS scv_tr_handle& handle, typename TYPES::tlm_payload_type& trans) {
         if(ext_rec.size() > id && ext_rec[id])
             ext_rec[id]->recordEndTx(handle, trans);
     }

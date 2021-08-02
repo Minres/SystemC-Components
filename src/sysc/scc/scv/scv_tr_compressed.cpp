@@ -77,15 +77,15 @@
 
 #include <string>
 // clang-format off
+#include <array>
+#include <zlib.h>
 #ifdef WITH_SCV
 #include <scv.h>
 #else
 #include <scv-tr.h>
-using namespace scv_tr;
+namespace scv_tr {
 #endif
 // clang-format on
-#include <array>
-#include <zlib.h>
 // ----------------------------------------------------------------------------
 
 #ifdef _MSC_VER
@@ -643,4 +643,6 @@ void scv_tr_compressed_init() {
 }
 
 // ----------------------------------------------------------------------------
-// ----------------------------------------------------------------------------
+#ifndef WITH_SCV
+}
+#endif

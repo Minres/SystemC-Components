@@ -1,6 +1,6 @@
 # Distributed under the OSI-approved Apache 2 License.  See accompanying file LICENSE file
 #[=======================================================================[.rst:
-FindOSCISystemC
+FindXMSystemC
 -------
 
 Finds the SystemC and acompanying libraries.
@@ -49,94 +49,72 @@ This will define the following variables:
 
 #]=======================================================================]
 
+find_program(ncroot_EXECUTABLE ncroot) 
+if(NOT ncroot_EXECUTABLE)
+	message(FATAL_ERROR "No ncroot in PATH")
+endif()
+
+execute_process(
+	COMMAND ${ncroot_EXECUTABLE}
+	OUTPUT_VARIABLE NCROOT_PATH
+	)
+string(STRIP ${NCROOT_PATH} NCROOT_PATH)
+message("Using Xcelium at ${NCROOT_PATH}")
+
+
 SET(_COMMON_HINTS
-  "[HKEY_LOCAL_MACHINE\\SOFTWARE\\SystemC\\2.3;SystemcHome]/include"
-  ${SYSTEMC_PREFIX}/include
-  ${SYSTEMC_PREFIX}/lib
-  ${SYSTEMC_PREFIX}/lib64
-  ${SYSTEMC_PREFIX}/lib-linux
-  ${SYSTEMC_PREFIX}/lib-linux64
-  ${SYSTEMC_PREFIX}/lib-macos
-  $ENV{SYSTEMC_PREFIX}/include
-  $ENV{SYSTEMC_PREFIX}/lib
-  $ENV{SYSTEMC_PREFIX}/lib64
-  $ENV{SYSTEMC_PREFIX}/lib-linux
-  $ENV{SYSTEMC_PREFIX}/lib-linux64
-  $ENV{SYSTEMC_PREFIX}/lib-macos
-  $ENV{SYSTEMC_HOME}/include
-  $ENV{SYSTEMC_HOME}/lib
-  $ENV{SYSTEMC_HOME}/lib64
-  $ENV{SYSTEMC_HOME}/lib-linux
-  $ENV{SYSTEMC_HOME}/lib-linux64
-  $ENV{SYSTEMC_HOME}/lib-macos
-  ${CMAKE_INSTALL_PREFIX}/include
-  ${CMAKE_INSTALL_PREFIX}/lib
-  ${CMAKE_INSTALL_PREFIX}/lib64
-  ${CMAKE_INSTALL_PREFIX}/lib-linux
-  ${CMAKE_INSTALL_PREFIX}/lib-linux64
-  ${CMAKE_INSTALL_PREFIX}/lib-macos
-  ${SYSTEMC_INCL}
-  ${SYSTEMC_LIB}
-  $ENV{SYSTEMC_INCL}
-  $ENV{SYSTEMC_LIB}
-  )
+	${NCROOT_PATH}/tools/systemc/include
+	${NCROOT_PATH}/tools/systemc/lib/64bit
+  	$ENV{SYSTEMC_PREFIX}/include
+  	$ENV{SYSTEMC_PREFIX}/lib
+  	$ENV{SYSTEMC_PREFIX}/lib64
+  	$ENV{SYSTEMC_PREFIX}/lib-linux
+  	$ENV{SYSTEMC_PREFIX}/lib-linux64
+  	$ENV{SYSTEMC_PREFIX}/lib-macos
+  	$ENV{SYSTEMC_HOME}/include
+  	$ENV{SYSTEMC_HOME}/lib
+  	$ENV{SYSTEMC_HOME}/lib64
+  	$ENV{SYSTEMC_HOME}/lib-linux
+  	$ENV{SYSTEMC_HOME}/lib-linux64
+  	$ENV{SYSTEMC_HOME}/lib-macos
+  	)
 
 SET(_SYSTEMC_HINTS
-  ${CONAN_INCLUDE_DIRS_SYSTEMC}
-  ${CONAN_LIB_DIRS_SYSTEMC}
-  ${_COMMON_HINTS}
-  )
+  	${_COMMON_HINTS}
+    )
+
+SET(_TLM_HINTS
+ 	${NCROOT_PATH}/tools/systemc/include/tlm2
+  	${_COMMON_HINTS}
+    )
 
 SET(_SCV_HINTS
-  ${CONAN_INCLUDE_DIRS_SYSTEMCVERIFICATION}
-  ${CONAN_LIB_DIRS_SYSTEMCVERIFICATION}
-  ${CONAN_INCLUDE_DIRS_SYSTEMC}
-  ${CONAN_LIB_DIRS_SYSTEMC-SCV}
-  ${SCV_PREFIX}/include
-  ${SCV_PREFIX}/lib
-  ${SCV_PREFIX}/lib64
-  ${SCV_PREFIX}/lib-linux
-  ${SCV_PREFIX}/lib-linux64
-  ${SCV_PREFIX}/lib-macos
-  $ENV{SCV_HOME}/include
-  $ENV{SCV_HOME}/lib
-  $ENV{SCV_HOME}/lib64
-  $ENV{SCV_HOME}/lib-linux
-  $ENV{SCV_HOME}/lib-linux64
-  $ENV{SCV_HOME}/lib-macos
-  ${_COMMON_HINTS}
-  )
+  	${_COMMON_HINTS}
+    )
 
 SET(_CCI_HINTS
-  ${CONAN_INCLUDE_DIRS_SYSTEMC-CCI}
-  ${CONAN_LIB_DIRS_SYSTEMC-CCI}
-  ${CCI_PREFIX}/include
-  ${CCI_PREFIX}/lib
-  ${CCI_PREFIX}/lib64
-  ${CCI_PREFIX}/lib-linux
-  ${CCI_PREFIX}/lib-linux64
-  ${CCI_PREFIX}/lib-macos
-  $ENV{CCI_HOME}/include
-  $ENV{CCI_HOME}/lib
-  $ENV{CCI_HOME}/lib64
-  $ENV{CCI_HOME}/lib-linux
-  $ENV{CCI_HOME}/lib-linux64
-  $ENV{CCI_HOME}/lib-macos
-  ${_COMMON_HINTS}
-  )
+	${NCROOT_PATH}/tools/systemc/include/cci/
+  	${CCI_PREFIX}/include
+  	${CCI_PREFIX}/lib
+  	${CCI_PREFIX}/lib64
+  	${CCI_PREFIX}/lib-linux
+  	${CCI_PREFIX}/lib-linux64
+  	${CCI_PREFIX}/lib-macos
+  	$ENV{CCI_HOME}/include
+  	$ENV{CCI_HOME}/lib
+  	$ENV{CCI_HOME}/lib64
+  	$ENV{CCI_HOME}/lib-linux
+  	$ENV{CCI_HOME}/lib-linux64
+  	$ENV{CCI_HOME}/lib-macos
+  	${_COMMON_HINTS}
+	)
 
 SET(_COMMON_PATHS
-  /usr/include/systemc
-  /usr/lib
-  /usr/lib-linux
-  /usr/lib-linux64
-  /usr/lib-macos
-  /usr/local/include/sysc
-  /usr/local/lib
-  /usr/local/lib-linux
-  /usr/local/lib-linux64
-  /usr/local/lib-macos
-  )
+	${NCROOT_PATH}/tools/systemc/include
+	${NCROOT_PATH}/tools/systemc/lib
+  	/usr/include
+  	/usr/lib
+  	)
   
 FIND_PATH(SystemC_INCLUDE_DIR
   NAMES systemc
@@ -144,22 +122,49 @@ FIND_PATH(SystemC_INCLUDE_DIR
   PATHS ${_COMMON_PATHS}
 )
 
+FIND_PATH(TLM_INCLUDE_DIR
+  NAMES tlm
+  HINTS ${_TLM_HINTS}
+  PATHS ${_COMMON_PATHS}
+)
+
 FIND_LIBRARY(SystemC_LIBRARY
-  NAMES systemc 
+  NAMES systemc_sh
+  HINTS ${_SYSTEMC_HINTS}
+  PATHS ${_COMMON_PATHS}
+)
+
+FIND_LIBRARY(Bootstrap_LIBRARY
+  NAMES scBootstrap_sh
+  HINTS ${_SYSTEMC_HINTS}
+  PATHS ${_COMMON_PATHS}
+)
+
+FIND_LIBRARY(Coroutines_LIBRARY
+  NAMES xmscCoroutines_sh
+  HINTS ${_SYSTEMC_HINTS}
+  PATHS ${_COMMON_PATHS}
+)
+
+FIND_LIBRARY(ovm_LIBRARY
+  NAMES ovm 
   HINTS ${_SYSTEMC_HINTS}
   PATHS ${_COMMON_PATHS}
 )
 
 mark_as_advanced(
-  SystemC_INCLUDE_DIR
-  SystemC_LIBRARY
+  	SystemC_INCLUDE_DIR
+  	SystemC_LIBRARY
+	Bootstrap_LIBRARY
+	Coroutines_LIBRARY
+	ovm_LIBRARY
 )
 
 if (SystemC_INCLUDE_DIR)
-  file(STRINGS "${SystemC_INCLUDE_DIR}/sysc/kernel/sc_ver.h" version-file
+  file(STRINGS "${SystemC_INCLUDE_DIR}/sysc/cosim/xmsc_ver.h" version-file
     REGEX "#define[ \t]SC_VERSION_(MAJOR|MINOR|PATCH).*")
   if (NOT version-file)
-    message(AUTHOR_WARNING "SystemC_INCLUDE_DIR found, but sc_ver.h is missing")
+    message(AUTHOR_WARNING "SystemC_INCLUDE_DIR found, but xmsc_ver.h is missing")
   endif()
   list(GET version-file 0 major-line)
   list(GET version-file 1 minor-line)
@@ -180,9 +185,9 @@ find_package_handle_standard_args(SystemC
 )
 
 if(SystemC_FOUND)
-  set(SystemC_LIBRARIES ${SystemC_LIBRARY})
-  set(SystemC_INCLUDE_DIRS ${SystemC_INCLUDE_DIR})
-  set(SystemC_DEFINITIONS ${PC_SystemC_CFLAGS_OTHER})
+  set(SystemC_LIBRARIES ${SystemC_LIBRARY} ${Bootstrap_LIBRARY} ${Coroutines_LIBRARY} ${om_LIBRARY})
+  set(SystemC_INCLUDE_DIRS ${TLM_INCLUDE_DIR} ${SystemC_INCLUDE_DIR})
+  set(SystemC_DEFINITIONS ${PC_SystemC_CFLAGS_OTHER} -DNCSC)
 endif()
 
 if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
@@ -243,7 +248,7 @@ FIND_PATH(CCI_INCLUDE_DIR
 )
 
 FIND_LIBRARY(CCI_LIBRARY
-  NAMES cciapi
+  NAMES xmsccci_sh
   HINTS ${_CCI_HINTS}
   PATHS ${_COMMON_PATHS}
 )
@@ -277,3 +282,4 @@ if(NOT CCI_INCLUDE_DIR MATCHES "CCI_INCLUDE_DIR-NOTFOUND")
 	  )
 	endif()
 endif()
+

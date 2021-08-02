@@ -58,7 +58,7 @@ void scc::configurer::dump_hierarchy(std::ostream& os, sc_core::sc_object* obj) 
         for(auto* o : obj->get_child_objects())
             dump_hierarchy(os, o);
     } else {
-        for(auto* o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
+        for(auto* o : sc_core::sc_get_top_level_objects())
             dump_hierarchy(os, o);
     }
 }
@@ -67,7 +67,7 @@ inline auto get_sc_objects(sc_core::sc_object* obj = nullptr) -> const std::vect
     if(obj)
         return obj->get_child_objects();
     else
-        return sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext);
+        return sc_core::sc_get_top_level_objects();
 }
 
 void scc::configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj) {
@@ -157,7 +157,7 @@ void scc::configurer::dump_configuration(sc_core::sc_object* obj, Json::Value& p
 
 void scc::configurer::configure() {
     if(config_valid)
-        for(auto* o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext)) {
+        for(auto* o : sc_core::sc_get_top_level_objects()) {
             Json::Value& val = root[o->name()];
             if(!val.isNull())
                 configure_sc_attribute_hierarchical(o, val);

@@ -11,6 +11,7 @@ struct {
 }; // namespace
 
 auto scc::MT19937::inst() -> std::mt19937_64& {
+#ifndef NCSC
     if(auto* obj = sc_core::sc_get_current_object()) {
         auto sz = rng.inst.size();
         auto& ret = rng.inst[obj];
@@ -23,9 +24,9 @@ auto scc::MT19937::inst() -> std::mt19937_64& {
                 ret.seed(h(name) ^ rng.seed);
         }
         return ret;
-    } else {
-        return rng.global;
     }
+#endif
+    return rng.global;
 }
 
 void scc::MT19937::seed(uint64_t new_seed) {

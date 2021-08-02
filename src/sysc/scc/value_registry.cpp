@@ -25,6 +25,8 @@ auto operator<<(std::ostream& os, const sc_event& evt) -> std::ostream& {
 
 #if SC_VERSION_MAJOR <= 2 && SC_VERSION_MINOR <= 3 && SC_VERSION_PATCH < 2
 #define OVERRIDE
+#elif defined (NCSC)
+#define OVERRIDE
 #else
 #define OVERRIDE override
 #endif
@@ -147,6 +149,9 @@ public:
     std::unordered_map<std::string, sc_variable*> holder;
 
     sc_dt::uint64 dummy = 0;
+#ifdef NCSC
+    void set_time_unit( int exponent10_seconds ) override {}
+#endif
 };
 
 value_registry::value_registry()
@@ -177,6 +182,6 @@ auto scc::value_registry::get_value(std::string name) const -> const sc_variable
 }
 
 void scc::value_registry::end_of_elaboration() {
-    for(auto o : sc_get_top_level_objects(sc_curr_simcontext))
+    for(auto o : sc_get_top_level_objects())
         descend(o, true);
 }
