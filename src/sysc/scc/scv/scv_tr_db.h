@@ -16,6 +16,10 @@
 
 #ifndef _SCC_SCV_TR_DB_H_
 #define _SCC_SCV_TR_DB_H_
+#ifndef WITH_SCV
+namespace scv_tr {
+#endif
+
 /**
  * @fn void scv_tr_sqlite_init()
  * @brief initializes the infrastructure to use a SQLite based transaction recording database
@@ -38,6 +42,9 @@ void scv_tr_binary_init();
  * initializes the infrastructure to use a LevelDB based transaction recording database
  */
 void scv_tr_ldb_init();
-#endif
 
+#endif
+#ifndef WITH_SCV
+}
+#endif
 #endif /* _SCC_SCV_TR_DB_H_ */

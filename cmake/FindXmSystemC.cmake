@@ -48,6 +48,7 @@ This will define the following variables:
   Libraries needed to link to CCI.
 
 #]=======================================================================]
+set(NCSC_LIBS systemc_sh scBootstrap_sh xmscCoroutines_sh ovm)
 
 find_program(ncroot_EXECUTABLE ncroot) 
 if(NOT ncroot_EXECUTABLE)
@@ -128,36 +129,20 @@ FIND_PATH(TLM_INCLUDE_DIR
   PATHS ${_COMMON_PATHS}
 )
 
-FIND_LIBRARY(SystemC_LIBRARY
-  NAMES systemc_sh
-  HINTS ${_SYSTEMC_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-FIND_LIBRARY(Bootstrap_LIBRARY
-  NAMES scBootstrap_sh
-  HINTS ${_SYSTEMC_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-FIND_LIBRARY(Coroutines_LIBRARY
-  NAMES xmscCoroutines_sh
-  HINTS ${_SYSTEMC_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-FIND_LIBRARY(ovm_LIBRARY
-  NAMES ovm 
-  HINTS ${_SYSTEMC_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
+foreach(LIB_NAME ${NCSC_LIBS})
+	FIND_LIBRARY(${LIB_NAME}_LIBRARY
+	  NAMES ${LIB_NAME} 
+	  HINTS ${_SYSTEMC_HINTS}
+	  PATHS ${_COMMON_PATHS}
+	)
+	set(LIB_FILE_NAMES ${LIB_FILE_NAMES} ${${LIB_NAME}_LIBRARY})
+	set(LIB_VAR_NAMES ${LIB_VAR_NAMES} ${LIB_NAME}_LIBRARY)
+endforeach()
 
 mark_as_advanced(
   	SystemC_INCLUDE_DIR
   	SystemC_LIBRARY
-	Bootstrap_LIBRARY
-	Coroutines_LIBRARY
-	ovm_LIBRARY
+	${LIB_VAR_NAMES}
 )
 
 if (SystemC_INCLUDE_DIR)
@@ -179,13 +164,16 @@ endif()
 find_package_handle_standard_args(SystemC
   FOUND_VAR SystemC_FOUND
   REQUIRED_VARS
-    SystemC_LIBRARY
+    ${LIB_VAR_NAMES}
     SystemC_INCLUDE_DIR
+    TLM_INCLUDE_DIR
   VERSION_VAR SystemC_VERSION
 )
 
 if(SystemC_FOUND)
-  set(SystemC_LIBRARIES ${SystemC_LIBRARY} ${Bootstrap_LIBRARY} ${Coroutines_LIBRARY} ${om_LIBRARY})
+  get_filename_component(NCSC_LIB_DIR ${systemc_sh_LIBRARY} DIRECTORY)
+  set(SystemC_LIBRARY_DIRS ${NCSC_LIB_DIR})
+  set(SystemC_LIBRARIES ${NCSC_LIBS})     
   set(SystemC_INCLUDE_DIRS ${TLM_INCLUDE_DIR} ${SystemC_INCLUDE_DIR})
   set(SystemC_DEFINITIONS ${PC_SystemC_CFLAGS_OTHER} -DNCSC)
 endif()
@@ -193,7 +181,9 @@ endif()
 if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
   add_library(SystemC::systemc UNKNOWN IMPORTED)
   set_target_properties(SystemC::systemc PROPERTIES
+    IMPORTED_LOCATION ${systemc_sh_LIBRARY}
     INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARIES}"
+    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
     INTERFACE_COMPILE_OPTIONS "${SystemC_DEFINITIONS}"
     INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
   )

@@ -22,11 +22,6 @@
 #include <array>
 #include <regex>
 #include <unordered_map>
-#ifdef WITH_SCV
-#include <scv.h>
-#else
-#include <scv-tr.h>
-#endif
 #include <string>
 #include <tlm/scc/tlm_mm.h>
 #include <tlm>
@@ -35,9 +30,6 @@
 namespace tlm {
 namespace scc {
 namespace scv {
-#ifndef WITH_SCV
-using namespace scv_tr;
-#endif
 
 void record(SCVNS scv_tr_handle&, tlm::tlm_generic_payload&);
 void record(SCVNS scv_tr_handle&, tlm::tlm_phase&);
@@ -50,7 +42,7 @@ namespace impl {
 template <typename TYPES = tlm::tlm_base_protocol_types> class tlm_recording_payload : public TYPES::tlm_payload_type {
 public:
     SCVNS scv_tr_handle parent;
-    uint64 id;
+    uint64_t id;
     tlm_recording_payload& operator=(const typename TYPES::tlm_payload_type& x) {
         id = reinterpret_cast<uintptr_t>(&x);
         this->set_command(x.get_command());
@@ -267,7 +259,7 @@ private:
     //! delays
     std::array<SCVNS scv_tr_generator<>*, 3> b_trTimedHandle{
         {nullptr, nullptr, nullptr}};
-    std::unordered_map<uint64, SCVNS scv_tr_handle> btx_handle_map;
+    std::unordered_map<uint64_t, SCVNS scv_tr_handle> btx_handle_map;
 
     enum DIR { FW, BW, REQ = FW, RESP = BW };
     //! non-blocking transaction recording stream handle
@@ -278,8 +270,8 @@ private:
     std::array<SCVNS scv_tr_generator<std::string, std::string>*, 2> nb_trHandle{{nullptr, nullptr}};
     //! transaction generator handle for non-blocking transactions with annotated delays
     std::array<SCVNS scv_tr_generator<>*, 2> nb_trTimedHandle{{nullptr, nullptr}};
-    std::unordered_map<uint64, SCVNS scv_tr_handle> nbtx_req_handle_map;
-    std::unordered_map<uint64, SCVNS scv_tr_handle> nbtx_last_req_handle_map;
+    std::unordered_map<uint64_t, SCVNS scv_tr_handle> nbtx_req_handle_map;
+    std::unordered_map<uint64_t, SCVNS scv_tr_handle> nbtx_last_req_handle_map;
 
     //! dmi transaction recording stream handle
     SCVNS scv_tr_stream* dmi_streamHandle{nullptr};
@@ -591,7 +583,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
 template <typename TYPES>
 void tlm_recorder<TYPES>::nbtx_cb(tlm_recording_payload& rec_parts, const typename TYPES::tlm_phase_type& phase) {
     SCVNS scv_tr_handle h;
-    std::unordered_map<uint64, SCVNS scv_tr_handle>::iterator it;
+    std::unordered_map<uint64_t, SCVNS scv_tr_handle>::iterator it;
     switch(phase) { // Now process outstanding recordings
     case tlm::BEGIN_REQ:
         h = nb_trTimedHandle[REQ]->begin_transaction(rel_str(PARENT_CHILD), rec_parts.parent);

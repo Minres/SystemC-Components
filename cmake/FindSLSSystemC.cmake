@@ -144,16 +144,18 @@ find_package_handle_standard_args(SystemC
 )
 
 if(SystemC_FOUND)
-  set(SystemC_INCLUDE_DIRS ${TLM_INCLUDE_DIR} ${SystemC_INCLUDE_DIR})
   get_filename_component(SNPS_LIB_DIR ${SnpsVP_LIBRARY} DIRECTORY)
   set(SystemC_LIBRARY_DIRS ${SNPS_LIB_DIR})
   set(SystemC_LIBRARIES ${SNPS_LIBS})     
+  set(SystemC_INCLUDE_DIRS ${TLM_INCLUDE_DIR} ${SystemC_INCLUDE_DIR})
   set(SystemC_DEFINITIONS ${PC_SystemC_CFLAGS_OTHER})
 endif()
 
 if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
   add_library(SystemC::systemc UNKNOWN IMPORTED)
+  target_link_libraries(SystemC::systemc INTERFACE ${SystemC_LIBRARIES})
   set_target_properties(SystemC::systemc PROPERTIES
+    IMPORTED_LOCATION ${SnpsVP_LIBRARY}
     INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARIES}"
     INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
     INTERFACE_COMPILE_OPTIONS "${SystemC_DEFINITIONS}"
@@ -194,6 +196,7 @@ endif()
 
 if(SCV_FOUND AND NOT TARGET SystemC::scv)
   add_library(SystemC::scv UNKNOWN IMPORTED)
+  
   set_target_properties(SystemC::scv PROPERTIES
     IMPORTED_LOCATION "${SCV_LIBRARY}"
     INTERFACE_COMPILE_OPTIONS "${PC_SCV_CFLAGS_OTHER}"

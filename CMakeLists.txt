@@ -91,6 +91,7 @@ if (ENABLE_CLANG_TIDY)
 endif()
 
 find_package(Boost REQUIRED COMPONENTS system date_time) # header only libraries must not be added here
+
 include(CheckSymbolExists)
 # Check for function getenv()
 check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)

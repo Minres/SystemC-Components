@@ -4,6 +4,8 @@ project(scv-tr VERSION 0.0.1 LANGUAGES CXX)
 
 include(GNUInstallDirs)
 
+find_package(SystemCPackage)
+
 add_library(${PROJECT_NAME} 
 	scv-tr/scv_introspection.cpp
 	scv-tr/scv_report.cpp
@@ -12,15 +14,9 @@ add_library(${PROJECT_NAME}
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-if(TARGET SystemC::systemc)
-    target_link_libraries(${PROJECT_NAME} SystemC::systemc)
-elseif(TARGET CONAN_PKG::systemc)
-    target_link_libraries(${PROJECT_NAME} CONAN_PKG::systemc)
-elseif(DEFINED SystemC_INCLUDE_DIRS)
-	target_include_directories(${PROJECT_NAME} PUBLIC ${SystemC_INCLUDE_DIRS})
-else()
-	target_include_directories(${PROJECT_NAME} PUBLIC $ENV{SYSTEMC_HOME}/include)
-endif()
+target_compile_definitions(${PROJECT_NAME} PUBLIC ${SystemC_DEFINITIONS})
+target_include_directories (${PROJECT_NAME} PUBLIC ${SystemC_INCLUDE_DIRS})    
+target_link_libraries(${PROJECT_NAME} PUBLIC ${SystemC_LIBRARIES} )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${PROJECT_VERSION}

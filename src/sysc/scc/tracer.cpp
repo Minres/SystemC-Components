@@ -27,9 +27,14 @@
 #include "scv/scv_tr_db.h"
 #ifdef WITH_SCV
 #include <scv.h>
+#ifndef SCVNS
+#define SCVNS
+#endif
 #else
 #include <scv-tr.h>
-using namespace scv_tr;
+#ifndef SCVNS
+#define SCVNS ::scv_tr::
+#endif
 #endif
 #include <cstring>
 #include <iostream>
@@ -52,25 +57,25 @@ tracer::tracer(std::string const&& name, file_type type, bool enable)
         switch(type) {
         case COMPRESSED:
 #ifdef WITH_ZLIB
-            scv_tr_compressed_init();
+            SCVNS scv_tr_compressed_init();
             ss << ".txlog";
             break;
 #endif
         case TEXT:
-            scv_tr_text_init();
+            SCVNS scv_tr_text_init();
             ss << ".txlog";
             break;
         case SQLITE:
 #if WITH_SQLITE
-            scv_tr_sqlite_init();
+            SCVNS scv_tr_sqlite_init();
             ss << ".txdb";
 #endif
             break;
         default:
             break;
         }
-        txdb = new scv_tr_db(ss.str().c_str());
-        scv_tr_db::set_default_db(txdb);
+        txdb = new SCVNS scv_tr_db(ss.str().c_str());
+        SCVNS scv_tr_db::set_default_db(txdb);
     }
 }
 

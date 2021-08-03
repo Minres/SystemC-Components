@@ -19,10 +19,14 @@
 
 #ifdef WITH_SCV
 #include <scv.h>
+#ifndef SCVNS
 #define SCVNS
+#endif
 #else
 #include <scv-tr.h>
+#ifndef SCVNS
 #define SCVNS scv_tr::
+#endif
 #endif
 #include <tlm/scc/scv/tlm_gp_data.h>
 

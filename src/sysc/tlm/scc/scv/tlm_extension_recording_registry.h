@@ -19,19 +19,20 @@
 
 #ifdef WITH_SCV
 #include <scv.h>
+#ifndef SCVNS
+#define SCVNS
+#endif
 #else
 #include <scv-tr.h>
+#ifndef SCVNS
+#define SCVNS ::scv_tr::
+#endif
 #endif
 #include <tlm>
 
 namespace tlm {
 namespace scc {
 namespace scv {
-#ifndef WITH_SCV
-#ifndef SCVNS
-#define SCVNS ::scv_tr::
-#endif
-#endif
 /*! \brief The TLM transaction extensions recorder interface
  *
  * This interface is used by the TLM transaction recorder. It can be used to
