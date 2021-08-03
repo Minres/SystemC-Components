@@ -9,6 +9,10 @@ option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentat
 
 option(BUILD_STAND_ALONE "Do a standalone build and do not rely on a parent project providing needed libraries" FALSE)
 
+option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
+
+option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
+
 include(Common)
 include(GNUInstallDirs)
 if(BUILD_STAND_ALONE)
