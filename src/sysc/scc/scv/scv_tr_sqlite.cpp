@@ -74,6 +74,7 @@ public:
                 }
                 if(nRet != SQLITE_OK)
                     throw SQLiteException(SQLITEWRAPPER_ERROR, "Unable to close database", false);
+                db = nullptr;
             } else
                 throw SQLiteException(SQLITEWRAPPER_ERROR, "Unable to close database", false);
         }
