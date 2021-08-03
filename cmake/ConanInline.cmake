@@ -64,6 +64,5 @@ macro(conan_install)
 	endif()
 	conan_cmake_install(PATH_OR_REFERENCE .
 	                    BUILD missing
-	                    REMOTE conan-center
 	                    SETTINGS ${settings})
 endmacro()
