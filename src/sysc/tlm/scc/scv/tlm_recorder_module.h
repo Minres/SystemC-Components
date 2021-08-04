@@ -52,7 +52,7 @@ public:
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
     tlm_recorder_module(sc_core::sc_module_name name, bool recording_enabled = true,
-                        scv_tr_db* tr_db = scv_tr_db::get_default_db())
+            SCVNS scv_tr_db* tr_db = SCVNS scv_tr_db::get_default_db())
     : sc_module(name)
     , tlm_recorder<TYPES>(sc_core::sc_object::name(), is.get_base_port(), ts.get_base_port(), recording_enabled,
                           tr_db) {
