@@ -303,8 +303,8 @@ struct Database : Base {
     }
 
     inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, double value) {
-//        int exponent;
-//        const double mantissa = frexp(value, &exponent);
+        //        int exponent;
+        //        const double mantissa = frexp(value, &exponent);
     }
 
     inline void writeRelation(const std::string& name, uint64_t sink_id, uint64_t src_id) {

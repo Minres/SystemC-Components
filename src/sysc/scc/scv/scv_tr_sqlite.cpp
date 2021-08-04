@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
+#include "sqlite3.h"
 #include <array>
 #include <cstdio>
 #include <iostream>
@@ -20,7 +21,6 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-#include "sqlite3.h"
 #ifdef WITH_SCV
 #include <scv.h>
 #else

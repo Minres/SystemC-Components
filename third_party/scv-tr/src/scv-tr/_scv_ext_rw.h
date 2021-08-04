@@ -109,9 +109,9 @@
 
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
 #define _SCV_INTROSPECTION_RW_FC_D_SYSC                                                                                \
-    virtual void assign(const sc_dt::sc_bv_base& v);                                                                          \
-    virtual void get_value(sc_dt::sc_bv_base& v) const;                                                                       \
-    virtual void assign(const sc_dt::sc_lv_base& v);                                                                          \
+    virtual void assign(const sc_dt::sc_bv_base& v);                                                                   \
+    virtual void get_value(sc_dt::sc_bv_base& v) const;                                                                \
+    virtual void assign(const sc_dt::sc_lv_base& v);                                                                   \
     virtual void get_value(sc_dt::sc_lv_base& v) const;
 #else
 #define _SCV_INTROSPECTION_RW_FC_D_SYSC
@@ -360,9 +360,9 @@ public:
 
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
 #define _SCV_EXT_RW_FC_COMMON_SYSC_D                                                                                   \
-    virtual void assign(const sc_dt::sc_bv_base& v);                                                                          \
-    virtual void get_value(sc_dt::sc_bv_base& v) const;                                                                       \
-    virtual void assign(const sc_dt::sc_lv_base& v);                                                                          \
+    virtual void assign(const sc_dt::sc_bv_base& v);                                                                   \
+    virtual void get_value(sc_dt::sc_bv_base& v) const;                                                                \
+    virtual void assign(const sc_dt::sc_lv_base& v);                                                                   \
     virtual void get_value(sc_dt::sc_lv_base& v) const;
 #else
 #define _SCV_EXT_RW_FC_COMMON_SYSC_D
@@ -562,25 +562,25 @@ public:                                                                         
     virtual std::string get_string() const { return this->get_instance()->to_string(); }
 
 #define _SCV_EXT_RW_FC_N_ASSIGNS_SYSC(type_name)                                                                       \
-    virtual void assign(const sc_dt::sc_bv_base& v) {                                                                         \
+    virtual void assign(const sc_dt::sc_bv_base& v) {                                                                  \
         if(this->get_bitwidth() != v.length())                                                                         \
             _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, "sc_bv_base", "assign");    \
         *(this->_get_instance()) = v;                                                                                  \
         this->trigger_value_change_cb();                                                                               \
     }                                                                                                                  \
-    virtual void get_value(sc_dt::sc_bv_base& v) const {                                                                      \
+    virtual void get_value(sc_dt::sc_bv_base& v) const {                                                               \
         if(this->get_bitwidth() != v.length())                                                                         \
             _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, "sc_bv_base", "get_value"); \
         this->initialize();                                                                                            \
         v = *(this->_get_instance());                                                                                  \
     }                                                                                                                  \
-    virtual void assign(const sc_dt::sc_lv_base& v) {                                                                         \
+    virtual void assign(const sc_dt::sc_lv_base& v) {                                                                  \
         if(this->get_bitwidth() != v.length())                                                                         \
             _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, "sc_lv_base", "assign");    \
         *(this->_get_instance()) = v;                                                                                  \
         this->trigger_value_change_cb();                                                                               \
     }                                                                                                                  \
-    virtual void get_value(sc_dt::sc_lv_base& v) const {                                                                      \
+    virtual void get_value(sc_dt::sc_lv_base& v) const {                                                               \
         if(this->get_bitwidth() != v.length())                                                                         \
             _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, "sc_lv_base", "get_value"); \
         this->initialize();                                                                                            \

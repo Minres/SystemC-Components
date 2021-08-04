@@ -24,7 +24,9 @@
 #ifdef WITH_SCV
 class scv_tr_db;
 #else
-namespace scv_tr {class scv_tr_db; }
+namespace scv_tr {
+class scv_tr_db;
+}
 #endif
 
 namespace sc_core {

@@ -48,8 +48,8 @@
 #define SCV_TR_VERSION_RELEASE_DATE SCV_TR_STRINGIFY_HELPER_(SCV_TR_SHORT_RELEASE_DATE)
 
 #define SCV_TR_VERSION_PRERELEASE "" // nothing
-#define SCV_TR_VERSION                                                                                                    \
-    SCV_TR_STRINGIFY_HELPER_(SCV_TR_VERSION_MAJOR.SCV_TR_VERSION_MINOR.SCV_TR_VERSION_PATCH)                                       \
+#define SCV_TR_VERSION                                                                                                 \
+    SCV_TR_STRINGIFY_HELPER_(SCV_TR_VERSION_MAJOR.SCV_TR_VERSION_MINOR.SCV_TR_VERSION_PATCH)                           \
     "-" SCV_TR_VERSION_ORIGINATOR
 
 #endif

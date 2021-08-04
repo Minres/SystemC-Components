@@ -5,8 +5,8 @@
  *      Author: eyck
  */
 
-#include <cstring>
 #include "value_registry.h"
+#include <cstring>
 #include <sstream>
 #include <string>
 #include <sysc/datatypes/fx/sc_fxnum.h>
@@ -25,7 +25,7 @@ auto operator<<(std::ostream& os, const sc_event& evt) -> std::ostream& {
 
 #if SC_VERSION_MAJOR <= 2 && SC_VERSION_MINOR <= 3 && SC_VERSION_PATCH < 2
 #define OVERRIDE
-#elif defined (NCSC)
+#elif defined(NCSC)
 #define OVERRIDE
 #else
 #define OVERRIDE override
@@ -150,7 +150,7 @@ public:
 
     sc_dt::uint64 dummy = 0;
 #ifdef NCSC
-    void set_time_unit( int exponent10_seconds ) override {}
+    void set_time_unit(int exponent10_seconds) override {}
 #endif
 };
 

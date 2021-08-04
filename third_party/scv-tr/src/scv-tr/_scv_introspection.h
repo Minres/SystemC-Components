@@ -433,10 +433,10 @@ public:                                                                         
         this->trigger_value_change_cb();                                                                               \
         return *this;                                                                                                  \
     }                                                                                                                  \
-    _SCV_BASE_ASSIGN(const sc_dt::sc_signed&)                                                                                 \
-    _SCV_BASE_ASSIGN(const sc_dt::sc_signed_subref&)                                                                          \
-    _SCV_BASE_ASSIGN(const sc_dt::sc_unsigned&)                                                                               \
-    _SCV_BASE_ASSIGN(const sc_dt::sc_unsigned_subref&)                                                                        \
+    _SCV_BASE_ASSIGN(const sc_dt::sc_signed&)                                                                          \
+    _SCV_BASE_ASSIGN(const sc_dt::sc_signed_subref&)                                                                   \
+    _SCV_BASE_ASSIGN(const sc_dt::sc_unsigned&)                                                                        \
+    _SCV_BASE_ASSIGN(const sc_dt::sc_unsigned_subref&)                                                                 \
     _SCV_BASE_ASSIGN(const char*)                                                                                      \
     _SCV_BASE_ASSIGN(int64)                                                                                            \
     _SCV_BASE_ASSIGN(uint64)                                                                                           \
@@ -445,10 +445,10 @@ public:                                                                         
     _SCV_BASE_ASSIGN(int)                                                                                              \
     _SCV_BASE_ASSIGN(unsigned int)                                                                                     \
     _SCV_BASE_ASSIGN(double)                                                                                           \
-    _SCV_BASE_ASSIGN(const sc_dt::sc_int_base&)                                                                               \
-    _SCV_BASE_ASSIGN(const sc_dt::sc_uint_base&)                                                                              \
-    _SCV_BASE_ASSIGN(const sc_dt::sc_bv_base&)                                                                                \
-    _SCV_BASE_ASSIGN(const sc_dt::sc_lv_base&)                                                                                \
+    _SCV_BASE_ASSIGN(const sc_dt::sc_int_base&)                                                                        \
+    _SCV_BASE_ASSIGN(const sc_dt::sc_uint_base&)                                                                       \
+    _SCV_BASE_ASSIGN(const sc_dt::sc_bv_base&)                                                                         \
+    _SCV_BASE_ASSIGN(const sc_dt::sc_lv_base&)                                                                         \
     _SCV_INT_FX_ASSIGN()                                                                                               \
     return_type& operator++() {                                                                                        \
         ++*this->_get_instance();                                                                                      \
@@ -484,11 +484,11 @@ public:                                                                         
     const std::string to_string(sc_numrep numrep, bool w_prefix) const {                                               \
         return this->_get_instance()->to_string(numrep, w_prefix);                                                     \
     }                                                                                                                  \
-    void scan(std::istream& is = std::cin) {                                                                                     \
+    void scan(std::istream& is = std::cin) {                                                                           \
         this->_get_instance()->scan(is);                                                                               \
         this->trigger_value_change_cb();                                                                               \
     }                                                                                                                  \
-    void dump(std::ostream& os = std::cout) const { this->_get_instance()->dump(os); }                                           \
+    void dump(std::ostream& os = std::cout) const { this->_get_instance()->dump(os); }                                 \
     _SCV_MAP(int, length)                                                                                              \
     _SCV_MAP(bool, iszero)                                                                                             \
     _SCV_MAP(bool, sign)                                                                                               \
@@ -642,7 +642,7 @@ public:                                                                         
     const std::string to_string(sc_numrep numrep, bool w_prefix) const {                                               \
         return this->_get_instance()->to_string(numrep, w_prefix);                                                     \
     }                                                                                                                  \
-    void scan(std::istream& is = std::cin) {                                                                                     \
+    void scan(std::istream& is = std::cin) {                                                                           \
         this->_get_instance()->scan(is);                                                                               \
         this->trigger_value_change_cb();                                                                               \
     }                                                                                                                  \

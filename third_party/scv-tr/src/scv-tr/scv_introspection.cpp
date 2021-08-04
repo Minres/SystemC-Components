@@ -156,7 +156,7 @@ void _scv_extension_util::print(std::ostream& o, int details, int indent) const 
             if(details == 0)
                 o << space << v << std::endl;
             else
-                o << space << get_short_name() << ":" << v <<std::endl;
+                o << space << get_short_name() << ":" << v << std::endl;
             return;
         }
 #endif
@@ -1043,5 +1043,5 @@ _SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_uint_base, sc_uint_base);
 _SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_lv_base, sc_lv_base);
 _SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_bv_base, sc_bv_base);
 #endif
-}
+} // namespace scv_tr
 //////////////////////////////////////////////////////////////////////

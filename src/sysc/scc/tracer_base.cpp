@@ -20,10 +20,10 @@
  *      Author: developer
  */
 
-#include <cstring>
+#include "tracer_base.h"
 #include "sc_variable.h"
 #include "traceable.h"
-#include "tracer_base.h"
+#include <cstring>
 #include <systemc>
 
 using namespace sc_core;

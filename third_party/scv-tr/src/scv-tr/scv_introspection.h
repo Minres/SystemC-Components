@@ -50,10 +50,10 @@
 
 #include "scv_report.h"
 #include <cassert>
+#include <cstring>
 #include <list>
 #include <memory>
 #include <string>
-#include <cstring>
 namespace scv_tr {
 
 // specific stuff for randomization extensions
@@ -397,7 +397,7 @@ public:
     scv_extensions() {                                                                                                 \
         static bool dummy = _init();                                                                                   \
         if(0)                                                                                                          \
-            std::cout << dummy;                                                                                             \
+            std::cout << dummy;                                                                                        \
     }                                                                                                                  \
     scv_extensions(const scv_extensions& rhs) { _set_instance(rhs._get_instance()); }                                  \
     virtual ~scv_extensions() {}                                                                                       \
@@ -446,5 +446,5 @@ template <typename T> const scv_extensions<T> scv_get_const_extensions(const T& 
     e._set_instance((T*)&d);
     return e;
 };
-}
+} // namespace scv_tr
 #endif

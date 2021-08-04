@@ -271,7 +271,7 @@ int sc_main(int argc, char* argv[]) {
     ///////////////////////////////////////////////////////////////////////////
     scc::configurable_tracer trace("axi_pinlevel",
                                    scc::tracer::file_type::NONE, // bit3-bit1 define the kind of transaction trace
-                                   true,                            // bit0 enables vcd
+                                   true,                         // bit0 enables vcd
                                    true);
 #endif
 #ifdef WITH_SCV

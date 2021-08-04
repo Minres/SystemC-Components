@@ -16,10 +16,10 @@
 
 #pragma once
 
+#include "scc/clock_if_mixins.h"
 #include "scc/memory.h"
 #include "scc/register.h"
 #include "scc/resetable.h"
 #include "scc/resource_access_if.h"
 #include "scc/router.h"
 #include "scc/tlm_target.h"
-#include "scc/clock_if_mixins.h"

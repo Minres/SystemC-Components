@@ -21,11 +21,11 @@
 #include "tlm_recording_extension.h"
 #include <array>
 #include <regex>
-#include <unordered_map>
 #include <string>
 #include <tlm/scc/tlm_mm.h>
 #include <tlm>
 #include <tlm_utils/peq_with_cb_and_phase.h>
+#include <unordered_map>
 
 namespace tlm {
 namespace scc {
@@ -257,8 +257,7 @@ private:
     SCVNS scv_tr_stream* b_streamHandleTimed{nullptr};
     //! transaction generator handle for blocking transactions with annotated
     //! delays
-    std::array<SCVNS scv_tr_generator<>*, 3> b_trTimedHandle{
-        {nullptr, nullptr, nullptr}};
+    std::array<SCVNS scv_tr_generator<>*, 3> b_trTimedHandle{{nullptr, nullptr, nullptr}};
     std::unordered_map<uint64_t, SCVNS scv_tr_handle> btx_handle_map;
 
     enum DIR { FW, BW, REQ = FW, RESP = BW };
@@ -283,35 +282,35 @@ public:
     void initialize_streams() {
         if(isRecordingEnabled() && !b_streamHandle) {
             b_streamHandle = new SCVNS scv_tr_stream((fixed_basename + "_bl").c_str(), "[TLM][base-protocol][b]", m_db);
-            b_trHandle[tlm::TLM_READ_COMMAND] =
-                new SCVNS scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("read", *b_streamHandle, "start_delay", "end_delay");
+            b_trHandle[tlm::TLM_READ_COMMAND] = new SCVNS scv_tr_generator<sc_dt::uint64, sc_dt::uint64>(
+                "read", *b_streamHandle, "start_delay", "end_delay");
             b_trHandle[tlm::TLM_WRITE_COMMAND] = new SCVNS scv_tr_generator<sc_dt::uint64, sc_dt::uint64>(
                 "write", *b_streamHandle, "start_delay", "end_delay");
             b_trHandle[tlm::TLM_IGNORE_COMMAND] = new SCVNS scv_tr_generator<sc_dt::uint64, sc_dt::uint64>(
                 "ignore", *b_streamHandle, "start_delay", "end_delay");
             if(enableTimedTracing.value) {
-                b_streamHandleTimed =
-                    new SCVNS scv_tr_stream((fixed_basename + "_bl_timed").c_str(), "[TLM][base-protocol][b][timed]", m_db);
+                b_streamHandleTimed = new SCVNS scv_tr_stream((fixed_basename + "_bl_timed").c_str(),
+                                                              "[TLM][base-protocol][b][timed]", m_db);
                 b_trTimedHandle[tlm::TLM_READ_COMMAND] = new SCVNS scv_tr_generator<>("read", *b_streamHandleTimed);
                 b_trTimedHandle[tlm::TLM_WRITE_COMMAND] = new SCVNS scv_tr_generator<>("write", *b_streamHandleTimed);
                 b_trTimedHandle[tlm::TLM_IGNORE_COMMAND] = new SCVNS scv_tr_generator<>("ignore", *b_streamHandleTimed);
             }
-            nb_streamHandle = new SCVNS scv_tr_stream((fixed_basename + "_nb").c_str(), "[TLM][base-protocol][nb]", m_db);
+            nb_streamHandle =
+                new SCVNS scv_tr_stream((fixed_basename + "_nb").c_str(), "[TLM][base-protocol][nb]", m_db);
             nb_trHandle[FW] = new SCVNS scv_tr_generator<std::string, std::string>("fw", *nb_streamHandle, "tlm_phase",
-                                                                             "tlm_phase[return_path]");
+                                                                                   "tlm_phase[return_path]");
             nb_trHandle[BW] = new SCVNS scv_tr_generator<std::string, std::string>("bw", *nb_streamHandle, "tlm_phase",
-                                                                             "tlm_phase[return_path]");
+                                                                                   "tlm_phase[return_path]");
             if(enableTimedTracing.value) {
-                nb_streamHandleTimed =
-                    new SCVNS scv_tr_stream((fixed_basename + "_nb_timed").c_str(), "[TLM][base-protocol][nb][timed]", m_db);
+                nb_streamHandleTimed = new SCVNS scv_tr_stream((fixed_basename + "_nb_timed").c_str(),
+                                                               "[TLM][base-protocol][nb][timed]", m_db);
                 nb_trTimedHandle[FW] = new SCVNS scv_tr_generator<>("request", *nb_streamHandleTimed);
                 nb_trTimedHandle[BW] = new SCVNS scv_tr_generator<>("response", *nb_streamHandleTimed);
             }
             if(enableDmiTracing.value) {
                 dmi_streamHandle =
                     new SCVNS scv_tr_stream((fixed_basename + "_dmi").c_str(), "[TLM][base-protocol][dmi]", m_db);
-                dmi_trGetHandle =
-                    new SCVNS scv_tr_generator<>("get", *dmi_streamHandle);
+                dmi_trGetHandle = new SCVNS scv_tr_generator<>("get", *dmi_streamHandle);
                 dmi_trInvalidateHandle = new SCVNS scv_tr_generator<sc_dt::uint64, sc_dt::uint64>(
                     "invalidate", *dmi_streamHandle, "start_addr", "end_addr");
             }

@@ -95,4 +95,4 @@ bool _scv_message::setup() {
 #undef _SCV_DEFERR
     return true;
 }
-}
+} // namespace scv_tr

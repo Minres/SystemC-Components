@@ -356,7 +356,8 @@ public:
     // specify the values of the end attributes.
     //
     template <class T_end>
-    void end_transaction(const scv_tr_handle& t, const T_end& end_attribute_values, const sc_core::sc_time& end_sc_time) {
+    void end_transaction(const scv_tr_handle& t, const T_end& end_attribute_values,
+                         const sc_core::sc_time& end_sc_time) {
         scv_extensions<T_end> ext = scv_get_const_extensions(end_attribute_values);
         this->_end_transaction(&ext, end_sc_time);
     }
@@ -557,7 +558,8 @@ private:
     _scv_tr_generator_core* _scv_tr_generator_core_p;
 
 public:
-    scv_tr_handle _begin_transaction(const scv_extensions_if*, const sc_core::sc_time&, scv_tr_relation_handle_t relation_handle,
+    scv_tr_handle _begin_transaction(const scv_extensions_if*, const sc_core::sc_time&,
+                                     scv_tr_relation_handle_t relation_handle,
                                      const scv_tr_handle* other_handle_p = NULL) const;
 
     void _end_transaction(const scv_tr_handle& t, const scv_extensions_if*, const sc_core::sc_time& end_sc_time) const;
@@ -822,7 +824,8 @@ public:
     // End a transaction at a simulation time that is in the past, and
     // specify the values of the end attributes.
     //
-    void end_transaction(const scv_tr_handle& t, const T_end& end_attribute_values, const sc_core::sc_time& end_sc_time) {
+    void end_transaction(const scv_tr_handle& t, const T_end& end_attribute_values,
+                         const sc_core::sc_time& end_sc_time) {
         scv_extensions<T_end> ext = scv_get_const_extensions(end_attribute_values);
         this->_end_transaction(t, &ext, end_sc_time);
     }
@@ -838,5 +841,5 @@ private:
 };
 
 // ----------------------------------------------------------------------------
-}
+} // namespace scv_tr
 #endif // SCV_TR_SCV_TR_H

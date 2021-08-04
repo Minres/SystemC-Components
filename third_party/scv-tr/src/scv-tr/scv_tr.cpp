@@ -55,8 +55,8 @@
 
 #include "scv_report.h"
 #include <list>
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
 namespace scv_tr {
 
 // ----------------------------------------------------------------------------
@@ -79,7 +79,7 @@ static void scv_tr_null_scv_tr_db_message() {
 
 // ----------------------------------------------------------------------------
 
-using _scv_tr_void_function_t = void ();
+using _scv_tr_void_function_t = void();
 
 class _scv_tr_callback_item_t {
 public:
@@ -96,7 +96,7 @@ public:
 
 int _scv_tr_callback_item_t::id_counter = 0;
 
-using _scv_tr_callback_list = std::list<_scv_tr_callback_item_t *>;
+using _scv_tr_callback_list = std::list<_scv_tr_callback_item_t*>;
 
 // ----------------------------------------------------------------------------
 
@@ -381,8 +381,7 @@ static void process_record_attribute_callbacks(const scv_tr_handle& obj, const c
                 // corrupt the iterator.
                 need_cleanup = true;
             } else {
-                auto* my_callback_fp =
-                    (scv_tr_handle::callback_record_attribute_function*)((*i)->callback_fp);
+                auto* my_callback_fp = (scv_tr_handle::callback_record_attribute_function*)((*i)->callback_fp);
                 my_callback_fp(obj, attribute_name, my_exts_p, (*i)->user_data_p);
             }
         }
@@ -427,8 +426,7 @@ static void process_relation_callbacks(const scv_tr_handle& obj, const scv_tr_ha
                 // corrupt the iterator.
                 need_cleanup = true;
             } else {
-                auto* my_callback_fp =
-                    (scv_tr_handle::callback_relation_function*)((*i)->callback_fp);
+                auto* my_callback_fp = (scv_tr_handle::callback_relation_function*)((*i)->callback_fp);
 
                 my_callback_fp(obj, obj_2, (*i)->user_data_p, relation_handle);
             }
@@ -1058,7 +1056,8 @@ const sc_time& scv_tr_handle::get_end_sc_time() const {
 // ----------------------------------------------------------------------------
 
 const scv_tr_stream& scv_tr_handle::get_scv_tr_stream() const {
-    if((this->_scv_tr_handle_core_p == nullptr) || (this->_scv_tr_handle_core_p->my_scv_tr_generator_core_p == nullptr)) {
+    if((this->_scv_tr_handle_core_p == nullptr) ||
+       (this->_scv_tr_handle_core_p->my_scv_tr_generator_core_p == nullptr)) {
         scv_tr_null_scv_tr_db_message();
         static auto* tmp_stream_p = new scv_tr_stream();
         return *tmp_stream_p;
@@ -1070,7 +1069,8 @@ const scv_tr_stream& scv_tr_handle::get_scv_tr_stream() const {
 // ----------------------------------------------------------------------------
 
 const scv_tr_generator_base& scv_tr_handle::get_scv_tr_generator_base() const {
-    if((this->_scv_tr_handle_core_p == nullptr) || (this->_scv_tr_handle_core_p->my_scv_tr_generator_core_p == nullptr)) {
+    if((this->_scv_tr_handle_core_p == nullptr) ||
+       (this->_scv_tr_handle_core_p->my_scv_tr_generator_core_p == nullptr)) {
         scv_tr_null_scv_tr_db_message();
         static auto* tmp_generator_base_p = new scv_tr_generator_base();
         return *tmp_generator_base_p;
@@ -1161,7 +1161,8 @@ scv_tr_handle scv_tr_generator_base::_begin_transaction(const scv_extensions_if*
 
     scv_tr_handle tp;
 
-    if((this->_scv_tr_generator_core_p == nullptr) || (this->_scv_tr_generator_core_p->my_scv_tr_stream_core_p == nullptr) ||
+    if((this->_scv_tr_generator_core_p == nullptr) ||
+       (this->_scv_tr_generator_core_p->my_scv_tr_stream_core_p == nullptr) ||
        (this->_scv_tr_generator_core_p->my_scv_tr_stream_core_p->my_scv_tr_db_core_p == nullptr)) {
 #ifdef scv_tr_TRACE
         cout << "Leaving scv_tr_generator_base::_begin_transaction, NULL core\n";
@@ -1387,7 +1388,8 @@ const scv_extensions_if* scv_tr_generator_base::get_end_exts_p() const {
 // ----------------------------------------------------------------------------
 
 const scv_tr_stream& scv_tr_generator_base::get_scv_tr_stream() const {
-    if((this->_scv_tr_generator_core_p == nullptr) || (this->_scv_tr_generator_core_p->my_scv_tr_stream_core_p == nullptr)) {
+    if((this->_scv_tr_generator_core_p == nullptr) ||
+       (this->_scv_tr_generator_core_p->my_scv_tr_stream_core_p == nullptr)) {
         scv_tr_null_scv_tr_db_message();
 
         // This will be an invalid scv_tr_stream:
@@ -1478,5 +1480,5 @@ const scv_tr_db* scv_tr_stream::get_scv_tr_db() const {
 }
 
 // ----------------------------------------------------------------------------
-}
+} // namespace scv_tr
 // ----------------------------------------------------------------------------

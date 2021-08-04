@@ -89,5 +89,5 @@ public:
 private:
     static bool setup();
 };
-}
+} // namespace scv_tr
 #endif // ! _SCV_TR_REPORT_H
