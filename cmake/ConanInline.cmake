@@ -62,7 +62,14 @@ macro(conan_install)
 	if(CMAKE_CXX_STANDARD)
 		set(settings ${settings} compiler.cppstd=${CMAKE_CXX_STANDARD})
 	endif()
+	if (NOT "$ENV{CONAN_PROFILE_NAME}" STREQUAL "")
+    	set(CONAN_PROFILE "$ENV{CONAN_PROFILE_NAME}" CACHE INTERNAL "Copied from environment variable")
+    else()
+    	set(CONAN_PROFILE "default" CACHE INTERNAL "Copied from environment variable")
+   endif()
+	
 	conan_cmake_install(PATH_OR_REFERENCE .
 	                    BUILD missing
+	                    PROFILE ${CONAN_PROFILE}
 	                    SETTINGS ${settings})
 endmacro()
