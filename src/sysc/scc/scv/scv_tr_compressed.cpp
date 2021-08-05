@@ -79,6 +79,7 @@
 // clang-format off
 #include <array>
 #include <zlib.h>
+#include <sstream>
 #ifdef WITH_SCV
 #include <scv.h>
 #else
@@ -119,13 +120,17 @@ static void scv_tr_db_cbf(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reaso
         if(my_text_file_p == nullptr) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open text recording file");
         } else {
-            std::clog << "TB Transaction Recording has started, file = " << my_text_file_name << std::endl;
+            std::stringstream ss;
+            ss << "opening file " << my_text_file_name;
+            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL_INFO, ss.str().c_str());
         }
         break;
 
     case scv_tr_db::DELETE:
         if(my_text_file_p != nullptr) {
-            std::clog << "Transaction Recording is closing file: " << my_text_file_name << std::endl;
+            std::stringstream ss;
+            ss << "closing file " << my_text_file_name;
+            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL_INFO, ss.str().c_str());
             gzclose(my_text_file_p);
             my_text_file_p = nullptr;
         }

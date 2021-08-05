@@ -59,6 +59,9 @@ _SCV_DEFERR(INTERNAL_ERROR, 41, "An internal error has occurred; please submit a
 // Transactions
 //
 
+_SCV_DEFERR(TRANSACTION_RECORDING_INTERNAL_INFO, 33, "TB Transaction Recording: %s'",
+            sc_core::SC_INFO)
+
 _SCV_DEFERR(TRANSACTION_RECORDING_INTERNAL, 34, "An internal error occurred in transaction recording:\n'%s'",
             sc_core::SC_ERROR)
 

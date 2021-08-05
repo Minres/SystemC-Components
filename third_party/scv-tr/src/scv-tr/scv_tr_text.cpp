@@ -78,6 +78,7 @@ tx_relation <"relation_name"> <tx_id_1> <tx_id_2>
 #include "scv_introspection.h"
 #include "scv_tr.h"
 #include <string>
+#include <sstream>
 
 namespace scv_tr {
 // ----------------------------------------------------------------------------
@@ -113,13 +114,17 @@ static void scv_tr_db_cbf(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reaso
         if(my_text_file_p == nullptr) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open text recording file");
         } else {
-            std::cout << "TB Transaction Recording has started, file = " << my_text_file_name << std::endl;
+            std::stringstream ss;
+            ss << "opening file " << my_text_file_name;
+            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL_INFO, ss.str().c_str());
         }
         break;
 
     case scv_tr_db::DELETE:
         if(my_text_file_p != nullptr) {
-            std::cout << "Transaction Recording is closing file: " << my_text_file_name << std::endl;
+            std::stringstream ss;
+            ss << "closing file " << my_text_file_name;
+            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL_INFO, ss.str().c_str());
             fclose(my_text_file_p);
 
             my_text_file_p = nullptr;

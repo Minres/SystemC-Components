@@ -35,7 +35,7 @@ void record(SCVNS scv_tr_handle& handle, tlm::tlm_generic_payload& o) {
     handle.record_attribute("trans.byte_enable_length", o.get_byte_enable_length());
     handle.record_attribute("trans.streaming_width", o.get_streaming_width());
     handle.record_attribute("trans.gp_option", gp_option2char.at(o.get_gp_option()));
-    if(o.get_data_length() < 8) {
+    if(o.get_data_length() < 8 && o.get_data_ptr()) {
         uint64_t buf = 0;
         // FIXME: this is endianess dependent
         for(size_t i = 0; i < o.get_data_length(); i++)
