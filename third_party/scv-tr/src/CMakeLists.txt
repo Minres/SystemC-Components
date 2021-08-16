@@ -13,10 +13,11 @@ add_library(${PROJECT_NAME}
 	scv-tr/scv_tr.cpp
 )
 
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
 if(TARGET SystemC::systemc)
 	target_link_libraries(${PROJECT_NAME} PUBLIC SystemC::systemc)
 else()
-	target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 	target_compile_definitions(${PROJECT_NAME} PUBLIC ${SystemC_DEFINITIONS})
 	target_include_directories (${PROJECT_NAME} PUBLIC ${SystemC_INCLUDE_DIRS})
 	if(SystemC_LIBRARY_DIRS)
