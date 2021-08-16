@@ -93,6 +93,8 @@ constexpr size_t bit_count(uint32_t u) {
     return ((uCount + (uCount >> 3)) & 030707070707) % 63;
 }
 #endif
+
+constexpr bool hasOddParity(uint32_t u) { return bit_count(u)%2;}
 /**
  * split a given string using specified separator
  *
