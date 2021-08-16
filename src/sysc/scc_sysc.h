@@ -32,6 +32,7 @@
 #include "scc/sc_variable.h"
 #include "scc/scv/scv_tr_db.h"
 #include "scc/scv/sqlite3.h"
+#include "scc/tick2time.h"
 #include "scc/time2tick.h"
 #include "scc/traceable.h"
 #include "scc/tracer.h"

@@ -34,6 +34,7 @@ set(LIB_SOURCES
     scc/ordered_semaphore.cpp
     scc/value_registry.cpp
     scc/mt19937_rng.cpp
+    scc/time_n_tick.cpp
     scc/scv/scv_tr_binary.cpp
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp

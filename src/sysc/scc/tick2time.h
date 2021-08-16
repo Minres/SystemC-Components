@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2018-2021 MINRES Technologies GmbH
+ * Copyright 2021 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,16 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _SCC_TIME2TICK_H_
-#define _SCC_TIME2TICK_H_
+#ifndef _SCC_TICK2TIME_H_
+#define _SCC_TICK2TIME_H_
 
+//clang-format off
 #include "utilities.h"
+#include <systemc>
+#ifdef CWR_SYSTEMC
+#include "scml_clock/scml_clock_if.h"
+#endif
+//clang-format on
 
 namespace scc {
 /**
@@ -25,26 +31,32 @@ namespace scc {
  * @brief translate a tick-less clock (sc_time based) to boolean clock
  *
  */
-struct time2tick : public sc_core::sc_module {
-    //! yes, we have processes
-    SC_HAS_PROCESS(time2tick); // NOLINT
-    //! the clock input
-    sc_core::sc_in<sc_core::sc_time> clk_i{"clk_i"};
+struct tick2time : public sc_core::sc_module
+#ifdef CWR_SYSTEMC
+, public scml_clock_observer
+#endif
+{
     //! the clock output
-    sc_core::sc_out<bool> clk_o{"clk_o"};
+    sc_core::sc_out<sc_core::sc_time> clk_o{"clk_o"};
+    //! the clock input
+    sc_core::sc_in<bool> clk_i{"clk_i"};
     /**
      * the constructor
      *
      * @param nm the name
      */
-    explicit time2tick(sc_core::sc_module_name nm)
-    : sc_core::sc_module(nm) {
-        SC_THREAD(clocker);
-    }
+    explicit tick2time(sc_core::sc_module_name nm);
+
+protected:
+    void end_of_elaboration() override;
 
 private:
     sc_core::sc_time clk_period;
-	void clocker();
+    sc_core::sc_time last_tick;
+#ifdef CWR_SYSTEMC
+    void handle_clock_parameters_updated(scml_clock_if* clk_if);
+    void handle_clock_deleted(scml_clock_if*) override;
+#endif
 };
 } // namespace scc
-#endif /* _SCC_TIME2TICK_H_ */
+#endif /* _SCC_TICK2TIME_H_ */
