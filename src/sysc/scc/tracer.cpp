@@ -51,25 +51,31 @@ tracer::tracer(std::string const&& name, file_type type, bool enable)
         trf->set_time_unit(1, SC_PS);
         owned = true;
     }
-    if(type != NONE) {
+    init_scv_db(type, std::move(name));
+}
+
+tracer::tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf)
+: tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
+, txdb(nullptr) {
+    trf = tf;
+    owned = false;
+    init_scv_db(type, std::move(name));
+}
+
+void tracer::init_scv_db(file_type type, std::string const&& name) {
+    if (type != NONE) {
         std::stringstream ss;
         ss << name;
-        switch(type) {
+        switch (type) {
         case COMPRESSED:
-#ifdef WITH_ZLIB
             SCVNS scv_tr_compressed_init();
             ss << ".txlog";
             break;
-#endif
         case TEXT:
             SCVNS scv_tr_text_init();
             ss << ".txlog";
             break;
         case SQLITE:
-#if WITH_SQLITE
-            SCVNS scv_tr_sqlite_init();
-            ss << ".txdb";
-#endif
             break;
         default:
             break;
