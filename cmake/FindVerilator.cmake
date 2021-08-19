@@ -29,7 +29,7 @@ endif()
 
 find_package(PackageHandleStandardArgs REQUIRED)
 
-include(FindSystemCPackage)
+include(SystemCPackage)
 
 find_program(VERILATOR_EXECUTABLE verilator
     HINTS $ENV{VERILATOR_ROOT}

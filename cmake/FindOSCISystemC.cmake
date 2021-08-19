@@ -171,26 +171,28 @@ if (SystemC_INCLUDE_DIR)
 endif()
 
 
-find_package_handle_standard_args(SystemC
-  FOUND_VAR SystemC_FOUND
+find_package_handle_standard_args(OSCISystemC
   REQUIRED_VARS
     SystemC_LIBRARY
     SystemC_INCLUDE_DIR
   VERSION_VAR SystemC_VERSION
 )
 
-if(SystemC_FOUND)
+if(OSCISystemC_FOUND)
+  set(SystemC_FOUND ${OSCISystemC_FOUND})
   set(SystemC_LIBRARIES ${SystemC_LIBRARY})
+  get_filename_component(SystemC_LIBRARY_DIR ${SystemC_LIBRARY} DIRECTORY )
   set(SystemC_INCLUDE_DIRS ${SystemC_INCLUDE_DIR})
   set(SystemC_DEFINITIONS ${PC_SystemC_CFLAGS_OTHER})
 endif()
 
 if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
-  message("Create target SystemC::systemc")
+  #message("Create target SystemC::systemc")
   add_library(SystemC::systemc UNKNOWN IMPORTED)
   set_target_properties(SystemC::systemc PROPERTIES
     IMPORTED_LOCATION "${SystemC_LIBRARIES}"
-    INTERFACE_COMPILE_OPTIONS "${SystemC_DEFINITIONS}"
+    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIR}
+    INTERFACE_COMPILE_OPTIONS "${SystemC_DEFINITIONS}"    
     INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
   )
 endif()
@@ -213,13 +215,9 @@ mark_as_advanced(
 )
 
 if(NOT SCV_INCLUDE_DIR MATCHES "SCV_INCLUDE_DIR-NOTFOUND")
-	find_package_handle_standard_args(SCV
-	  FOUND_VAR SCV_FOUND
-	  REQUIRED_VARS
-	    SCV_LIBRARY
-	    SCV_INCLUDE_DIR
-	  VERSION_VAR 2.0.1
-	)
+    if(SCV_INCLUDE_DIR AND SCV_LIBRARY)
+       set(CCI_FOUND TRUE)
+    endif()
 	
 	if(SCV_FOUND)
 	  set(SCV_LIBRARIES ${SCV_LIBRARY})
@@ -228,6 +226,7 @@ if(NOT SCV_INCLUDE_DIR MATCHES "SCV_INCLUDE_DIR-NOTFOUND")
 	endif()
 	
 	if(SCV_FOUND AND NOT TARGET SystemC::scv)
+      #message("Create target SystemC::scv")
 	  add_library(SystemC::scv UNKNOWN IMPORTED)
 	  set_target_properties(SystemC::scv PROPERTIES
 	    IMPORTED_LOCATION "${SCV_LIBRARY}"
@@ -255,13 +254,9 @@ mark_as_advanced(
 )
 
 if(NOT CCI_INCLUDE_DIR MATCHES "CCI_INCLUDE_DIR-NOTFOUND")
-	find_package_handle_standard_args(CCI
-	  FOUND_VAR CCI_FOUND
-	  REQUIRED_VARS
-	    CCI_LIBRARY
-	    CCI_INCLUDE_DIR
-	  VERSION_VAR 1.0.0
-	)
+	if(CCI_INCLUDE_DIR AND CCI_LIBRARY)
+	   set(CCI_FOUND TRUE)
+	endif()
 	
 	if(CCI_FOUND)
 	  set(CCI_LIBRARIES ${CCI_LIBRARY})
@@ -270,6 +265,7 @@ if(NOT CCI_INCLUDE_DIR MATCHES "CCI_INCLUDE_DIR-NOTFOUND")
 	endif()
 	
 	if(CCI_FOUND AND NOT TARGET SystemC::cci)
+      #message("Create target SystemC::cci")
 	  add_library(SystemC::cci UNKNOWN IMPORTED)
 	  set_target_properties(SystemC::cci PROPERTIES
 	    IMPORTED_LOCATION "${CCI_LIBRARY}"

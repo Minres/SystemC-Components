@@ -110,7 +110,7 @@ else()
     set_property(TARGET spdlog_local PROPERTY INTERFACE_COMPILE_DEFINITIONS SPDLOG_HEADER_ONLY)
     set_property(TARGET spdlog_local PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third_party)
     set(SPDLOG_TARGET spdlog_local)
-    message("Using built-in version of spdlog")
+    message(STATUS "${PROJECT_NAME}: using built-in version of spdlog")
 endif()
 
 # check which version of fmt to use
@@ -122,7 +122,7 @@ else()
     add_library(fmt_local INTERFACE IMPORTED)
     set_property(TARGET fmt_local PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third_party/spdlog)
     set(FMT_TARGET fmt_local)
-    message("Using built-in version of fmt")
+    message(STATUS "${PROJECT_NAME}: using built-in version of fmt")
 endif()
 
 # Define two variables in order not to repeat ourselves.
