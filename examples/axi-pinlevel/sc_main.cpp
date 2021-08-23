@@ -16,7 +16,7 @@
 #include "scc/report.h"
 #include <tlm/scc/tlm_id.h>
 #include <array>
-#include <axi/pe/simple_initiator.h>
+#include <axi/pe/axi_initiator.h>
 #include <axi/pe/simple_target.h>
 #include <axi/axi_pin2tlm_adaptor.h>
 #include <axi/axi_tlm2pin_adaptor.h>
@@ -32,6 +32,7 @@ const unsigned SOCKET_WIDTH = 64;
 class testbench : public sc_core::sc_module {
 public:
     SC_HAS_PROCESS(testbench);
+private:
     sc_core::sc_time clk_period{10, sc_core::SC_NS};
     sc_core::sc_clock clk{"clk", clk_period, 0.5, sc_core::SC_ZERO_TIME, true};
     sc_core::sc_signal<bool> rst{"rst"};
@@ -40,6 +41,8 @@ public:
     axi::scv::axi_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
 #endif
     axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
+    axi::pe::axi_initiator<SOCKET_WIDTH> intor_pe;
+    axi::pe::simple_target<SOCKET_WIDTH> tgt_pe;
 
     // pin level adaptors
     axi::axi_pin2tlm_adaptor<SOCKET_WIDTH> 	pin2tlm_adaptor{"pin2tlm_adaptor"};
@@ -85,6 +88,7 @@ public:
     sc_signal  <sc_biguint<SOCKET_WIDTH> >   axi_w_data_s  {"axi_w_data_s"};
     sc_signal  <sc_biguint<SOCKET_WIDTH> >   axi_r_data_s  {"axi_r_data_s"};
 
+public:
     testbench(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm)
     , intor_pe("intor_pe", intor)
@@ -94,10 +98,11 @@ public:
         tgt_pe.clk_i(clk);
 #ifdef WITH_SCV
         intor(intor_rec.tsckt);
-        intor_rec.isckt(tgt);
+        intor_rec.isckt(tlm2pin_adaptor.input_socket);
+        pin2tlm_adaptor.output_socket(tgt);
 #else
-        intor.bind(tlm2pin_adaptor.input_socket);
-        pin2tlm_adaptor.output_socket.bind(tgt);
+        intor(tlm2pin_adaptor.input_socket);
+        pin2tlm_adaptor.output_socket(tgt);
 #endif
         pin2tlm_adaptor.clk_i(clk);
         tlm2pin_adaptor.clk_i(clk);
@@ -190,9 +195,10 @@ public:
         pin2tlm_adaptor.r_ready_i	(axi_r_ready_s);
     }
 
-    tlm::tlm_generic_payload* prepare_trans(size_t len) {
+private:
+  tlm::tlm_generic_payload* prepare_trans(size_t len, size_t id) {
         auto trans = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>();
-        tlm::scc::setId(*trans, id++);
+        tlm::scc::setId(*trans, id);
         auto ext = trans->get_extension<axi::axi4_extension>();
         trans->set_data_length(len);
         trans->set_streaming_width(len);
@@ -209,6 +215,7 @@ public:
         unsigned int StartAddr          = 0;
         unsigned int ResetCycles        = 10;
 	unsigned int BurstLengthByte    = 16;
+	unsigned int IDLimit            = 255;
 	unsigned int NumberOfIterations = 1000;
         rst.write(false);
         for(size_t i = 0; i < ResetCycles; ++i)
@@ -218,9 +225,9 @@ public:
         std::array<uint8_t, 256> data;
         wait(clk.posedge_event());
         for(int i = 0; i < NumberOfIterations; ++i) {
-            SCCDEBUG("testbench") << "executing transactions in iteration " << i;
+	    SCCDEBUG("testbench") << "executing read transactions in iteration " << i << " of " << NumberOfIterations;
             { // 1
-                auto trans = prepare_trans(BurstLengthByte);
+	      auto trans = prepare_trans(BurstLengthByte, i % IDLimit);
                 trans->set_command(tlm::TLM_READ_COMMAND);
                 trans->set_address(StartAddr);
                 trans->set_data_ptr(data.data());
@@ -230,9 +237,10 @@ public:
                     SCCERR() << "Invalid response status" << trans->get_response_string();
                 trans->release();
             }
+	    SCCDEBUG("testbench") << "executing write transactions in iteration " << i << " of " << NumberOfIterations;
 	    StartAddr += BurstLengthByte;
             { // 2
-                auto trans = prepare_trans(BurstLengthByte);
+                auto trans = prepare_trans(BurstLengthByte, i % IDLimit);
                 trans->set_command(tlm::TLM_WRITE_COMMAND);
                 trans->set_address(StartAddr);
                 trans->set_data_ptr(data.data());
@@ -247,11 +255,6 @@ public:
         wait(100, SC_NS);
         sc_stop();
     }
-
-private:
-    axi::pe::simple_axi_initiator<SOCKET_WIDTH> intor_pe;
-    axi::pe::simple_target<SOCKET_WIDTH> tgt_pe;
-    unsigned id{0};
 };
 
 int sc_main(int argc, char* argv[]) {
@@ -282,7 +285,7 @@ int sc_main(int argc, char* argv[]) {
     scv_tr_db* db = new scv_tr_db("axi_pinlevel.txlog");
     scv_tr_db::set_default_db(db);
 #endif
-    testbench mstr("master");
+    testbench tb("tb");
 
     sc_core::sc_start(1_ms);
     SCCINFO() << "Finished";
