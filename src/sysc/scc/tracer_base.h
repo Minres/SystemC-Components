@@ -60,6 +60,14 @@ inline trace_types operator&(trace_types lhs, trace_types rhs) {
 }
 /**
  * @class tracer_base
+ *
+ * it provide the basic infrastructure to automagically trace ports, signals, tlm sockets and
+ * sc_variables. It comes with some limitations:
+ * - arbitrary sized data types are only traced if
+ *   - size is less or equal 1024,
+ *   - if size is less than or equal 128 or a multiple of 8
+ * - sc_variables holding std::array or std::vector are only supported for native C++ datatypes
+ *
  * @brief base class for automatic tracer
  *
  */
