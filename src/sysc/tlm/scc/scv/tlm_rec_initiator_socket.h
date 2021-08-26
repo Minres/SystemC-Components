@@ -17,9 +17,7 @@
 #ifndef TLM_REC_INITIATOR_SOCKET_H_
 #define TLM_REC_INITIATOR_SOCKET_H_
 
-#ifdef WITH_SCV
 #include <tlm/scc/scv/tlm_recorder.h>
-#endif
 #include <tlm>
 
 namespace tlm {
@@ -31,14 +29,6 @@ template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_ty
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND
 #endif
           >
-#ifndef WITH_SCV
-using tlm_rec_initiator_socket = tlm::tlm_initiator_socket<BUSWIDTH, TYPES, N
-#if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)
-                                                           ,
-                                                           POL
-#endif
-                                                           >;
-#else
 class tlm_rec_initiator_socket : public tlm::tlm_initiator_socket<BUSWIDTH, TYPES, N
 #if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)
                                                                   ,
@@ -71,7 +61,7 @@ public:
                                 POL
 #endif
                                 >()
-    , recorder() {
+    , recorder(this->name(), fw_port, bw_port) {
     }
 
     explicit tlm_rec_initiator_socket(const char* name)
@@ -83,7 +73,7 @@ public:
                                 >(name)
     , fw_port(sc_core::sc_gen_unique_name("fw"))
     , bw_port(sc_core::sc_gen_unique_name("bw"))
-    , recorder(gen_name(name, "tx").c_str(), fw_port, bw_port) {
+    , recorder(this->name(), fw_port, bw_port) {
     }
 
     virtual ~tlm_rec_initiator_socket() {}
@@ -132,8 +122,7 @@ protected:
     sc_core::sc_port<tlm::tlm_bw_transport_if<TYPES>> bw_port;
     scv::tlm_recorder<TYPES> recorder;
 };
-#endif
-} // namespace scv4tlm
+} // namespace scv
 } // namespace scc
 } // namespace tlm
 

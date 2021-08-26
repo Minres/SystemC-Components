@@ -28,13 +28,13 @@ namespace scc {
  *
  */
 enum class trace_types : unsigned {
-    NONE = 0x0,     /**< NONE */
-            SIGNALS = 0x1,  /**< SIGNALS */
-            PORTS = 0x2,    /**< PORTS */
-            SOCKETS = 0x4,  /**< SOCKETS */
-            VARIABLES = 0x8,/**< VARIABLES */
-            OBJECTS = 0x10, /**< OBJECTS */
-            ALL = 0xff      /**< ALL */
+    NONE = 0x0,      /**< NONE */
+    SIGNALS = 0x1,   /**< SIGNALS */
+    PORTS = 0x2,     /**< PORTS */
+    SOCKETS = 0x4,   /**< SOCKETS */
+    VARIABLES = 0x8, /**< VARIABLES */
+    OBJECTS = 0x10,  /**< OBJECTS */
+    ALL = 0xff       /**< ALL */
 };
 /**
  * @fn trace_types operator |(trace_types, trace_types)
@@ -60,6 +60,14 @@ inline trace_types operator&(trace_types lhs, trace_types rhs) {
 }
 /**
  * @class tracer_base
+ *
+ * it provide the basic infrastructure to automagically trace ports, signals, tlm sockets and
+ * sc_variables. It comes with some limitations:
+ * - arbitrary sized data types are only traced if
+ *   - size is less or equal 1024,
+ *   - if size is less than or equal 128 or a multiple of 8
+ * - sc_variables holding std::array or std::vector are only supported for native C++ datatypes
+ *
  * @brief base class for automatic tracer
  *
  */

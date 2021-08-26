@@ -9,6 +9,10 @@ option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentat
 
 option(BUILD_STAND_ALONE "Do a standalone build and do not rely on a parent project providing needed libraries" FALSE)
 
+option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
+
+option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
+
 include(Common)
 include(GNUInstallDirs)
 if(BUILD_STAND_ALONE)
@@ -51,24 +55,47 @@ endif()
 # build the SCC
 ###############################################################################
 
-set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "sqlite3")
+set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/axi_chi" "/third_party/json" "/third_party/spdlog" "sqlite3")
 find_package(ClangFormat)
 if (ENABLE_CLANG_TIDY)
     find_program (CLANG_TIDY_EXE NAMES "clang-tidy" PATHS /usr/bin )
     if (CLANG_TIDY_EXE)
         message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
-        set(CLANG_TIDY_CHECKS "-*,modernize-*")
+        set(CLANG_TIDY_CHECKS "-*")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-avoid-bind.PermissiveParameterList")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-loop-convert.*")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-make-shared.")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-make-unique.")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-pass-by-value.*")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-raw-string-literal.*")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-replace-auto-ptr.IncludeStyle")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-replace-disallow-copy-and-assign-macro.MacroName")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-replace-random-shuffle.IncludeStyle")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-use-auto.*")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-use-bool-literals.IgnoreMacros")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-use-default-member-init.*")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-use-emplace.*")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-use-equals-default.IgnoreMacros")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-use-equals-delete.IgnoreMacros")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-use-nodiscard.ReplacementString")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-use-noexcept.*")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-use-nullptr.NullMacros")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-use-override.*")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-use-transparent-functors.SafeMode")
+		set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-use-using.IgnoreMacros")
+        set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},cppcoreguidelines-explicit-virtual-functions.IgnoreDestructors")
+        #set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},cppcoreguidelines-*")
+        set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},clang-diagnostic-*,clang-analyzer-*")
         set(DO_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=${CLANG_TIDY_CHECKS};-header-filter='${CMAKE_SOURCE_DIR}/*';-fix"
             CACHE STRING "" FORCE)
-        #set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=${CLANG_TIDY_CHECKS};-header-filter='${CMAKE_SOURCE_DIR}/*';-fix"
-        #    CACHE STRING "" FORCE)
     else()
         message(AUTHOR_WARNING "clang-tidy not found!")
         set(CMAKE_CXX_CLANG_TIDY "" CACHE STRING "" FORCE) # delete it
     endif()
 endif()
 
-find_package(Boost REQUIRED COMPONENTS system) # header only libraries must not be added herefind_package(ZLIB REQUIRED)
+find_package(Boost REQUIRED COMPONENTS system date_time) # header only libraries must not be added here
+
 include(CheckSymbolExists)
 # Check for function getenv()
 check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)
@@ -83,7 +110,7 @@ else()
     set_property(TARGET spdlog_local PROPERTY INTERFACE_COMPILE_DEFINITIONS SPDLOG_HEADER_ONLY)
     set_property(TARGET spdlog_local PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third_party)
     set(SPDLOG_TARGET spdlog_local)
-    message("Using built-in version of spdlog")
+    message(STATUS "${PROJECT_NAME}: using built-in version of spdlog")
 endif()
 
 # check which version of fmt to use
@@ -95,7 +122,7 @@ else()
     add_library(fmt_local INTERFACE IMPORTED)
     set_property(TARGET fmt_local PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third_party/spdlog)
     set(FMT_TARGET fmt_local)
-    message("Using built-in version of fmt")
+    message(STATUS "${PROJECT_NAME}: using built-in version of fmt")
 endif()
 
 # Define two variables in order not to repeat ourselves.
@@ -105,15 +132,19 @@ endif()
 
 # Define the scc library
 add_library(scc INTERFACE)
-target_include_directories (scc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_include_directories (scc INTERFACE ${Boost_INCLUDE_DIRS})
 if(HAVE_GETENV)
     target_compile_definitions(scc INTERFACE HAVE_GETENV)
 endif()
 
-target_link_libraries(scc INTERFACE scc-util scc-sysc components busses)
+target_include_directories (scc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+if(TARGET Boost::date_time)
+	target_link_libraries(scc INTERFACE Boost::date_time)
+else()
+	target_include_directories(scc INTERFACE ${Boost_INCLUDE_DIRS})
+	target_link_libraries(scc INTERFACE ${Boost_datetime_LIBRARY})
+endif()
+target_link_libraries(scc INTERFACE scc-util scc-sysc components busses scv-tr)
 target_link_libraries(scc INTERFACE jsoncpp)
-target_link_libraries(scc INTERFACE ${Boost_LIBRARIES})
 target_link_libraries(scc INTERFACE ${FMT_TARGET} ${SPDLOG_TARGET})
 
 set_target_properties(scc PROPERTIES

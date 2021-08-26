@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2018 MINRES Technologies GmbH
+ * Copyright 2018-2021 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,9 +29,9 @@ struct time2tick : public sc_core::sc_module {
     //! yes, we have processes
     SC_HAS_PROCESS(time2tick); // NOLINT
     //! the clock input
-    sc_core::sc_in<sc_core::sc_time> clk_i;
+    sc_core::sc_in<sc_core::sc_time> clk_i{"clk_i"};
     //! the clock output
-    sc_core::sc_out<bool> clk_o;
+    sc_core::sc_out<bool> clk_o{"clk_o"};
     /**
      * the constructor
      *
@@ -44,19 +44,7 @@ struct time2tick : public sc_core::sc_module {
 
 private:
     sc_core::sc_time clk_period;
-    void clocker() {
-        while(true) {
-            auto t = clk_i.read();
-            if(t == sc_core::SC_ZERO_TIME) {
-                wait(clk_i.value_changed_event());
-                t = clk_i.read();
-            }
-            clk_o = true;
-            wait(t / 2);
-            clk_o = false;
-            wait(t - t / 2);
-        }
-    }
+	void clocker();
 };
 } // namespace scc
 #endif /* _SCC_TIME2TICK_H_ */

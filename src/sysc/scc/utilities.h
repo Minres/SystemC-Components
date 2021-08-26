@@ -62,13 +62,18 @@ template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args&&...
 namespace sc_core {
 // needed to be able to use sc_time as signal value
 #if SC_VERSION_MAJOR <= 2 && SC_VERSION_MINOR <= 3 && SC_VERSION_PATCH < 2
+#define HAS_NO_TIME_TRACE
+#endif
+#ifdef NCSC
+#define HAS_NO_TIME_TRACE
+#endif
+
+#ifdef HAS_NO_TIME_TRACE
 
 void sc_trace(sc_trace_file*, const sc_time&, const std::string&);
 
-void sc_trace(sc_trace_file*, const sc_time&, const char*);
-
 /**
- * comatibility for SC2.3.1
+ * compatibility for SC2.3.1
  *
  */
 inline void sc_trace(sc_core::sc_trace_file*&, const sc_core::sc_event&, const char*) {}
@@ -81,7 +86,7 @@ inline void sc_trace(sc_core::sc_trace_file*&, const sc_core::sc_event&, const c
  * @param value the data to trace
  * @param name the hierarchical name of the data
  */
-template <> void sc_trace(sc_trace_file* tf , const sc_in<sc_time>& value, const std::string& name);
+template <> void sc_trace(sc_trace_file* tf, const sc_in<sc_time>& value, const std::string& name);
 /**
  * trace function for sc_time
  *
@@ -187,20 +192,20 @@ inline constexpr uint64_t operator"" _MB(unsigned long long val) { return val * 
 inline constexpr uint64_t operator"" _GB(unsigned long long val) { return val * 1 << 30; }
 
 namespace scc {
-inline char* legalize_name(char* const name ){
+inline char* legalize_name(char* const name) {
     char* ptr = name;
-    while(*ptr){
-        if (*ptr == '.' || std::isspace(*ptr)) {
+    while(*ptr) {
+        if(*ptr == '.' || std::isspace(*ptr)) {
             *ptr = '_';
         }
         ptr++;
     }
     return name;
 }
-inline std::string legalize_name(std::string const& name ){
+inline std::string legalize_name(std::string const& name) {
     std::string ret;
-    for(auto c:name){
-        ret+=(c == '.' || std::isspace(c))?'_':c;
+    for(auto c : name) {
+        ret += (c == '.' || std::isspace(c)) ? '_' : c;
     }
     return ret;
 }

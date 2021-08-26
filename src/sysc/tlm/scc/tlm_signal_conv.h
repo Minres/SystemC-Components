@@ -98,6 +98,6 @@ private:
         gp->release();
     }
 };
-}  // namespace scc
+} // namespace scc
 } // namespace tlm
 #endif /* _TLM_TLM_SIGNAL_CONV_H_ */

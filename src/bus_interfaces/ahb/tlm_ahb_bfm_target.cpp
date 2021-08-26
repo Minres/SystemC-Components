@@ -5,10 +5,11 @@
  *      Author: developer
  */
 
-#include <scc/report.h>
-#include <scc/utilities.h>
+#define SC_INCLUDE_DYNAMIC_PROCESSES
 #include <ahb/ahb_tlm.h>
 #include <ahb/bfm/target.h>
+#include <scc/report.h>
+#include <scc/utilities.h>
 #include <tlm/scc/tlm_mm.h>
 
 using namespace ahb::bfm;

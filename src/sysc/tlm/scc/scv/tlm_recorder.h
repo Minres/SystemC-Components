@@ -17,29 +17,32 @@
 #ifndef TLM2_RECORDER_H_
 #define TLM2_RECORDER_H_
 
-#include "tlm_gp_data_ext.h"
-#include "tlm_recording_extension.h"
 #include "tlm_extension_recording_registry.h"
+#include "tlm_recording_extension.h"
 #include <array>
-#include <unordered_map>
 #include <regex>
-#include <scv.h>
 #include <string>
 #include <tlm/scc/tlm_mm.h>
 #include <tlm>
 #include <tlm_utils/peq_with_cb_and_phase.h>
+#include <unordered_map>
 
 namespace tlm {
 namespace scc {
 namespace scv {
+
+void record(SCVNS scv_tr_handle&, tlm::tlm_generic_payload&);
+void record(SCVNS scv_tr_handle&, tlm::tlm_phase&);
+void record(SCVNS scv_tr_handle&, tlm::tlm_sync_enum);
+void record(SCVNS scv_tr_handle&, tlm::tlm_dmi&);
 //! implementation detail
 namespace impl {
 //! \brief the class to hold the information to be recorded on the timed
 //! streams
 template <typename TYPES = tlm::tlm_base_protocol_types> class tlm_recording_payload : public TYPES::tlm_payload_type {
 public:
-    scv_tr_handle parent;
-    uint64 id;
+    SCVNS scv_tr_handle parent;
+    uint64_t id;
     tlm_recording_payload& operator=(const typename TYPES::tlm_payload_type& x) {
         id = reinterpret_cast<uintptr_t>(&x);
         this->set_command(x.get_command());
@@ -72,12 +75,11 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct tlm_recording_ty
  * e.g. further down the opath can link to it.
  */
 template <typename TYPES = tlm::tlm_base_protocol_types>
-class tlm_recorder : public virtual tlm::tlm_fw_transport_if<TYPES>,
-public virtual tlm::tlm_bw_transport_if<TYPES> {
+class tlm_recorder : public virtual tlm::tlm_fw_transport_if<TYPES>, public virtual tlm::tlm_bw_transport_if<TYPES> {
     std::string get_parent(char const* hier_name) {
         std::string ret(hier_name);
         auto pos = ret.rfind('.');
-        return pos == std::string::npos? ret : ret.substr(0, pos);
+        return pos == std::string::npos ? ret : ret.substr(0, pos);
     }
 
 public:
@@ -104,7 +106,8 @@ public:
     sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port;
 
     /**
-     * @fn  tlm_recorder(sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>&, sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>&, bool=true, scv_tr_db*=scv_tr_db::get_default_db())
+     * @fn  tlm_recorder(sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>&,
+     * sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>&, bool=true, scv_tr_db*=scv_tr_db::get_default_db())
      * @brief The constructor of the component
      *
      * @param fw_port the forward port to use in the forward path
@@ -116,11 +119,12 @@ public:
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
     tlm_recorder(sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_port,
-            sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port, bool recording_enabled = true,
-            scv_tr_db* tr_db = scv_tr_db::get_default_db())
-    : tlm_recorder(sc_core::sc_gen_unique_name("tlm_recorder"), fw_port, bw_port, recording_enabled, tr_db) { }
+                 sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port, bool recording_enabled = true,
+                 SCVNS scv_tr_db* tr_db = SCVNS scv_tr_db::get_default_db())
+    : tlm_recorder(sc_core::sc_gen_unique_name("tlm_recorder"), fw_port, bw_port, recording_enabled, tr_db) {}
     /**
-     * @fn  tlm_recorder(const char*, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>&, sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>&, bool=true, scv_tr_db*=scv_tr_db::get_default_db())
+     * @fn  tlm_recorder(const char*, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>&,
+     * sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>&, bool=true, scv_tr_db*=scv_tr_db::get_default_db())
      * @brief
      *
      * @param name is the SystemC module name of the recorder
@@ -133,18 +137,20 @@ public:
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
     tlm_recorder(const char* name, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_port,
-            sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port, bool recording_enabled = true,
-            scv_tr_db* tr_db = scv_tr_db::get_default_db())
+                 sc_core::sc_port_b<tlm::tlm_bw_transport_if<TYPES>>& bw_port, bool recording_enabled = true,
+                 SCVNS scv_tr_db* tr_db = SCVNS scv_tr_db::get_default_db())
     : enableTracing("enableTracing", recording_enabled)
     , fw_port(fw_port)
     , bw_port(bw_port)
     , b_timed_peq(this, &tlm_recorder::btx_cb)
     , nb_timed_peq(this, &tlm_recorder::nbtx_cb)
     , m_db(tr_db)
-    , fixed_basename(name) {
-    }
+    , fixed_basename(name) {}
 
     virtual ~tlm_recorder() override {
+        btx_handle_map.clear();
+        nbtx_req_handle_map.clear();
+        nbtx_last_req_handle_map.clear();
         delete b_streamHandle;
         for(auto* p : b_trHandle)
             delete p; // NOLINT
@@ -173,8 +179,8 @@ public:
      * \param delay is the annotated delay
      * \return the sync state of the transaction
      */
-    tlm::tlm_sync_enum nb_transport_fw(typename TYPES::tlm_payload_type& trans,
-            typename TYPES::tlm_phase_type& phase, sc_core::sc_time& delay) override;
+    tlm::tlm_sync_enum nb_transport_fw(typename TYPES::tlm_payload_type& trans, typename TYPES::tlm_phase_type& phase,
+                                       sc_core::sc_time& delay) override;
 
     /*! \brief The non-blocking backward transport function
      *
@@ -185,8 +191,8 @@ public:
      * \param delay is the annotated delay
      * \return the sync state of the transaction
      */
-    tlm::tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type& trans,
-            typename TYPES::tlm_phase_type& phase, sc_core::sc_time& delay) override;
+    tlm::tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type& trans, typename TYPES::tlm_phase_type& phase,
+                                       sc_core::sc_time& delay) override;
 
     /*! \brief The blocking transport function
      *
@@ -242,69 +248,75 @@ private:
      */
     void nbtx_cb(tlm_recording_payload& rec_parts, const typename TYPES::tlm_phase_type& phase);
     //! transaction recording database
-    scv_tr_db* m_db{nullptr};
+    SCVNS scv_tr_db* m_db{nullptr};
     //! blocking transaction recording stream handle
-    scv_tr_stream* b_streamHandle{nullptr};
+    SCVNS scv_tr_stream* b_streamHandle{nullptr};
     //! transaction generator handle for blocking transactions
-    std::array<scv_tr_generator<sc_dt::uint64, sc_dt::uint64>*, 3> b_trHandle{{nullptr, nullptr, nullptr}};
+    std::array<SCVNS scv_tr_generator<sc_dt::uint64, sc_dt::uint64>*, 3> b_trHandle{{nullptr, nullptr, nullptr}};
     //! timed blocking transaction recording stream handle
-    scv_tr_stream* b_streamHandleTimed{nullptr};
+    SCVNS scv_tr_stream* b_streamHandleTimed{nullptr};
     //! transaction generator handle for blocking transactions with annotated
     //! delays
-    std::array<scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>*, 3> b_trTimedHandle{{nullptr, nullptr, nullptr}};
-    std::unordered_map<uint64, scv_tr_handle> btx_handle_map;
+    std::array<SCVNS scv_tr_generator<>*, 3> b_trTimedHandle{{nullptr, nullptr, nullptr}};
+    std::unordered_map<uint64_t, SCVNS scv_tr_handle> btx_handle_map;
 
-    enum DIR { FW, BW, REQ=FW, RESP=BW};
+    enum DIR { FW, BW, REQ = FW, RESP = BW };
     //! non-blocking transaction recording stream handle
-    scv_tr_stream* nb_streamHandle{nullptr};
+    SCVNS scv_tr_stream* nb_streamHandle{nullptr};
     //! non-blocking transaction recording stream handle with timing
-    scv_tr_stream* nb_streamHandleTimed{nullptr};
+    SCVNS scv_tr_stream* nb_streamHandleTimed{nullptr};
     //! transaction generator handle for non-blocking transactions
-    std::array<scv_tr_generator<std::string, std::string>*, 2> nb_trHandle{{nullptr, nullptr}};
+    std::array<SCVNS scv_tr_generator<std::string, std::string>*, 2> nb_trHandle{{nullptr, nullptr}};
     //! transaction generator handle for non-blocking transactions with annotated delays
-    std::array<scv_tr_generator<>*, 2> nb_trTimedHandle{{nullptr, nullptr}};
-    map<uint64, scv_tr_handle> nbtx_req_handle_map;
-    map<uint64, scv_tr_handle> nbtx_last_req_handle_map;
+    std::array<SCVNS scv_tr_generator<>*, 2> nb_trTimedHandle{{nullptr, nullptr}};
+    std::unordered_map<uint64_t, SCVNS scv_tr_handle> nbtx_req_handle_map;
+    std::unordered_map<uint64_t, SCVNS scv_tr_handle> nbtx_last_req_handle_map;
 
     //! dmi transaction recording stream handle
-    scv_tr_stream* dmi_streamHandle{nullptr};
+    SCVNS scv_tr_stream* dmi_streamHandle{nullptr};
     //! transaction generator handle for DMI transactions
-    scv_tr_generator<tlm_gp_data, tlm_dmi_data>* dmi_trGetHandle{nullptr};
-    scv_tr_generator<sc_dt::uint64, sc_dt::uint64>* dmi_trInvalidateHandle{nullptr};
+    SCVNS scv_tr_generator<>* dmi_trGetHandle{nullptr};
+    SCVNS scv_tr_generator<sc_dt::uint64, sc_dt::uint64>* dmi_trInvalidateHandle{nullptr};
+
 public:
     void initialize_streams() {
-        if(isRecordingEnabled() && !b_streamHandle){
-            b_streamHandle = new scv_tr_stream((fixed_basename + "_bl").c_str(), "[TLM][base-protocol][b]", m_db);
-            b_trHandle[tlm::TLM_READ_COMMAND] =
-                    new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("read", *b_streamHandle, "start_delay", "end_delay");
-            b_trHandle[tlm::TLM_WRITE_COMMAND] =
-                    new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("write", *b_streamHandle, "start_delay", "end_delay");
-            b_trHandle[tlm::TLM_IGNORE_COMMAND] =
-                    new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("ignore", *b_streamHandle, "start_delay", "end_delay");
+        if(isRecordingEnabled() && !b_streamHandle) {
+            b_streamHandle = new SCVNS scv_tr_stream((fixed_basename + "_bl").c_str(), "[TLM][base-protocol][b]", m_db);
+            b_trHandle[tlm::TLM_READ_COMMAND] = new SCVNS scv_tr_generator<sc_dt::uint64, sc_dt::uint64>(
+                "read", *b_streamHandle, "start_delay", "end_delay");
+            b_trHandle[tlm::TLM_WRITE_COMMAND] = new SCVNS scv_tr_generator<sc_dt::uint64, sc_dt::uint64>(
+                "write", *b_streamHandle, "start_delay", "end_delay");
+            b_trHandle[tlm::TLM_IGNORE_COMMAND] = new SCVNS scv_tr_generator<sc_dt::uint64, sc_dt::uint64>(
+                "ignore", *b_streamHandle, "start_delay", "end_delay");
             if(enableTimedTracing.value) {
-                b_streamHandleTimed = new scv_tr_stream((fixed_basename + "_bl_timed").c_str(), "[TLM][base-protocol][b][timed]", m_db);
-                b_trTimedHandle[tlm::TLM_READ_COMMAND] =
-                        new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("read", *b_streamHandleTimed);
-                b_trTimedHandle[tlm::TLM_WRITE_COMMAND] =
-                        new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("write", *b_streamHandleTimed);
-                b_trTimedHandle[tlm::TLM_IGNORE_COMMAND] =
-                        new scv_tr_generator<tlm::tlm_command, tlm::tlm_response_status>("ignore", *b_streamHandleTimed);
+                b_streamHandleTimed = new SCVNS scv_tr_stream((fixed_basename + "_bl_timed").c_str(),
+                                                              "[TLM][base-protocol][b][timed]", m_db);
+                b_trTimedHandle[tlm::TLM_READ_COMMAND] = new SCVNS scv_tr_generator<>("read", *b_streamHandleTimed);
+                b_trTimedHandle[tlm::TLM_WRITE_COMMAND] = new SCVNS scv_tr_generator<>("write", *b_streamHandleTimed);
+                b_trTimedHandle[tlm::TLM_IGNORE_COMMAND] = new SCVNS scv_tr_generator<>("ignore", *b_streamHandleTimed);
             }
-            nb_streamHandle = new scv_tr_stream((fixed_basename + "_nb").c_str(), "[TLM][base-protocol][nb]", m_db);
-            nb_trHandle[FW] = new scv_tr_generator<std::string, std::string>("fw", *nb_streamHandle, "tlm_phase", "tlm_phase[return_path]");
-            nb_trHandle[BW] = new scv_tr_generator<std::string, std::string>("bw", *nb_streamHandle, "tlm_phase", "tlm_phase[return_path]");
+            nb_streamHandle =
+                new SCVNS scv_tr_stream((fixed_basename + "_nb").c_str(), "[TLM][base-protocol][nb]", m_db);
+            nb_trHandle[FW] = new SCVNS scv_tr_generator<std::string, std::string>("fw", *nb_streamHandle, "tlm_phase",
+                                                                                   "tlm_phase[return_path]");
+            nb_trHandle[BW] = new SCVNS scv_tr_generator<std::string, std::string>("bw", *nb_streamHandle, "tlm_phase",
+                                                                                   "tlm_phase[return_path]");
             if(enableTimedTracing.value) {
-                nb_streamHandleTimed = new scv_tr_stream((fixed_basename + "_nb_timed").c_str(), "[TLM][base-protocol][nb][timed]", m_db);
-                nb_trTimedHandle[FW] = new scv_tr_generator<>("request", *nb_streamHandleTimed);
-                nb_trTimedHandle[BW] = new scv_tr_generator<>("response", *nb_streamHandleTimed);
+                nb_streamHandleTimed = new SCVNS scv_tr_stream((fixed_basename + "_nb_timed").c_str(),
+                                                               "[TLM][base-protocol][nb][timed]", m_db);
+                nb_trTimedHandle[FW] = new SCVNS scv_tr_generator<>("request", *nb_streamHandleTimed);
+                nb_trTimedHandle[BW] = new SCVNS scv_tr_generator<>("response", *nb_streamHandleTimed);
             }
             if(enableDmiTracing.value) {
-                dmi_streamHandle = new scv_tr_stream((fixed_basename + "_dmi").c_str(), "[TLM][base-protocol][dmi]", m_db);
-                dmi_trGetHandle = new scv_tr_generator<tlm_gp_data, tlm_dmi_data>("get", *dmi_streamHandle, "trans", "dmi_data");
-                dmi_trInvalidateHandle = new scv_tr_generator<sc_dt::uint64, sc_dt::uint64>("invalidate", *dmi_streamHandle, "start_addr", "end_addr");
+                dmi_streamHandle =
+                    new SCVNS scv_tr_stream((fixed_basename + "_dmi").c_str(), "[TLM][base-protocol][dmi]", m_db);
+                dmi_trGetHandle = new SCVNS scv_tr_generator<>("get", *dmi_streamHandle);
+                dmi_trInvalidateHandle = new SCVNS scv_tr_generator<sc_dt::uint64, sc_dt::uint64>(
+                    "invalidate", *dmi_streamHandle, "start_addr", "end_addr");
             }
         }
     }
+
 private:
     const std::string fixed_basename;
     inline std::string phase2string(const tlm::tlm_phase& p) {
@@ -324,11 +336,10 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
     if(!isRecordingEnabled()) {
         fw_port->b_transport(trans, delay);
         return;
-    } else if(!b_streamHandle) initialize_streams();
+    } else if(!b_streamHandle)
+        initialize_streams();
     // Get a handle for the new transaction
-    scv_tr_handle h = b_trHandle[trans.get_command()]->begin_transaction(delay.value(), sc_time_stamp());
-    tlm_gp_data tgd(trans);
-
+    SCVNS scv_tr_handle h = b_trHandle[trans.get_command()]->begin_transaction(delay.value(), sc_core::sc_time_stamp());
     /*************************************************************************
      * do the timed notification
      *************************************************************************/
@@ -356,10 +367,8 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
     } else {
         h.add_relation(rel_str(PREDECESSOR_SUCCESSOR), preExt->txHandle);
     }
-    scv_tr_handle preTx{preExt->txHandle};
+    SCVNS scv_tr_handle preTx{preExt->txHandle};
     preExt->txHandle = h;
-    if(trans.get_command() == tlm::TLM_WRITE_COMMAND && tgd.data_length < 8)
-        h.record_attribute("trans.data_value", tgd.get_data_value());
     fw_port->b_transport(trans, delay);
     if(preExt && preExt->get_creator() == this) {
         // clean-up the extension if this is the original creator
@@ -370,16 +379,12 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
     } else {
         preExt->txHandle = preTx;
     }
-
-    tgd.response_status = trans.get_response_status();
-    h.record_attribute("trans", tgd);
-    if(trans.get_command() == tlm::TLM_READ_COMMAND && tgd.data_length < 8)
-        h.record_attribute("trans.data_value", tgd.get_data_value());
+    record(h, trans);
     for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordEndTx(h, trans);
     // End the transaction
-    b_trHandle[trans.get_command()]->end_transaction(h, delay.value(), sc_time_stamp());
+    b_trHandle[trans.get_command()]->end_transaction(h, delay.value(), sc_core::sc_time_stamp());
     // and now the stuff for the timed tx
     if(b_streamHandleTimed) {
         b_timed_peq.notify(*req, tlm::END_RESP, delay);
@@ -388,13 +393,11 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
 
 template <typename TYPES>
 void tlm_recorder<TYPES>::btx_cb(tlm_recording_payload& rec_parts, const typename TYPES::tlm_phase_type& phase) {
-    scv_tr_handle h;
+    SCVNS scv_tr_handle h;
     // Now process outstanding recordings
     switch(phase) {
     case tlm::BEGIN_REQ: {
-        tlm_gp_data tgd(rec_parts);
-        h = b_trTimedHandle[rec_parts.get_command()]->begin_transaction(rec_parts.get_command());
-        h.record_attribute("trans", tgd);
+        h = b_trTimedHandle[rec_parts.get_command()]->begin_transaction();
         h.add_relation(rel_str(PARENT_CHILD), rec_parts.parent);
         btx_handle_map[rec_parts.id] = h;
     } break;
@@ -403,7 +406,8 @@ void tlm_recorder<TYPES>::btx_cb(tlm_recording_payload& rec_parts, const typenam
         sc_assert(it != btx_handle_map.end());
         h = it->second;
         btx_handle_map.erase(it);
-        h.end_transaction(h, rec_parts.get_response_status());
+        record(h, rec_parts);
+        h.end_transaction();
         rec_parts.release();
     } break;
     default:
@@ -414,16 +418,17 @@ void tlm_recorder<TYPES>::btx_cb(tlm_recording_payload& rec_parts, const typenam
 
 template <typename TYPES>
 tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payload_type& trans,
-        typename TYPES::tlm_phase_type& phase,
-        sc_core::sc_time& delay) {
+                                                        typename TYPES::tlm_phase_type& phase,
+                                                        sc_core::sc_time& delay) {
     if(!isRecordingEnabled())
         return fw_port->nb_transport_fw(trans, phase, delay);
-    else  if(!nb_streamHandle) initialize_streams();
+    else if(!nb_streamHandle)
+        initialize_streams();
     /*************************************************************************
      * prepare recording
      *************************************************************************/
     // Get a handle for the new transaction
-    scv_tr_handle h = nb_trHandle[FW]->begin_transaction(phase2string(phase));
+    SCVNS scv_tr_handle h = nb_trHandle[FW]->begin_transaction(phase2string(phase));
     tlm_recording_extension* preExt = nullptr;
     trans.get_extension(preExt);
     if(preExt == nullptr) { // we are the first recording this transaction
@@ -443,7 +448,6 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
     for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordBeginTx(h, trans);
-    tlm_gp_data tgd(trans);
     /*************************************************************************
      * do the timed notification
      *************************************************************************/
@@ -462,17 +466,9 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
      * handle recording
      *************************************************************************/
     h.record_attribute("trans.uid", reinterpret_cast<uintptr_t>(&trans));
-    h.record_attribute("tlm_sync", status);
+    record(h, status);
     h.record_attribute("delay[return_path]", delay.to_string());
-    tgd.response_status = trans.get_response_status();
-    h.record_attribute("trans", tgd);
-    if(tgd.data_length < 8) {
-        uint64_t buf = 0;
-        // FIXME: this is endianess dependent
-        for(size_t i = 0; i < tgd.data_length; i++)
-            buf += (*tgd.data) << i * 8;
-        h.record_attribute("trans.data_value", buf);
-    }
+    record(h, trans);
     for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordEndTx(h, trans);
@@ -494,7 +490,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
             (*req) = trans;
             req->parent = h;
             nb_timed_peq.notify(*req, (status == tlm::TLM_COMPLETED && phase == tlm::BEGIN_REQ) ? tlm::END_RESP : phase,
-                    delay);
+                                delay);
         }
     } else if(nb_streamHandleTimed && status == tlm::TLM_UPDATED) {
         tlm_recording_payload* req = mm::get().allocate();
@@ -510,11 +506,12 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
 
 template <typename TYPES>
 tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payload_type& trans,
-        typename TYPES::tlm_phase_type& phase,
-        sc_core::sc_time& delay) {
+                                                        typename TYPES::tlm_phase_type& phase,
+                                                        sc_core::sc_time& delay) {
     if(!isRecordingEnabled())
         return bw_port->nb_transport_bw(trans, phase, delay);
-    else  if(!nb_streamHandle) initialize_streams();
+    else if(!nb_streamHandle)
+        initialize_streams();
     /*************************************************************************
      * prepare recording
      *************************************************************************/
@@ -522,7 +519,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
     trans.get_extension(preExt);
     // sc_assert(preExt != nullptr && "ERROR on backward path");
     // Get a handle for the new transaction
-    scv_tr_handle h = nb_trHandle[BW]->begin_transaction(phase2string(phase));
+    SCVNS scv_tr_handle h = nb_trHandle[BW]->begin_transaction(phase2string(phase));
     // link handle if we have a predecessor and that's not ourself
     if(preExt) {
         h.add_relation(rel_str(PREDECESSOR_SUCCESSOR), preExt->txHandle);
@@ -533,7 +530,6 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
     for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordBeginTx(h, trans);
-    tlm_gp_data tgd(trans);
     /*************************************************************************
      * do the timed notification
      *************************************************************************/
@@ -552,17 +548,9 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
      * handle recording
      *************************************************************************/
     h.record_attribute("trans.uid", reinterpret_cast<uintptr_t>(&trans));
-    h.record_attribute("tlm_sync", status);
+    record(h, status);
     h.record_attribute("delay[return_path]", delay.to_string());
-    tgd.response_status = trans.get_response_status();
-    h.record_attribute("trans", tgd);
-    if(tgd.data_length < 8) {
-        uint64_t buf = 0;
-        // FIXME: this is endianess dependent
-        for(size_t i = 0; i < tgd.data_length; i++)
-            buf += (*tgd.data) << i * 8;
-        h.record_attribute("trans.data_value", buf);
-    }
+    record(h, trans);
     for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordEndTx(h, trans);
@@ -593,13 +581,12 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
 
 template <typename TYPES>
 void tlm_recorder<TYPES>::nbtx_cb(tlm_recording_payload& rec_parts, const typename TYPES::tlm_phase_type& phase) {
-    scv_tr_handle h;
-    std::map<uint64, scv_tr_handle>::iterator it;
-    tlm_gp_data tgd(rec_parts);
+    SCVNS scv_tr_handle h;
+    std::unordered_map<uint64_t, SCVNS scv_tr_handle>::iterator it;
     switch(phase) { // Now process outstanding recordings
     case tlm::BEGIN_REQ:
         h = nb_trTimedHandle[REQ]->begin_transaction(rel_str(PARENT_CHILD), rec_parts.parent);
-        h.record_attribute("trans", tgd);
+        record(h, rec_parts);
         nbtx_req_handle_map[rec_parts.id] = h;
         break;
     case tlm::END_REQ:
@@ -619,11 +606,11 @@ void tlm_recorder<TYPES>::nbtx_cb(tlm_recording_payload& rec_parts, const typena
             nbtx_last_req_handle_map[rec_parts.id] = h;
         }
         h = nb_trTimedHandle[RESP]->begin_transaction(rel_str(PARENT_CHILD), rec_parts.parent);
-        h.record_attribute("trans", tgd);
+        record(h, rec_parts);
         nbtx_req_handle_map[rec_parts.id] = h;
         it = nbtx_last_req_handle_map.find(rec_parts.id);
         if(it != nbtx_last_req_handle_map.end()) {
-            scv_tr_handle pred = it->second;
+            SCVNS scv_tr_handle pred = it->second;
             nbtx_last_req_handle_map.erase(it);
             h.add_relation(rel_str(PREDECESSOR_SUCCESSOR), pred);
         }
@@ -648,10 +635,13 @@ template <typename TYPES>
 bool tlm_recorder<TYPES>::get_direct_mem_ptr(typename TYPES::tlm_payload_type& trans, tlm::tlm_dmi& dmi_data) {
     if(!(m_db && enableDmiTracing.value))
         return fw_port->get_direct_mem_ptr(trans, dmi_data);
-    else  if(!b_streamHandle) initialize_streams();
-    scv_tr_handle h = dmi_trGetHandle->begin_transaction(tlm_gp_data(trans));
+    else if(!b_streamHandle)
+        initialize_streams();
+    SCVNS scv_tr_handle h = dmi_trGetHandle->begin_transaction();
     bool status = fw_port->get_direct_mem_ptr(trans, dmi_data);
-    dmi_trGetHandle->end_transaction(h, tlm_dmi_data(dmi_data));
+    record(h, trans);
+    record(h, dmi_data);
+    h.end_transaction();
     return status;
 }
 /*! \brief The direct memory interface backward function
@@ -666,7 +656,7 @@ void tlm_recorder<TYPES>::invalidate_direct_mem_ptr(sc_dt::uint64 start_addr, sc
         bw_port->invalidate_direct_mem_ptr(start_addr, end_addr);
         return;
     }
-    scv_tr_handle h = dmi_trInvalidateHandle->begin_transaction(start_addr);
+    SCVNS scv_tr_handle h = dmi_trInvalidateHandle->begin_transaction(start_addr);
     bw_port->invalidate_direct_mem_ptr(start_addr, end_addr);
     dmi_trInvalidateHandle->end_transaction(h, end_addr);
     return;
@@ -682,8 +672,8 @@ template <typename TYPES> unsigned int tlm_recorder<TYPES>::transport_dbg(typena
     return count;
 }
 
-} // namespace scv4tlm
-}  // namespace scc
-}  // namespace tlm
+} // namespace scv
+} // namespace scc
+} // namespace tlm
 
 #endif /* TLM2_RECORDER_H_ */

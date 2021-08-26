@@ -24,9 +24,17 @@
 
 #include "scc/report.h"
 #include "scc/utilities.h"
-#ifdef WITH_SCV
 #include "scv/scv_tr_db.h"
+#ifdef WITH_SCV
 #include <scv.h>
+#ifndef SCVNS
+#define SCVNS
+#endif
+#else
+#include <scv-tr.h>
+#ifndef SCVNS
+#define SCVNS ::scv_tr::
+#endif
 #endif
 #include <cstring>
 #include <iostream>
@@ -37,53 +45,50 @@ using namespace scc;
 
 tracer::tracer(std::string const&& name, file_type type, bool enable)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
-#ifdef WITH_SCV
-, txdb(nullptr)
-#endif
-{
+, txdb(nullptr) {
     if(enable) {
         trf = sc_create_vcd_trace_file(name.c_str());
         trf->set_time_unit(1, SC_PS);
         owned = true;
     }
-#ifdef WITH_SCV
-    if(type != NONE) {
+    init_scv_db(type, std::move(name));
+}
+
+tracer::tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf)
+: tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
+, txdb(nullptr) {
+    trf = tf;
+    owned = false;
+    init_scv_db(type, std::move(name));
+}
+
+void tracer::init_scv_db(file_type type, std::string const&& name) {
+    if (type != NONE) {
         std::stringstream ss;
         ss << name;
-        switch(type) {
+        switch (type) {
         case COMPRESSED:
-#ifdef WITH_ZLIB
-            scv_tr_compressed_init();
+            SCVNS scv_tr_compressed_init();
             ss << ".txlog";
             break;
-#endif
         case TEXT:
-            scv_tr_text_init();
+            SCVNS scv_tr_text_init();
             ss << ".txlog";
             break;
         case SQLITE:
-#if WITH_SQLITE
-            scv_tr_sqlite_init();
-            ss << ".txdb";
-#endif
             break;
         default:
             break;
         }
-        txdb = new scv_tr_db(ss.str().c_str());
-        scv_tr_db::set_default_db(txdb);
+        txdb = new SCVNS scv_tr_db(ss.str().c_str());
+        SCVNS scv_tr_db::set_default_db(txdb);
     }
-#endif
 }
 
 void tracer::end_of_elaboration() {
     if(trf)
-        for(auto o : sc_get_top_level_objects(sc_curr_simcontext))
+        for(auto o : sc_get_top_level_objects())
             descend(o, true);
 }
 
-tracer::~tracer() {
-#ifdef WITH_SCV
-    delete txdb;
-#endif
-}
+tracer::~tracer() { delete txdb; }

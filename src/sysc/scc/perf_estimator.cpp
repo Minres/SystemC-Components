@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include <scc/perf_estimator.h>
-#include <scc/report.h>
+#include "perf_estimator.h"
+#include "report.h"
 
 #if defined(_WIN32)
 #include <Windows.h>

@@ -14,23 +14,22 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include <ostream>
 #include <functional>
+#include <ostream>
 
 namespace sc_core {
-    inline std::ostream& operator<<(std::ostream& os, std::function<void()>&){return os;}
-}
+inline std::ostream& operator<<(std::ostream& os, std::function<void()>&) { return os; }
+} // namespace sc_core
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
-#include <scc/sc_thread_pool.h>
+#include "sc_thread_pool.h"
 
 namespace scc {
 
-sc_thread_pool::sc_thread_pool():sc_core::sc_object(sc_core::sc_gen_unique_name("pool")) {
-}
+sc_thread_pool::sc_thread_pool()
+: sc_core::sc_object(sc_core::sc_gen_unique_name("pool")) {}
 
-sc_thread_pool::~sc_thread_pool() {
-}
+sc_thread_pool::~sc_thread_pool() = default;
 
 void sc_thread_pool::execute(std::function<void(void)> fct) {
     sc_core::sc_spawn_options opts;

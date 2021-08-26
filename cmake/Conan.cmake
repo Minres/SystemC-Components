@@ -19,7 +19,6 @@ macro(setup_conan)
   execute_process(COMMAND ${conan} --version
                   OUTPUT_VARIABLE CONAN_VERSION_OUTPUT)
   string(REGEX MATCHALL "[0-9.]+" CONAN_VERSION ${CONAN_VERSION_OUTPUT})
-  #message(STATUS "Conan version is ${CONAN_VERSION}")
  
   #['Visual Studio', 'apple-clang', 'clang', 'gcc', 'intel', 'mcst-lcc', 'msvc', 'qcc', 'sun-cc']
   if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")

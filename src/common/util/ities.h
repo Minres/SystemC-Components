@@ -82,7 +82,6 @@ template <typename T> T leftmost_one(T n) {
     return n - (n >> 1);
 }
 
-
 // according to
 // https://stackoverflow.com/questions/8871204/count-number-of-1s-in-binary-representation
 #if __cplusplus < 201402L
@@ -94,6 +93,8 @@ constexpr size_t bit_count(uint32_t u) {
     return ((uCount + (uCount >> 3)) & 030707070707) % 63;
 }
 #endif
+
+constexpr bool hasOddParity(uint32_t u) { return bit_count(u)%2;}
 /**
  * split a given string using specified separator
  *
@@ -158,8 +159,7 @@ void split(char delimiter, Output& output, Input const& input) {
  * @param chars set of chars to trim away
  * @return
  */
-inline
-std::string& ltrim(std::string& str, const std::string& chars = "\t\n\v\f\r "){
+inline std::string& ltrim(std::string& str, const std::string& chars = "\t\n\v\f\r ") {
     str.erase(0, str.find_first_not_of(chars));
     return str;
 }
@@ -169,8 +169,7 @@ std::string& ltrim(std::string& str, const std::string& chars = "\t\n\v\f\r "){
  * @param chars set of chars to trim away
  * @return
  */
-inline
-std::string& rtrim(std::string& str, const std::string& chars = "\t\n\v\f\r "){
+inline std::string& rtrim(std::string& str, const std::string& chars = "\t\n\v\f\r ") {
     str.erase(str.find_last_not_of(chars) + 1);
     return str;
 }
@@ -180,8 +179,7 @@ std::string& rtrim(std::string& str, const std::string& chars = "\t\n\v\f\r "){
  * @param chars set of chars to trim away
  * @return
  */
-inline
-std::string& trim(std::string& str, const std::string& chars = "\t\n\v\f\r "){
+inline std::string& trim(std::string& str, const std::string& chars = "\t\n\v\f\r ") {
     return ltrim(rtrim(str, chars), chars);
 }
 /**
@@ -233,7 +231,7 @@ inline std::string padded(std::string str, size_t width, bool show_ellipsis = tr
  * @return true if file exists and can be opened
  */
 inline bool file_exists(const std::string& name) {
-    struct stat buffer{};
+    struct stat buffer {};
     return (stat(name.c_str(), &buffer) == 0);
 }
 /**

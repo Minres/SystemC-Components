@@ -318,6 +318,6 @@ inline void tlm_generic_payload_base::copy_extensions_from(const tlm_generic_pay
 }
 
 inline void tlm_generic_payload_base::resize_extensions() { m_extensions.expand(max_num_extensions()); }
-}  // namespace scc
+} // namespace scc
 } // namespace tlm
 #endif /* _TLM_TLM_SIGNAL_GP_H_ */

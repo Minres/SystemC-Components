@@ -25,8 +25,8 @@ namespace scc {
  * @class fifo_w_cb
  * @brief fifo with callbacks
  *
- * A fifo with callbacks upon running empty or being filled. The registered callbacks are triggered if the fifo is empty or if an
- * element is inserted. This can be used to control the sensitivity of processes reading this fifo.
+ * A fifo with callbacks upon running empty or being filled. The registered callbacks are triggered if the fifo is empty
+ * or if an element is inserted. This can be used to control the sensitivity of processes reading this fifo.
  *
  * @tparam T the type name of the elements to be store in the fifo
  */
@@ -67,7 +67,7 @@ public:
     void set_avail_cb(std::function<void(void)> f) { avail_cb = f; }
     void set_empty_cb(std::function<void(void)> f) { empty_cb = f; }
 #ifndef CWR_SYSTEMC
-    inline sc_core::sc_event const& data_written_event() const {return data_written_event;}
+    inline sc_core::sc_event const& data_written_event() const { return data_written_event; }
 #endif
 protected:
     // the update method (does nothing by default)

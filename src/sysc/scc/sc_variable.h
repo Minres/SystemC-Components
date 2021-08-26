@@ -43,7 +43,7 @@ struct sc_variable : sc_core::sc_object {
      * @param name the name
      */
     sc_variable(const char* name)
-            : sc_core::sc_object(name) {}
+    : sc_core::sc_object(name) {}
     /**
      * @fn const char* kind()const
      * @brief get the kind of this sc_object
@@ -203,7 +203,7 @@ template <typename T> struct sc_variable_masked_t : public sc_variable {
     , value(value)
     , mask((1 << width) - 1) {}
 
-    std::string to_string() const override{
+    std::string to_string() const override {
         std::stringstream ss;
         ss << (value & mask);
         return ss.str();
@@ -215,20 +215,30 @@ template <typename T> struct sc_variable_masked_t : public sc_variable {
 } // namespace scc
 
 namespace sc_core {
-template< class T >
-inline void sc_trace( sc_trace_file* tf, const scc::sc_variable_t<T>& object, const char* name ) { object.trace(tf); }
-template< class T >
-inline void sc_trace( sc_trace_file* tf, const scc::sc_variable_t<T>* object, const char* name ) { object->trace(tf); }
-
-template< class T >
-inline void sc_trace( sc_trace_file* tf, const scc::sc_variable_t<std::vector<T>>& object, const char* name ) { object.trace(tf); }
-template< class T >
-inline void sc_trace( sc_trace_file* tf, const scc::sc_variable_t<std::vector<T>>* object, const char* name ) { object->trace(tf); }
-
-template< class T, size_t S >
-inline void sc_trace( sc_trace_file* tf, const scc::sc_variable_t<std::array<T, S>>& object, const char* name ) { object.trace(tf); }
-template< class T, size_t S >
-inline void sc_trace( sc_trace_file* tf, const scc::sc_variable_t<std::array<T, S>>* object, const char* name ) { object->trace(tf); }
-
+template <class T> inline void sc_trace(sc_trace_file* tf, const scc::sc_variable_t<T>& object, const char* name) {
+    object.trace(tf);
 }
+template <class T> inline void sc_trace(sc_trace_file* tf, const scc::sc_variable_t<T>* object, const char* name) {
+    object->trace(tf);
+}
+
+template <class T>
+inline void sc_trace(sc_trace_file* tf, const scc::sc_variable_t<std::vector<T>>& object, const char* name) {
+    object.trace(tf);
+}
+template <class T>
+inline void sc_trace(sc_trace_file* tf, const scc::sc_variable_t<std::vector<T>>* object, const char* name) {
+    object->trace(tf);
+}
+
+template <class T, size_t S>
+inline void sc_trace(sc_trace_file* tf, const scc::sc_variable_t<std::array<T, S>>& object, const char* name) {
+    object.trace(tf);
+}
+template <class T, size_t S>
+inline void sc_trace(sc_trace_file* tf, const scc::sc_variable_t<std::array<T, S>>* object, const char* name) {
+    object->trace(tf);
+}
+
+} // namespace sc_core
 #endif /* _SCC_SC_VARIABLE_H_ */

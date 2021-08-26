@@ -37,13 +37,15 @@ template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SI
 struct tlm_signal_fw_transport_if : public virtual sc_core::sc_interface {
     typedef TYPES protocol_types;
     // virtual void b_transport(typename TYPES::tlm_payload_type&, sc_core::sc_time&) = 0;
-    virtual ::tlm::tlm_sync_enum nb_transport_fw(typename TYPES::tlm_payload_type&, ::tlm::tlm_phase&, sc_core::sc_time&) = 0;
+    virtual ::tlm::tlm_sync_enum nb_transport_fw(typename TYPES::tlm_payload_type&, ::tlm::tlm_phase&,
+                                                 sc_core::sc_time&) = 0;
 };
 
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>>
 struct tlm_signal_bw_transport_if : public virtual sc_core::sc_interface {
     typedef TYPES protocol_types;
-    virtual ::tlm::tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type&, ::tlm::tlm_phase&, sc_core::sc_time&) = 0;
+    virtual ::tlm::tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type&, ::tlm::tlm_phase&,
+                                                 sc_core::sc_time&) = 0;
 };
 
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>, int N = 1,
@@ -75,7 +77,7 @@ using tlm_signal_opt_initiator_socket =
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>, int N = 1,
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND>
 struct tlm_signal_target_socket : public ::tlm::tlm_base_target_socket<0, tlm_signal_fw_transport_if<SIG, TYPES>,
-                                                                tlm_signal_bw_transport_if<SIG, TYPES>, N, POL> {
+                                                                       tlm_signal_bw_transport_if<SIG, TYPES>, N, POL> {
     using tlm_signal_type = SIG;
     using protocol_types = TYPES;
     using transaction_type = typename TYPES::tlm_payload_type;
@@ -95,7 +97,7 @@ struct tlm_signal_target_socket : public ::tlm::tlm_base_target_socket<0, tlm_si
 
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>, int N = 1>
 using tlm_signal_opt_target_socket = struct tlm_signal_target_socket<SIG, TYPES, N, sc_core::SC_ZERO_OR_MORE_BOUND>;
-}  // namespace scc
+} // namespace scc
 } // namespace tlm
 
 #endif /* _TLM_TLM_SIGNAL_SOCKETS_H_ */

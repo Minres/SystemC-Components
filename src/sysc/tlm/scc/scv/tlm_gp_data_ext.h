@@ -17,8 +17,16 @@
 #ifndef TLM_GP_DATA_EXT_H_
 #define TLM_GP_DATA_EXT_H_
 
+#ifdef WITH_SCV
 #include <scv.h>
+#else
+#include <scv-tr.h>
+#endif
 #include <tlm/scc/scv/tlm_gp_data.h>
+
+#ifndef WITH_SCV
+namespace scv_tr {
+#endif
 
 template <> class scv_extensions<tlm::tlm_command> : public scv_enum_base<tlm::tlm_command> {
 public:
@@ -117,7 +125,8 @@ public:
     }
 };
 
-template <> class scv_extensions<tlm::scc::scv::tlm_dmi_data> : public scv_extensions_base<tlm::scc::scv::tlm_dmi_data> {
+template <>
+class scv_extensions<tlm::scc::scv::tlm_dmi_data> : public scv_extensions_base<tlm::scc::scv::tlm_dmi_data> {
 public:
     scv_extensions<unsigned char*> dmi_ptr;
     scv_extensions<sc_dt::uint64> dmi_start_address;
@@ -135,5 +144,7 @@ public:
         SCV_FIELD(dmi_write_latency);
     }
 };
-
+#ifndef WITH_SCV
+}
+#endif
 #endif /* TLM_GP_DATA_EXT_H_ */

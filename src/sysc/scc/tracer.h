@@ -18,11 +18,16 @@
 #define _SCC_TRACER_H_
 
 #include "tracer_base.h"
-#ifdef WITH_SCV
-class scv_tr_db;
-#endif
 #include <string>
 #include <vector>
+
+#ifdef WITH_SCV
+class scv_tr_db;
+#else
+namespace scv_tr {
+class scv_tr_db;
+}
+#endif
 
 namespace sc_core {
 class sc_object;
@@ -64,6 +69,25 @@ public:
     tracer(std::string const& name, file_type type, bool enable = true)
     : tracer(std::string(name), type, enable) {}
     /**
+     * @fn  tracer(const std::string&&, file_type, bool=true)
+     * @brief the constructor
+     *
+     * @param name base name of the trace file(s)
+     * @param type type of trace file for transactions
+     * @param enable enable VCD (signal and POD) tracing
+     */
+    tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf);
+    /**
+     * @fn  tracer(const std::string&, file_type, bool=true)
+     * @brief the constructor
+     *
+     * @param name base name of the trace file(s)
+     * @param type type of trace file for transactions
+     * @param enable enable VCD (signal and POD) tracing
+     */
+    tracer(std::string const& name, file_type type, sc_core::sc_trace_file* tf)
+    : tracer(std::string(name), type, tf) {}
+    /**
      * @fn  ~tracer()
      * @brief the destructor
      */
@@ -73,7 +97,12 @@ protected:
     void end_of_elaboration() override;
 #ifdef WITH_SCV
     scv_tr_db* txdb;
+#else
+    scv_tr::scv_tr_db* txdb;
 #endif
+
+private:
+    void init_scv_db(file_type type, std::string const&& name);
 };
 
 } /* namespace scc */

@@ -20,8 +20,8 @@
  *      Author: eyck
  */
 
-#include "scc/configurer.h"
-#include "scc/report.h"
+#include "configurer.h"
+#include "report.h"
 #ifdef WITH_CCI
 #include <cci_configuration>
 #include <cci_utils/broker.h>
@@ -49,7 +49,7 @@ scc::configurer::configurer(const std::string& filename)
             SCCERR() << "Could not open input file " << filename;
         }
     }
-    //register_simulation_phase_callback(sc_core::sc_status::SC_END_OF_ELABORATION);
+    // register_simulation_phase_callback(sc_core::sc_status::SC_END_OF_ELABORATION);
 }
 
 void scc::configurer::dump_hierarchy(std::ostream& os, sc_core::sc_object* obj) {
@@ -58,7 +58,7 @@ void scc::configurer::dump_hierarchy(std::ostream& os, sc_core::sc_object* obj) 
         for(auto* o : obj->get_child_objects())
             dump_hierarchy(os, o);
     } else {
-        for(auto* o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
+        for(auto* o : sc_core::sc_get_top_level_objects())
             dump_hierarchy(os, o);
     }
 }
@@ -67,7 +67,7 @@ inline auto get_sc_objects(sc_core::sc_object* obj = nullptr) -> const std::vect
     if(obj)
         return obj->get_child_objects();
     else
-        return sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext);
+        return sc_core::sc_get_top_level_objects();
 }
 
 void scc::configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj) {
@@ -85,7 +85,8 @@ void scc::configurer::dump_configuration(std::ostream& os, sc_core::sc_object* o
     // os << root;
 }
 
-template <typename T, typename T1 = T> auto check_n_assign(Json::Value& node, sc_core::sc_attr_base* attr_base) -> bool {
+template <typename T, typename T1 = T>
+auto check_n_assign(Json::Value& node, sc_core::sc_attr_base* attr_base) -> bool {
     auto* a = dynamic_cast<sc_core::sc_attribute<T>*>(attr_base);
     if(a != nullptr) {
         node[a->name()] = T1(a->value);
@@ -156,7 +157,7 @@ void scc::configurer::dump_configuration(sc_core::sc_object* obj, Json::Value& p
 
 void scc::configurer::configure() {
     if(config_valid)
-        for(auto* o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext)) {
+        for(auto* o : sc_core::sc_get_top_level_objects()) {
             Json::Value& val = root[o->name()];
             if(!val.isNull())
                 configure_sc_attribute_hierarchical(o, val);
@@ -282,24 +283,25 @@ void scc::configurer::check_config_hierarchical(Json::Value const& node, std::st
             if(!itr.key().isString())
                 return;
             std::string key_name = itr.key().asString();
-            if(key_name=="log_level") continue; // virtual attribute
+            if(key_name == "log_level")
+                continue; // virtual attribute
             std::string hier_name{prefix.size() ? prefix + "." + key_name : key_name};
             Json::Value val = node[key_name];
             if(val.isNull() || val.isArray())
                 continue;
-            else if(val.isObject()){
+            else if(val.isObject()) {
                 if(!sc_core::sc_find_object(hier_name.c_str()))
-                    SCCFATAL(this->name())<<"Illegal hierarchy name: '"<<hier_name<<"'";
+                    SCCFATAL(this->name()) << "Illegal hierarchy name: '" << hier_name << "'";
                 check_config_hierarchical(*itr, hier_name);
             }
 #ifdef WITH_CCI
             else {
                 auto* obj = sc_core::sc_find_object(prefix.c_str());
                 auto* attr = obj->get_attribute(key_name);
-                if(!attr){
+                if(!attr) {
                     cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
                     if(!param_handle.is_valid()) {
-                        SCCFATAL(this->name())<<"Illegal parameter name: '"<<hier_name<<"'";
+                        SCCFATAL(this->name()) << "Illegal parameter name: '" << hier_name << "'";
                     }
                 }
             }
@@ -310,6 +312,7 @@ void scc::configurer::check_config_hierarchical(Json::Value const& node, std::st
 
 void scc::init_cci(std::string name) {
 #ifdef WITH_CCI
-    cci::cci_register_broker(new cci_utils::broker("Global Broker"));
+    static cci_utils::broker broker(name);
+    cci::cci_register_broker(&broker);
 #endif
 }

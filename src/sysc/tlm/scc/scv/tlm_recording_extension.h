@@ -18,12 +18,21 @@
 #define _SCV4TLM_TLM_RECORDING_EXTENSION_H_
 
 #include <array>
+#ifdef WITH_SCV
 #include <scv.h>
+#else
+#include <scv-tr.h>
+#endif
 #include <tlm>
 
 namespace tlm {
 namespace scc {
 namespace scv {
+#ifndef WITH_SCV
+#ifndef SCVNS
+#define SCVNS ::scv_tr::
+#endif
+#endif
 
 //! transaction relationships
 enum tx_rel {
@@ -71,7 +80,7 @@ public:
      * \param creator_ is the pointer to the owner of this extension (usually an
      * instance of scv_tlm2_recorder).
      */
-    tlm_recording_extension(scv_tr_handle handle, void* creator_)
+    tlm_recording_extension(SCVNS scv_tr_handle handle, void* creator_)
     : txHandle(handle)
     , creator(creator_) {}
     /*! \brief accessor to the owner, the property is read only.
@@ -81,13 +90,13 @@ public:
     /*! \brief accessor to the SCV transaction handle.
      *
      */
-    scv_tr_handle txHandle;
+    SCVNS scv_tr_handle txHandle;
 
 private:
     //! the owner of this transaction
     void* creator;
 };
-} // namespace scv4tlm
+} // namespace scv
 } // namespace scc
 } // namespace tlm
 

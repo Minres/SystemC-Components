@@ -27,9 +27,12 @@
 #include <unordered_set>
 #include <vector>
 // clang-format off
-#include "scv/scv_util.h"
-#include "scv/scv_introspection.h"
-#include "scv/scv_tr.h"
+#ifdef WITH_SCV
+#include <scv.h>
+#else
+#include <scv-tr.h>
+namespace scv_tr {
+#endif
 // clang-format on
 // ----------------------------------------------------------------------------
 constexpr auto SQLITEWRAPPER_ERROR = 1000;
@@ -300,8 +303,8 @@ struct Database : Base {
     }
 
     inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, double value) {
-        int exponent;
-        const double mantissa = frexp(value, &exponent);
+        //        int exponent;
+        //        const double mantissa = frexp(value, &exponent);
     }
 
     inline void writeRelation(const std::string& name, uint64_t sink_id, uint64_t src_id) {
@@ -565,3 +568,6 @@ void scv_tr_binary_init() {
     scv_tr_handle::register_relation_cb(relationCb);
 }
 // ----------------------------------------------------------------------------
+#ifndef WITH_SCV
+}
+#endif

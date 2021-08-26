@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
+#include "sqlite3.h"
 #include <array>
 #include <cstdio>
 #include <iostream>
@@ -20,15 +21,12 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-#ifndef FMT_HEADER_ONLY
-#define FMT_HEADER_ONLY
+#ifdef WITH_SCV
+#include <scv.h>
+#else
+#include <scv-tr.h>
+namespace scv_tr {
 #endif
-// clang-format off
-#include "scv/scv_util.h"
-#include "scv/scv_introspection.h"
-#include "scv/scv_tr.h"
-// clang-format on
-#include "sqlite3.h"
 // ----------------------------------------------------------------------------
 constexpr auto SQLITEWRAPPER_ERROR = 1000;
 // ----------------------------------------------------------------------------
@@ -175,7 +173,7 @@ static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason,
             db.exec("BEGIN TRANSACTION");
             std::ostringstream ss;
             ss << "INSERT INTO " SIM_PROPS " (time_resolution) values ("
-               << (long)(sc_get_time_resolution().to_seconds() * 1e15) << ");";
+               << (long)(sc_core::sc_get_time_resolution().to_seconds() * 1e15) << ");";
             db.exec(ss.str().c_str());
             stream_stmt = db.prepare("INSERT INTO " STREAM_TABLE " (id, name, kind) values (@ID,@NAME,@KIND);");
             gen_stmt = db.prepare("INSERT INTO " GENERATOR_TABLE " (id,stream, name)"
@@ -455,3 +453,6 @@ void scv_tr_sqlite_init() {
     scv_tr_handle::register_relation_cb(relationCb);
 }
 // ----------------------------------------------------------------------------
+#ifndef WITH_SCV
+}
+#endif

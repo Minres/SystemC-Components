@@ -39,10 +39,10 @@ private:
     axi::pe::axi_initiator<SOCKET_WIDTH> intor_pe;
     axi::pe::simple_target<SOCKET_WIDTH> tgt_pe;
     unsigned id{0};
-  unsigned int StartAddr{0};
-  unsigned int ResetCycles{10};
-  unsigned int BurstLengthByte{16};
-  unsigned int NumberOfIterations{1};
+    unsigned int StartAddr{0};
+    unsigned int ResetCycles{10};
+    unsigned int BurstLengthByte{16};
+    unsigned int NumberOfIterations{1};
 
 public:
     testbench(sc_core::sc_module_name nm)
@@ -69,7 +69,7 @@ public:
         ext->set_size(scc::ilog2(std::min<size_t>(len, SOCKET_WIDTH / 8)));
         sc_assert(len < (SOCKET_WIDTH / 8) || len % (SOCKET_WIDTH / 8) == 0);
         ext->set_length((len * 8 - 1) / SOCKET_WIDTH);
-        //ext->set_burst(len * 8 > SOCKET_WIDTH ? axi::burst_e::INCR : axi::burst_e::FIXED);
+        // ext->set_burst(len * 8 > SOCKET_WIDTH ? axi::burst_e::INCR : axi::burst_e::FIXED);
         ext->set_burst(axi::burst_e::INCR);
         ext->set_id(id);
         return trans;
@@ -96,7 +96,7 @@ public:
                     SCCERR() << "Invalid response status" << trans->get_response_string();
                 trans->release();
             }
-	    StartAddr += BurstLengthByte;
+            StartAddr += BurstLengthByte;
             { // 2
                 auto trans = prepare_trans(BurstLengthByte);
                 trans->set_command(tlm::TLM_WRITE_COMMAND);
@@ -119,10 +119,10 @@ public:
 int sc_main(int argc, char* argv[]) {
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
     scc::init_logging(
-		      scc::LogConfig()
-		      .logLevel(static_cast<scc::log>(7))
-		      .logAsync(false)
-		      .coloredOutput(true));
+            scc::LogConfig()
+            .logLevel(static_cast<scc::log>(7))
+            .logAsync(false)
+            .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
 #ifdef WITH_SCV
     scv_startup();

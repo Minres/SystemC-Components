@@ -1,0 +1,27 @@
+
+        Authors of SystemC Verification Library
+        ---------------------------------------
+
+  Authors of original release:
+  Norris Ip                 Cadence Design Systems, Inc.
+  Dean Shea                 Cadence Design Systems, Inc.
+  John Rose                 Cadence Design Systems, Inc.
+  Jasvinder Singh           Cadence Design Systems, Inc.
+  William Paulsen           Cadence Design Systems, Inc.
+  John Pierce               Cadence Design Systems, Inc.
+  Rachida Kebichi           Cadence Design Systems, Inc.
+  Ted Elkind                Cadence Design Systems, Inc.
+  David Bailey              Cadence Design Systems, Inc.
+  
+  Authors of subsequent modifications:
+  Bas Arts                  NXP Semiconductors
+  Robert A. Clark           Parama Networks Inc.
+  Jerome Cornet             STMicroelectronics
+  Mark Glasser              Mentor Graphics, Inc.
+  Ralph Goergen             OFFIS Institute for Information Technology
+  Philipp A. Hartmann       OFFIS Institute for Information Technology
+  Henning Kleen             OFFIS Institute for Information Technology
+  David Long                Doulos Ltd.
+  Torsten Maehne            Université Pierre et Marie Curie, Paris
+  Arnab Saha                Mentor Graphics, Inc.
+  Stephan Gerth             Fraunhofer IIS/EAS, Dresden

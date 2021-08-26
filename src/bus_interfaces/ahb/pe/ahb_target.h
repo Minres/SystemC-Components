@@ -2,10 +2,10 @@
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
+#include <ahb/ahb_tlm.h>
 #include <array>
 #include <functional>
 #include <scc/ordered_semaphore.h>
-#include <ahb/ahb_tlm.h>
 #include <unordered_set>
 
 //! TLM2.0 components modeling AHB

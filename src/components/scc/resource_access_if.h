@@ -29,7 +29,6 @@ namespace scc {
  */
 class resource_access_if {
 public:
-
     virtual ~resource_access_if() = default;
     /**
      * @fn std::size_t size()const =0
@@ -59,7 +58,7 @@ public:
      * @return true it the access is successful
      */
     virtual bool write(const uint8_t* data, std::size_t length, uint64_t offset = 0,
-            sc_core::sc_time d = sc_core::SC_ZERO_TIME) = 0;
+                       sc_core::sc_time d = sc_core::SC_ZERO_TIME) = 0;
     /**
      * @fn bool read(uint8_t*, std::size_t, uint64_t=0, sc_core::sc_time=sc_core::SC_ZERO_TIME)const =0
      * @brief read the data from the resource
@@ -71,7 +70,7 @@ public:
      * @return true it the access is successful
      */
     virtual bool read(uint8_t* data, std::size_t length, uint64_t offset = 0,
-            sc_core::sc_time d = sc_core::SC_ZERO_TIME) const = 0;
+                      sc_core::sc_time d = sc_core::SC_ZERO_TIME) const = 0;
     /**@}*/
     /**
      * \defgroup NonFuncAcc non-functional accesses

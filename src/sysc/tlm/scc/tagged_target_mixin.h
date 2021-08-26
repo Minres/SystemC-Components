@@ -511,6 +511,6 @@ private:
     transaction_type* m_current_transaction;
 };
 } // namespace scc
-}  // namespace tlm
+} // namespace tlm
 
 #endif //__TAGGED_TARGET_MIXIN_H__

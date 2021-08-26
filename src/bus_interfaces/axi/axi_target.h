@@ -1,5 +1,7 @@
 #pragma once
 
+#define SC_INCLUDE_DYNAMIC_PROCESSES
+
 #include <axi/axi_tlm.h>
 #include <axi/pe/simple_target.h>
 #include <scc/peq.h>
