@@ -170,7 +170,7 @@ if (SystemC_INCLUDE_DIR)
   set(SystemC_VERSION ${SC_VERSION_MAJOR}.${SC_VERSION_MINOR}.${SC_VERSION_PATCH} CACHE STRING "SystemC Version")
 endif()
 
-
+include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(OSCISystemC
   REQUIRED_VARS
     SystemC_LIBRARY
