@@ -5,12 +5,12 @@ macro(conan_check)
   # for backwards compatibility
   cmake_parse_arguments(MARGS "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN} )
  
-  find_program(conan conan)
-  if(NOT EXISTS ${conan})
+  find_program(CONAN conan)
+  if(NOT EXISTS ${CONAN})
     message(FATAL_ERROR "Conan is required. Please see README.md")
     return()
   endif()
-  execute_process(COMMAND ${conan} --version
+  execute_process(COMMAND ${CONAN} --version
                   OUTPUT_VARIABLE CONAN_VERSION_OUTPUT)
   string(REGEX MATCHALL "[0-9.]+" CONAN_VERSION ${CONAN_VERSION_OUTPUT})
   if (NOT (CONAN_VERSION VERSION_GREATER_EQUAL 1.36.0))
