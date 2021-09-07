@@ -11,19 +11,18 @@ import pysysc
 
 logger = logging.getLogger(__name__)
 
-def load_scc(project_dir, build_type):
+def load_scc(project_dir):
     """
     Find and load SCC libs in PySysC.
-    :param project_dir: Toplevel project directory.
-    :param build_type: Current CMake build type e.g: Debug or Release.
+    :param project_dir: Toplevel project directory and root of the search tree.
     """
     logging.debug("Loading SC-Components lib")
     pysysc.add_include_path(os.path.join(project_dir, 'scc/src/common'))
-    pysysc.add_library('scc_util.h', os.path.join(project_dir, 'build/%s/scc/src/common/libscc-util.so'%build_type))
+    pysysc.add_library('scc_util.h', 'libscc-util.so', project_dir)
     pysysc.add_include_path(os.path.join(project_dir, 'scc/third_party'))
     pysysc.add_include_path(os.path.join(project_dir, 'scc/third_party/scv-tr/src'))
-    pysysc.add_library('scv-tr.h', os.path.join(project_dir, 'build/%s/scc/third_party/scv-tr/src/libscv-tr.so'%build_type))
+    pysysc.add_library('scv-tr.h', 'libscv-tr.so', project_dir)
     pysysc.add_include_path(os.path.join(project_dir, 'scc/src/sysc'))
-    pysysc.add_library('scc_sysc.h', os.path.join(project_dir, 'build/%s/scc/src/sysc/libscc-sysc.so'%build_type))
+    pysysc.add_library('scc_sysc.h', 'libscc-sysc.so', project_dir)
     pysysc.add_include_path(os.path.join(project_dir, 'scc/src/components'))
     cppyy.include('scc_components.h')
