@@ -28,7 +28,7 @@ This will define the following variables:
   The version of the SystemC library which was found.
 ``SystemC_INCLUDE_DIRS``
   Include directories needed to use SystemC.
-``SystemC_LIBRARIES``
+``SystemC_LIBRARY``
   Libraries needed to link to SystemC.
 ``SCV_FOUND``
   True if the system has the SCV library.
@@ -36,7 +36,7 @@ This will define the following variables:
   The version of the SCV library which was found.
 ``SCV_INCLUDE_DIRS``
   Include directories needed to use SCV.
-``SCV_LIBRARIES``
+``SCV_LIBRARY``
   Libraries needed to link to SCV.
 ``CCI_FOUND``
   True if the system has the CCI library.
@@ -44,8 +44,8 @@ This will define the following variables:
   The version of the CCI library which was found.
 ``CCI_INCLUDE_DIRS``
   Include directories needed to use CCI.
-``CCI_LIBRARIES``
-  Libraries needed to link to CCI.
+``CCI_LIBRARY``
+  Library needed to link to CCI.
 
 #]=======================================================================]
 
