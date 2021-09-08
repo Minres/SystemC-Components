@@ -13,6 +13,7 @@ option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
 
 include(Common)
+
 if(BUILD_STAND_ALONE)
 	option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
 	include(GNUInstallDirs)
