@@ -109,7 +109,6 @@ FIND_PATH(CCI_LIBRARY_DIRS
 
 if(SystemC_FOUND)
 	#see https://gitlab.kitware.com/cmake/community/wikis/FAQ#how-do-i-use-a-different-compiler
-   	#set(CMAKE_CXX_COMPILER $ENV{SNPS_VP_HOME}/common/bin/g++)
    	set(SystemC_INCLUDE_DIRS ${TLM_INCLUDE_DIRS} ${SystemC_INCLUDE_DIRS})
     set(SystemC_LIBRARIES xmsccci_sh systemc_sh)
     if(SCV_FOUND)
