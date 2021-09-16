@@ -39,7 +39,7 @@ public:
      * @param enable enable VCD (signal based) tracing
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const&& name, file_type type, bool enable = true, bool default_enable = false);
+    configurable_tracer(std::string const&& name, file_type type, bool enable_vcd = true, bool default_enable = false);
     /**
      * constructs a tracer object
      *
