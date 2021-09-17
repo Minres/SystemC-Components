@@ -11,6 +11,8 @@ from cppyy import gbl as cpp
 import pysysc
 
 logger = logging.getLogger(__name__)
+traces = []
+cfgs = []
 
 def load_lib(project_dir):
     """
@@ -56,11 +58,14 @@ def setup(log_level = logging.WARNING):
 
 def configure(name="", enable_vcd=False):
     if len(name) and os.path.isfile(name):
-        Simulation.cfg = cpp.scc.configurer(cpp.std.string(name));
+        cfgs.append(cpp.scc.configurer(cpp.std.string(name)));
         if enable_vcd:
             trace_name = os.path.basename(name)
-            Simulation.trace = cpp.scc.configurable_tracer(trace_name, 1, True, True)
-            Simulation.trace.add_control()        
+            trace = cpp.scc.configurable_tracer(trace_name, 1, True, True)
+            trace.add_control()
+            traces.append(trace)
     else:
         if enable_vcd:
-            Simulation.trace = cpp.scc.tracer('vcd_trace', 1, True)
+            trace = cpp.scc.tracer('vcd_trace', 1, True)
+            traces.append(trace)
+
