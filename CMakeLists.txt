@@ -4,20 +4,19 @@ cmake_policy(SET CMP0077 NEW)
 
 project(scc VERSION 1.0.0 LANGUAGES CXX C)
 
-# find_package(Doxygen)
-
 option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 
-option(BUILD_STAND_ALONE "Do a standalone build and do not rely on a parent project providing needed libraries" FALSE)
+option(BUILD_STAND_ALONE "Do a standalone build and do not rely on a parent project providing needed libraries" OFF)
 
 option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
 
 include(Common)
-include(GNUInstallDirs)
+
 if(BUILD_STAND_ALONE)
 	option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
+	include(GNUInstallDirs)
 	include(Conan)
 	setup_conan(TARGETS)
 endif()
