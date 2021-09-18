@@ -1,4 +1,3 @@
-cmake_minimum_required(VERSION 3.12)
 if(USE_CWR_SYSTEMC)
 	add_subdirectory(ace-axi)
 	add_subdirectory(axi-axi)

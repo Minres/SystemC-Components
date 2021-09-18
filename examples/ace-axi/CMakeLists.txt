@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 3.11)
-
 project (ace_axi_example)
 
 find_package(SystemCPackage)
