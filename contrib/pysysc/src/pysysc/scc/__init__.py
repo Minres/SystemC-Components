@@ -56,16 +56,16 @@ def setup(log_level = logging.WARNING):
         cpp.sc_core.sc_report_handler.set_verbosity_level(verb_lut[log_level]);
     cpp.sc_core.sc_report_handler.set_actions(cpp.sc_core.SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, cpp.sc_core.SC_DO_NOTHING);
 
-def configure(name="", enable_vcd=False):
+def configure(name="", enable_trace=False):
     if len(name) and os.path.isfile(name):
         cfgs.append(cpp.scc.configurer(cpp.std.string(name)));
-        if enable_vcd:
+        if enable_trace:
             trace_name = os.path.basename(name)
             trace = cpp.scc.configurable_tracer(trace_name, 1, True, True)
             trace.add_control()
             traces.append(trace)
     else:
-        if enable_vcd:
+        if enable_trace:
             trace = cpp.scc.tracer('vcd_trace', 1, True)
             traces.append(trace)
 
