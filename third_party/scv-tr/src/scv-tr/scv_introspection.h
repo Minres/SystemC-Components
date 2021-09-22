@@ -97,8 +97,36 @@ public:
 
 // overall interface for the extensions
 class scv_extensions_if;
+class scv_object_if {
+public:
 
-#define _SCV_INTROSPECTION_BASE sc_core::sc_object
+  // return the instance name of the data structure
+  virtual const char *get_name() const = 0;
+
+  // return a string unique to each class
+  virtual const char *kind() const = 0;
+
+  // print current values on output stream
+  virtual void print(std::ostream& o=std::cout, int details=0, int indent=0) const = 0;
+
+  // print current values on output stream
+  virtual void show(int details=0, int indent=0) const { print(std::cout,-1,0); }
+
+  // control debug messages by facility (do not override)
+  static void set_debug_level(const char * facility, int level = -1);
+
+  // are debug messages on for this class (write for each class)?
+  // static int get_debug() { ... }
+
+  // control debug messages by class (write for each class)
+  // static void set_debug(int) { ... }
+
+  //destructor (does nothing)
+  virtual ~scv_object_if() {};
+
+};
+
+#define _SCV_INTROSPECTION_BASE scv_object_if
 
 // ----------------------------------------
 // utilities supporting all extensions
@@ -108,6 +136,7 @@ public:
     // scv_object_if's interface is also available
     //
     virtual const char* get_name() const = 0;
+    virtual const char* kind() const = 0;
     virtual void print(std::ostream& o = std::cout, int details = 0, int indent = 0) const = 0;
     virtual bool has_valid_extensions() const = 0;
     virtual bool is_dynamic() const = 0;
@@ -234,63 +263,6 @@ class _scv_dynamic_data;
 #undef DELETE // defined in winnt.h
 #endif
 #endif
-
-class scv_extension_callbacks_if : public _SCV_INTROSPECTION_BASE {
-public:
-    enum callback_reason { VALUE_CHANGE, DELETE };
-    typedef int callback_h;
-
-public:
-    callback_h register_cb(void (*f)(scv_extensions_if&, callback_reason)) { return _register_cb(new callback_t(f)); }
-    template <typename arg_t> callback_h register_cb(void (*f)(scv_extensions_if&, callback_reason, arg_t), arg_t arg) {
-        return _register_cb(new callback_arg_t<arg_t>(f, arg));
-    }
-    virtual void remove_cb(callback_h) = 0;
-
-public: // internal
-    class callback_base {
-        int* _children{nullptr};
-        int _id{0};
-
-    public:
-        virtual void execute(scv_extensions_if*, callback_reason) = 0;
-        virtual callback_base* duplicate() const = 0;
-        callback_base() {}
-        virtual ~callback_base() {
-            if(_children)
-                delete[] _children;
-        }
-        int get_id() { return _id; }
-        void set_id(int i) { _id = i; }
-        int* get_children() { return _children; }
-        void set_children(int* p) { _children = p; }
-    };
-    class callback_t : public callback_base {
-    public:
-        typedef void (*fcn_t)(scv_extensions_if&, callback_reason);
-        fcn_t _fcn;
-        callback_t(fcn_t f)
-        : _fcn(f) {}
-        virtual void execute(scv_extensions_if* d, callback_reason r) { (*_fcn)(*d, r); }
-        virtual callback_base* duplicate() const { return new callback_t(_fcn); }
-    };
-    template <typename arg_t> class callback_arg_t : public callback_base {
-    public:
-        typedef void (*fcn_t)(scv_extensions_if&, callback_reason, arg_t);
-        fcn_t _fcn;
-        arg_t _arg;
-        callback_arg_t(fcn_t f, arg_t arg)
-        : _fcn(f)
-        , _arg(arg) {}
-        virtual void execute(scv_extensions_if* d, callback_reason r) { (*_fcn)(*d, r, _arg); }
-        virtual callback_base* duplicate() const { return new callback_arg_t(_fcn, _arg); }
-    };
-    virtual callback_h _register_cb(callback_base*) = 0;
-};
-
-#undef _SCV_INTROSPECTION_BASE
-#define _SCV_INTROSPECTION_BASE scv_extension_callbacks_if
-
 // ----------------------------------------
 // a thin coordination layer to collect all the extensions
 // -- to be updated when a new extension is made available
@@ -298,9 +270,6 @@ public: // internal
 
 // interface for the overall extensions
 class scv_extensions_if : public _SCV_INTROSPECTION_BASE {
-public:
-    static int get_debug();
-    static void set_debug(int);
 };
 
 #undef _SCV_INTROSPECTION_BASE

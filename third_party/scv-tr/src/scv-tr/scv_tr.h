@@ -148,7 +148,7 @@ typedef long scv_tr_relation_handle_t;
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-class scv_tr_db : public sc_core::sc_object {
+class scv_tr_db : public scv_object_if {
 public:
     // The scv_tr_db class provides methods to:
     //
@@ -235,7 +235,7 @@ private:
 
 // --------------------------------------------------------------------------
 
-class scv_tr_stream : public sc_core::sc_object {
+class scv_tr_stream : public scv_object_if {
 public:
     // The scv_tr_stream ctor will create a stream on which transactions are
     // recorded at the specified scope, in the specified scv_tr_db.
@@ -305,7 +305,7 @@ private:
 
 // --------------------------------------------------------------------------
 
-class scv_tr_handle : public sc_core::sc_object {
+class scv_tr_handle : public scv_object_if {
 
     // This is a handle object, which includes an "is_valid()" method.
     //
@@ -493,7 +493,7 @@ private:
 
 // --------------------------------------------------------------------------
 
-class scv_tr_generator_base : public sc_core::sc_object {
+class scv_tr_generator_base : public scv_object_if {
     friend class scv_tr_stream;
     friend class scv_tr_handle;
 

@@ -72,29 +72,6 @@ struct scv_error_data {
     const char* error_string;
 };
 
-static int s_introspection_debug_level = scv_debug::INITIAL_DEBUG_LEVEL;
-
-int scv_extensions_if::get_debug() { return s_introspection_debug_level; }
-void scv_extensions_if::set_debug(int i) {
-    if(s_introspection_debug_level == i)
-        return;
-    s_introspection_debug_level = i;
-    scv_debug::set_facility_level(scv_debug::INTROSPECTION, i);
-}
-
-// ----------------------------------------
-// dynamic data
-// ----------------------------------------
-_scv_dynamic_data::~_scv_dynamic_data() = default;
-
-void _scv_dynamic_data::execute_callbacks(scv_extensions_if* obj, scv_extensions_if::callback_reason r) {
-    std::list<_scv_dynamic_data::callback_base*>::iterator i;
-    auto e = _callbacks.end();
-    for(i = _callbacks.begin(); i != e; ++i) {
-        (*i)->execute(obj, r);
-    }
-}
-
 // ----------------------------------------
 // _scv_extension_util
 // ----------------------------------------
@@ -250,21 +227,6 @@ std::string _scv_extension_util::get_short_name() const { return std::string(_sh
 void _scv_extension_util::set_name(const char* s) { _name = s; }
 void _scv_extension_util::_set_name(const std::string& s) { _name = s; }
 
-_scv_dynamic_data* _scv_extension_util::_get_dynamic_data() {
-    if(!_is_dynamic())
-        return nullptr;
-    if(_data == (_scv_dynamic_data*)1)
-        _data = new _scv_dynamic_data();
-    return _data;
-}
-_scv_dynamic_data* _scv_extension_util::get_dynamic_data() { return _get_dynamic_data(); }
-const _scv_dynamic_data* _scv_extension_util::_get_dynamic_data() const {
-    if(!_is_dynamic())
-        return nullptr;
-    if(_data == (_scv_dynamic_data*)1)
-        _data = new _scv_dynamic_data();
-    return _data;
-}
 void _scv_extension_util::_set_parent(_scv_extension_util* p, const std::string& name) {
     if(!_parent) {
         _parent = p;
@@ -273,8 +235,6 @@ void _scv_extension_util::_set_parent(_scv_extension_util* p, const std::string&
     }
 }
 void _scv_extension_util::_set_dynamic() {
-    if(_data == nullptr)
-        _data = (_scv_dynamic_data*)1;
 }
 
 // ----------------------------------------
@@ -422,11 +382,6 @@ _SCV_DEFAULT_RW_SYSC(_scv_extension_rw_enum, enum)
 // ----------------------------------------
 // _scv_extension_callbacks_enum
 // ----------------------------------------
-
-scv_extensions_if::callback_h _scv_extension_callbacks_enum::_register_cb(callback_base* c) {
-    return s_add_callback(_get_dynamic_data(), c);
-}
-void _scv_extension_callbacks_enum::remove_cb(callback_h id) { return s_remove_callback(_get_dynamic_data(), id); }
 
 #define _SCV_EXT_TYPE_FC_COMMON_I(type_id)                                                                             \
     int _scv_extension_type_##type_id::get_enum_size() const { return 0; }                                             \
@@ -992,56 +947,5 @@ _SCV_EXT_RW_FC_ASSIGNS_V(sc_bv_base, sc_bv_base)
 #undef _SCV_EXT_RW_FC_COMMON_I
 
 //////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////
-
-// ----------------------------------------
-// specialization for records
-// ----------------------------------------
-
-#define _SCV_EXT_CALLBACKS_FC_I(basic_type, type_id)                                                                   \
-    _scv_extension_callbacks_##type_id::_scv_extension_callbacks_##type_id() {}                                        \
-    _scv_extension_callbacks_##type_id::~_scv_extension_callbacks_##type_id() {                                        \
-        if(this->_has_dynamic_data() && !this->get_parent())                                                           \
-            this->_get_dynamic_data()->execute_callbacks(this, scv_extensions_if::DELETE);                             \
-    }                                                                                                                  \
-                                                                                                                       \
-    scv_extensions_if::callback_h _scv_extension_callbacks_##type_id::_register_cb(                                    \
-        scv_extensions_if::callback_base* c) {                                                                         \
-        return s_add_callback(this->_get_dynamic_data(), c);                                                           \
-    }                                                                                                                  \
-    void _scv_extension_callbacks_##type_id::remove_cb(scv_extensions_if::callback_h id) {                             \
-        s_remove_callback(this->_get_dynamic_data(), id);                                                              \
-    }
-
-#define _SCV_EXT_CALLBACKS_FC_1_I(basic_type, type_id) _SCV_EXT_CALLBACKS_FC_I(basic_type, type_id)
-
-#define _SCV_EXT_CALLBACKS_FC_D_I(basic_type, type_id) _SCV_EXT_CALLBACKS_FC_I(basic_type, type_id)
-
-_SCV_EXT_CALLBACKS_FC_I(bool, bool);
-_SCV_EXT_CALLBACKS_FC_I(char, char);
-_SCV_EXT_CALLBACKS_FC_I(unsigned char, unsigned_char);
-_SCV_EXT_CALLBACKS_FC_I(short, short);
-_SCV_EXT_CALLBACKS_FC_I(unsigned short, unsigned_short);
-_SCV_EXT_CALLBACKS_FC_I(int, int);
-_SCV_EXT_CALLBACKS_FC_I(unsigned int, unsigned_int);
-_SCV_EXT_CALLBACKS_FC_I(long, long);
-_SCV_EXT_CALLBACKS_FC_I(unsigned long, unsigned_long);
-_SCV_EXT_CALLBACKS_FC_I(long long, long_long);
-_SCV_EXT_CALLBACKS_FC_I(unsigned long long, unsigned_long_long);
-_SCV_EXT_CALLBACKS_FC_I(float, float);
-_SCV_EXT_CALLBACKS_FC_I(double, double);
-_SCV_EXT_CALLBACKS_FC_I(std::string, string);
-
-#if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
-_SCV_EXT_CALLBACKS_FC_1_I(sc_dt::sc_bit, sc_bit);
-_SCV_EXT_CALLBACKS_FC_1_I(sc_dt::sc_logic, sc_logic);
-_SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_signed, sc_signed);
-_SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_unsigned, sc_unsigned);
-_SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_int_base, sc_int_base);
-_SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_uint_base, sc_uint_base);
-_SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_lv_base, sc_lv_base);
-_SCV_EXT_CALLBACKS_FC_D_I(sc_dt::sc_bv_base, sc_bv_base);
-#endif
 } // namespace scv_tr
 //////////////////////////////////////////////////////////////////////

@@ -1357,7 +1357,7 @@ const scv_extensions_if* scv_tr_generator_base::get_begin_exts_p() const {
     //
     if(my_exts_p->get_type() == scv_extensions_if::RECORD) {
         if((my_exts_p->get_field(0)->get_type() == scv_extensions_if::INTEGER) &&
-           (!strcmp(my_exts_p->get_field(0)->basename(), "_default_field_"))) {
+           (!strcmp(my_exts_p->get_field(0)->get_name(), "_default_field_"))) {
             return nullptr;
         }
     }

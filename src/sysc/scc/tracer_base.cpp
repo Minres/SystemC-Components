@@ -68,10 +68,10 @@ inline auto try_trace_obj(sc_trace_file* trace_file, const sc_object* object, tr
         if(trace_helper<sc_core::sc_signal<T, SC_UNCHECKED_WRITERS>>(trace_file, object))
             return true;
     }
-    if((types_to_trace & trace_types::VARIABLES) == trace_types::VARIABLES) {
-        if(variable_trace_helper<T>(trace_file, object))
-            return true;
-    }
+//    if((types_to_trace & trace_types::VARIABLES) == trace_types::VARIABLES) {
+//        if(variable_trace_helper<T>(trace_file, object))
+//            return true;
+//    }
     if((types_to_trace & trace_types::OBJECTS) == trace_types::OBJECTS)
         if(trace_helper<T>(trace_file, object))
             return true;
