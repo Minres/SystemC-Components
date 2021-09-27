@@ -125,11 +125,6 @@ else()
     message(STATUS "${PROJECT_NAME}: using built-in version of fmt")
 endif()
 
-# Define two variables in order not to repeat ourselves.
-if(${CMAKE_VERSION} VERSION_LESS "3.13.0") 
-    link_directories(${SystemC_LIBRARY_DIRS})
-endif()
-
 # Define the scc library
 add_library(scc INTERFACE)
 if(HAVE_GETENV)
