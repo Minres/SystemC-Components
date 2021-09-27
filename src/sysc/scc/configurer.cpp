@@ -312,7 +312,7 @@ void scc::configurer::check_config_hierarchical(Json::Value const& node, std::st
 
 void scc::init_cci(std::string name) {
 #ifdef WITH_CCI
-    static cci_utils::broker broker(name);
+    thread_local static cci_utils::broker broker(name);
     cci::cci_register_broker(&broker);
 #endif
 }

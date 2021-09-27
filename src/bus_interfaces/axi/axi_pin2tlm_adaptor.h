@@ -160,7 +160,7 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
             b_valid_o.write(false);
 
         w_ready_o.write(true);
-        ar_ready_o.write(true);
+        ar_ready_o.write(false);
         aw_ready_o.write(true);
 
         if(ar_valid_i.read()) {
@@ -364,7 +364,7 @@ void
 axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pin2tlm_adaptor::end_r_resp() {
   sc_core::sc_time delay = sc_core::SC_ZERO_TIME;
   auto th = active_r_end_transactions.front();
-  SCCINFO(SCMOD) << th->phase << " FW R sending transaction resp end";
+  SCCTRACE(SCMOD) << th->phase << " FW R sending transaction resp end";
   wait(delay);
   output_socket->nb_transport_fw(*th->payload, th->phase, delay);
   active_r_end_transactions.pop_front();
@@ -376,7 +376,7 @@ void
 axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pin2tlm_adaptor::end_b_resp() {
   sc_core::sc_time delay = sc_core::SC_ZERO_TIME;
   auto th = active_b_end_transactions.front();
-  SCCINFO(SCMOD) << th->phase << " FW B sending transaction resp end";
+  SCCTRACE(SCMOD) << th->phase << " FW B sending transaction resp end";
   wait(delay);
   output_socket->nb_transport_fw(*th->payload, th->phase, delay);
   active_b_end_transactions.pop_front();
