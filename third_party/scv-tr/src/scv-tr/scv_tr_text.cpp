@@ -59,15 +59,20 @@
 #include "scv_tr.h"
 #include <string>
 #include <sstream>
+#include <fmt/format.h>
+#include <fmt/printf.h>
+#include <fmt/os.h>
+
 namespace scv_tr {
 // ----------------------------------------------------------------------------
-#ifdef _MSC_VER
-#define scv_tr_TEXT_LLU "%I64u"
-#define scv_tr_TEXT_LLX "%I64x"
-#else
-#define scv_tr_TEXT_LLU "%llu"
-#define scv_tr_TEXT_LLX "%llx"
-#endif
+//template <typename... Args>
+//inline void scv_tr_fprintf(FILE* f, char const* fmt_str, const Args&... args){
+//    auto buf = fmt::format(FMT_STRING(fmt_str), args...);
+//    std::fwrite(buf.c_str(), 1, buf.size(), f);
+//}
+//#define FPRINF(...) fmt::fprintf(__VA_ARGS__)
+#define FPRINT(FP, FMTSTR)       auto buf1 = fmt::format(FMT_STRING(FMTSTR));std::fwrite(buf1.c_str(), 1, buf1.size(), FP);
+#define FPRINTF(FP, FMTSTR, ...) auto buf2 = fmt::format(FMT_STRING(FMTSTR), __VA_ARGS__);std::fwrite(buf2.c_str(), 1, buf2.size(), FP);
 // ----------------------------------------------------------------------------
 static FILE *my_text_file_p = nullptr;
 static void scv_tr_db_cbf(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason, void *user_data_p) {
@@ -86,6 +91,7 @@ static void scv_tr_db_cbf(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reaso
             ss << "opening file " << my_text_file_name;
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL_INFO, ss.str().c_str());
         }
+        my_text_file_p->_fileno;
         break;
     case scv_tr_db::DELETE:
         if (my_text_file_p != nullptr) {
@@ -105,7 +111,7 @@ static void scv_tr_stream_cbf(const scv_tr_stream &s, scv_tr_stream::callback_re
     if (reason == scv_tr_stream::CREATE) {
         if (my_text_file_p == nullptr)
             return;
-        fprintf(my_text_file_p, "scv_tr_stream (ID " scv_tr_TEXT_LLU ", name \"%s\", kind \"%s\")\n", s.get_id(), s.get_name(),
+        FPRINTF(my_text_file_p, "scv_tr_stream (ID {}, name \"{}\", kind \"{}\")\n", s.get_id(), s.get_name(),
                 s.get_stream_kind() ? s.get_stream_kind() : "<no_stream_kind>");
     }
 }
@@ -145,75 +151,66 @@ static void do_attributes(
         break;
     case scv_extensions_if::ENUMERATION: {
         if (declare_attributes) {
-            fprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"ENUMERATION\")\n", exts_kind.c_str(), // begin_attribute or end_attribute
-                    *index, full_name.c_str());
+            FPRINTF(my_text_file_p, "{} (ID {}, name \"{}\", type \"ENUMERATION\")\n", exts_kind, // begin_attribute or end_attribute
+                    *index, full_name);
             (*index)++;
         } else if (undefined_values) {
-            fprintf(my_text_file_p, "a UNDEFINED\n");
+            FPRINT(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                fprintf(my_text_file_p, "%s \"%s\" ENUMERATION = ", exts_kind.c_str(), full_name.c_str());
+                FPRINTF(my_text_file_p, "{} \"{}\" ENUMERATION = \"{}\"\n", exts_kind, full_name, my_exts_p->get_enum_string((int) my_exts_p->get_integer()));
             } else {
-                fprintf(my_text_file_p, "a ");
+                FPRINTF(my_text_file_p, "a \"{}\"\n", my_exts_p->get_enum_string((int) my_exts_p->get_integer()));
             }
-            fprintf(my_text_file_p, "\"%s\"\n", my_exts_p->get_enum_string((int) my_exts_p->get_integer()));
         }
     }
         break;
     case scv_extensions_if::BOOLEAN: {
         if (declare_attributes) {
-            fprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"BOOLEAN\")\n", exts_kind.c_str(), // begin_attribute or end_attribute
-                    *index, full_name.c_str());
+            FPRINTF(my_text_file_p, "{} (ID {}, name \"{}\", type \"BOOLEAN\")\n", exts_kind, // begin_attribute or end_attribute
+                    *index, full_name);
             (*index)++;
         } else if (undefined_values) {
-            fprintf(my_text_file_p, "a UNDEFINED\n");
+            FPRINT(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                fprintf(my_text_file_p, "%s \"%s\" BOOLEAN = ", exts_kind.c_str(), full_name.c_str());
+                FPRINTF(my_text_file_p, "{} \"{}\" BOOLEAN = {}\n", exts_kind, full_name,my_exts_p->get_bool() ? "true" : "false");
             } else {
-                fprintf(my_text_file_p, "a ");
+                FPRINTF(my_text_file_p, "a {}\n", my_exts_p->get_bool() ? "true" : "false");
             }
-            fprintf(my_text_file_p, "%s\n", my_exts_p->get_bool() ? "true" : "false");
         }
     }
         break;
     case scv_extensions_if::INTEGER:
     case scv_extensions_if::FIXED_POINT_INTEGER: {
         if (declare_attributes) {
-            fprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"INTEGER\")\n", exts_kind.c_str(), // begin_attribute or end_attribute
-                    *index, full_name.c_str());
+            FPRINTF(my_text_file_p, "{} (ID {}, name \"{}\", type \"INTEGER\")\n", exts_kind, // begin_attribute or end_attribute
+                    *index, full_name);
             (*index)++;
         } else if (undefined_values) {
-            fprintf(my_text_file_p, "a UNDEFINED\n");
+            FPRINT(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                fprintf(my_text_file_p, "%s \"%s\" INTEGER = ", exts_kind.c_str(), full_name.c_str());
+                FPRINTF(my_text_file_p, "{} \"{}\" INTEGER = {}\n", exts_kind, full_name, my_exts_p->get_integer());
             } else {
-                fprintf(my_text_file_p, "a ");
-            }
-            if (my_exts_p->get_bitwidth() == 64) {
-                fprintf(my_text_file_p, scv_tr_TEXT_LLU "\n", my_exts_p->get_integer());
-            } else {
-                int tmp_int = (int) my_exts_p->get_integer();
-                fprintf(my_text_file_p, "%d\n", tmp_int);
+                FPRINTF(my_text_file_p, "a {}\n", my_exts_p->get_integer());
             }
         }
     }
         break;
     case scv_extensions_if::UNSIGNED: {
         if (declare_attributes) {
-            fprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"UNSIGNED\")\n", exts_kind.c_str(), // begin_attribute or end_attribute
-                    *index, full_name.c_str());
+            FPRINTF(my_text_file_p, "{} (ID {}, name \"{}\", type \"UNSIGNED\")\n", exts_kind, // begin_attribute or end_attribute
+                    *index, full_name);
             (*index)++;
         } else if (undefined_values) {
-            fprintf(my_text_file_p, "a UNDEFINED\n");
+            FPRINT(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                fprintf(my_text_file_p, "%s \"%s\" UNSIGNED = ", exts_kind.c_str(), full_name.c_str());
+                FPRINTF(my_text_file_p, "{} \"{}\" UNSIGNED = {}\n", exts_kind, full_name, my_exts_p->get_unsigned());
             } else {
-                fprintf(my_text_file_p, "a ");
+                FPRINTF(my_text_file_p, "a {}\n", my_exts_p->get_unsigned());
             }
-            fprintf(my_text_file_p, scv_tr_TEXT_LLU "\n", my_exts_p->get_unsigned());
         }
     }
         break;
@@ -222,90 +219,85 @@ static void do_attributes(
         // Extensions are not yet implemented for pointers, so the only thing
         // to do here is to simply print the value of the pointer.
         if (declare_attributes) {
-            fprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"POINTER\")\n", exts_kind.c_str(), // begin_attribute or end_attribute
-                    *index, full_name.c_str());
+            FPRINTF(my_text_file_p, "{} (ID {}, name \"{}\", type \"POINTER\")\n", exts_kind, // begin_attribute or end_attribute
+                    *index, full_name);
             (*index)++;
         } else if (undefined_values) {
-            fprintf(my_text_file_p, "a UNDEFINED\n");
+            FPRINT(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                fprintf(my_text_file_p, "%s \"%s\" POINTER = ", exts_kind.c_str(), full_name.c_str());
+                FPRINTF(my_text_file_p, "{} \"{}\" POINTER = {}\n", exts_kind, full_name, (void*) field_data_p);
             } else {
-                fprintf(my_text_file_p, "a ");
+                FPRINTF(my_text_file_p, "a {}\n", (void*) field_data_p);
             }
-            fprintf(my_text_file_p, "%p\n", (void*) field_data_p);
         }
     }
         break;
     case scv_extensions_if::STRING: {
         if (declare_attributes) {
-            fprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"STRING\")\n", exts_kind.c_str(), // begin_attribute or end_attribute
-                    *index, full_name.c_str());
+            FPRINTF(my_text_file_p, "{} (ID {}, name \"{}\", type \"STRING\")\n", exts_kind, // begin_attribute or end_attribute
+                    *index, full_name);
             (*index)++;
         } else if (undefined_values) {
-            fprintf(my_text_file_p, "a UNDEFINED\n");
+            FPRINT(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                fprintf(my_text_file_p, "%s \"%s\" STRING = ", exts_kind.c_str(), full_name.c_str());
+                FPRINTF(my_text_file_p, "{} \"{}\" STRING = \"{}\"\n", exts_kind, full_name, my_exts_p->get_string());
             } else {
-                fprintf(my_text_file_p, "a ");
+                FPRINTF(my_text_file_p, "a \"{}\"\n", my_exts_p->get_string());
             }
-            fprintf(my_text_file_p, "\"%s\"\n", my_exts_p->get_string().c_str());
         }
     }
         break;
     case scv_extensions_if::FLOATING_POINT_NUMBER: {
         if (declare_attributes) {
-            fprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"FLOATING_POINT_NUMBER\")\n", exts_kind.c_str(), // begin_attribute or end_attribute
-                    *index, full_name.c_str());
+            FPRINTF(my_text_file_p, "{} (ID {}, name \"{}\", type \"FLOATING_POINT_NUMBER\")\n", exts_kind, // begin_attribute or end_attribute
+                    *index, full_name);
             (*index)++;
         } else if (undefined_values) {
-            fprintf(my_text_file_p, "a UNDEFINED\n");
+            FPRINT(my_text_file_p, "a UNDEFINED\n");
         } else {
             if (is_record_attribute) {
-                fprintf(my_text_file_p, "%s \"%s\" FLOATING_POINT_NUMBER = ", exts_kind.c_str(), full_name.c_str());
+                FPRINTF(my_text_file_p, "{} \"{}\" FLOATING_POINT_NUMBER = {}\n", exts_kind, full_name, my_exts_p->get_double());
             } else {
-                fprintf(my_text_file_p, "a ");
+                FPRINTF(my_text_file_p, "a {}\n", my_exts_p->get_double());
             }
-            fprintf(my_text_file_p, "%f\n", my_exts_p->get_double());
         }
     }
         break;
     case scv_extensions_if::BIT_VECTOR: {
         if (declare_attributes) {
-            fprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"BIT_VECTOR[%d]\")\n", exts_kind.c_str(), // begin_attribute or end_attribute
-                    *index, full_name.c_str(), my_exts_p->get_bitwidth());
+            FPRINTF(my_text_file_p, "{} (ID {}, name \"{}\", type \"BIT_VECTOR[{}]\")\n", exts_kind, // begin_attribute or end_attribute
+                    *index, full_name, my_exts_p->get_bitwidth());
             (*index)++;
         } else if (undefined_values) {
-            fprintf(my_text_file_p, "a UNDEFINED\n");
+            FPRINT(my_text_file_p, "a UNDEFINED\n");
         } else {
-            if (is_record_attribute) {
-                fprintf(my_text_file_p, "%s \"%s\" BIT_VECTOR = ", exts_kind.c_str(), full_name.c_str());
-            } else {
-                fprintf(my_text_file_p, "a ");
-            }
             sc_bv_base tmp_bv(my_exts_p->get_bitwidth());
             my_exts_p->get_value(tmp_bv);
-            fprintf(my_text_file_p, "\"%s\"\n", tmp_bv.to_string().c_str());
+            if (is_record_attribute) {
+                FPRINTF(my_text_file_p, "{} \"{}\" BIT_VECTOR = \"{}\"\n", exts_kind, full_name, tmp_bv.to_string());
+            } else {
+                FPRINTF(my_text_file_p, "a \"{}\"\n", tmp_bv.to_string());
+            }
         }
     }
         break;
     case scv_extensions_if::LOGIC_VECTOR: {
         if (declare_attributes) {
-            fprintf(my_text_file_p, "%s (ID %d, name \"%s\", type \"LOGIC_VECTOR[%d]\")\n", exts_kind.c_str(), // begin_attribute or end_attribute
-                    *index, full_name.c_str(), my_exts_p->get_bitwidth());
+            FPRINTF(my_text_file_p, "{} (ID {}, name \"{}\", type \"LOGIC_VECTOR[{}]\")\n", exts_kind, // begin_attribute or end_attribute
+                    *index, full_name, my_exts_p->get_bitwidth());
             (*index)++;
         } else if (undefined_values) {
-            fprintf(my_text_file_p, "a UNDEFINED\n");
+            FPRINT(my_text_file_p, "a UNDEFINED\n");
         } else {
-            if (is_record_attribute) {
-                fprintf(my_text_file_p, "%s \"%s\" LOGIC_VECTOR = ", exts_kind.c_str(), full_name.c_str());
-            } else {
-                fprintf(my_text_file_p, "a ");
-            }
             sc_lv_base tmp_lv(my_exts_p->get_bitwidth());
             my_exts_p->get_value(tmp_lv);
-            fprintf(my_text_file_p, "\"%s\"\n", tmp_lv.to_string().c_str());
+            if (is_record_attribute) {
+                FPRINTF(my_text_file_p, "{} \"{}\" LOGIC_VECTOR = \"{}\"\n", exts_kind, full_name, tmp_lv.to_string());
+            } else {
+                FPRINTF(my_text_file_p, "a \"{}\"\n", tmp_lv.to_string());
+            }
         }
     }
         break;
@@ -318,9 +310,8 @@ static void do_attributes(
     }
         break;
     default: {
-        std::array<char, 100> tmpString;
-        sprintf(tmpString.data(), "Unsupported attribute type = %d", my_exts_p->get_type());
-        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, tmpString.data());
+        std::string s = fmt::format(FMT_STRING("Unsupported attribute type = {0}."), my_exts_p->get_type());
+        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, s.c_str());
     }
     }
 }
@@ -331,7 +322,7 @@ static void scv_tr_generator_cbf(const scv_tr_generator_base &g, scv_tr_generato
     }
     if (my_text_file_p == nullptr)
         return;
-    fprintf(my_text_file_p, "scv_tr_generator (ID " scv_tr_TEXT_LLU ", name \"%s\", scv_tr_stream " scv_tr_TEXT_LLU ",\n", g.get_id(),
+    FPRINTF(my_text_file_p, "scv_tr_generator (ID {}, name \"{}\", scv_tr_stream {},\n", g.get_id(),
             g.get_name(), g.get_scv_tr_stream().get_id());
     std::string exts_kind;
     int index = 0;
@@ -347,7 +338,7 @@ static void scv_tr_generator_cbf(const scv_tr_generator_base &g, scv_tr_generato
         std::string tmp_str = g.get_end_attribute_name() ? g.get_end_attribute_name() : "";
         do_attributes(true, false, false, tmp_str, exts_kind, my_end_exts_p, &index);
     }
-    fprintf(my_text_file_p, ")\n");
+    FPRINT(my_text_file_p, ")\n");
 }
 // ----------------------------------------------------------------------------
 static void scv_tr_handle_cbf(const scv_tr_handle &t, scv_tr_handle::callback_reason reason, void *user_data_p) {
@@ -366,8 +357,8 @@ static void scv_tr_handle_cbf(const scv_tr_handle &t, scv_tr_handle::callback_re
     switch (reason) {
     case scv_tr_handle::BEGIN: {
         // The beginning of a transaction
-        fprintf(my_text_file_p, "tx_begin " scv_tr_TEXT_LLU " " scv_tr_TEXT_LLU " %s\n", t.get_id(), t.get_scv_tr_generator_base().get_id(),
-                t.get_begin_sc_time().to_string().c_str());
+        FPRINTF(my_text_file_p, "tx_begin {} {} {}\n", t.get_id(), t.get_scv_tr_generator_base().get_id(),
+                t.get_begin_sc_time().to_string());
         my_exts_p = t.get_begin_exts_p();
         std::string exts_kind = "begin_attributes";
         bool default_values = false;
@@ -383,8 +374,8 @@ static void scv_tr_handle_cbf(const scv_tr_handle &t, scv_tr_handle::callback_re
         break;
     case scv_tr_handle::END: {
         // The end of a transaction
-        fprintf(my_text_file_p, "tx_end " scv_tr_TEXT_LLU " " scv_tr_TEXT_LLU " %s\n", t.get_id(), t.get_scv_tr_generator_base().get_id(),
-                t.get_end_sc_time().to_string().c_str());
+        FPRINTF(my_text_file_p, "tx_end {} {} {}\n", t.get_id(), t.get_scv_tr_generator_base().get_id(),
+                t.get_end_sc_time().to_string());
         my_exts_p = t.get_end_exts_p();
         std::string exts_kind = "end_attributes";
         bool default_values = false;
@@ -413,15 +404,8 @@ static void scv_tr_handle_record_attribute_cbf(const scv_tr_handle &t, const cha
         return;
     if (my_text_file_p == nullptr)
         return;
-    std::string tmp_str;
-    if (attribute_name == nullptr) {
-        tmp_str = "";
-    } else {
-        tmp_str = attribute_name;
-    }
-    std::array<char, 100> tmp_str2;
-    sprintf(tmp_str2.data(), "tx_record_attribute " scv_tr_TEXT_LLU, t.get_id());
-    std::string exts_kind = tmp_str2.data();
+    std::string tmp_str = attribute_name == nullptr? "" : attribute_name;
+    std::string exts_kind = fmt::format(FMT_STRING("tx_record_attribute {0}"), t.get_id());
     do_attributes(false, false, true, tmp_str, exts_kind, my_exts_p, nullptr);
 }
 // ----------------------------------------------------------------------------
@@ -436,7 +420,7 @@ static void scv_tr_handle_relation_cbf(const scv_tr_handle &tr_1, const scv_tr_h
     if (my_text_file_p == nullptr)
         return;
     if (my_text_file_p) {
-        fprintf(my_text_file_p, "tx_relation \"%s\" " scv_tr_TEXT_LLU " " scv_tr_TEXT_LLU "\n",
+        FPRINTF(my_text_file_p, "tx_relation \"{}\" {} {}\n",
                 tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), tr_1.get_id(), tr_2.get_id());
     }
 }
