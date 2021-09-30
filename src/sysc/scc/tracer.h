@@ -103,6 +103,7 @@ protected:
 
 private:
     void init_scv_db(file_type type, std::string const&& name);
+    bool owned{false};
 };
 
 } /* namespace scc */

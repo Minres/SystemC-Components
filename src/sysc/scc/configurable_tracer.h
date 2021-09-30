@@ -29,7 +29,7 @@ namespace scc {
  * infrastructure. Using a sc_core::sc_attribute or a CCI param named "enableTracing" this can be switch on or off
  * on a per module basis
  */
-class configurable_tracer : public scc::tracer {
+class configurable_tracer : public tracer {
 public:
     /**
      * constructs a tracer object
