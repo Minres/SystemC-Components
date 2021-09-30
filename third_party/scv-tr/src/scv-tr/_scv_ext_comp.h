@@ -57,35 +57,9 @@
 #define _SCV_RW_ERROR(feature, type, obj)                                                                              \
     _scv_message::message(_scv_message::INTROSPECTION_INVALID_READ_WRITE, #feature, #type, #obj, this->get_name())
 
-// forward declaration
-class _scv_constraint_data;
-
 // ----------------------------------------
 // common data objects for dynamic extensions
 // ----------------------------------------
-class _scv_dynamic_data {
-public:
-    _scv_dynamic_data()
-    : undefined_(true)
-    , disable_randomization_(false)
-    , cdata_(NULL)
-    , dist_(NULL)
-    , _next_id(0) {}
-    ~_scv_dynamic_data();
-
-    // used in extensions "rand" only
-    bool undefined_;
-    bool disable_randomization_;
-    _scv_constraint_data* cdata_;
-    void* dist_;
-
-    // used in extension "callbacks" only
-    typedef scv_extension_callbacks_if::callback_base callback_base;
-    int _next_id;
-    std::list<callback_base*> _callbacks;
-    void execute_callbacks(scv_extensions_if*, scv_extensions_if::callback_reason);
-};
-
 #include <cstdio>
 
 inline std::string _scv_ext_util_get_string(int i) {
@@ -156,7 +130,6 @@ inline const char* _scv_ext_util_get_name(const char* format, const char* name) 
 #include "_scv_ext_util.h"
 #include "_scv_ext_type.h"
 #include "_scv_ext_rw.h"
-#include "_scv_ext_callbacks.h"
 // clang-format on
 
 #undef _SCV_SYSTEMC_BASIC_TYPE_SPECIALIZATION
