@@ -48,11 +48,7 @@ tracer::tracer(std::string const&& name, file_type type, bool enable)
 , txdb(nullptr)
 , owned{enable}{
     if(enable) {
-#ifdef USE_SCC_VCD_FILE
         trf = scc_create_vcd_trace_file(name.c_str());
-#else
-        trf = sc_create_vcd_trace_file(name.c_str());
-#endif
         trf->set_time_unit(1, SC_PS);
     }
     init_scv_db(type, std::move(name));
@@ -69,11 +65,7 @@ tracer::tracer(std::string const&& name, file_type type, sc_core::sc_trace_file*
 tracer::~tracer() {
     delete txdb;
     if(trf && owned)
-#ifdef USE_SCC_VCD_FILE
         scc_close_vcd_trace_file(trf);
-#else
-        sc_close_vcd_trace_file(trf);
-#endif
 }
 
 void tracer::init_scv_db(file_type type, std::string const&& name) {

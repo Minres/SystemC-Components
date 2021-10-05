@@ -1824,8 +1824,13 @@ std::string fs_unit_to_str(sc_core::sc_trace_file_base::unit_type tu)
 
     std::stringstream ss;
     ss << "not a power of ten: " << tu << " fs";
+#ifdef CWR_SYSTEMC
+    SC_REPORT_ERROR( 705,
+            ss.str().c_str() );
+#else
     SC_REPORT_ERROR( SC_ID_TRACING_INVALID_TIMESCALE_UNIT_,
             ss.str().c_str() );
+#endif
     return "";
 }
 

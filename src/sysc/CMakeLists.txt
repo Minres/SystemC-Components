@@ -35,12 +35,10 @@ set(LIB_SOURCES
     scc/mt19937_rng.cpp
     scc/time_n_tick.cpp
     scc/scv/scv_tr_binary.cpp
+    scc/sc_vcd_trace.cpp
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp
 )
-if(SCC_USE_VCD_FILE)
-	set(LIB_SOURCES ${LIB_SOURCES} scc/sc_vcd_trace.cpp )
-endif()
 
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
@@ -62,9 +60,7 @@ add_library(${PROJECT_NAME} ${LIB_SOURCES})
 if(SCC_LIMIT_TRACE_TYPE_LIST)
 	target_compile_definitions(${PROJECT_NAME} PRIVATE LIMIT_TRACE_TYPE_LIST)
 endif()
-if(SCC_USE_VCD_FILE)
-	target_compile_definitions(${PROJECT_NAME} PRIVATE USE_SCC_VCD_FILE)
-endif()
+
 target_include_directories (${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(${PROJECT_NAME} PUBLIC scc-util jsoncpp ${SPDLOG_TARGET})
 if(ENABLE_SQLITE)
@@ -102,8 +98,10 @@ endif()
 if(TARGET SystemC::systemc)
 	message(STATUS "${PROJECT_NAME}: link with SystemC::systemc")
 	if(USE_CWR_SYSTEMC)
+		get_target_property(INCLS SystemC::systemc INTERFACE_INCLUDE_DIRECTORIES)
 		get_target_property(DIRS SystemC::systemc INTERFACE_LINK_DIRECTORIES)
 		get_target_property(LIBS SystemC::systemc INTERFACE_LINK_LIBRARIES)
+    	target_include_directories (${PROJECT_NAME} PUBLIC ${INCLS})    
 		target_link_directories(${PROJECT_NAME} PUBLIC ${DIRS})
 		target_link_libraries(${PROJECT_NAME} PUBLIC ${LIBS})
 	else()
