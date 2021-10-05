@@ -49,7 +49,11 @@
 #ifndef SCC_VCD_TRACE_H
 #define SVC_VCD_TRACE_H
 
-#include "sysc/tracing/sc_trace_file_base.h"
+//Note: this needs to match the SystemC kernel build options
+#define SC_ENABLE_SIMULATION_PHASE_CALLBACKS_TRACING
+
+#include <systemc>
+#include <sysc/tracing/sc_trace_file_base.h>
 
 namespace sc_core {
 class sc_time;
@@ -85,7 +89,7 @@ public:
     vcd_trace_file(const char *name);
 
     // Flush results and close file.
-    ~vcd_trace_file();
+    virtual ~vcd_trace_file();
 
 protected:
 

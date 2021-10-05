@@ -34,18 +34,23 @@ set(LIB_SOURCES
     scc/value_registry.cpp
     scc/mt19937_rng.cpp
     scc/time_n_tick.cpp
-    scc/sc_vcd_trace.cpp
     scc/scv/scv_tr_binary.cpp
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp
 )
+if(SCC_USE_VCD_FILE)
+	set(LIB_SOURCES ${LIB_SOURCES} scc/sc_vcd_trace.cpp )
+endif()
+
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
     set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_compressed.cpp)
 endif()
+
 if(ENABLE_SQLITE)
     set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_sqlite.cpp scc/scv/sqlite3.c )
 endif()
+
 if(CCI_FOUND)
     set(LIB_SOURCES ${LIB_SOURCES} 
         scc/configurable_tracer.cpp
@@ -56,6 +61,9 @@ endif()
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
 if(SCC_LIMIT_TRACE_TYPE_LIST)
 	target_compile_definitions(${PROJECT_NAME} PRIVATE LIMIT_TRACE_TYPE_LIST)
+endif()
+if(SCC_USE_VCD_FILE)
+	target_compile_definitions(${PROJECT_NAME} PRIVATE USE_SCC_VCD_FILE)
 endif()
 target_include_directories (${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(${PROJECT_NAME} PUBLIC scc-util jsoncpp ${SPDLOG_TARGET})
@@ -117,6 +125,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC Threads::Threads ${CMAKE_DL_LIBS})
 if(CLANG_TIDY_EXE)
 	set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}" )
 endif() 
+
 set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${PROJECT_VERSION}
     FRAMEWORK FALSE

@@ -12,6 +12,8 @@ option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
 
+option(SCC_USE_VCD_FILE "Enable the use of the SCC VCD file, an optimized version of the SystemC VCD file trace" ON)
+
 include(Common)
 
 if(BUILD_STAND_ALONE)
