@@ -69,13 +69,13 @@ inline std::string _scv_ext_util_get_string(int i) {
 }
 
 inline const char* _scv_ext_util_get_name(const char* format, const char* name, int N) {
-    static char tmp[1024];
+    thread_local static char tmp[1024];
     std::sprintf(tmp, format, name, N);
     return strdup(tmp);
 }
 
 inline const char* _scv_ext_util_get_name(const char* format, const char* name) {
-    static char tmp[1024];
+    thread_local static char tmp[1024];
     std::sprintf(tmp, format, name);
     return strdup(tmp);
 }

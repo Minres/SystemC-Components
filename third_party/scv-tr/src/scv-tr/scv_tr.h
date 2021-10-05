@@ -179,8 +179,8 @@ public:
 
     // Set and get default scv_tr_db objects.
     //
-    static void set_default_db(scv_tr_db*);
-    static scv_tr_db* get_default_db();
+    thread_local static void set_default_db(scv_tr_db*);
+    thread_local static scv_tr_db* get_default_db();
 
     // Callbacks:
     //
@@ -194,11 +194,11 @@ public:
 
     // Register a callback for any scv_tr_db object creation/deletion.
     //
-    static callback_h register_class_cb(callback_function*, void* user_data_p = NULL);
+    thread_local static callback_h register_class_cb(callback_function*, void* user_data_p = NULL);
 
     // Remove a callback.
     //
-    static void remove_callback(callback_h);
+    thread_local static void remove_callback(callback_h);
 
     // set_recording allows you to temporarily suspend and resume recording.
     // set_recording(true) resumes recording (this is the default).
@@ -210,8 +210,8 @@ public:
 
     void print(std::ostream& o, int details = 0, int indent = 0) const;
     void show(int details = 0, int indent = 0) const;
-    static void set_debug(int debug);
-    static int get_debug();
+    thread_local static void set_debug(int debug);
+    thread_local static int get_debug();
 
     const char* get_name() const;
     const char* kind() const { return _kind; }
@@ -268,16 +268,16 @@ public:
 
     // Register a callback for stream creation/deletion.
     //
-    static callback_h register_class_cb(callback_function*, void* user_data_p = NULL);
+    thread_local static callback_h register_class_cb(callback_function*, void* user_data_p = NULL);
 
     // Remove a callback.
     //
-    static void remove_callback(callback_h);
+    thread_local static void remove_callback(callback_h);
 
     void print(std::ostream& o, int details = 0, int indent = 0) const;
     void show(int details = 0, int indent = 0) const;
-    static void set_debug(int debug);
-    static int get_debug();
+    thread_local static void set_debug(int debug);
+    thread_local static int get_debug();
 
     const char* get_name() const;
     const char* kind() const { return _kind; }
@@ -388,7 +388,7 @@ public:
 
     // Register a callback for transaction BEGIN/END/DELETE.
     //
-    static callback_h register_class_cb(callback_function*, void* user_data_p = NULL);
+    thread_local static callback_h register_class_cb(callback_function*, void* user_data_p = NULL);
 
     // Your callback function for when an attribute is set on this transaction,
     // other than at the begin or end of the transaction:
@@ -398,7 +398,7 @@ public:
 
     // Register a callback for record attribute:
     //
-    static callback_h register_record_attribute_cb(callback_record_attribute_function*, void* user_data_p = NULL);
+    thread_local static callback_h register_record_attribute_cb(callback_record_attribute_function*, void* user_data_p = NULL);
 
     // Your callback function for related transactions:
     //
@@ -407,11 +407,11 @@ public:
 
     // Register a callback for when a transaction relation occurs.
     //
-    static callback_h register_relation_cb(callback_relation_function*, void* user_data_p = NULL);
+    thread_local static callback_h register_relation_cb(callback_relation_function*, void* user_data_p = NULL);
 
     // Remove a callback.
     //
-    static void remove_callback(callback_h);
+    thread_local static void remove_callback(callback_h);
 
     // Return true if this is a valid transaction, which was created by a
     // successfull call to a scv_tr_generator::begin_transaction()
@@ -439,8 +439,8 @@ public:
 
     void print(std::ostream& o, int details = 0, int indent = 0) const;
     void show(int details = 0, int indent = 0) const;
-    static void set_debug(int debug);
-    static int get_debug();
+    thread_local static void set_debug(int debug);
+    thread_local static int get_debug();
 
     const char* get_name() const;
     const char* kind() const { return _kind; }
@@ -521,18 +521,18 @@ public:
 
     // Register a callback for scv_tr_generator creation/deletion.
     //
-    static callback_h register_class_cb(callback_function*, void* user_data_p = NULL);
+    thread_local static callback_h register_class_cb(callback_function*, void* user_data_p = NULL);
 
     // Remove a callback.
     //
-    static void remove_callback(callback_h);
+    thread_local static void remove_callback(callback_h);
 
     // TBD: Need callbacks on specific transaction objects
 
     void print(std::ostream& o, int details = 0, int indent = 0) const;
     void show(int details = 0, int indent = 0) const;
-    static void set_debug(int debug);
-    static int get_debug();
+    thread_local static void set_debug(int debug);
+    thread_local static int get_debug();
 
     const char* get_name() const;
     const char* kind() const { return "scv_tr_generator"; }

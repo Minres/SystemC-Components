@@ -1681,7 +1681,7 @@ public:
 public:
     virtual void _set_instance_core_wrap(void* p);
     const char* get_type_name() const {
-        static const char* s = _scv_ext_util_get_name("%s*", scv_extensions<T>().get_type_name());
+        thread_local static const char* s = _scv_ext_util_get_name("%s*", scv_extensions<T>().get_type_name());
         return s;
     }
 
@@ -1792,7 +1792,7 @@ template <typename T> const scv_extensions<T>* scv_extensions<T*>::_set_ptr() co
 template <typename T> scv_extensions<T>& scv_extensions<T*>::operator*() {
     const scv_extensions<T>* ptr = _get_ptr();
     if(!ptr) {
-        static scv_extensions<T> e;
+        thread_local static scv_extensions<T> e;
         _scv_message::message(_scv_message::INTROSPECTION_NULL_POINTER, this->get_name());
         return e;
     }
@@ -1802,7 +1802,7 @@ template <typename T> scv_extensions<T>& scv_extensions<T*>::operator*() {
 template <typename T> const scv_extensions<T>& scv_extensions<T*>::operator*() const {
     const scv_extensions<T>* ptr = _get_ptr();
     if(!ptr) {
-        static scv_extensions<T> e;
+        thread_local static scv_extensions<T> e;
         _scv_message::message(_scv_message::INTROSPECTION_NULL_POINTER, this->get_name());
         return &e;
     }

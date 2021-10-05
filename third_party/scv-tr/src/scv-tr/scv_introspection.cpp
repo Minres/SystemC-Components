@@ -55,11 +55,11 @@ namespace scv_tr {
 class scv_debug {
 public:
     enum dummy { INITIAL_DEBUG_LEVEL, INTROSPECTION };
-    static void set_facility_level(dummy, int i = 0) {}
+    thread_local static void set_facility_level(dummy, int i = 0) {}
 };
 #define _SCV_DEFERR(code, number, string, severity)                                                                    \
-    static _scv_message_desc* code##_base = 0;                                                                         \
-    static _scv_message_desc** code;
+    thread_local static _scv_message_desc* code##_base = 0;                                                                         \
+    thread_local static _scv_message_desc** code;
 #include "scv_messages.h"
 #undef _SCV_DEFERR
 
@@ -78,7 +78,7 @@ struct scv_error_data {
 
 const char* _scv_extension_util::get_name() const { return _name.c_str(); }
 const char* _scv_extension_util::kind() const {
-    static const std::string s = "scv_extensions_if";
+    thread_local static const std::string s = "scv_extensions_if";
     return s.c_str();
 }
 void _scv_extension_util::print(std::ostream& o, int details, int indent) const {
@@ -405,7 +405,7 @@ _SCV_DEFAULT_RW_SYSC(_scv_extension_rw_enum, enum)
 #define _SCV_EXT_TYPE_FC_COMMON_EXT_I(basic_type, type_id, id)                                                         \
     _SCV_EXT_TYPE_FC_COMMON_I(type_id)                                                                                 \
     const char* _scv_extension_type_##type_id::get_type_name() const {                                                 \
-        static const char* s = strdup(#basic_type);                                                                    \
+        thread_local static const char* s = strdup(#basic_type);                                                                    \
         return s;                                                                                                      \
     }                                                                                                                  \
     scv_extension_type_if::data_type _scv_extension_type_##type_id::get_type() const { return scv_extensions_if::id; }
@@ -541,7 +541,7 @@ _SCV_EXT_TYPE_D_FC_I(sc_bv_base, sc_bv_base, BIT_VECTOR);
     void _scv_extension_rw_##type_id::assign(const sc_bv_base& v) {                                                    \
         if(this->get_bitwidth() != v.length())                                                                         \
             _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, "sc_bv_base", "assign");    \
-        static sc_int<bitwidth> tmp;                                                                                   \
+        thread_local static sc_int<bitwidth> tmp;                                                                                   \
         tmp = v;                                                                                                       \
         *(this->_get_instance()) = tmp;                                                                                \
         this->trigger_value_change_cb();                                                                               \
@@ -554,7 +554,7 @@ _SCV_EXT_TYPE_D_FC_I(sc_bv_base, sc_bv_base, BIT_VECTOR);
     void _scv_extension_rw_##type_id::assign(const sc_lv_base& v) {                                                    \
         if(this->get_bitwidth() != v.length())                                                                         \
             _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, "sc_lv_base", "assign");    \
-        static sc_int<bitwidth> tmp;                                                                                   \
+        thread_local static sc_int<bitwidth> tmp;                                                                                   \
         tmp = v;                                                                                                       \
         *(this->_get_instance()) = tmp;                                                                                \
         this->trigger_value_change_cb();                                                                               \

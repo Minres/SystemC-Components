@@ -113,7 +113,7 @@ public:
   virtual void show(int details=0, int indent=0) const { print(std::cout,-1,0); }
 
   // control debug messages by facility (do not override)
-  static void set_debug_level(const char * facility, int level = -1);
+  thread_local static void set_debug_level(const char * facility, int level = -1);
 
   // are debug messages on for this class (write for each class)?
   // static int get_debug() { ... }
@@ -290,11 +290,11 @@ public:
     scv_enum_base() {}
     virtual ~scv_enum_base() {}
     virtual std::list<const char*>& _get_names() const {
-        static std::list<const char*> _names;
+        thread_local static std::list<const char*> _names;
         return _names;
     }
     virtual std::list<int>& _get_values() const {
-        static std::list<int> _values;
+        thread_local static std::list<int> _values;
         return _values;
     }
     virtual int get_bitwidth() const { return 8 * sizeof(T); }
@@ -327,7 +327,7 @@ public:
 
 #define SCV_EXTENSIONS_CTOR(type_name)                                                                                 \
     virtual const char* get_type_name() const {                                                                        \
-        static const char* s = strdup(#type_name);                                                                     \
+        thread_local static const char* s = strdup(#type_name);                                                        \
         return s;                                                                                                      \
     }                                                                                                                  \
     scv_extensions() { _set_instance(NULL); }                                                                          \
@@ -360,11 +360,11 @@ public:
 
 #define SCV_ENUM_CTOR(type_name)                                                                                       \
     virtual const char* get_type_name() const {                                                                        \
-        static const char* s = strdup(#type_name);                                                                     \
+        thread_local static const char* s = strdup(#type_name);                                                        \
         return s;                                                                                                      \
     }                                                                                                                  \
     scv_extensions() {                                                                                                 \
-        static bool dummy = _init();                                                                                   \
+        thread_local static bool dummy = _init();                                                                      \
         if(0)                                                                                                          \
             std::cout << dummy;                                                                                        \
     }                                                                                                                  \

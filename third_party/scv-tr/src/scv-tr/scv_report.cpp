@@ -58,14 +58,14 @@
 //
 namespace scv_tr {
 #define _SCV_DEFERR(code, number, string, severity)                                                                    \
-    _scv_message_desc* _scv_message::code##_base = nullptr;                                                            \
-    _scv_message_desc** _scv_message::code = &_scv_message::code##_base;
+    thread_local _scv_message_desc* _scv_message::code##_base = nullptr;                                                            \
+    thread_local _scv_message_desc** _scv_message::code = &_scv_message::code##_base;
 #include "scv_messages.h"
 #undef _SCV_DEFERR
 
 void _scv_message::message(_scv_message_desc** desc_pp, ...) {
     // make sure desc is defined
-    static bool res = _scv_message::setup();
+    thread_local static bool res = _scv_message::setup();
 
     _scv_message_desc* desc_p = *desc_pp;
 
@@ -77,7 +77,7 @@ void _scv_message::message(_scv_message_desc** desc_pp, ...) {
     sc_core::sc_actions hold = sc_core::sc_report_handler::force(0);
     sc_core::sc_report_handler::force(hold | actions);
 
-    static std::array<char, 20000> formattedMessageString;
+    thread_local static std::array<char, 20000> formattedMessageString;
     std::va_list ap;
     va_start(ap, desc_pp);
     vsprintf(formattedMessageString.data(), format, ap);

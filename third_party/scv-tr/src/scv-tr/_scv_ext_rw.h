@@ -667,17 +667,17 @@ public:
     _SCV_EXT_RW_FC_N_ASSIGNS_STRING(sc_bv)
     virtual bool get_bool() const { return *(this->_get_instance()) != 0; }
     virtual long long get_integer() const {
-        static sc_dt::sc_bigint<N> tmp;
+        thread_local static sc_dt::sc_bigint<N> tmp;
         tmp = *this->_get_instance();
         return tmp.to_int64();
     }
     virtual unsigned long long get_unsigned() const {
-        static sc_dt::sc_bigint<N> tmp;
+        thread_local static sc_dt::sc_bigint<N> tmp;
         tmp = *this->_get_instance();
         return tmp.to_uint64();
     }
     virtual double get_double() const {
-        static sc_dt::sc_bigint<N> tmp;
+        thread_local static sc_dt::sc_bigint<N> tmp;
         tmp = *this->_get_instance();
         return tmp.to_double();
     }
@@ -699,17 +699,17 @@ public:
     _SCV_EXT_RW_FC_N_ASSIGNS_STRING(sc_lv)
     virtual bool get_bool() const { return *(this->_get_instance()) != 0; }
     virtual long long get_integer() const {
-        static sc_dt::sc_bigint<N> tmp;
+        thread_local static sc_dt::sc_bigint<N> tmp;
         tmp = *this->_get_instance();
         return tmp.to_int64();
     }
     virtual unsigned long long get_unsigned() const {
-        static sc_dt::sc_bigint<N> tmp;
+        thread_local static sc_dt::sc_bigint<N> tmp;
         tmp = *this->_get_instance();
         return tmp.to_uint64();
     }
     virtual double get_double() const {
-        static sc_dt::sc_bigint<N> tmp;
+        thread_local static sc_dt::sc_bigint<N> tmp;
         tmp = *this->_get_instance();
         return tmp.to_double();
     }

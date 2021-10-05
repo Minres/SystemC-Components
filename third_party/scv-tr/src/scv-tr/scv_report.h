@@ -78,16 +78,16 @@ class _scv_message {
 public:
 // Message types are actually pointers to descriptors
 #define _SCV_DEFERR(code, number, string, severity)                                                                    \
-    static _scv_message_desc* code##_base;                                                                             \
-    static _scv_message_desc** code;
+    thread_local static _scv_message_desc* code##_base;                                                                             \
+    thread_local static _scv_message_desc** code;
 #include "scv_messages.h"
 #undef _SCV_DEFERR
 
     // Used internally by the SystemC Verification Standard to report exceptions
-    static void message(_scv_message_desc** desc_pp, ...);
+    thread_local static void message(_scv_message_desc** desc_pp, ...);
 
 private:
-    static bool setup();
+    thread_local static bool setup();
 };
 } // namespace scv_tr
 #endif // ! _SCV_TR_REPORT_H

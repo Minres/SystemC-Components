@@ -88,7 +88,7 @@ public:
     virtual ~scv_extension_type() {}
 
     virtual const char* get_type_name() const {
-        static const char* s = _scv_ext_util_get_name("%s[%d]", scv_extensions<T>().get_type_name(), N);
+        thread_local static const char* s = _scv_ext_util_get_name("%s[%d]", scv_extensions<T>().get_type_name(), N);
         return s;
     }
 
@@ -124,7 +124,7 @@ public:
     virtual ~scv_extension_type() {}
 
     virtual const char* get_type_name() const {
-        static const char* s = _scv_ext_util_get_name("%s*", scv_extensions<T>().get_type_name());
+        thread_local static const char* s = _scv_ext_util_get_name("%s*", scv_extensions<T>().get_type_name());
         return s;
     }
 
@@ -250,7 +250,7 @@ public:
         virtual const scv_extensions_if* get_parent() const { return this->_parent; }                                  \
                                                                                                                        \
         virtual const char* get_type_name() const {                                                                    \
-            static const char* s = _scv_ext_util_get_name("%s<%d>", #type_name, N);                                    \
+            thread_local static const char* s = _scv_ext_util_get_name("%s<%d>", #type_name, N);                                    \
             return s;                                                                                                  \
         }                                                                                                              \
         virtual scv_extension_type_if::data_type get_type() const { return scv_extensions_if::id; }                    \

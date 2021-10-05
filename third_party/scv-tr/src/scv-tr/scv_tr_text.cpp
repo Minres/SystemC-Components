@@ -74,10 +74,10 @@ namespace scv_tr {
 #define FPRINT(FP, FMTSTR)       auto buf1 = fmt::format(FMT_STRING(FMTSTR));std::fwrite(buf1.c_str(), 1, buf1.size(), FP);
 #define FPRINTF(FP, FMTSTR, ...) auto buf2 = fmt::format(FMT_STRING(FMTSTR), __VA_ARGS__);std::fwrite(buf2.c_str(), 1, buf2.size(), FP);
 // ----------------------------------------------------------------------------
-static FILE *my_text_file_p = nullptr;
+thread_local static FILE *my_text_file_p = nullptr;
 static void scv_tr_db_cbf(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reason reason, void *user_data_p) {
     // This is called from the scv_tr_db ctor.
-    static std::string my_text_file_name("DEFAULT_scv_tr_TEXT.txt");
+    thread_local static std::string my_text_file_name("DEFAULT_scv_tr_TEXT.txt");
     switch (reason) {
     case scv_tr_db::CREATE:
         if ((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0)) {
