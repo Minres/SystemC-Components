@@ -12,6 +12,7 @@
 #include <deque>
 #include <mutex>
 #include <vector>
+#include <unordered_set>
 #ifdef HAVE_GETENV
 #include <cstdlib>
 #endif
@@ -47,6 +48,12 @@ private:
     std::vector<std::array<chunk_type, CHUNK_SIZE>*> chunks;
     std::deque<void*> free_list;
     std::mutex payload_mtx;
+    std::unordered_set<void*> used_blocks;
+#ifdef HAVE_GETENV
+    const bool debug_memory{getenv("TLM_MM_CHECK")!=nullptr};
+#else
+    const bool debug_memory{false};
+#endif
 };
 
 template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>& pool_allocator<T, CHUNK_SIZE>::get() {
@@ -74,13 +81,16 @@ template <typename T, unsigned CHUNK_SIZE> inline void* pool_allocator<T, CHUNK_
     auto ret = free_list.back();
     free_list.pop_back();
     memset(ret, 0, sizeof(T));
+    if(debug_memory) used_blocks.insert(ret);
     return ret;
 }
 
 template <typename T, unsigned CHUNK_SIZE> inline void pool_allocator<T, CHUNK_SIZE>::free(void* p) {
     std::lock_guard<std::mutex> lk(payload_mtx);
-    if(p)
+    if(p) {
         free_list.push_back(p);
+        if(debug_memory) used_blocks.erase(p);
+    }
 }
 
 template <typename T, unsigned CHUNK_SIZE> inline void pool_allocator<T, CHUNK_SIZE>::resize() {
