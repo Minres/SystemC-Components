@@ -35,7 +35,7 @@
 #ifndef _SYSC_TLM_TLM_GP_SHARED_H_
 #define _SYSC_TLM_TLM_GP_SHARED_H_
 
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
+#include <tlm>
 
 namespace tlm {
 
