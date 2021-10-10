@@ -215,7 +215,7 @@ mark_as_advanced(
 
 if(NOT SCV_INCLUDE_DIR MATCHES "SCV_INCLUDE_DIR-NOTFOUND")
     if(SCV_INCLUDE_DIR AND SCV_LIBRARY)
-       set(CCI_FOUND TRUE)
+	    set(SCV_FOUND TRUE)
     endif()
 	
 	if(SCV_FOUND)

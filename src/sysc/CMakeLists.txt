@@ -6,6 +6,10 @@ find_package(ZLIB)
 
 option(ENABLE_SQLITE "Enable SQLite backend for SCV" OFF)
 
+if (MSVC)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
+endif()
+
 include(SystemCPackage)
 if(SystemC_FOUND)
     message(STATUS "SystemC headers at ${SystemC_INCLUDE_DIRS}")
@@ -23,18 +27,18 @@ else()
 endif()
 
 set(LIB_SOURCES
-	scc/utilities.cpp 
-	scc/configurer.cpp
-	scc/tracer_base.cpp
-	scc/tracer.cpp
-	scc/perf_estimator.cpp
-	scc/sc_logic_7.cpp
+    scc/utilities.cpp 
+    scc/configurer.cpp
+    scc/tracer_base.cpp
+    scc/tracer.cpp
+    scc/perf_estimator.cpp
+    scc/sc_logic_7.cpp
     scc/report.cpp
     scc/ordered_semaphore.cpp
     scc/value_registry.cpp
     scc/mt19937_rng.cpp
     scc/time_n_tick.cpp
-    scc/scv/scv_tr_binary.cpp
+    #scc/scv/scv_tr_binary.cpp
     scc/sc_vcd_trace.cpp
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp

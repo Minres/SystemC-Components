@@ -119,10 +119,14 @@ template <> struct sc_variable_t<sc_core::sc_event> : public sc_variable {
     , value(value) {}
 
     std::string to_string() const override { return ""; }
+#ifdef __GNUG__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
     void trace(sc_core::sc_trace_file* tf) const override {
+#ifdef __GNUG__
 #pragma GCC diagnostic pop
+#endif
     }
 };
 /**

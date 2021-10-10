@@ -59,6 +59,7 @@
 #include "scv_tr.h"
 #include <string>
 #include <sstream>
+#include <array>
 #include <fmt/format.h>
 #include <fmt/printf.h>
 #include <fmt/os.h>
@@ -91,7 +92,6 @@ static void scv_tr_db_cbf(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reaso
             ss << "opening file " << my_text_file_name;
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL_INFO, ss.str().c_str());
         }
-        my_text_file_p->_fileno;
         break;
     case scv_tr_db::DELETE:
         if (my_text_file_p != nullptr) {

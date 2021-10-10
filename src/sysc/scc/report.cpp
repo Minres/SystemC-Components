@@ -52,7 +52,9 @@
 #else
 #include <regex>
 #endif
-
+#ifdef ERROR
+#undef ERROR
+#endif
 using namespace std;
 using namespace sc_core;
 using namespace scc;

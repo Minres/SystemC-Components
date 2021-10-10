@@ -26,11 +26,12 @@
 #include <mutex>
 #include <sstream>
 #include <string>
-#include <sys/time.h>
+#include <ctime>
 #include <vector>
+#include <array>
 
 //! log level definitions
-#define LEVELS(L) L(NONE) L(FATAL) L(ERROR) L(WARNING) L(INFO) L(DEBUG) L(TRACE) L(TRACEALL)
+#define LEVELS(L) L(NONE) L(FATAL) L(ERR) L(WARN) L(INFO) L(DEBUG) L(TRACE) L(TRACEALL)
 #define DO_DESCRIPTION(e) #e,
 #define DO_ENUM(e) e,
 
@@ -46,7 +47,7 @@ enum log_level { LEVELS(DO_ENUM) DBGTRACE = TRACEALL };
  */
 inline log_level as_log_level(int logLevel) {
     assert(logLevel >= NONE && logLevel <= TRACEALL);
-    std::array<const log_level, 8> m = {{NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE, TRACEALL}};
+    std::array<const log_level, 8> m = {{NONE, FATAL, ERR, WARN, INFO, DEBUG, TRACE, TRACEALL}};
     return m[logLevel];
 }
 /**
@@ -118,7 +119,7 @@ public:
      * @return the logging level
      */
     static std::atomic<log_level>& reporting_level() {
-        static std::atomic<log_level> reportingLevel{WARNING};
+        static std::atomic<log_level> reportingLevel{WARN};
         return reportingLevel;
     }
     /**
@@ -154,7 +155,7 @@ public:
             if(!strncasecmp(level.c_str(), (const char*)(get_log_level_cstr() + i),
                             strlen((const char*)get_log_level_cstr() + i)))
                 return static_cast<log_level>(i);
-        Log<T>().Get(WARNING) << "Unknown logging level '" << level << "'. Using INFO level as default.";
+        Log<T>().Get(WARN) << "Unknown logging level '" << level << "'. Using INFO level as default.";
         return INFO;
     }
     /**
@@ -239,21 +240,21 @@ class DEFAULT {};
 #endif // _WIN32
 
 #ifndef FILELOG_MAX_LEVEL
-#define FILELOG_MAX_LEVEL logging::TRACE
+#define FILELOG_MAX_LEVEL ::logging::TRACE
 #endif
 
-#define LOGGER(CATEGORY) logging::Log<logging::Output2FILE<logging::CATEGORY>>
-#define LOG_OUTPUT(CATEGORY) logging::Output2FILE<logging::CATEGORY>
+#define LOGGER(CATEGORY) ::logging::Log<::logging::Output2FILE<::logging::CATEGORY>>
+#define LOG_OUTPUT(CATEGORY) ::logging::Output2FILE<::logging::CATEGORY>
 
 #ifndef LOG
 #define LOG(LEVEL)                                                                                                     \
-    if(logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                      \
-    LOGGER(DEFAULT)().get(logging::LEVEL)
+    if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                      \
+    LOGGER(DEFAULT)().get(::logging::LEVEL)
 #endif
 #ifndef CLOG
 #define CLOG(LEVEL, CATEGORY)                                                                                          \
-    if(logging::LEVEL <= LOGGER(CATEGORY)::get_reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                    \
-    LOGGER(CATEGORY)().get(logging::LEVEL, #CATEGORY)
+    if(::logging::LEVEL <= LOGGER(CATEGORY)::get_reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                    \
+    LOGGER(CATEGORY)().get(::logging::LEVEL, #CATEGORY)
 #endif
 #if defined(WIN32)
 

@@ -13,6 +13,7 @@ add_library(${PROJECT_NAME}
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/fmt_8.0)
+target_compile_definitions(${PROJECT_NAME} PRIVATE FMT_HEADER_ONLY)
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ${FMT_TARGET})
 if(TARGET SystemC::systemc)

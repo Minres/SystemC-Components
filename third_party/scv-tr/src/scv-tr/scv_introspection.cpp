@@ -50,6 +50,8 @@
 #endif
 
 #include "scv_introspection.h"
+#include <array>
+
 namespace scv_tr {
 
 class scv_debug {

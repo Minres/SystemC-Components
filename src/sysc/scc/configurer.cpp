@@ -89,7 +89,7 @@ template <typename T, typename T1 = T>
 auto check_n_assign(Json::Value& node, sc_core::sc_attr_base* attr_base) -> bool {
     auto* a = dynamic_cast<sc_core::sc_attribute<T>*>(attr_base);
     if(a != nullptr) {
-        node[a->name()] = T1(a->value);
+        node[a->name()] = static_cast<T1>(a->value);
         return true;
     }
     return false;
@@ -100,9 +100,11 @@ void scc::configurer::dump_configuration(sc_core::sc_object* obj, Json::Value& p
     Json::Value node{Json::objectValue};
     for(sc_core::sc_attr_base* attr_base : obj->attr_cltn()) {
         check_n_assign<int>(node, attr_base) || check_n_assign<unsigned>(node, attr_base) ||
-            check_n_assign<long>(node, attr_base) || check_n_assign<unsigned long>(node, attr_base) ||
-            check_n_assign<long long, int64_t>(node, attr_base) ||
-            check_n_assign<unsigned long long, uint64_t>(node, attr_base) || check_n_assign<bool>(node, attr_base) ||
+            check_n_assign<long, Json::Int64>(node, attr_base) ||
+            check_n_assign<unsigned long, Json::UInt64>(node, attr_base) ||
+            check_n_assign<long long, Json::Int64>(node, attr_base) ||
+            check_n_assign<unsigned long long, Json::UInt64>(node, attr_base) ||
+            check_n_assign<bool>(node, attr_base) ||
             check_n_assign<float>(node, attr_base) || check_n_assign<double>(node, attr_base) ||
             check_n_assign<std::string>(node, attr_base) || check_n_assign<char*>(node, attr_base);
     }

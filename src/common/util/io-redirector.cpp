@@ -6,6 +6,7 @@
  */
 
 #include "io-redirector.h"
+#include <array>
 #ifdef _MSC_VER
 #include <io.h>
 #define popen _popen
@@ -72,7 +73,7 @@ void IoRedirector::stop() {
         fd_blocked = false;
 #ifdef _MSC_VER
         if(!eof(m_pipe[READ]))
-            bytesRead = read(m_pipe[READ], buf, bufSize - 1);
+            bytesRead = read(m_pipe[READ], buf.data(), bufSize - 1);
 #else
         int flags = fcntl(m_pipe[READ], F_GETFL, 0);
         fcntl(m_pipe[READ], F_SETFL, flags & ~O_NONBLOCK);
@@ -108,7 +109,7 @@ auto IoRedirector::get_output(bool blocking) -> std::string {
             fd_blocked = false;
 #ifdef _MSC_VER
             if(!eof(m_pipe[READ]))
-                bytesRead = read(m_pipe[READ], buf, bufSize - 1);
+                bytesRead = read(m_pipe[READ], buf.data(), bufSize - 1);
 #else
             int flags = fcntl(m_pipe[READ], F_GETFL, 0);
             if(blocking)
@@ -146,7 +147,7 @@ void IoRedirector::create_pipes() {
     int ret = -1;
     do {
 #ifdef _MSC_VER
-        ret = pipe(pipes, 65536, O_BINARY);
+        ret = pipe(m_pipe, 65536, O_BINARY);
 #else
         ret = pipe(m_pipe) == -1;
 #endif
