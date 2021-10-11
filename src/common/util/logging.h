@@ -26,7 +26,9 @@
 #include <mutex>
 #include <sstream>
 #include <string>
-#include <ctime>
+#ifdef __unix__
+#include <sys/time.h>
+#endif
 #include <vector>
 #include <array>
 
