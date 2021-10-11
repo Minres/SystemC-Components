@@ -28,11 +28,15 @@
 #include <limits>
 #include <memory>
 
+#if defined(__GNUG__)
 // pragmas to disable the deprecated warnings for SystemC headers
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
 #include <systemc>
+#if defined(__GNUG__)
 #pragma GCC diagnostic pop
+#endif
 
 #ifdef WITH_CCI
 #include <cci_cfg/cci_param_typed.h>

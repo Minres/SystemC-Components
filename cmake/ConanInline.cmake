@@ -1,5 +1,5 @@
 
-set(CONAN_CMAKE_LIST_DIR ${CMAKE_CURRENT_LIST_DIR})
+set(CONAN_CMAKE_LIST_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
 macro(conan_check)
   # for backwards compatibility

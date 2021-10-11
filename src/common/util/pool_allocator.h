@@ -58,8 +58,12 @@ template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>::~pool_
     std::lock_guard<std::mutex> lk(payload_mtx);
 #ifdef HAVE_GETENV
     auto* check = getenv("TLM_MM_CHECK");
+#ifdef _MSC_VER
+    if(check && _stricmp(check, "INFO")) {
+#else
     if(check && strcasecmp(check, "INFO")) {
-        auto diff = get_capacity() - get_free_entries_count();
+#endif
+   	auto diff = get_capacity() - get_free_entries_count();
         if(diff)
             std::cout << __FUNCTION__ << ": detected memory leak upon destruction, " << diff << " of " << get_capacity()
                       << " entries are not free'd" << std::endl;
