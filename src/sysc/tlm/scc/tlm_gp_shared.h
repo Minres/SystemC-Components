@@ -61,6 +61,7 @@ public:
     /// @brief Move constructor.´
     inline tlm_gp_shared_ptr(tlm_gp_shared_ptr &&p) noexcept
             : ptr(std::move(p.ptr)) {
+        p.ptr=nullptr;
     }
     /// @brief destructor
     ~tlm_gp_shared_ptr() {
