@@ -84,7 +84,14 @@ template <typename T> T leftmost_one(T n) {
 
 // according to
 // https://stackoverflow.com/questions/8871204/count-number-of-1s-in-binary-representation
-#if __cplusplus < 201402L
+#if defined(__GNUG__)
+constexpr inline size_t bit_count(uint32_t u) {
+    return __builtin_popcount(u);
+}
+constexpr inline size_t bit_count(uint64_t u) {
+    return __builtin_popcountl (u);
+}
+#elif __cplusplus < 201402L
 constexpr size_t uCount(uint32_t u) { return u - ((u >> 1) & 033333333333) - ((u >> 2) & 011111111111); }
 constexpr size_t bit_count(uint32_t u) { return ((uCount(u) + (uCount(u) >> 3)) & 030707070707) % 63; }
 #else
