@@ -47,10 +47,7 @@
  *****************************************************************************/
 
 #ifndef SCC_VCD_TRACE_H
-#define SVC_VCD_TRACE_H
-
-//Note: this needs to match the SystemC kernel build options
-#define SC_ENABLE_SIMULATION_PHASE_CALLBACKS_TRACING
+#define SCC_VCD_TRACE_H
 
 #include <systemc>
 #include <sysc/tracing/sc_trace_file_base.h>
@@ -77,12 +74,6 @@ class vcd_trace_file
 public:
 
     enum vcd_enum {VCD_WIRE=0, VCD_REAL, VCD_EVENT, VCD_TIME, VCD_LAST};
-
-	// sc_set_vcd_time_unit is deprecated.
-#if 0 // deprecated
-    inline void sc_set_vcd_time_unit(int exponent10_seconds)
-    	{ set_time_unit(exponent10_seconds); }
-#endif
 
     // Create a Vcd trace file.
     // `Name' forms the base of the name to which `.vcd' is added.
@@ -217,10 +208,10 @@ private:
     const sc_dt::uint64& extract_ref(const sc_core::sc_event& object) const
       { return event_trigger_stamp(object); }
 
-#if SC_TRACING_PHASE_CALLBACKS_
+#if WITH_SIM_PHASE_CALLBACKS
     // avoid hidden overload warnings
     virtual void trace( sc_trace_file* ) const;
-#endif // SC_TRACING_PHASE_CALLBACKS_
+#endif
 
     // Initialize the VCD tracing
     virtual void do_initialize();
