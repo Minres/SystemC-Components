@@ -73,7 +73,6 @@ public:
      */
     int wait(unsigned priority);
     /**
-    /**
      * @fn int trywait()
      * @brief lock (take) the semaphore, return -1 if not available
      *
