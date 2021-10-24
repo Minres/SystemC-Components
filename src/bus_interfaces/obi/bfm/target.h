@@ -133,6 +133,7 @@ target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::nb_transport_bw(
 template<unsigned int DATA_WIDTH, unsigned int ADDR_WIDTH, unsigned int ID_WIDTH, unsigned int USER_WIDTH>
 inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::achannel_req_t() {
     while(true) {
+        gnt_o.write(false);
         if(!req_i.read())
             wait(req_i.posedge_event());
         tlm::scc::tlm_gp_shared_ptr tx = tlm::scc::tlm_mm<>::get().allocate<obi::obi_extension>();
@@ -205,7 +206,7 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::rchannel_rsp_t
         if(tx->get_command()== tlm::TLM_READ_COMMAND){
             auto offset = tx->get_address()%(DATA_WIDTH/8);
             auto rx_data{sc_dt::sc_uint<DATA_WIDTH>(0)};
-            for(unsigned i=0U, j=offset; i<tx->get_data_length(); ++i, j+=8){
+            for(unsigned i=0U, j=offset*8; i<tx->get_data_length(); ++i, j+=8){
                 rx_data.range(j+7, j)= *(tx->get_data_ptr()+i);
             }
             rdata_o.write(rx_data);
