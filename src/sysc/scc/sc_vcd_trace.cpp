@@ -1789,12 +1789,13 @@ void vcd_print_scopes(FILE *fp, std::vector<vcd_trace*>& traces) {
            vcd_trace_file functions
  *****************************************************************************/
 
-vcd_trace_file::vcd_trace_file(const char *name)
+vcd_trace_file::vcd_trace_file(const char *name, std::function<bool()>& enable)
 : sc_trace_file_base( name, "vcd" )
 , vcd_name_index(0)
 , previous_time_units_low(0)
 , previous_time_units_high(0)
 , traces()
+, check_enabled(enable)
 {}
 
 std::string fs_unit_to_str(sc_core::sc_trace_file_base::unit_type tu)
@@ -2015,6 +2016,8 @@ vcd_trace_file::cycle(bool this_is_a_delta_cycle)
     if( initialize() )
         return;
 
+    if(check_enabled && !check_enabled()) return;
+
     sc_trace_file_base::unit_type now_units_high, now_units_low;
 
     bool time_advanced = get_time_stamp(now_units_high, now_units_low);
@@ -2220,10 +2223,9 @@ remove_vcd_name_problems(vcd_trace const* vcd, std::string& name)
 // ----------------------------------------------------------------------------
 
 sc_trace_file*
-scc_create_vcd_trace_file(const char * name)
+scc_create_vcd_trace_file(const char * name, std::function<bool()> enable)
 {
-    sc_trace_file * tf = new vcd_trace_file(name);
-    return tf;
+    return  new vcd_trace_file(name, enable);
 }
 
 void

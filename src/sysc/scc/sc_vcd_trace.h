@@ -51,6 +51,7 @@
 
 #include <systemc>
 #include <sysc/tracing/sc_trace_file_base.h>
+#include <functional>
 
 namespace sc_core {
 class sc_time;
@@ -77,7 +78,7 @@ public:
 
     // Create a Vcd trace file.
     // `Name' forms the base of the name to which `.vcd' is added.
-    vcd_trace_file(const char *name);
+    vcd_trace_file(const char *name, std::function<bool()>& enable);
 
     // Flush results and close file.
     virtual ~vcd_trace_file();
@@ -222,7 +223,7 @@ private:
 
     sc_trace_file_base::unit_type previous_time_units_low;
     sc_trace_file_base::unit_type previous_time_units_high;
-
+    std::function<bool()> check_enabled;
 public:
 
     // Array to store the variables traced
@@ -235,7 +236,8 @@ public:
 
 // ----------------------------------------------------------------------------
 // Create VCD file
-sc_core::sc_trace_file *scc_create_vcd_trace_file(const char* name);
+sc_core::sc_trace_file *scc_create_vcd_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());
+
 void scc_close_vcd_trace_file( sc_core::sc_trace_file* tf );
 
 } // namespace sc_core

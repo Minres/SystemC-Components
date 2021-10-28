@@ -15,6 +15,8 @@ option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
 
+option(SC_USE_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse callbacks for tracing. It needs to match the SystemC build configuration" OFF)
+
 include(Common)
 
 if(BUILD_STAND_ALONE)

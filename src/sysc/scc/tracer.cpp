@@ -48,7 +48,7 @@ tracer::tracer(std::string const&& name, file_type type, bool enable)
 , txdb(nullptr)
 , owned{enable}{
     if(enable) {
-        trf = scc_create_vcd_trace_file(name.c_str());
+        trf = sc_create_vcd_trace_file(name.c_str());
         trf->set_time_unit(1, SC_PS);
     }
     init_scv_db(type, std::move(name));
