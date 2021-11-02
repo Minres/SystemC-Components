@@ -73,13 +73,15 @@ inline void obi_extension::set_duser(uint32_t unsignedInt) {
 }
 
 inline void obi_extension::copy_from(const tlm::tlm_extension_base& ext) {
-    auto const* ahb_ext = dynamic_cast<const obi_extension*>(&ext);
-    assert(ahb_ext);
-    (*this) = *ahb_ext;
+    auto const* obi_ext = dynamic_cast<const obi_extension*>(&ext);
+    assert(obi_ext);
+    (*this) = *obi_ext;
 }
 
 inline unsigned get_obi_id(tlm::tlm_generic_payload& trans){
     auto* ext = trans.get_extension<obi::obi_extension>();
+    assert(ext && "No OBI extension found");
+    return ext->get_id();
 }
 } // namespace obi
 
