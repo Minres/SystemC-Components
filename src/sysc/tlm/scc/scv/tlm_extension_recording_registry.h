@@ -17,7 +17,7 @@
 #ifndef TLM_RECORDER_REGISTRY_H_
 #define TLM_RECORDER_REGISTRY_H_
 
-#ifdef WITH_SCV
+#ifdef HAS_SCV
 #include <scv.h>
 #ifndef SCVNS
 #define SCVNS

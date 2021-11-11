@@ -24,7 +24,7 @@
 #include <array>
 #include <chrono>
 #include <fstream>
-#ifdef WITH_CCI
+#ifdef HAS_CCI
 #include "configurer.h"
 #endif
 #include <spdlog/async.h>
@@ -345,7 +345,7 @@ static std::mutex cfg_guard;
 static void configure_logging() {
     std::lock_guard<mutex> lock(cfg_guard);
     static bool spdlog_initialized = false;
-#ifdef WITH_CCI
+#ifdef HAS_CCI
     if(!log_cfg.dont_create_broker)
         scc::init_cci("SCCBroker");
 #endif
@@ -492,7 +492,7 @@ auto scc::LogConfig::reportOnlyFirstError(bool v) -> scc::LogConfig& {
 }
 
 auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
-#ifdef WITH_CCI
+#ifdef HAS_CCI
     thread_local std::unordered_map<uint64_t, sc_core::sc_verbosity> lut;
     auto k = char_hash(str);
     auto it = lut.find(k);

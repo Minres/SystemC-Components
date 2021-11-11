@@ -38,7 +38,7 @@
 #pragma GCC diagnostic pop
 #endif
 
-#ifdef WITH_CCI
+#ifdef HAS_CCI
 #include <cci_cfg/cci_param_typed.h>
 #endif
 
@@ -307,7 +307,7 @@ template <typename T> inline T get_value(sc_core::sc_attribute<T>& a) { return a
 
 template <typename T> inline void set_value(sc_core::sc_attribute<T>& a, T&& value) { a.value = value; }
 
-#ifdef WITH_CCI
+#ifdef HAS_CCI
 template <typename T> inline T get_value(cci::cci_param_typed<T>& a) { return a.get_value(); }
 
 template <typename T> inline void set_value(cci::cci_param_typed<T>& a, T&& value) { a.set_value(value); }

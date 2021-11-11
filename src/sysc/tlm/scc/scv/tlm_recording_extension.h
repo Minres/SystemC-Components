@@ -18,7 +18,7 @@
 #define _SCV4TLM_TLM_RECORDING_EXTENSION_H_
 
 #include <array>
-#ifdef WITH_SCV
+#ifdef HAS_SCV
 #include <scv.h>
 #else
 #include <scv-tr.h>
@@ -28,7 +28,7 @@
 namespace tlm {
 namespace scc {
 namespace scv {
-#ifndef WITH_SCV
+#ifndef HAS_SCV
 #ifndef SCVNS
 #define SCVNS ::scv_tr::
 #endif

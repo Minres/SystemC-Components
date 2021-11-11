@@ -27,7 +27,7 @@
 #include <unordered_set>
 #include <vector>
 // clang-format off
-#ifdef WITH_SCV
+#ifdef HAS_SCV
 #include <scv.h>
 #else
 #include <scv-tr.h>
@@ -568,6 +568,6 @@ void scv_tr_binary_init() {
     scv_tr_handle::register_relation_cb(relationCb);
 }
 // ----------------------------------------------------------------------------
-#ifndef WITH_SCV
+#ifndef HAS_SCV
 }
 #endif

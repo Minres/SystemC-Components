@@ -16,7 +16,7 @@
 
 #pragma once
 
-#ifdef WITH_CCI
+#ifdef HAS_CCI
 #include "scc/configurable_tracer.h"
 #include "scc/configurer.h"
 #endif

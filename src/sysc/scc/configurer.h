@@ -19,7 +19,7 @@
 
 #include "report.h"
 #include "utilities.h"
-#ifdef WITH_CCI
+#ifdef HAS_CCI
 #include <cci_configuration>
 #endif
 #include <json/json.h>
@@ -79,7 +79,7 @@ public:
      * @param value the value to put
      */
     template <typename T> void set_value(const std::string& hier_name, T value) {
-#ifdef WITH_CCI
+#ifdef HAS_CCI
         cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
         if(param_handle.is_valid()) {
             param_handle.set_cci_value(cci::cci_value(value));
@@ -96,7 +96,7 @@ public:
                 else
                     SCCERR() << "Could not set attribute value " << hier_name;
             }
-#ifdef WITH_CCI
+#ifdef HAS_CCI
             else {
                 cci_broker.set_preset_cci_value(hier_name, cci::cci_value(value));
             }
@@ -144,7 +144,7 @@ protected:
     void end_of_elaboration() override { check_config_hierarchical(root, ""); }
 
     void check_config_hierarchical(Json::Value const&, std::string const&);
-#ifdef WITH_CCI
+#ifdef HAS_CCI
     cci::cci_originator cci_originator;
     cci::cci_broker_handle cci_broker;
 #endif

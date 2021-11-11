@@ -5,12 +5,12 @@
  *      Author:
  */
 
-#ifdef WITH_SCV
+#ifdef HAS_SCV
 #include <axi/scv/recorder_modules.h>
 #include <scv.h>
 #include <scv/scv_tr.h>
 #endif
-#ifdef WITH_CCI
+#ifdef HAS_CCI
 #include <scc/configurable_tracer.h>
 #endif
 #include "scc/report.h"
@@ -37,7 +37,7 @@ private:
     sc_core::sc_clock clk{"clk", clk_period, 0.5, sc_core::SC_ZERO_TIME, true};
     sc_core::sc_signal<bool> rst{"rst"};
     axi::axi_initiator_socket<SOCKET_WIDTH> intor{"intor"};
-#ifdef WITH_SCV
+#ifdef HAS_SCV
     axi::scv::axi_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
 #endif
     axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
@@ -96,7 +96,7 @@ public:
         SC_THREAD(run);
         intor_pe.clk_i(clk);
         tgt_pe.clk_i(clk);
-#ifdef WITH_SCV
+#ifdef HAS_SCV
         intor(intor_rec.tsckt);
         intor_rec.isckt(tlm2pin_adaptor.input_socket);
         pin2tlm_adaptor.output_socket(tgt);
@@ -262,14 +262,14 @@ int sc_main(int argc, char* argv[]) {
     scc::init_logging(scc::LogConfig()
                           .logLevel(static_cast<scc::log>(7))
                           .logAsync(false)
-#ifdef WITH_CCI
+#ifdef HAS_CCI
                           .dontCreateBroker(false)
 #else
                           .dontCreateBroker(true)
 #endif
                           .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
-#ifdef WITH_CCI
+#ifdef HAS_CCI
     ///////////////////////////////////////////////////////////////////////////
     // set up tracing & transaction recording
     ///////////////////////////////////////////////////////////////////////////
@@ -278,7 +278,7 @@ int sc_main(int argc, char* argv[]) {
                                    true,                         // bit0 enables vcd
                                    true);
 #endif
-#ifdef WITH_SCV
+#ifdef HAS_SCV
     scv_startup();
     scv_tr_text_init();
     scv_tr_db* db = new scv_tr_db("axi_pinlevel.txlog");
@@ -288,7 +288,7 @@ int sc_main(int argc, char* argv[]) {
 
     sc_core::sc_start(1_ms);
     SCCINFO() << "Finished";
-#ifdef WITH_SCV
+#ifdef HAS_SCV
     delete db;
 #endif
     return 0;

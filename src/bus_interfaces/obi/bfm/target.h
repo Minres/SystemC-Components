@@ -58,7 +58,7 @@ public:
 
     tlm::tlm_sync_enum nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t);
 
-#ifdef WITH_CCI
+#ifdef HAS_CCI
     cci::cci_param<sc_core::sc_time> sample_delay{"sample_delay", 0_ns};
 #else
     sc_core::sc_time sample_delay{0_ns};

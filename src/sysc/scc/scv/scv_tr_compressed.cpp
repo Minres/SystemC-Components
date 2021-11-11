@@ -80,7 +80,7 @@
 #include <array>
 #include <zlib.h>
 #include <sstream>
-#ifdef WITH_SCV
+#ifdef HAS_SCV
 #include <scv.h>
 #else
 #include <scv-tr.h>
@@ -570,6 +570,6 @@ void scv_tr_compressed_init() {
 }
 
 // ----------------------------------------------------------------------------
-#ifndef WITH_SCV
+#ifndef HAS_SCV
 }
 #endif

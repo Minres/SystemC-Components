@@ -75,7 +75,7 @@ public:
     void set_dmi_callback(std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> cb) {
         dmi_cb = cb;
     }
-#ifdef WITH_CCI
+#ifdef HAS_CCI
     /**
      * read response delay
      */
@@ -168,7 +168,7 @@ inline bool memory<SIZE, BUSWIDTH>::handle_dmi(tlm::tlm_generic_payload& gp, tlm
     dmi_data.set_end_address(dmi_data.get_start_address() + mem.page_size - 1);
     dmi_data.set_dmi_ptr(p.data());
     dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);
-#ifdef WITH_CCI
+#ifdef HAS_CCI
     dmi_data.set_read_latency(rd_resp_delay.get_value());
     dmi_data.set_write_latency(wr_resp_delay.get_value());
 #endif

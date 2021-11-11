@@ -25,7 +25,7 @@
 #include "report.h"
 #include "utilities.h"
 #include "scv/scv_tr_db.h"
-#ifdef WITH_SCV
+#ifdef HAS_SCV
 #include <scv.h>
 #ifndef SCVNS
 #define SCVNS

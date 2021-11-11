@@ -17,14 +17,14 @@
 #ifndef TLM_GP_DATA_EXT_H_
 #define TLM_GP_DATA_EXT_H_
 
-#ifdef WITH_SCV
+#ifdef HAS_SCV
 #include <scv.h>
 #else
 #include <scv-tr.h>
 #endif
 #include <tlm/scc/scv/tlm_gp_data.h>
 
-#ifndef WITH_SCV
+#ifndef HAS_SCV
 namespace scv_tr {
 #endif
 
@@ -144,7 +144,7 @@ public:
         SCV_FIELD(dmi_write_latency);
     }
 };
-#ifndef WITH_SCV
+#ifndef HAS_SCV
 }
 #endif
 #endif /* TLM_GP_DATA_EXT_H_ */
