@@ -22,7 +22,7 @@
 
 #include "configurer.h"
 #include "report.h"
-#ifdef WITH_CCI
+#ifdef HAS_CCI
 #include <cci_configuration>
 #include <cci_utils/broker.h>
 #endif
@@ -30,7 +30,7 @@
 
 scc::configurer::configurer(const std::string& filename)
 : base_type(sc_core::sc_module_name("configurer"))
-#ifdef WITH_CCI
+#ifdef HAS_CCI
 , cci_originator("configurer")
 , cci_broker(cci::cci_get_global_broker(cci_originator))
 #endif
@@ -89,7 +89,7 @@ template <typename T, typename T1 = T>
 auto check_n_assign(Json::Value& node, sc_core::sc_attr_base* attr_base) -> bool {
     auto* a = dynamic_cast<sc_core::sc_attribute<T>*>(attr_base);
     if(a != nullptr) {
-        node[a->name()] = T1(a->value);
+        node[a->name()] = static_cast<T1>(a->value);
         return true;
     }
     return false;
@@ -100,13 +100,15 @@ void scc::configurer::dump_configuration(sc_core::sc_object* obj, Json::Value& p
     Json::Value node{Json::objectValue};
     for(sc_core::sc_attr_base* attr_base : obj->attr_cltn()) {
         check_n_assign<int>(node, attr_base) || check_n_assign<unsigned>(node, attr_base) ||
-            check_n_assign<long>(node, attr_base) || check_n_assign<unsigned long>(node, attr_base) ||
-            check_n_assign<long long, int64_t>(node, attr_base) ||
-            check_n_assign<unsigned long long, uint64_t>(node, attr_base) || check_n_assign<bool>(node, attr_base) ||
+            check_n_assign<long, Json::Int64>(node, attr_base) ||
+            check_n_assign<unsigned long, Json::UInt64>(node, attr_base) ||
+            check_n_assign<long long, Json::Int64>(node, attr_base) ||
+            check_n_assign<unsigned long long, Json::UInt64>(node, attr_base) ||
+            check_n_assign<bool>(node, attr_base) ||
             check_n_assign<float>(node, attr_base) || check_n_assign<double>(node, attr_base) ||
             check_n_assign<std::string>(node, attr_base) || check_n_assign<char*>(node, attr_base);
     }
-#ifdef WITH_CCI
+#ifdef HAS_CCI
     const std::string hier_name{obj->name()};
     cci::cci_param_predicate pred{[hier_name](cci::cci_param_untyped_handle h) -> bool {
         std::string h_name{h.name()};
@@ -235,7 +237,7 @@ void scc::configurer::configure_cci_hierarchical(const Json::Value& node, std::s
                 return;
             else if(val.isObject())
                 configure_cci_hierarchical(*itr, hier_name);
-#ifdef WITH_CCI
+#ifdef HAS_CCI
             else {
                 cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
                 if(param_handle.is_valid()) {
@@ -294,7 +296,7 @@ void scc::configurer::check_config_hierarchical(Json::Value const& node, std::st
                     SCCFATAL(this->name()) << "Illegal hierarchy name: '" << hier_name << "'";
                 check_config_hierarchical(*itr, hier_name);
             }
-#ifdef WITH_CCI
+#ifdef HAS_CCI
             else {
                 auto* obj = sc_core::sc_find_object(prefix.c_str());
                 auto* attr = obj->get_attribute(key_name);
@@ -311,8 +313,8 @@ void scc::configurer::check_config_hierarchical(Json::Value const& node, std::st
 }
 
 void scc::init_cci(std::string name) {
-#ifdef WITH_CCI
-    static cci_utils::broker broker(name);
+#ifdef HAS_CCI
+    thread_local static cci_utils::broker broker(name);
     cci::cci_register_broker(&broker);
 #endif
 }

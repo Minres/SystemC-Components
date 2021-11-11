@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 3.11)
-
 project (axi_pinlevel_example)
 
 add_executable(axi_pinlevel_example sc_main.cpp)

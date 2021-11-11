@@ -81,7 +81,7 @@ template <typename TYPES> tlm_mm<TYPES>& tlm_mm<TYPES>::get() {
 }
 
 template <typename TYPES> typename tlm_mm<TYPES>::payload_type* tlm_mm<TYPES>::allocate() {
-    auto* ptr = allocator.allocate();
+    auto* ptr = allocator.allocate(sc_core::sc_time_stamp().value());
     return new(ptr) payload_type(this);
 }
 

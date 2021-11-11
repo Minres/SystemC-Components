@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016, 2018 MINRES Technologies GmbH
+ * Copyright 2016-2021 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,11 @@
 #include "resource_access_if.h"
 #include "scc/traceable.h"
 #include "scc/utilities.h"
+#ifdef _MSC_VER
+#include <functional>
+#else
 #include "util/delegate.h"
+#endif
 #include <functional>
 #include <limits>
 #include <sstream>
@@ -69,7 +73,7 @@ template <typename Type> constexpr Type get_max_uval() {
 template <typename DATATYPE>
 class sc_register : public sc_core::sc_object, public resource_access_if, public traceable {
 public:
-    using this_type = class sc_register<DATATYPE>;
+    using this_type = sc_register<DATATYPE>;
     /**
      * @fn  sc_register(sc_core::sc_module_name, DATATYPE&, const DATATYPE, resetable&,
      * DATATYPE=get_max_uval<DATATYPE>(), DATATYPE=get_max_uval<DATATYPE>())
@@ -316,8 +320,13 @@ private:
     std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time)> rd_cb;
     std::function<bool(this_type&, DATATYPE&, sc_core::sc_time)> wr_cb;
 
+#ifdef _MSC_VER
+    std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time)> rd_dlgt;
+    std::function<bool(this_type&, DATATYPE&, sc_core::sc_time)> wr_dlgt;
+#else
     util::delegate<bool(const this_type&, DATATYPE&, sc_core::sc_time)> rd_dlgt;
     util::delegate<bool(this_type&, DATATYPE&, sc_core::sc_time)> wr_dlgt;
+#endif
 };
 } // namespace impl
 //! import the implementation into the scc namespace

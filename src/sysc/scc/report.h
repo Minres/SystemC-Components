@@ -26,6 +26,9 @@
 #include <sysc/utils/sc_report.h>
 #include <util/ities.h>
 
+#if defined(_MSC_VER) && defined(ERROR)
+#undef ERROR
+#endif
 namespace scc {
 //! \brief array holding string representations of log levels
 static std::array<const char* const, 8> buffer = {

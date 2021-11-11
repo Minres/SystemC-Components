@@ -16,7 +16,7 @@
 
 #ifndef _SCC_SCV_TR_DB_H_
 #define _SCC_SCV_TR_DB_H_
-#ifndef WITH_SCV
+#ifndef HAS_SCV
 namespace scv_tr {
 #endif
 
@@ -44,7 +44,7 @@ void scv_tr_binary_init();
 void scv_tr_ldb_init();
 
 #endif
-#ifndef WITH_SCV
+#ifndef HAS_SCV
 }
 #endif
 #endif /* _SCC_SCV_TR_DB_H_ */

@@ -118,6 +118,8 @@ private:
     std::deque<std::shared_ptr<trans_handle>> active_aw_transactions;
     std::deque<std::shared_ptr<trans_handle>> active_r_end_transactions;
     std::deque<std::shared_ptr<trans_handle>> active_b_end_transactions;
+    sc_core::sc_event end_r_event;
+    sc_core::sc_event end_b_event;
     void register_trans(unsigned int axi_id, payload_type& trans, phase_type phase);
     void end_r_resp();
     void end_b_resp();
@@ -138,6 +140,8 @@ inline axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pin2tlm
 
     SC_METHOD(bus_thread)
     sensitive << clk_i.pos() << resetn_i.neg();
+    SC_THREAD(end_r_resp)
+    SC_THREAD(end_b_resp)
 }
 
 template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH, unsigned int USERWIDTH>
@@ -160,7 +164,7 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
             b_valid_o.write(false);
 
         w_ready_o.write(true);
-        ar_ready_o.write(true);
+        ar_ready_o.write(false);
         aw_ready_o.write(true);
 
         if(ar_valid_i.read()) {
@@ -245,7 +249,7 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
                         active_r_transactions.erase(id);
                 }
                 break;
-	    }
+            }
         }
 
         if(aw_valid_i.read()) {
@@ -292,7 +296,7 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
         }
 
         if(w_valid_i.read()) {
-	    unsigned id = active_aw_id.front();
+	        unsigned id = active_aw_id.front();
             auto it = active_w_transactions.find(id);
             if(it != active_w_transactions.end()) {
                 auto write_trans = it->second.front();
@@ -312,7 +316,7 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
                 if(w_last_i.read()) {
                     write_trans->phase = tlm::BEGIN_REQ;
                     write_trans->running = false;
-		    active_aw_id.pop_front();
+		            active_aw_id.pop_front();
                     SCCTRACE(SCMOD) << "Write last beat " << write_trans->beat_cnt;
                 }
 
@@ -321,8 +325,8 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
                     sc_assert(p->get_data_length() > j);
                     *(p->get_data_ptr() + j) = write_data.range(i + 7, i).to_uint64();
                 }
-		output_socket->nb_transport_fw(*p, write_trans->phase, delay);
-		SCCTRACE(SCMOD) << write_trans->phase << " W bit assignment trans (axi_id:" << id
+		        output_socket->nb_transport_fw(*p, write_trans->phase, delay);
+		        SCCTRACE(SCMOD) << write_trans->phase << " W bit assignment trans (axi_id:" << id
                                 << "). Beat:" << write_trans->beat_cnt;
                 write_trans->beat_cnt++;
             }
@@ -363,11 +367,14 @@ template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH, u
 void
 axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pin2tlm_adaptor::end_r_resp() {
   sc_core::sc_time delay = sc_core::SC_ZERO_TIME;
-  auto th = active_r_end_transactions.front();
-  SCCINFO(SCMOD) << th->phase << " FW R sending transaction resp end";
-  wait(delay);
-  output_socket->nb_transport_fw(*th->payload, th->phase, delay);
-  active_r_end_transactions.pop_front();
+  while(true) {
+      wait(end_r_event);
+      auto th = active_r_end_transactions.front();
+      SCCTRACE(SCMOD) << th->phase << " FW R sending transaction resp end";
+      wait(delay);
+      output_socket->nb_transport_fw(*th->payload, th->phase, delay);
+      active_r_end_transactions.pop_front();
+  }
 };
  
 // todo: need to add backpressure if the end phase shouldn't be asserted right away 
@@ -375,11 +382,14 @@ template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH, u
 void
 axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pin2tlm_adaptor::end_b_resp() {
   sc_core::sc_time delay = sc_core::SC_ZERO_TIME;
-  auto th = active_b_end_transactions.front();
-  SCCINFO(SCMOD) << th->phase << " FW B sending transaction resp end";
-  wait(delay);
-  output_socket->nb_transport_fw(*th->payload, th->phase, delay);
-  active_b_end_transactions.pop_front();
+  while(true) {
+      wait(end_b_event);
+      auto th = active_b_end_transactions.front();
+      SCCTRACE(SCMOD) << th->phase << " FW B sending transaction resp end";
+      wait(delay);
+      output_socket->nb_transport_fw(*th->payload, th->phase, delay);
+      active_b_end_transactions.pop_front();
+  }
 };
  
 template <unsigned int BUSWIDTH, unsigned int ADDRWIDTH, unsigned int IDWIDTH, unsigned int USERWIDTH>
@@ -419,30 +429,22 @@ axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pin2tlm_adapto
       active_aw_transactions.pop_front();
       return tlm::TLM_ACCEPTED;
     }
-    if (phase == axi::BEGIN_PARTIAL_RESP && trans.get_command()==tlm::TLM_READ_COMMAND) {
+    if ((phase == axi::BEGIN_PARTIAL_RESP || phase == tlm::BEGIN_RESP) && trans.get_command()==tlm::TLM_READ_COMMAND) {
       SCCTRACE(SCMOD) << phase << " BW R trans (axi_id:" << id << ")";
       auto it = active_r_transactions.find(id);
       auto active_trans = it->second.front();
-      phase = axi::END_PARTIAL_RESP;
+
+      if(phase == tlm::BEGIN_RESP)
+          phase = tlm::END_RESP;
+      else
+          phase = axi::END_PARTIAL_RESP;
       active_trans->phase = phase;
+
       auto th = std::make_shared<trans_handle>();
       th->payload = &trans;
       th->phase = phase;
       active_r_end_transactions.push_back(th);
-      sc_core::sc_spawn([this]()->void {end_r_resp();});
-      return tlm::TLM_ACCEPTED;
-    };
-    if (phase == tlm::BEGIN_RESP && trans.get_command()==tlm::TLM_READ_COMMAND) {
-      SCCTRACE(SCMOD) << phase << " BW R trans (axi_id:" << id << ")";
-      auto it = active_r_transactions.find(id);
-      auto active_trans = it->second.front();
-      phase = tlm::END_RESP;
-      active_trans->phase = phase;
-      auto th = std::make_shared<trans_handle>();
-      th->payload = &trans;
-      th->phase = phase;
-      active_r_end_transactions.push_back(th);
-      sc_core::sc_spawn([this]()->void {end_r_resp();});
+      end_r_event.notify();
       return tlm::TLM_ACCEPTED;
     };
     if (phase == tlm::BEGIN_RESP && trans.get_command()==tlm::TLM_WRITE_COMMAND) {
@@ -455,7 +457,7 @@ axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pin2tlm_adapto
       th->payload = &trans;
       th->phase = phase;
       active_b_end_transactions.push_back(th);
-      sc_core::sc_spawn([this]()->void {end_b_resp();});
+      end_b_event.notify();
       return tlm::TLM_ACCEPTED;
     };
     SCCWARN(SCMOD) << phase << " unkown phase transaction combination for trans (axi_id:" << id << ")";

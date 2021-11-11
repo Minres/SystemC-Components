@@ -7,7 +7,7 @@
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
-#ifdef WITH_SCV
+#ifdef HAS_SCV
 #include <axi/scv/recorder_modules.h>
 #include <scv.h>
 #include <scv/scv_tr.h>
@@ -34,7 +34,7 @@ public:
     sc_core::sc_clock clk{"clk", clk_period, 0.5, sc_core::SC_ZERO_TIME, true};
     sc_core::sc_signal<bool> rst{"rst"};
     axi::ace_initiator_socket<SOCKET_WIDTH> intor{"intor"};
-#ifdef WITH_SCV
+#ifdef HAS_SCV
     // axi::scv::ace_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
     axi::scv::axi_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
 #endif
@@ -48,7 +48,7 @@ public:
         intor_pe.clk_i(clk);
         tgt_pe.clk_i(clk);
         // tgt_pe.Clk(clk);
-#ifdef WITH_SCV
+#ifdef HAS_SCV
         // intor(intor_rec.tsckt);
         intor(Adapter1.tsckt);
         // intor_rec.isckt(Adapter1.tsckt);
@@ -140,7 +140,7 @@ int sc_main(int argc, char* argv[]) {
             .logAsync(false)
             .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
-#ifdef WITH_SCV
+#ifdef HAS_SCV
     scv_startup();
     scv_tr_text_init();
     scv_tr_db* db = new scv_tr_db("ace_ace_test.txlog");
@@ -149,7 +149,7 @@ int sc_main(int argc, char* argv[]) {
     testbench mstr("master");
     sc_core::sc_start(10_ms);
     SCCINFO() << "Finished";
-#ifdef WITH_SCV
+#ifdef HAS_SCV
     delete db;
 #endif
     return 0;

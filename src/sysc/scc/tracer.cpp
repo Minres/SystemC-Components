@@ -20,12 +20,12 @@
  *      Author: developer
  */
 
-#include "scc/tracer.h"
-
-#include "scc/report.h"
-#include "scc/utilities.h"
+#include "tracer.h"
+#include "sc_vcd_trace.h"
+#include "report.h"
+#include "utilities.h"
 #include "scv/scv_tr_db.h"
-#ifdef WITH_SCV
+#ifdef HAS_SCV
 #include <scv.h>
 #ifndef SCVNS
 #define SCVNS
@@ -45,21 +45,27 @@ using namespace scc;
 
 tracer::tracer(std::string const&& name, file_type type, bool enable)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
-, txdb(nullptr) {
+, txdb(nullptr)
+, owned{enable}{
     if(enable) {
         trf = sc_create_vcd_trace_file(name.c_str());
         trf->set_time_unit(1, SC_PS);
-        owned = true;
     }
     init_scv_db(type, std::move(name));
 }
 
 tracer::tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
-, txdb(nullptr) {
+, txdb(nullptr)
+, owned{false}{
     trf = tf;
-    owned = false;
     init_scv_db(type, std::move(name));
+}
+
+tracer::~tracer() {
+    delete txdb;
+    if(trf && owned)
+        scc_close_vcd_trace_file(trf);
 }
 
 void tracer::init_scv_db(file_type type, std::string const&& name) {
@@ -90,5 +96,3 @@ void tracer::end_of_elaboration() {
         for(auto o : sc_get_top_level_objects())
             descend(o, true);
 }
-
-tracer::~tracer() { delete txdb; }

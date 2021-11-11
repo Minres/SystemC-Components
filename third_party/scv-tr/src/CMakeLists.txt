@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 3.13)
-
 project(scv-tr VERSION 0.0.1 LANGUAGES CXX)
 
 include(GNUInstallDirs)
@@ -14,9 +12,21 @@ add_library(${PROJECT_NAME}
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/fmt_8.0)
+target_compile_definitions(${PROJECT_NAME} PRIVATE FMT_HEADER_ONLY)
 
+target_link_libraries(${PROJECT_NAME} PUBLIC ${FMT_TARGET})
 if(TARGET SystemC::systemc)
-	target_link_libraries(${PROJECT_NAME} PUBLIC SystemC::systemc)
+	if(USE_CWR_SYSTEMC)
+		get_target_property(INCLS SystemC::systemc INTERFACE_INCLUDE_DIRECTORIES)
+		get_target_property(DIRS SystemC::systemc INTERFACE_LINK_DIRECTORIES)
+		get_target_property(LIBS SystemC::systemc INTERFACE_LINK_LIBRARIES)
+    	target_include_directories (${PROJECT_NAME} PUBLIC ${INCLS})    
+		target_link_directories(${PROJECT_NAME} PUBLIC ${DIRS})
+		target_link_libraries(${PROJECT_NAME} PUBLIC ${LIBS})
+	else()
+		target_link_libraries(${PROJECT_NAME} PUBLIC SystemC::systemc)
+	endif()
 else()
 	target_compile_definitions(${PROJECT_NAME} PUBLIC ${SystemC_DEFINITIONS})
 	target_include_directories (${PROJECT_NAME} PUBLIC ${SystemC_INCLUDE_DIRS})

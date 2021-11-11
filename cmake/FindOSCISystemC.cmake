@@ -28,7 +28,7 @@ This will define the following variables:
   The version of the SystemC library which was found.
 ``SystemC_INCLUDE_DIRS``
   Include directories needed to use SystemC.
-``SystemC_LIBRARIES``
+``SystemC_LIBRARY``
   Libraries needed to link to SystemC.
 ``SCV_FOUND``
   True if the system has the SCV library.
@@ -36,7 +36,7 @@ This will define the following variables:
   The version of the SCV library which was found.
 ``SCV_INCLUDE_DIRS``
   Include directories needed to use SCV.
-``SCV_LIBRARIES``
+``SCV_LIBRARY``
   Libraries needed to link to SCV.
 ``CCI_FOUND``
   True if the system has the CCI library.
@@ -44,8 +44,8 @@ This will define the following variables:
   The version of the CCI library which was found.
 ``CCI_INCLUDE_DIRS``
   Include directories needed to use CCI.
-``CCI_LIBRARIES``
-  Libraries needed to link to CCI.
+``CCI_LIBRARY``
+  Library needed to link to CCI.
 
 #]=======================================================================]
 
@@ -180,7 +180,7 @@ find_package_handle_standard_args(OSCISystemC
 
 if(OSCISystemC_FOUND)
   set(SystemC_FOUND ${OSCISystemC_FOUND})
-  get_filename_component(SystemC_LIBRARY_DIR ${SystemC_LIBRARY} DIRECTORY )
+  get_filename_component(SystemC_LIBRARY_DIRS ${SystemC_LIBRARY} DIRECTORY)
   set(SystemC_INCLUDE_DIRS ${SystemC_INCLUDE_DIR})
   set(SystemC_DEFINITIONS ${PC_SystemC_CFLAGS_OTHER})
 endif()
@@ -190,7 +190,7 @@ if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
   add_library(SystemC::systemc UNKNOWN IMPORTED)
   set_target_properties(SystemC::systemc PROPERTIES
     IMPORTED_LOCATION "${SystemC_LIBRARY}"
-    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIR}
+    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
     INTERFACE_COMPILE_OPTIONS "${SystemC_DEFINITIONS}"    
     INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
   )
@@ -215,7 +215,7 @@ mark_as_advanced(
 
 if(NOT SCV_INCLUDE_DIR MATCHES "SCV_INCLUDE_DIR-NOTFOUND")
     if(SCV_INCLUDE_DIR AND SCV_LIBRARY)
-       set(CCI_FOUND TRUE)
+	    set(SCV_FOUND TRUE)
     endif()
 	
 	if(SCV_FOUND)

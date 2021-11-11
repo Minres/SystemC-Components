@@ -27,7 +27,7 @@
 #include <unordered_set>
 #include <vector>
 // clang-format off
-#ifdef WITH_SCV
+#ifdef HAS_SCV
 #include <scv.h>
 #else
 #include <scv-tr.h>
@@ -208,7 +208,7 @@ private:
     uint64_t append(const unsigned char* p, size_t len) {
         if((bufTail + len) > buf.size()) {
             std::fill(buf.data() + bufTail, buf.data() + buf.size(), 0);
-            ssize_t written = write(file_des, buf.data(), buf.size());
+            auto written = write(file_des, buf.data(), buf.size());
             if(written != buf.size())
                 throw std::runtime_error("not written"); // TODO: implement error handling
             blockCount++;
@@ -568,6 +568,6 @@ void scv_tr_binary_init() {
     scv_tr_handle::register_relation_cb(relationCb);
 }
 // ----------------------------------------------------------------------------
-#ifndef WITH_SCV
+#ifndef HAS_SCV
 }
 #endif

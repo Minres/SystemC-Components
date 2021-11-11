@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 3.11)
-
 project (axi_axi_example)
 
 add_executable(axi_axi_example sc_main.cpp)

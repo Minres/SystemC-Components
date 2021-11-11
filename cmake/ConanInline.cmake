@@ -1,5 +1,5 @@
 
-set(CONAN_CMAKE_LIST_DIR ${CMAKE_CURRENT_LIST_DIR})
+set(CONAN_CMAKE_LIST_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
 macro(conan_check)
   # for backwards compatibility
@@ -33,8 +33,7 @@ macro(conan_check)
 endmacro()
 
 macro(conan_setup)
-  set(options Release Debug RelWithDebInfo TARGETS) 
-  set(oneValueArgs PROFILE)
+  set(options TARGETS) 
   cmake_parse_arguments(MARGS "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN} )
  
 
@@ -58,7 +57,14 @@ function(conan_configure)
 endfunction()
 
 macro(conan_install)
-	conan_cmake_autodetect(settings)
+  	set(options BUILD_TYPE) 
+ 	set(oneValueArgs BUILD_TYPE)
+	cmake_parse_arguments(MARGS "" "${oneValueArgs}" "" ${ARGN} )
+  	if(MARGS_BUILD_TYPE)
+		conan_cmake_autodetect(settings BUILD_TYPE ${MARGS_BUILD_TYPE})
+  	else()
+		conan_cmake_autodetect(settings BUILD_TYPE)
+	endif()
 	if(CMAKE_CXX_STANDARD)
 		set(settings ${settings} compiler.cppstd=${CMAKE_CXX_STANDARD})
 	endif()

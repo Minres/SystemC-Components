@@ -1,6 +1,5 @@
 macro(setup_conan)
   set(options Release Debug RelWithDebInfo TARGETS)
-  set(oneValueArgs PROFILE)
   cmake_parse_arguments(MARGS "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN} )
   
   if(MARGS_Release)

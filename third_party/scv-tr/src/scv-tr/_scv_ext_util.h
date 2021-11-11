@@ -47,15 +47,10 @@
 class _scv_extension_util : public _SCV_INTROSPECTION_BASE {
 public:
     _scv_extension_util()
-    : _data(0)
-    , _name("")
+    : _name("")
     , _short_name("")
     , _parent(NULL) {}
-    virtual ~_scv_extension_util() {
-        if(_has_dynamic_data()) {
-            delete _data;
-        }
-    }
+    virtual ~_scv_extension_util() { }
 
     // scv_object_if
     const char* get_name() const override;
@@ -74,20 +69,13 @@ public:
     virtual void _set_name(const std::string& s);
 
 public: // non-virtual for fast execution
-    inline void trigger_value_change_cb() {
-        if(_is_dynamic()) {
-            this->_get_dynamic_data()->execute_callbacks(this, scv_extensions_if::VALUE_CHANGE);
-        }
-    }
+    inline void trigger_value_change_cb() { }
 
 protected: // fast version of the introspection interface (non-virtual)
-    bool _is_dynamic() const { return _data != 0; }
+    bool _is_dynamic() const { return false; }
 
 public: // internal methods (non-virtual for efficiency)
-    bool _has_dynamic_data() const { return _data != 0 && _data != (_scv_dynamic_data*)1; }
-    _scv_dynamic_data* _get_dynamic_data();
-    _scv_dynamic_data* get_dynamic_data();
-    const _scv_dynamic_data* _get_dynamic_data() const;
+    bool _has_dynamic_data() const { return false; }
     void _set_parent(_scv_extension_util* p, const std::string& name);
     const scv_extensions_if* _get_parent() const { return _parent; }
 
@@ -95,11 +83,6 @@ public: // internal methods (virtual to distinguish basic/record/array)
     virtual void _set_dynamic();
 
 public:
-    // overloaded
-    //   0 : not dynamic
-    //   1 : capable of dynamic
-    //   valid-ptr: has dynamic
-    mutable _scv_dynamic_data* _data;
     std::string _name;
     std::string _short_name;
     scv_extensions_if* _parent;

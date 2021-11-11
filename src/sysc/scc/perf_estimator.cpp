@@ -86,9 +86,9 @@ auto scc::perf_estimator::time_stamp::get_cpu_time() -> double {
     FILETIME exit_time;
     FILETIME kernel_time;
     FILETIME user_time;
-    if(GetProcessTimes(GetCurrentProcess(), &create_tiem, &exit_time, &kernel_time, &user_time) != -1) {
+    if(GetProcessTimes(GetCurrentProcess(), &create_time, &exit_time, &kernel_time, &user_time) != -1) {
         SYSTEMTIME system_time;
-        if(FileTimeToSystemTime(&user_time, system_time) != -1)
+        if(FileTimeToSystemTime(&user_time, &system_time) != -1)
             return (double)system_time.wHour * 3600.0 + (double)system_time.wMinute * 60.0 +
                    (double)system_time.wSecond + (double)system_time.wMilliseconds / 1000.;
     }

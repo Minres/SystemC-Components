@@ -21,7 +21,7 @@
 #include <string>
 #include <vector>
 
-#ifdef WITH_SCV
+#ifdef HAS_SCV
 class scv_tr_db;
 #else
 namespace scv_tr {
@@ -95,7 +95,7 @@ public:
 
 protected:
     void end_of_elaboration() override;
-#ifdef WITH_SCV
+#ifdef HAS_SCV
     scv_tr_db* txdb;
 #else
     scv_tr::scv_tr_db* txdb;
@@ -103,6 +103,7 @@ protected:
 
 private:
     void init_scv_db(file_type type, std::string const&& name);
+    bool owned{false};
 };
 
 } /* namespace scc */

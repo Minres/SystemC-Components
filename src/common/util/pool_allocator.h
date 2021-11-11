@@ -12,6 +12,8 @@
 #include <deque>
 #include <mutex>
 #include <vector>
+#include <unordered_map>
+#include <algorithm>
 #ifdef HAVE_GETENV
 #include <cstdlib>
 #endif
@@ -19,7 +21,7 @@
 namespace util {
 template <typename T, unsigned CHUNK_SIZE = 4096> class pool_allocator {
 public:
-    void* allocate();
+    void* allocate(uint64_t id=0);
 
     void free(void* p);
 
@@ -47,6 +49,12 @@ private:
     std::vector<std::array<chunk_type, CHUNK_SIZE>*> chunks;
     std::deque<void*> free_list;
     std::mutex payload_mtx;
+    std::unordered_map<void*, uint64_t> used_blocks;
+#ifdef HAVE_GETENV
+    const bool debug_memory{getenv("TLM_MM_CHECK")!=nullptr};
+#else
+    const bool debug_memory{false};
+#endif
 };
 
 template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>& pool_allocator<T, CHUNK_SIZE>::get() {
@@ -57,30 +65,48 @@ template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>& pool_a
 template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>::~pool_allocator() {
     std::lock_guard<std::mutex> lk(payload_mtx);
 #ifdef HAVE_GETENV
-    auto* check = getenv("TLM_MM_CHECK");
-    if(check && strcasecmp(check, "INFO")) {
+    if(debug_memory) {
+        auto* check = getenv("TLM_MM_CHECK");
         auto diff = get_capacity() - get_free_entries_count();
-        if(diff)
-            std::cout << __FUNCTION__ << ": detected memory leak upon destruction, " << diff << " of " << get_capacity()
-                      << " entries are not free'd" << std::endl;
+        if(diff) {
+            std::cerr << __FUNCTION__ << ": detected memory leak upon destruction, " << diff << " of " << get_capacity()
+                              << " entries are not free'd" << std::endl;
+#ifdef _MSC_VER
+            if(check && _stricmp(check, "DEBUG")==0) {
+#else
+            if(check && strcasecmp(check, "DEBUG")==0) {
+#endif
+                std::vector<std::pair<void*, uint64_t>> elems(used_blocks.begin(), used_blocks.end());
+                std::sort(elems.begin(), elems.end(), [](std::pair<void*, uint64_t> const& a, std::pair<void*, uint64_t> const& b) -> bool {
+                    return a.second == b.second? a.first < b.first : a.second < b.second;
+                });
+                std::cerr<<"The 10 blocks with smallest id are:\n";
+                for(size_t i=0; i<std::min(10UL, elems.size()); ++i) {
+                    std::cerr<<"\taddr="<<elems[i].first<<", id="<<elems[i].second<<"\n";
+                }
+            }
+        }
     }
 #endif
 }
 
-template <typename T, unsigned CHUNK_SIZE> inline void* pool_allocator<T, CHUNK_SIZE>::allocate() {
+template <typename T, unsigned CHUNK_SIZE> inline void* pool_allocator<T, CHUNK_SIZE>::allocate(uint64_t id) {
     std::lock_guard<std::mutex> lk(payload_mtx);
     if(!free_list.size())
         resize();
     auto ret = free_list.back();
     free_list.pop_back();
     memset(ret, 0, sizeof(T));
+    if(debug_memory) used_blocks.insert({ret, id});
     return ret;
 }
 
 template <typename T, unsigned CHUNK_SIZE> inline void pool_allocator<T, CHUNK_SIZE>::free(void* p) {
     std::lock_guard<std::mutex> lk(payload_mtx);
-    if(p)
+    if(p) {
         free_list.push_back(p);
+        if(debug_memory) used_blocks.erase(p);
+    }
 }
 
 template <typename T, unsigned CHUNK_SIZE> inline void pool_allocator<T, CHUNK_SIZE>::resize() {

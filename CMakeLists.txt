@@ -1,23 +1,27 @@
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.16)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
 cmake_policy(SET CMP0077 NEW)
 
 project(scc VERSION 1.0.0 LANGUAGES CXX C)
 
-# find_package(Doxygen)
-
 option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 
-option(BUILD_STAND_ALONE "Do a standalone build and do not rely on a parent project providing needed libraries" FALSE)
+option(BUILD_STAND_ALONE "Do a standalone build and do not rely on a parent project providing needed libraries" OFF)
+
+#Note: this needs to match the SystemC kernel build options
+option(SYSTEMC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase callbacks" OFF)
 
 option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
 
+option(SC_USE_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse callbacks for tracing. It needs to match the SystemC build configuration" OFF)
+
 include(Common)
-include(GNUInstallDirs)
+
 if(BUILD_STAND_ALONE)
 	option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
+	include(GNUInstallDirs)
 	include(Conan)
 	setup_conan(TARGETS)
 endif()
@@ -109,7 +113,7 @@ elseif(TARGET CONAN_PKG::spdlog)
 else()
     add_library(spdlog_local INTERFACE IMPORTED)
     set_property(TARGET spdlog_local PROPERTY INTERFACE_COMPILE_DEFINITIONS SPDLOG_HEADER_ONLY)
-    set_property(TARGET spdlog_local PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third_party)
+    set_property(TARGET spdlog_local PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third_party/spdlog-1.8)
     set(SPDLOG_TARGET spdlog_local)
     message(STATUS "${PROJECT_NAME}: using built-in version of spdlog")
 endif()
@@ -121,14 +125,9 @@ elseif(TARGET CONAN_PKG::fmt)
     set(FMT_TARGET CONAN_PKG::fmt)
 else()
     add_library(fmt_local INTERFACE IMPORTED)
-    set_property(TARGET fmt_local PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third_party/spdlog)
+    set_property(TARGET fmt_local PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third_party/spdlog-1.8/spdlog)
     set(FMT_TARGET fmt_local)
     message(STATUS "${PROJECT_NAME}: using built-in version of fmt")
-endif()
-
-# Define two variables in order not to repeat ourselves.
-if(${CMAKE_VERSION} VERSION_LESS "3.13.0") 
-    link_directories(${SystemC_LIBRARY_DIRS})
 endif()
 
 # Define the scc library
