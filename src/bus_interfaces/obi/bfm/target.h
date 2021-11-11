@@ -58,6 +58,11 @@ public:
 
     tlm::tlm_sync_enum nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t);
 
+#ifdef WITH_CCI
+    cci::cci_param<sc_core::sc_time> sample_delay{"sample_delay", 0_ns};
+#else
+    sc_core::sc_time sample_delay{0_ns};
+#endif
 private:
     void clk_cb();
     void achannel_req_t();
@@ -65,6 +70,7 @@ private:
 
     scc::peq<tlm::scc::tlm_gp_shared_ptr> achannel_rsp;
     tlm::scc::tlm_gp_shared_ptr achannel_active_tx;
+    bool achannel_tx_finished{false};
     scc::peq<tlm::scc::tlm_gp_shared_ptr> rchannel_pending_rsp;
     scc::peq<tlm::scc::tlm_gp_shared_ptr> rchannel_rsp;
     //std::pair<tlm::scc::tlm_gp_shared_ptr, tlm::tlm_phase> rchannel_req;
@@ -117,7 +123,7 @@ target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::nb_transport_bw(
     }
     case tlm::BEGIN_RESP:{
         if(achannel_active_tx.get()==&trans) {
-            achannel_rsp.notify(&trans, t);
+            if(!achannel_tx_finished) achannel_rsp.notify(&trans, t);
             rchannel_pending_rsp.notify(&trans);
         } else {
             rchannel_rsp.notify(&trans, t);
@@ -136,28 +142,28 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::achannel_req_t
         gnt_o.write(false);
         if(!req_i.read())
             wait(req_i.posedge_event());
-        tlm::scc::tlm_gp_shared_ptr tx = tlm::scc::tlm_mm<>::get().allocate<obi::obi_extension>();
-        tx->set_address(addr_i.read());
-        tx->set_command(we_i.read() ? tlm::TLM_WRITE_COMMAND : tlm::TLM_READ_COMMAND);
+        achannel_active_tx = tlm::scc::tlm_mm<>::get().allocate<obi::obi_extension>();
+        achannel_active_tx->set_address(addr_i.read());
+        achannel_active_tx->set_command(we_i.read() ? tlm::TLM_WRITE_COMMAND : tlm::TLM_READ_COMMAND);
         auto be = static_cast<unsigned>(be_i.read());
         auto cnt = util::bit_count(be);
-        tx->set_streaming_width(cnt);
-        tx->set_data_length(cnt);
-        tx->set_data_ptr(new uint8_t[cnt]);
+        achannel_active_tx->set_streaming_width(cnt);
+        achannel_active_tx->set_data_length(cnt);
+        achannel_active_tx->set_data_ptr(new uint8_t[cnt]);
         if(we_i.read()) {
             auto bus_data = wdata_i.read();
             auto tx_data{sc_dt::sc_uint<DATA_WIDTH>(0)};
             auto tx_byte_idx=0;
             for(auto i = 0U, be_idx=0U; i<DATA_WIDTH; i+=8, ++be_idx){
                 if(be&(1U<<be_idx)){
-                    *(tx->get_data_ptr()+tx_byte_idx)=bus_data.range(i+7, i).to_uint();
+                    *(achannel_active_tx->get_data_ptr()+tx_byte_idx)=bus_data.range(i+7, i).to_uint();
                     tx_byte_idx++;
                 }
             }
-            SCCTRACE(SCMOD)<<"Got write request to address 0x"<<std::hex<<tx->get_address();
+            SCCTRACE(SCMOD)<<"Got write request to address 0x"<<std::hex<<achannel_active_tx->get_address();
         } else
-            SCCTRACE(SCMOD)<<"Got read request to address 0x"<<std::hex<<tx->get_address();
-        auto ext = tx->get_extension<obi::obi_extension>();
+            SCCTRACE(SCMOD)<<"Got read request to address 0x"<<std::hex<<achannel_active_tx->get_address();
+        auto ext = achannel_active_tx->get_extension<obi::obi_extension>();
         if(ID_WIDTH && aid_i.get_interface())
             ext->set_id(aid_i->read());
         if(USER_WIDTH){
@@ -168,27 +174,29 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::achannel_req_t
         }
         phase_type phase = tlm::BEGIN_REQ;
         auto delay = sc_core::SC_ZERO_TIME;
-        auto ret = isckt->nb_transport_fw(*tx, phase, delay);
+        achannel_tx_finished=false;
+        auto ret = isckt->nb_transport_fw(*achannel_active_tx, phase, delay);
         auto id = ext->get_id();
         if(pending_tx.size()<=id) pending_tx.resize(id+1);
-        pending_tx[id].emplace_back(std::make_tuple(tx, phase, clk_cnt));
+        pending_tx[id].emplace_back(std::make_tuple(achannel_active_tx, phase, clk_cnt));
         if (ret == tlm::TLM_UPDATED) {
+            achannel_tx_finished=true;
             if (phase == tlm::BEGIN_RESP) {
-                rchannel_pending_rsp.notify(tx);
+                rchannel_pending_rsp.notify(achannel_active_tx);
             } else if(phase != tlm::END_REQ){
                 SCCFATAL(SCMOD) << "Bummer: nyi";
             }
         } else {
             SCCTRACE(SCMOD)<<"waiting for TLM reponse";
-            achannel_active_tx=tx;
             auto resp=achannel_rsp.get();
-            sc_assert(resp.get()==tx.get());
+            sc_assert(resp.get()==achannel_active_tx.get());
+            achannel_tx_finished=true;
         }
         gnt_o.write(true);
-        achannel_active_tx=nullptr;
         wait(clk_i.posedge_event());
+        achannel_active_tx=nullptr;
         // wait until RTL output has settled
-        wait(SC_ZERO_TIME);
+        wait(sample_delay);
     }
 }
 
@@ -222,7 +230,7 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::rchannel_rsp_t
                 ruser_o->write(ext->get_duser());
         }
         rvalid_o.write(true);
-        wait(sc_core::SC_ZERO_TIME); // let rready settle
+        wait(sample_delay); // let rready settle
         while(!rready_i.read()) wait(rready_i.value_changed_event());
         phase_type phase = tlm::END_RESP;
         auto delay = sc_core::SC_ZERO_TIME;
