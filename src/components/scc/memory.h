@@ -63,7 +63,7 @@ public:
      *
      * @param cb the callback function or functor
      */
-    void set_operation_callback(std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&)> cb) {
+    void set_operation_callback(std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, sc_core::sc_time& delay)> cb) {
         operation_cb = cb;
     }
     /**
@@ -75,17 +75,26 @@ public:
     void set_dmi_callback(std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> cb) {
         dmi_cb = cb;
     }
-
+#ifdef WITH_CCI
+    /**
+     * read response delay
+     */
+    cci::cci_param<sc_core::sc_time> rd_resp_delay{"rd_resp_delay", sc_core::SC_ZERO_TIME};
+    /**
+     * write response delay
+     */
+    cci::cci_param<sc_core::sc_time> wr_resp_delay{"wr_resp_delay", sc_core::SC_ZERO_TIME};
+#endif
 protected:
     //! the real memory structure
     util::sparse_array<uint8_t, SIZE> mem;
 
 public:
     //!! handle the memory operation independent on interface function used
-    int handle_operation(tlm::tlm_generic_payload& trans);
+    int handle_operation(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay);
     //! handle the dmi functionality
     bool handle_dmi(tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data);
-    std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&)> operation_cb;
+    std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, sc_core::sc_time& delay)> operation_cb;
     std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> dmi_cb;
 };
 
@@ -95,10 +104,11 @@ memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
 , NAMED(target) {
     // Register callback for incoming b_transport interface method call
     target.register_b_transport([this](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void {
-        operation_cb ? operation_cb(*this, gp) : handle_operation(gp);
+        operation_cb ? operation_cb(*this, gp, delay) : handle_operation(gp, delay);
     });
     target.register_transport_dbg([this](tlm::tlm_generic_payload& gp) -> unsigned {
-        return operation_cb ? operation_cb(*this, gp) : handle_operation(gp);
+        sc_core::sc_time z=sc_core::SC_ZERO_TIME;
+        return operation_cb ? operation_cb(*this, gp, z) : handle_operation(gp, z);
     });
     target.register_get_direct_mem_ptr([this](tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data) -> bool {
         return dmi_cb ? dmi_cb(*this, gp, dmi_data) : handle_dmi(gp, dmi_data);
@@ -106,7 +116,7 @@ memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
 }
 
 template <unsigned long long SIZE, unsigned BUSWIDTH>
-int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans) {
+int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
     ::sc_dt::uint64 adr = trans.get_address();
     uint8_t* ptr = trans.get_data_ptr();
     unsigned len = trans.get_data_length();
@@ -129,6 +139,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans) {
     tlm::tlm_command cmd = trans.get_command();
     SCCTRACE(SCMOD) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr;
     if(cmd == tlm::TLM_READ_COMMAND) {
+        delay+=rd_resp_delay;
         if(mem.is_allocated(adr)) {
             const auto& p = mem(adr / mem.page_size);
             auto offs = adr & mem.page_addr_mask;
@@ -139,6 +150,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans) {
                 ptr[i] = scc::MT19937::uniform() % 256;
         }
     } else if(cmd == tlm::TLM_WRITE_COMMAND) {
+        delay+=wr_resp_delay;
         auto& p = mem(adr / mem.page_size);
         auto offs = adr & mem.page_addr_mask;
         std::copy(ptr, ptr + len, p.data() + offs);
@@ -156,6 +168,10 @@ inline bool memory<SIZE, BUSWIDTH>::handle_dmi(tlm::tlm_generic_payload& gp, tlm
     dmi_data.set_end_address(dmi_data.get_start_address() + mem.page_size - 1);
     dmi_data.set_dmi_ptr(p.data());
     dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);
+#ifdef WITH_CCI
+    dmi_data.set_read_latency(rd_resp_delay.get_value());
+    dmi_data.set_write_latency(wr_resp_delay.get_value());
+#endif
     return true;
 }
 
