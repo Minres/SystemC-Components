@@ -241,21 +241,17 @@ private:
                         sc_core::sc_spawn(sc_bind(&fw_process::nb2b_thread, this, ph),
                                           sc_core::sc_gen_unique_name("nb2b_thread"), &opts);
                     }
-
                     ph->m_e.notify(t);
-                    return tlm::TLM_ACCEPTED;
-
+                    phase = tlm::END_REQ;
+                    return tlm::TLM_UPDATED;
                 } else if(phase == tlm::END_RESP) {
                     m_response_in_progress = false;
                     m_end_response.notify(t);
                     return tlm::TLM_COMPLETED;
-
                 } else {
                     assert(false);
                     exit(1);
-                    //          return tlm::TLM_COMPLETED;   ///< unreachable code
                 }
-
             } else {
                 std::stringstream s;
                 s << m_name << ": no non-blocking transport callback registered";
