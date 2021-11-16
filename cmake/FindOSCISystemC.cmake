@@ -85,7 +85,6 @@ SET(_SYSTEMC_HINTS
   ${CONAN_INCLUDE_DIRS_SYSTEMC}
   ${CONAN_LIB_DIRS_SYSTEMC}
   ${SystemC_LIB_DIRS}
-  ${SystemC_INCLUDE_DIR}
   ${_COMMON_HINTS}
   )
 
@@ -142,11 +141,13 @@ SET(_COMMON_PATHS
   /usr/local/lib-macos
   )
   
-FIND_PATH(SystemC_INCLUDE_DIR
-  NAMES systemc
-  HINTS ${_SYSTEMC_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
+if (NOT SystemC_INCLUDE_DIR)
+  FIND_PATH(SystemC_INCLUDE_DIR
+    NAMES systemc
+    HINTS ${_SYSTEMC_HINTS}
+    PATHS ${_COMMON_PATHS}
+  )
+endif()
 
 FIND_LIBRARY(SystemC_LIBRARY
   NAMES systemc 
