@@ -5,23 +5,23 @@
  *      Author:
  */
 
-#include "scc/report.h"
-#include "tlm/tlm_id.h"
-#include <array>
-#include <vector>
-#include <map>
-#include <tlm/tlm_mm.h>
+#include <scc/report.h>
+#include <tlm/scc/tlm_id.h>
+#include <tlm/scc/tlm_mm.h>
 
 #include <scc/tlm_target_bfs.h>
 #include <scc/tlm_target_bfs_register_base.h>
 
 #include <util/ities.h>
 
-#include "tlm_utils/simple_initiator_socket.h"
+#include <tlm_utils/simple_initiator_socket.h>
 
+#include <array>
+#include <vector>
+#include <map>
 using namespace sc_core;
+using namespace sc_dt;
 class testbench;
-
 
 /*
  * @Brief: This class holds the bitfield-registers for the tlm_target_bfs_example
@@ -133,8 +133,8 @@ public:
 
     tlm::tlm_generic_payload* prepare_trans(size_t len) {
       static int id = 0;
-      auto trans = tlm::tlm_mm<>::get().allocate(); //new tlm::tlm_generic_payload;
-      setId(*trans, id++);
+      auto trans = tlm::scc::tlm_mm<>::get().allocate(); //new tlm::tlm_generic_payload;
+      tlm::scc::setId(*trans, id++);
       trans->set_data_length(len);
       trans->set_streaming_width(len);
       trans->set_data_ptr(new uint8_t[len]);
@@ -181,7 +181,7 @@ public:
           else
             SCCINFO() << "Read-back successfull " << "out[0x" << std::hex << out << "] == in[0x" << in << "]";
           trans->release();
-          
+
           /* WRITE test callback-able bitfield regs.R2.BF0 alias control */
           trans = prepare_trans(2);
           trans->set_command(tlm::TLM_WRITE_COMMAND);
@@ -192,7 +192,7 @@ public:
           if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
               SCCERR() << "Invalid response status" << trans->get_response_string();
           trans->release();
-          
+
           /* READ test callback-able register. Activates two bitfields status + control */
           trans = prepare_trans(4);
           trans->set_command(tlm::TLM_READ_COMMAND);
@@ -203,7 +203,7 @@ public:
               SCCERR() << "Invalid response status" << trans->get_response_string();
           SCCINFO() << ">R:8(4) := 0x" << std::hex << *(uint32_t*)trans->get_data_ptr() << std::endl;
           trans->release();
-          
+
           /* READ test callback-able register. Activate only status bitfield */
           trans = prepare_trans(2);
           trans->set_command(tlm::TLM_READ_COMMAND);
