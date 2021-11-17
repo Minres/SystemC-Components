@@ -37,7 +37,9 @@
 #include <scc/ordered_semaphore.h>
 #include <tlm>
 
+//! TLM2.0 components modeling APB
 namespace apb {
+//! protocol engine implementations
 namespace pe {
 /**
  * the target protocol engine base class

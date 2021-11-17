@@ -44,7 +44,7 @@ void ordered_semaphore::set_capacity(unsigned c) {
         capacity = c;
         value -= diff;
         if(value > 0)
-            free_evt.notify();
+            free_evt.notify(sc_core::SC_ZERO_TIME);
     } else {
         SCCWARN(SCMOD) << "cannot resize fixed size ordered semaphore";
     }
@@ -79,7 +79,16 @@ ordered_semaphore::ordered_semaphore(const char* name_, unsigned init_value_)
 // lock (take) the semaphore, block if not available
 
 int ordered_semaphore::wait() {
-    queue.push_back(sc_core::sc_get_current_process_handle());
+    queue.at(0).push_back(sc_core::sc_get_current_process_handle());
+    while(in_use()) {
+        sc_core::wait(free_evt);
+    }
+    --value;
+    return value;
+}
+
+int ordered_semaphore::wait(unsigned priority) {
+    queue.at(priority).push_back(sc_core::sc_get_current_process_handle());
     while(in_use()) {
         sc_core::wait(free_evt);
     }

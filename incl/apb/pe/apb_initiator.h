@@ -38,7 +38,9 @@
 #include <scc/peq.h>
 #include <tlm>
 
+//! TLM2.0 components modeling APB
 namespace apb {
+//! protocol engine implementations
 namespace pe {
 
 class apb_initiator_b : public sc_core::sc_module, public tlm::tlm_bw_transport_if<tlm::tlm_base_protocol_types> {

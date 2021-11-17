@@ -10,7 +10,6 @@
 #include <scv.h>
 #include <scv/scv_tr.h>
 #endif
-//#include "Adapter.h"
 #include "scc/report.h"
 #include "tlm/tlm_id.h"
 #include <array>
@@ -18,7 +17,9 @@
 #include <axi/pe/simple_target.h>
 #include <ace_axi_adapt.h>
 #include <tlm/tlm_mm.h>
+#include <cstdint>
 
+using namespace sc_core;
 using namespace axi;
 using namespace axi::pe;
 using namespace sc_core;

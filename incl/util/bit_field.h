@@ -37,8 +37,8 @@ template <typename T, int Offset, int Bits> struct BitFieldMember {
     static_assert(Offset + Bits <= (int)sizeof(T) * 8, "Member exceeds bitfield boundaries");
     static_assert(Bits < (int)sizeof(T) * 8, "Can't fill entire bitfield with one member");
 
-    static const T Maximum = (T(1) << Bits) - 1;
-    static const T Mask = Maximum << Offset;
+    static constexpr T Maximum = (T(1) << Bits) - 1;
+    static constexpr T Mask = Maximum << Offset;
     T maximum() const { return Maximum; }
     T one() const { return T(1) << Offset; }
 
@@ -155,17 +155,14 @@ public:
 //---------------------------------------------------------
 #define BEGIN_BF_DECL(typeName, T)                                                                                     \
     union typeName {                                                                                                   \
-        struct Wrapper {                                                                                               \
-            T value;                                                                                                   \
-        };                                                                                                             \
-        Wrapper st;                                                                                                    \
-        typeName(T v = 0) { st.value = v; }                                                                            \
+        struct { T val; } backing;                                                                                     \
+        typeName(T v = 0) { backing.val = v; }                                                                         \
         typeName& operator=(T v) {                                                                                     \
-            st.value = v;                                                                                              \
+            backing.val = v;                                                                                           \
             return *this;                                                                                              \
         }                                                                                                              \
-        operator T&() { return st.value; }                                                                             \
-        operator T() const { return st.value; }                                                                        \
+        operator T&() { return backing.val; }                                                                          \
+        operator T() const { return backing.val; }                                                                     \
         using StorageType = T;
 
 #define BF_FIELD(memberName, offset, bits) BitFieldMember<StorageType, offset, bits> memberName;

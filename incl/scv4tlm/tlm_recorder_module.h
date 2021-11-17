@@ -52,13 +52,21 @@ public:
     tlm_recorder_module(sc_core::sc_module_name name, bool recording_enabled = true,
                          scv_tr_db* tr_db = scv_tr_db::get_default_db())
     : sc_module(name)
-    , tlm_recorder<TYPES>(is.get_base_port(), ts.get_base_port(), recording_enabled, tr_db) {
+    , tlm_recorder<TYPES>(sc_core::sc_object::name(), is.get_base_port(), ts.get_base_port(), recording_enabled, tr_db) {
+        add_attribute(this->enableTracing);
+        add_attribute(this->enableTimedTracing);
+        add_attribute(this->enableDmiTracing);
+        add_attribute(this->enableTrDbgTracing);
         // bind the sockets to the module
         is.bind(*this);
         ts.bind(*this);
     }
 
     virtual ~tlm_recorder_module() {}
+private:
+    void start_of_simulation() override {
+    	tlm_recorder<TYPES>::initialize_streams();
+    }
 };
 } // namespace scv4tlm
 

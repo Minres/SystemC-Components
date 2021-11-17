@@ -39,13 +39,13 @@ using namespace scc;
 
 #define EN_TRACING_STR "enableTracing"
 
-configurable_tracer::configurable_tracer(const std::string&& name, file_type type, bool enable_vcd, bool default_enable)
+configurable_tracer::configurable_tracer(std::string const&& name, file_type type, bool enable_vcd, bool default_enable)
 : tracer(std::move(name), type, enable_vcd)
 , cci_originator(this->name())
 , cci_broker(cci::cci_get_global_broker(cci_originator))
 , default_trace_enable(default_enable) {}
 
-configurable_tracer::configurable_tracer(const std::string&& name, file_type type, sc_core::sc_trace_file* tf,
+configurable_tracer::configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf,
                                          bool default_enable)
 : tracer(std::move(name), type, tf)
 , cci_originator(this->name())

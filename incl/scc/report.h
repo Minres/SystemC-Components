@@ -104,20 +104,23 @@ struct LogConfig {
     std::string log_filter_regex{""};
     bool log_async{true};
     bool dont_create_broker{false};
+    bool report_only_first_error{false};
 
     LogConfig& logLevel(log);
     LogConfig& msgTypeFieldWidth(unsigned);
-    LogConfig& printSysTime(bool);
-    LogConfig& printSimTime(bool);
-    LogConfig& printDelta(bool);
-    LogConfig& printSeverity(bool);
-    LogConfig& coloredOutput(bool);
+    LogConfig& printSysTime(bool = true);
+    LogConfig& printSimTime(bool= true);
+    LogConfig& printDelta(bool = true);
+    LogConfig& printSeverity(bool = true);
+    LogConfig& coloredOutput(bool = true);
     LogConfig& logFileName(std::string&&);
     LogConfig& logFileName(const std::string&);
     LogConfig& logFilterRegex(std::string&&);
     LogConfig& logFilterRegex(const std::string&);
-    LogConfig& logAsync(bool);
-    LogConfig& dontCreateBroker(bool);
+    LogConfig& logAsync(bool = true);
+    LogConfig& dontCreateBroker(bool = true);
+    LogConfig& reportOnlyFirstError(bool = true);
+
 };
 /**
  * @fn void init_logging(const LogConfig&)

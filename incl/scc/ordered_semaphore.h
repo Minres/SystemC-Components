@@ -20,6 +20,7 @@
 #include "sysc/kernel/sc_event.h"
 #include "sysc/kernel/sc_object.h"
 #include <deque>
+#include <array>
 #include <sysc/kernel/sc_process_handle.h>
 
 #ifndef SC_API
@@ -61,6 +62,13 @@ public:
      * @return value after locking
      */
     int wait() override;
+    /**
+     * @fn int wait()
+     * @brief lock (take) the semaphore, block if not available
+     *
+     * @return value after locking
+     */
+    int wait(unsigned priority);
     /**
      * @fn int trywait()
      * @brief lock (take) the semaphore, return -1 if not available
@@ -120,6 +128,10 @@ public:
         : sem(sem) {
             sem.wait();
         }
+        lock(scc::ordered_semaphore& sem, unsigned prio)
+        : sem(sem) {
+            sem.wait(prio);
+        }
         /**
          * @fn  ~lock()
          * @brief unlock the semaphore
@@ -134,11 +146,21 @@ public:
 protected:
     // support methods
     bool in_use() {
-        if(value > 0 && queue.front() == sc_core::sc_get_current_process_handle()) {
-            queue.pop_front();
-            return false;
-        } else
-            return true;
+        if(value > 0){
+            if(queue[1].size()){
+                if(queue[1].front() == sc_core::sc_get_current_process_handle()) {
+                    queue[1].pop_front();
+                    return false;
+                }
+            } else if(queue[0].size()) {
+                if(queue[0].front() == sc_core::sc_get_current_process_handle()) {
+                    queue[0].pop_front();
+                    return false;
+                }
+            } else
+            	return false;
+        }
+        return true;
     }
 
     // error reporting
@@ -148,7 +170,7 @@ protected:
     sc_core::sc_event free_evt; // event to block on when m_value is negative
     int value;                  // current value of the semaphore
     unsigned capacity;
-    std::deque<sc_core::sc_process_handle> queue;
+    std::array<std::deque<sc_core::sc_process_handle>, 2> queue;
 };
 
 template <unsigned CAPACITY> struct ordered_semaphore_t : public ordered_semaphore {

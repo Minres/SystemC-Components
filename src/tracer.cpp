@@ -32,7 +32,7 @@
 using namespace sc_core;
 using namespace scc;
 
-tracer::tracer(const std::string&& name, file_type type, bool enable)
+tracer::tracer(std::string const&& name, file_type type, bool enable)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
 #ifdef WITH_SCV
 , txdb(nullptr)
@@ -48,12 +48,14 @@ tracer::tracer(const std::string&& name, file_type type, bool enable)
         std::stringstream ss;
         ss << name;
         switch(type) {
-        case TEXT:
-            scv_tr_text_init();
+        case COMPRESSED:
+#ifdef WITH_ZLIB
+            scv_tr_compressed_init();
             ss << ".txlog";
             break;
-        case COMPRESSED:
-            scv_tr_compressed_init();
+#endif
+        case TEXT:
+            scv_tr_text_init();
             ss << ".txlog";
             break;
         case SQLITE:
