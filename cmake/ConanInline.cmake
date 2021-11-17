@@ -18,10 +18,10 @@ macro(conan_check)
   endif()
  
   if(NOT EXISTS ${CONAN_CMAKE_LIST_DIR}/conan.cmake)
-    message("Downloading conan.cmake to ${CONAN_CMAKE_LIST_DIR}")  
-    file(DOWNLOAD https://raw.githubusercontent.com/conan-io/cmake-conan/develop/conan.cmake ${CONAN_CMAKE_LIST_DIR}/conan.cmake
-         TIMEOUT 60  # seconds
-    )
+    message("Downloading conan.cmake to ${CONAN_CMAKE_LIST_DIR}")
+    #set(URL https://raw.githubusercontent.com/conan-io/cmake-conan/develop/conan.cmake)
+    set(URL https://raw.githubusercontent.com/conan-io/cmake-conan/43e385830ee35377dbd2dcbe8d5a9e750301ea00/conan.cmake)
+    file(DOWNLOAD ${URL} ${CONAN_CMAKE_LIST_DIR}/conan.cmake TIMEOUT 60)
   endif()
   if("${CMAKE_BUILD_TYPE}" STREQUAL "")
       set(CMAKE_BUILD_TYPE Release)
