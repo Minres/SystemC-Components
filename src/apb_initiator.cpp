@@ -43,7 +43,7 @@ void apb_initiator_b::transport(payload_type& trans, bool blocking) {
     } else {
         scc::ordered_semaphore::lock lock(chnl);
         SCCTRACE(SCMOD) << "start transport req for id=" << &trans;
-        payload_type* gp{nullptr};
+        trans.free_all_extensions();
         tlm::tlm_phase phase{tlm::BEGIN_REQ};
         sc_time t;
         auto res = socket_fw->nb_transport_fw(trans, phase, t);

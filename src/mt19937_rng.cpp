@@ -6,6 +6,7 @@ struct {
     std::mt19937_64 global;
     std::unordered_map<void*, std::mt19937_64> inst;
     uint64_t seed{std::mt19937_64::default_seed};
+    bool global_seed;
 } rng;
 }; // namespace
 
@@ -16,7 +17,10 @@ std::mt19937_64& scc::MT19937::inst() {
         if(rng.inst.size() > sz) {
             std::string name{obj->name()};
             std::hash<std::string> h;
-            ret.seed(h(name) ^ rng.seed);
+            if(rng.global_seed)
+                ret.seed(reinterpret_cast<uintptr_t>(&rng.inst) ^ rng.seed);
+            else
+                ret.seed(h(name) ^ rng.seed);
         }
         return ret;
     } else {
@@ -29,4 +33,8 @@ void scc::MT19937::seed(uint64_t new_seed) {
     rng.global.seed(new_seed);
     for(auto& e : rng.inst)
         e.second.seed(new_seed);
+}
+
+void scc::MT19937::enable_global_seed(bool enable) {
+    rng.global_seed=enable;
 }

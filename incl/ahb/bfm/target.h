@@ -11,7 +11,9 @@
 #include <scc/initiator_mixin.h>
 #include <tlm>
 
+//! TLM2.0 components modeling AHB
 namespace ahb {
+//! pin level adapters
 namespace bfm {
 
 template <unsigned WIDTH> class target : sc_core::sc_module {
