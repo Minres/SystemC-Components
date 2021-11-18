@@ -46,7 +46,7 @@ set(LIB_SOURCES
 
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
-    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_compressed.cpp)
+    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_compressed.cpp scc/sc_fst_trace.cpp)
 endif()
 
 if(ENABLE_SQLITE)
@@ -123,7 +123,7 @@ else()
 endif()
 if(ZLIB_FOUND)
     target_include_directories(${PROJECT_NAME} PUBLIC ${ZLIB_INCLUDE_DIRS})
-    target_link_libraries(${PROJECT_NAME} PUBLIC ${ZLIB_LIBRARIES})
+    target_link_libraries(${PROJECT_NAME} PUBLIC fstapi ${ZLIB_LIBRARIES})
     target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_ZLIB)
 endif()
 if(SC_USE_PHASE_CALLBACK_TRACING)
