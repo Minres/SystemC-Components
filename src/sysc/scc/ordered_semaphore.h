@@ -155,12 +155,13 @@ protected:
                     queue[1].pop_front();
                     return false;
                 }
-            } else {
+            } else if(queue[0].size()) {
                 if(queue[0].front() == sc_core::sc_get_current_process_handle()) {
                     queue[0].pop_front();
                     return false;
                 }
-            }
+            } else
+            	return false;
         }
         return true;
     }
