@@ -31,7 +31,7 @@ find_package(Doxygen)
     if(NOT DOXYGEN_FOUND)
         message(FATAL_ERROR "Doxygen is needed to build the documentation.")
     endif()
-	
+
 	set(DOXYGEN_PROJECT_BRIEF "SystemC components library")
 	set(DOXYGEN_USE_MDFILE_AS_MAINPAGE  README.md)
 	# exclude json code
@@ -151,7 +151,7 @@ set_target_properties(scc PROPERTIES
 	  PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
 )
 
-install(TARGETS scc 
+install(TARGETS scc
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
@@ -169,4 +169,3 @@ add_subdirectory(third_party)
 if(NOT SCC_LIB_ONLY)
 	add_subdirectory(examples)
 endif()
-
