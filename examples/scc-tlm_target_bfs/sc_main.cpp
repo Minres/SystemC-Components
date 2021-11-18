@@ -151,8 +151,8 @@ public:
         rst.write(true);
         wait(clk.posedge_event());
 
-        for(auto& [dut_name, dut_instance]: duts_){
-          std::cout << "test " << dut_name << std::endl;
+        for(auto& e: duts_){
+          std::cout << "test " << e.first << std::endl;
 
           /* WRITE test callback-able complete register (R0) */
           auto trans = prepare_trans(4);
