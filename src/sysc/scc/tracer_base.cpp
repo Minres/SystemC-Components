@@ -68,11 +68,7 @@ inline auto try_trace_obj(sc_trace_file* trace_file, const sc_object* object, tr
         if(trace_helper<sc_core::sc_signal<T, SC_UNCHECKED_WRITERS>>(trace_file, object))
             return true;
     }
-//    if((types_to_trace & trace_types::VARIABLES) == trace_types::VARIABLES) {
-//        if(variable_trace_helper<T>(trace_file, object))
-//            return true;
-//    }
-    if((types_to_trace & trace_types::OBJECTS) == trace_types::OBJECTS)
+    if((types_to_trace & trace_types::POD) == trace_types::POD)
         if(trace_helper<T>(trace_file, object))
             return true;
     return false;
@@ -284,15 +280,21 @@ void tracer_base::descend(const sc_object* obj, bool trace_all) {
     const char* kind = obj->kind();
     if(strcmp(kind, "tlm_signal") == 0) {
         obj->trace(trf);
-        return;
     } else if(strcmp(kind, "sc_vector") == 0) {
         for(auto o : obj->get_child_objects())
             descend(o, trace_all);
-        return;
     } else if((strcmp(kind, "sc_module") == 0 && trace_all) || dynamic_cast<const traceable*>(obj)) {
         obj->trace(trf);
         for(auto o : obj->get_child_objects())
             descend(o, trace_all);
-    } else
+    } else if(strcmp(kind, "sc_variable") == 0) {
+        if((types_to_trace & trace_types::VARIABLES) == trace_types::VARIABLES) obj->trace(trf);
+    } else if(const auto* tr = dynamic_cast<const scc::traceable*>(obj)) {
+        if(tr->is_trace_enabled())
+            obj->trace(trf);
+        for(auto o : obj->get_child_objects())
+            descend(o, tr->is_trace_enabled());
+    } else {
         try_trace(trf, obj, types_to_trace);
+    }
 }
