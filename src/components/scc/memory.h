@@ -139,7 +139,9 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
     tlm::tlm_command cmd = trans.get_command();
     SCCTRACE(SCMOD) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr;
     if(cmd == tlm::TLM_READ_COMMAND) {
+#ifdef HAS_CCI
         delay+=rd_resp_delay;
+#endif
         if(mem.is_allocated(adr)) {
             const auto& p = mem(adr / mem.page_size);
             auto offs = adr & mem.page_addr_mask;
@@ -150,7 +152,9 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
                 ptr[i] = scc::MT19937::uniform() % 256;
         }
     } else if(cmd == tlm::TLM_WRITE_COMMAND) {
+#ifdef HAS_CCI
         delay+=wr_resp_delay;
+#endif
         auto& p = mem(adr / mem.page_size);
         auto offs = adr & mem.page_addr_mask;
         std::copy(ptr, ptr + len, p.data() + offs);
