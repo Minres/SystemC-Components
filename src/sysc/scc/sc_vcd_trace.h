@@ -59,7 +59,7 @@ class sc_time;
 namespace scc {
 
 
-class vcd_trace;  // defined in sc_vcd_trace.cpp
+class vcd_trace;
 template<class T> class vcd_T_trace;
 
 

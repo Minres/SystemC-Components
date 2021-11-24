@@ -11,7 +11,7 @@ endif()
 ########################################################################################################################
 find_package(ZLIB REQUIRED)
 
-add_library(fstapi fstapi.c fstapi.h fst_win_unistd.h)
+add_library(fstapi fstapi.c lz4.c fastlz.c)
 target_include_directories(fstapi PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(fstapi PRIVATE ZLIB::ZLIB)
 # hack to avoid creating dummy config.h

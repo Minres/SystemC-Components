@@ -492,17 +492,17 @@ vcd_sc_unsigned_trace::changed()
     return object != old_value;
 }
 
+inline size_t get_buffer_size(int length){
+    size_t sz = ( static_cast<size_t>(length) + 4096 ) & (~static_cast<size_t>(4096-1));
+    return std::max(1024UL, sz);
+}
+
+
 void
 vcd_sc_unsigned_trace::write(FILE* f)
 {
-    static std::vector<char> compdata(1024), rawdata(1024);
+    static std::vector<char> compdata(get_buffer_size(object.length())), rawdata(get_buffer_size(object.length()));
     typedef std::vector<char>::size_type size_t;
-
-    if ( compdata.size() < static_cast<size_t>(object.length()) ) {
-        size_t sz = ( static_cast<size_t>(object.length()) + 4096 ) & (~static_cast<size_t>(4096-1));
-        std::vector<char>( sz ).swap( compdata ); // resize without copying values
-        std::vector<char>( sz ).swap( rawdata );
-    }
     char *rawdata_ptr  = &rawdata[0];
 
     for (int bitindex = object.length() - 1; bitindex >= 0; --bitindex) {
@@ -556,14 +556,9 @@ vcd_sc_signed_trace::changed()
 void
 vcd_sc_signed_trace::write(FILE* f)
 {
-    static std::vector<char> compdata(1024), rawdata(1024);
+    static std::vector<char> compdata(get_buffer_size(object.length())), rawdata(get_buffer_size(object.length()));
     typedef std::vector<char>::size_type size_t;
 
-    if ( compdata.size() < static_cast<size_t>(object.length()) ) {
-        size_t sz = ( static_cast<size_t>(object.length()) + 4096 ) & (~static_cast<size_t>(4096-1));
-        std::vector<char>( sz ).swap( compdata ); // resize without copying values
-        std::vector<char>( sz ).swap( rawdata );
-    }
     char *rawdata_ptr  = &rawdata[0];
 
     for (int bitindex = object.length() - 1; bitindex >= 0; --bitindex) {

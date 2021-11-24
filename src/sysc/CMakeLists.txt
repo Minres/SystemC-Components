@@ -40,13 +40,14 @@ set(LIB_SOURCES
     scc/time_n_tick.cpp
     #scc/scv/scv_tr_binary.cpp
     scc/sc_vcd_trace.cpp
+    scc/fst_trace.cpp
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp
 )
 
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
-    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_compressed.cpp scc/sc_fst_trace.cpp)
+    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_compressed.cpp)
 endif()
 
 if(ENABLE_SQLITE)
@@ -123,14 +124,14 @@ else()
 endif()
 if(ZLIB_FOUND)
     target_include_directories(${PROJECT_NAME} PUBLIC ${ZLIB_INCLUDE_DIRS})
-    target_link_libraries(${PROJECT_NAME} PUBLIC fstapi ${ZLIB_LIBRARIES})
-    target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_ZLIB)
+    target_link_libraries(${PROJECT_NAME} PUBLIC ${ZLIB_LIBRARIES})
+    target_compile_definitions(${PROJECT_NAME} PRIVATE HAS_ZLIB)
 endif()
 if(SC_USE_PHASE_CALLBACK_TRACING)
     target_compile_definitions(${PROJECT_NAME} PRIVATE SC_ENABLE_SIMULATION_PHASE_CALLBACKS_TRACING)
     target_compile_definitions(${PROJECT_NAME} PUBLIC SC_TRACING_PHASE_CALLBACKS_)
 endif()
-target_link_libraries(${PROJECT_NAME} PUBLIC Threads::Threads ${CMAKE_DL_LIBS})
+target_link_libraries(${PROJECT_NAME} PUBLIC fstapi Threads::Threads ${CMAKE_DL_LIBS})
 
 if(CLANG_TIDY_EXE)
 	set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}" )

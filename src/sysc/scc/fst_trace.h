@@ -20,7 +20,7 @@
 
 #include "fstapi.h"
 #include <systemc>
-#include <sysc/tracing/sc_trace_file_base.h>
+#include <sysc/tracing/sc_trace.h>
 #include <functional>
 
 namespace sc_core {
@@ -29,17 +29,16 @@ class sc_time;
 namespace scc {
 
 class fst_trace;
-template<class T> class fst_T_trace;
 
-struct fst_trace_file : public sc_core::sc_trace_file_base {
+struct fst_trace_file : public sc_core::sc_trace_file {
 
     fst_trace_file(const char *name, std::function<bool()>& enable);
 
     virtual ~fst_trace_file();
 
 protected:
-#define DECL_TRACE_METHOD_A(tp) virtual void trace(const tp& object, const std::string& name);
-#define DECL_TRACE_METHOD_B(tp) virtual void trace(const tp& object, const std::string& name, int width);
+#define DECL_TRACE_METHOD_A(tp) void trace(const tp& object, const std::string& name) override;
+#define DECL_TRACE_METHOD_B(tp) void trace(const tp& object, const std::string& name, int width) override;
 
 #if (SYSTEMC_VERSION >= 20171012)
     DECL_TRACE_METHOD_A( sc_core::sc_event )
@@ -80,11 +79,17 @@ protected:
 #undef DECL_TRACE_METHOD_A
 #undef DECL_TRACE_METHOD_B
 
+    void trace( const unsigned int& object,
+            const std::string& name,
+            const char** enum_literals ) override;
+
     // Output a comment to the trace file
-     void write_comment(const std::string& comment);
+     void write_comment(const std::string& comment) override;
 
     // Write trace info for cycle.
-     void cycle(bool delta_cycle);
+     void cycle(bool delta_cycle) override;
+
+     void set_time_unit( double v, sc_core::sc_time_unit tu ) override;
 
 private:
 #if WITH_SIM_PHASE_CALLBACKS
@@ -92,13 +97,17 @@ private:
     virtual void trace( sc_trace_file* ) const;
 #endif
 
-    sc_trace_file_base::unit_type previous_time_units_low;
-    sc_trace_file_base::unit_type previous_time_units_high;
+    void init();
     std::function<bool()> check_enabled;
 
-    void* m_fst;
-    fstHandle* m_symbolp{nullptr};
-    char* m_strbuf{nullptr};
+    void* m_fst{nullptr};
+    struct trace_entry {
+        bool (*compare_and_update)(fst_trace*);
+        fst_trace* trc;
+        trace_entry(bool (*compare_and_update)(fst_trace*), fst_trace* trc):compare_and_update{compare_and_update}, trc{trc}{}
+    };
+    std::vector<trace_entry> all_traces, active_traces;
+    bool initialized{false};
 };
 
 // ----------------------------------------------------------------------------
