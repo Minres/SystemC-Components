@@ -33,7 +33,7 @@ enum class trace_types : unsigned {
     PORTS = 0x2,     /**< PORTS */
     SOCKETS = 0x4,   /**< SOCKETS */
     VARIABLES = 0x8, /**< VARIABLES */
-    OBJECTS = 0x10,  /**< OBJECTS */
+    POD = 0x10,      /**< POD */
     ALL = 0xff       /**< ALL */
 };
 /**

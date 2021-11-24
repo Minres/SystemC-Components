@@ -29,7 +29,7 @@ namespace scc {
  * This memory manager can be used as singleton or as local memory manager. It uses the pool_allocator
  * as singleton to maximize reuse
  */
-template <typename TYPES = tlm_base_protocol_types> class tlm_mm : public tlm::tlm_mm_interface {
+template <typename TYPES = tlm_base_protocol_types, bool CLEANUP_DATA=true> class tlm_mm : public tlm::tlm_mm_interface {
     using payload_type = typename TYPES::tlm_payload_type;
 
 public:
@@ -75,20 +75,25 @@ private:
     util::pool_allocator<payload_type>& allocator;
 };
 
-template <typename TYPES> tlm_mm<TYPES>& tlm_mm<TYPES>::get() {
+template <typename TYPES, bool CLEANUP_DATA> tlm_mm<TYPES, CLEANUP_DATA>& tlm_mm<TYPES, CLEANUP_DATA>::get() {
     static tlm_mm<TYPES> mm;
     return mm;
 }
 
-template <typename TYPES> typename tlm_mm<TYPES>::payload_type* tlm_mm<TYPES>::allocate() {
+template <typename TYPES, bool CLEANUP_DATA> typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP_DATA>::allocate() {
     auto* ptr = allocator.allocate(sc_core::sc_time_stamp().value());
     return new(ptr) payload_type(this);
 }
 
-template <typename TYPES> void tlm_mm<TYPES>::free(tlm::tlm_generic_payload* trans) {
-    if(trans->get_data_ptr())
-        delete[] trans->get_data_ptr();
-    trans->set_data_ptr(nullptr);
+template <typename TYPES, bool CLEANUP_DATA> void tlm_mm<TYPES, CLEANUP_DATA>::free(tlm::tlm_generic_payload* trans) {
+    if(CLEANUP_DATA) {
+        if(trans->get_data_ptr())
+            delete[] trans->get_data_ptr();
+        trans->set_data_ptr(nullptr);
+        if(trans->get_byte_enable_ptr())
+            delete[] trans->get_byte_enable_ptr();
+        trans->set_byte_enable_ptr(nullptr);
+    }
     trans->reset();
     trans->~tlm_generic_payload();
     allocator.free(trans);
