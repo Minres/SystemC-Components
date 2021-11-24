@@ -345,7 +345,7 @@ void fst_trace_file::init() {
             ++cur_it;
             ++tok_it;
         }
-        for(auto it=std::rbegin(fst_scope); cur_it!=it.base(); it++){
+        for(auto it=fst_scope.rbegin(); cur_it!=it.base(); it++){
             fstWriterSetUpscope(m_fst);
             fst_scope.pop_back();
         }

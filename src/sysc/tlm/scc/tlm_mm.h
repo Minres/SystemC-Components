@@ -75,12 +75,14 @@ private:
     util::pool_allocator<payload_type>& allocator;
 };
 
-template <typename TYPES, bool CLEANUP_DATA> tlm_mm<TYPES, CLEANUP_DATA>& tlm_mm<TYPES, CLEANUP_DATA>::get() {
-    static tlm_mm<TYPES> mm;
+template <typename TYPES, bool CLEANUP_DATA>
+inline tlm_mm<TYPES, CLEANUP_DATA>& tlm_mm<TYPES, CLEANUP_DATA>::get() {
+    static tlm_mm<TYPES, CLEANUP_DATA> mm;
     return mm;
 }
 
-template <typename TYPES, bool CLEANUP_DATA> typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP_DATA>::allocate() {
+template <typename TYPES, bool CLEANUP_DATA>
+inline typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP_DATA>::allocate() {
     auto* ptr = allocator.allocate(sc_core::sc_time_stamp().value());
     return new(ptr) payload_type(this);
 }
