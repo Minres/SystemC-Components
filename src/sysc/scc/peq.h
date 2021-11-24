@@ -19,6 +19,8 @@
 
 #include <boost/optional.hpp>
 #include <map>
+#include <vector>
+#include <deque>
 #include <systemc>
 #include <type_traits>
 
@@ -36,6 +38,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
     static_assert(std::is_copy_constructible<TYPE>::value, "TYPE needs to be copy-constructible");
 
     using pair_type = std::pair<const sc_core::sc_time, TYPE>;
+    using map_type = std::map<const sc_core::sc_time, std::deque<TYPE>*>;
     /**
      * @fn  peq()
      * @brief default constructor creating a unnamed peq
@@ -52,6 +55,12 @@ template <class TYPE> struct peq : public sc_core::sc_object {
     explicit peq(const char* name)
     : sc_core::sc_object(name) {}
     /**
+     * @fn  ~peq()
+     * @brief destructor
+     *
+     */
+    ~peq();
+    /**
      * @fn void notify(const TYPE&, const sc_core::sc_time&)
      * @brief non-blocking push.
      *
@@ -61,7 +70,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
      * @param t the delay for calling get
      */
     void notify(const TYPE& entry, const sc_core::sc_time& t) {
-        m_scheduled_events.insert(pair_type(t + sc_core::sc_time_stamp(), entry));
+        insert_entry(entry, t + sc_core::sc_time_stamp());
         m_event.notify(t);
     }
     /**
@@ -73,7 +82,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
      * @param entry the value to insert
      */
     void notify(const TYPE& entry) {
-        m_scheduled_events.insert(pair_type(sc_core::sc_time_stamp(), entry));
+        insert_entry(entry, sc_core::sc_time_stamp());
         m_event.notify(); // immediate notification
     }
     /**
@@ -90,9 +99,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
             m_event.notify(m_scheduled_events.begin()->first - now);
             return boost::none;
         } else {
-            auto entry = m_scheduled_events.begin()->second;
-            m_scheduled_events.erase(m_scheduled_events.begin());
-            return entry;
+            return get_entry();
         }
     }
     /**
@@ -105,9 +112,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
         while(!has_next()) {
             sc_core::wait(event());
         }
-        auto entry = m_scheduled_events.begin()->second;
-        m_scheduled_events.erase(m_scheduled_events.begin());
-        return entry;
+        return get_entry();
     }
     /**
      * @fn sc_core::sc_event& event()
@@ -144,9 +149,47 @@ template <class TYPE> struct peq : public sc_core::sc_object {
     }
 
 private:
-    std::multimap<const sc_core::sc_time, TYPE> m_scheduled_events;
+    map_type m_scheduled_events;
+    std::deque<std::deque<TYPE>*> free_pool;
     sc_core::sc_event m_event;
-};
-} // namespace scc
 
+    //inline
+    void insert_entry(const TYPE &entry, sc_core::sc_time abs_time) {
+        auto it = m_scheduled_events.find(abs_time);
+        if (it == m_scheduled_events.end()) {
+            if (free_pool.size()) {
+                auto r = m_scheduled_events.insert(std::make_pair(abs_time, free_pool.front()));
+                free_pool.pop_front();
+                r.first->second->push_back(entry);
+            } else {
+                auto r = m_scheduled_events.insert(std::make_pair(abs_time, new std::deque<TYPE>()));
+                r.first->second->push_back(entry);
+            }
+        } else
+            it->second->push_back(entry);
+    }
+
+    //inline
+    TYPE get_entry() {
+        auto entry = m_scheduled_events.begin()->second;
+        auto ret = entry->front();
+        entry->pop_front();
+        if (!entry->size()) {
+            free_pool.push_back(entry);
+            m_scheduled_events.erase(m_scheduled_events.begin());
+        }
+        return ret;
+    }
+};
+
+template<class TYPE>
+inline peq<TYPE>::~peq() {
+    while(m_scheduled_events.size()) {
+        free_pool.push_back(m_scheduled_events.begin()->second);
+        m_scheduled_events.erase(m_scheduled_events.begin());
+    }
+    for(auto* p:free_pool) delete p;
+}
+
+} // namespace scc
 #endif /* _SCC_PEQ_H_ */
