@@ -18,7 +18,6 @@
 #ifndef SCC_FST_TRACE_H
 #define SCC_FST_TRACE_H
 
-#include "fstapi.h"
 #include <systemc>
 #include <sysc/tracing/sc_trace.h>
 #include <functional>

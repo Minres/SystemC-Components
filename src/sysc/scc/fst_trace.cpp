@@ -15,6 +15,7 @@
  *******************************************************************************/
 
 #include "fst_trace.h"
+#include "fstapi.h"
 #include "utilities.h"
 #include <util/ities.h>
 #include <cstdlib>
