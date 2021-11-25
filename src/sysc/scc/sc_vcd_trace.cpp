@@ -126,7 +126,7 @@ public:
 
     const std::string name;
     const std::string vcd_name;
-    vcd_trace_file::vcd_enum vcd_var_type;
+    sc_vcd_trace_file::vcd_enum vcd_var_type;
     int bit_width;
 };
 
@@ -134,7 +134,7 @@ public:
 vcd_trace::vcd_trace(const std::string& name_, const std::string& vcd_name_)
 : name(name_)
 , vcd_name(vcd_name_)
-, vcd_var_type(vcd_trace_file::VCD_WIRE)
+, vcd_var_type(sc_vcd_trace_file::VCD_WIRE)
 , bit_width(0)
 {
     /* Intentionally blank */
@@ -251,12 +251,12 @@ public:
     vcd_T_trace( const T& object_,
             const std::string& name_,
             const std::string& vcd_name_,
-            vcd_trace_file::vcd_enum type_ )
+            sc_vcd_trace_file::vcd_enum type_ )
     : vcd_trace( name_, vcd_name_ ),
       object( object_ ),
       old_value( object_ )
     {
-        sc_assert( type_ < vcd_trace_file::VCD_LAST );
+        sc_assert( type_ < sc_vcd_trace_file::VCD_LAST );
         vcd_var_type = type_;
     }
 
@@ -283,7 +283,7 @@ typedef vcd_T_trace<sc_dt::sc_lv_base> vcd_sc_lv_trace;
 
 // Trace sc_dt::sc_bv_base (sc_dt::sc_bv)
 void
-vcd_trace_file::trace(
+sc_vcd_trace_file::trace(
         const sc_dt::sc_bv_base& object, const std::string& name)
 {
     traceT(object,name);
@@ -291,7 +291,7 @@ vcd_trace_file::trace(
 
 // Trace sc_dt::sc_lv_base (sc_dt::sc_lv)
 void
-vcd_trace_file::trace(
+sc_vcd_trace_file::trace(
         const sc_dt::sc_lv_base& object, const std::string& name)
 {
     traceT(object,name);
@@ -318,7 +318,7 @@ vcd_sc_event_trace::vcd_sc_event_trace(const sc_dt::uint64& trigger_stamp_,
 : vcd_trace(name_, vcd_name_)
 , trigger_stamp(trigger_stamp_), old_trigger_stamp(trigger_stamp_)
 {
-    vcd_var_type = vcd_trace_file::VCD_EVENT;
+    vcd_var_type = sc_vcd_trace_file::VCD_EVENT;
     bit_width = 1;
 }
 
@@ -714,7 +714,7 @@ vcd_sc_fxval_trace::vcd_sc_fxval_trace( const sc_dt::sc_fxval& object_,
 : vcd_trace( name_, vcd_name_ ),
   object( object_ ), old_value( object_ )
 {
-    vcd_var_type = vcd_trace_file::VCD_REAL;
+    vcd_var_type = sc_vcd_trace_file::VCD_REAL;
     bit_width = 1;
 }
 
@@ -757,7 +757,7 @@ vcd_sc_fxval_fast_trace::vcd_sc_fxval_fast_trace(
 : vcd_trace( name_, vcd_name_ ),
   object( object_ ), old_value( object_ )
 {
-    vcd_var_type = vcd_trace_file::VCD_REAL;
+    vcd_var_type = sc_vcd_trace_file::VCD_REAL;
     bit_width = 1;
 }
 
@@ -1475,7 +1475,7 @@ vcd_sc_time_trace::vcd_sc_time_trace( const sc_time& object_,
 : vcd_uint64_trace( (shadow_object = object_.value()), name_, vcd_name_, 64 )
 , object(object_)
 {
-    vcd_var_type = vcd_trace_file::VCD_TIME;
+    vcd_var_type = sc_vcd_trace_file::VCD_TIME;
 }
 
 bool vcd_sc_time_trace::changed()
@@ -1564,7 +1564,7 @@ vcd_float_trace::vcd_float_trace(const float& object_,
         const std::string& vcd_name_)
 : vcd_trace(name_, vcd_name_), object(object_)
 {
-    vcd_var_type = vcd_trace_file::VCD_REAL;
+    vcd_var_type = sc_vcd_trace_file::VCD_REAL;
     bit_width = 1;
     old_value = object;
 }
@@ -1600,7 +1600,7 @@ vcd_double_trace::vcd_double_trace(const double& object_,
         const std::string& vcd_name_)
 : vcd_trace(name_, vcd_name_), object(object_), old_value(object_)
 {
-    vcd_var_type = vcd_trace_file::VCD_REAL;
+    vcd_var_type = sc_vcd_trace_file::VCD_REAL;
     bit_width = 1;
 }
 
@@ -1781,10 +1781,10 @@ void vcd_print_scopes(FILE *fp, std::vector<vcd_trace*>& traces) {
 
 
 /*****************************************************************************
-           vcd_trace_file functions
+           sc_vcd_trace_file functions
  *****************************************************************************/
 
-vcd_trace_file::vcd_trace_file(const char *name, std::function<bool()>& enable)
+sc_vcd_trace_file::sc_vcd_trace_file(const char *name, std::function<bool()>& enable)
 : sc_trace_file_base( name, "vcd" )
 , vcd_name_index(0)
 , previous_time_units_low(0)
@@ -1831,7 +1831,7 @@ std::string fs_unit_to_str(sc_core::sc_trace_file_base::unit_type tu)
 }
 
 void
-vcd_trace_file::do_initialize()
+sc_vcd_trace_file::do_initialize()
 {
     //date:
     std::fprintf(fp, "$date\n     %s\n$end\n\n", localtime_string().c_str() );
@@ -1869,9 +1869,9 @@ vcd_trace_file::do_initialize()
 }
 
 #if WITH_SIM_PHASE_CALLBACKS
-void vcd_trace_file::trace( sc_trace_file* ) const {
+void sc_vcd_trace_file::trace( sc_trace_file* ) const {
     SC_REPORT_ERROR( sc_core::SC_ID_INTERNAL_ERROR_
-            , "invalid call to vcd_trace_file::trace(sc_trace_file*)" );
+            , "invalid call to sc_vcd_trace_file::trace(sc_trace_file*)" );
 }
 #endif // SC_TRACING_PHASE_CALLBACKS_
 
@@ -1879,7 +1879,7 @@ void vcd_trace_file::trace( sc_trace_file* ) const {
 
 #define DEFN_TRACE_METHOD(tp)                                                 \
 		void                                                                          \
-		vcd_trace_file::trace(const tp& object_, const std::string& name_)            \
+		sc_vcd_trace_file::trace(const tp& object_, const std::string& name_)            \
 		{                                                                             \
 	if( add_trace_check(name_) )                                              \
 	traces.push_back( new vcd_ ## tp ## _trace( extract_ref(object_),     \
@@ -1897,7 +1897,7 @@ DEFN_TRACE_METHOD(double)
 #undef DEFN_TRACE_METHOD
 #define DEFN_TRACE_METHOD(tp)                                                 \
 		void                                                                          \
-		vcd_trace_file::trace(const sc_dt::tp& object_, const std::string& name_)     \
+		sc_vcd_trace_file::trace(const sc_dt::tp& object_, const std::string& name_)     \
 		{                                                                             \
 	if( add_trace_check(name_) )                                              \
 	traces.push_back( new vcd_ ## tp ## _trace( object_,                  \
@@ -1923,7 +1923,7 @@ DEFN_TRACE_METHOD(sc_fxnum_fast)
 
 #define DEFN_TRACE_METHOD_SIGNED(tp)                                          \
 		void                                                                          \
-		vcd_trace_file::trace( const tp&          object_,                            \
+		sc_vcd_trace_file::trace( const tp&          object_,                            \
 				const std::string& name_,                              \
 				int                width_ )                            \
 				{                                                                             \
@@ -1936,7 +1936,7 @@ DEFN_TRACE_METHOD(sc_fxnum_fast)
 
 #define DEFN_TRACE_METHOD_UNSIGNED(tp)                                        \
 		void                                                                          \
-		vcd_trace_file::trace( const unsigned tp& object_,                            \
+		sc_vcd_trace_file::trace( const unsigned tp& object_,                            \
 				const std::string& name_,                              \
 				int                width_ )                            \
 				{                                                                             \
@@ -1962,7 +1962,7 @@ DEFN_TRACE_METHOD_UNSIGNED(long)
 
 #define DEFN_TRACE_METHOD_LONG_LONG(tp)                                       \
 		void                                                                          \
-		vcd_trace_file::trace( const sc_dt::tp&   object_,                            \
+		sc_vcd_trace_file::trace( const sc_dt::tp&   object_,                            \
 				const std::string& name_,                              \
 				int                width_ )                            \
 				{                                                                             \
@@ -1979,7 +1979,7 @@ DEFN_TRACE_METHOD_LONG_LONG(uint64)
 #undef DEFN_TRACE_METHOD_LONG_LONG
 
 void
-vcd_trace_file::trace( const unsigned&    object_,
+sc_vcd_trace_file::trace( const unsigned&    object_,
         const std::string& name_,
         const char**       enum_literals_ )
 {
@@ -1992,7 +1992,7 @@ vcd_trace_file::trace( const unsigned&    object_,
 
 
 void
-vcd_trace_file::write_comment(const std::string& comment)
+sc_vcd_trace_file::write_comment(const std::string& comment)
 {
     if(!fp) open_fp();
     //no newline in comments allowed, as some viewers may crash
@@ -2002,7 +2002,7 @@ vcd_trace_file::write_comment(const std::string& comment)
 }
 
 void
-vcd_trace_file::cycle(bool this_is_a_delta_cycle)
+sc_vcd_trace_file::cycle(bool this_is_a_delta_cycle)
 {
     // Trace delta cycles only when enabled
     if (!delta_cycles() && this_is_a_delta_cycle) return;
@@ -2078,7 +2078,7 @@ vcd_trace_file::cycle(bool this_is_a_delta_cycle)
     if(time_printed) std::fputc('\n', fp);
 }
 
-bool vcd_trace_file::get_time_stamp(sc_trace_file_base::unit_type &now_units_high,
+bool sc_vcd_trace_file::get_time_stamp(sc_trace_file_base::unit_type &now_units_high,
         sc_trace_file_base::unit_type &now_units_low) const
 {
     timestamp_in_trace_units(now_units_high, now_units_low);
@@ -2088,7 +2088,7 @@ bool vcd_trace_file::get_time_stamp(sc_trace_file_base::unit_type &now_units_hig
 
 }
 
-void vcd_trace_file::print_time_stamp(sc_trace_file_base::unit_type now_units_high,
+void sc_vcd_trace_file::print_time_stamp(sc_trace_file_base::unit_type now_units_high,
         sc_trace_file_base::unit_type now_units_low) const
 {
 
@@ -2105,7 +2105,7 @@ void vcd_trace_file::print_time_stamp(sc_trace_file_base::unit_type now_units_hi
 
 // Create a VCD name for a variable
 std::string
-vcd_trace_file::obtain_name()
+sc_vcd_trace_file::obtain_name()
 {
     const char first_type_used = 'a';
     const int used_types_count = 'z' - 'a' + 1;
@@ -2137,7 +2137,7 @@ vcd_trace_file::obtain_name()
     return std::string(buf);
 }
 
-vcd_trace_file::~vcd_trace_file()
+sc_vcd_trace_file::~sc_vcd_trace_file()
 {
     sc_trace_file_base::unit_type now_units_high, now_units_low;
     if (is_initialized() && get_time_stamp(now_units_high,now_units_low)) {
@@ -2220,13 +2220,13 @@ remove_vcd_name_problems(vcd_trace const* vcd, std::string& name)
 sc_trace_file*
 scc_create_vcd_trace_file(const char * name, std::function<bool()> enable)
 {
-    return  new vcd_trace_file(name, enable);
+    return  new sc_vcd_trace_file(name, enable);
 }
 
 void
 scc_close_vcd_trace_file( sc_trace_file* tf )
 {
-    vcd_trace_file* vcd_tf = static_cast<vcd_trace_file*>(tf);
+    sc_vcd_trace_file* vcd_tf = static_cast<sc_vcd_trace_file*>(tf);
     delete vcd_tf;
 }
 

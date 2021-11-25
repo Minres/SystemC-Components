@@ -46,8 +46,8 @@
 
  *****************************************************************************/
 
-#ifndef SCC_VCD_TRACE_H
-#define SCC_VCD_TRACE_H
+#ifndef SCC_SC_VCD_TRACE_H
+#define SCC_SC_VCD_TRACE_H
 
 #include <systemc>
 #include <sysc/tracing/sc_trace_file_base.h>
@@ -64,12 +64,12 @@ template<class T> class vcd_T_trace;
 
 
 // ----------------------------------------------------------------------------
-//  CLASS : vcd_trace_file
+//  CLASS : sc_vcd_trace_file
 //
 //  ...
 // ----------------------------------------------------------------------------
 
-class vcd_trace_file
+class sc_vcd_trace_file
   : public sc_core::sc_trace_file_base
 {
 public:
@@ -78,10 +78,10 @@ public:
 
     // Create a Vcd trace file.
     // `Name' forms the base of the name to which `.vcd' is added.
-    vcd_trace_file(const char *name, std::function<bool()>& enable);
+    sc_vcd_trace_file(const char *name, std::function<bool()>& enable);
 
     // Flush results and close file.
-    virtual ~vcd_trace_file();
+    virtual ~sc_vcd_trace_file();
 
 protected:
 
@@ -96,11 +96,11 @@ protected:
      void trace(const bool& object, const std::string& name);
 
     // Trace a sc_bit object (single bit)
-    virtual void trace( const sc_dt::sc_bit& object,
+    virtual void trace( const ::sc_dt::sc_bit& object,
 	    const std::string& name);
 
     // Trace a sc_logic object (single bit)
-     void trace(const sc_dt::sc_logic& object, const std::string& name);
+     void trace(const ::sc_dt::sc_logic& object, const std::string& name);
 
     // Trace an unsigned char with the given width
      void trace(const unsigned char& object, const std::string& name,
@@ -131,11 +131,11 @@ protected:
      void trace(const long& object, const std::string& name, int width);
 
     // Trace an int64 with a given width
-     void trace(const sc_dt::int64& object, const std::string& name,
+     void trace(const ::sc_dt::int64& object, const std::string& name,
          int width);
 
     // Trace a uint64 with a given width
-     void trace(const sc_dt::uint64& object, const std::string& name,
+     void trace(const ::sc_dt::uint64& object, const std::string& name,
          int width);
 
     // Trace a float
@@ -145,32 +145,32 @@ protected:
      void trace(const double& object, const std::string& name);
 
     // Trace sc_dt::sc_uint_base
-     void trace (const sc_dt::sc_uint_base& object,
+     void trace (const ::sc_dt::sc_uint_base& object,
 	 	const std::string& name);
 
     // Trace sc_dt::sc_int_base
-     void trace (const sc_dt::sc_int_base& object,
+     void trace (const ::sc_dt::sc_int_base& object,
 	 	const std::string& name);
 
     // Trace sc_dt::sc_unsigned
-     void trace (const sc_dt::sc_unsigned& object,
+     void trace (const ::sc_dt::sc_unsigned& object,
 	 	const std::string& name);
 
     // Trace sc_dt::sc_signed
-     void trace (const sc_dt::sc_signed& object, const std::string& name);
+     void trace (const ::sc_dt::sc_signed& object, const std::string& name);
 
     // Trace sc_dt::sc_fxval
-    void trace( const sc_dt::sc_fxval& object, const std::string& name );
+    void trace( const ::sc_dt::sc_fxval& object, const std::string& name );
 
     // Trace sc_dt::sc_fxval_fast
-    void trace( const sc_dt::sc_fxval_fast& object,
+    void trace( const ::sc_dt::sc_fxval_fast& object,
 		const std::string& name );
 
     // Trace sc_dt::sc_fxnum
-    void trace( const sc_dt::sc_fxnum& object, const std::string& name );
+    void trace( const ::sc_dt::sc_fxnum& object, const std::string& name );
 
     // Trace sc_dt::sc_fxnum_fast
-    void trace( const sc_dt::sc_fxnum_fast& object,
+    void trace( const ::sc_dt::sc_fxnum_fast& object,
 		const std::string& name );
 
     template<class T>
@@ -183,11 +183,11 @@ protected:
     }
 
    // Trace sc_dt::sc_bv_base (sc_dt::sc_bv)
-    virtual void trace(const sc_dt::sc_bv_base& object,
+    virtual void trace(const ::sc_dt::sc_bv_base& object,
 		const std::string& name);
 
     // Trace sc_dt::sc_lv_base (sc_dt::sc_lv)
-    virtual void trace(const sc_dt::sc_lv_base& object,
+    virtual void trace(const ::sc_dt::sc_lv_base& object,
 	    const std::string& name);
 
     // Trace an enumerated object - where possible output the enumeration literals
@@ -206,7 +206,7 @@ private:
 
     template<typename T> const T& extract_ref(const T& object) const
       { return object; }
-    const sc_dt::uint64& extract_ref(const sc_core::sc_event& object) const
+    const ::sc_dt::uint64& extract_ref(const sc_core::sc_event& object) const
       { return event_trigger_stamp(object); }
 
 #if WITH_SIM_PHASE_CALLBACKS
@@ -242,5 +242,5 @@ void scc_close_vcd_trace_file( sc_core::sc_trace_file* tf );
 
 } // namespace sc_core
 
-#endif // SCC_VCD_TRACE_H
+#endif // SCC_SC_VCD_TRACE_H
 // Taf!
