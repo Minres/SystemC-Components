@@ -110,9 +110,9 @@ private:
 };
 
 // ----------------------------------------------------------------------------
-sc_core::sc_trace_file *scc_create_fst_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());
+sc_core::sc_trace_file *create_fst_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());
 
-void scc_close_fst_trace_file( sc_core::sc_trace_file* tf );
+void close_fst_trace_file( sc_core::sc_trace_file* tf );
 
 } // namesoace scc
 

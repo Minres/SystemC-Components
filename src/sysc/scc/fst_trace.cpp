@@ -378,15 +378,15 @@ void fst_trace_file::cycle(bool delta_cycle) {
     }
 }
 
-sc_core::sc_trace_file* scc_create_fst_trace_file(const char *name, std::function<bool()> enable) {
+void fst_trace_file::set_time_unit(double v, sc_core::sc_time_unit tu) {
+}
+
+sc_core::sc_trace_file* create_fst_trace_file(const char *name, std::function<bool()> enable) {
     return  new fst_trace_file(name, enable);
 }
 
-void scc_close_fst_trace_file(sc_core::sc_trace_file *tf) {
+void close_fst_trace_file(sc_core::sc_trace_file *tf) {
     delete static_cast<fst_trace_file*>(tf);
-}
-
-void fst_trace_file::set_time_unit(double v, sc_core::sc_time_unit tu) {
 }
 
 }
