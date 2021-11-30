@@ -14,7 +14,6 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "vcd_trace.h"
 #include "utilities.h"
 #include <util/ities.h>
 #include <cstdlib>
@@ -23,7 +22,8 @@
 #include <vector>
 #include <deque>
 #include <unordered_map>
-
+#include <fmt/format.h>
+#include <scc/mt_vcd_trace.h>
 #include "sysc/tracing/sc_tracing_ids.h"
 #include <sysc/kernel/sc_simcontext.h>
 #include <sysc/kernel/sc_ver.h>
@@ -44,36 +44,25 @@
 #include <sstream>
 #include <stdexcept>
 #include <cmath>
+#include <cstdio>
+
+#define FPRINT(FP, FMTSTR)       {auto buf = fmt::format(FMTSTR);std::fwrite(buf.c_str(), 1, buf.size(), FP);}
+#define FPRINTF(FP, FMTSTR, ...) {auto buf = fmt::format(FMTSTR, __VA_ARGS__);std::fwrite(buf.c_str(), 1, buf.size(), FP);}
 
 namespace scc {
 namespace {
 thread_local char buf[96];
-inline void vcdEmitValueChange(std::ostream& os, std::string const& handle, unsigned bits, const char *val) {
-    if(bits==1) {
-        os<<*val<<handle<<'\n';
-    } else {
-        auto start=val;
-        for(auto i=1U; *start=='0' && i<bits; ++start, ++i);
-        os<<'b'<<start<<' '<<handle<<'\n';
-    }
+inline void vcdEmitValueChange(FILE* os, std::string const& handle, unsigned bits, const char *val) {
+    if(bits==1) FPRINTF(os, "{}{}\n", *val, handle)
+    else FPRINTF(os, "b{} {}\n", handle, val)
 }
 
-inline void vcdEmitValueChange32(std::ostream& os, std::string const& handle, unsigned bits, uint32_t val){
-    char *s = buf;
-    for (auto i = 0U; i < bits; ++i){
-        *s++ = '0' + ((val >> (bits - i - 1)) & 1);
-    }
-    *s=0;
-    vcdEmitValueChange(os, handle, bits, buf);
+inline void vcdEmitValueChange32(FILE* os, std::string const& handle, unsigned bits, uint32_t val){
+    FPRINTF(os, "b{:b} {}\n", val&((1ul<<bits)-1), handle);
 }
 
-inline void vcdEmitValueChange64(std::ostream& os, std::string const& handle, unsigned bits, uint64_t val){
-    char *s = buf;
-    for (auto i = 0U; i < bits; ++i){
-        *s++ = '0' + ((val >> (bits - i - 1)) & 1);
-    }
-    *s=0;
-    vcdEmitValueChange(os, handle, bits, buf);
+inline void vcdEmitValueChange64(FILE* os, std::string const& handle, unsigned bits, uint64_t val){
+    FPRINTF(os, "b{:b} {}\n", val&((1ull<<bits)-1), handle);
 }
 
 inline size_t get_buffer_size(int length){
@@ -87,9 +76,9 @@ struct vcd_trace {
 
     vcd_trace(std::string const& nm): name{nm}{}
 
-    virtual void record(std::ostream& os) = 0;
+    virtual void record(FILE* os) = 0;
 
-    virtual void update_and_record(std::ostream& os) = 0;
+    virtual void update_and_record(FILE* os) = 0;
 
     virtual uintptr_t get_hash() = 0;
 
@@ -116,9 +105,9 @@ struct vcd_trace_t : public vcd_trace {
 
     inline void update() { old_val=act_val; }
 
-    void record(std::ostream& os) override;
+    void record(FILE* os) override;
 
-    void update_and_record(std::ostream& os) override {update(); record(os);};
+    void update_and_record(FILE* os) override {update(); record(os);};
 
     unsigned get_bits() { return sizeof(OT)*8;}
     OT old_val;
@@ -126,7 +115,7 @@ struct vcd_trace_t : public vcd_trace {
 };
 
 template<typename T, typename OT>
-inline void scc::vcd_trace_t<T, OT>::record(std::ostream& os) {
+inline void scc::vcd_trace_t<T, OT>::record(FILE* os) {
     if(sizeof(T)<=4)
         vcdEmitValueChange32(os, fst_hndl, bits, old_val);
     else
@@ -136,7 +125,7 @@ inline void scc::vcd_trace_t<T, OT>::record(std::ostream& os) {
 /*
  * bool
  */
-template<> void vcd_trace_t<bool, bool>::record(std::ostream& os){
+template<> void vcd_trace_t<bool, bool>::record(FILE* os){
     vcdEmitValueChange(os, fst_hndl, 1, old_val ? "1" : "0");
 }
 
@@ -144,7 +133,7 @@ template<> unsigned vcd_trace_t<bool, bool>::get_bits(){ return 1; }
 /*
  * sc_dt::sc_bit
  */
-template<> void vcd_trace_t<sc_dt::sc_bit, sc_dt::sc_bit>::record(std::ostream& os){
+template<> void vcd_trace_t<sc_dt::sc_bit, sc_dt::sc_bit>::record(FILE* os){
     vcdEmitValueChange(os, fst_hndl, 1, old_val ? "1" : "0");
 }
 
@@ -152,7 +141,7 @@ template<> unsigned vcd_trace_t<sc_dt::sc_bit, sc_dt::sc_bit>::get_bits(){ retur
 /*
  * sc_dt::sc_logic
  */
-template<> void vcd_trace_t<sc_dt::sc_logic, sc_dt::sc_logic>::record(std::ostream& os){
+template<> void vcd_trace_t<sc_dt::sc_logic, sc_dt::sc_logic>::record(FILE* os){
     char buf[2] = {0, 0};
     buf[0]=old_val.to_char();
     vcdEmitValueChange(os, fst_hndl, 1, buf);
@@ -162,19 +151,19 @@ template<> unsigned vcd_trace_t<sc_dt::sc_logic, sc_dt::sc_logic>::get_bits(){ r
 /*
  * float
  */
-template<> void vcd_trace_t<float, float>::record(std::ostream& os){
+template<> void vcd_trace_t<float, float>::record(FILE* os){
     vcdEmitValueChange32(os, fst_hndl, 32, *reinterpret_cast<uint32_t*>(&old_val));
 }
 /*
  * double
  */
-template<> void vcd_trace_t<double, double>::record(std::ostream& os){
+template<> void vcd_trace_t<double, double>::record(FILE* os){
     vcdEmitValueChange32(os, fst_hndl, 64, *reinterpret_cast<uint64_t*>(&old_val));
 }
 /*
  * sc_dt::sc_int_base
  */
-template<> void vcd_trace_t<sc_dt::sc_int_base, sc_dt::sc_int_base>::record(std::ostream& os){
+template<> void vcd_trace_t<sc_dt::sc_int_base, sc_dt::sc_int_base>::record(FILE* os){
     static std::vector<char> rawdata(get_buffer_size(old_val.length()));
     char *rawdata_ptr  = &rawdata[0];
     for (int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex) {
@@ -187,7 +176,7 @@ template<> unsigned vcd_trace_t<sc_dt::sc_int_base, sc_dt::sc_int_base>::get_bit
 /*
  * sc_dt::sc_uint_base
  */
-template<> void vcd_trace_t<sc_dt::sc_uint_base, sc_dt::sc_uint_base>::record(std::ostream& os){
+template<> void vcd_trace_t<sc_dt::sc_uint_base, sc_dt::sc_uint_base>::record(FILE* os){
     static std::vector<char> rawdata(get_buffer_size(old_val.length()));
     char *rawdata_ptr  = &rawdata[0];
     for (int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex) {
@@ -200,7 +189,7 @@ template<> unsigned vcd_trace_t<sc_dt::sc_uint_base, sc_dt::sc_uint_base>::get_b
 /*
  * sc_dt::sc_signed
  */
-template<> void vcd_trace_t<sc_dt::sc_signed, sc_dt::sc_signed>::record(std::ostream& os){
+template<> void vcd_trace_t<sc_dt::sc_signed, sc_dt::sc_signed>::record(FILE* os){
     static std::vector<char> rawdata(get_buffer_size(old_val.length()));
     char *rawdata_ptr  = &rawdata[0];
     for (int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex) {
@@ -213,7 +202,7 @@ template<> unsigned vcd_trace_t<sc_dt::sc_signed, sc_dt::sc_signed>::get_bits(){
 /*
  * sc_dt::sc_unsigned
  */
-template<> void vcd_trace_t<sc_dt::sc_unsigned, sc_dt::sc_unsigned>::record(std::ostream& os){
+template<> void vcd_trace_t<sc_dt::sc_unsigned, sc_dt::sc_unsigned>::record(FILE* os){
     static std::vector<char> rawdata(get_buffer_size(old_val.length()));
     char *rawdata_ptr  = &rawdata[0];
     for (int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex) {
@@ -226,7 +215,7 @@ template<> unsigned vcd_trace_t<sc_dt::sc_unsigned, sc_dt::sc_unsigned>::get_bit
 /*
  * sc_dt::sc_fxval
  */
-template<> void vcd_trace_t<sc_dt::sc_fxval, sc_dt::sc_fxval>::record(std::ostream& os){
+template<> void vcd_trace_t<sc_dt::sc_fxval, sc_dt::sc_fxval>::record(FILE* os){
     auto val = old_val.to_double();
     vcdEmitValueChange64(os, fst_hndl, 64, *reinterpret_cast<uint64_t*>(&val));
 }
@@ -235,7 +224,7 @@ template<> unsigned vcd_trace_t<sc_dt::sc_fxval, sc_dt::sc_fxval>::get_bits(){ r
 /*
  * sc_dt::sc_fxval_fast
  */
-template<> void vcd_trace_t<sc_dt::sc_fxval_fast, sc_dt::sc_fxval_fast>::record(std::ostream& os){
+template<> void vcd_trace_t<sc_dt::sc_fxval_fast, sc_dt::sc_fxval_fast>::record(FILE* os){
     auto val = old_val.to_double();
     vcdEmitValueChange64(os, fst_hndl, 64, *reinterpret_cast<uint64_t*>(&val));
 }
@@ -244,19 +233,19 @@ template<> unsigned vcd_trace_t<sc_dt::sc_fxval_fast, sc_dt::sc_fxval_fast>::get
 /*
  * sc_dt::sc_fxnum
  */
-template<> void vcd_trace_t<sc_dt::sc_fxnum, double>::record(std::ostream& os){
+template<> void vcd_trace_t<sc_dt::sc_fxnum, double>::record(FILE* os){
     vcdEmitValueChange32(os, fst_hndl, 64, *reinterpret_cast<uint64_t*>(&old_val));
 }
 /*
  * sc_dt::sc_fxnum_fast
  */
-template<> void vcd_trace_t<sc_dt::sc_fxnum_fast, double>::record(std::ostream& os){
+template<> void vcd_trace_t<sc_dt::sc_fxnum_fast, double>::record(FILE* os){
     vcdEmitValueChange32(os, fst_hndl, 64, *reinterpret_cast<uint64_t*>(&old_val));
 }
 /*
  * sc_dt::sc_bv_base
  */
-template<> void vcd_trace_t<sc_dt::sc_bv_base, sc_dt::sc_bv_base>::record(std::ostream& os){
+template<> void vcd_trace_t<sc_dt::sc_bv_base, sc_dt::sc_bv_base>::record(FILE* os){
     auto str = old_val.to_string();
     vcdEmitValueChange(os, fst_hndl, bits, str.c_str());
 }
@@ -265,7 +254,7 @@ template<> unsigned vcd_trace_t<sc_dt::sc_bv_base, sc_dt::sc_bv_base>::get_bits(
 /*
  * sc_dt::sc_lv_base
  */
-template<> void vcd_trace_t<sc_dt::sc_lv_base, sc_dt::sc_lv_base>::record(std::ostream& os){
+template<> void vcd_trace_t<sc_dt::sc_lv_base, sc_dt::sc_lv_base>::record(FILE* os){
     auto str = old_val.to_string();
     vcdEmitValueChange(os, fst_hndl, bits, str.c_str());
 }
@@ -280,13 +269,13 @@ struct vcd_scope_stack {
         add_trace_rec(std::begin(hier), std::end(hier), trace);
     }
 
-    void print(std::ostream& os, const char *scope_name = "SystemC"){
-        os<<"$scope module "<<scope_name<<" $end\n";
+    void print(FILE* os, const char *scope_name = "SystemC"){
+        FPRINTF(os, "$scope module {} $end\n", scope_name);
         for (auto& e : m_traces)
             print_variable_declaration_line(os, e.first.c_str(), e.second);
         for (auto& e : m_scopes)
             e.second->print(os,e.first.c_str());
-        os<<"$upscope $end\n";
+        FPRINT(os, "$upscope $end\n");
     }
 
     ~vcd_scope_stack(){
@@ -304,7 +293,7 @@ private:
             sc->second->add_trace_rec(++beg, end, trace);
         }
     }
-    void print_variable_declaration_line(std::ostream& os, const char* scoped_name, vcd_trace* trc){
+    void print_variable_declaration_line(FILE* os, const char* scoped_name, vcd_trace* trc){
         char buf[2000];
         switch(trc->bits){
         case 0:{
@@ -314,10 +303,10 @@ private:
             return;
         }
         case 1:
-            os<<"$var wire "<<trc->bits<<" "<<trc->fst_hndl<<"  "<<scoped_name<<" $end\n";
+            FPRINTF(os, "$var wire {} {}  {} $end\n", trc->bits, trc->fst_hndl, scoped_name);
             break;
         default:
-            os<<"$var wire "<<trc->bits<<" "<<trc->fst_hndl<<" "<<scoped_name<<" ["<<trc->bits-1<<":0] $end\n";
+            FPRINTF(os, "$var wire {} {} {} [{}:0] $end\n", trc->bits, trc->fst_hndl, scoped_name, trc->bits-1);
         }
     }
 
@@ -327,13 +316,11 @@ private:
 /*******************************************************************************************************
  *
  *******************************************************************************************************/
-vcd_trace_file::vcd_trace_file(const char *name, std::function<bool()> &enable):name(name)
+mt_vcd_trace_file::mt_vcd_trace_file(const char *name, std::function<bool()> &enable)
+:name(name)
 {
-    std::stringstream ss;
-    ss<<name<<".vcd";
-    vcd_out.open(ss.str(), std::ios_base::out|std::ios_base::binary);
-    if(!vcd_out.is_open())
-        throw std::runtime_error("Could not open file");
+    vcd_out = fopen(fmt::format("{}.vcd", name).c_str(), "w");
+
 #if defined(WITH_SIM_PHASE_CALLBACKS)
     // remove from hierarchy
     sc_object::detach();
@@ -344,9 +331,9 @@ vcd_trace_file::vcd_trace_file(const char *name, std::function<bool()> &enable):
 #endif
 }
 
-vcd_trace_file::~vcd_trace_file() {
-    if (vcd_out.is_open()){
-        vcd_out.close();
+mt_vcd_trace_file::~mt_vcd_trace_file() {
+    if (vcd_out){
+        fclose(vcd_out);
     }
 }
 
@@ -358,16 +345,16 @@ bool changed(vcd_trace* trace) {
     } else
         return false;
 }
-#define DECL_TRACE_METHOD_A(tp) void vcd_trace_file::trace(const tp& object, const std::string& name)\
+#define DECL_TRACE_METHOD_A(tp) void mt_vcd_trace_file::trace(const tp& object, const std::string& name)\
         {all_traces.emplace_back(&changed<tp>, new vcd_trace_t<tp>(object, name));}
-#define DECL_TRACE_METHOD_B(tp) void vcd_trace_file::trace(const tp& object, const std::string& name, int width)\
+#define DECL_TRACE_METHOD_B(tp) void mt_vcd_trace_file::trace(const tp& object, const std::string& name, int width)\
         {all_traces.emplace_back(&changed<tp>, new vcd_trace_t<tp>(object, name));}
-#define DECL_TRACE_METHOD_C(tp, tpo) void vcd_trace_file::trace(const tp& object, const std::string& name)\
+#define DECL_TRACE_METHOD_C(tp, tpo) void mt_vcd_trace_file::trace(const tp& object, const std::string& name)\
         {all_traces.emplace_back(&changed<tp, tpo>, new vcd_trace_t<tp, tpo>(object, name));}
 
 #if (SYSTEMC_VERSION >= 20171012)
-void vcd_trace_file::trace(const sc_core::sc_event& object, const std::string& name){}
-void vcd_trace_file::trace(const sc_core::sc_time& object, const std::string& name){}
+void mt_vcd_trace_file::trace(const sc_core::sc_event& object, const std::string& name){}
+void mt_vcd_trace_file::trace(const sc_core::sc_time& object, const std::string& name){}
 #endif
 DECL_TRACE_METHOD_A( bool )
 DECL_TRACE_METHOD_A( sc_dt::sc_bit )
@@ -404,10 +391,10 @@ DECL_TRACE_METHOD_A( sc_dt::sc_lv_base )
 #undef DECL_TRACE_METHOD_A
 #undef DECL_TRACE_METHOD_B
 
-void vcd_trace_file::trace(const unsigned int &object, const std::string &name, const char **enum_literals) {
+void mt_vcd_trace_file::trace(const unsigned int &object, const std::string &name, const char **enum_literals) {
 }
 
-std::string vcd_trace_file::obtain_name() {
+std::string mt_vcd_trace_file::obtain_name() {
     const char first_type_used = 'a';
     const int used_types_count = 'z' - 'a' + 1;
     int result;
@@ -438,11 +425,11 @@ std::string vcd_trace_file::obtain_name() {
     return std::string(buf);
 }
 
-void vcd_trace_file::write_comment(const std::string &comment) {
-    vcd_out<<"$comment\n"<<comment<<"\n$end\n\n";
+void mt_vcd_trace_file::write_comment(const std::string &comment) {
+    FPRINTF(vcd_out, "$comment\n{}\n$end\n\n", comment);
 }
 
-void vcd_trace_file::init() {
+void mt_vcd_trace_file::init() {
     std::sort(std::begin(all_traces), std::end(all_traces), [](trace_entry const& a, trace_entry const& b)->bool {return a.trc->name<b.trc->name;});
     std::unordered_map<uintptr_t, std::string> alias_map;
 
@@ -458,24 +445,25 @@ void vcd_trace_file::init() {
     std::copy_if(std::begin(all_traces), std::end(all_traces),
                 std::back_inserter(active_traces),
                 [](trace_entry const& e) { return !e.trc->is_alias; });
+    changed_traces.reserve(active_traces.size());
     //date:
-    char buf[200];
+    char tbuf[200];
     time_t long_time;
     time(&long_time);
     struct tm* p_tm = localtime(&long_time);
-    strftime(buf, 199, "%b %d, %Y       %H:%M:%S", p_tm);
-    vcd_out<<"$date\n     "<<buf<<"\n$end\n\n";
+    strftime(tbuf, 199, "%b %d, %Y       %H:%M:%S", p_tm);
+    FPRINTF(vcd_out, "$date\n     {}\n$end\n\n", tbuf);
     //version:
-    vcd_out<<"$version\n "<<sc_core::sc_version()<<"\n$end\n\n";
+    FPRINTF(vcd_out, "$version\n {}\n$end\n\n", sc_core::sc_version());
     //timescale:
-    vcd_out<<"$timescale\n     "<<1_ps<<"\n$end\n\n" ;
+    FPRINTF(vcd_out, "$timescale\n     {}\n$end\n\n", (1_ps).to_string());
     std::stringstream ss;
     ss<<"tracing "<<active_traces.size()<<" distinct traces out of "<<all_traces.size()<<" traces";
     write_comment(ss.str());
     scope.print(vcd_out);
 }
 
-std::string vcd_trace_file::prune_name(std::string const& orig_name) {
+std::string mt_vcd_trace_file::prune_name(std::string const& orig_name) {
     static bool warned = false;
     bool braces_removed = false;
     std::string hier_name=orig_name;
@@ -502,35 +490,38 @@ std::string vcd_trace_file::prune_name(std::string const& orig_name) {
     return hier_name;
 }
 
-void vcd_trace_file::cycle(bool delta_cycle) {
+void mt_vcd_trace_file::cycle(bool delta_cycle) {
     if(delta_cycle) return;
     if(!initialized) {
         init();
         initialized=true;
-        vcd_out<<"$enddefinitions  $end\n\n$dumpvars\n";
+        FPRINT(vcd_out, "$enddefinitions  $end\n\n$dumpvars\n");
         for(auto& e: active_traces)
             e.trc->update_and_record(vcd_out);
-        vcd_out<<"$end\n\n";
+        FPRINT(vcd_out, "$end\n\n");
     } else {
-        std::ostringstream os;
-        for(auto e: active_traces)
+        changed_traces.clear();
+        for(auto& e: active_traces) {
             if(e.compare_and_update(e.trc))
-                e.trc->record(os);
-        if(os.str().length()) {
-            vcd_out<<'#'<<sc_core::sc_time_stamp()/1_ps<<'\n'<<os.str()<<'\n';
+                changed_traces.push_back(e.trc);
+        }
+        if(changed_traces.size()){
+            FPRINTF(vcd_out, "#{}\n", sc_core::sc_time_stamp()/1_ps);
+            for(auto& t: changed_traces)
+                t->record(vcd_out);
         }
     }
 }
 
-void vcd_trace_file::set_time_unit(double v, sc_core::sc_time_unit tu) {
+void mt_vcd_trace_file::set_time_unit(double v, sc_core::sc_time_unit tu) {
 }
 
-sc_core::sc_trace_file* create_vcd_trace_file(const char *name, std::function<bool()> enable) {
-    return  new vcd_trace_file(name, enable);
+sc_core::sc_trace_file* create_mt_vcd_trace_file(const char *name, std::function<bool()> enable) {
+    return  new mt_vcd_trace_file(name, enable);
 }
 
-void close_vcd_trace_file(sc_core::sc_trace_file *tf) {
-    delete static_cast<vcd_trace_file*>(tf);
+void close_mt_vcd_trace_file(sc_core::sc_trace_file *tf) {
+    delete static_cast<mt_vcd_trace_file*>(tf);
 }
 
 }
