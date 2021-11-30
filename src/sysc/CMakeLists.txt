@@ -40,6 +40,7 @@ set(LIB_SOURCES
     scc/time_n_tick.cpp
     #scc/scv/scv_tr_binary.cpp
     scc/sc_vcd_trace.cpp
+    scc/mt_vcd_trace.cpp
     scc/fst_trace.cpp
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp
@@ -65,9 +66,11 @@ add_library(${PROJECT_NAME} ${LIB_SOURCES})
 if(SCC_LIMIT_TRACE_TYPE_LIST)
 	target_compile_definitions(${PROJECT_NAME} PRIVATE LIMIT_TRACE_TYPE_LIST)
 endif()
-if(SYSTEMC_WITH_PHASE_CALLBACKS)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SIM_PHASE_CALLBACKS)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE SC_ENABLE_SIMULATION_PHASE_CALLBACKS_TRACING)
+if(SC_WITH_PHASE_CALLBACKS)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SC_PHASE_CALLBACKS)
+endif()
+if(SC_WITH_PHASE_CALLBACK_TRACING)
+    target_compile_definitions(${PROJECT_NAME} PUBLIC WITH_SC_TRACING_PHASE_CALLBACKS)
 endif()
 
 target_include_directories (${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
@@ -126,10 +129,6 @@ if(ZLIB_FOUND)
     target_include_directories(${PROJECT_NAME} PUBLIC ${ZLIB_INCLUDE_DIRS})
     target_link_libraries(${PROJECT_NAME} PUBLIC ${ZLIB_LIBRARIES})
     target_compile_definitions(${PROJECT_NAME} PRIVATE HAS_ZLIB)
-endif()
-if(SC_USE_PHASE_CALLBACK_TRACING)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE SC_ENABLE_SIMULATION_PHASE_CALLBACKS_TRACING)
-    target_compile_definitions(${PROJECT_NAME} PUBLIC SC_TRACING_PHASE_CALLBACKS_)
 endif()
 target_link_libraries(${PROJECT_NAME} PUBLIC fstapi Threads::Threads ${CMAKE_DL_LIBS})
 

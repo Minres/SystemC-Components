@@ -209,7 +209,7 @@ private:
     const ::sc_dt::uint64& extract_ref(const sc_core::sc_event& object) const
       { return event_trigger_stamp(object); }
 
-#if WITH_SIM_PHASE_CALLBACKS
+#if WITH_SC_TRACING_PHASE_CALLBACKS
     // avoid hidden overload warnings
     virtual void trace( sc_trace_file* ) const;
 #endif
