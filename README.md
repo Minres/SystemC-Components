@@ -41,14 +41,21 @@ The suggested build flow is:
 For example:
 
 ```
-git clone --recursive https://github.com/Minres/SystemC-Components.git
-cd SystemC-Components/
-
 setenv WORKAREA `pwd`
-module load dev/angelo/2.0
-mkdir build; cd build
-cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$WORKAREA/install -DENABLE_SCV=ON -DCMAKE_CXX_STANDARD=11 ..
-make -j
+setenv LIB_VERSION gcc-6.3.0-SystemC-2.3.3.O2
+setenv SYSTEMC_HOME /workarea3/SystemC/systemc-2.3.3-gcc-6.3.0-c++14-install
+setenv SCV_HOME ${SYSTEMC_HOME}
+setenv TLM_HOME ${SYSTEMC_HOME}/include
+setenv GCC_HOME /workarea3/gcc-6.3.0-install
+setenv PATH ${GCC_HOME}/bin:${PATH}
+setenv CC ${GCC_HOME}/bin/gcc
+setenv CXX ${GCC_HOME}/bin/g++
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$WORKAREA/install/$LIB_VERSION -DENABLE_SCV=ON ..
+make 
+make install
+make test
 ./examples/ace-axi/ace_axi_example
 ./examples/axi-axi/axi_axi_example
 
