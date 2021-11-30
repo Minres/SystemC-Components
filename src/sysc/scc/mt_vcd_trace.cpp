@@ -321,7 +321,7 @@ mt_vcd_trace_file::mt_vcd_trace_file(const char *name, std::function<bool()> &en
 {
     vcd_out = fopen(fmt::format("{}.vcd", name).c_str(), "w");
 
-#if defined(WITH_SIM_PHASE_CALLBACKS)
+#if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
     sc_object::detach();
     // register regular (non-delta) callbacks

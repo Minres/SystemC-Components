@@ -251,7 +251,7 @@ fst_trace_file::fst_trace_file(const char *name, std::function<bool()> &enable)
     fstWriterSetPackType(m_fst, FST_WR_PT_LZ4);
     fstWriterSetTimescale(m_fst, 12);  // pico seconds 1*10-12
     fstWriterSetFileType(m_fst, FST_FT_VERILOG);
-#if defined(WITH_SIM_PHASE_CALLBACKS)
+#if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
     sc_object::detach();
     // register regular (non-delta) callbacks

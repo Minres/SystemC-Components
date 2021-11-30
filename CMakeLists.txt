@@ -6,20 +6,20 @@ project(scc VERSION 1.0.0 LANGUAGES CXX C)
 
 option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 
-option(BUILD_STAND_ALONE "Do a standalone build and do not rely on a parent project providing needed libraries" OFF)
-
-#Note: this needs to match the SystemC kernel build options
-option(SYSTEMC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase callbacks" OFF)
-
 option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
 
-option(SC_USE_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse callbacks for tracing. It needs to match the SystemC build configuration" OFF)
+#Note: this needs to match the SystemC kernel build options
+option(SC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase callbacks" OFF)
+
+option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse callbacks for tracing. It needs to match the SystemC build configuration" OFF)
+
+
 
 include(Common)
 
-if(BUILD_STAND_ALONE)
+if(CMAKE_PROJECT_NAME STREQUAL "scc")
 	option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
 	include(GNUInstallDirs)
 	include(Conan)

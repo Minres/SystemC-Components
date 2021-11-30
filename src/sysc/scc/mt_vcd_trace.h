@@ -93,7 +93,7 @@ protected:
      void set_time_unit( double v, sc_core::sc_time_unit tu ) override;
 
 private:
-#if WITH_SIM_PHASE_CALLBACKS
+#if WITH_SC_TRACING_PHASE_CALLBACKS
     // avoid hidden overload warnings
     virtual void trace( sc_trace_file* ) const;
 #endif
