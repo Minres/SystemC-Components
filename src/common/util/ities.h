@@ -101,6 +101,35 @@ constexpr size_t bit_count(uint32_t u) {
 }
 #endif
 
+/**
+ * get the log2 value fo an integer
+ *
+ * @param val the value
+ * @return the number of bit needed to hold the value val
+ */
+#if __cplusplus < 201402L
+inline unsigned ilog2(uint32_t val) {
+#else
+inline constexpr unsigned ilog2(uint32_t val) {
+#endif
+#ifdef __GNUG__
+    return sizeof(uint32_t) * 8 - 1 - __builtin_clz(static_cast<unsigned>(val));
+#else
+
+    if(val == 0)
+        return std::numeric_limits<uint32_t>::max();
+    if(val == 1)
+        return 0;
+    auto ret = 0U;
+    while(val > 1) {
+        val >>= 1;
+        ++ret;
+    }
+    return ret;
+#endif
+}
+
+
 constexpr bool hasOddParity(uint32_t u) { return bit_count(u)%2;}
 /**
  * split a given string using specified separator
