@@ -39,6 +39,7 @@ set(LIB_SOURCES
     scc/mt19937_rng.cpp
     scc/time_n_tick.cpp
     #scc/scv/scv_tr_binary.cpp
+    scc/scv/scv_tr_mtc.cpp
     scc/sc_vcd_trace.cpp
     scc/mt_vcd_trace.cpp
     scc/fst_trace.cpp

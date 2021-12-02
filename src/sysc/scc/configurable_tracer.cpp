@@ -39,18 +39,22 @@ using namespace scc;
 
 #define EN_TRACING_STR "enableTracing"
 
-configurable_tracer::configurable_tracer(std::string const&& name, file_type type, bool enable_vcd, bool default_enable)
-: tracer(std::move(name), type, enable_vcd)
+configurable_tracer::configurable_tracer(std::string const&& name, file_type type, bool enable_vcd, bool default_enable, sc_core::sc_object* top)
+: tracer(std::move(name), type, enable_vcd, top)
 , cci_originator(this->name())
 , cci_broker(cci::cci_get_global_broker(cci_originator))
-, default_trace_enable(default_enable) {}
+{
+    default_trace_enable=default_enable;
+}
 
 configurable_tracer::configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf,
-                                         bool default_enable)
-: tracer(std::move(name), type, tf)
+                                         bool default_enable, sc_core::sc_object* top)
+: tracer(std::move(name), type, tf, top)
 , cci_originator(this->name())
 , cci_broker(cci::cci_get_global_broker(cci_originator))
-, default_trace_enable(default_enable) {}
+{
+    default_trace_enable=default_enable;
+}
 
 scc::configurable_tracer::~configurable_tracer() {
     for(auto ptr : params)
@@ -119,8 +123,11 @@ void configurable_tracer::augment_object_hierarchical(const sc_core::sc_object* 
     }
 }
 
-void configurable_tracer::end_of_elaboration() {
-    if(trf)
-        for(auto o : sc_get_top_level_objects(sc_curr_simcontext))
-            descend(o, default_trace_enable);
-}
+//void configurable_tracer::end_of_elaboration() {
+//    if(trf)
+//        if(top)
+//            descend(top, trf);
+//        else
+//            for(auto o : sc_get_top_level_objects(sc_curr_simcontext))
+//                descend(o, default_trace_enable);
+//}

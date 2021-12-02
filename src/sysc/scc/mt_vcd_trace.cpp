@@ -318,6 +318,7 @@ private:
  *******************************************************************************************************/
 mt_vcd_trace_file::mt_vcd_trace_file(const char *name, std::function<bool()> &enable)
 :name(name)
+, check_enabled(enable)
 {
     vcd_out = fopen(fmt::format("{}.vcd", name).c_str(), "w");
 
@@ -500,6 +501,7 @@ void mt_vcd_trace_file::cycle(bool delta_cycle) {
             e.trc->update_and_record(vcd_out);
         FPRINT(vcd_out, "$end\n\n");
     } else {
+        if(check_enabled && !check_enabled()) return;
         changed_traces.clear();
         for(auto& e: active_traces) {
             if(e.compare_and_update(e.trc))

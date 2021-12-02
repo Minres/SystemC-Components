@@ -244,6 +244,7 @@ template<> unsigned fst_trace_t<sc_dt::sc_lv_base, sc_dt::sc_lv_base>::get_bits(
 
 
 fst_trace_file::fst_trace_file(const char *name, std::function<bool()> &enable)
+: check_enabled(enable)
 {
     std::stringstream ss;
     ss<<name<<".fst";
@@ -372,6 +373,7 @@ void fst_trace_file::cycle(bool delta_cycle) {
         for(auto& e: all_traces)
             e.trc->update_and_record(m_fst);
     } else {
+        if(check_enabled && !check_enabled()) return;
         for(auto e: active_traces)
             if(e.compare_and_update(e.trc))
                 e.trc->record(m_fst);
