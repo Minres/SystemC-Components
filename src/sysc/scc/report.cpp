@@ -161,6 +161,7 @@ auto compose_message(const sc_report& rep, const scc::LogConfig& cfg) -> const s
         if(*rep.get_msg())
             os << rep.get_msg();
         if(rep.get_severity() > SC_INFO) {
+            if(rep.get_line_number())
             os << "\n         [FILE:" << rep.get_file_name() << ":" << rep.get_line_number() << "]";
             sc_simcontext* simc = sc_get_curr_simcontext();
             if(simc && sc_is_running()) {

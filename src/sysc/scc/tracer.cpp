@@ -43,7 +43,7 @@
 using namespace sc_core;
 using namespace scc;
 
-tracer::tracer(std::string const&& name, file_type type, bool enable)
+tracer::tracer(std::string const&& name, file_type type, bool enable, sc_core::sc_object* top)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
 , txdb(nullptr)
 , owned{enable}{
@@ -54,7 +54,7 @@ tracer::tracer(std::string const&& name, file_type type, bool enable)
     init_scv_db(type, std::move(name));
 }
 
-tracer::tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf)
+tracer::tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, sc_core::sc_object* top)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
 , txdb(nullptr)
 , owned{false}{
@@ -83,6 +83,10 @@ void tracer::init_scv_db(file_type type, std::string const&& name) {
             break;
         case SQLITE:
             break;
+        case CUSTOM:
+            SCVNS scv_tr_mtc_init();
+            ss << ".txlog";
+            break;
         default:
             break;
         }
@@ -93,6 +97,9 @@ void tracer::init_scv_db(file_type type, std::string const&& name) {
 
 void tracer::end_of_elaboration() {
     if(trf)
-        for(auto o : sc_get_top_level_objects())
-            descend(o, true);
+        if(top)
+            descend(top, trf);
+        else
+            for(auto o : sc_get_top_level_objects())
+                descend(o, default_trace_enable);
 }

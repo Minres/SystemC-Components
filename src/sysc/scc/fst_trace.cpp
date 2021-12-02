@@ -244,6 +244,7 @@ template<> unsigned fst_trace_t<sc_dt::sc_lv_base, sc_dt::sc_lv_base>::get_bits(
 
 
 fst_trace_file::fst_trace_file(const char *name, std::function<bool()> &enable)
+: check_enabled(enable)
 {
     std::stringstream ss;
     ss<<name<<".fst";
@@ -251,7 +252,7 @@ fst_trace_file::fst_trace_file(const char *name, std::function<bool()> &enable)
     fstWriterSetPackType(m_fst, FST_WR_PT_LZ4);
     fstWriterSetTimescale(m_fst, 12);  // pico seconds 1*10-12
     fstWriterSetFileType(m_fst, FST_FT_VERILOG);
-#if defined(WITH_SIM_PHASE_CALLBACKS)
+#if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
     sc_object::detach();
     // register regular (non-delta) callbacks
@@ -372,21 +373,22 @@ void fst_trace_file::cycle(bool delta_cycle) {
         for(auto& e: all_traces)
             e.trc->update_and_record(m_fst);
     } else {
+        if(check_enabled && !check_enabled()) return;
         for(auto e: active_traces)
             if(e.compare_and_update(e.trc))
                 e.trc->record(m_fst);
     }
 }
 
-sc_core::sc_trace_file* scc_create_fst_trace_file(const char *name, std::function<bool()> enable) {
+void fst_trace_file::set_time_unit(double v, sc_core::sc_time_unit tu) {
+}
+
+sc_core::sc_trace_file* create_fst_trace_file(const char *name, std::function<bool()> enable) {
     return  new fst_trace_file(name, enable);
 }
 
-void scc_close_fst_trace_file(sc_core::sc_trace_file *tf) {
+void close_fst_trace_file(sc_core::sc_trace_file *tf) {
     delete static_cast<fst_trace_file*>(tf);
-}
-
-void fst_trace_file::set_time_unit(double v, sc_core::sc_time_unit tu) {
 }
 
 }

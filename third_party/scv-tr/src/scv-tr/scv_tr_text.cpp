@@ -63,6 +63,8 @@
 #include <fmt/format.h>
 #include <fmt/printf.h>
 #include <fmt/os.h>
+#include <cstring>
+#include <cerrno>
 
 namespace scv_tr {
 // ----------------------------------------------------------------------------
@@ -86,7 +88,8 @@ static void scv_tr_db_cbf(const scv_tr_db &_scv_tr_db, scv_tr_db::callback_reaso
         }
         my_text_file_p = fopen(my_text_file_name.c_str(), "w");
         if (my_text_file_p == nullptr) {
-            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open text recording file");
+            std::stringstream ss; ss<<"Can't open text recording file. "<<strerror(errno);
+            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, ss.str().c_str());
         } else {
             std::stringstream ss;
             ss << "opening file " << my_text_file_name;
