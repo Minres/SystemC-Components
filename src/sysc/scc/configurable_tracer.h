@@ -39,7 +39,7 @@ public:
      * @param enable enable VCD (signal based) tracing
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const&& name, file_type type, bool enable_vcd = true, bool default_enable = false);
+    configurable_tracer(std::string const&& name, file_type type, bool enable_vcd = true, bool default_enable = false, sc_core::sc_object* top = nullptr);
     /**
      * constructs a tracer object
      *
@@ -48,8 +48,8 @@ public:
      * @param enable_vcd enable VCD (signal based) tracing
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const& name, file_type type, bool enable_vcd = true, bool default_enable = false)
-    : configurable_tracer(std::string(name), type, enable_vcd, default_enable) {}
+    configurable_tracer(std::string const& name, file_type type, bool enable_vcd = true, bool default_enable = false, sc_core::sc_object* top = nullptr)
+    : configurable_tracer(std::string(name), type, enable_vcd, default_enable, top) {}
     /**
      * constructs a tracer object
      *
@@ -59,7 +59,7 @@ public:
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
     configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf = nullptr,
-                        bool default_enable = false);
+                        bool default_enable = false, sc_core::sc_object* top = nullptr);
     /**
      * constructs a tracer object
      *
@@ -69,8 +69,8 @@ public:
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
     configurable_tracer(std::string const& name, file_type type, sc_core::sc_trace_file* tf = nullptr,
-                        bool default_enable = false)
-    : configurable_tracer(std::string(name), type, tf, default_enable) {}
+                        bool default_enable = false, sc_core::sc_object* top = nullptr)
+    : configurable_tracer(std::string(name), type, tf, default_enable, top) {}
     /**
      * destructor
      */
@@ -84,8 +84,6 @@ public:
     }
 
 protected:
-    //! the default for tracing if no attribute is configured
-    const bool default_trace_enable;
     //! depth-first walk thru the design hierarchy and trace signals resp. call trace() function
     void descend(const sc_core::sc_object*, bool trace_all = false) override;
     //! check for existence of 'enableTracing' attribute and return value of default otherwise
@@ -93,7 +91,7 @@ protected:
     //! add the 'enableTracing' attribute to sc_module
     void augment_object_hierarchical(const sc_core::sc_object*);
 
-    void end_of_elaboration() override;
+    //void end_of_elaboration() override;
     //! the originator of cci values
     cci::cci_originator cci_originator;
     //! the cci broker

@@ -15,25 +15,27 @@
  *******************************************************************************/
 
 
-#ifndef SCC_FST_TRACE_H
-#define SCC_FST_TRACE_H
+#ifndef SCC_MT_VCD_TRACE_H
+#define SCC_MT_VCD_TRACE_H
 
 #include <systemc>
 #include <sysc/tracing/sc_trace.h>
 #include <functional>
+#include <fstream>
+#include <fmt/os.h>
 
 namespace sc_core {
 class sc_time;
 }
 namespace scc {
 
-class fst_trace;
+class vcd_trace;
 
-struct fst_trace_file : public sc_core::sc_trace_file {
+struct mt_vcd_trace_file : public sc_core::sc_trace_file {
 
-    fst_trace_file(const char *name, std::function<bool()>& enable);
+    mt_vcd_trace_file(const char *name, std::function<bool()>& enable);
 
-    virtual ~fst_trace_file();
+    virtual ~mt_vcd_trace_file();
 
 protected:
 #define DECL_TRACE_METHOD_A(tp) void trace(const tp& object, const std::string& name) override;
@@ -97,23 +99,28 @@ private:
 #endif
 
     void init();
+    std::string prune_name(std::string const& name);
+    std::string obtain_name();
     std::function<bool()> check_enabled;
 
-    void* m_fst{nullptr};
+    FILE* vcd_out{nullptr};
     struct trace_entry {
-        bool (*compare_and_update)(fst_trace*);
-        fst_trace* trc;
-        trace_entry(bool (*compare_and_update)(fst_trace*), fst_trace* trc):compare_and_update{compare_and_update}, trc{trc}{}
+        bool (*compare_and_update)(vcd_trace*);
+        vcd_trace* trc;
+        trace_entry(bool (*compare_and_update)(vcd_trace*), vcd_trace* trc):compare_and_update{compare_and_update}, trc{trc}{}
     };
     std::vector<trace_entry> all_traces, active_traces;
+    std::vector<vcd_trace*> changed_traces;;
     bool initialized{false};
+    unsigned vcd_name_index{0};
+    std::string name;
 };
 
 // ----------------------------------------------------------------------------
-sc_core::sc_trace_file *create_fst_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());
+sc_core::sc_trace_file *create_mt_vcd_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());
 
-void close_fst_trace_file( sc_core::sc_trace_file* tf );
+void close_mt_vcd_trace_file( sc_core::sc_trace_file* tf );
 
 } // namesoace scc
 
-#endif // SCC_FST_TRACE_H
+#endif // SCC_VCD_TRACE_H

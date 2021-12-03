@@ -132,7 +132,10 @@ public:
     }
 
 protected:
-    virtual void descend(const sc_core::sc_object*, bool trace_all = false);
+    //! the default for tracing if no attribute is configured
+    bool default_trace_enable{true};
+
+    virtual void descend(const sc_core::sc_object*, bool trace_all);
 
     static void try_trace(sc_core::sc_trace_file* trace_file, const sc_core::sc_object* object, trace_types t);
 

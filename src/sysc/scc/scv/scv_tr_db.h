@@ -33,6 +33,13 @@ void scv_tr_sqlite_init();
  */
 void scv_tr_compressed_init();
 
+/**
+ * @fn void scv_tr_mtc_init()
+ * @brief initializes the infrastructure to use a compressed text based transaction recording database with a multithreaded writer
+ *
+ */
+void scv_tr_mtc_init();
+
 #ifdef USE_EXTENDED_DB
 /**
  * initializes the infrastructure to use a binary transaction recording database

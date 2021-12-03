@@ -57,7 +57,7 @@ public:
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal and POD) tracing
      */
-    tracer(std::string const&& name, file_type type, bool enable = true);
+    tracer(std::string const&& name, file_type type, bool enable = true, sc_core::sc_object* top = nullptr);
     /**
      * @fn  tracer(const std::string&, file_type, bool=true)
      * @brief the constructor
@@ -66,8 +66,8 @@ public:
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal and POD) tracing
      */
-    tracer(std::string const& name, file_type type, bool enable = true)
-    : tracer(std::string(name), type, enable) {}
+    tracer(std::string const& name, file_type type, bool enable = true, sc_core::sc_object* top = nullptr)
+    : tracer(std::string(name), type, enable, top) {}
     /**
      * @fn  tracer(const std::string&&, file_type, bool=true)
      * @brief the constructor
@@ -76,7 +76,7 @@ public:
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal and POD) tracing
      */
-    tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf);
+    tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, sc_core::sc_object* top = nullptr);
     /**
      * @fn  tracer(const std::string&, file_type, bool=true)
      * @brief the constructor
@@ -85,8 +85,8 @@ public:
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal and POD) tracing
      */
-    tracer(std::string const& name, file_type type, sc_core::sc_trace_file* tf)
-    : tracer(std::string(name), type, tf) {}
+    tracer(std::string const& name, file_type type, sc_core::sc_trace_file* tf, sc_core::sc_object* top = nullptr)
+    : tracer(std::string(name), type, tf, top) {}
     /**
      * @fn  ~tracer()
      * @brief the destructor
@@ -104,6 +104,7 @@ protected:
 private:
     void init_scv_db(file_type type, std::string const&& name);
     bool owned{false};
+    sc_core::sc_object* top{nullptr};
 };
 
 } /* namespace scc */
