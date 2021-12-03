@@ -22,7 +22,6 @@
 #include <sysc/tracing/sc_trace.h>
 #include <functional>
 #include <fstream>
-#include <fmt/os.h>
 
 namespace sc_core {
 class sc_time;
