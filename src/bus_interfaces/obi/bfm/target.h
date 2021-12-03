@@ -8,6 +8,7 @@
 #include <tlm/scc/tlm_mm.h>
 #include <tlm/scc/tlm_gp_shared.h>
 #include <scc/peq.h>
+#include <scc/mt19937_rng.h>
 #include <systemc>
 #include <tlm>
 
@@ -59,9 +60,13 @@ public:
     tlm::tlm_sync_enum nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t);
 
 #ifdef HAS_CCI
-    cci::cci_param<sc_core::sc_time> sample_delay{"sample_delay", 0_ns};
+    cci::cci_param<sc_core::sc_time> sample_delay{"sample_delay", 1_ps};
+    cci::cci_param<int> req2gnt_delay{"req2gnt_delay", 0};
+    cci::cci_param<int> addr2data_delay{"addr2data_delay", 0};
 #else
     sc_core::sc_time sample_delay{0_ns};
+    int req2gnt_delay{0};
+    int addr2data_delay{0};
 #endif
 private:
     void clk_cb();
@@ -70,12 +75,22 @@ private:
 
     scc::peq<tlm::scc::tlm_gp_shared_ptr> achannel_rsp;
     tlm::scc::tlm_gp_shared_ptr achannel_active_tx;
-    bool achannel_tx_finished{false};
-    scc::peq<tlm::scc::tlm_gp_shared_ptr> rchannel_pending_rsp;
+    std::deque<std::tuple<tlm::scc::tlm_gp_shared_ptr, unsigned>> rchannel_pending_rsp;
     scc::peq<tlm::scc::tlm_gp_shared_ptr> rchannel_rsp;
     //std::pair<tlm::scc::tlm_gp_shared_ptr, tlm::tlm_phase> rchannel_req;
     std::vector<std::deque<std::tuple<tlm::scc::tlm_gp_shared_ptr, tlm::tlm_phase, uint64_t>>> pending_tx;
     uint64_t clk_cnt{0};
+    struct tx_state {
+        bool isAddrPhaseFinished(){ return state & 0x1;}
+        void setAddrPhaseFinished(){ state |= 0x1;}
+        bool isReqFinished(){ return state & 0x2;}
+        void setReqFinished(){ state |= 0x2;}
+        bool isRespStarted(){ return state & 0x4;}
+        void setRespStarted(){ state |= 0x4;}
+    private:
+        unsigned state{0};
+    };
+    std::unordered_map<payload_type*, tx_state> states;
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -101,8 +116,16 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::clk_cb
     sc_dt::sc_biguint<DATA_WIDTH> write_data{0};
     if(clk_i.event()) {
         clk_cnt++;
-        if(rchannel_pending_rsp.has_next())
-            rchannel_rsp.notify(rchannel_pending_rsp.get());
+        if(rchannel_pending_rsp.size()){
+            auto& head =  rchannel_pending_rsp.front();
+            if(std::get<1>(head)==0){
+                rchannel_rsp.notify(std::get<0>(head));
+                rchannel_pending_rsp.pop_front();
+            }
+            for(auto& e: rchannel_pending_rsp) {
+                if(std::get<1>(e)) --std::get<1>(e);
+            }
+        }
     }
 }
 
@@ -116,18 +139,25 @@ target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::nb_transport_bw(
     auto& q = pending_tx[ext->get_id()].front();
     switch(phase){
     case tlm::END_REQ:{
-        if(achannel_active_tx.get()!=&trans)
-            SCCFATAL(SCMOD)<<"Illegal response from TLM target";
+        auto it=states.find(&trans);
+        sc_assert(it!=states.end());
+        it->second.setReqFinished();
+        sc_assert(achannel_active_tx.get()==&trans);
         achannel_rsp.notify(&trans, t);
         return tlm::TLM_ACCEPTED;
     }
     case tlm::BEGIN_RESP:{
-        if(achannel_active_tx.get()==&trans) {
-            if(!achannel_tx_finished) achannel_rsp.notify(&trans, t);
-            rchannel_pending_rsp.notify(&trans);
-        } else {
-            rchannel_rsp.notify(&trans, t);
-        }
+        auto it=states.find(&trans);
+        sc_assert(it!=states.end());
+        it->second.setReqFinished();
+        it->second.setRespStarted();
+        if(it->second.isAddrPhaseFinished()) {
+            unsigned resp_delay = addr2data_delay<0?scc::MT19937::uniform(0, -addr2data_delay):addr2data_delay;
+            rchannel_pending_rsp.push_back({&trans, resp_delay});
+        } else if(achannel_active_tx.get()==&trans) {
+            achannel_rsp.notify(&trans, t);
+        } else
+            SCCFATAL(SCMOD)<<"Illegal state";
         return tlm::TLM_ACCEPTED;
     }
     default:
@@ -138,11 +168,14 @@ target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::nb_transport_bw(
 
 template<unsigned int DATA_WIDTH, unsigned int ADDR_WIDTH, unsigned int ID_WIDTH, unsigned int USER_WIDTH>
 inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::achannel_req_t() {
+    wait(clk_i.posedge_event());
     while(true) {
-        gnt_o.write(false);
+        gnt_o.write(req2gnt_delay==0);
+        wait(sample_delay);
         if(!req_i.read())
             wait(req_i.posedge_event());
         achannel_active_tx = tlm::scc::tlm_mm<>::get().allocate<obi::obi_extension>();
+        auto& state = states[achannel_active_tx.get()];
         achannel_active_tx->set_address(addr_i.read());
         achannel_active_tx->set_command(we_i.read() ? tlm::TLM_WRITE_COMMAND : tlm::TLM_READ_COMMAND);
         auto be = static_cast<unsigned>(be_i.read());
@@ -174,15 +207,14 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::achannel_req_t
         }
         phase_type phase = tlm::BEGIN_REQ;
         auto delay = sc_core::SC_ZERO_TIME;
-        achannel_tx_finished=false;
         auto ret = isckt->nb_transport_fw(*achannel_active_tx, phase, delay);
         auto id = ext->get_id();
         if(pending_tx.size()<=id) pending_tx.resize(id+1);
         pending_tx[id].emplace_back(std::make_tuple(achannel_active_tx, phase, clk_cnt));
         if (ret == tlm::TLM_UPDATED) {
-            achannel_tx_finished=true;
+            state.setReqFinished();
             if (phase == tlm::BEGIN_RESP) {
-                rchannel_pending_rsp.notify(achannel_active_tx);
+                state.setRespStarted();
             } else if(phase != tlm::END_REQ){
                 SCCFATAL(SCMOD) << "Bummer: nyi";
             }
@@ -190,13 +222,20 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::achannel_req_t
             SCCTRACE(SCMOD)<<"waiting for TLM reponse";
             auto resp=achannel_rsp.get();
             sc_assert(resp.get()==achannel_active_tx.get());
-            achannel_tx_finished=true;
         }
+        unsigned gnt_delay = req2gnt_delay<0?scc::MT19937::uniform(0, -req2gnt_delay):req2gnt_delay;
+        for(unsigned i=0U; i<gnt_delay; ++i) wait(clk_i.posedge_event());
         gnt_o.write(true);
         wait(clk_i.posedge_event());
+        state.setAddrPhaseFinished();
+        if(state.isRespStarted()) {
+            unsigned resp_delay = addr2data_delay<0?scc::MT19937::uniform(0, -addr2data_delay):addr2data_delay;
+            if(resp_delay) {
+                rchannel_pending_rsp.push_back({achannel_active_tx, resp_delay-1});
+            } else
+                rchannel_rsp.notify(achannel_active_tx);
+        }
         achannel_active_tx=nullptr;
-        // wait until RTL output has settled
-        wait(sample_delay);
     }
 }
 
