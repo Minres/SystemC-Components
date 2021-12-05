@@ -56,10 +56,10 @@ public:
     : sc_module(name)
     , tlm_recorder<TYPES>(sc_core::sc_object::name(), is.get_base_port(), ts.get_base_port(), recording_enabled,
                           tr_db) {
-        add_attribute(this->enableTracing);
+        add_attribute(this->enableBlTracing);
+        add_attribute(this->enableNbTracing);
         add_attribute(this->enableTimedTracing);
         add_attribute(this->enableDmiTracing);
-        add_attribute(this->enableTrDbgTracing);
         // bind the sockets to the module
         is.bind(*this);
         ts.bind(*this);
