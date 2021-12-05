@@ -23,6 +23,7 @@
 #include <iterator>
 #include <memory>
 #include <sstream>
+#include <algorithm>
 #include <sys/stat.h>
 #include <type_traits>
 #include <vector>
@@ -219,6 +220,15 @@ inline std::string& trim(std::string& str, const std::string& chars = "\t\n\v\f\
     return ltrim(rtrim(str, chars), chars);
 }
 /**
+ * convert string to lower case
+ * @param str the string to convert
+ * @return
+ */
+inline std::string str_tolower(std::string str) {
+    std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c){ return std::tolower(c); });
+    return str;
+}
+/**
  * @fn bool iequals(const std::string&, const std::string&)
  * @brief compare two string ignoring case
  *
@@ -232,11 +242,11 @@ inline bool iequals(const std::string& a, const std::string& b) {
     if(b.size() != sz)
         return false;
     for(auto i = 0U; i < sz; ++i)
-        if(tolower(a[i]) != tolower(b[i]))
+        if(tolower(static_cast<unsigned>(a[i])) != tolower(static_cast<unsigned>(b[i])))
             return false;
     return true;
 #else
-    return std::equal(a.begin(), a.end(), b.begin(), b.end(), [](char a, char b) { return tolower(a) == tolower(b); });
+    return std::equal(a.begin(), a.end(), b.begin(), b.end(), [](unsigned char a, unsigned char b) { return tolower(a) == tolower(b); });
 #endif
 }
 /**

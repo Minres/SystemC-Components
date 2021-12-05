@@ -278,7 +278,7 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
 
 // BKDR hash algorithm
 auto char_hash(char const* str) -> uint64_t {
-    constexpr int seed = 131; // 31  131 1313 13131131313 etc//
+    constexpr unsigned int seed = 131; // 31  131 1313 13131131313 etc//
     uint64_t hash = 0;
     while(*str) {
         hash = (hash * seed) + (*str);
