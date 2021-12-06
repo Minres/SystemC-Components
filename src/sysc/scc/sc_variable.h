@@ -19,6 +19,7 @@
 
 #include <array>
 #include <sstream>
+#include <functional>
 #include <sysc/kernel/sc_simcontext.h>
 #include <sysc/tracing/sc_trace.h>
 
@@ -35,15 +36,15 @@ namespace scc {
  * them in the SystemC object hierarchy.
  *
  */
-struct sc_variable : sc_core::sc_object {
+struct sc_variable_b : sc_core::sc_object {
     /**
      * @fn  sc_variable(const char*)
      * @brief named contructor
      *
      * @param name the name
      */
-    sc_variable(const char* name)
-    : sc_core::sc_object(name) {}
+    sc_variable_b(const char* name)
+            : sc_core::sc_object(name) {}
     /**
      * @fn const char* kind()const
      * @brief get the kind of this sc_object
@@ -65,7 +66,146 @@ struct sc_variable : sc_core::sc_object {
  *
  * @tparam T the data type of the wrapped value
  */
-template <typename T> struct sc_variable_t : public sc_variable {
+template <typename T> struct sc_variable : public sc_variable_b {
+    /**
+     * @fn const T& operator *()
+     * @brief get a reference to the wrapped value
+     *
+     * @return
+     */
+    const T& operator*() { return value; }
+    /**
+     * @fn  sc_variable_t(const std::string&, const T&)
+     * @brief constructor taking a name and a reference of the variable to be wrapped
+     *
+     * @param name the name
+     * @param value the variable reference to be wrapped
+     */
+    sc_variable(const std::string& name, const T& value)
+    : sc_variable_b(name.c_str())
+    , value(value) {}
+    /**
+     * @fn std::string to_string()const
+     * @brief create a textual representation of the wrapped value
+     *
+     * @return the string representing the value
+     */
+    std::string to_string() const override {
+        std::stringstream ss;
+        ss << value;
+        return ss.str();
+    }
+    /**
+     * @brief rvalue conversion operator
+     *
+     */
+    operator T() const { return value; }
+    /**
+     * @brief lvalue conversion operator
+     *
+     */
+    operator T&() { return value; }
+
+    sc_variable& operator=(const T other) {
+        value=other;
+        return *this;
+    }
+    /**
+     * @fn void trace(sc_core::sc_trace_file*)const
+     * @brief register the value with the SystemC trace implementation
+     *
+     * @param tf
+     */
+    void trace(sc_core::sc_trace_file* tf) const override { sc_trace(tf, value, name()); }
+
+    static scc::sc_variable<T> create( const char* n, size_t i, T default_val) {
+        std::ostringstream os; os<<n<<"["<<i<<"];";
+        return scc::sc_variable<T>(os.str(), default_val);
+    }
+
+    struct creator {
+        creator(T const& default_val): default_val{default_val}{}
+        scc::sc_variable<T>* operator()( const char* n, size_t i) {
+            return new scc::sc_variable<T>(n, default_val);
+        }
+    private:
+        T default_val{};
+    };
+private:
+    //! the wrapped value
+    T value;
+};
+/**
+ * a vector holding sc_variable. It can be used as a sparse array by providing a creator function or
+ * as a normal vector when providing a default value upon creating or resizing
+ *
+ * @note after end of elaboration the size of the vector cannot be change. It is also not possible to
+ * add elements e.g. when using as a sparse array.
+ *
+ * @tparam T
+ */
+template <typename T> struct sc_variable_vector {
+
+    sc_variable_vector(std::string const& name, size_t size)
+    :name(name), values(size, nullptr) { }
+
+    sc_variable_vector(std::string const& name, size_t size, T const& def_val)
+    :name(name), values(size, nullptr) {
+        resize(size, def_val);
+    }
+
+    sc_variable_vector(std::string const& name, size_t size, std::function<sc_variable<T>*(char const*, size_t)> creator)
+    :name(name), values(size, nullptr), creator(creator) { }
+
+    size_t size() {
+        return values.size();
+    }
+
+    void resize(size_t sz) {
+        assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
+        values.resize(sz);
+    }
+
+    void resize(size_t sz, T def_val) {
+        assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
+        values.resize(sz);
+        auto idx =0U;
+        for(auto& e:values){
+            std::stringstream ss; ss << name << "(" << idx++ << ")";
+            e=new sc_variable<T>(ss.str().c_str(), def_val);
+        }
+    }
+
+    sc_variable<T>& operator[](size_t idx) {
+       auto& ret = values.at(idx);
+       if(!ret) {
+           assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
+           assert(creator);
+           std::stringstream ss; ss << name << "(" << idx << ")";
+           ret=creator(ss.str().c_str(), idx);
+       }
+       return *ret;
+    }
+
+    sc_variable<T> const& operator[](size_t idx) const {
+        return *values.at(idx);
+    }
+    ~sc_variable_vector(){
+        for(auto p: values) delete p;
+    }
+private:
+    std::string name{};
+    std::vector<sc_variable<T>*> values;
+    std::function<sc_variable<T>*(char const*, size_t)> creator;
+};
+/**
+ * @struct sc_ref_variable
+ * @brief the sc_ref_variable for a particular plain data type. This marks an existing C++
+ * variable as discoverable (e.g. for tracing). Whenever possible sc_variable should be used.
+ *
+ * @tparam T the data type of the wrapped value
+ */
+template <typename T> struct sc_ref_variable : public sc_variable_b {
     //! the wrapped value
     const T& value;
     /**
@@ -82,8 +222,8 @@ template <typename T> struct sc_variable_t : public sc_variable {
      * @param name the name
      * @param value the variable reference to be wrapped
      */
-    sc_variable_t(const std::string& name, const T& value)
-    : sc_variable(name.c_str())
+    sc_ref_variable(const std::string& name, const T& value)
+    : sc_variable_b(name.c_str())
     , value(value) {}
     /**
      * @fn std::string to_string()const
@@ -105,105 +245,18 @@ template <typename T> struct sc_variable_t : public sc_variable {
     void trace(sc_core::sc_trace_file* tf) const override { sc_trace(tf, value, name()); }
 };
 /**
- * @struct sc_variable_t
- * @brief specialization of  \ref template <typename T> struct sc_variable_t for \ref sc_core::sc_event
- *
- */
-template <> struct sc_variable_t<sc_core::sc_event> : public sc_variable {
-    const sc_core::sc_event& value;
-
-    const sc_core::sc_event& operator*() { return value; }
-
-    sc_variable_t(const std::string& name, const sc_core::sc_event& value)
-    : sc_variable(name.c_str())
-    , value(value) {}
-
-    std::string to_string() const override { return ""; }
-#ifdef __GNUG__
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-#endif
-    void trace(sc_core::sc_trace_file* tf) const override {
-#ifdef __GNUG__
-#pragma GCC diagnostic pop
-#endif
-    }
-};
-/**
- * @struct sc_variable_t
- * @brief specialization of  \ref template <typename T> struct sc_variable_t for \ref std::vector<T>
- *
- */
-template <typename T> struct sc_variable_t<std::vector<T>> : public sc_variable {
-    const std::vector<T>& value;
-
-    const std::vector<T>& operator*() { return value; }
-
-    sc_variable_t(std::string const& name, std::vector<T> const& value)
-    : sc_variable(name.c_str())
-    , value(value) {}
-
-    std::string to_string() const override {
-        std::stringstream ss;
-        for(const T& e : value)
-            ss << e << ",";
-        return ss.str();
-    }
-
-    void trace(sc_core::sc_trace_file* tf) const override {
-        auto i = 0U;
-        for(T const& e : value) {
-            std::stringstream ss;
-            ss << name() << "(" << i++ << ")";
-            sc_trace(tf, e, ss.str());
-        }
-    }
-};
-/**
- * @struct sc_variable_t
- * @brief specialization of sc_variable_t for std::array
- *
- * @tparam T data type of the array
- * @tparam S size of the array
- */
-template <typename T, size_t S> struct sc_variable_t<std::array<T, S>> : public sc_variable {
-    const std::array<T, S>& value;
-
-    const std::array<T, S>& operator*() { return value; }
-
-    sc_variable_t(std::string const& name, std::array<T, S> const& value)
-    : sc_variable(name.c_str())
-    , value(value) {}
-
-    std::string to_string() const override {
-        std::stringstream ss;
-        for(const T& e : value)
-            ss << e << ",";
-        return ss.str();
-    }
-
-    void trace(sc_core::sc_trace_file* tf) const override {
-        auto i = 0U;
-        for(T const& e : value) {
-            std::stringstream ss;
-            ss << name() << "(" << i++ << ")";
-            sc_trace(tf, e, ss.str());
-        }
-    }
-};
-/**
  * @struct sc_variable_masked_t
  * @brief the sc_variable for a particular plain data type with limited bit width
  *
  * @tparam T the data type of the wrapped value
  */
-template <typename T> struct sc_variable_masked_t : public sc_variable {
+template <typename T> struct sc_ref_variable_masked : public sc_variable_b {
     const T& value;
 
     const T mask;
 
-    sc_variable_masked_t(const std::string& name, const T& value, int width)
-    : sc_variable(name.c_str())
+    sc_ref_variable_masked(const std::string& name, const T& value, int width)
+    : sc_variable_b(name.c_str())
     , value(value)
     , mask((1 << width) - 1) {}
 
@@ -219,28 +272,17 @@ template <typename T> struct sc_variable_masked_t : public sc_variable {
 } // namespace scc
 
 namespace sc_core {
-template <class T> inline void sc_trace(sc_trace_file* tf, const scc::sc_variable_t<T>& object, const char* name) {
+template <class T> inline void sc_trace(sc_trace_file* tf, const scc::sc_variable<T>& object, const char* name) {
     object.trace(tf);
 }
-template <class T> inline void sc_trace(sc_trace_file* tf, const scc::sc_variable_t<T>* object, const char* name) {
+template <class T> inline void sc_trace(sc_trace_file* tf, const scc::sc_variable<T>* object, const char* name) {
     object->trace(tf);
 }
 
-template <class T>
-inline void sc_trace(sc_trace_file* tf, const scc::sc_variable_t<std::vector<T>>& object, const char* name) {
+template <class T> inline void sc_trace(sc_trace_file* tf, const scc::sc_ref_variable<T>& object, const char* name) {
     object.trace(tf);
 }
-template <class T>
-inline void sc_trace(sc_trace_file* tf, const scc::sc_variable_t<std::vector<T>>* object, const char* name) {
-    object->trace(tf);
-}
-
-template <class T, size_t S>
-inline void sc_trace(sc_trace_file* tf, const scc::sc_variable_t<std::array<T, S>>& object, const char* name) {
-    object.trace(tf);
-}
-template <class T, size_t S>
-inline void sc_trace(sc_trace_file* tf, const scc::sc_variable_t<std::array<T, S>>* object, const char* name) {
+template <class T> inline void sc_trace(sc_trace_file* tf, const scc::sc_ref_variable<T>* object, const char* name) {
     object->trace(tf);
 }
 
