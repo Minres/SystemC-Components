@@ -1,4 +1,4 @@
-if(USE_CWR_SYSTEMC)
+if(NOT USE_CWR_SYSTEMC)
 	add_subdirectory(ace-axi)
 	add_subdirectory(axi-axi)
 endif()

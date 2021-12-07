@@ -5,15 +5,8 @@
  *      Author:
  */
 
-#ifdef HAS_SCV
 #include <axi/scv/recorder_modules.h>
-#include <scv.h>
-#include <scv/scv_tr.h>
-#endif
-#ifdef HAS_CCI
-#include <scc/configurable_tracer.h>
-#endif
-#include "scc/report.h"
+#include <scc.h>
 #include <array>
 #include <axi/axi_pin2tlm_adaptor.h>
 #include <axi/axi_tlm2pin_adaptor.h>
@@ -37,9 +30,7 @@ private:
     sc_core::sc_clock clk{"clk", clk_period, 0.5, sc_core::SC_ZERO_TIME, true};
     sc_core::sc_signal<bool> rst{"rst"};
     axi::axi_initiator_socket<SOCKET_WIDTH> intor{"intor"};
-#ifdef HAS_SCV
     axi::scv::axi_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
-#endif
     axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
     axi::pe::simple_axi_initiator<SOCKET_WIDTH> intor_pe;
     axi::pe::simple_target<SOCKET_WIDTH> tgt_pe;
@@ -96,14 +87,9 @@ public:
         SC_THREAD(run);
         intor_pe.clk_i(clk);
         tgt_pe.clk_i(clk);
-#ifdef HAS_SCV
         intor(intor_rec.tsckt);
         intor_rec.isckt(tlm2pin_adaptor.input_socket);
         pin2tlm_adaptor.output_socket(tgt);
-#else
-        intor(tlm2pin_adaptor.input_socket);
-        pin2tlm_adaptor.output_socket(tgt);
-#endif
         pin2tlm_adaptor.clk_i(clk);
         tlm2pin_adaptor.clk_i(clk);
         pin2tlm_adaptor.resetn_i(rst);
@@ -197,7 +183,7 @@ public:
 
 private:
   tlm::tlm_generic_payload* prepare_trans(size_t len, size_t id) {
-        auto trans = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>();
+        auto trans = tlm::scc::tlm_mm<tlm::tlm_base_protocol_types, false>::get().allocate<axi::axi4_extension>();
         tlm::scc::setId(*trans, id);
         auto ext = trans->get_extension<axi::axi4_extension>();
         trans->set_data_length(len);
@@ -262,34 +248,24 @@ int sc_main(int argc, char* argv[]) {
     scc::init_logging(scc::LogConfig()
                           .logLevel(static_cast<scc::log>(7))
                           .logAsync(false)
-#ifdef HAS_CCI
-                          .dontCreateBroker(false)
-#else
-                          .dontCreateBroker(true)
-#endif
                           .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
-#ifdef HAS_CCI
     ///////////////////////////////////////////////////////////////////////////
     // set up tracing & transaction recording
     ///////////////////////////////////////////////////////////////////////////
+#ifdef HAS_CCI
     scc::configurable_tracer trace("axi_pinlevel",
-                                   scc::tracer::file_type::NONE, // bit3-bit1 define the kind of transaction trace
-                                   true,                         // bit0 enables vcd
+                                   scc::tracer::file_type::NONE, // define the kind of transaction trace
+                                   true,                         // enables vcd
                                    true);
-#endif
-#ifdef HAS_SCV
-    scv_startup();
-    scv_tr_text_init();
-    scv_tr_db* db = new scv_tr_db("axi_pinlevel.txlog");
-    scv_tr_db::set_default_db(db);
+#else
+    scc::tracer trace("axi_pinlevel",
+                                   scc::tracer::file_type::NONE, // define the kind of transaction trace
+                                   true);                        // enables vcd
 #endif
     testbench tb("tb");
 
     sc_core::sc_start(1_ms);
     SCCINFO() << "Finished";
-#ifdef HAS_SCV
-    delete db;
-#endif
     return 0;
 }

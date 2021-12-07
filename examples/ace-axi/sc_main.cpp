@@ -7,19 +7,13 @@
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
-#ifdef HAS_SCV
 #include <axi/scv/recorder_modules.h>
-#include <scv.h>
-#include <scv/scv_tr.h>
-#endif
-#include "scc/report.h"
-#include "tlm/scc/tlm_id.h"
+#include <scc.h>
 #include <ace_axi_adapt.h>
 #include <array>
 #include <axi/pe/simple_initiator.h>
 #include <axi/pe/simple_target.h>
 #include <cstdint>
-#include <tlm/scc/tlm_mm.h>
 
 using namespace sc_core;
 using namespace axi;
@@ -35,10 +29,8 @@ public:
     sc_core::sc_clock clk{"clk", clk_period, 0.5, sc_core::SC_ZERO_TIME, true};
     sc_core::sc_signal<bool> rst{"rst"};
     axi::ace_initiator_socket<SOCKET_WIDTH> intor{"intor"};
-#ifdef HAS_SCV
     // axi::scv::ace_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
     axi::scv::axi_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
-#endif
     axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
     ace_axi_adapt<SOCKET_WIDTH> Adapter1{"Adapter1"};
     testbench(sc_core::sc_module_name nm)
@@ -49,21 +41,16 @@ public:
         intor_pe.clk_i(clk);
         tgt_pe.clk_i(clk);
         // tgt_pe.Clk(clk);
-#ifdef HAS_SCV
         // intor(intor_rec.tsckt);
         intor(Adapter1.tsckt);
         // intor_rec.isckt(Adapter1.tsckt);
         Adapter1.isckt(intor_rec.tsckt);
         // intor_rec.isckt(tgt_pe.axi);
         intor_rec.isckt(tgt);
-#else
-        intor(Adapter1.tsckt);
-        Adapter1.isckt(tgt);
-#endif
     }
 
     tlm::tlm_generic_payload* prepare_trans(size_t len, uint8_t const* data = nullptr) {
-        auto trans = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>();
+        auto trans = tlm::scc::tlm_mm<tlm::tlm_base_protocol_types, false>::get().allocate<axi::axi4_extension>();
         tlm::scc::setId(*trans, id++);
         auto ext = trans->get_extension<axi::axi4_extension>();
         trans->set_data_length(len);
@@ -141,17 +128,18 @@ int sc_main(int argc, char* argv[]) {
             .logAsync(false)
             .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
-#ifdef HAS_SCV
-    scv_startup();
-    scv_tr_text_init();
-    scv_tr_db* db = new scv_tr_db("ace_ace_test.txlog");
-    scv_tr_db::set_default_db(db);
+#ifdef HAS_CCI
+    scc::configurable_tracer trace("ace_ace_test",
+                                   scc::tracer::file_type::NONE, // define the kind of transaction trace
+                                   true,                         // enables vcd
+                                   true);
+#else
+    scc::tracer trace("ace_ace_test",
+                                   scc::tracer::file_type::NONE, // define the kind of transaction trace
+                                   true);                        // enables vcd
 #endif
     testbench mstr("master");
     sc_core::sc_start(10_ms);
     SCCINFO() << "Finished";
-#ifdef HAS_SCV
-    delete db;
-#endif
     return 0;
 }
