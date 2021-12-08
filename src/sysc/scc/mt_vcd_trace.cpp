@@ -54,7 +54,7 @@ namespace {
 thread_local char buf[96];
 inline void vcdEmitValueChange(FILE* os, std::string const& handle, unsigned bits, const char *val) {
     if(bits==1) FPRINTF(os, "{}{}\n", *val, handle)
-    else FPRINTF(os, "b{} {}\n", handle, val)
+            else FPRINTF(os, "b{} {}\n", val, handle)
 }
 
 inline void vcdEmitValueChange32(FILE* os, std::string const& handle, unsigned bits, uint32_t val){
@@ -65,6 +65,11 @@ inline void vcdEmitValueChange64(FILE* os, std::string const& handle, unsigned b
     FPRINTF(os, "b{:b} {}\n", val&((1ull<<bits)-1), handle);
 }
 
+template<typename T>
+inline void vcdEmitValueChangeReal(FILE* os, std::string const& handle, unsigned bits, T val){
+    FPRINTF(os, "r{:.16g} {}\n", val, handle);
+}
+
 inline size_t get_buffer_size(int length){
     size_t sz = ( static_cast<size_t>(length) + 4096 ) & (~static_cast<size_t>(4096-1));
     return std::max(1024UL, sz);
@@ -73,8 +78,8 @@ inline size_t get_buffer_size(int length){
 }
 
 struct vcd_trace {
-
-    vcd_trace(std::string const& nm): name{nm}{}
+    enum trace_type {WIRE, REAL};
+    vcd_trace(std::string const& nm, trace_type t, unsigned bits): name{nm}, type{t}, bits{bits}{}
 
     virtual void record(FILE* os) = 0;
 
@@ -87,17 +92,50 @@ struct vcd_trace {
     const std::string name;
     std::string fst_hndl{};
     bool is_alias{false};
-    unsigned bits{0};
+    const unsigned bits;
+    const trace_type type;
+};
+
+struct vcd_trace_enum : public vcd_trace {
+    vcd_trace_enum( const unsigned int& object_,
+            const std::string& name, const char** literals)
+    : vcd_trace( name, WIRE, get_bits(literals))
+    , act_val( object_ )
+    , old_val( object_ )
+    , literals{literals}
+    {}
+
+    uintptr_t get_hash() override { return reinterpret_cast<uintptr_t>(&act_val);}
+
+    inline bool changed() { return !is_alias && old_val!=act_val; }
+
+    inline void update() { old_val=act_val; }
+
+    void record(FILE* os) override {
+        vcdEmitValueChange64(os, fst_hndl, bits, old_val);
+    }
+
+    void update_and_record(FILE* os) override {update(); record(os);};
+
+    unsigned get_bits(const char** literals) {
+        unsigned nliterals;
+        for (nliterals = 0; literals[nliterals]; nliterals++) continue;
+        return scc::ilog2(nliterals);
+    }
+
+    unsigned int old_val;
+    const unsigned int& act_val;
+    const char** literals;
 };
 
 template<typename T, typename OT=T>
 struct vcd_trace_t : public vcd_trace {
     vcd_trace_t( const T& object_,
-            const std::string& name, int width=-1)
-    : vcd_trace( name),
-      act_val( object_ ),
-      old_val( object_ )
-    {bits=width<0?get_bits():width;}
+            const std::string& name)
+    : vcd_trace( name, get_type(), get_bits())
+    , act_val( object_ )
+    , old_val( object_ )
+    {}
 
     uintptr_t get_hash() override { return reinterpret_cast<uintptr_t>(&act_val);}
 
@@ -109,7 +147,10 @@ struct vcd_trace_t : public vcd_trace {
 
     void update_and_record(FILE* os) override {update(); record(os);};
 
-    unsigned get_bits() { return sizeof(OT)*8;}
+    trace_type get_type() { return std::is_floating_point<T>::value?REAL:WIRE;}
+
+    unsigned get_bits() { return std::is_floating_point<T>::value?1:sizeof(OT)*8;}
+
     OT old_val;
     const T& act_val;
 };
@@ -152,13 +193,13 @@ template<> unsigned vcd_trace_t<sc_dt::sc_logic, sc_dt::sc_logic>::get_bits(){ r
  * float
  */
 template<> void vcd_trace_t<float, float>::record(FILE* os){
-    vcdEmitValueChange32(os, fst_hndl, 32, *reinterpret_cast<uint32_t*>(&old_val));
+    vcdEmitValueChangeReal(os, fst_hndl, 32, old_val);
 }
 /*
  * double
  */
 template<> void vcd_trace_t<double, double>::record(FILE* os){
-    vcdEmitValueChange32(os, fst_hndl, 64, *reinterpret_cast<uint64_t*>(&old_val));
+    vcdEmitValueChangeReal(os, fst_hndl, 64, old_val);
 }
 /*
  * sc_dt::sc_int_base
@@ -192,8 +233,17 @@ template<> unsigned vcd_trace_t<sc_dt::sc_uint_base, sc_dt::sc_uint_base>::get_b
 template<> void vcd_trace_t<sc_dt::sc_signed, sc_dt::sc_signed>::record(FILE* os){
     static std::vector<char> rawdata(get_buffer_size(old_val.length()));
     char *rawdata_ptr  = &rawdata[0];
-    for (int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex) {
-        *rawdata_ptr++ = '0'+old_val[bitindex].value();
+    bool is_started=false;
+    int bitindex = old_val.length() - 1;
+    *rawdata_ptr++ = '0'+old_val[bitindex--].value();
+    for (; bitindex >= 0; --bitindex) {
+        auto c = '0'+old_val[bitindex].value();
+        if(is_started)
+            *rawdata_ptr++ = c;
+        else if(c=='1' || *(rawdata_ptr-1)!=c ) {
+            *rawdata_ptr++ = c;
+            is_started=true;
+        }
     }
     vcdEmitValueChange(os, fst_hndl, bits, &rawdata[0]);
 }
@@ -205,8 +255,17 @@ template<> unsigned vcd_trace_t<sc_dt::sc_signed, sc_dt::sc_signed>::get_bits(){
 template<> void vcd_trace_t<sc_dt::sc_unsigned, sc_dt::sc_unsigned>::record(FILE* os){
     static std::vector<char> rawdata(get_buffer_size(old_val.length()));
     char *rawdata_ptr  = &rawdata[0];
-    for (int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex) {
-        *rawdata_ptr++ = '0'+old_val[bitindex].value();
+    bool is_started=false;
+    int bitindex = old_val.length() - 1;
+    *rawdata_ptr++ = '0'+old_val[bitindex--].value();
+    for (; bitindex >= 0; --bitindex) {
+        auto c = '0'+old_val[bitindex].value();
+        if(is_started)
+            *rawdata_ptr++ = c;
+        else if(c=='1' || *(rawdata_ptr-1)!=c ) {
+            *rawdata_ptr++ = c;
+            is_started=true;
+        }
     }
     vcdEmitValueChange(os, fst_hndl, bits, &rawdata[0]);
 }
@@ -215,39 +274,68 @@ template<> unsigned vcd_trace_t<sc_dt::sc_unsigned, sc_dt::sc_unsigned>::get_bit
 /*
  * sc_dt::sc_fxval
  */
+template<> vcd_trace::trace_type vcd_trace_t<sc_dt::sc_fxval, sc_dt::sc_fxval>::get_type(){
+    return vcd_trace::REAL;
+}
+template<> unsigned vcd_trace_t<sc_dt::sc_fxval, sc_dt::sc_fxval>::get_bits(){
+    return 1;
+}
 template<> void vcd_trace_t<sc_dt::sc_fxval, sc_dt::sc_fxval>::record(FILE* os){
-    auto val = old_val.to_double();
-    vcdEmitValueChange64(os, fst_hndl, 64, *reinterpret_cast<uint64_t*>(&val));
+    vcdEmitValueChangeReal(os, fst_hndl, bits, old_val);
 }
 
-template<> unsigned vcd_trace_t<sc_dt::sc_fxval, sc_dt::sc_fxval>::get_bits(){ return 64; }
 /*
  * sc_dt::sc_fxval_fast
  */
+template<> vcd_trace::trace_type vcd_trace_t<sc_dt::sc_fxval_fast, sc_dt::sc_fxval_fast>::get_type(){
+    return vcd_trace::REAL;
+}
+template<> unsigned vcd_trace_t<sc_dt::sc_fxval_fast, sc_dt::sc_fxval_fast>::get_bits(){
+    return 1;
+}
 template<> void vcd_trace_t<sc_dt::sc_fxval_fast, sc_dt::sc_fxval_fast>::record(FILE* os){
-    auto val = old_val.to_double();
-    vcdEmitValueChange64(os, fst_hndl, 64, *reinterpret_cast<uint64_t*>(&val));
+    vcdEmitValueChangeReal(os, fst_hndl, bits, old_val);
 }
 
-template<> unsigned vcd_trace_t<sc_dt::sc_fxval_fast, sc_dt::sc_fxval_fast>::get_bits(){ return 64; }
 /*
- * sc_dt::sc_fxnum
+ * sc_dt::sc_fxnumold_val
  */
-template<> void vcd_trace_t<sc_dt::sc_fxnum, double>::record(FILE* os){
-    vcdEmitValueChange32(os, fst_hndl, 64, *reinterpret_cast<uint64_t*>(&old_val));
+template<> vcd_trace::trace_type vcd_trace_t<sc_dt::sc_fxnum, sc_dt::sc_fxval>::get_type(){
+    return vcd_trace::REAL;
 }
+template<> unsigned vcd_trace_t<sc_dt::sc_fxnum, sc_dt::sc_fxval>::get_bits(){
+    //FIXME: printing fxnum as real is just a workaround
+    // return act_val.wl();
+    return 1;
+}
+template<> void vcd_trace_t<sc_dt::sc_fxnum, sc_dt::sc_fxval>::record(FILE* os){
+    vcdEmitValueChangeReal(os, fst_hndl, bits, old_val);
+}
+
 /*
  * sc_dt::sc_fxnum_fast
  */
-template<> void vcd_trace_t<sc_dt::sc_fxnum_fast, double>::record(FILE* os){
-    vcdEmitValueChange32(os, fst_hndl, 64, *reinterpret_cast<uint64_t*>(&old_val));
+template<> vcd_trace::trace_type vcd_trace_t<sc_dt::sc_fxnum_fast, sc_dt::sc_fxval_fast>::get_type(){
+    return vcd_trace::REAL;
 }
+template<> unsigned vcd_trace_t<sc_dt::sc_fxnum_fast, sc_dt::sc_fxval_fast>::get_bits(){
+    //FIXME: printing fxnum_fast as real is just a workaround
+    // return act_val.wl();
+    return 1;
+}
+template<> void vcd_trace_t<sc_dt::sc_fxnum_fast, sc_dt::sc_fxval_fast>::record(FILE* os){
+    vcdEmitValueChangeReal(os, fst_hndl, bits, old_val);
+}
+
 /*
  * sc_dt::sc_bv_base
  */
 template<> void vcd_trace_t<sc_dt::sc_bv_base, sc_dt::sc_bv_base>::record(FILE* os){
     auto str = old_val.to_string();
-    vcdEmitValueChange(os, fst_hndl, bits, str.c_str());
+    auto* cstr = str.c_str();
+    auto c=*cstr;
+    if(c!='1') while(c == *(cstr+1)) cstr++;
+    vcdEmitValueChange(os, fst_hndl, bits, cstr);
 }
 
 template<> unsigned vcd_trace_t<sc_dt::sc_bv_base, sc_dt::sc_bv_base>::get_bits(){ return old_val.length(); }
@@ -256,7 +344,10 @@ template<> unsigned vcd_trace_t<sc_dt::sc_bv_base, sc_dt::sc_bv_base>::get_bits(
  */
 template<> void vcd_trace_t<sc_dt::sc_lv_base, sc_dt::sc_lv_base>::record(FILE* os){
     auto str = old_val.to_string();
-    vcdEmitValueChange(os, fst_hndl, bits, str.c_str());
+    auto* cstr = str.c_str();
+    auto c=*cstr;
+    if(c!='1') while(c == *(cstr+1)) cstr++;
+    vcdEmitValueChange(os, fst_hndl, bits, cstr);
 }
 
 template<> unsigned vcd_trace_t<sc_dt::sc_lv_base, sc_dt::sc_lv_base>::get_bits(){ return old_val.length(); }
@@ -303,7 +394,11 @@ private:
             return;
         }
         case 1:
-            FPRINTF(os, "$var wire {} {}  {} $end\n", trc->bits, trc->fst_hndl, scoped_name);
+            if(trc->type==vcd_trace::WIRE) {
+                FPRINTF(os, "$var wire {} {}  {} $end\n", trc->bits, trc->fst_hndl, scoped_name);
+            } else {
+                FPRINTF(os, "$var real {} {} {} $end\n", trc->bits, trc->fst_hndl, scoped_name);
+            }
             break;
         default:
             FPRINTF(os, "$var wire {} {} {} [{}:0] $end\n", trc->bits, trc->fst_hndl, scoped_name, trc->bits-1);
@@ -334,6 +429,7 @@ mt_vcd_trace_file::mt_vcd_trace_file(const char *name, std::function<bool()> &en
 
 mt_vcd_trace_file::~mt_vcd_trace_file() {
     if (vcd_out){
+        FPRINTF(vcd_out, "#{}\n", sc_core::sc_time_stamp()/1_ps);
         fclose(vcd_out);
     }
 }
@@ -347,11 +443,11 @@ bool changed(vcd_trace* trace) {
         return false;
 }
 #define DECL_TRACE_METHOD_A(tp) void mt_vcd_trace_file::trace(const tp& object, const std::string& name)\
-        {all_traces.emplace_back(&changed<tp>, new vcd_trace_t<tp>(object, name));}
+		{all_traces.emplace_back(&changed<tp>, new vcd_trace_t<tp>(object, name));}
 #define DECL_TRACE_METHOD_B(tp) void mt_vcd_trace_file::trace(const tp& object, const std::string& name, int width)\
-        {all_traces.emplace_back(&changed<tp>, new vcd_trace_t<tp>(object, name));}
+		{all_traces.emplace_back(&changed<tp>, new vcd_trace_t<tp>(object, name));}
 #define DECL_TRACE_METHOD_C(tp, tpo) void mt_vcd_trace_file::trace(const tp& object, const std::string& name)\
-        {all_traces.emplace_back(&changed<tp, tpo>, new vcd_trace_t<tp, tpo>(object, name));}
+		{all_traces.emplace_back(&changed<tp, tpo>, new vcd_trace_t<tp, tpo>(object, name));}
 
 #if (SYSTEMC_VERSION >= 20171012)
 void mt_vcd_trace_file::trace(const sc_core::sc_event& object, const std::string& name){}
@@ -384,8 +480,8 @@ DECL_TRACE_METHOD_A( sc_dt::sc_unsigned )
 
 DECL_TRACE_METHOD_A( sc_dt::sc_fxval )
 DECL_TRACE_METHOD_A( sc_dt::sc_fxval_fast )
-DECL_TRACE_METHOD_C( sc_dt::sc_fxnum, double)
-DECL_TRACE_METHOD_C( sc_dt::sc_fxnum_fast, double)
+DECL_TRACE_METHOD_C( sc_dt::sc_fxnum, sc_dt::sc_fxval)
+DECL_TRACE_METHOD_C( sc_dt::sc_fxnum_fast, sc_dt::sc_fxval_fast)
 
 DECL_TRACE_METHOD_A( sc_dt::sc_bv_base )
 DECL_TRACE_METHOD_A( sc_dt::sc_lv_base )
@@ -393,6 +489,7 @@ DECL_TRACE_METHOD_A( sc_dt::sc_lv_base )
 #undef DECL_TRACE_METHOD_B
 
 void mt_vcd_trace_file::trace(const unsigned int &object, const std::string &name, const char **enum_literals) {
+    all_traces.emplace_back(&changed<unsigned int>, new vcd_trace_enum(object, name, enum_literals));
 }
 
 std::string mt_vcd_trace_file::obtain_name() {
@@ -444,8 +541,8 @@ void mt_vcd_trace_file::init() {
         scope.add_trace(e.trc);
     }
     std::copy_if(std::begin(all_traces), std::end(all_traces),
-                std::back_inserter(active_traces),
-                [](trace_entry const& e) { return !e.trc->is_alias; });
+            std::back_inserter(active_traces),
+            [](trace_entry const& e) { return !e.trc->is_alias; });
     changed_traces.reserve(active_traces.size());
     //date:
     char tbuf[200];

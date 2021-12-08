@@ -800,14 +800,14 @@ vcd_sc_fxnum_trace::vcd_sc_fxnum_trace( const sc_dt::sc_fxnum& object_,
         const std::string& vcd_name_ )
 : vcd_trace( name_, vcd_name_ ),
   object( object_ ),
-  old_value( object_)
+  old_value( object_.value())
 {
 }
 
 bool
 vcd_sc_fxnum_trace::changed()
 {
-    return object != old_value;
+    return object.value() != old_value;
 }
 
 void
@@ -831,7 +831,7 @@ vcd_sc_fxnum_trace::write( FILE* f )
     compose_data_line( &rawdata[0], &compdata[0] );
 
     std::fputs( &compdata[0], f );
-    old_value = object;
+    old_value = object.value();
 }
 
 void
@@ -867,14 +867,14 @@ vcd_sc_fxnum_fast_trace::vcd_sc_fxnum_fast_trace(
         const std::string& vcd_name_ )
 : vcd_trace( name_, vcd_name_ ),
   object( object_ ),
-  old_value(object)
+  old_value(object.value())
 {
 }
 
 bool
 vcd_sc_fxnum_fast_trace::changed()
 {
-    return object != old_value;
+    return object.value() != old_value;
 }
 
 void
@@ -898,7 +898,7 @@ vcd_sc_fxnum_fast_trace::write( FILE* f )
     compose_data_line( &rawdata[0], &compdata[0] );
 
     std::fputs( &compdata[0], f );
-    old_value = object;
+    old_value = object.value();
 }
 
 void
