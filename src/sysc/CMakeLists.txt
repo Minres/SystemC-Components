@@ -41,7 +41,6 @@ set(LIB_SOURCES
     #scc/scv/scv_tr_binary.cpp
     scc/scv/scv_tr_mtc.cpp
     scc/sc_vcd_trace.cpp
-    scc/mt_vcd_trace.cpp
     scc/fst_trace.cpp
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp

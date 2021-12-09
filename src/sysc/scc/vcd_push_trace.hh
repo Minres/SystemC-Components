@@ -15,31 +15,31 @@
  *******************************************************************************/
 
 
-#ifndef SCC_MT_VCD_TRACE_H
-#define SCC_MT_VCD_TRACE_H
+#ifndef SCC_VCD_PUSH_TRACE_H
+#define SCC_VCD_PUSH_TRACE_H
 
-#include <systemc>
 #include <sysc/tracing/sc_trace.h>
+#include "trace_observer.h"
+#include <deque>
+#include <vector>
 #include <functional>
-#include <fstream>
 
 namespace sc_core {
 class sc_time;
 }
 namespace scc {
-
+namespace trace {
 class vcd_trace;
+}
+struct vcd_push_trace_file : public sc_core::sc_trace_file, public trace_observer {
 
-struct mt_vcd_trace_file : public sc_core::sc_trace_file {
+    vcd_push_trace_file(const char *name, std::function<bool()>& enable);
 
-    mt_vcd_trace_file(const char *name, std::function<bool()>& enable);
-
-    virtual ~mt_vcd_trace_file();
+    virtual ~vcd_push_trace_file();
 
 protected:
 #define DECL_TRACE_METHOD_A(tp) void trace(const tp& object, const std::string& name) override;
 #define DECL_TRACE_METHOD_B(tp) void trace(const tp& object, const std::string& name, int width) override;
-
 #if (SYSTEMC_VERSION >= 20171012)
     DECL_TRACE_METHOD_A( sc_core::sc_event )
     DECL_TRACE_METHOD_A( sc_core::sc_time )
@@ -47,7 +47,6 @@ protected:
     DECL_TRACE_METHOD_A( bool )
     DECL_TRACE_METHOD_A( sc_dt::sc_bit )
     DECL_TRACE_METHOD_A( sc_dt::sc_logic )
-
     DECL_TRACE_METHOD_B( unsigned char )
     DECL_TRACE_METHOD_B( unsigned short )
     DECL_TRACE_METHOD_B( unsigned int )
@@ -61,19 +60,16 @@ protected:
     DECL_TRACE_METHOD_B( long )
     DECL_TRACE_METHOD_B( sc_dt::int64 )
     DECL_TRACE_METHOD_B( sc_dt::uint64 )
-
     DECL_TRACE_METHOD_A( float )
     DECL_TRACE_METHOD_A( double )
     DECL_TRACE_METHOD_A( sc_dt::sc_int_base )
     DECL_TRACE_METHOD_A( sc_dt::sc_uint_base )
     DECL_TRACE_METHOD_A( sc_dt::sc_signed )
     DECL_TRACE_METHOD_A( sc_dt::sc_unsigned )
-
     DECL_TRACE_METHOD_A( sc_dt::sc_fxval )
     DECL_TRACE_METHOD_A( sc_dt::sc_fxval_fast )
     DECL_TRACE_METHOD_A( sc_dt::sc_fxnum )
     DECL_TRACE_METHOD_A( sc_dt::sc_fxnum_fast )
-
     DECL_TRACE_METHOD_A( sc_dt::sc_bv_base )
     DECL_TRACE_METHOD_A( sc_dt::sc_lv_base )
 #undef DECL_TRACE_METHOD_A
@@ -83,13 +79,47 @@ protected:
             const std::string& name,
             const char** enum_literals ) override;
 
+#define DECL_REGISTER_METHOD_A(tp) trace_handle* register_trace(tp const& o, std::string const& nm) override;
+#define DECL_REGISTER_METHOD_B(tp) trace_handle* register_trace(tp const& o, std::string const& nm, int width) override;
+    DECL_REGISTER_METHOD_A( bool )
+    DECL_REGISTER_METHOD_A( sc_dt::sc_bit )
+    DECL_REGISTER_METHOD_A( sc_dt::sc_logic )
+
+    DECL_REGISTER_METHOD_B( unsigned char )
+    DECL_REGISTER_METHOD_B( unsigned short )
+    DECL_REGISTER_METHOD_B( unsigned int )
+    DECL_REGISTER_METHOD_B( unsigned long )
+    DECL_REGISTER_METHOD_B( char )
+    DECL_REGISTER_METHOD_B( short )
+    DECL_REGISTER_METHOD_B( int )
+    DECL_REGISTER_METHOD_B( long )
+    DECL_REGISTER_METHOD_B( sc_dt::int64 )
+    DECL_REGISTER_METHOD_B( sc_dt::uint64 )
+
+    DECL_REGISTER_METHOD_A( float )
+    DECL_REGISTER_METHOD_A( double )
+    DECL_REGISTER_METHOD_A( sc_dt::sc_int_base )
+    DECL_REGISTER_METHOD_A( sc_dt::sc_uint_base )
+    DECL_REGISTER_METHOD_A( sc_dt::sc_signed )
+    DECL_REGISTER_METHOD_A( sc_dt::sc_unsigned )
+
+    DECL_REGISTER_METHOD_A( sc_dt::sc_fxval )
+    DECL_REGISTER_METHOD_A( sc_dt::sc_fxval_fast )
+    DECL_REGISTER_METHOD_A( sc_dt::sc_fxnum )
+    DECL_REGISTER_METHOD_A( sc_dt::sc_fxnum_fast )
+
+    DECL_REGISTER_METHOD_A( sc_dt::sc_bv_base )
+    DECL_REGISTER_METHOD_A( sc_dt::sc_lv_base )
+#undef DECL_REGISTER_METHOD_A
+#undef DECL_REGISTER_METHOD_B
+
     // Output a comment to the trace file
-     void write_comment(const std::string& comment) override;
+    void write_comment(const std::string& comment) override;
 
     // Write trace info for cycle.
-     void cycle(bool delta_cycle) override;
+    void cycle(bool delta_cycle) override;
 
-     void set_time_unit( double v, sc_core::sc_time_unit tu ) override;
+    void set_time_unit( double v, sc_core::sc_time_unit tu ) override;
 
 private:
 #if WITH_SC_TRACING_PHASE_CALLBACKS
@@ -103,23 +133,24 @@ private:
     std::function<bool()> check_enabled;
 
     FILE* vcd_out{nullptr};
-    struct trace_entry {
-        bool (*compare_and_update)(vcd_trace*);
-        vcd_trace* trc;
-        trace_entry(bool (*compare_and_update)(vcd_trace*), vcd_trace* trc):compare_and_update{compare_and_update}, trc{trc}{}
+    struct trace_entry: public trace_handle {
+        bool (*compare_and_update)(trace::vcd_trace*);
+        trace::vcd_trace* trc;
+        vcd_push_trace_file* that;
+        void notify_change() override;
+        trace_entry(vcd_push_trace_file* owner, bool (*compare_and_update)(trace::vcd_trace*), trace::vcd_trace* trc)
+        :compare_and_update{compare_and_update}, trc{trc}, that{owner}{}
+        virtual ~trace_entry(){}
     };
-    std::vector<trace_entry> all_traces, active_traces;
-    std::vector<vcd_trace*> changed_traces;;
+    std::deque<trace_entry> all_traces;
+    std::vector<trace_entry> active_traces;
+    std::vector<trace::vcd_trace*> changed_traces;
+    std::vector<trace::vcd_trace*> triggered_traces;
     bool initialized{false};
     unsigned vcd_name_index{0};
     std::string name;
 };
 
-// ----------------------------------------------------------------------------
-sc_core::sc_trace_file *create_mt_vcd_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());
-
-void close_mt_vcd_trace_file( sc_core::sc_trace_file* tf );
-
 } // namesoace scc
 
-#endif // SCC_VCD_TRACE_H
+#endif // SCC_VCD_PUSH_TRACE_H
