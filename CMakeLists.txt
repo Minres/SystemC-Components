@@ -4,8 +4,6 @@ cmake_policy(SET CMP0077 NEW)
 
 project(scc VERSION 1.0.0 LANGUAGES CXX C)
 
-option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
-
 option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
@@ -15,15 +13,16 @@ option(SC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase c
 
 option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse callbacks for tracing. It needs to match the SystemC build configuration" OFF)
 
-
-
 include(Common)
 
 if(CMAKE_PROJECT_NAME STREQUAL "scc")
 	option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
+	option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ON)
 	include(GNUInstallDirs)
 	include(Conan)
 	setup_conan(TARGETS)
+else()
+	option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 endif()
 
 if(BUILD_SCC_DOCUMENTATION)
