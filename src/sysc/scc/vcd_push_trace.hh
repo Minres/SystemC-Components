@@ -19,6 +19,7 @@
 #define SCC_VCD_PUSH_TRACE_H
 
 #include <sysc/tracing/sc_trace.h>
+#include <sysc/kernel/sc_ver.h>
 #include "trace_observer.h"
 #include <deque>
 #include <vector>
@@ -151,6 +152,6 @@ private:
     std::string name;
 };
 
-} // namesoace scc
+} // namespace scc
 
 #endif // SCC_VCD_PUSH_TRACE_H

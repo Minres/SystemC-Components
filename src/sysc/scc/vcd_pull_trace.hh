@@ -18,6 +18,7 @@
 #define SCC_VCD_PULL_TRACE_H
 
 #include <sysc/tracing/sc_trace.h>
+#include <sysc/kernel/sc_ver.h>
 #include <vector>
 #include <functional>
 

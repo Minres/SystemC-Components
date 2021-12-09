@@ -113,7 +113,7 @@ private:
 };
 
 struct vcd_trace {
-    vcd_trace(std::string const& nm, trace::trace_type t, unsigned bits): name{nm}, type{t}, bits{bits}{}
+    vcd_trace(std::string const& nm, trace_type t, unsigned bits): name{nm}, bits{bits}, type{t}{}
 
     virtual void record(FILE* os) = 0;
 
@@ -128,7 +128,7 @@ struct vcd_trace {
     bool is_alias{false};
     bool is_triggered{false};
     const unsigned bits;
-    const trace::trace_type type;
+    const trace_type type;
 };
 
 namespace {

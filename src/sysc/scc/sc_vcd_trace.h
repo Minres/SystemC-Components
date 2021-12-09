@@ -17,19 +17,9 @@
 #ifndef SCC_SC_VCD_TRACE_H
 #define SCC_SC_VCD_TRACE_H
 
-#include <sysc/tracing/sc_trace.h>
+#include "trace.h"
 
 namespace scc {
-//! create VCD file which uses pull mechanism
-sc_core::sc_trace_file *create_vcd_pull_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());
-//! close the VCD file
-void close_vcd_pull_trace_file( sc_core::sc_trace_file* tf );
-
-//! create VCD file which uses pull mechanism
-sc_core::sc_trace_file *create_vcd_push_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());
-//! close the VCD file
-void close_vcd_push_trace_file( sc_core::sc_trace_file* tf );
-
 //! keep backward compatibility
 inline sc_core::sc_trace_file *scc_create_vcd_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>()) {
     return create_vcd_pull_trace_file(name, enable);

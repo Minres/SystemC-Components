@@ -22,7 +22,6 @@
 #endif
 #include "scc/ext_attribute.h"
 #include "scc/fifo_w_cb.h"
-#include "scc/fst_trace.h"
 #include <scc/vcd_push_trace.hh>
 #include "scc/mt19937_rng.h"
 #include "scc/ordered_semaphore.h"
@@ -38,6 +37,7 @@
 #include "scc/tick2time.h"
 #include "scc/time2tick.h"
 #include "scc/traceable.h"
+#include "scc/trace.h"
 #include "scc/tracer.h"
 #include "scc/tracer_base.h"
 #include "scc/utilities.h"
