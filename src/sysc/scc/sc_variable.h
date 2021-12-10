@@ -63,7 +63,7 @@ struct sc_variable_b : sc_core::sc_object {
     virtual std::string to_string() const { return ""; };
 };
 /**
- * @struct sc_variable_t
+ * @struct sc_variable
  * @brief the sc_variable for a particular plain data type
  *
  * @tparam T the data type of the wrapped value
@@ -78,7 +78,7 @@ template <typename T> struct sc_variable : public sc_variable_b {
      */
     const T& operator*() { return value; }
     /**
-     * @fn  sc_variable_t(const std::string&, const T&)
+     * @fn  sc_variable(const std::string&, const T&)
      * @brief constructor taking a name and a reference of the variable to be wrapped
      *
      * @param name the name
@@ -317,7 +317,7 @@ template <typename T> struct sc_ref_variable : public sc_variable_b {
      */
     const T& operator*() { return value; }
     /**
-     * @fn  sc_variable_t(const std::string&, const T&)
+     * @fn  sc_variable(const std::string&, const T&)
      * @brief constructor taking a name and a reference of the variable to be wrapped
      *
      * @param name the name
@@ -348,7 +348,7 @@ template <typename T> struct sc_ref_variable : public sc_variable_b {
     }
 };
 /**
- * @struct sc_variable_masked_t
+ * @struct sc_variable_masked
  * @brief the sc_variable for a particular plain data type with limited bit width
  *
  * @tparam T the data type of the wrapped value

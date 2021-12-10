@@ -28,7 +28,7 @@
 
 using namespace sc_core;
 using namespace sc_dt;
-using namespace scc;
+namespace scc {
 
 template <typename T, typename std::enable_if<std::is_class<T>::value, int>::type = 0>
 inline auto trace_helper(sc_trace_file* trace_file, const sc_object* object) -> bool {
@@ -297,4 +297,5 @@ void tracer_base::descend(const sc_object* obj, bool trace_all) {
     } else {
         try_trace(trf, obj, types_to_trace);
     }
+}
 }

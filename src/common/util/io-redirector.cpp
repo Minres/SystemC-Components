@@ -25,7 +25,7 @@
 #include <poll.h>
 #include <thread>
 #endif
-
+namespace util {
 IoRedirector::IoRedirector()
 : m_oldStdOut(0)
 , m_oldStdErr(0)
@@ -172,4 +172,5 @@ void IoRedirector::close_fd(int& fd) {
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
     } while(ret < 0);
     fd = -1;
+}
 }

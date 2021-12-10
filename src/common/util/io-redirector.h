@@ -21,6 +21,7 @@
 #include <mutex>
 #include <stdio.h>
 
+namespace util {
 class IoRedirector {
     enum { bufSize = 1024 };
 
@@ -55,5 +56,5 @@ private:
     std::mutex m_mutex;
     std::string m_captured;
 };
-
-#endif /* SC_COMPONENTS_INCL_UTIL_IO_REDIRECTOR_H_ */
+} //namespace util
+#endif /* _UTIL_IO_REDIRECTOR_H_ */
