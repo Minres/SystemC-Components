@@ -216,13 +216,13 @@ private:
 
     // Initialize the VCD tracing
     virtual void do_initialize();
-    void print_time_stamp(sc_trace_file_base::unit_type now_units_high, sc_trace_file_base::unit_type now_units_low) const;
-    bool get_time_stamp(sc_trace_file_base::unit_type &now_units_high, sc_trace_file_base::unit_type &now_units_low) const;
+    void print_time_stamp(sc_core::sc_trace_file_base::unit_type now_units_high, sc_core::sc_trace_file_base::unit_type now_units_low) const;
+    bool get_time_stamp(sc_core::sc_trace_file_base::unit_type &now_units_high, sc_core::sc_trace_file_base::unit_type &now_units_low) const;
 
     unsigned vcd_name_index;           // Number of variables traced
 
-    sc_trace_file_base::unit_type previous_time_units_low;
-    sc_trace_file_base::unit_type previous_time_units_high;
+    sc_core::sc_trace_file_base::unit_type previous_time_units_low;
+    sc_core::sc_trace_file_base::unit_type previous_time_units_high;
     std::function<bool()> check_enabled;
 public:
 
