@@ -1,0 +1,4 @@
+<map id="axi::axi_target_base" name="axi::axi_target_base">
+<area shape="rect" id="node1" title="axi_target class instantiates the AXI Protocol Engine. It accesses the Protocol Engine with access() ..." alt="" coords="5,80,160,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="37,5,129,32"/>
+</map>

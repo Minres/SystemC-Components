@@ -1,0 +1,10 @@
+<map id="scc::sc_variable" name="scc::sc_variable">
+<area shape="rect" id="node1" title="SystemC variable." alt="" coords="136,166,261,193"/>
+<area shape="rect" id="node3" href="$structscc_1_1sc__variable__t.html" title=" " alt="" coords="332,5,469,47"/>
+<area shape="rect" id="node4" href="$structscc_1_1sc__variable__masked__t.html" title="the sc_variable for a particular plain data type with limited bit width" alt="" coords="309,71,492,112"/>
+<area shape="rect" id="node5" href="$structscc_1_1sc__variable__t.html" title="the sc_variable for a particular plain data type" alt="" coords="313,137,488,163"/>
+<area shape="rect" id="node6" href="$structscc_1_1sc__variable__t_3_01sc__core_1_1sc__event_01_4.html" title=" " alt="" coords="317,188,484,229"/>
+<area shape="rect" id="node7" href="$structscc_1_1sc__variable__t_3_01std_1_1array_3_01T_00_01S_01_4_01_4.html" title=" " alt="" coords="317,253,485,295"/>
+<area shape="rect" id="node8" href="$structscc_1_1sc__variable__t_3_01std_1_1vector_3_01T_01_4_01_4.html" title=" " alt="" coords="321,319,480,360"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,166,88,193"/>
+</map>

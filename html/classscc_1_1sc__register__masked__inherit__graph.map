@@ -1,0 +1,7 @@
+<map id="scc::sc_register_masked&lt; DATATYPE, WRMASK, RDMASK &gt;" name="scc::sc_register_masked&lt; DATATYPE, WRMASK, RDMASK &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="75,155,325,196"/>
+<area shape="rect" id="node2" href="$classscc_1_1impl_1_1sc__register.html" title="a simple register implementation" alt="" coords="106,80,294,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node4" href="$classscc_1_1resource__access__if.html" title="interface defining access to a resource e.g. a register" alt="" coords="113,5,287,32"/>
+<area shape="rect" id="node5" href="$classscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="312,5,424,32"/>
+</map>

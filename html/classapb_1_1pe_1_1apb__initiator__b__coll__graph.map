@@ -1,0 +1,10 @@
+<map id="apb::pe::apb_initiator_b" name="apb::pe::apb_initiator_b">
+<area shape="rect" id="node1" title=" " alt="" coords="923,104,1097,131"/>
+<area shape="rect" id="node2" title=" " alt="" coords="695,5,787,32"/>
+<area shape="rect" id="node3" title=" " alt="" coords="640,56,843,112"/>
+<area shape="rect" id="node4" href="$structscc_1_1peq.html" title=" " alt="" coords="449,124,616,180"/>
+<area shape="rect" id="node5" title=" " alt="" coords="59,147,141,173"/>
+<area shape="rect" id="node7" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="244,205,425,232"/>
+<area shape="rect" id="node6" href="$structscc_1_1ordered__semaphore__t.html" title=" " alt="" coords="651,199,832,241"/>
+<area shape="rect" id="node8" title=" " alt="" coords="5,205,195,232"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="scc::time2tick" name="scc::time2tick">
+<area shape="rect" id="node1" title="translate a tick&#45;less clock (sc_time based) to boolean clock" alt="" coords="5,80,119,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="16,5,108,32"/>
+</map>
