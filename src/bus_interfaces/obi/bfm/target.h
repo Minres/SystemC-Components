@@ -77,8 +77,6 @@ private:
     tlm::scc::tlm_gp_shared_ptr achannel_active_tx;
     std::deque<std::tuple<tlm::scc::tlm_gp_shared_ptr, unsigned>> rchannel_pending_rsp;
     scc::peq<tlm::scc::tlm_gp_shared_ptr> rchannel_rsp;
-    //std::pair<tlm::scc::tlm_gp_shared_ptr, tlm::tlm_phase> rchannel_req;
-    std::vector<std::deque<std::tuple<tlm::scc::tlm_gp_shared_ptr, tlm::tlm_phase, uint64_t>>> pending_tx;
     uint64_t clk_cnt{0};
     struct tx_state {
         bool isAddrPhaseFinished(){ return state & 0x1;}
@@ -136,7 +134,6 @@ target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::nb_transport_bw(
     auto id = obi::get_obi_id(trans);
     auto* ext = trans.get_extension<obi::obi_extension>();
     sc_assert(ext && "obi_extension missing");
-    auto& q = pending_tx[ext->get_id()].front();
     switch(phase){
     case tlm::END_REQ:{
         auto it=states.find(&trans);
@@ -209,12 +206,12 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::achannel_req_t
         auto delay = sc_core::SC_ZERO_TIME;
         auto ret = isckt->nb_transport_fw(*achannel_active_tx, phase, delay);
         auto id = ext->get_id();
-        if(pending_tx.size()<=id) pending_tx.resize(id+1);
-        pending_tx[id].emplace_back(std::make_tuple(achannel_active_tx, phase, clk_cnt));
+        auto startResp=false;
         if (ret == tlm::TLM_UPDATED) {
             state.setReqFinished();
             if (phase == tlm::BEGIN_RESP) {
                 state.setRespStarted();
+                startResp=true;
             } else if(phase != tlm::END_REQ){
                 SCCFATAL(SCMOD) << "Bummer: nyi";
             }
@@ -228,7 +225,7 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::achannel_req_t
         gnt_o.write(true);
         wait(clk_i.posedge_event());
         state.setAddrPhaseFinished();
-        if(state.isRespStarted()) {
+        if(startResp) {
             unsigned resp_delay = addr2data_delay<0?scc::MT19937::uniform(0, -addr2data_delay):addr2data_delay;
             if(resp_delay) {
                 rchannel_pending_rsp.push_back({achannel_active_tx, resp_delay-1});
