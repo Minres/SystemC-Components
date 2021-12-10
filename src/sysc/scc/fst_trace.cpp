@@ -334,7 +334,7 @@ DECL_REGISTER_METHOD_A( sc_dt::sc_lv_base )
 #undef DECL_REGISTER_METHOD_C
 
 void fst_trace_file::trace_entry::notify_change() {
-    if(!trc->is_alias)
+    if(!trc->is_alias && compare_and_update(trc))
         that->triggered_traces.push_back(trc);
 }
 

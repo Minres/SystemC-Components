@@ -168,7 +168,7 @@ DECL_REGISTER_METHOD_A( sc_dt::sc_lv_base )
 #undef DECL_REGISTER_METHOD_C
 
 void vcd_push_trace_file::trace_entry::notify_change() {
-    if(!trc->is_alias)
+    if(!trc->is_alias && compare_and_update(trc))
         that->triggered_traces.push_back(trc);
 }
 
@@ -276,8 +276,10 @@ void vcd_push_trace_file::cycle(bool delta_cycle) {
         initialized=true;
         FPRINT(vcd_out, "$enddefinitions  $end\n\n$dumpvars\n");
         for(auto& e: all_traces)
-            if(!e.trc->is_alias)
-                e.trc->update_and_record(vcd_out);
+            if(!e.trc->is_alias){
+                e.compare_and_update(e.trc);
+                e.trc->record(vcd_out);
+            }
         FPRINT(vcd_out, "$end\n\n");
     } else {
         if(check_enabled && !check_enabled()) return;

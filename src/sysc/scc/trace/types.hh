@@ -21,12 +21,6 @@
 #include <systemc>
 #include <sysc/datatypes/fx/fx.h>
 #include <sysc/tracing/sc_tracing_ids.h>
-#include <util/ities.h>
-#include <scc/utilities.h>
-#include <fmt/format.h>
-#include <vector>
-#include <unordered_map>
-#include <cstdio>
 
 namespace scc {
 namespace trace {

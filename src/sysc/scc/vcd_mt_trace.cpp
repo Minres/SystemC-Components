@@ -14,11 +14,12 @@
  * limitations under the License.
  *******************************************************************************/
 
+#include "vcd_mt_trace.hh"
+#define FWRITE(BUF, SZ, LEN, FP) gzwrite(FP, BUF, SZ*LEN)
+#define FPTR gzFile
 #include "trace/vcd_trace.hh"
 #include "utilities.h"
 #include "sc_vcd_trace.h"
-#include "vcd_pull_trace.hh"
-
 #include <cstdlib>
 #include <cstring>
 #include <limits>
@@ -31,20 +32,19 @@
 #include <sstream>
 #include <stdexcept>
 #include <cmath>
-#include <cstdio>
 
-#define FPRINT(FP, FMTSTR)       {auto buf = fmt::format(FMTSTR);std::fwrite(buf.c_str(), 1, buf.size(), FP);}
-#define FPRINTF(FP, FMTSTR, ...) {auto buf = fmt::format(FMTSTR, __VA_ARGS__);std::fwrite(buf.c_str(), 1, buf.size(), FP);}
+#define FPRINT(FP, FMTSTR)       {auto buf = fmt::format(FMTSTR);FWRITE(buf.c_str(), 1, buf.size(), FP);}
+#define FPRINTF(FP, FMTSTR, ...) {auto buf = fmt::format(FMTSTR, __VA_ARGS__);FWRITE(buf.c_str(), 1, buf.size(), FP);}
 
 namespace scc {
 /*******************************************************************************************************
  *
  *******************************************************************************************************/
-vcd_pull_trace_file::vcd_pull_trace_file(const char *name, std::function<bool()> &enable)
+vcd_mt_trace_file::vcd_mt_trace_file(const char *name, std::function<bool()> &enable)
 :name(name)
 , check_enabled(enable)
 {
-    vcd_out = fopen(fmt::format("{}.vcd", name).c_str(), "w");
+    vcd_out = gzopen(fmt::format("{}.vcd.gz", name).c_str(), "w");
 
 #if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
@@ -56,10 +56,11 @@ vcd_pull_trace_file::vcd_pull_trace_file(const char *name, std::function<bool()>
 #endif
 }
 
-vcd_pull_trace_file::~vcd_pull_trace_file() {
+vcd_mt_trace_file::~vcd_mt_trace_file() {
+    tp.finish();
     if (vcd_out){
         FPRINTF(vcd_out, "#{}\n", sc_core::sc_time_stamp()/1_ps);
-        fclose(vcd_out);
+        gzclose(vcd_out);
     }
 }
 
@@ -71,17 +72,16 @@ bool changed(trace::vcd_trace* trace) {
     } else
         return false;
 }
-#define DECL_TRACE_METHOD_A(tp) void vcd_pull_trace_file::trace(const tp& object, const std::string& name)\
-        {all_traces.emplace_back(&changed<tp>, new trace::vcd_trace_t<tp>(object, name));}
-#define DECL_TRACE_METHOD_B(tp) void vcd_pull_trace_file::trace(const tp& object, const std::string& name, int width)\
-        {all_traces.emplace_back(&changed<tp>, new trace::vcd_trace_t<tp>(object, name));}
-#define DECL_TRACE_METHOD_C(tp, tpo) void vcd_pull_trace_file::trace(const tp& object, const std::string& name)\
-        {all_traces.emplace_back(&changed<tp, tpo>, new trace::vcd_trace_t<tp, tpo>(object, name));}
+#define DECL_TRACE_METHOD_A(tp) void vcd_mt_trace_file::trace(const tp& object, const std::string& name)\
+		{all_traces.emplace_back(this, &changed<tp>, new trace::vcd_trace_t<tp>(object, name));}
+#define DECL_TRACE_METHOD_B(tp) void vcd_mt_trace_file::trace(const tp& object, const std::string& name, int width)\
+		{all_traces.emplace_back(this, &changed<tp>, new trace::vcd_trace_t<tp>(object, name));}
+#define DECL_TRACE_METHOD_C(tp, tpo) void vcd_mt_trace_file::trace(const tp& object, const std::string& name)\
+		{all_traces.emplace_back(this, &changed<tp, tpo>, new trace::vcd_trace_t<tp, tpo>(object, name));}
 
 #if (SYSTEMC_VERSION >= 20171012)
-void vcd_pull_trace_file::trace(const sc_core::sc_event& object, const std::string& name){}
-//void vcd_pull_trace_file::trace(const sc_core::sc_time& object, const std::string& name){}
-DECL_TRACE_METHOD_A( sc_core::sc_time )
+void vcd_mt_trace_file::trace(const sc_core::sc_event& object, const std::string& name){}
+void vcd_mt_trace_file::trace(const sc_core::sc_time& object, const std::string& name){}
 #endif
 DECL_TRACE_METHOD_A( bool )
 DECL_TRACE_METHOD_A( sc_dt::sc_bit )
@@ -117,12 +117,64 @@ DECL_TRACE_METHOD_A( sc_dt::sc_bv_base )
 DECL_TRACE_METHOD_A( sc_dt::sc_lv_base )
 #undef DECL_TRACE_METHOD_A
 #undef DECL_TRACE_METHOD_B
+#undef DECL_TRACE_METHOD_C
 
-void vcd_pull_trace_file::trace(const unsigned int &object, const std::string &name, const char **enum_literals) {
-    all_traces.emplace_back(&changed<unsigned int>, new trace::vcd_trace_enum(object, name, enum_literals));
+void vcd_mt_trace_file::trace(const unsigned int &object, const std::string &name, const char **enum_literals) {
+    all_traces.emplace_back(this, &changed<unsigned int>, new trace::vcd_trace_enum(object, name, enum_literals));
 }
 
-std::string vcd_pull_trace_file::obtain_name() {
+#define DECL_REGISTER_METHOD_A(tp) trace_handle* vcd_mt_trace_file::register_trace(const tp& object, const std::string& name){\
+		all_traces.emplace_back(this, &changed<tp>, new trace::vcd_trace_t<tp>(object, name)); \
+		all_traces.back().trc->is_triggered=true; return &all_traces.back();}
+#define DECL_REGISTER_METHOD_B(tp) trace_handle* vcd_mt_trace_file::register_trace(const tp& object, const std::string& name, int width){\
+		all_traces.emplace_back(this, &changed<tp>, new trace::vcd_trace_t<tp>(object, name)); \
+		all_traces.back().trc->is_triggered=true; return &all_traces.back();}
+#define DECL_REGISTER_METHOD_C(tp, tpo) trace_handle* vcd_mt_trace_file::register_trace(const tp& object, const std::string& name){\
+		all_traces.emplace_back(this, &changed<tp, tpo>, new trace::vcd_trace_t<tp, tpo>(object, name)); \
+		all_traces.back().trc->is_triggered=true; return &all_traces.back();}
+
+DECL_REGISTER_METHOD_A( bool )
+DECL_REGISTER_METHOD_A( sc_dt::sc_bit )
+DECL_REGISTER_METHOD_A( sc_dt::sc_logic )
+
+DECL_REGISTER_METHOD_B( unsigned char )
+DECL_REGISTER_METHOD_B( unsigned short )
+DECL_REGISTER_METHOD_B( unsigned int )
+DECL_REGISTER_METHOD_B( unsigned long )
+#ifdef SYSTEMC_64BIT_PATCHES
+DECL_REGISTER_METHOD_B( unsigned long long)
+#endif
+DECL_REGISTER_METHOD_B( char )
+DECL_REGISTER_METHOD_B( short )
+DECL_REGISTER_METHOD_B( int )
+DECL_REGISTER_METHOD_B( long )
+DECL_REGISTER_METHOD_B( sc_dt::int64 )
+DECL_REGISTER_METHOD_B( sc_dt::uint64 )
+
+DECL_REGISTER_METHOD_A( float )
+DECL_REGISTER_METHOD_A( double )
+DECL_REGISTER_METHOD_A( sc_dt::sc_int_base )
+DECL_REGISTER_METHOD_A( sc_dt::sc_uint_base )
+DECL_REGISTER_METHOD_A( sc_dt::sc_signed )
+DECL_REGISTER_METHOD_A( sc_dt::sc_unsigned )
+
+DECL_REGISTER_METHOD_A( sc_dt::sc_fxval )
+DECL_REGISTER_METHOD_A( sc_dt::sc_fxval_fast )
+DECL_REGISTER_METHOD_C( sc_dt::sc_fxnum, sc_dt::sc_fxval)
+DECL_REGISTER_METHOD_C( sc_dt::sc_fxnum_fast, sc_dt::sc_fxval_fast)
+
+DECL_REGISTER_METHOD_A( sc_dt::sc_bv_base )
+DECL_REGISTER_METHOD_A( sc_dt::sc_lv_base )
+#undef DECL_REGISTER_METHOD_A
+#undef DECL_REGISTER_METHOD_B
+#undef DECL_REGISTER_METHOD_C
+
+void vcd_mt_trace_file::trace_entry::notify_change() {
+    if(!trc->is_alias)
+        that->triggered_traces.push_back(this);
+}
+
+std::string vcd_mt_trace_file::obtain_name() {
     const char first_type_used = 'a';
     const int used_types_count = 'z' - 'a' + 1;
     int result;
@@ -153,11 +205,11 @@ std::string vcd_pull_trace_file::obtain_name() {
     return std::string(buf);
 }
 
-void vcd_pull_trace_file::write_comment(const std::string &comment) {
+void vcd_mt_trace_file::write_comment(const std::string &comment) {
     FPRINTF(vcd_out, "$comment\n{}\n$end\n\n", comment);
 }
 
-void vcd_pull_trace_file::init() {
+void vcd_mt_trace_file::init() {
     std::sort(std::begin(all_traces), std::end(all_traces), [](trace_entry const& a, trace_entry const& b)->bool {return a.trc->name<b.trc->name;});
     std::unordered_map<uintptr_t, std::string> alias_map;
 
@@ -172,8 +224,9 @@ void vcd_pull_trace_file::init() {
     }
     std::copy_if(std::begin(all_traces), std::end(all_traces),
             std::back_inserter(active_traces),
-            [](trace_entry const& e) { return !e.trc->is_alias; });
+            [](trace_entry const& e) { return !(e.trc->is_alias || e.trc->is_triggered); });
     changed_traces.reserve(active_traces.size());
+    triggered_traces.reserve(active_traces.size());
     //date:
     char tbuf[200];
     time_t long_time;
@@ -185,13 +238,15 @@ void vcd_pull_trace_file::init() {
     FPRINTF(vcd_out, "$version\n {}\n$end\n\n", sc_core::sc_version());
     //timescale:
     FPRINTF(vcd_out, "$timescale\n     {}\n$end\n\n", (1_ps).to_string());
+    write_comment("create using SCC VCD compressed writer");
     std::stringstream ss;
     ss<<"tracing "<<active_traces.size()<<" distinct traces out of "<<all_traces.size()<<" traces";
     write_comment(ss.str());
     scope.print(vcd_out);
+    tp.start();
 }
 
-std::string vcd_pull_trace_file::prune_name(std::string const& orig_name) {
+std::string vcd_mt_trace_file::prune_name(std::string const& orig_name) {
     static bool warned = false;
     bool braces_removed = false;
     std::string hier_name=orig_name;
@@ -218,46 +273,62 @@ std::string vcd_pull_trace_file::prune_name(std::string const& orig_name) {
     return hier_name;
 }
 
-void vcd_pull_trace_file::cycle(bool delta_cycle) {
+void record_changes(FILE* vcd_out, std::vector<trace::vcd_trace*> const& changed, std::vector<trace::vcd_trace*> const& triggered) {
+}
+
+void vcd_mt_trace_file::cycle(bool delta_cycle) {
     if(delta_cycle) return;
     if(!initialized) {
         init();
         initialized=true;
         FPRINT(vcd_out, "$enddefinitions  $end\n\n$dumpvars\n");
-        for(auto& e: active_traces){
-            e.compare_and_update(e.trc);
-            e.trc->record(vcd_out);
-        }
+        for(auto& e: all_traces)
+            if(!e.trc->is_alias) {
+                e.compare_and_update(e.trc);
+                e.trc->record(vcd_out);
+            }
         FPRINT(vcd_out, "$end\n\n");
     } else {
         if(check_enabled && !check_enabled()) return;
-        changed_traces.clear();
+        if(changed_traces.size()){
+            res.get();
+            changed_traces.clear();
+        }
         for(auto& e: active_traces) {
             if(e.compare_and_update(e.trc))
                 changed_traces.push_back(e.trc);
         }
-        if(changed_traces.size()){
-            FPRINTF(vcd_out, "#{}\n", sc_core::sc_time_stamp()/1_ps);
-            for(auto& t: changed_traces)
-                t->record(vcd_out);
+        if(triggered_traces.size() || changed_traces.size()) {
+            record_traces.clear();
+            if (triggered_traces.size()) {
+                auto it = std::unique(std::begin(triggered_traces), std::end(triggered_traces));
+                //triggered_traces.resize(std::distance(std::begin(triggered_traces), it));
+                for(auto i = std::begin(triggered_traces); i!=it; ++i) {
+                    auto e =*i;
+                    if(e->compare_and_update(e->trc)) record_traces.push_back(e->trc);
+                }
+            }
+            FPRINTF(vcd_out, "#{}\n", sc_core::sc_time_stamp() / 1_ps);
+            res = tp.enqueue([this]() {
+                for (auto t : record_traces)
+                    t->record(vcd_out);
+                for (auto t : changed_traces)
+                    t->record(vcd_out);
+                return true;
+            });
+            triggered_traces.clear();
         }
     }
 }
 
-void vcd_pull_trace_file::set_time_unit(double v, sc_core::sc_time_unit tu) {
+void vcd_mt_trace_file::set_time_unit(double v, sc_core::sc_time_unit tu) {
 }
 
-sc_core::sc_trace_file*
-create_vcd_pull_trace_file(const char * name, std::function<bool()> enable)
-{
-    return  new vcd_pull_trace_file(name, enable);
+sc_core::sc_trace_file* create_vcd_mt_trace_file(const char *name, std::function<bool()> enable) {
+    return  new vcd_mt_trace_file(name, enable);
 }
 
-void
-close_vcd_pull_trace_file( sc_core::sc_trace_file* tf )
-{
-    vcd_pull_trace_file* vcd_tf = static_cast<vcd_pull_trace_file*>(tf);
-    delete vcd_tf;
+void close_vcd_mt_trace_file(sc_core::sc_trace_file *tf) {
+    delete static_cast<vcd_mt_trace_file*>(tf);
 }
-
-} // namespace scc
+}

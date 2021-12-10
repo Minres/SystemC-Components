@@ -26,10 +26,15 @@ sc_core::sc_trace_file *create_vcd_pull_trace_file(const char* name, std::functi
 //! close the VCD file
 void close_vcd_pull_trace_file( sc_core::sc_trace_file* tf );
 
-//! create VCD file which uses pull mechanism
+//! create VCD file which uses push mechanism
 sc_core::sc_trace_file *create_vcd_push_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());
 //! close the VCD file
 void close_vcd_push_trace_file( sc_core::sc_trace_file* tf );
+
+//! create compressed VCD file which uses push mechanism and multithreading
+sc_core::sc_trace_file *create_vcd_mt_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());
+//! close the VCD file
+void close_vcd_mt_trace_file( sc_core::sc_trace_file* tf );
 
 //! create FST file which uses pull mechanism
 sc_core::sc_trace_file *create_fst_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());

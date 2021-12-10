@@ -40,6 +40,7 @@ set(LIB_SOURCES
     scc/time_n_tick.cpp
     #scc/scv/scv_tr_binary.cpp
     scc/scv/scv_tr_mtc.cpp
+    scc/vcd_mt_trace.cpp
     scc/vcd_pull_trace.cpp
     scc/vcd_push_trace.cpp
     scc/fst_trace.cpp
