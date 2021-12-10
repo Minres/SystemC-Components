@@ -52,7 +52,7 @@ public:
         if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                         \
             if(sc_module* mod = get_mod4name(name)) {                                                                  \
                 sc_get_curr_simcontext()->hierarchy_push(mod);                                                         \
-                auto* o = new sc_variable_t<tp>(name, object);                                                         \
+                auto* o = new sc_ref_variable<tp>(name, object);                                                         \
                 sc_get_curr_simcontext()->hierarchy_pop();                                                             \
                 holder[name] = o;                                                                                      \
             }                                                                                                          \
@@ -63,7 +63,7 @@ public:
         if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                         \
             if(sc_module* mod = get_mod4name(name)) {                                                                  \
                 sc_get_curr_simcontext()->hierarchy_push(mod);                                                         \
-                auto* o = new sc_variable_masked_t<tp>(name, object, width);                                           \
+                auto* o = new sc_ref_variable_masked<tp>(name, object, width);                                         \
                 sc_get_curr_simcontext()->hierarchy_pop();                                                             \
                 holder[name] = o;                                                                                      \
             }                                                                                                          \
@@ -75,7 +75,7 @@ public:
         if(sc_core::sc_find_object(name.c_str()) == nullptr) {
             if(sc_module* mod = get_mod4name(name)) {
                 sc_get_curr_simcontext()->hierarchy_push(mod);
-                auto* o = new sc_variable_t<bool>(name.substr(strlen(mod->name()) + 1), object);
+                auto* o = new sc_ref_variable<bool>(name.substr(strlen(mod->name()) + 1), object);
                 sc_get_curr_simcontext()->hierarchy_pop();
                 holder[name] = o;
             }
@@ -146,7 +146,7 @@ public:
             delete kv.second;
     }
 
-    std::unordered_map<std::string, sc_variable*> holder;
+    std::unordered_map<std::string, sc_variable_b*> holder;
 
     sc_dt::uint64 dummy = 0;
 #ifdef NCSC
@@ -170,7 +170,7 @@ auto scc::value_registry::get_names() const -> std::vector<std::string> {
     return keys;
 }
 
-auto scc::value_registry::get_value(std::string name) const -> const sc_variable* {
+auto scc::value_registry::get_value(std::string name) const -> const sc_variable_b* {
     auto* reg = dynamic_cast<value_registry_impl*>(trf);
     auto it = reg->holder.find(name);
     if(it != reg->holder.end()) {

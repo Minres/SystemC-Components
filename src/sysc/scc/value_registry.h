@@ -51,7 +51,7 @@ public:
 
     std::vector<std::string> get_names() const;
 
-    const sc_variable* get_value(std::string name) const;
+    const sc_variable_b* get_value(std::string name) const;
 
 protected:
     void end_of_elaboration() override;

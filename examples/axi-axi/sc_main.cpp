@@ -5,17 +5,11 @@
  *      Author:
  */
 
-#ifdef HAS_SCV
-#include <axi/scv/recorder_modules.h>
-#include <scv.h>
-#include <scv/scv_tr.h>
-#endif
-#include "scc/report.h"
-#include "tlm/scc/tlm_id.h"
+#include <scc.h>
 #include <array>
+#include <axi/scv/recorder_modules.h>
 #include <axi/pe/axi_initiator.h>
 #include <axi/pe/simple_target.h>
-#include <tlm/scc/tlm_mm.h>
 
 using namespace sc_core;
 using namespace axi;
@@ -61,7 +55,7 @@ public:
     }
 
     tlm::tlm_generic_payload* prepare_trans(size_t len) {
-        auto trans = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>();
+        auto trans = tlm::scc::tlm_mm<tlm::tlm_base_protocol_types, false>::get().allocate<axi::axi4_extension>();
         tlm::scc::setId(*trans, id++);
         auto ext = trans->get_extension<axi::axi4_extension>();
         trans->set_data_length(len);
@@ -124,17 +118,18 @@ int sc_main(int argc, char* argv[]) {
             .logAsync(false)
             .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
-#ifdef HAS_SCV
-    scv_startup();
-    scv_tr_text_init();
-    scv_tr_db* db = new scv_tr_db("axi_axi_test.txlog");
-    scv_tr_db::set_default_db(db);
+#ifdef HAS_CCI
+    scc::configurable_tracer trace("axi_axi_test",
+                                   scc::tracer::file_type::NONE, // define the kind of transaction trace
+                                   true,                         // enables vcd
+                                   true);
+#else
+    scc::tracer trace("axi_axi_test",
+                                   scc::tracer::file_type::NONE, // define the kind of transaction trace
+                                   true);                        // enables vcd
 #endif
     testbench tb("tb");
     sc_core::sc_start(1_ms);
     SCCINFO() << "Finished";
-#ifdef HAS_SCV
-    delete db;
-#endif
     return 0;
 }

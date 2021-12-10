@@ -13,8 +13,6 @@ option(SC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase c
 
 option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse callbacks for tracing. It needs to match the SystemC build configuration" OFF)
 
-
-
 include(Common)
 
 if(CMAKE_PROJECT_NAME STREQUAL "scc")

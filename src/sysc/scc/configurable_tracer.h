@@ -79,8 +79,10 @@ public:
      * adds default trace control attribute of name 'enableTracing' to each sc_module in a design hierarchy
      */
     void add_control() {
+        if(control_added) return;
         for(auto* o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
             augment_object_hierarchical(o);
+        control_added=true;
     }
 
 protected:
@@ -91,13 +93,14 @@ protected:
     //! add the 'enableTracing' attribute to sc_module
     void augment_object_hierarchical(const sc_core::sc_object*);
 
-    //void end_of_elaboration() override;
+    void end_of_elaboration() override;
     //! the originator of cci values
     cci::cci_originator cci_originator;
     //! the cci broker
     cci::cci_broker_handle cci_broker;
     //! array of created cci parameter
     std::vector<cci::cci_param_untyped*> params;
+    bool control_added{false};
 };
 
 } /* namespace scc */

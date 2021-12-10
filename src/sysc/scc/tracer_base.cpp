@@ -45,7 +45,7 @@ inline auto trace_helper(sc_trace_file*, const sc_object*) -> bool {
 }
 
 template <typename T> inline auto variable_trace_helper(sc_trace_file* trace_file, const sc_object* object) -> bool {
-    if(auto* ptr = dynamic_cast<const sc_variable*>(object)) {
+    if(auto* ptr = dynamic_cast<const sc_variable_b*>(object)) {
         ptr->trace(trace_file);
         return true;
     }

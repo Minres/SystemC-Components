@@ -40,8 +40,9 @@ set(LIB_SOURCES
     scc/time_n_tick.cpp
     #scc/scv/scv_tr_binary.cpp
     scc/scv/scv_tr_mtc.cpp
-    scc/sc_vcd_trace.cpp
-    scc/mt_vcd_trace.cpp
+    scc/vcd_mt_trace.cpp
+    scc/vcd_pull_trace.cpp
+    scc/vcd_push_trace.cpp
     scc/fst_trace.cpp
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp
@@ -53,7 +54,7 @@ if(ZLIB_FOUND)
 endif()
 
 if(ENABLE_SQLITE)
-    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_sqlite.cpp scc/scv/sqlite3.c )
+    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_sqlite.cpp ../../third_party/sqlite3/sqlite3.c )
 endif()
 
 if(CCI_FOUND)
@@ -78,6 +79,7 @@ target_include_directories (${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(${PROJECT_NAME} PUBLIC scc-util jsoncpp ${SPDLOG_TARGET})
 if(ENABLE_SQLITE)
     target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SQLITE)
+    target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../third_party/sqlite3)
 endif()
 if(TARGET Boost::date_time)
 	target_link_libraries(${PROJECT_NAME} PUBLIC Boost::date_time Boost::filesystem)
