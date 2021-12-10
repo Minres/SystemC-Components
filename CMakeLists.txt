@@ -4,8 +4,6 @@ cmake_policy(SET CMP0077 NEW)
 
 project(scc VERSION 1.0.0 LANGUAGES CXX C)
 
-option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
-
 option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
@@ -20,10 +18,29 @@ option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse call
 include(Common)
 
 if(CMAKE_PROJECT_NAME STREQUAL "scc")
-	option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
+	message(STATUS "Building SCC in standalone mode")
 	include(GNUInstallDirs)
-	include(Conan)
-	setup_conan(TARGETS)
+	include(ConanInline)
+	conan_check()
+	set(CONAN_PACKAGE_LIST fmt/6.1.2 zlib/1.2.11 boost/1.75.0 gsl-lite/0.37.0)
+	set(CONAN_PACKAGE_OPTIONS fmt:header_only=True boost:without_stacktrace=True boost:fPIC=True boost:shared=False boost:header_only=False)
+	if(NOT DEFINED ENV{SYSTEMC_HOME})
+	    set(CONAN_PACKAGE_LIST ${CONAN_PACKAGE_LIST} systemc/2.3.3 systemc-cci/1.0.0)
+	    set(CONAN_PACKAGE_OPTIONS ${CONAN_PACKAGE_OPTIONS} systemc-cci:shared=False)
+	endif()
+	conan_configure(REQUIRES ${CONAN_PACKAGE_LIST} GENERATORS cmake
+	                OPTIONS ${CONAN_PACKAGE_OPTIONS})
+	if(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+		conan_install(BUILD_TYPE Release)
+	else()
+		conan_install()
+	endif()
+	conan_setup(TARGETS)
+	set(Boost_NO_BOOST_CMAKE ON) #  Don't do a find_package in config mode before searching for a regular boost install.
+	option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
+	option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ON)
+else()
+	option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 endif()
 
 if(BUILD_SCC_DOCUMENTATION)
@@ -49,7 +66,7 @@ find_package(Doxygen)
 	# run "make scc-docs" to create the doxygen documentation
 	doxygen_add_docs(
 	    scc-docs
-	    ${PROJECT_SOURCE_DIR}/incl ${PROJECT_SOURCE_DIR}/axi_chi/axi  ${PROJECT_SOURCE_DIR}/axi_chi/chi  ${PROJECT_SOURCE_DIR}/README.md
+	    ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/third_party/axi_chi/axi  ${PROJECT_SOURCE_DIR}/third_party/axi_chi/chi  ${PROJECT_SOURCE_DIR}/README.md
 	    ALL COMMENT "Generate API-documents for SCC."
 	)
     install(DIRECTORY ${scc_BINARY_DIR}/scc DESTINATION ${CMAKE_INSTALL_DOCDIR}/)
