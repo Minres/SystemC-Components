@@ -96,8 +96,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab57f64e9fca9a6c8a4c0ec5ce2972b58"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1sc__variable.html#ab57f64e9fca9a6c8a4c0ec5ce2972b58">operator*</a> ()</td></tr>
 <tr class="memdesc:ab57f64e9fca9a6c8a4c0ec5ce2972b58"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a reference to the wrapped value  <a href="structscc_1_1sc__variable.html#ab57f64e9fca9a6c8a4c0ec5ce2972b58">More...</a><br /></td></tr>
 <tr class="separator:ab57f64e9fca9a6c8a4c0ec5ce2972b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad07cca01fd53527bd24d79d1b3059b0f"><td class="memItemLeft" align="right" valign="top"><a id="ad07cca01fd53527bd24d79d1b3059b0f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>sc_variable</b> (const std::string &amp;name, const T &amp;value)</td></tr>
+<tr class="memitem:ad07cca01fd53527bd24d79d1b3059b0f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1sc__variable.html#ad07cca01fd53527bd24d79d1b3059b0f">sc_variable</a> (const std::string &amp;name, const T &amp;value)</td></tr>
+<tr class="memdesc:ad07cca01fd53527bd24d79d1b3059b0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor taking a name and a reference of the variable to be wrapped  <a href="structscc_1_1sc__variable.html#ad07cca01fd53527bd24d79d1b3059b0f">More...</a><br /></td></tr>
 <tr class="separator:ad07cca01fd53527bd24d79d1b3059b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1b465d662ed1c27b44c2cbf5c4aea84"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1sc__variable.html#ab1b465d662ed1c27b44c2cbf5c4aea84">to_string</a> () const override</td></tr>
 <tr class="memdesc:ab1b465d662ed1c27b44c2cbf5c4aea84"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a textual representation of the wrapped value  <a href="structscc_1_1sc__variable.html#ab1b465d662ed1c27b44c2cbf5c4aea84">More...</a><br /></td></tr>
@@ -166,10 +166,67 @@ static <a class="el" href="structscc_1_1sc__variable.html">scc::sc_variable</a>&
 struct scc::sc_variable&lt; T &gt;</h3>
 
 <p>SystemC variable. </p>
-<p>This class makes plain and composite C++ datatype variables visible to the SystemC kernel by registering them in the SystemC object hierarchy. </p>
+<p>the <a class="el" href="structscc_1_1sc__variable.html" title="SystemC variable.">sc_variable</a> for a particular plain data type</p>
+<p>This class makes plain and composite C++ datatype variables visible to the SystemC kernel by registering them in the SystemC object hierarchy.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>the data type of the wrapped value </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00071">71</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad07cca01fd53527bd24d79d1b3059b0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad07cca01fd53527bd24d79d1b3059b0f">&#9670;&nbsp;</a></span>sc_variable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structscc_1_1sc__variable.html">scc::sc_variable</a>&lt; T &gt;::<a class="el" href="structscc_1_1sc__variable.html">sc_variable</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>constructor taking a name and a reference of the variable to be wrapped </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name </td></tr>
+    <tr><td class="paramname">value</td><td>the variable reference to be wrapped </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="sc__variable_8h_source.html#l00087">87</a> of file <a class="el" href="sc__variable_8h_source.html">sc_variable.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="afb2282744a7b5e2cc95ee72e28d6b11e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afb2282744a7b5e2cc95ee72e28d6b11e">&#9670;&nbsp;</a></span>get()</h2>
 
