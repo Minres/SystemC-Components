@@ -48,6 +48,7 @@ $(function() {
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classscc_1_1tracer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">scc::tracer Class Reference</div>  </div>
@@ -96,12 +97,18 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad829363d5d1f6697cf1289009e2089f4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tracer.html#ad829363d5d1f6697cf1289009e2089f4">tracer</a> (std::string const &amp;&amp;name, <a class="el" href="classscc_1_1tracer.html#a8ba2e352a1b382212c1411fef82613ce">file_type</a> type, bool enable=true)</td></tr>
-<tr class="memdesc:ad829363d5d1f6697cf1289009e2089f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the constructor  <a href="classscc_1_1tracer.html#ad829363d5d1f6697cf1289009e2089f4">More...</a><br /></td></tr>
-<tr class="separator:ad829363d5d1f6697cf1289009e2089f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ee1e515f89c6a5576fb4c66a73e8b22"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tracer.html#a1ee1e515f89c6a5576fb4c66a73e8b22">tracer</a> (std::string const &amp;name, <a class="el" href="classscc_1_1tracer.html#a8ba2e352a1b382212c1411fef82613ce">file_type</a> type, bool enable=true)</td></tr>
-<tr class="memdesc:a1ee1e515f89c6a5576fb4c66a73e8b22"><td class="mdescLeft">&#160;</td><td class="mdescRight">the constructor  <a href="classscc_1_1tracer.html#a1ee1e515f89c6a5576fb4c66a73e8b22">More...</a><br /></td></tr>
-<tr class="separator:a1ee1e515f89c6a5576fb4c66a73e8b22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a68773c2dbb55e909abd728ea913c9e"><td class="memItemLeft" align="right" valign="top"><a id="a2a68773c2dbb55e909abd728ea913c9e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>tracer</b> (std::string const &amp;&amp;name, <a class="el" href="classscc_1_1tracer.html#a8ba2e352a1b382212c1411fef82613ce">file_type</a> type, bool enable=true, sc_core::sc_object *top=nullptr)</td></tr>
+<tr class="separator:a2a68773c2dbb55e909abd728ea913c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a9b5a23c415dad3d02ca0a07d4af5b6"><td class="memItemLeft" align="right" valign="top"><a id="a0a9b5a23c415dad3d02ca0a07d4af5b6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>tracer</b> (std::string const &amp;name, <a class="el" href="classscc_1_1tracer.html#a8ba2e352a1b382212c1411fef82613ce">file_type</a> type, bool enable=true, sc_core::sc_object *top=nullptr)</td></tr>
+<tr class="separator:a0a9b5a23c415dad3d02ca0a07d4af5b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c52660617e14a95798a482e51e0d09d"><td class="memItemLeft" align="right" valign="top"><a id="a1c52660617e14a95798a482e51e0d09d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>tracer</b> (std::string const &amp;&amp;name, <a class="el" href="classscc_1_1tracer.html#a8ba2e352a1b382212c1411fef82613ce">file_type</a> type, sc_core::sc_trace_file *tf, sc_core::sc_object *top=nullptr)</td></tr>
+<tr class="separator:a1c52660617e14a95798a482e51e0d09d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af919b140de14d6510d8e233862317f60"><td class="memItemLeft" align="right" valign="top"><a id="af919b140de14d6510d8e233862317f60"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>tracer</b> (std::string const &amp;name, <a class="el" href="classscc_1_1tracer.html#a8ba2e352a1b382212c1411fef82613ce">file_type</a> type, sc_core::sc_trace_file *tf, sc_core::sc_object *top=nullptr)</td></tr>
+<tr class="separator:af919b140de14d6510d8e233862317f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3544711d7f8b4452a75079cef13b8fb2"><td class="memItemLeft" align="right" valign="top"><a id="a3544711d7f8b4452a75079cef13b8fb2"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tracer.html#a3544711d7f8b4452a75079cef13b8fb2">~tracer</a> () override</td></tr>
 <tr class="memdesc:a3544711d7f8b4452a75079cef13b8fb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the destructor <br /></td></tr>
@@ -132,35 +139,42 @@ sc_core::sc_trace_file *&#160;</td><td class="memItemRight" valign="bottom"><b>g
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a5bab0155b1a91a0e8d13b0598e82d47c"><td class="memItemLeft" align="right" valign="top"><a id="a5bab0155b1a91a0e8d13b0598e82d47c"></a>
+<tr class="memitem:a8a3e17c07c7c191742d72c08b9ac2865"><td class="memItemLeft" align="right" valign="top"><a id="a8a3e17c07c7c191742d72c08b9ac2865"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>end_of_elaboration</b> () override</td></tr>
-<tr class="separator:a5bab0155b1a91a0e8d13b0598e82d47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a8a3e17c07c7c191742d72c08b9ac2865"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classscc_1_1tracer__base"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classscc_1_1tracer__base')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classscc_1_1tracer__base.html">scc::tracer_base</a></td></tr>
-<tr class="memitem:aa34be21564106ee1cc0ca308590500fe inherit pro_methods_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top"><a id="aa34be21564106ee1cc0ca308590500fe"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>descend</b> (const sc_core::sc_object *, bool trace_all=false)</td></tr>
-<tr class="separator:aa34be21564106ee1cc0ca308590500fe inherit pro_methods_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a534730de1e39169d26cf1802bb44c792 inherit pro_methods_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top"><a id="a534730de1e39169d26cf1802bb44c792"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>descend</b> (const sc_core::sc_object *, bool trace_all)</td></tr>
+<tr class="separator:a534730de1e39169d26cf1802bb44c792 inherit pro_methods_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a5527f05a6e17ff54b4d0bc58a92b122d"><td class="memItemLeft" align="right" valign="top"><a id="a5527f05a6e17ff54b4d0bc58a92b122d"></a>
+scv_tr::scv_tr_db *&#160;</td><td class="memItemRight" valign="bottom"><b>txdb</b></td></tr>
+<tr class="separator:a5527f05a6e17ff54b4d0bc58a92b122d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classscc_1_1tracer__base"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classscc_1_1tracer__base')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classscc_1_1tracer__base.html">scc::tracer_base</a></td></tr>
+<tr class="memitem:a4f87fe3253de75384c35103c94d00628 inherit pro_attribs_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top"><a id="a4f87fe3253de75384c35103c94d00628"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tracer__base.html#a4f87fe3253de75384c35103c94d00628">default_trace_enable</a> {true}</td></tr>
+<tr class="memdesc:a4f87fe3253de75384c35103c94d00628 inherit pro_attribs_classscc_1_1tracer__base"><td class="mdescLeft">&#160;</td><td class="mdescRight">the default for tracing if no attribute is configured <br /></td></tr>
+<tr class="separator:a4f87fe3253de75384c35103c94d00628 inherit pro_attribs_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab89161002098e41cd35933fe21680335 inherit pro_attribs_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top"><a id="ab89161002098e41cd35933fe21680335"></a>
+sc_core::sc_trace_file *&#160;</td><td class="memItemRight" valign="bottom"><b>trf</b> {nullptr}</td></tr>
+<tr class="separator:ab89161002098e41cd35933fe21680335 inherit pro_attribs_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a2ebee4379a80b0266d257582b8db0e inherit pro_attribs_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top"><a id="a6a2ebee4379a80b0266d257582b8db0e"></a>
+trace_types&#160;</td><td class="memItemRight" valign="bottom"><b>types_to_trace</b> {trace_types::ALL}</td></tr>
+<tr class="separator:a6a2ebee4379a80b0266d257582b8db0e inherit pro_attribs_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_static_methods_classscc_1_1tracer__base"><td colspan="2" onclick="javascript:toggleInherit('pro_static_methods_classscc_1_1tracer__base')"><img src="closed.png" alt="-"/>&#160;Static Protected Member Functions inherited from <a class="el" href="classscc_1_1tracer__base.html">scc::tracer_base</a></td></tr>
-<tr class="memitem:a842aa576843f996268564fe5fcf7f260 inherit pro_static_methods_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top"><a id="a842aa576843f996268564fe5fcf7f260"></a>
+<tr class="memitem:abaa7faa958c17e050416417594fbc60c inherit pro_static_methods_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top"><a id="abaa7faa958c17e050416417594fbc60c"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>try_trace</b> (sc_core::sc_trace_file *trace_file, const sc_core::sc_object *object, trace_types t)</td></tr>
-<tr class="separator:a842aa576843f996268564fe5fcf7f260 inherit pro_static_methods_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classscc_1_1tracer__base"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classscc_1_1tracer__base')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classscc_1_1tracer__base.html">scc::tracer_base</a></td></tr>
-<tr class="memitem:ab89161002098e41cd35933fe21680335 inherit pro_attribs_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top"><a id="ab89161002098e41cd35933fe21680335"></a>
-sc_core::sc_trace_file *&#160;</td><td class="memItemRight" valign="bottom"><b>trf</b> {nullptr}</td></tr>
-<tr class="separator:ab89161002098e41cd35933fe21680335 inherit pro_attribs_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83abfda8d101d23784dd6f08367f4ea7 inherit pro_attribs_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top"><a id="a83abfda8d101d23784dd6f08367f4ea7"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>owned</b> {false}</td></tr>
-<tr class="separator:a83abfda8d101d23784dd6f08367f4ea7 inherit pro_attribs_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a2ebee4379a80b0266d257582b8db0e inherit pro_attribs_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top"><a id="a6a2ebee4379a80b0266d257582b8db0e"></a>
-trace_types&#160;</td><td class="memItemRight" valign="bottom"><b>types_to_trace</b> {trace_types::ALL}</td></tr>
-<tr class="separator:a6a2ebee4379a80b0266d257582b8db0e inherit pro_attribs_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:abaa7faa958c17e050416417594fbc60c inherit pro_static_methods_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>a component traversing the SystemC object hierarchy and tracing the objects </p>
 
-<p class="definition">Definition at line <a class="el" href="tracer_8h_source.html#l00038">38</a> of file <a class="el" href="tracer_8h_source.html">tracer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tracer_8h_source.html#l00043">43</a> of file <a class="el" href="tracer_8h_source.html">tracer.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a8ba2e352a1b382212c1411fef82613ce"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8ba2e352a1b382212c1411fef82613ce">&#9670;&nbsp;</a></span>file_type</h2>
@@ -177,111 +191,13 @@ trace_types&#160;</td><td class="memItemRight" valign="bottom"><b>types_to_trace
 <p>defines the transaction trace output type </p>
 <p>CUSTOM means the caller needs to initialize the database driver (scv_tr_text_init() or alike) </p>
 
-<p class="definition">Definition at line <a class="el" href="tracer_8h_source.html#l00046">46</a> of file <a class="el" href="tracer_8h_source.html">tracer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tracer_8h_source.html#l00051">51</a> of file <a class="el" href="tracer_8h_source.html">tracer.h</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad829363d5d1f6697cf1289009e2089f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad829363d5d1f6697cf1289009e2089f4">&#9670;&nbsp;</a></span>tracer() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">scc::tracer::tracer </td>
-          <td>(</td>
-          <td class="paramtype">std::string const &amp;&amp;&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classscc_1_1tracer.html#a8ba2e352a1b382212c1411fef82613ce">file_type</a>&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>enable</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>the constructor </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>base name of the trace file(s) </td></tr>
-    <tr><td class="paramname">type</td><td>type of trace file for transactions </td></tr>
-    <tr><td class="paramname">enable</td><td>enable VCD (signal and POD) tracing </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a1ee1e515f89c6a5576fb4c66a73e8b22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ee1e515f89c6a5576fb4c66a73e8b22">&#9670;&nbsp;</a></span>tracer() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">scc::tracer::tracer </td>
-          <td>(</td>
-          <td class="paramtype">std::string const &amp;&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classscc_1_1tracer.html#a8ba2e352a1b382212c1411fef82613ce">file_type</a>&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>enable</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>the constructor </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>base name of the trace file(s) </td></tr>
-    <tr><td class="paramname">type</td><td>type of trace file for transactions </td></tr>
-    <tr><td class="paramname">enable</td><td>enable VCD (signal and POD) tracing </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="tracer_8h_source.html#l00064">64</a> of file <a class="el" href="tracer_8h_source.html">tracer.h</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>incl/scc/<a class="el" href="tracer_8h_source.html">tracer.h</a></li>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/sysc/scc/<a class="el" href="tracer_8h_source.html">tracer.h</a></li>
+<li>src/sysc/scc/<a class="el" href="tracer_8cpp_source.html">tracer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

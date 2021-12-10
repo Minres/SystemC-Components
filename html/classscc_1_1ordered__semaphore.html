@@ -105,9 +105,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa670dc99df7070d0702cb6de079f077a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1ordered__semaphore.html#aa670dc99df7070d0702cb6de079f077a">wait</a> () override</td></tr>
 <tr class="memdesc:aa670dc99df7070d0702cb6de079f077a"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock (take) the semaphore, block if not available  <a href="classscc_1_1ordered__semaphore.html#aa670dc99df7070d0702cb6de079f077a">More...</a><br /></td></tr>
 <tr class="separator:aa670dc99df7070d0702cb6de079f077a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08bf82890acf8ee2a86675689965785e"><td class="memItemLeft" align="right" valign="top"><a id="a08bf82890acf8ee2a86675689965785e"></a>
+<tr class="memitem:a76f892069214912fc5fa795237363bf1"><td class="memItemLeft" align="right" valign="top"><a id="a76f892069214912fc5fa795237363bf1"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>wait</b> (unsigned priority)</td></tr>
-<tr class="separator:a08bf82890acf8ee2a86675689965785e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a76f892069214912fc5fa795237363bf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff2675fc0211e17d08aa8015f0943672"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1ordered__semaphore.html#aff2675fc0211e17d08aa8015f0943672">trywait</a> () override</td></tr>
 <tr class="memdesc:aff2675fc0211e17d08aa8015f0943672"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock (take) the semaphore, return -1 if not available  <a href="classscc_1_1ordered__semaphore.html#aff2675fc0211e17d08aa8015f0943672">More...</a><br /></td></tr>
 <tr class="separator:aff2675fc0211e17d08aa8015f0943672"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,7 +156,7 @@ std::array&lt; std::deque&lt; sc_core::sc_process_handle &gt;, 2 &gt;&#160;</td>
 <div class="textblock"><p>The <a class="el" href="classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class.">ordered_semaphore</a> primitive channel class. </p>
 <p>The ordered semaphore acts like an ordinary semaphore. It gives the guarantee that access is granted in the order of arrival (FCFS) </p>
 
-<p class="definition">Definition at line <a class="el" href="ordered__semaphore_8h_source.html#l00037">37</a> of file <a class="el" href="ordered__semaphore_8h_source.html">ordered_semaphore.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ordered__semaphore_8h_source.html#l00038">38</a> of file <a class="el" href="ordered__semaphore_8h_source.html">ordered_semaphore.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af3377d313bb7b109ef9bb5a0f1fd34d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af3377d313bb7b109ef9bb5a0f1fd34d0">&#9670;&nbsp;</a></span>ordered_semaphore() <span class="overload">[1/2]</span></h2>
@@ -183,12 +183,15 @@ std::array&lt; std::deque&lt; sc_core::sc_process_handle &gt;, 2 &gt;&#160;</td>
 </div><div class="memdoc">
 
 <p>constructor of an un-named semaphore </p>
+<p>If the initial value is 0 the semaphore has an unlimited capacity but is initially empty</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">init_value</td><td>initial capacity of the semaphore </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="ordered__semaphore_8cpp_source.html#l00075">75</a> of file <a class="el" href="ordered__semaphore_8cpp_source.html">ordered_semaphore.cpp</a>.</p>
 
 </div>
 </div>
@@ -227,6 +230,8 @@ std::array&lt; std::deque&lt; sc_core::sc_process_handle &gt;, 2 &gt;&#160;</td>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="ordered__semaphore_8cpp_source.html#l00085">85</a> of file <a class="el" href="ordered__semaphore_8cpp_source.html">ordered_semaphore.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -256,7 +261,7 @@ std::array&lt; std::deque&lt; sc_core::sc_process_handle &gt;, 2 &gt;&#160;</td>
 <p>get the value of the semaphore </p>
 <dl class="section return"><dt>Returns</dt><dd>current value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ordered__semaphore_8h_source.html#l00105">105</a> of file <a class="el" href="ordered__semaphore_8h_source.html">ordered_semaphore.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ordered__semaphore_8h_source.html#l00108">108</a> of file <a class="el" href="ordered__semaphore_8h_source.html">ordered_semaphore.h</a>.</p>
 
 </div>
 </div>
@@ -286,7 +291,7 @@ std::array&lt; std::deque&lt; sc_core::sc_process_handle &gt;, 2 &gt;&#160;</td>
 <p>kind of this SastemC object </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ordered__semaphore_8h_source.html#l00112">112</a> of file <a class="el" href="ordered__semaphore_8h_source.html">ordered_semaphore.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ordered__semaphore_8h_source.html#l00115">115</a> of file <a class="el" href="ordered__semaphore_8h_source.html">ordered_semaphore.h</a>.</p>
 
 </div>
 </div>
@@ -316,6 +321,8 @@ std::array&lt; std::deque&lt; sc_core::sc_process_handle &gt;, 2 &gt;&#160;</td>
 <p>unlock (give) the semaphore </p>
 <dl class="section return"><dt>Returns</dt><dd>value after posting </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="ordered__semaphore_8cpp_source.html#l00125">125</a> of file <a class="el" href="ordered__semaphore_8cpp_source.html">ordered_semaphore.cpp</a>.</p>
+
 </div>
 </div>
 <a id="ae08b3a4596e0be22bb517a89a362e1e3"></a>
@@ -341,6 +348,8 @@ std::array&lt; std::deque&lt; sc_core::sc_process_handle &gt;, 2 &gt;&#160;</td>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="ordered__semaphore_8cpp_source.html#l00055">55</a> of file <a class="el" href="ordered__semaphore_8cpp_source.html">ordered_semaphore.cpp</a>.</p>
 
 </div>
 </div>
@@ -370,6 +379,8 @@ std::array&lt; std::deque&lt; sc_core::sc_process_handle &gt;, 2 &gt;&#160;</td>
 <p>lock (take) the semaphore, return -1 if not available </p>
 <dl class="section return"><dt>Returns</dt><dd>value after locking or -1 if the semaphore could not be locked </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="ordered__semaphore_8cpp_source.html#l00115">115</a> of file <a class="el" href="ordered__semaphore_8cpp_source.html">ordered_semaphore.cpp</a>.</p>
+
 </div>
 </div>
 <a id="aa670dc99df7070d0702cb6de079f077a"></a>
@@ -398,10 +409,13 @@ std::array&lt; std::deque&lt; sc_core::sc_process_handle &gt;, 2 &gt;&#160;</td>
 <p>lock (take) the semaphore, block if not available </p>
 <dl class="section return"><dt>Returns</dt><dd>value after locking </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="ordered__semaphore_8cpp_source.html#l00095">95</a> of file <a class="el" href="ordered__semaphore_8cpp_source.html">ordered_semaphore.cpp</a>.</p>
+
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>incl/scc/<a class="el" href="ordered__semaphore_8h_source.html">ordered_semaphore.h</a></li>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/sysc/scc/<a class="el" href="ordered__semaphore_8h_source.html">ordered_semaphore.h</a></li>
+<li>src/sysc/scc/<a class="el" href="ordered__semaphore_8cpp_source.html">ordered_semaphore.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

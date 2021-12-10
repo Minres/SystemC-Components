@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: incl/util/strprintf.h Source File</title>
+<title>scc: src/common/util/strprintf.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,7 +40,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f9f4f7420df66ec1f9f18519109e2068.html">incl</a></li><li class="navelem"><a class="el" href="dir_7caf76e865c198fca9670c8fa5dc79fa.html">util</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_be04617272aece3468352586f0f1ec2c.html">util</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -68,7 +68,7 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span>util {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">inline</span> std::string strprintf(<span class="keyword">const</span> std::string&amp; format, ...) {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">inline</span> std::string strprintf(<span class="keyword">const</span> std::string format, ...) {</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    va_list args;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    va_start(args, format);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">size_t</span> len = std::vsnprintf(NULL, 0, format.c_str(), args);</div>
@@ -77,7 +77,7 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    va_start(args, format);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::vsnprintf(&amp;vec[0], len + 1, format.c_str(), args);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    va_end(args);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> &amp;vec[0];</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> vec.data();</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;} <span class="comment">// namespace util</span></div>

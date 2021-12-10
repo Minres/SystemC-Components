@@ -1,7 +1,7 @@
 <map id="scc::memory&lt; SIZE, BUSWIDTH &gt;" name="scc::memory&lt; SIZE, BUSWIDTH &gt;">
-<area shape="rect" id="node1" title="simple TLM2.0 LT memory model" alt="" coords="489,63,644,105"/>
-<area shape="rect" id="node2" title=" " alt="" coords="265,5,357,32"/>
-<area shape="rect" id="node3" href="$classscc_1_1target__mixin.html" title=" " alt="" coords="224,56,397,112"/>
+<area shape="rect" id="node1" title="simple TLM2.0 LT memory model" alt="" coords="500,63,655,105"/>
+<area shape="rect" id="node2" title=" " alt="" coords="270,5,362,32"/>
+<area shape="rect" id="node3" href="$classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="224,56,408,112"/>
 <area shape="rect" id="node4" title=" " alt="" coords="5,63,175,105"/>
-<area shape="rect" id="node5" href="$classutil_1_1sparse__array.html" title=" " alt="" coords="243,137,378,178"/>
+<area shape="rect" id="node5" href="$classutil_1_1sparse__array.html" title=" " alt="" coords="249,137,383,178"/>
 </map>

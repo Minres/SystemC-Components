@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: incl/tlm/tlm_signal_gp.h Source File</title>
+<title>scc: src/sysc/tlm/scc/tlm_signal_gp.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,7 +40,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f9f4f7420df66ec1f9f18519109e2068.html">incl</a></li><li class="navelem"><a class="el" href="dir_754657b4125a4f1ccff439b8d81c19e8.html">tlm</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ecd2599f241f99e60c436470b0a1e2a4.html">sysc</a></li><li class="navelem"><a class="el" href="dir_d87af8e2b499dff1da3e679c52ce5646.html">tlm</a></li><li class="navelem"><a class="el" href="dir_e617fe9c9bac53cf4104c40a60f7993d.html">scc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,7 +71,7 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>tlm {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>scc {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">struct </span>tlm_generic_payload_base;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">class </span>tlm_base_mm_interface {</div>
@@ -88,13 +88,13 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    : m_extensions(max_num_extensions())</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    , m_mm(mm)</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    , m_ref_count(0){};</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classtlm_1_1tlm__base__mm__interface.html">   41</a></span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="structtlm_1_1tlm__generic__payload__base.html">tlm_generic_payload_base</a>() {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">virtual</span> ~tlm_generic_payload_base() {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; m_extensions.size(); i++)</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">if</span>(m_extensions[i])</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                m_extensions[i]-&gt;free();</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structtlm_1_1tlm__generic__payload__base.html">   47</a></span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> reset() { m_extensions.free_entire_cache(); }</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> acquire() {</div>
@@ -102,15 +102,15 @@ $(function() {
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        m_ref_count++;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> release() {</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1tlm__base__mm__interface.html">   55</a></span>&#160;    <span class="keywordtype">void</span> release() {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        sc_assert(m_mm != 0 &amp;&amp; m_ref_count &gt; 0);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span>(--m_ref_count == 0)</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            m_mm-&gt;free(<span class="keyword">this</span>);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span> get_ref_count()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_ref_count; }</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structtlm_1_1scc_1_1tlm__generic__payload__base.html">   61</a></span>&#160;    <span class="keywordtype">int</span> get_ref_count()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_ref_count; }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> set_mm(tlm_base_mm_interface* mm) { m_mm = mm; }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> set_mm(<a class="code" href="classtlm_1_1scc_1_1tlm__base__mm__interface.html">tlm_base_mm_interface</a>* mm) { m_mm = mm; }</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">bool</span> has_mm()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_mm != 0; }</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> copy_extensions_from(<span class="keyword">const</span> tlm_generic_payload_base&amp; other);</div>
@@ -195,8 +195,8 @@ $(function() {
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="comment">//--------------</span></div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keyword">virtual</span> ~tlm_signal_gp(){};</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="comment">// non-virtual deep-copying of the object</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="structtlm_1_1tlm__signal__gp.html">  148</a></span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordtype">void</span> deep_copy_from(<span class="keyword">const</span> <a class="code" href="structtlm_1_1tlm__signal__gp.html">tlm_signal_gp</a>&amp; other);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordtype">void</span> deep_copy_from(<span class="keyword">const</span> tlm_signal_gp&amp; other);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    tlm_command get_command()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_command; }</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordtype">void</span> set_command(<span class="keyword">const</span> tlm_command command) { m_command = command; }</div>
@@ -209,37 +209,37 @@ $(function() {
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordtype">bool</span> is_response_error()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> (m_response_status &lt;= 0); }</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    tlm_response_status get_response_status()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_response_status; }</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">void</span> set_response_status(<span class="keyword">const</span> tlm_response_status response_status) { m_response_status = response_status; }</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    std::string get_response_string() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="structtlm_1_1scc_1_1tlm__signal__gp.html">  162</a></span>&#160;    std::string get_response_string() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keyword">struct </span>gp_mm : <span class="keyword">public</span> <a class="code" href="classtlm_1_1tlm__base__mm__interface.html">tlm::tlm_base_mm_interface</a> {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <a class="code" href="structtlm_1_1tlm__signal__gp.html">tlm::tlm_signal_gp&lt;SIG&gt;</a>* create() {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keyword">struct </span><a class="code" href="structtlm_1_1scc_1_1tlm__signal__gp_1_1gp__mm.html">gp_mm</a> : <span class="keyword">public</span> <a class="code" href="classtlm_1_1scc_1_1tlm__base__mm__interface.html">tlm_base_mm_interface</a> {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <a class="code" href="structtlm_1_1scc_1_1tlm__signal__gp.html">tlm_signal_gp&lt;SIG&gt;</a>* create() {</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <span class="keywordflow">if</span>(pool.size()) {</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                <span class="keyword">auto</span> ret = pool.front();</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                pool.pop_front();</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="structtlm_1_1tlm__signal__gp.html">tlm::tlm_signal_gp&lt;SIG&gt;</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="structtlm_1_1scc_1_1tlm__signal__gp.html">tlm_signal_gp&lt;SIG&gt;</a>(<span class="keyword">this</span>);</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        }</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordtype">void</span> free(tlm_generic_payload_base* gp)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keyword">auto</span> t = <span class="keyword">dynamic_cast&lt;</span><a class="code" href="structtlm_1_1tlm__signal__gp.html">tlm::tlm_signal_gp&lt;SIG&gt;</a>*<span class="keyword">&gt;</span>(gp);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keyword">auto</span> t = <span class="keyword">dynamic_cast&lt;</span>tlm_signal_gp&lt;SIG&gt;*<span class="keyword">&gt;</span>(gp);</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            t-&gt;free_all_extensions();</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            pool.push_back(t);</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        }</div>
-<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="structtlm_1_1tlm__signal__gp_1_1gp__mm.html">  178</a></span>&#160;        ~<a class="code" href="structtlm_1_1tlm__signal__gp_1_1gp__mm.html">gp_mm</a>() {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        ~gp_mm() {</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">for</span>(<span class="keyword">auto</span> n : pool)</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                <span class="keyword">delete</span> n;</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        std::deque&lt;tlm::tlm_signal_gp&lt;SIG&gt;*&gt; pool;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        std::deque&lt;tlm_signal_gp&lt;SIG&gt;*&gt; pool;</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    };</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keyword">static</span> <a class="code" href="structtlm_1_1tlm__signal__gp.html">tlm::tlm_signal_gp&lt;SIG&gt;</a>* create() {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keyword">static</span> tlm_signal_gp&lt;SIG&gt;* create() {</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keyword">static</span> thread_local gp_mm mm;</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">return</span> mm.create();</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="structtlm_1_1scc_1_1tlm__signal__gp_1_1gp__mm.html">  192</a></span>&#160;<span class="keyword">protected</span>:</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    tlm_command m_command;</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    SIG m_value;</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    tlm_response_status m_response_status;</div>
@@ -248,14 +248,14 @@ $(function() {
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;};</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> SIG&gt;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="keyword">inline</span> tlm_signal_gp&lt;SIG&gt;::tlm_signal_gp()</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;: tlm_generic_payload_base()</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="keyword">inline</span> <a class="code" href="structtlm_1_1scc_1_1tlm__signal__gp.html">tlm_signal_gp&lt;SIG&gt;::tlm_signal_gp</a>()</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;: <a class="code" href="structtlm_1_1scc_1_1tlm__generic__payload__base.html">tlm_generic_payload_base</a>()</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;, m_command(TLM_IGNORE_COMMAND)</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;, m_response_status(TLM_OK_RESPONSE) {}</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> SIG&gt;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keyword">inline</span> tlm_signal_gp&lt;SIG&gt;::tlm_signal_gp(tlm_base_mm_interface* mm)</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;: tlm_generic_payload_base(mm)</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keyword">inline</span> <a class="code" href="structtlm_1_1scc_1_1tlm__signal__gp.html">tlm_signal_gp&lt;SIG&gt;::tlm_signal_gp</a>(<a class="code" href="classtlm_1_1scc_1_1tlm__base__mm__interface.html">tlm_base_mm_interface</a>* mm)</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;: <a class="code" href="structtlm_1_1scc_1_1tlm__generic__payload__base.html">tlm_generic_payload_base</a>(mm)</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;, m_command(TLM_IGNORE_COMMAND)</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;, m_response_status(TLM_OK_RESPONSE) {}</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
@@ -368,13 +368,14 @@ $(function() {
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;}</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> tlm_generic_payload_base::resize_extensions() { m_extensions.expand(max_num_extensions()); }</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;} <span class="comment">// namespace tlm</span></div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _TLM_TLM_SIGNAL_GP_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;} <span class="comment">// namespace tlm</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _TLM_TLM_SIGNAL_GP_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructtlm_1_1tlm__signal__gp_html"><div class="ttname"><a href="structtlm_1_1tlm__signal__gp.html">tlm::tlm_signal_gp</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__signal__gp_8h_source.html#l00148">tlm_signal_gp.h:148</a></div></div>
-<div class="ttc" id="aclasstlm_1_1tlm__base__mm__interface_html"><div class="ttname"><a href="classtlm_1_1tlm__base__mm__interface.html">tlm::tlm_base_mm_interface</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__signal__gp_8h_source.html#l00041">tlm_signal_gp.h:41</a></div></div>
-<div class="ttc" id="astructtlm_1_1tlm__signal__gp_1_1gp__mm_html"><div class="ttname"><a href="structtlm_1_1tlm__signal__gp_1_1gp__mm.html">tlm::tlm_signal_gp::gp_mm</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__signal__gp_8h_source.html#l00178">tlm_signal_gp.h:178</a></div></div>
-<div class="ttc" id="astructtlm_1_1tlm__generic__payload__base_html"><div class="ttname"><a href="structtlm_1_1tlm__generic__payload__base.html">tlm::tlm_generic_payload_base</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__signal__gp_8h_source.html#l00047">tlm_signal_gp.h:47</a></div></div>
+<div class="ttc" id="astructtlm_1_1scc_1_1tlm__signal__gp_html"><div class="ttname"><a href="structtlm_1_1scc_1_1tlm__signal__gp.html">tlm::scc::tlm_signal_gp</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__signal__gp_8h_source.html#l00162">tlm_signal_gp.h:162</a></div></div>
+<div class="ttc" id="astructtlm_1_1scc_1_1tlm__signal__gp_1_1gp__mm_html"><div class="ttname"><a href="structtlm_1_1scc_1_1tlm__signal__gp_1_1gp__mm.html">tlm::scc::tlm_signal_gp::gp_mm</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__signal__gp_8h_source.html#l00192">tlm_signal_gp.h:192</a></div></div>
+<div class="ttc" id="astructtlm_1_1scc_1_1tlm__generic__payload__base_html"><div class="ttname"><a href="structtlm_1_1scc_1_1tlm__generic__payload__base.html">tlm::scc::tlm_generic_payload_base</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__signal__gp_8h_source.html#l00061">tlm_signal_gp.h:61</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__base__mm__interface_html"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__base__mm__interface.html">tlm::scc::tlm_base_mm_interface</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__signal__gp_8h_source.html#l00055">tlm_signal_gp.h:55</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

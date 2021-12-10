@@ -1,8 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,143,100,170"/>
-<area shape="rect" id="node2" href="$classscc_1_1initiator__mixin.html" title="initiator socket mixin" alt="" coords="170,5,343,47"/>
-<area shape="rect" id="node3" href="$classscc_1_1signal__initiator__mixin.html" title=" " alt="" coords="172,71,341,112"/>
-<area shape="rect" id="node4" href="$classscc_1_1signal__target__mixin.html" title=" " alt="" coords="172,136,341,177"/>
-<area shape="rect" id="node5" href="$classscc_1_1tagged__initiator__mixin.html" title=" " alt="" coords="148,201,365,243"/>
-<area shape="rect" id="node6" href="$classscc_1_1target__mixin.html" title=" " alt="" coords="175,267,338,308"/>
+<area shape="rect" id="node1" href="$structsc__bigint__tester.html" title=" " alt="" coords="5,5,187,32"/>
 </map>

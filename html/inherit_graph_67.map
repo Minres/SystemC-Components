@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,20,144,47"/>
-<area shape="rect" id="node2" href="$classscv4axi_1_1impl_1_1ace__recording__payload.html" title="the class to hold the information to be recorded on the timed streams" alt="" coords="192,5,352,61"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,13,88,39"/>
+<area shape="rect" id="node2" href="$classscc_1_1sc__owning__signal.html" title="sc_signal which takes ownership of the data (acquire()/release())" alt="" coords="136,5,301,47"/>
 </map>

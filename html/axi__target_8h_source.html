@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: incl/axi/axi_target.h Source File</title>
+<title>scc: src/bus_interfaces/axi/axi_target.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,7 +40,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f9f4f7420df66ec1f9f18519109e2068.html">incl</a></li><li class="navelem"><a class="el" href="dir_9d9a7808f1e2e71cd4a140b2de9ee605.html">axi</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2e5638b409f3ace0c6070b175318504a.html">bus_interfaces</a></li><li class="navelem"><a class="el" href="dir_b15734cf159de6866dca9e5c34ba1e1c.html">axi</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -50,57 +50,59 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;axi/axi_tlm.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;axi/pe/simple_target.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;scc/peq.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;systemc&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;tlm&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;tlm_utils/simple_initiator_socket.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceaxi.html">axi</a> {</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classaxi_1_1axi__target__base.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classaxi_1_1axi__target__base.html">axi_target_base</a> : <span class="keyword">public</span> sc_core::sc_module {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    sc_core::sc_in&lt;bool&gt; clk_i{<span class="stringliteral">&quot;clk_i&quot;</span>};</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    tlm_utils::simple_initiator_socket&lt;axi_target_base&gt; output_socket{<span class="stringliteral">&quot;output_socket&quot;</span>};</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classaxi_1_1axi__target__base.html">axi_target_base</a>(<span class="keyword">const</span> sc_core::sc_module_name&amp; nm, <a class="code" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi::pe::axi_target_pe_b</a>&amp; pe);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classaxi_1_1axi__target__base.html">axi_target_base</a>(){};</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">unsigned</span> access(tlm::tlm_generic_payload&amp; trans);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi::pe::axi_target_pe_b</a>&amp; pe;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="structscc_1_1peq.html">scc::peq&lt;tlm::tlm_generic_payload*&gt;</a> peq;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> trans_queue();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classaxi_1_1axi__target.html">   35</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BUSWIDTH = 32&gt; <span class="keyword">class </span><a class="code" href="classaxi_1_1axi__target.html">axi_target</a> : <span class="keyword">public</span> <a class="code" href="classaxi_1_1axi__target__base.html">axi_target_base</a> {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="structaxi_1_1axi__target__socket.html">axi::axi_target_socket&lt;BUSWIDTH&gt;</a> input_socket;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classaxi_1_1axi__target.html">axi_target</a>(sc_core::sc_module_name nm)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    : <a class="code" href="classaxi_1_1axi__target__base.html">axi_target_base</a>(nm, pe) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        pe.clk_i(clk_i);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        pe.set_operation_cb([<span class="keyword">this</span>](tlm::tlm_generic_payload&amp; trans) -&gt; <span class="keywordtype">unsigned</span> { <span class="keywordflow">return</span> access(trans); });</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    };</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classaxi_1_1axi__target.html">axi_target</a>(){};</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define SC_INCLUDE_DYNAMIC_PROCESSES</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;axi/axi_tlm.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;axi/pe/simple_target.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;scc/peq.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;systemc&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;tlm&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;tlm_utils/simple_initiator_socket.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceaxi.html">axi</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classaxi_1_1axi__target__base.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classaxi_1_1axi__target__base.html">axi_target_base</a> : <span class="keyword">public</span> sc_core::sc_module {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    sc_core::sc_in&lt;bool&gt; clk_i{<span class="stringliteral">&quot;clk_i&quot;</span>};</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    tlm_utils::simple_initiator_socket&lt;axi_target_base&gt; output_socket{<span class="stringliteral">&quot;output_socket&quot;</span>};</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classaxi_1_1axi__target__base.html">axi_target_base</a>(<span class="keyword">const</span> sc_core::sc_module_name&amp; nm, <a class="code" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi::pe::axi_target_pe_b</a>&amp; pe);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classaxi_1_1axi__target__base.html">axi_target_base</a>(){};</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">unsigned</span> access(tlm::tlm_generic_payload&amp; trans);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi::pe::axi_target_pe_b</a>&amp; pe;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="structscc_1_1peq.html">scc::peq&lt;tlm::tlm_generic_payload*&gt;</a> peq;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> trans_queue();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classaxi_1_1axi__target.html">   37</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BUSWIDTH = 32&gt; <span class="keyword">class </span><a class="code" href="classaxi_1_1axi__target.html">axi_target</a> : <span class="keyword">public</span> <a class="code" href="classaxi_1_1axi__target__base.html">axi_target_base</a> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="structaxi_1_1axi__target__socket.html">axi::axi_target_socket&lt;BUSWIDTH&gt;</a> input_socket;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classaxi_1_1axi__target.html">axi_target</a>(sc_core::sc_module_name nm)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    : <a class="code" href="classaxi_1_1axi__target__base.html">axi_target_base</a>(nm, pe) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        pe.clk_i(clk_i);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        pe.set_operation_cb([<span class="keyword">this</span>](tlm::tlm_generic_payload&amp; trans) -&gt; <span class="keywordtype">unsigned</span> { <span class="keywordflow">return</span> access(trans); });</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    };</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classaxi_1_1pe_1_1simple__target.html">axi::pe::simple_target&lt;BUSWIDTH&gt;</a> pe{<span class="stringliteral">&quot;pe&quot;</span>, input_socket};</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;} <span class="comment">// namespace axi</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classaxi_1_1axi__target.html">axi_target</a>(){};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="classaxi_1_1pe_1_1simple__target.html">axi::pe::simple_target&lt;BUSWIDTH&gt;</a> pe{<span class="stringliteral">&quot;pe&quot;</span>, input_socket};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;} <span class="comment">// namespace axi</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassaxi_1_1axi__target_html"><div class="ttname"><a href="classaxi_1_1axi__target.html">axi::axi_target</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__target_8h_source.html#l00035">axi_target.h:35</a></div></div>
-<div class="ttc" id="aclassaxi_1_1axi__target__base_html"><div class="ttname"><a href="classaxi_1_1axi__target__base.html">axi::axi_target_base</a></div><div class="ttdoc">axi_target class instantiates the AXI Protocol Engine. It accesses the Protocol Engine with access() ...</div><div class="ttdef"><b>Definition:</b> <a href="axi__target_8h_source.html#l00017">axi_target.h:17</a></div></div>
+<div class="ttc" id="aclassaxi_1_1axi__target_html"><div class="ttname"><a href="classaxi_1_1axi__target.html">axi::axi_target</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__target_8h_source.html#l00037">axi_target.h:37</a></div></div>
+<div class="ttc" id="aclassaxi_1_1axi__target__base_html"><div class="ttname"><a href="classaxi_1_1axi__target__base.html">axi::axi_target_base</a></div><div class="ttdoc">axi_target class instantiates the AXI Protocol Engine. It accesses the Protocol Engine with access() ...</div><div class="ttdef"><b>Definition:</b> <a href="axi__target_8h_source.html#l00019">axi_target.h:19</a></div></div>
 <div class="ttc" id="astructscc_1_1peq_html"><div class="ttname"><a href="structscc_1_1peq.html">scc::peq&lt; tlm::tlm_generic_payload * &gt;</a></div></div>
-<div class="ttc" id="aclassaxi_1_1pe_1_1simple__target_html"><div class="ttname"><a href="classaxi_1_1pe_1_1simple__target.html">axi::pe::simple_target</a></div><div class="ttdef"><b>Definition:</b> <a href="simple__target_8h_source.html#l00190">simple_target.h:190</a></div></div>
-<div class="ttc" id="astructaxi_1_1axi__target__socket_html"><div class="ttname"><a href="structaxi_1_1axi__target__socket.html">axi::axi_target_socket</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00963">axi_tlm.h:963</a></div></div>
-<div class="ttc" id="aclassaxi_1_1pe_1_1axi__target__pe__b_html"><div class="ttname"><a href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi::pe::axi_target_pe_b</a></div><div class="ttdef"><b>Definition:</b> <a href="simple__target_8h_source.html#l00036">simple_target.h:36</a></div></div>
+<div class="ttc" id="aclassaxi_1_1pe_1_1simple__target_html"><div class="ttname"><a href="classaxi_1_1pe_1_1simple__target.html">axi::pe::simple_target</a></div><div class="ttdef"><b>Definition:</b> <a href="simple__target_8h_source.html#l00214">simple_target.h:214</a></div></div>
+<div class="ttc" id="astructaxi_1_1axi__target__socket_html"><div class="ttname"><a href="structaxi_1_1axi__target__socket.html">axi::axi_target_socket</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00949">axi_tlm.h:949</a></div></div>
+<div class="ttc" id="aclassaxi_1_1pe_1_1axi__target__pe__b_html"><div class="ttname"><a href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi::pe::axi_target_pe_b</a></div><div class="ttdef"><b>Definition:</b> <a href="simple__target_8h_source.html#l00037">simple_target.h:37</a></div></div>
 <div class="ttc" id="anamespaceaxi_html"><div class="ttname"><a href="namespaceaxi.html">axi</a></div><div class="ttdoc">TLM2.0 components modeling AXI/ACE.</div><div class="ttdef"><b>Definition:</b> <a href="axi4lite__tlm2pin__adaptor_8h_source.html#l00015">axi4lite_tlm2pin_adaptor.h:15</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

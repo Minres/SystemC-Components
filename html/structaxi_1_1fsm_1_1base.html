@@ -128,26 +128,35 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1base.html#ac0ea934f6292a98b73bf3e81c0a9ef48">process_fsm_clk_queue</a> ()</td></tr>
 <tr class="memdesc:ac0ea934f6292a98b73bf3e81c0a9ef48"><td class="mdescLeft">&#160;</td><td class="mdescRight">processes the fsm_clk_queue and triggers the FSM accordingly. Should be registered as rising-edge clock callback <br /></td></tr>
 <tr class="separator:ac0ea934f6292a98b73bf3e81c0a9ef48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6050ee3f1e95179293902dc3ef9381ee"><td class="memItemLeft" align="right" valign="top"><a id="a6050ee3f1e95179293902dc3ef9381ee"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a> (axi::fsm::protocol_time_point_e e, <a class="el" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm::scc::tlm_gp_shared_ptr</a> &amp;gp, unsigned cycles)</td></tr>
+<tr class="memdesc:a6050ee3f1e95179293902dc3ef9381ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">processes the fsm_sched_queue and propagates events to fsm_clk_queue. Should be registered as falling-edge clock callback <br /></td></tr>
+<tr class="separator:a6050ee3f1e95179293902dc3ef9381ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21466537400fe3927c25a4be159cfbf5"><td class="memItemLeft" align="right" valign="top"><a id="a21466537400fe3927c25a4be159cfbf5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1base.html#a21466537400fe3927c25a4be159cfbf5">schedule</a> (axi::fsm::protocol_time_point_e e, <a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *gp, unsigned cycles)</td></tr>
-<tr class="memdesc:a21466537400fe3927c25a4be159cfbf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">processes the fsm_sched_queue and propagates events to fsm_clk_queue. Should be registered as falling-edge clock callback <br /></td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>schedule</b> (axi::fsm::protocol_time_point_e e, <a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *gp, unsigned cycles)</td></tr>
 <tr class="separator:a21466537400fe3927c25a4be159cfbf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31caedc7c2d747f44ae4a358d7af9e50"><td class="memItemLeft" align="right" valign="top"><a id="a31caedc7c2d747f44ae4a358d7af9e50"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1base.html#a31caedc7c2d747f44ae4a358d7af9e50">schedule</a> (axi::fsm::protocol_time_point_e e, <a class="el" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm::scc::tlm_gp_shared_ptr</a> &amp;gp, sc_core::sc_time delay, bool syncronize=false)</td></tr>
+<tr class="memdesc:a31caedc7c2d747f44ae4a358d7af9e50"><td class="mdescLeft">&#160;</td><td class="mdescRight">processes the fsm_sched_queue and propagates events to fsm_clk_queue. Should be registered as falling-edge clock callback <br /></td></tr>
+<tr class="separator:a31caedc7c2d747f44ae4a358d7af9e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1f39886572097dfe418cdc9d27d06a6"><td class="memItemLeft" align="right" valign="top"><a id="aa1f39886572097dfe418cdc9d27d06a6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1base.html#aa1f39886572097dfe418cdc9d27d06a6">schedule</a> (axi::fsm::protocol_time_point_e e, <a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *gp, sc_core::sc_time delay, bool syncronize=false)</td></tr>
-<tr class="memdesc:aa1f39886572097dfe418cdc9d27d06a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">processes the fsm_sched_queue and propagates events to fsm_clk_queue. Should be registered as falling-edge clock callback <br /></td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>schedule</b> (axi::fsm::protocol_time_point_e e, <a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *gp, sc_core::sc_time delay, bool syncronize=false)</td></tr>
 <tr class="separator:aa1f39886572097dfe418cdc9d27d06a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab32dd1cdbaacd9f26d36947ef3d5f9ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1base.html#ab32dd1cdbaacd9f26d36947ef3d5f9ef">react</a> (axi::fsm::protocol_time_point_e event, <a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *trans)</td></tr>
-<tr class="memdesc:ab32dd1cdbaacd9f26d36947ef3d5f9ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">triggers the FSM with event and given transaction  <a href="structaxi_1_1fsm_1_1base.html#ab32dd1cdbaacd9f26d36947ef3d5f9ef">More...</a><br /></td></tr>
+<tr class="memitem:a26d7f15c1c5092f6db3251d38368dbbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a> (axi::fsm::protocol_time_point_e event, <a class="el" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm::scc::tlm_gp_shared_ptr</a> &amp;trans)</td></tr>
+<tr class="memdesc:a26d7f15c1c5092f6db3251d38368dbbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">triggers the FSM with event and given transaction  <a href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">More...</a><br /></td></tr>
+<tr class="separator:a26d7f15c1c5092f6db3251d38368dbbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab32dd1cdbaacd9f26d36947ef3d5f9ef"><td class="memItemLeft" align="right" valign="top"><a id="ab32dd1cdbaacd9f26d36947ef3d5f9ef"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>react</b> (axi::fsm::protocol_time_point_e event, <a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *trans)</td></tr>
 <tr class="separator:ab32dd1cdbaacd9f26d36947ef3d5f9ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ae817a70af89b9dc244286d92cbe26321"><td class="memItemLeft" align="right" valign="top"><a id="ae817a70af89b9dc244286d92cbe26321"></a>
-<a class="el" href="structscc_1_1peq.html">scc::peq</a>&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, <a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *, bool &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fsm_event_queue</b></td></tr>
-<tr class="separator:ae817a70af89b9dc244286d92cbe26321"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72ed2757efcb82913c3069a61a3211bd"><td class="memItemLeft" align="right" valign="top"><a id="a72ed2757efcb82913c3069a61a3211bd"></a>
-<a class="el" href="classscc_1_1fifo__w__cb.html">scc::fifo_w_cb</a>&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, <a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *, unsigned &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fsm_clk_queue</b></td></tr>
-<tr class="separator:a72ed2757efcb82913c3069a61a3211bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab862ab3c3a27111c3306d55dc25bda1c"><td class="memItemLeft" align="right" valign="top"><a id="ab862ab3c3a27111c3306d55dc25bda1c"></a>
+::<a class="el" href="structscc_1_1peq.html">scc::peq</a>&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, <a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *, bool &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fsm_event_queue</b></td></tr>
+<tr class="separator:ab862ab3c3a27111c3306d55dc25bda1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a662f1439252c193f513e614831da6f3b"><td class="memItemLeft" align="right" valign="top"><a id="a662f1439252c193f513e614831da6f3b"></a>
+::<a class="el" href="classscc_1_1fifo__w__cb.html">scc::fifo_w_cb</a>&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, <a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *, unsigned &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fsm_clk_queue</b></td></tr>
+<tr class="separator:a662f1439252c193f513e614831da6f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5fa6d0bd2bd2c4dbec5e2dba6f34a6a"><td class="memItemLeft" align="right" valign="top"><a id="ae5fa6d0bd2bd2c4dbec5e2dba6f34a6a"></a>
 sc_core::sc_process_handle&#160;</td><td class="memItemRight" valign="bottom"><b>fsm_clk_queue_hndl</b></td></tr>
 <tr class="separator:ae5fa6d0bd2bd2c4dbec5e2dba6f34a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -176,7 +185,7 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>finish_e
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>base class of all AXITLM based adapters and interfaces. </p>
 
-<p class="definition">Definition at line <a class="el" href="base_8h_source.html#l00039">39</a> of file <a class="el" href="base_8h_source.html">base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base_8h_source.html#l00040">40</a> of file <a class="el" href="base_8h_source.html">base.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac8655e267bed3a262044ae67b99b0f69"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac8655e267bed3a262044ae67b99b0f69">&#9670;&nbsp;</a></span>base()</h2>
@@ -250,7 +259,7 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>finish_e
 <p>function to create a <a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html">fsm_handle</a>. Needs to be implemented by the derived class </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p>Implemented in <a class="el" href="classaxi_1_1pe_1_1simple__initiator__b.html#a60862673e77795fa935abdce552597cd">axi::pe::simple_initiator_b</a>, and <a class="el" href="group__config.html#gab02a5de5e6f7d0b33b4d25d02c4f4609">axi::pe::axi_target_pe_b</a>.</p>
+<p>Implemented in <a class="el" href="group__config.html#gab02a5de5e6f7d0b33b4d25d02c4f4609">axi::pe::axi_target_pe_b</a>, and <a class="el" href="classaxi_1_1pe_1_1simple__initiator__b.html#a60862673e77795fa935abdce552597cd">axi::pe::simple_initiator_b</a>.</p>
 
 </div>
 </div>
@@ -337,7 +346,7 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>finish_e
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the sync enum denoting if the transaction has been updated or just accepted </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="base_8cpp_source.html#l00239">239</a> of file <a class="el" href="base_8cpp_source.html">base.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base_8cpp_source.html#l00234">234</a> of file <a class="el" href="base_8cpp_source.html">base.cpp</a>.</p>
 
 </div>
 </div>
@@ -384,18 +393,21 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>finish_e
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the sync enum denoting if the transaction has been updated or just accepted </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="base_8cpp_source.html#l00194">194</a> of file <a class="el" href="base_8cpp_source.html">base.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base_8cpp_source.html#l00189">189</a> of file <a class="el" href="base_8cpp_source.html">base.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ab32dd1cdbaacd9f26d36947ef3d5f9ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab32dd1cdbaacd9f26d36947ef3d5f9ef">&#9670;&nbsp;</a></span>react()</h2>
+<a id="a26d7f15c1c5092f6db3251d38368dbbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26d7f15c1c5092f6db3251d38368dbbd">&#9670;&nbsp;</a></span>react()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void base::react </td>
+          <td class="memname">void axi::fsm::base::react </td>
           <td>(</td>
           <td class="paramtype">axi::fsm::protocol_time_point_e&#160;</td>
           <td class="paramname"><em>event</em>, </td>
@@ -403,7 +415,7 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>finish_e
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm::scc::tlm_gp_shared_ptr</a> &amp;&#160;</td>
           <td class="paramname"><em>trans</em>&#160;</td>
         </tr>
         <tr>
@@ -412,6 +424,11 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>finish_e
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>triggers the FSM with event and given transaction </p>
@@ -423,7 +440,7 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>finish_e
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="base_8cpp_source.html#l00127">127</a> of file <a class="el" href="base_8cpp_source.html">base.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base_8h_source.html#l00123">123</a> of file <a class="el" href="base_8h_source.html">base.h</a>.</p>
 
 </div>
 </div>
@@ -464,8 +481,8 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>finish_e
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li>axi_chi/axi/fsm/<a class="el" href="base_8h_source.html">base.h</a></li>
-<li>axi_chi/axi/fsm/<a class="el" href="base_8cpp_source.html">base.cpp</a></li>
+<li>third_party/axi_chi/axi/fsm/<a class="el" href="base_8h_source.html">base.h</a></li>
+<li>third_party/axi_chi/axi/fsm/<a class="el" href="base_8cpp_source.html">base.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

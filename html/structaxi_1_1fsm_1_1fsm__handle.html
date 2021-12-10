@@ -59,9 +59,10 @@ Collaboration diagram for axi::fsm::fsm_handle:</div>
 <div class="dyncontent">
 <div class="center"><img src="structaxi_1_1fsm_1_1fsm__handle__coll__graph.png" border="0" usemap="#axi_1_1fsm_1_1fsm__handle_coll__map" alt="Collaboration graph"/></div>
 <map name="axi_1_1fsm_1_1fsm__handle_coll__map" id="axi_1_1fsm_1_1fsm__handle_coll__map">
-<area shape="rect" title=" " alt="" coords="19,185,178,212"/>
-<area shape="rect" href="structaxi_1_1fsm_1_1AxiProtocolFsm.html" title=" " alt="" coords="6,96,191,123"/>
-<area shape="rect" title=" " alt="" coords="5,5,192,47"/>
+<area shape="rect" title=" " alt="" coords="61,200,219,227"/>
+<area shape="rect" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html" title=" " alt="" coords="5,96,208,123"/>
+<area shape="rect" href="structaxi_1_1fsm_1_1AxiProtocolFsm.html" title=" " alt="" coords="233,96,418,123"/>
+<area shape="rect" title=" " alt="" coords="232,5,419,47"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -76,10 +77,10 @@ Public Attributes</h2></td></tr>
 <a class="el" href="structaxi_1_1fsm_1_1AxiProtocolFsm.html">AxiProtocolFsm</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a> = nullptr</td></tr>
 <tr class="memdesc:aad962f3327592f24aad3a7088f994369"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the FSM <br /></td></tr>
 <tr class="separator:aad962f3327592f24aad3a7088f994369"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81a8f42267e805aeafa67382c3627ee9"><td class="memItemLeft" align="right" valign="top"><a id="a81a8f42267e805aeafa67382c3627ee9"></a>
-axi::axi_protocol_types::tlm_payload_type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html#a81a8f42267e805aeafa67382c3627ee9">trans</a> = nullptr</td></tr>
-<tr class="memdesc:a81a8f42267e805aeafa67382c3627ee9"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the associated AXITLM payload <br /></td></tr>
-<tr class="separator:a81a8f42267e805aeafa67382c3627ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4198e085c0adb0dcfafc623aa9890d8b"><td class="memItemLeft" align="right" valign="top"><a id="a4198e085c0adb0dcfafc623aa9890d8b"></a>
+<a class="el" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm::scc::tlm_gp_shared_ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a> = nullptr</td></tr>
+<tr class="memdesc:a4198e085c0adb0dcfafc623aa9890d8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the associated AXITLM payload <br /></td></tr>
+<tr class="separator:a4198e085c0adb0dcfafc623aa9890d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c7367afac927398add8c4ec3856d85f"><td class="memItemLeft" align="right" valign="top"><a id="a7c7367afac927398add8c4ec3856d85f"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html#a7c7367afac927398add8c4ec3856d85f">beat_count</a> = 0</td></tr>
 <tr class="memdesc:a7c7367afac927398add8c4ec3856d85f"><td class="mdescLeft">&#160;</td><td class="mdescRight">beat count of this transaction <br /></td></tr>
@@ -92,19 +93,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html#a492c1c639c3ce74f9ffd917372a43c4a">finish</a></td></tr>
 <tr class="memdesc:a492c1c639c3ce74f9ffd917372a43c4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">event indicating the end of the transaction <br /></td></tr>
 <tr class="separator:a492c1c639c3ce74f9ffd917372a43c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabcb55fb45ded2749cc948c927233319"><td class="memItemLeft" >union {</td></tr>
-<tr class="memitem:abca707deb5d6aece233805e40cab3ec8"><td class="memItemLeft" >
+<tr class="memitem:afd9b5e0e1163fda5e7bac40832dc53a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm::scc::tlm_gp_shared_ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html#afd9b5e0e1163fda5e7bac40832dc53a8">gp</a> {}</td></tr>
+<tr class="memdesc:afd9b5e0e1163fda5e7bac40832dc53a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">additional data being used in the various adapters,  <a href="structaxi_1_1fsm_1_1fsm__handle.html#afd9b5e0e1163fda5e7bac40832dc53a8">More...</a><br /></td></tr>
+<tr class="separator:afd9b5e0e1163fda5e7bac40832dc53a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e896e5447f9fe92af095f9db3c4d920"><td class="memItemLeft" ><a id="a4e896e5447f9fe92af095f9db3c4d920"></a>
+union {</td></tr>
+<tr class="memitem:a42729308cfe8cb36ac12b08cc84aaf77"><td class="memItemLeft" >
 &#160;&#160;&#160;uint64_t&#160;&#160;&#160;<b>progress</b></td></tr>
-<tr class="separator:abca707deb5d6aece233805e40cab3ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a5f057cebe43fd5d2a40dadefb213fd"><td class="memItemLeft" >
-&#160;&#160;&#160;tlm::tlm_generic_payload *&#160;&#160;&#160;<b>gp</b></td></tr>
-<tr class="separator:a1a5f057cebe43fd5d2a40dadefb213fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57938887f5c5730727e508038f86025f"><td class="memItemLeft" >
+<tr class="separator:a42729308cfe8cb36ac12b08cc84aaf77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4de84e4de81154e39b888e3e5aa7271"><td class="memItemLeft" >
 &#160;&#160;&#160;void *&#160;&#160;&#160;<b>pp</b></td></tr>
-<tr class="separator:a57938887f5c5730727e508038f86025f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabcb55fb45ded2749cc948c927233319"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html#aabcb55fb45ded2749cc948c927233319">p</a></td></tr>
-<tr class="memdesc:aabcb55fb45ded2749cc948c927233319"><td class="mdescLeft">&#160;</td><td class="mdescRight">additional data being used in the various adapters,  <a href="structaxi_1_1fsm_1_1fsm__handle.html#aabcb55fb45ded2749cc948c927233319">More...</a><br /></td></tr>
-<tr class="separator:aabcb55fb45ded2749cc948c927233319"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ab4de84e4de81154e39b888e3e5aa7271"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e896e5447f9fe92af095f9db3c4d920"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>p</b></td></tr>
+<tr class="separator:a4e896e5447f9fe92af095f9db3c4d920"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab23479decf35d6b9c1f4b54334485b88"><td class="memItemLeft" align="right" valign="top"><a id="ab23479decf35d6b9c1f4b54334485b88"></a>
 sc_core::sc_time&#160;</td><td class="memItemRight" valign="bottom"><b>start</b></td></tr>
 <tr class="separator:ab23479decf35d6b9c1f4b54334485b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,7 +113,7 @@ sc_core::sc_time&#160;</td><td class="memItemRight" valign="bottom"><b>start</b>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>a handle class holding the FSM and associated data </p>
 
-<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00056">56</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00057">57</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a6bae2451506edbf1a79e5ff6df20985b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6bae2451506edbf1a79e5ff6df20985b">&#9670;&nbsp;</a></span>reset()</h2>
@@ -138,19 +139,19 @@ sc_core::sc_time&#160;</td><td class="memItemRight" valign="bottom"><b>start</b>
 </div><div class="memdoc">
 <p>reset all data members to their default </p>
 
-<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00077">77</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00078">78</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aabcb55fb45ded2749cc948c927233319"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabcb55fb45ded2749cc948c927233319">&#9670;&nbsp;</a></span>p</h2>
+<a id="afd9b5e0e1163fda5e7bac40832dc53a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd9b5e0e1163fda5e7bac40832dc53a8">&#9670;&nbsp;</a></span>gp</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">union { ... }  axi::fsm::fsm_handle::p</td>
+          <td class="memname"><a class="el" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm::scc::tlm_gp_shared_ptr</a> axi::fsm::fsm_handle::gp {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -158,10 +159,12 @@ sc_core::sc_time&#160;</td><td class="memItemRight" valign="bottom"><b>start</b>
 <p>additional data being used in the various adapters, </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>refactor to remove this forward definitions </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00069">69</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>axi_chi/axi/fsm/<a class="el" href="types_8h_source.html">types.h</a></li>
+<li>third_party/axi_chi/axi/fsm/<a class="el" href="types_8h_source.html">types.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

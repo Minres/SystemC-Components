@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: incl/util/watchdog.h Source File</title>
+<title>scc: src/common/util/watchdog.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,7 +40,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f9f4f7420df66ec1f9f18519109e2068.html">incl</a></li><li class="navelem"><a class="el" href="dir_7caf76e865c198fca9670c8fa5dc79fa.html">util</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_be04617272aece3468352586f0f1ec2c.html">util</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -55,7 +55,7 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Author: eyckj</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#pragma one</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifdef __clang__</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// quirks for gcc 4.8.5 to get clang-tidy going</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;bits/c++config.h&gt;</span></div>
@@ -79,7 +79,7 @@ $(function() {
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classutil_1_1watchdog.html#a93179f71a1f0e034a003aeff5a2615c1">watchdog</a>(std::chrono::system_clock::duration timeout, std::function&lt;<span class="keywordtype">void</span>(<span class="keywordtype">void</span>)&gt; alarm_cb,</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;             std::chrono::system_clock::duration sleep_duration);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classutil_1_1watchdog.html#a93179f71a1f0e034a003aeff5a2615c1">watchdog</a>(std::chrono::system_clock::duration timeout, std::function&lt;<span class="keywordtype">void</span>(<span class="keywordtype">void</span>)&gt; alarm);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classutil_1_1watchdog.html#acffd34d8c6c42db689652a0767f13348">~watchdog</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classutil_1_1watchdog.html#a78359b436e131f8d4fe4cc75b28455a7">~watchdog</a>();</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classutil_1_1watchdog.html#a93179f71a1f0e034a003aeff5a2615c1">watchdog</a>(<span class="keyword">const</span> <a class="code" href="classutil_1_1watchdog.html">watchdog</a>&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
@@ -89,8 +89,8 @@ $(function() {
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classutil_1_1watchdog.html">watchdog</a>&amp; operator=(<a class="code" href="classutil_1_1watchdog.html">watchdog</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classutil_1_1watchdog.html#a4fe744cb57df1adf972b62aaa96f7f22">arm</a>();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classutil_1_1watchdog.html#ac66df4c8aedc01bbf6fdf7a34fe077cb">re_arm</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classutil_1_1watchdog.html#a2f3493572954ec31e29320fee295ea71">arm</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classutil_1_1watchdog.html#a9b78661f83153ffd8a9de24111294ff7">re_arm</a>();</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> guard();</div>
@@ -107,11 +107,11 @@ $(function() {
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;} <span class="comment">// namespace util</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassutil_1_1watchdog_html_a4fe744cb57df1adf972b62aaa96f7f22"><div class="ttname"><a href="classutil_1_1watchdog.html#a4fe744cb57df1adf972b62aaa96f7f22">util::watchdog::arm</a></div><div class="ttdeci">void arm()</div></div>
+<div class="ttc" id="aclassutil_1_1watchdog_html_a2f3493572954ec31e29320fee295ea71"><div class="ttname"><a href="classutil_1_1watchdog.html#a2f3493572954ec31e29320fee295ea71">util::watchdog::arm</a></div><div class="ttdeci">void arm()</div><div class="ttdef"><b>Definition:</b> <a href="watchdog_8cpp_source.html#l00058">watchdog.cpp:58</a></div></div>
 <div class="ttc" id="aclassutil_1_1watchdog_html"><div class="ttname"><a href="classutil_1_1watchdog.html">util::watchdog</a></div><div class="ttdef"><b>Definition:</b> <a href="watchdog_8h_source.html#l00030">watchdog.h:30</a></div></div>
-<div class="ttc" id="aclassutil_1_1watchdog_html_acffd34d8c6c42db689652a0767f13348"><div class="ttname"><a href="classutil_1_1watchdog.html#acffd34d8c6c42db689652a0767f13348">util::watchdog::~watchdog</a></div><div class="ttdeci">~watchdog()</div></div>
+<div class="ttc" id="aclassutil_1_1watchdog_html_a9b78661f83153ffd8a9de24111294ff7"><div class="ttname"><a href="classutil_1_1watchdog.html#a9b78661f83153ffd8a9de24111294ff7">util::watchdog::re_arm</a></div><div class="ttdeci">void re_arm()</div><div class="ttdef"><b>Definition:</b> <a href="watchdog_8cpp_source.html#l00064">watchdog.cpp:64</a></div></div>
+<div class="ttc" id="aclassutil_1_1watchdog_html_a78359b436e131f8d4fe4cc75b28455a7"><div class="ttname"><a href="classutil_1_1watchdog.html#a78359b436e131f8d4fe4cc75b28455a7">util::watchdog::~watchdog</a></div><div class="ttdeci">~watchdog()</div><div class="ttdef"><b>Definition:</b> <a href="watchdog_8cpp_source.html#l00028">watchdog.cpp:28</a></div></div>
 <div class="ttc" id="aclassutil_1_1watchdog_html_a93179f71a1f0e034a003aeff5a2615c1"><div class="ttname"><a href="classutil_1_1watchdog.html#a93179f71a1f0e034a003aeff5a2615c1">util::watchdog::watchdog</a></div><div class="ttdeci">watchdog(std::chrono::system_clock::duration timeout, std::function&lt; void(void)&gt; alarm_cb, std::chrono::system_clock::duration sleep_duration)</div></div>
-<div class="ttc" id="aclassutil_1_1watchdog_html_ac66df4c8aedc01bbf6fdf7a34fe077cb"><div class="ttname"><a href="classutil_1_1watchdog.html#ac66df4c8aedc01bbf6fdf7a34fe077cb">util::watchdog::re_arm</a></div><div class="ttdeci">void re_arm()</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

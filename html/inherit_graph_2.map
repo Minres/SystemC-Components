@@ -1,87 +1,16 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="479,2322,629,2349"/>
-<area shape="rect" id="node2" href="$classscv4axi_1_1ace__recorder.html" title=" " alt="" coords="762,2199,965,2240"/>
-<area shape="rect" id="node3" href="$classscv4axi_1_1ace__recorder.html" title="The TLM2 transaction recorder." alt="" coords="781,2297,945,2339"/>
-<area shape="rect" id="node4" title=" " alt="" coords="181,173,332,199"/>
-<area shape="rect" id="node5" href="$classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="778,273,949,329"/>
-<area shape="rect" id="node6" href="$classscv4axi_1_1axi__recorder.html" title=" " alt="" coords="453,5,655,47"/>
-<area shape="rect" id="node7" href="$classscv4axi_1_1axi__recorder.html" title="The TLM2 transaction recorder." alt="" coords="473,71,635,112"/>
-<area shape="rect" id="node8" href="$classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="791,200,936,241"/>
-<area shape="rect" id="node9" title=" " alt="" coords="183,93,330,119"/>
-<area shape="rect" id="node10" href="$classaxi_1_1pe_1_1axi__target__pe__b.html" title=" " alt="" coords="465,137,643,163"/>
-<area shape="rect" id="node11" href="$classaxi_1_1pe_1_1simple__target.html" title=" " alt="" coords="752,67,975,108"/>
-<area shape="rect" id="node12" href="$classaxi_1_1pe_1_1simple__target.html" title=" " alt="" coords="781,132,945,173"/>
-<area shape="rect" id="node13" title=" " alt="" coords="229,473,285,499"/>
-<area shape="rect" id="node14" href="$classscv4axi_1_1axitlm__recorder__module.html" title="The TLM2 transaction recorder." alt="" coords="445,486,663,542"/>
-<area shape="rect" id="node15" href="$classscv4chi_1_1chitlm__recorder__module.html" title="The TLM2 transaction recorder." alt="" coords="445,406,663,462"/>
-<area shape="rect" id="node16" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="199,266,314,293"/>
-<area shape="rect" id="node17" href="$classaxi_1_1pe_1_1simple__initiator__b.html" title=" " alt="" coords="459,289,649,315"/>
-<area shape="rect" id="node18" href="$classaxi_1_1pe_1_1simple__ace__initiator.html" title=" " alt="" coords="778,535,949,591"/>
-<area shape="rect" id="node19" title=" " alt="" coords="481,2519,627,2546"/>
-<area shape="rect" id="node20" href="$classscv4chi_1_1chi__trx__recorder.html" title="The TLM2 transaction recorder." alt="" coords="771,2445,955,2487"/>
-<area shape="rect" id="node21" title=" " alt="" coords="5,2083,107,2110"/>
-<area shape="rect" id="node22" href="$classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="158,2076,355,2117"/>
-<area shape="rect" id="node23" href="$classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="155,2142,359,2198"/>
-<area shape="rect" id="node25" href="$classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="158,1995,355,2051"/>
-<area shape="rect" id="node27" href="$classchi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="155,2222,358,2278"/>
-<area shape="rect" id="node30" href="$classchi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="159,2397,355,2439"/>
-<area shape="rect" id="node31" href="$structtlm_1_1pe_1_1intor__bw.html" title=" " alt="" coords="185,2609,328,2651"/>
-<area shape="rect" id="node33" href="$structtlm_1_1pe_1_1intor__bw.html" title=" " alt="" coords="185,2675,328,2716"/>
-<area shape="rect" id="node35" href="$structtlm_1_1pe_1_1intor__fw.html" title=" " alt="" coords="187,1828,326,1869"/>
-<area shape="rect" id="node37" href="$structtlm_1_1pe_1_1intor__fw.html" title=" " alt="" coords="187,1763,326,1804"/>
-<area shape="rect" id="node40" href="$structtlm_1_1pe_1_1intor__bw.html" title=" " alt="" coords="185,2740,328,2781"/>
-<area shape="rect" id="node41" href="$structtlm_1_1pe_1_1intor__fw.html" title=" " alt="" coords="187,27,326,68"/>
-<area shape="rect" id="node42" href="$structtlm_1_1tlm__signal__bw__transport__if.html" title=" " alt="" coords="183,1507,330,1563"/>
-<area shape="rect" id="node43" href="$structtlm_1_1tlm__signal__fw__transport__if.html" title=" " alt="" coords="184,1587,329,1643"/>
-<area shape="rect" id="node44" href="$structtlm_1_1tlm__signal__bw__transport__if.html" title=" " alt="" coords="164,2303,349,2373"/>
-<area shape="rect" id="node46" href="$structtlm_1_1tlm__signal__bw__transport__if.html" title=" " alt="" coords="164,349,349,420"/>
-<area shape="rect" id="node48" href="$structtlm_1_1tlm__signal__fw__transport__if.html" title=" " alt="" coords="164,2515,349,2585"/>
-<area shape="rect" id="node49" href="$structtlm_1_1tlm__signal__fw__transport__if.html" title=" " alt="" coords="164,1668,349,1739"/>
-<area shape="rect" id="node24" href="$classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="471,2175,637,2231"/>
-<area shape="rect" id="node26" href="$classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="471,2109,637,2151"/>
-<area shape="rect" id="node28" href="$classchi_1_1chi__bw__transport__if.html" title=" " alt="" coords="474,2256,634,2297"/>
-<area shape="rect" id="node29" href="$classchi_1_1chi__bw__transport__if.html" title=" " alt="" coords="474,2373,634,2429"/>
-<area shape="rect" id="node32" href="$structtlm_1_1pe_1_1intor__bw__b.html" title=" " alt="" coords="481,2617,627,2643"/>
-<area shape="rect" id="node34" href="$structtlm_1_1pe_1_1intor__bw__nb.html" title=" " alt="" coords="477,2682,631,2709"/>
-<area shape="rect" id="node36" href="$structtlm_1_1pe_1_1intor__fw__b.html" title=" " alt="" coords="483,1651,625,1678"/>
-<area shape="rect" id="node38" href="$structtlm_1_1pe_1_1intor__fw__nb.html" title=" " alt="" coords="479,1499,629,1526"/>
-<area shape="rect" id="node39" href="$classtlm_1_1pe_1_1parallel__pe.html" title=" " alt="" coords="789,1383,937,1410"/>
-<area shape="rect" id="node45" href="$structtlm_1_1tlm__signal.html" title=" " alt="" coords="473,2453,635,2495"/>
-<area shape="rect" id="node47" href="$structtlm_1_1sc__signal2tlm__signal.html" title=" " alt="" coords="483,340,625,381"/>
-<area shape="rect" id="node50" href="$structtlm_1_1tlm__signal2sc__signal.html" title=" " alt="" coords="483,1433,625,1475"/>
-<area shape="rect" id="node51" title=" " alt="" coords="211,1045,303,1071"/>
-<area shape="rect" id="node52" href="$classahb_1_1bfm_1_1initiator.html" title=" " alt="" coords="485,785,623,827"/>
-<area shape="rect" id="node53" href="$classahb_1_1bfm_1_1target.html" title=" " alt="" coords="453,902,655,929"/>
-<area shape="rect" id="node54" href="$classahb_1_1pe_1_1ahb__initiator__b.html" title=" " alt="" coords="467,1782,641,1809"/>
-<area shape="rect" id="node56" href="$classahb_1_1pe_1_1ahb__target__b.html" title=" " alt="" coords="473,1550,635,1577"/>
-<area shape="rect" id="node58" href="$classapb_1_1pe_1_1apb__initiator__b.html" title=" " alt="" coords="467,1833,641,1859"/>
-<area shape="rect" id="node60" href="$classapb_1_1pe_1_1apb__target__b.html" title=" " alt="" coords="473,1601,635,1627"/>
-<area shape="rect" id="node62" href="$classaxi_1_1axi4lite__tlm2pin__adaptor.html" title=" " alt="" coords="418,953,690,995"/>
-<area shape="rect" id="node63" href="$classaxi_1_1axi__initiator__base.html" title="axi_initiator class provides an input_socket for incoming TLM transactions. It attaches AXI extension..." alt="" coords="471,1019,637,1046"/>
-<area shape="rect" id="node65" href="$classaxi_1_1axi__pin2tlm__adaptor.html" title=" " alt="" coords="452,1121,656,1177"/>
-<area shape="rect" id="node66" href="$classaxi_1_1axi__target__base.html" title="axi_target class instantiates the AXI Protocol Engine. It accesses the Protocol Engine with access() ..." alt="" coords="477,1070,631,1097"/>
-<area shape="rect" id="node68" href="$classaxi_1_1axi__tlm2pin__adaptor.html" title=" " alt="" coords="452,1201,656,1257"/>
-<area shape="rect" id="node69" href="$classscc_1_1configurer.html" title="design configuration reader" alt="" coords="496,1281,612,1307"/>
-<area shape="rect" id="node70" href="$classscc_1_1memory.html" title="simple TLM2.0 LT memory model" alt="" coords="477,567,631,608"/>
-<area shape="rect" id="node71" href="$classscc_1_1perf__estimator.html" title="a performance estimator" alt="" coords="481,633,627,659"/>
-<area shape="rect" id="node72" href="$classscc_1_1router.html" title="a TLM2.0 router for loosly&#45;timed (LT) models" alt="" coords="458,683,650,710"/>
-<area shape="rect" id="node73" href="$structscc_1_1time2tick.html" title="translate a tick&#45;less clock (sc_time based) to boolean clock" alt="" coords="497,734,611,761"/>
-<area shape="rect" id="node74" href="$classscc_1_1tracer__base.html" title="base class for automatic tracer" alt="" coords="491,851,617,878"/>
-<area shape="rect" id="node78" href="$classscv4tlm_1_1tlm__recorder__module.html" title="The TLM2 transaction recorder." alt="" coords="749,1567,977,1608"/>
-<area shape="rect" id="node79" href="$classtlm_1_1tlm2__pv__av__initiator__adapter.html" title=" " alt="" coords="407,1702,701,1758"/>
-<area shape="rect" id="node80" href="$classtlm_1_1tlm2__pv__av__target__adapter.html" title=" " alt="" coords="407,1883,701,1939"/>
-<area shape="rect" id="node55" href="$classahb_1_1pe_1_1ahb3__initiator.html" title=" " alt="" coords="752,1767,975,1808"/>
-<area shape="rect" id="node57" href="$classahb_1_1pe_1_1ahb3__target.html" title=" " alt="" coords="774,1486,953,1542"/>
-<area shape="rect" id="node59" href="$classapb_1_1pe_1_1apb__initiator.html" title=" " alt="" coords="752,1832,975,1873"/>
-<area shape="rect" id="node61" href="$classapb_1_1pe_1_1apb__target.html" title=" " alt="" coords="774,1633,953,1689"/>
-<area shape="rect" id="node64" href="$classaxi_1_1axi__initiator.html" title=" " alt="" coords="799,1008,927,1049"/>
-<area shape="rect" id="node67" href="$classaxi_1_1axi__target.html" title=" " alt="" coords="754,1074,973,1101"/>
-<area shape="rect" id="node75" href="$classscc_1_1tracer.html" title="a component traversing the SystemC object hierarchy and tracing the objects" alt="" coords="819,877,908,903"/>
-<area shape="rect" id="node77" href="$classscc_1_1value__registry.html" title=" " alt="" coords="791,826,935,853"/>
-<area shape="rect" id="node76" href="$classscc_1_1configurable__tracer.html" title="configurable tracer for automatic port and signal tracing" alt="" coords="1025,877,1201,903"/>
-<area shape="rect" id="node81" title=" " alt="" coords="198,2463,315,2490"/>
-<area shape="rect" id="node82" title=" " alt="" coords="181,1945,333,1971"/>
-<area shape="rect" id="node83" href="$classscv4tlm_1_1tlm__recorder.html" title="The TLM2 transaction recorder." alt="" coords="471,2044,637,2085"/>
-<area shape="rect" id="node84" href="$classscv4tlm_1_1tlm__recorder.html" title=" " alt="" coords="461,1963,647,2019"/>
-<area shape="rect" id="node85" title=" " alt="" coords="183,1894,331,1921"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,444,145,485"/>
+<area shape="rect" id="node2" href="$structaxi_1_1ace__initiator__socket.html" title=" " alt="" coords="193,5,453,76"/>
+<area shape="rect" id="node4" href="$structaxi_1_1ace__initiator__socket.html" title=" " alt="" coords="218,101,429,157"/>
+<area shape="rect" id="node5" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="218,181,429,237"/>
+<area shape="rect" id="node6" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="259,261,387,303"/>
+<area shape="rect" id="node7" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="193,327,453,397"/>
+<area shape="rect" id="node9" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="230,422,417,507"/>
+<area shape="rect" id="node10" href="$structchi_1_1chi__initiator__socket.html" title=" " alt="" coords="218,531,429,587"/>
+<area shape="rect" id="node11" href="$structchi_1_1chi__initiator__socket.html" title=" " alt="" coords="193,612,453,683"/>
+<area shape="rect" id="node12" href="$structtlm_1_1scc_1_1tlm__signal__initiator__socket.html" title=" " alt="" coords="238,707,409,763"/>
+<area shape="rect" id="node13" href="$structtlm_1_1scc_1_1tlm__signal__initiator__socket.html" title=" " alt="" coords="240,788,407,859"/>
+<area shape="rect" id="node14" href="$structtlm_1_1scc_1_1tlm__signal__initiator__socket.html" title=" " alt="" coords="228,883,419,924"/>
+<area shape="rect" id="node3" href="$classscv4axi_1_1ace__rec__initiator__socket.html" title=" " alt="" coords="501,13,712,69"/>
+<area shape="rect" id="node8" href="$classscv4axi_1_1axi__rec__initiator__socket.html" title=" " alt="" coords="501,334,712,390"/>
 </map>

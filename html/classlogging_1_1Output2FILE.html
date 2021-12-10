@@ -74,11 +74,11 @@ Collaboration diagram for logging::Output2FILE&lt; CATEGORY &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a83e67a02ec378ec5f3e1803de128db5b"><td class="memItemLeft" align="right" valign="top">static FILE *&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogging_1_1Output2FILE.html#a83e67a02ec378ec5f3e1803de128db5b">stream</a> ()</td></tr>
-<tr class="separator:a83e67a02ec378ec5f3e1803de128db5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bd97b3cd110c1c8b27ec13368d63bd1"><td class="memItemLeft" align="right" valign="top"><a id="a2bd97b3cd110c1c8b27ec13368d63bd1"></a>
-static std::ostream *&amp;&#160;</td><td class="memItemRight" valign="bottom"><b>ostream</b> ()</td></tr>
-<tr class="separator:a2bd97b3cd110c1c8b27ec13368d63bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad475d11746741f6793cffa5734ade851"><td class="memItemLeft" align="right" valign="top">static std::atomic&lt; FILE * &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogging_1_1Output2FILE.html#ad475d11746741f6793cffa5734ade851">stream</a> ()</td></tr>
+<tr class="separator:ad475d11746741f6793cffa5734ade851"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a550363d29e4431f5f58706dce606b1aa"><td class="memItemLeft" align="right" valign="top"><a id="a550363d29e4431f5f58706dce606b1aa"></a>
+static std::atomic&lt; std::ostream * &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>ostream</b> ()</td></tr>
+<tr class="separator:a550363d29e4431f5f58706dce606b1aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a750d143f2b07c888ef5d38c3368ba8f4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogging_1_1Output2FILE.html#a750d143f2b07c888ef5d38c3368ba8f4">output</a> (const std::string &amp;msg)</td></tr>
 <tr class="separator:a750d143f2b07c888ef5d38c3368ba8f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -88,7 +88,7 @@ class logging::Output2FILE&lt; CATEGORY &gt;</h3>
 
 <p>the output writer </p>
 
-<p class="definition">Definition at line <a class="el" href="logging_8h_source.html#l00184">184</a> of file <a class="el" href="logging_8h_source.html">logging.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logging_8h_source.html#l00193">193</a> of file <a class="el" href="logging_8h_source.html">logging.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a750d143f2b07c888ef5d38c3368ba8f4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a750d143f2b07c888ef5d38c3368ba8f4">&#9670;&nbsp;</a></span>output()</h2>
@@ -123,12 +123,12 @@ template&lt;typename CATEGORY &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="logging_8h_source.html#l00205">205</a> of file <a class="el" href="logging_8h_source.html">logging.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logging_8h_source.html#l00214">214</a> of file <a class="el" href="logging_8h_source.html">logging.h</a>.</p>
 
 </div>
 </div>
-<a id="a83e67a02ec378ec5f3e1803de128db5b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83e67a02ec378ec5f3e1803de128db5b">&#9670;&nbsp;</a></span>stream()</h2>
+<a id="ad475d11746741f6793cffa5734ade851"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad475d11746741f6793cffa5734ade851">&#9670;&nbsp;</a></span>stream()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -139,7 +139,7 @@ template&lt;typename CATEGORY &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static FILE*&amp; <a class="el" href="classlogging_1_1Output2FILE.html">logging::Output2FILE</a>&lt; CATEGORY &gt;::stream </td>
+          <td class="memname">static std::atomic&lt;FILE*&gt;&amp; <a class="el" href="classlogging_1_1Output2FILE.html">logging::Output2FILE</a>&lt; CATEGORY &gt;::stream </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -154,12 +154,12 @@ template&lt;typename CATEGORY &gt; </div>
 <p>get the file handle of the underlying output file (or stdout)</p>
 <dl class="section return"><dt>Returns</dt><dd>the file handle </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="logging_8h_source.html#l00191">191</a> of file <a class="el" href="logging_8h_source.html">logging.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logging_8h_source.html#l00200">200</a> of file <a class="el" href="logging_8h_source.html">logging.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>incl/util/<a class="el" href="logging_8h_source.html">logging.h</a></li>
+<li>src/common/util/<a class="el" href="logging_8h_source.html">logging.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

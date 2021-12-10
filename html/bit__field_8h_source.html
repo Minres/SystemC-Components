@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: incl/util/bit_field.h Source File</title>
+<title>scc: src/common/util/bit_field.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,7 +40,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f9f4f7420df66ec1f9f18519109e2068.html">incl</a></li><li class="navelem"><a class="el" href="dir_7caf76e865c198fca9670c8fa5dc79fa.html">util</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_be04617272aece3468352586f0f1ec2c.html">util</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -205,25 +205,27 @@ $(function() {
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">//---------------------------------------------------------</span></div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">#define BEGIN_BF_DECL(typeName, T)                                                                                     \</span></div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor">    union typeName {                                                                                                   \</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">        struct { T val; } backing;                                                                                     \</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">        typeName(T v = 0) { backing.val = v; }                                                                         \</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">        typeName&amp; operator=(T v) {                                                                                     \</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">            backing.val = v;                                                                                           \</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">            return *this;                                                                                              \</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">        }                                                                                                              \</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="preprocessor">        operator T&amp;() { return backing.val; }                                                                          \</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">        operator T() const { return backing.val; }                                                                     \</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">        using StorageType = T;</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">#define BF_FIELD(memberName, offset, bits) BitFieldMember&lt;StorageType, offset, bits&gt; memberName;</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">        struct {                                                                                                       \</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">            T val;                                                                                                     \</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">        } backing;                                                                                                     \</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">        typeName(T v = 0) { backing.val = v; }                                                                         \</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">        typeName&amp; operator=(T v) {                                                                                     \</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">            backing.val = v;                                                                                           \</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="preprocessor">            return *this;                                                                                              \</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">        }                                                                                                              \</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">        operator T&amp;() { return backing.val; }                                                                          \</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">        operator T() const { return backing.val; }                                                                     \</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">        using StorageType = T;</span></div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">#define BF_ARRAY(memberName, offset, bits, numItems) BitFieldArray&lt;StorageType, offset, bits, numItems&gt; memberName;</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">#define BF_FIELD(memberName, offset, bits) BitFieldMember&lt;StorageType, offset, bits&gt; memberName;</span></div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor">#define END_BF_DECL() }</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor">#define BF_ARRAY(memberName, offset, bits, numItems) BitFieldArray&lt;StorageType, offset, bits, numItems&gt; memberName;</span></div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#endif // __CPP11OM_BITFIELD_H__</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#define END_BF_DECL() }</span></div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* BIT_FIELD_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">#endif // __CPP11OM_BITFIELD_H__</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* BIT_FIELD_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructBitFieldMember_html"><div class="ttname"><a href="structBitFieldMember.html">BitFieldMember</a></div><div class="ttdef"><b>Definition:</b> <a href="bit__field_8h_source.html#l00034">bit_field.h:34</a></div></div>
 <div class="ttc" id="aclassBitFieldArray_1_1Element_html"><div class="ttname"><a href="classBitFieldArray_1_1Element.html">BitFieldArray::Element</a></div><div class="ttdef"><b>Definition:</b> <a href="bit__field_8h_source.html#l00095">bit_field.h:95</a></div></div>

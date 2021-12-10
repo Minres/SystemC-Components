@@ -1,0 +1,12 @@
+<map id="axi::pe::axi_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;" name="axi::pe::axi_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="924,93,1147,134"/>
+<area shape="rect" id="node2" href="$classaxi_1_1pe_1_1axi__initiator__b.html" title=" " alt="" coords="708,100,875,127"/>
+<area shape="rect" id="node3" title=" " alt="" coords="454,35,546,61"/>
+<area shape="rect" id="node4" href="$classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="417,85,583,141"/>
+<area shape="rect" id="node5" title=" " alt="" coords="175,5,341,61"/>
+<area shape="rect" id="node6" href="$classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="156,85,360,141"/>
+<area shape="rect" id="node7" title=" " alt="" coords="5,100,107,127"/>
+<area shape="rect" id="node8" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="409,165,591,192"/>
+<area shape="rect" id="node9" title=" " alt="" coords="163,165,353,192"/>
+<area shape="rect" id="node10" title=" " alt="" coords="217,216,299,243"/>
+</map>

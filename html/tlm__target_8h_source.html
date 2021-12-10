@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: incl/scc/tlm_target.h Source File</title>
+<title>scc: src/components/scc/tlm_target.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,7 +40,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f9f4f7420df66ec1f9f18519109e2068.html">incl</a></li><li class="navelem"><a class="el" href="dir_228cfd38ee03b103b3948114f7c1821e.html">scc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3c4c7c1a85608ccd561c026bec818e51.html">components</a></li><li class="navelem"><a class="el" href="dir_4b4439fcc6b4628cd8783772fc9df8bf.html">scc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -68,11 +68,11 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define _SYSC_TLM_TARGET_H_</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;resource_access_if.h&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;scv4tlm/tlm_rec_target_socket.h&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;target_mixin.h&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;scc/utilities.h&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;tlm/scc/target_mixin.h&quot;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;util/range_lut.h&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;utilities.h&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;tlm/scc/scv/tlm_rec_target_socket.h&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>scc {</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">struct </span>addr_range {</div>
@@ -82,7 +82,7 @@ $(function() {
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">using</span> this_type = tlm_target&lt;BUSWIDTH&gt;;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classscc_1_1tlm__target.html#aef438344bd45092a2157164b453c387f">tlm_target</a>(sc_core::sc_time&amp; clock);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classscc_1_1target__mixin.html">scc::target_mixin&lt;scv4tlm::tlm_rec_target_socket&lt;BUSWIDTH&gt;</a>&gt; <a class="code" href="classscc_1_1tlm__target.html#af6899e1e057b5573cbe9c802bc373351">socket</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1target__mixin.html">tlm::scc::target_mixin&lt;tlm::scc::scv::tlm_rec_target_socket&lt;BUSWIDTH&gt;</a>&gt; <a class="code" href="classscc_1_1tlm__target.html#a2240c545e5a09ed14c144ef86a15da91">socket</a>;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1tlm__target.html#ae204ef69ce5e8280bee33cc315ed2b4c">b_tranport_cb</a>(tlm::tlm_generic_payload&amp; gp, sc_core::sc_time&amp; d);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classscc_1_1tlm__target.html#a5bcb252e7c936f6a8bda7f784108fa77">tranport_dbg_cb</a>(tlm::tlm_generic_payload&amp; gp);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1tlm__target.html#a5f5602fd3699a87ee74c14457222569d">addResource</a>(resource_access_if&amp; rai, uint64_t base_addr) {</div>
@@ -103,13 +103,13 @@ $(function() {
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> BUSWIDTH = 32&gt; <span class="keyword">struct </span>target_memory_map_entry {</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    tlm::tlm_target_socket&lt;BUSWIDTH&gt;&amp; target;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    sc_dt::uint64 start;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    sc_dt::uint64 size;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    ::sc_dt::uint64 start;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    ::sc_dt::uint64 size;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;};</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> BUSWIDTH = 32&gt; <span class="keyword">struct </span>target_name_map_entry {</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    std::string name;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    sc_dt::uint64 start;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    sc_dt::uint64 size;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    ::sc_dt::uint64 start;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    ::sc_dt::uint64 size;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;};</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
 <div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="structscc_1_1target__memory__map__entry.html">  116</a></span>&#160;} <span class="comment">/* namespace scc */</span></div>
@@ -119,9 +119,9 @@ $(function() {
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;: socket(<span class="stringliteral">&quot;socket&quot;</span>)</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;, clk(clock)</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;, socket_map(std::make_pair(nullptr, 0)) {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="classscc_1_1tlm__target.html#af6899e1e057b5573cbe9c802bc373351">socket</a>.register_b_transport(</div>
-<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="structscc_1_1target__name__map__entry.html">  124</a></span>&#160;            [=](tlm::tlm_generic_payload&amp; gp, sc_core::sc_time&amp; delay) -&gt; <span class="keywordtype">void</span> { this-&gt;<a class="code" href="classscc_1_1tlm__target.html#ae204ef69ce5e8280bee33cc315ed2b4c">b_tranport_cb</a>(gp, delay); });</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <a class="code" href="classscc_1_1tlm__target.html#af6899e1e057b5573cbe9c802bc373351">socket</a>.register_transport_dbg([=](tlm::tlm_generic_payload&amp; gp) -&gt; <span class="keywordtype">unsigned</span> { <span class="keywordflow">return</span> this-&gt;<a class="code" href="classscc_1_1tlm__target.html#a5bcb252e7c936f6a8bda7f784108fa77">tranport_dbg_cb</a>(gp); });</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    socket.<a class="code" href="classtlm_1_1scc_1_1target__mixin.html#aca694d17ae44b59155264d7cec4a8f1d">register_b_transport</a>(</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="structscc_1_1target__name__map__entry.html">  124</a></span>&#160;        [=](tlm::tlm_generic_payload&amp; gp, sc_core::sc_time&amp; delay) -&gt; <span class="keywordtype">void</span> { this-&gt;b_tranport_cb(gp, delay); });</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    socket.<a class="code" href="classtlm_1_1scc_1_1target__mixin.html#a057d97237a890edb377446f880a42587">register_transport_dbg</a>([=](tlm::tlm_generic_payload&amp; gp) -&gt; <span class="keywordtype">unsigned</span> { <span class="keywordflow">return</span> this-&gt;tranport_dbg_cb(gp); });</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BUSWIDTH&gt;</div>
@@ -160,7 +160,7 @@ $(function() {
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    std::tie(ra, base) = socket_map.getEntry(gp.get_address());</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">if</span>(ra) {</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordflow">if</span>(gp.get_data_length() == ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a0ec8392431001d4535ba1f792bfa3ee4">size</a>() &amp;&amp; gp.get_byte_enable_ptr() == <span class="keyword">nullptr</span> &amp;&amp;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                gp.get_data_length() == gp.get_streaming_width()) {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;           gp.get_data_length() == gp.get_streaming_width()) {</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordflow">if</span>(gp.get_command() == tlm::TLM_READ_COMMAND) {</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                <span class="keywordflow">if</span>(ra-&gt;<a class="code" href="group__NonFuncAcc.html#ga2329b4dda30a8e07bf37a9694d3aaa2a">read_dbg</a>(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a0ec8392431001d4535ba1f792bfa3ee4">size</a>()))</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                    <span class="keywordflow">return</span> gp.get_data_length();</div>
@@ -175,16 +175,18 @@ $(function() {
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SYSC_TLM_TARGET_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassscc_1_1tlm__target_html_a2240c545e5a09ed14c144ef86a15da91"><div class="ttname"><a href="classscc_1_1tlm__target.html#a2240c545e5a09ed14c144ef86a15da91">scc::tlm_target::socket</a></div><div class="ttdeci">tlm::scc::target_mixin&lt; tlm::scc::scv::tlm_rec_target_socket&lt; BUSWIDTH &gt; &gt; socket</div><div class="ttdoc">the target socket</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00067">tlm_target.h:67</a></div></div>
 <div class="ttc" id="agroup__NonFuncAcc_html_gae4609ce281478582d5019d2de7684e48"><div class="ttname"><a href="group__NonFuncAcc.html#gae4609ce281478582d5019d2de7684e48">scc::resource_access_if::write_dbg</a></div><div class="ttdeci">virtual bool write_dbg(const uint8_t *data, std::size_t length, uint64_t offset=0)=0</div><div class="ttdoc">debug write to the resource</div></div>
 <div class="ttc" id="agroup__NonFuncAcc_html_ga2329b4dda30a8e07bf37a9694d3aaa2a"><div class="ttname"><a href="group__NonFuncAcc.html#ga2329b4dda30a8e07bf37a9694d3aaa2a">scc::resource_access_if::read_dbg</a></div><div class="ttdeci">virtual bool read_dbg(uint8_t *data, std::size_t length, uint64_t offset=0) const =0</div><div class="ttdoc">debug read the data from the resource</div></div>
 <div class="ttc" id="aclassscc_1_1resource__access__if_html"><div class="ttname"><a href="classscc_1_1resource__access__if.html">scc::resource_access_if</a></div><div class="ttdoc">interface defining access to a resource e.g. a register</div><div class="ttdef"><b>Definition:</b> <a href="resource__access__if_8h_source.html#l00044">resource_access_if.h:44</a></div></div>
 <div class="ttc" id="agroup__FuncAcc_html_ga687cd9c884c9a6695332b4dd82c388e9"><div class="ttname"><a href="group__FuncAcc.html#ga687cd9c884c9a6695332b4dd82c388e9">scc::resource_access_if::read</a></div><div class="ttdeci">virtual bool read(uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME) const =0</div><div class="ttdoc">read the data from the resource</div></div>
 <div class="ttc" id="aclassutil_1_1range__lut_html"><div class="ttname"><a href="classutil_1_1range__lut.html">util::range_lut</a></div><div class="ttdef"><b>Definition:</b> <a href="range__lut_8h_source.html#l00046">range_lut.h:46</a></div></div>
 <div class="ttc" id="aclassscc_1_1tlm__target_html_ae204ef69ce5e8280bee33cc315ed2b4c"><div class="ttname"><a href="classscc_1_1tlm__target.html#ae204ef69ce5e8280bee33cc315ed2b4c">scc::tlm_target::b_tranport_cb</a></div><div class="ttdeci">void b_tranport_cb(tlm::tlm_generic_payload &amp;gp, sc_core::sc_time &amp;d)</div><div class="ttdoc">the blocking transport callback</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00129">tlm_target.h:129</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1target__mixin_html_a057d97237a890edb377446f880a42587"><div class="ttname"><a href="classtlm_1_1scc_1_1target__mixin.html#a057d97237a890edb377446f880a42587">tlm::scc::target_mixin::register_transport_dbg</a></div><div class="ttdeci">void register_transport_dbg(std::function&lt; unsigned int(transaction_type &amp;)&gt; cb)</div><div class="ttdef"><b>Definition:</b> <a href="target__mixin_8h_source.html#l00093">target_mixin.h:93</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1target__mixin_html"><div class="ttname"><a href="classtlm_1_1scc_1_1target__mixin.html">tlm::scc::target_mixin</a></div><div class="ttdef"><b>Definition:</b> <a href="target__mixin_8h_source.html#l00034">target_mixin.h:34</a></div></div>
 <div class="ttc" id="aclassscc_1_1resource__access__if_html_a0ec8392431001d4535ba1f792bfa3ee4"><div class="ttname"><a href="classscc_1_1resource__access__if.html#a0ec8392431001d4535ba1f792bfa3ee4">scc::resource_access_if::size</a></div><div class="ttdeci">virtual std::size_t size() const =0</div><div class="ttdoc">return the size of the resource</div></div>
-<div class="ttc" id="aclassscc_1_1target__mixin_html"><div class="ttname"><a href="classscc_1_1target__mixin.html">scc::target_mixin</a></div><div class="ttdef"><b>Definition:</b> <a href="target__mixin_8h_source.html#l00033">target_mixin.h:33</a></div></div>
 <div class="ttc" id="aclassscc_1_1tlm__target_html_a5f5602fd3699a87ee74c14457222569d"><div class="ttname"><a href="classscc_1_1tlm__target.html#a5f5602fd3699a87ee74c14457222569d">scc::tlm_target::addResource</a></div><div class="ttdeci">void addResource(resource_access_if &amp;rai, uint64_t base_addr)</div><div class="ttdoc">add a resource to this target at a certain address within the socket address range</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00091">tlm_target.h:91</a></div></div>
-<div class="ttc" id="aclassscc_1_1tlm__target_html_af6899e1e057b5573cbe9c802bc373351"><div class="ttname"><a href="classscc_1_1tlm__target.html#af6899e1e057b5573cbe9c802bc373351">scc::tlm_target::socket</a></div><div class="ttdeci">scc::target_mixin&lt; scv4tlm::tlm_rec_target_socket&lt; BUSWIDTH &gt; &gt; socket</div><div class="ttdoc">the target socket</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00067">tlm_target.h:67</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1target__mixin_html_aca694d17ae44b59155264d7cec4a8f1d"><div class="ttname"><a href="classtlm_1_1scc_1_1target__mixin.html#aca694d17ae44b59155264d7cec4a8f1d">tlm::scc::target_mixin::register_b_transport</a></div><div class="ttdeci">void register_b_transport(std::function&lt; void(transaction_type &amp;, sc_core::sc_time &amp;)&gt; cb)</div><div class="ttdef"><b>Definition:</b> <a href="target__mixin_8h_source.html#l00085">target_mixin.h:85</a></div></div>
 <div class="ttc" id="agroup__FuncAcc_html_ga02527d2e4e1ff85f30bad36974d8f688"><div class="ttname"><a href="group__FuncAcc.html#ga02527d2e4e1ff85f30bad36974d8f688">scc::resource_access_if::write</a></div><div class="ttdeci">virtual bool write(const uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME)=0</div><div class="ttdoc">write to the resource</div></div>
 <div class="ttc" id="aclassscc_1_1tlm__target_html_aef438344bd45092a2157164b453c387f"><div class="ttname"><a href="classscc_1_1tlm__target.html#aef438344bd45092a2157164b453c387f">scc::tlm_target::tlm_target</a></div><div class="ttdeci">tlm_target(sc_core::sc_time &amp;clock)</div><div class="ttdoc">the constructor</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00119">tlm_target.h:119</a></div></div>
 <div class="ttc" id="aclassscc_1_1tlm__target_html_a5bcb252e7c936f6a8bda7f784108fa77"><div class="ttname"><a href="classscc_1_1tlm__target.html#a5bcb252e7c936f6a8bda7f784108fa77">scc::tlm_target::tranport_dbg_cb</a></div><div class="ttdeci">unsigned int tranport_dbg_cb(tlm::tlm_generic_payload &amp;gp)</div><div class="ttdoc">the debug transport callback</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00158">tlm_target.h:158</a></div></div>

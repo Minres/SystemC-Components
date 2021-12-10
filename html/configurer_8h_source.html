@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: incl/scc/configurer.h Source File</title>
+<title>scc: src/sysc/scc/configurer.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,7 +40,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f9f4f7420df66ec1f9f18519109e2068.html">incl</a></li><li class="navelem"><a class="el" href="dir_228cfd38ee03b103b3948114f7c1821e.html">scc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ecd2599f241f99e60c436470b0a1e2a4.html">sysc</a></li><li class="navelem"><a class="el" href="dir_8400f74b819af6408e1b24b7b1ac1666.html">scc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -69,7 +69,7 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;report.h&quot;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;utilities.h&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifdef WITH_CCI</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifdef HAS_CCI</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;cci_configuration&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;json/json.h&gt;</span></div>
@@ -95,7 +95,7 @@ $(function() {
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">dump_hierarchy</a>(std::ostream&amp; os = std::cout, sc_core::sc_object* obj = <span class="keyword">nullptr</span>);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1configurer.html#a11d9d54aa9c22a9bf0cdbf1721610eba">dump_configuration</a>(std::ostream&amp; os = std::cout, sc_core::sc_object* obj = <span class="keyword">nullptr</span>);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">void</span> <a class="code" href="classscc_1_1configurer.html#a073d540c602e09c2c1af164e7ec1b589">set_value</a>(<span class="keyword">const</span> std::string&amp; hier_name, T value) {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#ifdef WITH_CCI</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#ifdef HAS_CCI</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">if</span>(param_handle.is_valid()) {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            param_handle.set_cci_value(cci::cci_value(value));</div>
@@ -112,7 +112,7 @@ $(function() {
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    SCCERR() &lt;&lt; <span class="stringliteral">&quot;Could not set attribute value &quot;</span> &lt;&lt; hier_name;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#ifdef WITH_CCI</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#ifdef HAS_CCI</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                cci_broker.set_preset_cci_value(hier_name, cci::cci_value(value));</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            }</div>
@@ -144,32 +144,28 @@ $(function() {
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    Json::Value root;</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor">#ifdef WITH_SIM_PHASE_CALLBACKS</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordtype">void</span> simulation_phase_callback()<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        check_config_hierarchical(root, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    }</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordtype">void</span> end_of_elaboration()<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        check_config_hierarchical(root, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    }</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordtype">void</span> check_config_hierarchical(Json::Value <span class="keyword">const</span>&amp;, std::string <span class="keyword">const</span>&amp;);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">#ifdef WITH_CCI</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    cci::cci_originator cci_originator;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    cci::cci_broker_handle cci_broker;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;};</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SYSC_CONFIGURER_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordtype">void</span> simulation_phase_callback()<span class="keyword"> override </span>{ check_config_hierarchical(root, <span class="stringliteral">&quot;&quot;</span>); }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">void</span> end_of_elaboration()<span class="keyword"> override </span>{ check_config_hierarchical(root, <span class="stringliteral">&quot;&quot;</span>); }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordtype">void</span> check_config_hierarchical(Json::Value <span class="keyword">const</span>&amp;, std::string <span class="keyword">const</span>&amp;);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">#ifdef HAS_CCI</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    cci::cci_originator cci_originator;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    cci::cci_broker_handle cci_broker;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;};</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SYSC_CONFIGURER_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassscc_1_1configurer_html_a073d540c602e09c2c1af164e7ec1b589"><div class="ttname"><a href="classscc_1_1configurer.html#a073d540c602e09c2c1af164e7ec1b589">scc::configurer::set_value</a></div><div class="ttdeci">void set_value(const std::string &amp;hier_name, T value)</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8h_source.html#l00095">configurer.h:95</a></div></div>
-<div class="ttc" id="aclassscc_1_1configurer_html_a2536144f65524d836ce35031bbd1bf20"><div class="ttname"><a href="classscc_1_1configurer.html#a2536144f65524d836ce35031bbd1bf20">scc::configurer::set_configuration_value</a></div><div class="ttdeci">void set_configuration_value(sc_core::sc_attr_base *attr_base, sc_core::sc_object *owner)</div></div>
-<div class="ttc" id="aclassscc_1_1configurer_html_a0419a8cd7a38cec2d667a61d62b3a520"><div class="ttname"><a href="classscc_1_1configurer.html#a0419a8cd7a38cec2d667a61d62b3a520">scc::configurer::configure</a></div><div class="ttdeci">void configure()</div></div>
+<div class="ttc" id="aclassscc_1_1configurer_html_a2536144f65524d836ce35031bbd1bf20"><div class="ttname"><a href="classscc_1_1configurer.html#a2536144f65524d836ce35031bbd1bf20">scc::configurer::set_configuration_value</a></div><div class="ttdeci">void set_configuration_value(sc_core::sc_attr_base *attr_base, sc_core::sc_object *owner)</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00219">configurer.cpp:219</a></div></div>
+<div class="ttc" id="aclassscc_1_1configurer_html_a0419a8cd7a38cec2d667a61d62b3a520"><div class="ttname"><a href="classscc_1_1configurer.html#a0419a8cd7a38cec2d667a61d62b3a520">scc::configurer::configure</a></div><div class="ttdeci">void configure()</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00160">configurer.cpp:160</a></div></div>
 <div class="ttc" id="aclassscc_1_1configurer_html_a4651add3c6d21bd563460911ddcc8b19"><div class="ttname"><a href="classscc_1_1configurer.html#a4651add3c6d21bd563460911ddcc8b19">scc::configurer::instance</a></div><div class="ttdeci">static configurer &amp; instance()</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8h_source.html#l00132">configurer.h:132</a></div></div>
 <div class="ttc" id="aclassscc_1_1configurer_html"><div class="ttname"><a href="classscc_1_1configurer.html">scc::configurer</a></div><div class="ttdoc">design configuration reader</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8h_source.html#l00052">configurer.h:52</a></div></div>
-<div class="ttc" id="aclassscc_1_1configurer_html_a11d9d54aa9c22a9bf0cdbf1721610eba"><div class="ttname"><a href="classscc_1_1configurer.html#a11d9d54aa9c22a9bf0cdbf1721610eba">scc::configurer::dump_configuration</a></div><div class="ttdeci">void dump_configuration(std::ostream &amp;os=std::cout, sc_core::sc_object *obj=nullptr)</div></div>
-<div class="ttc" id="aclassscc_1_1configurer_html_a3b16ed55b504449f2ec189c8363a3769"><div class="ttname"><a href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">scc::configurer::dump_hierarchy</a></div><div class="ttdeci">void dump_hierarchy(std::ostream &amp;os=std::cout, sc_core::sc_object *obj=nullptr)</div></div>
-<div class="ttc" id="aclassscc_1_1configurer_html_adcef73b457b33554f3ad6aebbf04e4c7"><div class="ttname"><a href="classscc_1_1configurer.html#adcef73b457b33554f3ad6aebbf04e4c7">scc::configurer::configurer</a></div><div class="ttdeci">configurer(const std::string &amp;filename)</div></div>
+<div class="ttc" id="aclassscc_1_1configurer_html_a11d9d54aa9c22a9bf0cdbf1721610eba"><div class="ttname"><a href="classscc_1_1configurer.html#a11d9d54aa9c22a9bf0cdbf1721610eba">scc::configurer::dump_configuration</a></div><div class="ttdeci">void dump_configuration(std::ostream &amp;os=std::cout, sc_core::sc_object *obj=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00073">configurer.cpp:73</a></div></div>
+<div class="ttc" id="aclassscc_1_1configurer_html_a3b16ed55b504449f2ec189c8363a3769"><div class="ttname"><a href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">scc::configurer::dump_hierarchy</a></div><div class="ttdeci">void dump_hierarchy(std::ostream &amp;os=std::cout, sc_core::sc_object *obj=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00055">configurer.cpp:55</a></div></div>
+<div class="ttc" id="aclassscc_1_1configurer_html_adcef73b457b33554f3ad6aebbf04e4c7"><div class="ttname"><a href="classscc_1_1configurer.html#adcef73b457b33554f3ad6aebbf04e4c7">scc::configurer::configurer</a></div><div class="ttdeci">configurer(const std::string &amp;filename)</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00031">configurer.cpp:31</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

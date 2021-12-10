@@ -1,10 +1,12 @@
 <map id="axi::pe::simple_ace_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;" name="axi::pe::simple_ace_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="645,75,816,131"/>
-<area shape="rect" id="node2" href="$classaxi_1_1pe_1_1simple__initiator__b.html" title=" " alt="" coords="407,56,597,83"/>
-<area shape="rect" id="node3" title=" " alt="" coords="211,5,303,32"/>
-<area shape="rect" id="node4" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="199,56,314,83"/>
-<area shape="rect" id="node5" href="$classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="419,107,585,163"/>
-<area shape="rect" id="node6" title=" " alt="" coords="173,107,340,163"/>
-<area shape="rect" id="node7" href="$classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="155,187,359,243"/>
-<area shape="rect" id="node8" title=" " alt="" coords="5,201,107,228"/>
+<area shape="rect" id="node1" title=" " alt="" coords="865,99,1036,155"/>
+<area shape="rect" id="node2" href="$classaxi_1_1pe_1_1simple__initiator__b.html" title=" " alt="" coords="627,81,817,108"/>
+<area shape="rect" id="node3" title=" " alt="" coords="447,5,539,32"/>
+<area shape="rect" id="node4" href="$structtlm_1_1scc_1_1pe_1_1intor__fw__b.html" title=" " alt="" coords="407,56,579,83"/>
+<area shape="rect" id="node5" href="$structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="189,49,324,90"/>
+<area shape="rect" id="node6" title=" " alt="" coords="5,93,107,120"/>
+<area shape="rect" id="node10" href="$classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="155,115,359,171"/>
+<area shape="rect" id="node7" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="435,107,550,133"/>
+<area shape="rect" id="node8" href="$classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="410,157,575,213"/>
+<area shape="rect" id="node9" title=" " alt="" coords="173,195,340,251"/>
 </map>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: incl/scc/router.h Source File</title>
+<title>scc: src/components/scc/router.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,7 +40,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f9f4f7420df66ec1f9f18519109e2068.html">incl</a></li><li class="navelem"><a class="el" href="dir_228cfd38ee03b103b3948114f7c1821e.html">scc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3c4c7c1a85608ccd561c026bec818e51.html">components</a></li><li class="navelem"><a class="el" href="dir_4b4439fcc6b4628cd8783772fc9df8bf.html">scc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -67,22 +67,22 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifndef _SYSC_ROUTER_H_</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define _SYSC_ROUTER_H_</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;initiator_mixin.h&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;scv4tlm/tlm_rec_initiator_socket.h&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;scv4tlm/tlm_rec_target_socket.h&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;target_mixin.h&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;util/range_lut.h&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;utilities.h&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;sysc/utils/sc_vector.h&gt;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;tlm.h&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;scc/utilities.h&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;tlm/scc/initiator_mixin.h&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;tlm/scc/target_mixin.h&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;util/range_lut.h&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;sysc/utils/sc_vector.h&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;tlm.h&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;tlm/scc/scv/tlm_rec_initiator_socket.h&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;tlm/scc/scv/tlm_rec_target_socket.h&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>scc {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> BUSWIDTH = 32&gt; <span class="keyword">class </span>router : sc_core::sc_module {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">using</span> intor_sckt = <a class="code" href="classscc_1_1initiator__mixin.html">scc::initiator_mixin&lt;scv4tlm::tlm_rec_initiator_socket&lt;BUSWIDTH&gt;</a>&gt;;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">using</span> target_sckt = <a class="code" href="classscc_1_1target__mixin.html">scc::target_mixin&lt;scv4tlm::tlm_rec_target_socket&lt;BUSWIDTH&gt;</a>&gt;;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">using</span> intor_sckt = <a class="code" href="classtlm_1_1scc_1_1initiator__mixin.html">tlm::scc::initiator_mixin&lt;tlm::scc::scv::tlm_rec_initiator_socket&lt;BUSWIDTH&gt;</a>&gt;;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">using</span> target_sckt = <a class="code" href="classtlm_1_1scc_1_1target__mixin.html">tlm::scc::target_mixin&lt;tlm::scc::scv::tlm_rec_target_socket&lt;BUSWIDTH&gt;</a>&gt;;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    sc_core::sc_vector&lt;target_sckt&gt; <a class="code" href="classscc_1_1router.html#a616030d43a66c07edd5996ff343b4661">target</a>;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    sc_core::sc_vector&lt;intor_sckt&gt; <a class="code" href="classscc_1_1router.html#aa1e22a6dcef30ddf321ddac4dcb3da6e">initiator</a>;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classscc_1_1router.html#a32662fcef70408cc67467ebb38d98fe3">router</a>(<span class="keyword">const</span> sc_core::sc_module_name&amp; nm, <span class="keywordtype">unsigned</span> slave_cnt = 1, <span class="keywordtype">unsigned</span> master_cnt = 1);</div>
@@ -105,7 +105,7 @@ $(function() {
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1router.html#ab7d2cd3d9ec26bfecfc22a21d13a9115">b_transport</a>(<span class="keywordtype">int</span> i, tlm::tlm_generic_payload&amp; trans, sc_core::sc_time&amp; delay);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classscc_1_1router.html#a24c3cd3703a98f7c05d4d1ddbd5748bb">get_direct_mem_ptr</a>(<span class="keywordtype">int</span> i, tlm::tlm_generic_payload&amp; trans, tlm::tlm_dmi&amp; dmi_data);</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordtype">unsigned</span> <a class="code" href="classscc_1_1router.html#a53bb64890fcdf209dc4e6f986edac7d0">transport_dbg</a>(<span class="keywordtype">int</span> i, tlm::tlm_generic_payload&amp; trans);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1router.html#add13a2323d895b38170295cfd2c46902">invalidate_direct_mem_ptr</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, sc_dt::uint64 start_range, sc_dt::uint64 end_range);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1router.html#ad11350f2826662ae27fbe5270fa22d08">invalidate_direct_mem_ptr</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, ::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range);</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="keyword">protected</span>:</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keyword">struct </span>range_entry {</div>
@@ -137,14 +137,14 @@ $(function() {
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">return</span> this-&gt;get_direct_mem_ptr(i, trans, dmi_data);</div>
 <div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="classscc_1_1router.html#a32662fcef70408cc67467ebb38d98fe3">  201</a></span>&#160;        });</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        target[i].register_transport_dbg(</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                [=](tlm::tlm_generic_payload&amp; trans) -&gt; <span class="keywordtype">unsigned</span> { <span class="keywordflow">return</span> this-&gt;transport_dbg(i, trans); });</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            [=](tlm::tlm_generic_payload&amp; trans) -&gt; <span class="keywordtype">unsigned</span> { <span class="keywordflow">return</span> this-&gt;transport_dbg(i, trans); });</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        ibases[i] = 0ULL;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    }</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; initiator.size(); ++i) {</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        initiator[i].register_invalidate_direct_mem_ptr(</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                [=](sc_dt::uint64 start_range, sc_dt::uint64 end_range) -&gt; <span class="keywordtype">void</span> {</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            this-&gt;invalidate_direct_mem_ptr(i, start_range, end_range);</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        });</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            [=](::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) -&gt; <span class="keywordtype">void</span> {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                this-&gt;invalidate_direct_mem_ptr(i, start_range, end_range);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            });</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        tranges[i].base = 0ULL;</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        tranges[i].size = 0ULL;</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        tranges[i].remap = <span class="keyword">false</span>;</div>
@@ -182,7 +182,7 @@ $(function() {
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> BUSWIDTH&gt;</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1router.html#ab7d2cd3d9ec26bfecfc22a21d13a9115">router&lt;BUSWIDTH&gt;::b_transport</a>(<span class="keywordtype">int</span> i, tlm::tlm_generic_payload&amp; trans, sc_core::sc_time&amp; delay) {</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    sc_dt::uint64 address = trans.get_address();</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    ::sc_dt::uint64 address = trans.get_address();</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">if</span>(ibases[i]) {</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        address += ibases[i];</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        trans.set_address(address);</div>
@@ -205,7 +205,7 @@ $(function() {
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> BUSWIDTH&gt;</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classscc_1_1router.html#a24c3cd3703a98f7c05d4d1ddbd5748bb">router&lt;BUSWIDTH&gt;::get_direct_mem_ptr</a>(<span class="keywordtype">int</span> i, tlm::tlm_generic_payload&amp; trans, tlm::tlm_dmi&amp; dmi_data) {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    sc_dt::uint64 address = trans.get_address();</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    ::sc_dt::uint64 address = trans.get_address();</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">if</span>(ibases[i]) {</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        address += ibases[i];</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        trans.set_address(address);</div>
@@ -229,7 +229,7 @@ $(function() {
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordflow">return</span> status;</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;}</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> BUSWIDTH&gt; <span class="keywordtype">unsigned</span> <a class="code" href="classscc_1_1router.html#a53bb64890fcdf209dc4e6f986edac7d0">router&lt;BUSWIDTH&gt;::transport_dbg</a>(<span class="keywordtype">int</span> i, tlm::tlm_generic_payload&amp; trans) {</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    sc_dt::uint64 address = trans.get_address();</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    ::sc_dt::uint64 address = trans.get_address();</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keywordflow">if</span>(ibases[i]) {</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        address += ibases[i];</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        trans.set_address(address);</div>
@@ -249,12 +249,12 @@ $(function() {
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keywordflow">return</span> initiator[idx]-&gt;transport_dbg(trans);</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;}</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> BUSWIDTH&gt;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1router.html#add13a2323d895b38170295cfd2c46902">router&lt;BUSWIDTH&gt;::invalidate_direct_mem_ptr</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, sc_dt::uint64 start_range, sc_dt::uint64 end_range) {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1router.html#ad11350f2826662ae27fbe5270fa22d08">router&lt;BUSWIDTH&gt;::invalidate_direct_mem_ptr</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, ::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) {</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="comment">// Reconstruct address range in system memory map</span></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    sc_dt::uint64 bw_start_range = start_range;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    ::sc_dt::uint64 bw_start_range = start_range;</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keywordflow">if</span>(tranges[<span class="keywordtype">id</span>].remap)</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        bw_start_range += tranges[id].base;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    sc_dt::uint64 bw_end_range = end_range;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    ::sc_dt::uint64 bw_end_range = end_range;</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordflow">if</span>(tranges[<span class="keywordtype">id</span>].remap)</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        bw_end_range += tranges[id].base;</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; target.size(); ++i) {</div>
@@ -263,21 +263,21 @@ $(function() {
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;}</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno"><a class="line" href="classscc_1_1router.html#add13a2323d895b38170295cfd2c46902">  329</a></span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno"><a class="line" href="classscc_1_1router.html#ad11350f2826662ae27fbe5270fa22d08">  329</a></span>&#160; </div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SYSC_AVR_ROUTER_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassscc_1_1router_html_a84095e325295c5baffbacacf55725ed6"><div class="ttname"><a href="classscc_1_1router.html#a84095e325295c5baffbacacf55725ed6">scc::router::bind_target</a></div><div class="ttdeci">void bind_target(TYPE &amp;socket, size_t idx, uint64_t base, uint64_t size, bool remap=true)</div><div class="ttdoc">bind the initiator socket of the router to some target giving a base and size</div><div class="ttdef"><b>Definition:</b> <a href="router_8h_source.html#l00085">router.h:85</a></div></div>
 <div class="ttc" id="aclassscc_1_1router_html_a53bb64890fcdf209dc4e6f986edac7d0"><div class="ttname"><a href="classscc_1_1router.html#a53bb64890fcdf209dc4e6f986edac7d0">scc::router::transport_dbg</a></div><div class="ttdeci">unsigned transport_dbg(int i, tlm::tlm_generic_payload &amp;trans)</div><div class="ttdoc">tagged debug transaction method</div><div class="ttdef"><b>Definition:</b> <a href="router_8h_source.html#l00308">router.h:308</a></div></div>
 <div class="ttc" id="aclassscc_1_1router_html_a697052adb6891fe5e807d7bbc72fe72f"><div class="ttname"><a href="classscc_1_1router.html#a697052adb6891fe5e807d7bbc72fe72f">scc::router::set_initiator_base</a></div><div class="ttdeci">void set_initiator_base(size_t idx, uint64_t base)</div><div class="ttdoc">define a base address of a socket</div><div class="ttdef"><b>Definition:</b> <a href="router_8h_source.html#l00111">router.h:111</a></div></div>
 <div class="ttc" id="aclassutil_1_1range__lut_html"><div class="ttname"><a href="classutil_1_1range__lut.html">util::range_lut&lt; unsigned &gt;</a></div></div>
-<div class="ttc" id="aclassscc_1_1router_html_add13a2323d895b38170295cfd2c46902"><div class="ttname"><a href="classscc_1_1router.html#add13a2323d895b38170295cfd2c46902">scc::router::invalidate_direct_mem_ptr</a></div><div class="ttdeci">void invalidate_direct_mem_ptr(int id, sc_dt::uint64 start_range, sc_dt::uint64 end_range)</div><div class="ttdoc">tagged backward DMI method</div><div class="ttdef"><b>Definition:</b> <a href="router_8h_source.html#l00329">router.h:329</a></div></div>
 <div class="ttc" id="aclassscc_1_1router_html_a197b3ec2c59eec3363bed859ec234b81"><div class="ttname"><a href="classscc_1_1router.html#a197b3ec2c59eec3363bed859ec234b81">scc::router::set_target_name</a></div><div class="ttdeci">void set_target_name(size_t idx, std::string name)</div><div class="ttdoc">establish a mapping between socket name and socket index</div><div class="ttdef"><b>Definition:</b> <a href="router_8h_source.html#l00129">router.h:129</a></div></div>
 <div class="ttc" id="aclassscc_1_1router_html_a87c3d31e42baeac2050ca6ba271ac011"><div class="ttname"><a href="classscc_1_1router.html#a87c3d31e42baeac2050ca6ba271ac011">scc::router::add_target_range</a></div><div class="ttdeci">void add_target_range(std::string name, uint64_t base, uint64_t size, bool remap=true)</div><div class="ttdoc">establish a mapping between a named socket and a target address range</div><div class="ttdef"><b>Definition:</b> <a href="router_8h_source.html#l00240">router.h:240</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1target__mixin_html"><div class="ttname"><a href="classtlm_1_1scc_1_1target__mixin.html">tlm::scc::target_mixin</a></div><div class="ttdef"><b>Definition:</b> <a href="target__mixin_8h_source.html#l00034">target_mixin.h:34</a></div></div>
 <div class="ttc" id="aclassscc_1_1router_html_a24c3cd3703a98f7c05d4d1ddbd5748bb"><div class="ttname"><a href="classscc_1_1router.html#a24c3cd3703a98f7c05d4d1ddbd5748bb">scc::router::get_direct_mem_ptr</a></div><div class="ttdeci">bool get_direct_mem_ptr(int i, tlm::tlm_generic_payload &amp;trans, tlm::tlm_dmi &amp;dmi_data)</div><div class="ttdoc">tagged forward DMI method</div><div class="ttdef"><b>Definition:</b> <a href="router_8h_source.html#l00284">router.h:284</a></div></div>
 <div class="ttc" id="aclassscc_1_1router_html_ab7d2cd3d9ec26bfecfc22a21d13a9115"><div class="ttname"><a href="classscc_1_1router.html#ab7d2cd3d9ec26bfecfc22a21d13a9115">scc::router::b_transport</a></div><div class="ttdeci">void b_transport(int i, tlm::tlm_generic_payload &amp;trans, sc_core::sc_time &amp;delay)</div><div class="ttdoc">tagged blocking transport method</div><div class="ttdef"><b>Definition:</b> <a href="router_8h_source.html#l00261">router.h:261</a></div></div>
-<div class="ttc" id="aclassscc_1_1target__mixin_html"><div class="ttname"><a href="classscc_1_1target__mixin.html">scc::target_mixin</a></div><div class="ttdef"><b>Definition:</b> <a href="target__mixin_8h_source.html#l00033">target_mixin.h:33</a></div></div>
-<div class="ttc" id="aclassscc_1_1initiator__mixin_html"><div class="ttname"><a href="classscc_1_1initiator__mixin.html">scc::initiator_mixin</a></div><div class="ttdoc">initiator socket mixin</div><div class="ttdef"><b>Definition:</b> <a href="initiator__mixin_8h_source.html#l00049">initiator_mixin.h:49</a></div></div>
+<div class="ttc" id="aclassscc_1_1router_html_ad11350f2826662ae27fbe5270fa22d08"><div class="ttname"><a href="classscc_1_1router.html#ad11350f2826662ae27fbe5270fa22d08">scc::router::invalidate_direct_mem_ptr</a></div><div class="ttdeci">void invalidate_direct_mem_ptr(int id, ::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range)</div><div class="ttdoc">tagged backward DMI method</div><div class="ttdef"><b>Definition:</b> <a href="router_8h_source.html#l00329">router.h:329</a></div></div>
 <div class="ttc" id="aclassscc_1_1router_html_a616030d43a66c07edd5996ff343b4661"><div class="ttname"><a href="classscc_1_1router.html#a616030d43a66c07edd5996ff343b4661">scc::router::target</a></div><div class="ttdeci">sc_core::sc_vector&lt; target_sckt &gt; target</div><div class="ttdoc">the array of target sockets</div><div class="ttdef"><b>Definition:</b> <a href="router_8h_source.html#l00059">router.h:59</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1initiator__mixin_html"><div class="ttname"><a href="classtlm_1_1scc_1_1initiator__mixin.html">tlm::scc::initiator_mixin</a></div><div class="ttdoc">initiator socket mixin</div><div class="ttdef"><b>Definition:</b> <a href="initiator__mixin_8h_source.html#l00064">initiator_mixin.h:64</a></div></div>
 <div class="ttc" id="aclassscc_1_1router_html_a32662fcef70408cc67467ebb38d98fe3"><div class="ttname"><a href="classscc_1_1router.html#a32662fcef70408cc67467ebb38d98fe3">scc::router::router</a></div><div class="ttdeci">router(const sc_core::sc_module_name &amp;nm, unsigned slave_cnt=1, unsigned master_cnt=1)</div><div class="ttdoc">constructs a router</div><div class="ttdef"><b>Definition:</b> <a href="router_8h_source.html#l00201">router.h:201</a></div></div>
 <div class="ttc" id="aclassscc_1_1router_html_a713854a20bdc68543e5915e6a08b9374"><div class="ttname"><a href="classscc_1_1router.html#a713854a20bdc68543e5915e6a08b9374">scc::router::set_target_range</a></div><div class="ttdeci">void set_target_range(size_t idx, uint64_t base, uint64_t size, bool remap=true)</div><div class="ttdoc">establish a mapping between a socket and a target address range</div><div class="ttdef"><b>Definition:</b> <a href="router_8h_source.html#l00232">router.h:232</a></div></div>
 <div class="ttc" id="aclassscc_1_1router_html_aa1e22a6dcef30ddf321ddac4dcb3da6e"><div class="ttname"><a href="classscc_1_1router.html#aa1e22a6dcef30ddf321ddac4dcb3da6e">scc::router::initiator</a></div><div class="ttdeci">sc_core::sc_vector&lt; intor_sckt &gt; initiator</div><div class="ttdoc">the array of initiator sockets</div><div class="ttdef"><b>Definition:</b> <a href="router_8h_source.html#l00061">router.h:61</a></div></div>

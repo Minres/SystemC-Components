@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: incl/apb/pe/apb_initiator.h Source File</title>
+<title>scc: src/bus_interfaces/apb/pe/apb_initiator.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,7 +40,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f9f4f7420df66ec1f9f18519109e2068.html">incl</a></li><li class="navelem"><a class="el" href="dir_4fe4cd0b8921a3e9e39f52fe8a4493c1.html">apb</a></li><li class="navelem"><a class="el" href="dir_59f7bf916e168a1564149ced55076851.html">pe</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2e5638b409f3ace0c6070b175318504a.html">bus_interfaces</a></li><li class="navelem"><a class="el" href="dir_7537d1288b3a249fd86aea49b2e996f1.html">apb</a></li><li class="navelem"><a class="el" href="dir_19eacb6860fbff213eb6b10b93e67c65.html">pe</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -105,7 +105,7 @@ $(function() {
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; <span class="comment">// end of bw_if</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">size_t</span> get_transferwith_in_bytes()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> transfer_width_in_bytes; } <span class="comment">// end of config</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="classapb_1_1pe_1_1apb__initiator__b.html#a4b6e7062e20f0481a762e5166fe95897">transport</a>(payload_type&amp; trans, <span class="keywordtype">bool</span> blocking);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="classapb_1_1pe_1_1apb__initiator__b.html#a1aacf83984c112e3351845fc6648c12a">transport</a>(payload_type&amp; trans, <span class="keywordtype">bool</span> blocking);</div>
 <div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="namespaceapb_1_1pe.html">   75</a></span>&#160; </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__initiator__b.html">apb_initiator_b</a>(sc_core::sc_module_name nm,</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    sc_core::sc_port_b&lt;tlm::tlm_fw_transport_if&lt;tlm::tlm_base_protocol_types&gt;&gt;&amp; port,</div>
@@ -180,8 +180,8 @@ $(function() {
 <div class="ttc" id="aclassapb_1_1pe_1_1apb__initiator__b_html"><div class="ttname"><a href="classapb_1_1pe_1_1apb__initiator__b.html">apb::pe::apb_initiator_b</a></div><div class="ttdef"><b>Definition:</b> <a href="apb__initiator_8h_source.html#l00108">apb_initiator.h:108</a></div></div>
 <div class="ttc" id="aclassapb_1_1pe_1_1apb__initiator_html_a0ba5163b37fa82c3f5a04621252a5e7c"><div class="ttname"><a href="classapb_1_1pe_1_1apb__initiator.html#a0ba5163b37fa82c3f5a04621252a5e7c">apb::pe::apb_initiator::apb_initiator</a></div><div class="ttdeci">apb_initiator(const sc_core::sc_module_name &amp;nm, tlm::tlm_initiator_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;socket)</div><div class="ttdoc">the constructor</div><div class="ttdef"><b>Definition:</b> <a href="apb__initiator_8h_source.html#l00192">apb_initiator.h:192</a></div></div>
 <div class="ttc" id="anamespaceapb_html"><div class="ttname"><a href="namespaceapb.html">apb</a></div><div class="ttdoc">TLM2.0 components modeling APB.</div><div class="ttdef"><b>Definition:</b> <a href="apb__initiator_8h_source.html#l00042">apb_initiator.h:42</a></div></div>
-<div class="ttc" id="aclassapb_1_1pe_1_1apb__initiator__b_html_a4b6e7062e20f0481a762e5166fe95897"><div class="ttname"><a href="classapb_1_1pe_1_1apb__initiator__b.html#a4b6e7062e20f0481a762e5166fe95897">apb::pe::apb_initiator_b::transport</a></div><div class="ttdeci">void transport(payload_type &amp;trans, bool blocking)</div><div class="ttdoc">The forward transport function. It behaves blocking and is re-entrant.</div></div>
-<div class="ttc" id="astructscc_1_1peq_html"><div class="ttname"><a href="structscc_1_1peq.html">scc::peq</a></div><div class="ttdoc">priority event queue</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00048">peq.h:48</a></div></div>
+<div class="ttc" id="aclassapb_1_1pe_1_1apb__initiator__b_html_a1aacf83984c112e3351845fc6648c12a"><div class="ttname"><a href="classapb_1_1pe_1_1apb__initiator__b.html#a1aacf83984c112e3351845fc6648c12a">apb::pe::apb_initiator_b::transport</a></div><div class="ttdeci">void transport(payload_type &amp;trans, bool blocking)</div><div class="ttdoc">The forward transport function. It behaves blocking and is re-entrant.</div><div class="ttdef"><b>Definition:</b> <a href="apb__initiator_8cpp_source.html#l00037">apb_initiator.cpp:37</a></div></div>
+<div class="ttc" id="astructscc_1_1peq_html"><div class="ttname"><a href="structscc_1_1peq.html">scc::peq</a></div><div class="ttdoc">priority event queue</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00050">peq.h:50</a></div></div>
 <div class="ttc" id="astructscc_1_1ordered__semaphore__t_html"><div class="ttname"><a href="structscc_1_1ordered__semaphore__t.html">scc::ordered_semaphore_t&lt; 1 &gt;</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

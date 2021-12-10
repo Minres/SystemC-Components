@@ -1,8 +1,11 @@
 <map id="axi::pe::simple_initiator_b" name="axi::pe::simple_initiator_b">
-<area shape="rect" id="node1" title=" " alt="" coords="168,100,359,127"/>
-<area shape="rect" id="node4" href="$classaxi_1_1pe_1_1simple__ace__initiator.html" title=" " alt="" coords="407,5,577,61"/>
-<area shape="rect" id="node5" href="$classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="407,85,577,141"/>
-<area shape="rect" id="node6" href="$classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="419,166,565,207"/>
-<area shape="rect" id="node2" title=" " alt="" coords="17,75,109,101"/>
-<area shape="rect" id="node3" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="5,125,120,152"/>
+<area shape="rect" id="node1" title=" " alt="" coords="557,100,748,127"/>
+<area shape="rect" id="node7" href="$classaxi_1_1pe_1_1simple__ace__initiator.html" title=" " alt="" coords="796,5,967,61"/>
+<area shape="rect" id="node8" href="$classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="796,85,967,141"/>
+<area shape="rect" id="node9" href="$classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="809,166,954,207"/>
+<area shape="rect" id="node2" title=" " alt="" coords="377,49,469,76"/>
+<area shape="rect" id="node3" href="$structtlm_1_1scc_1_1pe_1_1intor__fw__b.html" title=" " alt="" coords="337,100,509,127"/>
+<area shape="rect" id="node4" href="$structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="155,93,289,134"/>
+<area shape="rect" id="node5" title=" " alt="" coords="5,100,107,127"/>
+<area shape="rect" id="node6" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="366,151,481,177"/>
 </map>

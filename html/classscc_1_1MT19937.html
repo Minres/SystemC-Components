@@ -55,14 +55,14 @@ $(function() {
 <p>a mersenne-twister based random number generator  
  <a href="classscc_1_1MT19937.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a3e82100ffb5a18051f6592e5ce451395"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1MT19937.html#a3e82100ffb5a18051f6592e5ce451395">seed</a> (uint64_t new_seed=std::mt19937_64::default_seed)</td></tr>
-<tr class="separator:a3e82100ffb5a18051f6592e5ce451395"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b5e7e8703e63f1c308a69147d95e0d7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1MT19937.html#a0b5e7e8703e63f1c308a69147d95e0d7">enable_global_seed</a> (bool enable)</td></tr>
-<tr class="separator:a0b5e7e8703e63f1c308a69147d95e0d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab26369d16719adf873abba2a7bf6d316"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1MT19937.html#ab26369d16719adf873abba2a7bf6d316">seed</a> (uint64_t new_seed=std::mt19937_64::default_seed)</td></tr>
+<tr class="separator:ab26369d16719adf873abba2a7bf6d316"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54788093e5b30c1d8ab38b67df905efc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1MT19937.html#a54788093e5b30c1d8ab38b67df905efc">enable_global_seed</a> (bool enable)</td></tr>
+<tr class="separator:a54788093e5b30c1d8ab38b67df905efc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ea1c4d7480170eebe650fdd3985083c"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1MT19937.html#a7ea1c4d7480170eebe650fdd3985083c">uniform</a> ()</td></tr>
 <tr class="separator:a7ea1c4d7480170eebe650fdd3985083c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99bf8e3d754a7b984e1407fe0a41780c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
@@ -79,10 +79,10 @@ Static Public Member Functions</h2></td></tr>
 <div class="textblock"><p>a mersenne-twister based random number generator </p>
 <p>This random number generator provides various distribution of random numbers being specific to the SystemC process invoking the generator function. This makes the generator independent of the order of invocation in a delta cycle and allows to replay with the same seed </p>
 
-<p class="definition">Definition at line <a class="el" href="scc_2mt19937__rng_8h_source.html#l00024">24</a> of file <a class="el" href="scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html#l00024">24</a> of file <a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a0b5e7e8703e63f1c308a69147d95e0d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b5e7e8703e63f1c308a69147d95e0d7">&#9670;&nbsp;</a></span>enable_global_seed()</h2>
+<a id="a54788093e5b30c1d8ab38b67df905efc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54788093e5b30c1d8ab38b67df905efc">&#9670;&nbsp;</a></span>enable_global_seed()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -91,7 +91,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void scc::MT19937::enable_global_seed </td>
+          <td class="memname">void scc::MT19937::enable_global_seed </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>enable</em></td><td>)</td>
@@ -111,6 +111,8 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="mt19937__rng_8cpp_source.html#l00039">39</a> of file <a class="el" href="mt19937__rng_8cpp_source.html">mt19937_rng.cpp</a>.</p>
 
 </div>
 </div>
@@ -139,7 +141,7 @@ Static Public Member Functions</h2></td></tr>
 <p>generates the next random integer number with log normal distribution (similar to rand() )</p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="scc_2mt19937__rng_8h_source.html#l00085">85</a> of file <a class="el" href="scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html#l00085">85</a> of file <a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>.</p>
 
 </div>
 </div>
@@ -168,12 +170,12 @@ Static Public Member Functions</h2></td></tr>
 <p>generates the next random double precision float number with normal distribution (similar to rand() )</p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="scc_2mt19937__rng_8h_source.html#l00076">76</a> of file <a class="el" href="scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html#l00076">76</a> of file <a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>.</p>
 
 </div>
 </div>
-<a id="a3e82100ffb5a18051f6592e5ce451395"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e82100ffb5a18051f6592e5ce451395">&#9670;&nbsp;</a></span>seed()</h2>
+<a id="ab26369d16719adf873abba2a7bf6d316"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab26369d16719adf873abba2a7bf6d316">&#9670;&nbsp;</a></span>seed()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,7 +184,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void scc::MT19937::seed </td>
+          <td class="memname">void scc::MT19937::seed </td>
           <td>(</td>
           <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>new_seed</em> = <code>std::mt19937_64::default_seed</code></td><td>)</td>
@@ -202,6 +204,8 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="mt19937__rng_8cpp_source.html#l00032">32</a> of file <a class="el" href="mt19937__rng_8cpp_source.html">mt19937_rng.cpp</a>.</p>
 
 </div>
 </div>
@@ -230,7 +234,7 @@ Static Public Member Functions</h2></td></tr>
 <p>generates the next random integer number with uniform distribution (similar to rand() )</p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="scc_2mt19937__rng_8h_source.html#l00046">46</a> of file <a class="el" href="scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html#l00046">46</a> of file <a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>.</p>
 
 </div>
 </div>
@@ -261,7 +265,7 @@ template&lt;typename T &gt; </div>
 <p>generates the next random integer number with uniform distribution in the range of the given type</p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="scc_2mt19937__rng_8h_source.html#l00055">55</a> of file <a class="el" href="scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html#l00055">55</a> of file <a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>.</p>
 
 </div>
 </div>
@@ -308,12 +312,13 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="scc_2mt19937__rng_8h_source.html#l00066">66</a> of file <a class="el" href="scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html#l00066">66</a> of file <a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>incl/scc/<a class="el" href="scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a></li>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/sysc/scc/<a class="el" href="sysc_2scc_2mt19937__rng_8h_source.html">mt19937_rng.h</a></li>
+<li>src/sysc/scc/<a class="el" href="mt19937__rng_8cpp_source.html">mt19937_rng.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

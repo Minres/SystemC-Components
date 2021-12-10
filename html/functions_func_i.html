@@ -47,7 +47,7 @@ $(function() {
 : <a class="el" href="classscc_1_1resetable.html#a9b7574e6b9bdad38d37fe65df13b67fc">scc::resetable</a>
 </li>
 <li>initiator_mixin()
-: <a class="el" href="classscc_1_1initiator__mixin.html#a6e5f502483acc4896e881acb3dee7d7f">scc::initiator_mixin&lt; BASE_TYPE, TYPES &gt;</a>
+: <a class="el" href="classtlm_1_1scc_1_1initiator__mixin.html#add7a137b5a5f11ab7a3bde2e0a605912">tlm::scc::initiator_mixin&lt; BASE_TYPE, TYPES &gt;</a>
 </li>
 <li>instance()
 : <a class="el" href="classscc_1_1configurer.html#a4651add3c6d21bd563460911ddcc8b19">scc::configurer</a>
@@ -55,11 +55,11 @@ $(function() {
 <li>invalidate_direct_mem_ptr()
 : <a class="el" href="classaxi_1_1pe_1_1simple__ace__initiator.html#a6b3879fe845047c3b5b1c663c84ec386">axi::pe::simple_ace_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</a>
 , <a class="el" href="classaxi_1_1pe_1_1simple__axi__initiator.html#a6bdc054fb07598777665b4fb59a591cb">axi::pe::simple_axi_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</a>
-, <a class="el" href="classscc_1_1router.html#add13a2323d895b38170295cfd2c46902">scc::router&lt; BUSWIDTH &gt;</a>
-, <a class="el" href="classscv4axi_1_1ace__recorder.html#ad3292eb710f0cd30ad49f404d65f7b49">scv4axi::ace_recorder&lt; TYPES &gt;</a>
-, <a class="el" href="classscv4axi_1_1axi__recorder.html#ab0584b8cb03bbcc371c07cca90d58ff8">scv4axi::axi_recorder&lt; TYPES &gt;</a>
-, <a class="el" href="classscv4chi_1_1chi__trx__recorder.html#a6cb3b77e257b53d0d22a1f04b15a9218">scv4chi::chi_trx_recorder&lt; TYPES &gt;</a>
-, <a class="el" href="classscv4tlm_1_1tlm__recorder.html#a6a6b6841986f9b2130d4d7c3265495cb">scv4tlm::tlm_recorder&lt; TYPES &gt;</a>
+, <a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#a32e77496925b6a5e4815143d95821491">axi::scv::ace_recorder&lt; TYPES &gt;</a>
+, <a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#a958266145edd4bcd695d644806ffba0e">axi::scv::axi_recorder&lt; TYPES &gt;</a>
+, <a class="el" href="classchi_1_1scv_1_1chi__trx__recorder.html#a609597d173151fbe7199d49b8d452002">chi::scv::chi_trx_recorder&lt; TYPES &gt;</a>
+, <a class="el" href="classscc_1_1router.html#ad11350f2826662ae27fbe5270fa22d08">scc::router&lt; BUSWIDTH &gt;</a>
+, <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__recorder.html#addbd1c4f24bb3189ebf84b4c4e05ade6">tlm::scc::scv::tlm_recorder&lt; TYPES &gt;</a>
 </li>
 <li>is_active()
 : <a class="el" href="group__config.html#ga18bc70209c2d15dc3a9283e389362958">axi::pe::axi_target_pe_b</a>
@@ -147,11 +147,17 @@ $(function() {
 <li>is_write_other_allocate()
 : <a class="el" href="structaxi_1_1axi4.html#a88d4361d38e8c4e84744e9d7bd2fefe5">axi::axi4</a>
 </li>
-<li>isRecordingEnabled()
-: <a class="el" href="classscv4axi_1_1ace__recorder.html#a30e81777ec7e8fc28ed31cc295cad45f">scv4axi::ace_recorder&lt; TYPES &gt;</a>
-, <a class="el" href="classscv4axi_1_1axi__recorder.html#aaf94a212d9a05bca6a7b139a953fd580">scv4axi::axi_recorder&lt; TYPES &gt;</a>
-, <a class="el" href="classscv4chi_1_1chi__trx__recorder.html#ac56b3d96c2c838f2e35943c6d4f09fdb">scv4chi::chi_trx_recorder&lt; TYPES &gt;</a>
-, <a class="el" href="classscv4tlm_1_1tlm__recorder.html#a919dcefc653843e64b7a3f97ec077c6c">scv4tlm::tlm_recorder&lt; TYPES &gt;</a>
+<li>isRecordingBlockingTxEnabled()
+: <a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#a9b9b01ca23130a696b93f01d738b67f6">axi::scv::ace_recorder&lt; TYPES &gt;</a>
+, <a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#aa0d346d4fdee81b232ea8c72e52bb396">axi::scv::axi_recorder&lt; TYPES &gt;</a>
+, <a class="el" href="classchi_1_1scv_1_1chi__trx__recorder.html#ad36625a7cded51df300fa849456ddb66">chi::scv::chi_trx_recorder&lt; TYPES &gt;</a>
+, <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__recorder.html#a103a9e03a930bbcf2bc8f6f7874766f7">tlm::scc::scv::tlm_recorder&lt; TYPES &gt;</a>
+</li>
+<li>isRecordingNonBlockingTxEnabled()
+: <a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#ae18e48ea3d66e3b4c4243da95440d3c1">axi::scv::ace_recorder&lt; TYPES &gt;</a>
+, <a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#a30ff9c9630dfb033bb5e19ad3914ce46">axi::scv::axi_recorder&lt; TYPES &gt;</a>
+, <a class="el" href="classchi_1_1scv_1_1chi__trx__recorder.html#ae29d25f27938195f25583955d2b42d66">chi::scv::chi_trx_recorder&lt; TYPES &gt;</a>
+, <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__recorder.html#a4dce159d9d7a3649441fc832637a1d8c">tlm::scc::scv::tlm_recorder&lt; TYPES &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

@@ -1,12 +1,15 @@
 <map id="axi::pe::simple_initiator_b" name="axi::pe::simple_initiator_b">
-<area shape="rect" id="node1" title=" " alt="" coords="828,99,1019,126"/>
-<area shape="rect" id="node2" title=" " alt="" coords="619,22,711,49"/>
-<area shape="rect" id="node3" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="608,73,723,99"/>
-<area shape="rect" id="node4" href="$structscc_1_1peq.html" title=" " alt="" coords="213,5,387,76"/>
-<area shape="rect" id="node5" title=" " alt="" coords="5,27,145,54"/>
-<area shape="rect" id="node6" href="$classscc_1_1fifo__w__cb.html" title=" " alt="" coords="195,100,405,171"/>
-<area shape="rect" id="node7" title=" " alt="" coords="10,122,141,149"/>
-<area shape="rect" id="node8" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="575,195,756,222"/>
-<area shape="rect" id="node9" title=" " alt="" coords="205,195,395,222"/>
-<area shape="rect" id="node10" title=" " alt="" coords="259,246,341,273"/>
+<area shape="rect" id="node1" title=" " alt="" coords="828,135,1019,162"/>
+<area shape="rect" id="node2" title=" " alt="" coords="619,34,711,61"/>
+<area shape="rect" id="node3" href="$structtlm_1_1scc_1_1pe_1_1intor__fw__b.html" title=" " alt="" coords="579,85,751,111"/>
+<area shape="rect" id="node4" href="$structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="233,5,367,47"/>
+<area shape="rect" id="node5" title=" " alt="" coords="25,13,126,39"/>
+<area shape="rect" id="node6" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="608,135,723,162"/>
+<area shape="rect" id="node7" href="$structscc_1_1peq.html" title=" " alt="" coords="213,71,387,141"/>
+<area shape="rect" id="node8" title=" " alt="" coords="5,93,145,119"/>
+<area shape="rect" id="node9" href="$classscc_1_1fifo__w__cb.html" title=" " alt="" coords="195,165,405,236"/>
+<area shape="rect" id="node10" title=" " alt="" coords="10,187,141,214"/>
+<area shape="rect" id="node11" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="575,261,756,287"/>
+<area shape="rect" id="node12" title=" " alt="" coords="205,261,395,287"/>
+<area shape="rect" id="node13" title=" " alt="" coords="259,311,341,338"/>
 </map>
