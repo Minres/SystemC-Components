@@ -18,14 +18,11 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 ---------------------------------------------------------*/
 
-#ifndef BIT_FIELD_H_
-#define BIT_FIELD_H_
-
 #ifndef __CPP11OM_BITFIELD_H__
 #define __CPP11OM_BITFIELD_H__
 
 #include <cassert>
-
+namespace util {
 //---------------------------------------------------------
 // BitFieldMember<>: Used internally by ADD_BITFIELD_MEMBER macro.
 // All members are public to simplify compliance with sections 9.0.7 and
@@ -147,7 +144,7 @@ public:
         return Element(value, BaseOffset + BitsPerItem * i);
     }
 };
-
+}
 //---------------------------------------------------------
 // Bitfield definition macros.
 // All members are public to simplify compliance with sections 9.0.7 and
@@ -167,12 +164,10 @@ public:
         operator T() const { return backing.val; }                                                                     \
         using StorageType = T;
 
-#define BF_FIELD(memberName, offset, bits) BitFieldMember<StorageType, offset, bits> memberName;
+#define BF_FIELD(memberName, offset, bits) util::BitFieldMember<StorageType, offset, bits> memberName;
 
-#define BF_ARRAY(memberName, offset, bits, numItems) BitFieldArray<StorageType, offset, bits, numItems> memberName;
+#define BF_ARRAY(memberName, offset, bits, numItems) util::BitFieldArray<StorageType, offset, bits, numItems> memberName;
 
 #define END_BF_DECL() }
 
 #endif // __CPP11OM_BITFIELD_H__
-
-#endif /* BIT_FIELD_H_ */

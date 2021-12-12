@@ -14,7 +14,7 @@
 #include <unordered_map>
 
 using namespace sc_core;
-using namespace scc;
+namespace scc {
 
 auto operator<<(std::ostream& os, const sc_event& evt) -> std::ostream& {
 #if SYSTEMC_VERSION >= 20181013
@@ -184,4 +184,5 @@ auto scc::value_registry::get_value(std::string name) const -> const sc_variable
 void scc::value_registry::end_of_elaboration() {
     for(auto o : sc_get_top_level_objects())
         descend(o, true);
+}
 }

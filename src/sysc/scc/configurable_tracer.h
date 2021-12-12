@@ -19,7 +19,9 @@
 
 #include "tracer.h"
 #include <cci_configuration>
-
+/** \ingroup scc-sysc
+ *  @{
+ */
 namespace scc {
 /**
  * @class configurable_tracer
@@ -104,4 +106,5 @@ protected:
 };
 
 } /* namespace scc */
+/** @} */ // end of scc-sysc
 #endif /* _SCC_CONFIGURABLE_TRACER_H_ */

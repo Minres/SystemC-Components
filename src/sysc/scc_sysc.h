@@ -15,7 +15,9 @@
  *******************************************************************************/
 
 #pragma once
-
+/** \defgroup scc-sysc SystemC components
+ *  @{
+ */
 #ifdef HAS_CCI
 #include "scc/configurable_tracer.h"
 #include "scc/configurer.h"
@@ -68,3 +70,4 @@
 
 #include "tlm/scc/pe/intor_if.h"
 #include "tlm/scc/pe/parallel_pe.h"
+/** @} */ // end of fw_if

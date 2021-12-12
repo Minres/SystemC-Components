@@ -3,3 +3,5 @@
 /*.txdb
 /my_db.vcd
 /.project
+/build/
+/.cproject
