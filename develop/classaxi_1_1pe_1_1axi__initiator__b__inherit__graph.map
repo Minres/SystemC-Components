@@ -1,0 +1,11 @@
+<map id="axi::pe::axi_initiator_b" name="axi::pe::axi_initiator_b">
+<area shape="rect" id="node1" title=" " alt="" coords="620,78,787,105"/>
+<area shape="rect" id="node7" href="$classaxi_1_1pe_1_1ace__initiator.html" title=" " alt="" coords="835,5,1057,47"/>
+<area shape="rect" id="node8" href="$classaxi_1_1pe_1_1ace__lite__initiator.html" title=" " alt="" coords="835,71,1057,112"/>
+<area shape="rect" id="node9" href="$classaxi_1_1pe_1_1axi__initiator.html" title=" " alt="" coords="835,136,1057,177"/>
+<area shape="rect" id="node2" title=" " alt="" coords="443,45,535,71"/>
+<area shape="rect" id="node3" href="$classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="407,95,572,151"/>
+<area shape="rect" id="node4" title=" " alt="" coords="173,55,340,111"/>
+<area shape="rect" id="node5" href="$classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="155,135,359,191"/>
+<area shape="rect" id="node6" title=" " alt="" coords="5,150,107,177"/>
+</map>

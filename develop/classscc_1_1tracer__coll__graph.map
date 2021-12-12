@@ -1,0 +1,5 @@
+<map id="scc::tracer" name="scc::tracer">
+<area shape="rect" id="node1" title="a component traversing the SystemC object hierarchy and tracing the objects" alt="" coords="24,155,113,181"/>
+<area shape="rect" id="node2" href="$classscc_1_1tracer__base.html" title="base class for automatic tracer" alt="" coords="5,80,132,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="23,5,115,32"/>
+</map>

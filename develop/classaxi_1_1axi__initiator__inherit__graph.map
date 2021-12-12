@@ -1,0 +1,5 @@
+<map id="axi::axi_initiator&lt; BUSWIDTH &gt;" name="axi::axi_initiator&lt; BUSWIDTH &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="25,155,153,196"/>
+<area shape="rect" id="node2" href="$classaxi_1_1axi__initiator__base.html" title="axi_initiator class provides an input_socket for incoming TLM transactions. It attaches AXI extension..." alt="" coords="5,80,172,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="43,5,135,32"/>
+</map>
