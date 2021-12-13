@@ -35,10 +35,8 @@ void record(SCVNS scv_tr_handle&, tlm::tlm_generic_payload&);
 void record(SCVNS scv_tr_handle&, tlm::tlm_phase&);
 void record(SCVNS scv_tr_handle&, tlm::tlm_sync_enum);
 void record(SCVNS scv_tr_handle&, tlm::tlm_dmi&);
-//! implementation detail
+
 namespace impl {
-//! \brief the class to hold the information to be recorded on the timed
-//! streams
 template <typename TYPES = tlm::tlm_base_protocol_types> class tlm_recording_payload : public TYPES::tlm_payload_type {
 public:
     SCVNS scv_tr_handle parent;

@@ -21,7 +21,15 @@
 #include <mutex>
 #include <stdio.h>
 
+/**
+ * \ingroup scc-common
+ */
+/**@{*/
 namespace util {
+/**
+ * @brief allows to capture the strings writen to std::cout and std::cerr (MT-safe)
+ *
+ */
 class IoRedirector {
     enum { bufSize = 1024 };
 
@@ -57,4 +65,5 @@ private:
     std::string m_captured;
 };
 } //namespace util
+/** @} */
 #endif /* _UTIL_IO_REDIRECTOR_H_ */

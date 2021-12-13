@@ -20,9 +20,16 @@
 #include <array>
 #include <cassert>
 
+/**
+ * \ingroup scc-common
+ */
+/**@{*/
+//! @brief SCC common utilities
 namespace util {
 
 /**
+ *  @brief a sparse array suitable for large sizes
+ *
  *  a simple array which allocates memory in configurable chunks (size of 2^lower_width), used for
  *  large sparse arrays. Memory is allocated on demand
  */
@@ -95,5 +102,5 @@ protected:
     std::array<page_type*, SIZE / (1 << lower_width) + 1> arr;
 };
 } // namespace util
-
+/** @}*/
 #endif /* _SPARSE_ARRAY_H_ */

@@ -21,19 +21,19 @@
 #define _UTIL_DELEGATE_H_
 
 #include <cassert>
-
 #include <memory>
-
 #include <new>
-
 #include <type_traits>
-
 #include <utility>
 
+/**
+ * \ingroup scc-common
+ */
+/**@{*/
+//! @brief SCC common utilities
 namespace util {
-
 template <typename T> class delegate;
-
+//! a fast alternative to std::function
 template <class R, class... A> class delegate<R(A...)> {
     using stub_ptr_type = R (*)(void*, A&&...);
 
@@ -254,8 +254,10 @@ private:
     }
 };
 } // namespace util
+/**@}*/
 
 namespace std {
+//! the hash overload for delegate<T, A...>
 template <typename R, typename... A> class hash<util::delegate<R(A...)>> {
 public:
     size_t operator()(util::delegate<R(A...)> const& d) const noexcept {

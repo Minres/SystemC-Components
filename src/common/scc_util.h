@@ -16,6 +16,12 @@
 
 #pragma once
 
+/**
+ * @defgroup scc-common Common utilities
+ *
+ * This module contains generic C++ functions being independent of SystemC
+ */
+/**@{*/
 #include "util/assert.h"
 #include "util/bit_field.h"
 #include "util/delegate.h"
@@ -29,3 +35,4 @@
 #include "util/strprintf.h"
 #include "util/thread_syncronizer.h"
 #include "util/watchdog.h"
+/**@}*/

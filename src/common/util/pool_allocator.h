@@ -18,29 +18,50 @@
 #include <cstdlib>
 #endif
 
+/**
+ * \ingroup scc-common
+ */
+/**@{*/
+//! @brief SCC common utilities
 namespace util {
+//! a generic pool allocator singleton not being MT-safe
 template <typename T, unsigned CHUNK_SIZE = 4096> class pool_allocator {
 public:
+    /**
+     * @fn void allocate*(uint64_t=0)
+     * @brief allocate a piece of memory of the given size
+     *
+     * @param id
+     */
     void* allocate(uint64_t id=0);
-
+    /**
+     * @fn void free(void*)
+     * @brief pit the memory back into the pool
+     *
+     * @param p
+     */
     void free(void* p);
-
+    /**
+     * @fn void resize()
+     * @brief add CHUNK_SIZE elements to the pool
+     *
+     */
     void resize();
-
+    //! deleted constructor
     pool_allocator(const pool_allocator&) = delete;
-
+    //! deleted constructor
     pool_allocator(pool_allocator&&) = delete;
-
+    //! deleted destructor
     ~pool_allocator();
-
+    //! deleted assignment operator
     pool_allocator& operator=(const pool_allocator&) = delete;
-
+    //! deleted assignment operator
     pool_allocator& operator=(pool_allocator&&) = delete;
-
+    //! pool allocator getter
     static pool_allocator& get();
-
+    //! get the number of allocated bytes
     size_t get_capacity();
-
+    //! get the number of free elements
     size_t get_free_entries_count();
 
 private:
@@ -123,7 +144,6 @@ template <typename T, unsigned CHUNK_SIZE> inline size_t pool_allocator<T, CHUNK
 template <typename T, unsigned CHUNK_SIZE> inline size_t pool_allocator<T, CHUNK_SIZE>::get_free_entries_count() {
     return free_list.size();
 }
-
 } // namespace util
-
+/** @} */
 #endif /* _UTIL_POOL_ALLOCATOR_H_ */

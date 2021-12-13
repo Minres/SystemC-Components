@@ -25,9 +25,14 @@
 #include <stdexcept>
 #include <string>
 
+/**
+ * \ingroup scc-common
+ */
+/**@{*/
+//! @brief SCC common utilities
 namespace util {
 /**
- * range based lookup table
+ * @brief range based lookup table
  */
 template <typename T> class range_lut {
     //! the type of lut entry
@@ -197,5 +202,5 @@ template <typename T> inline std::string range_lut<T>::toString() const {
     return buf.str();
 }
 } // namespace util
-
+/** @}*/
 #endif /* _RANGE_LUT_H_ */

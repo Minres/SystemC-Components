@@ -28,11 +28,31 @@
 #include <type_traits>
 #include <vector>
 
+/**
+ * \ingroup scc-common
+ */
+/**@{*/
 // some helper functions
+/**
+ * @brief extract bit ranges from plain data types
+ *
+ * @tparam bit start bit
+ * @tparam width size of the bit field to extract
+ * @tparam T data type cyrrying the bits
+ * @param v value from which the bytes are to be extarcted
+ * @return the extracted bit. It is of the sanen datatype as the passed value
+ */
 template <unsigned int bit, unsigned int width, typename T> inline constexpr T bit_sub(T v) {
     return (v >> bit) & ((T(1) << width) - 1);
 }
-
+/**
+ * @brief sign-extend a given value
+ *
+ * @tparam T the datatype
+ * @tparam B the numer of signed bits
+ * @param x the actualö value
+ * @return the sign-extended value of type T
+ */
 #if __cplusplus < 201402L
 template <typename T, unsigned B> inline T signextend(const T x) {
 #else
@@ -47,6 +67,15 @@ template <typename T, unsigned B> inline constexpr T signextend(const typename s
 }
 
 // according to http://graphics.stanford.edu/~seander/bithacks.html#FixedSignExtend
+/**
+ * @brief a function that converts from B bits to T in one operation
+ *
+ * @tparam bit
+ * @tparam width
+ * @tparam T
+ * @param v
+ * @return
+ */
 template <unsigned int bit, unsigned int width, typename T>
 inline constexpr typename std::make_signed<T>::type signed_bit_sub(T v) {
 #if __cplusplus < 201402L
@@ -58,8 +87,8 @@ inline constexpr typename std::make_signed<T>::type signed_bit_sub(T v) {
 #endif
 }
 
+//! @brief SCC common utilities
 namespace util {
-
 template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args&&... args) {
 #if __cplusplus < 201402L
     return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
@@ -310,4 +339,5 @@ template <class T> inline T remove_ext(T const& filename) {
     return p > 0 && p != T::npos ? filename.substr(0, p) : filename;
 }
 } // namespace util
+/** @} */
 #endif /* _UTIL_ITIES_H_ */

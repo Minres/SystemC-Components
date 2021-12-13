@@ -46,18 +46,19 @@ find_package(Doxygen)
     if(NOT DOXYGEN_FOUND)
         message(FATAL_ERROR "Doxygen is needed to build the documentation.")
     endif()
-
+	set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/doc/Doxyfile.in)
+	configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+	
 	set(DOXYGEN_PROJECT_BRIEF "SystemC components library")
 	set(DOXYGEN_USE_MDFILE_AS_MAINPAGE  README.md)
 	# exclude json code
-	set(DOXYGEN_EXCLUDE_PATTERNS  */json/*)
 	# doxygen settings can be set here, prefixed with "DOXYGEN_"
 	set(DOXYGEN_SOURCE_BROWSER YES)
 	set(DOXYGEN_EXTRACT_ALL NO)
 	set(DOXYGEN_EXTRACT_PRIVATE NO)
 	set(DOXYGEN_SEARCHENGINE NO)
 	set(DOXYGEN_GENERATE_HTML YES)
-	set(DOXYGEN_GENERATE_MAN YES)
+	set(DOXYGEN_GENERATE_MAN NO)
 	set(DOXYGEN_GENERATE_LATEX NO)
 	set(DOXYGEN_OUTPUT_DIRECTORY "${scc_BINARY_DIR}/scc")
 	# this target will only be built if specifically asked to.
