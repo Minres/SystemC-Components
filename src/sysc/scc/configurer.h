@@ -22,7 +22,6 @@
 #ifdef HAS_CCI
 #include <cci_configuration>
 #endif
-#include <json/json.h>
 
 namespace scc {
 
@@ -36,10 +35,16 @@ void init_cci(std::string name = "Global Broker");
  * once the design is installed.
  */
 class configurer : public sc_core::sc_module {
+    struct ConfigHolder;
 public:
     using base_type = sc_core::sc_module;
+#ifdef HAS_CCI
+    using broker_t = cci::cci_broker_handle;
+#else
+    using broker_t = void*;
+#endif
     /**
-     * create a configurer using a JSON input file
+     * create a configurer using an input file
      * @param filename
      */
     configurer(const std::string& filename);
@@ -49,6 +54,8 @@ public:
     configurer(const configurer&) = delete;
 
     configurer(configurer&&) = delete;
+
+    ~configurer();
 
     configurer& operator=(const configurer&) = delete;
 
@@ -122,32 +129,18 @@ public:
     }
 
 protected:
-    void dump_configuration(sc_core::sc_object* obj, Json::Value& node);
-
-    void configure_sc_attribute_hierarchical(sc_core::sc_object* obj, Json::Value& hier_val);
-
-    void set_value(sc_core::sc_attr_base* attr_base, Json::Value& hier_val);
-
-    Json::Value& get_value_from_hierarchy(const std::string& hier_name);
-
-    Json::Value& get_value_from_hierarchy(const std::string& hier_name, Json::Value& val);
-
-    void configure_cci_hierarchical(const Json::Value& root, std::string prefix);
-
     bool config_valid{false};
-
-    Json::Value root;
+    std::unique_ptr<ConfigHolder> root;
 
 #ifdef WITH_SIM_PHASE_CALLBACKS
-    void simulation_phase_callback() override { check_config_hierarchical(root, ""); }
+    void simulation_phase_callback() override;
 #endif
-    void end_of_elaboration() override { check_config_hierarchical(root, ""); }
+    void end_of_elaboration() override;
 
-    void check_config_hierarchical(Json::Value const&, std::string const&);
 #ifdef HAS_CCI
     cci::cci_originator cci_originator;
-    cci::cci_broker_handle cci_broker;
 #endif
+    broker_t cci_broker;
 };
 } // namespace scc
 
