@@ -44,10 +44,6 @@ public:
      */
     virtual void reset() = 0;
     /**
-     * \defgroup FuncAcc functional accesses
-     * @{
-     */
-    /**
      * @fn bool write(const uint8_t*, std::size_t, uint64_t=0, sc_core::sc_time=sc_core::SC_ZERO_TIME)=0
      * @brief write to the resource
      *
@@ -71,11 +67,6 @@ public:
      */
     virtual bool read(uint8_t* data, std::size_t length, uint64_t offset = 0,
                       sc_core::sc_time d = sc_core::SC_ZERO_TIME) const = 0;
-    /**@}*/
-    /**
-     * \defgroup NonFuncAcc non-functional accesses
-     * @{
-     */
     /**
      * @fn bool write_dbg(const uint8_t*, std::size_t, uint64_t=0)=0
      * @brief debug write to the resource
@@ -96,7 +87,6 @@ public:
      * @return true it the access is successful
      */
     virtual bool read_dbg(uint8_t* data, std::size_t length, uint64_t offset = 0) const = 0;
-    /**@}*/
 };
 /**
  * @class indexed_resource_access_if
