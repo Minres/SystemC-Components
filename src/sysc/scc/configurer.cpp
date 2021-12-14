@@ -23,13 +23,20 @@
 #include "configurer.h"
 #include "report.h"
 #include <json/json.h>
+#include <rapidjson/prettywriter.h>
+#include <rapidjson/ostreamwrapper.h>
+#include <fmt/format.h>
 #ifdef HAS_CCI
 #include <cci_configuration>
 #include <cci_utils/broker.h>
 #endif
 #include <fstream>
+#include <cstring>
+#include <unordered_map>
 
 namespace scc {
+using namespace rapidjson;
+using writer_type = PrettyWriter<OStreamWrapper>;
 namespace {
 inline auto get_sc_objects(sc_core::sc_object* obj = nullptr) -> const std::vector<sc_core::sc_object*>& {
     if(obj)
@@ -38,80 +45,117 @@ inline auto get_sc_objects(sc_core::sc_object* obj = nullptr) -> const std::vect
         return sc_core::sc_get_top_level_objects();
 }
 
-template <typename T, typename T1 = T>
-auto check_n_assign(Json::Value& node, sc_core::sc_attr_base* attr_base) -> bool {
+#define FDECL(TYPE, FUNC) \
+		inline void writeValue(writer_type& writer, std::string const& key, TYPE value)\
+		{writer.Key(key.c_str()); writer.FUNC(value);}
+FDECL(int, Int)
+FDECL(unsigned int, Uint)
+FDECL(long, Int64)
+FDECL(unsigned long, Uint64)
+FDECL(long long, Int64)
+FDECL(unsigned long long, Uint64)
+FDECL(bool, Bool)
+FDECL(float, Double)
+FDECL(double, Double)
+FDECL(char*, String)
+inline void writeValue(writer_type& writer, std::string const& key, std::string const& value) {
+    writer.Key(key.c_str());
+    writer.String(value.c_str());
+}
+
+template <typename T>
+auto check_n_assign(writer_type& writer, sc_core::sc_attr_base* attr_base) -> bool {
     auto* a = dynamic_cast<sc_core::sc_attribute<T>*>(attr_base);
     if(a != nullptr) {
-        node[a->name()] = static_cast<T1>(a->value);
+        writeValue(writer, a->name(), a->value);
         return true;
     }
     return false;
 }
 
-void dump_config(configurer::broker_t const& broker, sc_core::sc_object* obj, Json::Value& parent) {
-    auto mod = dynamic_cast<sc_core::sc_module*>(obj);
-    Json::Value node{Json::objectValue};
-    for(sc_core::sc_attr_base* attr_base : obj->attr_cltn()) {
-        check_n_assign<int>(node, attr_base) || check_n_assign<unsigned>(node, attr_base) ||
-                check_n_assign<long, Json::Int64>(node, attr_base) ||
-                check_n_assign<unsigned long, Json::UInt64>(node, attr_base) ||
-                check_n_assign<long long, Json::Int64>(node, attr_base) ||
-                check_n_assign<unsigned long long, Json::UInt64>(node, attr_base) ||
-                check_n_assign<bool>(node, attr_base) ||
-                check_n_assign<float>(node, attr_base) || check_n_assign<double>(node, attr_base) ||
-                check_n_assign<std::string>(node, attr_base) || check_n_assign<char*>(node, attr_base);
+inline bool start_object(writer_type& writer, char const* key, bool started) {
+    if(!started) {
+        writer.Key(key);
+        writer.StartObject();
     }
-#ifdef HAS_CCI
-    const std::string hier_name{obj->name()};
-    cci::cci_param_predicate pred{[hier_name](cci::cci_param_untyped_handle h) -> bool {
-        std::string h_name{h.name()};
-        auto sep = hier_name.length();
-        if(h_name.length() > hier_name.length()) {
-            auto path_match = h_name.compare(0, sep, hier_name) == 0;            // begins with hier_name
-            auto sep_match = h_name[sep] == '.';                                 // has additional part
-            auto tail_nomatch = h_name.substr(sep + 1).find('.') == h_name.npos; // but no other hierarchy separator
-            return path_match && sep_match && tail_nomatch;
-        } else
-            return false;
-    }};
-    auto log_lvl_name = hier_name + ".log_level";
-    auto handles = broker.get_param_handles(pred);
-    auto log_lvl_set = false;
-    for(auto& h : handles) {
-        auto value = h.get_cci_value();
-        auto paramname = std::string{h.name()};
-        if(paramname == log_lvl_name)
-            log_lvl_set = true;
-        auto basename = paramname.substr(paramname.find_last_of('.') + 1);
-        if(value.is_bool())
-            node[basename] = value.get_bool();
-        else if(value.is_int())
-            node[basename] = value.get_int();
-        else if(value.is_int64())
-            node[basename] = static_cast<int64_t>(value.get_int64());
-        else if(value.is_uint())
-            node[basename] = value.get_uint();
-        else if(value.is_uint64())
-            node[basename] = static_cast<uint64_t>(value.get_uint64());
-        else if(value.is_double())
-            node[basename] = value.get_double();
-        else if(value.is_string())
-            node[basename] = value.get_string().c_str();
-    }
-    if(!log_lvl_set && mod) {
-        auto val = broker.get_preset_cci_value(log_lvl_name);
-        auto global_verb = static_cast<int>(get_logging_level());
-        node["log_level"] = val.is_int() ? val.get_int() : global_verb;
-    }
-#endif
-    for(auto* o : get_sc_objects(obj))
-        dump_config(broker, o, node);
-    if(!node.empty())
-        parent[obj->basename()] = node;
+    return true;
 }
 
-#define CHECK_N_ASSIGN(TYPE, ATTR, VAL)                                                                                \
-		{                                                                                                                  \
+struct config_dumper {
+    configurer::broker_t const& broker;
+    std::unordered_map<std::string,std::vector<cci::cci_param_untyped_handle>> lut;
+
+    config_dumper(configurer::broker_t const& broker):broker(broker){
+        for(auto& h: broker.get_param_handles()){
+            auto value = h.get_cci_value();
+            std::string paramname{h.name()};
+            auto sep = paramname.rfind('.');
+            auto basename = paramname.substr(0, sep);
+            lut[basename].push_back(h);
+        }
+    }
+
+    void dump_config(sc_core::sc_object* obj,  writer_type& writer) {
+        auto obj_started=false;
+        auto mod = dynamic_cast<sc_core::sc_module*>(obj);
+        for(sc_core::sc_attr_base* attr_base : obj->attr_cltn()) {
+            obj_started=start_object(writer, obj->basename(), obj_started);
+            check_n_assign<int>(writer, attr_base) ||
+                    check_n_assign<unsigned>(writer, attr_base) ||
+                    check_n_assign<long>(writer, attr_base) ||
+                    check_n_assign<unsigned long>(writer, attr_base) ||
+                    check_n_assign<long long>(writer, attr_base) ||
+                    check_n_assign<unsigned long long>(writer, attr_base) ||
+                    check_n_assign<bool>(writer, attr_base) ||
+                    check_n_assign<float>(writer, attr_base) || check_n_assign<double>(writer, attr_base) ||
+                    check_n_assign<std::string>(writer, attr_base) || check_n_assign<char*>(writer, attr_base);
+        }
+#ifdef HAS_CCI
+        const std::string hier_name{obj->name()};
+        auto log_lvl_set=false;
+        auto it = lut.find(obj->name());
+        if(it!=lut.end())
+            for(auto& h : it->second) {
+                obj_started=start_object(writer, obj->basename(), obj_started);
+                auto value = h.get_cci_value();
+                std::string paramname{h.name()};
+                auto basename = paramname.substr(paramname.rfind('.') + 1);
+                if(basename == SCC_LOG_LEVEL_PARAM_NAME)
+                    log_lvl_set = true;
+                if(value.is_bool())
+                    writeValue(writer, basename, (bool)value.get_bool());
+                else if(value.is_int())
+                    writeValue(writer, basename, (int)value.get_int());
+                else if(value.is_int64())
+                    writeValue(writer, basename, static_cast<int64_t>(value.get_int64()));
+                else if(value.is_uint())
+                    writeValue(writer, basename, value.get_uint());
+                else if(value.is_uint64())
+                    writeValue(writer, basename, static_cast<uint64_t>(value.get_uint64()));
+                else if(value.is_double())
+                    writeValue(writer, basename, value.get_double());
+                else if(value.is_string())
+                    writeValue(writer, basename, value.get_string().c_str());
+            }
+        if(!log_lvl_set && mod) {
+            obj_started=start_object(writer, obj->basename(), obj_started);
+            auto val = broker.get_preset_cci_value(fmt::format("{}.{}", obj->name(), SCC_LOG_LEVEL_PARAM_NAME));
+            auto global_verb = static_cast<int>(get_logging_level());
+            writeValue(writer, "log_level", val.is_int() ? val.get_int() : global_verb);
+        }
+#endif
+        for(auto* o : get_sc_objects(obj)) {
+            if(dynamic_cast<sc_core::sc_module*>(obj)){
+                obj_started=start_object(writer, obj->basename(), obj_started);
+                dump_config(o, writer);
+            }
+        }
+        if(obj_started) writer.EndObject();
+    }
+};
+
+#define CHECK_N_ASSIGN(TYPE, ATTR, VAL)                                                                            \
+		{                                                                                                          \
 	auto* a = dynamic_cast<sc_core::sc_attribute<TYPE>*>(ATTR);                                                    \
 	if(a != nullptr) {                                                                                             \
 		a->value = VAL;                                                                                            \
@@ -259,7 +303,9 @@ configurer::configurer(const std::string& filename)
             SCCERR() << "Could not open input file " << filename;
         }
     }
-    // register_simulation_phase_callback(sc_core::sc_status::SC_END_OF_ELABORATION);
+#ifdef WITH_SIM_PHASE_CALLBACKS
+    register_simulation_phase_callback(sc_core::sc_status::SC_END_OF_ELABORATION);
+#endif
 }
 
 configurer::~configurer(){}
@@ -276,18 +322,14 @@ void configurer::dump_hierarchy(std::ostream& os, sc_core::sc_object* obj) {
 }
 
 void configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj) {
-    Json::Value root{Json::objectValue};
+    OStreamWrapper stream(os);
+    writer_type writer(stream);
+    writer.StartObject();
+    config_dumper dumper(cci_broker);
     for(auto* o : get_sc_objects(obj)) {
-        dump_config(cci_broker, o, root);
+        dumper.dump_config(o, writer);
     }
-    // For convenience, use `writeString()` with a specialized builder.
-    Json::StreamWriterBuilder wbuilder;
-    wbuilder["indentation"] = "\t";
-    wbuilder["enableYAMLCompatibility"] = true;
-    wbuilder["commentStyle"] = "None";
-    wbuilder.newStreamWriter()->write(root, &os);
-    // another (default) option:
-    // os << root;
+    writer.EndObject();
 }
 
 void configurer::configure() {
@@ -319,8 +361,7 @@ void configurer::set_configuration_value(sc_core::sc_attr_base* attr_base, sc_co
     }
 }
 
-
-void configurer::end_of_elaboration() {
+void configurer::end_of_elaboration_check()  {
     try {
         if(root) check_config_hierarchical(cci_broker, root->v, "");
     } catch(std::domain_error& e) {
@@ -328,13 +369,7 @@ void configurer::end_of_elaboration() {
     } catch(std::invalid_argument& e){
         SCCFATAL(this->name()) << "Illegal parameter name: '" << e.what() << "'";
     }
-
 }
-#ifdef WITH_SIM_PHASE_CALLBACKS
-void configurer::simulation_phase_callback()  {
-    if(root) check_config_hierarchical(root->v, "");
-}
-#endif
 
 void init_cci(std::string name) {
 #ifdef HAS_CCI

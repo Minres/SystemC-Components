@@ -29,6 +29,8 @@
 #if defined(_MSC_VER) && defined(ERROR)
 #undef ERROR
 #endif
+
+#define SCC_LOG_LEVEL_PARAM_NAME "log_level"
 namespace scc {
 //! \brief array holding string representations of log levels
 static std::array<const char* const, 8> buffer = {

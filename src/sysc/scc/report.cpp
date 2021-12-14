@@ -500,7 +500,7 @@ auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
     if(it != lut.end())
         return it->second;
     if(sc_core::sc_get_current_object()) {
-        auto param_name = std::string(str) + ".log_level";
+        auto param_name = std::string(str) + "." SCC_LOG_LEVEL_PARAM_NAME;
         auto h = cci::cci_get_broker().get_param_handle<unsigned>(param_name);
         if(h.is_valid()) {
             sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_value(), verbosity.size() - 1));
