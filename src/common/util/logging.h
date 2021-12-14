@@ -37,6 +37,11 @@
 #define DO_DESCRIPTION(e) #e,
 #define DO_ENUM(e) e,
 
+/**
+ * \ingroup scc-common
+ */
+/**@{*/
+//! @brief SCC C++ logging
 namespace logging {
 //! array holding string representations of log levels
 static const std::array<const char* const, 8> buffer = {{LEVELS(DO_DESCRIPTION)}};
@@ -298,8 +303,8 @@ template <typename T> std::ostream& operator<<(std::ostream& stream, const std::
     copy(vector.begin(), vector.end(), std::ostream_iterator<T>(stream, ","));
     return stream;
 }
-
 } // namespace logging
+/** @} */
 #undef LEVELS
 #undef CAT
 

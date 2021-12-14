@@ -21,7 +21,6 @@
 #define eof _eof
 #else
 #include <unistd.h>
-//#include <fcntl.h>
 #include <poll.h>
 #include <thread>
 #endif

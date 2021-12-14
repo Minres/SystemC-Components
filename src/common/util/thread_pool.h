@@ -14,7 +14,13 @@
 #include <future>
 #include <type_traits>
 
+/**
+ * \ingroup scc-common
+ */
+/**@{*/
+//! @brief SCC common utilities
 namespace util {
+//! @brief a simple thread pool
 struct thread_pool {
   // the mutex, condition variable and deque form a single thread-safe triggered queue of tasks:
   std::mutex m;
@@ -98,5 +104,5 @@ private:
   }
 };
 }
-
+/**@}*/
 #endif /* _COMMON_UTIL_THREAD_POOL_H_ */

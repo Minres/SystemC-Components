@@ -16,8 +16,13 @@
 #define _CRT_NO_VA_START_VALIDATION
 #endif
 
+/**
+ * \ingroup scc-common
+ */
+/**@{*/
+//! @brief SCC common utilities
 namespace util {
-
+//! allocate and print to a string buffer
 inline std::string strprintf(const std::string format, ...) {
     va_list args;
     va_start(args, format);
@@ -29,6 +34,6 @@ inline std::string strprintf(const std::string format, ...) {
     va_end(args);
     return vec.data();
 }
-
 } // namespace util
+/**@}*/
 #endif /* SCC_INCL_UTIL_STRPRINTF_H_ */

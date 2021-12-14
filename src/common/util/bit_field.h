@@ -18,19 +18,24 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 ---------------------------------------------------------*/
 
-#ifndef BIT_FIELD_H_
-#define BIT_FIELD_H_
-
 #ifndef __CPP11OM_BITFIELD_H__
 #define __CPP11OM_BITFIELD_H__
 
 #include <cassert>
-
-//---------------------------------------------------------
-// BitFieldMember<>: Used internally by ADD_BITFIELD_MEMBER macro.
-// All members are public to simplify compliance with sections 9.0.7 and
-// 9.5.1 of the C++11 standard, thereby avoiding undefined behavior.
-//---------------------------------------------------------
+/**
+ * \ingroup scc-common
+ */
+/**@{*/
+//! @brief SCC common utilities
+namespace util {
+/**
+ * @brief bit field element
+ *
+ * BitFieldMember<>: Used internally by ADD_BITFIELD_MEMBER macro.
+ * All members are public to simplify compliance with sections 9.0.7 and
+ * 9.5.1 of the C++11 standard, thereby avoiding undefined behavior.
+ *
+ */
 template <typename T, int Offset, int Bits> struct BitFieldMember {
     T value;
 
@@ -76,11 +81,13 @@ template <typename T, int Offset, int Bits> struct BitFieldMember {
     }
 };
 
-//---------------------------------------------------------
-// BitFieldArray<>: Used internally by ADD_BITFIELD_ARRAY macro.
-// All members are public to simplify compliance with sections 9.0.7 and
-// 9.5.1 of the C++11 standard, thereby avoiding undefined behavior.
-//---------------------------------------------------------
+/**
+ * @brief array of bit field elements
+ *
+ * BitFieldArray<>: Used internally by ADD_BITFIELD_ARRAY macro.
+ * All members are public to simplify compliance with sections 9.0.7 and
+ * 9.5.1 of the C++11 standard, thereby avoiding undefined behavior.
+ */
 template <typename T, int BaseOffset, int BitsPerItem, int NumItems> class BitFieldArray {
 public:
     T value;
@@ -147,12 +154,13 @@ public:
         return Element(value, BaseOffset + BitsPerItem * i);
     }
 };
-
-//---------------------------------------------------------
-// Bitfield definition macros.
-// All members are public to simplify compliance with sections 9.0.7 and
-// 9.5.1 of the C++11 standard, thereby avoiding undefined behavior.
-//---------------------------------------------------------
+}
+/**
+ * Bitfield definition macros.
+ *
+ * All members are public to simplify compliance with sections 9.0.7 and
+ * 9.5.1 of the C++11 standard, thereby avoiding undefined behavior.
+ */
 #define BEGIN_BF_DECL(typeName, T)                                                                                     \
     union typeName {                                                                                                   \
         struct {                                                                                                       \
@@ -167,12 +175,10 @@ public:
         operator T() const { return backing.val; }                                                                     \
         using StorageType = T;
 
-#define BF_FIELD(memberName, offset, bits) BitFieldMember<StorageType, offset, bits> memberName;
+#define BF_FIELD(memberName, offset, bits) util::BitFieldMember<StorageType, offset, bits> memberName;
 
-#define BF_ARRAY(memberName, offset, bits, numItems) BitFieldArray<StorageType, offset, bits, numItems> memberName;
+#define BF_ARRAY(memberName, offset, bits, numItems) util::BitFieldArray<StorageType, offset, bits, numItems> memberName;
 
 #define END_BF_DECL() }
-
+/**@}*/
 #endif // __CPP11OM_BITFIELD_H__
-
-#endif /* BIT_FIELD_H_ */

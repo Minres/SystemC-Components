@@ -12,7 +12,13 @@
 #include <iostream>
 #include <random>
 
+/**
+ * \ingroup scc-common
+ */
+/**@{*/
+//! @brief SCC common utilities
 namespace util {
+//! a Mersenne-Twister pseudo random number generator
 class MT19937 {
 public:
     /**
@@ -71,4 +77,5 @@ private:
     }
 };
 } // namespace util
+/** @} */
 #endif /* _UTIL_MT19937_RNG_H_ */

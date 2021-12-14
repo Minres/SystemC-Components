@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _ASSERT_H_
-#define _ASSERT_H_
+#ifndef _UTIL_ASSERT_H_
+#define _UTIL_ASSERT_H_
 
 #include <util/logging.h>
 
@@ -34,4 +34,4 @@
     } while(false)
 #endif
 
-#endif /* _ASSERT_H_ */
+#endif /* _UTIL_ASSERT_H_ */

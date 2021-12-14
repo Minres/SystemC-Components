@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
+
 #ifndef _THREAD_SYNCRONIZER_H_
 #define _THREAD_SYNCRONIZER_H_
 
@@ -21,9 +22,14 @@
 #include <future>
 #include <queue>
 #include <stdexcept>
+//! @brief SCC common utilities
+/**
+ * \ingroup scc-common
+ */
+/**@{*/
 namespace util {
 /**
- * executes a function in another thread
+ * @brief executes a function syncronized in another thread
  */
 class thread_syncronizer {
 private:
@@ -122,4 +128,5 @@ public:
     }
 };
 } // namespace util
+/**@}*/
 #endif /* _THREAD_SYNCRONIZER_H_ */

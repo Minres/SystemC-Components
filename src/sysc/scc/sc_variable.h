@@ -348,7 +348,7 @@ template <typename T> struct sc_ref_variable : public sc_variable_b {
     }
 };
 /**
- * @struct sc_variable_masked
+ * @struct sc_ref_variable_masked
  * @brief the sc_variable for a particular plain data type with limited bit width
  *
  * @tparam T the data type of the wrapped value
