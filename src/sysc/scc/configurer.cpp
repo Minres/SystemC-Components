@@ -13,18 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * configurer.cpp
- *
- *  Created on: 27.09.2017
- *      Author: eyck
- */
 
 #include "configurer.h"
 #include "report.h"
-#include <json/json.h>
 #include <rapidjson/prettywriter.h>
 #include <rapidjson/ostreamwrapper.h>
+#include "rapidjson/document.h"
+#include "rapidjson/error/en.h"
+#include <rapidjson/istreamwrapper.h>
 #include <fmt/format.h>
 #ifdef HAS_CCI
 #include <cci_configuration>
@@ -163,102 +159,106 @@ struct config_dumper {
 	}                                                                                                              \
 		}
 
-void try_set_value(sc_core::sc_attr_base* attr_base, Json::Value& hier_val) {
-    CHECK_N_ASSIGN(int, attr_base, hier_val.asInt());
-    CHECK_N_ASSIGN(unsigned, attr_base, hier_val.asUInt());
-    CHECK_N_ASSIGN(int64_t, attr_base, hier_val.asInt64());
-    CHECK_N_ASSIGN(uint64_t, attr_base, hier_val.asUInt64());
-    CHECK_N_ASSIGN(bool, attr_base, hier_val.asBool());
-    CHECK_N_ASSIGN(float, attr_base, hier_val.asFloat());
-    CHECK_N_ASSIGN(double, attr_base, hier_val.asDouble());
-    CHECK_N_ASSIGN(std::string, attr_base, hier_val.asString());
-    CHECK_N_ASSIGN(char*, attr_base, strdup(hier_val.asCString()));
+void try_set_value(sc_core::sc_attr_base* attr_base, Value const& hier_val) {
+    CHECK_N_ASSIGN(int, attr_base, hier_val.Get<int>());
+    CHECK_N_ASSIGN(unsigned, attr_base, hier_val.Get<unsigned>());
+    CHECK_N_ASSIGN(int64_t, attr_base, hier_val.Get<int64_t>());
+    CHECK_N_ASSIGN(uint64_t, attr_base, hier_val.Get<uint64_t>());
+    CHECK_N_ASSIGN(bool, attr_base, hier_val.Get<bool>());
+    CHECK_N_ASSIGN(float, attr_base, hier_val.Get<float>());
+    CHECK_N_ASSIGN(double, attr_base, hier_val.Get<double>());
+    CHECK_N_ASSIGN(std::string, attr_base, std::string(hier_val.GetString()));
+    CHECK_N_ASSIGN(char*, attr_base, strdup(hier_val.GetString()));
 }
 
-void configure_cci_hierarchical(configurer::broker_t& broker, Json::Value const& node, std::string prefix) {
-    if(node.size() > 0) {
-        for(Json::Value::const_iterator itr = node.begin(); itr != node.end(); ++itr) {
-            if(!itr.key().isString())
-                return;
-            auto key_name = itr.key().asString();
-            auto hier_name=prefix.size() ? prefix + "." + key_name : key_name;
-            auto val = node[key_name];
-            if(val.isNull() || val.isArray())
-                return;
-            else if(val.isObject())
-                configure_cci_hierarchical(broker, *itr, hier_name);
+struct config_reader {
+    configurer::broker_t& broker;
+    config_reader(configurer::broker_t& broker):broker(broker){}
+    void configure_cci_hierarchical(Value const& value, std::string prefix) {
+        if(value.IsObject()){
+            auto o = value.GetObject();
+            for(auto itr = o.MemberBegin(); itr != o.MemberEnd(); ++itr) {
+                if(!itr->name.IsString())
+                    return;
+                auto key_name = itr->name.GetString();
+                Value const& val = o[key_name];
+                auto hier_name=prefix.size() ? prefix + "." + key_name : key_name;
+                if(val.IsNull() || val.IsArray())
+                    return;
+                else if(val.IsObject())
+                    configure_cci_hierarchical(val, hier_name);
 #ifdef HAS_CCI
-            else {
-                auto param_handle = broker.get_param_handle(hier_name);
-                if(param_handle.is_valid()) {
-                    if(val.isString()) {
-                        param_handle.set_cci_value(cci::cci_value(val.asString()));
-                    } else if(val.isBool()) {
-                        param_handle.set_cci_value(cci::cci_value(val.asBool()));
-                    } else if(val.isInt()) {
-                        param_handle.set_cci_value(cci::cci_value(val.asInt()));
-                    } else if(val.isInt64()) {
-                        param_handle.set_cci_value(cci::cci_value(val.asInt64()));
-                    } else if(val.isUInt()) {
-                        param_handle.set_cci_value(cci::cci_value(val.asUInt()));
-                    } else if(val.isUInt64()) {
-                        param_handle.set_cci_value(cci::cci_value(val.asUInt64()));
-                    } else if(val.isDouble()) {
-                        param_handle.set_cci_value(cci::cci_value(val.asDouble()));
-                    }
-                } else {
-                    if(val.isString()) {
-                        broker.set_preset_cci_value(hier_name, cci::cci_value(val.asString()));
-                    } else if(val.isBool()) {
-                        broker.set_preset_cci_value(hier_name, cci::cci_value(val.asBool()));
-                    } else if(val.isInt()) {
-                        broker.set_preset_cci_value(hier_name, cci::cci_value(val.asInt()));
-                    } else if(val.isInt64()) {
-                        broker.set_preset_cci_value(hier_name, cci::cci_value(val.asInt64()));
-                    } else if(val.isUInt()) {
-                        broker.set_preset_cci_value(hier_name, cci::cci_value(val.asUInt()));
-                    } else if(val.isUInt64()) {
-                        broker.set_preset_cci_value(hier_name, cci::cci_value(val.asUInt64()));
-                    } else if(val.isDouble()) {
-                        broker.set_preset_cci_value(hier_name, cci::cci_value(val.asDouble()));
+                else {
+                    auto param_handle = broker.get_param_handle(hier_name);
+                    if(param_handle.is_valid()) {
+                        if(val.IsString()) {
+                            param_handle.set_cci_value(cci::cci_value(std::string(val.GetString())));
+                        } else if(val.IsBool()) {
+                            param_handle.set_cci_value(cci::cci_value(val.Get<bool>()));
+                        } else if(val.IsInt()) {
+                            param_handle.set_cci_value(cci::cci_value(val.Get<int>()));
+                        } else if(val.IsInt64()) {
+                            param_handle.set_cci_value(cci::cci_value(val.Get<int64_t>()));
+                        } else if(val.IsUint()) {
+                            param_handle.set_cci_value(cci::cci_value(val.Get<unsigned>()));
+                        } else if(val.IsUint64()) {
+                            param_handle.set_cci_value(cci::cci_value(val.Get<uint64_t>()));
+                        } else if(val.IsDouble()) {
+                            param_handle.set_cci_value(cci::cci_value(val.Get<double>()));
+                        }
+                    } else {
+                        if(val.IsString()) {
+                            broker.set_preset_cci_value(hier_name, cci::cci_value(std::string(val.GetString())));
+                        } else if(val.IsBool()) {
+                            broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<bool>()));
+                        } else if(val.IsInt()) {
+                            broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<int>()));
+                        } else if(val.IsInt64()) {
+                            broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<int64_t>()));
+                        } else if(val.IsUint()) {
+                            broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<unsigned>()));
+                        } else if(val.IsUint64()) {
+                            broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<uint64_t>()));
+                        } else if(val.IsDouble()) {
+                            broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<double>()));
+                        }
                     }
                 }
-            }
 #endif
+            }
         }
     }
-}
+};
 
-void configure_sc_attribute_hierarchical(sc_core::sc_object* obj, Json::Value& hier_val) {
+void configure_sc_attribute_hierarchical(sc_core::sc_object* obj, Value const& hier_val) {
     for(auto* attr : obj->attr_cltn()) {
-        auto& val = hier_val[attr->name()];
-        if(!val.isNull())
-            try_set_value(attr, val);
+        auto member = hier_val.FindMember(attr->name().c_str());
+        if (member != hier_val.MemberEnd() && !member->value.IsNull())
+            try_set_value(attr, member->value);
     }
     for(auto* o : obj->get_child_objects()) {
-        auto& val = hier_val[o->basename()];
-        if(!val.isNull())
-            configure_sc_attribute_hierarchical(o, val);
+        auto member = hier_val.FindMember(o->basename());
+        if (member != hier_val.MemberEnd() && !member->value.IsNull())
+            configure_sc_attribute_hierarchical(o, member->value);
     }
 }
 
-void check_config_hierarchical(configurer::broker_t const& broker, Json::Value const& node, std::string const& prefix) {
-    if(node.size() > 0) {
-        for(Json::Value::const_iterator itr = node.begin(); itr != node.end(); ++itr) {
-            if(!itr.key().isString())
+void check_config_hierarchical(configurer::broker_t const& broker, Value const& node, std::string const& prefix) {
+        for(auto itr = node.MemberBegin(); itr != node.MemberEnd(); ++itr) {
+            if(!itr->name.IsString())
                 return;
-            auto key_name = itr.key().asString();
+            auto key_name = itr->name.GetString();
             if(key_name == "log_level")
                 continue; // virtual attribute
             auto hier_name=prefix.size() ? prefix + "." + key_name : key_name;
-            auto val = node[key_name];
-            if(val.isNull() || val.isArray())
+            Value const& val = node[key_name];
+            if(val.IsNull() || val.IsArray())
                 continue;
-            else if(val.isObject()) {
+            else if(val.IsObject()) {
                 if(!sc_core::sc_find_object(hier_name.c_str())) {
                     throw std::domain_error(hier_name);
                 }
-                check_config_hierarchical(broker, *itr, hier_name);
+                check_config_hierarchical(broker, val, hier_name);
             }
 #ifdef HAS_CCI
             else {
@@ -266,7 +266,7 @@ void check_config_hierarchical(configurer::broker_t const& broker, Json::Value c
                 auto* attr = obj->get_attribute(key_name);
                 if(!attr) {
                     auto param_handle = broker.get_param_handle(hier_name);
-                    if(!param_handle.is_valid()) {
+                    if(!param_handle.is_valid() && strcmp(key_name,SCC_LOG_LEVEL_PARAM_NAME)) {
                         throw std::invalid_argument(hier_name);
                     }
                 }
@@ -275,10 +275,9 @@ void check_config_hierarchical(configurer::broker_t const& broker, Json::Value c
         }
     }
 }
-}
 
 struct configurer::ConfigHolder {
-    Json::Value v;
+    Document document;
 };
 
 configurer::configurer(const std::string& filename)
@@ -293,10 +292,17 @@ configurer::configurer(const std::string& filename)
         if(is.is_open()) {
             root.reset(new ConfigHolder);
             try {
-                is >> root->v;
-                configure_cci_hierarchical(cci_broker, root->v, "");
-                config_valid = true;
-            } catch(Json::RuntimeError& e) {
+                IStreamWrapper stream(is);
+                root->document.ParseStream(stream);
+                if(root->document.HasParseError()) {
+                    SCCERR() << "Could not parse input file " << filename << ", location " << (unsigned)root->document.GetErrorOffset()
+                            << ", reason: " << GetParseError_En(root->document.GetParseError());
+                } else {
+                    config_reader reader(cci_broker);
+                    reader.configure_cci_hierarchical(root->document, "");
+                    config_valid = true;
+                }
+            } catch(std::runtime_error& e) {
                 SCCERR() << "Could not parse input file " << filename << ", reason: " << e.what();
             }
         } else {
@@ -335,16 +341,16 @@ void configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj) {
 void configurer::configure() {
     if(config_valid && root)
         for(auto* o : sc_core::sc_get_top_level_objects()) {
-            Json::Value& val = root->v[o->name()];
-            if(!val.isNull())
+            auto& val = root->document[o->name()];
+            if(!val.IsNull())
                 configure_sc_attribute_hierarchical(o, val);
         }
 }
 
-auto get_value_from_hierarchy(const std::string& hier_name, Json::Value& value) -> Json::Value& {
+auto get_value_from_hierarchy(const std::string& hier_name, Value const& value) -> Value const& {
     size_t npos = hier_name.find_first_of('.');
-    Json::Value& val = value[hier_name.substr(0, npos)];
-    if(val.isNull() || npos == std::string::npos || !val.isObject())
+    auto& val = value[hier_name.substr(0, npos).c_str()];
+    if(val.IsNull() || npos == std::string::npos || !val.IsObject())
         return val;
     return get_value_from_hierarchy(hier_name.substr(npos + 1, hier_name.size()), val);
 }
@@ -355,15 +361,15 @@ void configurer::set_configuration_value(sc_core::sc_attr_base* attr_base, sc_co
         name += ".";
         name += attr_base->name();
         size_t npos = name.find_first_of('.');
-        Json::Value& val = get_value_from_hierarchy(name, root->v[name.substr(0, npos)]);
-        if(!val.isNull())
+        auto& val = get_value_from_hierarchy(name, root->document[name.substr(0, npos).c_str()]);
+        if(!val.IsNull())
             try_set_value(attr_base, val);
     }
 }
 
 void configurer::end_of_elaboration_check()  {
     try {
-        if(root) check_config_hierarchical(cci_broker, root->v, "");
+        if(root) check_config_hierarchical(cci_broker, root->document, "");
     } catch(std::domain_error& e) {
         SCCFATAL(this->name()) << "Illegal hierarchy name: '" << e.what() << "'";
     } catch(std::invalid_argument& e){
