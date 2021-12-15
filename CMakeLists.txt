@@ -160,7 +160,7 @@ else()
 	target_link_libraries(scc INTERFACE ${Boost_datetime_LIBRARY})
 endif()
 target_link_libraries(scc INTERFACE scc-util scc-sysc components busses scv-tr)
-target_link_libraries(scc INTERFACE jsoncpp)
+#target_link_libraries(scc INTERFACE jsoncpp)
 target_link_libraries(scc INTERFACE ${FMT_TARGET} ${SPDLOG_TARGET})
 
 set_target_properties(scc PROPERTIES
