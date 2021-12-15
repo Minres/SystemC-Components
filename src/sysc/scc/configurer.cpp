@@ -181,7 +181,7 @@ struct config_reader {
                 if(!itr->name.IsString())
                     return;
                 auto key_name = itr->name.GetString();
-                Value const& val = o[key_name];
+                Value const& val = itr->value;
                 auto hier_name=prefix.size() ? prefix + "." + key_name : key_name;
                 if(val.IsNull() || val.IsArray())
                     return;
@@ -251,7 +251,7 @@ void check_config_hierarchical(configurer::broker_t const& broker, Value const& 
             if(key_name == "log_level")
                 continue; // virtual attribute
             auto hier_name=prefix.size() ? prefix + "." + key_name : key_name;
-            Value const& val = node[key_name];
+            Value const& val = itr->value;
             if(val.IsNull() || val.IsArray())
                 continue;
             else if(val.IsObject()) {
@@ -341,15 +341,16 @@ void configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj) {
 void configurer::configure() {
     if(config_valid && root)
         for(auto* o : sc_core::sc_get_top_level_objects()) {
-            auto& val = root->document[o->name()];
-            if(!val.IsNull())
-                configure_sc_attribute_hierarchical(o, val);
+            auto member = root->document.FindMember(o->name());
+            if (member != root->document.MemberEnd() && !member->value.IsNull())
+                configure_sc_attribute_hierarchical(o, member->value);
         }
 }
 
 auto get_value_from_hierarchy(const std::string& hier_name, Value const& value) -> Value const& {
     size_t npos = hier_name.find_first_of('.');
-    auto& val = value[hier_name.substr(0, npos).c_str()];
+    auto member = value.FindMember(hier_name.substr(0, npos).c_str());
+    auto& val = member->value;
     if(val.IsNull() || npos == std::string::npos || !val.IsObject())
         return val;
     return get_value_from_hierarchy(hier_name.substr(npos + 1, hier_name.size()), val);
@@ -361,7 +362,8 @@ void configurer::set_configuration_value(sc_core::sc_attr_base* attr_base, sc_co
         name += ".";
         name += attr_base->name();
         size_t npos = name.find_first_of('.');
-        auto& val = get_value_from_hierarchy(name, root->document[name.substr(0, npos).c_str()]);
+        auto member = root->document.FindMember(name.substr(0, npos).c_str());
+        auto& val = get_value_from_hierarchy(name, member->value);
         if(!val.IsNull())
             try_set_value(attr_base, val);
     }
