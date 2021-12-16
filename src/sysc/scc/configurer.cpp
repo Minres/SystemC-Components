@@ -79,8 +79,8 @@ inline bool start_object(writer_type& writer, char const* key, bool started) {
 
 struct config_dumper {
     configurer::broker_t const& broker;
+#ifdef HAS_CCI
     std::unordered_map<std::string,std::vector<cci::cci_param_untyped_handle>> lut;
-
     config_dumper(configurer::broker_t const& broker):broker(broker){
         for(auto& h: broker.get_param_handles()){
             auto value = h.get_cci_value();
@@ -90,6 +90,9 @@ struct config_dumper {
             lut[basename].push_back(h);
         }
     }
+#else
+    config_dumper(configurer::broker_t const& broker):broker(broker){}
+#endif
 
     void dump_config(sc_core::sc_object* obj,  writer_type& writer) {
         auto obj_started=false;
@@ -262,12 +265,16 @@ void check_config_hierarchical(configurer::broker_t const& broker, Value const& 
             }
 #ifdef HAS_CCI
             else {
-                auto* obj = sc_core::sc_find_object(prefix.c_str());
-                auto* attr = obj->get_attribute(key_name);
-                if(!attr) {
-                    auto param_handle = broker.get_param_handle(hier_name);
-                    if(!param_handle.is_valid() && strcmp(key_name,SCC_LOG_LEVEL_PARAM_NAME)) {
-                        throw std::invalid_argument(hier_name);
+                auto pos = hier_name.rfind('.');
+                if(pos!=std::string::npos) {
+                    auto objname = hier_name.substr(0, pos);
+                    auto attrname = hier_name.substr(pos + 1);
+                    auto* obj = sc_core::sc_find_object(objname.c_str());
+                    if(obj && !obj->get_attribute(attrname.c_str())) {
+                        auto param_handle = broker.get_param_handle(hier_name);
+                        if(!param_handle.is_valid() && strcmp(key_name,SCC_LOG_LEVEL_PARAM_NAME)) {
+                            throw std::invalid_argument(hier_name);
+                        }
                     }
                 }
             }
@@ -309,9 +316,6 @@ configurer::configurer(const std::string& filename)
             SCCERR() << "Could not open input file " << filename;
         }
     }
-#ifdef WITH_SIM_PHASE_CALLBACKS
-    register_simulation_phase_callback(sc_core::sc_status::SC_END_OF_ELABORATION);
-#endif
 }
 
 configurer::~configurer(){}
@@ -369,7 +373,7 @@ void configurer::set_configuration_value(sc_core::sc_attr_base* attr_base, sc_co
     }
 }
 
-void configurer::end_of_elaboration_check()  {
+void configurer::config_check()  {
     try {
         if(root) check_config_hierarchical(cci_broker, root->document, "");
     } catch(std::domain_error& e) {

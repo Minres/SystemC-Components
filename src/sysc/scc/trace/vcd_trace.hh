@@ -37,12 +37,12 @@ inline void vcdEmitValueChange(FPTR os, std::string const& handle, unsigned bits
 }
 
 inline void vcdEmitValueChange32(FPTR os, std::string const& handle, unsigned bits, uint32_t val){
-    auto buf = fmt::format("b{:b} {}\n", val&((1ul<<bits)-1), handle);
+    auto buf = fmt::format("b{:b} {}\n", val&((1ull<<bits)-1), handle);
     FWRITE(buf.c_str(), 1, buf.size(), os);
 }
 
 inline void vcdEmitValueChange64(FPTR os, std::string const& handle, unsigned bits, uint64_t val){
-    auto buf = fmt::format("b{:b} {}\n", val&((1ul<<bits)-1), handle);
+    auto buf = fmt::format("b{:b} {}\n", val&((1ul<<std::min(63u,bits))-1), handle);
     FWRITE(buf.c_str(), 1, buf.size(), os);
 }
 

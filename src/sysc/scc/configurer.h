@@ -132,12 +132,10 @@ protected:
     bool config_valid{false};
     std::unique_ptr<ConfigHolder> root;
 
-    void end_of_elaboration_check() ;
-#ifdef WITH_SIM_PHASE_CALLBACKS
-    void simulation_phase_callback() override {end_of_elaboration_check();};
-#else
-    void end_of_elaboration() override {end_of_elaboration_check();};
-#endif
+    void config_check() ;
+    void before_end_of_elaboration() override {configure();}
+    void end_of_elaboration() override {configure();}
+    void start_of_simulation() override {config_check();};
 
 #ifdef HAS_CCI
     cci::cci_originator cci_originator;
