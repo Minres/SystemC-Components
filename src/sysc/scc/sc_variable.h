@@ -102,12 +102,9 @@ template <typename T> struct sc_variable : public sc_variable_b {
      * @brief value getter
      *
      */
-    T get() const { return value; }
-    /**
-     * @brief value getter
-     *
-     */
-    T operator()() const { return value; }
+    T get() const {
+        return value;
+    }
     /**
      * @brief bool conversion operator
      *
@@ -115,19 +112,10 @@ template <typename T> struct sc_variable : public sc_variable_b {
     operator bool() const { return value; }
 
     /**
-     * @brief rvalue conversion operator
+     * @brief cast operator
      *
      */
     operator T() const { return value; }
-    /**
-     * @brief lvalue conversion operator
-     *
-     */
-    operator T&() {
-        if(hndl)
-            hndl->notify_change();
-        return value;
-    }
     // assignment operator overload
     sc_variable& operator=(const T other) {
         value=other;
@@ -135,8 +123,81 @@ template <typename T> struct sc_variable : public sc_variable_b {
             hndl->notify_change();
         return *this;
     }
-    // arithmetic operator overloads
-    T operator+(const T other) const { return value+other; }
+    /**
+     * equality comparison
+     * @param other
+     * @return
+     */
+    bool operator==(T other) const{
+        return value==other;
+    }
+    /**
+     * inequality comparison
+     * @param other
+     * @return
+     */
+    bool operator!=(T other) const{
+        return value!=other;
+    }
+    //! overloaded prefix ++ operator
+    T operator++ () {
+       ++value;          // increment this object
+       if(hndl)
+           hndl->notify_change();
+       return value;
+    }
+
+    //! overloaded postfix ++ operator
+    T operator++( int ) {
+        auto orig = value;
+        ++value;
+        if(hndl)
+            hndl->notify_change();
+       return orig;
+    }
+    //! overloaded prefix -- operator
+    T operator-- () {
+       --value;          // increment this object
+       if(hndl)
+           hndl->notify_change();
+       return value;
+    }
+
+    //! overloaded postfix -- operator
+    T operator--( int ) {
+        auto orig = value;
+        --value;
+        if(hndl)
+            hndl->notify_change();
+       return orig;
+    }
+
+    //" arithmetic operator overloads
+    T operator+=(const T other) {
+        value+=other;
+        if(hndl)
+            hndl->notify_change();
+        return value;
+    }
+    T operator-=(const T other) {
+        value+=other;
+        if(hndl)
+            hndl->notify_change();
+        return value;
+    }
+    T operator*=(const T other) {
+        value*=other;
+        if(hndl)
+            hndl->notify_change();
+        return value;
+    }
+    T operator/=(const T other) {
+        value/=other;
+        if(hndl)
+            hndl->notify_change();
+        return value;
+    }
+    T operator+(const T other) const { return value-other; }
     T operator-(const T other) const { return value-other; }
     T operator*(const T other) const { return value*other; }
     T operator/(const T other) const { return value/other; }
@@ -201,18 +262,19 @@ template <> struct sc_variable<bool> : public sc_variable_b {
     }
     bool get() const { return value; }
     operator bool() const { return value; }
-    operator bool&() {
-        if(hndl)
-            hndl->notify_change();
-        return value;
-    }
     sc_variable& operator=(const bool other) {
         value=other;
         if(hndl)
             hndl->notify_change();
         return *this;
     }
-    void trace(sc_core::sc_trace_file* tf) const override {
+    bool operator==(bool other) const{
+        return value==other;
+    }
+    bool operator!=(bool other) const{
+        return value!=other;
+    }
+   void trace(sc_core::sc_trace_file* tf) const override {
         if(auto* obs = dynamic_cast<scc::trace_observer*>(tf))
             hndl = register_trace(obs, value, name());
         else

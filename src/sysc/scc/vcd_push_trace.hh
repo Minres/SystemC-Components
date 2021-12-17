@@ -144,7 +144,7 @@ private:
         virtual ~trace_entry(){}
     };
     std::deque<trace_entry> all_traces;
-    std::vector<trace_entry> active_traces;
+    std::vector<trace_entry*> active_traces;
     std::vector<trace::vcd_trace*> changed_traces;
     std::vector<trace::vcd_trace*> triggered_traces;
     bool initialized{false};
