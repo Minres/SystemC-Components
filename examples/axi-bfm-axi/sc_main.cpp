@@ -19,7 +19,7 @@ using namespace axi::pe;
 
 class testbench : public sc_core::sc_module {
 public:
-    using bus_cfg = axi::bfm::axi_cfg<32, 32, 0,0>;
+    using bus_cfg = axi::bfm::axi_cfg</*BUSWIDTH=*/32, /*ADDRWIDTH=*/32, /*IDWIDTH=*/1, /*USERWIDTH=*/0>;
     SC_HAS_PROCESS(testbench);
     sc_core::sc_time clk_period{10, sc_core::SC_NS};
     sc_core::sc_clock clk{"clk", clk_period, 0.5, sc_core::SC_ZERO_TIME, true};
