@@ -19,6 +19,7 @@
 
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <systemc>
+#include <tuple>
 
 namespace scc {
 /**
@@ -95,6 +96,8 @@ protected:
     time_stamp eos;
     sc_core::sc_time beat_delay, cycle_period;
     void beat();
+    long get_memory();
+    long max_memory{0};
 };
 
 } /* namespace scc */
