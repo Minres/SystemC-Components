@@ -1,6 +1,7 @@
 if(NOT USE_CWR_SYSTEMC)
 	add_subdirectory(ace-axi)
 	add_subdirectory(axi-axi)
+    add_subdirectory(axi-bfm-axi)
 endif()
 add_subdirectory(axi-pinlevel)
 add_subdirectory(scc-tlm_target_bfs)
