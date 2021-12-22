@@ -295,7 +295,6 @@ void vcd_push_trace_file::cycle(bool delta_cycle) {
             FPRINTF(vcd_out, "#{}\n", sc_core::sc_time_stamp()/1_ps);
             if(triggered_traces.size()){
                 auto end = std::unique(std::begin(triggered_traces), std::end(triggered_traces));
-                //triggered_traces.resize(std::distance(std::begin(triggered_traces), it));
                 for(auto it=triggered_traces.begin(); it!=end; ++it)
                     (*it)->record(vcd_out);
                 triggered_traces.clear();

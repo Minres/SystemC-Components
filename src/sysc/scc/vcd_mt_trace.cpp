@@ -34,8 +34,8 @@
 #include <stdexcept>
 #include <cmath>
 
-#define FPRINT(FP, FMTSTR)       FP->write(fmt::format(FMTSTR));
-#define FPRINTF(FP, FMTSTR, ...) FP->write(fmt::format(FMTSTR, __VA_ARGS__));
+#define FPRINT(FP, FMTSTR)       FP->write_single(fmt::format(FMTSTR));
+#define FPRINTF(FP, FMTSTR, ...) FP->write_single(fmt::format(FMTSTR, __VA_ARGS__));
 
 namespace scc {
 /*******************************************************************************************************
@@ -169,8 +169,8 @@ DECL_REGISTER_METHOD_A( sc_dt::sc_lv_base )
 #undef DECL_REGISTER_METHOD_C
 
 void vcd_mt_trace_file::trace_entry::notify_change() {
-    if(!trc->is_alias)
-        that->triggered_traces.push_back(this);
+    if(!trc->is_alias && compare_and_update(trc))
+        that->triggered_traces.push_back(trc);
 }
 
 std::string vcd_mt_trace_file::obtain_name() {
@@ -279,30 +279,29 @@ void vcd_mt_trace_file::cycle(bool delta_cycle) {
     if(!initialized) {
         init();
         initialized=true;
-        FPRINT(vcd_out, "$enddefinitions  $end\n\n$dumpvars\n");
-        for(auto& e: all_traces)
-            if(!e.trc->is_alias) {
-                e.compare_and_update(e.trc);
-                e.trc->record(vcd_out.get());
-            }
-        FPRINT(vcd_out, "$end\n\n");
+        {
+            scc::trace::gz_writer::lock_type lock(vcd_out->writer_mtx);
+            vcd_out->write("$enddefinitions  $end\n\n$dumpvars\n");
+            for(auto& e: all_traces)
+                if(!e.trc->is_alias) {
+                    e.compare_and_update(e.trc);
+                    e.trc->record(vcd_out.get());
+                }
+            vcd_out->write("$end\n\n");
+        }
     } else {
         if(check_enabled && !check_enabled()) return;
-        if(changed_traces.size()){
-            res.get();
-            changed_traces.clear();
-        }
         for(auto& e: active_traces) {
             if(e.compare_and_update(e.trc))
                 changed_traces.push_back(e.trc);
         }
         if(triggered_traces.size() || changed_traces.size()) {
-            FPRINTF(vcd_out, "#{}\n", sc_core::sc_time_stamp()/1_ps);
+            scc::trace::gz_writer::lock_type lock(vcd_out->writer_mtx);
+            vcd_out->write(fmt::format("#{}\n", sc_core::sc_time_stamp()/1_ps));
             if(triggered_traces.size()){
-                auto it = std::unique(std::begin(triggered_traces), std::end(triggered_traces));
-                triggered_traces.resize(std::distance(std::begin(triggered_traces), it));
-                for(auto t: triggered_traces)
-                    t->trc->record(vcd_out.get());
+                auto end = std::unique(std::begin(triggered_traces), std::end(triggered_traces));
+                for(auto it=triggered_traces.begin(); it!=end; ++it)
+                    (*it)->record(vcd_out.get());
                 triggered_traces.clear();
             }
             if(changed_traces.size()){
