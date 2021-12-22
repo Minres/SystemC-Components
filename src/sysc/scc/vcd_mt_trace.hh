@@ -25,7 +25,6 @@
 #include <deque>
 #include <vector>
 #include <functional>
-#include <zlib.h>
 
 namespace sc_core {
 class sc_time;
@@ -33,6 +32,7 @@ class sc_time;
 namespace scc {
 namespace trace {
 class vcd_trace;
+class gz_writer;
 }
 struct vcd_mt_trace_file : public sc_core::sc_trace_file, public trace_observer {
 
@@ -134,8 +134,7 @@ private:
     std::string prune_name(std::string const& name);
     std::string obtain_name();
     std::function<bool()> check_enabled;
-
-    gzFile vcd_out{nullptr};
+    std::unique_ptr<trace::gz_writer> vcd_out{nullptr};
     struct trace_entry: public trace_handle {
         bool (*compare_and_update)(trace::vcd_trace*);
         trace::vcd_trace* trc;
@@ -153,7 +152,6 @@ private:
     bool initialized{false};
     unsigned vcd_name_index{0};
     std::string name;
-    util::thread_pool tp;
     std::future<bool> res;
 };
 
