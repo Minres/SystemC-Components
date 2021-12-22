@@ -399,7 +399,7 @@ void fst_trace_file::cycle(bool delta_cycle) {
             if(triggered_traces.size()){
                 auto it = std::unique(std::begin(triggered_traces), std::end(triggered_traces));
                 triggered_traces.resize(std::distance(std::begin(triggered_traces), it));
-                for(auto t: changed_traces)
+                for(auto t: triggered_traces)
                     t->record(m_fst);
                 triggered_traces.clear();
             }
