@@ -9,11 +9,15 @@
 #define _AXI_BFM_TARGET_H_
 
 #include <axi/axi_tlm.h>
+#include <axi/fsm/base.h>
+#include <axi/fsm/protocol_fsm.h>
 #include <axi/signal_if.h>
 #include <tlm/scc/tlm_mm.h>
 #include <systemc>
 namespace axi {
 namespace bfm {
+
+using namespace axi::fsm;
 
 template<typename CFG>
 struct axi4_target: public sc_core::sc_module
