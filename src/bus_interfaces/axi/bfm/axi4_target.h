@@ -9,7 +9,7 @@
 #define _AXI_BFM_TARGET_H_
 
 #include <axi/axi_tlm.h>
-#include <axi/bfm/axi_signal_if.h>
+#include <axi/signal_if.h>
 #include <tlm/scc/tlm_mm.h>
 #include <systemc>
 namespace axi {

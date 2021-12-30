@@ -9,9 +9,9 @@
 #define _AXI_BFM_INITIATOR_H_
 
 #include <axi/axi_tlm.h>
-#include <axi/bfm/axi_signal_if.h>
 #include <axi/fsm/base.h>
 #include <axi/fsm/protocol_fsm.h>
+#include <axi/signal_if.h>
 #include <tlm_utils/peq_with_cb_and_phase.h>
 #include <systemc>
 namespace axi {
