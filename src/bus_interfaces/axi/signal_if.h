@@ -59,6 +59,10 @@ struct signal_types {
     using s2m_opt_t = sc_core::sc_signal<T>;
 };
 
+
+template<bool Cond, class T, class S> struct select_if {typedef S type;};
+template<class T, class S> struct select_if<true, T, S> { typedef T type; };
+
 template<unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1>
 struct axi_cfg {
     static_assert(BUSWDTH>0);
@@ -69,7 +73,7 @@ struct axi_cfg {
     constexpr static unsigned int ADDRWIDTH = ADDRWDTH;
     constexpr static unsigned int IDWIDTH = IDWDTH;
     constexpr static unsigned int USERWIDTH = USERWDTH;
-    using data_t=sc_dt::sc_uint<BUSWIDTH>;
+    using data_t = typename select_if<BUSWDTH<=64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
 };
 
 

@@ -127,7 +127,6 @@ inline target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::target(
 template <unsigned int DATA_WIDTH, unsigned int ADDR_WIDTH, unsigned int ID_WIDTH, unsigned int USER_WIDTH>
 inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::clk_cb() {
     sc_core::sc_time delay = sc_core::SC_ZERO_TIME;
-    sc_dt::sc_biguint<DATA_WIDTH> write_data{0};
     if(clk_i.event()) {
         clk_cnt++;
         if(rchannel_pending_rsp.size()){

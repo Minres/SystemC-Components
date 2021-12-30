@@ -141,7 +141,7 @@ inline void axi::bfm::write_aw(tlm::tlm_generic_payload &trans, aw_ch<CFG, maste
 
 template<typename CFG>
 inline void axi::bfm::write_wdata(tlm::tlm_generic_payload &trans, wdata_ch<CFG, master_types> &wdata, unsigned beat, bool last) {
-    sc_dt::sc_biguint<CFG::BUSWIDTH> data{0};
+    typename CFG::data_t data{0};
     sc_dt::sc_uint<CFG::BUSWIDTH / 8> strb{std::numeric_limits<unsigned>::max()};
     auto ext = trans.get_extension<axi::axi4_extension>();
     auto size = 1u<<ext->get_size();

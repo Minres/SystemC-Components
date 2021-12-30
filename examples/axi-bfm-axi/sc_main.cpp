@@ -28,7 +28,7 @@ public:
     sc_core::sc_signal<bool> rst{"rst"};
     axi::axi_initiator_socket<bus_cfg::BUSWIDTH> intor{"intor"};
     axi::scv::axi_recorder_module<bus_cfg::BUSWIDTH> intor_rec{"intor_rec"};
-    axi::bfm::axi4_initiator<bus_cfg> intor_bfm{"into_bfm"};
+    axi::bfm::axi4_initiator<bus_cfg> intor_bfm{"intor_bfm"};
 
     axi::aw_ch<bus_cfg, axi::signal_types> aw;
     axi::wdata_ch<bus_cfg, axi::signal_types> wdata;

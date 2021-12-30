@@ -142,7 +142,7 @@ inline void axi::bfm::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
         active_resp_beat[tlm::TLM_READ_COMMAND]=fsm_hndl;
         auto size = axi::get_burst_size(*fsm_hndl->trans);
         auto bptr = fsm_hndl->trans->get_data_ptr()+fsm_hndl->beat_count*size;
-        sc_dt::sc_biguint<CFG::BUSWIDTH> data{0};
+        typename CFG::data_t data{0};
         for(size_t i=0; i<size; ++i) {
             data(i*8+7, i*8) = *(bptr+i);
         }
@@ -166,7 +166,7 @@ inline void axi::bfm::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
         switch(fsm_hndl->trans->get_command()){
         case tlm::TLM_READ_COMMAND: {
             auto bptr = fsm_hndl->trans->get_data_ptr()+fsm_hndl->beat_count*size;
-            sc_dt::sc_biguint<CFG::BUSWIDTH> data{0};
+            typename CFG::data_t data{0};
             for(size_t i=0; i<size; ++i) {
                 data(i*8+7, i*8) = *(bptr+i);
             }
@@ -205,13 +205,13 @@ inline void axi::bfm::axi4_target<CFG>::ar_t() {
     auto data_len = (1<<arsize)*(arlen+1);
     while(true) {
         wait(this->ar_valid.posedge_event() | clk_i.negedge_event());
-        if(this->ar_valid.event() || (!active_req_beat[tlm::TLM_READ_COMMAND] && this->ar_valid.read())) {
+        if(this->ar_valid.read()) {
             arid=this->ar_id.read();
             arlen=this->ar_len.read();
             arsize = this->ar_size.read();
             data_len = (1<<arsize)*(arlen+1);
             auto gp =  tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(data_len);
-            gp->set_address(this->aw_addr.read());
+            gp->set_address(this->ar_addr.read());
             gp->set_command(tlm::TLM_READ_COMMAND);
             axi::axi4_extension* ext;
             gp->get_extension(ext);
