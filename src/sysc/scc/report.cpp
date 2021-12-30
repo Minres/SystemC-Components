@@ -241,6 +241,7 @@ inline void log2logger(spdlog::logger& logger, scc::log lvl, const string& msg) 
 
 void report_handler(const sc_report& rep, const sc_actions& actions) {
     thread_local bool sc_stop_called = false;
+    if(actions & SC_DO_NOTHING) return;
     if(rep.get_severity() == sc_core::SC_INFO || !log_cfg.report_only_first_error ||
        sc_report_handler::get_count(SC_ERROR) < 2) {
         if((actions & SC_DISPLAY) && (!log_cfg.file_logger || get_verbosity(rep) < SC_HIGH))
