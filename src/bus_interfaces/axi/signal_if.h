@@ -21,6 +21,44 @@
 
 namespace axi {
 
+template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
+using sc_in_opt = sc_core::sc_port<sc_core::sc_signal_in_if<TYPE>, N, sc_core::SC_ZERO_OR_MORE_BOUND>;
+template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
+using sc_out_opt = sc_core::sc_port<sc_core::sc_signal_write_if<TYPE>, N, sc_core::SC_ZERO_OR_MORE_BOUND>;
+
+struct master_types {
+    template <typename T>
+    using m2s_t = sc_core::sc_out<T>;
+    template <typename T>
+    using s2m_t = sc_core::sc_in<T>;
+    template <typename T>
+    using m2s_opt_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T>
+    using s2m_opt_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+};
+
+struct slave_types {
+    template <typename T>
+    using m2s_t = sc_core::sc_in<T>;
+    template <typename T>
+    using s2m_t = sc_core::sc_out<T>;
+    template <typename T>
+    using m2s_opt_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T>
+    using s2m_opt_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+};
+
+struct signal_types {
+    template <typename T>
+    using m2s_t = sc_core::sc_signal<T>;
+    template <typename T>
+    using s2m_t = sc_core::sc_signal<T>;
+    template <typename T>
+    using m2s_opt_t = sc_core::sc_signal<T>;
+    template <typename T>
+    using s2m_opt_t = sc_core::sc_signal<T>;
+};
+
 template<unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1>
 struct axi_cfg {
     static_assert(BUSWDTH>0);
@@ -31,65 +69,45 @@ struct axi_cfg {
     constexpr static unsigned int ADDRWIDTH = ADDRWDTH;
     constexpr static unsigned int IDWIDTH = IDWDTH;
     constexpr static unsigned int USERWIDTH = USERWDTH;
+    using data_t=sc_dt::sc_uint<BUSWIDTH>;
 };
 
-template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
-using sc_in_opt = sc_core::sc_port<sc_core::sc_signal_in_if<TYPE>, N, sc_core::SC_ZERO_OR_MORE_BOUND>;
-template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
-using sc_out_opt = sc_core::sc_port<sc_core::sc_signal_write_if<TYPE>, N, sc_core::SC_ZERO_OR_MORE_BOUND>;
 
-struct master_types {
-    template <class T>
-    using m2s_t = sc_core::sc_out<T>;
-    template <class T>
-    using s2m_t = sc_core::sc_in<T>;
-    template <class T>
-    using m2s_opt_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
-    template <class T>
-    using s2m_opt_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
-};
+inline std::string concat(const char* prefix, const char* name){ return std::string(prefix)+name; }
 
-struct slave_types {
-    template <class T>
-    using m2s_t = sc_core::sc_in<T>;
-    template <class T>
-    using s2m_t = sc_core::sc_out<T>;
-    template <class T>
-    using m2s_opt_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
-    template <class T>
-    using s2m_opt_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
-};
-
-struct signal_types {
-    template <class T>
-    using m2s_t = sc_core::sc_signal<T>;
-    template <class T>
-    using s2m_t = sc_core::sc_signal<T>;
-    template <class T>
-    using m2s_opt_t = sc_core::sc_signal<T>;
-    template <class T>
-    using s2m_opt_t = sc_core::sc_signal<T>;
-};
-
-inline std::string concatenate(const char* prefix, const char* name){
-    if(prefix) return std::string(prefix)+name; else return std::string(name);
-}
 //! Write address channel signals
-template<typename CFG, typename TYPES=master_types, const char* PREFIX=nullptr>
+template<typename CFG, typename TYPES=master_types>
 struct aw_ch {
-    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::IDWIDTH>>       aw_id{concatenate(PREFIX, "aw_id").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>>     aw_addr{concatenate(PREFIX, "aw_addr").c_str()};
-    typename TYPES::template s2m_t<bool>                               aw_ready{concatenate(PREFIX, "aw_ready").c_str()};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<2>>              aw_lock{concatenate(PREFIX, "aw_lock").c_str()}; // only AXI3
-    typename TYPES::template m2s_t<bool>                               aw_valid{concatenate(PREFIX, "aw_valid").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<3>>                  aw_prot{concatenate(PREFIX, "aw_prot").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<3>>                  aw_size{concatenate(PREFIX, "aw_size").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<4>>                  aw_cache{concatenate(PREFIX, "aw_cache").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<2>>                  aw_burst{concatenate(PREFIX, "aw_burst").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<4>>                  aw_qos{concatenate(PREFIX, "aw_qos").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<4>>                  aw_region{concatenate(PREFIX, "aw_region").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<8>>                  aw_len{concatenate(PREFIX, "aw_len").c_str()};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> aw_user{concatenate(PREFIX, "aw_user").c_str()};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::IDWIDTH>>       aw_id{"aw_id"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>>     aw_addr{"addr"};
+    typename TYPES::template s2m_t<bool>                               aw_ready{"aw_ready"};
+    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<2>>              aw_lock{"aw_lock"}; // only AXI3
+    typename TYPES::template m2s_t<bool>                               aw_valid{"aw_valid"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<3>>                  aw_prot{"aw_prot"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<3>>                  aw_size{"aw_size"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<4>>                  aw_cache{"aw_cache"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<2>>                  aw_burst{"aw_burst"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<4>>                  aw_qos{"aw_qos"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<4>>                  aw_region{"aw_region"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<8>>                  aw_len{"aw_len"};
+    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> aw_user{"aw_user"};
+
+    aw_ch() = default;
+    aw_ch(const char* prefix)
+    : aw_id{concat(prefix, "aw_id").c_str()}
+    , aw_addr{concat(prefix,"aw_addr").c_str()}
+    , aw_ready{concat(prefix,"aw_ready").c_str()}
+    , aw_lock{concat(prefix,"aw_lock").c_str()}
+    , aw_valid{concat(prefix,"aw_valid").c_str()}
+    , aw_prot{concat(prefix,"aw_prot").c_str()}
+    , aw_size{concat(prefix,"aw_size").c_str()}
+    , aw_cache{concat(prefix,"aw_cache").c_str()}
+    , aw_burst{concat(prefix,"aw_burst").c_str()}
+    , aw_qos{concat(prefix,"aw_qos").c_str()}
+    , aw_region{concat(prefix,"aw_region").c_str()}
+    , aw_len{concat(prefix,"aw_len").c_str()}
+    , aw_user{concat(prefix,"aw_user").c_str()}
+    {}
 
     template<typename OTYPES>
     void bind_aw(aw_ch<CFG, OTYPES>& o){
@@ -110,18 +128,29 @@ struct aw_ch {
 };
 
 //! write data channel signals
-template<typename CFG, typename TYPES=master_types, const char* PREFIX=nullptr>
+template<typename CFG, typename TYPES=master_types>
 struct wdata_ch {
-    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::IDWIDTH>>       w_id{concatenate(PREFIX, "w_id").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_biguint<CFG::BUSWIDTH>>   w_data{concatenate(PREFIX, "w_data").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::BUSWIDTH / 8>>  w_strb{concatenate(PREFIX, "w_strb").c_str()};
-    typename TYPES::template m2s_t<bool>                               w_last{concatenate(PREFIX, "w_last").c_str()};
-    typename TYPES::template m2s_t<bool>                               w_valid{concatenate(PREFIX, "w_valid").c_str()};
-    typename TYPES::template s2m_t<bool>                               w_ready{concatenate(PREFIX, "w_ready").c_str()};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> w_user{concatenate(PREFIX, "w_user").c_str()};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::IDWIDTH>>       w_id{"w_id"};
+    typename TYPES::template m2s_t<typename CFG::data_t>               w_data{"w_data"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::BUSWIDTH / 8>>  w_strb{"w_strb"};
+    typename TYPES::template m2s_t<bool>                               w_last{"w_last"};
+    typename TYPES::template m2s_t<bool>                               w_valid{"w_valid"};
+    typename TYPES::template s2m_t<bool>                               w_ready{"w_ready"};
+    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> w_user{"w_user"};
+
+    wdata_ch() = default;
+    wdata_ch(const char* prefix)
+    : w_id{concat(prefix, "w_id").c_str()}
+    , w_data{concat(prefix, "w_data").c_str()}
+    , w_strb{concat(prefix, "w_strb").c_str()}
+    , w_last{concat(prefix, "w_last").c_str()}
+    , w_valid{concat(prefix, "w_valid").c_str()}
+    , w_ready{concat(prefix, "w_ready").c_str()}
+    , w_user{concat(prefix, "w_user").c_str()}
+    {}
 
     template<typename OTYPES>
-    void bind_wdata(wdata_ch<CFG, OTYPES>& o){
+    void bind_w(wdata_ch<CFG, OTYPES>& o){
         w_id.bind(o.w_id);
         w_data.bind(o.w_data);
         w_strb.bind(o.w_strb);
@@ -133,13 +162,22 @@ struct wdata_ch {
 };
 
 //! write response channel signals
-template<typename CFG, typename TYPES=master_types, const char* PREFIX=nullptr>
+template<typename CFG, typename TYPES=master_types>
 struct b_ch {
-    typename TYPES::template s2m_t<bool>                               b_valid{concatenate(PREFIX, "b_valid").c_str()};
-    typename TYPES::template m2s_t<bool>                               b_ready{concatenate(PREFIX, "b_ready").c_str()};
-    typename TYPES::template s2m_t<sc_dt::sc_uint<CFG::IDWIDTH>>       b_id{concatenate(PREFIX, "b_id").c_str()};
-    typename TYPES::template s2m_t<sc_dt::sc_uint<2>>                  b_resp{concatenate(PREFIX, "b_resp").c_str()};
-    typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> b_user{concatenate(PREFIX, "b_user").c_str()};
+    typename TYPES::template s2m_t<bool>                               b_valid{"b_valid"};
+    typename TYPES::template m2s_t<bool>                               b_ready{"b_ready"};
+    typename TYPES::template s2m_t<sc_dt::sc_uint<CFG::IDWIDTH>>       b_id{"b_id"};
+    typename TYPES::template s2m_t<sc_dt::sc_uint<2>>                  b_resp{"b_resp"};
+    typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> b_user{"b_user"};
+
+    b_ch() = default;
+    b_ch(const char* prefix)
+    : b_valid{concat(prefix, "b_valid").c_str()}
+    , b_ready{concat(prefix, "b_ready").c_str()}
+    , b_id{concat(prefix, "b_id").c_str()}
+    , b_resp{concat(prefix, "b_resp").c_str()}
+    , b_user{concat(prefix, "b_user").c_str()}
+    {}
 
     template<typename OTYPES>
     void bind_b(b_ch<CFG, OTYPES>& o){
@@ -152,21 +190,38 @@ struct b_ch {
 };
 
 //! read address channel signals
-template<typename CFG, typename TYPES=master_types, const char* PREFIX=nullptr>
+template<typename CFG, typename TYPES=master_types>
 struct ar_ch {
-    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::IDWIDTH>>       ar_id{concatenate(PREFIX, "ar_id").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>>     ar_addr{concatenate(PREFIX, "ar_addr").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<8>>                  ar_len{concatenate(PREFIX, "ar_len").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<3>>                  ar_size{concatenate(PREFIX, "ar_size").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<2>>                  ar_burst{concatenate(PREFIX, "ar_burst").c_str()};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<2>>              ar_lock{concatenate(PREFIX, "ar_lock").c_str()}; // only AXI3
-    typename TYPES::template m2s_t<sc_dt::sc_uint<4>>                  ar_cache{concatenate(PREFIX, "ar_cache").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<3>>                  ar_prot{concatenate(PREFIX, "ar_prot").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<4>>                  ar_qos{concatenate(PREFIX, "ar_qos").c_str()};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<4>>                  ar_region{concatenate(PREFIX, "ar_region").c_str()};
-    typename TYPES::template m2s_t<bool>                               ar_valid{concatenate(PREFIX, "ar_valid").c_str()};
-    typename TYPES::template s2m_t<bool>                               ar_ready{concatenate(PREFIX, "ar_ready").c_str()};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> ar_user{concatenate(PREFIX, "ar_user").c_str()};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::IDWIDTH>>       ar_id{"ar_id"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>>     ar_addr{"ar_addr"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<8>>                  ar_len{"ar_len"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<3>>                  ar_size{"ar_size"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<2>>                  ar_burst{"ar_burst"};
+    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<2>>              ar_lock{"ar_lock"}; // only AXI3
+    typename TYPES::template m2s_t<sc_dt::sc_uint<4>>                  ar_cache{"ar_cache"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<3>>                  ar_prot{"ar_prot"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<4>>                  ar_qos{"ar_qos"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<4>>                  ar_region{"ar_region"};
+    typename TYPES::template m2s_t<bool>                               ar_valid{"ar_valid"};
+    typename TYPES::template s2m_t<bool>                               ar_ready{"ar_ready"};
+    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> ar_user{"ar_user"};
+
+    ar_ch() = default;
+    ar_ch(const char* prefix)
+    : ar_id{concat(prefix, "ar_id").c_str()}
+    , ar_addr{concat(prefix, "ar_addr").c_str()}
+    , ar_len{concat(prefix, "ar_len").c_str()}
+    , ar_size{concat(prefix, "ar_size").c_str()}
+    , ar_burst{concat(prefix, "ar_burst").c_str()}
+    , ar_lock{concat(prefix, "ar_lock").c_str()} // only AXI3
+    , ar_cache{concat(prefix, "ar_cache").c_str()}
+    , ar_prot{concat(prefix, "ar_prot").c_str()}
+    , ar_qos{concat(prefix, "ar_qos").c_str()}
+    , ar_region{concat(prefix, "ar_region").c_str()}
+    , ar_valid{concat(prefix, "ar_valid").c_str()}
+    , ar_ready{concat(prefix, "ar_ready").c_str()}
+    , ar_user{concat(prefix, "ar_user").c_str()}
+   {}
 
     template<typename OTYPES>
     void bind_ar(ar_ch<CFG, OTYPES>& o){
@@ -187,18 +242,29 @@ struct ar_ch {
 };
 
 //! Read data channel signals
-template<typename CFG, typename TYPES=master_types, const char* PREFIX=nullptr>
+template<typename CFG, typename TYPES=master_types>
 struct rresp_ch {
-    typename TYPES::template s2m_t<sc_dt::sc_uint<CFG::IDWIDTH>>       r_id{concatenate(PREFIX, "r_id").c_str()};
-    typename TYPES::template s2m_t<sc_dt::sc_biguint<CFG::BUSWIDTH>>   r_data{concatenate(PREFIX, "r_data").c_str()};
-    typename TYPES::template s2m_t<sc_dt::sc_uint<2>>                  r_resp{concatenate(PREFIX, "r_resp").c_str()};
-    typename TYPES::template s2m_t<bool>                               r_last{concatenate(PREFIX, "r_last").c_str()};
-    typename TYPES::template s2m_t<bool>                               r_valid{concatenate(PREFIX, "r_valid").c_str()};
-    typename TYPES::template m2s_t<bool>                               r_ready{concatenate(PREFIX, "r_ready").c_str()};
-    typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> r_user{concatenate(PREFIX, "r_user").c_str()};
+    typename TYPES::template s2m_t<sc_dt::sc_uint<CFG::IDWIDTH>>       r_id{"r_id"};
+    typename TYPES::template s2m_t<typename CFG::data_t>               r_data{"r_data"};
+    typename TYPES::template s2m_t<sc_dt::sc_uint<2>>                  r_resp{"r_resp"};
+    typename TYPES::template s2m_t<bool>                               r_last{"r_last"};
+    typename TYPES::template s2m_t<bool>                               r_valid{"r_valid"};
+    typename TYPES::template m2s_t<bool>                               r_ready{"r_ready"};
+    typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> r_user{"r_user"};
+
+    rresp_ch() = default;
+    rresp_ch(const char* prefix)
+    : r_id{concat(prefix, "r_id").c_str()}
+    , r_data{concat(prefix, "r_data").c_str()}
+    , r_resp{concat(prefix, "r_resp").c_str()}
+    , r_last{concat(prefix, "r_last").c_str()}
+    , r_valid{concat(prefix, "r_valid").c_str()}
+    , r_ready{concat(prefix, "r_ready").c_str()}
+    , r_user{concat(prefix, "r_user").c_str()}
+    {}
 
     template<typename OTYPES>
-    void bind_rresp(rresp_ch<CFG, OTYPES>& o){
+    void bind_r(rresp_ch<CFG, OTYPES>& o){
         r_id.bind(o.r_id);
         r_data.bind(o.r_data);
         r_resp.bind(o.r_resp);

@@ -66,16 +66,16 @@ public:
         intor_rec.isckt(intor_bfm.tsckt);
         // bfm to signals
         intor_bfm.bind_aw(aw);
-        intor_bfm.bind_wdata(wdata);
+        intor_bfm.bind_w(wdata);
         intor_bfm.bind_b(b);
         intor_bfm.bind_ar(ar);
-        intor_bfm.bind_rresp(rresp);
+        intor_bfm.bind_r(rresp);
         // signals to bfm
         tgt_bfm.bind_aw(aw);
-        tgt_bfm.bind_wdata(wdata);
+        tgt_bfm.bind_w(wdata);
         tgt_bfm.bind_b(b);
         tgt_bfm.bind_ar(ar);
-        tgt_bfm.bind_rresp(rresp);
+        tgt_bfm.bind_r(rresp);
         // bfm to recorder
         tgt_bfm.isckt(tgt_rec.tsckt);
         // recorder to target
