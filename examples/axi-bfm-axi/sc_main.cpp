@@ -12,6 +12,8 @@
 #include <axi/scv/recorder_modules.h>
 #include <axi/pe/axi_initiator.h>
 #include <axi/pe/simple_target.h>
+#include <csetjmp>
+#include <csignal>
 
 using namespace sc_core;
 using namespace axi;
@@ -19,8 +21,8 @@ using namespace axi::pe;
 
 class testbench : public sc_core::sc_module {
 public:
-    using bus_cfg = axi::bfm::axi_cfg</*BUSWIDTH=*/32, /*ADDRWIDTH=*/32, /*IDWIDTH=*/1, /*USERWIDTH=*/0>;
-    SC_HAS_PROCESS(testbench);
+    using bus_cfg = axi::bfm::axi_cfg</*BUSWIDTH=*/32, /*ADDRWIDTH=*/32, /*IDWIDTH=*/4, /*USERWIDTH=*/0>;
+
     sc_core::sc_time clk_period{10, sc_core::SC_NS};
     sc_core::sc_clock clk{"clk", clk_period, 0.5, sc_core::SC_ZERO_TIME, true};
     sc_core::sc_signal<bool> rst{"rst"};
@@ -30,7 +32,6 @@ public:
     sc_core::sc_signal<sc_dt::sc_uint<bus_cfg::IDWIDTH>>       aw_id{"aw_id"};
     sc_core::sc_signal<sc_dt::sc_uint<bus_cfg::ADDRWIDTH>>     aw_addr{"aw_addr"};
     sc_core::sc_signal<bool>                                   aw_ready{"aw_ready"};
-    sc_core::sc_signal<bool>                                   aw_lock{"aw_lock"};
     sc_core::sc_signal<bool>                                   aw_valid{"aw_valid"};
     sc_core::sc_signal<sc_dt::sc_uint<3>>                      aw_prot{"aw_prot"};
     sc_core::sc_signal<sc_dt::sc_uint<3>>                      aw_size{"aw_size"};
@@ -44,6 +45,7 @@ public:
     sc_core::sc_signal<bool>                                   w_last{"w_last"};
     sc_core::sc_signal<bool>                                   w_valid{"w_valid"};
     sc_core::sc_signal<bool>                                   w_ready{"w_ready"};
+    sc_core::sc_signal<sc_dt::sc_uint<bus_cfg::IDWIDTH>>       w_id{"w_id"};
     sc_core::sc_signal<bool>                                   b_valid{"b_valid"};
     sc_core::sc_signal<bool>                                   b_ready{"b_ready"};
     sc_core::sc_signal<sc_dt::sc_uint<bus_cfg::IDWIDTH>>       b_id{"b_id"};
@@ -53,7 +55,6 @@ public:
     sc_core::sc_signal<sc_dt::sc_uint<8>>                      ar_len{"ar_len"};
     sc_core::sc_signal<sc_dt::sc_uint<3>>                      ar_size{"ar_size"};
     sc_core::sc_signal<sc_dt::sc_uint<2>>                      ar_burst{"ar_burst"};
-    sc_core::sc_signal<bool>                                   ar_lock{"ar_lock"};
     sc_core::sc_signal<sc_dt::sc_uint<4>>                      ar_cache{"ar_cache"};
     sc_core::sc_signal<sc_dt::sc_uint<3>>                      ar_prot{"ar_prot"};
     sc_core::sc_signal<sc_dt::sc_uint<4>>                      ar_qos{"ar_qos"};
@@ -75,18 +76,21 @@ private:
     axi::pe::axi_initiator<bus_cfg::BUSWIDTH> intor_pe;
     axi::pe::simple_target<bus_cfg::BUSWIDTH> tgt_pe;
     unsigned id{0};
-    unsigned int StartAddr{0};
+    unsigned int StartAddr{0x20};
     unsigned int ResetCycles{10};
     unsigned int BurstLengthByte{16};
     unsigned int NumberOfIterations{1};
 
 public:
+    SC_HAS_PROCESS(testbench);
     testbench(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm)
     , intor_pe("intor_pe", intor)
     , tgt_pe("tgt_pe", tgt) {
         SC_THREAD(run);
         intor_pe.clk_i(clk);
+        intor_bfm.clk_i(clk);
+        tgt_bfm.clk_i(clk);
         tgt_pe.clk_i(clk);
         // pe socket to recorder
         intor(intor_rec.tsckt);
@@ -96,7 +100,6 @@ public:
         intor_bfm.aw_id(aw_id);
         intor_bfm.aw_addr(aw_addr);
         intor_bfm.aw_ready(aw_ready);
-        intor_bfm.aw_lock(aw_lock);
         intor_bfm.aw_valid(aw_valid);
         intor_bfm.aw_prot(aw_prot);
         intor_bfm.aw_size(aw_size);
@@ -109,6 +112,7 @@ public:
         intor_bfm.w_data(w_data);
         intor_bfm.w_strb(w_strb);
         intor_bfm.w_last(w_last);
+        intor_bfm.w_id(w_id);
         intor_bfm.w_valid(w_valid);
         intor_bfm.w_ready(w_ready);
         //intor_bfm.w_user(w_user);
@@ -122,7 +126,6 @@ public:
         intor_bfm.ar_len(ar_len);
         intor_bfm.ar_size(ar_size);
         intor_bfm.ar_burst(ar_burst);
-        intor_bfm.ar_lock(ar_lock);
         intor_bfm.ar_cache(ar_cache);
         intor_bfm.ar_prot(ar_prot);
         intor_bfm.ar_qos(ar_qos);
@@ -141,7 +144,6 @@ public:
         tgt_bfm.aw_id(aw_id);
         tgt_bfm.aw_addr(aw_addr);
         tgt_bfm.aw_ready(aw_ready);
-        tgt_bfm.aw_lock(aw_lock);
         tgt_bfm.aw_valid(aw_valid);
         tgt_bfm.aw_prot(aw_prot);
         tgt_bfm.aw_size(aw_size);
@@ -154,6 +156,7 @@ public:
         tgt_bfm.w_data(w_data);
         tgt_bfm.w_strb(w_strb);
         tgt_bfm.w_last(w_last);
+        tgt_bfm.w_id(w_id);
         tgt_bfm.w_valid(w_valid);
         tgt_bfm.w_ready(w_ready);
         //tgt_bfm.w_user(w_user);
@@ -167,7 +170,6 @@ public:
         tgt_bfm.ar_len(ar_len);
         tgt_bfm.ar_size(ar_size);
         tgt_bfm.ar_burst(ar_burst);
-        tgt_bfm.ar_lock(ar_lock);
         tgt_bfm.ar_cache(ar_cache);
         tgt_bfm.ar_prot(ar_prot);
         tgt_bfm.ar_qos(ar_qos);
@@ -189,7 +191,7 @@ public:
     }
 
     tlm::tlm_generic_payload* prepare_trans(size_t len) {
-        auto trans = tlm::scc::tlm_mm<tlm::tlm_base_protocol_types, false>::get().allocate<axi::axi4_extension>();
+        auto trans = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(len);
         tlm::scc::setId(*trans, id++);
         auto ext = trans->get_extension<axi::axi4_extension>();
         trans->set_data_length(len);
@@ -203,21 +205,24 @@ public:
         return trans;
     }
 
+    inline void randomize(tlm::tlm_generic_payload* gp){
+        for(auto i=0U; i<gp->get_data_length(); ++i)
+            *(gp->get_data_ptr()+i)=scc::MT19937::uniform();
+    }
     void run() {
         rst.write(false);
         for(size_t i = 0; i < ResetCycles; ++i)
             wait(clk.posedge_event());
         rst.write(true);
         wait(clk.posedge_event());
-        std::array<uint8_t, 256> data;
         wait(clk.posedge_event());
         for(int i = 0; i < NumberOfIterations; ++i) {
             SCCDEBUG("testbench") << "executing transactions in iteration " << i;
             { // 1
                 auto trans = prepare_trans(BurstLengthByte);
+                randomize(trans);
                 trans->set_command(tlm::TLM_READ_COMMAND);
                 trans->set_address(StartAddr);
-                trans->set_data_ptr(data.data());
                 trans->acquire();
                 intor_pe.transport(*trans, false);
                 if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
@@ -229,7 +234,7 @@ public:
                 auto trans = prepare_trans(BurstLengthByte);
                 trans->set_command(tlm::TLM_WRITE_COMMAND);
                 trans->set_address(StartAddr);
-                trans->set_data_ptr(data.data());
+                randomize(trans);
                 trans->acquire();
                 intor_pe.transport(*trans, false);
                 if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
@@ -244,6 +249,11 @@ public:
 
 };
 
+jmp_buf env;
+void  ABRThandler(int sig){
+    longjmp(env, 1);
+}
+
 int sc_main(int argc, char* argv[]) {
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
     scc::init_logging(
@@ -252,6 +262,8 @@ int sc_main(int argc, char* argv[]) {
             .logAsync(false)
             .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
+    signal(SIGABRT, ABRThandler);
+    signal(SIGSEGV, ABRThandler);
 #ifdef HAS_CCI
     scc::configurable_tracer trace("axi_axi_test",
                                    scc::tracer::file_type::NONE, // define the kind of transaction trace
@@ -262,8 +274,12 @@ int sc_main(int argc, char* argv[]) {
                                    scc::tracer::file_type::NONE, // define the kind of transaction trace
                                    true);                        // enables vcd
 #endif
-    testbench tb("tb");
-    sc_core::sc_start(1_ms);
-    SCCINFO() << "Finished";
-    return 0;
+    if(setjmp(env) == 0) {
+        testbench tb("tb");
+        sc_core::sc_start(1_ms);
+        SCCINFO() << "Finished";
+        return 0;
+    } else {
+        return -1;
+    }
 }

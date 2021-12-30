@@ -63,7 +63,7 @@ struct aw_ch {
     typename MST::template m2s_t<sc_dt::sc_uint<CFG::IDWIDTH>>       aw_id{"aw_id"};
     typename MST::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>>     aw_addr{"aw_addr"};
     typename MST::template s2m_t<bool>                               aw_ready{"aw_ready"};
-    typename MST::template m2s_t<bool>                               aw_lock{"aw_lock"};
+    typename MST::template m2s_opt_t<sc_dt::sc_uint<2>>              aw_lock{"aw_lock"}; // only AXI3
     typename MST::template m2s_t<bool>                               aw_valid{"aw_valid"};
     typename MST::template m2s_t<sc_dt::sc_uint<3>>                  aw_prot{"aw_prot"};
     typename MST::template m2s_t<sc_dt::sc_uint<3>>                  aw_size{"aw_size"};
@@ -78,6 +78,7 @@ struct aw_ch {
 //! write data channel signals
 template<typename CFG, typename MST=master_types>
 struct wdata_ch {
+    typename MST::template m2s_t<sc_dt::sc_uint<CFG::IDWIDTH>>       w_id{"w_id"};
     typename MST::template m2s_t<sc_dt::sc_biguint<CFG::BUSWIDTH>>   w_data{"w_data"};
     typename MST::template m2s_t<sc_dt::sc_uint<CFG::BUSWIDTH / 8>>  w_strb{"w_strb"};
     typename MST::template m2s_t<bool>                               w_last{"w_last"};
@@ -104,7 +105,7 @@ struct ar_ch {
     typename MST::template m2s_t<sc_dt::sc_uint<8>>                  ar_len{"ar_len"};
     typename MST::template m2s_t<sc_dt::sc_uint<3>>                  ar_size{"ar_size"};
     typename MST::template m2s_t<sc_dt::sc_uint<2>>                  ar_burst{"ar_burst"};
-    typename MST::template m2s_t<bool>                               ar_lock{"ar_lock"};
+    typename MST::template m2s_opt_t<sc_dt::sc_uint<2>>              ar_lock{"ar_lock"}; // only AXI3
     typename MST::template m2s_t<sc_dt::sc_uint<4>>                  ar_cache{"ar_cache"};
     typename MST::template m2s_t<sc_dt::sc_uint<3>>                  ar_prot{"ar_prot"};
     typename MST::template m2s_t<sc_dt::sc_uint<4>>                  ar_qos{"ar_qos"};
