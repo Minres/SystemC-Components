@@ -139,6 +139,7 @@ inline void axi::bfm::write_aw(tlm::tlm_generic_payload &trans, aw_ch<CFG, maste
     }
 }
 
+// FIXME: strb not yet correct
 template<typename CFG>
 inline void axi::bfm::write_wdata(tlm::tlm_generic_payload &trans, wdata_ch<CFG, master_types> &wdata, unsigned beat, bool last) {
     typename CFG::data_t data{0};

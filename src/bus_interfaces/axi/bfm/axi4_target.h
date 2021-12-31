@@ -67,6 +67,7 @@ private:
     void aw_t();
     void wdata_t();
     void bresp_t();
+    static typename CFG::data_t  get_read_data_for_beat(fsm::fsm_handle *fsm_hndl);
 
     sc_core::sc_clock* clk_if;
     sc_core::sc_event clk_delayed, ar_end_req_evt, wdata_end_req_evt, bresp_evt;
@@ -96,6 +97,20 @@ inline tlm::tlm_sync_enum axi::bfm::axi4_target<CFG>::nb_transport_bw(payload_ty
 
 template<typename CFG>
 inline void axi::bfm::axi4_target<CFG>::invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) {
+}
+
+template<typename CFG>
+typename CFG::data_t axi::bfm::axi4_target<CFG>::get_read_data_for_beat(fsm_handle *fsm_hndl) {
+    auto beat_count = fsm_hndl->beat_count;
+    auto size = axi::get_burst_size(*fsm_hndl->trans);
+    auto offset = (fsm_hndl->trans->get_address()+beat_count*size) & (CFG::BUSWIDTH/8-1);
+    auto bptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
+    typename CFG::data_t data { 0 };
+    for (size_t i = 0; i < size; ++i) {
+        auto bit_offs = (offset+i)*8;
+        data(bit_offs+ 7, bit_offs) = *(bptr + i);
+    }
+    return data;
 }
 
 template<typename CFG>
@@ -140,14 +155,8 @@ inline void axi::bfm::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
     fsm_hndl->fsm->cb[BegPartRespE] = [this, fsm_hndl]() -> void {
         assert(fsm_hndl->trans->is_read());
         active_resp_beat[tlm::TLM_READ_COMMAND]=fsm_hndl;
-        auto size = axi::get_burst_size(*fsm_hndl->trans);
-        auto bptr = fsm_hndl->trans->get_data_ptr()+fsm_hndl->beat_count*size;
-        typename CFG::data_t data{0};
-        for(size_t i=0; i<size; ++i) {
-            data(i*8+7, i*8) = *(bptr+i);
-        }
         auto ext = fsm_hndl->trans->get_extension<axi::axi4_extension>();
-        this->r_data.write(data);
+        this->r_data.write( get_read_data_for_beat(fsm_hndl));
         this->r_id.write(ext->get_id());
         this->r_resp.write(axi::to_int(ext->get_resp()));
         rresp_vl=0x1;
@@ -165,13 +174,8 @@ inline void axi::bfm::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
         active_resp_beat[fsm_hndl->trans->get_command()]=fsm_hndl;
         switch(fsm_hndl->trans->get_command()){
         case tlm::TLM_READ_COMMAND: {
-            auto bptr = fsm_hndl->trans->get_data_ptr()+fsm_hndl->beat_count*size;
-            typename CFG::data_t data{0};
-            for(size_t i=0; i<size; ++i) {
-                data(i*8+7, i*8) = *(bptr+i);
-            }
             auto ext = fsm_hndl->trans->get_extension<axi::axi4_extension>();
-            this->r_data.write(data);
+            this->r_data.write(get_read_data_for_beat(fsm_hndl));
             this->r_id.write(ext->get_id());
             this->r_resp.write(axi::to_int(ext->get_resp()));
             rresp_vl=0x3;
@@ -311,11 +315,15 @@ inline void axi::bfm::axi4_target<CFG>::wdata_t() {
             auto& gp = fsm_hndl->trans;
             auto id = this->w_id.read();
             auto data = this->w_data.read();
+            auto strb = this->w_strb.read();
             auto last = this->w_last.read();
             auto size = axi::get_burst_size(*fsm_hndl->trans);
             auto bptr=fsm_hndl->trans->get_data_ptr()+fsm_hndl->beat_count*size;
-            for(size_t i=0; i<size; ++i) {
-                 *(bptr+i)=data(i*8+7, i*8).to_uint();
+            for(size_t i=0; i<CFG::BUSWIDTH/8; ++i) {
+                if(strb[i]) {
+                    *bptr=data(i*8+7, i*8).to_uint();
+                    ++bptr;
+                }
             }
             auto tp = this->w_last.read()?axi::fsm::protocol_time_point_e::BegReqE:axi::fsm::protocol_time_point_e::BegPartReqE;
             react(tp, fsm_hndl);
