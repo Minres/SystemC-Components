@@ -14,6 +14,7 @@ include(GNUInstallDirs)
 if(BUILD_STAND_ALONE)
 	include(Conan)
 	setup_conan(TARGETS)
+	set(Boost_NO_BOOST_CMAKE ON) #  Don't do a find_package in config mode before searching for a regular boost install.
 endif()
 
 if(BUILD_SCC_DOCUMENTATION)
