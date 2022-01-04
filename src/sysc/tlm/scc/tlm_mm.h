@@ -39,6 +39,10 @@ struct tlm_gp_mm : public tlm_extension<tlm_gp_mm> {
     static tlm_gp_mm* create(size_t sz);
 
     template <typename TYPES = tlm_base_protocol_types>
+    static typename TYPES::tlm_payload_type* add_data_ptr(size_t sz, typename TYPES::tlm_payload_type& gp){
+        add_data_ptr(sz, &gp);
+    }
+    template <typename TYPES = tlm_base_protocol_types>
     static typename TYPES::tlm_payload_type* add_data_ptr(size_t sz, typename TYPES::tlm_payload_type* gp);
 
 protected:
@@ -196,8 +200,12 @@ inline typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP
 
 template <typename TYPES, bool CLEANUP_DATA>
 inline typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP_DATA>::allocate(size_t sz) {
-    auto* ptr = allocator.allocate(sc_core::sc_time_stamp().value());
-    return tlm_gp_mm::add_data_ptr(sz, new(ptr) payload_type(this));
+    if(sz) {
+        auto* ptr = allocator.allocate(sc_core::sc_time_stamp().value());
+        return tlm_gp_mm::add_data_ptr(sz, new(ptr) payload_type(this));
+    } else {
+        return allocate();
+    }
 }
 
 template <typename TYPES, bool CLEANUP_DATA> void tlm_mm<TYPES, CLEANUP_DATA>::free(tlm::tlm_generic_payload* trans) {
