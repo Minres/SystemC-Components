@@ -56,7 +56,7 @@ struct tlm_gp_mm_t : public tlm_gp_mm {
 
     ~tlm_gp_mm_t() {  }
 
-    void free() override { util::pool_allocator<tlm_gp_mm_t<1024>>::get().free(this); }
+    void free() override { util::pool_allocator<tlm_gp_mm_t<SZ>>::get().free(this); }
 
 protected:
     tlm_gp_mm_t(size_t sz) : tlm_gp_mm(sz, data) { }
