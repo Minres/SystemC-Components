@@ -133,7 +133,7 @@ if(ZLIB_FOUND)
     target_link_libraries(${PROJECT_NAME} PUBLIC ${ZLIB_LIBRARIES})
     target_compile_definitions(${PROJECT_NAME} PRIVATE HAS_ZLIB)
 endif()
-target_link_libraries(${PROJECT_NAME} PUBLIC fstapi Threads::Threads ${CMAKE_DL_LIBS})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${FMT_TARGET} fstapi Threads::Threads ${CMAKE_DL_LIBS})
 
 if(CLANG_TIDY_EXE)
 	set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}" )
