@@ -322,10 +322,6 @@ static void process_callbacks(const object_class_parameter_t& obj, _scv_tr_callb
                 // corrupt the iterator.
                 need_cleanup = true;
             } else {
-                if(obj.get_debug() >= 0) {
-                    cout << "scv_tr debug: process_callbacks" << endl;
-                }
-
                 auto* my_callback_fp = (callback_function_parameter_t*)((*i)->callback_fp);
 
 #ifdef scv_tr_TRACE
@@ -459,10 +455,6 @@ static void process_relation_callbacks(const scv_tr_handle& obj, const scv_tr_ha
 const char* scv_tr_db::_kind = "scv_tr_db";
 
 scv_tr_db::scv_tr_db(const char* recording_file_name, const sc_time_unit& _time_unit) {
-    if(this->get_debug() >= 0) {
-        cout << "scv_tr debug: entering scv_tr_db ctor, name = " << recording_file_name << endl;
-    }
-
     this->_scv_tr_db_core_p = new _scv_tr_db_core(recording_file_name, _time_unit);
 
     if(_scv_tr_db_core::default_scv_tr_db_p == nullptr) {
@@ -475,21 +467,11 @@ scv_tr_db::scv_tr_db(const char* recording_file_name, const sc_time_unit& _time_
 
     process_callbacks<scv_tr_db, scv_tr_db::callback_reason, scv_tr_db::callback_function>(
         *this, _scv_tr_db_core::callback_list_p, scv_tr_db::CREATE);
-
-    if(this->get_debug() >= 0) {
-        cout << "scv_tr debug: leaving scv_tr_db ctor, name = " << recording_file_name << endl;
-    }
 }
 
 // ----------------------------------------------------------------------------
 
 scv_tr_db::~scv_tr_db() {
-    int d = this->get_debug();
-
-    if(d >= 0) {
-        cout << "scv_tr debug: entering scv_tr_db dtor, name = " << this->get_name() << endl;
-    }
-
     if(_scv_tr_db_core::default_scv_tr_db_p == this) {
         _scv_tr_db_core::default_scv_tr_db_p = nullptr;
     }
@@ -498,10 +480,6 @@ scv_tr_db::~scv_tr_db() {
         *this, _scv_tr_db_core::callback_list_p, scv_tr_db::DELETE);
 
     delete this->_scv_tr_db_core_p;
-
-    if(d >= 0) {
-        cout << "scv_tr debug: leaving scv_tr_db dtor" << endl;
-    }
 }
 
 // ----------------------------------------------------------------------------
@@ -554,14 +532,6 @@ void scv_tr_db::print(ostream& o, int details, int indent) const { o << "scv_tr_
 // ----------------------------------------------------------------------------
 
 void scv_tr_db::show(int details, int indent) const { this->print(std::cout, details, indent); }
-
-// ----------------------------------------------------------------------------
-
-void scv_tr_db::set_debug(int d) { _scv_tr_db_core::debug = d; }
-
-// ----------------------------------------------------------------------------
-
-int scv_tr_db::get_debug() { return _scv_tr_db_core::debug; }
 
 // ----------------------------------------------------------------------------
 
@@ -660,14 +630,6 @@ void scv_tr_stream::print(ostream& o, int details, int indent) const {
 // ----------------------------------------------------------------------------
 
 void scv_tr_stream::show(int details, int indent) const { this->print(std::cout, details, indent); }
-
-// ----------------------------------------------------------------------------
-
-void scv_tr_stream::set_debug(int i) { _scv_tr_stream_core::debug = i; }
-
-// ----------------------------------------------------------------------------
-
-int scv_tr_stream::get_debug() { return _scv_tr_stream_core::debug; }
 
 // ----------------------------------------------------------------------------
 
@@ -982,14 +944,6 @@ void scv_tr_handle::print(ostream& o, int details, int indent) const {
 // ----------------------------------------------------------------------------
 
 void scv_tr_handle::show(int details, int indent) const { this->print(std::cout, details, indent); }
-
-// ----------------------------------------------------------------------------
-
-void scv_tr_handle::set_debug(int i) { _scv_tr_handle_core::debug = i; }
-
-// ----------------------------------------------------------------------------
-
-int scv_tr_handle::get_debug() { return _scv_tr_handle_core::debug; }
 
 // ----------------------------------------------------------------------------
 
@@ -1411,14 +1365,6 @@ void scv_tr_generator_base::print(ostream& o, int details, int indent) const {
 // ----------------------------------------------------------------------------
 
 void scv_tr_generator_base::show(int details, int indent) const { this->print(std::cout, details, indent); }
-
-// ----------------------------------------------------------------------------
-
-void scv_tr_generator_base::set_debug(int d) { _scv_tr_generator_core::debug = d; }
-
-// ----------------------------------------------------------------------------
-
-int scv_tr_generator_base::get_debug() { return _scv_tr_generator_core::debug; }
 
 // ----------------------------------------------------------------------------
 

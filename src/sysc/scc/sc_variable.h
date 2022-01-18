@@ -22,6 +22,7 @@
 #include <sstream>
 #include <functional>
 #include <sysc/kernel/sc_simcontext.h>
+#include <sysc/kernel/sc_event.h>
 #include <sysc/tracing/sc_trace.h>
 
 #ifndef SC_API
@@ -405,6 +406,21 @@ template <typename T> struct sc_ref_variable : public sc_variable_b {
      *
      * @param tf
      */
+    void trace(sc_core::sc_trace_file* tf) const override {
+        sc_core::sc_trace(tf, value, name());
+    }
+};
+template <> struct sc_ref_variable<sc_core::sc_event> : public sc_variable_b {
+    const sc_core::sc_event& value;
+    const sc_core::sc_event& operator*() { return value; }
+    sc_ref_variable(const std::string& name, const sc_core::sc_event& value)
+    : sc_variable_b(name.c_str())
+    , value(value) {}
+    std::string to_string() const override {
+        std::stringstream ss;
+        ss << value.name();
+        return ss.str();
+    }
     void trace(sc_core::sc_trace_file* tf) const override {
         sc_core::sc_trace(tf, value, name());
     }

@@ -89,7 +89,7 @@ inline tlm_gp_mm* tlm::scc::tlm_gp_mm::create(size_t sz) {
     }
 }
 
-template<typename TYPES = tlm_base_protocol_types>
+template<typename TYPES>
 inline typename TYPES::tlm_payload_type* tlm::scc::tlm_gp_mm::add_data_ptr(size_t sz, typename TYPES::tlm_payload_type* gp) {
     auto* ext = create(sz);
     gp->set_auto_extension(ext);
