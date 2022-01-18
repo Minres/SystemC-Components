@@ -115,7 +115,7 @@ static void scv_tr_db_cbf(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reaso
             my_text_file_name = _scv_tr_db.get_name();
         }
 
-        my_text_file_p = gzopen(my_text_file_name.c_str(), "wb");
+        my_text_file_p = gzopen(my_text_file_name.c_str(), "wb1"); // f, h, R
 
         if(my_text_file_p == nullptr) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open text recording file");

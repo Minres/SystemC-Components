@@ -251,7 +251,7 @@ void check_config_hierarchical(configurer::broker_t const& broker, Value const& 
             if(!itr->name.IsString())
                 return;
             auto key_name = itr->name.GetString();
-            if(key_name == "log_level")
+            if(strncmp(key_name, "log_level", 9)==0)
                 continue; // virtual attribute
             auto hier_name=prefix.size() ? prefix + "." + key_name : key_name;
             Value const& val = itr->value;
