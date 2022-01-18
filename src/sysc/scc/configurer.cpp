@@ -272,7 +272,7 @@ void check_config_hierarchical(configurer::broker_t const& broker, Value const& 
                     auto* obj = sc_core::sc_find_object(objname.c_str());
                     if(obj && !obj->get_attribute(attrname.c_str())) {
                         auto param_handle = broker.get_param_handle(hier_name);
-                        if(!param_handle.is_valid() && strcmp(key_name,SCC_LOG_LEVEL_PARAM_NAME)) {
+                        if(!param_handle.is_valid() && attrname!=SCC_LOG_LEVEL_PARAM_NAME) {
                             throw std::invalid_argument(hier_name);
                         }
                     }
