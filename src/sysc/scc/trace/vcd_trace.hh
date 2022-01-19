@@ -162,7 +162,7 @@ struct vcd_trace_enum : public vcd_trace {
 
     inline bool changed() { return !is_alias && old_val!=act_val; }
 
-    inline void update() { old_val=act_val; }
+    void update() override { old_val=act_val; }
 
     void record(FPTR os) override { vcdEmitValueChange64(os, trc_hndl, bits, old_val); }
 
@@ -184,7 +184,7 @@ struct vcd_trace_t : public vcd_trace {
 
     inline bool changed() { return !is_alias && old_val!=act_val; }
 
-    inline void update() { old_val=act_val; }
+    void update() override { old_val=act_val; }
 
     void record(FPTR os) override;
 
