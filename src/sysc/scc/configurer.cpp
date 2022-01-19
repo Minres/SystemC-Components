@@ -411,4 +411,14 @@ void init_cci(std::string name) {
     cci::cci_register_broker(&broker);
 #endif
 }
+
+void configurer::start_of_simulation() {
+    config_check();
+    if(dump_file_name.size()) {
+        std::ofstream of{dump_file_name};
+        if(of.is_open())
+            dump_configuration(of);
+    }
+}
+
 }

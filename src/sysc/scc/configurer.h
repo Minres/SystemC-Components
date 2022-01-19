@@ -73,12 +73,19 @@ public:
      */
     void dump_hierarchy(std::ostream& os = std::cout, sc_core::sc_object* obj = nullptr);
     /**
-     * dump the parameters of a design hierarchy to output stream
+     * dump the parameters of a design hierarchy to output stream immediately
      *
      * @param os the output stream, std::cout by default
      * @param obj if not null specifies the root object of the dump
      */
     void dump_configuration(std::ostream& os = std::cout, sc_core::sc_object* obj = nullptr);
+    /**
+     * schedule the dump the parameters of a design hierarchy to a file
+     * during start_of_simulation()
+     *
+     * @param file_name the output stream, std::cout by default
+     */
+    void dump_configuration(std::string const& file_name){ dump_file_name=file_name; }
     /**
      * set a value a some attribute (sc_attribute or cci_param)
      *
@@ -131,17 +138,18 @@ public:
 protected:
     bool config_valid{false};
     std::unique_ptr<ConfigHolder> root;
-
+    std::string dump_file_name{""};
     void config_check() ;
     void before_end_of_elaboration() override {configure();}
     void end_of_elaboration() override {configure();}
-    void start_of_simulation() override {config_check();};
+    void start_of_simulation() override;
 
 #ifdef HAS_CCI
     cci::cci_originator cci_originator;
 #endif
     broker_t cci_broker;
 };
+
 } // namespace scc
 
 #endif /* _SYSC_CONFIGURER_H_ */
