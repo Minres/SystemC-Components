@@ -233,8 +233,8 @@ struct config_reader {
     }
 };
 
-void configure_sc_attribute_hierarchical(sc_core::sc_object* obj, Value const& hier_val) {
-    for(auto* attr : obj->attr_cltn()) {
+void configure_sc_attribute_hierarchical(Value const& node, std::string const& prefix) {
+/*    for(auto* attr : obj->attr_cltn()) {
         auto member = hier_val.FindMember(attr->name().c_str());
         if (member != hier_val.MemberEnd() && !member->value.IsNull())
             try_set_value(attr, member->value);
@@ -243,6 +243,33 @@ void configure_sc_attribute_hierarchical(sc_core::sc_object* obj, Value const& h
         auto member = hier_val.FindMember(o->basename());
         if (member != hier_val.MemberEnd() && !member->value.IsNull())
             configure_sc_attribute_hierarchical(o, member->value);
+    }*/
+    for(auto itr = node.MemberBegin(); itr != node.MemberEnd(); ++itr) {
+        if(!itr->name.IsString())
+            return;
+        auto key_name = itr->name.GetString();
+        if(strncmp(key_name, "log_level", 9)==0)
+            continue; // virtual attribute
+        auto hier_name=prefix.size() ? prefix + "." + key_name : key_name;
+        Value const& val = itr->value;
+        if(val.IsNull() || val.IsArray())
+            continue;
+        else if(val.IsObject()) {
+            if(!sc_core::sc_find_object(hier_name.c_str())) {
+                throw std::domain_error(hier_name);
+            }
+            configure_sc_attribute_hierarchical(val, hier_name);
+        }   else {
+            auto pos = hier_name.rfind('.');
+            if(pos!=std::string::npos) {
+                auto objname = hier_name.substr(0, pos);
+                auto attrname = hier_name.substr(pos + 1);
+                if(auto* obj = sc_core::sc_find_object(objname.c_str()))
+                    if(auto attr = obj->get_attribute(attrname.c_str()))
+                        try_set_value(attr, val);
+            }
+        }
+
     }
 }
 
@@ -251,7 +278,7 @@ void check_config_hierarchical(configurer::broker_t const& broker, Value const& 
             if(!itr->name.IsString())
                 return;
             auto key_name = itr->name.GetString();
-            if(strncmp(key_name, "log_level", 9)==0)
+            if(strncmp(key_name, SCC_LOG_LEVEL_PARAM_NAME, 9)==0)
                 continue; // virtual attribute
             auto hier_name=prefix.size() ? prefix + "." + key_name : key_name;
             Value const& val = itr->value;
@@ -262,23 +289,21 @@ void check_config_hierarchical(configurer::broker_t const& broker, Value const& 
                     throw std::domain_error(hier_name);
                 }
                 check_config_hierarchical(broker, val, hier_name);
-            }
-#ifdef HAS_CCI
-            else {
+            } else {
                 auto pos = hier_name.rfind('.');
                 if(pos!=std::string::npos) {
                     auto objname = hier_name.substr(0, pos);
                     auto attrname = hier_name.substr(pos + 1);
                     auto* obj = sc_core::sc_find_object(objname.c_str());
-                    if(obj && !obj->get_attribute(attrname.c_str())) {
+                    if(!obj || !obj->get_attribute(attrname.c_str())) {
+#ifdef HAS_CCI
                         auto param_handle = broker.get_param_handle(hier_name);
-                        if(!param_handle.is_valid() && attrname!=SCC_LOG_LEVEL_PARAM_NAME) {
+                        if(!param_handle.is_valid() && attrname!=SCC_LOG_LEVEL_PARAM_NAME)
+#endif
                             throw std::invalid_argument(hier_name);
-                        }
                     }
                 }
             }
-#endif
         }
     }
 }
@@ -343,12 +368,9 @@ void configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj) {
 }
 
 void configurer::configure() {
-    if(config_valid && root)
-        for(auto* o : sc_core::sc_get_top_level_objects()) {
-            auto member = root->document.FindMember(o->name());
-            if (member != root->document.MemberEnd() && !member->value.IsNull())
-                configure_sc_attribute_hierarchical(o, member->value);
-        }
+    if(config_valid && root){
+        configure_sc_attribute_hierarchical(root->document, "");
+    }
 }
 
 auto get_value_from_hierarchy(const std::string& hier_name, Value const& value) -> Value const& {
