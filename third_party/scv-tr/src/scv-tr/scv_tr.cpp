@@ -206,10 +206,6 @@ _scv_tr_callback_list* _scv_tr_generator_core::callback_list_p = nullptr;
 _scv_tr_generator_core::_scv_tr_generator_core(_scv_tr_stream_core* scv_tr_stream_core_p,
                                                scv_tr_generator_base* scv_tr_generator_base_p, const char* name,
                                                const char* begin_attribute_name, const char* end_attribute_name) {
-#ifdef scv_tr_TRACE
-    cout << "Entering _scv_tr_generator_core ctor\n";
-#endif
-
     if((scv_tr_stream_core_p == nullptr) || (scv_tr_generator_base_p == nullptr) ||
        (scv_tr_stream_core_p->my_scv_tr_db_core_p == nullptr)) {
         scv_tr_null_scv_tr_db_message();
@@ -237,10 +233,6 @@ _scv_tr_generator_core::_scv_tr_generator_core(_scv_tr_stream_core* scv_tr_strea
     if(end_attribute_name) {
         this->my_end_attribute_name = end_attribute_name;
     }
-
-#ifdef scv_tr_TRACE
-    cout << "Leaving _scv_tr_generator_core ctor\n";
-#endif
 }
 
 // ----------------------------------------------------------------------------
@@ -285,9 +277,6 @@ _scv_tr_callback_list* _scv_tr_handle_core::callback_record_attribute_list_p = n
 _scv_tr_handle_core::_scv_tr_handle_core()
 : begin_sc_time(SC_ZERO_TIME)
 , end_sc_time(SC_ZERO_TIME) {
-#ifdef scv_tr_TRACE
-    cout << "In _scv_tr_handle_core ctor\n";
-#endif
     this->is_valid = false;
     this->is_active = false;
     this->my_scv_tr_generator_core_p = nullptr;
@@ -303,10 +292,6 @@ _scv_tr_handle_core::~_scv_tr_handle_core() = default;
 template <class object_class_parameter_t, typename callback_reason_parameter_t, typename callback_function_parameter_t>
 static void process_callbacks(const object_class_parameter_t& obj, _scv_tr_callback_list* callback_list_p,
                               callback_reason_parameter_t callback_reason) {
-#ifdef scv_tr_TRACE
-    cout << "Entering scv_tr process_callbacks\n";
-#endif
-
     // This is a template function that processes callbacks for different
     // scv_tr_... classes.
 
@@ -323,11 +308,6 @@ static void process_callbacks(const object_class_parameter_t& obj, _scv_tr_callb
                 need_cleanup = true;
             } else {
                 auto* my_callback_fp = (callback_function_parameter_t*)((*i)->callback_fp);
-
-#ifdef scv_tr_TRACE
-                cout << "  calling my_callback_fp = " << (long)my_callback_fp << endl;
-                cout << "  obj.get_name() = " << obj.get_name() << endl;
-#endif
 
                 my_callback_fp(obj, callback_reason, (*i)->user_data_p);
             }
@@ -352,10 +332,6 @@ static void process_callbacks(const object_class_parameter_t& obj, _scv_tr_callb
         continue_label:;
         }
     }
-
-#ifdef scv_tr_TRACE
-    cout << "Leaving process_callbacks\n";
-#endif
 }
 
 // ----------------------------------------------------------------------------
@@ -572,10 +548,6 @@ void scv_tr_db::remove_callback(callback_h h) {
 const char* scv_tr_stream::_kind = "scv_tr_stream";
 
 scv_tr_stream::scv_tr_stream(const char* full_stream_name, const char* kind_name, scv_tr_db* scv_tr_db_p) {
-#ifdef scv_tr_TRACE
-    cout << "Entering scv_tr_stream ctor\n";
-#endif
-
     if(scv_tr_db_p == nullptr) {
         scv_tr_null_scv_tr_db_message();
         this->_scv_tr_stream_core_p = nullptr;
@@ -592,16 +564,8 @@ scv_tr_stream::scv_tr_stream(const char* full_stream_name, const char* kind_name
 // ----------------------------------------------------------------------------
 
 scv_tr_stream::~scv_tr_stream() {
-#ifdef scv_tr_TRACE
-    cout << "Entering scv_tr_stream dtor\n";
-#endif
-
     process_callbacks<scv_tr_stream, scv_tr_stream::callback_reason, scv_tr_stream::callback_function>(
         *this, _scv_tr_stream_core::callback_list_p, scv_tr_stream::DELETE);
-
-#ifdef scv_tr_TRACE
-    cout << "Leaving scv_tr_stream dtor\n";
-#endif
 }
 
 // ----------------------------------------------------------------------------
@@ -687,30 +651,13 @@ void scv_tr_stream::remove_callback(callback_h h) {
 const char* scv_tr_handle::_kind = "scv_tr_handle";
 
 scv_tr_handle::scv_tr_handle() {
-#ifdef scv_tr_TRACE
-    cout << "Entering scv_tr_handle ctor\n";
-#endif
-
     this->_scv_tr_handle_core_p = nullptr;
-
-#ifdef scv_tr_TRACE
-    cout << "Leaving scv_tr_handle ctor\n";
-#endif
 }
 
 // ----------------------------------------------------------------------------
 
 scv_tr_handle::~scv_tr_handle() {
-#ifdef scv_tr_TRACE
-    cout << "Entering scv_tr_handle dtor\n";
-    cout << "  this->get_id() = " << this->get_id() << endl;
-#endif
-
     if(this->_scv_tr_handle_core_p != nullptr) {
-#ifdef scv_tr_TRACE
-        cout << "  this->_scv_tr_handle_core_p->ref_count = " << _scv_tr_handle_core_p->ref_count << endl;
-#endif
-
         if(this->_scv_tr_handle_core_p->ref_count == 1) {
             process_callbacks<scv_tr_handle, scv_tr_handle::callback_reason, scv_tr_handle::callback_function>(
                 *this, _scv_tr_handle_core::callback_list_p, scv_tr_handle::DELETE);
@@ -721,109 +668,49 @@ scv_tr_handle::~scv_tr_handle() {
 
                 return;
             }
-
-#ifdef scv_tr_TRACE
-            cout << "  delete _scv_tr_handle_core_p\n";
-#endif
-
             delete this->_scv_tr_handle_core_p;
         } else {
             this->_scv_tr_handle_core_p->ref_count--;
 
-#ifdef scv_tr_TRACE
-            cout << "  new this->_scv_tr_handle_core_p->ref_count = " << _scv_tr_handle_core_p->ref_count << endl;
-#endif
         }
     }
-
-#ifdef scv_tr_TRACE
-    cout << "Leaving scv_tr_handle dtor\n";
-#endif
 }
 
 // ----------------------------------------------------------------------------
 
 scv_tr_handle& scv_tr_handle::operator=(const scv_tr_handle& other) {
     // Copy assign
-
-#ifdef scv_tr_TRACE
-    cout << "scv_tr_handle operator=\n";
-    cout << "  other.get_id() = " << other.get_id() << endl;
-#endif
-
     if(this == &other) {
-#ifdef scv_tr_TRACE
-        cout << "Leaving scv_tr_handle operator=, this == &other\n";
-#endif
         return *this;
     }
-
     if(this->_scv_tr_handle_core_p != nullptr) {
-#ifdef scv_tr_TRACE
-        cout << "  this->get_id() = " << this->get_id() << endl;
-        cout << "  this->_scv_tr_handle_core_p->ref_count = " << this->_scv_tr_handle_core_p->ref_count << endl;
-#endif
-
         this->_scv_tr_handle_core_p->ref_count--;
-
         if(this->_scv_tr_handle_core_p->ref_count == 0) {
             process_callbacks<scv_tr_handle, scv_tr_handle::callback_reason, scv_tr_handle::callback_function>(
                 *this, _scv_tr_handle_core::callback_list_p, scv_tr_handle::DELETE);
-
-#ifdef scv_tr_TRACE
-            cout << "  In scv_tr_handle operator= after process_callbacks\n"
-                 << "  this->_scv_tr_handle_core_p->ref_count = " << this->_scv_tr_handle_core_p->ref_count << endl;
-#endif
-
             if(this->_scv_tr_handle_core_p->ref_count != 0) {
                 _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL_FATAL,
                                       "scv_tr_handle::operator= ref_count is bad after "
                                       "process_callbacks");
-
                 return *this;
             }
-
             delete this->_scv_tr_handle_core_p;
         }
     }
-
     this->_scv_tr_handle_core_p = other._scv_tr_handle_core_p;
-
     if(this->_scv_tr_handle_core_p != nullptr) {
         this->_scv_tr_handle_core_p->ref_count++;
-
-#ifdef scv_tr_TRACE
-        cout << "  In scv_tr_handle operator= after process_callbacks\n"
-             << "  new other._scv_tr_handle_core_p->ref_count = " << other._scv_tr_handle_core_p->ref_count << endl;
-#endif
     }
-
     return *this;
 }
 
 // ----------------------------------------------------------------------------
 
 scv_tr_handle::scv_tr_handle(const scv_tr_handle& other) {
-    // Copy ctor
-
-#ifdef scv_tr_TRACE
-    cout << "Entering scv_tr_handle copy ctor\n";
-    cout << "  other.get_id() = " << other.get_id() << endl;
-#endif
-
     this->_scv_tr_handle_core_p = other._scv_tr_handle_core_p;
-
     if(this->_scv_tr_handle_core_p) {
         this->_scv_tr_handle_core_p->ref_count++;
-
-#ifdef scv_tr_TRACE
-        cout << "  new this->_scv_tr_handle_core_p->ref_count = " << this->_scv_tr_handle_core_p->ref_count << endl;
-#endif
     }
-
-#ifdef scv_tr_TRACE
-    cout << "Leaving scv_tr_handle copy ctor\n";
-#endif
 }
 
 // ----------------------------------------------------------------------------
@@ -976,23 +863,10 @@ scv_tr_handle::get_immediate_related_transaction(scv_tr_relation_handle_t* relat
 // ----------------------------------------------------------------------------
 
 const sc_time& scv_tr_handle::get_begin_sc_time() const {
-#ifdef scv_tr_TRACE
-    cout << "Entering scv_tr_handle::get_begin_sc_time\n";
-#endif
-
     if(this->_scv_tr_handle_core_p == nullptr) {
-#ifdef scv_tr_TRACE
-        cout << "  this->_scv_tr_handle_core_p is NULL\n";
-#endif
-
         static sc_time tmp_sc_time;
         return tmp_sc_time;
     }
-
-#ifdef scv_tr_TRACE
-    cout << "Leaving scv_tr_handle::get_begin_sc_time\n";
-#endif
-
     return this->_scv_tr_handle_core_p->begin_sc_time;
 }
 
@@ -1016,7 +890,6 @@ const scv_tr_stream& scv_tr_handle::get_scv_tr_stream() const {
         static auto* tmp_stream_p = new scv_tr_stream();
         return *tmp_stream_p;
     }
-
     return *(this->_scv_tr_handle_core_p->my_scv_tr_generator_core_p->my_scv_tr_stream_core_p->my_scv_tr_stream_p);
 }
 
@@ -1108,19 +981,10 @@ void scv_tr_handle::_end_transaction(const scv_extensions_if* exts_p, const sc_t
 scv_tr_handle scv_tr_generator_base::_begin_transaction(const scv_extensions_if* ext_p, const sc_time& begin_sc_time,
                                                         scv_tr_relation_handle_t relation_handle,
                                                         const scv_tr_handle* other_handle_p) const {
-#ifdef scv_tr_TRACE
-    cout << "Entering scv_tr_generator_base::_begin_transaction\n";
-    cout << "  begin_sc_time = " << begin_sc_time.value() << endl;
-#endif
-
     scv_tr_handle tp;
-
     if((this->_scv_tr_generator_core_p == nullptr) ||
        (this->_scv_tr_generator_core_p->my_scv_tr_stream_core_p == nullptr) ||
        (this->_scv_tr_generator_core_p->my_scv_tr_stream_core_p->my_scv_tr_db_core_p == nullptr)) {
-#ifdef scv_tr_TRACE
-        cout << "Leaving scv_tr_generator_base::_begin_transaction, NULL core\n";
-#endif
         return tp;
     }
 
@@ -1150,11 +1014,6 @@ scv_tr_handle scv_tr_generator_base::_begin_transaction(const scv_extensions_if*
     }
 
     tp._scv_tr_handle_core_p->begin_exts_p = nullptr;
-
-#ifdef scv_tr_TRACE
-    cout << "Leaving scv_tr_generator_base::_begin_transaction\n";
-#endif
-
     return tp;
 }
 
@@ -1162,10 +1021,6 @@ scv_tr_handle scv_tr_generator_base::_begin_transaction(const scv_extensions_if*
 
 void scv_tr_generator_base::_end_transaction(const scv_tr_handle& t, const scv_extensions_if* ext_p,
                                              const sc_time& end_sc_time) const {
-#ifdef scv_tr_TRACE
-    cout << "Entering scv_tr_generator_base::_end_transaction\n";
-#endif
-
     if(t._scv_tr_handle_core_p == nullptr)
         return;
 
@@ -1184,10 +1039,6 @@ void scv_tr_generator_base::_end_transaction(const scv_tr_handle& t, const scv_e
     t._scv_tr_handle_core_p->is_active = false;
 
     t._scv_tr_handle_core_p->end_exts_p = nullptr;
-
-#ifdef scv_tr_TRACE
-    cout << "Leaving scv_tr_generator_base::_end_transaction\n";
-#endif
 
     return;
 }
@@ -1219,34 +1070,17 @@ void scv_tr_generator_base::_set_end_exts_p(const scv_extensions_if* _end_exts_p
 // ----------------------------------------------------------------------------
 
 void scv_tr_generator_base::_process_callbacks() {
-#ifdef scv_tr_TRACE
-    cout << "Entering scv_tr_generator_base::_process_callbacks\n";
-#endif
-
     process_callbacks<scv_tr_generator_base, scv_tr_generator_base::callback_reason,
                       scv_tr_generator_base::callback_function>(*this, _scv_tr_generator_core::callback_list_p,
                                                                 scv_tr_generator_base::CREATE);
-
-#ifdef scv_tr_TRACE
-    cout << "Leaving scv_tr_generator_base::_process_callbacks\n";
-#endif
 }
 
 // ----------------------------------------------------------------------------
 
 scv_tr_generator_base::~scv_tr_generator_base() {
-#ifdef scv_tr_TRACE
-    cout << "Entering ~scv_tr_generator_base\n";
-#endif
-
     process_callbacks<scv_tr_generator_base, scv_tr_generator_base::callback_reason,
                       scv_tr_generator_base::callback_function>(*this, _scv_tr_generator_core::callback_list_p,
                                                                 scv_tr_generator_base::DELETE);
-
-#ifdef scv_tr_TRACE
-    cout << "Entering ~scv_tr_generator_base\n";
-#endif
-
     delete this->_scv_tr_generator_core_p;
 }
 
