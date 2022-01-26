@@ -122,13 +122,13 @@ void vcd_mt_trace_file::trace(const unsigned int &object, const std::string &nam
     all_traces.emplace_back(this, &changed<unsigned int>, new trace::vcd_trace_enum(object, name, enum_literals));
 }
 
-#define DECL_REGISTER_METHOD_A(tp) trace_handle* vcd_mt_trace_file::register_trace(const tp& object, const std::string& name){\
+#define DECL_REGISTER_METHOD_A(tp) observer::notification_handle* vcd_mt_trace_file::observe(const tp& object, const std::string& name){\
 		all_traces.emplace_back(this, &changed<tp>, new trace::vcd_trace_t<tp>(object, name)); \
 		all_traces.back().trc->is_triggered=true; return &all_traces.back();}
-#define DECL_REGISTER_METHOD_B(tp) trace_handle* vcd_mt_trace_file::register_trace(const tp& object, const std::string& name, int width){\
+#define DECL_REGISTER_METHOD_B(tp) observer::notification_handle* vcd_mt_trace_file::observe(const tp& object, const std::string& name, int width){\
 		all_traces.emplace_back(this, &changed<tp>, new trace::vcd_trace_t<tp>(object, name)); \
 		all_traces.back().trc->is_triggered=true; return &all_traces.back();}
-#define DECL_REGISTER_METHOD_C(tp, tpo) trace_handle* vcd_mt_trace_file::register_trace(const tp& object, const std::string& name){\
+#define DECL_REGISTER_METHOD_C(tp, tpo) observer::notification_handle* vcd_mt_trace_file::observe(const tp& object, const std::string& name){\
 		all_traces.emplace_back(this, &changed<tp, tpo>, new trace::vcd_trace_t<tp, tpo>(object, name)); \
 		all_traces.back().trc->is_triggered=true; return &all_traces.back();}
 
@@ -168,7 +168,7 @@ DECL_REGISTER_METHOD_A( sc_dt::sc_lv_base )
 #undef DECL_REGISTER_METHOD_B
 #undef DECL_REGISTER_METHOD_C
 
-void vcd_mt_trace_file::trace_entry::notify_change() {
+void vcd_mt_trace_file::trace_entry::notify() {
     if(!trc->is_alias && compare_and_update(trc))
         that->triggered_traces.push_back(trc);
 }

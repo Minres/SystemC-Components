@@ -14,10 +14,11 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _SCC_TRACE_OBSERVER_H_
-#define _SCC_TRACE_OBSERVER_H_
+#ifndef _SCC_OBSERVER_H_
+#define _SCC_OBSERVER_H_
 
 #include <string>
+//needed for typedefs like sc_dt::int64
 #include "sysc/datatypes/int/sc_nbdefs.h"
 // Some forward declarations
 namespace sc_dt {
@@ -36,16 +37,19 @@ namespace sc_dt {
 }
 
 namespace scc {
-
-struct trace_handle {
-    virtual void notify_change() = 0;
-    virtual ~trace_handle(){}
-};
-
-struct trace_observer {
-
-#define DECL_REGISTER_METHOD_A(tp) virtual trace_handle* register_trace(tp const& o, std::string const& nm) = 0;
-#define DECL_REGISTER_METHOD_B(tp) virtual trace_handle* register_trace(tp const& o, std::string const& nm, int width) = 0;
+/**
+ * @brief The interface defining an observer.
+ */
+struct observer {
+    /**
+     * @brief A handle to be used be the observed object to notify the observer about a change
+     */
+    struct notification_handle{
+        virtual void notify() = 0;
+        virtual ~notification_handle(){}
+    };
+#define DECL_REGISTER_METHOD_A(tp) virtual notification_handle* observe(tp const& o, std::string const& nm) = 0;
+#define DECL_REGISTER_METHOD_B(tp) virtual notification_handle* observe(tp const& o, std::string const& nm, int width) = 0;
     DECL_REGISTER_METHOD_A( bool )
     DECL_REGISTER_METHOD_A( sc_dt::sc_bit )
     DECL_REGISTER_METHOD_A( sc_dt::sc_logic )
@@ -79,14 +83,14 @@ struct trace_observer {
 
 #undef DECL_REGISTER_METHOD_A
 #undef DECL_REGISTER_METHOD_B
-    virtual ~trace_observer(){}
+    virtual ~observer(){}
 
 };
 
-#define DECL_REGISTER_METHOD_A(tp) inline trace_handle* register_trace(trace_observer* obs, tp const& o, std::string const& nm){\
-    return obs->register_trace(o, nm); }
-#define DECL_REGISTER_METHOD_B(tp) inline trace_handle* register_trace(trace_observer* obs, tp const& o, std::string const& nm, int width = 8 * sizeof( tp )){\
-    return obs->register_trace(o, nm, width); }
+#define DECL_REGISTER_METHOD_A(tp) inline observer::notification_handle* observe(observer* obs, tp const& o, std::string const& nm){\
+    return obs->observe(o, nm); }
+#define DECL_REGISTER_METHOD_B(tp) inline observer::notification_handle* observe(observer* obs, tp const& o, std::string const& nm, int width = 8 * sizeof( tp )){\
+    return obs->observe(o, nm, width); }
 
     DECL_REGISTER_METHOD_A( bool )
     DECL_REGISTER_METHOD_A( sc_dt::sc_bit )
@@ -124,4 +128,4 @@ struct trace_observer {
 
 } /* namespace scc */
 
-#endif /* _SCC_TRACE_OBSERVER_H_ */
+#endif /* _SCC_OBSERVER_H_ */
