@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>util</b></li><li class="navelem"><a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classutil_1_1pool__allocator.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -52,58 +69,119 @@ $(function() {
 <div class="title">util::pool_allocator&lt; T, CHUNK_SIZE &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>a generic pool allocator singleton not being MT-safe  
+ <a href="classutil_1_1pool__allocator.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="pool__allocator_8h_source.html">pool_allocator.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afc51a7c603509e3bd7aebc65d7d7e655"><td class="memItemLeft" align="right" valign="top"><a id="afc51a7c603509e3bd7aebc65d7d7e655"></a>
 void *&#160;</td><td class="memItemRight" valign="bottom"><b>allocate</b> (uint64_t id=0)</td></tr>
 <tr class="separator:afc51a7c603509e3bd7aebc65d7d7e655"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab567f4691f054eb789f4f64f7b124ab0"><td class="memItemLeft" align="right" valign="top"><a id="ab567f4691f054eb789f4f64f7b124ab0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>free</b> (void *p)</td></tr>
+<tr class="memitem:ab567f4691f054eb789f4f64f7b124ab0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1pool__allocator.html#ab567f4691f054eb789f4f64f7b124ab0">free</a> (void *p)</td></tr>
+<tr class="memdesc:ab567f4691f054eb789f4f64f7b124ab0"><td class="mdescLeft">&#160;</td><td class="mdescRight">pit the memory back into the pool  <a href="classutil_1_1pool__allocator.html#ab567f4691f054eb789f4f64f7b124ab0">More...</a><br /></td></tr>
 <tr class="separator:ab567f4691f054eb789f4f64f7b124ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac55323211ab4a456397834006ff7f70f"><td class="memItemLeft" align="right" valign="top"><a id="ac55323211ab4a456397834006ff7f70f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resize</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1pool__allocator.html#ac55323211ab4a456397834006ff7f70f">resize</a> ()</td></tr>
+<tr class="memdesc:ac55323211ab4a456397834006ff7f70f"><td class="mdescLeft">&#160;</td><td class="mdescRight">add CHUNK_SIZE elements to the pool <br /></td></tr>
 <tr class="separator:ac55323211ab4a456397834006ff7f70f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac53e961b9a253aca702941a8416db28"><td class="memItemLeft" align="right" valign="top"><a id="aac53e961b9a253aca702941a8416db28"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>pool_allocator</b> (const <a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;)=delete</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1pool__allocator.html#aac53e961b9a253aca702941a8416db28">pool_allocator</a> (const <a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;)=delete</td></tr>
+<tr class="memdesc:aac53e961b9a253aca702941a8416db28"><td class="mdescLeft">&#160;</td><td class="mdescRight">deleted constructor <br /></td></tr>
 <tr class="separator:aac53e961b9a253aca702941a8416db28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3203be8ffb0d2233df10d4229a0daa3"><td class="memItemLeft" align="right" valign="top"><a id="ac3203be8ffb0d2233df10d4229a0daa3"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>pool_allocator</b> (<a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;&amp;)=delete</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1pool__allocator.html#ac3203be8ffb0d2233df10d4229a0daa3">pool_allocator</a> (<a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;&amp;)=delete</td></tr>
+<tr class="memdesc:ac3203be8ffb0d2233df10d4229a0daa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">deleted constructor <br /></td></tr>
 <tr class="separator:ac3203be8ffb0d2233df10d4229a0daa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af555cd5749bdccb418021bdefb0cef48"><td class="memItemLeft" align="right" valign="top"><a id="af555cd5749bdccb418021bdefb0cef48"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1pool__allocator.html#af555cd5749bdccb418021bdefb0cef48">~pool_allocator</a> ()</td></tr>
+<tr class="memdesc:af555cd5749bdccb418021bdefb0cef48"><td class="mdescLeft">&#160;</td><td class="mdescRight">deleted destructor <br /></td></tr>
+<tr class="separator:af555cd5749bdccb418021bdefb0cef48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ca106a232becdc44d6d4b7027fd9b66"><td class="memItemLeft" align="right" valign="top"><a id="a6ca106a232becdc44d6d4b7027fd9b66"></a>
-<a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;)=delete</td></tr>
+<a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1pool__allocator.html#a6ca106a232becdc44d6d4b7027fd9b66">operator=</a> (const <a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a6ca106a232becdc44d6d4b7027fd9b66"><td class="mdescLeft">&#160;</td><td class="mdescRight">deleted assignment operator <br /></td></tr>
 <tr class="separator:a6ca106a232becdc44d6d4b7027fd9b66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61f7f691551b9ae48181fbd091be8f64"><td class="memItemLeft" align="right" valign="top"><a id="a61f7f691551b9ae48181fbd091be8f64"></a>
-<a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;&amp;)=delete</td></tr>
+<a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1pool__allocator.html#a61f7f691551b9ae48181fbd091be8f64">operator=</a> (<a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;&amp;)=delete</td></tr>
+<tr class="memdesc:a61f7f691551b9ae48181fbd091be8f64"><td class="mdescLeft">&#160;</td><td class="mdescRight">deleted assignment operator <br /></td></tr>
 <tr class="separator:a61f7f691551b9ae48181fbd091be8f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64bcba1c2afd166969c12e71f3cfd6bb"><td class="memItemLeft" align="right" valign="top"><a id="a64bcba1c2afd166969c12e71f3cfd6bb"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_capacity</b> ()</td></tr>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1pool__allocator.html#a64bcba1c2afd166969c12e71f3cfd6bb">get_capacity</a> ()</td></tr>
+<tr class="memdesc:a64bcba1c2afd166969c12e71f3cfd6bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the number of allocated bytes <br /></td></tr>
 <tr class="separator:a64bcba1c2afd166969c12e71f3cfd6bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3eec2bdfd5731f98c0669ae91278f5b0"><td class="memItemLeft" align="right" valign="top"><a id="a3eec2bdfd5731f98c0669ae91278f5b0"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_free_entries_count</b> ()</td></tr>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1pool__allocator.html#a3eec2bdfd5731f98c0669ae91278f5b0">get_free_entries_count</a> ()</td></tr>
+<tr class="memdesc:a3eec2bdfd5731f98c0669ae91278f5b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the number of free elements <br /></td></tr>
 <tr class="separator:a3eec2bdfd5731f98c0669ae91278f5b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a3064a8dad08445ab5ef5b944cfbe0f97"><td class="memItemLeft" align="right" valign="top"><a id="a3064a8dad08445ab5ef5b944cfbe0f97"></a>
-static <a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> ()</td></tr>
+static <a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1pool__allocator.html#a3064a8dad08445ab5ef5b944cfbe0f97">get</a> ()</td></tr>
+<tr class="memdesc:a3064a8dad08445ab5ef5b944cfbe0f97"><td class="mdescLeft">&#160;</td><td class="mdescRight">pool allocator getter <br /></td></tr>
 <tr class="separator:a3064a8dad08445ab5ef5b944cfbe0f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T, unsigned CHUNK_SIZE = 4096&gt;<br />
 class util::pool_allocator&lt; T, CHUNK_SIZE &gt;</h3>
 
+<p>a generic pool allocator singleton not being MT-safe </p>
 
-<p class="definition">Definition at line <a class="el" href="pool__allocator_8h_source.html#l00022">22</a> of file <a class="el" href="pool__allocator_8h_source.html">pool_allocator.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<p class="definition">Definition at line <a class="el" href="pool__allocator_8h_source.html#l00028">28</a> of file <a class="el" href="pool__allocator_8h_source.html">pool_allocator.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab567f4691f054eb789f4f64f7b124ab0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab567f4691f054eb789f4f64f7b124ab0">&#9670;&nbsp;</a></span>free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , unsigned CHUNK_SIZE&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classutil_1_1pool__allocator.html">util::pool_allocator</a>&lt; T, CHUNK_SIZE &gt;::free </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>pit the memory back into the pool </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="pool__allocator_8h_source.html#l00125">125</a> of file <a class="el" href="pool__allocator_8h_source.html">pool_allocator.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/common/util/<a class="el" href="pool__allocator_8h_source.html">pool_allocator.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceutil.html">util</a></li><li class="navelem"><a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

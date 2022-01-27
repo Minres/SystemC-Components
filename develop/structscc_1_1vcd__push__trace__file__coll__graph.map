@@ -1,5 +1,5 @@
 <map id="scc::vcd_push_trace_file" name="scc::vcd_push_trace_file">
-<area shape="rect" id="node1" title=" " alt="" coords="42,80,221,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="31,80,210,107"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,108,32"/>
-<area shape="rect" id="node3" href="$structscc_1_1trace__observer.html" title=" " alt="" coords="132,5,280,32"/>
+<area shape="rect" id="node3" href="$structscc_1_1observer.html" title="The interface defining an observer." alt="" coords="132,5,240,32"/>
 </map>

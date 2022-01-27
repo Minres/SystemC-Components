@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>scc</b></li><li class="navelem"><a class="el" href="classscc_1_1perf__estimator.html">perf_estimator</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classscc_1_1perf__estimator.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">scc::perf_estimator Member List</div>  </div>
@@ -58,6 +75,8 @@ $(function() {
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>end_of_simulation</b>() override (defined in <a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a>)</td><td class="entry"><a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>eoe</b> (defined in <a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a>)</td><td class="entry"><a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>eos</b> (defined in <a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a>)</td><td class="entry"><a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>get_memory</b>() (defined in <a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a>)</td><td class="entry"><a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>max_memory</b> (defined in <a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a>)</td><td class="entry"><a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr><td class="entry"><a class="el" href="classscc_1_1perf__estimator.html#acf4b89b1872548fbad9cc550a289b4c9">perf_estimator</a>()</td><td class="entry"><a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classscc_1_1perf__estimator.html#ad87498e8dae1a8ed27e9191b292197c4">perf_estimator</a>(sc_core::sc_time heart_beat)</td><td class="entry"><a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>perf_estimator</b>(const sc_core::sc_module_name &amp;nm, sc_core::sc_time heart_beat) (defined in <a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a>)</td><td class="entry"><a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
@@ -67,11 +86,14 @@ $(function() {
   <tr bgcolor="#f0f0f0"><td class="entry"><b>start_of_simulation</b>() override (defined in <a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a>)</td><td class="entry"><a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classscc_1_1perf__estimator.html#ae1942a4583cf32a9e9055f6bac3f01b2">~perf_estimator</a>()</td><td class="entry"><a class="el" href="classscc_1_1perf__estimator.html">scc::perf_estimator</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -399,7 +399,7 @@ $(function() {
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; e:all_traces){</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        <span class="keyword">auto</span> alias_it = alias_map.find(e.trc-&gt;get_hash());</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        e.trc-&gt;is_alias=alias_it!=std::end(alias_map);</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        <span class="keyword">auto</span> hier_tokens = util::split(e.trc-&gt;name, <span class="charliteral">&#39;.&#39;</span>);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        <span class="keyword">auto</span> hier_tokens = <a class="code" href="namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359">util::split</a>(e.trc-&gt;name, <span class="charliteral">&#39;.&#39;</span>);</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        <span class="keyword">auto</span> sig_name=hier_tokens.back();</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        hier_tokens.pop_back();</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        <span class="keyword">auto</span> cur_it = fst_scope.begin();</div>
@@ -477,6 +477,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructscc_1_1trace_1_1fst__trace_html"><div class="ttname"><a href="structscc_1_1trace_1_1fst__trace.html">scc::trace::fst_trace</a></div><div class="ttdef"><b>Definition:</b> <a href="fst__trace_8cpp_source.html#l00076">fst_trace.cpp:76</a></div></div>
 <div class="ttc" id="astructscc_1_1trace_1_1traits_html"><div class="ttname"><a href="structscc_1_1trace_1_1traits.html">scc::trace::traits</a></div><div class="ttdef"><b>Definition:</b> <a href="types_8hh_source.html#l00060">types.hh:60</a></div></div>
+<div class="ttc" id="anamespaceutil_html_aa22e7291ae32401fbcb10a7f8fbf5359"><div class="ttname"><a href="namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359">util::split</a></div><div class="ttdeci">std::vector&lt; std::string &gt; split(const std::string &amp;s, char separator)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00171">ities.h:171</a></div></div>
 <div class="ttc" id="astructscc_1_1trace_1_1fst__trace__t_html"><div class="ttname"><a href="structscc_1_1trace_1_1fst__trace__t.html">scc::trace::fst_trace_t</a></div><div class="ttdef"><b>Definition:</b> <a href="fst__trace_8cpp_source.html#l00123">fst_trace.cpp:123</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

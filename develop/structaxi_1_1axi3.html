@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespaceaxi.html">axi</a></li><li class="navelem"><a class="el" href="structaxi_1_1axi3.html">axi3</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('structaxi_1_1axi3.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -63,7 +80,7 @@ Inheritance diagram for axi::axi3:</div>
 <area shape="rect" href="structaxi_1_1request.html" title=" " alt="" coords="31,5,129,32"/>
 <area shape="rect" href="structaxi_1_1axi3__extension.html" title=" " alt="" coords="5,244,155,271"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for axi::axi3:</div>
 <div class="dyncontent">
@@ -72,7 +89,7 @@ Collaboration diagram for axi::axi3:</div>
 <area shape="rect" title=" " alt="" coords="15,80,94,107"/>
 <area shape="rect" href="structaxi_1_1request.html" title=" " alt="" coords="5,5,104,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -290,7 +307,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>stash_lpid</b> {st
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The AXI3 specific interpretation of request data members </p>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00391">391</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00394">394</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5e18512e63b1f806463a6065dd3ab1dc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5e18512e63b1f806463a6065dd3ab1dc">&#9670;&nbsp;</a></span>operator=()</h2>
@@ -323,7 +340,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>stash_lpid</b> {st
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to self </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00397">397</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00400">400</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -359,7 +376,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>stash_lpid</b> {st
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01268">1268</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01284">1284</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -395,7 +412,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>stash_lpid</b> {st
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01277">1277</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01293">1293</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -431,7 +448,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>stash_lpid</b> {st
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01240">1240</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01256">1256</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -467,7 +484,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>stash_lpid</b> {st
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01254">1254</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01270">1270</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -503,7 +520,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>stash_lpid</b> {st
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01295">1295</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01311">1311</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -539,7 +556,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>stash_lpid</b> {st
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01286">1286</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01302">1302</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -547,11 +564,15 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>stash_lpid</b> {st
 <li>third_party/axi_chi/axi/<a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceaxi.html">axi</a></li><li class="navelem"><a class="el" href="structaxi_1_1axi3.html">axi3</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

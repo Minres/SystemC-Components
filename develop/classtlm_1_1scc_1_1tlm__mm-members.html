@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>tlm</b></li><li class="navelem"><b>scc</b></li><li class="navelem"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm_mm</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classtlm_1_1scc_1_1tlm__mm.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt; Member List</div>  </div>
@@ -53,6 +70,8 @@ $(function() {
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html#a4165697b94ec8d972cec1ef316f0092b">allocate</a>()</td><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html#a15b49a8f5f6561f7ad2e1294793328f8">allocate</a>()</td><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html#a9cf9ab91cdaff017220bc25d90c60e69">allocate</a>(size_t sz)</td><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html#ab922ca91d8f79318038f0a0d598aa3eb">allocate</a>(size_t sz)</td><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html#accf033734d72a1082e0cfc7246707493">free</a>(tlm::tlm_generic_payload *trans) override</td><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html#ad96d412a19c84b6d945e939d313f361a">get</a>()</td><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">static</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator=</b>(const tlm_mm &amp;other)=delete (defined in <a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</a>)</td><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</a></td><td class="entry"></td></tr>
@@ -62,11 +81,14 @@ $(function() {
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>tlm_mm</b>(tlm_mm &amp;&amp;)=delete (defined in <a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</a>)</td><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>~tlm_mm</b>()=default (defined in <a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</a>)</td><td class="entry"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

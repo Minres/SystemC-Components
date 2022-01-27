@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespaceahb.html">ahb</a></li><li class="navelem"><a class="el" href="namespaceahb_1_1pe.html">pe</a></li><li class="navelem"><a class="el" href="classahb_1_1pe_1_1ahb__target__b.html">ahb_target_b</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classahb_1_1pe_1_1ahb__target__b.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
@@ -67,7 +84,7 @@ Inheritance diagram for ahb::pe::ahb_target_b:</div>
 <area shape="rect" title=" " alt="" coords="5,20,97,47"/>
 <area shape="rect" title=" " alt="" coords="122,5,325,61"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for ahb::pe::ahb_target_b:</div>
 <div class="dyncontent">
@@ -80,7 +97,7 @@ Collaboration diagram for ahb::pe::ahb_target_b:</div>
 <area shape="rect" title=" " alt="" coords="5,111,195,137"/>
 <area shape="rect" title=" " alt="" coords="59,161,141,188"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -96,23 +113,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac2e17a809a6ba9b6f95eaaf6a3e47e35"><td class="memItemLeft" align="right" valign="top"><a id="ac2e17a809a6ba9b6f95eaaf6a3e47e35"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SC_HAS_PROCESS</b> (<a class="el" href="classahb_1_1pe_1_1ahb__target__b.html">ahb_target_b</a>)</td></tr>
 <tr class="separator:ac2e17a809a6ba9b6f95eaaf6a3e47e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga891b0f434531888c5ff77914a3a1577d"><td class="memItemLeft" align="right" valign="top">
+<tr class="memitem:a891b0f434531888c5ff77914a3a1577d"><td class="memItemLeft" align="right" valign="top"><a id="a891b0f434531888c5ff77914a3a1577d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>b_transport</b> (payload_type &amp;trans, sc_core::sc_time &amp;t) override</td></tr>
-<tr class="separator:ga891b0f434531888c5ff77914a3a1577d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad82377c5ca58640722c642cbc269da7c"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a891b0f434531888c5ff77914a3a1577d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad82377c5ca58640722c642cbc269da7c"><td class="memItemLeft" align="right" valign="top"><a id="ad82377c5ca58640722c642cbc269da7c"></a>
 tlm::tlm_sync_enum&#160;</td><td class="memItemRight" valign="bottom"><b>nb_transport_fw</b> (payload_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t) override</td></tr>
-<tr class="separator:gad82377c5ca58640722c642cbc269da7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7c448a06613914a5bf1dbd61ff8da6db"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:ad82377c5ca58640722c642cbc269da7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c448a06613914a5bf1dbd61ff8da6db"><td class="memItemLeft" align="right" valign="top"><a id="a7c448a06613914a5bf1dbd61ff8da6db"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>get_direct_mem_ptr</b> (payload_type &amp;trans, tlm::tlm_dmi &amp;dmi_data) override</td></tr>
-<tr class="separator:ga7c448a06613914a5bf1dbd61ff8da6db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4b2cd69f477a8e6af34ba8702c91368c"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a7c448a06613914a5bf1dbd61ff8da6db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b2cd69f477a8e6af34ba8702c91368c"><td class="memItemLeft" align="right" valign="top"><a id="a4b2cd69f477a8e6af34ba8702c91368c"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>transport_dbg</b> (payload_type &amp;trans) override</td></tr>
-<tr class="separator:ga4b2cd69f477a8e6af34ba8702c91368c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaae571201d6387648356dc363c4996451"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__config.html#gaae571201d6387648356dc363c4996451">set_operation_cb</a> (std::function&lt; unsigned(payload_type &amp;trans)&gt; cb)</td></tr>
-<tr class="memdesc:gaae571201d6387648356dc363c4996451"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the operation callback function.  <a href="group__config.html#gaae571201d6387648356dc363c4996451">More...</a><br /></td></tr>
-<tr class="separator:gaae571201d6387648356dc363c4996451"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2ef5bb2e95d1a76c4513e6977daf9cf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__config.html#ga2ef5bb2e95d1a76c4513e6977daf9cf5">operation_resp</a> (payload_type &amp;trans, bool sync=false)</td></tr>
-<tr class="separator:ga2ef5bb2e95d1a76c4513e6977daf9cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a4b2cd69f477a8e6af34ba8702c91368c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae571201d6387648356dc363c4996451"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classahb_1_1pe_1_1ahb__target__b.html#aae571201d6387648356dc363c4996451">set_operation_cb</a> (std::function&lt; unsigned(payload_type &amp;trans)&gt; cb)</td></tr>
+<tr class="memdesc:aae571201d6387648356dc363c4996451"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the operation callback function.  <a href="classahb_1_1pe_1_1ahb__target__b.html#aae571201d6387648356dc363c4996451">More...</a><br /></td></tr>
+<tr class="separator:aae571201d6387648356dc363c4996451"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ef5bb2e95d1a76c4513e6977daf9cf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classahb_1_1pe_1_1ahb__target__b.html#a2ef5bb2e95d1a76c4513e6977daf9cf5">operation_resp</a> (payload_type &amp;trans, bool sync=false)</td></tr>
+<tr class="separator:a2ef5bb2e95d1a76c4513e6977daf9cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -142,77 +159,208 @@ sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valig
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ga7758a6c11abfe9394a2712f46eeba26b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__config.html#ga7758a6c11abfe9394a2712f46eeba26b">ahb_target_b</a> (const sc_core::sc_module_name &amp;nm, sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;&gt; &amp;port, size_t transfer_width)</td></tr>
-<tr class="separator:ga7758a6c11abfe9394a2712f46eeba26b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0343640c64f39bc77f80c500d30f1c89"><td class="memItemLeft" align="right" valign="top">
+<tr class="memitem:a7758a6c11abfe9394a2712f46eeba26b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classahb_1_1pe_1_1ahb__target__b.html#a7758a6c11abfe9394a2712f46eeba26b">ahb_target_b</a> (const sc_core::sc_module_name &amp;nm, sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;&gt; &amp;port, size_t transfer_width)</td></tr>
+<tr class="separator:a7758a6c11abfe9394a2712f46eeba26b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0343640c64f39bc77f80c500d30f1c89"><td class="memItemLeft" align="right" valign="top"><a id="a0343640c64f39bc77f80c500d30f1c89"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ahb_target_b</b> (<a class="el" href="classahb_1_1pe_1_1ahb__target__b.html">ahb_target_b</a> const &amp;)=delete</td></tr>
-<tr class="separator:ga0343640c64f39bc77f80c500d30f1c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga05ee07dede02271cf9110f1eb1b6b1a9"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a0343640c64f39bc77f80c500d30f1c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05ee07dede02271cf9110f1eb1b6b1a9"><td class="memItemLeft" align="right" valign="top"><a id="a05ee07dede02271cf9110f1eb1b6b1a9"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ahb_target_b</b> (<a class="el" href="classahb_1_1pe_1_1ahb__target__b.html">ahb_target_b</a> &amp;&amp;)=delete</td></tr>
-<tr class="separator:ga05ee07dede02271cf9110f1eb1b6b1a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga588ad1af17f8c7f5aeca63ed3150f7d0"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a05ee07dede02271cf9110f1eb1b6b1a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a588ad1af17f8c7f5aeca63ed3150f7d0"><td class="memItemLeft" align="right" valign="top"><a id="a588ad1af17f8c7f5aeca63ed3150f7d0"></a>
 <a class="el" href="classahb_1_1pe_1_1ahb__target__b.html">ahb_target_b</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classahb_1_1pe_1_1ahb__target__b.html">ahb_target_b</a> const &amp;)=delete</td></tr>
-<tr class="separator:ga588ad1af17f8c7f5aeca63ed3150f7d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0c63dfc91a3cd3a725d91b8f326f9e21"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a588ad1af17f8c7f5aeca63ed3150f7d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c63dfc91a3cd3a725d91b8f326f9e21"><td class="memItemLeft" align="right" valign="top"><a id="a0c63dfc91a3cd3a725d91b8f326f9e21"></a>
 <a class="el" href="classahb_1_1pe_1_1ahb__target__b.html">ahb_target_b</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classahb_1_1pe_1_1ahb__target__b.html">ahb_target_b</a> &amp;&amp;)=delete</td></tr>
-<tr class="separator:ga0c63dfc91a3cd3a725d91b8f326f9e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga84ef0869d085b2647e44ab785ddaffcc"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a0c63dfc91a3cd3a725d91b8f326f9e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84ef0869d085b2647e44ab785ddaffcc"><td class="memItemLeft" align="right" valign="top"><a id="a84ef0869d085b2647e44ab785ddaffcc"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>send_resp_thread</b> ()</td></tr>
-<tr class="separator:ga84ef0869d085b2647e44ab785ddaffcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga598afd243b1c941b0db075b7f597556f"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a84ef0869d085b2647e44ab785ddaffcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a598afd243b1c941b0db075b7f597556f"><td class="memItemLeft" align="right" valign="top"><a id="a598afd243b1c941b0db075b7f597556f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>end_of_elaboration</b> () override</td></tr>
-<tr class="separator:ga598afd243b1c941b0db075b7f597556f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a598afd243b1c941b0db075b7f597556f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:gaa6ba1104edaa91b9a87e177f8ef298bf"><td class="memItemLeft" align="right" valign="top">
+<tr class="memitem:aa6ba1104edaa91b9a87e177f8ef298bf"><td class="memItemLeft" align="right" valign="top"><a id="aa6ba1104edaa91b9a87e177f8ef298bf"></a>
 sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>socket_bw</b></td></tr>
-<tr class="separator:gaa6ba1104edaa91b9a87e177f8ef298bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7e5b3c0641ff13071136bdd386f2a4c1"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:aa6ba1104edaa91b9a87e177f8ef298bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e5b3c0641ff13071136bdd386f2a4c1"><td class="memItemLeft" align="right" valign="top"><a id="a7e5b3c0641ff13071136bdd386f2a4c1"></a>
 sc_core::sc_semaphore&#160;</td><td class="memItemRight" valign="bottom"><b>sn_sem</b> {1}</td></tr>
-<tr class="separator:ga7e5b3c0641ff13071136bdd386f2a4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8cd382ad0a941c41b0b67d028f10758e"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a7e5b3c0641ff13071136bdd386f2a4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cd382ad0a941c41b0b67d028f10758e"><td class="memItemLeft" align="right" valign="top"><a id="a8cd382ad0a941c41b0b67d028f10758e"></a>
 sc_core::sc_mutex&#160;</td><td class="memItemRight" valign="bottom"><b>wr</b></td></tr>
-<tr class="separator:ga8cd382ad0a941c41b0b67d028f10758e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad934f8e560a446bbb2b30f8da05ef243"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a8cd382ad0a941c41b0b67d028f10758e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad934f8e560a446bbb2b30f8da05ef243"><td class="memItemLeft" align="right" valign="top"><a id="ad934f8e560a446bbb2b30f8da05ef243"></a>
 sc_core::sc_mutex&#160;</td><td class="memItemRight" valign="bottom"><b>rd</b></td></tr>
-<tr class="separator:gad934f8e560a446bbb2b30f8da05ef243"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf4557d03e6052b28066706ca5f6923f7"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:ad934f8e560a446bbb2b30f8da05ef243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4557d03e6052b28066706ca5f6923f7"><td class="memItemLeft" align="right" valign="top"><a id="af4557d03e6052b28066706ca5f6923f7"></a>
 sc_core::sc_mutex&#160;</td><td class="memItemRight" valign="bottom"><b>sn</b></td></tr>
-<tr class="separator:gaf4557d03e6052b28066706ca5f6923f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga146f7ef5d36f60b02345e725ebb1de3d"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:af4557d03e6052b28066706ca5f6923f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a146f7ef5d36f60b02345e725ebb1de3d"><td class="memItemLeft" align="right" valign="top"><a id="a146f7ef5d36f60b02345e725ebb1de3d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>fast_resp</b> {false}</td></tr>
-<tr class="separator:ga146f7ef5d36f60b02345e725ebb1de3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga62553fe6be6e433e3e50453c06e5ed96"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a146f7ef5d36f60b02345e725ebb1de3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62553fe6be6e433e3e50453c06e5ed96"><td class="memItemLeft" align="right" valign="top"><a id="a62553fe6be6e433e3e50453c06e5ed96"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>fast_req</b> {false}</td></tr>
-<tr class="separator:ga62553fe6be6e433e3e50453c06e5ed96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8a56bf906e44bd30b9272e1f6edc0d5a"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a62553fe6be6e433e3e50453c06e5ed96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a56bf906e44bd30b9272e1f6edc0d5a"><td class="memItemLeft" align="right" valign="top"><a id="a8a56bf906e44bd30b9272e1f6edc0d5a"></a>
 std::function&lt; unsigned(payload_type &amp;trans)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>operation_cb</b></td></tr>
-<tr class="separator:ga8a56bf906e44bd30b9272e1f6edc0d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2a414fa56508428a62cd0a0ed26e6c3c"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a8a56bf906e44bd30b9272e1f6edc0d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a414fa56508428a62cd0a0ed26e6c3c"><td class="memItemLeft" align="right" valign="top"><a id="a2a414fa56508428a62cd0a0ed26e6c3c"></a>
 <a class="el" href="classscc_1_1ordered__semaphore.html">scc::ordered_semaphore</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rd_resp</b> {1}</td></tr>
-<tr class="separator:ga2a414fa56508428a62cd0a0ed26e6c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabebe7096fd9a9ffa8b887516115f5d35"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a2a414fa56508428a62cd0a0ed26e6c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abebe7096fd9a9ffa8b887516115f5d35"><td class="memItemLeft" align="right" valign="top"><a id="abebe7096fd9a9ffa8b887516115f5d35"></a>
 <a class="el" href="classscc_1_1ordered__semaphore.html">scc::ordered_semaphore</a>&#160;</td><td class="memItemRight" valign="bottom"><b>wr_resp</b> {1}</td></tr>
-<tr class="separator:gabebe7096fd9a9ffa8b887516115f5d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga310c1e69b87b2d459c6ad2edbbeeda4c"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:abebe7096fd9a9ffa8b887516115f5d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a310c1e69b87b2d459c6ad2edbbeeda4c"><td class="memItemLeft" align="right" valign="top"><a id="a310c1e69b87b2d459c6ad2edbbeeda4c"></a>
 sc_core::sc_clock *&#160;</td><td class="memItemRight" valign="bottom"><b>clk_if</b> {nullptr}</td></tr>
-<tr class="separator:ga310c1e69b87b2d459c6ad2edbbeeda4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a310c1e69b87b2d459c6ad2edbbeeda4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>the target protocol engine base class </p>
 
 <p class="definition">Definition at line <a class="el" href="ahb__target_8h_source.html#l00018">18</a> of file <a class="el" href="ahb__target_8h_source.html">ahb_target.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7758a6c11abfe9394a2712f46eeba26b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7758a6c11abfe9394a2712f46eeba26b">&#9670;&nbsp;</a></span>ahb_target_b()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ahb::pe::ahb_target_b::ahb_target_b </td>
+          <td>(</td>
+          <td class="paramtype">const sc_core::sc_module_name &amp;&#160;</td>
+          <td class="paramname"><em>nm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>transfer_width</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>the constructor. Protected as it should only be called by derived classes</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nm</td><td>the module name </td></tr>
+    <tr><td class="paramname">port</td><td></td></tr>
+    <tr><td class="paramname">transfer_width</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2ef5bb2e95d1a76c4513e6977daf9cf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ef5bb2e95d1a76c4513e6977daf9cf5">&#9670;&nbsp;</a></span>operation_resp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ahb_target_b::operation_resp </td>
+          <td>(</td>
+          <td class="paramtype">payload_type &amp;&#160;</td>
+          <td class="paramname"><em>trans</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>sync</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">trans</td><td></td></tr>
+    <tr><td class="paramname">sync</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="ahb__target_8cpp_source.html#l00088">88</a> of file <a class="el" href="ahb__target_8cpp_source.html">ahb_target.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aae571201d6387648356dc363c4996451"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae571201d6387648356dc363c4996451">&#9670;&nbsp;</a></span>set_operation_cb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ahb::pe::ahb_target_b::set_operation_cb </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; unsigned(payload_type &amp;trans)&gt;&#160;</td>
+          <td class="paramname"><em>cb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the operation callback function. </p>
+<p>This callback is invoked once a transaction arrives. This function is not allowed to block and returns the latency of the operation i.e. the duration until the reponse phase starts </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>refine API</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cb</td><td>the callback function </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="ahb__target_8h_source.html#l00067">67</a> of file <a class="el" href="ahb__target_8h_source.html">ahb_target.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/bus_interfaces/ahb/pe/<a class="el" href="ahb__target_8h_source.html">ahb_target.h</a></li>
 <li>src/bus_interfaces/ahb/<a class="el" href="ahb__target_8cpp_source.html">ahb_target.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceahb.html">ahb</a></li><li class="navelem"><a class="el" href="namespaceahb_1_1pe.html">pe</a></li><li class="navelem"><a class="el" href="classahb_1_1pe_1_1ahb__target__b.html">ahb_target_b</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

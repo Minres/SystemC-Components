@@ -40,7 +40,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>util</b></li><li class="navelem"><a class="el" href="classutil_1_1thread__syncronizer.html">thread_syncronizer</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespaceutil.html">util</a></li><li class="navelem"><a class="el" href="classutil_1_1thread__syncronizer.html">thread_syncronizer</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -51,6 +51,9 @@ $(function() {
 <div class="title">util::thread_syncronizer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>executes a function syncronized in another thread  
+ <a href="classutil_1_1thread__syncronizer.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -74,9 +77,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af8a538fefc804710640cba138af54631"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>executes a function in another thread </p>
+<div class="textblock"><p>executes a function syncronized in another thread </p>
 
-<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00042">42</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00048">48</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afa8d62bbad590d7d27fea58e841cc868"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa8d62bbad590d7d27fea58e841cc868">&#9670;&nbsp;</a></span>thread_syncronizer()</h2>
@@ -128,7 +131,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>the destructor </p>
 
-<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00071">71</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00077">77</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
 
 </div>
 </div>
@@ -178,7 +181,7 @@ template&lt;class F , class... Args&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the future holding the result of the execution </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00102">102</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00108">108</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
 
 </div>
 </div>
@@ -227,7 +230,7 @@ template&lt;class F , class... Args&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the result of the function </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00089">89</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00095">95</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
 
 </div>
 </div>
@@ -255,7 +258,7 @@ template&lt;class F , class... Args&gt; </div>
 </div><div class="memdoc">
 <p>execute the next task in queue but do not wait for the next one </p>
 
-<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00118">118</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00124">124</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
 
 </div>
 </div>
@@ -283,7 +286,7 @@ template&lt;class F , class... Args&gt; </div>
 </div><div class="memdoc">
 <p>execute the next task in queue or wait for the next one </p>
 
-<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00140">140</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00146">146</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
 
 </div>
 </div>
@@ -312,7 +315,7 @@ template&lt;class F , class... Args&gt; </div>
 <p>check if the synchronizer can handle functions</p>
 <dl class="section return"><dt>Returns</dt><dd>true if it can handle a new request </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00080">80</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__syncronizer_8h_source.html#l00086">86</a> of file <a class="el" href="thread__syncronizer_8h_source.html">thread_syncronizer.h</a>.</p>
 
 </div>
 </div>

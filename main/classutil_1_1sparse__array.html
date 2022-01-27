@@ -40,7 +40,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>util</b></li><li class="navelem"><a class="el" href="classutil_1_1sparse__array.html">sparse_array</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespaceutil.html">util</a></li><li class="navelem"><a class="el" href="classutil_1_1sparse__array.html">sparse_array</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -54,6 +54,9 @@ $(function() {
 <div class="title">util::sparse_array&lt; T, SIZE, lower_width &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>a sparse array suitable for large sizes  
+ <a href="classutil_1_1sparse__array.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -103,9 +106,10 @@ std::array&lt; page_type *, SIZE/(1&lt;&lt; lower_width)+1 &gt;&#160;</td><td cl
 <div class="textblock"><h3>template&lt;typename T, uint64_t SIZE, int lower_width = 24&gt;<br />
 class util::sparse_array&lt; T, SIZE, lower_width &gt;</h3>
 
+<p>a sparse array suitable for large sizes </p>
 <p>a simple array which allocates memory in configurable chunks (size of 2^lower_width), used for large sparse arrays. Memory is allocated on demand </p>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00043">43</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00050">50</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9fe86ffaf7b176925876d84d8d7fe47a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9fe86ffaf7b176925876d84d8d7fe47a">&#9670;&nbsp;</a></span>sparse_array()</h2>
@@ -133,7 +137,7 @@ template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
 </div><div class="memdoc">
 <p>the default constructor </p>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00071">71</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00078">78</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -163,7 +167,7 @@ template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
 </div><div class="memdoc">
 <p>the destructor </p>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00075">75</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00082">82</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -202,7 +206,7 @@ template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the page is allocated </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00110">110</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00117">117</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -240,7 +244,7 @@ template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to page </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00098">98</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00105">105</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -278,7 +282,7 @@ template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the data type reference </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00085">85</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00092">92</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
@@ -309,7 +313,7 @@ template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
 <p>get the size of the array</p>
 <dl class="section return"><dt>Returns</dt><dd>the size </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00120">120</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00127">127</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>

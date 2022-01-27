@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespaceaxi.html">axi</a></li><li class="navelem"><a class="el" href="namespaceaxi_1_1pe.html">pe</a></li><li class="navelem"><a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi_target_pe_b</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classaxi_1_1pe_1_1axi__target__pe__b.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -70,29 +87,28 @@ Inheritance diagram for axi::pe::axi_target_pe_b:</div>
 <area shape="rect" href="structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="167,20,282,47"/>
 <area shape="rect" title=" " alt="" coords="307,5,468,61"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for axi::pe::axi_target_pe_b:</div>
 <div class="dyncontent">
 <div class="center"><img src="classaxi_1_1pe_1_1axi__target__pe__b__coll__graph.png" border="0" usemap="#axi_1_1pe_1_1axi__target__pe__b_coll__map" alt="Collaboration graph"/></div>
 <map name="axi_1_1pe_1_1axi__target__pe__b_coll__map" id="axi_1_1pe_1_1axi__target__pe__b_coll__map">
-<area shape="rect" title=" " alt="" coords="1008,166,1187,193"/>
-<area shape="rect" title=" " alt="" coords="685,25,777,51"/>
-<area shape="rect" href="structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="674,75,789,102"/>
-<area shape="rect" href="structscc_1_1peq.html" title=" " alt="" coords="262,5,437,76"/>
-<area shape="rect" title=" " alt="" coords="30,27,170,54"/>
-<area shape="rect" href="classscc_1_1fifo__w__cb.html" title=" " alt="" coords="244,100,455,171"/>
-<area shape="rect" title=" " alt="" coords="35,122,165,149"/>
-<area shape="rect" title=" " alt="" coords="651,126,812,182"/>
-<area shape="rect" href="classscc_1_1fifo__w__cb.html" title=" " alt="" coords="648,206,815,262"/>
-<area shape="rect" title=" " alt="" coords="255,221,443,247"/>
-<area shape="rect" href="classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="259,317,440,343"/>
-<area shape="rect" title=" " alt="" coords="5,311,195,338"/>
-<area shape="rect" title=" " alt="" coords="59,370,141,397"/>
-<area shape="rect" href="structscc_1_1sc__variable__b.html" title=" " alt="" coords="279,378,419,405"/>
-<area shape="rect" href="structscc_1_1sc__variable.html" title=" " alt="" coords="624,378,839,405"/>
+<area shape="rect" title=" " alt="" coords="1016,168,1195,195"/>
+<area shape="rect" title=" " alt="" coords="685,5,777,32"/>
+<area shape="rect" href="structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="674,216,789,243"/>
+<area shape="rect" href="structscc_1_1peq.html" title=" " alt="" coords="262,215,437,286"/>
+<area shape="rect" title=" " alt="" coords="59,301,141,328"/>
+<area shape="rect" href="classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="259,311,440,337"/>
+<area shape="rect" href="structscc_1_1sc__variable__b.html" title=" " alt="" coords="279,361,419,388"/>
+<area shape="rect" href="classscc_1_1fifo__w__cb.html" title=" " alt="" coords="244,121,455,191"/>
+<area shape="rect" title=" " alt="" coords="35,143,165,169"/>
+<area shape="rect" title=" " alt="" coords="651,136,812,192"/>
+<area shape="rect" href="classscc_1_1fifo__w__cb.html" title=" " alt="" coords="648,56,815,112"/>
+<area shape="rect" title=" " alt="" coords="255,69,443,96"/>
+<area shape="rect" title=" " alt="" coords="5,368,195,395"/>
+<area shape="rect" href="structscc_1_1sc__variable.html" title=" " alt="" coords="624,361,839,388"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -113,27 +129,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0ed3b00966d6eb63ce460c03203ef17b"><td class="memItemLeft" align="right" valign="top"><a id="a0ed3b00966d6eb63ce460c03203ef17b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SC_HAS_PROCESS</b> (<a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi_target_pe_b</a>)</td></tr>
 <tr class="separator:a0ed3b00966d6eb63ce460c03203ef17b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf27eb1220d1d2bd2d75e4eed579f50b5"><td class="memItemLeft" align="right" valign="top">
+<tr class="memitem:af27eb1220d1d2bd2d75e4eed579f50b5"><td class="memItemLeft" align="right" valign="top"><a id="af27eb1220d1d2bd2d75e4eed579f50b5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>b_transport</b> (<a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> &amp;trans, sc_core::sc_time &amp;t) override</td></tr>
-<tr class="separator:gaf27eb1220d1d2bd2d75e4eed579f50b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae03e8c7ead63e93159ccc1216c058dd4"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:af27eb1220d1d2bd2d75e4eed579f50b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae03e8c7ead63e93159ccc1216c058dd4"><td class="memItemLeft" align="right" valign="top"><a id="ae03e8c7ead63e93159ccc1216c058dd4"></a>
 tlm::tlm_sync_enum&#160;</td><td class="memItemRight" valign="bottom"><b>nb_transport_fw</b> (<a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t) override</td></tr>
-<tr class="separator:gae03e8c7ead63e93159ccc1216c058dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga91ad77528304bf603afa8a48b268922d"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:ae03e8c7ead63e93159ccc1216c058dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91ad77528304bf603afa8a48b268922d"><td class="memItemLeft" align="right" valign="top"><a id="a91ad77528304bf603afa8a48b268922d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>get_direct_mem_ptr</b> (<a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> &amp;trans, tlm::tlm_dmi &amp;dmi_data) override</td></tr>
-<tr class="separator:ga91ad77528304bf603afa8a48b268922d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga073fbf731c82be05620661528291e9a0"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a91ad77528304bf603afa8a48b268922d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a073fbf731c82be05620661528291e9a0"><td class="memItemLeft" align="right" valign="top"><a id="a073fbf731c82be05620661528291e9a0"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>transport_dbg</b> (<a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> &amp;trans) override</td></tr>
-<tr class="separator:ga073fbf731c82be05620661528291e9a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga94ee8f6f4726c184fbf46811ccbc1449"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__config.html#ga94ee8f6f4726c184fbf46811ccbc1449">set_operation_cb</a> (std::function&lt; unsigned(payload_type &amp;trans)&gt; cb)</td></tr>
-<tr class="memdesc:ga94ee8f6f4726c184fbf46811ccbc1449"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the operation callback function.  <a href="group__config.html#ga94ee8f6f4726c184fbf46811ccbc1449">More...</a><br /></td></tr>
-<tr class="separator:ga94ee8f6f4726c184fbf46811ccbc1449"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga27c09a436f8a783e4f07e896241ceec4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__config.html#ga27c09a436f8a783e4f07e896241ceec4">operation_resp</a> (<a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> &amp;trans, unsigned clk_delay=0)</td></tr>
-<tr class="separator:ga27c09a436f8a783e4f07e896241ceec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga18bc70209c2d15dc3a9283e389362958"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__config.html#ga18bc70209c2d15dc3a9283e389362958">is_active</a> ()</td></tr>
-<tr class="separator:ga18bc70209c2d15dc3a9283e389362958"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaa8893fa768bbec6e47f7755daac0f60"><td class="memItemLeft" align="right" valign="top">const sc_core::sc_event &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__config.html#gaaa8893fa768bbec6e47f7755daac0f60">tx_finish_event</a> ()</td></tr>
-<tr class="separator:gaaa8893fa768bbec6e47f7755daac0f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a073fbf731c82be05620661528291e9a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94ee8f6f4726c184fbf46811ccbc1449"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#a94ee8f6f4726c184fbf46811ccbc1449">set_operation_cb</a> (std::function&lt; unsigned(payload_type &amp;trans)&gt; cb)</td></tr>
+<tr class="memdesc:a94ee8f6f4726c184fbf46811ccbc1449"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the operation callback function.  <a href="classaxi_1_1pe_1_1axi__target__pe__b.html#a94ee8f6f4726c184fbf46811ccbc1449">More...</a><br /></td></tr>
+<tr class="separator:a94ee8f6f4726c184fbf46811ccbc1449"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27c09a436f8a783e4f07e896241ceec4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#a27c09a436f8a783e4f07e896241ceec4">operation_resp</a> (<a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> &amp;trans, unsigned clk_delay=0)</td></tr>
+<tr class="separator:a27c09a436f8a783e4f07e896241ceec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18bc70209c2d15dc3a9283e389362958"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#a18bc70209c2d15dc3a9283e389362958">is_active</a> ()</td></tr>
+<tr class="separator:a18bc70209c2d15dc3a9283e389362958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa8893fa768bbec6e47f7755daac0f60"><td class="memItemLeft" align="right" valign="top">const sc_core::sc_event &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#aaa8893fa768bbec6e47f7755daac0f60">tx_finish_event</a> ()</td></tr>
+<tr class="separator:aaa8893fa768bbec6e47f7755daac0f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -185,60 +201,60 @@ sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valig
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ga16891c6bc8cb5ade8d44997bd8163464"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__config.html#ga16891c6bc8cb5ade8d44997bd8163464">axi_target_pe_b</a> (const sc_core::sc_module_name &amp;nm, sc_core::sc_port_b&lt; <a class="el" href="namespaceaxi.html#a797a5475aca4753fa8998e3db0316ba7">axi::axi_bw_transport_if</a>&lt; <a class="el" href="structaxi_1_1axi__protocol__types.html">axi_protocol_types</a> &gt;&gt; &amp;port, size_t transfer_width)</td></tr>
-<tr class="separator:ga16891c6bc8cb5ade8d44997bd8163464"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga073384bc2dfdc16ec94f4c0b687d0133"><td class="memItemLeft" align="right" valign="top">
+<tr class="memitem:a16891c6bc8cb5ade8d44997bd8163464"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#a16891c6bc8cb5ade8d44997bd8163464">axi_target_pe_b</a> (const sc_core::sc_module_name &amp;nm, sc_core::sc_port_b&lt; <a class="el" href="namespaceaxi.html#a797a5475aca4753fa8998e3db0316ba7">axi::axi_bw_transport_if</a>&lt; <a class="el" href="structaxi_1_1axi__protocol__types.html">axi_protocol_types</a> &gt;&gt; &amp;port, size_t transfer_width)</td></tr>
+<tr class="separator:a16891c6bc8cb5ade8d44997bd8163464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a073384bc2dfdc16ec94f4c0b687d0133"><td class="memItemLeft" align="right" valign="top"><a id="a073384bc2dfdc16ec94f4c0b687d0133"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>axi_target_pe_b</b> (<a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi_target_pe_b</a> const &amp;)=delete</td></tr>
-<tr class="separator:ga073384bc2dfdc16ec94f4c0b687d0133"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3d0636d07a68efdefc2dc97dbdebceb8"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a073384bc2dfdc16ec94f4c0b687d0133"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d0636d07a68efdefc2dc97dbdebceb8"><td class="memItemLeft" align="right" valign="top"><a id="a3d0636d07a68efdefc2dc97dbdebceb8"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>axi_target_pe_b</b> (<a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi_target_pe_b</a> &amp;&amp;)=delete</td></tr>
-<tr class="separator:ga3d0636d07a68efdefc2dc97dbdebceb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1805835a202881595cbec6f10b56ee9b"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a3d0636d07a68efdefc2dc97dbdebceb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1805835a202881595cbec6f10b56ee9b"><td class="memItemLeft" align="right" valign="top"><a id="a1805835a202881595cbec6f10b56ee9b"></a>
 <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi_target_pe_b</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi_target_pe_b</a> const &amp;)=delete</td></tr>
-<tr class="separator:ga1805835a202881595cbec6f10b56ee9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga40b08079816387043674672d7f29f585"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a1805835a202881595cbec6f10b56ee9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40b08079816387043674672d7f29f585"><td class="memItemLeft" align="right" valign="top"><a id="a40b08079816387043674672d7f29f585"></a>
 <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi_target_pe_b</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi_target_pe_b</a> &amp;&amp;)=delete</td></tr>
-<tr class="separator:ga40b08079816387043674672d7f29f585"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9a564ec59e668d59bf55f2dba3f92457"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a40b08079816387043674672d7f29f585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a564ec59e668d59bf55f2dba3f92457"><td class="memItemLeft" align="right" valign="top"><a id="a9a564ec59e668d59bf55f2dba3f92457"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>fsm_clk_method</b> ()</td></tr>
-<tr class="separator:ga9a564ec59e668d59bf55f2dba3f92457"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab02a5de5e6f7d0b33b4d25d02c4f4609"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html">fsm::fsm_handle</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__config.html#gab02a5de5e6f7d0b33b4d25d02c4f4609">create_fsm_handle</a> () override</td></tr>
-<tr class="separator:gab02a5de5e6f7d0b33b4d25d02c4f4609"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacb6815cdd5be69960424928d1007a3d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__config.html#gacb6815cdd5be69960424928d1007a3d8">setup_callbacks</a> (<a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html">fsm::fsm_handle</a> *) override</td></tr>
-<tr class="separator:gacb6815cdd5be69960424928d1007a3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadf11fdaaf6872ea5579a1762c6fb28d4"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a9a564ec59e668d59bf55f2dba3f92457"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab02a5de5e6f7d0b33b4d25d02c4f4609"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html">fsm::fsm_handle</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#ab02a5de5e6f7d0b33b4d25d02c4f4609">create_fsm_handle</a> () override</td></tr>
+<tr class="separator:ab02a5de5e6f7d0b33b4d25d02c4f4609"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb6815cdd5be69960424928d1007a3d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#acb6815cdd5be69960424928d1007a3d8">setup_callbacks</a> (<a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html">fsm::fsm_handle</a> *) override</td></tr>
+<tr class="separator:acb6815cdd5be69960424928d1007a3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf11fdaaf6872ea5579a1762c6fb28d4"><td class="memItemLeft" align="right" valign="top"><a id="adf11fdaaf6872ea5579a1762c6fb28d4"></a>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>operations_callback</b> (payload_type &amp;trans)</td></tr>
-<tr class="separator:gadf11fdaaf6872ea5579a1762c6fb28d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0ebbfc75ababdba320a49c41228632fd"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:adf11fdaaf6872ea5579a1762c6fb28d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ebbfc75ababdba320a49c41228632fd"><td class="memItemLeft" align="right" valign="top"><a id="a0ebbfc75ababdba320a49c41228632fd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>process_req2resp_fifos</b> ()</td></tr>
-<tr class="separator:ga0ebbfc75ababdba320a49c41228632fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga845dd7e7a6ffe2e081a32bab2b8ddbf4"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a0ebbfc75ababdba320a49c41228632fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a845dd7e7a6ffe2e081a32bab2b8ddbf4"><td class="memItemLeft" align="right" valign="top"><a id="a845dd7e7a6ffe2e081a32bab2b8ddbf4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>start_rd_resp_thread</b> ()</td></tr>
-<tr class="separator:ga845dd7e7a6ffe2e081a32bab2b8ddbf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7bcf5327462a8a94beddffe48266169a"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a845dd7e7a6ffe2e081a32bab2b8ddbf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bcf5327462a8a94beddffe48266169a"><td class="memItemLeft" align="right" valign="top"><a id="a7bcf5327462a8a94beddffe48266169a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>start_wr_resp_thread</b> ()</td></tr>
-<tr class="separator:ga7bcf5327462a8a94beddffe48266169a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf722c17115d7205ab9b1df1d66bfa149"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a7bcf5327462a8a94beddffe48266169a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af722c17115d7205ab9b1df1d66bfa149"><td class="memItemLeft" align="right" valign="top"><a id="af722c17115d7205ab9b1df1d66bfa149"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>send_wr_resp_beat_thread</b> ()</td></tr>
-<tr class="separator:gaf722c17115d7205ab9b1df1d66bfa149"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga63a4e1c8e03a4b6e18d9faa891ab3e19"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:af722c17115d7205ab9b1df1d66bfa149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63a4e1c8e03a4b6e18d9faa891ab3e19"><td class="memItemLeft" align="right" valign="top"><a id="a63a4e1c8e03a4b6e18d9faa891ab3e19"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>send_rd_resp_beat_thread</b> ()</td></tr>
-<tr class="separator:ga63a4e1c8e03a4b6e18d9faa891ab3e19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7bd23c65dc35b584c5399ef449c6d1b7"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a63a4e1c8e03a4b6e18d9faa891ab3e19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bd23c65dc35b584c5399ef449c6d1b7"><td class="memItemLeft" align="right" valign="top"><a id="a7bd23c65dc35b584c5399ef449c6d1b7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>end_of_elaboration</b> () override</td></tr>
-<tr class="separator:ga7bd23c65dc35b584c5399ef449c6d1b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6d31a5ca28762f98f4fe024122c8bf7e"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a7bd23c65dc35b584c5399ef449c6d1b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d31a5ca28762f98f4fe024122c8bf7e"><td class="memItemLeft" align="right" valign="top"><a id="a6d31a5ca28762f98f4fe024122c8bf7e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>start_of_simulation</b> () override</td></tr>
-<tr class="separator:ga6d31a5ca28762f98f4fe024122c8bf7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga047578d8bbcf8a95ba2fab8303d37a7b"><td class="memItemLeft" align="right" valign="top">
-unsigned &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getOutStandingTx</b> (tlm::tlm_command cmd)</td></tr>
-<tr class="separator:ga047578d8bbcf8a95ba2fab8303d37a7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabd9848b369a1822c3a94c59078e806db"><td class="memItemLeft" align="right" valign="top">
-unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>getOutStandingTx</b> (tlm::tlm_command cmd) const</td></tr>
-<tr class="separator:gabd9848b369a1822c3a94c59078e806db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac2a3bce7d1dd35bedc275b32b7ac3c9d"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a6d31a5ca28762f98f4fe024122c8bf7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5061498d49e388a701a81148c9a0a277"><td class="memItemLeft" align="right" valign="top"><a id="a5061498d49e388a701a81148c9a0a277"></a>
+<a class="el" href="structscc_1_1sc__variable.html">scc::sc_variable</a>&lt; unsigned &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getOutStandingTx</b> (tlm::tlm_command cmd)</td></tr>
+<tr class="separator:a5061498d49e388a701a81148c9a0a277"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2e409c2a4e6f7bd1412dc35a379ae2b"><td class="memItemLeft" align="right" valign="top"><a id="ad2e409c2a4e6f7bd1412dc35a379ae2b"></a>
+<a class="el" href="structscc_1_1sc__variable.html">scc::sc_variable</a>&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getOutStandingTx</b> (tlm::tlm_command cmd) const</td></tr>
+<tr class="separator:ad2e409c2a4e6f7bd1412dc35a379ae2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2a3bce7d1dd35bedc275b32b7ac3c9d"><td class="memItemLeft" align="right" valign="top"><a id="ac2a3bce7d1dd35bedc275b32b7ac3c9d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>nb_fw</b> (payload_type &amp;trans, const phase_type &amp;phase)</td></tr>
-<tr class="separator:gac2a3bce7d1dd35bedc275b32b7ac3c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ac2a3bce7d1dd35bedc275b32b7ac3c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_structaxi_1_1fsm_1_1base"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_structaxi_1_1fsm_1_1base')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="structaxi_1_1fsm_1_1base.html">axi::fsm::base</a></td></tr>
 <tr class="memitem:ac8655e267bed3a262044ae67b99b0f69 inherit pro_methods_structaxi_1_1fsm_1_1base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1base.html#ac8655e267bed3a262044ae67b99b0f69">base</a> (size_t transfer_width, bool coherent=false, axi::fsm::protocol_time_point_e wr_start=axi::fsm::RequestPhaseBeg)</td></tr>
 <tr class="memdesc:ac8655e267bed3a262044ae67b99b0f69 inherit pro_methods_structaxi_1_1fsm_1_1base"><td class="mdescLeft">&#160;</td><td class="mdescRight">the constructor  <a href="structaxi_1_1fsm_1_1base.html#ac8655e267bed3a262044ae67b99b0f69">More...</a><br /></td></tr>
@@ -281,78 +297,81 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>schedule</b> (axi::fs
 <tr class="memitem:a26d7f15c1c5092f6db3251d38368dbbd inherit pro_methods_structaxi_1_1fsm_1_1base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a> (axi::fsm::protocol_time_point_e event, <a class="el" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm::scc::tlm_gp_shared_ptr</a> &amp;trans)</td></tr>
 <tr class="memdesc:a26d7f15c1c5092f6db3251d38368dbbd inherit pro_methods_structaxi_1_1fsm_1_1base"><td class="mdescLeft">&#160;</td><td class="mdescRight">triggers the FSM with event and given transaction  <a href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">More...</a><br /></td></tr>
 <tr class="separator:a26d7f15c1c5092f6db3251d38368dbbd inherit pro_methods_structaxi_1_1fsm_1_1base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab32dd1cdbaacd9f26d36947ef3d5f9ef inherit pro_methods_structaxi_1_1fsm_1_1base"><td class="memItemLeft" align="right" valign="top"><a id="ab32dd1cdbaacd9f26d36947ef3d5f9ef"></a>
+<tr class="memitem:ac067ba8265ddbc5ab2b3119fdd1d0948 inherit pro_methods_structaxi_1_1fsm_1_1base"><td class="memItemLeft" align="right" valign="top"><a id="ac067ba8265ddbc5ab2b3119fdd1d0948"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>react</b> (axi::fsm::protocol_time_point_e event, <a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *trans)</td></tr>
-<tr class="separator:ab32dd1cdbaacd9f26d36947ef3d5f9ef inherit pro_methods_structaxi_1_1fsm_1_1base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ac067ba8265ddbc5ab2b3119fdd1d0948 inherit pro_methods_structaxi_1_1fsm_1_1base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b072c2debefcfba4f2aa839f1b7b95d inherit pro_methods_structaxi_1_1fsm_1_1base"><td class="memItemLeft" align="right" valign="top"><a id="a7b072c2debefcfba4f2aa839f1b7b95d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>react</b> (axi::fsm::protocol_time_point_e, <a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html">axi::fsm::fsm_handle</a> *)</td></tr>
+<tr class="separator:a7b072c2debefcfba4f2aa839f1b7b95d inherit pro_methods_structaxi_1_1fsm_1_1base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ga6c83ade19d8a61b35e8952c0c8558577"><td class="memItemLeft" align="right" valign="top">
+<tr class="memitem:a6c83ade19d8a61b35e8952c0c8558577"><td class="memItemLeft" align="right" valign="top"><a id="a6c83ade19d8a61b35e8952c0c8558577"></a>
 sc_core::sc_port_b&lt; <a class="el" href="namespaceaxi.html#a797a5475aca4753fa8998e3db0316ba7">axi::axi_bw_transport_if</a>&lt; <a class="el" href="structaxi_1_1axi__protocol__types.html">axi_protocol_types</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>socket_bw</b></td></tr>
-<tr class="separator:ga6c83ade19d8a61b35e8952c0c8558577"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2ded8dbbbc6c2eef0d613d2eec422134"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a6c83ade19d8a61b35e8952c0c8558577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ded8dbbbc6c2eef0d613d2eec422134"><td class="memItemLeft" align="right" valign="top"><a id="a2ded8dbbbc6c2eef0d613d2eec422134"></a>
 std::function&lt; unsigned(payload_type &amp;trans)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>operation_cb</b></td></tr>
-<tr class="separator:ga2ded8dbbbc6c2eef0d613d2eec422134"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gada597ee9235f29a928ab24eb78f68ff3"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a2ded8dbbbc6c2eef0d613d2eec422134"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada597ee9235f29a928ab24eb78f68ff3"><td class="memItemLeft" align="right" valign="top"><a id="ada597ee9235f29a928ab24eb78f68ff3"></a>
 <a class="el" href="classscc_1_1fifo__w__cb.html">scc::fifo_w_cb</a>&lt; std::tuple&lt; payload_type *, unsigned &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rd_req2resp_fifo</b> {&quot;rd_req2resp_fifo&quot;}</td></tr>
-<tr class="separator:gada597ee9235f29a928ab24eb78f68ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad40b571a162ea5870a81bf77dadc7c81"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:ada597ee9235f29a928ab24eb78f68ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad40b571a162ea5870a81bf77dadc7c81"><td class="memItemLeft" align="right" valign="top"><a id="ad40b571a162ea5870a81bf77dadc7c81"></a>
 <a class="el" href="classscc_1_1fifo__w__cb.html">scc::fifo_w_cb</a>&lt; std::tuple&lt; payload_type *, unsigned &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>wr_req2resp_fifo</b> {&quot;wr_req2resp_fifo&quot;}</td></tr>
-<tr class="separator:gad40b571a162ea5870a81bf77dadc7c81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga082ccd15056967430d825185bdad3df6"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:ad40b571a162ea5870a81bf77dadc7c81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a082ccd15056967430d825185bdad3df6"><td class="memItemLeft" align="right" valign="top"><a id="a082ccd15056967430d825185bdad3df6"></a>
 sc_core::sc_fifo&lt; payload_type * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rd_resp_fifo</b> {128}</td></tr>
-<tr class="separator:ga082ccd15056967430d825185bdad3df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadc873e8b1a9179a355f19cdeb12aeb2d"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a082ccd15056967430d825185bdad3df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc873e8b1a9179a355f19cdeb12aeb2d"><td class="memItemLeft" align="right" valign="top"><a id="adc873e8b1a9179a355f19cdeb12aeb2d"></a>
 sc_core::sc_fifo&lt; payload_type * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>wr_resp_fifo</b> {128}</td></tr>
-<tr class="separator:gadc873e8b1a9179a355f19cdeb12aeb2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3c25b4917499c2f358326e123d943aa6"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:adc873e8b1a9179a355f19cdeb12aeb2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c25b4917499c2f358326e123d943aa6"><td class="memItemLeft" align="right" valign="top"><a id="a3c25b4917499c2f358326e123d943aa6"></a>
 sc_core::sc_time&#160;</td><td class="memItemRight" valign="bottom"><b>time_per_byte_rd</b></td></tr>
-<tr class="separator:ga3c25b4917499c2f358326e123d943aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga62c154f6f1c316c5d9d30caeef41419b"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a3c25b4917499c2f358326e123d943aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62c154f6f1c316c5d9d30caeef41419b"><td class="memItemLeft" align="right" valign="top"><a id="a62c154f6f1c316c5d9d30caeef41419b"></a>
 sc_core::sc_time&#160;</td><td class="memItemRight" valign="bottom"><b>time_per_byte_wr</b></td></tr>
-<tr class="separator:ga62c154f6f1c316c5d9d30caeef41419b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga925fdec6fbd05536ee0a40fc82f52ab1"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a62c154f6f1c316c5d9d30caeef41419b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a925fdec6fbd05536ee0a40fc82f52ab1"><td class="memItemLeft" align="right" valign="top"><a id="a925fdec6fbd05536ee0a40fc82f52ab1"></a>
 sc_core::sc_fifo&lt; std::tuple&lt; <a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html">fsm::fsm_handle</a> *, axi::fsm::protocol_time_point_e &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>wr_resp_beat_fifo</b> {128}</td></tr>
-<tr class="separator:ga925fdec6fbd05536ee0a40fc82f52ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4bbd62796a41cb43336545f58b15afee"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a925fdec6fbd05536ee0a40fc82f52ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bbd62796a41cb43336545f58b15afee"><td class="memItemLeft" align="right" valign="top"><a id="a4bbd62796a41cb43336545f58b15afee"></a>
 sc_core::sc_fifo&lt; std::tuple&lt; <a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html">fsm::fsm_handle</a> *, axi::fsm::protocol_time_point_e &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rd_resp_beat_fifo</b> {128}</td></tr>
-<tr class="separator:ga4bbd62796a41cb43336545f58b15afee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7b6f489b511c6f7a16b57a7d2fb0a860"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a4bbd62796a41cb43336545f58b15afee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b6f489b511c6f7a16b57a7d2fb0a860"><td class="memItemLeft" align="right" valign="top"><a id="a7b6f489b511c6f7a16b57a7d2fb0a860"></a>
 <a class="el" href="classscc_1_1ordered__semaphore.html">scc::ordered_semaphore</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rd_resp</b> {1}</td></tr>
-<tr class="separator:ga7b6f489b511c6f7a16b57a7d2fb0a860"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7961dee4709ceb735784df93ec84bb87"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a7b6f489b511c6f7a16b57a7d2fb0a860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7961dee4709ceb735784df93ec84bb87"><td class="memItemLeft" align="right" valign="top"><a id="a7961dee4709ceb735784df93ec84bb87"></a>
 <a class="el" href="classscc_1_1ordered__semaphore.html">scc::ordered_semaphore</a>&#160;</td><td class="memItemRight" valign="bottom"><b>wr_resp_ch</b> {1}</td></tr>
-<tr class="separator:ga7961dee4709ceb735784df93ec84bb87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga41d12bddb4044d5cab03260786b03932"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a7961dee4709ceb735784df93ec84bb87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41d12bddb4044d5cab03260786b03932"><td class="memItemLeft" align="right" valign="top"><a id="a41d12bddb4044d5cab03260786b03932"></a>
 <a class="el" href="classscc_1_1ordered__semaphore.html">scc::ordered_semaphore</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rd_resp_ch</b> {1}</td></tr>
-<tr class="separator:ga41d12bddb4044d5cab03260786b03932"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad6937b8356a3a2f90736814488b50397"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a41d12bddb4044d5cab03260786b03932"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6937b8356a3a2f90736814488b50397"><td class="memItemLeft" align="right" valign="top"><a id="ad6937b8356a3a2f90736814488b50397"></a>
 sc_core::sc_clock *&#160;</td><td class="memItemRight" valign="bottom"><b>clk_if</b> {nullptr}</td></tr>
-<tr class="separator:gad6937b8356a3a2f90736814488b50397"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8f0c2c9f76b0afde001fce8d6753e04a"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:ad6937b8356a3a2f90736814488b50397"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f0c2c9f76b0afde001fce8d6753e04a"><td class="memItemLeft" align="right" valign="top"><a id="a8f0c2c9f76b0afde001fce8d6753e04a"></a>
 std::unique_ptr&lt; <a class="el" href="structaxi__target__pe__b_1_1bw__intor__impl.html">bw_intor_impl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bw_intor</b></td></tr>
-<tr class="separator:ga8f0c2c9f76b0afde001fce8d6753e04a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaed6eb056fd899cf3e61c0c57c36cc40c"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a8f0c2c9f76b0afde001fce8d6753e04a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed6eb056fd899cf3e61c0c57c36cc40c"><td class="memItemLeft" align="right" valign="top"><a id="aed6eb056fd899cf3e61c0c57c36cc40c"></a>
 std::array&lt; unsigned, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>outstanding_cnt</b> {{0,0,0}}</td></tr>
-<tr class="separator:gaed6eb056fd899cf3e61c0c57c36cc40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7aaca52d69c85f6584586ebbf5d69a93"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:aed6eb056fd899cf3e61c0c57c36cc40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aaca52d69c85f6584586ebbf5d69a93"><td class="memItemLeft" align="right" valign="top"><a id="a7aaca52d69c85f6584586ebbf5d69a93"></a>
 <a class="el" href="structscc_1_1sc__variable.html">scc::sc_variable</a>&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>outstanding_rd_tx</b> {&quot;OutstandingRd&quot;, 0}</td></tr>
-<tr class="separator:ga7aaca52d69c85f6584586ebbf5d69a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab1bffb336f0af2257c10ecc79475b5e9"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a7aaca52d69c85f6584586ebbf5d69a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1bffb336f0af2257c10ecc79475b5e9"><td class="memItemLeft" align="right" valign="top"><a id="ab1bffb336f0af2257c10ecc79475b5e9"></a>
 <a class="el" href="structscc_1_1sc__variable.html">scc::sc_variable</a>&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>outstanding_wr_tx</b> {&quot;OutstandingWr&quot;, 0}</td></tr>
-<tr class="separator:gab1bffb336f0af2257c10ecc79475b5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga035f49ea34ccc45c907faea23db2512d"><td class="memItemLeft" align="right" valign="top">
-unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>outstanding_ign_tx</b> {0}</td></tr>
-<tr class="separator:ga035f49ea34ccc45c907faea23db2512d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga21a189caa2a8f0cb78d12e404a85507f"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:ab1bffb336f0af2257c10ecc79475b5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c76febe4dd382ef803bca908ea1830a"><td class="memItemLeft" align="right" valign="top"><a id="a1c76febe4dd382ef803bca908ea1830a"></a>
+<a class="el" href="structscc_1_1sc__variable.html">scc::sc_variable</a>&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>outstanding_ign_tx</b> {&quot;OutstandingIgn&quot;, 0}</td></tr>
+<tr class="separator:a1c76febe4dd382ef803bca908ea1830a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21a189caa2a8f0cb78d12e404a85507f"><td class="memItemLeft" align="right" valign="top"><a id="a21a189caa2a8f0cb78d12e404a85507f"></a>
 std::array&lt; tlm::tlm_generic_payload *, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>stalled_tx</b> {nullptr,nullptr,nullptr}</td></tr>
-<tr class="separator:ga21a189caa2a8f0cb78d12e404a85507f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6825e42d8664b24dfa0c03fc78d1c55a"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a21a189caa2a8f0cb78d12e404a85507f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6825e42d8664b24dfa0c03fc78d1c55a"><td class="memItemLeft" align="right" valign="top"><a id="a6825e42d8664b24dfa0c03fc78d1c55a"></a>
 std::array&lt; axi::fsm::protocol_time_point_e, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>stalled_tp</b> {{axi::fsm::CB_CNT,axi::fsm::CB_CNT,axi::fsm::CB_CNT}}</td></tr>
-<tr class="separator:ga6825e42d8664b24dfa0c03fc78d1c55a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga284bec421a7ae0700723db6ed9748e32"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a6825e42d8664b24dfa0c03fc78d1c55a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a284bec421a7ae0700723db6ed9748e32"><td class="memItemLeft" align="right" valign="top"><a id="a284bec421a7ae0700723db6ed9748e32"></a>
 tlm_utils::peq_with_cb_and_phase&lt; <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi_target_pe_b</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fw_peq</b> {this, &amp;axi_target_pe_b::nb_fw}</td></tr>
-<tr class="separator:ga284bec421a7ae0700723db6ed9748e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a284bec421a7ae0700723db6ed9748e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_structaxi_1_1fsm_1_1base"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_structaxi_1_1fsm_1_1base')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="structaxi_1_1fsm_1_1base.html">axi::fsm::base</a></td></tr>
 <tr class="memitem:ab862ab3c3a27111c3306d55dc25bda1c inherit pro_attribs_structaxi_1_1fsm_1_1base"><td class="memItemLeft" align="right" valign="top"><a id="ab862ab3c3a27111c3306d55dc25bda1c"></a>
 ::<a class="el" href="structscc_1_1peq.html">scc::peq</a>&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, <a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *, bool &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fsm_event_queue</b></td></tr>
@@ -399,17 +418,267 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>phase_type</b> = axi
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>the target protocol engine base class </p>
 
-<p class="definition">Definition at line <a class="el" href="simple__target_8h_source.html#l00037">37</a> of file <a class="el" href="simple__target_8h_source.html">simple_target.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<p class="definition">Definition at line <a class="el" href="simple__target_8h_source.html#l00038">38</a> of file <a class="el" href="simple__target_8h_source.html">simple_target.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a16891c6bc8cb5ade8d44997bd8163464"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16891c6bc8cb5ade8d44997bd8163464">&#9670;&nbsp;</a></span>axi_target_pe_b()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">axi_target_pe_b::axi_target_pe_b </td>
+          <td>(</td>
+          <td class="paramtype">const sc_core::sc_module_name &amp;&#160;</td>
+          <td class="paramname"><em>nm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sc_core::sc_port_b&lt; <a class="el" href="namespaceaxi.html#a797a5475aca4753fa8998e3db0316ba7">axi::axi_bw_transport_if</a>&lt; <a class="el" href="structaxi_1_1axi__protocol__types.html">axi_protocol_types</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>transfer_width</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>the constructor. Protected as it should only be called by derived classes </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td></td></tr>
+    <tr><td class="paramname">transfer_width</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="simple__target_8cpp_source.html#l00045">45</a> of file <a class="el" href="simple__target_8cpp_source.html">simple_target.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab02a5de5e6f7d0b33b4d25d02c4f4609"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab02a5de5e6f7d0b33b4d25d02c4f4609">&#9670;&nbsp;</a></span>create_fsm_handle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html">fsm_handle</a> * axi_target_pe_b::create_fsm_handle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section see"><dt>See also</dt><dd>base::create_fsm_handle() </dd></dl>
+
+<p>Implements <a class="el" href="structaxi_1_1fsm_1_1base.html#ae8a76a1d8e9fd2fc4a90f1219767ff92">axi::fsm::base</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="simple__target_8cpp_source.html#l00126">126</a> of file <a class="el" href="simple__target_8cpp_source.html">simple_target.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a18bc70209c2d15dc3a9283e389362958"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18bc70209c2d15dc3a9283e389362958">&#9670;&nbsp;</a></span>is_active()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool axi::pe::axi_target_pe_b::is_active </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>returns true if any transaction is still in flight</p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="simple__target_8h_source.html#l00118">118</a> of file <a class="el" href="simple__target_8h_source.html">simple_target.h</a>.</p>
+
+</div>
+</div>
+<a id="a27c09a436f8a783e4f07e896241ceec4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27c09a436f8a783e4f07e896241ceec4">&#9670;&nbsp;</a></span>operation_resp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void axi::pe::axi_target_pe_b::operation_resp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>trans</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>clk_delay</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">trans</td><td></td></tr>
+    <tr><td class="paramname">sync</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="simple__target_8cpp_source.html#l00238">238</a> of file <a class="el" href="simple__target_8cpp_source.html">simple_target.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a94ee8f6f4726c184fbf46811ccbc1449"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94ee8f6f4726c184fbf46811ccbc1449">&#9670;&nbsp;</a></span>set_operation_cb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void axi::pe::axi_target_pe_b::set_operation_cb </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; unsigned(payload_type &amp;trans)&gt;&#160;</td>
+          <td class="paramname"><em>cb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the operation callback function. </p>
+<p>This callback is invoked once a transaction arrives. This function is not allowed to block and returns the latency of the operation i.e. the duration until the reponse phase starts </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>refine API</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cb</td><td>the callback function </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="simple__target_8h_source.html#l00106">106</a> of file <a class="el" href="simple__target_8h_source.html">simple_target.h</a>.</p>
+
+</div>
+</div>
+<a id="acb6815cdd5be69960424928d1007a3d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb6815cdd5be69960424928d1007a3d8">&#9670;&nbsp;</a></span>setup_callbacks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void axi_target_pe_b::setup_callbacks </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html">fsm::fsm_handle</a> *&#160;</td>
+          <td class="paramname"><em>fsm_hndl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section see"><dt>See also</dt><dd>base::setup_callbacks(fsm::fsm_handle*) </dd></dl>
+
+<p>Implements <a class="el" href="structaxi_1_1fsm_1_1base.html#a531305a4a623f70f41f2249028dbedde">axi::fsm::base</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="simple__target_8cpp_source.html#l00128">128</a> of file <a class="el" href="simple__target_8cpp_source.html">simple_target.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aaa8893fa768bbec6e47f7755daac0f60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa8893fa768bbec6e47f7755daac0f60">&#9670;&nbsp;</a></span>tx_finish_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const sc_core::sc_event&amp; axi::pe::axi_target_pe_b::tx_finish_event </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>get the event being notfied upon the finishing of an event</p>
+<dl class="section return"><dt>Returns</dt><dd>reference to sc_event </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="simple__target_8h_source.html#l00124">124</a> of file <a class="el" href="simple__target_8h_source.html">simple_target.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>third_party/axi_chi/axi/pe/<a class="el" href="simple__target_8h_source.html">simple_target.h</a></li>
 <li>third_party/axi_chi/axi/pe/<a class="el" href="simple__target_8cpp_source.html">simple_target.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceaxi.html">axi</a></li><li class="navelem"><a class="el" href="namespaceaxi_1_1pe.html">pe</a></li><li class="navelem"><a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi_target_pe_b</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

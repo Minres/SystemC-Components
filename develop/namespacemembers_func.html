@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -39,18 +44,74 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('namespacemembers_func.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="contents">
-&#160;<ul>
+&#160;
+
+<h3><a id="index_a"></a>- a -</h3><ul>
+<li>as_log_level()
+: <a class="el" href="namespacelogging.html#a5af15dc3db4902fcb51dae41fedb326a">logging</a>
+</li>
+</ul>
+
+
+<h3><a id="index_b"></a>- b -</h3><ul>
+<li>base_name()
+: <a class="el" href="namespaceutil.html#aeda0346a95dd86507525a9b92a83cb76">util</a>
+</li>
+</ul>
+
+
+<h3><a id="index_d"></a>- d -</h3><ul>
 <li>DECLARE_EXTENDED_PHASE()
 : <a class="el" href="namespaceahb.html#a64917a4cc2c9690ee36d6a4e7e0ec3c8">ahb</a>
 , <a class="el" href="namespaceaxi.html#a9868bfb4a0f32aa753bc01cb7a454bc1">axi</a>
 , <a class="el" href="namespacechi.html#a62d756666541a9f3f6174c3f1829a8bc">chi</a>
 </li>
+<li>dir_name()
+: <a class="el" href="namespaceutil.html#ac7c86d22733f7e5913f863d13962a7e7">util</a>
+</li>
+</ul>
+
+
+<h3><a id="index_f"></a>- f -</h3><ul>
+<li>file_exists()
+: <a class="el" href="namespaceutil.html#ac45479054364f35d457990cc7deab724">util</a>
+</li>
+</ul>
+
+
+<h3><a id="index_g"></a>- g -</h3><ul>
 <li>get_burst_lenght()
 : <a class="el" href="namespaceaxi.html#aa1a50e72decba6e93fc17e921a43abdf">axi</a>
 </li>
 <li>get_burst_size()
 : <a class="el" href="namespaceaxi.html#af2b7621ded35f049f6c449cddab09a97">axi</a>
+</li>
+</ul>
+
+
+<h3><a id="index_i"></a>- i -</h3><ul>
+<li>iequals()
+: <a class="el" href="namespaceutil.html#aacef5c7f4209048b30e63faef7925013">util</a>
+</li>
+<li>ilog2()
+: <a class="el" href="namespaceutil.html#a60bf55061e90fef707927a656b82f919">util</a>
 </li>
 <li>into()
 : <a class="el" href="namespaceaxi.html#a4eeffc37861c128b179a8b0c73d5a893">axi</a>
@@ -59,10 +120,74 @@ $(function() {
 <li>is_burst()
 : <a class="el" href="namespaceaxi.html#ad48f42fa6a7b36b4928191327f2f4c94">axi</a>
 </li>
+</ul>
+
+
+<h3><a id="index_j"></a>- j -</h3><ul>
+<li>join()
+: <a class="el" href="namespaceutil.html#ac50b7daec151059e1ae7c7ab03b3f10d">util</a>
+</li>
+</ul>
+
+
+<h3><a id="index_l"></a>- l -</h3><ul>
+<li>ltrim()
+: <a class="el" href="namespaceutil.html#ad52c5f6f3fea14560b3226733827984b">util</a>
+</li>
+</ul>
+
+
+<h3><a id="index_n"></a>- n -</h3><ul>
+<li>now_time()
+: <a class="el" href="namespacelogging.html#aeeb2a7d34cb1d868d54af370424ccc1c">logging</a>
+</li>
+</ul>
+
+
+<h3><a id="index_o"></a>- o -</h3><ul>
 <li>operator&lt;&lt;()
 : <a class="el" href="namespaceaxi.html#ad8e14701fe1a27e7b225e2e28bc9b97e">axi</a>
 , <a class="el" href="namespacechi.html#af724ac50f6564fffaaccd53f9da891df">chi</a>
+, <a class="el" href="namespacelogging.html#ab27a4fd91dca7fb65391baf9e4f17e98">logging</a>
+, <a class="el" href="namespaceutil.html#a0cea7a9b61e680977e26bb4d8224f23d">util</a>
 </li>
+<li>operator&gt;&gt;()
+: <a class="el" href="namespacelogging.html#ae2bbcd820016273b6a00cc7bd64ec963">logging</a>
+</li>
+</ul>
+
+
+<h3><a id="index_p"></a>- p -</h3><ul>
+<li>padded()
+: <a class="el" href="namespaceutil.html#a7a239a65cdd904257f4d8208a88ff104">util</a>
+</li>
+</ul>
+
+
+<h3><a id="index_r"></a>- r -</h3><ul>
+<li>remove_ext()
+: <a class="el" href="namespaceutil.html#a82e9717e2747247d58f0e443f0012f2f">util</a>
+</li>
+<li>rtrim()
+: <a class="el" href="namespaceutil.html#adba62a8bb34d0281aeec8030a3bd7d14">util</a>
+</li>
+</ul>
+
+
+<h3><a id="index_s"></a>- s -</h3><ul>
+<li>split()
+: <a class="el" href="namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359">util</a>
+</li>
+<li>str_tolower()
+: <a class="el" href="namespaceutil.html#a4a9bda6d8c94ceebb8a59e0a424d15ec">util</a>
+</li>
+<li>strprintf()
+: <a class="el" href="namespaceutil.html#a21daaf5c20308c280a887f7a5cc91a79">util</a>
+</li>
+</ul>
+
+
+<h3><a id="index_t"></a>- t -</h3><ul>
 <li>to_char()
 : <a class="el" href="namespaceaxi.html#a71714ad3f35755a16fae7f3c3bd6d271">axi</a>
 , <a class="el" href="namespacechi.html#aedac797a8274c233a1cc918206867846">chi</a>
@@ -71,13 +196,19 @@ $(function() {
 : <a class="el" href="namespaceaxi.html#ad013d42a09dd713d0a368a6744f49787">axi</a>
 , <a class="el" href="namespacechi.html#a44231a136ceeaaf6371a584425718435">chi</a>
 </li>
+<li>trim()
+: <a class="el" href="namespaceutil.html#ac874ad8c03be31e0731296e53c459eba">util</a>
+</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

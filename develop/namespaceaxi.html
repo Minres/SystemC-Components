@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -39,6 +44,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('namespaceaxi.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
@@ -76,6 +97,12 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1ace__target__socket.html">ace_target_socket</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1ar__ch.html">ar_ch</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">read address channel signals  <a href="structaxi_1_1ar__ch.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1aw__ch.html">aw_ch</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write address channel signals.  <a href="structaxi_1_1aw__ch.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1axi3.html">axi3</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1axi3__ext__recording.html">axi3_ext_recording</a></td></tr>
@@ -89,6 +116,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1axi4__extension.html">axi4_extension</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1axi4lite__tlm2pin__adaptor.html">axi4lite_tlm2pin_adaptor</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1axi__cfg.html">axi_cfg</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1axi__extension.html">axi_extension</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,6 +142,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1axi__tlm2pin__adaptor.html">axi_tlm2pin_adaptor</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1b__ch.html">b_ch</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">write response channel signals  <a href="structaxi_1_1b__ch.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1bw__blocking__transport__if.html">bw_blocking_transport_if</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1common.html">common</a></td></tr>
@@ -131,13 +163,37 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1enable__for__enum_3_01snoop__e_01_4.html">enable_for_enum&lt; snoop_e &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1master__types.html">master_types</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1request.html">request</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1response.html">response</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1rresp__ch.html">rresp_ch</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data channel signals.  <a href="structaxi_1_1rresp__ch.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1select__if.html">select_if</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1select__if_3_01true_00_01T_00_01S_01_4.html">select_if&lt; true, T, S &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1signal__types.html">signal_types</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1slave__types.html">slave_types</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaxi_1_1wdata__ch.html">wdata_ch</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">write data channel signals  <a href="structaxi_1_1wdata__ch.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a2b9d266ded396db9c420b6b8fbba6cd6"><td class="memTemplParams" colspan="2"><a id="a2b9d266ded396db9c420b6b8fbba6cd6"></a>
+template&lt;unsigned WIDTH = 0, typename TYPE  = sc_dt::sc_uint&lt;WIDTH&gt;, int N = 1&gt; </td></tr>
+<tr class="memitem:a2b9d266ded396db9c420b6b8fbba6cd6"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>sc_in_opt</b> = sc_core::sc_port&lt; sc_core::sc_signal_in_if&lt; TYPE &gt;, N, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</td></tr>
+<tr class="separator:a2b9d266ded396db9c420b6b8fbba6cd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb47a4989607bbc9292d26a6685740be"><td class="memTemplParams" colspan="2"><a id="abb47a4989607bbc9292d26a6685740be"></a>
+template&lt;unsigned WIDTH = 0, typename TYPE  = sc_dt::sc_uint&lt;WIDTH&gt;, int N = 1&gt; </td></tr>
+<tr class="memitem:abb47a4989607bbc9292d26a6685740be"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>sc_out_opt</b> = sc_core::sc_port&lt; sc_core::sc_signal_write_if&lt; TYPE &gt;, N, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</td></tr>
+<tr class="separator:abb47a4989607bbc9292d26a6685740be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3142f6254ed33e77b181629c4166e600"><td class="memItemLeft" align="right" valign="top"><a id="a3142f6254ed33e77b181629c4166e600"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaxi.html#a3142f6254ed33e77b181629c4166e600">axi_payload</a> = tlm::tlm_generic_payload</td></tr>
 <tr class="memdesc:a3142f6254ed33e77b181629c4166e600"><td class="mdescLeft">&#160;</td><td class="mdescRight">aliases for payload and phase types <br /></td></tr>
@@ -258,6 +314,12 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a842b752ef61c8e14221a7d5eda1fd65c"><td class="memItemLeft" align="right" valign="top"><a id="a842b752ef61c8e14221a7d5eda1fd65c"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>concat</b> (const char *prefix, const char *name)</td></tr>
+<tr class="separator:a842b752ef61c8e14221a7d5eda1fd65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaed7eb6838f1f272c3e14131bb405ee"><td class="memItemLeft" align="right" valign="top"><a id="adaed7eb6838f1f272c3e14131bb405ee"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;os, const tlm::tlm_generic_payload &amp;t)</td></tr>
+<tr class="separator:adaed7eb6838f1f272c3e14131bb405ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a168bc295a9a6f9305c439b1e8805df53"><td class="memItemLeft" align="right" valign="top"><a id="a168bc295a9a6f9305c439b1e8805df53"></a>
 template&lt;&gt; </td></tr>
 <tr class="memitem:a168bc295a9a6f9305c439b1e8805df53"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>to_char&lt; snoop_e &gt;</b> (<a class="el" href="namespaceaxi.html#ab5bdfd0288701d22295633cd80fee212">snoop_e</a> v)</td></tr>
@@ -371,6 +433,12 @@ unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_axi_id</b> (a
 <tr class="memitem:afde22299d4f51acb02b71656693cbf96"><td class="memItemLeft" align="right" valign="top"><a id="afde22299d4f51acb02b71656693cbf96"></a>
 <a class="el" href="namespaceaxi.html#a976930b97a74baed7a45ff5cdb324ae9">burst_e</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_burst_type</b> (const axi::axi_protocol_types::tlm_payload_type *trans)</td></tr>
 <tr class="separator:afde22299d4f51acb02b71656693cbf96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73f758dd0540906c51172a90d0f5148d"><td class="memItemLeft" align="right" valign="top"><a id="a73f758dd0540906c51172a90d0f5148d"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_cache</b> (const axi::axi_protocol_types::tlm_payload_type &amp;trans)</td></tr>
+<tr class="separator:a73f758dd0540906c51172a90d0f5148d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadec87777af7ba37990603229b4be481"><td class="memItemLeft" align="right" valign="top"><a id="aadec87777af7ba37990603229b4be481"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_cache</b> (const axi::axi_protocol_types::tlm_payload_type *trans)</td></tr>
+<tr class="separator:aadec87777af7ba37990603229b4be481"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c96bf76cb481bfecaf5bcc0cf7eaa58"><td class="memItemLeft" align="right" valign="top"><a id="a4c96bf76cb481bfecaf5bcc0cf7eaa58"></a>
 template&lt;&gt; </td></tr>
 <tr class="memitem:a4c96bf76cb481bfecaf5bcc0cf7eaa58"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceaxi.html#a976930b97a74baed7a45ff5cdb324ae9">burst_e</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><b>into&lt; burst_e &gt;</b> (typename std::underlying_type&lt; <a class="el" href="namespaceaxi.html#a976930b97a74baed7a45ff5cdb324ae9">burst_e</a> &gt;::type t)</td></tr>
@@ -421,7 +489,7 @@ template&lt;&gt; </td></tr>
 </div><div class="memdoc">
 <p>the barrier type enumeration class </p>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00083">83</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00085">85</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -452,7 +520,7 @@ template&lt;&gt; </td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00067">67</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00069">69</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -477,7 +545,7 @@ template&lt;&gt; </td></tr>
 </div><div class="memdoc">
 <p>the domain type enumeration class </p>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00079">79</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00081">81</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -502,7 +570,7 @@ template&lt;&gt; </td></tr>
 </div><div class="memdoc">
 <p>the lock type enumeration class </p>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00075">75</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00077">77</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -527,7 +595,7 @@ template&lt;&gt; </td></tr>
 </div><div class="memdoc">
 <p>the response type enumeration class </p>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00144">144</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00146">146</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -552,7 +620,7 @@ template&lt;&gt; </td></tr>
 </div><div class="memdoc">
 <p>the snoop type enumeration class. Since the interpretation depends of other setting there are double defined entries </p>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00087">87</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00089">89</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -607,7 +675,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of beats </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01125">1125</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01128">1128</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -642,7 +710,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of beats </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01140">1140</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01143">1143</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -677,7 +745,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of beats </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01113">1113</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01116">1116</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -712,7 +780,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of beats </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01119">1119</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01122">1122</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -747,7 +815,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the burst size in bytes </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01158">1158</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01161">1161</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -782,7 +850,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the burst size in bytes </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01173">1173</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01176">1176</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -817,7 +885,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the burst size in bytes </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01146">1146</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01149">1149</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -852,7 +920,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the burst size in bytes </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01152">1152</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01155">1155</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -923,7 +991,7 @@ template&lt;typename E &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>true if the access is a burst</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>The calculation needs to be checked and probably fixed </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01092">1092</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01095">1095</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -958,7 +1026,7 @@ template&lt;typename E &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of beats </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01107">1107</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01110">1110</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -1075,11 +1143,15 @@ template&lt;typename E , typename ULT  = typename std::underlying_type&lt;E&gt;:
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceaxi.html">axi</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

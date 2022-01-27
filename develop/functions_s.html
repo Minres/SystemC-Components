@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -39,6 +44,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('functions_s.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="contents">
 <div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
 
@@ -116,7 +137,7 @@ $(function() {
 : <a class="el" href="structaxi_1_1response.html#ad5f07d05631cd7d87dc19d3fbbd294a8">axi::response</a>
 </li>
 <li>set_id()
-: <a class="el" href="structaxi_1_1common.html#ac08839f3d2453e215d6ad2eb50d45302">axi::common</a>
+: <a class="el" href="structaxi_1_1common.html#a45322e6c2566050f736d20880615ab96">axi::common</a>
 </li>
 <li>set_initiator_base()
 : <a class="el" href="classscc_1_1router.html#a697052adb6891fe5e807d7bbc72fe72f">scc::router&lt; BUSWIDTH &gt;</a>
@@ -143,9 +164,9 @@ $(function() {
 : <a class="el" href="classscc_1_1memory.html#a9db35bc0b5c099ead587b55825ae42fc">scc::memory&lt; SIZE, BUSWIDTH &gt;</a>
 </li>
 <li>set_operation_cb()
-: <a class="el" href="group__config.html#gaae571201d6387648356dc363c4996451">ahb::pe::ahb_target_b</a>
-, <a class="el" href="group__config.html#gaaeae28bc8b7e56cfc3157132323f609e">apb::pe::apb_target_b</a>
-, <a class="el" href="group__config.html#ga94ee8f6f4726c184fbf46811ccbc1449">axi::pe::axi_target_pe_b</a>
+: <a class="el" href="classahb_1_1pe_1_1ahb__target__b.html#aae571201d6387648356dc363c4996451">ahb::pe::ahb_target_b</a>
+, <a class="el" href="classapb_1_1pe_1_1apb__target__b.html#aaeae28bc8b7e56cfc3157132323f609e">apb::pe::apb_target_b</a>
+, <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#a94ee8f6f4726c184fbf46811ccbc1449">axi::pe::axi_target_pe_b</a>
 </li>
 <li>set_pass_dirty()
 : <a class="el" href="structaxi_1_1ace__response.html#a86b7a9e550dc0d1921bc3dcf4dd0e704">axi::ace_response</a>
@@ -233,7 +254,7 @@ $(function() {
 : <a class="el" href="structaxi_1_1ace.html#a3fb51801a2dd565e8637e292bc61a40a">axi::ace</a>
 </li>
 <li>set_user()
-: <a class="el" href="structaxi_1_1common.html#a696e5d5b454e5244b2de6efd2723169a">axi::common</a>
+: <a class="el" href="structaxi_1_1common.html#a4c6295bdd23e17f2d83a3ddddce77eb8">axi::common</a>
 </li>
 <li>set_value()
 : <a class="el" href="classscc_1_1configurer.html#a073d540c602e09c2c1af164e7ec1b589">scc::configurer</a>
@@ -254,7 +275,7 @@ $(function() {
 </li>
 <li>setup_callbacks()
 : <a class="el" href="structaxi_1_1fsm_1_1base.html#a531305a4a623f70f41f2249028dbedde">axi::fsm::base</a>
-, <a class="el" href="group__config.html#gacb6815cdd5be69960424928d1007a3d8">axi::pe::axi_target_pe_b</a>
+, <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#acb6815cdd5be69960424928d1007a3d8">axi::pe::axi_target_pe_b</a>
 , <a class="el" href="classaxi_1_1pe_1_1simple__initiator__b.html#a05d04cf8381f6c221197f012cf944e05">axi::pe::simple_initiator_b</a>
 </li>
 <li>setWriteCallback()
@@ -274,7 +295,7 @@ $(function() {
 : <a class="el" href="classaxi_1_1pe_1_1simple__initiator__b.html#afe4c4266030379bfd6f45644d3383390">axi::pe::simple_initiator_b</a>
 </li>
 <li>simple_target()
-: <a class="el" href="group__config.html#ga2f9cde008dc8f5707fb9b52c47be66d1">axi::pe::simple_target&lt; BUSWIDTH, TYPES, N, POL &gt;</a>
+: <a class="el" href="classaxi_1_1pe_1_1simple__target.html#a2f9cde008dc8f5707fb9b52c47be66d1">axi::pe::simple_target&lt; BUSWIDTH, TYPES, N, POL &gt;</a>
 </li>
 <li>size()
 : <a class="el" href="classscc_1_1bitfield__register.html#a2d82cea9a300f3ef85df9ff5a8daf78b">scc::bitfield_register&lt; datatype_t &gt;</a>
@@ -290,7 +311,7 @@ $(function() {
 </li>
 <li>snoop_resp()
 : <a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#ab6bb0632be12de367c1ab262d5ec1bc1">axi::pe::axi_initiator_b</a>
-, <a class="el" href="classaxi_1_1pe_1_1simple__initiator__b.html#abbf1c0310f22debb4a346d91c0f3eced">axi::pe::simple_initiator_b</a>
+, <a class="el" href="classaxi_1_1pe_1_1simple__initiator__b.html#a6a7e463a0faa033284ad5cf3448cefc7">axi::pe::simple_initiator_b</a>
 , <a class="el" href="classchi_1_1pe_1_1chi__rn__initiator__b.html#a75cac4c13b4daabdcb4a8c9d5e4bc55a">chi::pe::chi_rn_initiator_b</a>
 , <a class="el" href="structtlm_1_1scc_1_1pe_1_1intor__fw.html#a1e85d9861b52f3ec31c17e107ccd852b">tlm::scc::pe::intor_fw&lt; TYPE &gt;</a>
 </li>
@@ -314,11 +335,14 @@ $(function() {
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

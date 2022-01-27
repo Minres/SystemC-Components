@@ -59,7 +59,7 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using namespace </span>util;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespaceutil.html">util</a>;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using namespace </span>std::chrono;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<a class="code" href="classutil_1_1watchdog.html#a93179f71a1f0e034a003aeff5a2615c1">watchdog::watchdog</a>(system_clock::duration timeout, std::function&lt;<span class="keywordtype">void</span>(<span class="keywordtype">void</span>)&gt; alarm_cb,</div>
@@ -114,9 +114,10 @@ $(function() {
 <div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classutil_1_1watchdog.html#a9b78661f83153ffd8a9de24111294ff7">   64</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classutil_1_1watchdog.html#a9b78661f83153ffd8a9de24111294ff7">watchdog::re_arm</a>() { touched.store(system_clock::now()); }</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassutil_1_1watchdog_html_a2f3493572954ec31e29320fee295ea71"><div class="ttname"><a href="classutil_1_1watchdog.html#a2f3493572954ec31e29320fee295ea71">util::watchdog::arm</a></div><div class="ttdeci">void arm()</div><div class="ttdef"><b>Definition:</b> <a href="watchdog_8cpp_source.html#l00058">watchdog.cpp:58</a></div></div>
-<div class="ttc" id="aclassutil_1_1watchdog_html"><div class="ttname"><a href="classutil_1_1watchdog.html">util::watchdog</a></div><div class="ttdef"><b>Definition:</b> <a href="watchdog_8h_source.html#l00030">watchdog.h:30</a></div></div>
+<div class="ttc" id="aclassutil_1_1watchdog_html"><div class="ttname"><a href="classutil_1_1watchdog.html">util::watchdog</a></div><div class="ttdoc">a watch dog based on https://github.com/didenko/TimeoutGuard</div><div class="ttdef"><b>Definition:</b> <a href="watchdog_8h_source.html#l00058">watchdog.h:58</a></div></div>
 <div class="ttc" id="aclassutil_1_1watchdog_html_a9b78661f83153ffd8a9de24111294ff7"><div class="ttname"><a href="classutil_1_1watchdog.html#a9b78661f83153ffd8a9de24111294ff7">util::watchdog::re_arm</a></div><div class="ttdeci">void re_arm()</div><div class="ttdef"><b>Definition:</b> <a href="watchdog_8cpp_source.html#l00064">watchdog.cpp:64</a></div></div>
 <div class="ttc" id="aclassutil_1_1watchdog_html_a78359b436e131f8d4fe4cc75b28455a7"><div class="ttname"><a href="classutil_1_1watchdog.html#a78359b436e131f8d4fe4cc75b28455a7">util::watchdog::~watchdog</a></div><div class="ttdeci">~watchdog()</div><div class="ttdef"><b>Definition:</b> <a href="watchdog_8cpp_source.html#l00028">watchdog.cpp:28</a></div></div>
+<div class="ttc" id="anamespaceutil_html"><div class="ttname"><a href="namespaceutil.html">util</a></div><div class="ttdoc">SCC common utilities.</div><div class="ttdef"><b>Definition:</b> <a href="bit__field_8h_source.html#l00030">bit_field.h:30</a></div></div>
 <div class="ttc" id="aclassutil_1_1watchdog_html_a93179f71a1f0e034a003aeff5a2615c1"><div class="ttname"><a href="classutil_1_1watchdog.html#a93179f71a1f0e034a003aeff5a2615c1">util::watchdog::watchdog</a></div><div class="ttdeci">watchdog(std::chrono::system_clock::duration timeout, std::function&lt; void(void)&gt; alarm_cb, std::chrono::system_clock::duration sleep_duration)</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

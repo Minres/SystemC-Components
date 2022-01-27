@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>util</b></li><li class="navelem"><a class="el" href="classutil_1_1range__lut.html">range_lut</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classutil_1_1range__lut.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -54,6 +71,9 @@ $(function() {
 <div class="title">util::range_lut&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>range based lookup table  
+ <a href="classutil_1_1range__lut.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="range__lut_8h_source.html">range_lut.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -98,7 +118,7 @@ class util::range_lut&lt; T &gt;</h3>
 
 <p>range based lookup table </p>
 
-<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00046">46</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00051">51</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a58b87356aa322423add11eeed6581c98"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a58b87356aa322423add11eeed6581c98">&#9670;&nbsp;</a></span>range_lut()</h2>
@@ -133,7 +153,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00075">75</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00080">80</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
 
 </div>
 </div>
@@ -189,7 +209,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00135">135</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00140">140</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
 
 </div>
 </div>
@@ -219,7 +239,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <p>remove all entries from the lut </p>
 
-<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00102">102</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00107">107</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
 
 </div>
 </div>
@@ -257,7 +277,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the entry belonging to the address </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00112">112</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00117">117</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
 
 </div>
 </div>
@@ -295,7 +315,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the entry is found and removed, false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00150">150</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00155">155</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
 
 </div>
 </div>
@@ -326,7 +346,7 @@ template&lt;typename T &gt; </div>
 <p>get number of entries in the lookup table</p>
 <dl class="section return"><dt>Returns</dt><dd>the size of the underlying container </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00098">98</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00103">103</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
 
 </div>
 </div>
@@ -354,7 +374,7 @@ template&lt;typename T &gt; </div>
 <p>create a textual representation of the address map (address range-&gt;entry association)</p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00196">196</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00201">201</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
 
 </div>
 </div>
@@ -381,7 +401,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <p>validate the lookup table wrt. overlaps </p>
 
-<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00169">169</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00174">174</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
 
 </div>
 </div>
@@ -389,11 +409,15 @@ template&lt;typename T &gt; </div>
 <li>src/common/util/<a class="el" href="range__lut_8h_source.html">range_lut.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceutil.html">util</a></li><li class="navelem"><a class="el" href="classutil_1_1range__lut.html">range_lut</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

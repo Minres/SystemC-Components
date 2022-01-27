@@ -1,9 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="28,107,131,133"/>
-<area shape="rect" id="node2" href="$structscc_1_1fst__trace__file.html" title=" " alt="" coords="223,5,358,32"/>
-<area shape="rect" id="node3" href="$structscc_1_1vcd__mt__trace__file.html" title=" " alt="" coords="207,56,374,83"/>
-<area shape="rect" id="node4" href="$structscc_1_1vcd__pull__trace__file.html" title=" " alt="" coords="205,208,377,235"/>
-<area shape="rect" id="node5" href="$structscc_1_1vcd__push__trace__file.html" title=" " alt="" coords="201,107,380,133"/>
-<area shape="rect" id="node6" href="$classvalue__registry__impl.html" title=" " alt="" coords="215,157,366,184"/>
-<area shape="rect" id="node7" href="$structscc_1_1trace__observer.html" title=" " alt="" coords="5,56,153,83"/>
+<area shape="rect" id="node1" href="$structscc_1_1target__memory__map__entry.html" title=" " alt="" coords="5,5,207,47"/>
 </map>

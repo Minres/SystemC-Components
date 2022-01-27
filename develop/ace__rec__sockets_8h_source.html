@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_44f42edf5dd23d4deca0321224e9ce90.html">third_party</a></li><li class="navelem"><a class="el" href="dir_b4eeed443285a981339f45b6d7507c05.html">axi_chi</a></li><li class="navelem"><a class="el" href="dir_16d984d572b7d730d14f016ac620cfd6.html">axi</a></li><li class="navelem"><a class="el" href="dir_9dbdeab66cc4aaf1ebb921a8aafc09a0.html">scv</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('ace__rec__sockets_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">ace_rec_sockets.h</div>  </div>
@@ -146,18 +163,22 @@ $(function() {
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;} <span class="comment">// namespace scv4axi</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespaceaxi_html_af94767169896231177e492daad6ef8db"><div class="ttname"><a href="namespaceaxi.html#af94767169896231177e492daad6ef8db">axi::ace_fw_transport_if</a></div><div class="ttdeci">tlm::tlm_fw_transport_if&lt; TYPES &gt; ace_fw_transport_if</div><div class="ttdoc">alias declaration for the ACE forward interface</div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00906">axi_tlm.h:906</a></div></div>
-<div class="ttc" id="astructaxi_1_1ace__initiator__socket_html"><div class="ttname"><a href="structaxi_1_1ace__initiator__socket.html">axi::ace_initiator_socket</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00979">axi_tlm.h:979</a></div></div>
+</div><!-- doc-content -->
+<div class="ttc" id="anamespaceaxi_html_af94767169896231177e492daad6ef8db"><div class="ttname"><a href="namespaceaxi.html#af94767169896231177e492daad6ef8db">axi::ace_fw_transport_if</a></div><div class="ttdeci">tlm::tlm_fw_transport_if&lt; TYPES &gt; ace_fw_transport_if</div><div class="ttdoc">alias declaration for the ACE forward interface</div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00909">axi_tlm.h:909</a></div></div>
+<div class="ttc" id="astructaxi_1_1ace__initiator__socket_html"><div class="ttname"><a href="structaxi_1_1ace__initiator__socket.html">axi::ace_initiator_socket</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00982">axi_tlm.h:982</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_html"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html">tlm::scc::scv::tlm_extensions_recording_if</a></div><div class="ttdoc">The TLM transaction extensions recorder interface.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__extension__recording__registry_8h_source.html#l00042">tlm_extension_recording_registry.h:42</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1ace__recorder_html"><div class="ttname"><a href="classaxi_1_1scv_1_1ace__recorder.html">axi::scv::ace_recorder</a></div><div class="ttdoc">The TLM2 transaction recorder.</div><div class="ttdef"><b>Definition:</b> <a href="ace__recorder_8h_source.html#l00078">ace_recorder.h:78</a></div></div>
-<div class="ttc" id="astructaxi_1_1axi__protocol__types_html"><div class="ttname"><a href="structaxi_1_1axi__protocol__types.html">axi::axi_protocol_types</a></div><div class="ttdoc">The AXI protocol traits class. Since the protocoll defines additional non-ignorable phases a dedicate...</div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00877">axi_tlm.h:877</a></div></div>
+<div class="ttc" id="astructaxi_1_1axi__protocol__types_html"><div class="ttname"><a href="structaxi_1_1axi__protocol__types.html">axi::axi_protocol_types</a></div><div class="ttdoc">The AXI protocol traits class. Since the protocoll defines additional non-ignorable phases a dedicate...</div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00880">axi_tlm.h:880</a></div></div>
 <div class="ttc" id="aclassscv4axi_1_1ace__rec__initiator__socket_html"><div class="ttname"><a href="classscv4axi_1_1ace__rec__initiator__socket.html">scv4axi::ace_rec_initiator_socket</a></div><div class="ttdef"><b>Definition:</b> <a href="ace__rec__sockets_8h_source.html#l00026">ace_rec_sockets.h:26</a></div></div>
-<div class="ttc" id="aclassaxi_1_1ace__bw__transport__if_html"><div class="ttname"><a href="classaxi_1_1ace__bw__transport__if.html">axi::ace_bw_transport_if</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00911">axi_tlm.h:911</a></div></div>
+<div class="ttc" id="aclassaxi_1_1ace__bw__transport__if_html"><div class="ttname"><a href="classaxi_1_1ace__bw__transport__if.html">axi::ace_bw_transport_if</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00914">axi_tlm.h:914</a></div></div>
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_44f42edf5dd23d4deca0321224e9ce90.html">third_party</a></li><li class="navelem"><a class="el" href="dir_b4eeed443285a981339f45b6d7507c05.html">axi_chi</a></li><li class="navelem"><a class="el" href="dir_16d984d572b7d730d14f016ac620cfd6.html">axi</a></li><li class="navelem"><a class="el" href="dir_9dbdeab66cc4aaf1ebb921a8aafc09a0.html">scv</a></li><li class="navelem"><b>ace_rec_sockets.h</b></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

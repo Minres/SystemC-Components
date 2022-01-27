@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_be04617272aece3468352586f0f1ec2c.html">util</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('delegate_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">delegate.h</div>  </div>
@@ -71,19 +88,13 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define _UTIL_DELEGATE_H_</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;new&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;new&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span>util {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceutil.html">util</a> {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">class </span>delegate;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>R, <span class="keyword">class</span>... A&gt; <span class="keyword">class </span>delegate&lt;R(A...)&gt; {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">using</span> stub_ptr_type = R (*)(<span class="keywordtype">void</span>*, A&amp;&amp;...);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
@@ -304,27 +315,31 @@ $(function() {
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;};</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;} <span class="comment">// namespace util</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="keyword">namespace </span>std {</div>
-<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="classstd_1_1hash_3_01util_1_1delegate_3_01R_07A_8_8_8_08_4_01_4.html">  259</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span>... A&gt; <span class="keyword">class </span>hash&lt;util::delegate&lt;R(A...)&gt;&gt; {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordtype">size_t</span> operator()(<a class="code" href="classutil_1_1delegate.html">util::delegate</a>&lt;R(A...)&gt; <span class="keyword">const</span>&amp; d) <span class="keyword">const</span> noexcept {</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> seed(hash&lt;void*&gt;()(d.object_ptr_));</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordflow">return</span> hash&lt;<span class="keyword">typename</span> <a class="code" href="classutil_1_1delegate.html">util::delegate</a>&lt;R(A...)&gt;::stub_ptr_type&gt;()(d.stub_ptr_) + 0x9e3779b9 + (seed &lt;&lt; 6) +</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;               (seed &gt;&gt; 2);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    }</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;};</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;} <span class="comment">// namespace std</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SC_COMPONENTS_INCL_UTIL_DELEGATE_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment"></span><span class="keyword">namespace </span>std {</div>
+<div class="line"><a name="l00261"></a><span class="lineno"><a class="line" href="classstd_1_1hash_3_01util_1_1delegate_3_01R_07A_8_8_8_08_4_01_4.html">  261</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span>... A&gt; <span class="keyword">class </span>hash&lt;<a class="code" href="namespaceutil.html">util</a>::delegate&lt;R(A...)&gt;&gt; {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordtype">size_t</span> operator()(<a class="code" href="classutil_1_1delegate.html">util::delegate</a>&lt;R(A...)&gt; <span class="keyword">const</span>&amp; d) <span class="keyword">const</span> noexcept {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> seed(hash&lt;void*&gt;()(d.object_ptr_));</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="keywordflow">return</span> hash&lt;<span class="keyword">typename</span> <a class="code" href="classutil_1_1delegate.html">util::delegate</a>&lt;R(A...)&gt;::stub_ptr_type&gt;()(d.stub_ptr_) + 0x9e3779b9 + (seed &lt;&lt; 6) +</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;               (seed &gt;&gt; 2);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;};</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;} <span class="comment">// namespace std</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SC_COMPONENTS_INCL_UTIL_DELEGATE_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <div class="ttc" id="aclassutil_1_1delegate_html"><div class="ttname"><a href="classutil_1_1delegate.html">util::delegate</a></div><div class="ttdef"><b>Definition:</b> <a href="delegate_8h_source.html#l00049">delegate.h:49</a></div></div>
+<div class="ttc" id="anamespaceutil_html"><div class="ttname"><a href="namespaceutil.html">util</a></div><div class="ttdoc">SCC common utilities.</div><div class="ttdef"><b>Definition:</b> <a href="bit__field_8h_source.html#l00030">bit_field.h:30</a></div></div>
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_be04617272aece3468352586f0f1ec2c.html">util</a></li><li class="navelem"><b>delegate.h</b></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

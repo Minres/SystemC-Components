@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>scc</b></li><li class="navelem"><a class="el" href="structscc_1_1ScLogger.html">ScLogger</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('structscc_1_1ScLogger.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -122,7 +139,7 @@ struct scc::ScLogger&lt; SEVERITY &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00209">209</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00197">197</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afc3d0c8bcfabad46d738ebac4e9892ce"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afc3d0c8bcfabad46d738ebac4e9892ce">&#9670;&nbsp;</a></span>ScLogger()</h2>
@@ -174,7 +191,7 @@ template&lt;sc_core::sc_severity SEVERITY&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00218">218</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00206">206</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
 
 </div>
 </div>
@@ -207,7 +224,7 @@ template&lt;sc_core::sc_severity SEVERITY&gt; </div>
 <p>get the underlying ostringstream </p>
 <dl class="section return"><dt>Returns</dt><dd>the output stream collecting the log message </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00279">279</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00267">267</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
 
 </div>
 </div>
@@ -239,7 +256,7 @@ template&lt;sc_core::sc_severity SEVERITY&gt; </div>
 <p>reset the category of the log entry </p>
 <dl class="section return"><dt>Returns</dt><dd>reference to self for chaining </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00247">247</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00235">235</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
 
 </div>
 </div>
@@ -278,7 +295,7 @@ template&lt;sc_core::sc_severity SEVERITY&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to self for chaining </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00258">258</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00246">246</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
 
 </div>
 </div>
@@ -317,7 +334,7 @@ template&lt;sc_core::sc_severity SEVERITY&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to self for chaining </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00269">269</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="report_8h_source.html#l00257">257</a> of file <a class="el" href="report_8h_source.html">report.h</a>.</p>
 
 </div>
 </div>
@@ -325,11 +342,15 @@ template&lt;sc_core::sc_severity SEVERITY&gt; </div>
 <li>src/sysc/scc/<a class="el" href="report_8h_source.html">report.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>scc</b></li><li class="navelem"><a class="el" href="structscc_1_1ScLogger.html">ScLogger</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

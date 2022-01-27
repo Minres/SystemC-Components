@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_be04617272aece3468352586f0f1ec2c.html">util</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('common_2util_2mt19937__rng_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">mt19937_rng.h</div>  </div>
@@ -62,53 +79,58 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>util {</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classutil_1_1MT19937.html">MT19937</a> {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html#a0ba3f8ab3c0701d9722a87696c9c5674">   22</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classutil_1_1MT19937.html#a0ba3f8ab3c0701d9722a87696c9c5674">seed</a>(uint64_t new_seed = std::mt19937_64::default_seed) { inst().seed(new_seed); }</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html#a47c1909a34ec10f75399cf1ae91ad595">   27</a></span>&#160;    <span class="keyword">static</span> uint64_t <a class="code" href="classutil_1_1MT19937.html#a47c1909a34ec10f75399cf1ae91ad595">uniform</a>() {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        std::uniform_int_distribution&lt;uint64_t&gt; u;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> u(inst());</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html#a025841762a15de258f36ba000720e02b">   35</a></span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">static</span> T <a class="code" href="classutil_1_1MT19937.html#a025841762a15de258f36ba000720e02b">uniform</a>() {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        std::uniform_int_distribution&lt;T&gt; u;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">return</span> u(inst());</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html#abd99a81df7660046a521ea9928b194df">   45</a></span>&#160;    <span class="keyword">static</span> uint64_t <a class="code" href="classutil_1_1MT19937.html#abd99a81df7660046a521ea9928b194df">uniform</a>(uint64_t min, uint64_t max) {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        assert(min &lt; max);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        std::uniform_int_distribution&lt;uint64_t&gt; u(min, max);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> u(inst());</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html#ab44e8c365138bdabae4581f93aca58f9">   54</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code" href="classutil_1_1MT19937.html#ab44e8c365138bdabae4581f93aca58f9">normal</a>() {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        std::normal_distribution&lt;&gt; u;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> u(inst());</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html#a460317f85f6d611ca79457302b574e5b">   62</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code" href="classutil_1_1MT19937.html#a460317f85f6d611ca79457302b574e5b">lognormal</a>() {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        std::lognormal_distribution&lt;&gt; u;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">return</span> u(inst());</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">static</span> std::mt19937_64&amp; inst() {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">static</span> thread_local std::mt19937_64 rng;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">return</span> rng;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceutil.html">util</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="classutil_1_1MT19937.html">MT19937</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html#a0ba3f8ab3c0701d9722a87696c9c5674">   28</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classutil_1_1MT19937.html#a0ba3f8ab3c0701d9722a87696c9c5674">seed</a>(uint64_t new_seed = std::mt19937_64::default_seed) { inst().seed(new_seed); }</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html#a47c1909a34ec10f75399cf1ae91ad595">   33</a></span>&#160;    <span class="keyword">static</span> uint64_t <a class="code" href="classutil_1_1MT19937.html#a47c1909a34ec10f75399cf1ae91ad595">uniform</a>() {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        std::uniform_int_distribution&lt;uint64_t&gt; u;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">return</span> u(inst());</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html#a025841762a15de258f36ba000720e02b">   41</a></span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">static</span> T <a class="code" href="classutil_1_1MT19937.html#a025841762a15de258f36ba000720e02b">uniform</a>() {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        std::uniform_int_distribution&lt;T&gt; u;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span> u(inst());</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html#abd99a81df7660046a521ea9928b194df">   51</a></span>&#160;    <span class="keyword">static</span> uint64_t <a class="code" href="classutil_1_1MT19937.html#abd99a81df7660046a521ea9928b194df">uniform</a>(uint64_t min, uint64_t max) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        assert(min &lt; max);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        std::uniform_int_distribution&lt;uint64_t&gt; u(min, max);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> u(inst());</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html#ab44e8c365138bdabae4581f93aca58f9">   60</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code" href="classutil_1_1MT19937.html#ab44e8c365138bdabae4581f93aca58f9">normal</a>() {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        std::normal_distribution&lt;&gt; u;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> u(inst());</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classutil_1_1MT19937.html#a460317f85f6d611ca79457302b574e5b">   68</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code" href="classutil_1_1MT19937.html#a460317f85f6d611ca79457302b574e5b">lognormal</a>() {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        std::lognormal_distribution&lt;&gt; u;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">return</span> u(inst());</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;} <span class="comment">// namespace util</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _UTIL_MT19937_RNG_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">static</span> std::mt19937_64&amp; inst() {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">static</span> thread_local std::mt19937_64 rng;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> rng;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;} <span class="comment">// namespace util</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"></span><span class="preprocessor">#endif </span><span class="comment">/* _UTIL_MT19937_RNG_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassutil_1_1MT19937_html_a47c1909a34ec10f75399cf1ae91ad595"><div class="ttname"><a href="classutil_1_1MT19937.html#a47c1909a34ec10f75399cf1ae91ad595">util::MT19937::uniform</a></div><div class="ttdeci">static uint64_t uniform()</div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00027">mt19937_rng.h:27</a></div></div>
-<div class="ttc" id="aclassutil_1_1MT19937_html_abd99a81df7660046a521ea9928b194df"><div class="ttname"><a href="classutil_1_1MT19937.html#abd99a81df7660046a521ea9928b194df">util::MT19937::uniform</a></div><div class="ttdeci">static uint64_t uniform(uint64_t min, uint64_t max)</div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00045">mt19937_rng.h:45</a></div></div>
-<div class="ttc" id="aclassutil_1_1MT19937_html_a025841762a15de258f36ba000720e02b"><div class="ttname"><a href="classutil_1_1MT19937.html#a025841762a15de258f36ba000720e02b">util::MT19937::uniform</a></div><div class="ttdeci">static T uniform()</div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00035">mt19937_rng.h:35</a></div></div>
-<div class="ttc" id="aclassutil_1_1MT19937_html_a0ba3f8ab3c0701d9722a87696c9c5674"><div class="ttname"><a href="classutil_1_1MT19937.html#a0ba3f8ab3c0701d9722a87696c9c5674">util::MT19937::seed</a></div><div class="ttdeci">static void seed(uint64_t new_seed=std::mt19937_64::default_seed)</div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00022">mt19937_rng.h:22</a></div></div>
-<div class="ttc" id="aclassutil_1_1MT19937_html"><div class="ttname"><a href="classutil_1_1MT19937.html">util::MT19937</a></div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00016">mt19937_rng.h:16</a></div></div>
-<div class="ttc" id="aclassutil_1_1MT19937_html_a460317f85f6d611ca79457302b574e5b"><div class="ttname"><a href="classutil_1_1MT19937.html#a460317f85f6d611ca79457302b574e5b">util::MT19937::lognormal</a></div><div class="ttdeci">static double lognormal()</div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00062">mt19937_rng.h:62</a></div></div>
-<div class="ttc" id="aclassutil_1_1MT19937_html_ab44e8c365138bdabae4581f93aca58f9"><div class="ttname"><a href="classutil_1_1MT19937.html#ab44e8c365138bdabae4581f93aca58f9">util::MT19937::normal</a></div><div class="ttdeci">static double normal()</div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00054">mt19937_rng.h:54</a></div></div>
+</div><!-- doc-content -->
+<div class="ttc" id="aclassutil_1_1MT19937_html_a47c1909a34ec10f75399cf1ae91ad595"><div class="ttname"><a href="classutil_1_1MT19937.html#a47c1909a34ec10f75399cf1ae91ad595">util::MT19937::uniform</a></div><div class="ttdeci">static uint64_t uniform()</div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00033">mt19937_rng.h:33</a></div></div>
+<div class="ttc" id="aclassutil_1_1MT19937_html_abd99a81df7660046a521ea9928b194df"><div class="ttname"><a href="classutil_1_1MT19937.html#abd99a81df7660046a521ea9928b194df">util::MT19937::uniform</a></div><div class="ttdeci">static uint64_t uniform(uint64_t min, uint64_t max)</div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00051">mt19937_rng.h:51</a></div></div>
+<div class="ttc" id="aclassutil_1_1MT19937_html_a025841762a15de258f36ba000720e02b"><div class="ttname"><a href="classutil_1_1MT19937.html#a025841762a15de258f36ba000720e02b">util::MT19937::uniform</a></div><div class="ttdeci">static T uniform()</div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00041">mt19937_rng.h:41</a></div></div>
+<div class="ttc" id="aclassutil_1_1MT19937_html_a0ba3f8ab3c0701d9722a87696c9c5674"><div class="ttname"><a href="classutil_1_1MT19937.html#a0ba3f8ab3c0701d9722a87696c9c5674">util::MT19937::seed</a></div><div class="ttdeci">static void seed(uint64_t new_seed=std::mt19937_64::default_seed)</div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00028">mt19937_rng.h:28</a></div></div>
+<div class="ttc" id="aclassutil_1_1MT19937_html"><div class="ttname"><a href="classutil_1_1MT19937.html">util::MT19937</a></div><div class="ttdoc">a Mersenne-Twister pseudo random number generator</div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00022">mt19937_rng.h:22</a></div></div>
+<div class="ttc" id="aclassutil_1_1MT19937_html_a460317f85f6d611ca79457302b574e5b"><div class="ttname"><a href="classutil_1_1MT19937.html#a460317f85f6d611ca79457302b574e5b">util::MT19937::lognormal</a></div><div class="ttdeci">static double lognormal()</div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00068">mt19937_rng.h:68</a></div></div>
+<div class="ttc" id="anamespaceutil_html"><div class="ttname"><a href="namespaceutil.html">util</a></div><div class="ttdoc">SCC common utilities.</div><div class="ttdef"><b>Definition:</b> <a href="bit__field_8h_source.html#l00030">bit_field.h:30</a></div></div>
+<div class="ttc" id="aclassutil_1_1MT19937_html_ab44e8c365138bdabae4581f93aca58f9"><div class="ttname"><a href="classutil_1_1MT19937.html#ab44e8c365138bdabae4581f93aca58f9">util::MT19937::normal</a></div><div class="ttdeci">static double normal()</div><div class="ttdef"><b>Definition:</b> <a href="common_2util_2mt19937__rng_8h_source.html#l00060">mt19937_rng.h:60</a></div></div>
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_be04617272aece3468352586f0f1ec2c.html">util</a></li><li class="navelem"><b>mt19937_rng.h</b></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

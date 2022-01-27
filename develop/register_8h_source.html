@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3c4c7c1a85608ccd561c026bec818e51.html">components</a></li><li class="navelem"><a class="el" href="dir_4b4439fcc6b4628cd8783772fc9df8bf.html">scc</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('register_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">register.h</div>  </div>
@@ -273,6 +290,7 @@ $(function() {
 <div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160; </div>
 <div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SYSC_REGISTER_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <div class="ttc" id="aclassscc_1_1sc__register__indexed_html_ad889f11b9b8e50e06e744e6b99f5e65a"><div class="ttname"><a href="classscc_1_1sc__register__indexed.html#ad889f11b9b8e50e06e744e6b99f5e65a">scc::sc_register_indexed::~sc_register_indexed</a></div><div class="ttdeci">~sc_register_indexed() override</div><div class="ttdef"><b>Definition:</b> <a href="register_8h_source.html#l00385">register.h:385</a></div></div>
 <div class="ttc" id="aclassscc_1_1impl_1_1sc__register_html_aca9d8f872440560d68d859ba9d184b66"><div class="ttname"><a href="classscc_1_1impl_1_1sc__register.html#aca9d8f872440560d68d859ba9d184b66">scc::impl::sc_register::res_val</a></div><div class="ttdeci">const DATATYPE res_val</div><div class="ttdoc">the reset value</div><div class="ttdef"><b>Definition:</b> <a href="register_8h_source.html#l00340">register.h:340</a></div></div>
 <div class="ttc" id="aclassscc_1_1sc__register__indexed_html_a8387c6b140ebe010fcc437a8b7f589e2"><div class="ttname"><a href="classscc_1_1sc__register__indexed.html#a8387c6b140ebe010fcc437a8b7f589e2">scc::sc_register_indexed::set_read_cb</a></div><div class="ttdeci">void set_read_cb(std::function&lt; bool(const sc_register&lt; DATATYPE &gt; &amp;, DATATYPE &amp;)&gt; read_cb)</div><div class="ttdef"><b>Definition:</b> <a href="register_8h_source.html#l00398">register.h:398</a></div></div>
@@ -298,7 +316,7 @@ $(function() {
 <div class="ttc" id="aclassscc_1_1impl_1_1sc__register_html"><div class="ttname"><a href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register</a></div><div class="ttdoc">a simple register implementation</div><div class="ttdef"><b>Definition:</b> <a href="register_8h_source.html#l00102">register.h:102</a></div></div>
 <div class="ttc" id="aclassscc_1_1impl_1_1sc__register_html_ad52a521b362636613068bcfc72c1a848"><div class="ttname"><a href="classscc_1_1impl_1_1sc__register.html#ad52a521b362636613068bcfc72c1a848">scc::impl::sc_register::operator=</a></div><div class="ttdeci">this_type &amp; operator=(DATATYPE other)</div><div class="ttdoc">assignment operator</div><div class="ttdef"><b>Definition:</b> <a href="register_8h_source.html#l00259">register.h:259</a></div></div>
 <div class="ttc" id="aclassscc_1_1impl_1_1sc__register_html_a673c37201da32119a56659d1056dec39"><div class="ttname"><a href="classscc_1_1impl_1_1sc__register.html#a673c37201da32119a56659d1056dec39">scc::impl::sc_register::sc_register</a></div><div class="ttdeci">sc_register(sc_core::sc_module_name nm, DATATYPE &amp;storage, const DATATYPE reset_val, resetable &amp;owner, DATATYPE rdmask=get_max_uval&lt; DATATYPE &gt;(), DATATYPE wrmask=get_max_uval&lt; DATATYPE &gt;())</div><div class="ttdoc">the constructor</div><div class="ttdef"><b>Definition:</b> <a href="register_8h_source.html#l00117">register.h:117</a></div></div>
-<div class="ttc" id="aclassscc_1_1indexed__resource__access__if_html"><div class="ttname"><a href="classscc_1_1indexed__resource__access__if.html">scc::indexed_resource_access_if</a></div><div class="ttdoc">interface defining access to an indexed resource e.g. register file</div><div class="ttdef"><b>Definition:</b> <a href="resource__access__if_8h_source.html#l00120">resource_access_if.h:120</a></div></div>
+<div class="ttc" id="aclassscc_1_1indexed__resource__access__if_html"><div class="ttname"><a href="classscc_1_1indexed__resource__access__if.html">scc::indexed_resource_access_if</a></div><div class="ttdoc">interface defining access to an indexed resource e.g. register file</div><div class="ttdef"><b>Definition:</b> <a href="resource__access__if_8h_source.html#l00110">resource_access_if.h:110</a></div></div>
 <div class="ttc" id="aclassscc_1_1impl_1_1sc__register_html_a50b1330e1db43b3fe1088b47311e0ef4"><div class="ttname"><a href="classscc_1_1impl_1_1sc__register.html#a50b1330e1db43b3fe1088b47311e0ef4">scc::impl::sc_register::write_dbg</a></div><div class="ttdeci">bool write_dbg(const uint8_t *data, size_t length, uint64_t offset=0) override</div><div class="ttdoc">debug write function from resource_access_if</div><div class="ttdef"><b>Definition:</b> <a href="register_8h_source.html#l00207">register.h:207</a></div></div>
 <div class="ttc" id="aclassscc_1_1impl_1_1sc__register_html_a04b4f9e28ccfb5f005bcf300df1152cc"><div class="ttname"><a href="classscc_1_1impl_1_1sc__register.html#a04b4f9e28ccfb5f005bcf300df1152cc">scc::impl::sc_register::reset</a></div><div class="ttdeci">void reset() override</div><div class="ttdoc">reset the register</div><div class="ttdef"><b>Definition:</b> <a href="register_8h_source.html#l00144">register.h:144</a></div></div>
 <div class="ttc" id="aclassscc_1_1impl_1_1sc__register_html_a1e93444af0116c699242d3d7bc9fbc19"><div class="ttname"><a href="classscc_1_1impl_1_1sc__register.html#a1e93444af0116c699242d3d7bc9fbc19">scc::impl::sc_register::set_read_cb</a></div><div class="ttdeci">void set_read_cb(std::function&lt; bool(const this_type &amp;, DATATYPE &amp;)&gt; read_cb)</div><div class="ttdoc">set the read callback</div><div class="ttdef"><b>Definition:</b> <a href="register_8h_source.html#l00294">register.h:294</a></div></div>
@@ -308,10 +326,13 @@ $(function() {
 <div class="ttc" id="aclassscc_1_1sc__register__indexed_html_a207407802002ef854ef5e77a4d3a82f1"><div class="ttname"><a href="classscc_1_1sc__register__indexed.html#a207407802002ef854ef5e77a4d3a82f1">scc::sc_register_indexed::operator[]</a></div><div class="ttdeci">reference operator[](size_t idx) noexcept override</div><div class="ttdef"><b>Definition:</b> <a href="register_8h_source.html#l00436">register.h:436</a></div></div>
 <div class="ttc" id="aclassscc_1_1impl_1_1sc__register_html_a15695500361212b68a67d5a219fc975a"><div class="ttname"><a href="classscc_1_1impl_1_1sc__register.html#a15695500361212b68a67d5a219fc975a">scc::impl::sc_register::set_write_cb</a></div><div class="ttdeci">void set_write_cb(std::function&lt; bool(this_type &amp;, const DATATYPE &amp;)&gt; write_cb)</div><div class="ttdoc">set the write callback</div><div class="ttdef"><b>Definition:</b> <a href="register_8h_source.html#l00315">register.h:315</a></div></div>
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3c4c7c1a85608ccd561c026bec818e51.html">components</a></li><li class="navelem"><a class="el" href="dir_4b4439fcc6b4628cd8783772fc9df8bf.html">scc</a></li><li class="navelem"><b>register.h</b></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

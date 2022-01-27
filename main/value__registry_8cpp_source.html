@@ -66,7 +66,7 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span>sc_core;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>scc {</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">auto</span> operator&lt;&lt;(std::ostream&amp; os, <span class="keyword">const</span> sc_event&amp; evt) -&gt; std::ostream&amp; {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">auto</span> <a class="code" href="namespacelogging.html#ab27a4fd91dca7fb65391baf9e4f17e98">operator&lt;&lt;</a>(std::ostream&amp; os, <span class="keyword">const</span> sc_event&amp; evt) -&gt; std::ostream&amp; {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#if SYSTEMC_VERSION &gt;= 20181013</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    os &lt;&lt; evt.triggered();</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -237,6 +237,7 @@ $(function() {
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespacelogging_html_ab27a4fd91dca7fb65391baf9e4f17e98"><div class="ttname"><a href="namespacelogging.html#ab27a4fd91dca7fb65391baf9e4f17e98">logging::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;stream, const std::vector&lt; T &gt; &amp;vector)</div><div class="ttdoc">a print function for a vector</div><div class="ttdef"><b>Definition:</b> <a href="logging_8h_source.html#l00302">logging.h:302</a></div></div>
 <div class="ttc" id="aclassscc_1_1value__registry__impl_html"><div class="ttname"><a href="classscc_1_1value__registry__impl.html">scc::value_registry_impl</a></div><div class="ttdef"><b>Definition:</b> <a href="value__registry_8cpp_source.html#l00033">value_registry.cpp:33</a></div></div>
 <div class="ttc" id="astructscc_1_1sc__ref__variable_html"><div class="ttname"><a href="structscc_1_1sc__ref__variable.html">scc::sc_ref_variable</a></div><div class="ttdoc">the sc_ref_variable for a particular plain data type. This marks an existing C++ variable as discover...</div><div class="ttdef"><b>Definition:</b> <a href="sc__variable_8h_source.html#l00309">sc_variable.h:309</a></div></div>
 <div class="ttc" id="aclassscc_1_1tracer__base_html"><div class="ttname"><a href="classscc_1_1tracer__base.html">scc::tracer_base</a></div><div class="ttdoc">base class for automatic tracer</div><div class="ttdef"><b>Definition:</b> <a href="tracer__base_8h_source.html#l00088">tracer_base.h:88</a></div></div>

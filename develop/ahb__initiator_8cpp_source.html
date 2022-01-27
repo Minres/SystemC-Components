@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2e5638b409f3ace0c6070b175318504a.html">bus_interfaces</a></li><li class="navelem"><a class="el" href="dir_47442d965ec8ba98945afaeb09ef6dfa.html">ahb</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('ahb__initiator_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">ahb_initiator.cpp</div>  </div>
@@ -213,23 +230,27 @@ $(function() {
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;finished transport req for id=&quot;</span> &lt;&lt; &amp;trans;</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <div class="ttc" id="anamespaceahb_html"><div class="ttname"><a href="namespaceahb.html">ahb</a></div><div class="ttdoc">TLM2.0 components modeling AHB.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__tlm_8h_source.html#l00016">ahb_tlm.h:16</a></div></div>
 <div class="ttc" id="anamespaceahb_1_1pe_html"><div class="ttname"><a href="namespaceahb_1_1pe.html">ahb::pe</a></div><div class="ttdoc">protocol engine implementations</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00022">ahb_initiator.h:22</a></div></div>
 <div class="ttc" id="aclassscc_1_1ordered__semaphore_html_a5f3fd55d5fb2c9ab687952c1a2c7f6bc"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">scc::ordered_semaphore::post</a></div><div class="ttdeci">int post() override</div><div class="ttdoc">unlock (give) the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00125">ordered_semaphore.cpp:125</a></div></div>
-<div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_a9ac6906ccf643f4adce5d1c0ccf884ce"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#a9ac6906ccf643f4adce5d1c0ccf884ce">ahb::pe::ahb_initiator_b::awtv</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; awtv</div><div class="ttdoc">Write address valid to next write address valid.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00075">ahb_initiator.h:75</a></div></div>
+<div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_a9ac6906ccf643f4adce5d1c0ccf884ce"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#a9ac6906ccf643f4adce5d1c0ccf884ce">ahb::pe::ahb_initiator_b::awtv</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; awtv</div><div class="ttdoc">Write address valid to next write address valid.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00070">ahb_initiator.h:70</a></div></div>
 <div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_abf362e537cf45c1cde8cfe0a2d224058"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#abf362e537cf45c1cde8cfe0a2d224058">ahb::pe::ahb_initiator_b::transport</a></div><div class="ttdeci">void transport(payload_type &amp;trans, bool blocking)</div><div class="ttdoc">The forward transport function. It behaves blocking and is re-entrant.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8cpp_source.html#l00064">ahb_initiator.cpp:64</a></div></div>
 <div class="ttc" id="astructahb_1_1ahb__extension_html"><div class="ttname"><a href="structahb_1_1ahb__extension.html">ahb::ahb_extension</a></div><div class="ttdef"><b>Definition:</b> <a href="ahb__tlm_8h_source.html#l00034">ahb_tlm.h:34</a></div></div>
-<div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_a99526e36d733bc993871255b820f60ae"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#a99526e36d733bc993871255b820f60ae">ahb::pe::ahb_initiator_b::br</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; br</div><div class="ttdoc">Write response valid to ready.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00081">ahb_initiator.h:81</a></div></div>
-<div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_adda5c39ee3fca86dfb3139817c2aa7ba"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#adda5c39ee3fca86dfb3139817c2aa7ba">ahb::pe::ahb_initiator_b::rbr</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; rbr</div><div class="ttdoc">Read data valid to same beat ready.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00079">ahb_initiator.h:79</a></div></div>
+<div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_a99526e36d733bc993871255b820f60ae"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#a99526e36d733bc993871255b820f60ae">ahb::pe::ahb_initiator_b::br</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; br</div><div class="ttdoc">Write response valid to ready.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00076">ahb_initiator.h:76</a></div></div>
+<div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_adda5c39ee3fca86dfb3139817c2aa7ba"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#adda5c39ee3fca86dfb3139817c2aa7ba">ahb::pe::ahb_initiator_b::rbr</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; rbr</div><div class="ttdoc">Read data valid to same beat ready.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00074">ahb_initiator.h:74</a></div></div>
 <div class="ttc" id="astructscc_1_1peq_html_a86fe01b84c045c7b8d0090f1dc588bed"><div class="ttname"><a href="structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed">scc::peq::get</a></div><div class="ttdeci">TYPE get()</div><div class="ttdoc">blocking get</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00125">peq.h:125</a></div></div>
-<div class="ttc" id="astructahb_1_1pe_1_1ahb__initiator__b_1_1tx__state_html"><div class="ttname"><a href="structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state.html">ahb::pe::ahb_initiator_b::tx_state</a></div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00097">ahb_initiator.h:97</a></div></div>
-<div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_a8569ff4b12690128c312d7c8fe5d6378"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#a8569ff4b12690128c312d7c8fe5d6378">ahb::pe::ahb_initiator_b::artv</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; artv</div><div class="ttdoc">Read address valid to next read address valid.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00073">ahb_initiator.h:73</a></div></div>
+<div class="ttc" id="astructahb_1_1pe_1_1ahb__initiator__b_1_1tx__state_html"><div class="ttname"><a href="structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state.html">ahb::pe::ahb_initiator_b::tx_state</a></div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00092">ahb_initiator.h:92</a></div></div>
+<div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_a8569ff4b12690128c312d7c8fe5d6378"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#a8569ff4b12690128c312d7c8fe5d6378">ahb::pe::ahb_initiator_b::artv</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; artv</div><div class="ttdoc">Read address valid to next read address valid.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00068">ahb_initiator.h:68</a></div></div>
 <div class="ttc" id="aclassscc_1_1ordered__semaphore_html_aa670dc99df7070d0702cb6de079f077a"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#aa670dc99df7070d0702cb6de079f077a">scc::ordered_semaphore::wait</a></div><div class="ttdeci">int wait() override</div><div class="ttdoc">lock (take) the semaphore, block if not available</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00095">ordered_semaphore.cpp:95</a></div></div>
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2e5638b409f3ace0c6070b175318504a.html">bus_interfaces</a></li><li class="navelem"><a class="el" href="dir_47442d965ec8ba98945afaeb09ef6dfa.html">ahb</a></li><li class="navelem"><b>ahb_initiator.cpp</b></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

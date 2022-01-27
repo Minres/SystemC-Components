@@ -1,9 +1,10 @@
 <map id="scc::sc_variable_b" name="scc::sc_variable_b">
-<area shape="rect" id="node1" title=" " alt="" coords="136,115,276,141"/>
+<area shape="rect" id="node1" title=" " alt="" coords="136,148,276,175"/>
 <area shape="rect" id="node3" href="$structscc_1_1sc__variable.html" title=" " alt="" coords="324,5,539,32"/>
 <area shape="rect" id="node4" href="$structscc_1_1sc__ref__variable.html" title="the sc_ref_variable for a particular plain data type. This marks an existing C++ variable as discover..." alt="" coords="337,56,525,83"/>
-<area shape="rect" id="node5" href="$structscc_1_1sc__ref__variable__masked.html" title=" " alt="" coords="356,107,507,149"/>
-<area shape="rect" id="node6" href="$structscc_1_1sc__variable.html" title="SystemC variable." alt="" coords="350,173,513,200"/>
-<area shape="rect" id="node7" href="$structscc_1_1sc__variable_3_01bool_01_4.html" title=" " alt="" coords="340,224,523,251"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,115,88,141"/>
+<area shape="rect" id="node5" href="$structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4.html" title=" " alt="" coords="348,107,515,149"/>
+<area shape="rect" id="node6" href="$structscc_1_1sc__ref__variable__masked.html" title="the sc_variable for a particular plain data type with limited bit width" alt="" coords="356,173,507,214"/>
+<area shape="rect" id="node7" href="$structscc_1_1sc__variable.html" title="SystemC variable." alt="" coords="350,239,513,265"/>
+<area shape="rect" id="node8" href="$structscc_1_1sc__variable_3_01bool_01_4.html" title=" " alt="" coords="340,289,523,316"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,148,88,175"/>
 </map>

@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_44f42edf5dd23d4deca0321224e9ce90.html">third_party</a></li><li class="navelem"><a class="el" href="dir_b4eeed443285a981339f45b6d7507c05.html">axi_chi</a></li><li class="navelem"><a class="el" href="dir_16d984d572b7d730d14f016ac620cfd6.html">axi</a></li><li class="navelem"><a class="el" href="dir_9dbdeab66cc4aaf1ebb921a8aafc09a0.html">scv</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('axi__recorder_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">axi_recorder.h</div>  </div>
@@ -561,23 +578,24 @@ $(function() {
 <div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;} <span class="comment">// namespace axi</span></div>
 <div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_a958266145edd4bcd695d644806ffba0e"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#a958266145edd4bcd695d644806ffba0e">axi::scv::axi_recorder::invalidate_direct_mem_ptr</a></div><div class="ttdeci">void invalidate_direct_mem_ptr(sc_dt::uint64 start_addr, sc_dt::uint64 end_addr) override</div><div class="ttdoc">The direct memory interface backward function.</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00604">axi_recorder.h:604</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_a4d3f6d39e366852becdf2cff464aa921"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#a4d3f6d39e366852becdf2cff464aa921">axi::scv::axi_recorder::enableDmiTracing</a></div><div class="ttdeci">sc_core::sc_attribute&lt; bool &gt; enableDmiTracing</div><div class="ttdoc">the attribute to selectively enable/disable DMI recording</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00072">axi_recorder.h:72</a></div></div>
-<div class="ttc" id="anamespaceaxi_html_ac83624429793c39523c6c89199e5ab26"><div class="ttname"><a href="namespaceaxi.html#ac83624429793c39523c6c89199e5ab26">axi::axi_fw_transport_if</a></div><div class="ttdeci">tlm::tlm_fw_transport_if&lt; TYPES &gt; axi_fw_transport_if</div><div class="ttdoc">alias declaration for the forward interface</div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00902">axi_tlm.h:902</a></div></div>
+<div class="ttc" id="anamespaceaxi_html_ac83624429793c39523c6c89199e5ab26"><div class="ttname"><a href="namespaceaxi.html#ac83624429793c39523c6c89199e5ab26">axi::axi_fw_transport_if</a></div><div class="ttdeci">tlm::tlm_fw_transport_if&lt; TYPES &gt; axi_fw_transport_if</div><div class="ttdoc">alias declaration for the forward interface</div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00905">axi_tlm.h:905</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__recording__extension_html"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html">tlm::scc::scv::tlm_recording_extension</a></div><div class="ttdoc">generic payload extension class holding the handle of the last recorded SCV transaction</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recording__extension_8h_source.html#l00101">tlm_recording_extension.h:101</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_a80cdbf2ddabebdf614fb31bf40d599b3"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#a80cdbf2ddabebdf614fb31bf40d599b3">axi::scv::axi_recorder::enableNbTracing</a></div><div class="ttdeci">sc_core::sc_attribute&lt; bool &gt; enableNbTracing</div><div class="ttdoc">the attribute to selectively enable/disable recording of non-blocking protocol tx</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00066">axi_recorder.h:66</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__recording__extension_html_ae60ae6b13f72894c8887cda134df9038"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html#ae60ae6b13f72894c8887cda134df9038">tlm::scc::scv::tlm_recording_extension::get_creator</a></div><div class="ttdeci">void * get_creator()</div><div class="ttdoc">accessor to the owner, the property is read only.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recording__extension_8h_source.html#l00131">tlm_recording_extension.h:131</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_aa08ec214c5b5733bf27b4c25a5c82347"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#aa08ec214c5b5733bf27b4c25a5c82347">axi::scv::axi_recorder::get_direct_mem_ptr</a></div><div class="ttdeci">bool get_direct_mem_ptr(typename TYPES::tlm_payload_type &amp;trans, tlm::tlm_dmi &amp;dmi_data) override</div><div class="ttdoc">The direct memory interface forward function.</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00586">axi_recorder.h:586</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html">axi::scv::axi_recorder</a></div><div class="ttdoc">The TLM2 transaction recorder.</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00048">axi_recorder.h:48</a></div></div>
-<div class="ttc" id="astructtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__types_html"><div class="ttname"><a href="structtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__types.html">tlm::scc::scv::impl::tlm_recording_types</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__recorder_8h_source.html#l00105">tlm_recorder.h:105</a></div></div>
+<div class="ttc" id="astructtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__types_html"><div class="ttname"><a href="structtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__types.html">tlm::scc::scv::impl::tlm_recording_types</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__recorder_8h_source.html#l00103">tlm_recorder.h:103</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_a52132138c3407ec5b77e27ca5d1c8394"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#a52132138c3407ec5b77e27ca5d1c8394">axi::scv::axi_recorder::b_transport</a></div><div class="ttdeci">void b_transport(typename TYPES::tlm_payload_type &amp;trans, sc_core::sc_time &amp;delay) override</div><div class="ttdoc">The blocking transport function.</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00288">axi_recorder.h:288</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_a028def3e50510882d6be5b87a604c24c"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#a028def3e50510882d6be5b87a604c24c">axi::scv::axi_recorder::enableBlTracing</a></div><div class="ttdeci">sc_core::sc_attribute&lt; bool &gt; enableBlTracing</div><div class="ttdoc">the attribute to selectively enable/disable recording of blocking protocol tx</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00063">axi_recorder.h:63</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_a648984345f67c3bfcbb986ca7be012f3"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#a648984345f67c3bfcbb986ca7be012f3">axi::scv::axi_recorder::nb_transport_fw</a></div><div class="ttdeci">tlm::tlm_sync_enum nb_transport_fw(typename TYPES::tlm_payload_type &amp;trans, typename TYPES::tlm_phase_type &amp;phase, sc_core::sc_time &amp;delay) override</div><div class="ttdoc">The non-blocking forward transport function.</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00368">axi_recorder.h:368</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_a884a1de6b935fd7405e029b79d04d581"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#a884a1de6b935fd7405e029b79d04d581">axi::scv::axi_recorder::axi_recorder</a></div><div class="ttdeci">axi_recorder(const char *name, bool recording_enabled=true, SCVNS scv_tr_db *tr_db=SCVNS scv_tr_db::get_default_db())</div><div class="ttdoc">The constructor of the component.</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00091">axi_recorder.h:91</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_aa3b5232d75cb62d84e91f981d7e4d26a"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#aa3b5232d75cb62d84e91f981d7e4d26a">axi::scv::axi_recorder::enableTrDbgTracing</a></div><div class="ttdeci">sc_core::sc_attribute&lt; bool &gt; enableTrDbgTracing</div><div class="ttdoc">the attribute to selectively enable/disable transport dbg recording</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00075">axi_recorder.h:75</a></div></div>
-<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__mm_html"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm</a></div><div class="ttdoc">a tlm memory manager</div><div class="ttdef"><b>Definition:</b> <a href="tlm__mm_8h_source.html#l00060">tlm_mm.h:60</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__mm_html"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm</a></div><div class="ttdoc">a tlm memory manager</div><div class="ttdef"><b>Definition:</b> <a href="tlm__mm_8h_source.html#l00156">tlm_mm.h:156</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_abc924c9925ba704ca8197194d6ce024f"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#abc924c9925ba704ca8197194d6ce024f">axi::scv::axi_recorder::transport_dbg</a></div><div class="ttdeci">unsigned int transport_dbg(typename TYPES::tlm_payload_type &amp;trans) override</div><div class="ttdoc">The debug transportfunction.</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00621">axi_recorder.h:621</a></div></div>
-<div class="ttc" id="astructaxi_1_1axi__initiator__socket_html"><div class="ttname"><a href="structaxi_1_1axi__initiator__socket.html">axi::axi_initiator_socket</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00918">axi_tlm.h:918</a></div></div>
+<div class="ttc" id="astructaxi_1_1axi__initiator__socket_html"><div class="ttname"><a href="structaxi_1_1axi__initiator__socket.html">axi::axi_initiator_socket</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00921">axi_tlm.h:921</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_a1a10881249143bb999a1d1d0f5fbddf1"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#a1a10881249143bb999a1d1d0f5fbddf1">axi::scv::axi_recorder::get_bw_if</a></div><div class="ttdeci">virtual tlm::tlm_bw_transport_if&lt; TYPES &gt; * get_bw_if()=0</div><div class="ttdoc">the port where bw accesses are forwarded to</div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_a10a01dc4da6831564b5657edf87948aa"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#a10a01dc4da6831564b5657edf87948aa">axi::scv::axi_recorder::get_fw_if</a></div><div class="ttdeci">virtual tlm::tlm_fw_transport_if&lt; TYPES &gt; * get_fw_if()=0</div><div class="ttdoc">the port where fw accesses are forwarded to</div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_abd57d9b6f865884f9fce5dd96610c768"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#abd57d9b6f865884f9fce5dd96610c768">axi::scv::axi_recorder::nb_transport_bw</a></div><div class="ttdeci">tlm::tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type &amp;trans, typename TYPES::tlm_phase_type &amp;phase, sc_core::sc_time &amp;delay) override</div><div class="ttdoc">The non-blocking backward transport function.</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00449">axi_recorder.h:449</a></div></div>
@@ -585,16 +603,19 @@ $(function() {
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry_html"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html">tlm::scc::scv::tlm_extension_recording_registry</a></div><div class="ttdoc">The TLM transaction extensions recorder registry.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__extension__recording__registry_8h_source.html#l00065">tlm_extension_recording_registry.h:65</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_aa0d346d4fdee81b232ea8c72e52bb396"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#aa0d346d4fdee81b232ea8c72e52bb396">axi::scv::axi_recorder::isRecordingBlockingTxEnabled</a></div><div class="ttdeci">bool isRecordingBlockingTxEnabled() const</div><div class="ttdoc">get the current state of transaction recording</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00184">axi_recorder.h:184</a></div></div>
 <div class="ttc" id="aclassaxi_1_1scv_1_1axi__recorder_html_a30ff9c9630dfb033bb5e19ad3914ce46"><div class="ttname"><a href="classaxi_1_1scv_1_1axi__recorder.html#a30ff9c9630dfb033bb5e19ad3914ce46">axi::scv::axi_recorder::isRecordingNonBlockingTxEnabled</a></div><div class="ttdeci">bool isRecordingNonBlockingTxEnabled() const</div><div class="ttdoc">get the current state of transaction recording</div><div class="ttdef"><b>Definition:</b> <a href="axi__recorder_8h_source.html#l00190">axi_recorder.h:190</a></div></div>
-<div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload_html"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload.html">tlm::scc::scv::impl::tlm_recording_payload</a></div><div class="ttdoc">the class to hold the information to be recorded on the timed streams</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recorder_8h_source.html#l00084">tlm_recorder.h:84</a></div></div>
-<div class="ttc" id="astructaxi_1_1axi__target__socket_html"><div class="ttname"><a href="structaxi_1_1axi__target__socket.html">axi::axi_target_socket</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00949">axi_tlm.h:949</a></div></div>
-<div class="ttc" id="anamespaceaxi_html_a797a5475aca4753fa8998e3db0316ba7"><div class="ttname"><a href="namespaceaxi.html#a797a5475aca4753fa8998e3db0316ba7">axi::axi_bw_transport_if</a></div><div class="ttdeci">tlm::tlm_bw_transport_if&lt; TYPES &gt; axi_bw_transport_if</div><div class="ttdoc">alias declaration for the backward interface:</div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00904">axi_tlm.h:904</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload_html"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload.html">tlm::scc::scv::impl::tlm_recording_payload</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__recorder_8h_source.html#l00082">tlm_recorder.h:82</a></div></div>
+<div class="ttc" id="astructaxi_1_1axi__target__socket_html"><div class="ttname"><a href="structaxi_1_1axi__target__socket.html">axi::axi_target_socket</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00952">axi_tlm.h:952</a></div></div>
+<div class="ttc" id="anamespaceaxi_html_a797a5475aca4753fa8998e3db0316ba7"><div class="ttname"><a href="namespaceaxi.html#a797a5475aca4753fa8998e3db0316ba7">axi::axi_bw_transport_if</a></div><div class="ttdeci">tlm::tlm_bw_transport_if&lt; TYPES &gt; axi_bw_transport_if</div><div class="ttdoc">alias declaration for the backward interface:</div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00907">axi_tlm.h:907</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__recording__extension_html_a5242db103effdec334d65ce5088e08c9"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html#a5242db103effdec334d65ce5088e08c9">tlm::scc::scv::tlm_recording_extension::txHandle</a></div><div class="ttdeci">SCVNS scv_tr_handle txHandle</div><div class="ttdoc">accessor to the SCV transaction handle.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recording__extension_8h_source.html#l00135">tlm_recording_extension.h:135</a></div></div>
-<div class="ttc" id="anamespaceaxi_html"><div class="ttname"><a href="namespaceaxi.html">axi</a></div><div class="ttdoc">TLM2.0 components modeling AXI/ACE.</div><div class="ttdef"><b>Definition:</b> <a href="axi4lite__tlm2pin__adaptor_8h_source.html#l00015">axi4lite_tlm2pin_adaptor.h:15</a></div></div>
+<div class="ttc" id="anamespaceaxi_html"><div class="ttname"><a href="namespaceaxi.html">axi</a></div><div class="ttdoc">TLM2.0 components modeling AXI/ACE.</div><div class="ttdef"><b>Definition:</b> <a href="axi4lite__tlm2pin__adaptor_8h_source.html#l00030">axi4lite_tlm2pin_adaptor.h:30</a></div></div>
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_44f42edf5dd23d4deca0321224e9ce90.html">third_party</a></li><li class="navelem"><a class="el" href="dir_b4eeed443285a981339f45b6d7507c05.html">axi_chi</a></li><li class="navelem"><a class="el" href="dir_16d984d572b7d730d14f016ac620cfd6.html">axi</a></li><li class="navelem"><a class="el" href="dir_9dbdeab66cc4aaf1ebb921a8aafc09a0.html">scv</a></li><li class="navelem"><b>axi_recorder.h</b></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

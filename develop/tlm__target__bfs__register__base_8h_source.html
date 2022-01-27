@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3c4c7c1a85608ccd561c026bec818e51.html">components</a></li><li class="navelem"><a class="el" href="dir_4b4439fcc6b4628cd8783772fc9df8bf.html">scc</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('tlm__target__bfs__register__base_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">tlm_target_bfs_register_base.h</div>  </div>
@@ -395,6 +412,7 @@ $(function() {
 <div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160; </div>
 <div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;<span class="preprocessor">#endif // __SCC_TLM_TARGET_BFS_REGISTER_BASE_H__</span></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <div class="ttc" id="aclassscc_1_1tlm__target__bfs__register__base_html_aeda28af3d00db1d07915902552c584e0"><div class="ttname"><a href="classscc_1_1tlm__target__bfs__register__base.html#aeda28af3d00db1d07915902552c584e0">scc::tlm_target_bfs_register_base::getBitfieldById</a></div><div class="ttdeci">bitfield&lt; uint32_t &gt; &amp; getBitfieldById(const std::string &amp;urid)</div><div class="ttdoc">Search for a bitfield by urid.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target__bfs__register__base_8h_source.html#l00413">tlm_target_bfs_register_base.h:413</a></div></div>
 <div class="ttc" id="aclassscc_1_1bitfield__register_html_af4cfd62eaec146af87541c895a18c245"><div class="ttname"><a href="classscc_1_1bitfield__register.html#af4cfd62eaec146af87541c895a18c245">scc::bitfield_register::setReadCallback</a></div><div class="ttdeci">void setReadCallback(std::function&lt; void(const bitfield_register&lt; datatype_t &gt; &amp;, datatype_t &amp;result)&gt; callback)</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target__bfs__register__base_8h_source.html#l00226">tlm_target_bfs_register_base.h:226</a></div></div>
 <div class="ttc" id="aclassscc_1_1bitfield_html_a256b6099c78d62b0159c48978b38e4fe"><div class="ttname"><a href="classscc_1_1bitfield.html#a256b6099c78d62b0159c48978b38e4fe">scc::bitfield::bitfield</a></div><div class="ttdeci">bitfield(bitfield_register&lt; datatype_t &gt; &amp;reg, std::string name, size_t bitOffset, size_t bitSize, std::string urid, Access access=RW)</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target__bfs__register__base_8h_source.html#l00264">tlm_target_bfs_register_base.h:264</a></div></div>
@@ -427,10 +445,13 @@ $(function() {
 <div class="ttc" id="aclassscc_1_1bitfield__register_html_a07ac94af2d7b7ef4c6dfdd4d6b7e1bf8"><div class="ttname"><a href="classscc_1_1bitfield__register.html#a07ac94af2d7b7ef4c6dfdd4d6b7e1bf8">scc::bitfield_register::setWriteCallback</a></div><div class="ttdeci">void setWriteCallback(std::function&lt; void(bitfield_register&lt; datatype_t &gt; &amp;, datatype_t &amp;valueToWrite)&gt; callback)</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target__bfs__register__base_8h_source.html#l00214">tlm_target_bfs_register_base.h:214</a></div></div>
 <div class="ttc" id="aclassscc_1_1bitfield_html_a696615233e023071aabd9ad17297b122"><div class="ttname"><a href="classscc_1_1bitfield.html#a696615233e023071aabd9ad17297b122">scc::bitfield::setWriteCallback</a></div><div class="ttdeci">void setWriteCallback(std::function&lt; void(bitfield&lt; datatype_t &gt; &amp;, datatype_t &amp;valueToWrite)&gt; callback)</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target__bfs__register__base_8h_source.html#l00321">tlm_target_bfs_register_base.h:321</a></div></div>
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3c4c7c1a85608ccd561c026bec818e51.html">components</a></li><li class="navelem"><a class="el" href="dir_4b4439fcc6b4628cd8783772fc9df8bf.html">scc</a></li><li class="navelem"><b>tlm_target_bfs_register_base.h</b></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

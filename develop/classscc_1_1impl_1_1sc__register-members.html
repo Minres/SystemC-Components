@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>scc</b></li><li class="navelem"><b>impl</b></li><li class="navelem"><a class="el" href="classscc_1_1impl_1_1sc__register.html">sc_register</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classscc_1_1impl_1_1sc__register.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">scc::impl::sc_register&lt; DATATYPE &gt; Member List</div>  </div>
@@ -60,9 +77,9 @@ $(function() {
   <tr class="even"><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html#a2e2828b018fc0e5afcbd5ef07a7ec97e">put</a>(DATATYPE data) const</td><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register&lt; DATATYPE &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html#ac14d6f9ebe5547ac2b31847f19f55afc">rdmask</a></td><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register&lt; DATATYPE &gt;</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html#a5a4419ec2e7e77f26c23cdbf9c9a3538">read</a>(uint8_t *data, size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME) const override</td><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register&lt; DATATYPE &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="group__FuncAcc.html#ga687cd9c884c9a6695332b4dd82c388e9">scc::resource_access_if::read</a>(uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME) const =0</td><td class="entry"><a class="el" href="classscc_1_1resource__access__if.html">scc::resource_access_if</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classscc_1_1resource__access__if.html#a687cd9c884c9a6695332b4dd82c388e9">scc::resource_access_if::read</a>(uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME) const =0</td><td class="entry"><a class="el" href="classscc_1_1resource__access__if.html">scc::resource_access_if</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html#a247379d6d5f2412c33c7561ec7e04b37">read_dbg</a>(uint8_t *data, size_t length, uint64_t offset=0) const override</td><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register&lt; DATATYPE &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="group__NonFuncAcc.html#ga2329b4dda30a8e07bf37a9694d3aaa2a">scc::resource_access_if::read_dbg</a>(uint8_t *data, std::size_t length, uint64_t offset=0) const =0</td><td class="entry"><a class="el" href="classscc_1_1resource__access__if.html">scc::resource_access_if</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classscc_1_1resource__access__if.html#a2329b4dda30a8e07bf37a9694d3aaa2a">scc::resource_access_if::read_dbg</a>(uint8_t *data, std::size_t length, uint64_t offset=0) const =0</td><td class="entry"><a class="el" href="classscc_1_1resource__access__if.html">scc::resource_access_if</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html#aca9d8f872440560d68d859ba9d184b66">res_val</a></td><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register&lt; DATATYPE &gt;</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html#a04b4f9e28ccfb5f005bcf300df1152cc">reset</a>() override</td><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register&lt; DATATYPE &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html#a673c37201da32119a56659d1056dec39">sc_register</a>(sc_core::sc_module_name nm, DATATYPE &amp;storage, const DATATYPE reset_val, resetable &amp;owner, DATATYPE rdmask=get_max_uval&lt; DATATYPE &gt;(), DATATYPE wrmask=get_max_uval&lt; DATATYPE &gt;())</td><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register&lt; DATATYPE &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
@@ -75,19 +92,22 @@ $(function() {
   <tr><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html#a5327b5a419a0355cd1a91badcb184a83">trace</a>(sc_core::sc_trace_file *trf) const override</td><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register&lt; DATATYPE &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>traceable</b>()=default (defined in <a class="el" href="classscc_1_1traceable.html">scc::traceable</a>)</td><td class="entry"><a class="el" href="classscc_1_1traceable.html">scc::traceable</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html#a7561edbf39e6c177b9bf219b993bece3">write</a>(const uint8_t *data, size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME) override</td><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register&lt; DATATYPE &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="group__FuncAcc.html#ga02527d2e4e1ff85f30bad36974d8f688">scc::resource_access_if::write</a>(const uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME)=0</td><td class="entry"><a class="el" href="classscc_1_1resource__access__if.html">scc::resource_access_if</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classscc_1_1resource__access__if.html#a02527d2e4e1ff85f30bad36974d8f688">scc::resource_access_if::write</a>(const uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME)=0</td><td class="entry"><a class="el" href="classscc_1_1resource__access__if.html">scc::resource_access_if</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html#a50b1330e1db43b3fe1088b47311e0ef4">write_dbg</a>(const uint8_t *data, size_t length, uint64_t offset=0) override</td><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register&lt; DATATYPE &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="group__NonFuncAcc.html#gae4609ce281478582d5019d2de7684e48">scc::resource_access_if::write_dbg</a>(const uint8_t *data, std::size_t length, uint64_t offset=0)=0</td><td class="entry"><a class="el" href="classscc_1_1resource__access__if.html">scc::resource_access_if</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classscc_1_1resource__access__if.html#ae4609ce281478582d5019d2de7684e48">scc::resource_access_if::write_dbg</a>(const uint8_t *data, std::size_t length, uint64_t offset=0)=0</td><td class="entry"><a class="el" href="classscc_1_1resource__access__if.html">scc::resource_access_if</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html#a8fd3ba74745569f65b793b5abe0f335f">wrmask</a></td><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register&lt; DATATYPE &gt;</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~resource_access_if</b>()=default (defined in <a class="el" href="classscc_1_1resource__access__if.html">scc::resource_access_if</a>)</td><td class="entry"><a class="el" href="classscc_1_1resource__access__if.html">scc::resource_access_if</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html#ab74f9ddb4519bc2cf98f636a7482c0fa">~sc_register</a>()=default</td><td class="entry"><a class="el" href="classscc_1_1impl_1_1sc__register.html">scc::impl::sc_register&lt; DATATYPE &gt;</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~traceable</b>()=default (defined in <a class="el" href="classscc_1_1traceable.html">scc::traceable</a>)</td><td class="entry"><a class="el" href="classscc_1_1traceable.html">scc::traceable</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

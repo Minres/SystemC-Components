@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -39,13 +44,29 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('namespaces.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">Namespace List</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock">Here is a list of all documented namespaces with brief descriptions:</div><div class="directory">
-<div class="levels">[detail level <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span><span onclick="javascript:toggleLevel(3);">3</span><span onclick="javascript:toggleLevel(4);">4</span>]</div><table class="directory">
+<div class="levels">[detail level <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span>]</div><table class="directory">
 <tr id="row_0_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_0_" class="arrow" onclick="toggleFolder('0_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespaceahb.html" target="_self">ahb</a></td><td class="desc">TLM2.0 components modeling AHB </td></tr>
 <tr id="row_0_0_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespaceahb_1_1bfm.html" target="_self">bfm</a></td><td class="desc">Pin level adapters </td></tr>
 <tr id="row_0_1_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespaceahb_1_1pe.html" target="_self">pe</a></td><td class="desc">Protocol engine implementations </td></tr>
@@ -54,19 +75,20 @@ $(function() {
 <tr id="row_2_"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_2_" class="arrow" onclick="toggleFolder('2_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespaceaxi.html" target="_self">axi</a></td><td class="desc">TLM2.0 components modeling AXI/ACE </td></tr>
 <tr id="row_2_0_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespaceaxi_1_1pe.html" target="_self">pe</a></td><td class="desc">Protocol engine implementations </td></tr>
 <tr id="row_3_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespacechi.html" target="_self">chi</a></td><td class="desc">TLM2.0 components modeling CHI </td></tr>
-<tr id="row_4_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespaceobi.html" target="_self">obi</a></td><td class="desc">TLM2.0 components modeling OBI </td></tr>
-<tr id="row_5_"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_5_" class="arrow" onclick="toggleFolder('5_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><b>tlm</b></td><td class="desc"></td></tr>
-<tr id="row_5_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span id="arr_5_0_" class="arrow" onclick="toggleFolder('5_0_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><b>scc</b></td><td class="desc"></td></tr>
-<tr id="row_5_0_0_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span id="arr_5_0_0_" class="arrow" onclick="toggleFolder('5_0_0_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><b>scv</b></td><td class="desc"></td></tr>
-<tr id="row_5_0_0_0_" class="even"><td class="entry"><span style="width:64px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespacetlm_1_1scc_1_1scv_1_1impl.html" target="_self">impl</a></td><td class="desc">Implementation detail </td></tr>
+<tr id="row_4_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespacelogging.html" target="_self">logging</a></td><td class="desc">SCC C++ logging </td></tr>
+<tr id="row_5_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespaceobi.html" target="_self">obi</a></td><td class="desc">TLM2.0 components modeling OBI </td></tr>
+<tr id="row_6_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespaceutil.html" target="_self">util</a></td><td class="desc">SCC common utilities </td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>
