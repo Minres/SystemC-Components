@@ -3,7 +3,7 @@ SystemC-Components (SCC)
 
 SCC is supposed to be a light weight productivity library for SystemC and TLM 2.0 based modeling tasks using C++11.
 
-Here is a short list of features
+Here is a short list of features.
 
 * Extended logging and log configuration implementation
 
@@ -48,6 +48,14 @@ Here is a short list of features
 * sysc::router
 
   A simple component to route TLM2.0 accesses of a set of masters to a set of targets based on generic payload addresses
+  
+* various TLM2.0 AT and pin-level adapters for common bus protocols like
+  * APB
+  * AHB
+  * AXI/ACE
+  * OBI
+
+The full documentation can be found at the [Github pages](https://minres.github.io/SystemC-Components/)
 
 Build instructions
 ==================
