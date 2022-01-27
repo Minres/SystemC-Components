@@ -24,7 +24,7 @@ var NAVTREE =
 [
   [ "scc", "index.html", [
     [ "SystemC-Components (SCC)", "index.html", [
-      [ "build instructions", "index.html#autotoc_md3", null ]
+      [ "Build instructions", "index.html#autotoc_md3", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
