@@ -63,6 +63,9 @@ find_package(Doxygen)
 	set(DOXYGEN_GENERATE_MAN NO)
 	set(DOXYGEN_GENERATE_LATEX NO)
 	set(DOXYGEN_OUTPUT_DIRECTORY "${scc_BINARY_DIR}/scc")
+	set(DOXYGEN_GENERATE_TREEVIEW  YES)
+    set(DOXYGEN_HTML_EXTRA_STYLESHEET ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen-awesome.css)
+    #set(DOXYGEN_HTML_EXTRA_STYLESHEET ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen-awesome.css ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen-awesome-sidebar-only.css)
 	# this target will only be built if specifically asked to.
 	# run "make scc-docs" to create the doxygen documentation
 	doxygen_add_docs(
