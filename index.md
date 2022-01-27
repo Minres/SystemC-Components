@@ -5,4 +5,4 @@ SCC is supposed to be a light weight productivity library for SystemC and TLM 2.
 
 Doxygen documentation can be found [here](main).
 
-Documentation of the developmenr branch can be found [her](develop).
+Documentation of the development branch can be found [here](develop).
