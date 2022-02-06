@@ -52,7 +52,7 @@ private:
 
 template <unsigned int BUSWIDTH = 32> class axi_target : public axi_target_base {
 public:
-    axi::axi_target_socket<BUSWIDTH> input_socket;
+    axi::axi_target_socket<BUSWIDTH> input_socket{"isckt"};
 
     axi_target(sc_core::sc_module_name nm)
     : axi_target_base(nm, pe) {

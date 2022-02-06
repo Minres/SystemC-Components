@@ -44,7 +44,7 @@ namespace scc {
 template <unsigned long long SIZE, unsigned BUSWIDTH = 32> class memory : public sc_core::sc_module {
 public:
     //! the target socket to connect to TLM
-    tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target;
+    tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
     /**
      * constructor with explicit instance name
      *
@@ -100,8 +100,7 @@ public:
 
 template <unsigned long long SIZE, unsigned BUSWIDTH>
 memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
-: sc_module(nm)
-, NAMED(target) {
+: sc_module(nm) {
     // Register callback for incoming b_transport interface method call
     target.register_b_transport([this](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void {
         operation_cb ? operation_cb(*this, gp, delay) : handle_operation(gp, delay);

@@ -68,14 +68,25 @@ private:
     void wdata_t();
     void bresp_t();
     static typename CFG::data_t  get_read_data_for_beat(fsm::fsm_handle *fsm_hndl);
-
+    struct aw_data {
+        unsigned id;
+        uint64_t addr;
+        unsigned  prot;
+        unsigned  size;
+        unsigned  cache;
+        unsigned  burst;
+        unsigned  qos;
+        unsigned  region;
+        unsigned  len;
+        uint64_t user;
+    };
     sc_core::sc_clock* clk_if;
     sc_core::sc_event clk_delayed, ar_end_req_evt, wdata_end_req_evt, bresp_evt;
     std::array<fsm_handle*, 3> active_req_beat;
     std::array<fsm_handle*, 3> active_req;
     std::array<fsm_handle*, 3> active_resp_beat;
-    payload_type* current_wr_tx{nullptr};
-    sc_core::sc_buffer<uint8_t> rresp_vl;
+    scc::peq<aw_data> aw_que;
+    scc::peq<std::tuple<uint8_t, fsm_handle*>> rresp_vl;
 };
 
 }
@@ -155,11 +166,7 @@ inline void axi::bfm::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
     fsm_hndl->fsm->cb[BegPartRespE] = [this, fsm_hndl]() -> void {
         assert(fsm_hndl->trans->is_read());
         active_resp_beat[tlm::TLM_READ_COMMAND]=fsm_hndl;
-        auto ext = fsm_hndl->trans->get_extension<axi::axi4_extension>();
-        this->r_data.write( get_read_data_for_beat(fsm_hndl));
-        this->r_id.write(ext->get_id());
-        this->r_resp.write(axi::to_int(ext->get_resp()));
-        rresp_vl=0x1;
+        rresp_vl.notify({1, fsm_hndl});
     };
     fsm_hndl->fsm->cb[EndPartRespE] = [this, fsm_hndl]() -> void {
         // scheduling the response
@@ -170,15 +177,12 @@ inline void axi::bfm::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
         active_resp_beat[tlm::TLM_READ_COMMAND]=nullptr;
     };
     fsm_hndl->fsm->cb[BegRespE] = [this, fsm_hndl]() -> void {
+        SCCTRACE(SCMOD)<<"processing event BegRespE for trans "<<*fsm_hndl->trans;
         auto size = axi::get_burst_size(*fsm_hndl->trans);
         active_resp_beat[fsm_hndl->trans->get_command()]=fsm_hndl;
         switch(fsm_hndl->trans->get_command()){
         case tlm::TLM_READ_COMMAND: {
-            auto ext = fsm_hndl->trans->get_extension<axi::axi4_extension>();
-            this->r_data.write(get_read_data_for_beat(fsm_hndl));
-            this->r_id.write(ext->get_id());
-            this->r_resp.write(axi::to_int(ext->get_resp()));
-            rresp_vl=0x3;
+            rresp_vl.notify({3, fsm_hndl});
         }
         break;
         case tlm::TLM_WRITE_COMMAND: {
@@ -210,6 +214,7 @@ inline void axi::bfm::axi4_target<CFG>::ar_t() {
     while(true) {
         wait(this->ar_valid.posedge_event() | clk_i.negedge_event());
         if(this->ar_valid.read()) {
+            SCCTRACE(SCMOD)<<"ARVALID detected for 0x"<<std::hex<<this->ar_addr.read();
             arid=this->ar_id.read();
             arlen=this->ar_len.read();
             arsize = this->ar_size.read();
@@ -235,18 +240,25 @@ inline void axi::bfm::axi4_target<CFG>::ar_t() {
 
 template<typename CFG>
 inline void axi::bfm::axi4_target<CFG>::rresp_t() {
+    fsm_handle* fsm_hndl;
+    uint8_t val;
     while(true){
-        wait(rresp_vl.default_event());
-        auto val = rresp_vl.read();
+        std::tie(val, fsm_hndl) = rresp_vl.get();
+        SCCTRACE(SCMOD)<<"got read response beat of trans "<<*fsm_hndl->trans;
+        auto ext = fsm_hndl->trans->get_extension<axi::axi4_extension>();
+        this->r_data.write( get_read_data_for_beat(fsm_hndl));
+        this->r_id.write(ext->get_id());
+        this->r_resp.write(axi::to_int(ext->get_resp()));
         this->r_valid.write(val&0x1);
         this->r_last.write(val&0x2);
         do{
-        wait(this->r_ready.posedge_event() | clk_delayed);
+            wait(this->r_ready.posedge_event() | clk_delayed);
             if(this->r_ready.read()) {
                 auto evt = this->r_last.read()?axi::fsm::protocol_time_point_e::EndRespE:axi::fsm::protocol_time_point_e::EndPartRespE;
                 react(evt, active_resp_beat[tlm::TLM_READ_COMMAND]);
             }
         } while(!this->r_ready.read());
+        SCCTRACE(SCMOD)<<"finished read response beat of trans ["<<fsm_hndl->trans<<"]";
         wait(clk_i.posedge_event());
         this->r_valid.write(false);
         this->r_last.write(false);
@@ -263,34 +275,26 @@ inline void axi::bfm::axi4_target<CFG>::aw_t() {
     while(true) {
         wait(this->aw_valid.posedge_event() | clk_i.negedge_event());
         if(this->aw_valid.event() || (!active_req_beat[tlm::TLM_IGNORE_COMMAND] && this->aw_valid.read())) {
-            arid=this->aw_id.read();
-            arlen=this->aw_len.read();
-            arsize = this->aw_size.read();
-            data_len = (1<<arsize)*(arlen+1);
-            auto need_reallocate = current_wr_tx!=nullptr;
-            if(!current_wr_tx) {
-                current_wr_tx =  tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(data_len);
-            }
-            active_req_beat[tlm::TLM_IGNORE_COMMAND] = find_or_create(current_wr_tx);
-            auto& gp = active_req_beat[tlm::TLM_IGNORE_COMMAND]->trans;
-            gp->set_address(this->aw_addr.read());
-            gp->set_command(tlm::TLM_WRITE_COMMAND);
-            if(need_reallocate) {
-                auto ext = tlm::scc::tlm_gp_mm::create(data_len);
-                ext->copy_from(*gp->set_auto_extension(ext));
-                gp->set_data_ptr(ext->data_ptr);
-                gp->set_data_length(data_len);
-            }
-            axi::axi4_extension* ext;
-            gp->get_extension(ext);
-            ext->set_id(arid);
-            ext->set_length(arlen);
-            ext->set_size(arsize);
-            ext->set_burst(axi::into<axi::burst_e>(this->aw_burst.read()));
+            SCCTRACE(SCMOD)<<"AWVALID detected for 0x"<<std::hex<<this->aw_addr.read();
+            aw_data awd = {
+                    this->aw_id.read().to_uint(),
+                    this->aw_addr.read().to_uint64(),
+                    this->aw_prot.read().to_uint(),
+                    this->aw_size.read().to_uint(),
+                    this->aw_cache.read().to_uint(),
+                    this->aw_burst.read().to_uint(),
+                    this->aw_qos.read().to_uint(),
+                    this->aw_region.read().to_uint(),
+                    this->aw_len.read().to_uint(),
+                    0
+            };
+//            if(CFG::USERWIDTH && this->aw_user.get_interface()) {
+//                awd.user = this->aw_user.read();
+//            }
+            aw_que.notify(awd);
             this->aw_ready.write(true);
             wait(clk_i.posedge_event());
             this->aw_ready.write(false);
-            active_req_beat[tlm::TLM_IGNORE_COMMAND]=nullptr;
         }
     }
 }
@@ -300,18 +304,33 @@ inline void axi::bfm::axi4_target<CFG>::wdata_t() {
     this->w_ready.write(false);
     while(true) {
         wait(this->w_valid.posedge_event() | clk_i.negedge_event());
+        this->w_ready.write(false);
         if(this->w_valid.event() || (!active_req_beat[tlm::TLM_WRITE_COMMAND] && this->w_valid.read())) {
             if(!active_req[tlm::TLM_WRITE_COMMAND]) {
-                if(active_req_beat[tlm::TLM_IGNORE_COMMAND]) {
-                    active_req_beat[tlm::TLM_WRITE_COMMAND]= active_req_beat[tlm::TLM_IGNORE_COMMAND];
-                    auto& gp = active_req_beat[tlm::TLM_IGNORE_COMMAND]->trans;
-                } else {
-                    auto gp =  tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(CFG::BUSWIDTH / 8);
-                    active_req_beat[tlm::TLM_WRITE_COMMAND] = find_or_create(gp);
-                }
+                if(!aw_que.has_next())
+                    wait(aw_que.event());
+                auto awd = aw_que.get();
+                auto data_len = (1<<awd.size)*(awd.len+1);
+                auto gp =  tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(data_len);
+                gp->set_address(awd.addr);
+                gp->set_command(tlm::TLM_WRITE_COMMAND);
+                axi::axi4_extension* ext;
+                gp->get_extension(ext);
+                ext->set_id(awd.id);
+                ext->set_length(awd.len);
+                ext->set_size(awd.size);
+                ext->set_burst(axi::into<axi::burst_e>(awd.burst));
+                ext->set_prot(awd.prot);
+                ext->set_qos(awd.qos);
+                ext->set_cache(awd.cache);
+                ext->set_region(awd.region);
+                if(CFG::USERWIDTH)
+                    ext->set_user(axi::common::id_type::CTRL, awd.user);
+                active_req_beat[tlm::TLM_WRITE_COMMAND] = find_or_create(gp);
                 active_req[tlm::TLM_WRITE_COMMAND]=active_req_beat[tlm::TLM_WRITE_COMMAND];
             }
             auto* fsm_hndl = active_req[tlm::TLM_WRITE_COMMAND];
+            SCCTRACE(SCMOD)<<"WDATA detected for 0x"<<std::hex<<this->ar_addr.read();
             auto& gp = fsm_hndl->trans;
             auto id = this->w_id.read();
             auto data = this->w_data.read();
@@ -341,12 +360,14 @@ inline void axi::bfm::axi4_target<CFG>::bresp_t() {
     while(true){
         wait(bresp_evt);
         this->b_valid.write(true);
+        SCCTRACE(SCMOD)<<"got write response";
         do{
             wait(this->b_ready.posedge_event() | clk_delayed);
             if(this->b_ready.read()) {
                 react(axi::fsm::protocol_time_point_e::EndRespE, active_resp_beat[tlm::TLM_WRITE_COMMAND]);
             }
         } while(!this->b_ready.read());
+        SCCTRACE(SCMOD)<<"finished write response";
         wait(clk_i.posedge_event());
         this->b_valid.write(false);
     }

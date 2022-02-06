@@ -33,7 +33,7 @@ namespace axi {
 class axi_initiator_base : public sc_core::sc_module {
 public:
     sc_core::sc_in<bool> clk_i{"clk_i"};
-    tlm_utils::simple_target_socket<axi_initiator_base> input_socket{"input_socket"};
+    tlm_utils::simple_target_socket<axi_initiator_base> input_socket{"isckt"};
 
     /**
      * Create and attach AXI extension.
