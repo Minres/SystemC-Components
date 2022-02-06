@@ -34,6 +34,7 @@
 #include <unordered_map>
 
 namespace obi {
+
 namespace bfm {
 template <unsigned int DATA_WIDTH = 32, unsigned int ADDR_WIDTH = 32, unsigned int ID_WIDTH = 0,
         unsigned int USER_WIDTH = 0>
@@ -90,19 +91,12 @@ private:
     void rchannel_rsp_t();
 
     scc::peq<tlm::scc::tlm_gp_shared_ptr> achannel_rsp;
-    tlm::scc::tlm_gp_shared_ptr achannel_active_tx;
     std::deque<std::tuple<tlm::scc::tlm_gp_shared_ptr, unsigned>> rchannel_pending_rsp;
     scc::peq<tlm::scc::tlm_gp_shared_ptr> rchannel_rsp;
-    uint64_t clk_cnt{0};
     struct tx_state {
-        bool isAddrPhaseFinished(){ return state & 0x1;}
-        void setAddrPhaseFinished(){ state |= 0x1;}
-        bool isReqFinished(){ return state & 0x2;}
-        void setReqFinished(){ state |= 0x2;}
-        bool isRespStarted(){ return state & 0x4;}
-        void setRespStarted(){ state |= 0x4;}
-    private:
-        unsigned state{0};
+        bool addrPhaseFinished;
+        tlm::tlm_phase last_phase;
+        tlm::scc::tlm_gp_shared_ptr pending_tx;
     };
     std::unordered_map<payload_type*, tx_state> states;
 };
@@ -128,7 +122,6 @@ template <unsigned int DATA_WIDTH, unsigned int ADDR_WIDTH, unsigned int ID_WIDT
 inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::clk_cb() {
     sc_core::sc_time delay = sc_core::SC_ZERO_TIME;
     if(clk_i.event()) {
-        clk_cnt++;
         if(rchannel_pending_rsp.size()){
             auto& head =  rchannel_pending_rsp.front();
             if(std::get<1>(head)==0){
@@ -153,23 +146,22 @@ target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::nb_transport_bw(
     case tlm::END_REQ:{
         auto it=states.find(&trans);
         sc_assert(it!=states.end());
-        it->second.setReqFinished();
-        sc_assert(achannel_active_tx.get()==&trans);
+        it->second.last_phase = tlm::END_REQ;
         achannel_rsp.notify(&trans, t);
         return tlm::TLM_ACCEPTED;
     }
     case tlm::BEGIN_RESP:{
         auto it=states.find(&trans);
         sc_assert(it!=states.end());
-        it->second.setReqFinished();
-        it->second.setRespStarted();
-        if(it->second.isAddrPhaseFinished()) {
+        auto& state = it->second;
+        if(state.pending_tx) {
             unsigned resp_delay = addr2data_delay<0?scc::MT19937::uniform(0, -addr2data_delay):addr2data_delay;
-            rchannel_pending_rsp.push_back({&trans, resp_delay});
-        } else if(achannel_active_tx.get()==&trans) {
-            achannel_rsp.notify(&trans, t);
-        } else
-            SCCFATAL(SCMOD)<<"Illegal state";
+            if(resp_delay) {
+                rchannel_pending_rsp.push_back({state.pending_tx, resp_delay-1});
+            } else
+                rchannel_pending_rsp.push_back({state.pending_tx, 0});
+        }
+        state.last_phase = tlm::BEGIN_RESP;
         return tlm::TLM_ACCEPTED;
     }
     default:
@@ -180,74 +172,72 @@ target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::nb_transport_bw(
 
 template<unsigned int DATA_WIDTH, unsigned int ADDR_WIDTH, unsigned int ID_WIDTH, unsigned int USER_WIDTH>
 inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::achannel_req_t() {
+    wait(SC_ZERO_TIME);
     wait(clk_i.posedge_event());
     while(true) {
-        gnt_o.write(req2gnt_delay==0);
-        wait(sample_delay);
-        if(!req_i.read())
-            wait(req_i.posedge_event());
-        achannel_active_tx = tlm::scc::tlm_mm<>::get().allocate<obi::obi_extension>();
-        auto& state = states[achannel_active_tx.get()];
-        achannel_active_tx->set_address(addr_i.read());
-        achannel_active_tx->set_command(we_i.read() ? tlm::TLM_WRITE_COMMAND : tlm::TLM_READ_COMMAND);
-        auto be = static_cast<unsigned>(be_i.read());
-        auto cnt = util::bit_count(be);
-        achannel_active_tx->set_streaming_width(cnt);
-        achannel_active_tx->set_data_length(cnt);
-        achannel_active_tx->set_data_ptr(new uint8_t[cnt]);
-        if(we_i.read()) {
-            auto bus_data = wdata_i.read();
-            auto tx_data{sc_dt::sc_uint<DATA_WIDTH>(0)};
-            auto tx_byte_idx=0;
-            for(auto i = 0U, be_idx=0U; i<DATA_WIDTH; i+=8, ++be_idx){
-                if(be&(1U<<be_idx)){
-                    *(achannel_active_tx->get_data_ptr()+tx_byte_idx)=bus_data.range(i+7, i).to_uint();
-                    tx_byte_idx++;
+        while(resetn_i.read()==false)
+            wait(clk_i.posedge_event());
+        while(resetn_i.read()==true) {
+            gnt_o.write(req2gnt_delay==0);
+            do {
+                wait(this->req_i.posedge_event() | clk_i.negedge_event());
+            } while(this->req_i.read()==false);
+            auto data_len=DATA_WIDTH/8;
+            tlm::scc::tlm_gp_shared_ptr gp =  tlm::scc::tlm_mm<>::get().allocate<obi::obi_extension>(data_len);
+            gp->set_streaming_width(data_len);
+            gp->set_address(addr_i.read());
+            gp->set_command(we_i.read() ? tlm::TLM_WRITE_COMMAND : tlm::TLM_READ_COMMAND);
+            auto be = static_cast<unsigned>(be_i.read());
+            auto cnt = util::bit_count(be);
+            gp->set_streaming_width(cnt);
+            gp->set_data_length(cnt);
+            if(we_i.read()) {
+                auto bus_data = wdata_i.read();
+                auto tx_byte_idx=0;
+                for(auto i = 0U, be_idx=0U; i<DATA_WIDTH; i+=8, ++be_idx){
+                    if(be&(1U<<be_idx)){
+                        *(gp->get_data_ptr()+tx_byte_idx)=bus_data.range(i+7, i).to_uint();
+                        tx_byte_idx++;
+                    }
                 }
-            }
-            SCCTRACE(SCMOD)<<"Got write request to address 0x"<<std::hex<<achannel_active_tx->get_address();
-        } else
-            SCCTRACE(SCMOD)<<"Got read request to address 0x"<<std::hex<<achannel_active_tx->get_address();
-        auto ext = achannel_active_tx->get_extension<obi::obi_extension>();
-        if(ID_WIDTH && aid_i.get_interface())
-            ext->set_id(aid_i->read());
-        if(USER_WIDTH){
-            if(auser_i.get_interface())
-                ext->set_auser(auser_i->read());
-            if(wuser_i.get_interface() && we_i.read())
-                ext->set_duser(wuser_i->read());
-        }
-        phase_type phase = tlm::BEGIN_REQ;
-        auto delay = sc_core::SC_ZERO_TIME;
-        auto ret = isckt->nb_transport_fw(*achannel_active_tx, phase, delay);
-        auto id = ext->get_id();
-        auto startResp=false;
-        if (ret == tlm::TLM_UPDATED) {
-            state.setReqFinished();
-            if (phase == tlm::BEGIN_RESP) {
-                state.setRespStarted();
-                startResp=true;
-            } else if(phase != tlm::END_REQ){
-                SCCFATAL(SCMOD) << "Bummer: nyi";
-            }
-        } else {
-            SCCTRACE(SCMOD)<<"waiting for TLM reponse";
-            auto resp=achannel_rsp.get();
-            sc_assert(resp.get()==achannel_active_tx.get());
-        }
-        unsigned gnt_delay = req2gnt_delay<0?scc::MT19937::uniform(0, -req2gnt_delay):req2gnt_delay;
-        for(unsigned i=0U; i<gnt_delay; ++i) wait(clk_i.posedge_event());
-        gnt_o.write(true);
-        wait(clk_i.posedge_event());
-        state.setAddrPhaseFinished();
-        if(startResp) {
-            unsigned resp_delay = addr2data_delay<0?scc::MT19937::uniform(0, -addr2data_delay):addr2data_delay;
-            if(resp_delay) {
-                rchannel_pending_rsp.push_back({achannel_active_tx, resp_delay-1});
+                SCCTRACE(SCMOD)<<"Got write request to address 0x"<<std::hex<<gp->get_address();
             } else
-                rchannel_rsp.notify(achannel_active_tx);
+                SCCTRACE(SCMOD)<<"Got read request to address 0x"<<std::hex<<gp->get_address();
+            auto ext = gp->get_extension<obi::obi_extension>();
+            if(ID_WIDTH && aid_i.get_interface())
+                ext->set_id(aid_i->read());
+            if(USER_WIDTH){
+                if(auser_i.get_interface())
+                    ext->set_auser(auser_i->read());
+                if(wuser_i.get_interface() && we_i.read())
+                    ext->set_duser(wuser_i->read());
+            }
+            auto& state = states[gp.get()];
+            phase_type phase = tlm::BEGIN_REQ;
+            auto delay = sc_core::SC_ZERO_TIME;
+            auto ret = isckt->nb_transport_fw(*gp, phase, delay);
+            auto startResp=false;
+            state.last_phase = phase;
+            if (ret == tlm::TLM_ACCEPTED) {
+                SCCTRACE(SCMOD)<<"waiting for TLM reponse";
+                auto resp=achannel_rsp.get();
+                sc_assert(resp.get()==gp.get());
+            }
+            unsigned gnt_delay = req2gnt_delay<0?scc::MT19937::uniform(0, -req2gnt_delay):req2gnt_delay;
+            for(unsigned i=0U; i<gnt_delay; ++i) wait(clk_i.posedge_event());
+            gnt_o.write(true);
+            wait(clk_i.posedge_event());
+            state.addrPhaseFinished=true;
+            if(state.last_phase == tlm::BEGIN_RESP) {
+                unsigned resp_delay = addr2data_delay<0?scc::MT19937::uniform(0, -addr2data_delay):addr2data_delay;
+                if(resp_delay) {
+                    rchannel_pending_rsp.push_back({gp, resp_delay-1});
+                } else
+                    rchannel_rsp.notify(gp);
+            } else {
+                state.pending_tx=gp;
+            }
         }
-        achannel_active_tx=nullptr;
     }
 }
 
@@ -286,6 +276,9 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::rchannel_rsp_t
         phase_type phase = tlm::END_RESP;
         auto delay = sc_core::SC_ZERO_TIME;
         auto ret = isckt->nb_transport_fw(*tx, phase, delay);
+        auto it=states.find(tx.get());
+        sc_assert(it!=states.end());
+        states.erase(it);
         wait(clk_i.posedge_event());
     }
 }
