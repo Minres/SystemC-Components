@@ -234,16 +234,6 @@ struct config_reader {
 };
 
 void configure_sc_attribute_hierarchical(Value const& node, std::string const& prefix) {
-/*    for(auto* attr : obj->attr_cltn()) {
-        auto member = hier_val.FindMember(attr->name().c_str());
-        if (member != hier_val.MemberEnd() && !member->value.IsNull())
-            try_set_value(attr, member->value);
-    }
-    for(auto* o : obj->get_child_objects()) {
-        auto member = hier_val.FindMember(o->basename());
-        if (member != hier_val.MemberEnd() && !member->value.IsNull())
-            configure_sc_attribute_hierarchical(o, member->value);
-    }*/
     for(auto itr = node.MemberBegin(); itr != node.MemberEnd(); ++itr) {
         if(!itr->name.IsString())
             return;
@@ -255,11 +245,10 @@ void configure_sc_attribute_hierarchical(Value const& node, std::string const& p
         if(val.IsNull() || val.IsArray())
             continue;
         else if(val.IsObject()) {
-            if(!sc_core::sc_find_object(hier_name.c_str())) {
-                throw std::domain_error(hier_name);
+            if(sc_core::sc_find_object(hier_name.c_str())) {
+                configure_sc_attribute_hierarchical(val, hier_name);
             }
-            configure_sc_attribute_hierarchical(val, hier_name);
-        }   else {
+        } else {
             auto pos = hier_name.rfind('.');
             if(pos!=std::string::npos) {
                 auto objname = hier_name.substr(0, pos);
@@ -269,7 +258,6 @@ void configure_sc_attribute_hierarchical(Value const& node, std::string const& p
                         try_set_value(attr, val);
             }
         }
-
     }
 }
 
