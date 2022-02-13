@@ -13,7 +13,7 @@ else()
 endif()
 
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "SystemC components and extensions")
-set(CPACK_PACKAGE_CONTACT "MINRES Technolgies GmbH <info@minres.com>")
+set(CPACK_PACKAGE_CONTACT "MINRES Technologies GmbH <info@minres.com>")
 set(CPACK_PACKAGE_VERSION ${VERSION})
 set(CPACK_PACKAGE_VERSION_MAJOR ${VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR ${VERSION_MINOR})
