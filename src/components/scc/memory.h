@@ -144,7 +144,14 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
         if(mem.is_allocated(adr)) {
             const auto& p = mem(adr / mem.page_size);
             auto offs = adr & mem.page_addr_mask;
-            std::copy(p.data() + offs, p.data() + offs + len, ptr);
+            if((offs+len)>mem.page_size) {
+                auto first_part = mem.page_size-offs;
+                std::copy(p.data() + offs, p.data() + offs + first_part, ptr);
+                const auto& p2 = mem((adr / mem.page_size)+1);
+                std::copy(p2.data(), p2.data() + len, ptr+first_part);
+            } else {
+                std::copy(p.data() + offs, p.data() + offs + len, ptr);
+            }
         } else {
             // no allocated page so return randomized data
             for(size_t i = 0; i < len; i++)
@@ -156,7 +163,14 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
 #endif
         auto& p = mem(adr / mem.page_size);
         auto offs = adr & mem.page_addr_mask;
-        std::copy(ptr, ptr + len, p.data() + offs);
+        if((offs+len)>mem.page_size) {
+            auto first_part = mem.page_size-offs;
+            std::copy(ptr, ptr + first_part, p.data() + offs);
+            auto& p2 = mem((adr / mem.page_size)+1);
+            std::copy(ptr+ first_part, ptr + len, p2.data());
+        } else {
+            std::copy(ptr, ptr + len, p.data() + offs);
+        }
     }
     trans.set_response_status(tlm::TLM_OK_RESPONSE);
     trans.set_dmi_allowed(true);
