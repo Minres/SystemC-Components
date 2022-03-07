@@ -350,7 +350,7 @@ template <typename T> struct sc_variable_vector {
            assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
            assert(creator);
            std::stringstream ss; ss << name << "(" << idx << ")";
-           ret=creator(ss.str().c_str(), idx);
+           ret=values.at(idx)=creator(ss.str().c_str(), idx);
        }
        return *ret;
     }
