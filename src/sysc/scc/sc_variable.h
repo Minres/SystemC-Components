@@ -340,8 +340,12 @@ template <typename T> struct sc_variable_vector {
         }
     }
 
+    bool is_valid(size_t idx) const {
+        return values.at(idx)!=nullptr;
+    }
+
     sc_variable<T>& operator[](size_t idx) {
-       auto& ret = values.at(idx);
+       auto ret = values.at(idx);
        if(!ret) {
            assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
            assert(creator);
@@ -352,6 +356,7 @@ template <typename T> struct sc_variable_vector {
     }
 
     sc_variable<T> const& operator[](size_t idx) const {
+        assert(values.at(idx) && "No initialized value in sc_variable_vector position");
         return *values.at(idx);
     }
     ~sc_variable_vector(){
