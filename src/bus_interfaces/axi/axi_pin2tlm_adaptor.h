@@ -188,21 +188,17 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
 
             auto it = active_r_transactions.find(id);
             if(it == active_r_transactions.end()) {
-                payload_type* payload =
-                    tlm::scc::tlm_mm<axi::axi_protocol_types>::get().allocate<axi::axi4_extension>();
-                auto ext = payload->get_extension<axi::axi4_extension>();
-                auto addr = ar_addr_i.read();
                 auto length = ar_len_i.read();
                 auto size = 1 << ar_size_i.read();
                 auto buf_size = size * (length + 1);
-                uint8_t* r_data_buf = new uint8_t[buf_size];
-
+                payload_type* payload =
+                    tlm::scc::tlm_mm<axi::axi_protocol_types>::get().allocate<axi::axi4_extension>(buf_size);
+                auto ext = payload->get_extension<axi::axi4_extension>();
+                auto addr = ar_addr_i.read();
                 payload->acquire();
                 payload->set_address(addr);
-                payload->set_data_length(buf_size);
                 payload->set_streaming_width(buf_size);
                 payload->set_command(tlm::TLM_READ_COMMAND);
-                payload->set_data_ptr(r_data_buf);
                 ext->set_size(ar_size_i.read());
                 ext->set_length(length);
                 ext->set_burst(axi::into<axi::burst_e>(ar_burst_i.read().to_uint()));
@@ -273,7 +269,10 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
 	    active_aw_id.push_back(aw_id);
             auto it = active_w_transactions.find(aw_id);
             if(it == active_w_transactions.end()) {
-                payload_type* trans = tlm::scc::tlm_mm<axi::axi_protocol_types>::get().allocate<axi::axi4_extension>();
+                auto length = aw_len_i.read() + 1;
+                auto num_bytes = 1 << aw_size_i.read();
+                auto buf_size = num_bytes * length;
+                payload_type* trans = tlm::scc::tlm_mm<axi::axi_protocol_types>::get().allocate<axi::axi4_extension>(buf_size);
                 register_trans(aw_id, *trans, axi::BEGIN_PARTIAL_REQ);
                 it = active_w_transactions.find(aw_id);
             }
@@ -288,14 +287,11 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
                 auto addr = aw_addr_i.read();
                 auto num_bytes = 1 << aw_size_i.read();
                 auto buf_size = num_bytes * length;
-                uint8_t* w_data_buf = new uint8_t[buf_size];
 
                 p->acquire();
                 p->set_address(addr);
-                p->set_data_length(buf_size);
                 p->set_streaming_width(buf_size);
                 p->set_command(tlm::TLM_WRITE_COMMAND);
-                p->set_data_ptr(w_data_buf);
                 ext->set_size(aw_size_i.read());
                 ext->set_length(length);
                 ext->set_burst(axi::into<axi::burst_e>(aw_burst_i.read().to_uint()));
@@ -367,7 +363,6 @@ inline void axi_pin2tlm_adaptor<BUSWIDTH, ADDRWIDTH, IDWIDTH, USERWIDTH>::axi_pi
                 b_resp_o.write(axi::to_int(ext->get_resp()));
                 SCCTRACE(SCMOD) << write_trans->phase << " B bit assignment trans (axi_id:" << id << ")";
 
-                p->release();
                 it.second.pop();
                 if(it.second.empty())
                     active_w_transactions.erase(id);
