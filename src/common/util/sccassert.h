@@ -17,7 +17,7 @@
 #ifndef _UTIL_ASSERT_H_
 #define _UTIL_ASSERT_H_
 
-#include <util/logging.h>
+#include "logging.h"
 
 #ifndef NDEBUG
 #define ASSERT(condition, message)                                                                                     \
