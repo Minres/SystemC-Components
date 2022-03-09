@@ -76,7 +76,7 @@ public:
      * @param base_addr the offset of the resource (from address 0)
      */
     void addResource(resource_access_if& rai, uint64_t base_addr) {
-        socket_map.addEntry(std::make_pair(&rai, base_addr), base_addr, std::max(1UL,rai.size()/(ADDR_UNIT_WIDTH/8)));
+        socket_map.addEntry(std::make_pair(&rai, base_addr), base_addr, std::max<size_t>(1,rai.size()/(ADDR_UNIT_WIDTH/8)));
     }
     /**
      * @fn void addResource(indexed_resource_access_if&, uint64_t)
@@ -86,7 +86,7 @@ public:
      */
     void addResource(indexed_resource_access_if& irai, uint64_t base_addr) {
         for(size_t idx = 0; idx < irai.size(); ++idx) {
-            auto irai_size = std::max(1UL,irai[idx].size()/(ADDR_UNIT_WIDTH/8));
+            auto irai_size = std::max<size_t>(1,irai[idx].size()/(ADDR_UNIT_WIDTH/8));
             socket_map.addEntry(std::make_pair(&irai[idx], base_addr), base_addr, irai_size);
             base_addr += irai_size;
         }
