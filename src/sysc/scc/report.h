@@ -267,8 +267,8 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
     inline std::ostream& get() { return os; };
 
 protected:
-    std::ostringstream os;
-    char* t;
+    std::ostringstream os{};
+    char* t{nullptr};
     const char* file;
     const int line;
     const int level;

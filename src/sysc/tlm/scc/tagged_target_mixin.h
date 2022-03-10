@@ -161,7 +161,7 @@ private:
         }
 
     private:
-        tagged_target_mixin* m_owner;
+        tagged_target_mixin* m_owner{nullptr};
     };
 
     class fw_process : public tlm::tlm_fw_transport_if<TYPES>, public tlm::tlm_mm_interface {
@@ -346,9 +346,9 @@ private:
             : m_trans(trans)
             , m_suspend(false) {}
 
-            transaction_type* m_trans;
-            sc_core::sc_event m_e;
-            bool m_suspend;
+            transaction_type* m_trans{nullptr};
+            sc_core::sc_event m_e{};
+            bool m_suspend{false};
         };
 
         class process_handle_list {
@@ -377,10 +377,10 @@ private:
             void put_handle(process_handle_class* ph) { v.push_back(ph); }
 
         private:
-            std::vector<process_handle_class*> v;
+            std::vector<process_handle_class*> v{};
         };
 
-        process_handle_list m_process_handle;
+        process_handle_list m_process_handle{};
 
         void nb2b_thread(process_handle_class* h) {
 
@@ -487,28 +487,28 @@ private:
             tlm::tlm_extension_base* clone() const { return NULL; }
             void free() {}
             void copy_from(tlm::tlm_extension_base const&) {}
-            sc_core::sc_event done;
+            sc_core::sc_event done{};
         };
 
     private:
         const std::string m_name;
-        tagged_target_mixin* m_owner;
+        tagged_target_mixin* m_owner{nullptr};
         unsigned int tags[4]; // bl, nb, dbg, dmi
-        NBTransportPtr m_nb_transport_ptr;
-        BTransportPtr m_b_transport_ptr;
-        TransportDbgPtr m_transport_dbg_ptr;
-        GetDirectMemPtr m_get_direct_mem_ptr;
-        tlm_utils::peq_with_get<transaction_type> m_peq;
-        bool m_response_in_progress;
-        sc_core::sc_event m_end_response;
+        NBTransportPtr m_nb_transport_ptr{};
+        BTransportPtr m_b_transport_ptr{};
+        TransportDbgPtr m_transport_dbg_ptr{};
+        GetDirectMemPtr m_get_direct_mem_ptr{};
+        tlm_utils::peq_with_get<transaction_type> m_peq{};
+        bool m_response_in_progress{false};
+        sc_core::sc_event m_end_response{};
     };
 
 private:
     fw_process m_fw_process;
     bw_process m_bw_process;
-    std::map<transaction_type*, sc_core::sc_event*> m_pending_trans;
-    sc_core::sc_event m_end_request;
-    transaction_type* m_current_transaction;
+    std::map<transaction_type*, sc_core::sc_event*> m_pending_trans{};
+    sc_core::sc_event m_end_request{};
+    transaction_type* m_current_transaction{nullptr};
 };
 } // namespace scc
 } // namespace tlm

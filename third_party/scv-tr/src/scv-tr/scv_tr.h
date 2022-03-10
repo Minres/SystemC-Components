@@ -826,10 +826,10 @@ public:
 
 private:
     friend class scv_tr_handle;
-    T_begin _tmp_begin_attributes;
-    T_end _tmp_end_attributes;
-    scv_extensions<T_begin> _begin_ext;
-    scv_extensions<T_end> _end_ext;
+    T_begin _tmp_begin_attributes{};
+    T_end _tmp_end_attributes{};
+    scv_extensions<T_begin> _begin_ext{};
+    scv_extensions<T_end> _end_ext{};
 };
 
 // ----------------------------------------------------------------------------

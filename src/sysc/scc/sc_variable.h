@@ -90,7 +90,7 @@ template <typename T> struct sc_variable : public sc_variable_b {
      */
     sc_variable(const std::string& name, const T& value)
     : sc_variable_b(name.c_str())
-    , value(value) {}
+    , value(value), hndl{} {}
     /**
      * @fn std::string to_string()const
      * @brief create a textual representation of the wrapped value
@@ -143,10 +143,10 @@ template <typename T> struct sc_variable : public sc_variable_b {
         return value!=other;
     }
     //! overloaded prefix ++ operator
-    T operator++ () {
+    sc_variable& operator++ () {
        ++value;          // increment this object
        for(auto h:hndl) h->notify();
-       return value;
+       return *this;
     }
 
     //! overloaded postfix ++ operator
@@ -157,10 +157,10 @@ template <typename T> struct sc_variable : public sc_variable_b {
        return orig;
     }
     //! overloaded prefix -- operator
-    T operator-- () {
+    sc_variable& operator-- () {
        --value;          // increment this object
        for(auto h:hndl) h->notify();
-       return value;
+       return *this;
     }
 
     //! overloaded postfix -- operator
@@ -253,7 +253,7 @@ template <> struct sc_variable<bool> : public sc_variable_b {
     const bool& operator*() { return value; }
     sc_variable(const std::string& name, const bool& value)
     : sc_variable_b(name.c_str())
-    , value(value) {}
+    , value(value), hndl{} {}
     std::string to_string() const override {
         std::stringstream ss;
         ss << value;
@@ -311,7 +311,7 @@ private:
 template <typename T> struct sc_variable_vector {
 
     sc_variable_vector(std::string const& name, size_t size)
-    :name(name), values(size, nullptr) { }
+    :name(name), values(size, nullptr),creator{} { }
 
     sc_variable_vector(std::string const& name, size_t size, T const& def_val)
     :name(name), values(size, nullptr) {

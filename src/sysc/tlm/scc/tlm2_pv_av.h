@@ -164,8 +164,8 @@ private:
             (*pv_tsck)->invalidate_direct_mem_ptr(start_range, end_range);
     }
 
-    std::unique_ptr<target_socket_type> pv_tsck;
-    std::unique_ptr<target_socket_type> av_tsck;
+    std::unique_ptr<target_socket_type> pv_tsck{};
+    std::unique_ptr<target_socket_type> av_tsck{};
 };
 
 } // namespace scc
