@@ -137,13 +137,19 @@ public:
         }
         /**
          * @fn  ~lock()
+         * @brief destructor, unlock the semaphore if still locked
+         *
+         */
+        ~lock() { release(); }
+        /**
+         * @fn  release()
          * @brief unlock the semaphore
          *
          */
-        ~lock() { sem.post(); }
-
+        void release(){if(owned) sem.post(); owned=false;}
     private:
         scc::ordered_semaphore& sem;
+        bool owned{true};
     };
 
 protected:
