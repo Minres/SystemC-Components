@@ -40,7 +40,7 @@ struct tlm_gp_mm : public tlm_extension<tlm_gp_mm> {
 
     template <typename TYPES = tlm_base_protocol_types>
     static typename TYPES::tlm_payload_type* add_data_ptr(size_t sz, typename TYPES::tlm_payload_type& gp){
-        add_data_ptr(sz, &gp);
+        return add_data_ptr(sz, &gp);
     }
     template <typename TYPES = tlm_base_protocol_types>
     static typename TYPES::tlm_payload_type* add_data_ptr(size_t sz, typename TYPES::tlm_payload_type* gp);
