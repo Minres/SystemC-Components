@@ -33,7 +33,7 @@ namespace axi {
 class axi_initiator_base : public sc_core::sc_module {
 public:
     sc_core::sc_in<bool> clk_i{"clk_i"};
-    tlm_utils::simple_target_socket<axi_initiator_base> input_socket{"isckt"};
+    tlm_utils::simple_target_socket<axi_initiator_base> b_tsck{"b_tsck"};
 
     /**
      * Create and attach AXI extension.
@@ -55,17 +55,17 @@ private:
 
 template <unsigned int BUSWIDTH = 32> class axi_initiator : public axi_initiator_base {
 public:
-    axi::axi_initiator_socket<BUSWIDTH> intor{"intor"};
+    axi::axi_initiator_socket<BUSWIDTH> isck{"isck"};
 
     axi_initiator(sc_core::sc_module_name nm)
-    : axi_initiator_base(nm, intor_pe, BUSWIDTH) {
-        intor_pe.clk_i(clk_i);
+    : axi_initiator_base(nm, pe, BUSWIDTH) {
+        pe.clk_i(clk_i);
     };
 
     virtual ~axi_initiator(){};
 
 private:
-    axi::pe::simple_axi_initiator<BUSWIDTH> intor_pe{"intor_pe", intor};
+    axi::pe::simple_axi_initiator<BUSWIDTH> pe{"pe", isck};
 };
 
 } // namespace axi

@@ -36,7 +36,7 @@ void axi_target_base::trans_queue() {
     while(true) {
         auto trans = peq.get();
         trans->acquire();
-        output_socket->b_transport(*trans, delay);
+        b_isck->b_transport(*trans, delay);
         trans->release();
         pe.operation_resp(*trans, 0);
     }
