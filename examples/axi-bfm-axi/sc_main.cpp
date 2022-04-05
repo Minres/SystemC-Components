@@ -47,7 +47,8 @@ private:
     unsigned int StartAddr{0x20};
     unsigned int ResetCycles{10};
     unsigned int BurstLengthByte{16};
-    unsigned int NumberOfIterations{1};
+    unsigned int NumberOfIterations{10};
+    sc_core::sc_event start_trigger;
 
 public:
     SC_HAS_PROCESS(testbench);
@@ -55,7 +56,8 @@ public:
     : sc_core::sc_module(nm)
     , intor_pe("intor_pe", intor)
     , tgt_pe("tgt_pe", tgt) {
-        SC_THREAD(run);
+        SC_THREAD(run0);
+        SC_THREAD(run1);
         intor_pe.clk_i(clk);
         intor_bfm.clk_i(clk);
         tgt_bfm.clk_i(clk);
@@ -80,11 +82,17 @@ public:
         tgt_bfm.isckt(tgt_rec.tsckt);
         // recorder to target
         tgt_rec.isckt(tgt);
+        tgt_pe.set_operation_cb([this](axi::axi_protocol_types::tlm_payload_type& trans)->unsigned{
+            for(size_t i=0; i<trans.get_data_length(); ++i){
+               *(trans.get_data_ptr()+i)=scc::MT19937::uniform();
+            }
+            return 0;
+        });
     }
 
-    tlm::tlm_generic_payload* prepare_trans(size_t len) {
+    tlm::tlm_generic_payload* prepare_trans(size_t len, unsigned id_offs=0) {
         auto trans = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(len);
-        tlm::scc::setId(*trans, id++);
+        tlm::scc::setId(*trans, id);
         auto ext = trans->get_extension<axi::axi4_extension>();
         trans->set_data_length(len);
         trans->set_streaming_width(len);
@@ -93,26 +101,28 @@ public:
         ext->set_length((len * 8 - 1) / bus_cfg::BUSWIDTH);
         // ext->set_burst(len * 8 > bus_cfg::buswidth ? axi::burst_e::INCR : axi::burst_e::FIXED);
         ext->set_burst(axi::burst_e::INCR);
-        ext->set_id(id);
+        ext->set_id(id | id_offs);
+        id=(id+1)%8;
         return trans;
     }
 
-    inline void randomize(tlm::tlm_generic_payload* gp){
-        for(auto i=0U; i<gp->get_data_length(); ++i)
-            *(gp->get_data_ptr()+i)=scc::MT19937::uniform();
+    inline void randomize(tlm::tlm_generic_payload& gp){
+        for(auto i=0U; i<gp.get_data_length(); ++i)
+            *(gp.get_data_ptr()+i)=scc::MT19937::uniform();
     }
-    void run() {
+    void run0() {
         rst.write(false);
         for(size_t i = 0; i < ResetCycles; ++i)
             wait(clk.posedge_event());
         rst.write(true);
         wait(clk.posedge_event());
         wait(clk.posedge_event());
+        start_trigger.notify(sc_core::SC_ZERO_TIME);
         for(int i = 0; i < NumberOfIterations; ++i) {
-            SCCDEBUG("testbench") << "executing transactions in iteration " << i;
+            SCCDEBUG(SCMOD) << "run0 executing transactions in iteration " << i;
             { // 1
-                auto trans = prepare_trans(BurstLengthByte);
-                randomize(trans);
+                tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(BurstLengthByte);
+                randomize(*trans);
                 trans->set_command(tlm::TLM_READ_COMMAND);
                 trans->set_address(StartAddr);
                 trans->acquire();
@@ -123,10 +133,10 @@ public:
             }
             StartAddr += BurstLengthByte;
             { // 2
-                auto trans = prepare_trans(BurstLengthByte);
+                tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(BurstLengthByte);
                 trans->set_command(tlm::TLM_WRITE_COMMAND);
                 trans->set_address(StartAddr);
-                randomize(trans);
+                randomize(*trans);
                 trans->acquire();
                 intor_pe.transport(*trans, false);
                 if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
@@ -137,6 +147,37 @@ public:
         }
         wait(100, SC_NS);
         sc_stop();
+    }
+
+    void run1() {
+        wait(start_trigger);
+        for(int i = 0; i < NumberOfIterations; ++i) {
+            SCCDEBUG(SCMOD) << "run1 executing transactions in iteration " << i;
+            { // 1
+                tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(BurstLengthByte, 0x8);
+                randomize(*trans);
+                trans->set_command(tlm::TLM_READ_COMMAND);
+                trans->set_address(StartAddr);
+                trans->acquire();
+                intor_pe.transport(*trans, false);
+                if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
+                    SCCERR() << "Invalid response status" << trans->get_response_string();
+                trans->release();
+            }
+            StartAddr += BurstLengthByte;
+            { // 2
+                tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(BurstLengthByte, 0x8);
+                trans->set_command(tlm::TLM_WRITE_COMMAND);
+                trans->set_address(StartAddr);
+                randomize(*trans);
+                trans->acquire();
+                intor_pe.transport(*trans, false);
+                if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
+                    SCCERR() << "Invalid response status" << trans->get_response_string();
+                trans->release();
+            }
+            StartAddr += BurstLengthByte;
+        }
     }
 
 };
@@ -157,8 +198,8 @@ int sc_main(int argc, char* argv[]) {
     signal(SIGABRT, ABRThandler);
     signal(SIGSEGV, ABRThandler);
 #ifdef HAS_CCI
-    scc::configurable_tracer trace("axi_axi_test",
-                                   scc::tracer::file_type::NONE, // define the kind of transaction trace
+    scc::configurable_tracer trace("axi_pin_axi_test",
+                                   scc::tracer::file_type::TEXT, // define the kind of transaction trace
                                    true,                         // enables vcd
                                    true);
 #else

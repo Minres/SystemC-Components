@@ -83,7 +83,7 @@ inline std::string concat(const char* prefix, const char* name){ return std::str
 template<typename CFG, typename TYPES=master_types>
 struct aw_ch {
     typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::IDWIDTH>>       aw_id{"aw_id"};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>>     aw_addr{"addr"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>>     aw_addr{"aw_addr"};
     typename TYPES::template s2m_t<bool>                               aw_ready{"aw_ready"};
     typename TYPES::template m2s_opt_t<sc_dt::sc_uint<2>>              aw_lock{"aw_lock"}; // only AXI3
     typename TYPES::template m2s_t<bool>                               aw_valid{"aw_valid"};

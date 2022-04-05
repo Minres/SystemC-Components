@@ -200,7 +200,7 @@ inline void axi::pin::axi4_initiator<CFG>::setup_callbacks(fsm_handle* fsm_hndl)
         sc_assert(fsm_hndl->trans->is_write());
         if(fsm_hndl->beat_count == 0){
             write_aw(*fsm_hndl->trans, *this);
-            aw_evt.notify();
+            aw_evt.notify(sc_core::SC_ZERO_TIME);
         }
         write_wdata(*fsm_hndl->trans, *this, fsm_hndl->beat_count);
         active_req[tlm::TLM_WRITE_COMMAND]=fsm_hndl;
@@ -219,13 +219,13 @@ inline void axi::pin::axi4_initiator<CFG>::setup_callbacks(fsm_handle* fsm_hndl)
         case tlm::TLM_READ_COMMAND:
             active_req[tlm::TLM_READ_COMMAND]=fsm_hndl;
             write_ar(*fsm_hndl->trans, *this);
-            ar_evt.notify();
+            ar_evt.notify(sc_core::SC_ZERO_TIME);
         break;
         case tlm::TLM_WRITE_COMMAND:
             active_req[tlm::TLM_WRITE_COMMAND]=fsm_hndl;
             if(fsm_hndl->beat_count == 0){
                 write_aw(*fsm_hndl->trans, *this);
-                aw_evt.notify();
+                aw_evt.notify(sc_core::SC_ZERO_TIME);
             }
             write_wdata(*fsm_hndl->trans, *this, fsm_hndl->beat_count, true);
             wdata_vl.write(0x3);
@@ -234,11 +234,11 @@ inline void axi::pin::axi4_initiator<CFG>::setup_callbacks(fsm_handle* fsm_hndl)
     fsm_hndl->fsm->cb[EndReqE] = [this, fsm_hndl]() -> void {
         switch(fsm_hndl->trans->get_command()){
         case tlm::TLM_READ_COMMAND:
-            rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].push_back(active_req[tlm::TLM_READ_COMMAND]);
+            rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].push_back(fsm_hndl);
             active_req[tlm::TLM_READ_COMMAND]=nullptr;
         break;
         case tlm::TLM_WRITE_COMMAND:
-            wr_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].push_back(active_req[tlm::TLM_WRITE_COMMAND]);
+            wr_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].push_back(fsm_hndl);
             active_req[tlm::TLM_WRITE_COMMAND]=nullptr;
         }
         tlm::tlm_phase phase = tlm::END_REQ;
@@ -349,12 +349,17 @@ template<typename CFG>
 inline void axi::pin::axi4_initiator<CFG>::aw_t() {
     while(true){
         this->aw_valid.write(false);
+        SCCDEBUG(SCMOD)<<"AWV=0";
         wait(aw_evt);
         this->aw_valid.write(true);
+        SCCDEBUG(SCMOD)<<"AWV=1";
         do{
             wait(this->aw_ready.posedge_event() | clk_delayed);
+            SCCDEBUG(SCMOD)<<"AWR|CLK";
         } while(!this->aw_ready.read());
+        SCCDEBUG(SCMOD)<<"AWV=1-1";
         wait(clk_i.posedge_event());
+        SCCDEBUG(SCMOD)<<"AWV=1-2";
     }
 }
 
