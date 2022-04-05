@@ -146,12 +146,42 @@ inline void axi::bfm::write_wdata(tlm::tlm_generic_payload &trans, wdata_ch<CFG,
     sc_dt::sc_uint<CFG::BUSWIDTH / 8> strb{std::numeric_limits<unsigned>::max()};
     auto ext = trans.get_extension<axi::axi4_extension>();
     auto size = 1u<<ext->get_size();
-    auto bptr = trans.get_data_ptr()+beat*size;
+    auto offset = trans.get_address() & (CFG::BUSWIDTH/8-1);
     auto beptr = trans.get_byte_enable_length()?trans.get_byte_enable_ptr()+beat*size:nullptr;
-    for(size_t i=0; i<size; ++i) {
-        data(i*8+7, i*8) = *(bptr+i);
-        if(beptr)
-            strb[i]=*(beptr+i)==0xff;
+    if(offset && (size+offset)>(CFG::BUSWIDTH/8)) { // un-aligned multi-beat access
+        if(beat==0){
+            auto bptr = trans.get_data_ptr();
+            for (size_t i = offset; i < size; ++i, ++bptr) {
+                auto bit_offs = i*8;
+                data(bit_offs+ 7, bit_offs) = *bptr;
+                if(beptr){
+                    strb[i]=*beptr==0xff;
+                    ++beptr;
+                }
+            }
+        } else {
+            auto beat_start_idx = beat * size - offset;
+            auto data_len = trans.get_data_length();
+            auto bptr = trans.get_data_ptr()+ beat_start_idx;
+            for (size_t i = offset; i < size && (beat_start_idx+i)<data_len; ++i, ++bptr) {
+                auto bit_offs = i*8;
+                data(bit_offs+ 7, bit_offs) = *bptr;
+                if(beptr){
+                    strb[i]=*beptr==0xff;
+                    ++beptr;
+                }
+            }
+        }
+    } else { // aligned or single beat access
+        auto bptr = trans.get_data_ptr() + beat * size;
+        for (size_t i = 0; i < size; ++i, ++bptr) {
+            auto bit_offs = (offset+i)*8;
+            data(bit_offs+ 7, bit_offs) = *bptr;
+            if(beptr){
+                strb[i]=*beptr==0xff;
+                ++beptr;
+            }
+        }
     }
     wdata.w_data.write(data);
     wdata.w_strb.write(strb);
