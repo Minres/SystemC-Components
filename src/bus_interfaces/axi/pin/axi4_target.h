@@ -15,7 +15,7 @@
 #include <tlm/scc/tlm_mm.h>
 #include <systemc>
 namespace axi {
-namespace bfm {
+namespace pin {
 
 using namespace axi::fsm;
 
@@ -93,7 +93,7 @@ private:
 }
 
 template<typename CFG>
-inline tlm::tlm_sync_enum axi::bfm::axi4_target<CFG>::nb_transport_bw(payload_type &trans, phase_type &phase, sc_core::sc_time &t) {
+inline tlm::tlm_sync_enum axi::pin::axi4_target<CFG>::nb_transport_bw(payload_type &trans, phase_type &phase, sc_core::sc_time &t) {
     auto ret = tlm::TLM_ACCEPTED;
     sc_core::sc_time delay; //FIXME: calculate correct time
     SCCTRACE(SCMOD) << "nb_transport_bw " << phase << " of trans " << trans;
@@ -107,11 +107,11 @@ inline tlm::tlm_sync_enum axi::bfm::axi4_target<CFG>::nb_transport_bw(payload_ty
 }
 
 template<typename CFG>
-inline void axi::bfm::axi4_target<CFG>::invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) {
+inline void axi::pin::axi4_target<CFG>::invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) {
 }
 
 template<typename CFG>
-typename CFG::data_t axi::bfm::axi4_target<CFG>::get_read_data_for_beat(fsm_handle *fsm_hndl) {
+typename CFG::data_t axi::pin::axi4_target<CFG>::get_read_data_for_beat(fsm_handle *fsm_hndl) {
     auto beat_count = fsm_hndl->beat_count;
     auto size = axi::get_burst_size(*fsm_hndl->trans);
     auto offset = fsm_hndl->trans->get_address() & (CFG::BUSWIDTH/8-1);
@@ -143,7 +143,7 @@ typename CFG::data_t axi::bfm::axi4_target<CFG>::get_read_data_for_beat(fsm_hand
 }
 
 template<typename CFG>
-inline void axi::bfm::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
+inline void axi::pin::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
     fsm_hndl->fsm->cb[RequestPhaseBeg] = [this, fsm_hndl]() -> void {
         fsm_hndl->beat_count = 0;
     };
@@ -223,7 +223,7 @@ inline void axi::bfm::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
 }
 
 template<typename CFG>
-inline void axi::bfm::axi4_target<CFG>::ar_t() {
+inline void axi::pin::axi4_target<CFG>::ar_t() {
     this->ar_ready.write(false);
     auto arid=this->ar_id.read();
     auto arlen=this->ar_len.read();
@@ -258,7 +258,7 @@ inline void axi::bfm::axi4_target<CFG>::ar_t() {
 }
 
 template<typename CFG>
-inline void axi::bfm::axi4_target<CFG>::rresp_t() {
+inline void axi::pin::axi4_target<CFG>::rresp_t() {
     fsm_handle* fsm_hndl;
     uint8_t val;
     while(true){
@@ -285,7 +285,7 @@ inline void axi::bfm::axi4_target<CFG>::rresp_t() {
 }
 
 template<typename CFG>
-inline void axi::bfm::axi4_target<CFG>::aw_t() {
+inline void axi::pin::axi4_target<CFG>::aw_t() {
     this->aw_ready.write(false);
     auto arid=this->aw_id.read();
     auto arlen=this->aw_len.read();
@@ -319,7 +319,7 @@ inline void axi::bfm::axi4_target<CFG>::aw_t() {
 }
 
 template<typename CFG>
-inline void axi::bfm::axi4_target<CFG>::wdata_t() {
+inline void axi::pin::axi4_target<CFG>::wdata_t() {
     this->w_ready.write(false);
     while(true) {
         wait(this->w_valid.posedge_event() | clk_i.negedge_event());
@@ -399,7 +399,7 @@ inline void axi::bfm::axi4_target<CFG>::wdata_t() {
 }
 
 template<typename CFG>
-inline void axi::bfm::axi4_target<CFG>::bresp_t() {
+inline void axi::pin::axi4_target<CFG>::bresp_t() {
     while(true){
         wait(bresp_evt);
         this->b_valid.write(true);

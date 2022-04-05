@@ -5,13 +5,13 @@
  *      Author:
  */
 
-#include <axi/bfm/axi4_initiator.h>
-#include <axi/bfm/axi4_target.h>
 #include <scc.h>
 #include <array>
 #include <axi/scv/recorder_modules.h>
 #include <axi/pe/axi_initiator.h>
 #include <axi/pe/simple_target.h>
+#include <axi/pin/axi4_initiator.h>
+#include <axi/pin/axi4_target.h>
 #include <csetjmp>
 #include <csignal>
 
@@ -28,14 +28,14 @@ public:
     sc_core::sc_signal<bool> rst{"rst"};
     axi::axi_initiator_socket<bus_cfg::BUSWIDTH> intor{"intor"};
     axi::scv::axi_recorder_module<bus_cfg::BUSWIDTH> intor_rec{"intor_rec"};
-    axi::bfm::axi4_initiator<bus_cfg> intor_bfm{"intor_bfm"};
+    axi::pin::axi4_initiator<bus_cfg> intor_bfm{"intor_bfm"};
 
     axi::aw_ch<bus_cfg, axi::signal_types> aw;
     axi::wdata_ch<bus_cfg, axi::signal_types> wdata;
     axi::b_ch<bus_cfg, axi::signal_types> b;
     axi::ar_ch<bus_cfg, axi::signal_types> ar;
     axi::rresp_ch<bus_cfg, axi::signal_types> rresp;
-    axi::bfm::axi4_target<bus_cfg> tgt_bfm{"tgt_bfm"};
+    axi::pin::axi4_target<bus_cfg> tgt_bfm{"tgt_bfm"};
 
     axi::scv::axi_recorder_module<bus_cfg::BUSWIDTH> tgt_rec{"tgt_rec"};
     axi::axi_target_socket<bus_cfg::BUSWIDTH> tgt{"tgt"};

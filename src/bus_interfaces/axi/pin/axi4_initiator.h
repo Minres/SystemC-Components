@@ -15,7 +15,7 @@
 #include <tlm_utils/peq_with_cb_and_phase.h>
 #include <systemc>
 namespace axi {
-namespace bfm {
+namespace pin {
 
 using namespace axi::fsm;
 
@@ -106,7 +106,7 @@ private:
 }
 
 template<typename CFG>
-inline void axi::bfm::write_ar(tlm::tlm_generic_payload &trans, ar_ch<CFG, master_types> &ar) {
+inline void axi::pin::write_ar(tlm::tlm_generic_payload &trans, ar_ch<CFG, master_types> &ar) {
     sc_dt::sc_uint<CFG::ADDRWIDTH> addr = trans.get_address();
     ar.ar_addr.write(addr);
     if(auto ext = trans.get_extension<axi::axi4_extension>()){
@@ -123,7 +123,7 @@ inline void axi::bfm::write_ar(tlm::tlm_generic_payload &trans, ar_ch<CFG, maste
 }
 
 template<typename CFG>
-inline void axi::bfm::write_aw(tlm::tlm_generic_payload &trans, aw_ch<CFG, master_types> &aw) {
+inline void axi::pin::write_aw(tlm::tlm_generic_payload &trans, aw_ch<CFG, master_types> &aw) {
     sc_dt::sc_uint<CFG::ADDRWIDTH> addr = trans.get_address();
     aw.aw_addr.write(addr);
     if(auto ext = trans.get_extension<axi::axi4_extension>()){
@@ -141,7 +141,7 @@ inline void axi::bfm::write_aw(tlm::tlm_generic_payload &trans, aw_ch<CFG, maste
 
 // FIXME: strb not yet correct
 template<typename CFG>
-inline void axi::bfm::write_wdata(tlm::tlm_generic_payload &trans, wdata_ch<CFG, master_types> &wdata, unsigned beat, bool last) {
+inline void axi::pin::write_wdata(tlm::tlm_generic_payload &trans, wdata_ch<CFG, master_types> &wdata, unsigned beat, bool last) {
     typename CFG::data_t data{0};
     sc_dt::sc_uint<CFG::BUSWIDTH / 8> strb{0};
     auto ext = trans.get_extension<axi::axi4_extension>();
@@ -191,7 +191,7 @@ inline void axi::bfm::write_wdata(tlm::tlm_generic_payload &trans, wdata_ch<CFG,
 }
 
 template<typename CFG>
-inline void axi::bfm::axi4_initiator<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
+inline void axi::pin::axi4_initiator<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
     fsm_hndl->fsm->cb[RequestPhaseBeg] = [this, fsm_hndl]() -> void {
         fsm_hndl->beat_count = 0;
         outstanding_cnt[fsm_hndl->trans->get_command()]++;
@@ -279,7 +279,7 @@ inline void axi::bfm::axi4_initiator<CFG>::setup_callbacks(fsm_handle* fsm_hndl)
 }
 
 template<typename CFG>
-inline void axi::bfm::axi4_initiator<CFG>::ar_t() {
+inline void axi::pin::axi4_initiator<CFG>::ar_t() {
     while(true){
         this->ar_valid.write(false);
         wait(ar_evt);
@@ -294,7 +294,7 @@ inline void axi::bfm::axi4_initiator<CFG>::ar_t() {
 }
 
 template<typename CFG>
-inline void axi::bfm::axi4_initiator<CFG>::r_t() {
+inline void axi::pin::axi4_initiator<CFG>::r_t() {
     this->r_ready.write(false);
     while(true) {
         wait(this->r_valid.posedge_event() | clk_i.negedge_event());
@@ -346,7 +346,7 @@ inline void axi::bfm::axi4_initiator<CFG>::r_t() {
 }
 
 template<typename CFG>
-inline void axi::bfm::axi4_initiator<CFG>::aw_t() {
+inline void axi::pin::axi4_initiator<CFG>::aw_t() {
     while(true){
         this->aw_valid.write(false);
         wait(aw_evt);
@@ -359,7 +359,7 @@ inline void axi::bfm::axi4_initiator<CFG>::aw_t() {
 }
 
 template<typename CFG>
-inline void axi::bfm::axi4_initiator<CFG>::wdata_t() {
+inline void axi::pin::axi4_initiator<CFG>::wdata_t() {
     while(true){
         this->w_valid.write(false);
         this->w_last.write(false);
@@ -380,7 +380,7 @@ inline void axi::bfm::axi4_initiator<CFG>::wdata_t() {
 
 
 template<typename CFG>
-inline void axi::bfm::axi4_initiator<CFG>::b_t() {
+inline void axi::pin::axi4_initiator<CFG>::b_t() {
     this->r_ready.write(false);
     while(true) {
         wait(this->b_valid.posedge_event() | clk_i.negedge_event());
