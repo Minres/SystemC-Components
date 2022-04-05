@@ -50,7 +50,7 @@ public:
         tgt.clk_i(clk);
         intor.isck(intor_rec.tsckt);
         intor_rec.isckt(tgt.tsck);
-        tgt.b_isck(mem.target);
+        tgt.isck(mem.target);
     }
 
     tlm::tlm_generic_payload* prepare_trans(size_t len) {

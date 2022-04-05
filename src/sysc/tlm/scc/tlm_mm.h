@@ -24,7 +24,7 @@ namespace tlm {
 namespace scc {
 
 struct tlm_gp_mm : public tlm_extension<tlm_gp_mm> {
-    ~tlm_gp_mm() {  }
+    virtual ~tlm_gp_mm() {  }
 
     void copy_from(tlm_extension_base const& from) override {
         if(auto ext = dynamic_cast<tlm_gp_mm const*>(&from))
@@ -35,66 +35,88 @@ struct tlm_gp_mm : public tlm_extension<tlm_gp_mm> {
 
     size_t   const data_size;
     uint8_t *const data_ptr;
+    uint8_t *const be_ptr;
 
-    static tlm_gp_mm* create(size_t sz);
+    static tlm_gp_mm* create(size_t sz, bool be=false);
 
     template <typename TYPES = tlm_base_protocol_types>
-    static typename TYPES::tlm_payload_type* add_data_ptr(size_t sz, typename TYPES::tlm_payload_type& gp){
-        return add_data_ptr(sz, &gp);
+    static typename TYPES::tlm_payload_type* add_data_ptr(size_t sz, typename TYPES::tlm_payload_type& gp, bool be = false){
+        return add_data_ptr(sz, &gp, be);
     }
     template <typename TYPES = tlm_base_protocol_types>
-    static typename TYPES::tlm_payload_type* add_data_ptr(size_t sz, typename TYPES::tlm_payload_type* gp);
+    static typename TYPES::tlm_payload_type* add_data_ptr(size_t sz, typename TYPES::tlm_payload_type* gp, bool be = false);
 
 protected:
-    tlm_gp_mm(size_t sz, uint8_t* data_ptr) : data_size(sz), data_ptr(data_ptr) { }
+    tlm_gp_mm(size_t sz, uint8_t* data_ptr, uint8_t* be_ptr) : data_size(sz), data_ptr(data_ptr), be_ptr(be_ptr) { }
 };
 
-template<size_t SZ>
+template<size_t SZ, bool BE=false>
 struct tlm_gp_mm_t : public tlm_gp_mm {
 
     friend tlm_gp_mm;
 
-    ~tlm_gp_mm_t() {  }
+    virtual ~tlm_gp_mm_t() {  }
 
-    void free() override { util::pool_allocator<tlm_gp_mm_t<SZ>>::get().free(this); }
+    void free() override { util::pool_allocator<tlm_gp_mm_t<SZ, BE>>::get().free(this); }
 
 protected:
-    tlm_gp_mm_t(size_t sz) : tlm_gp_mm(sz, data) { }
+    tlm_gp_mm_t(size_t sz) : tlm_gp_mm(sz, data, BE?be:nullptr) { }
     uint8_t data[SZ];
+    uint8_t be[BE?SZ:0];
 };
 
 struct tlm_gp_mm_v : public tlm_gp_mm  {
 
     friend tlm_gp_mm;
 
-    ~tlm_gp_mm_v() { delete data_ptr; }
+    virtual ~tlm_gp_mm_v() { delete data_ptr; }
 
 protected:
-    tlm_gp_mm_v(size_t sz) : tlm_gp_mm(sz, new uint8_t[sz]) { }
+    tlm_gp_mm_v(size_t sz) : tlm_gp_mm(sz, new uint8_t[sz], nullptr) { }
 };
 
-inline tlm_gp_mm* tlm::scc::tlm_gp_mm::create(size_t sz) {
+inline tlm_gp_mm* tlm::scc::tlm_gp_mm::create(size_t sz, bool be) {
     if(sz>4096) {
         return new tlm_gp_mm_v(sz);
     } else if(sz>1024) {
-        return new (util::pool_allocator<tlm_gp_mm_t<4096>>::get().allocate()) tlm_gp_mm_t<4096>(sz);
+        if(be) {
+            return new (util::pool_allocator<tlm_gp_mm_t<4096, true>>::get().allocate()) tlm_gp_mm_t<4096, true>(sz);
+        } else {
+            return new (util::pool_allocator<tlm_gp_mm_t<4096, false>>::get().allocate()) tlm_gp_mm_t<4096, false>(sz);
+        }
     } else if(sz>256) {
-        return new (util::pool_allocator<tlm_gp_mm_t<1024>>::get().allocate()) tlm_gp_mm_t<1024>(sz);
+        if(be) {
+            return new (util::pool_allocator<tlm_gp_mm_t<1024, true>>::get().allocate()) tlm_gp_mm_t<1024, true>(sz);
+        } else {
+            return new (util::pool_allocator<tlm_gp_mm_t<1024, false>>::get().allocate()) tlm_gp_mm_t<1024, false>(sz);
+        }
     } else if(sz>64){
-        return new (util::pool_allocator<tlm_gp_mm_t<256>>::get().allocate()) tlm_gp_mm_t<256>(sz);
+        if(be) {
+            return new (util::pool_allocator<tlm_gp_mm_t<256, true>>::get().allocate()) tlm_gp_mm_t<256, true>(sz);
+        } else {
+            return new (util::pool_allocator<tlm_gp_mm_t<256, false>>::get().allocate()) tlm_gp_mm_t<256, false>(sz);
+        }
     } else if(sz>16) {
-        return new (util::pool_allocator<tlm_gp_mm_t<64>>::get().allocate()) tlm_gp_mm_t<64>(sz);
+        if(be) {
+            return new (util::pool_allocator<tlm_gp_mm_t<64, true>>::get().allocate()) tlm_gp_mm_t<64, true>(sz);
+        } else {
+            return new (util::pool_allocator<tlm_gp_mm_t<64, false>>::get().allocate()) tlm_gp_mm_t<64, false>(sz);
+        }
+    } else if(be) {
+        return new (util::pool_allocator<tlm_gp_mm_t<16, true>>::get().allocate()) tlm_gp_mm_t<16, true>(sz);
     } else {
-        return new (util::pool_allocator<tlm_gp_mm_t<16>>::get().allocate()) tlm_gp_mm_t<16>(sz);
+        return new (util::pool_allocator<tlm_gp_mm_t<16, false>>::get().allocate()) tlm_gp_mm_t<16, false>(sz);
     }
 }
 
 template<typename TYPES>
-inline typename TYPES::tlm_payload_type* tlm::scc::tlm_gp_mm::add_data_ptr(size_t sz, typename TYPES::tlm_payload_type* gp) {
-    auto* ext = create(sz);
+inline typename TYPES::tlm_payload_type* tlm::scc::tlm_gp_mm::add_data_ptr(size_t sz, typename TYPES::tlm_payload_type* gp, bool be) {
+    auto* ext = create(sz, be);
     gp->set_auto_extension(ext);
     gp->set_data_ptr(ext->data_ptr);
     gp->set_data_length(sz);
+    gp->set_byte_enable_ptr(ext->be_ptr);
+    if(be) gp->set_byte_enable_length(sz);
     return gp;
 }
 
@@ -162,17 +184,17 @@ public:
         return ptr;
     }
     /**
-     * @brief get a plain tlm_payload_type without extensions
+     * @brief get a plain tlm_payload_type without extensions but initialized data and byte enable
      * @return the tlm_payload_type
      */
-    payload_type* allocate(size_t sz);
+    payload_type* allocate(size_t sz, bool be=false);
     /**
      * @brief get a tlm_payload_type with registered extension and initialize data pointer
      *
      * @return the tlm_payload_type
      */
-    template <typename PEXT> payload_type* allocate(size_t sz) {
-        auto* ptr = allocate(sz);
+    template <typename PEXT> payload_type* allocate(size_t sz, bool be=false) {
+        auto* ptr = allocate(sz, be);
         ptr->set_auto_extension(tlm_ext_mm<PEXT>::create());
         return ptr;
     }
@@ -199,10 +221,10 @@ inline typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP
 }
 
 template <typename TYPES, bool CLEANUP_DATA>
-inline typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP_DATA>::allocate(size_t sz) {
+inline typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP_DATA>::allocate(size_t sz, bool be) {
     if(sz) {
         auto* ptr = allocator.allocate(sc_core::sc_time_stamp().value());
-        return tlm_gp_mm::add_data_ptr(sz, new(ptr) payload_type(this));
+        return  tlm_gp_mm::add_data_ptr(sz, new(ptr) payload_type(this), be);
     } else {
         return allocate();
     }

@@ -240,6 +240,7 @@ inline void axi::bfm::axi4_target<CFG>::ar_t() {
             auto gp =  tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(data_len);
             gp->set_address(this->ar_addr.read());
             gp->set_command(tlm::TLM_READ_COMMAND);
+            gp->set_data_length(data_len);
             axi::axi4_extension* ext;
             gp->get_extension(ext);
             ext->set_id(arid);
@@ -329,7 +330,7 @@ inline void axi::bfm::axi4_target<CFG>::wdata_t() {
                     wait(aw_que.event());
                 auto awd = aw_que.get();
                 auto data_len = (1<<awd.size)*(awd.len+1);
-                auto gp =  tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(data_len);
+                auto gp =  tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(data_len, true);
                 gp->set_address(awd.addr);
                 gp->set_command(tlm::TLM_WRITE_COMMAND);
                 axi::axi4_extension* ext;
@@ -354,12 +355,36 @@ inline void axi::bfm::axi4_target<CFG>::wdata_t() {
             auto data = this->w_data.read();
             auto strb = this->w_strb.read();
             auto last = this->w_last.read();
+            auto beat_count = fsm_hndl->beat_count;
             auto size = axi::get_burst_size(*fsm_hndl->trans);
-            auto bptr=fsm_hndl->trans->get_data_ptr()+fsm_hndl->beat_count*size;
-            for(size_t i=0; i<CFG::BUSWIDTH/8; ++i) {
-                if(strb[i]) {
-                    *bptr=data(i*8+7, i*8).to_uint();
-                    ++bptr;
+            auto offset = fsm_hndl->trans->get_address() & (CFG::BUSWIDTH/8-1);
+            if(offset && (size+offset)>(CFG::BUSWIDTH/8)) { // un-aligned multi-beat access
+                if(beat_count==0){
+                    auto bptr = fsm_hndl->trans->get_data_ptr();
+                    auto beptr = fsm_hndl->trans->get_byte_enable_ptr();
+                    for (size_t i = offset; i < size; ++i, ++bptr) {
+                        auto bit_offs = i*8;
+                        *bptr=data(bit_offs+ 7, bit_offs).to_uint();
+                        *beptr=strb[i]?0xff:0;
+                    }
+                } else {
+                    auto beat_start_idx = beat_count * size - offset;
+                    auto data_len = fsm_hndl->trans->get_data_length();
+                    auto bptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
+                    auto beptr = fsm_hndl->trans->get_byte_enable_ptr() + beat_start_idx;
+                    for (size_t i = offset; i < size && (beat_start_idx+i)<data_len; ++i, ++bptr) {
+                        auto bit_offs = i*8;
+                        *bptr=data(bit_offs+ 7, bit_offs).to_uint();
+                        *beptr=strb[i]?0xff:0;
+                    }
+                }
+            } else { // aligned or single beat access
+                auto bptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
+                auto beptr = fsm_hndl->trans->get_byte_enable_ptr() + beat_count * size;
+                for (size_t i = 0; i < size; ++i, ++bptr) {
+                    auto bit_offs = (offset+i)*8;
+                    *bptr=data(bit_offs+ 7, bit_offs).to_uint();
+                    *beptr=strb[i]?0xff:0;
                 }
             }
             auto tp = this->w_last.read()?axi::fsm::protocol_time_point_e::BegReqE:axi::fsm::protocol_time_point_e::BegPartReqE;

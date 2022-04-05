@@ -143,7 +143,7 @@ inline void axi::bfm::write_aw(tlm::tlm_generic_payload &trans, aw_ch<CFG, maste
 template<typename CFG>
 inline void axi::bfm::write_wdata(tlm::tlm_generic_payload &trans, wdata_ch<CFG, master_types> &wdata, unsigned beat, bool last) {
     typename CFG::data_t data{0};
-    sc_dt::sc_uint<CFG::BUSWIDTH / 8> strb{std::numeric_limits<unsigned>::max()};
+    sc_dt::sc_uint<CFG::BUSWIDTH / 8> strb{0};
     auto ext = trans.get_extension<axi::axi4_extension>();
     auto size = 1u<<ext->get_size();
     auto offset = trans.get_address() & (CFG::BUSWIDTH/8-1);
@@ -157,7 +157,7 @@ inline void axi::bfm::write_wdata(tlm::tlm_generic_payload &trans, wdata_ch<CFG,
                 if(beptr){
                     strb[i]=*beptr==0xff;
                     ++beptr;
-                }
+                } else strb[i]=true;
             }
         } else {
             auto beat_start_idx = beat * size - offset;
@@ -169,7 +169,7 @@ inline void axi::bfm::write_wdata(tlm::tlm_generic_payload &trans, wdata_ch<CFG,
                 if(beptr){
                     strb[i]=*beptr==0xff;
                     ++beptr;
-                }
+                } else strb[i]=true;
             }
         }
     } else { // aligned or single beat access
@@ -180,7 +180,7 @@ inline void axi::bfm::write_wdata(tlm::tlm_generic_payload &trans, wdata_ch<CFG,
             if(beptr){
                 strb[i]=*beptr==0xff;
                 ++beptr;
-            }
+            } else strb[i]=true;
         }
     }
     wdata.w_data.write(data);
@@ -305,10 +305,31 @@ inline void axi::bfm::axi4_initiator<CFG>::r_t() {
             auto& q = rd_resp_by_id[id];
             sc_assert(q.size());
             auto* fsm_hndl = q.front();
+            auto beat_count = fsm_hndl->beat_count;
             auto size = axi::get_burst_size(*fsm_hndl->trans);
-            auto bptr=fsm_hndl->trans->get_data_ptr()+fsm_hndl->beat_count*size;
-            for(size_t i=0; i<size; ++i) {
-                 *(bptr+i)=data(i*8+7, i*8).to_uint();
+            auto offset = fsm_hndl->trans->get_address() & (CFG::BUSWIDTH/8-1);
+            if(offset && (size+offset)>(CFG::BUSWIDTH/8)) { // un-aligned multi-beat access
+                if(beat_count==0){
+                    auto bptr = fsm_hndl->trans->get_data_ptr();
+                    for (size_t i = offset; i < size; ++i, ++bptr) {
+                        auto bit_offs = i*8;
+                        *bptr=data(bit_offs+ 7, bit_offs).to_uint();
+                    }
+                } else {
+                    auto beat_start_idx = beat_count * size - offset;
+                    auto data_len = fsm_hndl->trans->get_data_length();
+                    auto bptr = fsm_hndl->trans->get_data_ptr()+ beat_start_idx;
+                    for (size_t i = offset; i < size && (beat_start_idx+i)<data_len; ++i, ++bptr) {
+                        auto bit_offs = i*8;
+                        *bptr=data(bit_offs+ 7, bit_offs).to_uint();
+                    }
+                }
+            } else { // aligned or single beat access
+                auto bptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
+                for (size_t i = 0; i < size; ++i, ++bptr) {
+                    auto bit_offs = (offset+i)*8;
+                    *bptr=data(bit_offs+ 7, bit_offs).to_uint();
+                }
             }
             axi::axi4_extension* e;
             fsm_hndl->trans->get_extension(e);
