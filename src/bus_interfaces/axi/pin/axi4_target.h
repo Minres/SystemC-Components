@@ -157,9 +157,9 @@ inline void axi::pin::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
         }
     };
     fsm_hndl->fsm->cb[EndPartReqE] = [this, fsm_hndl]() -> void {
-        fsm_hndl->beat_count++;
         wdata_end_req_evt.notify();
         active_req_beat[tlm::TLM_WRITE_COMMAND]=nullptr;
+        fsm_hndl->beat_count++;
     };
     fsm_hndl->fsm->cb[BegReqE] = [this, fsm_hndl]() -> void {
         tlm::tlm_phase phase = tlm::BEGIN_REQ;
@@ -178,6 +178,7 @@ inline void axi::pin::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
         case tlm::TLM_WRITE_COMMAND:
             wdata_end_req_evt.notify();
             active_req_beat[tlm::TLM_WRITE_COMMAND]=nullptr;
+            fsm_hndl->beat_count++;
             break;
         }
     };
@@ -193,6 +194,7 @@ inline void axi::pin::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
         sc_core::sc_time t(sc_core::SC_ZERO_TIME);
         auto ret = isckt->nb_transport_fw(*fsm_hndl->trans, phase, t);
         active_resp_beat[tlm::TLM_READ_COMMAND]=nullptr;
+        fsm_hndl->beat_count++;
     };
     fsm_hndl->fsm->cb[BegRespE] = [this, fsm_hndl]() -> void {
         SCCTRACE(SCMOD)<<"processing event BegRespE for trans "<<*fsm_hndl->trans;

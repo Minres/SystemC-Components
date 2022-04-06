@@ -44,11 +44,11 @@ private:
     axi::pe::axi_initiator<bus_cfg::BUSWIDTH> intor_pe;
     axi::pe::simple_target<bus_cfg::BUSWIDTH> tgt_pe;
     unsigned id{0};
-    unsigned int StartAddr{0x20};
     unsigned int ResetCycles{10};
     unsigned int BurstLengthByte{16};
     unsigned int NumberOfIterations{10};
     sc_core::sc_event start_trigger;
+    uint8_t resp_cnt{0}, req_cnt{0};
 
 public:
     SC_HAS_PROCESS(testbench);
@@ -83,22 +83,29 @@ public:
         // recorder to target
         tgt_rec.isckt(tgt);
         tgt_pe.set_operation_cb([this](axi::axi_protocol_types::tlm_payload_type& trans)->unsigned{
+            auto addr = trans.get_address();
+            uint8_t const* src = reinterpret_cast<uint8_t const*>(&addr);
             for(size_t i=0; i<trans.get_data_length(); ++i){
-               *(trans.get_data_ptr()+i)=scc::MT19937::uniform();
+               *(trans.get_data_ptr()+i)=i%2?i:resp_cnt;
             }
+            resp_cnt++;
             return 0;
         });
     }
 
-    tlm::tlm_generic_payload* prepare_trans(size_t len, unsigned id_offs=0) {
+    tlm::tlm_generic_payload* prepare_trans(uint64_t start_address, size_t len, unsigned id_offs=0, unsigned addr_offs=0) {
         auto trans = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(len);
+        trans->set_address(start_address);
         tlm::scc::setId(*trans, id);
         auto ext = trans->get_extension<axi::axi4_extension>();
         trans->set_data_length(len);
         trans->set_streaming_width(len);
         ext->set_size(scc::ilog2(std::min<size_t>(len, bus_cfg::BUSWIDTH / 8)));
         sc_assert(len < (bus_cfg::BUSWIDTH / 8) || len % (bus_cfg::BUSWIDTH / 8) == 0);
-        ext->set_length((len * 8 - 1) / bus_cfg::BUSWIDTH);
+        auto length=(len * 8 - 1) / bus_cfg::BUSWIDTH;
+        if(start_address%(bus_cfg::BUSWIDTH / 8))
+            length++;
+        ext->set_length(length);
         // ext->set_burst(len * 8 > bus_cfg::buswidth ? axi::burst_e::INCR : axi::burst_e::FIXED);
         ext->set_burst(axi::burst_e::INCR);
         ext->set_id(id | id_offs);
@@ -107,10 +114,15 @@ public:
     }
 
     inline void randomize(tlm::tlm_generic_payload& gp){
-        for(auto i=0U; i<gp.get_data_length(); ++i)
-            *(gp.get_data_ptr()+i)=scc::MT19937::uniform();
+        auto addr = gp.get_address();
+        uint8_t const* src = reinterpret_cast<uint8_t const*>(&addr);
+        for(size_t i=0; i<gp.get_data_length(); ++i){
+           *(gp.get_data_ptr()+i)=i%2?i:req_cnt;
+        }
+        req_cnt++;
     }
     void run0() {
+        unsigned int StartAddr{0x20};
         rst.write(false);
         for(size_t i = 0; i < ResetCycles; ++i)
             wait(clk.posedge_event());
@@ -121,27 +133,21 @@ public:
         for(int i = 0; i < NumberOfIterations; ++i) {
             SCCDEBUG(SCMOD) << "run0 executing transactions in iteration " << i;
             { // 1
-                tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(BurstLengthByte);
+                tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(StartAddr, BurstLengthByte);
                 randomize(*trans);
                 trans->set_command(tlm::TLM_READ_COMMAND);
-                trans->set_address(StartAddr);
-                trans->acquire();
                 intor_pe.transport(*trans, false);
                 if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
                     SCCERR() << "Invalid response status" << trans->get_response_string();
-                trans->release();
             }
             StartAddr += BurstLengthByte;
             { // 2
-                tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(BurstLengthByte);
+                tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(StartAddr, BurstLengthByte);
                 trans->set_command(tlm::TLM_WRITE_COMMAND);
-                trans->set_address(StartAddr);
                 randomize(*trans);
-                trans->acquire();
                 intor_pe.transport(*trans, false);
                 if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
                     SCCERR() << "Invalid response status" << trans->get_response_string();
-                trans->release();
             }
             StartAddr += BurstLengthByte;
         }
@@ -150,31 +156,26 @@ public:
     }
 
     void run1() {
+        unsigned int StartAddr{0x1020};
         wait(start_trigger);
         for(int i = 0; i < NumberOfIterations; ++i) {
             SCCDEBUG(SCMOD) << "run1 executing transactions in iteration " << i;
             { // 1
-                tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(BurstLengthByte, 0x8);
+                tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(StartAddr, BurstLengthByte, 0x8);
                 randomize(*trans);
                 trans->set_command(tlm::TLM_READ_COMMAND);
-                trans->set_address(StartAddr);
-                trans->acquire();
                 intor_pe.transport(*trans, false);
                 if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
                     SCCERR() << "Invalid response status" << trans->get_response_string();
-                trans->release();
             }
             StartAddr += BurstLengthByte;
             { // 2
-                tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(BurstLengthByte, 0x8);
+                tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(StartAddr, BurstLengthByte, 0x8);
                 trans->set_command(tlm::TLM_WRITE_COMMAND);
-                trans->set_address(StartAddr);
                 randomize(*trans);
-                trans->acquire();
                 intor_pe.transport(*trans, false);
                 if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
                     SCCERR() << "Invalid response status" << trans->get_response_string();
-                trans->release();
             }
             StartAddr += BurstLengthByte;
         }

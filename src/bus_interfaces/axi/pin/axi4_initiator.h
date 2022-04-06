@@ -211,8 +211,8 @@ inline void axi::pin::axi4_initiator<CFG>::setup_callbacks(fsm_handle* fsm_hndl)
         this->aw_valid.write(false);
         tlm::tlm_phase phase = axi::END_PARTIAL_REQ;
         sc_core::sc_time t;//(clk_if?clk_if->period()-1_ps:sc_core::SC_ZERO_TIME);
-        fsm_hndl->beat_count++;
         auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
+        fsm_hndl->beat_count++;
     };
     fsm_hndl->fsm->cb[BegReqE] = [this, fsm_hndl]() -> void {
         switch(fsm_hndl->trans->get_command()){
@@ -240,6 +240,7 @@ inline void axi::pin::axi4_initiator<CFG>::setup_callbacks(fsm_handle* fsm_hndl)
         case tlm::TLM_WRITE_COMMAND:
             wr_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].push_back(fsm_hndl);
             active_req[tlm::TLM_WRITE_COMMAND]=nullptr;
+            fsm_hndl->beat_count++;
         }
         tlm::tlm_phase phase = tlm::END_REQ;
         sc_core::sc_time t(sc_core::SC_ZERO_TIME);
