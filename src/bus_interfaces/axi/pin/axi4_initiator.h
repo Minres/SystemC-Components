@@ -208,7 +208,6 @@ inline void axi::pin::axi4_initiator<CFG>::setup_callbacks(fsm_handle* fsm_hndl)
     };
     fsm_hndl->fsm->cb[EndPartReqE] = [this, fsm_hndl]() -> void {
         active_req[tlm::TLM_WRITE_COMMAND]=nullptr;
-        this->aw_valid.write(false);
         tlm::tlm_phase phase = axi::END_PARTIAL_REQ;
         sc_core::sc_time t;//(clk_if?clk_if->period()-1_ps:sc_core::SC_ZERO_TIME);
         auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
@@ -350,17 +349,12 @@ template<typename CFG>
 inline void axi::pin::axi4_initiator<CFG>::aw_t() {
     while(true){
         this->aw_valid.write(false);
-        SCCDEBUG(SCMOD)<<"AWV=0";
         wait(aw_evt);
         this->aw_valid.write(true);
-        SCCDEBUG(SCMOD)<<"AWV=1";
         do{
             wait(this->aw_ready.posedge_event() | clk_delayed);
-            SCCDEBUG(SCMOD)<<"AWR|CLK";
         } while(!this->aw_ready.read());
-        SCCDEBUG(SCMOD)<<"AWV=1-1";
         wait(clk_i.posedge_event());
-        SCCDEBUG(SCMOD)<<"AWV=1-2";
     }
 }
 
