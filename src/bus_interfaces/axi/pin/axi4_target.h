@@ -242,7 +242,7 @@ inline void axi::pin::axi4_target<CFG>::ar_t() {
             auto gp =  tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(data_len);
             gp->set_address(this->ar_addr.read());
             gp->set_command(tlm::TLM_READ_COMMAND);
-            gp->set_data_length(data_len);
+            gp->set_streaming_width(data_len);
             axi::axi4_extension* ext;
             gp->get_extension(ext);
             ext->set_id(arid);
@@ -335,6 +335,7 @@ inline void axi::pin::axi4_target<CFG>::wdata_t() {
                 auto gp =  tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(data_len, true);
                 gp->set_address(awd.addr);
                 gp->set_command(tlm::TLM_WRITE_COMMAND);
+                gp->set_streaming_width(data_len);
                 axi::axi4_extension* ext;
                 gp->get_extension(ext);
                 ext->set_id(awd.id);
@@ -364,7 +365,7 @@ inline void axi::pin::axi4_target<CFG>::wdata_t() {
                 if(beat_count==0){
                     auto bptr = fsm_hndl->trans->get_data_ptr();
                     auto beptr = fsm_hndl->trans->get_byte_enable_ptr();
-                    for (size_t i = offset; i < size; ++i, ++bptr) {
+                    for (size_t i = offset; i < size; ++i, ++bptr, ++beptr) {
                         auto bit_offs = i*8;
                         *bptr=data(bit_offs+ 7, bit_offs).to_uint();
                         *beptr=strb[i]?0xff:0;
@@ -374,7 +375,7 @@ inline void axi::pin::axi4_target<CFG>::wdata_t() {
                     auto data_len = fsm_hndl->trans->get_data_length();
                     auto bptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
                     auto beptr = fsm_hndl->trans->get_byte_enable_ptr() + beat_start_idx;
-                    for (size_t i = offset; i < size && (beat_start_idx+i)<data_len; ++i, ++bptr) {
+                    for (size_t i = offset; i < size && (beat_start_idx+i)<data_len; ++i, ++bptr, ++beptr) {
                         auto bit_offs = i*8;
                         *bptr=data(bit_offs+ 7, bit_offs).to_uint();
                         *beptr=strb[i]?0xff:0;
@@ -383,7 +384,7 @@ inline void axi::pin::axi4_target<CFG>::wdata_t() {
             } else { // aligned or single beat access
                 auto bptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
                 auto beptr = fsm_hndl->trans->get_byte_enable_ptr() + beat_count * size;
-                for (size_t i = 0; i < size; ++i, ++bptr) {
+                for (size_t i = 0; i < size; ++i, ++bptr, ++beptr) {
                     auto bit_offs = (offset+i)*8;
                     *bptr=data(bit_offs+ 7, bit_offs).to_uint();
                     *beptr=strb[i]?0xff:0;
