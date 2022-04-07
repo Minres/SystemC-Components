@@ -41,6 +41,8 @@ public:
     axi::axi_target_socket<bus_cfg::BUSWIDTH> tgt{"tgt"};
 
 private:
+    sc_core::sc_attribute<bool> same_id{"same_id", false};
+
     axi::pe::axi_initiator<bus_cfg::BUSWIDTH> intor_pe;
     axi::pe::simple_target<bus_cfg::BUSWIDTH> tgt_pe;
     unsigned id{0};
@@ -56,6 +58,7 @@ public:
     : sc_core::sc_module(nm)
     , intor_pe("intor_pe", intor)
     , tgt_pe("tgt_pe", tgt) {
+        add_attribute(same_id);
         SC_THREAD(run0);
         SC_THREAD(run1);
         intor_pe.clk_i(clk);
@@ -108,7 +111,10 @@ public:
         ext->set_length(length);
         // ext->set_burst(len * 8 > bus_cfg::buswidth ? axi::burst_e::INCR : axi::burst_e::FIXED);
         ext->set_burst(axi::burst_e::INCR);
-        ext->set_id(id | id_offs);
+        if(same_id.value)
+            ext->set_id(0);
+        else
+            ext->set_id(id|id_offs);
         id=(id+1)%8;
         return trans;
     }
@@ -192,27 +198,33 @@ int sc_main(int argc, char* argv[]) {
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
     scc::init_logging(
             scc::LogConfig()
-            .logLevel(static_cast<scc::log>(7))
+            .logLevel(scc::log::INFO)
             .logAsync(false)
             .coloredOutput(true));
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
     signal(SIGABRT, ABRThandler);
     signal(SIGSEGV, ABRThandler);
+    auto cfg_file = argc==2?argv[1]:"";
+    scc::configurer cfg(cfg_file);
 #ifdef HAS_CCI
     scc::configurable_tracer trace("axi_pin_axi_test",
-                                   scc::tracer::file_type::TEXT, // define the kind of transaction trace
+                                   scc::tracer::file_type::NONE, // define the kind of transaction trace
                                    true,                         // enables vcd
                                    true);
 #else
-    scc::tracer trace("axi_axi_test",
+    scc::tracer trace("axi_pin_axi_test",
                                    scc::tracer::file_type::NONE, // define the kind of transaction trace
                                    true);                        // enables vcd
 #endif
     if(setjmp(env) == 0) {
         testbench tb("tb");
+        cfg.configure();
         sc_core::sc_start(1_ms);
-        SCCINFO() << "Finished";
-        return 0;
+        auto errcnt = sc_report_handler::get_count(SC_ERROR);
+        auto warncnt = sc_report_handler::get_count(SC_WARNING);
+        SCCINFO() << "Finished, there were " << errcnt << " error" << (errcnt == 1 ? "" : "s") << " and " << warncnt
+                  << " warning" << (warncnt == 1 ? "" : "s");
+        return errcnt + warncnt;
     } else {
         return -1;
     }

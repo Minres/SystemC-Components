@@ -381,7 +381,7 @@ inline void axi::pin::axi4_initiator<CFG>::wdata_t() {
 
 template<typename CFG>
 inline void axi::pin::axi4_initiator<CFG>::b_t() {
-    this->r_ready.write(false);
+    this->b_ready.write(false);
     while(true) {
         wait(this->b_valid.posedge_event() | clk_i.negedge_event());
         if(this->b_valid.event() || (!active_resp[tlm::TLM_WRITE_COMMAND] && this->b_valid.read())) {
