@@ -26,6 +26,7 @@
 #include "tlm/scc/target_mixin.h"
 #include <tlm.h>
 #include <util/sparse_array.h>
+#include <numeric>
 
 namespace scc {
 
@@ -129,12 +130,19 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
         trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
         return 0;
     }
-    if(adr + len > ::sc_dt::uint64(SIZE) || byt != 0 || wid < len) {
+    if(adr + len > ::sc_dt::uint64(SIZE) || wid < len) {
         SC_REPORT_ERROR("TLM-2", "generic payload transaction not supported");
         trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
         return 0;
     }
-
+    if(byt){
+        auto res = std::accumulate(byt, byt+trans.get_byte_enable_length(), 0xff, [](uint8_t a, uint8_t b){return a|b;});
+        if(trans.get_byte_enable_length()!=len || res!=0xff) {
+            SC_REPORT_ERROR("TLM-2", "generic payload transaction with scattered byte enable not supported");
+            trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
+            return 0;
+        }
+    }
     tlm::tlm_command cmd = trans.get_command();
     SCCTRACE(SCMOD) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr;
     if(cmd == tlm::TLM_READ_COMMAND) {
