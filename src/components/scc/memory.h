@@ -130,7 +130,8 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
         trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
         return 0;
     }
-    if(adr + len > ::sc_dt::uint64(SIZE) || wid < len) {
+    if(wid < len) {
+        SCCERR(SCMOD) << "Streaming width: " << wid << ", data length: " << len;
         SC_REPORT_ERROR("TLM-2", "generic payload transaction not supported");
         trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
         return 0;

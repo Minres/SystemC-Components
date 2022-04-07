@@ -35,7 +35,7 @@ namespace axi {
 class axi_target_base : public sc_core::sc_module {
 public:
     sc_core::sc_in<bool> clk_i{"clk_i"};
-    tlm_utils::simple_initiator_socket<axi_target_base> isck{"b_isck"};
+    tlm_utils::simple_initiator_socket<axi_target_base> isck{"isck"};
 
     axi_target_base(const sc_core::sc_module_name& nm, axi::pe::axi_target_pe_b& pe);
     virtual ~axi_target_base(){};
