@@ -18,6 +18,7 @@
 #include "scc/report.h"
 #include "tlm/scc/tlm_id.h"
 #include "tlm/scc/tlm_mm.h"
+#include "tlm/scc/tlm_gp_shared.h"
 
 using namespace axi;
 
@@ -41,19 +42,17 @@ axi_initiator_base::axi_initiator_base(const sc_core::sc_module_name& nm, axi::p
 }
 
 void axi_initiator_base::b_transport(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
-    auto payload = create_axi_trans(trans);
+    tlm::scc::tlm_gp_shared_ptr payload = create_axi_trans(trans);
     pe.transport(*payload, false);
     trans.update_original_from(*payload);
-    payload->release();
 }
 
 tlm::tlm_generic_payload* axi_initiator_base::create_axi_trans(tlm::tlm_generic_payload& p) {
     tlm::tlm_generic_payload* trans = nullptr;
     if(p.has_mm()) {
-        p.acquire();
         trans = &p;
         auto* ext = new axi::axi4_extension;
-        trans->set_extension(ext);
+        trans->set_auto_extension(ext);
     } else {
         trans = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>();
         trans->deep_copy_from(p);
