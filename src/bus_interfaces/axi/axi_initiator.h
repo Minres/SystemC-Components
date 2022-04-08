@@ -45,12 +45,18 @@ public:
     void b_transport(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay);
 
     axi_initiator_base(const sc_core::sc_module_name& nm, axi::pe::simple_initiator_b& pe, uint32_t width);
-    virtual ~axi_initiator_base(){};
+
+    virtual ~axi_initiator_base() { }
+
+    void setTxSetupCb(const std::function<void(tlm::tlm_generic_payload &p)> &setupCb) {
+        setup_cb = setupCb;
+    }
 
 private:
     axi::pe::simple_initiator_b& pe;
     uint32_t buswidth{0};
     unsigned id{0};
+    std::function<void(tlm::tlm_generic_payload& p)> setup_cb;
 };
 
 template <unsigned int BUSWIDTH = 32> class axi_initiator : public axi_initiator_base {

@@ -29,6 +29,15 @@ axi_initiator_base::axi_initiator_base(const sc_core::sc_module_name& nm, axi::p
     SC_HAS_PROCESS(axi_initiator_base);
     // Register callback for incoming b_transport interface method call
     b_tsck.register_b_transport(this, &axi_initiator_base::b_transport);
+    setup_cb = [this](tlm::tlm_generic_payload& p) {
+        auto len = p.get_data_length();
+        auto* ext = p.get_extension<axi::axi4_extension>();
+        ext->set_size(scc::ilog2(std::min<size_t>(len, buswidth / 8)));
+        sc_assert(len < (buswidth / 8) || len % (buswidth / 8) == 0);
+        ext->set_length((len * 8 - 1) / buswidth);
+        ext->set_burst(axi::burst_e::INCR);
+        ext->set_id(id);
+    };
 }
 
 void axi_initiator_base::b_transport(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
@@ -51,13 +60,7 @@ tlm::tlm_generic_payload* axi_initiator_base::create_axi_trans(tlm::tlm_generic_
         tlm::scc::tlm_gp_mm::add_data_ptr(trans->get_data_length(), trans);
         std::copy(p.get_data_ptr(), p.get_data_ptr() + p.get_data_length(), trans->get_data_ptr());
     }
-    auto* ext = trans->get_extension<axi::axi4_extension>();
     tlm::scc::setId(*trans, id++);
-    auto len = trans->get_data_length();
-    ext->set_size(scc::ilog2(std::min<size_t>(len, buswidth / 8)));
-    sc_assert(len < (buswidth / 8) || len % (buswidth / 8) == 0);
-    ext->set_length((len * 8 - 1) / buswidth);
-    ext->set_burst(axi::burst_e::INCR);
-    ext->set_id(id);
+    setup_cb(*trans);
     return trans;
 }
