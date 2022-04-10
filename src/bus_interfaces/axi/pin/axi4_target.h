@@ -21,11 +21,11 @@ using namespace axi::fsm;
 
 template<typename CFG>
 struct axi4_target: public sc_core::sc_module
-, public aw_ch<CFG, slave_types>
-, public wdata_ch<CFG, slave_types>
-, public b_ch<CFG, slave_types>
-, public ar_ch<CFG, slave_types>
-, public rresp_ch<CFG, slave_types>
+, public aw_ch<CFG, typename CFG::slave_types>
+, public wdata_ch<CFG, typename CFG::slave_types>
+, public b_ch<CFG, typename CFG::slave_types>
+, public ar_ch<CFG, typename CFG::slave_types>
+, public rresp_ch<CFG, typename CFG::slave_types>
 , protected axi::fsm::base
 , public axi::axi_bw_transport_if<axi::axi_protocol_types>
 {
@@ -207,7 +207,7 @@ inline void axi::pin::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
         break;
         case tlm::TLM_WRITE_COMMAND: {
             auto ext = fsm_hndl->trans->get_extension<axi::axi4_extension>();
-            this->b_id.write(ext->get_id());
+            if(!CFG::IS_LITE) this->b_id->write(ext->get_id());
             this->b_resp.write(axi::to_int(ext->get_resp()));
             bresp_evt.notify();
         }
@@ -227,17 +227,19 @@ inline void axi::pin::axi4_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
 template<typename CFG>
 inline void axi::pin::axi4_target<CFG>::ar_t() {
     this->ar_ready.write(false);
-    auto arid=this->ar_id.read();
-    auto arlen=this->ar_len.read();
-    auto arsize = this->ar_size.read();
+    auto arid=0U;
+    auto arlen=0U;
+    auto arsize = util::ilog2(CFG::BUSWIDTH/8);
     auto data_len = (1<<arsize)*(arlen+1);
     while(true) {
         wait(this->ar_valid.posedge_event() | clk_i.negedge_event());
         if(this->ar_valid.read()) {
             SCCTRACE(SCMOD)<<"ARVALID detected for 0x"<<std::hex<<this->ar_addr.read();
-            arid=this->ar_id.read();
-            arlen=this->ar_len.read();
-            arsize = this->ar_size.read();
+            if(!CFG::IS_LITE){
+                arid=this->ar_id->read().to_uint();
+                arlen=this->ar_len->read().to_uint();
+                arsize = this->ar_size->read().to_uint();
+            }
             data_len = (1<<arsize)*(arlen+1);
             auto gp =  tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(data_len);
             gp->set_address(this->ar_addr.read());
@@ -248,7 +250,7 @@ inline void axi::pin::axi4_target<CFG>::ar_t() {
             ext->set_id(arid);
             ext->set_length(arlen);
             ext->set_size(arsize);
-            ext->set_burst(axi::into<axi::burst_e>(this->ar_burst.read()));
+            ext->set_burst(CFG::IS_LITE?axi::burst_e::INCR:axi::into<axi::burst_e>(this->ar_burst->read()));
             active_req_beat[tlm::TLM_READ_COMMAND] = find_or_create(gp);
             react(axi::fsm::protocol_time_point_e::BegReqE, active_req_beat[tlm::TLM_READ_COMMAND]);
             wait(ar_end_req_evt);
@@ -268,45 +270,47 @@ inline void axi::pin::axi4_target<CFG>::rresp_t() {
         SCCTRACE(SCMOD)<<"got read response beat of trans "<<*fsm_hndl->trans;
         auto ext = fsm_hndl->trans->get_extension<axi::axi4_extension>();
         this->r_data.write( get_read_data_for_beat(fsm_hndl));
-        this->r_id.write(ext->get_id());
         this->r_resp.write(axi::to_int(ext->get_resp()));
         this->r_valid.write(val&0x1);
-        this->r_last.write(val&0x2);
+        if(!CFG::IS_LITE){
+            this->r_id->write(ext->get_id());
+            this->r_last->write(val&0x2);
+        }
         do{
             wait(this->r_ready.posedge_event() | clk_delayed);
             if(this->r_ready.read()) {
-                auto evt = this->r_last.read()?axi::fsm::protocol_time_point_e::EndRespE:axi::fsm::protocol_time_point_e::EndPartRespE;
+                auto evt = CFG::IS_LITE || (val&0x2)?axi::fsm::protocol_time_point_e::EndRespE:axi::fsm::protocol_time_point_e::EndPartRespE;
                 react(evt, active_resp_beat[tlm::TLM_READ_COMMAND]);
             }
         } while(!this->r_ready.read());
         SCCTRACE(SCMOD)<<"finished read response beat of trans ["<<fsm_hndl->trans<<"]";
         wait(clk_i.posedge_event());
         this->r_valid.write(false);
-        this->r_last.write(false);
+        if(!CFG::IS_LITE) this->r_last->write(false);
     }
 }
 
 template<typename CFG>
 inline void axi::pin::axi4_target<CFG>::aw_t() {
     this->aw_ready.write(false);
-    auto arid=this->aw_id.read();
-    auto arlen=this->aw_len.read();
-    auto arsize = this->aw_size.read();
-    auto data_len = (1<<arsize)*(arlen+1);
+    auto awid=0U;
+    auto awlen=0U;
+    auto awsize = util::ilog2(CFG::BUSWIDTH/8);
+    auto data_len = (1<<awsize)*(awlen+1);
     while(true) {
         wait(this->aw_valid.posedge_event() | clk_i.negedge_event());
         if(this->aw_valid.event() || (!active_req_beat[tlm::TLM_IGNORE_COMMAND] && this->aw_valid.read())) {
             SCCTRACE(SCMOD)<<"AWVALID detected for 0x"<<std::hex<<this->aw_addr.read();
             aw_data awd = {
-                    this->aw_id.read().to_uint(),
+                    CFG::IS_LITE?0U:this->aw_id->read().to_uint(),
                     this->aw_addr.read().to_uint64(),
                     this->aw_prot.read().to_uint(),
-                    this->aw_size.read().to_uint(),
-                    this->aw_cache.read().to_uint(),
-                    this->aw_burst.read().to_uint(),
-                    this->aw_qos.read().to_uint(),
-                    this->aw_region.read().to_uint(),
-                    this->aw_len.read().to_uint(),
+                    CFG::IS_LITE?awsize:this->aw_size->read().to_uint(),
+                    CFG::IS_LITE?0U:this->aw_cache->read().to_uint(),
+                    CFG::IS_LITE?0U:this->aw_burst->read().to_uint(),
+                    CFG::IS_LITE?0U:this->aw_qos->read().to_uint(),
+                    CFG::IS_LITE?0U:this->aw_region->read().to_uint(),
+                    CFG::IS_LITE?0U:this->aw_len->read().to_uint(),
                     0
             };
 //            if(CFG::USERWIDTH && this->aw_user.get_interface()) {
@@ -354,10 +358,10 @@ inline void axi::pin::axi4_target<CFG>::wdata_t() {
             auto* fsm_hndl = active_req[tlm::TLM_WRITE_COMMAND];
             SCCTRACE(SCMOD)<<"WDATA detected for 0x"<<std::hex<<this->ar_addr.read();
             auto& gp = fsm_hndl->trans;
-            auto id = this->w_id.read();
             auto data = this->w_data.read();
             auto strb = this->w_strb.read();
-            auto last = this->w_last.read();
+            auto id = CFG::IS_LITE?0U:this->w_id->read().to_uint();
+            auto last = CFG::IS_LITE?true:this->w_last->read();
             auto beat_count = fsm_hndl->beat_count;
             auto size = axi::get_burst_size(*fsm_hndl->trans);
             auto offset = fsm_hndl->trans->get_address() & (CFG::BUSWIDTH/8-1);
@@ -390,7 +394,7 @@ inline void axi::pin::axi4_target<CFG>::wdata_t() {
                     *beptr=strb[i]?0xff:0;
                 }
             }
-            auto tp = this->w_last.read()?axi::fsm::protocol_time_point_e::BegReqE:axi::fsm::protocol_time_point_e::BegPartReqE;
+            auto tp = CFG::IS_LITE || this->w_last->read()?axi::fsm::protocol_time_point_e::BegReqE:axi::fsm::protocol_time_point_e::BegPartReqE;
             react(tp, fsm_hndl);
             wait(wdata_end_req_evt);
             this->w_ready.write(true);

@@ -21,7 +21,7 @@ using namespace axi::pe;
 
 class testbench : public sc_core::sc_module {
 public:
-    using bus_cfg = axi::axi4_cfg</*BUSWIDTH=*/32, /*ADDRWIDTH=*/32, /*IDWIDTH=*/4, /*USERWIDTH=*/1>;
+    using bus_cfg = axi::axi4_lite_cfg</*BUSWIDTH=*/128, /*ADDRWIDTH=*/32>;
 
     sc_core::sc_time clk_period{10, sc_core::SC_NS};
     sc_core::sc_clock clk{"clk", clk_period, 0.5, sc_core::SC_ZERO_TIME, true};
@@ -30,11 +30,30 @@ public:
     axi::scv::axi_recorder_module<bus_cfg::BUSWIDTH> intor_rec{"intor_rec"};
     axi::pin::axi4_initiator<bus_cfg> intor_bfm{"intor_bfm"};
 
-    axi::aw_ch<bus_cfg, axi::signal_types> aw;
-    axi::wdata_ch<bus_cfg, axi::signal_types> wdata;
-    axi::b_ch<bus_cfg, axi::signal_types> b;
-    axi::ar_ch<bus_cfg, axi::signal_types> ar;
-    axi::rresp_ch<bus_cfg, axi::signal_types> rresp;
+    sc_signal<sc_dt::sc_uint<bus_cfg::ADDRWIDTH>>  aw_addr{"aw_addr"};
+    sc_signal<bool>                                aw_ready{"aw_ready"};
+    sc_signal<bool>                                aw_valid{"aw_valid"};
+    sc_signal<sc_dt::sc_uint<3>>                   aw_prot{"aw_prot"};
+
+    sc_signal<typename bus_cfg::data_t>            w_data{"w_data"};
+    sc_signal<sc_dt::sc_uint<bus_cfg::BUSWIDTH/8>> w_strb{"w_strb"};
+    sc_signal<bool>                                w_valid{"w_valid"};
+    sc_signal<bool>                                w_ready{"w_ready"};
+
+    sc_signal<bool>                                b_valid{"b_valid"};
+    sc_signal<bool>                                b_ready{"b_ready"};
+    sc_signal<sc_dt::sc_uint<2>>                   b_resp{"b_resp"};
+
+    sc_signal<sc_dt::sc_uint<bus_cfg::ADDRWIDTH>>  ar_addr{"ar_addr"};
+    sc_signal<sc_dt::sc_uint<3>>                   ar_prot{"ar_prot"};
+    sc_signal<bool>                                ar_valid{"ar_valid"};
+    sc_signal<bool>                                ar_ready{"ar_ready"};
+
+    sc_signal<typename bus_cfg::data_t>            r_data{"r_data"};
+    sc_signal<sc_dt::sc_uint<2>>                   r_resp{"r_resp"};
+    sc_signal<bool>                                r_valid{"r_valid"};
+    sc_signal<bool>                                r_ready{"r_ready"};
+
     axi::pin::axi4_target<bus_cfg> tgt_bfm{"tgt_bfm"};
 
     axi::scv::axi_recorder_module<bus_cfg::BUSWIDTH> tgt_rec{"tgt_rec"};
@@ -70,17 +89,53 @@ public:
         // recorder to bfm
         intor_rec.isckt(intor_bfm.tsckt);
         // bfm to signals
-        intor_bfm.bind_aw(aw);
-        intor_bfm.bind_w(wdata);
-        intor_bfm.bind_b(b);
-        intor_bfm.bind_ar(ar);
-        intor_bfm.bind_r(rresp);
+        intor_bfm.aw_valid(aw_valid);
+        intor_bfm.aw_ready(aw_ready);
+        intor_bfm.aw_addr(aw_addr);
+        intor_bfm.aw_prot(aw_prot);
+
+        intor_bfm.w_valid(w_valid);
+        intor_bfm.w_ready(w_ready);
+        intor_bfm.w_data(w_data);
+        intor_bfm.w_strb(w_strb);
+
+        intor_bfm.b_valid(b_valid);
+        intor_bfm.b_ready(b_ready);
+        intor_bfm.b_resp(b_resp);
+
+        intor_bfm.ar_valid(ar_valid);
+        intor_bfm.ar_ready(ar_ready);
+        intor_bfm.ar_addr(ar_addr);
+        intor_bfm.ar_prot(ar_prot);
+
+        intor_bfm.r_valid(r_valid);
+        intor_bfm.r_ready(r_ready);
+        intor_bfm.r_data(r_data);
+        intor_bfm.r_resp(r_resp);
         // signals to bfm
-        tgt_bfm.bind_aw(aw);
-        tgt_bfm.bind_w(wdata);
-        tgt_bfm.bind_b(b);
-        tgt_bfm.bind_ar(ar);
-        tgt_bfm.bind_r(rresp);
+        tgt_bfm.aw_valid(aw_valid);
+        tgt_bfm.aw_ready(aw_ready);
+        tgt_bfm.aw_addr(aw_addr);
+        tgt_bfm.aw_prot(aw_prot);
+
+        tgt_bfm.w_valid(w_valid);
+        tgt_bfm.w_ready(w_ready);
+        tgt_bfm.w_data(w_data);
+        tgt_bfm.w_strb(w_strb);
+
+        tgt_bfm.b_valid(b_valid);
+        tgt_bfm.b_ready(b_ready);
+        tgt_bfm.b_resp(b_resp);
+
+        tgt_bfm.ar_valid(ar_valid);
+        tgt_bfm.ar_ready(ar_ready);
+        tgt_bfm.ar_addr(ar_addr);
+        tgt_bfm.ar_prot(ar_prot);
+
+        tgt_bfm.r_valid(r_valid);
+        tgt_bfm.r_ready(r_ready);
+        tgt_bfm.r_data(r_data);
+        tgt_bfm.r_resp(r_resp);
         // bfm to recorder
         tgt_bfm.isckt(tgt_rec.tsckt);
         // recorder to target
@@ -207,12 +262,12 @@ int sc_main(int argc, char* argv[]) {
     auto cfg_file = argc==2?argv[1]:"";
     scc::configurer cfg(cfg_file);
 #ifdef HAS_CCI
-    scc::configurable_tracer trace("axi4_tlm_pin_tlm",
+    scc::configurable_tracer trace("axi4lite_tlm_pin_tlm",
                                    scc::tracer::file_type::NONE, // define the kind of transaction trace
                                    true,                         // enables vcd
                                    true);
 #else
-    scc::tracer trace("axi4_tlm_pin_tlm",
+    scc::tracer trace("axi4lite_tlm_pin_tlm",
                                    scc::tracer::file_type::NONE, // define the kind of transaction trace
                                    true);                        // enables vcd
 #endif

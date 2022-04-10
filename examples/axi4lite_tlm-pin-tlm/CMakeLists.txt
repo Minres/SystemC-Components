@@ -1,4 +1,4 @@
-project (axi4_tlm_pin_tlm_example)
+project (axi4lite_tlm_pin_tlm_example)
 
 add_executable(${PROJECT_NAME} sc_main.cpp)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

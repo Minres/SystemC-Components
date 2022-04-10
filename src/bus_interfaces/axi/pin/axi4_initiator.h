@@ -20,19 +20,12 @@ namespace pin {
 using namespace axi::fsm;
 
 template<typename CFG>
-void write_ar(tlm::tlm_generic_payload& trans, ar_ch<CFG, master_types>& ar);
-template<typename CFG>
-void write_aw(tlm::tlm_generic_payload& trans, aw_ch<CFG, master_types>& aw);
-template<typename CFG>
-void write_wdata(tlm::tlm_generic_payload& trans, wdata_ch<CFG, master_types>& wdata, unsigned beat, bool last=false);
-
-template<typename CFG>
 struct axi4_initiator: public sc_core::sc_module
-, public aw_ch<CFG, master_types>
-, public wdata_ch<CFG, master_types>
-, public b_ch<CFG, master_types>
-, public ar_ch<CFG, master_types>
-, public rresp_ch<CFG, master_types>
+, public aw_ch<CFG, typename CFG::master_types>
+, public wdata_ch<CFG, typename CFG::master_types>
+, public b_ch<CFG, typename CFG::master_types>
+, public ar_ch<CFG, typename CFG::master_types>
+, public rresp_ch<CFG, typename CFG::master_types>
 , protected axi::fsm::base
 , public axi::axi_fw_transport_if<axi::axi_protocol_types>
 {
@@ -100,48 +93,55 @@ private:
     tlm_utils::peq_with_cb_and_phase<axi4_initiator> fw_peq{this, &axi4_initiator::nb_fw};
     std::unordered_map<unsigned, std::deque<fsm_handle*>> rd_resp_by_id, wr_resp_by_id;
     sc_core::sc_buffer<uint8_t> wdata_vl;
+    void write_ar(tlm::tlm_generic_payload& trans);
+    void write_aw(tlm::tlm_generic_payload& trans);
+    void write_wdata(tlm::tlm_generic_payload& trans, unsigned beat, bool last=false);
 };
 
 }
 }
 
 template<typename CFG>
-inline void axi::pin::write_ar(tlm::tlm_generic_payload &trans, ar_ch<CFG, master_types> &ar) {
+inline void axi::pin::axi4_initiator<CFG>::write_ar(tlm::tlm_generic_payload &trans) {
     sc_dt::sc_uint<CFG::ADDRWIDTH> addr = trans.get_address();
-    ar.ar_addr.write(addr);
+    this->ar_addr.write(addr);
     if(auto ext = trans.get_extension<axi::axi4_extension>()){
-        ar.ar_id.write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
-        ar.ar_len.write(sc_dt::sc_uint<8>(ext->get_length()));
-        ar.ar_size.write(sc_dt::sc_uint<3>(ext->get_size()));
-        ar.ar_burst.write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
-        ar.ar_cache.write(sc_dt::sc_uint<4>(ext->get_cache()));
-        ar.ar_prot.write(ext->get_prot());
-        ar.ar_qos.write(ext->get_qos());
-        if(ar.ar_user.get_interface())
-            ar.ar_user->write(ext->get_user(axi::common::id_type::CTRL));
+        this->ar_prot.write(ext->get_prot());
+        if(!CFG::IS_LITE){
+            this->ar_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
+            this->ar_len->write(sc_dt::sc_uint<8>(ext->get_length()));
+            this->ar_size->write(sc_dt::sc_uint<3>(ext->get_size()));
+            this->ar_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
+            this->ar_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
+            this->ar_qos->write(ext->get_qos());
+            if(this->ar_user.get_interface())
+                this->ar_user->write(ext->get_user(axi::common::id_type::CTRL));
+        }
     }
 }
 
 template<typename CFG>
-inline void axi::pin::write_aw(tlm::tlm_generic_payload &trans, aw_ch<CFG, master_types> &aw) {
+inline void axi::pin::axi4_initiator<CFG>::write_aw(tlm::tlm_generic_payload &trans) {
     sc_dt::sc_uint<CFG::ADDRWIDTH> addr = trans.get_address();
-    aw.aw_addr.write(addr);
+    this->aw_addr.write(addr);
     if(auto ext = trans.get_extension<axi::axi4_extension>()){
-        aw.aw_id.write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
-        aw.aw_len.write(sc_dt::sc_uint<8>(ext->get_length()));
-        aw.aw_size.write(sc_dt::sc_uint<3>(ext->get_size()));
-        aw.aw_burst.write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
-        aw.aw_cache.write(sc_dt::sc_uint<4>(ext->get_cache()));
-        aw.aw_prot.write(ext->get_prot());
-        aw.aw_qos.write(ext->get_qos());
-        if(aw.aw_user.get_interface())
-            aw.aw_user->write(ext->get_user(axi::common::id_type::CTRL));
+        this->aw_prot.write(ext->get_prot());
+        if(!CFG::IS_LITE){
+            this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
+            this->aw_len->write(sc_dt::sc_uint<8>(ext->get_length()));
+            this->aw_size->write(sc_dt::sc_uint<3>(ext->get_size()));
+            this->aw_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
+            this->aw_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
+            this->aw_qos->write(ext->get_qos());
+            if(this->aw_user.get_interface())
+                this->aw_user->write(ext->get_user(axi::common::id_type::CTRL));
+        }
     }
 }
 
 // FIXME: strb not yet correct
 template<typename CFG>
-inline void axi::pin::write_wdata(tlm::tlm_generic_payload &trans, wdata_ch<CFG, master_types> &wdata, unsigned beat, bool last) {
+inline void axi::pin::axi4_initiator<CFG>::write_wdata(tlm::tlm_generic_payload &trans, unsigned beat, bool last) {
     typename CFG::data_t data{0};
     sc_dt::sc_uint<CFG::BUSWIDTH / 8> strb{0};
     auto ext = trans.get_extension<axi::axi4_extension>();
@@ -183,11 +183,13 @@ inline void axi::pin::write_wdata(tlm::tlm_generic_payload &trans, wdata_ch<CFG,
             } else strb[i]=true;
         }
     }
-    wdata.w_data.write(data);
-    wdata.w_strb.write(strb);
-    wdata.w_id.write(ext->get_id());
-    if(wdata.w_user.get_interface())
-        wdata.w_user->write(ext->get_user(axi::common::id_type::DATA));
+    this->w_data.write(data);
+    this->w_strb.write(strb);
+    if(!CFG::IS_LITE){
+        this->w_id->write(ext->get_id());
+        if(this->w_user.get_interface())
+            this->w_user->write(ext->get_user(axi::common::id_type::DATA));
+    }
 }
 
 template<typename CFG>
@@ -195,14 +197,20 @@ inline void axi::pin::axi4_initiator<CFG>::setup_callbacks(fsm_handle* fsm_hndl)
     fsm_hndl->fsm->cb[RequestPhaseBeg] = [this, fsm_hndl]() -> void {
         fsm_hndl->beat_count = 0;
         outstanding_cnt[fsm_hndl->trans->get_command()]++;
+        if(CFG::IS_LITE) {
+            auto offset = fsm_hndl->trans->get_address()%(CFG::BUSWIDTH/8);
+            if(offset + fsm_hndl->trans->get_data_length()>CFG::BUSWIDTH/8) {
+                SCCFATAL(SCMOD)<<" transaction "<<*fsm_hndl->trans<<" is not AXI4Lite compliant";
+            }
+        }
     };
     fsm_hndl->fsm->cb[BegPartReqE] = [this, fsm_hndl]() -> void {
         sc_assert(fsm_hndl->trans->is_write());
         if(fsm_hndl->beat_count == 0){
-            write_aw(*fsm_hndl->trans, *this);
+            write_aw(*fsm_hndl->trans);
             aw_evt.notify(sc_core::SC_ZERO_TIME);
         }
-        write_wdata(*fsm_hndl->trans, *this, fsm_hndl->beat_count);
+        write_wdata(*fsm_hndl->trans, fsm_hndl->beat_count);
         active_req[tlm::TLM_WRITE_COMMAND]=fsm_hndl;
         wdata_vl.write(0x1);
     };
@@ -217,16 +225,16 @@ inline void axi::pin::axi4_initiator<CFG>::setup_callbacks(fsm_handle* fsm_hndl)
         switch(fsm_hndl->trans->get_command()){
         case tlm::TLM_READ_COMMAND:
             active_req[tlm::TLM_READ_COMMAND]=fsm_hndl;
-            write_ar(*fsm_hndl->trans, *this);
+            write_ar(*fsm_hndl->trans);
             ar_evt.notify(sc_core::SC_ZERO_TIME);
         break;
         case tlm::TLM_WRITE_COMMAND:
             active_req[tlm::TLM_WRITE_COMMAND]=fsm_hndl;
             if(fsm_hndl->beat_count == 0){
-                write_aw(*fsm_hndl->trans, *this);
+                write_aw(*fsm_hndl->trans);
                 aw_evt.notify(sc_core::SC_ZERO_TIME);
             }
-            write_wdata(*fsm_hndl->trans, *this, fsm_hndl->beat_count, true);
+            write_wdata(*fsm_hndl->trans, fsm_hndl->beat_count, true);
             wdata_vl.write(0x3);
         }
     };
@@ -299,7 +307,7 @@ inline void axi::pin::axi4_initiator<CFG>::r_t() {
     while(true) {
         wait(this->r_valid.posedge_event() | clk_i.negedge_event());
         if(this->r_valid.event() || (!active_resp[tlm::TLM_READ_COMMAND] && this->r_valid.read())) {
-            auto id = this->r_id.read();
+            auto id = CFG::IS_LITE?0U:this->r_id->read().to_uint();
             auto data = this->r_data.read();
             auto resp = this->r_resp.read();
             auto& q = rd_resp_by_id[id];
@@ -335,7 +343,7 @@ inline void axi::pin::axi4_initiator<CFG>::r_t() {
             fsm_hndl->trans->get_extension(e);
             e->set_resp(axi::into<axi::resp_e>(resp));
             e->add_to_response_array(*e);
-            auto tp = this->r_last.read()?axi::fsm::protocol_time_point_e::BegRespE:axi::fsm::protocol_time_point_e::BegPartRespE;
+            auto tp = CFG::IS_LITE||this->r_last->read()?axi::fsm::protocol_time_point_e::BegRespE:axi::fsm::protocol_time_point_e::BegPartRespE;
             react(tp, fsm_hndl);
             wait(r_end_req_evt);
             this->r_ready.write(true);
@@ -362,15 +370,15 @@ template<typename CFG>
 inline void axi::pin::axi4_initiator<CFG>::wdata_t() {
     while(true){
         this->w_valid.write(false);
-        this->w_last.write(false);
+        if(!CFG::IS_LITE) this->w_last->write(false);
         wait(wdata_vl.default_event());
         auto val = wdata_vl.read();
         this->w_valid.write(val&0x1);
-        this->w_last.write(val&0x2);
+        if(!CFG::IS_LITE) this->w_last->write(val&0x2);
         do{
         wait(this->w_ready.posedge_event() | clk_delayed);
             if(this->w_ready.read()) {
-                auto evt = this->w_last.read()?axi::fsm::protocol_time_point_e::EndReqE:axi::fsm::protocol_time_point_e::EndPartReqE;
+                auto evt = CFG::IS_LITE||(val&0x2)?axi::fsm::protocol_time_point_e::EndReqE:axi::fsm::protocol_time_point_e::EndPartReqE;
                 react(evt, active_req[tlm::TLM_WRITE_COMMAND]);
             }
         } while(!this->w_ready.read());
@@ -385,7 +393,7 @@ inline void axi::pin::axi4_initiator<CFG>::b_t() {
     while(true) {
         wait(this->b_valid.posedge_event() | clk_i.negedge_event());
         if(this->b_valid.event() || (!active_resp[tlm::TLM_WRITE_COMMAND] && this->b_valid.read())) {
-            auto id = this->b_id.read();
+            auto id = !CFG::IS_LITE?this->b_id->read().to_uint():0U;
             auto resp = this->b_resp.read();
             auto& q = wr_resp_by_id[id];
             sc_assert(q.size());
