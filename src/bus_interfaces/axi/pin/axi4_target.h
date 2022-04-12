@@ -13,6 +13,7 @@
 #include <axi/fsm/protocol_fsm.h>
 #include <axi/signal_if.h>
 #include <tlm/scc/tlm_mm.h>
+#include <util/ities.h>
 #include <systemc>
 namespace axi {
 namespace pin {
@@ -339,7 +340,8 @@ inline void axi::pin::axi4_target<CFG>::wdata_t() {
                 auto gp =  tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(data_len, true);
                 gp->set_address(awd.addr);
                 gp->set_command(tlm::TLM_WRITE_COMMAND);
-                gp->set_streaming_width(data_len);
+                gp->set_streaming_width(0);
+                gp->set_data_length(0);
                 axi::axi4_extension* ext;
                 gp->get_extension(ext);
                 ext->set_id(awd.id);
@@ -394,6 +396,10 @@ inline void axi::pin::axi4_target<CFG>::wdata_t() {
                     *beptr=strb[i]?0xff:0;
                 }
             }
+            //TODO: assuming consecutive write (not scattered)
+            auto act_data_len = gp->get_data_length() + util::bit_count(strb.to_uint());
+            gp->set_data_length(act_data_len);
+            gp->set_streaming_width(act_data_len);
             auto tp = CFG::IS_LITE || this->w_last->read()?axi::fsm::protocol_time_point_e::BegReqE:axi::fsm::protocol_time_point_e::BegPartReqE;
             react(tp, fsm_hndl);
             wait(wdata_end_req_evt);
