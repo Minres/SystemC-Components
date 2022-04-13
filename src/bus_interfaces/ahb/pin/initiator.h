@@ -14,7 +14,7 @@
 #include <type_traits>
 
 namespace ahb {
-namespace bfm {
+namespace pin {
 
 template <unsigned WIDTH> class initiator : sc_core::sc_module {
     static constexpr bool is_larger(unsigned x) { return x > 64U; }

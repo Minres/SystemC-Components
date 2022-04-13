@@ -7,12 +7,12 @@
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #include <ahb/ahb_tlm.h>
-#include <ahb/bfm/target.h>
+#include <ahb/pin/target.h>
 #include <scc/report.h>
 #include <scc/utilities.h>
 #include <tlm/scc/tlm_mm.h>
 
-using namespace ahb::bfm;
+using namespace ahb::pin;
 using namespace sc_core;
 
 template <unsigned WIDTH>
@@ -111,9 +111,9 @@ template <unsigned WIDTH> void target<WIDTH>::handle_data_phase(unsigned& beat_c
         data_payload = nullptr;
     }
 }
-template class ahb::bfm::target<32>;
-template class ahb::bfm::target<64>;
-template class ahb::bfm::target<128>;
-template class ahb::bfm::target<256>;
-template class ahb::bfm::target<512>;
-template class ahb::bfm::target<1024>;
+template class ahb::pin::target<32>;
+template class ahb::pin::target<64>;
+template class ahb::pin::target<128>;
+template class ahb::pin::target<256>;
+template class ahb::pin::target<512>;
+template class ahb::pin::target<1024>;

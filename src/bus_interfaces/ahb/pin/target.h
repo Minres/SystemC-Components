@@ -14,7 +14,7 @@
 //! TLM2.0 components modeling AHB
 namespace ahb {
 //! pin level adapters
-namespace bfm {
+namespace pin {
 
 template <unsigned WIDTH> class target : sc_core::sc_module {
     static constexpr bool is_larger(unsigned x) { return x > 64U; }

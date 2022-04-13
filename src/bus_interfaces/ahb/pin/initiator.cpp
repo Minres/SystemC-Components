@@ -6,11 +6,11 @@
  */
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
+#include "initiator.h"
 #include <ahb/ahb_tlm.h>
-#include <ahb/bfm/initiator.h>
 #include <scc/utilities.h>
 
-using namespace ahb::bfm;
+using namespace ahb::pin;
 using namespace sc_core;
 
 template <unsigned WIDTH>
@@ -97,9 +97,9 @@ template <unsigned WIDTH> inline void initiator<WIDTH>::bus_task() {
     }
 }
 
-template class ahb::bfm::initiator<32>;
-template class ahb::bfm::initiator<64>;
-template class ahb::bfm::initiator<128>;
-template class ahb::bfm::initiator<256>;
-template class ahb::bfm::initiator<512>;
-template class ahb::bfm::initiator<1024>;
+template class ahb::pin::initiator<32>;
+template class ahb::pin::initiator<64>;
+template class ahb::pin::initiator<128>;
+template class ahb::pin::initiator<256>;
+template class ahb::pin::initiator<512>;
+template class ahb::pin::initiator<1024>;

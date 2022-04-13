@@ -5,7 +5,7 @@
  *      Author: eyckj
  */
 
-#include <ahb/pe/ahb_initiator.h>
+#include "ahb_initiator.h"
 #include <atp/timing_params.h>
 #include <scc/report.h>
 

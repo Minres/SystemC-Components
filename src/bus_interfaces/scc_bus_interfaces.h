@@ -16,9 +16,9 @@
 
 #pragma once
 
+#include <ahb/pin/initiator.h>
+#include <ahb/pin/target.h>
 #include "ahb/ahb_tlm.h"
-#include "ahb/bfm/initiator.h"
-#include "ahb/bfm/target.h"
 #include "ahb/pe/ahb_initiator.h"
 #include "ahb/pe/ahb_target.h"
 

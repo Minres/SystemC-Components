@@ -1,13 +1,13 @@
 project(busses VERSION 0.0.1 LANGUAGES CXX)
 
 set(LIB_SOURCES
-    ahb/tlm_ahb_bfm_initiator.cpp
-    ahb/tlm_ahb_bfm_target.cpp
-    ahb/ahb_initiator.cpp
-    apb/apb_initiator.cpp
+    ahb/pin/initiator.cpp
+    ahb/pin/target.cpp
+    ahb/pe/ahb_initiator.cpp
+    ahb/pe/ahb_target.cpp
+    apb/pe/apb_initiator.cpp
+    apb/pe/apb_target.cpp
     axi/axi_initiator.cpp
- 	ahb/ahb_target.cpp
-    apb/apb_target.cpp
     axi/axi_target.cpp
 )
 

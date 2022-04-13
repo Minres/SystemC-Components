@@ -5,7 +5,7 @@
  *      Author: eyckj
  */
 
-#include <apb/pe/apb_initiator.h>
+#include "apb_initiator.h"
 #include <scc/report.h>
 
 using namespace sc_core;

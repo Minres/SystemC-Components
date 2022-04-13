@@ -35,7 +35,7 @@
 
 namespace obi {
 
-namespace bfm {
+namespace pin {
 template <unsigned int DATA_WIDTH = 32, unsigned int ADDR_WIDTH = 32, unsigned int ID_WIDTH = 0,
         unsigned int USER_WIDTH = 0>
 class target : public sc_core::sc_module {
