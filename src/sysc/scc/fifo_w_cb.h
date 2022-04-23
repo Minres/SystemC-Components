@@ -81,11 +81,11 @@ protected:
         data_written_evt.notify(sc_core::SC_ZERO_TIME);
     }
 
-    std::deque<T> in_queue;
-    std::deque<T> out_queue;
-    std::function<void(void)> avail_cb;
-    std::function<void(void)> empty_cb;
-    sc_core::sc_event data_written_evt;
+    std::deque<T> in_queue{};
+    std::deque<T> out_queue{};
+    std::function<void(void)> avail_cb{};
+    std::function<void(void)> empty_cb{};
+    sc_core::sc_event data_written_evt{};
 };
 
 } /* namespace scc */

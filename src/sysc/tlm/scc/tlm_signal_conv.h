@@ -34,14 +34,12 @@ struct tlm_signal2sc_signal : public sc_core::sc_module,
 
     SC_HAS_PROCESS(tlm_signal2sc_signal); // NOLINT
 
-    tlm_signal_target_socket<TYPE> t_i;
+    tlm_signal_target_socket<TYPE> t_i{"t_i"};
 
-    sc_core::sc_out<TYPE> s_o;
+    sc_core::sc_out<TYPE> s_o{"s_o"};
 
     tlm_signal2sc_signal(sc_core::sc_module_name nm)
-    : sc_core::sc_module(nm)
-    , NAMED(t_i)
-    , NAMED(s_o) {
+    : sc_core::sc_module(nm) {
         t_i.bind(*this);
         SC_METHOD(que_cb);
         sensitive << que.event();
@@ -70,14 +68,12 @@ struct sc_signal2tlm_signal : public sc_core::sc_module,
 
     SC_HAS_PROCESS(sc_signal2tlm_signal); // NOLINT
 
-    sc_core::sc_in<TYPE> s_i;
+    sc_core::sc_in<TYPE> s_i{"s_i"};
 
-    tlm_signal_initiator_socket<TYPE> t_o;
+    tlm_signal_initiator_socket<TYPE> t_o{"t_o"};
 
     sc_signal2tlm_signal(sc_core::sc_module_name nm)
-    : sc_core::sc_module(nm)
-    , NAMED(s_i)
-    , NAMED(t_o) {
+    : sc_core::sc_module(nm) {
         t_o.bind(*this);
         SC_METHOD(sig_cb);
         sensitive << s_i;

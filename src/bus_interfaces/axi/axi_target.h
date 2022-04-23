@@ -1,3 +1,19 @@
+/*******************************************************************************
+ * Copyright 2021 MINRES Technologies GmbH
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
+
 #pragma once
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
@@ -19,7 +35,7 @@ namespace axi {
 class axi_target_base : public sc_core::sc_module {
 public:
     sc_core::sc_in<bool> clk_i{"clk_i"};
-    tlm_utils::simple_initiator_socket<axi_target_base> output_socket{"output_socket"};
+    tlm_utils::simple_initiator_socket<axi_target_base> isck{"isck"};
 
     axi_target_base(const sc_core::sc_module_name& nm, axi::pe::axi_target_pe_b& pe);
     virtual ~axi_target_base(){};
@@ -36,7 +52,7 @@ private:
 
 template <unsigned int BUSWIDTH = 32> class axi_target : public axi_target_base {
 public:
-    axi::axi_target_socket<BUSWIDTH> input_socket;
+    axi::axi_target_socket<BUSWIDTH> tsck{"tsck"};
 
     axi_target(sc_core::sc_module_name nm)
     : axi_target_base(nm, pe) {
@@ -47,7 +63,7 @@ public:
     virtual ~axi_target(){};
 
 private:
-    axi::pe::simple_target<BUSWIDTH> pe{"pe", input_socket};
+    axi::pe::simple_target<BUSWIDTH> pe{"pe", tsck};
 };
 
 } // namespace axi

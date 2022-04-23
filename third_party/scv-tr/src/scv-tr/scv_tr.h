@@ -210,8 +210,6 @@ public:
 
     void print(std::ostream& o, int details = 0, int indent = 0) const;
     void show(int details = 0, int indent = 0) const;
-    static void set_debug(int debug);
-    static int get_debug();
 
     const char* get_name() const;
     const char* kind() const { return _kind; }
@@ -276,8 +274,6 @@ public:
 
     void print(std::ostream& o, int details = 0, int indent = 0) const;
     void show(int details = 0, int indent = 0) const;
-    static void set_debug(int debug);
-    static int get_debug();
 
     const char* get_name() const;
     const char* kind() const { return _kind; }
@@ -439,8 +435,6 @@ public:
 
     void print(std::ostream& o, int details = 0, int indent = 0) const;
     void show(int details = 0, int indent = 0) const;
-    static void set_debug(int debug);
-    static int get_debug();
 
     const char* get_name() const;
     const char* kind() const { return _kind; }
@@ -531,8 +525,6 @@ public:
 
     void print(std::ostream& o, int details = 0, int indent = 0) const;
     void show(int details = 0, int indent = 0) const;
-    static void set_debug(int debug);
-    static int get_debug();
 
     const char* get_name() const;
     const char* kind() const { return "scv_tr_generator"; }
@@ -834,10 +826,10 @@ public:
 
 private:
     friend class scv_tr_handle;
-    T_begin _tmp_begin_attributes;
-    T_end _tmp_end_attributes;
-    scv_extensions<T_begin> _begin_ext;
-    scv_extensions<T_end> _end_ext;
+    T_begin _tmp_begin_attributes{};
+    T_end _tmp_end_attributes{};
+    scv_extensions<T_begin> _begin_ext{};
+    scv_extensions<T_end> _end_ext{};
 };
 
 // ----------------------------------------------------------------------------

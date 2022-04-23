@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _SYSC_INITIATOR_MIXIN_H__
-#define _SYSC_INITIATOR_MIXIN_H__
+#ifndef _TLM_SCC_INITIATOR_MIXIN_H__
+#define _TLM_SCC_INITIATOR_MIXIN_H__
 
 #include "scc/utilities.h"
 #include <functional>
@@ -131,4 +131,4 @@ private:
 } // namespace scc
 } // namespace tlm
 
-#endif //_SYSC_INITIATOR_MIXIN_H__
+#endif //_TLM_SCC_INITIATOR_MIXIN_H__

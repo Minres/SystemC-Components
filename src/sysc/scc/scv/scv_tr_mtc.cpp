@@ -26,6 +26,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#include <fstream>
 // clang-format off
 #ifdef HAS_SCV
 #include <scv.h>
@@ -46,11 +47,17 @@ namespace {
 class Base {
 protected:
     boost::filesystem::path dir;
+    std::ofstream out;
+    bool const is_open;
+    std::array<char, 1024> buffer;
     Base(const std::string& name)
-    : dir(name.c_str()) {
-        if(boost::filesystem::exists(dir))
-            boost::filesystem::remove_all(dir);
-        boost::filesystem::create_directory(dir);
+    : dir(name.c_str()), out(name), is_open(out.is_open()){
+//        if(boost::filesystem::exists(dir))
+//            boost::filesystem::remove_all(dir);
+//        boost::filesystem::create_directory(dir);
+    }
+    ~Base() {
+        if(is_open) out.close();
     }
 };
 
@@ -63,12 +70,18 @@ struct Database : Base {
         return idx;
     }
 
-    inline void writeStream(uint64_t id, std::string name, std::string kind) {
-//        c.writeStream(id, name, kind);
+    inline void writeStream(uint64_t id, std::string const& name, std::string const& kind) {
+        if(is_open) {
+            auto len = sprintf(buffer.data(), "scv_tr_stream (ID %lu, name \"%s\", kind \"%s\")\n", id, name.c_str(), kind.c_str());
+            out.write(buffer.data(), len);
+        }
     }
 
-    inline void writeGenerator(uint64_t id, std::string name, uint64_t stream) {
-//        c.writeGenerator(id, name, stream);
+    inline void writeGenerator(uint64_t id, std::string const& name, uint64_t stream) {
+        if(is_open) {
+            auto len = sprintf(buffer.data(), "scv_tr_generator (ID %lu, name \"%s\", scv_tr_stream %lu,\n", id, name.c_str(), stream);
+            out.write(buffer.data(), len);
+        }
     }
 
     inline uint64_t writeTransaction(uint64_t id, uint64_t generator) {
@@ -135,7 +148,7 @@ void streamCb(const scv_tr_stream& s, scv_tr_stream::callback_reason reason, voi
     }
 }
 // ----------------------------------------------------------------------------
-void recordAttribute(uint64_t id, EventType event, const string& name, data_type type, const string& value) {
+inline void recordAttribute(uint64_t id, EventType event, const string& name, data_type type, const string& value) {
     try {
         db->writeAttribute(id, event, name, type, value);
     } catch(std::runtime_error& e) {
@@ -143,7 +156,7 @@ void recordAttribute(uint64_t id, EventType event, const string& name, data_type
     }
 }
 // ----------------------------------------------------------------------------
-void recordAttribute(uint64_t id, EventType event, const string& name, data_type type, long long value) {
+inline void recordAttribute(uint64_t id, EventType event, const string& name, data_type type, long long value) {
     try {
         db->writeAttribute(id, event, name, type, static_cast<uint64_t>(value));
     } catch(std::runtime_error& e) {
@@ -164,7 +177,7 @@ inline  std::string get_name(const char* prefix, const scv_extensions_if* my_ext
     auto it = name_lut.find(my_exts_p);
     if(it!=name_lut.end()) return it->second;
     string name;
-    if (prefix == "") {
+    if (!prefix || strlen(prefix)==0) {
         name = my_exts_p->get_name();
     } else {
         if ((my_exts_p->get_name() == nullptr) || (strlen(my_exts_p->get_name()) == 0)) {
@@ -258,7 +271,6 @@ void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason reason
         return;
 
     uint64_t id = t.get_id();
-    uint64_t streamId = t.get_scv_tr_stream().get_id();
     vector<uint64_t>::size_type concurrencyIdx;
     const scv_extensions_if* my_exts_p;
     switch(reason) {

@@ -65,7 +65,7 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
     if(obj == this)
         return;
     const char* kind = obj->kind();
-    if((types_to_trace & trace_types::SIGNALS) == trace_types::SIGNALS && strcmp(kind, "tlm_signal") == 0) {
+    if((types_to_trace & trace_types::SIGNALS) == trace_types::SIGNALS && strcmp(kind, "tlm_signal") == 0){
         if(trace)
             obj->trace(trf);
         return;
@@ -88,6 +88,10 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
             obj->trace(trf);
         for(auto o : obj->get_child_objects())
             descend(o, tr->is_trace_enabled());
+    } else if((types_to_trace & trace_types::PORTS) == trace_types::PORTS && strcmp(kind, "sc_port") == 0) {
+        if(trace) try_trace(trf, obj, types_to_trace);
+    } else if((types_to_trace & trace_types::SIGNALS) == trace_types::SIGNALS && strcmp(kind, "sc_signal") == 0) {
+        if(trace) try_trace(trf, obj, types_to_trace);
     } else if(trace)
         try_trace(trf, obj, types_to_trace);
 }

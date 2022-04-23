@@ -67,10 +67,10 @@ public:
 private:
     pool_allocator() = default;
     using chunk_type = uint8_t[sizeof(T)];
-    std::vector<std::array<chunk_type, CHUNK_SIZE>*> chunks;
-    std::deque<void*> free_list;
-    std::mutex payload_mtx;
-    std::unordered_map<void*, uint64_t> used_blocks;
+    std::vector<std::array<chunk_type, CHUNK_SIZE>*> chunks{};
+    std::deque<void*> free_list{};
+    std::mutex payload_mtx{};
+    std::unordered_map<void*, uint64_t> used_blocks{};
 #ifdef HAVE_GETENV
     const bool debug_memory{getenv("TLM_MM_CHECK")!=nullptr};
 #else
@@ -79,7 +79,7 @@ private:
 };
 
 template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>& pool_allocator<T, CHUNK_SIZE>::get() {
-    static thread_local pool_allocator inst;
+    thread_local pool_allocator inst;
     return inst;
 }
 

@@ -51,17 +51,12 @@ public:
     using phase_type = tlm::tlm_phase;
 
     sc_core::sc_in<bool> clk_i{"clk_i"};
-    /** @defgroup bw_if Initiator backward interface
-     *  @{
-     */
-    tlm::tlm_sync_enum nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t);
 
-    void invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range);
+    tlm::tlm_sync_enum nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t) override;
 
-    /** @} */ // end of bw_if
+    void invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) override;
 
     size_t get_transferwith_in_bytes() const { return transfer_width_in_bytes; }
-    /** @} */ // end of config
     /**
      * @brief The forward transport function. It behaves blocking and is re-entrant.
      *

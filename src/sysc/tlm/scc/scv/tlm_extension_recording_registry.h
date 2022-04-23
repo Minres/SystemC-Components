@@ -101,7 +101,7 @@ private:
         for(auto& ext : ext_rec)
             delete(ext);
     }
-    std::vector<tlm_extensions_recording_if<TYPES>*> ext_rec;
+    std::vector<tlm_extensions_recording_if<TYPES>*> ext_rec{};
 };
 
 } // namespace scv

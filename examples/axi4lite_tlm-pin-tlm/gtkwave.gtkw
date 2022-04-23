@@ -1,0 +1,61 @@
+[*]
+[*] GTKWave Analyzer v3.3.61 (w)1999-2014 BSI
+[*] Sun Apr 10 12:30:26 2022
+[*]
+[dumpfile] "/scratch/eyck/workarea/RISC-V/TGC-VERIF/axi4lite_tlm_pin_tlm.vcd"
+[dumpfile_mtime] "Sun Apr 10 12:23:39 2022"
+[dumpfile_size] 31927
+[savefile] "/scratch/eyck/workarea/RISC-V/TGC-VERIF/iss/scc/examples/axi4lite_tlm-pin-tlm/gtkwave.gtkw"
+[timestart] 0
+[size] 3184 1311
+[pos] -1089 -354
+*-15.637856 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] SystemC.
+[sst_width] 213
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 846
+@28
+SystemC.tb.clk
+SystemC.tb.rst
+SystemC.tb.ar_valid
+SystemC.tb.ar_ready
+@22
+SystemC.tb.ar_addr[31:0]
+@28
+SystemC.tb.ar_prot[2:0]
+@200
+-
+@28
+SystemC.tb.r_valid
+SystemC.tb.r_ready
+@22
+SystemC.tb.r_data[127:0]
+@28
+SystemC.tb.r_resp[1:0]
+@200
+-
+@28
+SystemC.tb.aw_valid
+SystemC.tb.aw_ready
+@22
+SystemC.tb.aw_addr[31:0]
+@28
+SystemC.tb.aw_prot[2:0]
+@200
+-
+@28
+SystemC.tb.w_valid
+SystemC.tb.w_ready
+@22
+SystemC.tb.w_data[127:0]
+SystemC.tb.w_strb[15:0]
+@200
+-
+@29
+SystemC.tb.b_valid
+@28
+SystemC.tb.b_ready
+SystemC.tb.b_resp[1:0]
+[pattern_trace] 1
+[pattern_trace] 0

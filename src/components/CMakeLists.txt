@@ -1,16 +1,16 @@
 project(components VERSION 0.0.1 LANGUAGES CXX)
 
-add_library(components INTERFACE)
-target_include_directories (components INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(components INTERFACE scc-sysc)
+add_library(${PROJECT_NAME} INTERFACE)
+target_include_directories (${PROJECT_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(${PROJECT_NAME} INTERFACE scc-sysc)
 
-set_target_properties(components PROPERTIES
+set_target_properties(${PROJECT_NAME} PROPERTIES
     # VERSION ${PROJECT_VERSION}
     # FRAMEWORK FALSE
     PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/scc_components.h
 )
 
-install(TARGETS components COMPONENT components
+install(TARGETS ${PROJECT_NAME} COMPONENT components
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static

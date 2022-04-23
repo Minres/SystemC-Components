@@ -92,14 +92,19 @@ void tracer::init_scv_db(file_type type, std::string const&& name) {
         }
         txdb = new SCVNS scv_tr_db(ss.str().c_str());
         SCVNS scv_tr_db::set_default_db(txdb);
+        if(trf) {
+            trf->write_comment(std::string("SCV_TXLOG: ")+ ss.str());
+        }
     }
 }
 
 void tracer::end_of_elaboration() {
-    if(trf)
-        if(top)
-            descend(top, trf);
-        else
-            for(auto o : sc_get_top_level_objects())
-                descend(o, default_trace_enable);
+    if(trf){
+            if(top) {
+                descend(top, trf);
+            } else {
+                for(auto o : sc_get_top_level_objects())
+                    descend(o, default_trace_enable);
+            }
+    }
 }

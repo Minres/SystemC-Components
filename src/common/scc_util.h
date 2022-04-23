@@ -22,7 +22,7 @@
  * This module contains generic C++ functions being independent of SystemC
  */
 /**@{*/
-#include "util/assert.h"
+#include <util/sccassert.h>
 #include "util/bit_field.h"
 #include "util/delegate.h"
 #include "util/io-redirector.h"

@@ -16,9 +16,9 @@
 
 #pragma once
 
+#include <ahb/pin/initiator.h>
+#include <ahb/pin/target.h>
 #include "ahb/ahb_tlm.h"
-#include "ahb/bfm/initiator.h"
-#include "ahb/bfm/target.h"
 #include "ahb/pe/ahb_initiator.h"
 #include "ahb/pe/ahb_target.h"
 
@@ -27,8 +27,5 @@
 
 #include "atp/timing_params.h"
 
-#include "axi/axi4lite_tlm2pin_adaptor.h"
 #include "axi/axi_initiator.h"
-#include "axi/axi_pin2tlm_adaptor.h"
 #include "axi/axi_target.h"
-#include "axi/axi_tlm2pin_adaptor.h"

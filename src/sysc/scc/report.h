@@ -29,6 +29,8 @@
 #if defined(_MSC_VER) && defined(ERROR)
 #undef ERROR
 #endif
+
+#define SCC_LOG_LEVEL_PARAM_NAME "log_level"
 namespace scc {
 //! \brief array holding string representations of log levels
 static std::array<const char* const, 8> buffer = {
@@ -265,8 +267,8 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
     inline std::ostream& get() { return os; };
 
 protected:
-    std::ostringstream os;
-    char* t;
+    std::ostringstream os{};
+    char* t{nullptr};
     const char* file;
     const int line;
     const int level;

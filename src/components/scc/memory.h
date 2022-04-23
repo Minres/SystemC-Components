@@ -26,6 +26,7 @@
 #include "tlm/scc/target_mixin.h"
 #include <tlm.h>
 #include <util/sparse_array.h>
+#include <numeric>
 
 namespace scc {
 
@@ -44,7 +45,7 @@ namespace scc {
 template <unsigned long long SIZE, unsigned BUSWIDTH = 32> class memory : public sc_core::sc_module {
 public:
     //! the target socket to connect to TLM
-    tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target;
+    tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
     /**
      * constructor with explicit instance name
      *
@@ -100,8 +101,7 @@ public:
 
 template <unsigned long long SIZE, unsigned BUSWIDTH>
 memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
-: sc_module(nm)
-, NAMED(target) {
+: sc_module(nm) {
     // Register callback for incoming b_transport interface method call
     target.register_b_transport([this](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void {
         operation_cb ? operation_cb(*this, gp, delay) : handle_operation(gp, delay);
@@ -130,12 +130,20 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
         trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
         return 0;
     }
-    if(adr + len > ::sc_dt::uint64(SIZE) || byt != 0 || wid < len) {
+    if(wid < len) {
+        SCCERR(SCMOD) << "Streaming width: " << wid << ", data length: " << len;
         SC_REPORT_ERROR("TLM-2", "generic payload transaction not supported");
         trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
         return 0;
     }
-
+    if(byt){
+        auto res = std::accumulate(byt, byt+trans.get_byte_enable_length(), 0xff, [](uint8_t a, uint8_t b){return a|b;});
+        if(trans.get_byte_enable_length()!=len || res!=0xff) {
+            SC_REPORT_ERROR("TLM-2", "generic payload transaction with scattered byte enable not supported");
+            trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
+            return 0;
+        }
+    }
     tlm::tlm_command cmd = trans.get_command();
     SCCTRACE(SCMOD) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr;
     if(cmd == tlm::TLM_READ_COMMAND) {
@@ -145,7 +153,14 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
         if(mem.is_allocated(adr)) {
             const auto& p = mem(adr / mem.page_size);
             auto offs = adr & mem.page_addr_mask;
-            std::copy(p.data() + offs, p.data() + offs + len, ptr);
+            if((offs+len)>mem.page_size) {
+                auto first_part = mem.page_size-offs;
+                std::copy(p.data() + offs, p.data() + offs + first_part, ptr);
+                const auto& p2 = mem((adr / mem.page_size)+1);
+                std::copy(p2.data(), p2.data() + len - first_part, ptr+first_part);
+            } else {
+                std::copy(p.data() + offs, p.data() + offs + len, ptr);
+            }
         } else {
             // no allocated page so return randomized data
             for(size_t i = 0; i < len; i++)
@@ -157,7 +172,14 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
 #endif
         auto& p = mem(adr / mem.page_size);
         auto offs = adr & mem.page_addr_mask;
-        std::copy(ptr, ptr + len, p.data() + offs);
+        if((offs+len)>mem.page_size) {
+            auto first_part = mem.page_size-offs;
+            std::copy(ptr, ptr + first_part, p.data() + offs);
+            auto& p2 = mem((adr / mem.page_size)+1);
+            std::copy(ptr+ first_part, ptr + len, p2.data());
+        } else {
+            std::copy(ptr, ptr + len, p.data() + offs);
+        }
     }
     trans.set_response_status(tlm::TLM_OK_RESPONSE);
     trans.set_dmi_allowed(true);

@@ -18,9 +18,9 @@
 #ifndef SCC_VCD_PUSH_TRACE_H
 #define SCC_VCD_PUSH_TRACE_H
 
+#include <scc/observer.h>
 #include <sysc/tracing/sc_trace.h>
 #include <sysc/kernel/sc_ver.h>
-#include "trace_observer.h"
 #include <deque>
 #include <vector>
 #include <functional>
@@ -32,7 +32,7 @@ namespace scc {
 namespace trace {
 class vcd_trace;
 }
-struct vcd_push_trace_file : public sc_core::sc_trace_file, public trace_observer {
+struct vcd_push_trace_file : public sc_core::sc_trace_file, public observer {
 
     vcd_push_trace_file(const char *name, std::function<bool()>& enable);
 
@@ -80,8 +80,8 @@ protected:
             const std::string& name,
             const char** enum_literals ) override;
 
-#define DECL_REGISTER_METHOD_A(tp) trace_handle* register_trace(tp const& o, std::string const& nm) override;
-#define DECL_REGISTER_METHOD_B(tp) trace_handle* register_trace(tp const& o, std::string const& nm, int width) override;
+#define DECL_REGISTER_METHOD_A(tp) observer::notification_handle* observe(tp const& o, std::string const& nm) override;
+#define DECL_REGISTER_METHOD_B(tp) observer::notification_handle* observe(tp const& o, std::string const& nm, int width) override;
     DECL_REGISTER_METHOD_A( bool )
     DECL_REGISTER_METHOD_A( sc_dt::sc_bit )
     DECL_REGISTER_METHOD_A( sc_dt::sc_logic )
@@ -134,17 +134,17 @@ private:
     std::function<bool()> check_enabled;
 
     FILE* vcd_out{nullptr};
-    struct trace_entry: public trace_handle {
+    struct trace_entry: public observer::notification_handle {
         bool (*compare_and_update)(trace::vcd_trace*);
         trace::vcd_trace* trc;
         vcd_push_trace_file* that;
-        void notify_change() override;
+        void notify() override;
         trace_entry(vcd_push_trace_file* owner, bool (*compare_and_update)(trace::vcd_trace*), trace::vcd_trace* trc)
         :compare_and_update{compare_and_update}, trc{trc}, that{owner}{}
         virtual ~trace_entry(){}
     };
     std::deque<trace_entry> all_traces;
-    std::vector<trace_entry> active_traces;
+    std::vector<trace_entry*> active_traces;
     std::vector<trace::vcd_trace*> changed_traces;
     std::vector<trace::vcd_trace*> triggered_traces;
     bool initialized{false};

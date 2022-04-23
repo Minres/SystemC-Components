@@ -47,9 +47,6 @@ public:
      */
     sc_core::sc_attribute<unsigned> wr_resp_delay{"wr_resp_delay", 0};
 
-    /** @defgroup fw_if Initiator foreward interface
-     *  @{
-     */
     void b_transport(payload_type& trans, sc_core::sc_time& t) override;
 
     tlm::tlm_sync_enum nb_transport_fw(payload_type& trans, phase_type& phase, sc_core::sc_time& t) override;
@@ -57,11 +54,6 @@ public:
     bool get_direct_mem_ptr(payload_type& trans, tlm::tlm_dmi& dmi_data) override;
 
     unsigned int transport_dbg(payload_type& trans) override;
-    /** @} */ // end of fw_if
-    /** @defgroup config Initiator configuration interface
-     *  @{
-     */
-
     /**
      * @brief Set the operation callback function
      *

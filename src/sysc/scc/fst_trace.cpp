@@ -287,13 +287,13 @@ void fst_trace_file::trace(const unsigned int &object, const std::string &name, 
     //all_traces.emplace_back(this, &changed<unsigned int>, new fst_trace_enum(object, name, enum_literals));
 }
 
-#define DECL_REGISTER_METHOD_A(tp) trace_handle* fst_trace_file::register_trace(const tp& object, const std::string& name){\
+#define DECL_REGISTER_METHOD_A(tp) observer::notification_handle* fst_trace_file::observe(const tp& object, const std::string& name){\
 		all_traces.emplace_back(this, &changed<tp>, new trace::fst_trace_t<tp>(object, name)); \
 		all_traces.back().trc->is_triggered=true; return &all_traces.back();}
-#define DECL_REGISTER_METHOD_B(tp) trace_handle* fst_trace_file::register_trace(const tp& object, const std::string& name, int width){\
+#define DECL_REGISTER_METHOD_B(tp) observer::notification_handle* fst_trace_file::observe(const tp& object, const std::string& name, int width){\
 		all_traces.emplace_back(this, &changed<tp>, new trace::fst_trace_t<tp>(object, name)); \
 		all_traces.back().trc->is_triggered=true; return &all_traces.back();}
-#define DECL_REGISTER_METHOD_C(tp, tpo) trace_handle* fst_trace_file::register_trace(const tp& object, const std::string& name){\
+#define DECL_REGISTER_METHOD_C(tp, tpo) observer::notification_handle* fst_trace_file::observe(const tp& object, const std::string& name){\
 		all_traces.emplace_back(this, &changed<tp, tpo>, new trace::fst_trace_t<tp, tpo>(object, name)); \
 		all_traces.back().trc->is_triggered=true; return &all_traces.back();}
 
@@ -333,7 +333,7 @@ DECL_REGISTER_METHOD_A( sc_dt::sc_lv_base )
 #undef DECL_REGISTER_METHOD_B
 #undef DECL_REGISTER_METHOD_C
 
-void fst_trace_file::trace_entry::notify_change() {
+void fst_trace_file::trace_entry::notify() {
     if(!trc->is_alias && compare_and_update(trc))
         that->triggered_traces.push_back(trc);
 }
@@ -399,7 +399,7 @@ void fst_trace_file::cycle(bool delta_cycle) {
             if(triggered_traces.size()){
                 auto it = std::unique(std::begin(triggered_traces), std::end(triggered_traces));
                 triggered_traces.resize(std::distance(std::begin(triggered_traces), it));
-                for(auto t: changed_traces)
+                for(auto t: triggered_traces)
                     t->record(m_fst);
                 triggered_traces.clear();
             }

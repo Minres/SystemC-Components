@@ -241,6 +241,7 @@ inline void log2logger(spdlog::logger& logger, scc::log lvl, const string& msg) 
 
 void report_handler(const sc_report& rep, const sc_actions& actions) {
     thread_local bool sc_stop_called = false;
+    if(actions & SC_DO_NOTHING) return;
     if(rep.get_severity() == sc_core::SC_INFO || !log_cfg.report_only_first_error ||
        sc_report_handler::get_count(SC_ERROR) < 2) {
         if((actions & SC_DISPLAY) && (!log_cfg.file_logger || get_verbosity(rep) < SC_HIGH))
@@ -500,7 +501,7 @@ auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
     if(it != lut.end())
         return it->second;
     if(sc_core::sc_get_current_object()) {
-        auto param_name = std::string(str) + ".log_level";
+        auto param_name = std::string(str) + "." SCC_LOG_LEVEL_PARAM_NAME;
         auto h = cci::cci_get_broker().get_param_handle<unsigned>(param_name);
         if(h.is_valid()) {
             sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_value(), verbosity.size() - 1));

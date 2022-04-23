@@ -1,0 +1,5 @@
+{
+    "tb.same_id": true,
+    "tb.tgt_pe.rd_data_interleaving": true,
+    "tb.tgt_pe.rd_data_beat_delay": 1
+}
