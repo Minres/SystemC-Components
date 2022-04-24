@@ -197,7 +197,7 @@ $(document).ready(function(){initNavTree('tagged__target__mixin_8h_source.html',
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        tagged_target_mixin* m_owner;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        tagged_target_mixin* m_owner{<span class="keyword">nullptr</span>};</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    };</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keyword">class </span>fw_process : <span class="keyword">public</span> tlm::tlm_fw_transport_if&lt;TYPES&gt;, <span class="keyword">public</span> tlm::tlm_mm_interface {</div>
@@ -382,9 +382,9 @@ $(document).ready(function(){initNavTree('tagged__target__mixin_8h_source.html',
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            : m_trans(trans)</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            , m_suspend(false) {}</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            transaction_type* m_trans;</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            sc_core::sc_event m_e;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            <span class="keywordtype">bool</span> m_suspend;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            transaction_type* m_trans{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            sc_core::sc_event m_e{};</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            <span class="keywordtype">bool</span> m_suspend{<span class="keyword">false</span>};</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        };</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keyword">class </span>process_handle_list {</div>
@@ -413,10 +413,10 @@ $(document).ready(function(){initNavTree('tagged__target__mixin_8h_source.html',
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <span class="keywordtype">void</span> put_handle(process_handle_class* ph) { v.push_back(ph); }</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            std::vector&lt;process_handle_class*&gt; v;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            std::vector&lt;process_handle_class*&gt; v{};</div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        };</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160; </div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        process_handle_list m_process_handle;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        process_handle_list m_process_handle{};</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        <span class="keywordtype">void</span> nb2b_thread(process_handle_class* h) {</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
@@ -523,28 +523,28 @@ $(document).ready(function(){initNavTree('tagged__target__mixin_8h_source.html',
 <div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            tlm::tlm_extension_base* clone()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> NULL; }</div>
 <div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;            <span class="keywordtype">void</span> free() {}</div>
 <div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;            <span class="keywordtype">void</span> copy_from(tlm::tlm_extension_base <span class="keyword">const</span>&amp;) {}</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            sc_core::sc_event done;</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            sc_core::sc_event done{};</div>
 <div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        };</div>
 <div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;        <span class="keyword">const</span> std::string m_name;</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        tagged_target_mixin* m_owner;</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        tagged_target_mixin* m_owner{<span class="keyword">nullptr</span>};</div>
 <div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> tags[4]; <span class="comment">// bl, nb, dbg, dmi</span></div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        NBTransportPtr m_nb_transport_ptr;</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        BTransportPtr m_b_transport_ptr;</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;        TransportDbgPtr m_transport_dbg_ptr;</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        GetDirectMemPtr m_get_direct_mem_ptr;</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;        tlm_utils::peq_with_get&lt;transaction_type&gt; m_peq;</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        <span class="keywordtype">bool</span> m_response_in_progress;</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        sc_core::sc_event m_end_response;</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        NBTransportPtr m_nb_transport_ptr{};</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        BTransportPtr m_b_transport_ptr{};</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;        TransportDbgPtr m_transport_dbg_ptr{};</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        GetDirectMemPtr m_get_direct_mem_ptr{};</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;        tlm_utils::peq_with_get&lt;transaction_type&gt; m_peq{};</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        <span class="keywordtype">bool</span> m_response_in_progress{<span class="keyword">false</span>};</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        sc_core::sc_event m_end_response{};</div>
 <div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    };</div>
 <div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160; </div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    fw_process m_fw_process;</div>
 <div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    bw_process m_bw_process;</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    std::map&lt;transaction_type*, sc_core::sc_event*&gt; m_pending_trans;</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    sc_core::sc_event m_end_request;</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    transaction_type* m_current_transaction;</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    std::map&lt;transaction_type*, sc_core::sc_event*&gt; m_pending_trans{};</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    sc_core::sc_event m_end_request{};</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    transaction_type* m_current_transaction{<span class="keyword">nullptr</span>};</div>
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;};</div>
 <div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;} <span class="comment">// namespace scc</span></div>
 <div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;} <span class="comment">// namespace tlm</span></div>

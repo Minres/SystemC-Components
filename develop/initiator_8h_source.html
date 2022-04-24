@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: src/bus_interfaces/ahb/bfm/initiator.h Source File</title>
+<title>scc: src/bus_interfaces/ahb/pin/initiator.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -81,9 +81,9 @@ $(document).ready(function(){initNavTree('initiator_8h_source.html',''); initRes
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceahb.html">ahb</a> {</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespaceahb_1_1bfm.html">   17</a></span>&#160;<span class="keyword">namespace </span>bfm {</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespaceahb_1_1pin.html">   17</a></span>&#160;<span class="keyword">namespace </span>pin {</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classahb_1_1bfm_1_1initiator.html">   19</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> WIDTH&gt; <span class="keyword">class </span><a class="code" href="classahb_1_1bfm_1_1initiator.html">initiator</a> : sc_core::sc_module {</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classahb_1_1pin_1_1initiator.html">   19</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> WIDTH&gt; <span class="keyword">class </span><a class="code" href="classahb_1_1pin_1_1initiator.html">initiator</a> : sc_core::sc_module {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">static</span> constexpr <span class="keywordtype">bool</span> is_larger(<span class="keywordtype">unsigned</span> x) { <span class="keywordflow">return</span> x &gt; 64U; }</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">using</span> data_t = <span class="keyword">typename</span> std::conditional&lt;is_larger(WIDTH), sc_dt::sc_biguint&lt;WIDTH&gt;, sc_dt::sc_uint&lt;WIDTH&gt;&gt;::type;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
@@ -104,8 +104,8 @@ $(document).ready(function(){initNavTree('initiator_8h_source.html',''); initRes
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1target__mixin.html">tlm::scc::target_mixin&lt;tlm::tlm_target_socket&lt;WIDTH&gt;</a>&gt; tsckt{<span class="stringliteral">&quot;tsckt&quot;</span>};</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classahb_1_1bfm_1_1initiator.html">initiator</a>(<span class="keyword">const</span> sc_core::sc_module_name&amp; nm);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classahb_1_1bfm_1_1initiator.html">initiator</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classahb_1_1pin_1_1initiator.html">initiator</a>(<span class="keyword">const</span> sc_core::sc_module_name&amp; nm);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classahb_1_1pin_1_1initiator.html">initiator</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">struct </span>data_phase_desc {</div>
@@ -126,12 +126,12 @@ $(document).ready(function(){initNavTree('initiator_8h_source.html',''); initRes
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespaceahb_html"><div class="ttname"><a href="namespaceahb.html">ahb</a></div><div class="ttdoc">TLM2.0 components modeling AHB.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__tlm_8h_source.html#l00016">ahb_tlm.h:16</a></div></div>
-<div class="ttc" id="aclassahb_1_1bfm_1_1initiator_html"><div class="ttname"><a href="classahb_1_1bfm_1_1initiator.html">ahb::bfm::initiator</a></div><div class="ttdef"><b>Definition:</b> <a href="initiator_8h_source.html#l00019">initiator.h:19</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1target__mixin_html"><div class="ttname"><a href="classtlm_1_1scc_1_1target__mixin.html">tlm::scc::target_mixin</a></div><div class="ttdef"><b>Definition:</b> <a href="target__mixin_8h_source.html#l00034">target_mixin.h:34</a></div></div>
+<div class="ttc" id="aclassahb_1_1pin_1_1initiator_html"><div class="ttname"><a href="classahb_1_1pin_1_1initiator.html">ahb::pin::initiator</a></div><div class="ttdef"><b>Definition:</b> <a href="initiator_8h_source.html#l00019">initiator.h:19</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2e5638b409f3ace0c6070b175318504a.html">bus_interfaces</a></li><li class="navelem"><a class="el" href="dir_47442d965ec8ba98945afaeb09ef6dfa.html">ahb</a></li><li class="navelem"><a class="el" href="dir_6915f55894fe3e9caf7588442bf19ccd.html">bfm</a></li><li class="navelem"><b>initiator.h</b></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2e5638b409f3ace0c6070b175318504a.html">bus_interfaces</a></li><li class="navelem"><a class="el" href="dir_47442d965ec8ba98945afaeb09ef6dfa.html">ahb</a></li><li class="navelem"><a class="el" href="dir_1d44905cb2b6dd4aab1d790cca8cd3ec.html">pin</a></li><li class="navelem"><b>initiator.h</b></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>

@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>scc</b></li><li class="navelem"><a class="el" href="classscc_1_1sc__register__masked.html">sc_register_masked</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classscc_1_1sc__register__masked.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -64,7 +81,7 @@ Inheritance diagram for scc::sc_register_masked&lt; DATATYPE, WRMASK, RDMASK &gt
 <area shape="rect" href="classscc_1_1resource__access__if.html" title="interface defining access to a resource e.g. a register" alt="" coords="113,5,287,32"/>
 <area shape="rect" href="classscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="312,5,424,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for scc::sc_register_masked&lt; DATATYPE, WRMASK, RDMASK &gt;:</div>
 <div class="dyncontent">
@@ -76,7 +93,7 @@ Collaboration diagram for scc::sc_register_masked&lt; DATATYPE, WRMASK, RDMASK &
 <area shape="rect" href="classscc_1_1resource__access__if.html" title="interface defining access to a resource e.g. a register" alt="" coords="113,5,287,32"/>
 <area shape="rect" href="classscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="312,5,424,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -145,18 +162,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a5327b5a419a0355cd1a91badcb184a83 inherit pub_methods_classscc_1_1impl_1_1sc__register"><td class="mdescLeft">&#160;</td><td class="mdescRight">trace the register value to the given trace file  <a href="classscc_1_1impl_1_1sc__register.html#a5327b5a419a0355cd1a91badcb184a83">More...</a><br /></td></tr>
 <tr class="separator:a5327b5a419a0355cd1a91badcb184a83 inherit pub_methods_classscc_1_1impl_1_1sc__register"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classscc_1_1resource__access__if"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classscc_1_1resource__access__if')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classscc_1_1resource__access__if.html">scc::resource_access_if</a></td></tr>
-<tr class="memitem:ga02527d2e4e1ff85f30bad36974d8f688 inherit pub_methods_classscc_1_1resource__access__if"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FuncAcc.html#ga02527d2e4e1ff85f30bad36974d8f688">write</a> (const uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME)=0</td></tr>
-<tr class="memdesc:ga02527d2e4e1ff85f30bad36974d8f688 inherit pub_methods_classscc_1_1resource__access__if"><td class="mdescLeft">&#160;</td><td class="mdescRight">write to the resource  <a href="group__FuncAcc.html#ga02527d2e4e1ff85f30bad36974d8f688">More...</a><br /></td></tr>
-<tr class="separator:ga02527d2e4e1ff85f30bad36974d8f688 inherit pub_methods_classscc_1_1resource__access__if"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga687cd9c884c9a6695332b4dd82c388e9 inherit pub_methods_classscc_1_1resource__access__if"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FuncAcc.html#ga687cd9c884c9a6695332b4dd82c388e9">read</a> (uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME) const =0</td></tr>
-<tr class="memdesc:ga687cd9c884c9a6695332b4dd82c388e9 inherit pub_methods_classscc_1_1resource__access__if"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the data from the resource  <a href="group__FuncAcc.html#ga687cd9c884c9a6695332b4dd82c388e9">More...</a><br /></td></tr>
-<tr class="separator:ga687cd9c884c9a6695332b4dd82c388e9 inherit pub_methods_classscc_1_1resource__access__if"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae4609ce281478582d5019d2de7684e48 inherit pub_methods_classscc_1_1resource__access__if"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NonFuncAcc.html#gae4609ce281478582d5019d2de7684e48">write_dbg</a> (const uint8_t *data, std::size_t length, uint64_t offset=0)=0</td></tr>
-<tr class="memdesc:gae4609ce281478582d5019d2de7684e48 inherit pub_methods_classscc_1_1resource__access__if"><td class="mdescLeft">&#160;</td><td class="mdescRight">debug write to the resource  <a href="group__NonFuncAcc.html#gae4609ce281478582d5019d2de7684e48">More...</a><br /></td></tr>
-<tr class="separator:gae4609ce281478582d5019d2de7684e48 inherit pub_methods_classscc_1_1resource__access__if"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2329b4dda30a8e07bf37a9694d3aaa2a inherit pub_methods_classscc_1_1resource__access__if"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NonFuncAcc.html#ga2329b4dda30a8e07bf37a9694d3aaa2a">read_dbg</a> (uint8_t *data, std::size_t length, uint64_t offset=0) const =0</td></tr>
-<tr class="memdesc:ga2329b4dda30a8e07bf37a9694d3aaa2a inherit pub_methods_classscc_1_1resource__access__if"><td class="mdescLeft">&#160;</td><td class="mdescRight">debug read the data from the resource  <a href="group__NonFuncAcc.html#ga2329b4dda30a8e07bf37a9694d3aaa2a">More...</a><br /></td></tr>
-<tr class="separator:ga2329b4dda30a8e07bf37a9694d3aaa2a inherit pub_methods_classscc_1_1resource__access__if"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02527d2e4e1ff85f30bad36974d8f688 inherit pub_methods_classscc_1_1resource__access__if"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1resource__access__if.html#a02527d2e4e1ff85f30bad36974d8f688">write</a> (const uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME)=0</td></tr>
+<tr class="memdesc:a02527d2e4e1ff85f30bad36974d8f688 inherit pub_methods_classscc_1_1resource__access__if"><td class="mdescLeft">&#160;</td><td class="mdescRight">write to the resource  <a href="classscc_1_1resource__access__if.html#a02527d2e4e1ff85f30bad36974d8f688">More...</a><br /></td></tr>
+<tr class="separator:a02527d2e4e1ff85f30bad36974d8f688 inherit pub_methods_classscc_1_1resource__access__if"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a687cd9c884c9a6695332b4dd82c388e9 inherit pub_methods_classscc_1_1resource__access__if"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1resource__access__if.html#a687cd9c884c9a6695332b4dd82c388e9">read</a> (uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME) const =0</td></tr>
+<tr class="memdesc:a687cd9c884c9a6695332b4dd82c388e9 inherit pub_methods_classscc_1_1resource__access__if"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the data from the resource  <a href="classscc_1_1resource__access__if.html#a687cd9c884c9a6695332b4dd82c388e9">More...</a><br /></td></tr>
+<tr class="separator:a687cd9c884c9a6695332b4dd82c388e9 inherit pub_methods_classscc_1_1resource__access__if"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4609ce281478582d5019d2de7684e48 inherit pub_methods_classscc_1_1resource__access__if"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1resource__access__if.html#ae4609ce281478582d5019d2de7684e48">write_dbg</a> (const uint8_t *data, std::size_t length, uint64_t offset=0)=0</td></tr>
+<tr class="memdesc:ae4609ce281478582d5019d2de7684e48 inherit pub_methods_classscc_1_1resource__access__if"><td class="mdescLeft">&#160;</td><td class="mdescRight">debug write to the resource  <a href="classscc_1_1resource__access__if.html#ae4609ce281478582d5019d2de7684e48">More...</a><br /></td></tr>
+<tr class="separator:ae4609ce281478582d5019d2de7684e48 inherit pub_methods_classscc_1_1resource__access__if"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2329b4dda30a8e07bf37a9694d3aaa2a inherit pub_methods_classscc_1_1resource__access__if"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1resource__access__if.html#a2329b4dda30a8e07bf37a9694d3aaa2a">read_dbg</a> (uint8_t *data, std::size_t length, uint64_t offset=0) const =0</td></tr>
+<tr class="memdesc:a2329b4dda30a8e07bf37a9694d3aaa2a inherit pub_methods_classscc_1_1resource__access__if"><td class="mdescLeft">&#160;</td><td class="mdescRight">debug read the data from the resource  <a href="classscc_1_1resource__access__if.html#a2329b4dda30a8e07bf37a9694d3aaa2a">More...</a><br /></td></tr>
+<tr class="separator:a2329b4dda30a8e07bf37a9694d3aaa2a inherit pub_methods_classscc_1_1resource__access__if"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classscc_1_1traceable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classscc_1_1traceable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classscc_1_1traceable.html">scc::traceable</a></td></tr>
 <tr class="memitem:acd66c57ddd0f7931bffa5baf29013bcf inherit pub_methods_classscc_1_1traceable"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1traceable.html#acd66c57ddd0f7931bffa5baf29013bcf">is_trace_enabled</a> () const</td></tr>
 <tr class="memdesc:acd66c57ddd0f7931bffa5baf29013bcf inherit pub_methods_classscc_1_1traceable"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns of this component shall be traced  <a href="classscc_1_1traceable.html#acd66c57ddd0f7931bffa5baf29013bcf">More...</a><br /></td></tr>
@@ -193,11 +210,15 @@ class scc::sc_register_masked&lt; DATATYPE, WRMASK, RDMASK &gt;</h3>
 <li>src/components/scc/<a class="el" href="register_8h_source.html">register.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>scc</b></li><li class="navelem"><a class="el" href="classscc_1_1sc__register__masked.html">sc_register_masked</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

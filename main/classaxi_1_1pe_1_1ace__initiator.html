@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespaceaxi.html">axi</a></li><li class="navelem"><a class="el" href="namespaceaxi_1_1pe.html">pe</a></li><li class="navelem"><a class="el" href="classaxi_1_1pe_1_1ace__initiator.html">ace_initiator</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classaxi_1_1pe_1_1ace__initiator.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
@@ -67,7 +84,7 @@ Inheritance diagram for axi::pe::ace_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;:
 <area shape="rect" href="classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="155,96,359,152"/>
 <area shape="rect" title=" " alt="" coords="5,111,107,137"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for axi::pe::ace_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;:</div>
 <div class="dyncontent">
@@ -84,7 +101,7 @@ Collaboration diagram for axi::pe::ace_initiator&lt; BUSWIDTH, TYPES, N, POL &gt
 <area shape="rect" title=" " alt="" coords="163,165,353,192"/>
 <area shape="rect" title=" " alt="" coords="217,216,299,243"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -128,15 +145,15 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="classaxi_1_1pe_1_1ace__initiator.html">ace_initiator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classaxi_1_1pe_1_1ace__initiator.html">ace_initiator</a> &amp;&amp;)=delete</td></tr>
 <tr class="separator:ac9956dfa8fb4dded395582913f1ee07f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classaxi_1_1pe_1_1axi__initiator__b')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html">axi::pe::axi_initiator_b</a></td></tr>
-<tr class="memitem:ga8c04cf97ca8b8a228cb5d33a4b699da9 inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>b_snoop</b> (payload_type &amp;trans, sc_core::sc_time &amp;t)</td></tr>
-<tr class="separator:ga8c04cf97ca8b8a228cb5d33a4b699da9 inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1b196077f354e1feea0dca1c0e5c639d inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memItemLeft" align="right" valign="top">
-tlm::tlm_sync_enum&#160;</td><td class="memItemRight" valign="bottom"><b>nb_transport_bw</b> (payload_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t)</td></tr>
-<tr class="separator:ga1b196077f354e1feea0dca1c0e5c639d inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5142c343c64ecd733f85508c06d87497 inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>invalidate_direct_mem_ptr</b> (sc_dt::uint64 start_range, sc_dt::uint64 end_range)</td></tr>
-<tr class="separator:ga5142c343c64ecd733f85508c06d87497 inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a6da696a8fb31d82bf9e3d510f11d3a inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memItemLeft" align="right" valign="top"><a id="a0a6da696a8fb31d82bf9e3d510f11d3a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>b_snoop</b> (payload_type &amp;trans, sc_core::sc_time &amp;t) override</td></tr>
+<tr class="separator:a0a6da696a8fb31d82bf9e3d510f11d3a inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d1f166ca0b9094d799ba449684e17e4 inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memItemLeft" align="right" valign="top"><a id="a5d1f166ca0b9094d799ba449684e17e4"></a>
+tlm::tlm_sync_enum&#160;</td><td class="memItemRight" valign="bottom"><b>nb_transport_bw</b> (payload_type &amp;trans, phase_type &amp;phase, sc_core::sc_time &amp;t) override</td></tr>
+<tr class="separator:a5d1f166ca0b9094d799ba449684e17e4 inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3da085717a83e226b319a90710dc4f8e inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memItemLeft" align="right" valign="top"><a id="a3da085717a83e226b319a90710dc4f8e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>invalidate_direct_mem_ptr</b> (sc_dt::uint64 start_range, sc_dt::uint64 end_range) override</td></tr>
+<tr class="separator:a3da085717a83e226b319a90710dc4f8e inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36224638c01864e3033ffee55c17ee71 inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memItemLeft" align="right" valign="top"><a id="a36224638c01864e3033ffee55c17ee71"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_transferwith_in_bytes</b> () const</td></tr>
 <tr class="separator:a36224638c01864e3033ffee55c17ee71 inherit pub_methods_classaxi_1_1pe_1_1axi__initiator__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -268,7 +285,7 @@ class axi::pe::ace_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;</h3>
 
 <p>the axi initiator socket protocol engine adapted to a particular initiator socket configuration </p>
 
-<p class="definition">Definition at line <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html#l00242">242</a> of file <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html">axi_initiator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html#l00237">237</a> of file <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html">axi_initiator.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac70506dd54397fab9bc1743f68a9911f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac70506dd54397fab9bc1743f68a9911f">&#9670;&nbsp;</a></span>ace_initiator()</h2>
@@ -314,7 +331,7 @@ template&lt;unsigned int BUSWIDTH = 32, typename TYPES  = axi::axi_protocol_type
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html#l00252">252</a> of file <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html">axi_initiator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html#l00247">247</a> of file <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html">axi_initiator.h</a>.</p>
 
 </div>
 </div>
@@ -322,11 +339,15 @@ template&lt;unsigned int BUSWIDTH = 32, typename TYPES  = axi::axi_protocol_type
 <li>third_party/axi_chi/axi/pe/<a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html">axi_initiator.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceaxi.html">axi</a></li><li class="navelem"><a class="el" href="namespaceaxi_1_1pe.html">pe</a></li><li class="navelem"><a class="el" href="classaxi_1_1pe_1_1ace__initiator.html">ace_initiator</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

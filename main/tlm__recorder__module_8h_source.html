@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ecd2599f241f99e60c436470b0a1e2a4.html">sysc</a></li><li class="navelem"><a class="el" href="dir_d87af8e2b499dff1da3e679c52ce5646.html">tlm</a></li><li class="navelem"><a class="el" href="dir_e617fe9c9bac53cf4104c40a60f7993d.html">scc</a></li><li class="navelem"><a class="el" href="dir_dce7ea34a91c0189183270decd6916da.html">scv</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('tlm__recorder__module_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">tlm_recorder_module.h</div>  </div>
@@ -105,6 +122,7 @@ $(function() {
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* TLM2_RECORDER_MODULE_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__recorder_html_a2f47d19d088d8f368dea3957dc78f449"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__recorder.html#a2f47d19d088d8f368dea3957dc78f449">tlm::scc::scv::tlm_recorder&lt; tlm::tlm_base_protocol_types &gt;::enableBlTracing</a></div><div class="ttdeci">sc_core::sc_attribute&lt; bool &gt; enableBlTracing</div><div class="ttdoc">the attribute to selectively enable/disable recording of blocking protocol tx</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recorder_8h_source.html#l00131">tlm_recorder.h:131</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__recorder_html_a482d9394d94b4f178b244a0ae8199d0f"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__recorder.html#a482d9394d94b4f178b244a0ae8199d0f">tlm::scc::scv::tlm_recorder&lt; tlm::tlm_base_protocol_types &gt;::enableTimedTracing</a></div><div class="ttdeci">sc_core::sc_attribute&lt; bool &gt; enableTimedTracing</div><div class="ttdoc">the attribute to selectively enable/disable timed recording</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recorder_8h_source.html#l00137">tlm_recorder.h:137</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__recorder__module_html_a03282a2e89a025c4a293dae219ebe5e8"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module.html#a03282a2e89a025c4a293dae219ebe5e8">tlm::scc::scv::tlm_recorder_module::ts</a></div><div class="ttdeci">tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, 1 &gt; ts</div><div class="ttdoc">The target socket of the recorder to be bound to the initiator.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recorder__module_8h_source.html#l00098">tlm_recorder_module.h:98</a></div></div>
@@ -113,10 +131,13 @@ $(function() {
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__recorder__module_html_aa5b5f9f8eb9f98521007a4c3d0c88b9f"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module.html#aa5b5f9f8eb9f98521007a4c3d0c88b9f">tlm::scc::scv::tlm_recorder_module::is</a></div><div class="ttdeci">tlm::tlm_initiator_socket&lt; BUSWIDTH, TYPES, 1 &gt; is</div><div class="ttdoc">The initiator to be bound to the target socket.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recorder__module_8h_source.html#l00100">tlm_recorder_module.h:100</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__recorder__module_html_a0325bc998f75a2bb2d08bfe779235f78"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__recorder__module.html#a0325bc998f75a2bb2d08bfe779235f78">tlm::scc::scv::tlm_recorder_module::tlm_recorder_module</a></div><div class="ttdeci">tlm_recorder_module(sc_core::sc_module_name name, bool recording_enabled=true, SCVNS scv_tr_db *tr_db=SCVNS scv_tr_db::get_default_db())</div><div class="ttdoc">The constructor of the component.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recorder__module_8h_source.html#l00110">tlm_recorder_module.h:110</a></div></div>
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ecd2599f241f99e60c436470b0a1e2a4.html">sysc</a></li><li class="navelem"><a class="el" href="dir_d87af8e2b499dff1da3e679c52ce5646.html">tlm</a></li><li class="navelem"><a class="el" href="dir_e617fe9c9bac53cf4104c40a60f7993d.html">scc</a></li><li class="navelem"><a class="el" href="dir_dce7ea34a91c0189183270decd6916da.html">scv</a></li><li class="navelem"><b>tlm_recorder_module.h</b></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -101,73 +101,69 @@ $(document).ready(function(){initNavTree('tlm__signal__conv_8h_source.html','');
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    SC_HAS_PROCESS(tlm_signal2sc_signal); <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    tlm_signal_target_socket&lt;TYPE&gt; t_i;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    tlm_signal_target_socket&lt;TYPE&gt; t_i{<span class="stringliteral">&quot;t_i&quot;</span>};</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    sc_core::sc_out&lt;TYPE&gt; s_o;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    sc_core::sc_out&lt;TYPE&gt; s_o{<span class="stringliteral">&quot;s_o&quot;</span>};</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    tlm_signal2sc_signal(sc_core::sc_module_name nm)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    : sc_core::sc_module(nm)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    , NAMED(t_i)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    , NAMED(s_o) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        t_i.bind(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        SC_METHOD(que_cb);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        sensitive &lt;&lt; que.event();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    tlm_sync_enum nb_transport_fw(payload_type&amp; gp, phase_type&amp; phase, sc_core::sc_time&amp; delay) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        que.notify(gp.get_value(), delay);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> TLM_COMPLETED;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structtlm_1_1scc_1_1tlm__signal2sc__signal.html">   56</a></span>&#160;    <span class="keywordtype">void</span> que_cb() {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">while</span>(<span class="keyword">auto</span> oi = que.get_next())</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            s_o.write(oi.get());</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="structscc_1_1peq.html">::scc::peq&lt;TYPE&gt;</a> que;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> TYPE&gt;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">struct </span>sc_signal2tlm_signal : <span class="keyword">public</span> sc_core::sc_module,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                              <span class="keyword">public</span> tlm_signal_bw_transport_if&lt;TYPE, tlm_signal_baseprotocol_types&lt;TYPE&gt;&gt; {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">using</span> protocol_types = tlm_signal_baseprotocol_types&lt;TYPE&gt;;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">using</span> payload_type = <span class="keyword">typename</span> protocol_types::tlm_payload_type;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">using</span> phase_type = <span class="keyword">typename</span> protocol_types::tlm_phase_type;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    : sc_core::sc_module(nm) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        t_i.bind(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        SC_METHOD(que_cb);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        sensitive &lt;&lt; que.event();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    tlm_sync_enum nb_transport_fw(payload_type&amp; gp, phase_type&amp; phase, sc_core::sc_time&amp; delay) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        que.notify(gp.get_value(), delay);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> TLM_COMPLETED;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> que_cb() {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">while</span>(<span class="keyword">auto</span> oi = que.get_next())</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structtlm_1_1scc_1_1tlm__signal2sc__signal.html">   56</a></span>&#160;            s_o.write(oi.get());</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="structscc_1_1peq.html">::scc::peq&lt;TYPE&gt;</a> que;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> TYPE&gt;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">struct </span>sc_signal2tlm_signal : <span class="keyword">public</span> sc_core::sc_module,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                              <span class="keyword">public</span> tlm_signal_bw_transport_if&lt;TYPE, tlm_signal_baseprotocol_types&lt;TYPE&gt;&gt; {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">using</span> protocol_types = tlm_signal_baseprotocol_types&lt;TYPE&gt;;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">using</span> payload_type = <span class="keyword">typename</span> protocol_types::tlm_payload_type;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">using</span> phase_type = <span class="keyword">typename</span> protocol_types::tlm_phase_type;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    SC_HAS_PROCESS(sc_signal2tlm_signal); <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    SC_HAS_PROCESS(sc_signal2tlm_signal); <span class="comment">// NOLINT</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    sc_core::sc_in&lt;TYPE&gt; s_i{<span class="stringliteral">&quot;s_i&quot;</span>};</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    sc_core::sc_in&lt;TYPE&gt; s_i;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    tlm_signal_initiator_socket&lt;TYPE&gt; t_o{<span class="stringliteral">&quot;t_o&quot;</span>};</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    tlm_signal_initiator_socket&lt;TYPE&gt; t_o;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    sc_signal2tlm_signal(sc_core::sc_module_name nm)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    : sc_core::sc_module(nm)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    , NAMED(s_i)</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    , NAMED(t_o) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        t_o.bind(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        SC_METHOD(sig_cb);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        sensitive &lt;&lt; s_i;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    tlm_sync_enum nb_transport_bw(payload_type&amp; gp, phase_type&amp; phase, sc_core::sc_time&amp; delay) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">return</span> TLM_COMPLETED;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> sig_cb() {</div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="structtlm_1_1scc_1_1sc__signal2tlm__signal.html">   92</a></span>&#160;        tlm::tlm_phase phase(tlm::BEGIN_REQ);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        sc_core::sc_time delay;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">auto</span>* gp = payload_type::create();</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        gp-&gt;acquire();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        gp-&gt;set_value(s_i.read());</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        t_o-&gt;nb_transport_fw(*gp, phase, delay);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        gp-&gt;release();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;} <span class="comment">// namespace tlm</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _TLM_TLM_SIGNAL_CONV_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    sc_signal2tlm_signal(sc_core::sc_module_name nm)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    : sc_core::sc_module(nm) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        t_o.bind(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        SC_METHOD(sig_cb);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        sensitive &lt;&lt; s_i;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    tlm_sync_enum nb_transport_bw(payload_type&amp; gp, phase_type&amp; phase, sc_core::sc_time&amp; delay) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> TLM_COMPLETED;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> sig_cb() {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        tlm::tlm_phase phase(tlm::BEGIN_REQ);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        sc_core::sc_time delay;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="structtlm_1_1scc_1_1sc__signal2tlm__signal.html">   90</a></span>&#160;        <span class="keyword">auto</span>* gp = payload_type::create();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        gp-&gt;acquire();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        gp-&gt;set_value(s_i.read());</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        t_o-&gt;nb_transport_fw(*gp, phase, delay);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        gp-&gt;release();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;};</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;} <span class="comment">// namespace tlm</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _TLM_TLM_SIGNAL_CONV_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="astructscc_1_1peq_html"><div class="ttname"><a href="structscc_1_1peq.html">scc::peq</a></div><div class="ttdoc">priority event queue</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00050">peq.h:50</a></div></div>

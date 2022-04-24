@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ecd2599f241f99e60c436470b0a1e2a4.html">sysc</a></li><li class="navelem"><a class="el" href="dir_8400f74b819af6408e1b24b7b1ac1666.html">scc</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('ordered__semaphore_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">ordered_semaphore.h</div>  </div>
@@ -103,51 +120,54 @@ $(function() {
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        : sem(sem) {</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            sem.<a class="code" href="classscc_1_1ordered__semaphore.html#aa670dc99df7070d0702cb6de079f077a">wait</a>(prio);</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        }</div>
-<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="structscc_1_1ordered__semaphore_1_1lock.html#a1e82713ace8671b89422efd56e60d4c2">  143</a></span>&#160;        <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html#a1e82713ace8671b89422efd56e60d4c2">~lock</a>() { sem.<a class="code" href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">post</a>(); }</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <a class="code" href="classscc_1_1ordered__semaphore.html">scc::ordered_semaphore</a>&amp; sem;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    };</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="comment">// support methods</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordtype">bool</span> in_use() {</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">if</span>(value &gt; 0) {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keywordflow">if</span>(queue[1].size()) {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <span class="keywordflow">if</span>(queue[1].front() == sc_core::sc_get_current_process_handle()) {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    queue[1].pop_front();</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                }</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <span class="keywordflow">if</span>(queue[0].front() == sc_core::sc_get_current_process_handle()) {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    queue[0].pop_front();</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                }</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        }</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="comment">// error reporting</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordtype">void</span> report_error(<span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keywordtype">id</span>, <span class="keyword">const</span> <span class="keywordtype">char</span>* add_msg = 0) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    sc_core::sc_event free_evt; <span class="comment">// event to block on when m_value is negative</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">int</span> value;                  <span class="comment">// current value of the semaphore</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordtype">unsigned</span> capacity;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    std::array&lt;std::deque&lt;sc_core::sc_process_handle&gt;, 2&gt; queue;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;};</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="structscc_1_1ordered__semaphore__t.html">  178</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> CAPACITY&gt; <span class="keyword">struct </span><a class="code" href="structscc_1_1ordered__semaphore__t.html">ordered_semaphore_t</a> : <span class="keyword">public</span> <a class="code" href="classscc_1_1ordered__semaphore.html">ordered_semaphore</a> {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="structscc_1_1ordered__semaphore__t.html">ordered_semaphore_t</a>()</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    : <a class="code" href="classscc_1_1ordered__semaphore.html#af3377d313bb7b109ef9bb5a0f1fd34d0">ordered_semaphore</a>(CAPACITY) {}</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <a class="code" href="structscc_1_1ordered__semaphore__t.html">ordered_semaphore_t</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name_)</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    : <a class="code" href="classscc_1_1ordered__semaphore.html#af3377d313bb7b109ef9bb5a0f1fd34d0">ordered_semaphore</a>(name_, CAPACITY) {}</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;};</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="structscc_1_1ordered__semaphore_1_1lock.html#a1e82713ace8671b89422efd56e60d4c2">  143</a></span>&#160;        <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html#a1e82713ace8671b89422efd56e60d4c2">~lock</a>() { release(); }</div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="structscc_1_1ordered__semaphore_1_1lock.html#a2ad84335adda8f6376550bfa229450af">  149</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html#a2ad84335adda8f6376550bfa229450af">release</a>(){<span class="keywordflow">if</span>(owned) sem.<a class="code" href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">post</a>(); owned=<span class="keyword">false</span>;}</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <a class="code" href="classscc_1_1ordered__semaphore.html">scc::ordered_semaphore</a>&amp; sem;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordtype">bool</span> owned{<span class="keyword">true</span>};</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    };</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="comment">// support methods</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordtype">bool</span> in_use() {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordflow">if</span>(value &gt; 0) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordflow">if</span>(queue[1].size()) {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordflow">if</span>(queue[1].front() == sc_core::sc_get_current_process_handle()) {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    queue[1].pop_front();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                <span class="keywordflow">if</span>(queue[0].front() == sc_core::sc_get_current_process_handle()) {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                    queue[0].pop_front();</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="comment">// error reporting</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordtype">void</span> report_error(<span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keywordtype">id</span>, <span class="keyword">const</span> <span class="keywordtype">char</span>* add_msg = 0) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    sc_core::sc_event free_evt; <span class="comment">// event to block on when m_value is negative</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordtype">int</span> value;                  <span class="comment">// current value of the semaphore</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordtype">unsigned</span> capacity;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    std::array&lt;std::deque&lt;sc_core::sc_process_handle&gt;, 2&gt; queue;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;};</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="structscc_1_1ordered__semaphore__t.html">  184</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> CAPACITY&gt; <span class="keyword">struct </span><a class="code" href="structscc_1_1ordered__semaphore__t.html">ordered_semaphore_t</a> : <span class="keyword">public</span> <a class="code" href="classscc_1_1ordered__semaphore.html">ordered_semaphore</a> {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="structscc_1_1ordered__semaphore__t.html">ordered_semaphore_t</a>()</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    : <a class="code" href="classscc_1_1ordered__semaphore.html#af3377d313bb7b109ef9bb5a0f1fd34d0">ordered_semaphore</a>(CAPACITY) {}</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <a class="code" href="structscc_1_1ordered__semaphore__t.html">ordered_semaphore_t</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name_)</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    : <a class="code" href="classscc_1_1ordered__semaphore.html#af3377d313bb7b109ef9bb5a0f1fd34d0">ordered_semaphore</a>(name_, CAPACITY) {}</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;};</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;} <span class="comment">// namespace scc</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructscc_1_1ordered__semaphore_1_1lock_html_a1e82713ace8671b89422efd56e60d4c2"><div class="ttname"><a href="structscc_1_1ordered__semaphore_1_1lock.html#a1e82713ace8671b89422efd56e60d4c2">scc::ordered_semaphore::lock::~lock</a></div><div class="ttdeci">~lock()</div><div class="ttdoc">unlock the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00143">ordered_semaphore.h:143</a></div></div>
+</div><!-- doc-content -->
+<div class="ttc" id="astructscc_1_1ordered__semaphore_1_1lock_html_a2ad84335adda8f6376550bfa229450af"><div class="ttname"><a href="structscc_1_1ordered__semaphore_1_1lock.html#a2ad84335adda8f6376550bfa229450af">scc::ordered_semaphore::lock::release</a></div><div class="ttdeci">void release()</div><div class="ttdoc">unlock the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00149">ordered_semaphore.h:149</a></div></div>
+<div class="ttc" id="astructscc_1_1ordered__semaphore_1_1lock_html_a1e82713ace8671b89422efd56e60d4c2"><div class="ttname"><a href="structscc_1_1ordered__semaphore_1_1lock.html#a1e82713ace8671b89422efd56e60d4c2">scc::ordered_semaphore::lock::~lock</a></div><div class="ttdeci">~lock()</div><div class="ttdoc">destructor, unlock the semaphore if still locked</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00143">ordered_semaphore.h:143</a></div></div>
 <div class="ttc" id="aclassscc_1_1ordered__semaphore_html_af3377d313bb7b109ef9bb5a0f1fd34d0"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#af3377d313bb7b109ef9bb5a0f1fd34d0">scc::ordered_semaphore::ordered_semaphore</a></div><div class="ttdeci">ordered_semaphore(unsigned init_value=1)</div><div class="ttdoc">constructor of an un-named semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00075">ordered_semaphore.cpp:75</a></div></div>
 <div class="ttc" id="aclassscc_1_1ordered__semaphore_html_a5f3fd55d5fb2c9ab687952c1a2c7f6bc"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">scc::ordered_semaphore::post</a></div><div class="ttdeci">int post() override</div><div class="ttdoc">unlock (give) the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00125">ordered_semaphore.cpp:125</a></div></div>
 <div class="ttc" id="aclassscc_1_1ordered__semaphore_html_a1e00ba95b4f115d9e912af991826b3ac"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#a1e00ba95b4f115d9e912af991826b3ac">scc::ordered_semaphore::get_value</a></div><div class="ttdeci">int get_value() const override</div><div class="ttdoc">get the value of the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00108">ordered_semaphore.h:108</a></div></div>
@@ -155,14 +175,17 @@ $(function() {
 <div class="ttc" id="aclassscc_1_1ordered__semaphore_html_a4a14b192fb959f0f7f331b98201cebe6"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#a4a14b192fb959f0f7f331b98201cebe6">scc::ordered_semaphore::get_capacity</a></div><div class="ttdeci">unsigned get_capacity()</div><div class="ttdoc">retrieve the initial capacity of the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00094">ordered_semaphore.h:94</a></div></div>
 <div class="ttc" id="astructscc_1_1ordered__semaphore_1_1lock_html"><div class="ttname"><a href="structscc_1_1ordered__semaphore_1_1lock.html">scc::ordered_semaphore::lock</a></div><div class="ttdoc">a lock for the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00123">ordered_semaphore.h:123</a></div></div>
 <div class="ttc" id="aclassscc_1_1ordered__semaphore_html_a7a6e4d4d6d34c6ef703575a3f1d1fee1"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#a7a6e4d4d6d34c6ef703575a3f1d1fee1">scc::ordered_semaphore::kind</a></div><div class="ttdeci">const char * kind() const override</div><div class="ttdoc">kind of this SastemC object</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00115">ordered_semaphore.h:115</a></div></div>
-<div class="ttc" id="astructscc_1_1ordered__semaphore__t_html"><div class="ttname"><a href="structscc_1_1ordered__semaphore__t.html">scc::ordered_semaphore_t</a></div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00178">ordered_semaphore.h:178</a></div></div>
+<div class="ttc" id="astructscc_1_1ordered__semaphore__t_html"><div class="ttname"><a href="structscc_1_1ordered__semaphore__t.html">scc::ordered_semaphore_t</a></div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00184">ordered_semaphore.h:184</a></div></div>
 <div class="ttc" id="aclassscc_1_1ordered__semaphore_html"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html">scc::ordered_semaphore</a></div><div class="ttdoc">The ordered_semaphore primitive channel class.</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00038">ordered_semaphore.h:38</a></div></div>
 <div class="ttc" id="aclassscc_1_1ordered__semaphore_html_aa670dc99df7070d0702cb6de079f077a"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#aa670dc99df7070d0702cb6de079f077a">scc::ordered_semaphore::wait</a></div><div class="ttdeci">int wait() override</div><div class="ttdoc">lock (take) the semaphore, block if not available</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00095">ordered_semaphore.cpp:95</a></div></div>
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ecd2599f241f99e60c436470b0a1e2a4.html">sysc</a></li><li class="navelem"><a class="el" href="dir_8400f74b819af6408e1b24b7b1ac1666.html">scc</a></li><li class="navelem"><b>ordered_semaphore.h</b></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

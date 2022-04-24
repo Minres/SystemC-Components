@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ecd2599f241f99e60c436470b0a1e2a4.html">sysc</a></li><li class="navelem"><a class="el" href="dir_d87af8e2b499dff1da3e679c52ce5646.html">tlm</a></li><li class="navelem"><a class="el" href="dir_e617fe9c9bac53cf4104c40a60f7993d.html">scc</a></li><li class="navelem"><a class="el" href="dir_dce7ea34a91c0189183270decd6916da.html">scv</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('tlm__recording__extension_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">tlm_recording_extension.h</div>  </div>
@@ -115,16 +132,20 @@ $(function() {
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* TLM_RECORDING_EXTENSION_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__recording__extension_html_ae60ae6b13f72894c8887cda134df9038"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html#ae60ae6b13f72894c8887cda134df9038">tlm::scc::scv::tlm_recording_extension::get_creator</a></div><div class="ttdeci">void * get_creator()</div><div class="ttdoc">accessor to the owner, the property is read only.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recording__extension_8h_source.html#l00131">tlm_recording_extension.h:131</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__recording__extension_html_ab227511212da17b97aa714b01a6efe04"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html#ab227511212da17b97aa714b01a6efe04">tlm::scc::scv::tlm_recording_extension::tlm_recording_extension</a></div><div class="ttdeci">tlm_recording_extension(SCVNS scv_tr_handle handle, void *creator_)</div><div class="ttdoc">constructor storing the handle of the transaction and the owner of this extension</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recording__extension_8h_source.html#l00125">tlm_recording_extension.h:125</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__recording__extension_html_a96b874bddabc000d4cfe6816deccfd44"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html#a96b874bddabc000d4cfe6816deccfd44">tlm::scc::scv::tlm_recording_extension::copy_from</a></div><div class="ttdeci">virtual void copy_from(tlm_extension_base const &amp;from)</div><div class="ttdoc">copy data between extensions.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recording__extension_8h_source.html#l00114">tlm_recording_extension.h:114</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__recording__extension_html_a1e42b79c81e1f36f82dd16c03ae04e11"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html#a1e42b79c81e1f36f82dd16c03ae04e11">tlm::scc::scv::tlm_recording_extension::clone</a></div><div class="ttdeci">virtual tlm_extension_base * clone() const</div><div class="ttdoc">clone the given extension and duplicate the SCV transaction handle.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recording__extension_8h_source.html#l00106">tlm_recording_extension.h:106</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__recording__extension_html_a5242db103effdec334d65ce5088e08c9"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html#a5242db103effdec334d65ce5088e08c9">tlm::scc::scv::tlm_recording_extension::txHandle</a></div><div class="ttdeci">SCVNS scv_tr_handle txHandle</div><div class="ttdoc">accessor to the SCV transaction handle.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__recording__extension_8h_source.html#l00135">tlm_recording_extension.h:135</a></div></div>
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ecd2599f241f99e60c436470b0a1e2a4.html">sysc</a></li><li class="navelem"><a class="el" href="dir_d87af8e2b499dff1da3e679c52ce5646.html">tlm</a></li><li class="navelem"><a class="el" href="dir_e617fe9c9bac53cf4104c40a60f7993d.html">scc</a></li><li class="navelem"><a class="el" href="dir_dce7ea34a91c0189183270decd6916da.html">scv</a></li><li class="navelem"><b>tlm_recording_extension.h</b></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

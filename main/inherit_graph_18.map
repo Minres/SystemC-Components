@@ -1,4 +1,11 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,20,144,47"/>
-<area shape="rect" id="node2" href="$classaxi_1_1scv_1_1impl_1_1ace__recording__payload.html" title="the class to hold the information to be recorded on the timed streams" alt="" coords="192,5,352,61"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,183,60,209"/>
+<area shape="rect" id="node2" href="$structaxi_1_1fsm_1_1ATrans.html" title="special state to map AWREADY/WDATA of SNPS to AXI protocol" alt="" coords="143,5,268,32"/>
+<area shape="rect" id="node3" href="$structaxi_1_1fsm_1_1Idle.html" title="the idle state" alt="" coords="152,56,259,83"/>
+<area shape="rect" id="node4" href="$structaxi_1_1fsm_1_1PartialRequest.html" title="a burst beat" alt="" coords="117,107,294,133"/>
+<area shape="rect" id="node5" href="$structaxi_1_1fsm_1_1PartialResponse.html" title="the beat of a burst response" alt="" coords="112,157,299,184"/>
+<area shape="rect" id="node6" href="$structaxi_1_1fsm_1_1Request.html" title="the request, either the last beat of a write or the address phase of a read" alt="" coords="137,208,273,235"/>
+<area shape="rect" id="node7" href="$structaxi_1_1fsm_1_1Response.html" title="the write response or the last read response (beat)" alt="" coords="132,259,279,285"/>
+<area shape="rect" id="node8" href="$structaxi_1_1fsm_1_1WaitAck.html" title="waiting for ack in case of ACE access" alt="" coords="137,309,273,336"/>
+<area shape="rect" id="node9" href="$structaxi_1_1fsm_1_1WaitForResponse.html" title="the operation state where the target can do it&#39;s stuff" alt="" coords="108,360,303,387"/>
 </map>

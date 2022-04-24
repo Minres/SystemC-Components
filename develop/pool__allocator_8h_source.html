@@ -103,10 +103,10 @@ $(document).ready(function(){initNavTree('pool__allocator_8h_source.html',''); i
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="classutil_1_1pool__allocator.html">pool_allocator</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">using</span> chunk_type = uint8_t[<span class="keyword">sizeof</span>(T)];</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::vector&lt;std::array&lt;chunk_type, CHUNK_SIZE&gt;*&gt; chunks;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::deque&lt;void*&gt; free_list;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::mutex payload_mtx;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::unordered_map&lt;void*, uint64_t&gt; used_blocks;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::vector&lt;std::array&lt;chunk_type, CHUNK_SIZE&gt;*&gt; chunks{};</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::deque&lt;void*&gt; free_list{};</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::mutex payload_mtx{};</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::unordered_map&lt;void*, uint64_t&gt; used_blocks{};</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#ifdef HAVE_GETENV</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">bool</span> debug_memory{getenv(<span class="stringliteral">&quot;TLM_MM_CHECK&quot;</span>)!=<span class="keyword">nullptr</span>};</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#else</span></div>
@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('pool__allocator_8h_source.html',''); i
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
 <div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classutil_1_1pool__allocator.html#a3064a8dad08445ab5ef5b944cfbe0f97">   81</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keywordtype">unsigned</span> CHUNK_SIZE&gt; <a class="code" href="classutil_1_1pool__allocator.html">pool_allocator&lt;T, CHUNK_SIZE&gt;</a>&amp; <a class="code" href="classutil_1_1pool__allocator.html#a3064a8dad08445ab5ef5b944cfbe0f97">pool_allocator&lt;T, CHUNK_SIZE&gt;::get</a>() {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">static</span> thread_local <a class="code" href="classutil_1_1pool__allocator.html">pool_allocator</a> inst;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    thread_local <a class="code" href="classutil_1_1pool__allocator.html">pool_allocator</a> inst;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> inst;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>

@@ -1,0 +1,27 @@
+var classaxi_1_1scv_1_1axi__recorder =
+[
+    [ "initiator_socket_type", "classaxi_1_1scv_1_1axi__recorder.html#ae7db7b81f9c17e48469b90eb22ee290f", null ],
+    [ "mm", "classaxi_1_1scv_1_1axi__recorder.html#a1eff85b3034b1dc2ca72dce315d59778", null ],
+    [ "recording_types", "classaxi_1_1scv_1_1axi__recorder.html#ae29992ba38d1451af6be5ec7c16383f5", null ],
+    [ "target_socket_type", "classaxi_1_1scv_1_1axi__recorder.html#a4c67d8b16cc42accde2bdb2f9721c3b0", null ],
+    [ "tlm_recording_payload", "classaxi_1_1scv_1_1axi__recorder.html#afb1975b6fca469080fd27df23c54e4ee", null ],
+    [ "axi_recorder", "classaxi_1_1scv_1_1axi__recorder.html#a884a1de6b935fd7405e029b79d04d581", null ],
+    [ "~axi_recorder", "classaxi_1_1scv_1_1axi__recorder.html#ad54188a56f83470e2a5f9fb5cfeda2a4", null ],
+    [ "b_transport", "classaxi_1_1scv_1_1axi__recorder.html#a52132138c3407ec5b77e27ca5d1c8394", null ],
+    [ "get_bw_if", "classaxi_1_1scv_1_1axi__recorder.html#a1a10881249143bb999a1d1d0f5fbddf1", null ],
+    [ "get_direct_mem_ptr", "classaxi_1_1scv_1_1axi__recorder.html#aa08ec214c5b5733bf27b4c25a5c82347", null ],
+    [ "get_fw_if", "classaxi_1_1scv_1_1axi__recorder.html#a10a01dc4da6831564b5657edf87948aa", null ],
+    [ "initialize_streams", "classaxi_1_1scv_1_1axi__recorder.html#ad4f24d386d8c5175a3854d9fd2c91ee1", null ],
+    [ "invalidate_direct_mem_ptr", "classaxi_1_1scv_1_1axi__recorder.html#a958266145edd4bcd695d644806ffba0e", null ],
+    [ "isRecordingBlockingTxEnabled", "classaxi_1_1scv_1_1axi__recorder.html#aa0d346d4fdee81b232ea8c72e52bb396", null ],
+    [ "isRecordingNonBlockingTxEnabled", "classaxi_1_1scv_1_1axi__recorder.html#a30ff9c9630dfb033bb5e19ad3914ce46", null ],
+    [ "nb_transport_bw", "classaxi_1_1scv_1_1axi__recorder.html#abd57d9b6f865884f9fce5dd96610c768", null ],
+    [ "nb_transport_fw", "classaxi_1_1scv_1_1axi__recorder.html#a648984345f67c3bfcbb986ca7be012f3", null ],
+    [ "SC_HAS_PROCESS", "classaxi_1_1scv_1_1axi__recorder.html#acf7a6a7e5ec4169f6812e4580c6145d1", null ],
+    [ "transport_dbg", "classaxi_1_1scv_1_1axi__recorder.html#abc924c9925ba704ca8197194d6ce024f", null ],
+    [ "enableBlTracing", "classaxi_1_1scv_1_1axi__recorder.html#a028def3e50510882d6be5b87a604c24c", null ],
+    [ "enableDmiTracing", "classaxi_1_1scv_1_1axi__recorder.html#a4d3f6d39e366852becdf2cff464aa921", null ],
+    [ "enableNbTracing", "classaxi_1_1scv_1_1axi__recorder.html#a80cdbf2ddabebdf614fb31bf40d599b3", null ],
+    [ "enableTimedTracing", "classaxi_1_1scv_1_1axi__recorder.html#aa2dd8b17390c1ef9064506bd2fad4fba", null ],
+    [ "enableTrDbgTracing", "classaxi_1_1scv_1_1axi__recorder.html#aa3b5232d75cb62d84e91f981d7e4d26a", null ]
+];

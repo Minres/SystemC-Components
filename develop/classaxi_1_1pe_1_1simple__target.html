@@ -197,7 +197,7 @@ sc_core::sc_attribute&lt; double &gt;&#160;</td><td class="memItemRight" valign=
 <tr class="separator:ab93f4f261ad101d60de1d0a9bd0634b5 inherit pub_attribs_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab651838e76ed883f37c69b90dc63d00a inherit pub_attribs_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memItemLeft" align="right" valign="top"><a id="ab651838e76ed883f37c69b90dc63d00a"></a>
 sc_core::sc_attribute&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#ab651838e76ed883f37c69b90dc63d00a">rd_data_interleaving</a> {&quot;rd_data_interleaving&quot;, true}</td></tr>
-<tr class="memdesc:ab651838e76ed883f37c69b90dc63d00a inherit pub_attribs_classaxi_1_1pe_1_1axi__target__pe__b"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable data interleaving on read responses <br /></td></tr>
+<tr class="memdesc:ab651838e76ed883f37c69b90dc63d00a inherit pub_attribs_classaxi_1_1pe_1_1axi__target__pe__b"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable data interleaving on read responses if rd_data_beat_delay is greater than 0 <br /></td></tr>
 <tr class="separator:ab651838e76ed883f37c69b90dc63d00a inherit pub_attribs_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fd6b30ed492ce3bf2fb1b567442216c inherit pub_attribs_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memItemLeft" align="right" valign="top"><a id="a1fd6b30ed492ce3bf2fb1b567442216c"></a>
 sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#a1fd6b30ed492ce3bf2fb1b567442216c">wr_data_accept_delay</a> {&quot;wr_data_accept_delay&quot;, 0}</td></tr>
@@ -270,9 +270,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>send_rd_resp_beat_thr
 <tr class="memitem:a7bd23c65dc35b584c5399ef449c6d1b7 inherit pro_methods_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memItemLeft" align="right" valign="top"><a id="a7bd23c65dc35b584c5399ef449c6d1b7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>end_of_elaboration</b> () override</td></tr>
 <tr class="separator:a7bd23c65dc35b584c5399ef449c6d1b7 inherit pro_methods_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d31a5ca28762f98f4fe024122c8bf7e inherit pro_methods_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memItemLeft" align="right" valign="top"><a id="a6d31a5ca28762f98f4fe024122c8bf7e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>start_of_simulation</b> () override</td></tr>
-<tr class="separator:a6d31a5ca28762f98f4fe024122c8bf7e inherit pro_methods_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5061498d49e388a701a81148c9a0a277 inherit pro_methods_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memItemLeft" align="right" valign="top"><a id="a5061498d49e388a701a81148c9a0a277"></a>
 <a class="el" href="structscc_1_1sc__variable.html">scc::sc_variable</a>&lt; unsigned &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getOutStandingTx</b> (tlm::tlm_command cmd)</td></tr>
 <tr class="separator:a5061498d49e388a701a81148c9a0a277 inherit pro_methods_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -397,6 +394,9 @@ std::array&lt; axi::fsm::protocol_time_point_e, 3 &gt;&#160;</td><td class="memI
 <tr class="memitem:a284bec421a7ae0700723db6ed9748e32 inherit pro_attribs_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memItemLeft" align="right" valign="top"><a id="a284bec421a7ae0700723db6ed9748e32"></a>
 tlm_utils::peq_with_cb_and_phase&lt; <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi_target_pe_b</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fw_peq</b> {this, &amp;axi_target_pe_b::nb_fw}</td></tr>
 <tr class="separator:a284bec421a7ae0700723db6ed9748e32 inherit pro_attribs_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67ad7efa2ba1d5eeb96bfa8887935567 inherit pro_attribs_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memItemLeft" align="right" valign="top"><a id="a67ad7efa2ba1d5eeb96bfa8887935567"></a>
+std::unordered_set&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>active_rdresp_id</b></td></tr>
+<tr class="separator:a67ad7efa2ba1d5eeb96bfa8887935567 inherit pro_attribs_classaxi_1_1pe_1_1axi__target__pe__b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_structaxi_1_1fsm_1_1base"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_structaxi_1_1fsm_1_1base')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="structaxi_1_1fsm_1_1base.html">axi::fsm::base</a></td></tr>
 <tr class="memitem:ab862ab3c3a27111c3306d55dc25bda1c inherit pro_attribs_structaxi_1_1fsm_1_1base"><td class="memItemLeft" align="right" valign="top"><a id="ab862ab3c3a27111c3306d55dc25bda1c"></a>
 ::<a class="el" href="structscc_1_1peq.html">scc::peq</a>&lt; std::tuple&lt; axi::fsm::protocol_time_point_e, <a class="el" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a> *, bool &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fsm_event_queue</b></td></tr>
@@ -435,7 +435,7 @@ class axi::pe::simple_target&lt; BUSWIDTH, TYPES, N, POL &gt;</h3>
 
 <p>the target socket protocol engine adapted to a particular target socket configuration </p>
 
-<p class="definition">Definition at line <a class="el" href="simple__target_8h_source.html#l00208">208</a> of file <a class="el" href="simple__target_8h_source.html">simple_target.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simple__target_8h_source.html#l00209">209</a> of file <a class="el" href="simple__target_8h_source.html">simple_target.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2f9cde008dc8f5707fb9b52c47be66d1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f9cde008dc8f5707fb9b52c47be66d1">&#9670;&nbsp;</a></span>simple_target()</h2>
@@ -471,7 +471,7 @@ template&lt;unsigned int BUSWIDTH = 32, typename TYPES  = axi::axi_protocol_type
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="simple__target_8h_source.html#l00217">217</a> of file <a class="el" href="simple__target_8h_source.html">simple_target.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simple__target_8h_source.html#l00218">218</a> of file <a class="el" href="simple__target_8h_source.html">simple_target.h</a>.</p>
 
 </div>
 </div>

@@ -88,9 +88,9 @@ $(document).ready(function(){initNavTree('obi__tlm_8h_source.html',''); initResi
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;tlm&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceobi.html">obi</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="namespaceobi.html">   25</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceobi.html">obi</a> {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">struct </span>obi_extension : <span class="keyword">public</span> tlm::tlm_extension&lt;obi_extension&gt; {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">struct </span><a class="code" href="structobi_1_1obi__extension.html">obi_extension</a> : <span class="keyword">public</span> tlm::tlm_extension&lt;obi_extension&gt; {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    uint32_t get_id() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> set_id(uint32_t);</div>
@@ -101,9 +101,9 @@ $(document).ready(function(){initNavTree('obi__tlm_8h_source.html',''); initResi
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    uint32_t get_duser() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> set_duser(uint32_t);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    obi_extension() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="structobi_1_1obi__extension.html">obi_extension</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    obi_extension(<span class="keyword">const</span> obi_extension&amp; o) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="structobi_1_1obi__extension.html">obi_extension</a>(<span class="keyword">const</span> <a class="code" href="structobi_1_1obi__extension.html">obi_extension</a>&amp; o) = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    tlm::tlm_extension_base* <a class="code" href="structobi_1_1obi__extension.html#adbab62f468251850bd589b155965f957">clone</a>() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="structobi_1_1obi__extension.html#a67ae04794e6735897201e7dad1ce41fc">copy_from</a>(tlm::tlm_extension_base <span class="keyword">const</span>&amp; ext) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('obi__tlm_8h_source.html',''); initResi
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    uint32_t duser{0};</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">inline</span> tlm::tlm_extension_base* <a class="code" href="structobi_1_1obi__extension.html#adbab62f468251850bd589b155965f957">obi_extension::clone</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="keyword">new</span> obi_extension(*<span class="keyword">this</span>); }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">inline</span> tlm::tlm_extension_base* <a class="code" href="structobi_1_1obi__extension.html#adbab62f468251850bd589b155965f957">obi_extension::clone</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="structobi_1_1obi__extension.html">obi_extension</a>(*<span class="keyword">this</span>); }</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">inline</span> uint32_t obi_extension::get_id()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> id;</div>
@@ -155,7 +155,7 @@ $(document).ready(function(){initNavTree('obi__tlm_8h_source.html',''); initResi
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _OBI_TLM_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespaceobi_html"><div class="ttname"><a href="namespaceobi.html">obi</a></div><div class="ttdoc">TLM2.0 components modeling OBI.</div><div class="ttdef"><b>Definition:</b> <a href="obi_2bfm_2target_8h_source.html#l00036">target.h:36</a></div></div>
+<div class="ttc" id="anamespaceobi_html"><div class="ttname"><a href="namespaceobi.html">obi</a></div><div class="ttdoc">TLM2.0 components modeling OBI.</div><div class="ttdef"><b>Definition:</b> <a href="obi__tlm_8h_source.html#l00025">obi_tlm.h:25</a></div></div>
 <div class="ttc" id="astructobi_1_1obi__extension_html"><div class="ttname"><a href="structobi_1_1obi__extension.html">obi::obi_extension</a></div><div class="ttdef"><b>Definition:</b> <a href="obi__tlm_8h_source.html#l00041">obi_tlm.h:41</a></div></div>
 <div class="ttc" id="astructobi_1_1obi__extension_html_adbab62f468251850bd589b155965f957"><div class="ttname"><a href="structobi_1_1obi__extension.html#adbab62f468251850bd589b155965f957">obi::obi_extension::clone</a></div><div class="ttdeci">tlm::tlm_extension_base * clone() const override</div><div class="ttdoc">the clone function to create deep copies of</div><div class="ttdef"><b>Definition:</b> <a href="obi__tlm_8h_source.html#l00072">obi_tlm.h:72</a></div></div>
 <div class="ttc" id="astructobi_1_1obi__extension_html_a67ae04794e6735897201e7dad1ce41fc"><div class="ttname"><a href="structobi_1_1obi__extension.html#a67ae04794e6735897201e7dad1ce41fc">obi::obi_extension::copy_from</a></div><div class="ttdeci">void copy_from(tlm::tlm_extension_base const &amp;ext) override</div><div class="ttdoc">deep copy all values from ext</div><div class="ttdef"><b>Definition:</b> <a href="obi__tlm_8h_source.html#l00098">obi_tlm.h:98</a></div></div>

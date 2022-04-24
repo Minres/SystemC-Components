@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ecd2599f241f99e60c436470b0a1e2a4.html">sysc</a></li><li class="navelem"><a class="el" href="dir_8400f74b819af6408e1b24b7b1ac1666.html">scc</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('perf__estimator_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">perf_estimator.h</div>  </div>
@@ -69,64 +86,71 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;boost/date_time/posix_time/posix_time.hpp&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;systemc&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>scc {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">class </span>perf_estimator : <span class="keyword">public</span> sc_core::sc_module {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">struct </span>time_stamp {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        boost::posix_time::ptime wall_clock_stamp;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">double</span> proc_clock_stamp;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        time_stamp()</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        : wall_clock_stamp(boost::posix_time::microsec_clock::universal_time())</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        , proc_clock_stamp(get_cpu_time()) {}</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        time_stamp&amp; operator=(<span class="keyword">const</span> time_stamp&amp; o) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            wall_clock_stamp = o.wall_clock_stamp;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            proc_clock_stamp = o.proc_clock_stamp;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">void</span> set() {</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classscc_1_1perf__estimator.html">   47</a></span>&#160;            wall_clock_stamp = boost::posix_time::microsec_clock::universal_time();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            proc_clock_stamp = get_cpu_time();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">double</span> get_cpu_time();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    };</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classscc_1_1perf__estimator.html#acf4b89b1872548fbad9cc550a289b4c9">perf_estimator</a>()</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    : <a class="code" href="classscc_1_1perf__estimator.html#acf4b89b1872548fbad9cc550a289b4c9">perf_estimator</a>(sc_core::SC_ZERO_TIME) {}</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classscc_1_1perf__estimator.html#acf4b89b1872548fbad9cc550a289b4c9">perf_estimator</a>(sc_core::sc_time heart_beat)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    : <a class="code" href="classscc_1_1perf__estimator.html#acf4b89b1872548fbad9cc550a289b4c9">perf_estimator</a>(sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;perf_estimator&quot;</span>, true), heart_beat) {}</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classscc_1_1perf__estimator.html#ae1942a4583cf32a9e9055f6bac3f01b2">~perf_estimator</a>();</div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classscc_1_1perf__estimator.html#ad87498e8dae1a8ed27e9191b292197c4">   83</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1perf__estimator.html#a591441ba459c8a39b38a851653099c35">set_cycle_time</a>(sc_core::sc_time cycle_period) { this-&gt;cycle_period = cycle_period; };</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="classscc_1_1perf__estimator.html#acf4b89b1872548fbad9cc550a289b4c9">perf_estimator</a>(<span class="keyword">const</span> sc_core::sc_module_name&amp; nm, sc_core::sc_time heart_beat);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1perf__estimator.html#ad13d252cdce8369da7063e3bd1c77837">end_of_elaboration</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> start_of_simulation() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> end_of_simulation() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    time_stamp <a class="code" href="classscc_1_1perf__estimator.html#ae7d39d8da818301113b32d12613878fa">soc</a>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    time_stamp eoe;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    time_stamp sos;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    time_stamp eos;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    sc_core::sc_time beat_delay, cycle_period;</div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classscc_1_1perf__estimator.html#a591441ba459c8a39b38a851653099c35">   97</a></span>&#160;    <span class="keywordtype">void</span> beat();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;} <span class="comment">/* namespace scc */</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SCC_PERFORMANCETRACER_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>scc {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">class </span>perf_estimator : <span class="keyword">public</span> sc_core::sc_module {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">struct </span>time_stamp {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        boost::posix_time::ptime wall_clock_stamp;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">double</span> proc_clock_stamp;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        time_stamp()</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        : wall_clock_stamp(boost::posix_time::microsec_clock::universal_time())</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        , proc_clock_stamp(get_cpu_time()) {}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        time_stamp&amp; operator=(<span class="keyword">const</span> time_stamp&amp; o) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            wall_clock_stamp = o.wall_clock_stamp;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            proc_clock_stamp = o.proc_clock_stamp;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">void</span> set() {</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classscc_1_1perf__estimator.html">   48</a></span>&#160;            wall_clock_stamp = boost::posix_time::microsec_clock::universal_time();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            proc_clock_stamp = get_cpu_time();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">double</span> get_cpu_time();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    };</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classscc_1_1perf__estimator.html#acf4b89b1872548fbad9cc550a289b4c9">perf_estimator</a>()</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    : <a class="code" href="classscc_1_1perf__estimator.html#acf4b89b1872548fbad9cc550a289b4c9">perf_estimator</a>(sc_core::SC_ZERO_TIME) {}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classscc_1_1perf__estimator.html#acf4b89b1872548fbad9cc550a289b4c9">perf_estimator</a>(sc_core::sc_time heart_beat)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    : <a class="code" href="classscc_1_1perf__estimator.html#acf4b89b1872548fbad9cc550a289b4c9">perf_estimator</a>(sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;perf_estimator&quot;</span>, true), heart_beat) {}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classscc_1_1perf__estimator.html#ae1942a4583cf32a9e9055f6bac3f01b2">~perf_estimator</a>();</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classscc_1_1perf__estimator.html#ad87498e8dae1a8ed27e9191b292197c4">   84</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1perf__estimator.html#a591441ba459c8a39b38a851653099c35">set_cycle_time</a>(sc_core::sc_time cycle_period) { this-&gt;cycle_period = cycle_period; };</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="classscc_1_1perf__estimator.html#acf4b89b1872548fbad9cc550a289b4c9">perf_estimator</a>(<span class="keyword">const</span> sc_core::sc_module_name&amp; nm, sc_core::sc_time heart_beat);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1perf__estimator.html#ad13d252cdce8369da7063e3bd1c77837">end_of_elaboration</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> start_of_simulation() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> end_of_simulation() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    time_stamp <a class="code" href="classscc_1_1perf__estimator.html#ae7d39d8da818301113b32d12613878fa">soc</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    time_stamp eoe;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    time_stamp sos;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    time_stamp eos;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    sc_core::sc_time beat_delay, cycle_period;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classscc_1_1perf__estimator.html#a591441ba459c8a39b38a851653099c35">   98</a></span>&#160;    <span class="keywordtype">void</span> beat();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">long</span> get_memory();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">long</span> max_memory{0};</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;} <span class="comment">/* namespace scc */</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SCC_PERFORMANCETRACER_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <div class="ttc" id="aclassscc_1_1perf__estimator_html_ae1942a4583cf32a9e9055f6bac3f01b2"><div class="ttname"><a href="classscc_1_1perf__estimator.html#ae1942a4583cf32a9e9055f6bac3f01b2">scc::perf_estimator::~perf_estimator</a></div><div class="ttdeci">virtual ~perf_estimator()</div><div class="ttdoc">destructor</div><div class="ttdef"><b>Definition:</b> <a href="perf__estimator_8cpp_source.html#l00059">perf_estimator.cpp:59</a></div></div>
-<div class="ttc" id="aclassscc_1_1perf__estimator_html_a591441ba459c8a39b38a851653099c35"><div class="ttname"><a href="classscc_1_1perf__estimator.html#a591441ba459c8a39b38a851653099c35">scc::perf_estimator::set_cycle_time</a></div><div class="ttdeci">void set_cycle_time(sc_core::sc_time cycle_period)</div><div class="ttdoc">set the cycle time for cylces per second calculation</div><div class="ttdef"><b>Definition:</b> <a href="perf__estimator_8h_source.html#l00097">perf_estimator.h:97</a></div></div>
-<div class="ttc" id="aclassscc_1_1perf__estimator_html_ad13d252cdce8369da7063e3bd1c77837"><div class="ttname"><a href="classscc_1_1perf__estimator.html#ad13d252cdce8369da7063e3bd1c77837">scc::perf_estimator::end_of_elaboration</a></div><div class="ttdeci">void end_of_elaboration() override</div><div class="ttdoc">SystemC callbacks.</div><div class="ttdef"><b>Definition:</b> <a href="perf__estimator_8cpp_source.html#l00072">perf_estimator.cpp:72</a></div></div>
-<div class="ttc" id="aclassscc_1_1perf__estimator_html_acf4b89b1872548fbad9cc550a289b4c9"><div class="ttname"><a href="classscc_1_1perf__estimator.html#acf4b89b1872548fbad9cc550a289b4c9">scc::perf_estimator::perf_estimator</a></div><div class="ttdeci">perf_estimator()</div><div class="ttdoc">default constructor creating an unnamed perf_estimator</div><div class="ttdef"><b>Definition:</b> <a href="perf__estimator_8h_source.html#l00075">perf_estimator.h:75</a></div></div>
-<div class="ttc" id="aclassscc_1_1perf__estimator_html_ae7d39d8da818301113b32d12613878fa"><div class="ttname"><a href="classscc_1_1perf__estimator.html#ae7d39d8da818301113b32d12613878fa">scc::perf_estimator::soc</a></div><div class="ttdeci">time_stamp soc</div><div class="ttdoc">the recorded time stamps</div><div class="ttdef"><b>Definition:</b> <a href="perf__estimator_8h_source.html#l00106">perf_estimator.h:106</a></div></div>
+<div class="ttc" id="aclassscc_1_1perf__estimator_html_a591441ba459c8a39b38a851653099c35"><div class="ttname"><a href="classscc_1_1perf__estimator.html#a591441ba459c8a39b38a851653099c35">scc::perf_estimator::set_cycle_time</a></div><div class="ttdeci">void set_cycle_time(sc_core::sc_time cycle_period)</div><div class="ttdoc">set the cycle time for cylces per second calculation</div><div class="ttdef"><b>Definition:</b> <a href="perf__estimator_8h_source.html#l00098">perf_estimator.h:98</a></div></div>
+<div class="ttc" id="aclassscc_1_1perf__estimator_html_ad13d252cdce8369da7063e3bd1c77837"><div class="ttname"><a href="classscc_1_1perf__estimator.html#ad13d252cdce8369da7063e3bd1c77837">scc::perf_estimator::end_of_elaboration</a></div><div class="ttdeci">void end_of_elaboration() override</div><div class="ttdoc">SystemC callbacks.</div><div class="ttdef"><b>Definition:</b> <a href="perf__estimator_8cpp_source.html#l00073">perf_estimator.cpp:73</a></div></div>
+<div class="ttc" id="aclassscc_1_1perf__estimator_html_acf4b89b1872548fbad9cc550a289b4c9"><div class="ttname"><a href="classscc_1_1perf__estimator.html#acf4b89b1872548fbad9cc550a289b4c9">scc::perf_estimator::perf_estimator</a></div><div class="ttdeci">perf_estimator()</div><div class="ttdoc">default constructor creating an unnamed perf_estimator</div><div class="ttdef"><b>Definition:</b> <a href="perf__estimator_8h_source.html#l00076">perf_estimator.h:76</a></div></div>
+<div class="ttc" id="aclassscc_1_1perf__estimator_html_ae7d39d8da818301113b32d12613878fa"><div class="ttname"><a href="classscc_1_1perf__estimator.html#ae7d39d8da818301113b32d12613878fa">scc::perf_estimator::soc</a></div><div class="ttdeci">time_stamp soc</div><div class="ttdoc">the recorded time stamps</div><div class="ttdef"><b>Definition:</b> <a href="perf__estimator_8h_source.html#l00107">perf_estimator.h:107</a></div></div>
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ecd2599f241f99e60c436470b0a1e2a4.html">sysc</a></li><li class="navelem"><a class="el" href="dir_8400f74b819af6408e1b24b7b1ac1666.html">scc</a></li><li class="navelem"><b>perf_estimator.h</b></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

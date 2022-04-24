@@ -1,5 +1,5 @@
-<map id="scc::tlm_target&lt; BUSWIDTH &gt;" name="scc::tlm_target&lt; BUSWIDTH &gt;">
-<area shape="rect" id="node1" title="a simple access&#45;width based bus interface (no DMI support)" alt="" coords="1151,129,1372,155"/>
+<map id="scc::tlm_target&lt; BUSWIDTH, ADDR_UNIT_WIDTH &gt;" name="scc::tlm_target&lt; BUSWIDTH, ADDR_UNIT_WIDTH &gt;">
+<area shape="rect" id="node1" title="a simple access&#45;width based bus interface (no DMI support)" alt="" coords="1151,121,1361,163"/>
 <area shape="rect" id="node2" href="$classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="835,57,1014,113"/>
 <area shape="rect" id="node3" href="$classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket.html" title=" " alt="" coords="589,64,780,105"/>
 <area shape="rect" id="node4" title=" " alt="" coords="257,5,483,76"/>

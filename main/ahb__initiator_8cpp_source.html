@@ -5,11 +5,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: src/bus_interfaces/ahb/ahb_initiator.cpp Source File</title>
+<title>scc: src/bus_interfaces/ahb/pe/ahb_initiator.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2e5638b409f3ace0c6070b175318504a.html">bus_interfaces</a></li><li class="navelem"><a class="el" href="dir_47442d965ec8ba98945afaeb09ef6dfa.html">ahb</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('ahb__initiator_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">ahb_initiator.cpp</div>  </div>
@@ -55,7 +72,7 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Author: eyckj</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;ahb/pe/ahb_initiator.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;ahb_initiator.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;atp/timing_params.h&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;scc/report.h&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
@@ -111,7 +128,7 @@ $(function() {
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classahb_1_1pe_1_1ahb__initiator__b.html#abf362e537cf45c1cde8cfe0a2d224058">   64</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classahb_1_1pe_1_1ahb__initiator__b.html#abf362e537cf45c1cde8cfe0a2d224058">ahb_initiator_b::transport</a>(payload_type&amp; trans, <span class="keywordtype">bool</span> blocking) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classahb_1_1pe_1_1ahb__initiator__b.html#abf362e537cf45c1cde8cfe0a2d224058">   64</a></span>&#160;<span class="keywordtype">void</span> ahb_initiator_b::transport(payload_type&amp; trans, <span class="keywordtype">bool</span> blocking) {</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;got transport req for id=&quot;</span> &lt;&lt; &amp;trans;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span>(blocking) {</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        sc_time t;</div>
@@ -130,7 +147,7 @@ $(function() {
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">auto</span>* ext = trans.get_extension&lt;<a class="code" href="structahb_1_1ahb__extension.html">ahb::ahb_extension</a>&gt;();</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keyword">auto</span> delay_in_cycles =</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            trans.is_read() ? (timing_e ? timing_e-&gt;artv : <a class="code" href="classahb_1_1pe_1_1ahb__initiator__b.html#a8569ff4b12690128c312d7c8fe5d6378">artv</a>.value) : (timing_e ? timing_e-&gt;awtv : <a class="code" href="classahb_1_1pe_1_1ahb__initiator__b.html#a9ac6906ccf643f4adce5d1c0ccf884ce">awtv</a>.value);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            trans.is_read() ? (timing_e ? timing_e-&gt;artv : artv.value) : (timing_e ? timing_e-&gt;awtv : awtv.value);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span>(delay_in_cycles)</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            delay_in_cycles--; <span class="comment">// one cycle implicitly executed</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; delay_in_cycles; ++i)</div>
@@ -157,7 +174,7 @@ $(function() {
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        tlm::tlm_phase next_phase{tlm::UNINITIALIZED_PHASE};</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        addr_chnl.<a class="code" href="classscc_1_1ordered__semaphore.html#aa670dc99df7070d0702cb6de079f077a">wait</a>();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        addr_chnl.wait();</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;starting read address phase of tx with id=&quot;</span> &lt;&lt; &amp;trans;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keyword">auto</span> res = send(trans, txs, tlm::BEGIN_REQ);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">if</span>(res == ahb::BEGIN_PARTIAL_RESP || res == tlm::BEGIN_RESP)</div>
@@ -167,8 +184,8 @@ $(function() {
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        wait(clk_i.posedge_event());</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">auto</span> finished = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> exp_burst_length = burst_length;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        data_chnl.<a class="code" href="classscc_1_1ordered__semaphore.html#aa670dc99df7070d0702cb6de079f077a">wait</a>();</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        addr_chnl.<a class="code" href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">post</a>();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        data_chnl.wait();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        addr_chnl.post();</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">do</span> {</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="comment">// waiting for response</span></div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keyword">auto</span> entry = next_phase == tlm::UNINITIALIZED_PHASE ? txs-&gt;peq.<a class="code" href="structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed">get</a>() : std::make_tuple(&amp;trans, next_phase);</div>
@@ -176,7 +193,7 @@ $(function() {
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="comment">// Handle optional CRESP response</span></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keywordflow">if</span>(std::get&lt;0&gt;(entry) == &amp;trans &amp;&amp; std::get&lt;1&gt;(entry) == tlm::BEGIN_RESP) {</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;received last beat of tx with id=&quot;</span> &lt;&lt; &amp;trans;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keyword">auto</span> delay_in_cycles = timing_e ? (trans.is_read() ? timing_e-&gt;rbr : timing_e-&gt;br) : <a class="code" href="classahb_1_1pe_1_1ahb__initiator__b.html#a99526e36d733bc993871255b820f60ae">br</a>.value;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keyword">auto</span> delay_in_cycles = timing_e ? (trans.is_read() ? timing_e-&gt;rbr : timing_e-&gt;br) : br.value;</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; delay_in_cycles; ++i)</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                    wait(clk_i.posedge_event());</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                trans.set_response_status(tlm::TLM_OK_RESPONSE);</div>
@@ -192,7 +209,7 @@ $(function() {
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(std::get&lt;0&gt;(entry) == &amp;trans &amp;&amp;</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                      std::get&lt;1&gt;(entry) == ahb::BEGIN_PARTIAL_RESP) { <span class="comment">// RDAT without CRESP case</span></div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;received beat of tx with id=&quot;</span> &lt;&lt; &amp;trans;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <span class="keyword">auto</span> delay_in_cycles = timing_e ? timing_e-&gt;rbr : <a class="code" href="classahb_1_1pe_1_1ahb__initiator__b.html#adda5c39ee3fca86dfb3139817c2aa7ba">rbr</a>.value;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <span class="keyword">auto</span> delay_in_cycles = timing_e ? timing_e-&gt;rbr : rbr.value;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; delay_in_cycles; ++i)</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                    wait(clk_i.posedge_event());</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                burst_length--;</div>
@@ -205,7 +222,7 @@ $(function() {
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                }</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            }</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        } <span class="keywordflow">while</span>(!finished);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        data_chnl.<a class="code" href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">post</a>();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        data_chnl.post();</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;finished non-blocking protocol&quot;</span>;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        txs-&gt;active_tx = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        any_tx_finished.notify(SC_ZERO_TIME);</div>
@@ -213,23 +230,20 @@ $(function() {
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;finished transport req for id=&quot;</span> &lt;&lt; &amp;trans;</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <div class="ttc" id="anamespaceahb_html"><div class="ttname"><a href="namespaceahb.html">ahb</a></div><div class="ttdoc">TLM2.0 components modeling AHB.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__tlm_8h_source.html#l00016">ahb_tlm.h:16</a></div></div>
 <div class="ttc" id="anamespaceahb_1_1pe_html"><div class="ttname"><a href="namespaceahb_1_1pe.html">ahb::pe</a></div><div class="ttdoc">protocol engine implementations</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00022">ahb_initiator.h:22</a></div></div>
-<div class="ttc" id="aclassscc_1_1ordered__semaphore_html_a5f3fd55d5fb2c9ab687952c1a2c7f6bc"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">scc::ordered_semaphore::post</a></div><div class="ttdeci">int post() override</div><div class="ttdoc">unlock (give) the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00125">ordered_semaphore.cpp:125</a></div></div>
-<div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_a9ac6906ccf643f4adce5d1c0ccf884ce"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#a9ac6906ccf643f4adce5d1c0ccf884ce">ahb::pe::ahb_initiator_b::awtv</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; awtv</div><div class="ttdoc">Write address valid to next write address valid.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00075">ahb_initiator.h:75</a></div></div>
-<div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_abf362e537cf45c1cde8cfe0a2d224058"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#abf362e537cf45c1cde8cfe0a2d224058">ahb::pe::ahb_initiator_b::transport</a></div><div class="ttdeci">void transport(payload_type &amp;trans, bool blocking)</div><div class="ttdoc">The forward transport function. It behaves blocking and is re-entrant.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8cpp_source.html#l00064">ahb_initiator.cpp:64</a></div></div>
 <div class="ttc" id="astructahb_1_1ahb__extension_html"><div class="ttname"><a href="structahb_1_1ahb__extension.html">ahb::ahb_extension</a></div><div class="ttdef"><b>Definition:</b> <a href="ahb__tlm_8h_source.html#l00034">ahb_tlm.h:34</a></div></div>
-<div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_a99526e36d733bc993871255b820f60ae"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#a99526e36d733bc993871255b820f60ae">ahb::pe::ahb_initiator_b::br</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; br</div><div class="ttdoc">Write response valid to ready.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00081">ahb_initiator.h:81</a></div></div>
-<div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_adda5c39ee3fca86dfb3139817c2aa7ba"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#adda5c39ee3fca86dfb3139817c2aa7ba">ahb::pe::ahb_initiator_b::rbr</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; rbr</div><div class="ttdoc">Read data valid to same beat ready.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00079">ahb_initiator.h:79</a></div></div>
 <div class="ttc" id="astructscc_1_1peq_html_a86fe01b84c045c7b8d0090f1dc588bed"><div class="ttname"><a href="structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed">scc::peq::get</a></div><div class="ttdeci">TYPE get()</div><div class="ttdoc">blocking get</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00125">peq.h:125</a></div></div>
-<div class="ttc" id="astructahb_1_1pe_1_1ahb__initiator__b_1_1tx__state_html"><div class="ttname"><a href="structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state.html">ahb::pe::ahb_initiator_b::tx_state</a></div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00097">ahb_initiator.h:97</a></div></div>
-<div class="ttc" id="aclassahb_1_1pe_1_1ahb__initiator__b_html_a8569ff4b12690128c312d7c8fe5d6378"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__initiator__b.html#a8569ff4b12690128c312d7c8fe5d6378">ahb::pe::ahb_initiator_b::artv</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; artv</div><div class="ttdoc">Read address valid to next read address valid.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00073">ahb_initiator.h:73</a></div></div>
-<div class="ttc" id="aclassscc_1_1ordered__semaphore_html_aa670dc99df7070d0702cb6de079f077a"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#aa670dc99df7070d0702cb6de079f077a">scc::ordered_semaphore::wait</a></div><div class="ttdeci">int wait() override</div><div class="ttdoc">lock (take) the semaphore, block if not available</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00095">ordered_semaphore.cpp:95</a></div></div>
+<div class="ttc" id="astructahb_1_1pe_1_1ahb__initiator__b_1_1tx__state_html"><div class="ttname"><a href="structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state.html">ahb::pe::ahb_initiator_b::tx_state</a></div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00092">ahb_initiator.h:92</a></div></div>
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2e5638b409f3ace0c6070b175318504a.html">bus_interfaces</a></li><li class="navelem"><a class="el" href="dir_47442d965ec8ba98945afaeb09ef6dfa.html">ahb</a></li><li class="navelem"><a class="el" href="dir_34549985f03eab2019456e46b6924631.html">pe</a></li><li class="navelem"><b>ahb_initiator.cpp</b></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -124,21 +124,25 @@ $(document).ready(function(){initNavTree('types_8h_source.html',''); initResizab
 <div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1fsm__handle.html#a492c1c639c3ce74f9ffd917372a43c4a">   67</a></span>&#160;    sc_core::sc_event <a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a492c1c639c3ce74f9ffd917372a43c4a">finish</a>;</div>
 <div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1fsm__handle.html#afd9b5e0e1163fda5e7bac40832dc53a8">   69</a></span>&#160;    <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm::scc::tlm_gp_shared_ptr</a> <a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#afd9b5e0e1163fda5e7bac40832dc53a8">gp</a>{};</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">union </span>{</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        uint64_t progress;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">void</span>* pp;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    } p;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    sc_core::sc_time start;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1fsm__handle.html#a6bae2451506edbf1a79e5ff6df20985b">   78</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a6bae2451506edbf1a79e5ff6df20985b">reset</a>() {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a7c7367afac927398add8c4ec3856d85f">beat_count</a> = 0;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        p.progress = 0;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        start=sc_core::SC_ZERO_TIME;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;};</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;} <span class="comment">// namespace fsm</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;} <span class="comment">// namespace axi</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        uint64_t i64;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            uint32_t i0;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            uint32_t i1;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        } i32;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordtype">void</span>* p;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    } aux;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    sc_core::sc_time start;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1fsm__handle.html#a6bae2451506edbf1a79e5ff6df20985b">   82</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a6bae2451506edbf1a79e5ff6df20985b">reset</a>() {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a7c7367afac927398add8c4ec3856d85f">beat_count</a> = 0;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        aux.i64 = 0;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        start=sc_core::SC_ZERO_TIME;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;} <span class="comment">// namespace fsm</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;} <span class="comment">// namespace axi</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html_a7c7367afac927398add8c4ec3856d85f"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html#a7c7367afac927398add8c4ec3856d85f">axi::fsm::fsm_handle::beat_count</a></div><div class="ttdeci">size_t beat_count</div><div class="ttdoc">beat count of this transaction</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00063">types.h:63</a></div></div>
@@ -147,11 +151,11 @@ $(document).ready(function(){initNavTree('types_8h_source.html',''); initResizab
 <div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html_a492c1c639c3ce74f9ffd917372a43c4a"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html#a492c1c639c3ce74f9ffd917372a43c4a">axi::fsm::fsm_handle::finish</a></div><div class="ttdeci">sc_core::sc_event finish</div><div class="ttdoc">event indicating the end of the transaction</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00067">types.h:67</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html">axi::fsm::fsm_handle</a></div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00057">types.h:57</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html_a4198e085c0adb0dcfafc623aa9890d8b"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">axi::fsm::fsm_handle::trans</a></div><div class="ttdeci">tlm::scc::tlm_gp_shared_ptr trans</div><div class="ttdoc">pointer to the associated AXITLM payload</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00061">types.h:61</a></div></div>
-<div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html_a6bae2451506edbf1a79e5ff6df20985b"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html#a6bae2451506edbf1a79e5ff6df20985b">axi::fsm::fsm_handle::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00078">types.h:78</a></div></div>
+<div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html_a6bae2451506edbf1a79e5ff6df20985b"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html#a6bae2451506edbf1a79e5ff6df20985b">axi::fsm::fsm_handle::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00082">types.h:82</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1AxiProtocolFsm_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1AxiProtocolFsm.html">axi::fsm::AxiProtocolFsm</a></div><div class="ttdef"><b>Definition:</b> <a href="protocol__fsm_8h_source.html#l00061">protocol_fsm.h:61</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html_aad962f3327592f24aad3a7088f994369"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">axi::fsm::fsm_handle::fsm</a></div><div class="ttdeci">AxiProtocolFsm * fsm</div><div class="ttdoc">pointer to the FSM</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00059">types.h:59</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html_afd9b5e0e1163fda5e7bac40832dc53a8"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html#afd9b5e0e1163fda5e7bac40832dc53a8">axi::fsm::fsm_handle::gp</a></div><div class="ttdeci">tlm::scc::tlm_gp_shared_ptr gp</div><div class="ttdoc">additional data being used in the various adapters,</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00069">types.h:69</a></div></div>
-<div class="ttc" id="anamespaceaxi_html"><div class="ttname"><a href="namespaceaxi.html">axi</a></div><div class="ttdoc">TLM2.0 components modeling AXI/ACE.</div><div class="ttdef"><b>Definition:</b> <a href="axi4lite__tlm2pin__adaptor_8h_source.html#l00030">axi4lite_tlm2pin_adaptor.h:30</a></div></div>
+<div class="ttc" id="anamespaceaxi_html"><div class="ttname"><a href="namespaceaxi.html">axi</a></div><div class="ttdoc">TLM2.0 components modeling AXI/ACE.</div><div class="ttdef"><b>Definition:</b> <a href="src_2bus__interfaces_2axi_2axi__initiator_8h_source.html#l00028">axi_initiator.h:28</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

@@ -114,13 +114,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a15b49a8f5f6561f7ad2e1294793328f8"><td class="memTemplItemLeft" align="right" valign="top">payload_type *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html#a15b49a8f5f6561f7ad2e1294793328f8">allocate</a> ()</td></tr>
 <tr class="memdesc:a15b49a8f5f6561f7ad2e1294793328f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a tlm_payload_type with registered extension  <a href="classtlm_1_1scc_1_1tlm__mm.html#a15b49a8f5f6561f7ad2e1294793328f8">More...</a><br /></td></tr>
 <tr class="separator:a15b49a8f5f6561f7ad2e1294793328f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cf9ab91cdaff017220bc25d90c60e69"><td class="memItemLeft" align="right" valign="top">payload_type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html#a9cf9ab91cdaff017220bc25d90c60e69">allocate</a> (size_t sz)</td></tr>
-<tr class="memdesc:a9cf9ab91cdaff017220bc25d90c60e69"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a plain tlm_payload_type without extensions  <a href="classtlm_1_1scc_1_1tlm__mm.html#a9cf9ab91cdaff017220bc25d90c60e69">More...</a><br /></td></tr>
-<tr class="separator:a9cf9ab91cdaff017220bc25d90c60e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab922ca91d8f79318038f0a0d598aa3eb"><td class="memTemplParams" colspan="2">template&lt;typename PEXT &gt; </td></tr>
-<tr class="memitem:ab922ca91d8f79318038f0a0d598aa3eb"><td class="memTemplItemLeft" align="right" valign="top">payload_type *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html#ab922ca91d8f79318038f0a0d598aa3eb">allocate</a> (size_t sz)</td></tr>
-<tr class="memdesc:ab922ca91d8f79318038f0a0d598aa3eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a tlm_payload_type with registered extension and initialize data pointer  <a href="classtlm_1_1scc_1_1tlm__mm.html#ab922ca91d8f79318038f0a0d598aa3eb">More...</a><br /></td></tr>
-<tr class="separator:ab922ca91d8f79318038f0a0d598aa3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad750a8b4b8224effde8da3e734bc14b9"><td class="memItemLeft" align="right" valign="top">payload_type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html#ad750a8b4b8224effde8da3e734bc14b9">allocate</a> (size_t sz, bool be=false)</td></tr>
+<tr class="memdesc:ad750a8b4b8224effde8da3e734bc14b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a plain tlm_payload_type without extensions but initialized data and byte enable  <a href="classtlm_1_1scc_1_1tlm__mm.html#ad750a8b4b8224effde8da3e734bc14b9">More...</a><br /></td></tr>
+<tr class="separator:ad750a8b4b8224effde8da3e734bc14b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab86644999ade973fa11b5cb39bf8868d"><td class="memTemplParams" colspan="2">template&lt;typename PEXT &gt; </td></tr>
+<tr class="memitem:ab86644999ade973fa11b5cb39bf8868d"><td class="memTemplItemLeft" align="right" valign="top">payload_type *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html#ab86644999ade973fa11b5cb39bf8868d">allocate</a> (size_t sz, bool be=false)</td></tr>
+<tr class="memdesc:ab86644999ade973fa11b5cb39bf8868d"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a tlm_payload_type with registered extension and initialize data pointer  <a href="classtlm_1_1scc_1_1tlm__mm.html#ab86644999ade973fa11b5cb39bf8868d">More...</a><br /></td></tr>
+<tr class="separator:ab86644999ade973fa11b5cb39bf8868d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accf033734d72a1082e0cfc7246707493"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html#accf033734d72a1082e0cfc7246707493">free</a> (tlm::tlm_generic_payload *trans) override</td></tr>
 <tr class="memdesc:accf033734d72a1082e0cfc7246707493"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the extension into the memory pool (removing the extensions)  <a href="classtlm_1_1scc_1_1tlm__mm.html#accf033734d72a1082e0cfc7246707493">More...</a><br /></td></tr>
 <tr class="separator:accf033734d72a1082e0cfc7246707493"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,7 +138,7 @@ class tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</h3>
 <p>a tlm memory manager </p>
 <p>This memory manager can be used as singleton or as local memory manager. It uses the pool_allocator as singleton to maximize reuse </p>
 
-<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00156">156</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00178">178</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4165697b94ec8d972cec1ef316f0092b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4165697b94ec8d972cec1ef316f0092b">&#9670;&nbsp;</a></span>allocate() <span class="overload">[1/4]</span></h2>
@@ -165,7 +165,7 @@ template&lt;typename TYPES , bool CLEANUP_DATA&gt; </div>
 <p>get a plain tlm_payload_type without extensions </p>
 <dl class="section return"><dt>Returns</dt><dd>the tlm_payload_type </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00224">224</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00246">246</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
 
 </div>
 </div>
@@ -199,12 +199,12 @@ template&lt;typename PEXT &gt; </div>
 <p>get a tlm_payload_type with registered extension </p>
 <dl class="section return"><dt>Returns</dt><dd>the tlm_payload_type </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00187">187</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00209">209</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
 
 </div>
 </div>
-<a id="a9cf9ab91cdaff017220bc25d90c60e69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cf9ab91cdaff017220bc25d90c60e69">&#9670;&nbsp;</a></span>allocate() <span class="overload">[3/4]</span></h2>
+<a id="ad750a8b4b8224effde8da3e734bc14b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad750a8b4b8224effde8da3e734bc14b9">&#9670;&nbsp;</a></span>allocate() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -218,8 +218,18 @@ template&lt;typename TYPES , bool CLEANUP_DATA&gt; </div>
           <td class="memname"><a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm_mm</a>&lt; TYPES, CLEANUP_DATA &gt;::payload_type * <a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm</a>&lt; TYPES, CLEANUP_DATA &gt;::allocate </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>sz</em></td><td>)</td>
+          <td class="paramname"><em>sz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>be</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -229,15 +239,15 @@ template&lt;typename TYPES , bool CLEANUP_DATA&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>get a plain tlm_payload_type without extensions </p>
+<p>get a plain tlm_payload_type without extensions but initialized data and byte enable </p>
 <dl class="section return"><dt>Returns</dt><dd>the tlm_payload_type </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00230">230</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00252">252</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
 
 </div>
 </div>
-<a id="ab922ca91d8f79318038f0a0d598aa3eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab922ca91d8f79318038f0a0d598aa3eb">&#9670;&nbsp;</a></span>allocate() <span class="overload">[4/4]</span></h2>
+<a id="ab86644999ade973fa11b5cb39bf8868d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab86644999ade973fa11b5cb39bf8868d">&#9670;&nbsp;</a></span>allocate() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -253,8 +263,18 @@ template&lt;typename PEXT &gt; </div>
           <td class="memname">payload_type* <a class="el" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm</a>&lt; TYPES, CLEANUP_DATA &gt;::allocate </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>sz</em></td><td>)</td>
+          <td class="paramname"><em>sz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>be</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -267,7 +287,7 @@ template&lt;typename PEXT &gt; </div>
 <p>get a tlm_payload_type with registered extension and initialize data pointer </p>
 <dl class="section return"><dt>Returns</dt><dd>the tlm_payload_type </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00202">202</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00224">224</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
 
 </div>
 </div>
@@ -305,7 +325,7 @@ template&lt;typename TYPES , bool CLEANUP_DATA&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00239">239</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00261">261</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
 
 </div>
 </div>
@@ -334,7 +354,7 @@ template&lt;typename TYPES , bool CLEANUP_DATA&gt; </div>
 <p>accessor function of the singleton </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00218">218</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__mm_8h_source.html#l00240">240</a> of file <a class="el" href="tlm__mm_8h_source.html">tlm_mm.h</a>.</p>
 
 </div>
 </div>

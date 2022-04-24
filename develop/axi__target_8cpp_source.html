@@ -94,28 +94,25 @@ $(document).ready(function(){initNavTree('axi__target_8cpp_source.html',''); ini
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">unsigned</span> axi_target_base::access(tlm::tlm_generic_payload&amp; trans) {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    peq.<a class="code" href="structscc_1_1peq.html#a7e3a34f0fe967ee1c3424904b82ff67a">notify</a>(&amp;trans);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    peq.notify(&amp;trans);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> std::numeric_limits&lt;unsigned&gt;::max();</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> axi_target_base::trans_queue() {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">auto</span> delay = sc_core::SC_ZERO_TIME;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">auto</span> trans = peq.<a class="code" href="structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed">get</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">auto</span> trans = peq.get();</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        trans-&gt;acquire();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        output_socket-&gt;b_transport(*trans, delay);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        isck-&gt;b_transport(*trans, delay);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        trans-&gt;release();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        pe.<a class="code" href="classaxi_1_1pe_1_1axi__target__pe__b.html#a27c09a436f8a783e4f07e896241ceec4">operation_resp</a>(*trans, 0);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        pe.operation_resp(*trans, 0);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassaxi_1_1axi__target__base_html"><div class="ttname"><a href="classaxi_1_1axi__target__base.html">axi::axi_target_base</a></div><div class="ttdoc">axi_target class instantiates the AXI Protocol Engine. It accesses the Protocol Engine with access() ...</div><div class="ttdef"><b>Definition:</b> <a href="axi__target_8h_source.html#l00035">axi_target.h:35</a></div></div>
-<div class="ttc" id="astructscc_1_1peq_html_a7e3a34f0fe967ee1c3424904b82ff67a"><div class="ttname"><a href="structscc_1_1peq.html#a7e3a34f0fe967ee1c3424904b82ff67a">scc::peq::notify</a></div><div class="ttdeci">void notify(const TYPE &amp;entry, const sc_core::sc_time &amp;t)</div><div class="ttdoc">non-blocking push.</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00086">peq.h:86</a></div></div>
-<div class="ttc" id="astructscc_1_1peq_html_a86fe01b84c045c7b8d0090f1dc588bed"><div class="ttname"><a href="structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed">scc::peq::get</a></div><div class="ttdeci">TYPE get()</div><div class="ttdoc">blocking get</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00125">peq.h:125</a></div></div>
-<div class="ttc" id="aclassaxi_1_1pe_1_1axi__target__pe__b_html_a27c09a436f8a783e4f07e896241ceec4"><div class="ttname"><a href="classaxi_1_1pe_1_1axi__target__pe__b.html#a27c09a436f8a783e4f07e896241ceec4">axi::pe::axi_target_pe_b::operation_resp</a></div><div class="ttdeci">void operation_resp(payload_type &amp;trans, unsigned clk_delay=0)</div><div class="ttdef"><b>Definition:</b> <a href="simple__target_8cpp_source.html#l00238">simple_target.cpp:238</a></div></div>
 <div class="ttc" id="aclassaxi_1_1pe_1_1axi__target__pe__b_html"><div class="ttname"><a href="classaxi_1_1pe_1_1axi__target__pe__b.html">axi::pe::axi_target_pe_b</a></div><div class="ttdef"><b>Definition:</b> <a href="simple__target_8h_source.html#l00038">simple_target.h:38</a></div></div>
-<div class="ttc" id="anamespaceaxi_html"><div class="ttname"><a href="namespaceaxi.html">axi</a></div><div class="ttdoc">TLM2.0 components modeling AXI/ACE.</div><div class="ttdef"><b>Definition:</b> <a href="axi4lite__tlm2pin__adaptor_8h_source.html#l00030">axi4lite_tlm2pin_adaptor.h:30</a></div></div>
+<div class="ttc" id="anamespaceaxi_html"><div class="ttname"><a href="namespaceaxi.html">axi</a></div><div class="ttdoc">TLM2.0 components modeling AXI/ACE.</div><div class="ttdef"><b>Definition:</b> <a href="src_2bus__interfaces_2axi_2axi__initiator_8h_source.html#l00028">axi_initiator.h:28</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

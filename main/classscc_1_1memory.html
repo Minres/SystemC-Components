@@ -9,7 +9,12 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,11 +43,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>scc</b></li><li class="navelem"><a class="el" href="classscc_1_1memory.html">memory</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classscc_1_1memory.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -66,7 +83,7 @@ Inheritance diagram for scc::memory&lt; SIZE, BUSWIDTH &gt;:</div>
 <area shape="rect" title="simple TLM2.0 LT memory model" alt="" coords="5,80,160,121"/>
 <area shape="rect" title=" " alt="" coords="37,5,129,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for scc::memory&lt; SIZE, BUSWIDTH &gt;:</div>
 <div class="dyncontent">
@@ -78,7 +95,7 @@ Collaboration diagram for scc::memory&lt; SIZE, BUSWIDTH &gt;:</div>
 <area shape="rect" title=" " alt="" coords="5,63,175,105"/>
 <area shape="rect" href="classutil_1_1sparse__array.html" title=" " alt="" coords="249,137,383,178"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -106,7 +123,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aa0488cabf0c8cbcaf772d6aa9f735891"><td class="memItemLeft" align="right" valign="top"><a id="aa0488cabf0c8cbcaf772d6aa9f735891"></a>
-<a class="el" href="classtlm_1_1scc_1_1target__mixin.html">tlm::scc::target_mixin</a>&lt; tlm::tlm_target_socket&lt; BUSWIDTH &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1memory.html#aa0488cabf0c8cbcaf772d6aa9f735891">target</a></td></tr>
+<a class="el" href="classtlm_1_1scc_1_1target__mixin.html">tlm::scc::target_mixin</a>&lt; tlm::tlm_target_socket&lt; BUSWIDTH &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1memory.html#aa0488cabf0c8cbcaf772d6aa9f735891">target</a> {&quot;ts&quot;}</td></tr>
 <tr class="memdesc:aa0488cabf0c8cbcaf772d6aa9f735891"><td class="mdescLeft">&#160;</td><td class="mdescRight">the target socket to connect to TLM <br /></td></tr>
 <tr class="separator:aa0488cabf0c8cbcaf772d6aa9f735891"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a5e41843245c6f01825d4cbcff32849"><td class="memItemLeft" align="right" valign="top"><a id="a1a5e41843245c6f01825d4cbcff32849"></a>
@@ -138,7 +155,7 @@ class scc::memory&lt; SIZE, BUSWIDTH &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00044">44</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00045">45</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1a0459bb58ab21cecd80e704bceaa5b9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1a0459bb58ab21cecd80e704bceaa5b9">&#9670;&nbsp;</a></span>memory()</h2>
@@ -165,7 +182,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00102">102</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00103">103</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -204,7 +221,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = 32&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00075">75</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00076">76</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -242,7 +259,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = 32&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00066">66</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00067">67</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -250,11 +267,15 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = 32&gt; </div>
 <li>src/components/scc/<a class="el" href="memory_8h_source.html">memory.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>scc</b></li><li class="navelem"><a class="el" href="classscc_1_1memory.html">memory</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
 </body>
 </html>

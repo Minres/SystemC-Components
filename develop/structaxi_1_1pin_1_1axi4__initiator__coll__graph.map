@@ -1,0 +1,17 @@
+<map id="axi::pin::axi4_initiator&lt; CFG &gt;" name="axi::pin::axi4_initiator&lt; CFG &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="868,253,1032,294"/>
+<area shape="rect" id="node2" title=" " alt="" coords="653,5,745,32"/>
+<area shape="rect" id="node3" href="$structaxi_1_1aw__ch.html" title=" " alt="" coords="615,57,783,98"/>
+<area shape="rect" id="node4" href="$structaxi_1_1wdata__ch.html" title=" " alt="" coords="616,122,781,163"/>
+<area shape="rect" id="node5" href="$structaxi_1_1b__ch.html" title=" " alt="" coords="620,187,777,229"/>
+<area shape="rect" id="node6" href="$structaxi_1_1ar__ch.html" title=" " alt="" coords="617,253,780,294"/>
+<area shape="rect" id="node7" href="$structaxi_1_1rresp__ch.html" title=" " alt="" coords="616,318,781,359"/>
+<area shape="rect" id="node8" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="641,384,756,411"/>
+<area shape="rect" id="node9" href="$structscc_1_1peq.html" title=" " alt="" coords="228,282,403,353"/>
+<area shape="rect" id="node10" title=" " alt="" coords="29,304,112,331"/>
+<area shape="rect" id="node11" href="$classscc_1_1fifo__w__cb.html" title=" " alt="" coords="210,377,421,447"/>
+<area shape="rect" id="node12" title=" " alt="" coords="5,399,136,425"/>
+<area shape="rect" id="node13" title=" " alt="" coords="618,435,779,491"/>
+<area shape="rect" id="node14" href="$structaxi_1_1axi__target__socket.html" title=" " alt="" coords="616,515,781,557"/>
+<area shape="rect" id="node15" title=" " alt="" coords="185,486,445,586"/>
+</map>

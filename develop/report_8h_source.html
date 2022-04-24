@@ -196,8 +196,8 @@ $(document).ready(function(){initNavTree('report_8h_source.html',''); initResiza
 <div class="line"><a name="l00267"></a><span class="lineno"><a class="line" href="structscc_1_1ScLogger.html#a76ea0ccd13c351ee2474eeb4485c7608">  267</a></span>&#160;    <span class="keyword">inline</span> std::ostream&amp; <a class="code" href="structscc_1_1ScLogger.html#a76ea0ccd13c351ee2474eeb4485c7608">get</a>() { <span class="keywordflow">return</span> os; };</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    std::ostringstream os;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keywordtype">char</span>* t;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    std::ostringstream os{};</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keywordtype">char</span>* t{<span class="keyword">nullptr</span>};</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* file;</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> line;</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> level;</div>
