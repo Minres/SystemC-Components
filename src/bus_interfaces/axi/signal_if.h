@@ -162,7 +162,7 @@ struct aw_ch {
 //! write data channel signals
 template<typename CFG, typename TYPES=master_types>
 struct wdata_ch {
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::IDWIDTH>>  w_id{"w_id"};
+    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::IDWIDTH>>   w_id{"w_id"};
     typename TYPES::template m2s_t<typename CFG::data_t>               w_data{"w_data"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::BUSWIDTH / 8>>  w_strb{"w_strb"};
     typename TYPES::template m2s_full_t<bool>                          w_last{"w_last"};

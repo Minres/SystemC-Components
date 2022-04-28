@@ -362,7 +362,6 @@ inline void axi::pin::axi4_target<CFG>::wdata_t() {
             auto& gp = fsm_hndl->trans;
             auto data = this->w_data.read();
             auto strb = this->w_strb.read();
-            auto id = CFG::IS_LITE?0U:this->w_id->read().to_uint();
             auto last = CFG::IS_LITE?true:this->w_last->read();
             auto beat_count = fsm_hndl->beat_count;
             auto size = axi::get_burst_size(*fsm_hndl->trans);

@@ -127,7 +127,8 @@ inline void axi::pin::axi4_initiator<CFG>::write_aw(tlm::tlm_generic_payload &tr
     if(auto ext = trans.get_extension<axi::axi4_extension>()){
         this->aw_prot.write(ext->get_prot());
         if(!CFG::IS_LITE){
-            this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
+            if(this->aw_id.get_interface())
+                this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
             this->aw_len->write(sc_dt::sc_uint<8>(ext->get_length()));
             this->aw_size->write(sc_dt::sc_uint<3>(ext->get_size()));
             this->aw_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
