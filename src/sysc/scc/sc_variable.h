@@ -17,12 +17,12 @@
 #ifndef _SCC_SC_VARIABLE_H_
 #define _SCC_SC_VARIABLE_H_
 
-#include <scc/observer.h>
 #include <array>
-#include <sstream>
 #include <functional>
-#include <sysc/kernel/sc_simcontext.h>
+#include <scc/observer.h>
+#include <sstream>
 #include <sysc/kernel/sc_event.h>
+#include <sysc/kernel/sc_simcontext.h>
 #include <sysc/tracing/sc_trace.h>
 
 #ifndef SC_API
@@ -47,7 +47,7 @@ struct sc_variable_b : sc_core::sc_object {
      * @param name the name
      */
     sc_variable_b(const char* name)
-            : sc_core::sc_object(name) {}
+    : sc_core::sc_object(name) {}
     /**
      * @fn const char* kind()const
      * @brief get the kind of this sc_object
@@ -64,7 +64,6 @@ struct sc_variable_b : sc_core::sc_object {
     virtual std::string to_string() const { return ""; };
 
     virtual void trace(scc::observer* obs) const = 0;
-
 };
 /**
  * @struct sc_variable
@@ -90,7 +89,8 @@ template <typename T> struct sc_variable : public sc_variable_b {
      */
     sc_variable(const std::string& name, const T& value)
     : sc_variable_b(name.c_str())
-    , value(value), hndl{} {}
+    , value(value)
+    , hndl{} {}
     /**
      * @fn std::string to_string()const
      * @brief create a textual representation of the wrapped value
@@ -106,9 +106,7 @@ template <typename T> struct sc_variable : public sc_variable_b {
      * @brief value getter
      *
      */
-    T get() const {
-        return value;
-    }
+    T get() const { return value; }
     /**
      * @brief bool conversion operator
      *
@@ -122,8 +120,9 @@ template <typename T> struct sc_variable : public sc_variable_b {
     operator T() const { return value; }
     // assignment operator overload
     sc_variable& operator=(const T other) {
-        value=other;
-        for(auto h:hndl) h->notify();
+        value = other;
+        for(auto h : hndl)
+            h->notify();
         return *this;
     }
     /**
@@ -131,75 +130,79 @@ template <typename T> struct sc_variable : public sc_variable_b {
      * @param other
      * @return
      */
-    bool operator==(T other) const{
-        return value==other;
-    }
+    bool operator==(T other) const { return value == other; }
     /**
      * inequality comparison
      * @param other
      * @return
      */
-    bool operator!=(T other) const{
-        return value!=other;
-    }
+    bool operator!=(T other) const { return value != other; }
     //! overloaded prefix ++ operator
-    sc_variable& operator++ () {
-       ++value;          // increment this object
-       for(auto h:hndl) h->notify();
-       return *this;
+    sc_variable& operator++() {
+        ++value; // increment this object
+        for(auto h : hndl)
+            h->notify();
+        return *this;
     }
 
     //! overloaded postfix ++ operator
-    T operator++( int ) {
+    T operator++(int) {
         auto orig = value;
         ++value;
-        for(auto h:hndl) h->notify();
-       return orig;
+        for(auto h : hndl)
+            h->notify();
+        return orig;
     }
     //! overloaded prefix -- operator
-    sc_variable& operator-- () {
-       --value;          // increment this object
-       for(auto h:hndl) h->notify();
-       return *this;
+    sc_variable& operator--() {
+        --value; // increment this object
+        for(auto h : hndl)
+            h->notify();
+        return *this;
     }
 
     //! overloaded postfix -- operator
-    T operator--( int ) {
+    T operator--(int) {
         auto orig = value;
         --value;
-        for(auto h:hndl) h->notify();
-       return orig;
+        for(auto h : hndl)
+            h->notify();
+        return orig;
     }
 
     //" arithmetic operator overloads
     T operator+=(const T other) {
-        value+=other;
-        for(auto h:hndl) h->notify();
+        value += other;
+        for(auto h : hndl)
+            h->notify();
         return value;
     }
     T operator-=(const T other) {
-        value+=other;
-        for(auto h:hndl) h->notify();
+        value += other;
+        for(auto h : hndl)
+            h->notify();
         return value;
     }
     T operator*=(const T other) {
-        value*=other;
-        for(auto h:hndl) h->notify();
+        value *= other;
+        for(auto h : hndl)
+            h->notify();
         return value;
     }
     T operator/=(const T other) {
-        value/=other;
-        for(auto h:hndl) h->notify();
+        value /= other;
+        for(auto h : hndl)
+            h->notify();
         return value;
     }
-    T operator+(const T other) const { return value-other; }
-    T operator-(const T other) const { return value-other; }
-    T operator*(const T other) const { return value*other; }
-    T operator/(const T other) const { return value/other; }
-    T operator+(const this_type& other) const { return value+other.value; }
-    T operator-(const this_type& other) const { return value-other.value; }
-    T operator*(const this_type& other) const { return value*other.value; }
-    T operator/(const this_type& other) const { return value/other.value; }
+    T operator+(const T other) const { return value - other; }
+    T operator-(const T other) const { return value - other; }
+    T operator*(const T other) const { return value * other; }
+    T operator/(const T other) const { return value / other; }
+    T operator+(const this_type& other) const { return value + other.value; }
+    T operator-(const this_type& other) const { return value - other.value; }
+    T operator*(const this_type& other) const { return value * other.value; }
+    T operator/(const this_type& other) const { return value / other.value; }
     /**
      * @fn void trace(sc_core::sc_trace_file*)const
      * @brief register the value with the SystemC trace implementation
@@ -213,23 +216,23 @@ template <typename T> struct sc_variable : public sc_variable_b {
             sc_core::sc_trace(tf, value, name());
     }
 
-    void trace(scc::observer* obs) const override {
-        hndl.push_back(observe(obs, value, name()));
-    }
+    void trace(scc::observer* obs) const override { hndl.push_back(observe(obs, value, name())); }
 
-    static scc::sc_variable<T> create( const char* n, size_t i, T default_val) {
-        std::ostringstream os; os<<n<<"["<<i<<"];";
+    static scc::sc_variable<T> create(const char* n, size_t i, T default_val) {
+        std::ostringstream os;
+        os << n << "[" << i << "];";
         return scc::sc_variable<T>(os.str(), default_val);
     }
 
     struct creator {
-        creator(T const& default_val): default_val{default_val}{}
-        scc::sc_variable<T>* operator()( const char* n, size_t i) {
-            return new scc::sc_variable<T>(n, default_val);
-        }
+        creator(T const& default_val)
+        : default_val{default_val} {}
+        scc::sc_variable<T>* operator()(const char* n, size_t i) { return new scc::sc_variable<T>(n, default_val); }
+
     private:
         T default_val{};
     };
+
 private:
     //! the wrapped value
     T value;
@@ -237,14 +240,14 @@ private:
     mutable std::vector<observer::notification_handle*> hndl;
 };
 
-template <typename T> T operator+(sc_variable<T> const& a, sc_variable<T> const& b) { return a.get()+b.get(); }
-template <typename T> T operator-(sc_variable<T> const& a, sc_variable<T> const& b) { return a.get()-b.get(); }
-template <typename T> T operator*(sc_variable<T> const& a, sc_variable<T> const& b) { return a.get()*b.get(); }
-template <typename T> T operator/(sc_variable<T> const& a, sc_variable<T> const& b) { return a.get()/b.get(); }
-template <typename T> T operator+(T const& a, sc_variable<T> const& b) { return a+b.get(); }
-template <typename T> T operator-(T const& a, sc_variable<T> const& b) { return a-b.get(); }
-template <typename T> T operator*(T const& a, sc_variable<T> const& b) { return a*b.get(); }
-template <typename T> T operator/(T const& a, sc_variable<T> const& b) { return a/b.get(); }
+template <typename T> T operator+(sc_variable<T> const& a, sc_variable<T> const& b) { return a.get() + b.get(); }
+template <typename T> T operator-(sc_variable<T> const& a, sc_variable<T> const& b) { return a.get() - b.get(); }
+template <typename T> T operator*(sc_variable<T> const& a, sc_variable<T> const& b) { return a.get() * b.get(); }
+template <typename T> T operator/(sc_variable<T> const& a, sc_variable<T> const& b) { return a.get() / b.get(); }
+template <typename T> T operator+(T const& a, sc_variable<T> const& b) { return a + b.get(); }
+template <typename T> T operator-(T const& a, sc_variable<T> const& b) { return a - b.get(); }
+template <typename T> T operator*(T const& a, sc_variable<T> const& b) { return a * b.get(); }
+template <typename T> T operator/(T const& a, sc_variable<T> const& b) { return a / b.get(); }
 
 /**
  * specialization for bool as the cast operator for bool would be ambigous
@@ -253,7 +256,8 @@ template <> struct sc_variable<bool> : public sc_variable_b {
     const bool& operator*() { return value; }
     sc_variable(const std::string& name, const bool& value)
     : sc_variable_b(name.c_str())
-    , value(value), hndl{} {}
+    , value(value)
+    , hndl{} {}
     std::string to_string() const override {
         std::stringstream ss;
         ss << value;
@@ -262,39 +266,37 @@ template <> struct sc_variable<bool> : public sc_variable_b {
     bool get() const { return value; }
     operator bool() const { return value; }
     sc_variable& operator=(const bool other) {
-        value=other;
-        for(auto h:hndl)
+        value = other;
+        for(auto h : hndl)
             h->notify();
         return *this;
     }
-    bool operator==(bool other) const{
-        return value==other;
-    }
-    bool operator!=(bool other) const{
-        return value!=other;
-    }
+    bool operator==(bool other) const { return value == other; }
+    bool operator!=(bool other) const { return value != other; }
     void trace(sc_core::sc_trace_file* tf) const override {
         if(auto* obs = dynamic_cast<scc::observer*>(tf))
             hndl.push_back(observe(obs, value, name()));
         else
             sc_core::sc_trace(tf, value, name());
     }
-    void trace(scc::observer* obs) const override {
-        hndl.push_back(observe(obs, value, name()));
-    }
-    static scc::sc_variable<bool> create( const char* n, size_t i, bool default_val) {
-        std::ostringstream os; os<<n<<"["<<i<<"];";
+    void trace(scc::observer* obs) const override { hndl.push_back(observe(obs, value, name())); }
+    static scc::sc_variable<bool> create(const char* n, size_t i, bool default_val) {
+        std::ostringstream os;
+        os << n << "[" << i << "];";
         return scc::sc_variable<bool>(os.str(), default_val);
     }
 
     struct creator {
-        creator(bool const& default_val): default_val{default_val}{}
-        scc::sc_variable<bool>* operator()( const char* n, size_t i) {
+        creator(bool const& default_val)
+        : default_val{default_val} {}
+        scc::sc_variable<bool>* operator()(const char* n, size_t i) {
             return new scc::sc_variable<bool>(n, default_val);
         }
+
     private:
         bool default_val{};
     };
+
 private:
     bool value;
     mutable std::vector<observer::notification_handle*> hndl;
@@ -311,19 +313,23 @@ private:
 template <typename T> struct sc_variable_vector {
 
     sc_variable_vector(std::string const& name, size_t size)
-    :name(name), values(size, nullptr),creator{} { }
+    : name(name)
+    , values(size, nullptr)
+    , creator{} {}
 
     sc_variable_vector(std::string const& name, size_t size, T const& def_val)
-    :name(name), values(size, nullptr) {
+    : name(name)
+    , values(size, nullptr) {
         resize(size, def_val);
     }
 
-    sc_variable_vector(std::string const& name, size_t size, std::function<sc_variable<T>*(char const*, size_t)> creator)
-    :name(name), values(size, nullptr), creator(creator) { }
+    sc_variable_vector(std::string const& name, size_t size,
+                       std::function<sc_variable<T>*(char const*, size_t)> creator)
+    : name(name)
+    , values(size, nullptr)
+    , creator(creator) {}
 
-    size_t size() {
-        return values.size();
-    }
+    size_t size() { return values.size(); }
 
     void resize(size_t sz) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
@@ -333,35 +339,37 @@ template <typename T> struct sc_variable_vector {
     void resize(size_t sz, T def_val) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
         values.resize(sz);
-        auto idx =0U;
-        for(auto& e:values){
-            std::stringstream ss; ss << name << "(" << idx++ << ")";
-            e=new sc_variable<T>(ss.str().c_str(), def_val);
+        auto idx = 0U;
+        for(auto& e : values) {
+            std::stringstream ss;
+            ss << name << "(" << idx++ << ")";
+            e = new sc_variable<T>(ss.str().c_str(), def_val);
         }
     }
 
-    bool is_valid(size_t idx) const {
-        return values.at(idx)!=nullptr;
-    }
+    bool is_valid(size_t idx) const { return values.at(idx) != nullptr; }
 
     sc_variable<T>& operator[](size_t idx) {
-       auto ret = values.at(idx);
-       if(!ret) {
-           assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
-           assert(creator);
-           std::stringstream ss; ss << name << "(" << idx << ")";
-           ret=values.at(idx)=creator(ss.str().c_str(), idx);
-       }
-       return *ret;
+        auto ret = values.at(idx);
+        if(!ret) {
+            assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
+            assert(creator);
+            std::stringstream ss;
+            ss << name << "(" << idx << ")";
+            ret = values.at(idx) = creator(ss.str().c_str(), idx);
+        }
+        return *ret;
     }
 
     sc_variable<T> const& operator[](size_t idx) const {
         assert(values.at(idx) && "No initialized value in sc_variable_vector position");
         return *values.at(idx);
     }
-    ~sc_variable_vector(){
-        for(auto p: values) delete p;
+    ~sc_variable_vector() {
+        for(auto p : values)
+            delete p;
     }
+
 private:
     std::string name{};
     std::vector<sc_variable<T>*> values;
@@ -412,11 +420,9 @@ template <typename T> struct sc_ref_variable : public sc_variable_b {
      *
      * @param tf
      */
-    void trace(sc_core::sc_trace_file* tf) const override {
-        sc_core::sc_trace(tf, value, name());
-    }
+    void trace(sc_core::sc_trace_file* tf) const override { sc_core::sc_trace(tf, value, name()); }
 
-    void trace(scc::observer* obs) const override { }
+    void trace(scc::observer* obs) const override {}
 };
 template <> struct sc_ref_variable<sc_core::sc_event> : public sc_variable_b {
     const sc_core::sc_event& value;
@@ -430,11 +436,9 @@ template <> struct sc_ref_variable<sc_core::sc_event> : public sc_variable_b {
         return ss.str();
     }
 
-    void trace(scc::observer* obs) const override { }
+    void trace(scc::observer* obs) const override {}
 
-    void trace(sc_core::sc_trace_file* tf) const override {
-        sc_core::sc_trace(tf, value, name());
-    }
+    void trace(sc_core::sc_trace_file* tf) const override { sc_core::sc_trace(tf, value, name()); }
 };
 /**
  * @struct sc_ref_variable_masked
@@ -458,7 +462,7 @@ template <typename T> struct sc_ref_variable_masked : public sc_variable_b {
         return ss.str();
     }
 
-    void trace(scc::observer* obs) const override { }
+    void trace(scc::observer* obs) const override {}
 
     void trace(sc_core::sc_trace_file* tf) const override { sc_trace(tf, value, name()); }
 };

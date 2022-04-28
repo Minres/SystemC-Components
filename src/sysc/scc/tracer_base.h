@@ -90,14 +90,13 @@ public:
      */
     tracer_base(const sc_core::sc_module_name& nm, sc_core::sc_trace_file* tf, bool owned = true)
     : sc_core::sc_module(nm)
-    , trf(tf)
-    {}
+    , trf(tf) {}
     /**
      * @fn  ~tracer_base()
      * @brief destructor
      *
      */
-    ~tracer_base() { }
+    ~tracer_base() {}
     /**
      * @fn void set_trace_types(trace_types)
      * @brief set the types to trace
@@ -126,9 +125,7 @@ public:
      * The provided file is not owned by the tracer. Hence the caller is responsible for closing the tracefile
      * @param trf
      */
-    void set_trace_file(sc_core::sc_trace_file* trf) {
-        this->trf = trf;
-    }
+    void set_trace_file(sc_core::sc_trace_file* trf) { this->trf = trf; }
 
 protected:
     //! the default for tracing if no attribute is configured

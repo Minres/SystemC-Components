@@ -22,7 +22,6 @@
  * This module contains generic C++ functions being independent of SystemC
  */
 /**@{*/
-#include <util/sccassert.h>
 #include "util/bit_field.h"
 #include "util/delegate.h"
 #include "util/io-redirector.h"
@@ -35,4 +34,5 @@
 #include "util/strprintf.h"
 #include "util/thread_syncronizer.h"
 #include "util/watchdog.h"
+#include <util/sccassert.h>
 /**@}*/

@@ -24,9 +24,9 @@
 #include "scc/report.h"
 #include "scc/utilities.h"
 #include "tlm/scc/target_mixin.h"
+#include <numeric>
 #include <tlm.h>
 #include <util/sparse_array.h>
-#include <numeric>
 
 namespace scc {
 
@@ -64,7 +64,8 @@ public:
      *
      * @param cb the callback function or functor
      */
-    void set_operation_callback(std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, sc_core::sc_time& delay)> cb) {
+    void set_operation_callback(
+        std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, sc_core::sc_time& delay)> cb) {
         operation_cb = cb;
     }
     /**
@@ -107,7 +108,7 @@ memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
         operation_cb ? operation_cb(*this, gp, delay) : handle_operation(gp, delay);
     });
     target.register_transport_dbg([this](tlm::tlm_generic_payload& gp) -> unsigned {
-        sc_core::sc_time z=sc_core::SC_ZERO_TIME;
+        sc_core::sc_time z = sc_core::SC_ZERO_TIME;
         return operation_cb ? operation_cb(*this, gp, z) : handle_operation(gp, z);
     });
     target.register_get_direct_mem_ptr([this](tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data) -> bool {
@@ -136,9 +137,10 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
         trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
         return 0;
     }
-    if(byt){
-        auto res = std::accumulate(byt, byt+trans.get_byte_enable_length(), 0xff, [](uint8_t a, uint8_t b){return a|b;});
-        if(trans.get_byte_enable_length()!=len || res!=0xff) {
+    if(byt) {
+        auto res = std::accumulate(byt, byt + trans.get_byte_enable_length(), 0xff,
+                                   [](uint8_t a, uint8_t b) { return a | b; });
+        if(trans.get_byte_enable_length() != len || res != 0xff) {
             SC_REPORT_ERROR("TLM-2", "generic payload transaction with scattered byte enable not supported");
             trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
             return 0;
@@ -148,16 +150,16 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
     SCCTRACE(SCMOD) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr;
     if(cmd == tlm::TLM_READ_COMMAND) {
 #ifdef HAS_CCI
-        delay+=rd_resp_delay;
+        delay += rd_resp_delay;
 #endif
         if(mem.is_allocated(adr)) {
             const auto& p = mem(adr / mem.page_size);
             auto offs = adr & mem.page_addr_mask;
-            if((offs+len)>mem.page_size) {
-                auto first_part = mem.page_size-offs;
+            if((offs + len) > mem.page_size) {
+                auto first_part = mem.page_size - offs;
                 std::copy(p.data() + offs, p.data() + offs + first_part, ptr);
-                const auto& p2 = mem((adr / mem.page_size)+1);
-                std::copy(p2.data(), p2.data() + len - first_part, ptr+first_part);
+                const auto& p2 = mem((adr / mem.page_size) + 1);
+                std::copy(p2.data(), p2.data() + len - first_part, ptr + first_part);
             } else {
                 std::copy(p.data() + offs, p.data() + offs + len, ptr);
             }
@@ -168,15 +170,15 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
         }
     } else if(cmd == tlm::TLM_WRITE_COMMAND) {
 #ifdef HAS_CCI
-        delay+=wr_resp_delay;
+        delay += wr_resp_delay;
 #endif
         auto& p = mem(adr / mem.page_size);
         auto offs = adr & mem.page_addr_mask;
-        if((offs+len)>mem.page_size) {
-            auto first_part = mem.page_size-offs;
+        if((offs + len) > mem.page_size) {
+            auto first_part = mem.page_size - offs;
             std::copy(ptr, ptr + first_part, p.data() + offs);
-            auto& p2 = mem((adr / mem.page_size)+1);
-            std::copy(ptr+ first_part, ptr + len, p2.data());
+            auto& p2 = mem((adr / mem.page_size) + 1);
+            std::copy(ptr + first_part, ptr + len, p2.data());
         } else {
             std::copy(ptr, ptr + len, p.data() + offs);
         }

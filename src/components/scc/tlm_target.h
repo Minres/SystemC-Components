@@ -40,9 +40,9 @@ struct addr_range {
  * @tparam BUSWIDTH
  * @tparam ADDR_UNIT_WIDTH
  */
-template <unsigned int BUSWIDTH = 32, unsigned int ADDR_UNIT_WIDTH=8> class tlm_target {
+template <unsigned int BUSWIDTH = 32, unsigned int ADDR_UNIT_WIDTH = 8> class tlm_target {
 public:
-    using this_type = tlm_target<BUSWIDTH,ADDR_UNIT_WIDTH>;
+    using this_type = tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>;
     /**
      * @fn  tlm_target(sc_core::sc_time&)
      * @brief the constructor
@@ -76,7 +76,8 @@ public:
      * @param base_addr the offset of the resource (from address 0)
      */
     void addResource(resource_access_if& rai, uint64_t base_addr) {
-        socket_map.addEntry(std::make_pair(&rai, base_addr), base_addr, std::max<size_t>(1,rai.size()/(ADDR_UNIT_WIDTH/8)));
+        socket_map.addEntry(std::make_pair(&rai, base_addr), base_addr,
+                            std::max<size_t>(1, rai.size() / (ADDR_UNIT_WIDTH / 8)));
     }
     /**
      * @fn void addResource(indexed_resource_access_if&, uint64_t)
@@ -86,7 +87,7 @@ public:
      */
     void addResource(indexed_resource_access_if& irai, uint64_t base_addr) {
         for(size_t idx = 0; idx < irai.size(); ++idx) {
-            auto irai_size = std::max<size_t>(1,irai[idx].size()/(ADDR_UNIT_WIDTH/8));
+            auto irai_size = std::max<size_t>(1, irai[idx].size() / (ADDR_UNIT_WIDTH / 8));
             socket_map.addEntry(std::make_pair(&irai[idx], base_addr), base_addr, irai_size);
             base_addr += irai_size;
         }
@@ -118,7 +119,7 @@ template <unsigned BUSWIDTH = 32> struct target_name_map_entry {
 } /* namespace scc */
 
 template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_WIDTH>
-inline scc::tlm_target<BUSWIDTH,ADDR_UNIT_WIDTH>::tlm_target(sc_core::sc_time& clock)
+inline scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::tlm_target(sc_core::sc_time& clock)
 : socket("socket")
 , clk(clock)
 , socket_map(std::make_pair(nullptr, 0)) {
@@ -128,7 +129,7 @@ inline scc::tlm_target<BUSWIDTH,ADDR_UNIT_WIDTH>::tlm_target(sc_core::sc_time& c
 }
 
 template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_WIDTH>
-void scc::tlm_target<BUSWIDTH,ADDR_UNIT_WIDTH>::b_tranport_cb(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) {
+void scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::b_tranport_cb(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) {
     resource_access_if* ra = nullptr;
     uint64_t base = 0;
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());
@@ -157,7 +158,8 @@ void scc::tlm_target<BUSWIDTH,ADDR_UNIT_WIDTH>::b_tranport_cb(tlm::tlm_generic_p
     delay += clk;
 }
 
-template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_WIDTH> unsigned int scc::tlm_target<BUSWIDTH,ADDR_UNIT_WIDTH>::tranport_dbg_cb(tlm::tlm_generic_payload& gp) {
+template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_WIDTH>
+unsigned int scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::tranport_dbg_cb(tlm::tlm_generic_payload& gp) {
     resource_access_if* ra = nullptr;
     uint64_t base = 0;
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());

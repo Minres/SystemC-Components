@@ -41,7 +41,8 @@ public:
      * @param enable enable VCD (signal based) tracing
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const&& name, file_type type, bool enable_vcd = true, bool default_enable = false, sc_core::sc_object* top = nullptr);
+    configurable_tracer(std::string const&& name, file_type type, bool enable_vcd = true, bool default_enable = false,
+                        sc_core::sc_object* top = nullptr);
     /**
      * constructs a tracer object
      *
@@ -50,7 +51,8 @@ public:
      * @param enable_vcd enable VCD (signal based) tracing
      * @param default_enable value of attribute enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const& name, file_type type, bool enable_vcd = true, bool default_enable = false, sc_core::sc_object* top = nullptr)
+    configurable_tracer(std::string const& name, file_type type, bool enable_vcd = true, bool default_enable = false,
+                        sc_core::sc_object* top = nullptr)
     : configurable_tracer(std::string(name), type, enable_vcd, default_enable, top) {}
     /**
      * constructs a tracer object
@@ -81,10 +83,11 @@ public:
      * adds default trace control attribute of name 'enableTracing' to each sc_module in a design hierarchy
      */
     void add_control() {
-        if(control_added) return;
+        if(control_added)
+            return;
         for(auto* o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
             augment_object_hierarchical(o);
-        control_added=true;
+        control_added = true;
     }
 
 protected:
@@ -107,4 +110,4 @@ protected:
 
 } /* namespace scc */
 /** @} */ // end of scc-sysc
-#endif /* _SCC_CONFIGURABLE_TRACER_H_ */
+#endif    /* _SCC_CONFIGURABLE_TRACER_H_ */

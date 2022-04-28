@@ -18,11 +18,11 @@
 #define _SCC_PEQ_H_
 
 #include <boost/optional.hpp>
-#include <map>
-#include <vector>
 #include <deque>
+#include <map>
 #include <systemc>
 #include <type_traits>
+#include <vector>
 
 namespace scc {
 /**
@@ -153,11 +153,10 @@ private:
     std::deque<std::deque<TYPE>*> free_pool;
     sc_core::sc_event m_event;
 
-    //inline
-    void insert_entry(const TYPE &entry, sc_core::sc_time abs_time) {
+    void insert_entry(const TYPE& entry, sc_core::sc_time abs_time) {
         auto it = m_scheduled_events.find(abs_time);
-        if (it == m_scheduled_events.end()) {
-            if (free_pool.size()) {
+        if(it == m_scheduled_events.end()) {
+            if(free_pool.size()) {
                 auto r = m_scheduled_events.insert(std::make_pair(abs_time, free_pool.front()));
                 free_pool.pop_front();
                 r.first->second->push_back(entry);
@@ -169,12 +168,11 @@ private:
             it->second->push_back(entry);
     }
 
-    //inline
     TYPE get_entry() {
         auto entry = m_scheduled_events.begin()->second;
         auto ret = entry->front();
         entry->pop_front();
-        if (!entry->size()) {
+        if(!entry->size()) {
             free_pool.push_back(entry);
             m_scheduled_events.erase(m_scheduled_events.begin());
         }
@@ -182,13 +180,13 @@ private:
     }
 };
 
-template<class TYPE>
-inline peq<TYPE>::~peq() {
+template <class TYPE> inline peq<TYPE>::~peq() {
     while(m_scheduled_events.size()) {
         free_pool.push_back(m_scheduled_events.begin()->second);
         m_scheduled_events.erase(m_scheduled_events.begin());
     }
-    for(auto* p:free_pool) delete p;
+    for(auto* p : free_pool)
+        delete p;
 }
 
 } // namespace scc

@@ -7,13 +7,13 @@
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
-#include <axi/scv/recorder_modules.h>
-#include <scc.h>
 #include <ace_axi_adapt.h>
 #include <array>
 #include <axi/pe/simple_initiator.h>
 #include <axi/pe/simple_target.h>
+#include <axi/scv/recorder_modules.h>
 #include <cstdint>
+#include <scc.h>
 
 using namespace sc_core;
 using namespace axi;
@@ -122,11 +122,13 @@ private:
 
 int sc_main(int argc, char* argv[]) {
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
+    // clang-format off
     scc::init_logging(
             scc::LogConfig()
             .logLevel(static_cast<scc::log>(7))
             .logAsync(false)
             .coloredOutput(true));
+    // clang-format on
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
 #ifdef HAS_CCI
     scc::configurable_tracer trace("ace_ace_test",
@@ -135,8 +137,8 @@ int sc_main(int argc, char* argv[]) {
                                    true);
 #else
     scc::tracer trace("ace_ace_test",
-                                   scc::tracer::file_type::NONE, // define the kind of transaction trace
-                                   true);                        // enables vcd
+                      scc::tracer::file_type::NONE, // define the kind of transaction trace
+                      true);                        // enables vcd
 #endif
     testbench mstr("master");
     sc_core::sc_start(10_ms);

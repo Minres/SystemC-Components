@@ -146,7 +146,12 @@ public:
          * @brief unlock the semaphore
          *
          */
-        void release(){if(owned) sem.post(); owned=false;}
+        void release() {
+            if(owned)
+                sem.post();
+            owned = false;
+        }
+
     private:
         scc::ordered_semaphore& sem;
         bool owned{true};

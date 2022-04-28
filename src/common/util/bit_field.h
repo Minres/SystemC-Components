@@ -154,7 +154,7 @@ public:
         return Element(value, BaseOffset + BitsPerItem * i);
     }
 };
-}
+} // namespace util
 /**
  * Bitfield definition macros.
  *
@@ -177,7 +177,8 @@ public:
 
 #define BF_FIELD(memberName, offset, bits) util::BitFieldMember<StorageType, offset, bits> memberName;
 
-#define BF_ARRAY(memberName, offset, bits, numItems) util::BitFieldArray<StorageType, offset, bits, numItems> memberName;
+#define BF_ARRAY(memberName, offset, bits, numItems)                                                                   \
+    util::BitFieldArray<StorageType, offset, bits, numItems> memberName;
 
 #define END_BF_DECL() }
 /**@}*/

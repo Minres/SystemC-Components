@@ -29,8 +29,8 @@
 #ifdef __unix__
 #include <sys/time.h>
 #endif
-#include <vector>
 #include <array>
+#include <vector>
 
 //! log level definitions
 #define LEVELS(L) L(NONE) L(FATAL) L(ERR) L(WARN) L(INFO) L(DEBUG) L(TRACE) L(TRACEALL)
@@ -255,12 +255,12 @@ class DEFAULT {};
 
 #ifndef LOG
 #define LOG(LEVEL)                                                                                                     \
-    if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                      \
+    if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                    \
     LOGGER(DEFAULT)().get(::logging::LEVEL)
 #endif
 #ifndef CLOG
 #define CLOG(LEVEL, CATEGORY)                                                                                          \
-    if(::logging::LEVEL <= LOGGER(CATEGORY)::get_reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                    \
+    if(::logging::LEVEL <= LOGGER(CATEGORY)::get_reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                  \
     LOGGER(CATEGORY)().get(::logging::LEVEL, #CATEGORY)
 #endif
 #if defined(WIN32)

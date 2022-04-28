@@ -49,10 +49,10 @@
 //
 #include "scv_report.h"
 
+#include <array>
 #include <cstdarg>
 #include <map>
 #include <string>
-#include <array>
 
 //
 // Implementation of _scv_message

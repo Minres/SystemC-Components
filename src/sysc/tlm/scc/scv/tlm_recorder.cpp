@@ -29,7 +29,7 @@ void record(SCVNS scv_tr_handle& handle, tlm::tlm_generic_payload& o) {
     handle.record_attribute("trans.cmd", cmd2char.at(o.get_command()));
     handle.record_attribute("trans.data_ptr", o.get_data_ptr());
     handle.record_attribute("trans.data_length", o.get_data_length());
-    handle.record_attribute("trans.response", resp2char.at(1-o.get_response_status()));
+    handle.record_attribute("trans.response", resp2char.at(1 - o.get_response_status()));
     handle.record_attribute("trans.dmi_allowed", o.is_dmi_allowed());
     handle.record_attribute("trans.byte_enable", o.get_byte_enable_ptr());
     handle.record_attribute("trans.byte_enable_length", o.get_byte_enable_length());

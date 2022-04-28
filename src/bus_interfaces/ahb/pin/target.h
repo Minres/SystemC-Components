@@ -49,7 +49,7 @@ private:
     sc_core::sc_fifo<tlm::tlm_generic_payload*> active{"active_tx", 1};
 };
 
-} /* namespace bfm */
+} // namespace pin
 } /* namespace ahb */
 
 #endif /* AHB_TARGET_BFM_H_ */

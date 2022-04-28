@@ -16,11 +16,11 @@
 
 #pragma once
 
-#include <ahb/pin/initiator.h>
-#include <ahb/pin/target.h>
 #include "ahb/ahb_tlm.h"
 #include "ahb/pe/ahb_initiator.h"
 #include "ahb/pe/ahb_target.h"
+#include <ahb/pin/initiator.h>
+#include <ahb/pin/target.h>
 
 #include "apb/pe/apb_initiator.h"
 #include "apb/pe/apb_target.h"

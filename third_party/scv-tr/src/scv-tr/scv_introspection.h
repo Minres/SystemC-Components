@@ -99,31 +99,29 @@ public:
 class scv_extensions_if;
 class scv_object_if {
 public:
+    // return the instance name of the data structure
+    virtual const char* get_name() const = 0;
 
-  // return the instance name of the data structure
-  virtual const char *get_name() const = 0;
+    // return a string unique to each class
+    virtual const char* kind() const = 0;
 
-  // return a string unique to each class
-  virtual const char *kind() const = 0;
+    // print current values on output stream
+    virtual void print(std::ostream& o = std::cout, int details = 0, int indent = 0) const = 0;
 
-  // print current values on output stream
-  virtual void print(std::ostream& o=std::cout, int details=0, int indent=0) const = 0;
+    // print current values on output stream
+    virtual void show(int details = 0, int indent = 0) const { print(std::cout, -1, 0); }
 
-  // print current values on output stream
-  virtual void show(int details=0, int indent=0) const { print(std::cout,-1,0); }
+    // control debug messages by facility (do not override)
+    static void set_debug_level(const char* facility, int level = -1);
 
-  // control debug messages by facility (do not override)
-  static void set_debug_level(const char * facility, int level = -1);
+    // are debug messages on for this class (write for each class)?
+    // static int get_debug() { ... }
 
-  // are debug messages on for this class (write for each class)?
-  // static int get_debug() { ... }
+    // control debug messages by class (write for each class)
+    // static void set_debug(int) { ... }
 
-  // control debug messages by class (write for each class)
-  // static void set_debug(int) { ... }
-
-  //destructor (does nothing)
-  virtual ~scv_object_if() {};
-
+    // destructor (does nothing)
+    virtual ~scv_object_if(){};
 };
 
 #define _SCV_INTROSPECTION_BASE scv_object_if
@@ -269,8 +267,7 @@ class _scv_dynamic_data;
 // ----------------------------------------
 
 // interface for the overall extensions
-class scv_extensions_if : public _SCV_INTROSPECTION_BASE {
-};
+class scv_extensions_if : public _SCV_INTROSPECTION_BASE {};
 
 #undef _SCV_INTROSPECTION_BASE
 #define _SCV_INTROSPECTION_BASE scv_extensions_if

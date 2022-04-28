@@ -52,7 +52,7 @@ public:
         if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                         \
             if(sc_module* mod = get_mod4name(name)) {                                                                  \
                 sc_get_curr_simcontext()->hierarchy_push(mod);                                                         \
-                auto* o = new sc_ref_variable<tp>(name, object);                                                         \
+                auto* o = new sc_ref_variable<tp>(name, object);                                                       \
                 sc_get_curr_simcontext()->hierarchy_pop();                                                             \
                 holder[name] = o;                                                                                      \
             }                                                                                                          \
@@ -185,4 +185,4 @@ void scc::value_registry::end_of_elaboration() {
     for(auto o : sc_get_top_level_objects())
         descend(o, true);
 }
-}
+} // namespace scc

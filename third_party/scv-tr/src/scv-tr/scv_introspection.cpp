@@ -236,8 +236,7 @@ void _scv_extension_util::_set_parent(_scv_extension_util* p, const std::string&
         _set_name(name);
     }
 }
-void _scv_extension_util::_set_dynamic() {
-}
+void _scv_extension_util::_set_dynamic() {}
 
 // ----------------------------------------
 // _scv_extension_util_enum

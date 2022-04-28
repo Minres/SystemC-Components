@@ -5,15 +5,15 @@
  *      Author:
  */
 
-#include <scc.h>
 #include <array>
-#include <axi/scv/recorder_modules.h>
 #include <axi/pe/axi_initiator.h>
 #include <axi/pe/simple_target.h>
 #include <axi/pin/axi4_initiator.h>
 #include <axi/pin/axi4_target.h>
+#include <axi/scv/recorder_modules.h>
 #include <csetjmp>
 #include <csignal>
+#include <scc.h>
 
 using namespace sc_core;
 using namespace axi;
@@ -85,18 +85,19 @@ public:
         tgt_bfm.isckt(tgt_rec.tsckt);
         // recorder to target
         tgt_rec.isckt(tgt);
-        tgt_pe.set_operation_cb([this](axi::axi_protocol_types::tlm_payload_type& trans)->unsigned{
+        tgt_pe.set_operation_cb([this](axi::axi_protocol_types::tlm_payload_type& trans) -> unsigned {
             auto addr = trans.get_address();
             uint8_t const* src = reinterpret_cast<uint8_t const*>(&addr);
-            for(size_t i=0; i<trans.get_data_length(); ++i){
-               *(trans.get_data_ptr()+i)=i%2?i:resp_cnt;
+            for(size_t i = 0; i < trans.get_data_length(); ++i) {
+                *(trans.get_data_ptr() + i) = i % 2 ? i : resp_cnt;
             }
             resp_cnt++;
             return 0;
         });
     }
 
-    tlm::tlm_generic_payload* prepare_trans(uint64_t start_address, size_t len, unsigned id_offs=0, unsigned addr_offs=0) {
+    tlm::tlm_generic_payload* prepare_trans(uint64_t start_address, size_t len, unsigned id_offs = 0,
+                                            unsigned addr_offs = 0) {
         auto trans = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(len);
         trans->set_address(start_address);
         tlm::scc::setId(*trans, id);
@@ -105,8 +106,8 @@ public:
         trans->set_streaming_width(len);
         ext->set_size(scc::ilog2(std::min<size_t>(len, bus_cfg::BUSWIDTH / 8)));
         sc_assert(len < (bus_cfg::BUSWIDTH / 8) || len % (bus_cfg::BUSWIDTH / 8) == 0);
-        auto length=(len * 8 - 1) / bus_cfg::BUSWIDTH;
-        if(start_address%(bus_cfg::BUSWIDTH / 8))
+        auto length = (len * 8 - 1) / bus_cfg::BUSWIDTH;
+        if(start_address % (bus_cfg::BUSWIDTH / 8))
             length++;
         ext->set_length(length);
         // ext->set_burst(len * 8 > bus_cfg::buswidth ? axi::burst_e::INCR : axi::burst_e::FIXED);
@@ -114,16 +115,16 @@ public:
         if(same_id.value)
             ext->set_id(0);
         else
-            ext->set_id(id|id_offs);
-        id=(id+1)%8;
+            ext->set_id(id | id_offs);
+        id = (id + 1) % 8;
         return trans;
     }
 
-    inline void randomize(tlm::tlm_generic_payload& gp){
+    inline void randomize(tlm::tlm_generic_payload& gp) {
         auto addr = gp.get_address();
         uint8_t const* src = reinterpret_cast<uint8_t const*>(&addr);
-        for(size_t i=0; i<gp.get_data_length(); ++i){
-           *(gp.get_data_ptr()+i)=i%2?i:req_cnt;
+        for(size_t i = 0; i < gp.get_data_length(); ++i) {
+            *(gp.get_data_ptr() + i) = i % 2 ? i : req_cnt;
         }
         req_cnt++;
     }
@@ -186,25 +187,24 @@ public:
             StartAddr += BurstLengthByte;
         }
     }
-
 };
 
 jmp_buf env;
-void  ABRThandler(int sig){
-    longjmp(env, 1);
-}
+void ABRThandler(int sig) { longjmp(env, 1); }
 
 int sc_main(int argc, char* argv[]) {
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
+    // clang-format off
     scc::init_logging(
             scc::LogConfig()
             .logLevel(scc::log::INFO)
             .logAsync(false)
             .coloredOutput(true));
+    // clang-format on
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
     signal(SIGABRT, ABRThandler);
     signal(SIGSEGV, ABRThandler);
-    auto cfg_file = argc==2?argv[1]:"";
+    auto cfg_file = argc == 2 ? argv[1] : "";
     scc::configurer cfg(cfg_file);
 #ifdef HAS_CCI
     scc::configurable_tracer trace("axi4_tlm_pin_tlm",
@@ -213,8 +213,8 @@ int sc_main(int argc, char* argv[]) {
                                    true);
 #else
     scc::tracer trace("axi4_tlm_pin_tlm",
-                                   scc::tracer::file_type::NONE, // define the kind of transaction trace
-                                   true);                        // enables vcd
+                      scc::tracer::file_type::NONE, // define the kind of transaction trace
+                      true);                        // enables vcd
 #endif
     if(setjmp(env) == 0) {
         testbench tb("tb");

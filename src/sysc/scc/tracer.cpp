@@ -21,10 +21,10 @@
  */
 
 #include "tracer.h"
-#include "sc_vcd_trace.h"
 #include "report.h"
-#include "utilities.h"
+#include "sc_vcd_trace.h"
 #include "scv/scv_tr_db.h"
+#include "utilities.h"
 #ifdef HAS_SCV
 #include <scv.h>
 #ifndef SCVNS
@@ -46,7 +46,7 @@ using namespace scc;
 tracer::tracer(std::string const&& name, file_type type, bool enable, sc_core::sc_object* top)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
 , txdb(nullptr)
-, owned{enable}{
+, owned{enable} {
     if(enable) {
         trf = sc_create_vcd_trace_file(name.c_str());
         trf->set_time_unit(1, SC_PS);
@@ -57,7 +57,7 @@ tracer::tracer(std::string const&& name, file_type type, bool enable, sc_core::s
 tracer::tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, sc_core::sc_object* top)
 : tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
 , txdb(nullptr)
-, owned{false}{
+, owned{false} {
     trf = tf;
     init_scv_db(type, std::move(name));
 }
@@ -69,10 +69,10 @@ tracer::~tracer() {
 }
 
 void tracer::init_scv_db(file_type type, std::string const&& name) {
-    if (type != NONE) {
+    if(type != NONE) {
         std::stringstream ss;
         ss << name;
-        switch (type) {
+        switch(type) {
         case COMPRESSED:
             SCVNS scv_tr_compressed_init();
             ss << ".txlog";
@@ -93,18 +93,18 @@ void tracer::init_scv_db(file_type type, std::string const&& name) {
         txdb = new SCVNS scv_tr_db(ss.str().c_str());
         SCVNS scv_tr_db::set_default_db(txdb);
         if(trf) {
-            trf->write_comment(std::string("SCV_TXLOG: ")+ ss.str());
+            trf->write_comment(std::string("SCV_TXLOG: ") + ss.str());
         }
     }
 }
 
 void tracer::end_of_elaboration() {
-    if(trf){
-            if(top) {
-                descend(top, trf);
-            } else {
-                for(auto o : sc_get_top_level_objects())
-                    descend(o, default_trace_enable);
-            }
+    if(trf) {
+        if(top) {
+            descend(top, trf);
+        } else {
+            for(auto o : sc_get_top_level_objects())
+                descend(o, default_trace_enable);
+        }
     }
 }

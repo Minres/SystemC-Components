@@ -15,19 +15,19 @@
  *******************************************************************************/
 
 #include "configurer.h"
-#include "report.h"
-#include <rapidjson/prettywriter.h>
-#include <rapidjson/ostreamwrapper.h>
 #include "rapidjson/document.h"
 #include "rapidjson/error/en.h"
-#include <rapidjson/istreamwrapper.h>
+#include "report.h"
 #include <fmt/format.h>
+#include <rapidjson/istreamwrapper.h>
+#include <rapidjson/ostreamwrapper.h>
+#include <rapidjson/prettywriter.h>
 #ifdef HAS_CCI
 #include <cci_configuration>
 #include <cci_utils/broker.h>
 #endif
-#include <fstream>
 #include <cstring>
+#include <fstream>
 #include <unordered_map>
 
 namespace scc {
@@ -41,9 +41,11 @@ inline auto get_sc_objects(sc_core::sc_object* obj = nullptr) -> const std::vect
         return sc_core::sc_get_top_level_objects();
 }
 
-#define FDECL(TYPE, FUNC) \
-		inline void writeValue(writer_type& writer, std::string const& key, TYPE value)\
-		{writer.Key(key.c_str()); writer.FUNC(value);}
+#define FDECL(TYPE, FUNC)                                                                                              \
+    inline void writeValue(writer_type& writer, std::string const& key, TYPE value) {                                  \
+        writer.Key(key.c_str());                                                                                       \
+        writer.FUNC(value);                                                                                            \
+    }
 FDECL(int, Int)
 FDECL(unsigned int, Uint)
 FDECL(long, Int64)
@@ -59,8 +61,7 @@ inline void writeValue(writer_type& writer, std::string const& key, std::string 
     writer.String(value.c_str());
 }
 
-template <typename T>
-auto check_n_assign(writer_type& writer, sc_core::sc_attr_base* attr_base) -> bool {
+template <typename T> auto check_n_assign(writer_type& writer, sc_core::sc_attr_base* attr_base) -> bool {
     auto* a = dynamic_cast<sc_core::sc_attribute<T>*>(attr_base);
     if(a != nullptr) {
         writeValue(writer, a->name(), a->value);
@@ -80,9 +81,10 @@ inline bool start_object(writer_type& writer, char const* key, bool started) {
 struct config_dumper {
     configurer::broker_t const& broker;
 #ifdef HAS_CCI
-    std::unordered_map<std::string,std::vector<cci::cci_param_untyped_handle>> lut;
-    config_dumper(configurer::broker_t const& broker):broker(broker){
-        for(auto& h: broker.get_param_handles()){
+    std::unordered_map<std::string, std::vector<cci::cci_param_untyped_handle>> lut;
+    config_dumper(configurer::broker_t const& broker)
+    : broker(broker) {
+        for(auto& h : broker.get_param_handles()) {
             auto value = h.get_cci_value();
             std::string paramname{h.name()};
             auto sep = paramname.rfind('.');
@@ -91,31 +93,29 @@ struct config_dumper {
         }
     }
 #else
-    config_dumper(configurer::broker_t const& broker):broker(broker){}
+    config_dumper(configurer::broker_t const& broker)
+    : broker(broker) {}
 #endif
 
-    void dump_config(sc_core::sc_object* obj,  writer_type& writer) {
-        auto obj_started=false;
+    void dump_config(sc_core::sc_object* obj, writer_type& writer) {
+        auto obj_started = false;
         auto mod = dynamic_cast<sc_core::sc_module*>(obj);
         for(sc_core::sc_attr_base* attr_base : obj->attr_cltn()) {
-            obj_started=start_object(writer, obj->basename(), obj_started);
-            check_n_assign<int>(writer, attr_base) ||
-                    check_n_assign<unsigned>(writer, attr_base) ||
-                    check_n_assign<long>(writer, attr_base) ||
-                    check_n_assign<unsigned long>(writer, attr_base) ||
-                    check_n_assign<long long>(writer, attr_base) ||
-                    check_n_assign<unsigned long long>(writer, attr_base) ||
-                    check_n_assign<bool>(writer, attr_base) ||
-                    check_n_assign<float>(writer, attr_base) || check_n_assign<double>(writer, attr_base) ||
-                    check_n_assign<std::string>(writer, attr_base) || check_n_assign<char*>(writer, attr_base);
+            obj_started = start_object(writer, obj->basename(), obj_started);
+            check_n_assign<int>(writer, attr_base) || check_n_assign<unsigned>(writer, attr_base) ||
+                check_n_assign<long>(writer, attr_base) || check_n_assign<unsigned long>(writer, attr_base) ||
+                check_n_assign<long long>(writer, attr_base) || check_n_assign<unsigned long long>(writer, attr_base) ||
+                check_n_assign<bool>(writer, attr_base) || check_n_assign<float>(writer, attr_base) ||
+                check_n_assign<double>(writer, attr_base) || check_n_assign<std::string>(writer, attr_base) ||
+                check_n_assign<char*>(writer, attr_base);
         }
 #ifdef HAS_CCI
         const std::string hier_name{obj->name()};
-        auto log_lvl_set=false;
+        auto log_lvl_set = false;
         auto it = lut.find(obj->name());
-        if(it!=lut.end())
+        if(it != lut.end())
             for(auto& h : it->second) {
-                obj_started=start_object(writer, obj->basename(), obj_started);
+                obj_started = start_object(writer, obj->basename(), obj_started);
                 auto value = h.get_cci_value();
                 std::string paramname{h.name()};
                 auto basename = paramname.substr(paramname.rfind('.') + 1);
@@ -137,30 +137,31 @@ struct config_dumper {
                     writeValue(writer, basename, value.get_string().c_str());
             }
         if(!log_lvl_set && mod) {
-            obj_started=start_object(writer, obj->basename(), obj_started);
+            obj_started = start_object(writer, obj->basename(), obj_started);
             auto val = broker.get_preset_cci_value(fmt::format("{}.{}", obj->name(), SCC_LOG_LEVEL_PARAM_NAME));
             auto global_verb = static_cast<int>(get_logging_level());
             writeValue(writer, "log_level", val.is_int() ? val.get_int() : global_verb);
         }
 #endif
         for(auto* o : get_sc_objects(obj)) {
-            if(dynamic_cast<sc_core::sc_module*>(obj)){
-                obj_started=start_object(writer, obj->basename(), obj_started);
+            if(dynamic_cast<sc_core::sc_module*>(obj)) {
+                obj_started = start_object(writer, obj->basename(), obj_started);
                 dump_config(o, writer);
             }
         }
-        if(obj_started) writer.EndObject();
+        if(obj_started)
+            writer.EndObject();
     }
 };
 
-#define CHECK_N_ASSIGN(TYPE, ATTR, VAL)                                                                            \
-		{                                                                                                          \
-	auto* a = dynamic_cast<sc_core::sc_attribute<TYPE>*>(ATTR);                                                    \
-	if(a != nullptr) {                                                                                             \
-		a->value = VAL;                                                                                            \
-		return;                                                                                                    \
-	}                                                                                                              \
-		}
+#define CHECK_N_ASSIGN(TYPE, ATTR, VAL)                                                                                \
+    {                                                                                                                  \
+        auto* a = dynamic_cast<sc_core::sc_attribute<TYPE>*>(ATTR);                                                    \
+        if(a != nullptr) {                                                                                             \
+            a->value = VAL;                                                                                            \
+            return;                                                                                                    \
+        }                                                                                                              \
+    }
 
 void try_set_value(sc_core::sc_attr_base* attr_base, Value const& hier_val) {
     CHECK_N_ASSIGN(int, attr_base, hier_val.Get<int>());
@@ -176,16 +177,17 @@ void try_set_value(sc_core::sc_attr_base* attr_base, Value const& hier_val) {
 
 struct config_reader {
     configurer::broker_t& broker;
-    config_reader(configurer::broker_t& broker):broker(broker){}
+    config_reader(configurer::broker_t& broker)
+    : broker(broker) {}
     void configure_cci_hierarchical(Value const& value, std::string prefix) {
-        if(value.IsObject()){
+        if(value.IsObject()) {
             auto o = value.GetObject();
             for(auto itr = o.MemberBegin(); itr != o.MemberEnd(); ++itr) {
                 if(!itr->name.IsString())
                     return;
                 auto key_name = itr->name.GetString();
                 Value const& val = itr->value;
-                auto hier_name=prefix.size() ? prefix + "." + key_name : key_name;
+                auto hier_name = prefix.size() ? prefix + "." + key_name : key_name;
                 if(val.IsNull() || val.IsArray())
                     return;
                 else if(val.IsObject())
@@ -238,9 +240,9 @@ void configure_sc_attribute_hierarchical(Value const& node, std::string const& p
         if(!itr->name.IsString())
             return;
         auto key_name = itr->name.GetString();
-        if(strncmp(key_name, "log_level", 9)==0)
+        if(strncmp(key_name, "log_level", 9) == 0)
             continue; // virtual attribute
-        auto hier_name=prefix.size() ? prefix + "." + key_name : key_name;
+        auto hier_name = prefix.size() ? prefix + "." + key_name : key_name;
         Value const& val = itr->value;
         if(val.IsNull() || val.IsArray())
             continue;
@@ -250,7 +252,7 @@ void configure_sc_attribute_hierarchical(Value const& node, std::string const& p
             }
         } else {
             auto pos = hier_name.rfind('.');
-            if(pos!=std::string::npos) {
+            if(pos != std::string::npos) {
                 auto objname = hier_name.substr(0, pos);
                 auto attrname = hier_name.substr(pos + 1);
                 if(auto* obj = sc_core::sc_find_object(objname.c_str()))
@@ -262,39 +264,39 @@ void configure_sc_attribute_hierarchical(Value const& node, std::string const& p
 }
 
 void check_config_hierarchical(configurer::broker_t const& broker, Value const& node, std::string const& prefix) {
-        for(auto itr = node.MemberBegin(); itr != node.MemberEnd(); ++itr) {
-            if(!itr->name.IsString())
-                return;
-            auto key_name = itr->name.GetString();
-            if(strncmp(key_name, SCC_LOG_LEVEL_PARAM_NAME, 9)==0)
-                continue; // virtual attribute
-            auto hier_name=prefix.size() ? prefix + "." + key_name : key_name;
-            Value const& val = itr->value;
-            if(val.IsNull() || val.IsArray())
-                continue;
-            else if(val.IsObject()) {
-                if(!sc_core::sc_find_object(hier_name.c_str())) {
-                    throw std::domain_error(hier_name);
-                }
-                check_config_hierarchical(broker, val, hier_name);
-            } else {
-                auto pos = hier_name.rfind('.');
-                if(pos!=std::string::npos) {
-                    auto objname = hier_name.substr(0, pos);
-                    auto attrname = hier_name.substr(pos + 1);
-                    auto* obj = sc_core::sc_find_object(objname.c_str());
-                    if(!obj || !obj->get_attribute(attrname.c_str())) {
+    for(auto itr = node.MemberBegin(); itr != node.MemberEnd(); ++itr) {
+        if(!itr->name.IsString())
+            return;
+        auto key_name = itr->name.GetString();
+        if(strncmp(key_name, SCC_LOG_LEVEL_PARAM_NAME, 9) == 0)
+            continue; // virtual attribute
+        auto hier_name = prefix.size() ? prefix + "." + key_name : key_name;
+        Value const& val = itr->value;
+        if(val.IsNull() || val.IsArray())
+            continue;
+        else if(val.IsObject()) {
+            if(!sc_core::sc_find_object(hier_name.c_str())) {
+                throw std::domain_error(hier_name);
+            }
+            check_config_hierarchical(broker, val, hier_name);
+        } else {
+            auto pos = hier_name.rfind('.');
+            if(pos != std::string::npos) {
+                auto objname = hier_name.substr(0, pos);
+                auto attrname = hier_name.substr(pos + 1);
+                auto* obj = sc_core::sc_find_object(objname.c_str());
+                if(!obj || !obj->get_attribute(attrname.c_str())) {
 #ifdef HAS_CCI
-                        auto param_handle = broker.get_param_handle(hier_name);
-                        if(!param_handle.is_valid() && attrname!=SCC_LOG_LEVEL_PARAM_NAME)
+                    auto param_handle = broker.get_param_handle(hier_name);
+                    if(!param_handle.is_valid() && attrname != SCC_LOG_LEVEL_PARAM_NAME)
 #endif
-                            throw std::invalid_argument(hier_name);
-                    }
+                        throw std::invalid_argument(hier_name);
                 }
             }
         }
     }
 }
+} // namespace
 
 struct configurer::ConfigHolder {
     Document document;
@@ -315,8 +317,9 @@ configurer::configurer(const std::string& filename)
                 IStreamWrapper stream(is);
                 root->document.ParseStream(stream);
                 if(root->document.HasParseError()) {
-                    SCCERR() << "Could not parse input file " << filename << ", location " << (unsigned)root->document.GetErrorOffset()
-                            << ", reason: " << GetParseError_En(root->document.GetParseError());
+                    SCCERR() << "Could not parse input file " << filename << ", location "
+                             << (unsigned)root->document.GetErrorOffset()
+                             << ", reason: " << GetParseError_En(root->document.GetParseError());
                 } else {
                     config_reader reader(cci_broker);
                     reader.configure_cci_hierarchical(root->document, "");
@@ -331,7 +334,7 @@ configurer::configurer(const std::string& filename)
     }
 }
 
-configurer::~configurer(){}
+configurer::~configurer() {}
 
 void configurer::dump_hierarchy(std::ostream& os, sc_core::sc_object* obj) {
     if(obj) {
@@ -356,7 +359,7 @@ void configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj) {
 }
 
 void configurer::configure() {
-    if(config_valid && root){
+    if(config_valid && root) {
         configure_sc_attribute_hierarchical(root->document, "");
     }
 }
@@ -371,7 +374,7 @@ auto get_value_from_hierarchy(const std::string& hier_name, Value const& value) 
 }
 
 void configurer::set_configuration_value(sc_core::sc_attr_base* attr_base, sc_core::sc_object* owner) {
-    if(root){
+    if(root) {
         std::string name(owner->name());
         name += ".";
         name += attr_base->name();
@@ -383,12 +386,13 @@ void configurer::set_configuration_value(sc_core::sc_attr_base* attr_base, sc_co
     }
 }
 
-void configurer::config_check()  {
+void configurer::config_check() {
     try {
-        if(root) check_config_hierarchical(cci_broker, root->document, "");
+        if(root)
+            check_config_hierarchical(cci_broker, root->document, "");
     } catch(std::domain_error& e) {
         SCCFATAL(this->name()) << "Illegal hierarchy name: '" << e.what() << "'";
-    } catch(std::invalid_argument& e){
+    } catch(std::invalid_argument& e) {
         SCCFATAL(this->name()) << "Illegal parameter name: '" << e.what() << "'";
     }
 }
@@ -409,4 +413,4 @@ void configurer::start_of_simulation() {
     }
 }
 
-}
+} // namespace scc

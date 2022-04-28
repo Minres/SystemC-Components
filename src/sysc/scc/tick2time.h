@@ -33,7 +33,8 @@ namespace scc {
  */
 struct tick2time : public sc_core::sc_module
 #ifdef CWR_SYSTEMC
-, public scml_clock_observer
+,
+                   public scml_clock_observer
 #endif
 {
     //! the clock output

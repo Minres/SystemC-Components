@@ -6,8 +6,8 @@
  */
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
-#include <ahb/ahb_tlm.h>
 #include "target.h"
+#include <ahb/ahb_tlm.h>
 #include <scc/report.h>
 #include <scc/utilities.h>
 #include <tlm/scc/tlm_mm.h>

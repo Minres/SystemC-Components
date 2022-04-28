@@ -44,7 +44,7 @@ struct time2tick : public sc_core::sc_module {
 
 private:
     sc_core::sc_time clk_period;
-	void clocker();
+    void clocker();
 };
 } // namespace scc
 #endif /* _SCC_TIME2TICK_H_ */

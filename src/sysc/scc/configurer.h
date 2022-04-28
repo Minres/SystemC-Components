@@ -36,6 +36,7 @@ void init_cci(std::string name = "Global Broker");
  */
 class configurer : public sc_core::sc_module {
     struct ConfigHolder;
+
 public:
     using base_type = sc_core::sc_module;
 #ifdef HAS_CCI
@@ -85,7 +86,7 @@ public:
      *
      * @param file_name the output stream, std::cout by default
      */
-    void dump_configuration(std::string const& file_name){ dump_file_name=file_name; }
+    void dump_configuration(std::string const& file_name) { dump_file_name = file_name; }
     /**
      * set a value a some attribute (sc_attribute or cci_param)
      *
@@ -139,9 +140,9 @@ protected:
     bool config_valid{false};
     std::unique_ptr<ConfigHolder> root;
     std::string dump_file_name{""};
-    void config_check() ;
-    void before_end_of_elaboration() override {configure();}
-    void end_of_elaboration() override {configure();}
+    void config_check();
+    void before_end_of_elaboration() override { configure(); }
+    void end_of_elaboration() override { configure(); }
     void start_of_simulation() override;
 
 #ifdef HAS_CCI

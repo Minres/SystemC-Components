@@ -39,21 +39,20 @@ using namespace scc;
 
 #define EN_TRACING_STR "enableTracing"
 
-configurable_tracer::configurable_tracer(std::string const&& name, file_type type, bool enable_vcd, bool default_enable, sc_core::sc_object* top)
+configurable_tracer::configurable_tracer(std::string const&& name, file_type type, bool enable_vcd, bool default_enable,
+                                         sc_core::sc_object* top)
 : tracer(std::move(name), type, enable_vcd, top)
 , cci_originator(this->name())
-, cci_broker(cci::cci_get_global_broker(cci_originator))
-{
-    default_trace_enable=default_enable;
+, cci_broker(cci::cci_get_global_broker(cci_originator)) {
+    default_trace_enable = default_enable;
 }
 
 configurable_tracer::configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf,
                                          bool default_enable, sc_core::sc_object* top)
 : tracer(std::move(name), type, tf, top)
 , cci_originator(this->name())
-, cci_broker(cci::cci_get_global_broker(cci_originator))
-{
-    default_trace_enable=default_enable;
+, cci_broker(cci::cci_get_global_broker(cci_originator)) {
+    default_trace_enable = default_enable;
 }
 
 scc::configurable_tracer::~configurable_tracer() {
@@ -65,7 +64,7 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
     if(obj == this)
         return;
     const char* kind = obj->kind();
-    if((types_to_trace & trace_types::SIGNALS) == trace_types::SIGNALS && strcmp(kind, "tlm_signal") == 0){
+    if((types_to_trace & trace_types::SIGNALS) == trace_types::SIGNALS && strcmp(kind, "tlm_signal") == 0) {
         if(trace)
             obj->trace(trf);
         return;
@@ -89,9 +88,11 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
         for(auto o : obj->get_child_objects())
             descend(o, tr->is_trace_enabled());
     } else if((types_to_trace & trace_types::PORTS) == trace_types::PORTS && strcmp(kind, "sc_port") == 0) {
-        if(trace) try_trace(trf, obj, types_to_trace);
+        if(trace)
+            try_trace(trf, obj, types_to_trace);
     } else if((types_to_trace & trace_types::SIGNALS) == trace_types::SIGNALS && strcmp(kind, "sc_signal") == 0) {
-        if(trace) try_trace(trf, obj, types_to_trace);
+        if(trace)
+            try_trace(trf, obj, types_to_trace);
     } else if(trace)
         try_trace(trf, obj, types_to_trace);
 }

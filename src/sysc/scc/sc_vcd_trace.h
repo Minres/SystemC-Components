@@ -21,12 +21,11 @@
 
 namespace scc {
 //! keep backward compatibility
-inline sc_core::sc_trace_file *scc_create_vcd_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>()) {
+inline sc_core::sc_trace_file* scc_create_vcd_trace_file(const char* name,
+                                                         std::function<bool()> enable = std::function<bool()>()) {
     return create_vcd_pull_trace_file(name, enable);
 }
-inline void scc_close_vcd_trace_file( sc_core::sc_trace_file* tf ) {
-    close_vcd_pull_trace_file(tf);
-}
+inline void scc_close_vcd_trace_file(sc_core::sc_trace_file* tf) { close_vcd_pull_trace_file(tf); }
 } // namespace scc
 
 #endif // SCC_SC_VCD_TRACE_H

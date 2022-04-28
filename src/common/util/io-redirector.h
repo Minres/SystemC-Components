@@ -64,6 +64,6 @@ private:
     std::mutex m_mutex;
     std::string m_captured;
 };
-} //namespace util
+} // namespace util
 /** @} */
 #endif /* _UTIL_IO_REDIRECTOR_H_ */

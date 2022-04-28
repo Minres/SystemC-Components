@@ -5,15 +5,15 @@
  *      Author:
  */
 
-#include <scc.h>
 #include <array>
-#include <axi/scv/recorder_modules.h>
 #include <axi/axi_initiator.h>
 #include <axi/axi_target.h>
+#include <axi/scv/recorder_modules.h>
+#include <scc.h>
+#include <scc/configurable_tracer.h>
+#include <scc/memory.h>
 #include <tlm/scc/initiator_mixin.h>
 #include <tlm/scc/tlm_gp_shared.h>
-#include <scc/memory.h>
-#include <scc/configurable_tracer.h>
 
 using namespace sc_core;
 using namespace axi;
@@ -75,7 +75,7 @@ public:
                 tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(BurstLengthByte);
                 trans->set_command(tlm::TLM_READ_COMMAND);
                 trans->set_address(StartAddr);
-                auto delay= SC_ZERO_TIME;
+                auto delay = SC_ZERO_TIME;
                 top_isck->b_transport(*trans, delay);
                 if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
                     SCCERR() << "Invalid response status" << trans->get_response_string();
@@ -85,7 +85,7 @@ public:
                 tlm::scc::tlm_gp_shared_ptr trans = prepare_trans(BurstLengthByte);
                 trans->set_command(tlm::TLM_WRITE_COMMAND);
                 trans->set_address(StartAddr);
-                auto delay= SC_ZERO_TIME;
+                auto delay = SC_ZERO_TIME;
                 top_isck->b_transport(*trans, delay);
                 if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
                     SCCERR() << "Invalid response status" << trans->get_response_string();
@@ -99,21 +99,23 @@ public:
 
 int sc_main(int argc, char* argv[]) {
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
+    // clang-format off
     scc::init_logging(
             scc::LogConfig()
             .logLevel(static_cast<scc::log>(7))
             .logAsync(false)
             .coloredOutput(true));
+    // clang-format off
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
 #ifdef HAS_CCI
     scc::configurable_tracer trace("axi_axi_test",
-            scc::tracer::file_type::TEXT, // define the kind of transaction trace
-            true,                         // enables vcd
-            true);
+                                   scc::tracer::file_type::TEXT, // define the kind of transaction trace
+                                   true,                         // enables vcd
+                                   true);
 #else
     scc::tracer trace("axi_axi_test",
-            scc::tracer::file_type::NONE, // define the kind of transaction trace
-            true);                        // enables vcd
+                      scc::tracer::file_type::NONE, // define the kind of transaction trace
+                      true);                        // enables vcd
 #endif
     testbench tb("tb");
     try {
@@ -131,7 +133,7 @@ int sc_main(int argc, char* argv[]) {
     }
     auto errcnt = sc_report_handler::get_count(SC_ERROR);
     auto warncnt = sc_report_handler::get_count(SC_WARNING);
-    SCCINFO() << "Finished, there were " << errcnt << " error" << (errcnt == 1 ? "" : "s") << " and " << warncnt << " warning"
-            << (warncnt == 1 ? "" : "s");
+    SCCINFO() << "Finished, there were " << errcnt << " error" << (errcnt == 1 ? "" : "s") << " and " << warncnt
+              << " warning" << (warncnt == 1 ? "" : "s");
     return errcnt + warncnt;
 }

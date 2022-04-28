@@ -53,12 +53,15 @@ perf_estimator::~perf_estimator() {
                        << (sc_time_stamp().value() ? cycles / (eos.proc_clock_stamp - soc.proc_clock_stamp) : 0.0)
                        << " cycles/s";
     }
-    SCCINFO(SCMOD) << "max resident memory: " << max_memory<<"kB";
+    SCCINFO(SCMOD) << "max resident memory: " << max_memory << "kB";
 }
 
 void perf_estimator::end_of_elaboration() { eoe.set(); }
 
-void perf_estimator::start_of_simulation() { sos.set(); get_memory();}
+void perf_estimator::start_of_simulation() {
+    sos.set();
+    get_memory();
+}
 
 void perf_estimator::end_of_simulation() {
     eos.set();
@@ -77,7 +80,7 @@ void perf_estimator::end_of_simulation() {
 
 void perf_estimator::beat() {
     if(sc_time_stamp().value())
-        SCCINFO(SCMOD) << "Heart beat, rss mem: "<<get_memory()<<" bytes";
+        SCCINFO(SCMOD) << "Heart beat, rss mem: " << get_memory() << " bytes";
     next_trigger(beat_delay);
 }
 } /* namespace scc */
@@ -144,11 +147,10 @@ long scc::perf_estimator::get_memory() {
     {
         struct rusage usage {};
         if(getrusage(RUSAGE_SELF, &usage) != -1) {
-            max_memory=std::max(max_memory, usage.ru_maxrss);
+            max_memory = std::max(max_memory, usage.ru_maxrss);
             return usage.ru_maxrss;
         }
     }
 #endif
     return 0L;
-
 }

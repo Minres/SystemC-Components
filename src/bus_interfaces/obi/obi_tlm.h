@@ -57,29 +57,17 @@ private:
 
 inline tlm::tlm_extension_base* obi_extension::clone() const { return new obi_extension(*this); }
 
-inline uint32_t obi_extension::get_id() const {
-    return id;
-}
+inline uint32_t obi_extension::get_id() const { return id; }
 
-inline void obi_extension::set_id(uint32_t unsignedInt) {
-    id=unsignedInt;
-}
+inline void obi_extension::set_id(uint32_t unsignedInt) { id = unsignedInt; }
 
-inline uint32_t obi_extension::get_auser() const {
-    return auser;
-}
+inline uint32_t obi_extension::get_auser() const { return auser; }
 
-inline void obi_extension::set_auser(uint32_t unsignedInt) {
-    auser=unsignedInt;
-}
+inline void obi_extension::set_auser(uint32_t unsignedInt) { auser = unsignedInt; }
 
-inline uint32_t obi_extension::get_duser() const {
-    return duser;
-}
+inline uint32_t obi_extension::get_duser() const { return duser; }
 
-inline void obi_extension::set_duser(uint32_t unsignedInt) {
-    duser=unsignedInt;
-}
+inline void obi_extension::set_duser(uint32_t unsignedInt) { duser = unsignedInt; }
 
 inline void obi_extension::copy_from(const tlm::tlm_extension_base& ext) {
     auto const* obi_ext = dynamic_cast<const obi_extension*>(&ext);
@@ -87,7 +75,7 @@ inline void obi_extension::copy_from(const tlm::tlm_extension_base& ext) {
     (*this) = *obi_ext;
 }
 
-inline unsigned get_obi_id(tlm::tlm_generic_payload& trans){
+inline unsigned get_obi_id(tlm::tlm_generic_payload& trans) {
     auto* ext = trans.get_extension<obi::obi_extension>();
     assert(ext && "No OBI extension found");
     return ext->get_id();

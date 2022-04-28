@@ -63,62 +63,54 @@ inline auto try_trace_obj(sc_trace_file* trace_file, const sc_object* object, tr
     return false;
 }
 
-template<size_t SIZE>
-struct ForLoop {
-    template<template <size_t> class Func>
+template <size_t SIZE> struct ForLoop {
+    template <template <size_t> class Func>
     static bool iterate(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) {
-        if(ForLoop<SIZE-(SIZE>128?8:1)>::template iterate<Func>(trace_file, object, types_to_trace))
+        if(ForLoop<SIZE - (SIZE > 128 ? 8 : 1)>::template iterate<Func>(trace_file, object, types_to_trace))
             return true;
         else
             return Func<SIZE>()(trace_file, object, types_to_trace);
     }
 };
 
-template<>
-struct ForLoop<1> {
-    template<template <size_t> class Func>
+template <> struct ForLoop<1> {
+    template <template <size_t> class Func>
     static bool iterate(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) {
         return Func<1>()(trace_file, object, types_to_trace);
     }
 };
 
-template <size_t size>
-struct sc_uint_tester {
+template <size_t size> struct sc_uint_tester {
     bool operator()(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) {
         return try_trace_obj<sc_uint<size>>(trace_file, object, types_to_trace);
     }
 };
 
-template <size_t size>
-struct sc_int_tester {
+template <size_t size> struct sc_int_tester {
     bool operator()(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) {
         return try_trace_obj<sc_int<size>>(trace_file, object, types_to_trace);
     }
 };
 
-template <size_t size>
-struct sc_biguint_tester {
+template <size_t size> struct sc_biguint_tester {
     bool operator()(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) {
         return try_trace_obj<sc_biguint<size>>(trace_file, object, types_to_trace);
     }
 };
 
-template <size_t size>
-struct sc_bigint_tester {
+template <size_t size> struct sc_bigint_tester {
     bool operator()(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) {
         return try_trace_obj<sc_bigint<size>>(trace_file, object, types_to_trace);
     }
 };
 
-template <size_t size>
-struct sc_bv_tester {
+template <size_t size> struct sc_bv_tester {
     bool operator()(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) {
         return try_trace_obj<sc_bv<size>>(trace_file, object, types_to_trace);
     }
 };
 
-template <size_t size>
-struct sc_lv_tester {
+template <size_t size> struct sc_lv_tester {
     bool operator()(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) {
         return try_trace_obj<sc_lv<size>>(trace_file, object, types_to_trace);
     }
@@ -277,7 +269,8 @@ void tracer_base::descend(const sc_object* obj, bool trace_all) {
         for(auto o : obj->get_child_objects())
             descend(o, trace_all);
     } else if(strcmp(kind, "sc_variable") == 0) {
-        if((types_to_trace & trace_types::VARIABLES) == trace_types::VARIABLES) obj->trace(trf);
+        if((types_to_trace & trace_types::VARIABLES) == trace_types::VARIABLES)
+            obj->trace(trf);
     } else if(const auto* tr = dynamic_cast<const scc::traceable*>(obj)) {
         if(tr->is_trace_enabled())
             obj->trace(trf);
@@ -287,4 +280,4 @@ void tracer_base::descend(const sc_object* obj, bool trace_all) {
         try_trace(trf, obj, types_to_trace);
     }
 }
-}
+} // namespace scc

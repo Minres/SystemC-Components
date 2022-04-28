@@ -314,7 +314,6 @@ public:
                 nb_trTimedHandle[FW] = new SCVNS scv_tr_generator<>("request", *nb_streamHandleTimed);
                 nb_trTimedHandle[BW] = new SCVNS scv_tr_generator<>("response", *nb_streamHandleTimed);
             }
-
         }
         if(m_db && enableDmiTracing.value && !dmi_streamHandle) {
             dmi_streamHandle =

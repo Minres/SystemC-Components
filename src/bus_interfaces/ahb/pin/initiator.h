@@ -52,7 +52,7 @@ private:
     tlm_utils::peq_with_get<tlm::tlm_generic_payload> inqueue{"inqueue"};
 };
 
-} /* namespace bfm */
+} // namespace pin
 } /* namespace ahb */
 
 #endif /* AHB_TARGET_BFM_H_ */

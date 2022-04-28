@@ -650,9 +650,7 @@ void scv_tr_stream::remove_callback(callback_h h) {
 
 const char* scv_tr_handle::_kind = "scv_tr_handle";
 
-scv_tr_handle::scv_tr_handle() {
-    this->_scv_tr_handle_core_p = nullptr;
-}
+scv_tr_handle::scv_tr_handle() { this->_scv_tr_handle_core_p = nullptr; }
 
 // ----------------------------------------------------------------------------
 
@@ -671,7 +669,6 @@ scv_tr_handle::~scv_tr_handle() {
             delete this->_scv_tr_handle_core_p;
         } else {
             this->_scv_tr_handle_core_p->ref_count--;
-
         }
     }
 }

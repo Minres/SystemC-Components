@@ -27,11 +27,11 @@
 #ifdef HAS_CCI
 #include "configurer.h"
 #endif
+#include <mutex>
 #include <spdlog/async.h>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
-#include <mutex>
 #include <thread>
 #include <tuple>
 #include <unordered_map>
@@ -162,7 +162,7 @@ auto compose_message(const sc_report& rep, const scc::LogConfig& cfg) -> const s
             os << rep.get_msg();
         if(rep.get_severity() > SC_INFO) {
             if(rep.get_line_number())
-            os << "\n         [FILE:" << rep.get_file_name() << ":" << rep.get_line_number() << "]";
+                os << "\n         [FILE:" << rep.get_file_name() << ":" << rep.get_line_number() << "]";
             sc_simcontext* simc = sc_get_curr_simcontext();
             if(simc && sc_is_running()) {
                 const char* proc_name = rep.get_process_name();
@@ -241,7 +241,8 @@ inline void log2logger(spdlog::logger& logger, scc::log lvl, const string& msg) 
 
 void report_handler(const sc_report& rep, const sc_actions& actions) {
     thread_local bool sc_stop_called = false;
-    if(actions & SC_DO_NOTHING) return;
+    if(actions & SC_DO_NOTHING)
+        return;
     if(rep.get_severity() == sc_core::SC_INFO || !log_cfg.report_only_first_error ||
        sc_report_handler::get_count(SC_ERROR) < 2) {
         if((actions & SC_DISPLAY) && (!log_cfg.file_logger || get_verbosity(rep) < SC_HIGH))

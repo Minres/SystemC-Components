@@ -17,13 +17,13 @@
 #ifndef _UTIL_ITIES_H_
 #define _UTIL_ITIES_H_
 
+#include <algorithm>
 #include <array>
 #include <assert.h>
 #include <bitset>
 #include <iterator>
 #include <memory>
 #include <sstream>
-#include <algorithm>
 #include <sys/stat.h>
 #include <type_traits>
 #include <vector>
@@ -115,12 +115,8 @@ template <typename T> T leftmost_one(T n) {
 // according to
 // https://stackoverflow.com/questions/8871204/count-number-of-1s-in-binary-representation
 #if defined(__GNUG__)
-constexpr inline size_t bit_count(uint32_t u) {
-    return __builtin_popcount(u);
-}
-constexpr inline size_t bit_count(uint64_t u) {
-    return __builtin_popcountl (u);
-}
+constexpr inline size_t bit_count(uint32_t u) { return __builtin_popcount(u); }
+constexpr inline size_t bit_count(uint64_t u) { return __builtin_popcountl(u); }
 #elif __cplusplus < 201402L
 constexpr size_t uCount(uint32_t u) { return u - ((u >> 1) & 033333333333) - ((u >> 2) & 011111111111); }
 constexpr size_t bit_count(uint32_t u) { return ((uCount(u) + (uCount(u) >> 3)) & 030707070707) % 63; }
@@ -157,10 +153,9 @@ inline constexpr unsigned ilog2(uint32_t val) {
     }
     return ret;
 #endif
-}
+} // namespace util
 
-
-constexpr bool hasOddParity(uint32_t u) { return bit_count(u)%2;}
+constexpr bool hasOddParity(uint32_t u) { return bit_count(u) % 2; }
 /**
  * split a given string using specified separator
  *
@@ -254,7 +249,7 @@ inline std::string& trim(std::string& str, const std::string& chars = "\t\n\v\f\
  * @return
  */
 inline std::string str_tolower(std::string str) {
-    std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c){ return std::tolower(c); });
+    std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c) { return std::tolower(c); });
     return str;
 }
 /**
@@ -275,7 +270,8 @@ inline bool iequals(const std::string& a, const std::string& b) {
             return false;
     return true;
 #else
-    return std::equal(a.begin(), a.end(), b.begin(), b.end(), [](unsigned char a, unsigned char b) { return tolower(a) == tolower(b); });
+    return std::equal(a.begin(), a.end(), b.begin(), b.end(),
+                      [](unsigned char a, unsigned char b) { return tolower(a) == tolower(b); });
 #endif
 }
 /**

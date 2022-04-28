@@ -24,9 +24,11 @@
 
 namespace scc {
 
-template <typename BASE> class ticking_clock : public BASE
+template <typename BASE>
+class ticking_clock : public BASE
 #ifdef CWR_SYSTEMC
-, public scml_clock_observer
+,
+                      public scml_clock_observer
 #endif
 {
 public:
@@ -38,12 +40,12 @@ public:
 protected:
     void end_of_elaboration() override {
 #ifdef CWR_SYSTEMC
-    	if(auto scml_clk_if = scml2::get_scml_clock(clk_i)) {
-    		scml_clk_if->register_observer(this);
-    		handle_clock_parameters_updated(scml_clk_if);
+        if(auto scml_clk_if = scml2::get_scml_clock(clk_i)) {
+            scml_clk_if->register_observer(this);
+            handle_clock_parameters_updated(scml_clk_if);
             BASE::end_of_elaboration();
             return;
-    	}
+        }
 #endif
         auto clk_if = dynamic_cast<sc_core::sc_clock*>(clk_i.get_interface());
         sc_assert(clk_if != nullptr);
@@ -52,9 +54,9 @@ protected:
     }
 #ifdef CWR_SYSTEMC
     void handle_clock_parameters_updated(scml_clock_if* clk_if) override {
-    	this->set_clock_period(clk_if->get_period());
+        this->set_clock_period(clk_if->get_period());
     }
-    void handle_clock_deleted(scml_clock_if*)override {};
+    void handle_clock_deleted(scml_clock_if*) override{};
 #endif
 };
 

@@ -19,6 +19,7 @@
 #include <cstdio>
 #include <cstring>
 #include <fcntl.h>
+#include <fstream>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -26,7 +27,6 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
-#include <fstream>
 // clang-format off
 #ifdef HAS_SCV
 #include <scv.h>
@@ -51,13 +51,16 @@ protected:
     bool const is_open;
     std::array<char, 1024> buffer;
     Base(const std::string& name)
-    : dir(name.c_str()), out(name), is_open(out.is_open()){
-//        if(boost::filesystem::exists(dir))
-//            boost::filesystem::remove_all(dir);
-//        boost::filesystem::create_directory(dir);
+    : dir(name.c_str())
+    , out(name)
+    , is_open(out.is_open()) {
+        //        if(boost::filesystem::exists(dir))
+        //            boost::filesystem::remove_all(dir);
+        //        boost::filesystem::create_directory(dir);
     }
     ~Base() {
-        if(is_open) out.close();
+        if(is_open)
+            out.close();
     }
 };
 
@@ -66,38 +69,38 @@ struct Database : Base {
     Database(const std::string& name)
     : Base(name) {}
 
-    inline uint64_t getIdOf(const std::string& str) {
-        return idx;
-    }
+    inline uint64_t getIdOf(const std::string& str) { return idx; }
 
     inline void writeStream(uint64_t id, std::string const& name, std::string const& kind) {
         if(is_open) {
-            auto len = sprintf(buffer.data(), "scv_tr_stream (ID %lu, name \"%s\", kind \"%s\")\n", id, name.c_str(), kind.c_str());
+            auto len = sprintf(buffer.data(), "scv_tr_stream (ID %lu, name \"%s\", kind \"%s\")\n", id, name.c_str(),
+                               kind.c_str());
             out.write(buffer.data(), len);
         }
     }
 
     inline void writeGenerator(uint64_t id, std::string const& name, uint64_t stream) {
         if(is_open) {
-            auto len = sprintf(buffer.data(), "scv_tr_generator (ID %lu, name \"%s\", scv_tr_stream %lu,\n", id, name.c_str(), stream);
+            auto len = sprintf(buffer.data(), "scv_tr_generator (ID %lu, name \"%s\", scv_tr_stream %lu,\n", id,
+                               name.c_str(), stream);
             out.write(buffer.data(), len);
         }
     }
 
     inline uint64_t writeTransaction(uint64_t id, uint64_t generator) {
-        return ++idx;//d.writeTx(id, generator, concurrencyLevel);
+        return ++idx; // d.writeTx(id, generator, concurrencyLevel);
     }
 
     inline void writeTxTimepoint(uint64_t id, int type, uint64_t time, uint64_t file_offset) {
-//        t.append(type, time, file_offset);
+        //        t.append(type, time, file_offset);
     }
 
     inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, const string& value) {
-//        d.writeAttribute(id, event, c.getIdOf(name), type, c.getIdOf(value));
+        //        d.writeAttribute(id, event, c.getIdOf(name), type, c.getIdOf(value));
     }
 
     inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, uint64_t value) {
-//        d.writeAttribute(id, event, c.getIdOf(name), type, value);
+        //        d.writeAttribute(id, event, c.getIdOf(name), type, value);
     }
 
     inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, double value) {
@@ -106,7 +109,7 @@ struct Database : Base {
     }
 
     inline void writeRelation(const std::string& name, uint64_t sink_id, uint64_t src_id) {
-//        d.writeRelation(c.getIdOf(name), src_id, sink_id);
+        //        d.writeRelation(c.getIdOf(name), src_id, sink_id);
     }
 };
 
@@ -172,22 +175,23 @@ inline void recordAttribute(uint64_t id, EventType event, const string& name, da
     }
 }
 
-inline  std::string get_name(const char* prefix, const scv_extensions_if* my_exts_p) {
+inline std::string get_name(const char* prefix, const scv_extensions_if* my_exts_p) {
     static thread_local std::unordered_map<const scv_extensions_if*, std::string> name_lut;
     auto it = name_lut.find(my_exts_p);
-    if(it!=name_lut.end()) return it->second;
+    if(it != name_lut.end())
+        return it->second;
     string name;
-    if (!prefix || strlen(prefix)==0) {
+    if(!prefix || strlen(prefix) == 0) {
         name = my_exts_p->get_name();
     } else {
-        if ((my_exts_p->get_name() == nullptr) || (strlen(my_exts_p->get_name()) == 0)) {
+        if((my_exts_p->get_name() == nullptr) || (strlen(my_exts_p->get_name()) == 0)) {
             name = prefix;
         } else {
             name = std::string(prefix) + "." + my_exts_p->get_name();
         }
     }
-    name_lut[my_exts_p]=(name == "")?"<unnamed>":  name;
-    return (name == "")?"<unnamed>":  name;
+    name_lut[my_exts_p] = (name == "") ? "<unnamed>" : name;
+    return (name == "") ? "<unnamed>" : name;
 }
 
 // ----------------------------------------------------------------------------
@@ -280,8 +284,8 @@ void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason reason
             my_exts_p = t.get_scv_tr_generator_base().get_begin_exts_p();
         if(my_exts_p) {
             auto tmp_str = t.get_scv_tr_generator_base().get_begin_attribute_name()
-                                 ? t.get_scv_tr_generator_base().get_begin_attribute_name()
-                                 : "";
+                               ? t.get_scv_tr_generator_base().get_begin_attribute_name()
+                               : "";
             recordAttributes(id, BEGIN, tmp_str, my_exts_p);
         }
     } break;
@@ -291,8 +295,8 @@ void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason reason
             my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();
         if(my_exts_p) {
             auto tmp_str = t.get_scv_tr_generator_base().get_end_attribute_name()
-                                 ? t.get_scv_tr_generator_base().get_end_attribute_name()
-                                 : "";
+                               ? t.get_scv_tr_generator_base().get_end_attribute_name()
+                               : "";
             recordAttributes(t.get_id(), END, tmp_str, my_exts_p);
         }
     } break;

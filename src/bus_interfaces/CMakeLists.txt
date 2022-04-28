@@ -17,7 +17,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC tlm-interfaces)
 target_link_libraries(${PROJECT_NAME} PRIVATE scc-sysc)
 
 if(CLANG_TIDY_EXE)
-	set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}" )
+    set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}" )
 endif() 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${PROJECT_VERSION}

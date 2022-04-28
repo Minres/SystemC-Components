@@ -20,9 +20,9 @@
 #define read _read
 #define eof _eof
 #else
-#include <unistd.h>
 #include <poll.h>
 #include <thread>
+#include <unistd.h>
 #endif
 namespace util {
 IoRedirector::IoRedirector()
@@ -172,4 +172,4 @@ void IoRedirector::close_fd(int& fd) {
     } while(ret < 0);
     fd = -1;
 }
-}
+} // namespace util

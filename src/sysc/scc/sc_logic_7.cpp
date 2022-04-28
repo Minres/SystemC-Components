@@ -26,7 +26,7 @@
 #include "sysc/datatypes/bit/sc_bit_ids.h"
 
 namespace scc {
-namespace sc_dt {
+namespace dt {
 
 void sc_logic_7::invalid_value(sc_logic_7_value_t v) {
     std::array<char, BUFSIZ> msg{};
@@ -121,5 +121,5 @@ const sc_logic_7 SC_LOGIC7_1(Log_1);
 const sc_logic_7 SC_LOGIC7_Z(Log_Z);
 const sc_logic_7 SC_LOGIC7_X(Log_X);
 
-} // namespace sc_dt
+} // namespace dt
 } // namespace scc

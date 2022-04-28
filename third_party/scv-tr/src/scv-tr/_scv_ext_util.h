@@ -50,7 +50,7 @@ public:
     : _name("")
     , _short_name("")
     , _parent(NULL) {}
-    virtual ~_scv_extension_util() { }
+    virtual ~_scv_extension_util() {}
 
     // scv_object_if
     const char* get_name() const override;
@@ -69,7 +69,7 @@ public:
     virtual void _set_name(const std::string& s);
 
 public: // non-virtual for fast execution
-    inline void trigger_value_change_cb() { }
+    inline void trigger_value_change_cb() {}
 
 protected: // fast version of the introspection interface (non-virtual)
     bool _is_dynamic() const { return false; }
