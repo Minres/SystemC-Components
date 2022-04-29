@@ -68,7 +68,6 @@ public:
 
     virtual ~axi_initiator(){};
 
-private:
     axi::pe::simple_axi_initiator<BUSWIDTH> pe{"pe", isck};
 };
 

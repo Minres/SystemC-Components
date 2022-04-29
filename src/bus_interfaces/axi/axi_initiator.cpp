@@ -14,11 +14,11 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "axi/axi_initiator.h"
-#include "scc/report.h"
-#include "tlm/scc/tlm_gp_shared.h"
-#include "tlm/scc/tlm_id.h"
-#include "tlm/scc/tlm_mm.h"
+#include "axi_initiator.h"
+#include <scc/report.h>
+#include <tlm/scc/tlm_id.h>
+#include <tlm/scc/tlm_mm.h>
+#include <tlm/scc/tlm_gp_shared.h>
 
 using namespace axi;
 

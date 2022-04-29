@@ -62,7 +62,6 @@ public:
 
     virtual ~axi_target(){};
 
-private:
     axi::pe::simple_target<BUSWIDTH> pe{"pe", tsck};
 };
 

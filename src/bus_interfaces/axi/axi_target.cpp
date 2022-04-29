@@ -14,8 +14,9 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "axi/axi_target.h"
-#include "scc/report.h"
+#include "axi_target.h"
+#include <tlm/scc/tlm_gp_shared.h>
+#include <scc/report.h>
 
 using namespace axi;
 
@@ -34,10 +35,8 @@ unsigned axi_target_base::access(tlm::tlm_generic_payload& trans) {
 void axi_target_base::trans_queue() {
     auto delay = sc_core::SC_ZERO_TIME;
     while(true) {
-        auto trans = peq.get();
-        trans->acquire();
+        tlm::scc::tlm_gp_shared_ptr trans = peq.get();
         isck->b_transport(*trans, delay);
-        trans->release();
-        pe.operation_resp(*trans, 0);
+        pe.operation_resp(*trans, trans->is_write()? pe.wr_resp_delay.value : pe.rd_resp_delay.value);
     }
 }
