@@ -17,7 +17,7 @@
 #pragma once
 
 #include <cstdint>
-#include <tlm>
+#include "tlm_gp_shared.h"
 
 namespace tlm {
 namespace scc {
@@ -27,6 +27,8 @@ struct tlm_id_extension : public tlm_extension<tlm_id_extension> {
         return t;
     }
     virtual void copy_from(tlm_extension_base const& from) { id = static_cast<tlm_id_extension const&>(from).id; }
+    tlm_id_extension(tlm_gp_shared_ptr& i)
+    : tlm_id_extension(reinterpret_cast<uintptr_t>(i.get())) {}
     tlm_id_extension(void* i)
     : tlm_id_extension(reinterpret_cast<uintptr_t>(i)) {}
     tlm_id_extension(uintptr_t i)
