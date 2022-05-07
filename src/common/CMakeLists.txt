@@ -1,8 +1,16 @@
 project(scc-util VERSION 0.0.1 LANGUAGES CXX)
 
-add_library(${PROJECT_NAME} util/io-redirector.cpp util/watchdog.cpp)
+set(SRC util/io-redirector.cpp util/watchdog.cpp)
+if(TARGET lz4::lz4)
+    list(APPEND SRC util/lz4_streambuf.cpp)
+endif()
+add_library(${PROJECT_NAME} ${SRC})
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+if(TARGET lz4::lz4)
+    target_link_libraries(${PROJECT_NAME} PUBLIC lz4::lz4)
+endif()
+
 if(CLANG_TIDY_EXE)
     set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}" )
 endif() 

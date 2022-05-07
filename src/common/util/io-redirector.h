@@ -27,7 +27,7 @@
 /**@{*/
 namespace util {
 /**
- * @brief allows to capture the strings writen to std::cout and std::cerr (MT-safe)
+ * @brief allows to capture the strings written to std::cout and std::cerr (MT-safe)
  *
  */
 class IoRedirector {
