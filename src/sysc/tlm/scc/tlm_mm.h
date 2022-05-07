@@ -229,12 +229,7 @@ inline typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP
 
 template <typename TYPES, bool CLEANUP_DATA>
 inline typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP_DATA>::allocate(size_t sz, bool be) {
-    if(sz) {
-        auto* ptr = allocator.allocate(sc_core::sc_time_stamp().value());
-        return tlm_gp_mm::add_data_ptr(sz, new(ptr) payload_type(this), be);
-    } else {
-        return allocate();
-    }
+    return sz?tlm_gp_mm::add_data_ptr(sz, allocate(), be) : allocate();
 }
 
 template <typename TYPES, bool CLEANUP_DATA> void tlm_mm<TYPES, CLEANUP_DATA>::free(tlm::tlm_generic_payload* trans) {

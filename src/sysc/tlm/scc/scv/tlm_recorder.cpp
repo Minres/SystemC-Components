@@ -8,7 +8,7 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #include "tlm_recorder.h"
 #include "tlm_extension_recording_registry.h"
-#include <tlm>
+#include <tlm/scc/tlm_id.h>
 
 namespace tlm {
 namespace scc {
@@ -25,6 +25,7 @@ const std::array<std::string, 3> sync2char{{"ACCEPTED", "UPDATED", "COMPLETED"}}
 
 } // namespace
 void record(SCVNS scv_tr_handle& handle, tlm::tlm_generic_payload& o) {
+    handle.record_attribute("trans.ptr", reinterpret_cast<uintptr_t>(&o));
     handle.record_attribute("trans.address", o.get_address());
     handle.record_attribute("trans.cmd", cmd2char.at(o.get_command()));
     handle.record_attribute("trans.data_ptr", o.get_data_ptr());
@@ -59,6 +60,30 @@ void record(SCVNS scv_tr_handle& handle, tlm::tlm_dmi& o) {
     handle.record_attribute("trans.read_latency", o.get_read_latency().to_string());
     handle.record_attribute("trans.write_latency", o.get_write_latency().to_string());
 }
+
+class tlm_id_ext_recording : public tlm_extensions_recording_if<tlm::tlm_base_protocol_types> {
+
+    void recordBeginTx(SCVNS scv_tr_handle& handle, tlm::tlm_base_protocol_types::tlm_payload_type& trans) override {
+        if(auto ext = trans.get_extension<tlm_id_extension>()) {
+            handle.record_attribute("trans.uid", ext->id);
+        }
+    }
+
+    void recordEndTx(SCVNS scv_tr_handle& handle, tlm::tlm_base_protocol_types::tlm_payload_type& trans) override {
+    }
+};
+using namespace tlm::scc::scv;
+#if defined(__GNUG__)
+__attribute__((constructor))
+#endif
+bool register_extensions() {
+    tlm::scc::tlm_id_extension ext(reinterpret_cast<uintptr_t>(0UL)); // NOLINT
+    tlm_extension_recording_registry<tlm::tlm_base_protocol_types>::inst().register_ext_rec(
+        ext.ID, new tlm_id_ext_recording()); // NOLINT
+    return true;                             // NOLINT
+}
+bool registered = register_extensions();
+
 } // namespace scv
 } // namespace scc
 } // namespace tlm

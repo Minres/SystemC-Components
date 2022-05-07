@@ -123,7 +123,7 @@ public:
     unsigned int byte_enable_length{0};
     unsigned int streaming_width{0};
     tlm::tlm_gp_option gp_option{tlm::TLM_MIN_PAYLOAD};
-    uintptr_t uid;
+    uintptr_t uid{0};
 };
 
 class tlm_dmi_data {
