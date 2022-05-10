@@ -40,6 +40,7 @@ set(LIB_SOURCES
     scc/time_n_tick.cpp
     #scc/scv/scv_tr_binary.cpp
     scc/scv/scv_tr_mtc.cpp
+    scc/scv/scv_tr_lz4.cpp
     scc/vcd_mt_trace.cpp
     scc/vcd_pull_trace.cpp
     scc/vcd_push_trace.cpp
@@ -133,6 +134,10 @@ if(ZLIB_FOUND)
     target_link_libraries(${PROJECT_NAME} PUBLIC ${ZLIB_LIBRARIES})
     target_compile_definitions(${PROJECT_NAME} PRIVATE HAS_ZLIB)
 endif()
+if(TARGET lz4::lz4)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_LZ4)
+endif()
+
 target_link_libraries(${PROJECT_NAME} PUBLIC ${FMT_TARGET} fstapi Threads::Threads ${CMAKE_DL_LIBS})
 
 if(CLANG_TIDY_EXE)

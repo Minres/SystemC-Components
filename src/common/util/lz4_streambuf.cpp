@@ -45,7 +45,7 @@ std::streambuf::int_type lz4c_steambuf::sync() {
 }
 
 std::streambuf::int_type lz4c_steambuf::overflow(int_type ch) {
-    assert(pptr() <= epptr());
+    assert(pptr() > epptr());
     *pptr() = static_cast<char_type>(ch);
     pbump(1);
     compress_and_write();

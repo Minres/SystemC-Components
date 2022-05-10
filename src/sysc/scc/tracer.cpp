@@ -73,8 +73,12 @@ void tracer::init_scv_db(file_type type, std::string const&& name) {
         std::stringstream ss;
         ss << name;
         switch(type) {
-        case COMPRESSED:
+        case GZIP:
             SCVNS scv_tr_compressed_init();
+            ss << ".txlog";
+            break;
+        case LZ4:
+            SCVNS scv_tr_lz4_init();
             ss << ".txlog";
             break;
         case TEXT:

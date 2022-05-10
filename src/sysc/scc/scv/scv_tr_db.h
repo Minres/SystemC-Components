@@ -28,11 +28,17 @@ namespace scv_tr {
 void scv_tr_sqlite_init();
 /**
  * @fn void scv_tr_compressed_init()
- * @brief initializes the infrastructure to use a compressed text based transaction recording database
+ * @brief initializes the infrastructure to use a gzip compressed text based transaction recording database
  *
  */
 void scv_tr_compressed_init();
-
+/**
+ * @fn void scv_tr_mtc_init()
+ * @brief initializes the infrastructure to use a LZ4 compressed text based transaction recording database with a
+ * multithreaded writer
+ *
+ */
+void scv_tr_lz4_init();
 /**
  * @fn void scv_tr_mtc_init()
  * @brief initializes the infrastructure to use a compressed text based transaction recording database with a
