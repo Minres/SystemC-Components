@@ -1,7 +1,7 @@
 project(scc-util VERSION 0.0.1 LANGUAGES CXX)
 
 set(SRC util/io-redirector.cpp util/watchdog.cpp)
-if(TARGET lz4::lz4)
+if(TARGET lz4::lz4 OR TARGET CONAN_PKG::lz4)
     list(APPEND SRC util/lz4_streambuf.cpp)
 endif()
 add_library(${PROJECT_NAME} ${SRC})
@@ -9,6 +9,8 @@ add_library(${PROJECT_NAME} ${SRC})
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 if(TARGET lz4::lz4)
     target_link_libraries(${PROJECT_NAME} PUBLIC lz4::lz4)
+elseif(TARGET CONAN_PKG::lz4)
+    target_link_libraries(${PROJECT_NAME} PUBLIC CONAN_PKG::lz4)
 endif()
 
 if(CLANG_TIDY_EXE)

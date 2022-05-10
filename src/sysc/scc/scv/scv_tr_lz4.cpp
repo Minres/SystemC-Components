@@ -96,15 +96,14 @@ class LZ4Base {
     std::unique_ptr<util::lz4c_steambuf> strbuf;
 protected:
     std::ostream out;
-    std::array<char, 1024> buffer;
     LZ4Base(const std::string& name)
     : ofs(name)
-    , strbuf(new util::lz4c_steambuf(ofs, 4096))
+    , strbuf(new util::lz4c_steambuf(ofs, 8192))
     , out(strbuf.get())
     {}
     LZ4Base()
     : ofs()
-    , strbuf(new util::lz4c_steambuf(ofs, 4096))
+    , strbuf(new util::lz4c_steambuf(ofs, 8192))
     , out(strbuf.get())
     {}
     virtual ~LZ4Base() {
