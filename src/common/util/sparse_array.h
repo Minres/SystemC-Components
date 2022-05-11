@@ -30,20 +30,22 @@ namespace util {
 /**
  *  @brief a sparse array suitable for large sizes
  *
- *  a simple array which allocates memory in configurable chunks (size of 2^lower_width), used for
+ *  a simple array which allocates memory in configurable chunks (size of 2^PAGE_ADDR_BITS), used for
  *  large sparse arrays. Memory is allocated on demand
  */
-template <typename T, uint64_t SIZE, int lower_width = 24> class sparse_array {
+template <typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24> class sparse_array {
 public:
-    const uint64_t page_addr_mask = (1 << lower_width) - 1;
+    static_assert(SIZE>0, "sparse_array size must be greater than 0");
 
-    const uint64_t page_size = (1 << lower_width);
+    const uint64_t page_addr_mask = (1 << PAGE_ADDR_BITS) - 1;
 
-    const unsigned page_count = 1 + SIZE / page_size;
+    const uint64_t page_size = (1 << PAGE_ADDR_BITS);
 
-    const uint64_t page_addr_width = lower_width;
+    const unsigned page_count = (SIZE + page_size - 1) / page_size;
 
-    using page_type = std::array<T, 1 << lower_width>;
+    const uint64_t page_addr_width = PAGE_ADDR_BITS;
+
+    using page_type = std::array<T, 1 << PAGE_ADDR_BITS>;
     /**
      * the default constructor
      */
@@ -63,7 +65,7 @@ public:
      */
     T& operator[](uint32_t addr) {
         assert(addr < SIZE);
-        T nr = addr >> lower_width;
+        T nr = addr >> PAGE_ADDR_BITS;
         if(arr[nr] == nullptr)
             arr[nr] = new page_type();
         return arr[nr]->at(addr & page_addr_mask);
@@ -88,7 +90,7 @@ public:
      */
     bool is_allocated(uint32_t addr) {
         assert(addr < SIZE);
-        T nr = addr >> lower_width;
+        T nr = addr >> PAGE_ADDR_BITS;
         return arr.at(nr) != nullptr;
     }
     /**
@@ -99,7 +101,7 @@ public:
     uint64_t size() { return SIZE; }
 
 protected:
-    std::array<page_type*, SIZE / (1 << lower_width) + 1> arr;
+    std::array<page_type*, SIZE / (1 << PAGE_ADDR_BITS) + 1> arr;
 };
 } // namespace util
 /** @}*/
