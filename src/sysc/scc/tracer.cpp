@@ -73,19 +73,35 @@ void tracer::init_scv_db(file_type type, std::string const&& name) {
         std::stringstream ss;
         ss << name;
         switch(type) {
-        case GZIP:
-            SCVNS scv_tr_compressed_init();
-            ss << ".txlog";
-            break;
-        case LZ4:
-            SCVNS scv_tr_lz4_init();
-            ss << ".txlog";
-            break;
         case TEXT:
             SCVNS scv_tr_text_init();
             ss << ".txlog";
             break;
+        case COMPRESSED: {
+            auto* val = getenv("SCC_SCV_TR_COMPRESSION_LEVEL");
+            auto level = val? atoi(val):std::numeric_limits<unsigned>::max();
+            switch(level){
+            case 0:
+                SCVNS scv_tr_plain_init();
+                break;
+            case 2:
+                SCVNS scv_tr_compressed_init();
+                break;
+            default:
+                SCVNS scv_tr_lz4_init();
+                break;
+            }
+            ss << ".txlog";
+        }
+        break;
         case SQLITE:
+#ifdef WITH_SQLITE
+            SCVNS scv_tr_sqlite_init();
+            ss << ".txdb";
+#else
+            SCVNS scv_tr_text_init();
+            ss << ".txlog";
+#endif
             break;
         case CUSTOM:
             SCVNS scv_tr_mtc_init();

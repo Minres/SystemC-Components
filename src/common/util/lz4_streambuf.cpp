@@ -33,14 +33,17 @@ void lz4c_steambuf::close() {
     auto sz = LZ4F_compressEnd(ctx, dest_buf.data(), dest_buf.capacity(), nullptr);
     if (LZ4F_isError(sz) != 0)
         throw std::runtime_error(std::string("Failed to finish LZ4 compression: ") + LZ4F_getErrorName(sz));
-    if(sz)
+    if(sz){
         sink.write(dest_buf.data(), sz);
+        sink.flush();
+    }
     LZ4F_freeCompressionContext(ctx);
     closed = true;
 }
 
 std::streambuf::int_type lz4c_steambuf::sync() {
     compress_and_write();
+    sink.flush();
     return 0;
 }
 

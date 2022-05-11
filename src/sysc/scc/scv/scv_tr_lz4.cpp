@@ -71,98 +71,82 @@ const std::array<char const*, scv_extensions_if::STRING+1> data_type_str={{
         "STRING"                        // string, std::string
 
 }};
-class FBase {
-protected:
-    std::ofstream out;
-    std::array<char, 1024> buffer;
-    FBase(const std::string& name) : out(name) {}
-    FBase() = default;
-    virtual ~FBase() {
-        if(out.is_open()) out.close();
-    }
+class PlainWriter {
 public:
-    bool open(const std::string& name) {
-        out.open(name, std::ios::binary|std::ios::trunc);
-        return out.is_open();
-    }
-    virtual void close(){
-        out.close();
+    std::ofstream out;
+    PlainWriter(const std::string& name) : out(name) {}
+    ~PlainWriter() {
+        if(out.is_open()) out.close();
     }
     bool is_open(){return out.is_open();}
 };
 #ifdef WITH_LZ4
-class LZ4Base {
+class LZ4Writer {
     std::ofstream ofs;
     std::unique_ptr<util::lz4c_steambuf> strbuf;
-protected:
-    std::ostream out;
-    LZ4Base(const std::string& name)
-    : ofs(name)
-    , strbuf(new util::lz4c_steambuf(ofs, 8192))
-    , out(strbuf.get())
-    {}
-    LZ4Base()
-    : ofs()
-    , strbuf(new util::lz4c_steambuf(ofs, 8192))
-    , out(strbuf.get())
-    {}
-    virtual ~LZ4Base() {
-        if(ofs.is_open()) ofs.close();
-    }
 public:
-    bool open(const std::string& name) {
-        ofs.open(name, std::ios::binary|std::ios::trunc);
-        return ofs.is_open();
+    std::ostream out;
+    LZ4Writer(const std::string& name)
+    : ofs(name, std::ios::binary|std::ios::trunc)
+    , strbuf(new util::lz4c_steambuf(ofs, 8192))
+    , out(strbuf.get())
+    {}
+    ~LZ4Writer() {
+        if(is_open()){
+            strbuf->close();
+            ofs.close();
+        }
     }
-    virtual void close(){
-        ofs.close();
-    }
+
     bool is_open(){return ofs.is_open();}
 };
 #endif
 
-template<typename Base>
-struct Database : Base {
-    Database(const std::string& name)
-    : Base(name) {}
+template<typename WRITER>
+struct Formatter {
+    std::unique_ptr<WRITER> writer;
+    Formatter(const std::string& name): writer(new WRITER(name))
+    {}
 
-    Database()
-    : Base() {}
+    Formatter()
+    {}
 
-    inline void writeStream(uint64_t id, std::string const& name, std::string const& kind) {
-        if(Base::is_open()) {
-            auto buf = fmt::format("scv_tr_stream (ID {}, name \"{}\", kind \"{}\")\n", id, name.c_str(), kind.c_str());
-            this->out.write(buf.c_str(), buf.size());
-        }
+    inline bool open(const std::string& name) {
+        writer.reset(new WRITER(name));
+        return writer->is_open();
+    }
+
+    inline void close() { delete writer.release(); }
+
+    inline void writeStream(uint64_t id, std::string const& name, std::string const& kind) {            auto buf = fmt::format("scv_tr_stream (ID {}, name \"{}\", kind \"{}\")\n", id, name.c_str(), kind.c_str());
+    writer->out.write(buf.c_str(), buf.size());
     }
 
     inline void writeGenerator(uint64_t id, std::string const& name, uint64_t stream, std::vector<AttrDesc> const& attributes) {
-        if(this->is_open()) {
-            auto buf = fmt::format("scv_tr_generator (ID {}, name \"{}\", scv_tr_stream {},\n", id,
-                               name.c_str(), stream);
-            this->out.write(buf.c_str(), buf.size());
-            auto idx=0U;
-            for(auto attr: attributes){
-                if(attr.evt==BEGIN){
-                    auto buf = fmt::format("begin_attribute (ID {}, name \"{}\", type \"{}\")\n",
-                            idx, attr.name, data_type_str[attr.type]);
-                    this->out.write(buf.c_str(), buf.size());
-               } else if(attr.evt==END){
-                   auto buf = fmt::format("end_attribute (ID {}, name \"{}\", type \"{}\")\n",
-                           idx, attr.name, data_type_str[attr.type]);
-                   this->out.write(buf.c_str(), buf.size());
-                }
-                ++idx;
+        auto buf = fmt::format("scv_tr_generator (ID {}, name \"{}\", scv_tr_stream {},\n", id,
+                name.c_str(), stream);
+        writer->out.write(buf.c_str(), buf.size());
+        auto idx=0U;
+        for(auto attr: attributes){
+            if(attr.evt==BEGIN){
+                auto buf = fmt::format("begin_attribute (ID {}, name \"{}\", type \"{}\")\n",
+                        idx, attr.name, data_type_str[attr.type]);
+                writer->out.write(buf.c_str(), buf.size());
+            } else if(attr.evt==END){
+                auto buf = fmt::format("end_attribute (ID {}, name \"{}\", type \"{}\")\n",
+                        idx, attr.name, data_type_str[attr.type]);
+                writer->out.write(buf.c_str(), buf.size());
             }
-            this->out.write(")\n", 2);
+            ++idx;
         }
+        writer->out.write(")\n", 2);
     }
 
     inline void writeTransaction(uint64_t id, uint64_t generator, EventType type, uint64_t time) {
         auto buf = type==BEGIN?
                 fmt::format("tx_begin {} {} {} ps\n", id, generator, time):
                 fmt::format("tx_end {} {} {} ps\n", id, generator, time);
-        this->out.write(buf.c_str(), buf.size());
+        writer->out.write(buf.c_str(), buf.size());
     }
 
     inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, const string& value) {
@@ -170,7 +154,7 @@ struct Database : Base {
         auto buf = event == EventType::RECORD?
                 fmt::format("tx_record_attribute {} \"{}\" {} = \"{}\"\n", id, name, data_type_str[type], value):
                 fmt::format("a \"{}\"\n", value);
-        this->out.write(buf.c_str(), buf.size());
+        writer->out.write(buf.c_str(), buf.size());
     }
 
     inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, int64_t value) {
@@ -178,7 +162,7 @@ struct Database : Base {
         auto buf = event == EventType::RECORD?
                 fmt::format("tx_record_attribute {} \"{}\" {} = {}\n", id, name, data_type_str[type], value):
                 fmt::format("a {}\n", value);
-        this->out.write(buf.c_str(), buf.size());
+        writer->out.write(buf.c_str(), buf.size());
     }
 
     inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, uint64_t value) {
@@ -186,7 +170,7 @@ struct Database : Base {
         auto buf = event == EventType::RECORD?
                 fmt::format("tx_record_attribute {} \"{}\" {} = {}\n", id, name, data_type_str[type], value):
                 fmt::format("a {}\n", value);
-        this->out.write(buf.c_str(), buf.size());
+        writer->out.write(buf.c_str(), buf.size());
     }
 
     inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, bool value) {
@@ -194,7 +178,7 @@ struct Database : Base {
         auto buf = event == EventType::RECORD?
                 fmt::format("tx_record_attribute {} \"{}\" {} = {}\n", id, name, data_type_str[type], value?"true":"false"):
                 fmt::format("a {}\n", value?"true":"false");
-        this->out.write(buf.c_str(), buf.size());
+        writer->out.write(buf.c_str(), buf.size());
     }
 
     inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, double value) {
@@ -202,23 +186,25 @@ struct Database : Base {
         auto buf = event == EventType::RECORD?
                 fmt::format("tx_record_attribute {} \"{}\" {} = {}\n", id, name, data_type_str[type], value):
                 fmt::format("a {}\n", value);
-        this->out.write(buf.c_str(), buf.size());
+        writer->out.write(buf.c_str(), buf.size());
     }
 
     inline void writeRelation(const std::string& name, uint64_t sink_id, uint64_t src_id) {
         auto buf = fmt::format("tx_relation \"{}\" {} {}\n", name, sink_id, src_id);
-        this->out.write(buf.c_str(), buf.size());
+        writer->out.write(buf.c_str(), buf.size());
     }
-    static Database &get() {
-      static Database db;
-      return db;
+    static Formatter &get() {
+        static Formatter db;
+        return db;
     }
 };
 #ifdef WITH_LZ4
-using DB=Database<LZ4Base>;
+//using DB=Formatter<LZ4Writer>;
+
 #else
-using DB=Database<FBase>;
+//using DB=Formatter<FBase>;
 #endif
+template<typename DB>
 void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason, void* data) {
     // This is called from the scv_tr_db ctor.
     static string fName("DEFAULT_scv_tr_sqlite");
@@ -244,6 +230,7 @@ void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason, void* 
     }
 }
 // ----------------------------------------------------------------------------
+template<typename DB>
 void streamCb(const scv_tr_stream& s, scv_tr_stream::callback_reason reason, void* data) {
     if(reason == scv_tr_stream::CREATE) {
         try {
@@ -254,6 +241,7 @@ void streamCb(const scv_tr_stream& s, scv_tr_stream::callback_reason reason, voi
     }
 }
 // ----------------------------------------------------------------------------
+template<typename DB>
 inline void recordAttribute(uint64_t id, EventType event, const string& name, data_type type, const string& value) {
     try {
         DB::get().writeAttribute(id, event, name, type, value);
@@ -277,6 +265,7 @@ inline std::string get_name(const char* prefix, const scv_extensions_if* my_exts
 }
 
 // ----------------------------------------------------------------------------
+template<typename DB>
 inline void recordAttributes(uint64_t id, EventType eventType, char const* prefix, const scv_extensions_if* my_exts_p) {
     if(my_exts_p == nullptr)
         return;
@@ -287,7 +276,7 @@ inline void recordAttributes(uint64_t id, EventType eventType, char const* prefi
         if(num_fields > 0) {
             for(int field_counter = 0; field_counter < num_fields; field_counter++) {
                 const scv_extensions_if* field_data_p = my_exts_p->get_field(field_counter);
-                recordAttributes(id, eventType, prefix, field_data_p);
+                recordAttributes<DB>(id, eventType, prefix, field_data_p);
             }
         }
     }
@@ -295,12 +284,12 @@ inline void recordAttributes(uint64_t id, EventType eventType, char const* prefi
     case scv_extensions_if::POINTER:
         if(auto ptr = my_exts_p->get_pointer()){
             std::stringstream ss; ss<<prefix<<"*";
-            recordAttributes(id, eventType, ss.str().c_str(), ptr);
+            recordAttributes<DB>(id, eventType, ss.str().c_str(), ptr);
         }
         break;
     case scv_extensions_if::ENUMERATION:
         DB::get().writeAttribute(id, eventType, name, scv_extensions_if::ENUMERATION,
-                        my_exts_p->get_enum_string((int)(my_exts_p->get_integer())));
+                my_exts_p->get_enum_string((int)(my_exts_p->get_integer())));
         break;
     case scv_extensions_if::BOOLEAN:
         DB::get().writeAttribute(id, eventType, name, scv_extensions_if::BOOLEAN, my_exts_p->get_bool());
@@ -331,7 +320,7 @@ inline void recordAttributes(uint64_t id, EventType eventType, char const* prefi
     case scv_extensions_if::ARRAY:
         for(int array_elt_index = 0; array_elt_index < my_exts_p->get_array_size(); array_elt_index++) {
             const scv_extensions_if* field_data_p = my_exts_p->get_array_elt(array_elt_index);
-            recordAttributes(id, eventType, prefix, field_data_p);
+            recordAttributes<DB>(id, eventType, prefix, field_data_p);
         }
         break;
     default: {
@@ -342,8 +331,9 @@ inline void recordAttributes(uint64_t id, EventType eventType, char const* prefi
     }
 }
 // ----------------------------------------------------------------------------
+template<typename DB>
 void generatorCb(const scv_tr_generator_base& g, scv_tr_generator_base::callback_reason reason, void* data) {
-    if(reason == scv_tr_generator_base::CREATE && DB::get().is_open()) {
+    if(reason == scv_tr_generator_base::CREATE ) {
         try {
             std::vector<AttrDesc> attrs;
             const scv_extensions_if* my_begin_exts_p = g.get_begin_exts_p();
@@ -361,9 +351,8 @@ void generatorCb(const scv_tr_generator_base& g, scv_tr_generator_base::callback
     }
 }
 // ----------------------------------------------------------------------------
+template<typename DB>
 void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason reason, void* data) {
-    if(!DB::get().is_open())
-        return;
     if(t.get_scv_tr_stream().get_scv_tr_db() == nullptr)
         return;
     if(t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
@@ -380,9 +369,9 @@ void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason reason
             my_exts_p = t.get_scv_tr_generator_base().get_begin_exts_p();
         if(my_exts_p) {
             auto tmp_str = t.get_scv_tr_generator_base().get_begin_attribute_name()
-                               ? t.get_scv_tr_generator_base().get_begin_attribute_name()
-                               : "";
-            recordAttributes(id, BEGIN, tmp_str, my_exts_p);
+                                       ? t.get_scv_tr_generator_base().get_begin_attribute_name()
+                                               : "";
+            recordAttributes<DB>(id, BEGIN, tmp_str, my_exts_p);
         }
     } break;
     case scv_tr_handle::END: {
@@ -392,36 +381,34 @@ void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason reason
             my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();
         if(my_exts_p) {
             auto tmp_str = t.get_scv_tr_generator_base().get_end_attribute_name()
-                               ? t.get_scv_tr_generator_base().get_end_attribute_name()
-                               : "";
-            recordAttributes(t.get_id(), END, tmp_str, my_exts_p);
+                                       ? t.get_scv_tr_generator_base().get_end_attribute_name()
+                                               : "";
+            recordAttributes<DB>(t.get_id(), END, tmp_str, my_exts_p);
         }
     } break;
     default:;
     }
 }
 // ----------------------------------------------------------------------------
+template<typename DB>
 void attributeCb(const scv_tr_handle& t, const char* name, const scv_extensions_if* ext, void* data) {
-    if(!DB::get().is_open())
-        return;
     if(t.get_scv_tr_stream().get_scv_tr_db() == nullptr)
         return;
     if(t.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
         return;
-    recordAttributes(t.get_id(), RECORD, name == nullptr ? "" : name, ext);
+    recordAttributes<DB>(t.get_id(), RECORD, name == nullptr ? "" : name, ext);
 }
 // ----------------------------------------------------------------------------
+template<typename DB>
 void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data,
-                scv_tr_relation_handle_t relation_handle) {
-    if(!DB::get().is_open())
-        return;
+        scv_tr_relation_handle_t relation_handle) {
     if(tr_1.get_scv_tr_stream().get_scv_tr_db() == nullptr)
         return;
     if(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
         return;
     try {
         DB::get().writeRelation(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), tr_1.get_id(),
-                          tr_2.get_id());
+                tr_2.get_id());
     } catch(std::runtime_error& e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create transaction relation");
     }
@@ -429,12 +416,20 @@ void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data
 } // namespace
 // ----------------------------------------------------------------------------
 void scv_tr_lz4_init() {
-    scv_tr_db::register_class_cb(dbCb);
-    scv_tr_stream::register_class_cb(streamCb);
-    scv_tr_generator_base::register_class_cb(generatorCb);
-    scv_tr_handle::register_class_cb(transactionCb);
-    scv_tr_handle::register_record_attribute_cb(attributeCb);
-    scv_tr_handle::register_relation_cb(relationCb);
+    scv_tr_db::register_class_cb(dbCb<Formatter<LZ4Writer>>);
+    scv_tr_stream::register_class_cb(streamCb<Formatter<LZ4Writer>>);
+    scv_tr_generator_base::register_class_cb(generatorCb<Formatter<LZ4Writer>>);
+    scv_tr_handle::register_class_cb(transactionCb<Formatter<LZ4Writer>>);
+    scv_tr_handle::register_record_attribute_cb(attributeCb<Formatter<LZ4Writer>>);
+    scv_tr_handle::register_relation_cb(relationCb<Formatter<LZ4Writer>>);
+}
+void scv_tr_plain_init() {
+    scv_tr_db::register_class_cb(dbCb<Formatter<PlainWriter>>);
+    scv_tr_stream::register_class_cb(streamCb<Formatter<PlainWriter>>);
+    scv_tr_generator_base::register_class_cb(generatorCb<Formatter<PlainWriter>>);
+    scv_tr_handle::register_class_cb(transactionCb<Formatter<PlainWriter>>);
+    scv_tr_handle::register_record_attribute_cb(attributeCb<Formatter<PlainWriter>>);
+    scv_tr_handle::register_relation_cb(relationCb<Formatter<PlainWriter>>);
 }
 // ----------------------------------------------------------------------------
 #ifndef HAS_SCV
