@@ -88,7 +88,11 @@ void tracer::init_scv_db(file_type type, std::string const&& name) {
                 SCVNS scv_tr_compressed_init();
                 break;
             default:
+#ifdef WITH_LZ4
                 SCVNS scv_tr_lz4_init();
+#else
+                SCVNS scv_tr_compressed_init();
+#endif
                 break;
             }
             ss << ".txlog";

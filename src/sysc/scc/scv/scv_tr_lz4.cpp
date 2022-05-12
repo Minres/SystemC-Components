@@ -415,6 +415,7 @@ void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data
 }
 } // namespace
 // ----------------------------------------------------------------------------
+#ifdef WITH_LZ4
 void scv_tr_lz4_init() {
     scv_tr_db::register_class_cb(dbCb<Formatter<LZ4Writer>>);
     scv_tr_stream::register_class_cb(streamCb<Formatter<LZ4Writer>>);
@@ -423,6 +424,7 @@ void scv_tr_lz4_init() {
     scv_tr_handle::register_record_attribute_cb(attributeCb<Formatter<LZ4Writer>>);
     scv_tr_handle::register_relation_cb(relationCb<Formatter<LZ4Writer>>);
 }
+#endif
 void scv_tr_plain_init() {
     scv_tr_db::register_class_cb(dbCb<Formatter<PlainWriter>>);
     scv_tr_stream::register_class_cb(streamCb<Formatter<PlainWriter>>);
