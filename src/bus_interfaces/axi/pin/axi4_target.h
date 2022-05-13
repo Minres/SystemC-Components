@@ -180,7 +180,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::setup_callbacks(
             fsm_hndl->beat_count++;
             break;
         default:
-            // do nothing
+            break;
         }
     };
     fsm_hndl->fsm->cb[BegPartRespE] = [this, fsm_hndl]() -> void {
@@ -209,7 +209,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::setup_callbacks(
             wresp_vl.notify({3, fsm_hndl});
             break;
         default:
-            // do nothing
+            break;
         }
     };
     fsm_hndl->fsm->cb[EndRespE] = [this, fsm_hndl]() -> void {
