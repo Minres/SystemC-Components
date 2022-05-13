@@ -53,9 +53,9 @@ public axi::axi_bw_transport_if<axi::axi_protocol_types> {
     }
 
 private:
-    tlm::tlm_sync_enum nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t);
+    tlm::tlm_sync_enum nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t) override;
 
-    void invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range);
+    void invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) override;
 
     void end_of_elaboration() override { clk_if = dynamic_cast<sc_core::sc_clock*>(clk_i.get_interface()); }
 
@@ -179,6 +179,8 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::setup_callbacks(
             active_req_beat[tlm::TLM_WRITE_COMMAND] = nullptr;
             fsm_hndl->beat_count++;
             break;
+        default:
+            // do nothing
         }
     };
     fsm_hndl->fsm->cb[BegPartRespE] = [this, fsm_hndl]() -> void {
@@ -206,6 +208,8 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::setup_callbacks(
         case tlm::TLM_WRITE_COMMAND:
             wresp_vl.notify({3, fsm_hndl});
             break;
+        default:
+            // do nothing
         }
     };
     fsm_hndl->fsm->cb[EndRespE] = [this, fsm_hndl]() -> void {
