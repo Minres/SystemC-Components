@@ -25,11 +25,15 @@ namespace scc {
  */
 struct sc_clock_ext : public sc_core::sc_clock {
 
+    sc_core::sc_attribute<sc_core::sc_time> period;
+    sc_core::sc_attribute<double> duty_cycle;
     sc_core::sc_attribute<sc_core::sc_time> initial_delay;
 
     sc_clock_ext( const char* name_, const sc_core::sc_time& period_, double duty_cycle_ = 0.5, const sc_core::sc_time& start_time_ = sc_core::SC_ZERO_TIME, bool posedge_first_ = true )
     : sc_core::sc_clock(name_, period_, duty_cycle_, start_time_, posedge_first_)
-      , initial_delay("start_time", start_time_)
+    , period("period", period_)
+    , duty_cycle("duty_cycle", duty_cycle_)
+    , initial_delay("start_time", start_time_)
     {
         add_attribute(initial_delay);
     }
@@ -37,7 +41,8 @@ struct sc_clock_ext : public sc_core::sc_clock {
     virtual ~sc_clock_ext() = default;
 
 protected:
-    void before_end_of_elaboration() override {
+    void end_of_elaboration() override {
+        init(period.value, duty_cycle.value, initial_delay.value, m_posedge_first);
         if(initial_delay.value!=m_start_time) {
             if( m_posedge_first ) {
                 m_next_posedge_event.cancel();
@@ -47,7 +52,6 @@ protected:
                 m_next_negedge_event.notify( initial_delay.value );
             }
         }
-        sc_clock::before_end_of_elaboration();
     }
 };
 }
