@@ -167,6 +167,11 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scc COMPONENT sysc
         FILES_MATCHING # install only matched files
         PATTERN "*.h" # select header files
         )
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scc COMPONENT sysc
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
+        FILES_MATCHING # install only matched files
+        PATTERN "*.hh" # select header files
+        )
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tlm COMPONENT sysc
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
         FILES_MATCHING # install only matched files
