@@ -169,7 +169,7 @@ unsigned int scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::tranport_dbg_cb(tlm::tl
             if(gp.get_command() == tlm::TLM_READ_COMMAND) {
                 if(ra->read_dbg(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra->size()))
                     return gp.get_data_length();
-            } else if(gp.get_command() == tlm::TLM_READ_COMMAND) {
+            } else if(gp.get_command() == tlm::TLM_WRITE_COMMAND) {
                 if(ra->write_dbg(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra->size()))
                     return gp.get_data_length();
             }
