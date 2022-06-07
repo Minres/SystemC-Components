@@ -66,123 +66,107 @@ $(document).ready(function(){initNavTree('tlm__gp__shared_8h_source.html',''); i
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*******************************************************************************</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (C) 2021, MINRES Technologies GmbH</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * All rights reserved.</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Redistribution and use in source and binary forms, with or without</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * modification, are permitted provided that the following conditions are met:</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2021-2022 MINRES Technologies GmbH</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * You may obtain a copy of the License at</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * 1. Redistributions of source code must retain the above copyright notice,</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *    this list of conditions and the following disclaimer.</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * 2. Redistributions in binary form must reproduce the above copyright notice,</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *    this list of conditions and the following disclaimer in the documentation</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *    and/or other materials provided with the distribution.</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * 3. Neither the name of the copyright holder nor the names of its contributors</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *    may be used to endorse or promote products derived from this software</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *    without specific prior written permission.</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * POSSIBILITY OF SUCH DAMAGE.</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * Contributors:</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> *       eyck@minres.com - initial API and implementation</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#ifndef _SYSC_TLM_TLM_GP_SHARED_H_</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define _SYSC_TLM_TLM_GP_SHARED_H_</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;tlm&gt;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span>tlm {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">namespace </span>scc {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">class </span>tlm_gp_shared_ptr {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    tlm::tlm_generic_payload* ptr{<span class="keyword">nullptr</span>};</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>() noexcept = default;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    inline <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>(tlm::tlm_generic_payload* p) noexcept</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    : ptr(p) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            ptr-&gt;acquire();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">inline</span> <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>(<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a> <span class="keyword">const</span>&amp; p) noexcept</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    : ptr(p.ptr) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            ptr-&gt;acquire();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">inline</span> <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>(<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>&amp;&amp; p) noexcept</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    : ptr(std::move(p.ptr)) {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        p.ptr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a867246436c4ab2c6200f91cd7be9882d">~tlm_gp_shared_ptr</a>() {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            ptr-&gt;release();</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * limitations under the License.</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *******************************************************************************/</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifndef _SYSC_TLM_TLM_GP_SHARED_H_</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define _SYSC_TLM_TLM_GP_SHARED_H_</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;tlm&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>tlm {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>scc {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">class </span>tlm_gp_shared_ptr {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    tlm::tlm_generic_payload* ptr{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>() noexcept = default;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    inline <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>(tlm::tlm_generic_payload* p) noexcept</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    : ptr(p) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            ptr-&gt;acquire();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">inline</span> <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>(<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a> <span class="keyword">const</span>&amp; p) noexcept</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    : ptr(p.ptr) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            ptr-&gt;acquire();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">inline</span> <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>(<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>&amp;&amp; p) noexcept</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    : ptr(std::move(p.ptr)) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        p.ptr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a867246436c4ab2c6200f91cd7be9882d">~tlm_gp_shared_ptr</a>() {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            ptr-&gt;release();</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">   53</a></span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm_gp_shared_ptr</a>&amp; <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#ac4545cd857aee9680b4de2231115c33b">operator=</a>(<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm_gp_shared_ptr</a> <span class="keyword">const</span>&amp; p) noexcept {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            ptr-&gt;release();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        ptr = p.ptr;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            ptr-&gt;acquire();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>&amp; <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#ac4545cd857aee9680b4de2231115c33b">operator=</a>(<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>&amp;&amp; p) noexcept {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            ptr-&gt;release();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        ptr = p.ptr;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        p.ptr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>&amp; <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#ac4545cd857aee9680b4de2231115c33b">operator=</a>(<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a> <span class="keyword">const</span>&amp; p) noexcept {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            ptr-&gt;release();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        ptr = p.ptr;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            ptr-&gt;acquire();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>&amp; <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#ac4545cd857aee9680b4de2231115c33b">operator=</a>(<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>&amp;&amp; p) noexcept {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            ptr-&gt;release();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        ptr = p.ptr;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        p.ptr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>&amp; <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#ac4545cd857aee9680b4de2231115c33b">operator=</a>(tlm::tlm_generic_payload* p) noexcept {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            ptr-&gt;release();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        ptr = p;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            ptr-&gt;acquire();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm_gp_shared_ptr</a>&amp; <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#ac4545cd857aee9680b4de2231115c33b">operator=</a>(tlm::tlm_generic_payload* p) noexcept {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a1d2fb32ee822e721de568a9381666ad5">   75</a></span>&#160;            ptr-&gt;release();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        ptr = p;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span>(ptr &amp;&amp; ptr-&gt;has_mm())</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            ptr-&gt;acquire();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a34d8546ef94f3250522510eb14d5aa25">   81</a></span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">inline</span> tlm::tlm_generic_payload&amp; <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a503671b6f5121accbf1126091bd36844">operator*</a>() const noexcept { <span class="keywordflow">return</span> *ptr; }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">inline</span> tlm::tlm_generic_payload* <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a6ad386284b0623c3b2200601d859bf62">operator-&gt;</a>() const noexcept { <span class="keywordflow">return</span> ptr; }</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a00326f03f9a5ad56cb9ce1589fc52a72">   87</a></span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">inline</span> tlm::tlm_generic_payload* <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a1499120f37c6dcc44e24bd834d69826b">get</a>() const noexcept { <span class="keywordflow">return</span> ptr; }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">inline</span> <span class="keyword">operator</span> bool() const noexcept { <span class="keywordflow">return</span> ptr != <span class="keyword">nullptr</span>; }</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a867246436c4ab2c6200f91cd7be9882d">   92</a></span>&#160;};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">inline</span> std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm_gp_shared_ptr</a> <span class="keyword">const</span>&amp; p) {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    os &lt;&lt; p.get();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> os;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#ac4545cd857aee9680b4de2231115c33b">   97</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator==(<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm_gp_shared_ptr</a> <span class="keyword">const</span>&amp; x, <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm_gp_shared_ptr</a> <span class="keyword">const</span>&amp; y) noexcept { <span class="keywordflow">return</span> x.get() == y.get(); }</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">inline</span> tlm::tlm_generic_payload&amp; <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a503671b6f5121accbf1126091bd36844">operator*</a>() const noexcept { <span class="keywordflow">return</span> *ptr; }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">inline</span> tlm::tlm_generic_payload* <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a6ad386284b0623c3b2200601d859bf62">operator-&gt;</a>() const noexcept { <span class="keywordflow">return</span> ptr; }</div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">  104</a></span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">inline</span> tlm::tlm_generic_payload* <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a1499120f37c6dcc44e24bd834d69826b">get</a>() const noexcept { <span class="keywordflow">return</span> ptr; }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">inline</span> <span class="keyword">operator</span> bool() const noexcept { <span class="keywordflow">return</span> ptr != <span class="keyword">nullptr</span>; }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;};</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">inline</span> std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, tlm_gp_shared_ptr <span class="keyword">const</span>&amp; p) {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    os &lt;&lt; p.get();</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">return</span> os;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator==(tlm_gp_shared_ptr <span class="keyword">const</span>&amp; x, tlm_gp_shared_ptr <span class="keyword">const</span>&amp; y) noexcept { <span class="keywordflow">return</span> x.get() == y.get(); }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator==(tlm_gp_shared_ptr <span class="keyword">const</span>&amp; x, tlm::tlm_generic_payload* y) noexcept { <span class="keywordflow">return</span> x.get() == y; }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator!=(tlm_gp_shared_ptr <span class="keyword">const</span>&amp; x, tlm_gp_shared_ptr <span class="keyword">const</span>&amp; y) noexcept { <span class="keywordflow">return</span> x.get() != y.get(); }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;} <span class="comment">// namespace tlm</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SYSC_TLM_TLM_GP_SHARED_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator==(<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm_gp_shared_ptr</a> <span class="keyword">const</span>&amp; x, tlm::tlm_generic_payload* y) noexcept { <span class="keywordflow">return</span> x.get() == y; }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator!=(tlm_gp_shared_ptr <span class="keyword">const</span>&amp; x, tlm_gp_shared_ptr <span class="keyword">const</span>&amp; y) noexcept { <span class="keywordflow">return</span> x.get() != y.get(); }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;} <span class="comment">// namespace tlm</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SYSC_TLM_TLM_GP_SHARED_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html_a6ad386284b0623c3b2200601d859bf62"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a6ad386284b0623c3b2200601d859bf62">tlm::scc::tlm_gp_shared_ptr::operator-&gt;</a></div><div class="ttdeci">tlm::tlm_generic_payload * operator-&gt;() const noexcept</div><div class="ttdoc">Return the stored pointer.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__gp__shared_8h_source.html#l00196">tlm_gp_shared.h:196</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm::scc::tlm_gp_shared_ptr</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__gp__shared_8h_source.html#l00053">tlm_gp_shared.h:53</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html_a6ad386284b0623c3b2200601d859bf62"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a6ad386284b0623c3b2200601d859bf62">tlm::scc::tlm_gp_shared_ptr::operator-&gt;</a></div><div class="ttdeci">tlm::tlm_generic_payload * operator-&gt;() const noexcept</div><div class="ttdoc">Return the stored pointer.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__gp__shared_8h_source.html#l00128">tlm_gp_shared.h:128</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html_adc052c5c295b54a60950dcaaebba26fb"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#adc052c5c295b54a60950dcaaebba26fb">tlm::scc::tlm_gp_shared_ptr::tlm_gp_shared_ptr</a></div><div class="ttdeci">tlm_gp_shared_ptr() noexcept=default</div><div class="ttdoc">Default constructor, creates a unique_ptr that owns nothing.</div></div>
-<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html_ac4545cd857aee9680b4de2231115c33b"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#ac4545cd857aee9680b4de2231115c33b">tlm::scc::tlm_gp_shared_ptr::operator=</a></div><div class="ttdeci">tlm_gp_shared_ptr &amp; operator=(tlm_gp_shared_ptr const &amp;p) noexcept</div><div class="ttdoc">Copy assignment operator.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__gp__shared_8h_source.html#l00165">tlm_gp_shared.h:165</a></div></div>
-<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html_a503671b6f5121accbf1126091bd36844"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a503671b6f5121accbf1126091bd36844">tlm::scc::tlm_gp_shared_ptr::operator*</a></div><div class="ttdeci">tlm::tlm_generic_payload &amp; operator*() const noexcept</div><div class="ttdoc">Dereference the stored pointer.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__gp__shared_8h_source.html#l00193">tlm_gp_shared.h:193</a></div></div>
-<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html_a1499120f37c6dcc44e24bd834d69826b"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a1499120f37c6dcc44e24bd834d69826b">tlm::scc::tlm_gp_shared_ptr::get</a></div><div class="ttdeci">tlm::tlm_generic_payload * get() const noexcept</div><div class="ttdoc">Return the stored pointer.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__gp__shared_8h_source.html#l00199">tlm_gp_shared.h:199</a></div></div>
-<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html_a867246436c4ab2c6200f91cd7be9882d"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a867246436c4ab2c6200f91cd7be9882d">tlm::scc::tlm_gp_shared_ptr::~tlm_gp_shared_ptr</a></div><div class="ttdeci">~tlm_gp_shared_ptr()</div><div class="ttdoc">destructor</div><div class="ttdef"><b>Definition:</b> <a href="tlm__gp__shared_8h_source.html#l00160">tlm_gp_shared.h:160</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html_ac4545cd857aee9680b4de2231115c33b"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#ac4545cd857aee9680b4de2231115c33b">tlm::scc::tlm_gp_shared_ptr::operator=</a></div><div class="ttdeci">tlm_gp_shared_ptr &amp; operator=(tlm_gp_shared_ptr const &amp;p) noexcept</div><div class="ttdoc">Copy assignment operator.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__gp__shared_8h_source.html#l00097">tlm_gp_shared.h:97</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html_a503671b6f5121accbf1126091bd36844"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a503671b6f5121accbf1126091bd36844">tlm::scc::tlm_gp_shared_ptr::operator*</a></div><div class="ttdeci">tlm::tlm_generic_payload &amp; operator*() const noexcept</div><div class="ttdoc">Dereference the stored pointer.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__gp__shared_8h_source.html#l00125">tlm_gp_shared.h:125</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html_a1499120f37c6dcc44e24bd834d69826b"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a1499120f37c6dcc44e24bd834d69826b">tlm::scc::tlm_gp_shared_ptr::get</a></div><div class="ttdeci">tlm::tlm_generic_payload * get() const noexcept</div><div class="ttdoc">Return the stored pointer.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__gp__shared_8h_source.html#l00131">tlm_gp_shared.h:131</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html_a867246436c4ab2c6200f91cd7be9882d"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a867246436c4ab2c6200f91cd7be9882d">tlm::scc::tlm_gp_shared_ptr::~tlm_gp_shared_ptr</a></div><div class="ttdeci">~tlm_gp_shared_ptr()</div><div class="ttdoc">destructor</div><div class="ttdef"><b>Definition:</b> <a href="tlm__gp__shared_8h_source.html#l00092">tlm_gp_shared.h:92</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

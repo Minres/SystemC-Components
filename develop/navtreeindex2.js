@@ -1,6 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"classaxi_1_1pe_1_1simple__initiator__b.html#a78d9388c0f866ed75186ba1789f00f49":[5,0,2,2,9,31],
 "classaxi_1_1pe_1_1simple__initiator__b.html#a7a9fa334fe741e37c62de39b54aaab8e":[5,0,2,2,9,37],
 "classaxi_1_1pe_1_1simple__initiator__b.html#a7ac8516445ef6903bd07a74f736bbae1":[5,0,2,2,9,15],
 "classaxi_1_1pe_1_1simple__initiator__b.html#a84b74af395de8f05952bfe2cafa21bcd":[5,0,2,2,9,40],
@@ -249,5 +248,6 @@ var NAVTREEINDEX2 =
 "classchi_1_1scv_1_1chi__trx__recorder.html#acf22a65120807d83056457f308ff23cf":[5,0,3,1,1,24],
 "classchi_1_1scv_1_1chi__trx__recorder.html#ad36625a7cded51df300fa849456ddb66":[5,0,3,1,1,14],
 "classchi_1_1scv_1_1chi__trx__recorder.html#ae29d25f27938195f25583955d2b42d66":[5,0,3,1,1,15],
-"classchi_1_1scv_1_1chi__trx__recorder.html#aea2522156af38eb22ce94e2c94ad32ec":[5,0,3,1,1,0]
+"classchi_1_1scv_1_1chi__trx__recorder.html#aea2522156af38eb22ce94e2c94ad32ec":[5,0,3,1,1,0],
+"classchi_1_1scv_1_1chi__trx__recorder.html#aeae3f5fc4249d0e218dd49f8a04ff6be":[5,0,3,1,1,5]
 };

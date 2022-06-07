@@ -1,6 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"functions_m.html":[5,3,0,11],
 "functions_n.html":[5,3,0,12],
 "functions_o.html":[5,3,0,13],
 "functions_p.html":[5,3,0,14],
@@ -43,12 +42,14 @@ var NAVTREEINDEX7 =
 "namespaceahb_1_1pin.html":[5,0,0,1],
 "namespaceapb.html":[4,0,1],
 "namespaceapb.html":[5,0,1],
-"namespaceapb_1_1pe.html":[5,0,1,0],
 "namespaceapb_1_1pe.html":[4,0,1,0],
+"namespaceapb_1_1pe.html":[5,0,1,0],
 "namespaceaxi.html":[4,0,2],
 "namespaceaxi.html":[5,0,2],
 "namespaceaxi_1_1pe.html":[4,0,2,0],
 "namespaceaxi_1_1pe.html":[5,0,2,2],
+"namespaceaxi_1_1pin.html":[5,0,2,3],
+"namespaceaxi_1_1pin.html":[4,0,2,1],
 "namespacechi.html":[5,0,3],
 "namespacechi.html":[4,0,3],
 "namespacelogging.html":[4,0,4],
@@ -60,8 +61,8 @@ var NAVTREEINDEX7 =
 "namespaceobi.html":[4,0,5],
 "namespaceobi.html":[5,0,5],
 "namespaces.html":[4,0],
-"namespaceutil.html":[5,0,10],
 "namespaceutil.html":[4,0,6],
+"namespaceutil.html":[5,0,10],
 "obi_2pin_2target_8h_source.html":[6,0,0,0,3,0,0],
 "obi__tlm_8h_source.html":[6,0,0,0,3,1],
 "observer_8h_source.html":[6,0,0,3,0,12],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "structaxi_1_1axi4__cfg.html#a4538f347538b4e77056f2b9e844662ce":[5,0,2,18,0],
 "structaxi_1_1axi4__extension.html":[5,0,2,20],
 "structaxi_1_1axi4__extension.html#a0f1129afd139e6f29b07bad037bac78c":[5,0,2,20,0],
-"structaxi_1_1axi4__extension.html#a47477ef524baefa3265b3df22732cf38":[5,0,2,20,1],
-"structaxi_1_1axi4__extension.html#a85b0a5945b9e8d65b27df0e60ff51531":[5,0,2,20,3]
+"structaxi_1_1axi4__extension.html#a47477ef524baefa3265b3df22732cf38":[5,0,2,20,1]
 };

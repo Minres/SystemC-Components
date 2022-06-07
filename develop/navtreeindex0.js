@@ -2,7 +2,6 @@ var NAVTREEINDEX0 =
 {
 ".html":[5,0,2,0],
 ".html":[5,0,2,1],
-".html":[5,0,2,3],
 ".html":[5,0,3,0],
 ".html":[5,0,7],
 ".html":[5,0,8],
@@ -249,5 +248,6 @@ var NAVTREEINDEX0 =
 "classaxi_1_1ace__ext__recording.html":[5,0,2,7],
 "classaxi_1_1axi3__ext__recording.html":[5,0,2,15],
 "classaxi_1_1axi4__ext__recording.html":[5,0,2,19],
-"classaxi_1_1axi__initiator.html":[5,0,2,23]
+"classaxi_1_1axi__initiator.html":[5,0,2,23],
+"classaxi_1_1axi__initiator.html#a6e9c168dca5603f87b216d812404bfe0":[5,0,2,23,1]
 };

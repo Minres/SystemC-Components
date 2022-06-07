@@ -31,10 +31,7 @@ var namespaceaxi =
       [ "WriteIdle", "structaxi_1_1fsm_1_1WriteIdle.html", "structaxi_1_1fsm_1_1WriteIdle" ]
     ] ],
     [ "pe", "namespaceaxi_1_1pe.html", "namespaceaxi_1_1pe" ],
-    [ "pin", null, [
-      [ "axi4_initiator", "structaxi_1_1pin_1_1axi4__initiator.html", "structaxi_1_1pin_1_1axi4__initiator" ],
-      [ "axi4_target", "structaxi_1_1pin_1_1axi4__target.html", "structaxi_1_1pin_1_1axi4__target" ]
-    ] ],
+    [ "pin", "namespaceaxi_1_1pin.html", "namespaceaxi_1_1pin" ],
     [ "scv", null, [
       [ "impl", null, [
         [ "ace_recording_payload", "classaxi_1_1scv_1_1impl_1_1ace__recording__payload.html", "classaxi_1_1scv_1_1impl_1_1ace__recording__payload" ],
