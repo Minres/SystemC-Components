@@ -70,6 +70,15 @@ template <typename T> auto check_n_assign(writer_type& writer, sc_core::sc_attr_
     return false;
 }
 
+template <> auto check_n_assign<sc_core::sc_time>(writer_type& writer, sc_core::sc_attr_base* attr_base) -> bool {
+    auto* a = dynamic_cast<sc_core::sc_attribute<sc_core::sc_time>*>(attr_base);
+    if(a != nullptr) {
+        writeValue(writer, a->name(), a->value.to_double());
+        return true;
+    }
+    return false;
+}
+
 inline bool start_object(writer_type& writer, char const* key, bool started) {
     if(!started) {
         writer.Key(key);
@@ -107,7 +116,7 @@ struct config_dumper {
                 check_n_assign<long long>(writer, attr_base) || check_n_assign<unsigned long long>(writer, attr_base) ||
                 check_n_assign<bool>(writer, attr_base) || check_n_assign<float>(writer, attr_base) ||
                 check_n_assign<double>(writer, attr_base) || check_n_assign<std::string>(writer, attr_base) ||
-                check_n_assign<char*>(writer, attr_base);
+                check_n_assign<char*>(writer, attr_base) || check_n_assign<sc_core::sc_time>(writer, attr_base);
         }
 #ifdef HAS_CCI
         const std::string hier_name{obj->name()};
@@ -144,10 +153,10 @@ struct config_dumper {
         }
 #endif
         for(auto* o : get_sc_objects(obj)) {
-            if(dynamic_cast<sc_core::sc_module*>(obj)) {
+            //if(dynamic_cast<sc_core::sc_module*>(obj)) {
                 obj_started = start_object(writer, obj->basename(), obj_started);
                 dump_config(o, writer);
-            }
+            //}
         }
         if(obj_started)
             writer.EndObject();
@@ -173,6 +182,13 @@ void try_set_value(sc_core::sc_attr_base* attr_base, Value const& hier_val) {
     CHECK_N_ASSIGN(double, attr_base, hier_val.Get<double>());
     CHECK_N_ASSIGN(std::string, attr_base, std::string(hier_val.GetString()));
     CHECK_N_ASSIGN(char*, attr_base, strdup(hier_val.GetString()));
+    {
+        auto* a = dynamic_cast<sc_core::sc_attribute<sc_core::sc_time>*>(attr_base);
+        if(a != nullptr) {
+            a->value = sc_core::sc_time(hier_val.Get<double>(), sc_core::SC_SEC);
+            return;
+        }
+    }
 }
 
 struct config_reader {
