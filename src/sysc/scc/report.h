@@ -91,6 +91,15 @@ inline std::ostream& operator<<(std::ostream& os, log const& val) {
  */
 void init_logging(log level = log::WARNING, unsigned type_field_width = 24, bool print_time = false);
 /**
+ * @fn void init_logging(log=log::WARNING, unsigned=24, bool=false)
+ * @brief initializes the SystemC logging system with a particular logging level
+ *
+ * @param level the log level
+ * @param type_field_width the with of the type field in the output
+ * @param print_time whether to print the system time stamp
+ */
+void reinit_logging(log level = log::WARNING);
+/**
  * @struct LogConfig
  * @brief the configuration class for the logging setup
  *

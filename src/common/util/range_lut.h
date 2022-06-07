@@ -35,6 +35,7 @@ namespace util {
  * @brief range based lookup table
  */
 template <typename T> class range_lut {
+public:
     //! the type of lut entry
     enum entry_type { BEGIN_RANGE = 1, END_RANGE = 2, SINGLE_BYTE_RANGE = 3 };
     //! the lut entry
@@ -43,7 +44,6 @@ template <typename T> class range_lut {
         entry_type type;
     };
 
-public:
     /**
      * constructor or the lookup table
      *
@@ -104,6 +104,12 @@ public:
     std::string toString() const;
     //! the null entry
     const T null_entry;
+
+    using const_iterator = typename std::map<uint64_t, lut_entry>::const_iterator;
+
+    const_iterator begin() const { return m_lut.begin(); }
+
+    const_iterator end() const { return m_lut.end(); }
 
 protected:
     // Loki::AssocVector<uint64_t, lut_entry> m_lut;

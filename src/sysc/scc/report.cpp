@@ -60,6 +60,8 @@ using namespace sc_core;
 using namespace scc;
 
 namespace {
+thread_local std::unordered_map<uint64_t, sc_core::sc_verbosity> lut;
+
 struct ExtLogConfig : public scc::LogConfig {
     shared_ptr<spdlog::logger> file_logger;
     shared_ptr<spdlog::logger> console_logger;
@@ -401,6 +403,12 @@ static void configure_logging() {
     }
 }
 
+void scc::reinit_logging(scc::log level) {
+    sc_report_handler::set_handler(report_handler);
+    log_cfg.level = level;
+    lut.clear();
+}
+
 void scc::init_logging(scc::log level, unsigned type_field_width, bool print_time) {
     log_cfg.msg_type_field_width = type_field_width;
     log_cfg.print_sys_time = print_time;
@@ -496,7 +504,6 @@ auto scc::LogConfig::reportOnlyFirstError(bool v) -> scc::LogConfig& {
 
 auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
 #ifdef HAS_CCI
-    thread_local std::unordered_map<uint64_t, sc_core::sc_verbosity> lut;
     auto k = char_hash(str);
     auto it = lut.find(k);
     if(it != lut.end())

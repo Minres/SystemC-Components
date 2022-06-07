@@ -91,7 +91,6 @@ struct axi4_cfg {
     static_assert(BUSWDTH > 0);
     static_assert(ADDRWDTH > 0);
     static_assert(IDWDTH > 0);
-    static_assert(USERWDTH > 0);
     constexpr static bool IS_LITE = false;
     constexpr static unsigned int BUSWIDTH = BUSWDTH;
     constexpr static unsigned int ADDRWIDTH = ADDRWDTH;
