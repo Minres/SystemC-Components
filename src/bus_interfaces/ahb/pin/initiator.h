@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _INITIATOR_H_
-#define _INITIATOR_H_
+#ifndef _BUS_AHB_PIN_INITIATOR_H_
+#define _BUS_AHB_PIN_INITIATOR_H_
 
 #include <tlm/scc/target_mixin.h>
 #include <tlm>
@@ -64,4 +64,4 @@ private:
 } // namespace pin
 } /* namespace ahb */
 
-#endif /* AHB_TARGET_BFM_H_ */
+#endif /* _BUS_AHB_PIN_INITIATOR_H_ */
