@@ -1,4 +1,3 @@
-#include <array>
 /*******************************************************************************
  * Copyright 2017, 2018 MINRES Technologies GmbH
  *
@@ -14,15 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * sc_logic_7.cpp
- *
- *  Created on: Nov 21, 2016
- *      Author: developer
- */
 
-#include "sc_logic_7.h"
-
+#include <array>
+#incl
 #include "sysc/datatypes/bit/sc_bit_ids.h"
 
 namespace scc {

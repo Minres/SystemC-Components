@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _AXI_SIGNAL_IF_H_
-#define _AXI_SIGNAL_IF_H_
+#ifndef _BUS_AXI_SIGNAL_IF_H_
+#define _BUS_AXI_SIGNAL_IF_H_
 
 #include <systemc>
 
@@ -302,4 +302,4 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ch {
 };
 
 } // namespace axi
-#endif /* _AXI_SIGNAL_IF_H_ */
+#endif /* _BUS_AXI_SIGNAL_IF_H_ */

@@ -13,12 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * sc_logic_7.h
- *
- *  Created on: Nov 21, 2016
- *      Author: developer
- */
 
 #ifndef INCL_SYSC_CORE_SC_LOGIC_7_H_
 #define INCL_SYSC_CORE_SC_LOGIC_7_H_
