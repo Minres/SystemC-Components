@@ -16,6 +16,7 @@ var hierarchy =
     [ "axi::ar_ch< CFG, CFG::slave_types >", "structaxi_1_1ar__ch.html", [
       [ "axi::pin::axi4_target< CFG >", "structaxi_1_1pin_1_1axi4__target.html", null ]
     ] ],
+    [ "scv_tr::AttrDesc", "structscv__tr_1_1AttrDesc.html", null ],
     [ "axi::aw_ch< CFG, TYPES >", "structaxi_1_1aw__ch.html", null ],
     [ "axi::aw_ch< CFG, CFG::master_types >", "structaxi_1_1aw__ch.html", [
       [ "axi::pin::axi4_initiator< CFG >", "structaxi_1_1pin_1_1axi4__initiator.html", null ]
@@ -34,6 +35,8 @@ var hierarchy =
     ] ],
     [ "axi_fw_transport_if", null, [
       [ "axi::pe::axi_target_pe_b", "classaxi_1_1pe_1_1axi__target__pe__b.html", [
+        [ "axi::pe::ordered_target< BUSWIDTH, TYPES, N, POL >", "classaxi_1_1pe_1_1ordered__target.html", null ],
+        [ "axi::pe::reordering_target< BUSWIDTH, TYPES, N, POL >", "classaxi_1_1pe_1_1reordering__target.html", null ],
         [ "axi::pe::simple_target< BUSWIDTH, TYPES, N, POL >", "classaxi_1_1pe_1_1simple__target.html", null ],
         [ "axi::pe::simple_target< 32 >", "classaxi_1_1pe_1_1simple__target.html", null ]
       ] ],
@@ -79,6 +82,10 @@ var hierarchy =
     [ "util::BitFieldMember< T, Offset, Bits >", "structutil_1_1BitFieldMember.html", null ],
     [ "CATEGORY", null, [
       [ "logging::Output2FILE< CATEGORY >", "classlogging_1_1Output2FILE.html", null ]
+    ] ],
+    [ "axi::checker::checker_if< TYPES >", "structaxi_1_1checker_1_1checker__if.html", null ],
+    [ "axi::checker::checker_if< axi::axi_protocol_types >", "structaxi_1_1checker_1_1checker__if.html", [
+      [ "axi::checker::axi_protocol", "classaxi_1_1checker_1_1axi__protocol.html", null ]
     ] ],
     [ "chi_fw_transport_if", null, [
       [ "chi::scv::chi_trx_recorder< TYPES >", "classchi_1_1scv_1_1chi__trx__recorder.html", null ]
@@ -162,6 +169,7 @@ var hierarchy =
     [ "scc::ordered_semaphore::lock", "structscc_1_1ordered__semaphore_1_1lock.html", null ],
     [ "logging::Log< T >", "classlogging_1_1Log.html", null ],
     [ "scc::LogConfig", "structscc_1_1LogConfig.html", null ],
+    [ "util::range_lut< T >::lut_entry", "structutil_1_1range__lut_1_1lut__entry.html", null ],
     [ "axi::master_types", "structaxi_1_1master__types.html", null ],
     [ "scc::MT19937", "classscc_1_1MT19937.html", null ],
     [ "util::MT19937", "classutil_1_1MT19937.html", null ],
@@ -174,6 +182,7 @@ var hierarchy =
     [ "tlm::scc::tlm_managed_extension< T >::pool", "structtlm_1_1scc_1_1tlm__managed__extension_1_1pool.html", null ],
     [ "util::pool_allocator< T, CHUNK_SIZE >", "classutil_1_1pool__allocator.html", null ],
     [ "util::pool_allocator< payload_type >", "classutil_1_1pool__allocator.html", null ],
+    [ "axi::pe::tx_reorderer::que_entry", "structaxi_1_1pe_1_1tx__reorderer_1_1que__entry.html", null ],
     [ "scc::router< BUSWIDTH >::range_entry", "structscc_1_1router_1_1range__entry.html", null ],
     [ "util::range_lut< T >", "classutil_1_1range__lut.html", null ],
     [ "util::range_lut< std::pair< scc::resource_access_if *, uint64_t > >", "classutil_1_1range__lut.html", null ],
@@ -222,11 +231,16 @@ var hierarchy =
       [ "scv_tr::SQLiteDB::SQLiteException", "classscv__tr_1_1SQLiteDB_1_1SQLiteException.html", null ]
     ] ],
     [ "sc_attribute", null, [
-      [ "scc::ext_attribute< T >", "classscc_1_1ext__attribute.html", null ]
+      [ "scc::sc_attribute_randomized< int >", "classscc_1_1sc__attribute__randomized.html", null ],
+      [ "scc::ext_attribute< T >", "classscc_1_1ext__attribute.html", null ],
+      [ "scc::sc_attribute_randomized< T >", "classscc_1_1sc__attribute__randomized.html", null ]
     ] ],
     [ "scc::sc_bigint_tester< size >", "structscc_1_1sc__bigint__tester.html", null ],
     [ "scc::sc_biguint_tester< size >", "structscc_1_1sc__biguint__tester.html", null ],
     [ "scc::sc_bv_tester< size >", "structscc_1_1sc__bv__tester.html", null ],
+    [ "sc_clock", null, [
+      [ "scc::sc_clock_ext", "structscc_1_1sc__clock__ext.html", null ]
+    ] ],
     [ "scc::sc_int_tester< size >", "structscc_1_1sc__int__tester.html", null ],
     [ "sc_interface", null, [
       [ "axi::bw_blocking_transport_if< TRANS >", "classaxi_1_1bw__blocking__transport__if.html", null ],
@@ -270,6 +284,7 @@ var hierarchy =
       ] ],
       [ "tlm::scc::pe::intor_fw< type::NB >", "structtlm_1_1scc_1_1pe_1_1intor__fw.html", [
         [ "tlm::scc::pe::intor_fw_nb", "structtlm_1_1scc_1_1pe_1_1intor__fw__nb.html", [
+          [ "axi::pe::tx_reorderer", "classaxi_1_1pe_1_1tx__reorderer.html", null ],
           [ "tlm::scc::pe::parallel_pe", "classtlm_1_1scc_1_1pe_1_1parallel__pe.html", null ]
         ] ]
       ] ],
@@ -290,7 +305,7 @@ var hierarchy =
         [ "tlm::scc::tlm_signal2sc_signal< TYPE >", "structtlm_1_1scc_1_1tlm__signal2sc__signal.html", null ]
       ] ]
     ] ],
-    [ "scc::sc_dt::sc_logic_7", "classscc_1_1sc__dt_1_1sc__logic__7.html", null ],
+    [ "scc::dt::sc_logic_7", "classscc_1_1dt_1_1sc__logic__7.html", null ],
     [ "scc::sc_lv_tester< size >", "structscc_1_1sc__lv__tester.html", null ],
     [ "sc_module", null, [
       [ "ahb::pe::ahb_initiator_b", "classahb_1_1pe_1_1ahb__initiator__b.html", [
@@ -316,6 +331,7 @@ var hierarchy =
       [ "axi::pe::axi_initiator_b", "classaxi_1_1pe_1_1axi__initiator__b.html", null ],
       [ "axi::pe::axi_target_pe_b", "classaxi_1_1pe_1_1axi__target__pe__b.html", null ],
       [ "axi::pe::simple_initiator_b", "classaxi_1_1pe_1_1simple__initiator__b.html", null ],
+      [ "axi::pe::tx_reorderer", "classaxi_1_1pe_1_1tx__reorderer.html", null ],
       [ "axi::pin::axi4_initiator< CFG >", "structaxi_1_1pin_1_1axi4__initiator.html", null ],
       [ "axi::pin::axi4_target< CFG >", "structaxi_1_1pin_1_1axi4__target.html", null ],
       [ "axi::scv::axitlm_recorder_module< BUSWIDTH, TYPES, BASE >", "classaxi_1_1scv_1_1axitlm__recorder__module.html", null ],
@@ -415,7 +431,7 @@ var hierarchy =
     [ "axi::slave_types", "structaxi_1_1slave__types.html", null ],
     [ "chi::snp_request", "structchi_1_1snp__request.html", null ],
     [ "scc::tlm_target_bfs< regs_t, owner_t >::socket_accessor", "classscc_1_1tlm__target__bfs_1_1socket__accessor.html", null ],
-    [ "util::sparse_array< T, SIZE, lower_width >", "classutil_1_1sparse__array.html", null ],
+    [ "util::sparse_array< T, SIZE, PAGE_ADDR_BITS >", "classutil_1_1sparse__array.html", null ],
     [ "util::sparse_array< uint8_t, SIZE >", "classutil_1_1sparse__array.html", null ],
     [ "scv_tr::SQLiteDB", "classscv__tr_1_1SQLiteDB.html", null ],
     [ "state", null, [
@@ -430,6 +446,10 @@ var hierarchy =
     ] ],
     [ "state_machine", null, [
       [ "axi::fsm::AxiProtocolFsm", "structaxi_1_1fsm_1_1AxiProtocolFsm.html", null ]
+    ] ],
+    [ "streambuf", null, [
+      [ "util::lz4c_steambuf", "classutil_1_1lz4c__steambuf.html", null ],
+      [ "util::lz4d_streambuf", "classutil_1_1lz4d__streambuf.html", null ]
     ] ],
     [ "stringbuf", null, [
       [ "scc::stream_redirection", "classscc_1_1stream__redirection.html", null ]
@@ -512,13 +532,18 @@ var hierarchy =
     [ "tlm::scc::scv::tlm_extensions_recording_if< axi_protocol_types >", "classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html", [
       [ "axi::ace_ext_recording", "classaxi_1_1ace__ext__recording.html", null ],
       [ "axi::axi3_ext_recording", "classaxi_1_1axi3__ext__recording.html", null ],
-      [ "axi::axi4_ext_recording", "classaxi_1_1axi4__ext__recording.html", null ]
+      [ "axi::axi4_ext_recording", "classaxi_1_1axi4__ext__recording.html", null ],
+      [ "axi::tlm_id_ext_recording", "classaxi_1_1tlm__id__ext__recording.html", null ]
     ] ],
     [ "tlm::scc::scv::tlm_extensions_recording_if< chi_protocol_types >", "classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html", [
       [ "chi::chi_credit_ext_recording", "classchi_1_1chi__credit__ext__recording.html", null ],
       [ "chi::chi_ctrl_ext_recording", "classchi_1_1chi__ctrl__ext__recording.html", null ],
       [ "chi::chi_data_ext_recording", "classchi_1_1chi__data__ext__recording.html", null ],
-      [ "chi::chi_snp_ext_recording", "classchi_1_1chi__snp__ext__recording.html", null ]
+      [ "chi::chi_snp_ext_recording", "classchi_1_1chi__snp__ext__recording.html", null ],
+      [ "chi::tlm_id_ext_recording", "classchi_1_1tlm__id__ext__recording.html", null ]
+    ] ],
+    [ "tlm::scc::scv::tlm_extensions_recording_if< tlm::tlm_base_protocol_types >", "classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html", [
+      [ "tlm::scc::scv::tlm_id_ext_recording", "classtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording.html", null ]
     ] ],
     [ "tlm_fw_transport_if", null, [
       [ "ahb::pe::ahb_target_b", "classahb_1_1pe_1_1ahb__target__b.html", null ],
@@ -545,10 +570,10 @@ var hierarchy =
       [ "tlm::scc::tlm_mm< TYPES, CLEANUP_DATA >", "classtlm_1_1scc_1_1tlm__mm.html", null ]
     ] ],
     [ "tlm_payload_type", null, [
-      [ "chi::scv::impl::chi_recording_payload< TYPES >", "classchi_1_1scv_1_1impl_1_1chi__recording__payload.html", null ]
+      [ "tlm::scc::scv::impl::tlm_recording_payload< TYPES >", "classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload.html", null ]
     ] ],
     [ "tlm_payload_type", null, [
-      [ "tlm::scc::scv::impl::tlm_recording_payload< TYPES >", "classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload.html", null ]
+      [ "chi::scv::impl::chi_recording_payload< TYPES >", "classchi_1_1scv_1_1impl_1_1chi__recording__payload.html", null ]
     ] ],
     [ "tlm_payload_type", null, [
       [ "axi::scv::impl::ace_recording_payload< TYPES >", "classaxi_1_1scv_1_1impl_1_1ace__recording__payload.html", null ]
@@ -576,8 +601,8 @@ var hierarchy =
     ] ],
     [ "scc::trace::traits< T >", "structscc_1_1trace_1_1traits.html", null ],
     [ "chi::pe::chi_rn_initiator_b::tx_state", "structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state.html", null ],
-    [ "axi::pe::axi_initiator_b::tx_state", "structaxi_1_1pe_1_1axi__initiator__b_1_1tx__state.html", null ],
     [ "ahb::pe::ahb_initiator_b::tx_state", "structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state.html", null ],
+    [ "axi::pe::axi_initiator_b::tx_state", "structaxi_1_1pe_1_1axi__initiator__b_1_1tx__state.html", null ],
     [ "scc::value_registry_if::value_holder", "structscc_1_1value__registry__if_1_1value__holder.html", null ],
     [ "scc::value_registry_if", "structscc_1_1value__registry__if.html", null ],
     [ "scc::trace::vcd_scope_stack< T >", "structscc_1_1trace_1_1vcd__scope__stack.html", null ],

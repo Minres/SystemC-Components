@@ -84,13 +84,13 @@ $(document).ready(function(){initNavTree('ities_8h_source.html',''); initResizab
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifndef _UTIL_ITIES_H_</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define _UTIL_ITIES_H_</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;bitset&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;bitset&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;sys/stat.h&gt;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
@@ -151,171 +151,167 @@ $(document).ready(function(){initNavTree('ities_8h_source.html',''); initResizab
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">// according to</span></div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">// https://stackoverflow.com/questions/8871204/count-number-of-1s-in-binary-representation</span></div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#if defined(__GNUG__)</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;constexpr <span class="keyword">inline</span> <span class="keywordtype">size_t</span> bit_count(uint32_t u) {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">return</span> __builtin_popcount(u);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;constexpr <span class="keyword">inline</span> <span class="keywordtype">size_t</span> bit_count(uint64_t u) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> __builtin_popcountl (u);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#elif __cplusplus &lt; 201402L</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;constexpr <span class="keywordtype">size_t</span> uCount(uint32_t u) { <span class="keywordflow">return</span> u - ((u &gt;&gt; 1) &amp; 033333333333) - ((u &gt;&gt; 2) &amp; 011111111111); }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;constexpr <span class="keywordtype">size_t</span> bit_count(uint32_t u) { <span class="keywordflow">return</span> ((uCount(u) + (uCount(u) &gt;&gt; 3)) &amp; 030707070707) % 63; }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;constexpr <span class="keywordtype">size_t</span> bit_count(uint32_t u) {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">size_t</span> uCount = u - ((u &gt;&gt; 1) &amp; 033333333333) - ((u &gt;&gt; 2) &amp; 011111111111);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">return</span> ((uCount + (uCount &gt;&gt; 3)) &amp; 030707070707) % 63;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">#if __cplusplus &lt; 201402L</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="namespaceutil.html#a60bf55061e90fef707927a656b82f919">  141</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <a class="code" href="namespaceutil.html#a60bf55061e90fef707927a656b82f919">ilog2</a>(uint32_t val) {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keyword">inline</span> constexpr <span class="keywordtype">unsigned</span> <a class="code" href="namespaceutil.html#a60bf55061e90fef707927a656b82f919">ilog2</a>(uint32_t val) {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">#ifdef __GNUG__</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(uint32_t) * 8 - 1 - __builtin_clz(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(val));</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">if</span>(val == 0)</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">return</span> std::numeric_limits&lt;uint32_t&gt;::max();</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span>(val == 1)</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keyword">auto</span> ret = 0U;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">while</span>(val &gt; 1) {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        val &gt;&gt;= 1;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        ++ret;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;constexpr <span class="keywordtype">bool</span> hasOddParity(uint32_t u) { <span class="keywordflow">return</span> bit_count(u)%2;}</div>
-<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359">  171</a></span>&#160;<span class="keyword">inline</span> std::vector&lt;std::string&gt; <a class="code" href="namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359">split</a>(<span class="keyword">const</span> std::string&amp; s, <span class="keywordtype">char</span> separator) {</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    std::vector&lt;std::string&gt; output;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    std::string::size_type prev_pos = 0;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    std::string::size_type pos = 0;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">while</span>((pos = s.find(separator, pos)) != std::string::npos) {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        std::string substring(s.substr(prev_pos, pos - prev_pos));</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        output.push_back(substring);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        prev_pos = ++pos;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    output.push_back(s.substr(prev_pos, pos - prev_pos)); <span class="comment">// Last word</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">return</span> output;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="comment">/* could also be done similar to this</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">        // construct a stream from the string</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">        std::stringstream ss(str);</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">        // use stream iterators to copy the stream to the vector as whitespace separated strings</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">        std::istream_iterator&lt;std::string&gt; it(ss);</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">        std::istream_iterator&lt;std::string&gt; end;</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">        std::vector&lt;std::string&gt; results(it, end);</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">        return results;</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">    */</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;}</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Range, <span class="keyword">typename</span> Value = <span class="keyword">typename</span> Range::value_type&gt;</div>
-<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="namespaceutil.html#ac50b7daec151059e1ae7c7ab03b3f10d">  196</a></span>&#160;std::string <a class="code" href="namespaceutil.html#ac50b7daec151059e1ae7c7ab03b3f10d">join</a>(Range <span class="keyword">const</span>&amp; elements, <span class="keywordtype">char</span> <span class="keyword">const</span>* <span class="keyword">const</span> delimiter) {</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    std::ostringstream os;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keyword">auto</span> b = std::begin(elements);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keyword">auto</span> e = std::end(elements);</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">if</span>(b != e) {</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        std::copy(b, std::prev(e), std::ostream_iterator&lt;Value&gt;(os, delimiter));</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        b = std::prev(e);</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">if</span>(b != e)</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        os &lt;&lt; *b;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">return</span> os.str();</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Input, <span class="keyword">typename</span> Output, <span class="keyword">typename</span> Value = <span class="keyword">typename</span> Output::value_type&gt;</div>
-<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="namespaceutil.html#a0b82e8bc738efe6f022eed57d21f647c">  212</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359">split</a>(<span class="keywordtype">char</span> delimiter, Output&amp; output, Input <span class="keyword">const</span>&amp; input) {</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span> cur = std::begin(input), beg = cur;; ++cur) {</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="keywordflow">if</span>(cur == std::end(input) || *cur == delimiter || !*cur) {</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            output.insert(std::end(output), Value(beg, cur));</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">if</span>(cur == std::end(input) || !*cur)</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            beg = std::next(cur);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        }</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;}</div>
-<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="namespaceutil.html#ad52c5f6f3fea14560b3226733827984b">  228</a></span>&#160;<span class="keyword">inline</span> std::string&amp; <a class="code" href="namespaceutil.html#ad52c5f6f3fea14560b3226733827984b">ltrim</a>(std::string&amp; str, <span class="keyword">const</span> std::string&amp; chars = <span class="stringliteral">&quot;\t\n\v\f\r &quot;</span>) {</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    str.erase(0, str.find_first_not_of(chars));</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">return</span> str;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;}</div>
-<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="namespaceutil.html#adba62a8bb34d0281aeec8030a3bd7d14">  238</a></span>&#160;<span class="keyword">inline</span> std::string&amp; <a class="code" href="namespaceutil.html#adba62a8bb34d0281aeec8030a3bd7d14">rtrim</a>(std::string&amp; str, <span class="keyword">const</span> std::string&amp; chars = <span class="stringliteral">&quot;\t\n\v\f\r &quot;</span>) {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    str.erase(str.find_last_not_of(chars) + 1);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">return</span> str;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div>
-<div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="namespaceutil.html#ac874ad8c03be31e0731296e53c459eba">  248</a></span>&#160;<span class="keyword">inline</span> std::string&amp; <a class="code" href="namespaceutil.html#ac874ad8c03be31e0731296e53c459eba">trim</a>(std::string&amp; str, <span class="keyword">const</span> std::string&amp; chars = <span class="stringliteral">&quot;\t\n\v\f\r &quot;</span>) {</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceutil.html#ad52c5f6f3fea14560b3226733827984b">ltrim</a>(<a class="code" href="namespaceutil.html#adba62a8bb34d0281aeec8030a3bd7d14">rtrim</a>(str, chars), chars);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;}</div>
-<div class="line"><a name="l00256"></a><span class="lineno"><a class="line" href="namespaceutil.html#a4a9bda6d8c94ceebb8a59e0a424d15ec">  256</a></span>&#160;<span class="keyword">inline</span> std::string <a class="code" href="namespaceutil.html#a4a9bda6d8c94ceebb8a59e0a424d15ec">str_tolower</a>(std::string str) {</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    std::transform(str.begin(), str.end(), str.begin(), [](<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> c){ return std::tolower(c); });</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">return</span> str;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
-<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="namespaceutil.html#aacef5c7f4209048b30e63faef7925013">  268</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="namespaceutil.html#aacef5c7f4209048b30e63faef7925013">iequals</a>(<span class="keyword">const</span> std::string&amp; a, <span class="keyword">const</span> std::string&amp; b) {</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">#if __cplusplus &lt; 201402L</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keyword">auto</span> sz = a.size();</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keywordflow">if</span>(b.size() != sz)</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span> i = 0U; i &lt; sz; ++i)</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">if</span>(tolower(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(a[i])) != tolower(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(b[i])))</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">return</span> std::equal(a.begin(), a.end(), b.begin(), b.end(), [](<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> a, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> b) { return tolower(a) == tolower(b); });</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;}</div>
-<div class="line"><a name="l00290"></a><span class="lineno"><a class="line" href="namespaceutil.html#a7a239a65cdd904257f4d8208a88ff104">  290</a></span>&#160;<span class="keyword">inline</span> std::string <a class="code" href="namespaceutil.html#a7a239a65cdd904257f4d8208a88ff104">padded</a>(std::string str, <span class="keywordtype">size_t</span> width, <span class="keywordtype">bool</span> show_ellipsis = <span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">if</span>(width &lt; 7)</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">return</span> str;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordflow">if</span>(str.length() &gt; width) {</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="keywordflow">if</span>(show_ellipsis) {</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keyword">auto</span> pos = str.size() - (width - 6);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="keywordflow">return</span> str.substr(0, 3) + <span class="stringliteral">&quot;...&quot;</span> + str.substr(pos, str.size() - pos);</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <span class="keywordflow">return</span> str.substr(0, width);</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="keywordflow">return</span> str + std::string(width - str.size(), <span class="charliteral">&#39; &#39;</span>);</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    }</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;}</div>
-<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="namespaceutil.html#ac45479054364f35d457990cc7deab724">  308</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="namespaceutil.html#ac45479054364f35d457990cc7deab724">file_exists</a>(<span class="keyword">const</span> std::string&amp; name) {</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keyword">struct </span>stat buffer {};</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">return</span> (stat(name.c_str(), &amp;buffer) == 0);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;}</div>
-<div class="line"><a name="l00318"></a><span class="lineno"><a class="line" href="namespaceutil.html#ac7c86d22733f7e5913f863d13962a7e7">  318</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">inline</span> T <a class="code" href="namespaceutil.html#ac7c86d22733f7e5913f863d13962a7e7">dir_name</a>(T <span class="keyword">const</span>&amp; path, T <span class="keyword">const</span>&amp; delims = <span class="stringliteral">&quot;/\\&quot;</span>) {</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keyword">auto</span> pos = path.find_last_of(delims);</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordflow">return</span> pos &gt; path.length() ? <span class="stringliteral">&quot;.&quot;</span> : path.substr(0, pos);</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;}</div>
-<div class="line"><a name="l00328"></a><span class="lineno"><a class="line" href="namespaceutil.html#aeda0346a95dd86507525a9b92a83cb76">  328</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">inline</span> T <a class="code" href="namespaceutil.html#aeda0346a95dd86507525a9b92a83cb76">base_name</a>(T <span class="keyword">const</span>&amp; path, T <span class="keyword">const</span>&amp; delims = <span class="stringliteral">&quot;/\\&quot;</span>) {</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keyword">auto</span> pos = path.find_last_of(delims);</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">return</span> pos &gt; path.length() ? path : path.substr(pos + 1);</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;}</div>
-<div class="line"><a name="l00337"></a><span class="lineno"><a class="line" href="namespaceutil.html#a82e9717e2747247d58f0e443f0012f2f">  337</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">inline</span> T <a class="code" href="namespaceutil.html#a82e9717e2747247d58f0e443f0012f2f">remove_ext</a>(T <span class="keyword">const</span>&amp; filename) {</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keyword">typename</span> T::size_type <span class="keyword">const</span> p(filename.find_last_of(<span class="charliteral">&#39;.&#39;</span>));</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordflow">return</span> p &gt; 0 &amp;&amp; p != T::npos ? filename.substr(0, p) : filename;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;}</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;} <span class="comment">// namespace util</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="comment"></span><span class="preprocessor">#endif </span><span class="comment">/* _UTIL_ITIES_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;constexpr <span class="keyword">inline</span> <span class="keywordtype">size_t</span> bit_count(uint32_t u) { <span class="keywordflow">return</span> __builtin_popcount(u); }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;constexpr <span class="keyword">inline</span> <span class="keywordtype">size_t</span> bit_count(uint64_t u) { <span class="keywordflow">return</span> __builtin_popcountl(u); }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#elif __cplusplus &lt; 201402L</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;constexpr <span class="keywordtype">size_t</span> uCount(uint32_t u) { <span class="keywordflow">return</span> u - ((u &gt;&gt; 1) &amp; 033333333333) - ((u &gt;&gt; 2) &amp; 011111111111); }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;constexpr <span class="keywordtype">size_t</span> bit_count(uint32_t u) { <span class="keywordflow">return</span> ((uCount(u) + (uCount(u) &gt;&gt; 3)) &amp; 030707070707) % 63; }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;constexpr <span class="keywordtype">size_t</span> bit_count(uint32_t u) {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">size_t</span> uCount = u - ((u &gt;&gt; 1) &amp; 033333333333) - ((u &gt;&gt; 2) &amp; 011111111111);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">return</span> ((uCount + (uCount &gt;&gt; 3)) &amp; 030707070707) % 63;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#if __cplusplus &lt; 201402L</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="namespaceutil.html#a60bf55061e90fef707927a656b82f919">  137</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <a class="code" href="namespaceutil.html#a60bf55061e90fef707927a656b82f919">ilog2</a>(uint32_t val) {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">inline</span> constexpr <span class="keywordtype">unsigned</span> <a class="code" href="namespaceutil.html#a60bf55061e90fef707927a656b82f919">ilog2</a>(uint32_t val) {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor">#ifdef __GNUG__</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(uint32_t) * 8 - 1 - __builtin_clz(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(val));</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">if</span>(val == 0)</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">return</span> std::numeric_limits&lt;uint32_t&gt;::max();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">if</span>(val == 1)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keyword">auto</span> ret = 0U;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">while</span>(val &gt; 1) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        val &gt;&gt;= 1;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        ++ret;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;} <span class="comment">// namespace util</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;constexpr <span class="keywordtype">bool</span> hasOddParity(uint32_t u) { <span class="keywordflow">return</span> bit_count(u) % 2; }</div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359">  166</a></span>&#160;<span class="keyword">inline</span> std::vector&lt;std::string&gt; <a class="code" href="namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359">split</a>(<span class="keyword">const</span> std::string&amp; s, <span class="keywordtype">char</span> separator) {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    std::vector&lt;std::string&gt; output;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    std::string::size_type prev_pos = 0;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    std::string::size_type pos = 0;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">while</span>((pos = s.find(separator, pos)) != std::string::npos) {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        std::string substring(s.substr(prev_pos, pos - prev_pos));</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        output.push_back(substring);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        prev_pos = ++pos;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    output.push_back(s.substr(prev_pos, pos - prev_pos)); <span class="comment">// Last word</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">return</span> output;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="comment">/* could also be done similar to this</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">        // construct a stream from the string</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">        std::stringstream ss(str);</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">        // use stream iterators to copy the stream to the vector as whitespace separated strings</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">        std::istream_iterator&lt;std::string&gt; it(ss);</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">        std::istream_iterator&lt;std::string&gt; end;</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">        std::vector&lt;std::string&gt; results(it, end);</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">        return results;</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">    */</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;}</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Range, <span class="keyword">typename</span> Value = <span class="keyword">typename</span> Range::value_type&gt;</div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="namespaceutil.html#ac50b7daec151059e1ae7c7ab03b3f10d">  191</a></span>&#160;std::string <a class="code" href="namespaceutil.html#ac50b7daec151059e1ae7c7ab03b3f10d">join</a>(Range <span class="keyword">const</span>&amp; elements, <span class="keywordtype">char</span> <span class="keyword">const</span>* <span class="keyword">const</span> delimiter) {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    std::ostringstream os;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keyword">auto</span> b = std::begin(elements);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keyword">auto</span> e = std::end(elements);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">if</span>(b != e) {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        std::copy(b, std::prev(e), std::ostream_iterator&lt;Value&gt;(os, delimiter));</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        b = std::prev(e);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">if</span>(b != e)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        os &lt;&lt; *b;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">return</span> os.str();</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;}</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Input, <span class="keyword">typename</span> Output, <span class="keyword">typename</span> Value = <span class="keyword">typename</span> Output::value_type&gt;</div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="namespaceutil.html#a0b82e8bc738efe6f022eed57d21f647c">  207</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359">split</a>(<span class="keywordtype">char</span> delimiter, Output&amp; output, Input <span class="keyword">const</span>&amp; input) {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span> cur = std::begin(input), beg = cur;; ++cur) {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">if</span>(cur == std::end(input) || *cur == delimiter || !*cur) {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            output.insert(std::end(output), Value(beg, cur));</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">if</span>(cur == std::end(input) || !*cur)</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            beg = std::next(cur);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;}</div>
+<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="namespaceutil.html#ad52c5f6f3fea14560b3226733827984b">  223</a></span>&#160;<span class="keyword">inline</span> std::string&amp; <a class="code" href="namespaceutil.html#ad52c5f6f3fea14560b3226733827984b">ltrim</a>(std::string&amp; str, <span class="keyword">const</span> std::string&amp; chars = <span class="stringliteral">&quot;\t\n\v\f\r &quot;</span>) {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    str.erase(0, str.find_first_not_of(chars));</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">return</span> str;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}</div>
+<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="namespaceutil.html#adba62a8bb34d0281aeec8030a3bd7d14">  233</a></span>&#160;<span class="keyword">inline</span> std::string&amp; <a class="code" href="namespaceutil.html#adba62a8bb34d0281aeec8030a3bd7d14">rtrim</a>(std::string&amp; str, <span class="keyword">const</span> std::string&amp; chars = <span class="stringliteral">&quot;\t\n\v\f\r &quot;</span>) {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    str.erase(str.find_last_not_of(chars) + 1);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordflow">return</span> str;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;}</div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="namespaceutil.html#ac874ad8c03be31e0731296e53c459eba">  243</a></span>&#160;<span class="keyword">inline</span> std::string&amp; <a class="code" href="namespaceutil.html#ac874ad8c03be31e0731296e53c459eba">trim</a>(std::string&amp; str, <span class="keyword">const</span> std::string&amp; chars = <span class="stringliteral">&quot;\t\n\v\f\r &quot;</span>) {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceutil.html#ad52c5f6f3fea14560b3226733827984b">ltrim</a>(<a class="code" href="namespaceutil.html#adba62a8bb34d0281aeec8030a3bd7d14">rtrim</a>(str, chars), chars);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;}</div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="namespaceutil.html#a4a9bda6d8c94ceebb8a59e0a424d15ec">  251</a></span>&#160;<span class="keyword">inline</span> std::string <a class="code" href="namespaceutil.html#a4a9bda6d8c94ceebb8a59e0a424d15ec">str_tolower</a>(std::string str) {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    std::transform(str.begin(), str.end(), str.begin(), [](<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> c) { return std::tolower(c); });</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">return</span> str;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;}</div>
+<div class="line"><a name="l00263"></a><span class="lineno"><a class="line" href="namespaceutil.html#aacef5c7f4209048b30e63faef7925013">  263</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="namespaceutil.html#aacef5c7f4209048b30e63faef7925013">iequals</a>(<span class="keyword">const</span> std::string&amp; a, <span class="keyword">const</span> std::string&amp; b) {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor">#if __cplusplus &lt; 201402L</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keyword">auto</span> sz = a.size();</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">if</span>(b.size() != sz)</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span> i = 0U; i &lt; sz; ++i)</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordflow">if</span>(tolower(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(a[i])) != tolower(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(b[i])))</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordflow">return</span> std::equal(a.begin(), a.end(), b.begin(), b.end(),</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                      [](<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> a, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> b) { return tolower(a) == tolower(b); });</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;}</div>
+<div class="line"><a name="l00286"></a><span class="lineno"><a class="line" href="namespaceutil.html#a7a239a65cdd904257f4d8208a88ff104">  286</a></span>&#160;<span class="keyword">inline</span> std::string <a class="code" href="namespaceutil.html#a7a239a65cdd904257f4d8208a88ff104">padded</a>(std::string str, <span class="keywordtype">size_t</span> width, <span class="keywordtype">bool</span> show_ellipsis = <span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordflow">if</span>(width &lt; 7)</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keywordflow">return</span> str;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordflow">if</span>(str.length() &gt; width) {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keywordflow">if</span>(show_ellipsis) {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <span class="keyword">auto</span> pos = str.size() - (width - 6);</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="keywordflow">return</span> str.substr(0, 3) + <span class="stringliteral">&quot;...&quot;</span> + str.substr(pos, str.size() - pos);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <span class="keywordflow">return</span> str.substr(0, width);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="keywordflow">return</span> str + std::string(width - str.size(), <span class="charliteral">&#39; &#39;</span>);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;}</div>
+<div class="line"><a name="l00304"></a><span class="lineno"><a class="line" href="namespaceutil.html#ac45479054364f35d457990cc7deab724">  304</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="namespaceutil.html#ac45479054364f35d457990cc7deab724">file_exists</a>(<span class="keyword">const</span> std::string&amp; name) {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keyword">struct </span>stat buffer {};</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="keywordflow">return</span> (stat(name.c_str(), &amp;buffer) == 0);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;}</div>
+<div class="line"><a name="l00314"></a><span class="lineno"><a class="line" href="namespaceutil.html#ac7c86d22733f7e5913f863d13962a7e7">  314</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">inline</span> T <a class="code" href="namespaceutil.html#ac7c86d22733f7e5913f863d13962a7e7">dir_name</a>(T <span class="keyword">const</span>&amp; path, T <span class="keyword">const</span>&amp; delims = <span class="stringliteral">&quot;/\\&quot;</span>) {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keyword">auto</span> pos = path.find_last_of(delims);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordflow">return</span> pos &gt; path.length() ? <span class="stringliteral">&quot;.&quot;</span> : path.substr(0, pos);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;}</div>
+<div class="line"><a name="l00324"></a><span class="lineno"><a class="line" href="namespaceutil.html#aeda0346a95dd86507525a9b92a83cb76">  324</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">inline</span> T <a class="code" href="namespaceutil.html#aeda0346a95dd86507525a9b92a83cb76">base_name</a>(T <span class="keyword">const</span>&amp; path, T <span class="keyword">const</span>&amp; delims = <span class="stringliteral">&quot;/\\&quot;</span>) {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keyword">auto</span> pos = path.find_last_of(delims);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">return</span> pos &gt; path.length() ? path : path.substr(pos + 1);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;}</div>
+<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="namespaceutil.html#a82e9717e2747247d58f0e443f0012f2f">  333</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">inline</span> T <a class="code" href="namespaceutil.html#a82e9717e2747247d58f0e443f0012f2f">remove_ext</a>(T <span class="keyword">const</span>&amp; filename) {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keyword">typename</span> T::size_type <span class="keyword">const</span> p(filename.find_last_of(<span class="charliteral">&#39;.&#39;</span>));</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keywordflow">return</span> p &gt; 0 &amp;&amp; p != T::npos ? filename.substr(0, p) : filename;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;}</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;} <span class="comment">// namespace util</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="comment"></span><span class="preprocessor">#endif </span><span class="comment">/* _UTIL_ITIES_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespaceutil_html_a4a9bda6d8c94ceebb8a59e0a424d15ec"><div class="ttname"><a href="namespaceutil.html#a4a9bda6d8c94ceebb8a59e0a424d15ec">util::str_tolower</a></div><div class="ttdeci">std::string str_tolower(std::string str)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00256">ities.h:256</a></div></div>
+<div class="ttc" id="anamespaceutil_html_a4a9bda6d8c94ceebb8a59e0a424d15ec"><div class="ttname"><a href="namespaceutil.html#a4a9bda6d8c94ceebb8a59e0a424d15ec">util::str_tolower</a></div><div class="ttdeci">std::string str_tolower(std::string str)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00251">ities.h:251</a></div></div>
 <div class="ttc" id="agroup__scc-common_html_ga6149478207207958276f9c09b6137a3d"><div class="ttname"><a href="group__scc-common.html#ga6149478207207958276f9c09b6137a3d">signextend</a></div><div class="ttdeci">T signextend(const T x)</div><div class="ttdoc">sign-extend a given value</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00057">ities.h:57</a></div></div>
-<div class="ttc" id="anamespaceutil_html_ad52c5f6f3fea14560b3226733827984b"><div class="ttname"><a href="namespaceutil.html#ad52c5f6f3fea14560b3226733827984b">util::ltrim</a></div><div class="ttdeci">std::string &amp; ltrim(std::string &amp;str, const std::string &amp;chars=&quot;\t\n\v\f\r &quot;)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00228">ities.h:228</a></div></div>
+<div class="ttc" id="anamespaceutil_html_ad52c5f6f3fea14560b3226733827984b"><div class="ttname"><a href="namespaceutil.html#ad52c5f6f3fea14560b3226733827984b">util::ltrim</a></div><div class="ttdeci">std::string &amp; ltrim(std::string &amp;str, const std::string &amp;chars=&quot;\t\n\v\f\r &quot;)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00223">ities.h:223</a></div></div>
 <div class="ttc" id="agroup__scc-common_html_ga9c68bdf7f69e5ba9a696f12bca2374c4"><div class="ttname"><a href="group__scc-common.html#ga9c68bdf7f69e5ba9a696f12bca2374c4">bit_sub</a></div><div class="ttdeci">constexpr T bit_sub(T v)</div><div class="ttdoc">extract bit ranges from plain data types</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00045">ities.h:45</a></div></div>
-<div class="ttc" id="anamespaceutil_html_adba62a8bb34d0281aeec8030a3bd7d14"><div class="ttname"><a href="namespaceutil.html#adba62a8bb34d0281aeec8030a3bd7d14">util::rtrim</a></div><div class="ttdeci">std::string &amp; rtrim(std::string &amp;str, const std::string &amp;chars=&quot;\t\n\v\f\r &quot;)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00238">ities.h:238</a></div></div>
-<div class="ttc" id="anamespaceutil_html_aacef5c7f4209048b30e63faef7925013"><div class="ttname"><a href="namespaceutil.html#aacef5c7f4209048b30e63faef7925013">util::iequals</a></div><div class="ttdeci">bool iequals(const std::string &amp;a, const std::string &amp;b)</div><div class="ttdoc">compare two string ignoring case</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00268">ities.h:268</a></div></div>
-<div class="ttc" id="anamespaceutil_html_ac7c86d22733f7e5913f863d13962a7e7"><div class="ttname"><a href="namespaceutil.html#ac7c86d22733f7e5913f863d13962a7e7">util::dir_name</a></div><div class="ttdeci">T dir_name(T const &amp;path, T const &amp;delims=&quot;/\\&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00318">ities.h:318</a></div></div>
-<div class="ttc" id="anamespaceutil_html_a82e9717e2747247d58f0e443f0012f2f"><div class="ttname"><a href="namespaceutil.html#a82e9717e2747247d58f0e443f0012f2f">util::remove_ext</a></div><div class="ttdeci">T remove_ext(T const &amp;filename)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00337">ities.h:337</a></div></div>
-<div class="ttc" id="anamespaceutil_html_ac50b7daec151059e1ae7c7ab03b3f10d"><div class="ttname"><a href="namespaceutil.html#ac50b7daec151059e1ae7c7ab03b3f10d">util::join</a></div><div class="ttdeci">std::string join(Range const &amp;elements, char const *const delimiter)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00196">ities.h:196</a></div></div>
-<div class="ttc" id="anamespaceutil_html_ac874ad8c03be31e0731296e53c459eba"><div class="ttname"><a href="namespaceutil.html#ac874ad8c03be31e0731296e53c459eba">util::trim</a></div><div class="ttdeci">std::string &amp; trim(std::string &amp;str, const std::string &amp;chars=&quot;\t\n\v\f\r &quot;)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00248">ities.h:248</a></div></div>
-<div class="ttc" id="anamespaceutil_html_ac45479054364f35d457990cc7deab724"><div class="ttname"><a href="namespaceutil.html#ac45479054364f35d457990cc7deab724">util::file_exists</a></div><div class="ttdeci">bool file_exists(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00308">ities.h:308</a></div></div>
-<div class="ttc" id="anamespaceutil_html_aeda0346a95dd86507525a9b92a83cb76"><div class="ttname"><a href="namespaceutil.html#aeda0346a95dd86507525a9b92a83cb76">util::base_name</a></div><div class="ttdeci">T base_name(T const &amp;path, T const &amp;delims=&quot;/\\&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00328">ities.h:328</a></div></div>
+<div class="ttc" id="anamespaceutil_html_adba62a8bb34d0281aeec8030a3bd7d14"><div class="ttname"><a href="namespaceutil.html#adba62a8bb34d0281aeec8030a3bd7d14">util::rtrim</a></div><div class="ttdeci">std::string &amp; rtrim(std::string &amp;str, const std::string &amp;chars=&quot;\t\n\v\f\r &quot;)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00233">ities.h:233</a></div></div>
+<div class="ttc" id="anamespaceutil_html_aacef5c7f4209048b30e63faef7925013"><div class="ttname"><a href="namespaceutil.html#aacef5c7f4209048b30e63faef7925013">util::iequals</a></div><div class="ttdeci">bool iequals(const std::string &amp;a, const std::string &amp;b)</div><div class="ttdoc">compare two string ignoring case</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00263">ities.h:263</a></div></div>
+<div class="ttc" id="anamespaceutil_html_ac7c86d22733f7e5913f863d13962a7e7"><div class="ttname"><a href="namespaceutil.html#ac7c86d22733f7e5913f863d13962a7e7">util::dir_name</a></div><div class="ttdeci">T dir_name(T const &amp;path, T const &amp;delims=&quot;/\\&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00314">ities.h:314</a></div></div>
+<div class="ttc" id="anamespaceutil_html_a82e9717e2747247d58f0e443f0012f2f"><div class="ttname"><a href="namespaceutil.html#a82e9717e2747247d58f0e443f0012f2f">util::remove_ext</a></div><div class="ttdeci">T remove_ext(T const &amp;filename)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00333">ities.h:333</a></div></div>
+<div class="ttc" id="anamespaceutil_html_ac50b7daec151059e1ae7c7ab03b3f10d"><div class="ttname"><a href="namespaceutil.html#ac50b7daec151059e1ae7c7ab03b3f10d">util::join</a></div><div class="ttdeci">std::string join(Range const &amp;elements, char const *const delimiter)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00191">ities.h:191</a></div></div>
+<div class="ttc" id="anamespaceutil_html_ac874ad8c03be31e0731296e53c459eba"><div class="ttname"><a href="namespaceutil.html#ac874ad8c03be31e0731296e53c459eba">util::trim</a></div><div class="ttdeci">std::string &amp; trim(std::string &amp;str, const std::string &amp;chars=&quot;\t\n\v\f\r &quot;)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00243">ities.h:243</a></div></div>
+<div class="ttc" id="anamespaceutil_html_ac45479054364f35d457990cc7deab724"><div class="ttname"><a href="namespaceutil.html#ac45479054364f35d457990cc7deab724">util::file_exists</a></div><div class="ttdeci">bool file_exists(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00304">ities.h:304</a></div></div>
+<div class="ttc" id="anamespaceutil_html_aeda0346a95dd86507525a9b92a83cb76"><div class="ttname"><a href="namespaceutil.html#aeda0346a95dd86507525a9b92a83cb76">util::base_name</a></div><div class="ttdeci">T base_name(T const &amp;path, T const &amp;delims=&quot;/\\&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00324">ities.h:324</a></div></div>
 <div class="ttc" id="agroup__scc-common_html_ga283404e7be0cd891e9aefd03bbadaf01"><div class="ttname"><a href="group__scc-common.html#ga283404e7be0cd891e9aefd03bbadaf01">signed_bit_sub</a></div><div class="ttdeci">constexpr std::make_signed&lt; T &gt;::type signed_bit_sub(T v)</div><div class="ttdoc">a function that converts from B bits to T in one operation</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00080">ities.h:80</a></div></div>
-<div class="ttc" id="anamespaceutil_html_aa22e7291ae32401fbcb10a7f8fbf5359"><div class="ttname"><a href="namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359">util::split</a></div><div class="ttdeci">std::vector&lt; std::string &gt; split(const std::string &amp;s, char separator)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00171">ities.h:171</a></div></div>
+<div class="ttc" id="anamespaceutil_html_aa22e7291ae32401fbcb10a7f8fbf5359"><div class="ttname"><a href="namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359">util::split</a></div><div class="ttdeci">std::vector&lt; std::string &gt; split(const std::string &amp;s, char separator)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00166">ities.h:166</a></div></div>
 <div class="ttc" id="anamespaceutil_html"><div class="ttname"><a href="namespaceutil.html">util</a></div><div class="ttdoc">SCC common utilities.</div><div class="ttdef"><b>Definition:</b> <a href="bit__field_8h_source.html#l00030">bit_field.h:30</a></div></div>
-<div class="ttc" id="anamespaceutil_html_a7a239a65cdd904257f4d8208a88ff104"><div class="ttname"><a href="namespaceutil.html#a7a239a65cdd904257f4d8208a88ff104">util::padded</a></div><div class="ttdeci">std::string padded(std::string str, size_t width, bool show_ellipsis=true)</div><div class="ttdoc">pad a string to a given length by either cutting of the overflow or inserting an ellipsis</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00290">ities.h:290</a></div></div>
-<div class="ttc" id="anamespaceutil_html_a60bf55061e90fef707927a656b82f919"><div class="ttname"><a href="namespaceutil.html#a60bf55061e90fef707927a656b82f919">util::ilog2</a></div><div class="ttdeci">unsigned ilog2(uint32_t val)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00141">ities.h:141</a></div></div>
+<div class="ttc" id="anamespaceutil_html_a7a239a65cdd904257f4d8208a88ff104"><div class="ttname"><a href="namespaceutil.html#a7a239a65cdd904257f4d8208a88ff104">util::padded</a></div><div class="ttdeci">std::string padded(std::string str, size_t width, bool show_ellipsis=true)</div><div class="ttdoc">pad a string to a given length by either cutting of the overflow or inserting an ellipsis</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00286">ities.h:286</a></div></div>
+<div class="ttc" id="anamespaceutil_html_a60bf55061e90fef707927a656b82f919"><div class="ttname"><a href="namespaceutil.html#a60bf55061e90fef707927a656b82f919">util::ilog2</a></div><div class="ttdeci">unsigned ilog2(uint32_t val)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00137">ities.h:137</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

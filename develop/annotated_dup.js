@@ -7,14 +7,14 @@ var annotated_dup =
     [ "logging", "namespacelogging.html", "namespacelogging" ],
     [ "obi", "namespaceobi.html", "namespaceobi" ],
     [ "scc", null, [
+      [ "dt", null, [
+        [ "sc_logic_7", "classscc_1_1dt_1_1sc__logic__7.html", "classscc_1_1dt_1_1sc__logic__7" ]
+      ] ],
       [ "impl", null, [
         [ "helper", "classscc_1_1impl_1_1helper.html", null ],
         [ "helper< T, false >", "classscc_1_1impl_1_1helper_3_01T_00_01false_01_4.html", "classscc_1_1impl_1_1helper_3_01T_00_01false_01_4" ],
         [ "helper< T, true >", "classscc_1_1impl_1_1helper_3_01T_00_01true_01_4.html", "classscc_1_1impl_1_1helper_3_01T_00_01true_01_4" ],
         [ "sc_register", "classscc_1_1impl_1_1sc__register.html", "classscc_1_1impl_1_1sc__register" ]
-      ] ],
-      [ "sc_dt", null, [
-        [ "sc_logic_7", "classscc_1_1sc__dt_1_1sc__logic__7.html", "classscc_1_1sc__dt_1_1sc__logic__7" ]
       ] ],
       [ "trace", null, [
         [ "fst_trace", "structscc_1_1trace_1_1fst__trace.html", "structscc_1_1trace_1_1fst__trace" ],
@@ -48,9 +48,11 @@ var annotated_dup =
       [ "resetable", "classscc_1_1resetable.html", "classscc_1_1resetable" ],
       [ "resource_access_if", "classscc_1_1resource__access__if.html", "classscc_1_1resource__access__if" ],
       [ "router", "classscc_1_1router.html", "classscc_1_1router" ],
+      [ "sc_attribute_randomized", "classscc_1_1sc__attribute__randomized.html", "classscc_1_1sc__attribute__randomized" ],
       [ "sc_bigint_tester", "structscc_1_1sc__bigint__tester.html", "structscc_1_1sc__bigint__tester" ],
       [ "sc_biguint_tester", "structscc_1_1sc__biguint__tester.html", "structscc_1_1sc__biguint__tester" ],
       [ "sc_bv_tester", "structscc_1_1sc__bv__tester.html", "structscc_1_1sc__bv__tester" ],
+      [ "sc_clock_ext", "structscc_1_1sc__clock__ext.html", "structscc_1_1sc__clock__ext" ],
       [ "sc_int_tester", "structscc_1_1sc__int__tester.html", "structscc_1_1sc__int__tester" ],
       [ "sc_lv_tester", "structscc_1_1sc__lv__tester.html", "structscc_1_1sc__lv__tester" ],
       [ "sc_owning_signal", "classscc_1_1sc__owning__signal.html", "classscc_1_1sc__owning__signal" ],
@@ -89,6 +91,7 @@ var annotated_dup =
       [ "vcd_push_trace_file", "structscc_1_1vcd__push__trace__file.html", "structscc_1_1vcd__push__trace__file" ]
     ] ],
     [ "scv_tr", null, [
+      [ "AttrDesc", "structscv__tr_1_1AttrDesc.html", "structscv__tr_1_1AttrDesc" ],
       [ "scv_extensions< tlm::scc::scv::tlm_dmi_data >", "classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4.html", "classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__dmi__data_01_4" ],
       [ "scv_extensions< tlm::scc::scv::tlm_gp_data >", "classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__gp__data_01_4.html", "classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__gp__data_01_4" ],
       [ "scv_extensions< tlm::scc::scv::tlm_phase_enum >", "classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__phase__enum_01_4.html", "classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__phase__enum_01_4" ],
@@ -122,6 +125,7 @@ var annotated_dup =
           [ "tlm_extension_recording_registry", "classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html", "classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry" ],
           [ "tlm_extensions_recording_if", "classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html", "classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if" ],
           [ "tlm_gp_data", "classtlm_1_1scc_1_1scv_1_1tlm__gp__data.html", "classtlm_1_1scc_1_1scv_1_1tlm__gp__data" ],
+          [ "tlm_id_ext_recording", "classtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording.html", null ],
           [ "tlm_rec_initiator_socket", "classtlm_1_1scc_1_1scv_1_1tlm__rec__initiator__socket.html", "classtlm_1_1scc_1_1scv_1_1tlm__rec__initiator__socket" ],
           [ "tlm_rec_target_socket", "classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket.html", "classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket" ],
           [ "tlm_recorder", "classtlm_1_1scc_1_1scv_1_1tlm__recorder.html", "classtlm_1_1scc_1_1scv_1_1tlm__recorder" ],

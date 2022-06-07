@@ -37,5 +37,6 @@ var namespacechi =
     [ "enable_for_enum< snp_optype_e >", "structchi_1_1enable__for__enum_3_01snp__optype__e_01_4.html", null ],
     [ "request", "structchi_1_1request.html", "structchi_1_1request" ],
     [ "response", "structchi_1_1response.html", "structchi_1_1response" ],
-    [ "snp_request", "structchi_1_1snp__request.html", "structchi_1_1snp__request" ]
+    [ "snp_request", "structchi_1_1snp__request.html", "structchi_1_1snp__request" ],
+    [ "tlm_id_ext_recording", "classchi_1_1tlm__id__ext__recording.html", null ]
 ];

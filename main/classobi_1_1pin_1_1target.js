@@ -11,7 +11,7 @@ var classobi_1_1pin_1_1target =
     [ "addr_i", "classobi_1_1pin_1_1target.html#aed35ca977b6424908af8db6a6a9042a3", null ],
     [ "aid_i", "classobi_1_1pin_1_1target.html#a8f01ca8c27a378067737db577535a135", null ],
     [ "auser_i", "classobi_1_1pin_1_1target.html#a863f48e0a005612fb334bae8691219cb", null ],
-    [ "be_i", "classobi_1_1pin_1_1target.html#a944bd1e805098dd1aa7811d81b8733dc", null ],
+    [ "be_i", "classobi_1_1pin_1_1target.html#a71261da90e185d311b522ddf317fd18c", null ],
     [ "clk_i", "classobi_1_1pin_1_1target.html#a44edf9617aef1cc2e99e26880c77ed26", null ],
     [ "err_o", "classobi_1_1pin_1_1target.html#ad5dc6f80cf16e500d7c18b803e3ff6c2", null ],
     [ "gnt_o", "classobi_1_1pin_1_1target.html#aed37aa8954bf6746ed02dec1bde02a5c", null ],

@@ -22,6 +22,7 @@ var classaxi_1_1scv_1_1axi__recorder =
     [ "enableBlTracing", "classaxi_1_1scv_1_1axi__recorder.html#a028def3e50510882d6be5b87a604c24c", null ],
     [ "enableDmiTracing", "classaxi_1_1scv_1_1axi__recorder.html#a4d3f6d39e366852becdf2cff464aa921", null ],
     [ "enableNbTracing", "classaxi_1_1scv_1_1axi__recorder.html#a80cdbf2ddabebdf614fb31bf40d599b3", null ],
+    [ "enableProtocolChecker", "classaxi_1_1scv_1_1axi__recorder.html#a989a9dc0a4656b0cfa73a57dc0893c30", null ],
     [ "enableTimedTracing", "classaxi_1_1scv_1_1axi__recorder.html#aa2dd8b17390c1ef9064506bd2fad4fba", null ],
     [ "enableTrDbgTracing", "classaxi_1_1scv_1_1axi__recorder.html#aa3b5232d75cb62d84e91f981d7e4d26a", null ]
 ];

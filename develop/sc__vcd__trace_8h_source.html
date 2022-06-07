@@ -87,15 +87,14 @@ $(document).ready(function(){initNavTree('sc__vcd__trace_8h_source.html',''); in
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;trace.h&quot;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>scc {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">inline</span> sc_core::sc_trace_file *scc_create_vcd_trace_file(<span class="keyword">const</span> <span class="keywordtype">char</span>* name, std::function&lt;<span class="keywordtype">bool</span>()&gt; enable = std::function&lt;<span class="keywordtype">bool</span>()&gt;()) {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">return</span> create_vcd_pull_trace_file(name, enable);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> scc_close_vcd_trace_file( sc_core::sc_trace_file* tf ) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    close_vcd_pull_trace_file(tf);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif // SCC_SC_VCD_TRACE_H</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">inline</span> sc_core::sc_trace_file* scc_create_vcd_trace_file(<span class="keyword">const</span> <span class="keywordtype">char</span>* name,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                                         std::function&lt;<span class="keywordtype">bool</span>()&gt; enable = std::function&lt;<span class="keywordtype">bool</span>()&gt;()) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">return</span> create_vcd_pull_trace_file(name, enable);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> scc_close_vcd_trace_file(sc_core::sc_trace_file* tf) { close_vcd_pull_trace_file(tf); }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif // SCC_SC_VCD_TRACE_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

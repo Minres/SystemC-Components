@@ -1,15 +1,15 @@
 var classutil_1_1sparse__array =
 [
-    [ "page_type", "classutil_1_1sparse__array.html#a3a68765dcc26ddeeb9628fe13ac8200f", null ],
-    [ "sparse_array", "classutil_1_1sparse__array.html#a9fe86ffaf7b176925876d84d8d7fe47a", null ],
-    [ "~sparse_array", "classutil_1_1sparse__array.html#af775c56174a0bf600058e33177dc1a4c", null ],
-    [ "is_allocated", "classutil_1_1sparse__array.html#afcf408eadb4d328ca8ad92c53ebeeecf", null ],
-    [ "operator()", "classutil_1_1sparse__array.html#a8c69fabfd1d02c9fbbbdf36fb117130a", null ],
-    [ "operator[]", "classutil_1_1sparse__array.html#a636812feb5634ea7c3bc5062855f50d7", null ],
-    [ "size", "classutil_1_1sparse__array.html#a6ef2105fb7b401b03ce227919fb06d12", null ],
-    [ "arr", "classutil_1_1sparse__array.html#a6801d6a869a84ceac9ec2952da5a38f1", null ],
-    [ "page_addr_mask", "classutil_1_1sparse__array.html#a7ff2dc077ed3a006e548e07271199b28", null ],
-    [ "page_addr_width", "classutil_1_1sparse__array.html#a7dec38c9a638a3791131b515b114ea52", null ],
-    [ "page_count", "classutil_1_1sparse__array.html#ad27cf83209539a72028ae0e1e20b3d07", null ],
-    [ "page_size", "classutil_1_1sparse__array.html#a751dcb830a63f34fef993294dab6859d", null ]
+    [ "page_type", "classutil_1_1sparse__array.html#ab571fc9dff87068e9c90bdff93c1481f", null ],
+    [ "sparse_array", "classutil_1_1sparse__array.html#a0b2229afb9be542d97237c5bfe5b5358", null ],
+    [ "~sparse_array", "classutil_1_1sparse__array.html#ad94d3de1943f36097a865b581840fdfc", null ],
+    [ "is_allocated", "classutil_1_1sparse__array.html#a3b89509639b90395d3e07eaa7c4813db", null ],
+    [ "operator()", "classutil_1_1sparse__array.html#a71e5009319331764e8ef86bf02ec36c3", null ],
+    [ "operator[]", "classutil_1_1sparse__array.html#afc41c150bf0ae24dcfe961648bf2e662", null ],
+    [ "size", "classutil_1_1sparse__array.html#a8431427620f2f2f29576c569fb96d1c4", null ],
+    [ "arr", "classutil_1_1sparse__array.html#a87f4b0360c110e01e647dbe1898371b1", null ],
+    [ "page_addr_mask", "classutil_1_1sparse__array.html#a6f1e3aa0a640f8f4e203347250ec477e", null ],
+    [ "page_addr_width", "classutil_1_1sparse__array.html#a8a171588414d553f639fc93dd661acdb", null ],
+    [ "page_count", "classutil_1_1sparse__array.html#a48ebf7a8bceeb266bd8438758eed376e", null ],
+    [ "page_size", "classutil_1_1sparse__array.html#a4679ed80cb053ca2d199bda204165742", null ]
 ];

@@ -63,6 +63,7 @@ $(document).ready(function(){initNavTree('classutil_1_1range__lut.html',''); ini
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
@@ -77,6 +78,24 @@ $(document).ready(function(){initNavTree('classutil_1_1range__lut.html',''); ini
 
 <p><code>#include &lt;<a class="el" href="range__lut_8h_source.html">range_lut.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structutil_1_1range__lut_1_1lut__entry.html">lut_entry</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">the lut entry  <a href="structutil_1_1range__lut_1_1lut__entry.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:af0a2482a6758bd63bc610b424075a98e"><td class="memItemLeft" align="right" valign="top"><a id="af0a2482a6758bd63bc610b424075a98e"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1range__lut.html#af0a2482a6758bd63bc610b424075a98e">entry_type</a> { <b>BEGIN_RANGE</b> = 1, 
+<b>END_RANGE</b> = 2, 
+<b>SINGLE_BYTE_RANGE</b> = 3
+ }</td></tr>
+<tr class="memdesc:af0a2482a6758bd63bc610b424075a98e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the type of lut entry <br /></td></tr>
+<tr class="separator:af0a2482a6758bd63bc610b424075a98e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7addfc426727f3daabba8d6c819da160"><td class="memItemLeft" align="right" valign="top"><a id="a7addfc426727f3daabba8d6c819da160"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>const_iterator</b> = typename std::map&lt; uint64_t, <a class="el" href="structutil_1_1range__lut_1_1lut__entry.html">lut_entry</a> &gt;::const_iterator</td></tr>
+<tr class="separator:a7addfc426727f3daabba8d6c819da160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a58b87356aa322423add11eeed6581c98"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1range__lut.html#a58b87356aa322423add11eeed6581c98">range_lut</a> (T <a class="el" href="classutil_1_1range__lut.html#ae10ec7cb5121b7d9719136c2fd40e9c4">null_entry</a>)</td></tr>
@@ -95,6 +114,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a67c15e6b45263973d0d8d6acd67cdc01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c28a218793815a94551a714248f844c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1range__lut.html#a0c28a218793815a94551a714248f844c">toString</a> () const</td></tr>
 <tr class="separator:a0c28a218793815a94551a714248f844c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bba38f902ad61032e059e41ddfaca6f"><td class="memItemLeft" align="right" valign="top"><a id="a1bba38f902ad61032e059e41ddfaca6f"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const</td></tr>
+<tr class="separator:a1bba38f902ad61032e059e41ddfaca6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a2c741e3617fad610b2c12c0abb92df"><td class="memItemLeft" align="right" valign="top"><a id="a0a2c741e3617fad610b2c12c0abb92df"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const</td></tr>
+<tr class="separator:a0a2c741e3617fad610b2c12c0abb92df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -106,7 +131,7 @@ const T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:afaae1bf453a7ca473691dfd8d5d38e6d"><td class="memItemLeft" align="right" valign="top"><a id="afaae1bf453a7ca473691dfd8d5d38e6d"></a>
-std::map&lt; uint64_t, lut_entry &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_lut</b> {}</td></tr>
+std::map&lt; uint64_t, <a class="el" href="structutil_1_1range__lut_1_1lut__entry.html">lut_entry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_lut</b> {}</td></tr>
 <tr class="separator:afaae1bf453a7ca473691dfd8d5d38e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67ed97e57463275aba35f2f9987d8222"><td class="memItemLeft" align="right" valign="top"><a id="a67ed97e57463275aba35f2f9987d8222"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_size</b> {0}</td></tr>
@@ -209,7 +234,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00140">140</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00146">146</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
 
 </div>
 </div>
@@ -315,7 +340,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the entry is found and removed, false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00155">155</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00161">161</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
 
 </div>
 </div>
@@ -374,7 +399,7 @@ template&lt;typename T &gt; </div>
 <p>create a textual representation of the address map (address range-&gt;entry association)</p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00201">201</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00207">207</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
 
 </div>
 </div>
@@ -401,7 +426,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <p>validate the lookup table wrt. overlaps </p>
 
-<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00174">174</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range__lut_8h_source.html#l00180">180</a> of file <a class="el" href="range__lut_8h_source.html">range_lut.h</a>.</p>
 
 </div>
 </div>

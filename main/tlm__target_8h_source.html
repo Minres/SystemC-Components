@@ -95,119 +95,121 @@ $(document).ready(function(){initNavTree('tlm__target_8h_source.html',''); initR
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">struct </span>addr_range {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    uint64_t base, size;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BUSWIDTH = 32, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ADDR_UNIT_WIDTH=8&gt; <span class="keyword">class </span>tlm_target {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BUSWIDTH = 32, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ADDR_UNIT_WIDTH = 8&gt; <span class="keyword">class </span>tlm_target {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">using</span> this_type = tlm_target&lt;BUSWIDTH,ADDR_UNIT_WIDTH&gt;;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">using</span> this_type = tlm_target&lt;BUSWIDTH, ADDR_UNIT_WIDTH&gt;;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classscc_1_1tlm__target.html#a724b69b0f9f457ffe633c164bcc94f4f">tlm_target</a>(sc_core::sc_time&amp; clock);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1target__mixin.html">tlm::scc::target_mixin&lt;tlm::scc::scv::tlm_rec_target_socket&lt;BUSWIDTH&gt;</a>&gt; <a class="code" href="classscc_1_1tlm__target.html#ad787e182af00748628deb5de9ba94a6f">socket</a>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1tlm__target.html#aadef39dddc0260c3c4ec3299fdf8c148">b_tranport_cb</a>(tlm::tlm_generic_payload&amp; gp, sc_core::sc_time&amp; d);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classscc_1_1tlm__target.html#a925e6fa8a6e3a32a90f7370dfe489561">tranport_dbg_cb</a>(tlm::tlm_generic_payload&amp; gp);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1tlm__target.html#a26a14e2a32d595039b7d5094a12bc9a8">addResource</a>(resource_access_if&amp; rai, uint64_t base_addr) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        socket_map.addEntry(std::make_pair(&amp;rai, base_addr), base_addr, std::max&lt;size_t&gt;(1,rai.size()/(ADDR_UNIT_WIDTH/8)));</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1tlm__target.html#a26a14e2a32d595039b7d5094a12bc9a8">addResource</a>(indexed_resource_access_if&amp; irai, uint64_t base_addr) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> idx = 0; idx &lt; irai.size(); ++idx) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keyword">auto</span> irai_size = std::max&lt;size_t&gt;(1,irai[idx].size()/(ADDR_UNIT_WIDTH/8));</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            socket_map.addEntry(std::make_pair(&amp;irai[idx], base_addr), base_addr, irai_size);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            base_addr += irai_size;</div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classscc_1_1tlm__target.html#a26a14e2a32d595039b7d5094a12bc9a8">   92</a></span>&#160;        }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    sc_core::sc_time&amp; clk;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="classutil_1_1range__lut.html">util::range_lut&lt;std::pair&lt;resource_access_if*, uint64_t&gt;</a>&gt; socket_map;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> BUSWIDTH = 32&gt; <span class="keyword">struct </span>target_memory_map_entry {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    tlm::tlm_target_socket&lt;BUSWIDTH&gt;&amp; target;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    ::sc_dt::uint64 start;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    ::sc_dt::uint64 size;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;};</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> BUSWIDTH = 32&gt; <span class="keyword">struct </span>target_name_map_entry {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    std::string name;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    ::sc_dt::uint64 start;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    ::sc_dt::uint64 size;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;};</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="structscc_1_1target__memory__map__entry.html">  118</a></span>&#160;} <span class="comment">/* namespace scc */</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BUSWIDTH, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ADDR_UNIT_WIDTH&gt;</div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="classscc_1_1tlm__target.html#a724b69b0f9f457ffe633c164bcc94f4f">  121</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="classscc_1_1tlm__target.html#a724b69b0f9f457ffe633c164bcc94f4f">scc::tlm_target&lt;BUSWIDTH,ADDR_UNIT_WIDTH&gt;::tlm_target</a>(sc_core::sc_time&amp; clock)</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;: socket(<span class="stringliteral">&quot;socket&quot;</span>)</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;, clk(clock)</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;, socket_map(std::make_pair(nullptr, 0)) {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    socket.<a class="code" href="classtlm_1_1scc_1_1target__mixin.html#aca694d17ae44b59155264d7cec4a8f1d">register_b_transport</a>(</div>
-<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="structscc_1_1target__name__map__entry.html">  126</a></span>&#160;        [=](tlm::tlm_generic_payload&amp; gp, sc_core::sc_time&amp; delay) -&gt; <span class="keywordtype">void</span> { this-&gt;b_tranport_cb(gp, delay); });</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    socket.<a class="code" href="classtlm_1_1scc_1_1target__mixin.html#a057d97237a890edb377446f880a42587">register_transport_dbg</a>([=](tlm::tlm_generic_payload&amp; gp) -&gt; <span class="keywordtype">unsigned</span> { <span class="keywordflow">return</span> this-&gt;tranport_dbg_cb(gp); });</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BUSWIDTH, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ADDR_UNIT_WIDTH&gt;</div>
-<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="classscc_1_1tlm__target.html#aadef39dddc0260c3c4ec3299fdf8c148">  131</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1tlm__target.html#aadef39dddc0260c3c4ec3299fdf8c148">scc::tlm_target&lt;BUSWIDTH,ADDR_UNIT_WIDTH&gt;::b_tranport_cb</a>(tlm::tlm_generic_payload&amp; gp, sc_core::sc_time&amp; delay) {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <a class="code" href="classscc_1_1resource__access__if.html">resource_access_if</a>* ra = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    uint64_t base = 0;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    std::tie(ra, base) = socket_map.getEntry(gp.get_address());</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">if</span>(ra) {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        gp.set_response_status(tlm::TLM_BURST_ERROR_RESPONSE);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">if</span>(gp.get_data_length() &lt;= ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a0ec8392431001d4535ba1f792bfa3ee4">size</a>()) {</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            gp.set_response_status(tlm::TLM_BYTE_ENABLE_ERROR_RESPONSE);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordflow">if</span>(gp.get_byte_enable_ptr() == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                gp.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                <span class="keywordflow">if</span>(gp.get_data_length() == gp.get_streaming_width()) {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                    <span class="keywordflow">if</span>(gp.get_command() == tlm::TLM_READ_COMMAND) {</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                        <span class="keywordflow">if</span>(ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a687cd9c884c9a6695332b4dd82c388e9">read</a>(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base), delay))</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                            gp.set_response_status(tlm::TLM_OK_RESPONSE);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(gp.get_command() == tlm::TLM_WRITE_COMMAND) {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                        <span class="keywordflow">if</span>(ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a02527d2e4e1ff85f30bad36974d8f688">write</a>(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base), delay))</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                            gp.set_response_status(tlm::TLM_OK_RESPONSE);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        gp.set_response_status(tlm::TLM_COMMAND_ERROR_RESPONSE);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                    }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                }</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            }</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        gp.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    }</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    delay += clk;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="classscc_1_1tlm__target.html#a925e6fa8a6e3a32a90f7370dfe489561">  160</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BUSWIDTH, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ADDR_UNIT_WIDTH&gt; <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classscc_1_1tlm__target.html#a925e6fa8a6e3a32a90f7370dfe489561">scc::tlm_target&lt;BUSWIDTH,ADDR_UNIT_WIDTH&gt;::tranport_dbg_cb</a>(tlm::tlm_generic_payload&amp; gp) {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <a class="code" href="classscc_1_1resource__access__if.html">resource_access_if</a>* ra = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    uint64_t base = 0;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    std::tie(ra, base) = socket_map.getEntry(gp.get_address());</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">if</span>(ra) {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">if</span>(gp.get_data_length() == ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a0ec8392431001d4535ba1f792bfa3ee4">size</a>() &amp;&amp; gp.get_byte_enable_ptr() == <span class="keyword">nullptr</span> &amp;&amp;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;           gp.get_data_length() == gp.get_streaming_width()) {</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <span class="keywordflow">if</span>(gp.get_command() == tlm::TLM_READ_COMMAND) {</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                <span class="keywordflow">if</span>(ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a2329b4dda30a8e07bf37a9694d3aaa2a">read_dbg</a>(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a0ec8392431001d4535ba1f792bfa3ee4">size</a>()))</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                    <span class="keywordflow">return</span> gp.get_data_length();</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(gp.get_command() == tlm::TLM_READ_COMMAND) {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keywordflow">if</span>(ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#ae4609ce281478582d5019d2de7684e48">write_dbg</a>(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a0ec8392431001d4535ba1f792bfa3ee4">size</a>()))</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                    <span class="keywordflow">return</span> gp.get_data_length();</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            }</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        }</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;}</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SYSC_TLM_TARGET_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        socket_map.addEntry(std::make_pair(&amp;rai, base_addr), base_addr,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                            std::max&lt;size_t&gt;(1, rai.size() / (ADDR_UNIT_WIDTH / 8)));</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1tlm__target.html#a26a14e2a32d595039b7d5094a12bc9a8">addResource</a>(indexed_resource_access_if&amp; irai, uint64_t base_addr) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> idx = 0; idx &lt; irai.size(); ++idx) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keyword">auto</span> irai_size = std::max&lt;size_t&gt;(1, irai[idx].size() / (ADDR_UNIT_WIDTH / 8));</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            socket_map.addEntry(std::make_pair(&amp;irai[idx], base_addr), base_addr, irai_size);</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classscc_1_1tlm__target.html#a26a14e2a32d595039b7d5094a12bc9a8">   92</a></span>&#160;            base_addr += irai_size;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    sc_core::sc_time&amp; clk;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="classutil_1_1range__lut.html">util::range_lut&lt;std::pair&lt;resource_access_if*, uint64_t&gt;</a>&gt; socket_map;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> BUSWIDTH = 32&gt; <span class="keyword">struct </span>target_memory_map_entry {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    tlm::tlm_target_socket&lt;BUSWIDTH&gt;&amp; target;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    ::sc_dt::uint64 start;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    ::sc_dt::uint64 size;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;};</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> BUSWIDTH = 32&gt; <span class="keyword">struct </span>target_name_map_entry {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    std::string name;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    ::sc_dt::uint64 start;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    ::sc_dt::uint64 size;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;};</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="structscc_1_1target__memory__map__entry.html">  119</a></span>&#160;} <span class="comment">/* namespace scc */</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BUSWIDTH, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ADDR_UNIT_WIDTH&gt;</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="classscc_1_1tlm__target.html#a724b69b0f9f457ffe633c164bcc94f4f">  122</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="classscc_1_1tlm__target.html#a724b69b0f9f457ffe633c164bcc94f4f">scc::tlm_target&lt;BUSWIDTH, ADDR_UNIT_WIDTH&gt;::tlm_target</a>(sc_core::sc_time&amp; clock)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;: socket(<span class="stringliteral">&quot;socket&quot;</span>)</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;, clk(clock)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;, socket_map(std::make_pair(nullptr, 0)) {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    socket.<a class="code" href="classtlm_1_1scc_1_1target__mixin.html#aca694d17ae44b59155264d7cec4a8f1d">register_b_transport</a>(</div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="structscc_1_1target__name__map__entry.html">  127</a></span>&#160;        [=](tlm::tlm_generic_payload&amp; gp, sc_core::sc_time&amp; delay) -&gt; <span class="keywordtype">void</span> { this-&gt;b_tranport_cb(gp, delay); });</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    socket.<a class="code" href="classtlm_1_1scc_1_1target__mixin.html#a057d97237a890edb377446f880a42587">register_transport_dbg</a>([=](tlm::tlm_generic_payload&amp; gp) -&gt; <span class="keywordtype">unsigned</span> { <span class="keywordflow">return</span> this-&gt;tranport_dbg_cb(gp); });</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BUSWIDTH, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ADDR_UNIT_WIDTH&gt;</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="classscc_1_1tlm__target.html#aadef39dddc0260c3c4ec3299fdf8c148">  132</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1tlm__target.html#aadef39dddc0260c3c4ec3299fdf8c148">scc::tlm_target&lt;BUSWIDTH, ADDR_UNIT_WIDTH&gt;::b_tranport_cb</a>(tlm::tlm_generic_payload&amp; gp, sc_core::sc_time&amp; delay) {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="classscc_1_1resource__access__if.html">resource_access_if</a>* ra = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    uint64_t base = 0;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    std::tie(ra, base) = socket_map.getEntry(gp.get_address());</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">if</span>(ra) {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        gp.set_response_status(tlm::TLM_BURST_ERROR_RESPONSE);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">if</span>(gp.get_data_length() &lt;= ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a0ec8392431001d4535ba1f792bfa3ee4">size</a>()) {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            gp.set_response_status(tlm::TLM_BYTE_ENABLE_ERROR_RESPONSE);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordflow">if</span>(gp.get_byte_enable_ptr() == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                gp.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="keywordflow">if</span>(gp.get_data_length() == gp.get_streaming_width()) {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                    <span class="keywordflow">if</span>(gp.get_command() == tlm::TLM_READ_COMMAND) {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                        <span class="keywordflow">if</span>(ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a687cd9c884c9a6695332b4dd82c388e9">read</a>(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base), delay))</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                            gp.set_response_status(tlm::TLM_OK_RESPONSE);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(gp.get_command() == tlm::TLM_WRITE_COMMAND) {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                        <span class="keywordflow">if</span>(ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a02527d2e4e1ff85f30bad36974d8f688">write</a>(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base), delay))</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                            gp.set_response_status(tlm::TLM_OK_RESPONSE);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                        gp.set_response_status(tlm::TLM_COMMAND_ERROR_RESPONSE);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                    }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        gp.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    delay += clk;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BUSWIDTH, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ADDR_UNIT_WIDTH&gt;</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="classscc_1_1tlm__target.html#a925e6fa8a6e3a32a90f7370dfe489561">  162</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classscc_1_1tlm__target.html#a925e6fa8a6e3a32a90f7370dfe489561">scc::tlm_target&lt;BUSWIDTH, ADDR_UNIT_WIDTH&gt;::tranport_dbg_cb</a>(tlm::tlm_generic_payload&amp; gp) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <a class="code" href="classscc_1_1resource__access__if.html">resource_access_if</a>* ra = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    uint64_t base = 0;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    std::tie(ra, base) = socket_map.getEntry(gp.get_address());</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">if</span>(ra) {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">if</span>(gp.get_data_length() == ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a0ec8392431001d4535ba1f792bfa3ee4">size</a>() &amp;&amp; gp.get_byte_enable_ptr() == <span class="keyword">nullptr</span> &amp;&amp;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;           gp.get_data_length() == gp.get_streaming_width()) {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">if</span>(gp.get_command() == tlm::TLM_READ_COMMAND) {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <span class="keywordflow">if</span>(ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a2329b4dda30a8e07bf37a9694d3aaa2a">read_dbg</a>(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a0ec8392431001d4535ba1f792bfa3ee4">size</a>()))</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                    <span class="keywordflow">return</span> gp.get_data_length();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(gp.get_command() == tlm::TLM_WRITE_COMMAND) {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <span class="keywordflow">if</span>(ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#ae4609ce281478582d5019d2de7684e48">write_dbg</a>(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra-&gt;<a class="code" href="classscc_1_1resource__access__if.html#a0ec8392431001d4535ba1f792bfa3ee4">size</a>()))</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    <span class="keywordflow">return</span> gp.get_data_length();</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SYSC_TLM_TARGET_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassscc_1_1resource__access__if_html_a2329b4dda30a8e07bf37a9694d3aaa2a"><div class="ttname"><a href="classscc_1_1resource__access__if.html#a2329b4dda30a8e07bf37a9694d3aaa2a">scc::resource_access_if::read_dbg</a></div><div class="ttdeci">virtual bool read_dbg(uint8_t *data, std::size_t length, uint64_t offset=0) const =0</div><div class="ttdoc">debug read the data from the resource</div></div>
 <div class="ttc" id="aclassscc_1_1resource__access__if_html"><div class="ttname"><a href="classscc_1_1resource__access__if.html">scc::resource_access_if</a></div><div class="ttdoc">interface defining access to a resource e.g. a register</div><div class="ttdef"><b>Definition:</b> <a href="resource__access__if_8h_source.html#l00044">resource_access_if.h:44</a></div></div>
-<div class="ttc" id="aclassscc_1_1tlm__target_html_aadef39dddc0260c3c4ec3299fdf8c148"><div class="ttname"><a href="classscc_1_1tlm__target.html#aadef39dddc0260c3c4ec3299fdf8c148">scc::tlm_target::b_tranport_cb</a></div><div class="ttdeci">void b_tranport_cb(tlm::tlm_generic_payload &amp;gp, sc_core::sc_time &amp;d)</div><div class="ttdoc">the blocking transport callback</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00131">tlm_target.h:131</a></div></div>
+<div class="ttc" id="aclassscc_1_1tlm__target_html_aadef39dddc0260c3c4ec3299fdf8c148"><div class="ttname"><a href="classscc_1_1tlm__target.html#aadef39dddc0260c3c4ec3299fdf8c148">scc::tlm_target::b_tranport_cb</a></div><div class="ttdeci">void b_tranport_cb(tlm::tlm_generic_payload &amp;gp, sc_core::sc_time &amp;d)</div><div class="ttdoc">the blocking transport callback</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00132">tlm_target.h:132</a></div></div>
 <div class="ttc" id="aclassscc_1_1tlm__target_html_ad787e182af00748628deb5de9ba94a6f"><div class="ttname"><a href="classscc_1_1tlm__target.html#ad787e182af00748628deb5de9ba94a6f">scc::tlm_target::socket</a></div><div class="ttdeci">tlm::scc::target_mixin&lt; tlm::scc::scv::tlm_rec_target_socket&lt; BUSWIDTH &gt; &gt; socket</div><div class="ttdoc">the target socket</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00068">tlm_target.h:68</a></div></div>
 <div class="ttc" id="aclassutil_1_1range__lut_html"><div class="ttname"><a href="classutil_1_1range__lut.html">util::range_lut</a></div><div class="ttdoc">range based lookup table</div><div class="ttdef"><b>Definition:</b> <a href="range__lut_8h_source.html#l00051">range_lut.h:51</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1target__mixin_html_a057d97237a890edb377446f880a42587"><div class="ttname"><a href="classtlm_1_1scc_1_1target__mixin.html#a057d97237a890edb377446f880a42587">tlm::scc::target_mixin::register_transport_dbg</a></div><div class="ttdeci">void register_transport_dbg(std::function&lt; unsigned int(transaction_type &amp;)&gt; cb)</div><div class="ttdef"><b>Definition:</b> <a href="target__mixin_8h_source.html#l00093">target_mixin.h:93</a></div></div>
 <div class="ttc" id="aclassscc_1_1resource__access__if_html_a02527d2e4e1ff85f30bad36974d8f688"><div class="ttname"><a href="classscc_1_1resource__access__if.html#a02527d2e4e1ff85f30bad36974d8f688">scc::resource_access_if::write</a></div><div class="ttdeci">virtual bool write(const uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME)=0</div><div class="ttdoc">write to the resource</div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1target__mixin_html"><div class="ttname"><a href="classtlm_1_1scc_1_1target__mixin.html">tlm::scc::target_mixin</a></div><div class="ttdef"><b>Definition:</b> <a href="target__mixin_8h_source.html#l00034">target_mixin.h:34</a></div></div>
-<div class="ttc" id="aclassscc_1_1tlm__target_html_a925e6fa8a6e3a32a90f7370dfe489561"><div class="ttname"><a href="classscc_1_1tlm__target.html#a925e6fa8a6e3a32a90f7370dfe489561">scc::tlm_target::tranport_dbg_cb</a></div><div class="ttdeci">unsigned int tranport_dbg_cb(tlm::tlm_generic_payload &amp;gp)</div><div class="ttdoc">the debug transport callback</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00160">tlm_target.h:160</a></div></div>
+<div class="ttc" id="aclassscc_1_1tlm__target_html_a925e6fa8a6e3a32a90f7370dfe489561"><div class="ttname"><a href="classscc_1_1tlm__target.html#a925e6fa8a6e3a32a90f7370dfe489561">scc::tlm_target::tranport_dbg_cb</a></div><div class="ttdeci">unsigned int tranport_dbg_cb(tlm::tlm_generic_payload &amp;gp)</div><div class="ttdoc">the debug transport callback</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00162">tlm_target.h:162</a></div></div>
 <div class="ttc" id="aclassscc_1_1resource__access__if_html_a0ec8392431001d4535ba1f792bfa3ee4"><div class="ttname"><a href="classscc_1_1resource__access__if.html#a0ec8392431001d4535ba1f792bfa3ee4">scc::resource_access_if::size</a></div><div class="ttdeci">virtual std::size_t size() const =0</div><div class="ttdoc">return the size of the resource</div></div>
 <div class="ttc" id="aclassscc_1_1resource__access__if_html_a687cd9c884c9a6695332b4dd82c388e9"><div class="ttname"><a href="classscc_1_1resource__access__if.html#a687cd9c884c9a6695332b4dd82c388e9">scc::resource_access_if::read</a></div><div class="ttdeci">virtual bool read(uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME) const =0</div><div class="ttdoc">read the data from the resource</div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1target__mixin_html_aca694d17ae44b59155264d7cec4a8f1d"><div class="ttname"><a href="classtlm_1_1scc_1_1target__mixin.html#aca694d17ae44b59155264d7cec4a8f1d">tlm::scc::target_mixin::register_b_transport</a></div><div class="ttdeci">void register_b_transport(std::function&lt; void(transaction_type &amp;, sc_core::sc_time &amp;)&gt; cb)</div><div class="ttdef"><b>Definition:</b> <a href="target__mixin_8h_source.html#l00085">target_mixin.h:85</a></div></div>
 <div class="ttc" id="aclassscc_1_1resource__access__if_html_ae4609ce281478582d5019d2de7684e48"><div class="ttname"><a href="classscc_1_1resource__access__if.html#ae4609ce281478582d5019d2de7684e48">scc::resource_access_if::write_dbg</a></div><div class="ttdeci">virtual bool write_dbg(const uint8_t *data, std::size_t length, uint64_t offset=0)=0</div><div class="ttdoc">debug write to the resource</div></div>
-<div class="ttc" id="aclassscc_1_1tlm__target_html_a724b69b0f9f457ffe633c164bcc94f4f"><div class="ttname"><a href="classscc_1_1tlm__target.html#a724b69b0f9f457ffe633c164bcc94f4f">scc::tlm_target::tlm_target</a></div><div class="ttdeci">tlm_target(sc_core::sc_time &amp;clock)</div><div class="ttdoc">the constructor</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00121">tlm_target.h:121</a></div></div>
+<div class="ttc" id="aclassscc_1_1tlm__target_html_a724b69b0f9f457ffe633c164bcc94f4f"><div class="ttname"><a href="classscc_1_1tlm__target.html#a724b69b0f9f457ffe633c164bcc94f4f">scc::tlm_target::tlm_target</a></div><div class="ttdeci">tlm_target(sc_core::sc_time &amp;clock)</div><div class="ttdoc">the constructor</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00122">tlm_target.h:122</a></div></div>
 <div class="ttc" id="aclassscc_1_1tlm__target_html_a26a14e2a32d595039b7d5094a12bc9a8"><div class="ttname"><a href="classscc_1_1tlm__target.html#a26a14e2a32d595039b7d5094a12bc9a8">scc::tlm_target::addResource</a></div><div class="ttdeci">void addResource(resource_access_if &amp;rai, uint64_t base_addr)</div><div class="ttdoc">add a resource to this target at a certain address within the socket address range</div><div class="ttdef"><b>Definition:</b> <a href="tlm__target_8h_source.html#l00092">tlm_target.h:92</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

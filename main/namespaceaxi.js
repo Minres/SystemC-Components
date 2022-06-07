@@ -1,5 +1,9 @@
 var namespaceaxi =
 [
+    [ "checker", null, [
+      [ "axi_protocol", "classaxi_1_1checker_1_1axi__protocol.html", "classaxi_1_1checker_1_1axi__protocol" ],
+      [ "checker_if", "structaxi_1_1checker_1_1checker__if.html", "structaxi_1_1checker_1_1checker__if" ]
+    ] ],
     [ "fsm", null, [
       [ "AckRecv", "structaxi_1_1fsm_1_1AckRecv.html", null ],
       [ "ATrans", "structaxi_1_1fsm_1_1ATrans.html", "structaxi_1_1fsm_1_1ATrans" ],
@@ -88,5 +92,6 @@ var namespaceaxi =
     [ "select_if< true, T, S >", "structaxi_1_1select__if_3_01true_00_01T_00_01S_01_4.html", "structaxi_1_1select__if_3_01true_00_01T_00_01S_01_4" ],
     [ "signal_types", "structaxi_1_1signal__types.html", "structaxi_1_1signal__types" ],
     [ "slave_types", "structaxi_1_1slave__types.html", "structaxi_1_1slave__types" ],
+    [ "tlm_id_ext_recording", "classaxi_1_1tlm__id__ext__recording.html", null ],
     [ "wdata_ch", "structaxi_1_1wdata__ch.html", "structaxi_1_1wdata__ch" ]
 ];

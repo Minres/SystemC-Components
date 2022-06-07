@@ -88,10 +88,10 @@ $(document).ready(function(){initNavTree('tracer_8cpp_source.html',''); initResi
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;tracer.h&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;sc_vcd_trace.h&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;report.h&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;utilities.h&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;scv/scv_tr_db.h&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;report.h&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;sc_vcd_trace.h&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;scv/scv_tr_db.h&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;utilities.h&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifdef HAS_SCV</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;scv.h&gt;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifndef SCVNS</span></div>
@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('tracer_8cpp_source.html',''); initResi
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;tracer::tracer(std::string <span class="keyword">const</span>&amp;&amp; name, file_type type, <span class="keywordtype">bool</span> enable, sc_core::sc_object* top)</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;: <a class="code" href="classscc_1_1tracer__base.html">tracer_base</a>(sc_core::sc_module_name(sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;tracer&quot;</span>)))</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;, txdb(nullptr)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;, owned{enable}{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;, owned{enable} {</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span>(enable) {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        trf = sc_create_vcd_trace_file(name.c_str());</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        trf-&gt;set_time_unit(1, SC_PS);</div>
@@ -124,7 +124,7 @@ $(document).ready(function(){initNavTree('tracer_8cpp_source.html',''); initResi
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;tracer::tracer(std::string <span class="keyword">const</span>&amp;&amp; name, file_type type, sc_core::sc_trace_file* tf, sc_core::sc_object* top)</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;: <a class="code" href="classscc_1_1tracer__base.html">tracer_base</a>(sc_core::sc_module_name(sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;tracer&quot;</span>)))</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;, txdb(nullptr)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;, owned{<span class="keyword">false</span>}{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;, owned{<span class="keyword">false</span>} {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    trf = tf;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    init_scv_db(type, std::move(name));</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
@@ -136,50 +136,74 @@ $(document).ready(function(){initNavTree('tracer_8cpp_source.html',''); initResi
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> tracer::init_scv_db(file_type type, std::string <span class="keyword">const</span>&amp;&amp; name) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">if</span> (type != NONE) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">if</span>(type != NONE) {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        std::stringstream ss;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        ss &lt;&lt; name;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">switch</span> (type) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">case</span> COMPRESSED:</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            SCVNS scv_tr_compressed_init();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">switch</span>(type) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">case</span> TEXT:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            SCVNS scv_tr_text_init();</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot;.txlog&quot;</span>;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">case</span> TEXT:</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            SCVNS scv_tr_text_init();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot;.txlog&quot;</span>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">case</span> SQLITE:</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">case</span> CUSTOM:</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            SCVNS scv_tr_mtc_init();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot;.txlog&quot;</span>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        txdb = <span class="keyword">new</span> SCVNS scv_tr_db(ss.str().c_str());</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        SCVNS scv_tr_db::set_default_db(txdb);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">if</span>(trf) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            trf-&gt;write_comment(std::string(<span class="stringliteral">&quot;SCV_TXLOG: &quot;</span>)+ ss.str());</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordtype">void</span> tracer::end_of_elaboration() {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">if</span>(trf){</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">if</span>(top) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                descend(top, trf);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keywordflow">for</span>(<span class="keyword">auto</span> o : sc_get_top_level_objects())</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                    descend(o, <a class="code" href="classscc_1_1tracer__base.html#a4f87fe3253de75384c35103c94d00628">default_trace_enable</a>);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">case</span> COMPRESSED: {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keyword">auto</span>* val = getenv(<span class="stringliteral">&quot;SCC_SCV_TR_COMPRESSION_LEVEL&quot;</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keyword">auto</span> level = val? atoi(val):std::numeric_limits&lt;unsigned&gt;::max();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">switch</span>(level){</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">case</span> 0:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                SCVNS scv_tr_plain_init();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">case</span> 2:</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                SCVNS scv_tr_compressed_init();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#ifdef WITH_LZ4</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                SCVNS scv_tr_lz4_init();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                SCVNS scv_tr_compressed_init();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot;.txlog&quot;</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">case</span> SQLITE:</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#ifdef WITH_SQLITE</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            SCVNS scv_tr_sqlite_init();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot;.txdb&quot;</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            SCVNS scv_tr_text_init();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot;.txlog&quot;</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">case</span> CUSTOM:</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            SCVNS scv_tr_mtc_init();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot;.txlog&quot;</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        txdb = <span class="keyword">new</span> SCVNS scv_tr_db(ss.str().c_str());</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        SCVNS scv_tr_db::set_default_db(txdb);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">if</span>(trf) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            trf-&gt;write_comment(std::string(<span class="stringliteral">&quot;SCV_TXLOG: &quot;</span>) + ss.str());</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keywordtype">void</span> tracer::end_of_elaboration() {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">if</span>(trf) {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">if</span>(top) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            descend(top, trf);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">for</span>(<span class="keyword">auto</span> o : sc_get_top_level_objects())</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                descend(o, <a class="code" href="classscc_1_1tracer__base.html#a4f87fe3253de75384c35103c94d00628">default_trace_enable</a>);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassscc_1_1tracer_html_a3544711d7f8b4452a75079cef13b8fb2"><div class="ttname"><a href="classscc_1_1tracer.html#a3544711d7f8b4452a75079cef13b8fb2">scc::tracer::~tracer</a></div><div class="ttdeci">virtual ~tracer() override</div><div class="ttdoc">the destructor</div><div class="ttdef"><b>Definition:</b> <a href="tracer_8cpp_source.html#l00065">tracer.cpp:65</a></div></div>
 <div class="ttc" id="aclassscc_1_1tracer__base_html"><div class="ttname"><a href="classscc_1_1tracer__base.html">scc::tracer_base</a></div><div class="ttdoc">base class for automatic tracer</div><div class="ttdef"><b>Definition:</b> <a href="tracer__base_8h_source.html#l00087">tracer_base.h:87</a></div></div>
-<div class="ttc" id="aclassscc_1_1tracer__base_html_a4f87fe3253de75384c35103c94d00628"><div class="ttname"><a href="classscc_1_1tracer__base.html#a4f87fe3253de75384c35103c94d00628">scc::tracer_base::default_trace_enable</a></div><div class="ttdeci">bool default_trace_enable</div><div class="ttdoc">the default for tracing if no attribute is configured</div><div class="ttdef"><b>Definition:</b> <a href="tracer__base_8h_source.html#l00149">tracer_base.h:149</a></div></div>
+<div class="ttc" id="aclassscc_1_1tracer__base_html_a4f87fe3253de75384c35103c94d00628"><div class="ttname"><a href="classscc_1_1tracer__base.html#a4f87fe3253de75384c35103c94d00628">scc::tracer_base::default_trace_enable</a></div><div class="ttdeci">bool default_trace_enable</div><div class="ttdoc">the default for tracing if no attribute is configured</div><div class="ttdef"><b>Definition:</b> <a href="tracer__base_8h_source.html#l00146">tracer_base.h:146</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

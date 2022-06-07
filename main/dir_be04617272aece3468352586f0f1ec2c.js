@@ -6,6 +6,8 @@ var dir_be04617272aece3468352586f0f1ec2c =
     [ "io-redirector.h", "io-redirector_8h_source.html", null ],
     [ "ities.h", "ities_8h_source.html", null ],
     [ "logging.h", "logging_8h_source.html", null ],
+    [ "lz4_streambuf.cpp", "lz4__streambuf_8cpp_source.html", null ],
+    [ "lz4_streambuf.h", "lz4__streambuf_8h_source.html", null ],
     [ "mt19937_rng.h", "common_2util_2mt19937__rng_8h_source.html", null ],
     [ "pool_allocator.h", "pool__allocator_8h_source.html", null ],
     [ "range_lut.h", "range__lut_8h_source.html", null ],

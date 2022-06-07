@@ -1,9 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structscc_1_1observer.html" title="The interface defining an observer." alt="" coords="5,56,113,83"/>
-<area shape="rect" id="node2" href="$structscc_1_1fst__trace__file.html" title=" " alt="" coords="184,5,319,32"/>
-<area shape="rect" id="node3" href="$structscc_1_1vcd__mt__trace__file.html" title=" " alt="" coords="168,56,335,83"/>
-<area shape="rect" id="node4" href="$structscc_1_1vcd__push__trace__file.html" title=" " alt="" coords="162,107,341,133"/>
-<area shape="rect" id="node5" title=" " alt="" coords="8,107,111,133"/>
-<area shape="rect" id="node6" href="$classscc_1_1value__registry__impl.html" title=" " alt="" coords="161,208,341,235"/>
-<area shape="rect" id="node7" href="$structscc_1_1vcd__pull__trace__file.html" title=" " alt="" coords="165,157,337,184"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,115,136,142"/>
+<area shape="rect" id="node2" href="$classscc_1_1fifo__w__cb.html" title=" " alt="" coords="184,5,395,76"/>
+<area shape="rect" id="node3" href="$classscc_1_1fifo__w__cb.html" title=" " alt="" coords="206,101,373,157"/>
+<area shape="rect" id="node4" href="$classscc_1_1fifo__w__cb.html" title="fifo with callbacks" alt="" coords="214,181,365,207"/>
 </map>

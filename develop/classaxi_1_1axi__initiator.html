@@ -84,11 +84,24 @@ Collaboration diagram for axi::axi_initiator&lt; BUSWIDTH &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classaxi_1_1axi__initiator__coll__graph.png" border="0" usemap="#axi_1_1axi__initiator_3_01BUSWIDTH_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="axi_1_1axi__initiator_3_01BUSWIDTH_01_4_coll__map" id="axi_1_1axi__initiator_3_01BUSWIDTH_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="560,49,688,90"/>
-<area shape="rect" href="classaxi_1_1axi__initiator__base.html" title="axi_initiator class provides an input_socket for incoming TLM transactions. It attaches AXI extension..." alt="" coords="315,12,481,39"/>
-<area shape="rect" title=" " alt="" coords="89,5,181,32"/>
-<area shape="rect" href="structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="334,78,462,119"/>
-<area shape="rect" title=" " alt="" coords="5,57,265,157"/>
+<area shape="rect" title=" " alt="" coords="1544,79,1672,121"/>
+<area shape="rect" href="classaxi_1_1axi__initiator__base.html" title="axi_initiator class provides an input_socket for incoming TLM transactions. It attaches AXI extension..." alt="" coords="1129,7,1296,33"/>
+<area shape="rect" title=" " alt="" coords="664,5,756,32"/>
+<area shape="rect" href="classaxi_1_1pe_1_1simple__initiator__b.html" title=" " alt="" coords="880,175,1071,201"/>
+<area shape="rect" href="structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="1329,79,1457,121"/>
+<area shape="rect" title=" " alt="" coords="845,50,1105,150"/>
+<area shape="rect" href="classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="1320,167,1465,209"/>
+<area shape="rect" href="structtlm_1_1scc_1_1pe_1_1intor__fw__b.html" title=" " alt="" coords="624,157,796,184"/>
+<area shape="rect" href="structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="282,131,417,173"/>
+<area shape="rect" title=" " alt="" coords="49,139,151,165"/>
+<area shape="rect" href="structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="653,219,767,245"/>
+<area shape="rect" href="structscc_1_1peq.html" title=" " alt="" coords="262,197,437,267"/>
+<area shape="rect" title=" " alt="" coords="59,204,141,231"/>
+<area shape="rect" href="classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="259,80,440,107"/>
+<area shape="rect" href="classscc_1_1fifo__w__cb.html" title=" " alt="" coords="244,291,455,362"/>
+<area shape="rect" title=" " alt="" coords="35,313,165,340"/>
+<area shape="rect" title=" " alt="" coords="5,80,195,107"/>
+<area shape="rect" title=" " alt="" coords="894,225,1057,281"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -115,6 +128,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ab77824e5a56d0e01398efc6e44bf1231"><td class="memItemLeft" align="right" valign="top"><a id="ab77824e5a56d0e01398efc6e44bf1231"></a>
 <a class="el" href="structaxi_1_1axi__initiator__socket.html">axi::axi_initiator_socket</a>&lt; BUSWIDTH &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isck</b> {&quot;isck&quot;}</td></tr>
 <tr class="separator:ab77824e5a56d0e01398efc6e44bf1231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6056f7a91bee2d91f419dc3be6e300e"><td class="memItemLeft" align="right" valign="top"><a id="af6056f7a91bee2d91f419dc3be6e300e"></a>
+<a class="el" href="classaxi_1_1pe_1_1simple__axi__initiator.html">axi::pe::simple_axi_initiator</a>&lt; BUSWIDTH &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pe</b> {&quot;pe&quot;, isck}</td></tr>
+<tr class="separator:af6056f7a91bee2d91f419dc3be6e300e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classaxi_1_1axi__initiator__base"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classaxi_1_1axi__initiator__base')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classaxi_1_1axi__initiator__base.html">axi::axi_initiator_base</a></td></tr>
 <tr class="memitem:af596636ca7b958ffd07705866851a9fc inherit pub_attribs_classaxi_1_1axi__initiator__base"><td class="memItemLeft" align="right" valign="top"><a id="af596636ca7b958ffd07705866851a9fc"></a>
 sc_core::sc_in&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>clk_i</b> {&quot;clk_i&quot;}</td></tr>
@@ -128,7 +144,7 @@ tlm_utils::simple_target_socket&lt; <a class="el" href="classaxi_1_1axi__initiat
 class axi::axi_initiator&lt; BUSWIDTH &gt;</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="src_2bus__interfaces_2axi_2axi__initiator_8h_source.html#l00062">62</a> of file <a class="el" href="src_2bus__interfaces_2axi_2axi__initiator_8h_source.html">axi_initiator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="src_2bus__interfaces_2axi_2axi__initiator_8h_source.html#l00060">60</a> of file <a class="el" href="src_2bus__interfaces_2axi_2axi__initiator_8h_source.html">axi_initiator.h</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/bus_interfaces/axi/<a class="el" href="src_2bus__interfaces_2axi_2axi__initiator_8h_source.html">axi_initiator.h</a></li>
 </ul>

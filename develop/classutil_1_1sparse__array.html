@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: util::sparse_array&lt; T, SIZE, lower_width &gt; Class Template Reference</title>
+<title>scc: util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,7 +68,7 @@ $(document).ready(function(){initNavTree('classutil_1_1sparse__array.html',''); 
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classutil_1_1sparse__array-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">util::sparse_array&lt; T, SIZE, lower_width &gt; Class Template Reference</div>  </div>
+<div class="title">util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -79,68 +79,68 @@ $(document).ready(function(){initNavTree('classutil_1_1sparse__array.html',''); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a3a68765dcc26ddeeb9628fe13ac8200f"><td class="memItemLeft" align="right" valign="top"><a id="a3a68765dcc26ddeeb9628fe13ac8200f"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>page_type</b> = std::array&lt; T, 1&lt;&lt; lower_width &gt;</td></tr>
-<tr class="separator:a3a68765dcc26ddeeb9628fe13ac8200f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab571fc9dff87068e9c90bdff93c1481f"><td class="memItemLeft" align="right" valign="top"><a id="ab571fc9dff87068e9c90bdff93c1481f"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>page_type</b> = std::array&lt; T, 1&lt;&lt; PAGE_ADDR_BITS &gt;</td></tr>
+<tr class="separator:ab571fc9dff87068e9c90bdff93c1481f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9fe86ffaf7b176925876d84d8d7fe47a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1sparse__array.html#a9fe86ffaf7b176925876d84d8d7fe47a">sparse_array</a> ()</td></tr>
-<tr class="separator:a9fe86ffaf7b176925876d84d8d7fe47a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af775c56174a0bf600058e33177dc1a4c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1sparse__array.html#af775c56174a0bf600058e33177dc1a4c">~sparse_array</a> ()</td></tr>
-<tr class="separator:af775c56174a0bf600058e33177dc1a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a636812feb5634ea7c3bc5062855f50d7"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1sparse__array.html#a636812feb5634ea7c3bc5062855f50d7">operator[]</a> (uint32_t addr)</td></tr>
-<tr class="separator:a636812feb5634ea7c3bc5062855f50d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c69fabfd1d02c9fbbbdf36fb117130a"><td class="memItemLeft" align="right" valign="top">page_type &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1sparse__array.html#a8c69fabfd1d02c9fbbbdf36fb117130a">operator()</a> (uint32_t page_nr)</td></tr>
-<tr class="separator:a8c69fabfd1d02c9fbbbdf36fb117130a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcf408eadb4d328ca8ad92c53ebeeecf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1sparse__array.html#afcf408eadb4d328ca8ad92c53ebeeecf">is_allocated</a> (uint32_t addr)</td></tr>
-<tr class="separator:afcf408eadb4d328ca8ad92c53ebeeecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ef2105fb7b401b03ce227919fb06d12"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1sparse__array.html#a6ef2105fb7b401b03ce227919fb06d12">size</a> ()</td></tr>
-<tr class="separator:a6ef2105fb7b401b03ce227919fb06d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b2229afb9be542d97237c5bfe5b5358"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1sparse__array.html#a0b2229afb9be542d97237c5bfe5b5358">sparse_array</a> ()</td></tr>
+<tr class="separator:a0b2229afb9be542d97237c5bfe5b5358"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad94d3de1943f36097a865b581840fdfc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1sparse__array.html#ad94d3de1943f36097a865b581840fdfc">~sparse_array</a> ()</td></tr>
+<tr class="separator:ad94d3de1943f36097a865b581840fdfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc41c150bf0ae24dcfe961648bf2e662"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1sparse__array.html#afc41c150bf0ae24dcfe961648bf2e662">operator[]</a> (uint32_t addr)</td></tr>
+<tr class="separator:afc41c150bf0ae24dcfe961648bf2e662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71e5009319331764e8ef86bf02ec36c3"><td class="memItemLeft" align="right" valign="top">page_type &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1sparse__array.html#a71e5009319331764e8ef86bf02ec36c3">operator()</a> (uint32_t page_nr)</td></tr>
+<tr class="separator:a71e5009319331764e8ef86bf02ec36c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b89509639b90395d3e07eaa7c4813db"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1sparse__array.html#a3b89509639b90395d3e07eaa7c4813db">is_allocated</a> (uint32_t addr)</td></tr>
+<tr class="separator:a3b89509639b90395d3e07eaa7c4813db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8431427620f2f2f29576c569fb96d1c4"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1sparse__array.html#a8431427620f2f2f29576c569fb96d1c4">size</a> ()</td></tr>
+<tr class="separator:a8431427620f2f2f29576c569fb96d1c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a7ff2dc077ed3a006e548e07271199b28"><td class="memItemLeft" align="right" valign="top"><a id="a7ff2dc077ed3a006e548e07271199b28"></a>
-const uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>page_addr_mask</b> = (1 &lt;&lt; lower_width) - 1</td></tr>
-<tr class="separator:a7ff2dc077ed3a006e548e07271199b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a751dcb830a63f34fef993294dab6859d"><td class="memItemLeft" align="right" valign="top"><a id="a751dcb830a63f34fef993294dab6859d"></a>
-const uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>page_size</b> = (1 &lt;&lt; lower_width)</td></tr>
-<tr class="separator:a751dcb830a63f34fef993294dab6859d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad27cf83209539a72028ae0e1e20b3d07"><td class="memItemLeft" align="right" valign="top"><a id="ad27cf83209539a72028ae0e1e20b3d07"></a>
-const unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>page_count</b> = 1 + SIZE / page_size</td></tr>
-<tr class="separator:ad27cf83209539a72028ae0e1e20b3d07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7dec38c9a638a3791131b515b114ea52"><td class="memItemLeft" align="right" valign="top"><a id="a7dec38c9a638a3791131b515b114ea52"></a>
-const uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>page_addr_width</b> = lower_width</td></tr>
-<tr class="separator:a7dec38c9a638a3791131b515b114ea52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f1e3aa0a640f8f4e203347250ec477e"><td class="memItemLeft" align="right" valign="top"><a id="a6f1e3aa0a640f8f4e203347250ec477e"></a>
+const uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>page_addr_mask</b> = (1 &lt;&lt; PAGE_ADDR_BITS) - 1</td></tr>
+<tr class="separator:a6f1e3aa0a640f8f4e203347250ec477e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4679ed80cb053ca2d199bda204165742"><td class="memItemLeft" align="right" valign="top"><a id="a4679ed80cb053ca2d199bda204165742"></a>
+const uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>page_size</b> = (1 &lt;&lt; PAGE_ADDR_BITS)</td></tr>
+<tr class="separator:a4679ed80cb053ca2d199bda204165742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48ebf7a8bceeb266bd8438758eed376e"><td class="memItemLeft" align="right" valign="top"><a id="a48ebf7a8bceeb266bd8438758eed376e"></a>
+const unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>page_count</b> = (SIZE + page_size - 1) / page_size</td></tr>
+<tr class="separator:a48ebf7a8bceeb266bd8438758eed376e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a171588414d553f639fc93dd661acdb"><td class="memItemLeft" align="right" valign="top"><a id="a8a171588414d553f639fc93dd661acdb"></a>
+const uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>page_addr_width</b> = PAGE_ADDR_BITS</td></tr>
+<tr class="separator:a8a171588414d553f639fc93dd661acdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a6801d6a869a84ceac9ec2952da5a38f1"><td class="memItemLeft" align="right" valign="top"><a id="a6801d6a869a84ceac9ec2952da5a38f1"></a>
-std::array&lt; page_type *, SIZE/(1&lt;&lt; lower_width)+1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>arr</b></td></tr>
-<tr class="separator:a6801d6a869a84ceac9ec2952da5a38f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87f4b0360c110e01e647dbe1898371b1"><td class="memItemLeft" align="right" valign="top"><a id="a87f4b0360c110e01e647dbe1898371b1"></a>
+std::array&lt; page_type *, SIZE/(1&lt;&lt; PAGE_ADDR_BITS)+1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>arr</b></td></tr>
+<tr class="separator:a87f4b0360c110e01e647dbe1898371b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename T, uint64_t SIZE, int lower_width = 24&gt;<br />
-class util::sparse_array&lt; T, SIZE, lower_width &gt;</h3>
+<div class="textblock"><h3>template&lt;typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt;<br />
+class util::sparse_array&lt; T, SIZE, PAGE_ADDR_BITS &gt;</h3>
 
 <p>a sparse array suitable for large sizes </p>
-<p>a simple array which allocates memory in configurable chunks (size of 2^lower_width), used for large sparse arrays. Memory is allocated on demand </p>
+<p>a simple array which allocates memory in configurable chunks (size of 2^PAGE_ADDR_BITS), used for large sparse arrays. Memory is allocated on demand </p>
 
 <p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00050">50</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a9fe86ffaf7b176925876d84d8d7fe47a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fe86ffaf7b176925876d84d8d7fe47a">&#9670;&nbsp;</a></span>sparse_array()</h2>
+<a id="a0b2229afb9be542d97237c5bfe5b5358"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b2229afb9be542d97237c5bfe5b5358">&#9670;&nbsp;</a></span>sparse_array()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
+template&lt;typename T , uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classutil_1_1sparse__array.html">util::sparse_array</a>&lt; T, SIZE, lower_width &gt;::<a class="el" href="classutil_1_1sparse__array.html">sparse_array</a> </td>
+          <td class="memname"><a class="el" href="classutil_1_1sparse__array.html">util::sparse_array</a>&lt; T, SIZE, PAGE_ADDR_BITS &gt;::<a class="el" href="classutil_1_1sparse__array.html">sparse_array</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -154,23 +154,23 @@ template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
 </div><div class="memdoc">
 <p>the default constructor </p>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00078">78</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00080">80</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
-<a id="af775c56174a0bf600058e33177dc1a4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af775c56174a0bf600058e33177dc1a4c">&#9670;&nbsp;</a></span>~sparse_array()</h2>
+<a id="ad94d3de1943f36097a865b581840fdfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad94d3de1943f36097a865b581840fdfc">&#9670;&nbsp;</a></span>~sparse_array()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
+template&lt;typename T , uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classutil_1_1sparse__array.html">util::sparse_array</a>&lt; T, SIZE, lower_width &gt;::~<a class="el" href="classutil_1_1sparse__array.html">sparse_array</a> </td>
+          <td class="memname"><a class="el" href="classutil_1_1sparse__array.html">util::sparse_array</a>&lt; T, SIZE, PAGE_ADDR_BITS &gt;::~<a class="el" href="classutil_1_1sparse__array.html">sparse_array</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -184,24 +184,24 @@ template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
 </div><div class="memdoc">
 <p>the destructor </p>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00082">82</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00084">84</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="afcf408eadb4d328ca8ad92c53ebeeecf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afcf408eadb4d328ca8ad92c53ebeeecf">&#9670;&nbsp;</a></span>is_allocated()</h2>
+<a id="a3b89509639b90395d3e07eaa7c4813db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b89509639b90395d3e07eaa7c4813db">&#9670;&nbsp;</a></span>is_allocated()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
+template&lt;typename T , uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classutil_1_1sparse__array.html">util::sparse_array</a>&lt; T, SIZE, lower_width &gt;::is_allocated </td>
+          <td class="memname">bool <a class="el" href="classutil_1_1sparse__array.html">util::sparse_array</a>&lt; T, SIZE, PAGE_ADDR_BITS &gt;::is_allocated </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>addr</em></td><td>)</td>
@@ -223,23 +223,23 @@ template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the page is allocated </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00117">117</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00119">119</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
-<a id="a8c69fabfd1d02c9fbbbdf36fb117130a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c69fabfd1d02c9fbbbdf36fb117130a">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="a71e5009319331764e8ef86bf02ec36c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71e5009319331764e8ef86bf02ec36c3">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
+template&lt;typename T , uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">page_type&amp; <a class="el" href="classutil_1_1sparse__array.html">util::sparse_array</a>&lt; T, SIZE, lower_width &gt;::operator() </td>
+          <td class="memname">page_type&amp; <a class="el" href="classutil_1_1sparse__array.html">util::sparse_array</a>&lt; T, SIZE, PAGE_ADDR_BITS &gt;::operator() </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>page_nr</em></td><td>)</td>
@@ -261,23 +261,23 @@ template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to page </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00105">105</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00107">107</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
-<a id="a636812feb5634ea7c3bc5062855f50d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a636812feb5634ea7c3bc5062855f50d7">&#9670;&nbsp;</a></span>operator[]()</h2>
+<a id="afc41c150bf0ae24dcfe961648bf2e662"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc41c150bf0ae24dcfe961648bf2e662">&#9670;&nbsp;</a></span>operator[]()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
+template&lt;typename T , uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="classutil_1_1sparse__array.html">util::sparse_array</a>&lt; T, SIZE, lower_width &gt;::operator[] </td>
+          <td class="memname">T&amp; <a class="el" href="classutil_1_1sparse__array.html">util::sparse_array</a>&lt; T, SIZE, PAGE_ADDR_BITS &gt;::operator[] </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>addr</em></td><td>)</td>
@@ -299,23 +299,23 @@ template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the data type reference </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00092">92</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00094">94</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>
-<a id="a6ef2105fb7b401b03ce227919fb06d12"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ef2105fb7b401b03ce227919fb06d12">&#9670;&nbsp;</a></span>size()</h2>
+<a id="a8431427620f2f2f29576c569fb96d1c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8431427620f2f2f29576c569fb96d1c4">&#9670;&nbsp;</a></span>size()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
+template&lt;typename T , uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t <a class="el" href="classutil_1_1sparse__array.html">util::sparse_array</a>&lt; T, SIZE, lower_width &gt;::size </td>
+          <td class="memname">uint64_t <a class="el" href="classutil_1_1sparse__array.html">util::sparse_array</a>&lt; T, SIZE, PAGE_ADDR_BITS &gt;::size </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -330,7 +330,7 @@ template&lt;typename T , uint64_t SIZE, int lower_width = 24&gt; </div>
 <p>get the size of the array</p>
 <dl class="section return"><dt>Returns</dt><dd>the size </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00127">127</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__array_8h_source.html#l00129">129</a> of file <a class="el" href="sparse__array_8h_source.html">sparse_array.h</a>.</p>
 
 </div>
 </div>

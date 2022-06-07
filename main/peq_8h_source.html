@@ -85,11 +85,11 @@ $(document).ready(function(){initNavTree('peq_8h_source.html',''); initResizable
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define _SCC_PEQ_H_</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;boost/optional.hpp&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;deque&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;systemc&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;deque&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;systemc&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>scc {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> TYPE&gt; <span class="keyword">struct </span>peq : <span class="keyword">public</span> sc_core::sc_object {</div>
@@ -150,51 +150,49 @@ $(document).ready(function(){initNavTree('peq_8h_source.html',''); initResizable
 <div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="structscc_1_1peq.html#a4512c9aad5ce21efcd53575a9609b012">  153</a></span>&#160;    std::deque&lt;std::deque&lt;TYPE&gt;*&gt; free_pool;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    sc_core::sc_event m_event;</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="comment">//inline</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordtype">void</span> insert_entry(<span class="keyword">const</span> TYPE &amp;entry, sc_core::sc_time abs_time) {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keyword">auto</span> it = m_scheduled_events.find(abs_time);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">if</span> (it == m_scheduled_events.end()) {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keywordflow">if</span> (free_pool.size()) {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                <span class="keyword">auto</span> r = m_scheduled_events.insert(std::make_pair(abs_time, free_pool.front()));</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                free_pool.pop_front();</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                r.first-&gt;second-&gt;push_back(entry);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                <span class="keyword">auto</span> r = m_scheduled_events.insert(std::make_pair(abs_time, <span class="keyword">new</span> std::deque&lt;TYPE&gt;()));</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                r.first-&gt;second-&gt;push_back(entry);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            it-&gt;second-&gt;push_back(entry);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="comment">//inline</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    TYPE get_entry() {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keyword">auto</span> entry = m_scheduled_events.begin()-&gt;second;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keyword">auto</span> ret = entry-&gt;front();</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        entry-&gt;pop_front();</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">if</span> (!entry-&gt;size()) {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            free_pool.push_back(entry);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            m_scheduled_events.erase(m_scheduled_events.begin());</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    }</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;};</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> TYPE&gt;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="keyword">inline</span> <a class="code" href="structscc_1_1peq.html#a59053387a23b6df36a251a48c99d21d4">peq&lt;TYPE&gt;::~peq</a>() {</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">while</span>(m_scheduled_events.size()) {</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        free_pool.push_back(m_scheduled_events.begin()-&gt;second);</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        m_scheduled_events.erase(m_scheduled_events.begin());</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>* p:free_pool) <span class="keyword">delete</span> p;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SCC_PEQ_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordtype">void</span> insert_entry(<span class="keyword">const</span> TYPE&amp; entry, sc_core::sc_time abs_time) {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keyword">auto</span> it = m_scheduled_events.find(abs_time);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordflow">if</span>(it == m_scheduled_events.end()) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordflow">if</span>(free_pool.size()) {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keyword">auto</span> r = m_scheduled_events.insert(std::make_pair(abs_time, free_pool.front()));</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                free_pool.pop_front();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                r.first-&gt;second-&gt;push_back(entry);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                <span class="keyword">auto</span> r = m_scheduled_events.insert(std::make_pair(abs_time, <span class="keyword">new</span> std::deque&lt;TYPE&gt;()));</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                r.first-&gt;second-&gt;push_back(entry);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            it-&gt;second-&gt;push_back(entry);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    TYPE get_entry() {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keyword">auto</span> entry = m_scheduled_events.begin()-&gt;second;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keyword">auto</span> ret = entry-&gt;front();</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        entry-&gt;pop_front();</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">if</span>(!entry-&gt;size()) {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            free_pool.push_back(entry);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            m_scheduled_events.erase(m_scheduled_events.begin());</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;};</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> TYPE&gt; <span class="keyword">inline</span> <a class="code" href="structscc_1_1peq.html#a59053387a23b6df36a251a48c99d21d4">peq&lt;TYPE&gt;::~peq</a>() {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">while</span>(m_scheduled_events.size()) {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        free_pool.push_back(m_scheduled_events.begin()-&gt;second);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        m_scheduled_events.erase(m_scheduled_events.begin());</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>* p : free_pool)</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keyword">delete</span> p;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SCC_PEQ_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="astructscc_1_1peq_html_a89cecdbe837276225356678f6c085f2a"><div class="ttname"><a href="structscc_1_1peq.html#a89cecdbe837276225356678f6c085f2a">scc::peq::cancel_all</a></div><div class="ttdeci">void cancel_all()</div><div class="ttdoc">cancel all events from the event queue</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00143">peq.h:143</a></div></div>
 <div class="ttc" id="astructscc_1_1peq_html_a7e3a34f0fe967ee1c3424904b82ff67a"><div class="ttname"><a href="structscc_1_1peq.html#a7e3a34f0fe967ee1c3424904b82ff67a">scc::peq::notify</a></div><div class="ttdeci">void notify(const TYPE &amp;entry, const sc_core::sc_time &amp;t)</div><div class="ttdoc">non-blocking push.</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00086">peq.h:86</a></div></div>
-<div class="ttc" id="astructscc_1_1peq_html_a59053387a23b6df36a251a48c99d21d4"><div class="ttname"><a href="structscc_1_1peq.html#a59053387a23b6df36a251a48c99d21d4">scc::peq::~peq</a></div><div class="ttdeci">~peq()</div><div class="ttdoc">destructor</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00200">peq.h:200</a></div></div>
+<div class="ttc" id="astructscc_1_1peq_html_a59053387a23b6df36a251a48c99d21d4"><div class="ttname"><a href="structscc_1_1peq.html#a59053387a23b6df36a251a48c99d21d4">scc::peq::~peq</a></div><div class="ttdeci">~peq()</div><div class="ttdoc">destructor</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00197">peq.h:197</a></div></div>
 <div class="ttc" id="astructscc_1_1peq_html_a86fe01b84c045c7b8d0090f1dc588bed"><div class="ttname"><a href="structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed">scc::peq::get</a></div><div class="ttdeci">TYPE get()</div><div class="ttdoc">blocking get</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00125">peq.h:125</a></div></div>
 <div class="ttc" id="astructscc_1_1peq_html_a96f03772cd30574ba45a4b50f39c76c8"><div class="ttname"><a href="structscc_1_1peq.html#a96f03772cd30574ba45a4b50f39c76c8">scc::peq::get_next</a></div><div class="ttdeci">boost::optional&lt; TYPE &gt; get_next()</div><div class="ttdoc">non-blocking get</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00108">peq.h:108</a></div></div>
 <div class="ttc" id="astructscc_1_1peq_html_a4512c9aad5ce21efcd53575a9609b012"><div class="ttname"><a href="structscc_1_1peq.html#a4512c9aad5ce21efcd53575a9609b012">scc::peq::has_next</a></div><div class="ttdeci">bool has_next()</div><div class="ttdoc">check if value is available at current time</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00153">peq.h:153</a></div></div>

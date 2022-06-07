@@ -20,6 +20,8 @@ var dir_8400f74b819af6408e1b24b7b1ac1666 =
     [ "perf_estimator.h", "perf__estimator_8h_source.html", null ],
     [ "report.cpp", "report_8cpp_source.html", null ],
     [ "report.h", "report_8h_source.html", null ],
+    [ "sc_attribute_randomized.h", "sc__attribute__randomized_8h_source.html", null ],
+    [ "sc_clock_ext.h", "sc__clock__ext_8h_source.html", null ],
     [ "sc_logic_7.cpp", "sc__logic__7_8cpp_source.html", null ],
     [ "sc_logic_7.h", "sc__logic__7_8h_source.html", null ],
     [ "sc_owning_signal.h", "sc__owning__signal_8h_source.html", null ],
