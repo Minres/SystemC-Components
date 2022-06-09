@@ -119,19 +119,33 @@ struct LogConfig {
     bool dont_create_broker{false};
     bool report_only_first_error{false};
 
+    //! set the logging level
     LogConfig& logLevel(log);
+    //! define the width of the message field, 0 to disable, std::numeric_limits<unsigned>::max() for arbitrary width
     LogConfig& msgTypeFieldWidth(unsigned);
+    //! enable/disable printing of system time
     LogConfig& printSysTime(bool = true);
+    //! enable/disable printing of simulation time
     LogConfig& printSimTime(bool = true);
+    //! enable/disable printing delta cycles
     LogConfig& printDelta(bool = true);
+    //! enable/disable printing of severity level
     LogConfig& printSeverity(bool = true);
+    //! enable/disable colored output
     LogConfig& coloredOutput(bool = true);
+    //! set the file name for the log output file
     LogConfig& logFileName(std::string&&);
+    //! set the file name for the log output file
     LogConfig& logFileName(const std::string&);
+    //! set the regular expression to filter the output
     LogConfig& logFilterRegex(std::string&&);
+    //! set the regular expression to filter the output
     LogConfig& logFilterRegex(const std::string&);
+    //! enable/disable asynchronous output (write to file in separate thread
     LogConfig& logAsync(bool = true);
+    //! disable/enable the automatic creation of a CCI broker
     LogConfig& dontCreateBroker(bool = true);
+    //! disable/enable the supression of all error messages after the first error
     LogConfig& reportOnlyFirstError(bool = true);
 };
 /**

@@ -158,8 +158,12 @@ auto compose_message(const sc_report& rep, const scc::LogConfig& cfg) -> const s
         if(unlikely(rep.get_id() >= 0))
             os << "("
                << "IWEF"[rep.get_severity()] << rep.get_id() << ") " << rep.get_msg_type() << ": ";
-        else if(cfg.msg_type_field_width)
-            os << util::padded(rep.get_msg_type(), cfg.msg_type_field_width) << ": ";
+        else if(cfg.msg_type_field_width) {
+            if(cfg.msg_type_field_width==std::numeric_limits<unsigned>::max())
+                os << rep.get_msg_type() << ": ";
+            else
+                os << util::padded(rep.get_msg_type(), cfg.msg_type_field_width) << ": ";
+        }
         if(*rep.get_msg())
             os << rep.get_msg();
         if(rep.get_severity() > SC_INFO) {
