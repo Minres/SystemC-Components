@@ -318,8 +318,9 @@ struct configurer::ConfigHolder {
     Document document;
 };
 
-configurer::configurer(const std::string& filename)
+configurer::configurer(const std::string& filename, unsigned config_phases)
 : base_type(sc_core::sc_module_name("configurer"))
+, config_phases(config_phases)
 #ifdef HAS_CCI
 , cci_originator("configurer")
 , cci_broker(cci::cci_get_global_broker(cci_originator))
@@ -421,6 +422,7 @@ void init_cci(std::string name) {
 }
 
 void configurer::start_of_simulation() {
+    if(config_phases & START_OF_SIMULATION) configure();
     config_check();
     if(dump_file_name.size()) {
         std::ofstream of{dump_file_name};
