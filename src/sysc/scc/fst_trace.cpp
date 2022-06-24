@@ -181,7 +181,6 @@ template <> void fst_trace_t<sc_dt::sc_fxval_fast, sc_dt::sc_fxval_fast>::record
     fstWriterEmitValueChange(m_fst, fst_hndl, &val);
 }
 template <> void fst_trace_t<sc_dt::sc_fxnum, sc_dt::sc_fxval>::record(void* m_fst) {
-    auto val = old_val.to_double();
     fstWriterEmitValueChange32(m_fst, fst_hndl, 64, *reinterpret_cast<uint64_t*>(&old_val));
 }
 template <> void fst_trace_t<sc_dt::sc_fxnum_fast, sc_dt::sc_fxval_fast>::record(void* m_fst) {
