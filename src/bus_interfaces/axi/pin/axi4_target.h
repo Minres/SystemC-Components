@@ -399,8 +399,9 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
                 }
             }
             // TODO: assuming consecutive write (not scattered)
-            auto act_data_len = gp->get_data_length() + util::bit_count(strb.to_uint());
+            auto act_data_len = (beat_count+1) * size;
             gp->set_data_length(act_data_len);
+            gp->set_byte_enable_length(act_data_len);
             gp->set_streaming_width(act_data_len);
             auto tp = CFG::IS_LITE || this->w_last->read() ? axi::fsm::protocol_time_point_e::BegReqE
                     : axi::fsm::protocol_time_point_e::BegPartReqE;
