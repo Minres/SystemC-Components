@@ -30,25 +30,24 @@ endif()
 find_package(PackageHandleStandardArgs REQUIRED)
 
 include(SystemCPackage)
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-
-find_program(VERILATOR_EXECUTABLE verilator
-    HINTS ${CONAN_VERILATOR_ROOT}
-          $ENV{VERILATOR_ROOT}
+if(EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+endif()
+find_program(VERILATOR_EXECUTABLE 
+    NAMES verilator_bin verilator_bin_dbg
+    HINTS ${CONAN_VERILATOR_ROOT} ENV VERILATOR_ROOT
     PATH_SUFFIXES bin
+    REQUIRED
     DOC "Path to the Verilator executable"
 )
 
-find_program(VERILATOR_COVERAGE_EXECUTABLE verilator_coverage verilator_coverage_bin_dbg
-    HINTS ${CONAN_VERILATOR_ROOT}
-    $ENV{VERILATOR_ROOT}
+find_program(VERILATOR_COVERAGE_EXECUTABLE 
+	NAMES verilator_coverage_bin verilator_coverage_bin_dbg
+    HINTS ${CONAN_VERILATOR_ROOT} ENV VERILATOR_ROOT
     PATH_SUFFIXES bin
+    REQUIRED
     DOC "Path to the Verilator coverage executable"
 )
-
-find_program(VERILATOR_BIN NAMES verilator_bin verilator_bin_dbg
-  HINTS ${VERILATOR_ROOT}/bin ENV VERILATOR_ROOT
-  NO_CMAKE_PATH NO_CMAKE_ENVIRONMENT_PATH NO_CMAKE_SYSTEM_PATH)
 
 if(${CONAN_VERILATOR_ROOT})
     set (ENV{VERILATOR_ROOT} ${CONAN_VERILATOR_ROOT}) 
