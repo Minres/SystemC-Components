@@ -4,6 +4,7 @@
  ******************************************************************************/
 
 #include "lz4_streambuf.h"
+#include <stdexcept>
 
 namespace util {
 
@@ -29,7 +30,7 @@ lz4c_steambuf::~lz4c_steambuf() {
 void lz4c_steambuf::close() {
     if (closed)
         return;
-    sync();
+    lz4c_steambuf::sync();
     auto sz = LZ4F_compressEnd(ctx, dest_buf.data(), dest_buf.capacity(), nullptr);
     if (LZ4F_isError(sz) != 0)
         throw std::runtime_error(std::string("Failed to finish LZ4 compression: ") + LZ4F_getErrorName(sz));

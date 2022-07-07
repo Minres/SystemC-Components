@@ -44,11 +44,14 @@ public:
 #else
     using broker_t = void*;
 #endif
+    enum {
+        BEFORE_END_OF_ELABORATION=1, END_OF_ELABORATION=2, START_OF_SIMULATION=4
+    };
     /**
      * create a configurer using an input file
      * @param filename
      */
-    configurer(const std::string& filename);
+    configurer(const std::string& filename, unsigned config_phases = BEFORE_END_OF_ELABORATION);
 
     configurer() = delete;
 
@@ -138,11 +141,16 @@ public:
 
 protected:
     bool config_valid{false};
+    unsigned const config_phases;
     std::unique_ptr<ConfigHolder> root;
     std::string dump_file_name{""};
     void config_check();
-    void before_end_of_elaboration() override { configure(); }
-    void end_of_elaboration() override { configure(); }
+    void before_end_of_elaboration() override {
+        if(config_phases & BEFORE_END_OF_ELABORATION) configure();
+    }
+    void end_of_elaboration() override {
+        if(config_phases & END_OF_ELABORATION) configure();
+    }
     void start_of_simulation() override;
 
 #ifdef HAS_CCI

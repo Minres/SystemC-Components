@@ -137,6 +137,30 @@ template <typename T> struct sc_variable : public sc_variable_b {
      * @return
      */
     bool operator!=(T other) const { return value != other; }
+    /**
+     * greater than comparison
+     * @param other
+     * @return
+     */
+    bool operator>(T other) const { return value > other; }
+    /**
+     * less than comparison
+     * @param other
+     * @return
+     */
+    bool operator<(T other) const { return value < other; }
+    /**
+     * greater than or equal comparison
+     * @param other
+     * @return
+     */
+    bool operator>=(T other) const { return value >= other; }
+    /**
+     * less than or equal comparison
+     * @param other
+     * @return
+     */
+    bool operator<=(T other) const { return value <= other; }
     //! overloaded prefix ++ operator
     sc_variable& operator++() {
         ++value; // increment this object
@@ -347,7 +371,7 @@ template <typename T> struct sc_variable_vector {
         }
     }
 
-    bool is_valid(size_t idx) const { return values.at(idx) != nullptr; }
+    bool is_valid(size_t idx) const { return values.size()> idx && values.at(idx) != nullptr; }
 
     sc_variable<T>& operator[](size_t idx) {
         auto ret = values.at(idx);

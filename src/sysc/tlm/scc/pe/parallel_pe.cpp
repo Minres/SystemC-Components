@@ -45,6 +45,7 @@ void parallel_pe::transport(tlm::tlm_generic_payload& payload, bool lt_transport
                     tu.gp = nullptr;
                     waiting_ids.push_back(id);
                     wait(tu.evt);
+                    assert(tu.gp);
                 }
             },
             sc_core::sc_gen_unique_name("execute"));
