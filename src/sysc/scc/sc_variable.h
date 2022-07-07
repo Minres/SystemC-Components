@@ -371,7 +371,7 @@ template <typename T> struct sc_variable_vector {
         }
     }
 
-    bool is_valid(size_t idx) const { return values.at(idx) != nullptr; }
+    bool is_valid(size_t idx) const { return values.size()> idx && values.at(idx) != nullptr; }
 
     sc_variable<T>& operator[](size_t idx) {
         auto ret = values.at(idx);
