@@ -41,14 +41,6 @@ find_program(VERILATOR_EXECUTABLE
     DOC "Path to the Verilator executable"
 )
 
-find_program(VERILATOR_COVERAGE_EXECUTABLE 
-	NAMES verilator_coverage_bin verilator_coverage_bin_dbg
-    HINTS ${CONAN_VERILATOR_ROOT} ENV VERILATOR_ROOT
-    PATH_SUFFIXES bin
-    REQUIRED
-    DOC "Path to the Verilator coverage executable"
-)
-
 if(${CONAN_VERILATOR_ROOT})
     set (ENV{VERILATOR_ROOT} ${CONAN_VERILATOR_ROOT}) 
     set (VERILATOR_EXECUTABLE_DIR ${CONAN_BIN_DIRS_VERILATOR})
@@ -64,11 +56,10 @@ else()
 endif()
 
 mark_as_advanced(VERILATOR_EXECUTABLE)
-mark_as_advanced(VERILATOR_COVERAGE_EXECUTABLE)
 mark_as_advanced(VERILATOR_INCLUDE_DIR)
 
 find_package_handle_standard_args(Verilator REQUIRED_VARS
-    VERILATOR_EXECUTABLE VERILATOR_COVERAGE_EXECUTABLE VERILATOR_INCLUDE_DIR)
+    VERILATOR_EXECUTABLE VERILATOR_INCLUDE_DIR)
 
 set_source_files_properties(
     ${VERILATOR_INCLUDE_DIR}/verilated_cov.cpp
