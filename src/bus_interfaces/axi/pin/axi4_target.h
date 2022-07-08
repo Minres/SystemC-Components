@@ -301,10 +301,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::rresp_t() {
 
 template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
     this->aw_ready.write(false);
-    auto awid = 0U;
-    auto awlen = 0U;
-    auto awsize = util::ilog2(CFG::BUSWIDTH / 8);
-    auto data_len = (1 << awsize) * (awlen + 1);
+    const auto awsize = util::ilog2(CFG::BUSWIDTH / 8);
     while(true) {
         wait(this->aw_valid.posedge_event() | clk_i.negedge_event());
         if(this->aw_valid.event() || (!active_req_beat[tlm::TLM_IGNORE_COMMAND] && this->aw_valid.read())) {
@@ -369,37 +366,27 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
             auto beat_count = fsm_hndl->beat_count;
             auto size = axi::get_burst_size(*fsm_hndl->trans);
             auto offset = fsm_hndl->trans->get_address() & (CFG::BUSWIDTH / 8 - 1);
-            if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
-                if(beat_count == 0) {
-                    auto bptr = fsm_hndl->trans->get_data_ptr();
-                    auto beptr = fsm_hndl->trans->get_byte_enable_ptr();
-                    for(size_t i = offset; i < size; ++i, ++bptr, ++beptr) {
-                        auto bit_offs = i * 8;
-                        *bptr = data(bit_offs + 7, bit_offs).to_uint();
-                        *beptr = strb[i] ? 0xff : 0;
-                    }
-                } else {
-                    auto beat_start_idx = beat_count * size - offset;
-                    auto data_len = fsm_hndl->trans->get_data_length();
-                    auto bptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
-                    auto beptr = fsm_hndl->trans->get_byte_enable_ptr() + beat_start_idx;
-                    for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++bptr, ++beptr) {
-                        auto bit_offs = i * 8;
-                        *bptr = data(bit_offs + 7, bit_offs).to_uint();
-                        *beptr = strb[i] ? 0xff : 0;
-                    }
+            if(beat_count == 0) {
+                auto bptr = fsm_hndl->trans->get_data_ptr();
+                auto beptr = fsm_hndl->trans->get_byte_enable_ptr();
+                for(size_t i = offset; i < std::min<size_t>(CFG::BUSWIDTH / 8, offset+size); ++i, ++bptr, ++beptr) {
+                    auto bit_offs = i * 8;
+                    *bptr = data(bit_offs + 7, bit_offs).to_uint();
+                    *beptr = strb[i] ? 0xff : 0;
                 }
-            } else { // aligned or single beat access
-                auto bptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
-                auto beptr = fsm_hndl->trans->get_byte_enable_ptr() + beat_count * size;
-                for(size_t i = 0; i < size; ++i, ++bptr, ++beptr) {
-                    auto bit_offs = (offset + i) * 8;
+            } else {
+                auto beat_start_idx = beat_count * size - offset;
+                auto data_len = fsm_hndl->trans->get_data_length();
+                auto bptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
+                auto beptr = fsm_hndl->trans->get_byte_enable_ptr() + beat_start_idx;
+                for(size_t i = offset; i < (offset+size) && (beat_start_idx + i) < data_len; ++i, ++bptr, ++beptr) {
+                    auto bit_offs = i * 8;
                     *bptr = data(bit_offs + 7, bit_offs).to_uint();
                     *beptr = strb[i] ? 0xff : 0;
                 }
             }
             // TODO: assuming consecutive write (not scattered)
-            auto act_data_len = (beat_count+1) * size;
+            auto act_data_len = CFG::IS_LITE? gp->get_data_length() + util::bit_count(strb.to_uint()): (beat_count+1) * size;
             gp->set_data_length(act_data_len);
             gp->set_byte_enable_length(act_data_len);
             gp->set_streaming_width(act_data_len);
