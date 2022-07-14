@@ -300,30 +300,22 @@ protected:
 /**
  * logging macros
  */
+//! macro for log output
+#define SCCLOG(lvl, ...) ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, lvl / 10).type(__VA_ARGS__).get()
 //! macro for debug trace level output
-#define SCCTRACEALL(...)                                                                                               \
-    if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_DEBUG)                                                     \
-    ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_DEBUG / 10).type(__VA_ARGS__).get()
+#define SCCTRACEALL(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_DEBUG) SCCLOG(sc_core::SC_DEBUG, __VA_ARGS__)
 //! macro for trace level output
-#define SCCTRACE(...)                                                                                                  \
-    if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_FULL)                                                      \
-    ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_FULL / 10).type(__VA_ARGS__).get()
+#define SCCTRACE(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_FULL) SCCLOG(sc_core::SC_FULL, __VA_ARGS__)
 //! macro for debug level output
-#define SCCDEBUG(...)                                                                                                  \
-    if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_HIGH)                                                      \
-    ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_HIGH / 10).type(__VA_ARGS__).get()
+#define SCCDEBUG(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_HIGH) SCCLOG(sc_core::SC_HIGH, __VA_ARGS__)
 //! macro for info level output
-#define SCCINFO(...)                                                                                                   \
-    if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_MEDIUM)                                                    \
-    ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, sc_core::SC_MEDIUM / 10).type(__VA_ARGS__).get()
+#define SCCINFO(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_MEDIUM) SCCLOG(sc_core::SC_MEDIUM, __VA_ARGS__)
 //! macro for warning level output
-#define SCCWARN(...)                                                                                                   \
-    ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCCWARN(...) ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for error level output
 #define SCCERR(...) ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for fatal message output
-#define SCCFATAL(...)                                                                                                  \
-    ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCCFATAL(...) ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 
 #ifdef NDEBUG
 #define SCC_ASSERT(expr) ((void)0)
