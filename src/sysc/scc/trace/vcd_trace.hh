@@ -28,6 +28,7 @@
 #include <vector>
 #include <unordered_map>
 
+
 namespace scc {
 namespace trace {
 
@@ -54,7 +55,7 @@ inline void vcdEmitValueChangeReal(FPTR os, std::string const& handle, unsigned 
 
 inline size_t get_buffer_size(int length){
     size_t sz = ( static_cast<size_t>(length) + 4096 ) & (~static_cast<size_t>(4096-1));
-    return std::max(1024UL, sz);
+    return std::max<uint64_t>(1024UL, sz);
 }
 
 /*******************************************************************************************************

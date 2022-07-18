@@ -86,7 +86,7 @@ using namespace tlm::scc::scv;
 __attribute__((constructor))
 #endif
 bool register_extensions() {
-    tlm::scc::tlm_id_extension ext(reinterpret_cast<uintptr_t>(0UL)); // NOLINT
+    tlm::scc::tlm_id_extension ext(nullptr); // NOLINT
     tlm_extension_recording_registry<tlm::tlm_base_protocol_types>::inst().register_ext_rec(
         ext.ID, new tlm_id_ext_recording()); // NOLINT
     return true;                             // NOLINT

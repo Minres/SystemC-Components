@@ -63,7 +63,8 @@ struct sc_variable_b : sc_core::sc_object {
      */
     virtual std::string to_string() const { return ""; };
 
-    virtual void trace(scc::observer* obs) const = 0;
+    virtual void trace(observer* obs) const = 0;
+
 };
 /**
  * @struct sc_variable
@@ -234,15 +235,15 @@ template <typename T> struct sc_variable : public sc_variable_b {
      * @param tf
      */
     void trace(sc_core::sc_trace_file* tf) const override {
-        if(auto* obs = dynamic_cast<scc::observer*>(tf))
+        if(auto* obs = dynamic_cast<observer*>(tf))
             hndl.push_back(observe(obs, value, name()));
         else
             sc_core::sc_trace(tf, value, name());
     }
 
-    void trace(scc::observer* obs) const override { hndl.push_back(observe(obs, value, name())); }
+    void trace(observer* obs) const override { hndl.push_back(observe(obs, value, name())); }
 
-    static scc::sc_variable<T> create(const char* n, size_t i, T default_val) {
+    static sc_variable<T> create(const char* n, size_t i, T default_val) {
         std::ostringstream os;
         os << n << "[" << i << "];";
         return scc::sc_variable<T>(os.str(), default_val);
@@ -251,7 +252,7 @@ template <typename T> struct sc_variable : public sc_variable_b {
     struct creator {
         creator(T const& default_val)
         : default_val{default_val} {}
-        scc::sc_variable<T>* operator()(const char* n, size_t i) { return new scc::sc_variable<T>(n, default_val); }
+        sc_variable<T>* operator()(const char* n, size_t i) { return new sc_variable<T>(n, default_val); }
 
     private:
         T default_val{};
@@ -298,23 +299,23 @@ template <> struct sc_variable<bool> : public sc_variable_b {
     bool operator==(bool other) const { return value == other; }
     bool operator!=(bool other) const { return value != other; }
     void trace(sc_core::sc_trace_file* tf) const override {
-        if(auto* obs = dynamic_cast<scc::observer*>(tf))
+        if(auto* obs = dynamic_cast<observer*>(tf))
             hndl.push_back(observe(obs, value, name()));
         else
             sc_core::sc_trace(tf, value, name());
     }
-    void trace(scc::observer* obs) const override { hndl.push_back(observe(obs, value, name())); }
+    void trace(observer* obs) const override { hndl.push_back(observe(obs, value, name())); }
     static scc::sc_variable<bool> create(const char* n, size_t i, bool default_val) {
         std::ostringstream os;
         os << n << "[" << i << "];";
-        return scc::sc_variable<bool>(os.str(), default_val);
+        return sc_variable<bool>(os.str(), default_val);
     }
 
     struct creator {
         creator(bool const& default_val)
         : default_val{default_val} {}
-        scc::sc_variable<bool>* operator()(const char* n, size_t i) {
-            return new scc::sc_variable<bool>(n, default_val);
+        sc_variable<bool>* operator()(const char* n, size_t i) {
+            return new sc_variable<bool>(n, default_val);
         }
 
     private:
@@ -446,7 +447,7 @@ template <typename T> struct sc_ref_variable : public sc_variable_b {
      */
     void trace(sc_core::sc_trace_file* tf) const override { sc_core::sc_trace(tf, value, name()); }
 
-    void trace(scc::observer* obs) const override {}
+    void trace(observer* obs) const override {}
 };
 template <> struct sc_ref_variable<sc_core::sc_event> : public sc_variable_b {
     const sc_core::sc_event& value;
@@ -460,7 +461,7 @@ template <> struct sc_ref_variable<sc_core::sc_event> : public sc_variable_b {
         return ss.str();
     }
 
-    void trace(scc::observer* obs) const override {}
+    void trace(observer* obs) const override { }
 
     void trace(sc_core::sc_trace_file* tf) const override { sc_core::sc_trace(tf, value, name()); }
 };
@@ -486,7 +487,7 @@ template <typename T> struct sc_ref_variable_masked : public sc_variable_b {
         return ss.str();
     }
 
-    void trace(scc::observer* obs) const override {}
+    void trace(observer* obs) const override { }
 
     void trace(sc_core::sc_trace_file* tf) const override { sc_trace(tf, value, name()); }
 };
@@ -494,17 +495,17 @@ template <typename T> struct sc_ref_variable_masked : public sc_variable_b {
 } // namespace scc
 
 namespace sc_core {
-template <class T> inline void sc_trace(sc_trace_file* tf, const scc::sc_variable<T>& object, const char* name) {
+template <class T> inline void sc_trace(sc_trace_file* tf, const ::scc::sc_variable<T>& object, const char* name) {
     object.trace(tf);
 }
-template <class T> inline void sc_trace(sc_trace_file* tf, const scc::sc_variable<T>* object, const char* name) {
+template <class T> inline void sc_trace(sc_trace_file* tf, const ::scc::sc_variable<T>* object, const char* name) {
     object->trace(tf);
 }
 
-template <class T> inline void sc_trace(sc_trace_file* tf, const scc::sc_ref_variable<T>& object, const char* name) {
+template <class T> inline void sc_trace(sc_trace_file* tf, const ::scc::sc_ref_variable<T>& object, const char* name) {
     object.trace(tf);
 }
-template <class T> inline void sc_trace(sc_trace_file* tf, const scc::sc_ref_variable<T>* object, const char* name) {
+template <class T> inline void sc_trace(sc_trace_file* tf, const ::scc::sc_ref_variable<T>* object, const char* name) {
     object->trace(tf);
 }
 

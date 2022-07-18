@@ -49,7 +49,7 @@ public:
     resolvedType< std::is_signed<T>::value, U >
     get_value(){
         if(this->value < 0)
-            return scc::MT19937::uniform(0, -this->value);
+            return MT19937::uniform(0, -this->value);
         else
             return this->value;
     }

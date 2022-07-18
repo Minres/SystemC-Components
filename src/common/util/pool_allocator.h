@@ -112,7 +112,7 @@ template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>::~pool_
                               return a.second == b.second ? a.first < b.first : a.second < b.second;
                           });
                 std::cerr << "The 10 blocks with smallest id are:\n";
-                for(size_t i = 0; i < std::min(10UL, elems.size()); ++i) {
+                for(size_t i = 0; i < std::min<decltype(i)>(10UL, elems.size()); ++i) {
                     std::cerr << "\taddr=" << elems[i].first << ", id=" << elems[i].second << "\n";
                 }
             }

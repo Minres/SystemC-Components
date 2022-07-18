@@ -35,7 +35,7 @@ namespace scc {
 namespace trace {
 inline size_t get_buffer_size(int length) {
     size_t sz = (static_cast<size_t>(length) + 4096) & (~static_cast<size_t>(4096 - 1));
-    return std::max(1024UL, sz);
+    return std::max<decltype(sz)>(1024UL, sz);
 }
 
 inline unsigned get_bits(const char** literals) {
