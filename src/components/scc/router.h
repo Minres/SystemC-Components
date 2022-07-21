@@ -39,7 +39,7 @@ namespace scc {
  */
 template <unsigned BUSWIDTH = 32> class router : sc_core::sc_module {
 public:
-    using intor_sckt = tlm::scc::initiator_mixin<tlm::scc::scv::tlm_rec_initiator_socket<BUSWIDTH>>;
+    using intor_sckt = tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<BUSWIDTH>>;
     using target_sckt = tlm::scc::target_mixin<tlm::scc::scv::tlm_rec_target_socket<BUSWIDTH>>;
     //! \brief the array of target sockets
     sc_core::sc_vector<target_sckt> target;

@@ -47,6 +47,7 @@ set(LIB_SOURCES
     scc/fst_trace.cpp
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp
+    scc/hierarchy_dumper.cpp
 )
 
 if(ZLIB_FOUND)

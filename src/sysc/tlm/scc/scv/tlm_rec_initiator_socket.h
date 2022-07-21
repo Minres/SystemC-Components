@@ -71,8 +71,8 @@ public:
                                 POL
 #endif
                                 >(name)
-    , fw_port(sc_core::sc_gen_unique_name("fw"))
-    , bw_port(sc_core::sc_gen_unique_name("bw"))
+    , fw_port(sc_core::sc_gen_unique_name("$$$_fw"))
+    , bw_port(sc_core::sc_gen_unique_name("$$$_bw"))
     , recorder(this->name(), fw_port, bw_port) {
     }
 
@@ -118,8 +118,8 @@ public:
     }
 
 protected:
-    sc_core::sc_port<tlm::tlm_fw_transport_if<TYPES>> fw_port;
-    sc_core::sc_port<tlm::tlm_bw_transport_if<TYPES>> bw_port;
+    sc_core::sc_port<tlm::tlm_fw_transport_if<TYPES>> fw_port{sc_core::sc_gen_unique_name("$$$__rec_fw__$$$")};
+    sc_core::sc_port<tlm::tlm_bw_transport_if<TYPES>> bw_port{sc_core::sc_gen_unique_name("$$$__rec_bw__$$$")};
     scv::tlm_recorder<TYPES> recorder;
 };
 } // namespace scv
