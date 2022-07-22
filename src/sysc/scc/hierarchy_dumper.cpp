@@ -135,11 +135,14 @@ std::vector<std::string> scanModule(sc_core::sc_object const* obj, Module *curre
 
 void generateElk(std::ostream& e, Module const& module, unsigned level=0) {
     SCCDEBUG() << module.name;
+    unsigned num_in{0}, num_out{0};
+    for (auto port : module.ports) if(port.input) num_in++; else num_out++;
     if(!module.ports.size() && !module.submodules.size()) return;
     e << indent*level << "node " << module.name << " {" << "\n";
     level++;
-    e << indent*level << "portConstraints: FIXED_SIDE" << "\n";
-    e << indent*level << "label \"" << module.name << "\"" << "\n";
+    e << indent*level << "layout [ size: 50, "<<std::max(80U, std::max(num_in, num_out)*20)<<" ]\n";
+    e << indent*level << "portConstraints: FIXED_SIDE\n";
+    e << indent*level << "label \"" << module.name << "\"\n";
 
     for (auto port : module.ports) {
         SCCDEBUG() << "    " << port.name << "\n";
@@ -181,6 +184,8 @@ void generateElk(std::ostream& e, Module const& module, unsigned level=0) {
 void dump_structure(std::ostream& e) {
     std::vector<Module> topModules;
     std::vector<sc_core::sc_object*> tops = sc_core::sc_get_top_level_objects();
+    e<<"algorithm: org.eclipse.elk.layered\n";
+    e<<"edgeRouting: ORTHOGONAL\n";
     for (auto t : tops) {
         if (std::string(t->kind()) == "sc_module") {
             SCCDEBUG() << t->name() << "(" << t->kind() << ")";
