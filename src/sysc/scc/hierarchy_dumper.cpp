@@ -60,7 +60,8 @@ struct Module {
 
 const std::unordered_set<std::string> know_entities = {
         "tlm_initiator_socket", "sc_export", "sc_thread_process", "sc_signal",
-        "sc_object", "sc_fifo", "sc_method_process", "sc_mutex", "sc_vector"
+        "sc_object", "sc_fifo", "sc_method_process", "sc_mutex", "sc_vector",
+        "sc_semaphore_ordered", "sc_variable", "sc_prim_channel"
 };
 
 std::string indent{"    "};
@@ -70,33 +71,48 @@ std::string operator* (std::string const& str, const unsigned int level) {
     return ss.str();
 }
 
-void scanModule(sc_core::sc_object const* obj, Module *currentModule, unsigned const level) {
+std::string scanModule(sc_core::sc_object const* obj, Module *currentModule, unsigned const level) {
     SCCDEBUG() << indent*level<< obj->name() << "(" << obj->kind() << ")";
     std::string kind{obj->kind()};
     if (kind == "sc_module") {
         auto* name = obj->name();
         currentModule->submodules.push_back(Module(name, obj->basename(), false));
-        for (auto* child : obj->get_child_objects())
-            scanModule(child, &currentModule->submodules.back(), level+1);
-//    } else if(kind == "sc_vector") {
-//        auto const* vec = dynamic_cast<sc_core::sc_vector_base const*>(obj);
-//        for(auto* elem: vec->get_elements())
-//            scanModule(elem, currentModule, level);
+        std::unordered_set<std::string> keep_outs;
+        for (auto* child : obj->get_child_objects()) {
+            const std::string child_name{child->basename()};
+            if(child_name.substr(0, 3)=="$$$")
+                continue;
+            if(!keep_outs.empty()) {
+                auto it = std::find_if(std::begin(keep_outs), std::end(keep_outs), [&child_name](std::string const& e){
+                    return child_name.size() > e.size() && child_name.substr(0, e.size()) == e;
+                });
+                if(it!=std::end(keep_outs))
+                    continue;
+            }
+            auto ks = scanModule(child, &currentModule->submodules.back(), level+1);
+            if(ks.size())
+                keep_outs.insert(ks);
+        }
     } else if(kind == "sc_clock"){
         auto const* iface = dynamic_cast<sc_core::sc_interface const*>(obj);
         currentModule->submodules.push_back(Module(obj->name(), obj->basename(), false));
         currentModule->submodules.back().ports.push_back(Port(std::string(obj->name())+"."+obj->basename(), obj->basename(), iface, false, obj->kind()));
-    } else if(auto const* optr = dynamic_cast<tlm::tlm_base_socket_if const*>(obj)) {
-        auto cat = optr->get_socket_category();
+    } else if(auto const* tptr = dynamic_cast<tlm::tlm_base_socket_if const*>(obj)) {
+        auto cat = tptr->get_socket_category();
         bool input = (cat & tlm::TLM_TARGET_SOCKET) == tlm::TLM_TARGET_SOCKET;
-        currentModule->ports.push_back(Port(obj->name(), obj->basename(), input?optr->get_base_export().get_interface():optr->get_base_port().get_interface(), input, obj->kind()));
+        currentModule->ports.push_back(Port(obj->name(), obj->basename(), input?tptr->get_base_export().get_interface():tptr->get_base_port().get_interface(), input, obj->kind()));
+        if(input)
+            return std::string(obj->basename())+"_port";
     } else if (auto const* optr = dynamic_cast<sc_core::sc_port_base const*>(obj)) {
-        sc_core::sc_interface const* pointer = optr->get_interface();
-        bool input = kind == "sc_in" || kind == "sc_fifo_in" || kind == "tlm_target_socket";
-        currentModule->ports.push_back(Port(obj->name(), obj->basename(), pointer, input, obj->kind()));
+        if(std::string(optr->basename()).substr(0, 3)!="$$$") {
+            sc_core::sc_interface const* pointer = optr->get_interface();
+            bool input = kind == "sc_in" || kind == "sc_fifo_in" || kind == "tlm_target_socket";
+            currentModule->ports.push_back(Port(obj->name(), obj->basename(), pointer, input, obj->kind()));
+        }
     } else if (know_entities.find(std::string(obj->kind())) == know_entities.end()) {
         SCCWARN() << "object not known (" << std::string(obj->kind()) << ")";
     }
+    return "";
 }
 
 void generateElk(std::ostream& e, Module const& module, unsigned level=0) {
