@@ -61,7 +61,7 @@ struct Module {
 const std::unordered_set<std::string> know_entities = {
         "tlm_initiator_socket", "sc_export", "sc_thread_process", "sc_signal",
         "sc_object", "sc_fifo", "sc_method_process", "sc_mutex", "sc_vector",
-        "sc_semaphore_ordered", "sc_variable", "sc_prim_channel"
+        "sc_semaphore_ordered", "sc_variable", "sc_prim_channel", "tlm_signal"
 };
 
 std::string indent{"    "};

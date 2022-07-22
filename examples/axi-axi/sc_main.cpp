@@ -12,6 +12,7 @@
 #include <scc.h>
 #include <scc/configurable_tracer.h>
 #include <scc/memory.h>
+#include <scc/hierarchy_dumper.h>
 #include <tlm/scc/initiator_mixin.h>
 #include <tlm/scc/tlm_gp_shared.h>
 
@@ -118,6 +119,7 @@ int sc_main(int argc, char* argv[]) {
                       true);                        // enables vcd
 #endif
     testbench tb("tb");
+    scc::hierarchy_dumper d("axi_axi.elkt", 0);
     try {
         sc_core::sc_start(1_ms);
         SCCINFO() << "Finished";
