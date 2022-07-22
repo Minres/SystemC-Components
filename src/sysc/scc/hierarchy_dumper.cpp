@@ -71,7 +71,19 @@ std::string operator* (std::string const& str, const unsigned int level) {
     return ss.str();
 }
 
-std::string scanModule(sc_core::sc_object const* obj, Module *currentModule, unsigned const level) {
+#if TLM_VERSION_MAJOR==2 and TLM_VERSION_MINOR == 0           ///< version minor level ( numeric )
+#if TLM_VERSION_PATCH == 6           ///< version patch level ( numeric )
+#define GET_EXPORT_IF(tptr) tptr->get_base_export().get_interface()
+#define GET_PORT_IF(tptr)   tptr->get_base_port().get_interface()
+#elif TLM_VERSION_PATCH == 5
+#define GET_EXPORT_IF(tptr) tptr->get_export_base().get_interface()
+#define GET_PORT_IF(tptr)   tptr->get_port_base().get_interface()
+#elif
+#define NO_TLM_EXTRACT
+#endif
+#endif
+
+std::vector<std::string> scanModule(sc_core::sc_object const* obj, Module *currentModule, unsigned const level) {
     SCCDEBUG() << indent*level<< obj->name() << "(" << obj->kind() << ")";
     std::string kind{obj->kind()};
     if (kind == "sc_module") {
@@ -91,28 +103,34 @@ std::string scanModule(sc_core::sc_object const* obj, Module *currentModule, uns
             }
             auto ks = scanModule(child, &currentModule->submodules.back(), level+1);
             if(ks.size())
-                keep_outs.insert(ks);
+                for(auto& s:ks) keep_outs.insert(s);
         }
     } else if(kind == "sc_clock"){
         auto const* iface = dynamic_cast<sc_core::sc_interface const*>(obj);
         currentModule->submodules.push_back(Module(obj->name(), obj->basename(), false));
         currentModule->submodules.back().ports.push_back(Port(std::string(obj->name())+"."+obj->basename(), obj->basename(), iface, false, obj->kind()));
+#ifndef NO_TLM_EXTRACT
     } else if(auto const* tptr = dynamic_cast<tlm::tlm_base_socket_if const*>(obj)) {
         auto cat = tptr->get_socket_category();
         bool input = (cat & tlm::TLM_TARGET_SOCKET) == tlm::TLM_TARGET_SOCKET;
-        currentModule->ports.push_back(Port(obj->name(), obj->basename(), input?tptr->get_base_export().get_interface():tptr->get_base_port().get_interface(), input, obj->kind()));
-        if(input)
-            return std::string(obj->basename())+"_port";
+        currentModule->ports.push_back(Port(obj->name(), obj->basename(), input?GET_EXPORT_IF(tptr):GET_PORT_IF(tptr), input, obj->kind()));
+        return {std::string(obj->basename())+"_port", std::string(obj->basename())+"_export"};
+#endif
     } else if (auto const* optr = dynamic_cast<sc_core::sc_port_base const*>(obj)) {
         if(std::string(optr->basename()).substr(0, 3)!="$$$") {
             sc_core::sc_interface const* pointer = optr->get_interface();
-            bool input = kind == "sc_in" || kind == "sc_fifo_in" || kind == "tlm_target_socket";
+            bool input = kind == "sc_in" || kind == "sc_fifo_in";
             currentModule->ports.push_back(Port(obj->name(), obj->basename(), pointer, input, obj->kind()));
+        }
+    } else if (auto const* optr = dynamic_cast<sc_core::sc_export_base const*>(obj)) {
+        if(std::string(optr->basename()).substr(0, 3)!="$$$") {
+            sc_core::sc_interface const* pointer = optr->get_interface();
+            currentModule->ports.push_back(Port(obj->name(), obj->basename(), pointer, true, obj->kind()));
         }
     } else if (know_entities.find(std::string(obj->kind())) == know_entities.end()) {
         SCCWARN() << "object not known (" << std::string(obj->kind()) << ")";
     }
-    return "";
+    return {};
 }
 
 void generateElk(std::ostream& e, Module const& module, unsigned level=0) {
