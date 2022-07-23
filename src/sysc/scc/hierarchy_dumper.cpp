@@ -78,7 +78,7 @@ std::string operator* (std::string const& str, const unsigned int level) {
 #elif TLM_VERSION_PATCH == 5
 #define GET_EXPORT_IF(tptr) tptr->get_export_base().get_interface()
 #define GET_PORT_IF(tptr)   tptr->get_port_base().get_interface()
-#elif
+#else
 #define NO_TLM_EXTRACT
 #endif
 #endif

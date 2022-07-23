@@ -377,7 +377,8 @@ void fst_trace_file::init() {
             ++cur_it;
             ++tok_it;
         }
-        for(auto it = fst_scope.rbegin(); cur_it != it.base(); it++) {
+        auto residual = std::distance(cur_it, fst_scope.begin());
+        for(auto i = fst_scope.size(); i > residual; i--) {
             fstWriterSetUpscope(m_fst);
             fst_scope.pop_back();
         }
