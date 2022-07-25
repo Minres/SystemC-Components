@@ -20,9 +20,10 @@
 
 using namespace axi;
 
-axi_target_base::axi_target_base(const sc_core::sc_module_name& nm, axi::pe::axi_target_pe_b& pe)
+axi_target_base::axi_target_base(const sc_core::sc_module_name& nm, axi::pe::axi_target_pe& pe)
 : sc_module(nm)
 , pe(pe) {
+	add_attributes();
     SC_HAS_PROCESS(axi_target_base);
     SC_THREAD(trans_queue);
 }

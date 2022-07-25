@@ -37,14 +37,14 @@ public:
     sc_core::sc_in<bool> clk_i{"clk_i"};
     tlm_utils::simple_initiator_socket<axi_target_base> isck{"isck"};
 
-    axi_target_base(const sc_core::sc_module_name& nm, axi::pe::axi_target_pe_b& pe);
+    axi_target_base(const sc_core::sc_module_name& nm, axi::pe::axi_target_pe& pe);
     virtual ~axi_target_base(){};
 
 protected:
     unsigned access(tlm::tlm_generic_payload& trans);
 
 private:
-    axi::pe::axi_target_pe_b& pe;
+    axi::pe::axi_target_pe& pe;
     scc::peq<tlm::tlm_generic_payload*> peq;
 
     void trans_queue();
