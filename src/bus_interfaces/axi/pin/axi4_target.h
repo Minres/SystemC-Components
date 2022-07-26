@@ -366,21 +366,31 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
             auto beat_count = fsm_hndl->beat_count;
             auto size = axi::get_burst_size(*fsm_hndl->trans);
             auto offset = fsm_hndl->trans->get_address() & (CFG::BUSWIDTH / 8 - 1);
-            if(beat_count == 0) {
-                auto bptr = fsm_hndl->trans->get_data_ptr();
-                auto beptr = fsm_hndl->trans->get_byte_enable_ptr();
-                for(size_t i = offset; i < std::min<size_t>(CFG::BUSWIDTH / 8, offset+size); ++i, ++bptr, ++beptr) {
-                    auto bit_offs = i * 8;
-                    *bptr = data(bit_offs + 7, bit_offs).to_uint();
-                    *beptr = strb[i] ? 0xff : 0;
+            if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
+                if(beat_count == 0) {
+                    auto bptr = fsm_hndl->trans->get_data_ptr();
+                    auto beptr = fsm_hndl->trans->get_byte_enable_ptr();
+                    for(size_t i = offset; i < size; ++i, ++bptr, ++beptr) {
+                        auto bit_offs = i * 8;
+                        *bptr = data(bit_offs + 7, bit_offs).to_uint();
+                        *beptr = strb[i] ? 0xff : 0;
+                    }
+                } else {
+                    auto beat_start_idx = beat_count * size - offset;
+                    auto data_len = fsm_hndl->trans->get_data_length();
+                    auto bptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
+                    auto beptr = fsm_hndl->trans->get_byte_enable_ptr() + beat_start_idx;
+                    for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++bptr, ++beptr) {
+                        auto bit_offs = i * 8;
+                        *bptr = data(bit_offs + 7, bit_offs).to_uint();
+                        *beptr = strb[i] ? 0xff : 0;
+                    }
                 }
-            } else {
-                auto beat_start_idx = beat_count * size - offset;
-                auto data_len = fsm_hndl->trans->get_data_length();
-                auto bptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
-                auto beptr = fsm_hndl->trans->get_byte_enable_ptr() + beat_start_idx;
-                for(size_t i = offset; i < (offset+size) && (beat_start_idx + i) < data_len; ++i, ++bptr, ++beptr) {
-                    auto bit_offs = i * 8;
+            } else { // aligned or single beat access
+                auto bptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
+                auto beptr = fsm_hndl->trans->get_byte_enable_ptr() + beat_count * size;
+                for(size_t i = 0; i < size; ++i, ++bptr, ++beptr) {
+                    auto bit_offs = (offset + i) * 8;
                     *bptr = data(bit_offs + 7, bit_offs).to_uint();
                     *beptr = strb[i] ? 0xff : 0;
                 }
