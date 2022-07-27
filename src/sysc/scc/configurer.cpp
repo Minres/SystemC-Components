@@ -55,7 +55,7 @@ FDECL(unsigned long long, Uint64)
 FDECL(bool, Bool)
 FDECL(float, Double)
 FDECL(double, Double)
-FDECL(char*, String)
+FDECL(char const*, String)
 inline void writeValue(writer_type& writer, std::string const& key, std::string const& value) {
     writer.Key(key.c_str());
     writer.String(value.c_str());
