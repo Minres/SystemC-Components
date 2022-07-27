@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2018 MINRES Technologies GmbH
+ * Copyright 2018-2022 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,11 @@
 #define _TLM_TLM_SIGNAL_GP_H_
 
 #include <deque>
+#ifdef CWR_SYSTEMC
+#include <tlm_h/tlm_generic_payload/tlm_gp.h>
+#else
 #include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
+#endif
 
 namespace tlm {
 namespace scc {

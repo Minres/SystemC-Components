@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2018 MINRES Technologies GmbH
+ * Copyright 2018-2022 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,11 @@
 #ifndef SC_COMPONENTS_INCL_TLM_TLM_EXTENSIONS_H_
 #define SC_COMPONENTS_INCL_TLM_TLM_EXTENSIONS_H_
 
-#include "tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h"
+#ifdef CWR_SYSTEMC
+#include <tlm_h/tlm_generic_payload/tlm_gp.h>
+#else
+#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
+#endif
 
 namespace tlm {
 namespace scc {

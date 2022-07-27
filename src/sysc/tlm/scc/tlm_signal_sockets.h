@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2018 MINRES Technologies GmbH
+ * Copyright 2018-2022 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,13 @@
 #include "scc/report.h"
 
 #include <sysc/kernel/sc_object.h>
+#ifdef CWR_SYSTEMC
+#include <tlm_h/tlm_sockets/tlm_initiator_socket.h>
+#include <tlm_h/tlm_sockets/tlm_target_socket.h>
+#else
 #include <tlm_core/tlm_2/tlm_sockets/tlm_initiator_socket.h>
 #include <tlm_core/tlm_2/tlm_sockets/tlm_target_socket.h>
+#endif
 
 namespace tlm {
 namespace scc {

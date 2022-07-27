@@ -22,6 +22,7 @@
 #endif
 #include "scc/ext_attribute.h"
 #include "scc/fifo_w_cb.h"
+#include "scc/hierarchy_dumper.h"
 #include "scc/mt19937_rng.h"
 #include "scc/ordered_semaphore.h"
 #include "scc/peq.h"
