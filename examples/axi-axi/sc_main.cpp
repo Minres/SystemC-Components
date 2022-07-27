@@ -119,7 +119,7 @@ int sc_main(int argc, char* argv[]) {
                       true);                        // enables vcd
 #endif
     testbench tb("tb");
-    scc::hierarchy_dumper d("axi_axi.elkt", 0);
+    scc::hierarchy_dumper d("axi_axi.elkt", scc::hierarchy_dumper::ELKT);
     try {
         sc_core::sc_start(1_ms);
         SCCINFO() << "Finished";

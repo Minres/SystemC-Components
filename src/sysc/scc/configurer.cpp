@@ -319,7 +319,7 @@ struct configurer::ConfigHolder {
 };
 
 configurer::configurer(const std::string& filename, unsigned config_phases)
-: base_type(sc_core::sc_module_name("configurer"))
+: base_type(sc_core::sc_module_name("$$$configurer"))
 , config_phases(config_phases)
 #ifdef HAS_CCI
 , cci_originator("configurer")

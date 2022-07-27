@@ -68,7 +68,7 @@ public:
      * @param heart_beat
      */
     perf_estimator(sc_core::sc_time heart_beat)
-    : perf_estimator(sc_core::sc_gen_unique_name("perf_estimator", true), heart_beat) {}
+    : perf_estimator(sc_core::sc_gen_unique_name("$$$perf_estimator$$$", true), heart_beat) {}
     /**
      * @fn  ~perf_estimator()
      * @brief destructor

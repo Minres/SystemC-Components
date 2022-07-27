@@ -15,6 +15,9 @@
  *******************************************************************************/
 
 #include "hierarchy_dumper.h"
+#include "configurer.h"
+#include "tracer.h"
+#include "perf_estimator.h"
 #include <fstream>
 #include "report.h"
 #include <tlm>
@@ -23,16 +26,51 @@
 #include <fstream>
 #include <regex>
 #include <sstream>
+#include <rapidjson/rapidjson.h>
+#include <rapidjson/istreamwrapper.h>
+#include <rapidjson/ostreamwrapper.h>
+#include <rapidjson/prettywriter.h>
 
 namespace scc {
+using namespace rapidjson;
+using writer_type = PrettyWriter<OStreamWrapper>;
+
 namespace {
+#include <string>
+#include <typeinfo>
+#ifdef __GNUG__
+#include <cstdlib>
+#include <memory>
+#include <cxxabi.h>
+
+std::string demangle(const char* name) {
+    int status = -4; // some arbitrary value to eliminate the compiler warning
+    // enable c++11 by passing the flag -std=c++11 to g++
+    std::unique_ptr<char, void(*)(void*)> res {
+        abi::__cxa_demangle(name, NULL, NULL, &status),
+        std::free
+    };
+    return (status==0) ? res.get() : name ;
+}
+#else
+// does nothing if not g++
+std::string demangle(const char* name) {
+    return name;
+}
+#endif
+std::string demangle(const char* name);
+
+template <class T>
+std::string type(const T& t) {
+    return demangle(typeid(t).name());
+}
 
 struct Port {
-    std::string id;
-    std::string name;
+    std::string const id;
+    std::string const name;
     sc_core::sc_interface const* port_if{nullptr};
     bool input{false};
-    std::string type;
+    std::string const type;
 
     Port(std::string const& id, std::string const& name, sc_core::sc_interface  const* ptr, bool input, std::string const& type)
     : id(id)
@@ -44,15 +82,17 @@ struct Port {
 };
 
 struct Module {
-    std::string id;
-    std::string name;
-    bool topModule{false};
+    std::string const id;
+    std::string const name;
+    std::string const type;
+    bool const topModule{false};
     std::vector<Module> submodules;
     std::vector<Port> ports;
 
-    Module(std::string id, std::string name, bool top)
+    Module(std::string const& id, std::string const& name, std::string const& type, bool top)
     : id(id)
     , name(name)
+    , type(type)
     , topModule(top)
     { }
 
@@ -88,7 +128,7 @@ std::vector<std::string> scanModule(sc_core::sc_object const* obj, Module *curre
     std::string kind{obj->kind()};
     if (kind == "sc_module") {
         auto* name = obj->name();
-        currentModule->submodules.push_back(Module(name, obj->basename(), false));
+        currentModule->submodules.push_back(Module(name, obj->basename(), type(*obj), false));
         std::unordered_set<std::string> keep_outs;
         for (auto* child : obj->get_child_objects()) {
             const std::string child_name{child->basename()};
@@ -107,7 +147,7 @@ std::vector<std::string> scanModule(sc_core::sc_object const* obj, Module *curre
         }
     } else if(kind == "sc_clock"){
         auto const* iface = dynamic_cast<sc_core::sc_interface const*>(obj);
-        currentModule->submodules.push_back(Module(obj->name(), obj->basename(), false));
+        currentModule->submodules.push_back(Module(obj->name(), obj->basename(), type(*obj), false));
         currentModule->submodules.back().ports.push_back(Port(std::string(obj->name())+"."+obj->basename(), obj->basename(), iface, false, obj->kind()));
 #ifndef NO_TLM_EXTRACT
     } else if(auto const* tptr = dynamic_cast<tlm::tlm_base_socket_if const*>(obj)) {
@@ -179,29 +219,138 @@ void generateElk(std::ostream& e, Module const& module, unsigned level=0) {
     level--;
     e << indent*level << "}\n" << "\n";
 }
+void generateModJson(writer_type& writer, Module const& module, unsigned level=0) {
+    writer.StartObject();
+    writer.Key("id");
+    writer.String(module.id.c_str());
+    writer.Key("name");
+    writer.String(module.name.c_str());
+    writer.Key("type");
+    writer.String(module.type.c_str());
+    writer.Key("topmodule");
+    writer.Bool(module.topModule);
+    if(module.ports.size()) {
+        writer.Key("ports");
+        writer.StartArray();
+        for(auto& p: module.ports) {
+            writer.StartObject();
+            writer.Key("id");
+            writer.String(p.id.c_str());
+            writer.Key("name");
+            writer.String(p.name.c_str());
+            writer.Key("type");
+            writer.String(p.type.c_str());
+            writer.Key("input");
+            writer.Bool(p.input);
+            writer.Key("interface");
+            writer.Uint64(reinterpret_cast<uintptr_t>(p.port_if));
+            writer.EndObject();
+        }
+        writer.EndArray();
+    }
+    if(module.submodules.size()) {
+        writer.Key("children");
+        writer.StartArray();
+        for(auto& c: module.submodules) {
+            generateModJson(writer, c, level*1);
+        }
+        writer.EndArray();
+    }
+    writer.EndObject();
+}
+void generateD3Json(writer_type& writer, Module const& module, unsigned level=0) {
+    writer.StartObject();
+    writer.Key("id");
+    writer.String(module.id.c_str());
+    writer.Key("name");
+    writer.String(module.name.c_str());
+    writer.Key("topmodule");
+    writer.Bool(module.topModule);
+    if(module.ports.size()) {
+        writer.Key("ports");
+        writer.StartArray();
+        for(auto& p: module.ports) {
+            writer.StartObject();
+            writer.Key("id");
+            writer.String(p.id.c_str());
+            writer.Key("name");
+            writer.String(p.name.c_str());
+            writer.Key("type");
+            writer.String(p.type.c_str());
+            writer.Key("input");
+            writer.Bool(p.input);
+            writer.Key("interface");
+            writer.Uint64(reinterpret_cast<uintptr_t>(p.port_if));
+            writer.EndObject();
+        }
+        writer.EndArray();
+    }
+    if(module.submodules.size()) {
+        writer.Key("children");
+        writer.StartArray();
+        for(auto& c: module.submodules) {
+            generateModJson(writer, c, level*1);
+        }
+        writer.EndArray();
+    }
+    writer.EndObject();
+}
 }
 
-void dump_structure(std::ostream& e) {
+void dump_structure(std::ostream& e, hierarchy_dumper::file_type format) {
     std::vector<Module> topModules;
     std::vector<sc_core::sc_object*> tops = sc_core::sc_get_top_level_objects();
-    e<<"algorithm: org.eclipse.elk.layered\n";
-    e<<"edgeRouting: ORTHOGONAL\n";
     for (auto t : tops) {
-        if (std::string(t->kind()) == "sc_module") {
+        if (std::string(t->kind()) == "sc_module" && std::string(t->basename()).substr(0, 3) != "$$$") {
             SCCDEBUG() << t->name() << "(" << t->kind() << ")";
-            topModules.push_back(Module(t->name(), t->basename(), true));
+            topModules.push_back(Module(t->name(), t->basename(), type(*t), true));
             for (auto* child : t->get_child_objects())
                 scanModule(child, &topModules.back(), 1);
         }
     }
-    for (auto module : topModules)
-        generateElk(e, module);
-    SCCINFO() << "SystemC Structure Dumped to ELK file";
+    if(format == hierarchy_dumper::ELKT) {
+        e<<"algorithm: org.eclipse.elk.layered\n";
+        e<<"edgeRouting: ORTHOGONAL\n";
+        for (auto module : topModules)
+            generateElk(e, module);
+        SCCINFO() << "SystemC Structure Dumped to ELK file";
+    } else if(format==hierarchy_dumper::JSON) {
+        OStreamWrapper stream(e);
+        writer_type writer(stream);
+        if(topModules.size()==1) {
+            generateModJson(writer, topModules.front());
+        } else {
+        writer.StartObject();
+        writer.Key("children");
+        writer.StartArray();
+        for(auto& c:topModules) {
+            generateModJson(writer, c);
+        }
+        writer.EndArray();
+        writer.EndObject();
+        }
+    } else if(format==hierarchy_dumper::D3JSON) {
+        OStreamWrapper stream(e);
+        writer_type writer(stream);
+        if(topModules.size()==1) {
+            generateD3Json(writer, topModules.front());
+        } else {
+            writer.StartObject();
+            writer.Key("children");
+            writer.StartArray();
+            for(auto& c:topModules) {
+                generateD3Json(writer, c);
+            }
+            writer.EndArray();
+            writer.EndObject();
+        }
+    }
 }
 
-hierarchy_dumper::hierarchy_dumper(const std::string &filename, unsigned format)
-: sc_core::sc_module(sc_core::sc_module_name("hierarchy_dumper"))
+hierarchy_dumper::hierarchy_dumper(const std::string &filename, file_type format)
+: sc_core::sc_module(sc_core::sc_module_name("$$$hierarchy_dumper$$$"))
 , dump_hier_file_name{filename}
+, dump_format{format}
 {
 }
 
@@ -212,7 +361,7 @@ void hierarchy_dumper::start_of_simulation() {
     if(dump_hier_file_name.size()) {
         std::ofstream of{dump_hier_file_name};
         if(of.is_open())
-            dump_structure(of);
+            dump_structure(of, dump_format);
     }
 }
 }
