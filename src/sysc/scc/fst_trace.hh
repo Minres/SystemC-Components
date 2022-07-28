@@ -28,7 +28,13 @@
 namespace sc_core {
 class sc_time;
 }
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
+//! @brief SCC SystemC tracing utilities
 namespace trace {
 class fst_trace;
 }
@@ -148,5 +154,5 @@ private:
     bool initialized{false};
 };
 } // namespace scc
-
+/** @} */ // end of scc-sysc
 #endif // SCC_FST_TRACE_H

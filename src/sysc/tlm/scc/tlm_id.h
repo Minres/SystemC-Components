@@ -19,8 +19,11 @@
 #include <cstdint>
 #include "tlm_gp_shared.h"
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+
 struct tlm_id_extension : public tlm_extension<tlm_id_extension> {
     virtual tlm_extension_base* clone() const {
         tlm_id_extension* t = new tlm_id_extension(this->id);

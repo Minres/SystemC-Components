@@ -27,8 +27,11 @@
 #include <tlm_utils/peq_with_cb_and_phase.h>
 #include <unordered_map>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+//! @brief SCC SCV4TLM classes and functions
 namespace scv {
 
 void record(SCVNS scv_tr_handle&, tlm::tlm_generic_payload&);

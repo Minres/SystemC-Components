@@ -24,8 +24,11 @@
 #include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 #endif
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+
 struct tlm_generic_payload_base;
 
 class tlm_base_mm_interface {

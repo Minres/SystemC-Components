@@ -23,6 +23,11 @@
 #include "sysc/kernel/sc_macros.h"
 #include "sysc/utils/sc_mempool.h"
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 namespace dt {
 
@@ -285,5 +290,5 @@ extern const sc_logic_7 SC_LOGIC7_X;
 
 } // namespace dt
 } // namespace scc
-
+/** @} */ // end of scc-sysc
 #endif /* INCL_SYSC_CORE_SC_LOGIC_7_H_ */

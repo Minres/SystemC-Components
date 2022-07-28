@@ -19,6 +19,11 @@
 
 #include <systemc>
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 
 class hierarchy_dumper: public sc_core::sc_module {
@@ -34,4 +39,5 @@ private:
     file_type const dump_format;
 };
 }
+/** @} */ // end of scc-sysc
 #endif /* _SYSC_SCC_HIERARCHY_DUMPER_H_ */

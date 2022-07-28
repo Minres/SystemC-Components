@@ -20,6 +20,11 @@
 #include <functional>
 #include <sysc/tracing/sc_trace.h>
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 //! create VCD file which uses pull mechanism
 sc_core::sc_trace_file* create_vcd_pull_trace_file(const char* name,
@@ -44,5 +49,5 @@ sc_core::sc_trace_file* create_fst_trace_file(const char* name, std::function<bo
 //! close the FST file
 void close_fst_trace_file(sc_core::sc_trace_file* tf);
 } // namespace scc
-
+/** @} */ // end of scc-sysc
 #endif // SCC_SC_VCD_TRACE_H

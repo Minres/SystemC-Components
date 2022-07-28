@@ -30,8 +30,11 @@
 #endif
 #include <tlm>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+//! @brief SCC SCV4TLM classes and functions
 namespace scv {
 /*! \brief The TLM transaction extensions recorder interface
  *

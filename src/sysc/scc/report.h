@@ -31,6 +31,11 @@
 #endif
 
 #define SCC_LOG_LEVEL_PARAM_NAME "log_level"
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 //! \brief array holding string representations of log levels
 static std::array<const char* const, 8> buffer = {
@@ -371,5 +376,5 @@ protected:
 };
 
 } // namespace scc
-
+/** @} */ // end of scc-sysc
 #endif /* _SCC_REPORT_H_ */

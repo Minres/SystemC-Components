@@ -20,6 +20,11 @@
 #include <functional>
 #include <systemc>
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 
 class sc_thread_pool : sc_core::sc_object {
@@ -36,5 +41,5 @@ private:
     unsigned thread_avail{0}, thread_active{0};
 };
 } /* namespace scc */
-
+/** @} */ // end of scc-sysc
 #endif /* SYSC_SCC_SC_THREAD_POOL_H_ */

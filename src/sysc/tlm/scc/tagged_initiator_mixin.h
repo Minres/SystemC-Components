@@ -22,7 +22,9 @@
 #include <sstream>
 #include <tlm>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
 /**
  *

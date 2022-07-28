@@ -21,6 +21,11 @@
 #include <sysc/tracing/sc_trace.h>
 #include <type_traits>
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @enum trace_types
@@ -141,4 +146,5 @@ protected:
 };
 
 } // namespace scc
+/** @} */ // end of scc-sysc
 #endif /* _SCC_TRACER_BASE_H_ */

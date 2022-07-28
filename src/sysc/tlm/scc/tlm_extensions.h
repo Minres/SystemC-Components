@@ -23,8 +23,11 @@
 #include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 #endif
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+
 template <typename T> struct tlm_unmanaged_extension : public tlm_extension<T> {
     using type = T;
 

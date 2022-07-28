@@ -19,6 +19,11 @@
 
 #include "utilities.h"
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @struct time2tick
@@ -47,4 +52,5 @@ private:
     void clocker();
 };
 } // namespace scc
+/** @} */ // end of scc-sysc
 #endif /* _SCC_TIME2TICK_H_ */

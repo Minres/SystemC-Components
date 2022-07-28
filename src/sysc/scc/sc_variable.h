@@ -29,6 +29,11 @@
 #define SC_API
 #endif
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 class trace_handle;
 /**
@@ -510,4 +515,5 @@ template <class T> inline void sc_trace(sc_trace_file* tf, const ::scc::sc_ref_v
 }
 
 } // namespace sc_core
+/** @} */ // end of scc-sysc
 #endif /* _SCC_SC_VARIABLE_H_ */

@@ -23,6 +23,11 @@
 #include <cci_configuration>
 #endif
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 
 void init_cci(std::string name = "Global Broker");
@@ -160,5 +165,5 @@ protected:
 };
 
 } // namespace scc
-
+/** @} */ // end of scc-sysc
 #endif /* _SYSC_CONFIGURER_H_ */

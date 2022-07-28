@@ -21,6 +21,11 @@
 #include <systemc>
 #include <tuple>
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @class perf_estimator
@@ -101,5 +106,5 @@ protected:
 };
 
 } /* namespace scc */
-
+/** @} */ // end of scc-sysc
 #endif /* _SCC_PERFORMANCETRACER_H_ */

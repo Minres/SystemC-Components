@@ -19,6 +19,11 @@
 
 #include <sysc/communication/sc_signal.h>
 #include <tlm>
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @class sc_owning_signal
@@ -81,4 +86,5 @@ protected:
 };
 
 } // namespace scc
+/** @} */ // end of scc-sysc
 #endif /* _SCC_SC_SIGNAL_GP_H_ */

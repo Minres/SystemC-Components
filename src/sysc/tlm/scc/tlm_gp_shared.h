@@ -19,7 +19,9 @@
 
 #include <tlm>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
 
 class tlm_gp_shared_ptr {

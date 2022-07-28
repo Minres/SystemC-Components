@@ -16,6 +16,12 @@
 
 #pragma once
 
+/**
+ * @defgroup scc-sysc SystemC utilities
+ *
+ * This module contains generic C++ functions being independent of SystemC
+ */
+/**@{*/
 #ifdef HAS_CCI
 #include "scc/configurable_tracer.h"
 #include "scc/configurer.h"
@@ -69,3 +75,4 @@
 
 #include "tlm/scc/pe/intor_if.h"
 #include "tlm/scc/pe/parallel_pe.h"
+/**@}*/

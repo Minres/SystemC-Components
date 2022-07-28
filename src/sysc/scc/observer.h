@@ -36,6 +36,11 @@ class sc_fxnum;
 class sc_fxnum_fast;
 } // namespace sc_dt
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @brief The interface defining an observer.
@@ -130,5 +135,5 @@ DECL_REGISTER_METHOD_A(sc_dt::sc_lv_base)
 #undef DECL_REGISTER_METHOD_B
 
 } /* namespace scc */
-
+/** @} */ // end of scc-sysc
 #endif /* _SCC_OBSERVER_H_ */

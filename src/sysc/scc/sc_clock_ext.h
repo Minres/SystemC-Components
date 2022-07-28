@@ -19,6 +19,11 @@
 
 #include <sysc/communication/sc_clock.h>
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * \brief A clock source with construction time configurable start delay
@@ -55,5 +60,5 @@ protected:
     }
 };
 }
-
+/** @} */ // end of scc-sysc
 #endif //

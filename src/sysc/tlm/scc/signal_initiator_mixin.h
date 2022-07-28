@@ -21,7 +21,10 @@
 #include <functional>
 #include <sstream>
 #include <tlm/scc/tlm_signal.h>
+
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
 
 template <typename BASE_TYPE> class signal_initiator_mixin : public BASE_TYPE {

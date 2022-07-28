@@ -22,6 +22,8 @@
 /** \ingroup scc-sysc
  *  @{
  */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @class configurable_tracer

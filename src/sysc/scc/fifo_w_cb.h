@@ -20,6 +20,11 @@
 #include <functional>
 #include <sysc/communication/sc_prim_channel.h>
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @class fifo_w_cb
@@ -89,3 +94,4 @@ protected:
 };
 
 } /* namespace scc */
+/** @} */ // end of scc-sysc

@@ -26,7 +26,9 @@
 #include <tlm>
 #include <tlm_utils/peq_with_get.h>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
 /**
  * an target socket mixin adding default implementation of callback functions similar to tlm::simple_target_socket

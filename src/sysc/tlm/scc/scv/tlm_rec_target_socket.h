@@ -20,8 +20,11 @@
 #include <tlm/scc/scv/tlm_recorder.h>
 #include <tlm>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+//! @brief SCC SCV4TLM classes and functions
 namespace scv {
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types, int N = 1
 #if !(defined SYSTEMC_VERSION & SYSTEMC_VERSION <= 20050714)

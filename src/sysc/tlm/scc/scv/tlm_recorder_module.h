@@ -21,8 +21,11 @@
 #include <tlm_utils/simple_initiator_socket.h>
 #include <tlm_utils/simple_target_socket.h>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+//! @brief SCC SCV4TLM classes and functions
 namespace scv {
 /*! \brief The TLM2 transaction recorder
  *

@@ -21,8 +21,11 @@
 #include <tlm>
 #include <util/ities.h>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm_base_protocol_types, int N = 1,
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND,
           typename TSOCKET_TYPE = tlm::tlm_target_socket<BUSWIDTH, TYPES, N, POL>,

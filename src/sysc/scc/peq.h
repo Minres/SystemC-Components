@@ -24,6 +24,11 @@
 #include <type_traits>
 #include <vector>
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @struct peq
@@ -190,4 +195,5 @@ template <class TYPE> inline peq<TYPE>::~peq() {
 }
 
 } // namespace scc
+/** @} */ // end of scc-sysc
 #endif /* _SCC_PEQ_H_ */
