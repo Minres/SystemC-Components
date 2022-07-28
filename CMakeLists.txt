@@ -13,6 +13,8 @@ option(SC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase c
 
 option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse callbacks for tracing. It needs to match the SystemC build configuration" OFF)
 
+set(SCC_ARCHIVE_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
+
 include(Common)
 
 if(CMAKE_PROJECT_NAME STREQUAL "scc")
@@ -179,7 +181,7 @@ set_target_properties(scc PROPERTIES
 install(TARGETS scc
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_ARCHIVE_DIR_MODIFIER}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
 
