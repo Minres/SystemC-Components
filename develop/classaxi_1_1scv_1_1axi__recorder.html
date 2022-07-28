@@ -130,9 +130,9 @@ virtual tlm::tlm_fw_transport_if&lt; TYPES &gt; *&#160;</td><td class="memItemRi
 virtual tlm::tlm_bw_transport_if&lt; TYPES &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#a1a10881249143bb999a1d1d0f5fbddf1">get_bw_if</a> ()=0</td></tr>
 <tr class="memdesc:a1a10881249143bb999a1d1d0f5fbddf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the port where bw accesses are forwarded to <br /></td></tr>
 <tr class="separator:a1a10881249143bb999a1d1d0f5fbddf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a884a1de6b935fd7405e029b79d04d581"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#a884a1de6b935fd7405e029b79d04d581">axi_recorder</a> (const char *name, bool recording_enabled=true, SCVNS scv_tr_db *tr_db=SCVNS scv_tr_db::get_default_db())</td></tr>
-<tr class="memdesc:a884a1de6b935fd7405e029b79d04d581"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor of the component.  <a href="classaxi_1_1scv_1_1axi__recorder.html#a884a1de6b935fd7405e029b79d04d581">More...</a><br /></td></tr>
-<tr class="separator:a884a1de6b935fd7405e029b79d04d581"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab57891068764df682a609faf9572f805"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#ab57891068764df682a609faf9572f805">axi_recorder</a> (const char *name, unsigned bus_width, bool recording_enabled=true, SCVNS scv_tr_db *tr_db=SCVNS scv_tr_db::get_default_db())</td></tr>
+<tr class="memdesc:ab57891068764df682a609faf9572f805"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor of the component.  <a href="classaxi_1_1scv_1_1axi__recorder.html#ab57891068764df682a609faf9572f805">More...</a><br /></td></tr>
+<tr class="separator:ab57891068764df682a609faf9572f805"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a648984345f67c3bfcbb986ca7be012f3"><td class="memItemLeft" align="right" valign="top">tlm::tlm_sync_enum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#a648984345f67c3bfcbb986ca7be012f3">nb_transport_fw</a> (typename TYPES::tlm_payload_type &amp;trans, typename TYPES::tlm_phase_type &amp;phase, sc_core::sc_time &amp;delay) override</td></tr>
 <tr class="memdesc:a648984345f67c3bfcbb986ca7be012f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The non-blocking forward transport function.  <a href="classaxi_1_1scv_1_1axi__recorder.html#a648984345f67c3bfcbb986ca7be012f3">More...</a><br /></td></tr>
 <tr class="separator:a648984345f67c3bfcbb986ca7be012f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,9 +181,15 @@ sc_core::sc_attribute&lt; bool &gt;&#160;</td><td class="memItemRight" valign="b
 <tr class="memdesc:aa3b5232d75cb62d84e91f981d7e4d26a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the attribute to selectively enable/disable transport dbg recording <br /></td></tr>
 <tr class="separator:aa3b5232d75cb62d84e91f981d7e4d26a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a989a9dc0a4656b0cfa73a57dc0893c30"><td class="memItemLeft" align="right" valign="top"><a id="a989a9dc0a4656b0cfa73a57dc0893c30"></a>
-sc_core::sc_attribute&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#a989a9dc0a4656b0cfa73a57dc0893c30">enableProtocolChecker</a> {&quot;enableProtocolChecker&quot;, true}</td></tr>
+sc_core::sc_attribute&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#a989a9dc0a4656b0cfa73a57dc0893c30">enableProtocolChecker</a> {&quot;enableProtocolChecker&quot;, false}</td></tr>
 <tr class="memdesc:a989a9dc0a4656b0cfa73a57dc0893c30"><td class="mdescLeft">&#160;</td><td class="mdescRight">the attribute to enable/disable protocol checking <br /></td></tr>
 <tr class="separator:a989a9dc0a4656b0cfa73a57dc0893c30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1f7ecef55f31e08838192cf237891c8"><td class="memItemLeft" align="right" valign="top"><a id="ae1f7ecef55f31e08838192cf237891c8"></a>
+sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rd_response_timeout</b> {&quot;rd_response_timeout&quot;, 0}</td></tr>
+<tr class="separator:ae1f7ecef55f31e08838192cf237891c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf69a737d5b4869fbd0e1c4ee5f9e781"><td class="memItemLeft" align="right" valign="top"><a id="aaf69a737d5b4869fbd0e1c4ee5f9e781"></a>
+sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>wr_response_timeout</b> {&quot;wr_response_timeout&quot;, 0}</td></tr>
+<tr class="separator:aaf69a737d5b4869fbd0e1c4ee5f9e781"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -200,8 +206,8 @@ class axi::scv::axi_recorder&lt; TYPES &gt;</h3>
 
 <p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00049">49</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a884a1de6b935fd7405e029b79d04d581"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a884a1de6b935fd7405e029b79d04d581">&#9670;&nbsp;</a></span>axi_recorder()</h2>
+<a id="ab57891068764df682a609faf9572f805"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab57891068764df682a609faf9572f805">&#9670;&nbsp;</a></span>axi_recorder()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -216,6 +222,12 @@ template&lt;typename TYPES  = axi::axi_protocol_types&gt; </div>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>bus_width</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -251,7 +263,7 @@ template&lt;typename TYPES  = axi::axi_protocol_types&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00095">95</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00099">99</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -301,7 +313,7 @@ template&lt;typename TYPES &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00302">302</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00308">308</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -351,7 +363,7 @@ template&lt;typename TYPES &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>if the dmi structure is valid </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00624">624</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00630">630</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -400,7 +412,7 @@ template&lt;typename TYPES &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00643">643</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00649">649</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -432,7 +444,7 @@ template&lt;typename TYPES  = axi::axi_protocol_types&gt; </div>
 <p>get the current state of transaction recording </p>
 <dl class="section return"><dt>Returns</dt><dd>if true transaction recording is enabled otherwise transaction recording is bypassed </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00190">190</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00195">195</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -464,7 +476,7 @@ template&lt;typename TYPES  = axi::axi_protocol_types&gt; </div>
 <p>get the current state of transaction recording </p>
 <dl class="section return"><dt>Returns</dt><dd>if true transaction recording is enabled otherwise transaction recording is bypassed </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00196">196</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00201">201</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -521,7 +533,7 @@ template&lt;typename TYPES &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the sync state of the transaction </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00475">475</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00481">481</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -578,7 +590,7 @@ template&lt;typename TYPES &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the sync state of the transaction </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00383">383</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00389">389</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -617,7 +629,7 @@ template&lt;typename TYPES &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the sync state of the transaction </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00660">660</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__recorder_8h_source.html#l00666">666</a> of file <a class="el" href="axi__recorder_8h_source.html">axi_recorder.h</a>.</p>
 
 </div>
 </div>

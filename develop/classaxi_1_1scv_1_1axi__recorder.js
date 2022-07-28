@@ -5,7 +5,7 @@ var classaxi_1_1scv_1_1axi__recorder =
     [ "recording_types", "classaxi_1_1scv_1_1axi__recorder.html#ae29992ba38d1451af6be5ec7c16383f5", null ],
     [ "target_socket_type", "classaxi_1_1scv_1_1axi__recorder.html#a4c67d8b16cc42accde2bdb2f9721c3b0", null ],
     [ "tlm_recording_payload", "classaxi_1_1scv_1_1axi__recorder.html#afb1975b6fca469080fd27df23c54e4ee", null ],
-    [ "axi_recorder", "classaxi_1_1scv_1_1axi__recorder.html#a884a1de6b935fd7405e029b79d04d581", null ],
+    [ "axi_recorder", "classaxi_1_1scv_1_1axi__recorder.html#ab57891068764df682a609faf9572f805", null ],
     [ "~axi_recorder", "classaxi_1_1scv_1_1axi__recorder.html#ad54188a56f83470e2a5f9fb5cfeda2a4", null ],
     [ "b_transport", "classaxi_1_1scv_1_1axi__recorder.html#a52132138c3407ec5b77e27ca5d1c8394", null ],
     [ "get_bw_if", "classaxi_1_1scv_1_1axi__recorder.html#a1a10881249143bb999a1d1d0f5fbddf1", null ],
@@ -24,5 +24,7 @@ var classaxi_1_1scv_1_1axi__recorder =
     [ "enableNbTracing", "classaxi_1_1scv_1_1axi__recorder.html#a80cdbf2ddabebdf614fb31bf40d599b3", null ],
     [ "enableProtocolChecker", "classaxi_1_1scv_1_1axi__recorder.html#a989a9dc0a4656b0cfa73a57dc0893c30", null ],
     [ "enableTimedTracing", "classaxi_1_1scv_1_1axi__recorder.html#aa2dd8b17390c1ef9064506bd2fad4fba", null ],
-    [ "enableTrDbgTracing", "classaxi_1_1scv_1_1axi__recorder.html#aa3b5232d75cb62d84e91f981d7e4d26a", null ]
+    [ "enableTrDbgTracing", "classaxi_1_1scv_1_1axi__recorder.html#aa3b5232d75cb62d84e91f981d7e4d26a", null ],
+    [ "rd_response_timeout", "classaxi_1_1scv_1_1axi__recorder.html#ae1f7ecef55f31e08838192cf237891c8", null ],
+    [ "wr_response_timeout", "classaxi_1_1scv_1_1axi__recorder.html#aaf69a737d5b4869fbd0e1c4ee5f9e781", null ]
 ];

@@ -90,9 +90,9 @@ Collaboration diagram for axi::checker::axi_protocol:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a24b5a20628c20159fad44c027b6ef650"><td class="memItemLeft" align="right" valign="top"><a id="a24b5a20628c20159fad44c027b6ef650"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>axi_protocol</b> (std::string const &amp;name)</td></tr>
-<tr class="separator:a24b5a20628c20159fad44c027b6ef650"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eae6a6ef0712db6d83a4545ab6f70d3"><td class="memItemLeft" align="right" valign="top"><a id="a9eae6a6ef0712db6d83a4545ab6f70d3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>axi_protocol</b> (std::string const &amp;name, unsigned bus_width_in_bytes, unsigned rd_response_timeout, unsigned wr_response_timeout)</td></tr>
+<tr class="separator:a9eae6a6ef0712db6d83a4545ab6f70d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f70d5e7b6d89d9c00b5bcf40b8aff07"><td class="memItemLeft" align="right" valign="top"><a id="a0f70d5e7b6d89d9c00b5bcf40b8aff07"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>axi_protocol</b> (const <a class="el" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a> &amp;other)=delete</td></tr>
 <tr class="separator:a0f70d5e7b6d89d9c00b5bcf40b8aff07"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,6 +136,15 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a2d9ddbb4db43ce9484cf8c1f1aa4da65"><td class="memItemLeft" align="right" valign="top"><a id="a2d9ddbb4db43ce9484cf8c1f1aa4da65"></a>
 const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
 <tr class="separator:a2d9ddbb4db43ce9484cf8c1f1aa4da65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f0003d22be0685c5c0a3f0f00f94562"><td class="memItemLeft" align="right" valign="top"><a id="a8f0003d22be0685c5c0a3f0f00f94562"></a>
+const unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>bw</b></td></tr>
+<tr class="separator:a8f0003d22be0685c5c0a3f0f00f94562"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55cd9d3954f28743486f98b4fac68150"><td class="memItemLeft" align="right" valign="top"><a id="a55cd9d3954f28743486f98b4fac68150"></a>
+const unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>rd_response_timeout</b></td></tr>
+<tr class="separator:a55cd9d3954f28743486f98b4fac68150"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36600c1db0a4b8954b57bfa87ad536fb"><td class="memItemLeft" align="right" valign="top"><a id="a36600c1db0a4b8954b57bfa87ad536fb"></a>
+const unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>wr_response_timeout</b></td></tr>
+<tr class="separator:a36600c1db0a4b8954b57bfa87ad536fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">

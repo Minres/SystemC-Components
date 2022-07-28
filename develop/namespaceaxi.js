@@ -1,6 +1,7 @@
 var namespaceaxi =
 [
     [ "checker", null, [
+      [ "ace_protocol", "classaxi_1_1checker_1_1ace__protocol.html", "classaxi_1_1checker_1_1ace__protocol" ],
       [ "axi_protocol", "classaxi_1_1checker_1_1axi__protocol.html", "classaxi_1_1checker_1_1axi__protocol" ],
       [ "checker_if", "structaxi_1_1checker_1_1checker__if.html", "structaxi_1_1checker_1_1checker__if" ]
     ] ],
@@ -37,16 +38,19 @@ var namespaceaxi =
         [ "ace_recording_payload", "classaxi_1_1scv_1_1impl_1_1ace__recording__payload.html", "classaxi_1_1scv_1_1impl_1_1ace__recording__payload" ],
         [ "ace_recording_types", "structaxi_1_1scv_1_1impl_1_1ace__recording__types.html", "structaxi_1_1scv_1_1impl_1_1ace__recording__types" ]
       ] ],
+      [ "ace_ext_recording", "classaxi_1_1scv_1_1ace__ext__recording.html", null ],
       [ "ace_rec_initiator_socket", "classaxi_1_1scv_1_1ace__rec__initiator__socket.html", "classaxi_1_1scv_1_1ace__rec__initiator__socket" ],
       [ "ace_recorder", "classaxi_1_1scv_1_1ace__recorder.html", "classaxi_1_1scv_1_1ace__recorder" ],
+      [ "axi3_ext_recording", "classaxi_1_1scv_1_1axi3__ext__recording.html", null ],
+      [ "axi4_ext_recording", "classaxi_1_1scv_1_1axi4__ext__recording.html", null ],
       [ "axi_rec_initiator_socket", "classaxi_1_1scv_1_1axi__rec__initiator__socket.html", "classaxi_1_1scv_1_1axi__rec__initiator__socket" ],
       [ "axi_rec_target_socket", "classaxi_1_1scv_1_1axi__rec__target__socket.html", "classaxi_1_1scv_1_1axi__rec__target__socket" ],
       [ "axi_recorder", "classaxi_1_1scv_1_1axi__recorder.html", "classaxi_1_1scv_1_1axi__recorder" ],
-      [ "axitlm_recorder_module", "classaxi_1_1scv_1_1axitlm__recorder__module.html", "classaxi_1_1scv_1_1axitlm__recorder__module" ]
+      [ "axitlm_recorder_module", "classaxi_1_1scv_1_1axitlm__recorder__module.html", "classaxi_1_1scv_1_1axitlm__recorder__module" ],
+      [ "tlm_id_ext_recording", "classaxi_1_1scv_1_1tlm__id__ext__recording.html", null ]
     ] ],
     [ "ace", "structaxi_1_1ace.html", "structaxi_1_1ace" ],
     [ "ace_bw_transport_if", "classaxi_1_1ace__bw__transport__if.html", null ],
-    [ "ace_ext_recording", "classaxi_1_1ace__ext__recording.html", null ],
     [ "ace_extension", "structaxi_1_1ace__extension.html", "structaxi_1_1ace__extension" ],
     [ "ace_initiator_socket", "structaxi_1_1ace__initiator__socket.html", "structaxi_1_1ace__initiator__socket" ],
     [ "ace_response", "structaxi_1_1ace__response.html", "structaxi_1_1ace__response" ],
@@ -54,11 +58,9 @@ var namespaceaxi =
     [ "ar_ch", "structaxi_1_1ar__ch.html", "structaxi_1_1ar__ch" ],
     [ "aw_ch", "structaxi_1_1aw__ch.html", "structaxi_1_1aw__ch" ],
     [ "axi3", "structaxi_1_1axi3.html", "structaxi_1_1axi3" ],
-    [ "axi3_ext_recording", "classaxi_1_1axi3__ext__recording.html", null ],
     [ "axi3_extension", "structaxi_1_1axi3__extension.html", "structaxi_1_1axi3__extension" ],
     [ "axi4", "structaxi_1_1axi4.html", "structaxi_1_1axi4" ],
     [ "axi4_cfg", "structaxi_1_1axi4__cfg.html", "structaxi_1_1axi4__cfg" ],
-    [ "axi4_ext_recording", "classaxi_1_1axi4__ext__recording.html", null ],
     [ "axi4_extension", "structaxi_1_1axi4__extension.html", "structaxi_1_1axi4__extension" ],
     [ "axi4_lite_cfg", "structaxi_1_1axi4__lite__cfg.html", "structaxi_1_1axi4__lite__cfg" ],
     [ "axi_extension", "structaxi_1_1axi__extension.html", "structaxi_1_1axi__extension" ],
@@ -89,6 +91,5 @@ var namespaceaxi =
     [ "select_if< true, T, S >", "structaxi_1_1select__if_3_01true_00_01T_00_01S_01_4.html", "structaxi_1_1select__if_3_01true_00_01T_00_01S_01_4" ],
     [ "signal_types", "structaxi_1_1signal__types.html", "structaxi_1_1signal__types" ],
     [ "slave_types", "structaxi_1_1slave__types.html", "structaxi_1_1slave__types" ],
-    [ "tlm_id_ext_recording", "classaxi_1_1tlm__id__ext__recording.html", null ],
     [ "wdata_ch", "structaxi_1_1wdata__ch.html", "structaxi_1_1wdata__ch" ]
 ];

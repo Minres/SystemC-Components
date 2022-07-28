@@ -124,9 +124,9 @@ $(document).ready(function(){initNavTree('fifo__w__cb_8h_source.html',''); initR
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> set_avail_cb(std::function&lt;<span class="keywordtype">void</span>(<span class="keywordtype">void</span>)&gt; f) { avail_cb = f; }</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> set_empty_cb(std::function&lt;<span class="keywordtype">void</span>(<span class="keywordtype">void</span>)&gt; f) { empty_cb = f; }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#ifndef CWR_SYSTEMC</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">inline</span> sc_core::sc_event <span class="keyword">const</span>&amp; data_written_event()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> data_written_event; }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">inline</span> sc_core::sc_event <span class="keyword">const</span>&amp; data_written_event()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> data_written_evt; }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">protected</span>:</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// the update method (does nothing by default)</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> update() {</div>

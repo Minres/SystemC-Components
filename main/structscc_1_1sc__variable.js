@@ -24,9 +24,13 @@ var structscc_1_1sc__variable =
     [ "operator/", "structscc_1_1sc__variable.html#abbd681479fc0dad8076f12813ca0628a", null ],
     [ "operator/", "structscc_1_1sc__variable.html#a0b8871f796666806ae98c68a2ad865d9", null ],
     [ "operator/=", "structscc_1_1sc__variable.html#a3ecec6a92f5ad1fab6cbb1f4f39a97f8", null ],
+    [ "operator<", "structscc_1_1sc__variable.html#aa108053c794ce99bc391e2c3e2feef4f", null ],
+    [ "operator<=", "structscc_1_1sc__variable.html#a1eba20a9a30a30dcb04fb79660f8df14", null ],
     [ "operator=", "structscc_1_1sc__variable.html#a0ad425b8872e0dc17606ee8b7c74e0c7", null ],
     [ "operator==", "structscc_1_1sc__variable.html#a176b5774c0876a56be0f585855fb124a", null ],
+    [ "operator>", "structscc_1_1sc__variable.html#adac78aeba6128e037e6abcbab286b2e0", null ],
+    [ "operator>=", "structscc_1_1sc__variable.html#ac45bc448bb25ffe9e4f235c7558ee308", null ],
     [ "to_string", "structscc_1_1sc__variable.html#ab1b465d662ed1c27b44c2cbf5c4aea84", null ],
-    [ "trace", "structscc_1_1sc__variable.html#a12cf9205e1c81d082a26e1ef1c6364c6", null ],
-    [ "trace", "structscc_1_1sc__variable.html#ab61cbeb514fcb32d889e478d783ceaf2", null ]
+    [ "trace", "structscc_1_1sc__variable.html#a476a0914d4bbbbecc4ca84fd920db5a2", null ],
+    [ "trace", "structscc_1_1sc__variable.html#a12cf9205e1c81d082a26e1ef1c6364c6", null ]
 ];

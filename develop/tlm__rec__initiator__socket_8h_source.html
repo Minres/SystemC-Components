@@ -138,8 +138,8 @@ $(document).ready(function(){initNavTree('tlm__rec__initiator__socket_8h_source.
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                POL</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;#endif</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                &gt;(name)</div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1scv_1_1tlm__rec__initiator__socket.html">   74</a></span>&#160;    , fw_port(sc_core::sc_gen_unique_name(&quot;fw&quot;))</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    , bw_port(sc_core::sc_gen_unique_name(&quot;bw&quot;))</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1scv_1_1tlm__rec__initiator__socket.html">   74</a></span>&#160;    , fw_port(sc_core::sc_gen_unique_name(&quot;$$$_fw&quot;))</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    , bw_port(sc_core::sc_gen_unique_name(&quot;$$$_bw&quot;))</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    , recorder(this-&gt;name(), fw_port, bw_port) {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
@@ -185,8 +185,8 @@ $(document).ready(function(){initNavTree('tlm__rec__initiator__socket_8h_source.
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;protected:</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    sc_core::sc_port&lt;tlm::tlm_fw_transport_if&lt;TYPES&gt;&gt; fw_port;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    sc_core::sc_port&lt;tlm::tlm_bw_transport_if&lt;TYPES&gt;&gt; bw_port;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    sc_core::sc_port&lt;tlm::tlm_fw_transport_if&lt;TYPES&gt;&gt; fw_port{sc_core::sc_gen_unique_name(&quot;$$$__rec_fw__$$$&quot;)};</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    sc_core::sc_port&lt;tlm::tlm_bw_transport_if&lt;TYPES&gt;&gt; bw_port{sc_core::sc_gen_unique_name(&quot;$$$__rec_bw__$$$&quot;)};</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    scv::tlm_recorder&lt;TYPES&gt; recorder;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;};</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;} <span class="comment">// namespace scv</span></div>

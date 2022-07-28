@@ -107,6 +107,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5617b49c320ec24fe2b7c106071d0842"><td class="memItemLeft" align="right" valign="top"><a id="a5617b49c320ec24fe2b7c106071d0842"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>tx_reorderer</b> (const sc_core::sc_module_name &amp;nm)</td></tr>
 <tr class="separator:a5617b49c320ec24fe2b7c106071d0842"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a782bade081d444743ae0958e99ce8d3d"><td class="memItemLeft" align="right" valign="top"><a id="a782bade081d444743ae0958e99ce8d3d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1tx__reorderer.html#a782bade081d444743ae0958e99ce8d3d">add_attributes</a> (sc_core::sc_module &amp;parent)</td></tr>
+<tr class="memdesc:a782bade081d444743ae0958e99ce8d3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">registers attributes in current sc_object tree context <br /></td></tr>
+<tr class="separator:a782bade081d444743ae0958e99ce8d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35041a8f793102c532bc5c507e4dc405"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1tx__reorderer.html#a35041a8f793102c532bc5c507e4dc405">transport</a> (tlm::tlm_generic_payload &amp;payload, bool lt_transport=false) override</td></tr>
 <tr class="separator:a35041a8f793102c532bc5c507e4dc405"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a089f7096bcf7a4fb137383a5e52af6fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1tx__reorderer.html#a089f7096bcf7a4fb137383a5e52af6fe">snoop_resp</a> (tlm::tlm_generic_payload &amp;payload, bool sync=false) override</td></tr>
@@ -124,14 +128,21 @@ sc_core::sc_export&lt; <a class="el" href="structtlm_1_1scc_1_1pe_1_1intor__fw__
 sc_core::sc_port&lt; <a class="el" href="structtlm_1_1scc_1_1pe_1_1intor__bw__nb.html">tlm::scc::pe::intor_bw_nb</a>, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bw_o</b> {&quot;bw_o&quot;}</td></tr>
 <tr class="separator:a773039e0990d8cb87486c3788eca8fd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53975d63f2136a1340e8d1029ad34e52"><td class="memItemLeft" align="right" valign="top"><a id="a53975d63f2136a1340e8d1029ad34e52"></a>
-sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>min_latency</b> {&quot;min_latency&quot;, 10}</td></tr>
+sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1tx__reorderer.html#a53975d63f2136a1340e8d1029ad34e52">min_latency</a> {&quot;min_latency&quot;, 10}</td></tr>
+<tr class="memdesc:a53975d63f2136a1340e8d1029ad34e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">the minimum time a transaction will stay in the target <br /></td></tr>
 <tr class="separator:a53975d63f2136a1340e8d1029ad34e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa14ebf5354f2ef9a9cd5908d5d9d5adb"><td class="memItemLeft" align="right" valign="top"><a id="aa14ebf5354f2ef9a9cd5908d5d9d5adb"></a>
-sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>max_latency</b> {&quot;max_latency&quot;, 100}</td></tr>
+sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1tx__reorderer.html#aa14ebf5354f2ef9a9cd5908d5d9d5adb">max_latency</a> {&quot;max_latency&quot;, 100}</td></tr>
+<tr class="memdesc:aa14ebf5354f2ef9a9cd5908d5d9d5adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">the maximum time a transaction is allwed to stay in the target <br /></td></tr>
 <tr class="separator:aa14ebf5354f2ef9a9cd5908d5d9d5adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08e6706028b47397ea707172926eed6e"><td class="memItemLeft" align="right" valign="top"><a id="a08e6706028b47397ea707172926eed6e"></a>
-sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>window_size</b> {&quot;window_size&quot;, 2}</td></tr>
+<tr class="memitem:a08e6706028b47397ea707172926eed6e"><td class="memItemLeft" align="right" valign="top">sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1tx__reorderer.html#a08e6706028b47397ea707172926eed6e">window_size</a> {&quot;window_size&quot;, 2}</td></tr>
 <tr class="separator:a08e6706028b47397ea707172926eed6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a600473a570ef05ba0b9b94eafc508822"><td class="memItemLeft" align="right" valign="top">sc_core::sc_attribute&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1tx__reorderer.html#a600473a570ef05ba0b9b94eafc508822">prioritize_by_latency</a> {&quot;prioritize_by_latency&quot;, false}</td></tr>
+<tr class="separator:a600473a570ef05ba0b9b94eafc508822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53f5685093ebd5e74efc4c3a63d1cf46"><td class="memItemLeft" align="right" valign="top"><a id="a53f5685093ebd5e74efc4c3a63d1cf46"></a>
+sc_core::sc_attribute&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1tx__reorderer.html#a53f5685093ebd5e74efc4c3a63d1cf46">prioritize_by_qos</a> {&quot;prioritize_by_qos&quot;, false}</td></tr>
+<tr class="memdesc:a53f5685093ebd5e74efc4c3a63d1cf46"><td class="mdescLeft">&#160;</td><td class="mdescRight">use the QoS field for selection. <br /></td></tr>
+<tr class="separator:a53f5685093ebd5e74efc4c3a63d1cf46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -141,9 +152,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clock_cb</b> ()</td><
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a4160fb5b4832b4f68e8a91c1c0c32586"><td class="memItemLeft" align="right" valign="top"><a id="a4160fb5b4832b4f68e8a91c1c0c32586"></a>
-std::unordered_map&lt; unsigned, std::deque&lt; <a class="el" href="structaxi_1_1pe_1_1tx__reorderer_1_1que__entry.html">que_entry</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>reorder_buffer</b></td></tr>
-<tr class="separator:a4160fb5b4832b4f68e8a91c1c0c32586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ccfba1f1c3ec3ca495e6907e2d97259"><td class="memItemLeft" align="right" valign="top"><a id="a5ccfba1f1c3ec3ca495e6907e2d97259"></a>
+std::array&lt; std::unordered_map&lt; unsigned, std::deque&lt; <a class="el" href="structaxi_1_1pe_1_1tx__reorderer_1_1que__entry.html">que_entry</a> &gt; &gt;, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>reorder_buffer</b></td></tr>
+<tr class="separator:a5ccfba1f1c3ec3ca495e6907e2d97259"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -193,7 +204,7 @@ std::unordered_map&lt; unsigned, std::deque&lt; <a class="el" href="structaxi_1_
 
 <p>Implements <a class="el" href="structtlm_1_1scc_1_1pe_1_1intor__fw.html#a1e85d9861b52f3ec31c17e107ccd852b">tlm::scc::pe::intor_fw&lt; type::NB &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="reordering__target_8h_source.html#l00052">52</a> of file <a class="el" href="reordering__target_8h_source.html">reordering_target.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reordering__target_8h_source.html#l00062">62</a> of file <a class="el" href="reordering__target_8h_source.html">reordering_target.h</a>.</p>
 
 </div>
 </div>
@@ -241,7 +252,42 @@ std::unordered_map&lt; unsigned, std::deque&lt; <a class="el" href="structaxi_1_
 
 <p>Implements <a class="el" href="structtlm_1_1scc_1_1pe_1_1intor__fw.html#a69f17795eabb5192d5388dd6b67e4109">tlm::scc::pe::intor_fw&lt; type::NB &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="reordering__target_8cpp_source.html#l00028">28</a> of file <a class="el" href="reordering__target_8cpp_source.html">reordering_target.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reordering__target_8cpp_source.html#l00034">34</a> of file <a class="el" href="reordering__target_8cpp_source.html">reordering_target.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a600473a570ef05ba0b9b94eafc508822"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a600473a570ef05ba0b9b94eafc508822">&#9670;&nbsp;</a></span>prioritize_by_latency</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sc_core::sc_attribute&lt;bool&gt; axi::pe::tx_reorderer::prioritize_by_latency {&quot;prioritize_by_latency&quot;, false}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>use the waiting time as priority value - the longer a transaction waits the higher the probability becomes to be selected </p>
+
+<p class="definition">Definition at line <a class="el" href="reordering__target_8h_source.html#l00040">40</a> of file <a class="el" href="reordering__target_8h_source.html">reordering_target.h</a>.</p>
+
+</div>
+</div>
+<a id="a08e6706028b47397ea707172926eed6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08e6706028b47397ea707172926eed6e">&#9670;&nbsp;</a></span>window_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sc_core::sc_attribute&lt;unsigned&gt; axi::pe::tx_reorderer::window_size {&quot;window_size&quot;, 2}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>minimum number of transaction to start with reordering. If the total number is below the threshold transaction will stay for max_latency </p>
+
+<p class="definition">Definition at line <a class="el" href="reordering__target_8h_source.html#l00037">37</a> of file <a class="el" href="reordering__target_8h_source.html">reordering_target.h</a>.</p>
 
 </div>
 </div>

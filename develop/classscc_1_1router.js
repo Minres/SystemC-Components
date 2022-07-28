@@ -1,7 +1,7 @@
 var classscc_1_1router =
 [
     [ "range_entry", "structscc_1_1router_1_1range__entry.html", "structscc_1_1router_1_1range__entry" ],
-    [ "intor_sckt", "classscc_1_1router.html#a92c1c5651d89757307eee8de6b2d3798", null ],
+    [ "intor_sckt", "classscc_1_1router.html#a5d8b6234796164378ba13e1042ccf3e7", null ],
     [ "target_sckt", "classscc_1_1router.html#a0a63f8784ee67d056fd249186e267421", null ],
     [ "router", "classscc_1_1router.html#a32662fcef70408cc67467ebb38d98fe3", null ],
     [ "~router", "classscc_1_1router.html#a4bb3c6b605998af4f740906ead7bb55a", null ],

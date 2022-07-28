@@ -104,6 +104,11 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:a0404dbf2e548122d9ee41d6dd5e9028c"><td class="memItemLeft" align="right" valign="top"><a id="a0404dbf2e548122d9ee41d6dd5e9028c"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>BEFORE_END_OF_ELABORATION</b> =1, 
+<b>END_OF_ELABORATION</b> =2, 
+<b>START_OF_SIMULATION</b> =4
+ }</td></tr>
+<tr class="separator:a0404dbf2e548122d9ee41d6dd5e9028c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78591f63e769afc8873a343172ed64e5"><td class="memItemLeft" align="right" valign="top"><a id="a78591f63e769afc8873a343172ed64e5"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>base_type</b> = sc_core::sc_module</td></tr>
 <tr class="separator:a78591f63e769afc8873a343172ed64e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,8 +118,8 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>broker_t</b> = void 
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adcef73b457b33554f3ad6aebbf04e4c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#adcef73b457b33554f3ad6aebbf04e4c7">configurer</a> (const std::string &amp;filename)</td></tr>
-<tr class="separator:adcef73b457b33554f3ad6aebbf04e4c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d9c9e2b44244f91ec78af2567c8965c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a4d9c9e2b44244f91ec78af2567c8965c">configurer</a> (const std::string &amp;filename, unsigned config_phases=BEFORE_END_OF_ELABORATION)</td></tr>
+<tr class="separator:a4d9c9e2b44244f91ec78af2567c8965c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adcdff187cfbdc77ce7378fec4c4b73c1"><td class="memItemLeft" align="right" valign="top"><a id="adcdff187cfbdc77ce7378fec4c4b73c1"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>configurer</b> (const <a class="el" href="classscc_1_1configurer.html">configurer</a> &amp;)=delete</td></tr>
 <tr class="separator:adcdff187cfbdc77ce7378fec4c4b73c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,6 +171,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:aa5e1f2199733113a59b90a0865d6969c"><td class="memItemLeft" align="right" valign="top"><a id="aa5e1f2199733113a59b90a0865d6969c"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>config_valid</b> {false}</td></tr>
 <tr class="separator:aa5e1f2199733113a59b90a0865d6969c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af07276ab4de4ab27478bd49ce334f710"><td class="memItemLeft" align="right" valign="top"><a id="af07276ab4de4ab27478bd49ce334f710"></a>
+const unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>config_phases</b></td></tr>
+<tr class="separator:af07276ab4de4ab27478bd49ce334f710"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a02e2604f585199d4fe7c6f03ce6304"><td class="memItemLeft" align="right" valign="top"><a id="a7a02e2604f585199d4fe7c6f03ce6304"></a>
 std::unique_ptr&lt; <a class="el" href="structscc_1_1configurer_1_1ConfigHolder.html">ConfigHolder</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>root</b></td></tr>
 <tr class="separator:a7a02e2604f585199d4fe7c6f03ce6304"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,8 +190,8 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
 
 <p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00051">51</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="adcef73b457b33554f3ad6aebbf04e4c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcef73b457b33554f3ad6aebbf04e4c7">&#9670;&nbsp;</a></span>configurer()</h2>
+<a id="a4d9c9e2b44244f91ec78af2567c8965c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d9c9e2b44244f91ec78af2567c8965c">&#9670;&nbsp;</a></span>configurer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -192,8 +200,18 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
           <td class="memname">scc::configurer::configurer </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>config_phases</em> = <code>BEFORE_END_OF_ELABORATION</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -225,7 +243,7 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
 </div><div class="memdoc">
 <p>configure the design hierarchy using the input file. Apply the values to sc_core::sc_attribute in th edsign hierarchy </p>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00391">391</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00392">392</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
 
 </div>
 </div>
@@ -263,7 +281,7 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00380">380</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00381">381</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
 
 </div>
 </div>
@@ -298,7 +316,7 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00103">103</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00106">106</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
 
 </div>
 </div>
@@ -336,7 +354,7 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00369">369</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00370">370</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
 
 </div>
 </div>
@@ -365,7 +383,7 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
 <p>find the configurer in the design hierarchy</p>
 <dl class="section return"><dt>Returns</dt><dd>reference to the singleton </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00147">147</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00150">150</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
 
 </div>
 </div>
@@ -403,7 +421,7 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00406">406</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00407">407</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
 
 </div>
 </div>
@@ -451,7 +469,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00110">110</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00113">113</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
 
 </div>
 </div>

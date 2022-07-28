@@ -143,7 +143,8 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 , <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__recorder.html#acb035f487760eb33d508ea1585bd66be">tlm::scc::scv::tlm_recorder&lt; TYPES &gt;</a>
 </li>
 <li>enableProtocolChecker
-: <a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#a989a9dc0a4656b0cfa73a57dc0893c30">axi::scv::axi_recorder&lt; TYPES &gt;</a>
+: <a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#a7a02af6cd156e1654be96f40d4de04e4">axi::scv::ace_recorder&lt; TYPES &gt;</a>
+, <a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#a989a9dc0a4656b0cfa73a57dc0893c30">axi::scv::axi_recorder&lt; TYPES &gt;</a>
 </li>
 <li>enableTimedTracing
 : <a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#aca0d292c247362d78ad21dfc2255f91b">axi::scv::ace_recorder&lt; TYPES &gt;</a>
@@ -164,7 +165,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 : <a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html#a492c1c639c3ce74f9ffd917372a43c4a">axi::fsm::fsm_handle</a>
 </li>
 <li>fsm
-: <a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">axi::fsm::fsm_handle</a>
+: <a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">axi::fsm::fsm_handle</a>
 </li>
 <li>fw_port
 : <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__recorder.html#ad09e8834e0083d1e7d6f1d045d0876e0">tlm::scc::scv::tlm_recorder&lt; TYPES &gt;</a>
@@ -197,11 +198,17 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
+<li>max_latency
+: <a class="el" href="classaxi_1_1pe_1_1tx__reorderer.html#aa14ebf5354f2ef9a9cd5908d5d9d5adb">axi::pe::tx_reorderer</a>
+</li>
 <li>max_outstanding_tx
-: <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#ae98d4113ef9b6fe9e1aa9025e469271f">axi::pe::axi_target_pe_b</a>
+: <a class="el" href="classaxi_1_1pe_1_1axi__target__pe.html#aa54ececf6de88ce312e37c59669201f8">axi::pe::axi_target_pe</a>
 </li>
 <li>mem
 : <a class="el" href="classscc_1_1memory.html#a750c47686c1c01877d256a5b31859f7c">scc::memory&lt; SIZE, BUSWIDTH &gt;</a>
+</li>
+<li>min_latency
+: <a class="el" href="classaxi_1_1pe_1_1tx__reorderer.html#a53975d63f2136a1340e8d1029ad34e52">axi::pe::tx_reorderer</a>
 </li>
 </ul>
 
@@ -227,6 +234,12 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>params
 : <a class="el" href="classscc_1_1configurable__tracer.html#aec6c804b2b6e68b3851d429cd041ddb7">scc::configurable_tracer</a>
 </li>
+<li>prioritize_by_latency
+: <a class="el" href="classaxi_1_1pe_1_1tx__reorderer.html#a600473a570ef05ba0b9b94eafc508822">axi::pe::tx_reorderer</a>
+</li>
+<li>prioritize_by_qos
+: <a class="el" href="classaxi_1_1pe_1_1tx__reorderer.html#a53f5685093ebd5e74efc4c3a63d1cf46">axi::pe::tx_reorderer</a>
+</li>
 </ul>
 
 
@@ -237,24 +250,31 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 </li>
 <li>rd_addr_accept_delay
 : <a class="el" href="classahb_1_1pe_1_1ahb__target__b.html#acd1a1c7fe677a79e153b172916ebefa2">ahb::pe::ahb_target_b</a>
-, <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#aa192e36cd708bbdc9f658103496766df">axi::pe::axi_target_pe_b</a>
+, <a class="el" href="classaxi_1_1pe_1_1axi__target__pe.html#ad5c0ebcaa7342a2abdc6828782e647a1">axi::pe::axi_target_pe</a>
 </li>
 <li>rd_bw_limit_byte_per_sec
-: <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#aae9997e51a6b6dbcb0cb35a52e847bfe">axi::pe::axi_target_pe_b</a>
+: <a class="el" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a181f2c09d6eed68d67791ea15ba8d9b4">axi::pe::rate_limiting_buffer</a>
 </li>
 <li>rd_data_accept_delay
 : <a class="el" href="classaxi_1_1pe_1_1simple__initiator__b.html#a78d9388c0f866ed75186ba1789f00f49">axi::pe::simple_initiator_b</a>
 </li>
 <li>rd_data_beat_delay
 : <a class="el" href="classahb_1_1pe_1_1ahb__target__b.html#ab085bd64962fce6e82c6780c19fbfd2c">ahb::pe::ahb_target_b</a>
-, <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#a958feaabee33fefe854dc2723257a8f6">axi::pe::axi_target_pe_b</a>
+, <a class="el" href="classaxi_1_1pe_1_1axi__target__pe.html#a8f47f0995e0294fd5c4793bf633af592">axi::pe::axi_target_pe</a>
 </li>
 <li>rd_data_interleaving
-: <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#ab651838e76ed883f37c69b90dc63d00a">axi::pe::axi_target_pe_b</a>
+: <a class="el" href="classaxi_1_1pe_1_1axi__target__pe.html#a0252b575c056deb81f209083c58e8e35">axi::pe::axi_target_pe</a>
+</li>
+<li>rd_req2resp_fifo
+: <a class="el" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a416098527119abbd3b60709b5b4c8213">axi::pe::rate_limiting_buffer</a>
 </li>
 <li>rd_resp_delay
 : <a class="el" href="classahb_1_1pe_1_1ahb__target__b.html#a510bcf84357b370c2ecdde8d1802f208">ahb::pe::ahb_target_b</a>
-, <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#a5114bb853ff060c2451f17b659c18532">axi::pe::axi_target_pe_b</a>
+, <a class="el" href="classaxi_1_1pe_1_1axi__target__pe.html#a91fa041fe116cd08465b56a5609f5fce">axi::pe::axi_target_pe</a>
+, <a class="el" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a0d53ec48bf6aaa87fca2615dd1df3caa">axi::pe::rate_limiting_buffer</a>
+</li>
+<li>rd_resp_fifo
+: <a class="el" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#ac2a7af612545c7f9d7ea15792901acac">axi::pe::rate_limiting_buffer</a>
 </li>
 <li>rdmask
 : <a class="el" href="classscc_1_1impl_1_1sc__register.html#ac14d6f9ebe5547ac2b31847f19f55afc">scc::impl::sc_register&lt; DATATYPE &gt;</a>
@@ -317,12 +337,15 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 : <a class="el" href="classahb_1_1pe_1_1ahb__initiator__b.html#a30bc72030e093be869defe765aae7a7f">ahb::pe::ahb_initiator_b</a>
 , <a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a9f063800aadb28cd7338ff63037119b2">axi::pe::axi_initiator_b</a>
 </li>
+<li>window_size
+: <a class="el" href="classaxi_1_1pe_1_1tx__reorderer.html#a08e6706028b47397ea707172926eed6e">axi::pe::tx_reorderer</a>
+</li>
 <li>wr_bw_limit_byte_per_sec
-: <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#ab93f4f261ad101d60de1d0a9bd0634b5">axi::pe::axi_target_pe_b</a>
+: <a class="el" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#aca4daa6c33e0fcf244020897a97251f6">axi::pe::rate_limiting_buffer</a>
 </li>
 <li>wr_data_accept_delay
 : <a class="el" href="classahb_1_1pe_1_1ahb__target__b.html#a3998d97bf04eb873330d87f8fff8cbc0">ahb::pe::ahb_target_b</a>
-, <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#a2108e5f6165e1935f900f863901ae578">axi::pe::axi_target_pe_b</a>
+, <a class="el" href="classaxi_1_1pe_1_1axi__target__pe.html#ac2d176cbdad5a8134b726645532c8a09">axi::pe::axi_target_pe</a>
 </li>
 <li>wr_data_beat_delay
 : <a class="el" href="classaxi_1_1pe_1_1simple__initiator__b.html#acf0a733d55cfd227933640be35117867">axi::pe::simple_initiator_b</a>
@@ -332,7 +355,8 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 </li>
 <li>wr_resp_delay
 : <a class="el" href="classahb_1_1pe_1_1ahb__target__b.html#ad2bce8d0b9c2312a61eb8d00f5442769">ahb::pe::ahb_target_b</a>
-, <a class="el" href="classaxi_1_1pe_1_1axi__target__pe__b.html#a9fc0201e73ca779c3024e0ee3968b6aa">axi::pe::axi_target_pe_b</a>
+, <a class="el" href="classaxi_1_1pe_1_1axi__target__pe.html#add4681e7ba996233066df0997e314466">axi::pe::axi_target_pe</a>
+, <a class="el" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a7677dc4e14173f5e9f4f639ac62f3ea9">axi::pe::rate_limiting_buffer</a>
 </li>
 <li>wrmask
 : <a class="el" href="classscc_1_1impl_1_1sc__register.html#a8fd3ba74745569f65b793b5abe0f335f">scc::impl::sc_register&lt; DATATYPE &gt;</a>

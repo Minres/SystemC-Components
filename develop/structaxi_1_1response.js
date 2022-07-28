@@ -1,10 +1,10 @@
 var structaxi_1_1response =
 [
-    [ "DATATRANSFER", "structaxi_1_1response.html#ac7b0e0dbbf695d70a14d9d212cebe3b8a20ada391819c7f869d4a831622b5506a", null ],
-    [ "SNOOPEERROR", "structaxi_1_1response.html#ac7b0e0dbbf695d70a14d9d212cebe3b8af804012f785dc2c168c31b93c17ba22c", null ],
-    [ "PASSDIRTY", "structaxi_1_1response.html#ac7b0e0dbbf695d70a14d9d212cebe3b8ae593411a8d54bab999e427d3d5663d17", null ],
-    [ "ISSHARED", "structaxi_1_1response.html#ac7b0e0dbbf695d70a14d9d212cebe3b8a77698e343faa4dc0e19373b2c506cf5a", null ],
-    [ "WASUNIQUE", "structaxi_1_1response.html#ac7b0e0dbbf695d70a14d9d212cebe3b8af07296b8679f26456d1b11de6d05b32b", null ],
+    [ "DATATRANSFER", "structaxi_1_1response.html#a139c253b2d83957eba602346f78b8ef6a20ada391819c7f869d4a831622b5506a", null ],
+    [ "SNOOPEERROR", "structaxi_1_1response.html#a139c253b2d83957eba602346f78b8ef6af804012f785dc2c168c31b93c17ba22c", null ],
+    [ "PASSDIRTY", "structaxi_1_1response.html#a139c253b2d83957eba602346f78b8ef6ae593411a8d54bab999e427d3d5663d17", null ],
+    [ "ISSHARED", "structaxi_1_1response.html#a139c253b2d83957eba602346f78b8ef6a77698e343faa4dc0e19373b2c506cf5a", null ],
+    [ "WASUNIQUE", "structaxi_1_1response.html#a139c253b2d83957eba602346f78b8ef6af07296b8679f26456d1b11de6d05b32b", null ],
     [ "response", "structaxi_1_1response.html#abc641034d5c7f0b00472381d323d4912", null ],
     [ "get_resp", "structaxi_1_1response.html#a1207d76357069d1d1c36c62a590a4e77", null ],
     [ "is_decerr", "structaxi_1_1response.html#a734b454b26a4c823fe10142071aefe60", null ],

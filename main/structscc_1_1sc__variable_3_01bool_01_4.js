@@ -9,6 +9,6 @@ var structscc_1_1sc__variable_3_01bool_01_4 =
     [ "operator=", "structscc_1_1sc__variable_3_01bool_01_4.html#ad2508578a5aa80c460f61aac45deab80", null ],
     [ "operator==", "structscc_1_1sc__variable_3_01bool_01_4.html#a9e43d73cd5bb6de65fd6e671e0a9ec2a", null ],
     [ "to_string", "structscc_1_1sc__variable_3_01bool_01_4.html#ac309d7eb6cd3e15aa510c53e33fb9022", null ],
-    [ "trace", "structscc_1_1sc__variable_3_01bool_01_4.html#a02d9f81c31f1d14e276af2044fec3f60", null ],
-    [ "trace", "structscc_1_1sc__variable_3_01bool_01_4.html#abd54dce39699219fe57658c78a8b38bc", null ]
+    [ "trace", "structscc_1_1sc__variable_3_01bool_01_4.html#a2624573725c99db8db44a01ca0efa16f", null ],
+    [ "trace", "structscc_1_1sc__variable_3_01bool_01_4.html#a02d9f81c31f1d14e276af2044fec3f60", null ]
 ];

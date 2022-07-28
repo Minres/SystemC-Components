@@ -36,6 +36,8 @@ var classchi_1_1pe_1_1chi__rn__initiator__b =
     [ "socket_fw", "classchi_1_1pe_1_1chi__rn__initiator__b.html#af42da6f21710721cb3477bf814cd2444", null ],
     [ "src_id", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a13c7b85bc26adf31e22355f9d67ae81b", null ],
     [ "sresp_chnl", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a8e2a9f85f63ba2f3e6ba9ed510666fe7", null ],
+    [ "strict_income_order", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a0c5d69dfdc58ef24608ba48b13461c91", null ],
+    [ "strict_order_sem", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a791e09e0ddd8573bce60421258c1df91", null ],
     [ "thread_active", "classchi_1_1pe_1_1chi__rn__initiator__b.html#ae6e6a01efbcd16e4b8333813386b35a2", null ],
     [ "thread_avail", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a1346bae723e1cb2b7655630430c8b6a3", null ],
     [ "transfer_width_in_bytes", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a49a058b28b7e8107269d15c943995538", null ],

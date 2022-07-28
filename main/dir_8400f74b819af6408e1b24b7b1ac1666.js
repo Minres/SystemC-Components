@@ -10,6 +10,8 @@ var dir_8400f74b819af6408e1b24b7b1ac1666 =
     [ "fifo_w_cb.h", "fifo__w__cb_8h_source.html", null ],
     [ "fst_trace.cpp", "fst__trace_8cpp_source.html", null ],
     [ "fst_trace.hh", "fst__trace_8hh_source.html", null ],
+    [ "hierarchy_dumper.cpp", "hierarchy__dumper_8cpp_source.html", null ],
+    [ "hierarchy_dumper.h", "hierarchy__dumper_8h_source.html", null ],
     [ "mt19937_rng.cpp", "mt19937__rng_8cpp_source.html", null ],
     [ "mt19937_rng.h", "sysc_2scc_2mt19937__rng_8h_source.html", null ],
     [ "observer.h", "observer_8h_source.html", null ],

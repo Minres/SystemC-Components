@@ -66,7 +66,7 @@ $(document).ready(function(){initNavTree('base_8cpp_source.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2020 Arteris IP</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2020 - 2022 Arteris IP</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -89,266 +89,275 @@ $(document).ready(function(){initNavTree('base_8cpp_source.html',''); initResiza
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;systemc&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;tlm/scc/tlm_id.h&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;tlm/scc/tlm_mm.h&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using namespace </span>sc_core;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span>tlm;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespaceaxi.html">axi</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using namespace </span>axi::fsm;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1base.html#ac8655e267bed3a262044ae67b99b0f69">   31</a></span>&#160;base::base(<span class="keywordtype">size_t</span> transfer_width, <span class="keywordtype">bool</span> coherent, protocol_time_point_e wr_start)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;: transfer_width_in_bytes(transfer_width / 8)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;, wr_start(wr_start)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;, coherent(coherent) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    assert(wr_start == RequestPhaseBeg || wr_start == WValidE);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    idle_fsm.clear();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    active_fsm.clear();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    sc_core::sc_spawn_options opts;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    opts.dont_initialize();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    opts.spawn_method();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    opts.set_sensitivity(&amp;fsm_event_queue.<a class="code" href="structscc_1_1peq.html#afdaac52f71290ee8c038843d728b1704">event</a>());</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    sc_core::sc_spawn(sc_bind(&amp;<a class="code" href="structaxi_1_1fsm_1_1base.html#abc811c86ced6af3b97a0dbef28832275">base::process_fsm_event</a>, <span class="keyword">this</span>), sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;fsm_event_method&quot;</span>), &amp;opts);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    fsm_clk_queue.set_avail_cb([<span class="keyword">this</span>]() {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span>(fsm_clk_queue_hndl.valid())</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            fsm_clk_queue_hndl.enable();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    });</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    fsm_clk_queue.set_empty_cb([<span class="keyword">this</span>]() {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">if</span>(fsm_clk_queue_hndl.valid())</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            fsm_clk_queue_hndl.disable();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    });</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1base.html#aa6ce07ee0ee43a35e7b52870ee6d2e42">   53</a></span>&#160;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html">fsm_handle</a>* <a class="code" href="structaxi_1_1fsm_1_1base.html#aa6ce07ee0ee43a35e7b52870ee6d2e42">base::find_or_create</a>(<a class="code" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a>* gp, <span class="keywordtype">bool</span> <a class="code" href="structaxi_1_1ace.html">ace</a>) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">const</span> <span class="keyword">static</span> std::array&lt;std::string, 3&gt; cmd{{<span class="stringliteral">&quot;RD&quot;</span>, <span class="stringliteral">&quot;WR&quot;</span>, <span class="stringliteral">&quot;IGN&quot;</span>}};</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">auto</span> it = active_fsm.find(gp);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span>(!gp || it == active_fsm.end()) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span>(gp) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;creating fsm for trans &quot;</span> &lt;&lt; *gp;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;creating fsm for undefined transaction&quot;</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span>(idle_fsm.empty()) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keyword">auto</span> fsm_hndl = <a class="code" href="structaxi_1_1fsm_1_1base.html#ae8a76a1d8e9fd2fc4a90f1219767ff92">create_fsm_handle</a>();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keyword">auto</span> fsm = <span class="keyword">new</span> <a class="code" href="structaxi_1_1fsm_1_1AxiProtocolFsm.html">AxiProtocolFsm</a>();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            fsm-&gt;initiate();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            fsm_hndl-&gt;fsm = fsm;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a531305a4a623f70f41f2249028dbedde">setup_callbacks</a>(fsm_hndl);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            idle_fsm.push_back(fsm_hndl);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">auto</span> fsm_hndl = idle_fsm.front();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        idle_fsm.pop_front();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        fsm_hndl-&gt;reset();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">if</span>(gp != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            fsm_hndl-&gt;trans = gp;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            fsm_hndl-&gt;trans = <a class="code" href="structaxi_1_1ace.html">ace</a> ? <a class="code" href="classtlm_1_1scc_1_1tlm__mm.html#ad96d412a19c84b6d945e939d313f361a">tlm::scc::tlm_mm&lt;&gt;::get</a>().<a class="code" href="classtlm_1_1scc_1_1tlm__mm.html#a4165697b94ec8d972cec1ef316f0092b">allocate</a>&lt;<a class="code" href="structaxi_1_1ace__extension.html">ace_extension</a>&gt;()</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                  : <a class="code" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt;&gt;::get</a>().<a class="code" href="classtlm_1_1scc_1_1tlm__mm.html#a4165697b94ec8d972cec1ef316f0092b">allocate</a>&lt;<a class="code" href="structaxi_1_1axi4__extension.html">axi4_extension</a>&gt;();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        active_fsm.insert(std::make_pair(fsm_hndl-&gt;trans.get(), fsm_hndl));</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        fsm_hndl-&gt;start = sc_time_stamp();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> fsm_hndl;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        it-&gt;second-&gt;start = sc_time_stamp();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> it-&gt;second;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1base.html#abc811c86ced6af3b97a0dbef28832275">   88</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="structaxi_1_1fsm_1_1base.html#abc811c86ced6af3b97a0dbef28832275">base::process_fsm_event</a>() {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">while</span>(<span class="keyword">auto</span> e = fsm_event_queue.<a class="code" href="structscc_1_1peq.html#a96f03772cd30574ba45a4b50f39c76c8">get_next</a>()) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keyword">auto</span> entry = e.get();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">if</span>(std::get&lt;2&gt;(entry))</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(std::get&lt;0&gt;(entry), std::get&lt;1&gt;(entry), 0);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(std::get&lt;0&gt;(entry), std::get&lt;1&gt;(entry));</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1base.html#ac0ea934f6292a98b73bf3e81c0a9ef48">   98</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="structaxi_1_1fsm_1_1base.html#ac0ea934f6292a98b73bf3e81c0a9ef48">base::process_fsm_clk_queue</a>() {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">if</span>(!fsm_clk_queue_hndl.valid())</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        fsm_clk_queue_hndl = sc_process_handle(sc_get_current_process_handle());</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span>(fsm_clk_queue.avail())</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">while</span>(fsm_clk_queue.avail()) {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keyword">auto</span> entry = fsm_clk_queue.front();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">if</span>(std::get&lt;2&gt;(entry) == 0) {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;processing event &quot;</span> &lt;&lt; evt2str(std::get&lt;0&gt;(entry)) &lt;&lt; <span class="stringliteral">&quot; of trans &quot;</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                                        &lt;&lt; *std::get&lt;1&gt;(entry);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(std::get&lt;0&gt;(entry), std::get&lt;1&gt;(entry));</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                std::get&lt;2&gt;(entry) -= 1;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                fsm_clk_queue.push_back(entry);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            fsm_clk_queue.pop_front();</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="comment">// fall asleep if there is nothing to process</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        fsm_clk_queue_hndl.disable();</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keywordtype">void</span> <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">base::react</a>(protocol_time_point_e event, <a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html">axi::fsm::fsm_handle</a>* fsm_hndl) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">switch</span>(event) {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">case</span> WValidE:</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1WReq.html">WReq</a>());</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">case</span> WReadyE:</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">case</span> RequestPhaseBeg:</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="namespaceaxi.html#ad48f42fa6a7b36b4928191327f2f4c94">is_burst</a>(*fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>) &amp;&amp; fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>-&gt;is_write() &amp;&amp;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;           !is_dataless(fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>-&gt;get_extension&lt;<a class="code" href="structaxi_1_1ace__extension.html">axi::ace_extension</a>&gt;()))</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1BegPartReq.html">BegPartReq</a>());</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1BegReq.html">BegReq</a>());</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;scc/utilities.h&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span>sc_core;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using namespace </span>tlm;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceaxi.html">axi</a> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span>fsm {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;fsm_handle::fsm_handle():fsm{<span class="keyword">new</span> AxiProtocolFsm()} {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    fsm-&gt;initiate();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;fsm_handle::~fsm_handle(){</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    fsm-&gt;terminate();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">delete</span> fsm;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1base.html#a59d8b6978f975d7e748555c5e6699962">   41</a></span>&#160;base::base(<span class="keywordtype">size_t</span> transfer_width, <span class="keywordtype">bool</span> coherent, protocol_time_point_e wr_start)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;: transfer_width_in_bytes(transfer_width / 8)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;, wr_start(wr_start)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;, coherent(coherent) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    assert(wr_start == RequestPhaseBeg || wr_start == WValidE);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    idle_fsm.clear();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    active_fsm.clear();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    sc_core::sc_spawn_options opts;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    opts.dont_initialize();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    opts.spawn_method();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    opts.set_sensitivity(&amp;fsm_event_queue.<a class="code" href="structscc_1_1peq.html#afdaac52f71290ee8c038843d728b1704">event</a>());</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    sc_core::sc_spawn(sc_bind(&amp;<a class="code" href="structaxi_1_1fsm_1_1base.html#ab0c33b46e6d313a33ce1a356ccc596af">base::process_fsm_event</a>, <span class="keyword">this</span>), sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;fsm_event_method&quot;</span>), &amp;opts);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    fsm_clk_queue.set_avail_cb([<span class="keyword">this</span>]() {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span>(fsm_clk_queue_hndl.valid())</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            fsm_clk_queue_hndl.enable();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    });</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    fsm_clk_queue.set_empty_cb([<span class="keyword">this</span>]() {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">if</span>(fsm_clk_queue_hndl.valid())</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            fsm_clk_queue_hndl.disable();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    });</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1base.html#aa22ba0281d929364938d62b0d3930b7b">   63</a></span>&#160;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html">fsm_handle</a>* <a class="code" href="structaxi_1_1fsm_1_1base.html#aa22ba0281d929364938d62b0d3930b7b">base::find_or_create</a>(<a class="code" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a>* gp, <span class="keywordtype">bool</span> <a class="code" href="structaxi_1_1ace.html">ace</a>) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">const</span> <span class="keyword">static</span> std::array&lt;std::string, 3&gt; cmd{{<span class="stringliteral">&quot;RD&quot;</span>, <span class="stringliteral">&quot;WR&quot;</span>, <span class="stringliteral">&quot;IGN&quot;</span>}};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">auto</span> it = active_fsm.find(gp);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span>(!gp || it == active_fsm.end()) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span>(gp) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;creating fsm for trans &quot;</span> &lt;&lt; *gp;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;creating fsm for undefined transaction&quot;</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">if</span>(idle_fsm.empty()) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keyword">auto</span> fsm_hndl = <a class="code" href="structaxi_1_1fsm_1_1base.html#ae8a76a1d8e9fd2fc4a90f1219767ff92">create_fsm_handle</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a531305a4a623f70f41f2249028dbedde">setup_callbacks</a>(fsm_hndl);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            idle_fsm.push_back(fsm_hndl);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            allocated_fsm.emplace_back(fsm_hndl);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">auto</span> fsm_hndl = idle_fsm.front();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        idle_fsm.pop_front();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        fsm_hndl-&gt;reset();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">if</span>(gp != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            fsm_hndl-&gt;trans = gp;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            fsm_hndl-&gt;trans = <a class="code" href="structaxi_1_1ace.html">ace</a> ? <a class="code" href="classtlm_1_1scc_1_1tlm__mm.html#ad96d412a19c84b6d945e939d313f361a">tlm::scc::tlm_mm&lt;&gt;::get</a>().<a class="code" href="classtlm_1_1scc_1_1tlm__mm.html#a4165697b94ec8d972cec1ef316f0092b">allocate</a>&lt;<a class="code" href="structaxi_1_1ace__extension.html">ace_extension</a>&gt;()</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                  : <a class="code" href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm&lt;&gt;::get</a>().<a class="code" href="classtlm_1_1scc_1_1tlm__mm.html#a4165697b94ec8d972cec1ef316f0092b">allocate</a>&lt;<a class="code" href="structaxi_1_1axi4__extension.html">axi4_extension</a>&gt;();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        active_fsm.insert(std::make_pair(fsm_hndl-&gt;trans.get(), fsm_hndl));</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        fsm_hndl-&gt;start = sc_time_stamp();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">return</span> fsm_hndl;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        it-&gt;second-&gt;start = sc_time_stamp();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">return</span> it-&gt;second;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1base.html#ab0c33b46e6d313a33ce1a356ccc596af">   96</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="structaxi_1_1fsm_1_1base.html#ab0c33b46e6d313a33ce1a356ccc596af">base::process_fsm_event</a>() {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">while</span>(<span class="keyword">auto</span> e = fsm_event_queue.<a class="code" href="structscc_1_1peq.html#a96f03772cd30574ba45a4b50f39c76c8">get_next</a>()) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">auto</span> entry = e.get();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span>(std::get&lt;2&gt;(entry))</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(std::get&lt;0&gt;(entry), std::get&lt;1&gt;(entry), 0);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(std::get&lt;0&gt;(entry), std::get&lt;1&gt;(entry));</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1base.html#a61c01b63aa94fc6e2a5ec6ee6f4e06c4">  106</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="structaxi_1_1fsm_1_1base.html#a61c01b63aa94fc6e2a5ec6ee6f4e06c4">base::process_fsm_clk_queue</a>() {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span>(!fsm_clk_queue_hndl.valid())</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        fsm_clk_queue_hndl = sc_process_handle(sc_get_current_process_handle());</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">if</span>(fsm_clk_queue.avail())</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">while</span>(fsm_clk_queue.avail()) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keyword">auto</span> entry = fsm_clk_queue.front();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">if</span>(std::get&lt;2&gt;(entry) == 0) {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;processing event &quot;</span> &lt;&lt; evt2str(std::get&lt;0&gt;(entry)) &lt;&lt; <span class="stringliteral">&quot; of trans &quot;</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                                        &lt;&lt; *std::get&lt;1&gt;(entry);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(std::get&lt;0&gt;(entry), std::get&lt;1&gt;(entry));</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                std::get&lt;2&gt;(entry) -= 1;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                fsm_clk_queue.push_back(entry);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            fsm_clk_queue.pop_front();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="comment">// fall asleep if there is nothing to process</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        fsm_clk_queue_hndl.disable();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keywordtype">void</span> <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">base::react</a>(protocol_time_point_e event, <a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html">axi::fsm::fsm_handle</a>* fsm_hndl) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">switch</span>(event) {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">case</span> WValidE:</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1WReq.html">WReq</a>());</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">case</span> BegPartReqE:</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1BegPartReq.html">BegPartReq</a>());</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">case</span> EndPartReqE:</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1EndPartReq.html">EndPartReq</a>());</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordflow">case</span> BegReqE:</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1BegReq.html">BegReq</a>());</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">case</span> EndReqE:</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1EndReq.html">EndReq</a>());</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">case</span> BegPartRespE:</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1BegPartResp.html">BegPartResp</a>());</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">case</span> EndPartRespE:</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1EndPartResp.html">EndPartResp</a>());</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">case</span> BegRespE:</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1BegResp.html">BegResp</a>());</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">case</span> EndRespE:</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">if</span>(!coherent || fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a>) {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;freeing fsm for trans &quot;</span> &lt;&lt; *fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1EndResp.html">EndResp</a>());</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            active_fsm.erase(fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>.<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a1499120f37c6dcc44e24bd834d69826b">get</a>());</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            idle_fsm.push_back(fsm_hndl);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            finish_evt.notify();</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1EndRespNoAck.html">EndRespNoAck</a>());</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">case</span> Ack:</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;freeing fsm for trans &quot;</span> &lt;&lt; *fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1AckRecv.html">AckRecv</a>());</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        active_fsm.erase(fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>.<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a1499120f37c6dcc44e24bd834d69826b">get</a>());</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        idle_fsm.push_back(fsm_hndl);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        finish_evt.notify();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">case</span> WReadyE:</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">case</span> RequestPhaseBeg:</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="namespaceaxi.html#ad48f42fa6a7b36b4928191327f2f4c94">is_burst</a>(*fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>) &amp;&amp; fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>-&gt;is_write() &amp;&amp;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;           !is_dataless(fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>-&gt;get_extension&lt;<a class="code" href="structaxi_1_1ace__extension.html">axi::ace_extension</a>&gt;()))</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1BegPartReq.html">BegPartReq</a>());</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1BegReq.html">BegReq</a>());</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordflow">case</span> BegPartReqE:</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1BegPartReq.html">BegPartReq</a>());</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">case</span> EndPartReqE:</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1EndPartReq.html">EndPartReq</a>());</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">case</span> BegReqE:</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1BegReq.html">BegReq</a>());</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">case</span> EndReqE:</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1EndReq.html">EndReq</a>());</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">case</span> BegPartRespE:</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1BegPartResp.html">BegPartResp</a>());</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">case</span> EndPartRespE:</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1EndPartResp.html">EndPartResp</a>());</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">case</span> BegRespE:</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1BegResp.html">BegResp</a>());</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">case</span> EndRespE:</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordflow">if</span>(!coherent || fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a>) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;freeing fsm for trans &quot;</span> &lt;&lt; *fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;process_event(<a class="code" href="structaxi_1_1fsm_1_1EndResp.html">EndResp</a>());</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            active_fsm.erase(fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>.<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a1499120f37c6dcc44e24bd834d69826b">get</a>());</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            idle_fsm.push_back(fsm_hndl);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            finish_evt.notify();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;process_event(EndRespNoAck());</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        }</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        SCCFATAL(instance_name) &lt;&lt; <span class="stringliteral">&quot;No valid protocol time point&quot;</span>;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1base.html#a9ca2a45fd89e2c505b59b7559c9ed599">  178</a></span>&#160;tlm_sync_enum <a class="code" href="structaxi_1_1fsm_1_1base.html#a9ca2a45fd89e2c505b59b7559c9ed599">base::nb_fw</a>(<a class="code" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a>&amp; trans, phase_type <span class="keyword">const</span>&amp; phase, sc_time&amp; t) {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;base::nb_fw &quot;</span> &lt;&lt; phase &lt;&lt; <span class="stringliteral">&quot; of trans &quot;</span> &lt;&lt; trans;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">if</span>(phase == BEGIN_PARTIAL_REQ || phase == BEGIN_REQ) { <span class="comment">// read/write</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="keyword">auto</span> fsm = <a class="code" href="structaxi_1_1fsm_1_1base.html#aa6ce07ee0ee43a35e7b52870ee6d2e42">find_or_create</a>(&amp;trans);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">if</span>(!trans.is_read()) {</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            protocol_time_point_e evt = axi::fsm::RequestPhaseBeg;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="keywordflow">if</span>(fsm-&gt;beat_count == 0 &amp;&amp; wr_start != RequestPhaseBeg)</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                evt = wr_start;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                evt = phase == BEGIN_PARTIAL_REQ ? BegPartReqE : BegReqE;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(evt, &amp;trans);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(evt, &amp;trans, t);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            }</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(BegReqE, &amp;trans);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(BegReqE, &amp;trans, t);</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == END_PARTIAL_RESP || phase == END_RESP) {</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(phase == END_RESP ? EndRespE : EndPartRespE, &amp;trans);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(phase == END_RESP ? EndRespE : EndPartRespE, &amp;trans, t);</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == END_REQ) { <span class="comment">// snoop access resp</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(EndReqE, &amp;trans);</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(EndReqE, &amp;trans, t);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == BEGIN_PARTIAL_RESP || phase == BEGIN_RESP) { <span class="comment">// snoop access resp</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(phase == BEGIN_RESP ? BegRespE : BegPartRespE, &amp;trans);</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(phase == BEGIN_RESP ? BegRespE : BegPartRespE, &amp;trans, t);</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == axi::ACK) {</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(Ack, &amp;trans);</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(Ack, &amp;trans, t);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    }</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">return</span> TLM_ACCEPTED;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;}</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
-<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1base.html#a8d342b8561d875def0206427265ff7f9">  223</a></span>&#160;tlm_sync_enum <a class="code" href="structaxi_1_1fsm_1_1base.html#a8d342b8561d875def0206427265ff7f9">base::nb_bw</a>(<a class="code" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a>&amp; trans, phase_type <span class="keyword">const</span>&amp; phase, sc_time&amp; t) {</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;base::nb_bw &quot;</span> &lt;&lt; phase &lt;&lt; <span class="stringliteral">&quot; of trans &quot;</span> &lt;&lt; trans;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">if</span>(phase == END_PARTIAL_REQ || phase == END_REQ) { <span class="comment">// read/write</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(phase == END_REQ ? EndReqE : EndPartReqE, &amp;trans);</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(phase == END_REQ ? EndReqE : EndPartReqE, &amp;trans, t);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == BEGIN_PARTIAL_RESP || phase == BEGIN_RESP) { <span class="comment">// read/write response</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(phase == BEGIN_RESP ? BegRespE : BegPartRespE, &amp;trans);</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(phase == BEGIN_RESP ? BegRespE : BegPartRespE, &amp;trans, t);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == BEGIN_REQ) { <span class="comment">// snoop read</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keyword">auto</span> fsm_hndl = <a class="code" href="structaxi_1_1fsm_1_1base.html#aa6ce07ee0ee43a35e7b52870ee6d2e42">find_or_create</a>(&amp;trans, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(BegReqE, &amp;trans);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(BegReqE, &amp;trans, t);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == END_PARTIAL_RESP || phase == END_RESP) { <span class="comment">// snoop read response</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(phase == END_RESP ? EndRespE : EndPartRespE, &amp;trans);</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(phase == END_RESP ? EndRespE : EndPartRespE, &amp;trans, t);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    }</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">return</span> TLM_ACCEPTED;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;}</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">case</span> Ack:</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;freeing fsm for trans &quot;</span> &lt;&lt; *fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;process_event(AckRecv());</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        active_fsm.erase(fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>.<a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a1499120f37c6dcc44e24bd834d69826b">get</a>());</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        idle_fsm.push_back(fsm_hndl);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        finish_evt.notify();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        SCCFATAL(instance_name) &lt;&lt; <span class="stringliteral">&quot;No valid protocol time point&quot;</span>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1base.html#a2f69b9b543de0409a982e194e7ee84d1">  186</a></span>&#160;tlm_sync_enum <a class="code" href="structaxi_1_1fsm_1_1base.html#a2f69b9b543de0409a982e194e7ee84d1">base::nb_fw</a>(<a class="code" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a>&amp; trans, phase_type <span class="keyword">const</span>&amp; phase, sc_time&amp; t) {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;base::nb_fw &quot;</span> &lt;&lt; phase &lt;&lt; <span class="stringliteral">&quot; of trans &quot;</span> &lt;&lt; trans;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">if</span>(phase == BEGIN_PARTIAL_REQ || phase == BEGIN_REQ) { <span class="comment">// read/write</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keyword">auto</span> fsm_hndl = <a class="code" href="structaxi_1_1fsm_1_1base.html#aa22ba0281d929364938d62b0d3930b7b">find_or_create</a>(&amp;trans);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keywordflow">if</span>(!trans.is_read()) {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            protocol_time_point_e evt = axi::fsm::RequestPhaseBeg;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">if</span>(fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a7c7367afac927398add8c4ec3856d85f">beat_count</a> == 0 &amp;&amp; wr_start != RequestPhaseBeg)</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                evt = wr_start;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                evt = phase == BEGIN_PARTIAL_REQ ? BegPartReqE : BegReqE;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(evt, &amp;trans);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(evt, &amp;trans, t);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(BegReqE, &amp;trans);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(BegReqE, &amp;trans, t);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == END_PARTIAL_RESP || phase == END_RESP) {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(phase == END_RESP ? EndRespE : EndPartRespE, &amp;trans);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(phase == END_RESP ? EndRespE : EndPartRespE, &amp;trans, t);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == END_REQ) { <span class="comment">// snoop access resp</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(EndReqE, &amp;trans);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(EndReqE, &amp;trans, t);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == BEGIN_PARTIAL_RESP || phase == BEGIN_RESP) { <span class="comment">// snoop access resp</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(phase == BEGIN_RESP ? BegRespE : BegPartRespE, &amp;trans);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(phase == BEGIN_RESP ? BegRespE : BegPartRespE, &amp;trans, t);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == axi::ACK) {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(Ack, &amp;trans);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(Ack, &amp;trans, t);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">return</span> TLM_ACCEPTED;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="structaxi_1_1fsm_1_1base.html#a87dbb07802109ff958c86cd08f8aaaaf">  231</a></span>&#160;tlm_sync_enum <a class="code" href="structaxi_1_1fsm_1_1base.html#a87dbb07802109ff958c86cd08f8aaaaf">base::nb_bw</a>(<a class="code" href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">payload_type</a>&amp; trans, phase_type <span class="keyword">const</span>&amp; phase, sc_time&amp; t) {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    SCCTRACE(instance_name) &lt;&lt; <span class="stringliteral">&quot;base::nb_bw &quot;</span> &lt;&lt; phase &lt;&lt; <span class="stringliteral">&quot; of trans &quot;</span> &lt;&lt; trans;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">if</span>(phase == END_PARTIAL_REQ || phase == END_REQ) { <span class="comment">// read/write</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(phase == END_REQ ? EndReqE : EndPartReqE, &amp;trans);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(phase == END_REQ ? EndReqE : EndPartReqE, &amp;trans, t);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == BEGIN_PARTIAL_RESP || phase == BEGIN_RESP) { <span class="comment">// read/write response</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(phase == BEGIN_RESP ? BegRespE : BegPartRespE, &amp;trans);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(phase == BEGIN_RESP ? BegRespE : BegPartRespE, &amp;trans, t);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == BEGIN_REQ) { <span class="comment">// snoop read</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keyword">auto</span> fsm_hndl = <a class="code" href="structaxi_1_1fsm_1_1base.html#aa22ba0281d929364938d62b0d3930b7b">find_or_create</a>(&amp;trans, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(BegReqE, &amp;trans);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(BegReqE, &amp;trans, t);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == END_PARTIAL_RESP || phase == END_RESP) { <span class="comment">// snoop read response</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordflow">if</span>(t == SC_ZERO_TIME) {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">react</a>(phase == END_RESP ? EndRespE : EndPartRespE, &amp;trans);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <a class="code" href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">schedule</a>(phase == END_RESP ? EndRespE : EndPartRespE, &amp;trans, t);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    }</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">return</span> TLM_ACCEPTED;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;}</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="astructaxi_1_1fsm_1_1base_html_a87dbb07802109ff958c86cd08f8aaaaf"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#a87dbb07802109ff958c86cd08f8aaaaf">axi::fsm::base::nb_bw</a></div><div class="ttdeci">tlm::tlm_sync_enum nb_bw(payload_type &amp;trans, phase_type const &amp;phase, sc_core::sc_time &amp;t)</div><div class="ttdoc">triggers the FSM based on TLM phases in the backward path. Should be called from np_transport_bw of t...</div><div class="ttdef"><b>Definition:</b> <a href="base_8cpp_source.html#l00231">base.cpp:231</a></div></div>
+<div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html_a7c7367afac927398add8c4ec3856d85f"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html#a7c7367afac927398add8c4ec3856d85f">axi::fsm::fsm_handle::beat_count</a></div><div class="ttdeci">size_t beat_count</div><div class="ttdoc">beat count of this transaction</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00064">types.h:64</a></div></div>
+<div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html_aae572170fa8ec0379aa6118c504e6266"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">axi::fsm::fsm_handle::fsm</a></div><div class="ttdeci">AxiProtocolFsm *const fsm</div><div class="ttdoc">pointer to the FSM</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00060">types.h:60</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html_abdff7e6de49b857153d99cafbc31c634"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">axi::fsm::fsm_handle::is_snoop</a></div><div class="ttdeci">bool is_snoop</div><div class="ttdoc">indicator if this is a snoop access</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00066">types.h:66</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1EndPartReq_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1EndPartReq.html">axi::fsm::EndPartReq</a></div><div class="ttdef"><b>Definition:</b> <a href="protocol__fsm_8h_source.html#l00038">protocol_fsm.h:38</a></div></div>
-<div class="ttc" id="astructaxi_1_1fsm_1_1base_html_abc811c86ced6af3b97a0dbef28832275"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#abc811c86ced6af3b97a0dbef28832275">axi::fsm::base::process_fsm_event</a></div><div class="ttdeci">void process_fsm_event()</div><div class="ttdoc">processes the fsm_event_queue and triggers FSM aligned</div><div class="ttdef"><b>Definition:</b> <a href="base_8cpp_source.html#l00088">base.cpp:88</a></div></div>
 <div class="ttc" id="astructaxi_1_1axi4__extension_html"><div class="ttname"><a href="structaxi_1_1axi4__extension.html">axi::axi4_extension</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00832">axi_tlm.h:832</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1base_html_a26d7f15c1c5092f6db3251d38368dbbd"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#a26d7f15c1c5092f6db3251d38368dbbd">axi::fsm::base::react</a></div><div class="ttdeci">void react(axi::fsm::protocol_time_point_e event, tlm::scc::tlm_gp_shared_ptr &amp;trans)</div><div class="ttdoc">triggers the FSM with event and given transaction</div><div class="ttdef"><b>Definition:</b> <a href="base_8h_source.html#l00134">base.h:134</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1base_html_a6050ee3f1e95179293902dc3ef9381ee"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#a6050ee3f1e95179293902dc3ef9381ee">axi::fsm::base::schedule</a></div><div class="ttdeci">void schedule(axi::fsm::protocol_time_point_e e, tlm::scc::tlm_gp_shared_ptr &amp;gp, unsigned cycles)</div><div class="ttdoc">processes the fsm_sched_queue and propagates events to fsm_clk_queue. Should be registered as falling...</div><div class="ttdef"><b>Definition:</b> <a href="base_8h_source.html#l00107">base.h:107</a></div></div>
+<div class="ttc" id="astructaxi_1_1fsm_1_1base_html_ab0c33b46e6d313a33ce1a356ccc596af"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#ab0c33b46e6d313a33ce1a356ccc596af">axi::fsm::base::process_fsm_event</a></div><div class="ttdeci">void process_fsm_event()</div><div class="ttdoc">processes the fsm_event_queue and triggers FSM aligned</div><div class="ttdef"><b>Definition:</b> <a href="base_8cpp_source.html#l00096">base.cpp:96</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html">axi::fsm::fsm_handle</a></div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00058">types.h:58</a></div></div>
+<div class="ttc" id="astructaxi_1_1fsm_1_1base_html_a61c01b63aa94fc6e2a5ec6ee6f4e06c4"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#a61c01b63aa94fc6e2a5ec6ee6f4e06c4">axi::fsm::base::process_fsm_clk_queue</a></div><div class="ttdeci">void process_fsm_clk_queue()</div><div class="ttdoc">processes the fsm_clk_queue and triggers the FSM accordingly. Should be registered as rising-edge clo...</div><div class="ttdef"><b>Definition:</b> <a href="base_8cpp_source.html#l00106">base.cpp:106</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1BegPartResp_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1BegPartResp.html">axi::fsm::BegPartResp</a></div><div class="ttdef"><b>Definition:</b> <a href="protocol__fsm_8h_source.html#l00041">protocol_fsm.h:41</a></div></div>
+<div class="ttc" id="astructaxi_1_1fsm_1_1base_html_aa22ba0281d929364938d62b0d3930b7b"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#aa22ba0281d929364938d62b0d3930b7b">axi::fsm::base::find_or_create</a></div><div class="ttdeci">axi::fsm::fsm_handle * find_or_create(payload_type *gp=nullptr, bool ace=false)</div><div class="ttdoc">retrieve the FSM handle based on the transaction passed. If non exist one will be created</div><div class="ttdef"><b>Definition:</b> <a href="base_8cpp_source.html#l00063">base.cpp:63</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1base_html_ae24538a027d8084cc5a6b0172acd22eb"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#ae24538a027d8084cc5a6b0172acd22eb">axi::fsm::base::payload_type</a></div><div class="ttdeci">axi::axi_protocol_types::tlm_payload_type payload_type</div><div class="ttdoc">aliases used in the class</div><div class="ttdef"><b>Definition:</b> <a href="base_8h_source.html#l00045">base.h:45</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html_a4198e085c0adb0dcfafc623aa9890d8b"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">axi::fsm::fsm_handle::trans</a></div><div class="ttdeci">tlm::scc::tlm_gp_shared_ptr trans</div><div class="ttdoc">pointer to the associated AXITLM payload</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00062">types.h:62</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1BegReq_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1BegReq.html">axi::fsm::BegReq</a></div><div class="ttdef"><b>Definition:</b> <a href="protocol__fsm_8h_source.html#l00039">protocol_fsm.h:39</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1base_html_ae8a76a1d8e9fd2fc4a90f1219767ff92"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#ae8a76a1d8e9fd2fc4a90f1219767ff92">axi::fsm::base::create_fsm_handle</a></div><div class="ttdeci">virtual axi::fsm::fsm_handle * create_fsm_handle()=0</div><div class="ttdoc">function to create a fsm_handle. Needs to be implemented by the derived class</div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1EndPartResp_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1EndPartResp.html">axi::fsm::EndPartResp</a></div><div class="ttdef"><b>Definition:</b> <a href="protocol__fsm_8h_source.html#l00042">protocol_fsm.h:42</a></div></div>
-<div class="ttc" id="astructaxi_1_1fsm_1_1base_html_ac0ea934f6292a98b73bf3e81c0a9ef48"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#ac0ea934f6292a98b73bf3e81c0a9ef48">axi::fsm::base::process_fsm_clk_queue</a></div><div class="ttdeci">void process_fsm_clk_queue()</div><div class="ttdoc">processes the fsm_clk_queue and triggers the FSM accordingly. Should be registered as rising-edge clo...</div><div class="ttdef"><b>Definition:</b> <a href="base_8cpp_source.html#l00098">base.cpp:98</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1BegPartReq_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1BegPartReq.html">axi::fsm::BegPartReq</a></div><div class="ttdef"><b>Definition:</b> <a href="protocol__fsm_8h_source.html#l00037">protocol_fsm.h:37</a></div></div>
-<div class="ttc" id="astructaxi_1_1fsm_1_1EndRespNoAck_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1EndRespNoAck.html">axi::fsm::EndRespNoAck</a></div><div class="ttdef"><b>Definition:</b> <a href="protocol__fsm_8h_source.html#l00045">protocol_fsm.h:45</a></div></div>
-<div class="ttc" id="astructaxi_1_1fsm_1_1AxiProtocolFsm_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1AxiProtocolFsm.html">axi::fsm::AxiProtocolFsm</a></div><div class="ttdef"><b>Definition:</b> <a href="protocol__fsm_8h_source.html#l00061">protocol_fsm.h:61</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1tlm__mm_html"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__mm.html">tlm::scc::tlm_mm</a></div><div class="ttdoc">a tlm memory manager</div><div class="ttdef"><b>Definition:</b> <a href="tlm__mm_8h_source.html#l00186">tlm_mm.h:186</a></div></div>
-<div class="ttc" id="astructaxi_1_1fsm_1_1base_html_aa6ce07ee0ee43a35e7b52870ee6d2e42"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#aa6ce07ee0ee43a35e7b52870ee6d2e42">axi::fsm::base::find_or_create</a></div><div class="ttdeci">axi::fsm::fsm_handle * find_or_create(payload_type *gp=nullptr, bool ace=false)</div><div class="ttdoc">retrieve the FSM handle based on the transaction passed. If non exist one will be created</div><div class="ttdef"><b>Definition:</b> <a href="base_8cpp_source.html#l00053">base.cpp:53</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1tlm__mm_html_ad96d412a19c84b6d945e939d313f361a"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__mm.html#ad96d412a19c84b6d945e939d313f361a">tlm::scc::tlm_mm::get</a></div><div class="ttdeci">static tlm_mm &amp; get()</div><div class="ttdoc">accessor function of the singleton</div><div class="ttdef"><b>Definition:</b> <a href="tlm__mm_8h_source.html#l00247">tlm_mm.h:247</a></div></div>
-<div class="ttc" id="astructaxi_1_1fsm_1_1fsm__handle_html_aad962f3327592f24aad3a7088f994369"><div class="ttname"><a href="structaxi_1_1fsm_1_1fsm__handle.html#aad962f3327592f24aad3a7088f994369">axi::fsm::fsm_handle::fsm</a></div><div class="ttdeci">AxiProtocolFsm * fsm</div><div class="ttdoc">pointer to the FSM</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00060">types.h:60</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1tlm__mm_html_a4165697b94ec8d972cec1ef316f0092b"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__mm.html#a4165697b94ec8d972cec1ef316f0092b">tlm::scc::tlm_mm::allocate</a></div><div class="ttdeci">payload_type * allocate()</div><div class="ttdoc">get a plain tlm_payload_type without extensions</div><div class="ttdef"><b>Definition:</b> <a href="tlm__mm_8h_source.html#l00253">tlm_mm.h:253</a></div></div>
-<div class="ttc" id="astructaxi_1_1fsm_1_1base_html_a9ca2a45fd89e2c505b59b7559c9ed599"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#a9ca2a45fd89e2c505b59b7559c9ed599">axi::fsm::base::nb_fw</a></div><div class="ttdeci">tlm::tlm_sync_enum nb_fw(payload_type &amp;trans, phase_type const &amp;phase, sc_core::sc_time &amp;t)</div><div class="ttdoc">triggers the FSM based on TLM phases in the forward path. Should be called from np_transport_fw of th...</div><div class="ttdef"><b>Definition:</b> <a href="base_8cpp_source.html#l00178">base.cpp:178</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1BegResp_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1BegResp.html">axi::fsm::BegResp</a></div><div class="ttdef"><b>Definition:</b> <a href="protocol__fsm_8h_source.html#l00043">protocol_fsm.h:43</a></div></div>
 <div class="ttc" id="astructscc_1_1peq_html_a96f03772cd30574ba45a4b50f39c76c8"><div class="ttname"><a href="structscc_1_1peq.html#a96f03772cd30574ba45a4b50f39c76c8">scc::peq::get_next</a></div><div class="ttdeci">boost::optional&lt; TYPE &gt; get_next()</div><div class="ttdoc">non-blocking get</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00108">peq.h:108</a></div></div>
 <div class="ttc" id="astructaxi_1_1ace__extension_html"><div class="ttname"><a href="structaxi_1_1ace__extension.html">axi::ace_extension</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00857">axi_tlm.h:857</a></div></div>
-<div class="ttc" id="astructaxi_1_1fsm_1_1base_html_a8d342b8561d875def0206427265ff7f9"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#a8d342b8561d875def0206427265ff7f9">axi::fsm::base::nb_bw</a></div><div class="ttdeci">tlm::tlm_sync_enum nb_bw(payload_type &amp;trans, phase_type const &amp;phase, sc_core::sc_time &amp;t)</div><div class="ttdoc">triggers the FSM based on TLM phases in the backward path. Should be called from np_transport_bw of t...</div><div class="ttdef"><b>Definition:</b> <a href="base_8cpp_source.html#l00223">base.cpp:223</a></div></div>
 <div class="ttc" id="anamespaceaxi_html_ad48f42fa6a7b36b4928191327f2f4c94"><div class="ttname"><a href="namespaceaxi.html#ad48f42fa6a7b36b4928191327f2f4c94">axi::is_burst</a></div><div class="ttdeci">bool is_burst(const axi::axi_protocol_types::tlm_payload_type &amp;trans)</div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l01097">axi_tlm.h:1097</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1EndResp_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1EndResp.html">axi::fsm::EndResp</a></div><div class="ttdef"><b>Definition:</b> <a href="protocol__fsm_8h_source.html#l00044">protocol_fsm.h:44</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1EndReq_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1EndReq.html">axi::fsm::EndReq</a></div><div class="ttdef"><b>Definition:</b> <a href="protocol__fsm_8h_source.html#l00040">protocol_fsm.h:40</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html_a1499120f37c6dcc44e24bd834d69826b"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a1499120f37c6dcc44e24bd834d69826b">tlm::scc::tlm_gp_shared_ptr::get</a></div><div class="ttdeci">tlm::tlm_generic_payload * get() const noexcept</div><div class="ttdoc">Return the stored pointer.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__gp__shared_8h_source.html#l00131">tlm_gp_shared.h:131</a></div></div>
+<div class="ttc" id="astructaxi_1_1fsm_1_1base_html_a2f69b9b543de0409a982e194e7ee84d1"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#a2f69b9b543de0409a982e194e7ee84d1">axi::fsm::base::nb_fw</a></div><div class="ttdeci">tlm::tlm_sync_enum nb_fw(payload_type &amp;trans, phase_type const &amp;phase, sc_core::sc_time &amp;t)</div><div class="ttdoc">triggers the FSM based on TLM phases in the forward path. Should be called from np_transport_fw of th...</div><div class="ttdef"><b>Definition:</b> <a href="base_8cpp_source.html#l00186">base.cpp:186</a></div></div>
 <div class="ttc" id="astructscc_1_1peq_html_afdaac52f71290ee8c038843d728b1704"><div class="ttname"><a href="structscc_1_1peq.html#afdaac52f71290ee8c038843d728b1704">scc::peq::event</a></div><div class="ttdeci">sc_core::sc_event &amp; event()</div><div class="ttdoc">get the available event</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00137">peq.h:137</a></div></div>
-<div class="ttc" id="astructaxi_1_1fsm_1_1AckRecv_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1AckRecv.html">axi::fsm::AckRecv</a></div><div class="ttdef"><b>Definition:</b> <a href="protocol__fsm_8h_source.html#l00046">protocol_fsm.h:46</a></div></div>
 <div class="ttc" id="astructaxi_1_1ace_html"><div class="ttname"><a href="structaxi_1_1ace.html">axi::ace</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00538">axi_tlm.h:538</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1WReq_html"><div class="ttname"><a href="structaxi_1_1fsm_1_1WReq.html">axi::fsm::WReq</a></div><div class="ttdef"><b>Definition:</b> <a href="protocol__fsm_8h_source.html#l00036">protocol_fsm.h:36</a></div></div>
 <div class="ttc" id="astructaxi_1_1fsm_1_1base_html_a531305a4a623f70f41f2249028dbedde"><div class="ttname"><a href="structaxi_1_1fsm_1_1base.html#a531305a4a623f70f41f2249028dbedde">axi::fsm::base::setup_callbacks</a></div><div class="ttdeci">virtual void setup_callbacks(axi::fsm::fsm_handle *)=0</div><div class="ttdoc">this function is called to add the callbacks to the fsm handle during creation. Needs to be implement...</div></div>

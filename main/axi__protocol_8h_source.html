@@ -97,36 +97,53 @@ $(document).ready(function(){initNavTree('axi__protocol_8h_source.html',''); ini
 <div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classaxi_1_1checker_1_1axi__protocol.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a>: <span class="keyword">public</span> <a class="code" href="structaxi_1_1checker_1_1checker__if.html">checker_if</a>&lt;axi::axi_protocol_types&gt; {</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">using</span> payload_type=axi::axi_protocol_types::tlm_payload_type;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">using</span> phase_type=axi::axi_protocol_types::tlm_phase_type;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a>(std::string <span class="keyword">const</span>&amp; name);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a>(<span class="keyword">const</span> <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a> &amp;other) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a>(<a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a> &amp;&amp;other) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a> &amp;other) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a>&amp; operator=(<a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a> &amp;&amp;other) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> fw_pre(payload_type <span class="keyword">const</span>&amp; trans, phase_type <span class="keyword">const</span>&amp; phase) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> fw_post(payload_type <span class="keyword">const</span>&amp; trans, phase_type <span class="keyword">const</span>&amp; phase, tlm::tlm_sync_enum rstat) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> bw_pre(payload_type <span class="keyword">const</span>&amp; trans, phase_type <span class="keyword">const</span>&amp; phase) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> bw_post(payload_type <span class="keyword">const</span>&amp; trans, phase_type <span class="keyword">const</span>&amp; phase, tlm::tlm_sync_enum rstat) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::string <span class="keyword">const</span> name;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::array&lt;phase_type, 3&gt; req_beat;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::array&lt;phase_type, 3&gt; resp_beat;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    phase_type dataless_req;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    std::array&lt;std::deque&lt;tlm::scc::tlm_gp_shared_ptr&gt;, 3&gt; req;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::unordered_map&lt;unsigned, std::deque&lt;tlm::scc::tlm_gp_shared_ptr&gt;&gt; resp_by_id;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">bool</span> check_phase_change(tlm::tlm_command cmd, <span class="keyword">const</span> axi_protocol::phase_type &amp;phase);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;} <span class="comment">/* namespace checker */</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;} <span class="comment">/* namespace axi */</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _AXI_CHECKER_AXI_PROTOCOL_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    constexpr <span class="keyword">static</span> <span class="keywordtype">unsigned</span> umax = std::numeric_limits&lt;unsigned&gt;::max();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a>(std::string <span class="keyword">const</span>&amp; name, <span class="keywordtype">unsigned</span> bus_width_in_bytes, <span class="keywordtype">unsigned</span> rd_response_timeout, <span class="keywordtype">unsigned</span> wr_response_timeout)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    : name(name)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    , bw(bus_width_in_bytes)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    , rd_response_timeout(rd_response_timeout)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    , wr_response_timeout(wr_response_timeout)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a>(<span class="keyword">const</span> <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a> &amp;other) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a>(<a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a> &amp;&amp;other) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a> &amp;other) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a>&amp; operator=(<a class="code" href="classaxi_1_1checker_1_1axi__protocol.html">axi_protocol</a> &amp;&amp;other) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> fw_pre(payload_type <span class="keyword">const</span>&amp; trans, phase_type <span class="keyword">const</span>&amp; phase) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> fw_post(payload_type <span class="keyword">const</span>&amp; trans, phase_type <span class="keyword">const</span>&amp; phase, tlm::tlm_sync_enum rstat) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> bw_pre(payload_type <span class="keyword">const</span>&amp; trans, phase_type <span class="keyword">const</span>&amp; phase) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> bw_post(payload_type <span class="keyword">const</span>&amp; trans, phase_type <span class="keyword">const</span>&amp; phase, tlm::tlm_sync_enum rstat) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::string <span class="keyword">const</span> name;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keyword">const</span> bw;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keyword">const</span> rd_response_timeout;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keyword">const</span> wr_response_timeout;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    std::array&lt;phase_type, 3&gt; req_beat;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    std::array&lt;phase_type, 3&gt; resp_beat;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    phase_type dataless_req;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    std::array&lt;unsigned, 3&gt; req_id{{umax, umax, umax}};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::array&lt;unsigned, 3&gt; resp_id{{umax, umax, umax}};</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">unsigned</span> wr_req_beat_count{0};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::array&lt;std::unordered_map&lt;unsigned, std::deque&lt;uintptr_t&gt;&gt;, 3&gt; open_tx_by_id;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::unordered_map&lt;unsigned, std::deque&lt;uintptr_t&gt;&gt; resp_by_id;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::unordered_map&lt;unsigned, unsigned&gt; rd_resp_beat_count;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">bool</span> check_phase_change(payload_type <span class="keyword">const</span>&amp; trans, <span class="keyword">const</span> phase_type &amp;phase);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> request_update(payload_type <span class="keyword">const</span>&amp; trans);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> response_update(payload_type <span class="keyword">const</span>&amp; trans);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> check_properties(payload_type <span class="keyword">const</span>&amp; trans);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> check_datawith_settings(payload_type <span class="keyword">const</span>&amp;trans);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;} <span class="comment">/* namespace checker */</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;} <span class="comment">/* namespace axi */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _AXI_CHECKER_AXI_PROTOCOL_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassaxi_1_1checker_1_1axi__protocol_html"><div class="ttname"><a href="classaxi_1_1checker_1_1axi__protocol.html">axi::checker::axi_protocol</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__protocol_8h_source.html#l00030">axi_protocol.h:30</a></div></div>
 <div class="ttc" id="astructaxi_1_1checker_1_1checker__if_html"><div class="ttname"><a href="structaxi_1_1checker_1_1checker__if.html">axi::checker::checker_if</a></div><div class="ttdef"><b>Definition:</b> <a href="checker__if_8h_source.html#l00024">checker_if.h:24</a></div></div>
-<div class="ttc" id="anamespaceaxi_html"><div class="ttname"><a href="namespaceaxi.html">axi</a></div><div class="ttdoc">TLM2.0 components modeling AXI/ACE.</div><div class="ttdef"><b>Definition:</b> <a href="src_2bus__interfaces_2axi_2axi__initiator_8h_source.html#l00028">axi_initiator.h:28</a></div></div>
+<div class="ttc" id="anamespaceaxi_html"><div class="ttname"><a href="namespaceaxi.html">axi</a></div><div class="ttdoc">TLM2.0 components modeling AHB.</div><div class="ttdef"><b>Definition:</b> <a href="src_2bus__interfaces_2axi_2axi__initiator_8h_source.html#l00028">axi_initiator.h:28</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

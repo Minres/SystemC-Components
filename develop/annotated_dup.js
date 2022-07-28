@@ -36,6 +36,7 @@ var annotated_dup =
       [ "ForLoop", "structscc_1_1ForLoop.html", null ],
       [ "ForLoop< 1 >", "structscc_1_1ForLoop_3_011_01_4.html", null ],
       [ "fst_trace_file", "structscc_1_1fst__trace__file.html", "structscc_1_1fst__trace__file" ],
+      [ "hierarchy_dumper", "classscc_1_1hierarchy__dumper.html", "classscc_1_1hierarchy__dumper" ],
       [ "indexed_resource_access_if", "classscc_1_1indexed__resource__access__if.html", "classscc_1_1indexed__resource__access__if" ],
       [ "LogConfig", "structscc_1_1LogConfig.html", "structscc_1_1LogConfig" ],
       [ "memory", "classscc_1_1memory.html", "classscc_1_1memory" ],

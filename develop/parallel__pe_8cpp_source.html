@@ -112,24 +112,25 @@ $(document).ready(function(){initNavTree('parallel__pe_8cpp_source.html',''); in
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    tu.gp = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    waiting_ids.push_back(<span class="keywordtype">id</span>);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    wait(tu.evt);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            },</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;execute&quot;</span>));</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        tu.gp = &amp;payload;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">auto</span>&amp; tu = threads[waiting_ids.front()];</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        waiting_ids.pop_front();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        tu.gp = &amp;payload;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        tu.lt_transport = lt_transport;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        tu.evt.notify();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span>(payload.has_mm())</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        payload.acquire();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <span class="comment">/* namespace pe */</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">/* namespace tlm */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    assert(tu.gp);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            },</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;execute&quot;</span>));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        tu.gp = &amp;payload;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">auto</span>&amp; tu = threads[waiting_ids.front()];</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        waiting_ids.pop_front();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        tu.gp = &amp;payload;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        tu.lt_transport = lt_transport;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        tu.evt.notify();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span>(payload.has_mm())</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        payload.acquire();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">/* namespace pe */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <span class="comment">/* namespace tlm */</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -34,9 +34,7 @@ var hierarchy =
       [ "axi::pe::simple_axi_initiator< 32 >", "classaxi_1_1pe_1_1simple__axi__initiator.html", null ]
     ] ],
     [ "axi_fw_transport_if", null, [
-      [ "axi::pe::axi_target_pe_b", "classaxi_1_1pe_1_1axi__target__pe__b.html", [
-        [ "axi::pe::ordered_target< BUSWIDTH, TYPES, N, POL >", "classaxi_1_1pe_1_1ordered__target.html", null ],
-        [ "axi::pe::reordering_target< BUSWIDTH, TYPES, N, POL >", "classaxi_1_1pe_1_1reordering__target.html", null ],
+      [ "axi::pe::axi_target_pe", "classaxi_1_1pe_1_1axi__target__pe.html", [
         [ "axi::pe::simple_target< BUSWIDTH, TYPES, N, POL >", "classaxi_1_1pe_1_1simple__target.html", null ],
         [ "axi::pe::simple_target< 32 >", "classaxi_1_1pe_1_1simple__target.html", null ]
       ] ],
@@ -53,7 +51,7 @@ var hierarchy =
       [ "axi::pin::axi4_target< CFG >", "structaxi_1_1pin_1_1axi4__target.html", null ]
     ] ],
     [ "axi::fsm::base", "structaxi_1_1fsm_1_1base.html", [
-      [ "axi::pe::axi_target_pe_b", "classaxi_1_1pe_1_1axi__target__pe__b.html", null ],
+      [ "axi::pe::axi_target_pe", "classaxi_1_1pe_1_1axi__target__pe.html", null ],
       [ "axi::pe::simple_initiator_b", "classaxi_1_1pe_1_1simple__initiator__b.html", [
         [ "axi::pe::simple_ace_initiator< BUSWIDTH, TYPES, N, POL >", "classaxi_1_1pe_1_1simple__ace__initiator.html", null ],
         [ "axi::pe::simple_axi_initiator< BUSWIDTH, TYPES, N, POL >", "classaxi_1_1pe_1_1simple__axi__initiator.html", null ],
@@ -85,6 +83,7 @@ var hierarchy =
     ] ],
     [ "axi::checker::checker_if< TYPES >", "structaxi_1_1checker_1_1checker__if.html", null ],
     [ "axi::checker::checker_if< axi::axi_protocol_types >", "structaxi_1_1checker_1_1checker__if.html", [
+      [ "axi::checker::ace_protocol", "classaxi_1_1checker_1_1ace__protocol.html", null ],
       [ "axi::checker::axi_protocol", "classaxi_1_1checker_1_1axi__protocol.html", null ]
     ] ],
     [ "chi_fw_transport_if", null, [
@@ -171,8 +170,8 @@ var hierarchy =
     [ "scc::LogConfig", "structscc_1_1LogConfig.html", null ],
     [ "util::range_lut< T >::lut_entry", "structutil_1_1range__lut_1_1lut__entry.html", null ],
     [ "axi::master_types", "structaxi_1_1master__types.html", null ],
-    [ "scc::MT19937", "classscc_1_1MT19937.html", null ],
     [ "util::MT19937", "classutil_1_1MT19937.html", null ],
+    [ "scc::MT19937", "classscc_1_1MT19937.html", null ],
     [ "scc::observer::notification_handle", "structscc_1_1observer_1_1notification__handle.html", null ],
     [ "scc::observer", "structscc_1_1observer.html", [
       [ "scc::fst_trace_file", "structscc_1_1fst__trace__file.html", null ],
@@ -211,7 +210,6 @@ var hierarchy =
         [ "scc::sc_register_masked< DATATYPE, WRMASK, RDMASK >", "classscc_1_1sc__register__masked.html", null ]
       ] ]
     ] ],
-    [ "chi::response", "structchi_1_1response.html", null ],
     [ "axi::response", "structaxi_1_1response.html", [
       [ "axi::ace_response", "structaxi_1_1ace__response.html", [
         [ "axi::axi_extension< ace, ace_response >", "structaxi_1_1axi__extension.html", null ]
@@ -220,6 +218,7 @@ var hierarchy =
       [ "axi::axi_extension< axi3 >", "structaxi_1_1axi__extension.html", null ],
       [ "axi::axi_extension< axi4 >", "structaxi_1_1axi__extension.html", null ]
     ] ],
+    [ "chi::response", "structchi_1_1response.html", null ],
     [ "axi::rresp_ch< CFG, TYPES >", "structaxi_1_1rresp__ch.html", null ],
     [ "axi::rresp_ch< CFG, CFG::master_types >", "structaxi_1_1rresp__ch.html", [
       [ "axi::pin::axi4_initiator< CFG >", "structaxi_1_1pin_1_1axi4__initiator.html", null ]
@@ -274,7 +273,7 @@ var hierarchy =
       ] ],
       [ "tlm::scc::pe::intor_bw< type::NB >", "structtlm_1_1scc_1_1pe_1_1intor__bw.html", [
         [ "tlm::scc::pe::intor_bw_nb", "structtlm_1_1scc_1_1pe_1_1intor__bw__nb.html", [
-          [ "axi::pe::axi_target_pe_b::bw_intor_impl", "structaxi__target__pe__b_1_1bw__intor__impl.html", null ]
+          [ "axi::pe::axi_target_pe::bw_intor_impl", "structaxi__target__pe_1_1bw__intor__impl.html", null ]
         ] ]
       ] ],
       [ "tlm::scc::pe::intor_fw< type::BL >", "structtlm_1_1scc_1_1pe_1_1intor__fw.html", [
@@ -284,6 +283,7 @@ var hierarchy =
       ] ],
       [ "tlm::scc::pe::intor_fw< type::NB >", "structtlm_1_1scc_1_1pe_1_1intor__fw.html", [
         [ "tlm::scc::pe::intor_fw_nb", "structtlm_1_1scc_1_1pe_1_1intor__fw__nb.html", [
+          [ "axi::pe::rate_limiting_buffer", "classaxi_1_1pe_1_1rate__limiting__buffer.html", null ],
           [ "axi::pe::tx_reorderer", "classaxi_1_1pe_1_1tx__reorderer.html", null ],
           [ "tlm::scc::pe::parallel_pe", "classtlm_1_1scc_1_1pe_1_1parallel__pe.html", null ]
         ] ]
@@ -329,7 +329,10 @@ var hierarchy =
         [ "axi::axi_target< BUSWIDTH >", "classaxi_1_1axi__target.html", null ]
       ] ],
       [ "axi::pe::axi_initiator_b", "classaxi_1_1pe_1_1axi__initiator__b.html", null ],
-      [ "axi::pe::axi_target_pe_b", "classaxi_1_1pe_1_1axi__target__pe__b.html", null ],
+      [ "axi::pe::axi_target_pe", "classaxi_1_1pe_1_1axi__target__pe.html", null ],
+      [ "axi::pe::ordered_target< BUSWIDTH, TYPES, N, POL >", "classaxi_1_1pe_1_1ordered__target.html", null ],
+      [ "axi::pe::rate_limiting_buffer", "classaxi_1_1pe_1_1rate__limiting__buffer.html", null ],
+      [ "axi::pe::reordering_target< BUSWIDTH, TYPES, N, POL >", "classaxi_1_1pe_1_1reordering__target.html", null ],
       [ "axi::pe::simple_initiator_b", "classaxi_1_1pe_1_1simple__initiator__b.html", null ],
       [ "axi::pe::tx_reorderer", "classaxi_1_1pe_1_1tx__reorderer.html", null ],
       [ "axi::pin::axi4_initiator< CFG >", "structaxi_1_1pin_1_1axi4__initiator.html", null ],
@@ -339,6 +342,7 @@ var hierarchy =
       [ "chi::scv::chitlm_recorder_module< BUSWIDTH, TYPES, BASE >", "classchi_1_1scv_1_1chitlm__recorder__module.html", null ],
       [ "obi::pin::target< DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH >", "classobi_1_1pin_1_1target.html", null ],
       [ "scc::configurer", "classscc_1_1configurer.html", null ],
+      [ "scc::hierarchy_dumper", "classscc_1_1hierarchy__dumper.html", null ],
       [ "scc::memory< SIZE, BUSWIDTH >", "classscc_1_1memory.html", null ],
       [ "scc::perf_estimator", "classscc_1_1perf__estimator.html", null ],
       [ "scc::router< BUSWIDTH >", "classscc_1_1router.html", null ],
@@ -388,6 +392,8 @@ var hierarchy =
     [ "sc_prim_channel", null, [
       [ "scc::fifo_w_cb< std::tuple< axi::fsm::protocol_time_point_e, payload_type *, unsigned > >", "classscc_1_1fifo__w__cb.html", null ],
       [ "scc::fifo_w_cb< std::tuple< payload_type *, unsigned > >", "classscc_1_1fifo__w__cb.html", null ],
+      [ "scc::fifo_w_cb< std::tuple< tlm::tlm_generic_payload *, unsigned > >", "classscc_1_1fifo__w__cb.html", null ],
+      [ "scc::fifo_w_cb< tlm::tlm_generic_payload * >", "classscc_1_1fifo__w__cb.html", null ],
       [ "scc::fifo_w_cb< T >", "classscc_1_1fifo__w__cb.html", null ]
     ] ],
     [ "sc_semaphore_if", null, [
@@ -530,10 +536,10 @@ var hierarchy =
     [ "tlm::scc::scv::tlm_extension_recording_registry< TYPES >", "classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html", null ],
     [ "tlm::scc::scv::tlm_extensions_recording_if< TYPES >", "classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html", null ],
     [ "tlm::scc::scv::tlm_extensions_recording_if< axi_protocol_types >", "classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html", [
-      [ "axi::ace_ext_recording", "classaxi_1_1ace__ext__recording.html", null ],
-      [ "axi::axi3_ext_recording", "classaxi_1_1axi3__ext__recording.html", null ],
-      [ "axi::axi4_ext_recording", "classaxi_1_1axi4__ext__recording.html", null ],
-      [ "axi::tlm_id_ext_recording", "classaxi_1_1tlm__id__ext__recording.html", null ]
+      [ "axi::scv::ace_ext_recording", "classaxi_1_1scv_1_1ace__ext__recording.html", null ],
+      [ "axi::scv::axi3_ext_recording", "classaxi_1_1scv_1_1axi3__ext__recording.html", null ],
+      [ "axi::scv::axi4_ext_recording", "classaxi_1_1scv_1_1axi4__ext__recording.html", null ],
+      [ "axi::scv::tlm_id_ext_recording", "classaxi_1_1scv_1_1tlm__id__ext__recording.html", null ]
     ] ],
     [ "tlm::scc::scv::tlm_extensions_recording_if< chi_protocol_types >", "classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html", [
       [ "chi::chi_credit_ext_recording", "classchi_1_1chi__credit__ext__recording.html", null ],
@@ -573,10 +579,10 @@ var hierarchy =
       [ "tlm::scc::scv::impl::tlm_recording_payload< TYPES >", "classtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__payload.html", null ]
     ] ],
     [ "tlm_payload_type", null, [
-      [ "chi::scv::impl::chi_recording_payload< TYPES >", "classchi_1_1scv_1_1impl_1_1chi__recording__payload.html", null ]
+      [ "axi::scv::impl::ace_recording_payload< TYPES >", "classaxi_1_1scv_1_1impl_1_1ace__recording__payload.html", null ]
     ] ],
     [ "tlm_payload_type", null, [
-      [ "axi::scv::impl::ace_recording_payload< TYPES >", "classaxi_1_1scv_1_1impl_1_1ace__recording__payload.html", null ]
+      [ "chi::scv::impl::chi_recording_payload< TYPES >", "classchi_1_1scv_1_1impl_1_1chi__recording__payload.html", null ]
     ] ],
     [ "tlm::scc::scv::impl::tlm_recording_types< TYPES >", "structtlm_1_1scc_1_1scv_1_1impl_1_1tlm__recording__types.html", null ],
     [ "tlm::scc::tlm_signal_baseprotocol_types< SIG >", "structtlm_1_1scc_1_1tlm__signal__baseprotocol__types.html", null ],
@@ -600,9 +606,9 @@ var hierarchy =
       [ "scc::impl::sc_register< DATATYPE >", "classscc_1_1impl_1_1sc__register.html", null ]
     ] ],
     [ "scc::trace::traits< T >", "structscc_1_1trace_1_1traits.html", null ],
-    [ "chi::pe::chi_rn_initiator_b::tx_state", "structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state.html", null ],
-    [ "ahb::pe::ahb_initiator_b::tx_state", "structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state.html", null ],
     [ "axi::pe::axi_initiator_b::tx_state", "structaxi_1_1pe_1_1axi__initiator__b_1_1tx__state.html", null ],
+    [ "ahb::pe::ahb_initiator_b::tx_state", "structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state.html", null ],
+    [ "chi::pe::chi_rn_initiator_b::tx_state", "structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state.html", null ],
     [ "scc::value_registry_if::value_holder", "structscc_1_1value__registry__if_1_1value__holder.html", null ],
     [ "scc::value_registry_if", "structscc_1_1value__registry__if.html", null ],
     [ "scc::trace::vcd_scope_stack< T >", "structscc_1_1trace_1_1vcd__scope__stack.html", null ],

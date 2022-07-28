@@ -80,46 +80,41 @@ $(document).ready(function(){initNavTree('utilities_8cpp_source.html',''); initR
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * See the License for the specific language governing permissions and</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * limitations under the License.</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *******************************************************************************/</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * utilities.cpp</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> *  Created on: Nov 5, 2016</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> *      Author: eyck</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;utilities.h&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>sc_core {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;utilities.h&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span>sc_core {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifdef HAS_NO_TIME_TRACE</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> sc_trace(sc_trace_file* tf, <span class="keyword">const</span> sc_time&amp; t, <span class="keyword">const</span> std::string&amp; name) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    sc_trace(tf, <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>sc_core::sc_time::value_type*<span class="keyword">&gt;</span>(&amp;t), name);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#ifdef HAS_NO_TIME_TRACE</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> sc_trace(sc_trace_file* tf, <span class="keyword">const</span> sc_time&amp; t, <span class="keyword">const</span> std::string&amp; name) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    sc_trace(tf, <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>sc_core::sc_time::value_type*<span class="keyword">&gt;</span>(&amp;t), name);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">template</span> &lt;&gt; <span class="keywordtype">void</span> sc_trace(sc_trace_file* tf, <span class="keyword">const</span> sc_in&lt;sc_time&gt;&amp; port, <span class="keyword">const</span> std::string&amp; name) {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">const</span> sc_signal_in_if&lt;sc_time&gt;* iface = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">if</span>(sc_get_curr_simcontext()-&gt;elaboration_done()) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        iface = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>sc_signal_in_if&lt;sc_time&gt;*<span class="keyword">&gt;</span>(port.get_interface());</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span>(iface)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        sc_trace(tf, iface-&gt;read(), name);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        port.add_trace_internal(tf, name);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">template</span> &lt;&gt; <span class="keywordtype">void</span> sc_trace(sc_trace_file* tf, <span class="keyword">const</span> sc_inout&lt;sc_time&gt;&amp; port, <span class="keyword">const</span> std::string&amp; name) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">const</span> sc_signal_in_if&lt;sc_time&gt;* iface = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">if</span>(sc_get_curr_simcontext()-&gt;elaboration_done()) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        iface = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>sc_signal_in_if&lt;sc_time&gt;*<span class="keyword">&gt;</span>(port.get_interface());</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span>(iface)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        sc_trace(tf, iface-&gt;read(), name);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        port.add_trace_internal(tf, name);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;} <span class="comment">// namespace sc_core</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">template</span> &lt;&gt; <span class="keywordtype">void</span> sc_trace(sc_trace_file* tf, <span class="keyword">const</span> sc_in&lt;sc_time&gt;&amp; port, <span class="keyword">const</span> std::string&amp; name) {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">const</span> sc_signal_in_if&lt;sc_time&gt;* iface = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">if</span>(sc_get_curr_simcontext()-&gt;elaboration_done()) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        iface = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>sc_signal_in_if&lt;sc_time&gt;*<span class="keyword">&gt;</span>(port.get_interface());</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span>(iface)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        sc_trace(tf, iface-&gt;read(), name);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        port.add_trace_internal(tf, name);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span> &lt;&gt; <span class="keywordtype">void</span> sc_trace(sc_trace_file* tf, <span class="keyword">const</span> sc_inout&lt;sc_time&gt;&amp; port, <span class="keyword">const</span> std::string&amp; name) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">const</span> sc_signal_in_if&lt;sc_time&gt;* iface = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span>(sc_get_curr_simcontext()-&gt;elaboration_done()) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        iface = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>sc_signal_in_if&lt;sc_time&gt;*<span class="keyword">&gt;</span>(port.get_interface());</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span>(iface)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        sc_trace(tf, iface-&gt;read(), name);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        port.add_trace_internal(tf, name);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;} <span class="comment">// namespace sc_core</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

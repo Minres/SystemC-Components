@@ -148,7 +148,7 @@ $(document).ready(function(){initNavTree('pool__allocator_8h_source.html',''); i
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                              return a.second == b.second ? a.first &lt; b.first : a.second &lt; b.second;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                          });</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                std::cerr &lt;&lt; <span class="stringliteral">&quot;The 10 blocks with smallest id are:\n&quot;</span>;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; std::min(10UL, elems.size()); ++i) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; std::min&lt;decltype(i)&gt;(10UL, elems.size()); ++i) {</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                    std::cerr &lt;&lt; <span class="stringliteral">&quot;\taddr=&quot;</span> &lt;&lt; elems[i].first &lt;&lt; <span class="stringliteral">&quot;, id=&quot;</span> &lt;&lt; elems[i].second &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                }</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            }</div>

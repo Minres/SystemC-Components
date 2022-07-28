@@ -1,0 +1,13 @@
+<map id="axi::pe::rate_limiting_buffer" name="axi::pe::rate_limiting_buffer">
+<area shape="rect" id="node1" title=" " alt="" coords="763,122,920,163"/>
+<area shape="rect" id="node2" title=" " alt="" coords="453,5,545,32"/>
+<area shape="rect" id="node3" href="$structtlm_1_1scc_1_1pe_1_1intor__fw__nb.html" title=" " alt="" coords="432,57,567,98"/>
+<area shape="rect" id="node4" href="$structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="183,57,317,98"/>
+<area shape="rect" id="node5" title=" " alt="" coords="5,64,107,91"/>
+<area shape="rect" id="node6" href="$classscc_1_1sc__attribute__randomized.html" title=" " alt="" coords="393,122,605,163"/>
+<area shape="rect" id="node7" title=" " alt="" coords="172,122,328,163"/>
+<area shape="rect" id="node8" href="$classscc_1_1fifo__w__cb.html" title=" " alt="" coords="403,187,595,229"/>
+<area shape="rect" id="node9" title=" " alt="" coords="156,195,344,221"/>
+<area shape="rect" id="node10" href="$classscc_1_1fifo__w__cb.html" title=" " alt="" coords="405,253,594,309"/>
+<area shape="rect" id="node11" title=" " alt="" coords="185,268,315,295"/>
+</map>
