@@ -50,8 +50,12 @@ macro(conan_setup)
   cmake_parse_arguments(MARGS "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN} )
  
 
-  set(conanfile_cmake ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
   set(conanfile_cmake_paths ${CMAKE_BINARY_DIR}/conan_paths.cmake)
+
+  set(conanfile_cmake ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+  if(EXISTS ${CMAKE_CURRENT_BINARY_DIR}/conanbuildinfo.cmake)
+	  set(conanfile_cmake ${CMAKE_CURRENT_BINARY_DIR}/conanbuildinfo.cmake)
+  endif()
 
   if(EXISTS "${conanfile_cmake_paths}")
     include(${conanfile_cmake_paths})
