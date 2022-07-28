@@ -44,7 +44,6 @@ set(LIB_SOURCES
     scc/vcd_mt_trace.cpp
     scc/vcd_pull_trace.cpp
     scc/vcd_push_trace.cpp
-    scc/fst_trace.cpp
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp
     scc/hierarchy_dumper.cpp
@@ -52,15 +51,18 @@ set(LIB_SOURCES
 
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
-    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_compressed.cpp)
+    list(APPEND LIB_SOURCES  scc/scv/scv_tr_compressed.cpp)
+	if(TARGET lz4::lz4 OR TARGET CONAN_PKG::lz4)
+        list(APPEND LIB_SOURCES scc/fst_trace.cpp)
+    endif()
 endif()
 
 if(ENABLE_SQLITE)
-    set(LIB_SOURCES ${LIB_SOURCES} scc/scv/scv_tr_sqlite.cpp ../../third_party/sqlite3/sqlite3.c )
+    list(Append LIB_SOURCES  scc/scv/scv_tr_sqlite.cpp ../../third_party/sqlite3/sqlite3.c )
 endif()
 
 if(CCI_FOUND)
-    set(LIB_SOURCES ${LIB_SOURCES} 
+    list(APPEND LIB_SOURCES  
         scc/configurable_tracer.cpp
         scc/sc_thread_pool.cpp
     )
