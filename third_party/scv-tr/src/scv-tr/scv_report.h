@@ -50,6 +50,8 @@
 #define _SCV_TR_REPORT_H
 
 #include <systemc>
+
+//! @brief SystemC Verification Library (SCV) Transaction Recording
 namespace scv_tr {
 //
 // Translation layer for _scv_message messages

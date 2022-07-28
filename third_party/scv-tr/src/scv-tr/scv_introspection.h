@@ -54,6 +54,8 @@
 #include <list>
 #include <memory>
 #include <string>
+
+//! @brief SystemC Verification Library (SCV) Transaction Recording
 namespace scv_tr {
 
 // specific stuff for randomization extensions
