@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('hierarchy__dumper_8cpp_source.html',''
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;rapidjson/ostreamwrapper.h&gt;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;rapidjson/prettywriter.h&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span>scc {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescc.html">scc</a> {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using namespace </span>rapidjson;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using</span> writer_type = PrettyWriter&lt;OStreamWrapper&gt;;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('hierarchy__dumper_8cpp_source.html',''
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;std::string demangle(<span class="keyword">const</span> <span class="keywordtype">char</span>* name);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;std::string type(<span class="keyword">const</span> T&amp; t) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;std::string <a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a>(<span class="keyword">const</span> T&amp; t) {</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> demangle(<span class="keyword">typeid</span>(t).name());</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
@@ -137,21 +137,21 @@ $(document).ready(function(){initNavTree('hierarchy__dumper_8cpp_source.html',''
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::string <span class="keyword">const</span> name;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    sc_core::sc_interface <span class="keyword">const</span>* port_if{<span class="keyword">nullptr</span>};</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">bool</span> input{<span class="keyword">false</span>};</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::string <span class="keyword">const</span> type;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::string <span class="keyword">const</span> <a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a>;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    Port(std::string <span class="keyword">const</span>&amp; <span class="keywordtype">id</span>, std::string <span class="keyword">const</span>&amp; name, sc_core::sc_interface  <span class="keyword">const</span>* ptr, <span class="keywordtype">bool</span> input, std::string <span class="keyword">const</span>&amp; type)</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    : id(id)</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    , name(name)</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    , port_if(ptr)</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    , input(input)</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    , type(type)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    , <a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a>(<a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a>)</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    { }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">struct </span>Module {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::string <span class="keyword">const</span> id;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::string <span class="keyword">const</span> name;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    std::string <span class="keyword">const</span> type;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    std::string <span class="keyword">const</span> <a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a>;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">bool</span> <span class="keyword">const</span> topModule{<span class="keyword">false</span>};</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    std::vector&lt;Module&gt; submodules;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::vector&lt;Port&gt; ports;</div>
@@ -159,7 +159,7 @@ $(document).ready(function(){initNavTree('hierarchy__dumper_8cpp_source.html',''
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    Module(std::string <span class="keyword">const</span>&amp; <span class="keywordtype">id</span>, std::string <span class="keyword">const</span>&amp; name, std::string <span class="keyword">const</span>&amp; type, <span class="keywordtype">bool</span> top)</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    : id(id)</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    , name(name)</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    , type(type)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    , <a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a>(<a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a>)</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    , topModule(top)</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    { }</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
@@ -195,7 +195,7 @@ $(document).ready(function(){initNavTree('hierarchy__dumper_8cpp_source.html',''
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    std::string kind{obj-&gt;kind()};</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">if</span> (kind == <span class="stringliteral">&quot;sc_module&quot;</span>) {</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keyword">auto</span>* name = obj-&gt;name();</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        currentModule-&gt;submodules.push_back(Module(name, obj-&gt;basename(), type(*obj), <span class="keyword">false</span>));</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        currentModule-&gt;submodules.push_back(Module(name, obj-&gt;basename(), <a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a>(*obj), <span class="keyword">false</span>));</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        std::unordered_set&lt;std::string&gt; keep_outs;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>* child : obj-&gt;get_child_objects()) {</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keyword">const</span> std::string child_name{child-&gt;basename()};</div>
@@ -214,7 +214,7 @@ $(document).ready(function(){initNavTree('hierarchy__dumper_8cpp_source.html',''
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        }</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(kind == <span class="stringliteral">&quot;sc_clock&quot;</span>){</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span>* iface = <span class="keyword">dynamic_cast&lt;</span>sc_core::sc_interface const*<span class="keyword">&gt;</span>(obj);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        currentModule-&gt;submodules.push_back(Module(obj-&gt;name(), obj-&gt;basename(), type(*obj), <span class="keyword">false</span>));</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        currentModule-&gt;submodules.push_back(Module(obj-&gt;name(), obj-&gt;basename(), <a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a>(*obj), <span class="keyword">false</span>));</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        currentModule-&gt;submodules.back().ports.push_back(Port(std::string(obj-&gt;name())+<span class="stringliteral">&quot;.&quot;</span>+obj-&gt;basename(), obj-&gt;basename(), iface, <span class="keyword">false</span>, obj-&gt;kind()));</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">#ifndef NO_TLM_EXTRACT</span></div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<span class="keyword">auto</span> <span class="keyword">const</span>* tptr = <span class="keyword">dynamic_cast&lt;</span>tlm::tlm_base_socket_if const*<span class="keyword">&gt;</span>(obj)) {</div>
@@ -370,7 +370,7 @@ $(document).ready(function(){initNavTree('hierarchy__dumper_8cpp_source.html',''
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> t : tops) {</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">if</span> (std::string(t-&gt;kind()) == <span class="stringliteral">&quot;sc_module&quot;</span> &amp;&amp; std::string(t-&gt;basename()).substr(0, 3) != <span class="stringliteral">&quot;$$$&quot;</span>) {</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            SCCDEBUG() &lt;&lt; t-&gt;name() &lt;&lt; <span class="stringliteral">&quot;(&quot;</span> &lt;&lt; t-&gt;kind() &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            topModules.push_back(Module(t-&gt;name(), t-&gt;basename(), type(*t), <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            topModules.push_back(Module(t-&gt;name(), t-&gt;basename(), <a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a>(*t), <span class="keyword">true</span>));</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>* child : t-&gt;get_child_objects())</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                scanModule(child, &amp;topModules.back(), 1);</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        }</div>
@@ -434,6 +434,8 @@ $(document).ready(function(){initNavTree('hierarchy__dumper_8cpp_source.html',''
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="anamespacetlm_1_1scc_1_1pe_html_a6a6eec1885e2ecc7d636ae07c13d7287"><div class="ttname"><a href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">tlm::scc::pe::type</a></div><div class="ttdeci">type</div><div class="ttdef"><b>Definition:</b> <a href="intor__if_8h_source.html#l00074">intor_if.h:74</a></div></div>
+<div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

@@ -86,33 +86,36 @@ $(document).ready(function(){initNavTree('intor__if_8h_source.html',''); initRes
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;tlm&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>tlm {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>scc {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>pe {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">enum class</span> type { NB, BL };</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">template</span> &lt;type TYPE&gt; <span class="keyword">struct </span>intor_fw : <span class="keyword">public</span> sc_core::sc_interface {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="structtlm_1_1scc_1_1pe_1_1intor__fw.html#a69f17795eabb5192d5388dd6b67e4109">transport</a>(tlm::tlm_generic_payload&amp; payload, <span class="keywordtype">bool</span> lt_transport = <span class="keyword">false</span>) = 0;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="structtlm_1_1scc_1_1pe_1_1intor__fw.html#a1e85d9861b52f3ec31c17e107ccd852b">snoop_resp</a>(tlm::tlm_generic_payload&amp; payload, <span class="keywordtype">bool</span> sync = <span class="keyword">false</span>) = 0;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">template</span> &lt;type TYPE&gt; <span class="keyword">struct </span>intor_bw : <span class="keyword">public</span> sc_core::sc_interface {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <a class="code" href="structtlm_1_1scc_1_1pe_1_1intor__bw.html#af250b11afa4a9e1c6cf76668847bd3be">transport</a>(tlm::tlm_generic_payload&amp; payload) = 0;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">struct </span>intor_fw_b : <span class="keyword">public</span> intor_fw&lt;type::BL&gt; {};</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">struct </span>intor_fw_nb : <span class="keyword">public</span> intor_fw&lt;type::NB&gt; {};</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">struct </span>intor_bw_b : <span class="keyword">public</span> intor_bw&lt;type::BL&gt; {};</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">struct </span>intor_bw_nb : <span class="keyword">public</span> intor_bw&lt;type::NB&gt; {};</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;} <span class="comment">// namespace pe</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// namespace tlm</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SCC_INCL_TLM_PE_INTOR_IF_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacetlm.html">tlm</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescc.html">scc</a> {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>pe {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a> { NB, BL };</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">template</span> &lt;type TYPE&gt; <span class="keyword">struct </span>intor_fw : <span class="keyword">public</span> sc_core::sc_interface {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="structtlm_1_1scc_1_1pe_1_1intor__fw.html#a69f17795eabb5192d5388dd6b67e4109">transport</a>(tlm::tlm_generic_payload&amp; payload, <span class="keywordtype">bool</span> lt_transport = <span class="keyword">false</span>) = 0;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="structtlm_1_1scc_1_1pe_1_1intor__fw.html#a1e85d9861b52f3ec31c17e107ccd852b">snoop_resp</a>(tlm::tlm_generic_payload&amp; payload, <span class="keywordtype">bool</span> sync = <span class="keyword">false</span>) = 0;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">template</span> &lt;type TYPE&gt; <span class="keyword">struct </span>intor_bw : <span class="keyword">public</span> sc_core::sc_interface {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <a class="code" href="structtlm_1_1scc_1_1pe_1_1intor__bw.html#af250b11afa4a9e1c6cf76668847bd3be">transport</a>(tlm::tlm_generic_payload&amp; payload) = 0;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">struct </span>intor_fw_b : <span class="keyword">public</span> intor_fw&lt;type::BL&gt; {};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">struct </span>intor_fw_nb : <span class="keyword">public</span> intor_fw&lt;type::NB&gt; {};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">struct </span>intor_bw_b : <span class="keyword">public</span> intor_bw&lt;type::BL&gt; {};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">struct </span>intor_bw_nb : <span class="keyword">public</span> intor_bw&lt;type::NB&gt; {};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">// namespace pe</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">// namespace tlm</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SCC_INCL_TLM_PE_INTOR_IF_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="astructtlm_1_1scc_1_1pe_1_1intor__bw_html_af250b11afa4a9e1c6cf76668847bd3be"><div class="ttname"><a href="structtlm_1_1scc_1_1pe_1_1intor__bw.html#af250b11afa4a9e1c6cf76668847bd3be">tlm::scc::pe::intor_bw::transport</a></div><div class="ttdeci">virtual unsigned transport(tlm::tlm_generic_payload &amp;payload)=0</div></div>
+<div class="ttc" id="anamespacetlm_1_1scc_1_1pe_html_a6a6eec1885e2ecc7d636ae07c13d7287"><div class="ttname"><a href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">tlm::scc::pe::type</a></div><div class="ttdeci">type</div><div class="ttdef"><b>Definition:</b> <a href="intor__if_8h_source.html#l00074">intor_if.h:74</a></div></div>
+<div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 <div class="ttc" id="astructtlm_1_1scc_1_1pe_1_1intor__fw_html_a1e85d9861b52f3ec31c17e107ccd852b"><div class="ttname"><a href="structtlm_1_1scc_1_1pe_1_1intor__fw.html#a1e85d9861b52f3ec31c17e107ccd852b">tlm::scc::pe::intor_fw::snoop_resp</a></div><div class="ttdeci">virtual void snoop_resp(tlm::tlm_generic_payload &amp;payload, bool sync=false)=0</div></div>
+<div class="ttc" id="anamespacetlm_html"><div class="ttname"><a href="namespacetlm.html">tlm</a></div><div class="ttdoc">SystemC TLM.</div><div class="ttdef"><b>Definition:</b> <a href="initiator__mixin_8h_source.html#l00026">initiator_mixin.h:26</a></div></div>
 <div class="ttc" id="astructtlm_1_1scc_1_1pe_1_1intor__fw_html_a69f17795eabb5192d5388dd6b67e4109"><div class="ttname"><a href="structtlm_1_1scc_1_1pe_1_1intor__fw.html#a69f17795eabb5192d5388dd6b67e4109">tlm::scc::pe::intor_fw::transport</a></div><div class="ttdeci">virtual void transport(tlm::tlm_generic_payload &amp;payload, bool lt_transport=false)=0</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

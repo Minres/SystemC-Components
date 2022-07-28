@@ -35,7 +35,8 @@ var NAVTREE =
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ],
-        [ "Enumerations", "namespacemembers_enum.html", null ]
+        [ "Enumerations", "namespacemembers_enum.html", null ],
+        [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -59,18 +60,18 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"classaxi_1_1axi__initiator.html#ab77824e5a56d0e01398efc6e44bf1231",
-"classaxi_1_1pe_1_1simple__ace__initiator.html#a0ead84e364bcd94091a6e0cf277da0ec",
-"classchi_1_1pe_1_1chi__rn__initiator__b.html#a577d20e6e40381b9979af6a5febd985d",
-"classscc_1_1fifo__w__cb.html#a83bce8e999ad0acbe7e52c447696bca0",
-"classscc_1_1trace_1_1gz__writer.html#a08af9a254d20286ac8783085366c9d3d",
-"classtlm_1_1scc_1_1signal__initiator__mixin.html#afb42d85176f5feb1a07a9423ae0125e1",
-"dir_4b4439fcc6b4628cd8783772fc9df8bf.html",
-"structaxi_1_1ar__ch.html#a169b3e7abac854d27500aecc6bb96ec0",
-"structaxi_1_1master__types.html#a934ef939ed427cfbe9f791ce5c2eee5a",
-"structchi_1_1data.html#afc29ca0cbc9c5a0e16bd67040ad204e7",
-"structscc_1_1sc__variable.html#a1eba20a9a30a30dcb04fb79660f8df14",
-"structtlm_1_1scc_1_1tlm__generic__payload__base.html#ae293118b43c61fb849b11180b3ce574b"
+"classaxi_1_1axi__initiator__base.html#a88a5f71e615ad3220c67db577f855b07",
+"classaxi_1_1pe_1_1simple__ace__initiator.html#a999008fb375bfcfe313df92c77f9d4db",
+"classchi_1_1pe_1_1chi__rn__initiator__b.html#a713d59ff7d60bf4b631c60ac7e40206f",
+"classscc_1_1fifo__w__cb.html#ac0cafc885abdf7bae41e631787696d72",
+"classscc_1_1trace_1_1gz__writer.html#ae42eb7ffb1e8161dcf5dd9e34cb52f0f",
+"classtlm_1_1scc_1_1signal__target__mixin.html#a781d35753fac8b6d4832e32137e9764e",
+"dir_8400f74b819af6408e1b24b7b1ac1666.html",
+"structaxi_1_1ace__target__socket.html#a848145a1e0481c22b6f1bdb628ad98b9",
+"structaxi_1_1lite__slave__types.html#a3bb90770ddba32adee7dd8a04d8cb775",
+"structchi_1_1data.html#ac9107653c725c3198ebd1ba1eceba35c",
+"structscc_1_1sc__uint__tester.html",
+"structtlm_1_1scc_1_1tlm__generic__payload__base.html#a800465a3bca8a2571eadc69ad962c4ce"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

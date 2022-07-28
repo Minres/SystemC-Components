@@ -137,8 +137,8 @@ $(document).ready(function(){initNavTree('delegate_8h_source.html',''); initResi
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T,</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;              <span class="keyword">typename</span> = typename ::std::enable_if&lt;!::std::is_same&lt;delegate, typename ::std::decay&lt;T&gt;::type&gt;{}&gt;::type&gt;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    delegate(T&amp;&amp; f)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    : store_(operator new(sizeof(typename ::std::decay&lt;T&gt;::type)), functor_deleter&lt;typename ::std::decay&lt;T&gt;::type&gt;)</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    , store_size_(sizeof(typename ::std::decay&lt;T&gt;::type)) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    : store_(operator new(sizeof(typename ::std::decay&lt;T&gt;::<a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a>)), functor_deleter&lt;typename ::std::decay&lt;T&gt;::<a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a>&gt;)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    , store_size_(sizeof(typename ::std::decay&lt;T&gt;::<a class="code" href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">type</a>)) {</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">using</span> functor_type = typename ::std::decay&lt;T&gt;::type;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keyword">new</span>(store_.get()) functor_type(::std::forward&lt;T&gt;(f));</div>
@@ -330,6 +330,7 @@ $(document).ready(function(){initNavTree('delegate_8h_source.html',''); initResi
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SC_COMPONENTS_INCL_UTIL_DELEGATE_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="anamespacetlm_1_1scc_1_1pe_html_a6a6eec1885e2ecc7d636ae07c13d7287"><div class="ttname"><a href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">tlm::scc::pe::type</a></div><div class="ttdeci">type</div><div class="ttdef"><b>Definition:</b> <a href="intor__if_8h_source.html#l00074">intor_if.h:74</a></div></div>
 <div class="ttc" id="aclassutil_1_1delegate_html"><div class="ttname"><a href="classutil_1_1delegate.html">util::delegate</a></div><div class="ttdef"><b>Definition:</b> <a href="delegate_8h_source.html#l00049">delegate.h:49</a></div></div>
 <div class="ttc" id="anamespaceutil_html"><div class="ttname"><a href="namespaceutil.html">util</a></div><div class="ttdoc">SCC common utilities.</div><div class="ttdef"><b>Definition:</b> <a href="bit__field_8h_source.html#l00030">bit_field.h:30</a></div></div>
 <!-- start footer part -->

@@ -86,52 +86,55 @@ $(document).ready(function(){initNavTree('tlm__id_8h_source.html',''); initResiz
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;tlm_gp_shared.h&quot;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>tlm {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>scc {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">struct </span>tlm_id_extension : <span class="keyword">public</span> tlm_extension&lt;tlm_id_extension&gt; {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">virtual</span> tlm_extension_base* clone()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        tlm_id_extension* t = <span class="keyword">new</span> tlm_id_extension(this-&gt;<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> t;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> copy_from(tlm_extension_base <span class="keyword">const</span>&amp; from) { <span class="keywordtype">id</span> = <span class="keyword">static_cast&lt;</span>tlm_id_extension const&amp;<span class="keyword">&gt;</span>(from).<span class="keywordtype">id</span>; }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    tlm_id_extension(tlm_gp_shared_ptr&amp; i)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    : tlm_id_extension(reinterpret_cast&lt;uintptr_t&gt;(i.get())) {}</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    tlm_id_extension(<span class="keywordtype">void</span>* i)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    : tlm_id_extension(reinterpret_cast&lt;uintptr_t&gt;(i)) {}</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    tlm_id_extension(uintptr_t i)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    : id(i) {}</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    uintptr_t id;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">inline</span> uintptr_t getId(tlm::tlm_generic_payload&amp; gp) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span>(<span class="keyword">auto</span> ext = gp.get_extension&lt;tlm_id_extension&gt;())</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> ext-&gt;id;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span> (uintptr_t)&amp;gp;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">inline</span> uintptr_t getId(tlm::tlm_generic_payload* gp) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">if</span>(!gp)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">if</span>(<span class="keyword">auto</span> ext = gp-&gt;get_extension&lt;tlm_id_extension&gt;())</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span> ext-&gt;id;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structtlm_1_1scc_1_1tlm__id__extension.html">   52</a></span>&#160;        <span class="keywordflow">return</span> (uintptr_t)gp;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> setId(tlm::tlm_generic_payload&amp; gp, uintptr_t <span class="keywordtype">id</span>) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span>(<span class="keyword">auto</span> ext = gp.get_extension&lt;<a class="code" href="structtlm_1_1scc_1_1tlm__id__extension.html">tlm_id_extension</a>&gt;())</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        ext-&gt;id = id;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(gp.has_mm())</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        gp.set_auto_extension(<span class="keyword">new</span> <a class="code" href="structtlm_1_1scc_1_1tlm__id__extension.html">tlm_id_extension</a>(<span class="keywordtype">id</span>));</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        gp.set_extension(<span class="keyword">new</span> <a class="code" href="structtlm_1_1scc_1_1tlm__id__extension.html">tlm_id_extension</a>(<span class="keywordtype">id</span>));</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// namespace tlm</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacetlm.html">tlm</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescc.html">scc</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">struct </span>tlm_id_extension : <span class="keyword">public</span> tlm_extension&lt;tlm_id_extension&gt; {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">virtual</span> tlm_extension_base* clone()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        tlm_id_extension* t = <span class="keyword">new</span> tlm_id_extension(this-&gt;<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">return</span> t;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> copy_from(tlm_extension_base <span class="keyword">const</span>&amp; from) { <span class="keywordtype">id</span> = <span class="keyword">static_cast&lt;</span>tlm_id_extension const&amp;<span class="keyword">&gt;</span>(from).<span class="keywordtype">id</span>; }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    tlm_id_extension(tlm_gp_shared_ptr&amp; i)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    : tlm_id_extension(reinterpret_cast&lt;uintptr_t&gt;(i.get())) {}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    tlm_id_extension(<span class="keywordtype">void</span>* i)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    : tlm_id_extension(reinterpret_cast&lt;uintptr_t&gt;(i)) {}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    tlm_id_extension(uintptr_t i)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    : id(i) {}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    uintptr_t id;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">inline</span> uintptr_t getId(tlm::tlm_generic_payload&amp; gp) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">if</span>(<span class="keyword">auto</span> ext = gp.get_extension&lt;tlm_id_extension&gt;())</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span> ext-&gt;id;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> (uintptr_t)&amp;gp;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">inline</span> uintptr_t getId(tlm::tlm_generic_payload* gp) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span>(!gp)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span>(<span class="keyword">auto</span> ext = gp-&gt;get_extension&lt;tlm_id_extension&gt;())</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> ext-&gt;id;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structtlm_1_1scc_1_1tlm__id__extension.html">   55</a></span>&#160;        <span class="keywordflow">return</span> (uintptr_t)gp;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> setId(tlm::tlm_generic_payload&amp; gp, uintptr_t <span class="keywordtype">id</span>) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span>(<span class="keyword">auto</span> ext = gp.get_extension&lt;<a class="code" href="structtlm_1_1scc_1_1tlm__id__extension.html">tlm_id_extension</a>&gt;())</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        ext-&gt;id = id;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(gp.has_mm())</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        gp.set_auto_extension(<span class="keyword">new</span> <a class="code" href="structtlm_1_1scc_1_1tlm__id__extension.html">tlm_id_extension</a>(<span class="keywordtype">id</span>));</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        gp.set_extension(<span class="keyword">new</span> <a class="code" href="structtlm_1_1scc_1_1tlm__id__extension.html">tlm_id_extension</a>(<span class="keywordtype">id</span>));</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">// namespace tlm</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="astructtlm_1_1scc_1_1tlm__id__extension_html"><div class="ttname"><a href="structtlm_1_1scc_1_1tlm__id__extension.html">tlm::scc::tlm_id_extension</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__id_8h_source.html#l00052">tlm_id.h:52</a></div></div>
+<div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
+<div class="ttc" id="astructtlm_1_1scc_1_1tlm__id__extension_html"><div class="ttname"><a href="structtlm_1_1scc_1_1tlm__id__extension.html">tlm::scc::tlm_id_extension</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__id_8h_source.html#l00055">tlm_id.h:55</a></div></div>
+<div class="ttc" id="anamespacetlm_html"><div class="ttname"><a href="namespacetlm.html">tlm</a></div><div class="ttdoc">SystemC TLM.</div><div class="ttdef"><b>Definition:</b> <a href="initiator__mixin_8h_source.html#l00026">initiator_mixin.h:26</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

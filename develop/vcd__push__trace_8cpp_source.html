@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('vcd__push__trace_8cpp_source.html','')
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">        std::fwrite(buf.c_str(), 1, buf.size(), FP);                                                                   \</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">    }</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">namespace </span>scc {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescc.html">scc</a> {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/*******************************************************************************************************</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> *******************************************************************************************************/</span></div>
@@ -397,14 +397,18 @@ $(document).ready(function(){initNavTree('vcd__push__trace_8cpp_source.html','')
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="keywordtype">void</span> vcd_push_trace_file::set_time_unit(<span class="keywordtype">double</span> v, sc_core::sc_time_unit tu) {}</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;sc_core::sc_trace_file* create_vcd_push_trace_file(<span class="keyword">const</span> <span class="keywordtype">char</span>* name, std::function&lt;<span class="keywordtype">bool</span>()&gt; enable) {</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> vcd_push_trace_file(name, enable);</div>
+<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="namespacescc.html#a9cf439e0816a76b818f694798e2b3bfd">  333</a></span>&#160;sc_core::sc_trace_file* <a class="code" href="namespacescc.html#a9cf439e0816a76b818f694798e2b3bfd">create_vcd_push_trace_file</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name, std::function&lt;<span class="keywordtype">bool</span>()&gt; enable) {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="structscc_1_1vcd__push__trace__file.html">vcd_push_trace_file</a>(name, enable);</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;}</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="keywordtype">void</span> close_vcd_push_trace_file(sc_core::sc_trace_file* tf) { <span class="keyword">delete</span> <span class="keyword">static_cast&lt;</span>vcd_push_trace_file*<span class="keyword">&gt;</span>(tf); }</div>
+<div class="line"><a name="l00337"></a><span class="lineno"><a class="line" href="namespacescc.html#a7aee345fef9e0d922c783991aba69863">  337</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacescc.html#a7aee345fef9e0d922c783991aba69863">close_vcd_push_trace_file</a>(sc_core::sc_trace_file* tf) { <span class="keyword">delete</span> <span class="keyword">static_cast&lt;</span><a class="code" href="structscc_1_1vcd__push__trace__file.html">vcd_push_trace_file</a>*<span class="keyword">&gt;</span>(tf); }</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;} <span class="comment">// namespace scc</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="anamespacescc_html_a9cf439e0816a76b818f694798e2b3bfd"><div class="ttname"><a href="namespacescc.html#a9cf439e0816a76b818f694798e2b3bfd">scc::create_vcd_push_trace_file</a></div><div class="ttdeci">sc_core::sc_trace_file * create_vcd_push_trace_file(const char *name, std::function&lt; bool()&gt; enable=std::function&lt; bool()&gt;())</div><div class="ttdoc">create VCD file which uses push mechanism</div><div class="ttdef"><b>Definition:</b> <a href="vcd__push__trace_8cpp_source.html#l00333">vcd_push_trace.cpp:333</a></div></div>
+<div class="ttc" id="astructscc_1_1vcd__push__trace__file_html"><div class="ttname"><a href="structscc_1_1vcd__push__trace__file.html">scc::vcd_push_trace_file</a></div><div class="ttdef"><b>Definition:</b> <a href="vcd__push__trace_8hh_source.html#l00040">vcd_push_trace.hh:40</a></div></div>
+<div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
+<div class="ttc" id="anamespacescc_html_a7aee345fef9e0d922c783991aba69863"><div class="ttname"><a href="namespacescc.html#a7aee345fef9e0d922c783991aba69863">scc::close_vcd_push_trace_file</a></div><div class="ttdeci">void close_vcd_push_trace_file(sc_core::sc_trace_file *tf)</div><div class="ttdoc">close the VCD file</div><div class="ttdef"><b>Definition:</b> <a href="vcd__push__trace_8cpp_source.html#l00337">vcd_push_trace.cpp:337</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

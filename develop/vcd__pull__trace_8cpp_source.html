@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('vcd__pull__trace_8cpp_source.html','')
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">        std::fwrite(buf.c_str(), 1, buf.size(), FP);                                                                   \</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">    }</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">namespace </span>scc {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescc.html">scc</a> {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/*******************************************************************************************************</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> *******************************************************************************************************/</span></div>
@@ -323,18 +323,22 @@ $(document).ready(function(){initNavTree('vcd__pull__trace_8cpp_source.html','')
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="keywordtype">void</span> vcd_pull_trace_file::set_time_unit(<span class="keywordtype">double</span> v, sc_core::sc_time_unit tu) {}</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;sc_core::sc_trace_file* create_vcd_pull_trace_file(<span class="keyword">const</span> <span class="keywordtype">char</span>* name, std::function&lt;<span class="keywordtype">bool</span>()&gt; enable) {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> vcd_pull_trace_file(name, enable);</div>
+<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="namespacescc.html#a7bde74268e41e976762f8ddb50a4c493">  259</a></span>&#160;sc_core::sc_trace_file* <a class="code" href="namespacescc.html#a7bde74268e41e976762f8ddb50a4c493">create_vcd_pull_trace_file</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name, std::function&lt;<span class="keywordtype">bool</span>()&gt; enable) {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="structscc_1_1vcd__pull__trace__file.html">vcd_pull_trace_file</a>(name, enable);</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;}</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keywordtype">void</span> close_vcd_pull_trace_file(sc_core::sc_trace_file* tf) {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    vcd_pull_trace_file* vcd_tf = <span class="keyword">static_cast&lt;</span>vcd_pull_trace_file*<span class="keyword">&gt;</span>(tf);</div>
+<div class="line"><a name="l00263"></a><span class="lineno"><a class="line" href="namespacescc.html#aeadf6c32c9f835617525be32457940e9">  263</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacescc.html#aeadf6c32c9f835617525be32457940e9">close_vcd_pull_trace_file</a>(sc_core::sc_trace_file* tf) {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <a class="code" href="structscc_1_1vcd__pull__trace__file.html">vcd_pull_trace_file</a>* vcd_tf = <span class="keyword">static_cast&lt;</span><a class="code" href="structscc_1_1vcd__pull__trace__file.html">vcd_pull_trace_file</a>*<span class="keyword">&gt;</span>(tf);</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keyword">delete</span> vcd_tf;</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;}</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;} <span class="comment">// namespace scc</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="anamespacescc_html_a7bde74268e41e976762f8ddb50a4c493"><div class="ttname"><a href="namespacescc.html#a7bde74268e41e976762f8ddb50a4c493">scc::create_vcd_pull_trace_file</a></div><div class="ttdeci">sc_core::sc_trace_file * create_vcd_pull_trace_file(const char *name, std::function&lt; bool()&gt; enable=std::function&lt; bool()&gt;())</div><div class="ttdoc">create VCD file which uses pull mechanism</div><div class="ttdef"><b>Definition:</b> <a href="vcd__pull__trace_8cpp_source.html#l00259">vcd_pull_trace.cpp:259</a></div></div>
+<div class="ttc" id="astructscc_1_1vcd__pull__trace__file_html"><div class="ttname"><a href="structscc_1_1vcd__pull__trace__file.html">scc::vcd_pull_trace_file</a></div><div class="ttdef"><b>Definition:</b> <a href="vcd__pull__trace_8hh_source.html#l00038">vcd_pull_trace.hh:38</a></div></div>
+<div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
+<div class="ttc" id="anamespacescc_html_aeadf6c32c9f835617525be32457940e9"><div class="ttname"><a href="namespacescc.html#aeadf6c32c9f835617525be32457940e9">scc::close_vcd_pull_trace_file</a></div><div class="ttdeci">void close_vcd_pull_trace_file(sc_core::sc_trace_file *tf)</div><div class="ttdoc">close the VCD file</div><div class="ttdef"><b>Definition:</b> <a href="vcd__pull__trace_8cpp_source.html#l00263">vcd_pull_trace.cpp:263</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

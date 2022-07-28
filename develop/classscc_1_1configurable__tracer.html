@@ -140,7 +140,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tracer__base.html#af67c0e3931c52e0ed74f266c27ea5c58">~tracer_base</a> ()</td></tr>
 <tr class="memdesc:af67c0e3931c52e0ed74f266c27ea5c58 inherit pub_methods_classscc_1_1tracer__base"><td class="mdescLeft">&#160;</td><td class="mdescRight">destructor <br /></td></tr>
 <tr class="separator:af67c0e3931c52e0ed74f266c27ea5c58 inherit pub_methods_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe84fc98c6bb97f4071c14a19f531abf inherit pub_methods_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tracer__base.html#abe84fc98c6bb97f4071c14a19f531abf">set_trace_types</a> (trace_types t)</td></tr>
+<tr class="memitem:abe84fc98c6bb97f4071c14a19f531abf inherit pub_methods_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tracer__base.html#abe84fc98c6bb97f4071c14a19f531abf">set_trace_types</a> (<a class="el" href="namespacescc.html#a16c18825e698bcd4b014919563c5c191">trace_types</a> t)</td></tr>
 <tr class="memdesc:abe84fc98c6bb97f4071c14a19f531abf inherit pub_methods_classscc_1_1tracer__base"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the types to trace  <a href="classscc_1_1tracer__base.html#abe84fc98c6bb97f4071c14a19f531abf">More...</a><br /></td></tr>
 <tr class="separator:abe84fc98c6bb97f4071c14a19f531abf inherit pub_methods_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46c28f6f1f804b5d2d2cd37df7fd1600 inherit pub_methods_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top">const sc_core::sc_trace_file *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tracer__base.html#a46c28f6f1f804b5d2d2cd37df7fd1600">get_trace_file</a> () const</td></tr>
@@ -205,7 +205,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 sc_core::sc_trace_file *&#160;</td><td class="memItemRight" valign="bottom"><b>trf</b> {nullptr}</td></tr>
 <tr class="separator:ab89161002098e41cd35933fe21680335 inherit pro_attribs_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a2ebee4379a80b0266d257582b8db0e inherit pro_attribs_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top"><a id="a6a2ebee4379a80b0266d257582b8db0e"></a>
-trace_types&#160;</td><td class="memItemRight" valign="bottom"><b>types_to_trace</b> {trace_types::ALL}</td></tr>
+<a class="el" href="namespacescc.html#a16c18825e698bcd4b014919563c5c191">trace_types</a>&#160;</td><td class="memItemRight" valign="bottom"><b>types_to_trace</b> {<a class="el" href="namespacescc.html#a16c18825e698bcd4b014919563c5c191a5fb1f955b45e38e31789286a1790398d">trace_types::ALL</a>}</td></tr>
 <tr class="separator:a6a2ebee4379a80b0266d257582b8db0e inherit pro_attribs_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -224,14 +224,14 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a8ba2e352a1b382212c1411fef82613ce inherit pub_types_classscc_1_1tracer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_static_methods_classscc_1_1tracer__base"><td colspan="2" onclick="javascript:toggleInherit('pro_static_methods_classscc_1_1tracer__base')"><img src="closed.png" alt="-"/>&#160;Static Protected Member Functions inherited from <a class="el" href="classscc_1_1tracer__base.html">scc::tracer_base</a></td></tr>
 <tr class="memitem:a6088c75fecd3fdd7dabdf886054eafbb inherit pro_static_methods_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top"><a id="a6088c75fecd3fdd7dabdf886054eafbb"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>try_trace</b> (sc_core::sc_trace_file *trace_file, const sc_core::sc_object *object, trace_types t)</td></tr>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>try_trace</b> (sc_core::sc_trace_file *trace_file, const sc_core::sc_object *object, <a class="el" href="namespacescc.html#a16c18825e698bcd4b014919563c5c191">trace_types</a> t)</td></tr>
 <tr class="separator:a6088c75fecd3fdd7dabdf886054eafbb inherit pro_static_methods_classscc_1_1tracer__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>configurable tracer for automatic port and signal tracing </p>
 <p>This class traverses the SystemC object hierarchy and registers all signals and ports found with the tracing infrastructure. Using a sc_core::sc_attribute or a CCI param named "enableTracing" this can be switch on or off on a per module basis </p>
 
-<p class="definition">Definition at line <a class="el" href="configurable__tracer_8h_source.html#l00048">48</a> of file <a class="el" href="configurable__tracer_8h_source.html">configurable_tracer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurable__tracer_8h_source.html#l00050">50</a> of file <a class="el" href="configurable__tracer_8h_source.html">configurable_tracer.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae343fdfeec94159ecabd8863ce905f68"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae343fdfeec94159ecabd8863ce905f68">&#9670;&nbsp;</a></span>configurable_tracer() <span class="overload">[1/4]</span></h2>
@@ -353,7 +353,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>try_trace</b> 
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurable__tracer_8h_source.html#l00068">68</a> of file <a class="el" href="configurable__tracer_8h_source.html">configurable_tracer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurable__tracer_8h_source.html#l00070">70</a> of file <a class="el" href="configurable__tracer_8h_source.html">configurable_tracer.h</a>.</p>
 
 </div>
 </div>
@@ -477,7 +477,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>try_trace</b> 
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurable__tracer_8h_source.html#l00089">89</a> of file <a class="el" href="configurable__tracer_8h_source.html">configurable_tracer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurable__tracer_8h_source.html#l00091">91</a> of file <a class="el" href="configurable__tracer_8h_source.html">configurable_tracer.h</a>.</p>
 
 </div>
 </div>
@@ -526,7 +526,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>try_trace</b> 
 </div><div class="memdoc">
 <p>adds default trace control attribute of name 'enableTracing' to each sc_module in a design hierarchy </p>
 
-<p class="definition">Definition at line <a class="el" href="configurable__tracer_8h_source.html#l00099">99</a> of file <a class="el" href="configurable__tracer_8h_source.html">configurable_tracer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurable__tracer_8h_source.html#l00101">101</a> of file <a class="el" href="configurable__tracer_8h_source.html">configurable_tracer.h</a>.</p>
 
 </div>
 </div>
@@ -539,7 +539,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>try_trace</b> 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>scc</b></li><li class="navelem"><a class="el" href="classscc_1_1configurable__tracer.html">configurable_tracer</a></li>
+    <li class="navelem"><a class="el" href="namespacescc.html">scc</a></li><li class="navelem"><a class="el" href="classscc_1_1configurable__tracer.html">configurable_tracer</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
