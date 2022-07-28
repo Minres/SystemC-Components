@@ -1,12 +1,21 @@
-/*
- * initiator.h
+/*******************************************************************************
+ * Copyright 2021-2022 MINRES Technologies GmbH
  *
- *  Created on: Dec 20, 2021
- *      Author: eyck
- */
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 
-#ifndef _AXI_BFM_TARGET_H_
-#define _AXI_BFM_TARGET_H_
+#ifndef _BUS_AXI_PIN_AXI4_TARGET_H_
+#define _BUS_AXI_PIN_AXI4_TARGET_H_
 
 #include <axi/axi_tlm.h>
 #include <axi/fsm/base.h>
@@ -15,7 +24,10 @@
 #include <systemc>
 #include <tlm/scc/tlm_mm.h>
 #include <util/ities.h>
+
+//! TLM2.0 components modeling AXI
 namespace axi {
+//! pin level adapters
 namespace pin {
 
 using namespace axi::fsm;
@@ -289,10 +301,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::rresp_t() {
 
 template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
     this->aw_ready.write(false);
-    auto awid = 0U;
-    auto awlen = 0U;
-    auto awsize = util::ilog2(CFG::BUSWIDTH / 8);
-    auto data_len = (1 << awsize) * (awlen + 1);
+    const auto awsize = util::ilog2(CFG::BUSWIDTH / 8);
     while(true) {
         wait(this->aw_valid.posedge_event() | clk_i.negedge_event());
         if(this->aw_valid.event() || (!active_req_beat[tlm::TLM_IGNORE_COMMAND] && this->aw_valid.read())) {
@@ -387,8 +396,9 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
                 }
             }
             // TODO: assuming consecutive write (not scattered)
-            auto act_data_len = gp->get_data_length() + util::bit_count(strb.to_uint());
+            auto act_data_len = CFG::IS_LITE? gp->get_data_length() + util::bit_count(strb.to_uint()): (beat_count+1) * size;
             gp->set_data_length(act_data_len);
+            gp->set_byte_enable_length(act_data_len);
             gp->set_streaming_width(act_data_len);
             auto tp = CFG::IS_LITE || this->w_last->read() ? axi::fsm::protocol_time_point_e::BegReqE
                     : axi::fsm::protocol_time_point_e::BegPartReqE;
@@ -428,4 +438,4 @@ inline void axi::pin::axi4_target<CFG>::bresp_t() {
     }
 }
 
-#endif /* _AXI_BFM_TARGET_H_ */
+#endif /* _BUS_AXI_PIN_AXI4_TARGET_H_ */

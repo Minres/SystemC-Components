@@ -44,7 +44,7 @@ using namespace sc_core;
 using namespace scc;
 
 tracer::tracer(std::string const&& name, file_type type, bool enable, sc_core::sc_object* top)
-: tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("tracer")))
+: tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("$$$tracer$$$")))
 , txdb(nullptr)
 , owned{enable} {
     if(enable) {

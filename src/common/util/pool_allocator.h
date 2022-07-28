@@ -1,9 +1,18 @@
-/*
- * pool_allocator.h
+/*******************************************************************************
+ * Copyright 2020-2022 MINRES Technologies GmbH
  *
- *  Created on: 26.01.2020
- *      Author: eyck
- */
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 
 #ifndef _UTIL_POOL_ALLOCATOR_H_
 #define _UTIL_POOL_ALLOCATOR_H_
@@ -103,7 +112,7 @@ template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>::~pool_
                               return a.second == b.second ? a.first < b.first : a.second < b.second;
                           });
                 std::cerr << "The 10 blocks with smallest id are:\n";
-                for(size_t i = 0; i < std::min(10UL, elems.size()); ++i) {
+                for(size_t i = 0; i < std::min<decltype(i)>(10UL, elems.size()); ++i) {
                     std::cerr << "\taddr=" << elems[i].first << ", id=" << elems[i].second << "\n";
                 }
             }

@@ -30,34 +30,36 @@ endif()
 find_package(PackageHandleStandardArgs REQUIRED)
 
 include(SystemCPackage)
-
-find_program(VERILATOR_EXECUTABLE verilator
-    HINTS $ENV{VERILATOR_ROOT}
+if(EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+endif()
+find_program(VERILATOR_EXECUTABLE 
+    NAMES verilator_bin verilator_bin_dbg
+    HINTS ${CONAN_VERILATOR_ROOT} ENV VERILATOR_ROOT
     PATH_SUFFIXES bin
+    REQUIRED
     DOC "Path to the Verilator executable"
 )
 
-find_program(VERILATOR_COVERAGE_EXECUTABLE verilator_coverage
-    HINTS $ENV{VERILATOR_ROOT}
-    PATH_SUFFIXES bin
-    DOC "Path to the Verilator coverage executable"
-)
-
-get_filename_component(VERILATOR_EXECUTABLE_DIR ${VERILATOR_EXECUTABLE}
-    DIRECTORY)
-
-find_path(VERILATOR_INCLUDE_DIR verilated.h
-    HINTS $ENV{VERILATOR_ROOT} ${VERILATOR_EXECUTABLE_DIR}/..
-    PATH_SUFFIXES include share/verilator/include
-    DOC "Path to the Verilator headers"
-)
+if(${CONAN_VERILATOR_ROOT})
+    set (ENV{VERILATOR_ROOT} ${CONAN_VERILATOR_ROOT}) 
+    set (VERILATOR_EXECUTABLE_DIR ${CONAN_BIN_DIRS_VERILATOR})
+    set (VERILATOR_INCLUDE_DIR ${CONAN_INCLUDE_DIRS_VERILATOR})
+else()
+    get_filename_component(VERILATOR_EXECUTABLE_DIR ${VERILATOR_EXECUTABLE}
+        DIRECTORY)
+    find_path(VERILATOR_INCLUDE_DIR verilated.h
+        HINTS $ENV{VERILATOR_ROOT} ${VERILATOR_EXECUTABLE_DIR}/..
+        PATH_SUFFIXES include share/verilator/include
+        DOC "Path to the Verilator headers"
+    )
+endif()
 
 mark_as_advanced(VERILATOR_EXECUTABLE)
-mark_as_advanced(VERILATOR_COVERAGE_EXECUTABLE)
 mark_as_advanced(VERILATOR_INCLUDE_DIR)
 
 find_package_handle_standard_args(Verilator REQUIRED_VARS
-    VERILATOR_EXECUTABLE VERILATOR_COVERAGE_EXECUTABLE VERILATOR_INCLUDE_DIR)
+    VERILATOR_EXECUTABLE VERILATOR_INCLUDE_DIR)
 
 set_source_files_properties(
     ${VERILATOR_INCLUDE_DIR}/verilated_cov.cpp

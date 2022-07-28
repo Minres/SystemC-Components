@@ -13,12 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * utilities.cpp
- *
- *  Created on: Nov 5, 2016
- *      Author: eyck
- */
+
 #include "utilities.h"
 
 namespace sc_core {

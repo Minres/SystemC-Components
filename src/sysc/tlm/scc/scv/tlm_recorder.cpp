@@ -1,9 +1,18 @@
-/*
- * tlm_recorder.cpp
+/*******************************************************************************
+ * Copyright 2016-2022 MINRES Technologies GmbH
  *
- *  Created on: Jul 28, 2021
- *      Author: eyckj
- */
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #include "tlm_recorder.h"
@@ -77,7 +86,7 @@ using namespace tlm::scc::scv;
 __attribute__((constructor))
 #endif
 bool register_extensions() {
-    tlm::scc::tlm_id_extension ext(reinterpret_cast<uintptr_t>(0UL)); // NOLINT
+    tlm::scc::tlm_id_extension ext(nullptr); // NOLINT
     tlm_extension_recording_registry<tlm::tlm_base_protocol_types>::inst().register_ext_rec(
         ext.ID, new tlm_id_ext_recording()); // NOLINT
     return true;                             // NOLINT

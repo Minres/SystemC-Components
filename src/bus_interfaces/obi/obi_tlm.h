@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _OBI_TLM_H_
-#define _OBI_TLM_H_
+#ifndef _BUS_OBI_TLM_H_
+#define _BUS_OBI_TLM_H_
 
 #include <array>
 #include <cstdint>
@@ -82,4 +82,4 @@ inline unsigned get_obi_id(tlm::tlm_generic_payload& trans) {
 }
 } // namespace obi
 
-#endif /* _OBI_TLM_H_ */
+#endif /* _BUS_OBI_TLM_H_ */

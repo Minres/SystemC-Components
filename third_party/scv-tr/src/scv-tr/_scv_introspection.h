@@ -1804,7 +1804,7 @@ template <typename T> const scv_extensions<T>& scv_extensions<T*>::operator*() c
     if(!ptr) {
         static scv_extensions<T> e;
         _scv_message::message(_scv_message::INTROSPECTION_NULL_POINTER, this->get_name());
-        return &e;
+        return &e; // cppcheck-suppress returnTempReference
     }
     return *ptr;
 }

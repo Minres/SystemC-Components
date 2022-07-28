@@ -112,7 +112,7 @@ public:
     }
 
 protected:
-    sc_core::sc_port<fw_interface_type> fw_port;
+    sc_core::sc_port<fw_interface_type> fw_port{sc_core::sc_gen_unique_name("$$$__rec_fw__$$$")};
     scv::tlm_recorder<TYPES> recorder;
 };
 } // namespace scv

@@ -13,27 +13,23 @@ option(SC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase c
 
 option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse callbacks for tracing. It needs to match the SystemC build configuration" OFF)
 
+set(SCC_ARCHIVE_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
+
 include(Common)
 
 if(CMAKE_PROJECT_NAME STREQUAL "scc")
     message(STATUS "Building SCC in standalone mode")
     include(GNUInstallDirs)
     include(ConanInline)
-    set(CMAKE_CXX_STANDARD 11)
-    set(CMAKE_CXX_STANDARD_REQUIRED ON)
     conan_check()
     set(CONAN_PACKAGE_LIST fmt/8.0.1 zlib/1.2.11 boost/1.75.0 gsl-lite/0.37.0)
     set(CONAN_PACKAGE_OPTIONS fmt:header_only=True boost:without_stacktrace=True boost:shared=False boost:header_only=False)
     if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
-         list(APPEND CONAN_PACKAGE_OPTIONS boost:fPIC=True)
+        list(APPEND CONAN_PACKAGE_OPTIONS boost:fPIC=True)
     endif()
     if(NOT USE_CWR_SYSTEMC AND NOT USE_NCSC_SYSTEMC AND NOT DEFINED ENV{SYSTEMC_HOME})
-        if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows") # for as long as systemc-cci package is not available for windows
-            set(CONAN_PACKAGE_LIST ${CONAN_PACKAGE_LIST} systemc/2.3.3)
-        else()
-            set(CONAN_PACKAGE_LIST ${CONAN_PACKAGE_LIST} systemc/2.3.3 systemc-cci/1.0.0)
-            set(CONAN_PACKAGE_OPTIONS ${CONAN_PACKAGE_OPTIONS} systemc-cci:shared=False)
-        endif()
+        set(CONAN_PACKAGE_LIST ${CONAN_PACKAGE_LIST} systemc/2.3.3 systemc-cci/1.0.0)
+        set(CONAN_PACKAGE_OPTIONS ${CONAN_PACKAGE_OPTIONS} systemc-cci:shared=False)
     endif()
     conan_configure(REQUIRES ${CONAN_PACKAGE_LIST} GENERATORS cmake OPTIONS ${CONAN_PACKAGE_OPTIONS})
     if(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
@@ -181,7 +177,7 @@ set_target_properties(scc PROPERTIES
 install(TARGETS scc
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_ARCHIVE_DIR_MODIFIER}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
 

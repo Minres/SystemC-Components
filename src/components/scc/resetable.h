@@ -37,7 +37,7 @@ public:
      * @brief distributes the begin of the reset to all registered components and set the reset state
      *
      */
-    void reset_start() {
+    virtual void reset_start() {
         _in_reset = true;
         for(auto res : resources)
             res->reset();
@@ -47,7 +47,7 @@ public:
      * @brief distributes the end of the reset to all registered components and finishes the reset state
      *
      */
-    void reset_stop() {
+    virtual void reset_stop() {
         for(auto res : resources)
             res->reset();
         _in_reset = false;

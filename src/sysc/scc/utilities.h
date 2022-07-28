@@ -13,12 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * utilities.h
- *
- *  Created on: Nov 5, 2016
- *      Author: eyck
- */
 
 #ifndef _SYSC_UTILITIES_H_
 #define _SYSC_UTILITIES_H_
