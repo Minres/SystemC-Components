@@ -4,7 +4,6 @@ var NAVTREEINDEX0 =
 ".html":[5,0,2,1],
 ".html":[5,0,3,0],
 ".html":[5,0,3,1],
-".html":[5,0,7],
 ".html":[5,0,8],
 ".html":[5,0,9,0,1,0],
 ".html":[5,0,3,1,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX0 =
 "classaxi_1_1axi__initiator__base.html":[5,0,2,21],
 "classaxi_1_1axi__initiator__base.html#a0ac23c78b2a204c2ee1e88de4ac51dbf":[5,0,2,21,0],
 "classaxi_1_1axi__initiator__base.html#a30af3412ffb37743306bd55a369f5541":[5,0,2,21,4],
-"classaxi_1_1axi__initiator__base.html#a6bd03842184e3cb89f5d9157cbfe018b":[5,0,2,21,1]
+"classaxi_1_1axi__initiator__base.html#a6bd03842184e3cb89f5d9157cbfe018b":[5,0,2,21,1],
+"classaxi_1_1axi__initiator__base.html#a88a5f71e615ad3220c67db577f855b07":[5,0,2,21,5]
 };

@@ -167,7 +167,7 @@ $(document).ready(function(){initNavTree('tracer_8cpp_source.html',''); initResi
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">case</span> SQLITE:</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#ifdef WITH_SQLITE</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            SCVNS scv_tr_sqlite_init();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            SCVNS <a class="code" href="namespacescv__tr.html#a32f06dd92b69fc5b665b63172dd62e31">scv_tr_sqlite_init</a>();</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot;.txdb&quot;</span>;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            SCVNS scv_tr_text_init();</div>
@@ -175,7 +175,7 @@ $(document).ready(function(){initNavTree('tracer_8cpp_source.html',''); initResi
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">case</span> CUSTOM:</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            SCVNS scv_tr_mtc_init();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            SCVNS <a class="code" href="namespacescv__tr.html#a15074645e87ec6f7ad6a325d276d631c">scv_tr_mtc_init</a>();</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot;.txlog&quot;</span>;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">default</span>:</div>
@@ -203,7 +203,9 @@ $(document).ready(function(){initNavTree('tracer_8cpp_source.html',''); initResi
 </div><!-- doc-content -->
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 <div class="ttc" id="aclassscc_1_1tracer_html_a3544711d7f8b4452a75079cef13b8fb2"><div class="ttname"><a href="classscc_1_1tracer.html#a3544711d7f8b4452a75079cef13b8fb2">scc::tracer::~tracer</a></div><div class="ttdeci">virtual ~tracer() override</div><div class="ttdoc">the destructor</div><div class="ttdef"><b>Definition:</b> <a href="tracer_8cpp_source.html#l00065">tracer.cpp:65</a></div></div>
+<div class="ttc" id="anamespacescv__tr_html_a15074645e87ec6f7ad6a325d276d631c"><div class="ttname"><a href="namespacescv__tr.html#a15074645e87ec6f7ad6a325d276d631c">scv_tr::scv_tr_mtc_init</a></div><div class="ttdeci">void scv_tr_mtc_init()</div><div class="ttdoc">initializes the infrastructure to use a compressed text based transaction recording database with a m...</div><div class="ttdef"><b>Definition:</b> <a href="scv__tr__mtc_8cpp_source.html#l00348">scv_tr_mtc.cpp:348</a></div></div>
 <div class="ttc" id="aclassscc_1_1tracer__base_html"><div class="ttname"><a href="classscc_1_1tracer__base.html">scc::tracer_base</a></div><div class="ttdoc">base class for automatic tracer</div><div class="ttdef"><b>Definition:</b> <a href="tracer__base_8h_source.html#l00092">tracer_base.h:92</a></div></div>
+<div class="ttc" id="anamespacescv__tr_html_a32f06dd92b69fc5b665b63172dd62e31"><div class="ttname"><a href="namespacescv__tr.html#a32f06dd92b69fc5b665b63172dd62e31">scv_tr::scv_tr_sqlite_init</a></div><div class="ttdeci">void scv_tr_sqlite_init()</div><div class="ttdoc">initializes the infrastructure to use a SQLite based transaction recording database</div><div class="ttdef"><b>Definition:</b> <a href="scv__tr__sqlite_8cpp_source.html#l00461">scv_tr_sqlite.cpp:461</a></div></div>
 <div class="ttc" id="aclassscc_1_1tracer__base_html_a4f87fe3253de75384c35103c94d00628"><div class="ttname"><a href="classscc_1_1tracer__base.html#a4f87fe3253de75384c35103c94d00628">scc::tracer_base::default_trace_enable</a></div><div class="ttdeci">bool default_trace_enable</div><div class="ttdoc">the default for tracing if no attribute is configured</div><div class="ttdef"><b>Definition:</b> <a href="tracer__base_8h_source.html#l00151">tracer_base.h:151</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

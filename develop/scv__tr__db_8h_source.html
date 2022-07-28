@@ -84,18 +84,18 @@ $(document).ready(function(){initNavTree('scv__tr__db_8h_source.html',''); initR
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifndef _SCC_SCV_TR_DB_H_</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define _SCC_SCV_TR_DB_H_</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef HAS_SCV</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span>scv_tr {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescv__tr.html">scv_tr</a> {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> scv_tr_sqlite_init();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> scv_tr_compressed_init();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> scv_tr_plain_init();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacescv__tr.html#a32f06dd92b69fc5b665b63172dd62e31">scv_tr_sqlite_init</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacescv__tr.html#a3573df3b0a771e07ba4520471b65c753">scv_tr_compressed_init</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacescv__tr.html#a65444428d84300ea1a58592878e20c56">scv_tr_plain_init</a>();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#ifdef WITH_LZ4</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> scv_tr_lz4_init();</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> scv_tr_mtc_init();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacescv__tr.html#a15074645e87ec6f7ad6a325d276d631c">scv_tr_mtc_init</a>();</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#ifdef USE_EXTENDED_DB</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
@@ -109,6 +109,11 @@ $(document).ready(function(){initNavTree('scv__tr__db_8h_source.html',''); initR
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SCC_SCV_TR_DB_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="anamespacescv__tr_html_a65444428d84300ea1a58592878e20c56"><div class="ttname"><a href="namespacescv__tr.html#a65444428d84300ea1a58592878e20c56">scv_tr::scv_tr_plain_init</a></div><div class="ttdeci">void scv_tr_plain_init()</div><div class="ttdoc">initializes the infrastructure to use a plain text based transaction recording database</div><div class="ttdef"><b>Definition:</b> <a href="scv__tr__lz4_8cpp_source.html#l00442">scv_tr_lz4.cpp:442</a></div></div>
+<div class="ttc" id="anamespacescv__tr_html_a15074645e87ec6f7ad6a325d276d631c"><div class="ttname"><a href="namespacescv__tr.html#a15074645e87ec6f7ad6a325d276d631c">scv_tr::scv_tr_mtc_init</a></div><div class="ttdeci">void scv_tr_mtc_init()</div><div class="ttdoc">initializes the infrastructure to use a compressed text based transaction recording database with a m...</div><div class="ttdef"><b>Definition:</b> <a href="scv__tr__mtc_8cpp_source.html#l00348">scv_tr_mtc.cpp:348</a></div></div>
+<div class="ttc" id="anamespacescv__tr_html_a3573df3b0a771e07ba4520471b65c753"><div class="ttname"><a href="namespacescv__tr.html#a3573df3b0a771e07ba4520471b65c753">scv_tr::scv_tr_compressed_init</a></div><div class="ttdeci">void scv_tr_compressed_init()</div><div class="ttdoc">initializes the infrastructure to use a gzip compressed text based transaction recording database</div><div class="ttdef"><b>Definition:</b> <a href="scv__tr__compressed_8cpp_source.html#l00608">scv_tr_compressed.cpp:608</a></div></div>
+<div class="ttc" id="anamespacescv__tr_html_a32f06dd92b69fc5b665b63172dd62e31"><div class="ttname"><a href="namespacescv__tr.html#a32f06dd92b69fc5b665b63172dd62e31">scv_tr::scv_tr_sqlite_init</a></div><div class="ttdeci">void scv_tr_sqlite_init()</div><div class="ttdoc">initializes the infrastructure to use a SQLite based transaction recording database</div><div class="ttdef"><b>Definition:</b> <a href="scv__tr__sqlite_8cpp_source.html#l00461">scv_tr_sqlite.cpp:461</a></div></div>
+<div class="ttc" id="anamespacescv__tr_html"><div class="ttname"><a href="namespacescv__tr.html">scv_tr</a></div><div class="ttdoc">SystemC Verification Library (SCV) Transaction Recording.</div><div class="ttdef"><b>Definition:</b> <a href="scv__tr__binary_8cpp_source.html#l00034">scv_tr_binary.cpp:34</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

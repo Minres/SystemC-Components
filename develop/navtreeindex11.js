@@ -1,5 +1,6 @@
 var NAVTREEINDEX11 =
 {
+"structscc_1_1sc__ref__variable__masked.html#ab3a7c4d65560af536c3654c654a46790":[5,0,6,37,5],
 "structscc_1_1sc__uint__tester.html":[5,0,6,41],
 "structscc_1_1sc__uint__tester.html#ae0a75d78619227d571ce5dd7487fcf93":[5,0,6,41,0],
 "structscc_1_1sc__variable.html":[5,0,6,42],
@@ -248,6 +249,5 @@ var NAVTREEINDEX11 =
 "structtlm_1_1scc_1_1tlm__generic__payload__base.html#a52df05e7bb047675fb83af86a902284a":[5,0,9,0,14,15],
 "structtlm_1_1scc_1_1tlm__generic__payload__base.html#a56e2684d5fc0362be39a6846d9f34e7a":[5,0,9,0,14,3],
 "structtlm_1_1scc_1_1tlm__generic__payload__base.html#a6cea6c2a2bad6da043eb188875e95081":[5,0,9,0,14,14],
-"structtlm_1_1scc_1_1tlm__generic__payload__base.html#a7f19e1053dae4dbd51ef2309e06045a4":[5,0,9,0,14,9],
-"structtlm_1_1scc_1_1tlm__generic__payload__base.html#a7f4412e4ecc55db091eebd90ccf6ecaa":[5,0,9,0,14,11]
+"structtlm_1_1scc_1_1tlm__generic__payload__base.html#a7f19e1053dae4dbd51ef2309e06045a4":[5,0,9,0,14,9]
 };

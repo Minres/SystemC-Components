@@ -1,5 +1,6 @@
 var NAVTREEINDEX10 =
 {
+"structchi_1_1data.html#abb13d1037c8b4c518f11201bd8094c8a":[5,0,3,17,20],
 "structchi_1_1data.html#ac9107653c725c3198ebd1ba1eceba35c":[5,0,3,17,21],
 "structchi_1_1data.html#acb6e0435abfb6c5e2090fa2cffa1ce2a":[5,0,3,17,9],
 "structchi_1_1data.html#ad35e447dc139353cf9ee7a709ef2246c":[5,0,3,17,18],
@@ -248,6 +249,5 @@ var NAVTREEINDEX10 =
 "structscc_1_1sc__ref__variable__masked.html#a03e082cb136eb232182b7908dcc2da90":[5,0,6,37,4],
 "structscc_1_1sc__ref__variable__masked.html#a40c7f968b5cab445fcc4bbc1a0fa1ed7":[5,0,6,37,3],
 "structscc_1_1sc__ref__variable__masked.html#a47367b4d37fb6a4b8adf17e19689a77d":[5,0,6,37,2],
-"structscc_1_1sc__ref__variable__masked.html#a4d56810c1c3b8a6f57ecac6c7c60a90e":[5,0,6,37,0],
-"structscc_1_1sc__ref__variable__masked.html#ab3a7c4d65560af536c3654c654a46790":[5,0,6,37,5]
+"structscc_1_1sc__ref__variable__masked.html#a4d56810c1c3b8a6f57ecac6c7c60a90e":[5,0,6,37,0]
 };
