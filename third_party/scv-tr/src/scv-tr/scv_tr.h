@@ -109,6 +109,7 @@
 
 #include "scv_introspection.h"
 
+//! @brief SystemC Verification Library (SCV) Transaction Recording
 namespace scv_tr {
 // ----------------------------------------------------------------------------
 //
