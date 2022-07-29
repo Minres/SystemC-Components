@@ -5,7 +5,7 @@ project (fstlib VERSION 1.0.0)
 find_package(ZLIB)
 if(ZLIB_FOUND)
 	add_library(fstapi fstapi.c lz4.c fastlz.c)
-	target_include_directories(fstapi PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+	target_include_directories(fstapi PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${ZLIB_INCLUDE_DIRS})
 	target_link_libraries(fstapi PRIVATE ${ZLIB_LIBRARIES})
 	# hack to avoid creating dummy config.h
 	target_compile_definitions(fstapi PRIVATE -DFST_CONFIG_INCLUDE="fstapi.h")
