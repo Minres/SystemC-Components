@@ -45,15 +45,15 @@ perf_estimator::perf_estimator(const sc_module_name& nm, sc_time beat_delay_)
 perf_estimator::~perf_estimator() {
     time_stamp eod;
     eod.set();
-    SCCINFO(SCMOD) << "constr & elab time:  " << (eoe.proc_clock_stamp - soc.proc_clock_stamp) << "s";
-    SCCINFO(SCMOD) << "simulation time:     " << (eos.proc_clock_stamp - sos.proc_clock_stamp) << "s";
+    SCCINFO("perf_estimator") << "constr & elab time:  " << (eoe.proc_clock_stamp - soc.proc_clock_stamp) << "s";
+    SCCINFO("perf_estimator") << "simulation time:     " << (eos.proc_clock_stamp - sos.proc_clock_stamp) << "s";
     if(cycle_period.value()) {
         uint64_t cycles = sc_time_stamp().value() / cycle_period.value();
-        SCCINFO(SCMOD) << "simulation speed:   "
+        SCCINFO("perf_estimator") << "simulation speed:   "
                        << (sc_time_stamp().value() ? cycles / (eos.proc_clock_stamp - soc.proc_clock_stamp) : 0.0)
                        << " cycles/s";
     }
-    SCCINFO(SCMOD) << "max resident memory: " << max_memory << "kB";
+    SCCINFO("perf_estimator") << "max resident memory: " << max_memory << "kB";
 }
 
 void perf_estimator::end_of_elaboration() { eoe.set(); }
@@ -72,7 +72,7 @@ void perf_estimator::end_of_simulation() {
     if(elapsed_sim > 0) {
         double wall_perf = elapsed_wall / elapsed_sim;
         double proc_perf = elapsed_proc / elapsed_sim;
-        SCCINFO(SCMOD) << "Wall clock (process clock) based simulation real time factor is " << wall_perf << "("
+        SCCINFO("perf_estimator") << "Wall clock (process clock) based simulation real time factor is " << wall_perf << "("
                        << proc_perf << ")";
     }
     get_memory();
@@ -80,7 +80,7 @@ void perf_estimator::end_of_simulation() {
 
 void perf_estimator::beat() {
     if(sc_time_stamp().value())
-        SCCINFO(SCMOD) << "Heart beat, rss mem: " << get_memory() << " bytes";
+        SCCINFO("perf_estimator") << "Heart beat, rss mem: " << get_memory() << " bytes";
     next_trigger(beat_delay);
 }
 } /* namespace scc */
