@@ -15,13 +15,6 @@
  *******************************************************************************/
 
 #pragma once
-#ifdef __clang__
-// quirks for gcc 4.8.5 to get clang-tidy going
-#include <bits/c++config.h>
-#if __GLIBCXX__ == 20150623
-#define noexcept
-#endif
-#endif
 #include <atomic>
 #ifdef noexcept
 #undef noexcept
