@@ -21,6 +21,7 @@
 #include "tlm_recording_extension.h"
 #include <array>
 #include <regex>
+#include <sstream>
 #include <string>
 #include <tlm/scc/tlm_mm.h>
 #include <tlm>

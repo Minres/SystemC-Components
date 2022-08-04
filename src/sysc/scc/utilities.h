@@ -20,6 +20,7 @@
 #include <array>
 #include <limits>
 #include <memory>
+#include <cctype>
 
 #if defined(__GNUG__)
 // pragmas to disable the deprecated warnings for SystemC headers

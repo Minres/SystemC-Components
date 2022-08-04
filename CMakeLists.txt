@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_CURRENT_BINARY_DIR}) # project specific cmake dir
 cmake_policy(SET CMP0077 NEW)
 
 project(scc VERSION 2022.4.0 LANGUAGES CXX C)
@@ -82,10 +82,9 @@ endif()
 ###############################################################################
 # build the SCC
 ###############################################################################
-
-set(CLANG_FORMAT_EXCLUDE_PATTERNS "third_party/fst" "fmt_8.0" "jsoncpp-1.8" "rapidjson-1.1" "spdlog-1.8" "sqlite3")
-find_package(ClangFormat)
 if (ENABLE_CLANG_TIDY)
+    set(CLANG_FORMAT_EXCLUDE_PATTERNS "third_party/fst" "fmt_8.0" "jsoncpp-1.8" "rapidjson-1.1" "spdlog-1.8" "sqlite3")
+    find_package(ClangFormat)
     find_program (CLANG_TIDY_EXE NAMES "clang-tidy" PATHS /usr/bin )
     if (CLANG_TIDY_EXE)
         message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")

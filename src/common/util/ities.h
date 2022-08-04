@@ -21,6 +21,7 @@
 #include <array>
 #include <assert.h>
 #include <bitset>
+#include <cctype>
 #include <iterator>
 #include <memory>
 #include <sstream>
