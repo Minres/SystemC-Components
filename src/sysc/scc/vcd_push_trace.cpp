@@ -227,7 +227,7 @@ void vcd_push_trace_file::write_comment(const std::string& comment) {
 
 void vcd_push_trace_file::init() {
     std::vector<trace_entry*> traces;
-    traces.reserve(active_traces.size());
+    traces.reserve(all_traces.size());
     for(auto& e : all_traces)
         traces.push_back(&e);
     std::sort(std::begin(traces), std::end(traces),
@@ -243,10 +243,10 @@ void vcd_push_trace_file::init() {
             alias_map.insert({e->trc->get_hash(), e->trc->trc_hndl});
         scope.add_trace(e->trc);
     }
-    std::copy_if(std::begin(traces), std::end(traces), std::back_inserter(traces),
+    std::copy_if(std::begin(traces), std::end(traces), std::back_inserter(pull_traces),
                  [](trace_entry const* e) { return !(e->trc->is_alias || e->trc->is_triggered); });
-    changed_traces.reserve(active_traces.size());
-    triggered_traces.reserve(active_traces.size());
+    changed_traces.reserve(pull_traces.size());
+    triggered_traces.reserve(traces.size());
     // date:
     char tbuf[200];
     time_t long_time;
@@ -259,7 +259,7 @@ void vcd_push_trace_file::init() {
     // timescale:
     FPRINTF(vcd_out, "$timescale\n     {}\n$end\n\n", (1_ps).to_string());
     std::stringstream ss;
-    ss << "tracing " << active_traces.size() << " distinct traces out of " << all_traces.size() << " traces";
+    ss << "tracing " << pull_traces.size() << " distinct traces out of " << all_traces.size() << " traces";
     write_comment(ss.str());
     scope.print(vcd_out);
 }
@@ -294,9 +294,8 @@ std::string vcd_push_trace_file::prune_name(std::string const& orig_name) {
 void vcd_push_trace_file::cycle(bool delta_cycle) {
     if(delta_cycle)
         return;
-    if(!initialized) {
+    if(last_emitted_ts==std::numeric_limits<uint64_t>::max()) {
         init();
-        initialized = true;
         FPRINT(vcd_out, "$enddefinitions  $end\n\n$dumpvars\n");
         for(auto& e : all_traces)
             if(!e.trc->is_alias) {
@@ -304,15 +303,19 @@ void vcd_push_trace_file::cycle(bool delta_cycle) {
                 e.trc->record(vcd_out);
             }
         FPRINT(vcd_out, "$end\n\n");
+        last_emitted_ts = sc_core::sc_time_stamp().value() / (1_ps).value();
     } else {
         if(check_enabled && !check_enabled())
             return;
-        for(auto e : active_traces) {
+        for(auto e : pull_traces) {
             if(e->compare_and_update(e->trc))
                 changed_traces.push_back(e->trc);
         }
         if(triggered_traces.size() || changed_traces.size()) {
-            FPRINTF(vcd_out, "#{}\n", sc_core::sc_time_stamp() / 1_ps);
+            uint64_t time_stamp = sc_core::sc_time_stamp().value() / (1_ps).value();
+            FPRINTF(vcd_out, "#{}\n", time_stamp);
+            auto end = std::unique(std::begin(triggered_traces), std::end(triggered_traces));
+            triggered_traces.erase(end, triggered_traces.end());
             if(triggered_traces.size()) {
                 auto end = std::unique(std::begin(triggered_traces), std::end(triggered_traces));
                 for(auto it = triggered_traces.begin(); it != end; ++it)
@@ -324,6 +327,7 @@ void vcd_push_trace_file::cycle(bool delta_cycle) {
                     t->record(vcd_out);
                 changed_traces.clear();
             }
+            last_emitted_ts = time_stamp;
         }
     }
 }
