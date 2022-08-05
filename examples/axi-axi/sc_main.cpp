@@ -55,8 +55,7 @@ public:
     }
 
     void trace( sc_trace_file* trf ) const override {
-        scc::sc_trace(trf, intor.clk_i, intor.clk_i.name()); // trace a port
-        scc::sc_trace(trf, rst, rst.name()); // trace a signal
+        scc::sc_trace(trf, id, std::string(name())+".id"); // trace a local variable
     }
 
     tlm::tlm_generic_payload* prepare_trans(size_t len) {
@@ -119,7 +118,7 @@ int sc_main(int argc, char* argv[]) {
     scc::configurable_tracer trace("axi_axi_test",
                                    scc::tracer::file_type::TEXT, // define the kind of transaction trace
                                    fst,                         // enables vcd
-                                   false);
+                                   true);
 #else
     scc::tracer trace("axi_axi_test",
                       scc::tracer::file_type::NONE, // define the kind of transaction trace

@@ -139,37 +139,38 @@ void vcd_push_trace_file::trace(const unsigned int& object, const std::string& n
         all_traces.back().trc->is_triggered = true;                                                                    \
         return &all_traces.back();                                                                                     \
     }
-#define DECL_REGISTER_METHOD_B(tp)                                                                                     \
-    observer::notification_handle* vcd_push_trace_file::observe(const tp& object, const std::string& name,             \
-                                                                int width) {                                           \
-        all_traces.emplace_back(this, &changed<tp>, new trace::vcd_trace_t<tp>(object, name));                         \
-        all_traces.back().trc->is_triggered = true;                                                                    \
-        return &all_traces.back();                                                                                     \
-    }
 #define DECL_REGISTER_METHOD_C(tp, tpo)                                                                                \
     observer::notification_handle* vcd_push_trace_file::observe(const tp& object, const std::string& name) {           \
         all_traces.emplace_back(this, &changed<tp, tpo>, new trace::vcd_trace_t<tp, tpo>(object, name));               \
         all_traces.back().trc->is_triggered = true;                                                                    \
         return &all_traces.back();                                                                                     \
     }
+#if(SYSTEMC_VERSION >= 20171012)
+observer::notification_handle* vcd_push_trace_file::observe(const sc_core::sc_event& object, const std::string& name) {
+    return nullptr;
+}
+observer::notification_handle* vcd_push_trace_file::observe(const sc_core::sc_time& object, const std::string& name) {
+    return nullptr;
+}
+#endif
 
 DECL_REGISTER_METHOD_A(bool)
 DECL_REGISTER_METHOD_A(sc_dt::sc_bit)
 DECL_REGISTER_METHOD_A(sc_dt::sc_logic)
 
-DECL_REGISTER_METHOD_B(unsigned char)
-DECL_REGISTER_METHOD_B(unsigned short)
-DECL_REGISTER_METHOD_B(unsigned int)
-DECL_REGISTER_METHOD_B(unsigned long)
+DECL_REGISTER_METHOD_A(unsigned char)
+DECL_REGISTER_METHOD_A(unsigned short)
+DECL_REGISTER_METHOD_A(unsigned int)
+DECL_REGISTER_METHOD_A(unsigned long)
 #ifdef SYSTEMC_64BIT_PATCHES
-DECL_REGISTER_METHOD_B(unsigned long long)
+DECL_REGISTER_METHOD_A(unsigned long long)
 #endif
-DECL_REGISTER_METHOD_B(char)
-DECL_REGISTER_METHOD_B(short)
-DECL_REGISTER_METHOD_B(int)
-DECL_REGISTER_METHOD_B(long)
-DECL_REGISTER_METHOD_B(sc_dt::int64)
-DECL_REGISTER_METHOD_B(sc_dt::uint64)
+DECL_REGISTER_METHOD_A(char)
+DECL_REGISTER_METHOD_A(short)
+DECL_REGISTER_METHOD_A(int)
+DECL_REGISTER_METHOD_A(long)
+DECL_REGISTER_METHOD_A(sc_dt::int64)
+DECL_REGISTER_METHOD_A(sc_dt::uint64)
 
 DECL_REGISTER_METHOD_A(float)
 DECL_REGISTER_METHOD_A(double)
@@ -186,7 +187,6 @@ DECL_REGISTER_METHOD_C(sc_dt::sc_fxnum_fast, sc_dt::sc_fxval_fast)
 DECL_REGISTER_METHOD_A(sc_dt::sc_bv_base)
 DECL_REGISTER_METHOD_A(sc_dt::sc_lv_base)
 #undef DECL_REGISTER_METHOD_A
-#undef DECL_REGISTER_METHOD_B
 #undef DECL_REGISTER_METHOD_C
 
 void vcd_push_trace_file::trace_entry::notify() {

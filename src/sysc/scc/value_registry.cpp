@@ -77,9 +77,9 @@ public:
                 holder[name] = o;                                                                                      \
             }                                                                                                          \
         }                                                                                                              \
-    }
+    }                                                                                                                  \
+	void trace(const tp& object, const std::string& name) { trace(object, name, sizeof(tp)*8); }
 
-    // DECL_TRACE_METHOD_A( bool )
     void trace(const bool& object, const std::string& name) override {
         if(sc_core::sc_find_object(name.c_str()) == nullptr) {
             if(sc_module* mod = get_mod4name(name)) {
@@ -90,9 +90,10 @@ public:
             }
         }
     }
+#if (SYSTEMC_VERSION >= 20171012)
     DECL_TRACE_METHOD_A(sc_event) // NOLINT
     DECL_TRACE_METHOD_A(sc_time)
-
+#endif
     DECL_TRACE_METHOD_A(sc_dt::sc_bit)
     DECL_TRACE_METHOD_A(sc_dt::sc_logic)
 
