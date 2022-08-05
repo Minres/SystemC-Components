@@ -149,10 +149,10 @@ private:
         virtual ~trace_entry(){}
     };
     std::deque<trace_entry> all_traces;
-    std::vector<trace_entry*> active_traces;
+    std::vector<trace_entry*> pull_traces;
     std::vector<trace::vcd_trace*> changed_traces;
     std::vector<trace::vcd_trace*> triggered_traces;
-    bool initialized{false};
+    uint64_t last_emitted_ts{std::numeric_limits<uint64_t>::max()};
     unsigned vcd_name_index{0};
     std::string name;
 };

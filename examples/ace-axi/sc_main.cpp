@@ -125,7 +125,7 @@ int sc_main(int argc, char* argv[]) {
     // clang-format off
     scc::init_logging(
             scc::LogConfig()
-            .logLevel(static_cast<scc::log>(7))
+            .logLevel(scc::log::DEBUG)
             .logAsync(false)
             .coloredOutput(true));
     // clang-format on

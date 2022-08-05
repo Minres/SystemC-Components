@@ -17,6 +17,7 @@
 #ifndef SCC_TRACE_H
 #define SCC_TRACE_H
 
+#include "observer.h"
 #include <functional>
 #include <sysc/tracing/sc_trace.h>
 

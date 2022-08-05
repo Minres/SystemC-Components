@@ -358,15 +358,19 @@ void fst_trace_file::trace_entry::notify() {
 void fst_trace_file::write_comment(const std::string& comment) {}
 
 void fst_trace_file::init() {
-    std::sort(std::begin(all_traces), std::end(all_traces),
-              [](trace_entry const& a, trace_entry const& b) -> bool { return a.trc->name < b.trc->name; });
-    std::unordered_map<uintptr_t, fstHandle> alias_map;
+    std::vector<trace_entry*> traces;
+    traces.reserve(all_traces.size());
+    for(auto& e : all_traces)
+        traces.push_back(&e);
+    std::sort(std::begin(traces), std::end(traces),
+              [](trace_entry const* a, trace_entry const* b) -> bool { return a->trc->name < b->trc->name; });
 
+    std::unordered_map<uintptr_t, fstHandle> alias_map;
     std::deque<std::string> fst_scope;
-    for(auto& e : all_traces) {
-        auto alias_it = alias_map.find(e.trc->get_hash());
-        e.trc->is_alias = alias_it != std::end(alias_map);
-        auto hier_tokens = util::split(e.trc->name, '.');
+    for(auto e : traces) {
+        auto alias_it = alias_map.find(e->trc->get_hash());
+        e->trc->is_alias = alias_it != std::end(alias_map);
+        auto hier_tokens = util::split(e->trc->name, '.');
         auto sig_name = hier_tokens.back();
         hier_tokens.pop_back();
         auto cur_it = fst_scope.begin();
@@ -377,8 +381,8 @@ void fst_trace_file::init() {
             ++cur_it;
             ++tok_it;
         }
-        auto residual = std::distance(cur_it, fst_scope.begin());
-        for(auto i = fst_scope.size(); i > residual; i--) {
+        auto common_count = std::distance(fst_scope.begin(), cur_it);
+        for(auto i = fst_scope.size(); i > common_count; i--) {
             fstWriterSetUpscope(m_fst);
             fst_scope.pop_back();
         }
@@ -386,41 +390,44 @@ void fst_trace_file::init() {
             fstWriterSetScope(m_fst, FST_ST_VCD_SCOPE, tok_it->c_str(), nullptr);
             fst_scope.push_back(*tok_it);
         }
-        e.trc->fst_hndl =
-            fstWriterCreateVar(m_fst, e.trc->type == trace::REAL ? FST_VT_VCD_REAL : FST_VT_VCD_WIRE, FST_VD_IMPLICIT,
-                               e.trc->bits, sig_name.c_str(), e.trc->is_alias ? alias_it->second : 0);
-        if(!e.trc->is_alias)
-            alias_map.insert({e.trc->get_hash(), e.trc->fst_hndl});
+        e->trc->fst_hndl =
+            fstWriterCreateVar(m_fst, e->trc->type == trace::REAL ? FST_VT_VCD_REAL : FST_VT_VCD_WIRE, FST_VD_IMPLICIT,
+                               e->trc->bits, sig_name.c_str(), e->trc->is_alias ? alias_it->second : 0);
+        if(!e->trc->is_alias)
+            alias_map.insert({e->trc->get_hash(), e->trc->fst_hndl});
     }
-    std::copy_if(std::begin(all_traces), std::end(all_traces), std::back_inserter(active_traces),
-                 [](trace_entry const& e) { return !(e.trc->is_alias || e.trc->is_triggered); });
-    changed_traces.reserve(active_traces.size());
-    triggered_traces.reserve(active_traces.size());
+    std::copy_if(std::begin(traces), std::end(traces), std::back_inserter(pull_traces),
+                 [](trace_entry const* e) { return !(e->trc->is_alias || e->trc->is_triggered); });
+    changed_traces.reserve(pull_traces.size());
+    triggered_traces.reserve(all_traces.size());
 }
 
 void fst_trace_file::cycle(bool delta_cycle) {
     if(delta_cycle)
         return;
-    if(!initialized)
+    if(last_emitted_ts==std::numeric_limits<uint64_t>::max())
         init();
-    if(!initialized) {
-        initialized = true;
-        fstWriterEmitTimeChange(m_fst, sc_core::sc_time_stamp().value() / (1_ps).value());
+    if(last_emitted_ts==std::numeric_limits<uint64_t>::max()) {
+        uint64_t time_stamp = sc_core::sc_time_stamp().value() / (1_ps).value();
+        fstWriterEmitTimeChange(m_fst, time_stamp);
         for(auto& e : all_traces)
             if(!e.trc->is_alias)
                 e.trc->update_and_record(m_fst);
+        last_emitted_ts = time_stamp;
     } else {
         if(check_enabled && !check_enabled())
             return;
-        for(auto e : active_traces) {
-            if(e.compare_and_update(e.trc))
-                changed_traces.push_back(e.trc);
+        for(auto e : pull_traces) {
+            if(e->compare_and_update(e->trc))
+                changed_traces.push_back(e->trc);
         }
         if(triggered_traces.size() || changed_traces.size()) {
-            fstWriterEmitTimeChange(m_fst, sc_core::sc_time_stamp().value() / (1_ps).value());
+            uint64_t time_stamp = sc_core::sc_time_stamp().value() / (1_ps).value();
+            if(last_emitted_ts<time_stamp)
+                fstWriterEmitTimeChange(m_fst, time_stamp);
             if(triggered_traces.size()) {
-                auto it = std::unique(std::begin(triggered_traces), std::end(triggered_traces));
-                triggered_traces.resize(std::distance(std::begin(triggered_traces), it));
+                auto end = std::unique(std::begin(triggered_traces), std::end(triggered_traces));
+                triggered_traces.erase(end, triggered_traces.end());
                 for(auto t : triggered_traces)
                     t->record(m_fst);
                 triggered_traces.clear();
@@ -430,6 +437,7 @@ void fst_trace_file::cycle(bool delta_cycle) {
                     t->record(m_fst);
                 changed_traces.clear();
             }
+            last_emitted_ts = time_stamp;
         }
     }
 }
