@@ -112,20 +112,22 @@ int sc_main(int argc, char* argv[]) {
             .coloredOutput(true));
     // clang-format off
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
-    auto fst = scc::create_fst_trace_file("axi-axi");
-    //auto fst = scc::create_vcd_push_trace_file("axi-axi");
+#ifdef WITH_FST
+    auto trc = scc::create_fst_trace_file("axi-axi");
+#else
+    auto trc = scc::create_vcd_push_trace_file("axi-axi");
+#endif
 #ifdef HAS_CCI
     scc::configurable_tracer trace("axi_axi_test",
                                    scc::tracer::file_type::TEXT, // define the kind of transaction trace
-                                   fst,                         // enables vcd
+                                   trc,                         // enables vcd
                                    true);
 #else
     scc::tracer trace("axi_axi_test",
                       scc::tracer::file_type::NONE, // define the kind of transaction trace
-                      fst);                        // enables vcd
+                      trc);                        // enables vcd
 #endif
     testbench tb("tb");
-    tb.trace(fst);
     scc::hierarchy_dumper d("axi_axi.elkt", scc::hierarchy_dumper::ELKT);
     try {
         sc_core::sc_start(1_ms);
@@ -140,7 +142,11 @@ int sc_main(int argc, char* argv[]) {
     if(sc_is_running()) {
         SCCERR() << "Simulation timeout!"; // calls sc_stop
     }
-    scc::close_fst_trace_file(fst);
+#ifdef WITH_FST
+    scc::close_fst_trace_file(trc);
+#else
+    scc::close_vcd_push_trace_file(trc);
+#endif
     auto errcnt = sc_report_handler::get_count(SC_ERROR);
     auto warncnt = sc_report_handler::get_count(SC_WARNING);
     SCCINFO() << "Finished, there were " << errcnt << " error" << (errcnt == 1 ? "" : "s") << " and " << warncnt
