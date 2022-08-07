@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>d3-hwschematic example</title>
+  <script type="text/javascript" src="d3.js"></script>
+  <!-- <script type="text/javascript" src="d3.min.js"></script>  -->
+  <script type="text/javascript" src="elk.bundled.js"></script>
+  <script type="text/javascript" src="dist/d3-hwschematic.js"></script>
+  <script type="text/javascript" src="netlistsvgTod3Hwschematic.js"></script>
+  <link href="dist/d3-hwschematic.css" rel="stylesheet">
+  <style>
+  	body {
+	   margin: 0;
+    }
+  </style>
+</head>
+<body>
+    <label>
+        Open schematic:
+        <input type="file" id="file-input" />
+    </label>
+    <label>
+        Open netlistsvg schematic:
+        <input type="file" id="file-input-netlistsvg" />
+    </label>
+
+    <svg id="scheme-placeholder"></svg>
+    <script>
+        // schematic rendering script
+
+        function viewport() {
+          var e = window,
+            a = 'inner';
+          if (!('innerWidth' in window)) {
+            a = 'client';
+            e = document.documentElement || document.body;
+          }
+          return {
+            width: e[a + 'Width'],
+            height: e[a + 'Height']
+          }
+        }
+
+        var width = viewport().width,
+            height = viewport().height;
+
+        var svg = d3.select("#scheme-placeholder")
+            .attr("width", width)
+            .attr("height", height);
+
+        var orig = document.body.onresize;
+        document.body.onresize = function(ev) {
+            if (orig)
+        	    orig(ev);
+
+            var w = viewport();
+            svg.attr("width", w.width);
+			svg.attr("height", w.height);
+        }
+
+        var hwSchematic = new d3.HwSchematic(svg);
+        var zoom = d3.zoom();
+        zoom.on("zoom", function applyTransform(ev) {
+        	hwSchematic.root.attr("transform", ev.transform)
+        });
+
+        // disable zoom on doubleclick
+        // because it interferes with component expanding/collapsing
+        svg.call(zoom)
+           .on("dblclick.zoom", null)
+
+    </script>
+    <script>
+        // data loanding script
+
+        // file open handler
+        function readSingleFile(e) {
+            var file = e.target.files[0];
+            if (!file) {
+              return;
+            }
+            var transformation = null;
+            if (e.target.id == 'file-input-netlistsvg') {
+               transformation = netlistsvgToD3Hwschematic;
+            }
+            setUrlParameterByName("schematic", "schemes/" + file.name);
+            var reader = new FileReader();
+            reader.onload = function(e) {
+              var contents = e.target.result;
+              displayContents(contents, transformation);
+            };
+            reader.readAsText(file);
+          }
+
+          function displayContents(contents, transformation) {
+            var graph = JSON.parse(contents);
+            if (transformation) {
+                graph = transformation(graph);
+            }
+            if (graph.hwMeta && graph.hwMeta.name)
+                 document.title = graph.hwMeta.name;
+            // load the data and render the elements
+            hwSchematic.bindData(graph);
+          }
+
+          document.getElementById('file-input')
+            .addEventListener('change', readSingleFile, false);
+
+          document.getElementById('file-input-netlistsvg')
+            .addEventListener('change', readSingleFile, false);
+
+
+          function getUrlParameterByName(name, url) {
+              if (!url) url = window.location.href;
+              url = new URL(url);
+              var search_params = url.searchParams;
+              return search_params.get(name);
+          }
+          function setUrlParameterByName(name, value, url) {
+              if (!url) url = window.location.href;
+              url = new URL(url);
+              var searchParams = url.searchParams;
+              searchParams.set(name, value);
+              window.history.replaceState({}, value, url.toString());
+          }
+
+          var schematic_url = getUrlParameterByName("schematic");
+          if (schematic_url != null) {
+             d3.json(schematic_url)
+               .then(function(graph) {
+                   if (graph.hwMeta && graph.hwMeta.name)
+                       document.title = graph.hwMeta.name;
+                   // load the data and render the elements
+                   hwSchematic.bindData(graph);
+                }, function(reason) {
+                    svg.append("text")
+                       .text(reason);
+                    throw Error(reason);
+                });
+          }
+    </script>
+</body>
+</html>
