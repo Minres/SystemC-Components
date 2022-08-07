@@ -115,7 +115,7 @@ int sc_main(int argc, char* argv[]) {
 #ifdef WITH_FST
     auto trc = scc::create_fst_trace_file("axi-axi");
 #else
-    auto trc = scc::create_vcd_push_trace_file("axi-axi");
+    auto trc = scc::create_vcd_push_trace_file("axi_axi_test");
 #endif
 #ifdef HAS_CCI
     scc::configurable_tracer trace("axi_axi_test",
@@ -128,7 +128,9 @@ int sc_main(int argc, char* argv[]) {
                       trc);                        // enables vcd
 #endif
     testbench tb("tb");
-    scc::hierarchy_dumper d("axi_axi.elkt", scc::hierarchy_dumper::ELKT);
+    tb.trace(trc);
+    scc::hierarchy_dumper d("axi_axi_test.json", scc::hierarchy_dumper::D3JSON);
+    //scc::hierarchy_dumper d("axi_axi_test.elkt", scc::hierarchy_dumper::ELKT);
     try {
         sc_core::sc_start(1_ms);
         SCCINFO() << "Finished";

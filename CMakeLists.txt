@@ -40,8 +40,10 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
     conan_setup(TARGETS)
     set(Boost_NO_BOOST_CMAKE ON) #  Don't do a find_package in config mode before searching for a regular boost install.
     option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
+    option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" OFF)
     option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ON)
 else()
+    option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" ON)
     option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 endif()
 

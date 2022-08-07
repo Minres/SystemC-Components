@@ -28,7 +28,7 @@ namespace scc {
 
 class hierarchy_dumper: public sc_core::sc_module {
 public:
-    enum file_type { ELKT, JSON, D3JSON};
+    enum file_type { ELKT, JSON, D3JSON, DBGJSON};
 
     hierarchy_dumper(const std::string& filename, file_type format);
 
