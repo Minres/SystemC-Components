@@ -144,7 +144,7 @@ void sc_trace(sc_core::sc_trace_file* tf, const sc_core::sc_signal_in_if<T>& obj
             }, nullptr, &scopts);
         }
     } else
-        sc_trace( tf, object.read(), name );
+        sc_core::sc_trace( tf, object.read(), name );
 }
 
 template <class T> inline

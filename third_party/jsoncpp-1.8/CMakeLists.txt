@@ -5,7 +5,9 @@ project(jsoncpp VERSION 1.8.3 LANGUAGES CXX)
 ###############################################################################
 add_library(jsoncpp STATIC json/jsoncpp.cpp)
 target_include_directories (jsoncpp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_compile_options(jsoncpp PRIVATE -Wno-deprecated-declarations)
+if (NOT MSVC)
+    target_compile_options(jsoncpp PRIVATE -Wno-deprecated-declarations)
+endif()
 
 FILE(GLOB JsonLibHeaders json/*.h)
 set_target_properties(jsoncpp PROPERTIES
