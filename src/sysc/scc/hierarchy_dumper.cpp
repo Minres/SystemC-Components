@@ -169,7 +169,7 @@ std::vector<std::string> scanModule(sc_core::sc_object const* obj, Module *curre
     } else if (auto const* optr = dynamic_cast<sc_core::sc_port_base const*>(obj)) {
         if(std::string(optr->basename()).substr(0, 3)!="$$$") {
             sc_core::sc_interface const* if_ptr = optr->get_interface();
-            sc_core::sc_signal_channel const* if_obj = dynamic_cast<sc_core::sc_signal_channel const*>(if_ptr);
+            sc_core::sc_prim_channel const* if_obj = dynamic_cast<sc_core::sc_prim_channel const*>(if_ptr);
             bool is_input = kind == "sc_in" || kind == "sc_fifo_in";
             currentModule->ports.push_back(
                     Port(obj->name(), obj->basename(), if_ptr, is_input, obj->kind(), if_obj?if_obj->basename():""));
@@ -370,7 +370,7 @@ void generateModJson(writer_type& writer, hierarchy_dumper::file_type type, Modu
             writer.Key("hwMeta"); writer.StartObject(); {
                 writer.Key("name"); writer.String(module.name.c_str());
                 writer.Key("cls"); writer.String(module.type.c_str());
-                writer.Key("bodyText"); writer.String(module.type.c_str());
+                // writer.Key("bodyText"); writer.String(module.type.c_str());
                 writer.Key("maxId"); writer.Uint(object_counter);
                 writer.Key("isExternalPort"); writer.Bool(false);
                 // writer.Key("cssClass"); writer.String("node-style0");
