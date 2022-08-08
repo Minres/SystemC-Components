@@ -38,12 +38,14 @@
 #include <cstdlib>
 #include <memory>
 #include <cxxabi.h>
+#endif
 
 namespace scc {
 using namespace rapidjson;
 using writer_type = PrettyWriter<OStreamWrapper>;
 
 namespace {
+#ifdef __GNUG__
 std::string demangle(const char* name) {
     int status = -4; // some arbitrary value to eliminate the compiler warning
     // enable c++11 by passing the flag -std=c++11 to g++
