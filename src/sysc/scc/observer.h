@@ -22,7 +22,8 @@
 #include <sysc/kernel/sc_ver.h>
 #include <sysc/datatypes/int/sc_nbdefs.h>
 #include <sysc/communication/sc_signal_ifs.h>
-#include "sysc/kernel/sc_dynamic_processes.h"
+#include <sysc/kernel/sc_dynamic_processes.h>
+#include <sysc/kernel/sc_process_handle.h>
 // Some forward declarations
 namespace sc_dt {
 class sc_bit;
@@ -53,7 +54,7 @@ struct observer {
      * @brief A handle to be used be the observed object to notify the observer about a change
      */
     struct notification_handle {
-        virtual void notify() = 0;
+        virtual bool notify() = 0;
         virtual ~notification_handle() {}
     };
     virtual notification_handle* observe(bool const& o, std::string const& nm) = 0;
@@ -140,7 +141,8 @@ void sc_trace(sc_core::sc_trace_file* tf, const sc_core::sc_signal_in_if<T>& obj
             scopts.spawn_method();
             scopts.set_sensitivity(&object.default_event());
             sc_core::sc_spawn([handle](){
-                handle->notify();
+                if(!handle->notify()) // suspend if trace is an alias
+                    sc_core::sc_get_current_process_handle().disable();
             }, nullptr, &scopts);
         }
     } else
@@ -163,7 +165,10 @@ void sc_trace(sc_core::sc_trace_file* tf, const sc_core::sc_in<T>& port, char co
                 sc_core::sc_spawn_options scopts;
                 scopts.spawn_method();
                 scopts.set_sensitivity(&port.default_event());
-                sc_core::sc_spawn([handle](){handle->notify();}, nullptr, &scopts);
+                sc_core::sc_spawn([handle](){
+                    if(!handle->notify()) // suspend if trace is an alias
+                        sc_core::sc_get_current_process_handle().disable();
+                }, nullptr, &scopts);
             }
         } else
             sc_trace( tf, iface->read(), name );
@@ -187,7 +192,10 @@ void sc_trace( sc_core::sc_trace_file* tf, const sc_core::sc_inout<T>& port, cha
                 sc_core::sc_spawn_options scopts;
                 scopts.spawn_method();
                 scopts.set_sensitivity(&port.default_event());
-                sc_core::sc_spawn([handle](){handle->notify();}, nullptr, &scopts);
+                sc_core::sc_spawn([handle](){
+                    if(!handle->notify()) // suspend if trace is an alias
+                        sc_core::sc_get_current_process_handle().disable();
+                }, nullptr, &scopts);
             }
         } else
             sc_trace( tf, iface->read(), name );
