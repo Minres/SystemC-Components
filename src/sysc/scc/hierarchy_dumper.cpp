@@ -135,6 +135,8 @@ std::vector<std::string> scanModule(sc_core::sc_object const* obj, Module *curre
     SCCDEBUG() << indent*level<< obj->name() << "(" << obj->kind() << ")";
     std::string kind{obj->kind()};
     if (kind == "sc_module") {
+        if(std::string(obj->basename()).substr(0, 3) == "$$$")
+            return {};
         auto* name = obj->name();
         currentModule->submodules.push_back(Module(name, obj->basename(), type(*obj), false));
         std::unordered_set<std::string> keep_outs;
@@ -388,14 +390,17 @@ void generateModJson(writer_type& writer, hierarchy_dumper::file_type type, Modu
 
 void dump_structure(std::ostream& e, hierarchy_dumper::file_type format) {
     std::vector<Module> topModules;
-    std::vector<sc_core::sc_object*> tops = sc_core::sc_get_top_level_objects();
-    for (auto t : tops) {
-        if (std::string(t->kind()) == "sc_module" && std::string(t->basename()).substr(0, 3) != "$$$") {
-            SCCDEBUG() << t->name() << "(" << t->kind() << ")";
-            topModules.push_back(Module(t->name(), t->basename(), type(*t), true));
-            for (auto* child : t->get_child_objects())
-                scanModule(child, &topModules.back(), 1);
-        }
+    std::vector<sc_core::sc_object*> obja = sc_core::sc_get_top_level_objects();
+    if(obja.size()==1 && std::string(obja[0]->kind()) == "sc_module" && std::string(obja[0]->basename()).substr(0, 3) != "$$$") {
+        SCCDEBUG() << obja[0]->name() << "(" << obja[0]->kind() << ")";
+        topModules.push_back(Module(obja[0]->name(), obja[0]->basename(), type(*obja[0]), true));
+        for (auto* child : obja[0]->get_child_objects())
+            scanModule(child, &topModules.back(), 1);
+    } else if(obja.size()>1) {
+        SCCDEBUG() << "sc_main ( function sc_main() )";
+        topModules.push_back(Module("sc_main", "sc_main", "sc_main()", true));
+        for (auto* child : obja)
+            scanModule(child, &topModules.back(), 1);
     }
     if(format == hierarchy_dumper::ELKT) {
         e<<"algorithm: org.eclipse.elk.layered\n";

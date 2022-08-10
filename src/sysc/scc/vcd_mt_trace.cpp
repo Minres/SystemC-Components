@@ -183,9 +183,10 @@ DECL_REGISTER_METHOD_A(sc_dt::sc_lv_base)
 #undef DECL_REGISTER_METHOD_A
 #undef DECL_REGISTER_METHOD_C
 
-void vcd_mt_trace_file::trace_entry::notify() {
+bool vcd_mt_trace_file::trace_entry::notify() {
     if(!trc->is_alias && compare_and_update(trc))
         that->triggered_traces.push_back(trc);
+    return !trc->is_alias;
 }
 
 std::string vcd_mt_trace_file::obtain_name() {

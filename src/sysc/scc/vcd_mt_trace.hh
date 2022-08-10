@@ -146,7 +146,7 @@ private:
         bool (*compare_and_update)(trace::vcd_trace*);
         trace::vcd_trace* trc;
         vcd_mt_trace_file* that;
-        void notify() override;
+        bool notify() override;
         trace_entry(vcd_mt_trace_file* owner, bool (*compare_and_update)(trace::vcd_trace*), trace::vcd_trace* trc)
         :compare_and_update{compare_and_update}, trc{trc}, that{owner}{}
         virtual ~trace_entry(){}
