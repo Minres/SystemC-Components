@@ -112,7 +112,6 @@ private:
         bool (*compare_and_update)(trace::vcd_trace*);
         trace::vcd_trace* trc;
         trace_entry(bool (*compare_and_update)(trace::vcd_trace*), trace::vcd_trace* trc):compare_and_update{compare_and_update}, trc{trc}{}
-        virtual ~trace_entry();
     };
     std::vector<trace_entry> all_traces, active_traces;
     std::vector<trace::vcd_trace*> changed_traces;;

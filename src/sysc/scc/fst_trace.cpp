@@ -207,10 +207,6 @@ template <> void fst_trace_t<sc_dt::sc_lv_base, sc_dt::sc_lv_base>::record(void*
 }
 } // namespace trace
 
-fst_trace_file::trace_entry::~trace_entry() {
-    delete trc;
-}
-
 fst_trace_file::fst_trace_file(const char* name, std::function<bool()>& enable)
 : check_enabled(enable) {
     std::stringstream ss;
@@ -234,6 +230,7 @@ fst_trace_file::~fst_trace_file() {
         fstWriterFlushContext(m_fst);
         fstWriterClose(m_fst);
     }
+    for(auto t:all_traces) delete t.trc;
 }
 
 template <typename T, typename OT = T> bool changed(trace::fst_trace* trace) {

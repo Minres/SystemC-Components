@@ -44,10 +44,6 @@
     }
 
 namespace scc {
-vcd_push_trace_file::trace_entry::~trace_entry() {
-    delete trc;
-}
-
 /*******************************************************************************************************
  *
  *******************************************************************************************************/
@@ -71,6 +67,7 @@ vcd_push_trace_file::~vcd_push_trace_file() {
         FPRINTF(vcd_out, "#{}\n", sc_core::sc_time_stamp() / 1_ps);
         fclose(vcd_out);
     }
+    for(auto t:all_traces) delete t.trc;
 }
 
 template <typename T, typename OT = T> bool changed(trace::vcd_trace* trace) {

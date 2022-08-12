@@ -38,9 +38,6 @@
 #define FPRINTF(FP, FMTSTR, ...) FP->write_single(fmt::format(FMTSTR, __VA_ARGS__));
 
 namespace scc {
-vcd_mt_trace_file::trace_entry::~trace_entry() {
-    delete trc;
-}
 /*******************************************************************************************************
  *
  *******************************************************************************************************/
@@ -63,6 +60,7 @@ vcd_mt_trace_file::~vcd_mt_trace_file() {
     if(vcd_out) {
         FPRINTF(vcd_out, "#{}\n", sc_core::sc_time_stamp() / 1_ps);
     }
+    for(auto t:all_traces) delete t.trc;
 }
 
 template <typename T, typename OT = T> bool changed(trace::vcd_trace* trace) {
