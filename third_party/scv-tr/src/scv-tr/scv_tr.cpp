@@ -566,6 +566,7 @@ scv_tr_stream::scv_tr_stream(const char* full_stream_name, const char* kind_name
 scv_tr_stream::~scv_tr_stream() {
     process_callbacks<scv_tr_stream, scv_tr_stream::callback_reason, scv_tr_stream::callback_function>(
         *this, _scv_tr_stream_core::callback_list_p, scv_tr_stream::DELETE);
+    delete(_scv_tr_stream_core_p);
 }
 
 // ----------------------------------------------------------------------------

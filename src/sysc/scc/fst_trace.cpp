@@ -206,6 +206,11 @@ template <> void fst_trace_t<sc_dt::sc_lv_base, sc_dt::sc_lv_base>::record(void*
     fstWriterEmitValueChange(m_fst, fst_hndl, str.c_str());
 }
 } // namespace trace
+
+fst_trace_file::trace_entry::~trace_entry() {
+    delete trc;
+}
+
 fst_trace_file::fst_trace_file(const char* name, std::function<bool()>& enable)
 : check_enabled(enable) {
     std::stringstream ss;

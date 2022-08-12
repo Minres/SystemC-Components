@@ -147,7 +147,7 @@ private:
         bool notify() override;
         trace_entry(fst_trace_file* owner, bool (*compare_and_update)(trace::fst_trace*), trace::fst_trace* trc)
         :compare_and_update{compare_and_update}, trc{trc}, that{owner}{}
-        virtual ~trace_entry(){}
+        virtual ~trace_entry();
     };
     std::deque<trace_entry> all_traces;
     std::vector<trace_entry*> pull_traces;
