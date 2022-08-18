@@ -1,0 +1,3 @@
+# support only hex number with prefix 0x...
+simple_axi_bus.init_socket_0 0x0000 0x1000
+simple_axi_bus.init_socket_1 0x1000 0x2000 
