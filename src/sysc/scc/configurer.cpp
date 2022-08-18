@@ -292,9 +292,10 @@ void check_config_hierarchical(configurer::broker_t const& broker, Value const& 
             continue;
         else if(val.IsObject()) {
             if(!sc_core::sc_find_object(hier_name.c_str())) {
-                throw std::domain_error(hier_name);
-            }
-            check_config_hierarchical(broker, val, hier_name);
+                if(prefix.size())
+                    throw std::domain_error(hier_name);
+            } else
+                check_config_hierarchical(broker, val, hier_name);
         } else {
             auto pos = hier_name.rfind('.');
             if(pos != std::string::npos) {
