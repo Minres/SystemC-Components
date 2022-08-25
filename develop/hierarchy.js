@@ -406,8 +406,10 @@ var hierarchy =
       [ "tlm::scc::tlm_signal< SIG, TYPES, N >", "structtlm_1_1scc_1_1tlm__signal.html", null ]
     ] ],
     [ "sc_trace_file", null, [
+      [ "scc::value_registry_impl", "classscc_1_1value__registry__impl.html", null ]
+    ] ],
+    [ "sc_trace_file", null, [
       [ "scc::fst_trace_file", "structscc_1_1fst__trace__file.html", null ],
-      [ "scc::value_registry_impl", "classscc_1_1value__registry__impl.html", null ],
       [ "scc::vcd_mt_trace_file", "structscc_1_1vcd__mt__trace__file.html", null ],
       [ "scc::vcd_pull_trace_file", "structscc_1_1vcd__pull__trace__file.html", null ],
       [ "scc::vcd_push_trace_file", "structscc_1_1vcd__push__trace__file.html", null ]
@@ -509,9 +511,7 @@ var hierarchy =
       [ "tlm::scc::scv::tlm_recorder< TYPES >", "classtlm_1_1scc_1_1scv_1_1tlm__recorder.html", null ],
       [ "tlm::scc::tlm2_pv_av_initiator_adapter< BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE >", "classtlm_1_1scc_1_1tlm2__pv__av__initiator__adapter.html", null ],
       [ "tlm::scc::tlm2_pv_av_target_adapter< BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE >", "classtlm_1_1scc_1_1tlm2__pv__av__target__adapter.html", null ],
-      [ "tlm::scc::scv::tlm_recorder< tlm::tlm_base_protocol_types >", "classtlm_1_1scc_1_1scv_1_1tlm__recorder.html", [
-        [ "tlm::scc::scv::tlm_recorder_module< BUSWIDTH, TYPES >", "classtlm_1_1scc_1_1scv_1_1tlm__recorder__module.html", null ]
-      ] ]
+      [ "tlm::scc::scv::tlm_recorder< tlm::tlm_base_protocol_types >", "classtlm_1_1scc_1_1scv_1_1tlm__recorder.html", null ]
     ] ],
     [ "tlm::scc::scv::tlm_dmi_data", "classtlm_1_1scc_1_1scv_1_1tlm__dmi__data.html", null ],
     [ "tlm_extension", null, [
@@ -606,9 +606,9 @@ var hierarchy =
       [ "scc::impl::sc_register< DATATYPE >", "classscc_1_1impl_1_1sc__register.html", null ]
     ] ],
     [ "scc::trace::traits< T >", "structscc_1_1trace_1_1traits.html", null ],
-    [ "axi::pe::axi_initiator_b::tx_state", "structaxi_1_1pe_1_1axi__initiator__b_1_1tx__state.html", null ],
-    [ "ahb::pe::ahb_initiator_b::tx_state", "structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state.html", null ],
     [ "chi::pe::chi_rn_initiator_b::tx_state", "structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state.html", null ],
+    [ "ahb::pe::ahb_initiator_b::tx_state", "structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state.html", null ],
+    [ "axi::pe::axi_initiator_b::tx_state", "structaxi_1_1pe_1_1axi__initiator__b_1_1tx__state.html", null ],
     [ "scc::value_registry_if::value_holder", "structscc_1_1value__registry__if_1_1value__holder.html", null ],
     [ "scc::value_registry_if", "structscc_1_1value__registry__if.html", null ],
     [ "scc::trace::vcd_scope_stack< T >", "structscc_1_1trace_1_1vcd__scope__stack.html", null ],

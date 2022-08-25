@@ -85,25 +85,25 @@ $(document).ready(function(){initNavTree('sc__logic__7_8cpp_source.html',''); in
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;sc_logic_7.h&quot;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;sysc/datatypes/bit/sc_bit_ids.h&quot;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span>scc {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescc.html">scc</a> {</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>dt {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">void</span> sc_logic_7::invalid_value(sc_logic_7_value_t v) {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::array&lt;char, BUFSIZ&gt; msg{};</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::sprintf(msg.data(), <span class="stringliteral">&quot;sc_logic_7( %d )&quot;</span>, v);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    msg.data();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    SC_REPORT_ERROR(sc_core::SC_ID_VALUE_NOT_VALID_, msg.data());</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">void</span> sc_logic_7::invalid_value(<span class="keywordtype">char</span> c) {</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    std::array&lt;char, BUFSIZ&gt; msg{};</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    std::sprintf(msg.data(), <span class="stringliteral">&quot;sc_logic_7( &#39;%c&#39; )&quot;</span>, c);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    msg.data();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    SC_REPORT_ERROR(sc_core::SC_ID_VALUE_NOT_VALID_, msg.data());</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> sc_logic_7::invalid_value(<span class="keywordtype">int</span> i) {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::array&lt;char, BUFSIZ&gt; msg{};</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::sprintf(msg.data(), <span class="stringliteral">&quot;sc_logic_7( %d )&quot;</span>, i);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    msg.data();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    SC_REPORT_ERROR(sc_core::SC_ID_VALUE_NOT_VALID_, msg.data());</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> sc_logic_7::invalid_01()<span class="keyword"> const </span>{</div>
@@ -185,6 +185,7 @@ $(document).ready(function(){initNavTree('sc__logic__7_8cpp_source.html',''); in
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;} <span class="comment">// namespace scc</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

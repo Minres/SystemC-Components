@@ -1,5 +1,30 @@
 var structscc_1_1observer =
 [
     [ "notification_handle", "structscc_1_1observer_1_1notification__handle.html", "structscc_1_1observer_1_1notification__handle" ],
-    [ "~observer", "structscc_1_1observer.html#a4a9cf27bb9978c57464db804f9f91461", null ]
+    [ "~observer", "structscc_1_1observer.html#a4a9cf27bb9978c57464db804f9f91461", null ],
+    [ "observe", "structscc_1_1observer.html#abc1abfc1607245c0ec68afd74aa404ee", null ],
+    [ "observe", "structscc_1_1observer.html#a3703cc996e1b2a9e7c68cd38e59775d5", null ],
+    [ "observe", "structscc_1_1observer.html#ae9e33db6319557f8f0fe2e6c54a4bfa4", null ],
+    [ "observe", "structscc_1_1observer.html#a5f81248179d69bb420772711baeb1cc0", null ],
+    [ "observe", "structscc_1_1observer.html#ae5f79536aae6669e373a3bd9ebc835d2", null ],
+    [ "observe", "structscc_1_1observer.html#ac15212101525e53a1aed58aff23d263f", null ],
+    [ "observe", "structscc_1_1observer.html#a992695483efe9ad1ca288407ee47066a", null ],
+    [ "observe", "structscc_1_1observer.html#aae14ffdb694cce3b3a85eecc9fe94b94", null ],
+    [ "observe", "structscc_1_1observer.html#ac59e978703ac2548816ab725d54c5c5b", null ],
+    [ "observe", "structscc_1_1observer.html#a7e50609c0134c099679809f5cdc7f052", null ],
+    [ "observe", "structscc_1_1observer.html#a5aa622a3c51ffea010d92f1ef25ce3f2", null ],
+    [ "observe", "structscc_1_1observer.html#a10a5833b7b6bef915fc8138eee326d9f", null ],
+    [ "observe", "structscc_1_1observer.html#a457f354d5e1cdad21cd085ef51c9e8c3", null ],
+    [ "observe", "structscc_1_1observer.html#af298feb62e26f8c5c7347d099ac9e2ac", null ],
+    [ "observe", "structscc_1_1observer.html#aac25574f06c595e39ed65491d0ea0c04", null ],
+    [ "observe", "structscc_1_1observer.html#ac76bc66df98165844a2c613ebacc894c", null ],
+    [ "observe", "structscc_1_1observer.html#a55523ba7b8a8a1fd0072a8e62d7a65a4", null ],
+    [ "observe", "structscc_1_1observer.html#ae4a0d003ef5c7015598e2b294a0d4eda", null ],
+    [ "observe", "structscc_1_1observer.html#aa05ba10c2549a73b863ca0698fdd0e06", null ],
+    [ "observe", "structscc_1_1observer.html#ad3e74519c8c3adf4db8f32d2cb009add", null ],
+    [ "observe", "structscc_1_1observer.html#a946134f74037d490623aef94dbc7de1d", null ],
+    [ "observe", "structscc_1_1observer.html#a5c6175fc400509efb4e1ac430290642c", null ],
+    [ "observe", "structscc_1_1observer.html#ab0bbead5448c676d8074b64f1a7d3d2f", null ],
+    [ "observe", "structscc_1_1observer.html#ac9d5d43cf496b8861d057b644efd94e4", null ],
+    [ "observe", "structscc_1_1observer.html#a372d1372d39597ca221ad20dbaa6e3aa", null ]
 ];

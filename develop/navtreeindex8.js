@@ -1,6 +1,5 @@
 var NAVTREEINDEX8 =
 {
-"structaxi_1_1ace__target__socket.html":[5,0,2,10],
 "structaxi_1_1ace__target__socket.html#a848145a1e0481c22b6f1bdb628ad98b9":[5,0,2,10,1],
 "structaxi_1_1ace__target__socket.html#abec5733e227b4ba7396badc7540dab9b":[5,0,2,10,3],
 "structaxi_1_1ace__target__socket.html#ac674d26186c4a78f5420cc7a055025a1":[5,0,2,10,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX8 =
 "structaxi_1_1lite__master__types.html#a942474083df025e080594eb1d2ded8e6":[5,0,2,37,4],
 "structaxi_1_1lite__master__types.html#acf7dffb4092117644f2fa5a0ab3e7825":[5,0,2,37,0],
 "structaxi_1_1lite__master__types.html#af9cea5616d0ba76b75e280e76ff5266c":[5,0,2,37,3],
-"structaxi_1_1lite__slave__types.html":[5,0,2,38]
+"structaxi_1_1lite__slave__types.html":[5,0,2,38],
+"structaxi_1_1lite__slave__types.html#a0233a9f6c30dc9e672036acecb807a29":[5,0,2,38,5]
 };

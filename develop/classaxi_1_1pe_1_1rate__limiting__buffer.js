@@ -1,8 +1,7 @@
 var classaxi_1_1pe_1_1rate__limiting__buffer =
 [
     [ "rate_limiting_buffer", "classaxi_1_1pe_1_1rate__limiting__buffer.html#a59905d913ea43a023aa8d5fa1f3a7150", null ],
-    [ "add_attributes", "classaxi_1_1pe_1_1rate__limiting__buffer.html#a84ba4702ca627e90cfc37efe57c1c54a", null ],
-    [ "end_of_elaboration", "classaxi_1_1pe_1_1rate__limiting__buffer.html#aade84840cb5d8b78a4350c08e26a4f2a", null ],
+    [ "end_of_elaboration", "classaxi_1_1pe_1_1rate__limiting__buffer.html#a13e63e12b3a59b5cd9f2db9d483fe009", null ],
     [ "process_req2resp_fifos", "classaxi_1_1pe_1_1rate__limiting__buffer.html#a48dae28011f67afee1e925dd3e0662db", null ],
     [ "snoop_resp", "classaxi_1_1pe_1_1rate__limiting__buffer.html#a8ce1273f7db23382a291d562623d7903", null ],
     [ "start_rd_resp_thread", "classaxi_1_1pe_1_1rate__limiting__buffer.html#adcf8672dfce1530e4039ef4472a6a73b", null ],

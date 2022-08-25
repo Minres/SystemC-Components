@@ -2,7 +2,6 @@ var classaxi_1_1pe_1_1tx__reorderer =
 [
     [ "que_entry", "structaxi_1_1pe_1_1tx__reorderer_1_1que__entry.html", "structaxi_1_1pe_1_1tx__reorderer_1_1que__entry" ],
     [ "tx_reorderer", "classaxi_1_1pe_1_1tx__reorderer.html#a5617b49c320ec24fe2b7c106071d0842", null ],
-    [ "add_attributes", "classaxi_1_1pe_1_1tx__reorderer.html#a782bade081d444743ae0958e99ce8d3d", null ],
     [ "clock_cb", "classaxi_1_1pe_1_1tx__reorderer.html#a1c94763898d3fdfa338b5d6263503e8a", null ],
     [ "snoop_resp", "classaxi_1_1pe_1_1tx__reorderer.html#a089f7096bcf7a4fb137383a5e52af6fe", null ],
     [ "transport", "classaxi_1_1pe_1_1tx__reorderer.html#a35041a8f793102c532bc5c507e4dc405", null ],

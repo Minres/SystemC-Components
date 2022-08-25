@@ -109,10 +109,10 @@ $(document).ready(function(){initNavTree('configurer_8cpp_source.html',''); init
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define FDECL(TYPE, FUNC)                                                                                              \</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">    inline void writeValue(writer_type&amp; writer, std::string const&amp; key, TYPE value) {                                  \</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">        writer.Key(key.c_str());                                                                                       \</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">        writer.FUNC(value);                                                                                            \</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">    }</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">        inline void writeValue(writer_type&amp; writer, std::string const&amp; key, TYPE value) {                                  \</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">    writer.Key(key.c_str());                                                                                       \</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">    writer.FUNC(value);                                                                                            \</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">}</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;FDECL(<span class="keywordtype">int</span>, Int)</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;FDECL(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, Uint)</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;FDECL(<span class="keywordtype">long</span>, Int64)</div>
@@ -174,56 +174,56 @@ $(document).ready(function(){initNavTree('configurer_8cpp_source.html',''); init
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">void</span> dump_config(sc_core::sc_object* obj, writer_type&amp; writer) {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">auto</span> obj_started = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">auto</span> mod = <span class="keyword">dynamic_cast&lt;</span>sc_core::sc_module*<span class="keyword">&gt;</span>(obj);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">for</span>(sc_core::sc_attr_base* attr_base : obj-&gt;attr_cltn()) {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            obj_started = start_object(writer, obj-&gt;basename(), obj_started);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            check_n_assign&lt;int&gt;(writer, attr_base) || check_n_assign&lt;unsigned&gt;(writer, attr_base) ||</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                check_n_assign&lt;long&gt;(writer, attr_base) || check_n_assign&lt;unsigned long&gt;(writer, attr_base) ||</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                check_n_assign&lt;long long&gt;(writer, attr_base) || check_n_assign&lt;unsigned long long&gt;(writer, attr_base) ||</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                check_n_assign&lt;bool&gt;(writer, attr_base) || check_n_assign&lt;float&gt;(writer, attr_base) ||</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                check_n_assign&lt;double&gt;(writer, attr_base) || check_n_assign&lt;std::string&gt;(writer, attr_base) ||</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                check_n_assign&lt;char*&gt;(writer, attr_base) || check_n_assign&lt;sc_core::sc_time&gt;(writer, attr_base);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        }</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#ifdef HAS_CCI</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keyword">const</span> std::string hier_name{obj-&gt;name()};</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keyword">auto</span> log_lvl_set = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keyword">auto</span> it = lut.find(obj-&gt;name());</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span>(it != lut.end())</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; h : it-&gt;second) {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                obj_started = start_object(writer, obj-&gt;basename(), obj_started);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keyword">auto</span> value = h.get_cci_value();</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                std::string paramname{h.name()};</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keyword">auto</span> basename = paramname.substr(paramname.rfind(<span class="charliteral">&#39;.&#39;</span>) + 1);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordflow">if</span>(basename == SCC_LOG_LEVEL_PARAM_NAME)</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                    log_lvl_set = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                <span class="keywordflow">if</span>(value.is_bool())</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                    writeValue(writer, basename, (<span class="keywordtype">bool</span>)value.get_bool());</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(value.is_int())</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                    writeValue(writer, basename, (<span class="keywordtype">int</span>)value.get_int());</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(value.is_int64())</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                    writeValue(writer, basename, <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(value.get_int64()));</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(value.is_uint())</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                    writeValue(writer, basename, value.get_uint());</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(value.is_uint64())</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                    writeValue(writer, basename, <span class="keyword">static_cast&lt;</span>uint64_t<span class="keyword">&gt;</span>(value.get_uint64()));</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(value.is_double())</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                    writeValue(writer, basename, value.get_double());</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(value.is_string())</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    writeValue(writer, basename, value.get_string().c_str());</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            }</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">if</span>(!log_lvl_set &amp;&amp; mod) {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            obj_started = start_object(writer, obj-&gt;basename(), obj_started);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keyword">auto</span> val = broker.get_preset_cci_value(fmt::format(<span class="stringliteral">&quot;{}.{}&quot;</span>, obj-&gt;name(), SCC_LOG_LEVEL_PARAM_NAME));</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keyword">auto</span> global_verb = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="namespacescc.html#a8e99107b0befaf0f9b735d50922dee16">get_logging_level</a>());</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            writeValue(writer, <span class="stringliteral">&quot;log_level&quot;</span>, val.is_int() ? val.get_int() : global_verb);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span>* o : get_sc_objects(obj)) {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <span class="comment">//if(dynamic_cast&lt;sc_core::sc_module*&gt;(obj)) {</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                obj_started = start_object(writer, obj-&gt;basename(), obj_started);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                dump_config(o, writer);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="comment">//}</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">auto</span> start = std::string(obj-&gt;basename()).substr(0, 3);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">if</span>(start == <span class="stringliteral">&quot;$$$&quot;</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keyword">auto</span> obj_started = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">for</span>(sc_core::sc_attr_base* attr_base : obj-&gt;attr_cltn()) {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            obj_started = start_object(writer, obj-&gt;basename(), obj_started);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            check_n_assign&lt;int&gt;(writer, attr_base) || check_n_assign&lt;unsigned&gt;(writer, attr_base) ||</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                    check_n_assign&lt;long&gt;(writer, attr_base) || check_n_assign&lt;unsigned long&gt;(writer, attr_base) ||</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                    check_n_assign&lt;long long&gt;(writer, attr_base) || check_n_assign&lt;unsigned long long&gt;(writer, attr_base) ||</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                    check_n_assign&lt;bool&gt;(writer, attr_base) || check_n_assign&lt;float&gt;(writer, attr_base) ||</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    check_n_assign&lt;double&gt;(writer, attr_base) || check_n_assign&lt;std::string&gt;(writer, attr_base) ||</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    check_n_assign&lt;char*&gt;(writer, attr_base) || check_n_assign&lt;sc_core::sc_time&gt;(writer, attr_base);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#ifdef HAS_CCI</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keyword">const</span> std::string hier_name{obj-&gt;name()};</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keyword">auto</span> log_lvl_set = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keyword">auto</span> it = lut.find(obj-&gt;name());</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">if</span>(it != lut.end())</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; h : it-&gt;second) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                obj_started = start_object(writer, obj-&gt;basename(), obj_started);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <span class="keyword">auto</span> value = h.get_cci_value();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                std::string paramname{h.name()};</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keyword">auto</span> basename = paramname.substr(paramname.rfind(<span class="charliteral">&#39;.&#39;</span>) + 1);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="keywordflow">if</span>(basename == SCC_LOG_LEVEL_PARAM_NAME)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                    log_lvl_set = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                <span class="keywordflow">if</span>(value.is_bool())</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                    writeValue(writer, basename, (<span class="keywordtype">bool</span>)value.get_bool());</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(value.is_int())</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                    writeValue(writer, basename, (<span class="keywordtype">int</span>)value.get_int());</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(value.is_int64())</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                    writeValue(writer, basename, <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(value.get_int64()));</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(value.is_uint())</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                    writeValue(writer, basename, value.get_uint());</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(value.is_uint64())</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                    writeValue(writer, basename, <span class="keyword">static_cast&lt;</span>uint64_t<span class="keyword">&gt;</span>(value.get_uint64()));</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(value.is_double())</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    writeValue(writer, basename, value.get_double());</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(value.is_string())</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                    writeValue(writer, basename, value.get_string().c_str());</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keyword">auto</span> mod = <span class="keyword">dynamic_cast&lt;</span>sc_core::sc_module*<span class="keyword">&gt;</span>(obj);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">if</span>(!log_lvl_set &amp;&amp; mod) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            obj_started = start_object(writer, obj-&gt;basename(), obj_started);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keyword">auto</span> val = broker.get_preset_cci_value(fmt::format(<span class="stringliteral">&quot;{}.{}&quot;</span>, obj-&gt;name(), SCC_LOG_LEVEL_PARAM_NAME));</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keyword">auto</span> global_verb = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="namespacescc.html#a8e99107b0befaf0f9b735d50922dee16">get_logging_level</a>());</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            writeValue(writer, <span class="stringliteral">&quot;log_level&quot;</span>, val.is_int() ? val.get_int() : global_verb);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span>* o : get_sc_objects(obj)) {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            obj_started = start_object(writer, obj-&gt;basename(), obj_started);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            dump_config(o, writer);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        }</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordflow">if</span>(obj_started)</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            writer.EndObject();</div>
@@ -231,13 +231,13 @@ $(document).ready(function(){initNavTree('configurer_8cpp_source.html',''); init
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;};</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#define CHECK_N_ASSIGN(TYPE, ATTR, VAL)                                                                                \</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">    {                                                                                                                  \</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">        auto* a = dynamic_cast&lt;sc_core::sc_attribute&lt;TYPE&gt;*&gt;(ATTR);                                                    \</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">        if(a != nullptr) {                                                                                             \</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">            a-&gt;value = VAL;                                                                                            \</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">            return;                                                                                                    \</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor">        }                                                                                                              \</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">    }</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">        {                                                                                                                  \</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">    auto* a = dynamic_cast&lt;sc_core::sc_attribute&lt;TYPE&gt;*&gt;(ATTR);                                                    \</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">    if(a != nullptr) {                                                                                             \</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">        a-&gt;value = VAL;                                                                                            \</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">        return;                                                                                                    \</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor">    }                                                                                                              \</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">        }</span></div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keywordtype">void</span> try_set_value(sc_core::sc_attr_base* attr_base, Value <span class="keyword">const</span>&amp; hier_val) {</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    CHECK_N_ASSIGN(<span class="keywordtype">int</span>, attr_base, hier_val.Get&lt;<span class="keywordtype">int</span>&gt;());</div>
@@ -359,156 +359,157 @@ $(document).ready(function(){initNavTree('configurer_8cpp_source.html',''); init
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(val.IsObject()) {</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <span class="keywordflow">if</span>(!sc_core::sc_find_object(hier_name.c_str())) {</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                <span class="keywordflow">throw</span> std::domain_error(hier_name);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            }</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            check_config_hierarchical(broker, val, hier_name);</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <span class="keyword">auto</span> pos = hier_name.rfind(<span class="charliteral">&#39;.&#39;</span>);</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <span class="keywordflow">if</span>(pos != std::string::npos) {</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                <span class="keyword">auto</span> objname = hier_name.substr(0, pos);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                <span class="keyword">auto</span> attrname = hier_name.substr(pos + 1);</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                <span class="keyword">auto</span>* obj = sc_core::sc_find_object(objname.c_str());</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                <span class="keywordflow">if</span>(!obj || !obj-&gt;get_attribute(attrname.c_str())) {</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="preprocessor">#ifdef HAS_CCI</span></div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                    <span class="keyword">auto</span> param_handle = broker.get_param_handle(hier_name);</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                    <span class="keywordflow">if</span>(!param_handle.is_valid() &amp;&amp; attrname != SCC_LOG_LEVEL_PARAM_NAME)</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                        <span class="keywordflow">throw</span> std::invalid_argument(hier_name);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                }</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            }</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        }</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    }</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;}</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;} <span class="comment">// namespace</span></div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="keyword">struct </span>configurer::ConfigHolder {</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    Document document;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;};</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;configurer::configurer(<span class="keyword">const</span> std::string&amp; filename, <span class="keywordtype">unsigned</span> config_phases)</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;: base_type(sc_core::sc_module_name(<span class="stringliteral">&quot;$$$configurer&quot;</span>))</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;, config_phases(config_phases)</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;#ifdef HAS_CCI</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;, cci_originator(<span class="stringliteral">&quot;configurer&quot;</span>)</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;, cci_broker(cci::cci_get_global_broker(cci_originator))</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;#endif</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;{</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keywordflow">if</span>(filename.length() &gt; 0) {</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        std::ifstream is(filename);</div>
-<div class="line"><a name="l00331"></a><span class="lineno"><a class="line" href="structscc_1_1configurer_1_1ConfigHolder.html">  331</a></span>&#160;        <span class="keywordflow">if</span>(is.is_open()) {</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            root.reset(<span class="keyword">new</span> <a class="code" href="structscc_1_1configurer_1_1ConfigHolder.html">ConfigHolder</a>);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                IStreamWrapper stream(is);</div>
-<div class="line"><a name="l00335"></a><span class="lineno"><a class="line" href="classscc_1_1configurer.html#a4d9c9e2b44244f91ec78af2567c8965c">  335</a></span>&#160;                root-&gt;document.ParseStream(stream);</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                <span class="keywordflow">if</span>(root-&gt;document.HasParseError()) {</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                    SCCERR() &lt;&lt; <span class="stringliteral">&quot;Could not parse input file &quot;</span> &lt;&lt; filename &lt;&lt; <span class="stringliteral">&quot;, location &quot;</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                             &lt;&lt; (unsigned)root-&gt;document.GetErrorOffset()</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                             &lt;&lt; <span class="stringliteral">&quot;, reason: &quot;</span> &lt;&lt; GetParseError_En(root-&gt;document.GetParseError());</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                    config_reader reader(<a class="code" href="classscc_1_1configurable__tracer.html#a6d8ffae0c036e3c28e96021a7d16ee5f">cci_broker</a>);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                    reader.configure_cci_hierarchical(root-&gt;document, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                    config_valid = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            } <span class="keywordflow">catch</span>(std::runtime_error&amp; e) {</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                SCCERR() &lt;&lt; <span class="stringliteral">&quot;Could not parse input file &quot;</span> &lt;&lt; filename &lt;&lt; <span class="stringliteral">&quot;, reason: &quot;</span> &lt;&lt; e.what();</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            }</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            SCCERR() &lt;&lt; <span class="stringliteral">&quot;Could not open input file &quot;</span> &lt;&lt; filename;</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        }</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    }</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;}</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;configurer::~configurer() {}</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">configurer::dump_hierarchy</a>(std::ostream&amp; os, sc_core::sc_object* obj) {</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keywordflow">if</span>(obj) {</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        os &lt;&lt; obj-&gt;name() &lt;&lt; <span class="stringliteral">&quot; of type &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(*obj).name() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span>* o : obj-&gt;get_child_objects())</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <a class="code" href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">dump_hierarchy</a>(os, o);</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span>* o : sc_core::sc_get_top_level_objects())</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            <a class="code" href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">dump_hierarchy</a>(os, o);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    }</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;}</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1configurer.html#a11d9d54aa9c22a9bf0cdbf1721610eba">configurer::dump_configuration</a>(std::ostream&amp; os, sc_core::sc_object* obj) {</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    OStreamWrapper stream(os);</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    writer_type writer(stream);</div>
-<div class="line"><a name="l00370"></a><span class="lineno"><a class="line" href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">  370</a></span>&#160;    writer.StartObject();</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    config_dumper dumper(cci_broker);</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>* o : get_sc_objects(obj)) {</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        dumper.dump_config(o, writer);</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    }</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    writer.EndObject();</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;}</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1configurer.html#a0419a8cd7a38cec2d667a61d62b3a520">configurer::configure</a>() {</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keywordflow">if</span>(config_valid &amp;&amp; root) {</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        configure_sc_attribute_hierarchical(root-&gt;document, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00381"></a><span class="lineno"><a class="line" href="classscc_1_1configurer.html#a11d9d54aa9c22a9bf0cdbf1721610eba">  381</a></span>&#160;    }</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;}</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="keyword">auto</span> get_value_from_hierarchy(<span class="keyword">const</span> std::string&amp; hier_name, Value <span class="keyword">const</span>&amp; value) -&gt; Value <span class="keyword">const</span>&amp; {</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <span class="keywordtype">size_t</span> npos = hier_name.find_first_of(<span class="charliteral">&#39;.&#39;</span>);</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="keyword">auto</span> member = value.FindMember(hier_name.substr(0, npos).c_str());</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keyword">auto</span>&amp; val = member-&gt;value;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordflow">if</span>(val.IsNull() || npos == std::string::npos || !val.IsObject())</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="keywordflow">return</span> val;</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordflow">return</span> get_value_from_hierarchy(hier_name.substr(npos + 1, hier_name.size()), val);</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;}</div>
-<div class="line"><a name="l00392"></a><span class="lineno"><a class="line" href="classscc_1_1configurer.html#a0419a8cd7a38cec2d667a61d62b3a520">  392</a></span>&#160; </div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1configurer.html#a2536144f65524d836ce35031bbd1bf20">configurer::set_configuration_value</a>(sc_core::sc_attr_base* attr_base, sc_core::sc_object* owner) {</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordflow">if</span>(root) {</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        std::string name(owner-&gt;name());</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        name += <span class="stringliteral">&quot;.&quot;</span>;</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        name += attr_base-&gt;name();</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        <span class="keywordtype">size_t</span> npos = name.find_first_of(<span class="charliteral">&#39;.&#39;</span>);</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        <span class="keyword">auto</span> member = root-&gt;document.FindMember(name.substr(0, npos).c_str());</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        <span class="keyword">auto</span>&amp; val = get_value_from_hierarchy(name, member-&gt;value);</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        <span class="keywordflow">if</span>(!val.IsNull())</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            try_set_value(attr_base, val);</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    }</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;}</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="keywordtype">void</span> configurer::config_check() {</div>
-<div class="line"><a name="l00407"></a><span class="lineno"><a class="line" href="classscc_1_1configurer.html#a2536144f65524d836ce35031bbd1bf20">  407</a></span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="keywordflow">if</span>(root)</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            check_config_hierarchical(cci_broker, root-&gt;document, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    } <span class="keywordflow">catch</span>(std::domain_error&amp; e) {</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        SCCFATAL(this-&gt;name()) &lt;&lt; <span class="stringliteral">&quot;Illegal hierarchy name: &#39;&quot;</span> &lt;&lt; e.what() &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span>;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    } <span class="keywordflow">catch</span>(std::invalid_argument&amp; e) {</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        SCCFATAL(this-&gt;name()) &lt;&lt; <span class="stringliteral">&quot;Illegal parameter name: &#39;&quot;</span> &lt;&lt; e.what() &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span>;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    }</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;}</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="keywordtype">void</span> init_cci(std::string name) {</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="preprocessor">#ifdef HAS_CCI</span></div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    thread_local <span class="keyword">static</span> cci_utils::broker broker(name);</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    cci::cci_register_broker(&amp;broker);</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;}</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="keywordtype">void</span> configurer::start_of_simulation() {</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <span class="keywordflow">if</span>(config_phases &amp; START_OF_SIMULATION) <a class="code" href="classscc_1_1configurer.html#a0419a8cd7a38cec2d667a61d62b3a520">configure</a>();</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    config_check();</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="keywordflow">if</span>(dump_file_name.size()) {</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        std::ofstream of{dump_file_name};</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        <span class="keywordflow">if</span>(of.is_open())</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            <a class="code" href="classscc_1_1configurer.html#a11d9d54aa9c22a9bf0cdbf1721610eba">dump_configuration</a>(of);</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    }</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;}</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                <span class="keywordflow">if</span>(prefix.size())</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                    <span class="keywordflow">throw</span> std::domain_error(hier_name);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                check_config_hierarchical(broker, val, hier_name);</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <span class="keyword">auto</span> pos = hier_name.rfind(<span class="charliteral">&#39;.&#39;</span>);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            <span class="keywordflow">if</span>(pos != std::string::npos) {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                <span class="keyword">auto</span> objname = hier_name.substr(0, pos);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                <span class="keyword">auto</span> attrname = hier_name.substr(pos + 1);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                <span class="keyword">auto</span>* obj = sc_core::sc_find_object(objname.c_str());</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                <span class="keywordflow">if</span>(!obj || !obj-&gt;get_attribute(attrname.c_str())) {</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="preprocessor">#ifdef HAS_CCI</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                    <span class="keyword">auto</span> param_handle = broker.get_param_handle(hier_name);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                    <span class="keywordflow">if</span>(!param_handle.is_valid() &amp;&amp; attrname != SCC_LOG_LEVEL_PARAM_NAME)</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                        <span class="keywordflow">throw</span> std::invalid_argument(hier_name);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            }</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        }</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;}</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;} <span class="comment">// namespace</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="keyword">struct </span>configurer::ConfigHolder {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    Document document;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;};</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;configurer::configurer(<span class="keyword">const</span> std::string&amp; filename, <span class="keywordtype">unsigned</span> config_phases)</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;: base_type(sc_core::sc_module_name(<span class="stringliteral">&quot;$$$configurer$$$&quot;</span>))</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;, config_phases(config_phases)</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;#ifdef HAS_CCI</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;, cci_originator(<span class="stringliteral">&quot;configurer&quot;</span>)</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;, cci_broker(cci::cci_get_global_broker(cci_originator))</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;#endif</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;{</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">if</span>(filename.length() &gt; 0) {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        std::ifstream is(filename);</div>
+<div class="line"><a name="l00332"></a><span class="lineno"><a class="line" href="structscc_1_1configurer_1_1ConfigHolder.html">  332</a></span>&#160;        <span class="keywordflow">if</span>(is.is_open()) {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            root.reset(<span class="keyword">new</span> <a class="code" href="structscc_1_1configurer_1_1ConfigHolder.html">ConfigHolder</a>);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                IStreamWrapper stream(is);</div>
+<div class="line"><a name="l00336"></a><span class="lineno"><a class="line" href="classscc_1_1configurer.html#a4d9c9e2b44244f91ec78af2567c8965c">  336</a></span>&#160;                root-&gt;document.ParseStream(stream);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                <span class="keywordflow">if</span>(root-&gt;document.HasParseError()) {</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                    SCCERR() &lt;&lt; <span class="stringliteral">&quot;Could not parse input file &quot;</span> &lt;&lt; filename &lt;&lt; <span class="stringliteral">&quot;, location &quot;</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                            &lt;&lt; (unsigned)root-&gt;document.GetErrorOffset()</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                            &lt;&lt; <span class="stringliteral">&quot;, reason: &quot;</span> &lt;&lt; GetParseError_En(root-&gt;document.GetParseError());</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                    config_reader reader(<a class="code" href="classscc_1_1configurable__tracer.html#a6d8ffae0c036e3c28e96021a7d16ee5f">cci_broker</a>);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                    reader.configure_cci_hierarchical(root-&gt;document, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                    config_valid = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                }</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            } <span class="keywordflow">catch</span>(std::runtime_error&amp; e) {</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                SCCERR() &lt;&lt; <span class="stringliteral">&quot;Could not parse input file &quot;</span> &lt;&lt; filename &lt;&lt; <span class="stringliteral">&quot;, reason: &quot;</span> &lt;&lt; e.what();</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            }</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            SCCERR() &lt;&lt; <span class="stringliteral">&quot;Could not open input file &quot;</span> &lt;&lt; filename;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        }</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    }</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;}</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;configurer::~configurer() {}</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">configurer::dump_hierarchy</a>(std::ostream&amp; os, sc_core::sc_object* obj) {</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordflow">if</span>(obj) {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        os &lt;&lt; obj-&gt;name() &lt;&lt; <span class="stringliteral">&quot; of type &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(*obj).name() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span>* o : obj-&gt;get_child_objects())</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            <a class="code" href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">dump_hierarchy</a>(os, o);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span>* o : sc_core::sc_get_top_level_objects())</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            <a class="code" href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">dump_hierarchy</a>(os, o);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;}</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1configurer.html#a11d9d54aa9c22a9bf0cdbf1721610eba">configurer::dump_configuration</a>(std::ostream&amp; os, sc_core::sc_object* obj) {</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    OStreamWrapper stream(os);</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    writer_type writer(stream);</div>
+<div class="line"><a name="l00371"></a><span class="lineno"><a class="line" href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">  371</a></span>&#160;    writer.StartObject();</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    config_dumper dumper(cci_broker);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>* o : get_sc_objects(obj)) {</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        dumper.dump_config(o, writer);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    }</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    writer.EndObject();</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;}</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1configurer.html#a0419a8cd7a38cec2d667a61d62b3a520">configurer::configure</a>() {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="keywordflow">if</span>(config_valid &amp;&amp; root) {</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        configure_sc_attribute_hierarchical(root-&gt;document, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00382"></a><span class="lineno"><a class="line" href="classscc_1_1configurer.html#a11d9d54aa9c22a9bf0cdbf1721610eba">  382</a></span>&#160;    }</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;}</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="keyword">auto</span> get_value_from_hierarchy(<span class="keyword">const</span> std::string&amp; hier_name, Value <span class="keyword">const</span>&amp; value) -&gt; Value <span class="keyword">const</span>&amp; {</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="keywordtype">size_t</span> npos = hier_name.find_first_of(<span class="charliteral">&#39;.&#39;</span>);</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keyword">auto</span> member = value.FindMember(hier_name.substr(0, npos).c_str());</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keyword">auto</span>&amp; val = member-&gt;value;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="keywordflow">if</span>(val.IsNull() || npos == std::string::npos || !val.IsObject())</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        <span class="keywordflow">return</span> val;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">return</span> get_value_from_hierarchy(hier_name.substr(npos + 1, hier_name.size()), val);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;}</div>
+<div class="line"><a name="l00393"></a><span class="lineno"><a class="line" href="classscc_1_1configurer.html#a0419a8cd7a38cec2d667a61d62b3a520">  393</a></span>&#160; </div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1configurer.html#a2536144f65524d836ce35031bbd1bf20">configurer::set_configuration_value</a>(sc_core::sc_attr_base* attr_base, sc_core::sc_object* owner) {</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">if</span>(root) {</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        std::string name(owner-&gt;name());</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        name += <span class="stringliteral">&quot;.&quot;</span>;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        name += attr_base-&gt;name();</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        <span class="keywordtype">size_t</span> npos = name.find_first_of(<span class="charliteral">&#39;.&#39;</span>);</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        <span class="keyword">auto</span> member = root-&gt;document.FindMember(name.substr(0, npos).c_str());</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        <span class="keyword">auto</span>&amp; val = get_value_from_hierarchy(name, member-&gt;value);</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        <span class="keywordflow">if</span>(!val.IsNull())</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            try_set_value(attr_base, val);</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    }</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;}</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160; </div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="keywordtype">void</span> configurer::config_check() {</div>
+<div class="line"><a name="l00408"></a><span class="lineno"><a class="line" href="classscc_1_1configurer.html#a2536144f65524d836ce35031bbd1bf20">  408</a></span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <span class="keywordflow">if</span>(root)</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            check_config_hierarchical(cci_broker, root-&gt;document, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    } <span class="keywordflow">catch</span>(std::domain_error&amp; e) {</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        SCCFATAL(this-&gt;name()) &lt;&lt; <span class="stringliteral">&quot;Illegal hierarchy name: &#39;&quot;</span> &lt;&lt; e.what() &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span>;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    } <span class="keywordflow">catch</span>(std::invalid_argument&amp; e) {</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        SCCFATAL(this-&gt;name()) &lt;&lt; <span class="stringliteral">&quot;Illegal parameter name: &#39;&quot;</span> &lt;&lt; e.what() &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span>;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    }</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;}</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="keywordtype">void</span> init_cci(std::string name) {</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="preprocessor">#ifdef HAS_CCI</span></div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    thread_local <span class="keyword">static</span> cci_utils::broker broker(name);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    cci::cci_register_broker(&amp;broker);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;}</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160; </div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;<span class="keywordtype">void</span> configurer::start_of_simulation() {</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <span class="keywordflow">if</span>(config_phases &amp; START_OF_SIMULATION) <a class="code" href="classscc_1_1configurer.html#a0419a8cd7a38cec2d667a61d62b3a520">configure</a>();</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    config_check();</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keywordflow">if</span>(dump_file_name.size()) {</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        std::ofstream of{dump_file_name};</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <span class="keywordflow">if</span>(of.is_open())</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            <a class="code" href="classscc_1_1configurer.html#a11d9d54aa9c22a9bf0cdbf1721610eba">dump_configuration</a>(of);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    }</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;}</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;} <span class="comment">// namespace scc</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespacescc_html_a8e99107b0befaf0f9b735d50922dee16"><div class="ttname"><a href="namespacescc.html#a8e99107b0befaf0f9b735d50922dee16">scc::get_logging_level</a></div><div class="ttdeci">log get_logging_level()</div><div class="ttdoc">get the SystemC logging level</div><div class="ttdef"><b>Definition:</b> <a href="report_8cpp_source.html#l00435">report.cpp:435</a></div></div>
-<div class="ttc" id="aclassscc_1_1configurer_html_a2536144f65524d836ce35031bbd1bf20"><div class="ttname"><a href="classscc_1_1configurer.html#a2536144f65524d836ce35031bbd1bf20">scc::configurer::set_configuration_value</a></div><div class="ttdeci">void set_configuration_value(sc_core::sc_attr_base *attr_base, sc_core::sc_object *owner)</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00407">configurer.cpp:407</a></div></div>
-<div class="ttc" id="aclassscc_1_1configurer_html_a0419a8cd7a38cec2d667a61d62b3a520"><div class="ttname"><a href="classscc_1_1configurer.html#a0419a8cd7a38cec2d667a61d62b3a520">scc::configurer::configure</a></div><div class="ttdeci">void configure()</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00392">configurer.cpp:392</a></div></div>
-<div class="ttc" id="astructscc_1_1configurer_1_1ConfigHolder_html"><div class="ttname"><a href="structscc_1_1configurer_1_1ConfigHolder.html">scc::configurer::ConfigHolder</a></div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00331">configurer.cpp:331</a></div></div>
+<div class="ttc" id="anamespacescc_html_a8e99107b0befaf0f9b735d50922dee16"><div class="ttname"><a href="namespacescc.html#a8e99107b0befaf0f9b735d50922dee16">scc::get_logging_level</a></div><div class="ttdeci">log get_logging_level()</div><div class="ttdoc">get the SystemC logging level</div><div class="ttdef"><b>Definition:</b> <a href="report_8cpp_source.html#l00438">report.cpp:438</a></div></div>
+<div class="ttc" id="aclassscc_1_1configurer_html_a2536144f65524d836ce35031bbd1bf20"><div class="ttname"><a href="classscc_1_1configurer.html#a2536144f65524d836ce35031bbd1bf20">scc::configurer::set_configuration_value</a></div><div class="ttdeci">void set_configuration_value(sc_core::sc_attr_base *attr_base, sc_core::sc_object *owner)</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00408">configurer.cpp:408</a></div></div>
+<div class="ttc" id="aclassscc_1_1configurer_html_a0419a8cd7a38cec2d667a61d62b3a520"><div class="ttname"><a href="classscc_1_1configurer.html#a0419a8cd7a38cec2d667a61d62b3a520">scc::configurer::configure</a></div><div class="ttdeci">void configure()</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00393">configurer.cpp:393</a></div></div>
+<div class="ttc" id="astructscc_1_1configurer_1_1ConfigHolder_html"><div class="ttname"><a href="structscc_1_1configurer_1_1ConfigHolder.html">scc::configurer::ConfigHolder</a></div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00332">configurer.cpp:332</a></div></div>
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
-<div class="ttc" id="aclassscc_1_1configurer_html_a11d9d54aa9c22a9bf0cdbf1721610eba"><div class="ttname"><a href="classscc_1_1configurer.html#a11d9d54aa9c22a9bf0cdbf1721610eba">scc::configurer::dump_configuration</a></div><div class="ttdeci">void dump_configuration(std::ostream &amp;os=std::cout, sc_core::sc_object *obj=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00381">configurer.cpp:381</a></div></div>
+<div class="ttc" id="aclassscc_1_1configurer_html_a11d9d54aa9c22a9bf0cdbf1721610eba"><div class="ttname"><a href="classscc_1_1configurer.html#a11d9d54aa9c22a9bf0cdbf1721610eba">scc::configurer::dump_configuration</a></div><div class="ttdeci">void dump_configuration(std::ostream &amp;os=std::cout, sc_core::sc_object *obj=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00382">configurer.cpp:382</a></div></div>
 <div class="ttc" id="aclassscc_1_1configurable__tracer_html_a6d8ffae0c036e3c28e96021a7d16ee5f"><div class="ttname"><a href="classscc_1_1configurable__tracer.html#a6d8ffae0c036e3c28e96021a7d16ee5f">scc::configurable_tracer::cci_broker</a></div><div class="ttdeci">cci::cci_broker_handle cci_broker</div><div class="ttdoc">the cci broker</div><div class="ttdef"><b>Definition:</b> <a href="configurable__tracer_8h_source.html#l00121">configurable_tracer.h:121</a></div></div>
-<div class="ttc" id="aclassscc_1_1configurer_html_a3b16ed55b504449f2ec189c8363a3769"><div class="ttname"><a href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">scc::configurer::dump_hierarchy</a></div><div class="ttdeci">void dump_hierarchy(std::ostream &amp;os=std::cout, sc_core::sc_object *obj=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00370">configurer.cpp:370</a></div></div>
+<div class="ttc" id="aclassscc_1_1configurer_html_a3b16ed55b504449f2ec189c8363a3769"><div class="ttname"><a href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">scc::configurer::dump_hierarchy</a></div><div class="ttdeci">void dump_hierarchy(std::ostream &amp;os=std::cout, sc_core::sc_object *obj=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00371">configurer.cpp:371</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

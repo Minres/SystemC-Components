@@ -85,7 +85,7 @@ $(document).ready(function(){initNavTree('gz__writer_8hh_source.html',''); initR
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;zlib.h&gt;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;chrono&gt;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span>scc {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescc.html">scc</a> {</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>trace {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classscc_1_1trace_1_1gz__writer.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="classscc_1_1trace_1_1gz__writer.html">gz_writer</a> {</div>
@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('gz__writer_8hh_source.html',''); initR
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            pool.push_back(value);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> log(<span class="keywordtype">void</span>){</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespacescc.html#ae81cd4d55a12064f9fb15af3ca60c7ca">log</a>(<span class="keywordtype">void</span>){</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> timeout = std::chrono::milliseconds(1);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">while</span> (!done) {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            std::unique_lock&lt;std::mutex&gt; lock(writer_mtx);</div>
@@ -135,7 +135,7 @@ $(document).ready(function(){initNavTree('gz__writer_8hh_source.html',''); initR
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">size_t</span> buffer_size=512;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classscc_1_1trace_1_1gz__writer.html">gz_writer</a>(std::string <span class="keyword">const</span>&amp; filename)  {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        vcd_out = gzopen(filename.c_str(), <span class="stringliteral">&quot;w3&quot;</span>);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        logger=std::thread([<span class="keyword">this</span>](){log();});</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        logger=std::thread([<span class="keyword">this</span>](){<a class="code" href="namespacescc.html#ae81cd4d55a12064f9fb15af3ca60c7ca">log</a>();});</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        enlarge_pool();</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
@@ -181,6 +181,8 @@ $(document).ready(function(){initNavTree('gz__writer_8hh_source.html',''); initR
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassscc_1_1trace_1_1gz__writer_html"><div class="ttname"><a href="classscc_1_1trace_1_1gz__writer.html">scc::trace::gz_writer</a></div><div class="ttdef"><b>Definition:</b> <a href="gz__writer_8hh_source.html#l00024">gz_writer.hh:24</a></div></div>
+<div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
+<div class="ttc" id="anamespacescc_html_ae81cd4d55a12064f9fb15af3ca60c7ca"><div class="ttname"><a href="namespacescc.html#ae81cd4d55a12064f9fb15af3ca60c7ca">scc::log</a></div><div class="ttdeci">log</div><div class="ttdoc">enum defining the log levels</div><div class="ttdef"><b>Definition:</b> <a href="report_8h_source.html#l00085">report.h:85</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

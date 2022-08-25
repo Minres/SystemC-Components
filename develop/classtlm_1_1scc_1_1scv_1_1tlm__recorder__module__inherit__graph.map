@@ -1,7 +1,4 @@
 <map id="tlm::scc::scv::tlm_recorder_module&lt; BUSWIDTH, TYPES &gt;" name="tlm::scc::scv::tlm_recorder_module&lt; BUSWIDTH, TYPES &gt;">
-<area shape="rect" id="node1" title="The TLM2 transaction recorder." alt="" coords="483,24,713,80"/>
-<area shape="rect" id="node2" title=" " alt="" coords="299,5,391,32"/>
-<area shape="rect" id="node3" href="$classtlm_1_1scc_1_1scv_1_1tlm__recorder.html" title=" " alt="" coords="256,56,435,112"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,16,208,72"/>
-<area shape="rect" id="node5" title=" " alt="" coords="5,96,208,152"/>
+<area shape="rect" id="node1" title="The TLM2 transaction recorder." alt="" coords="5,80,236,136"/>
+<area shape="rect" id="node2" title=" " alt="" coords="75,5,167,32"/>
 </map>

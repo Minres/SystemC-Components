@@ -112,15 +112,15 @@ $(document).ready(function(){initNavTree('perf__estimator_8cpp_source.html','');
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;perf_estimator::~perf_estimator() {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    time_stamp eod;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    eod.set();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    SCCINFO(SCMOD) &lt;&lt; <span class="stringliteral">&quot;constr &amp; elab time:  &quot;</span> &lt;&lt; (eoe.proc_clock_stamp - soc.proc_clock_stamp) &lt;&lt; <span class="stringliteral">&quot;s&quot;</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    SCCINFO(SCMOD) &lt;&lt; <span class="stringliteral">&quot;simulation time:     &quot;</span> &lt;&lt; (eos.proc_clock_stamp - sos.proc_clock_stamp) &lt;&lt; <span class="stringliteral">&quot;s&quot;</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    SCCINFO(<span class="stringliteral">&quot;perf_estimator&quot;</span>) &lt;&lt; <span class="stringliteral">&quot;constr &amp; elab time:  &quot;</span> &lt;&lt; (eoe.proc_clock_stamp - soc.proc_clock_stamp) &lt;&lt; <span class="stringliteral">&quot;s&quot;</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    SCCINFO(<span class="stringliteral">&quot;perf_estimator&quot;</span>) &lt;&lt; <span class="stringliteral">&quot;simulation time:     &quot;</span> &lt;&lt; (eos.proc_clock_stamp - sos.proc_clock_stamp) &lt;&lt; <span class="stringliteral">&quot;s&quot;</span>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span>(cycle_period.value()) {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        uint64_t cycles = sc_time_stamp().value() / cycle_period.value();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        SCCINFO(SCMOD) &lt;&lt; <span class="stringliteral">&quot;simulation speed:   &quot;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        SCCINFO(<span class="stringliteral">&quot;perf_estimator&quot;</span>) &lt;&lt; <span class="stringliteral">&quot;simulation speed:   &quot;</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                       &lt;&lt; (sc_time_stamp().value() ? cycles / (eos.proc_clock_stamp - soc.proc_clock_stamp) : 0.0)</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                       &lt;&lt; <span class="stringliteral">&quot; cycles/s&quot;</span>;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    SCCINFO(SCMOD) &lt;&lt; <span class="stringliteral">&quot;max resident memory: &quot;</span> &lt;&lt; max_memory &lt;&lt; <span class="stringliteral">&quot;kB&quot;</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    SCCINFO(<span class="stringliteral">&quot;perf_estimator&quot;</span>) &lt;&lt; <span class="stringliteral">&quot;max resident memory: &quot;</span> &lt;&lt; max_memory &lt;&lt; <span class="stringliteral">&quot;kB&quot;</span>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classscc_1_1perf__estimator.html#ae1942a4583cf32a9e9055f6bac3f01b2">   59</a></span>&#160;<span class="keywordtype">void</span> perf_estimator::end_of_elaboration() { eoe.set(); }</div>
@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('perf__estimator_8cpp_source.html','');
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">if</span>(elapsed_sim &gt; 0) {</div>
 <div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classscc_1_1perf__estimator.html#ad13d252cdce8369da7063e3bd1c77837">   73</a></span>&#160;        <span class="keywordtype">double</span> wall_perf = elapsed_wall / elapsed_sim;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">double</span> proc_perf = elapsed_proc / elapsed_sim;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        SCCINFO(SCMOD) &lt;&lt; <span class="stringliteral">&quot;Wall clock (process clock) based simulation real time factor is &quot;</span> &lt;&lt; wall_perf &lt;&lt; <span class="stringliteral">&quot;(&quot;</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        SCCINFO(<span class="stringliteral">&quot;perf_estimator&quot;</span>) &lt;&lt; <span class="stringliteral">&quot;Wall clock (process clock) based simulation real time factor is &quot;</span> &lt;&lt; wall_perf &lt;&lt; <span class="stringliteral">&quot;(&quot;</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                       &lt;&lt; proc_perf &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    get_memory();</div>
@@ -147,7 +147,7 @@ $(document).ready(function(){initNavTree('perf__estimator_8cpp_source.html','');
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> perf_estimator::beat() {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">if</span>(sc_time_stamp().value())</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        SCCINFO(SCMOD) &lt;&lt; <span class="stringliteral">&quot;Heart beat, rss mem: &quot;</span> &lt;&lt; get_memory() &lt;&lt; <span class="stringliteral">&quot; bytes&quot;</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        SCCINFO(<span class="stringliteral">&quot;perf_estimator&quot;</span>) &lt;&lt; <span class="stringliteral">&quot;Heart beat, rss mem: &quot;</span> &lt;&lt; get_memory() &lt;&lt; <span class="stringliteral">&quot; bytes&quot;</span>;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    next_trigger(beat_delay);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;} <span class="comment">/* namespace scc */</span></div>

@@ -96,7 +96,7 @@ Public Types</h2></td></tr>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>BASE_DATA_TYPE</b> = typename <a class="el" href="classscc_1_1impl_1_1helper.html">impl::helper</a>&lt; DATATYPE &gt;::Type</td></tr>
 <tr class="separator:a78f1db4257984d00b2c51204d930f82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94f0f560d9f22e8e422a14fea85fc6c5"><td class="memItemLeft" align="right" valign="top"><a id="a94f0f560d9f22e8e422a14fea85fc6c5"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = <a class="el" href="classscc_1_1impl_1_1sc__register.html">sc_register</a>&lt; DATATYPE &gt;</td></tr>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = <a class="el" href="namespacescc.html#ad6ecdfcc0fdbb12ff2746e037a3b565b">sc_register</a>&lt; DATATYPE &gt;</td></tr>
 <tr class="separator:a94f0f560d9f22e8e422a14fea85fc6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ce41c28945d3705ca21a6695d6a60de"><td class="memItemLeft" align="right" valign="top"><a id="a9ce41c28945d3705ca21a6695d6a60de"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>pointer</b> = <a class="el" href="classscc_1_1impl_1_1sc__register.html">value_type</a> *</td></tr>
@@ -132,13 +132,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad889f11b9b8e50e06e744e6b99f5e65a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a552acb03cb52f58488eb75ac32577401"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1sc__register__indexed.html#a552acb03cb52f58488eb75ac32577401">size</a> () override</td></tr>
 <tr class="separator:a552acb03cb52f58488eb75ac32577401"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8387c6b140ebe010fcc437a8b7f589e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1sc__register__indexed.html#a8387c6b140ebe010fcc437a8b7f589e2">set_read_cb</a> (std::function&lt; bool(const <a class="el" href="classscc_1_1impl_1_1sc__register.html">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE &amp;)&gt; read_cb)</td></tr>
+<tr class="memitem:a8387c6b140ebe010fcc437a8b7f589e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1sc__register__indexed.html#a8387c6b140ebe010fcc437a8b7f589e2">set_read_cb</a> (std::function&lt; bool(const <a class="el" href="namespacescc.html#ad6ecdfcc0fdbb12ff2746e037a3b565b">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE &amp;)&gt; read_cb)</td></tr>
 <tr class="separator:a8387c6b140ebe010fcc437a8b7f589e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad207b3e8316483426959b1c6e429c847"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1sc__register__indexed.html#ad207b3e8316483426959b1c6e429c847">set_read_cb</a> (std::function&lt; bool(const <a class="el" href="classscc_1_1impl_1_1sc__register.html">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE &amp;, sc_core::sc_time)&gt; read_cb)</td></tr>
+<tr class="memitem:ad207b3e8316483426959b1c6e429c847"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1sc__register__indexed.html#ad207b3e8316483426959b1c6e429c847">set_read_cb</a> (std::function&lt; bool(const <a class="el" href="namespacescc.html#ad6ecdfcc0fdbb12ff2746e037a3b565b">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE &amp;, sc_core::sc_time)&gt; read_cb)</td></tr>
 <tr class="separator:ad207b3e8316483426959b1c6e429c847"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a165848c1aa460d770e78e7df7e574d11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1sc__register__indexed.html#a165848c1aa460d770e78e7df7e574d11">set_write_cb</a> (std::function&lt; bool(<a class="el" href="classscc_1_1impl_1_1sc__register.html">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE const &amp;)&gt; write_cb)</td></tr>
+<tr class="memitem:a165848c1aa460d770e78e7df7e574d11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1sc__register__indexed.html#a165848c1aa460d770e78e7df7e574d11">set_write_cb</a> (std::function&lt; bool(<a class="el" href="namespacescc.html#ad6ecdfcc0fdbb12ff2746e037a3b565b">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE const &amp;)&gt; write_cb)</td></tr>
 <tr class="separator:a165848c1aa460d770e78e7df7e574d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd31ff6fabc70333eddea94c5cab667d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1sc__register__indexed.html#afd31ff6fabc70333eddea94c5cab667d">set_write_cb</a> (std::function&lt; bool(<a class="el" href="classscc_1_1impl_1_1sc__register.html">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE const &amp;, sc_core::sc_time)&gt; write_cb)</td></tr>
+<tr class="memitem:afd31ff6fabc70333eddea94c5cab667d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1sc__register__indexed.html#afd31ff6fabc70333eddea94c5cab667d">set_write_cb</a> (std::function&lt; bool(<a class="el" href="namespacescc.html#ad6ecdfcc0fdbb12ff2746e037a3b565b">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE const &amp;, sc_core::sc_time)&gt; write_cb)</td></tr>
 <tr class="separator:afd31ff6fabc70333eddea94c5cab667d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a207407802002ef854ef5e77a4d3a82f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscc_1_1resource__access__if.html">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1sc__register__indexed.html#a207407802002ef854ef5e77a4d3a82f1">operator[]</a> (size_t idx) noexcept override</td></tr>
 <tr class="separator:a207407802002ef854ef5e77a4d3a82f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -443,7 +443,7 @@ template&lt;typename DATATYPE , size_t SIZE, size_t START = 0&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classscc_1_1sc__register__indexed.html">scc::sc_register_indexed</a>&lt; DATATYPE, SIZE, START &gt;::set_read_cb </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; bool(const <a class="el" href="classscc_1_1impl_1_1sc__register.html">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE &amp;)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; bool(const <a class="el" href="namespacescc.html#ad6ecdfcc0fdbb12ff2746e037a3b565b">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE &amp;)&gt;&#160;</td>
           <td class="paramname"><em>read_cb</em></td><td>)</td>
           <td></td>
         </tr>
@@ -480,7 +480,7 @@ template&lt;typename DATATYPE , size_t SIZE, size_t START = 0&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classscc_1_1sc__register__indexed.html">scc::sc_register_indexed</a>&lt; DATATYPE, SIZE, START &gt;::set_read_cb </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; bool(const <a class="el" href="classscc_1_1impl_1_1sc__register.html">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE &amp;, sc_core::sc_time)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; bool(const <a class="el" href="namespacescc.html#ad6ecdfcc0fdbb12ff2746e037a3b565b">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE &amp;, sc_core::sc_time)&gt;&#160;</td>
           <td class="paramname"><em>read_cb</em></td><td>)</td>
           <td></td>
         </tr>
@@ -517,7 +517,7 @@ template&lt;typename DATATYPE , size_t SIZE, size_t START = 0&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classscc_1_1sc__register__indexed.html">scc::sc_register_indexed</a>&lt; DATATYPE, SIZE, START &gt;::set_write_cb </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; bool(<a class="el" href="classscc_1_1impl_1_1sc__register.html">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE const &amp;)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; bool(<a class="el" href="namespacescc.html#ad6ecdfcc0fdbb12ff2746e037a3b565b">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE const &amp;)&gt;&#160;</td>
           <td class="paramname"><em>write_cb</em></td><td>)</td>
           <td></td>
         </tr>
@@ -554,7 +554,7 @@ template&lt;typename DATATYPE , size_t SIZE, size_t START = 0&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classscc_1_1sc__register__indexed.html">scc::sc_register_indexed</a>&lt; DATATYPE, SIZE, START &gt;::set_write_cb </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; bool(<a class="el" href="classscc_1_1impl_1_1sc__register.html">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE const &amp;, sc_core::sc_time)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; bool(<a class="el" href="namespacescc.html#ad6ecdfcc0fdbb12ff2746e037a3b565b">sc_register</a>&lt; DATATYPE &gt; &amp;, DATATYPE const &amp;, sc_core::sc_time)&gt;&#160;</td>
           <td class="paramname"><em>write_cb</em></td><td>)</td>
           <td></td>
         </tr>
@@ -618,7 +618,7 @@ template&lt;typename DATATYPE , size_t SIZE, size_t START = 0&gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>scc</b></li><li class="navelem"><a class="el" href="classscc_1_1sc__register__indexed.html">sc_register_indexed</a></li>
+    <li class="navelem"><a class="el" href="namespacescc.html">scc</a></li><li class="navelem"><a class="el" href="classscc_1_1sc__register__indexed.html">sc_register_indexed</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>

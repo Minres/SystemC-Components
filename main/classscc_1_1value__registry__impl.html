@@ -96,9 +96,15 @@ auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_mod4name</b> (con
 <tr class="memitem:ab4d31d1ddced77938cca31977319c816"><td class="memItemLeft" align="right" valign="top"><a id="ab4d31d1ddced77938cca31977319c816"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>trace</b> (const bool &amp;object, const std::string &amp;name) override</td></tr>
 <tr class="separator:ab4d31d1ddced77938cca31977319c816"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8f7f000603cfba47ac5e78e4d469aa8"><td class="memItemLeft" align="right" valign="top"><a id="ae8f7f000603cfba47ac5e78e4d469aa8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>DECL_TRACE_METHOD_A</b> (sc_event) void trace(const unsigned int &amp;object</td></tr>
-<tr class="separator:ae8f7f000603cfba47ac5e78e4d469aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63a9bfa7ba3e1d17560d439b18dd7124"><td class="memItemLeft" align="right" valign="top"><a id="a63a9bfa7ba3e1d17560d439b18dd7124"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>trace</b> (const unsigned int &amp;object, const std::string &amp;name, const char **enum_literals) override</td></tr>
+<tr class="separator:a63a9bfa7ba3e1d17560d439b18dd7124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace76d508615fe361e22752073ab7793d"><td class="memItemLeft" align="right" valign="top"><a id="ace76d508615fe361e22752073ab7793d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>write_comment</b> (const std::string &amp;comment) override</td></tr>
+<tr class="separator:ace76d508615fe361e22752073ab7793d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acda074a37cf48c626d82401667c58bae"><td class="memItemLeft" align="right" valign="top"><a id="acda074a37cf48c626d82401667c58bae"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_time_unit</b> (double v, sc_time_unit tu) override</td></tr>
+<tr class="separator:acda074a37cf48c626d82401667c58bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78fa4df077ea4c611947b62bda64dace"><td class="memItemLeft" align="right" valign="top"><a id="a78fa4df077ea4c611947b62bda64dace"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>cycle</b> (bool delta_cycle) override</td></tr>
 <tr class="separator:a78fa4df077ea4c611947b62bda64dace"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,11 +114,6 @@ auto&#160;</td><td class="memItemRight" valign="bottom"><b>event_trigger_stamp</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:afaba1f839ff1d99f808132e06375c1c4"><td class="memItemLeft" align="right" valign="top"><a id="afaba1f839ff1d99f808132e06375c1c4"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
-<tr class="separator:afaba1f839ff1d99f808132e06375c1c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12483d60b208840115e957ef65087d5b"><td class="memItemLeft" align="right" valign="top">const std::string const char **enum_literals&#160;</td><td class="memItemRight" valign="bottom"><b>override</b></td></tr>
-<tr class="separator:a12483d60b208840115e957ef65087d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54847dea495b8caafce2909fb1ee7c13"><td class="memItemLeft" align="right" valign="top"><a id="a54847dea495b8caafce2909fb1ee7c13"></a>
 std::unordered_map&lt; std::string, <a class="el" href="structscc_1_1sc__variable__b.html">sc_variable_b</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>holder</b></td></tr>
 <tr class="separator:a54847dea495b8caafce2909fb1ee7c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,38 +124,7 @@ sc_dt::uint64&#160;</td><td class="memItemRight" valign="bottom"><b>dummy</b> = 
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="value__registry_8cpp_source.html#l00042">42</a> of file <a class="el" href="value__registry_8cpp_source.html">value_registry.cpp</a>.</p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="a12483d60b208840115e957ef65087d5b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12483d60b208840115e957ef65087d5b">&#9670;&nbsp;</a></span>override</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const std::string const char** enum_literals scc::value_registry_impl::override</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{}</div>
-<div class="line"> </div>
-<div class="line">    </div>
-<div class="line">    <span class="keywordtype">void</span> write_comment(<span class="keyword">const</span> std::string&amp; comment)<span class="keyword"> override </span>{}</div>
-<div class="line"> </div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line"> </div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line"> </div>
-<div class="line">    </div>
-<div class="line">    <span class="keywordtype">void</span> set_time_unit(<span class="keywordtype">double</span> v, sc_time_unit tu)<span class="keyword"> override</span>{}</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="value__registry_8cpp_source.html#l00131">131</a> of file <a class="el" href="value__registry_8cpp_source.html">value_registry.cpp</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/sysc/scc/<a class="el" href="value__registry_8cpp_source.html">value_registry.cpp</a></li>
 </ul>
 </div><!-- contents -->
@@ -162,7 +132,7 @@ sc_dt::uint64&#160;</td><td class="memItemRight" valign="bottom"><b>dummy</b> = 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>scc</b></li><li class="navelem"><a class="el" href="classscc_1_1value__registry__impl.html">value_registry_impl</a></li>
+    <li class="navelem"><a class="el" href="namespacescc.html">scc</a></li><li class="navelem"><a class="el" href="classscc_1_1value__registry__impl.html">value_registry_impl</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
