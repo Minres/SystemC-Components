@@ -131,9 +131,9 @@ void **JenkinsIns(void *base_i, const unsigned char *mem, uint32_t length, uint3
 #define FST_GZIO_LEN                    (32768)
 #define FST_HDR_FOURPACK_DUO_SIZE       (4*1024*1024)
 
-#if defined(__i386__) || defined(__x86_64__) || defined(_AIX)
-#define FST_DO_MISALIGNED_OPS
-#endif
+//#if defined(__i386__) || defined(__x86_64__) || defined(_AIX)
+//#define FST_DO_MISALIGNED_OPS
+//#endif
 
 #if defined(__APPLE__) && defined(__MACH__)
 #define FST_MACOSX
@@ -1656,7 +1656,7 @@ if(1)
                                 {
                                 if(vm4ip[2] != prev_alias)
                                         {
-                                        fpos += fstWriterSVarint(f, (((int64_t)((int32_t)(prev_alias = vm4ip[2]))) << 1) | 1);
+                                        fpos += fstWriterSVarint(f, (((int64_t)((uint64_t)(prev_alias = vm4ip[2]))) << 1) | 1);
                                         }
                                         else
                                         {

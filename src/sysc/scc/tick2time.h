@@ -25,6 +25,11 @@
 #endif
 //clang-format on
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @struct time2tick
@@ -60,4 +65,5 @@ private:
 #endif
 };
 } // namespace scc
+/** @} */ // end of scc-sysc
 #endif /* _SCC_TICK2TIME_H_ */

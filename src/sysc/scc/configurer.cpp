@@ -42,10 +42,10 @@ inline auto get_sc_objects(sc_core::sc_object* obj = nullptr) -> const std::vect
 }
 
 #define FDECL(TYPE, FUNC)                                                                                              \
-    inline void writeValue(writer_type& writer, std::string const& key, TYPE value) {                                  \
-        writer.Key(key.c_str());                                                                                       \
-        writer.FUNC(value);                                                                                            \
-    }
+		inline void writeValue(writer_type& writer, std::string const& key, TYPE value) {                                  \
+	writer.Key(key.c_str());                                                                                       \
+	writer.FUNC(value);                                                                                            \
+}
 FDECL(int, Int)
 FDECL(unsigned int, Uint)
 FDECL(long, Int64)
@@ -107,16 +107,17 @@ struct config_dumper {
 #endif
 
     void dump_config(sc_core::sc_object* obj, writer_type& writer) {
+        auto start = std::string(obj->basename()).substr(0, 3);
+        if(start == "$$$") return;
         auto obj_started = false;
-        auto mod = dynamic_cast<sc_core::sc_module*>(obj);
         for(sc_core::sc_attr_base* attr_base : obj->attr_cltn()) {
             obj_started = start_object(writer, obj->basename(), obj_started);
             check_n_assign<int>(writer, attr_base) || check_n_assign<unsigned>(writer, attr_base) ||
-                check_n_assign<long>(writer, attr_base) || check_n_assign<unsigned long>(writer, attr_base) ||
-                check_n_assign<long long>(writer, attr_base) || check_n_assign<unsigned long long>(writer, attr_base) ||
-                check_n_assign<bool>(writer, attr_base) || check_n_assign<float>(writer, attr_base) ||
-                check_n_assign<double>(writer, attr_base) || check_n_assign<std::string>(writer, attr_base) ||
-                check_n_assign<char*>(writer, attr_base) || check_n_assign<sc_core::sc_time>(writer, attr_base);
+                    check_n_assign<long>(writer, attr_base) || check_n_assign<unsigned long>(writer, attr_base) ||
+                    check_n_assign<long long>(writer, attr_base) || check_n_assign<unsigned long long>(writer, attr_base) ||
+                    check_n_assign<bool>(writer, attr_base) || check_n_assign<float>(writer, attr_base) ||
+                    check_n_assign<double>(writer, attr_base) || check_n_assign<std::string>(writer, attr_base) ||
+                    check_n_assign<char*>(writer, attr_base) || check_n_assign<sc_core::sc_time>(writer, attr_base);
         }
 #ifdef HAS_CCI
         const std::string hier_name{obj->name()};
@@ -145,6 +146,7 @@ struct config_dumper {
                 else if(value.is_string())
                     writeValue(writer, basename, value.get_string().c_str());
             }
+        auto mod = dynamic_cast<sc_core::sc_module*>(obj);
         if(!log_lvl_set && mod) {
             obj_started = start_object(writer, obj->basename(), obj_started);
             auto val = broker.get_preset_cci_value(fmt::format("{}.{}", obj->name(), SCC_LOG_LEVEL_PARAM_NAME));
@@ -153,10 +155,8 @@ struct config_dumper {
         }
 #endif
         for(auto* o : get_sc_objects(obj)) {
-            //if(dynamic_cast<sc_core::sc_module*>(obj)) {
-                obj_started = start_object(writer, obj->basename(), obj_started);
-                dump_config(o, writer);
-            //}
+            obj_started = start_object(writer, obj->basename(), obj_started);
+            dump_config(o, writer);
         }
         if(obj_started)
             writer.EndObject();
@@ -164,13 +164,13 @@ struct config_dumper {
 };
 
 #define CHECK_N_ASSIGN(TYPE, ATTR, VAL)                                                                                \
-    {                                                                                                                  \
-        auto* a = dynamic_cast<sc_core::sc_attribute<TYPE>*>(ATTR);                                                    \
-        if(a != nullptr) {                                                                                             \
-            a->value = VAL;                                                                                            \
-            return;                                                                                                    \
-        }                                                                                                              \
-    }
+		{                                                                                                                  \
+	auto* a = dynamic_cast<sc_core::sc_attribute<TYPE>*>(ATTR);                                                    \
+	if(a != nullptr) {                                                                                             \
+		a->value = VAL;                                                                                            \
+		return;                                                                                                    \
+	}                                                                                                              \
+		}
 
 void try_set_value(sc_core::sc_attr_base* attr_base, Value const& hier_val) {
     CHECK_N_ASSIGN(int, attr_base, hier_val.Get<int>());
@@ -292,9 +292,10 @@ void check_config_hierarchical(configurer::broker_t const& broker, Value const& 
             continue;
         else if(val.IsObject()) {
             if(!sc_core::sc_find_object(hier_name.c_str())) {
-                throw std::domain_error(hier_name);
-            }
-            check_config_hierarchical(broker, val, hier_name);
+                if(prefix.size())
+                    throw std::domain_error(hier_name);
+            } else
+                check_config_hierarchical(broker, val, hier_name);
         } else {
             auto pos = hier_name.rfind('.');
             if(pos != std::string::npos) {
@@ -319,7 +320,7 @@ struct configurer::ConfigHolder {
 };
 
 configurer::configurer(const std::string& filename, unsigned config_phases)
-: base_type(sc_core::sc_module_name("$$$configurer"))
+: base_type(sc_core::sc_module_name("$$$configurer$$$"))
 , config_phases(config_phases)
 #ifdef HAS_CCI
 , cci_originator("configurer")
@@ -335,8 +336,8 @@ configurer::configurer(const std::string& filename, unsigned config_phases)
                 root->document.ParseStream(stream);
                 if(root->document.HasParseError()) {
                     SCCERR() << "Could not parse input file " << filename << ", location "
-                             << (unsigned)root->document.GetErrorOffset()
-                             << ", reason: " << GetParseError_En(root->document.GetParseError());
+                            << (unsigned)root->document.GetErrorOffset()
+                            << ", reason: " << GetParseError_En(root->document.GetParseError());
                 } else {
                     config_reader reader(cci_broker);
                     reader.configure_cci_hierarchical(root->document, "");

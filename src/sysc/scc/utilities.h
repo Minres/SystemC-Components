@@ -20,6 +20,7 @@
 #include <array>
 #include <limits>
 #include <memory>
+#include <cctype>
 
 #if defined(__GNUG__)
 // pragmas to disable the deprecated warnings for SystemC headers
@@ -37,6 +38,11 @@
 
 #include <locale>
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args&&... args) {
 #if __cplusplus < 201402L
@@ -322,6 +328,7 @@ template <typename T> inline T get_value(cci::cci_param_typed<T>& a) { return a.
 template <typename T> inline void set_value(cci::cci_param_typed<T>& a, T&& value) { a.set_value(value); }
 #endif
 } // namespace scc
+/** @} */ // end of scc-sysc
 
 #define declare_method_process_cl(handle, name, host_tag, func)                                                        \
     {                                                                                                                  \

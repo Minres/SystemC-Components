@@ -20,8 +20,11 @@
 #include "intor_if.h"
 #include <deque>
 #include <tlm>
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+//! @brief SCC protocol engines
 namespace pe {
 
 class parallel_pe : public sc_core::sc_module, public intor_fw_nb {

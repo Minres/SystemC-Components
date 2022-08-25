@@ -21,8 +21,11 @@
 #include "tlm_signal_sockets.h"
 #include <scc/peq.h>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>, int N = 32>
 struct tlm_signal : public sc_core::sc_module,
                     public tlm_signal_fw_transport_if<SIG, TYPES>,

@@ -19,11 +19,16 @@
 
 #include <systemc>
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 
 class hierarchy_dumper: public sc_core::sc_module {
 public:
-    enum file_type { ELKT, JSON, D3JSON};
+    enum file_type { ELKT, JSON, D3JSON, DBGJSON};
 
     hierarchy_dumper(const std::string& filename, file_type format);
 
@@ -34,4 +39,5 @@ private:
     file_type const dump_format;
 };
 }
+/** @} */ // end of scc-sysc
 #endif /* _SYSC_SCC_HIERARCHY_DUMPER_H_ */

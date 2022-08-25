@@ -21,6 +21,11 @@
 #include <sysc/kernel/sc_attribute.h>
 #include <type_traits>
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 template <typename T>
 class sc_attribute_randomized: public sc_core::sc_attribute<T> {
@@ -61,5 +66,5 @@ public:
     }
 };
 }
-
+/** @} */ // end of scc-sysc
 #endif /* _SCC_SC_ATTRIBUTE_RANDOMIZED_H_ */

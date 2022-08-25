@@ -25,6 +25,7 @@
 #include <tlm/scc/scv/tlm_gp_data.h>
 
 #ifndef HAS_SCV
+//! @brief SystemC Verification Library (SCV) Transaction Recording
 namespace scv_tr {
 #endif
 

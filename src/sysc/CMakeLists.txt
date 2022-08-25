@@ -54,6 +54,7 @@ if(ZLIB_FOUND)
     list(APPEND LIB_SOURCES  scc/scv/scv_tr_compressed.cpp)
 	if(TARGET lz4::lz4 OR TARGET CONAN_PKG::lz4)
         list(APPEND LIB_SOURCES scc/fst_trace.cpp)
+        set(WITH_FST ON)
     endif()
 endif()
 
@@ -137,8 +138,8 @@ if(ZLIB_FOUND)
     target_link_libraries(${PROJECT_NAME} PUBLIC ${ZLIB_LIBRARIES})
     target_compile_definitions(${PROJECT_NAME} PRIVATE HAS_ZLIB)
 endif()
-if(TARGET lz4::lz4 OR TARGET CONAN_PKG::lz4)
-    target_compile_definitions(${PROJECT_NAME} PUBLIC WITH_LZ4)
+if(WITH_FST)
+    target_compile_definitions(${PROJECT_NAME} PUBLIC WITH_FST)
     if(TARGET lz4::lz4)
     	target_link_libraries(${PROJECT_NAME} PRIVATE lz4::lz4)
     else()
@@ -161,7 +162,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 install(TARGETS ${PROJECT_NAME} COMPONENT sysc
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/static
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_ARCHIVE_DIR_MODIFIER}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
         

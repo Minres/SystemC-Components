@@ -24,19 +24,19 @@ namespace dt {
 void sc_logic_7::invalid_value(sc_logic_7_value_t v) {
     std::array<char, BUFSIZ> msg{};
     std::sprintf(msg.data(), "sc_logic_7( %d )", v);
-    msg.data();
+    SC_REPORT_ERROR(sc_core::SC_ID_VALUE_NOT_VALID_, msg.data());
 }
 
 void sc_logic_7::invalid_value(char c) {
     std::array<char, BUFSIZ> msg{};
     std::sprintf(msg.data(), "sc_logic_7( '%c' )", c);
-    msg.data();
+    SC_REPORT_ERROR(sc_core::SC_ID_VALUE_NOT_VALID_, msg.data());
 }
 
 void sc_logic_7::invalid_value(int i) {
     std::array<char, BUFSIZ> msg{};
     std::sprintf(msg.data(), "sc_logic_7( %d )", i);
-    msg.data();
+    SC_REPORT_ERROR(sc_core::SC_ID_VALUE_NOT_VALID_, msg.data());
 }
 
 void sc_logic_7::invalid_01() const {

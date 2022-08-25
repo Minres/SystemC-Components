@@ -20,7 +20,9 @@
 #include <tlm>
 #include <util/pool_allocator.h>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
 
 struct tlm_gp_mm : public tlm_extension<tlm_gp_mm> {

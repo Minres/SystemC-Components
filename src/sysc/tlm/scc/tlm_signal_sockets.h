@@ -28,8 +28,11 @@
 #include <tlm_core/tlm_2/tlm_sockets/tlm_target_socket.h>
 #endif
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+
 template <typename SIG> class tlm_signal_gp;
 
 template <typename SIG = bool> struct tlm_signal_baseprotocol_types {

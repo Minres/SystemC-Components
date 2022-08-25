@@ -20,45 +20,37 @@
  *      Author: developer
  */
 
+#include "observer.h"
 #include "tracer_base.h"
 #include "sc_variable.h"
 #include "traceable.h"
 #include <cstring>
 #include <systemc>
 
-using namespace sc_core;
+#define SC_TRACE_NS ::scc::
+
 using namespace sc_dt;
 namespace scc {
-
-template <typename T, typename std::enable_if<std::is_class<T>::value, int>::type = 0>
-inline auto trace_helper(sc_trace_file* trace_file, const sc_object* object) -> bool {
-    if(auto* ptr = dynamic_cast<const T*>(object)) {
-        sc_core::sc_trace(trace_file, *ptr, object->name());
-        return true;
-    }
-    return false;
-}
-
-template <typename T, typename std::enable_if<!std::is_class<T>::value, unsigned>::type = 0>
-inline auto trace_helper(sc_trace_file*, const sc_object*) -> bool {
-    return false;
-}
+using sc_trace_file = sc_core::sc_trace_file;
+using sc_object = sc_core::sc_object;
 
 template <typename T>
 inline auto try_trace_obj(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) -> bool {
     if((types_to_trace & trace_types::PORTS) == trace_types::PORTS) {
-        if(trace_helper<sc_core::sc_in<T>>(trace_file, object))
+        if(auto const* ptr = dynamic_cast<sc_core::sc_in<T> const*>(object)) {
+            SC_TRACE_NS sc_trace(trace_file, *ptr->get_interface(0), object->name());
             return true;
-        if(trace_helper<sc_core::sc_out<T>>(trace_file, object))
+        }
+        if(auto const* ptr = dynamic_cast<sc_core::sc_inout<T> const*>(object)) {
+            SC_TRACE_NS sc_trace(trace_file, *ptr->get_interface(0), object->name());
             return true;
+        }
     }
     if((types_to_trace & trace_types::SIGNALS) == trace_types::SIGNALS) {
-        if(trace_helper<sc_core::sc_signal<T, SC_ONE_WRITER>>(trace_file, object))
+        if(auto const* ptr = dynamic_cast<sc_core::sc_signal_inout_if<T> const*>(object)) {
+            SC_TRACE_NS sc_trace(trace_file, *ptr, object->name());
             return true;
-        if(trace_helper<sc_core::sc_signal<T, SC_MANY_WRITERS>>(trace_file, object))
-            return true;
-        if(trace_helper<sc_core::sc_signal<T, SC_UNCHECKED_WRITERS>>(trace_file, object))
-            return true;
+        }
     }
     return false;
 }
@@ -150,7 +142,7 @@ void tracer_base::try_trace(sc_trace_file* trace_file, const sc_object* object, 
     if(try_trace_obj<double>(trace_file, object, types_to_trace))
         return;
 #if(SYSTEMC_VERSION >= 20171012)
-    if(try_trace_obj<sc_time>(trace_file, object, types_to_trace))
+    if(try_trace_obj<sc_core::sc_time>(trace_file, object, types_to_trace))
         return;
 #endif
     if(try_trace_obj<sc_bit>(trace_file, object, types_to_trace))

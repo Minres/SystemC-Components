@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # project specific cmake dir
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_CURRENT_BINARY_DIR}) # project specific cmake dir
 cmake_policy(SET CMP0077 NEW)
 
 project(scc VERSION 2022.4.0 LANGUAGES CXX C)
@@ -31,7 +31,7 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
         set(CONAN_PACKAGE_LIST ${CONAN_PACKAGE_LIST} systemc/2.3.3 systemc-cci/1.0.0)
         set(CONAN_PACKAGE_OPTIONS ${CONAN_PACKAGE_OPTIONS} systemc-cci:shared=False)
     endif()
-    conan_configure(REQUIRES ${CONAN_PACKAGE_LIST} GENERATORS cmake OPTIONS ${CONAN_PACKAGE_OPTIONS})
+    conan_configure(REQUIRES ${CONAN_PACKAGE_LIST} GENERATORS cmake cmake_find_package OPTIONS ${CONAN_PACKAGE_OPTIONS})
     if(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
         conan_install(BUILD_TYPE Release)
     else()
@@ -40,8 +40,10 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
     conan_setup(TARGETS)
     set(Boost_NO_BOOST_CMAKE ON) #  Don't do a find_package in config mode before searching for a regular boost install.
     option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
+    option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" OFF)
     option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ON)
 else()
+    option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" ON)
     option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 endif()
 
@@ -82,10 +84,9 @@ endif()
 ###############################################################################
 # build the SCC
 ###############################################################################
-
-set(CLANG_FORMAT_EXCLUDE_PATTERNS "third_party/fst" "fmt_8.0" "jsoncpp-1.8" "rapidjson-1.1" "spdlog-1.8" "sqlite3")
-find_package(ClangFormat)
 if (ENABLE_CLANG_TIDY)
+    set(CLANG_FORMAT_EXCLUDE_PATTERNS "third_party/fst" "fmt_8.0" "jsoncpp-1.8" "rapidjson-1.1" "spdlog-1.8" "sqlite3")
+    find_package(ClangFormat)
     find_program (CLANG_TIDY_EXE NAMES "clang-tidy" PATHS /usr/bin )
     if (CLANG_TIDY_EXE)
         message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")

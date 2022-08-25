@@ -61,6 +61,9 @@ using namespace scc;
 
 namespace {
 thread_local std::unordered_map<uint64_t, sc_core::sc_verbosity> lut;
+#ifdef HAS_CCI
+thread_local cci::cci_originator originator("reporting");
+#endif
 
 struct ExtLogConfig : public scc::LogConfig {
     shared_ptr<spdlog::logger> file_logger;
@@ -512,15 +515,16 @@ auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
     auto it = lut.find(k);
     if(it != lut.end())
         return it->second;
-    if(sc_core::sc_get_current_object()) {
+    if(strchr(str, '.') == nullptr || sc_core::sc_get_current_object()) {
+        auto broker = sc_core::sc_get_current_object()? cci::cci_get_broker(): cci::cci_get_global_broker(originator);
         auto param_name = std::string(str) + "." SCC_LOG_LEVEL_PARAM_NAME;
-        auto h = cci::cci_get_broker().get_param_handle<unsigned>(param_name);
+        auto h = broker.get_param_handle<unsigned>(param_name);
         if(h.is_valid()) {
             sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_value(), verbosity.size() - 1));
             lut[k] = ret;
             return ret;
         } else {
-            auto val = cci::cci_get_broker().get_preset_cci_value(param_name);
+            auto val = broker.get_preset_cci_value(param_name);
             auto global_verb = static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
             sc_core::sc_verbosity ret =
                 val.is_int() ? verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size() - 1)) : global_verb;

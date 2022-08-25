@@ -25,7 +25,9 @@
 #include <tlm>
 #include <tlm_utils/peq_with_get.h>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
 
 template <typename base_type, typename TYPES = tlm::tlm_base_protocol_types>

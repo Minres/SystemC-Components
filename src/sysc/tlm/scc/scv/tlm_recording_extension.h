@@ -25,8 +25,11 @@
 #endif
 #include <tlm>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+//! @brief SCC SCV4TLM classes and functions
 namespace scv {
 #ifndef HAS_SCV
 #ifndef SCVNS

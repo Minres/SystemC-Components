@@ -20,6 +20,11 @@
 #include "configurer.h"
 #include "utilities.h"
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @class ext_attribute
@@ -75,5 +80,5 @@ public:
     const sc_core::sc_module* owner;
 };
 }; // namespace scc
-
+/** @} */ // end of scc-sysc
 #endif /* _SYSC_EXT_ATTRIBUTE_H_ */

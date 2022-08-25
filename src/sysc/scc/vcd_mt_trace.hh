@@ -29,6 +29,11 @@
 namespace sc_core {
 class sc_time;
 }
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 namespace trace {
 class vcd_trace;
@@ -83,21 +88,24 @@ protected:
             const char** enum_literals ) override;
 
 #define DECL_REGISTER_METHOD_A(tp) observer::notification_handle* observe(tp const& o, std::string const& nm) override;
-#define DECL_REGISTER_METHOD_B(tp) observer::notification_handle* observe(tp const& o, std::string const& nm, int width) override;
+#if (SYSTEMC_VERSION >= 20171012)
+    DECL_REGISTER_METHOD_A( sc_core::sc_event )
+    DECL_REGISTER_METHOD_A( sc_core::sc_time )
+#endif
     DECL_REGISTER_METHOD_A( bool )
     DECL_REGISTER_METHOD_A( sc_dt::sc_bit )
     DECL_REGISTER_METHOD_A( sc_dt::sc_logic )
 
-    DECL_REGISTER_METHOD_B( unsigned char )
-    DECL_REGISTER_METHOD_B( unsigned short )
-    DECL_REGISTER_METHOD_B( unsigned int )
-    DECL_REGISTER_METHOD_B( unsigned long )
-    DECL_REGISTER_METHOD_B( char )
-    DECL_REGISTER_METHOD_B( short )
-    DECL_REGISTER_METHOD_B( int )
-    DECL_REGISTER_METHOD_B( long )
-    DECL_REGISTER_METHOD_B( sc_dt::int64 )
-    DECL_REGISTER_METHOD_B( sc_dt::uint64 )
+    DECL_REGISTER_METHOD_A( unsigned char )
+    DECL_REGISTER_METHOD_A( unsigned short )
+    DECL_REGISTER_METHOD_A( unsigned int )
+    DECL_REGISTER_METHOD_A( unsigned long )
+    DECL_REGISTER_METHOD_A( char )
+    DECL_REGISTER_METHOD_A( short )
+    DECL_REGISTER_METHOD_A( int )
+    DECL_REGISTER_METHOD_A( long )
+    DECL_REGISTER_METHOD_A( sc_dt::int64 )
+    DECL_REGISTER_METHOD_A( sc_dt::uint64 )
 
     DECL_REGISTER_METHOD_A( float )
     DECL_REGISTER_METHOD_A( double )
@@ -114,7 +122,6 @@ protected:
     DECL_REGISTER_METHOD_A( sc_dt::sc_bv_base )
     DECL_REGISTER_METHOD_A( sc_dt::sc_lv_base )
 #undef DECL_REGISTER_METHOD_A
-#undef DECL_REGISTER_METHOD_B
 
     // Output a comment to the trace file
     void write_comment(const std::string& comment) override;
@@ -139,7 +146,7 @@ private:
         bool (*compare_and_update)(trace::vcd_trace*);
         trace::vcd_trace* trc;
         vcd_mt_trace_file* that;
-        void notify() override;
+        bool notify() override;
         trace_entry(vcd_mt_trace_file* owner, bool (*compare_and_update)(trace::vcd_trace*), trace::vcd_trace* trc)
         :compare_and_update{compare_and_update}, trc{trc}, that{owner}{}
         virtual ~trace_entry(){}
@@ -156,5 +163,5 @@ private:
 };
 
 } // namespace scc
-
+/** @} */ // end of scc-sysc
 #endif // SCC_VCD_MT_TRACE_H

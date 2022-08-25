@@ -27,6 +27,11 @@
 #define SC_API
 #endif
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @class ordered_semaphore
@@ -194,3 +199,4 @@ template <unsigned CAPACITY> struct ordered_semaphore_t : public ordered_semapho
 };
 
 } // namespace scc
+/** @} */ // end of scc-sysc

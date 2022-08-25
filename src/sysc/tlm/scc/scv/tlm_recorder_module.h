@@ -21,8 +21,11 @@
 #include <tlm_utils/simple_initiator_socket.h>
 #include <tlm_utils/simple_target_socket.h>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+//! @brief SCC SCV4TLM classes and functions
 namespace scv {
 /*! \brief The TLM2 transaction recorder
  *
@@ -35,7 +38,7 @@ namespace scv {
  * initiator and target sockets
  */
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types>
-class tlm_recorder_module : public sc_core::sc_module, public tlm_recorder<TYPES> {
+class tlm_recorder_module : public sc_core::sc_module {
 public:
     SC_HAS_PROCESS(tlm_recorder_module); // NOLINT
     //! The target socket of the recorder to be bound to the initiator
@@ -53,22 +56,25 @@ public:
      */
     tlm_recorder_module(sc_core::sc_module_name name, bool recording_enabled = true,
                         SCVNS scv_tr_db* tr_db = SCVNS scv_tr_db::get_default_db())
-    : sc_module(name)
-    , tlm_recorder<TYPES>(sc_core::sc_object::name(), is.get_base_port(), ts.get_base_port(), recording_enabled,
-                          tr_db) {
-        add_attribute(this->enableBlTracing);
-        add_attribute(this->enableNbTracing);
-        add_attribute(this->enableTimedTracing);
-        add_attribute(this->enableDmiTracing);
+    : sc_module(name) {
+        recorder.reset(new tlm_recorder<TYPES>(sc_core::sc_object::name(), is.get_base_port(), ts.get_base_port(),
+                recording_enabled, tr_db));
+        add_attribute(recorder->enableBlTracing);
+        add_attribute(recorder->enableNbTracing);
+        add_attribute(recorder->enableTimedTracing);
+        add_attribute(recorder->enableDmiTracing);
         // bind the sockets to the module
-        is.bind(*this);
-        ts.bind(*this);
+        is.bind(*recorder);
+        ts.bind(*recorder);
     }
+
+    sc_core::sc_attribute<bool> enableTimedTracing() {return recorder->enableBlTracing;}
 
     virtual ~tlm_recorder_module() {}
 
+    std::unique_ptr<tlm_recorder<TYPES>> recorder;
 private:
-    void start_of_simulation() override { tlm_recorder<TYPES>::initialize_streams(); }
+    void start_of_simulation() override { recorder->initialize_streams(); }
 };
 } // namespace scv
 } // namespace scc

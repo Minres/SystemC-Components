@@ -54,6 +54,10 @@ public:
         tgt.isck(mem.target);
     }
 
+    void trace( sc_trace_file* trf ) const override {
+        scc::sc_trace(trf, id, std::string(name())+".id"); // trace a local variable
+    }
+
     tlm::tlm_generic_payload* prepare_trans(size_t len) {
         auto trans = tlm::scc::tlm_mm<tlm::tlm_base_protocol_types, false>::get().allocate();
         tlm::scc::tlm_gp_mm::add_data_ptr(len, trans);
@@ -67,8 +71,8 @@ public:
         rst.write(false);
         for(size_t i = 0; i < ResetCycles; ++i)
             wait(clk.posedge_event());
-        rst.write(true);
         wait(clk.posedge_event());
+        rst.write(true);
         wait(clk.posedge_event());
         for(int i = 0; i < NumberOfIterations; ++i) {
             SCCDEBUG("testbench") << "executing transactions in iteration " << i;
@@ -103,23 +107,30 @@ int sc_main(int argc, char* argv[]) {
     // clang-format off
     scc::init_logging(
             scc::LogConfig()
-            .logLevel(static_cast<scc::log>(7))
+            .logLevel(scc::log::INFO)
             .logAsync(false)
             .coloredOutput(true));
     // clang-format off
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
+#ifdef WITH_FST
+    auto trc = scc::create_fst_trace_file("axi-axi");
+#else
+    auto trc = scc::create_vcd_push_trace_file("axi_axi_test");
+#endif
 #ifdef HAS_CCI
     scc::configurable_tracer trace("axi_axi_test",
                                    scc::tracer::file_type::TEXT, // define the kind of transaction trace
-                                   true,                         // enables vcd
+                                   trc,                         // enables vcd
                                    true);
 #else
     scc::tracer trace("axi_axi_test",
                       scc::tracer::file_type::NONE, // define the kind of transaction trace
-                      true);                        // enables vcd
+                      trc);                        // enables vcd
 #endif
     testbench tb("tb");
-    scc::hierarchy_dumper d("axi_axi.elkt", scc::hierarchy_dumper::ELKT);
+    tb.trace(trc);
+    scc::hierarchy_dumper d("axi_axi_test.json", scc::hierarchy_dumper::D3JSON);
+    //scc::hierarchy_dumper d("axi_axi_test.elkt", scc::hierarchy_dumper::ELKT);
     try {
         sc_core::sc_start(1_ms);
         SCCINFO() << "Finished";
@@ -133,6 +144,11 @@ int sc_main(int argc, char* argv[]) {
     if(sc_is_running()) {
         SCCERR() << "Simulation timeout!"; // calls sc_stop
     }
+#ifdef WITH_FST
+    scc::close_fst_trace_file(trc);
+#else
+    scc::close_vcd_push_trace_file(trc);
+#endif
     auto errcnt = sc_report_handler::get_count(SC_ERROR);
     auto warncnt = sc_report_handler::get_count(SC_WARNING);
     SCCINFO() << "Finished, there were " << errcnt << " error" << (errcnt == 1 ? "" : "s") << " and " << warncnt

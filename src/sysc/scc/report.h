@@ -30,7 +30,53 @@
 #undef ERROR
 #endif
 
+/**
+## Reporting infrastructure
+
+The reporting infrastructure consist of 2 part: the frontend on to of sc_report and the backend,
+replacing SystemC standard handler. Both can be used independently.
+
+## Reporting frontend
+
+The frontend consist of a set of macros which provide a std::ostream to log a message. The execution of the
+logging code is dependend on the loglevel thus not impacting performance if the message is not logged.
+
+The macros take an optional argument which becomes the message type. If not is provided, the default 'SystemC'
+ is being used. The following table outlines how the scp::log level map to the SystemC logging parameter.
+
+| SCP log level | SystemC severity | SystemC verbosity |
+|---------------|------------------|-------------------|
+| SCCFATAL      | SC_FATAL         | -- |
+| SCCERR        | SC_ERROR         | -- |
+| SCCWARN       | SC_WARNING       | -- |
+| SCCINFO       | SC_INFO          | SC_MEDIUM |
+| SCCDEBUG      | SC_INFO          | SC_HIGH |
+| SCCTRACE      | SC_INFO          | SC_FULL |
+| SCCTRACEALL   | SC_INFO |         SC_DEBUG |
+
+## Reporting backend
+
+The backend is initialized using the short form:
+
+    scp::init_logging(scp::log::INFO);
+
+or the long form
+
+    scp::init_logging(scp::LogConfig()
+        .logLevel(scp::log::DEBUG) // set log level to debug
+        .msgTypeFieldWidth(10));   // make the msg type column a bit tighter
+
+which allows more configurability. For detail please check the header file report.h
+In both case an alternate report handler is installed which which uses a tabular format and spdlog for
+writing. By default spdlog logs asyncronously to keep the performance impact low.
+ */
+//! the name of the CCI property to attach to modules to control logging of this module
 #define SCC_LOG_LEVEL_PARAM_NAME "log_level"
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 //! \brief array holding string representations of log levels
 static std::array<const char* const, 8> buffer = {
@@ -371,5 +417,5 @@ protected:
 };
 
 } // namespace scc
-
+/** @} */ // end of scc-sysc
 #endif /* _SCC_REPORT_H_ */

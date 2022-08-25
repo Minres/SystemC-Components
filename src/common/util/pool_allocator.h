@@ -119,6 +119,7 @@ template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>::~pool_
         }
     }
 #endif
+    for(auto p:chunks) delete p;
 }
 
 template <typename T, unsigned CHUNK_SIZE> inline void* pool_allocator<T, CHUNK_SIZE>::allocate(uint64_t id) {

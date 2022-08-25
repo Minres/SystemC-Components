@@ -34,6 +34,11 @@ class sc_object;
 class sc_trace_file;
 } // namespace sc_core
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @class tracer
@@ -108,5 +113,5 @@ private:
 };
 
 } /* namespace scc */
-
+/** @} */ // end of scc-sysc
 #endif /* _SCC_TRACER_H_ */

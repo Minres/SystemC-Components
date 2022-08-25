@@ -25,6 +25,11 @@
 namespace sc_core {
 class sc_time;
 }
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 namespace trace {
 class vcd_trace;
@@ -116,6 +121,7 @@ private:
 };
 
 } // namespace sc_core
+/** @} */ // end of scc-sysc
 
 #endif // SCC_SC_VCD_TRACE_H
 // Taf!

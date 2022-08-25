@@ -27,6 +27,11 @@
 #define SC_API
 #endif
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 struct value_registry_if {
     struct value_holder { // @suppress("Class has a virtual method and non-virtual destructor")
@@ -58,5 +63,5 @@ protected:
 };
 
 } // namespace scc
-
+/** @} */ // end of scc-sysc
 #endif /* _SCC_VALUE_REGISTRY_H_ */

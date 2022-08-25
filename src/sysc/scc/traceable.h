@@ -17,6 +17,11 @@
 #ifndef _SCC_TRACABLE_H_
 #define _SCC_TRACABLE_H_
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @class traceable
@@ -39,5 +44,5 @@ public:
 };
 
 } /* namespace scc */
-
+/** @} */ // end of scc-sysc
 #endif /* _SCC_TRACABLE_H_ */

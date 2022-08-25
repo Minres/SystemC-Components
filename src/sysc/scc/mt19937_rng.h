@@ -21,6 +21,11 @@
 #include <iostream>
 #include <random>
 
+/** \ingroup scc-sysc
+ *  @{
+ */
+/**@{*/
+//! @brief SCC SystemC utilities
 namespace scc {
 /**
  * @class MT19937
@@ -101,4 +106,5 @@ private:
 };
 
 } // namespace scc
+/** @} */ // end of scc-sysc
 #endif /* _SCC_MT19937_RNG_H_ */

@@ -19,8 +19,11 @@
 
 #include <tlm>
 
+//! @brief SystemC TLM
 namespace tlm {
+//! @brief SCC TLM utilities
 namespace scc {
+//! @brief SCC protocol engines
 namespace pe {
 /**
  * enum to express expectations and capabilities. NB means no backpressure (aka non-blocking)

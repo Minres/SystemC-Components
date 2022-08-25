@@ -34,6 +34,8 @@ public:
     unsigned int transport_dbg(transaction_type& trans) override { return 0; }
 
     tlm::tlm_sync_enum nb_transport_fw(transaction_type& trans, phase_type& phase, sc_core::sc_time& t) override {
+        if(phase==axi::ACK)
+            return tlm::TLM_COMPLETED;
         return isckt->nb_transport_fw(trans, phase, t);
     }
 
