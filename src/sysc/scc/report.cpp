@@ -65,6 +65,11 @@ thread_local std::unordered_map<uint64_t, sc_core::sc_verbosity> lut;
 thread_local cci::cci_originator originator("reporting");
 #endif
 
+bool& inst_based_logging() {
+    thread_local bool active = getenv("SCC_DISABLE_INSTANCE_BASED_LOGGING")==nullptr;
+    return active;
+}
+
 struct ExtLogConfig : public scc::LogConfig {
     shared_ptr<spdlog::logger> file_logger;
     shared_ptr<spdlog::logger> console_logger;
@@ -113,11 +118,11 @@ auto get_tuple(const sc_time& t) -> tuple<sc_time::value_type, sc_time_unit> {
 auto time2string(const sc_time& t) -> string {
     const array<const char*, 6> time_units{"fs", "ps", "ns", "us", "ms", "s "};
     const array<uint64_t, 6> multiplier{1ULL,
-                                        1000ULL,
-                                        1000ULL * 1000,
-                                        1000ULL * 1000 * 1000,
-                                        1000ULL * 1000 * 1000 * 1000,
-                                        1000ULL * 1000 * 1000 * 1000 * 1000};
+        1000ULL,
+        1000ULL * 1000,
+        1000ULL * 1000 * 1000,
+        1000ULL * 1000 * 1000 * 1000,
+        1000ULL * 1000 * 1000 * 1000 * 1000};
     ostringstream oss;
     if(!t.value()) {
         oss << "0 s ";
@@ -139,17 +144,17 @@ auto time2string(const sc_time& t) -> string {
 }
 auto compose_message(const sc_report& rep, const scc::LogConfig& cfg) -> const string {
     if(rep.get_severity() > SC_INFO || cfg.log_filter_regex.length() == 0 ||
-       rep.get_verbosity() == sc_core::SC_MEDIUM || log_cfg.match(rep.get_msg_type())) {
+            rep.get_verbosity() == sc_core::SC_MEDIUM || log_cfg.match(rep.get_msg_type())) {
         stringstream os;
         if(likely(cfg.print_sim_time)) {
             if(unlikely(log_cfg.cycle_base.value())) {
                 if(unlikely(cfg.print_delta))
                     os << "[" << std::setw(7) << std::setfill(' ')
-                       << sc_time_stamp().value() / log_cfg.cycle_base.value() << "(" << setw(5) << sc_delta_count()
-                       << ")]";
+                    << sc_time_stamp().value() / log_cfg.cycle_base.value() << "(" << setw(5) << sc_delta_count()
+                    << ")]";
                 else
                     os << "[" << std::setw(7) << std::setfill(' ')
-                       << sc_time_stamp().value() / log_cfg.cycle_base.value() << "]";
+                    << sc_time_stamp().value() / log_cfg.cycle_base.value() << "]";
             } else {
                 auto t = time2string(sc_time_stamp());
                 if(unlikely(cfg.print_delta))
@@ -160,7 +165,7 @@ auto compose_message(const sc_report& rep, const scc::LogConfig& cfg) -> const s
         }
         if(unlikely(rep.get_id() >= 0))
             os << "("
-               << "IWEF"[rep.get_severity()] << rep.get_id() << ") " << rep.get_msg_type() << ": ";
+            << "IWEF"[rep.get_severity()] << rep.get_id() << ") " << rep.get_msg_type() << ": ";
         else if(cfg.msg_type_field_width) {
             if(cfg.msg_type_field_width==std::numeric_limits<unsigned>::max())
                 os << rep.get_msg_type() << ": ";
@@ -186,7 +191,7 @@ auto compose_message(const sc_report& rep, const scc::LogConfig& cfg) -> const s
 
 inline auto get_verbosity(const sc_report& rep) -> int {
     return rep.get_verbosity() > sc_core::SC_NONE && rep.get_verbosity() < sc_core::SC_LOW ? rep.get_verbosity() * 10
-                                                                                           : rep.get_verbosity();
+            : rep.get_verbosity();
 }
 
 inline void log2logger(spdlog::logger& logger, const sc_report& rep, const scc::LogConfig& cfg) {
@@ -208,17 +213,17 @@ inline void log2logger(spdlog::logger& logger, const sc_report& rep, const scc::
             break;
         }
         break;
-    case SC_WARNING:
-        logger.warn(msg);
-        break;
-    case SC_ERROR:
-        logger.error(msg);
-        break;
-    case SC_FATAL:
-        logger.critical(msg);
-        break;
-    default:
-        break;
+        case SC_WARNING:
+            logger.warn(msg);
+            break;
+        case SC_ERROR:
+            logger.error(msg);
+            break;
+        case SC_FATAL:
+            logger.critical(msg);
+            break;
+        default:
+            break;
     }
 }
 
@@ -253,7 +258,7 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
     if(actions & SC_DO_NOTHING)
         return;
     if(rep.get_severity() == sc_core::SC_INFO || !log_cfg.report_only_first_error ||
-       sc_report_handler::get_count(SC_ERROR) < 2) {
+            sc_report_handler::get_count(SC_ERROR) < 2) {
         if((actions & SC_DISPLAY) && (!log_cfg.file_logger || get_verbosity(rep) < SC_HIGH))
             log2logger(*log_cfg.console_logger, rep, log_cfg);
         if((actions & SC_LOG) && log_cfg.file_logger) {
@@ -323,21 +328,21 @@ auto scc::stream_redirection::xsputn(const char_type* s, streamsize n) -> stream
 }
 
 static const array<sc_severity, 8> severity = {SC_FATAL,    // scc::log::NONE
-                                               SC_FATAL,    // scc::log::FATAL
-                                               SC_ERROR,    // scc::log::ERROR
-                                               SC_WARNING,  // scc::log::WARNING
-                                               SC_INFO,     // scc::log::INFO
-                                               SC_INFO,     // scc::log::DEBUG
-                                               SC_INFO,     // scc::log::TRACE
-                                               SC_INFO};    // scc::log::DBGTRACE
+        SC_FATAL,    // scc::log::FATAL
+        SC_ERROR,    // scc::log::ERROR
+        SC_WARNING,  // scc::log::WARNING
+        SC_INFO,     // scc::log::INFO
+        SC_INFO,     // scc::log::DEBUG
+        SC_INFO,     // scc::log::TRACE
+        SC_INFO};    // scc::log::DBGTRACE
 static const array<sc_verbosity, 8> verbosity = {SC_NONE,   // scc::log::NONE
-                                                 SC_LOW,    // scc::log::FATAL
-                                                 SC_LOW,    // scc::log::ERROR
-                                                 SC_LOW,    // scc::log::WARNING
-                                                 SC_MEDIUM, // scc::log::INFO
-                                                 SC_HIGH,   // scc::log::DEBUG
-                                                 SC_FULL,   // scc::log::TRACE
-                                                 SC_DEBUG}; // scc::log::DBGTRACE
+        SC_LOW,    // scc::log::FATAL
+        SC_LOW,    // scc::log::ERROR
+        SC_LOW,    // scc::log::WARNING
+        SC_MEDIUM, // scc::log::INFO
+        SC_HIGH,   // scc::log::DEBUG
+        SC_FULL,   // scc::log::TRACE
+        SC_DEBUG}; // scc::log::DBGTRACE
 
 auto scc::stream_redirection::sync() -> int {
     if(level <= log_cfg.level) {
@@ -346,7 +351,7 @@ auto scc::stream_redirection::sync() -> int {
         string line;
         while(getline(buf, line)) {
             ::sc_report_handler::report(severity[static_cast<unsigned>(level)], "SystemC", line.c_str(),
-                                        verbosity[static_cast<unsigned>(level)], "", 0);
+                    verbosity[static_cast<unsigned>(level)], "", 0);
         }
         str(string(""));
     }
@@ -361,16 +366,17 @@ static void configure_logging() {
     if(!log_cfg.dont_create_broker)
         scc::init_cci("SCCBroker");
 #endif
-
+    if(!log_cfg.instance_based_log_levels || getenv("SCC_DISABLE_INSTANCE_BASED_LOGGING"))
+        inst_based_logging()=false;
     sc_report_handler::set_actions(SC_ERROR, SC_DEFAULT_ERROR_ACTIONS | SC_DISPLAY);
     sc_report_handler::set_actions(SC_FATAL, SC_DEFAULT_FATAL_ACTIONS);
     sc_report_handler::set_verbosity_level(verbosity[static_cast<unsigned>(log_cfg.level)]);
     sc_report_handler::set_handler(report_handler);
     if(!spdlog_initialized) {
         spdlog::init_thread_pool(1024U,
-                                 log_cfg.log_file_name.size() ? 2U : 1U); // queue with 8k items and 1 backing thread.
+                log_cfg.log_file_name.size() ? 2U : 1U); // queue with 8k items and 1 backing thread.
         log_cfg.console_logger = log_cfg.log_async ? spdlog::stdout_color_mt<spdlog::async_factory>("console_logger")
-                                                   : spdlog::stdout_color_mt("console_logger");
+                : spdlog::stdout_color_mt("console_logger");
         auto logger_fmt = log_cfg.print_severity ? "[%L] %v" : "%v";
         if(log_cfg.colored_output) {
             std::ostringstream os;
@@ -386,8 +392,8 @@ static void configure_logging() {
                 ofs.open(log_cfg.log_file_name, ios::out | ios::trunc);
             }
             log_cfg.file_logger =
-                log_cfg.log_async ? spdlog::basic_logger_mt<spdlog::async_factory>("file_logger", log_cfg.log_file_name)
-                                  : spdlog::basic_logger_mt("file_logger", log_cfg.log_file_name);
+                    log_cfg.log_async ? spdlog::basic_logger_mt<spdlog::async_factory>("file_logger", log_cfg.log_file_name)
+                            : spdlog::basic_logger_mt("file_logger", log_cfg.log_file_name);
             if(log_cfg.print_severity)
                 log_cfg.file_logger->set_pattern("[%8l] %v");
             else
@@ -414,6 +420,8 @@ void scc::reinit_logging(scc::log level) {
     sc_report_handler::set_handler(report_handler);
     log_cfg.level = level;
     lut.clear();
+    if(!log_cfg.instance_based_log_levels || getenv("SCC_DISABLE_INSTANCE_BASED_LOGGING"))
+        inst_based_logging()=false;
 }
 
 void scc::init_logging(scc::log level, unsigned type_field_width, bool print_time) {
@@ -432,7 +440,7 @@ void scc::set_logging_level(scc::log level) {
     log_cfg.level = level;
     sc_report_handler::set_verbosity_level(verbosity[static_cast<unsigned>(level)]);
     log_cfg.console_logger->set_level(static_cast<spdlog::level::level_enum>(
-        SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, static_cast<int>(log_cfg.level))));
+            SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, static_cast<int>(log_cfg.level))));
 }
 
 auto scc::get_logging_level() -> scc::log { return log_cfg.level; }
@@ -508,28 +516,34 @@ auto scc::LogConfig::reportOnlyFirstError(bool v) -> scc::LogConfig& {
     this->report_only_first_error = v;
     return *this;
 }
+auto scc::LogConfig::instanceBasedLogLevels(bool v) -> scc::LogConfig& {
+    this->instance_based_log_levels = v;
+    return *this;
+}
 
 auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
 #ifdef HAS_CCI
-    auto k = char_hash(str);
-    auto it = lut.find(k);
-    if(it != lut.end())
-        return it->second;
-    if(strchr(str, '.') == nullptr || sc_core::sc_get_current_object()) {
-        auto broker = sc_core::sc_get_current_object()? cci::cci_get_broker(): cci::cci_get_global_broker(originator);
-        auto param_name = std::string(str) + "." SCC_LOG_LEVEL_PARAM_NAME;
-        auto h = broker.get_param_handle<unsigned>(param_name);
-        if(h.is_valid()) {
-            sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_value(), verbosity.size() - 1));
-            lut[k] = ret;
-            return ret;
-        } else {
-            auto val = broker.get_preset_cci_value(param_name);
-            auto global_verb = static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
-            sc_core::sc_verbosity ret =
-                val.is_int() ? verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size() - 1)) : global_verb;
-            lut[k] = ret;
-            return ret;
+    if(inst_based_logging()){
+        auto k = char_hash(str);
+        auto it = lut.find(k);
+        if(it != lut.end())
+            return it->second;
+        if(strchr(str, '.') == nullptr || sc_core::sc_get_current_object()) {
+            auto broker = sc_core::sc_get_current_object()? cci::cci_get_broker(): cci::cci_get_global_broker(originator);
+            auto param_name = std::string(str) + "." SCC_LOG_LEVEL_PARAM_NAME;
+            auto h = broker.get_param_handle<unsigned>(param_name);
+            if(h.is_valid()) {
+                sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_value(), verbosity.size() - 1));
+                lut[k] = ret;
+                return ret;
+            } else {
+                auto val = broker.get_preset_cci_value(param_name);
+                auto global_verb = static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
+                sc_core::sc_verbosity ret =
+                        val.is_int() ? verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size() - 1)) : global_verb;
+                lut[k] = ret;
+                return ret;
+            }
         }
     }
 #endif

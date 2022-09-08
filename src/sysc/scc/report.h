@@ -164,6 +164,7 @@ struct LogConfig {
     bool log_async{true};
     bool dont_create_broker{false};
     bool report_only_first_error{false};
+    bool instance_based_log_levels{true};
 
     //! set the logging level
     LogConfig& logLevel(log);
@@ -193,6 +194,8 @@ struct LogConfig {
     LogConfig& dontCreateBroker(bool = true);
     //! disable/enable the supression of all error messages after the first error
     LogConfig& reportOnlyFirstError(bool = true);
+    //! disable/enable the supression of all error messages after the first error
+    LogConfig& instanceBasedLogLevels(bool = true);
 };
 /**
  * @fn void init_logging(const LogConfig&)
