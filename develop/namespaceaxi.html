@@ -233,9 +233,9 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="separator:a2c24f5d71a27284a4de95bb3ddf6748d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6318752e2d4bb1398307086ebc1421f7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaxi.html#a6318752e2d4bb1398307086ebc1421f7">bar_e</a> : uint8_t { <b>RESPECT_BARRIER</b> = 0x0, 
-<b>MEMORY_BARRIER</b> = 0x1, 
-<b>IGNORE_BARRIER</b> = 0x2, 
-<b>SYNCHRONISATION_BARRIER</b> = 0x3
+<a class="el" href="namespaceaxi.html#a6318752e2d4bb1398307086ebc1421f7a55e6eaaefb11cf68e4d140056c85de3d">bar_e::MEMORY_BARRIER</a> = 0x1, 
+<a class="el" href="namespaceaxi.html#a6318752e2d4bb1398307086ebc1421f7ae7847b0265fff538e317b93c14b24f65">bar_e::IGNORE_BARRIER</a> = 0x2, 
+<a class="el" href="namespaceaxi.html#a6318752e2d4bb1398307086ebc1421f7ad4cde75ed2cbe78a3bec0f8cf49f6d88">bar_e::SYNCHRONISATION_BARRIER</a> = 0x3
  }</td></tr>
 <tr class="separator:a6318752e2d4bb1398307086ebc1421f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5bdfd0288701d22295633cd80fee212"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaxi.html#ab5bdfd0288701d22295633cd80fee212">snoop_e</a> : uint8_t { <br />
@@ -487,6 +487,14 @@ template&lt;&gt; </td></tr>
 </table>
 </div><div class="memdoc">
 <p>the barrier type enumeration class </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a6318752e2d4bb1398307086ebc1421f7a55e6eaaefb11cf68e4d140056c85de3d"></a>MEMORY_BARRIER&#160;</td><td class="fielddoc"><p>Normal access, respecting barriers. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6318752e2d4bb1398307086ebc1421f7ae7847b0265fff538e317b93c14b24f65"></a>IGNORE_BARRIER&#160;</td><td class="fielddoc"><p>Memory barrier. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6318752e2d4bb1398307086ebc1421f7ad4cde75ed2cbe78a3bec0f8cf49f6d88"></a>SYNCHRONISATION_BARRIER&#160;</td><td class="fielddoc"><p>Normal access, ignoring barriers. </p>
+</td></tr>
+</table>
 
 <p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00086">86</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
@@ -594,7 +602,7 @@ template&lt;&gt; </td></tr>
 </div><div class="memdoc">
 <p>the response type enumeration class </p>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00152">152</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00153">153</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -619,7 +627,7 @@ template&lt;&gt; </td></tr>
 </div><div class="memdoc">
 <p>the snoop type enumeration class. Since the interpretation depends of other setting there are double defined entries </p>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00095">95</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l00096">96</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -674,7 +682,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of beats </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01130">1130</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01131">1131</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -709,7 +717,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of beats </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01145">1145</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01146">1146</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -744,7 +752,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of beats </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01118">1118</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01119">1119</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -779,7 +787,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of beats </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01124">1124</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01125">1125</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -814,7 +822,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the burst size in bytes </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01165">1165</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01166">1166</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -849,7 +857,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the burst size in bytes </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01180">1180</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01181">1181</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -884,7 +892,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the burst size in bytes </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01153">1153</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01154">1154</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -919,7 +927,7 @@ template&lt;&gt; </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the burst size in bytes </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01159">1159</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01160">1160</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -990,7 +998,7 @@ template&lt;typename E &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>true if the access is a burst</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>The calculation needs to be checked and probably fixed </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01097">1097</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01098">1098</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -1025,7 +1033,7 @@ template&lt;typename E &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of beats </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01112">1112</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="axi__tlm_8h_source.html#l01113">1113</a> of file <a class="el" href="axi__tlm_8h_source.html">axi_tlm.h</a>.</p>
 
 </div>
 </div>

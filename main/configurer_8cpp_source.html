@@ -484,7 +484,7 @@ $(document).ready(function(){initNavTree('configurer_8cpp_source.html',''); init
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="keywordtype">void</span> init_cci(std::string name) {</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="preprocessor">#ifdef HAS_CCI</span></div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    thread_local <span class="keyword">static</span> cci_utils::broker broker(name);</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    thread_local cci_utils::broker broker(name);</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    cci::cci_register_broker(&amp;broker);</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;}</div>
@@ -502,7 +502,7 @@ $(document).ready(function(){initNavTree('configurer_8cpp_source.html',''); init
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;} <span class="comment">// namespace scc</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespacescc_html_a8e99107b0befaf0f9b735d50922dee16"><div class="ttname"><a href="namespacescc.html#a8e99107b0befaf0f9b735d50922dee16">scc::get_logging_level</a></div><div class="ttdeci">log get_logging_level()</div><div class="ttdoc">get the SystemC logging level</div><div class="ttdef"><b>Definition:</b> <a href="report_8cpp_source.html#l00438">report.cpp:438</a></div></div>
+<div class="ttc" id="anamespacescc_html_a8e99107b0befaf0f9b735d50922dee16"><div class="ttname"><a href="namespacescc.html#a8e99107b0befaf0f9b735d50922dee16">scc::get_logging_level</a></div><div class="ttdeci">log get_logging_level()</div><div class="ttdoc">get the SystemC logging level</div><div class="ttdef"><b>Definition:</b> <a href="report_8cpp_source.html#l00446">report.cpp:446</a></div></div>
 <div class="ttc" id="aclassscc_1_1configurer_html_a2536144f65524d836ce35031bbd1bf20"><div class="ttname"><a href="classscc_1_1configurer.html#a2536144f65524d836ce35031bbd1bf20">scc::configurer::set_configuration_value</a></div><div class="ttdeci">void set_configuration_value(sc_core::sc_attr_base *attr_base, sc_core::sc_object *owner)</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00408">configurer.cpp:408</a></div></div>
 <div class="ttc" id="aclassscc_1_1configurer_html_a0419a8cd7a38cec2d667a61d62b3a520"><div class="ttname"><a href="classscc_1_1configurer.html#a0419a8cd7a38cec2d667a61d62b3a520">scc::configurer::configure</a></div><div class="ttdeci">void configure()</div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00393">configurer.cpp:393</a></div></div>
 <div class="ttc" id="astructscc_1_1configurer_1_1ConfigHolder_html"><div class="ttname"><a href="structscc_1_1configurer_1_1ConfigHolder.html">scc::configurer::ConfigHolder</a></div><div class="ttdef"><b>Definition:</b> <a href="configurer_8cpp_source.html#l00332">configurer.cpp:332</a></div></div>

@@ -2,6 +2,7 @@ var structscc_1_1LogConfig =
 [
     [ "coloredOutput", "structscc_1_1LogConfig.html#a4d1e12b367b7685f0052acfed41454cf", null ],
     [ "dontCreateBroker", "structscc_1_1LogConfig.html#a66bc0774442127fe1174cd540ee79499", null ],
+    [ "instanceBasedLogLevels", "structscc_1_1LogConfig.html#acde59cdaa05fb6cb4ba5ac22e224edb9", null ],
     [ "logAsync", "structscc_1_1LogConfig.html#ab380dea6174f0b26626251554e31d326", null ],
     [ "logFileName", "structscc_1_1LogConfig.html#aa692a5c181ec726405872cee2f6da15e", null ],
     [ "logFileName", "structscc_1_1LogConfig.html#afa821e59961387e84b611d14d72c6696", null ],
@@ -16,6 +17,7 @@ var structscc_1_1LogConfig =
     [ "reportOnlyFirstError", "structscc_1_1LogConfig.html#a348307a7c46618c74ffde104bf59ac9d", null ],
     [ "colored_output", "structscc_1_1LogConfig.html#a11d2dfc81a7dfb5e9dfd98afd7fce4ef", null ],
     [ "dont_create_broker", "structscc_1_1LogConfig.html#a50cca312238bb02ee865dd9e871f8a5f", null ],
+    [ "instance_based_log_levels", "structscc_1_1LogConfig.html#a46eec923b12cbad447b79a531aacee9f", null ],
     [ "level", "structscc_1_1LogConfig.html#aa6acb8cb85817491f9e2b2fdc82d65e0", null ],
     [ "log_async", "structscc_1_1LogConfig.html#a60533d66e4d1d4f1bc91ce359bdc9d38", null ],
     [ "log_file_name", "structscc_1_1LogConfig.html#aed74de9e2fb0ddd5440366cd9bb5aed5", null ],
