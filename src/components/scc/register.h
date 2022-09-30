@@ -307,7 +307,7 @@ public:
      *
      * @param trf the trace file
      */
-    void trace(sc_core::sc_trace_file* trf) const override { sc_trace(trf, storage, this->name()); }
+    void trace(sc_core::sc_trace_file* trf) const override { sc_core::sc_trace(trf, storage, this->name()); }
     //! \brief the reset value
     const DATATYPE res_val;
     //! \brief the SW read mask

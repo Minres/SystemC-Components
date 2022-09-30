@@ -417,7 +417,7 @@ void configurer::config_check() {
 
 void init_cci(std::string name) {
 #ifdef HAS_CCI
-    thread_local static cci_utils::broker broker(name);
+    thread_local cci_utils::broker broker(name);
     cci::cci_register_broker(&broker);
 #endif
 }

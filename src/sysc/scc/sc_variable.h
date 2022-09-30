@@ -19,7 +19,8 @@
 
 #include <array>
 #include <functional>
-#include <scc/observer.h>
+#include "observer.h"
+#include "report.h"
 #include <sstream>
 #include <sysc/kernel/sc_event.h>
 #include <sysc/kernel/sc_simcontext.h>
@@ -382,6 +383,9 @@ template <typename T> struct sc_variable_vector {
     sc_variable<T>& operator[](size_t idx) {
         auto ret = values.at(idx);
         if(!ret) {
+            if(sc_core::sc_get_curr_simcontext()->elaboration_done())
+                SCCFATAL(sc_core::sc_get_current_object()->name())<<"Trying to create a sc_variable vector entry in "<<name <<
+                " with index "<<idx<<" while elaboration finished is not allowed";
             assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
             assert(creator);
             std::stringstream ss;
