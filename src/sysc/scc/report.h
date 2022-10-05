@@ -346,19 +346,21 @@ protected:
     const int level;
 };
 
+extern std::ofstream devnull; // Act as /dev/null, i.e just ignore all input (this is true when the stream is not opened - so never open it)
+
 /**
  * logging macros
  */
 //! macro for log output
 #define SCCLOG(lvl, ...) ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, lvl / 10).type(__VA_ARGS__).get()
 //! macro for debug trace level output
-#define SCCTRACEALL(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_DEBUG) SCCLOG(sc_core::SC_DEBUG, __VA_ARGS__)
+#define SCCTRACEALL(...)  ( (::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_DEBUG) ? SCCLOG(sc_core::SC_DEBUG, __VA_ARGS__) : ::scc::devnull )
 //! macro for trace level output
-#define SCCTRACE(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_FULL) SCCLOG(sc_core::SC_FULL, __VA_ARGS__)
+#define SCCTRACE(...) ( (::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_FULL) ? SCCLOG(sc_core::SC_FULL, __VA_ARGS__) : ::scc::devnull )
 //! macro for debug level output
-#define SCCDEBUG(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_HIGH) SCCLOG(sc_core::SC_HIGH, __VA_ARGS__)
+#define SCCDEBUG(...) ( (::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_HIGH) ? SCCLOG(sc_core::SC_HIGH, __VA_ARGS__) : ::scc::devnull )
 //! macro for info level output
-#define SCCINFO(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_MEDIUM) SCCLOG(sc_core::SC_MEDIUM, __VA_ARGS__)
+#define SCCINFO(...) ( (::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_MEDIUM) ? SCCLOG(sc_core::SC_MEDIUM, __VA_ARGS__) : ::scc::devnull )
 //! macro for warning level output
 #define SCCWARN(...) ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for error level output
