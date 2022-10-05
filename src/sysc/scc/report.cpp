@@ -549,3 +549,5 @@ auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
 #endif
     return static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
 }
+
+std::ofstream scc::devnull{}; // Act as /dev/null, i.e just ignore all input (this is true when the stream is not opened - so never open it)
