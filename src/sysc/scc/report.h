@@ -360,7 +360,7 @@ protected:
 //! macro for info level output
 #define SCCINFO(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_MEDIUM) SCCLOG(sc_core::SC_MEDIUM, __VA_ARGS__)
 //! macro for warning level output
-#define SCCWARN(...) ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCCWARN(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_LOW) ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for error level output
 #define SCCERR(...) ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for fatal message output
