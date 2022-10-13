@@ -530,15 +530,16 @@ auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
             return it->second;
         if(strchr(str, '.') == nullptr || sc_core::sc_get_current_object()) {
             string current_name = std::string(str);
+            auto broker = sc_core::sc_get_current_object()? cci::cci_get_broker(): cci::cci_get_global_broker(originator);
             while (true) {
                 string param_name = (current_name.empty())? SCC_LOG_LEVEL_PARAM_NAME : current_name + "." SCC_LOG_LEVEL_PARAM_NAME;
-                auto h = cci::cci_get_broker().get_param_handle(param_name);
+                auto h = broker.get_param_handle(param_name);
                 if (h.is_valid()) {
                     sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_cci_value().get_int(), verbosity.size() - 1));
                     lut[k] = ret;
                     return ret;
                 } else {
-                    auto val = cci::cci_get_broker().get_preset_cci_value(param_name);
+                    auto val = broker.get_preset_cci_value(param_name);
                     auto global_verb = static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
                     if (val.is_int()) {
                         sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size() - 1));
