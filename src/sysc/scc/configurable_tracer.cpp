@@ -97,8 +97,8 @@ auto scc::configurable_tracer::get_trace_enabled(const sc_core::sc_object* obj, 
     return fall_back;
 }
 
-void configurable_tracer::augment_object_hierarchical(const sc_core::sc_object* obj) {
-    if(dynamic_cast<const sc_core::sc_module*>(obj) != nullptr || dynamic_cast<const scc::traceable*>(obj) != nullptr) {
+void configurable_tracer::augment_object_hierarchical(sc_core::sc_object* obj) {
+    if(dynamic_cast<sc_core::sc_module*>(obj) != nullptr || dynamic_cast<scc::traceable*>(obj) != nullptr) {
         auto* attr = obj->get_attribute(EN_TRACING_STR);
         if(attr == nullptr ||
                 dynamic_cast<const sc_core::sc_attribute<bool>*>(attr) == nullptr) { // check if we have no sc_attribute
@@ -108,6 +108,10 @@ void configurable_tracer::augment_object_hierarchical(const sc_core::sc_object* 
             if(!h.is_valid()) // we have no cci_param so create one
                 params.push_back(new cci::cci_param<bool>(hier_name, default_trace_enable, "", cci::CCI_ABSOLUTE_NAME,
                         cci_originator));
+            else
+                h.set_cci_value(cci::cci_value{default_trace_enable});
+        } else if(auto battr = dynamic_cast<sc_core::sc_attribute<bool>*>(attr)) {
+            battr->value = default_trace_enable;
         }
         for(auto* o : obj->get_child_objects())
             augment_object_hierarchical(o);
