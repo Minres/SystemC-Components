@@ -236,6 +236,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::setup_callbacks(
 
 template <typename CFG> inline void axi::pin::axi4_target<CFG>::ar_t() {
     this->ar_ready.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     auto arid = 0U;
     auto arlen = 0U;
     auto arsize = util::ilog2(CFG::BUSWIDTH / 8);
@@ -271,6 +272,8 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::ar_t() {
 }
 
 template <typename CFG> inline void axi::pin::axi4_target<CFG>::rresp_t() {
+    this->r_valid.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     fsm_handle* fsm_hndl;
     uint8_t val;
     while(true) {
@@ -302,6 +305,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::rresp_t() {
 
 template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
     this->aw_ready.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     const auto awsize = util::ilog2(CFG::BUSWIDTH / 8);
     while(true) {
         wait(this->aw_valid.posedge_event() | clk_i.negedge_event());
@@ -329,6 +333,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
 
 template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
     this->w_ready.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     while(true) {
         wait(this->w_valid.posedge_event() | clk_i.negedge_event());
         this->w_ready.write(false);
@@ -417,6 +422,8 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
 
 template<typename CFG>
 inline void axi::pin::axi4_target<CFG>::bresp_t() {
+    this->b_valid.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     fsm_handle* fsm_hndl;
     uint8_t val;
     while(true){

@@ -304,8 +304,9 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::setup_callbac
 }
 
 template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::ar_t() {
+    this->ar_valid.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        this->ar_valid.write(false);
         wait(ar_evt);
         this->ar_valid.write(true);
         do {
@@ -314,11 +315,13 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::ar_t() {
                 react(axi::fsm::protocol_time_point_e::EndReqE, active_req[tlm::TLM_READ_COMMAND]);
         } while(!this->ar_ready.read());
         wait(clk_i.posedge_event());
+        this->ar_valid.write(false);
     }
 }
 
 template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::r_t() {
     this->r_ready.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     while(true) {
         wait(this->r_valid.posedge_event() | clk_i.negedge_event());
         if(this->r_valid.event() || (!active_resp[tlm::TLM_READ_COMMAND] && this->r_valid.read())) {
@@ -372,20 +375,23 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::r_t() {
 }
 
 template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::aw_t() {
+    this->aw_valid.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        this->aw_valid.write(false);
         wait(aw_evt);
         this->aw_valid.write(true);
         do {
             wait(this->aw_ready.posedge_event() | clk_delayed);
         } while(!this->aw_ready.read());
         wait(clk_i.posedge_event());
+        this->aw_valid.write(false);
     }
 }
 
 template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::wdata_t() {
+    this->w_valid.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        this->w_valid.write(false);
         if(!CFG::IS_LITE)
             this->w_last->write(false);
         wait(wdata_vl.default_event());
@@ -402,11 +408,13 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::wdata_t() {
             }
         } while(!this->w_ready.read());
         wait(clk_i.posedge_event());
+        this->w_valid.write(false);
     }
 }
 
 template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::b_t() {
     this->b_ready.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     while(true) {
         wait(this->b_valid.posedge_event() | clk_i.negedge_event());
         if(this->b_valid.event() || (!active_resp[tlm::TLM_WRITE_COMMAND] && this->b_valid.read())) {
