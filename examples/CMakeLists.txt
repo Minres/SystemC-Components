@@ -8,5 +8,6 @@ if(NOT USE_CWR_SYSTEMC)
 	if(ENABLE_SCV AND SCV_FOUND)
 		add_subdirectory(transaction_recording)
 	endif()
+    add_subdirectory(scc-tlm_target_bfs)
 endif()
-add_subdirectory(scc-tlm_target_bfs)
+
