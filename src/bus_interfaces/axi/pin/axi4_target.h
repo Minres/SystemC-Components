@@ -57,6 +57,7 @@ public axi::axi_bw_transport_if<axi::axi_protocol_types> {
         isckt.bind(*this);
         SC_METHOD(clk_delay);
         sensitive << clk_i.pos();
+        dont_initialize();
         SC_THREAD(ar_t);
         SC_THREAD(rresp_t);
         SC_THREAD(aw_t);
@@ -75,7 +76,13 @@ private:
 
     void setup_callbacks(axi::fsm::fsm_handle*) override;
 
-    void clk_delay() { clk_delayed.notify(/*clk_if ? clk_if->period() - 1_ps :*/ 1_ps); }
+    void clk_delay() {
+        if(sc_core::sc_delta_count_at_current_time()<5) {
+            clk_self.notify(sc_core::SC_ZERO_TIME);
+            next_trigger(clk_self);
+        } else
+            clk_delayed.notify(sc_core::SC_ZERO_TIME/*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
+    }
     void ar_t();
     void rresp_t();
     void aw_t();
@@ -95,7 +102,7 @@ private:
         uint64_t user;
     };
     sc_core::sc_clock* clk_if;
-    sc_core::sc_event clk_delayed, ar_end_req_evt, wdata_end_req_evt;
+    sc_core::sc_event clk_delayed, clk_self, ar_end_req_evt, wdata_end_req_evt;
     std::array<fsm_handle*, 3> active_req_beat;
     std::array<fsm_handle*, 3> active_req;
     std::array<fsm_handle*, 3> active_resp_beat;

@@ -88,7 +88,14 @@ private:
 
     void setup_callbacks(fsm_handle* fsm_hndl);
 
-    void clk_delay() { clk_delayed.notify(clk_if ? clk_if->period() - 1_ps : 1_ps); }
+    void clk_delay() {
+        if(sc_core::sc_delta_count_at_current_time()<5) {
+            clk_self.notify(sc_core::SC_ZERO_TIME);
+            next_trigger(clk_self);
+        } else
+            clk_delayed.notify(sc_core::SC_ZERO_TIME/*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
+    }
+
     void ar_t();
     void r_t();
     void aw_t();
@@ -98,7 +105,7 @@ private:
     std::array<fsm_handle*, 3> active_req;
     std::array<fsm_handle*, 3> active_resp;
     sc_core::sc_clock* clk_if;
-    sc_core::sc_event clk_delayed, r_end_req_evt, aw_evt, ar_evt;
+    sc_core::sc_event clk_delayed, clk_self, r_end_req_evt, aw_evt, ar_evt;
     void nb_fw(payload_type& trans, const phase_type& phase) {
         auto delay = sc_core::SC_ZERO_TIME;
         base::nb_fw(trans, phase, delay);
@@ -323,7 +330,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::r_t() {
     this->r_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        wait(this->r_valid.posedge_event() | clk_i.negedge_event());
+        wait(this->r_valid.posedge_event() | clk_delay);
         if(this->r_valid.event() || (!active_resp[tlm::TLM_READ_COMMAND] && this->r_valid.read())) {
             wait(sc_core::SC_ZERO_TIME);
             auto id = CFG::IS_LITE ? 0U : this->r_id->read().to_uint();
@@ -416,7 +423,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::b_t() {
     this->b_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        wait(this->b_valid.posedge_event() | clk_i.negedge_event());
+        wait(this->b_valid.posedge_event() | clk_delay);
         if(this->b_valid.event() || (!active_resp[tlm::TLM_WRITE_COMMAND] && this->b_valid.read())) {
             auto id = !CFG::IS_LITE ? this->b_id->read().to_uint() : 0U;
             auto resp = this->b_resp.read();
