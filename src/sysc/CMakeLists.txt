@@ -47,6 +47,7 @@ set(LIB_SOURCES
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp
     scc/hierarchy_dumper.cpp
+    scc/cci_broker.cpp
 )
 
 if(ZLIB_FOUND)
