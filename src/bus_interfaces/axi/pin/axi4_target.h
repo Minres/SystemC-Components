@@ -75,7 +75,7 @@ private:
 
     void setup_callbacks(axi::fsm::fsm_handle*) override;
 
-    void clk_delay() { clk_delayed.notify(clk_if ? clk_if->period() - 1_ps : 1_ps); }
+    void clk_delay() { clk_delayed.notify(/*clk_if ? clk_if->period() - 1_ps :*/ 1_ps); }
     void ar_t();
     void rresp_t();
     void aw_t();
@@ -111,7 +111,7 @@ template <typename CFG>
 inline tlm::tlm_sync_enum axi::pin::axi4_target<CFG>::nb_transport_bw(payload_type& trans, phase_type& phase,
         sc_core::sc_time& t) {
     auto ret = tlm::TLM_ACCEPTED;
-    sc_core::sc_time delay; // FIXME: calculate correct time
+    sc_core::sc_time delay=t; // FIXME: calculate correct time
     SCCTRACE(SCMOD) << "nb_transport_bw " << phase << " of trans " << trans;
     if(phase == axi::END_PARTIAL_REQ || phase == tlm::END_REQ) { // read/write
         schedule(phase == tlm::END_REQ ? EndReqE : EndPartReqE, &trans, delay, false);
@@ -242,7 +242,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::ar_t() {
     auto arsize = util::ilog2(CFG::BUSWIDTH / 8);
     auto data_len = (1 << arsize) * (arlen + 1);
     while(true) {
-        wait(this->ar_valid.posedge_event() | clk_i.negedge_event());
+        wait(this->ar_valid.posedge_event() | clk_delayed);
         if(this->ar_valid.read()) {
             SCCTRACE(SCMOD) << "ARVALID detected for 0x" << std::hex << this->ar_addr.read();
             if(!CFG::IS_LITE) {
@@ -308,7 +308,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
     wait(sc_core::SC_ZERO_TIME);
     const auto awsize = util::ilog2(CFG::BUSWIDTH / 8);
     while(true) {
-        wait(this->aw_valid.posedge_event() | clk_i.negedge_event());
+        wait(this->aw_valid.posedge_event() | clk_delayed);
         if(this->aw_valid.event() || (!active_req_beat[tlm::TLM_IGNORE_COMMAND] && this->aw_valid.read())) {
             SCCTRACE(SCMOD) << "AWVALID detected for 0x" << std::hex << this->aw_addr.read();
             // clang-format off
@@ -335,7 +335,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
     this->w_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        wait(this->w_valid.posedge_event() | clk_i.negedge_event());
+        wait(this->w_valid.posedge_event() | clk_delayed);
         this->w_ready.write(false);
         if(this->w_valid.event() || (!active_req_beat[tlm::TLM_WRITE_COMMAND] && this->w_valid.read())) {
             if(!active_req[tlm::TLM_WRITE_COMMAND]) {
