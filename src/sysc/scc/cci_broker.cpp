@@ -1,27 +1,24 @@
-/*
- * cci_broker.cpp
+/*******************************************************************************
+ * Copyright 2022 MINRES Technologies GmbH
  *
- *  Created on: Nov 2, 2022
- *      Author: eyck
- */
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 
 #include <string>
 #ifdef HAS_CCI
-#include <unordered_map>
-#include <unordered_set>
-#include <vector>
-#include <regex>
+#include "cci_broker.h"
 #include <util/ities.h>
-#include <cci_cfg/cci_broker_handle.h>
-#include <cci_cfg/cci_broker_if.h>
-#include <cci_cfg/cci_broker_manager.h>
-#include <cci_cfg/cci_config_macros.h>
-#include <cci_cfg/cci_param_if.h>
-#include <cci_cfg/cci_report_handler.h>
-#include <cci_utils/consuming_broker.h>
-
 namespace {
-using namespace cci;
 bool glob_match(std::string const& s, std::string const& p) {
     const char* cp = nullptr;
     const char* mp = nullptr;
@@ -67,66 +64,39 @@ std::string glob_to_regex(std::string val){
     oss << ".*" << std::ends;
     return oss.str();
 }
-
-struct scc_broker: public cci_utils::consuming_broker {
-    using super = cci_utils::consuming_broker;
-
-    explicit scc_broker(const std::string& name): cci_utils::consuming_broker(name) { }
-
-    ~scc_broker() = default;
-
-    void set_preset_cci_value(
-            const std::string &parname,
-            const cci_value & value,
-            const cci_originator& originator) override {
-        super::set_preset_cci_value(parname, value, originator);
-    }
-
-    std::vector<cci_name_value_pair> get_unconsumed_preset_values() const override {
-        return super::get_unconsumed_preset_values();
-    }
-
-    cci_preset_value_range get_unconsumed_preset_values(const cci_preset_value_predicate &pred) const override {
-        return super::get_unconsumed_preset_values(pred);
-    }
-
-    void ignore_unconsumed_preset_values(const cci_preset_value_predicate &pred) override {
-        super::ignore_unconsumed_preset_values(pred);
-    }
-
-    cci_originator get_preset_value_origin(const std::string &parname) const override { //TODO: check globs
-        return super::get_preset_value_origin(parname);
-    }
-
-    cci_value get_preset_cci_value(const std::string &parname) const override { //TODO: check globs
-        return super::get_preset_cci_value(parname);
-    }
-
-    void lock_preset_value(const std::string &parname) override {
-        super::lock_preset_value(parname);
-    }
-
-    cci_value get_cci_value(const std::string &parname, const cci_originator &originator) const override {
-        return super::get_cci_value(parname, originator);
-    }
-
-    bool has_preset_value(const std::string &parname) const override { //TODO: check globs
-        return super::has_preset_value(parname);
-     }
-
-    void add_param(cci_param_if* par) override {
-        super::add_param(par);
-    }
-
-    bool is_global_broker() const override {
-        return true;
-    }
-
-};
 }
 namespace scc {
+using namespace cci;
+
+void cci_broker::set_preset_cci_value(
+        const std::string &parname,
+        const cci_value & value,
+        const cci_originator& originator) {
+    super::set_preset_cci_value(parname, value, originator);
+}
+
+cci_originator cci_broker::get_preset_value_origin(const std::string &parname) const { //TODO: check globs
+    return super::get_preset_value_origin(parname);
+}
+
+cci_value cci_broker::get_preset_cci_value(const std::string &parname) const { //TODO: check globs
+    return super::get_preset_cci_value(parname);
+}
+
+void cci_broker::lock_preset_value(const std::string &parname) {
+    super::lock_preset_value(parname);
+}
+
+cci_value cci_broker::get_cci_value(const std::string &parname, const cci_originator &originator) const {
+    return consuming_broker::get_cci_value(parname, originator);
+}
+
+bool cci_broker::has_preset_value(const std::string &parname) const { //TODO: check globs
+    return super::has_preset_value(parname);
+}
+
 void init_cci(std::string name) {
-    thread_local scc_broker broker(name);
+    thread_local cci_broker broker(name);
     cci::cci_register_broker(broker);
 }
 }

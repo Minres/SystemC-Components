@@ -313,11 +313,15 @@ void check_config_hierarchical(configurer::broker_t const& broker, Value const& 
     }
 }
 
-bool cci_name_ignore(std::pair<std::string, cci::cci_value> const& p) {
-
+bool cci_name_ignore(std::pair<std::string, cci::cci_value> const& preset_value) {
+    std::string ending(SCC_LOG_LEVEL_PARAM_NAME);
+    auto& name = preset_value.first;
+    if (name.length() >= ending.length()) {
+        return (0 == name.compare(name.length() - ending.length(), ending.length(), ending));
+    } else {
+        return false;
+    }
 }
-
-
 } // namespace
 
 struct configurer::ConfigHolder {
@@ -410,18 +414,29 @@ void configurer::set_configuration_value(sc_core::sc_attr_base* attr_base, sc_co
 }
 void configurer::config_check() {
     try {
-        if(root)
+        if(root) {
             check_config_hierarchical(cci_broker, root->document, "");
+        }
 #ifdef HAS_CCI
-        if(!config_phases) {
-            cci::cci_param_predicate pred_ncc(cci_name_ignore);
-            cci_broker.ignore_unconsumed_preset_values(pred_ncc);
+        cci_broker.ignore_unconsumed_preset_values(&cci_name_ignore);
+        auto res = cci_broker.get_unconsumed_preset_values();
+        if(res.size()) {
+            std::ostringstream oss;
+            for(auto& val:res)
+                oss<<"\t - "<<val.first<<"\n";
+            if(res.size()==1) {
+                SCCWARN("scc::configurer")<<"There is " << res.size() << " unused CCI preset value:\n"
+                        << oss.str() << "Please check your setup!";
+            } else {
+                SCCWARN("scc::configurer")<<"There are " << res.size() << " unused CCI preset values:\n"
+                        << oss.str() << "Please check your setup!";
+            }
         }
 #endif
     } catch(std::domain_error& e) {
-        SCCFATAL(this->name()) << "Illegal hierarchy name: '" << e.what() << "'";
+        SCCFATAL("scc::configurer") << "Illegal hierarchy name: '" << e.what() << "'";
     } catch(std::invalid_argument& e) {
-        SCCFATAL(this->name()) << "Illegal parameter name: '" << e.what() << "'";
+        SCCFATAL("scc::configurer") << "Illegal parameter name: '" << e.what() << "'";
     }
 }
 
