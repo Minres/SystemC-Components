@@ -28,9 +28,9 @@ namespace scc {
 struct tlm_gp_mm : public tlm_extension<tlm_gp_mm> {
     virtual ~tlm_gp_mm() {}
 
-    void copy_from(tlm_extension_base const& from) override {
-        if(auto ext = dynamic_cast<tlm_gp_mm const*>(&from))
-            memcpy(ext->data_ptr, data_ptr, std::min(ext->data_size, data_size));
+    void copy_from(__attribute__((unused)) tlm::tlm_extension_base const& from) override {
+        // No need to copy, because this extension is used for memory handling for tlm generic payload data.
+        // The copy operation of the data is therefore handled by the tlm functions deep_copy_from and update_original_from.
     }
 
     tlm_gp_mm* clone() const override { return tlm_gp_mm::create(data_size); }
