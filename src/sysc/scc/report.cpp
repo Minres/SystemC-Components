@@ -540,14 +540,13 @@ auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
                     return ret;
                 } else {
                     auto val = broker.get_preset_cci_value(param_name);
-                    auto global_verb = static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
                     if (val.is_int()) {
                         sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size() - 1));
                         lut[k] = ret;
                         return ret;
                     } else {
                         if (current_name.empty()) {
-                            sc_core::sc_verbosity ret = global_verb;
+                            sc_core::sc_verbosity ret = static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
                             lut[k] = ret;
                             return ret;
                         }

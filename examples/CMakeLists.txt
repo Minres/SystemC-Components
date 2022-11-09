@@ -9,5 +9,6 @@ if(NOT USE_CWR_SYSTEMC)
 		add_subdirectory(transaction_recording)
 	endif()
     add_subdirectory(scc-tlm_target_bfs)
+    add_subdirectory(configuration)
 endif()
 

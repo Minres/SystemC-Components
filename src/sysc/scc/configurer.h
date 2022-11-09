@@ -21,6 +21,7 @@
 #include "utilities.h"
 #ifdef HAS_CCI
 #include <cci_configuration>
+#include <regex>
 #endif
 
 /** \ingroup scc-sysc
@@ -104,26 +105,37 @@ public:
      */
     template <typename T> void set_value(const std::string& hier_name, T value) {
 #ifdef HAS_CCI
+    	auto regex_str = hier_name_as_regex(hier_name);
+    	if(regex_str.length()) {
+    		auto rr = std::regex(regex_str);
+    		auto pred = [rr](cci::cci_param_untyped_handle& hndl){
+    			return regex_match(hndl.name(), rr);
+    		};
+    		for(auto& hndl:cci_broker.get_param_handles(pred)){
+    			hndl.set_value(value);
+    		}
+    		return;
+    	}
         cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
         if(param_handle.is_valid()) {
             param_handle.set_cci_value(cci::cci_value(value));
-        } else {
+            return;
+        }
 #endif
-            size_t pos = hier_name.find_last_of('.');
-            sc_core::sc_module* mod =
-                dynamic_cast<sc_core::sc_module*>(sc_core::sc_find_object(hier_name.substr(0, pos).c_str()));
-            if(mod != nullptr) {
-                sc_core::sc_attribute<T>* attr =
-                    dynamic_cast<sc_core::sc_attribute<T>*>(mod->get_attribute(hier_name.substr(pos + 1)));
-                if(attr != nullptr)
-                    attr->value = value;
-                else
-                    SCCERR() << "Could not set attribute value " << hier_name;
-            }
+        size_t pos = hier_name.find_last_of('.');
+        sc_core::sc_module* mod =
+        		dynamic_cast<sc_core::sc_module*>(sc_core::sc_find_object(hier_name.substr(0, pos).c_str()));
+        if(mod != nullptr) {
+        	sc_core::sc_attribute<T>* attr =
+        			dynamic_cast<sc_core::sc_attribute<T>*>(mod->get_attribute(hier_name.substr(pos + 1)));
+        	if(attr != nullptr)
+        		attr->value = value;
+        	else
+        		SCCERR() << "Could not set attribute value " << hier_name;
+        }
 #ifdef HAS_CCI
-            else {
-                cci_broker.set_preset_cci_value(hier_name, cci::cci_value(value));
-            }
+        else {
+        	cci_broker.set_preset_cci_value(hier_name, cci::cci_value(value));
         }
 #endif
     }
@@ -158,7 +170,7 @@ protected:
         if(config_phases & END_OF_ELABORATION) configure();
     }
     void start_of_simulation() override;
-
+    std::string hier_name_as_regex(std::string const&);
 #ifdef HAS_CCI
     cci::cci_originator cci_originator;
 #endif

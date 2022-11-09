@@ -335,6 +335,83 @@ template <class T> inline T remove_ext(T const& filename) {
     typename T::size_type const p(filename.find_last_of('.'));
     return p > 0 && p != T::npos ? filename.substr(0, p) : filename;
 }
+/**
+ * converts a globbing string into a regular expression
+ *
+ * The globbing supports ?,*,**, and character classes ([a-z] as well as [!a-z]). '.' acts as
+ * hierarchy delimiter and is only matched with **
+ * Regular expression must start with a carret ('^') so that it can be identified as regex.
+ *
+ * @param filename
+ * @return
+ */
+inline
+std::string  glob_to_regex(std::string val) {
+	const struct  {
+		const char *question_mark="[^.]";
+		const char *star= "[^.]*";
+		const char *double_star = ".*";
+	} subst_table;
+	auto is_regex_meta = [](char c)->bool {
+		switch(c) {
+		default: return false;
+		case '.':
+		case '(':
+		case ')':
+		case '{':
+		case '}':
+		case '+':
+		case '^':
+		case '$':
+		case '|':
+			return true;
+		}
+	};
+	util::trim(val);
+	std::ostringstream oss;
+	oss<<"^";
+	bool in_character_class = false, in_quote = false;
+	for (auto idx=0; idx<val.length(); ++idx) {
+		auto c = val[idx];
+		if (in_character_class) {
+			in_character_class = ((c != ']') || (val[idx-1] == '\\'));
+			oss << c;
+			continue;
+		}
+		if (in_quote) {
+			in_quote = false;
+			oss << c;
+			continue;
+		}
+		if (c == '\\') {
+			in_quote = true;
+			oss << c;
+			continue;
+		} else if (c == '[') {
+			oss << c;
+			in_character_class = true;
+			if (val[idx+1] == '!') {
+				oss << '^';
+				idx++;
+			}
+		} else if (is_regex_meta(c)) {
+			oss << '\\' << c;
+		} else if (c == '?') {
+			oss << subst_table.question_mark;
+		} else if (c == '*') {
+			if (val[idx+1] == '*') {
+				idx++;
+				oss << subst_table.double_star;
+			} else
+				oss << subst_table.star;
+		} else {
+			oss << c;
+		}
+	}
+	oss<<"$";
+	return oss.str();
+}
+
 } // namespace util
 /** @} */
 #endif /* _UTIL_ITIES_H_ */
