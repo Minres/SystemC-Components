@@ -50,13 +50,14 @@ public:
     using broker_t = void*;
 #endif
     enum {
-        BEFORE_END_OF_ELABORATION=1, END_OF_ELABORATION=2, START_OF_SIMULATION=4
+        NEVER=0, BEFORE_END_OF_ELABORATION=1, END_OF_ELABORATION=2, START_OF_SIMULATION=4
     };
     /**
      * create a configurer using an input file
-     * @param filename
+     * @param filename the input file to read containing the values to apply
+     * @param sc_attr_config_phases defines when to apply the values to sc_attribute instances
      */
-    configurer(const std::string& filename, unsigned config_phases = BEFORE_END_OF_ELABORATION);
+    configurer(const std::string& filename, unsigned sc_attr_config_phases = BEFORE_END_OF_ELABORATION);
 
     configurer() = delete;
 

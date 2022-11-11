@@ -42,9 +42,9 @@ inline auto get_sc_objects(sc_core::sc_object* obj = nullptr) -> const std::vect
 }
 
 #define FDECL(TYPE, FUNC)                                                                                              \
-		inline void writeValue(writer_type& writer, std::string const& key, TYPE value) {                                  \
-	writer.Key(key.c_str());                                                                                       \
-	writer.FUNC(value);                                                                                            \
+        inline void writeValue(writer_type& writer, std::string const& key, TYPE value) {                                  \
+    writer.Key(key.c_str());                                                                                       \
+    writer.FUNC(value);                                                                                            \
 }
 FDECL(int, Int)
 FDECL(unsigned int, Uint)
@@ -164,13 +164,13 @@ struct config_dumper {
 };
 
 #define CHECK_N_ASSIGN(TYPE, ATTR, VAL)                                                                                \
-		{                                                                                                                  \
-	auto* a = dynamic_cast<sc_core::sc_attribute<TYPE>*>(ATTR);                                                    \
-	if(a != nullptr) {                                                                                             \
-		a->value = VAL;                                                                                            \
-		return;                                                                                                    \
-	}                                                                                                              \
-		}
+        {                                                                                                                  \
+    auto* a = dynamic_cast<sc_core::sc_attribute<TYPE>*>(ATTR);                                                    \
+    if(a != nullptr) {                                                                                             \
+        a->value = VAL;                                                                                            \
+        return;                                                                                                    \
+    }                                                                                                              \
+        }
 
 void try_set_value(sc_core::sc_attr_base* attr_base, Value const& hier_val) {
     CHECK_N_ASSIGN(int, attr_base, hier_val.Get<int>());
@@ -304,13 +304,22 @@ void check_config_hierarchical(configurer::broker_t const& broker, Value const& 
                 auto* obj = sc_core::sc_find_object(objname.c_str());
                 if(!obj || !obj->get_attribute(attrname.c_str())) {
 #ifdef HAS_CCI
-                    auto param_handle = broker.get_param_handle(hier_name);
-                    if(!param_handle.is_valid() && attrname != SCC_LOG_LEVEL_PARAM_NAME)
+                    if(!broker.get_param_handle(hier_name).is_valid() && attrname != SCC_LOG_LEVEL_PARAM_NAME)
 #endif
                         throw std::invalid_argument(hier_name);
                 }
             }
         }
+    }
+}
+
+bool cci_name_ignore(std::pair<std::string, cci::cci_value> const& preset_value) {
+    std::string ending(SCC_LOG_LEVEL_PARAM_NAME);
+    auto& name = preset_value.first;
+    if (name.length() >= ending.length()) {
+        return (0 == name.compare(name.length() - ending.length(), ending.length(), ending));
+    } else {
+        return false;
     }
 }
 } // namespace
@@ -403,23 +412,32 @@ void configurer::set_configuration_value(sc_core::sc_attr_base* attr_base, sc_co
             try_set_value(attr_base, val);
     }
 }
-
 void configurer::config_check() {
     try {
-        if(root)
+        if(root) {
             check_config_hierarchical(cci_broker, root->document, "");
-    } catch(std::domain_error& e) {
-        SCCFATAL(this->name()) << "Illegal hierarchy name: '" << e.what() << "'";
-    } catch(std::invalid_argument& e) {
-        SCCFATAL(this->name()) << "Illegal parameter name: '" << e.what() << "'";
-    }
-}
-
-void init_cci(std::string name) {
+        }
 #ifdef HAS_CCI
-    thread_local cci_utils::broker broker(name);
-    cci::cci_register_broker(&broker);
+        cci_broker.ignore_unconsumed_preset_values(&cci_name_ignore);
+        auto res = cci_broker.get_unconsumed_preset_values();
+        if(res.size()) {
+            std::ostringstream oss;
+            for(auto& val:res)
+                oss<<"\t - "<<val.first<<"\n";
+            if(res.size()==1) {
+                SCCWARN("scc::configurer")<<"There is " << res.size() << " unused CCI preset value:\n"
+                        << oss.str() << "Please check your setup!";
+            } else {
+                SCCWARN("scc::configurer")<<"There are " << res.size() << " unused CCI preset values:\n"
+                        << oss.str() << "Please check your setup!";
+            }
+        }
 #endif
+    } catch(std::domain_error& e) {
+        SCCFATAL("scc::configurer") << "Illegal hierarchy name: '" << e.what() << "'";
+    } catch(std::invalid_argument& e) {
+        SCCFATAL("scc::configurer") << "Illegal parameter name: '" << e.what() << "'";
+    }
 }
 
 void configurer::start_of_simulation() {
