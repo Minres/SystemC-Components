@@ -254,6 +254,15 @@ inline std::string str_tolower(std::string str) {
     return str;
 }
 /**
+ * convert string to upper case
+ * @param str the string to convert
+ * @return
+ */
+inline std::string str_toupper(std::string str) {
+    std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c) { return std::toupper(c); });
+    return str;
+}
+/**
  * @fn bool iequals(const std::string&, const std::string&)
  * @brief compare two string ignoring case
  *
