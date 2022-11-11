@@ -1,5 +1,7 @@
 SET(_COMMON_HINTS
-  $ENV{VCS_HOME}/include/systemc231
+  $ENV{VCS_HOME}/linux64/include/systemc233
+  $ENV{VCS_HOME}/linux64/include/systemc232
+  $ENV{VCS_HOME}/linux64/include/systemc231
   )
 
 SET(_SYSTEMC_HINTS
@@ -7,30 +9,35 @@ SET(_SYSTEMC_HINTS
   )
 
 SET(_TLM_HINTS
-  $ENV{VCS_HOME}/include/systemc231/tlm
+  $ENV{VCS_HOME}/linux64/include/systemc233/tlm
+  $ENV{VCS_HOME}/linux64/include/systemc232/tlm
+  $ENV{VCS_HOME}/linux64/include/systemc231/tlm
   ${_COMMON_HINTS}
   )
 
 SET(_SCV_HINTS
+  $ENV{VCS_HOME}/linux64/include/scv-2.0
   ${_COMMON_HINTS}
   )
 
 SET(_CCI_HINTS
+  ${CCI_PREFIX}/include
+  ${CCI_PREFIX}/lib
+  ${CCI_PREFIX}/lib64
+  ${CCI_PREFIX}/lib-linux
+  ${CCI_PREFIX}/lib-linux64
+  ${CCI_PREFIX}/lib-macos
+  $ENV{CCI_HOME}/include
+  $ENV{CCI_HOME}/lib
+  $ENV{CCI_HOME}/lib64
+  $ENV{CCI_HOME}/lib-linux
+  $ENV{CCI_HOME}/lib-linux64
+  $ENV{CCI_HOME}/lib-macos
   ${_COMMON_HINTS}
   )
 
 SET(_COMMON_PATHS
-  $ENV{XCLM_PATH}/linux64/lib
-  /usr/include/systemc
-  /usr/lib
-  /usr/lib-linux
-  /usr/lib-linux64
-  /usr/lib-macos
-  /usr/local/include/sysc
-  /usr/local/lib
-  /usr/local/lib-linux
-   /usr/local/lib-linux64
-  /usr/local/lib-macos
+  $ENV{VCS_HOME}/linux64/lib
   )
   
 FIND_FILE(_SYSTEMC_HEADER_FILE
@@ -78,7 +85,7 @@ FIND_PATH(TLM_INCLUDE_DIRS
 )
 
 FIND_PATH(SystemC_LIBRARY_DIRS
-  NAMES libsystemc231-gcc6-64.a
+  NAMES libsystemc233-gcc9-64.a libsystemc232-gcc7-64.a libsystemc231-gcc6-64.a
   HINTS ${_SYSTEMC_HINTS}
   PATHS ${_COMMON_PATHS}
 )

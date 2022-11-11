@@ -57,6 +57,7 @@ set(SNPS_LIBS SnpsVPExt SnpsVP tbb omniORB4 omniDynamic4 omnithread dwarf elf)
 
 SET(_COMMON_HINTS
   $ENV{SNPS_VP_HOME}/common/include
+  $ENV{SNPS_VP_HOME}/common/libso-$ENV{SNPS_VP_COMPILER}
   $ENV{SNPS_VP_HOME}/common/libso-$ENV{COWARE_CXX_COMPILER}
   )
 
