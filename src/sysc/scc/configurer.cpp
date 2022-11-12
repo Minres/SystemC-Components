@@ -407,7 +407,28 @@ void configurer::set_configuration_value(sc_core::sc_attr_base* attr_base, sc_co
 	mirror_sc_attribute(cci_broker, cci2sc_attr, cci_originator, hier_name, attr_base);
 }
 
+inline
+std::string hier_name_as_regex(std::string const& parname){
+	if(parname.find_first_of("*?[")!=std::string::npos) {
+		return util::glob_to_regex(parname);
+	} else if(parname[0]=='^') {
+		return parname;
+	} else
+		return "";
+}
+
 void configurer::set_value(const std::string &hier_name, cci::cci_value value) {
+	auto regex_str = hier_name_as_regex(hier_name);
+	if(regex_str.length()) {
+		auto rr = std::regex(regex_str);
+		cci::cci_param_predicate pred = [rr](cci::cci_param_untyped_handle const& hndl){
+			return regex_match(hndl.name(), rr);
+		};
+		for(auto& hndl:cci_broker.get_param_handles(pred)){
+			hndl.set_cci_value(value);
+		}
+		return;
+	}
 	cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
 	if(param_handle.is_valid()) {
 		param_handle.set_cci_value(value);

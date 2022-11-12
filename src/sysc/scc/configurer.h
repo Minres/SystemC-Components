@@ -21,6 +21,7 @@
 #include "utilities.h"
 #ifdef HAS_CCI
 #include <cci_configuration>
+#include <regex>
 #endif
 
 /** \ingroup scc-sysc
@@ -146,7 +147,6 @@ protected:
         if(config_phases & END_OF_ELABORATION) configure();
     }
     void start_of_simulation() override;
-
 #ifdef HAS_CCI
     void set_value(const std::string& hier_name, cci::cci_value value);
     cci_param_cln cci2sc_attr;
