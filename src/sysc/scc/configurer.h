@@ -46,6 +46,11 @@ public:
     using base_type = sc_core::sc_module;
 #ifdef HAS_CCI
     using broker_t = cci::cci_broker_handle;
+    using cci_param_cln = std::vector<
+    		std::pair<
+				cci::cci_param_post_write_callback_untyped,
+				std::unique_ptr<cci::cci_param_untyped>
+			>>;
 #else
     using broker_t = void*;
 #endif
@@ -76,13 +81,6 @@ public:
      */
     void configure();
     /**
-     * dump the design hierarchy as text
-     *
-     * @param os the output stream, std::cout by default
-     * @param obj if not null specifies the root object of the dump
-     */
-    void dump_hierarchy(std::ostream& os = std::cout, sc_core::sc_object* obj = nullptr);
-    /**
      * dump the parameters of a design hierarchy to output stream immediately
      *
      * @param os the output stream, std::cout by default
@@ -104,31 +102,21 @@ public:
      */
     template <typename T> void set_value(const std::string& hier_name, T value) {
 #ifdef HAS_CCI
-        cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
-        if(param_handle.is_valid()) {
-            param_handle.set_cci_value(cci::cci_value(value));
-        } else {
-#endif
-            size_t pos = hier_name.find_last_of('.');
-            sc_core::sc_module* mod =
-                dynamic_cast<sc_core::sc_module*>(sc_core::sc_find_object(hier_name.substr(0, pos).c_str()));
-            if(mod != nullptr) {
-                sc_core::sc_attribute<T>* attr =
-                    dynamic_cast<sc_core::sc_attribute<T>*>(mod->get_attribute(hier_name.substr(pos + 1)));
-                if(attr != nullptr)
-                    attr->value = value;
-                else
-                    SCCERR() << "Could not set attribute value " << hier_name;
-            }
-#ifdef HAS_CCI
-            else {
-                cci_broker.set_preset_cci_value(hier_name, cci::cci_value(value));
-            }
-        }
+    	set_value(hier_name, cci::cci_value(value));
+#else
+    	size_t pos = hier_name.find_last_of('.');
+    	if(auto mod = dynamic_cast<sc_core::sc_module*>(sc_core::sc_find_object(hier_name.substr(0, pos).c_str()))) {
+    		if(auto attr = dynamic_cast<sc_core::sc_attribute<T>*>(mod->get_attribute(hier_name.substr(pos + 1))))
+    			attr->value = value;
+    		else
+    			SCCERR() << "Could not set attribute value " << hier_name;
+    	} else
+    		SCCERR() << "Could not set attribute value " << hier_name;
 #endif
     }
     /**
-     * set a value of an sc_attribute from given configuration
+     * set a value of an sc_attribute from given configuration. This is being used by the scc::ext_attribute
+     * which allows to use config values during construction
      *
      * @param attr_base
      * @param owner
@@ -160,6 +148,8 @@ protected:
     void start_of_simulation() override;
 
 #ifdef HAS_CCI
+    void set_value(const std::string& hier_name, cci::cci_value value);
+    cci_param_cln cci2sc_attr;
     cci::cci_originator cci_originator;
 #endif
     broker_t cci_broker;

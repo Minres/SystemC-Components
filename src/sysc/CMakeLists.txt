@@ -28,7 +28,6 @@ endif()
 
 set(LIB_SOURCES
     scc/utilities.cpp 
-    scc/configurer.cpp
     scc/tracer_base.cpp
     scc/tracer.cpp
     scc/perf_estimator.cpp
@@ -49,6 +48,11 @@ set(LIB_SOURCES
     scc/hierarchy_dumper.cpp
     scc/cci_broker.cpp
 )
+if(CCI_FOUND)
+	list(APPEND LIB_SOURCES     scc/configurer.cpp)
+else()
+	list(APPEND LIB_SOURCES     scc/configurer_nocci.cpp)
+endif()
 
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
