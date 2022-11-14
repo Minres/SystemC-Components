@@ -27,10 +27,41 @@
 #include <cstring>
 #include <fstream>
 #include <unordered_map>
+#ifdef HAS_YAMPCPP
+#include <yaml-cpp/exceptions.h>
+#include <yaml-cpp/node/parse.h>
+#include <yaml-cpp/yaml.h>
+#include <boost/optional/optional.hpp>
+namespace YAML	{
+template <typename T>
+struct as_if<T, boost::optional<T> > {
+	explicit as_if(const YAML::Node& node_) : node(node_) {}
+	const YAML::Node& node;
+	const boost::optional<T> operator()() const {
+		boost::optional<T> val;
+		T t;
+		if (node.m_pNode && YAML::convert<T>::decode(node, t))
+			val = std::move(t);
+		return val;
+	}
+};
 
+// There is already a std::string partial specialisation, so we need a full specialisation here
+template <>
+struct as_if<std::string, boost::optional<std::string> > {
+	explicit as_if(const YAML::Node& node_) : node(node_) {}
+	const YAML::Node& node;
+	const boost::optional<std::string> operator()() const {
+		boost::optional<std::string> val;
+		std::string t;
+		if (node.m_pNode && YAML::convert<std::string>::decode(node, t))
+			val = std::move(t);
+		return val;
+	}
+};
+}
+#endif
 namespace scc {
-using namespace rapidjson;
-using writer_type = PrettyWriter<OStreamWrapper>;
 namespace {
 inline auto get_sc_objects(sc_core::sc_object* obj = nullptr) -> const std::vector<sc_core::sc_object*>& {
 	if(obj)
@@ -38,9 +69,14 @@ inline auto get_sc_objects(sc_core::sc_object* obj = nullptr) -> const std::vect
 	else
 		return sc_core::sc_get_top_level_objects();
 }
+/*************************************************************************************************
+ * JSON config start
+ ************************************************************************************************/
+using namespace rapidjson;
+using writer_type = PrettyWriter<OStreamWrapper>;
 
-#define FDECL(TYPE, FUNC)                                                                                              \
-		inline void writeValue(writer_type& writer, std::string const& key, TYPE value) {                                  \
+#define FDECL(TYPE, FUNC)                                                                                          \
+		inline void writeValue(writer_type& writer, std::string const& key, TYPE value) {                          \
 	writer.Key(key.c_str());                                                                                       \
 	writer.FUNC(value);                                                                                            \
 }
@@ -85,10 +121,10 @@ inline bool start_object(writer_type& writer, char const* key, bool started) {
 	return true;
 }
 
-struct config_dumper {
+struct json_config_dumper {
 	configurer::broker_t const& broker;
 	std::unordered_map<std::string, std::vector<cci::cci_param_untyped_handle>> lut;
-	config_dumper(configurer::broker_t const& broker)
+	json_config_dumper(configurer::broker_t const& broker)
 	: broker(broker) {
 		for(auto& h : broker.get_param_handles()) {
 			auto value = h.get_cci_value();
@@ -154,38 +190,31 @@ struct config_dumper {
 	}
 };
 
-#define CHECK_N_ASSIGN(TYPE, ATTR, VAL)                                                                                \
-		{                                                                                                                  \
-	auto* a = dynamic_cast<sc_core::sc_attribute<TYPE>*>(ATTR);                                                    \
-	if(a != nullptr) {                                                                                             \
-		a->value = VAL;                                                                                            \
-		return;                                                                                                    \
-	}                                                                                                              \
-		}
-
-void try_set_value(sc_core::sc_attr_base* attr_base, Value const& hier_val) {
-	CHECK_N_ASSIGN(int, attr_base, hier_val.Get<int>());
-	CHECK_N_ASSIGN(unsigned, attr_base, hier_val.Get<unsigned>());
-	CHECK_N_ASSIGN(int64_t, attr_base, hier_val.Get<int64_t>());
-	CHECK_N_ASSIGN(uint64_t, attr_base, hier_val.Get<uint64_t>());
-	CHECK_N_ASSIGN(bool, attr_base, hier_val.Get<bool>());
-	CHECK_N_ASSIGN(float, attr_base, hier_val.Get<float>());
-	CHECK_N_ASSIGN(double, attr_base, hier_val.Get<double>());
-	CHECK_N_ASSIGN(std::string, attr_base, std::string(hier_val.GetString()));
-	CHECK_N_ASSIGN(char*, attr_base, strdup(hier_val.GetString()));
-	{
-		auto* a = dynamic_cast<sc_core::sc_attribute<sc_core::sc_time>*>(attr_base);
-		if(a != nullptr) {
-			a->value = sc_core::sc_time(hier_val.Get<double>(), sc_core::SC_SEC);
-			return;
-		}
-	}
-}
-
 struct json_config_reader {
 	configurer::broker_t& broker;
+	Document document;
+	bool valid{false};
+
 	json_config_reader(configurer::broker_t& broker)
 	: broker(broker) {}
+
+	void parse(std::istream& is) {
+		IStreamWrapper stream(is);
+		document.ParseStream(stream);
+		valid = !document.HasParseError();
+	}
+	std::string get_error_msg() {
+		std::ostringstream os;
+		os<<" location "<< (unsigned)document.GetErrorOffset()
+												<< ", reason: " << GetParseError_En(document.GetParseError());
+		return os.str();
+	}
+
+	inline
+	void configure_cci() {
+			configure_cci_hierarchical(document, "");
+	}
+
 	void configure_cci_hierarchical(Value const& value, std::string prefix) {
 		if(value.IsObject()) {
 			auto o = value.GetObject();
@@ -239,7 +268,99 @@ struct json_config_reader {
 		}
 	}
 };
+/*************************************************************************************************
+ * JSON config end
+ ************************************************************************************************/
+#ifdef HAS_YAMPCPP
+/*************************************************************************************************
+ * YAML config start
+ ************************************************************************************************/
+struct yaml_config_reader {
+	configurer::broker_t& broker;
+	YAML::Node document;
+	bool valid{false};
 
+	yaml_config_reader(configurer::broker_t& broker)
+	: broker(broker) {}
+
+	void parse(std::istream& is) {
+		std::string buf((std::istreambuf_iterator<char>(is)), std::istreambuf_iterator<char>());
+		document = YAML::Load(buf);
+		valid = document.IsDefined() && document.IsMap();
+	}
+
+	std::string get_error_msg() {
+		return "YAML file does not start with a map";
+	}
+
+	inline
+	void configure_cci() {
+		try{
+			configure_cci_hierarchical(document, "");
+		} catch(YAML::ParserException& e) {
+			throw std::runtime_error(e.what());
+		} catch(YAML::BadFile& e) {
+			throw std::runtime_error(e.what());
+		} catch(YAML::Exception& e) {
+			throw std::runtime_error(e.what());
+		}
+	}
+
+	void configure_cci_hierarchical(YAML::Node const& value, std::string prefix) {
+		if(value.IsMap()) {
+			for(auto it = value.begin(); it != value.end(); ++it) {
+				auto key_name = it->first.as<std::string>();
+				YAML::Node const& val = it->second;
+				auto hier_name = prefix.size() ? prefix + "." + key_name : key_name;
+				if(!val.IsDefined() || val.IsSequence())
+					return;
+				else if(val.IsMap())
+					configure_cci_hierarchical(val, hier_name);
+				else if(val.IsScalar()){
+					auto param_handle = broker.get_param_handle(hier_name);
+					if(param_handle.is_valid()) {
+						auto param=param_handle.get_cci_value();
+						if(param.is_bool()) {
+							param.set_bool(val.as<bool>());
+						} else if(param.is_int()) {
+							param.set_int(val.as<int>());
+						} else if(param.is_uint()) {
+							param.set_uint(val.as<unsigned>());
+						} else if(param.is_int64()) {
+							param.set_int64(val.as<int64_t>());
+						} else if(param.is_uint64()) {
+							param.set_uint64(val.as<uint64_t>());
+						} else if(param.is_double()) {
+							param.set_double(val.as<double>());
+						} else if(param.is_string()) {
+							param.set_string(val.as<std::string>());
+						}
+					} else {
+						if(auto res = YAML::as_if<bool, boost::optional<bool>>(val)()) {
+							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+						} else if(auto res = YAML::as_if<unsigned, boost::optional<unsigned>>(val)()) {
+							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+						} else if(auto res = YAML::as_if<uint64_t, boost::optional<uint64_t>>(val)()) {
+							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+						} else if(auto res = YAML::as_if<int, boost::optional<int>>(val)()) {
+							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+						} else if(auto res = YAML::as_if<int64_t, boost::optional<int64_t>>(val)()) {
+							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+						} else if(auto res = YAML::as_if<double, boost::optional<double>>(val)()) {
+							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+						} else if(auto res = YAML::as_if<std::string, boost::optional<std::string>>(val)()) {
+							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+						}
+					}
+				}
+			}
+		}
+	}
+};
+/*************************************************************************************************
+ * YAML config end
+ ************************************************************************************************/
+#endif
 template<typename T>
 inline
 bool create_cci_param(sc_core::sc_attr_base *base_attr,
@@ -349,11 +470,15 @@ bool cci_name_ignore(std::pair<std::string, cci::cci_value> const& preset_value)
 	}
 }
 } // namespace
-
-struct configurer::ConfigHolder {
-	Document document;
+#ifdef HAS_YAMPCPP
+struct configurer::ConfigHolder: public yaml_config_reader {
+	ConfigHolder(configurer::broker_t& broker) : yaml_config_reader(broker) {}
 };
-
+#else
+struct configurer::ConfigHolder: public json_config_reader {
+	ConfigHolder(configurer::broker_t& broker) : yaml_config_reader(broker) {}
+};
+#endif
 configurer::configurer(const std::string& filename, unsigned config_phases)
 : base_type(sc_core::sc_module_name("$$$configurer$$$"))
 , config_phases(config_phases)
@@ -363,18 +488,13 @@ configurer::configurer(const std::string& filename, unsigned config_phases)
 	if(filename.length() > 0) {
 		std::ifstream is(filename);
 		if(is.is_open()) {
-			root.reset(new ConfigHolder);
+			root.reset(new ConfigHolder(cci_broker));
 			try {
-				IStreamWrapper stream(is);
-				root->document.ParseStream(stream);
-				if(root->document.HasParseError()) {
-					SCCERR() << "Could not parse input file " << filename << ", location "
-							<< (unsigned)root->document.GetErrorOffset()
-							<< ", reason: " << GetParseError_En(root->document.GetParseError());
+				root->parse(is);
+				if(!root->valid) {
+					SCCERR() << "Could not parse input file " << filename << ", "<<root->get_error_msg();
 				} else {
-					json_config_reader reader(cci_broker);
-					reader.configure_cci_hierarchical(root->document, "");
-					config_valid = true;
+					root->configure_cci();
 				}
 			} catch(std::runtime_error& e) {
 				SCCERR() << "Could not parse input file " << filename << ", reason: " << e.what();
@@ -391,7 +511,7 @@ void configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj) {
 	OStreamWrapper stream(os);
 	writer_type writer(stream);
 	writer.StartObject();
-	config_dumper dumper(cci_broker);
+	json_config_dumper dumper(cci_broker);
 	for(auto* o : get_sc_objects(obj)) {
 		dumper.dump_config(o, writer);
 	}
@@ -427,13 +547,13 @@ void configurer::set_value(const std::string &hier_name, cci::cci_value value) {
 		for(auto& hndl:cci_broker.get_param_handles(pred)){
 			hndl.set_cci_value(value);
 		}
-		return;
-	}
-	cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
-	if(param_handle.is_valid()) {
-		param_handle.set_cci_value(value);
 	} else {
-		cci_broker.set_preset_cci_value(hier_name, value);
+		cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
+		if(param_handle.is_valid()) {
+			param_handle.set_cci_value(value);
+		} else {
+			cci_broker.set_preset_cci_value(hier_name, value);
+		}
 	}
 }
 

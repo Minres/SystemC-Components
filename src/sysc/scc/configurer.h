@@ -135,7 +135,6 @@ public:
     }
 
 protected:
-    bool config_valid{false};
     unsigned const config_phases;
     std::unique_ptr<ConfigHolder> root;
     std::string dump_file_name{""};
