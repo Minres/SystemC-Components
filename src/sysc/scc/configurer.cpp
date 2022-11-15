@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2017, 2018 MINRES Technologies GmbH
+ * Copyright 2017-2022 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,6 +69,13 @@ inline auto get_sc_objects(sc_core::sc_object* obj = nullptr) -> const std::vect
 	else
 		return sc_core::sc_get_top_level_objects();
 }
+
+struct config_reader {
+	std::vector<std::string> includes{"."};
+	std::string find_in_include_path(std::string const& file_name){
+		return file_name;
+	}
+};
 /*************************************************************************************************
  * JSON config start
  ************************************************************************************************/
@@ -190,7 +197,7 @@ struct json_config_dumper {
 	}
 };
 
-struct json_config_reader {
+struct json_config_reader: public config_reader {
 	configurer::broker_t& broker;
 	Document document;
 	bool valid{false};
@@ -206,13 +213,13 @@ struct json_config_reader {
 	std::string get_error_msg() {
 		std::ostringstream os;
 		os<<" location "<< (unsigned)document.GetErrorOffset()
-												<< ", reason: " << GetParseError_En(document.GetParseError());
+																						<< ", reason: " << GetParseError_En(document.GetParseError());
 		return os.str();
 	}
 
 	inline
 	void configure_cci() {
-			configure_cci_hierarchical(document, "");
+		configure_cci_hierarchical(document, "");
 	}
 
 	void configure_cci_hierarchical(Value const& value, std::string prefix) {
@@ -229,38 +236,57 @@ struct json_config_reader {
 				else if(val.IsObject())
 					configure_cci_hierarchical(val, hier_name);
 				else {
-					auto param_handle = broker.get_param_handle(hier_name);
-					if(param_handle.is_valid()) {
-						if(val.IsString()) {
-							param_handle.set_cci_value(cci::cci_value(std::string(val.GetString())));
-						} else if(val.IsBool()) {
-							param_handle.set_cci_value(cci::cci_value(val.Get<bool>()));
-						} else if(val.IsInt()) {
-							param_handle.set_cci_value(cci::cci_value(val.Get<int>()));
-						} else if(val.IsInt64()) {
-							param_handle.set_cci_value(cci::cci_value(val.Get<int64_t>()));
-						} else if(val.IsUint()) {
-							param_handle.set_cci_value(cci::cci_value(val.Get<unsigned>()));
-						} else if(val.IsUint64()) {
-							param_handle.set_cci_value(cci::cci_value(val.Get<uint64_t>()));
-						} else if(val.IsDouble()) {
-							param_handle.set_cci_value(cci::cci_value(val.Get<double>()));
+					if(key_name == "!include") {
+						json_config_reader sub_reader(broker);
+						std::ifstream ifs(find_in_include_path(val.GetString()));
+						if(ifs.is_open()) {
+							sub_reader.parse(ifs);
+							if(sub_reader.valid) {
+								sub_reader.configure_cci_hierarchical(sub_reader.document, prefix);
+							} else {
+								std::ostringstream os;
+								os<<"Could not parse include file "<<val.GetString();
+								throw std::runtime_error(os.str());
+							}
+						} else {
+							std::ostringstream os;
+							os<<"Could not open include file "<<val.GetString();
+							throw std::runtime_error(os.str());
 						}
 					} else {
-						if(val.IsString()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(std::string(val.GetString())));
-						} else if(val.IsBool()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<bool>()));
-						} else if(val.IsInt()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<int>()));
-						} else if(val.IsInt64()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<int64_t>()));
-						} else if(val.IsUint()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<unsigned>()));
-						} else if(val.IsUint64()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<uint64_t>()));
-						} else if(val.IsDouble()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<double>()));
+						auto param_handle = broker.get_param_handle(hier_name);
+						if(param_handle.is_valid()) {
+							if(val.IsString()) {
+								param_handle.set_cci_value(cci::cci_value(std::string(val.GetString())));
+							} else if(val.IsBool()) {
+								param_handle.set_cci_value(cci::cci_value(val.Get<bool>()));
+							} else if(val.IsInt()) {
+								param_handle.set_cci_value(cci::cci_value(val.Get<int>()));
+							} else if(val.IsInt64()) {
+								param_handle.set_cci_value(cci::cci_value(val.Get<int64_t>()));
+							} else if(val.IsUint()) {
+								param_handle.set_cci_value(cci::cci_value(val.Get<unsigned>()));
+							} else if(val.IsUint64()) {
+								param_handle.set_cci_value(cci::cci_value(val.Get<uint64_t>()));
+							} else if(val.IsDouble()) {
+								param_handle.set_cci_value(cci::cci_value(val.Get<double>()));
+							}
+						} else {
+							if(val.IsString()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(std::string(val.GetString())));
+							} else if(val.IsBool()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<bool>()));
+							} else if(val.IsInt()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<int>()));
+							} else if(val.IsInt64()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<int64_t>()));
+							} else if(val.IsUint()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<unsigned>()));
+							} else if(val.IsUint64()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<uint64_t>()));
+							} else if(val.IsDouble()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(val.Get<double>()));
+							}
 						}
 					}
 				}
@@ -275,7 +301,7 @@ struct json_config_reader {
 /*************************************************************************************************
  * YAML config start
  ************************************************************************************************/
-struct yaml_config_reader {
+struct yaml_config_reader: public config_reader {
 	configurer::broker_t& broker;
 	YAML::Node document;
 	bool valid{false};
@@ -317,39 +343,58 @@ struct yaml_config_reader {
 				else if(val.IsMap())
 					configure_cci_hierarchical(val, hier_name);
 				else if(val.IsScalar()){
-					auto param_handle = broker.get_param_handle(hier_name);
-					if(param_handle.is_valid()) {
-						auto param=param_handle.get_cci_value();
-						if(param.is_bool()) {
-							param.set_bool(val.as<bool>());
-						} else if(param.is_int()) {
-							param.set_int(val.as<int>());
-						} else if(param.is_uint()) {
-							param.set_uint(val.as<unsigned>());
-						} else if(param.is_int64()) {
-							param.set_int64(val.as<int64_t>());
-						} else if(param.is_uint64()) {
-							param.set_uint64(val.as<uint64_t>());
-						} else if(param.is_double()) {
-							param.set_double(val.as<double>());
-						} else if(param.is_string()) {
-							param.set_string(val.as<std::string>());
+					if(key_name == "!include") {
+						yaml_config_reader sub_reader(broker);
+						std::ifstream ifs(find_in_include_path(val.as<std::string>()));
+						if(ifs.is_open()) {
+							sub_reader.parse(ifs);
+							if(sub_reader.valid) {
+								sub_reader.configure_cci_hierarchical(sub_reader.document, prefix);
+							} else {
+								std::ostringstream os;
+								os<<"Could not parse include file "<<val.as<std::string>();
+								throw std::runtime_error(os.str());
+							}
+						} else {
+							std::ostringstream os;
+							os<<"Could not open include file "<<val.as<std::string>();
+							throw std::runtime_error(os.str());
 						}
 					} else {
-						if(auto res = YAML::as_if<bool, boost::optional<bool>>(val)()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-						} else if(auto res = YAML::as_if<unsigned, boost::optional<unsigned>>(val)()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-						} else if(auto res = YAML::as_if<uint64_t, boost::optional<uint64_t>>(val)()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-						} else if(auto res = YAML::as_if<int, boost::optional<int>>(val)()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-						} else if(auto res = YAML::as_if<int64_t, boost::optional<int64_t>>(val)()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-						} else if(auto res = YAML::as_if<double, boost::optional<double>>(val)()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-						} else if(auto res = YAML::as_if<std::string, boost::optional<std::string>>(val)()) {
-							broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+						auto param_handle = broker.get_param_handle(hier_name);
+						if(param_handle.is_valid()) {
+							auto param=param_handle.get_cci_value();
+							if(param.is_bool()) {
+								param.set_bool(val.as<bool>());
+							} else if(param.is_int()) {
+								param.set_int(val.as<int>());
+							} else if(param.is_uint()) {
+								param.set_uint(val.as<unsigned>());
+							} else if(param.is_int64()) {
+								param.set_int64(val.as<int64_t>());
+							} else if(param.is_uint64()) {
+								param.set_uint64(val.as<uint64_t>());
+							} else if(param.is_double()) {
+								param.set_double(val.as<double>());
+							} else if(param.is_string()) {
+								param.set_string(val.as<std::string>());
+							}
+						} else {
+							if(auto res = YAML::as_if<bool, boost::optional<bool>>(val)()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+							} else if(auto res = YAML::as_if<unsigned, boost::optional<unsigned>>(val)()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+							} else if(auto res = YAML::as_if<uint64_t, boost::optional<uint64_t>>(val)()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+							} else if(auto res = YAML::as_if<int, boost::optional<int>>(val)()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+							} else if(auto res = YAML::as_if<int64_t, boost::optional<int64_t>>(val)()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+							} else if(auto res = YAML::as_if<double, boost::optional<double>>(val)()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+							} else if(auto res = YAML::as_if<std::string, boost::optional<std::string>>(val)()) {
+								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+							}
 						}
 					}
 				}
@@ -479,33 +524,39 @@ struct configurer::ConfigHolder: public json_config_reader {
 	ConfigHolder(configurer::broker_t& broker) : yaml_config_reader(broker) {}
 };
 #endif
+
 configurer::configurer(const std::string& filename, unsigned config_phases)
 : base_type(sc_core::sc_module_name("$$$configurer$$$"))
 , config_phases(config_phases)
 , cci_originator("configurer")
 , cci_broker(cci::cci_get_global_broker(cci_originator))
+, root(new ConfigHolder(cci_broker))
 {
-	if(filename.length() > 0) {
-		std::ifstream is(filename);
-		if(is.is_open()) {
-			root.reset(new ConfigHolder(cci_broker));
-			try {
-				root->parse(is);
-				if(!root->valid) {
-					SCCERR() << "Could not parse input file " << filename << ", "<<root->get_error_msg();
-				} else {
-					root->configure_cci();
-				}
-			} catch(std::runtime_error& e) {
-				SCCERR() << "Could not parse input file " << filename << ", reason: " << e.what();
-			}
-		} else {
-			SCCERR() << "Could not open input file " << filename;
-		}
-	}
+	if (filename.length() > 0)
+		read_input_file(filename);
 }
 
 configurer::~configurer() {}
+
+void configurer::read_input_file(const std::string &filename) {
+	std::ifstream is(filename);
+	if (is.is_open()) {
+		try {
+			root->parse(is);
+			if (!root->valid) {
+				SCCERR() << "Could not parse input file " << filename
+						<< ", " << root->get_error_msg();
+			} else {
+				root->configure_cci();
+			}
+		} catch (std::runtime_error &e) {
+			SCCERR() << "Could not parse input file " << filename
+					<< ", reason: " << e.what();
+		}
+	} else {
+		SCCERR() << "Could not open input file " << filename;
+	}
+}
 
 void configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj) {
 	OStreamWrapper stream(os);

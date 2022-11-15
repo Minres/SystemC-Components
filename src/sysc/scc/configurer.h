@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2017, 2018 MINRES Technologies GmbH
+ * Copyright 2017-2022 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,7 +63,7 @@ public:
      * @param filename the input file to read containing the values to apply
      * @param sc_attr_config_phases defines when to apply the values to sc_attribute instances
      */
-    configurer(const std::string& filename, unsigned sc_attr_config_phases = BEFORE_END_OF_ELABORATION);
+    configurer(std::string const& filename, unsigned sc_attr_config_phases = BEFORE_END_OF_ELABORATION);
 
     configurer() = delete;
 
@@ -76,7 +76,9 @@ public:
     configurer& operator=(const configurer&) = delete;
 
     configurer& operator=(configurer&&) = delete;
-    /**
+
+	void read_input_file(std::string const&filename);
+	/**
      * configure the design hierarchy using the input file. Apply the values to
      * sc_core::sc_attribute in th edsign hierarchy
      */
@@ -96,12 +98,15 @@ public:
      */
     void dump_configuration(std::string const& file_name) { dump_file_name = file_name; }
     /**
-     * set a value a some attribute (sc_attribute or cci_param)
+     * set a value of some property (sc_attribute or cci_param) from programatically
      *
-     * @param hier_name the hierarchical name of the attribute
+     * In case the configurer is being used without CCI the function can only be called after
+     * the simulation objects are instantiated since the sc_attributes have to exist.
+     *
+     * @param hier_name the hierarchical name of the property
      * @param value the value to put
      */
-    template <typename T> void set_value(const std::string& hier_name, T value) {
+    template <typename T> void set_value(std::string const& hier_name, T value) {
 #ifdef HAS_CCI
     	set_value(hier_name, cci::cci_value(value));
 #else

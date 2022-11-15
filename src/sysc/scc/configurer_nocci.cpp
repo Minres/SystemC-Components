@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2017, 2018 MINRES Technologies GmbH
+ * Copyright 2017-2022 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -171,27 +171,27 @@ void check_config_hierarchical(Value const& node, std::string const& prefix) {
 		auto key_name = itr->name.GetString();
 		if(strncmp(key_name, SCC_LOG_LEVEL_PARAM_NAME, 9) == 0)
 			continue; // virtual attribute
-			auto hier_name = prefix.size() ? prefix + "." + key_name : key_name;
-			Value const& val = itr->value;
-			if(val.IsNull() || val.IsArray())
-				continue;
-			else if(val.IsObject()) {
-				if(!sc_core::sc_find_object(hier_name.c_str())) {
-					if(prefix.size())
-						throw std::domain_error(hier_name);
-				} else
-					check_config_hierarchical(val, hier_name);
-			} else {
-				auto pos = hier_name.rfind('.');
-				if(pos != std::string::npos) {
-					auto objname = hier_name.substr(0, pos);
-					auto attrname = hier_name.substr(pos + 1);
-					auto* obj = sc_core::sc_find_object(objname.c_str());
-					if(!obj || !obj->get_attribute(attrname.c_str())) {
-						throw std::invalid_argument(hier_name);
-					}
+		auto hier_name = prefix.size() ? prefix + "." + key_name : key_name;
+		Value const& val = itr->value;
+		if(val.IsNull() || val.IsArray())
+			continue;
+		else if(val.IsObject()) {
+			if(!sc_core::sc_find_object(hier_name.c_str())) {
+				if(prefix.size())
+					throw std::domain_error(hier_name);
+			} else
+				check_config_hierarchical(val, hier_name);
+		} else {
+			auto pos = hier_name.rfind('.');
+			if(pos != std::string::npos) {
+				auto objname = hier_name.substr(0, pos);
+				auto attrname = hier_name.substr(pos + 1);
+				auto* obj = sc_core::sc_find_object(objname.c_str());
+				if(!obj || !obj->get_attribute(attrname.c_str())) {
+					throw std::invalid_argument(hier_name);
 				}
 			}
+		}
 	}
 }
 } // namespace
@@ -204,31 +204,34 @@ configurer::configurer(const std::string& filename, unsigned config_phases)
 : base_type(sc_core::sc_module_name("$$$configurer$$$"))
 , config_phases(config_phases)
 , cci_broker(nullptr)
+, root(new ConfigHolder)
 {
-	if(filename.length() > 0) {
-		std::ifstream is(filename);
-		if(is.is_open()) {
-			root.reset(new ConfigHolder);
-			try {
-				IStreamWrapper stream(is);
-				root->document.ParseStream(stream);
-				if(root->document.HasParseError()) {
-					SCCERR() << "Could not parse input file " << filename << ", location "
-							<< (unsigned)root->document.GetErrorOffset()
-							<< ", reason: " << GetParseError_En(root->document.GetParseError());
-				} else {
-					config_valid = true;
-				}
-			} catch(std::runtime_error& e) {
-				SCCERR() << "Could not parse input file " << filename << ", reason: " << e.what();
-			}
-		} else {
-			SCCERR() << "Could not open input file " << filename;
-		}
-	}
+	if(filename.length() > 0)
+		read_input_file(filename);
 }
 
 configurer::~configurer() {}
+
+void configurer::read_input_file(const std::string &filename) {
+	std::ifstream is(filename);
+	if(is.is_open()) {
+		try {
+			IStreamWrapper stream(is);
+			root->document.ParseStream(stream);
+			if(root->document.HasParseError()) {
+				SCCERR() << "Could not parse input file " << filename << ", location "
+						<< (unsigned)root->document.GetErrorOffset()
+						<< ", reason: " << GetParseError_En(root->document.GetParseError());
+			} else {
+				config_valid = true;
+			}
+		} catch(std::runtime_error& e) {
+			SCCERR() << "Could not parse input file " << filename << ", reason: " << e.what();
+		}
+	} else {
+		SCCERR() << "Could not open input file " << filename;
+	}
+}
 
 void configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj) {
 	OStreamWrapper stream(os);
