@@ -150,6 +150,8 @@ protected:
     void set_value(const std::string& hier_name, cci::cci_value value);
     cci_param_cln cci2sc_attr;
     cci::cci_originator cci_originator;
+#else
+    bool config_valid{false};
 #endif
     broker_t cci_broker;
 };
