@@ -70,9 +70,31 @@ inline auto get_sc_objects(sc_core::sc_object* obj = nullptr) -> const std::vect
 		return sc_core::sc_get_top_level_objects();
 }
 
+#ifdef WIN32
+#define DIR_SEPARATOR '\\'
+#else
+#define DIR_SEPARATOR '/'
+#endif
+
 struct config_reader {
 	std::vector<std::string> includes{"."};
+	void add_to_includes(std::string const& path) {
+		for(auto& e: includes) {
+			if(e==path) return;
+		}
+		includes.push_back(path);
+	}
+
 	std::string find_in_include_path(std::string const& file_name){
+		if(file_name[0]=='/' || file_name[0]=='\\')
+			return file_name;
+		else
+			for(auto& incl:includes) {
+				auto full_name = incl + DIR_SEPARATOR + file_name;
+				std::ifstream ifs(full_name);
+				if(ifs.is_open())
+					return full_name;
+			}
 		return file_name;
 	}
 };
@@ -332,7 +354,7 @@ struct yaml_config_reader: public config_reader {
 		}
 	}
 
-	void configure_cci_hierarchical(YAML::Node const& value, std::string prefix) {
+	void configure_cci_hierarchical(YAML::Node const& value, std::string const& prefix) {
 		if(value.IsMap()) {
 			for(auto it = value.begin(); it != value.end(); ++it) {
 				auto key_name = it->first.as<std::string>();
@@ -343,13 +365,13 @@ struct yaml_config_reader: public config_reader {
 				else if(val.IsMap())
 					configure_cci_hierarchical(val, hier_name);
 				else if(val.IsScalar()){
-					if(key_name == "!include") {
+					if(val.Tag() == "!include") {
 						yaml_config_reader sub_reader(broker);
 						std::ifstream ifs(find_in_include_path(val.as<std::string>()));
 						if(ifs.is_open()) {
 							sub_reader.parse(ifs);
 							if(sub_reader.valid) {
-								sub_reader.configure_cci_hierarchical(sub_reader.document, prefix);
+								sub_reader.configure_cci_hierarchical(sub_reader.document, hier_name);
 							} else {
 								std::ostringstream os;
 								os<<"Could not parse include file "<<val.as<std::string>();
@@ -539,6 +561,7 @@ configurer::configurer(const std::string& filename, unsigned config_phases)
 configurer::~configurer() {}
 
 void configurer::read_input_file(const std::string &filename) {
+	root->add_to_includes(util::dir_name(filename));
 	std::ifstream is(filename);
 	if (is.is_open()) {
 		try {
