@@ -49,7 +49,7 @@ public:
     : base_type(name_)
     , owner(owner) {
         owner->add_attribute(*this);
-        configurer::instance().set_configuration_value(this, owner);
+        configurer::get().set_configuration_value(this, owner);
     }
     /**
      * create an extended attribute based on name, value and owner
@@ -62,7 +62,7 @@ public:
     : base_type(name_, value_)
     , owner(owner) {
         owner->add_attribute(*this);
-        configurer::instance().set_configuration_value(this, owner);
+        configurer::get().set_configuration_value(this, owner);
     }
     /**
      * no copy constructor

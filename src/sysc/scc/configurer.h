@@ -133,16 +133,17 @@ public:
      *
      * @return reference to the singleton
      */
-    static configurer& instance() {
-        configurer* inst = dynamic_cast<configurer*>(sc_core::sc_find_object("configurer"));
-        sc_assert("No configurer instantiated when using it" && inst != nullptr);
+    static configurer& get() {
+        configurer* inst = dynamic_cast<configurer*>(sc_core::sc_find_object("$$$configurer$$$"));
+        if(!inst)
+            SCCFATAL()<<"No configurer instantiated when using it";
         return *inst;
     }
 
 protected:
     unsigned const config_phases;
-    std::unique_ptr<ConfigHolder> root;
     std::string dump_file_name{""};
+    configurer(std::string const& filename, unsigned sc_attr_config_phases, sc_core::sc_module_name nm);
     void config_check();
     void before_end_of_elaboration() override {
         if(config_phases & BEFORE_END_OF_ELABORATION) configure();
@@ -151,6 +152,7 @@ protected:
         if(config_phases & END_OF_ELABORATION) configure();
     }
     void start_of_simulation() override;
+    broker_t cci_broker;
 #ifdef HAS_CCI
     void set_value(const std::string& hier_name, cci::cci_value value);
     cci_param_cln cci2sc_attr;
@@ -158,7 +160,7 @@ protected:
 #else
     bool config_valid{false};
 #endif
-    broker_t cci_broker;
+    std::unique_ptr<ConfigHolder> root;
 };
 
 } // namespace scc

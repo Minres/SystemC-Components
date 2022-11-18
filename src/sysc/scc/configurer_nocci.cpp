@@ -200,8 +200,9 @@ struct configurer::ConfigHolder {
 	Document document;
 };
 
-configurer::configurer(const std::string& filename, unsigned config_phases)
-: base_type(sc_core::sc_module_name("$$$configurer$$$"))
+configurer::configurer(const std::string& filename, unsigned config_phases) : configurer(filename, config_phases, "$$$configurer$$$") {}
+configurer::configurer(const std::string& filename, unsigned config_phases, sc_core::sc_module_name nm)
+: base_type(nm)
 , config_phases(config_phases)
 , cci_broker(nullptr)
 , root(new ConfigHolder)
