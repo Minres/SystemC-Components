@@ -22,6 +22,7 @@
 #include <sysc/kernel/sc_ver.h>
 #include <sysc/datatypes/int/sc_nbdefs.h>
 #include <sysc/communication/sc_signal_ifs.h>
+#include <sysc/kernel/sc_process.h>
 #include <sysc/kernel/sc_dynamic_processes.h>
 #include <sysc/kernel/sc_process_handle.h>
 // Some forward declarations
@@ -237,9 +238,10 @@ void sc_trace(sc_core::sc_trace_file* tf, const sc_core::sc_inout<T>& port, cons
 		DEFN_TRACE_FUNC_REF_B(tp)                                                     \
 		DEFN_TRACE_FUNC_PTR_B(tp)
 
-
+#ifndef NCSC
 DEFN_TRACE_FUNC_A( sc_core::sc_event )
 DEFN_TRACE_FUNC_A( sc_core::sc_time )
+#endif
 
 DEFN_TRACE_FUNC_A( bool )
 DEFN_TRACE_FUNC_A( float )

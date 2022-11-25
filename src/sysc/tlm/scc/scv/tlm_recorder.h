@@ -25,6 +25,7 @@
 #include <string>
 #include <tlm/scc/tlm_mm.h>
 #include <tlm>
+#include <sysc/kernel/sc_dynamic_processes.h>
 #include <tlm_utils/peq_with_cb_and_phase.h>
 #include <unordered_map>
 

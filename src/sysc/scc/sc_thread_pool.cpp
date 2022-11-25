@@ -17,10 +17,6 @@
 #include <functional>
 #include <ostream>
 
-namespace sc_core {
-inline std::ostream& operator<<(std::ostream& os, std::function<void()>&) { return os; }
-} // namespace sc_core
-
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #include "sc_thread_pool.h"
 
@@ -40,14 +36,14 @@ void sc_thread_pool::execute(std::function<void(void)> fct) {
                 thread_active++;
                 while(true) {
                     thread_avail++;
-                    auto fct = dispatch_queue.read();
+                    auto fct = dispatch_queue.get();
                     sc_assert(thread_avail > 0);
                     thread_avail--;
                     fct();
                 }
             },
             nullptr, &opts);
-    dispatch_queue.write(fct);
+    dispatch_queue.notify(fct);
 }
 
 } /* namespace scc */

@@ -87,7 +87,7 @@ public:
     void add_control() {
         if(control_added)
             return;
-        for(auto* o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
+        for(auto* o : sc_core::sc_get_top_level_objects())
             augment_object_hierarchical(o);
         control_added = true;
     }

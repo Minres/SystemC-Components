@@ -1,0 +1,23 @@
+project(SystemC-CCI VERSION "1.1.0" LANGUAGES CXX)
+include(SystemCPackage)
+add_library(${PROJECT_NAME} 
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_broker_handle.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_broker_manager.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_originator.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_param_if.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_param_untyped.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_param_untyped_handle.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_report_handler.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_core/cci_name_gen.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_core/cci_value.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_core/cci_value_converter.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_utils/broker.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_utils/consuming_broker.cpp)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+if(USE_NCSC_SYSTEMC)
+	target_compile_definitions(${PROJECT_NAME} PUBLIC SC_VERSION_CODE=200301)
+endif()
+target_link_libraries(${PROJECT_NAME} PUBLIC RapidJSON SystemC::systemc) 
+if(NOT TARGET SystemC::cci)
+	add_library(SystemC::cci ALIAS ${PROJECT_NAME})
+endif()

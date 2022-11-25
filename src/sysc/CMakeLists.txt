@@ -18,10 +18,6 @@ if(SystemC_FOUND)
         message(STATUS "SCV headers at ${SCV_INCLUDE_DIRS}")
         message(STATUS "SCV libraries: ${SCV_LIBRARIES}")
     endif(SCV_FOUND)
-    if(CCI_FOUND)
-        message(STATUS "CCI headers at ${CCI_INCLUDE_DIRS}")
-        message(STATUS "CCI libraries: ${CCI_LIBRARIES}")
-    endif()
 else()
     message(FATAL_ERROR "No usable SystemC installation found")
 endif()
@@ -48,11 +44,7 @@ set(LIB_SOURCES
     scc/hierarchy_dumper.cpp
     scc/cci_broker.cpp
 )
-if(CCI_FOUND)
-	list(APPEND LIB_SOURCES     scc/configurer.cpp)
-else()
-	list(APPEND LIB_SOURCES     scc/configurer_nocci.cpp)
-endif()
+list(APPEND LIB_SOURCES     scc/configurer.cpp)
 
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
@@ -67,12 +59,10 @@ if(ENABLE_SQLITE)
     list(Append LIB_SOURCES  scc/scv/scv_tr_sqlite.cpp ../../third_party/sqlite3/sqlite3.c )
 endif()
 
-if(CCI_FOUND)
-    list(APPEND LIB_SOURCES  
-        scc/configurable_tracer.cpp
-        scc/sc_thread_pool.cpp
-    )
-endif()
+list(APPEND LIB_SOURCES  
+    scc/configurable_tracer.cpp
+    scc/sc_thread_pool.cpp
+)
 
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
 if(SCC_LIMIT_TRACE_TYPE_LIST)
@@ -105,15 +95,15 @@ elseif(yaml-cpp_FOUND)
     target_compile_definitions(${PROJECT_NAME} PUBLIC -DHAS_YAMPCPP)
     target_link_libraries(${PROJECT_NAME} PUBLIC yaml-cpp::yaml-cpp)
 endif()
-if(TARGET SystemC::cci)
-    message(STATUS "${PROJECT_NAME}: building with CCI support")
-    target_compile_definitions(${PROJECT_NAME} PUBLIC -DHAS_CCI)
-    target_link_libraries(${PROJECT_NAME} PUBLIC SystemC::cci)
-elseif(CCI_FOUND)
+if(CCI_FOUND)
     message(STATUS "${PROJECT_NAME}: building with CCI support")
     target_compile_definitions(${PROJECT_NAME} PUBLIC ${CCI_DEFINITIONS} -DHAS_CCI)
     target_include_directories (${PROJECT_NAME} PUBLIC ${CCI_INCLUDE_DIRS})    
     target_link_libraries(${PROJECT_NAME} PUBLIC ${CCI_LIBRARIES} )
+else()
+    message(STATUS "${PROJECT_NAME}: building with CCI support")
+    target_compile_definitions(${PROJECT_NAME} PUBLIC -DHAS_CCI)
+    target_link_libraries(${PROJECT_NAME} PUBLIC SystemC::cci)
 endif()
 if(ENABLE_SCV AND TARGET SystemC::scv)
     message(STATUS "${PROJECT_NAME}: building with SCV support")

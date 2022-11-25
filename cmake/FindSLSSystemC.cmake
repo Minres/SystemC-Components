@@ -22,7 +22,7 @@ Result Variables
 
 This will define the following variables:
 
-``SystemC_FOUND``
+``SLSSystemC_FOUND``
   True if the system has the SystemC library.
 ``SystemC_VERSION``
   The version of the SystemC library which was found.
@@ -135,8 +135,8 @@ if (SystemC_INCLUDE_DIR)
 endif()
 
 
-find_package_handle_standard_args(SystemC
-  FOUND_VAR SystemC_FOUND
+find_package_handle_standard_args(SLSSystemC
+  FOUND_VAR SLSSystemC_FOUND
   REQUIRED_VARS
     ${LIB_VAR_NAMES}
     SystemC_INCLUDE_DIR
@@ -144,7 +144,7 @@ find_package_handle_standard_args(SystemC
   VERSION_VAR SystemC_VERSION
 )
 
-if(SystemC_FOUND)
+if(SLSSystemC_FOUND)
   get_filename_component(SNPS_LIB_DIR ${SnpsVP_LIBRARY} DIRECTORY)
   set(SystemC_LIBRARY_DIRS ${SNPS_LIB_DIR})
   set(SystemC_LIBRARIES ${SNPS_LIBS})     
@@ -152,7 +152,7 @@ if(SystemC_FOUND)
   set(SystemC_DEFINITIONS ${PC_SystemC_CFLAGS_OTHER})
 endif()
 
-if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
+if(SLSSystemC_FOUND AND NOT TARGET SystemC::systemc)
   add_library(SystemC::systemc UNKNOWN IMPORTED)
   target_link_libraries(SystemC::systemc INTERFACE ${SystemC_LIBRARIES})
   set_target_properties(SystemC::systemc PROPERTIES

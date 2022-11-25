@@ -22,7 +22,7 @@ Result Variables
 
 This will define the following variables:
 
-``SystemC_FOUND``
+``XMSystemC_FOUND``
   True if the system has the SystemC library.
 ``SystemC_VERSION``
   The version of the SystemC library which was found.
@@ -48,7 +48,8 @@ This will define the following variables:
   Libraries needed to link to CCI.
 
 #]=======================================================================]
-set(NCSC_LIBS systemc_sh scBootstrap_sh xmscCoroutines_sh ovm)
+set(NCSC_LIBS systemc_sh xmscCoSim_sh xmscCoroutines_sh)
+#set(NCSC_LIBS systemc_sh xmscCoroutines_sh ovm scBootstrap_sh)
 
 find_program(ncroot_EXECUTABLE ncroot) 
 if(NOT ncroot_EXECUTABLE)
@@ -149,8 +150,8 @@ if (SystemC_INCLUDE_DIR)
 endif()
 
 
-find_package_handle_standard_args(SystemC
-  FOUND_VAR SystemC_FOUND
+find_package_handle_standard_args(XMSystemC
+  FOUND_VAR XMSystemC_FOUND
   REQUIRED_VARS
     ${LIB_VAR_NAMES}
     SystemC_INCLUDE_DIR
@@ -158,15 +159,15 @@ find_package_handle_standard_args(SystemC
   VERSION_VAR SystemC_VERSION
 )
 
-if(SystemC_FOUND)
+if(XMSystemC_FOUND)
   get_filename_component(NCSC_LIB_DIR ${systemc_sh_LIBRARY} DIRECTORY)
   set(SystemC_LIBRARY_DIRS ${NCSC_LIB_DIR})
-  set(SystemC_LIBRARIES ${NCSC_LIBS})     
+  set(SystemC_LIBRARIES ${NCSC_LIBS} ${NCROOT_PATH}/tools/lib/64bit/libudm.so)     
   set(SystemC_INCLUDE_DIRS ${TLM_INCLUDE_DIR} ${SystemC_INCLUDE_DIR})
   set(SystemC_DEFINITIONS ${PC_SystemC_CFLAGS_OTHER} -DNCSC)
 endif()
 
-if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
+if(XMSystemC_FOUND AND NOT TARGET SystemC::systemc)
   add_library(SystemC::systemc UNKNOWN IMPORTED)
   set_target_properties(SystemC::systemc PROPERTIES
     IMPORTED_LOCATION ${systemc_sh_LIBRARY}

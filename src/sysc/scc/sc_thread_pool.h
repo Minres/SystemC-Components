@@ -19,6 +19,7 @@
 #include <cci_configuration>
 #include <functional>
 #include <systemc>
+#include "peq.h"
 
 /** \ingroup scc-sysc
  *  @{
@@ -37,7 +38,7 @@ public:
     cci::cci_param<unsigned> max_concurrent_threads{"max_concurrent_threads", 16};
 
 private:
-    sc_core::sc_fifo<std::function<void(void)>> dispatch_queue{"dispatch_queue"};
+    scc::peq<std::function<void(void)>> dispatch_queue{"dispatch_queue"};
     unsigned thread_avail{0}, thread_active{0};
 };
 } /* namespace scc */
