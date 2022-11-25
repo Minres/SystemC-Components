@@ -17,11 +17,11 @@
 
  ****************************************************************************/
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_broker_manager.h"
+#include "cci_cfg/cci_broker_manager.h"
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_broker_if.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_originator.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_report_handler.h"
+#include "cci_cfg/cci_broker_if.h"
+#include "cci_cfg/cci_originator.h"
+#include "cci_cfg/cci_report_handler.h"
 
 CCI_OPEN_NAMESPACE_
 

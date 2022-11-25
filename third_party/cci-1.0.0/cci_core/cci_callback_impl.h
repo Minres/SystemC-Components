@@ -28,8 +28,8 @@
 #ifndef CCI_CORE_CCI_CALLBACK_IMPL_H_INCLUDED_
 #define CCI_CORE_CCI_CALLBACK_IMPL_H_INCLUDED_
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_cmnhdr.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_meta.h"
+#include "cci_core/cci_cmnhdr.h"
+#include "cci_core/cci_meta.h"
 
 CCI_OPEN_NAMESPACE_
 ///@cond CCI_HIDDEN_FROM_DOXYGEN

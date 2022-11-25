@@ -28,7 +28,7 @@
 #define CCI_CORE_CCI_CALLBACK_H_INCLUDED_
 
 #include <algorithm> // std::swap
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_cmnhdr.h"
+#include "cci_core/cci_cmnhdr.h"
 
 CCI_OPEN_NAMESPACE_
 
@@ -45,7 +45,7 @@ class cci_callback_typed_handle;
 CCI_CLOSE_NAMESPACE_
 
 // include here to propagate forward declarations
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_callback_impl.h"
+#include "cci_core/cci_callback_impl.h"
 
 CCI_OPEN_NAMESPACE_
 

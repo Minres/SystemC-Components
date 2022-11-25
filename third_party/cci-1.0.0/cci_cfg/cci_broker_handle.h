@@ -20,11 +20,11 @@
 #ifndef CCI_CFG_CCI_BROKER_HANDLE_H_INCLUDED_
 #define CCI_CFG_CCI_BROKER_HANDLE_H_INCLUDED_
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_broker_types.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_originator.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_param_typed_handle.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_cmnhdr.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_value.h"
+#include "cci_cfg/cci_broker_types.h"
+#include "cci_cfg/cci_originator.h"
+#include "cci_cfg/cci_param_typed_handle.h"
+#include "cci_core/cci_cmnhdr.h"
+#include "cci_core/cci_value.h"
 
 /**
  * @author Guillaume Delbergue, Ericsson / GreenSocs

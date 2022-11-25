@@ -29,7 +29,7 @@
 #ifndef CCI_CORE_CCI_CMNHDR_H_INCLUDED_
 #define CCI_CORE_CCI_CMNHDR_H_INCLUDED_
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/systemc.h"
+#include "cci_core/systemc.h"
 
 /**
  * @def CCI_NAMESPACE

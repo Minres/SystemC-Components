@@ -22,7 +22,7 @@
 # define CCI_TPLEXTERN_
 #endif // excluded from MSVC'2010
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_value_converter.h"
+#include "cci_core/cci_value_converter.h"
 
 /**
  * @file   cci_value_converter.cpp

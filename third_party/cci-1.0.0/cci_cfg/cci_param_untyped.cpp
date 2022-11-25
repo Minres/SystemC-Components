@@ -21,14 +21,14 @@
  * @author Guillaume Delbergue, GreenSocs / Ericsson
  */
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_param_untyped.h"
+#include "cci_cfg/cci_param_untyped.h"
 
 #include <sstream>
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_broker_handle.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_param_if.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_param_untyped_handle.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_report_handler.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_name_gen.h"
+#include "cci_cfg/cci_broker_handle.h"
+#include "cci_cfg/cci_param_if.h"
+#include "cci_cfg/cci_param_untyped_handle.h"
+#include "cci_cfg/cci_report_handler.h"
+#include "cci_core/cci_name_gen.h"
 
 CCI_OPEN_NAMESPACE_
 

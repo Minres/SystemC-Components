@@ -24,8 +24,8 @@
  * @author Philipp A. Hartmann, OFFIS/Intel
  */
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/systemc.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_value.h"
+#include "cci_core/systemc.h"
+#include "cci_core/cci_value.h"
 
 #include <cstring> // std::strncpy
 

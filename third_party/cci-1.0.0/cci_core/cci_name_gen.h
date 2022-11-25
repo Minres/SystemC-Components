@@ -20,7 +20,7 @@
 #ifndef CCI_CORE_CCI_NAME_GEN_H_INCLUDED_
 #define CCI_CORE_CCI_NAME_GEN_H_INCLUDED_
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_cmnhdr.h"
+#include "cci_core/cci_cmnhdr.h"
 
 CCI_OPEN_NAMESPACE_
 

@@ -261,16 +261,10 @@ int sc_main(int argc, char* argv[]) {
     signal(SIGSEGV, ABRThandler);
     auto cfg_file = argc == 2 ? argv[1] : "";
     scc::configurer cfg(cfg_file);
-#ifdef HAS_CCI
     scc::configurable_tracer trace("axi4lite_tlm_pin_tlm",
                                    scc::tracer::file_type::NONE, // define the kind of transaction trace
                                    true,                         // enables vcd
                                    true);
-#else
-    scc::tracer trace("axi4lite_tlm_pin_tlm",
-                      scc::tracer::file_type::NONE, // define the kind of transaction trace
-                      true);                        // enables vcd
-#endif
     if(setjmp(env) == 0) {
         testbench tb("tb");
         cfg.configure();

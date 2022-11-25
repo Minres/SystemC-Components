@@ -19,10 +19,8 @@
 
 #include "report.h"
 #include "utilities.h"
-#ifdef HAS_CCI
 #include <cci_configuration>
 #include <regex>
-#endif
 
 /** \ingroup scc-sysc
  *  @{
@@ -45,16 +43,12 @@ class configurer : public sc_core::sc_module {
 
 public:
     using base_type = sc_core::sc_module;
-#ifdef HAS_CCI
     using broker_t = cci::cci_broker_handle;
     using cci_param_cln = std::vector<
     		std::pair<
 				cci::cci_param_post_write_callback_untyped,
 				std::unique_ptr<cci::cci_param_untyped>
 			>>;
-#else
-    using broker_t = void*;
-#endif
     enum {
         NEVER=0, BEFORE_END_OF_ELABORATION=1, END_OF_ELABORATION=2, START_OF_SIMULATION=4
     };
@@ -107,18 +101,7 @@ public:
      * @param value the value to put
      */
     template <typename T> void set_value(std::string const& hier_name, T value) {
-#ifdef HAS_CCI
     	set_value(hier_name, cci::cci_value(value));
-#else
-    	size_t pos = hier_name.find_last_of('.');
-    	if(auto mod = dynamic_cast<sc_core::sc_module*>(sc_core::sc_find_object(hier_name.substr(0, pos).c_str()))) {
-    		if(auto attr = dynamic_cast<sc_core::sc_attribute<T>*>(mod->get_attribute(hier_name.substr(pos + 1))))
-    			attr->value = value;
-    		else
-    			SCCERR() << "Could not set attribute value " << hier_name;
-    	} else
-    		SCCERR() << "Could not set attribute value " << hier_name;
-#endif
     }
     /**
      * set a value of an sc_attribute from given configuration. This is being used by the scc::ext_attribute
@@ -153,13 +136,9 @@ protected:
     }
     void start_of_simulation() override;
     broker_t cci_broker;
-#ifdef HAS_CCI
     void set_value(const std::string& hier_name, cci::cci_value value);
     cci_param_cln cci2sc_attr;
     cci::cci_originator cci_originator;
-#else
-    bool config_valid{false};
-#endif
     std::unique_ptr<ConfigHolder> root;
 };
 

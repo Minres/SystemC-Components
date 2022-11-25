@@ -2,8 +2,8 @@
 #define CCI_UTILS_BROKER_H_INCLUDED_
 
 #include <set>
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_broker_manager.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_utils/consuming_broker.h"
+#include "cci_cfg/cci_broker_manager.h"
+#include "cci_utils/consuming_broker.h"
 
 namespace cci_utils 
 {

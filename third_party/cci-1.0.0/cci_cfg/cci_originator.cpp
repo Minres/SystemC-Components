@@ -17,12 +17,12 @@
 
  ****************************************************************************/
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_originator.h"
+#include "cci_cfg/cci_originator.h"
 
 #include <cstring>
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_config_macros.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_report_handler.h"
+#include "cci_cfg/cci_config_macros.h"
+#include "cci_cfg/cci_report_handler.h"
 
 CCI_OPEN_NAMESPACE_
 

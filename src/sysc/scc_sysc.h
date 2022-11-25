@@ -22,10 +22,8 @@
  * This module contains generic C++ functions being independent of SystemC
  */
 /**@{*/
-#ifdef HAS_CCI
 #include "scc/configurable_tracer.h"
 #include "scc/configurer.h"
-#endif
 #include "scc/ext_attribute.h"
 #include "scc/fifo_w_cb.h"
 #include "scc/hierarchy_dumper.h"

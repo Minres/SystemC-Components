@@ -15,7 +15,6 @@
  *******************************************************************************/
 
 #include <string>
-#ifdef HAS_CCI
 #include "cci_broker.h"
 #include "report.h"
 #include <util/ities.h>
@@ -196,9 +195,3 @@ void init_cci(std::string name) {
 	cci::cci_register_broker(broker);
 }
 }
-#else
-namespace scc {
-void init_cci(std::string name) {
-}
-}
-#endif

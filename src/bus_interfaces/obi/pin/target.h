@@ -76,15 +76,9 @@ public:
 
     tlm::tlm_sync_enum nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t);
 
-#ifdef HAS_CCI
-    cci::cci_param<sc_core::sc_time> sample_delay{"sample_delay", 1_ps};
+    cci::cci_param<sc_core::sc_time> sample_delay{"sample_delay", 0_ns};
     cci::cci_param<int> req2gnt_delay{"req2gnt_delay", 0};
     cci::cci_param<int> addr2data_delay{"addr2data_delay", 0};
-#else
-    sc_core::sc_time sample_delay{0_ns};
-    int req2gnt_delay{0};
-    int addr2data_delay{0};
-#endif
 private:
     void clk_cb();
     void achannel_req_t();

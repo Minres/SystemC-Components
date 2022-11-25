@@ -4,7 +4,7 @@
 #include <map>
 #include <set>
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_configuration"
+#include "cci_configuration"
 
 
 namespace cci_utils {

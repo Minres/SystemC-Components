@@ -117,16 +117,10 @@ int sc_main(int argc, char* argv[]) {
 #else
     auto trc = scc::create_vcd_push_trace_file("axi_axi_test");
 #endif
-#ifdef HAS_CCI
     scc::configurable_tracer trace("axi_axi_test",
                                    scc::tracer::file_type::TEXT, // define the kind of transaction trace
                                    trc,                         // enables vcd
                                    true);
-#else
-    scc::tracer trace("axi_axi_test",
-                      scc::tracer::file_type::NONE, // define the kind of transaction trace
-                      trc);                        // enables vcd
-#endif
     testbench tb("tb");
     tb.trace(trc);
     scc::hierarchy_dumper d("axi_axi_test.json", scc::hierarchy_dumper::D3JSON);

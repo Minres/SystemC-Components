@@ -20,8 +20,8 @@
 #ifndef CCI_CFG_CCI_PARAM_TYPED_HANDLE_H_INCLUDED_
 #define CCI_CFG_CCI_PARAM_TYPED_HANDLE_H_INCLUDED_
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_mutable_types.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_param_untyped_handle.h"
+#include "cci_cfg/cci_mutable_types.h"
+#include "cci_cfg/cci_param_untyped_handle.h"
 
 /**
  * @author Guillaume Delbergue, Ericsson / GreenSocs
