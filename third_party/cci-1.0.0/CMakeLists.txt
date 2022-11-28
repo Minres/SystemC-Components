@@ -18,8 +18,8 @@ if(USE_NCSC_SYSTEMC)
 	target_compile_definitions(${PROJECT_NAME} PUBLIC SC_VERSION_CODE=200301)
 endif()
 target_link_libraries(${PROJECT_NAME} PUBLIC RapidJSON ${SystemC_LIBRARIES}) 
-if(NOT TARGET SystemC::cci)
-	add_library(SystemC::cci ALIAS ${PROJECT_NAME})
+if(NOT TARGET systemc-cci::systemc-cci)
+    add_library(systemc-cci::systemc-cci ALIAS ${PROJECT_NAME})
 endif()
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
