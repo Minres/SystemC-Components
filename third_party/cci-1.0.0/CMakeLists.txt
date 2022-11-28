@@ -19,7 +19,7 @@ if(USE_NCSC_SYSTEMC)
 endif()
 target_link_libraries(cciapi PUBLIC RapidJSON ${SystemC_LIBRARIES}) 
 if(NOT TARGET systemc-cci::systemc-cci)
-    add_library(systemc-cci::systemc-cci ALIAS cci)
+    add_library(systemc-cci::systemc-cci ALIAS cciapi)
 endif()
 
 set_target_properties(cciapi PROPERTIES
@@ -27,7 +27,7 @@ set_target_properties(cciapi PROPERTIES
     FRAMEWORK FALSE
     PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/cci_configuration
 )
-install(TARGETS cci COMPONENT cci
+install(TARGETS cciapi COMPONENT cci
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_ARCHIVE_DIR_MODIFIER}
