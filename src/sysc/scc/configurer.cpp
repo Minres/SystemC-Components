@@ -436,7 +436,9 @@ bool create_cci_param(sc_core::sc_attr_base *base_attr,
 	if (auto attr = dynamic_cast<sc_core::sc_attribute<T>*>(base_attr)) {
 		auto par = new cci::cci_param_typed<T>(hier_name, attr->value, "", cci::CCI_ABSOLUTE_NAME, cci_originator);
 		params.emplace_back(cci::cci_param_post_write_callback_untyped([attr](const cci::cci_param_write_event<> & ev){
-			attr->value = ev.new_value.get<T>();
+		    T result;
+		    if(ev.new_value.try_get(result))
+	            attr->value = result;
 		}), par);
 		par->register_post_write_callback(params.back().first);
 		attr->value = par->get_value(); // if we have a preset
