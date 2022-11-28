@@ -31,14 +31,29 @@
 #include <yaml-cpp/exceptions.h>
 #include <yaml-cpp/node/parse.h>
 #include <yaml-cpp/yaml.h>
-#include <boost/optional/optional.hpp>
+
+namespace {
+template<typename T>
+struct optional {
+    T val{};
+    bool initialized{false};
+    optional& operator = ( T&& val ) {
+        this->val = std::move(val);
+        initialized=true;
+        return *this ;
+      }
+    operator bool() const { return initialized; }
+    T value() { return val;}
+};
+}
+
 namespace YAML	{
 template <typename T>
-struct as_if<T, boost::optional<T> > {
+struct as_if<T, optional<T> > {
 	explicit as_if(const YAML::Node& node_) : node(node_) {}
 	const YAML::Node& node;
-	const boost::optional<T> operator()() const {
-		boost::optional<T> val;
+	const optional<T> operator()() const {
+		optional<T> val;
 		T t;
 		if (node.m_pNode && YAML::convert<T>::decode(node, t))
 			val = std::move(t);
@@ -48,11 +63,11 @@ struct as_if<T, boost::optional<T> > {
 
 // There is already a std::string partial specialisation, so we need a full specialisation here
 template <>
-struct as_if<std::string, boost::optional<std::string> > {
+struct as_if<std::string, optional<std::string> > {
 	explicit as_if(const YAML::Node& node_) : node(node_) {}
 	const YAML::Node& node;
-	const boost::optional<std::string> operator()() const {
-		boost::optional<std::string> val;
+	const optional<std::string> operator()() const {
+		optional<std::string> val;
 		std::string t;
 		if (node.m_pNode && YAML::convert<std::string>::decode(node, t))
 			val = std::move(t);
@@ -402,19 +417,19 @@ struct yaml_config_reader: public config_reader {
 								param.set_string(val.as<std::string>());
 							}
 						} else {
-							if(auto res = YAML::as_if<bool, boost::optional<bool>>(val)()) {
+							if(auto res = YAML::as_if<bool, optional<bool>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-							} else if(auto res = YAML::as_if<unsigned, boost::optional<unsigned>>(val)()) {
+							} else if(auto res = YAML::as_if<unsigned, optional<unsigned>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-							} else if(auto res = YAML::as_if<uint64_t, boost::optional<uint64_t>>(val)()) {
+							} else if(auto res = YAML::as_if<uint64_t, optional<uint64_t>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-							} else if(auto res = YAML::as_if<int, boost::optional<int>>(val)()) {
+							} else if(auto res = YAML::as_if<int, optional<int>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-							} else if(auto res = YAML::as_if<int64_t, boost::optional<int64_t>>(val)()) {
+							} else if(auto res = YAML::as_if<int64_t, optional<int64_t>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-							} else if(auto res = YAML::as_if<double, boost::optional<double>>(val)()) {
+							} else if(auto res = YAML::as_if<double, optional<double>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-							} else if(auto res = YAML::as_if<std::string, boost::optional<std::string>>(val)()) {
+							} else if(auto res = YAML::as_if<std::string, optional<std::string>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
 							}
 						}
