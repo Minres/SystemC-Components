@@ -147,7 +147,7 @@ if(WITH_FST)
     	target_link_libraries(${PROJECT_NAME} PRIVATE CONAN_PKG::lz4)
     endif()
 endif()
-
+target_compile_definitions(${PROJECT_NAME} PRIVATE FMT_HEADER_ONLY)
 target_link_libraries(${PROJECT_NAME} PUBLIC ${FMT_TARGET} fstapi Threads::Threads ${CMAKE_DL_LIBS})
 
 if(CLANG_TIDY_EXE)
