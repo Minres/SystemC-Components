@@ -26,8 +26,7 @@ namespace scc {
 using namespace cci;
 
 cci_originator cci_broker::get_preset_value_origin(const std::string &parname) const { //TODO: check globs
-	for(auto const& e: wildcard_presets){
-	}
+    const_cast<cci_broker*>(this)->insert_matching_preset_value(parname);
 	return consuming_broker::get_preset_value_origin(parname);
 }
 

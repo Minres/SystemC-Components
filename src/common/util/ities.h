@@ -380,7 +380,7 @@ std::string  glob_to_regex(std::string val) {
 	std::ostringstream oss;
 	oss<<"^";
 	bool in_character_class = false, in_quote = false;
-	for (auto idx=0; idx<val.length(); ++idx) {
+	for (auto idx=0U; idx<val.length(); ++idx) {
 		auto c = val[idx];
 		if (in_character_class) {
 			in_character_class = ((c != ']') || (val[idx-1] == '\\'));
