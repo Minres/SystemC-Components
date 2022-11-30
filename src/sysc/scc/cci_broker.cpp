@@ -189,12 +189,13 @@ void cci_broker::lock_preset_value(const std::string &parname) {
 	}
 }
 
-void init_cci(std::string name) {
+bool init_cci(std::string name) {
 	thread_local cci_broker broker(name);
-	thread_local bool initialized{false};
-	if(!initialized) {
+	thread_local bool registered{false};
+	if(!registered) {
 	    cci::cci_register_broker(broker);
-	    initialized=true;
+	    registered=true;
 	}
+	return registered;
 }
 }

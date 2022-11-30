@@ -29,7 +29,7 @@
 //! @brief SCC SystemC utilities
 namespace scc {
 
-void init_cci(std::string name = "Global Broker");
+bool init_cci(std::string name = "Global Broker");
 /**
  * @class configurer
  * @brief design configuration reader

@@ -59,7 +59,7 @@ using namespace scc;
 
 namespace {
 thread_local std::unordered_map<uint64_t, sc_core::sc_verbosity> lut;
-thread_local cci::cci_originator originator("reporting");
+thread_local cci::cci_originator originator(sc_core::sc_get_current_object()?cci::cci_originator():cci::cci_originator("reporting"));
 
 bool& inst_based_logging() {
     thread_local bool active = getenv("SCC_DISABLE_INSTANCE_BASED_LOGGING")==nullptr;
