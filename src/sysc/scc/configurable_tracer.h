@@ -101,10 +101,10 @@ protected:
     void augment_object_hierarchical(sc_core::sc_object*);
 
     void end_of_elaboration() override;
-    //! the originator of cci values
-    cci::cci_originator cci_originator;
     //! the cci broker
     cci::cci_broker_handle cci_broker;
+    //! the originator of cci values
+    cci::cci_originator cci_originator;
     //! array of created cci parameter
     std::vector<cci::cci_param_untyped*> params;
     bool control_added{false};

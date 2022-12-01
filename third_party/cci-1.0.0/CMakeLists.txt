@@ -13,7 +13,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/cci_core/cci_value.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/cci_core/cci_value_converter.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/cci_utils/broker.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/cci_utils/consuming_broker.cpp)
-if(USE_NCSC_SYSTEMC)
+if(USE_NCSC_SYSTEMC OR USE_CWR_SYSTEMC)
 	target_compile_definitions(cciapi PUBLIC SC_VERSION_CODE=200301)
 endif()
 target_include_directories(cciapi PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

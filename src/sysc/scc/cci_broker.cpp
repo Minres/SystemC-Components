@@ -189,8 +189,14 @@ void cci_broker::lock_preset_value(const std::string &parname) {
 	}
 }
 
-bool init_cci(std::string name) {
-	thread_local cci_broker broker(name);
+#if defined(CWR_SYSTEMC)  || defined(MTI_SYSTEMC)
+static cci_broker broker("SCC Global Broker");
+#define STATIC_BROKER
+#endif
+bool init_cci() {
+#ifndef STATIC_BROKER
+    thread_local cci_broker broker("SCC Global Broker");
+#endif
 	thread_local bool registered{false};
 	if(!registered) {
 	    cci::cci_register_broker(broker);

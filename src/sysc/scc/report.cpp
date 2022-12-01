@@ -359,7 +359,7 @@ static void configure_logging() {
     std::lock_guard<mutex> lock(cfg_guard);
     static bool spdlog_initialized = false;
     if(!log_cfg.dont_create_broker)
-        scc::init_cci("SCCBroker");
+        scc::init_cci();
     if(!log_cfg.instance_based_log_levels || getenv("SCC_DISABLE_INSTANCE_BASED_LOGGING"))
         inst_based_logging()=false;
     sc_report_handler::set_actions(SC_ERROR, SC_DEFAULT_ERROR_ACTIONS | SC_DISPLAY);
