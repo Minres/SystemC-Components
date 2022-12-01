@@ -139,24 +139,6 @@ inline void writeValue(writer_type& writer, std::string const& key, std::string 
 	writer.String(value.c_str());
 }
 
-template <typename T> auto check_n_assign(writer_type& writer, sc_core::sc_attr_base* attr_base) -> bool {
-	auto* a = dynamic_cast<sc_core::sc_attribute<T>*>(attr_base);
-	if(a != nullptr) {
-		writeValue(writer, a->name(), a->value);
-		return true;
-	}
-	return false;
-}
-
-template <> auto check_n_assign<sc_core::sc_time>(writer_type& writer, sc_core::sc_attr_base* attr_base) -> bool {
-	auto* a = dynamic_cast<sc_core::sc_attribute<sc_core::sc_time>*>(attr_base);
-	if(a != nullptr) {
-		writeValue(writer, a->name(), a->value.to_double());
-		return true;
-	}
-	return false;
-}
-
 inline bool start_object(writer_type& writer, char const* key, bool started) {
 	if(!started) {
 		writer.Key(key);
@@ -183,16 +165,6 @@ struct json_config_dumper {
 		auto start = std::string(obj->basename()).substr(0, 3);
 		if(start == "$$$") return;
 		auto obj_started = false;
-		for(sc_core::sc_attr_base* attr_base : obj->attr_cltn()) {
-			obj_started = start_object(writer, obj->basename(), obj_started);
-			check_n_assign<int>(writer, attr_base) || check_n_assign<unsigned>(writer, attr_base) ||
-					check_n_assign<long>(writer, attr_base) || check_n_assign<unsigned long>(writer, attr_base) ||
-					check_n_assign<long long>(writer, attr_base) || check_n_assign<unsigned long long>(writer, attr_base) ||
-					check_n_assign<bool>(writer, attr_base) || check_n_assign<float>(writer, attr_base) ||
-					check_n_assign<double>(writer, attr_base) || check_n_assign<std::string>(writer, attr_base) ||
-					check_n_assign<char*>(writer, attr_base) || check_n_assign<sc_core::sc_time>(writer, attr_base);
-		}
-		const std::string hier_name{obj->name()};
 		auto log_lvl_set = false;
 		auto it = lut.find(obj->name());
 		if(it != lut.end())
