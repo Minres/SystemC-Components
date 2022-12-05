@@ -101,7 +101,7 @@ private:
         unsigned len;
         uint64_t user;
     };
-    sc_core::sc_clock* clk_if;
+    sc_core::sc_clock* clk_if{nullptr};
     sc_core::sc_event clk_delayed, clk_self, ar_end_req_evt, wdata_end_req_evt;
     std::array<fsm_handle*, 3> active_req_beat;
     std::array<fsm_handle*, 3> active_req;
