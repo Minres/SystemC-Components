@@ -90,6 +90,14 @@ private:
     void achannel_req_t();
     void rchannel_rsp_t();
 
+    void clk_delay() {
+        if(sc_core::sc_delta_count_at_current_time()<5) {
+            clk_self.notify(sc_core::SC_ZERO_TIME);
+            next_trigger(clk_self);
+        } else
+            clk_delayed.notify(sc_core::SC_ZERO_TIME/*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
+    }
+    sc_core::sc_event clk_delayed, clk_self;
     scc::peq<tlm::scc::tlm_gp_shared_ptr> achannel_rsp;
     std::deque<std::tuple<tlm::scc::tlm_gp_shared_ptr, unsigned>> rchannel_pending_rsp;
     scc::peq<tlm::scc::tlm_gp_shared_ptr> rchannel_rsp;
@@ -113,6 +121,8 @@ inline target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::target(sc_c
         });
     SC_METHOD(clk_cb)
     sensitive << clk_i.pos() << resetn_i.neg();
+    SC_METHOD(clk_delay);
+    sensitive << clk_i.pos();
     SC_THREAD(achannel_req_t)
     SC_THREAD(rchannel_rsp_t);
 }
@@ -180,7 +190,7 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::achannel_req_t
         while(resetn_i.read() == true) {
             gnt_o.write(req2gnt_delay == 0);
             do {
-                wait(this->req_i.posedge_event() | clk_i.negedge_event());
+                wait(this->req_i.posedge_event() | clk_delayed);
             } while(this->req_i.read() == false);
             auto data_len = DATA_WIDTH / 8;
             tlm::scc::tlm_gp_shared_ptr gp = tlm::scc::tlm_mm<>::get().allocate<obi::obi_extension>(data_len);
