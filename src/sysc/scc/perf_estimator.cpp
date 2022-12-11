@@ -27,6 +27,7 @@
 #else
 #error "Cannot compile file because of an unknown method to retrieve OS time."
 #endif
+#include <malloc.h>
 
 namespace scc {
 using namespace sc_core;
@@ -80,8 +81,9 @@ void perf_estimator::end_of_simulation() {
 
 void perf_estimator::beat() {
     if(sc_time_stamp().value())
-        SCCINFO("perf_estimator") << "Heart beat, rss mem: " << get_memory() << " bytes";
+        SCCINFO("perf_estimator") << "Heart beat, rss mem: " << get_memory() << "kB";
     next_trigger(beat_delay);
+    malloc_trim(0);
 }
 } /* namespace scc */
 

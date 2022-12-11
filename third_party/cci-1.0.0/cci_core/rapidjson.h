@@ -36,7 +36,7 @@
 
 #include <stdexcept>
 #include <iosfwd>
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_cmnhdr.h"
+#include "cci_core/cci_cmnhdr.h"
 
 // --------------------------------------------------------------------------
 // configure RapidJSON

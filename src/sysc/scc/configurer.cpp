@@ -35,14 +35,29 @@
 #include <yaml-cpp/exceptions.h>
 #include <yaml-cpp/node/parse.h>
 #include <yaml-cpp/yaml.h>
-#include <boost/optional/optional.hpp>
+
+namespace {
+template<typename T>
+struct optional {
+    T val{};
+    bool initialized{false};
+    optional& operator = ( T&& val ) {
+        this->val = std::move(val);
+        initialized=true;
+        return *this ;
+      }
+    operator bool() const { return initialized; }
+    T value() { return val;}
+};
+}
+
 namespace YAML	{
 template <typename T>
-struct as_if<T, boost::optional<T> > {
+struct as_if<T, optional<T> > {
 	explicit as_if(const YAML::Node& node_) : node(node_) {}
 	const YAML::Node& node;
-	const boost::optional<T> operator()() const {
-		boost::optional<T> val;
+	const optional<T> operator()() const {
+		optional<T> val;
 		T t;
 		if (node.m_pNode && YAML::convert<T>::decode(node, t))
 			val = std::move(t);
@@ -52,11 +67,11 @@ struct as_if<T, boost::optional<T> > {
 
 // There is already a std::string partial specialisation, so we need a full specialisation here
 template <>
-struct as_if<std::string, boost::optional<std::string> > {
+struct as_if<std::string, optional<std::string> > {
 	explicit as_if(const YAML::Node& node_) : node(node_) {}
 	const YAML::Node& node;
-	const boost::optional<std::string> operator()() const {
-		boost::optional<std::string> val;
+	const optional<std::string> operator()() const {
+		optional<std::string> val;
 		std::string t;
 		if (node.m_pNode && YAML::convert<std::string>::decode(node, t))
 			val = std::move(t);
@@ -128,24 +143,6 @@ inline void writeValue(writer_type& writer, std::string const& key, std::string 
 	writer.String(value.c_str());
 }
 
-template <typename T> auto check_n_assign(writer_type& writer, sc_core::sc_attr_base* attr_base) -> bool {
-	auto* a = dynamic_cast<sc_core::sc_attribute<T>*>(attr_base);
-	if(a != nullptr) {
-		writeValue(writer, a->name(), a->value);
-		return true;
-	}
-	return false;
-}
-
-template <> auto check_n_assign<sc_core::sc_time>(writer_type& writer, sc_core::sc_attr_base* attr_base) -> bool {
-	auto* a = dynamic_cast<sc_core::sc_attribute<sc_core::sc_time>*>(attr_base);
-	if(a != nullptr) {
-		writeValue(writer, a->name(), a->value.to_double());
-		return true;
-	}
-	return false;
-}
-
 inline bool start_object(writer_type& writer, char const* key, bool started) {
 	if(!started) {
 		writer.Key(key);
@@ -172,16 +169,6 @@ struct json_config_dumper {
 		auto start = std::string(obj->basename()).substr(0, 3);
 		if(start == "$$$") return;
 		auto obj_started = false;
-		for(sc_core::sc_attr_base* attr_base : obj->attr_cltn()) {
-			obj_started = start_object(writer, obj->basename(), obj_started);
-			check_n_assign<int>(writer, attr_base) || check_n_assign<unsigned>(writer, attr_base) ||
-					check_n_assign<long>(writer, attr_base) || check_n_assign<unsigned long>(writer, attr_base) ||
-					check_n_assign<long long>(writer, attr_base) || check_n_assign<unsigned long long>(writer, attr_base) ||
-					check_n_assign<bool>(writer, attr_base) || check_n_assign<float>(writer, attr_base) ||
-					check_n_assign<double>(writer, attr_base) || check_n_assign<std::string>(writer, attr_base) ||
-					check_n_assign<char*>(writer, attr_base) || check_n_assign<sc_core::sc_time>(writer, attr_base);
-		}
-		const std::string hier_name{obj->name()};
 		auto log_lvl_set = false;
 		auto it = lut.find(obj->name());
 		if(it != lut.end())
@@ -406,19 +393,19 @@ struct yaml_config_reader: public config_reader {
 								param.set_string(val.as<std::string>());
 							}
 						} else {
-							if(auto res = YAML::as_if<bool, boost::optional<bool>>(val)()) {
+							if(auto res = YAML::as_if<bool, optional<bool>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-							} else if(auto res = YAML::as_if<unsigned, boost::optional<unsigned>>(val)()) {
+							} else if(auto res = YAML::as_if<unsigned, optional<unsigned>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-							} else if(auto res = YAML::as_if<uint64_t, boost::optional<uint64_t>>(val)()) {
+							} else if(auto res = YAML::as_if<uint64_t, optional<uint64_t>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-							} else if(auto res = YAML::as_if<int, boost::optional<int>>(val)()) {
+							} else if(auto res = YAML::as_if<int, optional<int>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-							} else if(auto res = YAML::as_if<int64_t, boost::optional<int64_t>>(val)()) {
+							} else if(auto res = YAML::as_if<int64_t, optional<int64_t>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-							} else if(auto res = YAML::as_if<double, boost::optional<double>>(val)()) {
+							} else if(auto res = YAML::as_if<double, optional<double>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-							} else if(auto res = YAML::as_if<std::string, boost::optional<std::string>>(val)()) {
+							} else if(auto res = YAML::as_if<std::string, optional<std::string>>(val)()) {
 								broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
 							}
 						}
@@ -440,7 +427,9 @@ bool create_cci_param(sc_core::sc_attr_base *base_attr,
 	if (auto attr = dynamic_cast<sc_core::sc_attribute<T>*>(base_attr)) {
 		auto par = new cci::cci_param_typed<T>(hier_name, attr->value, "", cci::CCI_ABSOLUTE_NAME, cci_originator);
 		params.emplace_back(cci::cci_param_post_write_callback_untyped([attr](const cci::cci_param_write_event<> & ev){
-			attr->value = ev.new_value.get<T>();
+		    T result;
+		    if(ev.new_value.try_get(result))
+	            attr->value = result;
 		}), par);
 		par->register_post_write_callback(params.back().first);
 		attr->value = par->get_value(); // if we have a preset

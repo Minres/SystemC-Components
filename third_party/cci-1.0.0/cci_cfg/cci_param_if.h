@@ -23,9 +23,9 @@
 
 #include <typeinfo>
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_broker_handle.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_mutable_types.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_param_callbacks.h"
+#include "cci_cfg/cci_broker_handle.h"
+#include "cci_cfg/cci_mutable_types.h"
+#include "cci_cfg/cci_param_callbacks.h"
 
 /**
  * @author Enrico Galli, Intel

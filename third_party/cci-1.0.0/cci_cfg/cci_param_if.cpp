@@ -21,11 +21,11 @@
  * @author Philipp A Hartmann, Intel
  */
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_param_if.h"
+#include "cci_cfg/cci_param_if.h"
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_broker_if.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_param_untyped_handle.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_report_handler.h"
+#include "cci_cfg/cci_broker_if.h"
+#include "cci_cfg/cci_param_untyped_handle.h"
+#include "cci_cfg/cci_report_handler.h"
 
 CCI_OPEN_NAMESPACE_
 

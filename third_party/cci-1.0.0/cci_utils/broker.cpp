@@ -22,10 +22,10 @@
  */
 
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_utils/broker.h"
+#include "cci_utils/broker.h"
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_param_if.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_name_gen.h"
+#include "cci_cfg/cci_param_if.h"
+#include "cci_core/cci_name_gen.h"
 
 namespace cci_utils {
   using namespace cci;

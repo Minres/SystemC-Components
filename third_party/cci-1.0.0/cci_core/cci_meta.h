@@ -27,8 +27,8 @@
 #ifndef CCI_CORE_CCI_META_H_INCLUDED_
 #define CCI_CORE_CCI_META_H_INCLUDED_
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_cmnhdr.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/systemc.h"
+#include "cci_core/cci_cmnhdr.h"
+#include "cci_core/systemc.h"
 
 #if CCI_CPLUSPLUS >= 201103L
 # include <type_traits>

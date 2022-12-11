@@ -22,9 +22,9 @@
 
 #include <string>
 #include <utility> // std::pair
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_broker_callbacks.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_filtered_range.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_value.h"
+#include "cci_cfg/cci_broker_callbacks.h"
+#include "cci_core/cci_filtered_range.h"
+#include "cci_core/cci_value.h"
 
 CCI_OPEN_NAMESPACE_
 

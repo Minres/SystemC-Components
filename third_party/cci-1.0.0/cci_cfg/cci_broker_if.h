@@ -20,8 +20,8 @@
 #ifndef CCI_CFG_CCI_BROKER_IF_H_INCLUDED_
 #define CCI_CFG_CCI_BROKER_IF_H_INCLUDED_
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_broker_types.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_param_untyped_handle.h"
+#include "cci_cfg/cci_broker_types.h"
+#include "cci_cfg/cci_param_untyped_handle.h"
 
 CCI_OPEN_NAMESPACE_
 

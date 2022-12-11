@@ -102,7 +102,7 @@ protected:
 
     void end_of_elaboration() override;
     //! the originator of cci values
-    cci::cci_originator cci_originator;
+    cci::cci_originator my_originator;
     //! the cci broker
     cci::cci_broker_handle cci_broker;
     //! array of created cci parameter

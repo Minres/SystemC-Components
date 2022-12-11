@@ -130,16 +130,10 @@ int sc_main(int argc, char* argv[]) {
             .coloredOutput(true));
     // clang-format on
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
-#ifdef HAS_CCI
     scc::configurable_tracer trace("ace_ace_test",
                                    scc::tracer::file_type::NONE, // define the kind of transaction trace
                                    true,                         // enables vcd
                                    true);
-#else
-    scc::tracer trace("ace_ace_test",
-                      scc::tracer::file_type::NONE, // define the kind of transaction trace
-                      true);                        // enables vcd
-#endif
     testbench mstr("master");
     sc_core::sc_start(10_ms);
     SCCINFO() << "Finished";

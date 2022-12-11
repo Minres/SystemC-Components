@@ -27,9 +27,9 @@
 # define CCI_TPLEXTERN_
 #endif // excluded from MSVC'2010
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_value.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/rapidjson.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_report_handler.h"
+#include "cci_core/cci_value.h"
+#include "cci_core/rapidjson.h"
+#include "cci_cfg/cci_report_handler.h"
 
 #include <algorithm> // std::swap
 #include <sstream> //std::stringstream

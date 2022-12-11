@@ -21,10 +21,10 @@
 #define CCI_CFG_CCI_PARAM_TYPED_H_INCLUDED_
 
 #include <sstream> //std::stringstream
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_broker_manager.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_param_untyped.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_param_untyped_handle.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_report_handler.h"
+#include "cci_cfg/cci_broker_manager.h"
+#include "cci_cfg/cci_param_untyped.h"
+#include "cci_cfg/cci_param_untyped_handle.h"
+#include "cci_cfg/cci_report_handler.h"
 
 /**
  * @author Enrico Galli, Intel

@@ -20,11 +20,11 @@
 #ifndef CCI_CCI_PARAM_UNTYPED_HANDLE_H_INCLUDED_
 #define CCI_CCI_PARAM_UNTYPED_HANDLE_H_INCLUDED_
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_mutable_types.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_originator.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_param_callbacks.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_core_types.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_value.h"
+#include "cci_cfg/cci_mutable_types.h"
+#include "cci_cfg/cci_originator.h"
+#include "cci_cfg/cci_param_callbacks.h"
+#include "cci_core/cci_core_types.h"
+#include "cci_core/cci_value.h"
 
 /**
  * @author Guillaume Delbergue, Ericsson / GreenSocs

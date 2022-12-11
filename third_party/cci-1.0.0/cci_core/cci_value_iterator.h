@@ -21,7 +21,7 @@
 #define CCI_CORE_CCI_VALUE_ITERATOR_H_INCLUDED_
 
 #include <iterator> // std::iterator_traits, std::reverse_iterator
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_cmnhdr.h"
+#include "cci_core/cci_cmnhdr.h"
 
 /**
  * @file   cci_value_iterator.h

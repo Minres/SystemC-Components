@@ -24,9 +24,7 @@
 #include <array>
 #include <chrono>
 #include <fstream>
-#ifdef HAS_CCI
 #include "configurer.h"
-#endif
 #include <mutex>
 #include <spdlog/async.h>
 #include <spdlog/sinks/basic_file_sink.h>
@@ -61,9 +59,7 @@ using namespace scc;
 
 namespace {
 thread_local std::unordered_map<uint64_t, sc_core::sc_verbosity> lut;
-#ifdef HAS_CCI
-thread_local cci::cci_originator originator("reporting");
-#endif
+thread_local cci::cci_originator originator(sc_core::sc_get_current_object()?cci::cci_originator():cci::cci_originator("reporting"));
 
 bool& inst_based_logging() {
     thread_local bool active = getenv("SCC_DISABLE_INSTANCE_BASED_LOGGING")==nullptr;
@@ -362,10 +358,8 @@ static std::mutex cfg_guard;
 static void configure_logging() {
     std::lock_guard<mutex> lock(cfg_guard);
     static bool spdlog_initialized = false;
-#ifdef HAS_CCI
     if(!log_cfg.dont_create_broker)
-        scc::init_cci("SCCBroker");
-#endif
+        scc::init_cci();
     if(!log_cfg.instance_based_log_levels || getenv("SCC_DISABLE_INSTANCE_BASED_LOGGING"))
         inst_based_logging()=false;
     sc_report_handler::set_actions(SC_ERROR, SC_DEFAULT_ERROR_ACTIONS | SC_DISPLAY);
@@ -522,7 +516,6 @@ auto scc::LogConfig::instanceBasedLogLevels(bool v) -> scc::LogConfig& {
 }
 
 auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
-#ifdef HAS_CCI
     if(inst_based_logging()){
         auto k = char_hash(str);
         auto it = lut.find(k);
@@ -561,6 +554,5 @@ auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
             }
         }
     }
-#endif
     return static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
 }

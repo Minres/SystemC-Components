@@ -21,9 +21,9 @@
 #define CCI_CCI_VALUE_H_INCLUDED_
 
 #include <cstring> // std::strlen
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_core_types.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_value_iterator.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/systemc.h" // sc_dt::(u)int64, potentially strip out
+#include "cci_core/cci_core_types.h"
+#include "cci_core/cci_value_iterator.h"
+#include "cci_core/systemc.h" // sc_dt::(u)int64, potentially strip out
 
 #ifdef _MSC_VER
 #pragma warning(push)

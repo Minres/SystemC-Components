@@ -20,9 +20,9 @@
 #ifndef CCI_CFG_CCI_PARAM_CALLBACKS_H_INCLUDED_
 #define CCI_CFG_CCI_PARAM_CALLBACKS_H_INCLUDED_
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_callback.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_value.h"
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_value_converter.h"
+#include "cci_core/cci_callback.h"
+#include "cci_core/cci_value.h"
+#include "cci_core/cci_value_converter.h"
 
 CCI_OPEN_NAMESPACE_
 

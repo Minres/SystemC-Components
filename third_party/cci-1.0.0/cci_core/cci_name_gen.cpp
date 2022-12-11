@@ -17,13 +17,13 @@
 
  ****************************************************************************/
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_core/cci_name_gen.h"
+#include "cci_core/cci_name_gen.h"
 
 #include <sstream>
 #include <cstring>
 #include <map>
 
-#include "../../../../scc/third_party/cci-1.0.0/cci_cfg/cci_report_handler.h"
+#include "cci_cfg/cci_report_handler.h"
 
 CCI_OPEN_NAMESPACE_
 

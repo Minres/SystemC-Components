@@ -15,7 +15,6 @@
  *******************************************************************************/
 
 #include <string>
-#ifdef HAS_CCI
 #include "cci_broker.h"
 #include "report.h"
 #include <util/ities.h>
@@ -27,8 +26,7 @@ namespace scc {
 using namespace cci;
 
 cci_originator cci_broker::get_preset_value_origin(const std::string &parname) const { //TODO: check globs
-	for(auto const& e: wildcard_presets){
-	}
+    const_cast<cci_broker*>(this)->insert_matching_preset_value(parname);
 	return consuming_broker::get_preset_value_origin(parname);
 }
 
@@ -191,14 +189,19 @@ void cci_broker::lock_preset_value(const std::string &parname) {
 	}
 }
 
-void init_cci(std::string name) {
-	thread_local cci_broker broker(name);
-	cci::cci_register_broker(broker);
-}
-}
-#else
-namespace scc {
-void init_cci(std::string name) {
-}
-}
+#if defined(CWR_SYSTEMC)  || defined(MTI_SYSTEMC)
+static cci_broker broker("SCC Global Broker");
+#define STATIC_BROKER
 #endif
+bool init_cci() {
+#ifndef STATIC_BROKER
+    thread_local cci_broker broker("SCC Global Broker");
+#endif
+	thread_local bool registered{false};
+	if(!registered) {
+	    cci::cci_register_broker(broker);
+	    registered=true;
+	}
+	return registered;
+}
+}

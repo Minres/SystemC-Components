@@ -78,7 +78,6 @@ private:
     using chunk_type = uint8_t[sizeof(T)];
     std::vector<std::array<chunk_type, CHUNK_SIZE>*> chunks{};
     std::deque<void*> free_list{};
-    std::mutex payload_mtx{};
     std::unordered_map<void*, uint64_t> used_blocks{};
 #ifdef HAVE_GETENV
     const bool debug_memory{getenv("TLM_MM_CHECK") != nullptr};
@@ -93,7 +92,6 @@ template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>& pool_a
 }
 
 template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>::~pool_allocator() {
-    std::lock_guard<std::mutex> lk(payload_mtx);
 #ifdef HAVE_GETENV
     if(debug_memory) {
         auto* check = getenv("TLM_MM_CHECK");
@@ -123,7 +121,6 @@ template <typename T, unsigned CHUNK_SIZE> pool_allocator<T, CHUNK_SIZE>::~pool_
 }
 
 template <typename T, unsigned CHUNK_SIZE> inline void* pool_allocator<T, CHUNK_SIZE>::allocate(uint64_t id) {
-    std::lock_guard<std::mutex> lk(payload_mtx);
     if(!free_list.size())
         resize();
     auto ret = free_list.back();
@@ -135,7 +132,6 @@ template <typename T, unsigned CHUNK_SIZE> inline void* pool_allocator<T, CHUNK_
 }
 
 template <typename T, unsigned CHUNK_SIZE> inline void pool_allocator<T, CHUNK_SIZE>::free(void* p) {
-    std::lock_guard<std::mutex> lk(payload_mtx);
     if(p) {
         free_list.push_back(p);
         if(debug_memory)
