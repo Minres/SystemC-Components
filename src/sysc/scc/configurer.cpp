@@ -18,7 +18,11 @@
 #include "rapidjson/document.h"
 #include "rapidjson/error/en.h"
 #include "report.h"
+#ifdef FMT_SPDLOG_INTERNAL
+#include <fmt/fmt.h>
+#else
 #include <fmt/format.h>
+#endif
 #include <rapidjson/istreamwrapper.h>
 #include <rapidjson/ostreamwrapper.h>
 #include <rapidjson/prettywriter.h>
@@ -543,7 +547,7 @@ struct configurer::ConfigHolder: public yaml_config_reader {
 };
 #else
 struct configurer::ConfigHolder: public json_config_reader {
-	ConfigHolder(configurer::broker_t& broker) : yaml_config_reader(broker) {}
+	ConfigHolder(configurer::broker_t& broker) : json_config_reader(broker) {}
 };
 #endif
 

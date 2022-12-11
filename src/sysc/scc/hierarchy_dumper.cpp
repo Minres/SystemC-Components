@@ -31,7 +31,11 @@
 #include <rapidjson/istreamwrapper.h>
 #include <rapidjson/ostreamwrapper.h>
 #include <rapidjson/prettywriter.h>
+#ifdef FMT_SPDLOG_INTERNAL
+#include <fmt/fmt.h>
+#else
 #include <fmt/format.h>
+#endif
 
 #include <string>
 #include <typeinfo>

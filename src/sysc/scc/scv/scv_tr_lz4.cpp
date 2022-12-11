@@ -27,7 +27,11 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#ifdef FMT_SPDLOG_INTERNAL
+#include <fmt/fmt.h>
+#else
 #include <fmt/format.h>
+#endif
 #ifdef WITH_LZ4
 #include <util/lz4_streambuf.h>
 #endif
