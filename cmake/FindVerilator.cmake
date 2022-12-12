@@ -70,19 +70,19 @@ set_source_files_properties(
 set(SOURCES 
     ${VERILATOR_INCLUDE_DIR}/verilated.cpp
     ${VERILATOR_INCLUDE_DIR}/verilated_cov.cpp
-    # ${VERILATOR_INCLUDE_DIR}/verilated_threads.cpp
+    #${VERILATOR_INCLUDE_DIR}/verilated_threads.cpp
     ${VERILATOR_INCLUDE_DIR}/verilated_dpi.cpp
     ${VERILATOR_INCLUDE_DIR}/verilated_vcd_c.cpp
     ${VERILATOR_INCLUDE_DIR}/verilated_vcd_sc.cpp
+    ${VERILATOR_INCLUDE_DIR}/verilated_fst_c.cpp
 )
 if(EXISTS ${VERILATOR_INCLUDE_DIR}/verilated_fst_sc.cpp)
     list(APPEND SOURCES
-        ${VERILATOR_INCLUDE_DIR}/verilated_fst_c.cpp
         ${VERILATOR_INCLUDE_DIR}/verilated_fst_sc.cpp
     )
 endif()
 
-add_library(verilated STATIC ${SOURCES})
+add_library(verilated SHARED ${SOURCES})
 
 set_target_properties(verilated PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
@@ -133,7 +133,7 @@ endif()
 target_link_libraries(verilated PUBLIC ${SystemC_LIBRARIES} )
 
 
-add_library(verilated_custom STATIC ${SOURCES})
+add_library(verilated_custom SHARED ${SOURCES})
 
 set_target_properties(verilated_custom PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
