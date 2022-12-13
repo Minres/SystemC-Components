@@ -153,6 +153,11 @@ template <class TYPE> struct peq : public sc_core::sc_object {
         }
     }
 
+    void clear() {
+    	while(!m_scheduled_events.empty()){
+    		get_entry();
+    	}
+    }
 private:
     map_type m_scheduled_events;
     std::deque<std::deque<TYPE>*> free_pool;
