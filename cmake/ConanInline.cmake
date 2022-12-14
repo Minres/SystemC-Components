@@ -74,8 +74,8 @@ function(conan_configure)
 endfunction()
 
 macro(conan_install)
-  	set(options BUILD_TYPE) 
- 	set(oneValueArgs BUILD_TYPE)
+  	set(options BUILD_TYPE BUILD) 
+ 	set(oneValueArgs BUILD_TYPE BUILD)
 	cmake_parse_arguments(MARGS "" "${oneValueArgs}" "" ${ARGN} )
   	if(MARGS_BUILD_TYPE)
 		conan_cmake_autodetect(settings BUILD_TYPE ${MARGS_BUILD_TYPE})
@@ -94,8 +94,15 @@ macro(conan_install)
     	set(CONAN_PROFILE "default" CACHE INTERNAL "Copied from environment variable")
    endif()
 	
+  	if(MARGS_BUILD)
+	conan_cmake_install(PATH_OR_REFERENCE .
+	                    BUILD ${MARGS_BUILD}
+	                    PROFILE ${CONAN_PROFILE}
+	                    SETTINGS ${settings})
+	else()
 	conan_cmake_install(PATH_OR_REFERENCE .
 	                    BUILD missing
 	                    PROFILE ${CONAN_PROFILE}
 	                    SETTINGS ${settings})
+    endif()
 endmacro()
