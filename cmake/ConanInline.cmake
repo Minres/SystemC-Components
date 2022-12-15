@@ -19,8 +19,7 @@ macro(conan_check)
  
   if(NOT EXISTS ${CONAN_CMAKE_LIST_DIR}/conan.cmake)
     message("Downloading conan.cmake to ${CONAN_CMAKE_LIST_DIR}")
-    #set(URL https://raw.githubusercontent.com/conan-io/cmake-conan/develop/conan.cmake)
-    set(URL https://raw.githubusercontent.com/conan-io/cmake-conan/43e385830ee35377dbd2dcbe8d5a9e750301ea00/conan.cmake)
+    set(URL https://raw.githubusercontent.com/conan-io/cmake-conan/0.18.1/conan.cmake)
     file(DOWNLOAD ${URL} ${CONAN_CMAKE_LIST_DIR}/conan.cmake TIMEOUT 60 STATUS DOWNLOAD_STATUS)
     list(GET DOWNLOAD_STATUS 0 STATUS_CODE)
     list(GET DOWNLOAD_STATUS 1 ERROR_MESSAGE)
@@ -97,12 +96,12 @@ macro(conan_install)
   	if(MARGS_BUILD)
 	conan_cmake_install(PATH_OR_REFERENCE .
 	                    BUILD ${MARGS_BUILD}
-	                    PROFILE ${CONAN_PROFILE}
+	                    PROFILE_BUILD ${CONAN_PROFILE}
 	                    SETTINGS ${settings})
 	else()
 	conan_cmake_install(PATH_OR_REFERENCE .
 	                    BUILD missing
-	                    PROFILE ${CONAN_PROFILE}
+	                    PROFILE_BUILD ${CONAN_PROFILE}
 	                    SETTINGS ${settings})
     endif()
 endmacro()
