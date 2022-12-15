@@ -43,26 +43,20 @@ set(LIB_SOURCES
     tlm/scc/pe/parallel_pe.cpp
     scc/hierarchy_dumper.cpp
     scc/cci_broker.cpp
+    scc/configurer.cpp
+    scc/configurable_tracer.cpp
+    scc/sc_thread_pool.cpp
 )
-list(APPEND LIB_SOURCES     scc/configurer.cpp)
 
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
-    list(APPEND LIB_SOURCES  scc/scv/scv_tr_compressed.cpp)
-	if(TARGET lz4::lz4)
-        list(APPEND LIB_SOURCES scc/fst_trace.cpp)
-        set(WITH_FST ON)
-    endif()
+    list(APPEND LIB_SOURCES  scc/scv/scv_tr_compressed.cpp scc/fst_trace.cpp)
+    set(WITH_FST ON)
 endif()
 
 if(ENABLE_SQLITE)
     list(Append LIB_SOURCES  scc/scv/scv_tr_sqlite.cpp ../../third_party/sqlite3/sqlite3.c )
 endif()
-
-list(APPEND LIB_SOURCES  
-    scc/configurable_tracer.cpp
-    scc/sc_thread_pool.cpp
-)
 
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
 if(SCC_LIMIT_TRACE_TYPE_LIST)

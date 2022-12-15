@@ -178,6 +178,11 @@ else()
     message(STATUS "${PROJECT_NAME}: using built-in version of fmt")
 endif()
 
+if(NOT TARGET lz4::lz4)
+	message(STATUS "Using built-in lz4")
+	add_subdirectory(third_party/lz4-1.9.4)
+endif()
+
 # Define the scc library
 add_library(scc INTERFACE)
 if(HAVE_GETENV)
