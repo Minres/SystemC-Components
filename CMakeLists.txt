@@ -41,6 +41,9 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
 			# Boost on CentOS quirks end
         endif()
         set(CONAN_PACKAGE_LIST fmt/8.0.1 spdlog/1.9.2 zlib/1.2.11 boost/1.75.0 yaml-cpp/0.7.0 lz4/1.9.3)
+		if(BUILD_SCC_DOCUMENTATION)
+        	list(APPEND CONAN_PACKAGE_LIST doxygen/1.9.2)
+        endif()
         set(CONAN_PACKAGE_OPTIONS fmt:header_only=True boost:without_stacktrace=True boost:shared=False boost:header_only=False)
         if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
             list(APPEND CONAN_PACKAGE_OPTIONS boost:fPIC=True)
@@ -71,7 +74,7 @@ else()
 endif()
 
 if(BUILD_SCC_DOCUMENTATION)
-find_package(Doxygen)
+    find_package(Doxygen)
     if(NOT DOXYGEN_FOUND)
         message(FATAL_ERROR "Doxygen is needed to build the documentation.")
     endif()
@@ -179,7 +182,7 @@ else()
 endif()
 
 if(NOT TARGET lz4::lz4)
-	message(STATUS "Using built-in lz4")
+    message(STATUS "${PROJECT_NAME}: using built-in version of lz4")
 	add_subdirectory(third_party/lz4-1.9.4)
 endif()
 
@@ -197,11 +200,10 @@ else()
     target_link_libraries(scc INTERFACE ${Boost_datetime_LIBRARY})
 endif()
 target_link_libraries(scc INTERFACE scc-util scc-sysc components busses scv-tr)
-#target_link_libraries(scc INTERFACE jsoncpp)
 target_link_libraries(scc INTERFACE ${FMT_TARGET} ${SPDLOG_TARGET})
 
 set_target_properties(scc PROPERTIES
-      PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
+    PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
 )
 
 install(TARGETS scc
