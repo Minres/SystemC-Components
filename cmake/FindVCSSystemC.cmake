@@ -102,18 +102,18 @@ FIND_PATH(SCV_LIBRARY_DIRS
   PATHS ${_COMMON_PATHS}
 )
 
-FIND_PATH(CCI_INCLUDE_DIRS
-  NAMES cci_configuration
-  HINTS ${_CCI_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-FIND_PATH(CCI_LIBRARY_DIRS
-  NAMES libxmsccci_sh.so
-  HINTS ${_CCI_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
+#FIND_PATH(CCI_INCLUDE_DIRS
+#  NAMES cci_configuration
+#  HINTS ${_CCI_HINTS}
+#  PATHS ${_COMMON_PATHS}
+#)
+#
+#FIND_PATH(CCI_LIBRARY_DIRS
+#  NAMES libxmsccci_sh.so
+#  HINTS ${_CCI_HINTS}
+#  PATHS ${_COMMON_PATHS}
+#)
+#
 if(SystemC_FOUND)
 	#see https://gitlab.kitware.com/cmake/community/wikis/FAQ#how-do-i-use-a-different-compiler
    	set(SystemC_INCLUDE_DIRS ${TLM_INCLUDE_DIRS} ${SystemC_INCLUDE_DIRS})
@@ -121,7 +121,7 @@ if(SystemC_FOUND)
     if(SCV_FOUND)
         set(SCV_LIBRARIES ${SystemC_LIBRARIES})
     endif(SCV_FOUND)
-    if(CCI_FOUND)
-        set(CCI_LIBRARIES cciapi)
-    endif()
+#    if(CCI_FOUND)
+#        set(CCI_LIBRARIES cciapi)
+#    endif()
 endif(SystemC_FOUND)
