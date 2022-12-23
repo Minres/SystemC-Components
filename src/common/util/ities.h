@@ -357,8 +357,13 @@ template <class T> inline T remove_ext(T const& filename) {
 inline
 std::string  glob_to_regex(std::string val) {
 	const struct  {
-		const char *question_mark="[^.]";
+#ifdef MTI_SYSTEMC
+        const char *question_mark="[^/]";
+        const char *star= "[^/]*";
+#else
+        const char *question_mark="[^.]";
 		const char *star= "[^.]*";
+#endif
 		const char *double_star = ".*";
 	} subst_table;
 	auto is_regex_meta = [](char c)->bool {
@@ -408,7 +413,7 @@ std::string  glob_to_regex(std::string val) {
 		} else if (c == '?') {
 			oss << subst_table.question_mark;
 		} else if (c == '*') {
-			if (val[idx+1] == '*') {
+			if ((idx+1)<val.length() && val[idx+1] == '*') {
 				idx++;
 				oss << subst_table.double_star;
 			} else
