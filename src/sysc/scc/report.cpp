@@ -59,7 +59,11 @@ using namespace scc;
 
 namespace {
 thread_local std::unordered_map<uint64_t, sc_core::sc_verbosity> lut;
-thread_local cci::cci_originator originator(sc_core::sc_get_current_object()?cci::cci_originator():cci::cci_originator("reporting"));
+#ifdef MTI_SYSTEMC
+thread_local cci::cci_originator originator;
+#else
+thread_local cci::cci_originator originator("reporting");
+#endif
 
 bool& inst_based_logging() {
     thread_local bool active = getenv("SCC_DISABLE_INSTANCE_BASED_LOGGING")==nullptr;
@@ -359,7 +363,7 @@ static void configure_logging() {
     std::lock_guard<mutex> lock(cfg_guard);
     static bool spdlog_initialized = false;
     if(!log_cfg.dont_create_broker)
-        scc::init_cci();
+        scc::init_cci("SCCBroker");
     if(!log_cfg.instance_based_log_levels || getenv("SCC_DISABLE_INSTANCE_BASED_LOGGING"))
         inst_based_logging()=false;
     sc_report_handler::set_actions(SC_ERROR, SC_DEFAULT_ERROR_ACTIONS | SC_DISPLAY);

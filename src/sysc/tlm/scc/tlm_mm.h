@@ -63,7 +63,7 @@ template <size_t SZ, bool BE = false> struct tlm_gp_mm_t : public tlm_gp_mm {
 
     virtual ~tlm_gp_mm_t() {}
 
-    void free() override { util::pool_allocator<tlm_gp_mm_t<SZ, BE>>::get().free(this); }
+    void free() override { util::pool_allocator<sizeof(tlm_gp_mm_t<SZ, BE>)>::get().free(this); }
 
 protected:
     tlm_gp_mm_t(size_t sz)
@@ -88,32 +88,32 @@ inline tlm_gp_mm* tlm::scc::tlm_gp_mm::create(size_t sz, bool be) {
         return new tlm_gp_mm_v(sz);
     } else if(sz > 1024) {
         if(be) {
-            return new(util::pool_allocator<tlm_gp_mm_t<4096, true>>::get().allocate()) tlm_gp_mm_t<4096, true>(sz);
+            return new(util::pool_allocator<sizeof(tlm_gp_mm_t<4096, true>)>::get().allocate()) tlm_gp_mm_t<4096, true>(sz);
         } else {
-            return new(util::pool_allocator<tlm_gp_mm_t<4096, false>>::get().allocate()) tlm_gp_mm_t<4096, false>(sz);
+            return new(util::pool_allocator<sizeof(tlm_gp_mm_t<4096, false>)>::get().allocate()) tlm_gp_mm_t<4096, false>(sz);
         }
     } else if(sz > 256) {
         if(be) {
-            return new(util::pool_allocator<tlm_gp_mm_t<1024, true>>::get().allocate()) tlm_gp_mm_t<1024, true>(sz);
+            return new(util::pool_allocator<sizeof(tlm_gp_mm_t<1024, true>)>::get().allocate()) tlm_gp_mm_t<1024, true>(sz);
         } else {
-            return new(util::pool_allocator<tlm_gp_mm_t<1024, false>>::get().allocate()) tlm_gp_mm_t<1024, false>(sz);
+            return new(util::pool_allocator<sizeof(tlm_gp_mm_t<1024, false>)>::get().allocate()) tlm_gp_mm_t<1024, false>(sz);
         }
     } else if(sz > 64) {
         if(be) {
-            return new(util::pool_allocator<tlm_gp_mm_t<256, true>>::get().allocate()) tlm_gp_mm_t<256, true>(sz);
+            return new(util::pool_allocator<sizeof(tlm_gp_mm_t<256, true>)>::get().allocate()) tlm_gp_mm_t<256, true>(sz);
         } else {
-            return new(util::pool_allocator<tlm_gp_mm_t<256, false>>::get().allocate()) tlm_gp_mm_t<256, false>(sz);
+            return new(util::pool_allocator<sizeof(tlm_gp_mm_t<256, false>)>::get().allocate()) tlm_gp_mm_t<256, false>(sz);
         }
     } else if(sz > 16) {
         if(be) {
-            return new(util::pool_allocator<tlm_gp_mm_t<64, true>>::get().allocate()) tlm_gp_mm_t<64, true>(sz);
+            return new(util::pool_allocator<sizeof(tlm_gp_mm_t<64, true>)>::get().allocate()) tlm_gp_mm_t<64, true>(sz);
         } else {
-            return new(util::pool_allocator<tlm_gp_mm_t<64, false>>::get().allocate()) tlm_gp_mm_t<64, false>(sz);
+            return new(util::pool_allocator<sizeof(tlm_gp_mm_t<64, false>)>::get().allocate()) tlm_gp_mm_t<64, false>(sz);
         }
     } else if(be) {
-        return new(util::pool_allocator<tlm_gp_mm_t<16, true>>::get().allocate()) tlm_gp_mm_t<16, true>(sz);
+        return new(util::pool_allocator<sizeof(tlm_gp_mm_t<16, true>)>::get().allocate()) tlm_gp_mm_t<16, true>(sz);
     } else {
-        return new(util::pool_allocator<tlm_gp_mm_t<16, false>>::get().allocate()) tlm_gp_mm_t<16, false>(sz);
+        return new(util::pool_allocator<sizeof(tlm_gp_mm_t<16, false>)>::get().allocate()) tlm_gp_mm_t<16, false>(sz);
     }
 }
 
@@ -136,12 +136,12 @@ template <typename EXT> struct tlm_ext_mm : public EXT {
 
     ~tlm_ext_mm() {}
 
-    void free() override { util::pool_allocator<tlm_ext_mm<EXT>>::get().free(this); }
+    void free() override { util::pool_allocator<sizeof(tlm_ext_mm<EXT>)>::get().free(this); }
 
     EXT* clone() const override { return create(*this); }
 
     template <typename... Args> static EXT* create(Args... args) {
-        return new(util::pool_allocator<tlm_ext_mm<EXT>>::get().allocate()) tlm_ext_mm<EXT>(args...);
+        return new(util::pool_allocator<sizeof(tlm_ext_mm<EXT>)>::get().allocate()) tlm_ext_mm<EXT>(args...);
     }
 
 protected:
@@ -168,7 +168,7 @@ public:
     static tlm_mm& get();
 
     tlm_mm()
-    : allocator(util::pool_allocator<payload_type>::get()) {}
+    : allocator(util::pool_allocator<sizeof(payload_type)>::get()) {}
 
     tlm_mm(const tlm_mm&) = delete;
 
@@ -215,7 +215,7 @@ public:
     void free(tlm::tlm_generic_payload* trans) override;
 
 private:
-    util::pool_allocator<payload_type>& allocator;
+    util::pool_allocator<sizeof(payload_type)>& allocator;
 };
 
 template <typename TYPES, bool CLEANUP_DATA> inline tlm_mm<TYPES, CLEANUP_DATA>& tlm_mm<TYPES, CLEANUP_DATA>::get() {

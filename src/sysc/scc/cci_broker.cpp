@@ -77,6 +77,8 @@ void cci_broker::insert_matching_preset_value(const std::string &parname) {
 bool cci_broker::has_preset_value(const std::string &parname) const {
 	if (sendToParent(parname)) {
 		return m_parent.has_preset_value(parname);
+	} else if(consuming_broker::has_preset_value(parname)){
+	    return true;
 	} else {
 		const_cast<cci_broker*>(this)->insert_matching_preset_value(parname);
 		return consuming_broker::has_preset_value(parname);
@@ -86,6 +88,8 @@ bool cci_broker::has_preset_value(const std::string &parname) const {
 cci_value cci_broker::get_preset_cci_value(const std::string &parname) const {
 	if (sendToParent(parname)) {
 		return m_parent.get_preset_cci_value(parname);
+    } else if(consuming_broker::has_preset_value(parname)){
+        return consuming_broker::get_preset_cci_value(parname);
 	} else {
 		const_cast<cci_broker*>(this)->insert_matching_preset_value(parname);
 		return consuming_broker::get_preset_cci_value(parname);
@@ -193,9 +197,9 @@ void cci_broker::lock_preset_value(const std::string &parname) {
 static cci_broker broker("SCC Global Broker");
 #define STATIC_BROKER
 #endif
-bool init_cci() {
+bool init_cci(std::string name) {
 #ifndef STATIC_BROKER
-    thread_local cci_broker broker("SCC Global Broker");
+    thread_local cci_broker broker(name);
 #endif
 	thread_local bool registered{false};
 	if(!registered) {
