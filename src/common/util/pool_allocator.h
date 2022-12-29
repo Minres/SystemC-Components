@@ -113,11 +113,7 @@ public:
     pointer address(reference r) { return std::addressof(r);}
     const_pointer address(const_reference r) { return std::addressof(r); }
 
-#if __cplusplus > 201402L
-    pointer [[nodiscard]] allocate(size_type n, const void* = 0) {
-#else
     pointer allocate(size_type n, const void* = 0) {
-#endif
     	size_type value = 16;
     	while(value<n) value <<=2;
     	switch(n) {
