@@ -17,6 +17,8 @@ option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse call
 
 set(SCC_ARCHIVE_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
 
+set(SCC_LIBRARY_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
+
 include(Common)
 
 if(CMAKE_PROJECT_NAME STREQUAL "scc")
@@ -208,8 +210,8 @@ set_target_properties(scc PROPERTIES
 
 install(TARGETS scc
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_ARCHIVE_DIR_MODIFIER}
+        LIBRARY DESTINATION ${SCC_LIB_INST_DIR}${SCC_LIBRARY_DIR_MODIFIER}
+        ARCHIVE DESTINATION ${SCC_LIB_INST_DIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
 
