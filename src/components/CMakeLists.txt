@@ -1,8 +1,10 @@
 project(components VERSION 0.0.1 LANGUAGES CXX)
 
-add_library(${PROJECT_NAME} INTERFACE)
-target_include_directories (${PROJECT_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(${PROJECT_NAME} INTERFACE scc-sysc)
+add_library(${PROJECT_NAME} scc/storage_base.cpp)
+target_include_directories (${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(${PROJECT_NAME} PUBLIC scc-sysc)
+target_link_libraries(${PROJECT_NAME} PUBLIC systemc-cci::systemc-cci)
+
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     # VERSION ${PROJECT_VERSION}

@@ -20,12 +20,14 @@
 // Needed for the simple_target_socket
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
+#include <scc/storage_base.h>
 #include "scc/mt19937_rng.h"
 #include "scc/report.h"
 #include "scc/utilities.h"
 #include "tlm/scc/target_mixin.h"
+#include <cci_mem/cci_memory_introspection.hpp>
 #include <numeric>
-#include <tlm.h>
+#include <tlm>
 #include <util/sparse_array.h>
 
 namespace scc {
@@ -42,7 +44,8 @@ namespace scc {
  * @tparam SIZE size of the memery
  * @tparam BUSWIDTH bus width of the socket
  */
-template <unsigned long long SIZE, unsigned BUSWIDTH = 32> class memory : public sc_core::sc_module {
+template <unsigned long long SIZE, unsigned BUSWIDTH = 32>
+class memory : public sc_core::sc_module, public storage_base {
 public:
     //! the target socket to connect to TLM
     tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
@@ -85,6 +88,56 @@ public:
      * write response delay
      */
     cci::cci_param<sc_core::sc_time> wr_resp_delay{"wr_resp_delay", sc_core::SC_ZERO_TIME};
+    /* cci_mem functions */
+    size_t get_size() const override {return SIZE;}
+    size_t get_width() const override {return 8*sizeof(uint8_t);}
+    bool has_child() const override {return false;}
+    std::vector<cci_mem_memory_if*> get_children() const override { return {};}
+    bool has_parent() const override {return false;}
+    cci_mem_memory_if* get_parent() const override {return nullptr;}
+    bool cci_mem_peek_da(unsigned char const * & data, size_t const start, size_t const len)  override {
+        if(mem.is_allocated(start)) {
+             const auto& p = mem(start / mem.page_size);
+             auto offs = start & mem.page_addr_mask;
+             if((offs + len) > mem.page_size) {
+                 data = p.data()+start;
+                 return true;
+             }
+         }
+    	return false;
+    }
+    size_t cci_mem_peek( unsigned char * const data, size_t start, size_t len, unsigned char const * const mask = nullptr ) const override {
+        if(mem.is_allocated(start)) {
+            const auto& p = mem(start / mem.page_size);
+            auto offs = start & mem.page_addr_mask;
+            if((offs + len) > mem.page_size) {
+                auto first_part = mem.page_size - offs;
+                std::copy(p.data() + offs, p.data() + offs + first_part, data);
+                const auto& p2 = mem((start / mem.page_size) + 1);
+                std::copy(p2.data(), p2.data() + len - first_part, data + first_part);
+            } else {
+                std::copy(p.data() + offs, p.data() + offs + len, data);
+            }
+        } else {
+            // no allocated page so return randomized data
+            for(size_t i = 0; i < len; i++)
+            	data[i] = scc::MT19937::uniform() % 256;
+        }
+        return len;
+    }
+    size_t cci_mem_poke( unsigned char const * const data, size_t start, size_t len, unsigned char const * const mask = nullptr ) override {
+        auto& p = mem(start / mem.page_size);
+        auto offs = start & mem.page_addr_mask;
+        if((offs + len) > mem.page_size) {
+            auto first_part = mem.page_size - offs;
+            std::copy(data, data + first_part, p.data() + offs);
+            auto& p2 = mem((start / mem.page_size) + 1);
+            std::copy(data + first_part, data + len, p2.data());
+        } else {
+            std::copy(data, data + len, p.data() + offs);
+        }
+        return len;
+    }
 protected:
     //! the real memory structure
     util::sparse_array<uint8_t, SIZE> mem;
@@ -100,7 +153,8 @@ public:
 
 template <unsigned long long SIZE, unsigned BUSWIDTH>
 memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
-: sc_module(nm) {
+: sc_core::sc_module(nm)
+, storage_base(this->name(), "TLM2 sparse memory", cci_mem::memory_type::MEMORY){
     // Register callback for incoming b_transport interface method call
     target.register_b_transport([this](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void {
         operation_cb ? operation_cb(*this, gp, delay) : handle_operation(gp, delay);

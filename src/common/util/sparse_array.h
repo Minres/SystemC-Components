@@ -71,6 +71,19 @@ public:
         return arr[nr]->at(addr & page_addr_mask);
     }
     /**
+     * 	const element access operator
+     *
+     * @param addr address to access
+     * @return the data type reference
+     */
+    T operator[](uint32_t addr) const {
+        assert(addr < SIZE);
+        T nr = addr >> PAGE_ADDR_BITS;
+        if(arr[nr] == nullptr)
+            arr[nr] = new page_type();
+        return arr[nr]->at(addr & page_addr_mask);
+    }
+    /**
      * page fetch operator
      *
      * @param page_nr the page number ot fetch
@@ -83,12 +96,24 @@ public:
         return *(arr[page_nr]);
     }
     /**
+     * page fetch operator
+     *
+     * @param page_nr the page number ot fetch
+     * @return reference to page
+     */
+    page_type const& operator()(uint32_t page_nr) const {
+        assert(page_nr < page_count);
+        if(arr[page_nr] == nullptr)
+            const_cast<page_type*&>(arr.at(page_nr)) = new page_type();
+        return *(arr[page_nr]);
+    }
+    /**
      * check if page for address is allocated
      *
      * @param addr the address to check
      * @return true if the page is allocated
      */
-    bool is_allocated(uint32_t addr) {
+    bool is_allocated(uint32_t addr) const {
         assert(addr < SIZE);
         T nr = addr >> PAGE_ADDR_BITS;
         return arr.at(nr) != nullptr;
@@ -98,7 +123,7 @@ public:
      *
      * @return the size
      */
-    uint64_t size() { return SIZE; }
+    uint64_t size() const { return SIZE; }
 
 protected:
     std::array<page_type*, SIZE / (1 << PAGE_ADDR_BITS) + 1> arr;

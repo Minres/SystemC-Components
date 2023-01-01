@@ -21,6 +21,7 @@
 
 #include "resetable.h"
 #include "resource_access_if.h"
+#include "storage_base.h"
 #include "scc/traceable.h"
 #include "scc/utilities.h"
 #ifdef _MSC_VER
@@ -71,7 +72,7 @@ template <typename Type> constexpr Type get_max_uval() {
  * @tparam DATATYPE
  */
 template <typename DATATYPE>
-class sc_register : public sc_core::sc_object, public resource_access_if, public traceable {
+class sc_register : public sc_core::sc_object, public resource_access_if, public traceable, public storage_base {
 public:
     using this_type = sc_register<DATATYPE>;
     /**
@@ -89,6 +90,7 @@ public:
     sc_register(sc_core::sc_module_name nm, DATATYPE& storage, const DATATYPE reset_val, resetable& owner,
                 DATATYPE rdmask = get_max_uval<DATATYPE>(), DATATYPE wrmask = get_max_uval<DATATYPE>())
     : sc_core::sc_object(nm)
+    , storage_base(name(), "SCC Register", cci_mem::memory_type::REGISTER)
     , res_val(reset_val)
     , rdmask(rdmask)
     , wrmask(wrmask)
@@ -315,6 +317,35 @@ public:
     //! \brief the SW write mask
     const DATATYPE wrmask;
 
+    /* cci_mem functions */
+    size_t get_size() const override {return 1;}
+    size_t get_width() const override {return 8*sizeof(DATATYPE);}
+    bool has_child() const override {return false;}
+    std::vector<cci_mem_memory_if*> get_children() const override { return {};}
+    bool has_parent() const override {return dynamic_cast<cci_mem_memory_if*>(get_parent_object())!=nullptr;}
+    cci_mem_memory_if* get_parent() const override {return {dynamic_cast<cci_mem_memory_if*>(get_parent_object())};}
+    bool cci_mem_peek_da(unsigned char const * & data, size_t const start, size_t const len)  override {
+    	if(start==0 && len==sizeof(DATATYPE)) {
+    		data = reinterpret_cast<unsigned char const *>(&storage);
+    		return true;
+    	} else
+    		return false;
+    }
+    size_t cci_mem_peek(unsigned char * const data, size_t start, size_t len, unsigned char const * const mask = nullptr) const override {
+    	if(start==0 && len==sizeof(DATATYPE)) {
+    		auto* d = reinterpret_cast<unsigned char const *>(&storage);
+    		std::copy(d, d+sizeof(DATATYPE), data);
+    		return sizeof(DATATYPE);
+    	} else
+    		return 0;
+    }
+    size_t cci_mem_poke(unsigned char const * const data, size_t start, size_t len, unsigned char const * const mask = nullptr) override {
+    	if(start==0 && len==sizeof(DATATYPE)) {
+    		std::copy(data, data+sizeof(DATATYPE), reinterpret_cast<unsigned char*>(&storage));
+    		return sizeof(DATATYPE);
+    	} else
+    		return 0;
+    }
 private:
     DATATYPE& storage;
     std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time)> rd_cb;
@@ -335,7 +366,7 @@ template <typename DATATYPE> using sc_register = impl::sc_register<typename impl
  * an indexed register aka a register file of a certain type
  */
 template <typename DATATYPE, size_t SIZE, size_t START = 0>
-class sc_register_indexed : public indexed_resource_access_if {
+class sc_register_indexed : public indexed_resource_access_if, public storage_base {
 public:
     using BASE_DATA_TYPE = typename impl::helper<DATATYPE>::Type;
 
@@ -351,19 +382,17 @@ public:
      * @param rdmask
      * @param wrmask
      */
-    sc_register_indexed(sc_core::sc_module_name nm, std::array<DATATYPE, SIZE>& storage, const DATATYPE reset_val,
+    sc_register_indexed(sc_core::sc_module_name const& nm, std::array<DATATYPE, SIZE>& storage, const DATATYPE reset_val,
                         resetable& owner,
-                        BASE_DATA_TYPE rdmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed
-                                                    ? -1
-                                                    : std::numeric_limits<BASE_DATA_TYPE>::max(),
-                        BASE_DATA_TYPE wrmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed
-                                                    ? -1
-                                                    : std::numeric_limits<BASE_DATA_TYPE>::max()) {
-
-        _reg_field.init(START + SIZE, [&](const char* name, size_t idx) -> pointer {
-            return new sc_register<DATATYPE>(name, storage[idx], reset_val, owner, rdmask, wrmask);
-        });
-    }
+                        BASE_DATA_TYPE rdmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed ?
+                        		-1 : std::numeric_limits<BASE_DATA_TYPE>::max(),
+                        BASE_DATA_TYPE wrmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed ?
+                        		-1 : std::numeric_limits<BASE_DATA_TYPE>::max())
+    : storage_base(storage_base::get_hier_name(nm), "SCC Register Field", cci_mem::memory_type::REGISTER_BLOCK)
+    , registers(nm, START + SIZE, [&](const char* name, size_t idx) -> pointer {
+        return new sc_register<DATATYPE>(name, storage[idx], reset_val, owner, rdmask, wrmask);
+    })
+    { }
 
     /**
      * the destructor
@@ -382,7 +411,7 @@ public:
      * @param read_cb
      */
     void set_read_cb(std::function<bool(const sc_register<DATATYPE>&, DATATYPE&)> read_cb) {
-        for(auto& reg : _reg_field)
+        for(auto& reg : registers)
             reg.set_read_cb(read_cb);
     }
     /**
@@ -391,7 +420,7 @@ public:
      * @param read_cb
      */
     void set_read_cb(std::function<bool(const sc_register<DATATYPE>&, DATATYPE&, sc_core::sc_time)> read_cb) {
-        for(auto& reg : _reg_field)
+        for(auto& reg : registers)
             reg.set_read_cb(read_cb);
     }
     /**
@@ -401,7 +430,7 @@ public:
      * @param write_cb
      */
     void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const&)> write_cb) {
-        for(auto& reg : _reg_field)
+        for(auto& reg : registers)
             reg.set_write_cb(write_cb);
     }
     /**
@@ -410,7 +439,7 @@ public:
      * @param write_cb
      */
     void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const&, sc_core::sc_time)> write_cb) {
-        for(auto& reg : _reg_field)
+        for(auto& reg : registers)
             reg.set_write_cb(write_cb);
     }
     /**
@@ -419,14 +448,14 @@ public:
      * @param idx the index
      * @return the data reference at the index
      */
-    reference operator[](size_t idx) noexcept override { return _reg_field[idx]; }
+    reference operator[](size_t idx) noexcept override { return registers[idx]; }
     /**
      * const element access operator
      *
      * @param idx
      * @return the data reference at the index
      */
-    const_reference operator[](size_t idx) const noexcept override { return _reg_field[idx]; }
+    const_reference operator[](size_t idx) const noexcept override { return registers[idx]; }
     /**
      * Element access operator
      *
@@ -435,7 +464,7 @@ public:
      */
     reference at(size_t idx) override {
         assert("access out of bound" && idx < SIZE);
-        return _reg_field[idx];
+        return registers[idx];
     }
     /**
      * const element access operator
@@ -445,11 +474,32 @@ public:
      */
     const_reference at(size_t idx) const override {
         assert("access out of bound" && idx < SIZE);
-        return _reg_field[idx];
+        return registers[idx];
     }
 
+    /* cci_mem functions */
+    size_t get_size() const override {return SIZE;}
+    size_t get_width() const override {return 8*sizeof(DATATYPE);}
+    bool has_child() const override {return true;}
+    std::vector<cci_mem_memory_if*> get_children() const override {
+    	std::vector<cci_mem_memory_if*> res;
+    	for(auto i=START; i<(START+SIZE); ++i)
+    		res.push_back(const_cast<value_type*>(&registers.at(i)));
+    	return res;
+    }
+    bool has_parent() const override {return dynamic_cast<cci_mem_memory_if*>(registers[START].get_parent_object())!=nullptr;}
+    cci_mem_memory_if* get_parent() const override {return {dynamic_cast<cci_mem_memory_if*>(registers[START].get_parent_object())};}
+    bool cci_mem_peek_da(unsigned char const * & data, size_t const start, size_t const len)  override {
+    	return false;
+    }
+    size_t cci_mem_peek(unsigned char * const data, size_t start, size_t len, unsigned char const * const mask = nullptr) const override {
+    	return 0;
+    }
+    size_t cci_mem_poke(unsigned char const * const data, size_t start, size_t len, unsigned char const * const mask = nullptr) override {
+    	return 0;
+    }
 private:
-    sc_core::sc_vector<value_type> _reg_field;
+    sc_core::sc_vector<value_type> registers;
 };
 /**
  * alias class to map template argument read an write mask to constructor arguments

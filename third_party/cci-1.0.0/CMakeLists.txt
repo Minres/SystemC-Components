@@ -12,10 +12,13 @@ ${CMAKE_CURRENT_SOURCE_DIR}/cci_core/cci_name_gen.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/cci_core/cci_value.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/cci_core/cci_value_converter.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/cci_utils/broker.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/cci_utils/consuming_broker.cpp)
+${CMAKE_CURRENT_SOURCE_DIR}/cci_utils/consuming_broker.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_mem/cci_memory_introspection.cpp)
+
 if(USE_NCSC_SYSTEMC OR USE_CWR_SYSTEMC)
 	target_compile_definitions(cciapi PUBLIC SC_VERSION_CODE=200301)
 endif()
+
 target_include_directories(cciapi PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 get_target_property(SC_COMPILE_OPTIONS ${SystemC_LIBRARIES} INTERFACE_COMPILE_OPTIONS)
 if(SC_COMPILE_OPTIONS) 
