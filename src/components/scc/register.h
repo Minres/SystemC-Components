@@ -22,13 +22,9 @@
 #include "resetable.h"
 #include "resource_access_if.h"
 #include "storage_base.h"
-#include "scc/traceable.h"
-#include "scc/utilities.h"
-#ifdef _MSC_VER
-#include <functional>
-#else
-#include "util/delegate.h"
-#endif
+#include <scc/traceable.h>
+#include <scc/utilities.h>
+#include <scc/report.h>
 #include <functional>
 #include <limits>
 #include <sstream>
@@ -134,13 +130,19 @@ public:
      */
     bool write(const uint8_t* data, size_t length, uint64_t offset = 0,
                sc_core::sc_time d = sc_core::SC_ZERO_TIME) override {
-        assert("Access out of range" && offset + length <= sizeof(DATATYPE));
+    	scc_assert("Access to large" && length <= sizeof(DATATYPE));
+		scc_assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
         auto beg = reinterpret_cast<uint8_t*>(&temp) + offset;
         std::copy(data, data + length, beg);
-        if(wr_cb)
-            return wr_cb(*this, temp, d);
+        auto old_val=storage;
+        if(wr_cb) {
+            auto res =  wr_cb(*this, temp, d);
+            invoke_wr_cb(offset, length, old_val!=storage);
+            return res;
+        }
         storage = (temp & wrmask) | (storage & ~wrmask);
+        invoke_wr_cb(offset, length, old_val!=storage);
         return true;
     }
     /**
@@ -156,8 +158,10 @@ public:
      */
     bool read(uint8_t* data, size_t length, uint64_t offset = 0,
               sc_core::sc_time d = sc_core::SC_ZERO_TIME) const override {
-        assert("Access out of range" && offset + length <= sizeof(DATATYPE));
+    	sc_assert("Access to large" && length <= sizeof(DATATYPE));
+        sc_assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
+        invoke_rd_cb(offset, length);
         if(rd_cb) {
             if(!rd_cb(*this, temp, d))
                 return false;
@@ -179,10 +183,13 @@ public:
      * @return true if access is successful
      */
     bool write_dbg(const uint8_t* data, size_t length, uint64_t offset = 0) override {
-        assert("Offset out of range" && offset == 0);
+    	scc_assert("Access to large" && length <= sizeof(DATATYPE));
+        scc_assert("Offset out of range" && offset == 0);
         if(length != sizeof(DATATYPE))
             return false;
+        auto old_val=storage;
         storage = *reinterpret_cast<const DATATYPE*>(data);
+        invoke_wr_cb(offset, length, old_val!=old_val);
         return true;
     }
     /**
@@ -197,9 +204,11 @@ public:
      * @return true if access is successful
      */
     bool read_dbg(uint8_t* data, size_t length, uint64_t offset = 0) const override {
-        assert("Offset out of range" && offset == 0);
+    	scc_assert("Access to large" && length <= sizeof(DATATYPE));
+        scc_assert("Offset out of range" && offset == 0);
         if(length != sizeof(DATATYPE))
             return false;
+        invoke_rd_cb(offset, length);
         *reinterpret_cast<DATATYPE*>(data) = storage;
         return true;
     }
@@ -351,13 +360,6 @@ private:
     std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time)> rd_cb;
     std::function<bool(this_type&, DATATYPE&, sc_core::sc_time)> wr_cb;
 
-#ifdef _MSC_VER
-    std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time)> rd_dlgt;
-    std::function<bool(this_type&, DATATYPE&, sc_core::sc_time)> wr_dlgt;
-#else
-    util::delegate<bool(const this_type&, DATATYPE&, sc_core::sc_time)> rd_dlgt;
-    util::delegate<bool(this_type&, DATATYPE&, sc_core::sc_time)> wr_dlgt;
-#endif
 };
 } // namespace impl
 //! import the implementation into the scc namespace
@@ -388,7 +390,7 @@ public:
                         		-1 : std::numeric_limits<BASE_DATA_TYPE>::max(),
                         BASE_DATA_TYPE wrmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed ?
                         		-1 : std::numeric_limits<BASE_DATA_TYPE>::max())
-    : storage_base(storage_base::get_hier_name(nm), "SCC Register Field", cci_mem::memory_type::REGISTER_BLOCK)
+    : storage_base(storage_base::get_hier_name(nm), "SCC Register Field", cci_mem::memory_type::REGISTER_BLOCK, false)
     , registers(nm, START + SIZE, [&](const char* name, size_t idx) -> pointer {
         return new sc_register<DATATYPE>(name, storage[idx], reset_val, owner, rdmask, wrmask);
     })

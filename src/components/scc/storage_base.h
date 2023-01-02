@@ -16,7 +16,7 @@ namespace scc {
 
 struct storage_base: public cci_mem::cci_mem_memory_if {
 
-	storage_base(std::string const& hier_name, std::string const& desc, cci_mem::memory_type type);
+	storage_base(std::string const& hier_name, std::string const& desc, cci_mem::memory_type type, bool en_callbacks = true);
 
 	const std::string& get_name() const override { return hier_name;}
 
@@ -44,14 +44,14 @@ struct storage_base: public cci_mem::cci_mem_memory_if {
 
 protected:
 	struct cb_key { size_t start; size_t len; CBIF cb;};
-	void invoke_wr_cb(size_t start, size_t len, bool changed){
-		invoke_cb(wr_cb, start, len);
-		invoke_cb(access_cb, start, len);
-		if(changed) invoke_cb(modify_cb, start, len);
+	void invoke_wr_cb(size_t start, size_t len, bool changed) const {
+		if(wr_cb.size()) invoke_cb(wr_cb, start, len);
+		if(access_cb.size()) invoke_cb(access_cb, start, len);
+		if(changed && modify_cb.size() ) invoke_cb(modify_cb, start, len);
 	}
-	void invoke_rd_cb(size_t start, size_t len){
-		invoke_cb(rd_cb, start, len);
-		invoke_cb(access_cb, start, len);
+	void invoke_rd_cb(size_t start, size_t len) const {
+		if(rd_cb.size()) invoke_cb(rd_cb, start, len);
+		if(access_cb.size()) invoke_cb(access_cb, start, len);
 	}
 	friend bool operator<(cb_key const& a, cb_key const& b);
 	friend bool operator==(cb_key const& a, cb_key const& b);
@@ -60,7 +60,8 @@ private:
 	std::string const hier_name;
 	std::string const desc;
 	cci_mem::memory_type const type;
-	void invoke_cb(std::vector<cb_key> const& cbs, size_t start, size_t len);
+	bool const en_callbacks;
+	void invoke_cb(std::vector<cb_key> const& cbs, size_t start, size_t len) const;
 };
 }
 #endif /* _SCC_CCI_MEMORY_BASE_H_ */

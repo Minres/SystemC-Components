@@ -367,9 +367,9 @@ protected:
 #define SCCFATAL(...) ::scc::ScLogger<::sc_core::SC_FATAL>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 
 #ifdef NDEBUG
-#define SCC_ASSERT(expr) ((void)0)
+#define scc_assert(expr) ((void)0)
 #else
-#define SCC_ASSERT(expr) ((void)((expr) ? 0 : (SC_REPORT_FATAL(::sc_core::SC_ID_ASSERTION_FAILED_, #expr), 0)))
+#define scc_assert(expr) ((void)((expr) ? 0 : (SC_REPORT_FATAL(::sc_core::SC_ID_ASSERTION_FAILED_, #expr), 0)))
 #endif
 //! get the name of the sc_object/sc_module
 #define SCMOD this->name()

@@ -218,6 +218,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
             for(size_t i = 0; i < len; i++)
                 ptr[i] = scc::MT19937::uniform() % 256;
         }
+        invoke_rd_cb(adr, len);
     } else if(cmd == tlm::TLM_WRITE_COMMAND) {
         delay += wr_resp_delay;
         auto& p = mem(adr / mem.page_size);
@@ -230,6 +231,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
         } else {
             std::copy(ptr, ptr + len, p.data() + offs);
         }
+        invoke_wr_cb(adr, len, true);
     }
     trans.set_response_status(tlm::TLM_OK_RESPONSE);
     trans.set_dmi_allowed(true);

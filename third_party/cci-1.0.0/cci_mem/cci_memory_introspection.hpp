@@ -21,6 +21,7 @@ permissions and limitations under the License.
 
 #include <vector>
 #include <string>
+#include <functional>
 
 namespace cci_mem {
 
@@ -62,7 +63,7 @@ struct cci_mem_memory_if {
 
 	virtual size_t cci_mem_poke( unsigned char const * const data, size_t start, size_t len, unsigned char const * const mask = nullptr ) = 0;
 
-	using  CBIF = void (*)(cci_mem_memory_if& obj, size_t start, size_t len);
+	using  CBIF = std::function<void(cci_mem_memory_if&, size_t, size_t)>;
 
 	virtual bool register_write_cb(CBIF, size_t start, size_t len) = 0;
 

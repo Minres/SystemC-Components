@@ -11,10 +11,11 @@
 
 namespace scc {
 
-storage_base::storage_base(std::string const&hier_name, std::string const& desc, cci_mem::memory_type type)
+storage_base::storage_base(std::string const&hier_name, std::string const& desc, cci_mem::memory_type type, bool en_callbacks)
 : hier_name(hier_name)
 , desc(desc)
 , type(type)
+, en_callbacks(en_callbacks)
 {
 	cci_mem::get_cci_mem_portal().register_memory(*this);
 }
@@ -36,23 +37,23 @@ typename std::vector<T>::iterator insert_sorted( std::vector<T> & vec, T const& 
 
 
 bool storage_base::register_write_cb(CBIF cb, size_t start, size_t len) {
-	insert_sorted(wr_cb, {start, len, cb});
-	return true;
+	if(en_callbacks) insert_sorted(wr_cb, {start, len, cb});
+	return en_callbacks;
 }
 
 bool storage_base::register_read_cb(CBIF cb, size_t start,	size_t len) {
-	insert_sorted(rd_cb, {start, len, cb});
-	return true;
+	if(en_callbacks) insert_sorted(rd_cb, {start, len, cb});
+	return en_callbacks;
 }
 
 bool storage_base::register_access_cb(CBIF cb, size_t start, size_t len) {
-	insert_sorted(access_cb, {start, len, cb});
-	return true;
+	if(en_callbacks) insert_sorted(access_cb, {start, len, cb});
+	return en_callbacks;
 }
 
 bool storage_base::register_modify_cb(CBIF cb, size_t start, size_t len) {
-	insert_sorted(modify_cb, {start, len, cb});
-	return true;
+	if(en_callbacks) insert_sorted(modify_cb, {start, len, cb});
+	return en_callbacks;
 }
 
 bool storage_base::unregister_write_callback(size_t start,	size_t len) {
@@ -90,12 +91,12 @@ std::string storage_base::get_hier_name(const sc_core::sc_module_name& basename_
     return oss.str();
 }
 
-void storage_base::invoke_cb(std::vector<cb_key> const& cbs, size_t start, size_t len) {
+void storage_base::invoke_cb(std::vector<cb_key> const& cbs, size_t start, size_t len) const {
 	auto begin = std::find_if(std::begin(cbs), std::end(cbs), [start, len](const cb_key &e) -> bool {
 		return e.start<=start && (start+len)<=(e.start+e.len);
 	});
 	for(; begin!=std::end(cbs) && begin->start<=start && (start+len)<<(begin->start+begin->len); ++begin){
-		begin->cb(*this, start, len);
+		begin->cb(*const_cast<storage_base*>(this), start, len);
 	}
 }
 }

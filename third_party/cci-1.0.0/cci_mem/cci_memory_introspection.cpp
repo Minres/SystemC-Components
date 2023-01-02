@@ -52,7 +52,7 @@ std::vector<cci_mem_memory_if*> cci_mem::cci_mem_portal::get_memories(const cci_
 	std::vector<cci_mem_memory_if*> result;
 	auto scope_name = scope.get_name();
 	std::copy_if(std::begin(memories), std::end(memories), std::back_inserter(result), [scope_name, type](cci_mem_memory_if* m)->bool {
-		return m->get_type()==type && m->get_name().rfind(scope_name, 0)==0;
+		return (type==memory_type::ALL || m->get_type()==type) && m->get_name().rfind(scope_name, 0)==0;
 	});
 	return result;
 }
