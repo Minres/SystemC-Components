@@ -298,12 +298,10 @@ inline unsigned ilog2(uint32_t val) {
 #else
 inline constexpr unsigned ilog2(uint32_t val) {
 #endif
+	assert(val>0);
 #ifdef __GNUG__
     return sizeof(uint32_t) * 8 - 1 - __builtin_clz(static_cast<unsigned>(val));
 #else
-
-    if(val == 0)
-        return std::numeric_limits<uint32_t>::max();
     if(val == 1)
         return 0;
     auto ret = 0U;
