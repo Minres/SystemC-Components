@@ -15,17 +15,16 @@
  language governing rights and limitations under the License.
 
  *****************************************************************************/
-#include "scv.h"
-#include "scc/scv_tr_db.h"
-#include "scc/report.h"
-#include "scc/value_registry.h"
+#include <scc/scv/scv_tr_db.h>
+#include <scv-tr.h>
+#include <scc/report.h>
+#include <scc/value_registry.h>
+#include <scc/mt19937_rng.h>
 #include <chrono>
 
-// text         11308µs/11602µs
-// compressed   10365µs/ 9860µs
-// binary       13233µs/10698µs
-// SQLite       30363µs/30018µs
-// LeveDB       23898µs/22367µs
+using namespace sc_core;
+using namespace sc_dt;
+using namespace scv_tr;
 
 // hack to fake a true fifo_mutex
 #define fifo_mutex sc_mutex
@@ -45,6 +44,7 @@ public:
     virtual void write(const write_t *) = 0;
 };
 
+namespace scv_tr {
 SCV_EXTENSIONS(rw_task_if::write_t) {
 public:
     scv_extensions<rw_task_if::addr_t> addr;
@@ -54,7 +54,7 @@ public:
         SCV_FIELD(data);
     }
 };
-
+}
 class pipelined_bus_ports : public sc_module {
 public:
     sc_in<bool> clk;
@@ -183,17 +183,6 @@ public:
     void main2();
 };
 
-class write_constraint : virtual public scv_constraint_base {
-public:
-    scv_smart_ptr<rw_task_if::write_t> write;
-    SCV_CONSTRAINT_CTOR(write_constraint) { // NOLINT
-        SCV_CONSTRAINT(write->addr() <= ram_size); // NOLINT
-        SCV_CONSTRAINT(write->addr() != write->data()); // NOLINT
-    }
-};
-
-inline void process(scv_smart_ptr<int> data) {}
-
 inline void test::main1() {
     // simple sequential tests
     for (int i = 0; i < 3; i++) {
@@ -201,30 +190,18 @@ inline void test::main1() {
         rw_task_if::data_t data = transactor->read(&addr);
         SCCINFO(sc_get_current_object()->name())  << "received data : " << data;
     }
-
-    scv_smart_ptr<rw_task_if::addr_t> addr;
     for (int i = 0; i < 3; i++) {
-
-        addr->next();
-        rw_task_if::data_t data = transactor->read(addr->get_instance());
-        SCCINFO(sc_get_current_object()->name()) << "data for address " << *addr << " is " << data;
+        rw_task_if::addr_t addr = scc::MT19937::uniform(0, 255);
+        rw_task_if::data_t data = transactor->read(&addr);
+        SCCINFO(sc_get_current_object()->name()) << "data for address " << addr << " is " << data;
     }
 
-    scv_smart_ptr<rw_task_if::write_t> write;
     for (int i = 0; i < 3; i++) {
-        write->next();
-        transactor->write(write->get_instance());
-        SCCINFO(sc_get_current_object()->name()) << "send data : " << write->data;
-    }
-
-    scv_smart_ptr<int> data;
-    scv_bag<int> distribution;
-    distribution.push(1, 40);
-    distribution.push(2, 60);
-    data->set_mode(distribution);
-    for (int i = 0; i < 3; i++) {
-        data->next();
-        process(data);
+    	rw_task_if::write_t write;
+    	write.addr = scc::MT19937::uniform(0, 255);
+    	write.data = scc::MT19937::uniform(0, 255);
+        transactor->write(&write);
+        SCCINFO(sc_get_current_object()->name()) << "send data : " << write.data;
     }
 }
 
@@ -236,29 +213,18 @@ inline void test::main2() {
         SCCINFO(sc_get_current_object()->name())  << "received data : " << data;
     }
 
-    scv_smart_ptr<rw_task_if::addr_t> addr;
     for (int i = 0; i < 3; i++) {
-
-        addr->next();
-        rw_task_if::data_t data = transactor->read(addr->get_instance());
-        SCCINFO(sc_get_current_object()->name()) << "data for address " << *addr << " is " << data;
+        rw_task_if::addr_t addr = scc::MT19937::uniform(0, 255);
+        rw_task_if::data_t data = transactor->read(&addr);
+        SCCINFO(sc_get_current_object()->name()) << "data for address " << addr << " is " << data;
     }
 
-    scv_smart_ptr<rw_task_if::write_t> write;
     for (int i = 0; i < 3; i++) {
-        write->next();
-        transactor->write(write->get_instance());
-        SCCINFO(sc_get_current_object()->name()) << "send data : " << write->data;
-    }
-
-    scv_smart_ptr<int> data;
-    scv_bag<int> distribution;
-    distribution.push(1, 140);
-    distribution.push(2, 160);
-    data->set_mode(distribution);
-    for (int i = 0; i < 3; i++) {
-        data->next();
-        process(data);
+    	rw_task_if::write_t write;
+    	write.addr = scc::MT19937::uniform(0, 255);
+    	write.data = scc::MT19937::uniform(0, 255);
+        transactor->write(&write);
+        SCCINFO(sc_get_current_object()->name()) << "send data : " << write.data;
     }
 }
 class design : public pipelined_bus_ports {
@@ -335,15 +301,11 @@ inline void design::data_phase() {
 inline const char* init_db(char type){
     switch(type){
     case '2':
-        scv_tr_compressed_init();
+        scv_tr::scv_tr_compressed_init();
         return "my_db.txlog";
         break;
-    case '3':
-        scv_tr_sqlite_init();
-        return "my_db.txdb";
-        break;
     default:
-        scv_tr_text_init();
+    	scv_tr::scv_tr_text_init();
         return "my_db.txlog";
         break;
     }
@@ -351,7 +313,7 @@ inline const char* init_db(char type){
 
 int sc_main(int argc, char *argv[]) {
     auto start = std::chrono::system_clock::now();
-    scv_startup();
+    //scv_startup();
     scc::init_logging(scc::LogConfig().logLevel(scc::log::DEBUG));
     const char *fileName = argc==2? init_db(argv[1][0]): "my_db.txlog";
     if(argc<2) scv_tr_text_init();
