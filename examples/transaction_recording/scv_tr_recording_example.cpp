@@ -95,7 +95,7 @@ class rw_pipelined_transactor : public rw_task_if, public pipelined_bus_ports {
     scv_tr_stream addr_stream;
     scv_tr_stream data_stream;
     scv_tr_generator<sc_uint<8>, sc_uint<8>> read_gen;
-    scv_tr_generator<sc_uint<8>, sc_uint<8>> write_gen;
+    scv_tr_generator<write_t> write_gen;
     scv_tr_generator<sc_uint<8>> addr_gen;
     scv_tr_generator<_scv_tr_generator_default_data, sc_uint<8>> rdata_gen;
     scv_tr_generator<sc_uint<8>> wdata_gen;
@@ -109,7 +109,7 @@ public:
     , addr_stream((std::string(name()) + ".addr_stream").c_str(), "transactor")
     , data_stream((std::string(name()) + ".data_stream").c_str(), "transactor")
     , read_gen("read", pipelined_stream, "addr", "data")
-    , write_gen("write", pipelined_stream, "addr", "data")
+    , write_gen("write", pipelined_stream, "wr")
     , addr_gen("addr", addr_stream, "addr")
     , rdata_gen("rdata", data_stream, nullptr, "data")
     , wdata_gen("wdata", data_stream, "data") {}
@@ -147,7 +147,7 @@ rw_task_if::data_t rw_pipelined_transactor::read(const addr_t *addr) {
 
 void rw_pipelined_transactor::write(const write_t *req) {
     addr_phase.lock();
-    scv_tr_handle h = write_gen.begin_transaction(req->addr);
+    scv_tr_handle h = write_gen.begin_transaction(*req);
     h.record_attribute("data_size", sizeof(data_t));
     scv_tr_handle h1 = addr_gen.begin_transaction(req->addr, "addr_phase", h);
     wait(clk->posedge_event());
@@ -167,7 +167,7 @@ void rw_pipelined_transactor::write(const write_t *req) {
     wait(data_rdy->posedge_event());
     wait(data_rdy->negedge_event());
     wdata_gen.end_transaction(h2);
-    write_gen.end_transaction(h, req->data);
+    write_gen.end_transaction(h);
     data_phase.unlock();
 }
 

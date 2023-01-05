@@ -1,3 +1,6 @@
 [submodule "axi_chi"]
 	path = third_party/axi_chi
 	url = https://github.com/Arteris-IP/tlm2-interfaces.git
+[submodule "third_party/lwtr4sc"]
+	path = third_party/lwtr4sc
+	url = https://github.com/Minres/LWTR4SC.git
