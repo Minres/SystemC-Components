@@ -1,127 +1,165 @@
+# Distributed under the OSI-approved Apache 2 License.  See accompanying file LICENSE file
+#[=======================================================================[.rst:
+FindMTISystemC
+-------
+
+Finds the SystemC and acompanying libraries.
+
+Imported Targets
+^^^^^^^^^^^^^^^^
+
+This module provides the following imported targets, if found:
+
+``SystemC::systemc``
+  The SystemC library
+``SystemC::scv``
+  The SystemC Verification library
+``SystemC::cci``
+  The SystemC CCI library
+
+Result Variables
+^^^^^^^^^^^^^^^^
+
+This will define the following variables:
+
+``SystemC_FOUND``
+  True if the system has the SystemC library.
+``SystemC_VERSION``
+  The version of the SystemC library which was found.
+``SystemC_INCLUDE_DIRS``
+  Include directories needed to use SystemC.
+``SystemC_LIBRARY``
+  Libraries needed to link to SystemC.
+``SCV_FOUND``
+  True if the system has the SCV library.
+``SCV_VERSION``
+  The version of the SCV library which was found.
+``SCV_INCLUDE_DIRS``
+  Include directories needed to use SCV.
+``SCV_LIBRARY``
+  Libraries needed to link to SCV.
+``CCI_FOUND``
+  True if the system has the CCI library.
+``CCI_VERSION``
+  The version of the CCI library which was found.
+``CCI_INCLUDE_DIRS``
+  Include directories needed to use CCI.
+``CCI_LIBRARY``
+  Library needed to link to CCI.
+
+#]=======================================================================]
+
 SET(_COMMON_HINTS
-  $ENV{VCS_HOME}/linux64/include/systemc233
-  $ENV{VCS_HOME}/linux64/include/systemc232
-  $ENV{VCS_HOME}/linux64/include/systemc231
+  $ENV{QUESTA_HOME}/linux_x86_64
   )
 
 SET(_SYSTEMC_HINTS
-  ${_COMMON_HINTS}
-  )
-
-SET(_TLM_HINTS
-  $ENV{VCS_HOME}/linux64/include/systemc233/tlm
-  $ENV{VCS_HOME}/linux64/include/systemc232/tlm
-  $ENV{VCS_HOME}/linux64/include/systemc231/tlm
+  $ENV{QUESTA_HOME}/include/systemc
   ${_COMMON_HINTS}
   )
 
 SET(_SCV_HINTS
-  $ENV{VCS_HOME}/linux64/include/scv-2.0
-  ${_COMMON_HINTS}
-  )
-
-SET(_CCI_HINTS
-  ${CCI_PREFIX}/include
-  ${CCI_PREFIX}/lib
-  ${CCI_PREFIX}/lib64
-  ${CCI_PREFIX}/lib-linux
-  ${CCI_PREFIX}/lib-linux64
-  ${CCI_PREFIX}/lib-macos
-  $ENV{CCI_HOME}/include
-  $ENV{CCI_HOME}/lib
-  $ENV{CCI_HOME}/lib64
-  $ENV{CCI_HOME}/lib-linux
-  $ENV{CCI_HOME}/lib-linux64
-  $ENV{CCI_HOME}/lib-macos
+  $ENV{QUESTA_HOME}/include/scv
   ${_COMMON_HINTS}
   )
 
 SET(_COMMON_PATHS
-  $ENV{VCS_HOME}/linux64/lib
   )
   
-FIND_FILE(_SYSTEMC_HEADER_FILE
+FIND_PATH(SystemC_INCLUDE_DIR
   NAMES systemc
   HINTS ${_SYSTEMC_HINTS}
   PATHS ${_COMMON_PATHS}
 )
 
-FIND_FILE(_SCV_HEADER_FILE
+FIND_LIBRARY(SystemC_LIBRARY
+  NAMES systemc_gcc74
+  HINTS ${_SYSTEMC_HINTS}
+  PATHS ${_COMMON_PATHS}
+)
+
+mark_as_advanced(
+  SystemC_INCLUDE_DIR
+  SystemC_LIBRARY
+)
+
+if (SystemC_INCLUDE_DIR)
+  file(STRINGS "${SystemC_INCLUDE_DIR}/sysc/kernel/sc_ver.h" version-file
+    REGEX "#define[ \t]SC_VERSION_(MAJOR|MINOR|PATCH).*")
+  if (NOT version-file)
+    message(AUTHOR_WARNING "SystemC_INCLUDE_DIR found, but sc_ver.h is missing")
+  endif()
+  list(GET version-file 0 major-line)
+  list(GET version-file 1 minor-line)
+  list(GET version-file 2 patch-line)
+  string(REGEX REPLACE "^#define[ \t]+SC_VERSION_MAJOR[ \t]+([0-9]+)$" "\\1" SC_VERSION_MAJOR ${major-line})
+  string(REGEX REPLACE "^#define[ \t]+SC_VERSION_MINOR[ \t]+([0-9]+)$" "\\1" SC_VERSION_MINOR ${minor-line})
+  string(REGEX REPLACE "^#define[ \t]+SC_VERSION_PATCH[ \t]+([0-9]+)$" "\\1" SC_VERSION_PATCH ${patch-line})
+  set(SystemC_VERSION ${SC_VERSION_MAJOR}.${SC_VERSION_MINOR}.${SC_VERSION_PATCH} CACHE STRING "SystemC Version")
+endif()
+
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(MTISystemC
+  REQUIRED_VARS
+    SystemC_LIBRARY
+    SystemC_INCLUDE_DIR
+  VERSION_VAR SystemC_VERSION
+)
+
+if(MTISystemC_FOUND)
+  set(SystemC_FOUND ${MTISystemC_FOUND})
+  get_filename_component(SystemC_LIBRARY_DIRS ${SystemC_LIBRARY} DIRECTORY)
+  set(SystemC_INCLUDE_DIRS ${SystemC_INCLUDE_DIR} $ENV{QUESTA_HOME}/include)
+  set(SystemC_DEFINITIONS DONT_USE_MTI_EXIT)
+endif()
+
+if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
+  message("Create target SystemC::systemc with location ${SystemC_LIBRARY}")
+  add_library(SystemC::systemc UNKNOWN IMPORTED GLOBAL)
+  set_target_properties(SystemC::systemc PROPERTIES
+    IMPORTED_LOCATION "${SystemC_LIBRARY}"
+    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
+    INTERFACE_COMPILE_DEFINITIONS "${SystemC_DEFINITIONS}"    
+    INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
+  )
+endif()
+
+FIND_PATH(SCV_INCLUDE_DIR
   NAMES scv.h
   HINTS ${_SCV_HINTS}
   PATHS ${_COMMON_PATHS}
 )
 
-FIND_FILE(_CCI_HEADER_FILE
-  NAMES cci_configuration
-  HINTS ${_CCI_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-if(NOT _SYSTEMC_HEADER_FILE STREQUAL _SYSTEMC_HEADER_FILE-NOTFOUND)
-  set(SystemC_FOUND TRUE)
-endif()
-
-if(ENABLE_SCV)
-if(NOT _SCV_HEADER_FILE STREQUAL _SCV_HEADER_FILE-NOTFOUND)
-  set(SCV_FOUND TRUE)
-endif()
-endif()
-
-if(NOT _CCI_HEADER_FILE STREQUAL _CCI_HEADER_FILE-NOTFOUND)
-  set(CCI_FOUND TRUE)
-endif()
-
-FIND_PATH(SystemC_INCLUDE_DIRS
-  NAMES systemc
-  HINTS ${_SYSTEMC_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-FIND_PATH(TLM_INCLUDE_DIRS
-  NAMES tlm
-  HINTS ${_TLM_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-FIND_PATH(SystemC_LIBRARY_DIRS
-  NAMES libsystemc233-gcc9-64.a libsystemc232-gcc7-64.a libsystemc231-gcc6-64.a
-  HINTS ${_SYSTEMC_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-FIND_PATH(SCV_INCLUDE_DIRS
-  NAMES scv.h
+FIND_LIBRARY(SCV_LIBRARY
+  NAMES scv
   HINTS ${_SCV_HINTS}
   PATHS ${_COMMON_PATHS}
 )
 
-FIND_PATH(SCV_LIBRARY_DIRS
-  NAMES libscv.so 
-  HINTS ${_SCV_HINTS}
-  PATHS ${_COMMON_PATHS}
+mark_as_advanced(
+  SCV_INCLUDE_DIR
+  SCV_LIBRARY
 )
 
-#FIND_PATH(CCI_INCLUDE_DIRS
-#  NAMES cci_configuration
-#  HINTS ${_CCI_HINTS}
-#  PATHS ${_COMMON_PATHS}
-#)
-#
-#FIND_PATH(CCI_LIBRARY_DIRS
-#  NAMES libxmsccci_sh.so
-#  HINTS ${_CCI_HINTS}
-#  PATHS ${_COMMON_PATHS}
-#)
-#
-if(SystemC_FOUND)
-	#see https://gitlab.kitware.com/cmake/community/wikis/FAQ#how-do-i-use-a-different-compiler
-   	set(SystemC_INCLUDE_DIRS ${TLM_INCLUDE_DIRS} ${SystemC_INCLUDE_DIRS})
-    set(SystemC_LIBRARIES $ENV{VCS_HOME}/linux64/lib/libsystemc231-gcc6-64.a)
-    if(SCV_FOUND)
-        set(SCV_LIBRARIES ${SystemC_LIBRARIES})
-    endif(SCV_FOUND)
-#    if(CCI_FOUND)
-#        set(CCI_LIBRARIES cciapi)
-#    endif()
-endif(SystemC_FOUND)
+if(NOT SCV_INCLUDE_DIR MATCHES "SCV_INCLUDE_DIR-NOTFOUND")
+    if(SCV_INCLUDE_DIR AND SCV_LIBRARY)
+	    set(SCV_FOUND TRUE)
+    endif()
+	
+	if(SCV_FOUND)
+	  set(SCV_LIBRARIES ${SCV_LIBRARY})
+  	  get_filename_component(SCV_LIBRARY_DIR ${SCV_LIBRARY} DIRECTORY )
+	  set(SCV_INCLUDE_DIRS ${SCV_INCLUDE_DIR})
+	  set(SCV_DEFINITIONS ${PC_SCV_CFLAGS_OTHER})
+	endif()
+	
+	if(SCV_FOUND AND NOT TARGET SystemC::scv)
+      #message("Create target SystemC::scv")
+	  add_library(SystemC::scv UNKNOWN IMPORTED)
+	  set_target_properties(SystemC::scv PROPERTIES
+	    IMPORTED_LOCATION "${SCV_LIBRARY}"
+	    INTERFACE_COMPILE_OPTIONS "${PC_SCV_CFLAGS_OTHER}"
+	    INTERFACE_INCLUDE_DIRECTORIES "${SCV_INCLUDE_DIR}"
+	  )
+	endif()
+endif()

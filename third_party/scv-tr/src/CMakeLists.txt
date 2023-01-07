@@ -2,8 +2,6 @@ project(scv-tr VERSION 0.0.1 LANGUAGES CXX)
 
 include(GNUInstallDirs)
 
-include(SystemCPackage)
-
 add_library(${PROJECT_NAME} 
 	scv-tr/scv_introspection.cpp
 	scv-tr/scv_report.cpp

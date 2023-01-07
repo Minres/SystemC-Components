@@ -1,5 +1,5 @@
 project(SystemC-CCI VERSION "1.1.0" LANGUAGES CXX)
-include(SystemCPackage)
+
 add_library(cciapi 
 ${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_broker_handle.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_broker_manager.cpp
