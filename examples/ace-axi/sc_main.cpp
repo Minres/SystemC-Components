@@ -4,9 +4,9 @@
  *  Created on:
  *      Author:
  */
-
+#ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
-
+#endif
 #include <ace_axi_adapt.h>
 #include <array>
 #include <axi/pe/simple_initiator.h>

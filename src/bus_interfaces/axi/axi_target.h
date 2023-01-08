@@ -16,7 +16,9 @@
 
 #pragma once
 
+#ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
+#endif
 
 #include <axi/axi_tlm.h>
 #include <axi/pe/simple_target.h>

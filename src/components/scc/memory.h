@@ -18,7 +18,9 @@
 #define _SYSC_MEMORY_H_
 
 // Needed for the simple_target_socket
+#ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
+#endif
 
 #include "scc/mt19937_rng.h"
 #include "scc/report.h"

@@ -108,6 +108,8 @@ else()
     message(STATUS "${PROJECT_NAME}: building with SCV-TR support")
     target_link_libraries (${PROJECT_NAME} PUBLIC scv-tr)
 endif()
+# make sure dynamic processes get includes since CCI uses them
+target_compile_definitions(${PROJECT_NAME} PUBLIC SC_INCLUDE_DYNAMIC_PROCESSES)
 if(TARGET SystemC::systemc)
     message(STATUS "${PROJECT_NAME}: link with SystemC::systemc")
     if(USE_CWR_SYSTEMC)

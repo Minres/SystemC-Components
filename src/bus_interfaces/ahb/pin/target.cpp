@@ -14,7 +14,9 @@
  * limitations under the License.
  *******************************************************************************/
 
+#ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
+#endif
 #include "target.h"
 #include <ahb/ahb_tlm.h>
 #include <scc/report.h>
