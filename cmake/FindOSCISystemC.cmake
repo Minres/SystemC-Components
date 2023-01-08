@@ -193,10 +193,11 @@ if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
   #message("Create target SystemC::systemc")
   add_library(SystemC::systemc UNKNOWN IMPORTED)
   set_target_properties(SystemC::systemc PROPERTIES
-    IMPORTED_LOCATION "${SystemC_LIBRARY}"
-    INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARY}"
-    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
     INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
+    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
+    INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARY}"
+    # INTERFACE_COMPILE_DEFINITIONS "${SystemC_systemc_COMPILE_DEFINITIONS}"
+    # INTERFACE_COMPILE_OPTIONS "${SystemC_systemc_COMPILE_OPTIONS_C};${SystemC_systemc_COMPILE_OPTIONS_CXX}"
   )
 endif()
 

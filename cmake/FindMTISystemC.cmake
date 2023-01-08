@@ -116,12 +116,18 @@ endif()
 if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
   message("Create target SystemC::systemc with location ${SystemC_LIBRARY}")
   add_library(SystemC::systemc UNKNOWN IMPORTED GLOBAL)
-  set_target_properties(SystemC::systemc PROPERTIES
-    IMPORTED_LOCATION "${SystemC_LIBRARY}"
-    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
-    INTERFACE_COMPILE_DEFINITIONS "${SystemC_DEFINITIONS}"    
-    INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
-  )
+  target_compile_definitions(SystemC::systemc INTERFACE ${SystemC_DEFINITIONS})
+  target_include_directories(SystemC::systemc INTERFACE ${SystemC_INCLUDE_DIRS})
+  #target_compile_options(SystemC::systemc INTERFACE )
+  target_link_libraries(SystemC::systemc INTERFACE ${SystemC_LIBRARY})
+  target_link_directories(SystemC::systemc INTERFACE ${SystemC_LIBRARY_DIRS})
+#  set_target_properties(SystemC::systemc PROPERTIES
+#    INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
+#    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
+#    INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARY}"
+#    INTERFACE_COMPILE_DEFINITIONS "${SystemC_DEFINITIONS}"
+#    # INTERFACE_COMPILE_OPTIONS "${SystemC_systemc_COMPILE_OPTIONS_C};${SystemC_systemc_COMPILE_OPTIONS_CXX}"
+#  )
 endif()
 
 FIND_PATH(SCV_INCLUDE_DIR
