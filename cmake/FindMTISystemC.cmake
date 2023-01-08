@@ -38,28 +38,36 @@ This will define the following variables:
   Include directories needed to use SCV.
 ``SCV_LIBRARY``
   Libraries needed to link to SCV.
-``CCI_FOUND``
-  True if the system has the CCI library.
-``CCI_VERSION``
-  The version of the CCI library which was found.
-``CCI_INCLUDE_DIRS``
-  Include directories needed to use CCI.
-``CCI_LIBRARY``
-  Library needed to link to CCI.
-
 #]=======================================================================]
+# find QuestSIM root installation
+find_program(sccom_EXECUTABLE sccom) 
+if(NOT sccom_EXECUTABLE)
+	message(FATAL_ERROR "No sccom in PATH")
+endif() 
+get_filename_component(SCCOM_DIR ${sccom_EXECUTABLE} DIRECTORY)
+get_filename_component(QUESTA_ROOT ${SCCOM_DIR} PATH)
+
+# detect compiler version to be reflected in library name
+if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
+	string(REGEX MATCHALL "[0-9]+" GCC_VERSION_COMPONENTS ${CMAKE_CXX_COMPILER_VERSION})
+	list(GET GCC_VERSION_COMPONENTS 0 GCC_MAJOR)
+	list(GET GCC_VERSION_COMPONENTS 1 GCC_MINOR)
+	set(COMPILER_VERSION "gcc${GCC_MAJOR}${GCC_MINOR}")
+else()
+	message(FATAL_ERROR "Compiler ${CMAKE_CXX_COMPILER_ID} is not supported")
+endif()
 
 SET(_COMMON_HINTS
-  $ENV{QUESTA_HOME}/linux_x86_64
+  ${QUESTA_ROOT}/linux_x86_64
   )
 
 SET(_SYSTEMC_HINTS
-  $ENV{QUESTA_HOME}/include/systemc
+  ${QUESTA_ROOT}/include/systemc
   ${_COMMON_HINTS}
   )
 
 SET(_SCV_HINTS
-  $ENV{QUESTA_HOME}/include/scv
+  ${QUESTA_ROOT}/include/scv
   ${_COMMON_HINTS}
   )
 
@@ -73,7 +81,7 @@ FIND_PATH(SystemC_INCLUDE_DIR
 )
 
 FIND_LIBRARY(SystemC_LIBRARY
-  NAMES systemc_gcc74
+  NAMES systemc_${COMPILER_VERSION}
   HINTS ${_SYSTEMC_HINTS}
   PATHS ${_COMMON_PATHS}
 )
@@ -109,25 +117,19 @@ find_package_handle_standard_args(MTISystemC
 if(MTISystemC_FOUND)
   set(SystemC_FOUND ${MTISystemC_FOUND})
   get_filename_component(SystemC_LIBRARY_DIRS ${SystemC_LIBRARY} DIRECTORY)
-  set(SystemC_INCLUDE_DIRS ${SystemC_INCLUDE_DIR} $ENV{QUESTA_HOME}/include)
+  set(SystemC_INCLUDE_DIRS ${SystemC_INCLUDE_DIR} ${QUESTA_ROOT}/include)
   set(SystemC_DEFINITIONS DONT_USE_MTI_EXIT)
 endif()
 
 if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
-  message("Create target SystemC::systemc with location ${SystemC_LIBRARY}")
   add_library(SystemC::systemc UNKNOWN IMPORTED GLOBAL)
-  target_compile_definitions(SystemC::systemc INTERFACE ${SystemC_DEFINITIONS})
-  target_include_directories(SystemC::systemc INTERFACE ${SystemC_INCLUDE_DIRS})
-  #target_compile_options(SystemC::systemc INTERFACE )
-  target_link_libraries(SystemC::systemc INTERFACE ${SystemC_LIBRARY})
-  target_link_directories(SystemC::systemc INTERFACE ${SystemC_LIBRARY_DIRS})
-#  set_target_properties(SystemC::systemc PROPERTIES
-#    INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
-#    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
-#    INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARY}"
-#    INTERFACE_COMPILE_DEFINITIONS "${SystemC_DEFINITIONS}"
-#    # INTERFACE_COMPILE_OPTIONS "${SystemC_systemc_COMPILE_OPTIONS_C};${SystemC_systemc_COMPILE_OPTIONS_CXX}"
-#  )
+  set_target_properties(SystemC::systemc PROPERTIES
+    INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
+    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
+    INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARY}"
+    INTERFACE_COMPILE_DEFINITIONS "${SystemC_DEFINITIONS}"
+    # INTERFACE_COMPILE_OPTIONS "${SystemC_systemc_COMPILE_OPTIONS_C};${SystemC_systemc_COMPILE_OPTIONS_CXX}"
+  )
 endif()
 
 FIND_PATH(SCV_INCLUDE_DIR
