@@ -284,6 +284,14 @@ inline bool iequals(const std::string& a, const std::string& b) {
                       [](unsigned char a, unsigned char b) { return tolower(a) == tolower(b); });
 #endif
 }
+
+inline bool ends_with(std::string const & value, std::string const & ending){
+//    if (ending.size() > value.size()) return false;
+//    return std::equal(ending.rbegin(), ending.rend(), value.rbegin());
+    return value.length() >= ending.length()?
+    		!value.compare (value.length() - ending.length(), ending.length(), ending):
+			false;
+}
 /**
  * @fn std::string padded(std::string, size_t, bool=true)
  * @brief pad a string to a given length by either cutting of the overflow or inserting an ellipsis

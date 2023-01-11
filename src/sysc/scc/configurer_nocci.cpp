@@ -234,7 +234,7 @@ void configurer::read_input_file(const std::string &filename) {
 	}
 }
 
-void configurer::dump_configuration(std::ostream& os, sc_core::sc_object* obj) {
+void configurer::dump_configuration(std::ostream& os, bool as_yaml, bool with_description, sc_core::sc_object* obj) {
 	OStreamWrapper stream(os);
 	writer_type writer(stream);
 	writer.StartObject();
@@ -290,7 +290,7 @@ void configurer::start_of_simulation() {
 	if(dump_file_name.size()) {
 		std::ofstream of{dump_file_name};
 		if(of.is_open())
-			dump_configuration(of);
+			dump_configuration(of, with_description);
 	}
 }
 

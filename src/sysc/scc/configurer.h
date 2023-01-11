@@ -83,16 +83,19 @@ public:
      * @param os the output stream, std::cout by default
      * @param obj if not null specifies the root object of the dump
      */
-    void dump_configuration(std::ostream& os = std::cout, sc_core::sc_object* obj = nullptr);
+    void dump_configuration(std::ostream& os = std::cout, bool as_yaml=false, bool with_description = false, sc_core::sc_object* obj = nullptr);
     /**
      * schedule the dump the parameters of a design hierarchy to a file
      * during start_of_simulation()
      *
      * @param file_name the output stream, std::cout by default
      */
-    void dump_configuration(std::string const& file_name) { dump_file_name = file_name; }
+    void dump_configuration(std::string const& file_name, bool with_description = false) {
+    	dump_file_name = file_name;
+    	this->with_description= with_description;
+    }
     /**
-     * set a value of some property (sc_attribute or cci_param) from programatically
+     * set a value of some property (sc_attribute or cci_param) from programmatically
      *
      * In case the configurer is being used without CCI the function can only be called after
      * the simulation objects are instantiated since the sc_attributes have to exist.
@@ -126,6 +129,7 @@ public:
 protected:
     unsigned const config_phases;
     std::string dump_file_name{""};
+    bool with_description{false};
     configurer(std::string const& filename, unsigned sc_attr_config_phases, sc_core::sc_module_name nm);
     void config_check();
     void before_end_of_elaboration() override {
