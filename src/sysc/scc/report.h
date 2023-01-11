@@ -165,37 +165,104 @@ struct LogConfig {
     bool dont_create_broker{false};
     bool report_only_first_error{false};
     bool instance_based_log_levels{true};
+    bool install_handler{true};
 
-    //! set the logging level
+    /**
+     * set the logging level
+     * @param log level
+     * @return self
+     */
     LogConfig& logLevel(log);
-    //! define the width of the message field, 0 to disable, std::numeric_limits<unsigned>::max() for arbitrary width
+    /**
+     * define the width of the message field, 0 to disable, std::numeric_limits<unsigned>::max() for arbitrary width
+     * @param width of the message field in the log
+     * @return self
+     */
     LogConfig& msgTypeFieldWidth(unsigned);
-    //! enable/disable printing of system time
+    /**
+     * enable/disable printing of system time
+     * @param enable
+     * @return self
+     */
     LogConfig& printSysTime(bool = true);
-    //! enable/disable printing of simulation time
+    /**
+     * enable/disable printing of simulation time
+     * @param enable
+     * @return self
+     */
     LogConfig& printSimTime(bool = true);
-    //! enable/disable printing delta cycles
+    /**
+     * enable/disable printing delta cycles
+     * @param enable
+     * @return self
+     */
     LogConfig& printDelta(bool = true);
-    //! enable/disable printing of severity level
+    /**
+     * enable/disable printing of severity level
+     * @param enable
+     * @return self
+     */
     LogConfig& printSeverity(bool = true);
-    //! enable/disable colored output
+    /**
+     * enable/disable colored output
+     * @param enable
+     * @return self
+     */
     LogConfig& coloredOutput(bool = true);
-    //! set the file name for the log output file
+    /**
+     * set the file name for the log output file
+     * @param name of the log file to be generated
+     * @return self
+     */
     LogConfig& logFileName(std::string&&);
-    //! set the file name for the log output file
+    /**
+     * set the file name for the log output file
+     * @param name
+     * @return self
+     */
     LogConfig& logFileName(const std::string&);
-    //! set the regular expression to filter the output
+    /**
+     * set the file name for the log output file
+     * @param name
+     * @return self
+     */
     LogConfig& logFilterRegex(std::string&&);
-    //! set the regular expression to filter the output
+    /**
+     * set the regular expression to filter the output
+     * @param string containing the regex
+     * @return self
+     */
     LogConfig& logFilterRegex(const std::string&);
-    //! enable/disable asynchronous output (write to file in separate thread
+    /**
+     * enable/disable asynchronous output (write to file in separate thread
+     * @param enable
+     * @return self
+     */
     LogConfig& logAsync(bool = true);
-    //! disable/enable the automatic creation of a CCI broker
+    /**
+     * disable/enable the automatic creation of a CCI broker
+     * @param enable
+     * @return self
+     */
     LogConfig& dontCreateBroker(bool = true);
-    //! disable/enable the supression of all error messages after the first error
+    /**
+     * disable/enable the suppression of all error messages after the first error
+     * @param
+     * @return self
+     */
     LogConfig& reportOnlyFirstError(bool = true);
-    //! disable/enable the supression of all error messages after the first error
+    /**
+     * disable/enable the suppression of all error messages after the first error
+     * @param
+     * @return self
+     */
     LogConfig& instanceBasedLogLevels(bool = true);
+    /**
+     * disable/enable the use of the tabular report handler
+     * @param
+     * @return self
+     */
+    LogConfig& installHandler(bool = true);
 };
 /**
  * @fn void init_logging(const LogConfig&)
