@@ -4,7 +4,7 @@ find_package(Threads)
 find_package(Boost REQUIRED COMPONENTS date_time filesystem)
 find_package(ZLIB)
 
-option(ENABLE_SQLITE "Enable SQLite backend for SCV" OFF)
+option(ENABLE_SQLITE "Enable SQLite backend for SCV" ON)
 
 if (MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
@@ -55,7 +55,7 @@ if(ZLIB_FOUND)
 endif()
 
 if(ENABLE_SQLITE)
-    list(Append LIB_SOURCES  scc/scv/scv_tr_sqlite.cpp ../../third_party/sqlite3/sqlite3.c )
+    list(APPEND LIB_SOURCES  scc/scv/scv_tr_sqlite.cpp ../../third_party/sqlite3/sqlite3.c )
 endif()
 
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
