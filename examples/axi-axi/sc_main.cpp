@@ -54,10 +54,6 @@ public:
         tgt.isck(mem.target);
     }
 
-    void trace( sc_trace_file* trf ) const override {
-        scc::sc_trace(trf, id, std::string(name())+".id"); // trace a local variable
-    }
-
     tlm::tlm_generic_payload* prepare_trans(size_t len) {
         auto trans = tlm::scc::tlm_mm<tlm::tlm_base_protocol_types, false>::get().allocate();
         tlm::scc::tlm_gp_mm::add_data_ptr(len, trans);
@@ -119,10 +115,9 @@ int sc_main(int argc, char* argv[]) {
 #endif
     scc::configurable_tracer trace("axi_axi_test",
                                    scc::tracer::file_type::TEXT, // define the kind of transaction trace
-                                   trc,                         // enables vcd
+                                   trc,                          // enables vcd
                                    true);
     testbench tb("tb");
-    tb.trace(trc);
     scc::hierarchy_dumper d("axi_axi_test.json", scc::hierarchy_dumper::D3JSON);
     //scc::hierarchy_dumper d("axi_axi_test.elkt", scc::hierarchy_dumper::ELKT);
     try {
