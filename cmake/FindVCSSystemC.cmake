@@ -39,7 +39,7 @@ This will define the following variables:
 ``SCV_LIBRARY``
   Libraries needed to link to SCV.
 #]=======================================================================]
-# find QuestSIM root installation
+# find VCS root installation
 find_program(vcs_EXECUTABLE vcs) 
 if(NOT vcs_EXECUTABLE)
 	message(FATAL_ERROR "No vcs in PATH")
@@ -113,19 +113,20 @@ find_package_handle_standard_args(VCSSystemC
 )
 
 if(VCSSystemC_FOUND)
-  set(SystemC_FOUND ${VCSSystemC_FOUND})
+  set(SystemC_FOUND True)
   get_filename_component(SystemC_LIBRARY_DIRS ${SystemC_LIBRARY} DIRECTORY)
   set(SystemC_INCLUDE_DIRS ${SystemC_INCLUDE_DIR})
 endif()
 
 if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
-  add_library(SystemC::systemc UNKNOWN IMPORTED GLOBAL)
+  add_library(SystemC::systemc UNKNOWN IMPORTED)
   set_target_properties(SystemC::systemc PROPERTIES
-    INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
-    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
-    INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARY}"
+    IMPORTED_LOCATION ${SystemC_LIBRARY}
     INTERFACE_COMPILE_DEFINITIONS "${SystemC_DEFINITIONS}"
     # INTERFACE_COMPILE_OPTIONS "${SystemC_systemc_COMPILE_OPTIONS_C};${SystemC_systemc_COMPILE_OPTIONS_CXX}"
+    INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
+    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
+    # INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARY}"
   )
 endif()
 

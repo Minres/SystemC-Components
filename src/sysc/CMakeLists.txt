@@ -10,7 +10,6 @@ if (MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
 endif()
 
-include(SystemCPackage)
 if(SystemC_FOUND)
     message(STATUS "SystemC headers at ${SystemC_INCLUDE_DIRS}")
     message(STATUS "SystemC libraries: ${SystemC_LIBRARIES}")
@@ -46,6 +45,7 @@ set(LIB_SOURCES
     scc/configurer.cpp
     scc/configurable_tracer.cpp
     scc/sc_thread_pool.cpp
+    tlm/scc/lwtr/tlm2_lwtr.cpp
 )
 
 if(ZLIB_FOUND)
@@ -70,7 +70,7 @@ if(SC_WITH_PHASE_CALLBACK_TRACING)
 endif()
 
 target_include_directories (${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(${PROJECT_NAME} PUBLIC scc-util RapidJSON ${SPDLOG_TARGET})
+target_link_libraries(${PROJECT_NAME} PUBLIC scc-util RapidJSON ${SPDLOG_TARGET} lwtr)
 if(ENABLE_SQLITE)
     target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SQLITE)
     target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../third_party/sqlite3)

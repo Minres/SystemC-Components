@@ -7,10 +7,6 @@ if(CMAKE_CXX_CPPCHECK)
 	target_compile_definitions(${PROJECT_NAME} INTERFACE RAPIDJSON_ENDIAN=RAPIDJSON_LITTLEENDIAN)
 endif()
 ###############################################################################
-# use proper systemc for thrird_party
-###############################################################################
-include(SystemCPackage)
-###############################################################################
 # build tlm-interfaces
 ###############################################################################
 add_subdirectory(axi_chi)
