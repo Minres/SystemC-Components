@@ -7,5 +7,7 @@ if(NOT USE_CWR_SYSTEMC)
 	add_subdirectory(simple_system)
 	add_subdirectory(transaction_recording)
     add_subdirectory(scc-tlm_target_bfs)
+    add_subdirectory(lwtr)
+    add_subdirectory(lwtr4tlm2)
 endif()
 
