@@ -226,7 +226,7 @@ struct json_config_reader: public config_reader {
 	std::string get_error_msg() {
 		std::ostringstream os;
 		os<<" location "<< (unsigned)document.GetErrorOffset()
-																								<< ", reason: " << GetParseError_En(document.GetParseError());
+																										<< ", reason: " << GetParseError_En(document.GetParseError());
 		return os.str();
 	}
 
@@ -642,6 +642,7 @@ void configurer::read_input_file(const std::string &filename) {
 }
 
 void configurer::dump_configuration(std::ostream& os, bool as_yaml, bool with_description, sc_core::sc_object* obj) {
+#ifdef HAS_YAMPCPP
 	if(as_yaml){
 		YAML::Node root;  // starts out as null
 		yaml_config_dumper dumper(cci_broker, with_description);
@@ -649,16 +650,17 @@ void configurer::dump_configuration(std::ostream& os, bool as_yaml, bool with_de
 			dumper.dump_config(o, root);
 		}
 		os<<root;
-	} else {
-		OStreamWrapper stream(os);
-		writer_type writer(stream);
-		writer.StartObject();
-		json_config_dumper dumper(cci_broker);
-		for(auto* o : get_sc_objects(obj)) {
-			dumper.dump_config(o, writer);
-		}
-		writer.EndObject();
+		return;
 	}
+#endif
+	OStreamWrapper stream(os);
+	writer_type writer(stream);
+	writer.StartObject();
+	json_config_dumper dumper(cci_broker);
+	for(auto* o : get_sc_objects(obj)) {
+		dumper.dump_config(o, writer);
+	}
+	writer.EndObject();
 }
 
 void configurer::configure() {
