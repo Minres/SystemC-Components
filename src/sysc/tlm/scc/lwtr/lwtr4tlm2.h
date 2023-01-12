@@ -6,7 +6,11 @@ namespace lwtr {
 
 template<> struct value_converter<tlm::tlm_phase> {
 	static value to_value(tlm::tlm_phase const& v) {
-		return value(v.get_name());
+	    if(v==tlm::BEGIN_REQ) return "BEGIN_REQ";
+        if(v==tlm::END_REQ) return "END_REQ";
+        if(v==tlm::BEGIN_RESP) return "BEGIN_RESP";
+        if(v==tlm::END_RESP) return "END_RESP";
+		return value("ILLEGAL");
 	}
 };
 template<> struct value_converter<tlm::tlm_sync_enum> {
