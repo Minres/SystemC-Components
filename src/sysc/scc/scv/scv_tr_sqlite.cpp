@@ -21,6 +21,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <unordered_map>
 #ifdef HAS_SCV
 #include <scv.h>
 #else
