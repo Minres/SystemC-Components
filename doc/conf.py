@@ -24,8 +24,16 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
+#html_theme = 'alabaster'
+html_theme = 'classic'
 html_static_path = ['_static']
-
+html_theme_options = {
+    "leftsidebar": "true",
+    "relbarbgcolor": "black"
+}
 # Breathe Configuration
 breathe_default_project = "SCC"
+breathe_domain_by_extension = {"h" : "cpp"}
+highlight_language = 'c++'
+primary_domain = 'cpp'
+
