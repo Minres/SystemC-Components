@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016-2022 MINRES Technologies GmbH
+ * Copyright 2022-2023 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,15 +29,43 @@
 #include <tlm/scc/lwtr/lwtr4tlm2_extension_registry.h>
 #include <unordered_map>
 
-//! @brief SystemC Components Library
+//! @brief LWTR components for TLM2
 namespace tlm {
 namespace scc {
 namespace lwtr {
+
+using tx_db = ::lwtr::tx_db;
+using tx_fiber = ::lwtr::tx_fiber;
+template <typename BEGIN = ::lwtr::no_data, typename END = ::lwtr::no_data>
+using tx_generator = ::lwtr::tx_generator<BEGIN, END>;
+using tx_handle = ::lwtr::tx_handle;
+using mm = tlm::scc::tlm_mm<>;
 
 extern bool registered;
 enum tx_rel {
 	PARENT_CHILD = 0,     /*!< indicates parent child relationship */
 	PREDECESSOR_SUCCESSOR /*!< indicates predecessor successor relationship */
+};
+
+struct link_pred_ext : public tlm::tlm_extension<link_pred_ext> {
+	tlm_extension_base* clone() const override {
+		link_pred_ext* t = new link_pred_ext(this->txHandle, this->creator);
+		return t;
+	}
+	void copy_from(tlm_extension_base const& from) override {
+		txHandle = static_cast<link_pred_ext const&>(from).txHandle;
+		creator = static_cast<link_pred_ext const&>(from).creator;
+	}
+	link_pred_ext(tx_handle handle, void const* creator_) : txHandle(handle), creator(creator_) {}
+	tx_handle txHandle;
+	void const* creator;
+};
+
+struct nb_rec_entry {
+	tlm::scc::tlm_gp_shared_ptr tr;
+	tlm::tlm_phase ph;
+	uintptr_t id;
+	tx_handle parent;
 };
 
 /*! \brief The TLM2 transaction recorder
@@ -50,39 +78,7 @@ enum tx_rel {
  */
 template <typename TYPES = tlm::tlm_base_protocol_types>
 class tlm_recorder : public sc_core::sc_object, public virtual tlm::tlm_fw_transport_if<TYPES>, public virtual tlm::tlm_bw_transport_if<TYPES> {
-	using tx_db = ::lwtr::tx_db;
-	using tx_fiber = ::lwtr::tx_fiber;
-	template <typename BEGIN = ::lwtr::no_data, typename END = ::lwtr::no_data>
-	using tx_generator = ::lwtr::tx_generator<BEGIN, END>;
-	using tx_handle = ::lwtr::tx_handle;
-    using mm = tlm::scc::tlm_mm<>;
-
-	std::string get_parent(char const* hier_name) {
-		std::string ret(hier_name);
-		auto pos = ret.rfind('.');
-		return pos == std::string::npos ? ret : ret.substr(0, pos);
-	}
-	struct link_pred_ext : public tlm::tlm_extension<link_pred_ext> {
-		tlm_extension_base* clone() const override {
-			link_pred_ext* t = new link_pred_ext(this->txHandle, this->creator);
-			return t;
-		}
-		void copy_from(tlm_extension_base const& from) override {
-			txHandle = static_cast<link_pred_ext const&>(from).txHandle;
-			creator = static_cast<link_pred_ext const&>(from).creator;
-		}
-		link_pred_ext(tx_handle handle, void const* creator_) : txHandle(handle), creator(creator_) {}
-		tx_handle txHandle;
-		void const* creator;
-	};
-
-	struct nb_rec_entry {
-		tlm::scc::tlm_gp_shared_ptr tr;
-		tlm::tlm_phase ph;
-		uintptr_t id;
-		tx_handle parent;
-	};
-	public:
+public:
 	//! \brief the attribute to selectively enable/disable recording of blocking protocol tx
 	cci::cci_param<bool> enableBlTracing;
 
@@ -146,12 +142,14 @@ class tlm_recorder : public sc_core::sc_object, public virtual tlm::tlm_fw_trans
 		fw_export(*this);
 		bw_export(*this);
 		sc_core::sc_spawn_options opts;
+		opts.spawn_method();
+		opts.dont_initialize();
 		opts.set_sensitivity(&nb_timed_peq.event());
 		sc_core::sc_spawn([this](){nbtx_cb();}, nullptr, &opts);
+		initialize_streams();
 	}
 
 	virtual ~tlm_recorder() override {
-		btx_handle_map.clear();
 		nbtx_req_handle_map.clear();
 		nbtx_last_req_handle_map.clear();
 		delete b_streamHandle;
@@ -259,7 +257,7 @@ class tlm_recorder : public sc_core::sc_object, public virtual tlm::tlm_fw_trans
 		sck.get_base_port().bind(bw_export);
 		fw_port.bind(sck.get_base_export());
 	}
-	private:
+private:
     //! event queue to hold time points of non-blocking transactions
     ::scc::peq<nb_rec_entry> nb_timed_peq;
     /*! \brief The thread processing the non-blocking requests with their
@@ -280,7 +278,6 @@ class tlm_recorder : public sc_core::sc_object, public virtual tlm::tlm_fw_trans
 	//! transaction generator handle for blocking transactions with annotated
 	//! delays
 	std::array<tx_generator<>*, 3> b_trTimedHandle{{nullptr, nullptr, nullptr}};
-	std::unordered_map<uint64_t, tx_handle> btx_handle_map;
 
 	enum DIR { FW, BW, REQ = FW, RESP = BW };
 	//! non-blocking transaction recording stream handle
@@ -300,7 +297,7 @@ class tlm_recorder : public sc_core::sc_object, public virtual tlm::tlm_fw_trans
 	tx_generator<>* dmi_trGetHandle{nullptr};
 	tx_generator<sc_dt::uint64, sc_dt::uint64>* dmi_trInvalidateHandle{nullptr};
 
-	public:
+protected:
 	void initialize_streams() {
 		if(m_db) {
 			pred_succ_hndl = m_db->create_relation("PREDECESSOR_SUCCESSOR");
@@ -345,7 +342,7 @@ class tlm_recorder : public sc_core::sc_object, public virtual tlm::tlm_fw_trans
 		}
 	}
 
-	private:
+private:
 	inline std::string phase2string(const tlm::tlm_phase& p) {
 		std::stringstream ss;
 		ss << p;
@@ -363,8 +360,7 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
 	if(!isRecordingBlockingTxEnabled()) {
 		fw_port->b_transport(trans, delay);
 		return;
-	} else if(!b_streamHandle)
-		initialize_streams();
+	}
 	// Get a handle for the new transaction
 	tx_handle h = b_trHandle[trans.get_command()]->begin_tx(delay.value());
 	tx_handle htim;
@@ -396,7 +392,7 @@ void tlm_recorder<TYPES>::b_transport(typename TYPES::tlm_payload_type& trans, s
 	tx_handle preTx{preExt->txHandle};
 	preExt->txHandle = h;
 	fw_port->b_transport(trans, delay);
-	if(preExt && preExt->creator == this) {
+	if(preExt->creator == this) {
 		// clean-up the extension if this is the original creator
 		trans.set_extension(static_cast<link_pred_ext*>(nullptr));
 		if(!trans.has_mm()) {
@@ -428,8 +424,6 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
 		sc_core::sc_time& delay) {
 	if(!isRecordingNonBlockingTxEnabled())
 		return fw_port->nb_transport_fw(trans, phase, delay);
-	else if(!nb_streamHandle)
-		initialize_streams();
 	/*************************************************************************
 	 * prepare recording
 	 *************************************************************************/
@@ -450,7 +444,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
 	// update the extension
 	if(preExt)
 		preExt->txHandle = h;
-	h.record_attribute("delay", delay.to_string());
+	h.record_attribute("delay", delay);
 	if(registered)
 		for(auto& extensionRecording : lwtr4tlm2_extension_registry<TYPES>::inst().get())
 			if(extensionRecording)
@@ -461,6 +455,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
 	if(nb_streamHandleTimed) {
 		nb_rec_entry rec;
 		rec.tr = mm::get().allocate();
+		rec.tr->deep_copy_from(trans);
 		rec.ph = phase;
 		rec.id = reinterpret_cast<uint64_t>(&trans);
 		rec.parent = h;
@@ -474,7 +469,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
 	 * handle recording
 	 *************************************************************************/
 	h.record_attribute("status", status);
-	h.record_attribute("delay[return_path]", delay.to_string());
+	h.record_attribute("delay[return_path]", delay);
 	h.record_attribute("trans", trans);
 	if(registered)
 		for(auto& extensionRecording : lwtr4tlm2_extension_registry<TYPES>::inst().get())
@@ -495,6 +490,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
 		if(nb_streamHandleTimed) {
 			nb_rec_entry rec;
 			rec.tr = mm::get().allocate();
+			rec.tr->deep_copy_from(trans);
 			rec.ph = phase;
 			rec.id = reinterpret_cast<uint64_t>(&trans);
 			rec.parent = h;
@@ -503,6 +499,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
 	} else if(nb_streamHandleTimed && status == tlm::TLM_UPDATED) {
 		nb_rec_entry rec;
 		rec.tr = mm::get().allocate();
+		rec.tr->deep_copy_from(trans);
 		rec.ph = phase;
 		rec.id = reinterpret_cast<uint64_t>(&trans);
 		rec.parent = h;
@@ -519,14 +516,11 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
 		sc_core::sc_time& delay) {
 	if(!isRecordingNonBlockingTxEnabled())
 		return bw_port->nb_transport_bw(trans, phase, delay);
-	else if(!nb_streamHandle)
-		initialize_streams();
 	/*************************************************************************
 	 * prepare recording
 	 *************************************************************************/
 	link_pred_ext* preExt = nullptr;
 	trans.get_extension(preExt);
-	// sc_assert(preExt != nullptr && "ERROR on backward path");
 	// Get a handle for the new transaction
 	tx_handle h = nb_trHandle[BW]->begin_tx(phase2string(phase));
 	// link handle if we have a predecessor and that's not ourself
@@ -535,7 +529,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
 		// and set the extension handle to this transaction
 		preExt->txHandle = h;
 	}
-	h.record_attribute("delay", delay.to_string());
+	h.record_attribute("delay", delay);
 	for(auto& extensionRecording : lwtr4tlm2_extension_registry<TYPES>::inst().get())
 		if(extensionRecording)
 			extensionRecording->recordBeginTx(h, trans);
@@ -545,6 +539,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
 	if(nb_streamHandleTimed) {
 		nb_rec_entry rec;
 		rec.tr = mm::get().allocate();
+		rec.tr->deep_copy_from(trans);
 		rec.ph = phase;
 		rec.id = reinterpret_cast<uint64_t>(&trans);
 		rec.parent = h;
@@ -558,7 +553,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
 	 * handle recording
 	 *************************************************************************/
 	h.record_attribute("status", status);
-	h.record_attribute("delay[return_path]", delay.to_string());
+	h.record_attribute("delay[return_path]", delay);
 	h.record_attribute("trans", trans);
 	if(registered)
 		for(auto& extensionRecording : lwtr4tlm2_extension_registry<TYPES>::inst().get())
@@ -566,6 +561,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
 				extensionRecording->recordEndTx(h, trans);
 	// End the transaction
 	nb_trHandle[BW]->end_tx(h, phase2string(phase));
+    // get the extension and free the memory if it was mine
 	if(status == tlm::TLM_COMPLETED || (status == tlm::TLM_UPDATED && phase == tlm::END_RESP)) {
 		// the transaction is finished
 		if(preExt && preExt->creator == this) {
@@ -581,6 +577,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
 		if(nb_streamHandleTimed) {
 			nb_rec_entry rec;
 			rec.tr = mm::get().allocate();
+			rec.tr->deep_copy_from(trans);
 			rec.ph = phase;
 			rec.id = reinterpret_cast<uint64_t>(&trans);
 			rec.parent = h;
@@ -599,7 +596,7 @@ void tlm_recorder<TYPES>::nbtx_cb() {
 		std::unordered_map<uint64_t, tx_handle>::iterator it;
 		switch(e.ph) { // Now process outstanding recordings
 		case tlm::BEGIN_REQ:
-			h = nb_trTimedHandle[REQ]->begin_tx("PARENT_CHILD", e.parent);
+			h = nb_trTimedHandle[REQ]->begin_tx(par_chld_hndl, e.parent);
 			h.record_attribute(*e.tr);
 			nbtx_req_handle_map[e.id] = h;
 			break;
@@ -619,14 +616,14 @@ void tlm_recorder<TYPES>::nbtx_cb() {
 				h.end_tx();
 				nbtx_last_req_handle_map[e.id] = h;
 			}
-			h = nb_trTimedHandle[RESP]->begin_tx("PARENT_CHILD", e.parent);
+			h = nb_trTimedHandle[RESP]->begin_tx(par_chld_hndl, e.parent);
 			h.record_attribute(*e.tr);
 			nbtx_req_handle_map[e.id] = h;
 			it = nbtx_last_req_handle_map.find(e.id);
 			if(it != nbtx_last_req_handle_map.end()) {
 				tx_handle pred = it->second;
 				nbtx_last_req_handle_map.erase(it);
-				h.add_relation("PREDECESSOR_SUCCESSOR", pred);
+				h.add_relation(pred_succ_hndl, pred);
 			}
 			break;
 		case tlm::END_RESP:
@@ -649,8 +646,6 @@ template <typename TYPES>
 bool tlm_recorder<TYPES>::get_direct_mem_ptr(typename TYPES::tlm_payload_type& trans, tlm::tlm_dmi& dmi_data) {
 	if(!(m_db && enableDmiTracing.get_value()))
 		return fw_port->get_direct_mem_ptr(trans, dmi_data);
-	else if(!dmi_streamHandle)
-		initialize_streams();
 	tx_handle h = dmi_trGetHandle->begin_tx();
 	bool status = fw_port->get_direct_mem_ptr(trans, dmi_data);
 	h.record_attribute("trans", trans);
@@ -669,8 +664,7 @@ void tlm_recorder<TYPES>::invalidate_direct_mem_ptr(sc_dt::uint64 start_addr, sc
 	if(!(m_db && enableDmiTracing.get_value())) {
 		bw_port->invalidate_direct_mem_ptr(start_addr, end_addr);
 		return;
-	} else if(!dmi_streamHandle)
-		initialize_streams();
+	}
 	tx_handle h = dmi_trInvalidateHandle->begin_tx(start_addr);
 	bw_port->invalidate_direct_mem_ptr(start_addr, end_addr);
 	dmi_trInvalidateHandle->end_tx(h, end_addr);
@@ -683,8 +677,7 @@ void tlm_recorder<TYPES>::invalidate_direct_mem_ptr(sc_dt::uint64 start_addr, sc
  * \return the sync state of the transaction
  */
 template <typename TYPES> unsigned int tlm_recorder<TYPES>::transport_dbg(typename TYPES::tlm_payload_type& trans) {
-	unsigned int count = fw_port->transport_dbg(trans);
-	return count;
+	return fw_port->transport_dbg(trans);
 }
 } // namespece lwtr
 } // namespace scc
