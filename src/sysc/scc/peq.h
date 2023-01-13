@@ -76,7 +76,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
      */
     void notify(const TYPE& entry, const sc_core::sc_time& t) {
         insert_entry(entry, t + sc_core::sc_time_stamp());
-        m_event.notify(t);
+		m_event.notify(m_scheduled_events.begin()->first - sc_core::sc_time_stamp());
     }
     /**
      * @fn void notify(const TYPE&)
@@ -186,6 +186,7 @@ private:
             free_pool.push_back(entry);
             m_scheduled_events.erase(m_scheduled_events.begin());
         }
+		m_event.notify(m_scheduled_events.begin()->first - sc_core::sc_time_stamp());
         return ret;
     }
 };
