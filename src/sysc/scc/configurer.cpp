@@ -490,7 +490,7 @@ bool create_cci_param(sc_core::sc_attr_base *base_attr,
 		const std::string &hier_name, configurer::cci_param_cln &params,
 		configurer::broker_t &broker, cci::cci_originator& cci_originator) {
 	if (auto attr = dynamic_cast<sc_core::sc_attribute<T>*>(base_attr)) {
-		auto par = new cci::cci_param_typed<T>(hier_name, attr->value, "", cci::CCI_ABSOLUTE_NAME, cci_originator);
+		auto par = new cci::cci_param_typed<T>(hier_name, attr->value, broker, "", cci::CCI_ABSOLUTE_NAME, cci_originator);
 		params.emplace_back(cci::cci_param_post_write_callback_untyped([attr](const cci::cci_param_write_event<> & ev){
 			T result;
 			if(ev.new_value.try_get(result))
@@ -509,7 +509,7 @@ bool create_cci_param<char*>(sc_core::sc_attr_base *base_attr,
 		const std::string &hier_name, configurer::cci_param_cln &params,
 		configurer::broker_t &broker, cci::cci_originator& cci_originator) {
 	if (auto attr = dynamic_cast<sc_core::sc_attribute<char*>*>(base_attr)) {
-		auto par = new cci::cci_param_typed<std::string>(hier_name, attr->value, "", cci::CCI_ABSOLUTE_NAME);
+		auto par = new cci::cci_param_typed<std::string>(hier_name, attr->value, broker, "", cci::CCI_ABSOLUTE_NAME);
 		params.emplace_back(cci::cci_param_post_write_callback_untyped([attr](const cci::cci_param_write_event<> & ev){
 			if(attr->value) free(attr->value);
 			attr->value = strdup(ev.new_value.get<std::string>().c_str());
