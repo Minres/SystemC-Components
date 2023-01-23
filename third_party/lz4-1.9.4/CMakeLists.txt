@@ -21,12 +21,5 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/. COMPONENT lz4
         )
 
 if(NOT TARGET lz4::lz4)
-        add_library(lz4::lz4 INTERFACE IMPORTED)
-        if(lz4_INCLUDE_DIRS)
-            set_target_properties(lz4::lz4 PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_SOURCE_DIR})")
-        endif()
-        set_property(TARGET lz4::lz4 PROPERTY INTERFACE_LINK_LIBRARIES "lz4")
-        #set_property(TARGET lz4::lz4 PROPERTY INTERFACE_COMPILE_DEFINITIONS ${lz4_COMPILE_DEFINITIONS})
-        #set_property(TARGET lz4::lz4 PROPERTY INTERFACE_COMPILE_OPTIONS "${lz4_COMPILE_OPTIONS_LIST}")
+    add_library(lz4::lz4 ALIAS lz4)
 endif()
-        
