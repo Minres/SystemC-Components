@@ -391,10 +391,10 @@ public:
      *
      * @param read_cb
      */
-    void set_read_cb(std::function<bool(size_t, const sc_register<DATATYPE>&, DATATYPE&, sc_core::sc_time&)> read_cb) {
+    void set_read_cb(std::function<bool(size_t, const sc_register<DATATYPE>&, DATATYPE&, sc_core::sc_time)> read_cb) {
         rd_time_cb = read_cb;
         for(size_t idx = START; idx < SIZE + START; ++idx)
-            _reg_field[idx].set_read_cb([this, idx](const sc_register<DATATYPE>& reg, DATATYPE& dt, sc_core::sc_time& delay){return this->rd_time_cb(idx, reg, dt, delay);});
+            _reg_field[idx].set_read_cb([this, idx](const sc_register<DATATYPE>& reg, DATATYPE& dt, sc_core::sc_time delay){return this->rd_time_cb(idx, reg, dt, delay);});
     }
     /**
      * set the write callback triggered upon a write request without forwarding the annotated time
@@ -412,10 +412,10 @@ public:
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(size_t, sc_register<DATATYPE>&, DATATYPE const&, sc_core::sc_time&)> write_cb) {
+    void set_write_cb(std::function<bool(size_t, sc_register<DATATYPE>&, DATATYPE const&, sc_core::sc_time)> write_cb) {
         wr_time_cb = write_cb;
         for(size_t idx = START; idx < SIZE + START; ++idx)
-            _reg_field[idx].set_write_cb([this, idx](sc_register<DATATYPE>& reg, const DATATYPE& dt, sc_core::sc_time& delay){return this->wr_time_cb(idx, reg, dt, delay);});
+            _reg_field[idx].set_write_cb([this, idx](sc_register<DATATYPE>& reg, const DATATYPE& dt, sc_core::sc_time delay){return this->wr_time_cb(idx, reg, dt, delay);});
     }
     /**
      * Element access operator
