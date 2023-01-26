@@ -4,21 +4,23 @@
  *  Created on:
  *      Author:
  */
-#ifndef SC_INCLUDE_DYNAMIC_PROCESSES
-#define SC_INCLUDE_DYNAMIC_PROCESSES
-#endif
-#include <ace_axi_adapt.h>
+
 #include <array>
-#include <axi/pe/simple_initiator.h>
-#include <axi/pe/simple_target.h>
-#include <axi/scv/recorder_modules.h>
-#include <cstdint>
+#include "ace_axi_adapt.h"
+#include <axi/axi_initiator.h>
+#include <axi/axi_target.h>
+#include <axi/lwtr/axi_lwtr.h>
+#include <axi/lwtr/ace_lwtr.h>
 #include <scc.h>
+#include <scc/configurable_tracer.h>
+#include <scc/memory.h>
+#include <scc/hierarchy_dumper.h>
+#include <tlm/scc/initiator_mixin.h>
+#include <tlm/scc/tlm_gp_shared.h>
 
 using namespace sc_core;
 using namespace axi;
 using namespace axi::pe;
-using namespace sc_core;
 
 const unsigned SOCKET_WIDTH = 64;
 
@@ -29,10 +31,11 @@ public:
     sc_core::sc_clock clk{"clk", clk_period, 0.5, sc_core::SC_ZERO_TIME, true};
     sc_core::sc_signal<bool> rst{"rst"};
     axi::ace_initiator_socket<SOCKET_WIDTH> intor{"intor"};
-    // axi::scv::ace_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
-    axi::scv::axi_recorder_module<SOCKET_WIDTH> intor_rec{"intor_rec"};
+    axi::lwtr::ace_lwtr_recorder<SOCKET_WIDTH> ace_rec{"ace_rec"};
+    ace_axi_adapt<SOCKET_WIDTH> adapt{"adapt"};
+    axi::lwtr::axi_lwtr_recorder<SOCKET_WIDTH> axi_rec{"axi_rec"};
     axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
-    ace_axi_adapt<SOCKET_WIDTH> Adapter1{"Adapter1"};
+
     testbench(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm)
     , intor_pe("intor_pe", intor)
@@ -40,19 +43,17 @@ public:
         SC_THREAD(run);
         intor_pe.clk_i(clk);
         tgt_pe.clk_i(clk);
-        // tgt_pe.Clk(clk);
-        // intor(intor_rec.tsckt);
-        intor(Adapter1.tsckt);
-        // intor_rec.isckt(Adapter1.tsckt);
-        Adapter1.isckt(intor_rec.tsckt);
-        // intor_rec.isckt(tgt_pe.axi);
-        intor_rec.isckt(tgt);
+        intor(ace_rec.tsckt);
+        ace_rec.isckt(adapt.tsckt);
+        adapt.isckt(axi_rec.tsckt);
+        axi_rec.isckt(tgt);
     }
 
-    tlm::tlm_generic_payload* prepare_trans(size_t len, uint8_t const* data = nullptr) {
-        auto trans = tlm::scc::tlm_mm<tlm::tlm_base_protocol_types, false>::get().allocate<axi::axi4_extension>();
+    tlm::tlm_generic_payload* prepare_trans(size_t len, tlm::tlm_command cmd, uint8_t const* data = nullptr) {
+        auto trans = tlm::scc::tlm_mm<tlm::tlm_base_protocol_types, false>::get().allocate<axi::ace_extension>();
         tlm::scc::setId(*trans, id++);
-        auto ext = trans->get_extension<axi::axi4_extension>();
+        auto ext = trans->get_extension<axi::ace_extension>();
+        trans->set_command(cmd);
         trans->set_data_length(len);
         trans->set_data_ptr(new uint8_t[len]);
         if(data)
@@ -65,6 +66,7 @@ public:
         // ext->set_burst(len * 8 > SOCKET_WIDTH ? axi::burst_e::INCR : axi::burst_e::FIXED);
         ext->set_burst(axi::burst_e::INCR);
         ext->set_id(id);
+        ext->set_snoop(cmd==tlm::TLM_READ_COMMAND?axi::snoop_e::READ_ONCE:axi::snoop_e::WRITE_UNIQUE);
         return trans;
     }
 
@@ -83,9 +85,8 @@ public:
         for(int i = 0; i < NumberOfIterations; ++i) {
             SCCDEBUG("testbench") << "executing transactions in iteration " << i;
             { // 1
-                auto trans = prepare_trans(BurstLengthByte);
+                auto trans = prepare_trans(BurstLengthByte, tlm::TLM_READ_COMMAND);
                 SCCDEBUG(SCMOD) << "generating transactions " << trans;
-                trans->set_command(tlm::TLM_READ_COMMAND);
                 trans->set_address(StartAddr);
                 trans->set_data_ptr(data.data());
                 trans->acquire();
@@ -96,9 +97,8 @@ public:
                 StartAddr += BurstLengthByte;
             }
             { // 2
-                auto trans = prepare_trans(BurstLengthByte);
+                auto trans = prepare_trans(BurstLengthByte, tlm::TLM_WRITE_COMMAND);
                 SCCDEBUG(SCMOD) << "generating transactions " << trans;
-                trans->set_command(tlm::TLM_WRITE_COMMAND);
                 trans->set_address(BurstLengthByte);
                 trans->set_data_ptr(data.data());
                 trans->acquire();
@@ -109,7 +109,7 @@ public:
                 StartAddr += BurstLengthByte;
             }
         }
-        wait(100_ns);
+        wait(10_ns);
         sc_stop();
     }
 
@@ -125,17 +125,32 @@ int sc_main(int argc, char* argv[]) {
     // clang-format off
     scc::init_logging(
             scc::LogConfig()
-            .logLevel(scc::log::DEBUG)
+            .logLevel(scc::log::INFO)
             .logAsync(false)
             .coloredOutput(true));
-    // clang-format on
+    // clang-format off
     sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
-    scc::configurable_tracer trace("ace_axi_test",
-                                   scc::tracer::file_type::TEXT, // define the kind of transaction trace
-                                   true,                         // enables vcd
-                                   true);
-    testbench mstr("master");
-    sc_core::sc_start(10_ms);
-    SCCINFO() << "Finished";
-    return 0;
+    ::lwtr::tx_text_init();
+    ::lwtr::tx_db db("lwtr4axi.txlog");
+    testbench tb("tb");
+    scc::hierarchy_dumper d("lwtr4axi.json", scc::hierarchy_dumper::D3JSON);
+    //scc::hierarchy_dumper d("axi_axi_test.elkt", scc::hierarchy_dumper::ELKT);
+    try {
+        sc_core::sc_start(1_ms);
+        SCCINFO() << "Finished";
+    } catch(sc_core::sc_report& e) {
+        SCCERR() << "Caught sc_report exception during simulation: " << e.what() << ":" << e.get_msg();
+    } catch(std::exception& e) {
+        SCCERR() << "Caught exception during simulation: " << e.what();
+    } catch(...) {
+        SCCERR() << "Caught unspecified exception during simulation";
+    }
+    if(sc_is_running()) {
+        SCCERR() << "Simulation timeout!"; // calls sc_stop
+    }
+    auto errcnt = sc_report_handler::get_count(SC_ERROR);
+    auto warncnt = sc_report_handler::get_count(SC_WARNING);
+    SCCINFO() << "Finished, there were " << errcnt << " error" << (errcnt == 1 ? "" : "s") << " and " << warncnt
+              << " warning" << (warncnt == 1 ? "" : "s");
+    return errcnt + warncnt;
 }

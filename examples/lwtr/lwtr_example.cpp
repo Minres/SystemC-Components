@@ -104,7 +104,7 @@ public:
 	, read_gen("read", pipelined_stream, "addr", "data")
 	, write_gen("write", pipelined_stream)
 	, addr_gen("addr", addr_stream, "addr")
-	, rdata_gen("rdata", data_stream, nullptr, "data")
+	, rdata_gen("rdata", data_stream, "", "data")
 	, wdata_gen("wdata", data_stream, "data") {}
 	data_t read(const addr_t *p_addr) override;
 	void write(const write_t *req) override;
