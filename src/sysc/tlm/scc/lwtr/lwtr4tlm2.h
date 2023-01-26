@@ -79,6 +79,12 @@ void record(Archive &ar, tlm::tlm_generic_payload const& u) {
 	ar & field("address", u.get_address());
 	//ar & field("data_ptr", u.get_data_ptr());
 	ar & field("data_length", u.get_data_length());
+	if(u.get_data_length() && u.get_data_ptr()) {
+		uint64_t data{0};
+		std::copy(u.get_data_ptr(), u.get_data_ptr()+std::min(u.get_data_length(), 8U),
+				reinterpret_cast<uint8_t*>(&data));
+		ar & field("data", data);
+	}
 	ar & field("response_status", u.get_response_status());
     ar & field("streaming_width", u.get_streaming_width());
     //ar & field("byte_enable_ptr", u.get_byte_enable_ptr());

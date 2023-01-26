@@ -221,7 +221,7 @@ struct cci_value_converter<char[N]>
       return false;
 
     cci_value::const_string_reference str = src.get_string();
-    std::strncpy( dst, str, N-1 );
+    std::strncpy( dst, str.c_str(), N-1 );
     dst[N-1] = '\0';
     return ( str.size() <= N-1 );
   }
