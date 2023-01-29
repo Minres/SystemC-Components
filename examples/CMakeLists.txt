@@ -9,6 +9,7 @@ if(NOT USE_CWR_SYSTEMC)
     add_subdirectory(scc-tlm_target_bfs)
     add_subdirectory(lwtr)
     add_subdirectory(lwtr4tlm2)
+    add_subdirectory(lwtr4axi)
     add_subdirectory(scp)
 endif()
 

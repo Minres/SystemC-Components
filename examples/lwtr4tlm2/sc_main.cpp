@@ -55,7 +55,7 @@ public:
 
 private:
     tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<>> top_isck{"top_isck"};
-    tlm::scc::lwtr::tlm_recorder<> itor2mem{"itor2mem"};
+    tlm::scc::lwtr::tlm2_lwtr_recorder<> itor2mem{"itor2mem"};
     scc::memory<1_GB> mem{"mem"};
 
     unsigned id{0};
@@ -68,8 +68,8 @@ public:
     testbench(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm) {
         SC_THREAD(run);
-        itor2mem.bind(top_isck);
-		itor2mem.bind(mem.target);
+        top_isck(itor2mem.tsckt);
+		itor2mem.isckt(mem.target);
 		mem.rd_resp_delay=5_ns;
 		mem.wr_resp_delay=2_ns;
     }

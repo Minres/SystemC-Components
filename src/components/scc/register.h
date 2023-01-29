@@ -381,18 +381,20 @@ public:
      *
      * @param read_cb
      */
-    void set_read_cb(std::function<bool(const sc_register<DATATYPE>&, DATATYPE&)> read_cb) {
-        for(auto& reg : _reg_field)
-            reg.set_read_cb(read_cb);
+    void set_read_cb(std::function<bool(size_t, const sc_register<DATATYPE>&, DATATYPE&)> read_cb) {
+        rd_cb = read_cb;
+        for(size_t idx = START; idx < SIZE + START; ++idx)
+            _reg_field[idx].set_read_cb([this, idx](const sc_register<DATATYPE>& reg, DATATYPE& dt){return this->rd_cb(idx, reg, dt);});
     }
     /**
      * set the read callback triggered upon a read request
      *
      * @param read_cb
      */
-    void set_read_cb(std::function<bool(const sc_register<DATATYPE>&, DATATYPE&, sc_core::sc_time)> read_cb) {
-        for(auto& reg : _reg_field)
-            reg.set_read_cb(read_cb);
+    void set_read_cb(std::function<bool(size_t, const sc_register<DATATYPE>&, DATATYPE&, sc_core::sc_time&)> read_cb) {
+        rd_time_cb = read_cb;
+        for(size_t idx = START; idx < SIZE + START; ++idx)
+            _reg_field[idx].set_read_cb([this, idx](const sc_register<DATATYPE>& reg, DATATYPE& dt, sc_core::sc_time& delay){return this->rd_time_cb(idx, reg, dt, delay);});
     }
     /**
      * set the write callback triggered upon a write request without forwarding the annotated time
@@ -400,18 +402,20 @@ public:
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const&)> write_cb) {
-        for(auto& reg : _reg_field)
-            reg.set_write_cb(write_cb);
+    void set_write_cb(std::function<bool(size_t, sc_register<DATATYPE>&, DATATYPE const&)> write_cb) {
+        wr_cb = write_cb;
+        for(size_t idx = START; idx < SIZE + START; ++idx)
+            _reg_field[idx].set_write_cb([this, idx](sc_register<DATATYPE>& reg, const DATATYPE& dt){return this->wr_cb(idx, reg, dt);});
     }
     /**
      * set the write callback triggered upon a write request
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(sc_register<DATATYPE>&, DATATYPE const&, sc_core::sc_time)> write_cb) {
-        for(auto& reg : _reg_field)
-            reg.set_write_cb(write_cb);
+    void set_write_cb(std::function<bool(size_t, sc_register<DATATYPE>&, DATATYPE const&, sc_core::sc_time&)> write_cb) {
+        wr_time_cb = write_cb;
+        for(size_t idx = START; idx < SIZE + START; ++idx)
+            _reg_field[idx].set_write_cb([this, idx](sc_register<DATATYPE>& reg, const DATATYPE& dt, sc_core::sc_time& delay){return this->wr_time_cb(idx, reg, dt, delay);});
     }
     /**
      * Element access operator
@@ -450,6 +454,10 @@ public:
 
 private:
     sc_core::sc_vector<value_type> _reg_field;
+    std::function<bool(size_t, sc_register<DATATYPE>&, DATATYPE const&)> wr_cb;
+    std::function<bool(size_t, sc_register<DATATYPE>&, DATATYPE const&, sc_core::sc_time)> wr_time_cb;
+    std::function<bool(size_t, sc_register<DATATYPE> const&, DATATYPE const&)> rd_cb;
+    std::function<bool(size_t, sc_register<DATATYPE> const&, DATATYPE const&, sc_core::sc_time)> rd_time_cb;
 };
 /**
  * alias class to map template argument read an write mask to constructor arguments
