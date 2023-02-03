@@ -116,6 +116,11 @@ template <unsigned BUSWIDTH = 32> struct target_name_map_entry {
     ::sc_dt::uint64 start;
     ::sc_dt::uint64 size;
 };
+template <unsigned int BUSWIDTH = 32, unsigned int ADDR_UNIT_WIDTH = 8> struct tlm_target_mod : sc_core::sc_module, public tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH> {
+    tlm_target_mod(sc_core::sc_module_name nm, sc_core::sc_time& clk_period) : sc_module(nm), tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>(clk_period){
+
+    }
+};
 
 } /* namespace scc */
 
@@ -182,5 +187,6 @@ unsigned int scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::tranport_dbg_cb(tlm::tl
     }
     return 0;
 }
+
 
 #endif /* _SYSC_TLM_TARGET_H_ */

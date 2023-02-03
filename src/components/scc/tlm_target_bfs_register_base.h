@@ -110,8 +110,8 @@ public:
 
     void reset() override { storage = resetValue; }
 
-    bool write(const uint8_t* data, std::size_t length, uint64_t offset = 0,
-               sc_core::sc_time d = sc_core::SC_ZERO_TIME) override {
+    bool write(const uint8_t* data, std::size_t length, uint64_t offset,
+               sc_core::sc_time& d) override {
         assert("Access out of range" && offset + length <= this->size());
         auto valueToWrite{storage};
         std::copy(data, data + length, reinterpret_cast<uint8_t*>(&valueToWrite) + offset);
@@ -129,8 +129,8 @@ public:
         return true;
     }
 
-    bool read(uint8_t* data, std::size_t length, uint64_t offset = 0,
-              sc_core::sc_time d = sc_core::SC_ZERO_TIME) const override {
+    bool read(uint8_t* data, std::size_t length, uint64_t offset,
+              sc_core::sc_time& d) const override {
         assert("Access out of range" && offset + length <= this->size());
         auto result{storage};
         result &= readMask;
