@@ -53,8 +53,8 @@ public:
      * @param d the annotated delay
      * @return true it the access is successful
      */
-    virtual bool write(const uint8_t* data, std::size_t length, uint64_t offset = 0,
-                       sc_core::sc_time d = sc_core::SC_ZERO_TIME) = 0;
+    virtual bool write(const uint8_t* data, std::size_t length, uint64_t offset, sc_core::sc_time& d) = 0;
+    inline bool write(const uint8_t* data, std::size_t length, uint64_t offset = 0){sc_core::sc_time d; return write(data, length, offset, d);}                   
     /**
      * @fn bool read(uint8_t*, std::size_t, uint64_t=0, sc_core::sc_time=sc_core::SC_ZERO_TIME)const =0
      * @brief read the data from the resource
@@ -65,8 +65,9 @@ public:
      * @param d the annotated delay
      * @return true it the access is successful
      */
-    virtual bool read(uint8_t* data, std::size_t length, uint64_t offset = 0,
-                      sc_core::sc_time d = sc_core::SC_ZERO_TIME) const = 0;
+    virtual bool read(uint8_t* data, std::size_t length, uint64_t offset, sc_core::sc_time& d) const = 0;
+    inline bool read(uint8_t* data, std::size_t length, uint64_t offset = 0) const {sc_core::sc_time d; return read(data, length, offset, d);}                   
+
     /**
      * @fn bool write_dbg(const uint8_t*, std::size_t, uint64_t=0)=0
      * @brief debug write to the resource

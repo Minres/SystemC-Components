@@ -115,8 +115,10 @@ public:
      */
     void reset() override {
         DATATYPE r(res_val);
-        if(wr_cb)
-            wr_cb(*this, r, sc_core::SC_ZERO_TIME);
+        if(wr_cb){
+            sc_core::sc_time d;
+            wr_cb(*this, r, d);
+        }   
         storage = r;
     }
     /**
@@ -131,7 +133,7 @@ public:
      * @return true if access is successful
      */
     bool write(const uint8_t* data, size_t length, uint64_t offset = 0,
-               sc_core::sc_time d = sc_core::SC_ZERO_TIME) override {
+               sc_core::sc_time& d = sc_core::SC_ZERO_TIME) override {
         assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
         auto beg = reinterpret_cast<uint8_t*>(&temp) + offset;
@@ -153,7 +155,7 @@ public:
      * @return true if access is successful
      */
     bool read(uint8_t* data, size_t length, uint64_t offset = 0,
-              sc_core::sc_time d = sc_core::SC_ZERO_TIME) const override {
+              sc_core::sc_time& d = sc_core::SC_ZERO_TIME) const override {
         assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
         if(rd_cb) {
@@ -264,7 +266,7 @@ public:
      * @param read_cb the callback functor
      */
     void set_read_cb(std::function<bool(const this_type&, DATATYPE&)> read_cb) {
-        rd_cb = [read_cb](const this_type& reg, DATATYPE& data, sc_core::sc_time delay) { return read_cb(reg, data); };
+        rd_cb = [read_cb](const this_type& reg, DATATYPE& data, sc_core::sc_time& delay) { return read_cb(reg, data); };
     }
     /**
      * @fn void set_read_cb(std::function<bool (const this_type&, DATATYPE&, sc_core::sc_time)>)
@@ -274,7 +276,7 @@ public:
      *
      * @param read_cb the callback functor
      */
-    void set_read_cb(std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time)> read_cb) { rd_cb = read_cb; }
+    void set_read_cb(std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time&)> read_cb) { rd_cb = read_cb; }
     /**
      * @fn void set_write_cb(std::function<bool (this_type&, const DATATYPE&)>)
      * @brief set the write callback
@@ -285,7 +287,7 @@ public:
      * @param write_cb the callback functor
      */
     void set_write_cb(std::function<bool(this_type&, const DATATYPE&)> write_cb) {
-        wr_cb = [write_cb](this_type& reg, DATATYPE& data, sc_core::sc_time delay) { return write_cb(reg, data); };
+        wr_cb = [write_cb](this_type& reg, DATATYPE& data, sc_core::sc_time& delay) { return write_cb(reg, data); };
     }
     /**
      * @fn void set_write_cb(std::function<bool (this_type&, const DATATYPE&, sc_core::sc_time)>)
@@ -300,7 +302,7 @@ public:
      *
      * @param write_cb
      */
-    void set_write_cb(std::function<bool(this_type&, const DATATYPE&, sc_core::sc_time)> write_cb) { wr_cb = write_cb; }
+    void set_write_cb(std::function<bool(this_type&, const DATATYPE&, sc_core::sc_time&)> write_cb) { wr_cb = write_cb; }
     /**
      * @fn void trace(sc_core::sc_trace_file*)const
      * @brief trace the register value to the given trace file
@@ -317,15 +319,15 @@ public:
 
 private:
     DATATYPE& storage;
-    std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time)> rd_cb;
-    std::function<bool(this_type&, DATATYPE&, sc_core::sc_time)> wr_cb;
+    std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time&)> rd_cb;
+    std::function<bool(this_type&, DATATYPE&, sc_core::sc_time&)> wr_cb;
 
 #ifdef _MSC_VER
-    std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time)> rd_dlgt;
-    std::function<bool(this_type&, DATATYPE&, sc_core::sc_time)> wr_dlgt;
+    std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time&)> rd_dlgt;
+    std::function<bool(this_type&, DATATYPE&, sc_core::sc_time&)> wr_dlgt;
 #else
-    util::delegate<bool(const this_type&, DATATYPE&, sc_core::sc_time)> rd_dlgt;
-    util::delegate<bool(this_type&, DATATYPE&, sc_core::sc_time)> wr_dlgt;
+    util::delegate<bool(const this_type&, DATATYPE&, sc_core::sc_time&)> rd_dlgt;
+    util::delegate<bool(this_type&, DATATYPE&, sc_core::sc_time&)> wr_dlgt;
 #endif
 };
 } // namespace impl
@@ -455,9 +457,9 @@ public:
 private:
     sc_core::sc_vector<value_type> _reg_field;
     std::function<bool(size_t, sc_register<DATATYPE>&, DATATYPE const&)> wr_cb;
-    std::function<bool(size_t, sc_register<DATATYPE>&, DATATYPE const&, sc_core::sc_time)> wr_time_cb;
+    std::function<bool(size_t, sc_register<DATATYPE>&, DATATYPE const&, sc_core::sc_time&)> wr_time_cb;
     std::function<bool(size_t, sc_register<DATATYPE> const&, DATATYPE const&)> rd_cb;
-    std::function<bool(size_t, sc_register<DATATYPE> const&, DATATYPE const&, sc_core::sc_time)> rd_time_cb;
+    std::function<bool(size_t, sc_register<DATATYPE> const&, DATATYPE const&, sc_core::sc_time&)> rd_time_cb;
 };
 /**
  * alias class to map template argument read an write mask to constructor arguments
