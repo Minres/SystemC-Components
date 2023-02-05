@@ -77,11 +77,15 @@ private:
     void setup_callbacks(axi::fsm::fsm_handle*) override;
 
     void clk_delay() {
+    #ifdef DELTA_SYNC
         if(sc_core::sc_delta_count_at_current_time()<5) {
             clk_self.notify(sc_core::SC_ZERO_TIME);
             next_trigger(clk_self);
         } else
             clk_delayed.notify(sc_core::SC_ZERO_TIME/*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
+#else
+        clk_delayed.notify(1_ps);
+#endif
     }
     void ar_t();
     void rresp_t();
@@ -410,7 +414,15 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
                 }
             }
             // TODO: assuming consecutive write (not scattered)
-            auto act_data_len = CFG::IS_LITE? gp->get_data_length() + util::bit_count(strb.to_uint()): (beat_count+1) * size;
+            auto strobe = strb.to_uint();
+            auto act_data_len = CFG::IS_LITE? gp->get_data_length() + util::bit_count(strobe): (beat_count+1) * size;
+            if(CFG::IS_LITE && act_data_len<CFG::BUSWIDTH/8) {
+                for(unsigned i = 1; i<strobe; i<<=1) {
+                    if(!(i&strobe))
+                        gp->set_address(gp->get_address()+1);
+                }
+                std::fill(gp->get_byte_enable_ptr(), gp->get_byte_enable_ptr()+ gp->get_byte_enable_length(), 0xff);
+            }
             gp->set_data_length(act_data_len);
             gp->set_byte_enable_length(act_data_len);
             gp->set_streaming_width(act_data_len);
