@@ -35,6 +35,7 @@ set(LIB_SOURCES
     #scc/scv/scv_tr_binary.cpp
     scc/scv/scv_tr_mtc.cpp
     scc/scv/scv_tr_lz4.cpp
+    scc/scv/scv_tr_cbor.cpp
     scc/vcd_mt_trace.cpp
     scc/vcd_pull_trace.cpp
     scc/vcd_push_trace.cpp
@@ -174,3 +175,4 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tlm COMPONENT sysc
         FILES_MATCHING # install only matched files
         PATTERN "*.h" # select header files
         )
+

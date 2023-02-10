@@ -56,6 +56,13 @@ void scv_tr_lz4_init();
  * multithreaded writer
  *
  */
+void scv_tr_cbor_init();
+/**
+ * @fn void scv_tr_mtc_init()
+ * @brief initializes the infrastructure to use a compressed text based transaction recording database with a
+ * multithreaded writer
+ *
+ */
 void scv_tr_mtc_init();
 
 #ifdef USE_EXTENDED_DB

@@ -298,26 +298,13 @@ inline void design::data_phase() {
     }
 }
 
-inline const char* init_db(char type){
-    switch(type){
-    case '2':
-        scv_tr::scv_tr_compressed_init();
-        return "my_db.txlog";
-        break;
-    default:
-    	scv_tr::scv_tr_text_init();
-        return "my_db.txlog";
-        break;
-    }
-}
-
 int sc_main(int argc, char *argv[]) {
     auto start = std::chrono::system_clock::now();
     //scv_startup();
     scc::init_logging(scc::LogConfig().logLevel(scc::log::DEBUG));
-    const char *fileName = argc==2? init_db(argv[1][0]): "my_db.txlog";
-    if(argc<2) scv_tr_text_init();
-    scv_tr_db db(fileName);
+    scv_tr_cbor_init();
+	scv_tr::scv_tr_text_init();
+    scv_tr_db db("my_db");
     scv_tr_db::set_default_db(&db);
     sc_trace_file *tf = sc_create_vcd_trace_file("my_db");
     // create signals
