@@ -153,7 +153,6 @@ struct chunk_writer {
 		enc.ofs.open(filename, std::ios::binary|std::ios::out);
 		if(enc.ofs.is_open()) {
 			enc.write_tag(55799); // Self-Described CBOR
-			enc.write_tag(20); // unassigned tag
 			enc.start_array();
 		}
 	}
@@ -165,7 +164,12 @@ struct chunk_writer {
 		}
 	}
 
-	void write_chunk(uint64_t type, uint64_t subtype, std::vector<uint8_t> const& data){
+	void write_chunk(uint64_t type, std::vector<uint8_t> const& data, uint64_t subtype = std::numeric_limits<uint64_t>::max()){
+		enc.write_tag(16+type); // unassigned tag
+		if(subtype < std::numeric_limits<uint64_t>::max()) {
+			enc.start_array(2);
+			enc.write(subtype);
+		}
 		if(COMPRESSED){
 			const int max_dst_size = LZ4_compressBound(data.size());
 			uint8_t* compressed_data = (uint8_t*)malloc(max_dst_size);
@@ -173,13 +177,9 @@ struct chunk_writer {
 					reinterpret_cast<char const*>(data.data()),
 					reinterpret_cast<char*>(compressed_data),
 					data.size(), max_dst_size);
-			enc.write(type);
-			enc.write(subtype);
 			enc.write(compressed_data, compressed_data_size);
 			free(compressed_data);
 		} else {
-			enc.write(type);
-			enc.write(subtype);
 			enc.write(data.data(),  data.size());
 		}
 	}
@@ -209,7 +209,7 @@ struct dictionary {
 			writer.write(i);
 			writer.write(out_dict[i]);
 		}
-		cw.write_chunk(DICT_CHUNK_ID, flushed_idx, writer.buffer);
+		cw.write_chunk(DICT_CHUNK_ID, writer.buffer);
 		flushed_idx = out_dict.size();
 		unflushed_size = 0;
 	}
@@ -222,8 +222,8 @@ struct directory {
 
 	inline void add_stream(uint64_t id, std::string const& name, std::string const& kind) {
 		if(writer.is_empty()) writer.start_array();
-		writer.start_array(4);
-		writer.write(static_cast<uint64_t>(0));
+		writer.write_tag(14);
+		writer.start_array(3);
 		writer.write(id);
 		writer.write(dict.get_key(name));
 		writer.write(dict.get_key(kind));
@@ -231,8 +231,8 @@ struct directory {
 
 	inline void add_generator(uint64_t id, std::string const& name, uint64_t stream) {
 		if(writer.is_empty()) writer.start_array();
-		writer.start_array(4);
-		writer.write(static_cast<uint64_t>(1));
+		writer.write_tag(15);
+		writer.start_array(3);
 		writer.write(id);
 		writer.write(dict.get_key(name));
 		writer.write(stream);
@@ -243,7 +243,7 @@ struct directory {
 		if(writer.is_empty()) return;
 		dict.flush(cw);
 		writer.write_break();
-		cw.write_chunk(DIR_CHUNK_ID, 0, writer.buffer);
+		cw.write_chunk(DIR_CHUNK_ID, writer.buffer);
 		writer.buffer.clear();
 	}
 
@@ -270,7 +270,7 @@ struct relations {
 		if(writer.is_empty()) return;
 		dict.flush(cw);
 		writer.write_break();
-		cw.write_chunk(REL_CHUNK_ID, 0, writer.buffer);
+		cw.write_chunk(REL_CHUNK_ID, writer.buffer);
 		writer.buffer.clear();
 	}
 
@@ -302,7 +302,6 @@ struct tx_entry {
 		writer.write(value);
 		elem_count++;
 	}
-
 };
 
 struct tx_block {
@@ -327,7 +326,7 @@ struct tx_block {
 	void flush(chunk_writer<COMPRESSED>& cw) {
 		dict.flush(cw);
 		writer.write_break();
-		cw.write_chunk(TX_CHUNK_ID, stream_id, writer.buffer);
+		cw.write_chunk(TX_CHUNK_ID, writer.buffer, stream_id);
 		writer.buffer.clear();
 	}
 
