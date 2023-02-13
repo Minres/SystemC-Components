@@ -285,14 +285,14 @@ struct relations {
 struct tx_entry {
 	encoder<memory_writer> enc;
 	size_t elem_count{0};
-	uint64_t stream{0};
+	uint64_t id{0};
 	uint64_t generator{0};
+	uint64_t stream{0};
 	uint64_t start_time{0}, end_time{0};
 
 	void reset(){
 		enc.clear();
 		elem_count=0;
-		stream=0;
 		start_time=0;
 		end_time=0;
 	}
@@ -310,7 +310,8 @@ struct tx_entry {
 	void append_to(encoder<memory_writer>& out) {
 		out.start_array(elem_count+1);
 		out.write_tag(6);
-		out.start_array(3);
+		out.start_array(4);
+		out.write(id);
 		out.write(generator);
 		out.write(start_time);
 		out.write(end_time);
@@ -383,9 +384,11 @@ struct tx_block {
  *    array(*) - list of transactions
  *      array() - transaction with pro12perties:
  *        cbor tag(6) - time stamps
- *        array(2)
+ *        array(4)
+ *          unsigned - id
+ *          unsigned - generator id
  *          unsigned - start time (in ps)
- *          unsigned -  end time (in ps)
+ *          unsigned - end time (in ps)
  *       cbor tag(7)
  *       array(3) - attribute at begin of tx
  *         unsigned - name (id of string)
@@ -466,14 +469,15 @@ struct chunked_cbor_writer  {
 		auto* e = free_pool.back();
 		free_pool.pop_back();
 		txs[id] = e;
-		e->stream=stream;
-		e->generator=generator;
-		e->start_time=time;
+		e->id = id;
+		e->generator = generator;
+		e->stream = stream;
+		e->start_time = time;
 	}
 
 	inline void endTransaction(uint64_t id, uint64_t time) {
 		auto e = txs[id];
-		e->end_time=time;
+		e->end_time = time;
 		auto* block = fiber_blocks[e->stream].get();
 		block->append(*e);
 		if(block->size()>MAX_TXBUFFER_SIZE){
