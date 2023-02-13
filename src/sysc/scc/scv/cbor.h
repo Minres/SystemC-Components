@@ -286,6 +286,7 @@ struct tx_entry {
 	encoder<memory_writer> enc;
 	size_t elem_count{0};
 	uint64_t stream{0};
+	uint64_t generator{0};
 	uint64_t start_time{0}, end_time{0};
 
 	void reset(){
@@ -309,9 +310,10 @@ struct tx_entry {
 	void append_to(encoder<memory_writer>& out) {
 		out.start_array(elem_count+1);
 		out.write_tag(6);
-		out.start_array(2);
-		out.write(static_cast<uint64_t>(start_time));
-		out.write(static_cast<uint64_t>(end_time));
+		out.start_array(3);
+		out.write(generator);
+		out.write(start_time);
+		out.write(end_time);
 		out.append(enc);
 	}
 };
@@ -379,7 +381,7 @@ struct tx_block {
  *        unsinged - kind (id of string)
  *  - chunk of type 3
  *    array(*) - list of transactions
- *      array() - transaction with properties:
+ *      array() - transaction with pro12perties:
  *        cbor tag(6) - time stamps
  *        array(2)
  *          unsigned - start time (in ps)
@@ -465,6 +467,7 @@ struct chunked_cbor_writer  {
 		free_pool.pop_back();
 		txs[id] = e;
 		e->stream=stream;
+		e->generator=generator;
 		e->start_time=time;
 	}
 
