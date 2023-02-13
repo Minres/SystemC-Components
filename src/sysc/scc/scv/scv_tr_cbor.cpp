@@ -35,21 +35,7 @@
 #include <scv-tr.h>
 namespace scv_tr {
 #endif
-/**
- * file format:
- * 	- uint64:		chunk type
- * 	                0: reserved
- * 	                1: dictionary
- * 	                2: directory
- * 	                3: tx block
- * 	- uint64:		chunk subtype (id, ...)
- * 	                type 1: start_idx
- * 	                type 2: start_idx
- * 	                type 3: fiber idx
- * 	- byte array:	lz4 compressed chunk
- */
 // clang-format on
-// ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 using namespace std;
 using namespace cbor;

@@ -34,6 +34,9 @@ struct memory_writer {
 	void push(char const* values, size_t size) { push(reinterpret_cast<uint8_t const*>(values), size); }
 	bool is_empty(){return buffer.empty();}
 	void clear(){ buffer.clear(); }
+	void append(memory_writer& o) {
+		buffer.insert(buffer.end(), o.buffer.begin(), o.buffer.end());
+	}
 };
 
 struct file_writer {
@@ -165,7 +168,7 @@ struct chunk_writer {
 	}
 
 	void write_chunk(uint64_t type, std::vector<uint8_t> const& data, uint64_t subtype = std::numeric_limits<uint64_t>::max()){
-		enc.write_tag(16+type); // unassigned tag
+		enc.write_tag(6+(type*2)+(COMPRESSED?1:0)); // unassigned tags
 		if(subtype < std::numeric_limits<uint64_t>::max()) {
 			enc.start_array(2);
 			enc.write(subtype);
@@ -203,90 +206,90 @@ struct dictionary {
 	template<bool COMPRESSED>
 	void flush(chunk_writer<COMPRESSED>& cw) {
 		if(!unflushed_size) return;
-		encoder<memory_writer> writer;
-		writer.start_map(out_dict.size()-flushed_idx);
+		encoder<memory_writer> enc;
+		enc.start_map(out_dict.size()-flushed_idx);
 		for(auto i=flushed_idx; i<out_dict.size(); ++i) {
-			writer.write(i);
-			writer.write(out_dict[i]);
+			enc.write(i);
+			enc.write(out_dict[i]);
 		}
-		cw.write_chunk(DICT_CHUNK_ID, writer.buffer);
+		cw.write_chunk(DICT_CHUNK_ID, enc.buffer);
 		flushed_idx = out_dict.size();
 		unflushed_size = 0;
 	}
 };
 
 struct directory {
-	encoder<memory_writer> writer;
+	encoder<memory_writer> enc;
 	dictionary& dict;
 	directory(dictionary& dict):dict(dict){}
 
 	inline void add_stream(uint64_t id, std::string const& name, std::string const& kind) {
-		if(writer.is_empty()) writer.start_array();
-		writer.write_tag(14);
-		writer.start_array(3);
-		writer.write(id);
-		writer.write(dict.get_key(name));
-		writer.write(dict.get_key(kind));
+		if(enc.is_empty()) enc.start_array();
+		enc.write_tag(16);
+		enc.start_array(3);
+		enc.write(id);
+		enc.write(dict.get_key(name));
+		enc.write(dict.get_key(kind));
 	}
 
 	inline void add_generator(uint64_t id, std::string const& name, uint64_t stream) {
-		if(writer.is_empty()) writer.start_array();
-		writer.write_tag(15);
-		writer.start_array(3);
-		writer.write(id);
-		writer.write(dict.get_key(name));
-		writer.write(stream);
+		if(enc.is_empty()) enc.start_array();
+		enc.write_tag(17);
+		enc.start_array(3);
+		enc.write(id);
+		enc.write(dict.get_key(name));
+		enc.write(stream);
 	}
 
 	template<bool COMPRESSED>
 	void flush(chunk_writer<COMPRESSED>& cw) {
-		if(writer.is_empty()) return;
+		if(enc.is_empty()) return;
 		dict.flush(cw);
-		writer.write_break();
-		cw.write_chunk(DIR_CHUNK_ID, writer.buffer);
-		writer.buffer.clear();
+		enc.write_break();
+		cw.write_chunk(DIR_CHUNK_ID, enc.buffer);
+		enc.buffer.clear();
 	}
 
 	size_t size() {
-		return writer.buffer.size();
+		return enc.buffer.size();
 	}
 };
 
 struct relations {
-	encoder<memory_writer> writer;
+	encoder<memory_writer> enc;
 	dictionary& dict;
 	relations(dictionary& dict):dict(dict){}
 
 	inline void add_relation(std::string const& name, uint64_t from, uint64_t to) {
-		if(writer.is_empty()) writer.start_array();
-		writer.start_array(3);
-		writer.write(dict.get_key(name));
-		writer.write(from);
-		writer.write(to);
+		if(enc.is_empty()) enc.start_array();
+		enc.start_array(3);
+		enc.write(dict.get_key(name));
+		enc.write(from);
+		enc.write(to);
 	}
 
 	template<bool COMPRESSED>
 	void flush(chunk_writer<COMPRESSED>& cw) {
-		if(writer.is_empty()) return;
+		if(enc.is_empty()) return;
 		dict.flush(cw);
-		writer.write_break();
-		cw.write_chunk(REL_CHUNK_ID, writer.buffer);
-		writer.buffer.clear();
+		enc.write_break();
+		cw.write_chunk(REL_CHUNK_ID, enc.buffer);
+		enc.buffer.clear();
 	}
 
 	size_t size() {
-		return writer.buffer.size();
+		return enc.buffer.size();
 	}
 };
 
 struct tx_entry {
-	encoder<memory_writer> writer;
+	encoder<memory_writer> enc;
 	size_t elem_count{0};
 	uint64_t stream{0};
 	uint64_t start_time{0}, end_time{0};
 
 	void reset(){
-		writer.clear();
+		enc.clear();
 		elem_count=0;
 		stream=0;
 		start_time=0;
@@ -295,46 +298,108 @@ struct tx_entry {
 
 	template<typename T>
 	void add_attribute(uint64_t type, uint64_t name_id, uint64_t type_id, T value) {
-		writer.start_array(4);
-		writer.write(2+type);
-		writer.write(name_id);
-		writer.write(type_id);
-		writer.write(value);
+		enc.write_tag(7+type);
+		enc.start_array(3);
+		enc.write(name_id);
+		enc.write(type_id);
+		enc.write(value);
 		elem_count++;
+	}
+
+	void append_to(encoder<memory_writer>& out) {
+		out.start_array(elem_count+1);
+		out.write_tag(6);
+		out.start_array(2);
+		out.write(static_cast<uint64_t>(start_time));
+		out.write(static_cast<uint64_t>(end_time));
+		out.append(enc);
 	}
 };
 
 struct tx_block {
-	encoder<memory_writer> writer;
+	encoder<memory_writer> enc;
 	dictionary& dict;
 	const uint64_t stream_id;
 	tx_block(dictionary& dict, uint64_t stream_id):dict(dict), stream_id(stream_id){}
 
 	void append(tx_entry& e) {
-		if(writer.is_empty()) writer.start_array();
-		writer.start_array(e.elem_count+1);
-		writer.start_array(3);
-		writer.write(static_cast<uint64_t>(1));
-		writer.write(static_cast<uint64_t>(e.start_time));
-		writer.write(static_cast<uint64_t>(e.end_time));
-		auto& a = writer.buffer;
-		auto& b = e.writer.buffer;
-		a.insert(a.end(), b.begin(), b.end());
+		if(enc.is_empty()) enc.start_array();
+		e.append_to(enc);
 	}
 
 	template<bool COMPRESSED>
 	void flush(chunk_writer<COMPRESSED>& cw) {
 		dict.flush(cw);
-		writer.write_break();
-		cw.write_chunk(TX_CHUNK_ID, writer.buffer, stream_id);
-		writer.buffer.clear();
+		enc.write_break();
+		cw.write_chunk(TX_CHUNK_ID, enc.buffer, stream_id);
+		enc.buffer.clear();
 	}
 
 	size_t size() {
-		return writer.buffer.size();
+		return enc.buffer.size();
 	}
 };
 
+/**
+ * format according to RFC 8949: Concise Binary Object Representation (CBOR)
+ * file format:
+ *   cbot tag(55799)
+ *   cbor array(*) of tagged chunks, chunks can be
+ *     chunk type 0 (info)
+ *       cbor tag(6)
+ *     chunk type 1 (dictionary)
+ *       cbor tag(8) (compressed: 9)
+ *       bytes() - content
+ *     chunk type 2 (directory)
+ *       cbor tag(10) (compressed: 11)
+ *       bytes() - content
+ *     chunk type 3 (tx block)
+ *       cbor tag(12) (compressed: 13)
+ *       array(2)
+ *         unsigned - stream id
+ *         bytes() - content
+ *     chunk type 4 (tx relationships)
+ *       cbor tag(14) (compressed: 15)
+ *       bytes() - content
+ * -----------------------------------------
+ * chunk content formats:
+ * 	- chunk type 1
+ *    map of fixed size of (unsigned, string)
+ *  - chunk of type 2
+ *    array(*) of either
+ *      cbor tag(16)
+ *      array(3)
+ *        unsinged - id
+ *        unsinged - name (id of string)
+ *        unsinged - kind (id of string)
+ *      cbor tag(17)
+ *      array(3)
+ *        unsinged - id
+ *        unsinged - name (id of string)
+ *        unsinged - kind (id of string)
+ *  - chunk of type 3
+ *    array(*) - list of transactions
+ *      array() - transaction with properties:
+ *        cbor tag(6) - time stamps
+ *        array(2)
+ *          unsigned - start time (in ps)
+ *          unsigned -  end time (in ps)
+ *       cbor tag(7)
+ *       array(3) - attribute at begin of tx
+ *         unsigned - name (id of string)
+ *         unsigned - data_type
+ *         [signed, unsigned, double] - value (depending of type)
+ *       cbor tag(8)
+ *       array(3) - attribute at tx
+ *         unsigned - name (id of string)
+ *         unsigned - data_type
+ *         [signed, unsigned, double] - value (depending of type)
+ *       cbor tag(9)
+ *       array(3) - attribute at end of tx
+ *         unsigned - name (id of string)
+ *         unsigned - data_type
+ *         [signed, unsigned, double] - value (depending of type)
+ */
 struct chunked_cbor_writer  {
 	enum class event_type { BEGIN, RECORD, END };
     enum class data_type {
