@@ -109,22 +109,16 @@ inline void recordAttribute(uint64_t id, chunked_cbor_writer::event_type event, 
 }
 // ----------------------------------------------------------------------------
 inline std::string get_name(const char* prefix, const scv_extensions_if* my_exts_p) {
-	static thread_local std::unordered_map<const scv_extensions_if*, std::string> name_lut;
-	auto it = name_lut.find(my_exts_p);
-	if(it != name_lut.end())
-		return it->second;
-	string name;
-	if(!prefix || strlen(prefix) == 0) {
-		name = my_exts_p->get_name();
-	} else {
-		if((my_exts_p->get_name() == nullptr) || (strlen(my_exts_p->get_name()) == 0)) {
-			name = prefix;
-		} else {
-			name = std::string(prefix) + "." + my_exts_p->get_name();
-		}
-	}
-	name_lut[my_exts_p] = (name == "") ? "<unnamed>" : name;
-	return (name == "") ? "<unnamed>" : name;
+    string name{prefix};
+    if(!prefix || strlen(prefix) == 0) {
+        name = my_exts_p->get_name();
+    } else {
+        if((my_exts_p->get_name() != nullptr) && (strlen(my_exts_p->get_name()) > 0)) {
+            name += ".";
+            name += my_exts_p->get_name();
+        }
+    }
+    return (name == "") ? "<unnamed>" : name;
 }
 // ----------------------------------------------------------------------------
 void recordAttributes(uint64_t id, chunked_cbor_writer::event_type eventType, char const* prefix, const scv_extensions_if* my_exts_p) {
@@ -146,7 +140,7 @@ void recordAttributes(uint64_t id, chunked_cbor_writer::event_type eventType, ch
 				my_exts_p->get_enum_string((int)(my_exts_p->get_integer())));
 		break;
 	case scv_extensions_if::BOOLEAN:
-		recordAttribute(id, eventType, name, scv_extensions_if::BOOLEAN, my_exts_p->get_bool() ? "TRUE" : "FALSE");
+		recordAttribute(id, eventType, name, scv_extensions_if::BOOLEAN, my_exts_p->get_bool());
 		break;
 	case scv_extensions_if::INTEGER:
 	case scv_extensions_if::FIXED_POINT_INTEGER:

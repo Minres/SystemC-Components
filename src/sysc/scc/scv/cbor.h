@@ -52,7 +52,7 @@ struct file_writer {
 
 template<typename OUTPUT>
 struct encoder: public OUTPUT {
-	void write(bool value){ this->push(value?0xf5:0xf4); }// 7::21, 7::20
+	void write(bool value){ this->push(static_cast<uint8_t>(value?0xf5:0xf4)); }// 7::21, 7::20
 	template<typename T>
 	typename std::enable_if<std::is_signed<T>::value, void>::type
 	write(T value) {
@@ -332,6 +332,7 @@ struct tx_block {
 
 	template<bool COMPRESSED>
 	void flush(chunk_writer<COMPRESSED>& cw) {
+		if(enc.is_empty()) return;
 		dict.flush(cw);
 		enc.write_break();
 		cw.write_chunk(TX_CHUNK_ID, enc.buffer, stream_id);
@@ -430,7 +431,7 @@ struct chunked_cbor_writer  {
 	std::vector<std::unique_ptr<tx_block>> fiber_blocks;
 	std::unordered_map<uint64_t, tx_entry*> txs;
 	std::vector<tx_entry*> free_pool;
-	std::vector<uint8_t*> free_pool_blocks;
+	std::vector<void*> free_pool_blocks;
 
 	chunked_cbor_writer(const std::string& name): cw(name){}
 
@@ -443,7 +444,7 @@ struct chunked_cbor_writer  {
 			if(block)
 				block->flush(cw);
 		rel.flush(cw);
-		for(auto e: free_pool_blocks) delete e;
+		for(auto e: free_pool_blocks) free(e);
 	}
 
 	inline void writeStream(uint64_t id, std::string const& name, std::string const& kind) {
@@ -461,8 +462,9 @@ struct chunked_cbor_writer  {
 			dir.flush(cw);
 		if(!free_pool.size()) {
 			const auto block_size = sizeof(tx_entry)*64;
-			auto p = new uint8_t[block_size];
-			for(auto pp=p; pp<(p+block_size); pp+=sizeof(tx_entry))
+			auto p = malloc(sizeof(uint8_t)*block_size);
+			auto up = static_cast<uint8_t*>(p);
+			for(auto pp=up; pp<(up+block_size); pp+=sizeof(tx_entry))
 				free_pool.push_back(new(pp) tx_entry());
 			free_pool_blocks.push_back(p);
 		}

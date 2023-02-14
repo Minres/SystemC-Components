@@ -36,6 +36,7 @@
 #define SCVNS ::scv_tr::
 #endif
 #endif
+#include <lwtr/lwtr.h>
 #include <cstring>
 #include <iostream>
 #include <sstream>
@@ -73,7 +74,7 @@ void tracer::init_scv_db(file_type type, std::string const&& name) {
         std::stringstream ss;
         ss << name;
         switch(type) {
-        case TEXT:
+        default:
             SCVNS scv_tr_text_init();
             ss << ".txlog";
             break;
@@ -88,36 +89,32 @@ void tracer::init_scv_db(file_type type, std::string const&& name) {
                 SCVNS scv_tr_compressed_init();
                 break;
             default:
-#ifdef WITH_LZ4
                 SCVNS scv_tr_lz4_init();
-#else
-                SCVNS scv_tr_compressed_init();
-#endif
                 break;
             }
             ss << ".txlog";
         }
         break;
-        case SQLITE:
 #ifdef WITH_SQLITE
+        case SQLITE:
             SCVNS scv_tr_sqlite_init();
             ss << ".txdb";
-#else
-            SCVNS scv_tr_text_init();
-            ss << ".txlog";
+            break;
 #endif
+        case FTR:
+            SCVNS scv_tr_cbor_init();
             break;
         case CUSTOM:
             SCVNS scv_tr_mtc_init();
             ss << ".txlog";
             break;
-        default:
-            break;
         }
         txdb = new SCVNS scv_tr_db(ss.str().c_str());
         SCVNS scv_tr_db::set_default_db(txdb);
+//        lwtr::tx_text_lz4_init();
+//        lwtr_db = new lwtr::tx_db(name.c_str());
         if(trf) {
-            trf->write_comment(std::string("SCV_TXLOG: ") + ss.str());
+            trf->write_comment(std::string("TXREC: ") + ss.str());
         }
     }
 }
