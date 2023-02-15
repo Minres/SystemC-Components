@@ -102,7 +102,10 @@ void tracer::init_scv_db(file_type type, std::string const&& name) {
             break;
 #endif
         case FTR:
-            SCVNS scv_tr_cbor_init();
+            SCVNS scv_tr_cbor_init(false);
+            break;
+        case CFTR:
+            SCVNS scv_tr_cbor_init(true);
             break;
         case CUSTOM:
             SCVNS scv_tr_mtc_init();

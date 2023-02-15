@@ -302,7 +302,7 @@ int sc_main(int argc, char *argv[]) {
     auto start = std::chrono::system_clock::now();
     //scv_startup();
     scc::init_logging(scc::LogConfig().logLevel(scc::log::DEBUG));
-    scv_tr_cbor_init();
+    scv_tr_cbor_init(false);
 	scv_tr::scv_tr_text_init();
     scv_tr_db db("my_db");
     scv_tr_db::set_default_db(&db);

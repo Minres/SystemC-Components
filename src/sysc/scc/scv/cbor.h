@@ -19,7 +19,7 @@
 namespace cbor {
 enum {
 	MAX_TXBUFFER_SIZE=1<<16,
-	MAX_REL_SIZE=1<<10,
+	MAX_REL_SIZE=1<<16,
 	DICT_CHUNK_ID=1,
 	DIR_CHUNK_ID=2,
 	TX_CHUNK_ID=3,
@@ -170,10 +170,12 @@ struct chunk_writer {
 	void write_chunk(uint64_t type, std::vector<uint8_t> const& data, uint64_t subtype = std::numeric_limits<uint64_t>::max()){
 		enc.write_tag(6+(type*2)+(COMPRESSED?1:0)); // unassigned tags
 		if(subtype < std::numeric_limits<uint64_t>::max()) {
-			enc.start_array(2);
+			enc.start_array(2+(COMPRESSED?1:0));
 			enc.write(subtype);
-		}
+		} else if(COMPRESSED)
+			enc.start_array(2);
 		if(COMPRESSED){
+			enc.write(data.size());
 			const int max_dst_size = LZ4_compressBound(data.size());
 			uint8_t* compressed_data = (uint8_t*)malloc(max_dst_size);
 			const int compressed_data_size = LZ4_compress_default(
@@ -352,11 +354,19 @@ struct tx_block {
  *     chunk type 0 (info)
  *       cbor tag(6)
  *     chunk type 1 (dictionary)
- *       cbor tag(8) (compressed: 9)
+ *       cbor tag(8) uncompressed
  *       bytes() - content
+ *       cbor tag(9) compressed
+ *       array(2)
+ *         unsigned - uncompressed size
+ *         bytes() - content
  *     chunk type 2 (directory)
- *       cbor tag(10) (compressed: 11)
+ *       cbor tag(10) uncompressed
  *       bytes() - content
+ *       cbor tag(11) compressed
+ *       array(2)
+ *         unsigned - uncompressed size
+ *         bytes() - content
  *     chunk type 3 (tx block)
  *       cbor tag(12) (compressed: 13)
  *       array(2)
@@ -406,25 +416,27 @@ struct tx_block {
  *         unsigned - data_type
  *         [signed, unsigned, double] - value (depending of type)
  */
-struct chunked_cbor_writer  {
-	enum class event_type { BEGIN, RECORD, END };
-    enum class data_type {
-        BOOLEAN,                      // bool
-        ENUMERATION,                  // enum
-        INTEGER,                      // char, short, int, long, long long, sc_int, sc_bigint
-        UNSIGNED,                     // unsigned { char, short, int, long, long long }, sc_uint, sc_biguint
-        FLOATING_POINT_NUMBER,        // float, double
-        BIT_VECTOR,                   // sc_bit, sc_bv
-        LOGIC_VECTOR,                 // sc_logic, sc_lv
-        FIXED_POINT_INTEGER,          // sc_fixed
-        UNSIGNED_FIXED_POINT_INTEGER, // sc_ufixed
-        RECORD,                       // struct/class
-        POINTER,                      // T*
-        ARRAY,                        // T[N]
-        STRING                        // string, std::string
-    };
+enum class event_type { BEGIN, RECORD, END };
+enum class data_type {
+    BOOLEAN,                      // bool
+    ENUMERATION,                  // enum
+    INTEGER,                      // char, short, int, long, long long, sc_int, sc_bigint
+    UNSIGNED,                     // unsigned { char, short, int, long, long long }, sc_uint, sc_biguint
+    FLOATING_POINT_NUMBER,        // float, double
+    BIT_VECTOR,                   // sc_bit, sc_bv
+    LOGIC_VECTOR,                 // sc_logic, sc_lv
+    FIXED_POINT_INTEGER,          // sc_fixed
+    UNSIGNED_FIXED_POINT_INTEGER, // sc_ufixed
+    RECORD,                       // struct/class
+    POINTER,                      // T*
+    ARRAY,                        // T[N]
+    STRING                        // string, std::string
+};
 
-	chunk_writer<> cw;
+template<bool COMPRESSED=false>
+struct chunked_cbor_writer  {
+
+	chunk_writer<COMPRESSED> cw;
 	dictionary dict;
 	directory dir{dict};
 	relations rel{dict};

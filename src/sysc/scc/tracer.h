@@ -55,7 +55,7 @@ public:
      *
      * CUSTOM means the caller needs to initialize the database driver (scv_tr_text_init() or alike)
      */
-    enum file_type { NONE, TEXT, COMPRESSED, SQLITE, FTR, CUSTOM };
+    enum file_type { NONE, TEXT, COMPRESSED, SQLITE, FTR, CFTR, CUSTOM };
     /**
      * @fn  tracer(const std::string&&, file_type, bool=true)
      * @brief the constructor
