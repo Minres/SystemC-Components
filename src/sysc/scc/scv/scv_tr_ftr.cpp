@@ -45,7 +45,7 @@ using data_type = scv_extensions_if::data_type;
 namespace {
 template<bool COMPRESSED>
 struct tx_db {
-	static chunked_cbor_writer<COMPRESSED>* db;
+	static chunked_writer<COMPRESSED>* db;
 	static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason, void* data) {
 		// This is called from the scv_tr_db ctor.
 		static string fName("DEFAULT_scv_tr_cbor");
@@ -54,7 +54,7 @@ struct tx_db {
 			if((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0))
 				fName = _scv_tr_db.get_name();
 			try {
-				db = new chunked_cbor_writer<COMPRESSED>(fName+".txftr");
+				db = new chunked_writer<COMPRESSED>(fName+".txftr");
 			} catch(...) {
 				_scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open recording file");
 			}
@@ -252,7 +252,7 @@ static inline std::string get_name(const char* prefix, const scv_extensions_if* 
 	}
 };
 template<bool COMPRESSED>
-chunked_cbor_writer<COMPRESSED>* tx_db<COMPRESSED>::db{nullptr};
+chunked_writer<COMPRESSED>* tx_db<COMPRESSED>::db{nullptr};
 } // namespace
 // ----------------------------------------------------------------------------
 void scv_tr_cbor_init(bool compressed) {

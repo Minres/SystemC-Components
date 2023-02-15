@@ -434,7 +434,7 @@ enum class data_type {
 };
 
 template<bool COMPRESSED=false>
-struct chunked_cbor_writer  {
+struct chunked_writer  {
 
 	chunk_writer<COMPRESSED> cw;
 	dictionary dict;
@@ -445,9 +445,9 @@ struct chunked_cbor_writer  {
 	std::vector<tx_entry*> free_pool;
 	std::vector<void*> free_pool_blocks;
 
-	chunked_cbor_writer(const std::string& name): cw(name){}
+	chunked_writer(const std::string& name): cw(name){}
 
-	~chunked_cbor_writer() {
+	~chunked_writer() {
 		dict.flush(cw);
 		dir.flush(cw);
 		for(auto&e: txs)
