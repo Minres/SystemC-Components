@@ -39,12 +39,22 @@
  *
  * @tparam bit start bit
  * @tparam width size of the bit field to extract
- * @tparam T data type cyrrying the bits
- * @param v value from which the bytes are to be extarcted
- * @return the extracted bit. It is of the sanen datatype as the passed value
+ * @tparam T data type carrying the bits
+ * @param v value from which the bytes are to be extracted
+ * @return the extracted bit. It is of the same data type as the passed value
  */
-template <unsigned int bit, unsigned int width, typename T> inline constexpr T bit_sub(T v) {
+template <unsigned int bit, unsigned int width, typename T>
+inline constexpr std::enable_if_t<std::is_unsigned<T>::value, T> bit_sub(T v) {
+    static_assert((bit+width)<=8*sizeof(T));
     return (v >> bit) & ((T(1) << width) - 1);
+}
+
+template <unsigned int bit, unsigned int width, typename T>
+inline constexpr std::enable_if_t<std::is_signed<T>::value, T> bit_sub(T v) {
+    static_assert((bit+width)<=8*sizeof(T));
+    auto sign = (1 << (bit + width - 1)) & v;
+    auto mask = ((T(1) << width) - 1);
+    return sign? (v >> bit) | mask : (v >> bit) & mask;
 }
 /**
  * @brief sign-extend a given value
