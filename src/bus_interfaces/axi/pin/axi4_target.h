@@ -122,7 +122,7 @@ template <typename CFG>
 inline tlm::tlm_sync_enum axi::pin::axi4_target<CFG>::nb_transport_bw(payload_type& trans, phase_type& phase,
         sc_core::sc_time& t) {
     auto ret = tlm::TLM_ACCEPTED;
-    sc_core::sc_time delay=t; // FIXME: calculate correct time
+    sc_core::sc_time delay=t<clk_if->period()?sc_core::SC_ZERO_TIME:t; // FIXME: calculate correct time
     SCCTRACE(SCMOD) << "nb_transport_bw " << phase << " of trans " << trans;
     if(phase == axi::END_PARTIAL_REQ || phase == tlm::END_REQ) { // read/write
         schedule(phase == tlm::END_REQ ? EndReqE : EndPartReqE, &trans, delay, false);
@@ -415,14 +415,11 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
             }
             // TODO: assuming consecutive write (not scattered)
             auto strobe = strb.to_uint();
-            auto act_data_len = CFG::IS_LITE? gp->get_data_length() + util::bit_count(strobe): (beat_count+1) * size;
-            if(CFG::IS_LITE && act_data_len<CFG::BUSWIDTH/8) {
-                for(unsigned i = 1; i<strobe; i<<=1) {
-                    if(!(i&strobe))
-                        gp->set_address(gp->get_address()+1);
-                }
-                std::fill(gp->get_byte_enable_ptr(), gp->get_byte_enable_ptr()+ gp->get_byte_enable_length(), 0xff);
-            }
+            auto act_data_len = CFG::IS_LITE? util::bit_count(strobe): (beat_count+1) * size;
+//            if(CFG::IS_LITE && act_data_len<CFG::BUSWIDTH/8) {
+//                std::fill(gp->get_byte_enable_ptr(), gp->get_byte_enable_ptr() + act_data_len, 0xff);
+//                std::fill(gp->get_byte_enable_ptr() + act_data_len, gp->get_byte_enable_ptr() + gp->get_byte_enable_length(), 0x0);
+//            }
             gp->set_data_length(act_data_len);
             gp->set_byte_enable_length(act_data_len);
             gp->set_streaming_width(act_data_len);
