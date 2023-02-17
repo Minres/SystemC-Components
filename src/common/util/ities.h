@@ -44,13 +44,13 @@
  * @return the extracted bit. It is of the same data type as the passed value
  */
 template <unsigned int bit, unsigned int width, typename T>
-inline constexpr std::enable_if_t<std::is_unsigned<T>::value, T> bit_sub(T v) {
+inline constexpr typename std::enable_if<std::is_unsigned<T>::value, T>::type bit_sub(T v) {
     static_assert((bit+width)<=8*sizeof(T));
     return (v >> bit) & ((T(1) << width) - 1);
 }
 
 template <unsigned int bit, unsigned int width, typename T>
-inline constexpr std::enable_if_t<std::is_signed<T>::value, T> bit_sub(T v) {
+inline constexpr typename std::enable_if<std::is_signed<T>::value, T>::type bit_sub(T v) {
     static_assert((bit+width)<=8*sizeof(T));
     auto sign = (1 << (bit + width - 1)) & v;
     auto mask = ((T(1) << width) - 1);
