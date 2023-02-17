@@ -35,7 +35,7 @@ set(LIB_SOURCES
     #scc/scv/scv_tr_binary.cpp
     scc/scv/scv_tr_mtc.cpp
     scc/scv/scv_tr_lz4.cpp
-    scc/scv/scv_tr_cbor.cpp
+    scc/scv/scv_tr_ftr.cpp
     scc/vcd_mt_trace.cpp
     scc/vcd_pull_trace.cpp
     scc/vcd_push_trace.cpp

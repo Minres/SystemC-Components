@@ -28,7 +28,9 @@ namespace scv_tr {
 class scv_tr_db;
 }
 #endif
-
+namespace lwtr {
+class tx_db;
+}
 namespace sc_core {
 class sc_object;
 class sc_trace_file;
@@ -53,7 +55,7 @@ public:
      *
      * CUSTOM means the caller needs to initialize the database driver (scv_tr_text_init() or alike)
      */
-    enum file_type { NONE, TEXT, COMPRESSED, SQLITE, CUSTOM };
+    enum file_type { NONE, TEXT, COMPRESSED, SQLITE, FTR, CFTR, CUSTOM };
     /**
      * @fn  tracer(const std::string&&, file_type, bool=true)
      * @brief the constructor
@@ -105,6 +107,7 @@ protected:
 #else
     scv_tr::scv_tr_db* txdb;
 #endif
+    lwtr::tx_db* lwtr_db;
 
 private:
     void init_scv_db(file_type type, std::string const&& name);
