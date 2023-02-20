@@ -107,15 +107,22 @@ void tracer::init_scv_db(file_type type, std::string const&& name) {
         case CFTR:
             SCVNS scv_tr_cbor_init(true);
             break;
+        case LWFTR:
+            lwtr::tx_ftr_init(false);
+            break;
+        case LWCFTR:
+        	lwtr::tx_ftr_init(true);
+            break;
         case CUSTOM:
             SCVNS scv_tr_mtc_init();
             ss << ".txlog";
             break;
         }
-        txdb = new SCVNS scv_tr_db(ss.str().c_str());
-        SCVNS scv_tr_db::set_default_db(txdb);
-//        lwtr::tx_text_lz4_init();
-//        lwtr_db = new lwtr::tx_db(name.c_str());
+        if(type==LWFTR || type==LWCFTR) {
+        	lwtr_db = new lwtr::tx_db(name.c_str());
+        } else {
+	        txdb = new SCVNS scv_tr_db(ss.str().c_str());
+        }
         if(trf) {
             trf->write_comment(std::string("TXREC: ") + ss.str());
         }

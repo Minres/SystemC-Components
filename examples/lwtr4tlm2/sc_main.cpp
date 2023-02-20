@@ -68,8 +68,8 @@ public:
     testbench(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm) {
         SC_THREAD(run);
-        top_isck(itor2mem.tsckt);
-		itor2mem.isckt(mem.target);
+        top_isck(itor2mem.ts);
+		itor2mem.is(mem.target);
 		mem.rd_resp_delay=5_ns;
 		mem.wr_resp_delay=2_ns;
     }
