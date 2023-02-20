@@ -43,10 +43,10 @@ public:
         SC_THREAD(run);
         intor_pe.clk_i(clk);
         tgt_pe.clk_i(clk);
-        intor(ace_rec.tsckt);
-        ace_rec.isckt(adapt.tsckt);
-        adapt.isckt(axi_rec.tsckt);
-        axi_rec.isckt(tgt);
+        intor(ace_rec.ts);
+        ace_rec.is(adapt.tsckt);
+        adapt.isckt(axi_rec.ts);
+        axi_rec.is(tgt);
     }
 
     tlm::tlm_generic_payload* prepare_trans(size_t len, tlm::tlm_command cmd, uint8_t const* data = nullptr) {

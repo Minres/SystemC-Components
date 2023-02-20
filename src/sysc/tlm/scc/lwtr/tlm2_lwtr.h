@@ -322,17 +322,17 @@ template <unsigned BUSWIDTH=32, typename TYPES = tlm::tlm_base_protocol_types, i
         sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND>
 class tlm2_lwtr_recorder : public sc_core::sc_module, public tlm2_lwtr<TYPES> {
 public:
-	tlm::tlm_target_socket<BUSWIDTH, TYPES, N, POL> tsckt{"tsckt"};
-	tlm::tlm_initiator_socket<BUSWIDTH, TYPES, N, POL> isckt{"isckt"};
+	tlm::tlm_target_socket<BUSWIDTH, TYPES, N, POL> ts{"ts"};
+	tlm::tlm_initiator_socket<BUSWIDTH, TYPES, N, POL> is{"is"};
 
 	tlm2_lwtr_recorder(sc_core::sc_module_name nm, bool recording_enabled = true, tx_db* tr_db = tx_db::get_default_db())
 	: sc_core::sc_module(nm)
 	, tlm2_lwtr<TYPES>(name(), recording_enabled, tr_db)
 	{
- 		isckt(*this);
- 		tsckt(*this);
- 		this->bw_port(tsckt.get_base_port());
- 		this->fw_port(isckt.get_base_port());
+ 		is(*this);
+ 		ts(*this);
+ 		this->bw_port(ts.get_base_port());
+ 		this->fw_port(is.get_base_port());
 	}
 };
 
