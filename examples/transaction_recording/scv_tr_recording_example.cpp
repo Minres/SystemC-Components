@@ -300,12 +300,10 @@ inline void design::data_phase() {
 
 int sc_main(int argc, char *argv[]) {
     auto start = std::chrono::system_clock::now();
-    //scv_startup();
     scc::init_logging(scc::LogConfig().logLevel(scc::log::DEBUG));
     scv_tr_cbor_init(false);
-	scv_tr::scv_tr_text_init();
+    scv_tr::scv_tr_text_init();
     scv_tr_db db("my_db");
-    scv_tr_db::set_default_db(&db);
     sc_trace_file *tf = sc_create_vcd_trace_file("my_db");
     // create signals
     sc_clock clk("clk", 20.0, SC_NS, 0.5, 0.0, SC_NS, true);
