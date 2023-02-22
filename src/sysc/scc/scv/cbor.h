@@ -15,11 +15,13 @@
 #include <limits>
 #include <unordered_map>
 #include <lz4.h>
+#include <ctime>
 
 namespace cbor {
 enum {
 	MAX_TXBUFFER_SIZE=1<<16,
 	MAX_REL_SIZE=1<<16,
+	INFO_CHUNK_ID=0,
 	DICT_CHUNK_ID=1,
 	DIR_CHUNK_ID=2,
 	TX_CHUNK_ID=3,
@@ -168,26 +170,54 @@ struct chunk_writer {
 	}
 
 	void write_chunk(uint64_t type, std::vector<uint8_t> const& data, uint64_t subtype = std::numeric_limits<uint64_t>::max()){
-		enc.write_tag(6+(type*2)+(COMPRESSED?1:0)); // unassigned tags
-		if(subtype < std::numeric_limits<uint64_t>::max()) {
-			enc.start_array(2+(COMPRESSED?1:0));
-			enc.write(subtype);
-		} else if(COMPRESSED)
-			enc.start_array(2);
-		if(COMPRESSED){
-			enc.write(data.size());
-			const int max_dst_size = LZ4_compressBound(data.size());
-			uint8_t* compressed_data = (uint8_t*)malloc(max_dst_size);
-			const int compressed_data_size = LZ4_compress_default(
-					reinterpret_cast<char const*>(data.data()),
-					reinterpret_cast<char*>(compressed_data),
-					data.size(), max_dst_size);
-			enc.write(compressed_data, compressed_data_size);
-			free(compressed_data);
+		if(COMPRESSED && type>INFO_CHUNK_ID) {
+	        enc.write_tag(6+type*2+1); // unassigned tags
+	        if(subtype < std::numeric_limits<uint64_t>::max()) {
+	            enc.start_array(3);
+	            enc.write(subtype);
+	        } else
+	            enc.start_array(2);
+            enc.write(data.size());
+            const int max_dst_size = LZ4_compressBound(data.size());
+            uint8_t* compressed_data = (uint8_t*)malloc(max_dst_size);
+            const int compressed_data_size = LZ4_compress_default(
+                    reinterpret_cast<char const*>(data.data()),
+                    reinterpret_cast<char*>(compressed_data),
+                    data.size(), max_dst_size);
+            enc.write(compressed_data, compressed_data_size);
+            free(compressed_data);
 		} else {
-			enc.write(data.data(),  data.size());
+	        enc.write_tag(6+type*2); // unassigned tags
+	        if(subtype < std::numeric_limits<uint64_t>::max()) {
+	            enc.start_array(2);
+	            enc.write(subtype);
+	        }
+            enc.write(data.data(),  data.size());
 		}
 	}
+};
+
+struct info {
+    encoder<memory_writer> enc;
+
+    inline void add_time_scale(uint64_t denominator, uint64_t numerator=1) {
+        enc.start_array(3);
+        enc.write(numerator);
+        enc.write(denominator);
+        enc.write_tag(1);
+        enc.write(time(nullptr));
+    }
+
+    template<bool COMPRESSED>
+    void flush(chunk_writer<COMPRESSED>& cw) {
+        if(enc.is_empty()) return;
+        cw.write_chunk(INFO_CHUNK_ID, enc.buffer);
+        enc.buffer.clear();
+    }
+
+    size_t size() {
+        return enc.buffer.size();
+    }
 };
 
 struct dictionary {
@@ -353,6 +383,12 @@ struct tx_block {
  *   cbor array(*) of tagged chunks, chunks can be
  *     chunk type 0 (info)
  *       cbor tag(6)
+ *       array(3);
+ *         unsigned - numerator of timescale)
+ *         unsigned - denominator of timescale)
+ *         epoch time - creation time 
+ *           cbor tag(1)
+ *           unsigned - timestamp
  *     chunk type 1 (dictionary)
  *       cbor tag(8) uncompressed
  *       bytes() - content
@@ -437,6 +473,7 @@ template<bool COMPRESSED=false>
 struct chunked_writer  {
 
 	chunk_writer<COMPRESSED> cw;
+	info inf;
 	dictionary dict;
 	directory dir{dict};
 	relations rel{dict};
@@ -459,7 +496,12 @@ struct chunked_writer  {
 		for(auto e: free_pool_blocks) free(e);
 	}
 
-	inline void writeStream(uint64_t id, std::string const& name, std::string const& kind) {
+    inline void writeInfo(uint64_t denominator, uint64_t numerator=1) {
+        inf.add_time_scale(denominator, numerator);
+        inf.flush(cw);
+    }
+
+    inline void writeStream(uint64_t id, std::string const& name, std::string const& kind) {
 		dir.add_stream(id, name, kind);
 		if(id>=fiber_blocks.size()) fiber_blocks.resize(id+1);
 		fiber_blocks[id].reset(new tx_block(dict, id));

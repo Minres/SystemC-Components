@@ -54,14 +54,15 @@ struct tx_db {
 			if((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0))
 				fName = _scv_tr_db.get_name();
 			try {
-				db = new chunked_writer<COMPRESSED>(fName+".txftr");
+				db = new chunked_writer<COMPRESSED>(fName+".ftr");
 			} catch(...) {
 				_scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open recording file");
 			}
 			if(!db->cw.enc.ofs.is_open()) {
 				delete db;
 				db=nullptr;
-			}
+			} else
+	            db->writeInfo(sc_core::sc_time(1, sc_core::SC_SEC)/sc_core::sc_time(1, sc_core::SC_PS));
 			break;
 		case scv_tr_db::DELETE:
 			try {
@@ -76,7 +77,7 @@ struct tx_db {
 	}
 	// ----------------------------------------------------------------------------
 	static void streamCb(const scv_tr_stream& s, scv_tr_stream::callback_reason reason, void* data) {
-		if(reason == scv_tr_stream::CREATE) {
+		if(db && reason == scv_tr_stream::CREATE) {
 			try {
 				db->writeStream(s.get_id(), s.get_name(), s.get_stream_kind());
 			} catch(std::runtime_error& e) {
@@ -86,15 +87,15 @@ struct tx_db {
 	}
 	// ----------------------------------------------------------------------------
 	static inline void recordAttribute(uint64_t id, event_type event, const string& name, data_type type, const string& value) {
-		try {
-			db->writeAttribute(id, event, name, static_cast<cbor::data_type>(type), value);
-		} catch(std::runtime_error& e) {
-			_scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create attribute entry");
-		}
+	    if(db) try {
+	        db->writeAttribute(id, event, name, static_cast<cbor::data_type>(type), value);
+	    } catch(std::runtime_error& e) {
+	        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create attribute entry");
+	    }
 	}
 	// ----------------------------------------------------------------------------
 	static inline void recordAttribute(uint64_t id, event_type event, const string& name, data_type type, char const * value) {
-		try {
+	    if(db) try {
 			db->writeAttribute(id, event, name, static_cast<cbor::data_type>(type), value);
 		} catch(std::runtime_error& e) {
 			_scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create attribute entry");
@@ -103,15 +104,15 @@ struct tx_db {
 	// ----------------------------------------------------------------------------
 	template<typename T>
 	static inline void recordAttribute(uint64_t id, event_type event, const string& name, data_type type, T value) {
-		try {
+	    if(db) try {
 			db->writeAttribute(id, event, name, static_cast<cbor::data_type>(type), value);
 		} catch(std::runtime_error& e) {
 			_scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create attribute entry");
 		}
 	}
 	// ----------------------------------------------------------------------------
-static inline std::string get_name(const char* prefix, const scv_extensions_if* my_exts_p) {
-    string name{prefix};
+	static inline std::string get_name(const char* prefix, const scv_extensions_if* my_exts_p) {
+	    string name{prefix};
 		if(!prefix || strlen(prefix) == 0) {
 			name = my_exts_p->get_name();
 		} else {
@@ -185,7 +186,7 @@ static inline std::string get_name(const char* prefix, const scv_extensions_if* 
 	}
 	// ----------------------------------------------------------------------------
 	static void generatorCb(const scv_tr_generator_base& g, scv_tr_generator_base::callback_reason reason, void* data) {
-		if(reason == scv_tr_generator_base::CREATE && db) {
+		if(db && reason == scv_tr_generator_base::CREATE) {
 			try {
 				db->writeGenerator(g.get_id(), g.get_name(), g.get_scv_tr_stream().get_id());
 			} catch(std::runtime_error& e) {

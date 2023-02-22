@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.12)
-add_executable (transaction_recording
-	scv_tr_recording_example.cpp
-)
+add_executable (transaction_recording scv_tr_recording_example.cpp )
 target_link_libraries (transaction_recording LINK_PUBLIC scc)
 
+add_executable (transaction_recording_c scv_tr_recording_example.cpp )
+target_compile_definitions(transaction_recording_c PUBLIC COMPRESSED)
+target_link_libraries (transaction_recording_c LINK_PUBLIC scc)
+
 add_test(NAME tx_rec_test COMMAND transaction_recording)
+add_test(NAME tx_rec_compressed_test COMMAND transaction_recording)
