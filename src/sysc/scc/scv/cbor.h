@@ -463,10 +463,10 @@ enum class data_type {
     LOGIC_VECTOR,                 // sc_logic, sc_lv
     FIXED_POINT_INTEGER,          // sc_fixed
     UNSIGNED_FIXED_POINT_INTEGER, // sc_ufixed
-    RECORD,                       // struct/class
     POINTER,                      // T*
-    ARRAY,                        // T[N]
-    STRING                        // string, std::string
+    STRING,                       // string, std::string
+	TIME,                         // sc_time
+	NONE
 };
 
 template<bool COMPRESSED=false>
