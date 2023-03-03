@@ -58,7 +58,35 @@ using namespace sc_core;
 using namespace scc;
 
 namespace {
-thread_local std::unordered_map<uint64_t, sc_core::sc_verbosity> lut;
+struct char_equal_to : public std::equal_to<char const*>  {
+    bool operator()(char const* __x, char const* __y) const
+    { return strcmp( __x, __y ) == 0; }
+};
+
+struct char_hash{
+    //BKDR hash algorithm
+	uint64_t operator()(char const* str) const {
+    	constexpr unsigned int seed = 131; // 31  131 1313 13131131313 etc//
+    	uint64_t hash = 0;
+    	while(*str) {
+    		hash = (hash * seed) + (*str);
+    		str++;
+    	}
+    	return hash;
+    }
+};
+thread_local struct {
+	std::unordered_map<char const*, sc_core::sc_verbosity, char_hash, char_equal_to> table;
+	std::vector<std::string> cache;
+	void insert(char const* key, sc_core::sc_verbosity verb) {
+		cache.push_back(key);
+		table.insert({cache.back().c_str(), verb});
+	}
+	void clear() {
+	    table.clear();
+	    cache.clear();
+	}
+} lut;
 #ifdef MTI_SYSTEMC
 thread_local cci::cci_originator originator;
 #else
@@ -291,17 +319,6 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
 		this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 10));
 	}
 }
-
-// BKDR hash algorithm
-auto char_hash(char const* str) -> uint64_t {
-	constexpr unsigned int seed = 131; // 31  131 1313 13131131313 etc//
-	uint64_t hash = 0;
-	while(*str) {
-		hash = (hash * seed) + (*str);
-		str++;
-	}
-	return hash;
-}
 } // namespace
 
 scc::stream_redirection::stream_redirection(ostream& os, log level)
@@ -527,9 +544,8 @@ auto scc::LogConfig::installHandler(bool v) -> scc::LogConfig& {
 
 auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
 	if(inst_based_logging()){
-		auto k = char_hash(str);
-		auto it = lut.find(k);
-		if(it != lut.end())
+		auto it = lut.table.find(str);
+		if(it != lut.table.end())
 			return it->second;
 		if(strchr(str, '.') == nullptr || sc_core::sc_get_current_object()) {
 			string current_name = std::string(str);
@@ -539,18 +555,18 @@ auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
 				auto h = broker.get_param_handle(param_name);
 				if (h.is_valid()) {
 					sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_cci_value().get_int(), verbosity.size() - 1));
-					lut[k] = ret;
+					lut.insert(str, ret);
 					return ret;
 				} else {
 					auto val = broker.get_preset_cci_value(param_name);
 					if (val.is_int()) {
 						sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size() - 1));
-						lut[k] = ret;
+						lut.insert(str, ret);
 						return ret;
 					} else {
 						if (current_name.empty()) {
 							sc_core::sc_verbosity ret = static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
-							lut[k] = ret;
+							lut.insert(str, ret);
 							return ret;
 						}
 						auto pos = current_name.rfind(".");
