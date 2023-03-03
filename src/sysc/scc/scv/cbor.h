@@ -200,10 +200,9 @@ struct chunk_writer {
 struct info {
     encoder<memory_writer> enc;
 
-    inline void add_time_scale(uint64_t denominator, uint64_t numerator=1) {
-        enc.start_array(3);
-        enc.write(numerator);
-        enc.write(denominator);
+    inline void add_time_scale(int8_t timescale) {
+        enc.start_array(2);
+        enc.write(timescale);
         enc.write_tag(1);
         enc.write(time(nullptr));
     }
@@ -383,9 +382,8 @@ struct tx_block {
  *   cbor array(*) of tagged chunks, chunks can be
  *     chunk type 0 (info)
  *       cbor tag(6)
- *       array(3);
- *         unsigned - numerator of timescale)
- *         unsigned - denominator of timescale)
+ *       array(2);
+ *         int - timescale (exponent of minimum timestep in seconds)
  *         epoch time - creation time 
  *           cbor tag(1)
  *           unsigned - timestamp
@@ -496,8 +494,8 @@ struct chunked_writer  {
 		for(auto e: free_pool_blocks) free(e);
 	}
 
-    inline void writeInfo(uint64_t denominator, uint64_t numerator=1) {
-        inf.add_time_scale(denominator, numerator);
+    inline void writeInfo(int8_t timescale) {
+        inf.add_time_scale(timescale);
         inf.flush(cw);
     }
 
