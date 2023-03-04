@@ -59,8 +59,11 @@ struct tx_db {
 			if(!db->cw.enc.ofs.is_open()) {
 				delete db;
 				db=nullptr;
-			} else
-	            db->writeInfo(sc_core::sc_time(1, sc_core::SC_SEC)/sc_core::sc_time(1, sc_core::SC_PS));
+			} else {
+			    double secs = sc_core::sc_time::from_value(1ULL).to_seconds();
+			    auto exp = rint(log(secs)/log(10.0));
+	            db->writeInfo(static_cast<int8_t>(exp));
+			}
 			break;
 		case scv_tr_db::DELETE:
 			try {

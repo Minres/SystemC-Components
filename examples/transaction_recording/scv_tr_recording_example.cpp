@@ -18,6 +18,7 @@
 #include <scc/scv/scv_tr_db.h>
 #include <scv-tr.h>
 #include <scc/report.h>
+#include <scc/trace.h>
 #include <scc/value_registry.h>
 #include <scc/mt19937_rng.h>
 #include <chrono>
@@ -301,15 +302,19 @@ inline void design::data_phase() {
 int sc_main(int argc, char *argv[]) {
     auto start = std::chrono::system_clock::now();
     scc::init_logging(scc::LogConfig().logLevel(scc::log::DEBUG));
-    scv_tr::scv_tr_text_init();
-#ifdef COMPRESSED
+#if defined(CFTR)
     scv_tr_cbor_init(true);
-    scv_tr_db db("my_db_c");
-#else
+    scv_tr_db db("my_db");
+    sc_trace_file *tf = scc::create_fst_trace_file("my_db");
+#elif defined(FTR)
     scv_tr_cbor_init(false);
     scv_tr_db db("my_db");
+    sc_trace_file *tf = scc::create_fst_trace_file("my_db");
+#else
+    scv_tr::scv_tr_text_init();
+    scv_tr_db db("my_db.txlog");
+    sc_trace_file *tf = sc_core::sc_create_vcd_trace_file("my_db");
 #endif
-    sc_trace_file *tf = sc_create_vcd_trace_file("my_db");
     // create signals
     sc_clock clk("clk", 20.0, SC_NS, 0.5, 0.0, SC_NS, true);
     sc_signal<bool> rw;
@@ -351,7 +356,7 @@ int sc_main(int argc, char *argv[]) {
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
     // run the simulation
     sc_start(10.0, SC_US);
-    sc_close_vcd_trace_file(tf);
+    scc::close_fst_trace_file(tf);
     auto int_us = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now()-start);
     SCCINFO() << "simulation duration "<<int_us.count()<<"µs";
     return 0;
