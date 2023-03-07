@@ -212,9 +212,15 @@ fst_trace_file::fst_trace_file(const char* name, std::function<bool()>& enable)
     std::stringstream ss;
     ss << name << ".fst";
     m_fst = fstWriterCreate(ss.str().c_str(), 1);
-    fstWriterSetPackType(m_fst, FST_WR_PT_LZ4);
-    fstWriterSetTimescale(m_fst, 12); // pico seconds 1*10-12
-    fstWriterSetFileType(m_fst, FST_FT_VERILOG);
+    if(!m_fst) {
+    	fprintf(stderr, "Could not open '%s', exiting.\n", ss.str().c_str());
+    	exit(255);
+    }
+    fstWriterSetPackType(m_fst, FST_WR_PT_FASTLZ);
+    fstWriterSetRepackOnClose(m_fst, 1);
+    fstWriterSetParallelMode(m_fst, 0);
+    fstWriterSetTimescale(m_fst, -12); // femto seconds 1*10-12
+    //fstWriterSetFileType(m_fst, FST_FT_VERILOG);
 #if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
     sc_object::detach();
@@ -226,11 +232,11 @@ fst_trace_file::fst_trace_file(const char* name, std::function<bool()>& enable)
 }
 
 fst_trace_file::~fst_trace_file() {
+    for(auto t:all_traces) delete t.trc;
     if(m_fst) {
-        fstWriterFlushContext(m_fst);
+        //fstWriterFlushContext(m_fst);
         fstWriterClose(m_fst);
     }
-    for(auto t:all_traces) delete t.trc;
 }
 
 template <typename T, typename OT = T> bool changed(trace::fst_trace* trace) {
@@ -360,7 +366,55 @@ bool fst_trace_file::trace_entry::notify() {
 }
 
 void fst_trace_file::write_comment(const std::string& comment) {}
+namespace {
+struct scope_stack {
+    void add_trace(trace::fst_trace *trace){
+        auto hier = util::split(trace->name, '.');
+        add_trace_rec(std::begin(hier), std::end(hier), trace);
+    }
 
+    void print(void* fst, std::unordered_map<uintptr_t, fstHandle>& alias_map, const char *scope_name = nullptr){
+    	if(m_traces.size() || scope_name) {
+    		fstWriterSetScope(fst, FST_ST_VCD_SCOPE, scope_name?scope_name:"SystemC", nullptr);
+    		for (auto& e : m_traces) {
+    			auto hier_tokens = util::split(e.second->name, '.');
+    			auto sig_name = hier_tokens.back();
+    			auto alias_it = alias_map.find(e.second->get_hash());
+    			e.second->is_alias = alias_it != std::end(alias_map);
+    			e.second->fst_hndl =
+    					fstWriterCreateVar(fst, e.second->type == trace::REAL ? FST_VT_VCD_REAL : FST_VT_VCD_WIRE, FST_VD_IMPLICIT,
+    							e.second->bits, sig_name.c_str(), e.second->is_alias ? alias_it->second : 0);
+    			if(!e.second->is_alias)
+    				alias_map.insert({e.second->get_hash(), e.second->fst_hndl});
+    		}
+        	for (auto& e : m_scopes)
+        		e.second->print(fst, alias_map, e.first.c_str());
+        		fstWriterSetUpscope(fst);
+    	} else
+    		for (auto& e : m_scopes)
+    			e.second->print(fst, alias_map, e.first.c_str());
+    }
+
+    ~scope_stack(){
+        for (auto& s : m_scopes)
+            delete s.second;
+    }
+private:
+    void add_trace_rec(std::vector<std::string>::iterator beg, std::vector<std::string>::iterator const& end, trace::fst_trace *trace){
+        if(std::distance(beg,  end)==1){
+            m_traces.push_back(std::make_pair(*beg, trace));
+        } else {
+            auto sc = m_scopes.find(*beg);
+            if(sc == std::end(m_scopes))
+                sc = m_scopes.insert({*beg, new scope_stack}).first;
+            sc->second->add_trace_rec(++beg, end, trace);
+        }
+    }
+    std::vector<std::pair<std::string,trace::fst_trace*> > m_traces{0};
+    std::unordered_map<std::string, scope_stack*> m_scopes{0};
+};
+
+}
 void fst_trace_file::init() {
     std::vector<trace_entry*> traces;
     traces.reserve(all_traces.size());
@@ -369,37 +423,11 @@ void fst_trace_file::init() {
     std::sort(std::begin(traces), std::end(traces),
               [](trace_entry const* a, trace_entry const* b) -> bool { return a->trc->name < b->trc->name; });
 
+    scope_stack scope;
+    for(auto& e : all_traces)
+        scope.add_trace(e.trc);
     std::unordered_map<uintptr_t, fstHandle> alias_map;
-    std::deque<std::string> fst_scope;
-    for(auto e : traces) {
-        auto alias_it = alias_map.find(e->trc->get_hash());
-        e->trc->is_alias = alias_it != std::end(alias_map);
-        auto hier_tokens = util::split(e->trc->name, '.');
-        auto sig_name = hier_tokens.back();
-        hier_tokens.pop_back();
-        auto cur_it = fst_scope.begin();
-        auto tok_it = hier_tokens.begin();
-        while(cur_it != std::end(fst_scope) && tok_it != std::end(hier_tokens)) {
-            if(*cur_it != *tok_it)
-                break;
-            ++cur_it;
-            ++tok_it;
-        }
-        auto common_count = std::distance(fst_scope.begin(), cur_it);
-        for(auto i = fst_scope.size(); i > common_count; i--) {
-            fstWriterSetUpscope(m_fst);
-            fst_scope.pop_back();
-        }
-        for(; tok_it != std::end(hier_tokens); tok_it++) {
-            fstWriterSetScope(m_fst, FST_ST_VCD_SCOPE, tok_it->c_str(), nullptr);
-            fst_scope.push_back(*tok_it);
-        }
-        e->trc->fst_hndl =
-            fstWriterCreateVar(m_fst, e->trc->type == trace::REAL ? FST_VT_VCD_REAL : FST_VT_VCD_WIRE, FST_VD_IMPLICIT,
-                               e->trc->bits, sig_name.c_str(), e->trc->is_alias ? alias_it->second : 0);
-        if(!e->trc->is_alias)
-            alias_map.insert({e->trc->get_hash(), e->trc->fst_hndl});
-    }
+    scope.print(m_fst, alias_map);
     std::copy_if(std::begin(traces), std::end(traces), std::back_inserter(pull_traces),
                  [](trace_entry const* e) { return !(e->trc->is_alias || e->trc->is_triggered); });
     changed_traces.reserve(pull_traces.size());
