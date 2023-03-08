@@ -117,10 +117,12 @@ template <typename T, typename OT = T> struct fst_trace_t : public fst_trace {
 };
 
 template <typename T, typename OT> inline void fst_trace_t<T, OT>::record(void* m_fst) {
-    if(sizeof(T) <= 4)
-        fstWriterEmitValueChange32(m_fst, fst_hndl, bits, old_val);
-    else
-        fstWriterEmitValueChange64(m_fst, fst_hndl, bits, old_val);
+    static std::vector<char> rawdata(65);
+    char *s = &rawdata[0];
+    for (size_t i = 0; i < 8*sizeof(T); ++i)
+            *s++ = '0' + ((old_val >> (8*sizeof(T) - i - 1)) & 1);
+    *s=0;
+    fstWriterEmitValueChange(m_fst, fst_hndl, &rawdata[0]);
 }
 template <> void fst_trace_t<bool, bool>::record(void* m_fst) {
     fstWriterEmitValueChange(m_fst, fst_hndl, old_val ? "1" : "0");
@@ -141,35 +143,43 @@ template <> void fst_trace_t<double, double>::record(void* m_fst) {
     fstWriterEmitValueChange(m_fst, fst_hndl, &old_val);
 }
 template <> void fst_trace_t<sc_dt::sc_int_base, sc_dt::sc_int_base>::record(void* m_fst) {
-    static std::vector<char> rawdata(get_buffer_size(old_val.length()));
+    static std::vector<char> rawdata(1024);
+    if(rawdata.size()< old_val.length()+1)
+        rawdata.resize(old_val.length()+1);
     char* rawdata_ptr = &rawdata[0];
-    for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex) {
+    for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex)
         *rawdata_ptr++ = '0' + old_val[bitindex].value();
-    }
+    *rawdata_ptr=0;
     fstWriterEmitValueChange(m_fst, fst_hndl, &rawdata[0]);
 }
 template <> void fst_trace_t<sc_dt::sc_uint_base, sc_dt::sc_uint_base>::record(void* m_fst) {
-    static std::vector<char> rawdata(get_buffer_size(old_val.length()));
+    static std::vector<char> rawdata(1024);
+    if(rawdata.size()< old_val.length()+1)
+        rawdata.resize(old_val.length()+1);
     char* rawdata_ptr = &rawdata[0];
-    for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex) {
+    for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex)
         *rawdata_ptr++ = '0' + old_val[bitindex].value();
-    }
+    *rawdata_ptr=0;
     fstWriterEmitValueChange(m_fst, fst_hndl, &rawdata[0]);
 }
 template <> void fst_trace_t<sc_dt::sc_signed, sc_dt::sc_signed>::record(void* m_fst) {
-    static std::vector<char> rawdata(get_buffer_size(old_val.length()));
+    static std::vector<char> rawdata(1024);
+    if(rawdata.size()< old_val.length()+1)
+        rawdata.resize(old_val.length()+1);
     char* rawdata_ptr = &rawdata[0];
-    for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex) {
+    for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex)
         *rawdata_ptr++ = '0' + old_val[bitindex].value();
-    }
+    *rawdata_ptr=0;
     fstWriterEmitValueChange(m_fst, fst_hndl, &rawdata[0]);
 }
 template <> void fst_trace_t<sc_dt::sc_unsigned, sc_dt::sc_unsigned>::record(void* m_fst) {
-    static std::vector<char> rawdata(get_buffer_size(old_val.length()));
+    static std::vector<char> rawdata(1024);
+    if(rawdata.size()< old_val.length()+1)
+        rawdata.resize(old_val.length()+1);
     char* rawdata_ptr = &rawdata[0];
-    for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex) {
+    for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex)
         *rawdata_ptr++ = '0' + old_val[bitindex].value();
-    }
+    *rawdata_ptr=0;
     fstWriterEmitValueChange(m_fst, fst_hndl, &rawdata[0]);
 }
 template <> void fst_trace_t<sc_dt::sc_fxval, sc_dt::sc_fxval>::record(void* m_fst) {
@@ -220,6 +230,13 @@ fst_trace_file::fst_trace_file(const char* name, std::function<bool()>& enable)
     fstWriterSetRepackOnClose(m_fst, 1);
     fstWriterSetParallelMode(m_fst, 0);
     fstWriterSetTimescale(m_fst, -12); // femto seconds 1*10-12
+    fstWriterSetTimezero(m_fst, 0);
+    char tbuf[200];
+    time_t long_time;
+    time(&long_time);
+    struct tm* p_tm = localtime(&long_time);
+    strftime(tbuf, 199, "%b %d, %Y\t%H:%M:%S", p_tm);
+    fstWriterSetDate(m_fst, tbuf);
     //fstWriterSetFileType(m_fst, FST_FT_VERILOG);
 #if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
@@ -373,7 +390,7 @@ struct scope_stack {
         add_trace_rec(std::begin(hier), std::end(hier), trace);
     }
 
-    void print(void* fst, std::unordered_map<uintptr_t, fstHandle>& alias_map, const char *scope_name = nullptr){
+    void writeScopes(void* fst, std::unordered_map<uintptr_t, fstHandle>& alias_map, const char *scope_name = nullptr){
     	if(m_traces.size() || scope_name) {
     		fstWriterSetScope(fst, FST_ST_VCD_SCOPE, scope_name?scope_name:"SystemC", nullptr);
     		for (auto& e : m_traces) {
@@ -388,11 +405,11 @@ struct scope_stack {
     				alias_map.insert({e.second->get_hash(), e.second->fst_hndl});
     		}
         	for (auto& e : m_scopes)
-        		e.second->print(fst, alias_map, e.first.c_str());
+        		e.second->writeScopes(fst, alias_map, e.first.c_str());
         		fstWriterSetUpscope(fst);
     	} else
     		for (auto& e : m_scopes)
-    			e.second->print(fst, alias_map, e.first.c_str());
+    			e.second->writeScopes(fst, alias_map, e.first.c_str());
     }
 
     ~scope_stack(){
@@ -418,16 +435,13 @@ private:
 void fst_trace_file::init() {
     std::vector<trace_entry*> traces;
     traces.reserve(all_traces.size());
-    for(auto& e : all_traces)
-        traces.push_back(&e);
-    std::sort(std::begin(traces), std::end(traces),
-              [](trace_entry const* a, trace_entry const* b) -> bool { return a->trc->name < b->trc->name; });
-
     scope_stack scope;
-    for(auto& e : all_traces)
+    for(auto& e : all_traces) {
         scope.add_trace(e.trc);
+        traces.push_back(&e);
+    }
     std::unordered_map<uintptr_t, fstHandle> alias_map;
-    scope.print(m_fst, alias_map);
+    scope.writeScopes(m_fst, alias_map);
     std::copy_if(std::begin(traces), std::end(traces), std::back_inserter(pull_traces),
                  [](trace_entry const* e) { return !(e->trc->is_alias || e->trc->is_triggered); });
     changed_traces.reserve(pull_traces.size());
