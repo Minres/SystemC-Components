@@ -8,7 +8,7 @@ if(ZLIB_FOUND)
 	target_include_directories(fstapi PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${ZLIB_INCLUDE_DIRS})
 	target_link_libraries(fstapi PRIVATE ${ZLIB_LIBRARIES})
 	# hack to avoid creating dummy config.h
-	target_compile_definitions(fstapi PRIVATE -DFST_CONFIG_INCLUDE="fstapi.h")
+	target_compile_definitions(fstapi PRIVATE FST_CONFIG_INCLUDE="fst_config.h" FST_DYNAMIC_ALIAS2_DISABLE)
 	
 	if(MSVC)
 	    # define __MINGW32__ to minimize changes to upstream

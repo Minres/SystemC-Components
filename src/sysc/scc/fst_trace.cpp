@@ -406,7 +406,7 @@ struct scope_stack {
     		}
         	for (auto& e : m_scopes)
         		e.second->writeScopes(fst, alias_map, e.first.c_str());
-        		fstWriterSetUpscope(fst);
+    		fstWriterSetUpscope(fst);
     	} else
     		for (auto& e : m_scopes)
     			e.second->writeScopes(fst, alias_map, e.first.c_str());
