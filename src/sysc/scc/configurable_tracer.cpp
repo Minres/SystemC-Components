@@ -23,20 +23,25 @@ using namespace scc;
 
 #define EN_TRACING_STR "enableTracing"
 
+configurable_tracer::configurable_tracer(std::string const&& name, bool enable_tx, bool enable_vcd, bool default_enable, sc_core::sc_object* top, sc_core::sc_module_name const& nm)
+: tracer(std::move(name), static_cast<file_type>(tx_trace_type.get_value()), static_cast<wave_type>(sig_trace_type.get_value()), top, nm)
+, cci_broker(cci::cci_get_broker())
+{
+    default_trace_enable = default_enable;
+}
+
 configurable_tracer::configurable_tracer(std::string const&& name, file_type type, bool enable_vcd, bool default_enable,
-        sc_core::sc_object* top)
-: tracer(std::move(name), type, enable_vcd, top)
-, my_originator(sc_core::sc_get_current_object()? cci::cci_get_broker().get_originator():cci::cci_originator(this->name()))
-, cci_broker(sc_core::sc_get_current_object()? cci::cci_get_broker(): cci::cci_get_global_broker(my_originator))
+        sc_core::sc_object* top, sc_core::sc_module_name const& nm)
+: tracer(std::move(name), type, enable_vcd?SC_VCD:NOSIGTRC, top, nm)
+, cci_broker(cci::cci_get_broker())
 {
     default_trace_enable = default_enable;
 }
 
 configurable_tracer::configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf,
-        bool default_enable, sc_core::sc_object* top)
-: tracer(std::move(name), type, tf, top)
-, my_originator(sc_core::sc_get_current_object()? cci::cci_get_broker().get_originator():cci::cci_originator(this->name()))
-, cci_broker(sc_core::sc_get_current_object()? cci::cci_get_broker(): cci::cci_get_global_broker(my_originator))
+        bool default_enable, sc_core::sc_object* top, sc_core::sc_module_name const& nm)
+: tracer(std::move(name), type, tf, top, nm)
+, cci_broker(cci::cci_get_broker())
 {
     default_trace_enable = default_enable;
 }
@@ -105,13 +110,15 @@ void configurable_tracer::augment_object_hierarchical(sc_core::sc_object* obj) {
         if(attr == nullptr ||
                 dynamic_cast<const sc_core::sc_attribute<bool>*>(attr) == nullptr) { // check if we have no sc_attribute
             std::string hier_name{obj->name()};
-            hier_name += "." EN_TRACING_STR;
-            auto h = cci_broker.get_param_handle(hier_name);
-            if(!h.is_valid()) // we have no cci_param so create one
-                params.push_back(new cci::cci_param<bool>(hier_name, default_trace_enable, "", cci::CCI_ABSOLUTE_NAME,
-                        my_originator));
-            else
-                h.set_cci_value(cci::cci_value{default_trace_enable});
+            if(hier_name.substr(0, 11) != "scc_tracer") {
+				hier_name += "." EN_TRACING_STR;
+				auto h = cci_broker.get_param_handle(hier_name);
+				if(!h.is_valid()) // we have no cci_param so create one
+					params.push_back(new cci::cci_param<bool>(hier_name, default_trace_enable, "", cci::CCI_ABSOLUTE_NAME,
+							cci_broker.get_originator()));
+				else
+					h.set_cci_value(cci::cci_value{default_trace_enable});
+            }
         } else if(auto battr = dynamic_cast<sc_core::sc_attribute<bool>*>(attr)) {
             battr->value = default_trace_enable;
         }

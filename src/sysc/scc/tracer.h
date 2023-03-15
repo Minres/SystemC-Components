@@ -55,7 +55,9 @@ public:
      *
      * CUSTOM means the caller needs to initialize the database driver (scv_tr_text_init() or alike)
      */
-    enum file_type { NONE, TEXT, COMPRESSED, SQLITE, FTR, CFTR, LWFTR, LWCFTR, CUSTOM };
+    enum file_type { NOTXTRC, NONE=NOTXTRC, TEXT, COMPRESSED, SQLITE, FTR, CFTR, LWFTR, LWCFTR, CUSTOM };
+
+    enum wave_type { NOSIGTRC, SC_VCD, PULL_VCD, PUSH_VCD, FST};
     /**
      * @fn  tracer(const std::string&&, file_type, bool=true)
      * @brief the constructor
@@ -64,7 +66,28 @@ public:
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal and POD) tracing
      */
-    tracer(std::string const&& name, file_type type, bool enable = true, sc_core::sc_object* top = nullptr);
+    tracer(std::string const&& name, file_type tx_type, wave_type sig_type, sc_core::sc_object* top = nullptr)
+    : tracer(std::move(name), tx_type, sig_type, top, tracer_base::get_name().c_str()) {}
+    /**
+     * @fn  tracer(const std::string&&, file_type, bool=true)
+     * @brief the constructor
+     *
+     * @param name base name of the trace file(s)
+     * @param type type of trace file for transactions
+     * @param enable enable VCD (signal and POD) tracing
+     */
+    tracer(std::string const& name, file_type tx_type, wave_type sig_type, sc_core::sc_object* top = nullptr)
+    : tracer(std::string(name), tx_type, sig_type, top) {}
+    /**
+     * @fn  tracer(const std::string&&, file_type, bool=true)
+     * @brief the constructor
+     *
+     * @param name base name of the trace file(s)
+     * @param type type of trace file for transactions
+     * @param enable enable VCD (signal and POD) tracing
+     */
+    tracer(std::string const&& name, file_type type, bool enable = true, sc_core::sc_object* top = nullptr)
+    : tracer(name, type, enable?SC_VCD:NOSIGTRC, top) {}
     /**
      * @fn  tracer(const std::string&, file_type, bool=true)
      * @brief the constructor
@@ -74,7 +97,7 @@ public:
      * @param enable enable VCD (signal and POD) tracing
      */
     tracer(std::string const& name, file_type type, bool enable = true, sc_core::sc_object* top = nullptr)
-    : tracer(std::string(name), type, enable, top) {}
+    : tracer(name, type, enable?SC_VCD:NOSIGTRC, top) {}
     /**
      * @fn  tracer(const std::string&&, file_type, bool=true)
      * @brief the constructor
@@ -83,7 +106,8 @@ public:
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal and POD) tracing
      */
-    tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, sc_core::sc_object* top = nullptr);
+    tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, sc_core::sc_object* top = nullptr)
+    : tracer(std::move(name), type, tf, top, tracer_base::get_name().c_str()) {}
     /**
      * @fn  tracer(const std::string&, file_type, bool=true)
      * @brief the constructor
@@ -101,6 +125,8 @@ public:
     virtual ~tracer() override;
 
 protected:
+    tracer(std::string const&& name, file_type tx_type, wave_type sig_type, sc_core::sc_object* top, sc_core::sc_module_name const& nm);
+    tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, sc_core::sc_object* top, sc_core::sc_module_name const& nm);
     void end_of_elaboration() override;
 #ifdef HAS_SCV
     scv_tr_db* txdb;

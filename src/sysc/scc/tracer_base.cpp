@@ -247,6 +247,10 @@ void tracer_base::try_trace(sc_trace_file* trace_file, const sc_object* object, 
 #endif
 }
 
+std::string tracer_base::get_name() {
+	return sc_core::sc_gen_unique_name("scc_tracer", true);
+}
+
 void tracer_base::descend(const sc_object* obj, bool trace_all) {
     if(obj == this)
         return;
