@@ -60,6 +60,7 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
         else()
             conan_install()
         endif()
+        set(CONAN_CMAKE_SILENT_OUTPUT ON)
         find_package(spdlog REQUIRED)
         find_package(lz4 REQUIRED)
         find_package(fmt REQUIRED)
@@ -70,6 +71,7 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
     option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" OFF)
     option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ON)
+    option(INSTALL_DEPENDENCIES "Should dependencies be installed when installing SCC" OFF)
 else()
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" ON)
     option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
@@ -182,8 +184,8 @@ set_target_properties(scc PROPERTIES
 
 install(TARGETS scc
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${SCC_LIB_INST_DIR}${SCC_LIBRARY_DIR_MODIFIER}
-        ARCHIVE DESTINATION ${SCC_LIB_INST_DIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
 
@@ -200,3 +202,41 @@ if(NOT SCC_LIB_ONLY)
         add_subdirectory(examples)
     endif()
 endif()
+###############################################################################
+# install dependend libs
+###############################################################################
+if(CMAKE_PROJECT_NAME STREQUAL "scc" AND INSTALL_DEPENDENCIES)
+    install(CODE "set(CMAKE_INSTALL_LIBDIR \"${CMAKE_INSTALL_LIBDIR}\")")
+    install(CODE [[    
+      file(GET_RUNTIME_DEPENDENCIES
+        LIBRARIES $<TARGET_FILE:scc-sysc>
+        RESOLVED_DEPENDENCIES_VAR _r_deps
+        UNRESOLVED_DEPENDENCIES_VAR _u_deps
+        CONFLICTING_DEPENDENCIES_PREFIX _c_deps
+      )
+      foreach(_file ${_c_deps_FILENAMES})
+            set(FLIST ${_c_deps_${_file}})
+            list(LENGTH FLIST LIST_LEN)
+            list(GET FLIST -1 FNAME)
+            message(STATUS "Conflicting files for ${_file} are ${_c_deps_${_file}}, using ${FNAME}")
+            list(APPEND _r_deps ${FNAME})
+      endforeach()
+      foreach(_file ${_r_deps})
+        if(${_file} MATCHES "libz" OR NOT (${_file} MATCHES "^/lib")) # don't copy system libraries except libz
+            file(INSTALL
+              DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}
+              TYPE SHARED_LIBRARY
+              FOLLOW_SYMLINK_CHAIN
+              PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+              FILES "${_file}"
+            )
+        endif()
+      endforeach()
+      list(LENGTH _u_deps _u_length)
+      if("${_u_length}" GREATER 0)
+        message(WARNING "Unresolved dependencies detected: '${_u_deps}'!")
+      endif()
+    ]])
+
+endif()
+
