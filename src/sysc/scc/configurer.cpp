@@ -166,8 +166,8 @@ struct json_config_dumper {
 	}
 
 	void dump_config(sc_core::sc_object* obj, writer_type& writer) {
-		auto start = std::string(obj->basename()).substr(0, 3);
-		if(start == "$$$") return;
+		auto basename = std::string(obj->basename());
+		if(basename.substr(0, 3) == "$$$") return;
 		auto obj_started = false;
 		auto log_lvl_set = false;
 		auto it = lut.find(obj->name());
@@ -199,7 +199,8 @@ struct json_config_dumper {
 			obj_started = start_object(writer, obj->basename(), obj_started);
 			auto val = broker.get_preset_cci_value(fmt::format("{}.{}", obj->name(), SCC_LOG_LEVEL_PARAM_NAME));
 			auto global_verb = static_cast<int>(get_logging_level());
-			writeValue(writer, "log_level", val.is_int() ? val.get_int() : global_verb);
+			if(basename.substr(0, 11) != "scc_tracer")
+				writeValue(writer, "log_level", val.is_int() ? val.get_int() : global_verb);
 		}
 		for(auto* o : get_sc_objects(obj)) {
 			obj_started = start_object(writer, obj->basename(), obj_started);
@@ -330,8 +331,8 @@ struct yaml_config_dumper {
 	}
 
 	void dump_config(sc_core::sc_object* obj, YAML::Node& base_node) {
-		auto start = std::string(obj->basename()).substr(0, 3);
-		if(start == "$$$") return;
+		auto basename = std::string(obj->basename());
+		if(basename.substr(0, 3) == "$$$") return;
 		auto obj_started = false;
 		auto log_lvl_set = false;
 		auto it = lut.find(obj->name());
@@ -368,7 +369,8 @@ struct yaml_config_dumper {
 		if(!log_lvl_set && mod) {
 			auto val = broker.get_preset_cci_value(fmt::format("{}.{}", obj->name(), SCC_LOG_LEVEL_PARAM_NAME));
 			auto global_verb = static_cast<int>(get_logging_level());
-			this_node["log_level"] = val.is_int() ? val.get_int() : global_verb;
+			if(basename.substr(0, 11) != "scc_tracer")
+				this_node["log_level"] = val.is_int() ? val.get_int() : global_verb;
 		}
 		for(auto* o : get_sc_objects(obj)) {
 			dump_config(o, this_node);

@@ -133,6 +133,8 @@ public:
     void set_trace_file(sc_core::sc_trace_file* trf) { this->trf = trf; }
 
 protected:
+	static std::string get_name();
+
     //! the default for tracing if no attribute is configured
     bool default_trace_enable{true};
 
