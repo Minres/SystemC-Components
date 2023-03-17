@@ -125,12 +125,8 @@ int sc_main (int argc , char *argv[]){
     // create modules/channels and trace
     ///////////////////////////////////////////////////////////////////////////
     testbench tb("tb");
-    trace.add_control();
-    {
-        std::ofstream of{"ahb_test.default.json"};
-        if (of.is_open()) cfg.dump_configuration(of);
-    }
     cfg.configure();
+    cfg.dump_configuration("ahb_test.default.json");
     ///////////////////////////////////////////////////////////////////////////
     // run the simulation
     ///////////////////////////////////////////////////////////////////////////
