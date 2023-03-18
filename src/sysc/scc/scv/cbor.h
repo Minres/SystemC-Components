@@ -287,12 +287,14 @@ struct relations {
     dictionary& dict;
     relations(dictionary& dict):dict(dict){}
 
-    inline void add_relation(std::string const& name, uint64_t from, uint64_t to) {
+    inline void add_relation(std::string const& name, unsigned from_stream, uint64_t from, unsigned to_stream, uint64_t to) {
         if(enc.is_empty()) enc.start_array();
-        enc.start_array(3);
+        enc.start_array(5);
         enc.write(dict.get_key(name));
         enc.write(from);
         enc.write(to);
+        enc.write(from_stream);
+        enc.write(to_stream);
     }
 
     template<bool COMPRESSED>
@@ -425,17 +427,17 @@ struct tx_block {
  *    array(*) of either
  *      cbor tag(16)
  *      array(3)
- *        unsinged - id
- *        unsinged - name (id of string)
- *        unsinged - kind (id of string)
+ *        unsigned - id
+ *        unsigned - name (id of string)
+ *        unsigned - kind (id of string)
  *      cbor tag(17)
  *      array(3)
- *        unsinged - id
- *        unsinged - name (id of string)
- *        unsinged - kind (id of string)
+ *        unsigned - id
+ *        unsigned - name (id of string)
+ *        unsigned - kind (id of string)
  *  - chunk of type 3
  *    array(*) - list of transactions
- *      array() - transaction with pro12perties:
+ *      array() - transaction with properties:
  *        cbor tag(6) - time stamps
  *        array(4)
  *          unsigned - id
@@ -457,6 +459,15 @@ struct tx_block {
  *         unsigned - name (id of string)
  *         unsigned - data_type
  *         [signed, unsigned, double] - value (depending of type)
+ *  - chunk of type 4
+ *    array(*) - list of relations
+ *      array(5) - relation:
+ *        unsigned - name (id of string)
+ *        uint64_t - source tx id
+ *        uint64_t - sink tx id
+ *        unsigned - source stream id
+ *        unsigned - sink stream id
+ *
  */
 enum class event_type { BEGIN, RECORD, END };
 enum class data_type {
@@ -563,8 +574,8 @@ struct chunked_writer  {
         txs[id]->add_attribute(static_cast<uint64_t>(event), dict.get_key(name), static_cast<uint64_t>(type), value);
     }
 
-    inline void writeRelation(const std::string& name, uint64_t sink_id, uint64_t src_id) {
-        rel.add_relation(name, src_id, sink_id);
+    inline void writeRelation(const std::string& name, uint64_t sink_stream_id, uint64_t sink_tx_id, uint64_t src_stream_id, uint64_t src_tx_id) {
+        rel.add_relation(name, src_stream_id, src_tx_id, sink_stream_id, sink_tx_id);
         if(rel.size()>MAX_REL_SIZE){
             rel.flush(cw);
         }

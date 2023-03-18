@@ -241,13 +241,13 @@ struct tx_db {
 	// ----------------------------------------------------------------------------
 	static void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data,
 			scv_tr_relation_handle_t relation_handle) {
-		if(!db ||
-				!tr_1.get_scv_tr_stream().get_scv_tr_db() ||
-				!tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording())
+	    auto& stream1 = tr_1.get_scv_tr_stream();
+	    auto txdb = stream1.get_scv_tr_db();
+		if(!db || !txdb || !txdb->get_recording())
 			return;
 		try {
-			db->writeRelation(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), tr_1.get_id(),
-					tr_2.get_id());
+	        auto& stream2 = tr_2.get_scv_tr_stream();
+			db->writeRelation(txdb->get_relation_name(relation_handle), stream1.get_id(), tr_1.get_id(), stream2.get_id(), tr_2.get_id());
 		} catch(std::runtime_error& e) {
 			_scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create transaction relation");
 		}
