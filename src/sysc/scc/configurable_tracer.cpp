@@ -23,25 +23,22 @@ using namespace scc;
 
 #define EN_TRACING_STR "enableTracing"
 
-configurable_tracer::configurable_tracer(std::string const&& name, bool enable_tx, bool enable_vcd, bool default_enable, sc_core::sc_object* top, sc_core::sc_module_name const& nm)
-: tracer(std::move(name), static_cast<file_type>(tx_trace_type.get_value()), static_cast<wave_type>(sig_trace_type.get_value()), top, nm)
-, cci_broker(cci::cci_get_broker())
+configurable_tracer::configurable_tracer(std::string const&& name, bool enable_tx, bool enable_vcd, bool default_enable, sc_core::sc_object* top)
+: tracer(std::move(name), enable_tx?ENABLE:NONE, enable_vcd?ENABLE:NONE, top)
 {
     default_trace_enable = default_enable;
 }
 
 configurable_tracer::configurable_tracer(std::string const&& name, file_type type, bool enable_vcd, bool default_enable,
-        sc_core::sc_object* top, sc_core::sc_module_name const& nm)
-: tracer(std::move(name), type, enable_vcd?SC_VCD:NOSIGTRC, top, nm)
-, cci_broker(cci::cci_get_broker())
+        sc_core::sc_object* top)
+: tracer(std::move(name), type, enable_vcd?ENABLE:NONE, top)
 {
     default_trace_enable = default_enable;
 }
 
 configurable_tracer::configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf,
-        bool default_enable, sc_core::sc_object* top, sc_core::sc_module_name const& nm)
-: tracer(std::move(name), type, tf, top, nm)
-, cci_broker(cci::cci_get_broker())
+        bool default_enable, sc_core::sc_object* top)
+: tracer(std::move(name), type, tf, top)
 {
     default_trace_enable = default_enable;
 }

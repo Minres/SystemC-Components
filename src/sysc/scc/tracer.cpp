@@ -46,12 +46,14 @@
 using namespace sc_core;
 using namespace scc;
 
-tracer::tracer(std::string const&& name, file_type tx_type, wave_type sig_type, sc_core::sc_object* top, sc_core::sc_module_name const& nm)
+tracer::tracer(std::string const&& name, file_type tx_type, file_type sig_type, sc_core::sc_object* top, sc_core::sc_module_name const& nm)
 : tracer_base(nm)
+, cci_broker(cci::cci_get_broker())
 , txdb(nullptr)
 , lwtr_db(nullptr)
-, owned{sig_type!=NOSIGTRC} {
-	if(sig_type!=NOSIGTRC) {
+, owned{sig_type!=NONE} {
+    if(sig_type==ENABLE) sig_type = static_cast<file_type>(sig_trace_type.get_value());
+	if(sig_type!=NONE) {
 		switch(sig_type) {
 		default:
 			trf = sc_create_vcd_trace_file(name.c_str());
@@ -67,17 +69,18 @@ tracer::tracer(std::string const&& name, file_type tx_type, wave_type sig_type, 
             break;
 		}
 	}
-	trf->set_time_unit(1, SC_PS);
-	init_scv_db(tx_type, std::move(name));
+	if(trf) trf->set_time_unit(1, SC_PS);
+	init_tx_db(tx_type==ENABLE?static_cast<file_type>(tx_trace_type.get_value()):tx_type, std::move(name));
 }
 
-tracer::tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, sc_core::sc_object* top, sc_core::sc_module_name const& nm)
+tracer::tracer(std::string const&& name, file_type tx_type, sc_core::sc_trace_file* tf, sc_core::sc_object* top, sc_core::sc_module_name const& nm)
 : tracer_base(nm)
+, cci_broker(cci::cci_get_broker())
 , txdb(nullptr)
 , lwtr_db(nullptr)
 , owned{false} {
 	trf = tf;
-	init_scv_db(type, std::move(name));
+	init_tx_db(tx_type==ENABLE?static_cast<file_type>(tx_trace_type.get_value()):tx_type, std::move(name));
 }
 
 tracer::~tracer() {
@@ -87,8 +90,8 @@ tracer::~tracer() {
 		scc_close_vcd_trace_file(trf);
 }
 
-void tracer::init_scv_db(file_type type, std::string const&& name) {
-	if(type != NOTXTRC) {
+void tracer::init_tx_db(file_type type, std::string const&& name) {
+	if(type != NONE) {
 		std::stringstream ss;
 		ss << name;
 		switch(type) {

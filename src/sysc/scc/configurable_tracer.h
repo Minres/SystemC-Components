@@ -18,7 +18,6 @@
 #define _SCC_CONFIGURABLE_TRACER_H_
 
 #include "tracer.h"
-#include <cci_configuration>
 /** \ingroup scc-sysc
  *  @{
  */
@@ -35,14 +34,6 @@ namespace scc {
  */
 class configurable_tracer : public tracer {
 public:
-	/**
-	 * cci parameter to determine the file type being used to trace transaction if not specified explicitly
-	 */
-	cci::cci_param<unsigned> tx_trace_type{"tx_trace_type", CFTR, "Type of TX trace file used for recording. See also scc::tracer::file_type"};
-	/**
-	 * cci parameter to determine the file type being used to trace signals if not specified explicitly
-	 */
-	cci::cci_param<unsigned> sig_trace_type{"sig_trace_type", FST, "Type of signal trace file used for recording. See also scc::tracer::wave_type"};
     /**
      * constructs a tracer object
      *
@@ -52,8 +43,7 @@ public:
      * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
     configurable_tracer(std::string const&& name, bool enable_tx = true, bool enable_vcd = true, bool default_enable = false,
-                        sc_core::sc_object* top = nullptr)
-    : configurable_tracer(std::move(name), enable_tx, enable_vcd, default_enable, top, tracer_base::get_name().c_str()) {}
+                        sc_core::sc_object* top = nullptr);
     /**
      * constructs a tracer object
      *
@@ -74,8 +64,7 @@ public:
      * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
     configurable_tracer(std::string const&& name, file_type type, bool enable_vcd = true, bool default_enable = false,
-                        sc_core::sc_object* top = nullptr)
-    : configurable_tracer(std::move(name), type, enable_vcd, default_enable, top, tracer_base::get_name().c_str()) {}
+                        sc_core::sc_object* top = nullptr);
    /**
      * constructs a tracer object
      *
@@ -96,8 +85,7 @@ public:
      * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
     configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf = nullptr,
-                        bool default_enable = false, sc_core::sc_object* top = nullptr)
-    : configurable_tracer(std::move(name), type, tf, default_enable, top, tracer_base::get_name().c_str()) {}
+                        bool default_enable = false, sc_core::sc_object* top = nullptr);
     /**
      * constructs a tracer object
      *
@@ -125,12 +113,6 @@ public:
     }
 
 protected:
-    configurable_tracer(std::string const&& name, bool enable_tx, bool enable_vcd, bool default_enable,
-                        sc_core::sc_object* top, sc_core::sc_module_name const&);
-    configurable_tracer(std::string const&& name, file_type type, bool enable_vcd, bool default_enable,
-                        sc_core::sc_object* top, sc_core::sc_module_name const&);
-    configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf,
-                        bool default_enable, sc_core::sc_object* top, sc_core::sc_module_name const&);
     //! depth-first walk thru the design hierarchy and trace signals resp. call trace() function
     void descend(const sc_core::sc_object*, bool trace_all = false) override;
     //! check for existence of 'enableTracing' attribute and return value of default otherwise
@@ -139,8 +121,6 @@ protected:
     void augment_object_hierarchical(sc_core::sc_object*);
 
     void end_of_elaboration() override;
-    //! the cci broker
-    cci::cci_broker_handle cci_broker;
     //! array of created cci parameter
     std::vector<cci::cci_param_untyped*> params;
     bool control_added{false};

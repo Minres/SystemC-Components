@@ -18,6 +18,7 @@
 #define _SCC_TRACER_H_
 
 #include "tracer_base.h"
+#include <cci_configuration>
 #include <string>
 #include <vector>
 
@@ -55,9 +56,20 @@ public:
      *
      * CUSTOM means the caller needs to initialize the database driver (scv_tr_text_init() or alike)
      */
-    enum file_type { NOTXTRC, NONE=NOTXTRC, TEXT, COMPRESSED, SQLITE, FTR, CFTR, LWFTR, LWCFTR, CUSTOM };
-
-    enum wave_type { NOSIGTRC, SC_VCD, PULL_VCD, PUSH_VCD, FST};
+    enum file_type { NONE, ENABLE, TEXT, COMPRESSED, SQLITE, FTR, CFTR, LWFTR, LWCFTR, CUSTOM,
+        SC_VCD = TEXT,
+        PULL_VCD = COMPRESSED,
+        PUSH_VCD = SQLITE,
+        FST
+    };
+    /**
+     * cci parameter to determine the file type being used to trace transaction if not specified explicitly
+     */
+    cci::cci_param<unsigned> tx_trace_type{"tx_trace_type", CFTR, "Type of TX trace file used for recording. See also scc::tracer::file_type"};
+    /**
+     * cci parameter to determine the file type being used to trace signals if not specified explicitly
+     */
+    cci::cci_param<unsigned> sig_trace_type{"sig_trace_type", FST, "Type of signal trace file used for recording. See also scc::tracer::wave_type"};
     /**
      * @fn  tracer(const std::string&&, file_type, bool=true)
      * @brief the constructor
@@ -66,7 +78,7 @@ public:
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal and POD) tracing
      */
-    tracer(std::string const&& name, file_type tx_type, wave_type sig_type, sc_core::sc_object* top = nullptr)
+    tracer(std::string const&& name, file_type tx_type, file_type sig_type, sc_core::sc_object* top = nullptr)
     : tracer(std::move(name), tx_type, sig_type, top, tracer_base::get_name().c_str()) {}
     /**
      * @fn  tracer(const std::string&&, file_type, bool=true)
@@ -76,7 +88,7 @@ public:
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal and POD) tracing
      */
-    tracer(std::string const& name, file_type tx_type, wave_type sig_type, sc_core::sc_object* top = nullptr)
+    tracer(std::string const& name, file_type tx_type=ENABLE, file_type sig_type=ENABLE, sc_core::sc_object* top = nullptr)
     : tracer(std::string(name), tx_type, sig_type, top) {}
     /**
      * @fn  tracer(const std::string&&, file_type, bool=true)
@@ -87,7 +99,7 @@ public:
      * @param enable enable VCD (signal and POD) tracing
      */
     tracer(std::string const&& name, file_type type, bool enable = true, sc_core::sc_object* top = nullptr)
-    : tracer(name, type, enable?SC_VCD:NOSIGTRC, top) {}
+    : tracer(name, type, enable?ENABLE:NONE, top) {}
     /**
      * @fn  tracer(const std::string&, file_type, bool=true)
      * @brief the constructor
@@ -97,7 +109,7 @@ public:
      * @param enable enable VCD (signal and POD) tracing
      */
     tracer(std::string const& name, file_type type, bool enable = true, sc_core::sc_object* top = nullptr)
-    : tracer(name, type, enable?SC_VCD:NOSIGTRC, top) {}
+    : tracer(name, type, enable?ENABLE:NONE, top) {}
     /**
      * @fn  tracer(const std::string&&, file_type, bool=true)
      * @brief the constructor
@@ -125,18 +137,19 @@ public:
     virtual ~tracer() override;
 
 protected:
-    tracer(std::string const&& name, file_type tx_type, wave_type sig_type, sc_core::sc_object* top, sc_core::sc_module_name const& nm);
+    tracer(std::string const&& name, file_type tx_type, file_type sig_type, sc_core::sc_object* top, sc_core::sc_module_name const& nm);
     tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, sc_core::sc_object* top, sc_core::sc_module_name const& nm);
     void end_of_elaboration() override;
 #ifdef HAS_SCV
     scv_tr_db* txdb;
 #else
-    scv_tr::scv_tr_db* txdb;
+    scv_tr::scv_tr_db* txdb{nullptr};
 #endif
-    lwtr::tx_db* lwtr_db;
-
+    lwtr::tx_db* lwtr_db{nullptr};
+    //! the cci broker
+    cci::cci_broker_handle cci_broker;
 private:
-    void init_scv_db(file_type type, std::string const&& name);
+    void init_tx_db(file_type type, std::string const&& name);
     bool owned{false};
     sc_core::sc_object* top{nullptr};
 };
