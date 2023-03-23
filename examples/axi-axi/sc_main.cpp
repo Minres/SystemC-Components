@@ -34,7 +34,7 @@ public:
 
 private:
     tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<>> top_isck{"top_isck"};
-    scc::memory<1_GB> mem{"mem"};
+    scc::memory<1_GB, 0> mem{"mem"};
 
     unsigned id{0};
     unsigned int StartAddr{0};

@@ -52,7 +52,7 @@ public:
 
     target(sc_core::sc_module_name nm);
 
-    tlm::scc::initiator_mixin<tlm::scc::scv::tlm_rec_initiator_socket<DATA_WIDTH>> isckt{"isckt"};
+    tlm::scc::initiator_mixin<tlm::scc::scv::tlm_rec_initiator_socket<0>> isckt{"isckt"};
     // Global signals
     sc_core::sc_in<bool> clk_i{"clk_i"};
     sc_core::sc_in<bool> resetn_i{"resetn_i"}; // active low reset
