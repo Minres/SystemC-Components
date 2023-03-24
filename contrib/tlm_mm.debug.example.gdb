@@ -12,7 +12,7 @@ break tlm::tlm_generic_payload::release
     bt
     cont
   end
-break /local/eyckj/workarea/ncore3/osci-lib/scc/src/sysc/tlm/scc/tlm_mm.h:89
+break src/sysc/tlm/scc/tlm_mm.h:89
   condition $bpnum trans==0x7fffc9bded80
-break /local/eyckj/workarea/ncore3/osci-lib/scc/src/sysc/tlm/scc/tlm_mm.h:85
+break src/sysc/tlm/scc/tlm_mm.h:85
   condition $bpnum ptr==0x7fffc9bded80
