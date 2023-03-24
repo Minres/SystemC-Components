@@ -205,38 +205,45 @@ endif()
 ###############################################################################
 # install dependend libs
 ###############################################################################
-if(CMAKE_PROJECT_NAME STREQUAL "scc" AND INSTALL_DEPENDENCIES)
-    install(CODE "set(CMAKE_INSTALL_LIBDIR \"${CMAKE_INSTALL_LIBDIR}\")")
-    install(CODE [[    
-      file(GET_RUNTIME_DEPENDENCIES
-        LIBRARIES $<TARGET_FILE:scc-sysc>
-        RESOLVED_DEPENDENCIES_VAR _r_deps
-        UNRESOLVED_DEPENDENCIES_VAR _u_deps
-        CONFLICTING_DEPENDENCIES_PREFIX _c_deps
-      )
-      foreach(_file ${_c_deps_FILENAMES})
-            set(FLIST ${_c_deps_${_file}})
-            list(LENGTH FLIST LIST_LEN)
-            list(GET FLIST -1 FNAME)
-            message(STATUS "Conflicting files for ${_file} are ${_c_deps_${_file}}, using ${FNAME}")
-            list(APPEND _r_deps ${FNAME})
-      endforeach()
-      foreach(_file ${_r_deps})
-        if(${_file} MATCHES "libz" OR NOT (${_file} MATCHES "^/lib")) # don't copy system libraries except libz
-            file(INSTALL
-              DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}
-              TYPE SHARED_LIBRARY
-              FOLLOW_SYMLINK_CHAIN
-              PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
-              FILES "${_file}"
-            )
-        endif()
-      endforeach()
-      list(LENGTH _u_deps _u_length)
-      if("${_u_length}" GREATER 0)
-        message(WARNING "Unresolved dependencies detected: '${_u_deps}'!")
-      endif()
-    ]])
-
+install(DIRECTORY contrib/pysysc contrib/d3-hwschematic
+		DESTINATION share
+		PATTERN ".gitignore" EXCLUDE 
+		PATTERN "PySysC_SCC.egg*" EXCLUDE
+		PATTERN "build" EXCLUDE
+		)
+if(CMAKE_PROJECT_NAME STREQUAL "scc")
+	if(INSTALL_DEPENDENCIES)
+	    install(CODE "set(CMAKE_INSTALL_LIBDIR \"${CMAKE_INSTALL_LIBDIR}\")")
+	    install(CODE [[    
+	      file(GET_RUNTIME_DEPENDENCIES
+	        LIBRARIES $<TARGET_FILE:scc-sysc>
+	        RESOLVED_DEPENDENCIES_VAR _r_deps
+	        UNRESOLVED_DEPENDENCIES_VAR _u_deps
+	        CONFLICTING_DEPENDENCIES_PREFIX _c_deps
+	      )
+	      foreach(_file ${_c_deps_FILENAMES})
+	            set(FLIST ${_c_deps_${_file}})
+	            list(LENGTH FLIST LIST_LEN)
+	            list(GET FLIST -1 FNAME)
+	            message(STATUS "Conflicting files for ${_file} are ${_c_deps_${_file}}, using ${FNAME}")
+	            list(APPEND _r_deps ${FNAME})
+	      endforeach()
+	      foreach(_file ${_r_deps})
+	        if(${_file} MATCHES "libz" OR NOT (${_file} MATCHES "^/lib")) # don't copy system libraries except libz
+	            file(INSTALL
+	              DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}
+	              TYPE SHARED_LIBRARY
+	              FOLLOW_SYMLINK_CHAIN
+	              PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+	              FILES "${_file}"
+	            )
+	        endif()
+	      endforeach()
+	      list(LENGTH _u_deps _u_length)
+	      if("${_u_length}" GREATER 0)
+	        message(WARNING "Unresolved dependencies detected: '${_u_deps}'!")
+	      endif()
+	    ]])
+	endif()
 endif()
 
