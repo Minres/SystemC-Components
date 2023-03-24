@@ -132,8 +132,7 @@ public:
      * modeling)
      * @return true if access is successful
      */
-    bool write(const uint8_t* data, size_t length, uint64_t offset = 0,
-               sc_core::sc_time& d = sc_core::SC_ZERO_TIME) override {
+    bool write(const uint8_t* data, size_t length, uint64_t offset, sc_core::sc_time& d) override {
         assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
         auto beg = reinterpret_cast<uint8_t*>(&temp) + offset;
@@ -154,8 +153,7 @@ public:
      * modeling)
      * @return true if access is successful
      */
-    bool read(uint8_t* data, size_t length, uint64_t offset = 0,
-              sc_core::sc_time& d = sc_core::SC_ZERO_TIME) const override {
+    bool read(uint8_t* data, size_t length, uint64_t offset, sc_core::sc_time& d) const override {
         assert("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
         if(rd_cb) {
