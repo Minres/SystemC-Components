@@ -88,9 +88,9 @@ thread_local struct {
 	}
 } lut;
 #ifdef MTI_SYSTEMC
-thread_local cci::cci_originator originator;
+static const cci::cci_originator originator;
 #else
-thread_local cci::cci_originator originator("reporting");
+static const cci::cci_originator originator("reporting");
 #endif
 
 bool& inst_based_logging() {
