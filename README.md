@@ -60,7 +60,7 @@ The full documentation can be found at the [Github pages](https://minres.github.
 Build instructions
 ==================
 
-The repo is cmake based and uses conan. Make sure that you have at least cmake 3.16 and conan installed.
+The repo is cmake based and uses conan. Make sure that you have at least cmake 3.16 and conan version 1.59.0 installed. There known issues with conan 2.x. Other combinations may work, but are not tested.
 
 The suggested build steps are:
 
