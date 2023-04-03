@@ -42,7 +42,7 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
 			endif()
 			# Boost on CentOS quirks end
         endif()
-        set(CONAN_PACKAGE_LIST fmt/8.0.1 spdlog/1.9.2 zlib/1.2.11 boost/1.75.0 yaml-cpp/0.7.0 lz4/1.9.3)
+        set(CONAN_PACKAGE_LIST jsoncpp/1.9.5 yaml-cpp/0.6.3 spdlog/1.9.2 fmt/8.0.1 zlib/1.2.12 boost/1.75.0)
 		if(BUILD_SCC_DOCUMENTATION)
         	list(APPEND CONAN_PACKAGE_LIST doxygen/1.9.2)
         endif()
