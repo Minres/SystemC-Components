@@ -17,10 +17,10 @@
 #ifndef _SYSC_ROUTER_H_
 #define _SYSC_ROUTER_H_
 
-#include "scc/utilities.h"
-#include "tlm/scc/initiator_mixin.h"
-#include "tlm/scc/target_mixin.h"
-#include "util/range_lut.h"
+#include <scc/utilities.h>
+#include <tlm/scc/initiator_mixin.h>
+#include <tlm/scc/target_mixin.h>
+#include <util/range_lut.h>
 #include <limits>
 #include <sysc/utils/sc_vector.h>
 #include <tlm.h>
@@ -37,7 +37,7 @@ namespace scc {
  *
  * @tparam BUSWIDTH the width of the bus
  */
-template <unsigned BUSWIDTH = 32> class router : sc_core::sc_module {
+template <unsigned BUSWIDTH = LT> class router : sc_core::sc_module {
 public:
     using intor_sckt = tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<BUSWIDTH>>;
     using target_sckt = tlm::scc::target_mixin<tlm::scc::scv::tlm_rec_target_socket<BUSWIDTH>>;

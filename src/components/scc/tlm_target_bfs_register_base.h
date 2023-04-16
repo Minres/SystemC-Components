@@ -64,6 +64,7 @@ public:
 
     virtual void write(datatype_t& valueToWrite) = 0;
     virtual datatype_t read() = 0;
+    virtual ~abstract_bitfield() = default;
 
     constexpr bool affected(size_t byteOffset, size_t byteLength) const noexcept {
         return (byteOffset * 8 < bitOffset + bitSize) && (bitOffset < (byteOffset + byteLength) * 8);

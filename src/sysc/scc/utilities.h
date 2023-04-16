@@ -192,6 +192,9 @@ inline constexpr uint64_t operator"" _MB(unsigned long long val) { return val * 
 inline constexpr uint64_t operator"" _GB(unsigned long long val) { return val * 1 << 30; }
 
 namespace scc {
+
+enum { LT=0 };
+
 inline char* legalize_name(char* const name) {
     char* ptr = name;
     while(*ptr) {
@@ -202,6 +205,7 @@ inline char* legalize_name(char* const name) {
     }
     return name;
 }
+
 inline std::string legalize_name(std::string const& name) {
     std::string ret;
     for(auto c : name) {

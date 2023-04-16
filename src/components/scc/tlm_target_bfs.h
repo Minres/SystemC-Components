@@ -25,15 +25,12 @@
 #ifndef __SCC_TLM_TARGET_BFS_H__
 #define __SCC_TLM_TARGET_BFS_H__
 
+#include "tlm_target.h"
+#include <tlm_utils/simple_target_socket.h>
+#include <util/ities.h>
 #include <memory>
 #include <utility>
 #include <vector>
-
-#include "systemc"
-#include "tlm_target.h"
-#include "tlm_utils/simple_target_socket.h"
-
-#include "util/ities.h"
 
 #define ID_SCC_TLM_TARGET_BFS "scc: tlm target bitfield support"
 
@@ -102,7 +99,7 @@ public:
         socket_accessor(const socket_accessor&) = delete;
         socket_accessor& operator=(const socket_accessor&) = delete;
 
-        tlm::tlm_target_socket<>* get() noexcept { return &parent.socket; }
+        tlm::tlm_target_socket<LT>* get() noexcept { return &parent.socket; }
 
     private:
         scc::tlm_target<>& parent;

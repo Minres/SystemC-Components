@@ -119,14 +119,14 @@ public:
     sc_core::sc_clock clk{"clk", clk_period, 0.5, sc_core::SC_ZERO_TIME, true};
     sc_core::sc_signal<bool> rst{"rst"};
 
-    std::unique_ptr<tlm_utils::simple_initiator_socket_tagged<testbench>> intor_;
+    std::unique_ptr<tlm_utils::simple_initiator_socket_tagged<testbench,scc::LT>> intor_;
     std::map<std::string, std::unique_ptr<scc::tlm_target_bfs_base<testbench>>> duts_{};
 
     testbench(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm) {
         SC_THREAD(run);
         intor_ =
-            util::make_unique<tlm_utils::simple_initiator_socket_tagged<testbench>>(std::string{"initiator"}.c_str());
+            util::make_unique<tlm_utils::simple_initiator_socket_tagged<testbench, scc::LT>>(std::string{"initiator"}.c_str());
     }
 
     template <class PERIPHERAL_T> void addPeripheral(std::string name, scc::tlm_target_bfs_params&& per_params) {

@@ -22,10 +22,10 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif
 
-#include "scc/mt19937_rng.h"
-#include "scc/report.h"
-#include "scc/utilities.h"
-#include "tlm/scc/target_mixin.h"
+#include <scc/mt19937_rng.h>
+#include <scc/report.h>
+#include <scc/utilities.h>
+#include <tlm/scc/target_mixin.h>
 #include <numeric>
 #include <tlm.h>
 #include <util/sparse_array.h>
@@ -44,7 +44,7 @@ namespace scc {
  * @tparam SIZE size of the memery
  * @tparam BUSWIDTH bus width of the socket
  */
-template <unsigned long long SIZE, unsigned BUSWIDTH = 32> class memory : public sc_core::sc_module {
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT> class memory : public sc_core::sc_module {
 public:
     //! the target socket to connect to TLM
     tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};

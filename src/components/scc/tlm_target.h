@@ -18,12 +18,12 @@
 #define _SYSC_TLM_TARGET_H_
 
 #include "resource_access_if.h"
-#include "scc/utilities.h"
-#include "tlm/scc/target_mixin.h"
-#include "util/range_lut.h"
+#include <scc/utilities.h>
+#include <tlm/scc/target_mixin.h>
+#include <tlm/scc/scv/tlm_rec_target_socket.h>
+#include <util/range_lut.h>
 #include <array>
 #include <numeric>
-#include <tlm/scc/scv/tlm_rec_target_socket.h>
 
 namespace scc {
 /**
@@ -41,7 +41,7 @@ struct addr_range {
  * @tparam BUSWIDTH
  * @tparam ADDR_UNIT_WIDTH
  */
-template <unsigned int BUSWIDTH = 32, unsigned int ADDR_UNIT_WIDTH = 8> class tlm_target {
+template <unsigned int BUSWIDTH = LT, unsigned int ADDR_UNIT_WIDTH = 8> class tlm_target {
 public:
     using this_type = tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>;
     /**
@@ -103,7 +103,7 @@ protected:
 /**
  * helper structure to define a address range for a socket
  */
-template <unsigned BUSWIDTH = 32> struct target_memory_map_entry {
+template <unsigned BUSWIDTH = LT> struct target_memory_map_entry {
     tlm::tlm_target_socket<BUSWIDTH>& target;
     ::sc_dt::uint64 start;
     ::sc_dt::uint64 size;
@@ -111,12 +111,12 @@ template <unsigned BUSWIDTH = 32> struct target_memory_map_entry {
 /**
  * helper structure to define a named address range
  */
-template <unsigned BUSWIDTH = 32> struct target_name_map_entry {
+template <unsigned BUSWIDTH = LT> struct target_name_map_entry {
     std::string name;
     ::sc_dt::uint64 start;
     ::sc_dt::uint64 size;
 };
-template <unsigned int BUSWIDTH = 32, unsigned int ADDR_UNIT_WIDTH = 8> struct tlm_target_mod : sc_core::sc_module, public tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH> {
+template <unsigned int BUSWIDTH = LT, unsigned int ADDR_UNIT_WIDTH = 8> struct tlm_target_mod : sc_core::sc_module, public tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH> {
     tlm_target_mod(sc_core::sc_module_name nm, sc_core::sc_time& clk_period) : sc_module(nm), tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>(clk_period){
 
     }

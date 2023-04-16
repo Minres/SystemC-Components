@@ -54,8 +54,8 @@ public:
     sc_core::sc_signal<bool> rst{"rst"};
 
 private:
-    tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<>> top_isck{"top_isck"};
-    tlm::scc::lwtr::tlm2_lwtr_recorder<> itor2mem{"itor2mem"};
+    tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<scc::LT>> top_isck{"top_isck"};
+    tlm::scc::lwtr::tlm2_lwtr_recorder<scc::LT> itor2mem{"itor2mem"};
     scc::memory<1_GB> mem{"mem"};
 
     unsigned id{0};
