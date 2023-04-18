@@ -264,10 +264,12 @@ class DEFAULT {};
     LOGGER(CATEGORY)().get(::logging::LEVEL, #CATEGORY)
 #endif
 #if defined(WIN32)
+} // namespace logging
 
 #include <array>
 #include <windows.h>
 
+namespace logging {
 inline std::string now_time() {
     const int MAX_LEN = 200;
     char buffer[MAX_LEN];
