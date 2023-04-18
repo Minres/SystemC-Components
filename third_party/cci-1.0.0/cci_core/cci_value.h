@@ -245,7 +245,7 @@ cci_value_cref::try_get( T& dst
 template<typename T>
 CCI_VALUE_CONVERTER_(T) cci_value_cref::get() const
 {
-  T result;
+  T result{};
   if( !try_get(result) ) {
     report_error("conversion from cci_value failed", __FILE__, __LINE__);
   }
