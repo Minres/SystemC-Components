@@ -100,6 +100,7 @@ public:
 
 int sc_main(int argc, char* argv[]) {
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
+    sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY | SC_STOP);
     // clang-format off
     scc::init_logging(
             scc::LogConfig()
@@ -107,7 +108,6 @@ int sc_main(int argc, char* argv[]) {
             .logAsync(false)
             .coloredOutput(true));
     // clang-format off
-    sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
 #ifdef WITH_FST
     auto trc = scc::create_fst_trace_file("axi-axi");
 #else

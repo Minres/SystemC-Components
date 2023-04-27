@@ -120,7 +120,7 @@ int sc_main (int argc , char *argv[]){
     // set up configuration and tracing
     ///////////////////////////////////////////////////////////////////////////
     scc::configurer cfg("ahb_bfm.json");
-    scc::configurable_tracer trace("ahb_bfm", tracer::TEXT, true, true);
+    scc::configurable_tracer trace("ahb_bfm", true, true, true);
     ///////////////////////////////////////////////////////////////////////////
     // create modules/channels and trace
     ///////////////////////////////////////////////////////////////////////////
@@ -133,8 +133,12 @@ int sc_main (int argc , char *argv[]){
     try {
         sc_core::sc_start(1_us);
         if (!sc_core::sc_end_of_simulation_invoked()) sc_core::sc_stop();
-    } catch (sc_core::sc_report &rep) {
-        sc_core::sc_report_handler::get_handler()(rep, sc_core::SC_DISPLAY | sc_core::SC_STOP);
+    } catch(sc_report& e) {
+        SCCERR() << "Caught sc_report exception during simulation: " << e.what() << ":" << e.get_msg();
+    } catch(std::exception& e) {
+        SCCERR() << "Caught exception during simulation: " << e.what();
+    } catch(...) {
+        SCCERR() << "Caught unspecified exception during simulation";
     }
     return 0;
 }

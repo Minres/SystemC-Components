@@ -384,8 +384,6 @@ static void configure_logging() {
 	if(log_cfg.install_handler){
 		if(!log_cfg.instance_based_log_levels || getenv("SCC_DISABLE_INSTANCE_BASED_LOGGING"))
 			inst_based_logging()=false;
-		sc_report_handler::set_actions(SC_ERROR, SC_DEFAULT_ERROR_ACTIONS | SC_DISPLAY);
-		sc_report_handler::set_actions(SC_FATAL, SC_DEFAULT_FATAL_ACTIONS);
 		sc_report_handler::set_verbosity_level(verbosity[static_cast<unsigned>(log_cfg.level)]);
 		sc_report_handler::set_handler(report_handler);
 		if(!spdlog_initialized) {

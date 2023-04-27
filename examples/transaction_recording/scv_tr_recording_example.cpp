@@ -300,6 +300,8 @@ inline void design::data_phase() {
 }
 
 int sc_main(int argc, char *argv[]) {
+    // Accellera SystemC >=2.2 got picky about multiple drivers.
+    sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
     auto start = std::chrono::system_clock::now();
     scc::init_logging(scc::LogConfig().logLevel(scc::log::DEBUG));
 #if defined(CFTR)
@@ -351,9 +353,6 @@ int sc_main(int argc, char *argv[]) {
     duv.bus_data(bus_data);
     duv.trace(tf);
 
-    // Accellera SystemC >=2.2 got picky about multiple drivers.
-    // Disable check for bus simulation.
-    sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
     // run the simulation
     sc_start(10.0, SC_US);
     scc::close_fst_trace_file(tf);
