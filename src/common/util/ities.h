@@ -22,12 +22,19 @@
 #include <assert.h>
 #include <bitset>
 #include <cctype>
+#include <climits>
 #include <iterator>
 #include <memory>
 #include <sstream>
 #include <sys/stat.h>
 #include <type_traits>
 #include <vector>
+
+#if __cplusplus < 201402L
+#define CONSTEXPR
+#else
+#define CONSTEXPR constexpr
+#endif
 
 /**
  * \ingroup scc-common
@@ -44,14 +51,14 @@
  * @return the extracted bit. It is of the same data type as the passed value
  */
 template <unsigned int bit, unsigned int width, typename T>
-inline constexpr typename std::enable_if<std::is_unsigned<T>::value, T>::type bit_sub(T v) {
+CONSTEXPR typename std::enable_if<std::is_unsigned<T>::value, T>::type bit_sub(T v) {
     static_assert((bit+width)<=8*sizeof(T));
     T res = (v >> bit) & ((T(1) << width) - 1);
     return res;
 }
 
 template <unsigned int bit, unsigned int width, typename T>
-inline constexpr typename std::enable_if<std::is_signed<T>::value, T>::type bit_sub(T v) {
+CONSTEXPR typename std::enable_if<std::is_signed<T>::value, T>::type bit_sub(T v) {
     static_assert((bit+width)<=8*sizeof(T));
     static_assert(width>0);
     auto field = v>>bit;
@@ -67,11 +74,8 @@ inline constexpr typename std::enable_if<std::is_signed<T>::value, T>::type bit_
  * @param x the actualö value
  * @return the sign-extended value of type T
  */
-#if __cplusplus < 201402L
-template <typename T, unsigned B> inline T signextend(const T x) {
-#else
-template <typename T, unsigned B> inline constexpr T signextend(const typename std::make_unsigned<T>::type x) {
-#endif
+template <typename T, unsigned B>
+CONSTEXPR T signextend(const typename std::make_unsigned<T>::type x) {
     struct X {
         T x : B;
         X(T x_)
@@ -132,30 +136,40 @@ template <typename T> T leftmost_one(T n) {
 constexpr inline size_t bit_count(uint32_t u) { return __builtin_popcount(u); }
 constexpr inline size_t bit_count(uint64_t u) { return __builtin_popcountl(u); }
 #elif __cplusplus < 201402L
-constexpr size_t uCount(uint32_t u) { return u - ((u >> 1) & 033333333333) - ((u >> 2) & 011111111111); }
-constexpr size_t bit_count(uint32_t u) { return ((uCount(u) + (uCount(u) >> 3)) & 030707070707) % 63; }
+constexpr inline size_t uCount(uint32_t u) { return u - ((u >> 1) & 033333333333) - ((u >> 2) & 011111111111); }
+constexpr inline size_t bit_count(uint32_t u) { return ((uCount(u) + (uCount(u) >> 3)) & 030707070707) % 63; }
 #else
-constexpr size_t bit_count(uint32_t u) {
+constexpr inline size_t bit_count(uint32_t u) {
     size_t uCount = u - ((u >> 1) & 033333333333) - ((u >> 2) & 011111111111);
     return ((uCount + (uCount >> 3)) & 030707070707) % 63;
 }
 #endif
 
+template<typename T>
+CONSTEXPR typename std::enable_if<std::is_integral<T>::value, T>::type rotl (T n, unsigned int c) {
+  const unsigned int mask = (CHAR_BIT*sizeof(n) - 1);  // assumes width is a power of 2.
+  assert ( (c<=mask) &&"left rotate by type width or more");
+  c &= mask;
+  return (n<<c) | (n>>( (-c)&mask ));
+}
+
+template<typename T>
+CONSTEXPR typename std::enable_if<std::is_integral<T>::value, T>::type rotr (T n, unsigned int c) {
+  const unsigned int mask = (CHAR_BIT*sizeof(n) - 1);
+  assert ( (c<=mask) &&"left rotate by type width or more");
+  c &= mask;
+  return (n>>c) | (n<<( (-c)&mask ));
+}
 /**
  * get the log2 value fo an integer
  *
  * @param val the value
  * @return the number of bit needed to hold the value val
  */
-#if __cplusplus < 201402L
-inline unsigned ilog2(uint32_t val) {
-#else
-inline constexpr unsigned ilog2(uint32_t val) {
-#endif
+CONSTEXPR inline unsigned ilog2(uint32_t val) {
 #ifdef __GNUG__
     return sizeof(uint32_t) * 8 - 1 - __builtin_clz(static_cast<unsigned>(val));
 #else
-
     if(val == 0)
         return std::numeric_limits<uint32_t>::max();
     if(val == 1)
@@ -169,7 +183,11 @@ inline constexpr unsigned ilog2(uint32_t val) {
 #endif
 } // namespace util
 
-constexpr bool hasOddParity(uint32_t u) { return bit_count(u) % 2; }
+#if defined(__GNUG__)
+constexpr inline bool hasOddParity(uint32_t u) { return bit_count(u) % 2; }
+#else
+CONSTEXPR inline bool hasOddParity(uint32_t u) { return bit_count(u) % 2; }
+#endif
 /**
  * split a given string using specified separator
  *
