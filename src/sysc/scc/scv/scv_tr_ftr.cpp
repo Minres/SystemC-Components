@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-#include "cbor.h"
 #include <array>
 #include <boost/filesystem.hpp>
 #include <cmath>
@@ -28,6 +27,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#include <ftr/ftr_writer.h>
 // clang-format off
 #ifdef HAS_SCV
 #include <scv.h>
@@ -38,12 +38,12 @@ namespace scv_tr {
 // clang-format on
 // ----------------------------------------------------------------------------
 using namespace std;
-using namespace cbor;
+using namespace ftr;
 // ----------------------------------------------------------------------------
 namespace {
 template<bool COMPRESSED>
 struct tx_db {
-	static chunked_writer<COMPRESSED>* db;
+	static ftr_writer<COMPRESSED>* db;
 	static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason, void* data) {
 		// This is called from the scv_tr_db ctor.
 		static string fName("DEFAULT_scv_tr_cbor");
@@ -52,7 +52,7 @@ struct tx_db {
 			if((_scv_tr_db.get_name() != nullptr) && (strlen(_scv_tr_db.get_name()) != 0))
 				fName = _scv_tr_db.get_name();
 			try {
-				db = new chunked_writer<COMPRESSED>(fName+".ftr");
+				db = new ftr_writer<COMPRESSED>(fName+".ftr");
 			} catch(...) {
 				_scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open recording file");
 			}
@@ -87,7 +87,7 @@ struct tx_db {
 		}
 	}
 	// ----------------------------------------------------------------------------
-	static inline void recordAttribute(uint64_t id, event_type event, const string& name, cbor::data_type type, const string& value) {
+	static inline void recordAttribute(uint64_t id, event_type event, const string& name, ftr::data_type type, const string& value) {
 	    if(db) try {
 	        db->writeAttribute(id, event, name, type, value);
 	    } catch(std::runtime_error& e) {
@@ -95,7 +95,7 @@ struct tx_db {
 	    }
 	}
 	// ----------------------------------------------------------------------------
-	static inline void recordAttribute(uint64_t id, event_type event, const string& name, cbor::data_type type, char const * value) {
+	static inline void recordAttribute(uint64_t id, event_type event, const string& name, ftr::data_type type, char const * value) {
 	    if(db) try {
 			db->writeAttribute(id, event, name, type, value);
 		} catch(std::runtime_error& e) {
@@ -104,7 +104,7 @@ struct tx_db {
 	}
 	// ----------------------------------------------------------------------------
 	template<typename T>
-	static inline void recordAttribute(uint64_t id, event_type event, const string& name, cbor::data_type type, T value) {
+	static inline void recordAttribute(uint64_t id, event_type event, const string& name, ftr::data_type type, T value) {
 	    if(db) try {
 			db->writeAttribute(id, event, name, type, value);
 		} catch(std::runtime_error& e) {
@@ -140,37 +140,37 @@ struct tx_db {
 			}
 		} break;
 		case scv_extensions_if::ENUMERATION:
-			recordAttribute(id, eventType, name, cbor::data_type::ENUMERATION,
+			recordAttribute(id, eventType, name, ftr::data_type::ENUMERATION,
 					my_exts_p->get_enum_string((int)(my_exts_p->get_integer())));
 			break;
 		case scv_extensions_if::BOOLEAN:
-			recordAttribute(id, eventType, name, cbor::data_type::BOOLEAN, my_exts_p->get_bool());
+			recordAttribute(id, eventType, name, ftr::data_type::BOOLEAN, my_exts_p->get_bool());
 			break;
 		case scv_extensions_if::INTEGER:
 		case scv_extensions_if::FIXED_POINT_INTEGER:
-			recordAttribute(id, eventType, name, cbor::data_type::INTEGER, my_exts_p->get_integer());
+			recordAttribute(id, eventType, name, ftr::data_type::INTEGER, my_exts_p->get_integer());
 			break;
 		case scv_extensions_if::UNSIGNED:
-			recordAttribute(id, eventType, name, cbor::data_type::UNSIGNED, my_exts_p->get_integer());
+			recordAttribute(id, eventType, name, ftr::data_type::UNSIGNED, my_exts_p->get_integer());
 			break;
 		case scv_extensions_if::POINTER:
-			recordAttribute(id, eventType, name, cbor::data_type::POINTER, (long long)my_exts_p->get_pointer());
+			recordAttribute(id, eventType, name, ftr::data_type::POINTER, (long long)my_exts_p->get_pointer());
 			break;
 		case scv_extensions_if::STRING:
-			recordAttribute(id, eventType, name, cbor::data_type::STRING, my_exts_p->get_string());
+			recordAttribute(id, eventType, name, ftr::data_type::STRING, my_exts_p->get_string());
 			break;
 		case scv_extensions_if::FLOATING_POINT_NUMBER:
-			recordAttribute(id, eventType, name, cbor::data_type::FLOATING_POINT_NUMBER, my_exts_p->get_double());
+			recordAttribute(id, eventType, name, ftr::data_type::FLOATING_POINT_NUMBER, my_exts_p->get_double());
 			break;
 		case scv_extensions_if::BIT_VECTOR: {
 			sc_bv_base tmp_bv(my_exts_p->get_bitwidth());
 			my_exts_p->get_value(tmp_bv);
-			recordAttribute(id, eventType, name, cbor::data_type::BIT_VECTOR, tmp_bv.to_string());
+			recordAttribute(id, eventType, name, ftr::data_type::BIT_VECTOR, tmp_bv.to_string());
 		} break;
 		case scv_extensions_if::LOGIC_VECTOR: {
 			sc_lv_base tmp_lv(my_exts_p->get_bitwidth());
 			my_exts_p->get_value(tmp_lv);
-			recordAttribute(id, eventType, name, cbor::data_type::LOGIC_VECTOR, tmp_lv.to_string());
+			recordAttribute(id, eventType, name, ftr::data_type::LOGIC_VECTOR, tmp_lv.to_string());
 		} break;
 		case scv_extensions_if::ARRAY:
 			for(int array_elt_index = 0; array_elt_index < my_exts_p->get_array_size(); array_elt_index++) {
@@ -254,7 +254,7 @@ struct tx_db {
 	}
 };
 template<bool COMPRESSED>
-chunked_writer<COMPRESSED>* tx_db<COMPRESSED>::db{nullptr};
+ftr_writer<COMPRESSED>* tx_db<COMPRESSED>::db{nullptr};
 } // namespace
 // ----------------------------------------------------------------------------
 void scv_tr_cbor_init(bool compressed) {
