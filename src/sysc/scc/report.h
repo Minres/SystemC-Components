@@ -456,15 +456,15 @@ public:
      * @param os the stream to be redirected
      * @param level the log level to use
      */
-    stream_redirection(std::ostream& os, scc::log level);
+    stream_redirection(std::ostream& os, log level);
 
-    stream_redirection(scc::stream_redirection const&) = delete;
+    stream_redirection(stream_redirection const&) = delete;
 
-    stream_redirection& operator=(scc::stream_redirection const&) = delete;
+    stream_redirection& operator=(stream_redirection const&) = delete;
 
-    stream_redirection(scc::stream_redirection&&) = delete;
+    stream_redirection(stream_redirection&&) = delete;
 
-    stream_redirection& operator=(scc::stream_redirection&&) = delete;
+    stream_redirection& operator=(stream_redirection&&) = delete;
     /**
      * @fn  ~stream_redirection()
      * @brief destructor restoring the output stream buffer
