@@ -9,7 +9,9 @@ endif()
 ###############################################################################
 # build tlm-interfaces
 ###############################################################################
-add_subdirectory(axi_chi)
-add_subdirectory(scv-tr)
-add_subdirectory(cci-1.0.0)
-add_subdirectory(lwtr4sc/src)
+if(SystemC_FOUND)
+	add_subdirectory(axi_chi)
+	add_subdirectory(scv-tr)
+	add_subdirectory(cci-1.0.0)
+	add_subdirectory(lwtr4sc/src)
+endif()

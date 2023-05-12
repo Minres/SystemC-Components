@@ -162,45 +162,49 @@ if(NOT TARGET lz4::lz4)
 	add_subdirectory(third_party/lz4-1.9.4)
 endif()
 
-# Define the scc library
-add_library(scc INTERFACE)
-if(HAVE_GETENV)
-    target_compile_definitions(scc INTERFACE HAVE_GETENV)
-endif()
-
-target_include_directories (scc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
-if(TARGET Boost::date_time)
-    target_link_libraries(scc INTERFACE Boost::date_time)
-else()
-    target_include_directories(scc INTERFACE ${Boost_INCLUDE_DIRS})
-    target_link_libraries(scc INTERFACE ${Boost_datetime_LIBRARY})
-endif()
-target_link_libraries(scc INTERFACE scc-util scc-sysc components busses scv-tr)
-target_link_libraries(scc INTERFACE ${FMT_TARGET} ${SPDLOG_TARGET})
-
-set_target_properties(scc PROPERTIES
-    PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
-)
-
-install(TARGETS scc
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        )
-
 ###############################################################################
 # subdirectories
 ###############################################################################
 add_subdirectory(src/common)
-add_subdirectory(src/bus_interfaces)
-add_subdirectory(src/components)
-add_subdirectory(src/sysc)
-add_subdirectory(third_party)
-if(NOT SCC_LIB_ONLY)
-    if (NOT (DEFINED CMAKE_CXX_CLANG_TIDY OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
-        add_subdirectory(examples)
-    endif()
+if(SystemC_FOUND)
+	add_subdirectory(src/bus_interfaces)
+	add_subdirectory(src/components)
+	add_subdirectory(src/sysc)
+	add_subdirectory(third_party)
+	if(NOT SCC_LIB_ONLY)
+	    if (NOT (DEFINED CMAKE_CXX_CLANG_TIDY OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
+	        add_subdirectory(examples)
+	    endif()
+	endif()
+
+	# Define the scc library
+	add_library(scc INTERFACE)
+	if(HAVE_GETENV)
+	    target_compile_definitions(scc INTERFACE HAVE_GETENV)
+	endif()
+	
+	target_include_directories (scc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+	if(TARGET Boost::date_time)
+	    target_link_libraries(scc INTERFACE Boost::date_time)
+	else()
+	    target_include_directories(scc INTERFACE ${Boost_INCLUDE_DIRS})
+	    target_link_libraries(scc INTERFACE ${Boost_datetime_LIBRARY})
+	endif()
+	target_link_libraries(scc INTERFACE scc-util scc-sysc components busses scv-tr)
+	target_link_libraries(scc INTERFACE ${FMT_TARGET} ${SPDLOG_TARGET})
+	
+	set_target_properties(scc PROPERTIES
+	    PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
+	)
+	
+	install(TARGETS scc
+	        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+	        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
+	        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
+	        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+	        )
+else()
+	add_subdirectory(third_party)
 endif()
 ###############################################################################
 # install dependend libs
