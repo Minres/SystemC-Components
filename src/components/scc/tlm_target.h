@@ -142,35 +142,35 @@ void scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::b_tranport_cb(tlm::tlm_generic_
     if(ra) {
         auto offset = 0;
         auto len = gp.get_data_length();
-        auto contigous=true;
+        auto contigous = true;
         if(gp.get_byte_enable_ptr()) {
             auto lower = std::numeric_limits<unsigned>::max();
             auto upper = std::numeric_limits<unsigned>::max();
             auto en = false;
             auto p = gp.get_byte_enable_ptr();
-            for(auto i=0u; i<gp.get_byte_enable_length(); ++i, ++p){
+            for(auto i = 0u; i < gp.get_byte_enable_length(); ++i, ++p){
                 if(*p && !en) {
-                    if(lower!=std::numeric_limits<unsigned>::max()) {
-                        contigous=false;
+                    if(lower != std::numeric_limits<unsigned>::max()) {
+                        contigous = false;
                         break;
                     } else {
-                        lower=i;
-                        en=true;
+                        lower = i;
+                        en = true;
                     }
                 }
                 if(!*p && en) {
-                    if(upper!=std::numeric_limits<unsigned>::max()) {
-                        contigous=false;
+                    if(upper != std::numeric_limits<unsigned>::max()) {
+                        contigous = false;
                         break;
                     } else {
-                        upper=i;
-                        en=false;
+                        upper = i;
+                        en = false;
                     }
                 }
             }
             if(contigous) {
-                offset=lower;
-                len=upper-lower;
+                offset = lower;
+                len = upper-lower;
             }
         }
         if(gp.get_data_length() > ra->size()) {
