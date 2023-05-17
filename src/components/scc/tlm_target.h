@@ -134,32 +134,62 @@ inline scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::tlm_target(sc_core::sc_time& 
     socket.register_transport_dbg([=](tlm::tlm_generic_payload& gp) -> unsigned { return this->tranport_dbg_cb(gp); });
 }
 
-inline bool valid_byte_enable(tlm::tlm_generic_payload const& gp){
-    return  gp.get_byte_enable_length()==gp.get_data_length() &&
-            std::accumulate(gp.get_byte_enable_ptr(), gp.get_byte_enable_ptr()+gp.get_byte_enable_length(), 1, std::multiplies<uint8_t>())!=0;
-}
 template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_WIDTH>
 void scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::b_tranport_cb(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) {
     resource_access_if* ra = nullptr;
     uint64_t base = 0;
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());
     if(ra) {
-        gp.set_response_status(tlm::TLM_BURST_ERROR_RESPONSE);
-        if(gp.get_data_length() <= ra->size()) {
-            gp.set_response_status(tlm::TLM_BYTE_ENABLE_ERROR_RESPONSE);
-            if(gp.get_byte_enable_ptr() == nullptr || valid_byte_enable(gp)) {
-                gp.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
-                if(gp.get_data_length() == gp.get_streaming_width()) {
-                    if(gp.get_command() == tlm::TLM_READ_COMMAND) {
-                        if(ra->read(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base), delay))
-                            gp.set_response_status(tlm::TLM_OK_RESPONSE);
-                    } else if(gp.get_command() == tlm::TLM_WRITE_COMMAND) {
-                        if(ra->write(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base), delay))
-                            gp.set_response_status(tlm::TLM_OK_RESPONSE);
+        auto offset = 0;
+        auto len = gp.get_data_length();
+        auto contigous=true;
+        if(gp.get_byte_enable_ptr()) {
+            auto lower = std::numeric_limits<unsigned>::max();
+            auto upper = std::numeric_limits<unsigned>::max();
+            auto en = false;
+            auto p = gp.get_byte_enable_ptr();
+            for(auto i=0u; i<gp.get_byte_enable_length(); ++i, ++p){
+                if(*p && !en) {
+                    if(lower!=std::numeric_limits<unsigned>::max()) {
+                        contigous=false;
+                        break;
                     } else {
-                        gp.set_response_status(tlm::TLM_COMMAND_ERROR_RESPONSE);
+                        lower=i;
+                        en=true;
                     }
                 }
+                if(!*p && en) {
+                    if(upper!=std::numeric_limits<unsigned>::max()) {
+                        contigous=false;
+                        break;
+                    } else {
+                        upper=i;
+                        en=false;
+                    }
+                }
+            }
+            if(contigous) {
+                offset=lower;
+                len=upper-lower;
+            }
+        }
+        if(gp.get_data_length() > ra->size()) {
+            gp.set_response_status(tlm::TLM_BURST_ERROR_RESPONSE);
+        } else if(gp.get_data_length() != gp.get_streaming_width()){
+            gp.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
+        } else if(gp.get_byte_enable_ptr() != nullptr && !(contigous && gp.get_byte_enable_length()==gp.get_data_length())) {
+            gp.set_response_status(tlm::TLM_BYTE_ENABLE_ERROR_RESPONSE);
+        } else {
+            gp.set_response_status(tlm::TLM_COMMAND_ERROR_RESPONSE);
+            switch(gp.get_command()) {
+            case tlm::TLM_READ_COMMAND:
+                if(ra->read(gp.get_data_ptr()+offset, len, (gp.get_address() - base + offset), delay))
+                    gp.set_response_status(tlm::TLM_OK_RESPONSE);
+                break;
+            case tlm::TLM_WRITE_COMMAND:
+                if(ra->write(gp.get_data_ptr()+offset, len, (gp.get_address() - base + offset), delay))
+                    gp.set_response_status(tlm::TLM_OK_RESPONSE);
+                break;
             }
         }
     } else {
