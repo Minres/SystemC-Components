@@ -70,12 +70,15 @@ set_source_files_properties(
 set(SOURCES 
     ${VERILATOR_INCLUDE_DIR}/verilated.cpp
     ${VERILATOR_INCLUDE_DIR}/verilated_cov.cpp
-    #${VERILATOR_INCLUDE_DIR}/verilated_threads.cpp
     ${VERILATOR_INCLUDE_DIR}/verilated_dpi.cpp
     ${VERILATOR_INCLUDE_DIR}/verilated_vcd_c.cpp
     ${VERILATOR_INCLUDE_DIR}/verilated_vcd_sc.cpp
     ${VERILATOR_INCLUDE_DIR}/verilated_fst_c.cpp
 )
+if(VERILATOR_THREADS)
+    list(APPEND SOURCES ${VERILATOR_INCLUDE_DIR}/verilated_threads.cpp)
+endif()
+
 if(EXISTS ${VERILATOR_INCLUDE_DIR}/verilated_fst_sc.cpp)
     list(APPEND SOURCES
         ${VERILATOR_INCLUDE_DIR}/verilated_fst_sc.cpp
