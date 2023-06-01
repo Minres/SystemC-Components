@@ -131,7 +131,8 @@ int sc_main(int argc, char* argv[]) {
             .coloredOutput(true));
     // clang-format off
     ::lwtr::tx_text_init();
-    ::lwtr::tx_db db("lwtr4axi.txlog");
+    ::lwtr::tx_ftr_init(false);
+    ::lwtr::tx_db db("lwtr4axi");
     testbench tb("tb");
     scc::hierarchy_dumper d("lwtr4axi.json", scc::hierarchy_dumper::D3JSON);
     //scc::hierarchy_dumper d("axi_axi_test.elkt", scc::hierarchy_dumper::ELKT);
