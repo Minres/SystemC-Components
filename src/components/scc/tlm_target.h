@@ -148,7 +148,8 @@ void scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::b_tranport_cb(tlm::tlm_generic_
             auto upper = std::numeric_limits<unsigned>::max();
             auto en = false;
             auto p = gp.get_byte_enable_ptr();
-            for(auto i = 0u; i < gp.get_byte_enable_length(); ++i, ++p){
+            auto i = 0u;
+            for(; i < gp.get_byte_enable_length(); ++i, ++p){
                 if(*p && !en) {
                     if(lower != std::numeric_limits<unsigned>::max()) {
                         contigous = false;
@@ -168,6 +169,8 @@ void scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::b_tranport_cb(tlm::tlm_generic_
                     }
                 }
             }
+            if(i== gp.get_byte_enable_length() && upper == std::numeric_limits<unsigned>::max())
+                upper = i;
             if(contigous) {
                 offset = lower;
                 len = upper-lower;
