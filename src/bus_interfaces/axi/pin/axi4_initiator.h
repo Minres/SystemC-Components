@@ -158,8 +158,9 @@ inline void axi::pin::axi4_initiator<CFG>::write_wdata(tlm::tlm_generic_payload&
     sc_dt::sc_uint<CFG::BUSWIDTH / 8> strb{0};
     auto ext = trans.get_extension<axi::axi4_extension>();
     auto size = 1u << ext->get_size();
-    auto offset = trans.get_address() & (CFG::BUSWIDTH / 8 - 1);
-    auto beptr = trans.get_byte_enable_length() ? trans.get_byte_enable_ptr() + beat * size : nullptr;
+    auto byte_offset = beat * size;
+    auto offset = (trans.get_address()+byte_offset) & (CFG::BUSWIDTH / 8 - 1);
+    auto beptr = trans.get_byte_enable_length() ? trans.get_byte_enable_ptr() + byte_offset : nullptr;
     if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
         if(beat == 0) {
             auto bptr = trans.get_data_ptr();
@@ -173,7 +174,7 @@ inline void axi::pin::axi4_initiator<CFG>::write_wdata(tlm::tlm_generic_payload&
                     strb[i] = true;
             }
         } else {
-            auto beat_start_idx = beat * size - offset;
+            auto beat_start_idx = byte_offset - offset;
             auto data_len = trans.get_data_length();
             auto bptr = trans.get_data_ptr() + beat_start_idx;
             for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++bptr) {
@@ -187,15 +188,15 @@ inline void axi::pin::axi4_initiator<CFG>::write_wdata(tlm::tlm_generic_payload&
             }
         }
     } else { // aligned or single beat access
-        auto bptr = trans.get_data_ptr() + beat * size;
+        auto bptr = trans.get_data_ptr() + byte_offset;
         for(size_t i = 0; i < size; ++i, ++bptr) {
-            auto bit_offs = (offset + i) * 8;
+            auto bit_offs = (offset+i) * 8;
             data(bit_offs + 7, bit_offs) = *bptr;
             if(beptr) {
-                strb[i] = *beptr == 0xff;
+                strb[offset+i] = *beptr == 0xff;
                 ++beptr;
             } else
-                strb[i] = true;
+                strb[offset+i] = true;
         }
     }
     this->w_data.write(data);
@@ -303,8 +304,9 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::setup_callbac
 }
 
 template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::ar_t() {
+    this->ar_valid.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        this->ar_valid.write(false);
         wait(ar_evt);
         this->ar_valid.write(true);
         do {
@@ -313,14 +315,17 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::ar_t() {
                 react(axi::fsm::protocol_time_point_e::EndReqE, active_req[tlm::TLM_READ_COMMAND]);
         } while(!this->ar_ready.read());
         wait(clk_i.posedge_event());
+        this->ar_valid.write(false);
     }
 }
 
 template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::r_t() {
     this->r_ready.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     while(true) {
         wait(this->r_valid.posedge_event() | clk_i.negedge_event());
         if(this->r_valid.event() || (!active_resp[tlm::TLM_READ_COMMAND] && this->r_valid.read())) {
+            wait(sc_core::SC_ZERO_TIME);
             auto id = CFG::IS_LITE ? 0U : this->r_id->read().to_uint();
             auto data = this->r_data.read();
             auto resp = this->r_resp.read();
@@ -329,7 +334,8 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::r_t() {
             auto* fsm_hndl = q.front();
             auto beat_count = fsm_hndl->beat_count;
             auto size = axi::get_burst_size(*fsm_hndl->trans);
-            auto offset = fsm_hndl->trans->get_address() & (CFG::BUSWIDTH / 8 - 1);
+            auto byte_offset = beat_count * size;
+            auto offset = (fsm_hndl->trans->get_address()+byte_offset) & (CFG::BUSWIDTH / 8 - 1);
             if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
                 if(beat_count == 0) {
                     auto bptr = fsm_hndl->trans->get_data_ptr();
@@ -349,7 +355,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::r_t() {
             } else { // aligned or single beat access
                 auto bptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
                 for(size_t i = 0; i < size; ++i, ++bptr) {
-                    auto bit_offs = (offset + i) * 8;
+                    auto bit_offs = (offset+i) * 8;
                     *bptr = data(bit_offs + 7, bit_offs).to_uint();
                 }
             }
@@ -369,20 +375,23 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::r_t() {
 }
 
 template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::aw_t() {
+    this->aw_valid.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        this->aw_valid.write(false);
         wait(aw_evt);
         this->aw_valid.write(true);
         do {
             wait(this->aw_ready.posedge_event() | clk_delayed);
         } while(!this->aw_ready.read());
         wait(clk_i.posedge_event());
+        this->aw_valid.write(false);
     }
 }
 
 template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::wdata_t() {
+    this->w_valid.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        this->w_valid.write(false);
         if(!CFG::IS_LITE)
             this->w_last->write(false);
         wait(wdata_vl.default_event());
@@ -399,11 +408,13 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::wdata_t() {
             }
         } while(!this->w_ready.read());
         wait(clk_i.posedge_event());
+        this->w_valid.write(false);
     }
 }
 
 template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::b_t() {
     this->b_ready.write(false);
+    wait(sc_core::SC_ZERO_TIME);
     while(true) {
         wait(this->b_valid.posedge_event() | clk_i.negedge_event());
         if(this->b_valid.event() || (!active_resp[tlm::TLM_WRITE_COMMAND] && this->b_valid.read())) {

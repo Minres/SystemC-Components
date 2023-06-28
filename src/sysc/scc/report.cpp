@@ -529,20 +529,36 @@ auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
         if(it != lut.end())
             return it->second;
         if(strchr(str, '.') == nullptr || sc_core::sc_get_current_object()) {
+            string current_name = std::string(str);
             auto broker = sc_core::sc_get_current_object()? cci::cci_get_broker(): cci::cci_get_global_broker(originator);
-            auto param_name = std::string(str) + "." SCC_LOG_LEVEL_PARAM_NAME;
-            auto h = broker.get_param_handle<unsigned>(param_name);
-            if(h.is_valid()) {
-                sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_value(), verbosity.size() - 1));
-                lut[k] = ret;
-                return ret;
-            } else {
-                auto val = broker.get_preset_cci_value(param_name);
-                auto global_verb = static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
-                sc_core::sc_verbosity ret =
-                        val.is_int() ? verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size() - 1)) : global_verb;
-                lut[k] = ret;
-                return ret;
+            while (true) {
+                string param_name = (current_name.empty())? SCC_LOG_LEVEL_PARAM_NAME : current_name + "." SCC_LOG_LEVEL_PARAM_NAME;
+                auto h = broker.get_param_handle(param_name);
+                if (h.is_valid()) {
+                    sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_cci_value().get_int(), verbosity.size() - 1));
+                    lut[k] = ret;
+                    return ret;
+                } else {
+                    auto val = broker.get_preset_cci_value(param_name);
+                    auto global_verb = static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
+                    if (val.is_int()) {
+                        sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size() - 1));
+                        lut[k] = ret;
+                        return ret;
+                    } else {
+                        if (current_name.empty()) {
+                            sc_core::sc_verbosity ret = global_verb;
+                            lut[k] = ret;
+                            return ret;
+                        }
+                        auto pos = current_name.rfind(".");
+                        if (pos == std::string::npos) {
+                            current_name = "";
+                        } else {
+                            current_name = current_name.substr(0, pos);
+                        }
+                    }
+                }
             }
         }
     }

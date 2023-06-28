@@ -22,6 +22,7 @@
 #include "tlm/scc/target_mixin.h"
 #include "util/range_lut.h"
 #include <array>
+#include <numeric>
 #include <tlm/scc/scv/tlm_rec_target_socket.h>
 
 namespace scc {
@@ -128,6 +129,10 @@ inline scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::tlm_target(sc_core::sc_time& 
     socket.register_transport_dbg([=](tlm::tlm_generic_payload& gp) -> unsigned { return this->tranport_dbg_cb(gp); });
 }
 
+inline bool valid_byte_enable(tlm::tlm_generic_payload const& gp){
+    return  gp.get_byte_enable_length()==gp.get_data_length() &&
+            std::accumulate(gp.get_byte_enable_ptr(), gp.get_byte_enable_ptr()+gp.get_byte_enable_length(), 1, std::multiplies<uint8_t>())!=0;
+}
 template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_WIDTH>
 void scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::b_tranport_cb(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) {
     resource_access_if* ra = nullptr;
@@ -137,7 +142,7 @@ void scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::b_tranport_cb(tlm::tlm_generic_
         gp.set_response_status(tlm::TLM_BURST_ERROR_RESPONSE);
         if(gp.get_data_length() <= ra->size()) {
             gp.set_response_status(tlm::TLM_BYTE_ENABLE_ERROR_RESPONSE);
-            if(gp.get_byte_enable_ptr() == nullptr) {
+            if(gp.get_byte_enable_ptr() == nullptr || valid_byte_enable(gp)) {
                 gp.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
                 if(gp.get_data_length() == gp.get_streaming_width()) {
                     if(gp.get_command() == tlm::TLM_READ_COMMAND) {
