@@ -1,143 +1,291 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <title>d3-hwschematic example</title>
-  <script type="text/javascript" src="d3.js"></script>
-  <!-- <script type="text/javascript" src="d3.min.js"></script>  -->
-  <script type="text/javascript" src="elk.bundled.js"></script>
-  <script type="text/javascript" src="dist/d3-hwschematic.js"></script>
-  <script type="text/javascript" src="netlistsvgTod3Hwschematic.js"></script>
-  <link href="dist/d3-hwschematic.css" rel="stylesheet">
-  <style>
-  	body {
-	   margin: 0;
-    }
-  </style>
+    <meta charset="utf-8">
+    <title>d3-hwschematic example</title>
+    <!--<script type="text/javascript" src="d3.js"></script> -->
+    <script type="text/javascript" src="d3.min.js"></script>
+    <script type="text/javascript" src="elk.bundled.js"></script>
+    <script type="text/javascript" src="dist/d3-hwschematic.js"></script>
+    <link href="dist/d3-hwschematic.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
 </head>
+
 <body>
-	<div>
-		<a href="https://github.com/Nic30/d3-hwschematic">D3-hwschematic Viewer</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	    <label>
-	        Open schematic:
-	        <input type="file" id="file-input" />
-	    </label>
-	</div>
+<label>
+    Open schematic:
+    <input type="file" id="file-input"/>
+</label>
 
-    <svg id="scheme-placeholder"></svg>
-    <script>
-        // schematic rendering script
+<label>
+    Open any schematic:
+    <input type="file" id="file-input-any"/>
+</label>
 
-        function viewport() {
-          var e = window,
+<label>
+    Root path:
+    <input type="text" id="root-path-input" list="root-path-input-paths"/>
+    <datalist id="root-path-input-paths"></datalist>
+
+    <input type="submit" value="Submit" id="root-path-input-submit" onclick="onSchematicRootSubmit();">
+</label>
+
+<svg id="scheme-placeholder"></svg>
+<script>
+    // schematic rendering script
+    function viewport() {
+        let e = window,
             a = 'inner';
-          if (!('innerWidth' in window)) {
+        if (!('innerWidth' in window)) {
             a = 'client';
             e = document.documentElement || document.body;
-          }
-          return {
+        }
+        return {
             width: e[a + 'Width'],
             height: e[a + 'Height']
-          }
         }
+    }
 
-        var width = viewport().width,
-            height = viewport().height;
+    let width = viewport().width,
+        height = viewport().height;
 
-        var svg = d3.select("#scheme-placeholder")
-            .attr("width", width)
-            .attr("height", height);
+    let svg = d3.select("#scheme-placeholder")
+        .attr("width", width)
+        .attr("height", height);
 
-        var orig = document.body.onresize;
-        document.body.onresize = function(ev) {
-            if (orig)
-        	    orig(ev);
+    let orig = document.body.onresize;
+    document.body.onresize = function (ev) {
+        if (orig)
+            orig(ev);
 
-            var w = viewport();
-            svg.attr("width", w.width);
-			svg.attr("height", w.height);
-        }
+        let w = viewport();
+        svg.attr("width", w.width);
+        svg.attr("height", w.height);
+    }
 
-        var hwSchematic = new d3.HwSchematic(svg);
-        var zoom = d3.zoom();
-        zoom.on("zoom", function applyTransform(ev) {
-        	hwSchematic.root.attr("transform", ev.transform)
-        });
+    let hwSchematic = new d3.HwSchematic(svg);
+    let rootGraph = null;
+    let zoom = d3.zoom();
+    zoom.on("zoom", function applyTransform(ev) {
+        hwSchematic.root.attr("transform", ev.transform)
+    });
 
-        // disable zoom on doubleclick
-        // because it interferes with component expanding/collapsing
-        svg.call(zoom)
-           .on("dblclick.zoom", null)
+    // disable zoom on doubleclick
+    // because it interferes with component expanding/collapsing
+    svg.call(zoom)
+        .on("dblclick.zoom", null)
 
-    </script>
-    <script>
-        // data loanding script
+</script>
+<script>
+    // data loading script
 
-        // file open handler
-        function readSingleFile(e) {
-            var file = e.target.files[0];
+    // file open handler
+    function readSingleFile(e) {
+        try {
+            let file = e.target.files[0];
             if (!file) {
-              return;
+                return;
             }
-            var transformation = null;
-            if (e.target.id == 'file-input-netlistsvg') {
-               transformation = netlistsvgToD3Hwschematic;
-            }
-            setUrlParameterByName("schematic", "schemes/" + file.name);
-            var reader = new FileReader();
-            reader.onload = function(e) {
-              var contents = e.target.result;
-              displayContents(contents, transformation);
+            let exampleDir = "schemes/";
+            let transformation = null;
+            // if this function is called for file input yosys, set example dir and transformation
+            setUrlParameterByName("schematic", exampleDir + file.name);
+            setUrlParameterByName("schematicRoot", "");
+            rootInput.value = "";
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                let graph;
+                try {
+                    let contents = e.target.result;
+                    graph = JSON.parse(contents);
+                    if (transformation) {
+                        graph = transformation(graph);
+                    }
+                    rootGraph = graph;
+                } catch (e) {
+                    hwSchematic.setErrorText(e);
+                    throw e;
+                }
+                displayContents(graph);
+
             };
             reader.readAsText(file);
-          }
+        } catch (e) {
+            hwSchematic.setErrorText(e);
+            throw e;
+        }
+    }
 
-          function displayContents(contents, transformation) {
-            var graph = JSON.parse(contents);
-            if (transformation) {
-                graph = transformation(graph);
+    // file open handler which automatically resolves the file format
+    function readAnyFile(e) {
+        try {
+            let file = e.target.files[0];
+            if (!file) {
+                return;
             }
-            if (graph.hwMeta && graph.hwMeta.name)
-                 document.title = graph.hwMeta.name;
-            // load the data and render the elements
-            hwSchematic.bindData(graph);
-          }
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                let graph;
+                try {
+                    let contents = e.target.result;
+                    graph = JSON.parse(contents);
+                    let exampleDir;
+                    let transformation;
+                    if (graph.hwMeta !== undefined) {
+                        // native, no conversion need
+                        transformation = null;
+                        exampleDir = "schemes/";
+                    } else if (graph.creator !== undefined && graph.creator.startsWith("Yosys")) {
+                        // convert format from yosys
+                        transformation = d3.HwSchematic.fromYosys;
+                        exampleDir = "schemes_yosys/";
+                    } else {
+                        throw new Error("Invalid file format");
+                    }
+                    setUrlParameterByName("schematic", exampleDir + file.name);
+                    setUrlParameterByName("schematicRoot", "");
+                    rootInput.value = "";
+                    if (transformation !== null) {
+                        graph = transformation(graph);
+                    }
+                    rootGraph = graph;
+                } catch (e) {
+                    hwSchematic.setErrorText(e);
+                    throw e;
+                }
+                displayContents(graph);
+            };
+            reader.readAsText(file);
+        } catch (e) {
+            hwSchematic.setErrorText(e);
+            throw e;
+        }
+    }
 
-          document.getElementById('file-input')
-            .addEventListener('change', readSingleFile, false);
+    function displayContents(graph) {
+        if (graph.hwMeta && graph.hwMeta.name)
+            document.title = graph.hwMeta.name;
+        // load the data and render the elements
+        hwSchematic.bindData(graph).then(() => {
+        }, (e) => {
+            hwSchematic.setErrorText(e);
+            throw e;
+        });
 
-          document.getElementById('file-input-netlistsvg')
-            .addEventListener('change', readSingleFile, false);
+        // remove old options in rootInputPaths
+        let child = rootInputPaths.lastElementChild;
+        while (child) {
+            rootInputPaths.removeChild(child);
+            child = rootInputPaths.lastElementChild;
+        }
 
+        let allPaths = []
+        getAllPaths(rootGraph.children[0], "/", allPaths);
+        setRootInputPathsOptions(allPaths, rootInputPaths);
+    }
 
-          function getUrlParameterByName(name, url) {
-              if (!url) url = window.location.href;
-              url = new URL(url);
-              var search_params = url.searchParams;
-              return search_params.get(name);
-          }
-          function setUrlParameterByName(name, value, url) {
-              if (!url) url = window.location.href;
-              url = new URL(url);
-              var searchParams = url.searchParams;
-              searchParams.set(name, value);
-              window.history.replaceState({}, value, url.toString());
-          }
+    function onSchematicRootSubmit() {
+        let graph;
+        try {
+            graph = rootGraph;
+            let schematicRoot = rootInput.value;
+            if (schematicRoot !== null) {
+                setUrlParameterByName("schematicRoot", schematicRoot);
+                graph = d3.HwSchematic.selectGraphRootByPath(graph, schematicRoot);
+            }
+        } catch (e) {
+            hwSchematic.setErrorText(e);
+            throw e;
+        }
+        displayContents(graph);
+    }
 
-          var schematic_url = getUrlParameterByName("schematic");
-          if (schematic_url != null) {
-             d3.json(schematic_url)
-               .then(function(graph) {
-                   if (graph.hwMeta && graph.hwMeta.name)
-                       document.title = graph.hwMeta.name;
-                   // load the data and render the elements
-                   hwSchematic.bindData(graph);
-                }, function(reason) {
-                    svg.append("text")
-                       .text(reason);
-                    throw Error(reason);
-                });
-          }
-    </script>
+    // register file input handlers
+    document.getElementById('file-input')
+        .addEventListener('change', readSingleFile, false);
+    document.getElementById('file-input-any')
+        .addEventListener('change', readAnyFile, false);
+    let rootInput = document.getElementById("root-path-input");
+    let rootInputPaths = document.getElementById("root-path-input-paths");
+
+    rootInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            onSchematicRootSubmit();
+        }
+    });
+
+    function setRootInputPathsOptions(optionArray, htmlDatasetList) {
+        optionArray.forEach(item => {
+            let option = document.createElement('option');
+            option.value = item;
+            htmlDatasetList.appendChild(option);
+        });
+    }
+
+    function getUrlParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        url = new URL(url);
+        let searchParams = url.searchParams;
+        return searchParams.get(name);
+    }
+
+    function getAllPaths(node, prefix, allPaths) {
+        let children = node.children || node._children;
+        if (children && children.length) {
+            let nodePath = node.hwMeta.name;
+            prefix += nodePath;
+            allPaths.push(prefix);
+
+            for (let child of children) {
+                getAllPaths(child, prefix + "/", allPaths);
+            }
+        }
+    }
+
+    function setUrlParameterByName(name, value, url) {
+        if (!url) url = window.location.href;
+        url = new URL(url);
+        let searchParams = url.searchParams;
+        searchParams.set(name, value);
+        window.history.replaceState({}, value, url.toString());
+    }
+
+    let schematicName = getUrlParameterByName("schematic");
+    let schematicRoot = getUrlParameterByName("schematicRoot");
+    if (schematicRoot !== null) {
+        rootInput.setAttribute("value", schematicRoot);
+    }
+
+    if (schematicName != null) {
+        d3.json(schematicName)
+            .then(function (graph) {
+                try {
+                    if (schematicName.startsWith("schemes/")) {
+                    } else if (schematicName.startsWith("schemes_yosys/")) {
+                        graph = d3.HwSchematic.fromYosys(graph);
+                    } else {
+                        throw new Error("Unknown example dir " + schematicName);
+                    }
+                    rootGraph = graph;
+                    if (schematicRoot !== null) {
+                        graph = d3.HwSchematic.selectGraphRootByPath(graph, schematicRoot);
+                    }
+                    displayContents(graph);
+                } catch (e) {
+                    hwSchematic.setErrorText(e);
+                    throw e;
+                }
+            }, function (reason) {
+                hwSchematic.setErrorText(reason);
+                throw Error(reason);
+            });
+    }
+</script>
 </body>
+
 </html>

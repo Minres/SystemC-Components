@@ -116,7 +116,7 @@ struct Module {
 const std::unordered_set<std::string> know_entities = {
         "tlm_initiator_socket", "sc_export", "sc_thread_process", "sc_signal",
         "sc_object", "sc_fifo", "sc_method_process", "sc_mutex", "sc_vector",
-        "sc_semaphore_ordered", "sc_variable", "sc_prim_channel", "tlm_signal"
+        "sc_semaphore_ordered", "sc_variable", "sc_prim_channel", "tlm_signal", "sc_register"
 };
 
 std::string indent{"    "};
@@ -139,13 +139,14 @@ std::string operator* (std::string const& str, const unsigned int level) {
 #endif
 
 std::vector<std::string> scanModule(sc_core::sc_object const* obj, Module *currentModule, unsigned const level) {
+    std::string name{obj->basename()};
+    if(name.substr(0, 3) == "$$$")
+        return {};
     SCCDEBUG() << indent*level<< obj->name() << "(" << obj->kind() << ")";
     std::string kind{obj->kind()};
     if (kind == "sc_module") {
-        if(std::string(obj->basename()).substr(0, 3) == "$$$")
-            return {};
-        auto* name = obj->name();
-        currentModule->submodules.push_back(Module(name, obj->basename(), type(*obj), false));
+        currentModule->submodules.push_back(
+                Module(obj->name(), name, type(*obj), false));
         std::unordered_set<std::string> keep_outs;
         for (auto* child : obj->get_child_objects()) {
             const std::string child_name{child->basename()};
@@ -164,34 +165,35 @@ std::vector<std::string> scanModule(sc_core::sc_object const* obj, Module *curre
         }
     } else if(kind == "sc_clock"){
         auto const* iface = dynamic_cast<sc_core::sc_interface const*>(obj);
-        currentModule->submodules.push_back(Module(obj->name(), obj->basename(), type(*obj), false));
+        currentModule->submodules.push_back(
+                Module(obj->name(), name, type(*obj), false));
         currentModule->submodules.back().ports.push_back(
-                Port(std::string(obj->name())+"."+obj->basename(), obj->basename(), iface, false, obj->kind(), obj->basename()));
+                Port(std::string(obj->name())+"."+name, name, iface, false, obj->kind(), obj->basename()));
 #ifndef NO_TLM_EXTRACT
 #ifndef NCSC
     } else if(auto const* tptr = dynamic_cast<tlm::tlm_base_socket_if const*>(obj)) {
         auto cat = tptr->get_socket_category();
         bool input = (cat & tlm::TLM_TARGET_SOCKET) == tlm::TLM_TARGET_SOCKET;
-        currentModule->ports.push_back(Port(obj->name(), obj->basename(), input?GET_EXPORT_IF(tptr):GET_PORT_IF(tptr), input, obj->kind()));
-        return {
-            std::string(obj->basename())+"_port", std::string(obj->basename())+"_export",
-            std::string(obj->basename())+"_port_0", std::string(obj->basename())+"_export_0"
-        };
+        if(input) {
+            currentModule->ports.push_back(
+                    Port(obj->name(), name, GET_EXPORT_IF(tptr), input, obj->kind()));
+            return {name+"_port", name+"_port_0"};
+        } else {
+            currentModule->ports.push_back(
+                    Port(obj->name(), name, GET_PORT_IF(tptr), input, obj->kind()));
+            return {name+"_export", name+"_export_0"};
+        }
 #endif
 #endif
     } else if (auto const* optr = dynamic_cast<sc_core::sc_port_base const*>(obj)) {
-        if(std::string(optr->basename()).substr(0, 3)!="$$$") {
-            sc_core::sc_interface const* if_ptr = optr->get_interface();
-            sc_core::sc_prim_channel const* if_obj = dynamic_cast<sc_core::sc_prim_channel const*>(if_ptr);
-            bool is_input = kind == "sc_in" || kind == "sc_fifo_in";
-            currentModule->ports.push_back(
-                    Port(obj->name(), obj->basename(), if_ptr, is_input, obj->kind(), if_obj?if_obj->basename():""));
-        }
+        sc_core::sc_interface const* if_ptr = optr->get_interface();
+        sc_core::sc_prim_channel const* if_obj = dynamic_cast<sc_core::sc_prim_channel const*>(if_ptr);
+        bool is_input = kind == "sc_in" || kind == "sc_fifo_in";
+        currentModule->ports.push_back(
+                Port(obj->name(), name, if_ptr, is_input, obj->kind(), if_obj?if_obj->basename():""));
     } else if (auto const* optr = dynamic_cast<sc_core::sc_export_base const*>(obj)) {
-        if(std::string(optr->basename()).substr(0, 3)!="$$$") {
-            sc_core::sc_interface const* pointer = optr->get_interface();
-            currentModule->ports.push_back(Port(obj->name(), obj->basename(), pointer, true, obj->kind()));
-        }
+        sc_core::sc_interface const* pointer = optr->get_interface();
+        currentModule->ports.push_back(Port(obj->name(), name, pointer, true, obj->kind()));
     } else if (know_entities.find(std::string(obj->kind())) == know_entities.end()) {
         SCCWARN() << "object not known (" << std::string(obj->kind()) << ")";
     }
