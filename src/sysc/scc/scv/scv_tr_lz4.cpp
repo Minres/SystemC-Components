@@ -27,10 +27,12 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#ifdef FMT_SPDLOG_INTERNAL
+#include <fmt/fmt.h>
+#else
 #include <fmt/format.h>
-#ifdef WITH_LZ4
-#include <util/lz4_streambuf.h>
 #endif
+#include <util/lz4_streambuf.h>
 // clang-format off
 #ifdef HAS_SCV
 #include <scv.h>
@@ -80,7 +82,6 @@ public:
     }
     bool is_open(){return out.is_open();}
 };
-#ifdef WITH_LZ4
 class LZ4Writer {
     std::ofstream ofs;
     std::unique_ptr<util::lz4c_steambuf> strbuf;
@@ -100,7 +101,6 @@ public:
 
     bool is_open(){return ofs.is_open();}
 };
-#endif
 
 template<typename WRITER>
 struct Formatter {
@@ -198,12 +198,6 @@ struct Formatter {
         return db;
     }
 };
-#ifdef WITH_LZ4
-//using DB=Formatter<LZ4Writer>;
-
-#else
-//using DB=Formatter<FBase>;
-#endif
 template<typename DB>
 void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason, void* data) {
     // This is called from the scv_tr_db ctor.
@@ -415,7 +409,6 @@ void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data
 }
 } // namespace
 // ----------------------------------------------------------------------------
-#ifdef WITH_LZ4
 void scv_tr_lz4_init() {
     scv_tr_db::register_class_cb(dbCb<Formatter<LZ4Writer>>);
     scv_tr_stream::register_class_cb(streamCb<Formatter<LZ4Writer>>);
@@ -424,7 +417,6 @@ void scv_tr_lz4_init() {
     scv_tr_handle::register_record_attribute_cb(attributeCb<Formatter<LZ4Writer>>);
     scv_tr_handle::register_relation_cb(relationCb<Formatter<LZ4Writer>>);
 }
-#endif
 void scv_tr_plain_init() {
     scv_tr_db::register_class_cb(dbCb<Formatter<PlainWriter>>);
     scv_tr_stream::register_class_cb(streamCb<Formatter<PlainWriter>>);

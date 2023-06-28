@@ -4,9 +4,9 @@
  *  Created on:
  *      Author:
  */
-
+#ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
-
+#endif
 #include <ace_axi_adapt.h>
 #include <array>
 #include <axi/pe/simple_initiator.h>
@@ -122,6 +122,7 @@ private:
 
 int sc_main(int argc, char* argv[]) {
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
+    sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY | SC_STOP);
     // clang-format off
     scc::init_logging(
             scc::LogConfig()
@@ -129,19 +130,21 @@ int sc_main(int argc, char* argv[]) {
             .logAsync(false)
             .coloredOutput(true));
     // clang-format on
-    sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
-#ifdef HAS_CCI
-    scc::configurable_tracer trace("ace_ace_test",
-                                   scc::tracer::file_type::NONE, // define the kind of transaction trace
-                                   true,                         // enables vcd
-                                   true);
-#else
-    scc::tracer trace("ace_ace_test",
-                      scc::tracer::file_type::NONE, // define the kind of transaction trace
-                      true);                        // enables vcd
-#endif
+    scc::configurable_tracer trace("ace_axi_test",
+                                   true, // enables TX recording
+                                   true, // enables signal tracing
+                                   true);// all units by default traced
     testbench mstr("master");
-    sc_core::sc_start(10_ms);
+    try {
+        sc_core::sc_start(10_ms);
+        if (!sc_core::sc_end_of_simulation_invoked()) sc_core::sc_stop();
+    } catch(sc_report& e) {
+        SCCERR() << "Caught sc_report exception during simulation: " << e.what() << ":" << e.get_msg();
+    } catch(std::exception& e) {
+        SCCERR() << "Caught exception during simulation: " << e.what();
+    } catch(...) {
+        SCCERR() << "Caught unspecified exception during simulation";
+    }
     SCCINFO() << "Finished";
     return 0;
 }

@@ -193,7 +193,10 @@ jmp_buf env;
 void ABRThandler(int sig) { longjmp(env, 1); }
 
 int sc_main(int argc, char* argv[]) {
+    signal(SIGABRT, ABRThandler);
+    signal(SIGSEGV, ABRThandler);
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
+    sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY | SC_STOP);
     // clang-format off
     scc::init_logging(
             scc::LogConfig()
@@ -201,25 +204,25 @@ int sc_main(int argc, char* argv[]) {
             .logAsync(false)
             .coloredOutput(true));
     // clang-format on
-    sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
-    signal(SIGABRT, ABRThandler);
-    signal(SIGSEGV, ABRThandler);
     auto cfg_file = argc == 2 ? argv[1] : "";
     scc::configurer cfg(cfg_file);
-#ifdef HAS_CCI
     scc::configurable_tracer trace("axi4_tlm_pin_tlm",
-                                   scc::tracer::file_type::NONE, // define the kind of transaction trace
-                                   true,                         // enables vcd
-                                   true);
-#else
-    scc::tracer trace("axi4_tlm_pin_tlm",
-                      scc::tracer::file_type::NONE, // define the kind of transaction trace
-                      true);                        // enables vcd
-#endif
+            true, // enables TX recording
+            true, // enables signal tracing
+            true);// all units by default traced
     if(setjmp(env) == 0) {
         testbench tb("tb");
         cfg.configure();
-        sc_core::sc_start(1_ms);
+        try {
+            sc_core::sc_start(1_ms);
+            if (!sc_core::sc_end_of_simulation_invoked()) sc_core::sc_stop();
+        } catch(sc_report& e) {
+            SCCERR() << "Caught sc_report exception during simulation: " << e.what() << ":" << e.get_msg();
+        } catch(std::exception& e) {
+            SCCERR() << "Caught exception during simulation: " << e.what();
+        } catch(...) {
+            SCCERR() << "Caught unspecified exception during simulation";
+        }
         auto errcnt = sc_report_handler::get_count(SC_ERROR);
         auto warncnt = sc_report_handler::get_count(SC_WARNING);
         SCCINFO() << "Finished, there were " << errcnt << " error" << (errcnt == 1 ? "" : "s") << " and " << warncnt

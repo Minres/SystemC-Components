@@ -14,6 +14,9 @@
  * limitations under the License.
  *******************************************************************************/
 
+#ifndef SC_INCLUDE_DYNAMIC_PROCESSES
+#define SC_INCLUDE_DYNAMIC_PROCESSES
+#endif
 #include "hierarchy_dumper.h"
 #include "configurer.h"
 #include "tracer.h"
@@ -30,7 +33,11 @@
 #include <rapidjson/istreamwrapper.h>
 #include <rapidjson/ostreamwrapper.h>
 #include <rapidjson/prettywriter.h>
+#ifdef FMT_SPDLOG_INTERNAL
+#include <fmt/fmt.h>
+#else
 #include <fmt/format.h>
+#endif
 
 #include <string>
 #include <typeinfo>
@@ -161,6 +168,7 @@ std::vector<std::string> scanModule(sc_core::sc_object const* obj, Module *curre
         currentModule->submodules.back().ports.push_back(
                 Port(std::string(obj->name())+"."+obj->basename(), obj->basename(), iface, false, obj->kind(), obj->basename()));
 #ifndef NO_TLM_EXTRACT
+#ifndef NCSC
     } else if(auto const* tptr = dynamic_cast<tlm::tlm_base_socket_if const*>(obj)) {
         auto cat = tptr->get_socket_category();
         bool input = (cat & tlm::TLM_TARGET_SOCKET) == tlm::TLM_TARGET_SOCKET;
@@ -169,6 +177,7 @@ std::vector<std::string> scanModule(sc_core::sc_object const* obj, Module *curre
             std::string(obj->basename())+"_port", std::string(obj->basename())+"_export",
             std::string(obj->basename())+"_port_0", std::string(obj->basename())+"_export_0"
         };
+#endif
 #endif
     } else if (auto const* optr = dynamic_cast<sc_core::sc_port_base const*>(obj)) {
         if(std::string(optr->basename()).substr(0, 3)!="$$$") {

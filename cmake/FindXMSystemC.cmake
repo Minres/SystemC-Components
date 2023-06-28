@@ -38,17 +38,10 @@ This will define the following variables:
   Include directories needed to use SCV.
 ``SCV_LIBRARIES``
   Libraries needed to link to SCV.
-``CCI_FOUND``
-  True if the system has the CCI library.
-``CCI_VERSION``
-  The version of the CCI library which was found.
-``CCI_INCLUDE_DIRS``
-  Include directories needed to use CCI.
-``CCI_LIBRARIES``
-  Libraries needed to link to CCI.
 
 #]=======================================================================]
-set(NCSC_LIBS systemc_sh scBootstrap_sh xmscCoroutines_sh ovm)
+set(NCSC_LIBS systemc_sh xmscCoSim_sh xmscCoroutines_sh)
+#set(NCSC_LIBS systemc_sh xmscCoroutines_sh ovm scBootstrap_sh)
 
 find_program(ncroot_EXECUTABLE ncroot) 
 if(NOT ncroot_EXECUTABLE)
@@ -66,18 +59,6 @@ message("Using Xcelium at ${NCROOT_PATH}")
 SET(_COMMON_HINTS
 	${NCROOT_PATH}/tools/systemc/include
 	${NCROOT_PATH}/tools/systemc/lib/64bit
-  	$ENV{SYSTEMC_PREFIX}/include
-  	$ENV{SYSTEMC_PREFIX}/lib
-  	$ENV{SYSTEMC_PREFIX}/lib64
-  	$ENV{SYSTEMC_PREFIX}/lib-linux
-  	$ENV{SYSTEMC_PREFIX}/lib-linux64
-  	$ENV{SYSTEMC_PREFIX}/lib-macos
-  	$ENV{SYSTEMC_HOME}/include
-  	$ENV{SYSTEMC_HOME}/lib
-  	$ENV{SYSTEMC_HOME}/lib64
-  	$ENV{SYSTEMC_HOME}/lib-linux
-  	$ENV{SYSTEMC_HOME}/lib-linux64
-  	$ENV{SYSTEMC_HOME}/lib-macos
   	)
 
 SET(_SYSTEMC_HINTS
@@ -92,23 +73,6 @@ SET(_TLM_HINTS
 SET(_SCV_HINTS
   	${_COMMON_HINTS}
     )
-
-SET(_CCI_HINTS
-	${NCROOT_PATH}/tools/systemc/include/cci/
-  	${CCI_PREFIX}/include
-  	${CCI_PREFIX}/lib
-  	${CCI_PREFIX}/lib64
-  	${CCI_PREFIX}/lib-linux
-  	${CCI_PREFIX}/lib-linux64
-  	${CCI_PREFIX}/lib-macos
-  	$ENV{CCI_HOME}/include
-  	$ENV{CCI_HOME}/lib
-  	$ENV{CCI_HOME}/lib64
-  	$ENV{CCI_HOME}/lib-linux
-  	$ENV{CCI_HOME}/lib-linux64
-  	$ENV{CCI_HOME}/lib-macos
-  	${_COMMON_HINTS}
-	)
 
 SET(_COMMON_PATHS
 	${NCROOT_PATH}/tools/systemc/include
@@ -161,8 +125,8 @@ if (SystemC_INCLUDE_DIR)
 endif()
 
 
-find_package_handle_standard_args(SystemC
-  FOUND_VAR SystemC_FOUND
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(XMSystemC
   REQUIRED_VARS
     ${LIB_VAR_NAMES}
     SystemC_INCLUDE_DIR
@@ -170,22 +134,24 @@ find_package_handle_standard_args(SystemC
   VERSION_VAR SystemC_VERSION
 )
 
-if(SystemC_FOUND)
+if(XMSystemC_FOUND)
+  set(SystemC_FOUND True)
   get_filename_component(NCSC_LIB_DIR ${systemc_sh_LIBRARY} DIRECTORY)
   set(SystemC_LIBRARY_DIRS ${NCSC_LIB_DIR})
-  set(SystemC_LIBRARIES ${NCSC_LIBS})     
+  set(SystemC_LIBRARIES ${NCSC_LIBS} ${NCROOT_PATH}/tools/lib/64bit/libudm.so)     
   set(SystemC_INCLUDE_DIRS ${TLM_INCLUDE_DIR} ${SystemC_INCLUDE_DIR})
-  set(SystemC_DEFINITIONS ${PC_SystemC_CFLAGS_OTHER} -DNCSC)
+  set(SystemC_DEFINITIONS ${PC_SystemC_CFLAGS_OTHER} NCSC)
 endif()
 
 if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
   add_library(SystemC::systemc UNKNOWN IMPORTED)
   set_target_properties(SystemC::systemc PROPERTIES
     IMPORTED_LOCATION ${systemc_sh_LIBRARY}
-    INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARIES}"
-    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
-    INTERFACE_COMPILE_OPTIONS "${SystemC_DEFINITIONS}"
+    INTERFACE_COMPILE_DEFINITIONS "${SystemC_DEFINITIONS}"
+    # INTERFACE_COMPILE_OPTIONS "${SystemC_OPTIONS}"
     INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
+    INTERFACE_LINK_DIRECTORIES "${SystemC_LIBRARY_DIRS}"
+    INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARIES}"
   )
 endif()
 
@@ -227,48 +193,6 @@ if(NOT SCV_INCLUDE_DIR MATCHES "SCV_INCLUDE_DIR-NOTFOUND")
 	    IMPORTED_LOCATION "${SCV_LIBRARY}"
 	    INTERFACE_COMPILE_OPTIONS "${PC_SCV_CFLAGS_OTHER}"
 	    INTERFACE_INCLUDE_DIRECTORIES "${SCV_INCLUDE_DIR}"
-	  )
-	endif()
-endif()
-
-FIND_PATH(CCI_INCLUDE_DIR
-  NAMES cci_configuration
-  HINTS ${_CCI_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-FIND_LIBRARY(CCI_LIBRARY
-  NAMES xmsccci_sh
-  HINTS ${_CCI_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-mark_as_advanced(
-  CCI_INCLUDE_DIR
-  CCI_LIBRARY
-)
-
-if(NOT CCI_INCLUDE_DIR MATCHES "CCI_INCLUDE_DIR-NOTFOUND")
-	find_package_handle_standard_args(CCI
-	  FOUND_VAR CCI_FOUND
-	  REQUIRED_VARS
-	    CCI_LIBRARY
-	    CCI_INCLUDE_DIR
-	  VERSION_VAR 1.0.0
-	)
-	
-	if(CCI_FOUND)
-	  set(CCI_LIBRARIES ${CCI_LIBRARY})
-	  set(CCI_INCLUDE_DIRS ${CCI_INCLUDE_DIR})
-	  set(CCI_DEFINITIONS ${PC_CCI_CFLAGS_OTHER})
-	endif()
-	
-	if(CCI_FOUND AND NOT TARGET SystemC::cci)
-	  add_library(SystemC::cci UNKNOWN IMPORTED)
-	  set_target_properties(SystemC::cci PROPERTIES
-	    IMPORTED_LOCATION "${CCI_LIBRARY}"
-	    INTERFACE_COMPILE_OPTIONS "${PC_CCI_CFLAGS_OTHER}"
-	    INTERFACE_INCLUDE_DIRECTORIES "${CCI_INCLUDE_DIR}"
 	  )
 	endif()
 endif()

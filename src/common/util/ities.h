@@ -22,12 +22,19 @@
 #include <assert.h>
 #include <bitset>
 #include <cctype>
+#include <climits>
 #include <iterator>
 #include <memory>
 #include <sstream>
 #include <sys/stat.h>
 #include <type_traits>
 #include <vector>
+
+#if __cplusplus < 201402L
+#define CONSTEXPR
+#else
+#define CONSTEXPR constexpr
+#endif
 
 /**
  * \ingroup scc-common
@@ -39,12 +46,25 @@
  *
  * @tparam bit start bit
  * @tparam width size of the bit field to extract
- * @tparam T data type cyrrying the bits
- * @param v value from which the bytes are to be extarcted
- * @return the extracted bit. It is of the sanen datatype as the passed value
+ * @tparam T data type carrying the bits
+ * @param v value from which the bytes are to be extracted
+ * @return the extracted bit. It is of the same data type as the passed value
  */
-template <unsigned int bit, unsigned int width, typename T> inline constexpr T bit_sub(T v) {
-    return (v >> bit) & ((T(1) << width) - 1);
+template <unsigned int bit, unsigned int width, typename T>
+CONSTEXPR typename std::enable_if<std::is_unsigned<T>::value, T>::type bit_sub(T v) {
+    static_assert((bit+width)<=8*sizeof(T));
+    T res = (v >> bit) & ((T(1) << width) - 1);
+    return res;
+}
+
+template <unsigned int bit, unsigned int width, typename T>
+CONSTEXPR typename std::enable_if<std::is_signed<T>::value, T>::type bit_sub(T v) {
+    static_assert((bit+width)<=8*sizeof(T));
+    static_assert(width>0);
+    auto field = v>>bit;
+    auto amount = (field & ~(~T(1) << (width - 1) << 1)) -
+                  (field & (T(1) << (width - 1)) << 1);
+    return amount;
 }
 /**
  * @brief sign-extend a given value
@@ -54,11 +74,8 @@ template <unsigned int bit, unsigned int width, typename T> inline constexpr T b
  * @param x the actualö value
  * @return the sign-extended value of type T
  */
-#if __cplusplus < 201402L
-template <typename T, unsigned B> inline T signextend(const T x) {
-#else
-template <typename T, unsigned B> inline constexpr T signextend(const typename std::make_unsigned<T>::type x) {
-#endif
+template <typename T, unsigned B>
+CONSTEXPR T signextend(const typename std::make_unsigned<T>::type x) {
     struct X {
         T x : B;
         X(T x_)
@@ -119,30 +136,40 @@ template <typename T> T leftmost_one(T n) {
 constexpr inline size_t bit_count(uint32_t u) { return __builtin_popcount(u); }
 constexpr inline size_t bit_count(uint64_t u) { return __builtin_popcountl(u); }
 #elif __cplusplus < 201402L
-constexpr size_t uCount(uint32_t u) { return u - ((u >> 1) & 033333333333) - ((u >> 2) & 011111111111); }
-constexpr size_t bit_count(uint32_t u) { return ((uCount(u) + (uCount(u) >> 3)) & 030707070707) % 63; }
+constexpr inline size_t uCount(uint32_t u) { return u - ((u >> 1) & 033333333333) - ((u >> 2) & 011111111111); }
+constexpr inline size_t bit_count(uint32_t u) { return ((uCount(u) + (uCount(u) >> 3)) & 030707070707) % 63; }
 #else
-constexpr size_t bit_count(uint32_t u) {
+constexpr inline size_t bit_count(uint32_t u) {
     size_t uCount = u - ((u >> 1) & 033333333333) - ((u >> 2) & 011111111111);
     return ((uCount + (uCount >> 3)) & 030707070707) % 63;
 }
 #endif
 
+template<typename T>
+CONSTEXPR typename std::enable_if<std::is_integral<T>::value, T>::type rotl (T n, unsigned int c) {
+  const unsigned int mask = (CHAR_BIT*sizeof(n) - 1);  // assumes width is a power of 2.
+  assert ( (c<=mask) &&"left rotate by type width or more");
+  c &= mask;
+  return (n<<c) | (n>>( (-c)&mask ));
+}
+
+template<typename T>
+CONSTEXPR typename std::enable_if<std::is_integral<T>::value, T>::type rotr (T n, unsigned int c) {
+  const unsigned int mask = (CHAR_BIT*sizeof(n) - 1);
+  assert ( (c<=mask) &&"left rotate by type width or more");
+  c &= mask;
+  return (n>>c) | (n<<( (-c)&mask ));
+}
 /**
  * get the log2 value fo an integer
  *
  * @param val the value
  * @return the number of bit needed to hold the value val
  */
-#if __cplusplus < 201402L
-inline unsigned ilog2(uint32_t val) {
-#else
-inline constexpr unsigned ilog2(uint32_t val) {
-#endif
+CONSTEXPR inline unsigned ilog2(uint32_t val) {
 #ifdef __GNUG__
     return sizeof(uint32_t) * 8 - 1 - __builtin_clz(static_cast<unsigned>(val));
 #else
-
     if(val == 0)
         return std::numeric_limits<uint32_t>::max();
     if(val == 1)
@@ -156,7 +183,11 @@ inline constexpr unsigned ilog2(uint32_t val) {
 #endif
 } // namespace util
 
-constexpr bool hasOddParity(uint32_t u) { return bit_count(u) % 2; }
+#if defined(__GNUG__)
+constexpr inline bool hasOddParity(uint32_t u) { return bit_count(u) % 2; }
+#else
+CONSTEXPR inline bool hasOddParity(uint32_t u) { return bit_count(u) % 2; }
+#endif
 /**
  * split a given string using specified separator
  *
@@ -254,6 +285,15 @@ inline std::string str_tolower(std::string str) {
     return str;
 }
 /**
+ * convert string to upper case
+ * @param str the string to convert
+ * @return
+ */
+inline std::string str_toupper(std::string str) {
+    std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c) { return std::toupper(c); });
+    return str;
+}
+/**
  * @fn bool iequals(const std::string&, const std::string&)
  * @brief compare two string ignoring case
  *
@@ -274,6 +314,14 @@ inline bool iequals(const std::string& a, const std::string& b) {
     return std::equal(a.begin(), a.end(), b.begin(), b.end(),
                       [](unsigned char a, unsigned char b) { return tolower(a) == tolower(b); });
 #endif
+}
+
+inline bool ends_with(std::string const & value, std::string const & ending){
+//    if (ending.size() > value.size()) return false;
+//    return std::equal(ending.rbegin(), ending.rend(), value.rbegin());
+    return value.length() >= ending.length()?
+    		!value.compare (value.length() - ending.length(), ending.length(), ending):
+			false;
 }
 /**
  * @fn std::string padded(std::string, size_t, bool=true)
@@ -335,6 +383,88 @@ template <class T> inline T remove_ext(T const& filename) {
     typename T::size_type const p(filename.find_last_of('.'));
     return p > 0 && p != T::npos ? filename.substr(0, p) : filename;
 }
+/**
+ * converts a globbing string into a regular expression
+ *
+ * The globbing supports ?,*,**, and character classes ([a-z] as well as [!a-z]). '.' acts as
+ * hierarchy delimiter and is only matched with **
+ * Regular expression must start with a carret ('^') so that it can be identified as regex.
+ *
+ * @param filename
+ * @return
+ */
+inline
+std::string  glob_to_regex(std::string val) {
+	const struct  {
+#ifdef MTI_SYSTEMC
+        const char *question_mark="[^/]";
+        const char *star= "[^/]*";
+#else
+        const char *question_mark="[^.]";
+		const char *star= "[^.]*";
+#endif
+		const char *double_star = ".*";
+	} subst_table;
+	auto is_regex_meta = [](char c)->bool {
+		switch(c) {
+		default: return false;
+		case '.':
+		case '(':
+		case ')':
+		case '{':
+		case '}':
+		case '+':
+		case '^':
+		case '$':
+		case '|':
+			return true;
+		}
+	};
+	util::trim(val);
+	std::ostringstream oss;
+	oss<<"^";
+	bool in_character_class = false, in_quote = false;
+	for (auto idx=0U; idx<val.length(); ++idx) {
+		auto c = val[idx];
+		if (in_character_class) {
+			in_character_class = ((c != ']') || (val[idx-1] == '\\'));
+			oss << c;
+			continue;
+		}
+		if (in_quote) {
+			in_quote = false;
+			oss << c;
+			continue;
+		}
+		if (c == '\\') {
+			in_quote = true;
+			oss << c;
+			continue;
+		} else if (c == '[') {
+			oss << c;
+			in_character_class = true;
+			if (val[idx+1] == '!') {
+				oss << '^';
+				idx++;
+			}
+		} else if (is_regex_meta(c)) {
+			oss << '\\' << c;
+		} else if (c == '?') {
+			oss << subst_table.question_mark;
+		} else if (c == '*') {
+			if ((idx+1)<val.length() && val[idx+1] == '*') {
+				idx++;
+				oss << subst_table.double_star;
+			} else
+				oss << subst_table.star;
+		} else {
+			oss << c;
+		}
+	}
+	oss<<"$";
+	return oss.str();
+}
+
 } // namespace util
 /** @} */
 #endif /* _UTIL_ITIES_H_ */

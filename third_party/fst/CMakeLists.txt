@@ -4,11 +4,18 @@ project (fstlib VERSION 1.0.0)
 
 find_package(ZLIB)
 if(ZLIB_FOUND)
-	add_library(fstapi fstapi.c lz4.c fastlz.c)
+	set (SRC fstapi.c fastlz.c)
+	if(NOT TARGET lz4::lz4)
+    	     list(APPEND SRC lz4.c)
+	endif()
+	add_library(fstapi ${SRC})
 	target_include_directories(fstapi PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${ZLIB_INCLUDE_DIRS})
 	target_link_libraries(fstapi PRIVATE ${ZLIB_LIBRARIES})
+	if(TARGET lz4::lz4)
+	     target_link_libraries(fstapi PRIVATE lz4::lz4)
+	endif()
 	# hack to avoid creating dummy config.h
-	target_compile_definitions(fstapi PRIVATE -DFST_CONFIG_INCLUDE="fstapi.h")
+	target_compile_definitions(fstapi PRIVATE FST_CONFIG_INCLUDE="fst_config.h" FST_DYNAMIC_ALIAS2_DISABLE)
 	
 	if(MSVC)
 	    # define __MINGW32__ to minimize changes to upstream
@@ -24,9 +31,9 @@ if(ZLIB_FOUND)
 	
 	install(TARGETS fstapi
 	        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-	        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-	        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_ARCHIVE_DIR_MODIFIER}
-	        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+	        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
+	        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
+	        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/fst
 	)
 	install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 	        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory

@@ -57,6 +57,7 @@ public axi::axi_bw_transport_if<axi::axi_protocol_types> {
         isckt.bind(*this);
         SC_METHOD(clk_delay);
         sensitive << clk_i.pos();
+        dont_initialize();
         SC_THREAD(ar_t);
         SC_THREAD(rresp_t);
         SC_THREAD(aw_t);
@@ -75,7 +76,17 @@ private:
 
     void setup_callbacks(axi::fsm::fsm_handle*) override;
 
-    void clk_delay() { clk_delayed.notify(clk_if ? clk_if->period() - 1_ps : 1_ps); }
+    void clk_delay() {
+    #ifdef DELTA_SYNC
+        if(sc_core::sc_delta_count_at_current_time()<5) {
+            clk_self.notify(sc_core::SC_ZERO_TIME);
+            next_trigger(clk_self);
+        } else
+            clk_delayed.notify(sc_core::SC_ZERO_TIME/*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
+#else
+        clk_delayed.notify(1_ps);
+#endif
+    }
     void ar_t();
     void rresp_t();
     void aw_t();
@@ -94,8 +105,8 @@ private:
         unsigned len;
         uint64_t user;
     };
-    sc_core::sc_clock* clk_if;
-    sc_core::sc_event clk_delayed, ar_end_req_evt, wdata_end_req_evt;
+    sc_core::sc_clock* clk_if{nullptr};
+    sc_core::sc_event clk_delayed, clk_self, ar_end_req_evt, wdata_end_req_evt;
     std::array<fsm_handle*, 3> active_req_beat;
     std::array<fsm_handle*, 3> active_req;
     std::array<fsm_handle*, 3> active_resp_beat;
@@ -111,7 +122,7 @@ template <typename CFG>
 inline tlm::tlm_sync_enum axi::pin::axi4_target<CFG>::nb_transport_bw(payload_type& trans, phase_type& phase,
         sc_core::sc_time& t) {
     auto ret = tlm::TLM_ACCEPTED;
-    sc_core::sc_time delay; // FIXME: calculate correct time
+    sc_core::sc_time delay=t<clk_if->period()?sc_core::SC_ZERO_TIME:t; // FIXME: calculate correct time
     SCCTRACE(SCMOD) << "nb_transport_bw " << phase << " of trans " << trans;
     if(phase == axi::END_PARTIAL_REQ || phase == tlm::END_REQ) { // read/write
         schedule(phase == tlm::END_REQ ? EndReqE : EndPartReqE, &trans, delay, false);
@@ -242,7 +253,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::ar_t() {
     auto arsize = util::ilog2(CFG::BUSWIDTH / 8);
     auto data_len = (1 << arsize) * (arlen + 1);
     while(true) {
-        wait(this->ar_valid.posedge_event() | clk_i.negedge_event());
+        wait(this->ar_valid.posedge_event() | clk_delayed);
         if(this->ar_valid.read()) {
             SCCTRACE(SCMOD) << "ARVALID detected for 0x" << std::hex << this->ar_addr.read();
             if(!CFG::IS_LITE) {
@@ -308,7 +319,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
     wait(sc_core::SC_ZERO_TIME);
     const auto awsize = util::ilog2(CFG::BUSWIDTH / 8);
     while(true) {
-        wait(this->aw_valid.posedge_event() | clk_i.negedge_event());
+        wait(this->aw_valid.posedge_event() | clk_delayed);
         if(this->aw_valid.event() || (!active_req_beat[tlm::TLM_IGNORE_COMMAND] && this->aw_valid.read())) {
             SCCTRACE(SCMOD) << "AWVALID detected for 0x" << std::hex << this->aw_addr.read();
             // clang-format off
@@ -335,7 +346,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
     this->w_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        wait(this->w_valid.posedge_event() | clk_i.negedge_event());
+        wait(this->w_valid.posedge_event() | clk_delayed);
         this->w_ready.write(false);
         if(this->w_valid.event() || (!active_req_beat[tlm::TLM_WRITE_COMMAND] && this->w_valid.read())) {
             if(!active_req[tlm::TLM_WRITE_COMMAND]) {
@@ -403,7 +414,12 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
                 }
             }
             // TODO: assuming consecutive write (not scattered)
-            auto act_data_len = CFG::IS_LITE? gp->get_data_length() + util::bit_count(strb.to_uint()): (beat_count+1) * size;
+            auto strobe = strb.to_uint();
+            auto act_data_len = CFG::IS_LITE? util::bit_count(strobe): (beat_count+1) * size;
+//            if(CFG::IS_LITE && act_data_len<CFG::BUSWIDTH/8) {
+//                std::fill(gp->get_byte_enable_ptr(), gp->get_byte_enable_ptr() + act_data_len, 0xff);
+//                std::fill(gp->get_byte_enable_ptr() + act_data_len, gp->get_byte_enable_ptr() + gp->get_byte_enable_length(), 0x0);
+//            }
             gp->set_data_length(act_data_len);
             gp->set_byte_enable_length(act_data_len);
             gp->set_streaming_width(act_data_len);

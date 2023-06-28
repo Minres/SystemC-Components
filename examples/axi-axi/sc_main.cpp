@@ -34,7 +34,7 @@ public:
 
 private:
     tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<>> top_isck{"top_isck"};
-    scc::memory<1_GB> mem{"mem"};
+    scc::memory<1_GB, 0> mem{"mem"};
 
     unsigned id{0};
     unsigned int StartAddr{0};
@@ -52,10 +52,6 @@ public:
         intor.isck(intor_rec.tsckt);
         intor_rec.isckt(tgt.tsck);
         tgt.isck(mem.target);
-    }
-
-    void trace( sc_trace_file* trf ) const override {
-        scc::sc_trace(trf, id, std::string(name())+".id"); // trace a local variable
     }
 
     tlm::tlm_generic_payload* prepare_trans(size_t len) {
@@ -104,6 +100,7 @@ public:
 
 int sc_main(int argc, char* argv[]) {
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
+    sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY | SC_STOP);
     // clang-format off
     scc::init_logging(
             scc::LogConfig()
@@ -111,24 +108,16 @@ int sc_main(int argc, char* argv[]) {
             .logAsync(false)
             .coloredOutput(true));
     // clang-format off
-    sc_report_handler::set_actions(SC_ERROR, SC_LOG | SC_CACHE_REPORT | SC_DISPLAY);
 #ifdef WITH_FST
     auto trc = scc::create_fst_trace_file("axi-axi");
 #else
     auto trc = scc::create_vcd_push_trace_file("axi_axi_test");
 #endif
-#ifdef HAS_CCI
     scc::configurable_tracer trace("axi_axi_test",
                                    scc::tracer::file_type::TEXT, // define the kind of transaction trace
-                                   trc,                         // enables vcd
+                                   trc,                          // enables vcd
                                    true);
-#else
-    scc::tracer trace("axi_axi_test",
-                      scc::tracer::file_type::NONE, // define the kind of transaction trace
-                      trc);                        // enables vcd
-#endif
     testbench tb("tb");
-    tb.trace(trc);
     scc::hierarchy_dumper d("axi_axi_test.json", scc::hierarchy_dumper::D3JSON);
     //scc::hierarchy_dumper d("axi_axi_test.elkt", scc::hierarchy_dumper::ELKT);
     try {

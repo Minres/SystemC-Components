@@ -108,7 +108,7 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
     constexpr static unsigned int BUSWIDTH = BUSWDTH;
     constexpr static unsigned int ADDRWIDTH = ADDRWDTH;
     constexpr static unsigned int IDWIDTH = 0;
-    constexpr static unsigned int USERWIDTH = 0;
+    constexpr static unsigned int USERWIDTH = 1;
     using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
     using slave_types = ::axi::lite_slave_types;
     using master_types = ::axi::lite_master_types;
@@ -117,6 +117,7 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
 inline std::string concat(const char* prefix, const char* name) { return std::string(prefix) + name; }
 
 //! Write address channel signals
+template <typename CFG, typename TYPES = master_types> struct aw_ch_lite;
 template <typename CFG, typename TYPES = master_types> struct aw_ch {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> aw_id{"aw_id"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> aw_addr{"aw_addr"};
@@ -163,9 +164,11 @@ template <typename CFG, typename TYPES = master_types> struct aw_ch {
         aw_len.bind(o.aw_len);
         aw_user.bind(o.aw_user);
     }
+    template<typename OTYPES> void bind_aw(aw_ch_lite<CFG, OTYPES> &o);
 };
 
 //! write data channel signals
+template <typename CFG, typename TYPES = master_types> struct wdata_ch_lite;
 template <typename CFG, typename TYPES = master_types> struct wdata_ch {
     typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::IDWIDTH>> w_id{"w_id"};
     typename TYPES::template m2s_t<typename CFG::data_t> w_data{"w_data"};
@@ -194,9 +197,11 @@ template <typename CFG, typename TYPES = master_types> struct wdata_ch {
         w_ready.bind(o.w_ready);
         w_user.bind(o.w_user);
     }
+    template<typename OTYPES> void bind_w(wdata_ch_lite<CFG, OTYPES> &o);
 };
 
 //! write response channel signals
+template <typename CFG, typename TYPES = master_types> struct b_ch_lite;
 template <typename CFG, typename TYPES = master_types> struct b_ch {
     typename TYPES::template s2m_t<bool> b_valid{"b_valid"};
     typename TYPES::template m2s_t<bool> b_ready{"b_ready"};
@@ -219,9 +224,11 @@ template <typename CFG, typename TYPES = master_types> struct b_ch {
         b_resp.bind(o.b_resp);
         b_user.bind(o.b_user);
     }
+    template<typename OTYPES> void bind_b(b_ch_lite<CFG, OTYPES> &o);
 };
 
 //! read address channel signals
+template <typename CFG, typename TYPES = master_types> struct ar_ch_lite;
 template <typename CFG, typename TYPES = master_types> struct ar_ch {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> ar_id{"ar_id"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> ar_addr{"ar_addr"};
@@ -268,9 +275,11 @@ template <typename CFG, typename TYPES = master_types> struct ar_ch {
         ar_ready.bind(o.ar_ready);
         ar_user.bind(o.ar_user);
     }
+    template<typename OTYPES> void bind_ar(ar_ch_lite<CFG, OTYPES> &o);
 };
 
 //! Read data channel signals
+template <typename CFG, typename TYPES = master_types> struct rresp_ch_lite;
 template <typename CFG, typename TYPES = master_types> struct rresp_ch {
     typename TYPES::template s2m_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> r_id{"r_id"};
     typename TYPES::template s2m_t<typename CFG::data_t> r_data{"r_data"};
@@ -299,7 +308,159 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ch {
         r_ready.bind(o.r_ready);
         r_user.bind(o.r_user);
     }
+    template<typename OTYPES> void bind_r(rresp_ch_lite<CFG, OTYPES> &o);
 };
+
+//! Write address channel signals
+template <typename CFG, typename TYPES> struct aw_ch_lite {
+    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> aw_addr{"aw_addr"};
+    typename TYPES::template s2m_t<bool> aw_ready{"aw_ready"};
+    typename TYPES::template m2s_t<bool> aw_valid{"aw_valid"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<3>> aw_prot{"aw_prot"};
+
+    aw_ch_lite() = default;
+    aw_ch_lite(const char* prefix)
+    : aw_addr{concat(prefix, "aw_addr").c_str()}
+    , aw_ready{concat(prefix, "aw_ready").c_str()}
+    , aw_valid{concat(prefix, "aw_valid").c_str()}
+    , aw_prot{concat(prefix, "aw_prot").c_str()} {}
+
+    template <typename OTYPES> void bind_aw(aw_ch<CFG, OTYPES>& o) {
+        aw_addr.bind(o.aw_addr);
+        aw_ready.bind(o.aw_ready);
+        aw_valid.bind(o.aw_valid);
+        aw_prot.bind(o.aw_prot);
+    }
+};
+
+//! write data channel signals
+template <typename CFG, typename TYPES> struct wdata_ch_lite {
+    typename TYPES::template m2s_t<typename CFG::data_t> w_data{"w_data"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::BUSWIDTH / 8>> w_strb{"w_strb"};
+    typename TYPES::template m2s_t<bool> w_valid{"w_valid"};
+    typename TYPES::template s2m_t<bool> w_ready{"w_ready"};
+
+    wdata_ch_lite() = default;
+    wdata_ch_lite(const char* prefix)
+    : w_data{concat(prefix, "w_data").c_str()}
+    , w_strb{concat(prefix, "w_strb").c_str()}
+    , w_valid{concat(prefix, "w_valid").c_str()}
+    , w_ready{concat(prefix, "w_ready").c_str()} {}
+
+    template <typename OTYPES> void bind_w(wdata_ch<CFG, OTYPES>& o) {
+        w_data.bind(o.w_data);
+        w_strb.bind(o.w_strb);
+        w_valid.bind(o.w_valid);
+        w_ready.bind(o.w_ready);
+    }
+};
+
+//! write response channel signals
+template <typename CFG, typename TYPES> struct b_ch_lite {
+    typename TYPES::template s2m_t<bool> b_valid{"b_valid"};
+    typename TYPES::template m2s_t<bool> b_ready{"b_ready"};
+    typename TYPES::template s2m_t<sc_dt::sc_uint<2>> b_resp{"b_resp"};
+
+    b_ch_lite() = default;
+    b_ch_lite(const char* prefix)
+    : b_valid{concat(prefix, "b_valid").c_str()}
+    , b_ready{concat(prefix, "b_ready").c_str()}
+    , b_resp{concat(prefix, "b_resp").c_str()} {}
+
+    template <typename OTYPES> void bind_b(b_ch<CFG, OTYPES>& o) {
+        b_valid.bind(o.b_valid);
+        b_ready.bind(o.b_ready);
+        b_resp.bind(o.b_resp);
+    }
+};
+
+//! read address channel signals
+template <typename CFG, typename TYPES> struct ar_ch_lite {
+    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> ar_addr{"ar_addr"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<3>> ar_prot{"ar_prot"};
+    typename TYPES::template m2s_t<bool> ar_valid{"ar_valid"};
+    typename TYPES::template s2m_t<bool> ar_ready{"ar_ready"};
+
+    ar_ch_lite() = default;
+    ar_ch_lite(const char* prefix)
+    : ar_addr{concat(prefix, "ar_addr").c_str()}
+    , ar_prot{concat(prefix, "ar_prot").c_str()}
+    , ar_valid{concat(prefix, "ar_valid").c_str()}
+    , ar_ready{concat(prefix, "ar_ready").c_str()} {}
+
+    template <typename OTYPES> void bind_ar(ar_ch<CFG, OTYPES>& o) {
+        ar_addr.bind(o.ar_addr);
+        ar_prot.bind(o.ar_prot);
+        ar_valid.bind(o.ar_valid);
+        ar_ready.bind(o.ar_ready);
+    }
+};
+
+//! Read data channel signals
+template <typename CFG, typename TYPES> struct rresp_ch_lite {
+    typename TYPES::template s2m_t<typename CFG::data_t> r_data{"r_data"};
+    typename TYPES::template s2m_t<sc_dt::sc_uint<2>> r_resp{"r_resp"};
+    typename TYPES::template s2m_t<bool> r_valid{"r_valid"};
+    typename TYPES::template m2s_t<bool> r_ready{"r_ready"};
+
+    rresp_ch_lite() = default;
+    rresp_ch_lite(const char* prefix)
+    : r_data{concat(prefix, "r_data").c_str()}
+    , r_resp{concat(prefix, "r_resp").c_str()}
+    , r_valid{concat(prefix, "r_valid").c_str()}
+    , r_ready{concat(prefix, "r_ready").c_str()} {}
+
+    template <typename OTYPES> void bind_r(rresp_ch<CFG, OTYPES>& o) {
+        r_data.bind(o.r_data);
+        r_resp.bind(o.r_resp);
+        r_valid.bind(o.r_valid);
+        r_ready.bind(o.r_ready);
+    }
+};
+
+template<typename CFG, typename TYPES>
+template<typename OTYPES>
+inline void ar_ch<CFG, TYPES>::bind_ar(ar_ch_lite<CFG, OTYPES> &o) {
+    ar_addr.bind(o.ar_addr);
+    ar_prot.bind(o.ar_prot);
+    ar_valid.bind(o.ar_valid);
+    ar_ready.bind(o.ar_ready);
+}
+
+template<typename CFG, typename TYPES>
+template<typename OTYPES>
+inline void rresp_ch<CFG, TYPES>::bind_r(rresp_ch_lite<CFG, OTYPES> &o) {
+    r_data.bind(o.r_data);
+    r_resp.bind(o.r_resp);
+    r_valid.bind(o.r_valid);
+    r_ready.bind(o.r_ready);
+}
+
+template<typename CFG, typename TYPES>
+template<typename OTYPES>
+inline void aw_ch<CFG, TYPES>::bind_aw(aw_ch_lite<CFG, OTYPES> &o) {
+    aw_addr.bind(o.aw_addr);
+    aw_ready.bind(o.aw_ready);
+    aw_valid.bind(o.aw_valid);
+    aw_prot.bind(o.aw_prot);
+}
+
+template<typename CFG, typename TYPES>
+template<typename OTYPES>
+inline void wdata_ch<CFG, TYPES>::bind_w(wdata_ch_lite<CFG, OTYPES> &o) {
+    w_data.bind(o.w_data);
+    w_strb.bind(o.w_strb);
+    w_valid.bind(o.w_valid);
+    w_ready.bind(o.w_ready);
+}
+
+template<typename CFG, typename TYPES>
+template<typename OTYPES>
+inline void b_ch<CFG, TYPES>::bind_b(b_ch_lite<CFG, OTYPES> &o) {
+    b_valid.bind(o.b_valid);
+    b_ready.bind(o.b_ready);
+    b_resp.bind(o.b_resp);
+}
 
 } // namespace axi
 #endif /* _BUS_AXI_SIGNAL_IF_H_ */

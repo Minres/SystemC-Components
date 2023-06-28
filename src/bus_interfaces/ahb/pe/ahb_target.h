@@ -17,7 +17,9 @@
 #ifndef _BUS_AHB_PE_TARGET_H_
 #define _BUS_AHB_PE_TARGET_H_
 
+#ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
+#endif
 
 #include <ahb/ahb_tlm.h>
 #include <array>

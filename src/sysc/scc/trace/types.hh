@@ -20,7 +20,14 @@
 #include <type_traits>
 #include <systemc>
 #include <sysc/datatypes/fx/fx.h>
+#ifndef NCSC
 #include <sysc/tracing/sc_tracing_ids.h>
+#else
+namespace sc_core {
+static  const char* SC_ID_TRACING_OBJECT_IGNORED_="object cannot not be traced";
+static  const char* SC_ID_TRACING_OBJECT_NAME_FILTERED_="traced object name filtered";
+}
+#endif
 
 namespace scc {
 namespace trace {

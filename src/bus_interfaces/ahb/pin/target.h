@@ -25,14 +25,15 @@ namespace ahb {
 //! pin level adapters
 namespace pin {
 
-template <unsigned WIDTH> class target : sc_core::sc_module {
+template <unsigned DWIDTH, unsigned AWIDTH> class target : sc_core::sc_module {
     static constexpr bool is_larger(unsigned x) { return x > 64U; }
-    using data_t = typename std::conditional<is_larger(WIDTH), sc_dt::sc_biguint<WIDTH>, sc_dt::sc_uint<WIDTH>>::type;
+    using addr_t = typename std::conditional<is_larger(AWIDTH), sc_dt::sc_biguint<AWIDTH>, sc_dt::sc_uint<AWIDTH>>::type;
+    using data_t = typename std::conditional<is_larger(DWIDTH), sc_dt::sc_biguint<DWIDTH>, sc_dt::sc_uint<DWIDTH>>::type;
 
 public:
     sc_core::sc_in<bool> HCLK_i{"HCLK_i"};
     sc_core::sc_in<bool> HRESETn_i{"HRESETn_i"};
-    sc_core::sc_in<sc_dt::sc_uint<32>> HADDR_i{"HADDR_i"};
+    sc_core::sc_in<addr_t> HADDR_i{"HADDR_i"};
     sc_core::sc_in<sc_dt::sc_uint<3>> HBURST_i{"HBURST_i"};
     sc_core::sc_in<bool> HMASTLOCK_i{"HMASTLOCK_i"};
     sc_core::sc_in<sc_dt::sc_uint<4>> HPROT_i{"HPROT_i"};
@@ -45,7 +46,7 @@ public:
     sc_core::sc_out<bool> HREADY_o{"HREADY_o"};
     sc_core::sc_out<bool> HRESP_o{"HRESP_o"};
 
-    tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<WIDTH>> isckt{"isckt"};
+    tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<0>> isckt{"isckt"};
 
     target(const sc_core::sc_module_name& nm);
     virtual ~target();

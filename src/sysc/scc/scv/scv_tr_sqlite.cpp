@@ -21,6 +21,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <unordered_map>
 #ifdef HAS_SCV
 #include <scv.h>
 #else
@@ -29,6 +30,7 @@ namespace scv_tr {
 #endif
 // ----------------------------------------------------------------------------
 constexpr auto SQLITEWRAPPER_ERROR = 1000;
+constexpr auto with_transactions = false;
 // ----------------------------------------------------------------------------
 using namespace std;
 
@@ -56,6 +58,16 @@ public:
         if(nRet != SQLITE_OK)
             throw SQLiteException(nRet, sqlite3_errmsg(db), false);
         sqlite3_busy_timeout(db, busyTimeoutMs);
+        nRet =  sqlite3_config(SQLITE_CONFIG_MMAP_SIZE, 1ULL<<26, 1ULL<<30);
+        char *zSql = sqlite3_mprintf(
+        		"PRAGMA journal_mode=OFF;\n" \
+				"PRAGMA synchronous=OFF;\n"
+				);
+        char *zErrMsg = nullptr;
+        nRet = sqlite3_exec(db, zSql, 0, 0, &zErrMsg);
+        if(nRet != SQLITE_OK)
+            throw SQLiteException(nRet, sqlite3_errmsg(db), false);
+        sqlite3_free(zSql);
     }
 
     inline bool isOpen() { return db != nullptr; }
@@ -121,13 +133,14 @@ private:
 // ----------------------------------------------------------------------------
 static SQLiteDB db;
 static vector<vector<uint64_t>*> concurrencyLevel;
-static sqlite3_stmt *stream_stmt, *gen_stmt, *tx_stmt, *evt_stmt, *attr_stmt, *rel_stmt;
+static sqlite3_stmt *string_stmt, *stream_stmt, *gen_stmt, *tx_stmt, *evt_stmt, *attr_stmt, *rel_stmt;
 
 // ----------------------------------------------------------------------------
 enum EventType { BEGIN, RECORD, END };
 using data_type = scv_extensions_if::data_type;
 // ----------------------------------------------------------------------------
 #define SIM_PROPS "ScvSimProps"
+#define STRING_TABLE "ScvStrings"
 #define STREAM_TABLE "ScvStream"
 #define GENERATOR_TABLE "ScvGenerator"
 #define TX_TABLE "ScvTx"
@@ -150,31 +163,56 @@ static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason,
             // http://blog.quibb.org/2010/08/fast-bulk-inserts-into-sqlite/
             db.exec("PRAGMA synchronous=OFF");
             db.exec("PRAGMA count_changes=OFF");
-            db.exec("PRAGMA journal_mode=MEMORY");
+            db.exec("PRAGMA journal_mode=OFF");
             db.exec("PRAGMA temp_store=MEMORY");
             // scv_out << "TB Transaction Recording has started, file = " <<
             // my_sqlite_file_name << endl;
-            db.exec("CREATE TABLE  IF NOT EXISTS " STREAM_TABLE
-                    "(id INTEGER  NOT null PRIMARY KEY, name TEXT, kind TEXT);");
-            db.exec("CREATE TABLE  IF NOT EXISTS " GENERATOR_TABLE "(id INTEGER  NOT null PRIMARY KEY, stream INTEGER "
-                    "REFERENCES " STREAM_TABLE "(id), name TEXT, begin_attr INTEGER, end_attr INTEGER);");
-            db.exec("CREATE TABLE  IF NOT EXISTS " TX_TABLE "(id INTEGER  NOT null PRIMARY KEY, generator INTEGER "
-                    "REFERENCES " GENERATOR_TABLE "(id), stream INTEGER REFERENCES " STREAM_TABLE
-                    "(id), concurrencyLevel INTEGER);");
-            db.exec("CREATE TABLE  IF NOT EXISTS " TX_EVENT_TABLE "(tx INTEGER REFERENCES " TX_TABLE
-                    "(id), type INTEGER, time INTEGER);");
-            db.exec("CREATE TABLE  IF NOT EXISTS " TX_ATTRIBUTE_TABLE "(tx INTEGER REFERENCES " TX_TABLE
-                    "(id), type INTEGER, name "
-                    "TEXT, data_type INTEGER, "
-                    "data_value TEXT);");
-            db.exec("CREATE TABLE  IF NOT EXISTS " TX_RELATION_TABLE "(name TEXT, src INTEGER REFERENCES " TX_TABLE
-                    "(id), sink INTEGER REFERENCES " TX_TABLE "(id));");
-            db.exec("CREATE TABLE  IF NOT EXISTS " SIM_PROPS "(time_resolution INTEGER);");
-            db.exec("BEGIN TRANSACTION");
+            db.exec("CREATE TABLE  IF NOT EXISTS " STRING_TABLE "("
+            		"id INTEGER NOT null PRIMARY KEY, "
+            		"value TEXT"
+            		");");
+            db.exec("CREATE TABLE  IF NOT EXISTS " STREAM_TABLE  "("
+            		"id INTEGER  NOT null PRIMARY KEY,  "
+            		"name INTEGER REFERENCES " STRING_TABLE "(id), "
+					"kind INTEGER REFERENCES " STRING_TABLE "(id)"
+					");");
+            db.exec("CREATE TABLE  IF NOT EXISTS " GENERATOR_TABLE "("
+            		"id INTEGER  NOT null PRIMARY KEY, "
+            		"stream INTEGER REFERENCES " STREAM_TABLE "(id), "
+					"name INTEGER REFERENCES " STRING_TABLE "(id), "
+					"begin_attr INTEGER, "
+					"end_attr INTEGER"
+					");");
+            db.exec("CREATE TABLE  IF NOT EXISTS " TX_TABLE "("
+            		"id INTEGER  NOT null PRIMARY KEY, "
+            		"generator INTEGER REFERENCES " GENERATOR_TABLE "(id), "
+					"stream INTEGER REFERENCES " STREAM_TABLE "(id), "
+					"concurrencyLevel INTEGER"
+					");");
+            db.exec("CREATE TABLE  IF NOT EXISTS " TX_EVENT_TABLE "("
+            		"tx INTEGER REFERENCES " TX_TABLE "(id), "
+            		"type INTEGER, "
+            		"time INTEGER"
+            		");");
+            db.exec("CREATE TABLE  IF NOT EXISTS " TX_ATTRIBUTE_TABLE "("
+            		"tx INTEGER REFERENCES " TX_TABLE "(id), "
+            		"type INTEGER, "
+            		"name INTEGER REFERENCES " STRING_TABLE "(id), "
+					"data_type INTEGER, "
+					"data_value TEXT"
+					");");
+            db.exec("CREATE TABLE  IF NOT EXISTS " TX_RELATION_TABLE "("
+            		"name INTEGER REFERENCES " STRING_TABLE "(id), "
+					"src INTEGER REFERENCES " TX_TABLE "(id), "
+					"sink INTEGER REFERENCES " TX_TABLE "(id)"
+					");");
+            db.exec("CREATE TABLE IF NOT EXISTS " SIM_PROPS "(time_resolution INTEGER);");
+            if(with_transactions) db.exec("BEGIN TRANSACTION");
             std::ostringstream ss;
             ss << "INSERT INTO " SIM_PROPS " (time_resolution) values ("
                << (long)(sc_core::sc_get_time_resolution().to_seconds() * 1e15) << ");";
             db.exec(ss.str().c_str());
+            string_stmt = db.prepare("INSERT INTO " STRING_TABLE " (id, value) values (@ID,@VALUE);");
             stream_stmt = db.prepare("INSERT INTO " STREAM_TABLE " (id, name, kind) values (@ID,@NAME,@KIND);");
             gen_stmt = db.prepare("INSERT INTO " GENERATOR_TABLE " (id,stream, name)"
                                   " values (@ID,@STRM_DI,@NAME);");
@@ -186,7 +224,6 @@ static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason,
                                    "values (@ID,@EVENTID,@NAME,@TYPE,@VALUE);");
             rel_stmt = db.prepare("INSERT INTO " TX_RELATION_TABLE " (name,sink,src)"
                                   "values (@NAME,@ID1,@ID2);");
-
         } catch(SQLiteDB::SQLiteException& e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't open recording file");
         }
@@ -195,7 +232,7 @@ static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason,
         try {
             // scv_out << "Transaction Recording is closing file: " <<
             // my_sqlite_file_name << endl;
-            db.exec("COMMIT TRANSACTION");
+        	if(with_transactions) db.exec("COMMIT TRANSACTION");
             db.close();
         } catch(SQLiteDB::SQLiteException& e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't close recording file");
@@ -206,13 +243,28 @@ static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason,
     }
 }
 // ----------------------------------------------------------------------------
+static std::unordered_map<std::string, uint64_t> str_map;
+uint64_t getStringId(std::string const& s){
+	auto it = str_map.find(s);
+	if(it!=std::end(str_map)) return it->second;
+	auto id = str_map.size();
+	str_map.insert({s, id});
+    try {
+    	sqlite3_bind_int64(string_stmt, 1, id);
+    	sqlite3_bind_text(string_stmt, 2, s.c_str(), -1, SQLITE_TRANSIENT);
+    	db.exec(string_stmt);
+	} catch(SQLiteDB::SQLiteException& e) {
+		_scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create string entry");
+	}
+	return id;
+}
+// ----------------------------------------------------------------------------
 static void streamCb(const scv_tr_stream& s, scv_tr_stream::callback_reason reason, void* data) {
     if(reason == scv_tr_stream::CREATE && db.isOpen()) {
         try {
             sqlite3_bind_int64(stream_stmt, 1, s.get_id());
-            sqlite3_bind_text(stream_stmt, 2, s.get_name(), -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(stream_stmt, 3, s.get_stream_kind() ? s.get_stream_kind() : "<unnamed>", -1,
-                              SQLITE_TRANSIENT);
+            sqlite3_bind_int64(stream_stmt, 2, getStringId(s.get_name()));
+            sqlite3_bind_int64(stream_stmt, 3, getStringId(s.get_stream_kind() ? s.get_stream_kind() : "<unnamed>"));
             db.exec(stream_stmt);
             if(concurrencyLevel.size() <= s.get_id())
                 concurrencyLevel.resize(s.get_id() + 1);
@@ -226,10 +278,10 @@ static void streamCb(const scv_tr_stream& s, scv_tr_stream::callback_reason reas
 void recordAttribute(uint64_t id, EventType event, const string& name, data_type type, const string& value) {
     try {
         sqlite3_bind_int64(attr_stmt, 1, id);
-        sqlite3_bind_int(attr_stmt, 2, event);
-        sqlite3_bind_text(attr_stmt, 3, name.c_str(), -1, SQLITE_TRANSIENT);
-        sqlite3_bind_int(attr_stmt, 4, type);
-        sqlite3_bind_text(attr_stmt, 5, value.c_str(), -1, SQLITE_TRANSIENT);
+        sqlite3_bind_int64(attr_stmt, 2, event);
+        sqlite3_bind_int64(attr_stmt, 3, getStringId(name));
+        sqlite3_bind_int64(attr_stmt, 4, type);
+        sqlite3_bind_int64(attr_stmt, 5, getStringId(value));
         db.exec(attr_stmt);
     } catch(SQLiteDB::SQLiteException& e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create attribute entry");
@@ -321,7 +373,7 @@ static void generatorCb(const scv_tr_generator_base& g, scv_tr_generator_base::c
         try {
             sqlite3_bind_int64(gen_stmt, 1, g.get_id());
             sqlite3_bind_int64(gen_stmt, 2, g.get_scv_tr_stream().get_id());
-            sqlite3_bind_text(gen_stmt, 3, g.get_name(), -1, SQLITE_TRANSIENT);
+            sqlite3_bind_int64(gen_stmt, 3, getStringId(g.get_name()));
             db.exec(gen_stmt);
         } catch(SQLiteDB::SQLiteException& e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create generator entry");
@@ -434,8 +486,7 @@ static void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, voi
     if(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
         return;
     try {
-        sqlite3_bind_text(rel_stmt, 1, tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), -1,
-                          SQLITE_TRANSIENT);
+    	sqlite3_bind_int64(rel_stmt, 1, getStringId(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle)));
         sqlite3_bind_int64(rel_stmt, 2, tr_1.get_id());
         sqlite3_bind_int64(rel_stmt, 3, tr_2.get_id());
         db.exec(rel_stmt);

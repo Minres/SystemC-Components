@@ -1,0 +1,42 @@
+/*****************************************************************************
+
+  Licensed to Accellera Systems Initiative Inc. (Accellera) under one or
+  more contributor license agreements.  See the NOTICE file distributed
+  with this work for additional information regarding copyright ownership.
+  Accellera licenses this file to you under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with the
+  License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+  implied.  See the License for the specific language governing
+  permissions and limitations under the License.
+
+ ****************************************************************************/
+
+#ifndef CCI_CCI_HEADER_INCLUDED_
+#define CCI_CCI_HEADER_INCLUDED_
+
+// CCI core includes
+
+#include "cci_core/cci_version.h"
+#include "cci_core/cci_name_gen.h"
+#include "cci_core/cci_core_types.h"
+#include "cci_core/cci_value.h"
+#include "cci_core/cci_value_converter.h"
+
+// CCI config includes
+
+#include "cci_cfg/cci_mutable_types.h"
+#include "cci_cfg/cci_originator.h"
+#include "cci_cfg/cci_broker_handle.h"
+#include "cci_cfg/cci_broker_if.h"
+#include "cci_cfg/cci_broker_manager.h"
+#include "cci_cfg/cci_param_typed.h"
+#include "cci_cfg/cci_param_typed_handle.h"
+#include "cci_cfg/cci_macros_undef.h"
+
+#endif // CCI_CCI_HEADER_INCLUDED_

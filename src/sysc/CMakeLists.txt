@@ -4,13 +4,12 @@ find_package(Threads)
 find_package(Boost REQUIRED COMPONENTS date_time filesystem)
 find_package(ZLIB)
 
-option(ENABLE_SQLITE "Enable SQLite backend for SCV" OFF)
+option(ENABLE_SQLITE "Enable SQLite backend for SCV" ON)
 
 if (MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
 endif()
 
-include(SystemCPackage)
 if(SystemC_FOUND)
     message(STATUS "SystemC headers at ${SystemC_INCLUDE_DIRS}")
     message(STATUS "SystemC libraries: ${SystemC_LIBRARIES}")
@@ -18,17 +17,12 @@ if(SystemC_FOUND)
         message(STATUS "SCV headers at ${SCV_INCLUDE_DIRS}")
         message(STATUS "SCV libraries: ${SCV_LIBRARIES}")
     endif(SCV_FOUND)
-    if(CCI_FOUND)
-        message(STATUS "CCI headers at ${CCI_INCLUDE_DIRS}")
-        message(STATUS "CCI libraries: ${CCI_LIBRARIES}")
-    endif()
 else()
     message(FATAL_ERROR "No usable SystemC installation found")
 endif()
 
 set(LIB_SOURCES
     scc/utilities.cpp 
-    scc/configurer.cpp
     scc/tracer_base.cpp
     scc/tracer.cpp
     scc/perf_estimator.cpp
@@ -41,32 +35,28 @@ set(LIB_SOURCES
     #scc/scv/scv_tr_binary.cpp
     scc/scv/scv_tr_mtc.cpp
     scc/scv/scv_tr_lz4.cpp
+    scc/scv/scv_tr_ftr.cpp
     scc/vcd_mt_trace.cpp
     scc/vcd_pull_trace.cpp
     scc/vcd_push_trace.cpp
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp
     scc/hierarchy_dumper.cpp
+    scc/cci_broker.cpp
+    scc/configurer.cpp
+    scc/configurable_tracer.cpp
+    scc/sc_thread_pool.cpp
+    tlm/scc/lwtr/tlm2_lwtr.cpp
 )
 
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
-    list(APPEND LIB_SOURCES  scc/scv/scv_tr_compressed.cpp)
-	if(TARGET lz4::lz4 OR TARGET CONAN_PKG::lz4)
-        list(APPEND LIB_SOURCES scc/fst_trace.cpp)
-        set(WITH_FST ON)
-    endif()
+    list(APPEND LIB_SOURCES  scc/scv/scv_tr_compressed.cpp scc/fst_trace.cpp)
+    set(WITH_FST ON)
 endif()
 
 if(ENABLE_SQLITE)
-    list(Append LIB_SOURCES  scc/scv/scv_tr_sqlite.cpp ../../third_party/sqlite3/sqlite3.c )
-endif()
-
-if(CCI_FOUND)
-    list(APPEND LIB_SOURCES  
-        scc/configurable_tracer.cpp
-        scc/sc_thread_pool.cpp
-    )
+    list(APPEND LIB_SOURCES  scc/scv/scv_tr_sqlite.cpp ../../third_party/sqlite3/sqlite3.c )
 endif()
 
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
@@ -81,26 +71,30 @@ if(SC_WITH_PHASE_CALLBACK_TRACING)
 endif()
 
 target_include_directories (${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(${PROJECT_NAME} PUBLIC scc-util RapidJSON ${SPDLOG_TARGET})
+target_link_libraries(${PROJECT_NAME} PUBLIC scc-util RapidJSON ${SPDLOG_TARGET} lwtr)
 if(ENABLE_SQLITE)
     target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SQLITE)
     target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../third_party/sqlite3)
 endif()
-if(TARGET Boost::date_time)
-    target_link_libraries(${PROJECT_NAME} PUBLIC Boost::date_time Boost::filesystem)
-else()
-    target_include_directories(${PROJECT_NAME} PUBLIC ${Boost_INCLUDE_DIRS})
-    target_link_libraries(${PROJECT_NAME} PUBLIC ${Boost_datetime_LIBRARY} ${Boost_filesystem_LIBRARY})
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${Boost_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${Boost_datetime_LIBRARIES} ${Boost_datetime_LIBRARIES})
+
+find_package(yaml-cpp QUIET)
+if(TARGET yaml-cpp::yaml-cpp)
+    target_compile_definitions(${PROJECT_NAME} PUBLIC -DHAS_YAMPCPP)
+    target_link_libraries(${PROJECT_NAME} PUBLIC yaml-cpp::yaml-cpp)
+elseif(yaml-cpp_FOUND)
+    target_compile_definitions(${PROJECT_NAME} PUBLIC -DHAS_YAMPCPP)
+    target_link_libraries(${PROJECT_NAME} PUBLIC yaml-cpp::yaml-cpp)
 endif()
-if(TARGET SystemC::cci)
-    message(STATUS "${PROJECT_NAME}: building with CCI support")
-    target_compile_definitions(${PROJECT_NAME} PUBLIC -DHAS_CCI)
-    target_link_libraries(${PROJECT_NAME} PUBLIC SystemC::cci)
-elseif(CCI_FOUND)
-    message(STATUS "${PROJECT_NAME}: building with CCI support")
-    target_compile_definitions(${PROJECT_NAME} PUBLIC ${CCI_DEFINITIONS} -DHAS_CCI)
+if(CCI_FOUND)
+    message(STATUS "${PROJECT_NAME}: building with external CCI: ${CCI_LIBRARIES}")
+    target_compile_definitions(${PROJECT_NAME} PUBLIC ${CCI_DEFINITIONS})
     target_include_directories (${PROJECT_NAME} PUBLIC ${CCI_INCLUDE_DIRS})    
     target_link_libraries(${PROJECT_NAME} PUBLIC ${CCI_LIBRARIES} )
+else()
+    target_link_libraries(${PROJECT_NAME} PUBLIC systemc-cci::systemc-cci)
 endif()
 if(ENABLE_SCV AND TARGET SystemC::scv)
     message(STATUS "${PROJECT_NAME}: building with SCV support")
@@ -115,6 +109,8 @@ else()
     message(STATUS "${PROJECT_NAME}: building with SCV-TR support")
     target_link_libraries (${PROJECT_NAME} PUBLIC scv-tr)
 endif()
+# make sure dynamic processes get includes since CCI uses them
+target_compile_definitions(${PROJECT_NAME} PUBLIC SC_INCLUDE_DYNAMIC_PROCESSES)
 if(TARGET SystemC::systemc)
     message(STATUS "${PROJECT_NAME}: link with SystemC::systemc")
     if(USE_CWR_SYSTEMC)
@@ -140,13 +136,11 @@ if(ZLIB_FOUND)
 endif()
 if(WITH_FST)
     target_compile_definitions(${PROJECT_NAME} PUBLIC WITH_FST)
-    if(TARGET lz4::lz4)
-    	target_link_libraries(${PROJECT_NAME} PRIVATE lz4::lz4)
-    else()
-    	target_link_libraries(${PROJECT_NAME} PRIVATE CONAN_PKG::lz4)
-    endif()
 endif()
-
+if(TARGET lz4::lz4)
+    target_link_libraries(${PROJECT_NAME} PRIVATE lz4::lz4)
+endif()
+target_compile_definitions(${PROJECT_NAME} PRIVATE FMT_HEADER_ONLY)
 target_link_libraries(${PROJECT_NAME} PUBLIC ${FMT_TARGET} fstapi Threads::Threads ${CMAKE_DL_LIBS})
 
 if(CLANG_TIDY_EXE)
@@ -161,8 +155,8 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 install(TARGETS ${PROJECT_NAME} COMPONENT sysc
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_ARCHIVE_DIR_MODIFIER}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
         
@@ -181,3 +175,4 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tlm COMPONENT sysc
         FILES_MATCHING # install only matched files
         PATTERN "*.h" # select header files
         )
+

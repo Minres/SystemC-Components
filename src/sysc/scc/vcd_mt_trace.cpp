@@ -329,6 +329,9 @@ void vcd_mt_trace_file::cycle(bool delta_cycle) {
 }
 
 void vcd_mt_trace_file::set_time_unit(double v, sc_core::sc_time_unit tu) {}
+#ifdef NCSC
+void vcd_mt_trace_file::set_time_unit( int exponent10_seconds ) {}
+#endif
 
 sc_core::sc_trace_file* create_vcd_mt_trace_file(const char* name, std::function<bool()> enable) {
     return new vcd_mt_trace_file(name, enable);

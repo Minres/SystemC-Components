@@ -8,6 +8,10 @@ option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
 
+option(ENABLE_CONAN "Enable the use of conan in standalone build" ON)
+
+option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
+
 #Note: this needs to match the SystemC kernel build options
 option(SC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase callbacks" OFF)
 
@@ -15,69 +19,66 @@ option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse call
 
 set(SCC_ARCHIVE_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
 
+set(SCC_LIBRARY_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
+
 include(Common)
 
 if(CMAKE_PROJECT_NAME STREQUAL "scc")
     message(STATUS "Building SCC in standalone mode")
     include(GNUInstallDirs)
-    include(ConanInline)
-    conan_check()
-    set(CONAN_PACKAGE_LIST fmt/8.0.1 zlib/1.2.11 boost/1.75.0 gsl-lite/0.37.0)
-    set(CONAN_PACKAGE_OPTIONS fmt:header_only=True boost:without_stacktrace=True boost:shared=False boost:header_only=False)
-    if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
-        list(APPEND CONAN_PACKAGE_OPTIONS boost:fPIC=True)
+    if(ENABLE_CONAN)
+        include(ConanInline)
+        conan_check()
+        if(EXISTS  /etc/redhat-release)
+	        # Boost on CentOS quirks: the b2 of conan-center is build against a newer libstdc++ and therefore does not run
+			# with the oooooold libs on CentOS 7. Therefore we build our own version of b2 if it is not there
+			set(B2_VERSION 4.9.2)
+			set(B2_META $ENV{HOME}/.conan/data/b2/${B2_VERSION}/_/_/metadata.json)
+			if(DEFINED ENV{CONAN_USER_HOME})
+				set(B2_META $ENV{CONAN_USER_HOME}/.conan/data/b2/${B2_VERSION}/_/_/metadata.json)
+			endif()
+			if(NOT EXISTS ${B2_META})
+				conan_configure(REQUIRES b2/${B2_VERSION})
+				conan_cmake_autodetect(settings)
+				conan_cmake_install(PATH_OR_REFERENCE . BUILD b2 SETTINGS ${settings})
+			endif()
+			# Boost on CentOS quirks end
+        endif()
+        set(CONAN_PACKAGE_LIST jsoncpp/1.9.5 yaml-cpp/0.6.3 spdlog/1.9.2 fmt/8.0.1 zlib/1.2.12 lz4/1.9.4 boost/1.75.0)
+		if(BUILD_SCC_DOCUMENTATION)
+        	list(APPEND CONAN_PACKAGE_LIST doxygen/1.9.2)
+        endif()
+        set(CONAN_PACKAGE_OPTIONS fmt:header_only=True spdlog:header_only=True boost:without_stacktrace=True boost:shared=False boost:header_only=False)
+        if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+            list(APPEND CONAN_PACKAGE_OPTIONS boost:fPIC=True)
+        endif()
+        if(NOT USE_CWR_SYSTEMC AND NOT USE_NCSC_SYSTEMC AND NOT DEFINED ENV{SYSTEMC_HOME})
+            set(CONAN_PACKAGE_LIST ${CONAN_PACKAGE_LIST} systemc/2.3.3 systemc-cci/1.0.0)
+            set(CONAN_PACKAGE_OPTIONS ${CONAN_PACKAGE_OPTIONS} systemc-cci:shared=False)
+        endif()
+        conan_configure(REQUIRES ${CONAN_PACKAGE_LIST} GENERATORS cmake_find_package OPTIONS ${CONAN_PACKAGE_OPTIONS})
+        if(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+            conan_install(BUILD_TYPE Release)
+        else()
+            conan_install()
+        endif()
+        set(CONAN_CMAKE_SILENT_OUTPUT ON)
+        find_package(spdlog REQUIRED)
+        find_package(lz4 REQUIRED)
+        find_package(fmt REQUIRED)
+        find_package(yaml-cpp REQUIRED)
     endif()
-    if(NOT USE_CWR_SYSTEMC AND NOT USE_NCSC_SYSTEMC AND NOT DEFINED ENV{SYSTEMC_HOME})
-        set(CONAN_PACKAGE_LIST ${CONAN_PACKAGE_LIST} systemc/2.3.3 systemc-cci/1.0.0)
-        set(CONAN_PACKAGE_OPTIONS ${CONAN_PACKAGE_OPTIONS} systemc-cci:shared=False)
-    endif()
-    conan_configure(REQUIRES ${CONAN_PACKAGE_LIST} GENERATORS cmake cmake_find_package OPTIONS ${CONAN_PACKAGE_OPTIONS})
-    if(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
-        conan_install(BUILD_TYPE Release)
-    else()
-        conan_install()
-    endif()
-    conan_setup(TARGETS)
+	
     set(Boost_NO_BOOST_CMAKE ON) #  Don't do a find_package in config mode before searching for a regular boost install.
     option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" OFF)
-    option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ON)
+    option(INSTALL_DEPENDENCIES "Should dependencies be installed when installing SCC" OFF)
 else()
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" ON)
-    option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 endif()
 
 if(BUILD_SCC_DOCUMENTATION)
-find_package(Doxygen)
-    if(NOT DOXYGEN_FOUND)
-        message(FATAL_ERROR "Doxygen is needed to build the documentation.")
-    endif()
-    set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/doc/Doxyfile.in)
-    configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
-    
-    set(DOXYGEN_PROJECT_BRIEF "SystemC components library")
-    set(DOXYGEN_USE_MDFILE_AS_MAINPAGE  README.md)
-    # exclude json code
-    # doxygen settings can be set here, prefixed with "DOXYGEN_"
-    set(DOXYGEN_SOURCE_BROWSER YES)
-    set(DOXYGEN_EXTRACT_ALL NO)
-    set(DOXYGEN_EXTRACT_PRIVATE NO)
-    set(DOXYGEN_SEARCHENGINE NO)
-    set(DOXYGEN_GENERATE_HTML YES)
-    set(DOXYGEN_GENERATE_MAN NO)
-    set(DOXYGEN_GENERATE_LATEX NO)
-    set(DOXYGEN_OUTPUT_DIRECTORY "${scc_BINARY_DIR}/scc")
-    set(DOXYGEN_GENERATE_TREEVIEW  YES)
-    set(DOXYGEN_HTML_EXTRA_STYLESHEET ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen-awesome.css)
-    #set(DOXYGEN_HTML_EXTRA_STYLESHEET ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen-awesome.css ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen-awesome-sidebar-only.css)
-    # this target will only be built if specifically asked to.
-    # run "make scc-docs" to create the doxygen documentation
-    doxygen_add_docs(
-        scc-docs
-        ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/third_party/axi_chi/axi  ${PROJECT_SOURCE_DIR}/third_party/axi_chi/chi  ${PROJECT_SOURCE_DIR}/README.md
-        ALL COMMENT "Generate API-documents for SCC."
-    )
-    install(DIRECTORY ${scc_BINARY_DIR}/scc DESTINATION ${CMAKE_INSTALL_DOCDIR}/)
+	add_subdirectory(doc)
 endif()
 
 
@@ -124,6 +125,7 @@ if (ENABLE_CLANG_TIDY)
 endif()
 
 find_package(Boost REQUIRED COMPONENTS system date_time) # header only libraries must not be added here
+include(SystemCPackage)
 
 include(CheckSymbolExists)
 # Check for function getenv()
@@ -132,11 +134,13 @@ check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)
 # check which version of spdlog to use.
 if(TARGET spdlog::spdlog)
     set(SPDLOG_TARGET spdlog::spdlog)
-elseif(TARGET CONAN_PKG::spdlog)
-    set(SPDLOG_TARGET CONAN_PKG::spdlog)
 else()
     add_library(spdlog_local INTERFACE IMPORTED)
-    set_property(TARGET spdlog_local PROPERTY INTERFACE_COMPILE_DEFINITIONS SPDLOG_HEADER_ONLY)
+   	if(TARGET fmt::fmt)
+    	set_property(TARGET spdlog_local PROPERTY INTERFACE_COMPILE_DEFINITIONS SPDLOG_HEADER_ONLY SPDLOG_FMT_EXTERNAL)
+    else()
+    	set_property(TARGET spdlog_local PROPERTY INTERFACE_COMPILE_DEFINITIONS SPDLOG_HEADER_ONLY)
+    endif()
     set_property(TARGET spdlog_local PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third_party/spdlog-1.8)
     set(SPDLOG_TARGET spdlog_local)
     message(STATUS "${PROJECT_NAME}: using built-in version of spdlog")
@@ -145,53 +149,105 @@ endif()
 # check which version of fmt to use
 if(TARGET fmt::fmt)
     set(FMT_TARGET fmt::fmt)
-elseif(TARGET CONAN_PKG::fmt)
-    set(FMT_TARGET CONAN_PKG::fmt)
 else()
     add_library(fmt_local INTERFACE IMPORTED)
+    set_property(TARGET fmt_local PROPERTY INTERFACE_COMPILE_DEFINITIONS FMT_SPDLOG_INTERNAL)
     set_property(TARGET fmt_local PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third_party/spdlog-1.8/spdlog)
     set(FMT_TARGET fmt_local)
     message(STATUS "${PROJECT_NAME}: using built-in version of fmt")
 endif()
 
-# Define the scc library
-add_library(scc INTERFACE)
-if(HAVE_GETENV)
-    target_compile_definitions(scc INTERFACE HAVE_GETENV)
+if(NOT TARGET lz4::lz4)
+    message(STATUS "${PROJECT_NAME}: using built-in version of lz4")
+	add_subdirectory(third_party/lz4-1.9.4)
 endif()
-
-target_include_directories (scc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
-if(TARGET Boost::date_time)
-    target_link_libraries(scc INTERFACE Boost::date_time)
-else()
-    target_include_directories(scc INTERFACE ${Boost_INCLUDE_DIRS})
-    target_link_libraries(scc INTERFACE ${Boost_datetime_LIBRARY})
-endif()
-target_link_libraries(scc INTERFACE scc-util scc-sysc components busses scv-tr)
-#target_link_libraries(scc INTERFACE jsoncpp)
-target_link_libraries(scc INTERFACE ${FMT_TARGET} ${SPDLOG_TARGET})
-
-set_target_properties(scc PROPERTIES
-      PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
-)
-
-install(TARGETS scc
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_ARCHIVE_DIR_MODIFIER}
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        )
 
 ###############################################################################
 # subdirectories
 ###############################################################################
 add_subdirectory(src/common)
-add_subdirectory(src/bus_interfaces)
-add_subdirectory(src/components)
-add_subdirectory(src/sysc)
-add_subdirectory(third_party)
-if(NOT SCC_LIB_ONLY)
-    if (NOT (DEFINED CMAKE_CXX_CLANG_TIDY OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
-        add_subdirectory(examples)
-    endif()
+if(SystemC_FOUND)
+	add_subdirectory(src/bus_interfaces)
+	add_subdirectory(src/components)
+	add_subdirectory(src/sysc)
+	add_subdirectory(third_party)
+	if(NOT SCC_LIB_ONLY)
+	    if (NOT (DEFINED CMAKE_CXX_CLANG_TIDY OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
+	        add_subdirectory(examples)
+	    endif()
+	endif()
+
+	# Define the scc library
+	add_library(scc INTERFACE)
+	if(HAVE_GETENV)
+	    target_compile_definitions(scc INTERFACE HAVE_GETENV)
+	endif()
+	
+	target_include_directories (scc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+	if(TARGET Boost::date_time)
+	    target_link_libraries(scc INTERFACE Boost::date_time)
+	else()
+	    target_include_directories(scc INTERFACE ${Boost_INCLUDE_DIRS})
+	    target_link_libraries(scc INTERFACE ${Boost_datetime_LIBRARY})
+	endif()
+	target_link_libraries(scc INTERFACE scc-util scc-sysc components busses scv-tr)
+	target_link_libraries(scc INTERFACE ${FMT_TARGET} ${SPDLOG_TARGET})
+	
+	set_target_properties(scc PROPERTIES
+	    PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
+	)
+	
+	install(TARGETS scc
+	        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+	        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
+	        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
+	        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+	        )
+else()
+	add_subdirectory(third_party)
 endif()
+###############################################################################
+# install dependend libs
+###############################################################################
+install(DIRECTORY contrib/pysysc contrib/d3-hwschematic
+		DESTINATION share
+		PATTERN ".gitignore" EXCLUDE 
+		PATTERN "PySysC_SCC.egg*" EXCLUDE
+		PATTERN "build" EXCLUDE
+		)
+if(CMAKE_PROJECT_NAME STREQUAL "scc")
+	if(INSTALL_DEPENDENCIES)
+	    install(CODE "set(CMAKE_INSTALL_LIBDIR \"${CMAKE_INSTALL_LIBDIR}\")")
+	    install(CODE [[    
+	      file(GET_RUNTIME_DEPENDENCIES
+	        LIBRARIES $<TARGET_FILE:scc-sysc>
+	        RESOLVED_DEPENDENCIES_VAR _r_deps
+	        UNRESOLVED_DEPENDENCIES_VAR _u_deps
+	        CONFLICTING_DEPENDENCIES_PREFIX _c_deps
+	      )
+	      foreach(_file ${_c_deps_FILENAMES})
+	            set(FLIST ${_c_deps_${_file}})
+	            list(LENGTH FLIST LIST_LEN)
+	            list(GET FLIST -1 FNAME)
+	            message(STATUS "Conflicting files for ${_file} are ${_c_deps_${_file}}, using ${FNAME}")
+	            list(APPEND _r_deps ${FNAME})
+	      endforeach()
+	      foreach(_file ${_r_deps})
+	        if(${_file} MATCHES "libz" OR NOT (${_file} MATCHES "^/lib")) # don't copy system libraries except libz
+	            file(INSTALL
+	              DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}
+	              TYPE SHARED_LIBRARY
+	              FOLLOW_SYMLINK_CHAIN
+	              PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+	              FILES "${_file}"
+	            )
+	        endif()
+	      endforeach()
+	      list(LENGTH _u_deps _u_length)
+	      if("${_u_length}" GREATER 0)
+	        message(WARNING "Unresolved dependencies detected: '${_u_deps}'!")
+	      endif()
+	    ]])
+	endif()
+endif()
+

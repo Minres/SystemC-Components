@@ -18,7 +18,6 @@
 #define _SCC_CONFIGURABLE_TRACER_H_
 
 #include "tracer.h"
-#include <cci_configuration>
 /** \ingroup scc-sysc
  *  @{
  */
@@ -39,19 +38,40 @@ public:
      * constructs a tracer object
      *
      * @param name basename of the trace file(s)
-     * @param type type of trace file for transactions
-     * @param enable enable VCD (signal based) tracing
-     * @param default_enable value of attribute enableTracing if not defined by module or CCIs
+     * @param enable_tx enables transaction teacing
+     * @param enable_vcd enable VCD (signal based) tracing
+     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const&& name, file_type type, bool enable_vcd = true, bool default_enable = false,
+    configurable_tracer(std::string const&& name, bool enable_tx = true, bool enable_vcd = true, bool default_enable = false,
                         sc_core::sc_object* top = nullptr);
     /**
      * constructs a tracer object
      *
      * @param name basename of the trace file(s)
+     * @param enable_tx enables transaction teacing
+     * @param enable_vcd enable VCD (signal based) tracing
+     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
+     */
+    configurable_tracer(std::string const& name, bool enable_tx = true, bool enable_vcd = true, bool default_enable = false,
+                        sc_core::sc_object* top = nullptr)
+    : configurable_tracer(std::string(name), enable_tx, enable_vcd, default_enable, top) {}
+    /**
+     * constructs a tracer object
+     *
+     * @param name basename of the trace file(s)
+     * @param type type of trace file for transactions
+     * @param enable enable VCD (signal based) tracing
+     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
+     */
+    configurable_tracer(std::string const&& name, file_type type, bool enable_vcd = true, bool default_enable = false,
+                        sc_core::sc_object* top = nullptr);
+   /**
+     * constructs a tracer object
+     *
+     * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
      * @param enable_vcd enable VCD (signal based) tracing
-     * @param default_enable value of attribute enableTracing if not defined by module or CCIs
+     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
     configurable_tracer(std::string const& name, file_type type, bool enable_vcd = true, bool default_enable = false,
                         sc_core::sc_object* top = nullptr)
@@ -62,7 +82,7 @@ public:
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
      * @param tf the trace file to use for signal and POD tracing
-     * @param default_enable value of attribute enableTracing if not defined by module or CCIs
+     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
     configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf = nullptr,
                         bool default_enable = false, sc_core::sc_object* top = nullptr);
@@ -72,7 +92,7 @@ public:
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
      * @param tf the trace file to use for signal and POD tracing
-     * @param default_enable value of attribute enableTracing if not defined by module or CCIs
+     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
     configurable_tracer(std::string const& name, file_type type, sc_core::sc_trace_file* tf = nullptr,
                         bool default_enable = false, sc_core::sc_object* top = nullptr)
@@ -87,7 +107,7 @@ public:
     void add_control() {
         if(control_added)
             return;
-        for(auto* o : sc_core::sc_get_top_level_objects(sc_core::sc_curr_simcontext))
+        for(auto* o : sc_core::sc_get_top_level_objects())
             augment_object_hierarchical(o);
         control_added = true;
     }
@@ -101,10 +121,6 @@ protected:
     void augment_object_hierarchical(sc_core::sc_object*);
 
     void end_of_elaboration() override;
-    //! the originator of cci values
-    cci::cci_originator cci_originator;
-    //! the cci broker
-    cci::cci_broker_handle cci_broker;
     //! array of created cci parameter
     std::vector<cci::cci_param_untyped*> params;
     bool control_added{false};

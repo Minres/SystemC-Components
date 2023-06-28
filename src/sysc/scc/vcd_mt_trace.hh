@@ -130,6 +130,9 @@ protected:
     void cycle(bool delta_cycle) override;
 
     void set_time_unit( double v, sc_core::sc_time_unit tu ) override;
+#ifdef NCSC
+    void set_time_unit( int exponent10_seconds ) override;
+#endif
 
 private:
 #if WITH_SC_TRACING_PHASE_CALLBACKS

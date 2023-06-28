@@ -16,7 +16,9 @@
 
 #pragma once
 
+#ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
+#endif
 
 #include <axi/axi_tlm.h>
 #include <axi/pe/simple_target.h>
@@ -35,7 +37,7 @@ namespace axi {
 class axi_target_base : public sc_core::sc_module {
 public:
     sc_core::sc_in<bool> clk_i{"clk_i"};
-    tlm_utils::simple_initiator_socket<axi_target_base> isck{"isck"};
+    tlm_utils::simple_initiator_socket<axi_target_base, 0> isck{"isck"};
 
     axi_target_base(const sc_core::sc_module_name& nm, axi::pe::axi_target_pe& pe);
     virtual ~axi_target_base(){};

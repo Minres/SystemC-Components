@@ -53,7 +53,7 @@ int sc_main(int argc, char *argv[]) {
         po::store(po::parse_command_line(argc, argv, desc), vm); // can throw
         // --help option
         if (vm.count("help")) {
-            std::cout << "JIT-ISS simulator for AVR" << std::endl << desc << std::endl;
+            std::cout << "simple system simulator" << std::endl << desc << std::endl;
             return SUCCESS;
         }
         po::notify(vm); // throws on error, so do after help in case
@@ -70,20 +70,15 @@ int sc_main(int argc, char *argv[]) {
     ///////////////////////////////////////////////////////////////////////////
     // set up tracing & transaction recording
     ///////////////////////////////////////////////////////////////////////////
-    tracer trace("simple_system", tracer::COMPRESSED, vm.count("trace"));
-    // todo: fix displayed clock period in VCD
-
+    tracer trace("simple_system", vm.count("trace")?scc::tracer::ENABLE:scc::tracer::NONE, vm.count("trace"));
     ///////////////////////////////////////////////////////////////////////////
     // instantiate top level
     ///////////////////////////////////////////////////////////////////////////
     simple_system i_simple_system("i_simple_system");
-
     ///////////////////////////////////////////////////////////////////////////
     // run simulation
     ///////////////////////////////////////////////////////////////////////////
     sc_start(sc_core::sc_time(1, sc_core::SC_MS));
-    // todo: provide end-of-simulation macros
-
     if (!sc_core::sc_end_of_simulation_invoked()) {
         SCCERR() << "simulation timed out";
         sc_core::sc_stop();

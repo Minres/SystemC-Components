@@ -19,8 +19,7 @@ macro(conan_check)
  
   if(NOT EXISTS ${CONAN_CMAKE_LIST_DIR}/conan.cmake)
     message("Downloading conan.cmake to ${CONAN_CMAKE_LIST_DIR}")
-    #set(URL https://raw.githubusercontent.com/conan-io/cmake-conan/develop/conan.cmake)
-    set(URL https://raw.githubusercontent.com/conan-io/cmake-conan/43e385830ee35377dbd2dcbe8d5a9e750301ea00/conan.cmake)
+    set(URL https://raw.githubusercontent.com/conan-io/cmake-conan/0.18.1/conan.cmake)
     file(DOWNLOAD ${URL} ${CONAN_CMAKE_LIST_DIR}/conan.cmake TIMEOUT 60 STATUS DOWNLOAD_STATUS)
     list(GET DOWNLOAD_STATUS 0 STATUS_CODE)
     list(GET DOWNLOAD_STATUS 1 ERROR_MESSAGE)
@@ -74,8 +73,8 @@ function(conan_configure)
 endfunction()
 
 macro(conan_install)
-  	set(options BUILD_TYPE) 
- 	set(oneValueArgs BUILD_TYPE)
+  	set(options BUILD_TYPE BUILD) 
+ 	set(oneValueArgs BUILD_TYPE BUILD)
 	cmake_parse_arguments(MARGS "" "${oneValueArgs}" "" ${ARGN} )
   	if(MARGS_BUILD_TYPE)
 		conan_cmake_autodetect(settings BUILD_TYPE ${MARGS_BUILD_TYPE})
@@ -83,7 +82,10 @@ macro(conan_install)
 		conan_cmake_autodetect(settings BUILD_TYPE)
 	endif()
 	if(CMAKE_CXX_STANDARD)
-		set(settings ${settings} compiler.cppstd=${CMAKE_CXX_STANDARD})
+		list(APPEND settings compiler.cppstd=${CMAKE_CXX_STANDARD})
+	endif()
+	if(USE_NCSC_SYSTEMC)
+		list(APPEND settings compiler.libcxx=libstdc++)
 	endif()
 	if (NOT "$ENV{CONAN_PROFILE_NAME}" STREQUAL "")
     	set(CONAN_PROFILE "$ENV{CONAN_PROFILE_NAME}" CACHE INTERNAL "Copied from environment variable")
@@ -91,8 +93,15 @@ macro(conan_install)
     	set(CONAN_PROFILE "default" CACHE INTERNAL "Copied from environment variable")
    endif()
 	
+  	if(MARGS_BUILD)
+	conan_cmake_install(PATH_OR_REFERENCE .
+	                    BUILD ${MARGS_BUILD}
+	                    PROFILE_BUILD ${CONAN_PROFILE}
+	                    SETTINGS ${settings})
+	else()
 	conan_cmake_install(PATH_OR_REFERENCE .
 	                    BUILD missing
-	                    PROFILE ${CONAN_PROFILE}
+	                    PROFILE_BUILD ${CONAN_PROFILE}
 	                    SETTINGS ${settings})
+    endif()
 endmacro()

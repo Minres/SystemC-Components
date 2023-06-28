@@ -25,6 +25,8 @@
 #include "sc_vcd_trace.h"
 #include "scv/scv_tr_db.h"
 #include "utilities.h"
+#include <scc/sc_vcd_trace.h>
+#include <scc/trace.h>
 #ifdef HAS_SCV
 #include <scv.h>
 #ifndef SCVNS
@@ -36,6 +38,7 @@
 #define SCVNS ::scv_tr::
 #endif
 #endif
+#include <lwtr/lwtr.h>
 #include <cstring>
 #include <iostream>
 #include <sstream>
@@ -43,92 +46,117 @@
 using namespace sc_core;
 using namespace scc;
 
-tracer::tracer(std::string const&& name, file_type type, bool enable, sc_core::sc_object* top)
-: tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("$$$tracer$$$")))
+tracer::tracer(std::string const&& name, file_type tx_type, file_type sig_type, sc_core::sc_object* top, sc_core::sc_module_name const& nm)
+: tracer_base(nm)
+, cci_broker(cci::cci_get_broker())
 , txdb(nullptr)
-, owned{enable} {
-    if(enable) {
-        trf = sc_create_vcd_trace_file(name.c_str());
-        trf->set_time_unit(1, SC_PS);
-    }
-    init_scv_db(type, std::move(name));
+, lwtr_db(nullptr)
+, owned{sig_type!=NONE} {
+    if(sig_type==ENABLE) sig_type = static_cast<file_type>(sig_trace_type.get_value());
+	if(sig_type!=NONE) {
+		switch(sig_type) {
+		default:
+			trf = sc_create_vcd_trace_file(name.c_str());
+			break;
+		case PULL_VCD:
+			trf = scc::create_vcd_pull_trace_file(name.c_str());
+            break;
+        case PUSH_VCD:
+        	trf = scc::create_vcd_push_trace_file(name.c_str());
+            break;
+        case FST:
+        	trf = scc::create_fst_trace_file(name.c_str());
+            break;
+		}
+	}
+	if(trf) trf->set_time_unit(1, SC_PS);
+	init_tx_db(tx_type==ENABLE?static_cast<file_type>(tx_trace_type.get_value()):tx_type, std::move(name));
 }
 
-tracer::tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, sc_core::sc_object* top)
-: tracer_base(sc_core::sc_module_name(sc_core::sc_gen_unique_name("$$$tracer$$$")))
+tracer::tracer(std::string const&& name, file_type tx_type, sc_core::sc_trace_file* tf, sc_core::sc_object* top, sc_core::sc_module_name const& nm)
+: tracer_base(nm)
+, cci_broker(cci::cci_get_broker())
 , txdb(nullptr)
+, lwtr_db(nullptr)
 , owned{false} {
-    trf = tf;
-    init_scv_db(type, std::move(name));
+	trf = tf;
+	init_tx_db(tx_type==ENABLE?static_cast<file_type>(tx_trace_type.get_value()):tx_type, std::move(name));
 }
 
 tracer::~tracer() {
-    delete txdb;
-    if(trf && owned)
-        scc_close_vcd_trace_file(trf);
+	delete txdb;
+	delete lwtr_db;
+	if(trf && owned)
+		scc_close_vcd_trace_file(trf);
 }
 
-void tracer::init_scv_db(file_type type, std::string const&& name) {
-    if(type != NONE) {
-        std::stringstream ss;
-        ss << name;
-        switch(type) {
-        case TEXT:
-            SCVNS scv_tr_text_init();
-            ss << ".txlog";
-            break;
-        case COMPRESSED: {
-            auto* val = getenv("SCC_SCV_TR_COMPRESSION_LEVEL");
-            auto level = val? atoi(val):std::numeric_limits<unsigned>::max();
-            switch(level){
-            case 0:
-                SCVNS scv_tr_plain_init();
-                break;
-            case 2:
-                SCVNS scv_tr_compressed_init();
-                break;
-            default:
-#ifdef WITH_LZ4
-                SCVNS scv_tr_lz4_init();
-#else
-                SCVNS scv_tr_compressed_init();
-#endif
-                break;
-            }
-            ss << ".txlog";
-        }
-        break;
-        case SQLITE:
+void tracer::init_tx_db(file_type type, std::string const&& name) {
+	if(type != NONE) {
+		std::stringstream ss;
+		ss << name;
+		switch(type) {
+		default:
+			SCVNS scv_tr_text_init();
+			ss << ".txlog";
+			break;
+		case COMPRESSED: {
+			auto* val = getenv("SCC_SCV_TR_COMPRESSION_LEVEL");
+			auto level = val? atoi(val):std::numeric_limits<unsigned>::max();
+			switch(level){
+			case 0:
+				SCVNS scv_tr_plain_init();
+				break;
+			case 2:
+				SCVNS scv_tr_compressed_init();
+				break;
+			default:
+				SCVNS scv_tr_lz4_init();
+				break;
+			}
+			ss << ".txlog";
+		}
+		break;
 #ifdef WITH_SQLITE
-            SCVNS scv_tr_sqlite_init();
-            ss << ".txdb";
-#else
-            SCVNS scv_tr_text_init();
-            ss << ".txlog";
+		case SQLITE:
+			SCVNS scv_tr_sqlite_init();
+			ss << ".txdb";
+			break;
 #endif
-            break;
-        case CUSTOM:
-            SCVNS scv_tr_mtc_init();
-            ss << ".txlog";
-            break;
-        default:
-            break;
-        }
-        txdb = new SCVNS scv_tr_db(ss.str().c_str());
-        SCVNS scv_tr_db::set_default_db(txdb);
-        if(trf) {
-            trf->write_comment(std::string("SCV_TXLOG: ") + ss.str());
-        }
-    }
+		case FTR:
+			SCVNS scv_tr_cbor_init(false);
+			break;
+		case CFTR:
+			SCVNS scv_tr_cbor_init(true);
+			break;
+		case LWFTR:
+			lwtr::tx_ftr_init(false);
+			break;
+		case LWCFTR:
+			lwtr::tx_ftr_init(true);
+			break;
+		case CUSTOM:
+			SCVNS scv_tr_mtc_init();
+			ss << ".txlog";
+			break;
+		}
+		if(type==LWFTR || type==LWCFTR) {
+			lwtr_db = new lwtr::tx_db(name.c_str());
+		} else {
+			txdb = new SCVNS scv_tr_db(ss.str().c_str());
+		}
+		if(trf) {
+			trf->write_comment(std::string("TXREC: ") + ss.str());
+		}
+	}
 }
 
 void tracer::end_of_elaboration() {
-    if(trf) {
-        if(top) {
-            descend(top, trf);
-        } else {
-            for(auto o : sc_get_top_level_objects())
-                descend(o, default_trace_enable);
-        }
-    }
+	if(trf) {
+		if(top) {
+			descend(top, trf);
+		} else {
+			for(auto o : sc_get_top_level_objects())
+				descend(o, default_trace_enable);
+		}
+	}
 }

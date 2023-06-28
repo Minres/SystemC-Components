@@ -24,7 +24,11 @@
 #endif
 #include <util/ities.h>
 #include <scc/utilities.h>
+#ifdef FMT_SPDLOG_INTERNAL
+#include <fmt/fmt.h>
+#else
 #include <fmt/format.h>
+#endif
 #include <vector>
 #include <unordered_map>
 

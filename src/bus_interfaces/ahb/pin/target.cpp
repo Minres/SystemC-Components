@@ -14,7 +14,9 @@
  * limitations under the License.
  *******************************************************************************/
 
+#ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
+#endif
 #include "target.h"
 #include <ahb/ahb_tlm.h>
 #include <scc/report.h>
@@ -24,19 +26,19 @@
 using namespace ahb::pin;
 using namespace sc_core;
 
-template <unsigned WIDTH>
-target<WIDTH>::target(const sc_module_name& nm)
+template <unsigned DWIDTH, unsigned AWIDTH>
+target<DWIDTH, AWIDTH>::target(const sc_module_name& nm)
 : sc_module(nm) {
     SC_HAS_PROCESS(target);
     SC_THREAD(bfm_thread);
     sensitive << HCLK_i.pos();
 }
 
-template <unsigned WIDTH> target<WIDTH>::~target() = default;
+template <unsigned DWIDTH, unsigned AWIDTH> target<DWIDTH, AWIDTH>::~target() = default;
 
-template <unsigned WIDTH> void target<WIDTH>::bfm_thread() {
+template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bfm_thread() {
     tlm::scc::tlm_mm<>& mm = tlm::scc::tlm_mm<>::get();
-    auto const log_width = scc::ilog2(WIDTH / 8);
+    auto const log_width = scc::ilog2(DWIDTH / 8);
     auto beat_cnt = 0U;
     wait(SC_ZERO_TIME);
     while(true) {
@@ -64,7 +66,7 @@ template <unsigned WIDTH> void target<WIDTH>::bfm_thread() {
                     ext->set_burst(static_cast<ahb::burst_e>(HBURST_i.read().to_uint()));
                     size_t size = HSIZE_i.read();
                     if(size > log_width)
-                        SCCERR(SCMOD) << "Access size (" << size << ") is larger than bus width (" << log_width << ")!";
+                        SCCERR(SCMOD) << "Access size (" << size << ") is larger than bus wDWIDTH(" << log_width << ")!";
                     unsigned length = (1 << size) * (1 << static_cast<unsigned>(ext->get_burst()));
                     gp->set_data_length(length);
                     gp->set_streaming_width(length);
@@ -93,8 +95,8 @@ template <unsigned WIDTH> void target<WIDTH>::bfm_thread() {
     }
 }
 
-template <unsigned WIDTH> void target<WIDTH>::handle_data_phase(unsigned& beat_cnt) {
-    auto const width = WIDTH / 8;
+template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::handle_data_phase(unsigned& beat_cnt) {
+    auto const width = DWIDTH / 8;
     auto* ext = data_payload->get_extension<ahb_extension>();
     auto start_offs = data_payload->get_address() & (width - 1);
     sc_assert((start_offs + data_payload->get_data_length()) <= width);
@@ -120,9 +122,15 @@ template <unsigned WIDTH> void target<WIDTH>::handle_data_phase(unsigned& beat_c
         data_payload = nullptr;
     }
 }
-template class ahb::pin::target<32>;
-template class ahb::pin::target<64>;
-template class ahb::pin::target<128>;
-template class ahb::pin::target<256>;
-template class ahb::pin::target<512>;
-template class ahb::pin::target<1024>;
+template class ahb::pin::target<32, 32>;
+template class ahb::pin::target<64, 32>;
+template class ahb::pin::target<128, 32>;
+template class ahb::pin::target<256, 32>;
+template class ahb::pin::target<512, 32>;
+template class ahb::pin::target<1024, 32>;
+template class ahb::pin::target<32, 64>;
+template class ahb::pin::target<64, 64>;
+template class ahb::pin::target<128, 64>;
+template class ahb::pin::target<256, 64>;
+template class ahb::pin::target<512, 64>;
+template class ahb::pin::target<1024, 64>;

@@ -33,8 +33,8 @@ public:
     sc_core::sc_signal<bool>                   HRESP{"HRESP"};
     sc_core::sc_signal<bool>                   HSEL{"HSEL"};
 
-    ahb::pin::target<WIDTH> target{"target"};
-    tlm::scc::target_mixin<tlm::tlm_target_socket<WIDTH>> tsck{"tsck"};
+    ahb::pin::target<WIDTH, 32> target{"target"};
+    tlm::scc::target_mixin<tlm::tlm_target_socket<0>> tsck{"tsck"};
 
     testbench(sc_module_name nm):sc_module(nm){
         SC_HAS_PROCESS(testbench);
@@ -120,25 +120,25 @@ int sc_main (int argc , char *argv[]){
     // set up configuration and tracing
     ///////////////////////////////////////////////////////////////////////////
     scc::configurer cfg("ahb_bfm.json");
-    scc::configurable_tracer trace("ahb_bfm", tracer::TEXT, true, true);
+    scc::configurable_tracer trace("ahb_bfm", true, true, true);
     ///////////////////////////////////////////////////////////////////////////
     // create modules/channels and trace
     ///////////////////////////////////////////////////////////////////////////
     testbench tb("tb");
-    trace.add_control();
-    {
-        std::ofstream of{"ahb_test.default.json"};
-        if (of.is_open()) cfg.dump_configuration(of);
-    }
     cfg.configure();
+    cfg.dump_configuration("ahb_test.default.json");
     ///////////////////////////////////////////////////////////////////////////
     // run the simulation
     ///////////////////////////////////////////////////////////////////////////
     try {
         sc_core::sc_start(1_us);
         if (!sc_core::sc_end_of_simulation_invoked()) sc_core::sc_stop();
-    } catch (sc_core::sc_report &rep) {
-        sc_core::sc_report_handler::get_handler()(rep, sc_core::SC_DISPLAY | sc_core::SC_STOP);
+    } catch(sc_report& e) {
+        SCCERR() << "Caught sc_report exception during simulation: " << e.what() << ":" << e.get_msg();
+    } catch(std::exception& e) {
+        SCCERR() << "Caught exception during simulation: " << e.what();
+    } catch(...) {
+        SCCERR() << "Caught unspecified exception during simulation";
     }
     return 0;
 }

@@ -14,7 +14,9 @@
  * limitations under the License.
  *******************************************************************************/
 
+#ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
+#endif
 #include "tlm_recorder.h"
 #include "tlm_extension_recording_registry.h"
 #include <tlm/scc/tlm_id.h>

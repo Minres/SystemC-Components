@@ -32,10 +32,7 @@
 #pragma GCC diagnostic pop
 #endif
 
-#ifdef HAS_CCI
 #include <cci_cfg/cci_param_typed.h>
-#endif
-
 #include <locale>
 
 /** \ingroup scc-sysc
@@ -195,6 +192,9 @@ inline constexpr uint64_t operator"" _MB(unsigned long long val) { return val * 
 inline constexpr uint64_t operator"" _GB(unsigned long long val) { return val * 1 << 30; }
 
 namespace scc {
+
+enum { LT=0 };
+
 inline char* legalize_name(char* const name) {
     char* ptr = name;
     while(*ptr) {
@@ -205,6 +205,7 @@ inline char* legalize_name(char* const name) {
     }
     return name;
 }
+
 inline std::string legalize_name(std::string const& name) {
     std::string ret;
     for(auto c : name) {
@@ -301,12 +302,10 @@ inline unsigned ilog2(uint32_t val) {
 #else
 inline constexpr unsigned ilog2(uint32_t val) {
 #endif
+	assert(val>0);
 #ifdef __GNUG__
     return sizeof(uint32_t) * 8 - 1 - __builtin_clz(static_cast<unsigned>(val));
 #else
-
-    if(val == 0)
-        return std::numeric_limits<uint32_t>::max();
     if(val == 1)
         return 0;
     auto ret = 0U;
@@ -322,11 +321,9 @@ template <typename T> inline T get_value(sc_core::sc_attribute<T>& a) { return a
 
 template <typename T> inline void set_value(sc_core::sc_attribute<T>& a, T&& value) { a.value = value; }
 
-#ifdef HAS_CCI
 template <typename T> inline T get_value(cci::cci_param_typed<T>& a) { return a.get_value(); }
 
 template <typename T> inline void set_value(cci::cci_param_typed<T>& a, T&& value) { a.set_value(value); }
-#endif
 } // namespace scc
 /** @} */ // end of scc-sysc
 

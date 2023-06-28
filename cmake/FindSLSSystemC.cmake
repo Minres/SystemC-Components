@@ -57,6 +57,7 @@ set(SNPS_LIBS SnpsVPExt SnpsVP tbb omniORB4 omniDynamic4 omnithread dwarf elf)
 
 SET(_COMMON_HINTS
   $ENV{SNPS_VP_HOME}/common/include
+  $ENV{SNPS_VP_HOME}/common/libso-$ENV{SNPS_VP_COMPILER}
   $ENV{SNPS_VP_HOME}/common/libso-$ENV{COWARE_CXX_COMPILER}
   )
 
@@ -134,8 +135,8 @@ if (SystemC_INCLUDE_DIR)
 endif()
 
 
-find_package_handle_standard_args(SystemC
-  FOUND_VAR SystemC_FOUND
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(SLSSystemC
   REQUIRED_VARS
     ${LIB_VAR_NAMES}
     SystemC_INCLUDE_DIR
@@ -143,23 +144,24 @@ find_package_handle_standard_args(SystemC
   VERSION_VAR SystemC_VERSION
 )
 
-if(SystemC_FOUND)
+if(SLSSystemC_FOUND)
+  set(SystemC_FOUND True)
   get_filename_component(SNPS_LIB_DIR ${SnpsVP_LIBRARY} DIRECTORY)
   set(SystemC_LIBRARY_DIRS ${SNPS_LIB_DIR})
-  set(SystemC_LIBRARIES ${SNPS_LIBS})     
+  set(SystemC_LIBRARIES sc_main ${SNPS_LIBS})     
   set(SystemC_INCLUDE_DIRS ${TLM_INCLUDE_DIR} ${SystemC_INCLUDE_DIR})
   set(SystemC_DEFINITIONS ${PC_SystemC_CFLAGS_OTHER})
 endif()
 
 if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
   add_library(SystemC::systemc UNKNOWN IMPORTED)
-  target_link_libraries(SystemC::systemc INTERFACE ${SystemC_LIBRARIES})
   set_target_properties(SystemC::systemc PROPERTIES
-    IMPORTED_LOCATION ${SnpsVP_LIBRARY}
-    INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARIES}"
-    INTERFACE_LINK_DIRECTORIES ${SystemC_LIBRARY_DIRS}
-    INTERFACE_COMPILE_OPTIONS "${SystemC_DEFINITIONS}"
+    IMPORTED_LOCATION ${SNPS_LIB_DIR}
+    INTERFACE_COMPILE_DEFINITIONS "${SystemC_DEFINITIONS}"
+    # INTERFACE_COMPILE_OPTIONS "${SystemC_systemc_COMPILE_OPTIONS_C};${SystemC_systemc_COMPILE_OPTIONS_CXX}"
     INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
+    INTERFACE_LINK_DIRECTORIES "${SystemC_LIBRARY_DIRS}"
+    INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARIES}"
   )
 endif()
 
@@ -204,44 +206,3 @@ if(SCV_FOUND AND NOT TARGET SystemC::scv)
   )
 endif()
 
-FIND_PATH(CCI_INCLUDE_DIR
-  NAMES cci_configuration
-  HINTS ${_CCI_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-FIND_LIBRARY(CCI_LIBRARY
-  NAMES cciapi
-  HINTS ${_CCI_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-mark_as_advanced(
-  CCI_INCLUDE_DIR
-  CCI_LIBRARY
-)
-
-if(NOT CCI_INCLUDE_DIR MATCHES "CCI_INCLUDE_DIR-NOTFOUND")
-	find_package_handle_standard_args(CCI
-	  FOUND_VAR CCI_FOUND
-	  REQUIRED_VARS
-	    CCI_LIBRARY
-	    CCI_INCLUDE_DIR
-	  VERSION_VAR 1.0.0
-	)
-	
-	if(CCI_FOUND)
-	  set(CCI_LIBRARIES ${CCI_LIBRARY})
-	  set(CCI_INCLUDE_DIRS ${CCI_INCLUDE_DIR})
-	  set(CCI_DEFINITIONS ${PC_CCI_CFLAGS_OTHER})
-	endif()
-	
-	if(CCI_FOUND AND NOT TARGET SystemC::cci)
-	  add_library(SystemC::cci UNKNOWN IMPORTED)
-	  set_target_properties(SystemC::cci PROPERTIES
-	    IMPORTED_LOCATION "${CCI_LIBRARY}"
-	    INTERFACE_COMPILE_OPTIONS "${PC_CCI_CFLAGS_OTHER}"
-	    INTERFACE_INCLUDE_DIRECTORIES "${CCI_INCLUDE_DIR}"
-	  )
-	endif()
-endif()

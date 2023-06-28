@@ -76,7 +76,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
      */
     void notify(const TYPE& entry, const sc_core::sc_time& t) {
         insert_entry(entry, t + sc_core::sc_time_stamp());
-        m_event.notify(t);
+		m_event.notify(m_scheduled_events.begin()->first - sc_core::sc_time_stamp());
     }
     /**
      * @fn void notify(const TYPE&)
@@ -100,12 +100,12 @@ template <class TYPE> struct peq : public sc_core::sc_object {
         if(m_scheduled_events.empty())
             return boost::none;
         sc_core::sc_time now = sc_core::sc_time_stamp();
-        if(m_scheduled_events.begin()->first > now) {
-            m_event.notify(m_scheduled_events.begin()->first - now);
+        if(!m_scheduled_events.size() || m_scheduled_events.begin()->first > now) {
+            if(m_scheduled_events.size())
+                m_event.notify(m_scheduled_events.begin()->first - now);
             return boost::none;
-        } else {
+        } else
             return get_entry();
-        }
     }
     /**
      * @fn TYPE get()
@@ -145,14 +145,20 @@ template <class TYPE> struct peq : public sc_core::sc_object {
         if(m_scheduled_events.empty())
             return false;
         sc_core::sc_time now = sc_core::sc_time_stamp();
-        if(m_scheduled_events.begin()->first > now) {
-            m_event.notify(m_scheduled_events.begin()->first - now);
+        if(!m_scheduled_events.size() || m_scheduled_events.begin()->first > now) {
+            if(m_scheduled_events.size())
+                m_event.notify(m_scheduled_events.begin()->first - now);
             return false;
         } else {
             return true;
         }
     }
 
+    void clear() {
+    	while(!m_scheduled_events.empty()){
+    		get_entry();
+    	}
+    }
 private:
     map_type m_scheduled_events;
     std::deque<std::deque<TYPE>*> free_pool;
@@ -181,6 +187,8 @@ private:
             free_pool.push_back(entry);
             m_scheduled_events.erase(m_scheduled_events.begin());
         }
+        if(m_scheduled_events.size())
+            m_event.notify( m_scheduled_events.begin()->first-sc_core::sc_time_stamp());
         return ret;
     }
 };

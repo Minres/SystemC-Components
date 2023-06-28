@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2017, 2018 MINRES Technologies GmbH
+ * Copyright 2017-2022 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,8 @@
 
 #include "report.h"
 #include "utilities.h"
-#ifdef HAS_CCI
 #include <cci_configuration>
-#endif
+#include <regex>
 
 /** \ingroup scc-sysc
  *  @{
@@ -30,7 +29,7 @@
 //! @brief SCC SystemC utilities
 namespace scc {
 
-void init_cci(std::string name = "Global Broker");
+bool init_cci(std::string name = "Global Broker");
 /**
  * @class configurer
  * @brief design configuration reader
@@ -44,19 +43,21 @@ class configurer : public sc_core::sc_module {
 
 public:
     using base_type = sc_core::sc_module;
-#ifdef HAS_CCI
     using broker_t = cci::cci_broker_handle;
-#else
-    using broker_t = void*;
-#endif
+    using cci_param_cln = std::vector<
+    		std::pair<
+				cci::cci_param_post_write_callback_untyped,
+				std::unique_ptr<cci::cci_param_untyped>
+			>>;
     enum {
-        BEFORE_END_OF_ELABORATION=1, END_OF_ELABORATION=2, START_OF_SIMULATION=4
+        NEVER=0, BEFORE_END_OF_ELABORATION=1, END_OF_ELABORATION=2, START_OF_SIMULATION=4
     };
     /**
      * create a configurer using an input file
-     * @param filename
+     * @param filename the input file to read containing the values to apply
+     * @param sc_attr_config_phases defines when to apply the values to sc_attribute instances
      */
-    configurer(const std::string& filename, unsigned config_phases = BEFORE_END_OF_ELABORATION);
+    configurer(std::string const& filename, unsigned sc_attr_config_phases = BEFORE_END_OF_ELABORATION);
 
     configurer() = delete;
 
@@ -69,65 +70,45 @@ public:
     configurer& operator=(const configurer&) = delete;
 
     configurer& operator=(configurer&&) = delete;
-    /**
+
+	void read_input_file(std::string const&filename);
+	/**
      * configure the design hierarchy using the input file. Apply the values to
      * sc_core::sc_attribute in th edsign hierarchy
      */
     void configure();
-    /**
-     * dump the design hierarchy as text
-     *
-     * @param os the output stream, std::cout by default
-     * @param obj if not null specifies the root object of the dump
-     */
-    void dump_hierarchy(std::ostream& os = std::cout, sc_core::sc_object* obj = nullptr);
     /**
      * dump the parameters of a design hierarchy to output stream immediately
      *
      * @param os the output stream, std::cout by default
      * @param obj if not null specifies the root object of the dump
      */
-    void dump_configuration(std::ostream& os = std::cout, sc_core::sc_object* obj = nullptr);
+    void dump_configuration(std::ostream& os = std::cout, bool as_yaml=false, bool with_description = false, sc_core::sc_object* obj = nullptr);
     /**
      * schedule the dump the parameters of a design hierarchy to a file
      * during start_of_simulation()
      *
      * @param file_name the output stream, std::cout by default
      */
-    void dump_configuration(std::string const& file_name) { dump_file_name = file_name; }
-    /**
-     * set a value a some attribute (sc_attribute or cci_param)
-     *
-     * @param hier_name the hierarchical name of the attribute
-     * @param value the value to put
-     */
-    template <typename T> void set_value(const std::string& hier_name, T value) {
-#ifdef HAS_CCI
-        cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
-        if(param_handle.is_valid()) {
-            param_handle.set_cci_value(cci::cci_value(value));
-        } else {
-#endif
-            size_t pos = hier_name.find_last_of('.');
-            sc_core::sc_module* mod =
-                dynamic_cast<sc_core::sc_module*>(sc_core::sc_find_object(hier_name.substr(0, pos).c_str()));
-            if(mod != nullptr) {
-                sc_core::sc_attribute<T>* attr =
-                    dynamic_cast<sc_core::sc_attribute<T>*>(mod->get_attribute(hier_name.substr(pos + 1)));
-                if(attr != nullptr)
-                    attr->value = value;
-                else
-                    SCCERR() << "Could not set attribute value " << hier_name;
-            }
-#ifdef HAS_CCI
-            else {
-                cci_broker.set_preset_cci_value(hier_name, cci::cci_value(value));
-            }
-        }
-#endif
+    void dump_configuration(std::string const& file_name, bool with_description = false) {
+    	dump_file_name = file_name;
+    	this->with_description= with_description;
     }
     /**
-     * set a value of an sc_attribute from given configuration
+     * set a value of some property (sc_attribute or cci_param) from programmatically
+     *
+     * In case the configurer is being used without CCI the function can only be called after
+     * the simulation objects are instantiated since the sc_attributes have to exist.
+     *
+     * @param hier_name the hierarchical name of the property
+     * @param value the value to put
+     */
+    template <typename T> void set_value(std::string const& hier_name, T value) {
+    	set_value(hier_name, cci::cci_value(value));
+    }
+    /**
+     * set a value of an sc_attribute from given configuration. This is being used by the scc::ext_attribute
+     * which allows to use config values during construction
      *
      * @param attr_base
      * @param owner
@@ -138,17 +119,18 @@ public:
      *
      * @return reference to the singleton
      */
-    static configurer& instance() {
-        configurer* inst = dynamic_cast<configurer*>(sc_core::sc_find_object("configurer"));
-        sc_assert("No configurer instantiated when using it" && inst != nullptr);
+    static configurer& get() {
+        configurer* inst = dynamic_cast<configurer*>(sc_core::sc_find_object("$$$configurer$$$"));
+        if(!inst)
+            SCCFATAL()<<"No configurer instantiated when using it";
         return *inst;
     }
 
 protected:
-    bool config_valid{false};
     unsigned const config_phases;
-    std::unique_ptr<ConfigHolder> root;
     std::string dump_file_name{""};
+    bool with_description{false};
+    configurer(std::string const& filename, unsigned sc_attr_config_phases, sc_core::sc_module_name nm);
     void config_check();
     void before_end_of_elaboration() override {
         if(config_phases & BEFORE_END_OF_ELABORATION) configure();
@@ -157,11 +139,11 @@ protected:
         if(config_phases & END_OF_ELABORATION) configure();
     }
     void start_of_simulation() override;
-
-#ifdef HAS_CCI
-    cci::cci_originator cci_originator;
-#endif
     broker_t cci_broker;
+    void set_value(const std::string& hier_name, cci::cci_value value);
+    cci_param_cln cci2sc_attr;
+    cci::cci_originator cci_originator;
+    std::unique_ptr<ConfigHolder> root;
 };
 
 } // namespace scc

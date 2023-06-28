@@ -19,15 +19,24 @@ def load_lib(project_dir):
     Find and load SCC libs in PySysC.
     :param project_dir: Toplevel project directory and root of the search tree.
     """
-    logging.debug("Loading SC-Components lib")
-    pysysc.add_include_path(os.path.join(project_dir, 'scc/src/common'))
+    if os.path.exists(os.path.join(project_dir, 'scc/')):
+        logging.debug("Loading SC-Components build dir libs")
+        pysysc.add_include_path(os.path.join(project_dir, 'scc/src/common'))
+        pysysc.add_include_path(os.path.join(project_dir, 'scc/third_party'))
+        pysysc.add_include_path(os.path.join(project_dir, 'scc/third_party/scv-tr/src'))
+        pysysc.add_include_path(os.path.join(project_dir, 'scc/src/sysc'))
+        pysysc.add_include_path(os.path.join(project_dir, 'scc/src/components'))
+    elif os.path.exists(os.path.join(project_dir, 'include/')):
+        logging.debug("Loading SC-Components installed libs")
+        pysysc.add_include_path(os.path.join(project_dir, 'include'))
+    else:
+        logging.fatal("could not identify SC-Components dir from "+project_dir)
     pysysc.add_library('scc_util.h', 'libscc-util.so', project_dir)
-    pysysc.add_include_path(os.path.join(project_dir, 'scc/third_party'))
-    pysysc.add_include_path(os.path.join(project_dir, 'scc/third_party/scv-tr/src'))
     pysysc.add_library('scv-tr.h', 'libscv-tr.so', project_dir)
-    pysysc.add_include_path(os.path.join(project_dir, 'scc/src/sysc'))
     pysysc.add_library('scc_sysc.h', 'libscc-sysc.so', project_dir)
-    pysysc.add_include_path(os.path.join(project_dir, 'scc/src/components'))
+    pysysc.add_library('scc_bus_interfaces.h', 'libbusses.so', project_dir)
+    pysysc.add_library('scc_sysc.h', 'libscc-sysc.so', project_dir)
+    pysysc.add_library('scc_sysc.h', 'libscc-sysc.so', project_dir)
     cppyy.include('scc_components.h')
     
     

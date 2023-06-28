@@ -42,7 +42,6 @@ void scv_tr_compressed_init();
  *
  */
 void scv_tr_plain_init();
-#ifdef WITH_LZ4
 /**
  * @fn void scv_tr_lz4_init()
  * @brief initializes the infrastructure to use a LZ4 compressed text based transaction recording database
@@ -51,7 +50,13 @@ void scv_tr_plain_init();
  *
  */
 void scv_tr_lz4_init();
-#endif
+/**
+ * @fn void scv_tr_mtc_init()
+ * @brief initializes the infrastructure to use a compressed text based transaction recording database with a
+ * multithreaded writer
+ *
+ */
+void scv_tr_cbor_init(bool compressed);
 /**
  * @fn void scv_tr_mtc_init()
  * @brief initializes the infrastructure to use a compressed text based transaction recording database with a

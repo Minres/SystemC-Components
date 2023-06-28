@@ -98,6 +98,8 @@ template <typename T> struct sc_variable : public sc_variable_b {
     : sc_variable_b(name.c_str())
     , value(value)
     , hndl{} {}
+
+    virtual ~sc_variable() = default;
     /**
      * @fn std::string to_string()const
      * @brief create a textual representation of the wrapped value
@@ -289,6 +291,7 @@ template <> struct sc_variable<bool> : public sc_variable_b {
     : sc_variable_b(name.c_str())
     , value(value)
     , hndl{} {}
+    virtual ~sc_variable() = default;
     std::string to_string() const override {
         std::stringstream ss;
         ss << value;
@@ -437,6 +440,7 @@ template <typename T> struct sc_ref_variable : public sc_variable_b {
     sc_ref_variable(const std::string& name, const T& value)
     : sc_variable_b(name.c_str())
     , value(value) {}
+    virtual ~sc_ref_variable() = default;
     /**
      * @fn std::string to_string()const
      * @brief create a textual representation of the wrapped value
@@ -489,6 +493,8 @@ template <typename T> struct sc_ref_variable_masked : public sc_variable_b {
     : sc_variable_b(name.c_str())
     , value(value)
     , mask((1 << width) - 1) {}
+
+    virtual ~sc_ref_variable_masked() = default;
 
     std::string to_string() const override {
         std::stringstream ss;

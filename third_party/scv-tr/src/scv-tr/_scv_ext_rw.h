@@ -571,7 +571,7 @@ public:                                                                         
     virtual void get_value(sc_dt::sc_bv_base& v) const {                                                               \
         if(this->get_bitwidth() != v.length())                                                                         \
             _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, "sc_bv_base", "get_value"); \
-        this->initialize();                                                                                            \
+        /*this->initialize();*/                                                                                            \
         v = *(this->_get_instance());                                                                                  \
     }                                                                                                                  \
     virtual void assign(const sc_dt::sc_lv_base& v) {                                                                  \
@@ -583,7 +583,7 @@ public:                                                                         
     virtual void get_value(sc_dt::sc_lv_base& v) const {                                                               \
         if(this->get_bitwidth() != v.length())                                                                         \
             _scv_message::message(_scv_message::INTROSPECTION_SIZE_MISMATCH_FOR_WIDE_DATA, "sc_lv_base", "get_value"); \
-        this->initialize();                                                                                            \
+        /*this->initialize();*/                                                                                            \
         v = *(this->_get_instance());                                                                                  \
     }
 

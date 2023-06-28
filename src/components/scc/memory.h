@@ -18,12 +18,14 @@
 #define _SYSC_MEMORY_H_
 
 // Needed for the simple_target_socket
+#ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
+#endif
 
-#include "scc/mt19937_rng.h"
-#include "scc/report.h"
-#include "scc/utilities.h"
-#include "tlm/scc/target_mixin.h"
+#include <scc/mt19937_rng.h>
+#include <scc/report.h>
+#include <scc/utilities.h>
+#include <tlm/scc/target_mixin.h>
 #include <numeric>
 #include <tlm.h>
 #include <util/sparse_array.h>
@@ -42,7 +44,7 @@ namespace scc {
  * @tparam SIZE size of the memery
  * @tparam BUSWIDTH bus width of the socket
  */
-template <unsigned long long SIZE, unsigned BUSWIDTH = 32> class memory : public sc_core::sc_module {
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT> class memory : public sc_core::sc_module {
 public:
     //! the target socket to connect to TLM
     tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
@@ -77,7 +79,6 @@ public:
     void set_dmi_callback(std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> cb) {
         dmi_cb = cb;
     }
-#ifdef HAS_CCI
     /**
      * read response delay
      */
@@ -86,7 +87,6 @@ public:
      * write response delay
      */
     cci::cci_param<sc_core::sc_time> wr_resp_delay{"wr_resp_delay", sc_core::SC_ZERO_TIME};
-#endif
 protected:
     //! the real memory structure
     util::sparse_array<uint8_t, SIZE> mem;
@@ -149,9 +149,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
     tlm::tlm_command cmd = trans.get_command();
     SCCTRACE(SCMOD) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr;
     if(cmd == tlm::TLM_READ_COMMAND) {
-#ifdef HAS_CCI
         delay += rd_resp_delay;
-#endif
         if(mem.is_allocated(adr)) {
             const auto& p = mem(adr / mem.page_size);
             auto offs = adr & mem.page_addr_mask;
@@ -169,9 +167,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
                 ptr[i] = scc::MT19937::uniform() % 256;
         }
     } else if(cmd == tlm::TLM_WRITE_COMMAND) {
-#ifdef HAS_CCI
         delay += wr_resp_delay;
-#endif
         auto& p = mem(adr / mem.page_size);
         auto offs = adr & mem.page_addr_mask;
         if((offs + len) > mem.page_size) {
@@ -196,10 +192,8 @@ inline bool memory<SIZE, BUSWIDTH>::handle_dmi(tlm::tlm_generic_payload& gp, tlm
     dmi_data.set_end_address(dmi_data.get_start_address() + mem.page_size - 1);
     dmi_data.set_dmi_ptr(p.data());
     dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);
-#ifdef HAS_CCI
     dmi_data.set_read_latency(rd_resp_delay.get_value());
     dmi_data.set_write_latency(wr_resp_delay.get_value());
-#endif
     return true;
 }
 
