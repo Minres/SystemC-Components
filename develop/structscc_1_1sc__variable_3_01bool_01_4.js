@@ -2,6 +2,7 @@ var structscc_1_1sc__variable_3_01bool_01_4 =
 [
     [ "creator", "structscc_1_1sc__variable_3_01bool_01_4_1_1creator.html", "structscc_1_1sc__variable_3_01bool_01_4_1_1creator" ],
     [ "sc_variable", "structscc_1_1sc__variable_3_01bool_01_4.html#a8278607ae8015ddba08428f040781c5f", null ],
+    [ "~sc_variable", "structscc_1_1sc__variable_3_01bool_01_4.html#a67b42ec74bed29572a22516e2563d5ae", null ],
     [ "get", "structscc_1_1sc__variable_3_01bool_01_4.html#ae6c3f62e60d8ad9cedb1c87b5db63f5a", null ],
     [ "operator bool", "structscc_1_1sc__variable_3_01bool_01_4.html#affdfe880bb66131365673ab219f22c1f", null ],
     [ "operator!=", "structscc_1_1sc__variable_3_01bool_01_4.html#aeb8b244c4afb55aaa6f8b8470fb1f3b5", null ],

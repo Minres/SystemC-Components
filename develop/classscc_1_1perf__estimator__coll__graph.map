@@ -1,5 +1,5 @@
 <map id="scc::perf_estimator" name="scc::perf_estimator">
-<area shape="rect" id="node1" title="a performance estimator" alt="" coords="50,153,197,180"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,13,97,39"/>
-<area shape="rect" id="node3" title="some internal data structure to record a time stamp" alt="" coords="122,5,269,47"/>
+<area shape="rect" id="node1" title="a performance estimator" alt="" coords="92,153,239,180"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,13,155,39"/>
+<area shape="rect" id="node3" title=" " alt="" coords="179,5,325,47"/>
 </map>

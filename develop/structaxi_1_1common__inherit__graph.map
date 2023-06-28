@@ -1,10 +1,10 @@
 <map id="axi::common" name="axi::common">
 <area shape="rect" id="node1" title=" " alt="" coords="5,111,112,138"/>
 <area shape="rect" id="node2" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="175,5,317,47"/>
-<area shape="rect" id="node3" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="160,71,332,112"/>
-<area shape="rect" id="node5" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="175,136,317,177"/>
-<area shape="rect" id="node7" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="175,201,317,243"/>
-<area shape="rect" id="node4" href="$structaxi_1_1ace__extension.html" title=" " alt="" coords="383,78,527,105"/>
-<area shape="rect" id="node6" href="$structaxi_1_1axi3__extension.html" title=" " alt="" coords="380,143,529,170"/>
-<area shape="rect" id="node8" href="$structaxi_1_1axi4__extension.html" title=" " alt="" coords="380,209,529,235"/>
+<area shape="rect" id="node4" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="175,71,317,112"/>
+<area shape="rect" id="node6" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="160,136,332,177"/>
+<area shape="rect" id="node8" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="175,201,317,243"/>
+<area shape="rect" id="node3" href="$structaxi_1_1axi4__extension.html" title=" " alt="" coords="380,13,529,39"/>
+<area shape="rect" id="node5" href="$structaxi_1_1axi3__extension.html" title=" " alt="" coords="380,78,529,105"/>
+<area shape="rect" id="node7" href="$structaxi_1_1ace__extension.html" title=" " alt="" coords="383,143,527,170"/>
 </map>

@@ -1,9 +1,9 @@
 <map id="ahb::pe::ahb_initiator_b" name="ahb::pe::ahb_initiator_b">
 <area shape="rect" id="node1" title=" " alt="" coords="793,71,968,97"/>
-<area shape="rect" id="node2" title=" " alt="" coords="530,5,622,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="501,5,651,32"/>
 <area shape="rect" id="node3" title=" " alt="" coords="475,56,677,112"/>
 <area shape="rect" id="node4" href="$structscc_1_1ordered__semaphore__t.html" title=" " alt="" coords="485,137,667,178"/>
 <area shape="rect" id="node5" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="244,144,425,171"/>
 <area shape="rect" id="node6" title=" " alt="" coords="5,119,195,145"/>
-<area shape="rect" id="node7" title=" " alt="" coords="59,169,141,196"/>
+<area shape="rect" id="node7" title=" " alt="" coords="30,169,170,196"/>
 </map>

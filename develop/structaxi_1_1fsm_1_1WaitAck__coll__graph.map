@@ -1,4 +1,4 @@
 <map id="axi::fsm::WaitAck" name="axi::fsm::WaitAck">
-<area shape="rect" id="node1" title="waiting for ack in case of ACE access" alt="" coords="16,95,152,121"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,163,47"/>
+<area shape="rect" id="node1" title="waiting for ack in case of ACE access" alt="" coords="40,109,176,136"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,211,61"/>
 </map>

@@ -7,6 +7,8 @@ var structchi_1_1response =
     [ "get_pcrd_type", "structchi_1_1response.html#a24e84500ff778836cf7780d0edd586f9", null ],
     [ "get_resp", "structchi_1_1response.html#a55126bf60f2cd1432d384e5517d29587", null ],
     [ "get_resp_err", "structchi_1_1response.html#a757a063a714a13dceabd832eb8a9daa8", null ],
+    [ "get_tag_group_id", "structchi_1_1response.html#a3304ad432c1672a29fcd962ce3c914d9", null ],
+    [ "get_tag_op", "structchi_1_1response.html#a227358b171cb9faa21c8a8297649808c", null ],
     [ "get_tgt_id", "structchi_1_1response.html#a9acd0a42bc63ccbf2dbc88f3b90179f4", null ],
     [ "is_trace_tag", "structchi_1_1response.html#a00b2995236789a74e5d6caf708dee54d", null ],
     [ "set_data_pull", "structchi_1_1response.html#ac78cf93fd83d7238783ff6714401277f", null ],
@@ -16,6 +18,8 @@ var structchi_1_1response =
     [ "set_pcrd_type", "structchi_1_1response.html#a64d901c9fb73a781ca75d2122aa9c3df", null ],
     [ "set_resp", "structchi_1_1response.html#a8fee712450b6973bf3fd42d0203a9d96", null ],
     [ "set_resp_err", "structchi_1_1response.html#a146e3cdfcf9b1cd49bff1d0ff75faff6", null ],
+    [ "set_tag_group_id", "structchi_1_1response.html#a49deb7c87e94e099714f705f78c49495", null ],
+    [ "set_tag_op", "structchi_1_1response.html#ac34a329f40c4937343f4eb667687d5be", null ],
     [ "set_tgt_id", "structchi_1_1response.html#a51b48a906359f2d2ff0cc3ca4406f656", null ],
     [ "set_trace_tag", "structchi_1_1response.html#a93485e85778d32e414a4f38f756f543d", null ]
 ];

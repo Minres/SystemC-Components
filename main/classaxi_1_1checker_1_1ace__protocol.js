@@ -10,8 +10,8 @@ var classaxi_1_1checker_1_1ace__protocol =
     [ "fw_pre", "classaxi_1_1checker_1_1ace__protocol.html#ac0043138b2d51a661dff67279be37cb1", null ],
     [ "operator=", "classaxi_1_1checker_1_1ace__protocol.html#afbb5d04dda197375b6bc88847b30cbae", null ],
     [ "operator=", "classaxi_1_1checker_1_1ace__protocol.html#af1f62308251b7ab751cc85004dec1532", null ],
-    [ "bw", "classaxi_1_1checker_1_1ace__protocol.html#ac2d18c6498c1a9571be962db874f80c4", null ],
-    [ "name", "classaxi_1_1checker_1_1ace__protocol.html#af6a39d555a15914ee096269621b40488", null ],
-    [ "rd_response_timeout", "classaxi_1_1checker_1_1ace__protocol.html#a20186bd25fca2a7ae36055553632c70b", null ],
-    [ "wr_response_timeout", "classaxi_1_1checker_1_1ace__protocol.html#a89da594433858bd711afd8ee60ff51f0", null ]
+    [ "bw", "classaxi_1_1checker_1_1ace__protocol.html#a21aae70248927d1da0d48bfbb6ce6abf", null ],
+    [ "name", "classaxi_1_1checker_1_1ace__protocol.html#aa25ab433d1b6d2cf0b8feb5c9707d7f8", null ],
+    [ "rd_response_timeout", "classaxi_1_1checker_1_1ace__protocol.html#aadd3b03c258b95fc8384f49373938f5d", null ],
+    [ "wr_response_timeout", "classaxi_1_1checker_1_1ace__protocol.html#ac6353bb7256b55bd8beb10ff72a6b06f", null ]
 ];

@@ -1,3 +1,16 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structahb_1_1pe_1_1ahb__initiator__b_1_1tx__state.html" title=" " alt="" coords="5,5,165,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,435,176,476"/>
+<area shape="rect" id="node2" href="$structaxi_1_1ace__initiator__socket.html" title=" " alt="" coords="224,5,484,76"/>
+<area shape="rect" id="node4" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="290,100,418,141"/>
+<area shape="rect" id="node5" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="224,165,484,236"/>
+<area shape="rect" id="node7" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="250,260,458,301"/>
+<area shape="rect" id="node8" href="$structchi_1_1chi__initiator__socket.html" title=" " alt="" coords="224,325,484,396"/>
+<area shape="rect" id="node9" href="$structtlm_1_1scc_1_1tlm__signal__initiator__socket.html" title=" " alt="" coords="271,420,437,491"/>
+<area shape="rect" id="node10" href="$structtlm_1_1scc_1_1tlm__signal__initiator__socket.html" title=" " alt="" coords="259,515,449,556"/>
+<area shape="rect" id="node11" href="$structaxi_1_1ace__initiator__socket.html" title=" " alt="" coords="249,581,459,637"/>
+<area shape="rect" id="node12" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="249,661,459,717"/>
+<area shape="rect" id="node13" href="$structchi_1_1chi__initiator__socket.html" title=" " alt="" coords="249,741,459,797"/>
+<area shape="rect" id="node14" href="$structtlm_1_1scc_1_1tlm__signal__initiator__socket.html" title=" " alt="" coords="269,821,439,877"/>
+<area shape="rect" id="node3" href="$classaxi_1_1scv_1_1ace__rec__initiator__socket.html" title=" " alt="" coords="532,13,743,69"/>
+<area shape="rect" id="node6" href="$classaxi_1_1scv_1_1axi__rec__initiator__socket.html" title=" " alt="" coords="532,173,743,229"/>
 </map>

@@ -1,6 +1,7 @@
 var classscc_1_1abstract__bitfield =
 [
     [ "abstract_bitfield", "classscc_1_1abstract__bitfield.html#a709fce0e8dd20cb2ac05d98f250844cb", null ],
+    [ "~abstract_bitfield", "classscc_1_1abstract__bitfield.html#a3f6988c8f3099c0158e0db28a1ba31b6", null ],
     [ "affected", "classscc_1_1abstract__bitfield.html#a8636b0fe5f68719fbdda0a41433515db", null ],
     [ "mask", "classscc_1_1abstract__bitfield.html#ac9f48a5f2f8615664120077d8657c24f", null ],
     [ "read", "classscc_1_1abstract__bitfield.html#a98963276f0a200f4fe0c46ff88334b9c", null ],

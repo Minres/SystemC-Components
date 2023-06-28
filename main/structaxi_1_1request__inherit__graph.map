@@ -1,12 +1,12 @@
 <map id="axi::request" name="axi::request">
-<area shape="rect" id="node1" title=" " alt="" coords="149,5,248,32"/>
-<area shape="rect" id="node2" href="$structaxi_1_1axi3.html" title=" " alt="" coords="109,80,187,107"/>
-<area shape="rect" id="node5" href="$structaxi_1_1axi4.html" title=" " alt="" coords="226,80,305,107"/>
-<area shape="rect" id="node3" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="36,155,177,196"/>
+<area shape="rect" id="node1" title=" " alt="" coords="121,5,220,32"/>
+<area shape="rect" id="node2" href="$structaxi_1_1axi3.html" title=" " alt="" coords="81,80,159,107"/>
+<area shape="rect" id="node5" href="$structaxi_1_1axi4.html" title=" " alt="" coords="214,80,293,107"/>
+<area shape="rect" id="node3" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="13,155,155,196"/>
 <area shape="rect" id="node4" href="$structaxi_1_1axi3__extension.html" title=" " alt="" coords="5,251,155,278"/>
-<area shape="rect" id="node6" href="$structaxi_1_1ace.html" title=" " alt="" coords="229,162,302,189"/>
-<area shape="rect" id="node9" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="353,155,495,196"/>
-<area shape="rect" id="node7" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="179,244,351,285"/>
-<area shape="rect" id="node8" href="$structaxi_1_1ace__extension.html" title=" " alt="" coords="193,333,337,360"/>
-<area shape="rect" id="node10" href="$structaxi_1_1axi4__extension.html" title=" " alt="" coords="376,251,525,278"/>
+<area shape="rect" id="node6" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="183,155,324,196"/>
+<area shape="rect" id="node8" href="$structaxi_1_1ace.html" title=" " alt="" coords="375,162,449,189"/>
+<area shape="rect" id="node7" href="$structaxi_1_1axi4__extension.html" title=" " alt="" coords="179,251,328,278"/>
+<area shape="rect" id="node9" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="353,244,525,285"/>
+<area shape="rect" id="node10" href="$structaxi_1_1ace__extension.html" title=" " alt="" coords="367,333,511,360"/>
 </map>

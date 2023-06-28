@@ -1,7 +1,7 @@
 var namespaceutil =
 [
-    [ "BitFieldArray", "classutil_1_1BitFieldArray.html", "classutil_1_1BitFieldArray" ],
     [ "BitFieldMember", "structutil_1_1BitFieldMember.html", "structutil_1_1BitFieldMember" ],
+    [ "BitFieldArray", "classutil_1_1BitFieldArray.html", "classutil_1_1BitFieldArray" ],
     [ "delegate", "classutil_1_1delegate.html", null ],
     [ "delegate< R(A...)>", "classutil_1_1delegate_3_01R_07A_8_8_8_08_4.html", "classutil_1_1delegate_3_01R_07A_8_8_8_08_4" ],
     [ "IoRedirector", "classutil_1_1IoRedirector.html", "classutil_1_1IoRedirector" ],
@@ -13,5 +13,27 @@ var namespaceutil =
     [ "sparse_array", "classutil_1_1sparse__array.html", "classutil_1_1sparse__array" ],
     [ "thread_pool", "structutil_1_1thread__pool.html", "structutil_1_1thread__pool" ],
     [ "thread_syncronizer", "classutil_1_1thread__syncronizer.html", "classutil_1_1thread__syncronizer" ],
-    [ "watchdog", "classutil_1_1watchdog.html", "classutil_1_1watchdog" ]
+    [ "watchdog", "classutil_1_1watchdog.html", "classutil_1_1watchdog" ],
+    [ "base_name", "namespaceutil.html#aeda0346a95dd86507525a9b92a83cb76", null ],
+    [ "bit_count", "namespaceutil.html#ab2d7b33fa661ba324fbc535b30d34802", null ],
+    [ "dir_name", "namespaceutil.html#ac7c86d22733f7e5913f863d13962a7e7", null ],
+    [ "file_exists", "namespaceutil.html#ac45479054364f35d457990cc7deab724", null ],
+    [ "find_first", "namespaceutil.html#a933e6a16d3e5d5dedb415477c0fbe27a", null ],
+    [ "hasOddParity", "namespaceutil.html#aab9f30e9034d310e2d3e5f96171beb41", null ],
+    [ "iequals", "namespaceutil.html#aacef5c7f4209048b30e63faef7925013", null ],
+    [ "ilog2", "namespaceutil.html#a60bf55061e90fef707927a656b82f919", null ],
+    [ "join", "namespaceutil.html#ac50b7daec151059e1ae7c7ab03b3f10d", null ],
+    [ "leftmost_one", "namespaceutil.html#a270143ed1c7c56bc65d912f538cdd137", null ],
+    [ "ltrim", "namespaceutil.html#ad52c5f6f3fea14560b3226733827984b", null ],
+    [ "make_unique", "namespaceutil.html#a428707ee48c8bef94fe29652c09e4921", null ],
+    [ "operator<<", "namespaceutil.html#a0cea7a9b61e680977e26bb4d8224f23d", null ],
+    [ "padded", "namespaceutil.html#a7a239a65cdd904257f4d8208a88ff104", null ],
+    [ "remove_ext", "namespaceutil.html#a82e9717e2747247d58f0e443f0012f2f", null ],
+    [ "rtrim", "namespaceutil.html#adba62a8bb34d0281aeec8030a3bd7d14", null ],
+    [ "split", "namespaceutil.html#a0b82e8bc738efe6f022eed57d21f647c", null ],
+    [ "split", "namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359", null ],
+    [ "str_tolower", "namespaceutil.html#a4a9bda6d8c94ceebb8a59e0a424d15ec", null ],
+    [ "strprintf", "namespaceutil.html#a21daaf5c20308c280a887f7a5cc91a79", null ],
+    [ "trim", "namespaceutil.html#ac874ad8c03be31e0731296e53c459eba", null ],
+    [ "uCount", "namespaceutil.html#ace31c7bb3cbd705f7c6a8bbfaf0ad2da", null ]
 ];

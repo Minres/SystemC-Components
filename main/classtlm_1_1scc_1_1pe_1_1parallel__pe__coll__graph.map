@@ -1,7 +1,7 @@
 <map id="tlm::scc::pe::parallel_pe" name="tlm::scc::pe::parallel_pe">
-<area shape="rect" id="node1" title=" " alt="" coords="31,259,208,285"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,177,97,203"/>
-<area shape="rect" id="node3" href="$structtlm_1_1scc_1_1pe_1_1intor__fw__nb.html" title=" " alt="" coords="121,169,256,211"/>
-<area shape="rect" id="node4" href="$structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="121,80,256,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="138,5,239,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="74,259,251,285"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,177,155,203"/>
+<area shape="rect" id="node3" href="$structtlm_1_1scc_1_1pe_1_1intor__fw__nb.html" title=" " alt="" coords="179,169,314,211"/>
+<area shape="rect" id="node4" href="$structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="179,80,314,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="167,5,326,32"/>
 </map>

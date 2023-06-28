@@ -1,12 +1,12 @@
 <map id="chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;" name="chi::pe::chi_rn_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="1039,79,1261,121"/>
-<area shape="rect" id="node2" href="$classchi_1_1pe_1_1chi__rn__initiator__b.html" title=" " alt="" coords="804,87,989,113"/>
-<area shape="rect" id="node3" title=" " alt="" coords="510,28,602,55"/>
-<area shape="rect" id="node4" href="$classchi_1_1chi__bw__transport__if.html" title=" " alt="" coords="476,79,636,135"/>
-<area shape="rect" id="node5" title=" " alt="" coords="231,5,398,61"/>
-<area shape="rect" id="node6" href="$classchi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="213,85,416,141"/>
-<area shape="rect" id="node7" title=" " alt="" coords="5,100,164,127"/>
-<area shape="rect" id="node8" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="465,180,647,207"/>
-<area shape="rect" id="node9" title=" " alt="" coords="220,179,409,205"/>
-<area shape="rect" id="node10" title=" " alt="" coords="273,229,356,256"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1032,59,1255,101"/>
+<area shape="rect" id="node2" href="$classchi_1_1pe_1_1chi__rn__initiator__b.html" title=" " alt="" coords="797,67,983,93"/>
+<area shape="rect" id="node3" title=" " alt="" coords="475,16,624,43"/>
+<area shape="rect" id="node4" href="$classchi_1_1chi__bw__transport__if.html" title=" " alt="" coords="469,67,629,123"/>
+<area shape="rect" id="node5" title=" " alt="" coords="228,5,395,61"/>
+<area shape="rect" id="node6" href="$classchi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="213,86,409,127"/>
+<area shape="rect" id="node7" title=" " alt="" coords="5,93,164,120"/>
+<area shape="rect" id="node8" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="459,160,640,187"/>
+<area shape="rect" id="node9" title=" " alt="" coords="217,155,406,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="241,205,381,232"/>
 </map>

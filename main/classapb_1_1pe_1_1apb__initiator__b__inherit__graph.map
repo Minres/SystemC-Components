@@ -1,6 +1,6 @@
 <map id="apb::pe::apb_initiator_b" name="apb::pe::apb_initiator_b">
-<area shape="rect" id="node1" title=" " alt="" coords="49,109,224,136"/>
-<area shape="rect" id="node4" href="$classapb_1_1pe_1_1apb__initiator.html" title=" " alt="" coords="25,184,248,225"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,20,97,47"/>
-<area shape="rect" id="node3" title=" " alt="" coords="122,5,325,61"/>
+<area shape="rect" id="node1" title=" " alt="" coords="93,109,267,136"/>
+<area shape="rect" id="node4" href="$classapb_1_1pe_1_1apb__initiator.html" title=" " alt="" coords="69,184,291,225"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,20,155,47"/>
+<area shape="rect" id="node3" title=" " alt="" coords="179,5,381,61"/>
 </map>

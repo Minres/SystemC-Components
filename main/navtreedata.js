@@ -1,24 +1,26 @@
 /*
-@licstart  The following is the entire license notice for the
-JavaScript code in this file.
+ @licstart  The following is the entire license notice for the JavaScript code in this file.
 
-Copyright (C) 1997-2019 by Dimitri van Heesch
+ The MIT License (MIT)
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of version 2 of the GNU General Public License as published by
-the Free Software Foundation
+ Copyright (C) 1997-2020 by Dimitri van Heesch
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ and associated documentation files (the "Software"), to deal in the Software without restriction,
+ including without limitation the rights to use, copy, modify, merge, publish, distribute,
+ sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
 
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ The above copyright notice and this permission notice shall be included in all copies or
+ substantial portions of the Software.
 
-@licend  The above is the entire license notice
-for the JavaScript code in this file
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+ @licend  The above is the entire license notice for the JavaScript code in this file
 */
 var NAVTREE =
 [
@@ -59,19 +61,22 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-".html",
-"classaxi_1_1axi__initiator__base.html#ab9acbdbf3ac128f3e0f9faad80f7a5d6",
-"classaxi_1_1pe_1_1simple__ace__initiator.html#ae6ffa8e46bf962f3713798cc154a2c7f",
-"classchi_1_1pe_1_1chi__rn__initiator__b.html#a86f588b6682a18b124072c7bdd4ddee0",
-"classscc_1_1fifo__w__cb.html#afeb9a825396f23bc0c2815c2153666b5",
-"classscc_1_1traceable.html#afde2a0855aa2875f63b72b9db329551c",
-"classtlm_1_1scc_1_1signal__target__mixin.html#abebc685e44d74f9371a1c9130d66fb7f",
-"dir_9dbdeab66cc4aaf1ebb921a8aafc09a0.html",
-"structaxi_1_1ace__target__socket.html#a848145a1e0481c22b6f1bdb628ad98b9",
-"structaxi_1_1lite__slave__types.html#a3bb90770ddba32adee7dd8a04d8cb775",
-"structchi_1_1data.html#ac9107653c725c3198ebd1ba1eceba35c",
-"structscc_1_1sc__clock__ext.html#ab1f289749b2384a8b26b71b4d0525599",
-"structtlm_1_1scc_1_1sc__signal2tlm__signal.html#a5a45cbf507edba686f5f0465a9a853a5"
+"",
+"classaxi_1_1axi__initiator.html",
+"classaxi_1_1pe_1_1simple__ace__initiator.html#a0ead84e364bcd94091a6e0cf277da0ec",
+"classchi_1_1pe_1_1chi__rn__initiator__b.html#a58c569efb04e28b712136a7a81985f9c",
+"classscc_1_1fifo__w__cb.html#aa837fb31c24fe42093bfa6787d072c3b",
+"classscc_1_1trace_1_1gz__writer.html#a809ea2298e50f0bd0f7f38b396fa36d3",
+"classtlm_1_1scc_1_1signal__target__mixin.html",
+"dir_57834e824c433ac75eed52948c872685.html",
+"namespaceaxi.html#af94767169896231177e492daad6ef8db",
+"namespacescc.html#a6c060a46f0b8a9094d85a7d73d7479e5",
+"scc__sysc_8h_source.html",
+"structaxi_1_1fsm_1_1ReadIdle.html#aa7559c9749b3a8a659d20e1a34b00597",
+"structchi_1_1chi__initiator__socket.html#a1bf718fa3d2e8c4c5665f3aa4c82bbf0",
+"structscc_1_1observer.html#a457f354d5e1cdad21cd085ef51c9e8c3",
+"structscc_1_1trace_1_1vcd__trace.html",
+"tagged__initiator__mixin_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

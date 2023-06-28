@@ -6,5 +6,5 @@ var structtlm_1_1scc_1_1tlm__gp__mm =
     [ "copy_from", "structtlm_1_1scc_1_1tlm__gp__mm.html#ac344f34ed5a02a72fec3781a9aa2ffe1", null ],
     [ "be_ptr", "structtlm_1_1scc_1_1tlm__gp__mm.html#aec9a71407237e5a84158c0b96a47432f", null ],
     [ "data_ptr", "structtlm_1_1scc_1_1tlm__gp__mm.html#a1b461d84f0aa19ad298e6cce9e4f7d63", null ],
-    [ "data_size", "structtlm_1_1scc_1_1tlm__gp__mm.html#ab42e7cc2c08f667458a9a4a938a7ec36", null ]
+    [ "data_size", "structtlm_1_1scc_1_1tlm__gp__mm.html#aa2494ee0dae2f721682a659eec17113c", null ]
 ];

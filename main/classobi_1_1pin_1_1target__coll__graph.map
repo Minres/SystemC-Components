@@ -1,10 +1,7 @@
 <map id="obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;" name="obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="1109,29,1304,85"/>
-<area shape="rect" id="node2" title=" " alt="" coords="886,8,978,35"/>
-<area shape="rect" id="node3" href="$classtlm_1_1scc_1_1initiator__mixin.html" title=" " alt="" coords="839,59,1025,130"/>
-<area shape="rect" id="node4" href="$classtlm_1_1scc_1_1scv_1_1tlm__rec__initiator__socket.html" title=" " alt="" coords="587,74,789,115"/>
-<area shape="rect" id="node5" title=" " alt="" coords="257,5,480,91"/>
-<area shape="rect" id="node6" href="$classtlm_1_1scc_1_1scv_1_1tlm__recorder.html" title=" " alt="" coords="279,115,458,171"/>
-<area shape="rect" id="node7" title=" " alt="" coords="5,75,208,131"/>
-<area shape="rect" id="node8" title=" " alt="" coords="5,155,208,211"/>
+<area shape="rect" id="node1" title=" " alt="" coords="800,27,995,83"/>
+<area shape="rect" id="node2" title=" " alt="" coords="548,5,697,32"/>
+<area shape="rect" id="node3" href="$classtlm_1_1scc_1_1initiator__mixin.html" title=" " alt="" coords="529,57,716,127"/>
+<area shape="rect" id="node4" href="$classtlm_1_1scc_1_1scv_1_1tlm__rec__initiator__socket.html" title=" " alt="" coords="277,71,480,113"/>
+<area shape="rect" id="node5" title=" " alt="" coords="5,49,228,135"/>
 </map>

@@ -1,14 +1,5 @@
 var structaxi_1_1request =
 [
-    [ "BUFFERABLE", "structaxi_1_1request.html#ac735abf68992c83e682c807cc5327256ab04fe2486b421c91fdf2f5e6a63eda9c", null ],
-    [ "CACHEABLE", "structaxi_1_1request.html#ac735abf68992c83e682c807cc5327256a836d1a6de6027fd9cec712e66695c318", null ],
-    [ "RA", "structaxi_1_1request.html#ac735abf68992c83e682c807cc5327256aa6a8168f2d3b9653ddd7cc7ea86f48c3", null ],
-    [ "WA", "structaxi_1_1request.html#ac735abf68992c83e682c807cc5327256ab9aeafdb11e7697a83e957368c56e319", null ],
-    [ "EXCL", "structaxi_1_1request.html#ac735abf68992c83e682c807cc5327256a1c6481d25c916b2555f85506a49cb658", null ],
-    [ "LOCKED", "structaxi_1_1request.html#ac735abf68992c83e682c807cc5327256a4d23fb9251e4c32d456ff381753f56db", null ],
-    [ "PRIVILEGED", "structaxi_1_1request.html#ac735abf68992c83e682c807cc5327256a3f79552a42dfff59fca8d62f7e77403e", null ],
-    [ "SECURE", "structaxi_1_1request.html#ac735abf68992c83e682c807cc5327256adbb484c9bce21529c509170d5b79c18b", null ],
-    [ "INSTRUCTION", "structaxi_1_1request.html#ac735abf68992c83e682c807cc5327256aadf7da6426f39ec0af754171530f3d35", null ],
     [ "request", "structaxi_1_1request.html#adfd1fec538f6f86ba4e5c030532b5a4d", null ],
     [ "get_atop", "structaxi_1_1request.html#a0deab8c3cbb7bfa260157d147bb40907", null ],
     [ "get_burst", "structaxi_1_1request.html#a65c9398266162cb4d00648d6a2f842de", null ],

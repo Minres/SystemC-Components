@@ -3,9 +3,6 @@ var classscc_1_1configurer =
     [ "ConfigHolder", "structscc_1_1configurer_1_1ConfigHolder.html", "structscc_1_1configurer_1_1ConfigHolder" ],
     [ "base_type", "classscc_1_1configurer.html#a78591f63e769afc8873a343172ed64e5", null ],
     [ "broker_t", "classscc_1_1configurer.html#a3d4bb1a1521fbbce4f9393340cd6d4d3", null ],
-    [ "BEFORE_END_OF_ELABORATION", "classscc_1_1configurer.html#a0404dbf2e548122d9ee41d6dd5e9028ca90d212316e6127ce706ac473d139123a", null ],
-    [ "END_OF_ELABORATION", "classscc_1_1configurer.html#a0404dbf2e548122d9ee41d6dd5e9028cac8fa8ca0d62f5a8c701759379f853ed4", null ],
-    [ "START_OF_SIMULATION", "classscc_1_1configurer.html#a0404dbf2e548122d9ee41d6dd5e9028ca23b4e99b7cc47d7d47d188c21dff33e4", null ],
     [ "configurer", "classscc_1_1configurer.html#a4d9c9e2b44244f91ec78af2567c8965c", null ],
     [ "configurer", "classscc_1_1configurer.html#a8d08c605f36f5ed793d7a50c10374c95", null ],
     [ "configurer", "classscc_1_1configurer.html#adcdff187cfbdc77ce7378fec4c4b73c1", null ],
@@ -24,7 +21,7 @@ var classscc_1_1configurer =
     [ "set_value", "classscc_1_1configurer.html#a073d540c602e09c2c1af164e7ec1b589", null ],
     [ "start_of_simulation", "classscc_1_1configurer.html#aa78ab03724895900caf77158cf3a610b", null ],
     [ "cci_broker", "classscc_1_1configurer.html#ace0eddd2bb800ae3231fc4d6fc263e75", null ],
-    [ "config_phases", "classscc_1_1configurer.html#af07276ab4de4ab27478bd49ce334f710", null ],
+    [ "config_phases", "classscc_1_1configurer.html#aa43cf006405af0066d0838c0eec6e831", null ],
     [ "config_valid", "classscc_1_1configurer.html#aa5e1f2199733113a59b90a0865d6969c", null ],
     [ "dump_file_name", "classscc_1_1configurer.html#a4885f0400b9c0c275e9938983a833f99", null ],
     [ "root", "classscc_1_1configurer.html#a7a02e2604f585199d4fe7c6f03ce6304", null ]

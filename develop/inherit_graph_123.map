@@ -1,4 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structtlm_1_1scc_1_1tlm__generic__payload__base.html" title=" " alt="" coords="5,5,164,47"/>
-<area shape="rect" id="node2" href="$structtlm_1_1scc_1_1tlm__signal__gp.html" title=" " alt="" coords="212,5,361,47"/>
+<area shape="rect" id="node1" href="$classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if.html" title=" " alt="" coords="5,97,183,153"/>
+<area shape="rect" id="node2" href="$classaxi_1_1lwtr_1_1ace__ext__recording.html" title=" " alt="" coords="239,5,374,47"/>
+<area shape="rect" id="node3" href="$classaxi_1_1lwtr_1_1axi3__ext__recording.html" title=" " alt="" coords="237,71,376,112"/>
+<area shape="rect" id="node4" href="$classaxi_1_1lwtr_1_1axi4__ext__recording.html" title=" " alt="" coords="237,136,376,177"/>
+<area shape="rect" id="node5" href="$classaxi_1_1lwtr_1_1tlm__id__ext__recording.html" title=" " alt="" coords="231,201,383,243"/>
 </map>

@@ -42,6 +42,7 @@ var classchi_1_1pe_1_1chi__rn__initiator__b =
     [ "thread_avail", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a1346bae723e1cb2b7655630430c8b6a3", null ],
     [ "transfer_width_in_bytes", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a49a058b28b7e8107269d15c943995538", null ],
     [ "tx_state_by_trans", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a38265f0ec5ad5f6f7f67e7d8cc6d03ba", null ],
+    [ "tx_state_pool", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a7d53f7be49161542aa600dd822b16386", null ],
     [ "use_legacy_mapping", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a3ee5d3c1790ae476eb79e9effd7f5f4c", null ],
     [ "wdat_chnl", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a577d20e6e40381b9979af6a5febd985d", null ]
 ];
