@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: third_party/axi_chi/chi/scv/recorder_modules.h Source File</title>
+<title>scc: /home/eyck/git/scc/main/third_party/axi_chi/chi/scv/recorder_modules.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -107,9 +107,9 @@ $(document).ready(function(){initNavTree('chi_2scv_2recorder__modules_8h_source.
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classchi_1_1scv_1_1chitlm__recorder__module.html">chitlm_recorder_module</a>() {}</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    tlm::tlm_fw_transport_if&lt;TYPES&gt;* get_fw_if() { <span class="keywordflow">return</span> <a class="code" href="classchi_1_1scv_1_1chitlm__recorder__module.html#aac42c5708fa227bccac57e54f239cca4">isckt</a>.get_base_port().operator-&gt;(); }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    tlm::tlm_fw_transport_if&lt;TYPES&gt;* get_fw_if()<span class="keyword"> override </span>{ <span class="keywordflow">return</span> <a class="code" href="classchi_1_1scv_1_1chitlm__recorder__module.html#aac42c5708fa227bccac57e54f239cca4">isckt</a>.get_base_port().operator-&gt;(); }</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    tlm::tlm_bw_transport_if&lt;TYPES&gt;* get_bw_if() { <span class="keywordflow">return</span> <a class="code" href="classchi_1_1scv_1_1chitlm__recorder__module.html#aa2b9e9a42a59eec89cfd0d82b54dd63d">tsckt</a>.get_base_port().operator-&gt;(); }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    tlm::tlm_bw_transport_if&lt;TYPES&gt;* get_bw_if()<span class="keyword"> override </span>{ <span class="keywordflow">return</span> <a class="code" href="classchi_1_1scv_1_1chitlm__recorder__module.html#aa2b9e9a42a59eec89cfd0d82b54dd63d">tsckt</a>.get_base_port().operator-&gt;(); }</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> start_of_simulation()<span class="keyword"> override </span>{ BASE::initialize_streams(); }</div>

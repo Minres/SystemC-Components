@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: third_party/axi_chi/axi/pe/ordered_target.cpp Source File</title>
+<title>scc: /home/eyck/git/scc/main/third_party/axi_chi/axi/pe/ordered_target.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,114 +69,133 @@ $(document).ready(function(){initNavTree('ordered__target_8cpp_source.html','');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceaxi.html">axi</a> {</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span>pe {</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;rate_limiting_buffer::rate_limiting_buffer(<span class="keyword">const</span> sc_core::sc_module_name &amp;nm) {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    fw_i.bind(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    add_attribute(<a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a181f2c09d6eed68d67791ea15ba8d9b4">rd_bw_limit_byte_per_sec</a>);</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    add_attribute(<a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#aca4daa6c33e0fcf244020897a97251f6">wr_bw_limit_byte_per_sec</a>);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    add_attribute(<a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a0d53ec48bf6aaa87fca2615dd1df3caa">rd_resp_delay</a>);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    add_attribute(<a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a7677dc4e14173f5e9f4f639ac62f3ea9">wr_resp_delay</a>);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    SC_HAS_PROCESS(rate_limiting_buffer);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    SC_METHOD(process_req2resp_fifos);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    dont_initialize();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    sensitive &lt;&lt; clk_i.pos();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    SC_THREAD(start_wr_resp_thread);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    SC_THREAD(start_rd_resp_thread);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> rate_limiting_buffer::end_of_elaboration() {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    clk_if = <span class="keyword">dynamic_cast&lt;</span>sc_core::sc_clock*<span class="keyword">&gt;</span>(clk_i.get_interface());</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">if</span>(clk_if) {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a181f2c09d6eed68d67791ea15ba8d9b4">rd_bw_limit_byte_per_sec</a>.value &gt; 0.0) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            time_per_byte_rd = sc_core::sc_time(1.0 / <a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a181f2c09d6eed68d67791ea15ba8d9b4">rd_bw_limit_byte_per_sec</a>.value, sc_core::SC_SEC);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#aca4daa6c33e0fcf244020897a97251f6">wr_bw_limit_byte_per_sec</a>.value &gt; 0.0) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            time_per_byte_wr = sc_core::sc_time(1.0 / <a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#aca4daa6c33e0fcf244020897a97251f6">wr_bw_limit_byte_per_sec</a>.value, sc_core::SC_SEC);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;rate_limiting_buffer::rate_limiting_buffer(<span class="keyword">const</span> sc_core::sc_module_name &amp;nm, <a class="code" href="classscc_1_1sc__attribute__randomized.html">scc::sc_attribute_randomized&lt;int&gt;</a>&amp; rd_resp_delay, <a class="code" href="classscc_1_1sc__attribute__randomized.html">scc::sc_attribute_randomized&lt;int&gt;</a>&amp; wr_resp_delay)</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;: rd_resp_delay(rd_resp_delay)</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;, wr_resp_delay(wr_resp_delay){</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    fw_i.bind(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    SC_HAS_PROCESS(rate_limiting_buffer);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    SC_METHOD(process_req2resp_fifos);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    dont_initialize();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    sensitive &lt;&lt; clk_i.pos();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    SC_THREAD(start_wr_resp_thread);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    SC_THREAD(start_rd_resp_thread);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">void</span> rate_limiting_buffer::end_of_elaboration() {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    clk_if = <span class="keyword">dynamic_cast&lt;</span>sc_core::sc_clock*<span class="keyword">&gt;</span>(clk_i.get_interface());</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">void</span> rate_limiting_buffer::start_of_simulation() {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">if</span>(clk_if) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">if</span>(total_bw_limit_byte_per_sec.get_value()&gt;0.0) {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            time_per_byte_total = sc_core::sc_time(1.0 / total_bw_limit_byte_per_sec.get_value(), sc_core::SC_SEC);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keywordflow">if</span>(rd_bw_limit_byte_per_sec.get_value() &gt; 0.0 || wr_bw_limit_byte_per_sec.get_value() &gt; 0.0) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                SCCWARN(SCMOD)&lt;&lt;<span class="stringliteral">&quot;total bandwidth is specified, ignoring settings of rd_bw_limit_byte_per_sec and wr_bw_limit_byte_per_sec&quot;</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                rd_bw_limit_byte_per_sec.set_value(-1);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                wr_bw_limit_byte_per_sec.set_value(-1);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            }</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#ac675df569d7966c3f9f8c0a5f56e957c">   31</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#ac675df569d7966c3f9f8c0a5f56e957c">rate_limiting_buffer::transport</a>(tlm::tlm_generic_payload &amp;trans, <span class="keywordtype">bool</span> lt_transport) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">if</span>(trans.is_write())</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        wr_req2resp_fifo.push_back(std::make_tuple(&amp;trans, <a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a7677dc4e14173f5e9f4f639ac62f3ea9">wr_resp_delay</a>.value));</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(trans.is_read())</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a416098527119abbd3b60709b5b4c8213">rd_req2resp_fifo</a>.push_back(std::make_tuple(&amp;trans, <a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a0d53ec48bf6aaa87fca2615dd1df3caa">rd_resp_delay</a>.value));</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> rate_limiting_buffer::process_req2resp_fifos() {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">while</span>(<a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a416098527119abbd3b60709b5b4c8213">rd_req2resp_fifo</a>.avail()) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">auto</span>&amp; entry = <a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a416098527119abbd3b60709b5b4c8213">rd_req2resp_fifo</a>.front();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">if</span>(std::get&lt;1&gt;(entry) == 0) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#ac2a7af612545c7f9d7ea15792901acac">rd_resp_fifo</a>.push_back(std::get&lt;0&gt;(entry));</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            std::get&lt;1&gt;(entry) -= 1;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a416098527119abbd3b60709b5b4c8213">rd_req2resp_fifo</a>.push_back(entry);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a416098527119abbd3b60709b5b4c8213">rd_req2resp_fifo</a>.pop_front();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">while</span>(wr_req2resp_fifo.avail()) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">auto</span>&amp; entry = wr_req2resp_fifo.front();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">if</span>(rd_bw_limit_byte_per_sec.get_value() &gt; 0.0) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            time_per_byte_rd = sc_core::sc_time(1.0 / rd_bw_limit_byte_per_sec.get_value(), sc_core::SC_SEC);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">if</span>(wr_bw_limit_byte_per_sec.get_value() &gt; 0.0) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            time_per_byte_wr = sc_core::sc_time(1.0 / wr_bw_limit_byte_per_sec.get_value(), sc_core::SC_SEC);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#ac675df569d7966c3f9f8c0a5f56e957c">   41</a></span>&#160;<span class="keywordtype">void</span> rate_limiting_buffer::transport(tlm::tlm_generic_payload &amp;trans, <span class="keywordtype">bool</span> lt_transport) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span>(trans.is_write())</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        wr_req2resp_fifo.push_back(std::make_tuple(&amp;trans, wr_resp_delay.value));</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(trans.is_read())</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        rd_req2resp_fifo.push_back(std::make_tuple(&amp;trans, rd_resp_delay.value));</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> rate_limiting_buffer::process_req2resp_fifos() {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">while</span>(rd_req2resp_fifo.avail()) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">auto</span>&amp; entry = rd_req2resp_fifo.front();</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span>(std::get&lt;1&gt;(entry) == 0) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            wr_resp_fifo.push_back(std::get&lt;0&gt;(entry));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            rd_resp_fifo.push_back(std::get&lt;0&gt;(entry));</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            std::get&lt;1&gt;(entry) -= 1;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            wr_req2resp_fifo.push_back(entry);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            rd_req2resp_fifo.push_back(entry);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        wr_req2resp_fifo.pop_front();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        rd_req2resp_fifo.pop_front();</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> rate_limiting_buffer::start_rd_resp_thread() {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">auto</span> residual_clocks = 0.0;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        wait(<a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#ac2a7af612545c7f9d7ea15792901acac">rd_resp_fifo</a>.data_written_event());</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">while</span>(<a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#ac2a7af612545c7f9d7ea15792901acac">rd_resp_fifo</a>.avail())</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">if</span>(<span class="keyword">auto</span>* trans = <a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#ac2a7af612545c7f9d7ea15792901acac">rd_resp_fifo</a>.front()){</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keywordflow">if</span>(clk_if &amp;&amp; time_per_byte_rd.value()) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                    <span class="keyword">auto</span> clocks = trans-&gt;get_data_length() * time_per_byte_rd / clk_if-&gt;period() + residual_clocks;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    <span class="keyword">auto</span> delay = <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(clocks);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    residual_clocks = clocks - delay;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    <span class="keywordflow">while</span>(delay) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        delay--;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordflow">while</span>(bw_o-&gt;transport(*trans)!=0) wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <a class="code" href="classaxi_1_1pe_1_1rate__limiting__buffer.html#ac2a7af612545c7f9d7ea15792901acac">rd_resp_fifo</a>.pop_front();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">void</span> rate_limiting_buffer::start_wr_resp_thread() {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">auto</span> residual_clocks = 0.0;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        wait(wr_resp_fifo.data_written_event());</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">while</span>(wr_resp_fifo.avail())</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">if</span>(<span class="keyword">auto</span>* trans = wr_resp_fifo.front()){</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordflow">if</span>(clk_if &amp;&amp; time_per_byte_rd.value()) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    <span class="keyword">auto</span> clocks = trans-&gt;get_data_length() * time_per_byte_rd / clk_if-&gt;period() + residual_clocks;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    <span class="keyword">auto</span> delay = <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(clocks);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    residual_clocks = clocks - delay;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    <span class="keywordflow">while</span>(delay) {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                        wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                        delay--;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordflow">while</span>(bw_o-&gt;transport(*trans)!=0) wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                wr_resp_fifo.pop_front();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
-<div class="ttc" id="aclassaxi_1_1pe_1_1rate__limiting__buffer_html_a0d53ec48bf6aaa87fca2615dd1df3caa"><div class="ttname"><a href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a0d53ec48bf6aaa87fca2615dd1df3caa">axi::pe::rate_limiting_buffer::rd_resp_delay</a></div><div class="ttdeci">scc::sc_attribute_randomized&lt; int &gt; rd_resp_delay</div><div class="ttdoc">the latency between request and response phase. Will be overwritten by the return of the callback fun...</div><div class="ttdef"><b>Definition:</b> <a href="ordered__target_8h_source.html#l00037">ordered_target.h:37</a></div></div>
-<div class="ttc" id="aclassaxi_1_1pe_1_1rate__limiting__buffer_html_a181f2c09d6eed68d67791ea15ba8d9b4"><div class="ttname"><a href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a181f2c09d6eed68d67791ea15ba8d9b4">axi::pe::rate_limiting_buffer::rd_bw_limit_byte_per_sec</a></div><div class="ttdeci">sc_core::sc_attribute&lt; double &gt; rd_bw_limit_byte_per_sec</div><div class="ttdoc">the bandwidth limit for read accesses</div><div class="ttdef"><b>Definition:</b> <a href="ordered__target_8h_source.html#l00046">ordered_target.h:46</a></div></div>
-<div class="ttc" id="aclassaxi_1_1pe_1_1rate__limiting__buffer_html_a416098527119abbd3b60709b5b4c8213"><div class="ttname"><a href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a416098527119abbd3b60709b5b4c8213">axi::pe::rate_limiting_buffer::rd_req2resp_fifo</a></div><div class="ttdeci">scc::fifo_w_cb&lt; std::tuple&lt; tlm::tlm_generic_payload *, unsigned &gt; &gt; rd_req2resp_fifo</div><div class="ttdoc">queues realizing the min latency</div><div class="ttdef"><b>Definition:</b> <a href="ordered__target_8h_source.html#l00071">ordered_target.h:71</a></div></div>
-<div class="ttc" id="aclassaxi_1_1pe_1_1rate__limiting__buffer_html_a7677dc4e14173f5e9f4f639ac62f3ea9"><div class="ttname"><a href="classaxi_1_1pe_1_1rate__limiting__buffer.html#a7677dc4e14173f5e9f4f639ac62f3ea9">axi::pe::rate_limiting_buffer::wr_resp_delay</a></div><div class="ttdeci">scc::sc_attribute_randomized&lt; int &gt; wr_resp_delay</div><div class="ttdoc">the latency between request and response phase. Will be overwritten by the return of the callback fun...</div><div class="ttdef"><b>Definition:</b> <a href="ordered__target_8h_source.html#l00042">ordered_target.h:42</a></div></div>
-<div class="ttc" id="aclassaxi_1_1pe_1_1rate__limiting__buffer_html_ac2a7af612545c7f9d7ea15792901acac"><div class="ttname"><a href="classaxi_1_1pe_1_1rate__limiting__buffer.html#ac2a7af612545c7f9d7ea15792901acac">axi::pe::rate_limiting_buffer::rd_resp_fifo</a></div><div class="ttdeci">scc::fifo_w_cb&lt; tlm::tlm_generic_payload * &gt; rd_resp_fifo</div><div class="ttdoc">queues to handle bandwidth limit</div><div class="ttdef"><b>Definition:</b> <a href="ordered__target_8h_source.html#l00074">ordered_target.h:74</a></div></div>
-<div class="ttc" id="aclassaxi_1_1pe_1_1rate__limiting__buffer_html_ac675df569d7966c3f9f8c0a5f56e957c"><div class="ttname"><a href="classaxi_1_1pe_1_1rate__limiting__buffer.html#ac675df569d7966c3f9f8c0a5f56e957c">axi::pe::rate_limiting_buffer::transport</a></div><div class="ttdeci">void transport(tlm::tlm_generic_payload &amp;payload, bool lt_transport=false) override</div><div class="ttdef"><b>Definition:</b> <a href="ordered__target_8cpp_source.html#l00031">ordered_target.cpp:31</a></div></div>
-<div class="ttc" id="aclassaxi_1_1pe_1_1rate__limiting__buffer_html_aca4daa6c33e0fcf244020897a97251f6"><div class="ttname"><a href="classaxi_1_1pe_1_1rate__limiting__buffer.html#aca4daa6c33e0fcf244020897a97251f6">axi::pe::rate_limiting_buffer::wr_bw_limit_byte_per_sec</a></div><div class="ttdeci">sc_core::sc_attribute&lt; double &gt; wr_bw_limit_byte_per_sec</div><div class="ttdoc">the bandwidth limit for write accesses</div><div class="ttdef"><b>Definition:</b> <a href="ordered__target_8h_source.html#l00050">ordered_target.h:50</a></div></div>
-<div class="ttc" id="anamespaceaxi_html"><div class="ttname"><a href="namespaceaxi.html">axi</a></div><div class="ttdoc">TLM2.0 components modeling AHB.</div><div class="ttdef"><b>Definition:</b> <a href="src_2bus__interfaces_2axi_2axi__initiator_8h_source.html#l00028">axi_initiator.h:28</a></div></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">while</span>(wr_req2resp_fifo.avail()) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">auto</span>&amp; entry = wr_req2resp_fifo.front();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">if</span>(std::get&lt;1&gt;(entry) == 0) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            wr_resp_fifo.push_back(std::get&lt;0&gt;(entry));</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            std::get&lt;1&gt;(entry) -= 1;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            wr_req2resp_fifo.push_back(entry);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        wr_req2resp_fifo.pop_front();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> rate_limiting_buffer::start_rd_resp_thread() {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">auto</span> residual_clocks = 0.0;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        wait(rd_resp_fifo.data_written_event());</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">while</span>(rd_resp_fifo.avail())</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">if</span>(<span class="keyword">auto</span>* trans = rd_resp_fifo.front()){</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keywordflow">if</span>(clk_if) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    <span class="keywordflow">if</span>(time_per_byte_total.value()) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html">scc::ordered_semaphore::lock</a> lck(total_arb);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        <span class="keyword">auto</span> clocks = trans-&gt;get_data_length() * time_per_byte_total / clk_if-&gt;period() + total_residual_clocks;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        <span class="keyword">auto</span> delay = <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(clocks);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        total_residual_clocks = clocks - delay;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        wait(delay*clk_if-&gt;period());</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(time_per_byte_rd.value()) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        <span class="keyword">auto</span> clocks = trans-&gt;get_data_length() * time_per_byte_rd / clk_if-&gt;period() + residual_clocks;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        <span class="keyword">auto</span> delay = <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(clocks);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        residual_clocks = clocks - delay;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        wait(delay*clk_if-&gt;period());</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordflow">while</span>(bw_o-&gt;transport(*trans)!=0) wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                rd_resp_fifo.pop_front();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keywordtype">void</span> rate_limiting_buffer::start_wr_resp_thread() {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">auto</span> residual_clocks = 0.0;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        wait(wr_resp_fifo.data_written_event());</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">while</span>(wr_resp_fifo.avail())</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">if</span>(<span class="keyword">auto</span>* trans = wr_resp_fifo.front()){</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <span class="keywordflow">if</span>(clk_if) {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                    <span class="keywordflow">if</span>(time_per_byte_total.value()) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                        <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html">scc::ordered_semaphore::lock</a> lck(total_arb);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                        <span class="keyword">auto</span> clocks = trans-&gt;get_data_length() * time_per_byte_total / clk_if-&gt;period() + total_residual_clocks;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                        <span class="keyword">auto</span> delay = <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(clocks);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                        total_residual_clocks = clocks - delay;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                        wait(delay*clk_if-&gt;period());</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                        wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(time_per_byte_rd.value()) {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                        <span class="keyword">auto</span> clocks = trans-&gt;get_data_length() * time_per_byte_rd / clk_if-&gt;period() + residual_clocks;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                        <span class="keyword">auto</span> delay = <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(clocks);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                        residual_clocks = clocks - delay;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                        wait(delay*clk_if-&gt;period());</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                        wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">while</span>(bw_o-&gt;transport(*trans)!=0) wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                wr_resp_fifo.pop_front();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="ttc" id="aclassscc_1_1sc__attribute__randomized_html"><div class="ttname"><a href="classscc_1_1sc__attribute__randomized.html">scc::sc_attribute_randomized&lt; int &gt;</a></div></div>
+<div class="ttc" id="anamespaceaxi_html"><div class="ttname"><a href="namespaceaxi.html">axi</a></div><div class="ttdoc">TLM2.0 components modeling AHB.</div><div class="ttdef"><b>Definition:</b> <a href="src_2bus__interfaces_2axi_2axi__initiator_8h_source.html#l00030">axi_initiator.h:30</a></div></div>
+<div class="ttc" id="astructscc_1_1ordered__semaphore_1_1lock_html"><div class="ttname"><a href="structscc_1_1ordered__semaphore_1_1lock.html">scc::ordered_semaphore::lock</a></div><div class="ttdoc">a lock for the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00128">ordered_semaphore.h:128</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -67,13 +67,17 @@ var namespacescv__tr =
       [ "RECORD", "namespacescv__tr.html#ac5e602e9975ac5b9100f48c6e5f928c9aaa07f0583755a61be8257ad5093f0330", null ],
       [ "END", "namespacescv__tr.html#ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668", null ]
     ] ],
+    [ "getStringId", "namespacescv__tr.html#a857679e06c5d236674638a79895c5008", null ],
     [ "recordAttribute", "namespacescv__tr.html#a55c348cc11d7faffc804fc8f2bb48ca6", null ],
     [ "recordAttribute", "namespacescv__tr.html#ab0b5199c49cd26614106ee2e73cb3ffe", null ],
     [ "recordAttribute", "namespacescv__tr.html#a1016c8d0d9288c9652a99db6ddf2f43b", null ],
     [ "scv_tr_binary_init", "namespacescv__tr.html#a8b2392f7305bc8ac027513b77d524ccd", null ],
+    [ "scv_tr_cbor_init", "namespacescv__tr.html#a7c9135fea30930016b0f044669629bf7", null ],
     [ "scv_tr_compressed_init", "namespacescv__tr.html#a3573df3b0a771e07ba4520471b65c753", null ],
+    [ "scv_tr_lz4_init", "namespacescv__tr.html#afeddfaf192ef3019298e592676f3620f", null ],
     [ "scv_tr_mtc_init", "namespacescv__tr.html#a15074645e87ec6f7ad6a325d276d631c", null ],
     [ "scv_tr_plain_init", "namespacescv__tr.html#a65444428d84300ea1a58592878e20c56", null ],
     [ "scv_tr_sqlite_init", "namespacescv__tr.html#a32f06dd92b69fc5b665b63172dd62e31", null ],
-    [ "SQLITEWRAPPER_ERROR", "namespacescv__tr.html#ab8b397cbee69cfc16b25a8e6768fe740", null ]
+    [ "SQLITEWRAPPER_ERROR", "namespacescv__tr.html#ab8b397cbee69cfc16b25a8e6768fe740", null ],
+    [ "with_transactions", "namespacescv__tr.html#ae52ab41490994d96aaa88507b2ab2d52", null ]
 ];

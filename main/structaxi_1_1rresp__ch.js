@@ -3,6 +3,7 @@ var structaxi_1_1rresp__ch =
     [ "rresp_ch", "structaxi_1_1rresp__ch.html#a8d355eb914344a85a3456ad3dcf72cfa", null ],
     [ "rresp_ch", "structaxi_1_1rresp__ch.html#a953fa5d68359db321693f28e3bd0a120", null ],
     [ "bind_r", "structaxi_1_1rresp__ch.html#a0843be94a0545f69222e6bd3689d8cf9", null ],
+    [ "bind_r", "structaxi_1_1rresp__ch.html#ae49bec4043771433182bb912d01a0a87", null ],
     [ "r_data", "structaxi_1_1rresp__ch.html#ad2cde9cdcbf6b464c6f0e40eedda99f1", null ],
     [ "r_id", "structaxi_1_1rresp__ch.html#a3822e2cad7af446f09f188613a74cedd", null ],
     [ "r_last", "structaxi_1_1rresp__ch.html#aabbbc2ef51a2943e955028a9524b806f", null ],

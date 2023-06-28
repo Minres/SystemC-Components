@@ -68,13 +68,14 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 : <a class="el" href="classlogging_1_1Log.html#a60a7b4c3080c956a6f33c2db73e33547">logging::Log&lt; T &gt;</a>
 , <a class="el" href="classscc_1_1bitfield.html#abbd2079bb71109a238791d08e9f0a10a">scc::bitfield&lt; datatype_t &gt;</a>
 , <a class="el" href="classscc_1_1bitfield__register.html#ac1f66cb5c4cd232ce9e0ec139a60f19a">scc::bitfield_register&lt; datatype_t &gt;</a>
+, <a class="el" href="classscc_1_1configurer.html#a6d6fe748be80e440125a969c127edfad">scc::configurer</a>
 , <a class="el" href="classscc_1_1impl_1_1sc__register.html#a2b1a13df7e0f33841fa77eb23c6ff594">scc::impl::sc_register&lt; DATATYPE &gt;</a>
 , <a class="el" href="structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed">scc::peq&lt; TYPE &gt;</a>
 , <a class="el" href="structscc_1_1sc__variable.html#afb2282744a7b5e2cc95ee72e28d6b11e">scc::sc_variable&lt; T &gt;</a>
 , <a class="el" href="structscc_1_1ScLogger.html#a76ea0ccd13c351ee2474eeb4485c7608">scc::ScLogger&lt; SEVERITY &gt;</a>
 , <a class="el" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html#a1499120f37c6dcc44e24bd834d69826b">tlm::scc::tlm_gp_shared_ptr</a>
 , <a class="el" href="classtlm_1_1scc_1_1tlm__mm.html#ad96d412a19c84b6d945e939d313f361a">tlm::scc::tlm_mm&lt; TYPES, CLEANUP_DATA &gt;</a>
-, <a class="el" href="classutil_1_1pool__allocator.html#a3064a8dad08445ab5ef5b944cfbe0f97">util::pool_allocator&lt; T, CHUNK_SIZE &gt;</a>
+, <a class="el" href="classutil_1_1pool__allocator.html#a543eb3f270945e564997d0afaf0713dd">util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;</a>
 </li>
 <li>get_atop()
 : <a class="el" href="structaxi_1_1request.html#a0deab8c3cbb7bfa260157d147bb40907">axi::request</a>
@@ -86,7 +87,7 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 : <a class="el" href="structaxi_1_1request.html#a65c9398266162cb4d00648d6a2f842de">axi::request</a>
 </li>
 <li>get_bw_if()
-: <a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#a71e8260153e6b1ccc6f4a0e1ff8d9829">axi::scv::ace_recorder&lt; TYPES &gt;</a>
+: <a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#abd055214ab5c212bec37ee3e282058e0">axi::scv::ace_recorder&lt; TYPES &gt;</a>
 , <a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#a1a10881249143bb999a1d1d0f5fbddf1">axi::scv::axi_recorder&lt; TYPES &gt;</a>
 , <a class="el" href="classchi_1_1scv_1_1chi__trx__recorder.html#a88ae97f3787feb9a2a60129de3adebb5">chi::scv::chi_trx_recorder&lt; TYPES &gt;</a>
 </li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 </li>
 <li>get_capacity()
 : <a class="el" href="classscc_1_1ordered__semaphore.html#a4a14b192fb959f0f7f331b98201cebe6">scc::ordered_semaphore</a>
-, <a class="el" href="classutil_1_1pool__allocator.html#a64bcba1c2afd166969c12e71f3cfd6bb">util::pool_allocator&lt; T, CHUNK_SIZE &gt;</a>
+, <a class="el" href="classutil_1_1pool__allocator.html#a746eb0c07fbc80872a6384c1a73e0a3b">util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;</a>
 </li>
 <li>get_creator()
 : <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__recording__extension.html#ae60ae6b13f72894c8887cda134df9038">tlm::scc::scv::tlm_recording_extension</a>
@@ -104,20 +105,24 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 : <a class="el" href="structaxi_1_1ace__response.html#a897a98fbd35c1c2f05229c89e7d7cbf3">axi::ace_response</a>
 </li>
 <li>get_direct_mem_ptr()
-: <a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#aafd242706d21b136a21d24abade680ec">axi::scv::ace_recorder&lt; TYPES &gt;</a>
+: <a class="el" href="classaxi_1_1lwtr_1_1ace__lwtr.html#a4bb978c067428301476d88aaac3f146a">axi::lwtr::ace_lwtr&lt; TYPES &gt;</a>
+, <a class="el" href="classaxi_1_1lwtr_1_1axi__lwtr.html#a2a8bf4c59ad37b5df84b51c9a3f6d1af">axi::lwtr::axi_lwtr&lt; TYPES &gt;</a>
+, <a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#aafd242706d21b136a21d24abade680ec">axi::scv::ace_recorder&lt; TYPES &gt;</a>
 , <a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#aa08ec214c5b5733bf27b4c25a5c82347">axi::scv::axi_recorder&lt; TYPES &gt;</a>
+, <a class="el" href="classchi_1_1lwtr_1_1chi__lwtr.html#ace805cb07cb6d606fc76fb2306dc5a00">chi::lwtr::chi_lwtr&lt; TYPES &gt;</a>
 , <a class="el" href="classchi_1_1scv_1_1chi__trx__recorder.html#a4c2571813dbb9d267ad4da3efe37250f">chi::scv::chi_trx_recorder&lt; TYPES &gt;</a>
 , <a class="el" href="classscc_1_1router.html#a24c3cd3703a98f7c05d4d1ddbd5748bb">scc::router&lt; BUSWIDTH &gt;</a>
+, <a class="el" href="classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr.html#aa31b83c1cd573bab0e08c09f5e1b00e1">tlm::scc::lwtr::tlm2_lwtr&lt; TYPES &gt;</a>
 , <a class="el" href="classtlm_1_1scc_1_1scv_1_1tlm__recorder.html#a5a33f8dbd5a5ff77f19956bd42df03c4">tlm::scc::scv::tlm_recorder&lt; TYPES &gt;</a>
 </li>
 <li>get_domain()
 : <a class="el" href="structaxi_1_1ace.html#adb6a51482ca8f43655c68843f004f1dd">axi::ace</a>
 </li>
 <li>get_free_entries_count()
-: <a class="el" href="classutil_1_1pool__allocator.html#a3eec2bdfd5731f98c0669ae91278f5b0">util::pool_allocator&lt; T, CHUNK_SIZE &gt;</a>
+: <a class="el" href="classutil_1_1pool__allocator.html#a9a0f7cb7f9db3e1b065962e4e5abeed0">util::pool_allocator&lt; ELEM_SIZE, CHUNK_SIZE &gt;</a>
 </li>
 <li>get_fw_if()
-: <a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#a9720379619a185edd9d36cf929f1b66e">axi::scv::ace_recorder&lt; TYPES &gt;</a>
+: <a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#af415d6252d6e8733521c0221f6224a23">axi::scv::ace_recorder&lt; TYPES &gt;</a>
 , <a class="el" href="classaxi_1_1scv_1_1axi__recorder.html#a10a01dc4da6831564b5657edf87948aa">axi::scv::axi_recorder&lt; TYPES &gt;</a>
 , <a class="el" href="classchi_1_1scv_1_1chi__trx__recorder.html#a5f8df6beefa405437d0e8a0091429b75">chi::scv::chi_trx_recorder&lt; TYPES &gt;</a>
 </li>

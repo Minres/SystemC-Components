@@ -104,7 +104,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a0404dbf2e548122d9ee41d6dd5e9028c"><td class="memItemLeft" align="right" valign="top"><a id="a0404dbf2e548122d9ee41d6dd5e9028c"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>BEFORE_END_OF_ELABORATION</b> =1
+<tr class="memitem:a0404dbf2e548122d9ee41d6dd5e9028c"><td class="memItemLeft" align="right" valign="top"><a id="a0404dbf2e548122d9ee41d6dd5e9028c"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>NEVER</b> =0
+, <b>BEFORE_END_OF_ELABORATION</b> =1
 , <b>END_OF_ELABORATION</b> =2
 , <b>START_OF_SIMULATION</b> =4
  }</td></tr>
@@ -112,14 +113,17 @@ Public Types</h2></td></tr>
 <tr class="memitem:a78591f63e769afc8873a343172ed64e5"><td class="memItemLeft" align="right" valign="top"><a id="a78591f63e769afc8873a343172ed64e5"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>base_type</b> = sc_core::sc_module</td></tr>
 <tr class="separator:a78591f63e769afc8873a343172ed64e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d4bb1a1521fbbce4f9393340cd6d4d3"><td class="memItemLeft" align="right" valign="top"><a id="a3d4bb1a1521fbbce4f9393340cd6d4d3"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>broker_t</b> = void *</td></tr>
-<tr class="separator:a3d4bb1a1521fbbce4f9393340cd6d4d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3d0b53947313e894ff6fb48af582578"><td class="memItemLeft" align="right" valign="top"><a id="ac3d0b53947313e894ff6fb48af582578"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>broker_t</b> = cci::cci_broker_handle</td></tr>
+<tr class="separator:ac3d0b53947313e894ff6fb48af582578"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae37225b68d7f3a87c9e3cf9b9c57cab3"><td class="memItemLeft" align="right" valign="top"><a id="ae37225b68d7f3a87c9e3cf9b9c57cab3"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>cci_param_cln</b> = std::vector&lt; std::pair&lt; cci::cci_param_post_write_callback_untyped, std::unique_ptr&lt; cci::cci_param_untyped &gt; &gt; &gt;</td></tr>
+<tr class="separator:ae37225b68d7f3a87c9e3cf9b9c57cab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4d9c9e2b44244f91ec78af2567c8965c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a4d9c9e2b44244f91ec78af2567c8965c">configurer</a> (const std::string &amp;filename, unsigned config_phases=BEFORE_END_OF_ELABORATION)</td></tr>
-<tr class="separator:a4d9c9e2b44244f91ec78af2567c8965c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95efe4659487fece9d4003e450d48a84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a95efe4659487fece9d4003e450d48a84">configurer</a> (std::string const &amp;filename, unsigned sc_attr_config_phases=BEFORE_END_OF_ELABORATION)</td></tr>
+<tr class="separator:a95efe4659487fece9d4003e450d48a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adcdff187cfbdc77ce7378fec4c4b73c1"><td class="memItemLeft" align="right" valign="top"><a id="adcdff187cfbdc77ce7378fec4c4b73c1"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>configurer</b> (const <a class="el" href="classscc_1_1configurer.html">configurer</a> &amp;)=delete</td></tr>
 <tr class="separator:adcdff187cfbdc77ce7378fec4c4b73c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,27 +136,31 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2889cab9c2541d1aa283540d3ec28bf2"><td class="memItemLeft" align="right" valign="top"><a id="a2889cab9c2541d1aa283540d3ec28bf2"></a>
 <a class="el" href="classscc_1_1configurer.html">configurer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classscc_1_1configurer.html">configurer</a> &amp;&amp;)=delete</td></tr>
 <tr class="separator:a2889cab9c2541d1aa283540d3ec28bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7392ce761c23432db33914496447f54"><td class="memItemLeft" align="right" valign="top"><a id="ae7392ce761c23432db33914496447f54"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>read_input_file</b> (std::string const &amp;filename)</td></tr>
+<tr class="separator:ae7392ce761c23432db33914496447f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0419a8cd7a38cec2d667a61d62b3a520"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a0419a8cd7a38cec2d667a61d62b3a520">configure</a> ()</td></tr>
 <tr class="separator:a0419a8cd7a38cec2d667a61d62b3a520"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b16ed55b504449f2ec189c8363a3769"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a3b16ed55b504449f2ec189c8363a3769">dump_hierarchy</a> (std::ostream &amp;os=std::cout, sc_core::sc_object *obj=nullptr)</td></tr>
-<tr class="separator:a3b16ed55b504449f2ec189c8363a3769"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11d9d54aa9c22a9bf0cdbf1721610eba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a11d9d54aa9c22a9bf0cdbf1721610eba">dump_configuration</a> (std::ostream &amp;os=std::cout, sc_core::sc_object *obj=nullptr)</td></tr>
-<tr class="separator:a11d9d54aa9c22a9bf0cdbf1721610eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3254b1447ccbee60e3c01f74af89a583"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a3254b1447ccbee60e3c01f74af89a583">dump_configuration</a> (std::string const &amp;file_name)</td></tr>
-<tr class="separator:a3254b1447ccbee60e3c01f74af89a583"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a073d540c602e09c2c1af164e7ec1b589"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a073d540c602e09c2c1af164e7ec1b589"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a073d540c602e09c2c1af164e7ec1b589">set_value</a> (const std::string &amp;hier_name, T value)</td></tr>
-<tr class="separator:a073d540c602e09c2c1af164e7ec1b589"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33002554b42ddf2d0c0c404ef042d97b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a33002554b42ddf2d0c0c404ef042d97b">dump_configuration</a> (std::ostream &amp;os=std::cout, bool as_yaml=false, bool with_description=false, sc_core::sc_object *obj=nullptr)</td></tr>
+<tr class="separator:a33002554b42ddf2d0c0c404ef042d97b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26901fddb70002d791c7b2a8683d1fee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a26901fddb70002d791c7b2a8683d1fee">dump_configuration</a> (std::string const &amp;file_name, bool with_description=false)</td></tr>
+<tr class="separator:a26901fddb70002d791c7b2a8683d1fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4fb1e50abb62aad0d81126eac7daac8"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ad4fb1e50abb62aad0d81126eac7daac8"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#ad4fb1e50abb62aad0d81126eac7daac8">set_value</a> (std::string const &amp;hier_name, T value)</td></tr>
+<tr class="separator:ad4fb1e50abb62aad0d81126eac7daac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2536144f65524d836ce35031bbd1bf20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a2536144f65524d836ce35031bbd1bf20">set_configuration_value</a> (sc_core::sc_attr_base *attr_base, sc_core::sc_object *owner)</td></tr>
 <tr class="separator:a2536144f65524d836ce35031bbd1bf20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a4651add3c6d21bd563460911ddcc8b19"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classscc_1_1configurer.html">configurer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a4651add3c6d21bd563460911ddcc8b19">instance</a> ()</td></tr>
-<tr class="separator:a4651add3c6d21bd563460911ddcc8b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d6fe748be80e440125a969c127edfad"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classscc_1_1configurer.html">configurer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a6d6fe748be80e440125a969c127edfad">get</a> ()</td></tr>
+<tr class="separator:a6d6fe748be80e440125a969c127edfad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
+<tr class="memitem:a6669aa59d495ce98d4fe8d1759e14596"><td class="memItemLeft" align="right" valign="top"><a id="a6669aa59d495ce98d4fe8d1759e14596"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>configurer</b> (std::string const &amp;filename, unsigned sc_attr_config_phases, sc_core::sc_module_name nm)</td></tr>
+<tr class="separator:a6669aa59d495ce98d4fe8d1759e14596"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d2858566d90b99d4ef32b2f930712f2"><td class="memItemLeft" align="right" valign="top"><a id="a2d2858566d90b99d4ef32b2f930712f2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>config_check</b> ()</td></tr>
 <tr class="separator:a2d2858566d90b99d4ef32b2f930712f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,33 +173,42 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>end_of_elaboration</b
 <tr class="memitem:aa78ab03724895900caf77158cf3a610b"><td class="memItemLeft" align="right" valign="top"><a id="aa78ab03724895900caf77158cf3a610b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>start_of_simulation</b> () override</td></tr>
 <tr class="separator:aa78ab03724895900caf77158cf3a610b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af93bc5cafd6d7035e1ee025b9c408fba"><td class="memItemLeft" align="right" valign="top"><a id="af93bc5cafd6d7035e1ee025b9c408fba"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_value</b> (const std::string &amp;hier_name, cci::cci_value value)</td></tr>
+<tr class="separator:af93bc5cafd6d7035e1ee025b9c408fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aa5e1f2199733113a59b90a0865d6969c"><td class="memItemLeft" align="right" valign="top"><a id="aa5e1f2199733113a59b90a0865d6969c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>config_valid</b> {false}</td></tr>
-<tr class="separator:aa5e1f2199733113a59b90a0865d6969c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa43cf006405af0066d0838c0eec6e831"><td class="memItemLeft" align="right" valign="top"><a id="aa43cf006405af0066d0838c0eec6e831"></a>
 unsigned const&#160;</td><td class="memItemRight" valign="bottom"><b>config_phases</b></td></tr>
 <tr class="separator:aa43cf006405af0066d0838c0eec6e831"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a02e2604f585199d4fe7c6f03ce6304"><td class="memItemLeft" align="right" valign="top"><a id="a7a02e2604f585199d4fe7c6f03ce6304"></a>
-std::unique_ptr&lt; <a class="el" href="structscc_1_1configurer_1_1ConfigHolder.html">ConfigHolder</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>root</b></td></tr>
-<tr class="separator:a7a02e2604f585199d4fe7c6f03ce6304"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4885f0400b9c0c275e9938983a833f99"><td class="memItemLeft" align="right" valign="top"><a id="a4885f0400b9c0c275e9938983a833f99"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>dump_file_name</b> {&quot;&quot;}</td></tr>
 <tr class="separator:a4885f0400b9c0c275e9938983a833f99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6087b9e3e4a5a66f5a571e11022e28cf"><td class="memItemLeft" align="right" valign="top"><a id="a6087b9e3e4a5a66f5a571e11022e28cf"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>with_description</b> {false}</td></tr>
+<tr class="separator:a6087b9e3e4a5a66f5a571e11022e28cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace0eddd2bb800ae3231fc4d6fc263e75"><td class="memItemLeft" align="right" valign="top"><a id="ace0eddd2bb800ae3231fc4d6fc263e75"></a>
 broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></td></tr>
 <tr class="separator:ace0eddd2bb800ae3231fc4d6fc263e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae78996684b1dc39f8655755167065436"><td class="memItemLeft" align="right" valign="top"><a id="ae78996684b1dc39f8655755167065436"></a>
+cci_param_cln&#160;</td><td class="memItemRight" valign="bottom"><b>cci2sc_attr</b></td></tr>
+<tr class="separator:ae78996684b1dc39f8655755167065436"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26ff5c5fe8bbe63906e0136cf91920ee"><td class="memItemLeft" align="right" valign="top"><a id="a26ff5c5fe8bbe63906e0136cf91920ee"></a>
+cci::cci_originator&#160;</td><td class="memItemRight" valign="bottom"><b>cci_originator</b></td></tr>
+<tr class="separator:a26ff5c5fe8bbe63906e0136cf91920ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a02e2604f585199d4fe7c6f03ce6304"><td class="memItemLeft" align="right" valign="top"><a id="a7a02e2604f585199d4fe7c6f03ce6304"></a>
+std::unique_ptr&lt; <a class="el" href="structscc_1_1configurer_1_1ConfigHolder.html">ConfigHolder</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>root</b></td></tr>
+<tr class="separator:a7a02e2604f585199d4fe7c6f03ce6304"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>design configuration reader </p>
 <p>A class to configure a design hierarchy using a JSON input file. It reads a file and and stores its values into a CCI broker. It can apply the value also to sc_attribute once the design is installed. </p>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00042">42</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00041">41</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a4d9c9e2b44244f91ec78af2567c8965c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d9c9e2b44244f91ec78af2567c8965c">&#9670;&nbsp;</a></span>configurer()</h2>
+<a id="a95efe4659487fece9d4003e450d48a84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95efe4659487fece9d4003e450d48a84">&#9670;&nbsp;</a></span>configurer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -199,14 +216,14 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
         <tr>
           <td class="memname">scc::configurer::configurer </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>filename</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>config_phases</em> = <code>BEFORE_END_OF_ELABORATION</code>&#160;</td>
+          <td class="paramname"><em>sc_attr_config_phases</em> = <code>BEFORE_END_OF_ELABORATION</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -217,12 +234,13 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
 </div><div class="memdoc">
 <p>create a configurer using an input file </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filename</td><td></td></tr>
+    <tr><td class="paramname">filename</td><td>the input file to read containing the values to apply </td></tr>
+    <tr><td class="paramname">sc_attr_config_phases</td><td>defines when to apply the values to sc_attribute instances </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00322">322</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00610">610</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
 
 </div>
 </div>
@@ -243,12 +261,12 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
 </div><div class="memdoc">
 <p>configure the design hierarchy using the input file. Apply the values to sc_core::sc_attribute in th edsign hierarchy </p>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00379">379</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00668">668</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a11d9d54aa9c22a9bf0cdbf1721610eba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11d9d54aa9c22a9bf0cdbf1721610eba">&#9670;&nbsp;</a></span>dump_configuration() <span class="overload">[1/2]</span></h2>
+<a id="a33002554b42ddf2d0c0c404ef042d97b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33002554b42ddf2d0c0c404ef042d97b">&#9670;&nbsp;</a></span>dump_configuration() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -258,6 +276,18 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
           <td>(</td>
           <td class="paramtype">std::ostream &amp;&#160;</td>
           <td class="paramname"><em>os</em> = <code>std::cout</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>as_yaml</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>with_description</em> = <code>false</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -281,12 +311,12 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00368">368</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00646">646</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a3254b1447ccbee60e3c01f74af89a583"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3254b1447ccbee60e3c01f74af89a583">&#9670;&nbsp;</a></span>dump_configuration() <span class="overload">[2/2]</span></h2>
+<a id="a26901fddb70002d791c7b2a8683d1fee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26901fddb70002d791c7b2a8683d1fee">&#9670;&nbsp;</a></span>dump_configuration() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -298,8 +328,18 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
           <td class="memname">void scc::configurer::dump_configuration </td>
           <td>(</td>
           <td class="paramtype">std::string const &amp;&#160;</td>
-          <td class="paramname"><em>file_name</em></td><td>)</td>
+          <td class="paramname"><em>file_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>with_description</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -316,50 +356,12 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00097">97</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00093">93</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
 
 </div>
 </div>
-<a id="a3b16ed55b504449f2ec189c8363a3769"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b16ed55b504449f2ec189c8363a3769">&#9670;&nbsp;</a></span>dump_hierarchy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void scc::configurer::dump_hierarchy </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>os</em> = <code>std::cout</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">sc_core::sc_object *&#160;</td>
-          <td class="paramname"><em>obj</em> = <code>nullptr</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>dump the design hierarchy as text</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">os</td><td>the output stream, std::cout by default </td></tr>
-    <tr><td class="paramname">obj</td><td>if not null specifies the root object of the dump </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00357">357</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a4651add3c6d21bd563460911ddcc8b19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4651add3c6d21bd563460911ddcc8b19">&#9670;&nbsp;</a></span>instance()</h2>
+<a id="a6d6fe748be80e440125a969c127edfad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d6fe748be80e440125a969c127edfad">&#9670;&nbsp;</a></span>get()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -368,7 +370,7 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="classscc_1_1configurer.html">configurer</a>&amp; scc::configurer::instance </td>
+          <td class="memname">static <a class="el" href="classscc_1_1configurer.html">configurer</a>&amp; scc::configurer::get </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -383,7 +385,7 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
 <p>find the configurer in the design hierarchy</p>
 <dl class="section return"><dt>Returns</dt><dd>reference to the singleton </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00141">141</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00122">122</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
 
 </div>
 </div>
@@ -412,7 +414,7 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p>set a value of an sc_attribute from given configuration</p>
+<p>set a value of an sc_attribute from given configuration. This is being used by the <a class="el" href="classscc_1_1ext__attribute.html" title="extended sc_attribute">scc::ext_attribute</a> which allows to use config values during construction</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">attr_base</td><td></td></tr>
@@ -421,12 +423,12 @@ broker_t&#160;</td><td class="memItemRight" valign="bottom"><b>cci_broker</b></t
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00394">394</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00672">672</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a073d540c602e09c2c1af164e7ec1b589"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a073d540c602e09c2c1af164e7ec1b589">&#9670;&nbsp;</a></span>set_value()</h2>
+<a id="ad4fb1e50abb62aad0d81126eac7daac8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4fb1e50abb62aad0d81126eac7daac8">&#9670;&nbsp;</a></span>set_value()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -439,7 +441,7 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">void scc::configurer::set_value </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>hier_name</em>, </td>
         </tr>
         <tr>
@@ -460,22 +462,24 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>set a value a some attribute (sc_attribute or cci_param)</p>
+<p>set a value of some property (sc_attribute or cci_param) from programmatically</p>
+<p>In case the configurer is being used without CCI the function can only be called after the simulation objects are instantiated since the sc_attributes have to exist.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">hier_name</td><td>the hierarchical name of the attribute </td></tr>
+    <tr><td class="paramname">hier_name</td><td>the hierarchical name of the property </td></tr>
     <tr><td class="paramname">value</td><td>the value to put </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00104">104</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00106">106</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/sysc/scc/<a class="el" href="configurer_8h_source.html">configurer.h</a></li>
-<li>src/sysc/scc/<a class="el" href="configurer_8cpp_source.html">configurer.cpp</a></li>
+<li>/home/eyck/git/scc/main/src/sysc/scc/<a class="el" href="configurer_8h_source.html">configurer.h</a></li>
+<li>/home/eyck/git/scc/main/src/sysc/scc/<a class="el" href="configurer_8cpp_source.html">configurer.cpp</a></li>
+<li>/home/eyck/git/scc/main/src/sysc/scc/<a class="el" href="configurer__nocci_8cpp_source.html">configurer_nocci.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

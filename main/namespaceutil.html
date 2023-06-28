@@ -98,6 +98,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1pool__allocator.html">pool_allocator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a generic pool allocator singleton not being MT-safe  <a href="classutil_1_1pool__allocator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1stl__pool__allocator.html">stl_pool_allocator</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutil_1_1range__lut.html">range_lut</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">range based lookup table  <a href="classutil_1_1range__lut.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,11 +136,19 @@ constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>uCount</b
 <tr class="memitem:ab2d7b33fa661ba324fbc535b30d34802"><td class="memItemLeft" align="right" valign="top"><a id="ab2d7b33fa661ba324fbc535b30d34802"></a>
 constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>bit_count</b> (uint32_t u)</td></tr>
 <tr class="separator:ab2d7b33fa661ba324fbc535b30d34802"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60bf55061e90fef707927a656b82f919"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutil.html#a60bf55061e90fef707927a656b82f919">ilog2</a> (uint32_t val)</td></tr>
-<tr class="separator:a60bf55061e90fef707927a656b82f919"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab9f30e9034d310e2d3e5f96171beb41"><td class="memItemLeft" align="right" valign="top"><a id="aab9f30e9034d310e2d3e5f96171beb41"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasOddParity</b> (uint32_t u)</td></tr>
-<tr class="separator:aab9f30e9034d310e2d3e5f96171beb41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a219e52a3e5ba2f55ccf4931b2db10618"><td class="memTemplParams" colspan="2"><a id="a219e52a3e5ba2f55ccf4931b2db10618"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a219e52a3e5ba2f55ccf4931b2db10618"><td class="memTemplItemLeft" align="right" valign="top">CONSTEXPR std::enable_if&lt; std::is_integral&lt; T &gt;::value, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>rotl</b> (T n, unsigned int c)</td></tr>
+<tr class="separator:a219e52a3e5ba2f55ccf4931b2db10618"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7027525373e5934d8d3392ab3a5432a1"><td class="memTemplParams" colspan="2"><a id="a7027525373e5934d8d3392ab3a5432a1"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a7027525373e5934d8d3392ab3a5432a1"><td class="memTemplItemLeft" align="right" valign="top">CONSTEXPR std::enable_if&lt; std::is_integral&lt; T &gt;::value, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>rotr</b> (T n, unsigned int c)</td></tr>
+<tr class="separator:a7027525373e5934d8d3392ab3a5432a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d5ba13409e657c9e2ae1283530d5bcb"><td class="memItemLeft" align="right" valign="top">CONSTEXPR unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutil.html#a9d5ba13409e657c9e2ae1283530d5bcb">ilog2</a> (uint32_t val)</td></tr>
+<tr class="separator:a9d5ba13409e657c9e2ae1283530d5bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5a52e954d54636bdeabe22acf0ac1e4"><td class="memItemLeft" align="right" valign="top"><a id="af5a52e954d54636bdeabe22acf0ac1e4"></a>
+CONSTEXPR bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasOddParity</b> (uint32_t u)</td></tr>
+<tr class="separator:af5a52e954d54636bdeabe22acf0ac1e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa22e7291ae32401fbcb10a7f8fbf5359"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359">split</a> (const std::string &amp;s, char separator)</td></tr>
 <tr class="separator:aa22e7291ae32401fbcb10a7f8fbf5359"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac50b7daec151059e1ae7c7ab03b3f10d"><td class="memTemplParams" colspan="2">template&lt;typename Range , typename Value  = typename Range::value_type&gt; </td></tr>
@@ -155,9 +165,14 @@ constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasOddParit
 <tr class="separator:ac874ad8c03be31e0731296e53c459eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a9bda6d8c94ceebb8a59e0a424d15ec"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutil.html#a4a9bda6d8c94ceebb8a59e0a424d15ec">str_tolower</a> (std::string str)</td></tr>
 <tr class="separator:a4a9bda6d8c94ceebb8a59e0a424d15ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7dfc664bb8c940ec51640da8139352f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutil.html#af7dfc664bb8c940ec51640da8139352f">str_toupper</a> (std::string str)</td></tr>
+<tr class="separator:af7dfc664bb8c940ec51640da8139352f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacef5c7f4209048b30e63faef7925013"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutil.html#aacef5c7f4209048b30e63faef7925013">iequals</a> (const std::string &amp;a, const std::string &amp;b)</td></tr>
 <tr class="memdesc:aacef5c7f4209048b30e63faef7925013"><td class="mdescLeft">&#160;</td><td class="mdescRight">compare two string ignoring case  <a href="namespaceutil.html#aacef5c7f4209048b30e63faef7925013">More...</a><br /></td></tr>
 <tr class="separator:aacef5c7f4209048b30e63faef7925013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2477abe41bd3ce59a76baf65da1e7a6"><td class="memItemLeft" align="right" valign="top"><a id="aa2477abe41bd3ce59a76baf65da1e7a6"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ends_with</b> (std::string const &amp;value, std::string const &amp;ending)</td></tr>
+<tr class="separator:aa2477abe41bd3ce59a76baf65da1e7a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a239a65cdd904257f4d8208a88ff104"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutil.html#a7a239a65cdd904257f4d8208a88ff104">padded</a> (std::string str, size_t width, bool show_ellipsis=true)</td></tr>
 <tr class="memdesc:a7a239a65cdd904257f4d8208a88ff104"><td class="mdescLeft">&#160;</td><td class="mdescRight">pad a string to a given length by either cutting of the overflow or inserting an ellipsis  <a href="namespaceutil.html#a7a239a65cdd904257f4d8208a88ff104">More...</a><br /></td></tr>
 <tr class="separator:a7a239a65cdd904257f4d8208a88ff104"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -172,6 +187,8 @@ constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasOddParit
 <tr class="memitem:a82e9717e2747247d58f0e443f0012f2f"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
 <tr class="memitem:a82e9717e2747247d58f0e443f0012f2f"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceutil.html#a82e9717e2747247d58f0e443f0012f2f">remove_ext</a> (T const &amp;filename)</td></tr>
 <tr class="separator:a82e9717e2747247d58f0e443f0012f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4953d4c20314b6f70219367e7df7ecdb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutil.html#a4953d4c20314b6f70219367e7df7ecdb">glob_to_regex</a> (std::string val)</td></tr>
+<tr class="separator:a4953d4c20314b6f70219367e7df7ecdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cea7a9b61e680977e26bb4d8224f23d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a0cea7a9b61e680977e26bb4d8224f23d"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceutil.html#a0cea7a9b61e680977e26bb4d8224f23d">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="classutil_1_1range__lut.html">range_lut</a>&lt; T &gt; &amp;lut)</td></tr>
 <tr class="separator:a0cea7a9b61e680977e26bb4d8224f23d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -227,7 +244,7 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00325">325</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00373">373</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
@@ -275,7 +292,7 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00315">315</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00363">363</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
@@ -310,7 +327,44 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if file exists and can be opened </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00305">305</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00353">353</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+
+</div>
+</div>
+<a id="a4953d4c20314b6f70219367e7df7ecdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4953d4c20314b6f70219367e7df7ecdb">&#9670;&nbsp;</a></span>glob_to_regex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string util::glob_to_regex </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>converts a globbing string into a regular expression</p>
+<p>The globbing supports ?,*,**, and character classes ([a-z] as well as [!a-z]). '.' acts as hierarchy delimiter and is only matched with ** Regular expression must start with a carret ('^') so that it can be identified as regex.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00397">397</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
@@ -358,12 +412,12 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the are equal otherwise false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00264">264</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00304">304</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
-<a id="a60bf55061e90fef707927a656b82f919"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60bf55061e90fef707927a656b82f919">&#9670;&nbsp;</a></span>ilog2()</h2>
+<a id="a9d5ba13409e657c9e2ae1283530d5bcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d5ba13409e657c9e2ae1283530d5bcb">&#9670;&nbsp;</a></span>ilog2()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -372,7 +426,7 @@ template&lt;class T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned util::ilog2 </td>
+          <td class="memname">CONSTEXPR unsigned util::ilog2 </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>val</em></td><td>)</td>
@@ -394,7 +448,7 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of bit needed to hold the value val </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00138">138</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00169">169</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
@@ -427,7 +481,7 @@ template&lt;typename Range , typename Value  = typename Range::value_type&gt; </
 </div><div class="memdoc">
 <p>note: delimiter cannot contain NUL characters </p>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00192">192</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00223">223</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
@@ -473,7 +527,7 @@ template&lt;typename Range , typename Value  = typename Range::value_type&gt; </
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00224">224</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00255">255</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
@@ -569,7 +623,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>string with the given length </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00287">287</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00335">335</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
@@ -606,7 +660,7 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00334">334</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00382">382</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
@@ -652,7 +706,7 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00234">234</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00265">265</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
@@ -691,7 +745,7 @@ template&lt;typename Input , typename Output , typename Value  = typename Output
 </div><div class="memdoc">
 <p>note: imput is assumed to not contain NUL characters </p>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00208">208</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00239">239</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
@@ -738,7 +792,7 @@ template&lt;typename Input , typename Output , typename Value  = typename Output
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>vector of splitted strings </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00167">167</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00198">198</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
@@ -773,7 +827,42 @@ template&lt;typename Input , typename Output , typename Value  = typename Output
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00252">252</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00283">283</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+
+</div>
+</div>
+<a id="af7dfc664bb8c940ec51640da8139352f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7dfc664bb8c940ec51640da8139352f">&#9670;&nbsp;</a></span>str_toupper()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string util::str_toupper </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>convert string to upper case </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>the string to convert </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00292">292</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
@@ -819,7 +908,7 @@ template&lt;typename Input , typename Output , typename Value  = typename Output
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00244">244</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00275">275</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>

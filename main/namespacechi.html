@@ -65,7 +65,8 @@ $(document).ready(function(){initNavTree('namespacechi.html',''); initResizable(
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">chi Namespace Reference</div>  </div>
 </div><!--header-->
@@ -171,52 +172,81 @@ Enumerations</h2></td></tr>
 , <b>ECBarrier</b> = 0x0F
 , <br />
 &#160;&#160;<b>ReadNoSnpSep</b> = 0x11
+, <b>CleanSharedPersistSep</b> = 0x13
 , <b>DVMOp</b> = 0x14
 , <b>WriteEvictFull</b> = 0x15
+, <br />
+&#160;&#160;<b>WriteCleanPtl</b> = 0x16
 , <b>WriteCleanFull</b> = 0x17
-, <br />
-&#160;&#160;<b>WriteUniquePtl</b> = 0x18
+, <b>WriteUniquePtl</b> = 0x18
 , <b>WriteUniqueFull</b> = 0x19
-, <b>WriteCleanPtl</b> = 0x16
-, <b>WriteBackPtl</b> = 0x1A
 , <br />
-&#160;&#160;<b>WriteBackFull</b> = 0x1B
+&#160;&#160;<b>WriteBackPtl</b> = 0x1A
+, <b>WriteBackFull</b> = 0x1B
 , <b>WriteNoSnpPtl</b> = 0x1C
 , <b>WriteNoSnpFull</b> = 0x1D
-, <b>WriteUniqueFullStash</b> = 0x20
 , <br />
-&#160;&#160;<b>WriteUniquePtlStash</b> = 0x21
+&#160;&#160;<b>WriteUniqueFullStash</b> = 0x20
+, <b>WriteUniquePtlStash</b> = 0x21
 , <b>StashOnceShared</b> = 0x22
 , <b>StashOnceUnique</b> = 0x23
-, <b>ReadOnceCleanInvalid</b> = 0x24
 , <br />
-&#160;&#160;<b>ReadOnceMakeInvalid</b> = 0x25
+&#160;&#160;<b>ReadOnceCleanInvalid</b> = 0x24
+, <b>ReadOnceMakeInvalid</b> = 0x25
 , <b>ReadNotSharedDirty</b> = 0x26
 , <b>CleanSharedPersist</b> = 0x27
-, <b>AtomicStoreAdd</b> = 0x28
 , <br />
-&#160;&#160;<b>AtomicStoreClr</b> = 0x29
+&#160;&#160;<b>AtomicStoreAdd</b> = 0x28
+, <b>AtomicStoreClr</b> = 0x29
 , <b>AtomicStoreEor</b> = 0x2A
 , <b>AtomicStoreSet</b> = 0x2B
-, <b>AtomicStoreSmax</b> = 0x2C
 , <br />
-&#160;&#160;<b>AtomicStoreSmin</b> = 0x2D
+&#160;&#160;<b>AtomicStoreSmax</b> = 0x2C
+, <b>AtomicStoreSmin</b> = 0x2D
 , <b>AtomicStoreUmax</b> = 0x2E
 , <b>AtomicStoreUmin</b> = 0x2F
-, <b>AtomicLoadAdd</b> = 0x30
 , <br />
-&#160;&#160;<b>AtomicLoadClr</b> = 0x31
+&#160;&#160;<b>AtomicLoadAdd</b> = 0x30
+, <b>AtomicLoadClr</b> = 0x31
 , <b>AtomicLoadEor</b> = 0x32
 , <b>AtomicLoadSet</b> = 0x33
-, <b>AtomicLoadSmax</b> = 0x34
 , <br />
-&#160;&#160;<b>AtomicLoadSmin</b> = 0x35
+&#160;&#160;<b>AtomicLoadSmax</b> = 0x34
+, <b>AtomicLoadSmin</b> = 0x35
 , <b>AtomicLoadUmax</b> = 0x36
 , <b>AtomicLoadUmin</b> = 0x37
-, <b>AtomicSwap</b> = 0x38
 , <br />
-&#160;&#160;<b>AtomicCompare</b> = 0x39
+&#160;&#160;<b>AtomicSwap</b> = 0x38
+, <b>AtomicCompare</b> = 0x39
 , <b>PrefetchTgt</b> = 0x3A
+, <b>MakeReadUnique</b> = 0x41
+, <br />
+&#160;&#160;<b>WriteEvictOrEvict</b> = 0x42
+, <b>WriteUniqueZero</b> = 0x43
+, <b>WriteNoSnpZero</b> = 0x44
+, <b>StashOnceSepShared</b> = 0x47
+, <br />
+&#160;&#160;<b>StashOnceSepUnique</b> = 0x48
+, <b>ReadPreferUnique</b> = 0x4c
+, <b>WriteNoSnpFullCleanSh</b> = 0x50
+, <b>WriteNoSnpFullCleanInv</b> = 0x51
+, <br />
+&#160;&#160;<b>WriteNoSnpFullCleanShPerSep</b> = 0x52
+, <b>WriteUniqueFullCleanSh</b> = 0x54
+, <b>WriteUniqueFullCleanShPerSep</b> = 0x56
+, <b>WriteBackFullCleanSh</b> = 0x58
+, <br />
+&#160;&#160;<b>WriteBackFullCleanInv</b> = 0x59
+, <b>WriteBackFullCleanShPerSep</b> = 0x5A
+, <b>WriteCleanFullCleanSh</b> = 0x5c
+, <b>WriteCleanFullCleanShPerSep</b> = 0x5e
+, <br />
+&#160;&#160;<b>WriteNoSnpPtlCleanSh</b> = 0x60
+, <b>WriteNoSnpPtlCleanInv</b> = 0x61
+, <b>WriteNoSnpPtlCleanShPerSep</b> = 0x62
+, <b>WriteUniquePtlCleanSh</b> = 0x64
+, <br />
+&#160;&#160;<b>WriteUniquePtlCleanShPerSep</b> = 0x66
 , <b>ILLEGAL</b> = 0xFF
 <br />
  }</td></tr>
@@ -239,12 +269,17 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<b>SnpStashShared</b> = 0x0c
 , <b>SnpDVMOp</b> = 0x0D
+, <b>SnpQuery</b> = 0x10
 , <b>SnpSharedFwd</b> = 0x11
-, <b>SnpCleanFwd</b> = 0x12
 , <br />
-&#160;&#160;<b>SnpOnceFwd</b> = 0x13
+&#160;&#160;<b>SnpCleanFwd</b> = 0x12
+, <b>SnpOnceFwd</b> = 0x13
 , <b>SnpNotSharedDirtyFwd</b> = 0x14
+, <b>SnpPreferUnique</b> = 0x15
+, <br />
+&#160;&#160;<b>SnpPreferUniqueFwd</b> = 0x16
 , <b>SnpUniqueFwd</b> = 0x17
+, <b>ILLEGAL</b> = 0x20
 <br />
  }</td></tr>
 <tr class="separator:a00a01c88bf9f85800ad627f7ff98ef77"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -343,8 +378,17 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<b>ReadReceipt</b> = 0x8
 , <b>SnpRespFwded</b> = 0x9
+, <b>TagMatch</b> = 0xA
 , <b>RespSepData</b> = 0xB
-, <b>Invalid</b> = 0x10
+, <br />
+&#160;&#160;<b>Persist</b> =0xC
+, <b>CompPersist</b> = 0xD
+, <b>DBIDRespOrd</b> = 0xE
+, <b>StashDone</b> = 0x10
+, <br />
+&#160;&#160;<b>CompStashDone</b> = 0x11
+, <b>CompCMO</b> = 0x14
+, <b>INVALID</b> = 0x20
 <br />
  }</td></tr>
 <tr class="separator:a99ccdced031bd69983204bfc2d3a69ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -463,10 +507,17 @@ template&lt;&gt; </td></tr>
 template&lt;&gt; </td></tr>
 <tr class="memitem:a50000aef300ba582472b35533ac38342"><td class="memTemplItemLeft" align="right" valign="top">rsp_resptype_e&#160;</td><td class="memTemplItemRight" valign="bottom"><b>into&lt; rsp_resptype_e &gt;</b> (typename std::underlying_type&lt; rsp_resptype_e &gt;::type t)</td></tr>
 <tr class="separator:a50000aef300ba582472b35533ac38342"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:af11ff9923e69d3287803643e80aefe1e"><td class="memItemLeft" align="right" valign="top"><a id="af11ff9923e69d3287803643e80aefe1e"></a>
+std::array&lt; char const  *, 103 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>opc2str</b></td></tr>
+<tr class="separator:af11ff9923e69d3287803643e80aefe1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>TLM2.0 components modeling CHI. </p>
-<p>SCV components for CHI. </p>
+<p>SCV components for CHI.</p>
+<p>LWTR components for CHI. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a62d756666541a9f3f6174c3f1829a8bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a62d756666541a9f3f6174c3f1829a8bc">&#9670;&nbsp;</a></span>DECLARE_EXTENDED_PHASE()</h2>

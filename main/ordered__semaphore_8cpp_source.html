@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: src/sysc/scc/ordered_semaphore.cpp Source File</title>
+<title>scc: /home/eyck/git/scc/main/src/sysc/scc/ordered_semaphore.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -176,9 +176,9 @@ $(document).ready(function(){initNavTree('ordered__semaphore_8cpp_source.html','
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">// unlock (give) the semaphore</span></div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
 <div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">  111</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">ordered_semaphore::post</a>() -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">if</span>(capacity &amp;&amp; value == capacity)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">if</span>(capacity &amp;&amp; value == capacity) {</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        SCCWARN(SCMOD) &lt;&lt; <span class="stringliteral">&quot;post() called on entirely free semaphore!&quot;</span>;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    } <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        ++value;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">if</span>(value &gt; 0)</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        free_evt.notify();</div>

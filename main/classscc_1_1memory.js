@@ -9,5 +9,7 @@ var classscc_1_1memory =
     [ "dmi_cb", "classscc_1_1memory.html#acac3a368ef3d82f5dc6c0b2b5a7b29be", null ],
     [ "mem", "classscc_1_1memory.html#a750c47686c1c01877d256a5b31859f7c", null ],
     [ "operation_cb", "classscc_1_1memory.html#a1a5e41843245c6f01825d4cbcff32849", null ],
-    [ "target", "classscc_1_1memory.html#aa0488cabf0c8cbcaf772d6aa9f735891", null ]
+    [ "rd_resp_delay", "classscc_1_1memory.html#a7a6f509f0be16f264a72eab0b7f7df31", null ],
+    [ "target", "classscc_1_1memory.html#aa0488cabf0c8cbcaf772d6aa9f735891", null ],
+    [ "wr_resp_delay", "classscc_1_1memory.html#ab0ef3f3adf400d3445da9fbe53b9ed18", null ]
 ];

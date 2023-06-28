@@ -3,6 +3,7 @@ var structchi_1_1request =
     [ "get_lp_id", "structchi_1_1request.html#a839ef95908b734600c7ffe43f9c79ace", null ],
     [ "get_max_flit", "structchi_1_1request.html#aff4310fcbd56a231181ffc50f7a89c66", null ],
     [ "get_mem_attr", "structchi_1_1request.html#a329b2e4d47f70c0559e907b1783ab738", null ],
+    [ "get_mpam", "structchi_1_1request.html#ab472821ea4954b1eb1070a5b7931f64c", null ],
     [ "get_opcode", "structchi_1_1request.html#afea9ce62c2036a3d41bd49cb618cc23d", null ],
     [ "get_order", "structchi_1_1request.html#a861c1deac292957f3bbd9eb1187dfa95", null ],
     [ "get_pcrd_type", "structchi_1_1request.html#a8e1880ec82fcce37359c2876c34e40fb", null ],
@@ -12,6 +13,8 @@ var structchi_1_1request =
     [ "get_size", "structchi_1_1request.html#a870bae9da406928f755b21f4a5a4d86d", null ],
     [ "get_stash_lp_id", "structchi_1_1request.html#a01f64db59b830c4d3ad191c92e5191be", null ],
     [ "get_stash_n_id", "structchi_1_1request.html#aa5535e4ccec93cb256756896f3a73cf2", null ],
+    [ "get_tag_group_id", "structchi_1_1request.html#af1c806158ddd94bfa526139287c93709", null ],
+    [ "get_tag_op", "structchi_1_1request.html#adad4edf6f8afce573f1b72479230ea03", null ],
     [ "get_tgt_id", "structchi_1_1request.html#a965673c572e8598562a23017f7d2dc66", null ],
     [ "is_allow_retry", "structchi_1_1request.html#a0340c04018d5238c839ca682cf4167f5", null ],
     [ "is_endian", "structchi_1_1request.html#a021315174b099428c23476af38fc662c", null ],
@@ -32,6 +35,7 @@ var structchi_1_1request =
     [ "set_lp_id", "structchi_1_1request.html#ad2202e608ccbe33110121adacbc9edb3", null ],
     [ "set_max_flit", "structchi_1_1request.html#ab9a966d7b67ca3fba74698b1b8c85bc5", null ],
     [ "set_mem_attr", "structchi_1_1request.html#acda68f32877d4daf12bc8879b028ad27", null ],
+    [ "set_mpam", "structchi_1_1request.html#a7e9cc55a30c92a4cde28f91835261296", null ],
     [ "set_non_secure", "structchi_1_1request.html#a280eebb1ad5599d38e40fcd6093c077b", null ],
     [ "set_opcode", "structchi_1_1request.html#a87c299798530f9be2274c91608b83e76", null ],
     [ "set_order", "structchi_1_1request.html#a12fab07d0830503d08083b263ba98b10", null ],
@@ -46,6 +50,8 @@ var structchi_1_1request =
     [ "set_stash_lp_id_valid", "structchi_1_1request.html#ae46c8ed58ccb4d669b0f546aa3b94217", null ],
     [ "set_stash_n_id", "structchi_1_1request.html#a1414e03d4f0a0d0d7159fab41b51aa77", null ],
     [ "set_stash_n_id_valid", "structchi_1_1request.html#a7cd655a8e222b0cf2168a2aace116449", null ],
+    [ "set_tag_group_id", "structchi_1_1request.html#aa0d583d8419ba32797f18bbb4286c3df", null ],
+    [ "set_tag_op", "structchi_1_1request.html#ac4afa3e5ff5f3abecc92463fae2f2de8", null ],
     [ "set_tgt_id", "structchi_1_1request.html#a79ae9b73ade371c8b329ef67f90f7a75", null ],
     [ "set_trace_tag", "structchi_1_1request.html#a9f8c31a88c5e3c72cf03c43b4e51b86b", null ]
 ];

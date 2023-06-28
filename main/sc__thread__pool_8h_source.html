@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: src/sysc/scc/sc_thread_pool.h Source File</title>
+<title>scc: /home/eyck/git/scc/main/src/sysc/scc/sc_thread_pool.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,26 +86,28 @@ $(document).ready(function(){initNavTree('sc__thread__pool_8h_source.html',''); 
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;cci_configuration&gt;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;systemc&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescc.html">scc</a> {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classscc_1_1sc__thread__pool.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="classscc_1_1sc__thread__pool.html">sc_thread_pool</a> : sc_core::sc_object {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classscc_1_1sc__thread__pool.html">sc_thread_pool</a>();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classscc_1_1sc__thread__pool.html">sc_thread_pool</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> execute(std::function&lt;<span class="keywordtype">void</span>(<span class="keywordtype">void</span>)&gt; fct);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    cci::cci_param&lt;unsigned&gt; max_concurrent_threads{<span class="stringliteral">&quot;max_concurrent_threads&quot;</span>, 16};</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    sc_core::sc_fifo&lt;std::function&lt;void(<span class="keywordtype">void</span>)&gt;&gt; dispatch_queue{<span class="stringliteral">&quot;dispatch_queue&quot;</span>};</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">unsigned</span> thread_avail{0}, thread_active{0};</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;} <span class="comment">/* namespace scc */</span> <span class="comment">// end of scc-sysc</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SYSC_SCC_SC_THREAD_POOL_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassscc_1_1sc__thread__pool_html"><div class="ttname"><a href="classscc_1_1sc__thread__pool.html">scc::sc_thread_pool</a></div><div class="ttdef"><b>Definition:</b> <a href="sc__thread__pool_8h_source.html#l00030">sc_thread_pool.h:30</a></div></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;peq.h&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescc.html">scc</a> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classscc_1_1sc__thread__pool.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="classscc_1_1sc__thread__pool.html">sc_thread_pool</a> : sc_core::sc_object {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classscc_1_1sc__thread__pool.html">sc_thread_pool</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classscc_1_1sc__thread__pool.html">sc_thread_pool</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> execute(std::function&lt;<span class="keywordtype">void</span>(<span class="keywordtype">void</span>)&gt; fct);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    cci::cci_param&lt;unsigned&gt; max_concurrent_threads{<span class="stringliteral">&quot;max_concurrent_threads&quot;</span>, 16};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="structscc_1_1peq.html">scc::peq</a>&lt;std::function&lt;void(<span class="keywordtype">void</span>)&gt;&gt; dispatch_queue{<span class="stringliteral">&quot;dispatch_queue&quot;</span>};</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">unsigned</span> thread_avail{0}, thread_active{0};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;} <span class="comment">/* namespace scc */</span> <span class="comment">// end of scc-sysc</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SYSC_SCC_SC_THREAD_POOL_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassscc_1_1sc__thread__pool_html"><div class="ttname"><a href="classscc_1_1sc__thread__pool.html">scc::sc_thread_pool</a></div><div class="ttdef"><b>Definition:</b> <a href="sc__thread__pool_8h_source.html#l00031">sc_thread_pool.h:31</a></div></div>
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
+<div class="ttc" id="astructscc_1_1peq_html"><div class="ttname"><a href="structscc_1_1peq.html">scc::peq</a></div><div class="ttdoc">priority event queue</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00041">peq.h:41</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

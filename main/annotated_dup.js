@@ -53,6 +53,17 @@ var annotated_dup =
         [ "WaitAck", "structaxi_1_1fsm_1_1WaitAck.html", "structaxi_1_1fsm_1_1WaitAck" ],
         [ "fsm_handle", "structaxi_1_1fsm_1_1fsm__handle.html", "structaxi_1_1fsm_1_1fsm__handle" ]
       ] ],
+      [ "lwtr", null, [
+        [ "nb_ace_rec_entry", "structaxi_1_1lwtr_1_1nb__ace__rec__entry.html", "structaxi_1_1lwtr_1_1nb__ace__rec__entry" ],
+        [ "ace_lwtr", "classaxi_1_1lwtr_1_1ace__lwtr.html", "classaxi_1_1lwtr_1_1ace__lwtr" ],
+        [ "ace_lwtr_recorder", "classaxi_1_1lwtr_1_1ace__lwtr__recorder.html", "classaxi_1_1lwtr_1_1ace__lwtr__recorder" ],
+        [ "tlm_id_ext_recording", "classaxi_1_1lwtr_1_1tlm__id__ext__recording.html", null ],
+        [ "axi3_ext_recording", "classaxi_1_1lwtr_1_1axi3__ext__recording.html", null ],
+        [ "axi4_ext_recording", "classaxi_1_1lwtr_1_1axi4__ext__recording.html", null ],
+        [ "ace_ext_recording", "classaxi_1_1lwtr_1_1ace__ext__recording.html", null ],
+        [ "axi_lwtr", "classaxi_1_1lwtr_1_1axi__lwtr.html", "classaxi_1_1lwtr_1_1axi__lwtr" ],
+        [ "axi_lwtr_recorder", "classaxi_1_1lwtr_1_1axi__lwtr__recorder.html", "classaxi_1_1lwtr_1_1axi__lwtr__recorder" ]
+      ] ],
       [ "pe", "namespaceaxi_1_1pe.html", [
         [ "axi_initiator_b", "classaxi_1_1pe_1_1axi__initiator__b.html", "classaxi_1_1pe_1_1axi__initiator__b" ],
         [ "axi_initiator", "classaxi_1_1pe_1_1axi__initiator.html", "classaxi_1_1pe_1_1axi__initiator" ],
@@ -77,12 +88,12 @@ var annotated_dup =
           [ "ace_recording_payload", "classaxi_1_1scv_1_1impl_1_1ace__recording__payload.html", "classaxi_1_1scv_1_1impl_1_1ace__recording__payload" ],
           [ "ace_recording_types", "structaxi_1_1scv_1_1impl_1_1ace__recording__types.html", "structaxi_1_1scv_1_1impl_1_1ace__recording__types" ]
         ] ],
+        [ "ace_rec_initiator_socket", "classaxi_1_1scv_1_1ace__rec__initiator__socket.html", "classaxi_1_1scv_1_1ace__rec__initiator__socket" ],
+        [ "ace_recorder", "classaxi_1_1scv_1_1ace__recorder.html", "classaxi_1_1scv_1_1ace__recorder" ],
         [ "tlm_id_ext_recording", "classaxi_1_1scv_1_1tlm__id__ext__recording.html", null ],
         [ "axi3_ext_recording", "classaxi_1_1scv_1_1axi3__ext__recording.html", null ],
         [ "axi4_ext_recording", "classaxi_1_1scv_1_1axi4__ext__recording.html", null ],
         [ "ace_ext_recording", "classaxi_1_1scv_1_1ace__ext__recording.html", null ],
-        [ "ace_rec_initiator_socket", "classaxi_1_1scv_1_1ace__rec__initiator__socket.html", "classaxi_1_1scv_1_1ace__rec__initiator__socket" ],
-        [ "ace_recorder", "classaxi_1_1scv_1_1ace__recorder.html", "classaxi_1_1scv_1_1ace__recorder" ],
         [ "axi_rec_initiator_socket", "classaxi_1_1scv_1_1axi__rec__initiator__socket.html", "classaxi_1_1scv_1_1axi__rec__initiator__socket" ],
         [ "axi_rec_target_socket", "classaxi_1_1scv_1_1axi__rec__target__socket.html", "classaxi_1_1scv_1_1axi__rec__target__socket" ],
         [ "axi_recorder", "classaxi_1_1scv_1_1axi__recorder.html", "classaxi_1_1scv_1_1axi__recorder" ],
@@ -101,10 +112,15 @@ var annotated_dup =
       [ "select_if< true, T, S >", "structaxi_1_1select__if_3_01true_00_01T_00_01S_01_4.html", "structaxi_1_1select__if_3_01true_00_01T_00_01S_01_4" ],
       [ "axi4_cfg", "structaxi_1_1axi4__cfg.html", "structaxi_1_1axi4__cfg" ],
       [ "axi4_lite_cfg", "structaxi_1_1axi4__lite__cfg.html", "structaxi_1_1axi4__lite__cfg" ],
+      [ "aw_ch_lite", "structaxi_1_1aw__ch__lite.html", "structaxi_1_1aw__ch__lite" ],
       [ "aw_ch", "structaxi_1_1aw__ch.html", "structaxi_1_1aw__ch" ],
+      [ "wdata_ch_lite", "structaxi_1_1wdata__ch__lite.html", "structaxi_1_1wdata__ch__lite" ],
       [ "wdata_ch", "structaxi_1_1wdata__ch.html", "structaxi_1_1wdata__ch" ],
+      [ "b_ch_lite", "structaxi_1_1b__ch__lite.html", "structaxi_1_1b__ch__lite" ],
       [ "b_ch", "structaxi_1_1b__ch.html", "structaxi_1_1b__ch" ],
+      [ "ar_ch_lite", "structaxi_1_1ar__ch__lite.html", "structaxi_1_1ar__ch__lite" ],
       [ "ar_ch", "structaxi_1_1ar__ch.html", "structaxi_1_1ar__ch" ],
+      [ "rresp_ch_lite", "structaxi_1_1rresp__ch__lite.html", "structaxi_1_1rresp__ch__lite" ],
       [ "rresp_ch", "structaxi_1_1rresp__ch.html", "structaxi_1_1rresp__ch" ],
       [ "enable_for_enum", "structaxi_1_1enable__for__enum.html", null ],
       [ "common", "structaxi_1_1common.html", "structaxi_1_1common" ],
@@ -133,6 +149,16 @@ var annotated_dup =
       [ "enable_for_enum< resp_e >", "structaxi_1_1enable__for__enum_3_01resp__e_01_4.html", null ]
     ] ],
     [ "chi", "namespacechi.html", [
+      [ "lwtr", null, [
+        [ "tlm_id_ext_recording", "classchi_1_1lwtr_1_1tlm__id__ext__recording.html", null ],
+        [ "chi_ctrl_ext_recording", "classchi_1_1lwtr_1_1chi__ctrl__ext__recording.html", null ],
+        [ "chi_data_ext_recording", "classchi_1_1lwtr_1_1chi__data__ext__recording.html", null ],
+        [ "chi_snp_ext_recording", "classchi_1_1lwtr_1_1chi__snp__ext__recording.html", null ],
+        [ "chi_link_ext_recording", "classchi_1_1lwtr_1_1chi__link__ext__recording.html", null ],
+        [ "nb_chi_rec_entry", "structchi_1_1lwtr_1_1nb__chi__rec__entry.html", "structchi_1_1lwtr_1_1nb__chi__rec__entry" ],
+        [ "chi_lwtr", "classchi_1_1lwtr_1_1chi__lwtr.html", "classchi_1_1lwtr_1_1chi__lwtr" ],
+        [ "chi_lwtr_recorder", "classchi_1_1lwtr_1_1chi__lwtr__recorder.html", "classchi_1_1lwtr_1_1chi__lwtr__recorder" ]
+      ] ],
       [ "pe", null, [
         [ "chi_rn_initiator_b", "classchi_1_1pe_1_1chi__rn__initiator__b.html", "classchi_1_1pe_1_1chi__rn__initiator__b" ],
         [ "chi_rn_initiator", "classchi_1_1pe_1_1chi__rn__initiator.html", "classchi_1_1pe_1_1chi__rn__initiator" ]
@@ -178,6 +204,14 @@ var annotated_dup =
       [ "Output2FILE", "classlogging_1_1Output2FILE.html", null ],
       [ "DEFAULT", "classlogging_1_1DEFAULT.html", null ]
     ] ],
+    [ "lwtr", null, [
+      [ "value_converter< tlm::tlm_phase >", "structlwtr_1_1value__converter_3_01tlm_1_1tlm__phase_01_4.html", null ],
+      [ "value_converter< tlm::tlm_sync_enum >", "structlwtr_1_1value__converter_3_01tlm_1_1tlm__sync__enum_01_4.html", null ],
+      [ "value_converter< tlm::tlm_command >", "structlwtr_1_1value__converter_3_01tlm_1_1tlm__command_01_4.html", null ],
+      [ "value_converter< tlm::tlm_response_status >", "structlwtr_1_1value__converter_3_01tlm_1_1tlm__response__status_01_4.html", null ],
+      [ "value_converter< tlm::tlm_gp_option >", "structlwtr_1_1value__converter_3_01tlm_1_1tlm__gp__option_01_4.html", null ],
+      [ "value_converter< tlm::tlm_dmi::dmi_access_e >", "structlwtr_1_1value__converter_3_01tlm_1_1tlm__dmi_1_1dmi__access__e_01_4.html", null ]
+    ] ],
     [ "obi", "namespaceobi.html", [
       [ "pin", null, [
         [ "target", "classobi_1_1pin_1_1target.html", "classobi_1_1pin_1_1target" ]
@@ -216,6 +250,7 @@ var annotated_dup =
       [ "tlm_target", "classscc_1_1tlm__target.html", "classscc_1_1tlm__target" ],
       [ "target_memory_map_entry", "structscc_1_1target__memory__map__entry.html", "structscc_1_1target__memory__map__entry" ],
       [ "target_name_map_entry", "structscc_1_1target__name__map__entry.html", "structscc_1_1target__name__map__entry" ],
+      [ "tlm_target_mod", "structscc_1_1tlm__target__mod.html", "structscc_1_1tlm__target__mod" ],
       [ "tlm_target_bfs_params", "structscc_1_1tlm__target__bfs__params.html", "structscc_1_1tlm__target__bfs__params" ],
       [ "tlm_target_bfs_base", "classscc_1_1tlm__target__bfs__base.html", "classscc_1_1tlm__target__bfs__base" ],
       [ "tlm_target_bfs", "classscc_1_1tlm__target__bfs.html", "classscc_1_1tlm__target__bfs" ],
@@ -223,6 +258,7 @@ var annotated_dup =
       [ "bitfield_register", "classscc_1_1bitfield__register.html", "classscc_1_1bitfield__register" ],
       [ "bitfield", "classscc_1_1bitfield.html", "classscc_1_1bitfield" ],
       [ "tlm_target_bfs_register_base", "classscc_1_1tlm__target__bfs__register__base.html", "classscc_1_1tlm__target__bfs__register__base" ],
+      [ "cci_broker", "classscc_1_1cci__broker.html", "classscc_1_1cci__broker" ],
       [ "configurable_tracer", "classscc_1_1configurable__tracer.html", "classscc_1_1configurable__tracer" ],
       [ "configurer", "classscc_1_1configurer.html", "classscc_1_1configurer" ],
       [ "ext_attribute", "classscc_1_1ext__attribute.html", "classscc_1_1ext__attribute" ],
@@ -269,6 +305,12 @@ var annotated_dup =
       [ "vcd_pull_trace_file", "structscc_1_1vcd__pull__trace__file.html", "structscc_1_1vcd__pull__trace__file" ],
       [ "vcd_push_trace_file", "structscc_1_1vcd__push__trace__file.html", "structscc_1_1vcd__push__trace__file" ]
     ] ],
+    [ "scp", null, [
+      [ "tlm_extensions", null, [
+        [ "initiator_id", "classscp_1_1tlm__extensions_1_1initiator__id.html", "classscp_1_1tlm__extensions_1_1initiator__id" ],
+        [ "path_trace", "classscp_1_1tlm__extensions_1_1path__trace.html", "classscp_1_1tlm__extensions_1_1path__trace" ]
+      ] ]
+    ] ],
     [ "scv_tr", "namespacescv__tr.html", [
       [ "AttrDesc", "structscv__tr_1_1AttrDesc.html", "structscv__tr_1_1AttrDesc" ],
       [ "SQLiteDB", "classscv__tr_1_1SQLiteDB.html", "classscv__tr_1_1SQLiteDB" ],
@@ -286,6 +328,15 @@ var annotated_dup =
     ] ],
     [ "tlm", "namespacetlm.html", [
       [ "scc", "namespacetlm_1_1scc.html", [
+        [ "lwtr", "namespacetlm_1_1scc_1_1lwtr.html", [
+          [ "lwtr4tlm2_extension_registry_if", "classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if.html", "classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if" ],
+          [ "lwtr4tlm2_extension_registry", "classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry.html", "classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry" ],
+          [ "tlm_id_ext_recording", "classtlm_1_1scc_1_1lwtr_1_1tlm__id__ext__recording.html", null ],
+          [ "link_pred_ext", "structtlm_1_1scc_1_1lwtr_1_1link__pred__ext.html", "structtlm_1_1scc_1_1lwtr_1_1link__pred__ext" ],
+          [ "nb_rec_entry", "structtlm_1_1scc_1_1lwtr_1_1nb__rec__entry.html", "structtlm_1_1scc_1_1lwtr_1_1nb__rec__entry" ],
+          [ "tlm2_lwtr", "classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr.html", "classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr" ],
+          [ "tlm2_lwtr_recorder", "classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr__recorder.html", "classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr__recorder" ]
+        ] ],
         [ "pe", "namespacetlm_1_1scc_1_1pe.html", [
           [ "intor_fw", "structtlm_1_1scc_1_1pe_1_1intor__fw.html", "structtlm_1_1scc_1_1pe_1_1intor__fw" ],
           [ "intor_bw", "structtlm_1_1scc_1_1pe_1_1intor__bw.html", "structtlm_1_1scc_1_1pe_1_1intor__bw" ],
@@ -352,10 +403,13 @@ var annotated_dup =
       [ "lz4d_streambuf", "classutil_1_1lz4d__streambuf.html", "classutil_1_1lz4d__streambuf" ],
       [ "MT19937", "classutil_1_1MT19937.html", null ],
       [ "pool_allocator", "classutil_1_1pool__allocator.html", "classutil_1_1pool__allocator" ],
+      [ "stl_pool_allocator", "classutil_1_1stl__pool__allocator.html", "classutil_1_1stl__pool__allocator" ],
       [ "range_lut", "classutil_1_1range__lut.html", "classutil_1_1range__lut" ],
       [ "sparse_array", "classutil_1_1sparse__array.html", "classutil_1_1sparse__array" ],
       [ "thread_pool", "structutil_1_1thread__pool.html", "structutil_1_1thread__pool" ],
       [ "thread_syncronizer", "classutil_1_1thread__syncronizer.html", "classutil_1_1thread__syncronizer" ],
       [ "watchdog", "classutil_1_1watchdog.html", "classutil_1_1watchdog" ]
-    ] ]
+    ] ],
+    [ "initiator", "classinitiator.html", null ],
+    [ "Path", "classPath.html", null ]
 ];

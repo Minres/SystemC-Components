@@ -13,7 +13,10 @@ var structchi_1_1data =
     [ "get_resp", "structchi_1_1data.html#a39a8544053c5ef83f0d02e553a4c354f", null ],
     [ "get_resp_err", "structchi_1_1data.html#a4943ab134d1b71aeb085c445ca2df64c", null ],
     [ "get_rsvdc", "structchi_1_1data.html#a30b3c80a2c5e478de3c76a46450726ec", null ],
+    [ "get_tag", "structchi_1_1data.html#a8ec3285146a4badecd5084788d918f0e", null ],
+    [ "get_tag_op", "structchi_1_1data.html#af2d8faedbc2882b1689faaaf9e6405c9", null ],
     [ "get_tgt_id", "structchi_1_1data.html#a7391968b143e3fcd61960f10435c85fe", null ],
+    [ "get_tu", "structchi_1_1data.html#a9cf4405089e5d05451d25f15baed5e28", null ],
     [ "is_trace_tag", "structchi_1_1data.html#a82b18382548a50cb64128ee31bc16dee", null ],
     [ "set_cc_id", "structchi_1_1data.html#a0b5ee0426f102852d1d0b4ecb5c09d4d", null ],
     [ "set_data_check", "structchi_1_1data.html#ada3ca905fb65167093da104b282c6451", null ],
@@ -28,6 +31,9 @@ var structchi_1_1data =
     [ "set_resp", "structchi_1_1data.html#a006432bcfd2231672933b4f0112345df", null ],
     [ "set_resp_err", "structchi_1_1data.html#a4926c49566b6f86344b8dfbdf1c0935c", null ],
     [ "set_rsvdc", "structchi_1_1data.html#a9ef84fbc51312305a6b57903b32fcae2", null ],
+    [ "set_tag", "structchi_1_1data.html#a08b59c8ffde980f21cf4fd502b361ac1", null ],
+    [ "set_tag_op", "structchi_1_1data.html#a7c586c904f090c89d7a8f9c17644c597", null ],
     [ "set_tgt_id", "structchi_1_1data.html#ad83e55a43c9dbd67bb6e7cad2672e90d", null ],
-    [ "set_trace_tag", "structchi_1_1data.html#a0bed09787b8ce674b001dfabb9c637e8", null ]
+    [ "set_trace_tag", "structchi_1_1data.html#a0bed09787b8ce674b001dfabb9c637e8", null ],
+    [ "set_tu", "structchi_1_1data.html#aab5d345f22647509dcd49a487c6024f1", null ]
 ];

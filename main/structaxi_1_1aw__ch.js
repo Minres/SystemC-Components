@@ -3,6 +3,7 @@ var structaxi_1_1aw__ch =
     [ "aw_ch", "structaxi_1_1aw__ch.html#a1b39828421bcafc14af924fd0b95ca99", null ],
     [ "aw_ch", "structaxi_1_1aw__ch.html#a354e8c694643d3e9587c5684d9ff83d3", null ],
     [ "bind_aw", "structaxi_1_1aw__ch.html#ade5b0374ffb7905f0a0b70b4889dba40", null ],
+    [ "bind_aw", "structaxi_1_1aw__ch.html#a467e7dd7bca46a7745d7177f8b91c008", null ],
     [ "aw_addr", "structaxi_1_1aw__ch.html#a8bacbfef51d73668fde28da879cd258d", null ],
     [ "aw_burst", "structaxi_1_1aw__ch.html#ad0acfa036a72b91804c4a67072d0df7a", null ],
     [ "aw_cache", "structaxi_1_1aw__ch.html#a6206dc19d7caa19c39165942f3da5dbf", null ],

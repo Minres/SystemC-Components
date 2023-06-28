@@ -1,12 +1,12 @@
 <map id="scc::tlm_target_bfs&lt; regs_t, owner_t &gt;" name="scc::tlm_target_bfs&lt; regs_t, owner_t &gt;">
-<area shape="rect" id="node1" title="Peripheral base class using scc::tlm_target." alt="" coords="1188,82,1340,123"/>
-<area shape="rect" id="node2" title=" " alt="" coords="907,5,1056,32"/>
-<area shape="rect" id="node3" href="$classscc_1_1tlm__target__bfs__base.html" title=" " alt="" coords="908,57,1055,98"/>
-<area shape="rect" id="node4" href="$structscc_1_1tlm__target__bfs__params.html" title=" " alt="" coords="577,49,723,90"/>
-<area shape="rect" id="node5" href="$classscc_1_1tlm__target.html" title="a simple access&#45;width based bus interface (no DMI support)" alt="" coords="876,122,1087,163"/>
-<area shape="rect" id="node6" href="$classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="561,115,739,171"/>
-<area shape="rect" id="node7" href="$classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket.html" title=" " alt="" coords="315,122,505,163"/>
-<area shape="rect" id="node8" title=" " alt="" coords="5,107,265,178"/>
-<area shape="rect" id="node9" href="$classutil_1_1range__lut.html" title=" " alt="" coords="555,195,745,251"/>
-<area shape="rect" id="node10" href="$classscc_1_1tlm__target__bfs_1_1socket__accessor.html" title=" " alt="" coords="905,188,1057,244"/>
+<area shape="rect" id="node1" title="Peripheral base class using scc::tlm_target." alt="" coords="1185,82,1337,123"/>
+<area shape="rect" id="node2" title=" " alt="" coords="904,5,1053,32"/>
+<area shape="rect" id="node3" href="$classscc_1_1tlm__target__bfs__base.html" title=" " alt="" coords="905,57,1052,98"/>
+<area shape="rect" id="node4" href="$structscc_1_1tlm__target__bfs__params.html" title=" " alt="" coords="574,49,721,90"/>
+<area shape="rect" id="node5" href="$classscc_1_1tlm__target.html" title="a simple access&#45;width based bus interface (no DMI support)" alt="" coords="873,122,1084,163"/>
+<area shape="rect" id="node6" href="$classutil_1_1range__lut.html" title=" " alt="" coords="552,115,743,171"/>
+<area shape="rect" id="node7" href="$classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="559,195,735,251"/>
+<area shape="rect" id="node8" href="$classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket.html" title=" " alt="" coords="315,202,503,243"/>
+<area shape="rect" id="node9" title=" " alt="" coords="5,187,265,258"/>
+<area shape="rect" id="node10" href="$classscc_1_1tlm__target__bfs_1_1socket__accessor.html" title=" " alt="" coords="903,188,1055,244"/>
 </map>

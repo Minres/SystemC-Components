@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: src/bus_interfaces/ahb/pe/ahb_target.cpp Source File</title>
+<title>scc: /home/eyck/git/scc/main/src/bus_interfaces/ahb/pe/ahb_target.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -81,73 +81,71 @@ $(document).ready(function(){initNavTree('ahb__target_8cpp_source.html',''); ini
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * limitations under the License.</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *******************************************************************************/</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define SC_INCLUDE_DYNAMIC_PROCESSES</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;ahb_target.h&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;scc/report.h&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;systemc&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;tuple&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using namespace </span>sc_core;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacetlm.html">tlm</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespaceahb.html">ahb</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespaceahb_1_1pe.html">ahb::pe</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/******************************************************************************</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * target</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;ahb_target_b::ahb_target_b(<span class="keyword">const</span> sc_core::sc_module_name&amp; nm,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                           sc_core::sc_port_b&lt;tlm::tlm_bw_transport_if&lt;tlm_base_protocol_types&gt;&gt;&amp; port,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                           <span class="keywordtype">size_t</span> transfer_width)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;: sc_module(nm)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;, socket_bw(port) {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    add_attribute(wr_data_accept_delay);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    add_attribute(rd_addr_accept_delay);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    add_attribute(rd_data_beat_delay);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    add_attribute(rd_resp_delay);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    add_attribute(wr_resp_delay);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    dont_initialize();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    sensitive &lt;&lt; clk_i.pos();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;ahb_target.h&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;scc/report.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;systemc&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using namespace </span>sc_core;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacetlm.html">tlm</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespaceahb.html">ahb</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespaceahb_1_1pe.html">ahb::pe</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/******************************************************************************</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * target</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;ahb_target_b::ahb_target_b(<span class="keyword">const</span> sc_core::sc_module_name&amp; nm,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                           sc_core::sc_port_b&lt;tlm::tlm_bw_transport_if&lt;tlm_base_protocol_types&gt;&gt;&amp; port,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                           <span class="keywordtype">size_t</span> transfer_width)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;: sc_module(nm)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;, socket_bw(port) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    add_attribute(wr_data_accept_delay);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    add_attribute(rd_addr_accept_delay);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    add_attribute(rd_data_beat_delay);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    add_attribute(rd_resp_delay);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    add_attribute(wr_resp_delay);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    dont_initialize();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    sensitive &lt;&lt; clk_i.pos();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> ahb_target_b::end_of_elaboration() { clk_if = <span class="keyword">dynamic_cast&lt;</span>sc_core::sc_clock*<span class="keyword">&gt;</span>(clk_i.get_interface()); }</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> ahb_target_b::end_of_elaboration() { clk_if = <span class="keyword">dynamic_cast&lt;</span>sc_core::sc_clock*<span class="keyword">&gt;</span>(clk_i.get_interface()); }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> ahb_target_b::b_transport(payload_type&amp; trans, sc_time&amp; t) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">auto</span> latency = operation_cb ? operation_cb(trans) : trans.is_read() ? <a class="code" href="classahb_1_1pe_1_1ahb__target__b.html#a510bcf84357b370c2ecdde8d1802f208">rd_resp_delay</a>.value : <a class="code" href="classahb_1_1pe_1_1ahb__target__b.html#ad2bce8d0b9c2312a61eb8d00f5442769">wr_resp_delay</a>.value;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    trans.set_dmi_allowed(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    trans.set_response_status(tlm::TLM_OK_RESPONSE);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    clk_if = <span class="keyword">dynamic_cast&lt;</span>sc_core::sc_clock*<span class="keyword">&gt;</span>(clk_i.get_interface());</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">if</span>(clk_if) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        t += clk_if-&gt;period() * latency;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;tlm_sync_enum ahb_target_b::nb_transport_fw(payload_type&amp; trans, phase_type&amp; phase, sc_time&amp; t) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// TODO:</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> tlm::TLM_COMPLETED;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">bool</span> ahb_target_b::get_direct_mem_ptr(payload_type&amp; trans, tlm_dmi&amp; dmi_data) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    trans.set_dmi_allowed(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> ahb_target_b::b_transport(payload_type&amp; trans, sc_time&amp; t) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">auto</span> latency = operation_cb ? operation_cb(trans) : trans.is_read() ? <a class="code" href="classahb_1_1pe_1_1ahb__target__b.html#a510bcf84357b370c2ecdde8d1802f208">rd_resp_delay</a>.value : <a class="code" href="classahb_1_1pe_1_1ahb__target__b.html#ad2bce8d0b9c2312a61eb8d00f5442769">wr_resp_delay</a>.value;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    trans.set_dmi_allowed(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    trans.set_response_status(tlm::TLM_OK_RESPONSE);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    clk_if = <span class="keyword">dynamic_cast&lt;</span>sc_core::sc_clock*<span class="keyword">&gt;</span>(clk_i.get_interface());</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span>(clk_if) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        t += clk_if-&gt;period() * latency;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;tlm_sync_enum ahb_target_b::nb_transport_fw(payload_type&amp; trans, phase_type&amp; phase, sc_time&amp; t) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// TODO:</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> tlm::TLM_COMPLETED;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">bool</span> ahb_target_b::get_direct_mem_ptr(payload_type&amp; trans, tlm_dmi&amp; dmi_data) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    trans.set_dmi_allowed(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ahb_target_b::transport_dbg(payload_type&amp; trans) { <span class="keywordflow">return</span> 0; }</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ahb_target_b::transport_dbg(payload_type&amp; trans) { <span class="keywordflow">return</span> 0; }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classahb_1_1pe_1_1ahb__target__b.html#a2ef5bb2e95d1a76c4513e6977daf9cf5">   71</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classahb_1_1pe_1_1ahb__target__b.html#a2ef5bb2e95d1a76c4513e6977daf9cf5">ahb_target_b::operation_resp</a>(payload_type&amp; trans, <span class="keywordtype">bool</span> sync) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// TODO</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span> ahb_target_b::send_resp_thread() {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">// waiting for responses to send</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="comment">// TODO</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
-<div class="ttc" id="aclassahb_1_1pe_1_1ahb__target__b_html_a2ef5bb2e95d1a76c4513e6977daf9cf5"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__target__b.html#a2ef5bb2e95d1a76c4513e6977daf9cf5">ahb::pe::ahb_target_b::operation_resp</a></div><div class="ttdeci">void operation_resp(payload_type &amp;trans, bool sync=false)</div><div class="ttdef"><b>Definition:</b> <a href="ahb__target_8cpp_source.html#l00071">ahb_target.cpp:71</a></div></div>
-<div class="ttc" id="aclassahb_1_1pe_1_1ahb__target__b_html_a510bcf84357b370c2ecdde8d1802f208"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__target__b.html#a510bcf84357b370c2ecdde8d1802f208">ahb::pe::ahb_target_b::rd_resp_delay</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; rd_resp_delay</div><div class="ttdoc">the latency between request and response phase. Will be overwritten by the return of the callback fun...</div><div class="ttdef"><b>Definition:</b> <a href="ahb__target_8h_source.html#l00060">ahb_target.h:60</a></div></div>
-<div class="ttc" id="aclassahb_1_1pe_1_1ahb__target__b_html_ad2bce8d0b9c2312a61eb8d00f5442769"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__target__b.html#ad2bce8d0b9c2312a61eb8d00f5442769">ahb::pe::ahb_target_b::wr_resp_delay</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; wr_resp_delay</div><div class="ttdoc">the latency between request and response phase. Will be overwritten by the return of the callback fun...</div><div class="ttdef"><b>Definition:</b> <a href="ahb__target_8h_source.html#l00065">ahb_target.h:65</a></div></div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classahb_1_1pe_1_1ahb__target__b.html#a2ef5bb2e95d1a76c4513e6977daf9cf5">   69</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classahb_1_1pe_1_1ahb__target__b.html#a2ef5bb2e95d1a76c4513e6977daf9cf5">ahb_target_b::operation_resp</a>(payload_type&amp; trans, <span class="keywordtype">bool</span> sync) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">// TODO</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">void</span> ahb_target_b::send_resp_thread() {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="comment">// waiting for responses to send</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">// TODO</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="ttc" id="aclassahb_1_1pe_1_1ahb__target__b_html_a2ef5bb2e95d1a76c4513e6977daf9cf5"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__target__b.html#a2ef5bb2e95d1a76c4513e6977daf9cf5">ahb::pe::ahb_target_b::operation_resp</a></div><div class="ttdeci">void operation_resp(payload_type &amp;trans, bool sync=false)</div><div class="ttdef"><b>Definition:</b> <a href="ahb__target_8cpp_source.html#l00069">ahb_target.cpp:69</a></div></div>
+<div class="ttc" id="aclassahb_1_1pe_1_1ahb__target__b_html_a510bcf84357b370c2ecdde8d1802f208"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__target__b.html#a510bcf84357b370c2ecdde8d1802f208">ahb::pe::ahb_target_b::rd_resp_delay</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; rd_resp_delay</div><div class="ttdoc">the latency between request and response phase. Will be overwritten by the return of the callback fun...</div><div class="ttdef"><b>Definition:</b> <a href="ahb__target_8h_source.html#l00062">ahb_target.h:62</a></div></div>
+<div class="ttc" id="aclassahb_1_1pe_1_1ahb__target__b_html_ad2bce8d0b9c2312a61eb8d00f5442769"><div class="ttname"><a href="classahb_1_1pe_1_1ahb__target__b.html#ad2bce8d0b9c2312a61eb8d00f5442769">ahb::pe::ahb_target_b::wr_resp_delay</a></div><div class="ttdeci">sc_core::sc_attribute&lt; unsigned &gt; wr_resp_delay</div><div class="ttdoc">the latency between request and response phase. Will be overwritten by the return of the callback fun...</div><div class="ttdef"><b>Definition:</b> <a href="ahb__target_8h_source.html#l00067">ahb_target.h:67</a></div></div>
 <div class="ttc" id="anamespaceahb_1_1pe_html"><div class="ttname"><a href="namespaceahb_1_1pe.html">ahb::pe</a></div><div class="ttdoc">protocol engine implementations</div><div class="ttdef"><b>Definition:</b> <a href="ahb__initiator_8h_source.html#l00031">ahb_initiator.h:31</a></div></div>
 <div class="ttc" id="anamespaceahb_html"><div class="ttname"><a href="namespaceahb.html">ahb</a></div><div class="ttdoc">TLM2.0 components modeling AHB.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__tlm_8h_source.html#l00025">ahb_tlm.h:25</a></div></div>
 <div class="ttc" id="anamespacetlm_html"><div class="ttname"><a href="namespacetlm.html">tlm</a></div><div class="ttdoc">SystemC TLM.</div><div class="ttdef"><b>Definition:</b> <a href="initiator__mixin_8h_source.html#l00026">initiator_mixin.h:26</a></div></div>

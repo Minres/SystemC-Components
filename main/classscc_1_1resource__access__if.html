@@ -94,12 +94,18 @@ Public Member Functions</h2></td></tr>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1resource__access__if.html#ac22cb57b329eadf567023c2402d2c20d">reset</a> ()=0</td></tr>
 <tr class="memdesc:ac22cb57b329eadf567023c2402d2c20d"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset the resource <br /></td></tr>
 <tr class="separator:ac22cb57b329eadf567023c2402d2c20d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02527d2e4e1ff85f30bad36974d8f688"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1resource__access__if.html#a02527d2e4e1ff85f30bad36974d8f688">write</a> (const uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME)=0</td></tr>
-<tr class="memdesc:a02527d2e4e1ff85f30bad36974d8f688"><td class="mdescLeft">&#160;</td><td class="mdescRight">write to the resource  <a href="classscc_1_1resource__access__if.html#a02527d2e4e1ff85f30bad36974d8f688">More...</a><br /></td></tr>
-<tr class="separator:a02527d2e4e1ff85f30bad36974d8f688"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a687cd9c884c9a6695332b4dd82c388e9"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1resource__access__if.html#a687cd9c884c9a6695332b4dd82c388e9">read</a> (uint8_t *data, std::size_t length, uint64_t offset=0, sc_core::sc_time d=sc_core::SC_ZERO_TIME) const =0</td></tr>
-<tr class="memdesc:a687cd9c884c9a6695332b4dd82c388e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the data from the resource  <a href="classscc_1_1resource__access__if.html#a687cd9c884c9a6695332b4dd82c388e9">More...</a><br /></td></tr>
-<tr class="separator:a687cd9c884c9a6695332b4dd82c388e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a422ba53aebac338f82b95969e4115e26"><td class="memItemLeft" align="right" valign="top"><a id="a422ba53aebac338f82b95969e4115e26"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (const uint8_t *data, std::size_t length, uint64_t offset, sc_core::sc_time &amp;d)=0</td></tr>
+<tr class="separator:a422ba53aebac338f82b95969e4115e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43d5c525222211b9b7a586a352282cdc"><td class="memItemLeft" align="right" valign="top"><a id="a43d5c525222211b9b7a586a352282cdc"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (const uint8_t *data, std::size_t length, uint64_t offset=0)</td></tr>
+<tr class="separator:a43d5c525222211b9b7a586a352282cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9a8c6c68d5aa91a6278b8ae3f6c30a"><td class="memItemLeft" align="right" valign="top"><a id="aff9a8c6c68d5aa91a6278b8ae3f6c30a"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> (uint8_t *data, std::size_t length, uint64_t offset, sc_core::sc_time &amp;d) const =0</td></tr>
+<tr class="separator:aff9a8c6c68d5aa91a6278b8ae3f6c30a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afba178290da5121755e18cdb44a06568"><td class="memItemLeft" align="right" valign="top"><a id="afba178290da5121755e18cdb44a06568"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> (uint8_t *data, std::size_t length, uint64_t offset=0) const</td></tr>
+<tr class="separator:afba178290da5121755e18cdb44a06568"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4609ce281478582d5019d2de7684e48"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1resource__access__if.html#ae4609ce281478582d5019d2de7684e48">write_dbg</a> (const uint8_t *data, std::size_t length, uint64_t offset=0)=0</td></tr>
 <tr class="memdesc:ae4609ce281478582d5019d2de7684e48"><td class="mdescLeft">&#160;</td><td class="mdescRight">debug write to the resource  <a href="classscc_1_1resource__access__if.html#ae4609ce281478582d5019d2de7684e48">More...</a><br /></td></tr>
 <tr class="separator:ae4609ce281478582d5019d2de7684e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,68 +118,6 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 <p class="definition">Definition at line <a class="el" href="resource__access__if_8h_source.html#l00030">30</a> of file <a class="el" href="resource__access__if_8h_source.html">resource_access_if.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a687cd9c884c9a6695332b4dd82c388e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a687cd9c884c9a6695332b4dd82c388e9">&#9670;&nbsp;</a></span>read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool scc::resource_access_if::read </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>length</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>offset</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">sc_core::sc_time&#160;</td>
-          <td class="paramname"><em>d</em> = <code>sc_core::SC_ZERO_TIME</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>read the data from the resource </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>buffer to read the data into </td></tr>
-    <tr><td class="paramname">length</td><td>of data to read </td></tr>
-    <tr><td class="paramname">offset</td><td>of the data to read </td></tr>
-    <tr><td class="paramname">d</td><td>the annotated delay </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true it the access is successful </dd></dl>
-
-<p>Implemented in <a class="el" href="classscc_1_1bitfield__register.html#a5cf3c4cc64a6f409b65608679f54bd70">scc::bitfield_register&lt; datatype_t &gt;</a>.</p>
-
-</div>
-</div>
 <a id="a2329b4dda30a8e07bf37a9694d3aaa2a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2329b4dda30a8e07bf37a9694d3aaa2a">&#9670;&nbsp;</a></span>read_dbg()</h2>
 
@@ -259,68 +203,6 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
-<a id="a02527d2e4e1ff85f30bad36974d8f688"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02527d2e4e1ff85f30bad36974d8f688">&#9670;&nbsp;</a></span>write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool scc::resource_access_if::write </td>
-          <td>(</td>
-          <td class="paramtype">const uint8_t *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>length</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>offset</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">sc_core::sc_time&#160;</td>
-          <td class="paramname"><em>d</em> = <code>sc_core::SC_ZERO_TIME</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>write to the resource </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>to write </td></tr>
-    <tr><td class="paramname">length</td><td>of data to write </td></tr>
-    <tr><td class="paramname">offset</td><td>of the data to write </td></tr>
-    <tr><td class="paramname">d</td><td>the annotated delay </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true it the access is successful </dd></dl>
-
-<p>Implemented in <a class="el" href="classscc_1_1bitfield__register.html#a53a43983a4de9bf84e5cfc943c22ad26">scc::bitfield_register&lt; datatype_t &gt;</a>.</p>
-
-</div>
-</div>
 <a id="ae4609ce281478582d5019d2de7684e48"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae4609ce281478582d5019d2de7684e48">&#9670;&nbsp;</a></span>write_dbg()</h2>
 
@@ -377,7 +259,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/components/scc/<a class="el" href="resource__access__if_8h_source.html">resource_access_if.h</a></li>
+<li>/home/eyck/git/scc/main/src/components/scc/<a class="el" href="resource__access__if_8h_source.html">resource_access_if.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

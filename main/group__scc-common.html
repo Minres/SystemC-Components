@@ -66,14 +66,14 @@ $(document).ready(function(){initNavTree('group__scc-common.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="memitem:ga9c68bdf7f69e5ba9a696f12bca2374c4"><td class="memTemplParams" colspan="2">template&lt;unsigned int bit, unsigned int width, typename T &gt; </td></tr>
-<tr class="memitem:ga9c68bdf7f69e5ba9a696f12bca2374c4"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__scc-common.html#ga9c68bdf7f69e5ba9a696f12bca2374c4">bit_sub</a> (T v)</td></tr>
-<tr class="memdesc:ga9c68bdf7f69e5ba9a696f12bca2374c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">extract bit ranges from plain data types  <a href="group__scc-common.html#ga9c68bdf7f69e5ba9a696f12bca2374c4">More...</a><br /></td></tr>
-<tr class="separator:ga9c68bdf7f69e5ba9a696f12bca2374c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6149478207207958276f9c09b6137a3d"><td class="memTemplParams" colspan="2">template&lt;typename T , unsigned B&gt; </td></tr>
-<tr class="memitem:ga6149478207207958276f9c09b6137a3d"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__scc-common.html#ga6149478207207958276f9c09b6137a3d">signextend</a> (const T x)</td></tr>
-<tr class="memdesc:ga6149478207207958276f9c09b6137a3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">sign-extend a given value  <a href="group__scc-common.html#ga6149478207207958276f9c09b6137a3d">More...</a><br /></td></tr>
-<tr class="separator:ga6149478207207958276f9c09b6137a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29e9d59205c011ae2ca9465ac9812312"><td class="memTemplParams" colspan="2">template&lt;unsigned int bit, unsigned int width, typename T &gt; </td></tr>
+<tr class="memitem:ga29e9d59205c011ae2ca9465ac9812312"><td class="memTemplItemLeft" align="right" valign="top">CONSTEXPR std::enable_if&lt; std::is_unsigned&lt; T &gt;::value, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__scc-common.html#ga29e9d59205c011ae2ca9465ac9812312">bit_sub</a> (T v)</td></tr>
+<tr class="memdesc:ga29e9d59205c011ae2ca9465ac9812312"><td class="mdescLeft">&#160;</td><td class="mdescRight">extract bit ranges from plain data types  <a href="group__scc-common.html#ga29e9d59205c011ae2ca9465ac9812312">More...</a><br /></td></tr>
+<tr class="separator:ga29e9d59205c011ae2ca9465ac9812312"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0c9494e0dd10f4c4b84d835457012805"><td class="memTemplParams" colspan="2">template&lt;typename T , unsigned B&gt; </td></tr>
+<tr class="memitem:ga0c9494e0dd10f4c4b84d835457012805"><td class="memTemplItemLeft" align="right" valign="top">CONSTEXPR T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__scc-common.html#ga0c9494e0dd10f4c4b84d835457012805">signextend</a> (const typename std::make_unsigned&lt; T &gt;::type x)</td></tr>
+<tr class="memdesc:ga0c9494e0dd10f4c4b84d835457012805"><td class="mdescLeft">&#160;</td><td class="mdescRight">sign-extend a given value  <a href="group__scc-common.html#ga0c9494e0dd10f4c4b84d835457012805">More...</a><br /></td></tr>
+<tr class="separator:ga0c9494e0dd10f4c4b84d835457012805"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga283404e7be0cd891e9aefd03bbadaf01"><td class="memTemplParams" colspan="2">template&lt;unsigned int bit, unsigned int width, typename T &gt; </td></tr>
 <tr class="memitem:ga283404e7be0cd891e9aefd03bbadaf01"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::make_signed&lt; T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__scc-common.html#ga283404e7be0cd891e9aefd03bbadaf01">signed_bit_sub</a> (T v)</td></tr>
 <tr class="memdesc:ga283404e7be0cd891e9aefd03bbadaf01"><td class="mdescLeft">&#160;</td><td class="mdescRight">a function that converts from B bits to T in one operation  <a href="group__scc-common.html#ga283404e7be0cd891e9aefd03bbadaf01">More...</a><br /></td></tr>
@@ -82,30 +82,22 @@ $(document).ready(function(){initNavTree('group__scc-common.html',''); initResiz
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>This module contains generic C++ functions being independent of SystemC </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga9c68bdf7f69e5ba9a696f12bca2374c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9c68bdf7f69e5ba9a696f12bca2374c4">&#9670;&nbsp;</a></span>bit_sub()</h2>
+<a id="ga29e9d59205c011ae2ca9465ac9812312"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga29e9d59205c011ae2ca9465ac9812312">&#9670;&nbsp;</a></span>bit_sub()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;unsigned int bit, unsigned int width, typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr T bit_sub </td>
+          <td class="memname">CONSTEXPR std::enable_if&lt;std::is_unsigned&lt;T&gt;::value, T&gt;::type bit_sub </td>
           <td>(</td>
           <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>v</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>extract bit ranges from plain data types </p>
@@ -113,19 +105,19 @@ template&lt;unsigned int bit, unsigned int width, typename T &gt; </div>
   <table class="tparams">
     <tr><td class="paramname">bit</td><td>start bit </td></tr>
     <tr><td class="paramname">width</td><td>size of the bit field to extract </td></tr>
-    <tr><td class="paramname">T</td><td>data type cyrrying the bits </td></tr>
+    <tr><td class="paramname">T</td><td>data type carrying the bits </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">v</td><td>value from which the bytes are to be extarcted </td></tr>
+    <tr><td class="paramname">v</td><td>value from which the bytes are to be extracted </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the extracted bit. It is of the sanen datatype as the passed value </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the extracted bit. It is of the same data type as the passed value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00046">46</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00054">54</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
@@ -172,34 +164,26 @@ template&lt;unsigned int bit, unsigned int width, typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00081">81</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00098">98</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>
-<a id="ga6149478207207958276f9c09b6137a3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6149478207207958276f9c09b6137a3d">&#9670;&nbsp;</a></span>signextend()</h2>
+<a id="ga0c9494e0dd10f4c4b84d835457012805"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0c9494e0dd10f4c4b84d835457012805">&#9670;&nbsp;</a></span>signextend()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T , unsigned B&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">T signextend </td>
+          <td class="memname">CONSTEXPR T signextend </td>
           <td>(</td>
-          <td class="paramtype">const T&#160;</td>
+          <td class="paramtype">const typename std::make_unsigned&lt; T &gt;::type&#160;</td>
           <td class="paramname"><em>x</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>sign-extend a given value </p>
@@ -218,7 +202,7 @@ template&lt;typename T , unsigned B&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the sign-extended value of type T </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00058">58</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ities_8h_source.html#l00078">78</a> of file <a class="el" href="ities_8h_source.html">ities.h</a>.</p>
 
 </div>
 </div>

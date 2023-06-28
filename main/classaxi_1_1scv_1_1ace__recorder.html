@@ -128,14 +128,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a97b5d7bba66b15762c92b9e1d469bc81"><td class="memItemLeft" align="right" valign="top"><a id="a97b5d7bba66b15762c92b9e1d469bc81"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SC_HAS_PROCESS</b> (<a class="el" href="classaxi_1_1scv_1_1ace__recorder.html">ace_recorder</a>&lt; TYPES &gt;)</td></tr>
 <tr class="separator:a97b5d7bba66b15762c92b9e1d469bc81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9720379619a185edd9d36cf929f1b66e"><td class="memItemLeft" align="right" valign="top"><a id="a9720379619a185edd9d36cf929f1b66e"></a>
-virtual tlm::tlm_fw_transport_if&lt; TYPES &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#a9720379619a185edd9d36cf929f1b66e">get_fw_if</a> ()=0</td></tr>
-<tr class="memdesc:a9720379619a185edd9d36cf929f1b66e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the port where fw accesses are forwarded to <br /></td></tr>
-<tr class="separator:a9720379619a185edd9d36cf929f1b66e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71e8260153e6b1ccc6f4a0e1ff8d9829"><td class="memItemLeft" align="right" valign="top"><a id="a71e8260153e6b1ccc6f4a0e1ff8d9829"></a>
-virtual tlm::tlm_bw_transport_if&lt; TYPES &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#a71e8260153e6b1ccc6f4a0e1ff8d9829">get_bw_if</a> ()=0</td></tr>
-<tr class="memdesc:a71e8260153e6b1ccc6f4a0e1ff8d9829"><td class="mdescLeft">&#160;</td><td class="mdescRight">the port where bw accesses are forwarded to <br /></td></tr>
-<tr class="separator:a71e8260153e6b1ccc6f4a0e1ff8d9829"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af415d6252d6e8733521c0221f6224a23"><td class="memItemLeft" align="right" valign="top"><a id="af415d6252d6e8733521c0221f6224a23"></a>
+virtual <a class="el" href="namespaceaxi.html#af94767169896231177e492daad6ef8db">axi::ace_fw_transport_if</a>&lt; TYPES &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#af415d6252d6e8733521c0221f6224a23">get_fw_if</a> ()=0</td></tr>
+<tr class="memdesc:af415d6252d6e8733521c0221f6224a23"><td class="mdescLeft">&#160;</td><td class="mdescRight">the port where fw accesses are forwarded to <br /></td></tr>
+<tr class="separator:af415d6252d6e8733521c0221f6224a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd055214ab5c212bec37ee3e282058e0"><td class="memItemLeft" align="right" valign="top"><a id="abd055214ab5c212bec37ee3e282058e0"></a>
+virtual <a class="el" href="classaxi_1_1ace__bw__transport__if.html">axi::ace_bw_transport_if</a>&lt; TYPES &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#abd055214ab5c212bec37ee3e282058e0">get_bw_if</a> ()=0</td></tr>
+<tr class="memdesc:abd055214ab5c212bec37ee3e282058e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">the port where bw accesses are forwarded to <br /></td></tr>
+<tr class="separator:abd055214ab5c212bec37ee3e282058e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2216b0e282c3740f64033e0b377e20a8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1scv_1_1ace__recorder.html#a2216b0e282c3740f64033e0b377e20a8">ace_recorder</a> (const char *name, unsigned bus_width, bool recording_enabled=true, SCVNS scv_tr_db *tr_db=SCVNS scv_tr_db::get_default_db())</td></tr>
 <tr class="memdesc:a2216b0e282c3740f64033e0b377e20a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor of the component.  <a href="classaxi_1_1scv_1_1ace__recorder.html#a2216b0e282c3740f64033e0b377e20a8">More...</a><br /></td></tr>
 <tr class="separator:a2216b0e282c3740f64033e0b377e20a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -324,7 +324,7 @@ template&lt;typename TYPES &gt; </div>
 
 <p>Implements <a class="el" href="classaxi_1_1bw__blocking__transport__if.html#ad2bf9e98fe605c100629654745b444e8">axi::bw_blocking_transport_if&lt; TYPES::tlm_payload_type &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00402">402</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00397">397</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -373,7 +373,7 @@ template&lt;typename TYPES &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00346">346</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00341">341</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -423,7 +423,7 @@ template&lt;typename TYPES &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>if the dmi structure is valid </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00730">730</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00725">725</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -472,7 +472,7 @@ template&lt;typename TYPES &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00749">749</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00744">744</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -593,7 +593,7 @@ template&lt;typename TYPES &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the sync state of the transaction </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00576">576</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00571">571</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -650,7 +650,7 @@ template&lt;typename TYPES &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the sync state of the transaction </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00483">483</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00478">478</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
 
 </div>
 </div>
@@ -689,12 +689,12 @@ template&lt;typename TYPES &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the sync state of the transaction </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00766">766</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ace__recorder_8h_source.html#l00761">761</a> of file <a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>third_party/axi_chi/axi/scv/<a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a></li>
+<li>/home/eyck/git/scc/main/third_party/axi_chi/axi/scv/<a class="el" href="ace__recorder_8h_source.html">ace_recorder.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

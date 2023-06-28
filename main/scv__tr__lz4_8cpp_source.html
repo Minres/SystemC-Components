@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: src/sysc/scc/scv/scv_tr_lz4.cpp Source File</title>
+<title>scc: /home/eyck/git/scc/main/src/sysc/scc/scv/scv_tr_lz4.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -94,80 +94,80 @@ $(document).ready(function(){initNavTree('scv__tr__lz4_8cpp_source.html',''); in
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;fmt/format.h&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#ifdef WITH_LZ4</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;util/lz4_streambuf.h&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">// clang-format off</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#ifdef HAS_SCV</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;scv.h&gt;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;scv-tr.h&gt;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescv__tr.html">scv_tr</a> {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// clang-format on</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">enum</span> EventType { BEGIN, RECORD, END };</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structscv__tr_1_1AttrDesc.html">   48</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structscv__tr_1_1AttrDesc.html">AttrDesc</a> {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    EventType <span class="keyword">const</span> evt;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    scv_extensions_if::data_type <span class="keyword">const</span> type;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::string <span class="keyword">const</span> name;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="structscv__tr_1_1AttrDesc.html">AttrDesc</a>(EventType evt, scv_extensions_if::data_type type, std::string <span class="keyword">const</span>&amp; name)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    : evt(evt), type(type), name(name){}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">using</span> data_type = scv_extensions_if::data_type;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">namespace </span>{</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">const</span> std::array&lt;char const*, scv_extensions_if::STRING+1&gt; data_type_str={{</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="stringliteral">&quot;BOOLEAN&quot;</span>,                      <span class="comment">// bool</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="stringliteral">&quot;ENUMERATION&quot;</span>,                  <span class="comment">// enum</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="stringliteral">&quot;INTEGER&quot;</span>,                      <span class="comment">// char, short, int, long, long long, sc_int, sc_bigint</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="stringliteral">&quot;UNSIGNED&quot;</span>,                     <span class="comment">// unsigned { char, short, int, long, long long }, sc_uint, sc_biguint</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="stringliteral">&quot;FLOATING_POINT_NUMBER&quot;</span>,        <span class="comment">// float, double</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="stringliteral">&quot;BIT_VECTOR&quot;</span>,                   <span class="comment">// sc_bit, sc_bv</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="stringliteral">&quot;LOGIC_VECTOR&quot;</span>,                 <span class="comment">// sc_logic, sc_lv</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="stringliteral">&quot;FIXED_POINT_INTEGER&quot;</span>,          <span class="comment">// sc_fixed</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="stringliteral">&quot;UNSIGNED_FIXED_POINT_INTEGER&quot;</span>, <span class="comment">// sc_ufixed</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="stringliteral">&quot;RECORD&quot;</span>,                       <span class="comment">// struct/class</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="stringliteral">&quot;POINTER&quot;</span>,                      <span class="comment">// T*</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="stringliteral">&quot;ARRAY&quot;</span>,                        <span class="comment">// T[N]</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="stringliteral">&quot;STRING&quot;</span>                        <span class="comment">// string, std::string</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}};</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">class </span>PlainWriter {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    std::ofstream out;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    PlainWriter(<span class="keyword">const</span> std::string&amp; name) : out(name) {}</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    ~PlainWriter() {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">if</span>(out.is_open()) out.close();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">bool</span> is_open(){<span class="keywordflow">return</span> out.is_open();}</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#ifdef WITH_LZ4</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">class </span>LZ4Writer {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::ofstream ofs;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::unique_ptr&lt;util::lz4c_steambuf&gt; strbuf;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::ostream out;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    LZ4Writer(<span class="keyword">const</span> std::string&amp; name)</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    : ofs(name, std::ios::binary|std::ios::trunc)</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    , strbuf(new <a class="code" href="namespaceutil.html">util</a>::lz4c_steambuf(ofs, 8192))</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    , out(strbuf.get())</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {}</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    ~LZ4Writer() {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">if</span>(is_open()){</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            strbuf-&gt;close();</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            ofs.close();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">bool</span> is_open(){<span class="keywordflow">return</span> ofs.is_open();}</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;};</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifdef FMT_SPDLOG_INTERNAL</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;fmt/fmt.h&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;fmt/format.h&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;util/lz4_streambuf.h&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">// clang-format off</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifdef HAS_SCV</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;scv.h&gt;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;scv-tr.h&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescv__tr.html">scv_tr</a> {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">// clang-format on</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">enum</span> EventType { BEGIN, RECORD, END };</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structscv__tr_1_1AttrDesc.html">   50</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structscv__tr_1_1AttrDesc.html">AttrDesc</a> {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    EventType <span class="keyword">const</span> evt;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    scv_extensions_if::data_type <span class="keyword">const</span> type;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::string <span class="keyword">const</span> name;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="structscv__tr_1_1AttrDesc.html">AttrDesc</a>(EventType evt, scv_extensions_if::data_type type, std::string <span class="keyword">const</span>&amp; name)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    : evt(evt), type(type), name(name){}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">using</span> data_type = scv_extensions_if::data_type;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">namespace </span>{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">const</span> std::array&lt;char const*, scv_extensions_if::STRING+1&gt; data_type_str={{</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="stringliteral">&quot;BOOLEAN&quot;</span>,                      <span class="comment">// bool</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="stringliteral">&quot;ENUMERATION&quot;</span>,                  <span class="comment">// enum</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="stringliteral">&quot;INTEGER&quot;</span>,                      <span class="comment">// char, short, int, long, long long, sc_int, sc_bigint</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="stringliteral">&quot;UNSIGNED&quot;</span>,                     <span class="comment">// unsigned { char, short, int, long, long long }, sc_uint, sc_biguint</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="stringliteral">&quot;FLOATING_POINT_NUMBER&quot;</span>,        <span class="comment">// float, double</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="stringliteral">&quot;BIT_VECTOR&quot;</span>,                   <span class="comment">// sc_bit, sc_bv</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="stringliteral">&quot;LOGIC_VECTOR&quot;</span>,                 <span class="comment">// sc_logic, sc_lv</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="stringliteral">&quot;FIXED_POINT_INTEGER&quot;</span>,          <span class="comment">// sc_fixed</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="stringliteral">&quot;UNSIGNED_FIXED_POINT_INTEGER&quot;</span>, <span class="comment">// sc_ufixed</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="stringliteral">&quot;RECORD&quot;</span>,                       <span class="comment">// struct/class</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="stringliteral">&quot;POINTER&quot;</span>,                      <span class="comment">// T*</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="stringliteral">&quot;ARRAY&quot;</span>,                        <span class="comment">// T[N]</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="stringliteral">&quot;STRING&quot;</span>                        <span class="comment">// string, std::string</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">class </span>PlainWriter {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::ofstream out;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    PlainWriter(<span class="keyword">const</span> std::string&amp; name) : out(name) {}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    ~PlainWriter() {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">if</span>(out.is_open()) out.close();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">bool</span> is_open(){<span class="keywordflow">return</span> out.is_open();}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;};</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">class </span>LZ4Writer {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::ofstream ofs;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    std::unique_ptr&lt;util::lz4c_steambuf&gt; strbuf;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    std::ostream out;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    LZ4Writer(<span class="keyword">const</span> std::string&amp; name)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    : ofs(name, std::ios::binary|std::ios::trunc)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    , strbuf(new <a class="code" href="namespaceutil.html">util</a>::lz4c_steambuf(ofs, 8192))</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    , out(strbuf.get())</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    {}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    ~LZ4Writer() {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">if</span>(is_open()){</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            strbuf-&gt;close();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            ofs.close();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">bool</span> is_open(){<span class="keywordflow">return</span> ofs.is_open();}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;};</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> WRITER&gt;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">struct </span>Formatter {</div>
@@ -265,250 +265,243 @@ $(document).ready(function(){initNavTree('scv__tr__lz4_8cpp_source.html',''); in
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordflow">return</span> db;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    }</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;};</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">#ifdef WITH_LZ4</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">//using DB=Formatter&lt;LZ4Writer&gt;;</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">//using DB=Formatter&lt;FBase&gt;;</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="keywordtype">void</span> dbCb(<span class="keyword">const</span> scv_tr_db&amp; _scv_tr_db, scv_tr_db::callback_reason reason, <span class="keywordtype">void</span>* data) {</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="comment">// This is called from the scv_tr_db ctor.</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">string</span> fName(<span class="stringliteral">&quot;DEFAULT_scv_tr_sqlite&quot;</span>);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">switch</span>(reason) {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">case</span> scv_tr_db::CREATE:</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">if</span>((_scv_tr_db.get_name() != <span class="keyword">nullptr</span>) &amp;&amp; (strlen(_scv_tr_db.get_name()) != 0))</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            fName = _scv_tr_db.get_name();</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            DB::get().open(fName);</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        } <span class="keywordflow">catch</span>(...) {</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Can&#39;t open recording file&quot;</span>);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        }</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordflow">case</span> scv_tr_db::DELETE:</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            DB::get().close();</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        } <span class="keywordflow">catch</span>(...) {</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Can&#39;t close recording file&quot;</span>);</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        }</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Unknown reason in scv_tr_db callback&quot;</span>);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    }</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;}</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="keywordtype">void</span> streamCb(<span class="keyword">const</span> scv_tr_stream&amp; s, scv_tr_stream::callback_reason reason, <span class="keywordtype">void</span>* data) {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordflow">if</span>(reason == scv_tr_stream::CREATE) {</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            DB::get().writeStream(s.get_id(), s.get_name(), s.get_stream_kind());</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        } <span class="keywordflow">catch</span>(std::runtime_error&amp; e) {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Can&#39;t create stream&quot;</span>);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;}</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> recordAttribute(uint64_t <span class="keywordtype">id</span>, EventType event, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; name, data_type type, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; value) {</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, event, name, type, value);</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    } <span class="keywordflow">catch</span>(std::runtime_error&amp; e) {</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Can&#39;t create attribute entry&quot;</span>);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    }</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;}</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="keyword">inline</span> std::string get_name(<span class="keyword">const</span> <span class="keywordtype">char</span>* prefix, <span class="keyword">const</span> scv_extensions_if* my_exts_p) {</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordtype">string</span> name;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">if</span>(!prefix || strlen(prefix) == 0) {</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        name = my_exts_p-&gt;get_name();</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="keywordflow">if</span>((my_exts_p-&gt;get_name() == <span class="keyword">nullptr</span>) || (strlen(my_exts_p-&gt;get_name()) == 0)) {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            name = prefix;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            name = fmt::format(<span class="stringliteral">&quot;{}.{}&quot;</span>, prefix,  my_exts_p-&gt;get_name());</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        }</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    }</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">return</span> (name == <span class="stringliteral">&quot;&quot;</span>) ? <span class="stringliteral">&quot;&lt;unnamed&gt;&quot;</span> : name;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;}</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> recordAttributes(uint64_t <span class="keywordtype">id</span>, EventType eventType, <span class="keywordtype">char</span> <span class="keyword">const</span>* prefix, <span class="keyword">const</span> scv_extensions_if* my_exts_p) {</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">if</span>(my_exts_p == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keyword">auto</span> name = get_name(prefix, my_exts_p);</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordflow">switch</span>(my_exts_p-&gt;get_type()) {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::RECORD: {</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordtype">int</span> num_fields = my_exts_p-&gt;get_num_fields();</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="keywordflow">if</span>(num_fields &gt; 0) {</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> field_counter = 0; field_counter &lt; num_fields; field_counter++) {</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <span class="keyword">const</span> scv_extensions_if* field_data_p = my_exts_p-&gt;get_field(field_counter);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                recordAttributes&lt;DB&gt;(<span class="keywordtype">id</span>, eventType, prefix, field_data_p);</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        }</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    }</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::POINTER:</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        <span class="keywordflow">if</span>(<span class="keyword">auto</span> ptr = my_exts_p-&gt;get_pointer()){</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            std::stringstream ss; ss&lt;&lt;prefix&lt;&lt;<span class="stringliteral">&quot;*&quot;</span>;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            recordAttributes&lt;DB&gt;(<span class="keywordtype">id</span>, eventType, ss.str().c_str(), ptr);</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        }</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::ENUMERATION:</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::ENUMERATION,</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                my_exts_p-&gt;get_enum_string((<span class="keywordtype">int</span>)(my_exts_p-&gt;get_integer())));</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::BOOLEAN:</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::BOOLEAN, my_exts_p-&gt;get_bool());</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::INTEGER:</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::FIXED_POINT_INTEGER:</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::INTEGER, (int64_t)my_exts_p-&gt;get_integer());</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keywordtype">void</span> dbCb(<span class="keyword">const</span> scv_tr_db&amp; _scv_tr_db, scv_tr_db::callback_reason reason, <span class="keywordtype">void</span>* data) {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="comment">// This is called from the scv_tr_db ctor.</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">string</span> fName(<span class="stringliteral">&quot;DEFAULT_scv_tr_sqlite&quot;</span>);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">switch</span>(reason) {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">case</span> scv_tr_db::CREATE:</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordflow">if</span>((_scv_tr_db.get_name() != <span class="keyword">nullptr</span>) &amp;&amp; (strlen(_scv_tr_db.get_name()) != 0))</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            fName = _scv_tr_db.get_name();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            DB::get().open(fName);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        } <span class="keywordflow">catch</span>(...) {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Can&#39;t open recording file&quot;</span>);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">case</span> scv_tr_db::DELETE:</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            DB::get().close();</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        } <span class="keywordflow">catch</span>(...) {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Can&#39;t close recording file&quot;</span>);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Unknown reason in scv_tr_db callback&quot;</span>);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;}</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="keywordtype">void</span> streamCb(<span class="keyword">const</span> scv_tr_stream&amp; s, scv_tr_stream::callback_reason reason, <span class="keywordtype">void</span>* data) {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">if</span>(reason == scv_tr_stream::CREATE) {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            DB::get().writeStream(s.get_id(), s.get_name(), s.get_stream_kind());</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        } <span class="keywordflow">catch</span>(std::runtime_error&amp; e) {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Can&#39;t create stream&quot;</span>);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;}</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> recordAttribute(uint64_t <span class="keywordtype">id</span>, EventType event, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; name, data_type type, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; value) {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, event, name, type, value);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    } <span class="keywordflow">catch</span>(std::runtime_error&amp; e) {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Can&#39;t create attribute entry&quot;</span>);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;}</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keyword">inline</span> std::string get_name(<span class="keyword">const</span> <span class="keywordtype">char</span>* prefix, <span class="keyword">const</span> scv_extensions_if* my_exts_p) {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordtype">string</span> name;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">if</span>(!prefix || strlen(prefix) == 0) {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        name = my_exts_p-&gt;get_name();</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">if</span>((my_exts_p-&gt;get_name() == <span class="keyword">nullptr</span>) || (strlen(my_exts_p-&gt;get_name()) == 0)) {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            name = prefix;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            name = fmt::format(<span class="stringliteral">&quot;{}.{}&quot;</span>, prefix,  my_exts_p-&gt;get_name());</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">return</span> (name == <span class="stringliteral">&quot;&quot;</span>) ? <span class="stringliteral">&quot;&lt;unnamed&gt;&quot;</span> : name;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> recordAttributes(uint64_t <span class="keywordtype">id</span>, EventType eventType, <span class="keywordtype">char</span> <span class="keyword">const</span>* prefix, <span class="keyword">const</span> scv_extensions_if* my_exts_p) {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">if</span>(my_exts_p == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keyword">auto</span> name = get_name(prefix, my_exts_p);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">switch</span>(my_exts_p-&gt;get_type()) {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::RECORD: {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordtype">int</span> num_fields = my_exts_p-&gt;get_num_fields();</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="keywordflow">if</span>(num_fields &gt; 0) {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> field_counter = 0; field_counter &lt; num_fields; field_counter++) {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                <span class="keyword">const</span> scv_extensions_if* field_data_p = my_exts_p-&gt;get_field(field_counter);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                recordAttributes&lt;DB&gt;(<span class="keywordtype">id</span>, eventType, prefix, field_data_p);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        }</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::POINTER:</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <span class="keywordflow">if</span>(<span class="keyword">auto</span> ptr = my_exts_p-&gt;get_pointer()){</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            std::stringstream ss; ss&lt;&lt;prefix&lt;&lt;<span class="stringliteral">&quot;*&quot;</span>;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            recordAttributes&lt;DB&gt;(<span class="keywordtype">id</span>, eventType, ss.str().c_str(), ptr);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::ENUMERATION:</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::ENUMERATION,</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                my_exts_p-&gt;get_enum_string((<span class="keywordtype">int</span>)(my_exts_p-&gt;get_integer())));</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::BOOLEAN:</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::BOOLEAN, my_exts_p-&gt;get_bool());</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::INTEGER:</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::FIXED_POINT_INTEGER:</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::INTEGER, (int64_t)my_exts_p-&gt;get_integer());</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::UNSIGNED:</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::UNSIGNED, (uint64_t)my_exts_p-&gt;get_unsigned());</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::STRING:</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::STRING, my_exts_p-&gt;get_string());</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::UNSIGNED:</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::UNSIGNED, (uint64_t)my_exts_p-&gt;get_unsigned());</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::FLOATING_POINT_NUMBER:</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::FLOATING_POINT_NUMBER, my_exts_p-&gt;get_double());</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::STRING:</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::STRING, my_exts_p-&gt;get_string());</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::FLOATING_POINT_NUMBER:</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::FLOATING_POINT_NUMBER, my_exts_p-&gt;get_double());</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::BIT_VECTOR: {</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        sc_bv_base tmp_bv(my_exts_p-&gt;get_bitwidth());</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        my_exts_p-&gt;get_value(tmp_bv);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::BIT_VECTOR, tmp_bv.to_string());</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::LOGIC_VECTOR: {</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        sc_lv_base tmp_lv(my_exts_p-&gt;get_bitwidth());</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        my_exts_p-&gt;get_value(tmp_lv);</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::LOGIC_VECTOR, tmp_lv.to_string());</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::ARRAY:</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> array_elt_index = 0; array_elt_index &lt; my_exts_p-&gt;get_array_size(); array_elt_index++) {</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            <span class="keyword">const</span> scv_extensions_if* field_data_p = my_exts_p-&gt;get_array_elt(array_elt_index);</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            recordAttributes&lt;DB&gt;(<span class="keywordtype">id</span>, eventType, prefix, field_data_p);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        }</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">default</span>: {</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        std::array&lt;char, 100&gt; tmpString;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        sprintf(tmpString.data(), <span class="stringliteral">&quot;Unsupported attribute type = %d&quot;</span>, my_exts_p-&gt;get_type());</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, tmpString.data());</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    }</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    }</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;}</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="keywordtype">void</span> generatorCb(<span class="keyword">const</span> scv_tr_generator_base&amp; g, scv_tr_generator_base::callback_reason reason, <span class="keywordtype">void</span>* data) {</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="keywordflow">if</span>(reason == scv_tr_generator_base::CREATE ) {</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            std::vector&lt;AttrDesc&gt; attrs;</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            <span class="keyword">const</span> scv_extensions_if* my_begin_exts_p = g.get_begin_exts_p();</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            <span class="keywordflow">if</span>(my_begin_exts_p != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                attrs.emplace_back(BEGIN, my_begin_exts_p-&gt;get_type(), g.get_begin_attribute_name() ? g.get_begin_attribute_name() : <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            }</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            <span class="keyword">const</span> scv_extensions_if* my_end_exts_p = g.get_end_exts_p();</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            <span class="keywordflow">if</span>(my_end_exts_p != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                attrs.emplace_back(END, my_end_exts_p-&gt;get_type(), g.get_end_attribute_name() ? g.get_end_attribute_name() : <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            }</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            DB::get().writeGenerator(g.get_id(), g.get_name(), g.get_scv_tr_stream().get_id(), attrs);</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        } <span class="keywordflow">catch</span>(std::runtime_error&amp; e) {</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Can&#39;t create generator entry&quot;</span>);</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        }</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    }</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;}</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="keywordtype">void</span> transactionCb(<span class="keyword">const</span> scv_tr_handle&amp; t, scv_tr_handle::callback_reason reason, <span class="keywordtype">void</span>* data) {</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keywordflow">if</span>(t.get_scv_tr_stream().get_scv_tr_db() == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordflow">if</span>(t.get_scv_tr_stream().get_scv_tr_db()-&gt;get_recording() == <span class="keyword">false</span>)</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    uint64_t <span class="keywordtype">id</span> = t.get_id();</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    vector&lt;uint64_t&gt;::size_type concurrencyIdx;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keyword">const</span> scv_extensions_if* my_exts_p;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordflow">switch</span>(reason) {</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="keywordflow">case</span> scv_tr_handle::BEGIN: {</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        DB::get().writeTransaction(t.get_id(), t.get_scv_tr_generator_base().get_id(), BEGIN, t.get_begin_sc_time().value());</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        my_exts_p = t.get_begin_exts_p();</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        <span class="keywordflow">if</span>(my_exts_p == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            my_exts_p = t.get_scv_tr_generator_base().get_begin_exts_p();</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        <span class="keywordflow">if</span>(my_exts_p) {</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            <span class="keyword">auto</span> tmp_str = t.get_scv_tr_generator_base().get_begin_attribute_name()</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                                       ? t.get_scv_tr_generator_base().get_begin_attribute_name()</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                                               : <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            recordAttributes&lt;DB&gt;(<span class="keywordtype">id</span>, BEGIN, tmp_str, my_exts_p);</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        }</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <span class="keywordflow">case</span> scv_tr_handle::END: {</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        DB::get().writeTransaction(t.get_id(), t.get_scv_tr_generator_base().get_id(), END, t.get_begin_sc_time().value());</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        my_exts_p = t.get_end_exts_p();</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="keywordflow">if</span>(my_exts_p == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <span class="keywordflow">if</span>(my_exts_p) {</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            <span class="keyword">auto</span> tmp_str = t.get_scv_tr_generator_base().get_end_attribute_name()</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                                       ? t.get_scv_tr_generator_base().get_end_attribute_name()</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                                               : <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            recordAttributes&lt;DB&gt;(t.get_id(), END, tmp_str, my_exts_p);</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        }</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="keywordflow">default</span>:;</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    }</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;}</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="keywordtype">void</span> attributeCb(<span class="keyword">const</span> scv_tr_handle&amp; t, <span class="keyword">const</span> <span class="keywordtype">char</span>* name, <span class="keyword">const</span> scv_extensions_if* ext, <span class="keywordtype">void</span>* data) {</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">if</span>(t.get_scv_tr_stream().get_scv_tr_db() == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordflow">if</span>(t.get_scv_tr_stream().get_scv_tr_db()-&gt;get_recording() == <span class="keyword">false</span>)</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    recordAttributes&lt;DB&gt;(t.get_id(), RECORD, name == <span class="keyword">nullptr</span> ? <span class="stringliteral">&quot;&quot;</span> : name, ext);</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;}</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="keywordtype">void</span> relationCb(<span class="keyword">const</span> scv_tr_handle&amp; tr_1, <span class="keyword">const</span> scv_tr_handle&amp; tr_2, <span class="keywordtype">void</span>* data,</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        scv_tr_relation_handle_t relation_handle) {</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    <span class="keywordflow">if</span>(tr_1.get_scv_tr_stream().get_scv_tr_db() == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keywordflow">if</span>(tr_1.get_scv_tr_stream().get_scv_tr_db()-&gt;get_recording() == <span class="keyword">false</span>)</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        DB::get().writeRelation(tr_1.get_scv_tr_stream().get_scv_tr_db()-&gt;get_relation_name(relation_handle), tr_1.get_id(),</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                tr_2.get_id());</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    } <span class="keywordflow">catch</span>(std::runtime_error&amp; e) {</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Can&#39;t create transaction relation&quot;</span>);</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    }</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;}</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;} <span class="comment">// namespace</span></div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="preprocessor">#ifdef WITH_LZ4</span></div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="keywordtype">void</span> scv_tr_lz4_init() {</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    scv_tr_db::register_class_cb(dbCb&lt;Formatter&lt;LZ4Writer&gt;&gt;);</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    scv_tr_stream::register_class_cb(streamCb&lt;Formatter&lt;LZ4Writer&gt;&gt;);</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    scv_tr_generator_base::register_class_cb(generatorCb&lt;Formatter&lt;LZ4Writer&gt;&gt;);</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    scv_tr_handle::register_class_cb(transactionCb&lt;Formatter&lt;LZ4Writer&gt;&gt;);</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    scv_tr_handle::register_record_attribute_cb(attributeCb&lt;Formatter&lt;LZ4Writer&gt;&gt;);</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    scv_tr_handle::register_relation_cb(relationCb&lt;Formatter&lt;LZ4Writer&gt;&gt;);</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;}</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00428"></a><span class="lineno"><a class="line" href="namespacescv__tr.html#a65444428d84300ea1a58592878e20c56">  428</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacescv__tr.html#a65444428d84300ea1a58592878e20c56">scv_tr_plain_init</a>() {</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    scv_tr_db::register_class_cb(dbCb&lt;Formatter&lt;PlainWriter&gt;&gt;);</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    scv_tr_stream::register_class_cb(streamCb&lt;Formatter&lt;PlainWriter&gt;&gt;);</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    scv_tr_generator_base::register_class_cb(generatorCb&lt;Formatter&lt;PlainWriter&gt;&gt;);</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    scv_tr_handle::register_class_cb(transactionCb&lt;Formatter&lt;PlainWriter&gt;&gt;);</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    scv_tr_handle::register_record_attribute_cb(attributeCb&lt;Formatter&lt;PlainWriter&gt;&gt;);</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    scv_tr_handle::register_relation_cb(relationCb&lt;Formatter&lt;PlainWriter&gt;&gt;);</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;}</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;<span class="preprocessor">#ifndef HAS_SCV</span></div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;}</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::BIT_VECTOR: {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        sc_bv_base tmp_bv(my_exts_p-&gt;get_bitwidth());</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        my_exts_p-&gt;get_value(tmp_bv);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::BIT_VECTOR, tmp_bv.to_string());</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::LOGIC_VECTOR: {</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        sc_lv_base tmp_lv(my_exts_p-&gt;get_bitwidth());</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        my_exts_p-&gt;get_value(tmp_lv);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        DB::get().writeAttribute(<span class="keywordtype">id</span>, eventType, name, scv_extensions_if::LOGIC_VECTOR, tmp_lv.to_string());</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordflow">case</span> scv_extensions_if::ARRAY:</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> array_elt_index = 0; array_elt_index &lt; my_exts_p-&gt;get_array_size(); array_elt_index++) {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <span class="keyword">const</span> scv_extensions_if* field_data_p = my_exts_p-&gt;get_array_elt(array_elt_index);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            recordAttributes&lt;DB&gt;(<span class="keywordtype">id</span>, eventType, prefix, field_data_p);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordflow">default</span>: {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        std::array&lt;char, 100&gt; tmpString;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        sprintf(tmpString.data(), <span class="stringliteral">&quot;Unsupported attribute type = %d&quot;</span>, my_exts_p-&gt;get_type());</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, tmpString.data());</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;}</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="keywordtype">void</span> generatorCb(<span class="keyword">const</span> scv_tr_generator_base&amp; g, scv_tr_generator_base::callback_reason reason, <span class="keywordtype">void</span>* data) {</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">if</span>(reason == scv_tr_generator_base::CREATE ) {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            std::vector&lt;AttrDesc&gt; attrs;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <span class="keyword">const</span> scv_extensions_if* my_begin_exts_p = g.get_begin_exts_p();</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="keywordflow">if</span>(my_begin_exts_p != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                attrs.emplace_back(BEGIN, my_begin_exts_p-&gt;get_type(), g.get_begin_attribute_name() ? g.get_begin_attribute_name() : <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            <span class="keyword">const</span> scv_extensions_if* my_end_exts_p = g.get_end_exts_p();</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            <span class="keywordflow">if</span>(my_end_exts_p != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                attrs.emplace_back(END, my_end_exts_p-&gt;get_type(), g.get_end_attribute_name() ? g.get_end_attribute_name() : <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            DB::get().writeGenerator(g.get_id(), g.get_name(), g.get_scv_tr_stream().get_id(), attrs);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        } <span class="keywordflow">catch</span>(std::runtime_error&amp; e) {</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Can&#39;t create generator entry&quot;</span>);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    }</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;}</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="keywordtype">void</span> transactionCb(<span class="keyword">const</span> scv_tr_handle&amp; t, scv_tr_handle::callback_reason reason, <span class="keywordtype">void</span>* data) {</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keywordflow">if</span>(t.get_scv_tr_stream().get_scv_tr_db() == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordflow">if</span>(t.get_scv_tr_stream().get_scv_tr_db()-&gt;get_recording() == <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    uint64_t <span class="keywordtype">id</span> = t.get_id();</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    vector&lt;uint64_t&gt;::size_type concurrencyIdx;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keyword">const</span> scv_extensions_if* my_exts_p;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordflow">switch</span>(reason) {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordflow">case</span> scv_tr_handle::BEGIN: {</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        DB::get().writeTransaction(t.get_id(), t.get_scv_tr_generator_base().get_id(), BEGIN, t.get_begin_sc_time().value());</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        my_exts_p = t.get_begin_exts_p();</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <span class="keywordflow">if</span>(my_exts_p == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            my_exts_p = t.get_scv_tr_generator_base().get_begin_exts_p();</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <span class="keywordflow">if</span>(my_exts_p) {</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            <span class="keyword">auto</span> tmp_str = t.get_scv_tr_generator_base().get_begin_attribute_name()</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                                       ? t.get_scv_tr_generator_base().get_begin_attribute_name()</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                                               : <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            recordAttributes&lt;DB&gt;(<span class="keywordtype">id</span>, BEGIN, tmp_str, my_exts_p);</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        }</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <span class="keywordflow">case</span> scv_tr_handle::END: {</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        DB::get().writeTransaction(t.get_id(), t.get_scv_tr_generator_base().get_id(), END, t.get_begin_sc_time().value());</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        my_exts_p = t.get_end_exts_p();</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keywordflow">if</span>(my_exts_p == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <span class="keywordflow">if</span>(my_exts_p) {</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <span class="keyword">auto</span> tmp_str = t.get_scv_tr_generator_base().get_end_attribute_name()</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                                       ? t.get_scv_tr_generator_base().get_end_attribute_name()</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                                               : <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            recordAttributes&lt;DB&gt;(t.get_id(), END, tmp_str, my_exts_p);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        }</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="keywordflow">default</span>:;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;}</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="keywordtype">void</span> attributeCb(<span class="keyword">const</span> scv_tr_handle&amp; t, <span class="keyword">const</span> <span class="keywordtype">char</span>* name, <span class="keyword">const</span> scv_extensions_if* ext, <span class="keywordtype">void</span>* data) {</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="keywordflow">if</span>(t.get_scv_tr_stream().get_scv_tr_db() == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">if</span>(t.get_scv_tr_stream().get_scv_tr_db()-&gt;get_recording() == <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    recordAttributes&lt;DB&gt;(t.get_id(), RECORD, name == <span class="keyword">nullptr</span> ? <span class="stringliteral">&quot;&quot;</span> : name, ext);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;}</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DB&gt;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="keywordtype">void</span> relationCb(<span class="keyword">const</span> scv_tr_handle&amp; tr_1, <span class="keyword">const</span> scv_tr_handle&amp; tr_2, <span class="keywordtype">void</span>* data,</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        scv_tr_relation_handle_t relation_handle) {</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    <span class="keywordflow">if</span>(tr_1.get_scv_tr_stream().get_scv_tr_db() == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <span class="keywordflow">if</span>(tr_1.get_scv_tr_stream().get_scv_tr_db()-&gt;get_recording() == <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        DB::get().writeRelation(tr_1.get_scv_tr_stream().get_scv_tr_db()-&gt;get_relation_name(relation_handle), tr_1.get_id(),</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                tr_2.get_id());</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    } <span class="keywordflow">catch</span>(std::runtime_error&amp; e) {</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, <span class="stringliteral">&quot;Can&#39;t create transaction relation&quot;</span>);</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    }</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;}</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;} <span class="comment">// namespace</span></div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00412"></a><span class="lineno"><a class="line" href="namespacescv__tr.html#afeddfaf192ef3019298e592676f3620f">  412</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacescv__tr.html#afeddfaf192ef3019298e592676f3620f">scv_tr_lz4_init</a>() {</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    scv_tr_db::register_class_cb(dbCb&lt;Formatter&lt;LZ4Writer&gt;&gt;);</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    scv_tr_stream::register_class_cb(streamCb&lt;Formatter&lt;LZ4Writer&gt;&gt;);</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    scv_tr_generator_base::register_class_cb(generatorCb&lt;Formatter&lt;LZ4Writer&gt;&gt;);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    scv_tr_handle::register_class_cb(transactionCb&lt;Formatter&lt;LZ4Writer&gt;&gt;);</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    scv_tr_handle::register_record_attribute_cb(attributeCb&lt;Formatter&lt;LZ4Writer&gt;&gt;);</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    scv_tr_handle::register_relation_cb(relationCb&lt;Formatter&lt;LZ4Writer&gt;&gt;);</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;}</div>
+<div class="line"><a name="l00420"></a><span class="lineno"><a class="line" href="namespacescv__tr.html#a65444428d84300ea1a58592878e20c56">  420</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacescv__tr.html#a65444428d84300ea1a58592878e20c56">scv_tr_plain_init</a>() {</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    scv_tr_db::register_class_cb(dbCb&lt;Formatter&lt;PlainWriter&gt;&gt;);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    scv_tr_stream::register_class_cb(streamCb&lt;Formatter&lt;PlainWriter&gt;&gt;);</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    scv_tr_generator_base::register_class_cb(generatorCb&lt;Formatter&lt;PlainWriter&gt;&gt;);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    scv_tr_handle::register_class_cb(transactionCb&lt;Formatter&lt;PlainWriter&gt;&gt;);</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    scv_tr_handle::register_record_attribute_cb(attributeCb&lt;Formatter&lt;PlainWriter&gt;&gt;);</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    scv_tr_handle::register_relation_cb(relationCb&lt;Formatter&lt;PlainWriter&gt;&gt;);</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;}</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;<span class="preprocessor">#ifndef HAS_SCV</span></div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;}</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="anamespacescv__tr_html"><div class="ttname"><a href="namespacescv__tr.html">scv_tr</a></div><div class="ttdoc">SystemC Verification Library (SCV) Transaction Recording.</div><div class="ttdef"><b>Definition:</b> <a href="scv__tr__binary_8cpp_source.html#l00034">scv_tr_binary.cpp:34</a></div></div>
-<div class="ttc" id="anamespacescv__tr_html_a65444428d84300ea1a58592878e20c56"><div class="ttname"><a href="namespacescv__tr.html#a65444428d84300ea1a58592878e20c56">scv_tr::scv_tr_plain_init</a></div><div class="ttdeci">void scv_tr_plain_init()</div><div class="ttdoc">initializes the infrastructure to use a plain text based transaction recording database</div><div class="ttdef"><b>Definition:</b> <a href="scv__tr__lz4_8cpp_source.html#l00428">scv_tr_lz4.cpp:428</a></div></div>
+<div class="ttc" id="anamespacescv__tr_html_a65444428d84300ea1a58592878e20c56"><div class="ttname"><a href="namespacescv__tr.html#a65444428d84300ea1a58592878e20c56">scv_tr::scv_tr_plain_init</a></div><div class="ttdeci">void scv_tr_plain_init()</div><div class="ttdoc">initializes the infrastructure to use a plain text based transaction recording database</div><div class="ttdef"><b>Definition:</b> <a href="scv__tr__lz4_8cpp_source.html#l00420">scv_tr_lz4.cpp:420</a></div></div>
+<div class="ttc" id="anamespacescv__tr_html_afeddfaf192ef3019298e592676f3620f"><div class="ttname"><a href="namespacescv__tr.html#afeddfaf192ef3019298e592676f3620f">scv_tr::scv_tr_lz4_init</a></div><div class="ttdeci">void scv_tr_lz4_init()</div><div class="ttdoc">initializes the infrastructure to use a LZ4 compressed text based transaction recording database</div><div class="ttdef"><b>Definition:</b> <a href="scv__tr__lz4_8cpp_source.html#l00412">scv_tr_lz4.cpp:412</a></div></div>
 <div class="ttc" id="anamespacetlm_1_1scc_1_1pe_html_a6a6eec1885e2ecc7d636ae07c13d7287"><div class="ttname"><a href="namespacetlm_1_1scc_1_1pe.html#a6a6eec1885e2ecc7d636ae07c13d7287">tlm::scc::pe::type</a></div><div class="ttdeci">type</div><div class="ttdef"><b>Definition:</b> <a href="intor__if_8h_source.html#l00032">intor_if.h:32</a></div></div>
 <div class="ttc" id="anamespaceutil_html"><div class="ttname"><a href="namespaceutil.html">util</a></div><div class="ttdoc">SCC common utilities.</div><div class="ttdef"><b>Definition:</b> <a href="bit__field_8h_source.html#l00030">bit_field.h:30</a></div></div>
-<div class="ttc" id="astructscv__tr_1_1AttrDesc_html"><div class="ttname"><a href="structscv__tr_1_1AttrDesc.html">scv_tr::AttrDesc</a></div><div class="ttdef"><b>Definition:</b> <a href="scv__tr__lz4_8cpp_source.html#l00048">scv_tr_lz4.cpp:48</a></div></div>
+<div class="ttc" id="astructscv__tr_1_1AttrDesc_html"><div class="ttname"><a href="structscv__tr_1_1AttrDesc.html">scv_tr::AttrDesc</a></div><div class="ttdef"><b>Definition:</b> <a href="scv__tr__lz4_8cpp_source.html#l00050">scv_tr_lz4.cpp:50</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

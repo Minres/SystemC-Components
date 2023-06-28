@@ -1,5 +1,22 @@
 var namespacechi =
 [
+    [ "lwtr", null, [
+      [ "tlm_id_ext_recording", "classchi_1_1lwtr_1_1tlm__id__ext__recording.html", null ],
+      [ "chi_ctrl_ext_recording", "classchi_1_1lwtr_1_1chi__ctrl__ext__recording.html", null ],
+      [ "chi_data_ext_recording", "classchi_1_1lwtr_1_1chi__data__ext__recording.html", null ],
+      [ "chi_snp_ext_recording", "classchi_1_1lwtr_1_1chi__snp__ext__recording.html", null ],
+      [ "chi_link_ext_recording", "classchi_1_1lwtr_1_1chi__link__ext__recording.html", null ],
+      [ "nb_chi_rec_entry", "structchi_1_1lwtr_1_1nb__chi__rec__entry.html", "structchi_1_1lwtr_1_1nb__chi__rec__entry" ],
+      [ "chi_lwtr", "classchi_1_1lwtr_1_1chi__lwtr.html", "classchi_1_1lwtr_1_1chi__lwtr" ],
+      [ "chi_lwtr_recorder", "classchi_1_1lwtr_1_1chi__lwtr__recorder.html", "classchi_1_1lwtr_1_1chi__lwtr__recorder" ],
+      [ "mm", "chi__lwtr_8h.html#a260cb5830150db5c337d897f2d61fcc3", null ],
+      [ "tx_db", "chi__lwtr_8h.html#a02545551d3e5190d95e106c81bec20b0", null ],
+      [ "tx_fiber", "chi__lwtr_8h.html#abb70e9ed4b90534fbb671afe4dd74890", null ],
+      [ "tx_generator", "chi__lwtr_8h.html#a862376ace3ff52fe7f490f47886dfc95", null ],
+      [ "tx_handle", "chi__lwtr_8h.html#a5bfef32c8db3e391d2efa69b9a4484f7", null ],
+      [ "register_extensions", "chi__lwtr_8cpp.html#aff4826ecf8a040861513138e2aabc182", null ],
+      [ "registered", "chi__lwtr_8cpp.html#afdc5b7260d15727a3e229c5598329ba5", null ]
+    ] ],
     [ "pe", null, [
       [ "chi_rn_initiator_b", "classchi_1_1pe_1_1chi__rn__initiator__b.html", "classchi_1_1pe_1_1chi__rn__initiator__b" ],
       [ "chi_rn_initiator", "classchi_1_1pe_1_1chi__rn__initiator.html", "classchi_1_1pe_1_1chi__rn__initiator" ]
@@ -133,12 +150,13 @@ var namespacechi =
       [ "EOBarrier", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a3b0d49b9a8706838d1acb770e01d2d32", null ],
       [ "ECBarrier", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a1774ba96b7bbf815cc4273a704a02c26", null ],
       [ "ReadNoSnpSep", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a0ebdd5266e0af85db0443771ff38f008", null ],
+      [ "CleanSharedPersistSep", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a0fd1dac60c8aad7de91b10b0854b27df", null ],
       [ "DVMOp", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a5ed71530cef94b2179f7fca7120c6aee", null ],
       [ "WriteEvictFull", "namespacechi.html#abba5403c4080f4543b523652cfb217f1aeeb5cab4c6e84e66c70a71254e1e0258", null ],
+      [ "WriteCleanPtl", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a00ad203fada807710159709c0c3ce524", null ],
       [ "WriteCleanFull", "namespacechi.html#abba5403c4080f4543b523652cfb217f1ad4a9b08d87b347c89d95963ceaef0db1", null ],
       [ "WriteUniquePtl", "namespacechi.html#abba5403c4080f4543b523652cfb217f1aa0862736a370af62e42bc85ac90d9fb3", null ],
       [ "WriteUniqueFull", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a79fdf410d7dd6a133a68da4089ab7d9c", null ],
-      [ "WriteCleanPtl", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a00ad203fada807710159709c0c3ce524", null ],
       [ "WriteBackPtl", "namespacechi.html#abba5403c4080f4543b523652cfb217f1add5243c5ead06f9057bcf85466277d4e", null ],
       [ "WriteBackFull", "namespacechi.html#abba5403c4080f4543b523652cfb217f1acf83eeb20d74dfdd232b802ca77205e7", null ],
       [ "WriteNoSnpPtl", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a009fdcf77fd6f5f6f83a6174ba521741", null ],
@@ -170,6 +188,28 @@ var namespacechi =
       [ "AtomicSwap", "namespacechi.html#abba5403c4080f4543b523652cfb217f1aae97d24bc516cad87ff2444ecc8f4914", null ],
       [ "AtomicCompare", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a6f8b41a47fea31cd62b7c675592598a8", null ],
       [ "PrefetchTgt", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a4044c5a5bb86a315a5de9db100a00521", null ],
+      [ "MakeReadUnique", "namespacechi.html#abba5403c4080f4543b523652cfb217f1afa039519580cd93e062af7db5ac46b52", null ],
+      [ "WriteEvictOrEvict", "namespacechi.html#abba5403c4080f4543b523652cfb217f1aa8c9fec4e74d26b6fd1a39dafecb4664", null ],
+      [ "WriteUniqueZero", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a62ebe8241281c78181ff20c5b09b862b", null ],
+      [ "WriteNoSnpZero", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a51d6231327b5690702ded88ff8d03dd1", null ],
+      [ "StashOnceSepShared", "namespacechi.html#abba5403c4080f4543b523652cfb217f1aff380c2dcd0f8009f63e14871c63f93f", null ],
+      [ "StashOnceSepUnique", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a4104b910505a83c8d07ed401426dc3db", null ],
+      [ "ReadPreferUnique", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a75d0c0c81a3debb67fe9b8a11d4d7525", null ],
+      [ "WriteNoSnpFullCleanSh", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a4326c7764dffb21ca60ed4596746cc94", null ],
+      [ "WriteNoSnpFullCleanInv", "namespacechi.html#abba5403c4080f4543b523652cfb217f1aaba20da83fb369529c46c7052e47b4f2", null ],
+      [ "WriteNoSnpFullCleanShPerSep", "namespacechi.html#abba5403c4080f4543b523652cfb217f1ad31492f055c2775b26da535759403422", null ],
+      [ "WriteUniqueFullCleanSh", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a566065f2e2f884ac796e59ff6aa0c5be", null ],
+      [ "WriteUniqueFullCleanShPerSep", "namespacechi.html#abba5403c4080f4543b523652cfb217f1afc2fa1d34a5eb01236f12b79e5117cb8", null ],
+      [ "WriteBackFullCleanSh", "namespacechi.html#abba5403c4080f4543b523652cfb217f1aef96e25328a66f1b12786e1eeb3d4a99", null ],
+      [ "WriteBackFullCleanInv", "namespacechi.html#abba5403c4080f4543b523652cfb217f1ad3cf36de87da21c550edee634e429ebd", null ],
+      [ "WriteBackFullCleanShPerSep", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a6d618f04a1871574b48c07f5594ad420", null ],
+      [ "WriteCleanFullCleanSh", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a81418c897d33a35049a94f4ed3a54d9f", null ],
+      [ "WriteCleanFullCleanShPerSep", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a189c11e21a30d345a4619df62cf6bcf4", null ],
+      [ "WriteNoSnpPtlCleanSh", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a700476d9f85aa7f4a59a6610030c9046", null ],
+      [ "WriteNoSnpPtlCleanInv", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a11c679939ffb7c5be5c1013fe82c5778", null ],
+      [ "WriteNoSnpPtlCleanShPerSep", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a32124d894da5986beb7454e8ce7df829", null ],
+      [ "WriteUniquePtlCleanSh", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a6824b6e43023c6bfa3b01a829f2e3f6c", null ],
+      [ "WriteUniquePtlCleanShPerSep", "namespacechi.html#abba5403c4080f4543b523652cfb217f1ad8f8fb8ae4af9d221427b3efe523b53d", null ],
       [ "ILLEGAL", "namespacechi.html#abba5403c4080f4543b523652cfb217f1a19b6dd9cf8414bce98a4f0b86c3258ec", null ]
     ] ],
     [ "rsp_optype_e", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69ca", [
@@ -183,8 +223,15 @@ var namespacechi =
       [ "PCrdGrant", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69caab40867d6397ae9097c40660ee14cda63", null ],
       [ "ReadReceipt", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69caa0eb0960d242c52493df56859b0e192cf", null ],
       [ "SnpRespFwded", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69caae9ff1838b0623cc0712e4e5c2734193e", null ],
+      [ "TagMatch", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69caa97efeea674f4b2fb485a9af7803d7d93", null ],
       [ "RespSepData", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69caa7af2acb4ac44a11d23c407b02db94429", null ],
-      [ "Invalid", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69caa4bbb8f967da6d1a610596d7257179c2b", null ]
+      [ "Persist", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69caa5a7dacb6e9b5ba37e22f825429355174", null ],
+      [ "CompPersist", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69caac2bcee77214e3d6deb9424ec482de4ae", null ],
+      [ "DBIDRespOrd", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69caaa93a0badd6f014f1bdb329f2b0539c07", null ],
+      [ "StashDone", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69caab26cefcf101c662e2f29419fd76cadd7", null ],
+      [ "CompStashDone", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69caa1cbf09e724e65e66789ae6e22208e435", null ],
+      [ "CompCMO", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69caadbb7aa7e448b23a877f6625115cc7032", null ],
+      [ "INVALID", "namespacechi.html#a99ccdced031bd69983204bfc2d3a69caaccc0377a8afbf50e7094f5c23a8af223", null ]
     ] ],
     [ "rsp_resptype_e", "namespacechi.html#a9640ccb9c6b8f04797a7303dd4c09710", [
       [ "SnpResp_I", "namespacechi.html#a9640ccb9c6b8f04797a7303dd4c09710a707b0c4f29c851d3a498a8ca54d1cd31", null ],
@@ -211,11 +258,15 @@ var namespacechi =
       [ "SnpStashUnique", "namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77a54fc8a0b6f50e0a328ffc9a4dfc8f845", null ],
       [ "SnpStashShared", "namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77a100a8aa8b15c74d441578e979164f845", null ],
       [ "SnpDVMOp", "namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77a821c265155fb702f07b07249ebb03563", null ],
+      [ "SnpQuery", "namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77aa9852e77783b96d4cca7ed1d175a33ac", null ],
       [ "SnpSharedFwd", "namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77ab071f78f715a5b393815105deeef529d", null ],
       [ "SnpCleanFwd", "namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77a5a1572cd3ef40973765546eef1f51c94", null ],
       [ "SnpOnceFwd", "namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77abcc72c5206fe7e82b332d2cc9af3c65c", null ],
       [ "SnpNotSharedDirtyFwd", "namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77a29fc0281338cf08bf44c45f89f0f302d", null ],
-      [ "SnpUniqueFwd", "namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77a4398ef508e491ce746b870d4950893bc", null ]
+      [ "SnpPreferUnique", "namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77a0879dc8f4807282b9955adc155182b25", null ],
+      [ "SnpPreferUniqueFwd", "namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77a8dfad84ae5c3e39d76cd015654aa484d", null ],
+      [ "SnpUniqueFwd", "namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77a4398ef508e491ce746b870d4950893bc", null ],
+      [ "ILLEGAL", "namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77a19b6dd9cf8414bce98a4f0b86c3258ec", null ]
     ] ],
     [ "DECLARE_EXTENDED_PHASE", "namespacechi.html#a8dd182138396d9f25a3815df0d20ddc9", null ],
     [ "DECLARE_EXTENDED_PHASE", "namespacechi.html#a1326d494ad54586a39f26e845e97569c", null ],
@@ -242,5 +293,6 @@ var namespacechi =
     [ "to_char< rsp_optype_e >", "namespacechi.html#addfd9397a9ec53077ae50183a74e7465", null ],
     [ "to_char< rsp_resptype_e >", "namespacechi.html#a60020bb6dd62dc990f557a8ab6d9a5b3", null ],
     [ "to_char< snp_optype_e >", "namespacechi.html#a6b13049fdb3c8eff9a6961e6775d756c", null ],
-    [ "to_int", "namespacechi.html#a44231a136ceeaaf6371a584425718435", null ]
+    [ "to_int", "namespacechi.html#a44231a136ceeaaf6371a584425718435", null ],
+    [ "opc2str", "namespacechi.html#af11ff9923e69d3287803643e80aefe1e", null ]
 ];

@@ -3,6 +3,7 @@ var structscc_1_1sc__variable =
     [ "creator", "structscc_1_1sc__variable_1_1creator.html", "structscc_1_1sc__variable_1_1creator" ],
     [ "this_type", "structscc_1_1sc__variable.html#a7a37f979f4f5a735579f61d6d14ded71", null ],
     [ "sc_variable", "structscc_1_1sc__variable.html#ad07cca01fd53527bd24d79d1b3059b0f", null ],
+    [ "~sc_variable", "structscc_1_1sc__variable.html#a3ed1652ae43f65dac79d5ec5c7dc06d3", null ],
     [ "get", "structscc_1_1sc__variable.html#afb2282744a7b5e2cc95ee72e28d6b11e", null ],
     [ "operator bool", "structscc_1_1sc__variable.html#ae3c4ecc0c8907718452d30e5d1bcf7a4", null ],
     [ "operator T", "structscc_1_1sc__variable.html#a6b188d58321326448c0228851d6cabd0", null ],

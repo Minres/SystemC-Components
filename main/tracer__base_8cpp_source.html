@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: src/sysc/scc/tracer_base.cpp Source File</title>
+<title>scc: /home/eyck/git/scc/main/src/sysc/scc/tracer_base.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -314,32 +314,36 @@ $(document).ready(function(){initNavTree('tracer__base_8cpp_source.html',''); in
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="keywordtype">void</span> tracer_base::descend(<span class="keyword">const</span> sc_object* obj, <span class="keywordtype">bool</span> trace_all) {</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">if</span>(obj == <span class="keyword">this</span>)</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* kind = obj-&gt;kind();</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordflow">if</span>(strcmp(kind, <span class="stringliteral">&quot;tlm_signal&quot;</span>) == 0) {</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        obj-&gt;trace(trf);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(kind, <span class="stringliteral">&quot;sc_vector&quot;</span>) == 0) {</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> o : obj-&gt;get_child_objects())</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            descend(o, trace_all);</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>((strcmp(kind, <span class="stringliteral">&quot;sc_module&quot;</span>) == 0 &amp;&amp; trace_all) || <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>traceable*<span class="keyword">&gt;</span>(obj)) {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        obj-&gt;trace(trf);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;std::string tracer_base::get_name() {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">return</span> sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;scc_tracer&quot;</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;}</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="keywordtype">void</span> tracer_base::descend(<span class="keyword">const</span> sc_object* obj, <span class="keywordtype">bool</span> trace_all) {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">if</span>(obj == <span class="keyword">this</span>)</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* kind = obj-&gt;kind();</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">if</span>(strcmp(kind, <span class="stringliteral">&quot;tlm_signal&quot;</span>) == 0) {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        obj-&gt;trace(trf);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(kind, <span class="stringliteral">&quot;sc_vector&quot;</span>) == 0) {</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> o : obj-&gt;get_child_objects())</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            descend(o, trace_all);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(kind, <span class="stringliteral">&quot;sc_variable&quot;</span>) == 0) {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordflow">if</span>((types_to_trace &amp; trace_types::VARIABLES) == trace_types::VARIABLES)</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            obj-&gt;trace(trf);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<span class="keyword">const</span> <span class="keyword">auto</span>* tr = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span><a class="code" href="classscc_1_1traceable.html">scc::traceable</a>*<span class="keyword">&gt;</span>(obj)) {</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <span class="keywordflow">if</span>(tr-&gt;is_trace_enabled())</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            obj-&gt;trace(trf);</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> o : obj-&gt;get_child_objects())</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            descend(o, tr-&gt;is_trace_enabled());</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        try_trace(trf, obj, types_to_trace);</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    }</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;}</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>((strcmp(kind, <span class="stringliteral">&quot;sc_module&quot;</span>) == 0 &amp;&amp; trace_all) || <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>traceable*<span class="keyword">&gt;</span>(obj)) {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        obj-&gt;trace(trf);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> o : obj-&gt;get_child_objects())</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            descend(o, trace_all);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(kind, <span class="stringliteral">&quot;sc_variable&quot;</span>) == 0) {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keywordflow">if</span>((types_to_trace &amp; trace_types::VARIABLES) == trace_types::VARIABLES)</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            obj-&gt;trace(trf);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<span class="keyword">const</span> <span class="keyword">auto</span>* tr = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span><a class="code" href="classscc_1_1traceable.html">scc::traceable</a>*<span class="keyword">&gt;</span>(obj)) {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keywordflow">if</span>(tr-&gt;is_trace_enabled())</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            obj-&gt;trace(trf);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> o : obj-&gt;get_child_objects())</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            descend(o, tr-&gt;is_trace_enabled());</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        try_trace(trf, obj, types_to_trace);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;}</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;} <span class="comment">// namespace scc</span></div>
 <div class="ttc" id="aclassscc_1_1traceable_html"><div class="ttname"><a href="classscc_1_1traceable.html">scc::traceable</a></div><div class="ttdoc">interface defining a traceable component</div><div class="ttdef"><b>Definition:</b> <a href="traceable_8h_source.html#l00032">traceable.h:32</a></div></div>
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 <div class="ttc" id="anamespacescc_html_a16c18825e698bcd4b014919563c5c191"><div class="ttname"><a href="namespacescc.html#a16c18825e698bcd4b014919563c5c191">scc::trace_types</a></div><div class="ttdeci">trace_types</div><div class="ttdoc">identifies the various type to be traced</div><div class="ttdef"><b>Definition:</b> <a href="tracer__base_8h_source.html#l00035">tracer_base.h:35</a></div></div>
