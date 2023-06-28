@@ -316,6 +316,8 @@ public:
     const DATATYPE wrmask;
 
 private:
+    const char* kind() const override { return "sc_register"; }
+
     DATATYPE& storage;
     std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time&)> rd_cb;
     std::function<bool(this_type&, DATATYPE&, sc_core::sc_time&)> wr_cb;
