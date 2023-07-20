@@ -12,6 +12,8 @@ option(ENABLE_CONAN "Enable the use of conan in standalone build" ON)
 
 option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 
+option(FULL_TRACE_TYPE_LIST "Test for extended set of templated datatypes" OFF)
+
 #Note: this needs to match the SystemC kernel build options
 option(SC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase callbacks" OFF)
 
