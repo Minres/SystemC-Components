@@ -49,8 +49,9 @@ public:
      * @brief the constructor
      *
      * @param clock the clock period of the component
+     * @param socket_name optional name of the internal socket
      */
-    tlm_target(sc_core::sc_time& clock);
+    tlm_target(sc_core::sc_time& clock, const char* socket_name = "socket");
     //! the target socket
     tlm::scc::target_mixin<tlm::scc::scv::tlm_rec_target_socket<BUSWIDTH>> socket;
     /**
@@ -125,8 +126,8 @@ template <unsigned int BUSWIDTH = LT, unsigned int ADDR_UNIT_WIDTH = 8> struct t
 } /* namespace scc */
 
 template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_WIDTH>
-inline scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::tlm_target(sc_core::sc_time& clock)
-: socket("socket")
+inline scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::tlm_target(sc_core::sc_time& clock, const char* socket_name)
+: socket(socket_name)
 , clk(clock)
 , socket_map(std::make_pair(nullptr, 0)) {
     socket.register_b_transport(
