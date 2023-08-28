@@ -171,10 +171,10 @@ inline void axi::pin::axi4_initiator<CFG>::write_wdata(tlm::tlm_generic_payload&
     auto beptr = trans.get_byte_enable_length() ? trans.get_byte_enable_ptr() + byte_offset : nullptr;
     if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
         if(beat == 0) {
-            auto bptr = trans.get_data_ptr();
-            for(size_t i = offset; i < size; ++i, ++bptr) {
+            auto dptr = trans.get_data_ptr();
+            for(size_t i = offset; i < size; ++i, ++dptr) {
                 auto bit_offs = i * 8;
-                data(bit_offs + 7, bit_offs) = *bptr;
+                data(bit_offs + 7, bit_offs) = *dptr;
                 if(beptr) {
                     strb[i] = *beptr == 0xff;
                     ++beptr;
@@ -184,10 +184,10 @@ inline void axi::pin::axi4_initiator<CFG>::write_wdata(tlm::tlm_generic_payload&
         } else {
             auto beat_start_idx = byte_offset - offset;
             auto data_len = trans.get_data_length();
-            auto bptr = trans.get_data_ptr() + beat_start_idx;
-            for(size_t i = 0; i < size && (beat_start_idx + i) < data_len; ++i, ++bptr) {
+            auto dptr = trans.get_data_ptr() + beat_start_idx;
+            for(size_t i = 0; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
                 auto bit_offs = i * 8;
-                data(bit_offs + 7, bit_offs) = *bptr;
+                data(bit_offs + 7, bit_offs) = *dptr;
                 if(beptr) {
                     strb[i] = *beptr == 0xff;
                     ++beptr;
@@ -196,10 +196,10 @@ inline void axi::pin::axi4_initiator<CFG>::write_wdata(tlm::tlm_generic_payload&
             }
         }
     } else { // aligned or single beat access
-        auto bptr = trans.get_data_ptr() + byte_offset;
-        for(size_t i = 0; i < size; ++i, ++bptr) {
+        auto dptr = trans.get_data_ptr() + byte_offset;
+        for(size_t i = 0; i < size; ++i, ++dptr) {
             auto bit_offs = (offset+i) * 8;
-            data(bit_offs + 7, bit_offs) = *bptr;
+            data(bit_offs + 7, bit_offs) = *dptr;
             if(beptr) {
                 strb[offset+i] = *beptr == 0xff;
                 ++beptr;
@@ -346,25 +346,25 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::r_t() {
             auto offset = (fsm_hndl->trans->get_address()+byte_offset) & (CFG::BUSWIDTH / 8 - 1);
             if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
                 if(beat_count == 0) {
-                    auto bptr = fsm_hndl->trans->get_data_ptr();
-                    for(size_t i = offset; i < size; ++i, ++bptr) {
+                    auto dptr = fsm_hndl->trans->get_data_ptr();
+                    for(size_t i = offset; i < size; ++i, ++dptr) {
                         auto bit_offs = i * 8;
-                        *bptr = data(bit_offs + 7, bit_offs).to_uint();
+                        *dptr = data(bit_offs + 7, bit_offs).to_uint();
                     }
                 } else {
                     auto beat_start_idx = beat_count * size - offset;
                     auto data_len = fsm_hndl->trans->get_data_length();
-                    auto bptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
-                    for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++bptr) {
+                    auto dptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
+                    for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
                         auto bit_offs = i * 8;
-                        *bptr = data(bit_offs + 7, bit_offs).to_uint();
+                        *dptr = data(bit_offs + 7, bit_offs).to_uint();
                     }
                 }
             } else { // aligned or single beat access
-                auto bptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
-                for(size_t i = 0; i < size; ++i, ++bptr) {
+                auto dptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
+                for(size_t i = 0; i < size; ++i, ++dptr) {
                     auto bit_offs = (offset+i) * 8;
-                    *bptr = data(bit_offs + 7, bit_offs).to_uint();
+                    *dptr = data(bit_offs + 7, bit_offs).to_uint();
                 }
             }
             axi::axi4_extension* e;

@@ -144,25 +144,25 @@ template <typename CFG> typename CFG::data_t axi::pin::axi4_target<CFG>::get_rea
     typename CFG::data_t data{0};
     if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
         if(beat_count == 0) {
-            auto bptr = fsm_hndl->trans->get_data_ptr();
-            for(size_t i = offset; i < size; ++i, ++bptr) {
+            auto dptr = fsm_hndl->trans->get_data_ptr();
+            for(size_t i = offset; i < size; ++i, ++dptr) {
                 auto bit_offs = i * 8;
-                data(bit_offs + 7, bit_offs) = *bptr;
+                data(bit_offs + 7, bit_offs) = *dptr;
             }
         } else {
             auto beat_start_idx = byte_offset - offset;
             auto data_len = fsm_hndl->trans->get_data_length();
-            auto bptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
-            for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++bptr) {
+            auto dptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
+            for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
                 auto bit_offs = i * 8;
-                data(bit_offs + 7, bit_offs) = *bptr;
+                data(bit_offs + 7, bit_offs) = *dptr;
             }
         }
     } else { // aligned or single beat access
-        auto bptr = fsm_hndl->trans->get_data_ptr() + byte_offset;
-        for(size_t i = 0; i < size; ++i, ++bptr) {
+        auto dptr = fsm_hndl->trans->get_data_ptr() + byte_offset;
+        for(size_t i = 0; i < size; ++i, ++dptr) {
             auto bit_offs = (offset + i) * 8;
-            data(bit_offs + 7, bit_offs) = *bptr;
+            data(bit_offs + 7, bit_offs) = *dptr;
         }
     }
     return data;
@@ -357,8 +357,6 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
                 auto gp = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(data_len, true);
                 gp->set_address(awd.addr);
                 gp->set_command(tlm::TLM_WRITE_COMMAND);
-                gp->set_streaming_width(0);
-                gp->set_data_length(0);
                 axi::axi4_extension* ext;
                 gp->get_extension(ext);
                 ext->set_id(awd.id);
@@ -386,43 +384,45 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
             auto offset = (fsm_hndl->trans->get_address()+byte_offset) & (CFG::BUSWIDTH / 8 - 1);
             if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
                 if(beat_count == 0) {
-                    auto bptr = fsm_hndl->trans->get_data_ptr();
+                    auto dptr = fsm_hndl->trans->get_data_ptr();
                     auto beptr = fsm_hndl->trans->get_byte_enable_ptr();
-                    for(size_t i = offset; i < size; ++i, ++bptr, ++beptr) {
+                    for(size_t i = offset; i < size; ++i, ++dptr, ++beptr) {
                         auto bit_offs = i * 8;
-                        *bptr = data(bit_offs + 7, bit_offs).to_uint();
+                        *dptr = data(bit_offs + 7, bit_offs).to_uint();
                         *beptr = strb[i] ? 0xff : 0;
                     }
                 } else {
                     auto beat_start_idx = byte_offset - offset;
                     auto data_len = fsm_hndl->trans->get_data_length();
-                    auto bptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
+                    auto dptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
                     auto beptr = fsm_hndl->trans->get_byte_enable_ptr() + beat_start_idx;
-                    for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++bptr, ++beptr) {
+                    for(size_t i = 0; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr, ++beptr) {
                         auto bit_offs = i * 8;
-                        *bptr = data(bit_offs + 7, bit_offs).to_uint();
+                        *dptr = data(bit_offs + 7, bit_offs).to_uint();
                         *beptr = strb[i] ? 0xff : 0;
                     }
                 }
             } else { // aligned or single beat access
-                auto bptr = fsm_hndl->trans->get_data_ptr() + byte_offset;
+                auto dptr = fsm_hndl->trans->get_data_ptr() + byte_offset;
                 auto beptr = fsm_hndl->trans->get_byte_enable_ptr() + byte_offset;
-                for(size_t i = 0; i < size; ++i, ++bptr, ++beptr) {
+                for(size_t i = 0; i < size; ++i, ++dptr, ++beptr) {
                     auto bit_offs = (offset+i) * 8;
-                    *bptr = data(bit_offs + 7, bit_offs).to_uint();
+                    *dptr = data(bit_offs + 7, bit_offs).to_uint();
                     *beptr = strb[offset +i] ? 0xff : 0;
                 }
             }
             // TODO: assuming consecutive write (not scattered)
             auto strobe = strb.to_uint();
-            auto act_data_len = CFG::IS_LITE? util::bit_count(strobe): (beat_count+1) * size;
-//            if(CFG::IS_LITE && act_data_len<CFG::BUSWIDTH/8) {
-//                std::fill(gp->get_byte_enable_ptr(), gp->get_byte_enable_ptr() + act_data_len, 0xff);
-//                std::fill(gp->get_byte_enable_ptr() + act_data_len, gp->get_byte_enable_ptr() + gp->get_byte_enable_length(), 0x0);
-//            }
-            gp->set_data_length(act_data_len);
-            gp->set_byte_enable_length(act_data_len);
-            gp->set_streaming_width(act_data_len);
+            if(last) {
+                auto act_data_len = CFG::IS_LITE? util::bit_count(strobe): (beat_count+1) * size-offset;
+    //            if(CFG::IS_LITE && act_data_len<CFG::BUSWIDTH/8) {
+    //                std::fill(gp->get_byte_enable_ptr(), gp->get_byte_enable_ptr() + act_data_len, 0xff);
+    //                std::fill(gp->get_byte_enable_ptr() + act_data_len, gp->get_byte_enable_ptr() + gp->get_byte_enable_length(), 0x0);
+    //            }
+                gp->set_data_length(act_data_len);
+                gp->set_byte_enable_length(act_data_len);
+                gp->set_streaming_width(act_data_len);
+            }
             auto tp = CFG::IS_LITE || this->w_last->read() ? axi::fsm::protocol_time_point_e::BegReqE
                     : axi::fsm::protocol_time_point_e::BegPartReqE;
             react(tp, fsm_hndl);
