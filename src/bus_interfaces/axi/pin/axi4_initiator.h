@@ -70,6 +70,7 @@ private:
     }
 
     tlm::tlm_sync_enum nb_transport_fw(payload_type& trans, phase_type& phase, sc_core::sc_time& t) override {
+        assert(trans.get_extension<axi::axi4_extension>() && "missing AXI4 extension");
         sc_core::sc_time delay; // FIXME: calculate delay correctly
         fw_peq.notify(trans, phase, delay);
         return tlm::TLM_ACCEPTED;
@@ -184,7 +185,7 @@ inline void axi::pin::axi4_initiator<CFG>::write_wdata(tlm::tlm_generic_payload&
             auto beat_start_idx = byte_offset - offset;
             auto data_len = trans.get_data_length();
             auto bptr = trans.get_data_ptr() + beat_start_idx;
-            for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++bptr) {
+            for(size_t i = 0; i < size && (beat_start_idx + i) < data_len; ++i, ++bptr) {
                 auto bit_offs = i * 8;
                 data(bit_offs + 7, bit_offs) = *bptr;
                 if(beptr) {
