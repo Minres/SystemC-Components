@@ -113,10 +113,17 @@ struct Module {
     { }
 };
 
-const std::unordered_set<std::string> know_entities = {
+const std::unordered_set<std::string> ignored_entities = {
         "tlm_initiator_socket", "sc_export", "sc_thread_process", "sc_signal",
         "sc_object", "sc_fifo", "sc_method_process", "sc_mutex", "sc_vector",
-        "sc_semaphore_ordered", "sc_variable", "sc_prim_channel", "tlm_signal", "sc_register"
+        "sc_semaphore_ordered", "sc_variable", "sc_prim_channel", "tlm_signal", "tlm_fifo",
+        "sc_register", "sc_buffer"
+};
+
+const std::unordered_set<std::string> module_entities = {
+        "sc_module", "uvm::uvm_root", "uvm::uvm_test", "uvm::uvm_env",
+        "uvm::uvm_component", "uvm::uvm_agent", "uvm::uvm_monitor", "uvm::uvm_scoreboard",
+        "uvm::uvm_driver", "uvm::uvm_sequencer"
 };
 
 std::string indent{"    "};
@@ -144,7 +151,7 @@ std::vector<std::string> scanModule(sc_core::sc_object const* obj, Module *curre
         return {};
     SCCDEBUG() << indent*level<< obj->name() << "(" << obj->kind() << ")";
     std::string kind{obj->kind()};
-    if (kind == "sc_module") {
+    if (module_entities.find(kind) != module_entities.end()) {
         currentModule->submodules.push_back(
                 Module(obj->name(), name, type(*obj), false));
         std::unordered_set<std::string> keep_outs;
@@ -194,8 +201,8 @@ std::vector<std::string> scanModule(sc_core::sc_object const* obj, Module *curre
     } else if (auto const* optr = dynamic_cast<sc_core::sc_export_base const*>(obj)) {
         sc_core::sc_interface const* pointer = optr->get_interface();
         currentModule->ports.push_back(Port(obj->name(), name, pointer, true, obj->kind()));
-    } else if (know_entities.find(std::string(obj->kind())) == know_entities.end()) {
-        SCCWARN() << "object not known (" << std::string(obj->kind()) << ")";
+    } else if (ignored_entities.find(kind) == ignored_entities.end()) {
+        SCCWARN() << "object not known (" << kind << ")";
     }
     return {};
 }
