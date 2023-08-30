@@ -414,7 +414,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
             // TODO: assuming consecutive write (not scattered)
             auto strobe = strb.to_uint();
             if(last) {
-                auto act_data_len = CFG::IS_LITE? util::bit_count(strobe): (beat_count+1) * size-offset;
+                auto act_data_len = CFG::IS_LITE? util::bit_count(strobe): (beat_count+1) * size;
     //            if(CFG::IS_LITE && act_data_len<CFG::BUSWIDTH/8) {
     //                std::fill(gp->get_byte_enable_ptr(), gp->get_byte_enable_ptr() + act_data_len, 0xff);
     //                std::fill(gp->get_byte_enable_ptr() + act_data_len, gp->get_byte_enable_ptr() + gp->get_byte_enable_length(), 0x0);
