@@ -639,7 +639,7 @@ void configurer::read_input_file(const std::string &filename) {
 					<< ", reason: " << e.what();
 		}
 	} else {
-		SCCERR() << "Could not open input file " << filename;
+		SCCWARN() << "Could not open input file " << filename;
 	}
 }
 
