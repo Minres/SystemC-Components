@@ -114,8 +114,10 @@ template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::handle_
     }
     if(++beat_cnt == 1 << static_cast<unsigned>(ext->get_burst())) {
         if(data_payload->is_write()) {
+            HREADY_o.write(false);
             sc_time delay;
             isckt->b_transport(*data_payload, delay);
+            HREADY_o.write(true);
         }
         beat_cnt = 0;
         data_payload->release();
