@@ -52,7 +52,7 @@ public axi::axi_bw_transport_if<axi::axi_protocol_types> {
 
     axi4_target(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm)
-    , base(CFG::BUSWIDTH / 8) {
+    , base(CFG::BUSWIDTH) {
         instance_name = name();
         isckt.bind(*this);
         SC_METHOD(clk_delay);

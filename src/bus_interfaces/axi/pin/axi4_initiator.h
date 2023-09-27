@@ -51,7 +51,7 @@ struct axi4_initiator : public sc_core::sc_module,
 
     axi4_initiator(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm)
-    , base(CFG::BUSWIDTH / 8) {
+    , base(CFG::BUSWIDTH) {
         instance_name = name();
         tsckt(*this);
         SC_METHOD(clk_delay);
