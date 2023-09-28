@@ -128,7 +128,10 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::write_ar(tlm:
     if(auto ext = trans.get_extension<axi::axi4_extension>()) {
         this->ar_prot.write(ext->get_prot());
         if(!CFG::IS_LITE) {
-            this->ar_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
+            auto id = ext->get_id();
+            if(id>=(1<<CFG::IDWIDTH))
+                SCCERR(SCMOD)<<"ARID value larger that signal arid with width="<<CFG::IDWIDTH<<" can carry";
+            this->ar_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(id));
             this->ar_len->write(sc_dt::sc_uint<8>(ext->get_length()));
             this->ar_size->write(sc_dt::sc_uint<3>(ext->get_size()));
             this->ar_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
@@ -146,8 +149,10 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::write_aw(tlm:
     if(auto ext = trans.get_extension<axi::axi4_extension>()) {
         this->aw_prot.write(ext->get_prot());
         if(!CFG::IS_LITE) {
-            if(this->aw_id.get_interface())
-                this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
+            auto id = ext->get_id();
+            if(id>=(1<<CFG::IDWIDTH))
+                SCCERR(SCMOD)<<"AWID value larger than signal awid with width="<<CFG::IDWIDTH<<" can carry";
+            this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(id));
             this->aw_len->write(sc_dt::sc_uint<8>(ext->get_length()));
             this->aw_size->write(sc_dt::sc_uint<3>(ext->get_size()));
             this->aw_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
@@ -262,13 +267,14 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::setup_callbac
         }
     };
     fsm_hndl->fsm->cb[EndReqE] = [this, fsm_hndl]() -> void {
+        auto id = axi::get_axi_id(*fsm_hndl->trans);
         switch(fsm_hndl->trans->get_command()) {
         case tlm::TLM_READ_COMMAND:
-            rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].push_back(fsm_hndl);
+            rd_resp_by_id[id].push_back(fsm_hndl);
             active_req[tlm::TLM_READ_COMMAND] = nullptr;
             break;
         case tlm::TLM_WRITE_COMMAND:
-            wr_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].push_back(fsm_hndl);
+            wr_resp_by_id[id].push_back(fsm_hndl);
             active_req[tlm::TLM_WRITE_COMMAND] = nullptr;
             fsm_hndl->beat_count++;
         }
@@ -338,7 +344,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::r_t() {
             auto data = this->r_data.read();
             auto resp = this->r_resp.read();
             auto& q = rd_resp_by_id[id];
-            sc_assert(q.size());
+            sc_assert(q.size() && "No transaction found for received id");
             auto* fsm_hndl = q.front();
             auto beat_count = fsm_hndl->beat_count;
             auto size = axi::get_burst_size(*fsm_hndl->trans);

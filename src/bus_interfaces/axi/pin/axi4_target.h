@@ -153,7 +153,7 @@ template <typename CFG> typename CFG::data_t axi::pin::axi4_target<CFG>::get_rea
             auto beat_start_idx = byte_offset - offset;
             auto data_len = fsm_hndl->trans->get_data_length();
             auto dptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
-            for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
+            for(size_t i = 0; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
                 auto bit_offs = i * 8;
                 data(bit_offs + 7, bit_offs) = *dptr;
             }
