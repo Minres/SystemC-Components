@@ -28,13 +28,9 @@ public:
     sc_core::sc_time clk_period{10, sc_core::SC_NS};
     sc_core::sc_clock clk{"clk", clk_period, 0.5, sc_core::SC_ZERO_TIME, true};
     sc_core::sc_signal<bool> rst{"rst"};
-
     axi::ace_initiator_socket<SOCKET_WIDTH> intor{"intor"};
-
     axi::axi_target_socket<SOCKET_WIDTH> tgt{"tgt"};
-
     axi::ace_target_socket<SOCKET_WIDTH> tgt_ace{"tgt_ace"};
-
 
     testbench(sc_core::sc_module_name nm)
     : sc_core::sc_module(nm)
@@ -48,7 +44,6 @@ public:
         intor(tgt_ace);
         ace_tgt_pe.isckt_axi(tgt);
 
-
         // here set snoop_cb of initiator and prepare snoop data
         intor_pe.set_snoop_cb([this](axi::axi_protocol_types::tlm_payload_type& trans) -> unsigned {
             SCCTRACE(SCMOD)<<" enter snoop_cb of tgt_pe(simple target) in sc_main";
@@ -60,28 +55,6 @@ public:
             return 0;
         });
 
-
-
-
-    }
-
-    tlm::tlm_generic_payload* prepare_trans(size_t len, uint8_t const* data = nullptr) {
-        auto trans = tlm::scc::tlm_mm<tlm::tlm_base_protocol_types, false>::get().allocate<axi::axi4_extension>();
-        tlm::scc::setId(*trans, id++);
-        auto ext = trans->get_extension<axi::axi4_extension>();     // hongyu?? here should ace extension replaced
-        trans->set_data_length(len);
-        trans->set_data_ptr(new uint8_t[len]);
-        if(data)
-            for(auto i = 0U; i < len; ++i)
-                *(trans->get_data_ptr() + i) = *(data + i);
-        trans->set_streaming_width(len);
-        ext->set_size(scc::ilog2(std::min<size_t>(len, SOCKET_WIDTH / 8)));
-        sc_assert(len < (SOCKET_WIDTH / 8) || len % (SOCKET_WIDTH / 8) == 0);
-        ext->set_length((len * 8 - 1) / SOCKET_WIDTH);
-        // ext->set_burst(len * 8 > SOCKET_WIDTH ? axi::burst_e::INCR : axi::burst_e::FIXED);
-        ext->set_burst(axi::burst_e::INCR);
-        ext->set_id(id);
-        return trans;
     }
 
     tlm::tlm_generic_payload* prepare_trans_ace(size_t len, uint8_t const* data = nullptr) {
@@ -107,8 +80,8 @@ public:
 
         ext->set_burst(axi::burst_e::INCR);
         ext->set_id(id);
-        //     READ_SHARED          = 0x1,      READ_SHARED             = 0x1,
-     // ?? ext->set_snoop(0x1); // set it so that is_data_less return true
+
+        ext->set_snoop(axi::snoop_e::READ_SHARED); // set it so that is_data_less return true???
 
         return trans;
     }
@@ -118,8 +91,6 @@ public:
         unsigned int ResetCycles = 10;
         unsigned int BurstLengthByte = 16;
         unsigned int NumberOfIterations = 1;
-
-
         rst.write(false);
         for(size_t i = 0; i < ResetCycles; ++i)
             wait(clk.posedge_event());
@@ -128,30 +99,25 @@ public:
         std::array<uint8_t, 256> data;
         wait(10, SC_NS);
 
-
-
         for(int i = 0; i < NumberOfIterations; ++i) {
-            SCCDEBUG("testbench") << "hongyu executing transactions in iteration " << i;
-    /*        { // 1
-                auto trans = prepare_trans(BurstLengthByte);
+            SCCDEBUG("testbench") << "executing transactions in iteration " << i;
+           { // 1
+                auto trans = prepare_trans_ace(BurstLengthByte);
 
                 SCCDEBUG(SCMOD) << "generating transactions " << trans;
                 trans->set_command(tlm::TLM_READ_COMMAND);
                 trans->set_address(StartAddr);
                 trans->set_data_ptr(data.data());
                 trans->acquire();
-
                 // before prepare the trans, here use tranport() of initiator
                  intor_pe.transport(*trans, false);
-
-
                 if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
                     SCCERR() << "Invalid response status" << trans->get_response_string();
                 trans->release();
                 StartAddr += BurstLengthByte;
             }
             { // 2
-                auto trans = prepare_trans(BurstLengthByte);
+                auto trans = prepare_trans_ace(BurstLengthByte);
                 SCCDEBUG(SCMOD) << "generating transactions " << trans;
                 trans->set_command(tlm::TLM_WRITE_COMMAND);
                 trans->set_address(BurstLengthByte);
@@ -163,10 +129,7 @@ public:
                 trans->release();
                 StartAddr += BurstLengthByte;
             }
-
-*/
             {   // start snoop
-
                 auto trans = prepare_trans_ace(BurstLengthByte);
                 SCCDEBUG(SCMOD) << "start snoop ";
                 SCCDEBUG(SCMOD) << "generating transactions " << trans;
@@ -179,10 +142,7 @@ public:
                     SCCERR() << "Invalid response status" << trans->get_response_string();
                 trans->release();
                 StartAddr += BurstLengthByte;
-
-
             }
-
         }
         wait(100_ns);
         sc_stop();
@@ -190,10 +150,7 @@ public:
 
 private:
     axi::pe::simple_ace_initiator<SOCKET_WIDTH> intor_pe;
-
-
     axi::pe::simple_target<SOCKET_WIDTH> axi_tgt_pe;
-
     axi::pe::simple_ace_target<SOCKET_WIDTH> ace_tgt_pe;
 
 
