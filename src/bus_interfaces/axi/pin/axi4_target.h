@@ -241,6 +241,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::setup_callbacks(
         tlm::tlm_phase phase = tlm::END_RESP;
         sc_core::sc_time t(sc_core::SC_ZERO_TIME);
         auto ret = isckt->nb_transport_fw(*fsm_hndl->trans, phase, t);
+        fsm_hndl->finish.notify();
         active_resp_beat[fsm_hndl->trans->get_command()] = nullptr;
     };
 }

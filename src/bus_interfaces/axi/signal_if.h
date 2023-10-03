@@ -512,7 +512,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_ch_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> aw_domain{"aw_domain"};  //ace
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<3>> aw_snoop{"aw_snoop"}; //ace
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> aw_bar{"aw_bar"}; //ace
-    typename TYPES::template m2s_t<bool> aw_unique{"aw_unique"}; //ace
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<1>>  aw_unique{"aw_unique"}; //ace
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::USERWIDTH>> aw_user{"aw_user"};
 
     aw_ch_ace() = default;
@@ -559,17 +559,26 @@ template <typename CFG, typename TYPES = master_types> struct aw_ch_ace {
 
 //! snoop address(AC) channel signals
 template <typename CFG, typename TYPES= master_types> struct ac_ch_ace {
-    typename TYPES::template m2s_t<bool> ac_valid{"ac_valid"};
-    typename TYPES::template s2m_t<bool> ac_ready{"ac_ready"};
+    typename TYPES::template s2m_t<bool> ac_valid{"ac_valid"};
+    typename TYPES::template m2s_t<bool> ac_ready{"ac_ready"};
+    typename TYPES::template s2m_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> ac_addr{"ac_addr"};
+    typename TYPES::template s2m_full_t<sc_dt::sc_uint<4>> ac_snoop{"ac_snoop"};
+    typename TYPES::template s2m_full_t<sc_dt::sc_uint<3>> ac_prot{"ac_prot"};
 
     ac_ch_ace() = default;
     ac_ch_ace(const char* prefix)
     : ac_valid{concat(prefix, "ac_valid").c_str()}
-    , ac_ready{concat(prefix, "ac_ready").c_str()} {}
+    , ac_ready{concat(prefix, "ac_ready").c_str()}
+    , ac_addr{concat(prefix, "ac_addr").c_str()}
+    , ac_snoop{concat(prefix, "ac_snoop").c_str()}
+    , ac_prot{concat(prefix, "ac_prot").c_str()} {}
 
-    template <typename OTYPES> void bind_r(ac_ch_ace<CFG, OTYPES>& o) {
+    template <typename OTYPES> void bind_ac(ac_ch_ace<CFG, OTYPES>& o) {
         ac_valid.bind(o.ac_valid);
         ac_ready.bind(o.ac_ready);
+        ac_addr.bind(o.ac_addr);
+        ac_snoop.bind(o.ac_snoop);
+        ac_prot.bind(o.ac_prot);
     }
 };
 
@@ -577,15 +586,21 @@ template <typename CFG, typename TYPES= master_types> struct ac_ch_ace {
 template <typename CFG, typename TYPES= master_types> struct cd_ch_ace {
     typename TYPES::template m2s_t<bool> cd_valid{"cd_valid"};
     typename TYPES::template s2m_t<bool> cd_ready{"cd_ready"};
+    typename TYPES::template m2s_t<typename CFG::data_t> cd_data{"cd_data"};
+    typename TYPES::template m2s_full_t<bool> cd_last{"cd_last"};
 
     cd_ch_ace() = default;
     cd_ch_ace(const char* prefix)
     : cd_valid{concat(prefix, "cd_valid").c_str()}
-    , cd_ready{concat(prefix, "cd_ready").c_str()} {}
+    , cd_ready{concat(prefix, "cd_ready").c_str()}
+    , cd_data{concat(prefix, "cd_data").c_str()}
+    , cd_last{concat(prefix, "cd_last").c_str()}{}
 
-    template <typename OTYPES> void bind_r(cd_ch_ace<CFG, OTYPES>& o) {
+    template <typename OTYPES> void bind_cd(cd_ch_ace<CFG, OTYPES>& o) {
         cd_valid.bind(o.cd_valid);
         cd_ready.bind(o.cd_ready);
+        cd_data.bind(o.cd_data);
+        cd_last.bind(o.cd_last);
     }
 };
 
@@ -593,15 +608,18 @@ template <typename CFG, typename TYPES= master_types> struct cd_ch_ace {
 template <typename CFG, typename TYPES= master_types> struct cr_ch_ace {
     typename TYPES::template m2s_t<bool> cr_valid{"cr_valid"};
     typename TYPES::template s2m_t<bool> cr_ready{"cr_ready"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<4>> cr_resp{"cr_resp"};
 
     cr_ch_ace() = default;
     cr_ch_ace(const char* prefix)
     : cr_valid{concat(prefix, "cr_valid").c_str()}
-    , cr_ready{concat(prefix, "cr_ready").c_str()} {}
+    , cr_ready{concat(prefix, "cr_ready").c_str()}
+    , cr_resp{concat(prefix, "cr_resp").c_str()} {}
 
-    template <typename OTYPES> void bind_r(cr_ch_ace<CFG, OTYPES>& o) {
+    template <typename OTYPES> void bind_cr(cr_ch_ace<CFG, OTYPES>& o) {
         cr_valid.bind(o.cr_valid);
         cr_ready.bind(o.cr_ready);
+        cr_resp.bind(o.cr_resp);
     }
 };
 
