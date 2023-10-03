@@ -28,6 +28,9 @@ namespace scc {
 namespace pe {
 
 class parallel_pe : public sc_core::sc_module, public intor_fw_nb {
+    template <class IF>
+    using sc_port_opt = sc_core::sc_port<IF,1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+
     struct thread_unit {
         sc_core::sc_event evt;
         tlm::tlm_generic_payload* gp{nullptr};
@@ -41,9 +44,10 @@ class parallel_pe : public sc_core::sc_module, public intor_fw_nb {
     };
 
 public:
+
     sc_core::sc_export<intor_fw_nb> fw_i{"fw_i"};
 
-    sc_core::sc_port<intor_bw_nb> bw_o{"bw_o"};
+    sc_port_opt<intor_bw_nb> bw_o{"bw_o"};
 
     sc_core::sc_port<intor_fw_b> fw_o{"fw_o"};
 

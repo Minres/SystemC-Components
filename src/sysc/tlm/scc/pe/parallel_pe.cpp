@@ -41,7 +41,8 @@ void parallel_pe::transport(tlm::tlm_generic_payload& payload, bool lt_transport
                 auto& tu = threads[id];
                 while(true) {
                     fw_o->transport(*tu.gp, tu.lt_transport);
-                    bw_o->transport(*tu.gp);
+                    if(bw_o.get_interface())
+                        bw_o->transport(*tu.gp);
                     if(tu.gp->has_mm())
                         tu.gp->release();
                     tu.gp = nullptr;
