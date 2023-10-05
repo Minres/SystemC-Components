@@ -155,7 +155,7 @@ private:
 template <typename CFG>
 inline tlm::tlm_sync_enum axi::pin::ace_target<CFG>::nb_transport_bw(payload_type& trans, phase_type& phase,sc_core::sc_time& t) {
     auto ret = tlm::TLM_ACCEPTED;
-    SCCTRACE(SCMOD) << "nb_transport_bw " << phase << " of trans " << trans;
+    SCCTRACE(SCMOD) << "nb_transport_bw with " << phase << " of trans " << trans;
     if(phase == END_PARTIAL_REQ || phase == tlm::END_REQ) { // read/write
         schedule(phase == tlm::END_REQ ? EndReqE : EndPartReqE, &trans, t, false);
     } else if(phase == axi::BEGIN_PARTIAL_RESP || phase == tlm::BEGIN_RESP) { // read/write response
@@ -224,6 +224,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::setup_callbacks(f
     };
     fsm_hndl->fsm->cb[BegReqE] = [this, fsm_hndl]() -> void {
         if(fsm_hndl->is_snoop){
+            SCCTRACE(SCMOD)<<"in BegReq of setup_cb, call write_ac() ";
             active_req[SNOOP] = fsm_hndl;
             write_ac(*fsm_hndl->trans);
             ac_evt.notify(sc_core::SC_ZERO_TIME);
@@ -240,13 +241,12 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::setup_callbacks(f
 
     fsm_hndl->fsm->cb[EndReqE] = [this, fsm_hndl]() -> void {
         if(fsm_hndl->is_snoop) {
-            SCCTRACE(SCMOD)<< "snoop wtih EndReq evnt";
+            SCCTRACE(SCMOD)<< "snoop with EndReq evt";
             auto latency = 0;
             snp_resp_queue.push_back(fsm_hndl);
             active_req[SNOOP] = nullptr;
             tlm::tlm_phase phase=tlm::END_REQ;
             sc_core::sc_time t(clk_if ? ::scc::time_to_next_posedge(clk_if) - 1_ps : sc_core::SC_ZERO_TIME);
-
             auto ret = isckt->nb_transport_fw(*fsm_hndl->trans, phase, t);
             auto exta = fsm_hndl->trans->get_extension<ace_extension>();
             fsm_hndl->trans->set_response_status(tlm::TLM_OK_RESPONSE);
@@ -324,6 +324,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::setup_callbacks(f
             cd_end_req_evt.notify();
             cr_end_req_evt.notify();   // need to check these two event??
             snp_resp_queue.pop_front();
+            fsm_hndl->finish.notify();
 
         } else {
         // scheduling the response
@@ -619,14 +620,12 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::cd_t() {
         if(this->cd_valid.read()) {
             SCCTRACE(SCMOD)<<"in cd_t(), received cd_valid high ";
             wait(sc_core::SC_ZERO_TIME);
-
             auto data = this->cd_data.read();
-
             if(snp_resp_queue.empty())
                 sc_assert(" snp_resp_queue empty");
             auto* fsm_hndl = snp_resp_queue.front();
-
             auto beat_count = fsm_hndl->beat_count;
+            SCCTRACE(SCMOD)<<"in cd_t(), received beau_count = "<< fsm_hndl->beat_count ;
             auto size = axi::get_burst_size(*fsm_hndl->trans);
             auto byte_offset = beat_count * size;
             auto offset = (fsm_hndl->trans->get_address()+byte_offset) & (CFG::BUSWIDTH / 8 - 1);
@@ -661,7 +660,9 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::cd_t() {
             */
             auto tp = CFG::IS_LITE || this->cd_last->read() ? axi::fsm::protocol_time_point_e::BegRespE
                                                            : axi::fsm::protocol_time_point_e::BegPartRespE;
-            react(tp, fsm_hndl);
+           if(!this->cd_last->read())   // only react BegPartRespE
+               react(tp, fsm_hndl);
+            // cd_end_req_evt notified in EndPartRespE or EndResp
             wait(cd_end_req_evt);
             this->cd_ready.write(true);
             wait(clk_i.posedge_event());
@@ -676,7 +677,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::cr_t() {
     while(true) {
         wait(this->cr_valid.posedge_event() | clk_delayed);
         if(this->cr_valid.read()) {
-            SCCTRACE(SCMOD)<<" in cr_t()  received cr_valid high ";
+            SCCTRACE(SCMOD)<<"in cr_t()  received cr_valid high ";
             wait(sc_core::SC_ZERO_TIME);
 
             auto* fsm_hndl = snp_resp_queue.front();
@@ -685,9 +686,9 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::cr_t() {
             fsm_hndl->trans->get_extension(e);
             e->set_resp(axi::into<axi::resp_e>(resp));
 
-            SCCTRACE(SCMOD)<<" in cr_t()  !!!! hongyu check code, whether schedule event is requred ???  ";
+            SCCTRACE(SCMOD)<<" in cr_t()  react() with BegRespE ";
             // hongyu TBD?? schedule BegResp??
-            //react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl); // ???
+            react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
             wait(cr_end_req_evt);    // notify in EndResp
             this->cr_ready.write(true);
             wait(clk_i.posedge_event());

@@ -96,8 +96,6 @@ protected:
 
     sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& socket_fw;
 
-    std::function<unsigned(payload_type& trans)> snoop_cb;
-
     struct tx_state {
         payload_type* active_tx{nullptr};
         scc::peq<std::tuple<payload_type*, tlm::tlm_phase>> peq;

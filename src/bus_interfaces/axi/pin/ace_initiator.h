@@ -112,10 +112,21 @@ private:
     void aw_t();
     void wdata_t();
     void b_t();
+    /**
+         * @fn void ac_t()
+     * @brief
+     *
+     */
     void ac_t();
     void cr_resp_t();
     void cd_t();
-
+/**
+ * @fn CFG::data_t get_cache_data_for_beat(fsm::fsm_handle*)
+ * @brief
+ *
+ * @param fsm_hndl
+ * @return
+ */
     static typename CFG::data_t get_cache_data_for_beat(fsm::fsm_handle* fsm_hndl);
     unsigned int SNOOP= 3;   // TBD??
     scc::peq<std::tuple<uint8_t, fsm_handle*>> cd_vl;
@@ -312,10 +323,6 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
             sc_core::sc_time t;
             tlm::tlm_phase phase = tlm::BEGIN_REQ;
             auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
-            /*
-            if(ret == tlm::TLM_UPDATED) {
-                schedule(EndReqE, fsm_hndl->trans, t, true);
-            }*/
         } else {
             switch(fsm_hndl->trans->get_command()) {
                 case tlm::TLM_READ_COMMAND:
@@ -380,19 +387,19 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
         }
     };
     fsm_hndl->fsm->cb[EndPartRespE] = [this, fsm_hndl]() -> void {
-       SCCTRACE(SCMOD) <<"in EndPartRespE of setup_cb, check whether it is last beat";
+       SCCTRACE(SCMOD) <<"in EndPartRespE of setup_cb ";
        if(fsm_hndl->is_snoop) {
-           auto size =axi::get_burst_length(*fsm_hndl->trans);
-           fsm_hndl->beat_count++;
+           tlm::tlm_phase phase = axi::END_PARTIAL_RESP;
+           sc_core::sc_time t(sc_core::SC_ZERO_TIME);
+           auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
+           // why here nullptr??
            active_resp_beat[SNOOP] = nullptr;
-           schedule(fsm_hndl->beat_count < (size-1) ? BegPartRespE : BegRespE, fsm_hndl->trans, 0);
+           fsm_hndl->beat_count++;
        } else {
            fsm_hndl->beat_count++;
            r_end_req_evt.notify();
        }
-
     };
-
     fsm_hndl->fsm->cb[BegRespE] = [this, fsm_hndl]() -> void {
         if(fsm_hndl->is_snoop) {
             SCCTRACE(SCMOD) << "in setup_cb, processing event BegRespE for trans " << *fsm_hndl->trans;
@@ -408,7 +415,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
         }
     };
     fsm_hndl->fsm->cb[EndRespE] = [this, fsm_hndl]() -> void {
-        SCCTRACE(SCMOD)<< "in EndResp of setup_cb, do nothing " ;
+        SCCTRACE(SCMOD)<< "in EndResp of setup_cb " ;
         if(fsm_hndl->is_snoop) {
            sc_core::sc_time t(clk_if ? ::scc::time_to_next_posedge(clk_if) - 1_ps : sc_core::SC_ZERO_TIME);
            tlm::tlm_phase phase = tlm::END_RESP;
@@ -566,23 +573,24 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::ac_t() {
     this->ac_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     auto arid = 0U;
-    auto arlen = 0U;
+    // A snoop transaction must be a full cache line in length,
+    // here cachelinesize in byte, -1 because last beat in Resp transmitted
+    auto arlen = ((CFG::CACHELINE_SZ-1)/(CFG::BUSWIDTH/8));
     auto arsize = util::ilog2(CFG::BUSWIDTH / 8);
+    // here +1 because last beat in Resp transmitted
     auto data_len = (1 << arsize) * (arlen + 1);
     while(true) {
         wait(this->ac_valid.posedge_event() | clk_delayed);
         if(this->ac_valid.read()) {
-            SCCTRACE(SCMOD) << "ACVALID detected, for 0x" << std::hex << this->ac_addr.read();
-            SCCTRACE(SCMOD) << " detect snoop value 0x" << std::hex << this->ac_snoop.read();
-            data_len = (1 << arsize) * (arlen + 1);
-            // A snoop transaction must be a full cache line in length,
+            SCCTRACE(SCMOD) << "ACVALID detected, for address 0x" << std::hex << this->ac_addr.read();
+            SCCTRACE(SCMOD) << "in ac_t(), create snoop trans with data_len= "<< data_len ;
             auto gp = tlm::scc::tlm_mm<>::get().allocate<axi::ace_extension>(data_len, true);
             gp->set_address(this->ac_addr.read());
             gp->set_command(tlm::TLM_READ_COMMAND);  // snoop command
             gp->set_streaming_width(data_len);
             axi::ace_extension* ext;
             gp->get_extension(ext);
-            // try to get cache line size
+            // if cacheline smaller than buswidth, beat num=1
             if ( data_len== (CFG::BUSWIDTH / 8))
                 arlen = 1 ;
             ext->set_length(arlen);
@@ -591,7 +599,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::ac_t() {
             /*snoop transaction of burst length greater than one must be of burst type WRAP.
              * A snoop transaction of burst length one must be of burst type INCR
             */
-            ext->set_burst( axi::burst_e::INCR);
+            ext->set_burst((CFG::CACHELINE_SZ*8) > CFG::BUSWIDTH ? axi::burst_e::WRAP : axi::burst_e::INCR);
             active_req[SNOOP] = find_or_create(gp, true);
             active_req[SNOOP]->is_snoop = true;
             react(axi::fsm::protocol_time_point_e::RequestPhaseBeg, active_req[SNOOP]);
@@ -612,28 +620,31 @@ inline void axi::pin::ace_initiator<CFG>::cd_t() {
     while(true) {
         // cd_vl notified in BEGIN_PARTIAL_REQ ( val=1 ??)or in BEG_RESP(val=3??)
         std::tie(val, fsm_hndl) = cd_vl.get();
-        SCCTRACE(SCMOD)<<__FUNCTION__ <<" val = "<< (uint16_t)val << " beat count = " <<fsm_hndl->beat_count ;
-        SCCTRACE(SCMOD)<<__FUNCTION__ << " got snoop response beat of trans " << *fsm_hndl->trans;
+        SCCTRACE(SCMOD)<<__FUNCTION__ <<" val = "<< (uint16_t)val << " beat_count = " <<fsm_hndl->beat_count ;
+        SCCTRACE(SCMOD)<<__FUNCTION__ << " got snoop beat of trans " << *fsm_hndl->trans;
         // data already packed in Trans in END_REQ via calling operation_cb
         auto ext = fsm_hndl->trans->get_extension<axi::ace_extension>();
         this->cd_data.write(get_cache_data_for_beat(fsm_hndl));
-       // this->r_resp.write(axi::to_int(ext->get_resp()));
         this->cd_valid.write(val & 0x1);
+        SCCTRACE(SCMOD)<<__FUNCTION__ << "() write cd_valid high ";
         this->cd_last->write(val & 0x2);
     do {
         wait(this->cd_ready.posedge_event() | clk_delayed);
         if(this->cd_ready.read()) {
             auto evt = CFG::IS_LITE || (val & 0x2) ? axi::fsm::protocol_time_point_e::EndRespE
                     : axi::fsm::protocol_time_point_e::EndPartRespE;
-            SCCTRACE(SCMOD)<<__FUNCTION__ << ", receives cd_ready high, schedule evt " << evt2str(evt);
+
             // here only schedule EndPartResp for cache data because EndResp is scheduled in cr_resp_t() when last beat is transferred
-            if(!(val & 0x2))  // BEGIN_PARTIAL_REQ ( val=1 ) or in BEG_RESP(val=3)
+            if(!(val & 0x2)){// BEGIN_PARTIAL_REQ ( val=1 ) or in BEG_RESP(val=3)
+                SCCTRACE(SCMOD)<<__FUNCTION__ << "() receives cd_ready high, schedule evt " << evt2str(evt);
                 react(evt, active_resp_beat[SNOOP]);
+            }
         }
-        } while(!this->cd_ready.read());
-        SCCTRACE(SCMOD) << "finished snoop response beat of trans [" << fsm_hndl->trans << "]";
-        wait(clk_i.posedge_event());
-        this->cd_valid.write(false);
+    } while(!this->cd_ready.read());
+    SCCTRACE(SCMOD) << "finished snoop beat of trans [" << fsm_hndl->trans << "]";
+    wait(clk_i.posedge_event());
+    this->cd_valid.write(false);
+    if(val & 0x2)   // if last beat, after one clock cd_last shouldbe low
         this->cd_last->write(false);
     }
 }
@@ -646,7 +657,7 @@ inline void axi::pin::ace_initiator<CFG>::cr_resp_t() {
     while(true) {
         // cr_resp_vl notified in BEG_RESP(val=3??)
         std::tie(val, fsm_hndl) = cr_resp_vl.get();
-        SCCTRACE(SCMOD)<<__FUNCTION__ <<" (), generate snoop response in cr channel, val = "<< val << " total beat_num = " <<fsm_hndl->beat_count ;
+        SCCTRACE(SCMOD)<<__FUNCTION__ <<" (), generate snoop response in cr channel, val = "<< (uint16_t)val << " total beat_num = " <<fsm_hndl->beat_count ;
         // data already packed in Trans in END_REQ via calling operation_cb
         auto ext = fsm_hndl->trans->get_extension<axi::ace_extension>();
         this->cr_resp.write(axi::to_int(ext->get_resp()));
