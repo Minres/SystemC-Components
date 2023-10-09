@@ -282,14 +282,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::setup_callbac
         sc_core::sc_time t(sc_core::SC_ZERO_TIME);
         auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
         fsm_hndl->trans->set_response_status(tlm::TLM_OK_RESPONSE);
-        if(auto ext3 = fsm_hndl->trans->get_extension<axi3_extension>()) {
-            ext3->set_resp(resp_e::OKAY);
-        } else if(auto ext4 = fsm_hndl->trans->get_extension<axi4_extension>()) {
-            ext4->set_resp(resp_e::OKAY);
-        } else if(auto exta = fsm_hndl->trans->get_extension<ace_extension>()) {
-            exta->set_resp(resp_e::OKAY);
-        } else
-            sc_assert(false && "No valid AXITLM extension found!");
+
     };
     fsm_hndl->fsm->cb[BegPartRespE] = [this, fsm_hndl]() -> void {
         // scheduling the response

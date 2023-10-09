@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _BUS_AXI_PIN_ACE_TARGET_H_
-#define _BUS_AXI_PIN_ACE_TARGET_H_
+#ifndef _BUS_AXI_PIN_ACELITE_TARGET_H_
+#define _BUS_AXI_PIN_ACELITE_TARGET_H_
 
 #include <axi/axi_tlm.h>
 #include <axi/fsm/base.h>
@@ -33,7 +33,7 @@ namespace pin {
 using namespace axi::fsm;
 
 template <typename CFG>
-struct ace_target : public sc_core::sc_module,
+struct aceLite_target : public sc_core::sc_module,
                     public aw_ch_ace<CFG, typename CFG::slave_types>,
                     public wdata_ch_ace<CFG, typename CFG::slave_types>,
                     public b_ch_ace<CFG, typename CFG::slave_types>,
@@ -46,7 +46,7 @@ struct ace_target : public sc_core::sc_module,
 
                     protected axi::fsm::base,
                     public axi::ace_bw_transport_if<axi::axi_protocol_types> {
-    SC_HAS_PROCESS(ace_target);
+    SC_HAS_PROCESS(aceLite_target);
 
     using payload_type = axi::axi_protocol_types::tlm_payload_type;
     using phase_type = axi::axi_protocol_types::tlm_phase_type;
@@ -55,7 +55,7 @@ struct ace_target : public sc_core::sc_module,
 
     axi::ace_initiator_socket<CFG::BUSWIDTH> isckt{"isckt"};
 
-    ace_target(sc_core::sc_module_name const& nm)
+    aceLite_target(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm)
     // coherent= true
     , base(CFG::BUSWIDTH, true) {
@@ -153,7 +153,7 @@ private:
 } // namespace axi
 
 template <typename CFG>
-inline tlm::tlm_sync_enum axi::pin::ace_target<CFG>::nb_transport_bw(payload_type& trans, phase_type& phase,sc_core::sc_time& t) {
+inline tlm::tlm_sync_enum axi::pin::aceLite_target<CFG>::nb_transport_bw(payload_type& trans, phase_type& phase,sc_core::sc_time& t) {
     auto ret = tlm::TLM_ACCEPTED;
     SCCTRACE(SCMOD) << "nb_transport_bw with " << phase << " with delay= "<< t<< " of trans " << trans;
     if(phase == END_PARTIAL_REQ || phase == tlm::END_REQ) { // read/write
@@ -171,9 +171,9 @@ inline tlm::tlm_sync_enum axi::pin::ace_target<CFG>::nb_transport_bw(payload_typ
 }
 
 template <typename CFG>
-inline void axi::pin::ace_target<CFG>::invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) {}
+inline void axi::pin::aceLite_target<CFG>::invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) {}
 
-template <typename CFG> typename CFG::data_t axi::pin::ace_target<CFG>::get_read_data_for_beat(fsm_handle* fsm_hndl) {
+template <typename CFG> typename CFG::data_t axi::pin::aceLite_target<CFG>::get_read_data_for_beat(fsm_handle* fsm_hndl) {
     auto beat_count = fsm_hndl->beat_count;
     //SCCTRACE(SCMOD) << " " ;
     auto size = axi::get_burst_size(*fsm_hndl->trans);
@@ -206,7 +206,7 @@ template <typename CFG> typename CFG::data_t axi::pin::ace_target<CFG>::get_read
     return data;
 }
 
-template <typename CFG> inline void axi::pin::ace_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
+template <typename CFG> inline void axi::pin::aceLite_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
     fsm_hndl->fsm->cb[RequestPhaseBeg] = [this, fsm_hndl]() -> void { fsm_hndl->beat_count = 0; };
     fsm_hndl->fsm->cb[BegPartReqE] = [this, fsm_hndl]() -> void {
         sc_assert(fsm_hndl->trans->get_command() == tlm::TLM_WRITE_COMMAND);
@@ -349,7 +349,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::setup_callbacks(f
     };
 }
 
-template <typename CFG> inline void axi::pin::ace_target<CFG>::ar_t() {
+template <typename CFG> inline void axi::pin::aceLite_target<CFG>::ar_t() {
     this->ar_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     auto arid = 0U;
@@ -390,7 +390,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::ar_t() {
     }
 }
 
-template <typename CFG> inline void axi::pin::ace_target<CFG>::rresp_t() {
+template <typename CFG> inline void axi::pin::aceLite_target<CFG>::rresp_t() {
     this->r_valid.write(false);
     wait(sc_core::SC_ZERO_TIME);
     fsm_handle* fsm_hndl;
@@ -424,7 +424,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::rresp_t() {
     }
 }
 
-template <typename CFG> inline void axi::pin::ace_target<CFG>::aw_t() {
+template <typename CFG> inline void axi::pin::aceLite_target<CFG>::aw_t() {
     this->aw_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     const auto awsize = util::ilog2(CFG::BUSWIDTH / 8);
@@ -456,7 +456,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::aw_t() {
     }
 }
 
-template <typename CFG> inline void axi::pin::ace_target<CFG>::wdata_t() {
+template <typename CFG> inline void axi::pin::aceLite_target<CFG>::wdata_t() {
     this->w_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
@@ -555,7 +555,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::wdata_t() {
 }
 
 template<typename CFG>
-inline void axi::pin::ace_target<CFG>::bresp_t() {
+inline void axi::pin::aceLite_target<CFG>::bresp_t() {
     this->b_valid.write(false);
     wait(sc_core::SC_ZERO_TIME);
     fsm_handle* fsm_hndl;
@@ -583,7 +583,7 @@ inline void axi::pin::ace_target<CFG>::bresp_t() {
 
 // write snoop address
 template <typename CFG>
-inline void axi::pin::ace_target<CFG>::write_ac(tlm::tlm_generic_payload& trans) {
+inline void axi::pin::aceLite_target<CFG>::write_ac(tlm::tlm_generic_payload& trans) {
     sc_dt::sc_uint<CFG::ADDRWIDTH> addr = trans.get_address();
     this->ac_addr.write(addr);
     auto ext = trans.get_extension<ace_extension>();
@@ -592,110 +592,4 @@ inline void axi::pin::ace_target<CFG>::write_ac(tlm::tlm_generic_payload& trans)
     this->ac_snoop->write(sc_dt::sc_uint<4>((uint8_t)ext->get_snoop()));
 }
 
-template <typename CFG>
-inline void axi::pin::ace_target<CFG>::ac_t() {
-    this->ac_valid.write(false);
-    wait(sc_core::SC_ZERO_TIME);
-    while(true) {
-        wait(ac_evt);
-        this->ac_valid.write(true);
-        do {
-            wait(this->ac_ready.posedge_event() | clk_delayed);
-            if(this->ac_ready.read()) {
-                SCCTRACE(SCMOD)<< "in ac_t() detect ac_ready high , schedule EndReq";
-                react(axi::fsm::protocol_time_point_e::EndReqE, active_req[SNOOP]);
-            }
-        } while(!this->ac_ready.read());
-        wait(clk_i.posedge_event());
-        this->ac_valid.write(false);
-    }
-}
-
-template <typename CFG> inline void axi::pin::ace_target<CFG>::cd_t() {
-    this->cd_ready.write(false);
-    wait(sc_core::SC_ZERO_TIME);
-    while(true) {
-        wait(this->cd_valid.posedge_event() | clk_delayed);
-        if(this->cd_valid.read()) {
-            SCCTRACE(SCMOD)<<"in cd_t(), received cd_valid high ";
-            wait(sc_core::SC_ZERO_TIME);
-            auto data = this->cd_data.read();
-            if(snp_resp_queue.empty())
-                sc_assert(" snp_resp_queue empty");
-            auto* fsm_hndl = snp_resp_queue.front();
-            auto beat_count = fsm_hndl->beat_count;
-            SCCTRACE(SCMOD)<<"in cd_t(), received beau_count = "<< fsm_hndl->beat_count ;
-            auto size = axi::get_burst_size(*fsm_hndl->trans);
-            auto byte_offset = beat_count * size;
-            auto offset = (fsm_hndl->trans->get_address()+byte_offset) & (CFG::BUSWIDTH / 8 - 1);
-            if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
-                if(beat_count == 0) {
-                    auto dptr = fsm_hndl->trans->get_data_ptr();
-                    for(size_t i = offset; i < size; ++i, ++dptr) {
-                        auto bit_offs = i * 8;
-                        *dptr = data(bit_offs + 7, bit_offs).to_uint();
-                    }
-                } else {
-                    auto beat_start_idx = beat_count * size - offset;
-                    auto data_len = fsm_hndl->trans->get_data_length();
-                    auto dptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
-                    for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
-                        auto bit_offs = i * 8;
-                        *dptr = data(bit_offs + 7, bit_offs).to_uint();
-                    }
-                }
-            } else { // aligned or single beat access
-                auto dptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
-                for(size_t i = 0; i < size; ++i, ++dptr) {
-                    auto bit_offs = (offset+i) * 8;
-                    *dptr = data(bit_offs + 7, bit_offs).to_uint();
-                }
-            }
-            /*
-            axi::ace_extension* e;
-            fsm_hndl->trans->get_extension(e);
-            e->set_resp(axi::into<axi::resp_e>(resp));
-            e->add_to_response_array(*e);
-            */
-            auto tp = CFG::IS_LITE || this->cd_last->read() ? axi::fsm::protocol_time_point_e::BegRespE
-                                                           : axi::fsm::protocol_time_point_e::BegPartRespE;
-           if(!this->cd_last->read())   // only react BegPartRespE
-               react(tp, fsm_hndl);
-            // cd_end_req_evt notified in EndPartRespE or EndResp
-            wait(cd_end_req_evt);
-            this->cd_ready.write(true);
-            wait(clk_i.posedge_event());
-            this->cd_ready.write(false);
-        }
-    }
-}
-
-template <typename CFG> inline void axi::pin::ace_target<CFG>::cr_t() {
-    this->cr_ready.write(false);
-    wait(sc_core::SC_ZERO_TIME);
-    while(true) {
-        wait(this->cr_valid.posedge_event() | clk_delayed);
-        if(this->cr_valid.read()) {
-            SCCTRACE(SCMOD)<<"in cr_t()  received cr_valid high ";
-            wait(sc_core::SC_ZERO_TIME);
-
-            auto* fsm_hndl = snp_resp_queue.front();
-            auto crresp = this->cr_resp.read();
-            axi::ace_extension* e;
-            fsm_hndl->trans->get_extension(e);
-            e->set_cresp(crresp);
-
-            SCCTRACE(SCMOD)<<" in cr_t()  react() with BegRespE ";
-            // hongyu TBD?? schedule BegResp??
-            react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
-            wait(cr_end_req_evt);    // notify in EndResp
-            this->cr_ready.write(true);
-            wait(clk_i.posedge_event());
-            this->cr_ready.write(false);
-        }
-    }
-}
-
-
-
-#endif /* _BUS_AXI_PIN_ACE_TARGET_H_ */
+#endif /* _BUS_AXI_PIN_ACELITE_TARGET_H_ */

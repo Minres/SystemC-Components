@@ -234,6 +234,7 @@ template <typename CFG, typename TYPES = master_types> struct b_ch {
     typename TYPES::template s2m_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> b_id{"b_id"};
     typename TYPES::template s2m_t<sc_dt::sc_uint<2>> b_resp{"b_resp"};
     typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> b_user{"b_user"};
+    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<1>> b_ack{"b_ack"}; // only ACE
 
     b_ch() = default;
     b_ch(const char* prefix)
@@ -241,7 +242,9 @@ template <typename CFG, typename TYPES = master_types> struct b_ch {
     , b_ready{concat(prefix, "b_ready").c_str()}
     , b_id{concat(prefix, "b_id").c_str()}
     , b_resp{concat(prefix, "b_resp").c_str()}
-    , b_user{concat(prefix, "b_user").c_str()} {}
+    , b_user{concat(prefix, "b_user").c_str()}
+    , b_ack{concat(prefix, "b_ack").c_str()}  // only ACE
+    {}
 
     template <typename OTYPES> void bind_b(b_ch<CFG, OTYPES>& o) {
         b_valid.bind(o.b_valid);
@@ -249,6 +252,7 @@ template <typename CFG, typename TYPES = master_types> struct b_ch {
         b_id.bind(o.b_id);
         b_resp.bind(o.b_resp);
         b_user.bind(o.b_user);
+        b_ack.bind(o.b_ack); // only ACE
     }
     template<typename OTYPES> void bind_b(b_ch_lite<CFG, OTYPES> &o);
 };
@@ -314,6 +318,8 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ch {
     typename TYPES::template s2m_t<bool> r_valid{"r_valid"};
     typename TYPES::template m2s_t<bool> r_ready{"r_ready"};
     typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> r_user{"r_user"};
+    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<1>> r_ack{"r_ack"}; // only ACE
+
 
     rresp_ch() = default;
     rresp_ch(const char* prefix)
@@ -323,7 +329,8 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ch {
     , r_last{concat(prefix, "r_last").c_str()}
     , r_valid{concat(prefix, "r_valid").c_str()}
     , r_ready{concat(prefix, "r_ready").c_str()}
-    , r_user{concat(prefix, "r_user").c_str()} {}
+    , r_user{concat(prefix, "r_user").c_str()}
+    , r_ack{concat(prefix,"r_ack")}{}     // only ACE,not for Lite
 
     template <typename OTYPES> void bind_r(rresp_ch<CFG, OTYPES>& o) {
         r_id.bind(o.r_id);
@@ -333,6 +340,7 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ch {
         r_valid.bind(o.r_valid);
         r_ready.bind(o.r_ready);
         r_user.bind(o.r_user);
+        r_ack.bind(o.r_ack) ; // only ACE,not for Lite
     }
     template<typename OTYPES> void bind_r(rresp_ch_lite<CFG, OTYPES> &o);
 };
@@ -462,11 +470,10 @@ template <typename CFG, typename TYPES = master_types> struct ar_ch_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> ar_region{"ar_region"};
     typename TYPES::template m2s_t<bool> ar_valid{"ar_valid"};
     typename TYPES::template s2m_t<bool> ar_ready{"ar_ready"};
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> ar_domain{"ar_domain"};    // only ACE
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> ar_snoop{"ar_snoop"};      // only ACE
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> ar_bar{"ar_bar"};          // only ACE
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> ar_domain{"ar_domain"};
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> ar_snoop{"ar_snoop"};
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> ar_bar{"ar_bar"};
     typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> ar_user{"ar_user"};
-
 
     ar_ch_ace() = default;
     ar_ch_ace(const char* prefix)
@@ -482,9 +489,9 @@ template <typename CFG, typename TYPES = master_types> struct ar_ch_ace {
     , ar_region{concat(prefix, "ar_region").c_str()}
     , ar_valid{concat(prefix, "ar_valid").c_str()}
     , ar_ready{concat(prefix, "ar_ready").c_str()}
-    , ar_domain{concat(prefix,"ar_domain").c_str()}    //ace
-    , ar_snoop{concat(prefix,"ar_snoop").c_str()}     //ace
-    , ar_bar{concat(prefix,"ar_bar").c_str()}         //ace
+    , ar_domain{concat(prefix,"ar_domain").c_str()}
+    , ar_snoop{concat(prefix,"ar_snoop").c_str()}
+    , ar_bar{concat(prefix,"ar_bar").c_str()}
     , ar_user{concat(prefix, "ar_user").c_str()} {}
 
     template <typename OTYPES> void bind_ar(ar_ch_ace<CFG, OTYPES>& o) {
@@ -500,10 +507,11 @@ template <typename CFG, typename TYPES = master_types> struct ar_ch_ace {
         ar_region.bind(o.ar_region);
         ar_valid.bind(o.ar_valid);
         ar_ready.bind(o.ar_ready);
-        ar_domain.bind(o.ar_domain); // ace
-        ar_snoop.bind(o.ar_snoop);  //ace
-        ar_bar.bind(o.ar_bar); // ace
+        ar_domain.bind(o.ar_domain);
+        ar_snoop.bind(o.ar_snoop);
+        ar_bar.bind(o.ar_bar); //
         ar_user.bind(o.ar_user);
+
     }
 };
 
