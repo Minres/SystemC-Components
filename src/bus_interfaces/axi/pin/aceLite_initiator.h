@@ -34,11 +34,11 @@ using namespace axi::fsm;
 
 template <typename CFG>
 struct aceLite_initiator : public sc_core::sc_module,
-                    public aw_ch_ace<CFG, typename CFG::master_types>,
-                    public wdata_ch_ace<CFG, typename CFG::master_types>,
-                    public b_ch_ace<CFG, typename CFG::master_types>,
-                    public ar_ch_ace<CFG, typename CFG::master_types>,
-                    public rresp_ch_ace<CFG, typename CFG::master_types>,
+                    public aw_ch_aceLite<CFG, typename CFG::master_types>,
+                    public wdata_ch_aceLite<CFG, typename CFG::master_types>,
+                    public b_ch_aceLite<CFG, typename CFG::master_types>,
+                    public ar_ch_aceLite<CFG, typename CFG::master_types>,
+                    public rresp_ch_aceLite<CFG, typename CFG::master_types>,
                     protected axi::fsm::base,
                     public axi::ace_fw_transport_if<axi::axi_protocol_types> {
     SC_HAS_PROCESS(aceLite_initiator);
@@ -48,7 +48,7 @@ struct aceLite_initiator : public sc_core::sc_module,
 
     sc_core::sc_in<bool> clk_i{"clk_i"};
 
-    axi::ace_target_socket<CFG::BUSWIDTH> tsckt{"tsckt"};
+    axi::axi_target_socket<CFG::BUSWIDTH> tsckt{"tsckt"};
 
     aceLite_initiator(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm)
@@ -140,19 +140,19 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::write_ar(t
     sc_dt::sc_uint<CFG::ADDRWIDTH> addr = trans.get_address();
     this->ar_addr.write(addr);
     if(auto ext = trans.get_extension<axi::ace_extension>()) {
+        this->ar_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
+        this->ar_len->write(sc_dt::sc_uint<8>(ext->get_length()));
+        this->ar_size->write(sc_dt::sc_uint<3>(ext->get_size()));
+        this->ar_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
+     // TBD??   this->ar_lock->write(ext->get_lock());
+        this->ar_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
         this->ar_prot.write(ext->get_prot());
-        if(!CFG::IS_LITE) {
-            this->ar_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
-            this->ar_len->write(sc_dt::sc_uint<8>(ext->get_length()));
-            this->ar_size->write(sc_dt::sc_uint<3>(ext->get_size()));
-            this->ar_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
-            this->ar_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
-            this->ar_qos->write(ext->get_qos());
-            this->ar_user->write(ext->get_user(axi::common::id_type::CTRL));
-            this->ar_domain->write(sc_dt::sc_uint<2>((uint8_t)ext->get_domain()));
-            this->ar_snoop->write(sc_dt::sc_uint<4>((uint8_t)ext->get_snoop()));
-            this->ar_bar->write(sc_dt::sc_uint<2>((uint8_t)ext->get_barrier()));
-        }
+        this->ar_qos->write(ext->get_qos());
+        this->ar_region->write(ext->get_region());
+        this->ar_domain->write(sc_dt::sc_uint<2>((uint8_t)ext->get_domain()));
+        this->ar_snoop->write(sc_dt::sc_uint<4>((uint8_t)ext->get_snoop()));
+        this->ar_bar->write(sc_dt::sc_uint<2>((uint8_t)ext->get_barrier()));
+        this->ar_user->write(ext->get_user(axi::common::id_type::CTRL));
     }
 }
 
@@ -161,19 +161,28 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::write_aw(t
     this->aw_addr.write(addr);
     if(auto ext = trans.get_extension<axi::ace_extension>()) {
         this->aw_prot.write(ext->get_prot());
-        if(!CFG::IS_LITE) {
-            if(this->aw_id.get_interface())
-                this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
-            this->aw_len->write(sc_dt::sc_uint<8>(ext->get_length()));
-            this->aw_size->write(sc_dt::sc_uint<3>(ext->get_size()));
-            this->aw_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
-            this->aw_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
-            this->aw_qos->write(ext->get_qos());
-            this->aw_user->write(ext->get_user(axi::common::id_type::CTRL));
-            this->ar_domain->write(sc_dt::sc_uint<2>((uint8_t)ext->get_domain()));
-            this->ar_snoop->write(sc_dt::sc_uint<4>((uint8_t)ext->get_snoop()));
-            this->ar_bar->write(sc_dt::sc_uint<2>((uint8_t)ext->get_barrier()));
-            this->aw_unique->write(ext->get_unique());
+        //TBD??   this->aw_lock.write();
+        if(this->aw_id.get_interface())
+            this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
+        this->aw_len->write(sc_dt::sc_uint<8>(ext->get_length()));
+        this->aw_size->write(sc_dt::sc_uint<3>(ext->get_size()));
+        this->aw_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
+        this->aw_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
+        this->aw_qos->write(sc_dt::sc_uint<4>(ext->get_qos()));
+        this->aw_region->write(sc_dt::sc_uint<4>(ext->get_region()));
+        this->aw_user->write(ext->get_user(axi::common::id_type::CTRL));
+        this->aw_domain->write(sc_dt::sc_uint<2>((uint8_t)ext->get_domain()));
+        this->aw_snoop->write(sc_dt::sc_uint<CFG::SNOOPWIDTH>((uint8_t)ext->get_snoop()));
+        this->aw_bar->write(sc_dt::sc_uint<2>((uint8_t)ext->get_barrier()));
+        /* aceLite doe not have unique* */
+       // this->aw_unique->write(ext->get_unique());
+        if(ext->is_stash_nid_en()) {
+            this->aw_stashniden->write(true);
+            this->aw_stashnid->write(sc_dt::sc_uint<11>(ext->get_stash_nid()));
+        }
+        if(ext->is_stash_lpid_en()){
+            this->aw_stashlpiden->write(true);
+            this->aw_stashlpid->write(sc_dt::sc_uint<5>(ext->get_stash_lpid()));
         }
     }
 }

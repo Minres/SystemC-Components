@@ -123,7 +123,7 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
  * @tparam USERWDTH
  * @tparam CACHELINE: cacheline size in Bytes, defaults value is 64 bytes
  */
-template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1, unsigned int CACHELINE = 64>
+template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1, unsigned int CACHELINE = 64, unsigned int SNOOPWDTH=3>
 struct ace_cfg {
     static_assert(BUSWDTH > 0);
     static_assert(CACHELINE > 0);
@@ -135,6 +135,7 @@ struct ace_cfg {
     constexpr static unsigned int IDWIDTH = IDWDTH;
     constexpr static unsigned int USERWIDTH = USERWDTH;
     constexpr static unsigned int CACHELINE_SZ = CACHELINE;
+    constexpr static unsigned int SNOOPWIDTH = SNOOPWDTH;
     using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
     using slave_types = ::axi::slave_types;
     using master_types = ::axi::master_types;
@@ -148,7 +149,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_ch {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> aw_id{"aw_id"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> aw_addr{"aw_addr"};
     typename TYPES::template s2m_t<bool> aw_ready{"aw_ready"};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<2>> aw_lock{"aw_lock"}; // only AXI3
+    typename TYPES::template m2s_t<bool> aw_lock{"aw_lock"}; // AXI3 has 2 bits while AXI4 has 1 bit
     typename TYPES::template m2s_t<bool> aw_valid{"aw_valid"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<3>> aw_prot{"aw_prot"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<3>> aw_size{"aw_size"};
@@ -203,6 +204,7 @@ template <typename CFG, typename TYPES = master_types> struct wdata_ch {
     typename TYPES::template m2s_t<bool> w_valid{"w_valid"};
     typename TYPES::template s2m_t<bool> w_ready{"w_ready"};
     typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> w_user{"w_user"};
+    typename TYPES::template m2s_full_t<bool> w_ack{"w_ack"}; // only ACE
 
     wdata_ch() = default;
     wdata_ch(const char* prefix)
@@ -212,7 +214,9 @@ template <typename CFG, typename TYPES = master_types> struct wdata_ch {
     , w_last{concat(prefix, "w_last").c_str()}
     , w_valid{concat(prefix, "w_valid").c_str()}
     , w_ready{concat(prefix, "w_ready").c_str()}
-    , w_user{concat(prefix, "w_user").c_str()} {}
+    , w_user{concat(prefix, "w_user").c_str()}
+    , w_ack{concat(prefix, "w_ack").c_str()}  // only ACE
+    {}
 
     template <typename OTYPES> void bind_w(wdata_ch<CFG, OTYPES>& o) {
         w_id.bind(o.w_id);
@@ -222,6 +226,7 @@ template <typename CFG, typename TYPES = master_types> struct wdata_ch {
         w_valid.bind(o.w_valid);
         w_ready.bind(o.w_ready);
         w_user.bind(o.w_user);
+        w_ack.bind(o.w_ack); // only ACE
     }
     template<typename OTYPES> void bind_w(wdata_ch_lite<CFG, OTYPES> &o);
 };
@@ -234,7 +239,7 @@ template <typename CFG, typename TYPES = master_types> struct b_ch {
     typename TYPES::template s2m_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> b_id{"b_id"};
     typename TYPES::template s2m_t<sc_dt::sc_uint<2>> b_resp{"b_resp"};
     typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> b_user{"b_user"};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<1>> b_ack{"b_ack"}; // only ACE
+
 
     b_ch() = default;
     b_ch(const char* prefix)
@@ -243,7 +248,6 @@ template <typename CFG, typename TYPES = master_types> struct b_ch {
     , b_id{concat(prefix, "b_id").c_str()}
     , b_resp{concat(prefix, "b_resp").c_str()}
     , b_user{concat(prefix, "b_user").c_str()}
-    , b_ack{concat(prefix, "b_ack").c_str()}  // only ACE
     {}
 
     template <typename OTYPES> void bind_b(b_ch<CFG, OTYPES>& o) {
@@ -252,7 +256,6 @@ template <typename CFG, typename TYPES = master_types> struct b_ch {
         b_id.bind(o.b_id);
         b_resp.bind(o.b_resp);
         b_user.bind(o.b_user);
-        b_ack.bind(o.b_ack); // only ACE
     }
     template<typename OTYPES> void bind_b(b_ch_lite<CFG, OTYPES> &o);
 };
@@ -265,7 +268,7 @@ template <typename CFG, typename TYPES = master_types> struct ar_ch {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<8>> ar_len{"ar_len"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<3>> ar_size{"ar_size"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> ar_burst{"ar_burst"};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<2>> ar_lock{"ar_lock"}; // only AXI3
+    typename TYPES::template m2s_t<bool> ar_lock{"ar_lock"}; // AXI3 has 2 bits while AXI4 has i bit
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> ar_cache{"ar_cache"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<3>> ar_prot{"ar_prot"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> ar_qos{"ar_qos"};
@@ -318,8 +321,6 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ch {
     typename TYPES::template s2m_t<bool> r_valid{"r_valid"};
     typename TYPES::template m2s_t<bool> r_ready{"r_ready"};
     typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> r_user{"r_user"};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<1>> r_ack{"r_ack"}; // only ACE
-
 
     rresp_ch() = default;
     rresp_ch(const char* prefix)
@@ -329,8 +330,7 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ch {
     , r_last{concat(prefix, "r_last").c_str()}
     , r_valid{concat(prefix, "r_valid").c_str()}
     , r_ready{concat(prefix, "r_ready").c_str()}
-    , r_user{concat(prefix, "r_user").c_str()}
-    , r_ack{concat(prefix,"r_ack")}{}     // only ACE,not for Lite
+    , r_user{concat(prefix, "r_user").c_str()}{}
 
     template <typename OTYPES> void bind_r(rresp_ch<CFG, OTYPES>& o) {
         r_id.bind(o.r_id);
@@ -340,9 +340,42 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ch {
         r_valid.bind(o.r_valid);
         r_ready.bind(o.r_ready);
         r_user.bind(o.r_user);
-        r_ack.bind(o.r_ack) ; // only ACE,not for Lite
     }
     template<typename OTYPES> void bind_r(rresp_ch_lite<CFG, OTYPES> &o);
+};
+
+template <typename CFG, typename TYPES = master_types> struct rresp_ch_ace {
+    typename TYPES::template s2m_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> r_id{"r_id"};
+    typename TYPES::template s2m_t<typename CFG::data_t> r_data{"r_data"};
+    typename TYPES::template s2m_t<sc_dt::sc_uint<4>> r_resp{"r_resp"};
+    typename TYPES::template s2m_full_t<bool> r_last{"r_last"};
+    typename TYPES::template s2m_t<bool> r_valid{"r_valid"};
+    typename TYPES::template m2s_t<bool> r_ready{"r_ready"};
+    // why user?? there is no such signal in RTL generated code
+    typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> r_user{"r_user"};
+    typename TYPES::template m2s_t<bool> r_ack{"r_ack"}; // only ACE
+
+    rresp_ch_ace() = default;
+    rresp_ch_ace(const char* prefix)
+    : r_id{concat(prefix, "r_id").c_str()}
+    , r_data{concat(prefix, "r_data").c_str()}
+    , r_resp{concat(prefix, "r_resp").c_str()}
+    , r_last{concat(prefix, "r_last").c_str()}
+    , r_valid{concat(prefix, "r_valid").c_str()}
+    , r_ready{concat(prefix, "r_ready").c_str()}
+    , r_user{concat(prefix, "r_user").c_str()}
+    , r_ack{concat(prefix,"r_ack").c_str()}{}     // only ACE,not for Lite
+
+    template <typename OTYPES> void bind_r(rresp_ch_ace<CFG, OTYPES>& o) {
+        r_id.bind(o.r_id);
+        r_data.bind(o.r_data);
+        r_resp.bind(o.r_resp);
+        r_last.bind(o.r_last);
+        r_valid.bind(o.r_valid);
+        r_ready.bind(o.r_ready);
+        r_user.bind(o.r_user);
+        r_ack.bind(o.r_ack) ; // only ACE,not for Lite
+    }
 };
 
 //! Write address channel signals
@@ -453,7 +486,6 @@ template <typename CFG, typename TYPES> struct rresp_ch_lite {
 };
 
 //! alias declaration for rresp_ch_ace, wdata_ch_ace, b_ch_ace???
-template <typename CFG, typename TYPES = master_types> using rresp_ch_ace = rresp_ch<CFG, TYPES >;
 template <typename CFG, typename TYPES = master_types> using wdata_ch_ace = wdata_ch<CFG, TYPES >;
 template <typename CFG, typename TYPES = master_types> using b_ch_ace = b_ch<CFG, TYPES >;
 
@@ -463,7 +495,7 @@ template <typename CFG, typename TYPES = master_types> struct ar_ch_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<8>> ar_len{"ar_len"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<3>> ar_size{"ar_size"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> ar_burst{"ar_burst"};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<2>> ar_lock{"ar_lock"}; // only AXI3
+    typename TYPES::template m2s_t<bool> ar_lock{"ar_lock"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> ar_cache{"ar_cache"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<3>> ar_prot{"ar_prot"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> ar_qos{"ar_qos"};
@@ -519,7 +551,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_ch_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> aw_id{"aw_id"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> aw_addr{"aw_addr"};
     typename TYPES::template s2m_t<bool> aw_ready{"aw_ready"};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<2>> aw_lock{"aw_lock"}; // only AXI3
+    typename TYPES::template m2s_t<bool> aw_lock{"aw_lock"};
     typename TYPES::template m2s_t<bool> aw_valid{"aw_valid"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<3>> aw_prot{"aw_prot"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<3>> aw_size{"aw_size"};
@@ -529,10 +561,16 @@ template <typename CFG, typename TYPES = master_types> struct aw_ch_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> aw_region{"aw_region"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<8>> aw_len{"aw_len"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> aw_domain{"aw_domain"};  //ace
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<3>> aw_snoop{"aw_snoop"}; //ace
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::SNOOPWIDTH>> aw_snoop{"aw_snoop"};//ace has 3 bits while aceLite has 4 bits
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> aw_bar{"aw_bar"}; //ace
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<1>>  aw_unique{"aw_unique"}; //ace
+    typename TYPES::template m2s_t<bool>  aw_unique{"aw_unique"}; //ace, not for lite
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::USERWIDTH>> aw_user{"aw_user"};
+    typename TYPES::template m2s_t<bool> aw_stashniden{"aw_stashniden"};    // stash only for ACE5L
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<11>> aw_stashnid{"aw_stashnid"};
+    typename TYPES::template m2s_t<bool> aw_stashlpiden{"aw_stashlpiden"};
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<5>> aw_stashlpid{"aw_stashlpid"};
+
+
 
     aw_ch_ace() = default;
     aw_ch_ace(const char* prefix)
@@ -552,7 +590,12 @@ template <typename CFG, typename TYPES = master_types> struct aw_ch_ace {
     , aw_snoop{concat(prefix, "aw_snoop").c_str()}
     , aw_bar{concat(prefix, "aw_bar").c_str()}
     , aw_unique{concat(prefix, "aw_unique").c_str()}
-    , aw_user{concat(prefix, "aw_user").c_str()} {}
+    , aw_user{concat(prefix, "aw_user").c_str()}
+    , aw_stashniden{concat(prefix, "aw_stashniden").c_str()}
+    , aw_stashnid{concat(prefix, "aw_stashnid").c_str()}
+    , aw_stashlpiden{concat(prefix, "aw_stashlpiden").c_str()}
+    , aw_stashlpid{concat(prefix, "aw_stashlpid").c_str()}
+    {}
 
     template <typename OTYPES> void bind_aw(aw_ch_ace<CFG, OTYPES>& o) {
         aw_id.bind(o.aw_id);
@@ -571,8 +614,11 @@ template <typename CFG, typename TYPES = master_types> struct aw_ch_ace {
         aw_snoop.bind(o.aw_snoop);
         aw_bar.bind(o.aw_bar);
         aw_unique.bind(o.aw_unique);
-
         aw_user.bind(o.aw_user);
+        aw_stashniden.bind(o.aw_stashniden);
+        aw_stashnid.bind(o.aw_stashnid);
+        aw_stashlpiden.bind(o.aw_stashlpiden);
+        aw_stashlpid.bind(o.aw_stashlpid);
     }
 };
 
@@ -627,7 +673,7 @@ template <typename CFG, typename TYPES= master_types> struct cd_ch_ace {
 template <typename CFG, typename TYPES= master_types> struct cr_ch_ace {
     typename TYPES::template m2s_t<bool> cr_valid{"cr_valid"};
     typename TYPES::template s2m_t<bool> cr_ready{"cr_ready"};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<4>> cr_resp{"cr_resp"};
+    typename TYPES::template m2s_t<sc_dt::sc_uint<5>> cr_resp{"cr_resp"};
 
     cr_ch_ace() = default;
     cr_ch_ace(const char* prefix)
@@ -641,6 +687,11 @@ template <typename CFG, typename TYPES= master_types> struct cr_ch_ace {
         cr_resp.bind(o.cr_resp);
     }
 };
+template <typename CFG, typename TYPES = master_types> using wdata_ch_aceLite = wdata_ch<CFG, TYPES >;
+template <typename CFG, typename TYPES = master_types> using b_ch_aceLite = b_ch<CFG, TYPES >;
+template <typename CFG, typename TYPES = master_types> using rresp_ch_aceLite = rresp_ch<CFG, TYPES >;
+template <typename CFG, typename TYPES = master_types> using aw_ch_aceLite = aw_ch_ace<CFG, TYPES >;
+template <typename CFG, typename TYPES = master_types> using ar_ch_aceLite = ar_ch_ace<CFG, TYPES >;
 
 template<typename CFG, typename TYPES>
 template<typename OTYPES>
