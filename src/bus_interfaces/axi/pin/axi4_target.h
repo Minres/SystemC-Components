@@ -273,6 +273,11 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::ar_t() {
             ext->set_length(arlen);
             ext->set_size(arsize);
             ext->set_burst(CFG::IS_LITE ? axi::burst_e::INCR : axi::into<axi::burst_e>(this->ar_burst->read()));
+            /*TBD set_lock*/
+            ext->set_prot(this->ar_prot->read());
+            ext->set_qos(this->ar_qos->read());
+            ext->set_region(this->ar_region->read());
+
             active_req_beat[tlm::TLM_READ_COMMAND] = find_or_create(gp);
             react(axi::fsm::protocol_time_point_e::BegReqE, active_req_beat[tlm::TLM_READ_COMMAND]);
             wait(ar_end_req_evt);
@@ -370,6 +375,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
                 ext->set_region(awd.region);
                 if(CFG::USERWIDTH)
                     ext->set_user(axi::common::id_type::CTRL, awd.user);
+
                 active_req_beat[tlm::TLM_WRITE_COMMAND] = find_or_create(gp);
                 active_req[tlm::TLM_WRITE_COMMAND] = active_req_beat[tlm::TLM_WRITE_COMMAND];
             }
