@@ -567,6 +567,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_ch_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<11>> aw_stashnid{"aw_stashnid"};
     typename TYPES::template m2s_t<bool> aw_stashlpiden{"aw_stashlpiden"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<5>> aw_stashlpid{"aw_stashlpid"};
+    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<6>> aw_atop{"aw_atop"};  // only for ace lite
 
 
 
@@ -593,6 +594,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_ch_ace {
     , aw_stashnid{concat(prefix, "aw_stashnid").c_str()}
     , aw_stashlpiden{concat(prefix, "aw_stashlpiden").c_str()}
     , aw_stashlpid{concat(prefix, "aw_stashlpid").c_str()}
+    , aw_atop{concat(prefix, "aw_atop").c_str()}
     {}
 
     template <typename OTYPES> void bind_aw(aw_ch_ace<CFG, OTYPES>& o) {
@@ -617,6 +619,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_ch_ace {
         aw_stashnid.bind(o.aw_stashnid);
         aw_stashlpiden.bind(o.aw_stashlpiden);
         aw_stashlpid.bind(o.aw_stashlpid);
+        aw_atop.bind(o.aw_atop);
     }
 };
 
