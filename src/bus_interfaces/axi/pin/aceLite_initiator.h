@@ -112,15 +112,11 @@ private:
  * @return
  */
     static typename CFG::data_t get_cache_data_for_beat(fsm::fsm_handle* fsm_hndl);
-    unsigned int SNOOP= 3;   // TBD??
-    scc::peq<std::tuple<uint8_t, fsm_handle*>> cd_vl;
-    scc::peq<std::tuple<uint8_t, fsm_handle*>> cr_resp_vl;
     std::array<unsigned, 3> outstanding_cnt;
-    std::array<fsm_handle*, 4> active_req;
-    std::array<fsm_handle*, 4> active_resp;
-    std::array<fsm_handle*, 4> active_resp_beat;
+    std::array<fsm_handle*, 3> active_req;
+    std::array<fsm_handle*, 3> active_resp;
     sc_core::sc_clock* clk_if;
-    sc_core::sc_event clk_delayed, clk_self, r_end_req_evt, aw_evt, ar_evt, ac_end_req_evt;
+    sc_core::sc_event clk_delayed, clk_self, r_end_req_evt, aw_evt, ar_evt;
        void nb_fw(payload_type& trans, const phase_type& phase) {
         auto t = sc_core::SC_ZERO_TIME;
         base::nb_fw(trans, phase, t);
@@ -311,35 +307,24 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
         fsm_hndl->beat_count++;
     };
     fsm_hndl->fsm->cb[BegReqE] = [this, fsm_hndl]() -> void {
-        if(fsm_hndl->is_snoop) {
-            SCCTRACE(SCMOD)<< " BegReq of setup_cb";
-            sc_core::sc_time t(sc_core::SC_ZERO_TIME);
-            tlm::tlm_phase phase = tlm::BEGIN_REQ;
-            auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
-        } else {
-            switch(fsm_hndl->trans->get_command()) {
-                case tlm::TLM_READ_COMMAND:
-                    active_req[tlm::TLM_READ_COMMAND] = fsm_hndl;
-                    write_ar(*fsm_hndl->trans);
-                    ar_evt.notify(sc_core::SC_ZERO_TIME);
-                    break;
-                case tlm::TLM_WRITE_COMMAND:
-                    active_req[tlm::TLM_WRITE_COMMAND] = fsm_hndl;
-                    if(fsm_hndl->beat_count == 0) {
-                        write_aw(*fsm_hndl->trans);
-                        aw_evt.notify(sc_core::SC_ZERO_TIME);
-                    }
-                    write_wdata(*fsm_hndl->trans, fsm_hndl->beat_count, true);
-                    wdata_vl.write(0x3);
+        switch(fsm_hndl->trans->get_command()) {
+            case tlm::TLM_READ_COMMAND:
+                active_req[tlm::TLM_READ_COMMAND] = fsm_hndl;
+                write_ar(*fsm_hndl->trans);
+                ar_evt.notify(sc_core::SC_ZERO_TIME);
+                break;
+            case tlm::TLM_WRITE_COMMAND:
+                active_req[tlm::TLM_WRITE_COMMAND] = fsm_hndl;
+                if(fsm_hndl->beat_count == 0) {
+                    write_aw(*fsm_hndl->trans);
+                    aw_evt.notify(sc_core::SC_ZERO_TIME);
                 }
-        }
+                write_wdata(*fsm_hndl->trans, fsm_hndl->beat_count, true);
+                wdata_vl.write(0x3);
+            }
     };
     fsm_hndl->fsm->cb[EndReqE] = [this, fsm_hndl]() -> void {
-        if(fsm_hndl->is_snoop) {
-            active_req[SNOOP]= nullptr;
-            ac_end_req_evt.notify();     // if snoop
-        }else {
-            switch(fsm_hndl->trans->get_command()) {
+        switch(fsm_hndl->trans->get_command()) {
             case tlm::TLM_READ_COMMAND:
                 rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].push_back(fsm_hndl);
                 active_req[tlm::TLM_READ_COMMAND] = nullptr;
@@ -354,61 +339,29 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
             SCCTRACE(SCMOD) << " in EndReq before set_resp";
             auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
             fsm_hndl->trans->set_response_status(tlm::TLM_OK_RESPONSE);
-        }
     };
 
     fsm_hndl->fsm->cb[BegPartRespE] = [this, fsm_hndl]() -> void {
-        if(fsm_hndl->is_snoop){
-            active_resp_beat[SNOOP] = fsm_hndl;
-            cd_vl.notify({1, fsm_hndl});
+        // scheduling the response
+        assert(fsm_hndl->trans->is_read());
+        tlm::tlm_phase phase = axi::BEGIN_PARTIAL_RESP;
+        sc_core::sc_time t(sc_core::SC_ZERO_TIME);
+        auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
 
-        } else {
-            // scheduling the response
-            assert(fsm_hndl->trans->is_read());
-            tlm::tlm_phase phase = axi::BEGIN_PARTIAL_RESP;
-            sc_core::sc_time t(sc_core::SC_ZERO_TIME);
-            auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
-        }
     };
     fsm_hndl->fsm->cb[EndPartRespE] = [this, fsm_hndl]() -> void {
        SCCTRACE(SCMOD) <<"in EndPartRespE of setup_cb ";
-       if(fsm_hndl->is_snoop) {
-           tlm::tlm_phase phase = axi::END_PARTIAL_RESP;
-           sc_core::sc_time t(sc_core::SC_ZERO_TIME);
-           auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
-           // why here nullptr??
-           active_resp_beat[SNOOP] = nullptr;
-           fsm_hndl->beat_count++;
-       } else {
-           fsm_hndl->beat_count++;
-           r_end_req_evt.notify();
-       }
+       fsm_hndl->beat_count++;
+       r_end_req_evt.notify();
     };
     fsm_hndl->fsm->cb[BegRespE] = [this, fsm_hndl]() -> void {
-        if(fsm_hndl->is_snoop) {
-            SCCTRACE(SCMOD) << "in setup_cb, processing event BegRespE for trans " << *fsm_hndl->trans;
-            active_resp_beat[SNOOP] = fsm_hndl;
-            cd_vl.notify({3, fsm_hndl});  // TBD??
-            cr_resp_vl.notify({3, fsm_hndl});
-
-        } else {
-            // scheduling the response
-            tlm::tlm_phase phase = tlm::BEGIN_RESP;
-            sc_core::sc_time t(sc_core::SC_ZERO_TIME);
-            auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
-        }
+        // scheduling the response
+        tlm::tlm_phase phase = tlm::BEGIN_RESP;
+        sc_core::sc_time t(sc_core::SC_ZERO_TIME);
+        auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
     };
     fsm_hndl->fsm->cb[EndRespE] = [this, fsm_hndl]() -> void {
-        SCCTRACE(SCMOD)<< "in EndResp of setup_cb " ;
-        if(fsm_hndl->is_snoop) {
-          // sc_core::sc_time t(clk_if ? ::scc::time_to_next_posedge(clk_if) - 1_ps : sc_core::SC_ZERO_TIME);
-           sc_core::sc_time t(sc_core::SC_ZERO_TIME);
-           tlm::tlm_phase phase = tlm::END_RESP;
-           auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
-           active_resp_beat[SNOOP] = nullptr;
-           // here notify cr_evnt
-           fsm_hndl->finish.notify();
-        }
+        SCCTRACE(SCMOD)<< "in EndResp of setup_cb, next should become ack " ;
     };
     fsm_hndl->fsm->cb[Ack] = [this, fsm_hndl]() -> void {
         SCCTRACE(SCMOD)<< "in ACK of setup_cb " ;
@@ -417,10 +370,8 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
             rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].pop_front();
         if(fsm_hndl->trans->is_write())
             wr_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].pop_front();
-
     };
 }
-
 template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::ar_t() {
     this->ar_valid.write(false);
     wait(sc_core::SC_ZERO_TIME);

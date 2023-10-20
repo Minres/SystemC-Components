@@ -485,9 +485,7 @@ template <typename CFG, typename TYPES> struct rresp_ch_lite {
     }
 };
 
-//! alias declaration for rresp_ch_ace, wdata_ch_ace, b_ch_ace???
-template <typename CFG, typename TYPES = master_types> using wdata_ch_ace = wdata_ch<CFG, TYPES >;
-template <typename CFG, typename TYPES = master_types> using b_ch_ace = b_ch<CFG, TYPES >;
+
 
 template <typename CFG, typename TYPES = master_types> struct ar_ch_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> ar_id{"ar_id"};
@@ -687,6 +685,9 @@ template <typename CFG, typename TYPES= master_types> struct cr_ch_ace {
         cr_resp.bind(o.cr_resp);
     }
 };
+//! alias declaration for rresp_ch_ace, wdata_ch_ace, b_ch_ace???
+template <typename CFG, typename TYPES = master_types> using wdata_ch_ace = wdata_ch<CFG, TYPES >;
+template <typename CFG, typename TYPES = master_types> using b_ch_ace = b_ch<CFG, TYPES >;
 template <typename CFG, typename TYPES = master_types> using wdata_ch_aceLite = wdata_ch<CFG, TYPES >;
 template <typename CFG, typename TYPES = master_types> using b_ch_aceLite = b_ch<CFG, TYPES >;
 template <typename CFG, typename TYPES = master_types> using rresp_ch_aceLite = rresp_ch<CFG, TYPES >;
