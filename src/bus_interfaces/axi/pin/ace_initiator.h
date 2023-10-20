@@ -162,35 +162,37 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::write_ar(tlm::
             this->ar_len->write(sc_dt::sc_uint<8>(ext->get_length()));
             this->ar_size->write(sc_dt::sc_uint<3>(ext->get_size()));
             this->ar_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
+         // TBD??   this->ar_lock->write(ext->get_lock());
             this->ar_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
+            this->ar_prot.write(ext->get_prot());
             this->ar_qos->write(ext->get_qos());
-            this->ar_user->write(ext->get_user(axi::common::id_type::CTRL));
+            this->ar_region->write(ext->get_region());
             this->ar_domain->write(sc_dt::sc_uint<2>((uint8_t)ext->get_domain()));
             this->ar_snoop->write(sc_dt::sc_uint<4>((uint8_t)ext->get_snoop()));
             this->ar_bar->write(sc_dt::sc_uint<2>((uint8_t)ext->get_barrier()));
+            this->ar_user->write(ext->get_user(axi::common::id_type::CTRL));
         }
     }
 }
-
 template <typename CFG> inline void axi::pin::ace_initiator<CFG>::write_aw(tlm::tlm_generic_payload& trans) {
     sc_dt::sc_uint<CFG::ADDRWIDTH> addr = trans.get_address();
     this->aw_addr.write(addr);
     if(auto ext = trans.get_extension<axi::ace_extension>()) {
         this->aw_prot.write(ext->get_prot());
-        if(!CFG::IS_LITE) {
-            if(this->aw_id.get_interface())
-                this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
-            this->aw_len->write(sc_dt::sc_uint<8>(ext->get_length()));
-            this->aw_size->write(sc_dt::sc_uint<3>(ext->get_size()));
-            this->aw_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
-            this->aw_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
-            this->aw_qos->write(ext->get_qos());
-            this->aw_user->write(ext->get_user(axi::common::id_type::CTRL));
-            this->ar_domain->write(sc_dt::sc_uint<2>((uint8_t)ext->get_domain()));
-            this->ar_snoop->write(sc_dt::sc_uint<4>((uint8_t)ext->get_snoop()));
-            this->ar_bar->write(sc_dt::sc_uint<2>((uint8_t)ext->get_barrier()));
-            this->aw_unique->write(ext->get_unique());
-        }
+        //TBD??   this->aw_lock.write();
+        if(this->aw_id.get_interface())
+            this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
+        this->aw_len->write(sc_dt::sc_uint<8>(ext->get_length()));
+        this->aw_size->write(sc_dt::sc_uint<3>(ext->get_size()));
+        this->aw_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
+        this->aw_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
+        this->aw_qos->write(sc_dt::sc_uint<4>(ext->get_qos()));
+        this->aw_region->write(sc_dt::sc_uint<4>(ext->get_region()));
+        this->aw_user->write(ext->get_user(axi::common::id_type::CTRL));
+        this->aw_domain->write(sc_dt::sc_uint<2>((uint8_t)ext->get_domain()));
+        this->aw_snoop->write(sc_dt::sc_uint<CFG::SNOOPWIDTH>((uint8_t)ext->get_snoop()));
+        this->aw_bar->write(sc_dt::sc_uint<2>((uint8_t)ext->get_barrier()));
+        this->aw_unique->write(ext->get_unique());
     }
 }
 
@@ -561,10 +563,10 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::b_t() {
             // r_end_req_evt notified in EndPartialResp or ACK
             wait(r_end_req_evt);
             this->b_ready.write(true);
-            this->b_ack->write(true);
+            this->w_ack->write(true);
             wait(clk_i.posedge_event());
             this->b_ready.write(false);
-            this->b_ack->write(false);
+            this->w_ack->write(false);
         }
     }
 }

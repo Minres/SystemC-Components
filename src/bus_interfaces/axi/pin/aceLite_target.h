@@ -34,16 +34,11 @@ using namespace axi::fsm;
 
 template <typename CFG>
 struct aceLite_target : public sc_core::sc_module,
-                    public aw_ch_ace<CFG, typename CFG::slave_types>,
-                    public wdata_ch_ace<CFG, typename CFG::slave_types>,
-                    public b_ch_ace<CFG, typename CFG::slave_types>,
-                    public ar_ch_ace<CFG, typename CFG::slave_types>,
-                    public rresp_ch_ace<CFG, typename CFG::slave_types>,
-
-                    public ac_ch_ace<CFG, typename CFG::slave_types>,
-                    public cr_ch_ace<CFG, typename CFG::slave_types>,
-                    public cd_ch_ace<CFG, typename CFG::slave_types>,
-
+                    public aw_ch_aceLite<CFG, typename CFG::slave_types>,
+                    public wdata_ch_aceLite<CFG, typename CFG::slave_types>,
+                    public b_ch_aceLite<CFG, typename CFG::slave_types>,
+                    public ar_ch_aceLite<CFG, typename CFG::slave_types>,
+                    public rresp_ch_aceLite<CFG, typename CFG::slave_types>,
                     protected axi::fsm::base,
                     public axi::ace_bw_transport_if<axi::axi_protocol_types> {
     SC_HAS_PROCESS(aceLite_target);
@@ -53,7 +48,7 @@ struct aceLite_target : public sc_core::sc_module,
 
     sc_core::sc_in<bool> clk_i{"clk_i"};
 
-    axi::ace_initiator_socket<CFG::BUSWIDTH> isckt{"isckt"};
+    axi::axi_initiator_socket<CFG::BUSWIDTH> isckt{"isckt"};
 
     aceLite_target(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm)
@@ -129,6 +124,8 @@ private:
         unsigned snoop;
         unsigned bar;
         unsigned unique;
+        unsigned stashnid;
+        unsigned stashlpid;
         uint64_t user;
     };
 
@@ -375,11 +372,17 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::ar_t() {
             gp->get_extension(ext);
             ext->set_id(arid);
             ext->set_length(arlen);
+            /*TBD set_lock*/
             ext->set_size(arsize);
+            ext->set_burst(axi::into<axi::burst_e>(this->ar_burst->read()));
+            ext->set_cache(this->ar_cache->read());
+            ext->set_prot(this->ar_prot->read());
+            ext->set_qos(this->ar_qos->read());
+            ext->set_region(this->ar_region->read());
             ext->set_domain(axi::into<axi::domain_e>(this->ar_domain->read()));   // ace extension
             ext->set_snoop(axi::into<axi::snoop_e>(this->ar_snoop->read()));
             ext->set_barrier(axi::into<axi::bar_e>(this->ar_bar->read()));
-            ext->set_burst(CFG::IS_LITE ? axi::burst_e::INCR : axi::into<axi::burst_e>(this->ar_burst->read()));
+
             active_req_beat[tlm::TLM_READ_COMMAND] = find_or_create(gp);
             react(axi::fsm::protocol_time_point_e::BegReqE, active_req_beat[tlm::TLM_READ_COMMAND]);
             wait(ar_end_req_evt);
@@ -436,16 +439,18 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::aw_t() {
             aw_data awd = {CFG::IS_LITE ? 0U : this->aw_id->read().to_uint(),
                     this->aw_addr.read().to_uint64(),
                     this->aw_prot.read().to_uint(),
-                    CFG::IS_LITE ? awsize : this->aw_size->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_cache->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_burst->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_qos->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_region->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_len->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_domain->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_snoop->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_bar->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_unique->read().to_uint(),
+                    this->aw_size->read().to_uint(),
+                    this->aw_cache->read().to_uint(),
+                    this->aw_burst->read().to_uint(),
+                    this->aw_qos->read().to_uint(),
+                    this->aw_region->read().to_uint(),
+                    this->aw_len->read().to_uint(),
+                    this->aw_domain->read().to_uint(),
+                    this->aw_snoop->read().to_uint(),
+                    this->aw_bar->read().to_uint(),
+                    this->aw_unique->read().to_uint(),
+                    this->stashniden->read() ? 0U : this->stashnid->read().to_uint(),
+                    this->stashlpiden->read()? 0U : this->stashlpid->read().to_uint(),
                     0};
             // clang-format on
             aw_que.notify(awd);
@@ -483,7 +488,10 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::wdata_t() {
                 ext->set_region(awd.region);
                 ext->set_snoop(axi::into<axi::snoop_e>(awd.snoop));
                 ext->set_barrier(axi::into<axi::bar_e>(awd.bar));
-                ext->set_unique(awd.unique);
+                // aceLite does not have aw_unique   ext->set_unique(awd.unique);
+                ext->set_stash_nid(awd.stashnid);
+                ext->set_stash_lpid(awd.stashlpid);
+
                 if(CFG::USERWIDTH)
                     ext->set_user(axi::common::id_type::CTRL, awd.user);
                 active_req_beat[tlm::TLM_WRITE_COMMAND] = find_or_create(gp);
@@ -494,7 +502,7 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::wdata_t() {
             auto& gp = fsm_hndl->trans;
             auto data = this->w_data.read();
             auto strb = this->w_strb.read();
-            auto last = CFG::IS_LITE ? true : this->w_last->read();
+            auto last = this->w_last->read();
             auto beat_count = fsm_hndl->beat_count;
             auto size = axi::get_burst_size(*fsm_hndl->trans);
             auto byte_offset = beat_count * size;
@@ -540,10 +548,10 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::wdata_t() {
                 gp->set_byte_enable_length(act_data_len);
                 gp->set_streaming_width(act_data_len);
             }
-            auto tp = CFG::IS_LITE || this->w_last->read() ? axi::fsm::protocol_time_point_e::BegReqE
+            auto tp = this->w_last->read() ? axi::fsm::protocol_time_point_e::BegReqE
                     : axi::fsm::protocol_time_point_e::BegPartReqE;
             react(tp, fsm_hndl);
-            // notifed in EndPartReqE/EndReq
+            // notified in EndPartReqE/EndReq
             wait(wdata_end_req_evt);
             this->w_ready.write(true);
             wait(clk_i.posedge_event());
