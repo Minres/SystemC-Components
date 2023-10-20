@@ -307,6 +307,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
         fsm_hndl->beat_count++;
     };
     fsm_hndl->fsm->cb[BegReqE] = [this, fsm_hndl]() -> void {
+        SCCTRACE(SCMOD)<<" hongyu in BegReqE of setup_cb";
         switch(fsm_hndl->trans->get_command()) {
             case tlm::TLM_READ_COMMAND:
                 active_req[tlm::TLM_READ_COMMAND] = fsm_hndl;
@@ -324,6 +325,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
             }
     };
     fsm_hndl->fsm->cb[EndReqE] = [this, fsm_hndl]() -> void {
+        SCCTRACE(SCMOD)<<" hongyu in EndReqE of setup_cb";
         switch(fsm_hndl->trans->get_command()) {
             case tlm::TLM_READ_COMMAND:
                 rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].push_back(fsm_hndl);
@@ -487,6 +489,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::b_t() {
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
         wait(this->b_valid.posedge_event() | clk_delayed);
+        SCCTRACE(SCMOD)<<" b_t() greceived b_valid ";
         if(this->b_valid.event() || (!active_resp[tlm::TLM_WRITE_COMMAND] && this->b_valid.read())) {
             auto id = !CFG::IS_LITE ? this->b_id->read().to_uint() : 0U;
             auto resp = this->b_resp.read();
