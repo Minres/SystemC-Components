@@ -31,6 +31,9 @@ namespace axi {
 namespace pin {
 
 using namespace axi::fsm;
+namespace acel {
+const sc_core::sc_time CLK_DELAY=1_ps;
+}
 
 template <typename CFG>
 struct aceLite_initiator : public sc_core::sc_module,
@@ -92,11 +95,7 @@ private:
     void setup_callbacks(fsm_handle* fsm_hndl);
 
     void clk_delay() {
-        if(sc_core::sc_delta_count_at_current_time()<5) {
-            clk_self.notify(sc_core::SC_ZERO_TIME);
-            next_trigger(clk_self);
-        } else
-            clk_delayed.notify(sc_core::SC_ZERO_TIME/*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
+        clk_delayed.notify(acel::CLK_DELAY);
     }
 
     void ar_t();
@@ -302,7 +301,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
     fsm_hndl->fsm->cb[EndPartReqE] = [this, fsm_hndl]() -> void {
         active_req[tlm::TLM_WRITE_COMMAND] = nullptr;
         tlm::tlm_phase phase = axi::END_PARTIAL_REQ;
-        sc_core::sc_time t(sc_core::SC_ZERO_TIME); //(clk_if?clk_if->period()-1_ps:sc_core::SC_ZERO_TIME);
+        sc_core::sc_time t = (clk_if?clk_if->period()-acel::CLK_DELAY-1_ps:sc_core::SC_ZERO_TIME);
         auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
         fsm_hndl->beat_count++;
     };
@@ -337,7 +336,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
                 fsm_hndl->beat_count++;
             }
             tlm::tlm_phase phase = tlm::END_REQ;
-            sc_core::sc_time t(sc_core::SC_ZERO_TIME);
+            sc_core::sc_time t = (clk_if?clk_if->period()-acel::CLK_DELAY-1_ps:sc_core::SC_ZERO_TIME);
             SCCTRACE(SCMOD) << " in EndReq before set_resp";
             auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
             fsm_hndl->trans->set_response_status(tlm::TLM_OK_RESPONSE);
