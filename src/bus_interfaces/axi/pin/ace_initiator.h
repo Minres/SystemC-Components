@@ -465,7 +465,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::r_t() {
             if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
                 if(beat_count == 0) {
                     auto dptr = fsm_hndl->trans->get_data_ptr();
-                    for(size_t i = offset; i < size; ++i, ++dptr) {
+                    if(dptr) for(size_t i = offset; i < size; ++i, ++dptr) {
                         auto bit_offs = i * 8;
                         *dptr = data(bit_offs + 7, bit_offs).to_uint();
                     }
@@ -473,14 +473,14 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::r_t() {
                     auto beat_start_idx = beat_count * size - offset;
                     auto data_len = fsm_hndl->trans->get_data_length();
                     auto dptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
-                    for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
+                    if(dptr) for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
                         auto bit_offs = i * 8;
                         *dptr = data(bit_offs + 7, bit_offs).to_uint();
                     }
                 }
             } else { // aligned or single beat access
                 auto dptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
-                for(size_t i = 0; i < size; ++i, ++dptr) {
+                if(dptr) for(size_t i = 0; i < size; ++i, ++dptr) {
                     auto bit_offs = (offset+i) * 8;
                     *dptr = data(bit_offs + 7, bit_offs).to_uint();
                 }
