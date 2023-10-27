@@ -31,6 +31,9 @@ namespace axi {
 namespace pin {
 
 using namespace axi::fsm;
+namespace acel {
+const sc_core::sc_time CLK_DELAY=1_ps;
+}
 
 template <typename CFG>
 struct aceLite_initiator : public sc_core::sc_module,
@@ -92,11 +95,7 @@ private:
     void setup_callbacks(fsm_handle* fsm_hndl);
 
     void clk_delay() {
-        if(sc_core::sc_delta_count_at_current_time()<5) {
-            clk_self.notify(sc_core::SC_ZERO_TIME);
-            next_trigger(clk_self);
-        } else
-            clk_delayed.notify(sc_core::SC_ZERO_TIME/*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
+        clk_delayed.notify(acel::CLK_DELAY);
     }
 
     void ar_t();
@@ -302,12 +301,12 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
     fsm_hndl->fsm->cb[EndPartReqE] = [this, fsm_hndl]() -> void {
         active_req[tlm::TLM_WRITE_COMMAND] = nullptr;
         tlm::tlm_phase phase = axi::END_PARTIAL_REQ;
-        sc_core::sc_time t(sc_core::SC_ZERO_TIME); //(clk_if?clk_if->period()-1_ps:sc_core::SC_ZERO_TIME);
+        sc_core::sc_time t = (clk_if?clk_if->period()-acel::CLK_DELAY-1_ps:sc_core::SC_ZERO_TIME);
         auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
         fsm_hndl->beat_count++;
     };
     fsm_hndl->fsm->cb[BegReqE] = [this, fsm_hndl]() -> void {
-        SCCTRACE(SCMOD)<<" hongyu in BegReqE of setup_cb";
+        SCCTRACEALL(SCMOD)<<"In BegReqE of setup_cb";
         switch(fsm_hndl->trans->get_command()) {
             case tlm::TLM_READ_COMMAND:
                 active_req[tlm::TLM_READ_COMMAND] = fsm_hndl;
@@ -325,7 +324,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
             }
     };
     fsm_hndl->fsm->cb[EndReqE] = [this, fsm_hndl]() -> void {
-        SCCTRACE(SCMOD)<<" hongyu in EndReqE of setup_cb";
+        SCCTRACEALL(SCMOD)<<"In EndReqE of setup_cb";
         switch(fsm_hndl->trans->get_command()) {
             case tlm::TLM_READ_COMMAND:
                 rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].push_back(fsm_hndl);
@@ -337,7 +336,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
                 fsm_hndl->beat_count++;
             }
             tlm::tlm_phase phase = tlm::END_REQ;
-            sc_core::sc_time t(sc_core::SC_ZERO_TIME);
+            sc_core::sc_time t = (clk_if?clk_if->period()-acel::CLK_DELAY-1_ps:sc_core::SC_ZERO_TIME);
             SCCTRACE(SCMOD) << " in EndReq before set_resp";
             auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
             fsm_hndl->trans->set_response_status(tlm::TLM_OK_RESPONSE);
@@ -489,7 +488,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::b_t() {
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
         wait(this->b_valid.posedge_event() | clk_delayed);
-        SCCTRACE(SCMOD)<<" b_t() greceived b_valid ";
+        SCCTRACEALL(SCMOD)<<" b_t() received b_valid ";
         if(this->b_valid.event() || (!active_resp[tlm::TLM_WRITE_COMMAND] && this->b_valid.read())) {
             auto id = !CFG::IS_LITE ? this->b_id->read().to_uint() : 0U;
             auto resp = this->b_resp.read();
