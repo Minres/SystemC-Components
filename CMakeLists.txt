@@ -5,23 +5,15 @@ cmake_policy(SET CMP0077 NEW)
 project(scc VERSION 2022.4.0 LANGUAGES CXX C)
 
 option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
-
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
-
 option(ENABLE_CONAN "Enable the use of conan in standalone build" ON)
-
 option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
-
 option(FULL_TRACE_TYPE_LIST "Test for extended set of templated datatypes" OFF)
-
 #Note: this needs to match the SystemC kernel build options
 option(SC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase callbacks" OFF)
-
 option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse callbacks for tracing. It needs to match the SystemC build configuration" OFF)
-
 set(SCC_ARCHIVE_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
-
-set(SCC_LIBRARY_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
+set(SCC_LIBRARY_DIR_MODIFIER "" CACHE STRING "additional directory levels to store libraries") 
 
 include(Common)
 
@@ -198,13 +190,31 @@ if(SystemC_FOUND)
 	set_target_properties(scc PROPERTIES
 	    PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
 	)
-	
+	set(SC_CMAKE_CONFIG_DIR ${CMAKE_INSTALL_DATADIR}/scc/cmake)
+
 	install(TARGETS scc
+			EXPORT sccTargets
 	        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 	        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
 	        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
 	        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 	        )
+	install(
+    		EXPORT sccTargets 
+    		FILE sccTargets.cmake
+    		DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+    		NAMESPACE scc::
+			)
+	include(CMakePackageConfigHelpers)
+	configure_package_config_file(
+	    cmake/sccConfig.cmake.in
+	    ${CMAKE_CURRENT_BINARY_DIR}/sccConfig.cmake
+	    INSTALL_DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+	)
+	install(
+    		FILES ${CMAKE_CURRENT_BINARY_DIR}/sccConfig.cmake
+    		DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+			)
 else()
 	add_subdirectory(third_party)
 endif()
@@ -216,6 +226,9 @@ install(DIRECTORY contrib/pysysc contrib/d3-hwschematic
 		PATTERN ".gitignore" EXCLUDE 
 		PATTERN "PySysC_SCC.egg*" EXCLUDE
 		PATTERN "build" EXCLUDE
+		)
+install(DIRECTORY cmake
+		DESTINATION share
 		)
 if(CMAKE_PROJECT_NAME STREQUAL "scc")
 	if(INSTALL_DEPENDENCIES)
