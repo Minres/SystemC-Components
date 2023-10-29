@@ -149,7 +149,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_ch {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> aw_id{"aw_id"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> aw_addr{"aw_addr"};
     typename TYPES::template s2m_t<bool> aw_ready{"aw_ready"};
-    typename TYPES::template m2s_t<bool> aw_lock{"aw_lock"}; // AXI3 has 2 bits while AXI4 has 1 bit
+    typename TYPES::template m2s_full_t<bool> aw_lock{"aw_lock"}; // AXI3 has 2 bits while AXI4 has 1 bit
     typename TYPES::template m2s_t<bool> aw_valid{"aw_valid"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<3>> aw_prot{"aw_prot"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<3>> aw_size{"aw_size"};
@@ -268,7 +268,7 @@ template <typename CFG, typename TYPES = master_types> struct ar_ch {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<8>> ar_len{"ar_len"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<3>> ar_size{"ar_size"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> ar_burst{"ar_burst"};
-    typename TYPES::template m2s_t<bool> ar_lock{"ar_lock"}; // AXI3 has 2 bits while AXI4 has i bit
+    typename TYPES::template m2s_full_t<bool> ar_lock{"ar_lock"}; // AXI3 has 2 bits while AXI4 has i bit
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> ar_cache{"ar_cache"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<3>> ar_prot{"ar_prot"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> ar_qos{"ar_qos"};

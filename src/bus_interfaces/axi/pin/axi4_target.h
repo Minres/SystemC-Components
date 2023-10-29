@@ -273,10 +273,10 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::ar_t() {
             ext->set_length(arlen);
             ext->set_size(arsize);
             ext->set_burst(CFG::IS_LITE ? axi::burst_e::INCR : axi::into<axi::burst_e>(this->ar_burst->read()));
-            /*TBD set_lock*/
+            /*TODO: set_lock*/
             ext->set_prot(this->ar_prot->read());
-            ext->set_qos(this->ar_qos->read());
-            ext->set_region(this->ar_region->read());
+            ext->set_qos(CFG::IS_LITE ? 0U : this->ar_qos->read().to_uint());
+            ext->set_region(CFG::IS_LITE ? 0U : this->ar_region->read().to_uint());
 
             active_req_beat[tlm::TLM_READ_COMMAND] = find_or_create(gp);
             react(axi::fsm::protocol_time_point_e::BegReqE, active_req_beat[tlm::TLM_READ_COMMAND]);
