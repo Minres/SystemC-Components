@@ -49,7 +49,7 @@ public:
     //! the target socket to connect to TLM
     tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
     //! the optional clock pin to calculate clock base delays
-    sc_core::sc_port<sc_core::sc_signal_in_if<sc_core::sc_time>> clk_i{"clk_i"};
+    sc_core::sc_port<sc_core::sc_signal_in_if<sc_core::sc_time>, sc_core::SC_ZERO_OR_MORE_BOUND> clk_i{"clk_i"};
     /**
      * constructor with explicit instance name
      *
