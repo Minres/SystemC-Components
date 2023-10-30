@@ -350,6 +350,7 @@ struct yaml_config_dumper {
 					this_node[descr_name] = descr;
 					this_node[descr_name].SetTag("desc");
 				}
+				sc_core::sc_time t;
 				if(value.is_bool())
 					this_node[basename] = (bool)value.get_bool();
 				else if(value.is_int())
@@ -364,6 +365,9 @@ struct yaml_config_dumper {
 					this_node[basename] = value.get_double();
 				else if(value.is_string())
 					this_node[basename] = value.get_string().c_str();
+				else if(value.try_get(t))
+                    this_node[basename] = t.to_string();
+
 			}
 		auto mod = dynamic_cast<sc_core::sc_module*>(obj);
 		if(!log_lvl_set && mod) {

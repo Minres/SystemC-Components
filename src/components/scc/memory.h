@@ -48,6 +48,8 @@ template <unsigned long long SIZE, unsigned BUSWIDTH = LT> class memory : public
 public:
     //! the target socket to connect to TLM
     tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
+    //! the optional clock pin to calculate clock based delays
+    sc_core::sc_port<sc_core::sc_signal_in_if<sc_core::sc_time>, 1, sc_core::SC_ZERO_OR_MORE_BOUND> clk_i{"clk_i"};
     /**
      * constructor with explicit instance name
      *
@@ -87,6 +89,14 @@ public:
      * write response delay
      */
     cci::cci_param<sc_core::sc_time> wr_resp_delay{"wr_resp_delay", sc_core::SC_ZERO_TIME};
+    /**
+     * read response delay in clock cycles
+     */
+    cci::cci_param<unsigned> rd_resp_clk_delay{"rd_resp_clk_delay", 0};
+    /**
+     * write response delay in clock cycles
+     */
+    cci::cci_param<unsigned> wr_resp_clk_delay{"wr_resp_clk_delay", 0};
 protected:
     //! the real memory structure
     util::sparse_array<uint8_t, SIZE> mem;
@@ -149,7 +159,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
     tlm::tlm_command cmd = trans.get_command();
     SCCTRACE(SCMOD) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr;
     if(cmd == tlm::TLM_READ_COMMAND) {
-        delay += rd_resp_delay;
+        delay += clk_i.get_interface()?clk_i->read()*rd_resp_clk_delay:rd_resp_delay;
         if(mem.is_allocated(adr)) {
             const auto& p = mem(adr / mem.page_size);
             auto offs = adr & mem.page_addr_mask;
@@ -167,7 +177,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
                 ptr[i] = scc::MT19937::uniform() % 256;
         }
     } else if(cmd == tlm::TLM_WRITE_COMMAND) {
-        delay += wr_resp_delay;
+        delay += clk_i.get_interface()?clk_i->read()*wr_resp_clk_delay:wr_resp_delay;
         auto& p = mem(adr / mem.page_size);
         auto offs = adr & mem.page_addr_mask;
         if((offs + len) > mem.page_size) {
@@ -192,8 +202,8 @@ inline bool memory<SIZE, BUSWIDTH>::handle_dmi(tlm::tlm_generic_payload& gp, tlm
     dmi_data.set_end_address(dmi_data.get_start_address() + mem.page_size - 1);
     dmi_data.set_dmi_ptr(p.data());
     dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);
-    dmi_data.set_read_latency(rd_resp_delay.get_value());
-    dmi_data.set_write_latency(wr_resp_delay.get_value());
+    dmi_data.set_read_latency(clk_i.get_interface()?clk_i->read()*rd_resp_clk_delay:rd_resp_delay);
+    dmi_data.set_write_latency(clk_i.get_interface()?clk_i->read()*wr_resp_clk_delay:wr_resp_delay);
     return true;
 }
 

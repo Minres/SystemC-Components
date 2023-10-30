@@ -83,7 +83,7 @@ public:
      * @param os the output stream, std::cout by default
      * @param obj if not null specifies the root object of the dump
      */
-    void dump_configuration(std::ostream& os = std::cout, bool as_yaml=false, bool with_description = false, sc_core::sc_object* obj = nullptr);
+    void dump_configuration(std::ostream& os = std::cout, bool as_yaml=true, bool with_description = false, sc_core::sc_object* obj = nullptr);
     /**
      * schedule the dump the parameters of a design hierarchy to a file
      * during start_of_simulation()
