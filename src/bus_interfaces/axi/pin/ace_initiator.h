@@ -342,8 +342,15 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
                         write_aw(*fsm_hndl->trans);
                         aw_evt.notify(sc_core::SC_ZERO_TIME);
                     }
-                    write_wdata(*fsm_hndl->trans, fsm_hndl->beat_count, true);
-                    wdata_vl.write(0x3);
+                    /* for Evict Trans, only addr on aw_t, response on b_t() */
+                    auto ext = fsm_hndl->trans->get_extension<ace_extension>();
+                    if (ext->get_snoop() == (snoop_e::EVICT)){
+                        SCCTRACE(SCMOD)<< " in BegReqE for Evict trans" << *fsm_hndl->trans;                        
+                        schedule(axi::fsm::protocol_time_point_e::EndReqE, fsm_hndl->trans, sc_core::SC_ZERO_TIME);
+                    } else {
+                        write_wdata(*fsm_hndl->trans, fsm_hndl->beat_count, true);
+                        wdata_vl.write(0x3);
+                    }
                 }
         }
     };
@@ -517,9 +524,25 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::r_t() {
             fsm_hndl->trans->get_extension(e);
             e->set_resp(axi::into<axi::resp_e>(resp));
             e->add_to_response_array(*e);
-            auto tp = CFG::IS_LITE || this->r_last->read() ? axi::fsm::protocol_time_point_e::BegRespE
-                                                           : axi::fsm::protocol_time_point_e::BegPartRespE;
-            react(tp, fsm_hndl);
+            /* for Make Trans, Clean Trans and Read barrier Trans, no  read data transfer on r_t, only response on r_t
+             *  */
+            if ((e->get_snoop() == (snoop_e::MAKE_UNIQUE)) ||
+                (e->get_snoop() == (snoop_e::MAKE_INVALID)) ||
+                (e->get_snoop() == (snoop_e::CLEAN_SHARED)) ||
+                (e->get_snoop() == (snoop_e::CLEAN_UNIQUE)) ||
+                (e->get_snoop() == (snoop_e::CLEAN_UNIQUE)) )
+             // read barrier ??   (e->get_snoop() == (snoop_e::BARRIER)) ||
+              {
+                SCCTRACE(SCMOD)<< " r_t() for Make/Clean/Barrier Trans" << *fsm_hndl->trans;
+                react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
+
+            } else {
+                auto tp = CFG::IS_LITE || this->r_last->read() ? axi::fsm::protocol_time_point_e::BegRespE
+                                                               : axi::fsm::protocol_time_point_e::BegPartRespE;
+                react(tp, fsm_hndl);
+            }
+
+
             // r_end_req_evt notified in EndPartialResp or ACK
             wait(r_end_req_evt);
             this->r_ready->write(true);
@@ -565,10 +588,6 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::wdata_t() {
                                                        : axi::fsm::protocol_time_point_e::EndPartReqE;
                 react(evt, active_req[tlm::TLM_WRITE_COMMAND]);
             }
-            /* for Evict Trans, only addr on aw_t, in BEG_REQ will wdata_vl be notifed with 3 , SM
-             * will land here. for Evict Trans, no real wdata, therefore need to one mechanism to
-             * let SM continue End_REQ
-              * */
         } while(!this->w_ready.read());
         wait(clk_i.posedge_event());
         this->w_valid.write(false);
