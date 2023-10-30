@@ -199,22 +199,22 @@ if(SystemC_FOUND)
 	        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
 	        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 	        )
-	install(
-    		EXPORT sccTargets 
-    		FILE sccTargets.cmake
-    		DESTINATION ${SCC_CMAKE_CONFIG_DIR}
-    		NAMESPACE scc::
-			)
-	include(CMakePackageConfigHelpers)
-	configure_package_config_file(
-	    cmake/sccConfig.cmake.in
-	    ${CMAKE_CURRENT_BINARY_DIR}/sccConfig.cmake
-	    INSTALL_DESTINATION ${SCC_CMAKE_CONFIG_DIR}
-	)
-	install(
-    		FILES ${CMAKE_CURRENT_BINARY_DIR}/sccConfig.cmake
-    		DESTINATION ${SCC_CMAKE_CONFIG_DIR}
-			)
+#	install(
+#    		EXPORT sccTargets 
+#    		FILE sccTargets.cmake
+#    		DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+#    		NAMESPACE scc::
+#			)
+#	include(CMakePackageConfigHelpers)
+#	configure_package_config_file(
+#	    cmake/sccConfig.cmake.in
+#	    ${CMAKE_CURRENT_BINARY_DIR}/sccConfig.cmake
+#	    INSTALL_DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+#	)
+#	install(
+#    		FILES ${CMAKE_CURRENT_BINARY_DIR}/sccConfig.cmake
+#    		DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+#			)
 else()
 	add_subdirectory(third_party)
 endif()
