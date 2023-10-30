@@ -140,7 +140,7 @@ private:
     std::array<fsm_handle*, 3> active_resp;
     std::array<fsm_handle*, 4> active_resp_beat;
     sc_core::sc_clock* clk_if;
-    sc_core::sc_event clk_delayed, clk_self, r_end_req_evt, aw_evt, ar_evt, ac_end_req_evt;
+    sc_core::sc_event clk_delayed, clk_self, r_end_resp_evt, w_end_resp_evt, aw_evt, ar_evt, ac_end_req_evt;
        void nb_fw(payload_type& trans, const phase_type& phase) {
         auto t = sc_core::SC_ZERO_TIME;
         base::nb_fw(trans, phase, t);
@@ -348,7 +348,6 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
                     /* for Evict Trans, only addr on aw_t, response on b_t() */
                     auto ext = fsm_hndl->trans->get_extension<ace_extension>();
                     if (ext->get_snoop() == (snoop_e::EVICT)){
-                        SCCTRACE(SCMOD)<< " in BegReqE for Evict trans" << *fsm_hndl->trans;                        
                         schedule(axi::fsm::protocol_time_point_e::EndReqE, fsm_hndl->trans, sc_core::SC_ZERO_TIME);
                     } else {
                         write_wdata(*fsm_hndl->trans, fsm_hndl->beat_count, true);
@@ -404,7 +403,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
            fsm_hndl->beat_count++;
        } else {
            fsm_hndl->beat_count++;
-           r_end_req_evt.notify();
+           r_end_resp_evt.notify();
        }
     };
     fsm_hndl->fsm->cb[BegRespE] = [this, fsm_hndl]() -> void {
@@ -431,11 +430,15 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
            active_resp_beat[SNOOP] = nullptr;
            // here notify cr_evnt
            fsm_hndl->finish.notify();
+        } else {
+            if(fsm_hndl->trans->is_read())
+                r_end_resp_evt.notify();
+            else if(fsm_hndl->trans->is_write())
+                w_end_resp_evt.notify();
         }
     };
     fsm_hndl->fsm->cb[Ack] = [this, fsm_hndl]() -> void {
         SCCTRACE(SCMOD)<< "in ACK of setup_cb for " << *fsm_hndl->trans;
-        r_end_req_evt.notify();
         if(fsm_hndl->trans->is_read()){
             rack_vl.notify(SC_ZERO_TIME);
             rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].pop_front();
@@ -548,8 +551,8 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::r_t() {
             }
 
 
-            // r_end_req_evt notified in EndPartialResp or ACK
-            wait(r_end_req_evt);
+            // r_end_req_evt notified in EndPartialResp or EndResp
+            wait(r_end_resp_evt);
             this->r_ready->write(true);
             wait(clk_i.posedge_event());
             this->r_ready.write(false);
@@ -614,8 +617,8 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::b_t() {
             fsm_hndl->trans->get_extension(e);
             e->set_resp(axi::into<axi::resp_e>(resp));
             react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
-            // r_end_req_evt notified in EndPartialResp or ACK
-            wait(r_end_req_evt);
+            // r_end_req_evt notified in EndResp
+            wait(w_end_resp_evt);
             this->b_ready.write(true);
             wait(clk_i.posedge_event());
             this->b_ready.write(false);
