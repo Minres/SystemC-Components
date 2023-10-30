@@ -74,7 +74,8 @@ struct ace_initiator : public sc_core::sc_module,
         SC_THREAD(ac_t);
         SC_THREAD(cr_resp_t);
         SC_THREAD(cd_t);
-        SC_THREAD(ack_t);
+        SC_THREAD(rack_t);
+        SC_THREAD(wack_t);
     }
 
 private:
@@ -121,7 +122,8 @@ private:
     void cr_resp_t();
     void cd_t();
 
-    void ack_t();
+    void rack_t();
+    void wack_t();
 /**
  * @fn CFG::data_t get_cache_data_for_beat(fsm::fsm_handle*)
  * @brief
@@ -146,7 +148,8 @@ private:
     tlm_utils::peq_with_cb_and_phase<ace_initiator> fw_peq{this, &ace_initiator::nb_fw};
     std::unordered_map<unsigned, std::deque<fsm_handle*>> rd_resp_by_id, wr_resp_by_id;
     sc_core::sc_buffer<uint8_t> wdata_vl;
-    sc_core::sc_buffer<uint8_t> ack_vl;
+    sc_core::sc_event rack_vl;
+    sc_core::sc_event wack_vl;
     void write_ar(tlm::tlm_generic_payload& trans);
     void write_aw(tlm::tlm_generic_payload& trans);
     void write_wdata(tlm::tlm_generic_payload& trans, unsigned beat, bool last = false);
@@ -434,32 +437,34 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
         SCCTRACE(SCMOD)<< "in ACK of setup_cb for " << *fsm_hndl->trans;
         r_end_req_evt.notify();
         if(fsm_hndl->trans->is_read()){
-            ack_vl.write(0x1);
+            rack_vl.notify(SC_ZERO_TIME);
             rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].pop_front();
         }
         if(fsm_hndl->trans->is_write()) {
-            ack_vl.write(0x2);
+            wack_vl.notify(SC_ZERO_TIME);
             wr_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].pop_front();
         }
     };
 }
-template <typename CFG> inline void axi::pin::ace_initiator<CFG>::ack_t() {
+
+template <typename CFG> inline void axi::pin::ace_initiator<CFG>::rack_t() {
     this->r_ack.write(false);
+    wait(sc_core::SC_ZERO_TIME);
+    while(true){
+        wait(rack_vl);
+        this->r_ack.write(true);
+        wait(clk_i.posedge_event());
+        this->r_ack.write(false);
+    }
+}
+
+template <typename CFG> inline void axi::pin::ace_initiator<CFG>::wack_t() {
     this->w_ack.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true){
-        wait(ack_vl.default_event());
-        auto val = ack_vl.read();
-        if(val == 0x1) {
-            SCCTRACE(SCMOD)<< " with val = "<< (uint16_t) val <<" write r_ack";
-            this->r_ack.write(true);
-        }
-        if(val == 0x2) {
-            SCCTRACE(SCMOD)<< " with val = "<< (uint16_t) val <<" write w_ack";
-            this->w_ack.write(true);
-        }
+        wait(wack_vl);
+        this->w_ack.write(true);
         wait(clk_i.posedge_event());
-        this->r_ack.write(false);
         this->w_ack.write(false);
     }
 }
