@@ -102,8 +102,8 @@ private:
     void wdata_t();
     void b_t();
     std::array<unsigned, 3> outstanding_cnt;
-    std::array<fsm_handle*, 3> active_req;
-    std::array<fsm_handle*, 3> active_resp;
+    std::array<fsm_handle*, 3> active_req{nullptr, nullptr, nullptr};
+    std::array<fsm_handle*, 3> active_resp{nullptr, nullptr, nullptr};
     sc_core::sc_clock* clk_if;
     sc_core::sc_event clk_delayed, clk_self, r_end_req_evt, aw_evt, ar_evt;
     void nb_fw(payload_type& trans, const phase_type& phase) {
