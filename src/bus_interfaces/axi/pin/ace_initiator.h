@@ -347,9 +347,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
                     }
                     /* for Evict Trans, only addr on aw_t, response on b_t() */
                     auto ext = fsm_hndl->trans->get_extension<ace_extension>();
-                    if (ext->get_snoop() == (snoop_e::EVICT)){
-                        schedule(axi::fsm::protocol_time_point_e::EndReqE, fsm_hndl->trans, sc_core::SC_ZERO_TIME);
-                    } else {
+                    if (!axi::is_dataless(ext)){
                         write_wdata(*fsm_hndl->trans, fsm_hndl->beat_count, true);
                         wdata_vl.write(0x3);
                     }
@@ -564,6 +562,9 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::aw_t() {
 ;        do {
             wait(this->aw_ready.posedge_event() | clk_delayed);
         } while(!this->aw_ready.read());
+        auto* fsm_hndl = active_req[tlm::TLM_WRITE_COMMAND];
+        if(axi::is_dataless(fsm_hndl->trans->get_extension<axi::ace_extension>()))
+            react(axi::fsm::protocol_time_point_e::EndReqE, fsm_hndl);
         wait(clk_i.posedge_event());
         this->aw_valid.write(false);
     }
