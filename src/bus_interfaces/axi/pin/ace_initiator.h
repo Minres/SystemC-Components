@@ -32,7 +32,7 @@ namespace pin {
 
 using namespace axi::fsm;
 namespace ace {
-const sc_core::sc_time CLK_DELAY=1_ps;
+const sc_core::sc_time CLK_DELAY=10_ps;
 }
 
 template <typename CFG>
@@ -423,7 +423,6 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
     fsm_hndl->fsm->cb[EndRespE] = [this, fsm_hndl]() -> void {
         SCCTRACE(SCMOD)<< "in EndResp of setup_cb for trans" << *fsm_hndl->trans ;
         if(fsm_hndl->is_snoop) {
-          // sc_core::sc_time t(clk_if ? ::scc::time_to_next_posedge(clk_if) - 1_ps : sc_core::SC_ZERO_TIME);
            sc_core::sc_time t(sc_core::SC_ZERO_TIME);
            tlm::tlm_phase phase = tlm::END_RESP;
            auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
@@ -431,21 +430,22 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
            // here notify cr_evnt
            fsm_hndl->finish.notify();
         } else {
-            if(fsm_hndl->trans->is_read())
+            if(fsm_hndl->trans->is_read()){
+                rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].pop_front();
                 r_end_resp_evt.notify();
-            else if(fsm_hndl->trans->is_write())
+            } else if(fsm_hndl->trans->is_write()) {
+                wr_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].pop_front();
                 w_end_resp_evt.notify();
+            }
         }
     };
     fsm_hndl->fsm->cb[Ack] = [this, fsm_hndl]() -> void {
         SCCTRACE(SCMOD)<< "in ACK of setup_cb for " << *fsm_hndl->trans;
         if(fsm_hndl->trans->is_read()){
             rack_vl.notify(SC_ZERO_TIME);
-            rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].pop_front();
         }
         if(fsm_hndl->trans->is_write()) {
             wack_vl.notify(SC_ZERO_TIME);
-            wr_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].pop_front();
         }
     };
 }
@@ -538,25 +538,18 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::r_t() {
                 (e->get_snoop() == (snoop_e::MAKE_INVALID)) ||
                 (e->get_snoop() == (snoop_e::CLEAN_SHARED)) ||
                 (e->get_snoop() == (snoop_e::CLEAN_UNIQUE)) ||
-                (e->get_snoop() == (snoop_e::CLEAN_UNIQUE)) )
-             // read barrier ??   (e->get_snoop() == (snoop_e::BARRIER)) ||
-              {
+                (e->get_snoop() == (snoop_e::CLEAN_UNIQUE)) ) {
                 SCCTRACE(SCMOD)<< " r_t() for Make/Clean/Barrier Trans" << *fsm_hndl->trans;
                 react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
-
             } else {
                 auto tp = CFG::IS_LITE || this->r_last->read() ? axi::fsm::protocol_time_point_e::BegRespE
                                                                : axi::fsm::protocol_time_point_e::BegPartRespE;
                 react(tp, fsm_hndl);
             }
-
-
-            // r_end_req_evt notified in EndPartialResp or EndResp
             wait(r_end_resp_evt);
             this->r_ready->write(true);
             wait(clk_i.posedge_event());
             this->r_ready.write(false);
-
         }
     }
 }
