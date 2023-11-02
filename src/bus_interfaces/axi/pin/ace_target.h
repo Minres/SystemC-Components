@@ -129,6 +129,7 @@ private:
         unsigned snoop;
         unsigned bar;
         unsigned unique;
+        bool lock;
         uint64_t user;
     };
 
@@ -376,7 +377,8 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::ar_t() {
             ext->set_id(arid);
             ext->set_length(arlen);
             ext->set_size(arsize);
-            /*TBD set_lock*/
+            if(this->ar_lock->read())
+                ext->set_exclusive(true);
             ext->set_domain(axi::into<axi::domain_e>(this->ar_domain->read()));   // ace extension
             ext->set_snoop(axi::into<axi::snoop_e>(this->ar_snoop->read()));
             ext->set_barrier(axi::into<axi::bar_e>(this->ar_bar->read()));
@@ -452,6 +454,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::aw_t() {
                     CFG::IS_LITE ? 0U : this->aw_snoop->read().to_uint(),
                     CFG::IS_LITE ? 0U : this->aw_bar->read().to_uint(),
                     CFG::IS_LITE ? 0U : this->aw_unique->read(),
+                    CFG::IS_LITE ? 0U : this->aw_lock->read(),
                     0};
             // clang-format on
             aw_que.notify(awd);
@@ -490,6 +493,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::wdata_t() {
                 ext->set_snoop(axi::into<axi::snoop_e>(awd.snoop));
                 ext->set_barrier(axi::into<axi::bar_e>(awd.bar));
                 ext->set_unique(awd.unique);
+                ext->set_exclusive(awd.lock);
                 if(CFG::USERWIDTH)
                     ext->set_user(axi::common::id_type::CTRL, awd.user);
 

@@ -168,7 +168,8 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::write_ar(tlm::
             this->ar_len->write(sc_dt::sc_uint<8>(ext->get_length()));
             this->ar_size->write(sc_dt::sc_uint<3>(ext->get_size()));
             this->ar_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
-         // TBD??   this->ar_lock->write(ext->get_lock());
+            if (ext->is_exclusive())
+                this->ar_lock->write(true);
             this->ar_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
             this->ar_prot.write(ext->get_prot());
             this->ar_qos->write(ext->get_qos());
@@ -185,7 +186,8 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::write_aw(tlm::
     this->aw_addr.write(addr);
     if(auto ext = trans.get_extension<axi::ace_extension>()) {
         this->aw_prot.write(ext->get_prot());
-        //TBD??   this->aw_lock.write();
+        if (ext->is_exclusive())
+            this->aw_lock->write(true);
         if(this->aw_id.get_interface())
             this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
         this->aw_len->write(sc_dt::sc_uint<8>(ext->get_length()));

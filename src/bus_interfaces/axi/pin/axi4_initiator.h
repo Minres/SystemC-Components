@@ -134,6 +134,8 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::write_ar(tlm:
             this->ar_len->write(sc_dt::sc_uint<8>(ext->get_length()));
             this->ar_size->write(sc_dt::sc_uint<3>(ext->get_size()));
             this->ar_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
+            if (ext->is_exclusive())
+                this->ar_lock->write(true);
             this->ar_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
             this->ar_qos->write(ext->get_qos());
             if(this->ar_user.get_interface())
@@ -157,6 +159,8 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::write_aw(tlm:
             this->aw_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
             this->aw_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
             this->aw_qos->write(ext->get_qos());
+            if (ext->is_exclusive())
+                this->aw_lock->write(true);
             if(this->aw_user.get_interface())
                 this->aw_user->write(ext->get_user(axi::common::id_type::CTRL));
         }

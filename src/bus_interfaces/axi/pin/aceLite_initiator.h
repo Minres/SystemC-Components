@@ -55,8 +55,8 @@ struct aceLite_initiator : public sc_core::sc_module,
 
     aceLite_initiator(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm)
-    // coherent= true
-    , base(CFG::BUSWIDTH, true) {
+    // aceLite has no ack, therefore coherent= false
+    , base(CFG::BUSWIDTH, false) {
         instance_name = name();
         tsckt(*this);
         SC_METHOD(clk_delay);
@@ -139,7 +139,8 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::write_ar(t
         this->ar_len->write(sc_dt::sc_uint<8>(ext->get_length()));
         this->ar_size->write(sc_dt::sc_uint<3>(ext->get_size()));
         this->ar_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
-     // TBD??   this->ar_lock->write(ext->get_lock());
+        if(ext->is_exclusive())
+            this->ar_lock->write(true);
         this->ar_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
         this->ar_prot.write(ext->get_prot());
         this->ar_qos->write(ext->get_qos());
@@ -159,6 +160,8 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::write_aw(t
         //TBD??   this->aw_lock.write();
         if(this->aw_id.get_interface())
             this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
+        if(ext->is_exclusive())
+            this->aw_lock->write(true);
         this->aw_len->write(sc_dt::sc_uint<8>(ext->get_length()));
         this->aw_size->write(sc_dt::sc_uint<3>(ext->get_size()));
         this->aw_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
@@ -362,10 +365,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
         auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
     };
     fsm_hndl->fsm->cb[EndRespE] = [this, fsm_hndl]() -> void {
-        SCCTRACE(SCMOD)<< "in EndResp of setup_cb, next should become ack " ;
-    };
-    fsm_hndl->fsm->cb[Ack] = [this, fsm_hndl]() -> void {
-        SCCTRACE(SCMOD)<< "in ACK of setup_cb " ;
+        SCCTRACE(SCMOD)<< "in EndResp of setup_cb " ;
         r_end_req_evt.notify();
         if(fsm_hndl->trans->is_read())
             rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].pop_front();

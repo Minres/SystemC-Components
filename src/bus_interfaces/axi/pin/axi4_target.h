@@ -103,6 +103,7 @@ private:
         unsigned qos;
         unsigned region;
         unsigned len;
+        bool lock;
         uint64_t user;
     };
     sc_core::sc_clock* clk_if{nullptr};
@@ -273,7 +274,8 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::ar_t() {
             ext->set_length(arlen);
             ext->set_size(arsize);
             ext->set_burst(CFG::IS_LITE ? axi::burst_e::INCR : axi::into<axi::burst_e>(this->ar_burst->read()));
-            /*TODO: set_lock*/
+            if(this->ar_lock->read())
+                ext->set_exclusive(true);
             ext->set_prot(this->ar_prot->read());
             ext->set_qos(CFG::IS_LITE ? 0U : this->ar_qos->read().to_uint());
             ext->set_region(CFG::IS_LITE ? 0U : this->ar_region->read().to_uint());
@@ -338,6 +340,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
                     CFG::IS_LITE ? 0U : this->aw_qos->read().to_uint(),
                     CFG::IS_LITE ? 0U : this->aw_region->read().to_uint(),
                     CFG::IS_LITE ? 0U : this->aw_len->read().to_uint(),
+                    CFG::IS_LITE ? false : this->aw_lock->read(),
                     0};
             // clang-format on
             aw_que.notify(awd);
@@ -373,6 +376,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
                 ext->set_qos(awd.qos);
                 ext->set_cache(awd.cache);
                 ext->set_region(awd.region);
+                ext->set_exclusive(awd.lock);
                 if(CFG::USERWIDTH)
                     ext->set_user(axi::common::id_type::CTRL, awd.user);
 

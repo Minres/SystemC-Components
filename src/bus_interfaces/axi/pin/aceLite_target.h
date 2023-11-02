@@ -52,8 +52,8 @@ struct aceLite_target : public sc_core::sc_module,
 
     aceLite_target(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm)
-    // coherent= true
-    , base(CFG::BUSWIDTH, true) {
+    // aceLite has no ack, therefore coherent= false
+    , base(CFG::BUSWIDTH, false) {
         instance_name = name();
         isckt.bind(*this);
         SC_METHOD(clk_delay);
@@ -110,6 +110,7 @@ private:
         unsigned unique;
         unsigned stashnid;
         unsigned stashlpid;
+        bool lock;
         uint64_t user;
     };
 
@@ -251,20 +252,8 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::setup_callbac
        sc_core::sc_time t(sc_core::SC_ZERO_TIME);
        auto ret = isckt->nb_transport_fw(*fsm_hndl->trans, phase, t);
        SCCTRACE(SCMOD)<< "EndResp of setup_cb with coherent = " << coherent;
-       if(coherent)
-           schedule(Ack, fsm_hndl->trans,t);   // later can add ack_resp_delay to replace t
-       else {
-           fsm_hndl->finish.notify();
-           active_resp_beat[fsm_hndl->trans->get_command()] = nullptr;
-       }
-    };
-    fsm_hndl->fsm->cb[Ack] = [this, fsm_hndl]() -> void {
-        SCCTRACE(SCMOD)<<" in Ack of setup_cb";
-        sc_core::sc_time t(sc_core::SC_ZERO_TIME);
-        tlm::tlm_phase phase = axi::ACK;
-        auto ret = isckt->nb_transport_fw(*fsm_hndl->trans, phase, t);
-        fsm_hndl->finish.notify();
-        active_resp_beat[fsm_hndl->trans->get_command()] = nullptr;
+       fsm_hndl->finish.notify();
+       active_resp_beat[fsm_hndl->trans->get_command()] = nullptr;
     };
 }
 
@@ -291,7 +280,8 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::ar_t() {
             gp->get_extension(ext);
             ext->set_id(arid);
             ext->set_length(arlen);
-            /*TBD set_lock*/
+            if(this->ar_lock->read())
+                ext->set_exclusive(true);
             ext->set_size(arsize);
             ext->set_burst(axi::into<axi::burst_e>(this->ar_burst->read()));
             ext->set_cache(this->ar_cache->read());
@@ -370,6 +360,7 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::aw_t() {
                     this->aw_unique->read(),
                     this->aw_stashniden->read() ? 0U : this->aw_stashnid->read().to_uint(),
                     this->aw_stashlpiden->read()? 0U : this->aw_stashlpid->read().to_uint(),
+                    this->aw_lock->read() ? true : false,
                     0};
             // clang-format on
             aw_que.notify(awd);
@@ -410,7 +401,7 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::wdata_t() {
                 // aceLite does not have aw_unique   ext->set_unique(awd.unique);
                 ext->set_stash_nid(awd.stashnid);
                 ext->set_stash_lpid(awd.stashlpid);
-
+                ext->set_exclusive(awd.lock);
                 if(CFG::USERWIDTH)
                     ext->set_user(axi::common::id_type::CTRL, awd.user);
                 active_req_beat[tlm::TLM_WRITE_COMMAND] = find_or_create(gp);
