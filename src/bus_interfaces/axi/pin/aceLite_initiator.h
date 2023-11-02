@@ -32,7 +32,7 @@ namespace pin {
 
 using namespace axi::fsm;
 namespace acel {
-const sc_core::sc_time CLK_DELAY=1_ps;
+const sc_core::sc_time CLK_DELAY=10_ps;
 }
 
 template <typename CFG>
@@ -112,10 +112,10 @@ private:
  */
     static typename CFG::data_t get_cache_data_for_beat(fsm::fsm_handle* fsm_hndl);
     std::array<unsigned, 3> outstanding_cnt;
-    std::array<fsm_handle*, 3> active_req;
-    std::array<fsm_handle*, 3> active_resp;
+    std::array<fsm_handle*, 3> active_req{nullptr, nullptr, nullptr};
+    std::array<fsm_handle*, 3> active_resp{nullptr, nullptr, nullptr};
     sc_core::sc_clock* clk_if;
-    sc_core::sc_event clk_delayed, clk_self, r_end_req_evt, aw_evt, ar_evt;
+    sc_core::sc_event clk_delayed, clk_self, r_end_resp_evt, w_end_resp_evt, aw_evt, ar_evt;
        void nb_fw(payload_type& trans, const phase_type& phase) {
         auto t = sc_core::SC_ZERO_TIME;
         base::nb_fw(trans, phase, t);
@@ -198,7 +198,7 @@ inline void axi::pin::aceLite_initiator<CFG>::write_wdata(tlm::tlm_generic_paylo
     if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
         if(beat == 0) {
             auto dptr = trans.get_data_ptr();
-            for(size_t i = offset; i < size; ++i, ++dptr) {
+            if(dptr) for(size_t i = offset; i < size; ++i, ++dptr) {
                 auto bit_offs = i * 8;
                 data(bit_offs + 7, bit_offs) = *dptr;
                 if(beptr) {
@@ -211,7 +211,7 @@ inline void axi::pin::aceLite_initiator<CFG>::write_wdata(tlm::tlm_generic_paylo
             auto beat_start_idx = byte_offset - offset;
             auto data_len = trans.get_data_length();
             auto dptr = trans.get_data_ptr() + beat_start_idx;
-            for(size_t i = 0; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
+            if(dptr) for(size_t i = 0; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
                 auto bit_offs = i * 8;
                 data(bit_offs + 7, bit_offs) = *dptr;
                 if(beptr) {
@@ -223,7 +223,7 @@ inline void axi::pin::aceLite_initiator<CFG>::write_wdata(tlm::tlm_generic_paylo
         }
     } else { // aligned or single beat access
         auto dptr = trans.get_data_ptr() + byte_offset;
-        for(size_t i = 0; i < size; ++i, ++dptr) {
+        if(dptr) for(size_t i = 0; i < size; ++i, ++dptr) {
             auto bit_offs = (offset+i) * 8;
             data(bit_offs + 7, bit_offs) = *dptr;
             if(beptr) {
@@ -322,8 +322,12 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
                     write_aw(*fsm_hndl->trans);
                     aw_evt.notify(sc_core::SC_ZERO_TIME);
                 }
-                write_wdata(*fsm_hndl->trans, fsm_hndl->beat_count, true);
-                wdata_vl.write(0x3);
+                /* for dataless trans, no data on wdata_t*/
+                auto ext=fsm_hndl->trans->get_extension<ace_extension>();
+                if(!axi::is_dataless(ext)) {
+                    write_wdata(*fsm_hndl->trans, fsm_hndl->beat_count, true);
+                    wdata_vl.write(0x3);
+                }
             }
     };
     fsm_hndl->fsm->cb[EndReqE] = [this, fsm_hndl]() -> void {
@@ -356,7 +360,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
     fsm_hndl->fsm->cb[EndPartRespE] = [this, fsm_hndl]() -> void {
        SCCTRACE(SCMOD) <<"in EndPartRespE of setup_cb ";
        fsm_hndl->beat_count++;
-       r_end_req_evt.notify();
+       r_end_resp_evt.notify();
     };
     fsm_hndl->fsm->cb[BegRespE] = [this, fsm_hndl]() -> void {
         // scheduling the response
@@ -366,11 +370,14 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
     };
     fsm_hndl->fsm->cb[EndRespE] = [this, fsm_hndl]() -> void {
         SCCTRACE(SCMOD)<< "in EndResp of setup_cb " ;
-        r_end_req_evt.notify();
-        if(fsm_hndl->trans->is_read())
+        if(fsm_hndl->trans->is_read()) {
             rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].pop_front();
-        if(fsm_hndl->trans->is_write())
+            r_end_resp_evt.notify();
+        }
+        if(fsm_hndl->trans->is_write()){
             wr_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].pop_front();
+            w_end_resp_evt.notify();
+        }
     };
 }
 template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::ar_t() {
@@ -409,7 +416,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::r_t() {
             if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
                 if(beat_count == 0) {
                     auto dptr = fsm_hndl->trans->get_data_ptr();
-                    for(size_t i = offset; i < size; ++i, ++dptr) {
+                    if(dptr) for(size_t i = offset; i < size; ++i, ++dptr) {
                         auto bit_offs = i * 8;
                         *dptr = data(bit_offs + 7, bit_offs).to_uint();
                     }
@@ -417,14 +424,14 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::r_t() {
                     auto beat_start_idx = beat_count * size - offset;
                     auto data_len = fsm_hndl->trans->get_data_length();
                     auto dptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
-                    for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
+                    if(dptr) for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
                         auto bit_offs = i * 8;
                         *dptr = data(bit_offs + 7, bit_offs).to_uint();
                     }
                 }
             } else { // aligned or single beat access
                 auto dptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
-                for(size_t i = 0; i < size; ++i, ++dptr) {
+                if(dptr) for(size_t i = 0; i < size; ++i, ++dptr) {
                     auto bit_offs = (offset+i) * 8;
                     *dptr = data(bit_offs + 7, bit_offs).to_uint();
                 }
@@ -433,11 +440,18 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::r_t() {
             fsm_hndl->trans->get_extension(e);
             e->set_resp(axi::into<axi::resp_e>(resp));
             e->add_to_response_array(*e);
-            auto tp = CFG::IS_LITE || this->r_last->read() ? axi::fsm::protocol_time_point_e::BegRespE
-                                                           : axi::fsm::protocol_time_point_e::BegPartRespE;
-            react(tp, fsm_hndl);
-            // r_end_req_evt notified in EndPartialResp or ACK
-            wait(r_end_req_evt);
+            /* dataless trans * */
+            if(axi::is_dataless(e)) {
+                SCCTRACE(SCMOD)<< " r_t() for Make/Clean/Barrier Trans" << *fsm_hndl->trans;
+                react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
+            } else {
+                auto tp = CFG::IS_LITE || this->r_last->read() ? axi::fsm::protocol_time_point_e::BegRespE
+                                                               : axi::fsm::protocol_time_point_e::BegPartRespE;
+                react(tp, fsm_hndl);
+            }
+
+            // r_end_resp_evt notified in EndPartialResp or Endresp
+            wait(r_end_resp_evt);
             this->r_ready->write(true);
             wait(clk_i.posedge_event());
             this->r_ready.write(false);
@@ -454,6 +468,9 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::aw_t() {
         do {
             wait(this->aw_ready.posedge_event() | clk_delayed);
         } while(!this->aw_ready.read());
+        auto* fsm_hndl=active_req[tlm::TLM_WRITE_COMMAND];
+        if(axi::is_dataless(fsm_hndl->trans->get_extension<axi::ace_extension>()))
+            react(axi::fsm::protocol_time_point_e::EndReqE, fsm_hndl);
         wait(clk_i.posedge_event());
         this->aw_valid.write(false);
     }
@@ -499,8 +516,8 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::b_t() {
             fsm_hndl->trans->get_extension(e);
             e->set_resp(axi::into<axi::resp_e>(resp));
             react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
-            // r_end_req_evt notified in EndPartialResp or ACK
-            wait(r_end_req_evt);
+            // w_end_resp_evt notified in Endresp
+            wait(w_end_resp_evt);
             this->b_ready.write(true);
             wait(clk_i.posedge_event());
             this->b_ready.write(false);
