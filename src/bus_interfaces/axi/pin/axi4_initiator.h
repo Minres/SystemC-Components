@@ -90,7 +90,7 @@ private:
     void setup_callbacks(fsm_handle* fsm_hndl);
 
     void clk_delay() {
-        clk_delayed.notify(axi4::CLK_DELAY);
+        clk_delayed.notify(axi::CLK_DELAY);
     }
 
     void ar_t();
@@ -245,7 +245,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::setup_callbac
     fsm_hndl->fsm->cb[EndPartReqE] = [this, fsm_hndl]() -> void {
         active_req[tlm::TLM_WRITE_COMMAND] = nullptr;
         tlm::tlm_phase phase = axi::END_PARTIAL_REQ;
-        sc_core::sc_time t = (clk_if?clk_if->period()-axi4::CLK_DELAY-1_ps:sc_core::SC_ZERO_TIME);
+        sc_core::sc_time t = (clk_if?clk_if->period()-axi::CLK_DELAY-1_ps:sc_core::SC_ZERO_TIME);
         auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
         fsm_hndl->beat_count++;
     };
@@ -279,7 +279,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::setup_callbac
             fsm_hndl->beat_count++;
         }
         tlm::tlm_phase phase = tlm::END_REQ;
-        sc_core::sc_time t = (clk_if?clk_if->period()-axi4::CLK_DELAY-1_ps:sc_core::SC_ZERO_TIME);
+        sc_core::sc_time t = (clk_if?clk_if->period()-axi::CLK_DELAY-1_ps:sc_core::SC_ZERO_TIME);
         auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
         fsm_hndl->trans->set_response_status(tlm::TLM_OK_RESPONSE);
 
