@@ -31,9 +31,6 @@ namespace axi {
 namespace pin {
 
 using namespace axi::fsm;
-namespace ace {
-const sc_core::sc_time CLK_DELAY=1_ps;
-}
 
 template <typename CFG>
 struct ace_initiator : public sc_core::sc_module,
@@ -105,7 +102,7 @@ private:
     void setup_callbacks(fsm_handle* fsm_hndl);
 
     void clk_delay() {
-        clk_delayed.notify(ace::CLK_DELAY);
+        clk_delayed.notify(axi::CLK_DELAY);
     }
 
     void ar_t();
@@ -135,11 +132,11 @@ private:
     unsigned int SNOOP= 3;   // TBD??
     scc::peq<std::tuple<uint8_t, fsm_handle*>> cd_vl;
     scc::peq<std::tuple<uint8_t, fsm_handle*>> cr_resp_vl;
-    std::array<unsigned, 3> outstanding_cnt;
+    std::array<unsigned, 3> outstanding_cnt{0, 0, 0};
     std::array<fsm_handle*, 3> active_req{nullptr, nullptr, nullptr};
     std::array<fsm_handle*, 3> active_resp{nullptr, nullptr, nullptr};
-    std::array<fsm_handle*, 4> active_resp_beat{nullptr, nullptr, nullptr, nullptr};
-    sc_core::sc_clock* clk_if;
+    std::array<fsm_handle*, 4> active_resp_beat{nullptr, nullptr, nullptr};
+    sc_core::sc_clock* clk_if{nullptr};
     sc_core::sc_event clk_delayed, clk_self, r_end_resp_evt, w_end_resp_evt, aw_evt, ar_evt, ac_end_req_evt;
        void nb_fw(payload_type& trans, const phase_type& phase) {
         auto t = sc_core::SC_ZERO_TIME;

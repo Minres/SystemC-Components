@@ -30,11 +30,6 @@ namespace axi {
 //! pin level adapters
 namespace pin {
 
-using namespace axi::fsm;
-namespace acel {
-const sc_core::sc_time CLK_DELAY=10_ps;
-}
-
 template <typename CFG>
 struct aceLite_initiator : public sc_core::sc_module,
                     public aw_ch_aceLite<CFG, typename CFG::master_types>,
@@ -95,7 +90,7 @@ private:
     void setup_callbacks(fsm_handle* fsm_hndl);
 
     void clk_delay() {
-        clk_delayed.notify(acel::CLK_DELAY);
+        clk_delayed.notify(axi::CLK_DELAY);
     }
 
     void ar_t();
@@ -111,11 +106,11 @@ private:
  * @return
  */
     static typename CFG::data_t get_cache_data_for_beat(fsm::fsm_handle* fsm_hndl);
-    std::array<unsigned, 3> outstanding_cnt;
+    std::array<unsigned, 3> outstanding_cnt{0, 0, 0};
     std::array<fsm_handle*, 3> active_req{nullptr, nullptr, nullptr};
     std::array<fsm_handle*, 3> active_resp{nullptr, nullptr, nullptr};
-    sc_core::sc_clock* clk_if;
-    sc_core::sc_event clk_delayed, clk_self, r_end_resp_evt, w_end_resp_evt, aw_evt, ar_evt;
+    sc_core::sc_clock* clk_if{nullptr};
+    sc_core::sc_event clk_delayed, clk_self, r_end_req_evt, aw_evt, ar_evt;
        void nb_fw(payload_type& trans, const phase_type& phase) {
         auto t = sc_core::SC_ZERO_TIME;
         base::nb_fw(trans, phase, t);

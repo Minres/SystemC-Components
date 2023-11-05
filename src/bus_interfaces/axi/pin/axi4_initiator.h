@@ -30,9 +30,6 @@ namespace axi {
 namespace pin {
 
 using namespace axi::fsm;
-namespace axi4 {
-const sc_core::sc_time CLK_DELAY=1_ps;
-}
 
 template <typename CFG>
 struct axi4_initiator : public sc_core::sc_module,
@@ -101,10 +98,10 @@ private:
     void aw_t();
     void wdata_t();
     void b_t();
-    std::array<unsigned, 3> outstanding_cnt;
+    std::array<unsigned, 3> outstanding_cnt{0, 0, 0};
     std::array<fsm_handle*, 3> active_req{nullptr, nullptr, nullptr};
     std::array<fsm_handle*, 3> active_resp{nullptr, nullptr, nullptr};
-    sc_core::sc_clock* clk_if;
+    sc_core::sc_clock* clk_if{nullptr};
     sc_core::sc_event clk_delayed, clk_self, r_end_req_evt, aw_evt, ar_evt;
     void nb_fw(payload_type& trans, const phase_type& phase) {
         auto delay = sc_core::SC_ZERO_TIME;

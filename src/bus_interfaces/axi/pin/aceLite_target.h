@@ -85,7 +85,7 @@ private:
         } else
             clk_delayed.notify(sc_core::SC_ZERO_TIME/*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
 #else
-        clk_delayed.notify(1_ps);
+        clk_delayed.notify(axi::CLK_DELAY);
 #endif
     }
     void ar_t();
@@ -119,9 +119,9 @@ private:
 
     sc_core::sc_clock* clk_if{nullptr};
     sc_core::sc_event clk_delayed, clk_self, ar_end_req_evt, wdata_end_req_evt;
-    std::array<fsm_handle*, 3> active_req_beat;
-    std::array<fsm_handle*, 3> active_req;
-    std::array<fsm_handle*, 3> active_resp_beat;
+    std::array<fsm_handle*, 3> active_req_beat{nullptr, nullptr, nullptr};
+    std::array<fsm_handle*, 3> active_req{nullptr, nullptr, nullptr};
+    std::array<fsm_handle*, 3> active_resp_beat{nullptr, nullptr, nullptr};
     scc::peq<aw_data> aw_que;
     scc::peq<std::tuple<uint8_t, fsm_handle*>> rresp_vl;
     scc::peq<std::tuple<uint8_t, fsm_handle*>> wresp_vl;

@@ -77,14 +77,14 @@ private:
     void setup_callbacks(axi::fsm::fsm_handle*) override;
 
     void clk_delay() {
-    #ifdef DELTA_SYNC
+#ifdef DELTA_SYNC
         if(sc_core::sc_delta_count_at_current_time()<5) {
             clk_self.notify(sc_core::SC_ZERO_TIME);
             next_trigger(clk_self);
         } else
             clk_delayed.notify(sc_core::SC_ZERO_TIME/*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
 #else
-        clk_delayed.notify(1_ps);
+        clk_delayed.notify(axi::CLK_DELAY);
 #endif
     }
     void ar_t();
@@ -108,9 +108,9 @@ private:
     };
     sc_core::sc_clock* clk_if{nullptr};
     sc_core::sc_event clk_delayed, clk_self, ar_end_req_evt, wdata_end_req_evt;
-    std::array<fsm_handle*, 3> active_req_beat;
-    std::array<fsm_handle*, 3> active_req;
-    std::array<fsm_handle*, 3> active_resp_beat;
+    std::array<fsm_handle*, 3> active_req_beat{nullptr, nullptr, nullptr};
+    std::array<fsm_handle*, 3> active_req{nullptr, nullptr, nullptr};
+    std::array<fsm_handle*, 3> active_resp_beat{nullptr, nullptr, nullptr};
     scc::peq<aw_data> aw_que;
     scc::peq<std::tuple<uint8_t, fsm_handle*>> rresp_vl;
     scc::peq<std::tuple<uint8_t, fsm_handle*>> wresp_vl;
@@ -327,7 +327,11 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
     wait(sc_core::SC_ZERO_TIME);
     const auto awsize = util::ilog2(CFG::BUSWIDTH / 8);
     while(true) {
+        if(sc_core::sc_time_stamp() >= 39.8183900_ms)
+            SCCTRACE(SCMOD)<<"Yihaa";
         wait(this->aw_valid.posedge_event() | clk_delayed);
+        if(sc_core::sc_time_stamp() >= 39.818400_ms)
+            SCCTRACE(SCMOD)<<"yepp";
         if(this->aw_valid.event() || (!active_req_beat[tlm::TLM_IGNORE_COMMAND] && this->aw_valid.read())) {
             SCCTRACE(SCMOD) << "AWVALID detected for 0x" << std::hex << this->aw_addr.read();
             // clang-format off
