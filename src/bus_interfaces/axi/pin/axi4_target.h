@@ -274,8 +274,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::ar_t() {
             ext->set_length(arlen);
             ext->set_size(arsize);
             ext->set_burst(CFG::IS_LITE ? axi::burst_e::INCR : axi::into<axi::burst_e>(this->ar_burst->read()));
-            if(this->ar_lock->read())
-                ext->set_exclusive(true);
+            ext->set_exclusive(!CFG::IS_LITE && this->ar_lock->read());
             ext->set_prot(this->ar_prot->read());
             ext->set_qos(CFG::IS_LITE ? 0U : this->ar_qos->read().to_uint());
             ext->set_region(CFG::IS_LITE ? 0U : this->ar_region->read().to_uint());
