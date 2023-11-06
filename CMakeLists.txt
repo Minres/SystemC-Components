@@ -74,6 +74,7 @@ endif()
 if(BUILD_SCC_DOCUMENTATION)
 	add_subdirectory(doc)
 endif()
+set(SCC_CMAKE_CONFIG_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/scc)
 
 
 ###############################################################################
@@ -118,7 +119,8 @@ if (ENABLE_CLANG_TIDY)
     endif()
 endif()
 
-find_package(Boost REQUIRED COMPONENTS system date_time) # header only libraries must not be added here
+set(MIN_BOOST_VERSION 1.70)
+find_package(Boost ${MIN_BOOST_VERSION} REQUIRED COMPONENTS system date_time) # header only libraries must not be added here
 include(SystemCPackage)
 
 include(CheckSymbolExists)
@@ -173,11 +175,15 @@ if(SystemC_FOUND)
 
 	# Define the scc library
 	add_library(scc INTERFACE)
+    add_library(scc::scc ALIAS ${PROJECT_NAME})
 	if(HAVE_GETENV)
 	    target_compile_definitions(scc INTERFACE HAVE_GETENV)
 	endif()
 	
-	target_include_directories (scc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+	target_include_directories (scc INTERFACE 
+	   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+	   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+	)
 	if(TARGET Boost::date_time)
 	    target_link_libraries(scc INTERFACE Boost::date_time)
 	else()
@@ -190,31 +196,37 @@ if(SystemC_FOUND)
 	set_target_properties(scc PROPERTIES
 	    PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
 	)
-	set(SC_CMAKE_CONFIG_DIR ${CMAKE_INSTALL_DATADIR}/scc/cmake)
 
 	install(TARGETS scc
-			EXPORT sccTargets
+			EXPORT scc-targets
 	        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 	        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
 	        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
 	        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 	        )
-#	install(
-#    		EXPORT sccTargets 
-#    		FILE sccTargets.cmake
-#    		DESTINATION ${SCC_CMAKE_CONFIG_DIR}
-#    		NAMESPACE scc::
-#			)
-#	include(CMakePackageConfigHelpers)
-#	configure_package_config_file(
-#	    cmake/sccConfig.cmake.in
-#	    ${CMAKE_CURRENT_BINARY_DIR}/sccConfig.cmake
-#	    INSTALL_DESTINATION ${SCC_CMAKE_CONFIG_DIR}
-#	)
-#	install(
-#    		FILES ${CMAKE_CURRENT_BINARY_DIR}/sccConfig.cmake
-#    		DESTINATION ${SCC_CMAKE_CONFIG_DIR}
-#			)
+	install(EXPORT scc-targets 
+    		FILE scc-targets.cmake
+    		DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+    		NAMESPACE scc::
+			)
+
+	include(CMakePackageConfigHelpers)
+    write_basic_package_version_file(
+        ${CMAKE_CURRENT_BINARY_DIR}/scc-config-version.cmake
+        VERSION ${PROJECT_VERSION}
+        COMPATIBILITY AnyNewerVersion
+    )
+    
+    configure_package_config_file(
+        ${CMAKE_CURRENT_LIST_DIR}/cmake/scc-config.cmake.in
+        ${CMAKE_CURRENT_BINARY_DIR}/scc-config.cmake
+        INSTALL_DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+    )
+
+	install(FILES
+	    ${CMAKE_CURRENT_BINARY_DIR}/scc-config.cmake
+        ${CMAKE_CURRENT_BINARY_DIR}/scc-config-version.cmake
+    	DESTINATION ${SCC_CMAKE_CONFIG_DIR})
 else()
 	add_subdirectory(third_party)
 endif()

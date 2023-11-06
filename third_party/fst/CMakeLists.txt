@@ -1,15 +1,19 @@
 cmake_minimum_required (VERSION 3.16)
 
-project (fstlib VERSION 1.0.0)
+project (fstapi VERSION 1.0.0)
 
 find_package(ZLIB)
 if(ZLIB_FOUND)
-	set (SRC fstapi.c fastlz.c)
+	set(SRC fstapi.c fastlz.c)
 	if(NOT TARGET lz4::lz4)
     	     list(APPEND SRC lz4.c)
 	endif()
 	add_library(fstapi ${SRC})
-	target_include_directories(fstapi PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${ZLIB_INCLUDE_DIRS})
+	target_include_directories(fstapi PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
+	)
+    target_include_directories(fstapi PUBLIC ${ZLIB_INCLUDE_DIRS})
 	target_link_libraries(fstapi PRIVATE ${ZLIB_LIBRARIES})
 	if(TARGET lz4::lz4)
 	     target_link_libraries(fstapi PRIVATE lz4::lz4)
@@ -29,15 +33,39 @@ if(ZLIB_FOUND)
 	    PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/fstapi.h
 	)
 	
-	install(TARGETS fstapi
+	install(TARGETS fstapi EXPORT fstapi-targets
 	        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 	        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
 	        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
 	        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/fst
 	)
+        
 	install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 	        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
 	        FILES_MATCHING # install only matched files
 	        PATTERN "*.h" # select header files
 	        )
-endif()
+
+    set(FST_CMAKE_CONFIG_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/fstapi)
+    include(CMakePackageConfigHelpers)
+    
+    install(EXPORT fstapi-targets
+        DESTINATION ${FST_CMAKE_CONFIG_DIR})
+    
+    write_basic_package_version_file(
+        ${CMAKE_CURRENT_BINARY_DIR}/fstapi-config-version.cmake
+        VERSION ${PROJECT_VERSION}
+        COMPATIBILITY AnyNewerVersion
+    )
+    
+    configure_package_config_file(
+        ${CMAKE_CURRENT_LIST_DIR}/fstapi-config.cmake.in
+        ${CMAKE_CURRENT_BINARY_DIR}/fstapi-config.cmake
+        INSTALL_DESTINATION ${FST_CMAKE_CONFIG_DIR}
+    )
+    
+    install(FILES
+        ${CMAKE_CURRENT_BINARY_DIR}/fstapi-config.cmake
+        ${CMAKE_CURRENT_BINARY_DIR}/fstapi-config-version.cmake
+        DESTINATION ${FST_CMAKE_CONFIG_DIR})
+    endif()

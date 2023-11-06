@@ -1,0 +1,12 @@
+@PACKAGE_INIT@
+include(CMakeFindDependencyMacro)
+
+find_dependency(lz4)
+find_dependency(ZLIB)
+
+if(NOT TARGET scc::scc)
+    include("${CMAKE_CURRENT_LIST_DIR}/fst-targets.cmake")
+endif()
+
+set(fst_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include")
+set(fst_lIBRARIES fst::fst)

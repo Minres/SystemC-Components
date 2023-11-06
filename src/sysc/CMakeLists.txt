@@ -60,6 +60,7 @@ if(ENABLE_SQLITE)
 endif()
 
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
+add_library(scc::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 if(FULL_TRACE_TYPE_LIST)
     target_compile_definitions(${PROJECT_NAME} PRIVATE FULL_TRACE_TYPE_LIST)
 endif()
@@ -70,7 +71,10 @@ if(SC_WITH_PHASE_CALLBACK_TRACING)
     target_compile_definitions(${PROJECT_NAME} PUBLIC WITH_SC_TRACING_PHASE_CALLBACKS)
 endif()
 
-target_include_directories (${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (${PROJECT_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
+)
 target_link_libraries(${PROJECT_NAME} PUBLIC scc-util RapidJSON ${SPDLOG_TARGET} lwtr)
 if(ENABLE_SQLITE)
     target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SQLITE)
@@ -153,13 +157,18 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/scc_sysc.h
 )
 
-install(TARGETS ${PROJECT_NAME} COMPONENT sysc
+install(TARGETS ${PROJECT_NAME} COMPONENT sysc EXPORT ${PROJECT_NAME}-targets
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
         
+install(EXPORT ${PROJECT_NAME}-targets
+        DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+        NAMESPACE scc::
+        )
+
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scc COMPONENT sysc
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
         FILES_MATCHING # install only matched files
