@@ -110,7 +110,7 @@ private:
     std::array<fsm_handle*, 3> active_req{nullptr, nullptr, nullptr};
     std::array<fsm_handle*, 3> active_resp{nullptr, nullptr, nullptr};
     sc_core::sc_clock* clk_if{nullptr};
-    sc_core::sc_event clk_delayed, clk_self, r_end_req_evt, aw_evt, ar_evt;
+    sc_core::sc_event clk_delayed, clk_self, r_end_resp_evt, w_end_resp_evt, aw_evt, ar_evt;
        void nb_fw(payload_type& trans, const phase_type& phase) {
         auto t = sc_core::SC_ZERO_TIME;
         base::nb_fw(trans, phase, t);
@@ -299,7 +299,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
     fsm_hndl->fsm->cb[EndPartReqE] = [this, fsm_hndl]() -> void {
         active_req[tlm::TLM_WRITE_COMMAND] = nullptr;
         tlm::tlm_phase phase = axi::END_PARTIAL_REQ;
-        sc_core::sc_time t = (clk_if?clk_if->period()-acel::CLK_DELAY-1_ps:sc_core::SC_ZERO_TIME);
+        sc_core::sc_time t = (clk_if?clk_if->period()-axi::CLK_DELAY-1_ps:sc_core::SC_ZERO_TIME);
         auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
         fsm_hndl->beat_count++;
     };
@@ -338,7 +338,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
                 fsm_hndl->beat_count++;
             }
             tlm::tlm_phase phase = tlm::END_REQ;
-            sc_core::sc_time t = (clk_if?clk_if->period()-acel::CLK_DELAY-1_ps:sc_core::SC_ZERO_TIME);
+            sc_core::sc_time t = (clk_if?clk_if->period()-axi::CLK_DELAY-1_ps:sc_core::SC_ZERO_TIME);
             SCCTRACE(SCMOD) << " in EndReq before set_resp";
             auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
             fsm_hndl->trans->set_response_status(tlm::TLM_OK_RESPONSE);

@@ -102,7 +102,7 @@ private:
     std::array<fsm_handle*, 3> active_req{nullptr, nullptr, nullptr};
     std::array<fsm_handle*, 3> active_resp{nullptr, nullptr, nullptr};
     sc_core::sc_clock* clk_if{nullptr};
-    sc_core::sc_event clk_delayed, clk_self, r_end_req_evt, aw_evt, ar_evt;
+    sc_core::sc_event clk_delayed, clk_self, r_end_resp_evt, aw_evt, ar_evt;
     void nb_fw(payload_type& trans, const phase_type& phase) {
         auto delay = sc_core::SC_ZERO_TIME;
         base::nb_fw(trans, phase, delay);
@@ -293,7 +293,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::setup_callbac
     };
     fsm_hndl->fsm->cb[EndPartRespE] = [this, fsm_hndl]() -> void {
         fsm_hndl->beat_count++;
-        r_end_req_evt.notify();
+        r_end_resp_evt.notify();
     };
     fsm_hndl->fsm->cb[BegRespE] = [this, fsm_hndl]() -> void {
         // scheduling the response
@@ -302,7 +302,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::setup_callbac
         auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
     };
     fsm_hndl->fsm->cb[EndRespE] = [this, fsm_hndl]() -> void {
-        r_end_req_evt.notify();
+        r_end_resp_evt.notify();
         if(fsm_hndl->trans->is_read())
             rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].pop_front();
         if(fsm_hndl->trans->is_write())
@@ -376,7 +376,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::r_t() {
             auto tp = CFG::IS_LITE || this->r_last->read() ? axi::fsm::protocol_time_point_e::BegRespE
                                                            : axi::fsm::protocol_time_point_e::BegPartRespE;
             react(tp, fsm_hndl);
-            wait(r_end_req_evt);
+            wait(r_end_resp_evt);
             this->r_ready.write(true);
             wait(clk_i.posedge_event());
             this->r_ready.write(false);
@@ -437,7 +437,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::b_t() {
             fsm_hndl->trans->get_extension(e);
             e->set_resp(axi::into<axi::resp_e>(resp));
             react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
-            wait(r_end_req_evt);
+            wait(r_end_resp_evt);
             this->b_ready.write(true);
             wait(clk_i.posedge_event());
             this->b_ready.write(false);
