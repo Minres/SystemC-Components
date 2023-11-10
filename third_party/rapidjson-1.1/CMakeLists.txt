@@ -31,7 +31,7 @@ install(TARGETS RapidJSON EXPORT RapidJSON-targets
 install(EXPORT RapidJSON-targets
         DESTINATION ${SCC_CMAKE_CONFIG_DIR})
 
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/rapidjson
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
         FILES_MATCHING # install only matched files
         PATTERN "*.h" # select header files
