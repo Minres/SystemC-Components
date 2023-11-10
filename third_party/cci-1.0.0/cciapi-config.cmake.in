@@ -1,0 +1,9 @@
+@PACKAGE_INIT@
+include(CMakeFindDependencyMacro)
+
+if(NOT TARGET cciapi::cciapi)
+    include("${CMAKE_CURRENT_LIST_DIR}/cciapi-targets.cmake")
+endif()
+
+set(cciapi_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include")
+set(cciapi_lIBRARIES cciapi::cciapi)
