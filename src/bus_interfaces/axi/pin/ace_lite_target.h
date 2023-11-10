@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _BUS_AXI_PIN_ACELITE_TARGET_H_
-#define _BUS_AXI_PIN_ACELITE_TARGET_H_
+#ifndef _BUS_AXI_PIN_ACE_LITE_TARGET_H_
+#define _BUS_AXI_PIN_ACE_LITE_TARGET_H_
 
 #include <axi/axi_tlm.h>
 #include <axi/fsm/base.h>
@@ -33,15 +33,15 @@ namespace pin {
 using namespace axi::fsm;
 
 template <typename CFG>
-struct aceLite_target : public sc_core::sc_module,
-                    public aw_ch_aceLite<CFG, typename CFG::slave_types>,
-                    public wdata_ch_aceLite<CFG, typename CFG::slave_types>,
-                    public b_ch_aceLite<CFG, typename CFG::slave_types>,
-                    public ar_ch_aceLite<CFG, typename CFG::slave_types>,
-                    public rresp_ch_aceLite<CFG, typename CFG::slave_types>,
+struct ace_lite_target : public sc_core::sc_module,
+                    public aw_ace_lite<CFG, typename CFG::slave_types>,
+                    public wdata_ace_lite<CFG, typename CFG::slave_types>,
+                    public b_ace_lite<CFG, typename CFG::slave_types>,
+                    public ar_ace_lite<CFG, typename CFG::slave_types>,
+                    public rresp_ace_lite<CFG, typename CFG::slave_types>,
                     protected axi::fsm::base,
                     public axi::axi_bw_transport_if<axi::axi_protocol_types> {
-    SC_HAS_PROCESS(aceLite_target);
+    SC_HAS_PROCESS(ace_lite_target);
 
     using payload_type = axi::axi_protocol_types::tlm_payload_type;
     using phase_type = axi::axi_protocol_types::tlm_phase_type;
@@ -50,9 +50,9 @@ struct aceLite_target : public sc_core::sc_module,
 
     axi::axi_initiator_socket<CFG::BUSWIDTH> isckt{"isckt"};
 
-    aceLite_target(sc_core::sc_module_name const& nm)
+    ace_lite_target(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm)
-    // aceLite has no ack, therefore coherent= false
+    // ace_lite has no ack, therefore coherent= false
     , base(CFG::BUSWIDTH, false) {
         instance_name = name();
         isckt.bind(*this);
@@ -130,7 +130,7 @@ private:
 } // namespace axi
 
 template <typename CFG>
-inline tlm::tlm_sync_enum axi::pin::aceLite_target<CFG>::nb_transport_bw(payload_type& trans, phase_type& phase,sc_core::sc_time& t) {
+inline tlm::tlm_sync_enum axi::pin::ace_lite_target<CFG>::nb_transport_bw(payload_type& trans, phase_type& phase,sc_core::sc_time& t) {
     auto ret = tlm::TLM_ACCEPTED;
     SCCTRACE(SCMOD) << "nb_transport_bw with " << phase << " with delay= "<< t<< " of trans " << trans;
     if(phase == END_PARTIAL_REQ || phase == tlm::END_REQ) { // read/write
@@ -143,9 +143,9 @@ inline tlm::tlm_sync_enum axi::pin::aceLite_target<CFG>::nb_transport_bw(payload
 }
 
 template <typename CFG>
-inline void axi::pin::aceLite_target<CFG>::invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) {}
+inline void axi::pin::ace_lite_target<CFG>::invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) {}
 
-template <typename CFG> typename CFG::data_t axi::pin::aceLite_target<CFG>::get_read_data_for_beat(fsm_handle* fsm_hndl) {
+template <typename CFG> typename CFG::data_t axi::pin::ace_lite_target<CFG>::get_read_data_for_beat(fsm_handle* fsm_hndl) {
     auto beat_count = fsm_hndl->beat_count;
     //SCCTRACE(SCMOD) << " " ;
     auto size = axi::get_burst_size(*fsm_hndl->trans);
@@ -178,7 +178,7 @@ template <typename CFG> typename CFG::data_t axi::pin::aceLite_target<CFG>::get_
     return data;
 }
 
-template <typename CFG> inline void axi::pin::aceLite_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
+template <typename CFG> inline void axi::pin::ace_lite_target<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
     fsm_hndl->fsm->cb[RequestPhaseBeg] = [this, fsm_hndl]() -> void { fsm_hndl->beat_count = 0; };
     fsm_hndl->fsm->cb[BegPartReqE] = [this, fsm_hndl]() -> void {
         sc_assert(fsm_hndl->trans->get_command() == tlm::TLM_WRITE_COMMAND);
@@ -257,7 +257,7 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::setup_callbac
     };
 }
 
-template <typename CFG> inline void axi::pin::aceLite_target<CFG>::ar_t() {
+template <typename CFG> inline void axi::pin::ace_lite_target<CFG>::ar_t() {
     this->ar_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     auto arid = 0U;
@@ -302,7 +302,7 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::ar_t() {
     }
 }
 
-template <typename CFG> inline void axi::pin::aceLite_target<CFG>::rresp_t() {
+template <typename CFG> inline void axi::pin::ace_lite_target<CFG>::rresp_t() {
     this->r_valid.write(false);
     wait(sc_core::SC_ZERO_TIME);
     fsm_handle* fsm_hndl;
@@ -336,7 +336,7 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::rresp_t() {
     }
 }
 
-template <typename CFG> inline void axi::pin::aceLite_target<CFG>::aw_t() {
+template <typename CFG> inline void axi::pin::ace_lite_target<CFG>::aw_t() {
     this->aw_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     const auto awsize = util::ilog2(CFG::BUSWIDTH / 8);
@@ -371,7 +371,7 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::aw_t() {
     }
 }
 
-template <typename CFG> inline void axi::pin::aceLite_target<CFG>::wdata_t() {
+template <typename CFG> inline void axi::pin::ace_lite_target<CFG>::wdata_t() {
     this->w_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
@@ -398,7 +398,7 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::wdata_t() {
                 ext->set_region(awd.region);
                 ext->set_snoop(axi::into<axi::snoop_e>(awd.snoop));
                 ext->set_barrier(axi::into<axi::bar_e>(awd.bar));
-                // aceLite does not have aw_unique   ext->set_unique(awd.unique);
+                // ace_lite does not have aw_unique   ext->set_unique(awd.unique);
                 ext->set_stash_nid(awd.stashnid);
                 ext->set_stash_lpid(awd.stashlpid);
                 ext->set_exclusive(awd.lock);
@@ -473,7 +473,7 @@ template <typename CFG> inline void axi::pin::aceLite_target<CFG>::wdata_t() {
 }
 
 template<typename CFG>
-inline void axi::pin::aceLite_target<CFG>::bresp_t() {
+inline void axi::pin::ace_lite_target<CFG>::bresp_t() {
     this->b_valid.write(false);
     wait(sc_core::SC_ZERO_TIME);
     fsm_handle* fsm_hndl;
@@ -499,4 +499,4 @@ inline void axi::pin::aceLite_target<CFG>::bresp_t() {
     }
 }
 
-#endif /* _BUS_AXI_PIN_ACELITE_TARGET_H_ */
+#endif /* _BUS_AXI_PIN_ace_lite_TARGET_H_ */

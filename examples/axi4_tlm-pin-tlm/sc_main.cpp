@@ -30,11 +30,11 @@ public:
     axi::scv::axi_recorder_module<bus_cfg::BUSWIDTH> intor_rec{"intor_rec"};
     axi::pin::axi4_initiator<bus_cfg> intor_bfm{"intor_bfm"};
 
-    axi::aw_ch<bus_cfg, axi::signal_types> aw;
-    axi::wdata_ch<bus_cfg, axi::signal_types> wdata;
-    axi::b_ch<bus_cfg, axi::signal_types> b;
-    axi::ar_ch<bus_cfg, axi::signal_types> ar;
-    axi::rresp_ch<bus_cfg, axi::signal_types> rresp;
+    axi::aw_axi<bus_cfg, axi::signal_types> aw;
+    axi::wdata_axi<bus_cfg, axi::signal_types> wdata;
+    axi::b_axi<bus_cfg, axi::signal_types> b;
+    axi::ar_axi<bus_cfg, axi::signal_types> ar;
+    axi::rresp_axi<bus_cfg, axi::signal_types> rresp;
     axi::pin::axi4_target<bus_cfg> tgt_bfm{"tgt_bfm"};
 
     axi::scv::axi_recorder_module<bus_cfg::BUSWIDTH> tgt_rec{"tgt_rec"};

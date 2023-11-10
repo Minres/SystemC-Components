@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _BUS_AXI_PIN_ACELITE_INITIATOR_H_
-#define _BUS_AXI_PIN_ACELITE_INITIATOR_H_
+#ifndef _BUS_AXI_PIN_ACE_LITE_INITIATOR_H_
+#define _BUS_AXI_PIN_ACE_LITE_INITIATOR_H_
 
 #include <axi/axi_tlm.h>
 #include <axi/fsm/base.h>
@@ -31,15 +31,15 @@ namespace axi {
 namespace pin {
 
 template <typename CFG>
-struct aceLite_initiator : public sc_core::sc_module,
-                    public aw_ch_aceLite<CFG, typename CFG::master_types>,
-                    public wdata_ch_aceLite<CFG, typename CFG::master_types>,
-                    public b_ch_aceLite<CFG, typename CFG::master_types>,
-                    public ar_ch_aceLite<CFG, typename CFG::master_types>,
-                    public rresp_ch_aceLite<CFG, typename CFG::master_types>,
+struct ace_lite_initiator : public sc_core::sc_module,
+                    public aw_ace_lite<CFG, typename CFG::master_types>,
+                    public wdata_ace_lite<CFG, typename CFG::master_types>,
+                    public b_ace_lite<CFG, typename CFG::master_types>,
+                    public ar_ace_lite<CFG, typename CFG::master_types>,
+                    public rresp_ace_lite<CFG, typename CFG::master_types>,
                     protected axi::fsm::base,
                     public axi::ace_fw_transport_if<axi::axi_protocol_types> {
-    SC_HAS_PROCESS(aceLite_initiator);
+    SC_HAS_PROCESS(ace_lite_initiator);
 
     using payload_type = axi::axi_protocol_types::tlm_payload_type;
     using phase_type = axi::axi_protocol_types::tlm_phase_type;
@@ -48,9 +48,9 @@ struct aceLite_initiator : public sc_core::sc_module,
 
     axi::axi_target_socket<CFG::BUSWIDTH> tsckt{"tsckt"};
 
-    aceLite_initiator(sc_core::sc_module_name const& nm)
+    ace_lite_initiator(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm)
-    // aceLite has no ack, therefore coherent= false
+    // ace_lite has no ack, therefore coherent= false
     , base(CFG::BUSWIDTH, false) {
         instance_name = name();
         tsckt(*this);
@@ -115,7 +115,7 @@ private:
         auto t = sc_core::SC_ZERO_TIME;
         base::nb_fw(trans, phase, t);
     }
-    tlm_utils::peq_with_cb_and_phase<aceLite_initiator> fw_peq{this, &aceLite_initiator::nb_fw};
+    tlm_utils::peq_with_cb_and_phase<ace_lite_initiator> fw_peq{this, &ace_lite_initiator::nb_fw};
     std::unordered_map<unsigned, std::deque<fsm_handle*>> rd_resp_by_id, wr_resp_by_id;
     sc_core::sc_buffer<uint8_t> wdata_vl;
     void write_ar(tlm::tlm_generic_payload& trans);
@@ -126,7 +126,7 @@ private:
 } // namespace pin
 } // namespace axi
 
-template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::write_ar(tlm::tlm_generic_payload& trans) {
+template <typename CFG> inline void axi::pin::ace_lite_initiator<CFG>::write_ar(tlm::tlm_generic_payload& trans) {
     sc_dt::sc_uint<CFG::ADDRWIDTH> addr = trans.get_address();
     this->ar_addr.write(addr);
     if(auto ext = trans.get_extension<axi::ace_extension>()) {
@@ -147,7 +147,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::write_ar(t
     }
 }
 
-template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::write_aw(tlm::tlm_generic_payload& trans) {
+template <typename CFG> inline void axi::pin::ace_lite_initiator<CFG>::write_aw(tlm::tlm_generic_payload& trans) {
     sc_dt::sc_uint<CFG::ADDRWIDTH> addr = trans.get_address();
     this->aw_addr.write(addr);
     if(auto ext = trans.get_extension<axi::ace_extension>()) {
@@ -167,7 +167,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::write_aw(t
         this->aw_domain->write(sc_dt::sc_uint<2>((uint8_t)ext->get_domain()));
         this->aw_snoop->write(sc_dt::sc_uint<CFG::SNOOPWIDTH>((uint8_t)ext->get_snoop()));
         this->aw_bar->write(sc_dt::sc_uint<2>((uint8_t)ext->get_barrier()));
-        /* aceLite doe not have unique* */
+        /* ace_lite doe not have unique* */
        // this->aw_unique->write(ext->get_unique());
         if(ext->is_stash_nid_en()) {
             this->aw_stashniden->write(true);
@@ -182,7 +182,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::write_aw(t
 
 // FIXME: strb not yet correct
 template <typename CFG>
-inline void axi::pin::aceLite_initiator<CFG>::write_wdata(tlm::tlm_generic_payload& trans, unsigned beat, bool last) {
+inline void axi::pin::ace_lite_initiator<CFG>::write_wdata(tlm::tlm_generic_payload& trans, unsigned beat, bool last) {
     typename CFG::data_t data{0};
     sc_dt::sc_uint<CFG::BUSWIDTH / 8> strb{0};
     auto ext = trans.get_extension<axi::ace_extension>();
@@ -238,7 +238,7 @@ inline void axi::pin::aceLite_initiator<CFG>::write_wdata(tlm::tlm_generic_paylo
 }
 
 
-template <typename CFG> typename CFG::data_t axi::pin::aceLite_initiator<CFG>::get_cache_data_for_beat(fsm_handle* fsm_hndl) {
+template <typename CFG> typename CFG::data_t axi::pin::ace_lite_initiator<CFG>::get_cache_data_for_beat(fsm_handle* fsm_hndl) {
     auto beat_count = fsm_hndl->beat_count;
     //SCCTRACE(SCMOD) << " " ;
     auto size = axi::get_burst_size(*fsm_hndl->trans);
@@ -271,7 +271,7 @@ template <typename CFG> typename CFG::data_t axi::pin::aceLite_initiator<CFG>::g
     return data;
 }
 
-template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
+template <typename CFG> inline void axi::pin::ace_lite_initiator<CFG>::setup_callbacks(fsm_handle* fsm_hndl) {
     fsm_hndl->fsm->cb[RequestPhaseBeg] = [this, fsm_hndl]() -> void {
         if(fsm_hndl->is_snoop) {
             SCCTRACE(SCMOD)<<" for snoop in RequestPhaseBeg ";
@@ -375,7 +375,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::setup_call
         }
     };
 }
-template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::ar_t() {
+template <typename CFG> inline void axi::pin::ace_lite_initiator<CFG>::ar_t() {
     this->ar_valid.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
@@ -391,7 +391,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::ar_t() {
     }
 }
 
-template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::r_t() {
+template <typename CFG> inline void axi::pin::ace_lite_initiator<CFG>::r_t() {
     this->r_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
@@ -454,7 +454,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::r_t() {
     }
 }
 
-template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::aw_t() {
+template <typename CFG> inline void axi::pin::ace_lite_initiator<CFG>::aw_t() {
     this->aw_valid.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
@@ -471,7 +471,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::aw_t() {
     }
 }
 
-template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::wdata_t() {
+template <typename CFG> inline void axi::pin::ace_lite_initiator<CFG>::wdata_t() {
     this->w_valid.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
@@ -495,7 +495,7 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::wdata_t() 
     }
 }
 
-template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::b_t() {
+template <typename CFG> inline void axi::pin::ace_lite_initiator<CFG>::b_t() {
     this->b_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
@@ -519,4 +519,4 @@ template <typename CFG> inline void axi::pin::aceLite_initiator<CFG>::b_t() {
         }
     }
 }
-#endif /* _BUS_AXI_PIN_ACELITE_INITIATOR_H_ */
+#endif /* _BUS_AXI_PIN_ace_lite_INITIATOR_H_ */

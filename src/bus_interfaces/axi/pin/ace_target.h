@@ -34,15 +34,15 @@ using namespace axi::fsm;
 
 template <typename CFG>
 struct ace_target : public sc_core::sc_module,
-                    public aw_ch_ace<CFG, typename CFG::slave_types>,
-                    public wdata_ch_ace<CFG, typename CFG::slave_types>,
-                    public b_ch_ace<CFG, typename CFG::slave_types>,
-                    public ar_ch_ace<CFG, typename CFG::slave_types>,
-                    public rresp_ch_ace<CFG, typename CFG::slave_types>,
+                    public aw_ace<CFG, typename CFG::slave_types>,
+                    public wdata_ace<CFG, typename CFG::slave_types>,
+                    public b_ace<CFG, typename CFG::slave_types>,
+                    public ar_ace<CFG, typename CFG::slave_types>,
+                    public rresp_ace<CFG, typename CFG::slave_types>,
 
-                    public ac_ch_ace<CFG, typename CFG::slave_types>,
-                    public cr_ch_ace<CFG, typename CFG::slave_types>,
-                    public cd_ch_ace<CFG, typename CFG::slave_types>,
+                    public ac_ace<CFG, typename CFG::slave_types>,
+                    public cr_ace<CFG, typename CFG::slave_types>,
+                    public cd_ace<CFG, typename CFG::slave_types>,
 
                     protected axi::fsm::base,
                     public axi::ace_bw_transport_if<axi::axi_protocol_types> {

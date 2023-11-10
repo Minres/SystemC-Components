@@ -34,15 +34,15 @@ using namespace axi::fsm;
 
 template <typename CFG>
 struct ace_initiator : public sc_core::sc_module,
-                    public aw_ch_ace<CFG, typename CFG::master_types>,
-                    public wdata_ch_ace<CFG, typename CFG::master_types>,
-                    public b_ch_ace<CFG, typename CFG::master_types>,
-                    public ar_ch_ace<CFG, typename CFG::master_types>,
-                    public rresp_ch_ace<CFG, typename CFG::master_types>,
+                    public aw_ace<CFG, typename CFG::master_types>,
+                    public wdata_ace<CFG, typename CFG::master_types>,
+                    public b_ace<CFG, typename CFG::master_types>,
+                    public ar_ace<CFG, typename CFG::master_types>,
+                    public rresp_ace<CFG, typename CFG::master_types>,
 
-                    public ac_ch_ace<CFG, typename CFG::master_types>,
-                    public cr_ch_ace<CFG, typename CFG::master_types>,
-                    public cd_ch_ace<CFG, typename CFG::master_types>,
+                    public ac_ace<CFG, typename CFG::master_types>,
+                    public cr_ace<CFG, typename CFG::master_types>,
+                    public cd_ace<CFG, typename CFG::master_types>,
 
                     protected axi::fsm::base,
                     public axi::ace_fw_transport_if<axi::axi_protocol_types> {

@@ -34,11 +34,11 @@ using namespace axi::fsm;
 
 template <typename CFG>
 struct axi4_target : public sc_core::sc_module,
-public aw_ch<CFG, typename CFG::slave_types>,
-public wdata_ch<CFG, typename CFG::slave_types>,
-public b_ch<CFG, typename CFG::slave_types>,
-public ar_ch<CFG, typename CFG::slave_types>,
-public rresp_ch<CFG, typename CFG::slave_types>,
+public aw_axi<CFG, typename CFG::slave_types>,
+public wdata_axi<CFG, typename CFG::slave_types>,
+public b_axi<CFG, typename CFG::slave_types>,
+public ar_axi<CFG, typename CFG::slave_types>,
+public rresp_axi<CFG, typename CFG::slave_types>,
 protected axi::fsm::base,
 public axi::axi_bw_transport_if<axi::axi_protocol_types> {
     SC_HAS_PROCESS(axi4_target);
