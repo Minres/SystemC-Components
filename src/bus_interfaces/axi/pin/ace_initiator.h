@@ -439,10 +439,10 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
     fsm_hndl->fsm->cb[Ack] = [this, fsm_hndl]() -> void {
         SCCTRACE(SCMOD)<< "in ACK of setup_cb for " << *fsm_hndl->trans;
         if(fsm_hndl->trans->is_read()){
-            rack_vl.notify(SC_ZERO_TIME);
+            rack_vl.notify(sc_core::SC_ZERO_TIME);
         }
         if(fsm_hndl->trans->is_write()) {
-            wack_vl.notify(SC_ZERO_TIME);
+            wack_vl.notify(sc_core::SC_ZERO_TIME);
         }
     };
 }
