@@ -75,7 +75,7 @@ target_include_directories (${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
 )
-target_link_libraries(${PROJECT_NAME} PUBLIC scc-util RapidJSON ${SPDLOG_TARGET} lwtr)
+target_link_libraries(${PROJECT_NAME} PUBLIC scc-util RapidJSON spdlog::spdlog lwtr)
 if(ENABLE_SQLITE)
     target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SQLITE)
     target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../third_party/sqlite3)
@@ -145,7 +145,7 @@ if(TARGET lz4::lz4)
     target_link_libraries(${PROJECT_NAME} PRIVATE lz4::lz4)
 endif()
 target_compile_definitions(${PROJECT_NAME} PRIVATE FMT_HEADER_ONLY)
-target_link_libraries(${PROJECT_NAME} PUBLIC ${FMT_TARGET} fstapi Threads::Threads ${CMAKE_DL_LIBS})
+target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt fstapi Threads::Threads ${CMAKE_DL_LIBS})
 
 if(CLANG_TIDY_EXE)
     set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}" )

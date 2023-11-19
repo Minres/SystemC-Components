@@ -16,7 +16,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/fmt_8.0)
 target_compile_definitions(${PROJECT_NAME} PRIVATE FMT_HEADER_ONLY)
 
-target_link_libraries(${PROJECT_NAME} PUBLIC ${FMT_TARGET})
+target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
 if(TARGET SystemC::systemc)
 	if(USE_CWR_SYSTEMC)
 		get_target_property(INCLS SystemC::systemc INTERFACE_INCLUDE_DIRECTORIES)
