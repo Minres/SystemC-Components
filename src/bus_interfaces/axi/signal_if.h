@@ -125,10 +125,10 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
  * @tparam USERWDTH
  * @tparam CACHELINE: cacheline size in Bytes, defaults value is 64 bytes
  */
-template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1, unsigned int CACHELINE = 64, unsigned int SNOOPWDTH=3>
+template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1, unsigned int SNOOPWDTH=3>
 struct ace_cfg {
     static_assert(BUSWDTH > 0);
-    static_assert(CACHELINE > 0);
+    //static_assert(CACHELINE > 0);
     static_assert(ADDRWDTH > 0);
     static_assert(IDWDTH > 0);
     constexpr static bool IS_LITE = false;
@@ -136,7 +136,7 @@ struct ace_cfg {
     constexpr static unsigned int ADDRWIDTH = ADDRWDTH;
     constexpr static unsigned int IDWIDTH = IDWDTH;
     constexpr static unsigned int USERWIDTH = USERWDTH;
-    constexpr static unsigned int CACHELINE_SZ = CACHELINE;
+    //constexpr static unsigned int CACHELINE_SZ = 64;
     constexpr static unsigned int SNOOPWIDTH = SNOOPWDTH;
     using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
     using slave_types = ::axi::slave_types;
@@ -144,7 +144,7 @@ struct ace_cfg {
 };
 
 template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1>
-using ace_lite_cfg = ace_cfg<BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, 64, 4>;
+using ace_lite_cfg = ace_cfg<BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, 4>;
 
 inline std::string concat(const char* prefix, const char* name) { return std::string(prefix) + name; }
 

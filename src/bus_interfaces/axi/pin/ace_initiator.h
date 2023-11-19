@@ -48,6 +48,8 @@ struct ace_initiator : public sc_core::sc_module,
                     public axi::ace_fw_transport_if<axi::axi_protocol_types> {
     SC_HAS_PROCESS(ace_initiator);
 
+    enum {CACHELINE_SZ = 64};
+
     using payload_type = axi::axi_protocol_types::tlm_payload_type;
     using phase_type = axi::axi_protocol_types::tlm_phase_type;
 
@@ -624,7 +626,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::ac_t() {
     auto arid = 0U;
     // A snoop transaction must be a full cache line in length,
     // here cachelinesize in byte, -1 because last beat in Resp transmitted
-    auto arlen = ((CFG::CACHELINE_SZ-1)/(CFG::BUSWIDTH/8));
+    auto arlen = ((CACHELINE_SZ-1)/CFG::BUSWIDTH/8);
     auto arsize = util::ilog2(CFG::BUSWIDTH / 8);
     // here +1 because last beat in Resp transmitted
     auto data_len = (1 << arsize) * (arlen + 1);
@@ -649,7 +651,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::ac_t() {
             /*snoop transaction of burst length greater than one must be of burst type WRAP.
              * A snoop transaction of burst length one must be of burst type INCR
             */
-            ext->set_burst((CFG::CACHELINE_SZ*8) > CFG::BUSWIDTH ? axi::burst_e::WRAP : axi::burst_e::INCR);
+            ext->set_burst((CACHELINE_SZ*8) > CFG::BUSWIDTH ? axi::burst_e::WRAP : axi::burst_e::INCR);
             active_req[SNOOP] = find_or_create(gp, true);
             active_req[SNOOP]->is_snoop = true;
             react(axi::fsm::protocol_time_point_e::RequestPhaseBeg, active_req[SNOOP]);
