@@ -2,9 +2,9 @@
 include(CMakeFindDependencyMacro)
 
 if(NOT TARGET RapidJSON::RapidJSON)
-    include("${CMAKE_CURRENT_LIST_DIR}/lwtr-targets.cmake")
+    include("${CMAKE_CURRENT_LIST_DIR}/RapidJSON-targets.cmake")
     add_library(RapidJSON::RapidJSON ALIAS RapidJSON)
 endif()
 
-set(lwtr_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include")
-set(lwtr_lIBRARIES RapidJSON::RapidJSON)
+set(RapidJSON_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include")
+set(RapidJSON_lIBRARIES RapidJSON::RapidJSON)

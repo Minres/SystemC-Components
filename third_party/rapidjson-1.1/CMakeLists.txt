@@ -35,7 +35,7 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/rapidjson
         )
 
 
-set(RAPIDJSON_CMAKE_CONFIG_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/RapidJSON)
+set(RAPIDJSON_CMAKE_CONFIG_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/scc)
 include(CMakePackageConfigHelpers)
 
 install(EXPORT RapidJSON-targets
@@ -56,5 +56,5 @@ configure_package_config_file(
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/RapidJSON-config.cmake
     ${CMAKE_CURRENT_BINARY_DIR}/RapidJSON-config-version.cmake
-    DESTINATION ${LWTR_CMAKE_CONFIG_DIR})
+    DESTINATION ${RAPIDJSON_CMAKE_CONFIG_DIR})
 
