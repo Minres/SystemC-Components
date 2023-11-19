@@ -29,7 +29,7 @@ function build_fmt {
 	if [ ! -d fmt ]; then
 	    if [ ! -f fmt_8.0.1.tar.gz ]; then
 		git clone --depth 1 --branch 8.0.1 -c advice.detachedHead=false https://github.com/fmtlib/fmt.git
-		tar czf fmt_8.0.1.tar.gz fmt
+		tar czf fmt_8.0.1.tar.gz fmt --exclude=.git
 	    else
 		tar xzf fmt_8.0.1.tar.gz
 	    fi
@@ -44,7 +44,7 @@ function build_spdlog {
 	if [ ! -d spdlog ]; then
 	    if [ ! -f spdlog_1.9.2.tar.gz ]; then
 		git clone --depth 1 --branch v1.9.2 -c advice.detachedHead=false https://github.com/gabime/spdlog.git
-		tar czf spdlog_1.9.2.tar.gz spdlog
+		tar czf spdlog_1.9.2.tar.gz spdlog --exclude=.git
 	    else
 		tar xzf spdlog_1.9.2.tar.gz
 	    fi
@@ -59,7 +59,7 @@ function build_yamlcpp {
 	if [ ! -d yaml-cpp ]; then
 	    if [ ! -f yaml-cpp_0.6.3.tar.gz ]; then
 		git clone --depth 1 --branch yaml-cpp-0.6.3 -c advice.detachedHead=false https://github.com/jbeder/yaml-cpp.git
-		tar czf yaml-cpp_0.6.3.tar.gz yaml-cpp
+		tar czf yaml-cpp_0.6.3.tar.gz yaml-cpp --exclude=.git
 	    else
 		tar xzf yaml-cpp_0.6.3.tar.gz
 	    fi
@@ -76,7 +76,7 @@ function build_lz4 {
 	if [ ! -d lz4 ]; then
 	    if [ ! -f lz4_1.9.4.tar.gz ]; then
 		git clone --depth 1 --branch v1.9.4 -c advice.detachedHead=false https://github.com/lz4/lz4.git
-		tar czf lz4_1.9.4.tar.gz yaml-cpp
+		tar czf lz4_1.9.4.tar.gz yaml-cpp --exclude=.git
 	    else
 		tar xzf lz4_1.9.4.tar.gz
 	    fi
@@ -92,7 +92,7 @@ function build_systemc {
 	if [ ! -d systemc ]; then
 	    if [ ! -f systemc_2.3.4.tar.gz ]; then
 		git clone --depth 1 --branch 2.3.4 -c advice.detachedHead=false https://github.com/accellera-official/systemc.git
-		tar czf systemc_2.3.4.tar.gz systemc
+		tar czf systemc_2.3.4.tar.gz systemc --exclude=.git
 	    else
 		tar xzf systemc_2.3.4.tar.gz
 	    fi
@@ -109,7 +109,7 @@ function build_scc {
 	if [ ! -d scc ]; then
 	    if [ ! -f scc.tar.gz ]; then
 		git clone --recursive --branch develop -c advice.detachedHead=false https://github.com/Minres/SystemC-Components.git scc
-		tar czf scc.tar.gz scc
+		tar czf scc.tar.gz scc --exclude=.git
 	    else
 		tar xzf scc.tar.gz
 	    fi
