@@ -433,7 +433,7 @@ template <typename CFG> inline void axi::pin::ace_lite_initiator<CFG>::r_t() {
             }
             axi::ace_extension* e;
             fsm_hndl->trans->get_extension(e);
-            e->set_resp(axi::into<axi::resp_e>(resp));
+            e->set_cresp(resp);
             e->add_to_response_array(*e);
             /* dataless trans * */
             if(axi::is_dataless(e)) {
@@ -500,8 +500,8 @@ template <typename CFG> inline void axi::pin::ace_lite_initiator<CFG>::b_t() {
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
         wait(this->b_valid.posedge_event() | clk_delayed);
-        SCCTRACEALL(SCMOD)<<" b_t() received b_valid ";
         if(this->b_valid.event() || (!active_resp[tlm::TLM_WRITE_COMMAND] && this->b_valid.read())) {
+            SCCTRACEALL(SCMOD)<<" b_t() received b_valid ";
             auto id = !CFG::IS_LITE ? this->b_id->read().to_uint() : 0U;
             auto resp = this->b_resp.read();
             auto& q = wr_resp_by_id[id];

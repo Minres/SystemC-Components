@@ -314,7 +314,7 @@ template <typename CFG> inline void axi::pin::ace_lite_target<CFG>::rresp_t() {
         SCCTRACE(SCMOD)<<__FUNCTION__ << " got read response beat of trans " << *fsm_hndl->trans;
         auto ext = fsm_hndl->trans->get_extension<axi::ace_extension>();
         this->r_data.write(get_read_data_for_beat(fsm_hndl));
-        this->r_resp.write(axi::to_int(ext->get_resp()));
+        this->r_resp.write(ext->get_cresp());
         this->r_valid.write(val & 0x1);
         if(!CFG::IS_LITE) {
             this->r_id->write(ext->get_id());

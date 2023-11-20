@@ -497,6 +497,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::r_t() {
             auto id = CFG::IS_LITE ? 0U : this->r_id->read().to_uint();
             auto data = this->r_data.read();
             auto resp = this->r_resp.read();
+            SCCTRACE(SCMOD)<< " r_t() get r_resp = " << resp ;
             auto& q = rd_resp_by_id[id];
             sc_assert(q.size());
             auto* fsm_hndl = q.front();
@@ -529,15 +530,11 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::r_t() {
             }
             axi::ace_extension* e;
             fsm_hndl->trans->get_extension(e);
-            e->set_resp(axi::into<axi::resp_e>(resp));
+            e->set_cresp(resp);
             e->add_to_response_array(*e);
             /* for Make Trans, Clean Trans and Read barrier Trans, no  read data transfer on r_t, only response on r_t
              *  */
-            if ((e->get_snoop() == (snoop_e::MAKE_UNIQUE)) ||
-                (e->get_snoop() == (snoop_e::MAKE_INVALID)) ||
-                (e->get_snoop() == (snoop_e::CLEAN_SHARED)) ||
-                (e->get_snoop() == (snoop_e::CLEAN_UNIQUE)) ||
-                (e->get_snoop() == (snoop_e::CLEAN_UNIQUE)) ) {
+            if(axi::is_dataless(e)){
                 SCCTRACE(SCMOD)<< " r_t() for Make/Clean/Barrier Trans" << *fsm_hndl->trans;
                 react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
             } else {
