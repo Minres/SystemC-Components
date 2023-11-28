@@ -125,7 +125,7 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
  * @tparam USERWDTH
  * @tparam CACHELINE: cacheline size in Bytes, defaults value is 64 bytes
  */
-template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1, unsigned int SNOOPWDTH=3>
+template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1, unsigned int AWSNOOPWDTH=3>
 struct ace_cfg {
     static_assert(BUSWDTH > 0);
     //static_assert(CACHELINE > 0);
@@ -136,15 +136,11 @@ struct ace_cfg {
     constexpr static unsigned int ADDRWIDTH = ADDRWDTH;
     constexpr static unsigned int IDWIDTH = IDWDTH;
     constexpr static unsigned int USERWIDTH = USERWDTH;
-    //constexpr static unsigned int CACHELINE_SZ = 64;
-    constexpr static unsigned int SNOOPWIDTH = SNOOPWDTH;
+    constexpr static unsigned int AWSNOOPWIDTH = AWSNOOPWDTH;
     using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
     using slave_types = ::axi::slave_types;
     using master_types = ::axi::master_types;
 };
-
-template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1>
-using ace_lite_cfg = ace_cfg<BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH, 4>;
 
 inline std::string concat(const char* prefix, const char* name) { return std::string(prefix) + name; }
 
@@ -596,7 +592,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> aw_region{"aw_region"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<8>> aw_len{"aw_len"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> aw_domain{"aw_domain"};  //ace
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::SNOOPWIDTH>> aw_snoop{"aw_snoop"};//ace has 3 bits while aceLite has 4 bits
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::AWSNOOPWIDTH>> aw_snoop{"aw_snoop"};//ace5-lite has 4 bits
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> aw_bar{"aw_bar"}; //ace
     typename TYPES::template m2s_t<bool>  aw_unique{"aw_unique"}; //ace, not for lite
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::USERWIDTH>> aw_user{"aw_user"};
