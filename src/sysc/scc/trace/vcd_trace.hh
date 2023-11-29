@@ -53,7 +53,7 @@ inline void vcdEmitValueChange64(FPTR os, std::string const& handle, unsigned bi
 
 template<typename T>
 inline void vcdEmitValueChangeReal(FPTR os, std::string const& handle, unsigned bits, T val){
-    auto buf = fmt::format("r{:.16g} {}\n", val, handle);
+    auto buf = fmt::format("r{:.16g} {}\n", static_cast<double>(val), handle);
     FWRITE(buf.c_str(), 1, buf.size(), os);
 }
 
