@@ -197,7 +197,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::write_aw(tlm::
         this->aw_region->write(sc_dt::sc_uint<4>(ext->get_region()));
         this->aw_user->write(ext->get_user(axi::common::id_type::CTRL));
         this->aw_domain->write(sc_dt::sc_uint<2>((uint8_t)ext->get_domain()));
-        this->aw_snoop->write(sc_dt::sc_uint<CFG::SNOOPWIDTH>((uint8_t)ext->get_snoop()));
+        this->aw_snoop->write(sc_dt::sc_uint<CFG::AWSNOOPWIDTH>((uint8_t)ext->get_snoop()));
         this->aw_bar->write(sc_dt::sc_uint<2>((uint8_t)ext->get_barrier()));
         this->aw_unique->write(ext->get_unique());
     }
