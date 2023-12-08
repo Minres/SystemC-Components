@@ -72,22 +72,6 @@ function build_yamlcpp {
 ############################################################################################
 #
 ############################################################################################
-function build_lz4 {
-	if [ ! -d lz4 ]; then
-	    if [ ! -f lz4_1.9.4.tar.gz ]; then
-		git clone --depth 1 --branch v1.9.4 -c advice.detachedHead=false https://github.com/lz4/lz4.git
-		tar czf lz4_1.9.4.tar.gz yaml-cpp --exclude=.git
-	    else
-		tar xzf lz4_1.9.4.tar.gz
-	    fi
-	fi
-	make -C lz4 clean all || exit 1
-	make -C lz4 install PREFIX=${SCC_INSTALL} LIBDIR=${SCC_INSTALL}/lib64 || exit 2
-	export PKG_CONFIG_PATH=${SCC_INSTALL}/lib64/pkgconfig
-}
-############################################################################################
-#
-############################################################################################
 function build_systemc {
 	if [ ! -d systemc ]; then
 	    if [ ! -f systemc_2.3.4.tar.gz ]; then
@@ -121,8 +105,8 @@ function build_scc {
 }
 
 build_boost
-build_spdlog
 build_fmt
+build_spdlog
 build_yamlcpp
 build_systemc
 build_scc
