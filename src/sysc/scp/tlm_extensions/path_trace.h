@@ -20,7 +20,8 @@
 #include <systemc>
 #include <tlm>
 
-namespace scp::tlm_extensions {
+namespace scp {
+namespace tlm_extensions {
 
 /**
  * @class Path recording TLM extension
@@ -75,5 +76,6 @@ public:
         return info.str();
     }
 };
-} // namespace scp::tlm_extensions
+} // namespace tlm_extensions
+} // namespace scp
 #endif

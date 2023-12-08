@@ -19,55 +19,57 @@
 #include <systemc>
 #include <tlm>
 
-namespace scp::tlm_extensions {
-/**
- * @class initiator ID recording TLM extension
- *
- * @brief initiator ID recording TLM extension
- *
- * @details Ignorable Extension type that can be used to add a initiator ID
- * (uint64_t). This is typically used for e.g. evaluating exclusive accesses.
- */
+namespace scp {
+namespace tlm_extensions {
+    /**
+        * @class initiator ID recording TLM extension
+        *
+        * @brief initiator ID recording TLM extension
+        *
+        * @details Ignorable Extension type that can be used to add a initiator ID
+        * (uint64_t). This is typically used for e.g. evaluating exclusive accesses.
+        */
 
-class initiator_id : public tlm::tlm_extension<initiator_id>
-{
-    uint64_t m_id;
+    class initiator_id : public tlm::tlm_extension<initiator_id>
+    {
+        uint64_t m_id;
 
-public:
-    initiator_id(uint64_t id) { m_id = id; }
-    initiator_id(const initiator_id&) = default;
+    public:
+        initiator_id(uint64_t id) { m_id = id; }
+        initiator_id(const initiator_id&) = default;
 
-    virtual tlm_extension_base* clone() const override {
-        return new initiator_id(*this);
-    }
+        virtual tlm_extension_base* clone() const override {
+            return new initiator_id(*this);
+        }
 
-    virtual void copy_from(const tlm_extension_base& ext) override {
-        const initiator_id& other = static_cast<const initiator_id&>(ext);
-        *this = other;
-    }
+        virtual void copy_from(const tlm_extension_base& ext) override {
+            const initiator_id& other = static_cast<const initiator_id&>(ext);
+            *this = other;
+        }
 
-    operator uint64_t() { return m_id; };
+        operator uint64_t() { return m_id; };
 
 #define overload(_OP)                               \
-    initiator_id& operator _OP(const uint64_t id) { \
-        this->m_id _OP id;                          \
-        return *this;                               \
-    }
-    overload(+=);
-    overload(-=);
-    overload(*=);
-    overload(/=);
-    overload(%=);
-    overload(&=);
-    overload(|=);
-    overload(^=);
-    overload(<<=);
-    overload(>>=);
+initiator_id& operator _OP(const uint64_t id) { \
+    this->m_id _OP id;                          \
+    return *this;                               \
+}
+        overload(+= );
+        overload(-= );
+        overload(*= );
+        overload(/= );
+        overload(%= );
+        overload(&= );
+        overload(|= );
+        overload(^= );
+        overload(<<= );
+        overload(>>= );
 
-    initiator_id& operator=(const uint64_t id) {
-        m_id = id;
-        return *this;
-    }
-};
-} // namespace scp::tlm_extensions
+        initiator_id& operator=(const uint64_t id) {
+            m_id = id;
+            return *this;
+        }
+    };
+}// namespace tlm_extensions
+} // namespace scp
 #endif
