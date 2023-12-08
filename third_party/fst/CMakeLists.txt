@@ -3,7 +3,7 @@ cmake_minimum_required (VERSION 3.16)
 project (fstapi VERSION 1.0.0)
 
 find_package(ZLIB)
-if(ZLIB_FOUND)
+if(TARGET ZLIB::ZLIB)
 	set(SRC fstapi.c fastlz.c)
 	if(NOT TARGET lz4::lz4)
     	     list(APPEND SRC lz4.c)
@@ -18,13 +18,13 @@ if(ZLIB_FOUND)
 	if(TARGET lz4::lz4)
 	     target_link_libraries(fstapi PRIVATE lz4::lz4)
 	endif()
-	# hack to avoid creating dummy config.h
-	target_compile_definitions(fstapi PRIVATE FST_CONFIG_INCLUDE="fst_config.h" FST_DYNAMIC_ALIAS2_DISABLE)
-	
+	# hack to avoid creating dummy config.h	
 	if(MSVC)
 	    # define __MINGW32__ to minimize changes to upstream
-	    target_compile_definitions(fstapi PRIVATE __MINGW32__  _CRT_SECURE_NO_WARNINGS  FST_DO_MISALIGNED_OPS)
+	    target_compile_definitions(fstapi PRIVATE FST_CONFIG_INCLUDE="fstapi.h" __MINGW32__  _CRT_SECURE_NO_WARNINGS  FST_DO_MISALIGNED_OPS)
 	    target_compile_options(fstapi PRIVATE /wd4244 /wd4267 /wd4146 /wd4996)
+	else()
+		target_compile_definitions(fstapi PRIVATE FST_CONFIG_INCLUDE="fstapi.h")
 	endif()
 	
 	set_target_properties(fstapi PROPERTIES
