@@ -27,6 +27,11 @@
 #include <cstdlib>
 #endif
 
+#ifdef _MSC_VER
+#define NOEXCEPT
+#else
+#define NOEXCEPT _GLIBCXX_USE_NOEXCEPT
+#endif
 /**
  * \ingroup scc-common
  */
@@ -107,7 +112,7 @@ public:
     template<typename T2>
     stl_pool_allocator(const stl_pool_allocator<T2>&) noexcept { }
 
-    ~stl_pool_allocator() _GLIBCXX_USE_NOEXCEPT { }
+    ~stl_pool_allocator() NOEXCEPT { }
 
     //    address
     pointer address(reference r) { return std::addressof(r);}

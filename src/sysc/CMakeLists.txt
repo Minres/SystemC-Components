@@ -36,7 +36,6 @@ set(LIB_SOURCES
     scc/scv/scv_tr_mtc.cpp
     scc/scv/scv_tr_lz4.cpp
     scc/scv/scv_tr_ftr.cpp
-    scc/vcd_mt_trace.cpp
     scc/vcd_pull_trace.cpp
     scc/vcd_push_trace.cpp
     tlm/scc/scv/tlm_recorder.cpp
@@ -51,7 +50,11 @@ set(LIB_SOURCES
 
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
-    list(APPEND LIB_SOURCES  scc/scv/scv_tr_compressed.cpp scc/fst_trace.cpp)
+    list(APPEND LIB_SOURCES  
+        scc/scv/scv_tr_compressed.cpp
+        scc/fst_trace.cpp
+        scc/vcd_mt_trace.cpp
+        )
     set(WITH_FST ON)
 endif()
 

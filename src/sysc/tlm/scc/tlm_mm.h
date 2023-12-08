@@ -20,6 +20,11 @@
 #include <tlm>
 #include <util/pool_allocator.h>
 
+//#if defined(MSVC)
+#define ATTR_UNUSED
+//#else
+//#define ATTR_UNUSED __attribute__((unused))
+//#endif
 //! @brief SystemC TLM
 namespace tlm {
 //! @brief SCC TLM utilities
@@ -28,7 +33,7 @@ namespace scc {
 struct tlm_gp_mm : public tlm_extension<tlm_gp_mm> {
     virtual ~tlm_gp_mm() {}
 
-    void copy_from(__attribute__((unused)) tlm_extension_base const& from) override {
+    void copy_from(ATTR_UNUSED tlm_extension_base const& from) override {
         // No need to copy, because this extension is used for memory handling for tlm generic payload data.
         // The copy operation of the data is therefore handled by the tlm functions deep_copy_from and update_original_from.
     }

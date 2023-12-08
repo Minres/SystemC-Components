@@ -90,9 +90,9 @@ template <class T, class S> struct select_if<true, T, S> { typedef T type; };
 
 template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1>
 struct axi4_cfg {
-    static_assert(BUSWDTH > 0);
-    static_assert(ADDRWDTH > 0);
-    static_assert(IDWDTH > 0);
+    static_assert(BUSWDTH > 0, "BUSWIDTH shall be larger than 0");
+    static_assert(ADDRWDTH > 0, "ADDRWDTH shall be larger than 0");
+    static_assert(IDWDTH > 0, "IDWDTH shall be larger than 0");
     constexpr static bool IS_LITE = false;
     constexpr static unsigned int BUSWIDTH = BUSWDTH;
     constexpr static unsigned int ADDRWIDTH = ADDRWDTH;
@@ -104,8 +104,8 @@ struct axi4_cfg {
 };
 
 template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lite_cfg {
-    static_assert(BUSWDTH > 0);
-    static_assert(ADDRWDTH > 0);
+    static_assert(BUSWDTH > 0, "BUSWIDTH shall be larger than 0");
+    static_assert(ADDRWDTH > 0, "ADDRWDTH shall be larger than 0");
     constexpr static bool IS_LITE = true;
     constexpr static unsigned int BUSWIDTH = BUSWDTH;
     constexpr static unsigned int ADDRWIDTH = ADDRWDTH;
@@ -127,10 +127,11 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
  */
 template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1, unsigned int SNOOPWDTH=3>
 struct ace_cfg {
-    static_assert(BUSWDTH > 0);
+
+    static_assert(BUSWDTH > 0, "BUSWIDTH shall be larger than 0");
     //static_assert(CACHELINE > 0);
-    static_assert(ADDRWDTH > 0);
-    static_assert(IDWDTH > 0);
+    static_assert(ADDRWDTH > 0, "ADDRWDTH shall be larger than 0");
+    static_assert(IDWDTH > 0, "IDWDTH shall be larger than 0");
     constexpr static bool IS_LITE = false;
     constexpr static unsigned int BUSWIDTH = BUSWDTH;
     constexpr static unsigned int ADDRWIDTH = ADDRWDTH;

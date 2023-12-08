@@ -83,7 +83,9 @@ void perf_estimator::beat() {
     if(sc_time_stamp().value())
         SCCINFO("perf_estimator") << "Heart beat, rss mem: " << get_memory() << "kB";
     next_trigger(beat_delay);
+#ifndef _MSC_VER
     malloc_trim(0);
+#endif
 }
 } /* namespace scc */
 

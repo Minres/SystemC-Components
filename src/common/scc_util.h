@@ -23,7 +23,9 @@
  */
 /**@{*/
 #include "util/bit_field.h"
+#ifndef _MSC_VER
 #include "util/delegate.h"
+#endif
 #include "util/io-redirector.h"
 #include "util/ities.h"
 #include "util/logging.h"
