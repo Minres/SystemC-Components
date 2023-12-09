@@ -168,7 +168,7 @@ if(SystemC_FOUND)
 
     # Define the scc library
     add_library(scc INTERFACE)
-    add_library(scc::scc ALIAS ${PROJECT_NAME})
+    add_library(scc::scc ALIAS scc)
     if(HAVE_GETENV)
         target_compile_definitions(scc INTERFACE HAVE_GETENV)
     endif()
