@@ -60,7 +60,7 @@ template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bfm_thr
                         gp->set_read();
                     // gp->set_command(HWRITE_i.read()?tlm::TLM_WRITE_COMMAND:tlm::TLM_READ_COMMAND);
                     auto* ext = new ahb_extension();
-                    gp->set_extension(ext);
+                    gp->set_auto_extension(ext);
                     ext->set_locked(HMASTLOCK_i.read());
                     ext->set_protection(HPROT_i.read());
                     ext->set_burst(static_cast<ahb::burst_e>(HBURST_i.read().to_uint()));
