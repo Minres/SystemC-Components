@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.20)
 find_package(Boost COMPONENTS program_options REQUIRED)
 
 add_executable (simple_system 
