@@ -15,8 +15,8 @@
  *******************************************************************************/
 
 #include "axi_target.h"
-#include <tlm/scc/tlm_gp_shared.h>
 #include <scc/report.h>
+#include <tlm/scc/tlm_gp_shared.h>
 
 using namespace axi;
 
@@ -37,6 +37,6 @@ void axi_target_base::trans_queue() {
     while(true) {
         tlm::scc::tlm_gp_shared_ptr trans = peq.get();
         isck->b_transport(*trans, delay);
-        pe.operation_resp(*trans, trans->is_write()? pe.wr_resp_delay.get_value() : pe.rd_resp_delay.get_value());
+        pe.operation_resp(*trans, trans->is_write() ? pe.wr_resp_delay.get_value() : pe.rd_resp_delay.get_value());
     }
 }

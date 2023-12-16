@@ -51,8 +51,7 @@ void ordered_semaphore::set_capacity(unsigned c) {
 }
 
 void ordered_semaphore::report_error(const char* id, const char* add_msg) const {
-    auto msg =
-        add_msg ? util::strprintf("semaphore '%s'", name()) : util::strprintf("%s: semaphore '%s'", add_msg, name());
+    auto msg = add_msg ? util::strprintf("semaphore '%s'", name()) : util::strprintf("%s: semaphore '%s'", add_msg, name());
     SC_REPORT_ERROR(id, msg.c_str());
 }
 

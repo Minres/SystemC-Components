@@ -117,9 +117,7 @@ const int open_flags{O_WRONLY | O_CREAT | O_TRUNC};
 const auto open_mode{00644};
 
 struct ControlBuffer {
-    ControlBuffer(const boost::filesystem::path& name) {
-        file_des = open(name.string().c_str(), open_flags, open_mode);
-    }
+    ControlBuffer(const boost::filesystem::path& name) { file_des = open(name.string().c_str(), open_flags, open_mode); }
 
     ~ControlBuffer() { close(file_des); }
 
@@ -177,13 +175,7 @@ public:
     void writeAttribute(uint64_t id, EventType event, uint64_t name, data_type typ, uint64_t value0, uint32_t value1) {
         // type(4)=3, tx_id(8),type(2),name(8),data_type(2),data_value(8)
         ByteBufferWriter bw;
-        bw.append<uint32_t>(3U)
-            .append(id)
-            .append(event)
-            .append(name)
-            .append(static_cast<uint16_t>(typ))
-            .append(value0)
-            .append(value1);
+        bw.append<uint32_t>(3U).append(id).append(event).append(name).append(static_cast<uint16_t>(typ)).append(value0).append(value1);
         append(bw(), bw.length());
     }
 
@@ -196,9 +188,7 @@ public:
     /**
      * returns the offset of the record
      */
-    template <typename T> uint64_t append(const T& val) {
-        return append(reinterpret_cast<const unsigned char*>(&val), sizeof(T));
-    }
+    template <typename T> uint64_t append(const T& val) { return append(reinterpret_cast<const unsigned char*>(&val), sizeof(T)); }
 
     uint64_t getActualFilePos() { return blockCount * buf.size() + bufTail; }
 
@@ -288,9 +278,7 @@ struct Database : Base {
         return d.writeTx(id, generator, concurrencyLevel);
     }
 
-    inline void writeTxTimepoint(uint64_t id, int type, uint64_t time, uint64_t file_offset) {
-        t.append(type, time, file_offset);
-    }
+    inline void writeTxTimepoint(uint64_t id, int type, uint64_t time, uint64_t file_offset) { t.append(type, time, file_offset); }
 
     inline void writeAttribute(uint64_t id, EventType event, const string& name, data_type type, const string& value) {
         d.writeAttribute(id, event, c.getIdOf(name), type, c.getIdOf(value));
@@ -399,8 +387,7 @@ void recordAttributes(uint64_t id, EventType eventType, string& prefix, const sc
         }
     } break;
     case scv_extensions_if::ENUMERATION:
-        recordAttribute(id, eventType, name, scv_extensions_if::ENUMERATION,
-                        my_exts_p->get_enum_string((int)(my_exts_p->get_integer())));
+        recordAttribute(id, eventType, name, scv_extensions_if::ENUMERATION, my_exts_p->get_enum_string((int)(my_exts_p->get_integer())));
         break;
     case scv_extensions_if::BOOLEAN:
         recordAttribute(id, eventType, name, scv_extensions_if::BOOLEAN, my_exts_p->get_bool() ? "TRUE" : "FALSE");
@@ -494,9 +481,8 @@ void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason reason
         if(my_exts_p == nullptr)
             my_exts_p = t.get_scv_tr_generator_base().get_begin_exts_p();
         if(my_exts_p) {
-            string tmp_str = t.get_scv_tr_generator_base().get_begin_attribute_name()
-                                 ? t.get_scv_tr_generator_base().get_begin_attribute_name()
-                                 : "";
+            string tmp_str =
+                t.get_scv_tr_generator_base().get_begin_attribute_name() ? t.get_scv_tr_generator_base().get_begin_attribute_name() : "";
             recordAttributes(id, BEGIN, tmp_str, my_exts_p);
         }
     } break;
@@ -519,9 +505,8 @@ void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason reason
         if(my_exts_p == nullptr)
             my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();
         if(my_exts_p) {
-            string tmp_str = t.get_scv_tr_generator_base().get_end_attribute_name()
-                                 ? t.get_scv_tr_generator_base().get_end_attribute_name()
-                                 : "";
+            string tmp_str =
+                t.get_scv_tr_generator_base().get_end_attribute_name() ? t.get_scv_tr_generator_base().get_end_attribute_name() : "";
             recordAttributes(t.get_id(), END, tmp_str, my_exts_p);
         }
     } break;
@@ -540,8 +525,7 @@ void attributeCb(const scv_tr_handle& t, const char* name, const scv_extensions_
     recordAttributes(t.get_id(), RECORD, tmp_str, ext);
 }
 // ----------------------------------------------------------------------------
-void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data,
-                scv_tr_relation_handle_t relation_handle) {
+void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data, scv_tr_relation_handle_t relation_handle) {
     if(!db)
         return;
     if(tr_1.get_scv_tr_stream().get_scv_tr_db() == nullptr)
@@ -549,8 +533,7 @@ void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data
     if(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
         return;
     try {
-        db->writeRelation(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), tr_1.get_id(),
-                          tr_2.get_id());
+        db->writeRelation(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), tr_1.get_id(), tr_2.get_id());
     } catch(std::runtime_error& e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create transaction relation");
     }

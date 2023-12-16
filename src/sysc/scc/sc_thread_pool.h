@@ -16,10 +16,10 @@
 
 #ifndef SYSC_SCC_SC_THREAD_POOL_H_
 #define SYSC_SCC_SC_THREAD_POOL_H_
+#include "peq.h"
 #include <cci_configuration>
 #include <functional>
 #include <systemc>
-#include "peq.h"
 
 /** \ingroup scc-sysc
  *  @{
@@ -43,4 +43,4 @@ private:
 };
 } /* namespace scc */
 /** @} */ // end of scc-sysc
-#endif /* SYSC_SCC_SC_THREAD_POOL_H_ */
+#endif    /* SYSC_SCC_SC_THREAD_POOL_H_ */

@@ -28,26 +28,26 @@ template <unsigned WIDTH>
 initiator<WIDTH>::initiator(const sc_module_name& nm)
 : sc_module(nm) {
     SC_HAS_PROCESS(initiator);
-    sc_core::sc_get_curr_simcontext()->create_thread_process(
-        "bus_task_0", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task), this, nullptr);
-    sc_core::sc_get_curr_simcontext()->create_thread_process(
-        "bus_task_1", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task), this, nullptr);
-    sc_core::sc_get_curr_simcontext()->create_thread_process(
-        "bus_task_2", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task), this, nullptr);
-    tsckt.register_nb_transport_fw([this](tlm::tlm_generic_payload& payload, tlm::tlm_phase& phase,
-                                          sc_core::sc_time& delay) -> tlm::tlm_sync_enum {
-        if(phase == tlm::BEGIN_REQ) {
-            if(payload.has_mm())
-                payload.acquire();
-            auto* ext = payload.get_extension<ahb_extension>();
-            if(!ext) {
-                ext = new ahb_extension();
-                payload.set_extension(ext);
+    sc_core::sc_get_curr_simcontext()->create_thread_process("bus_task_0", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task),
+                                                             this, nullptr);
+    sc_core::sc_get_curr_simcontext()->create_thread_process("bus_task_1", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task),
+                                                             this, nullptr);
+    sc_core::sc_get_curr_simcontext()->create_thread_process("bus_task_2", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task),
+                                                             this, nullptr);
+    tsckt.register_nb_transport_fw(
+        [this](tlm::tlm_generic_payload& payload, tlm::tlm_phase& phase, sc_core::sc_time& delay) -> tlm::tlm_sync_enum {
+            if(phase == tlm::BEGIN_REQ) {
+                if(payload.has_mm())
+                    payload.acquire();
+                auto* ext = payload.get_extension<ahb_extension>();
+                if(!ext) {
+                    ext = new ahb_extension();
+                    payload.set_extension(ext);
+                }
+                this->inqueue.notify(payload);
             }
-            this->inqueue.notify(payload);
-        }
-        return tlm::TLM_ACCEPTED;
-    });
+            return tlm::TLM_ACCEPTED;
+        });
 }
 
 template <unsigned WIDTH> inline void initiator<WIDTH>::bus_task() {

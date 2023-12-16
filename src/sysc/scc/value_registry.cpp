@@ -56,29 +56,29 @@ public:
         } while(pos > 0 && mod == nullptr);
         return mod;
     }
-#define DECL_TRACE_METHOD_A(tp)                                                                                        \
-    void trace(const tp& object, const std::string& name) OVERRIDE {                                                   \
-        if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                         \
-            if(sc_module* mod = get_mod4name(name)) {                                                                  \
-                sc_get_curr_simcontext()->hierarchy_push(mod);                                                         \
-                auto* o = new sc_ref_variable<tp>(name, object);                                                       \
-                sc_get_curr_simcontext()->hierarchy_pop();                                                             \
-                holder[name] = o;                                                                                      \
-            }                                                                                                          \
-        }                                                                                                              \
+#define DECL_TRACE_METHOD_A(tp)                                                                                                            \
+    void trace(const tp& object, const std::string& name) OVERRIDE {                                                                       \
+        if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                                             \
+            if(sc_module* mod = get_mod4name(name)) {                                                                                      \
+                sc_get_curr_simcontext()->hierarchy_push(mod);                                                                             \
+                auto* o = new sc_ref_variable<tp>(name, object);                                                                           \
+                sc_get_curr_simcontext()->hierarchy_pop();                                                                                 \
+                holder[name] = o;                                                                                                          \
+            }                                                                                                                              \
+        }                                                                                                                                  \
     }
-#define DECL_TRACE_METHOD_B(tp)                                                                                        \
-    void trace(const tp& object, const std::string& name, int width) OVERRIDE {                                        \
-        if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                         \
-            if(sc_module* mod = get_mod4name(name)) {                                                                  \
-                sc_get_curr_simcontext()->hierarchy_push(mod);                                                         \
-                auto* o = new sc_ref_variable_masked<tp>(name, object, width);                                         \
-                sc_get_curr_simcontext()->hierarchy_pop();                                                             \
-                holder[name] = o;                                                                                      \
-            }                                                                                                          \
-        }                                                                                                              \
-    }                                                                                                                  \
-	void trace(const tp& object, const std::string& name) { trace(object, name, sizeof(tp)*8); }
+#define DECL_TRACE_METHOD_B(tp)                                                                                                            \
+    void trace(const tp& object, const std::string& name, int width) OVERRIDE {                                                            \
+        if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                                             \
+            if(sc_module* mod = get_mod4name(name)) {                                                                                      \
+                sc_get_curr_simcontext()->hierarchy_push(mod);                                                                             \
+                auto* o = new sc_ref_variable_masked<tp>(name, object, width);                                                             \
+                sc_get_curr_simcontext()->hierarchy_pop();                                                                                 \
+                holder[name] = o;                                                                                                          \
+            }                                                                                                                              \
+        }                                                                                                                                  \
+    }                                                                                                                                      \
+    void trace(const tp& object, const std::string& name) { trace(object, name, sizeof(tp) * 8); }
 
     void trace(const bool& object, const std::string& name) override {
         if(sc_core::sc_find_object(name.c_str()) == nullptr) {
@@ -90,7 +90,7 @@ public:
             }
         }
     }
-#if (SYSTEMC_VERSION >= 20171012)
+#if(SYSTEMC_VERSION >= 20171012)
     DECL_TRACE_METHOD_A(sc_event) // NOLINT
     DECL_TRACE_METHOD_A(sc_time)
 #endif

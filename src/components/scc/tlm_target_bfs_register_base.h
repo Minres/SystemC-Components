@@ -96,8 +96,8 @@ public:
      * @param readMask Bits that are cleared in this field always read as 0. Can
      *                 be overridden in bitfields or the read callback.
      */
-    constexpr bitfield_register(sc_core::sc_module_name name, size_t offset, datatype_t resetValue = 0,
-                                datatype_t writeMask = -1, datatype_t readMask = -1)
+    constexpr bitfield_register(sc_core::sc_module_name name, size_t offset, datatype_t resetValue = 0, datatype_t writeMask = -1,
+                                datatype_t readMask = -1)
     : sc_core::sc_object{name}
     , offset{offset}
     , resetValue{resetValue}
@@ -111,8 +111,7 @@ public:
 
     void reset() override { storage = resetValue; }
 
-    bool write(const uint8_t* data, std::size_t length, uint64_t offset,
-               sc_core::sc_time& d) override {
+    bool write(const uint8_t* data, std::size_t length, uint64_t offset, sc_core::sc_time& d) override {
         assert("Access out of range" && offset + length <= this->size());
         auto valueToWrite{storage};
         std::copy(data, data + length, reinterpret_cast<uint8_t*>(&valueToWrite) + offset);
@@ -130,8 +129,7 @@ public:
         return true;
     }
 
-    bool read(uint8_t* data, std::size_t length, uint64_t offset,
-              sc_core::sc_time& d) const override {
+    bool read(uint8_t* data, std::size_t length, uint64_t offset, sc_core::sc_time& d) const override {
         assert("Access out of range" && offset + length <= this->size());
         auto result{storage};
         result &= readMask;
@@ -243,8 +241,7 @@ public:
      * @param access If RO writes to this bitfield are ignored.
      */
     // constexpr //TODO: requires c++14
-    bitfield(bitfield_register<datatype_t>& reg, std::string name, size_t bitOffset, size_t bitSize, std::string urid,
-             Access access = RW)
+    bitfield(bitfield_register<datatype_t>& reg, std::string name, size_t bitOffset, size_t bitSize, std::string urid, Access access = RW)
     : reg{reg}
     , abstract_bitfield<datatype_t>{std::move(name), bitOffset, bitSize, std::move(urid)}
     , access{access} {
@@ -308,9 +305,7 @@ public:
      *
      * Callback is called before the register.
      */
-    void setReadCallback(std::function<datatype_t(const bitfield<datatype_t>&)> callback) {
-        readCallback = std::move(callback);
-    }
+    void setReadCallback(std::function<datatype_t(const bitfield<datatype_t>&)> callback) { readCallback = std::move(callback); }
 
     bitfield_register<datatype_t>& reg;
     Access access;
@@ -328,8 +323,7 @@ protected:
  *                  same as the original. If true, then register lookups work by
  *                  urid and not by regname and bitfield name.
  */
-template <typename derived_t, bool use_URID = false>
-class tlm_target_bfs_register_base : public sc_core::sc_object, public scc::resetable {
+template <typename derived_t, bool use_URID = false> class tlm_target_bfs_register_base : public sc_core::sc_object, public scc::resetable {
 public:
     tlm_target_bfs_register_base(sc_core::sc_module_name name)
     : sc_core::sc_object{name} {}
@@ -347,9 +341,8 @@ public:
      * If no matching register is found a FATALERROR is generated.
      */
     bitfield_register<uint32_t>& getRegister(const std::string& name) {
-        auto found =
-            std::find_if(asDerived().registers.begin(), asDerived().registers.end(),
-                         [name](const bitfield_register<uint32_t>& reg) { return name.compare(reg.basename()) == 0; });
+        auto found = std::find_if(asDerived().registers.begin(), asDerived().registers.end(),
+                                  [name](const bitfield_register<uint32_t>& reg) { return name.compare(reg.basename()) == 0; });
         if(found == asDerived().registers.end()) {
             SC_REPORT_FATAL(ID_SCC_TLM_TARGET_BFS_REGISTER_BASE, ("Register " + name + " not found").c_str());
         }
@@ -364,13 +357,12 @@ public:
      * If no matching bitfield is found a FATALERROR is generated.
      */
     bitfield<uint32_t>& getBitfieldByName(const std::string& regname, const std::string& name) {
-        auto found = std::find_if(asDerived().bitfields.begin(), asDerived().bitfields.end(),
-                                  [regname, name](const bitfield<uint32_t>& bf) {
-                                      return regname.compare(bf.reg.basename()) == 0 && name == bf.name;
-                                  });
+        auto found =
+            std::find_if(asDerived().bitfields.begin(), asDerived().bitfields.end(), [regname, name](const bitfield<uint32_t>& bf) {
+                return regname.compare(bf.reg.basename()) == 0 && name == bf.name;
+            });
         if(found == asDerived().bitfields.end()) {
-            SC_REPORT_FATAL(ID_SCC_TLM_TARGET_BFS_REGISTER_BASE,
-                            ("Bitfield " + name + " in register " + regname + " not found").c_str());
+            SC_REPORT_FATAL(ID_SCC_TLM_TARGET_BFS_REGISTER_BASE, ("Bitfield " + name + " in register " + regname + " not found").c_str());
         }
         return *found;
     }
@@ -430,11 +422,12 @@ private:
  * {getRegister(<regname>), <basename>"<i>", <offset> + <size> * <i>, <size>,
  * <uridbase>"<i>"<uridpostfix>} \endcode
  */
-#define BITFIELD_ARRAY_ELEMENT(z, i, elem)                                                                             \
-    BOOST_PP_COMMA_IF(i) {                                                                                             \
-        getRegister(BOOST_PP_TUPLE_ELEM(0, elem)), BOOST_PP_TUPLE_ELEM(1, elem) BOOST_PP_STRINGIZE(i),                 \
-            BOOST_PP_TUPLE_ELEM(2, elem) + i *BOOST_PP_TUPLE_ELEM(3, elem), BOOST_PP_TUPLE_ELEM(3, elem),              \
-            BOOST_PP_TUPLE_ELEM(4, elem) BOOST_PP_STRINGIZE(i) BOOST_PP_TUPLE_ELEM(5, elem)                            \
+#define BITFIELD_ARRAY_ELEMENT(z, i, elem)                                                                                                 \
+    BOOST_PP_COMMA_IF(i) {                                                                                                                 \
+        getRegister(BOOST_PP_TUPLE_ELEM(0, elem)),                                                                                         \
+            BOOST_PP_TUPLE_ELEM(1, elem)                                                                                                   \
+                BOOST_PP_STRINGIZE(i), BOOST_PP_TUPLE_ELEM(2, elem) + i *BOOST_PP_TUPLE_ELEM(3, elem), BOOST_PP_TUPLE_ELEM(3, elem),       \
+                                   BOOST_PP_TUPLE_ELEM(4, elem) BOOST_PP_STRINGIZE(i) BOOST_PP_TUPLE_ELEM(5, elem)                         \
     }
 
 /**
@@ -453,7 +446,7 @@ private:
  * @param uridbase Prefix of the urids. Resulting urid is `<uridbase><i>`
  * @param count The number of bitfields to generate
  */
-#define BITFIELD_ARRAY(regname, basename, offset, size, uridbase, count)                                               \
+#define BITFIELD_ARRAY(regname, basename, offset, size, uridbase, count)                                                                   \
     BOOST_PP_REPEAT(count, BITFIELD_ARRAY_ELEMENT, (regname, basename, offset, size, uridbase, ))
 
 /**
@@ -463,7 +456,7 @@ private:
  * @param uridpostfix Postfix of the urids. Resulting urid is
  * `<uridbase><i><uridpostfix>`
  */
-#define BITFIELD_ARRAY_POSTFIX(regname, basename, offset, size, uridbase, uridpostfix, count)                          \
+#define BITFIELD_ARRAY_POSTFIX(regname, basename, offset, size, uridbase, uridpostfix, count)                                              \
     BOOST_PP_REPEAT(count, BITFIELD_ARRAY_ELEMENT, (regname, basename, offset, size, uridbase, uridpostfix))
 
 /**
@@ -477,10 +470,10 @@ private:
  * {<basename>"<i>", <offset> + <i> * <size>}
  * \endcode
  */
-#define REGISTER_ARRAY_ELEMENT(z, i, elem)                                                                             \
-    BOOST_PP_COMMA_IF(i) {                                                                                             \
-        BOOST_PP_TUPLE_ELEM(0, elem)                                                                                   \
-        BOOST_PP_STRINGIZE(i), BOOST_PP_TUPLE_ELEM(1, elem) + i* BOOST_PP_TUPLE_ELEM(2, elem)                          \
+#define REGISTER_ARRAY_ELEMENT(z, i, elem)                                                                                                 \
+    BOOST_PP_COMMA_IF(i) {                                                                                                                 \
+        BOOST_PP_TUPLE_ELEM(0, elem)                                                                                                       \
+        BOOST_PP_STRINGIZE(i), BOOST_PP_TUPLE_ELEM(1, elem) + i* BOOST_PP_TUPLE_ELEM(2, elem)                                              \
     }
 
 /**
@@ -497,7 +490,6 @@ private:
  * @param size Size in bytes of each register
  * @param count The number of registers to generate
  */
-#define REGISTER_ARRAY(basename, offset, size, count)                                                                  \
-    BOOST_PP_REPEAT(count, REGISTER_ARRAY_ELEMENT, (basename, offset, size))
+#define REGISTER_ARRAY(basename, offset, size, count) BOOST_PP_REPEAT(count, REGISTER_ARRAY_ELEMENT, (basename, offset, size))
 
 #endif // __SCC_TLM_TARGET_BFS_REGISTER_BASE_H__

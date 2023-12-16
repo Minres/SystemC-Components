@@ -18,12 +18,12 @@
 #define _SYSC_TLM_TARGET_H_
 
 #include "resource_access_if.h"
-#include <scc/utilities.h>
-#include <tlm/scc/target_mixin.h>
-#include <tlm/scc/scv/tlm_rec_target_socket.h>
-#include <util/range_lut.h>
 #include <array>
 #include <numeric>
+#include <scc/utilities.h>
+#include <tlm/scc/scv/tlm_rec_target_socket.h>
+#include <tlm/scc/target_mixin.h>
+#include <util/range_lut.h>
 
 namespace scc {
 /**
@@ -78,8 +78,7 @@ public:
      * @param base_addr the offset of the resource (from address 0)
      */
     void addResource(resource_access_if& rai, uint64_t base_addr) {
-        socket_map.addEntry(std::make_pair(&rai, base_addr), base_addr,
-                            std::max<size_t>(1, rai.size() / (ADDR_UNIT_WIDTH / 8)));
+        socket_map.addEntry(std::make_pair(&rai, base_addr), base_addr, std::max<size_t>(1, rai.size() / (ADDR_UNIT_WIDTH / 8)));
     }
     /**
      * @fn void addResource(indexed_resource_access_if&, uint64_t)
@@ -117,10 +116,11 @@ template <unsigned BUSWIDTH = LT> struct target_name_map_entry {
     ::sc_dt::uint64 start;
     ::sc_dt::uint64 size;
 };
-template <unsigned int BUSWIDTH = LT, unsigned int ADDR_UNIT_WIDTH = 8> struct tlm_target_mod : sc_core::sc_module, public tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH> {
-    tlm_target_mod(sc_core::sc_module_name nm, sc_core::sc_time& clk_period) : sc_module(nm), tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>(clk_period){
-
-    }
+template <unsigned int BUSWIDTH = LT, unsigned int ADDR_UNIT_WIDTH = 8>
+struct tlm_target_mod : sc_core::sc_module, public tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH> {
+    tlm_target_mod(sc_core::sc_module_name nm, sc_core::sc_time& clk_period)
+    : sc_module(nm)
+    , tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>(clk_period) {}
 };
 
 } /* namespace scc */
@@ -130,8 +130,7 @@ inline scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::tlm_target(sc_core::sc_time& 
 : socket(socket_name)
 , clk(clock)
 , socket_map(std::make_pair(nullptr, 0)) {
-    socket.register_b_transport(
-        [=](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void { this->b_tranport_cb(gp, delay); });
+    socket.register_b_transport([=](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void { this->b_tranport_cb(gp, delay); });
     socket.register_transport_dbg([=](tlm::tlm_generic_payload& gp) -> unsigned { return this->tranport_dbg_cb(gp); });
 }
 
@@ -150,7 +149,7 @@ void scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::b_tranport_cb(tlm::tlm_generic_
             auto en = false;
             auto p = gp.get_byte_enable_ptr();
             auto i = 0u;
-            for(; i < gp.get_byte_enable_length(); ++i, ++p){
+            for(; i < gp.get_byte_enable_length(); ++i, ++p) {
                 if(*p && !en) {
                     if(lower != std::numeric_limits<unsigned>::max()) {
                         contigous = false;
@@ -170,28 +169,28 @@ void scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::b_tranport_cb(tlm::tlm_generic_
                     }
                 }
             }
-            if(i== gp.get_byte_enable_length() && upper == std::numeric_limits<unsigned>::max())
+            if(i == gp.get_byte_enable_length() && upper == std::numeric_limits<unsigned>::max())
                 upper = i;
             if(contigous) {
                 offset = lower;
-                len = upper-lower;
+                len = upper - lower;
             }
         }
         if(gp.get_data_length() > ra->size()) {
             gp.set_response_status(tlm::TLM_BURST_ERROR_RESPONSE);
-        } else if(gp.get_data_length() != gp.get_streaming_width()){
+        } else if(gp.get_data_length() != gp.get_streaming_width()) {
             gp.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
-        } else if(gp.get_byte_enable_ptr() != nullptr && !(contigous && gp.get_byte_enable_length()==gp.get_data_length())) {
+        } else if(gp.get_byte_enable_ptr() != nullptr && !(contigous && gp.get_byte_enable_length() == gp.get_data_length())) {
             gp.set_response_status(tlm::TLM_BYTE_ENABLE_ERROR_RESPONSE);
         } else {
             gp.set_response_status(tlm::TLM_COMMAND_ERROR_RESPONSE);
             switch(gp.get_command()) {
             case tlm::TLM_READ_COMMAND:
-                if(ra->read(gp.get_data_ptr()+offset, len, (gp.get_address() - base + offset), delay))
+                if(ra->read(gp.get_data_ptr() + offset, len, (gp.get_address() - base + offset), delay))
                     gp.set_response_status(tlm::TLM_OK_RESPONSE);
                 break;
             case tlm::TLM_WRITE_COMMAND:
-                if(ra->write(gp.get_data_ptr()+offset, len, (gp.get_address() - base + offset), delay))
+                if(ra->write(gp.get_data_ptr() + offset, len, (gp.get_address() - base + offset), delay))
                     gp.set_response_status(tlm::TLM_OK_RESPONSE);
                 break;
             }
@@ -208,8 +207,7 @@ unsigned int scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::tranport_dbg_cb(tlm::tl
     uint64_t base = 0;
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());
     if(ra) {
-        if(gp.get_data_length() == ra->size() && gp.get_byte_enable_ptr() == nullptr &&
-           gp.get_data_length() == gp.get_streaming_width()) {
+        if(gp.get_data_length() == ra->size() && gp.get_byte_enable_ptr() == nullptr && gp.get_data_length() == gp.get_streaming_width()) {
             if(gp.get_command() == tlm::TLM_READ_COMMAND) {
                 if(ra->read_dbg(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra->size()))
                     return gp.get_data_length();
@@ -221,6 +219,5 @@ unsigned int scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::tranport_dbg_cb(tlm::tl
     }
     return 0;
 }
-
 
 #endif /* _SYSC_TLM_TARGET_H_ */

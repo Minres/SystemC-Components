@@ -21,7 +21,7 @@
 
 namespace axi {
 
-const sc_core::sc_time CLK_DELAY=1_ps;
+const sc_core::sc_time CLK_DELAY = 1_ps;
 
 template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
 using sc_in_opt = sc_core::sc_port<sc_core::sc_signal_in_if<TYPE>, N, sc_core::SC_ZERO_OR_MORE_BOUND>;
@@ -33,23 +33,17 @@ struct master_types {
     template <typename T> using s2m_t = sc_core::sc_in<T>;
     template <typename T> using m2s_full_t = sc_core::sc_out<T>;
     template <typename T> using s2m_full_t = sc_core::sc_in<T>;
-    template <typename T>
-    using m2s_opt_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
-    template <typename T>
-    using s2m_opt_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T> using m2s_opt_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T> using s2m_opt_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
 };
 
 struct lite_master_types {
     template <typename T> using m2s_t = sc_core::sc_out<T>;
     template <typename T> using s2m_t = sc_core::sc_in<T>;
-    template <typename T>
-    using m2s_full_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
-    template <typename T>
-    using s2m_full_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
-    template <typename T>
-    using m2s_opt_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
-    template <typename T>
-    using s2m_opt_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T> using m2s_full_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T> using s2m_full_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T> using m2s_opt_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T> using s2m_opt_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
 };
 
 struct slave_types {
@@ -57,23 +51,17 @@ struct slave_types {
     template <typename T> using s2m_t = sc_core::sc_out<T>;
     template <typename T> using m2s_full_t = sc_core::sc_in<T>;
     template <typename T> using s2m_full_t = sc_core::sc_out<T>;
-    template <typename T>
-    using m2s_opt_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
-    template <typename T>
-    using s2m_opt_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T> using m2s_opt_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T> using s2m_opt_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
 };
 
 struct lite_slave_types {
     template <typename T> using m2s_t = sc_core::sc_in<T>;
     template <typename T> using s2m_t = sc_core::sc_out<T>;
-    template <typename T>
-    using m2s_full_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
-    template <typename T>
-    using s2m_full_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
-    template <typename T>
-    using m2s_opt_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
-    template <typename T>
-    using s2m_opt_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T> using m2s_full_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T> using s2m_full_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T> using m2s_opt_t = sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    template <typename T> using s2m_opt_t = sc_core::sc_port<sc_core::sc_signal_write_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
 };
 
 struct signal_types {
@@ -88,8 +76,7 @@ struct signal_types {
 template <bool Cond, class T, class S> struct select_if { typedef S type; };
 template <class T, class S> struct select_if<true, T, S> { typedef T type; };
 
-template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1>
-struct axi4_cfg {
+template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1> struct axi4_cfg {
     static_assert(BUSWDTH > 0, "BUSWIDTH shall be larger than 0");
     static_assert(ADDRWDTH > 0, "ADDRWDTH shall be larger than 0");
     static_assert(IDWDTH > 0, "IDWDTH shall be larger than 0");
@@ -125,11 +112,12 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
  * @tparam USERWDTH
  * @tparam CACHELINE: cacheline size in Bytes, defaults value is 64 bytes
  */
-template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1, unsigned int AWSNOOPWDTH=3>
+template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1,
+          unsigned int AWSNOOPWDTH = 3>
 struct ace_cfg {
 
     static_assert(BUSWDTH > 0, "BUSWIDTH shall be larger than 0");
-    //static_assert(CACHELINE > 0);
+    // static_assert(CACHELINE > 0);
     static_assert(ADDRWDTH > 0, "ADDRWDTH shall be larger than 0");
     static_assert(IDWDTH > 0, "IDWDTH shall be larger than 0");
     constexpr static bool IS_LITE = false;
@@ -193,7 +181,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_axi {
         aw_len.bind(o.aw_len);
         aw_user.bind(o.aw_user);
     }
-    template<typename OTYPES> void bind_aw(aw_axi_lite<CFG, OTYPES> &o);
+    template <typename OTYPES> void bind_aw(aw_axi_lite<CFG, OTYPES>& o);
 };
 
 //! write data channel signals
@@ -218,9 +206,8 @@ template <typename CFG, typename TYPES = master_types> struct wdata_axi {
     , w_valid{concat(prefix, "w_valid").c_str()}
     , w_ready{concat(prefix, "w_ready").c_str()}
     , w_user{concat(prefix, "w_user").c_str()}
-    , w_ack{concat(prefix, "w_ack").c_str()}  // only ACE
-    , w_trace{concat(prefix, "w_trace").c_str()}
-    {}
+    , w_ack{concat(prefix, "w_ack").c_str()} // only ACE
+    , w_trace{concat(prefix, "w_trace").c_str()} {}
 
     template <typename OTYPES> void bind_w(wdata_axi<CFG, OTYPES>& o) {
         w_id.bind(o.w_id);
@@ -233,13 +220,9 @@ template <typename CFG, typename TYPES = master_types> struct wdata_axi {
         w_ack.bind(o.w_ack); // only ACE
         w_trace.bind(o.w_trace);
     }
-    template <typename OTYPES> void bind_wdata(wdata_axi<CFG, OTYPES>& o) {
-        bind_w(o);
-    }
-    template<typename OTYPES> void bind_w(wdata_axi_lite<CFG, OTYPES> &o);
-    template<typename OTYPES> void bind_wdata(wdata_axi_lite<CFG, OTYPES> &o){
-        bind_w(o);
-    }
+    template <typename OTYPES> void bind_wdata(wdata_axi<CFG, OTYPES>& o) { bind_w(o); }
+    template <typename OTYPES> void bind_w(wdata_axi_lite<CFG, OTYPES>& o);
+    template <typename OTYPES> void bind_wdata(wdata_axi_lite<CFG, OTYPES>& o) { bind_w(o); }
 };
 
 //! write response channel signals
@@ -252,7 +235,6 @@ template <typename CFG, typename TYPES = master_types> struct b_axi {
     typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> b_user{"b_user"};
     typename TYPES::template s2m_opt_t<bool> b_trace{"b_trace"};
 
-
     b_axi() = default;
     b_axi(const char* prefix)
     : b_valid{concat(prefix, "b_valid").c_str()}
@@ -260,8 +242,7 @@ template <typename CFG, typename TYPES = master_types> struct b_axi {
     , b_id{concat(prefix, "b_id").c_str()}
     , b_resp{concat(prefix, "b_resp").c_str()}
     , b_user{concat(prefix, "b_user").c_str()}
-    , b_trace{concat(prefix, "b_trace").c_str()}
-    {}
+    , b_trace{concat(prefix, "b_trace").c_str()} {}
 
     template <typename OTYPES> void bind_b(b_axi<CFG, OTYPES>& o) {
         b_valid.bind(o.b_valid);
@@ -271,7 +252,7 @@ template <typename CFG, typename TYPES = master_types> struct b_axi {
         b_user.bind(o.b_user);
         b_trace.bind(o.b_trace);
     }
-    template<typename OTYPES> void bind_b(b_axi_lite<CFG, OTYPES> &o);
+    template <typename OTYPES> void bind_b(b_axi_lite<CFG, OTYPES>& o);
 };
 
 //! read address channel signals
@@ -322,7 +303,7 @@ template <typename CFG, typename TYPES = master_types> struct ar_axi {
         ar_ready.bind(o.ar_ready);
         ar_user.bind(o.ar_user);
     }
-    template<typename OTYPES> void bind_ar(ar_axi_lite<CFG, OTYPES> &o);
+    template <typename OTYPES> void bind_ar(ar_axi_lite<CFG, OTYPES>& o);
 };
 
 //! Read data channel signals
@@ -346,8 +327,7 @@ template <typename CFG, typename TYPES = master_types> struct rresp_axi {
     , r_valid{concat(prefix, "r_valid").c_str()}
     , r_ready{concat(prefix, "r_ready").c_str()}
     , r_user{concat(prefix, "r_user").c_str()}
-    , r_trace{concat(prefix, "r_trace").c_str()}
-    {}
+    , r_trace{concat(prefix, "r_trace").c_str()} {}
 
     template <typename OTYPES> void bind_r(rresp_axi<CFG, OTYPES>& o) {
         r_id.bind(o.r_id);
@@ -359,13 +339,9 @@ template <typename CFG, typename TYPES = master_types> struct rresp_axi {
         r_user.bind(o.r_user);
         r_trace.bind(o.r_trace);
     }
-    template <typename OTYPES> void bind_rresp(rresp_axi<CFG, OTYPES>& o) {
-        bind_r(o);
-    }
-    template<typename OTYPES> void bind_r(rresp_axi_lite<CFG, OTYPES> &o);
-    template<typename OTYPES> void bind_rresp(rresp_axi_lite<CFG, OTYPES> &o){
-        bind_r(o);
-    }
+    template <typename OTYPES> void bind_rresp(rresp_axi<CFG, OTYPES>& o) { bind_r(o); }
+    template <typename OTYPES> void bind_r(rresp_axi_lite<CFG, OTYPES>& o);
+    template <typename OTYPES> void bind_rresp(rresp_axi_lite<CFG, OTYPES>& o) { bind_r(o); }
 };
 
 template <typename CFG, typename TYPES = master_types> struct rresp_ace {
@@ -389,9 +365,8 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ace {
     , r_valid{concat(prefix, "r_valid").c_str()}
     , r_ready{concat(prefix, "r_ready").c_str()}
     , r_user{concat(prefix, "r_user").c_str()}
-    , r_ack{concat(prefix,"r_ack").c_str()}     // only ACE
-    , r_trace{concat(prefix,"r_trace").c_str()}
-    {}
+    , r_ack{concat(prefix, "r_ack").c_str()} // only ACE
+    , r_trace{concat(prefix, "r_trace").c_str()} {}
 
     template <typename OTYPES> void bind_r(rresp_ace<CFG, OTYPES>& o) {
         r_id.bind(o.r_id);
@@ -402,11 +377,9 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ace {
         r_ready.bind(o.r_ready);
         r_user.bind(o.r_user);
         r_ack.bind(o.r_ack); // only ACE,not for Lite
-        r_trace.bind(o.r_trace) ;
+        r_trace.bind(o.r_trace);
     }
-    template <typename OTYPES> void bind_rresp(rresp_ace<CFG, OTYPES>& o) {
-        bind_r(o);
-    }
+    template <typename OTYPES> void bind_rresp(rresp_ace<CFG, OTYPES>& o) { bind_r(o); }
 };
 
 //! Write address channel signals
@@ -516,8 +489,6 @@ template <typename CFG, typename TYPES> struct rresp_axi_lite {
     }
 };
 
-
-
 template <typename CFG, typename TYPES = master_types> struct ar_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> ar_id{"ar_id"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> ar_addr{"ar_addr"};
@@ -551,12 +522,11 @@ template <typename CFG, typename TYPES = master_types> struct ar_ace {
     , ar_region{concat(prefix, "ar_region").c_str()}
     , ar_valid{concat(prefix, "ar_valid").c_str()}
     , ar_ready{concat(prefix, "ar_ready").c_str()}
-    , ar_domain{concat(prefix,"ar_domain").c_str()}
-    , ar_snoop{concat(prefix,"ar_snoop").c_str()}
-    , ar_bar{concat(prefix,"ar_bar").c_str()}
+    , ar_domain{concat(prefix, "ar_domain").c_str()}
+    , ar_snoop{concat(prefix, "ar_snoop").c_str()}
+    , ar_bar{concat(prefix, "ar_bar").c_str()}
     , ar_user{concat(prefix, "ar_user").c_str()}
-    , ar_trace{concat(prefix, "ar_trace").c_str()}
-    {}
+    , ar_trace{concat(prefix, "ar_trace").c_str()} {}
 
     template <typename OTYPES> void bind_ar(ar_ace<CFG, OTYPES>& o) {
         ar_id.bind(o.ar_id);
@@ -592,16 +562,16 @@ template <typename CFG, typename TYPES = master_types> struct aw_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> aw_qos{"aw_qos"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> aw_region{"aw_region"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<8>> aw_len{"aw_len"};
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> aw_domain{"aw_domain"};  //ace
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::AWSNOOPWIDTH>> aw_snoop{"aw_snoop"};//ace5-lite has 4 bits
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> aw_bar{"aw_bar"}; //ace
-    typename TYPES::template m2s_t<bool>  aw_unique{"aw_unique"}; //ace, not for lite
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> aw_domain{"aw_domain"};               // ace
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::AWSNOOPWIDTH>> aw_snoop{"aw_snoop"}; // ace5-lite has 4 bits
+    typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> aw_bar{"aw_bar"};                     // ace
+    typename TYPES::template m2s_t<bool> aw_unique{"aw_unique"};                                 // ace, not for lite
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::USERWIDTH>> aw_user{"aw_user"};
-    typename TYPES::template m2s_t<bool> aw_stashniden{"aw_stashniden"};    // stash only for ACE5L
+    typename TYPES::template m2s_t<bool> aw_stashniden{"aw_stashniden"}; // stash only for ACE5L
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<11>> aw_stashnid{"aw_stashnid"};
     typename TYPES::template m2s_t<bool> aw_stashlpiden{"aw_stashlpiden"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<5>> aw_stashlpid{"aw_stashlpid"};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<6>> aw_atop{"aw_atop"};  // only for ace lite
+    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<6>> aw_atop{"aw_atop"}; // only for ace lite
     typename TYPES::template m2s_opt_t<bool> aw_trace{"aw_trace"};
 
     aw_ace() = default;
@@ -628,8 +598,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_ace {
     , aw_stashlpiden{concat(prefix, "aw_stashlpiden").c_str()}
     , aw_stashlpid{concat(prefix, "aw_stashlpid").c_str()}
     , aw_atop{concat(prefix, "aw_atop").c_str()}
-    , aw_trace{concat(prefix, "aw_trace").c_str()}
-    {}
+    , aw_trace{concat(prefix, "aw_trace").c_str()} {}
 
     template <typename OTYPES> void bind_aw(aw_ace<CFG, OTYPES>& o) {
         aw_id.bind(o.aw_id);
@@ -659,7 +628,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_ace {
 };
 
 //! snoop address(AC) channel signals
-template <typename CFG, typename TYPES= master_types> struct ac_ace {
+template <typename CFG, typename TYPES = master_types> struct ac_ace {
     typename TYPES::template s2m_t<bool> ac_valid{"ac_valid"};
     typename TYPES::template m2s_t<bool> ac_ready{"ac_ready"};
     typename TYPES::template s2m_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> ac_addr{"ac_addr"};
@@ -684,7 +653,7 @@ template <typename CFG, typename TYPES= master_types> struct ac_ace {
 };
 
 //! snoop data(cd) channel signals
-template <typename CFG, typename TYPES= master_types> struct cd_ace {
+template <typename CFG, typename TYPES = master_types> struct cd_ace {
     typename TYPES::template m2s_t<bool> cd_valid{"cd_valid"};
     typename TYPES::template s2m_t<bool> cd_ready{"cd_ready"};
     typename TYPES::template m2s_t<typename CFG::data_t> cd_data{"cd_data"};
@@ -695,7 +664,7 @@ template <typename CFG, typename TYPES= master_types> struct cd_ace {
     : cd_valid{concat(prefix, "cd_valid").c_str()}
     , cd_ready{concat(prefix, "cd_ready").c_str()}
     , cd_data{concat(prefix, "cd_data").c_str()}
-    , cd_last{concat(prefix, "cd_last").c_str()}{}
+    , cd_last{concat(prefix, "cd_last").c_str()} {}
 
     template <typename OTYPES> void bind_cd(cd_ace<CFG, OTYPES>& o) {
         cd_valid.bind(o.cd_valid);
@@ -706,7 +675,7 @@ template <typename CFG, typename TYPES= master_types> struct cd_ace {
 };
 
 //! snoop response(cr) channel signals
-template <typename CFG, typename TYPES= master_types> struct cr_ace {
+template <typename CFG, typename TYPES = master_types> struct cr_ace {
     typename TYPES::template m2s_t<bool> cr_valid{"cr_valid"};
     typename TYPES::template s2m_t<bool> cr_ready{"cr_ready"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<5>> cr_resp{"cr_resp"};
@@ -724,53 +693,47 @@ template <typename CFG, typename TYPES= master_types> struct cr_ace {
     }
 };
 //! alias declaration for rresp_ch_ace, wdata_ch_ace, b_ch_ace???
-template <typename CFG, typename TYPES = master_types> using wdata_ace      = wdata_axi<CFG, TYPES >;
-template <typename CFG, typename TYPES = master_types> using b_ace          = b_axi<CFG, TYPES >;
-template <typename CFG, typename TYPES = master_types> using wdata_ace_lite = wdata_axi<CFG, TYPES >;
-template <typename CFG, typename TYPES = master_types> using b_ace_lite     = b_axi<CFG, TYPES >;
-template <typename CFG, typename TYPES = master_types> using rresp_ace_lite = rresp_axi<CFG, TYPES >;
-template <typename CFG, typename TYPES = master_types> using aw_ace_lite    = aw_ace<CFG, TYPES >;
-template <typename CFG, typename TYPES = master_types> using ar_ace_lite    = ar_ace<CFG, TYPES >;
+template <typename CFG, typename TYPES = master_types> using wdata_ace = wdata_axi<CFG, TYPES>;
+template <typename CFG, typename TYPES = master_types> using b_ace = b_axi<CFG, TYPES>;
+template <typename CFG, typename TYPES = master_types> using wdata_ace_lite = wdata_axi<CFG, TYPES>;
+template <typename CFG, typename TYPES = master_types> using b_ace_lite = b_axi<CFG, TYPES>;
+template <typename CFG, typename TYPES = master_types> using rresp_ace_lite = rresp_axi<CFG, TYPES>;
+template <typename CFG, typename TYPES = master_types> using aw_ace_lite = aw_ace<CFG, TYPES>;
+template <typename CFG, typename TYPES = master_types> using ar_ace_lite = ar_ace<CFG, TYPES>;
 
-template<typename CFG, typename TYPES>
-template<typename OTYPES>
-inline void ar_axi<CFG, TYPES>::bind_ar(ar_axi_lite<CFG, OTYPES> &o) {
+template <typename CFG, typename TYPES> template <typename OTYPES> inline void ar_axi<CFG, TYPES>::bind_ar(ar_axi_lite<CFG, OTYPES>& o) {
     ar_addr.bind(o.ar_addr);
     ar_prot.bind(o.ar_prot);
     ar_valid.bind(o.ar_valid);
     ar_ready.bind(o.ar_ready);
 }
 
-template<typename CFG, typename TYPES>
-template<typename OTYPES>
-inline void rresp_axi<CFG, TYPES>::bind_r(rresp_axi_lite<CFG, OTYPES> &o) {
+template <typename CFG, typename TYPES>
+template <typename OTYPES>
+inline void rresp_axi<CFG, TYPES>::bind_r(rresp_axi_lite<CFG, OTYPES>& o) {
     r_data.bind(o.r_data);
     r_resp.bind(o.r_resp);
     r_valid.bind(o.r_valid);
     r_ready.bind(o.r_ready);
 }
 
-template<typename CFG, typename TYPES>
-template<typename OTYPES>
-inline void aw_axi<CFG, TYPES>::bind_aw(aw_axi_lite<CFG, OTYPES> &o) {
+template <typename CFG, typename TYPES> template <typename OTYPES> inline void aw_axi<CFG, TYPES>::bind_aw(aw_axi_lite<CFG, OTYPES>& o) {
     aw_addr.bind(o.aw_addr);
     aw_ready.bind(o.aw_ready);
     aw_valid.bind(o.aw_valid);
     aw_prot.bind(o.aw_prot);
 }
 
-template<typename CFG, typename TYPES>
-template<typename OTYPES>
-inline void wdata_axi<CFG, TYPES>::bind_w(wdata_axi_lite<CFG, OTYPES> &o) {
+template <typename CFG, typename TYPES>
+template <typename OTYPES>
+inline void wdata_axi<CFG, TYPES>::bind_w(wdata_axi_lite<CFG, OTYPES>& o) {
     w_data.bind(o.w_data);
     w_strb.bind(o.w_strb);
     w_valid.bind(o.w_valid);
     w_ready.bind(o.w_ready);
 }
 
-template<typename CFG, typename TYPES>
-template<typename OTYPES>
-inline void b_axi<CFG, TYPES>::bind_b(b_axi_lite<CFG, OTYPES> &o) {
+template <typename CFG, typename TYPES> template <typename OTYPES> inline void b_axi<CFG, TYPES>::bind_b(b_axi_lite<CFG, OTYPES>& o) {
     b_valid.bind(o.b_valid);
     b_ready.bind(o.b_ready);
     b_resp.bind(o.b_resp);

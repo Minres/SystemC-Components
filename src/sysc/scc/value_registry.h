@@ -64,4 +64,4 @@ protected:
 
 } // namespace scc
 /** @} */ // end of scc-sysc
-#endif /* _SCC_VALUE_REGISTRY_H_ */
+#endif    /* _SCC_VALUE_REGISTRY_H_ */

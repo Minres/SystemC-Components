@@ -16,14 +16,13 @@
 
 #include "axi_initiator.h"
 #include <scc/report.h>
+#include <tlm/scc/tlm_gp_shared.h>
 #include <tlm/scc/tlm_id.h>
 #include <tlm/scc/tlm_mm.h>
-#include <tlm/scc/tlm_gp_shared.h>
 
 using namespace axi;
 
-axi_initiator_base::axi_initiator_base(const sc_core::sc_module_name& nm, axi::pe::simple_initiator_b& pe,
-                                       uint32_t width)
+axi_initiator_base::axi_initiator_base(const sc_core::sc_module_name& nm, axi::pe::simple_initiator_b& pe, uint32_t width)
 : sc_module(nm)
 , pe(pe)
 , buswidth(width) {

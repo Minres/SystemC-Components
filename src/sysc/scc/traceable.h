@@ -45,4 +45,4 @@ public:
 
 } /* namespace scc */
 /** @} */ // end of scc-sysc
-#endif /* _SCC_TRACABLE_H_ */
+#endif    /* _SCC_TRACABLE_H_ */

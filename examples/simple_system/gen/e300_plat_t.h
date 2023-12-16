@@ -21,7 +21,7 @@ const std::array<scc::target_name_map_entry<32>, 4> e300_plat_map = {{
     {"plic", 0x0c000000, 0x200008},
     {"gpio", 0x10012000, 0x1000},
     {"uart", 0x10013000, 0x1000},
-    {"spi",  0x10014000, 0x1000},
+    {"spi", 0x10014000, 0x1000},
 }};
 
 #endif /* _E300_PLAT_MAP_H_ */

@@ -100,8 +100,7 @@ protected:
      * @param transfer_width
      */
     explicit ahb_target_b(const sc_core::sc_module_name& nm,
-                          sc_core::sc_port_b<tlm::tlm_bw_transport_if<tlm::tlm_base_protocol_types>>& port,
-                          size_t transfer_width);
+                          sc_core::sc_port_b<tlm::tlm_bw_transport_if<tlm::tlm_base_protocol_types>>& port, size_t transfer_width);
 
     ahb_target_b() = delete;
 

@@ -20,8 +20,8 @@
  *      Author: developer
  */
 
-#include "observer.h"
 #include "tracer_base.h"
+#include "observer.h"
 #include "sc_variable.h"
 #include "traceable.h"
 #include <cstring>
@@ -34,8 +34,7 @@ namespace scc {
 using sc_trace_file = sc_core::sc_trace_file;
 using sc_object = sc_core::sc_object;
 
-template <typename T>
-inline auto try_trace_obj(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) -> bool {
+template <typename T> inline auto try_trace_obj(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) -> bool {
     if((types_to_trace & trace_types::PORTS) == trace_types::PORTS) {
         if(auto const* ptr = dynamic_cast<sc_core::sc_in<T> const*>(object)) {
             SC_TRACE_NS sc_trace(trace_file, *ptr->get_interface(0), object->name());
@@ -267,9 +266,7 @@ void tracer_base::try_trace(sc_trace_file* trace_file, const sc_object* object, 
 #endif
 }
 
-std::string tracer_base::get_name() {
-	return sc_core::sc_gen_unique_name("$$$scc_tracer$$$", true);
-}
+std::string tracer_base::get_name() { return sc_core::sc_gen_unique_name("$$$scc_tracer$$$", true); }
 
 void tracer_base::descend(const sc_object* obj, bool trace_all) {
     if(obj == this)

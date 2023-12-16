@@ -27,8 +27,8 @@ uint8_t log2n(uint8_t siz) { return ((siz > 1) ? 1 + log2n(siz >> 1) : 0); }
 } // anonymous namespace
 
 apb_initiator_b::apb_initiator_b(sc_core::sc_module_name nm,
-                                 sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port,
-                                 size_t transfer_width, bool coherent)
+                                 sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port, size_t transfer_width,
+                                 bool coherent)
 : sc_module(nm)
 , socket_fw(port)
 , transfer_width_in_bytes(transfer_width / 8) {}

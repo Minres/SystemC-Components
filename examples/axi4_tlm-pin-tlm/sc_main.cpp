@@ -96,8 +96,7 @@ public:
         });
     }
 
-    tlm::tlm_generic_payload* prepare_trans(uint64_t start_address, size_t len, unsigned id_offs = 0,
-                                            unsigned addr_offs = 0) {
+    tlm::tlm_generic_payload* prepare_trans(uint64_t start_address, size_t len, unsigned id_offs = 0, unsigned addr_offs = 0) {
         auto trans = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(len);
         trans->set_address(start_address);
         tlm::scc::setId(*trans, id);
@@ -207,15 +206,16 @@ int sc_main(int argc, char* argv[]) {
     auto cfg_file = argc == 2 ? argv[1] : "";
     scc::configurer cfg(cfg_file);
     scc::configurable_tracer trace("axi4_tlm_pin_tlm",
-            true, // enables TX recording
-            true, // enables signal tracing
-            true);// all units by default traced
+                                   true,  // enables TX recording
+                                   true,  // enables signal tracing
+                                   true); // all units by default traced
     if(setjmp(env) == 0) {
         testbench tb("tb");
         cfg.configure();
         try {
             sc_core::sc_start(1_ms);
-            if (!sc_core::sc_end_of_simulation_invoked()) sc_core::sc_stop();
+            if(!sc_core::sc_end_of_simulation_invoked())
+                sc_core::sc_stop();
         } catch(sc_report& e) {
             SCCERR() << "Caught sc_report exception during simulation: " << e.what() << ":" << e.get_msg();
         } catch(std::exception& e) {
@@ -225,8 +225,8 @@ int sc_main(int argc, char* argv[]) {
         }
         auto errcnt = sc_report_handler::get_count(SC_ERROR);
         auto warncnt = sc_report_handler::get_count(SC_WARNING);
-        SCCINFO() << "Finished, there were " << errcnt << " error" << (errcnt == 1 ? "" : "s") << " and " << warncnt
-                  << " warning" << (warncnt == 1 ? "" : "s");
+        SCCINFO() << "Finished, there were " << errcnt << " error" << (errcnt == 1 ? "" : "s") << " and " << warncnt << " warning"
+                  << (warncnt == 1 ? "" : "s");
         return errcnt + warncnt;
     } else {
         return -1;

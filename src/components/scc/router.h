@@ -17,16 +17,16 @@
 #ifndef _SYSC_ROUTER_H_
 #define _SYSC_ROUTER_H_
 
-#include <scc/utilities.h>
-#include <tlm/scc/initiator_mixin.h>
-#include <tlm/scc/target_mixin.h>
-#include <util/range_lut.h>
 #include <limits>
+#include <scc/utilities.h>
 #include <sysc/utils/sc_vector.h>
 #include <tlm.h>
+#include <tlm/scc/initiator_mixin.h>
 #include <tlm/scc/scv/tlm_rec_initiator_socket.h>
 #include <tlm/scc/scv/tlm_rec_target_socket.h>
+#include <tlm/scc/target_mixin.h>
 #include <unordered_map>
+#include <util/range_lut.h>
 
 namespace scc {
 /**
@@ -67,8 +67,7 @@ public:
      * @param size size of the address range occupied by the target
      * @param remap if true address will be rewritten in accesses to be 0-based at the target
      */
-    template <typename TYPE>
-    void bind_target(TYPE& socket, size_t idx, uint64_t base, uint64_t size, bool remap = true) {
+    template <typename TYPE> void bind_target(TYPE& socket, size_t idx, uint64_t base, uint64_t size, bool remap = true) {
         set_target_range(idx, base, size, remap);
         initiator[idx].bind(socket);
     }
@@ -193,37 +192,31 @@ router<BUSWIDTH>::router(const sc_core::sc_module_name& nm, unsigned slave_cnt, 
 , mutexes(slave_cnt)
 , addr_decoder(std::numeric_limits<unsigned>::max()) {
     for(size_t i = 0; i < target.size(); ++i) {
-        target[i].register_b_transport([=](tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) -> void {
-            this->b_transport(i, trans, delay);
-        });
-        target[i].register_get_direct_mem_ptr([=](tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) -> bool {
-            return this->get_direct_mem_ptr(i, trans, dmi_data);
-        });
-        target[i].register_transport_dbg(
-            [=](tlm::tlm_generic_payload& trans) -> unsigned { return this->transport_dbg(i, trans); });
+        target[i].register_b_transport(
+            [=](tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) -> void { this->b_transport(i, trans, delay); });
+        target[i].register_get_direct_mem_ptr(
+            [=](tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) -> bool { return this->get_direct_mem_ptr(i, trans, dmi_data); });
+        target[i].register_transport_dbg([=](tlm::tlm_generic_payload& trans) -> unsigned { return this->transport_dbg(i, trans); });
         ibases[i] = 0ULL;
     }
     for(size_t i = 0; i < initiator.size(); ++i) {
-        initiator[i].register_invalidate_direct_mem_ptr(
-            [=](::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) -> void {
-                this->invalidate_direct_mem_ptr(i, start_range, end_range);
-            });
+        initiator[i].register_invalidate_direct_mem_ptr([=](::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) -> void {
+            this->invalidate_direct_mem_ptr(i, start_range, end_range);
+        });
         tranges[i].base = 0ULL;
         tranges[i].size = 0ULL;
         tranges[i].remap = false;
     }
 }
 
-template <unsigned BUSWIDTH>
-void router<BUSWIDTH>::set_target_range(size_t idx, uint64_t base, uint64_t size, bool remap) {
+template <unsigned BUSWIDTH> void router<BUSWIDTH>::set_target_range(size_t idx, uint64_t base, uint64_t size, bool remap) {
     tranges[idx].base = base;
     tranges[idx].size = size;
     tranges[idx].remap = remap;
     addr_decoder.addEntry(idx, base, size);
 }
 
-template <unsigned BUSWIDTH>
-void router<BUSWIDTH>::add_target_range(std::string name, uint64_t base, uint64_t size, bool remap) {
+template <unsigned BUSWIDTH> void router<BUSWIDTH>::add_target_range(std::string name, uint64_t base, uint64_t size, bool remap) {
     auto it = target_name_lut.find(name);
 #ifndef NDEBUG
 #if(SYSTEMC_VERSION >= 20171012)
@@ -243,8 +236,7 @@ void router<BUSWIDTH>::add_target_range(std::string name, uint64_t base, uint64_
     addr_decoder.addEntry(idx, base, size);
 }
 
-template <unsigned BUSWIDTH>
-void router<BUSWIDTH>::b_transport(int i, tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
+template <unsigned BUSWIDTH> void router<BUSWIDTH>::b_transport(int i, tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
     ::sc_dt::uint64 address = trans.get_address();
     if(ibases[i]) {
         address += ibases[i];
@@ -266,8 +258,7 @@ void router<BUSWIDTH>::b_transport(int i, tlm::tlm_generic_payload& trans, sc_co
     initiator[idx]->b_transport(trans, delay);
     mutexes[idx].unlock();
 }
-template <unsigned BUSWIDTH>
-bool router<BUSWIDTH>::get_direct_mem_ptr(int i, tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) {
+template <unsigned BUSWIDTH> bool router<BUSWIDTH>::get_direct_mem_ptr(int i, tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) {
     ::sc_dt::uint64 address = trans.get_address();
     if(ibases[i]) {
         address += ibases[i];

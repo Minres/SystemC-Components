@@ -36,8 +36,7 @@
 namespace obi {
 
 namespace pin {
-template <unsigned int DATA_WIDTH = 32, unsigned int ADDR_WIDTH = 32, unsigned int ID_WIDTH = 0,
-          unsigned int USER_WIDTH = 0>
+template <unsigned int DATA_WIDTH = 32, unsigned int ADDR_WIDTH = 32, unsigned int ID_WIDTH = 0, unsigned int USER_WIDTH = 0>
 class target : public sc_core::sc_module {
 public:
     using payload_type = tlm::tlm_base_protocol_types::tlm_payload_type;
@@ -79,17 +78,18 @@ public:
     cci::cci_param<sc_core::sc_time> sample_delay{"sample_delay", 0_ns};
     cci::cci_param<int> req2gnt_delay{"req2gnt_delay", 0};
     cci::cci_param<int> addr2data_delay{"addr2data_delay", 0};
+
 private:
     void clk_cb();
     void achannel_req_t();
     void rchannel_rsp_t();
 
     void clk_delay() {
-        if(sc_core::sc_delta_count_at_current_time()<5) {
+        if(sc_core::sc_delta_count_at_current_time() < 5) {
             clk_self.notify(sc_core::SC_ZERO_TIME);
             next_trigger(clk_self);
         } else
-            clk_delayed.notify(sc_core::SC_ZERO_TIME/*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
+            clk_delayed.notify(sc_core::SC_ZERO_TIME /*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
     }
     sc_core::sc_event clk_delayed, clk_self;
     scc::peq<tlm::scc::tlm_gp_shared_ptr> achannel_rsp;
@@ -109,10 +109,9 @@ private:
 template <unsigned int DATA_WIDTH, unsigned int ADDR_WIDTH, unsigned int ID_WIDTH, unsigned int USER_WIDTH>
 inline target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::target(sc_core::sc_module_name nm)
 : sc_module(nm) {
-    isckt.register_nb_transport_bw(
-        [this](payload_type& trans, phase_type& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
-            return nb_transport_bw(trans, phase, t);
-        });
+    isckt.register_nb_transport_bw([this](payload_type& trans, phase_type& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
+        return nb_transport_bw(trans, phase, t);
+    });
     SC_METHOD(clk_cb)
     sensitive << clk_i.pos() << resetn_i.neg();
     SC_METHOD(clk_delay);
@@ -141,8 +140,7 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::clk_cb
 
 template <unsigned int DATA_WIDTH, unsigned int ADDR_WIDTH, unsigned int ID_WIDTH, unsigned int USER_WIDTH>
 inline tlm::tlm_sync_enum
-target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::nb_transport_bw(payload_type& trans, phase_type& phase,
-                                                                              sc_core::sc_time& t) {
+target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t) {
     auto id = obi::get_obi_id(trans);
     auto* ext = trans.get_extension<obi::obi_extension>();
     sc_assert(ext && "obi_extension missing");
@@ -234,8 +232,7 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::achannel_req_t
             wait(clk_i.posedge_event());
             state.addrPhaseFinished = true;
             if(state.last_phase == tlm::BEGIN_RESP) {
-                unsigned resp_delay =
-                    addr2data_delay < 0 ? scc::MT19937::uniform(0, -addr2data_delay) : addr2data_delay;
+                unsigned resp_delay = addr2data_delay < 0 ? scc::MT19937::uniform(0, -addr2data_delay) : addr2data_delay;
                 if(resp_delay) {
                     rchannel_pending_rsp.push_back({gp, resp_delay - 1});
                 } else

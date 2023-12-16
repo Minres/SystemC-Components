@@ -107,4 +107,4 @@ private:
 
 } // namespace scc
 /** @} */ // end of scc-sysc
-#endif /* _SCC_MT19937_RNG_H_ */
+#endif    /* _SCC_MT19937_RNG_H_ */

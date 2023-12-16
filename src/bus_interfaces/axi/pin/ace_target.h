@@ -72,12 +72,11 @@ struct ace_target : public sc_core::sc_module,
         SC_THREAD(ac_t);
         SC_THREAD(cr_t);
         SC_THREAD(cd_t);
-
     }
 
 private:
     tlm::tlm_sync_enum nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t) override;
-    void b_snoop(payload_type& trans, sc_core::sc_time& t)  override {};
+    void b_snoop(payload_type& trans, sc_core::sc_time& t) override{};
 
     void invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) override;
 
@@ -94,14 +93,13 @@ private:
      */
     unsigned snoop_latency{1};
 
-
     void clk_delay() {
-    #ifdef DELTA_SYNC
-        if(sc_core::sc_delta_count_at_current_time()<5) {
+#ifdef DELTA_SYNC
+        if(sc_core::sc_delta_count_at_current_time() < 5) {
             clk_self.notify(sc_core::SC_ZERO_TIME);
             next_trigger(clk_self);
         } else
-            clk_delayed.notify(sc_core::SC_ZERO_TIME/*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
+            clk_delayed.notify(sc_core::SC_ZERO_TIME /*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
 #else
         clk_delayed.notify(axi::CLK_DELAY);
 #endif
@@ -133,20 +131,19 @@ private:
         uint64_t user;
     };
 
-
     std::deque<axi::fsm::fsm_handle*> snp_resp_queue;
 
     sc_core::sc_clock* clk_if{nullptr};
-    sc_core::sc_event clk_delayed, clk_self, ar_end_req_evt, wdata_end_req_evt, ac_evt,cd_end_req_evt,cr_end_req_evt;
+    sc_core::sc_event clk_delayed, clk_self, ar_end_req_evt, wdata_end_req_evt, ac_evt, cd_end_req_evt, cr_end_req_evt;
     std::array<fsm_handle*, 3> active_req_beat{nullptr, nullptr, nullptr};
     std::array<fsm_handle*, 4> active_req{nullptr, nullptr, nullptr};
     std::array<fsm_handle*, 3> active_resp_beat{nullptr, nullptr, nullptr};
     scc::peq<aw_data> aw_que;
     scc::peq<std::tuple<uint8_t, fsm_handle*>> rresp_vl;
     scc::peq<std::tuple<uint8_t, fsm_handle*>> wresp_vl;
-    scc::peq<std::tuple<uint8_t, fsm_handle*>> cr_vl;  // snoop response
+    scc::peq<std::tuple<uint8_t, fsm_handle*>> cr_vl; // snoop response
 
-    unsigned int SNOOP= 3;   // TBD??
+    unsigned int SNOOP = 3; // TBD??
     void write_ac(tlm::tlm_generic_payload& trans);
 };
 
@@ -154,9 +151,9 @@ private:
 } // namespace axi
 
 template <typename CFG>
-inline tlm::tlm_sync_enum axi::pin::ace_target<CFG>::nb_transport_bw(payload_type& trans, phase_type& phase,sc_core::sc_time& t) {
+inline tlm::tlm_sync_enum axi::pin::ace_target<CFG>::nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t) {
     auto ret = tlm::TLM_ACCEPTED;
-    SCCTRACE(SCMOD) << "nb_transport_bw with " << phase << " with delay= "<< t<< " of trans " << trans;
+    SCCTRACE(SCMOD) << "nb_transport_bw with " << phase << " with delay= " << t << " of trans " << trans;
     if(phase == END_PARTIAL_REQ || phase == tlm::END_REQ) { // read/write
         schedule(phase == tlm::END_REQ ? EndReqE : EndPartReqE, &trans, t, false);
     } else if(phase == axi::BEGIN_PARTIAL_RESP || phase == tlm::BEGIN_RESP) { // read/write response
@@ -176,10 +173,10 @@ inline void axi::pin::ace_target<CFG>::invalidate_direct_mem_ptr(sc_dt::uint64 s
 
 template <typename CFG> typename CFG::data_t axi::pin::ace_target<CFG>::get_read_data_for_beat(fsm_handle* fsm_hndl) {
     auto beat_count = fsm_hndl->beat_count;
-    //SCCTRACE(SCMOD) << " " ;
+    // SCCTRACE(SCMOD) << " " ;
     auto size = axi::get_burst_size(*fsm_hndl->trans);
     auto byte_offset = beat_count * size;
-    auto offset = (fsm_hndl->trans->get_address()+byte_offset) & (CFG::BUSWIDTH / 8 - 1);
+    auto offset = (fsm_hndl->trans->get_address() + byte_offset) & (CFG::BUSWIDTH / 8 - 1);
     typename CFG::data_t data{0};
     if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
         if(beat_count == 0) {
@@ -224,8 +221,8 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::setup_callbacks(f
         fsm_hndl->beat_count++;
     };
     fsm_hndl->fsm->cb[BegReqE] = [this, fsm_hndl]() -> void {
-        if(fsm_hndl->is_snoop){
-            SCCTRACE(SCMOD)<<"in BegReq of setup_cb, call write_ac() ";
+        if(fsm_hndl->is_snoop) {
+            SCCTRACE(SCMOD) << "in BegReq of setup_cb, call write_ac() ";
             active_req[SNOOP] = fsm_hndl;
             write_ac(*fsm_hndl->trans);
             ac_evt.notify(sc_core::SC_ZERO_TIME);
@@ -242,13 +239,13 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::setup_callbacks(f
 
     fsm_hndl->fsm->cb[EndReqE] = [this, fsm_hndl]() -> void {
         if(fsm_hndl->is_snoop) {
-            SCCTRACE(SCMOD)<< "snoop with EndReq evt";
+            SCCTRACE(SCMOD) << "snoop with EndReq evt";
             auto latency = 0;
             snp_resp_queue.push_back(fsm_hndl);
             active_req[SNOOP] = nullptr;
-            tlm::tlm_phase phase=tlm::END_REQ;
+            tlm::tlm_phase phase = tlm::END_REQ;
             //  ?? here t(delay) should be zero or clock cycle??
-            //sc_core::sc_time t(clk_if ? ::scc::time_to_next_posedge(clk_if) - 1_ps : sc_core::SC_ZERO_TIME);
+            // sc_core::sc_time t(clk_if ? ::scc::time_to_next_posedge(clk_if) - 1_ps : sc_core::SC_ZERO_TIME);
             sc_core::sc_time t(sc_core::SC_ZERO_TIME);
             auto ret = isckt->nb_transport_fw(*fsm_hndl->trans, phase, t);
             auto exta = fsm_hndl->trans->get_extension<ace_extension>();
@@ -264,13 +261,13 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::setup_callbacks(f
                 active_req_beat[tlm::TLM_WRITE_COMMAND] = nullptr;
                 fsm_hndl->beat_count++;
                 break;
-           default:
-               break;
+            default:
+                break;
             }
         }
     };
     fsm_hndl->fsm->cb[BegPartRespE] = [this, fsm_hndl]() -> void {
-        if(fsm_hndl->is_snoop){
+        if(fsm_hndl->is_snoop) {
             tlm::tlm_phase phase = axi::BEGIN_PARTIAL_RESP;
             sc_core::sc_time t;
             auto ret = isckt->nb_transport_fw(*fsm_hndl->trans, phase, t);
@@ -280,10 +277,9 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::setup_callbacks(f
             active_resp_beat[tlm::TLM_READ_COMMAND] = fsm_hndl;
             rresp_vl.notify({1, fsm_hndl});
         }
-
     };
     fsm_hndl->fsm->cb[EndPartRespE] = [this, fsm_hndl]() -> void {
-        if(fsm_hndl->is_snoop){
+        if(fsm_hndl->is_snoop) {
             fsm_hndl->beat_count++;
             cd_end_req_evt.notify();
 
@@ -319,29 +315,29 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::setup_callbacks(f
         }
     };
     fsm_hndl->fsm->cb[EndRespE] = [this, fsm_hndl]() -> void {
-        if(fsm_hndl->is_snoop){
-            SCCTRACE(SCMOD)<< "  in EndRespE  ";
+        if(fsm_hndl->is_snoop) {
+            SCCTRACE(SCMOD) << "  in EndRespE  ";
             cd_end_req_evt.notify();
-            cr_end_req_evt.notify();   // need to check these two event??
+            cr_end_req_evt.notify(); // need to check these two event??
             snp_resp_queue.pop_front();
             fsm_hndl->finish.notify();
 
         } else {
-        // scheduling the response
-               tlm::tlm_phase phase = tlm::END_RESP;
-               sc_core::sc_time t(sc_core::SC_ZERO_TIME);
-               auto ret = isckt->nb_transport_fw(*fsm_hndl->trans, phase, t);
-               SCCTRACE(SCMOD)<< "EndResp of setup_cb with coherent = " << coherent;
-               if(coherent)
-                   schedule(Ack, fsm_hndl->trans,t);   // later can add ack_resp_delay to replace t
-               else {
-                   fsm_hndl->finish.notify();
-                   active_resp_beat[fsm_hndl->trans->get_command()] = nullptr;
-               }
+            // scheduling the response
+            tlm::tlm_phase phase = tlm::END_RESP;
+            sc_core::sc_time t(sc_core::SC_ZERO_TIME);
+            auto ret = isckt->nb_transport_fw(*fsm_hndl->trans, phase, t);
+            SCCTRACE(SCMOD) << "EndResp of setup_cb with coherent = " << coherent;
+            if(coherent)
+                schedule(Ack, fsm_hndl->trans, t); // later can add ack_resp_delay to replace t
+            else {
+                fsm_hndl->finish.notify();
+                active_resp_beat[fsm_hndl->trans->get_command()] = nullptr;
+            }
         }
     };
     fsm_hndl->fsm->cb[Ack] = [this, fsm_hndl]() -> void {
-        SCCTRACE(SCMOD)<<" in Ack of setup_cb";
+        SCCTRACE(SCMOD) << " in Ack of setup_cb";
         sc_core::sc_time t(sc_core::SC_ZERO_TIME);
         tlm::tlm_phase phase = axi::ACK;
         auto ret = isckt->nb_transport_fw(*fsm_hndl->trans, phase, t);
@@ -379,7 +375,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::ar_t() {
             ext->set_size(arsize);
             if(this->ar_lock->read())
                 ext->set_exclusive(true);
-            ext->set_domain(axi::into<axi::domain_e>(this->ar_domain->read()));   // ace extension
+            ext->set_domain(axi::into<axi::domain_e>(this->ar_domain->read())); // ace extension
             ext->set_snoop(axi::into<axi::snoop_e>(this->ar_snoop->read()));
             ext->set_barrier(axi::into<axi::bar_e>(this->ar_bar->read()));
             ext->set_burst(CFG::IS_LITE ? axi::burst_e::INCR : axi::into<axi::burst_e>(this->ar_burst->read()));
@@ -406,8 +402,8 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::rresp_t() {
     while(true) {
         // rresp_vl notified in BEGIN_PARTIAL_REQ ( val=1 ??)or in BEG_RESP(val=3??)
         std::tie(val, fsm_hndl) = rresp_vl.get();
-        SCCTRACE(SCMOD)<<__FUNCTION__ <<" val = "<< (uint16_t)val << " beat count = " <<fsm_hndl->beat_count ;
-        SCCTRACE(SCMOD)<<__FUNCTION__ << " got read response beat of trans " << *fsm_hndl->trans;
+        SCCTRACE(SCMOD) << __FUNCTION__ << " val = " << (uint16_t)val << " beat count = " << fsm_hndl->beat_count;
+        SCCTRACE(SCMOD) << __FUNCTION__ << " got read response beat of trans " << *fsm_hndl->trans;
         auto ext = fsm_hndl->trans->get_extension<axi::ace_extension>();
         this->r_data.write(get_read_data_for_beat(fsm_hndl));
         this->r_resp.write(ext->get_cresp());
@@ -419,8 +415,8 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::rresp_t() {
         do {
             wait(this->r_ready.posedge_event() | clk_delayed);
             if(this->r_ready.read()) {
-                auto evt = CFG::IS_LITE || (val & 0x2) ? axi::fsm::protocol_time_point_e::EndRespE
-                        : axi::fsm::protocol_time_point_e::EndPartRespE;
+                auto evt =
+                    CFG::IS_LITE || (val & 0x2) ? axi::fsm::protocol_time_point_e::EndRespE : axi::fsm::protocol_time_point_e::EndPartRespE;
                 react(evt, active_resp_beat[tlm::TLM_READ_COMMAND]);
             }
         } while(!this->r_ready.read());
@@ -509,7 +505,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::wdata_t() {
             auto beat_count = fsm_hndl->beat_count;
             auto size = axi::get_burst_size(*fsm_hndl->trans);
             auto byte_offset = beat_count * size;
-            auto offset = (fsm_hndl->trans->get_address()+byte_offset) & (CFG::BUSWIDTH / 8 - 1);
+            auto offset = (fsm_hndl->trans->get_address() + byte_offset) & (CFG::BUSWIDTH / 8 - 1);
             if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
                 if(beat_count == 0) {
                     auto dptr = fsm_hndl->trans->get_data_ptr();
@@ -534,25 +530,26 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::wdata_t() {
                 auto dptr = fsm_hndl->trans->get_data_ptr() + byte_offset;
                 auto beptr = fsm_hndl->trans->get_byte_enable_ptr() + byte_offset;
                 for(size_t i = 0; i < size; ++i, ++dptr, ++beptr) {
-                    auto bit_offs = (offset+i) * 8;
+                    auto bit_offs = (offset + i) * 8;
                     *dptr = data(bit_offs + 7, bit_offs).to_uint();
-                    *beptr = strb[offset +i] ? 0xff : 0;
+                    *beptr = strb[offset + i] ? 0xff : 0;
                 }
             }
             // TODO: assuming consecutive write (not scattered)
             auto strobe = strb.to_uint();
             if(last) {
-                auto act_data_len = CFG::IS_LITE? util::bit_count(strobe): (beat_count+1) * size;
-    //            if(CFG::IS_LITE && act_data_len<CFG::BUSWIDTH/8) {
-    //                std::fill(gp->get_byte_enable_ptr(), gp->get_byte_enable_ptr() + act_data_len, 0xff);
-    //                std::fill(gp->get_byte_enable_ptr() + act_data_len, gp->get_byte_enable_ptr() + gp->get_byte_enable_length(), 0x0);
-    //            }
+                auto act_data_len = CFG::IS_LITE ? util::bit_count(strobe) : (beat_count + 1) * size;
+                //            if(CFG::IS_LITE && act_data_len<CFG::BUSWIDTH/8) {
+                //                std::fill(gp->get_byte_enable_ptr(), gp->get_byte_enable_ptr() + act_data_len, 0xff);
+                //                std::fill(gp->get_byte_enable_ptr() + act_data_len, gp->get_byte_enable_ptr() +
+                //                gp->get_byte_enable_length(), 0x0);
+                //            }
                 gp->set_data_length(act_data_len);
                 gp->set_byte_enable_length(act_data_len);
                 gp->set_streaming_width(act_data_len);
             }
             auto tp = CFG::IS_LITE || this->w_last->read() ? axi::fsm::protocol_time_point_e::BegReqE
-                    : axi::fsm::protocol_time_point_e::BegPartReqE;
+                                                           : axi::fsm::protocol_time_point_e::BegPartReqE;
             react(tp, fsm_hndl);
             // notifed in EndPartReqE/EndReq
             wait(wdata_end_req_evt);
@@ -565,15 +562,14 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::wdata_t() {
     }
 }
 
-template<typename CFG>
-inline void axi::pin::ace_target<CFG>::bresp_t() {
+template <typename CFG> inline void axi::pin::ace_target<CFG>::bresp_t() {
     this->b_valid.write(false);
     wait(sc_core::SC_ZERO_TIME);
     fsm_handle* fsm_hndl;
     uint8_t val;
-    while(true){
+    while(true) {
         std::tie(val, fsm_hndl) = wresp_vl.get();
-        SCCTRACE(SCMOD)<<"got write response of trans "<<*fsm_hndl->trans;
+        SCCTRACE(SCMOD) << "got write response of trans " << *fsm_hndl->trans;
         auto ext = fsm_hndl->trans->get_extension<axi::ace_extension>();
         this->b_resp.write(axi::to_int(ext->get_resp()));
         this->b_valid.write(true);
@@ -586,15 +582,14 @@ inline void axi::pin::ace_target<CFG>::bresp_t() {
                 react(axi::fsm::protocol_time_point_e::EndRespE, active_resp_beat[tlm::TLM_WRITE_COMMAND]);
             }
         } while(!this->b_ready.read());
-        SCCTRACE(SCMOD)<<"finished write response of trans ["<<fsm_hndl->trans<<"]";
+        SCCTRACE(SCMOD) << "finished write response of trans [" << fsm_hndl->trans << "]";
         wait(clk_i.posedge_event());
         this->b_valid.write(false);
     }
 }
 
 // write snoop address
-template <typename CFG>
-inline void axi::pin::ace_target<CFG>::write_ac(tlm::tlm_generic_payload& trans) {
+template <typename CFG> inline void axi::pin::ace_target<CFG>::write_ac(tlm::tlm_generic_payload& trans) {
     sc_dt::sc_uint<CFG::ADDRWIDTH> addr = trans.get_address();
     this->ac_addr.write(addr);
     auto ext = trans.get_extension<ace_extension>();
@@ -603,8 +598,7 @@ inline void axi::pin::ace_target<CFG>::write_ac(tlm::tlm_generic_payload& trans)
     this->ac_snoop->write(sc_dt::sc_uint<4>((uint8_t)ext->get_snoop()));
 }
 
-template <typename CFG>
-inline void axi::pin::ace_target<CFG>::ac_t() {
+template <typename CFG> inline void axi::pin::ace_target<CFG>::ac_t() {
     this->ac_valid.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
@@ -613,7 +607,7 @@ inline void axi::pin::ace_target<CFG>::ac_t() {
         do {
             wait(this->ac_ready.posedge_event() | clk_delayed);
             if(this->ac_ready.read()) {
-                SCCTRACE(SCMOD)<< "in ac_t() detect ac_ready high , schedule EndReq";
+                SCCTRACE(SCMOD) << "in ac_t() detect ac_ready high , schedule EndReq";
                 react(axi::fsm::protocol_time_point_e::EndReqE, active_req[SNOOP]);
             }
         } while(!this->ac_ready.read());
@@ -628,17 +622,17 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::cd_t() {
     while(true) {
         wait(this->cd_valid.posedge_event() | clk_delayed);
         if(this->cd_valid.read()) {
-            SCCTRACE(SCMOD)<<"in cd_t(), received cd_valid high ";
+            SCCTRACE(SCMOD) << "in cd_t(), received cd_valid high ";
             wait(sc_core::SC_ZERO_TIME);
             auto data = this->cd_data.read();
             if(snp_resp_queue.empty())
                 sc_assert(" snp_resp_queue empty");
             auto* fsm_hndl = snp_resp_queue.front();
             auto beat_count = fsm_hndl->beat_count;
-            SCCTRACE(SCMOD)<<"in cd_t(), received beau_count = "<< fsm_hndl->beat_count ;
+            SCCTRACE(SCMOD) << "in cd_t(), received beau_count = " << fsm_hndl->beat_count;
             auto size = axi::get_burst_size(*fsm_hndl->trans);
             auto byte_offset = beat_count * size;
-            auto offset = (fsm_hndl->trans->get_address()+byte_offset) & (CFG::BUSWIDTH / 8 - 1);
+            auto offset = (fsm_hndl->trans->get_address() + byte_offset) & (CFG::BUSWIDTH / 8 - 1);
             if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
                 if(beat_count == 0) {
                     auto dptr = fsm_hndl->trans->get_data_ptr();
@@ -658,7 +652,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::cd_t() {
             } else { // aligned or single beat access
                 auto dptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
                 for(size_t i = 0; i < size; ++i, ++dptr) {
-                    auto bit_offs = (offset+i) * 8;
+                    auto bit_offs = (offset + i) * 8;
                     *dptr = data(bit_offs + 7, bit_offs).to_uint();
                 }
             }
@@ -669,9 +663,9 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::cd_t() {
             e->add_to_response_array(*e);
             */
             auto tp = CFG::IS_LITE || this->cd_last->read() ? axi::fsm::protocol_time_point_e::BegRespE
-                                                           : axi::fsm::protocol_time_point_e::BegPartRespE;
-           if(!this->cd_last->read())   // only react BegPartRespE
-               react(tp, fsm_hndl);
+                                                            : axi::fsm::protocol_time_point_e::BegPartRespE;
+            if(!this->cd_last->read()) // only react BegPartRespE
+                react(tp, fsm_hndl);
             // cd_end_req_evt notified in EndPartRespE or EndResp
             wait(cd_end_req_evt);
             this->cd_ready.write(true);
@@ -687,7 +681,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::cr_t() {
     while(true) {
         wait(this->cr_valid.posedge_event() | clk_delayed);
         if(this->cr_valid.read()) {
-            SCCTRACE(SCMOD)<<"in cr_t()  received cr_valid high ";
+            SCCTRACE(SCMOD) << "in cr_t()  received cr_valid high ";
             wait(sc_core::SC_ZERO_TIME);
 
             auto* fsm_hndl = snp_resp_queue.front();
@@ -696,17 +690,15 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::cr_t() {
             fsm_hndl->trans->get_extension(e);
             e->set_cresp(crresp);
 
-            SCCTRACE(SCMOD)<<" in cr_t()  react() with BegRespE ";
+            SCCTRACE(SCMOD) << " in cr_t()  react() with BegRespE ";
             // hongyu TBD?? schedule BegResp??
             react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
-            wait(cr_end_req_evt);    // notify in EndResp
+            wait(cr_end_req_evt); // notify in EndResp
             this->cr_ready.write(true);
             wait(clk_i.posedge_event());
             this->cr_ready.write(false);
         }
     }
 }
-
-
 
 #endif /* _BUS_AXI_PIN_ACE_TARGET_H_ */

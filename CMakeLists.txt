@@ -77,8 +77,6 @@ set(SCC_CMAKE_CONFIG_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/scc)
 # build the SCC
 ###############################################################################
 if (ENABLE_CLANG_TIDY)
-    set(CLANG_FORMAT_EXCLUDE_PATTERNS "third_party/fst" "fmt_8.0" "jsoncpp-1.8" "rapidjson-1.1" "spdlog-1.8" "sqlite3")
-    find_package(ClangFormat)
     find_program (CLANG_TIDY_EXE NAMES "clang-tidy" PATHS /usr/bin )
     if (CLANG_TIDY_EXE)
         message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
@@ -141,6 +139,9 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
         add_compile_options(/vmg /MP /W3 /wd4244 /wd4267 /wd4996 -DNOMINMAX /EHsc)
         link_directories(${Boost_LIBRARY_DIRS})
     endif()
+
+    set(CLANG_FORMAT_EXCLUDE_PATTERNS "third_party/")
+    find_package(ClangFormat)
 endif()
 include(CheckSymbolExists)
 # Check for function getenv()

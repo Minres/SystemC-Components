@@ -8,9 +8,9 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif
 #include <array>
+#include <axi/pe/simple_ace_target.h>
 #include <axi/pe/simple_initiator.h>
 #include <axi/pe/simple_target.h>
-#include <axi/pe/simple_ace_target.h>
 #include <axi/scv/recorder_modules.h>
 #include <cstdint>
 #include <scc.h>
@@ -46,7 +46,7 @@ public:
 
         // here set snoop_cb of initiator and prepare snoop data
         intor_pe.set_snoop_cb([this](axi::axi_protocol_types::tlm_payload_type& trans) -> unsigned {
-            SCCTRACE(SCMOD)<<" enter snoop_cb of tgt_pe(simple target) in sc_main";
+            SCCTRACE(SCMOD) << " enter snoop_cb of tgt_pe(simple target) in sc_main";
             auto addr = trans.get_address();
             uint8_t const* src = reinterpret_cast<uint8_t const*>(&addr);
             for(size_t i = 0; i < trans.get_data_length(); ++i) {
@@ -54,7 +54,6 @@ public:
             }
             return 0;
         });
-
     }
 
     tlm::tlm_generic_payload* prepare_trans_ace(size_t len, uint8_t const* data = nullptr) {
@@ -71,7 +70,7 @@ public:
         // no clear definition??? check later??
         trans->set_streaming_width(len);
         // arsize, one signal in ARchannel(size, the number of bytes in each data transfer in a read transaction.)
-        //len= BurstLengthByte=16
+        // len= BurstLengthByte=16
         ext->set_size(scc::ilog2(std::min<size_t>(len, SOCKET_WIDTH / 8)));
         // check whether trans is byte aligned
         sc_assert(len < (SOCKET_WIDTH / 8) || len % (SOCKET_WIDTH / 8) == 0);
@@ -101,7 +100,7 @@ public:
 
         for(int i = 0; i < NumberOfIterations; ++i) {
             SCCDEBUG("testbench") << "executing transactions in iteration " << i;
-           { // 1
+            { // 1
                 auto trans = prepare_trans_ace(BurstLengthByte);
 
                 SCCDEBUG(SCMOD) << "generating transactions " << trans;
@@ -110,7 +109,7 @@ public:
                 trans->set_data_ptr(data.data());
                 trans->acquire();
                 // before prepare the trans, here use tranport() of initiator
-                 intor_pe.transport(*trans, false);
+                intor_pe.transport(*trans, false);
                 if(trans->get_response_status() != tlm::TLM_OK_RESPONSE)
                     SCCERR() << "Invalid response status" << trans->get_response_string();
                 trans->release();
@@ -129,7 +128,7 @@ public:
                 trans->release();
                 StartAddr += BurstLengthByte;
             }
-            {   // start snoop
+            { // start snoop
                 auto trans = prepare_trans_ace(BurstLengthByte);
                 SCCDEBUG(SCMOD) << "start snoop ";
                 SCCDEBUG(SCMOD) << "generating transactions " << trans;
@@ -152,7 +151,6 @@ private:
     axi::pe::simple_ace_initiator<SOCKET_WIDTH> intor_pe;
     axi::pe::simple_target<SOCKET_WIDTH> axi_tgt_pe;
     axi::pe::simple_ace_target<SOCKET_WIDTH> ace_tgt_pe;
-
 
     unsigned id{0};
 };

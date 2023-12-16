@@ -79,8 +79,7 @@ writing. By default spdlog logs asyncronously to keep the performance impact low
 //! @brief SCC SystemC utilities
 namespace scc {
 //! \brief array holding string representations of log levels
-static std::array<const char* const, 8> buffer = {
-    {"NONE", "FATAL", "ERROR", "WARNING", "INFO", "DEBUG", "TRACE", "TRACEALL"}};
+static std::array<const char* const, 8> buffer = {{"NONE", "FATAL", "ERROR", "WARNING", "INFO", "DEBUG", "TRACE", "TRACEALL"}};
 //! \brief enum defining the log levels
 enum class log { NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE, TRACEALL, DBGTRACE = TRACEALL };
 /**
@@ -92,8 +91,7 @@ enum class log { NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE, TRACEALL, DBGT
  */
 inline log as_log(int logLevel) {
     assert(logLevel >= static_cast<int>(log::NONE) && logLevel <= static_cast<int>(log::TRACEALL));
-    std::array<const log, 8> m = {
-        {log::NONE, log::FATAL, log::ERROR, log::WARNING, log::INFO, log::DEBUG, log::TRACE, log::TRACEALL}};
+    std::array<const log, 8> m = {{log::NONE, log::FATAL, log::ERROR, log::WARNING, log::INFO, log::DEBUG, log::TRACE, log::TRACEALL}};
     return m[logLevel];
 }
 /**
@@ -362,9 +360,7 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
      * @brief the destructor generating the SystemC report
      *
      */
-    virtual ~ScLogger() {
-        ::sc_core::sc_report_handler::report(SEVERITY, t ? t : "SystemC", os.str().c_str(), level, file, line);
-    }
+    virtual ~ScLogger() { ::sc_core::sc_report_handler::report(SEVERITY, t ? t : "SystemC", os.str().c_str(), level, file, line); }
     /**
      * @fn ScLogger& type()
      * @brief reset the category of the log entry
@@ -419,15 +415,25 @@ protected:
 //! macro for log output
 #define SCCLOG(lvl, ...) ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, lvl / 10).type(__VA_ARGS__).get()
 //! macro for debug trace level output
-#define SCCTRACEALL(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_DEBUG) SCCLOG(sc_core::SC_DEBUG, __VA_ARGS__)
+#define SCCTRACEALL(...)                                                                                                                   \
+    if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_DEBUG)                                                                         \
+    SCCLOG(sc_core::SC_DEBUG, __VA_ARGS__)
 //! macro for trace level output
-#define SCCTRACE(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_FULL) SCCLOG(sc_core::SC_FULL, __VA_ARGS__)
+#define SCCTRACE(...)                                                                                                                      \
+    if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_FULL)                                                                          \
+    SCCLOG(sc_core::SC_FULL, __VA_ARGS__)
 //! macro for debug level output
-#define SCCDEBUG(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_HIGH) SCCLOG(sc_core::SC_HIGH, __VA_ARGS__)
+#define SCCDEBUG(...)                                                                                                                      \
+    if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_HIGH)                                                                          \
+    SCCLOG(sc_core::SC_HIGH, __VA_ARGS__)
 //! macro for info level output
-#define SCCINFO(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_MEDIUM) SCCLOG(sc_core::SC_MEDIUM, __VA_ARGS__)
+#define SCCINFO(...)                                                                                                                       \
+    if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_MEDIUM)                                                                        \
+    SCCLOG(sc_core::SC_MEDIUM, __VA_ARGS__)
 //! macro for warning level output
-#define SCCWARN(...) if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_LOW) ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
+#define SCCWARN(...)                                                                                                                       \
+    if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_LOW)                                                                           \
+    ::scc::ScLogger<::sc_core::SC_WARNING>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for error level output
 #define SCCERR(...) ::scc::ScLogger<::sc_core::SC_ERROR>(__FILE__, __LINE__, sc_core::SC_MEDIUM).type(__VA_ARGS__).get()
 //! macro for fatal message output
@@ -488,4 +494,4 @@ protected:
 
 } // namespace scc
 /** @} */ // end of scc-sysc
-#endif /* _SCC_REPORT_H_ */
+#endif    /* _SCC_REPORT_H_ */

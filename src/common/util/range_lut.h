@@ -88,8 +88,7 @@ public:
      */
     inline T getEntry(uint64_t addr) const {
         auto iter = m_lut.lower_bound(addr);
-        return (iter != m_lut.end() && (iter->second.type == END_RANGE || iter->first == addr)) ? iter->second.index
-                                                                                                : null_entry;
+        return (iter != m_lut.end() && (iter->second.type == END_RANGE || iter->first == addr)) ? iter->second.index : null_entry;
     }
     /**
      * validate the lookup table wrt. overlaps
@@ -196,13 +195,13 @@ template <typename T> inline std::string range_lut<T>::toString() const {
         switch(iter->second.type) {
         case BEGIN_RANGE:
             if(iter->second.index != null_entry) {
-                buf << "  from 0x" << std::setw(sizeof(uint64_t) * 2) << std::setfill('0') << std::uppercase << std::hex
-                    << iter->first << std::dec;
+                buf << "  from 0x" << std::setw(sizeof(uint64_t) * 2) << std::setfill('0') << std::uppercase << std::hex << iter->first
+                    << std::dec;
             }
             break;
         case END_RANGE:
-            buf << " to 0x" << std::setw(sizeof(uint64_t) * 2) << std::setfill('0') << std::uppercase << std::hex
-                << iter->first << std::dec << " as " << iter->second->index << std::endl;
+            buf << " to 0x" << std::setw(sizeof(uint64_t) * 2) << std::setfill('0') << std::uppercase << std::hex << iter->first << std::dec
+                << " as " << iter->second->index << std::endl;
         }
     }
     return buf.str();

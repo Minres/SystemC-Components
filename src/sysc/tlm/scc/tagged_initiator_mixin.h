@@ -29,8 +29,7 @@ namespace scc {
 /**
  *
  */
-template <typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types>
-class tagged_initiator_mixin : public BASE_TYPE {
+template <typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types> class tagged_initiator_mixin : public BASE_TYPE {
 public:
     using transaction_type = typename TYPES::tlm_payload_type;
     using phase_type = typename TYPES::tlm_phase_type;
@@ -61,9 +60,8 @@ public:
      * @param cb the callback function
      * @param tag the tag to return upon calling
      */
-    void register_nb_transport_bw(
-        std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)> cb,
-        unsigned int tag) {
+    void register_nb_transport_bw(std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)> cb,
+                                  unsigned int tag) {
         bw_if.set_transport_function(cb, tag);
     }
     /**
@@ -71,16 +69,14 @@ public:
      * @param cb the callback function
      * @param tag the tag to return upon calling
      */
-    void register_invalidate_direct_mem_ptr(std::function<void(unsigned int, sc_dt::uint64, sc_dt::uint64)> cb,
-                                            unsigned int tag) {
+    void register_invalidate_direct_mem_ptr(std::function<void(unsigned int, sc_dt::uint64, sc_dt::uint64)> cb, unsigned int tag) {
         bw_if.set_invalidate_direct_mem_function(cb, tag);
     }
 
 private:
     class bw_transport_if : public tlm::tlm_bw_transport_if<TYPES> {
     public:
-        using transport_fct =
-            std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)>;
+        using transport_fct = std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)>;
         using invalidate_dmi_fct = std::function<void(unsigned int, sc_dt::uint64, sc_dt::uint64)>;
 
         bw_transport_if(const std::string& name)

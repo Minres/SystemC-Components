@@ -51,8 +51,7 @@ public:
      */
     void transport(payload_type& trans, bool blocking);
 
-    apb_initiator_b(sc_core::sc_module_name nm,
-                    sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port,
+    apb_initiator_b(sc_core::sc_module_name nm, sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port,
                     size_t transfer_width, bool coherent);
 
     virtual ~apb_initiator_b();

@@ -30,8 +30,8 @@
 
 #include "test_initiator.h"
 #include <array>
-#include <sysc/kernel/sc_module.h>
 #include <scc/router.h>
+#include <sysc/kernel/sc_module.h>
 
 namespace sysc {
 

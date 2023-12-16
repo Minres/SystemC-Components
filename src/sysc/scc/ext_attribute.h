@@ -79,6 +79,6 @@ public:
      */
     const sc_core::sc_module* owner;
 };
-}; // namespace scc
+};        // namespace scc
 /** @} */ // end of scc-sysc
-#endif /* _SYSC_EXT_ATTRIBUTE_H_ */
+#endif    /* _SYSC_EXT_ATTRIBUTE_H_ */

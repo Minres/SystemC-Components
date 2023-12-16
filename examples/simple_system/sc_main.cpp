@@ -21,9 +21,9 @@
  */
 
 #include "simple_system.h"
+#include <boost/program_options.hpp>
 #include <scc/report.h>
 #include <scc/tracer.h>
-#include <boost/program_options.hpp>
 
 using namespace sysc;
 using namespace scc;
@@ -35,8 +35,8 @@ const size_t SUCCESS = 0;
 const size_t ERROR_UNHANDLED_EXCEPTION = 2;
 } // namespace
 
-int sc_main(int argc, char *argv[]) {
-    sc_core::sc_report_handler::set_actions( "/IEEE_Std_1666/deprecated", sc_core::SC_DO_NOTHING );
+int sc_main(int argc, char* argv[]) {
+    sc_core::sc_report_handler::set_actions("/IEEE_Std_1666/deprecated", sc_core::SC_DO_NOTHING);
     sc_core::sc_report_handler::set_actions(sc_core::SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, sc_core::SC_DO_NOTHING);
     ///////////////////////////////////////////////////////////////////////////
     // CLI argument parsing
@@ -52,13 +52,13 @@ int sc_main(int argc, char *argv[]) {
     try {
         po::store(po::parse_command_line(argc, argv, desc), vm); // can throw
         // --help option
-        if (vm.count("help")) {
+        if(vm.count("help")) {
             std::cout << "simple system simulator" << std::endl << desc << std::endl;
             return SUCCESS;
         }
         po::notify(vm); // throws on error, so do after help in case
         // there are any problems
-    } catch (po::error &e) {
+    } catch(po::error& e) {
         std::cerr << "ERROR: " << e.what() << std::endl << std::endl;
         std::cerr << desc << std::endl;
         return ERROR_IN_COMMAND_LINE;
@@ -66,11 +66,11 @@ int sc_main(int argc, char *argv[]) {
     ///////////////////////////////////////////////////////////////////////////
     // configure logging
     ///////////////////////////////////////////////////////////////////////////
-    scc::init_logging(vm.count("debug")?scc::log::DEBUG:scc::log::INFO);
+    scc::init_logging(vm.count("debug") ? scc::log::DEBUG : scc::log::INFO);
     ///////////////////////////////////////////////////////////////////////////
     // set up tracing & transaction recording
     ///////////////////////////////////////////////////////////////////////////
-    tracer trace("simple_system", vm.count("trace")?scc::tracer::ENABLE:scc::tracer::NONE, vm.count("trace"));
+    tracer trace("simple_system", vm.count("trace") ? scc::tracer::ENABLE : scc::tracer::NONE, vm.count("trace"));
     ///////////////////////////////////////////////////////////////////////////
     // instantiate top level
     ///////////////////////////////////////////////////////////////////////////
@@ -79,7 +79,7 @@ int sc_main(int argc, char *argv[]) {
     // run simulation
     ///////////////////////////////////////////////////////////////////////////
     sc_start(sc_core::sc_time(1, sc_core::SC_MS));
-    if (!sc_core::sc_end_of_simulation_invoked()) {
+    if(!sc_core::sc_end_of_simulation_invoked()) {
         SCCERR() << "simulation timed out";
         sc_core::sc_stop();
     }

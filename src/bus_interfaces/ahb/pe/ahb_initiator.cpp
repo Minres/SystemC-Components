@@ -28,8 +28,8 @@ uint8_t log2n(uint8_t siz) { return ((siz > 1) ? 1 + log2n(siz >> 1) : 0); }
 } // anonymous namespace
 
 ahb_initiator_b::ahb_initiator_b(sc_core::sc_module_name nm,
-                                 sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port,
-                                 size_t transfer_width, bool coherent)
+                                 sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port, size_t transfer_width,
+                                 bool coherent)
 : sc_module(nm)
 , socket_fw(port)
 , transfer_width_in_bytes(transfer_width / 8)
@@ -89,8 +89,7 @@ void ahb_initiator_b::transport(payload_type& trans, bool blocking) {
 
         auto* ext = trans.get_extension<ahb::ahb_extension>();
         /// Timing
-        auto delay_in_cycles =
-            trans.is_read() ? (timing_e ? timing_e->artv : artv.value) : (timing_e ? timing_e->awtv : awtv.value);
+        auto delay_in_cycles = trans.is_read() ? (timing_e ? timing_e->artv : artv.value) : (timing_e ? timing_e->awtv : awtv.value);
         if(delay_in_cycles)
             delay_in_cycles--; // one cycle implicitly executed
         for(unsigned i = 0; i < delay_in_cycles; ++i)
@@ -149,8 +148,7 @@ void ahb_initiator_b::transport(payload_type& trans, bool blocking) {
                                    << exp_burst_length - burst_length;
                 wait(clk_i.posedge_event());
                 finished = true;
-            } else if(std::get<0>(entry) == &trans &&
-                      std::get<1>(entry) == ahb::BEGIN_PARTIAL_RESP) { // RDAT without CRESP case
+            } else if(std::get<0>(entry) == &trans && std::get<1>(entry) == ahb::BEGIN_PARTIAL_RESP) { // RDAT without CRESP case
                 SCCTRACE(SCMOD) << "received beat of tx with id=" << &trans;
                 auto delay_in_cycles = timing_e ? timing_e->rbr : rbr.value;
                 for(unsigned i = 0; i < delay_in_cycles; ++i)

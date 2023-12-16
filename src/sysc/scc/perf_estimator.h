@@ -107,4 +107,4 @@ protected:
 
 } /* namespace scc */
 /** @} */ // end of scc-sysc
-#endif /* _SCC_PERFORMANCETRACER_H_ */
+#endif    /* _SCC_PERFORMANCETRACER_H_ */

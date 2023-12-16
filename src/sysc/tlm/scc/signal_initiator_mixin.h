@@ -88,9 +88,8 @@ public:
      * @param cb  the callback function
      * @param tag the tag to be used in the callback
      */
-    void register_nb_transport(
-        std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)> cb,
-        unsigned int tag) {
+    void register_nb_transport(std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)> cb,
+                               unsigned int tag) {
         bw_if.set_nb_transport_ptr(cb);
     }
 
@@ -100,8 +99,7 @@ private:
     class bw_transport_if : public bw_interface_type {
     public:
         using transport_fct = std::function<sync_enum_type(transaction_type&, phase_type&, sc_core::sc_time&)>;
-        using transport_tagged_fct =
-            std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)>;
+        using transport_tagged_fct = std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)>;
 
         bw_transport_if(const signal_initiator_mixin* owner)
         : m_owner(owner) {}

@@ -5,16 +5,16 @@
  *      Author:
  */
 
-#include <array>
 #include "ace_axi_adapt.h"
+#include <array>
 #include <axi/axi_initiator.h>
 #include <axi/axi_target.h>
-#include <axi/lwtr/axi_lwtr.h>
 #include <axi/lwtr/ace_lwtr.h>
+#include <axi/lwtr/axi_lwtr.h>
 #include <scc.h>
 #include <scc/configurable_tracer.h>
-#include <scc/memory.h>
 #include <scc/hierarchy_dumper.h>
+#include <scc/memory.h>
 #include <tlm/scc/initiator_mixin.h>
 #include <tlm/scc/tlm_gp_shared.h>
 
@@ -66,7 +66,7 @@ public:
         // ext->set_burst(len * 8 > SOCKET_WIDTH ? axi::burst_e::INCR : axi::burst_e::FIXED);
         ext->set_burst(axi::burst_e::INCR);
         ext->set_id(id);
-        ext->set_snoop(cmd==tlm::TLM_READ_COMMAND?axi::snoop_e::READ_ONCE:axi::snoop_e::WRITE_UNIQUE);
+        ext->set_snoop(cmd == tlm::TLM_READ_COMMAND ? axi::snoop_e::READ_ONCE : axi::snoop_e::WRITE_UNIQUE);
         return trans;
     }
 

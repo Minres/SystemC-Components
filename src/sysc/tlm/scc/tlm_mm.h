@@ -47,13 +47,11 @@ struct tlm_gp_mm : public tlm_extension<tlm_gp_mm> {
     static tlm_gp_mm* create(size_t sz, bool be = false);
 
     template <typename TYPES = tlm_base_protocol_types>
-    static typename TYPES::tlm_payload_type* add_data_ptr(size_t sz, typename TYPES::tlm_payload_type& gp,
-                                                          bool be = false) {
+    static typename TYPES::tlm_payload_type* add_data_ptr(size_t sz, typename TYPES::tlm_payload_type& gp, bool be = false) {
         return add_data_ptr(sz, &gp, be);
     }
     template <typename TYPES = tlm_base_protocol_types>
-    static typename TYPES::tlm_payload_type* add_data_ptr(size_t sz, typename TYPES::tlm_payload_type* gp,
-                                                          bool be = false);
+    static typename TYPES::tlm_payload_type* add_data_ptr(size_t sz, typename TYPES::tlm_payload_type* gp, bool be = false);
 
 protected:
     tlm_gp_mm(size_t sz, uint8_t* data_ptr, uint8_t* be_ptr)
@@ -123,8 +121,7 @@ inline tlm_gp_mm* tlm::scc::tlm_gp_mm::create(size_t sz, bool be) {
 }
 
 template <typename TYPES>
-inline typename TYPES::tlm_payload_type*
-tlm::scc::tlm_gp_mm::add_data_ptr(size_t sz, typename TYPES::tlm_payload_type* gp, bool be) {
+inline typename TYPES::tlm_payload_type* tlm::scc::tlm_gp_mm::add_data_ptr(size_t sz, typename TYPES::tlm_payload_type* gp, bool be) {
     auto* ext = create(sz, be);
     gp->set_auto_extension(ext);
     gp->set_data_ptr(ext->data_ptr);
@@ -161,8 +158,7 @@ protected:
  * This memory manager can be used as singleton or as local memory manager. It uses the pool_allocator
  * as singleton to maximize reuse
  */
-template <typename TYPES = tlm_base_protocol_types, bool CLEANUP_DATA = true>
-class tlm_mm : public tlm::tlm_mm_interface {
+template <typename TYPES = tlm_base_protocol_types, bool CLEANUP_DATA = true> class tlm_mm : public tlm::tlm_mm_interface {
     using payload_type = typename TYPES::tlm_payload_type;
 
 public:
@@ -236,7 +232,7 @@ inline typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP
 
 template <typename TYPES, bool CLEANUP_DATA>
 inline typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP_DATA>::allocate(size_t sz, bool be) {
-    return sz?tlm_gp_mm::add_data_ptr(sz, allocate(), be) : allocate();
+    return sz ? tlm_gp_mm::add_data_ptr(sz, allocate(), be) : allocate();
 }
 
 template <typename TYPES, bool CLEANUP_DATA> void tlm_mm<TYPES, CLEANUP_DATA>::free(tlm::tlm_generic_payload* trans) {

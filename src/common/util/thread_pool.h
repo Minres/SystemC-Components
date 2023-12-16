@@ -43,8 +43,7 @@ struct thread_pool {
     // the result out.
     //  template<class F, class R=typename std::result_of<F>::type>
     //  std::future<R> queue(F&& f) {
-    template <class F, class... Args>
-    auto enqueue(F&& f, Args&&... args) -> std::future<typename std::result_of<F(Args...)>::type> {
+    template <class F, class... Args> auto enqueue(F&& f, Args&&... args) -> std::future<typename std::result_of<F(Args...)>::type> {
         using return_type = typename std::result_of<F(Args...)>::type;
         // wrap the function object into a packaged task, splitting
         // execution from the return value:

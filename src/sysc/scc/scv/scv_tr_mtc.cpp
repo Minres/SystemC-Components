@@ -73,16 +73,14 @@ struct Database : Base {
 
     inline void writeStream(uint64_t id, std::string const& name, std::string const& kind) {
         if(is_open) {
-            auto len = sprintf(buffer.data(), "scv_tr_stream (ID %lu, name \"%s\", kind \"%s\")\n", id, name.c_str(),
-                               kind.c_str());
+            auto len = sprintf(buffer.data(), "scv_tr_stream (ID %lu, name \"%s\", kind \"%s\")\n", id, name.c_str(), kind.c_str());
             out.write(buffer.data(), len);
         }
     }
 
     inline void writeGenerator(uint64_t id, std::string const& name, uint64_t stream) {
         if(is_open) {
-            auto len = sprintf(buffer.data(), "scv_tr_generator (ID %lu, name \"%s\", scv_tr_stream %lu,\n", id,
-                               name.c_str(), stream);
+            auto len = sprintf(buffer.data(), "scv_tr_generator (ID %lu, name \"%s\", scv_tr_stream %lu,\n", id, name.c_str(), stream);
             out.write(buffer.data(), len);
         }
     }
@@ -210,8 +208,7 @@ void recordAttributes(uint64_t id, EventType eventType, char const* prefix, cons
         }
     } break;
     case scv_extensions_if::ENUMERATION:
-        recordAttribute(id, eventType, name, scv_extensions_if::ENUMERATION,
-                        my_exts_p->get_enum_string((int)(my_exts_p->get_integer())));
+        recordAttribute(id, eventType, name, scv_extensions_if::ENUMERATION, my_exts_p->get_enum_string((int)(my_exts_p->get_integer())));
         break;
     case scv_extensions_if::BOOLEAN:
         recordAttribute(id, eventType, name, scv_extensions_if::BOOLEAN, my_exts_p->get_bool() ? "TRUE" : "FALSE");
@@ -283,9 +280,8 @@ void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason reason
         if(my_exts_p == nullptr)
             my_exts_p = t.get_scv_tr_generator_base().get_begin_exts_p();
         if(my_exts_p) {
-            auto tmp_str = t.get_scv_tr_generator_base().get_begin_attribute_name()
-                               ? t.get_scv_tr_generator_base().get_begin_attribute_name()
-                               : "";
+            auto tmp_str =
+                t.get_scv_tr_generator_base().get_begin_attribute_name() ? t.get_scv_tr_generator_base().get_begin_attribute_name() : "";
             recordAttributes(id, BEGIN, tmp_str, my_exts_p);
         }
     } break;
@@ -294,9 +290,8 @@ void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason reason
         if(my_exts_p == nullptr)
             my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();
         if(my_exts_p) {
-            auto tmp_str = t.get_scv_tr_generator_base().get_end_attribute_name()
-                               ? t.get_scv_tr_generator_base().get_end_attribute_name()
-                               : "";
+            auto tmp_str =
+                t.get_scv_tr_generator_base().get_end_attribute_name() ? t.get_scv_tr_generator_base().get_end_attribute_name() : "";
             recordAttributes(t.get_id(), END, tmp_str, my_exts_p);
         }
     } break;
@@ -314,8 +309,7 @@ void attributeCb(const scv_tr_handle& t, const char* name, const scv_extensions_
     recordAttributes(t.get_id(), RECORD, name == nullptr ? "" : name, ext);
 }
 // ----------------------------------------------------------------------------
-void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data,
-                scv_tr_relation_handle_t relation_handle) {
+void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data, scv_tr_relation_handle_t relation_handle) {
     if(!db)
         return;
     if(tr_1.get_scv_tr_stream().get_scv_tr_db() == nullptr)
@@ -323,8 +317,7 @@ void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data
     if(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
         return;
     try {
-        db->writeRelation(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), tr_1.get_id(),
-                          tr_2.get_id());
+        db->writeRelation(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), tr_1.get_id(), tr_2.get_id());
     } catch(std::runtime_error& e) {
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create transaction relation");
     }

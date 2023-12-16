@@ -52,18 +52,17 @@
  */
 template <unsigned int bit, unsigned int width, typename T>
 CONSTEXPR typename std::enable_if<std::is_unsigned<T>::value, T>::type bit_sub(T v) {
-    static_assert((bit+width)<=8*sizeof(T));
+    static_assert((bit + width) <= 8 * sizeof(T));
     T res = (v >> bit) & ((T(1) << width) - 1);
     return res;
 }
 
 template <unsigned int bit, unsigned int width, typename T>
 CONSTEXPR typename std::enable_if<std::is_signed<T>::value, T>::type bit_sub(T v) {
-    static_assert((bit+width)<=8*sizeof(T));
-    static_assert(width>0);
-    auto field = v>>bit;
-    auto amount = (field & ~(~T(1) << (width - 1) << 1)) -
-                  (field & (T(1) << (width - 1)) << 1);
+    static_assert((bit + width) <= 8 * sizeof(T));
+    static_assert(width > 0);
+    auto field = v >> bit;
+    auto amount = (field & ~(~T(1) << (width - 1) << 1)) - (field & (T(1) << (width - 1)) << 1);
     return amount;
 }
 /**
@@ -74,8 +73,7 @@ CONSTEXPR typename std::enable_if<std::is_signed<T>::value, T>::type bit_sub(T v
  * @param x the actualö value
  * @return the sign-extended value of type T
  */
-template <typename T, unsigned B>
-CONSTEXPR T signextend(const typename std::make_unsigned<T>::type x) {
+template <typename T, unsigned B> CONSTEXPR T signextend(const typename std::make_unsigned<T>::type x) {
     struct X {
         T x : B;
         X(T x_)
@@ -94,8 +92,7 @@ CONSTEXPR T signextend(const typename std::make_unsigned<T>::type x) {
  * @param v
  * @return
  */
-template <unsigned int bit, unsigned int width, typename T>
-inline constexpr typename std::make_signed<T>::type signed_bit_sub(T v) {
+template <unsigned int bit, unsigned int width, typename T> inline constexpr typename std::make_signed<T>::type signed_bit_sub(T v) {
 #if __cplusplus < 201402L
     return ((v << (sizeof(T) * 8 - bit - width)) >> (sizeof(T) * 8 - width));
 #else
@@ -117,9 +114,8 @@ template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args&&...
 
 // according to
 // http://graphics.stanford.edu/~seander/bithacks.html#ZerosOnRightMultLookup
-static std::array<const int, 32> MultiplyDeBruijnBitPosition = {{0,  1,  28, 2,  29, 14, 24, 3,  30, 22, 20,
-                                                                 15, 25, 17, 4,  8,  31, 27, 13, 23, 21, 19,
-                                                                 16, 7,  26, 12, 18, 6,  11, 5,  10, 9}};
+static std::array<const int, 32> MultiplyDeBruijnBitPosition = {
+    {0, 1, 28, 2, 29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4, 8, 31, 27, 13, 23, 21, 19, 16, 7, 26, 12, 18, 6, 11, 5, 10, 9}};
 template <size_t N> constexpr size_t find_first(std::bitset<N>& bits) {
     static_assert(N <= 32, "find_first only supports bitsets smaller than 33");
     return MultiplyDeBruijnBitPosition[static_cast<uint32_t>((bits.to_ulong() & -bits.to_ulong()) * 0x077CB531U) >> 27];
@@ -145,20 +141,18 @@ constexpr inline size_t bit_count(uint32_t u) {
 }
 #endif
 
-template<typename T>
-CONSTEXPR typename std::enable_if<std::is_integral<T>::value, T>::type rotl (T n, unsigned int c) {
-  const unsigned int mask = (CHAR_BIT*sizeof(n) - 1);  // assumes width is a power of 2.
-  assert ( (c<=mask) &&"left rotate by type width or more");
-  c &= mask;
-  return (n<<c) | (n>>( (-c)&mask ));
+template <typename T> CONSTEXPR typename std::enable_if<std::is_integral<T>::value, T>::type rotl(T n, unsigned int c) {
+    const unsigned int mask = (CHAR_BIT * sizeof(n) - 1); // assumes width is a power of 2.
+    assert((c <= mask) && "left rotate by type width or more");
+    c &= mask;
+    return (n << c) | (n >> ((-c) & mask));
 }
 
-template<typename T>
-CONSTEXPR typename std::enable_if<std::is_integral<T>::value, T>::type rotr (T n, unsigned int c) {
-  const unsigned int mask = (CHAR_BIT*sizeof(n) - 1);
-  assert ( (c<=mask) &&"left rotate by type width or more");
-  c &= mask;
-  return (n>>c) | (n<<( (-c)&mask ));
+template <typename T> CONSTEXPR typename std::enable_if<std::is_integral<T>::value, T>::type rotr(T n, unsigned int c) {
+    const unsigned int mask = (CHAR_BIT * sizeof(n) - 1);
+    assert((c <= mask) && "left rotate by type width or more");
+    c &= mask;
+    return (n >> c) | (n << ((-c) & mask));
 }
 /**
  * get the log2 value fo an integer
@@ -272,9 +266,7 @@ inline std::string& rtrim(std::string& str, const std::string& chars = "\t\n\v\f
  * @param chars set of chars to trim away
  * @return
  */
-inline std::string& trim(std::string& str, const std::string& chars = "\t\n\v\f\r ") {
-    return ltrim(rtrim(str, chars), chars);
-}
+inline std::string& trim(std::string& str, const std::string& chars = "\t\n\v\f\r ") { return ltrim(rtrim(str, chars), chars); }
 /**
  * convert string to lower case
  * @param str the string to convert
@@ -311,17 +303,14 @@ inline bool iequals(const std::string& a, const std::string& b) {
             return false;
     return true;
 #else
-    return std::equal(a.begin(), a.end(), b.begin(), b.end(),
-                      [](unsigned char a, unsigned char b) { return tolower(a) == tolower(b); });
+    return std::equal(a.begin(), a.end(), b.begin(), b.end(), [](unsigned char a, unsigned char b) { return tolower(a) == tolower(b); });
 #endif
 }
 
-inline bool ends_with(std::string const & value, std::string const & ending){
-//    if (ending.size() > value.size()) return false;
-//    return std::equal(ending.rbegin(), ending.rend(), value.rbegin());
-    return value.length() >= ending.length()?
-    		!value.compare (value.length() - ending.length(), ending.length(), ending):
-			false;
+inline bool ends_with(std::string const& value, std::string const& ending) {
+    //    if (ending.size() > value.size()) return false;
+    //    return std::equal(ending.rbegin(), ending.rend(), value.rbegin());
+    return value.length() >= ending.length() ? !value.compare(value.length() - ending.length(), ending.length(), ending) : false;
 }
 /**
  * @fn std::string padded(std::string, size_t, bool=true)
@@ -393,76 +382,76 @@ template <class T> inline T remove_ext(T const& filename) {
  * @param filename
  * @return
  */
-inline
-std::string  glob_to_regex(std::string val) {
-	const struct  {
+inline std::string glob_to_regex(std::string val) {
+    const struct {
 #ifdef MTI_SYSTEMC
-        const char *question_mark="[^/]";
-        const char *star= "[^/]*";
+        const char* question_mark = "[^/]";
+        const char* star = "[^/]*";
 #else
-        const char *question_mark="[^.]";
-		const char *star= "[^.]*";
+        const char* question_mark = "[^.]";
+        const char* star = "[^.]*";
 #endif
-		const char *double_star = ".*";
-	} subst_table;
-	auto is_regex_meta = [](char c)->bool {
-		switch(c) {
-		default: return false;
-		case '.':
-		case '(':
-		case ')':
-		case '{':
-		case '}':
-		case '+':
-		case '^':
-		case '$':
-		case '|':
-			return true;
-		}
-	};
-	util::trim(val);
-	std::ostringstream oss;
-	oss<<"^";
-	bool in_character_class = false, in_quote = false;
-	for (auto idx=0U; idx<val.length(); ++idx) {
-		auto c = val[idx];
-		if (in_character_class) {
-			in_character_class = ((c != ']') || (val[idx-1] == '\\'));
-			oss << c;
-			continue;
-		}
-		if (in_quote) {
-			in_quote = false;
-			oss << c;
-			continue;
-		}
-		if (c == '\\') {
-			in_quote = true;
-			oss << c;
-			continue;
-		} else if (c == '[') {
-			oss << c;
-			in_character_class = true;
-			if (val[idx+1] == '!') {
-				oss << '^';
-				idx++;
-			}
-		} else if (is_regex_meta(c)) {
-			oss << '\\' << c;
-		} else if (c == '?') {
-			oss << subst_table.question_mark;
-		} else if (c == '*') {
-			if ((idx+1)<val.length() && val[idx+1] == '*') {
-				idx++;
-				oss << subst_table.double_star;
-			} else
-				oss << subst_table.star;
-		} else {
-			oss << c;
-		}
-	}
-	oss<<"$";
-	return oss.str();
+        const char* double_star = ".*";
+    } subst_table;
+    auto is_regex_meta = [](char c) -> bool {
+        switch(c) {
+        default:
+            return false;
+        case '.':
+        case '(':
+        case ')':
+        case '{':
+        case '}':
+        case '+':
+        case '^':
+        case '$':
+        case '|':
+            return true;
+        }
+    };
+    util::trim(val);
+    std::ostringstream oss;
+    oss << "^";
+    bool in_character_class = false, in_quote = false;
+    for(auto idx = 0U; idx < val.length(); ++idx) {
+        auto c = val[idx];
+        if(in_character_class) {
+            in_character_class = ((c != ']') || (val[idx - 1] == '\\'));
+            oss << c;
+            continue;
+        }
+        if(in_quote) {
+            in_quote = false;
+            oss << c;
+            continue;
+        }
+        if(c == '\\') {
+            in_quote = true;
+            oss << c;
+            continue;
+        } else if(c == '[') {
+            oss << c;
+            in_character_class = true;
+            if(val[idx + 1] == '!') {
+                oss << '^';
+                idx++;
+            }
+        } else if(is_regex_meta(c)) {
+            oss << '\\' << c;
+        } else if(c == '?') {
+            oss << subst_table.question_mark;
+        } else if(c == '*') {
+            if((idx + 1) < val.length() && val[idx + 1] == '*') {
+                idx++;
+                oss << subst_table.double_star;
+            } else
+                oss << subst_table.star;
+        } else {
+            oss << c;
+        }
+    }
+    oss << "$";
+    return oss.str();
 }
 
 } // namespace util

@@ -6,11 +6,11 @@
  */
 
 #include <array>
-#include <tlm/scc/lwtr/tlm2_lwtr.h>
-#include <scc_sysc.h>
 #include <scc/memory.h>
+#include <scc_sysc.h>
 #include <tlm/scc/initiator_mixin.h>
 #include <tlm/scc/lwtr/lwtr4tlm2_extension_registry.h>
+#include <tlm/scc/lwtr/tlm2_lwtr.h>
 #include <tlm/scc/tlm_gp_shared.h>
 #include <tlm/scc/tlm_id.h>
 
@@ -19,17 +19,24 @@ using namespace sc_core;
 const unsigned SOCKET_WIDTH = 64;
 
 enum class resp_e : uint8_t { OKAY = 0x0, EXOKAY = 0x1, SLVERR = 0x2, DECERR = 0x3 };
-namespace lwtr { template<> struct value_converter<::resp_e> {
-	static value to_value(::resp_e v) {
-		switch(v){
-		case ::resp_e::OKAY:return value("OKAY");
-		case ::resp_e::EXOKAY:return value("EXOKAY");
-		case ::resp_e::SLVERR:return value("SLVERR");
-		case ::resp_e::DECERR:return value("DECERR");
-		default:return value("ILLEGAL");
-		}
-	}
-};}
+namespace lwtr {
+template <> struct value_converter<::resp_e> {
+    static value to_value(::resp_e v) {
+        switch(v) {
+        case ::resp_e::OKAY:
+            return value("OKAY");
+        case ::resp_e::EXOKAY:
+            return value("EXOKAY");
+        case ::resp_e::SLVERR:
+            return value("SLVERR");
+        case ::resp_e::DECERR:
+            return value("DECERR");
+        default:
+            return value("ILLEGAL");
+        }
+    }
+};
+} // namespace lwtr
 
 struct test_extension : public tlm::tlm_extension<test_extension> {
     test_extension() = default;
@@ -43,8 +50,9 @@ struct test_extension : public tlm::tlm_extension<test_extension> {
     uint8_t prot{0};
     resp_e resp{resp_e::OKAY};
 };
-namespace lwtr { template <class Archive>
-void record(Archive &ar, test_extension const& e) {ar & field("prot", e.prot) & field("resp", e.resp);}}
+namespace lwtr {
+template <class Archive> void record(Archive& ar, test_extension const& e) { ar& field("prot", e.prot) & field("resp", e.resp); }
+} // namespace lwtr
 
 class testbench : public sc_core::sc_module {
 public:
@@ -69,13 +77,13 @@ public:
     : sc_core::sc_module(nm) {
         SC_THREAD(run);
         top_isck(itor2mem.ts);
-		itor2mem.is(mem.target);
-		mem.rd_resp_delay=5_ns;
-		mem.wr_resp_delay=2_ns;
+        itor2mem.is(mem.target);
+        mem.rd_resp_delay = 5_ns;
+        mem.wr_resp_delay = 2_ns;
     }
 
-    void trace( sc_trace_file* trf ) const override {
-        scc::sc_trace(trf, id, std::string(name())+".id"); // trace a local variable
+    void trace(sc_trace_file* trf) const override {
+        scc::sc_trace(trf, id, std::string(name()) + ".id"); // trace a local variable
     }
 
     tlm::tlm_generic_payload* prepare_trans(size_t len) {

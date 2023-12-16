@@ -112,9 +112,7 @@ private:
         return BASE_TYPE::operator->()->nb_transport_bw(trans, phase, t);
     }
 
-    void bw_invalidate_direct_mem_ptr(sc_dt::uint64 s, sc_dt::uint64 e) {
-        BASE_TYPE::operator->()->invalidate_direct_mem_ptr(s, e);
-    }
+    void bw_invalidate_direct_mem_ptr(sc_dt::uint64 s, sc_dt::uint64 e) { BASE_TYPE::operator->()->invalidate_direct_mem_ptr(s, e); }
 
     // Helper class to handle bw path calls
     // Needed to detect transaction end when called from b_transport.
@@ -154,9 +152,7 @@ private:
             }
         }
 
-        void invalidate_direct_mem_ptr(sc_dt::uint64 s, sc_dt::uint64 e) {
-            m_owner->bw_invalidate_direct_mem_ptr(s, e);
-        }
+        void invalidate_direct_mem_ptr(sc_dt::uint64 s, sc_dt::uint64 e) { m_owner->bw_invalidate_direct_mem_ptr(s, e); }
 
     private:
         target_mixin* m_owner;
@@ -180,8 +176,7 @@ private:
         , m_response_in_progress(false) {
             sc_core::sc_spawn_options opts;
             opts.set_sensitivity(&m_peq.get_event());
-            sc_core::sc_spawn(sc_bind(&fw_process::b2nb_thread, this), sc_core::sc_gen_unique_name("b2nb_thread"),
-                              &opts);
+            sc_core::sc_spawn(sc_bind(&fw_process::b2nb_thread, this), sc_core::sc_gen_unique_name("b2nb_thread"), &opts);
         }
 
         void set_nb_transport_ptr(NBTransportPtr p) {
@@ -240,8 +235,7 @@ private:
                         sc_core::sc_spawn_options opts;
                         opts.dont_initialize();
                         opts.set_sensitivity(&ph->m_e);
-                        sc_core::sc_spawn(sc_bind(&fw_process::nb2b_thread, this, ph),
-                                          sc_core::sc_gen_unique_name("nb2b_thread"), &opts);
+                        sc_core::sc_spawn(sc_bind(&fw_process::nb2b_thread, this, ph), sc_core::sc_gen_unique_name("nb2b_thread"), &opts);
                     }
                     ph->m_e.notify(t);
                     phase = tlm::END_REQ;
@@ -345,8 +339,7 @@ private:
             process_handle_list() = default;
 
             ~process_handle_list() {
-                for(typename std::vector<process_handle_class*>::iterator it = v.begin(), end = v.end(); it != end;
-                    ++it)
+                for(typename std::vector<process_handle_class*>::iterator it = v.begin(), end = v.end(); it != end; ++it)
                     delete *it;
             }
 
@@ -412,8 +405,7 @@ private:
                     switch(m_nb_transport_ptr(*trans, phase, t)) {
                     case tlm::TLM_COMPLETED: {
                         // notify transaction is finished
-                        typename std::map<transaction_type*, sc_core::sc_event*>::iterator it =
-                            m_owner->m_pending_trans.find(trans);
+                        typename std::map<transaction_type*, sc_core::sc_event*>::iterator it = m_owner->m_pending_trans.find(trans);
                         assert(it != m_owner->m_pending_trans.end());
                         it->second->notify(t);
                         m_owner->m_pending_trans.erase(it);
@@ -440,8 +432,7 @@ private:
                             m_nb_transport_ptr(*trans, phase, t);
 
                             // notify transaction is finished
-                            typename std::map<transaction_type*, sc_core::sc_event*>::iterator it =
-                                m_owner->m_pending_trans.find(trans);
+                            typename std::map<transaction_type*, sc_core::sc_event*>::iterator it = m_owner->m_pending_trans.find(trans);
                             assert(it != m_owner->m_pending_trans.end());
                             it->second->notify(t);
                             m_owner->m_pending_trans.erase(it);

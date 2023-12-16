@@ -69,9 +69,8 @@ public:
      * @param cb the callback functor
      * @param tag the tag to be used with the functor
      */
-    void register_nb_transport(
-        std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)> cb,
-        unsigned int tag) {
+    void register_nb_transport(std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)> cb,
+                               unsigned int tag) {
         fw_if.set_nb_transport_ptr(cb, tag);
     }
 
@@ -86,8 +85,7 @@ private:
     class fw_process_if : public fw_interface_type {
     public:
         using transport_fct = std::function<sync_enum_type(transaction_type&, phase_type&, sc_core::sc_time&)>;
-        using transport_tagged_fct =
-            std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)>;
+        using transport_tagged_fct = std::function<sync_enum_type(unsigned int, transaction_type&, phase_type&, sc_core::sc_time&)>;
 
         fw_process_if(const signal_target_mixin* p_own)
         : m_owner(p_own) {}

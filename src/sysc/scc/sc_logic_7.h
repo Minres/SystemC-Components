@@ -126,17 +126,17 @@ public:
 
     // (bitwise) assignment operators
 
-#define DEFN_ASN_OP_T(op, tp)                                                                                          \
-    sc_logic_7& operator op(tp v) {                                                                                    \
-        *this op sc_logic_7(v);                                                                                        \
-        return *this;                                                                                                  \
+#define DEFN_ASN_OP_T(op, tp)                                                                                                              \
+    sc_logic_7& operator op(tp v) {                                                                                                        \
+        *this op sc_logic_7(v);                                                                                                            \
+        return *this;                                                                                                                      \
     }
 
-#define DEFN_ASN_OP(op)                                                                                                \
-    DEFN_ASN_OP_T(op, sc_logic_7_value_t)                                                                              \
-    DEFN_ASN_OP_T(op, bool)                                                                                            \
-    DEFN_ASN_OP_T(op, char)                                                                                            \
-    DEFN_ASN_OP_T(op, int)                                                                                             \
+#define DEFN_ASN_OP(op)                                                                                                                    \
+    DEFN_ASN_OP_T(op, sc_logic_7_value_t)                                                                                                  \
+    DEFN_ASN_OP_T(op, bool)                                                                                                                \
+    DEFN_ASN_OP_T(op, char)                                                                                                                \
+    DEFN_ASN_OP_T(op, int)                                                                                                                 \
     DEFN_ASN_OP_T(op, const ::sc_dt::sc_bit&)
 
     sc_logic_7& operator=(const sc_logic_7& a) = default;
@@ -233,26 +233,20 @@ private:
 
 // bitwise operators
 
-inline const sc_logic_7 operator&(const sc_logic_7& a, const sc_logic_7& b) {
-    return sc_logic_7(sc_logic_7::and_table[a.m_val][b.m_val]);
-}
+inline const sc_logic_7 operator&(const sc_logic_7& a, const sc_logic_7& b) { return sc_logic_7(sc_logic_7::and_table[a.m_val][b.m_val]); }
 
-inline const sc_logic_7 operator|(const sc_logic_7& a, const sc_logic_7& b) {
-    return sc_logic_7(sc_logic_7::or_table[a.m_val][b.m_val]);
-}
+inline const sc_logic_7 operator|(const sc_logic_7& a, const sc_logic_7& b) { return sc_logic_7(sc_logic_7::or_table[a.m_val][b.m_val]); }
 
-inline const sc_logic_7 operator^(const sc_logic_7& a, const sc_logic_7& b) {
-    return sc_logic_7(sc_logic_7::xor_table[a.m_val][b.m_val]);
-}
+inline const sc_logic_7 operator^(const sc_logic_7& a, const sc_logic_7& b) { return sc_logic_7(sc_logic_7::xor_table[a.m_val][b.m_val]); }
 
-#define DEFN_BIN_OP_T(ret, op, tp)                                                                                     \
-    inline ret operator op(const sc_logic_7& a, tp b) { return (a op sc_logic_7(b)); }                                 \
+#define DEFN_BIN_OP_T(ret, op, tp)                                                                                                         \
+    inline ret operator op(const sc_logic_7& a, tp b) { return (a op sc_logic_7(b)); }                                                     \
     inline ret operator op(tp a, const sc_logic_7& b) { return (sc_logic_7(a) op b); }
 
-#define DEFN_BIN_OP(ret, op)                                                                                           \
-    DEFN_BIN_OP_T(ret, op, sc_logic_7_value_t)                                                                         \
-    DEFN_BIN_OP_T(ret, op, bool)                                                                                       \
-    DEFN_BIN_OP_T(ret, op, char)                                                                                       \
+#define DEFN_BIN_OP(ret, op)                                                                                                               \
+    DEFN_BIN_OP_T(ret, op, sc_logic_7_value_t)                                                                                             \
+    DEFN_BIN_OP_T(ret, op, bool)                                                                                                           \
+    DEFN_BIN_OP_T(ret, op, char)                                                                                                           \
     DEFN_BIN_OP_T(ret, op, int)
 
 DEFN_BIN_OP(const sc_logic_7, &)
@@ -291,4 +285,4 @@ extern const sc_logic_7 SC_LOGIC7_X;
 } // namespace dt
 } // namespace scc
 /** @} */ // end of scc-sysc
-#endif /* INCL_SYSC_CORE_SC_LOGIC_7_H_ */
+#endif    /* INCL_SYSC_CORE_SC_LOGIC_7_H_ */

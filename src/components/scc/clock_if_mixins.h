@@ -53,9 +53,7 @@ protected:
         BASE::end_of_elaboration();
     }
 #ifdef CWR_SYSTEMC
-    void handle_clock_parameters_updated(scml_clock_if* clk_if) override {
-        this->set_clock_period(clk_if->get_period());
-    }
+    void handle_clock_parameters_updated(scml_clock_if* clk_if) override { this->set_clock_period(clk_if->get_period()); }
     void handle_clock_deleted(scml_clock_if*) override{};
 #endif
 };

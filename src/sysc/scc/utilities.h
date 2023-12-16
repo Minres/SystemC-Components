@@ -18,9 +18,9 @@
 #define _SYSC_UTILITIES_H_
 
 #include <array>
+#include <cctype>
 #include <limits>
 #include <memory>
-#include <cctype>
 
 #if defined(__GNUG__)
 // pragmas to disable the deprecated warnings for SystemC headers
@@ -55,8 +55,7 @@ template <typename T, typename... Args> std::unique_ptr<T> make_unique(Args&&...
 #define NAMEDC(X, T, I, ...) X(T::create<I>(#X, ##__VA_ARGS__))
 //! macros to simplify declaration of members to trace
 #define TRACE_VAR(F, X) sc_core::sc_trace(F, X, std::string(this->name()) + "." #X)
-#define TRACE_ARR(F, X, I)                                                                                             \
-    sc_core::sc_trace(F, X[I], (std::string(this->name()) + "." #X "(" + std::to_string(I) + ")").c_str());
+#define TRACE_ARR(F, X, I) sc_core::sc_trace(F, X[I], (std::string(this->name()) + "." #X "(" + std::to_string(I) + ")").c_str());
 #define TRACE_SIG(F, X) sc_core::sc_trace(F, X, X.name())
 
 namespace sc_core {
@@ -111,9 +110,7 @@ inline sc_core::sc_time operator"" _sec(long double val) { return sc_core::sc_ti
  * @param val
  * @return
  */
-inline sc_core::sc_time operator"" _sec(unsigned long long val) {
-    return sc_core::sc_time(double(val), sc_core::SC_SEC);
-}
+inline sc_core::sc_time operator"" _sec(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_SEC); }
 /**
  * UDL for millisecond
  *
@@ -193,7 +190,7 @@ inline constexpr uint64_t operator"" _GB(unsigned long long val) { return val * 
 
 namespace scc {
 
-enum { LT=0 };
+enum { LT = 0 };
 
 inline char* legalize_name(char* const name) {
     char* ptr = name;
@@ -302,7 +299,7 @@ inline unsigned ilog2(uint32_t val) {
 #else
 inline constexpr unsigned ilog2(uint32_t val) {
 #endif
-	assert(val>0);
+    assert(val > 0);
 #ifdef __GNUG__
     return sizeof(uint32_t) * 8 - 1 - __builtin_clz(static_cast<unsigned>(val));
 #else
@@ -327,23 +324,23 @@ template <typename T> inline void set_value(cci::cci_param_typed<T>& a, T&& valu
 } // namespace scc
 /** @} */ // end of scc-sysc
 
-#define declare_method_process_cl(handle, name, host_tag, func)                                                        \
-    {                                                                                                                  \
-        ::sc_core::sc_spawn_options opt;                                                                               \
-        opt.dont_initialize();                                                                                         \
-        opt.spawn_method();                                                                                            \
-        ::sc_core::sc_process_handle handle = ::sc_core::sc_spawn(func, name, &opt);                                   \
-        this->sensitive << handle;                                                                                     \
-        this->sensitive_pos << handle;                                                                                 \
-        this->sensitive_neg << handle;                                                                                 \
+#define declare_method_process_cl(handle, name, host_tag, func)                                                                            \
+    {                                                                                                                                      \
+        ::sc_core::sc_spawn_options opt;                                                                                                   \
+        opt.dont_initialize();                                                                                                             \
+        opt.spawn_method();                                                                                                                \
+        ::sc_core::sc_process_handle handle = ::sc_core::sc_spawn(func, name, &opt);                                                       \
+        this->sensitive << handle;                                                                                                         \
+        this->sensitive_pos << handle;                                                                                                     \
+        this->sensitive_neg << handle;                                                                                                     \
     }
 
-#define declare_thread_process_cl(handle, name, host_tag, func)                                                        \
-    {                                                                                                                  \
-        ::sc_core::sc_spawn_options opt;                                                                               \
-        ::sc_core::sc_process_handle handle = ::sc_core::sc_spawn(func, name, &opt);                                   \
-        this->sensitive << handle;                                                                                     \
-        this->sensitive_pos << handle;                                                                                 \
+#define declare_thread_process_cl(handle, name, host_tag, func)                                                                            \
+    {                                                                                                                                      \
+        ::sc_core::sc_spawn_options opt;                                                                                                   \
+        ::sc_core::sc_process_handle handle = ::sc_core::sc_spawn(func, name, &opt);                                                       \
+        this->sensitive << handle;                                                                                                         \
+        this->sensitive_pos << handle;                                                                                                     \
     }
 
 #define SC_METHOD_CL(name, func) declare_method_process_cl(name##_handle, #name, SC_CURRENT_USER_MODULE, func)

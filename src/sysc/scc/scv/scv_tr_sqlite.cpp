@@ -20,8 +20,8 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
-#include <vector>
 #include <unordered_map>
+#include <vector>
 #ifdef HAS_SCV
 #include <scv.h>
 #else
@@ -58,12 +58,10 @@ public:
         if(nRet != SQLITE_OK)
             throw SQLiteException(nRet, sqlite3_errmsg(db), false);
         sqlite3_busy_timeout(db, busyTimeoutMs);
-        nRet =  sqlite3_config(SQLITE_CONFIG_MMAP_SIZE, 1ULL<<26, 1ULL<<30);
-        char *zSql = sqlite3_mprintf(
-        		"PRAGMA journal_mode=OFF;\n" \
-				"PRAGMA synchronous=OFF;\n"
-				);
-        char *zErrMsg = nullptr;
+        nRet = sqlite3_config(SQLITE_CONFIG_MMAP_SIZE, 1ULL << 26, 1ULL << 30);
+        char* zSql = sqlite3_mprintf("PRAGMA journal_mode=OFF;\n"
+                                     "PRAGMA synchronous=OFF;\n");
+        char* zErrMsg = nullptr;
         nRet = sqlite3_exec(db, zSql, 0, 0, &zErrMsg);
         if(nRet != SQLITE_OK)
             throw SQLiteException(nRet, sqlite3_errmsg(db), false);
@@ -168,49 +166,50 @@ static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason,
             // scv_out << "TB Transaction Recording has started, file = " <<
             // my_sqlite_file_name << endl;
             db.exec("CREATE TABLE  IF NOT EXISTS " STRING_TABLE "("
-            		"id INTEGER NOT null PRIMARY KEY, "
-            		"value TEXT"
-            		");");
-            db.exec("CREATE TABLE  IF NOT EXISTS " STREAM_TABLE  "("
-            		"id INTEGER  NOT null PRIMARY KEY,  "
-            		"name INTEGER REFERENCES " STRING_TABLE "(id), "
-					"kind INTEGER REFERENCES " STRING_TABLE "(id)"
-					");");
+                    "id INTEGER NOT null PRIMARY KEY, "
+                    "value TEXT"
+                    ");");
+            db.exec("CREATE TABLE  IF NOT EXISTS " STREAM_TABLE "("
+                    "id INTEGER  NOT null PRIMARY KEY,  "
+                    "name INTEGER REFERENCES " STRING_TABLE "(id), "
+                    "kind INTEGER REFERENCES " STRING_TABLE "(id)"
+                    ");");
             db.exec("CREATE TABLE  IF NOT EXISTS " GENERATOR_TABLE "("
-            		"id INTEGER  NOT null PRIMARY KEY, "
-            		"stream INTEGER REFERENCES " STREAM_TABLE "(id), "
-					"name INTEGER REFERENCES " STRING_TABLE "(id), "
-					"begin_attr INTEGER, "
-					"end_attr INTEGER"
-					");");
+                    "id INTEGER  NOT null PRIMARY KEY, "
+                    "stream INTEGER REFERENCES " STREAM_TABLE "(id), "
+                    "name INTEGER REFERENCES " STRING_TABLE "(id), "
+                    "begin_attr INTEGER, "
+                    "end_attr INTEGER"
+                    ");");
             db.exec("CREATE TABLE  IF NOT EXISTS " TX_TABLE "("
-            		"id INTEGER  NOT null PRIMARY KEY, "
-            		"generator INTEGER REFERENCES " GENERATOR_TABLE "(id), "
-					"stream INTEGER REFERENCES " STREAM_TABLE "(id), "
-					"concurrencyLevel INTEGER"
-					");");
+                    "id INTEGER  NOT null PRIMARY KEY, "
+                    "generator INTEGER REFERENCES " GENERATOR_TABLE "(id), "
+                    "stream INTEGER REFERENCES " STREAM_TABLE "(id), "
+                    "concurrencyLevel INTEGER"
+                    ");");
             db.exec("CREATE TABLE  IF NOT EXISTS " TX_EVENT_TABLE "("
-            		"tx INTEGER REFERENCES " TX_TABLE "(id), "
-            		"type INTEGER, "
-            		"time INTEGER"
-            		");");
+                    "tx INTEGER REFERENCES " TX_TABLE "(id), "
+                    "type INTEGER, "
+                    "time INTEGER"
+                    ");");
             db.exec("CREATE TABLE  IF NOT EXISTS " TX_ATTRIBUTE_TABLE "("
-            		"tx INTEGER REFERENCES " TX_TABLE "(id), "
-            		"type INTEGER, "
-            		"name INTEGER REFERENCES " STRING_TABLE "(id), "
-					"data_type INTEGER, "
-					"data_value TEXT"
-					");");
+                    "tx INTEGER REFERENCES " TX_TABLE "(id), "
+                    "type INTEGER, "
+                    "name INTEGER REFERENCES " STRING_TABLE "(id), "
+                    "data_type INTEGER, "
+                    "data_value TEXT"
+                    ");");
             db.exec("CREATE TABLE  IF NOT EXISTS " TX_RELATION_TABLE "("
-            		"name INTEGER REFERENCES " STRING_TABLE "(id), "
-					"src INTEGER REFERENCES " TX_TABLE "(id), "
-					"sink INTEGER REFERENCES " TX_TABLE "(id)"
-					");");
+                    "name INTEGER REFERENCES " STRING_TABLE "(id), "
+                    "src INTEGER REFERENCES " TX_TABLE "(id), "
+                    "sink INTEGER REFERENCES " TX_TABLE "(id)"
+                    ");");
             db.exec("CREATE TABLE IF NOT EXISTS " SIM_PROPS "(time_resolution INTEGER);");
-            if(with_transactions) db.exec("BEGIN TRANSACTION");
+            if(with_transactions)
+                db.exec("BEGIN TRANSACTION");
             std::ostringstream ss;
-            ss << "INSERT INTO " SIM_PROPS " (time_resolution) values ("
-               << (long)(sc_core::sc_get_time_resolution().to_seconds() * 1e15) << ");";
+            ss << "INSERT INTO " SIM_PROPS " (time_resolution) values (" << (long)(sc_core::sc_get_time_resolution().to_seconds() * 1e15)
+               << ");";
             db.exec(ss.str().c_str());
             string_stmt = db.prepare("INSERT INTO " STRING_TABLE " (id, value) values (@ID,@VALUE);");
             stream_stmt = db.prepare("INSERT INTO " STREAM_TABLE " (id, name, kind) values (@ID,@NAME,@KIND);");
@@ -232,7 +231,8 @@ static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason,
         try {
             // scv_out << "Transaction Recording is closing file: " <<
             // my_sqlite_file_name << endl;
-        	if(with_transactions) db.exec("COMMIT TRANSACTION");
+            if(with_transactions)
+                db.exec("COMMIT TRANSACTION");
             db.close();
         } catch(SQLiteDB::SQLiteException& e) {
             _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't close recording file");
@@ -244,19 +244,20 @@ static void dbCb(const scv_tr_db& _scv_tr_db, scv_tr_db::callback_reason reason,
 }
 // ----------------------------------------------------------------------------
 static std::unordered_map<std::string, uint64_t> str_map;
-uint64_t getStringId(std::string const& s){
-	auto it = str_map.find(s);
-	if(it!=std::end(str_map)) return it->second;
-	auto id = str_map.size();
-	str_map.insert({s, id});
+uint64_t getStringId(std::string const& s) {
+    auto it = str_map.find(s);
+    if(it != std::end(str_map))
+        return it->second;
+    auto id = str_map.size();
+    str_map.insert({s, id});
     try {
-    	sqlite3_bind_int64(string_stmt, 1, id);
-    	sqlite3_bind_text(string_stmt, 2, s.c_str(), -1, SQLITE_TRANSIENT);
-    	db.exec(string_stmt);
-	} catch(SQLiteDB::SQLiteException& e) {
-		_scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create string entry");
-	}
-	return id;
+        sqlite3_bind_int64(string_stmt, 1, id);
+        sqlite3_bind_text(string_stmt, 2, s.c_str(), -1, SQLITE_TRANSIENT);
+        db.exec(string_stmt);
+    } catch(SQLiteDB::SQLiteException& e) {
+        _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, "Can't create string entry");
+    }
+    return id;
 }
 // ----------------------------------------------------------------------------
 static void streamCb(const scv_tr_stream& s, scv_tr_stream::callback_reason reason, void* data) {
@@ -322,8 +323,7 @@ static void recordAttributes(uint64_t id, EventType eventType, string& prefix, c
         }
     } break;
     case scv_extensions_if::ENUMERATION:
-        recordAttribute(id, eventType, name, scv_extensions_if::ENUMERATION,
-                        my_exts_p->get_enum_string((int)(my_exts_p->get_integer())));
+        recordAttribute(id, eventType, name, scv_extensions_if::ENUMERATION, my_exts_p->get_enum_string((int)(my_exts_p->get_integer())));
         break;
     case scv_extensions_if::BOOLEAN:
         recordAttribute(id, eventType, name, scv_extensions_if::BOOLEAN, my_exts_p->get_bool() ? "TRUE" : "FALSE");
@@ -429,9 +429,8 @@ static void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason
         if(my_exts_p == nullptr) {
             my_exts_p = t.get_scv_tr_generator_base().get_begin_exts_p();
         }
-        string tmp_str = t.get_scv_tr_generator_base().get_begin_attribute_name()
-                             ? t.get_scv_tr_generator_base().get_begin_attribute_name()
-                             : "";
+        string tmp_str =
+            t.get_scv_tr_generator_base().get_begin_attribute_name() ? t.get_scv_tr_generator_base().get_begin_attribute_name() : "";
         recordAttributes(id, BEGIN, tmp_str, my_exts_p);
     } break;
     case scv_tr_handle::END: {
@@ -457,9 +456,8 @@ static void transactionCb(const scv_tr_handle& t, scv_tr_handle::callback_reason
         if(my_exts_p == nullptr) {
             my_exts_p = t.get_scv_tr_generator_base().get_end_exts_p();
         }
-        string tmp_str = t.get_scv_tr_generator_base().get_end_attribute_name()
-                             ? t.get_scv_tr_generator_base().get_end_attribute_name()
-                             : "";
+        string tmp_str =
+            t.get_scv_tr_generator_base().get_end_attribute_name() ? t.get_scv_tr_generator_base().get_end_attribute_name() : "";
         recordAttributes(t.get_id(), END, tmp_str, my_exts_p);
     } break;
     default:;
@@ -477,8 +475,7 @@ static void attributeCb(const scv_tr_handle& t, const char* name, const scv_exte
     recordAttributes(t.get_id(), RECORD, tmp_str, ext);
 }
 // ----------------------------------------------------------------------------
-static void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data,
-                       scv_tr_relation_handle_t relation_handle) {
+static void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, void* data, scv_tr_relation_handle_t relation_handle) {
     if(!db.isOpen())
         return;
     if(tr_1.get_scv_tr_stream().get_scv_tr_db() == nullptr)
@@ -486,7 +483,7 @@ static void relationCb(const scv_tr_handle& tr_1, const scv_tr_handle& tr_2, voi
     if(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_recording() == false)
         return;
     try {
-    	sqlite3_bind_int64(rel_stmt, 1, getStringId(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle)));
+        sqlite3_bind_int64(rel_stmt, 1, getStringId(tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle)));
         sqlite3_bind_int64(rel_stmt, 2, tr_1.get_id());
         sqlite3_bind_int64(rel_stmt, 3, tr_2.get_id());
         db.exec(rel_stmt);

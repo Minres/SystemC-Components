@@ -28,20 +28,17 @@
 //! @brief SCC SystemC utilities
 namespace scc {
 //! create VCD file which uses pull mechanism
-sc_core::sc_trace_file* create_vcd_pull_trace_file(const char* name,
-                                                   std::function<bool()> enable = std::function<bool()>());
+sc_core::sc_trace_file* create_vcd_pull_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());
 //! close the VCD file
 void close_vcd_pull_trace_file(sc_core::sc_trace_file* tf);
 
 //! create VCD file which uses push mechanism
-sc_core::sc_trace_file* create_vcd_push_trace_file(const char* name,
-                                                   std::function<bool()> enable = std::function<bool()>());
+sc_core::sc_trace_file* create_vcd_push_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());
 //! close the VCD file
 void close_vcd_push_trace_file(sc_core::sc_trace_file* tf);
 
 //! create compressed VCD file which uses push mechanism and multithreading
-sc_core::sc_trace_file* create_vcd_mt_trace_file(const char* name,
-                                                 std::function<bool()> enable = std::function<bool()>());
+sc_core::sc_trace_file* create_vcd_mt_trace_file(const char* name, std::function<bool()> enable = std::function<bool()>());
 //! close the VCD file
 void close_vcd_mt_trace_file(sc_core::sc_trace_file* tf);
 
@@ -51,4 +48,4 @@ sc_core::sc_trace_file* create_fst_trace_file(const char* name, std::function<bo
 void close_fst_trace_file(sc_core::sc_trace_file* tf);
 } // namespace scc
 /** @} */ // end of scc-sysc
-#endif // SCC_SC_VCD_TRACE_H
+#endif    // SCC_SC_VCD_TRACE_H
