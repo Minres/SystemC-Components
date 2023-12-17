@@ -161,8 +161,6 @@ std::vector<std::string> scan_object(sc_core::sc_object const* obj, Module& curr
         return {};
     SCCDEBUG() << indent * level << obj->name() << "(" << obj->kind() << "), id=" << (object_counter + 1);
     std::string kind{obj->kind()};
-    if(kind == "tlm_signal_initiator_socket" || kind == "tlm_signal_target_socket")
-        SCCDEBUG() << "Holla";
     if(auto const* mod = dynamic_cast<sc_core::sc_module const*>(obj)) {
         currentModule.submodules.push_back(Module(obj->name(), name, type(*obj), currentModule));
         std::unordered_set<std::string> keep_outs;
