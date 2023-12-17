@@ -161,6 +161,8 @@ std::vector<std::string> scan_object(sc_core::sc_object const* obj, Module& curr
         return {};
     SCCDEBUG() << indent * level << obj->name() << "(" << obj->kind() << "), id=" << (object_counter + 1);
     std::string kind{obj->kind()};
+    if(kind == "tlm_signal_initiator_socket" || kind == "tlm_signal_target_socket")
+        SCCDEBUG() << "Holla";
     if(auto const* mod = dynamic_cast<sc_core::sc_module const*>(obj)) {
         currentModule.submodules.push_back(Module(obj->name(), name, type(*obj), currentModule));
         std::unordered_set<std::string> keep_outs;
@@ -191,10 +193,10 @@ std::vector<std::string> scan_object(sc_core::sc_object const* obj, Module& curr
         auto cat = tptr->get_socket_category();
         bool input = (cat & tlm::TLM_TARGET_SOCKET) == tlm::TLM_TARGET_SOCKET;
         if(input) {
-            currentModule.ports.push_back(Port(obj->name(), name, GET_EXPORT_IF(tptr), input, obj->kind(), currentModule));
+            currentModule.ports.push_back(Port(obj->name(), name, GET_EXPORT_IF(tptr), input, kind, currentModule));
             return {name + "_port", name + "_port_0"};
         } else {
-            currentModule.ports.push_back(Port(obj->name(), name, GET_PORT_IF(tptr), input, obj->kind(), currentModule));
+            currentModule.ports.push_back(Port(obj->name(), name, GET_PORT_IF(tptr), input, kind, currentModule));
             return {name + "_export", name + "_export_0"};
         }
 #endif

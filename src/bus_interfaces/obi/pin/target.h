@@ -20,6 +20,7 @@
 #include <scc/mt19937_rng.h>
 #include <scc/peq.h>
 #include <scc/report.h>
+#include <scc/signal_opt_ports.h>
 #include <systemc>
 #include <tlm/scc/initiator_mixin.h>
 #include <tlm/scc/scv/tlm_rec_initiator_socket.h>
@@ -42,11 +43,6 @@ public:
     using payload_type = tlm::tlm_base_protocol_types::tlm_payload_type;
     using phase_type = tlm::tlm_base_protocol_types::tlm_phase_type;
 
-    template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
-    using sc_in_opt = sc_core::sc_port<sc_core::sc_signal_in_if<TYPE>, N, sc_core::SC_ZERO_OR_MORE_BOUND>;
-    template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
-    using sc_out_opt = sc_core::sc_port<sc_core::sc_signal_write_if<TYPE>, N, sc_core::SC_ZERO_OR_MORE_BOUND>;
-
     SC_HAS_PROCESS(target);
 
     target(sc_core::sc_module_name nm);
@@ -62,16 +58,16 @@ public:
     sc_core::sc_in<bool> we_i{"we_i"};
     sc_core::sc_in<sc_dt::sc_uint<DATA_WIDTH / 8>> be_i{"be_i"};
     sc_core::sc_in<sc_dt::sc_uint<DATA_WIDTH>> wdata_i{"wdata_i"};
-    sc_in_opt<USER_WIDTH> auser_i{"auser_i"};
-    sc_in_opt<USER_WIDTH> wuser_i{"wuser_i"};
-    sc_in_opt<ID_WIDTH> aid_i{"aid_i"};
+    scc::sc_in_opt<sc_dt::sc_uint<USER_WIDTH>> auser_i{"auser_i"};
+    scc::sc_in_opt<sc_dt::sc_uint<USER_WIDTH>> wuser_i{"wuser_i"};
+    scc::sc_in_opt<sc_dt::sc_uint<ID_WIDTH>> aid_i{"aid_i"};
     // R Channel signals
     sc_core::sc_out<bool> rvalid_o{"rvalid_o"};
     sc_core::sc_in<bool> rready_i{"rready_i"};
     sc_core::sc_out<sc_dt::sc_uint<DATA_WIDTH>> rdata_o{"rdata_o"};
     sc_core::sc_out<bool> err_o{"err_o"};
-    sc_out_opt<USER_WIDTH> ruser_o{"ruser_o"};
-    sc_out_opt<ID_WIDTH> r_id_o{"r_id_o"};
+    scc::sc_out_opt<sc_dt::sc_uint<USER_WIDTH>> ruser_o{"ruser_o"};
+    scc::sc_out_opt<sc_dt::sc_uint<ID_WIDTH>> r_id_o{"r_id_o"};
 
     tlm::tlm_sync_enum nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t);
 

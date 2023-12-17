@@ -25,6 +25,7 @@
 #include <numeric>
 #include <scc/mt19937_rng.h>
 #include <scc/report.h>
+#include <scc/signal_opt_ports.h>
 #include <scc/utilities.h>
 #include <tlm.h>
 #include <tlm/scc/target_mixin.h>
@@ -49,7 +50,7 @@ public:
     //! the target socket to connect to TLM
     tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
     //! the optional clock pin to calculate clock based delays
-    sc_core::sc_port<sc_core::sc_signal_in_if<sc_core::sc_time>, 1, sc_core::SC_ZERO_OR_MORE_BOUND> clk_i{"clk_i"};
+    scc::sc_in_opt<sc_core::sc_time> clk_i{"clk_i"};
     /**
      * constructor with explicit instance name
      *
