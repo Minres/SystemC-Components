@@ -29,7 +29,7 @@ struct master_types {
     template <typename T> using s2m_t = sc_core::sc_in<T>;
     template <typename T> using m2s_full_t = sc_core::sc_out<T>;
     template <typename T> using s2m_full_t = sc_core::sc_in<T>;
-    template <typename T> using m2s_opt_t = scc::sc_in_opt<T>;
+    template <typename T> using m2s_opt_t = scc::sc_out_opt<T>;
     template <typename T> using s2m_opt_t = scc::sc_in_opt<T>;
 };
 

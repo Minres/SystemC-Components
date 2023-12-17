@@ -644,7 +644,7 @@ public:
     , m_neg_finder_p(0)
     , m_pos_finder_p(0) {}
 
-    virtual ~sc_inout_opt();
+    virtual ~sc_inout_opt() = default;
 
     const sc_core::sc_event& default_event() const { return (*this)->default_event(); }
 
@@ -703,7 +703,13 @@ public:
 
     void initialize(const in_if_type& interface_) { initialize(interface_.read()); }
 
-    void end_of_elaboration() override;
+    void end_of_elaboration() override {
+        if(m_init_val != 0) {
+            write(*m_init_val);
+            delete m_init_val;
+            m_init_val = 0;
+        }
+    }
 
     sc_core::sc_event_finder& value_changed() const {
         return sc_core::sc_event_finder::cached_create(m_change_finder_p, *this, &in_if_type::value_changed_event);
@@ -858,7 +864,13 @@ public:
     void initialize(const in_if_type& interface_) { initialize(interface_.read()); }
 
     // called when elaboration is done
-    void end_of_elaboration() override;
+    void end_of_elaboration() override {
+        if(m_init_val != 0) {
+            write(*m_init_val);
+            delete m_init_val;
+            m_init_val = 0;
+        }
+    }
 
     sc_core::sc_event_finder& value_changed() const {
         return sc_core::sc_event_finder::cached_create(m_change_finder_p, *this, &in_if_type::value_changed_event);

@@ -45,6 +45,7 @@ set(LIB_SOURCES
     scc/configurer.cpp
     scc/configurable_tracer.cpp
     scc/sc_thread_pool.cpp
+    scc/signal_opt_ports.cpp
     tlm/scc/lwtr/tlm2_lwtr.cpp
 )
 
