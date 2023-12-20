@@ -47,6 +47,9 @@ struct ahb_extension : public tlm::tlm_extension<ahb_extension> {
     // HLOCK
     bool is_locked() const;
     void set_locked(bool = true);
+    // HTRANS[1]
+    bool is_seq() const;
+    void set_seq(bool = true);
 
     uint8_t get_protection() const;
     void set_protection(uint8_t);
@@ -74,6 +77,7 @@ private:
     lock_e lock{lock_e::NORMAL};
     resp_e resp{resp_e::OKAY};
     burst_e burst{burst_e::SINGLE};
+    bool seq{false};
 };
 
 /**
@@ -132,6 +136,10 @@ inline void ahb_extension::set_locked(bool locked) { lock = locked ? lock_e::LOC
 inline burst_e ahb_extension::get_burst() const { return burst; }
 
 inline void ahb_extension::set_burst(burst_e b) { burst = b; }
+
+inline bool ahb_extension::is_seq() const { return seq; }
+
+inline void ahb_extension::set_seq(bool s) { seq = s; }
 
 inline tlm::tlm_extension_base* ahb_extension::clone() const { return new ahb_extension(*this); }
 

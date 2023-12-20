@@ -38,7 +38,7 @@ template <unsigned DWIDTH, unsigned AWIDTH> target<DWIDTH, AWIDTH>::~target() = 
 
 template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bfm_thread() {
     tlm::scc::tlm_mm<>& mm = tlm::scc::tlm_mm<>::get();
-    auto const log_width = scc::ilog2(DWIDTH / 8);
+    auto const width_exp = scc::ilog2(DWIDTH / 8);
     auto beat_cnt = 0U;
     wait(SC_ZERO_TIME);
     while(true) {
@@ -50,7 +50,8 @@ template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bfm_thr
         } else {
             if(HSEL_i.read()) {
                 tlm::tlm_generic_payload* gp{nullptr};
-                if(HTRANS_i.read() > 0x1) { // HTRANS/BUSY or IDLE check
+                unsigned trans = HTRANS_i.read();
+                if(trans > 1) { // HTRANS/BUSY or IDLE check
                     gp = mm.allocate();
                     gp->acquire();
                     gp->set_address(HADDR_i.read());
@@ -63,11 +64,12 @@ template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bfm_thr
                     gp->set_auto_extension(ext);
                     ext->set_locked(HMASTLOCK_i.read());
                     ext->set_protection(HPROT_i.read());
+                    ext->set_seq(trans==3);
                     ext->set_burst(static_cast<ahb::burst_e>(HBURST_i.read().to_uint()));
                     size_t size = HSIZE_i.read();
-                    if(size > log_width)
-                        SCCERR(SCMOD) << "Access size (" << size << ") is larger than bus wDWIDTH(" << log_width << ")!";
-                    unsigned length = (1 << size) * (1 << static_cast<unsigned>(ext->get_burst()));
+                    if(size > width_exp)
+                        SCCERR(SCMOD) << "Access size (" << size << ") is larger than bus wDWIDTH(" << width_exp << ")!";
+                    unsigned length = (1 << size);
                     gp->set_data_length(length);
                     gp->set_streaming_width(length);
                     gp->set_data_ptr(new uint8_t[length]);
@@ -112,17 +114,15 @@ template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::handle_
             data.range(i + 7, i) = *(uint8_t*)(data_payload->get_data_ptr() + offset);
         HRDATA_o.write(data);
     }
-    if(++beat_cnt == 1 << static_cast<unsigned>(ext->get_burst())) {
-        if(data_payload->is_write()) {
-            HREADY_o.write(false);
-            sc_time delay;
-            isckt->b_transport(*data_payload, delay);
-            HREADY_o.write(true);
-        }
-        beat_cnt = 0;
-        data_payload->release();
-        data_payload = nullptr;
+    if(data_payload->is_write()) {
+        HREADY_o.write(false);
+        sc_time delay;
+        isckt->b_transport(*data_payload, delay);
+        HREADY_o.write(true);
     }
+    beat_cnt = 0;
+    data_payload->release();
+    data_payload = nullptr;
 }
 template class ahb::pin::target<32, 32>;
 template class ahb::pin::target<64, 32>;
