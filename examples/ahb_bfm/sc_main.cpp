@@ -72,11 +72,13 @@ public:
         tsck.register_b_transport([this](tlm::tlm_generic_payload& gp, sc_time& delay) {
             gp.set_response_status(tlm::TLM_OK_RESPONSE);
             if(gp.is_write()) {
-                SCCINFO(SCMOD) << "Received write access to addr 0x" << std::hex << gp.get_address();
+                SCCDEBUG(SCMOD) << "Received write access to addr 0x" << std::hex << gp.get_address();
             } else {
                 memset(gp.get_data_ptr(), 0x55, gp.get_data_length());
-                SCCINFO(SCMOD) << "Received read access from addr 0x" << std::hex << gp.get_address();
+                SCCDEBUG(SCMOD) << "Received read access from addr 0x" << std::hex << gp.get_address();
             }
+            wait(HCLK.posedge_event());
+            wait(HCLK.posedge_event());
         });
     }
 
@@ -91,12 +93,14 @@ public:
         std::array<uint8_t, 8> data;
         data[0] = 2;
         data[1] = 4;
+        sc_time delay;
         gp.set_address(0x1000);
         gp.set_data_length(8);
         gp.set_data_ptr(data.data());
         gp.set_streaming_width(8);
         gp.set_command(tlm::TLM_WRITE_COMMAND);
-        sc_time delay;
+        delay = SC_ZERO_TIME;
+        SCCDEBUG(SCMOD) << "Starting write access to addr 0x" << std::hex << gp.get_address();
         isck->b_transport(gp, delay);
         gp.set_address(0x1020);
         gp.set_data_length(8);
@@ -104,6 +108,7 @@ public:
         gp.set_streaming_width(8);
         gp.set_command(tlm::TLM_READ_COMMAND);
         delay = SC_ZERO_TIME;
+        SCCDEBUG(SCMOD) << "Starting read access from addr 0x" << std::hex << gp.get_address();
         isck->b_transport(gp, delay);
         for(size_t i = 0; i < 10; ++i)
             wait(HCLK.posedge_event());
@@ -117,7 +122,7 @@ int sc_main(int argc, char* argv[]) {
     ///////////////////////////////////////////////////////////////////////////
     // configure logging
     ///////////////////////////////////////////////////////////////////////////
-    scc::init_logging(scc::log::DEBUG);
+    scc::init_logging(LogConfig().logLevel(scc::log::DEBUG).logAsync(false));
     ///////////////////////////////////////////////////////////////////////////
     // set up configuration and tracing
     ///////////////////////////////////////////////////////////////////////////

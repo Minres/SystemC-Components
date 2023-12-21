@@ -119,7 +119,7 @@ void ahb_initiator_b::transport(payload_type& trans, bool blocking) {
         addr_chnl.wait();
         SCCTRACE(SCMOD) << "starting read address phase of tx with id=" << &trans;
         auto res = send(trans, txs, tlm::BEGIN_REQ);
-        if(res == ahb::BEGIN_PARTIAL_RESP || res == tlm::BEGIN_RESP)
+        if(res == tlm::BEGIN_RESP)
             next_phase = res;
         else if(res != tlm::END_REQ)
             SCCERR(SCMOD) << "target did not repsond with END_REQ to a BEGIN_REQ";
@@ -148,19 +148,6 @@ void ahb_initiator_b::transport(payload_type& trans, bool blocking) {
                                    << exp_burst_length - burst_length;
                 wait(clk_i.posedge_event());
                 finished = true;
-            } else if(std::get<0>(entry) == &trans && std::get<1>(entry) == ahb::BEGIN_PARTIAL_RESP) { // RDAT without CRESP case
-                SCCTRACE(SCMOD) << "received beat of tx with id=" << &trans;
-                auto delay_in_cycles = timing_e ? timing_e->rbr : rbr.value;
-                for(unsigned i = 0; i < delay_in_cycles; ++i)
-                    wait(clk_i.posedge_event());
-                burst_length--;
-                tlm::tlm_phase phase = ahb::END_PARTIAL_RESP;
-                sc_time delay = clk_if ? clk_if->period() - 1_ps : SC_ZERO_TIME;
-                auto res = socket_fw->nb_transport_fw(trans, phase, delay);
-                if(res == tlm::TLM_UPDATED) {
-                    next_phase = phase;
-                    wait(delay);
-                }
             }
         } while(!finished);
         data_chnl.post();

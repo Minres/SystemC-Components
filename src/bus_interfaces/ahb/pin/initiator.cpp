@@ -20,6 +20,7 @@
 #include "initiator.h"
 #include <ahb/ahb_tlm.h>
 #include <scc/utilities.h>
+#include <scc/report.h>
 
 using namespace ahb::pin;
 using namespace sc_core;
@@ -28,12 +29,9 @@ template <unsigned WIDTH>
 initiator<WIDTH>::initiator(const sc_module_name& nm)
 : sc_module(nm) {
     SC_HAS_PROCESS(initiator);
-    sc_core::sc_get_curr_simcontext()->create_thread_process("bus_task_0", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task),
-                                                             this, nullptr);
-    sc_core::sc_get_curr_simcontext()->create_thread_process("bus_task_1", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task),
-                                                             this, nullptr);
-    sc_core::sc_get_curr_simcontext()->create_thread_process("bus_task_2", false, static_cast<sc_core::SC_ENTRY_FUNC>(&initiator::bus_task),
-                                                             this, nullptr);
+    SC_THREAD(bus_addr_task);
+    SC_THREAD(bus_data_task);
+
     tsckt.register_nb_transport_fw(
         [this](tlm::tlm_generic_payload& payload, tlm::tlm_phase& phase, sc_core::sc_time& delay) -> tlm::tlm_sync_enum {
             if(phase == tlm::BEGIN_REQ) {
@@ -50,61 +48,75 @@ initiator<WIDTH>::initiator(const sc_module_name& nm)
         });
 }
 
-template <unsigned WIDTH> inline void initiator<WIDTH>::bus_task() {
-    data_t data{0};
+template <unsigned WIDTH> inline void initiator<WIDTH>::bus_addr_task() {
+    auto& hready = HREADY_i.read();
     while(true) {
         wait(inqueue.get_event());
-        while(auto* trans = inqueue.get_next_transaction()) {
-            addr_phase.lock();
+        while(auto trans = inqueue.get_next_transaction()) {
+            SCCDEBUG(SCMOD)<<"Recv beg req for read to addr 0x"<<std::hex<<trans->get_address();
+            auto bytes_exp = scc::ilog2(trans->get_data_length());
+            auto width_exp = scc::ilog2(WIDTH / 8);
+            size_t size = 0;
+            for(; size < width_exp; ++size)
+                if(trans->get_address() & (1 << size))
+                    break; // i contains the first bit not being 0
             auto* ext = trans->template get_extension<ahb_extension>();
             HADDR_o.write(trans->get_address());
             HWRITE_o.write(trans->is_write());
             HMASTLOCK_o.write(ext->is_locked());
             HPROT_o.write(ext->get_protection());
             HBURST_o.write(static_cast<unsigned>(ext->get_burst()));
-            auto log_bytes = scc::ilog2(trans->get_data_length());
-            auto log_width = scc::ilog2(WIDTH / 8);
-            size_t size = 0;
-            for(; size < log_width; ++size)
-                if(trans->get_address() & (1 << size))
-                    break; // i contains the first bit not being 0
             HSIZE_o.write(size);
-            HTRANS_o.write(static_cast<unsigned>(trans_e::NONSEQ));
-            wait(HCLK_i.posedge_event());
-            data_phase.lock();
+            HTRANS_o.write(static_cast<unsigned>(ext->is_seq()?trans_e::SEQ:trans_e::NONSEQ));
+            do {
+                wait(HCLK_i.posedge_event());
+            } while(!hready);
+            SCCDEBUG(SCMOD)<<"Send end req for read to addr 0x"<<std::hex<<trans->get_address();
             tlm::tlm_phase phase{tlm::END_REQ};
             sc_time delay;
-            tsckt->nb_transport_bw(*trans, phase, delay);
-            addr_phase.unlock();
-            auto beats = 1 << (log_bytes - size);
-            auto offset = 0U;
-            for(size_t i = 0; i < beats; ++i) {
-                if(beats == 1)
-                    HTRANS_o.write(static_cast<unsigned>(trans_e::IDLE));
-                else if(i > 0)
-                    HTRANS_o.write(static_cast<unsigned>(trans_e::SEQ));
-                if(trans->is_write()) {
-                    for(size_t j = 0, k = 0; k < WIDTH / 8; j += 8, ++k, ++offset)
-                        data.range(j + 7, j) = *(uint8_t*)(trans->get_data_ptr() + offset);
-                    HWDATA_o.write(data);
-                }
-                wait(HCLK_i.posedge_event());
-                while(!HREADY_i.read())
-                    wait(HCLK_i.posedge());
-                if(trans->is_read()) {
-                    data = HRDATA_i.read();
-                    for(size_t j = 0, k = 0; k < WIDTH / 8; j += 8, ++k, ++offset)
-                        *(uint8_t*)(trans->get_data_ptr() + offset) = data.range(j + 7, j).to_uint();
-                }
-            }
-            phase = tlm::BEGIN_RESP;
-            delay = SC_ZERO_TIME;
-            tsckt->nb_transport_bw(*trans, phase, delay);
-            if(trans->has_mm())
-                trans->release();
+            auto res = tsckt->nb_transport_bw(*trans, phase, delay);
+            tx_in_flight.notify(*trans);
             HTRANS_o.write(static_cast<unsigned>(trans_e::IDLE));
-            data_phase.unlock();
         }
+    }
+}
+
+template <unsigned WIDTH> inline void initiator<WIDTH>::bus_data_task() {
+    data_t data{0};
+    auto& hready = HREADY_i.read();
+    auto& rdata = HRDATA_i.read();
+    while(true) {
+        wait(tx_in_flight.get_event());
+        auto trans = tx_in_flight.get_next_transaction();
+        auto bytes_exp = scc::ilog2(trans->get_data_length());
+        auto width_exp = scc::ilog2(WIDTH / 8);
+        size_t size = 0;
+        for(; size < width_exp; ++size)
+            if(trans->get_address() & (1 << size))
+                break; // i contains the first bit not being 0
+        auto beats = bytes_exp < size? 1 : 1 << (bytes_exp - size);
+        auto offset = 0U;
+        HTRANS_o.write(static_cast<unsigned>(trans_e::IDLE));
+        if(trans->is_write()) {
+            for(size_t j = 0, k = 0; k < WIDTH / 8; j += 8, ++k, ++offset)
+                data.range(j + 7, j) = *(uint8_t*)(trans->get_data_ptr() + offset);
+            HWDATA_o.write(data);
+            tlm::tlm_phase phase{tlm::BEGIN_RESP};
+            sc_time delay;
+            tsckt->nb_transport_bw(*trans, phase, delay);
+        }
+        do {
+            wait(HCLK_i.posedge_event());
+        } while(!hready);
+        if(trans->is_read()) {
+            for(size_t j = 0, k = 0; k < WIDTH / 8; j += 8, ++k, ++offset)
+                *(uint8_t*)(trans->get_data_ptr() + offset) = rdata.range(j + 7, j).to_uint();
+            tlm::tlm_phase phase{tlm::BEGIN_RESP};
+            sc_time delay;
+            tsckt->nb_transport_bw(*trans, phase, delay);
+        }
+        if(trans->has_mm())
+            trans->release();
     }
 }
 

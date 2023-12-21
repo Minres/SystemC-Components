@@ -31,6 +31,7 @@ enum class resp_e : uint8_t { OKAY = 0x0, EXOKAY = 0x1, SLVERR = 0x2, DECERR = 0
 enum class trans_e : uint8_t { IDLE = 0x0, BUSY = 0x1, NONSEQ = 0x2, SEQ = 0x3 };
 
 enum class burst_e : uint8_t { SINGLE = 0x0, INCR = 0x1, WRAP4 = 0x2, INCR4 = 0x3, WRAP8 = 0x4, INCR8 = 0x5, WRAP16 = 0x6, INCR16 = 0x7 };
+
 struct ahb_extension : public tlm::tlm_extension<ahb_extension> {
     // HPROT[0]
     bool is_instruction() const;
@@ -79,12 +80,6 @@ private:
     burst_e burst{burst_e::SINGLE};
     bool seq{false};
 };
-
-/**
- * definition of the additional protocol phases
- */
-DECLARE_EXTENDED_PHASE(BEGIN_PARTIAL_RESP);
-DECLARE_EXTENDED_PHASE(END_PARTIAL_RESP);
 
 /*****************************************************************************
  * Implementation details
