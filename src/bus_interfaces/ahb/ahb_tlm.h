@@ -24,6 +24,47 @@
 //! TLM2.0 components modeling AHB
 namespace ahb {
 
+/**
+ * helper function to allow SFINAE
+ */
+template <typename Enum> struct enable_for_enum { static const bool value = false; };
+/**
+ * helper function to convert integer into class enums
+ * @param t
+ * @return
+ */
+template <typename E> inline E into(typename std::underlying_type<E>::type t);
+/**
+ * helper function to convert class enums into integer
+ * @param t
+ * @return
+ */
+template <
+    typename E, typename ULT = typename std::underlying_type<E>::type,
+    typename X = typename std::enable_if<std::is_enum<E>::value && !std::is_convertible<E, ULT>::value, bool>::type>
+inline constexpr ULT to_int(E t) {
+    return static_cast<typename std::underlying_type<E>::type>(t);
+}
+/**
+ * helper function to convert class enums into char string
+ * @param t
+ * @return
+ */
+template <typename E> const char* to_char(E t);
+/**
+ *
+ * @param os
+ * @param e
+ * @return
+ */
+template <typename E, typename std::enable_if<enable_for_enum<E>::value, bool>::type>
+inline std::ostream& operator<<(std::ostream& os, E e) {
+    os << to_char(e);
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, tlm::tlm_generic_payload const& t);
+
 enum class lock_e : uint8_t { NORMAL = 0x0, EXLUSIVE = 0x1, LOCKED = 0x2 };
 
 enum class resp_e : uint8_t { OKAY = 0x0, EXOKAY = 0x1, SLVERR = 0x2, DECERR = 0x3 };
@@ -58,7 +99,10 @@ struct ahb_extension : public tlm::tlm_extension<ahb_extension> {
     burst_e get_burst() const;
     void set_burst(burst_e);
 
-    ahb_extension() = default;
+    resp_e get_resp() const;
+    void set_resp(resp_e);
+
+   ahb_extension() = default;
 
     ahb_extension(const ahb_extension& o) = default;
     /**
@@ -138,12 +182,15 @@ inline void ahb_extension::set_seq(bool s) { seq = s; }
 
 inline tlm::tlm_extension_base* ahb_extension::clone() const { return new ahb_extension(*this); }
 
+inline resp_e ahb_extension::get_resp() const { return resp; }
+
+inline void ahb_extension::set_resp(resp_e r) { resp = r; }
+
 inline void ahb_extension::copy_from(const tlm::tlm_extension_base& ext) {
     auto const* ahb_ext = dynamic_cast<const ahb_extension*>(&ext);
     assert(ahb_ext);
     (*this) = *ahb_ext;
 }
-
 } // namespace ahb
 
 #endif /* _AHB_TLM_H_ */

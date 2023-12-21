@@ -96,7 +96,6 @@ template <unsigned WIDTH> inline void initiator<WIDTH>::bus_data_task() {
                 break; // i contains the first bit not being 0
         auto beats = bytes_exp < size? 1 : 1 << (bytes_exp - size);
         auto offset = 0U;
-        HTRANS_o.write(static_cast<unsigned>(trans_e::IDLE));
         if(trans->is_write()) {
             for(size_t j = 0, k = 0; k < WIDTH / 8; j += 8, ++k, ++offset)
                 data.range(j + 7, j) = *(uint8_t*)(trans->get_data_ptr() + offset);
