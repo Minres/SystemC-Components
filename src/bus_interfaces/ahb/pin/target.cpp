@@ -87,7 +87,7 @@ template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bus_add
 
 template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bus_data_task() {
     auto const width = DWIDTH / 8;
-    data_t data{0};
+    auto& wdata = HWDATA_i.read();
     wait(SC_ZERO_TIME);
     while(true) {
         if(!HRESETn_i.read()) {
@@ -103,9 +103,8 @@ template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bus_dat
             HREADY_o.write(false);
             if(gp->is_write()) {
                 wait(HCLK_i.negedge_event());
-                data = HWDATA_i.read();
-                for(size_t i = start_offs * 8, j = 0; j < len; i += 8, ++j)
-                    *(uint8_t*)(gp->get_data_ptr() + j) = data.range(i + 7, i).to_uint();
+                for(size_t i = start_offs * 8, j = 0; i < DWIDTH; i += 8, ++j)
+                    *(uint8_t*)(gp->get_data_ptr() + j) = wdata.range(i + 7, i).to_uint();
             }
             SCCDEBUG(SCMOD)<<"Send beg req for "<<(gp->is_write()?"write to":"read from")<<" addr 0x"<<std::hex<<gp->get_address();
             sc_time delay;
@@ -123,6 +122,7 @@ template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bus_dat
             }
             SCCDEBUG(SCMOD)<<"Recv beg resp for "<<(gp->is_write()?"write to":"read from")<<" addr 0x"<<std::hex<<gp->get_address();
             if(gp->is_read()) {
+                data_t data{0};
                 for(size_t i = start_offs * 8, j = 0; j < len; i += 8, ++j)
                     data.range(i + 7, i) = *(uint8_t*)(gp->get_data_ptr() + j);
                 HRDATA_o.write(data);

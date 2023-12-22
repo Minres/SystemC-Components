@@ -56,7 +56,7 @@ std::ostream& operator<<(std::ostream& os, const tlm::tlm_generic_payload& t) {
         os << ", " <<  "BURST:" << to_char(e->get_burst()) <<
                 ", " << (e->is_seq()?"SEQ":"NONSEQ") <<
                 ", " << "MSTLOCK:"<<e->is_locked() <<
-                ", " << "PROT:0x" << std::hex << e->get_protection();
+                ", " << "PROT:0x" << std::hex << static_cast<unsigned>(e->get_protection());
     }
     os << " [ptr:" << &t << "]";
     return os;
