@@ -31,6 +31,7 @@
 #include <rapidjson/prettywriter.h>
 #include <rapidjson/rapidjson.h>
 #include <regex>
+#include <scc/utilities.h>
 #include <sstream>
 #include <tlm>
 #include <unordered_map>
@@ -597,13 +598,13 @@ std::unique_ptr<Module> scan_object_tree() {
     std::vector<sc_core::sc_object*> obja = sc_core::sc_get_top_level_objects();
     if(obja.size() == 1 && std::string(obja[0]->kind()) == "sc_module" && std::string(obja[0]->basename()).substr(0, 3) != "$$$") {
         SCCDEBUG() << obja[0]->name() << "(" << obja[0]->kind() << ")";
-        auto topModule = std::make_unique<Module>(obja[0]->name(), obja[0]->basename(), type(*obja[0]));
+        auto topModule = scc::make_unique<Module>(obja[0]->name(), obja[0]->basename(), type(*obja[0]));
         for(auto* child : obja[0]->get_child_objects())
             scan_object(child, *topModule, 1);
         return topModule;
     } else {
         SCCDEBUG() << "sc_main ( function sc_main() )";
-        auto topModule = std::make_unique<Module>("sc_main", "sc_main", "sc_main()");
+        auto topModule = scc::make_unique<Module>("sc_main", "sc_main", "sc_main()");
         for(auto* child : obja)
             scan_object(child, *topModule, 1);
         return topModule;
