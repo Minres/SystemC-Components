@@ -279,19 +279,22 @@ inline sc_core::sc_time parse_from_string(std::string value) noexcept {
 }
 
 inline sc_core::sc_time time_to_next_posedge(sc_core::sc_clock const* clk) {
-    auto period = clk->period();
-    auto m_posedge_time = period - period * clk->duty_cycle();
-    auto clk_run_time = sc_core::sc_time_stamp() - clk->start_time();
-    auto clk_period_point = clk_run_time % period;
-    if(clk_period_point == sc_core::SC_ZERO_TIME)
-        clk_period_point = period;
-    if(clk->posedge_first())
-        return clk_period_point;
-    else if(clk_period_point < m_posedge_time) {
-        return m_posedge_time - clk_period_point;
-    } else {
-        return period + m_posedge_time - clk_period_point;
-    }
+    if(clk) {
+        auto period = clk->period();
+        auto m_posedge_time = period - period * clk->duty_cycle();
+        auto clk_run_time = sc_core::sc_time_stamp() - clk->start_time();
+        auto clk_period_point = clk_run_time % period;
+        if(clk_period_point == sc_core::SC_ZERO_TIME)
+            clk_period_point = period;
+        if(clk->posedge_first())
+            return clk_period_point;
+        else if(clk_period_point < m_posedge_time) {
+            return m_posedge_time - clk_period_point;
+        } else {
+            return period + m_posedge_time - clk_period_point;
+        }
+    } else
+        return sc_core::SC_ZERO_TIME;
 }
 
 #if __cplusplus < 201402L

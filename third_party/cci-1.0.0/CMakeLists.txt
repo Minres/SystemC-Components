@@ -41,7 +41,9 @@ set_target_properties(cciapi PROPERTIES
     VERSION ${PROJECT_VERSION}
     FRAMEWORK FALSE
     PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/cci_configuration
+    CXX_CLANG_TIDY ""
 )
+
 set(CCIAPI_CMAKE_CONFIG_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/cciapi)
 install(TARGETS cciapi COMPONENT cci EXPORT cciapi-targets
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

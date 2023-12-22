@@ -239,7 +239,7 @@ struct json_config_reader : public config_reader {
             for(auto itr = o.MemberBegin(); itr != o.MemberEnd(); ++itr) {
                 if(!itr->name.IsString())
                     return;
-                auto key_name = itr->name.GetString();
+                std::string key_name = itr->name.GetString();
                 Value const& val = itr->value;
                 auto hier_name = prefix.size() ? prefix + "." + key_name : key_name;
                 if(val.IsNull() || val.IsArray())

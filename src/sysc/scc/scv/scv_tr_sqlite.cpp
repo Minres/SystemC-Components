@@ -58,7 +58,7 @@ public:
         if(nRet != SQLITE_OK)
             throw SQLiteException(nRet, sqlite3_errmsg(db), false);
         sqlite3_busy_timeout(db, busyTimeoutMs);
-        nRet = sqlite3_config(SQLITE_CONFIG_MMAP_SIZE, 1ULL << 26, 1ULL << 30);
+        sqlite3_config(SQLITE_CONFIG_MMAP_SIZE, 1ULL << 26, 1ULL << 30);
         char* zSql = sqlite3_mprintf("PRAGMA journal_mode=OFF;\n"
                                      "PRAGMA synchronous=OFF;\n");
         char* zErrMsg = nullptr;
