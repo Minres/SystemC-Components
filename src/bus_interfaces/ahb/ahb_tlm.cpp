@@ -59,17 +59,16 @@ template <> const char* to_char<resp_e>(resp_e v) {
 }
 
 std::ostream& operator<<(std::ostream& os, const tlm::tlm_generic_payload& t) {
-    os << "CMD:" << cmd_str[t.get_command()] << ", " << "ADDR:0x" << std::hex << t.get_address() << ", TXLEN:0x"
-       << t.get_data_length();
+    os << "CMD:" << cmd_str[t.get_command()] << ", "
+       << "ADDR:0x" << std::hex << t.get_address() << ", TXLEN:0x" << t.get_data_length();
     if(auto e = t.get_extension<ahb::ahb_extension>()) {
-        os << ", " <<  "BURST:" << to_char(e->get_burst()) <<
-                ", " << (e->is_seq()?"SEQ":"NONSEQ") <<
-                ", " << "MSTLOCK:"<<e->is_locked() <<
-                ", " << "PROT:0x" << std::hex << static_cast<unsigned>(e->get_protection());
+        os << ", "
+           << "BURST:" << to_char(e->get_burst()) << ", " << (e->is_seq() ? "SEQ" : "NONSEQ") << ", "
+           << "MSTLOCK:" << e->is_locked() << ", "
+           << "PROT:0x" << std::hex << static_cast<unsigned>(e->get_protection());
     }
     os << " [ptr:" << &t << "]";
     return os;
 }
 
-}
-
+} // namespace ahb

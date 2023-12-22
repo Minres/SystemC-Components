@@ -450,7 +450,7 @@ template <typename CFG> inline void axi::pin::ace_target<CFG>::aw_t() {
                     CFG::IS_LITE ? 0U : this->aw_snoop->read().to_uint(),
                     CFG::IS_LITE ? 0U : this->aw_bar->read().to_uint(),
                     CFG::IS_LITE ? 0U : this->aw_unique->read(),
-                    CFG::IS_LITE ? 0U : this->aw_lock->read(),
+                    CFG::IS_LITE ? false : this->aw_lock->read(),
                     0};
             // clang-format on
             aw_que.notify(awd);

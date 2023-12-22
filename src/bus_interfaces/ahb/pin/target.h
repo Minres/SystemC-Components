@@ -17,10 +17,10 @@
 #ifndef _BUS_AHB_PIN_TARGET_H_
 #define _BUS_AHB_PIN_TARGET_H_
 
-#include <tlm/scc/initiator_mixin.h>
 #include <scc/peq.h>
-#include <tlm_utils/peq_with_get.h>
+#include <tlm/scc/initiator_mixin.h>
 #include <tlm>
+#include <tlm_utils/peq_with_get.h>
 
 //! TLM2.0 components modeling AHB
 namespace ahb {
@@ -62,7 +62,7 @@ private:
             ::sc_core::wait(que.get_event());
             ret = que.get_next_transaction();
         }
-        return ret ;
+        return ret;
     }
     sc_core::sc_event end_req_evt;
     tlm_utils::peq_with_get<tlm::tlm_generic_payload> resp_que{"resp_que"};

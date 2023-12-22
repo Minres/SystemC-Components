@@ -424,9 +424,10 @@ private:
  */
 #define BITFIELD_ARRAY_ELEMENT(z, i, elem)                                                                                                 \
     BOOST_PP_COMMA_IF(i) {                                                                                                                 \
-        getRegister(BOOST_PP_TUPLE_ELEM(0, elem)), BOOST_PP_TUPLE_ELEM(1, elem) BOOST_PP_STRINGIZE(i),                                     \
-            BOOST_PP_TUPLE_ELEM(2, elem) + i *BOOST_PP_TUPLE_ELEM(3, elem), BOOST_PP_TUPLE_ELEM(3, elem),                                  \
-            BOOST_PP_TUPLE_ELEM(4, elem) BOOST_PP_STRINGIZE(i) BOOST_PP_TUPLE_ELEM(5, elem)                                                \
+        getRegister(BOOST_PP_TUPLE_ELEM(0, elem)),                                                                                         \
+            BOOST_PP_TUPLE_ELEM(1, elem)                                                                                                   \
+                BOOST_PP_STRINGIZE(i), BOOST_PP_TUPLE_ELEM(2, elem) + i *BOOST_PP_TUPLE_ELEM(3, elem), BOOST_PP_TUPLE_ELEM(3, elem),       \
+                                   BOOST_PP_TUPLE_ELEM(4, elem) BOOST_PP_STRINGIZE(i) BOOST_PP_TUPLE_ELEM(5, elem)                         \
     }
 
 /**

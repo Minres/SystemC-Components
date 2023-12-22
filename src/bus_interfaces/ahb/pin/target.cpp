@@ -32,8 +32,8 @@ target<DWIDTH, AWIDTH>::target(const sc_module_name& nm)
     SC_HAS_PROCESS(target);
     SC_THREAD(bus_addr_task);
     SC_THREAD(bus_data_task);
-    isckt.register_nb_transport_bw([this](tlm::tlm_generic_payload& gp, tlm::tlm_phase& phase, sc_core::sc_time& delay){
-        if(phase==tlm::END_REQ) {
+    isckt.register_nb_transport_bw([this](tlm::tlm_generic_payload& gp, tlm::tlm_phase& phase, sc_core::sc_time& delay) {
+        if(phase == tlm::END_REQ) {
             end_req_evt.notify(delay);
             waiting4end_req = false;
         } else if(phase == tlm::BEGIN_RESP) {
@@ -52,16 +52,16 @@ template <unsigned DWIDTH, unsigned AWIDTH> target<DWIDTH, AWIDTH>::~target() = 
 template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bus_addr_task() {
     auto const width_exp = scc::ilog2(DWIDTH / 8);
     wait(SC_ZERO_TIME);
-    auto& htrans= HTRANS_i.read();
+    auto& htrans = HTRANS_i.read();
     auto& hsel = HSEL_i.read();
-    auto& hready =  HREADY_o.read();
+    auto& hready = HREADY_o.read();
     auto& size = HSIZE_i.read();
     while(true) {
         if(!HRESETn_i.read()) {
             wait(HRESETn_i.posedge_event());
         } else {
             wait(HCLK_i.posedge_event());
-            if(hsel && hready && htrans>1) { // HTRANS/BUSY or IDLE check
+            if(hsel && hready && htrans > 1) { // HTRANS/BUSY or IDLE check
                 unsigned sz = size;
                 if(sz > width_exp)
                     SCCERR(SCMOD) << "Access size (" << sz << ") is larger than bus wDWIDTH(" << width_exp << ")!";
@@ -72,7 +72,7 @@ template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bus_add
                 auto* ext = gp->get_extension<ahb_extension>();
                 ext->set_locked(HMASTLOCK_i.read());
                 ext->set_protection(HPROT_i.read());
-                ext->set_seq(htrans==3);
+                ext->set_seq(htrans == 3);
                 ext->set_burst(static_cast<ahb::burst_e>(HBURST_i.read().to_uint()));
                 if(HWRITE_i.read()) {
                     gp->set_write();
@@ -106,7 +106,8 @@ template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bus_dat
                 for(size_t i = start_offs * 8, j = 0; i < DWIDTH; i += 8, ++j)
                     *(uint8_t*)(gp->get_data_ptr() + j) = wdata.range(i + 7, i).to_uint();
             }
-            SCCDEBUG(SCMOD)<<"Send beg req for "<<(gp->is_write()?"write to":"read from")<<" addr 0x"<<std::hex<<gp->get_address();
+            SCCDEBUG(SCMOD) << "Send beg req for " << (gp->is_write() ? "write to" : "read from") << " addr 0x" << std::hex
+                            << gp->get_address();
             sc_time delay;
             tlm::tlm_phase phase{tlm::BEGIN_REQ};
             auto res = isckt->nb_transport_fw(*gp, phase, delay);
@@ -115,12 +116,14 @@ template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bus_dat
                 wait(end_req_evt);
                 phase = tlm::END_REQ;
             }
-            SCCDEBUG(SCMOD)<<"Recv end req for "<<(gp->is_write()?"write to":"read from")<<" addr 0x"<<std::hex<<gp->get_address();
+            SCCDEBUG(SCMOD) << "Recv end req for " << (gp->is_write() ? "write to" : "read from") << " addr 0x" << std::hex
+                            << gp->get_address();
             if(phase != tlm::BEGIN_RESP) {
                 auto resp = wait4tx(resp_que);
-                sc_assert(gp==resp);
+                sc_assert(gp == resp);
             }
-            SCCDEBUG(SCMOD)<<"Recv beg resp for "<<(gp->is_write()?"write to":"read from")<<" addr 0x"<<std::hex<<gp->get_address();
+            SCCDEBUG(SCMOD) << "Recv beg resp for " << (gp->is_write() ? "write to" : "read from") << " addr 0x" << std::hex
+                            << gp->get_address();
             if(gp->is_read()) {
                 data_t data{0};
                 for(size_t i = start_offs * 8, j = 0; j < len; i += 8, ++j)
@@ -129,7 +132,8 @@ template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bus_dat
             }
             delay = sc_core::SC_ZERO_TIME;
             phase = tlm::END_RESP;
-            SCCDEBUG(SCMOD)<<"Send end resp for "<<(gp->is_write()?"write to":"read from")<<" addr 0x"<<std::hex<<gp->get_address();
+            SCCDEBUG(SCMOD) << "Send end resp for " << (gp->is_write() ? "write to" : "read from") << " addr 0x" << std::hex
+                            << gp->get_address();
             res = isckt->nb_transport_fw(*gp, phase, delay);
             gp->release();
             HREADY_o.write(true);

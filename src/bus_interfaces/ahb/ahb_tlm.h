@@ -39,9 +39,8 @@ template <typename E> inline E into(typename std::underlying_type<E>::type t);
  * @param t
  * @return
  */
-template <
-    typename E, typename ULT = typename std::underlying_type<E>::type,
-    typename X = typename std::enable_if<std::is_enum<E>::value && !std::is_convertible<E, ULT>::value, bool>::type>
+template <typename E, typename ULT = typename std::underlying_type<E>::type,
+          typename X = typename std::enable_if<std::is_enum<E>::value && !std::is_convertible<E, ULT>::value, bool>::type>
 inline constexpr ULT to_int(E t) {
     return static_cast<typename std::underlying_type<E>::type>(t);
 }
@@ -102,7 +101,7 @@ struct ahb_extension : public tlm::tlm_extension<ahb_extension> {
     resp_e get_resp() const;
     void set_resp(resp_e);
 
-   ahb_extension() = default;
+    ahb_extension() = default;
 
     ahb_extension(const ahb_extension& o) = default;
     /**
