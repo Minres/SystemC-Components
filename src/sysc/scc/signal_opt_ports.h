@@ -121,10 +121,6 @@ public:
 
     bool event() const { return (*this)->event(); }
 
-    sc_core::sc_event_finder& value_changed() const {
-        return sc_core::sc_event_finder::cached_create(m_change_finder_p, *this, &in_if_type::value_changed_event);
-    }
-
     virtual const char* kind() const { return "sc_in"; }
 
 private:
@@ -265,10 +261,6 @@ public:
     bool posedge() const { return (*this)->posedge(); }
 
     bool negedge() const { return (*this)->negedge(); }
-
-    sc_core::sc_event_finder& value_changed() const {
-        return sc_core::sc_event_finder::cached_create(m_change_finder_p, *this, &in_if_type::value_changed_event);
-    }
 
     virtual const char* kind() const { return "sc_in"; }
 
@@ -413,10 +405,6 @@ public:
 
     bool negedge() const { return (*this)->negedge(); }
 
-    sc_core::sc_event_finder& value_changed() const {
-        return sc_core::sc_event_finder::cached_create(m_change_finder_p, *this, &in_if_type::value_changed_event);
-    }
-
     virtual const char* kind() const { return "sc_in"; }
 
 private:
@@ -526,10 +514,6 @@ public:
     void initialize(const in_if_type& interface_) { initialize(interface_.read()); }
 
     void end_of_elaboration() override;
-
-    sc_core::sc_event_finder& value_changed() const {
-        return sc_core::sc_event_finder::cached_create(m_change_finder_p, *this, &in_if_type::value_changed_event);
-    }
 
     virtual const char* kind() const { return "sc_inout"; }
 
@@ -711,10 +695,6 @@ public:
         }
     }
 
-    sc_core::sc_event_finder& value_changed() const {
-        return sc_core::sc_event_finder::cached_create(m_change_finder_p, *this, &in_if_type::value_changed_event);
-    }
-
     virtual const char* kind() const { return "sc_inout"; }
 
 protected:
@@ -870,10 +850,6 @@ public:
             delete m_init_val;
             m_init_val = 0;
         }
-    }
-
-    sc_core::sc_event_finder& value_changed() const {
-        return sc_core::sc_event_finder::cached_create(m_change_finder_p, *this, &in_if_type::value_changed_event);
     }
 
     virtual const char* kind() const { return "sc_inout"; }
