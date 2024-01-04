@@ -69,7 +69,7 @@ public:
      *
      * @return value after locking
      */
-    int wait() override { wait(0); }
+    int wait() override { return wait(0); }
     /**
      * @fn int wait()
      * @brief lock (take) the semaphore, block if not available
