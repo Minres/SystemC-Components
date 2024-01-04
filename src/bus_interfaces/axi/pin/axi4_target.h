@@ -345,7 +345,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
                     CFG::IS_LITE ? false : this->aw_lock->read(),
                     0};
             // clang-format on
-            aw_que.notify(awd);
+            aw_que.notify(std::move(awd));
             this->aw_ready.write(true);
             wait(clk_i.posedge_event());
             this->aw_ready.write(false);

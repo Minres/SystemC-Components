@@ -45,7 +45,7 @@ void sc_thread_pool::execute(std::function<void(void)> fct) {
                 }
             },
             nullptr, &opts);
-    dispatch_queue.notify(fct);
+    dispatch_queue.notify(std::move(fct));
 }
 
 } /* namespace scc */

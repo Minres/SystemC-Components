@@ -86,7 +86,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
      *
      * @param entry the value to insert
      */
-    void notify(const TYPE& entry) {
+    void notify(TYPE&& entry) {
         insert_entry(entry, sc_core::sc_time_stamp());
         m_event.notify(); // immediate notification
     }

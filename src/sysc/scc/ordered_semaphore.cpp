@@ -76,16 +76,6 @@ ordered_semaphore::ordered_semaphore(const char* name_, unsigned init_value_)
 // interface methods
 
 // lock (take) the semaphore, block if not available
-
-auto ordered_semaphore::wait() -> int {
-    queue.at(0).push_back(sc_core::sc_get_current_process_handle());
-    while(in_use()) {
-        sc_core::wait(free_evt);
-    }
-    --value;
-    return value;
-}
-
 auto ordered_semaphore::wait(unsigned priority) -> int {
     queue.at(priority).push_back(sc_core::sc_get_current_process_handle());
     while(in_use()) {
@@ -113,7 +103,7 @@ auto ordered_semaphore::post() -> int {
     } else
         ++value;
     if(value > 0)
-        free_evt.notify();
+        free_evt.notify(sc_core::SC_ZERO_TIME);
     return value;
 }
 
