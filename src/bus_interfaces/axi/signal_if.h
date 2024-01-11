@@ -312,7 +312,7 @@ template <typename CFG, typename TYPES = master_types> struct rresp_axi {
     typename TYPES::template s2m_t<bool> r_valid{"r_valid"};
     typename TYPES::template m2s_t<bool> r_ready{"r_ready"};
     typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> r_user{"r_user"};
-    typename TYPES::template m2s_opt_t<bool> r_trace{"r_trace"};
+    typename TYPES::template s2m_t<bool> r_trace{"r_trace"};
 
     rresp_axi() = default;
     rresp_axi(const char* prefix)
