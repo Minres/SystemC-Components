@@ -325,11 +325,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
     wait(sc_core::SC_ZERO_TIME);
     const auto awsize = util::ilog2(CFG::BUSWIDTH / 8);
     while(true) {
-        if(sc_core::sc_time_stamp() >= 39.8183900_ms)
-            SCCTRACE(SCMOD) << "Yihaa";
         wait(this->aw_valid.posedge_event() | clk_delayed);
-        if(sc_core::sc_time_stamp() >= 39.818400_ms)
-            SCCTRACE(SCMOD) << "yepp";
         if(this->aw_valid.event() || (!active_req_beat[tlm::TLM_IGNORE_COMMAND] && this->aw_valid.read())) {
             SCCTRACE(SCMOD) << "AWVALID detected for 0x" << std::hex << this->aw_addr.read();
             // clang-format off
