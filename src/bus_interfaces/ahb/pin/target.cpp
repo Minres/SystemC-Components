@@ -68,6 +68,7 @@ template <unsigned DWIDTH, unsigned AWIDTH> void target<DWIDTH, AWIDTH>::bus_add
                 unsigned length = (1 << sz);
                 auto gp = tlm::scc::tlm_mm<>::get().allocate<ahb::ahb_extension>(length);
                 gp->acquire();
+                gp->set_streaming_width(length);
                 gp->set_address(HADDR_i.read());
                 auto* ext = gp->get_extension<ahb_extension>();
                 ext->set_locked(HMASTLOCK_i.read());
