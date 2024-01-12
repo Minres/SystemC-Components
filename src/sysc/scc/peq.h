@@ -91,6 +91,18 @@ template <class TYPE> struct peq : public sc_core::sc_object {
         m_event.notify(); // immediate notification
     }
     /**
+     * @fn void notify(const TYPE&)
+     * @brief non-blocking push
+     *
+     * Inserts entry into the queue with immediate notification
+     *
+     * @param entry the value to insert
+     */
+    void notify(TYPE const& entry) {
+        insert_entry(entry, sc_core::sc_time_stamp());
+        m_event.notify(); // immediate notification
+    }
+    /**
      * @fn boost::optional<TYPE> get_next()
      * @brief non-blocking get
      *
@@ -166,6 +178,21 @@ private:
     sc_core::sc_event m_event;
 
     void insert_entry(const TYPE& entry, sc_core::sc_time abs_time) {
+        auto it = m_scheduled_events.find(abs_time);
+        if(it == m_scheduled_events.end()) {
+            if(free_pool.size()) {
+                auto r = m_scheduled_events.insert(std::make_pair(abs_time, free_pool.front()));
+                free_pool.pop_front();
+                r.first->second->push_back(entry);
+            } else {
+                auto r = m_scheduled_events.insert(std::make_pair(abs_time, new std::deque<TYPE>()));
+                r.first->second->push_back(entry);
+            }
+        } else
+            it->second->push_back(entry);
+    }
+
+    void insert_entry(TYPE&& entry, sc_core::sc_time abs_time) {
         auto it = m_scheduled_events.find(abs_time);
         if(it == m_scheduled_events.end()) {
             if(free_pool.size()) {
