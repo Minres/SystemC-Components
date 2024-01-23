@@ -53,49 +53,53 @@ public:
 public:
     sc_in_opt()
     : base_type()
-    , m_change_finder_p(0) {}
+    {}
 
     explicit sc_in_opt(const char* name_)
     : base_type(name_)
-    , m_change_finder_p(0) {}
+    {}
 
     explicit sc_in_opt(const in_if_type& interface_)
     : base_type(const_cast<in_if_type&>(interface_))
-    , m_change_finder_p(0) {}
+    {}
 
     sc_in_opt(const char* name_, const in_if_type& interface_)
     : base_type(name_, const_cast<in_if_type&>(interface_))
-    , m_change_finder_p(0) {}
+    {}
 
     explicit sc_in_opt(in_port_type& parent_)
     : base_type(parent_)
-    , m_change_finder_p(0) {}
+    {}
 
     sc_in_opt(const char* name_, in_port_type& parent_)
     : base_type(name_, parent_)
-    , m_change_finder_p(0) {}
+    {}
 
     explicit sc_in_opt(inout_port_type& parent_)
     : base_type()
-    , m_change_finder_p(0) {
+    {
         sc_core::sc_port_base::bind(parent_);
     }
 
     sc_in_opt(const char* name_, inout_port_type& parent_)
     : base_type(name_)
-    , m_change_finder_p(0) {
+    {
         sc_core::sc_port_base::bind(parent_);
     }
 
     sc_in_opt(this_type& parent_)
     : base_type(parent_)
-    , m_change_finder_p(0) {}
+    {}
 
     sc_in_opt(const char* name_, this_type& parent_)
     : base_type(name_, parent_)
-    , m_change_finder_p(0) {}
+    {}
 
-    virtual ~sc_in_opt() { delete m_change_finder_p; }
+    sc_in_opt(const this_type&) = delete;
+
+    virtual ~sc_in_opt() {}
+
+    this_type& operator=(const this_type&) = delete;
 
     SCC_VIRT void bind(const in_if_type& interface_) { sc_core::sc_port_base::bind(const_cast<in_if_type&>(interface_)); }
 
@@ -122,11 +126,6 @@ public:
     bool event() const { return (*this)->event(); }
 
     virtual const char* kind() const { return "sc_in"; }
-
-private:
-    mutable sc_core::sc_event_finder* m_change_finder_p;
-    sc_in_opt(const this_type&) = delete;
-    this_type& operator=(const this_type&) = delete;
 };
 
 template <typename T>::std::ostream& operator<<(::std::ostream& os, const sc_in_opt<T>& a) { return os << a->read(); }
@@ -152,75 +151,53 @@ public:
 public:
     sc_in_opt()
     : base_type()
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_in_opt(const char* name_)
     : base_type(name_)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_in_opt(const in_if_type& interface_)
     : base_type(const_cast<in_if_type&>(interface_))
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_in_opt(const char* name_, const in_if_type& interface_)
     : base_type(name_, const_cast<in_if_type&>(interface_))
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_in_opt(in_port_type& parent_)
     : base_type(parent_)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_in_opt(const char* name_, in_port_type& parent_)
     : base_type(name_, parent_)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_in_opt(inout_port_type& parent_)
     : base_type()
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {
+    {
         sc_port_base::bind(parent_);
     }
 
     sc_in_opt(const char* name_, inout_port_type& parent_)
     : base_type(name_)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {
+    {
         sc_port_base::bind(parent_);
     }
 
     sc_in_opt(this_type& parent_)
     : base_type(parent_)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_in_opt(const char* name_, this_type& parent_)
     : base_type(name_, parent_)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
-    // destructor
+    sc_in_opt(const this_type&) = delete;
 
-    virtual ~sc_in_opt() {
-        delete m_change_finder_p;
-        delete m_neg_finder_p;
-        delete m_pos_finder_p;
-    }
+    virtual ~sc_in_opt() = default;
+
+    this_type& operator=(const this_type&) = delete;
 
     SCC_VIRT void bind(const in_if_type& interface_) { sc_port_base::bind(const_cast<in_if_type&>(interface_)); }
 
@@ -248,14 +225,6 @@ public:
 
     operator const data_type&() const { return (*this)->read(); }
 
-    sc_core::sc_event_finder& pos() const {
-        return sc_core::sc_event_finder::cached_create(m_pos_finder_p, *this, &in_if_type::posedge_event);
-    }
-
-    sc_core::sc_event_finder& neg() const {
-        return sc_core::sc_event_finder::cached_create(m_neg_finder_p, *this, &in_if_type::negedge_event);
-    }
-
     bool event() const { return (*this)->event(); }
 
     bool posedge() const { return (*this)->posedge(); }
@@ -263,14 +232,6 @@ public:
     bool negedge() const { return (*this)->negedge(); }
 
     virtual const char* kind() const { return "sc_in"; }
-
-private:
-    mutable sc_core::sc_event_finder* m_change_finder_p;
-    mutable sc_core::sc_event_finder* m_neg_finder_p;
-    mutable sc_core::sc_event_finder* m_pos_finder_p;
-
-    sc_in_opt(const this_type&) = delete;
-    this_type& operator=(const this_type&) = delete;
 };
 
 } // namespace scc
@@ -297,73 +258,53 @@ public:
 public:
     sc_in_opt()
     : base_type()
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_in_opt(const char* name_)
     : base_type(name_)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_in_opt(const in_if_type& interface_)
     : base_type(const_cast<in_if_type&>(interface_))
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_in_opt(const char* name_, const in_if_type& interface_)
     : base_type(name_, const_cast<in_if_type&>(interface_))
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_in_opt(in_port_type& parent_)
     : base_type(parent_)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_in_opt(const char* name_, in_port_type& parent_)
     : base_type(name_, parent_)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_in_opt(inout_port_type& parent_)
     : base_type()
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {
+    {
         sc_port_base::bind(parent_);
     }
 
     sc_in_opt(const char* name_, inout_port_type& parent_)
     : base_type(name_)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {
+    {
         sc_port_base::bind(parent_);
     }
 
     sc_in_opt(this_type& parent_)
     : base_type(parent_)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_in_opt(const char* name_, this_type& parent_)
     : base_type(name_, parent_)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
-    virtual ~sc_in_opt() {
-        delete m_change_finder_p;
-        delete m_neg_finder_p;
-        delete m_pos_finder_p;
-    }
+    sc_in_opt(const this_type&) = delete;
+
+    virtual ~sc_in_opt() = default;
+
+    this_type& operator=(const this_type&) = delete;
 
     SCC_VIRT void bind(const in_if_type& interface_) { sc_port_base::bind(const_cast<in_if_type&>(interface_)); }
 
@@ -391,14 +332,6 @@ public:
 
     operator const data_type&() const { return (*this)->read(); }
 
-    sc_core::sc_event_finder& pos() const {
-        return sc_core::sc_event_finder::cached_create(m_pos_finder_p, *this, &in_if_type::posedge_event);
-    }
-
-    sc_core::sc_event_finder& neg() const {
-        return sc_core::sc_event_finder::cached_create(m_neg_finder_p, *this, &in_if_type::negedge_event);
-    }
-
     bool event() const { return (*this)->event(); }
 
     bool posedge() const { return (*this)->posedge(); }
@@ -406,14 +339,6 @@ public:
     bool negedge() const { return (*this)->negedge(); }
 
     virtual const char* kind() const { return "sc_in"; }
-
-private:
-    mutable sc_core::sc_event_finder* m_change_finder_p;
-    mutable sc_core::sc_event_finder* m_neg_finder_p;
-    mutable sc_core::sc_event_finder* m_pos_finder_p;
-
-    sc_in_opt(const this_type&) = delete;
-    this_type& operator=(const this_type&) = delete;
 };
 
 template <class T> class sc_inout_opt : public sc_core::sc_port<sc_core::sc_signal_inout_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND> {
@@ -433,44 +358,46 @@ public:
     sc_inout_opt()
     : base_type()
     , m_init_val(0)
-    , m_change_finder_p(0) {}
+    {}
 
     explicit sc_inout_opt(const char* name_)
     : base_type(name_)
     , m_init_val(0)
-    , m_change_finder_p(0) {}
+    {}
 
     explicit sc_inout_opt(inout_if_type& interface_)
     : base_type(interface_)
     , m_init_val(0)
-    , m_change_finder_p(0) {}
+    {}
 
     sc_inout_opt(const char* name_, inout_if_type& interface_)
     : base_type(name_, interface_)
     , m_init_val(0)
-    , m_change_finder_p(0) {}
+    {}
 
     explicit sc_inout_opt(inout_port_type& parent_)
     : base_type(parent_)
     , m_init_val(0)
-    , m_change_finder_p(0) {}
+    {}
 
     sc_inout_opt(const char* name_, inout_port_type& parent_)
     : base_type(name_, parent_)
     , m_init_val(0)
-    , m_change_finder_p(0) {}
+    {}
 
     sc_inout_opt(this_type& parent_)
     : base_type(parent_)
     , m_init_val(0)
-    , m_change_finder_p(0) {}
+    {}
 
     sc_inout_opt(const char* name_, this_type& parent_)
     : base_type(name_, parent_)
     , m_init_val(0)
-    , m_change_finder_p(0) {}
+    {}
 
-    virtual ~sc_inout_opt();
+    sc_inout_opt(const this_type&) = delete;
+
+    virtual ~sc_inout_opt()= default;
 
     const sc_core::sc_event& default_event() const { return (*this)->default_event(); }
 
@@ -519,19 +446,9 @@ public:
 
 protected:
     data_type* m_init_val;
-
-private:
-    mutable sc_core::sc_event_finder* m_change_finder_p;
-
-    sc_inout_opt(const this_type&) = delete;
 };
 
 template <typename T>::std::ostream& operator<<(::std::ostream& os, const sc_inout_opt<T>& a) { return os << a->read(); }
-
-template <class T> inline sc_inout_opt<T>::~sc_inout_opt() {
-    delete m_change_finder_p;
-    delete m_init_val;
-}
 
 template <class T> inline void sc_inout_opt<T>::initialize(const data_type& value_) {
     inout_if_type* iface = dynamic_cast<inout_if_type*>(this->get_interface());
@@ -575,58 +492,44 @@ public:
     sc_inout_opt()
     : base_type()
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_inout_opt(const char* name_)
     : base_type(name_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_inout_opt(inout_if_type& interface_)
     : base_type(interface_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_inout_opt(const char* name_, inout_if_type& interface_)
     : base_type(name_, interface_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_inout_opt(inout_port_type& parent_)
     : base_type(parent_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_inout_opt(const char* name_, inout_port_type& parent_)
     : base_type(name_, parent_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_inout_opt(this_type& parent_)
     : base_type(parent_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_inout_opt(const char* name_, this_type& parent_)
     : base_type(name_, parent_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
+
+    sc_inout_opt(const this_type&) = delete;
 
     virtual ~sc_inout_opt() = default;
 
@@ -641,14 +544,6 @@ public:
     const data_type& read() const { return (*this)->read(); }
 
     operator const data_type&() const { return (*this)->read(); }
-
-    sc_core::sc_event_finder& pos() const {
-        return sc_core::sc_event_finder::cached_create(m_pos_finder_p, *this, &in_if_type::posedge_event);
-    }
-
-    sc_core::sc_event_finder& neg() const {
-        return sc_core::sc_event_finder::cached_create(m_neg_finder_p, *this, &in_if_type::negedge_event);
-    }
 
     bool event() const { return (*this)->event(); }
 
@@ -699,13 +594,6 @@ public:
 
 protected:
     data_type* m_init_val;
-
-private:
-    mutable sc_core::sc_event_finder* m_change_finder_p;
-    mutable sc_core::sc_event_finder* m_neg_finder_p;
-    mutable sc_core::sc_event_finder* m_pos_finder_p;
-
-    sc_inout_opt(const this_type&) = delete;
 };
 } // namespace scc
 
@@ -731,58 +619,44 @@ public:
     sc_inout_opt()
     : base_type()
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_inout_opt(const char* name_)
     : base_type(name_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_inout_opt(inout_if_type& interface_)
     : base_type(interface_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_inout_opt(const char* name_, inout_if_type& interface_)
     : base_type(name_, interface_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     explicit sc_inout_opt(inout_port_type& parent_)
     : base_type(parent_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_inout_opt(const char* name_, inout_port_type& parent_)
     : base_type(name_, parent_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_inout_opt(this_type& parent_)
     : base_type(parent_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
 
     sc_inout_opt(const char* name_, this_type& parent_)
     : base_type(name_, parent_)
     , m_init_val(0)
-    , m_change_finder_p(0)
-    , m_neg_finder_p(0)
-    , m_pos_finder_p(0) {}
+    {}
+
+    sc_inout_opt(const this_type&) = delete;
 
     virtual ~sc_inout_opt();
 
@@ -797,14 +671,6 @@ public:
     const data_type& read() const { return (*this)->read(); }
 
     operator const data_type&() const { return (*this)->read(); }
-
-    sc_core::sc_event_finder& pos() const {
-        return sc_core::sc_event_finder::cached_create(m_pos_finder_p, *this, &in_if_type::posedge_event);
-    }
-
-    sc_core::sc_event_finder& neg() const {
-        return sc_core::sc_event_finder::cached_create(m_neg_finder_p, *this, &in_if_type::negedge_event);
-    }
 
     bool event() const { return (*this)->event(); }
 
@@ -856,13 +722,6 @@ public:
 
 protected:
     data_type* m_init_val;
-
-private:
-    mutable sc_core::sc_event_finder* m_change_finder_p;
-    mutable sc_core::sc_event_finder* m_neg_finder_p;
-    mutable sc_core::sc_event_finder* m_pos_finder_p;
-
-    sc_inout_opt(const this_type&) = delete;
 };
 
 template <class T> class sc_out_opt : public sc_inout_opt<T> {
