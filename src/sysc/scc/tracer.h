@@ -153,6 +153,7 @@ protected:
     tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, sc_core::sc_object* top,
            sc_core::sc_module_name const& nm);
     void end_of_elaboration() override;
+    void end_of_simulation() override;
 #ifdef HAS_SCV
     scv_tr_db* txdb;
 #else
