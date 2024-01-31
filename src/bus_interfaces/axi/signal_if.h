@@ -109,7 +109,7 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
  * @tparam CACHELINE: cacheline size in Bytes, defaults value is 64 bytes
  */
 template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1,
-          unsigned int AWSNOOPWDTH = 3>
+          unsigned int AWSNOOPWDTH = 3, unsigned int RESPWDTH=4>
 struct ace_cfg {
 
     static_assert(BUSWDTH > 0, "BUSWIDTH shall be larger than 0");
@@ -122,6 +122,7 @@ struct ace_cfg {
     constexpr static unsigned int IDWIDTH = IDWDTH;
     constexpr static unsigned int USERWIDTH = USERWDTH;
     constexpr static unsigned int AWSNOOPWIDTH = AWSNOOPWDTH;
+    constexpr static unsigned int RESPWIDTH = RESPWDTH;
     using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
     using slave_types = ::axi::slave_types;
     using master_types = ::axi::master_types;
@@ -343,14 +344,13 @@ template <typename CFG, typename TYPES = master_types> struct rresp_axi {
 template <typename CFG, typename TYPES = master_types> struct rresp_ace {
     typename TYPES::template s2m_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> r_id{"r_id"};
     typename TYPES::template s2m_t<typename CFG::data_t> r_data{"r_data"};
-    typename TYPES::template s2m_t<sc_dt::sc_uint<4>> r_resp{"r_resp"};
+    typename TYPES::template s2m_t<sc_dt::sc_uint<CFG::RESPWIDTH>> r_resp{"r_resp"}; // ACE5-Lite has only 2
     typename TYPES::template s2m_full_t<bool> r_last{"r_last"};
     typename TYPES::template s2m_t<bool> r_valid{"r_valid"};
     typename TYPES::template m2s_t<bool> r_ready{"r_ready"};
-    // why user?? there is no such signal in RTL generated code
     typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> r_user{"r_user"};
+    typename TYPES::template s2m_opt_t<bool> r_trace{"r_trace"}; // ACE5
     typename TYPES::template m2s_t<bool> r_ack{"r_ack"}; // only ACE
-    typename TYPES::template m2s_opt_t<bool> r_trace{"r_trace"};
 
     rresp_ace() = default;
     rresp_ace(const char* prefix)
@@ -361,8 +361,8 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ace {
     , r_valid{concat(prefix, "r_valid").c_str()}
     , r_ready{concat(prefix, "r_ready").c_str()}
     , r_user{concat(prefix, "r_user").c_str()}
-    , r_ack{concat(prefix, "r_ack").c_str()} // only ACE
-    , r_trace{concat(prefix, "r_trace").c_str()} {}
+    , r_trace{concat(prefix, "r_trace").c_str()}
+    , r_ack{concat(prefix, "r_ack").c_str()} {}
 
     template <typename OTYPES> void bind_r(rresp_ace<CFG, OTYPES>& o) {
         r_id.bind(o.r_id);
@@ -503,6 +503,7 @@ template <typename CFG, typename TYPES = master_types> struct ar_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> ar_bar{"ar_bar"};
     typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> ar_user{"ar_user"};
     typename TYPES::template m2s_opt_t<bool> ar_trace{"ar_trace"};
+    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<4>> ar_vmidext{"ar_vmidext"}; //ACE5
 
     ar_ace() = default;
     ar_ace(const char* prefix)
@@ -522,7 +523,8 @@ template <typename CFG, typename TYPES = master_types> struct ar_ace {
     , ar_snoop{concat(prefix, "ar_snoop").c_str()}
     , ar_bar{concat(prefix, "ar_bar").c_str()}
     , ar_user{concat(prefix, "ar_user").c_str()}
-    , ar_trace{concat(prefix, "ar_trace").c_str()} {}
+    , ar_trace{concat(prefix, "ar_trace").c_str()}
+    , ar_vmidext{concat(prefix, "ar_vmidext").c_str()} {}
 
     template <typename OTYPES> void bind_ar(ar_ace<CFG, OTYPES>& o) {
         ar_id.bind(o.ar_id);
@@ -630,6 +632,8 @@ template <typename CFG, typename TYPES = master_types> struct ac_ace {
     typename TYPES::template s2m_t<sc_dt::sc_uint<CFG::ADDRWIDTH>> ac_addr{"ac_addr"};
     typename TYPES::template s2m_full_t<sc_dt::sc_uint<4>> ac_snoop{"ac_snoop"};
     typename TYPES::template s2m_full_t<sc_dt::sc_uint<3>> ac_prot{"ac_prot"};
+    typename TYPES::template s2m_opt_t<sc_dt::sc_uint<4>> ac_vmidext{"ac_vmidext"}; // ACE5
+    typename TYPES::template s2m_opt_t<bool> ac_trace{"ac_trace"}; // ACE5
 
     ac_ace() = default;
     ac_ace(const char* prefix)
@@ -637,7 +641,9 @@ template <typename CFG, typename TYPES = master_types> struct ac_ace {
     , ac_ready{concat(prefix, "ac_ready").c_str()}
     , ac_addr{concat(prefix, "ac_addr").c_str()}
     , ac_snoop{concat(prefix, "ac_snoop").c_str()}
-    , ac_prot{concat(prefix, "ac_prot").c_str()} {}
+    , ac_prot{concat(prefix, "ac_prot").c_str()}
+    , ac_vmidext{concat(prefix, "ac_vmidext").c_str()}
+    , ac_trace{concat(prefix, "ac_trace").c_str()} {}
 
     template <typename OTYPES> void bind_ac(ac_ace<CFG, OTYPES>& o) {
         ac_valid.bind(o.ac_valid);
@@ -675,12 +681,14 @@ template <typename CFG, typename TYPES = master_types> struct cr_ace {
     typename TYPES::template m2s_t<bool> cr_valid{"cr_valid"};
     typename TYPES::template s2m_t<bool> cr_ready{"cr_ready"};
     typename TYPES::template m2s_t<sc_dt::sc_uint<5>> cr_resp{"cr_resp"};
+    typename TYPES::template m2s_opt_t<bool> cr_trace{"cr_trace"}; // ACE5
 
     cr_ace() = default;
     cr_ace(const char* prefix)
     : cr_valid{concat(prefix, "cr_valid").c_str()}
     , cr_ready{concat(prefix, "cr_ready").c_str()}
-    , cr_resp{concat(prefix, "cr_resp").c_str()} {}
+    , cr_resp{concat(prefix, "cr_resp").c_str()}
+    , cr_trace{concat(prefix, "cr_trace").c_str()} {}
 
     template <typename OTYPES> void bind_cr(cr_ace<CFG, OTYPES>& o) {
         cr_valid.bind(o.cr_valid);
