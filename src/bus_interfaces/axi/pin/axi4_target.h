@@ -254,37 +254,39 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::ar_t() {
     auto arsize = util::ilog2(CFG::BUSWIDTH / 8);
     auto data_len = (1 << arsize) * (arlen + 1);
     while(true) {
-        wait(this->ar_valid.posedge_event() | clk_delayed);
-        if(this->ar_valid.read()) {
-            SCCTRACE(SCMOD) << "ARVALID detected for 0x" << std::hex << this->ar_addr.read();
-            if(!CFG::IS_LITE) {
-                arid = this->ar_id->read().to_uint();
-                arlen = this->ar_len->read().to_uint();
-                arsize = this->ar_size->read().to_uint();
-            }
-            data_len = (1 << arsize) * (arlen + 1);
-            auto gp = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(data_len);
-            gp->set_address(this->ar_addr.read());
-            gp->set_command(tlm::TLM_READ_COMMAND);
-            gp->set_streaming_width(data_len);
-            axi::axi4_extension* ext;
-            gp->get_extension(ext);
-            ext->set_id(arid);
-            ext->set_length(arlen);
-            ext->set_size(arsize);
-            ext->set_burst(CFG::IS_LITE ? axi::burst_e::INCR : axi::into<axi::burst_e>(this->ar_burst->read()));
-            ext->set_exclusive(!CFG::IS_LITE && this->ar_lock->read());
-            ext->set_prot(this->ar_prot->read());
-            ext->set_qos(CFG::IS_LITE ? 0U : this->ar_qos->read().to_uint());
-            ext->set_region(CFG::IS_LITE ? 0U : this->ar_region->read().to_uint());
-
-            active_req_beat[tlm::TLM_READ_COMMAND] = find_or_create(gp);
-            react(axi::fsm::protocol_time_point_e::BegReqE, active_req_beat[tlm::TLM_READ_COMMAND]);
-            wait(ar_end_req_evt);
-            this->ar_ready.write(true);
-            wait(clk_i.posedge_event());
-            this->ar_ready.write(false);
+        wait(clk_delayed);
+        while(!this->ar_valid.read()) {
+            wait(this->ar_valid.posedge_event());
+            wait(CLK_DELAY); // verilator might create spurious events
         }
+        SCCTRACE(SCMOD) << "ARVALID detected for 0x" << std::hex << this->ar_addr.read();
+        if(!CFG::IS_LITE) {
+            arid = this->ar_id->read().to_uint();
+            arlen = this->ar_len->read().to_uint();
+            arsize = this->ar_size->read().to_uint();
+        }
+        data_len = (1 << arsize) * (arlen + 1);
+        auto gp = tlm::scc::tlm_mm<>::get().allocate<axi::axi4_extension>(data_len);
+        gp->set_address(this->ar_addr.read());
+        gp->set_command(tlm::TLM_READ_COMMAND);
+        gp->set_streaming_width(data_len);
+        axi::axi4_extension* ext;
+        gp->get_extension(ext);
+        ext->set_id(arid);
+        ext->set_length(arlen);
+        ext->set_size(arsize);
+        ext->set_burst(CFG::IS_LITE ? axi::burst_e::INCR : axi::into<axi::burst_e>(this->ar_burst->read()));
+        ext->set_exclusive(!CFG::IS_LITE && this->ar_lock->read());
+        ext->set_prot(this->ar_prot->read());
+        ext->set_qos(CFG::IS_LITE ? 0U : this->ar_qos->read().to_uint());
+        ext->set_region(CFG::IS_LITE ? 0U : this->ar_region->read().to_uint());
+
+        active_req_beat[tlm::TLM_READ_COMMAND] = find_or_create(gp);
+        react(axi::fsm::protocol_time_point_e::BegReqE, active_req_beat[tlm::TLM_READ_COMMAND]);
+        wait(ar_end_req_evt);
+        this->ar_ready.write(true);
+        wait(clk_i.posedge_event());
+        this->ar_ready.write(false);
     }
 }
 
@@ -464,7 +466,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::bresp_t() {
             wait(this->b_ready.posedge_event() | clk_delayed);
             if(this->b_ready.read()) {
                 react(axi::fsm::protocol_time_point_e::EndRespE, active_resp_beat[tlm::TLM_WRITE_COMMAND]);
-            }
+        }
         } while(!this->b_ready.read());
         SCCTRACE(SCMOD) << "finished write response of trans [" << fsm_hndl->trans << "]";
         wait(clk_i.posedge_event());
