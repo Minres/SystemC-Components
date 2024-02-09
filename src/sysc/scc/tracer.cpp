@@ -164,10 +164,12 @@ void tracer::end_of_elaboration() {
 }
 
 void tracer::end_of_simulation() {
-    delete txdb; txdb=nullptr;
-    delete lwtr_db; lwtr_db=nullptr;
-    if(trf && owned) {
-        scc_close_vcd_trace_file(trf);
-        trf=nullptr;
+    if(close_db_in_eos.get_value()) {
+        delete txdb; txdb=nullptr;
+        delete lwtr_db; lwtr_db=nullptr;
+        if(trf && owned) {
+            scc_close_vcd_trace_file(trf);
+            trf=nullptr;
+        }
     }
 }
