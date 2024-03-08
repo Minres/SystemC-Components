@@ -21,6 +21,7 @@
 #include <axi/fsm/base.h>
 #include <axi/fsm/protocol_fsm.h>
 #include <axi/signal_if.h>
+#include <scc/utilities.h>
 #include <systemc>
 #include <tlm/scc/tlm_mm.h>
 #include <util/ities.h>
@@ -216,7 +217,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::setup_callbacks(
         // scheduling the response
         assert(fsm_hndl->trans->is_read());
         tlm::tlm_phase phase = axi::END_PARTIAL_RESP;
-        sc_core::sc_time t(sc_core::SC_ZERO_TIME);
+        sc_core::sc_time t(clk_if ? ::scc::time_to_next_posedge(clk_if) - 1_ps : sc_core::SC_ZERO_TIME);
         auto ret = isckt->nb_transport_fw(*fsm_hndl->trans, phase, t);
         active_resp_beat[tlm::TLM_READ_COMMAND] = nullptr;
         fsm_hndl->beat_count++;
@@ -239,7 +240,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::setup_callbacks(
     fsm_hndl->fsm->cb[EndRespE] = [this, fsm_hndl]() -> void {
         // scheduling the response
         tlm::tlm_phase phase = tlm::END_RESP;
-        sc_core::sc_time t(sc_core::SC_ZERO_TIME);
+        sc_core::sc_time t(clk_if ? ::scc::time_to_next_posedge(clk_if) - 1_ps : sc_core::SC_ZERO_TIME);
         auto ret = isckt->nb_transport_fw(*fsm_hndl->trans, phase, t);
         fsm_hndl->finish.notify();
         active_resp_beat[fsm_hndl->trans->get_command()] = nullptr;
