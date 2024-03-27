@@ -196,12 +196,11 @@ struct json_config_dumper {
                     writeValue(writer, basename, value.get_string().c_str());
             }
         auto mod = dynamic_cast<sc_core::sc_module*>(obj);
-        if(!log_lvl_set && mod) {
+        if(scc::is_logging_initialized() && !log_lvl_set && mod) {
             obj_started = start_object(writer, obj->basename(), obj_started);
             auto val = broker.get_preset_cci_value(fmt::format("{}.{}", obj->name(), SCC_LOG_LEVEL_PARAM_NAME));
-            auto global_verb = static_cast<int>(get_logging_level());
-            if(basename.substr(0, 11) != "scc_tracer")
-                writeValue(writer, "log_level", val.is_int() ? val.get_int() : global_verb);
+            if(basename.substr(0, 3) != "$$$")
+                writeValue(writer, SCC_LOG_LEVEL_PARAM_NAME, val.is_int() ? val.get_int() : static_cast<int>(get_logging_level()));
         }
         for(auto* o : get_sc_objects(obj)) {
             obj_started = start_object(writer, obj->basename(), obj_started);

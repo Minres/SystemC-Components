@@ -270,6 +270,13 @@ struct LogConfig {
  */
 void init_logging(const LogConfig& log_config);
 /**
+ * @fn log is_logging_initialized()
+ * @brief get the state of the SCC logging system
+ *
+ * @return true if the logging system has been initialized
+ */
+bool is_logging_initialized();
+/**
  * @fn void set_logging_level(log)
  * @brief sets the SystemC logging level
  *
