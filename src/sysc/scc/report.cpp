@@ -117,6 +117,7 @@ struct ExtLogConfig : public scc::LogConfig {
         return regex_search(type, reg_ex);
 #endif
     }
+    bool initialized{false};
 };
 
 thread_local ExtLogConfig log_cfg;
@@ -429,6 +430,11 @@ void scc::reinit_logging(scc::log level) {
     lut.clear();
     if(!log_cfg.instance_based_log_levels || getenv("SCC_DISABLE_INSTANCE_BASED_LOGGING"))
         inst_based_logging() = false;
+    log_cfg.initialized = true;
+}
+
+bool scc::is_logging_initialized(){
+    return log_cfg.initialized;
 }
 
 void scc::init_logging(scc::log level, unsigned type_field_width, bool print_time) {
@@ -436,11 +442,13 @@ void scc::init_logging(scc::log level, unsigned type_field_width, bool print_tim
     log_cfg.print_sys_time = print_time;
     log_cfg.level = level;
     configure_logging();
+    log_cfg.initialized = true;
 }
 
 void scc::init_logging(const scc::LogConfig& log_config) {
     log_cfg = log_config;
     configure_logging();
+    log_cfg.initialized = true;
 }
 
 void scc::set_logging_level(scc::log level) {
@@ -448,6 +456,7 @@ void scc::set_logging_level(scc::log level) {
     sc_report_handler::set_verbosity_level(verbosity[static_cast<unsigned>(level)]);
     log_cfg.console_logger->set_level(
         static_cast<spdlog::level::level_enum>(SPDLOG_LEVEL_OFF - min<int>(SPDLOG_LEVEL_OFF, static_cast<int>(log_cfg.level))));
+    log_cfg.initialized = true;
 }
 
 auto scc::get_logging_level() -> scc::log { return log_cfg.level; }
