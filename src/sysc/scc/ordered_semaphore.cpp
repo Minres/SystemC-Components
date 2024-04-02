@@ -50,6 +50,10 @@ void ordered_semaphore::set_capacity(unsigned c) {
     }
 }
 
+void ordered_semaphore::trace(sc_core::sc_trace_file *tf) const {
+    sc_core::sc_trace(tf, value, name());
+}
+
 void ordered_semaphore::report_error(const char* id, const char* add_msg) const {
     auto msg = add_msg ? util::strprintf("semaphore '%s'", name()) : util::strprintf("%s: semaphore '%s'", add_msg, name());
     SC_REPORT_ERROR(id, msg.c_str());
@@ -67,11 +71,12 @@ ordered_semaphore::ordered_semaphore(unsigned init_value_)
     }
 }
 
-ordered_semaphore::ordered_semaphore(const char* name_, unsigned init_value_)
+ordered_semaphore::ordered_semaphore(const char* name_, unsigned init_value_, bool value_traceable)
 : sc_object(name_)
 , free_evt(gen_unique_event_name("free_event").c_str())
 , value(init_value_)
-, capacity(init_value_) {}
+, capacity(init_value_)
+, value_traceable(value_traceable) {}
 
 // interface methods
 
