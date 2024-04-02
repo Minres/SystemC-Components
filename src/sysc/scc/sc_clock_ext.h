@@ -38,9 +38,9 @@ struct sc_clock_ext : public sc_core::sc_clock {
     sc_clock_ext(const char* name_, const sc_core::sc_time& period_, double duty_cycle_ = 0.5,
                  const sc_core::sc_time& start_time_ = sc_core::SC_ZERO_TIME, bool posedge_first_ = true)
     : sc_core::sc_clock(name_, period_, duty_cycle_, start_time_, posedge_first_)
-    , period("period", period_, "The period of the generated clock")
-    , duty_cycle("duty_cycle", duty_cycle_, "The duty cycle of the generated clock")
-    , initial_delay("start_time", start_time_, "The start time of the generated clock") {
+    , period(get_cci_name(name_, "period"), period_, "The period of the generated clock")
+    , duty_cycle(get_cci_name(name_, "duty_cycle"), duty_cycle_, "The duty cycle of the generated clock")
+    , initial_delay(get_cci_name(name_, "start_time"), start_time_, "The start time of the generated clock") {
         //period.register_post_write_callback(&sc_clock_ext::period_write_callback,this);
     }
 
@@ -62,7 +62,9 @@ protected:
     void period_write_callback(const cci::cci_param_write_event<int> & ev) {
 
     }
-
+    static inline std::string get_cci_name(const char* base, const char* name) {
+        return std::string(base)+"_"+name;
+    }
 };
 } // namespace scc
 /** @} */ // end of scc-sysc
