@@ -467,7 +467,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::bresp_t() {
             wait(this->b_ready.posedge_event() | clk_delayed);
             if(this->b_ready.read()) {
                 react(axi::fsm::protocol_time_point_e::EndRespE, active_resp_beat[tlm::TLM_WRITE_COMMAND]);
-        }
+            }
         } while(!this->b_ready.read());
         SCCTRACE(SCMOD) << "finished write response of trans [" << fsm_hndl->trans << "]";
         wait(clk_i.posedge_event());

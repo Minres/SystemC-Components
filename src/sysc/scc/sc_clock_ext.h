@@ -17,8 +17,8 @@
 #ifndef _SCC_SC_CLOCK_EXT_H_
 #define _SCC_SC_CLOCK_EXT_H_
 
-#include <sysc/communication/sc_clock.h>
 #include <cci_configuration>
+#include <sysc/communication/sc_clock.h>
 
 /** \ingroup scc-sysc
  *  @{
@@ -41,7 +41,7 @@ struct sc_clock_ext : public sc_core::sc_clock {
     , period(get_cci_name(name_, "period"), period_, "The period of the generated clock")
     , duty_cycle(get_cci_name(name_, "duty_cycle"), duty_cycle_, "The duty cycle of the generated clock")
     , initial_delay(get_cci_name(name_, "start_time"), start_time_, "The start time of the generated clock") {
-        //period.register_post_write_callback(&sc_clock_ext::period_write_callback,this);
+        // period.register_post_write_callback(&sc_clock_ext::period_write_callback,this);
     }
 
     virtual ~sc_clock_ext() = default;
@@ -59,12 +59,8 @@ protected:
             }
         }
     }
-    void period_write_callback(const cci::cci_param_write_event<int> & ev) {
-
-    }
-    static inline std::string get_cci_name(const char* base, const char* name) {
-        return std::string(base)+"_"+name;
-    }
+    void period_write_callback(const cci::cci_param_write_event<int>& ev) {}
+    static inline std::string get_cci_name(const char* base, const char* name) { return std::string(base) + "_" + name; }
 };
 } // namespace scc
 /** @} */ // end of scc-sysc

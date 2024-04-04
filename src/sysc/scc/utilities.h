@@ -284,7 +284,7 @@ inline sc_core::sc_time time_to_next_posedge(sc_core::sc_clock const* clk) {
         auto clk_run_time = sc_core::sc_time_stamp() - clk->start_time();
         auto clk_period_point = clk_run_time % period;
         if(clk->posedge_first())
-            return period-clk_period_point;
+            return period - clk_period_point;
         auto time_to_negedge = period * clk->duty_cycle();
         auto time_to_posedge = period - time_to_negedge;
         if(clk_period_point < time_to_posedge) {

@@ -257,7 +257,7 @@ class DEFAULT {};
     if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                                        \
     LOGGER(DEFAULT)().get(::logging::LEVEL)
 #endif
-#define CPPLOG(LEVEL)                                                                                                                         \
+#define CPPLOG(LEVEL)                                                                                                                      \
     if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                                        \
     LOGGER(DEFAULT)().get(::logging::LEVEL)
 #ifndef CLOG
@@ -326,7 +326,7 @@ template <typename T> std::ostream& operator<<(std::ostream& stream, const std::
     } while(false)
 #endif
 //! check always
-#define SCCCHECK(condition, message)                                                                                                          \
+#define SCCCHECK(condition, message)                                                                                                       \
     do {                                                                                                                                   \
         if(!(condition)) {                                                                                                                 \
             logging::Logger().Get(logging::fatal)                                                                                          \

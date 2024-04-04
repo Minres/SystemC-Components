@@ -52,48 +52,38 @@ public:
 
 public:
     sc_in_opt()
-    : base_type()
-    {}
+    : base_type() {}
 
     explicit sc_in_opt(const char* name_)
-    : base_type(name_)
-    {}
+    : base_type(name_) {}
 
     explicit sc_in_opt(const in_if_type& interface_)
-    : base_type(const_cast<in_if_type&>(interface_))
-    {}
+    : base_type(const_cast<in_if_type&>(interface_)) {}
 
     sc_in_opt(const char* name_, const in_if_type& interface_)
-    : base_type(name_, const_cast<in_if_type&>(interface_))
-    {}
+    : base_type(name_, const_cast<in_if_type&>(interface_)) {}
 
     explicit sc_in_opt(in_port_type& parent_)
-    : base_type(parent_)
-    {}
+    : base_type(parent_) {}
 
     sc_in_opt(const char* name_, in_port_type& parent_)
-    : base_type(name_, parent_)
-    {}
+    : base_type(name_, parent_) {}
 
     explicit sc_in_opt(inout_port_type& parent_)
-    : base_type()
-    {
+    : base_type() {
         sc_core::sc_port_base::bind(parent_);
     }
 
     sc_in_opt(const char* name_, inout_port_type& parent_)
-    : base_type(name_)
-    {
+    : base_type(name_) {
         sc_core::sc_port_base::bind(parent_);
     }
 
     sc_in_opt(this_type& parent_)
-    : base_type(parent_)
-    {}
+    : base_type(parent_) {}
 
     sc_in_opt(const char* name_, this_type& parent_)
-    : base_type(name_, parent_)
-    {}
+    : base_type(name_, parent_) {}
 
     sc_in_opt(const this_type&) = delete;
 
@@ -150,48 +140,38 @@ public:
 
 public:
     sc_in_opt()
-    : base_type()
-    {}
+    : base_type() {}
 
     explicit sc_in_opt(const char* name_)
-    : base_type(name_)
-    {}
+    : base_type(name_) {}
 
     explicit sc_in_opt(const in_if_type& interface_)
-    : base_type(const_cast<in_if_type&>(interface_))
-    {}
+    : base_type(const_cast<in_if_type&>(interface_)) {}
 
     sc_in_opt(const char* name_, const in_if_type& interface_)
-    : base_type(name_, const_cast<in_if_type&>(interface_))
-    {}
+    : base_type(name_, const_cast<in_if_type&>(interface_)) {}
 
     explicit sc_in_opt(in_port_type& parent_)
-    : base_type(parent_)
-    {}
+    : base_type(parent_) {}
 
     sc_in_opt(const char* name_, in_port_type& parent_)
-    : base_type(name_, parent_)
-    {}
+    : base_type(name_, parent_) {}
 
     explicit sc_in_opt(inout_port_type& parent_)
-    : base_type()
-    {
+    : base_type() {
         sc_port_base::bind(parent_);
     }
 
     sc_in_opt(const char* name_, inout_port_type& parent_)
-    : base_type(name_)
-    {
+    : base_type(name_) {
         sc_port_base::bind(parent_);
     }
 
     sc_in_opt(this_type& parent_)
-    : base_type(parent_)
-    {}
+    : base_type(parent_) {}
 
     sc_in_opt(const char* name_, this_type& parent_)
-    : base_type(name_, parent_)
-    {}
+    : base_type(name_, parent_) {}
 
     sc_in_opt(const this_type&) = delete;
 
@@ -257,48 +237,38 @@ public:
 
 public:
     sc_in_opt()
-    : base_type()
-    {}
+    : base_type() {}
 
     explicit sc_in_opt(const char* name_)
-    : base_type(name_)
-    {}
+    : base_type(name_) {}
 
     explicit sc_in_opt(const in_if_type& interface_)
-    : base_type(const_cast<in_if_type&>(interface_))
-    {}
+    : base_type(const_cast<in_if_type&>(interface_)) {}
 
     sc_in_opt(const char* name_, const in_if_type& interface_)
-    : base_type(name_, const_cast<in_if_type&>(interface_))
-    {}
+    : base_type(name_, const_cast<in_if_type&>(interface_)) {}
 
     explicit sc_in_opt(in_port_type& parent_)
-    : base_type(parent_)
-    {}
+    : base_type(parent_) {}
 
     sc_in_opt(const char* name_, in_port_type& parent_)
-    : base_type(name_, parent_)
-    {}
+    : base_type(name_, parent_) {}
 
     explicit sc_in_opt(inout_port_type& parent_)
-    : base_type()
-    {
+    : base_type() {
         sc_port_base::bind(parent_);
     }
 
     sc_in_opt(const char* name_, inout_port_type& parent_)
-    : base_type(name_)
-    {
+    : base_type(name_) {
         sc_port_base::bind(parent_);
     }
 
     sc_in_opt(this_type& parent_)
-    : base_type(parent_)
-    {}
+    : base_type(parent_) {}
 
     sc_in_opt(const char* name_, this_type& parent_)
-    : base_type(name_, parent_)
-    {}
+    : base_type(name_, parent_) {}
 
     sc_in_opt(const this_type&) = delete;
 
@@ -357,47 +327,39 @@ public:
 public:
     sc_inout_opt()
     : base_type()
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     explicit sc_inout_opt(const char* name_)
     : base_type(name_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     explicit sc_inout_opt(inout_if_type& interface_)
     : base_type(interface_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(const char* name_, inout_if_type& interface_)
     : base_type(name_, interface_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     explicit sc_inout_opt(inout_port_type& parent_)
     : base_type(parent_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(const char* name_, inout_port_type& parent_)
     : base_type(name_, parent_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(this_type& parent_)
     : base_type(parent_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(const char* name_, this_type& parent_)
     : base_type(name_, parent_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(const this_type&) = delete;
 
-    virtual ~sc_inout_opt()= default;
+    virtual ~sc_inout_opt() = default;
 
     const sc_core::sc_event& default_event() const { return (*this)->default_event(); }
 
@@ -491,43 +453,35 @@ public:
 public:
     sc_inout_opt()
     : base_type()
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     explicit sc_inout_opt(const char* name_)
     : base_type(name_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     explicit sc_inout_opt(inout_if_type& interface_)
     : base_type(interface_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(const char* name_, inout_if_type& interface_)
     : base_type(name_, interface_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     explicit sc_inout_opt(inout_port_type& parent_)
     : base_type(parent_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(const char* name_, inout_port_type& parent_)
     : base_type(name_, parent_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(this_type& parent_)
     : base_type(parent_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(const char* name_, this_type& parent_)
     : base_type(name_, parent_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(const this_type&) = delete;
 
@@ -618,43 +572,35 @@ public:
 public:
     sc_inout_opt()
     : base_type()
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     explicit sc_inout_opt(const char* name_)
     : base_type(name_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     explicit sc_inout_opt(inout_if_type& interface_)
     : base_type(interface_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(const char* name_, inout_if_type& interface_)
     : base_type(name_, interface_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     explicit sc_inout_opt(inout_port_type& parent_)
     : base_type(parent_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(const char* name_, inout_port_type& parent_)
     : base_type(name_, parent_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(this_type& parent_)
     : base_type(parent_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(const char* name_, this_type& parent_)
     : base_type(name_, parent_)
-    , m_init_val(0)
-    {}
+    , m_init_val(0) {}
 
     sc_inout_opt(const this_type&) = delete;
 

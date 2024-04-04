@@ -109,7 +109,7 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
  * @tparam CACHELINE: cacheline size in Bytes, defaults value is 64 bytes
  */
 template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1,
-          unsigned int AWSNOOPWDTH = 3, unsigned int RESPWDTH=4>
+          unsigned int AWSNOOPWDTH = 3, unsigned int RESPWDTH = 4>
 struct ace_cfg {
 
     static_assert(BUSWDTH > 0, "BUSWIDTH shall be larger than 0");
@@ -350,7 +350,7 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ace {
     typename TYPES::template m2s_t<bool> r_ready{"r_ready"};
     typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> r_user{"r_user"};
     typename TYPES::template s2m_opt_t<bool> r_trace{"r_trace"}; // ACE5
-    typename TYPES::template m2s_t<bool> r_ack{"r_ack"}; // only ACE
+    typename TYPES::template m2s_t<bool> r_ack{"r_ack"};         // only ACE
 
     rresp_ace() = default;
     rresp_ace(const char* prefix)
@@ -503,7 +503,7 @@ template <typename CFG, typename TYPES = master_types> struct ar_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> ar_bar{"ar_bar"};
     typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> ar_user{"ar_user"};
     typename TYPES::template m2s_opt_t<bool> ar_trace{"ar_trace"};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<4>> ar_vmidext{"ar_vmidext"}; //ACE5
+    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<4>> ar_vmidext{"ar_vmidext"}; // ACE5
 
     ar_ace() = default;
     ar_ace(const char* prefix)
@@ -633,7 +633,7 @@ template <typename CFG, typename TYPES = master_types> struct ac_ace {
     typename TYPES::template s2m_full_t<sc_dt::sc_uint<4>> ac_snoop{"ac_snoop"};
     typename TYPES::template s2m_full_t<sc_dt::sc_uint<3>> ac_prot{"ac_prot"};
     typename TYPES::template s2m_opt_t<sc_dt::sc_uint<4>> ac_vmidext{"ac_vmidext"}; // ACE5
-    typename TYPES::template s2m_opt_t<bool> ac_trace{"ac_trace"}; // ACE5
+    typename TYPES::template s2m_opt_t<bool> ac_trace{"ac_trace"};                  // ACE5
 
     ac_ace() = default;
     ac_ace(const char* prefix)

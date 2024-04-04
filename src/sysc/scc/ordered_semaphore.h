@@ -19,10 +19,10 @@
 #include "sysc/communication/sc_semaphore_if.h"
 #include "sysc/kernel/sc_event.h"
 #include "sysc/kernel/sc_object.h"
+#include "traceable.h"
 #include <array>
 #include <deque>
 #include <sysc/kernel/sc_process_handle.h>
-#include "traceable.h"
 
 #ifndef SC_API
 #define SC_API
@@ -126,7 +126,7 @@ public:
      *
      * @param tf the trace file to register with
      */
-    void trace( sc_core::sc_trace_file* tf ) const override;
+    void trace(sc_core::sc_trace_file* tf) const override;
     /**
      * @fn bool is_trace_enabled() const
      * @brief returns of this component shall be traced

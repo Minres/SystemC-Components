@@ -433,9 +433,7 @@ void scc::reinit_logging(scc::log level) {
     log_cfg.initialized = true;
 }
 
-bool scc::is_logging_initialized(){
-    return log_cfg.initialized;
-}
+bool scc::is_logging_initialized() { return log_cfg.initialized; }
 
 void scc::init_logging(scc::log level, unsigned type_field_width, bool print_time) {
     log_cfg.msg_type_field_width = type_field_width;

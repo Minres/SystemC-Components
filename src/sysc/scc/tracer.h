@@ -86,8 +86,8 @@ public:
      * cci parameter to determine the file type being used to trace signals if not specified explicitly
      */
     cci::cci_param<bool> close_db_in_eos{"close_db_in_eos", false,
-                                            "Close the waveform/transaction tracing databases during end_of_simulation"};
-   /**
+                                         "Close the waveform/transaction tracing databases during end_of_simulation"};
+    /**
      * @fn  tracer(const std::string&&, file_type, bool=true)
      * @brief the constructor
      *
