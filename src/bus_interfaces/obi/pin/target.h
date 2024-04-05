@@ -20,6 +20,7 @@
 #include <scc/mt19937_rng.h>
 #include <scc/peq.h>
 #include <scc/report.h>
+#include <scc/signal_opt_ports.h>
 #include <systemc>
 #include <tlm/scc/initiator_mixin.h>
 #include <tlm/scc/scv/tlm_rec_initiator_socket.h>
@@ -36,17 +37,11 @@
 namespace obi {
 
 namespace pin {
-template <unsigned int DATA_WIDTH = 32, unsigned int ADDR_WIDTH = 32, unsigned int ID_WIDTH = 0,
-          unsigned int USER_WIDTH = 0>
+template <unsigned int DATA_WIDTH = 32, unsigned int ADDR_WIDTH = 32, unsigned int ID_WIDTH = 0, unsigned int USER_WIDTH = 0>
 class target : public sc_core::sc_module {
 public:
     using payload_type = tlm::tlm_base_protocol_types::tlm_payload_type;
     using phase_type = tlm::tlm_base_protocol_types::tlm_phase_type;
-
-    template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
-    using sc_in_opt = sc_core::sc_port<sc_core::sc_signal_in_if<TYPE>, N, sc_core::SC_ZERO_OR_MORE_BOUND>;
-    template <unsigned WIDTH = 0, typename TYPE = sc_dt::sc_uint<WIDTH>, int N = 1>
-    using sc_out_opt = sc_core::sc_port<sc_core::sc_signal_write_if<TYPE>, N, sc_core::SC_ZERO_OR_MORE_BOUND>;
 
     SC_HAS_PROCESS(target);
 
@@ -63,33 +58,34 @@ public:
     sc_core::sc_in<bool> we_i{"we_i"};
     sc_core::sc_in<sc_dt::sc_uint<DATA_WIDTH / 8>> be_i{"be_i"};
     sc_core::sc_in<sc_dt::sc_uint<DATA_WIDTH>> wdata_i{"wdata_i"};
-    sc_in_opt<USER_WIDTH> auser_i{"auser_i"};
-    sc_in_opt<USER_WIDTH> wuser_i{"wuser_i"};
-    sc_in_opt<ID_WIDTH> aid_i{"aid_i"};
+    scc::sc_in_opt<sc_dt::sc_uint<USER_WIDTH>> auser_i{"auser_i"};
+    scc::sc_in_opt<sc_dt::sc_uint<USER_WIDTH>> wuser_i{"wuser_i"};
+    scc::sc_in_opt<sc_dt::sc_uint<ID_WIDTH>> aid_i{"aid_i"};
     // R Channel signals
     sc_core::sc_out<bool> rvalid_o{"rvalid_o"};
     sc_core::sc_in<bool> rready_i{"rready_i"};
     sc_core::sc_out<sc_dt::sc_uint<DATA_WIDTH>> rdata_o{"rdata_o"};
     sc_core::sc_out<bool> err_o{"err_o"};
-    sc_out_opt<USER_WIDTH> ruser_o{"ruser_o"};
-    sc_out_opt<ID_WIDTH> r_id_o{"r_id_o"};
+    scc::sc_out_opt<sc_dt::sc_uint<USER_WIDTH>> ruser_o{"ruser_o"};
+    scc::sc_out_opt<sc_dt::sc_uint<ID_WIDTH>> r_id_o{"r_id_o"};
 
     tlm::tlm_sync_enum nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t);
 
     cci::cci_param<sc_core::sc_time> sample_delay{"sample_delay", 0_ns};
     cci::cci_param<int> req2gnt_delay{"req2gnt_delay", 0};
     cci::cci_param<int> addr2data_delay{"addr2data_delay", 0};
+
 private:
     void clk_cb();
     void achannel_req_t();
     void rchannel_rsp_t();
 
     void clk_delay() {
-        if(sc_core::sc_delta_count_at_current_time()<5) {
+        if(sc_core::sc_delta_count_at_current_time() < 5) {
             clk_self.notify(sc_core::SC_ZERO_TIME);
             next_trigger(clk_self);
         } else
-            clk_delayed.notify(sc_core::SC_ZERO_TIME/*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
+            clk_delayed.notify(sc_core::SC_ZERO_TIME /*clk_if ? clk_if->period() - 1_ps : 1_ps*/);
     }
     sc_core::sc_event clk_delayed, clk_self;
     scc::peq<tlm::scc::tlm_gp_shared_ptr> achannel_rsp;
@@ -109,10 +105,9 @@ private:
 template <unsigned int DATA_WIDTH, unsigned int ADDR_WIDTH, unsigned int ID_WIDTH, unsigned int USER_WIDTH>
 inline target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::target(sc_core::sc_module_name nm)
 : sc_module(nm) {
-    isckt.register_nb_transport_bw(
-        [this](payload_type& trans, phase_type& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
-            return nb_transport_bw(trans, phase, t);
-        });
+    isckt.register_nb_transport_bw([this](payload_type& trans, phase_type& phase, sc_core::sc_time& t) -> tlm::tlm_sync_enum {
+        return nb_transport_bw(trans, phase, t);
+    });
     SC_METHOD(clk_cb)
     sensitive << clk_i.pos() << resetn_i.neg();
     SC_METHOD(clk_delay);
@@ -141,8 +136,7 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::clk_cb
 
 template <unsigned int DATA_WIDTH, unsigned int ADDR_WIDTH, unsigned int ID_WIDTH, unsigned int USER_WIDTH>
 inline tlm::tlm_sync_enum
-target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::nb_transport_bw(payload_type& trans, phase_type& phase,
-                                                                              sc_core::sc_time& t) {
+target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t) {
     auto id = obi::get_obi_id(trans);
     auto* ext = trans.get_extension<obi::obi_extension>();
     sc_assert(ext && "obi_extension missing");
@@ -234,8 +228,7 @@ inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::achannel_req_t
             wait(clk_i.posedge_event());
             state.addrPhaseFinished = true;
             if(state.last_phase == tlm::BEGIN_RESP) {
-                unsigned resp_delay =
-                    addr2data_delay < 0 ? scc::MT19937::uniform(0, -addr2data_delay) : addr2data_delay;
+                unsigned resp_delay = addr2data_delay < 0 ? scc::MT19937::uniform(0, -addr2data_delay) : addr2data_delay;
                 if(resp_delay) {
                     rchannel_pending_rsp.push_back({gp, resp_delay - 1});
                 } else

@@ -60,7 +60,8 @@ vcd_mt_trace_file::~vcd_mt_trace_file() {
     if(vcd_out) {
         FPRINTF(vcd_out, "#{}\n", sc_core::sc_time_stamp() / 1_ps);
     }
-    for(auto t:all_traces) delete t.trc;
+    for(auto t : all_traces)
+        delete t.trc;
 }
 
 template <typename T, typename OT = T> bool changed(trace::vcd_trace* trace) {
@@ -70,17 +71,17 @@ template <typename T, typename OT = T> bool changed(trace::vcd_trace* trace) {
     } else
         return false;
 }
-#define DECL_TRACE_METHOD_A(tp)                                                                                        \
-    void vcd_mt_trace_file::trace(const tp& object, const std::string& name) {                                         \
-        all_traces.emplace_back(this, &changed<tp>, new trace::vcd_trace_t<tp>(object, name));                         \
+#define DECL_TRACE_METHOD_A(tp)                                                                                                            \
+    void vcd_mt_trace_file::trace(const tp& object, const std::string& name) {                                                             \
+        all_traces.emplace_back(this, &changed<tp>, new trace::vcd_trace_t<tp>(object, name));                                             \
     }
-#define DECL_TRACE_METHOD_B(tp)                                                                                        \
-    void vcd_mt_trace_file::trace(const tp& object, const std::string& name, int width) {                              \
-        all_traces.emplace_back(this, &changed<tp>, new trace::vcd_trace_t<tp>(object, name));                         \
+#define DECL_TRACE_METHOD_B(tp)                                                                                                            \
+    void vcd_mt_trace_file::trace(const tp& object, const std::string& name, int width) {                                                  \
+        all_traces.emplace_back(this, &changed<tp>, new trace::vcd_trace_t<tp>(object, name));                                             \
     }
-#define DECL_TRACE_METHOD_C(tp, tpo)                                                                                   \
-    void vcd_mt_trace_file::trace(const tp& object, const std::string& name) {                                         \
-        all_traces.emplace_back(this, &changed<tp, tpo>, new trace::vcd_trace_t<tp, tpo>(object, name));               \
+#define DECL_TRACE_METHOD_C(tp, tpo)                                                                                                       \
+    void vcd_mt_trace_file::trace(const tp& object, const std::string& name) {                                                             \
+        all_traces.emplace_back(this, &changed<tp, tpo>, new trace::vcd_trace_t<tp, tpo>(object, name));                                   \
     }
 
 #if(SYSTEMC_VERSION >= 20171012)
@@ -127,26 +128,22 @@ void vcd_mt_trace_file::trace(const unsigned int& object, const std::string& nam
     all_traces.emplace_back(this, &changed<unsigned int>, new trace::vcd_trace_enum(object, name, enum_literals));
 }
 
-#define DECL_REGISTER_METHOD_A(tp)                                                                                     \
-    observer::notification_handle* vcd_mt_trace_file::observe(const tp& object, const std::string& name) {             \
-        all_traces.emplace_back(this, &changed<tp>, new trace::vcd_trace_t<tp>(object, name));                         \
-        all_traces.back().trc->is_triggered = true;                                                                    \
-        return &all_traces.back();                                                                                     \
+#define DECL_REGISTER_METHOD_A(tp)                                                                                                         \
+    observer::notification_handle* vcd_mt_trace_file::observe(const tp& object, const std::string& name) {                                 \
+        all_traces.emplace_back(this, &changed<tp>, new trace::vcd_trace_t<tp>(object, name));                                             \
+        all_traces.back().trc->is_triggered = true;                                                                                        \
+        return &all_traces.back();                                                                                                         \
     }
-#define DECL_REGISTER_METHOD_C(tp, tpo)                                                                                \
-    observer::notification_handle* vcd_mt_trace_file::observe(const tp& object, const std::string& name) {             \
-        all_traces.emplace_back(this, &changed<tp, tpo>, new trace::vcd_trace_t<tp, tpo>(object, name));               \
-        all_traces.back().trc->is_triggered = true;                                                                    \
-        return &all_traces.back();                                                                                     \
+#define DECL_REGISTER_METHOD_C(tp, tpo)                                                                                                    \
+    observer::notification_handle* vcd_mt_trace_file::observe(const tp& object, const std::string& name) {                                 \
+        all_traces.emplace_back(this, &changed<tp, tpo>, new trace::vcd_trace_t<tp, tpo>(object, name));                                   \
+        all_traces.back().trc->is_triggered = true;                                                                                        \
+        return &all_traces.back();                                                                                                         \
     }
 
 #if(SYSTEMC_VERSION >= 20171012)
-observer::notification_handle* vcd_mt_trace_file::observe(const sc_core::sc_event& object, const std::string& name) {
-    return nullptr;
-}
-observer::notification_handle* vcd_mt_trace_file::observe(const sc_core::sc_time& object, const std::string& name) {
-    return nullptr;
-}
+observer::notification_handle* vcd_mt_trace_file::observe(const sc_core::sc_event& object, const std::string& name) { return nullptr; }
+observer::notification_handle* vcd_mt_trace_file::observe(const sc_core::sc_time& object, const std::string& name) { return nullptr; }
 #endif
 
 DECL_REGISTER_METHOD_A(bool)
@@ -211,15 +208,13 @@ std::string vcd_mt_trace_file::obtain_name() {
     char char2 = static_cast<char>(result % used_types_count);
 
     char buf[20];
-    std::sprintf(buf, "%c%c%c%c%c", char2 + first_type_used, char3 + first_type_used, char4 + first_type_used,
-                 char5 + first_type_used, char6 + first_type_used);
+    std::sprintf(buf, "%c%c%c%c%c", char2 + first_type_used, char3 + first_type_used, char4 + first_type_used, char5 + first_type_used,
+                 char6 + first_type_used);
     vcd_name_index++;
     return std::string(buf);
 }
 
-void vcd_mt_trace_file::write_comment(const std::string& comment) {
-    FPRINTF(vcd_out, "$comment\n{}\n$end\n\n", comment);
-}
+void vcd_mt_trace_file::write_comment(const std::string& comment) { FPRINTF(vcd_out, "$comment\n{}\n$end\n\n", comment); }
 
 void vcd_mt_trace_file::init() {
     std::sort(std::begin(all_traces), std::end(all_traces),
@@ -284,8 +279,7 @@ std::string vcd_mt_trace_file::prune_name(std::string const& orig_name) {
     return hier_name;
 }
 
-void record_changes(FILE* vcd_out, std::vector<trace::vcd_trace*> const& changed,
-                    std::vector<trace::vcd_trace*> const& triggered) {}
+void record_changes(FILE* vcd_out, std::vector<trace::vcd_trace*> const& changed, std::vector<trace::vcd_trace*> const& triggered) {}
 
 void vcd_mt_trace_file::cycle(bool delta_cycle) {
     if(delta_cycle)
@@ -330,7 +324,7 @@ void vcd_mt_trace_file::cycle(bool delta_cycle) {
 
 void vcd_mt_trace_file::set_time_unit(double v, sc_core::sc_time_unit tu) {}
 #ifdef NCSC
-void vcd_mt_trace_file::set_time_unit( int exponent10_seconds ) {}
+void vcd_mt_trace_file::set_time_unit(int exponent10_seconds) {}
 #endif
 
 sc_core::sc_trace_file* create_vcd_mt_trace_file(const char* name, std::function<bool()> enable) {

@@ -359,7 +359,7 @@ fstHandle       fstWriterCreateVar2(void *ctx, enum fstVarType vt, enum fstVarDi
                         uint32_t len, const char *nam, fstHandle aliasHandle,
                         const char *type, enum fstSupplementalVarType svt, enum fstSupplementalDataType sdt);
 void            fstWriterEmitDumpActive(void *ctx, int enable);
-void 		    fstWriterEmitEnumTableRef(void *ctx, fstEnumHandle handle);
+void            fstWriterEmitEnumTableRef(void *ctx, fstEnumHandle handle);
 void            fstWriterEmitValueChange(void *ctx, fstHandle handle, const void *val);
 void            fstWriterEmitValueChange32(void *ctx, fstHandle handle,
                         uint32_t bits, uint32_t val);
@@ -393,7 +393,7 @@ void            fstWriterSetTimescale(void *ctx, int ts);
 void            fstWriterSetTimescaleFromString(void *ctx, const char *s);
 void            fstWriterSetTimezero(void *ctx, int64_t tim);
 void            fstWriterSetUpscope(void *ctx);
-void		    fstWriterSetValueList(void *ctx, const char *vl);
+void            fstWriterSetValueList(void *ctx, const char *vl);
 void            fstWriterSetVersion(void *ctx, const char *vers);
 
 
@@ -456,7 +456,7 @@ int             fstUtilityBinToEscConvertedLen(const unsigned char *s, int len);
 int             fstUtilityBinToEsc(unsigned char *d, const unsigned char *s, int len);
 int             fstUtilityEscToBin(unsigned char *d, unsigned char *s, int len);
 struct fstETab *fstUtilityExtractEnumTableFromString(const char *s);
-void 		    fstUtilityFreeEnumTable(struct fstETab *etab); /* must use to free fstETab properly */
+void            fstUtilityFreeEnumTable(struct fstETab *etab); /* must use to free fstETab properly */
 
 
 #ifdef __cplusplus

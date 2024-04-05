@@ -131,13 +131,14 @@ int sc_main(int argc, char* argv[]) {
             .coloredOutput(true));
     // clang-format on
     scc::configurable_tracer trace("ace_axi_test",
-                                   true, // enables TX recording
-                                   true, // enables signal tracing
-                                   true);// all units by default traced
+                                   true,  // enables TX recording
+                                   true,  // enables signal tracing
+                                   true); // all units by default traced
     testbench mstr("master");
     try {
         sc_core::sc_start(10_ms);
-        if (!sc_core::sc_end_of_simulation_invoked()) sc_core::sc_stop();
+        if(!sc_core::sc_end_of_simulation_invoked())
+            sc_core::sc_stop();
     } catch(sc_report& e) {
         SCCERR() << "Caught sc_report exception during simulation: " << e.what() << ":" << e.get_msg();
     } catch(std::exception& e) {

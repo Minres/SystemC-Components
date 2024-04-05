@@ -28,8 +28,7 @@ namespace tlm {
 namespace scc {
 
 template <typename TYPE>
-struct tlm_signal2sc_signal : public sc_core::sc_module,
-                              public tlm_signal_fw_transport_if<TYPE, tlm_signal_baseprotocol_types<TYPE>> {
+struct tlm_signal2sc_signal : public sc_core::sc_module, public tlm_signal_fw_transport_if<TYPE, tlm_signal_baseprotocol_types<TYPE>> {
 
     using protocol_types = tlm_signal_baseprotocol_types<TYPE>;
     using payload_type = typename protocol_types::tlm_payload_type;
@@ -62,8 +61,7 @@ private:
 };
 
 template <typename TYPE>
-struct sc_signal2tlm_signal : public sc_core::sc_module,
-                              public tlm_signal_bw_transport_if<TYPE, tlm_signal_baseprotocol_types<TYPE>> {
+struct sc_signal2tlm_signal : public sc_core::sc_module, public tlm_signal_bw_transport_if<TYPE, tlm_signal_baseprotocol_types<TYPE>> {
 
     using protocol_types = tlm_signal_baseprotocol_types<TYPE>;
     using payload_type = typename protocol_types::tlm_payload_type;
@@ -83,9 +81,7 @@ struct sc_signal2tlm_signal : public sc_core::sc_module,
     }
 
 private:
-    tlm_sync_enum nb_transport_bw(payload_type& gp, phase_type& phase, sc_core::sc_time& delay) {
-        return TLM_COMPLETED;
-    }
+    tlm_sync_enum nb_transport_bw(payload_type& gp, phase_type& phase, sc_core::sc_time& delay) { return TLM_COMPLETED; }
 
     void sig_cb() {
         tlm::tlm_phase phase(tlm::BEGIN_REQ);

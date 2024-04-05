@@ -44,14 +44,8 @@ class configurer : public sc_core::sc_module {
 public:
     using base_type = sc_core::sc_module;
     using broker_t = cci::cci_broker_handle;
-    using cci_param_cln = std::vector<
-    		std::pair<
-				cci::cci_param_post_write_callback_untyped,
-				std::unique_ptr<cci::cci_param_untyped>
-			>>;
-    enum {
-        NEVER=0, BEFORE_END_OF_ELABORATION=1, END_OF_ELABORATION=2, START_OF_SIMULATION=4
-    };
+    using cci_param_cln = std::vector<std::pair<cci::cci_param_post_write_callback_untyped, std::unique_ptr<cci::cci_param_untyped>>>;
+    enum { NEVER = 0, BEFORE_END_OF_ELABORATION = 1, END_OF_ELABORATION = 2, START_OF_SIMULATION = 4 };
     /**
      * create a configurer using an input file
      * @param filename the input file to read containing the values to apply
@@ -71,8 +65,8 @@ public:
 
     configurer& operator=(configurer&&) = delete;
 
-	void read_input_file(std::string const&filename);
-	/**
+    void read_input_file(std::string const& filename);
+    /**
      * configure the design hierarchy using the input file. Apply the values to
      * sc_core::sc_attribute in th edsign hierarchy
      */
@@ -83,7 +77,8 @@ public:
      * @param os the output stream, std::cout by default
      * @param obj if not null specifies the root object of the dump
      */
-    void dump_configuration(std::ostream& os = std::cout, bool as_yaml=false, bool with_description = false, sc_core::sc_object* obj = nullptr);
+    void dump_configuration(std::ostream& os = std::cout, bool as_yaml = true, bool with_description = false,
+                            sc_core::sc_object* obj = nullptr);
     /**
      * schedule the dump the parameters of a design hierarchy to a file
      * during start_of_simulation()
@@ -91,8 +86,8 @@ public:
      * @param file_name the output stream, std::cout by default
      */
     void dump_configuration(std::string const& file_name, bool with_description = false) {
-    	dump_file_name = file_name;
-    	this->with_description= with_description;
+        dump_file_name = file_name;
+        this->with_description = with_description;
     }
     /**
      * set a value of some property (sc_attribute or cci_param) from programmatically
@@ -103,9 +98,7 @@ public:
      * @param hier_name the hierarchical name of the property
      * @param value the value to put
      */
-    template <typename T> void set_value(std::string const& hier_name, T value) {
-    	set_value(hier_name, cci::cci_value(value));
-    }
+    template <typename T> void set_value(std::string const& hier_name, T value) { set_value(hier_name, cci::cci_value(value)); }
     /**
      * set a value of an sc_attribute from given configuration. This is being used by the scc::ext_attribute
      * which allows to use config values during construction
@@ -122,7 +115,7 @@ public:
     static configurer& get() {
         configurer* inst = dynamic_cast<configurer*>(sc_core::sc_find_object("$$$configurer$$$"));
         if(!inst)
-            SCCFATAL()<<"No configurer instantiated when using it";
+            SCCFATAL() << "No configurer instantiated when using it";
         return *inst;
     }
 
@@ -133,10 +126,12 @@ protected:
     configurer(std::string const& filename, unsigned sc_attr_config_phases, sc_core::sc_module_name nm);
     void config_check();
     void before_end_of_elaboration() override {
-        if(config_phases & BEFORE_END_OF_ELABORATION) configure();
+        if(config_phases & BEFORE_END_OF_ELABORATION)
+            configure();
     }
     void end_of_elaboration() override {
-        if(config_phases & END_OF_ELABORATION) configure();
+        if(config_phases & END_OF_ELABORATION)
+            configure();
     }
     void start_of_simulation() override;
     broker_t cci_broker;
@@ -148,4 +143,4 @@ protected:
 
 } // namespace scc
 /** @} */ // end of scc-sysc
-#endif /* _SYSC_CONFIGURER_H_ */
+#endif    /* _SYSC_CONFIGURER_H_ */

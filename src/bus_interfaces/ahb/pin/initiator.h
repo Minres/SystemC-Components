@@ -55,10 +55,11 @@ private:
         unsigned size;
         unsigned length;
     };
-    void bus_task();
+    void bus_addr_task();
+    void bus_data_task();
 
-    sc_core::sc_mutex addr_phase, data_phase;
     tlm_utils::peq_with_get<tlm::tlm_generic_payload> inqueue{"inqueue"};
+    tlm_utils::peq_with_get<tlm::tlm_generic_payload> tx_in_flight{"tx_in_flight"};
 };
 
 } // namespace pin

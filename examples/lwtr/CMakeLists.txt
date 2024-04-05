@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.20)
 
 add_executable(lwtr_example lwtr_example.cpp)
 target_link_libraries (lwtr_example lwtr scc)

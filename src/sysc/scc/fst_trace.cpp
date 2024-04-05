@@ -118,15 +118,13 @@ template <typename T, typename OT = T> struct fst_trace_t : public fst_trace {
 
 template <typename T, typename OT> inline void fst_trace_t<T, OT>::record(void* m_fst) {
     static std::vector<char> rawdata(65);
-    char *s = &rawdata[0];
-    for (size_t i = 0; i < 8*sizeof(T); ++i)
-            *s++ = '0' + ((old_val >> (8*sizeof(T) - i - 1)) & 1);
-    *s=0;
+    char* s = &rawdata[0];
+    for(size_t i = 0; i < 8 * sizeof(T); ++i)
+        *s++ = '0' + ((old_val >> (8 * sizeof(T) - i - 1)) & 1);
+    *s = 0;
     fstWriterEmitValueChange(m_fst, fst_hndl, &rawdata[0]);
 }
-template <> void fst_trace_t<bool, bool>::record(void* m_fst) {
-    fstWriterEmitValueChange(m_fst, fst_hndl, old_val ? "1" : "0");
-}
+template <> void fst_trace_t<bool, bool>::record(void* m_fst) { fstWriterEmitValueChange(m_fst, fst_hndl, old_val ? "1" : "0"); }
 template <> void fst_trace_t<sc_dt::sc_bit, sc_dt::sc_bit>::record(void* m_fst) {
     fstWriterEmitValueChange(m_fst, fst_hndl, old_val ? "1" : "0");
 }
@@ -139,47 +137,45 @@ template <> void fst_trace_t<float, float>::record(void* m_fst) {
     double val = old_val;
     fstWriterEmitValueChange(m_fst, fst_hndl, &val);
 }
-template <> void fst_trace_t<double, double>::record(void* m_fst) {
-    fstWriterEmitValueChange(m_fst, fst_hndl, &old_val);
-}
+template <> void fst_trace_t<double, double>::record(void* m_fst) { fstWriterEmitValueChange(m_fst, fst_hndl, &old_val); }
 template <> void fst_trace_t<sc_dt::sc_int_base, sc_dt::sc_int_base>::record(void* m_fst) {
     static std::vector<char> rawdata(1024);
-    if(rawdata.size()< old_val.length()+1)
-        rawdata.resize(old_val.length()+1);
+    if(rawdata.size() < old_val.length() + 1)
+        rawdata.resize(old_val.length() + 1);
     char* rawdata_ptr = &rawdata[0];
     for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex)
         *rawdata_ptr++ = '0' + old_val[bitindex].value();
-    *rawdata_ptr=0;
+    *rawdata_ptr = 0;
     fstWriterEmitValueChange(m_fst, fst_hndl, &rawdata[0]);
 }
 template <> void fst_trace_t<sc_dt::sc_uint_base, sc_dt::sc_uint_base>::record(void* m_fst) {
     static std::vector<char> rawdata(1024);
-    if(rawdata.size()< old_val.length()+1)
-        rawdata.resize(old_val.length()+1);
+    if(rawdata.size() < old_val.length() + 1)
+        rawdata.resize(old_val.length() + 1);
     char* rawdata_ptr = &rawdata[0];
     for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex)
         *rawdata_ptr++ = '0' + old_val[bitindex].value();
-    *rawdata_ptr=0;
+    *rawdata_ptr = 0;
     fstWriterEmitValueChange(m_fst, fst_hndl, &rawdata[0]);
 }
 template <> void fst_trace_t<sc_dt::sc_signed, sc_dt::sc_signed>::record(void* m_fst) {
     static std::vector<char> rawdata(1024);
-    if(rawdata.size()< old_val.length()+1)
-        rawdata.resize(old_val.length()+1);
+    if(rawdata.size() < old_val.length() + 1)
+        rawdata.resize(old_val.length() + 1);
     char* rawdata_ptr = &rawdata[0];
     for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex)
         *rawdata_ptr++ = '0' + old_val[bitindex].value();
-    *rawdata_ptr=0;
+    *rawdata_ptr = 0;
     fstWriterEmitValueChange(m_fst, fst_hndl, &rawdata[0]);
 }
 template <> void fst_trace_t<sc_dt::sc_unsigned, sc_dt::sc_unsigned>::record(void* m_fst) {
     static std::vector<char> rawdata(1024);
-    if(rawdata.size()< old_val.length()+1)
-        rawdata.resize(old_val.length()+1);
+    if(rawdata.size() < old_val.length() + 1)
+        rawdata.resize(old_val.length() + 1);
     char* rawdata_ptr = &rawdata[0];
     for(int bitindex = old_val.length() - 1; bitindex >= 0; --bitindex)
         *rawdata_ptr++ = '0' + old_val[bitindex].value();
-    *rawdata_ptr=0;
+    *rawdata_ptr = 0;
     fstWriterEmitValueChange(m_fst, fst_hndl, &rawdata[0]);
 }
 template <> void fst_trace_t<sc_dt::sc_fxval, sc_dt::sc_fxval>::record(void* m_fst) {
@@ -223,8 +219,8 @@ fst_trace_file::fst_trace_file(const char* name, std::function<bool()>& enable)
     ss << name << ".fst";
     m_fst = fstWriterCreate(ss.str().c_str(), 1);
     if(!m_fst) {
-    	fprintf(stderr, "Could not open '%s', exiting.\n", ss.str().c_str());
-    	exit(255);
+        fprintf(stderr, "Could not open '%s', exiting.\n", ss.str().c_str());
+        exit(255);
     }
     fstWriterSetPackType(m_fst, FST_WR_PT_FASTLZ);
     fstWriterSetRepackOnClose(m_fst, 1);
@@ -237,7 +233,7 @@ fst_trace_file::fst_trace_file(const char* name, std::function<bool()>& enable)
     struct tm* p_tm = localtime(&long_time);
     strftime(tbuf, 199, "%b %d, %Y\t%H:%M:%S", p_tm);
     fstWriterSetDate(m_fst, tbuf);
-    //fstWriterSetFileType(m_fst, FST_FT_VERILOG);
+    // fstWriterSetFileType(m_fst, FST_FT_VERILOG);
 #if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
     sc_object::detach();
@@ -249,9 +245,10 @@ fst_trace_file::fst_trace_file(const char* name, std::function<bool()>& enable)
 }
 
 fst_trace_file::~fst_trace_file() {
-    for(auto t:all_traces) delete t.trc;
+    for(auto t : all_traces)
+        delete t.trc;
     if(m_fst) {
-        //fstWriterFlushContext(m_fst);
+        // fstWriterFlushContext(m_fst);
         fstWriterClose(m_fst);
     }
 }
@@ -263,17 +260,17 @@ template <typename T, typename OT = T> bool changed(trace::fst_trace* trace) {
     } else
         return false;
 }
-#define DECL_TRACE_METHOD_A(tp)                                                                                        \
-    void fst_trace_file::trace(const tp& object, const std::string& name) {                                            \
-        all_traces.emplace_back(this, &changed<tp>, new trace::fst_trace_t<tp>(object, name));                         \
+#define DECL_TRACE_METHOD_A(tp)                                                                                                            \
+    void fst_trace_file::trace(const tp& object, const std::string& name) {                                                                \
+        all_traces.emplace_back(this, &changed<tp>, new trace::fst_trace_t<tp>(object, name));                                             \
     }
-#define DECL_TRACE_METHOD_B(tp)                                                                                        \
-    void fst_trace_file::trace(const tp& object, const std::string& name, int width) {                                 \
-        all_traces.emplace_back(this, &changed<tp>, new trace::fst_trace_t<tp>(object, name));                         \
+#define DECL_TRACE_METHOD_B(tp)                                                                                                            \
+    void fst_trace_file::trace(const tp& object, const std::string& name, int width) {                                                     \
+        all_traces.emplace_back(this, &changed<tp>, new trace::fst_trace_t<tp>(object, name));                                             \
     }
-#define DECL_TRACE_METHOD_C(tp, tpo)                                                                                   \
-    void fst_trace_file::trace(const tp& object, const std::string& name) {                                            \
-        all_traces.emplace_back(this, &changed<tp, tpo>, new trace::fst_trace_t<tp, tpo>(object, name));               \
+#define DECL_TRACE_METHOD_C(tp, tpo)                                                                                                       \
+    void fst_trace_file::trace(const tp& object, const std::string& name) {                                                                \
+        all_traces.emplace_back(this, &changed<tp, tpo>, new trace::fst_trace_t<tp, tpo>(object, name));                                   \
     }
 
 #if(SYSTEMC_VERSION >= 20171012)
@@ -320,25 +317,21 @@ void fst_trace_file::trace(const unsigned int& object, const std::string& name, 
     // all_traces.emplace_back(this, &changed<unsigned int>, new fst_trace_enum(object, name, enum_literals));
 }
 
-#define DECL_REGISTER_METHOD_A(tp)                                                                                     \
-    observer::notification_handle* fst_trace_file::observe(const tp& object, const std::string& name) {                \
-        all_traces.emplace_back(this, &changed<tp>, new trace::fst_trace_t<tp>(object, name));                         \
-        all_traces.back().trc->is_triggered = true;                                                                    \
-        return &all_traces.back();                                                                                     \
+#define DECL_REGISTER_METHOD_A(tp)                                                                                                         \
+    observer::notification_handle* fst_trace_file::observe(const tp& object, const std::string& name) {                                    \
+        all_traces.emplace_back(this, &changed<tp>, new trace::fst_trace_t<tp>(object, name));                                             \
+        all_traces.back().trc->is_triggered = true;                                                                                        \
+        return &all_traces.back();                                                                                                         \
     }
-#define DECL_REGISTER_METHOD_C(tp, tpo)                                                                                \
-    observer::notification_handle* fst_trace_file::observe(const tp& object, const std::string& name) {                \
-        all_traces.emplace_back(this, &changed<tp, tpo>, new trace::fst_trace_t<tp, tpo>(object, name));               \
-        all_traces.back().trc->is_triggered = true;                                                                    \
-        return &all_traces.back();                                                                                     \
+#define DECL_REGISTER_METHOD_C(tp, tpo)                                                                                                    \
+    observer::notification_handle* fst_trace_file::observe(const tp& object, const std::string& name) {                                    \
+        all_traces.emplace_back(this, &changed<tp, tpo>, new trace::fst_trace_t<tp, tpo>(object, name));                                   \
+        all_traces.back().trc->is_triggered = true;                                                                                        \
+        return &all_traces.back();                                                                                                         \
     }
 #if(SYSTEMC_VERSION >= 20171012)
-observer::notification_handle* fst_trace_file::observe(const sc_core::sc_event& object, const std::string& name) {
-    return nullptr;
-}
-observer::notification_handle* fst_trace_file::observe(const sc_core::sc_time& object, const std::string& name) {
-    return nullptr;
-}
+observer::notification_handle* fst_trace_file::observe(const sc_core::sc_event& object, const std::string& name) { return nullptr; }
+observer::notification_handle* fst_trace_file::observe(const sc_core::sc_time& object, const std::string& name) { return nullptr; }
 #endif
 
 DECL_REGISTER_METHOD_A(bool)
@@ -385,40 +378,41 @@ bool fst_trace_file::trace_entry::notify() {
 void fst_trace_file::write_comment(const std::string& comment) {}
 namespace {
 struct scope_stack {
-    void add_trace(trace::fst_trace *trace){
+    void add_trace(trace::fst_trace* trace) {
         auto hier = util::split(trace->name, '.');
         add_trace_rec(std::begin(hier), std::end(hier), trace);
     }
 
-    void writeScopes(void* fst, std::unordered_map<uintptr_t, fstHandle>& alias_map, const char *scope_name = nullptr){
-    	if(m_traces.size() || scope_name) {
-    		fstWriterSetScope(fst, FST_ST_VCD_SCOPE, scope_name?scope_name:"SystemC", nullptr);
-    		for (auto& e : m_traces) {
-    			auto hier_tokens = util::split(e.second->name, '.');
-    			auto sig_name = hier_tokens.back();
-    			auto alias_it = alias_map.find(e.second->get_hash());
-    			e.second->is_alias = alias_it != std::end(alias_map);
-    			e.second->fst_hndl =
-    					fstWriterCreateVar(fst, e.second->type == trace::REAL ? FST_VT_VCD_REAL : FST_VT_VCD_WIRE, FST_VD_IMPLICIT,
-    							e.second->bits, sig_name.c_str(), e.second->is_alias ? alias_it->second : 0);
-    			if(!e.second->is_alias)
-    				alias_map.insert({e.second->get_hash(), e.second->fst_hndl});
-    		}
-        	for (auto& e : m_scopes)
-        		e.second->writeScopes(fst, alias_map, e.first.c_str());
-    		fstWriterSetUpscope(fst);
-    	} else
-    		for (auto& e : m_scopes)
-    			e.second->writeScopes(fst, alias_map, e.first.c_str());
+    void writeScopes(void* fst, std::unordered_map<uintptr_t, fstHandle>& alias_map, const char* scope_name = nullptr) {
+        if(m_traces.size() || scope_name) {
+            fstWriterSetScope(fst, FST_ST_VCD_SCOPE, scope_name ? scope_name : "SystemC", nullptr);
+            for(auto& e : m_traces) {
+                auto hier_tokens = util::split(e.second->name, '.');
+                auto sig_name = hier_tokens.back();
+                auto alias_it = alias_map.find(e.second->get_hash());
+                e.second->is_alias = alias_it != std::end(alias_map);
+                e.second->fst_hndl =
+                    fstWriterCreateVar(fst, e.second->type == trace::REAL ? FST_VT_VCD_REAL : FST_VT_VCD_WIRE, FST_VD_IMPLICIT,
+                                       e.second->bits, sig_name.c_str(), e.second->is_alias ? alias_it->second : 0);
+                if(!e.second->is_alias)
+                    alias_map.insert({e.second->get_hash(), e.second->fst_hndl});
+            }
+            for(auto& e : m_scopes)
+                e.second->writeScopes(fst, alias_map, e.first.c_str());
+            fstWriterSetUpscope(fst);
+        } else
+            for(auto& e : m_scopes)
+                e.second->writeScopes(fst, alias_map, e.first.c_str());
     }
 
-    ~scope_stack(){
-        for (auto& s : m_scopes)
+    ~scope_stack() {
+        for(auto& s : m_scopes)
             delete s.second;
     }
+
 private:
-    void add_trace_rec(std::vector<std::string>::iterator beg, std::vector<std::string>::iterator const& end, trace::fst_trace *trace){
-        if(std::distance(beg,  end)==1){
+    void add_trace_rec(std::vector<std::string>::iterator beg, std::vector<std::string>::iterator const& end, trace::fst_trace* trace) {
+        if(std::distance(beg, end) == 1) {
             m_traces.push_back(std::make_pair(*beg, trace));
         } else {
             auto sc = m_scopes.find(*beg);
@@ -427,11 +421,11 @@ private:
             sc->second->add_trace_rec(++beg, end, trace);
         }
     }
-    std::vector<std::pair<std::string,trace::fst_trace*> > m_traces{0};
+    std::vector<std::pair<std::string, trace::fst_trace*>> m_traces{0};
     std::unordered_map<std::string, scope_stack*> m_scopes{0};
 };
 
-}
+} // namespace
 void fst_trace_file::init() {
     std::vector<trace_entry*> traces;
     traces.reserve(all_traces.size());
@@ -451,9 +445,9 @@ void fst_trace_file::init() {
 void fst_trace_file::cycle(bool delta_cycle) {
     if(delta_cycle)
         return;
-    if(last_emitted_ts==std::numeric_limits<uint64_t>::max())
+    if(last_emitted_ts == std::numeric_limits<uint64_t>::max())
         init();
-    if(last_emitted_ts==std::numeric_limits<uint64_t>::max()) {
+    if(last_emitted_ts == std::numeric_limits<uint64_t>::max()) {
         uint64_t time_stamp = sc_core::sc_time_stamp().value() / (1_ps).value();
         fstWriterEmitTimeChange(m_fst, time_stamp);
         for(auto& e : all_traces)
@@ -469,7 +463,7 @@ void fst_trace_file::cycle(bool delta_cycle) {
         }
         if(triggered_traces.size() || changed_traces.size()) {
             uint64_t time_stamp = sc_core::sc_time_stamp().value() / (1_ps).value();
-            if(last_emitted_ts<time_stamp)
+            if(last_emitted_ts < time_stamp)
                 fstWriterEmitTimeChange(m_fst, time_stamp);
             if(triggered_traces.size()) {
                 auto end = std::unique(std::begin(triggered_traces), std::end(triggered_traces));
@@ -490,12 +484,10 @@ void fst_trace_file::cycle(bool delta_cycle) {
 
 void fst_trace_file::set_time_unit(double v, sc_core::sc_time_unit tu) {}
 #ifdef NCSC
-void fst_trace_file::set_time_unit( int exponent10_seconds ) {}
+void fst_trace_file::set_time_unit(int exponent10_seconds) {}
 #endif
 
-sc_core::sc_trace_file* create_fst_trace_file(const char* name, std::function<bool()> enable) {
-    return new fst_trace_file(name, enable);
-}
+sc_core::sc_trace_file* create_fst_trace_file(const char* name, std::function<bool()> enable) { return new fst_trace_file(name, enable); }
 
 void close_fst_trace_file(sc_core::sc_trace_file* tf) { delete static_cast<fst_trace_file*>(tf); }
 

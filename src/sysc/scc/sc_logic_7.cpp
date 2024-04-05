@@ -14,9 +14,9 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include <array>
 #include "sc_logic_7.h"
 #include "sysc/datatypes/bit/sc_bit_ids.h"
+#include <array>
 
 namespace scc {
 namespace dt {
@@ -50,54 +50,44 @@ void sc_logic_7::invalid_01() const {
 // conversion tables
 
 std::array<const sc_logic_7_value_t, 128> sc_logic_7::char_to_logic = {
-    {Log_0, Log_1, Log_L, Log_H, Log_Z, Log_X, Log_U, Log_X, // 0
-     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X,
-     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, // 1
-     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X,
-     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, // 2
-     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X,
-     Log_0, Log_1, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, // 3
-     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X,
-     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, // 4
-     Log_H, Log_X, Log_X, Log_X, Log_L, Log_X, Log_X, Log_X,
-     Log_X, Log_X, Log_X, Log_X, Log_X, Log_U, Log_X, Log_X, // 5
-     Log_X, Log_X, Log_Z, Log_X, Log_X, Log_X, Log_X, Log_X,
-     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, // 6
-     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X,
-     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, // 9
+    {Log_0, Log_1, Log_L, Log_H, Log_Z, Log_X, Log_U, Log_X,                                                         // 0
+     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, // 1
+     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, // 2
+     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_0, Log_1, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, // 3
+     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, // 4
+     Log_H, Log_X, Log_X, Log_X, Log_L, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_U, Log_X, Log_X, // 5
+     Log_X, Log_X, Log_Z, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, // 6
+     Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, // 9
      Log_X, Log_X, Log_Z, Log_X, Log_X, Log_X, Log_X, Log_X}};
 
 std::array<const char, 7> sc_logic_7::logic_to_char = {{'0', '1', 'L', 'H', 'Z', 'X', 'U'}};
 
-std::array<std::array<const sc_logic_7_value_t, 7>, 7> sc_logic_7::and_table = {
-    {//     0      1      L      H      Z      X      U
-     /*0*/ {Log_0, Log_0, Log_0, Log_0, Log_0, Log_0, Log_0},
-     /*1*/ {Log_0, Log_1, Log_L, Log_1, Log_X, Log_X, Log_X},
-     /*L*/ {Log_0, Log_L, Log_L, Log_L, Log_L, Log_L, Log_L},
-     /*H*/ {Log_0, Log_1, Log_L, Log_H, Log_X, Log_X, Log_X},
-     /*Z*/ {Log_0, Log_X, Log_L, Log_X, Log_X, Log_X, Log_X},
-     /*X*/ {Log_0, Log_X, Log_L, Log_X, Log_X, Log_X, Log_X},
-     /*U*/ {Log_0, Log_X, Log_L, Log_X, Log_X, Log_X, Log_X}}};
+std::array<std::array<const sc_logic_7_value_t, 7>, 7> sc_logic_7::and_table = {{//     0      1      L      H      Z      X      U
+                                                                                 /*0*/ {Log_0, Log_0, Log_0, Log_0, Log_0, Log_0, Log_0},
+                                                                                 /*1*/ {Log_0, Log_1, Log_L, Log_1, Log_X, Log_X, Log_X},
+                                                                                 /*L*/ {Log_0, Log_L, Log_L, Log_L, Log_L, Log_L, Log_L},
+                                                                                 /*H*/ {Log_0, Log_1, Log_L, Log_H, Log_X, Log_X, Log_X},
+                                                                                 /*Z*/ {Log_0, Log_X, Log_L, Log_X, Log_X, Log_X, Log_X},
+                                                                                 /*X*/ {Log_0, Log_X, Log_L, Log_X, Log_X, Log_X, Log_X},
+                                                                                 /*U*/ {Log_0, Log_X, Log_L, Log_X, Log_X, Log_X, Log_X}}};
 
-std::array<std::array<const sc_logic_7_value_t, 7>, 7> sc_logic_7::or_table = {
-    {//     0      1      L      H      Z      X      U
-     /*0*/ {Log_0, Log_1, Log_L, Log_H, Log_Z, Log_X, Log_U},
-     /*1*/ {Log_1, Log_1, Log_1, Log_1, Log_1, Log_1, Log_1},
-     /*L*/ {Log_L, Log_1, Log_L, Log_H, Log_Z, Log_X, Log_U},
-     /*H*/ {Log_H, Log_1, Log_H, Log_H, Log_H, Log_H, Log_H},
-     /*Z*/ {Log_Z, Log_1, Log_Z, Log_H, Log_X, Log_X, Log_X},
-     /*X*/ {Log_X, Log_1, Log_X, Log_H, Log_X, Log_X, Log_X},
-     /*U*/ {Log_U, Log_1, Log_U, Log_H, Log_X, Log_X, Log_X}}};
+std::array<std::array<const sc_logic_7_value_t, 7>, 7> sc_logic_7::or_table = {{//     0      1      L      H      Z      X      U
+                                                                                /*0*/ {Log_0, Log_1, Log_L, Log_H, Log_Z, Log_X, Log_U},
+                                                                                /*1*/ {Log_1, Log_1, Log_1, Log_1, Log_1, Log_1, Log_1},
+                                                                                /*L*/ {Log_L, Log_1, Log_L, Log_H, Log_Z, Log_X, Log_U},
+                                                                                /*H*/ {Log_H, Log_1, Log_H, Log_H, Log_H, Log_H, Log_H},
+                                                                                /*Z*/ {Log_Z, Log_1, Log_Z, Log_H, Log_X, Log_X, Log_X},
+                                                                                /*X*/ {Log_X, Log_1, Log_X, Log_H, Log_X, Log_X, Log_X},
+                                                                                /*U*/ {Log_U, Log_1, Log_U, Log_H, Log_X, Log_X, Log_X}}};
 
-std::array<std::array<const sc_logic_7_value_t, 7>, 7> sc_logic_7::xor_table = {
-    {//     0      1      L      H      Z      X      U
-     /*0*/ {Log_0, Log_1, Log_0, Log_1, Log_X, Log_X, Log_X},
-     /*1*/ {Log_1, Log_0, Log_1, Log_0, Log_X, Log_X, Log_X},
-     /*L*/ {Log_0, Log_1, Log_H, Log_L, Log_X, Log_X, Log_X},
-     /*H*/ {Log_1, Log_0, Log_L, Log_H, Log_X, Log_X, Log_X},
-     /*Z*/ {Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X},
-     /*X*/ {Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X},
-     /*U*/ {Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X}}};
+std::array<std::array<const sc_logic_7_value_t, 7>, 7> sc_logic_7::xor_table = {{//     0      1      L      H      Z      X      U
+                                                                                 /*0*/ {Log_0, Log_1, Log_0, Log_1, Log_X, Log_X, Log_X},
+                                                                                 /*1*/ {Log_1, Log_0, Log_1, Log_0, Log_X, Log_X, Log_X},
+                                                                                 /*L*/ {Log_0, Log_1, Log_H, Log_L, Log_X, Log_X, Log_X},
+                                                                                 /*H*/ {Log_1, Log_0, Log_L, Log_H, Log_X, Log_X, Log_X},
+                                                                                 /*Z*/ {Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X},
+                                                                                 /*X*/ {Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X},
+                                                                                 /*U*/ {Log_X, Log_X, Log_X, Log_X, Log_X, Log_X, Log_X}}};
 
 std::array<const sc_logic_7_value_t, 7> sc_logic_7::not_table = {{Log_1, Log_0, Log_H, Log_L, Log_X, Log_X, Log_X}};
 

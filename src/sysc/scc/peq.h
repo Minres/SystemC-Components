@@ -76,7 +76,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
      */
     void notify(const TYPE& entry, const sc_core::sc_time& t) {
         insert_entry(entry, t + sc_core::sc_time_stamp());
-		m_event.notify(m_scheduled_events.begin()->first - sc_core::sc_time_stamp());
+        m_event.notify(m_scheduled_events.begin()->first - sc_core::sc_time_stamp());
     }
     /**
      * @fn void notify(const TYPE&)
@@ -86,7 +86,19 @@ template <class TYPE> struct peq : public sc_core::sc_object {
      *
      * @param entry the value to insert
      */
-    void notify(const TYPE& entry) {
+    void notify(TYPE&& entry) {
+        insert_entry(entry, sc_core::sc_time_stamp());
+        m_event.notify(); // immediate notification
+    }
+    /**
+     * @fn void notify(const TYPE&)
+     * @brief non-blocking push
+     *
+     * Inserts entry into the queue with immediate notification
+     *
+     * @param entry the value to insert
+     */
+    void notify(TYPE const& entry) {
         insert_entry(entry, sc_core::sc_time_stamp());
         m_event.notify(); // immediate notification
     }
@@ -155,16 +167,32 @@ template <class TYPE> struct peq : public sc_core::sc_object {
     }
 
     void clear() {
-    	while(!m_scheduled_events.empty()){
-    		get_entry();
-    	}
+        while(!m_scheduled_events.empty()) {
+            get_entry();
+        }
     }
+
 private:
     map_type m_scheduled_events;
     std::deque<std::deque<TYPE>*> free_pool;
     sc_core::sc_event m_event;
 
     void insert_entry(const TYPE& entry, sc_core::sc_time abs_time) {
+        auto it = m_scheduled_events.find(abs_time);
+        if(it == m_scheduled_events.end()) {
+            if(free_pool.size()) {
+                auto r = m_scheduled_events.insert(std::make_pair(abs_time, free_pool.front()));
+                free_pool.pop_front();
+                r.first->second->push_back(entry);
+            } else {
+                auto r = m_scheduled_events.insert(std::make_pair(abs_time, new std::deque<TYPE>()));
+                r.first->second->push_back(entry);
+            }
+        } else
+            it->second->push_back(entry);
+    }
+
+    void insert_entry(TYPE&& entry, sc_core::sc_time abs_time) {
         auto it = m_scheduled_events.find(abs_time);
         if(it == m_scheduled_events.end()) {
             if(free_pool.size()) {
@@ -188,7 +216,7 @@ private:
             m_scheduled_events.erase(m_scheduled_events.begin());
         }
         if(m_scheduled_events.size())
-            m_event.notify( m_scheduled_events.begin()->first-sc_core::sc_time_stamp());
+            m_event.notify(m_scheduled_events.begin()->first - sc_core::sc_time_stamp());
         return ret;
     }
 };
@@ -204,4 +232,4 @@ template <class TYPE> inline peq<TYPE>::~peq() {
 
 } // namespace scc
 /** @} */ // end of scc-sysc
-#endif /* _SCC_PEQ_H_ */
+#endif    /* _SCC_PEQ_H_ */

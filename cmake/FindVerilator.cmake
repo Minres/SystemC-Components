@@ -85,7 +85,11 @@ if(EXISTS ${VERILATOR_INCLUDE_DIR}/verilated_fst_sc.cpp)
     )
 endif()
 
-add_library(verilated SHARED ${SOURCES})
+if(VERILATOR_SHARED)
+    add_library(verilated SHARED ${SOURCES})
+else()
+    add_library(verilated ${SOURCES})
+endif()
 
 set_target_properties(verilated PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
@@ -136,7 +140,11 @@ endif()
 target_link_libraries(verilated PUBLIC ${SystemC_LIBRARIES} )
 
 
-add_library(verilated_custom SHARED ${SOURCES})
+if(VERILATOR_SHARED)
+    add_library(verilated_custom SHARED ${SOURCES})
+else()
+    add_library(verilated_custom ${SOURCES})
+endif()
 
 set_target_properties(verilated_custom PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib

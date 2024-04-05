@@ -36,10 +36,10 @@
 #ifndef _UART_REGS_H_
 #define _UART_REGS_H_
 
-#include <util/bit_field.h>
 #include "scc/register.h"
 #include "scc/tlm_target.h"
 #include "scc/utilities.h"
+#include <util/bit_field.h>
 
 namespace sysc {
 
@@ -95,9 +95,9 @@ protected:
 public:
     uart_regs(sc_core::sc_module_name nm);
 
-    template <unsigned BUSWIDTH = 32> void registerResources(scc::tlm_target<BUSWIDTH> &target);
+    template <unsigned BUSWIDTH = 32> void registerResources(scc::tlm_target<BUSWIDTH>& target);
 };
-}
+} // namespace sysc
 //////////////////////////////////////////////////////////////////////////////
 // member functions
 //////////////////////////////////////////////////////////////////////////////
@@ -112,7 +112,7 @@ inline sysc::uart_regs::uart_regs(sc_core::sc_module_name nm)
 , NAMED(ip, r_ip, 0, *this)
 , NAMED(div, r_div, 0, *this) {}
 
-template <unsigned BUSWIDTH> inline void sysc::uart_regs::registerResources(scc::tlm_target<BUSWIDTH> &target) {
+template <unsigned BUSWIDTH> inline void sysc::uart_regs::registerResources(scc::tlm_target<BUSWIDTH>& target) {
     target.addResource(txdata, 0x0UL);
     target.addResource(rxdata, 0x4UL);
     target.addResource(txctrl, 0x8UL);

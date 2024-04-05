@@ -50,8 +50,7 @@ plic::plic(sc_core::sc_module_name nm)
 , NAMED(rst_i)
 , NAMED(global_interrupts_i, 256)
 , NAMED(core_interrupt_o)
-, NAMEDD(regs, plic_regs)
-{
+, NAMEDD(regs, plic_regs) {
     regs->registerResources(*this);
     // register callbacks
     init_callbacks();
@@ -59,7 +58,7 @@ plic::plic(sc_core::sc_module_name nm)
 
     // port callbacks
     SC_METHOD(global_int_port_cb);
-    for (uint8_t i = 0; i < 255; i++) {
+    for(uint8_t i = 0; i < 255; i++) {
         sensitive << global_interrupts_i[i].pos();
     }
     dont_initialize();
@@ -86,7 +85,7 @@ void plic::init_callbacks() {
 void plic::clock_cb() { this->clk = clk_i.read(); }
 
 void plic::reset_cb() {
-    if (rst_i.read())
+    if(rst_i.read())
         regs->reset_start();
     else
         regs->reset_stop();
@@ -113,11 +112,11 @@ void plic::global_int_port_cb() {
     // set related pending bit if enable is set for incoming global_interrupt
 
     // todo: extend up to 255 bits (limited to 32 right now)
-    for (uint32_t i = 1; i < 32; i++) {
+    for(uint32_t i = 1; i < 32; i++) {
         uint32_t enable_bits = regs->r_enabled;
         bool enable = enable_bits & (0x1 << i); // read enable bit
 
-        if (enable && global_interrupts_i[i].read() == 1) {
+        if(enable && global_interrupts_i[i].read() == 1) {
             regs->r_pending = regs->r_pending | (0x1 << i);
             SCCDEBUG("plic") << "pending interrupt identified: " << i;
         }
@@ -134,16 +133,16 @@ void plic::handle_pending_int() {
     uint32_t thold = regs->r_threshold.threshold; // threshold value
 
     // todo: extend up to 255 bits (limited to 32 right now)
-    for (uint32_t i = 1; i < 32; i++) {
+    for(uint32_t i = 1; i < 32; i++) {
         uint32_t pending_bits = regs->r_pending;
         bool pending = (pending_bits & (0x1 << i)) ? true : false;
         uint32_t prio = regs->r_priority[i - 1].priority; // read priority value
 
-        if (pending && thold < prio) {
+        if(pending && thold < prio) {
             regs->r_pending = regs->r_pending | (0x1 << i);
             // below condition ensures implicitly that lowest id is selected in case of multiple identical
             // priority-interrupts
-            if (prio > claim_prio) {
+            if(prio > claim_prio) {
                 claim_prio = prio;
                 claim_int = i;
                 raise_int = true;
@@ -152,7 +151,7 @@ void plic::handle_pending_int() {
         }
     }
 
-    if (raise_int) {
+    if(raise_int) {
         regs->r_claim_complete = claim_int;
         core_interrupt_o.write(true);
         // todo: evluate clock period

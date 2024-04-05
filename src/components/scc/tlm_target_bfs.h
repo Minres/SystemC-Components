@@ -26,9 +26,9 @@
 #define __SCC_TLM_TARGET_BFS_H__
 
 #include "tlm_target.h"
+#include <memory>
 #include <tlm_utils/simple_target_socket.h>
 #include <util/ities.h>
-#include <memory>
 #include <utility>
 #include <vector>
 

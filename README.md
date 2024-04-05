@@ -57,10 +57,10 @@ Here is a short list of features.
 
 The full documentation can be found at the [Github pages](https://minres.github.io/SystemC-Components/)
 
-Build instructions
-==================
+Build instructions using conan
+==============================
 
-The repo is cmake based and uses conan. Make sure that you have at least cmake 3.16 and conan version 1.59.0 installed. There known issues with conan 2.x. Other combinations may work, but are not tested.
+The repo is cmake based and (preferably) uses conan. Make sure that you have at least cmake 3.20 and conan version <2.0 installed. There are known issues with conan 2.x. Other combinations may work, but are not tested.
 
 The suggested build steps are:
 
@@ -83,4 +83,20 @@ For example:
     ./examples/ace-axi/ace_axi_example
     ./examples/axi-axi/axi_axi_example
 
+```
+
+Build instructions using install script
+=======================================
+
+SCC comes with an install script which installs SCC and all needed libraries incl. Boost and SystemC in one go:
+
+```
+curl -s https://raw.githubusercontent.com/Minres/SystemC-Components/develop/contrib/install_wo_conan.sh | INSTALL_ROOT=<install dir> bash
+```
+
+The script can also be downloaded and run with the install dir as argument:
+
+```
+curl https://raw.githubusercontent.com/Minres/SystemC-Components/develop/contrib/install_wo_conan.sh >install_wo_conan.sh
+bash install_wo_conan.sh <install dir>
 ```

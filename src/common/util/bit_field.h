@@ -161,24 +161,23 @@ public:
  * All members are public to simplify compliance with sections 9.0.7 and
  * 9.5.1 of the C++11 standard, thereby avoiding undefined behavior.
  */
-#define BEGIN_BF_DECL(typeName, T)                                                                                     \
-    union typeName {                                                                                                   \
-        struct {                                                                                                       \
-            T val;                                                                                                     \
-        } backing;                                                                                                     \
-        typeName(T v = 0) { backing.val = v; }                                                                         \
-        typeName& operator=(T v) {                                                                                     \
-            backing.val = v;                                                                                           \
-            return *this;                                                                                              \
-        }                                                                                                              \
-        operator T&() { return backing.val; }                                                                          \
-        operator T() const { return backing.val; }                                                                     \
+#define BEGIN_BF_DECL(typeName, T)                                                                                                         \
+    union typeName {                                                                                                                       \
+        struct {                                                                                                                           \
+            T val;                                                                                                                         \
+        } backing;                                                                                                                         \
+        typeName(T v = 0) { backing.val = v; }                                                                                             \
+        typeName& operator=(T v) {                                                                                                         \
+            backing.val = v;                                                                                                               \
+            return *this;                                                                                                                  \
+        }                                                                                                                                  \
+        operator T&() { return backing.val; }                                                                                              \
+        operator T() const { return backing.val; }                                                                                         \
         using StorageType = T;
 
 #define BF_FIELD(memberName, offset, bits) util::BitFieldMember<StorageType, offset, bits> memberName;
 
-#define BF_ARRAY(memberName, offset, bits, numItems)                                                                   \
-    util::BitFieldArray<StorageType, offset, bits, numItems> memberName;
+#define BF_ARRAY(memberName, offset, bits, numItems) util::BitFieldArray<StorageType, offset, bits, numItems> memberName;
 
 #define END_BF_DECL() }
 /**@}*/

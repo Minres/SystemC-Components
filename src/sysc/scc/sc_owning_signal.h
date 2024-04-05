@@ -32,8 +32,7 @@ namespace scc {
  * @tparam T
  * @tparam POL
  */
-template <class T, sc_core::sc_writer_policy POL = sc_core::SC_ONE_WRITER>
-class sc_owning_signal : public sc_core::sc_signal<T*, POL> {
+template <class T, sc_core::sc_writer_policy POL = sc_core::SC_ONE_WRITER> class sc_owning_signal : public sc_core::sc_signal<T*, POL> {
 protected:
     using policy_type = sc_core::sc_writer_policy_check<POL>;
     using super = sc_core::sc_signal<T*, POL>;
@@ -87,4 +86,4 @@ protected:
 
 } // namespace scc
 /** @} */ // end of scc-sysc
-#endif /* _SCC_SC_SIGNAL_GP_H_ */
+#endif    /* _SCC_SC_SIGNAL_GP_H_ */

@@ -36,10 +36,10 @@
 #ifndef _GPIO_REGS_H_
 #define _GPIO_REGS_H_
 
-#include <util/bit_field.h>
 #include "scc/register.h"
 #include "scc/tlm_target.h"
 #include "scc/utilities.h"
+#include <util/bit_field.h>
 
 namespace sysc {
 
@@ -102,9 +102,9 @@ public:
 public:
     gpio_regs(sc_core::sc_module_name nm);
 
-    template <unsigned BUSWIDTH = 32> void registerResources(scc::tlm_target<BUSWIDTH> &target);
+    template <unsigned BUSWIDTH = 32> void registerResources(scc::tlm_target<BUSWIDTH>& target);
 };
-}
+} // namespace sysc
 //////////////////////////////////////////////////////////////////////////////
 // member functions
 //////////////////////////////////////////////////////////////////////////////
@@ -129,7 +129,7 @@ inline sysc::gpio_regs::gpio_regs(sc_core::sc_module_name nm)
 , NAMED(iof_sel, r_iof_sel, 0, *this)
 , NAMED(out_xor, r_out_xor, 0, *this) {}
 
-template <unsigned BUSWIDTH> inline void sysc::gpio_regs::registerResources(scc::tlm_target<BUSWIDTH> &target) {
+template <unsigned BUSWIDTH> inline void sysc::gpio_regs::registerResources(scc::tlm_target<BUSWIDTH>& target) {
     target.addResource(value, 0x0UL);
     target.addResource(input_en, 0x4UL);
     target.addResource(output_en, 0x8UL);

@@ -19,6 +19,7 @@
 #include "sysc/communication/sc_semaphore_if.h"
 #include "sysc/kernel/sc_event.h"
 #include "sysc/kernel/sc_object.h"
+#include "traceable.h"
 #include <array>
 #include <deque>
 #include <sysc/kernel/sc_process_handle.h>
@@ -40,7 +41,7 @@ namespace scc {
  * The ordered semaphore acts like an ordinary semaphore. It gives the guarantee that access is granted in the order of
  * arrival (FCFS)
  */
-class SC_API ordered_semaphore : public sc_core::sc_semaphore_if, public sc_core::sc_object {
+class SC_API ordered_semaphore : public sc_core::sc_semaphore_if, public sc_core::sc_object, public scc::traceable {
 public:
     /**
      * @fn  ordered_semaphore(unsigned=1)
@@ -57,8 +58,9 @@ public:
      *
      * @param name the SystemC name
      * @param init_value initial capacity of the semaphore
+     * @param value_traceable if the value can be traced by calling trace()
      */
-    ordered_semaphore(const char* name, unsigned init_value = 1);
+    ordered_semaphore(const char* name, unsigned init_value = 1, bool value_traceable = false);
 
     ordered_semaphore(const ordered_semaphore&) = delete;
 
@@ -69,7 +71,7 @@ public:
      *
      * @return value after locking
      */
-    int wait() override;
+    int wait() override { return wait(0); }
     /**
      * @fn int wait()
      * @brief lock (take) the semaphore, block if not available
@@ -118,6 +120,20 @@ public:
      * @return
      */
     const char* kind() const override { return "sc_semaphore_ordered"; }
+    /**
+     * @fn void trace(sc_core::sc_trace_file*) const
+     * @brief adds internal variables to trace
+     *
+     * @param tf the trace file to register with
+     */
+    void trace(sc_core::sc_trace_file* tf) const override;
+    /**
+     * @fn bool is_trace_enabled() const
+     * @brief returns of this component shall be traced
+     *
+     * @return true if this component shall be traced
+     */
+    bool is_trace_enabled() const override { return value_traceable; }
     /**
      * @struct lock
      * @brief a lock for the semaphore
@@ -188,6 +204,7 @@ protected:
     sc_core::sc_event free_evt; // event to block on when m_value is negative
     int value;                  // current value of the semaphore
     unsigned capacity;
+    bool value_traceable = false;
     std::array<std::deque<sc_core::sc_process_handle>, 2> queue;
 };
 

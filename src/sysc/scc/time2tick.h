@@ -53,4 +53,4 @@ private:
 };
 } // namespace scc
 /** @} */ // end of scc-sysc
-#endif /* _SCC_TIME2TICK_H_ */
+#endif    /* _SCC_TIME2TICK_H_ */

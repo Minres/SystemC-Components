@@ -51,10 +51,10 @@
         	var rightArrow = "M 0 4  2 4  2 0  7 5  2 10  2 6  0 6 Z";
             var trans = "";
         
-            if (arrowTranslate[0] != 0 || arrowTranslate[1] != 0)
+            if (arrowTranslate[0] !== 0 || arrowTranslate[1] !== 0)
             	trans += "translate(" + arrowTranslate[0] + ", " + arrowTranslate[1] + ")";
         
-            if (arrowRotate != 0)
+            if (arrowRotate !== 0)
             	trans += "rotate(" + arrowRotate + ")";
         
             var cont = defs.append("g");
@@ -70,21 +70,21 @@
                 .attr("transform", trans);
         }
         
-        var horizYoffet = (PORT_PIN_SIZE[1] - h) * 0.5;
-        var horizYoffet2 = (PORT_PIN_SIZE[1] + h) * 0.5;
+        var horizYOffset = (PORT_PIN_SIZE[1] - h) * 0.5;
+        var horizYOffset2 = (PORT_PIN_SIZE[1] + h) * 0.5;
         
-        var vertXOffet = -(PORT_PIN_SIZE[1] - w) * 0.5;
-        addMarker("westInPortMarker", [0, horizYoffet]);
-        addMarker("westOutPortMarker",[w, horizYoffet2], 180);
+        var vertXOffset = -(PORT_PIN_SIZE[1] - w) * 0.5;
+        addMarker("westInPortMarker", [0, horizYOffset]);
+        addMarker("westOutPortMarker",[w, horizYOffset2], 180);
         
-        addMarker("eastInPortMarker", [w, horizYoffet2], 180);
-        addMarker("eastOutPortMarker",[0, horizYoffet]);
+        addMarker("eastInPortMarker", [w, horizYOffset2], 180);
+        addMarker("eastOutPortMarker",[0, horizYOffset]);
         
-        addMarker("northInPortMarker", [vertXOffet, -w], 90);
-        addMarker("northOutPortMarker",[vertXOffet, 0], 270);
+        addMarker("northInPortMarker", [vertXOffset, -w], 90);
+        addMarker("northOutPortMarker",[vertXOffset, 0], 270);
         
-        addMarker("southInPortMarker", [vertXOffet, w], 270);
-        addMarker("southOutPortMarker",[vertXOffet, 0], 90);
+        addMarker("southInPortMarker", [vertXOffset, w], 270);
+        addMarker("southOutPortMarker",[vertXOffset, 0], 90);
     }
 
     function getIOMarker(d) {
@@ -287,7 +287,17 @@
     				if (d.hwMeta && d.hwMeta.isExternalPort) {
     					cssClass = "node-external-port";
     				} else {
-    					cssClass = "node";
+                        let depth = 0;
+                        let parent = d.hwMeta.parent;
+                        while (parent) {
+                            ++depth;
+                            parent = parent.hwMeta.parent;
+                        }
+                        if (depth % 2 === 0) {
+                            cssClass = "node node-0";
+                        } else {
+                            cssClass = "node node-1";
+                        }
     				}
     				if (d.hwMeta.cssClass) {
     					cssClass += " " + d.hwMeta.cssClass;
@@ -502,7 +512,7 @@
       root.append("circle")
         .attr("cx", x)
         .attr("cy", y)
-        .attr("r" , "3");
+        .attr("r", "3");
     }
 
     function nodeCircleWithText(root, text) {
@@ -510,11 +520,11 @@
       var tl = text.length;
       if (tl > 2) {
         throw new Error("Text too big for small node circle");
-      }  
+      }
       var x = 8;
-      if (tl == 2)
+      if (tl === 2)
         x = 4;
-      
+
       nodeCircle(root);
       root.append("text")
         .attr("x", x)
@@ -522,23 +532,40 @@
         .text(text);
     }
 
+    function nodeBiggerCircleWithText(root, text) {
+      // width="25" height="25"
+      var tl = text.length;
+      if (tl > 6) {
+        throw new Error("Text too big for small node circle");
+      }
+      var x = 6;
+
+      root.append("circle")
+        .attr("r", "25")
+        .attr("cx", "25")
+        .attr("cy", "25");
+      root.append("text")
+        .attr("x", x)
+        .attr("y", 28.5)
+        .text(text);
+    }
     function operatorBox(root) {
       root.append("rect")
-       .attr("width", "25")
-       .attr("height", "25")
-       .attr("x", "0")
-       .attr("y", "0");
+        .attr("width", "25")
+        .attr("height", "25")
+        .attr("x", "0")
+        .attr("y", "0");
     }
 
 
     /**
      * Draw a AND gate symbol
      */
-    function AND(root, addName=true) {
-    // width="30" height="25"
+    function AND(root, addName = true) {
+      // width="30" height="25"
       var g = root.append("g");
       g.append("path")
-        .attr("d","M0,0 L0,25 L15,25 A15 12.5 0 0 0 15,0 Z");
+        .attr("d", "M0,0 L0,25 L15,25 A15 12.5 0 0 0 15,0 Z");
       g.attr("transform", "scale(0.8) translate(0, 3)");
       if (addName)
         root.append("text")
@@ -552,7 +579,7 @@
      * Draw a NAND gate symbol
      */
     function NAND(root) {
-    // width="30" height="25"
+      // width="30" height="25"
       AND(root, false);
       negationCircle(root, 34, 12.5);
     }
@@ -562,7 +589,7 @@
     /**
      * Draw a OR gate symbol
      */
-    function OR(root, addName=true) { 
+    function OR(root, addName = true) {
       // width="30" height="25"
       var g = root.append("g");
       g.append("path")
@@ -585,7 +612,7 @@
       g.append("circle")
         .attr("cx", "34")
         .attr("cy", "12.5")
-        .attr("r",   "3");
+        .attr("r", "3");
       root.append("text")
         .attr("x", 5)
         .attr("y", 16)
@@ -644,20 +671,85 @@
       operatorBox(root);
 
       root.append("path")
-        .attr("d","M0,2 L5,7 L0,12");
-     
+        .attr("d", "M0,2 L5,7 L0,12");
+
       root.append("text")
         .attr("x", 5)
         .attr("y", 16)
         .text("FF");
     }
 
-    function RISING_EDGE(root) {
-    	  // width="25" height="25"
-    	  operatorBox(root);
+    function FF_ARST(root, arstPolarity, clkPolarity) {
+        root.append("rect")
+            .attr("width", "40")
+            .attr("height", "50")
+            .attr("x", "0")
+            .attr("y", "0");
 
-    	  root.append("path")
-    	    .attr("d", "M5,20 L12.5,20 L12.5,5 L20,5");
+        //component name
+        root.append("text")
+            .attr("x", 7)
+            .attr("y", 16)
+            .text("ADFF");
+
+        //triangle
+        root.append("path")
+            .attr("d", "M0,7.5 L6,12.5 L0,17.5 z");
+
+        if (!clkPolarity) {
+            root.append("circle")
+                .attr("cx", 1)
+                .attr("cy", 12.5)
+                .attr("r", "1.5")
+                .style("fill", "white");
+        }
+
+        if (!arstPolarity) {
+            root.append("circle")
+                .attr("cx", 1)
+                .attr("cy", 25)
+                .attr("r", "1.5")
+                .style("fill", "white");
+        }
+
+        root.append("text")
+            .attr("x", 4)
+            .attr("y", 27.5)
+            .style("font-size", "8px")
+            .text("ARST");
+    }
+    function DLATCH(root, enPolarity) {
+      root.append("rect")
+          .attr("width", "50")
+          .attr("height", "25")
+          .attr("x", "0")
+          .attr("y", "0");
+
+      root.append("text")
+          .attr("x", 3)
+          .attr("y", 12)
+          .text("DLATCH");
+
+      if (!enPolarity) {
+        root.append("circle")
+            .attr("cx", 1)
+            .attr("cy", 16.5)
+            .attr("r", "1.5")
+            .style("fill", "white");
+      }
+
+      root.append("text")
+          .attr("x", 4)
+          .attr("y", 19)
+          .style("font-size", "8px")
+          .text("en");
+    }
+    function RISING_EDGE(root) {
+      // width="25" height="25"
+      operatorBox(root);
+
+      root.append("path")
+        .attr("d", "M5,20 L12.5,20 L12.5,5 L20,5");
     }
 
     function FALLING_EDGE(root) {
@@ -669,54 +761,70 @@
     }
 
 
-
+    const DEFAULT_NODE_SIZE = [25, 25];
     const SHAPES = {
-      "NOT": NOT,
-      
-      "AND": AND ,
-      "NAND":NAND,
-      "OR":  OR  ,
-      "NOR": NOR ,
-      "XOR": XOR ,
-      "NXOR":NXOR,
+      "NOT": [NOT, DEFAULT_NODE_SIZE],
 
-      "RISING_EDGE": RISING_EDGE,
-      "FALLING_EDGE": FALLING_EDGE,
-      
-      "ADD": function ADD(root) {
-    	  nodeCircleWithText(root, "+");
-      },
-      "SUB": function SUB(root) {
-    	  nodeCircleWithText(root, "-");
-      },
-      
-      "EQ": function EQ(root) {
-    	  nodeCircleWithText(root, "=");
-      },
-      "NE": function NE(root) {
-    	  nodeCircleWithText(root, "!=");
-      },
-      "LT": function LT(root) {
-    	  nodeCircleWithText(root, "<");
-      },
-      "LE": function LE(root) {
-    	  nodeCircleWithText(root, "<=");
-      },
-      "GE": function GE(root) {
-    	  nodeCircleWithText(root, ">=");
-      },
-      "GT": function GT(root) {
-    	  nodeCircleWithText(root, ">");
-      },
+      "AND": [AND, DEFAULT_NODE_SIZE],
+      "NAND": [NAND, DEFAULT_NODE_SIZE],
+      "OR": [OR, DEFAULT_NODE_SIZE],
+      "NOR": [NOR, DEFAULT_NODE_SIZE],
+      "XOR": [XOR, DEFAULT_NODE_SIZE],
+      "NXOR": [NXOR, DEFAULT_NODE_SIZE],
 
-      "MUL": function GT(root) {
-    	  nodeCircleWithText(root, "*");
-      },
-      "DIV": function GT(root) {
-    	  nodeCircleWithText(root, "/");
-      },
+      "RISING_EDGE": [RISING_EDGE, DEFAULT_NODE_SIZE],
+      "FALLING_EDGE": [FALLING_EDGE, DEFAULT_NODE_SIZE],
 
-      "FF": FF,
+      "ADD": [function ADD(root) {
+        nodeCircleWithText(root, "+");
+      }, DEFAULT_NODE_SIZE],
+      "SUB": [function SUB(root) {
+        nodeCircleWithText(root, "-");
+      }, DEFAULT_NODE_SIZE],
+
+      "EQ": [function EQ(root) {
+        nodeCircleWithText(root, "=");
+      }, DEFAULT_NODE_SIZE],
+      "NE": [function NE(root) {
+        nodeCircleWithText(root, "!=");
+      }, DEFAULT_NODE_SIZE],
+      "LT": [function LT(root) {
+        nodeCircleWithText(root, "<");
+      }, DEFAULT_NODE_SIZE],
+      "LE": [function LE(root) {
+        nodeCircleWithText(root, "<=");
+      }, DEFAULT_NODE_SIZE],
+      "GE": [function GE(root) {
+        nodeCircleWithText(root, ">=");
+      }, DEFAULT_NODE_SIZE],
+      "GT": [function GT(root) {
+        nodeCircleWithText(root, ">");
+      }, DEFAULT_NODE_SIZE],
+      "SHL": [function GT(root) {
+        nodeCircleWithText(root, "<<");
+      }, DEFAULT_NODE_SIZE],
+      "SHR": [function GT(root) {
+        nodeCircleWithText(root, ">>");
+      }, DEFAULT_NODE_SIZE],
+      "SHIFT": [function GT(root) {
+        nodeBiggerCircleWithText(root, "<<,>>");
+      }, [50, 50]],
+      "MUL": [function GT(root) {
+        nodeCircleWithText(root, "*");
+      }, DEFAULT_NODE_SIZE],
+      "DIV": [function GT(root) {
+        nodeCircleWithText(root, "/");
+      }, DEFAULT_NODE_SIZE],
+
+      "FF": [FF, DEFAULT_NODE_SIZE],
+      "FF_ARST_clk0_rst0": [(root) => { return FF_ARST(root, false, false)}, [40, 50]],
+      "FF_ARST_clk1_rst1": [(root) => { return FF_ARST(root, true, true)}, [40, 50]],
+      "FF_ARST_clk0_rst1": [(root) => { return FF_ARST(root, true, false)}, [40, 50]],
+      "FF_ARST_clk1_rst0": [(root) => { return FF_ARST(root, false, true)}, [40, 50]],
+      "DLATCH_en0": [(root) => {return DLATCH(root,false)}, [50, 25]],
+      "DLATCH_en1": [(root) => {return DLATCH(root,true)}, [50, 25]],
+
+
     };
 
     /*
@@ -726,7 +834,6 @@
     	constructor(schematic) {
     		super(schematic);
     		this.SHAPES = SHAPES;
-    		this.DEFULT_NODE_SIZE = [25, 25];
     		this._defsAdded = false;
     	}
 
@@ -734,19 +841,16 @@
     		if (!this._defsAdded) {
     			var defs = this.schematic.defs;
     			var SHAPES = this.SHAPES;
-    			for (var key in SHAPES) {
-    				if (SHAPES.hasOwnProperty(key)) {
-    					this.addShapeToDefs(defs, key, SHAPES[key]);
-    				}
+    			for (const [name, [constructorFn, _]] of Object.entries(SHAPES)) {
+    				this.addShapeToDefs(defs, name, constructorFn);
     			}
     			this._defsAdded = true;
     		}
-    		node.width = this.DEFULT_NODE_SIZE[0];
-    		node.height = this.DEFULT_NODE_SIZE[1];
+    		[node.width, node.height] =  this.SHAPES[node.hwMeta.name][1];
     	}
 
     	selector(node) {
-    		return node.hwMeta.cls == "Operator" && typeof this.SHAPES[node.hwMeta.name] !== "undefined";
+    		return node.hwMeta.cls === "Operator" && typeof this.SHAPES[node.hwMeta.name] !== "undefined";
     	}
 
     	addShapeToDefs(defs, id, shape) {
@@ -771,7 +875,12 @@
     			}
     			return "translate(" + d.x + " " + d.y + ")"
              })
-            .attr("class", (d) => d.hwMeta.cssClass)
+            .attr("class", (d) => {
+    			if (d.hwMeta.cssClass)
+    			    return 'node ' + d.hwMeta.cssClass;
+    			else 
+    				return 'node';
+    			})
             .attr("style", (d) => d.hwMeta.cssStyle)
     		.append("use")
     		.attr("href", function(d) {
@@ -844,7 +953,12 @@
                 }
                 return "translate(" + d.x + " " + d.y + ")"
             })
-            .attr("class", (d) => d.hwMeta.cssClass)
+            .attr("class", (d) => {
+    			if (d.hwMeta.cssClass)
+    			    return 'node ' + d.hwMeta.cssClass;
+    			else 
+    				return 'node';
+    			})
             .attr("style", (d) => d.hwMeta.cssStyle)
             .append("use")
             .attr("href", function (d) {
@@ -866,7 +980,12 @@
     	
     	render(root, nodeG) {
             nodeG
-                .attr("class", (d) => d.hwMeta.cssClass)
+                .attr("class", (d) => {
+                  if (d.hwMeta.cssClass)
+                      return 'node ' + d.hwMeta.cssClass;
+                  else 
+                    return 'node';
+                  })
                 .attr("style", (d) => d.hwMeta.cssStyle);
             
             // spot node main body and set dimensions and style of node
@@ -1114,9 +1233,9 @@
     }
 
     function renderLinks(root, edges) {
-        var junctionPoints = [];
+        let junctionPoints = [];
 
-        var link = root.selectAll(".link")
+        let link = root.selectAll(".link")
           .data(edges)
           .enter()
           .append("path")
@@ -1137,12 +1256,12 @@
               return d._svgPath;
           });
 
-        var linkWrap = root.selectAll(".link-wrap")
+        let linkWrap = root.selectAll(".link-wrap")
           .data(edges)
           .enter()
           .append("path")
           .attr("class", function (d) {
-    	       var cssClass;
+              let cssClass;
                if (d.hwMeta.parent) {
     	           cssClass = d.hwMeta.parent.hwMeta.cssClass;
                } else {
@@ -1164,8 +1283,8 @@
           .attr("d", function(d) {
               return d._svgPath;
           });
-       
-        var junctionPoint = root.selectAll(".junction-point")
+
+        let junctionPoint = root.selectAll(".junction-point")
           .data(junctionPoints)
           .enter()
           .append("circle")
@@ -1183,7 +1302,7 @@
 
     class Tooltip {
       constructor(root) {
-        var t = this.tooltip = document.createElement("div");
+        let t = this.tooltip = document.createElement("div");
         t.className = "d3-hwschematic-tooltip";
         t.style.display = "none";
         t.style.possition = "absolute";
@@ -1191,7 +1310,7 @@
       }
       
       show(evt, text) {
-        var t = this.tooltip;
+        let t = this.tooltip;
         t.style.display = "block";
         t.innerHTML = text;
         t.style.left = evt.pageX + 10 + 'px';
@@ -1203,14 +1322,823 @@
       }
     }
 
+    function yosysTranslateIcons(node, cell) {
+        let meta = node.hwMeta;
+        const t = cell.type;
+
+        if (t === "$mux" || t === "$pmux") {
+            meta.cls = "Operator";
+            meta.name = "MUX";
+        } else if (t === "$gt") {
+            meta.cls = "Operator";
+            meta.name = "GT";
+        } else if (t === "$lt") {
+            meta.cls = "Operator";
+            meta.name = "LT";
+        } else if (t === "$ge") {
+            meta.cls = "Operator";
+            meta.name = "GE";
+        } else if (t === "$le") {
+            meta.cls = "Operator";
+            meta.name = "LE";
+        } else if (t === "$not" || t === "$logic_not") {
+            meta.cls = "Operator";
+            meta.name = "NOT";
+        } else if (t === "$logic_and" || t === "$and") {
+            meta.cls = "Operator";
+            meta.name = "AND";
+        } else if (t === "$logic_or" || t === "$or") {
+            meta.cls = "Operator";
+            meta.name = "OR";
+        } else if (t === "$xor") {
+            meta.cls = "Operator";
+            meta.name = "XOR";
+        } else if (t === "$eq") {
+            meta.cls = "Operator";
+            meta.name = "EQ";
+        } else if (t === "$ne") {
+            meta.cls = "Operator";
+            meta.name = "NE";
+        } else if (t === "$add") {
+            meta.cls = "Operator";
+            meta.name = "ADD";
+        } else if (t === "$sub") {
+            meta.cls = "Operator";
+            meta.name = "SUB";
+        } else if (t === "$mul") {
+            meta.cls = "Operator";
+            meta.name = "MUL";
+        } else if (t === "$div") {
+            meta.cls = "Operator";
+            meta.name = "DIV";
+        } else if (t === "$slice") {
+            meta.cls = "Operator";
+            meta.name = "SLICE";
+        } else if (t === "$concat") {
+            meta.cls = "Operator";
+            meta.name = "CONCAT";
+        } else if (t === "$adff") {
+            meta.cls = "Operator";
+            let arstPolarity = cell.parameters["ARST_POLARITY"];
+            let clkPolarity = cell.parameters["CLK_POLARITY"];
+            if (clkPolarity && arstPolarity) {
+                meta.name = "FF_ARST_clk1_rst1";
+            } else if (clkPolarity) {
+                meta.name = "FF_ARST_clk1_rst0";
+            } else if (arstPolarity) {
+                meta.name = "FF_ARST_clk0_rst1";
+            } else {
+                meta.name = "FF_ARST_clk0_rst0";
+            }
+        } else if (t === "$dff") {
+            meta.cls = "Operator";
+            meta.name = "FF";
+        } else if (t === "$shift" || t === "$shiftx") {
+            meta.cls = "Operator";
+            meta.name = "SHIFT";
+        } else if (t === "$dlatch") {
+            meta.cls = "Operator";
+            let enPolarity = cell.parameters["EN_POLARITY"];
+            if (enPolarity) {
+                meta.name = "DLATCH_en1";
+            } else {
+                meta.name = "DLATCH_en0";
+
+            }
+        }
+    }
+
+    function getPortSide(portName, direction, nodeName) {
+        if (direction === "input" && nodeName === "MUX" && portName === "S") {
+            return "SOUTH";
+        }
+        if (direction === "output") {
+            return "EAST";
+        }
+        if (direction === "input") {
+            return "WEST";
+        }
+        throw new Error("Unknown direction " + direction);
+    }
+
+    function orderClkAndRstPorts(node) {
+        let index = 0;
+        for (let port of node.ports) {
+            let dstIndex = index;
+            if (port.hwMeta.name === "CLK") {
+                dstIndex = node.ports.length - 1;
+            } else if (port.hwMeta.name === "ARST") {
+                dstIndex = node.ports.length - 2;
+            }
+            if (index !== dstIndex) {
+                let otherPort = node.ports[dstIndex];
+                node.ports[dstIndex] = port;
+                node.ports[index] = otherPort;
+                otherPort.properties.index = port.properties.index;
+                port.properties.index = dstIndex;
+            }
+            ++index;
+        }
+    }
+
+    function iterNetnameBits(netnames, fn) {
+        for (const [netname, netObj] of Object.entries(netnames)) {
+            for (const bit of netObj.bits) {
+                fn(netname, bit, Number.isInteger(bit), isConst(bit));
+            }
+        }
+    }
+
+    function getNetNamesDict(yosysModule) {
+        let netnamesDict = {}; // yosys bits (netId): netname
+
+        iterNetnameBits(yosysModule.netnames, (netname, bit, isInt, isStr) => {
+            if (isInt) {
+                netnamesDict[bit] = netname;
+            } else if (!isStr) {
+                throw new Error("Invalid type in bits: " + typeof bit);
+            }
+        });
+        return netnamesDict;
+    }
+
+    function isConst(val) {
+        return (typeof val === "string");
+    }
+
+    function getConstNodeName(nameArray) {
+        let nodeName = nameArray.reverse().join("");
+        nodeName = ["0b", nodeName].join("");
+        if (nodeName.match(/^0b[01]+$/g)) {
+            let res = BigInt(nodeName).toString(16);
+            return ["0x", res].join("");
+        }
+        return nodeName;
+    }
+
+    function addEdge(edge, portId, edgeDict, startIndex, width) {
+        let edgeArr = edgeDict[portId];
+        if (edgeArr === undefined) {
+            edgeArr = edgeDict[portId] = [];
+        }
+        edgeArr[startIndex] = [edge, width];
+    }
+
+    function getSourceAndTarget2(edge) {
+        return [edge.sources, edge.targets, false, true];
+    }
+
+    function getSourceAndTargetForCell(edge) {
+        return [edge.targets, edge.sources, true, false];
+    }
+
+    function getPortNameSplice(startIndex, width) {
+        if (width === 1) {
+            return `[${startIndex}]`;
+        } else if (width > 1) {
+            let endIndex = startIndex + width;
+            return `[${endIndex}:${startIndex}]`;
+        }
+
+        throw new Error("Incorrect width" + width);
+
+    }
+
+
+    function hideChildrenAndNodes(node, yosysModule) {
+        if (yosysModule !== null) {
+            if (node.children.length === 0 && node.edges.length === 0) {
+                delete node.children;
+                delete node.edges;
+
+            } else {
+                node._children = node.children;
+                delete node.children;
+                node._edges = node.edges;
+                delete node.edges;
+            }
+        }
+    }
+
+
+    function updatePortIndices(ports) {
+        let index = 0;
+        for (let port of ports) {
+            port.properties.index = index;
+            ++index;
+        }
+    }
+
+    function dividePorts(ports) {
+        let north = [];
+        let east = [];
+        let south = [];
+        let west = [];
+
+        for (let port of ports) {
+            let side = port.properties.side;
+            if (side === "NORTH") {
+                north.push(port);
+            } else if (side === "EAST") {
+                east.push(port);
+            } else if (side === "SOUTH") {
+                south.push(port);
+            } else if (side === "WEST") {
+                west.push(port);
+            } else {
+                throw new Error("Invalid port side: " + side);
+            }
+        }
+
+        return [north, east, south, west];
+    }
+
+    function convertPortOrderingFromYosysToElk(node) {
+        let [north, east, south, west] = dividePorts(node.ports);
+        node.ports = north.concat(east, south.reverse(), west.reverse());
+        updatePortIndices(node.ports);
+
+    }
+
+    function getTopModuleName(yosysJson) {
+        let topModuleName = undefined;
+        for (const [moduleName, moduleObj] of Object.entries(yosysJson.modules)) {
+            if (moduleObj.attributes.top) {
+                topModuleName = moduleName;
+                break;
+            }
+        }
+
+        if (topModuleName === undefined) {
+            throw new Error("Cannot find top");
+        }
+
+        return topModuleName;
+    }
+
+    function getNodePorts(node, dict){
+        for (let port of node.ports) {
+            dict[port.id] = port;
+        }
+
+    }
+    function getPortIdToPortDict(node) {
+        let PortIdToPortDict = {};
+
+        getNodePorts(node, PortIdToPortDict);
+        for (let child of node.children) {
+            getNodePorts(child, PortIdToPortDict);
+        }
+
+        return PortIdToPortDict;
+    }
+    function getNodeIdToNodeDict(node,) {
+        let nodeIdToNodeDict = {};
+        nodeIdToNodeDict[node.id] = node;
+        for (let child of node.children) {
+            nodeIdToNodeDict[child.id] = child;
+        }
+        return nodeIdToNodeDict;
+    }
+
+    function getPortToEdgeDict(edges) {
+        let portToEdgeDict = {};
+        for (let edge of edges) {
+            let targets = edge.targets;
+            let sources = edge.sources;
+            for (let [_, portId] of sources) {
+                portToEdgeDict[portId] = edge;
+            }
+
+            for (let [_, portId] of targets) {
+                portToEdgeDict[portId] = edge;
+            }
+        }
+        return portToEdgeDict;
+    }
+
+    function getChildSourcePorts(ports) {
+        let sourcePorts = [];
+        for(let port of ports) {
+            if (port !== undefined && port.direction === "INPUT") {
+                sourcePorts.push(port);
+            }
+        }
+
+        return sourcePorts;
+    }
+
+    function getEdgeTargetsIndex(targets, portId) {
+        for(let i = 0; i < targets.length; ++i) {
+            let target = targets[i];
+            let [_, targetPortId] = target;
+
+            if (portId === targetPortId) {
+                return i;
+            }
+        }
+        throw new Error("PortId was not found");
+
+    }
+    function aggregateTwoNodes(childSourcePorts, targetNode, targetPort, portIdToEdgeDict) {
+        let i = 0;
+        if (targetPort.properties.index !== 0) {
+            throw new Error("Port index is not zero, need to regenerate indices in port labels");
+        }
+        for (let oldTargetPort of childSourcePorts) {
+            let oldTargetPortId = oldTargetPort.id;
+            let edge = portIdToEdgeDict[oldTargetPortId];
+            let edgeTargetsIndex = getEdgeTargetsIndex(edge.targets, oldTargetPortId);
+            edge.targets[edgeTargetsIndex][0] = targetNode.id;
+            let newTargetPortIndex = targetPort.properties.index + i;
+            if (i === 0) {
+                targetNode.ports[newTargetPortIndex] = oldTargetPort;
+            }
+            else {
+                targetNode.ports.splice(newTargetPortIndex, 0, oldTargetPort);
+            }
+            oldTargetPort.properties.index = newTargetPortIndex;
+            ++i;
+        }
+
+
+    }
+
+    function getChildTargetPortId(child) {
+        for (let port of child.ports) {
+            if (port !== undefined && port.direction === "OUTPUT")
+            {
+                return port.id;
+            }
+        }
+
+        throw new Error("Concat child has no target");
+    }
+
+    function aggregate(node, childrenConcats, portIdToEdgeDict, portIdToPortDict, nodeIdToNodeDict) {
+        let edgesToDelete = new Set();
+        let childrenToDelete = new Set();
+
+        for (let child of childrenConcats) {
+            let childTargetPortId = getChildTargetPortId(child);
+            let edge = portIdToEdgeDict[childTargetPortId];
+            if (edge === undefined) {
+                continue;
+            }
+            let targets = edge.targets;
+
+           if (targets !== undefined && targets.length === 1) {
+                let [nodeId, portId] = targets[0];
+                let targetNode = nodeIdToNodeDict[nodeId];
+                let targetPort = portIdToPortDict[portId];
+                let childSourcePorts = getChildSourcePorts(child.ports);
+                if (targetNode === undefined) {
+                    throw new Error("Target node of target port is undefined");
+                }
+                if (targetNode.hwMeta.cls === "Operator" && targetNode.hwMeta.name === "CONCAT") {
+                    aggregateTwoNodes(childSourcePorts, targetNode, targetPort, portIdToEdgeDict);
+                    edgesToDelete.add(edge.id);
+                    childrenToDelete.add(child.id);
+                }
+            }
+        }
+        node.children = node.children.filter((c) => {
+            return !childrenToDelete.has(c.id);
+        });
+        node.edges = node.edges.filter((e) => {
+            return !edgesToDelete.has(e.id);
+        });
+    }
+
+    function fillConcats(children) {
+        let concats = [];
+        for (let child of children) {
+            if (child.hwMeta.cls === "Operator" && child.hwMeta.name === "CONCAT") {
+                concats.push(child);
+            }
+        }
+        return concats;
+
+    }
+
+    function aggregateConcants(node) {
+        let concats = fillConcats(node.children);
+        let portIdToEdgeDict = getPortToEdgeDict(node.edges);
+        let portIdToPortDict = getPortIdToPortDict(node);
+        let nodeIdToNodeDict = getNodeIdToNodeDict(node);
+        aggregate(node, concats, portIdToEdgeDict, portIdToPortDict, nodeIdToNodeDict);
+    }
+
+    class LNodeMaker {
+        constructor(name, yosysModule, idCounter, yosysModules, hierarchyLevel, nodePortNames) {
+            this.name = name;
+            this.yosysModule = yosysModule;
+            this.idCounter = idCounter;
+            this.yosysModules = yosysModules;
+            this.hierarchyLevel = hierarchyLevel;
+            this.nodePortNames = nodePortNames;
+            this.childrenWithoutPortArray = [];
+            this.nodeIdToCell = {};
+        }
+
+        make() {
+            if (this.name === undefined) {
+                throw new Error("Name is undefined");
+            }
+
+            let node = this.makeNode(this.name);
+
+            if (this.yosysModule) {
+                // cell with module definition, load ports, edges and children from module def. recursively
+                this.fillPorts(node, this.yosysModule.ports, (p) => {
+                    return p.direction
+                }, undefined);
+                this.fillChildren(node);
+                this.fillEdges(node);
+
+                if (node.children !== undefined && node.children.length > 0) {
+                    aggregateConcants(node);
+                }
+
+            }
+
+            if (node.children !== undefined) {
+                for (let child of node.children) {
+                    convertPortOrderingFromYosysToElk(child);
+                    if (child.hwMeta.cls === "Operator" && child.hwMeta.name.startsWith("FF")) {
+                        orderClkAndRstPorts(child);
+                    }
+                }
+            }
+
+            if (this.hierarchyLevel > 1) {
+                hideChildrenAndNodes(node, this.yosysModule);
+            }
+
+            node.hwMeta.maxId = this.idCounter - 1;
+            return node;
+        }
+        makeNode(name) {
+            let node = {
+                "id": this.idCounter.toString(), //generate, each component has unique id
+                "hwMeta": { // [d3-hwschematic specific]
+                    "name": name, // optional str
+                    "cls": "", // optional str
+                    "maxId": 2, // max id of any object in this node used to avoid re-counting object if new object is generated
+                },
+                "properties": { // recommended renderer settings
+                    "org.eclipse.elk.portConstraints": "FIXED_ORDER", // can be also "FREE" or other value accepted by ELK
+                    "org.eclipse.elk.layered.mergeEdges": 1
+                },
+                "ports": [],    // list of LPort
+                "edges": [],    // list of LEdge
+                "children": [], // list of LNode
+            };
+            ++this.idCounter;
+            return node;
+        }
+
+        fillPorts(node, ports, getPortDirectionFn, cellObj) {
+            const isSplit = cellObj !== undefined && cellObj.type === "$slice";
+            const isConcat = cellObj !== undefined && cellObj.type === "$concat";
+            let portByName = this.nodePortNames[node.id];
+            if (portByName === undefined) {
+                portByName = {};
+                this.nodePortNames[node.id] = portByName;
+            }
+            for (let [portName, portObj] of Object.entries(ports)) {
+                let originalPortName = portName;
+                if (isSplit || isConcat) {
+                    if (portName === "Y") {
+                        portName = "";
+                    }
+                    if (isSplit) {
+                        if (portName === "A") {
+                            portName = getPortNameSplice(cellObj.parameters.OFFSET, cellObj.parameters.Y_WIDTH);
+                        }
+                    } else if (isConcat) {
+                        let par = cellObj.parameters;
+                        if (portName === "A") {
+                            portName = getPortNameSplice(0, par.A_WIDTH);
+                        } else if (portName === "B") {
+                            portName = getPortNameSplice(par.A_WIDTH, par.B_WIDTH);
+                        }
+                    }
+                }
+                let direction = getPortDirectionFn(portObj);
+                this.makeLPort(node.ports, portByName, originalPortName, portName, direction, node.hwMeta.name);
+            }
+        }
+
+        makeLPort(portList, portByName, originalName, name, direction, nodeName) {
+            if (name === undefined) {
+                throw new Error("Name is undefined");
+            }
+
+            let portSide = getPortSide(name, direction, nodeName);
+            let port = {
+                "id": this.idCounter.toString(),
+                "hwMeta": { // [d3-hwschematic specific]
+                    "name": name,
+                },
+                "direction": direction.toUpperCase(), // [d3-hwschematic specific] controls direction marker
+                "properties": {
+                    "side": portSide,
+                    "index": 0 // The order is assumed as clockwise, starting with the leftmost port on the top side.
+                    // Required only for components with "org.eclipse.elk.portConstraints": "FIXED_ORDER"
+                },
+                "children": [], // list of LPort, if the port should be collapsed rename this property to "_children"
+            };
+            port.properties.index = portList.length;
+            portList.push(port);
+            portByName[originalName] = port;
+            ++this.idCounter;
+            return port;
+        }
+
+        fillChildren(node) {
+            // iterate all cells and lookup for modules and construct them recursively
+            for (const [cellName, cellObj] of Object.entries(this.yosysModule.cells)) {
+                let moduleName = cellObj.type; //module name
+                let cellModuleObj = this.yosysModules[moduleName];
+                let nodeBuilder = new LNodeMaker(cellName, cellModuleObj, this.idCounter, this.yosysModules,
+                    this.hierarchyLevel + 1, this.nodePortNames);
+                let subNode = nodeBuilder.make();
+                this.idCounter = nodeBuilder.idCounter;
+                node.children.push(subNode);
+                yosysTranslateIcons(subNode, cellObj);
+                this.nodeIdToCell[subNode.id] = cellObj;
+                if (cellModuleObj === undefined) {
+                    if (cellObj.port_directions === undefined) {
+                        // throw new Error("[Todo] if modules does not have definition in modules and its name does not \
+                        // start with $, then it does not have port_directions. Must add port to sources and targets of an edge")
+
+                        this.childrenWithoutPortArray.push([cellObj, subNode]);
+                        continue;
+                    }
+                    this.fillPorts(subNode, cellObj.port_directions, (p) => {
+                        return p;
+                    }, cellObj);
+                }
+            }
+        }
+
+        fillEdges(node) {
+
+            let edgeTargetsDict = {};
+            let edgeSourcesDict = {};
+            let constNodeDict = {};
+            let [edgeDict, edgeArray] = this.getEdgeDictFromPorts(
+                node, constNodeDict, edgeTargetsDict, edgeSourcesDict);
+            let netnamesDict = getNetNamesDict(this.yosysModule);
+
+            function getPortName(bit) {
+                return netnamesDict[bit];
+            }
+
+            for (let i = 0; i < node.children.length; i++) {
+                const subNode = node.children[i];
+                if (constNodeDict[subNode.id] === 1) {
+                    //skip constants to iterate original cells
+                    continue;
+                }
+
+                let cell = this.nodeIdToCell[subNode.id];
+                if (cell.port_directions === undefined) {
+                    continue;
+                }
+                let connections = cell.connections;
+                let portDirections = cell.port_directions;
+
+
+                if (connections === undefined) {
+                    throw new Error("Cannot find cell for subNode" + subNode.hwMeta.name);
+                }
+
+                let portI = 0;
+                let portByName = this.nodePortNames[subNode.id];
+                for (const [portName, bits] of Object.entries(connections)) {
+                    let portObj;
+                    let direction;
+                    if (portName.startsWith("$")) {
+                        portObj = subNode.ports[portI++];
+                        direction = portObj.direction.toLowerCase(); //use direction from module port definition
+                    } else {
+                        portObj = portByName[portName];
+                        direction = portDirections[portName];
+                    }
+
+                    this.loadNets(node, subNode.id, portObj.id, bits, direction, edgeDict, constNodeDict,
+                        edgeArray, getPortName, getSourceAndTargetForCell, edgeTargetsDict, edgeSourcesDict);
+
+                }
+            }
+            // source null target null == direction is output
+
+            for (const [cellObj, subNode] of this.childrenWithoutPortArray) {
+                for (const [portName, bits] of Object.entries(cellObj.connections)) {
+                    let port = null;
+                    for (const bit of bits) {
+                        let edge = edgeDict[bit];
+                        if (edge === undefined) {
+                            throw new Error("[Todo] create edge");
+                        }
+                        let edgePoints;
+                        let direction;
+                        if (edge.sources.length === 0 && edge.targets.length === 0) {
+                            direction = "output";
+                            edgePoints = edge.sources;
+                        } else if (edge.sources.length === 0) {
+                            // no sources -> add as source
+                            direction = "output";
+                            edgePoints = edge.sources;
+                        } else {
+                            direction = "input";
+                            edgePoints = edge.targets;
+                        }
+
+                        if (port === null) {
+                            let portByName = this.nodePortNames[subNode.id];
+                            if (portByName === undefined) {
+                                portByName = {};
+                                this.nodePortNames[subNode.id] = portByName;
+                            }
+                            port = this.makeLPort(subNode.ports, portByName, portName, portName, direction, subNode.hwMeta.name);
+                        }
+
+                        edgePoints.push([subNode.id, port.id]);
+                    }
+                }
+
+            }
+
+            let edgeSet = {}; // [sources, targets]: true
+            for (const edge of edgeArray) {
+                let key = [edge.sources, null, edge.targets];
+                if (!edgeSet[key]) // filter duplicities
+                {
+                    edgeSet[key] = true;
+                    node.edges.push(edge);
+                }
+            }
+
+        }
+
+        getEdgeDictFromPorts(node, constNodeDict, edgeTargetsDict, edgeSourcesDict) {
+            let edgeDict = {}; // yosys bits (netId): LEdge
+            let edgeArray = [];
+            let portsIndex = 0;
+            for (const [portName, portObj] of Object.entries(this.yosysModule.ports)) {
+                let port = node.ports[portsIndex];
+                portsIndex++;
+
+                function getPortName2() {
+                    return portName;
+                }
+
+                this.loadNets(node, node.id, port.id, portObj.bits, portObj.direction,
+                    edgeDict, constNodeDict, edgeArray, getPortName2, getSourceAndTarget2,
+                    edgeTargetsDict, edgeSourcesDict);
+
+            }
+            return [edgeDict, edgeArray];
+        }
+
+        /*
+         * Iterate bits representing yosys net names, which are used to get edges from the edgeDict.
+         * If edges are not present in the dictionary, they are created and inserted into it. Eventually,
+         * nodes are completed by filling sources and targets properties of LEdge.
+         */
+        loadNets(node, nodeId, portId, bits, direction, edgeDict, constNodeDict, edgeArray,
+                 getPortName, getSourceAndTarget, edgeTargetsDict, edgeSourcesDict) {
+            for (let i = 0; i < bits.length; ++i) {
+                let startIndex = i;
+                let width = 1;
+                let bit = bits[i];
+                let portName = getPortName(bit);
+                let edge = edgeDict[bit];
+                let netIsConst = isConst(bit);
+                if (netIsConst || edge === undefined) {
+                    // create edge if it is not in edgeDict
+                    if (portName === undefined) {
+                        if (!netIsConst) {
+                            throw new Error("Netname is undefined");
+                        }
+                        portName = bit;
+                    }
+                    edge = this.makeLEdge(portName);
+                    edgeDict[bit] = edge;
+                    edgeArray.push(edge);
+                    if (netIsConst) {
+                        i = this.addConstNodeToSources(node, bits, edge.sources, i, constNodeDict);
+                        width = i - startIndex + 1;
+                    }
+                }
+
+                let [a, b, targetA, targetB] = getSourceAndTarget(edge);
+                if (direction === "input") {
+                    a.push([nodeId, portId]);
+                    if (targetA) {
+                        addEdge(edge, portId, edgeTargetsDict, startIndex, width);
+                    } else {
+                        addEdge(edge, portId, edgeSourcesDict, startIndex, width);
+                    }
+                } else if (direction === "output") {
+                    b.push([nodeId, portId]);
+                    if (targetB) {
+                        addEdge(edge, portId, edgeTargetsDict, startIndex, width);
+                    } else {
+                        addEdge(edge, portId, edgeSourcesDict, startIndex, width);
+                    }
+                } else {
+                    throw new Error("Unknown direction " + direction);
+                }
+            }
+        }
+
+        makeLEdge(name) {
+            if (name === undefined) {
+                throw new Error("Name is undefined");
+            }
+            let edge = {
+                "id": this.idCounter.toString(),
+                "sources": [],
+                "targets": [], // [id of LNode, id of LPort]
+                "hwMeta": { // [d3-hwschematic specific]
+                    "name": name, // optional string, displayed on mouse over
+                }
+            };
+            ++this.idCounter;
+            return edge;
+        }
+
+        addConstNodeToSources(node, bits, sources, i, constNodeDict) {
+            let nameArray = [];
+            for (i; i < bits.length; ++i) {
+                let bit = bits[i];
+                if (isConst(bit)) {
+                    nameArray.push(bit);
+                } else {
+                    break;
+                }
+            }
+            --i;
+            // If bit is a constant, create a node with constant
+            let nodeName = getConstNodeName(nameArray);
+            let constSubNode;
+            let port;
+            [constSubNode, port] = this.addConstNode(node, nodeName, constNodeDict);
+            sources.push([constSubNode.id, port.id]);
+            return i;
+        }
+
+        addConstNode(node, nodeName, constNodeDict) {
+            let port;
+
+            let nodeBuilder = new LNodeMaker(nodeName, undefined, this.idCounter, null,
+                this.hierarchyLevel + 1, this.nodePortNames);
+            let subNode = nodeBuilder.make();
+            this.idCounter = nodeBuilder.idCounter;
+
+            let portByName = this.nodePortNames[subNode.id] = {};
+            port = this.makeLPort(subNode.ports, portByName, "O0", "O0", "output", subNode.hwMeta.name);
+            node.children.push(subNode);
+            constNodeDict[subNode.id] = 1;
+
+            return [subNode, port];
+        }
+
+
+    }
+
+    function yosys(yosysJson) {
+        let nodePortNames = {};
+        let rootNodeBuilder = new LNodeMaker("root", null, 0, null, 0, nodePortNames);
+        let output = rootNodeBuilder.make();
+        let topModuleName = getTopModuleName(yosysJson);
+
+        let nodeBuilder = new LNodeMaker(topModuleName, yosysJson.modules[topModuleName], rootNodeBuilder.idCounter,
+            yosysJson.modules, 1, nodePortNames);
+        let node = nodeBuilder.make();
+        output.children.push(node);
+        output.hwMeta.maxId = nodeBuilder.idCounter - 1;
+        //yosysTranslateIcons(output);
+        //print output to console
+        //console.log(JSON.stringify(output, null, 2));
+
+        return output;
+    }
+
     function hyperEdgeListToEdges(eList, newEdges, idOffset) {
-    	for (var ei = 0; ei < eList.length; ei++) {
-    		var e = eList[ei];
-    		var isHyperEdge = typeof e.sources !== "undefined";
+    	for (let ei = 0; ei < eList.length; ei++) {
+    		let e = eList[ei];
+    		let isHyperEdge = typeof e.sources !== "undefined";
     		if (isHyperEdge) {
-    		    if (e.sources.length == 1 && e.targets.length == 1) {
-        		    var src = e.sources[0];
-                    var dst = e.targets[0];
+    			let src;
+    			let dst;
+    		    if (e.sources.length === 1 && e.targets.length === 1) {
+        		    src = e.sources[0];
+                    dst = e.targets[0];
                     e.source = src[0];
                     e.sourcePort = src[1];
                     e.target = dst[0];
@@ -1219,10 +2147,10 @@
                     delete e.targets;
                     newEdges.push(e);
     		    } else {
-        			for (var s = 0; s < e.sources.length; s++) {
-        				var src = e.sources[s];
-        				for (var t = 0; t < e.targets.length; t++) {
-        					var dst = e.targets[t];
+        			for (let s = 0; s < e.sources.length; s++) {
+        				src = e.sources[s];
+        				for (let t = 0; t < e.targets.length; t++) {
+        					dst = e.targets[t];
         					idOffset += 1;
         					newEdges.push({
         						"hwMeta": { "parent": e },
@@ -1243,30 +2171,31 @@
     }
 
     /**
-     * Convert hyperedges to edges in whole graph
+     * Convert hyperEdges to edges in whole graph
      *
      * @param n root node
      * @param idOffset int, max id in graph, used for generating
-     *                 of new edges from hyperedges
+     *                 of new edges from hyperEdges
      **/
     function hyperEdgesToEdges(n, idOffset) {
+    	let newEdges;
     	if (n.edges) {
-    		var newEdges = [];
+    		newEdges = [];
     		idOffset = hyperEdgeListToEdges(n.edges, newEdges, idOffset);
     		n.edges = newEdges;
     	}
     	if (n._edges) {
-    		var newEdges = [];
+    		newEdges = [];
     		idOffset = hyperEdgeListToEdges(n._edges, newEdges, idOffset);
     		n._edges = newEdges;
     	}
     	if (n.children) {
-    		for (var i = 0; i < n.children.length; i++) {
+    		for (let i = 0; i < n.children.length; i++) {
     			idOffset = hyperEdgesToEdges(n.children[i], idOffset);
     		}
     	}
     	if (n._children) {
-    		for (var i = 0; i < n._children.length; i++) {
+    		for (let i = 0; i < n._children.length; i++) {
     			idOffset = hyperEdgesToEdges(n._children[i], idOffset);
     		}
     	}
@@ -1295,24 +2224,24 @@
 
     }
     function expandPorts(node) {
-    	var portlist = [];
+    	let portList = [];
     	if (node.ports)
-        	node.ports.forEach(function (port) {expandPorts4port(port, portlist);});
+        	node.ports.forEach(function (port) {expandPorts4port(port, portList);});
     	//node.hwMeta.parent = parent;
-    	node.ports = portlist;
+    	node.ports = portList;
     	(node.children || node._children || []).forEach(function(n) {
     		expandPorts(n);
     	});
     }
 
-    function expandPorts4port(port, portlist){
+    function expandPorts4port(port, portList){
         if (port.hwMeta.connectedAsParent) {
             return;
         }
-    	portlist.push(port);
+    	portList.push(port);
     	(port.children || []).forEach(function(p) {
     		p.parent = port;
-    		expandPorts4port(p, portlist);
+    		expandPorts4port(p, portList);
     	});
 
     }
@@ -1634,13 +2563,43 @@
     	}
     }
 
+    function findGraph(nodeArray, nodeName) {
+        for (let node of nodeArray) {
+            if (node.hwMeta.name === nodeName) {
+                return node
+            }
+        }
+        throw new Error("Node is not found: " + nodeName);
+    }
+
+    function selectGraphRootByPath(graph, path) {
+        let pathArray = path.split("/");
+        let first = true;
+        let newGraph = graph;
+        for (let nodeName of pathArray) {
+            if (first && nodeName === "") {
+                first = false;
+                continue;
+            }
+            newGraph = findGraph((newGraph.children || newGraph._children), nodeName);
+        }
+        if (graph !== newGraph) {
+            //case if path has nonzero length
+            //copy because we need to make graph immutable because we will need it later
+            graph = Object.assign({}, graph);
+            graph.children = [newGraph];
+        }
+        return graph;
+
+    }
+
     function getNameOfEdge(e) {
-        var name = "<tspan>unnamed</tspan>";
+        let name = "<tspan>unnamed</tspan>";
         if (e.hwMeta) {
             if (typeof e.hwMeta.name === "undefined") {
-                var p = e.hwMeta.parent;
-                var pIsHyperedge = typeof p.sources !== "undefined";
-                if (pIsHyperedge && p.hwMeta) {
+                let p = e.hwMeta.parent;
+                let pIsHyperEdge = typeof p.sources !== "undefined";
+                if (pIsHyperEdge && p.hwMeta) {
                     name = p.hwMeta.name;
                 }
             } else {
@@ -1651,8 +2610,8 @@
     }
 
     function toggleHideChildren(node) {
-        var children;
-        var nextFocusTarget;
+        let children;
+        let nextFocusTarget;
         if (node.children) {
             // children are visible, will collapse
             children = node.children;
@@ -1663,10 +2622,10 @@
             nextFocusTarget = node;
         }
 
-        var tmpChildren = node.children;
+        let tmpChildren = node.children;
         node.children = node._children;
         node._children = tmpChildren;
-        var tmpEdges = node.edges;
+        let tmpEdges = node.edges;
         node.edges = node._edges;
         node._edges = tmpEdges;
         node.hwMeta.renderer.prepare(node);
@@ -1698,10 +2657,11 @@
             svg.classed("d3-hwschematic", true);
             this.defs = svg.append("defs");
             this.root = svg.append("g");
+            this.errorText = null;
             this._nodes = null;
             this._edges = null;
 
-            // graph layouter to resovbe posiions of elements
+            // graph layouter to resolve positions of elements
             this.layouter = new d3elk();
             this.layouter
                 .options({
@@ -1715,7 +2675,7 @@
             // renderer instances responsible for rendering of component nodes
             this.nodeRenderers = new NodeRendererContainer();
             addMarkers(this.defs, this.PORT_PIN_SIZE);
-            var rs = this.nodeRenderers;
+            let rs = this.nodeRenderers;
             rs.registerRenderer(new OperatorNodeRenderer(this));
             rs.registerRenderer(new MuxNodeRenderer(this));
             rs.registerRenderer(new SliceNodeRenderer(this));
@@ -1735,8 +2695,8 @@
         }
 
         updateGlobalSize() {
-            var width = parseInt(this.svg.style("width") || this.svg.attr("width"), 10);
-            var height = parseInt(this.svg.style("height") || this.svg.attr("height"), 10);
+            let width = parseInt(this.svg.style("width") || this.svg.attr("width"), 10);
+            let height = parseInt(this.svg.style("height") || this.svg.attr("height"), 10);
 
             this.layouter
                 .size([width, height]);
@@ -1749,7 +2709,7 @@
          */
         bindData(graph) {
             this.removeGraph();
-            var postCompaction = "layered.compaction.postCompaction.strategy";
+            let postCompaction = "layered.compaction.postCompaction.strategy";
             if (!graph.properties[postCompaction]) {
                 graph.properties[postCompaction] = "EDGE_LENGTH";
             }
@@ -1758,17 +2718,23 @@
             expandPorts(graph);
 
             if (this._PERF) {
-                var t0 = new Date().getTime();
-            }
-            // nodes are ordered, childeren at the end
-            this.nodeRenderers.prepare(graph);
-            if (this._PERF) {
-                var t1 = new Date().getTime();
+                let t0 = new Date().getTime();
+                this.nodeRenderers.prepare(graph);
+                let t1 = new Date().getTime();
                 console.log("> nodeRenderers.prepare() : " + (t1 - t0) + " ms");
+            } else {
+                // nodes are ordered, children at the end
+                this.nodeRenderers.prepare(graph);
             }
             this.layouter
                 .kgraph(graph);
             return this._draw();
+        }
+        /*
+        * @returns subnode selected by path wrapped in a new root
+        * */
+        static selectGraphRootByPath(graph, path) {
+            return selectGraphRootByPath(graph, path);
         }
         /*
          * Resolve layout and draw a component graph from layout data
@@ -1776,116 +2742,118 @@
         _draw() {
             this.updateGlobalSize();
 
-            var layouter = this.layouter;
+            let layouter = this.layouter;
             this._nodes = layouter.getNodes().slice(1); // skip root node
             this._edges = layouter.getEdges();
+            let t0;
             if (this._PERF) {
-                var t0 = new Date().getTime();
+                t0 = new Date().getTime();
             }
-            var _this = this;
+            let _this = this;
             return layouter.start()
                 .then(
-                    function(g) {
+                    function (g) {
                         if (_this._PERF) {
-                            var t1 = new Date().getTime();
+                            let t1 = new Date().getTime();
                             console.log("> layouter.start() : " + (t1 - t0) + " ms");
                             t0 = t1;
                         }
                         _this._applyLayout(g);
                         if (_this._PERF) {
-                            var t1 = new Date().getTime();
+                            let t1 = new Date().getTime();
                             console.log("> HwSchematic._applyLayout() : " + (t1 - t0) + " ms");
                         }
                     },
-                    function(e) {
-                        // Error while running d3-elkjs layourter
+                    function (e) {
+                        // Error while running d3-elkjs layouter
                         throw e;
                     }
                 );
         }
+
         /**
          * Draw a component graph from layout data
          */
         _applyLayout() {
-            var root = this.root;
-            
-            var node = root.selectAll(".node")
-            .data(this._nodes)
-            .enter()
-            .append("g");
+            let root = this.root;
+
+            let node = root.selectAll(".node")
+                .data(this._nodes)
+                .enter()
+                .append("g");
             this.nodeRenderers.render(root, node);
-            
-            var _this = this;
-            node.on("click", function(ev, d) {
-                var [children, nextFocusTarget] = toggleHideChildren(d);
-                if (!children || children.length == 0) {
+
+            let _this = this;
+            node.on("click", function (ev, d) {
+                let [children, nextFocusTarget] = toggleHideChildren(d);
+                if (!children || children.length === 0) {
                     return; // does not have anything to expand
                 }
                 _this.layouter.markLayoutDirty();
                 _this.removeGraph();
                 _this._draw().then(
-                    function() {
+                    function () {
                         _this.layouter.zoomToFit(nextFocusTarget);
                     },
-                    function(e) {
+                    function (e) {
                         // Error while applying of layout
                         throw e;
                     }
-                    );
-                });
-                
+                );
+            });
+
             this._applyLayoutLinks();
         }
 
-        _applyLayoutLinks(root, edges) {
-            var _this = this;
-            var edges = this._edges;
+        _applyLayoutLinks() {
+            let _this = this;
+            let edges = this._edges;
 
-            var [link, linkWrap, junctionPoint] = renderLinks(this.root, edges);
+            let [link, linkWrap, _] = renderLinks(this.root, edges);
             // build netToLink
-            var netToLink = {};
-            edges.forEach(function(e) {
+            let netToLink = {};
+            edges.forEach(function (e) {
                 netToLink[getNet(e).id] = {
                     "core": [],
                     "wrap": []
                 };
             });
-            linkWrap._groups.forEach(function(lg) {
-                lg.forEach(function(l) {
-                    var e = d3__namespace.select(l).data()[0];
+            linkWrap._groups.forEach(function (lg) {
+                lg.forEach(function (l) {
+                    let e = d3__namespace.select(l).data()[0];
                     netToLink[getNet(e).id]["wrap"].push(l);
                 });
             });
-            link._groups.forEach(function(lg) {
-                lg.forEach(function(l) {
-                    var e = d3__namespace.select(l).data()[0];
+            link._groups.forEach(function (lg) {
+                lg.forEach(function (l) {
+                    let e = d3__namespace.select(l).data()[0];
                     netToLink[getNet(e).id]["core"].push(l);
                 });
             });
 
-    		// set highlingt and tooltip on mouser over over the net
-            linkWrap.on("mouseover", function(ev, d) {
-                var netWrap = netToLink[getNet(d).id]["wrap"];
+            // set highlingt and tooltip on mouser over over the net
+            linkWrap.on("mouseover", function (ev, d) {
+                let netWrap = netToLink[getNet(d).id]["wrap"];
                 d3__namespace.selectAll(netWrap)
                     .classed("link-wrap-activated", true);
 
                 _this.tooltip.show(ev, getNameOfEdge(d));
             });
-            linkWrap.on("mouseout", function(ev, d) {
-                var netWrap = netToLink[getNet(d).id]["wrap"];
+            linkWrap.on("mouseout", function (ev, d) {
+                let netWrap = netToLink[getNet(d).id]["wrap"];
                 d3__namespace.selectAll(netWrap)
                     .classed("link-wrap-activated", false);
 
                 _this.tooltip.hide();
             });
 
-    		// set link highlight on net click
+            // set link highlight on net click
             function onLinkClick(ev, d) {
-                var net = getNet(d);
-                var doSelect = net.selected = !net.selected;
+                let net = getNet(d);
+                let doSelect = net.selected = !net.selected;
                 // propagate click on all nets with same source
 
-                var netCore = netToLink[net.id]["core"];
+                let netCore = netToLink[net.id]["core"];
                 d3__namespace.selectAll(netCore)
                     .classed("link-selected", doSelect);
                 ev.stopPropagation();
@@ -1896,10 +2864,34 @@
             linkWrap.on("click", onLinkClick);
         }
 
+        static fromYosys(yosysJson) {
+            return yosys(yosysJson);
+        }
+
         terminate() {
             if (this.layouter) {
                 this.layouter.terminate();
             }
+        }
+
+        setErrorText(msg) {
+            this.root.selectAll("*").remove();
+            let errText = this.errorText;
+            if (!errText) {
+                errText = this.errorText = this.root.append("text")
+                    .attr("x", "50%")
+                    .attr("y", "50%")
+                    .attr("dominant-baseline", "middle")
+                    .attr("text-anchor", "middle")
+                    .style("font-size", "34px");
+            }
+            errText.text(msg);
+            let t = d3__namespace.zoomTransform(this.root.node());
+            t.k = 1;
+            t.x = 0;
+            t.y = 0;
+            this.root.attr("transform", t);
+
         }
     }
 

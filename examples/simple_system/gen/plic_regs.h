@@ -36,10 +36,10 @@
 #ifndef _PLIC_REGS_H_
 #define _PLIC_REGS_H_
 
-#include <util/bit_field.h>
 #include "scc/register.h"
 #include "scc/tlm_target.h"
 #include "scc/utilities.h"
+#include <util/bit_field.h>
 
 namespace sysc {
 
@@ -70,9 +70,9 @@ public:
 
     plic_regs(sc_core::sc_module_name nm);
 
-    template <unsigned BUSWIDTH = 32> void registerResources(scc::tlm_target<BUSWIDTH> &target);
+    template <unsigned BUSWIDTH = 32> void registerResources(scc::tlm_target<BUSWIDTH>& target);
 };
-}
+} // namespace sysc
 //////////////////////////////////////////////////////////////////////////////
 // member functions
 //////////////////////////////////////////////////////////////////////////////
@@ -85,7 +85,7 @@ inline sysc::plic_regs::plic_regs(sc_core::sc_module_name nm)
 , NAMED(threshold, r_threshold, 0, *this)
 , NAMED(claim_complete, r_claim_complete, 0, *this) {}
 
-template <unsigned BUSWIDTH> inline void sysc::plic_regs::registerResources(scc::tlm_target<BUSWIDTH> &target) {
+template <unsigned BUSWIDTH> inline void sysc::plic_regs::registerResources(scc::tlm_target<BUSWIDTH>& target) {
     target.addResource(priority, 0x4UL);
     target.addResource(pending, 0x1000UL);
     target.addResource(enabled, 0x2000UL);

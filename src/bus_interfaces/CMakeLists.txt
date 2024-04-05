@@ -1,6 +1,7 @@
 project(busses VERSION 0.0.1 LANGUAGES CXX)
 
 set(LIB_SOURCES
+	ahb/ahb_tlm.cpp
     ahb/pin/initiator.cpp
     ahb/pin/target.cpp
     ahb/pe/ahb_initiator.cpp
@@ -11,8 +12,12 @@ set(LIB_SOURCES
     axi/axi_target.cpp
 )
 
-add_library(busses ${LIB_SOURCES})
-target_include_directories (${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+add_library(${PROJECT_NAME} ${LIB_SOURCES})
+add_library(scc::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+target_include_directories(${PROJECT_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
+)
 target_link_libraries(${PROJECT_NAME} PUBLIC tlm-interfaces)
 target_link_libraries(${PROJECT_NAME} PRIVATE scc-sysc)
 
@@ -25,11 +30,16 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/scc_bus_interfaces.h
 )
 
-install(TARGETS ${PROJECT_NAME} COMPONENT busses
+install(TARGETS ${PROJECT_NAME} COMPONENT busses EXPORT ${PROJECT_NAME}-targets
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        )
+
+install(EXPORT ${PROJECT_NAME}-targets
+        DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+        NAMESPACE scc::
         )
 
 foreach(dir IN ITEMS ahb apb atp axi)

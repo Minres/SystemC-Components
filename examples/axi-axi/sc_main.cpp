@@ -11,8 +11,8 @@
 #include <axi/scv/recorder_modules.h>
 #include <scc.h>
 #include <scc/configurable_tracer.h>
-#include <scc/memory.h>
 #include <scc/hierarchy_dumper.h>
+#include <scc/memory.h>
 #include <tlm/scc/initiator_mixin.h>
 #include <tlm/scc/tlm_gp_shared.h>
 

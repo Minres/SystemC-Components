@@ -70,8 +70,7 @@ template <typename Type> constexpr Type get_max_uval() {
  *
  * @tparam DATATYPE
  */
-template <typename DATATYPE>
-class sc_register : public sc_core::sc_object, public resource_access_if, public traceable {
+template <typename DATATYPE> class sc_register : public sc_core::sc_object, public resource_access_if, public traceable {
 public:
     using this_type = sc_register<DATATYPE>;
     /**
@@ -115,10 +114,10 @@ public:
      */
     void reset() override {
         DATATYPE r(res_val);
-        if(wr_cb){
+        if(wr_cb) {
             sc_core::sc_time d;
             wr_cb(*this, r, d);
-        }   
+        }
         storage = r;
     }
     /**
@@ -316,6 +315,8 @@ public:
     const DATATYPE wrmask;
 
 private:
+    const char* kind() const override { return "sc_register"; }
+
     DATATYPE& storage;
     std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time&)> rd_cb;
     std::function<bool(this_type&, DATATYPE&, sc_core::sc_time&)> wr_cb;
@@ -334,8 +335,7 @@ template <typename DATATYPE> using sc_register = impl::sc_register<typename impl
 /**
  * an indexed register aka a register file of a certain type
  */
-template <typename DATATYPE, size_t SIZE, size_t START = 0>
-class sc_register_indexed : public indexed_resource_access_if {
+template <typename DATATYPE, size_t SIZE, size_t START = 0> class sc_register_indexed : public indexed_resource_access_if {
 public:
     using BASE_DATA_TYPE = typename impl::helper<DATATYPE>::Type;
 
@@ -351,14 +351,10 @@ public:
      * @param rdmask
      * @param wrmask
      */
-    sc_register_indexed(sc_core::sc_module_name nm, std::array<DATATYPE, SIZE>& storage, const DATATYPE reset_val,
-                        resetable& owner,
-                        BASE_DATA_TYPE rdmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed
-                                                    ? -1
-                                                    : std::numeric_limits<BASE_DATA_TYPE>::max(),
-                        BASE_DATA_TYPE wrmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed
-                                                    ? -1
-                                                    : std::numeric_limits<BASE_DATA_TYPE>::max()) {
+    sc_register_indexed(
+        sc_core::sc_module_name nm, std::array<DATATYPE, SIZE>& storage, const DATATYPE reset_val, resetable& owner,
+        BASE_DATA_TYPE rdmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed ? -1 : std::numeric_limits<BASE_DATA_TYPE>::max(),
+        BASE_DATA_TYPE wrmask = std::numeric_limits<BASE_DATA_TYPE>::is_signed ? -1 : std::numeric_limits<BASE_DATA_TYPE>::max()) {
 
         _reg_field.init(START + SIZE, [&](const char* name, size_t idx) -> pointer {
             return new sc_register<DATATYPE>(name, storage[idx], reset_val, owner, rdmask, wrmask);
@@ -384,7 +380,7 @@ public:
     void set_read_cb(std::function<bool(size_t, const sc_register<DATATYPE>&, DATATYPE&)> read_cb) {
         rd_cb = read_cb;
         for(size_t idx = START; idx < SIZE + START; ++idx)
-            _reg_field[idx].set_read_cb([this, idx](const sc_register<DATATYPE>& reg, DATATYPE& dt){return this->rd_cb(idx, reg, dt);});
+            _reg_field[idx].set_read_cb([this, idx](const sc_register<DATATYPE>& reg, DATATYPE& dt) { return this->rd_cb(idx, reg, dt); });
     }
     /**
      * set the read callback triggered upon a read request
@@ -394,7 +390,9 @@ public:
     void set_read_cb(std::function<bool(size_t, const sc_register<DATATYPE>&, DATATYPE&, sc_core::sc_time&)> read_cb) {
         rd_time_cb = read_cb;
         for(size_t idx = START; idx < SIZE + START; ++idx)
-            _reg_field[idx].set_read_cb([this, idx](const sc_register<DATATYPE>& reg, DATATYPE& dt, sc_core::sc_time& delay){return this->rd_time_cb(idx, reg, dt, delay);});
+            _reg_field[idx].set_read_cb([this, idx](const sc_register<DATATYPE>& reg, DATATYPE& dt, sc_core::sc_time& delay) {
+                return this->rd_time_cb(idx, reg, dt, delay);
+            });
     }
     /**
      * set the write callback triggered upon a write request without forwarding the annotated time
@@ -405,7 +403,7 @@ public:
     void set_write_cb(std::function<bool(size_t, sc_register<DATATYPE>&, DATATYPE const&)> write_cb) {
         wr_cb = write_cb;
         for(size_t idx = START; idx < SIZE + START; ++idx)
-            _reg_field[idx].set_write_cb([this, idx](sc_register<DATATYPE>& reg, const DATATYPE& dt){return this->wr_cb(idx, reg, dt);});
+            _reg_field[idx].set_write_cb([this, idx](sc_register<DATATYPE>& reg, const DATATYPE& dt) { return this->wr_cb(idx, reg, dt); });
     }
     /**
      * set the write callback triggered upon a write request
@@ -415,7 +413,9 @@ public:
     void set_write_cb(std::function<bool(size_t, sc_register<DATATYPE>&, DATATYPE const&, sc_core::sc_time&)> write_cb) {
         wr_time_cb = write_cb;
         for(size_t idx = START; idx < SIZE + START; ++idx)
-            _reg_field[idx].set_write_cb([this, idx](sc_register<DATATYPE>& reg, const DATATYPE& dt, sc_core::sc_time& delay){return this->wr_time_cb(idx, reg, dt, delay);});
+            _reg_field[idx].set_write_cb([this, idx](sc_register<DATATYPE>& reg, const DATATYPE& dt, sc_core::sc_time& delay) {
+                return this->wr_time_cb(idx, reg, dt, delay);
+            });
     }
     /**
      * Element access operator
@@ -462,8 +462,7 @@ private:
 /**
  * alias class to map template argument read an write mask to constructor arguments
  */
-template <typename DATATYPE, DATATYPE WRMASK = impl::get_max_uval<DATATYPE>(),
-          DATATYPE RDMASK = impl::get_max_uval<DATATYPE>()>
+template <typename DATATYPE, DATATYPE WRMASK = impl::get_max_uval<DATATYPE>(), DATATYPE RDMASK = impl::get_max_uval<DATATYPE>()>
 class sc_register_masked : public sc_register<DATATYPE> {
 public:
     sc_register_masked(sc_core::sc_module_name nm, DATATYPE& storage, const DATATYPE reset_val, resetable& owner)

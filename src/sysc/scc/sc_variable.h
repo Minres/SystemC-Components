@@ -17,10 +17,10 @@
 #ifndef _SCC_SC_VARIABLE_H_
 #define _SCC_SC_VARIABLE_H_
 
-#include <array>
-#include <functional>
 #include "observer.h"
 #include "report.h"
+#include <array>
+#include <functional>
 #include <sstream>
 #include <sysc/kernel/sc_event.h>
 #include <sysc/kernel/sc_simcontext.h>
@@ -70,7 +70,6 @@ struct sc_variable_b : sc_core::sc_object {
     virtual std::string to_string() const { return ""; };
 
     virtual void trace(observer* obs) const = 0;
-
 };
 /**
  * @struct sc_variable
@@ -323,9 +322,7 @@ template <> struct sc_variable<bool> : public sc_variable_b {
     struct creator {
         creator(bool const& default_val)
         : default_val{default_val} {}
-        sc_variable<bool>* operator()(const char* n, size_t i) {
-            return new sc_variable<bool>(n, default_val);
-        }
+        sc_variable<bool>* operator()(const char* n, size_t i) { return new sc_variable<bool>(n, default_val); }
 
     private:
         bool default_val{};
@@ -357,8 +354,7 @@ template <typename T> struct sc_variable_vector {
         resize(size, def_val);
     }
 
-    sc_variable_vector(std::string const& name, size_t size,
-                       std::function<sc_variable<T>*(char const*, size_t)> creator)
+    sc_variable_vector(std::string const& name, size_t size, std::function<sc_variable<T>*(char const*, size_t)> creator)
     : name(name)
     , values(size, nullptr)
     , creator(creator) {}
@@ -381,14 +377,14 @@ template <typename T> struct sc_variable_vector {
         }
     }
 
-    bool is_valid(size_t idx) const { return values.size()> idx && values.at(idx) != nullptr; }
+    bool is_valid(size_t idx) const { return values.size() > idx && values.at(idx) != nullptr; }
 
     sc_variable<T>& operator[](size_t idx) {
         auto ret = values.at(idx);
         if(!ret) {
             if(sc_core::sc_get_curr_simcontext()->elaboration_done())
-                SCCFATAL(sc_core::sc_get_current_object()->name())<<"Trying to create a sc_variable vector entry in "<<name <<
-                " with index "<<idx<<" while elaboration finished is not allowed";
+                SCCFATAL(sc_core::sc_get_current_object()->name()) << "Trying to create a sc_variable vector entry in " << name
+                                                                   << " with index " << idx << " while elaboration finished is not allowed";
             assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
             assert(creator);
             std::stringstream ss;
@@ -474,7 +470,7 @@ template <> struct sc_ref_variable<sc_core::sc_event> : public sc_variable_b {
         return ss.str();
     }
 
-    void trace(observer* obs) const override { }
+    void trace(observer* obs) const override {}
 
     void trace(sc_core::sc_trace_file* tf) const override { sc_core::sc_trace(tf, value, name()); }
 };
@@ -502,7 +498,7 @@ template <typename T> struct sc_ref_variable_masked : public sc_variable_b {
         return ss.str();
     }
 
-    void trace(observer* obs) const override { }
+    void trace(observer* obs) const override {}
 
     void trace(sc_core::sc_trace_file* tf) const override { sc_core::sc_trace(tf, value, name()); }
 };
@@ -510,20 +506,12 @@ template <typename T> struct sc_ref_variable_masked : public sc_variable_b {
 } // namespace scc
 
 namespace sc_core {
-template <class T> inline void sc_trace(sc_trace_file* tf, const ::scc::sc_variable<T>& object, const char* name) {
-    object.trace(tf);
-}
-template <class T> inline void sc_trace(sc_trace_file* tf, const ::scc::sc_variable<T>* object, const char* name) {
-    object->trace(tf);
-}
+template <class T> inline void sc_trace(sc_trace_file* tf, const ::scc::sc_variable<T>& object, const char* name) { object.trace(tf); }
+template <class T> inline void sc_trace(sc_trace_file* tf, const ::scc::sc_variable<T>* object, const char* name) { object->trace(tf); }
 
-template <class T> inline void sc_trace(sc_trace_file* tf, const ::scc::sc_ref_variable<T>& object, const char* name) {
-    object.trace(tf);
-}
-template <class T> inline void sc_trace(sc_trace_file* tf, const ::scc::sc_ref_variable<T>* object, const char* name) {
-    object->trace(tf);
-}
+template <class T> inline void sc_trace(sc_trace_file* tf, const ::scc::sc_ref_variable<T>& object, const char* name) { object.trace(tf); }
+template <class T> inline void sc_trace(sc_trace_file* tf, const ::scc::sc_ref_variable<T>* object, const char* name) { object->trace(tf); }
 
 } // namespace sc_core
 /** @} */ // end of scc-sysc
-#endif /* _SCC_SC_VARIABLE_H_ */
+#endif    /* _SCC_SC_VARIABLE_H_ */

@@ -16,8 +16,8 @@
 
 #pragma once
 
-#include <cstdint>
 #include "tlm_gp_shared.h"
+#include <cstdint>
 
 //! @brief SystemC TLM
 namespace tlm {

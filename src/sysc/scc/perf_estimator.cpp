@@ -51,8 +51,8 @@ perf_estimator::~perf_estimator() {
     if(cycle_period.value()) {
         uint64_t cycles = sc_time_stamp().value() / cycle_period.value();
         SCCINFO("perf_estimator") << "simulation speed:   "
-                       << (sc_time_stamp().value() ? cycles / (eos.proc_clock_stamp - soc.proc_clock_stamp) : 0.0)
-                       << " cycles/s";
+                                  << (sc_time_stamp().value() ? cycles / (eos.proc_clock_stamp - soc.proc_clock_stamp) : 0.0)
+                                  << " cycles/s";
     }
     SCCINFO("perf_estimator") << "max resident memory: " << max_memory << "kB";
 }
@@ -73,8 +73,8 @@ void perf_estimator::end_of_simulation() {
     if(elapsed_sim > 0) {
         double wall_perf = elapsed_wall / elapsed_sim;
         double proc_perf = elapsed_proc / elapsed_sim;
-        SCCINFO("perf_estimator") << "Wall clock (process clock) based simulation real time factor is " << wall_perf << "("
-                       << proc_perf << ")";
+        SCCINFO("perf_estimator") << "Wall clock (process clock) based simulation real time factor is " << wall_perf << "(" << proc_perf
+                                  << ")";
     }
     get_memory();
 }
@@ -83,7 +83,9 @@ void perf_estimator::beat() {
     if(sc_time_stamp().value())
         SCCINFO("perf_estimator") << "Heart beat, rss mem: " << get_memory() << "kB";
     next_trigger(beat_delay);
+#ifndef _MSC_VER
     malloc_trim(0);
+#endif
 }
 } /* namespace scc */
 
@@ -96,8 +98,8 @@ auto scc::perf_estimator::time_stamp::get_cpu_time() -> double {
     if(GetProcessTimes(GetCurrentProcess(), &create_time, &exit_time, &kernel_time, &user_time) != -1) {
         SYSTEMTIME system_time;
         if(FileTimeToSystemTime(&user_time, &system_time) != -1)
-            return (double)system_time.wHour * 3600.0 + (double)system_time.wMinute * 60.0 +
-                   (double)system_time.wSecond + (double)system_time.wMilliseconds / 1000.;
+            return (double)system_time.wHour * 3600.0 + (double)system_time.wMinute * 60.0 + (double)system_time.wSecond +
+                   (double)system_time.wMilliseconds / 1000.;
     }
 #elif defined(__unix__) || defined(__unix) || defined(unix) || (defined(__MACH__) && defined(__APPLE__))
 #if _POSIX_TIMERS > 0

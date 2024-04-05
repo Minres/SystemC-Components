@@ -36,7 +36,6 @@ set(LIB_SOURCES
     scc/scv/scv_tr_mtc.cpp
     scc/scv/scv_tr_lz4.cpp
     scc/scv/scv_tr_ftr.cpp
-    scc/vcd_mt_trace.cpp
     scc/vcd_pull_trace.cpp
     scc/vcd_push_trace.cpp
     tlm/scc/scv/tlm_recorder.cpp
@@ -46,12 +45,17 @@ set(LIB_SOURCES
     scc/configurer.cpp
     scc/configurable_tracer.cpp
     scc/sc_thread_pool.cpp
+    scc/signal_opt_ports.cpp
     tlm/scc/lwtr/tlm2_lwtr.cpp
 )
 
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
-    list(APPEND LIB_SOURCES  scc/scv/scv_tr_compressed.cpp scc/fst_trace.cpp)
+    list(APPEND LIB_SOURCES  
+        scc/scv/scv_tr_compressed.cpp
+        scc/fst_trace.cpp
+        scc/vcd_mt_trace.cpp
+        )
     set(WITH_FST ON)
 endif()
 
@@ -60,8 +64,9 @@ if(ENABLE_SQLITE)
 endif()
 
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
-if(SCC_LIMIT_TRACE_TYPE_LIST)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE LIMIT_TRACE_TYPE_LIST)
+add_library(scc::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+if(FULL_TRACE_TYPE_LIST)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE FULL_TRACE_TYPE_LIST)
 endif()
 if(SC_WITH_PHASE_CALLBACKS)
     target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SC_PHASE_CALLBACKS)
@@ -70,8 +75,11 @@ if(SC_WITH_PHASE_CALLBACK_TRACING)
     target_compile_definitions(${PROJECT_NAME} PUBLIC WITH_SC_TRACING_PHASE_CALLBACKS)
 endif()
 
-target_include_directories (${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(${PROJECT_NAME} PUBLIC scc-util RapidJSON ${SPDLOG_TARGET} lwtr)
+target_include_directories (${PROJECT_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
+)
+target_link_libraries(${PROJECT_NAME} PUBLIC scc-util RapidJSON spdlog::spdlog lwtr)
 if(ENABLE_SQLITE)
     target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SQLITE)
     target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../third_party/sqlite3)
@@ -141,7 +149,7 @@ if(TARGET lz4::lz4)
     target_link_libraries(${PROJECT_NAME} PRIVATE lz4::lz4)
 endif()
 target_compile_definitions(${PROJECT_NAME} PRIVATE FMT_HEADER_ONLY)
-target_link_libraries(${PROJECT_NAME} PUBLIC ${FMT_TARGET} fstapi Threads::Threads ${CMAKE_DL_LIBS})
+target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt fstapi Threads::Threads ${CMAKE_DL_LIBS})
 
 if(CLANG_TIDY_EXE)
     set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}" )
@@ -153,13 +161,18 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/scc_sysc.h
 )
 
-install(TARGETS ${PROJECT_NAME} COMPONENT sysc
+install(TARGETS ${PROJECT_NAME} COMPONENT sysc EXPORT ${PROJECT_NAME}-targets
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
         
+install(EXPORT ${PROJECT_NAME}-targets
+        DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+        NAMESPACE scc::
+        )
+
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scc COMPONENT sysc
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
         FILES_MATCHING # install only matched files

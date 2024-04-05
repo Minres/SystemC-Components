@@ -30,8 +30,7 @@ const std::array<std::string, 7> resp2char{
     {"OK", "INCOMPLETE", "GENERIC_ERROR", "ADDRESS_ERROR", "COMMAND_ERROR", "BURST_ERROR", "BYTE_ENABLE_ERROR"}};
 const std::array<std::string, 3> gp_option2char{{"MIN_PAYLOAD", "FULL_PAYLOAD", "FULL_PAYLOAD_ACCEPTED"}};
 const std::array<std::string, 5> phase2char{{"UNINITIALIZED_PHASE", "BEGIN_REQ", "END_REQ", "BEGIN_RESP", "END_RESP"}};
-const std::array<std::string, 4> dmi2char{
-    {"DMI_ACCESS_NONE", "DMI_ACCESS_READ", "DMI_ACCESS_WRITE", "DMI_ACCESS_READ_WRITE"}};
+const std::array<std::string, 4> dmi2char{{"DMI_ACCESS_NONE", "DMI_ACCESS_READ", "DMI_ACCESS_WRITE", "DMI_ACCESS_READ_WRITE"}};
 const std::array<std::string, 3> sync2char{{"ACCEPTED", "UPDATED", "COMPLETED"}};
 
 } // namespace
@@ -80,18 +79,16 @@ class tlm_id_ext_recording : public tlm_extensions_recording_if<tlm::tlm_base_pr
         }
     }
 
-    void recordEndTx(SCVNS scv_tr_handle& handle, tlm::tlm_base_protocol_types::tlm_payload_type& trans) override {
-    }
+    void recordEndTx(SCVNS scv_tr_handle& handle, tlm::tlm_base_protocol_types::tlm_payload_type& trans) override {}
 };
 using namespace tlm::scc::scv;
 #if defined(__GNUG__)
 __attribute__((constructor))
 #endif
 bool register_extensions() {
-    tlm::scc::tlm_id_extension ext(nullptr); // NOLINT
-    tlm_extension_recording_registry<tlm::tlm_base_protocol_types>::inst().register_ext_rec(
-        ext.ID, new tlm_id_ext_recording()); // NOLINT
-    return true;                             // NOLINT
+    tlm::scc::tlm_id_extension ext(nullptr);                                                                                     // NOLINT
+    tlm_extension_recording_registry<tlm::tlm_base_protocol_types>::inst().register_ext_rec(ext.ID, new tlm_id_ext_recording()); // NOLINT
+    return true;                                                                                                                 // NOLINT
 }
 bool registered = register_extensions();
 

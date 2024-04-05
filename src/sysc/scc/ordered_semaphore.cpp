@@ -50,9 +50,10 @@ void ordered_semaphore::set_capacity(unsigned c) {
     }
 }
 
+void ordered_semaphore::trace(sc_core::sc_trace_file* tf) const { sc_core::sc_trace(tf, value, name()); }
+
 void ordered_semaphore::report_error(const char* id, const char* add_msg) const {
-    auto msg =
-        add_msg ? util::strprintf("semaphore '%s'", name()) : util::strprintf("%s: semaphore '%s'", add_msg, name());
+    auto msg = add_msg ? util::strprintf("semaphore '%s'", name()) : util::strprintf("%s: semaphore '%s'", add_msg, name());
     SC_REPORT_ERROR(id, msg.c_str());
 }
 
@@ -68,25 +69,16 @@ ordered_semaphore::ordered_semaphore(unsigned init_value_)
     }
 }
 
-ordered_semaphore::ordered_semaphore(const char* name_, unsigned init_value_)
+ordered_semaphore::ordered_semaphore(const char* name_, unsigned init_value_, bool value_traceable)
 : sc_object(name_)
 , free_evt(gen_unique_event_name("free_event").c_str())
 , value(init_value_)
-, capacity(init_value_) {}
+, capacity(init_value_)
+, value_traceable(value_traceable) {}
 
 // interface methods
 
 // lock (take) the semaphore, block if not available
-
-auto ordered_semaphore::wait() -> int {
-    queue.at(0).push_back(sc_core::sc_get_current_process_handle());
-    while(in_use()) {
-        sc_core::wait(free_evt);
-    }
-    --value;
-    return value;
-}
-
 auto ordered_semaphore::wait(unsigned priority) -> int {
     queue.at(priority).push_back(sc_core::sc_get_current_process_handle());
     while(in_use()) {
@@ -114,7 +106,7 @@ auto ordered_semaphore::post() -> int {
     } else
         ++value;
     if(value > 0)
-        free_evt.notify();
+        free_evt.notify(sc_core::SC_ZERO_TIME);
     return value;
 }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2019-2022 MINRES Technologies GmbH
+ * Copyright 2019-2023 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,10 @@
 #ifndef _BUS_AHB_PIN_TARGET_H_
 #define _BUS_AHB_PIN_TARGET_H_
 
+#include <scc/peq.h>
 #include <tlm/scc/initiator_mixin.h>
 #include <tlm>
+#include <tlm_utils/peq_with_get.h>
 
 //! TLM2.0 components modeling AHB
 namespace ahb {
@@ -52,11 +54,20 @@ public:
     virtual ~target();
 
 private:
-    void bfm_thread();
-    void handle_data_phase(unsigned& beat_cnt);
-    tlm::tlm_generic_payload* addr_payload{nullptr};
-    tlm::tlm_generic_payload* data_payload{nullptr};
-    sc_core::sc_fifo<tlm::tlm_generic_payload*> active{"active_tx", 1};
+    void bus_addr_task();
+    void bus_data_task();
+    static tlm::tlm_generic_payload* wait4tx(tlm_utils::peq_with_get<tlm::tlm_generic_payload>& que) {
+        tlm::tlm_generic_payload* ret = que.get_next_transaction();
+        while(!ret) {
+            ::sc_core::wait(que.get_event());
+            ret = que.get_next_transaction();
+        }
+        return ret;
+    }
+    sc_core::sc_event end_req_evt;
+    tlm_utils::peq_with_get<tlm::tlm_generic_payload> resp_que{"resp_que"};
+    tlm_utils::peq_with_get<tlm::tlm_generic_payload> tx_in_flight{"tx_in_flight"};
+    bool waiting4end_req{false};
 };
 
 } // namespace pin

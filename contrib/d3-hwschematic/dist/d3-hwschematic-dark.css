@@ -1,0 +1,96 @@
+.d3-hwschematic text {
+	font-family: monospace;
+}
+
+.d3-hwschematic .node {
+	stroke: #BDBDBD;
+	stroke-width: 1px;
+	fill: #e6ffff;
+	border: 2px;
+}
+
+
+.d3-hwschematic .node-0 {
+	fill: white;
+}
+
+.d3-hwschematic .node-1 {
+}
+
+.d3-hwschematic .node text {
+	font-style: normal;
+	font-family: monospace;
+	fill: black;
+	stroke-width: 0;
+}
+
+.d3-hwschematic.node-operator {
+	stroke: lime;
+	stroke-width: 1px;
+	fill: aquamarine;
+	border: 2px;
+}
+
+.d3-hwschematic.node-operator text {
+	font-style: normal;
+	font-family: monospace;
+	fill: lime;
+	stroke-width: 0;
+}
+
+.d3-hwschematic .node-external-port {
+	stroke: lime;
+	stroke-width: 0;
+	fill: #BDBDBD;
+	border: 1px;
+}
+
+.d3-hwschematic .node-external-port text {
+	font-style: normal;
+	font-family: monospace;
+	fill: black;
+	stroke-width: 0;
+}
+
+.d3-hwschematic .link {
+	stroke: lime;
+	fill: none;
+}
+
+.d3-hwschematic .junction-point {
+	stroke: lime;
+	fill: lime;
+}
+
+.d3-hwschematic .link-selected {
+	stroke: orange;
+	fill: none;
+}
+
+.d3-hwschematic .link-wrap {
+	stroke-width: 8;
+	fill: none;
+    stroke: transparent;
+    stroke-opacity: .6;
+}
+.d3-hwschematic .link-wrap.link-wrap-activated {
+	stroke: deepskyblue;
+}
+
+.d3-hwschematic .port {
+	stroke: lime;
+	opacity: .6;
+}
+
+.d3-hwschematic tspan {
+	white-space: pre;
+}
+
+.d3-hwschematic-tooltip {
+	z-index: 2;
+	background: cornsilk;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 5px;
+	position: fixed;
+}

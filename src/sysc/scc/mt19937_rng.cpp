@@ -15,9 +15,9 @@
  *******************************************************************************/
 
 #include "mt19937_rng.h"
+#include <cstdlib>
 #include <systemc>
 #include <unordered_map>
-#include <cstdlib>
 
 namespace {
 struct {
@@ -27,7 +27,7 @@ struct {
     bool global_seed;
 } rng;
 
-bool debug_randomization = getenv("SCC_DEBUG_RANDOMIZATION")!=nullptr;
+bool debug_randomization = getenv("SCC_DEBUG_RANDOMIZATION") != nullptr;
 }; // namespace
 
 auto scc::MT19937::inst() -> std::mt19937_64& {
@@ -40,17 +40,18 @@ auto scc::MT19937::inst() -> std::mt19937_64& {
             if(rng.global_seed) {
                 seed = reinterpret_cast<uintptr_t>(&rng.inst) ^ rng.seed;
                 if(debug_randomization)
-                    std::cout<<"seeding rng for "<<obj->name()<<" with global seed "<<seed<<"\n";
+                    std::cout << "seeding rng for " << obj->name() << " with global seed " << seed << "\n";
             } else {
                 std::string name{obj->name()};
                 std::hash<std::string> h;
                 seed = (h(name) ^ rng.seed);
                 if(debug_randomization)
-                    std::cout<<"seeding rng for "<<obj->name()<<" with local seed "<<seed<<"\n";
+                    std::cout << "seeding rng for " << obj->name() << " with local seed " << seed << "\n";
             }
             ret.seed(seed);
-        } if(debug_randomization) {
-            std::cout<<"retrieving next rnd number for "<<obj->name()<<"\n";
+        }
+        if(debug_randomization) {
+            std::cout << "retrieving next rnd number for " << obj->name() << "\n";
         }
         return ret;
     }

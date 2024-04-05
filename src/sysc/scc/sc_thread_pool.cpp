@@ -32,7 +32,7 @@ sc_thread_pool::~sc_thread_pool() = default;
 void sc_thread_pool::execute(std::function<void(void)> fct) {
     sc_core::sc_spawn_options opts;
     opts.set_stack_size(0x10000);
-    if(thread_avail == 0 && thread_active < max_concurrent_threads.get_value())
+    if((thread_avail == 0 || dispatch_queue.has_next()) && thread_active < max_concurrent_threads.get_value())
         sc_core::sc_spawn(
             [this]() {
                 thread_active++;
@@ -45,7 +45,7 @@ void sc_thread_pool::execute(std::function<void(void)> fct) {
                 }
             },
             nullptr, &opts);
-    dispatch_queue.notify(fct);
+    dispatch_queue.notify(std::move(fct));
 }
 
 } /* namespace scc */

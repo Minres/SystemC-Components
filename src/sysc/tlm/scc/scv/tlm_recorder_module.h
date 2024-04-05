@@ -37,8 +37,7 @@ namespace scv {
  * The transaction recorder is simply bound between an existing pair of
  * initiator and target sockets
  */
-template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types>
-class tlm_recorder_module : public sc_core::sc_module {
+template <unsigned int BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types> class tlm_recorder_module : public sc_core::sc_module {
 public:
     SC_HAS_PROCESS(tlm_recorder_module); // NOLINT
     //! The target socket of the recorder to be bound to the initiator
@@ -57,8 +56,8 @@ public:
     tlm_recorder_module(sc_core::sc_module_name name, bool recording_enabled = true,
                         SCVNS scv_tr_db* tr_db = SCVNS scv_tr_db::get_default_db())
     : sc_module(name) {
-        recorder.reset(new tlm_recorder<TYPES>(sc_core::sc_object::name(), is.get_base_port(), ts.get_base_port(),
-                recording_enabled, tr_db));
+        recorder.reset(
+            new tlm_recorder<TYPES>(sc_core::sc_object::name(), is.get_base_port(), ts.get_base_port(), recording_enabled, tr_db));
         add_attribute(recorder->enableBlTracing);
         add_attribute(recorder->enableNbTracing);
         add_attribute(recorder->enableTimedTracing);
@@ -68,11 +67,12 @@ public:
         ts.bind(*recorder);
     }
 
-    sc_core::sc_attribute<bool> enableTimedTracing() {return recorder->enableBlTracing;}
+    sc_core::sc_attribute<bool> enableTimedTracing() { return recorder->enableBlTracing; }
 
     virtual ~tlm_recorder_module() {}
 
     std::unique_ptr<tlm_recorder<TYPES>> recorder;
+
 private:
     void start_of_simulation() override { recorder->initialize_streams(); }
 };

@@ -38,7 +38,7 @@ spi::~spi() {} // NOLINT
 void spi::clock_cb() { this->clk = clk_i.read(); }
 
 void spi::reset_cb() {
-    if (rst_i.read())
+    if(rst_i.read())
         regs->reset_start();
     else
         regs->reset_stop();

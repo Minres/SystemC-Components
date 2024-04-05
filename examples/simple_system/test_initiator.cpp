@@ -53,7 +53,8 @@ test_initiator::test_initiator(sc_module_name nm)
 
 void test_initiator::run() {
     // wait for reset
-    if (rst_i.read() == false) wait(rst_i.posedge_event());
+    if(rst_i.read() == false)
+        wait(rst_i.posedge_event());
     wait(rst_i.negedge_event());
     wait(10_ns);
 
@@ -225,7 +226,7 @@ void test_initiator::write_bus(std::uint32_t adr, std::uint32_t dat) {
     sc_time delay;
     intor->b_transport(gp, delay);
 
-    if (gp.get_response_status() != tlm::TLM_OK_RESPONSE) {
+    if(gp.get_response_status() != tlm::TLM_OK_RESPONSE) {
         throw std::exception();
     }
 }
@@ -243,7 +244,7 @@ std::uint32_t test_initiator::read_bus(std::uint32_t adr) {
     sc_time delay;
     intor->b_transport(gp, delay);
 
-    if (gp.get_response_status() != tlm::TLM_OK_RESPONSE) {
+    if(gp.get_response_status() != tlm::TLM_OK_RESPONSE) {
         // todo: improve output in case of exception, define own exception class to carry transaction-infos
         // ... i.e. out-of-range report with info about legal mem boundaries
         throw std::exception();
@@ -258,15 +259,13 @@ std::uint32_t test_initiator::read_bus(std::uint32_t adr) {
 
 void test_initiator::reg_check(std::uint32_t adr, std::uint32_t exp) {
     uint32_t dat = read_bus(adr);
-    if (dat != exp) {
+    if(dat != exp) {
         SCCERR("test_initiator") << "register check failed for address 0x" << std::hex << adr << ": " << dat << " !=  " << exp;
     } else {
         SCCDEBUG("test_initiator") << "register check passed for address 0x" << std::hex << adr << ": " << dat;
     }
 }
 
-void test_initiator::core_irq_handler() {
-    SCCDEBUG("test_initiator") << "core_interrupt_i edge detected -> " << core_interrupt_i.read();
-}
+void test_initiator::core_irq_handler() { SCCDEBUG("test_initiator") << "core_interrupt_i edge detected -> " << core_interrupt_i.read(); }
 
 } /* namespace sysc */

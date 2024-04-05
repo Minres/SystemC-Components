@@ -35,7 +35,7 @@ namespace util {
  */
 template <typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24> class sparse_array {
 public:
-    static_assert(SIZE>0, "sparse_array size must be greater than 0");
+    static_assert(SIZE > 0, "sparse_array size must be greater than 0");
 
     const uint64_t page_addr_mask = (1 << PAGE_ADDR_BITS) - 1;
 

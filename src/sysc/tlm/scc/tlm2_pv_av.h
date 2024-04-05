@@ -149,9 +149,7 @@ private:
 
     void b_transport(tlm_payload_type& trans, sc_core::sc_time& t) { isck->b_transport(trans, t); }
 
-    bool get_direct_mem_ptr(tlm_payload_type& trans, tlm_dmi& dmi_data) {
-        return isck->get_direct_mem_ptr(trans, dmi_data);
-    }
+    bool get_direct_mem_ptr(tlm_payload_type& trans, tlm_dmi& dmi_data) { return isck->get_direct_mem_ptr(trans, dmi_data); }
 
     unsigned int transport_dbg(tlm_payload_type& trans) { return isck->transport_dbg(trans); }
 

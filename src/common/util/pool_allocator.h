@@ -27,6 +27,11 @@
 #include <cstdlib>
 #endif
 
+#ifdef _MSC_VER
+#define NOEXCEPT
+#else
+#define NOEXCEPT _GLIBCXX_USE_NOEXCEPT
+#endif
 /**
  * \ingroup scc-common
  */
@@ -86,8 +91,7 @@ private:
 #endif
 };
 
-template<typename T>
-class stl_pool_allocator {
+template <typename T> class stl_pool_allocator {
 public:
     typedef T value_type;
     typedef value_type* pointer;
@@ -97,77 +101,72 @@ public:
     typedef std::size_t size_type;
     typedef std::ptrdiff_t difference_type;
     //    convert an allocator<T> to allocator<U> e.g. for std::map from A to _Node<A>
-    template<typename U>
-    struct rebind {
-        typedef stl_pool_allocator<U> other;
-    };
+    template <typename U> struct rebind { typedef stl_pool_allocator<U> other; };
 
-    stl_pool_allocator(const stl_pool_allocator&) noexcept { }
+    stl_pool_allocator(const stl_pool_allocator&) noexcept {}
 
-    template<typename T2>
-    stl_pool_allocator(const stl_pool_allocator<T2>&) noexcept { }
+    template <typename T2> stl_pool_allocator(const stl_pool_allocator<T2>&) noexcept {}
 
-    ~stl_pool_allocator() _GLIBCXX_USE_NOEXCEPT { }
+    ~stl_pool_allocator() NOEXCEPT {}
 
     //    address
-    pointer address(reference r) { return std::addressof(r);}
+    pointer address(reference r) { return std::addressof(r); }
     const_pointer address(const_reference r) { return std::addressof(r); }
 
     pointer allocate(size_type n, const void* = 0) {
-    	size_type value = 16;
-    	while(value<n) value <<=2;
-    	switch(n) {
-    	case 16:
-    		return static_cast<T*>(util::pool_allocator<16*sizeof(T), 65536>::get().allocate());
-    	case 64:
-    		return static_cast<T*>(util::pool_allocator<64*sizeof(T), 16384>::get().allocate());
-    	case 256:
-    		return static_cast<T*>(util::pool_allocator<256*sizeof(T), 4096>::get().allocate());
-    	case 1024:
-    		return static_cast<T*>(util::pool_allocator<1024*sizeof(T), 1024>::get().allocate());
-		case 4096:
-    		return static_cast<T*>(util::pool_allocator<4096*sizeof(T), 256>::get().allocate());
-    	case 16384:
-    		return static_cast<T*>(util::pool_allocator<16384*sizeof(T), 64>::get().allocate());
-    	default:
-    		return static_cast<T*>(::operator new(n * sizeof(T)));
-    	}
+        size_type value = 16;
+        while(value < n)
+            value <<= 2;
+        switch(n) {
+        case 16:
+            return static_cast<T*>(util::pool_allocator<16 * sizeof(T), 65536>::get().allocate());
+        case 64:
+            return static_cast<T*>(util::pool_allocator<64 * sizeof(T), 16384>::get().allocate());
+        case 256:
+            return static_cast<T*>(util::pool_allocator<256 * sizeof(T), 4096>::get().allocate());
+        case 1024:
+            return static_cast<T*>(util::pool_allocator<1024 * sizeof(T), 1024>::get().allocate());
+        case 4096:
+            return static_cast<T*>(util::pool_allocator<4096 * sizeof(T), 256>::get().allocate());
+        case 16384:
+            return static_cast<T*>(util::pool_allocator<16384 * sizeof(T), 64>::get().allocate());
+        default:
+            return static_cast<T*>(::operator new(n * sizeof(T)));
+        }
     }
 
     void deallocate(T* p, size_type n) noexcept {
-    	size_type value = 16;
-    	while(value<n) value <<= 2;
-    	switch(n) {
-    	case 16:
-    		util::pool_allocator<16*sizeof(T), 65536>::get().free(p);
-    		break;
-    	case 64:
-    		util::pool_allocator<64*sizeof(T), 16384>::get().free(p);
-    		break;
-    	case 256:
-    		util::pool_allocator<256*sizeof(T), 4096>::get().free(p);
-    		break;
-    	case 1024:
-    		util::pool_allocator<1024*sizeof(T), 1024>::get().free(p);
-    		break;
-		case 4096:
-    		util::pool_allocator<4096*sizeof(T), 256>::get().free(p);
-    		break;
-    	case 16384:
-    		util::pool_allocator<16384*sizeof(T), 64>::get().free(p);
-    		break;
-    	default:
-    		::operator delete(p);
-    	}
+        size_type value = 16;
+        while(value < n)
+            value <<= 2;
+        switch(n) {
+        case 16:
+            util::pool_allocator<16 * sizeof(T), 65536>::get().free(p);
+            break;
+        case 64:
+            util::pool_allocator<64 * sizeof(T), 16384>::get().free(p);
+            break;
+        case 256:
+            util::pool_allocator<256 * sizeof(T), 4096>::get().free(p);
+            break;
+        case 1024:
+            util::pool_allocator<1024 * sizeof(T), 1024>::get().free(p);
+            break;
+        case 4096:
+            util::pool_allocator<4096 * sizeof(T), 256>::get().free(p);
+            break;
+        case 16384:
+            util::pool_allocator<16384 * sizeof(T), 64>::get().free(p);
+            break;
+        default:
+            ::operator delete(p);
+        }
     }
-    size_type max_size() const noexcept {
-        return std::numeric_limits<size_type>::max() / sizeof(T);    }
+    size_type max_size() const noexcept { return std::numeric_limits<size_type>::max() / sizeof(T); }
 
     bool operator==(stl_pool_allocator const&) { return true; }
     bool operator!=(stl_pool_allocator const& oAllocator) { return !operator==(oAllocator); }
-
 };
-
 
 template <size_t ELEM_SIZE, unsigned CHUNK_SIZE> pool_allocator<ELEM_SIZE, CHUNK_SIZE>& pool_allocator<ELEM_SIZE, CHUNK_SIZE>::get() {
     thread_local pool_allocator inst;
@@ -188,10 +187,9 @@ template <size_t ELEM_SIZE, unsigned CHUNK_SIZE> pool_allocator<ELEM_SIZE, CHUNK
             if(check && strcasecmp(check, "DEBUG") == 0) {
 #endif
                 std::vector<std::pair<void*, uint64_t>> elems(used_blocks.begin(), used_blocks.end());
-                std::sort(elems.begin(), elems.end(),
-                          [](std::pair<void*, uint64_t> const& a, std::pair<void*, uint64_t> const& b) -> bool {
-                              return a.second == b.second ? a.first < b.first : a.second < b.second;
-                          });
+                std::sort(elems.begin(), elems.end(), [](std::pair<void*, uint64_t> const& a, std::pair<void*, uint64_t> const& b) -> bool {
+                    return a.second == b.second ? a.first < b.first : a.second < b.second;
+                });
                 std::cerr << "The 10 blocks with smallest id are:\n";
                 for(size_t i = 0; i < std::min<decltype(i)>(10UL, elems.size()); ++i) {
                     std::cerr << "\taddr=" << elems[i].first << ", id=" << elems[i].second << "\n";
@@ -200,7 +198,8 @@ template <size_t ELEM_SIZE, unsigned CHUNK_SIZE> pool_allocator<ELEM_SIZE, CHUNK
         }
     }
 #endif
-    for(auto p:chunks) delete p;
+    for(auto p : chunks)
+        delete p;
 }
 
 template <size_t ELEM_SIZE, unsigned CHUNK_SIZE> inline void* pool_allocator<ELEM_SIZE, CHUNK_SIZE>::allocate(uint64_t id) {

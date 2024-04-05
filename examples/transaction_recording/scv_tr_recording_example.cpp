@@ -15,13 +15,13 @@
  language governing rights and limitations under the License.
 
  *****************************************************************************/
-#include <scc/scv/scv_tr_db.h>
-#include <scv-tr.h>
+#include <chrono>
+#include <scc/mt19937_rng.h>
 #include <scc/report.h>
+#include <scc/scv/scv_tr_db.h>
 #include <scc/trace.h>
 #include <scc/value_registry.h>
-#include <scc/mt19937_rng.h>
-#include <chrono>
+#include <scv-tr.h>
 
 using namespace sc_core;
 using namespace sc_dt;
@@ -41,8 +41,8 @@ public:
         data_t data;
     };
 
-    virtual data_t read(const addr_t *) = 0;
-    virtual void write(const write_t *) = 0;
+    virtual data_t read(const addr_t*) = 0;
+    virtual void write(const write_t*) = 0;
 };
 
 namespace scv_tr {
@@ -55,7 +55,7 @@ public:
         SCV_FIELD(data);
     }
 };
-}
+} // namespace scv_tr
 class pipelined_bus_ports : public sc_module {
 public:
     sc_in<bool> clk;
@@ -74,10 +74,10 @@ public:
     , bus_addr("bus_addr")
     , data_rdy("data_rdy")
     , bus_data("bus_data") {}
-    void trace(sc_trace_file *tf) const override;
+    void trace(sc_trace_file* tf) const override;
 };
 
-void pipelined_bus_ports::trace(sc_trace_file *tf) const {
+void pipelined_bus_ports::trace(sc_trace_file* tf) const {
     sc_trace(tf, clk, clk.name());
     sc_trace(tf, rw, rw.name());
     sc_trace(tf, addr_req, addr_req.name());
@@ -114,11 +114,11 @@ public:
     , addr_gen("addr", addr_stream, "addr")
     , rdata_gen("rdata", data_stream, nullptr, "data")
     , wdata_gen("wdata", data_stream, "data") {}
-    data_t read(const addr_t *p_addr) override;
-    void write(const write_t *req) override;
+    data_t read(const addr_t* p_addr) override;
+    void write(const write_t* req) override;
 };
 
-rw_task_if::data_t rw_pipelined_transactor::read(const addr_t *addr) {
+rw_task_if::data_t rw_pipelined_transactor::read(const addr_t* addr) {
     addr_phase.lock();
     scv_tr_handle h = read_gen.begin_transaction(*addr);
     h.record_attribute("data_size", sizeof(data_t));
@@ -146,7 +146,7 @@ rw_task_if::data_t rw_pipelined_transactor::read(const addr_t *addr) {
     return data;
 }
 
-void rw_pipelined_transactor::write(const write_t *req) {
+void rw_pipelined_transactor::write(const write_t* req) {
     addr_phase.lock();
     scv_tr_handle h = write_gen.begin_transaction(*req);
     h.record_attribute("data_size", sizeof(data_t));
@@ -186,21 +186,21 @@ public:
 
 inline void test::main1() {
     // simple sequential tests
-    for (int i = 0; i < 3; i++) {
+    for(int i = 0; i < 3; i++) {
         rw_task_if::addr_t addr = i;
         rw_task_if::data_t data = transactor->read(&addr);
-        SCCINFO(sc_get_current_object()->name())  << "received data : " << data;
+        SCCINFO(sc_get_current_object()->name()) << "received data : " << data;
     }
-    for (int i = 0; i < 3; i++) {
+    for(int i = 0; i < 3; i++) {
         rw_task_if::addr_t addr = scc::MT19937::uniform(0, 255);
         rw_task_if::data_t data = transactor->read(&addr);
         SCCINFO(sc_get_current_object()->name()) << "data for address " << addr << " is " << data;
     }
 
-    for (int i = 0; i < 3; i++) {
-    	rw_task_if::write_t write;
-    	write.addr = scc::MT19937::uniform(0, 255);
-    	write.data = scc::MT19937::uniform(0, 255);
+    for(int i = 0; i < 3; i++) {
+        rw_task_if::write_t write;
+        write.addr = scc::MT19937::uniform(0, 255);
+        write.data = scc::MT19937::uniform(0, 255);
         transactor->write(&write);
         SCCINFO(sc_get_current_object()->name()) << "send data : " << write.data;
     }
@@ -208,22 +208,22 @@ inline void test::main1() {
 
 inline void test::main2() {
     // simple sequential tests
-    for (int i = 0; i < 3; i++) {
+    for(int i = 0; i < 3; i++) {
         rw_task_if::addr_t addr = i;
         rw_task_if::data_t data = transactor->read(&addr);
-        SCCINFO(sc_get_current_object()->name())  << "received data : " << data;
+        SCCINFO(sc_get_current_object()->name()) << "received data : " << data;
     }
 
-    for (int i = 0; i < 3; i++) {
+    for(int i = 0; i < 3; i++) {
         rw_task_if::addr_t addr = scc::MT19937::uniform(0, 255);
         rw_task_if::data_t data = transactor->read(&addr);
         SCCINFO(sc_get_current_object()->name()) << "data for address " << addr << " is " << data;
     }
 
-    for (int i = 0; i < 3; i++) {
-    	rw_task_if::write_t write;
-    	write.addr = scc::MT19937::uniform(0, 255);
-    	write.data = scc::MT19937::uniform(0, 255);
+    for(int i = 0; i < 3; i++) {
+        rw_task_if::write_t write;
+        write.addr = scc::MT19937::uniform(0, 255);
+        write.data = scc::MT19937::uniform(0, 255);
         transactor->write(&write);
         SCCINFO(sc_get_current_object()->name()) << "send data : " << write.data;
     }
@@ -237,7 +237,7 @@ public:
     SC_HAS_PROCESS(design);
     design(sc_module_name nm)
     : pipelined_bus_ports(nm) {
-        for (unsigned i = 0; i < ram_size; ++i) {
+        for(unsigned i = 0; i < ram_size; ++i) {
             memory[i] = i;
         }
         SC_THREAD(addr_phase);
@@ -248,15 +248,15 @@ public:
 };
 
 inline void design::addr_phase() {
-    while (true) {
-        while (addr_req.read() != 1) {
+    while(true) {
+        while(addr_req.read() != 1) {
             wait(addr_req->value_changed_event());
         }
         sc_uint<8> _addr = bus_addr.read();
         bool _rw = rw.read();
 
         int cycle = rand() % 10 + 1;
-        while (cycle-- > 0) {
+        while(cycle-- > 0) {
             wait(clk->posedge_event());
         }
 
@@ -266,29 +266,30 @@ inline void design::addr_phase() {
 
         outstandingAddresses.push_back(_addr);
         outstandingType.push_back(_rw);
-        SCCINFO(sc_get_current_object()->name())  << "received request for memory address " << _addr;
+        SCCINFO(sc_get_current_object()->name()) << "received request for memory address " << _addr;
     }
 }
 
 inline void design::data_phase() {
-    while (true) {
-        while (outstandingAddresses.empty()) {
+    while(true) {
+        while(outstandingAddresses.empty()) {
             wait(clk->posedge_event());
         }
         int cycle = rand() % 10 + 1;
-        while (cycle-- > 0) {
+        while(cycle-- > 0) {
             wait(clk->posedge_event());
         }
-        if (outstandingType.front() == false) {
+        if(outstandingType.front() == false) {
             SCCINFO(sc_get_current_object()->name()) << "reading memory address " << outstandingAddresses.front() << " with value "
-                 << memory[outstandingAddresses.front().to_ulong()];
+                                                     << memory[outstandingAddresses.front().to_ulong()];
             bus_data = memory[outstandingAddresses.front().to_ulong()];
             data_rdy = true;
             wait(clk->posedge_event());
             data_rdy = false;
 
         } else {
-            SCCINFO(sc_get_current_object()->name()) << "writing memory address " << outstandingAddresses.front() << " with value " << bus_data;
+            SCCINFO(sc_get_current_object()->name())
+                << "writing memory address " << outstandingAddresses.front() << " with value " << bus_data;
             memory[outstandingAddresses.front().to_ulong()] = bus_data;
             data_rdy = true;
             wait(clk->posedge_event());
@@ -299,7 +300,7 @@ inline void design::data_phase() {
     }
 }
 
-int sc_main(int argc, char *argv[]) {
+int sc_main(int argc, char* argv[]) {
     // Accellera SystemC >=2.2 got picky about multiple drivers.
     sc_report_handler::set_actions(SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, SC_DO_NOTHING);
     auto start = std::chrono::system_clock::now();
@@ -307,15 +308,15 @@ int sc_main(int argc, char *argv[]) {
 #if defined(CFTR)
     scv_tr_cbor_init(true);
     scv_tr_db db("my_db");
-    sc_trace_file *tf = scc::create_fst_trace_file("my_db");
+    sc_trace_file* tf = scc::create_fst_trace_file("my_db");
 #elif defined(FTR)
     scv_tr_cbor_init(false);
     scv_tr_db db("my_db");
-    sc_trace_file *tf = scc::create_fst_trace_file("my_db");
+    sc_trace_file* tf = scc::create_fst_trace_file("my_db");
 #else
     scv_tr::scv_tr_text_init();
     scv_tr_db db("my_db.txlog");
-    sc_trace_file *tf = sc_core::sc_create_vcd_trace_file("my_db");
+    sc_trace_file* tf = sc_core::sc_create_vcd_trace_file("my_db");
 #endif
     // create signals
     sc_clock clk("clk", 20.0, SC_NS, 0.5, 0.0, SC_NS, true);
@@ -356,7 +357,7 @@ int sc_main(int argc, char *argv[]) {
     // run the simulation
     sc_start(10.0, SC_US);
     scc::close_fst_trace_file(tf);
-    auto int_us = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now()-start);
-    SCCINFO() << "simulation duration "<<int_us.count()<<"µs";
+    auto int_us = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now() - start);
+    SCCINFO() << "simulation duration " << int_us.count() << "µs";
     return 0;
 }

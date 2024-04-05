@@ -20,7 +20,8 @@
 #include <systemc>
 #include <tlm>
 
-namespace scp::tlm_extensions {
+namespace scp {
+namespace tlm_extensions {
 
 /**
  * @class Path recording TLM extension
@@ -31,17 +32,14 @@ namespace scp::tlm_extensions {
  *          transactions as they pass through a network.
  */
 
-class path_trace : public tlm::tlm_extension<path_trace>
-{
+class path_trace : public tlm::tlm_extension<path_trace> {
     std::vector<sc_core::sc_object*> m_path;
 
 public:
     path_trace() = default;
     path_trace(const path_trace&) = default;
 
-    virtual tlm_extension_base* clone() const override {
-        return new path_trace(*this);
-    }
+    virtual tlm_extension_base* clone() const override { return new path_trace(*this); }
 
     virtual void copy_from(const tlm_extension_base& ext) override {
         const path_trace& other = static_cast<const path_trace&>(ext);
@@ -68,12 +66,13 @@ public:
     std::string to_string(std::string separator = "->") {
         std::stringstream info;
         std::string s;
-        for (auto o : m_path) {
+        for(auto o : m_path) {
             info << s << o->name();
             s = separator;
         }
         return info.str();
     }
 };
-} // namespace scp::tlm_extensions
+} // namespace tlm_extensions
+} // namespace scp
 #endif

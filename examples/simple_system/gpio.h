@@ -38,8 +38,8 @@
 #define _GPIO_H_
 
 #include "scc/tlm_target.h"
-#include "tlm/scc/signal_target_mixin.h"
 #include "tlm/scc/signal_initiator_mixin.h"
+#include "tlm/scc/signal_target_mixin.h"
 #include <tlm/scc/tlm_signal.h>
 
 namespace sysc {
@@ -55,12 +55,12 @@ public:
     // sc_core::sc_inout_rv<32> pins_io;
 
     sc_core::sc_vector<tlm::scc::tlm_signal_bool_out> pins_o;
-    sc_core::sc_vector<tlm::scc::tlm_signal_bool_in>  pins_i;
+    sc_core::sc_vector<tlm::scc::tlm_signal_bool_in> pins_i;
 
     sc_core::sc_vector<tlm::scc::tlm_signal_bool_opt_out> iof0_o;
     sc_core::sc_vector<tlm::scc::tlm_signal_bool_opt_out> iof1_o;
-    sc_core::sc_vector<tlm::scc::tlm_signal_bool_opt_in>  iof0_i;
-    sc_core::sc_vector<tlm::scc::tlm_signal_bool_opt_in>  iof1_i;
+    sc_core::sc_vector<tlm::scc::tlm_signal_bool_opt_in> iof0_i;
+    sc_core::sc_vector<tlm::scc::tlm_signal_bool_opt_in> iof1_i;
 
     gpio(sc_core::sc_module_name nm);
     virtual ~gpio() override; // need to keep it in source file because of fwd declaration of gpio_regs

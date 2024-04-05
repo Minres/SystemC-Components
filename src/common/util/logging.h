@@ -159,8 +159,7 @@ public:
      */
     static log_level from_string(const std::string& level) {
         for(unsigned int i = NONE; i <= TRACE; i++)
-            if(!strncasecmp(level.c_str(), (const char*)(get_log_level_cstr() + i),
-                            strlen((const char*)get_log_level_cstr() + i)))
+            if(!strncasecmp(level.c_str(), (const char*)(get_log_level_cstr() + i), strlen((const char*)get_log_level_cstr() + i)))
                 return static_cast<log_level>(i);
         Log<T>().Get(WARN) << "Unknown logging level '" << level << "'. Using INFO level as default.";
         return INFO;
@@ -254,13 +253,16 @@ class DEFAULT {};
 #define LOG_OUTPUT(CATEGORY) ::logging::Output2FILE<::logging::CATEGORY>
 
 #ifndef LOG
-#define LOG(LEVEL)                                                                                                     \
-    if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                    \
+#define LOG(LEVEL)                                                                                                                         \
+    if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                                        \
     LOGGER(DEFAULT)().get(::logging::LEVEL)
 #endif
+#define CPPLOG(LEVEL)                                                                                                                      \
+    if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                                        \
+    LOGGER(DEFAULT)().get(::logging::LEVEL)
 #ifndef CLOG
-#define CLOG(LEVEL, CATEGORY)                                                                                          \
-    if(::logging::LEVEL <= LOGGER(CATEGORY)::get_reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                  \
+#define CLOG(LEVEL, CATEGORY)                                                                                                              \
+    if(::logging::LEVEL <= LOGGER(CATEGORY)::get_reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                                      \
     LOGGER(CATEGORY)().get(::logging::LEVEL, #CATEGORY)
 #endif
 #if defined(WIN32)
@@ -312,25 +314,25 @@ template <typename T> std::ostream& operator<<(std::ostream& stream, const std::
 
 #ifndef NDEBUG
 //! check only in debug mode
-#define SCCASSERT(condition, message)                                                                                  \
-    do {                                                                                                               \
-        if(!(condition)) {                                                                                             \
-            logging::Logger().Get(logging::fatal) << "Assertion `" #condition "` failed in " << __FILE__ << " line "   \
-                                                  << __LINE__ << ": " << message << std::endl;                         \
-            std::terminate();                                                                                          \
-        }                                                                                                              \
+#define SCCASSERT(condition, message)                                                                                                      \
+    do {                                                                                                                                   \
+        if(!(condition)) {                                                                                                                 \
+            logging::Logger().Get(logging::fatal)                                                                                          \
+                << "Assertion `" #condition "` failed in " << __FILE__ << " line " << __LINE__ << ": " << message << std::endl;            \
+            std::terminate();                                                                                                              \
+        }                                                                                                                                  \
     } while(false)
 #else
-#define SCCASSERT(condition, message)                                                                                  \
-    do {                                                                                                               \
+#define SCCASSERT(condition, message)                                                                                                      \
+    do {                                                                                                                                   \
     } while(false)
 #endif
 //! check always
-#define CHECK(condition, message)                                                                                      \
-    do {                                                                                                               \
-        if(!(condition)) {                                                                                             \
-            logging::Logger().Get(logging::fatal) << "Check of `" #condition "` failed in " << __FILE__ << " line "    \
-                                                  << __LINE__ << ": " << message << std::endl;                         \
-            std::terminate();                                                                                          \
-        }                                                                                                              \
+#define SCCCHECK(condition, message)                                                                                                       \
+    do {                                                                                                                                   \
+        if(!(condition)) {                                                                                                                 \
+            logging::Logger().Get(logging::fatal)                                                                                          \
+                << "Check of `" #condition "` failed in " << __FILE__ << " line " << __LINE__ << ": " << message << std::endl;             \
+            std::terminate();                                                                                                              \
+        }                                                                                                                                  \
     } while(false)

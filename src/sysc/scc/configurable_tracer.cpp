@@ -23,23 +23,21 @@ using namespace scc;
 
 #define EN_TRACING_STR "enableTracing"
 
-configurable_tracer::configurable_tracer(std::string const&& name, bool enable_tx, bool enable_vcd, bool default_enable, sc_core::sc_object* top)
-: tracer(std::move(name), enable_tx?ENABLE:NONE, enable_vcd?ENABLE:NONE, top)
-{
+configurable_tracer::configurable_tracer(std::string const&& name, bool enable_tx, bool enable_vcd, bool default_enable,
+                                         sc_core::sc_object* top)
+: tracer(std::move(name), enable_tx ? ENABLE : NONE, enable_vcd ? ENABLE : NONE, top) {
     default_trace_enable = default_enable;
 }
 
 configurable_tracer::configurable_tracer(std::string const&& name, file_type type, bool enable_vcd, bool default_enable,
-        sc_core::sc_object* top)
-: tracer(std::move(name), type, enable_vcd?ENABLE:NONE, top)
-{
+                                         sc_core::sc_object* top)
+: tracer(std::move(name), type, enable_vcd ? ENABLE : NONE, top) {
     default_trace_enable = default_enable;
 }
 
-configurable_tracer::configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf,
-        bool default_enable, sc_core::sc_object* top)
-: tracer(std::move(name), type, tf, top)
-{
+configurable_tracer::configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, bool default_enable,
+                                         sc_core::sc_object* top)
+: tracer(std::move(name), type, tf, top) {
     default_trace_enable = default_enable;
 }
 
@@ -48,7 +46,7 @@ scc::configurable_tracer::~configurable_tracer() {
         delete ptr;
 }
 
-//const std::unordered_set<std::string> traceable_kinds = {};
+// const std::unordered_set<std::string> traceable_kinds = {};
 void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
     if(obj == this)
         return;
@@ -82,8 +80,8 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
             obj->trace(trf);
         for(auto o : obj->get_child_objects())
             descend(o, tr->is_trace_enabled());
-//    } else if(trace && traceable_kinds.find(kind)!=traceable_kinds.end()) {
-//        try_trace(trf, obj, types_to_trace);
+        //    } else if(trace && traceable_kinds.find(kind)!=traceable_kinds.end()) {
+        //        try_trace(trf, obj, types_to_trace);
     }
 }
 
@@ -104,17 +102,16 @@ auto scc::configurable_tracer::get_trace_enabled(const sc_core::sc_object* obj, 
 void configurable_tracer::augment_object_hierarchical(sc_core::sc_object* obj) {
     if(dynamic_cast<sc_core::sc_module*>(obj) != nullptr || dynamic_cast<scc::traceable*>(obj) != nullptr) {
         auto* attr = obj->get_attribute(EN_TRACING_STR);
-        if(attr == nullptr ||
-                dynamic_cast<const sc_core::sc_attribute<bool>*>(attr) == nullptr) { // check if we have no sc_attribute
+        if(attr == nullptr || dynamic_cast<const sc_core::sc_attribute<bool>*>(attr) == nullptr) { // check if we have no sc_attribute
             std::string hier_name{obj->name()};
             if(hier_name.substr(0, 11) != "scc_tracer") {
-				hier_name += "." EN_TRACING_STR;
-				auto h = cci_broker.get_param_handle(hier_name);
-				if(!h.is_valid()) // we have no cci_param so create one
-					params.push_back(new cci::cci_param<bool>(hier_name, default_trace_enable, cci_broker, "", cci::CCI_ABSOLUTE_NAME,
-							cci_broker.get_originator()));
-				else
-					h.set_cci_value(cci::cci_value{default_trace_enable});
+                hier_name += "." EN_TRACING_STR;
+                auto h = cci_broker.get_param_handle(hier_name);
+                if(!h.is_valid()) // we have no cci_param so create one
+                    params.push_back(new cci::cci_param<bool>(hier_name, default_trace_enable, cci_broker, "", cci::CCI_ABSOLUTE_NAME,
+                                                              cci_broker.get_originator()));
+                else
+                    h.set_cci_value(cci::cci_value{default_trace_enable});
             }
         } else if(auto battr = dynamic_cast<sc_core::sc_attribute<bool>*>(attr)) {
             battr->value = default_trace_enable;

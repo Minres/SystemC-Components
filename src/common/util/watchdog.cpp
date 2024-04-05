@@ -21,8 +21,7 @@
 using namespace util;
 using namespace std::chrono;
 
-watchdog::watchdog(system_clock::duration timeout, std::function<void(void)> alarm_cb,
-                   system_clock::duration sleep_duration)
+watchdog::watchdog(system_clock::duration timeout, std::function<void(void)> alarm_cb, system_clock::duration sleep_duration)
 : timeout(timeout)
 , sleep_duration(sleep_duration)
 , alarm_cb(std::move(alarm_cb)) {

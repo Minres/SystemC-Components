@@ -55,8 +55,7 @@ public:
      */
     void transport(payload_type& trans, bool blocking);
 
-    ahb_initiator_b(sc_core::sc_module_name nm,
-                    sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port,
+    ahb_initiator_b(sc_core::sc_module_name nm, sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& port,
                     size_t transfer_width, bool coherent);
 
     virtual ~ahb_initiator_b();
@@ -95,8 +94,6 @@ protected:
     const bool coherent;
 
     sc_core::sc_port_b<tlm::tlm_fw_transport_if<tlm::tlm_base_protocol_types>>& socket_fw;
-
-    std::function<unsigned(payload_type& trans)>* snoop_cb{nullptr};
 
     struct tx_state {
         payload_type* active_tx{nullptr};

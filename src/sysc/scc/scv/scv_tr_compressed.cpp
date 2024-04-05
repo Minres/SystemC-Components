@@ -149,8 +149,8 @@ static void scv_tr_stream_cbf(const scv_tr_stream& s, scv_tr_stream::callback_re
         if(my_text_file_p == nullptr)
             return;
 
-        gzprintf(my_text_file_p, "scv_tr_stream (ID " scv_tr_TEXT_LLU ", name \"%s\", kind \"%s\")\n", s.get_id(),
-                 s.get_name(), s.get_stream_kind() ? s.get_stream_kind() : "<no_stream_kind>");
+        gzprintf(my_text_file_p, "scv_tr_stream (ID " scv_tr_TEXT_LLU ", name \"%s\", kind \"%s\")\n", s.get_id(), s.get_name(),
+                 s.get_stream_kind() ? s.get_stream_kind() : "<no_stream_kind>");
     }
 }
 
@@ -159,8 +159,8 @@ static void scv_tr_stream_cbf(const scv_tr_stream& s, scv_tr_stream::callback_re
 //#define TRACE_DO_ATTRIBUTES
 
 static void do_attributes(bool declare_attributes, // If false then print the values
-                          bool undefined_values, bool is_record_attribute, std::string& prefix_name,
-                          const std::string& exts_kind, const scv_extensions_if* my_exts_p,
+                          bool undefined_values, bool is_record_attribute, std::string& prefix_name, const std::string& exts_kind,
+                          const scv_extensions_if* my_exts_p,
                           int* index) // The attribute index number
 {
     // This function can be called recursively, for nested data types.
@@ -194,8 +194,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
 
                 const scv_extensions_if* field_data_p = my_exts_p->get_field(field_counter);
 
-                do_attributes(declare_attributes, undefined_values, is_record_attribute, prefix_name, exts_kind,
-                              field_data_p, index);
+                do_attributes(declare_attributes, undefined_values, is_record_attribute, prefix_name, exts_kind, field_data_p, index);
             }
         }
     } break;
@@ -385,8 +384,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
 
             const scv_extensions_if* field_data_p = my_exts_p->get_array_elt(array_elt_index);
 
-            do_attributes(declare_attributes, undefined_values, is_record_attribute, prefix_name, exts_kind,
-                          field_data_p, index);
+            do_attributes(declare_attributes, undefined_values, is_record_attribute, prefix_name, exts_kind, field_data_p, index);
         }
     } break;
 
@@ -401,8 +399,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
 
 // ----------------------------------------------------------------------------
 
-static void scv_tr_generator_cbf(const scv_tr_generator_base& g, scv_tr_generator_base::callback_reason reason,
-                                 void* user_data_p) {
+static void scv_tr_generator_cbf(const scv_tr_generator_base& g, scv_tr_generator_base::callback_reason reason, void* user_data_p) {
     if(reason != scv_tr_generator_base::CREATE) {
         return;
     }
@@ -410,8 +407,7 @@ static void scv_tr_generator_cbf(const scv_tr_generator_base& g, scv_tr_generato
     if(my_text_file_p == nullptr)
         return;
 
-    gzprintf(my_text_file_p,
-             "scv_tr_generator (ID " scv_tr_TEXT_LLU ", name \"%s\", scv_tr_stream " scv_tr_TEXT_LLU ",\n", g.get_id(),
+    gzprintf(my_text_file_p, "scv_tr_generator (ID " scv_tr_TEXT_LLU ", name \"%s\", scv_tr_stream " scv_tr_TEXT_LLU ",\n", g.get_id(),
              g.get_name(), g.get_scv_tr_stream().get_id());
 
     std::string exts_kind;
@@ -472,9 +468,8 @@ static void scv_tr_handle_cbf(const scv_tr_handle& t, scv_tr_handle::callback_re
             default_values = true;
         }
 
-        std::string tmp_str = t.get_scv_tr_generator_base().get_begin_attribute_name()
-                                  ? t.get_scv_tr_generator_base().get_begin_attribute_name()
-                                  : "";
+        std::string tmp_str =
+            t.get_scv_tr_generator_base().get_begin_attribute_name() ? t.get_scv_tr_generator_base().get_begin_attribute_name() : "";
 
         do_attributes(false, default_values, false, tmp_str, exts_kind, my_exts_p, &i);
 
@@ -482,8 +477,8 @@ static void scv_tr_handle_cbf(const scv_tr_handle& t, scv_tr_handle::callback_re
 
     case scv_tr_handle::END: {
         // The end of a transaction
-        gzprintf(my_text_file_p, "tx_end " scv_tr_TEXT_LLU " " scv_tr_TEXT_LLU " %s\n", t.get_id(),
-                 t.get_scv_tr_generator_base().get_id(), t.get_end_sc_time().to_string().c_str());
+        gzprintf(my_text_file_p, "tx_end " scv_tr_TEXT_LLU " " scv_tr_TEXT_LLU " %s\n", t.get_id(), t.get_scv_tr_generator_base().get_id(),
+                 t.get_end_sc_time().to_string().c_str());
 
         my_exts_p = t.get_end_exts_p();
 
@@ -496,9 +491,8 @@ static void scv_tr_handle_cbf(const scv_tr_handle& t, scv_tr_handle::callback_re
             default_values = true;
         }
 
-        std::string tmp_str = t.get_scv_tr_generator_base().get_end_attribute_name()
-                                  ? t.get_scv_tr_generator_base().get_end_attribute_name()
-                                  : "";
+        std::string tmp_str =
+            t.get_scv_tr_generator_base().get_end_attribute_name() ? t.get_scv_tr_generator_base().get_end_attribute_name() : "";
 
         do_attributes(false, default_values, false, tmp_str, exts_kind, my_exts_p, &i);
     } break;
@@ -509,8 +503,8 @@ static void scv_tr_handle_cbf(const scv_tr_handle& t, scv_tr_handle::callback_re
 
 // ----------------------------------------------------------------------------
 
-static void scv_tr_handle_record_attribute_cbf(const scv_tr_handle& t, const char* attribute_name,
-                                               const scv_extensions_if* my_exts_p, void* user_data_p) {
+static void scv_tr_handle_record_attribute_cbf(const scv_tr_handle& t, const char* attribute_name, const scv_extensions_if* my_exts_p,
+                                               void* user_data_p) {
     // First check to be sure transaction recording is enabled:
     //
     if(t.get_scv_tr_stream().get_scv_tr_db() == nullptr)
@@ -552,8 +546,7 @@ static void scv_tr_handle_relation_cbf(const scv_tr_handle& tr_1, const scv_tr_h
 
     if(my_text_file_p) {
         gzprintf(my_text_file_p, "tx_relation \"%s\" " scv_tr_TEXT_LLU " " scv_tr_TEXT_LLU "\n",
-                 tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), tr_1.get_id(),
-                 tr_2.get_id());
+                 tr_1.get_scv_tr_stream().get_scv_tr_db()->get_relation_name(relation_handle), tr_1.get_id(), tr_2.get_id());
     }
 }
 
