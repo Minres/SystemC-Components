@@ -20,6 +20,7 @@
 #include <unordered_set>
 
 namespace scc {
+/// @cond DEV
 template <typename T> struct _min_max_restriction {
     _min_max_restriction(T min, T max)
     : min(min)
@@ -80,6 +81,7 @@ template <typename T> struct _discrete_restriction {
     bool operator()(cci::cci_param_write_event<T> const& ev) const { return values.count(ev.new_value) > 0; }
     std::unordered_set<T> const values;
 };
+/// @endcond
 /**
  * @brief creates a min/max restriction with including the limits
  *
@@ -89,6 +91,8 @@ template <typename T> struct _discrete_restriction {
  * @return _min_max_restriction<T> instance of the restriction functor
  */
 template <typename T> inline _min_max_restriction<T> min_max_restriction(T min, T max) { return _min_max_restriction<T>(min, max); }
+//! @brief alias for min_max_restriction(T min, T max)
+template <typename T> inline _min_max_restriction<T> gte_lte_restriction(T min, T max) { return _min_max_restriction<T>(min, max); }
 /**
  * @brief creates a min/max restriction with excluding the limits
  *
@@ -100,6 +104,8 @@ template <typename T> inline _min_max_restriction<T> min_max_restriction(T min, 
 template <typename T> inline _min_max_excl_restriction<T> min_max_excl_restriction(T min, T max) {
     return _min_max_excl_restriction<T>(min, max);
 }
+//! @brief alias for min_max_excl_restriction(T min, T max)
+template <typename T> inline _min_max_excl_restriction<T> gt_lt_restriction(T min, T max) { return _min_max_excl_restriction<T>(min, max); }
 /**
  * @brief creates a minimum restriction including the minimum value
  *
@@ -119,7 +125,7 @@ template <typename T> inline _min_restriction<T> gte_restriction(T min) { return
  */
 template <typename T> inline _min_excl_restriction<T> min_excl_restriction(T min) { return _min_excl_restriction<T>(min); }
 //! @brief alias for min_excl_restriction(T min)
-template <typename T> inline _min_excl_restriction<T> gt_excl_restriction(T min) { return _min_excl_restriction<T>(min); }
+template <typename T> inline _min_excl_restriction<T> gt_restriction(T min) { return _min_excl_restriction<T>(min); }
 /**
  * @brief creates a maximum restriction including the maximum value
  *
@@ -173,6 +179,16 @@ template <typename T> inline _discrete_restriction<T> discrete_restriction(std::
 }
 /**
  * @brief extension of \ref cci_param<T, TM> which automatically registeres a callback to restrict the valid values given to the parameter.
+ *
+ * The parameter can be use with a restriction created by:
+ * - min_max_restriction(T min, T max)
+ * - min_max_excl_restriction(T min, T max)
+ * - min_restriction(T min), gte_restriction(T min)
+ * - min_excl_restriction(T min), gt_excl_restriction(T min)
+ * - max_restriction(T max), lte_restriction(T max)
+ * - max_excl_restriction(T max), lt_excl_restriction(T max)
+ * - discrete_restriction(std::initializer_list<T> values), discrete_restriction(std::array<T, SZ> values),
+ *   discrete_restriction(std::vector<T> values)
  *
  * @tparam T type of the parameter value
  * @tparam TM  specifies the parameter type lock behavior
