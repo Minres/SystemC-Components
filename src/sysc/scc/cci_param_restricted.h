@@ -211,7 +211,8 @@ template <typename T, cci::cci_param_mutable_type TM = cci::CCI_MUTABLE_PARAM> s
     template <typename RESTR>
     cci_param_restricted(const std::string& name, const T& default_value, RESTR const& restr, const std::string& desc = "",
                          cci::cci_name_type name_type = cci::CCI_RELATIVE_NAME,
-                         const cci::cci_originator& originator = cci::cci_originator())
+                         const cci::cci_originator& originator = sc_core::sc_get_current_object() ? cci::cci_originator()
+                                                                                                  : cci::cci_originator("sc_main"))
     : cci::cci_param<T, TM>(name, default_value, desc, name_type, originator) {
         this->template register_pre_write_callback(restr);
         this->template reset();
@@ -232,7 +233,8 @@ template <typename T, cci::cci_param_mutable_type TM = cci::CCI_MUTABLE_PARAM> s
     template <typename RESTR>
     cci_param_restricted(const std::string& name, const T& default_value, RESTR const& restr, cci::cci_broker_handle private_broker,
                          const std::string& desc = "", cci::cci_name_type name_type = cci::CCI_RELATIVE_NAME,
-                         const cci::cci_originator& originator = cci::cci_originator())
+                         const cci::cci_originator& originator = sc_core::sc_get_current_object() ? cci::cci_originator()
+                                                                                                  : cci::cci_originator("sc_main"))
     : cci::cci_param<T, TM>(name, default_value, desc, name_type, originator) {
         this->template register_pre_write_callback(restr);
         this->template reset();
