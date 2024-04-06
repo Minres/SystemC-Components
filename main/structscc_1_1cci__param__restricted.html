@@ -106,6 +106,15 @@ Public Member Functions</h2></td></tr>
 struct scc::cci_param_restricted&lt; T, TM &gt;</h3>
 
 <p>extension of cci_param&lt;T, TM&gt; which automatically registeres a callback to restrict the valid values given to the parameter. </p>
+<p>The parameter can be use with a restriction created by:</p><ul>
+<li><a class="el" href="namespacescc.html#a44cd5ca4e4d3c05f4a7ce9d5de8b9280" title="creates a min/max restriction with including the limits">min_max_restriction(T min, T max)</a></li>
+<li><a class="el" href="namespacescc.html#ae72ee46bcb2d2e459f540c990b285f5c" title="creates a min/max restriction with excluding the limits">min_max_excl_restriction(T min, T max)</a></li>
+<li><a class="el" href="namespacescc.html#a9299adafc6dae4c181fc4fa5dda94798" title="creates a minimum restriction including the minimum value">min_restriction(T min)</a>, <a class="el" href="namespacescc.html#a4411c2d71c6eb576460a03c7c09fac9d" title="alias for min_restriction(T min)">gte_restriction(T min)</a></li>
+<li><a class="el" href="namespacescc.html#ab09e0dbecbf3b6b40a3c1d575f78ec7c" title="creates a minimum restriction excluding the minimum value">min_excl_restriction(T min)</a>, <a class="el" href="namespacescc.html#a5d20ec80953d81636a1c17b302e62b58" title="alias for min_excl_restriction(T min)">gt_excl_restriction(T min)</a></li>
+<li><a class="el" href="namespacescc.html#a33f3f2ee941fa0d95fbc1cb85b780ace" title="creates a maximum restriction including the maximum value">max_restriction(T max)</a>, <a class="el" href="namespacescc.html#ae01638f4d6c10df113593d39dc78fcb0" title="alias for max_restriction(T max)">lte_restriction(T max)</a></li>
+<li><a class="el" href="namespacescc.html#a2bbad29339d5d98d90222b388c567ea2" title="creates a maximum restriction excluding the maximum value">max_excl_restriction(T max)</a>, <a class="el" href="namespacescc.html#ab486bd357ee181779b237662d07c0688" title="alias for max_excl_restriction(T max)">lt_excl_restriction(T max)</a></li>
+<li><a class="el" href="namespacescc.html#a838d1d43bbf1a9afde3a93587898f258" title="creates a restriction for a discrete values set">discrete_restriction(std::initializer_list&lt;T&gt; values)</a>, <a class="el" href="namespacescc.html#a6778557e9aa5bb1458e00d3eafb85012" title="creates a restriction for a discrete values set">discrete_restriction(std::array&lt;T, SZ&gt; values)</a>, <a class="el" href="namespacescc.html#a29c48ac5ec75e542dc76add400e50e87" title="creates a restriction for a discrete values set">discrete_restriction(std::vector&lt;T&gt; values)</a></li>
+</ul>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>type of the parameter value </td></tr>
@@ -114,7 +123,7 @@ struct scc::cci_param_restricted&lt; T, TM &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00180">180</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00192">192</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6b7f0b6ac7677e10cc8ad1a0fd3e3629"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6b7f0b6ac7677e10cc8ad1a0fd3e3629">&#9670;&nbsp;</a></span>cci_param_restricted() <span class="overload">[1/2]</span></h2>
@@ -190,7 +199,7 @@ template&lt;typename RESTR &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00196">196</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00208">208</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 
 </div>
 </div>
@@ -275,7 +284,7 @@ template&lt;typename RESTR &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00217">217</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00229">229</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 
 </div>
 </div>
