@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/develop/src/bus_interfaces/ahb/pin/initiator.h Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/src/bus_interfaces/ahb/pin/initiator.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -122,19 +122,20 @@ $(document).ready(function(){initNavTree('initiator_8h_source.html',''); initRes
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">unsigned</span> size;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">unsigned</span> length;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    };</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> bus_task();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    sc_core::sc_mutex addr_phase, data_phase;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> bus_addr_task();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> bus_data_task();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    tlm_utils::peq_with_get&lt;tlm::tlm_generic_payload&gt; inqueue{<span class="stringliteral">&quot;inqueue&quot;</span>};</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// namespace pin</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">/* namespace ahb */</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _BUS_AHB_PIN_INITIATOR_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    tlm_utils::peq_with_get&lt;tlm::tlm_generic_payload&gt; tx_in_flight{<span class="stringliteral">&quot;tx_in_flight&quot;</span>};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">// namespace pin</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <span class="comment">/* namespace ahb */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _BUS_AHB_PIN_INITIATOR_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassahb_1_1pin_1_1initiator_html"><div class="ttname"><a href="classahb_1_1pin_1_1initiator.html">ahb::pin::initiator</a></div><div class="ttdef"><b>Definition:</b> <a href="initiator_8h_source.html#l00028">initiator.h:28</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1target__mixin_html"><div class="ttname"><a href="classtlm_1_1scc_1_1target__mixin.html">tlm::scc::target_mixin</a></div><div class="ttdef"><b>Definition:</b> <a href="target__mixin_8h_source.html#l00036">target_mixin.h:36</a></div></div>
-<div class="ttc" id="anamespaceahb_html"><div class="ttname"><a href="namespaceahb.html">ahb</a></div><div class="ttdoc">TLM2.0 components modeling AHB.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__tlm_8h_source.html#l00025">ahb_tlm.h:25</a></div></div>
+<div class="ttc" id="anamespaceahb_html"><div class="ttname"><a href="namespaceahb.html">ahb</a></div><div class="ttdoc">TLM2.0 components modeling AHB.</div><div class="ttdef"><b>Definition:</b> <a href="ahb__tlm_8cpp_source.html#l00019">ahb_tlm.cpp:19</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

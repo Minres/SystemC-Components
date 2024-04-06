@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/main/src/common/util/sparse_array.h Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/src/common/util/sparse_array.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('sparse__array_8h_source.html',''); ini
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classutil_1_1sparse__array.html">   36</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, u<span class="keywordtype">int</span>64_t SIZE, <span class="keywordtype">unsigned</span> PAGE_ADDR_BITS = 24&gt; <span class="keyword">class </span><a class="code" href="classutil_1_1sparse__array.html">sparse_array</a> {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    static_assert(SIZE&gt;0, <span class="stringliteral">&quot;sparse_array size must be greater than 0&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    static_assert(SIZE &gt; 0, <span class="stringliteral">&quot;sparse_array size must be greater than 0&quot;</span>);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">const</span> uint64_t page_addr_mask = (1 &lt;&lt; PAGE_ADDR_BITS) - 1;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>

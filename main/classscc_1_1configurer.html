@@ -104,21 +104,21 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a0404dbf2e548122d9ee41d6dd5e9028c"><td class="memItemLeft" align="right" valign="top"><a id="a0404dbf2e548122d9ee41d6dd5e9028c"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>NEVER</b> =0
-, <b>BEFORE_END_OF_ELABORATION</b> =1
-, <b>END_OF_ELABORATION</b> =2
-, <b>START_OF_SIMULATION</b> =4
+<tr class="memitem:ac0d914e8e8c90ad9cb4c17048dbc68bc"><td class="memItemLeft" align="right" valign="top"><a id="ac0d914e8e8c90ad9cb4c17048dbc68bc"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>NEVER</b> = 0
+, <b>BEFORE_END_OF_ELABORATION</b> = 1
+, <b>END_OF_ELABORATION</b> = 2
+, <b>START_OF_SIMULATION</b> = 4
  }</td></tr>
-<tr class="separator:a0404dbf2e548122d9ee41d6dd5e9028c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ac0d914e8e8c90ad9cb4c17048dbc68bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78591f63e769afc8873a343172ed64e5"><td class="memItemLeft" align="right" valign="top"><a id="a78591f63e769afc8873a343172ed64e5"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>base_type</b> = sc_core::sc_module</td></tr>
 <tr class="separator:a78591f63e769afc8873a343172ed64e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3d0b53947313e894ff6fb48af582578"><td class="memItemLeft" align="right" valign="top"><a id="ac3d0b53947313e894ff6fb48af582578"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>broker_t</b> = cci::cci_broker_handle</td></tr>
 <tr class="separator:ac3d0b53947313e894ff6fb48af582578"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae37225b68d7f3a87c9e3cf9b9c57cab3"><td class="memItemLeft" align="right" valign="top"><a id="ae37225b68d7f3a87c9e3cf9b9c57cab3"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>cci_param_cln</b> = std::vector&lt; std::pair&lt; cci::cci_param_post_write_callback_untyped, std::unique_ptr&lt; cci::cci_param_untyped &gt; &gt; &gt;</td></tr>
-<tr class="separator:ae37225b68d7f3a87c9e3cf9b9c57cab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a819324d9a5ba55e296278597cc84159b"><td class="memItemLeft" align="right" valign="top"><a id="a819324d9a5ba55e296278597cc84159b"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>cci_param_cln</b> = std::vector&lt; std::pair&lt; cci::cci_param_post_write_callback_untyped, std::unique_ptr&lt; cci::cci_param_untyped &gt; &gt;&gt;</td></tr>
+<tr class="separator:a819324d9a5ba55e296278597cc84159b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -141,8 +141,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>read_input_file</b> (
 <tr class="separator:ae7392ce761c23432db33914496447f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0419a8cd7a38cec2d667a61d62b3a520"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a0419a8cd7a38cec2d667a61d62b3a520">configure</a> ()</td></tr>
 <tr class="separator:a0419a8cd7a38cec2d667a61d62b3a520"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33002554b42ddf2d0c0c404ef042d97b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a33002554b42ddf2d0c0c404ef042d97b">dump_configuration</a> (std::ostream &amp;os=std::cout, bool as_yaml=false, bool with_description=false, sc_core::sc_object *obj=nullptr)</td></tr>
-<tr class="separator:a33002554b42ddf2d0c0c404ef042d97b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ed3d03fa24b42c158bddcf2f557e5be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a2ed3d03fa24b42c158bddcf2f557e5be">dump_configuration</a> (std::ostream &amp;os=std::cout, bool as_yaml=true, bool with_description=false, sc_core::sc_object *obj=nullptr)</td></tr>
+<tr class="separator:a2ed3d03fa24b42c158bddcf2f557e5be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26901fddb70002d791c7b2a8683d1fee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1configurer.html#a26901fddb70002d791c7b2a8683d1fee">dump_configuration</a> (std::string const &amp;file_name, bool with_description=false)</td></tr>
 <tr class="separator:a26901fddb70002d791c7b2a8683d1fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4fb1e50abb62aad0d81126eac7daac8"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
@@ -240,7 +240,7 @@ std::unique_ptr&lt; <a class="el" href="structscc_1_1configurer_1_1ConfigHolder.
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00610">610</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00627">627</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
 
 </div>
 </div>
@@ -261,12 +261,12 @@ std::unique_ptr&lt; <a class="el" href="structscc_1_1configurer_1_1ConfigHolder.
 </div><div class="memdoc">
 <p>configure the design hierarchy using the input file. Apply the values to sc_core::sc_attribute in th edsign hierarchy </p>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00668">668</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00683">683</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a33002554b42ddf2d0c0c404ef042d97b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33002554b42ddf2d0c0c404ef042d97b">&#9670;&nbsp;</a></span>dump_configuration() <span class="overload">[1/2]</span></h2>
+<a id="a2ed3d03fa24b42c158bddcf2f557e5be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ed3d03fa24b42c158bddcf2f557e5be">&#9670;&nbsp;</a></span>dump_configuration() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -281,7 +281,7 @@ std::unique_ptr&lt; <a class="el" href="structscc_1_1configurer_1_1ConfigHolder.
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>as_yaml</em> = <code>false</code>, </td>
+          <td class="paramname"><em>as_yaml</em> = <code>true</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -311,7 +311,7 @@ std::unique_ptr&lt; <a class="el" href="structscc_1_1configurer_1_1ConfigHolder.
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00646">646</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00661">661</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
 
 </div>
 </div>
@@ -356,7 +356,7 @@ std::unique_ptr&lt; <a class="el" href="structscc_1_1configurer_1_1ConfigHolder.
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00093">93</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00088">88</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
 
 </div>
 </div>
@@ -385,7 +385,7 @@ std::unique_ptr&lt; <a class="el" href="structscc_1_1configurer_1_1ConfigHolder.
 <p>find the configurer in the design hierarchy</p>
 <dl class="section return"><dt>Returns</dt><dd>reference to the singleton </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00122">122</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00115">115</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
 
 </div>
 </div>
@@ -423,7 +423,7 @@ std::unique_ptr&lt; <a class="el" href="structscc_1_1configurer_1_1ConfigHolder.
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00672">672</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8cpp_source.html#l00685">685</a> of file <a class="el" href="configurer_8cpp_source.html">configurer.cpp</a>.</p>
 
 </div>
 </div>
@@ -472,14 +472,14 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00106">106</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="configurer_8h_source.html#l00101">101</a> of file <a class="el" href="configurer_8h_source.html">configurer.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/eyck/git/scc/main/src/sysc/scc/<a class="el" href="configurer_8h_source.html">configurer.h</a></li>
-<li>/home/eyck/git/scc/main/src/sysc/scc/<a class="el" href="configurer_8cpp_source.html">configurer.cpp</a></li>
-<li>/home/eyck/git/scc/main/src/sysc/scc/<a class="el" href="configurer__nocci_8cpp_source.html">configurer_nocci.cpp</a></li>
+<li>/home/eyck/git/SystemC-Components/src/sysc/scc/<a class="el" href="configurer_8h_source.html">configurer.h</a></li>
+<li>/home/eyck/git/SystemC-Components/src/sysc/scc/<a class="el" href="configurer_8cpp_source.html">configurer.cpp</a></li>
+<li>/home/eyck/git/SystemC-Components/src/sysc/scc/<a class="el" href="configurer__nocci_8cpp_source.html">configurer_nocci.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

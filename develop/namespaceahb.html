@@ -85,6 +85,8 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structahb_1_1enable__for__enum.html">enable_for_enum</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structahb_1_1ahb__extension.html">ahb_extension</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -123,31 +125,177 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a64917a4cc2c9690ee36d6a4e7e0ec3c8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceahb.html#a64917a4cc2c9690ee36d6a4e7e0ec3c8">DECLARE_EXTENDED_PHASE</a> (BEGIN_PARTIAL_RESP)</td></tr>
-<tr class="separator:a64917a4cc2c9690ee36d6a4e7e0ec3c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a453beb0a24dfb525536726b1daf300b7"><td class="memItemLeft" align="right" valign="top"><a id="a453beb0a24dfb525536726b1daf300b7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>DECLARE_EXTENDED_PHASE</b> (END_PARTIAL_RESP)</td></tr>
-<tr class="separator:a453beb0a24dfb525536726b1daf300b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d86a5a9ea68031ec07d75fbd22102b1"><td class="memItemLeft" align="right" valign="top"><a id="a0d86a5a9ea68031ec07d75fbd22102b1"></a>
+template&lt;&gt; </td></tr>
+<tr class="memitem:a0d86a5a9ea68031ec07d75fbd22102b1"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>to_char&lt; burst_e &gt;</b> (burst_e v)</td></tr>
+<tr class="separator:a0d86a5a9ea68031ec07d75fbd22102b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacbeb83572052e2212e3332b69c31407"><td class="memItemLeft" align="right" valign="top"><a id="aacbeb83572052e2212e3332b69c31407"></a>
+template&lt;&gt; </td></tr>
+<tr class="memitem:aacbeb83572052e2212e3332b69c31407"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>to_char&lt; resp_e &gt;</b> (resp_e v)</td></tr>
+<tr class="separator:aacbeb83572052e2212e3332b69c31407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b5a8be06fb50a66b1e37312dc37ffa1"><td class="memItemLeft" align="right" valign="top"><a id="a0b5a8be06fb50a66b1e37312dc37ffa1"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;os, const tlm::tlm_generic_payload &amp;t)</td></tr>
+<tr class="separator:a0b5a8be06fb50a66b1e37312dc37ffa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe1b176036c3ac1a7db5ab387cce529c"><td class="memTemplParams" colspan="2">template&lt;typename E &gt; </td></tr>
+<tr class="memitem:abe1b176036c3ac1a7db5ab387cce529c"><td class="memTemplItemLeft" align="right" valign="top">E&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceahb.html#abe1b176036c3ac1a7db5ab387cce529c">into</a> (typename std::underlying_type&lt; E &gt;::type t)</td></tr>
+<tr class="separator:abe1b176036c3ac1a7db5ab387cce529c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76ac0692d61cadc07f51519ff681bb56"><td class="memTemplParams" colspan="2">template&lt;typename E , typename ULT  = typename std::underlying_type&lt;E&gt;::type, typename X  = typename std::enable_if&lt;std::is_enum&lt;E&gt;::value &amp;&amp; !std::is_convertible&lt;E, ULT&gt;::value, bool&gt;::type&gt; </td></tr>
+<tr class="memitem:a76ac0692d61cadc07f51519ff681bb56"><td class="memTemplItemLeft" align="right" valign="top">constexpr ULT&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceahb.html#a76ac0692d61cadc07f51519ff681bb56">to_int</a> (E t)</td></tr>
+<tr class="separator:a76ac0692d61cadc07f51519ff681bb56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacc09e8dbf4a47e212d271ea27a10822"><td class="memTemplParams" colspan="2">template&lt;typename E &gt; </td></tr>
+<tr class="memitem:aacc09e8dbf4a47e212d271ea27a10822"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceahb.html#aacc09e8dbf4a47e212d271ea27a10822">to_char</a> (E t)</td></tr>
+<tr class="separator:aacc09e8dbf4a47e212d271ea27a10822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7525653abc910e79bd949acd247c2af4"><td class="memTemplParams" colspan="2">template&lt;typename E , typename std::enable_if&lt; enable_for_enum&lt; E &gt;::value, bool &gt;::type &gt; </td></tr>
+<tr class="memitem:a7525653abc910e79bd949acd247c2af4"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceahb.html#a7525653abc910e79bd949acd247c2af4">operator&lt;&lt;</a> (std::ostream &amp;os, E e)</td></tr>
+<tr class="separator:a7525653abc910e79bd949acd247c2af4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>TLM2.0 components modeling AHB. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a64917a4cc2c9690ee36d6a4e7e0ec3c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64917a4cc2c9690ee36d6a4e7e0ec3c8">&#9670;&nbsp;</a></span>DECLARE_EXTENDED_PHASE()</h2>
+<a id="abe1b176036c3ac1a7db5ab387cce529c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe1b176036c3ac1a7db5ab387cce529c">&#9670;&nbsp;</a></span>into()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename E &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ahb::DECLARE_EXTENDED_PHASE </td>
+          <td class="memname">E ahb::into </td>
           <td>(</td>
-          <td class="paramtype">BEGIN_PARTIAL_RESP&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">typename std::underlying_type&lt; E &gt;::type&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>helper function to convert integer into class enums </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a7525653abc910e79bd949acd247c2af4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7525653abc910e79bd949acd247c2af4">&#9670;&nbsp;</a></span>operator&lt;&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename E , typename std::enable_if&lt; enable_for_enum&lt; E &gt;::value, bool &gt;::type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; ahb::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">E&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td></td></tr>
+    <tr><td class="paramname">e</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ahb__tlm_8h_source.html#l00060">60</a> of file <a class="el" href="ahb__tlm_8h_source.html">ahb_tlm.h</a>.</p>
+
+</div>
+</div>
+<a id="aacc09e8dbf4a47e212d271ea27a10822"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacc09e8dbf4a47e212d271ea27a10822">&#9670;&nbsp;</a></span>to_char()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename E &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* ahb::to_char </td>
+          <td>(</td>
+          <td class="paramtype">E&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>definition of the additional protocol phases </p>
+<p>helper function to convert class enums into char string </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a76ac0692d61cadc07f51519ff681bb56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76ac0692d61cadc07f51519ff681bb56">&#9670;&nbsp;</a></span>to_int()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename E , typename ULT  = typename std::underlying_type&lt;E&gt;::type, typename X  = typename std::enable_if&lt;std::is_enum&lt;E&gt;::value &amp;&amp; !std::is_convertible&lt;E, ULT&gt;::value, bool&gt;::type&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr ULT ahb::to_int </td>
+          <td>(</td>
+          <td class="paramtype">E&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>helper function to convert class enums into integer </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ahb__tlm_8h_source.html#l00044">44</a> of file <a class="el" href="ahb__tlm_8h_source.html">ahb_tlm.h</a>.</p>
 
 </div>
 </div>

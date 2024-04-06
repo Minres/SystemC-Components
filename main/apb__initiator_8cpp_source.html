@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/main/src/bus_interfaces/apb/pe/apb_initiator.cpp Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/src/bus_interfaces/apb/pe/apb_initiator.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -94,8 +94,8 @@ $(document).ready(function(){initNavTree('apb__initiator_8cpp_source.html',''); 
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;} <span class="comment">// anonymous namespace</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;apb_initiator_b::apb_initiator_b(sc_core::sc_module_name nm,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                 sc_core::sc_port_b&lt;tlm::tlm_fw_transport_if&lt;tlm::tlm_base_protocol_types&gt;&gt;&amp; port,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                                 <span class="keywordtype">size_t</span> transfer_width, <span class="keywordtype">bool</span> coherent)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                 sc_core::sc_port_b&lt;tlm::tlm_fw_transport_if&lt;tlm::tlm_base_protocol_types&gt;&gt;&amp; port, <span class="keywordtype">size_t</span> transfer_width,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                                 <span class="keywordtype">bool</span> coherent)</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;: sc_module(nm)</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;, socket_fw(port)</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;, transfer_width_in_bytes(transfer_width / 8) {}</div>
@@ -147,9 +147,9 @@ $(document).ready(function(){initNavTree('apb__initiator_8cpp_source.html',''); 
 <div class="ttc" id="aclassapb_1_1pe_1_1apb__initiator__b_html_a1aacf83984c112e3351845fc6648c12a"><div class="ttname"><a href="classapb_1_1pe_1_1apb__initiator__b.html#a1aacf83984c112e3351845fc6648c12a">apb::pe::apb_initiator_b::transport</a></div><div class="ttdeci">void transport(payload_type &amp;trans, bool blocking)</div><div class="ttdoc">The forward transport function. It behaves blocking and is re-entrant.</div><div class="ttdef"><b>Definition:</b> <a href="apb__initiator_8cpp_source.html#l00046">apb_initiator.cpp:46</a></div></div>
 <div class="ttc" id="anamespaceapb_1_1pe_html"><div class="ttname"><a href="namespaceapb_1_1pe.html">apb::pe</a></div><div class="ttdoc">protocol engine implementations</div><div class="ttdef"><b>Definition:</b> <a href="apb__initiator_8h_source.html#l00027">apb_initiator.h:27</a></div></div>
 <div class="ttc" id="anamespaceapb_html"><div class="ttname"><a href="namespaceapb.html">apb</a></div><div class="ttdoc">TLM2.0 components modeling APB.</div><div class="ttdef"><b>Definition:</b> <a href="apb__initiator_8h_source.html#l00025">apb_initiator.h:25</a></div></div>
-<div class="ttc" id="astructscc_1_1ordered__semaphore_1_1lock_html"><div class="ttname"><a href="structscc_1_1ordered__semaphore_1_1lock.html">scc::ordered_semaphore::lock</a></div><div class="ttdoc">a lock for the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00128">ordered_semaphore.h:128</a></div></div>
+<div class="ttc" id="astructscc_1_1ordered__semaphore_1_1lock_html"><div class="ttname"><a href="structscc_1_1ordered__semaphore_1_1lock.html">scc::ordered_semaphore::lock</a></div><div class="ttdoc">a lock for the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00144">ordered_semaphore.h:144</a></div></div>
 <div class="ttc" id="astructscc_1_1peq_html_a7e3a34f0fe967ee1c3424904b82ff67a"><div class="ttname"><a href="structscc_1_1peq.html#a7e3a34f0fe967ee1c3424904b82ff67a">scc::peq::notify</a></div><div class="ttdeci">void notify(const TYPE &amp;entry, const sc_core::sc_time &amp;t)</div><div class="ttdoc">non-blocking push.</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00077">peq.h:77</a></div></div>
-<div class="ttc" id="astructscc_1_1peq_html_a86fe01b84c045c7b8d0090f1dc588bed"><div class="ttname"><a href="structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed">scc::peq::get</a></div><div class="ttdeci">TYPE get()</div><div class="ttdoc">blocking get</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00116">peq.h:116</a></div></div>
+<div class="ttc" id="astructscc_1_1peq_html_a86fe01b84c045c7b8d0090f1dc588bed"><div class="ttname"><a href="structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed">scc::peq::get</a></div><div class="ttdeci">TYPE get()</div><div class="ttdoc">blocking get</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00128">peq.h:128</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

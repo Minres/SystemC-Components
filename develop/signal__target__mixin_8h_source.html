@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/develop/src/sysc/tlm/scc/signal_target_mixin.h Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/src/sysc/tlm/scc/signal_target_mixin.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -115,97 +115,95 @@ $(document).ready(function(){initNavTree('signal__target__mixin_8h_source.html',
 <div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1signal__target__mixin.html#a5b448b096194d2ec78869720a0861237">   61</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classtlm_1_1scc_1_1signal__target__mixin.html#a5b448b096194d2ec78869720a0861237">register_nb_transport</a>(std::function&lt;sync_enum_type(transaction_type&amp;, phase_type&amp;, sc_core::sc_time&amp;)&gt; cb) {</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        fw_if.set_nb_transport_ptr(cb);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1signal__target__mixin.html#a781d35753fac8b6d4832e32137e9764e">   72</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classtlm_1_1scc_1_1signal__target__mixin.html#a781d35753fac8b6d4832e32137e9764e">register_nb_transport</a>(</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        std::function&lt;sync_enum_type(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, transaction_type&amp;, phase_type&amp;, sc_core::sc_time&amp;)&gt; cb,</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> tag) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        fw_if.set_nb_transport_ptr(cb, tag);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">bool</span> error_if_no_callback;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// make call on bw path.</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    sync_enum_type bw_nb_transport(transaction_type&amp; trans, phase_type&amp; phase, sc_core::sc_time&amp; t) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">return</span> BASE_TYPE::operator-&gt;()-&gt;nb_transport_bw(trans, phase, t);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">class </span>fw_process_if : <span class="keyword">public</span> fw_interface_type {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">using</span> transport_fct = std::function&lt;sync_enum_type(transaction_type&amp;, phase_type&amp;, sc_core::sc_time&amp;)&gt;;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">using</span> transport_tagged_fct =</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            std::function&lt;sync_enum_type(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, transaction_type&amp;, phase_type&amp;, sc_core::sc_time&amp;)&gt;;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        fw_process_if(<span class="keyword">const</span> signal_target_mixin* p_own)</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        : m_owner(p_own) {}</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">void</span> set_nb_transport_ptr(transport_fct p) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">if</span>(m_transport_ptr || m_transport_tagged_ptr) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                std::stringstream s;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                s &lt;&lt; m_owner-&gt;name() &lt;&lt; <span class="stringliteral">&quot;: non-blocking callback allready registered&quot;</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                SC_REPORT_WARNING(<span class="stringliteral">&quot;/OSCI_TLM-2/signal_target_mixin&quot;</span>, s.str().c_str());</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                m_transport_ptr = p;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordtype">void</span> set_nb_transport_ptr(transport_tagged_fct p, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> tag) {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">if</span>(m_transport_ptr || m_transport_tagged_ptr) {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                std::stringstream s;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                s &lt;&lt; m_owner-&gt;name() &lt;&lt; <span class="stringliteral">&quot;: non-blocking callback allready registered&quot;</span>;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                SC_REPORT_WARNING(<span class="stringliteral">&quot;/OSCI_TLM-2/signal_target_mixin&quot;</span>, s.str().c_str());</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                m_transport_tagged_ptr = p;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                this-&gt;tag = tag;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="comment">// Interface implementation</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        sync_enum_type nb_transport_fw(transaction_type&amp; trans, phase_type&amp; phase, sc_core::sc_time&amp; t) {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">if</span>(m_transport_ptr) {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="comment">// forward call</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keywordflow">return</span> m_transport_ptr(trans, phase, t);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(m_transport_tagged_ptr) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                <span class="comment">// forward call</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                <span class="keywordflow">return</span> m_transport_tagged_ptr(tag, trans, phase, t);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(m_owner-&gt;error_if_no_callback) {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                std::stringstream s;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                s &lt;&lt; m_owner-&gt;name() &lt;&lt; <span class="stringliteral">&quot;: no transport callback registered&quot;</span>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                SC_REPORT_ERROR(<span class="stringliteral">&quot;/OSCI_TLM-2/signal_target_mixin&quot;</span>, s.str().c_str());</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            }</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">return</span> tlm::TLM_COMPLETED; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keyword">const</span> signal_target_mixin* m_owner;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> tag = 0;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        transport_fct m_transport_ptr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        transport_tagged_fct m_transport_tagged_ptr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    };</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    fw_process_if fw_if;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;};</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;} <span class="comment">// namespace tlm</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">#include &lt;sysc/datatypes/bit/sc_logic.h&gt;</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacetlm.html">tlm</a> {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescc.html">scc</a> {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">using</span> tlm_signal_bool_in = signal_target_mixin&lt;tlm_signal_target_socket&lt;bool&gt;&gt;;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">using</span> tlm_signal_logic_in = signal_target_mixin&lt;tlm_signal_target_socket&lt;sc_dt::sc_logic&gt;&gt;;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keyword">using</span> tlm_signal_bool_opt_in = signal_target_mixin&lt;tlm_signal_opt_target_socket&lt;bool&gt;&gt;;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="keyword">using</span> tlm_signal_logic_opt_in = signal_target_mixin&lt;tlm_signal_opt_target_socket&lt;sc_dt::sc_logic&gt;&gt;;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;} <span class="comment">// namespace tlm</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//__SIGNAL_TARGET_MIXIN_H__</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1signal__target__mixin.html#a781d35753fac8b6d4832e32137e9764e">   72</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classtlm_1_1scc_1_1signal__target__mixin.html#a781d35753fac8b6d4832e32137e9764e">register_nb_transport</a>(std::function&lt;sync_enum_type(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, transaction_type&amp;, phase_type&amp;, sc_core::sc_time&amp;)&gt; cb,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                               <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> tag) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        fw_if.set_nb_transport_ptr(cb, tag);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">bool</span> error_if_no_callback;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// make call on bw path.</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    sync_enum_type bw_nb_transport(transaction_type&amp; trans, phase_type&amp; phase, sc_core::sc_time&amp; t) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> BASE_TYPE::operator-&gt;()-&gt;nb_transport_bw(trans, phase, t);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">class </span>fw_process_if : <span class="keyword">public</span> fw_interface_type {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">using</span> transport_fct = std::function&lt;sync_enum_type(transaction_type&amp;, phase_type&amp;, sc_core::sc_time&amp;)&gt;;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">using</span> transport_tagged_fct = std::function&lt;sync_enum_type(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, transaction_type&amp;, phase_type&amp;, sc_core::sc_time&amp;)&gt;;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        fw_process_if(<span class="keyword">const</span> signal_target_mixin* p_own)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        : m_owner(p_own) {}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">void</span> set_nb_transport_ptr(transport_fct p) {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">if</span>(m_transport_ptr || m_transport_tagged_ptr) {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                std::stringstream s;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                s &lt;&lt; m_owner-&gt;name() &lt;&lt; <span class="stringliteral">&quot;: non-blocking callback allready registered&quot;</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                SC_REPORT_WARNING(<span class="stringliteral">&quot;/OSCI_TLM-2/signal_target_mixin&quot;</span>, s.str().c_str());</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                m_transport_ptr = p;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordtype">void</span> set_nb_transport_ptr(transport_tagged_fct p, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> tag) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">if</span>(m_transport_ptr || m_transport_tagged_ptr) {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                std::stringstream s;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                s &lt;&lt; m_owner-&gt;name() &lt;&lt; <span class="stringliteral">&quot;: non-blocking callback allready registered&quot;</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                SC_REPORT_WARNING(<span class="stringliteral">&quot;/OSCI_TLM-2/signal_target_mixin&quot;</span>, s.str().c_str());</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                m_transport_tagged_ptr = p;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                this-&gt;tag = tag;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="comment">// Interface implementation</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        sync_enum_type nb_transport_fw(transaction_type&amp; trans, phase_type&amp; phase, sc_core::sc_time&amp; t) {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">if</span>(m_transport_ptr) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="comment">// forward call</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keywordflow">return</span> m_transport_ptr(trans, phase, t);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(m_transport_tagged_ptr) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="comment">// forward call</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">return</span> m_transport_tagged_ptr(tag, trans, phase, t);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(m_owner-&gt;error_if_no_callback) {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                std::stringstream s;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                s &lt;&lt; m_owner-&gt;name() &lt;&lt; <span class="stringliteral">&quot;: no transport callback registered&quot;</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                SC_REPORT_ERROR(<span class="stringliteral">&quot;/OSCI_TLM-2/signal_target_mixin&quot;</span>, s.str().c_str());</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">return</span> tlm::TLM_COMPLETED; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keyword">const</span> signal_target_mixin* m_owner;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> tag = 0;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        transport_fct m_transport_ptr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        transport_tagged_fct m_transport_tagged_ptr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    };</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    fw_process_if fw_if;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;};</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;} <span class="comment">// namespace tlm</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">#include &lt;sysc/datatypes/bit/sc_logic.h&gt;</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacetlm.html">tlm</a> {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescc.html">scc</a> {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keyword">using</span> tlm_signal_bool_in = signal_target_mixin&lt;tlm_signal_target_socket&lt;bool&gt;&gt;;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keyword">using</span> tlm_signal_logic_in = signal_target_mixin&lt;tlm_signal_target_socket&lt;sc_dt::sc_logic&gt;&gt;;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">using</span> tlm_signal_bool_opt_in = signal_target_mixin&lt;tlm_signal_opt_target_socket&lt;bool&gt;&gt;;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">using</span> tlm_signal_logic_opt_in = signal_target_mixin&lt;tlm_signal_opt_target_socket&lt;sc_dt::sc_logic&gt;&gt;;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;} <span class="comment">// namespace tlm</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//__SIGNAL_TARGET_MIXIN_H__</span></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1signal__target__mixin_html"><div class="ttname"><a href="classtlm_1_1scc_1_1signal__target__mixin.html">tlm::scc::signal_target_mixin</a></div><div class="ttdef"><b>Definition:</b> <a href="signal__target__mixin_8h_source.html#l00029">signal_target_mixin.h:29</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1signal__target__mixin_html_a5b448b096194d2ec78869720a0861237"><div class="ttname"><a href="classtlm_1_1scc_1_1signal__target__mixin.html#a5b448b096194d2ec78869720a0861237">tlm::scc::signal_target_mixin::register_nb_transport</a></div><div class="ttdeci">void register_nb_transport(std::function&lt; sync_enum_type(transaction_type &amp;, phase_type &amp;, sc_core::sc_time &amp;)&gt; cb)</div><div class="ttdef"><b>Definition:</b> <a href="signal__target__mixin_8h_source.html#l00061">signal_target_mixin.h:61</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1signal__target__mixin_html_a781d35753fac8b6d4832e32137e9764e"><div class="ttname"><a href="classtlm_1_1scc_1_1signal__target__mixin.html#a781d35753fac8b6d4832e32137e9764e">tlm::scc::signal_target_mixin::register_nb_transport</a></div><div class="ttdeci">void register_nb_transport(std::function&lt; sync_enum_type(unsigned int, transaction_type &amp;, phase_type &amp;, sc_core::sc_time &amp;)&gt; cb, unsigned int tag)</div><div class="ttdoc">register a functor for nb_transport_fw call</div><div class="ttdef"><b>Definition:</b> <a href="signal__target__mixin_8h_source.html#l00072">signal_target_mixin.h:72</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1signal__target__mixin_html_a92d572942fc65f1140de2bc125cef0d2"><div class="ttname"><a href="classtlm_1_1scc_1_1signal__target__mixin.html#a92d572942fc65f1140de2bc125cef0d2">tlm::scc::signal_target_mixin::signal_target_mixin</a></div><div class="ttdeci">signal_target_mixin(const char *n)</div><div class="ttdef"><b>Definition:</b> <a href="signal__target__mixin_8h_source.html#l00048">signal_target_mixin.h:48</a></div></div>
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 <div class="ttc" id="anamespacetlm_html"><div class="ttname"><a href="namespacetlm.html">tlm</a></div><div class="ttdoc">SystemC TLM.</div><div class="ttdef"><b>Definition:</b> <a href="initiator__mixin_8h_source.html#l00026">initiator_mixin.h:26</a></div></div>
-<div class="ttc" id="astructtlm_1_1scc_1_1tlm__signal__bw__transport__if_html"><div class="ttname"><a href="structtlm_1_1scc_1_1tlm__signal__bw__transport__if.html">tlm::scc::tlm_signal_bw_transport_if</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__signal__sockets_8h_source.html#l00053">tlm_signal_sockets.h:53</a></div></div>
+<div class="ttc" id="astructtlm_1_1scc_1_1tlm__signal__bw__transport__if_html"><div class="ttname"><a href="structtlm_1_1scc_1_1tlm__signal__bw__transport__if.html">tlm::scc::tlm_signal_bw_transport_if</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__signal__sockets_8h_source.html#l00052">tlm_signal_sockets.h:52</a></div></div>
 <div class="ttc" id="astructtlm_1_1scc_1_1tlm__signal__fw__transport__if_html"><div class="ttname"><a href="structtlm_1_1scc_1_1tlm__signal__fw__transport__if.html">tlm::scc::tlm_signal_fw_transport_if</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__signal__sockets_8h_source.html#l00045">tlm_signal_sockets.h:45</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

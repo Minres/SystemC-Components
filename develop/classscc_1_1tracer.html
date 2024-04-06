@@ -174,10 +174,12 @@ sc_core::sc_trace_file *&#160;</td><td class="memItemRight" valign="bottom"><b>g
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a4bbd6bdb0af6b2d2e25a52246923ef40"><td class="memItemLeft" align="right" valign="top">cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tracer.html#a4bbd6bdb0af6b2d2e25a52246923ef40">tx_trace_type</a> {&quot;tx_trace_type&quot;, CFTR, &quot;Type of TX trace file used for recording. See also <a class="el" href="classscc_1_1tracer.html#a8ba2e352a1b382212c1411fef82613ce">scc::tracer::file_type</a>&quot;}</td></tr>
+<tr class="memitem:a4bbd6bdb0af6b2d2e25a52246923ef40"><td class="memItemLeft" align="right" valign="top">cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tracer.html#a4bbd6bdb0af6b2d2e25a52246923ef40">tx_trace_type</a></td></tr>
 <tr class="separator:a4bbd6bdb0af6b2d2e25a52246923ef40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a212adb4280b8276607bad0ce3d5df1"><td class="memItemLeft" align="right" valign="top">cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tracer.html#a0a212adb4280b8276607bad0ce3d5df1">sig_trace_type</a> {&quot;sig_trace_type&quot;, FST, &quot;Type of signal trace file used for recording. See also scc::tracer::wave_type&quot;}</td></tr>
+<tr class="memitem:a0a212adb4280b8276607bad0ce3d5df1"><td class="memItemLeft" align="right" valign="top">cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tracer.html#a0a212adb4280b8276607bad0ce3d5df1">sig_trace_type</a></td></tr>
 <tr class="separator:a0a212adb4280b8276607bad0ce3d5df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37e144600236d8052ee8213242e552ae"><td class="memItemLeft" align="right" valign="top">cci::cci_param&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tracer.html#a37e144600236d8052ee8213242e552ae">close_db_in_eos</a></td></tr>
+<tr class="separator:a37e144600236d8052ee8213242e552ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -190,6 +192,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a8a3e17c07c7c191742d72c08b9ac2865"><td class="memItemLeft" align="right" valign="top"><a id="a8a3e17c07c7c191742d72c08b9ac2865"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>end_of_elaboration</b> () override</td></tr>
 <tr class="separator:a8a3e17c07c7c191742d72c08b9ac2865"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5df99939fbd165eda9a8e6c71b6316f9"><td class="memItemLeft" align="right" valign="top"><a id="a5df99939fbd165eda9a8e6c71b6316f9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>end_of_simulation</b> () override</td></tr>
+<tr class="separator:a5df99939fbd165eda9a8e6c71b6316f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classscc_1_1tracer__base"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classscc_1_1tracer__base')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classscc_1_1tracer__base.html">scc::tracer_base</a></td></tr>
 <tr class="memitem:acd704016de6f8bab88468ae4f0201420 inherit pro_methods_classscc_1_1tracer__base"><td class="memItemLeft" align="right" valign="top"><a id="acd704016de6f8bab88468ae4f0201420"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>descend</b> (const sc_core::sc_object *, bool trace_all)</td></tr>
@@ -254,6 +259,25 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>try_trace</b> 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a37e144600236d8052ee8213242e552ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37e144600236d8052ee8213242e552ae">&#9670;&nbsp;</a></span>close_db_in_eos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cci::cci_param&lt;bool&gt; scc::tracer::close_db_in_eos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{<span class="stringliteral">&quot;close_db_in_eos&quot;</span>, <span class="keyword">false</span>,</div>
+<div class="line">                                         <span class="stringliteral">&quot;Close the waveform/transaction tracing databases during end_of_simulation&quot;</span>}</div>
+</div><!-- fragment --><p>cci parameter to determine the file type being used to trace signals if not specified explicitly </p>
+
+<p class="definition">Definition at line <a class="el" href="tracer_8h_source.html#l00088">88</a> of file <a class="el" href="tracer_8h_source.html">tracer.h</a>.</p>
+
+</div>
+</div>
 <a id="a0a212adb4280b8276607bad0ce3d5df1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a212adb4280b8276607bad0ce3d5df1">&#9670;&nbsp;</a></span>sig_trace_type</h2>
 
@@ -261,13 +285,15 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>try_trace</b> 
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">cci::cci_param&lt;unsigned&gt; scc::tracer::sig_trace_type {&quot;sig_trace_type&quot;, FST, &quot;Type of signal trace file used for recording. See also scc::tracer::wave_type&quot;}</td>
+          <td class="memname">cci::cci_param&lt;unsigned&gt; scc::tracer::sig_trace_type</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>cci parameter to determine the file type being used to trace signals if not specified explicitly </p>
+<b>Initial value:</b><div class="fragment"><div class="line">{<span class="stringliteral">&quot;sig_trace_type&quot;</span>, FST,</div>
+<div class="line">                                            <span class="stringliteral">&quot;Type of signal trace file used for recording. See also scc::tracer::wave_type&quot;</span>}</div>
+</div><!-- fragment --><p>cci parameter to determine the file type being used to trace signals if not specified explicitly </p>
 
-<p class="definition">Definition at line <a class="el" href="tracer_8h_source.html#l00072">72</a> of file <a class="el" href="tracer_8h_source.html">tracer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tracer_8h_source.html#l00083">83</a> of file <a class="el" href="tracer_8h_source.html">tracer.h</a>.</p>
 
 </div>
 </div>
@@ -278,19 +304,21 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>try_trace</b> 
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">cci::cci_param&lt;unsigned&gt; scc::tracer::tx_trace_type {&quot;tx_trace_type&quot;, CFTR, &quot;Type of TX trace file used for recording. See also <a class="el" href="classscc_1_1tracer.html#a8ba2e352a1b382212c1411fef82613ce">scc::tracer::file_type</a>&quot;}</td>
+          <td class="memname">cci::cci_param&lt;unsigned&gt; scc::tracer::tx_trace_type</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>cci parameter to determine the file type being used to trace transaction if not specified explicitly </p>
+<b>Initial value:</b><div class="fragment"><div class="line">{<span class="stringliteral">&quot;tx_trace_type&quot;</span>, CFTR,</div>
+<div class="line">                                           <span class="stringliteral">&quot;Type of TX trace file used for recording. See also scc::tracer::file_type&quot;</span>}</div>
+</div><!-- fragment --><p>cci parameter to determine the file type being used to trace transaction if not specified explicitly </p>
 
-<p class="definition">Definition at line <a class="el" href="tracer_8h_source.html#l00068">68</a> of file <a class="el" href="tracer_8h_source.html">tracer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tracer_8h_source.html#l00078">78</a> of file <a class="el" href="tracer_8h_source.html">tracer.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/eyck/git/scc/develop/src/sysc/scc/<a class="el" href="tracer_8h_source.html">tracer.h</a></li>
-<li>/home/eyck/git/scc/develop/src/sysc/scc/<a class="el" href="tracer_8cpp_source.html">tracer.cpp</a></li>
+<li>/home/eyck/git/SystemC-Components/src/sysc/scc/<a class="el" href="tracer_8h_source.html">tracer.h</a></li>
+<li>/home/eyck/git/SystemC-Components/src/sysc/scc/<a class="el" href="tracer_8cpp_source.html">tracer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

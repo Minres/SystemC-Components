@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/develop/src/sysc/scc/value_registry.cpp Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/src/sysc/scc/value_registry.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('value__registry_8cpp_source.html','');
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span>sc_core;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescc.html">scc</a> {</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">auto</span> <a class="code" href="namespacelogging.html#ab27a4fd91dca7fb65391baf9e4f17e98">operator&lt;&lt;</a>(std::ostream&amp; os, <span class="keyword">const</span> sc_event&amp; evt) -&gt; std::ostream&amp; {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">auto</span> operator&lt;&lt;(std::ostream&amp; os, <span class="keyword">const</span> sc_event&amp; evt) -&gt; std::ostream&amp; {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#if SYSTEMC_VERSION &gt;= 20181013</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    os &lt;&lt; evt.triggered();</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -123,29 +123,29 @@ $(document).ready(function(){initNavTree('value__registry_8cpp_source.html','');
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        } <span class="keywordflow">while</span>(pos &gt; 0 &amp;&amp; mod == <span class="keyword">nullptr</span>);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> mod;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define DECL_TRACE_METHOD_A(tp)                                                                                        \</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">    void trace(const tp&amp; object, const std::string&amp; name) OVERRIDE {                                                   \</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">        if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                         \</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">            if(sc_module* mod = get_mod4name(name)) {                                                                  \</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">                sc_get_curr_simcontext()-&gt;hierarchy_push(mod);                                                         \</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">                auto* o = new sc_ref_variable&lt;tp&gt;(name, object);                                                       \</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">                sc_get_curr_simcontext()-&gt;hierarchy_pop();                                                             \</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">                holder[name] = o;                                                                                      \</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">            }                                                                                                          \</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">        }                                                                                                              \</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define DECL_TRACE_METHOD_A(tp)                                                                                                            \</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">    void trace(const tp&amp; object, const std::string&amp; name) OVERRIDE {                                                                       \</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">        if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                                             \</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">            if(sc_module* mod = get_mod4name(name)) {                                                                                      \</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">                sc_get_curr_simcontext()-&gt;hierarchy_push(mod);                                                                             \</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">                auto* o = new sc_ref_variable&lt;tp&gt;(name, object);                                                                           \</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">                sc_get_curr_simcontext()-&gt;hierarchy_pop();                                                                                 \</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">                holder[name] = o;                                                                                                          \</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">            }                                                                                                                              \</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">        }                                                                                                                                  \</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">    }</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define DECL_TRACE_METHOD_B(tp)                                                                                        \</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">    void trace(const tp&amp; object, const std::string&amp; name, int width) OVERRIDE {                                        \</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">        if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                         \</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">            if(sc_module* mod = get_mod4name(name)) {                                                                  \</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">                sc_get_curr_simcontext()-&gt;hierarchy_push(mod);                                                         \</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">                auto* o = new sc_ref_variable_masked&lt;tp&gt;(name, object, width);                                         \</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">                sc_get_curr_simcontext()-&gt;hierarchy_pop();                                                             \</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">                holder[name] = o;                                                                                      \</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">            }                                                                                                          \</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">        }                                                                                                              \</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">    }                                                                                                                  \</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">    void trace(const tp&amp; object, const std::string&amp; name) { trace(object, name, sizeof(tp)*8); }</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define DECL_TRACE_METHOD_B(tp)                                                                                                            \</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">    void trace(const tp&amp; object, const std::string&amp; name, int width) OVERRIDE {                                                            \</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">        if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                                             \</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">            if(sc_module* mod = get_mod4name(name)) {                                                                                      \</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">                sc_get_curr_simcontext()-&gt;hierarchy_push(mod);                                                                             \</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">                auto* o = new sc_ref_variable_masked&lt;tp&gt;(name, object, width);                                                             \</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">                sc_get_curr_simcontext()-&gt;hierarchy_pop();                                                                                 \</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">                holder[name] = o;                                                                                                          \</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">            }                                                                                                                              \</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">        }                                                                                                                                  \</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">    }                                                                                                                                      \</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">    void trace(const tp&amp; object, const std::string&amp; name) { trace(object, name, sizeof(tp) * 8); }</span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> trace(<span class="keyword">const</span> <span class="keywordtype">bool</span>&amp; <span class="keywordtype">object</span>, <span class="keyword">const</span> std::string&amp; name)<span class="keyword"> override </span>{</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">if</span>(sc_core::sc_find_object(name.c_str()) == <span class="keyword">nullptr</span>) {</div>
@@ -157,7 +157,7 @@ $(document).ready(function(){initNavTree('value__registry_8cpp_source.html','');
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#if (SYSTEMC_VERSION &gt;= 20171012)</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#if(SYSTEMC_VERSION &gt;= 20171012)</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    DECL_TRACE_METHOD_A(sc_event) <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    DECL_TRACE_METHOD_A(sc_time)</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -265,9 +265,8 @@ $(document).ready(function(){initNavTree('value__registry_8cpp_source.html','');
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;} <span class="comment">// namespace scc</span></div>
 <div class="ttc" id="aclassscc_1_1tracer__base_html"><div class="ttname"><a href="classscc_1_1tracer__base.html">scc::tracer_base</a></div><div class="ttdoc">base class for automatic tracer</div><div class="ttdef"><b>Definition:</b> <a href="tracer__base_8h_source.html#l00078">tracer_base.h:78</a></div></div>
 <div class="ttc" id="aclassscc_1_1value__registry__impl_html"><div class="ttname"><a href="classscc_1_1value__registry__impl.html">scc::value_registry_impl</a></div><div class="ttdef"><b>Definition:</b> <a href="value__registry_8cpp_source.html#l00042">value_registry.cpp:42</a></div></div>
-<div class="ttc" id="anamespacelogging_html_ab27a4fd91dca7fb65391baf9e4f17e98"><div class="ttname"><a href="namespacelogging.html#ab27a4fd91dca7fb65391baf9e4f17e98">logging::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;stream, const std::vector&lt; T &gt; &amp;vector)</div><div class="ttdoc">a print function for a vector</div><div class="ttdef"><b>Definition:</b> <a href="logging_8h_source.html#l00302">logging.h:302</a></div></div>
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
-<div class="ttc" id="astructscc_1_1sc__ref__variable_html"><div class="ttname"><a href="structscc_1_1sc__ref__variable.html">scc::sc_ref_variable</a></div><div class="ttdoc">the sc_ref_variable for a particular plain data type. This marks an existing C++ variable as discover...</div><div class="ttdef"><b>Definition:</b> <a href="sc__variable_8h_source.html#l00423">sc_variable.h:423</a></div></div>
+<div class="ttc" id="astructscc_1_1sc__ref__variable_html"><div class="ttname"><a href="structscc_1_1sc__ref__variable.html">scc::sc_ref_variable</a></div><div class="ttdoc">the sc_ref_variable for a particular plain data type. This marks an existing C++ variable as discover...</div><div class="ttdef"><b>Definition:</b> <a href="sc__variable_8h_source.html#l00419">sc_variable.h:419</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

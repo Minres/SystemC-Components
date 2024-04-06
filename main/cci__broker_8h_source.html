@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/main/src/sysc/scc/cci_broker.h Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/src/sysc/scc/cci_broker.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,82 +84,77 @@ $(document).ready(function(){initNavTree('cci__broker_8h_source.html',''); initR
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifndef _SYSC_SCC_CCI_BROKER_H_</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define _SYSC_SCC_CCI_BROKER_H_</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;regex&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;cci_utils/broker.h&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;cci_utils/broker.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;regex&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacescc.html">scc</a> {</div>
 <div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classscc_1_1cci__broker.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="classscc_1_1cci__broker.html">cci_broker</a> : <span class="keyword">public</span> cci_utils::consuming_broker {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  std::unordered_set&lt;std::string&gt; expose;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::unordered_set&lt;std::string&gt; expose;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">bool</span> has_parent;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  cci::cci_broker_if &amp;m_parent;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">bool</span> has_parent;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    cci::cci_broker_if&amp; m_parent;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  cci::cci_broker_if &amp;get_parent_broker() {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      <span class="keywordflow">if</span> (sc_core::sc_get_current_object()) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;          has_parent=<span class="keyword">true</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;          <span class="keywordflow">return</span> unwrap_broker(cci::cci_get_broker());</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">// We ARE the global broker</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        has_parent=<span class="keyword">false</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    cci::cci_broker_if&amp; get_parent_broker() {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">if</span>(sc_core::sc_get_current_object()) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            has_parent = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">return</span> unwrap_broker(cci::cci_get_broker());</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="comment">// We ARE the global broker</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            has_parent = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">bool</span> sendToParent(<span class="keyword">const</span> std::string &amp;parname) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">bool</span> sendToParent(<span class="keyword">const</span> std::string&amp; parname) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">void</span> insert_matching_preset_value(<span class="keyword">const</span> std::string &amp;parname);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> insert_matching_preset_value(<span class="keyword">const</span> std::string&amp; parname);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keyword">struct </span>wildcard_entry {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      std::regex rr;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      cci::cci_value value;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      cci::cci_originator originator;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  };</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  std::unordered_map&lt;std::string, wildcard_entry&gt; wildcard_presets;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  std::unordered_map&lt;std::string, std::regex&gt; wildcard_locks;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">struct </span>wildcard_entry {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        std::regex rr;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        cci::cci_value value;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        cci::cci_originator originator;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::unordered_map&lt;std::string, wildcard_entry&gt; wildcard_presets;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    std::unordered_map&lt;std::string, std::regex&gt; wildcard_locks;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  cci::cci_originator get_value_origin(<span class="keyword">const</span> std::string &amp;parname) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="classscc_1_1cci__broker.html">cci_broker</a>(<span class="keyword">const</span> std::string&amp; name);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  ~<a class="code" href="classscc_1_1cci__broker.html">cci_broker</a>();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordtype">bool</span> has_preset_value(<span class="keyword">const</span> std::string &amp;parname) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  cci::cci_originator get_preset_value_origin(<span class="keyword">const</span> std::string &amp;parname) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  cci::cci_value get_preset_cci_value(<span class="keyword">const</span> std::string &amp;parname) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classscc_1_1cci__broker.html#adba28e7c005447fe8278ca3364bb374d">set_preset_cci_value</a>(<span class="keyword">const</span> std::string &amp;parname,</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                            <span class="keyword">const</span> cci::cci_value &amp;cci_value,</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                            <span class="keyword">const</span> cci::cci_originator&amp; originator) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classscc_1_1cci__broker.html#a46e7cd940af3de61ec6e00b9897338a8">lock_preset_value</a>(<span class="keyword">const</span> std::string &amp;parname) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  cci::cci_value get_cci_value(<span class="keyword">const</span> std::string &amp;parname,</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="keyword">const</span> cci::cci_originator&amp; originator = cci::cci_originator()) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    cci::cci_originator get_value_origin(<span class="keyword">const</span> std::string&amp; parname) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classscc_1_1cci__broker.html">cci_broker</a>(<span class="keyword">const</span> std::string&amp; name);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    ~<a class="code" href="classscc_1_1cci__broker.html">cci_broker</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">bool</span> has_preset_value(<span class="keyword">const</span> std::string&amp; parname) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    cci::cci_originator get_preset_value_origin(<span class="keyword">const</span> std::string&amp; parname) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    cci::cci_value get_preset_cci_value(<span class="keyword">const</span> std::string&amp; parname) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1cci__broker.html#adba28e7c005447fe8278ca3364bb374d">set_preset_cci_value</a>(<span class="keyword">const</span> std::string&amp; parname, <span class="keyword">const</span> cci::cci_value&amp; cci_value, <span class="keyword">const</span> cci::cci_originator&amp; originator) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscc_1_1cci__broker.html#a46e7cd940af3de61ec6e00b9897338a8">lock_preset_value</a>(<span class="keyword">const</span> std::string&amp; parname) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    cci::cci_value get_cci_value(<span class="keyword">const</span> std::string&amp; parname, <span class="keyword">const</span> cci::cci_originator&amp; originator = cci::cci_originator()) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    cci::cci_param_untyped_handle get_param_handle(<span class="keyword">const</span> std::string&amp; parname, <span class="keyword">const</span> cci::cci_originator&amp; originator) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    std::vector&lt;cci::cci_param_untyped_handle&gt; get_param_handles(<span class="keyword">const</span> cci::cci_originator&amp; originator) <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  cci::cci_param_untyped_handle get_param_handle(<span class="keyword">const</span> std::string &amp;parname, <span class="keyword">const</span> cci::cci_originator&amp; originator) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">void</span> add_param(cci::cci_param_if* par) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  std::vector&lt;cci::cci_param_untyped_handle&gt; get_param_handles(<span class="keyword">const</span> cci::cci_originator&amp; originator) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">void</span> remove_param(cci::cci_param_if* par) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordtype">void</span> add_param(cci::cci_param_if* par) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordtype">void</span> remove_param(cci::cci_param_if* par) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordtype">bool</span> is_global_broker() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;};</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// _SYSC_SCC_CCI_BROKER_H_</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">bool</span> is_global_broker() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;};</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// _SYSC_SCC_CCI_BROKER_H_</span></div>
 <div class="ttc" id="aclassscc_1_1cci__broker_html"><div class="ttname"><a href="classscc_1_1cci__broker.html">scc::cci_broker</a></div><div class="ttdef"><b>Definition:</b> <a href="cci__broker_8h_source.html#l00028">cci_broker.h:28</a></div></div>
-<div class="ttc" id="aclassscc_1_1cci__broker_html_a46e7cd940af3de61ec6e00b9897338a8"><div class="ttname"><a href="classscc_1_1cci__broker.html#a46e7cd940af3de61ec6e00b9897338a8">scc::cci_broker::lock_preset_value</a></div><div class="ttdeci">void lock_preset_value(const std::string &amp;parname) override</div><div class="ttdoc">Lock a parameter's preset value.</div><div class="ttdef"><b>Definition:</b> <a href="cci__broker_8cpp_source.html#l00179">cci_broker.cpp:179</a></div></div>
-<div class="ttc" id="aclassscc_1_1cci__broker_html_adba28e7c005447fe8278ca3364bb374d"><div class="ttname"><a href="classscc_1_1cci__broker.html#adba28e7c005447fe8278ca3364bb374d">scc::cci_broker::set_preset_cci_value</a></div><div class="ttdeci">void set_preset_cci_value(const std::string &amp;parname, const cci::cci_value &amp;cci_value, const cci::cci_originator &amp;originator) override</div><div class="ttdoc">Set a parameter's preset value.</div><div class="ttdef"><b>Definition:</b> <a href="cci__broker_8cpp_source.html#l00157">cci_broker.cpp:157</a></div></div>
+<div class="ttc" id="aclassscc_1_1cci__broker_html_a46e7cd940af3de61ec6e00b9897338a8"><div class="ttname"><a href="classscc_1_1cci__broker.html#a46e7cd940af3de61ec6e00b9897338a8">scc::cci_broker::lock_preset_value</a></div><div class="ttdeci">void lock_preset_value(const std::string &amp;parname) override</div><div class="ttdoc">Lock a parameter's preset value.</div><div class="ttdef"><b>Definition:</b> <a href="cci__broker_8cpp_source.html#l00167">cci_broker.cpp:167</a></div></div>
+<div class="ttc" id="aclassscc_1_1cci__broker_html_adba28e7c005447fe8278ca3364bb374d"><div class="ttname"><a href="classscc_1_1cci__broker.html#adba28e7c005447fe8278ca3364bb374d">scc::cci_broker::set_preset_cci_value</a></div><div class="ttdeci">void set_preset_cci_value(const std::string &amp;parname, const cci::cci_value &amp;cci_value, const cci::cci_originator &amp;originator) override</div><div class="ttdoc">Set a parameter's preset value.</div><div class="ttdef"><b>Definition:</b> <a href="cci__broker_8cpp_source.html#l00148">cci_broker.cpp:148</a></div></div>
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

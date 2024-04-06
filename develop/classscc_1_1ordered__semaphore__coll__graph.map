@@ -1,5 +1,6 @@
 <map id="scc::ordered_semaphore" name="scc::ordered_semaphore">
-<area shape="rect" id="node1" title="The ordered_semaphore primitive channel class." alt="" coords="104,80,285,107"/>
+<area shape="rect" id="node1" title="The ordered_semaphore primitive channel class." alt="" coords="199,80,380,107"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,195,32"/>
 <area shape="rect" id="node3" title=" " alt="" coords="219,5,359,32"/>
+<area shape="rect" id="node4" href="$classscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="384,5,496,32"/>
 </map>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/develop/src/common/util/bit_field.h Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/src/common/util/bit_field.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -202,27 +202,26 @@ $(document).ready(function(){initNavTree('bit__field_8h_source.html',''); initRe
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;};</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;} <span class="comment">// namespace util</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment"></span><span class="preprocessor">#define BEGIN_BF_DECL(typeName, T)                                                                                     \</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">    union typeName {                                                                                                   \</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">        struct {                                                                                                       \</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">            T val;                                                                                                     \</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">        } backing;                                                                                                     \</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">        typeName(T v = 0) { backing.val = v; }                                                                         \</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">        typeName&amp; operator=(T v) {                                                                                     \</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">            backing.val = v;                                                                                           \</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor">            return *this;                                                                                              \</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">        }                                                                                                              \</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">        operator T&amp;() { return backing.val; }                                                                          \</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">        operator T() const { return backing.val; }                                                                     \</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment"></span><span class="preprocessor">#define BEGIN_BF_DECL(typeName, T)                                                                                                         \</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">    union typeName {                                                                                                                       \</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">        struct {                                                                                                                           \</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">            T val;                                                                                                                         \</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">        } backing;                                                                                                                         \</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">        typeName(T v = 0) { backing.val = v; }                                                                                             \</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">        typeName&amp; operator=(T v) {                                                                                                         \</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">            backing.val = v;                                                                                                               \</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor">            return *this;                                                                                                                  \</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">        }                                                                                                                                  \</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">        operator T&amp;() { return backing.val; }                                                                                              \</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">        operator T() const { return backing.val; }                                                                                         \</span></div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">        using StorageType = T;</span></div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">#define BF_FIELD(memberName, offset, bits) util::BitFieldMember&lt;StorageType, offset, bits&gt; memberName;</span></div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#define BF_ARRAY(memberName, offset, bits, numItems)                                                                   \</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">    util::BitFieldArray&lt;StorageType, offset, bits, numItems&gt; memberName;</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor">#define END_BF_DECL() }</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// __CPP11OM_BITFIELD_H__</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#define BF_ARRAY(memberName, offset, bits, numItems) util::BitFieldArray&lt;StorageType, offset, bits, numItems&gt; memberName;</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">#define END_BF_DECL() }</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// __CPP11OM_BITFIELD_H__</span></div>
 <div class="ttc" id="aclassutil_1_1BitFieldArray_1_1Element_html"><div class="ttname"><a href="classutil_1_1BitFieldArray_1_1Element.html">util::BitFieldArray::Element</a></div><div class="ttdef"><b>Definition:</b> <a href="bit__field_8h_source.html#l00102">bit_field.h:102</a></div></div>
 <div class="ttc" id="aclassutil_1_1BitFieldArray_html"><div class="ttname"><a href="classutil_1_1BitFieldArray.html">util::BitFieldArray</a></div><div class="ttdoc">array of bit field elements</div><div class="ttdef"><b>Definition:</b> <a href="bit__field_8h_source.html#l00091">bit_field.h:91</a></div></div>
 <div class="ttc" id="anamespaceutil_html"><div class="ttname"><a href="namespaceutil.html">util</a></div><div class="ttdoc">SCC common utilities.</div><div class="ttdef"><b>Definition:</b> <a href="bit__field_8h_source.html#l00030">bit_field.h:30</a></div></div>

@@ -118,9 +118,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7e3a34f0fe967ee1c3424904b82ff67a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1peq.html#a7e3a34f0fe967ee1c3424904b82ff67a">notify</a> (const TYPE &amp;entry, const sc_core::sc_time &amp;t)</td></tr>
 <tr class="memdesc:a7e3a34f0fe967ee1c3424904b82ff67a"><td class="mdescLeft">&#160;</td><td class="mdescRight">non-blocking push.  <a href="structscc_1_1peq.html#a7e3a34f0fe967ee1c3424904b82ff67a">More...</a><br /></td></tr>
 <tr class="separator:a7e3a34f0fe967ee1c3424904b82ff67a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09d6429bda7be3ea01e2a14222b32e64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1peq.html#a09d6429bda7be3ea01e2a14222b32e64">notify</a> (const TYPE &amp;entry)</td></tr>
-<tr class="memdesc:a09d6429bda7be3ea01e2a14222b32e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">non-blocking push  <a href="structscc_1_1peq.html#a09d6429bda7be3ea01e2a14222b32e64">More...</a><br /></td></tr>
-<tr class="separator:a09d6429bda7be3ea01e2a14222b32e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cb02388bf7b16ae5a314cb83938bd1f"><td class="memItemLeft" align="right" valign="top"><a id="a5cb02388bf7b16ae5a314cb83938bd1f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>notify</b> (TYPE &amp;&amp;entry)</td></tr>
+<tr class="separator:a5cb02388bf7b16ae5a314cb83938bd1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39d453a7ca6fb4529e2c2445ed034741"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1peq.html#a39d453a7ca6fb4529e2c2445ed034741">notify</a> (TYPE const &amp;entry)</td></tr>
+<tr class="memdesc:a39d453a7ca6fb4529e2c2445ed034741"><td class="mdescLeft">&#160;</td><td class="mdescRight">non-blocking push  <a href="structscc_1_1peq.html#a39d453a7ca6fb4529e2c2445ed034741">More...</a><br /></td></tr>
+<tr class="separator:a39d453a7ca6fb4529e2c2445ed034741"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96f03772cd30574ba45a4b50f39c76c8"><td class="memItemLeft" align="right" valign="top">boost::optional&lt; TYPE &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1peq.html#a96f03772cd30574ba45a4b50f39c76c8">get_next</a> ()</td></tr>
 <tr class="memdesc:a96f03772cd30574ba45a4b50f39c76c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">non-blocking get  <a href="structscc_1_1peq.html#a96f03772cd30574ba45a4b50f39c76c8">More...</a><br /></td></tr>
 <tr class="separator:a96f03772cd30574ba45a4b50f39c76c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -223,7 +226,7 @@ template&lt;class TYPE &gt; </div>
 <p>get the available event </p>
 <dl class="section return"><dt>Returns</dt><dd>reference to the event </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="peq_8h_source.html#l00128">128</a> of file <a class="el" href="peq_8h_source.html">peq.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="peq_8h_source.html#l00140">140</a> of file <a class="el" href="peq_8h_source.html">peq.h</a>.</p>
 
 </div>
 </div>
@@ -255,7 +258,7 @@ template&lt;class TYPE &gt; </div>
 <p>blocking get </p>
 <dl class="section return"><dt>Returns</dt><dd>copy of the next entry. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="peq_8h_source.html#l00116">116</a> of file <a class="el" href="peq_8h_source.html">peq.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="peq_8h_source.html#l00128">128</a> of file <a class="el" href="peq_8h_source.html">peq.h</a>.</p>
 
 </div>
 </div>
@@ -287,7 +290,7 @@ template&lt;class TYPE &gt; </div>
 <p>non-blocking get </p>
 <dl class="section return"><dt>Returns</dt><dd>optional copy of the head element </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="peq_8h_source.html#l00099">99</a> of file <a class="el" href="peq_8h_source.html">peq.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="peq_8h_source.html#l00111">111</a> of file <a class="el" href="peq_8h_source.html">peq.h</a>.</p>
 
 </div>
 </div>
@@ -319,51 +322,12 @@ template&lt;class TYPE &gt; </div>
 <p>check if value is available at current time </p>
 <dl class="section return"><dt>Returns</dt><dd>true if data is available for <a class="el" href="structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed">get()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="peq_8h_source.html#l00144">144</a> of file <a class="el" href="peq_8h_source.html">peq.h</a>.</p>
-
-</div>
-</div>
-<a id="a09d6429bda7be3ea01e2a14222b32e64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09d6429bda7be3ea01e2a14222b32e64">&#9670;&nbsp;</a></span>notify() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class TYPE &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="structscc_1_1peq.html">scc::peq</a>&lt; TYPE &gt;::notify </td>
-          <td>(</td>
-          <td class="paramtype">const TYPE &amp;&#160;</td>
-          <td class="paramname"><em>entry</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>non-blocking push </p>
-<p>Inserts entry into the queue with immediate notification</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">entry</td><td>the value to insert </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="peq_8h_source.html#l00089">89</a> of file <a class="el" href="peq_8h_source.html">peq.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="peq_8h_source.html#l00156">156</a> of file <a class="el" href="peq_8h_source.html">peq.h</a>.</p>
 
 </div>
 </div>
 <a id="a7e3a34f0fe967ee1c3424904b82ff67a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e3a34f0fe967ee1c3424904b82ff67a">&#9670;&nbsp;</a></span>notify() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e3a34f0fe967ee1c3424904b82ff67a">&#9670;&nbsp;</a></span>notify() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -412,8 +376,47 @@ template&lt;class TYPE &gt; </div>
 
 </div>
 </div>
+<a id="a39d453a7ca6fb4529e2c2445ed034741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39d453a7ca6fb4529e2c2445ed034741">&#9670;&nbsp;</a></span>notify() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structscc_1_1peq.html">scc::peq</a>&lt; TYPE &gt;::notify </td>
+          <td>(</td>
+          <td class="paramtype">TYPE const &amp;&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>non-blocking push </p>
+<p>Inserts entry into the queue with immediate notification</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entry</td><td>the value to insert </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="peq_8h_source.html#l00101">101</a> of file <a class="el" href="peq_8h_source.html">peq.h</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/home/eyck/git/scc/develop/src/sysc/scc/<a class="el" href="peq_8h_source.html">peq.h</a></li>
+<li>/home/eyck/git/SystemC-Components/src/sysc/scc/<a class="el" href="peq_8h_source.html">peq.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

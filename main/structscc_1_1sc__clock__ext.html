@@ -65,6 +65,7 @@ $(document).ready(function(){initNavTree('structscc_1_1sc__clock__ext.html','');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
 <a href="structscc_1_1sc__clock__ext-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">scc::sc_clock_ext Struct Reference</div>  </div>
@@ -102,28 +103,37 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ad4da06a973777f38c49d1368b38a0bdb"><td class="memItemLeft" align="right" valign="top"><a id="ad4da06a973777f38c49d1368b38a0bdb"></a>
-sc_core::sc_attribute&lt; sc_core::sc_time &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>period</b></td></tr>
-<tr class="separator:ad4da06a973777f38c49d1368b38a0bdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46a6666212e47175f6c6985a9d3c0ce0"><td class="memItemLeft" align="right" valign="top"><a id="a46a6666212e47175f6c6985a9d3c0ce0"></a>
-sc_core::sc_attribute&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>duty_cycle</b></td></tr>
-<tr class="separator:a46a6666212e47175f6c6985a9d3c0ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94997605f27459adcd1912ee7d56a7c0"><td class="memItemLeft" align="right" valign="top"><a id="a94997605f27459adcd1912ee7d56a7c0"></a>
-sc_core::sc_attribute&lt; sc_core::sc_time &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>initial_delay</b></td></tr>
-<tr class="separator:a94997605f27459adcd1912ee7d56a7c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66d153b247dd3829a72ee0059aa67ce4"><td class="memItemLeft" align="right" valign="top"><a id="a66d153b247dd3829a72ee0059aa67ce4"></a>
+cci::cci_param&lt; sc_core::sc_time &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>period</b></td></tr>
+<tr class="separator:a66d153b247dd3829a72ee0059aa67ce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4ea1e1db2fd87ed23c736406e45f3be"><td class="memItemLeft" align="right" valign="top"><a id="ab4ea1e1db2fd87ed23c736406e45f3be"></a>
+cci::cci_param&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>duty_cycle</b></td></tr>
+<tr class="separator:ab4ea1e1db2fd87ed23c736406e45f3be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa74a2dc0d821ce5003e8b5b50a44d04"><td class="memItemLeft" align="right" valign="top"><a id="afa74a2dc0d821ce5003e8b5b50a44d04"></a>
+cci::cci_param&lt; sc_core::sc_time &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>initial_delay</b></td></tr>
+<tr class="separator:afa74a2dc0d821ce5003e8b5b50a44d04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a01927b6871ce9c6a74c01e51f4ed3ff8"><td class="memItemLeft" align="right" valign="top"><a id="a01927b6871ce9c6a74c01e51f4ed3ff8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>end_of_elaboration</b> () override</td></tr>
 <tr class="separator:a01927b6871ce9c6a74c01e51f4ed3ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa455d587696e9ecaf0989c08fac5eba6"><td class="memItemLeft" align="right" valign="top"><a id="aa455d587696e9ecaf0989c08fac5eba6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>period_write_callback</b> (const cci::cci_param_write_event&lt; int &gt; &amp;ev)</td></tr>
+<tr class="separator:aa455d587696e9ecaf0989c08fac5eba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
+Static Protected Member Functions</h2></td></tr>
+<tr class="memitem:a93c369e3ad326b456f535b959746d64c"><td class="memItemLeft" align="right" valign="top"><a id="a93c369e3ad326b456f535b959746d64c"></a>
+static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_cci_name</b> (const char *base, const char *name)</td></tr>
+<tr class="separator:a93c369e3ad326b456f535b959746d64c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A clock source with construction time configurable start delay. </p>
 
-<p class="definition">Definition at line <a class="el" href="sc__clock__ext_8h_source.html#l00031">31</a> of file <a class="el" href="sc__clock__ext_8h_source.html">sc_clock_ext.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sc__clock__ext_8h_source.html#l00032">32</a> of file <a class="el" href="sc__clock__ext_8h_source.html">sc_clock_ext.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/home/eyck/git/scc/main/src/sysc/scc/<a class="el" href="sc__clock__ext_8h_source.html">sc_clock_ext.h</a></li>
+<li>/home/eyck/git/SystemC-Components/src/sysc/scc/<a class="el" href="sc__clock__ext_8h_source.html">sc_clock_ext.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

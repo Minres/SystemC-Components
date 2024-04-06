@@ -26,7 +26,8 @@ var NAVTREE =
 [
   [ "scc", "index.html", [
     [ "SystemC-Components (SCC)", "index.html", [
-      [ "Build instructions", "index.html#autotoc_md6", null ]
+      [ "Build instructions using conan", "index.html#autotoc_md6", null ],
+      [ "Build instructions using install script", "index.html#autotoc_md7", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
@@ -61,23 +62,26 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"",
-"classapb_1_1pe_1_1apb__target.html",
-"classaxi_1_1pe_1_1axi__target__pe.html#a65482d8f76b81cb508d4b66dab42bc50",
-"classaxi_1_1scv_1_1axi__rec__target__socket.html#a018c91bb54b88c1225189527d1f44d22",
-"classscc_1_1bitfield.html#a2c417871e6f756c53841f0effa624da4",
-"classscc_1_1perf__estimator.html#ad13d252cdce8369da7063e3bd1c77837",
-"classscv__tr_1_1SQLiteDB_1_1SQLiteException.html#a5ae5bbf9291ae21a3d4d463700e4522b",
-"classtlm_1_1scc_1_1tagged__target__mixin.html#a900b3c9699f082e0029a72f53ebb7564",
-"dir_b0d728736680b9e07b367cd03d988303.html",
-"namespaceaxi.html#afde22299d4f51acb02b71656693cbf96",
-"namespaces.html",
-"ordered__target_8cpp_source.html",
-"structaxi_1_1axi__extension.html#a42f7fc126fe54c81c7ac4e33c2f7e496",
-"structaxi_1_1request.html#af1fd9e1b2a802e6e2fc85ea397d58fb3",
-"structchi_1_1request.html#ad2202e608ccbe33110121adacbc9edb3",
-"structscc_1_1sc__variable.html#a476a0914d4bbbbecc4ca84fd920db5a2",
-"structtlm_1_1scc_1_1tlm__generic__payload__base.html#a7f19e1053dae4dbd51ef2309e06045a4"
+"ace__initiator_8h_source.html",
+"classapb_1_1pe_1_1apb__target__b.html",
+"classaxi_1_1pe_1_1axi__initiator__b.html#ad9f74c67c5e154fbcd1edebe627f978d",
+"classaxi_1_1scv_1_1ace__rec__initiator__socket.html#a1ad4e1d2623b3ab8e1226461808ecc81",
+"classchi_1_1scv_1_1impl_1_1chi__recording__payload.html#af93518d2ebdbd486f9f2441bda0fd4c4",
+"classscc_1_1indexed__resource__access__if.html",
+"classscc_1_1sc__inout__opt.html#a5c1281be3833562e106094a5df25735b",
+"classscc_1_1tracer.html#a933bd06d072597b3f1ced9bf9bebbef3",
+"classtlm_1_1scc_1_1scv_1_1tlm__recorder.html#a8a179d96a788ba9c73c538cf5af046ee",
+"classutil_1_1sparse__array.html#afc41c150bf0ae24dcfe961648bf2e662",
+"namespaceaxi.html#a80220d53480033073cb0d04780f259bf",
+"namespacechi.html#ab2b4b81131e640d80b4665f165b3ff1da9f6c162cf6e3508dad8c81ab24bd27e9",
+"namespacescv__tr.html#ac5e602e9975ac5b9100f48c6e5f928c9a66e35bde24117424c6d9c1ae3d18e668",
+"structahb_1_1ahb__extension.html#aa1829965f8611bbcbd50e61a0f8fe3ef",
+"structaxi_1_1cd__ace.html#a00284bf066c2c49329287071dd739609",
+"structaxi_1_1request.html#ad84f2cfc054fbc90cc3ceb80646c4592",
+"structchi_1_1request.html#a280eebb1ad5599d38e40fcd6093c077b",
+"structscc_1_1peq.html",
+"structscc_1_1vcd__mt__trace__file.html#abb0edbff62d2ee301de2c7ab02360703",
+"tlm2__lwtr_8cpp.html#a3a706d071a640e87cce3ab7cc525cdd4"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

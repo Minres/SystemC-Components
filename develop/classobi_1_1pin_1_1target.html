@@ -85,11 +85,16 @@ Collaboration diagram for obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH,
 <div class="dyncontent">
 <div class="center"><img src="classobi_1_1pin_1_1target__coll__graph.png" border="0" usemap="#aobi_1_1pin_1_1target_3_01DATA__WIDTH_00_01ADDR__WIDTH_00_01ID__WIDTH_00_01USER__WIDTH_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aobi_1_1pin_1_1target_3_01DATA__WIDTH_00_01ADDR__WIDTH_00_01ID__WIDTH_00_01USER__WIDTH_01_4_coll__map" id="aobi_1_1pin_1_1target_3_01DATA__WIDTH_00_01ADDR__WIDTH_00_01ID__WIDTH_00_01USER__WIDTH_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="792,27,987,83"/>
+<area shape="rect" title=" " alt="" coords="807,103,1001,159"/>
 <area shape="rect" title=" " alt="" coords="540,5,689,32"/>
 <area shape="rect" href="classtlm_1_1scc_1_1initiator__mixin.html" title=" " alt="" coords="521,57,708,127"/>
-<area shape="rect" href="classtlm_1_1scc_1_1scv_1_1tlm__rec__initiator__socket.html" title=" " alt="" coords="277,71,472,113"/>
-<area shape="rect" title=" " alt="" coords="5,49,228,135"/>
+<area shape="rect" href="classtlm_1_1scc_1_1scv_1_1tlm__rec__initiator__socket.html" title=" " alt="" coords="277,63,472,105"/>
+<area shape="rect" title=" " alt="" coords="5,41,228,127"/>
+<area shape="rect" href="classscc_1_1sc__in__opt.html" title=" " alt="" coords="540,151,689,193"/>
+<area shape="rect" title=" " alt="" coords="280,129,469,215"/>
+<area shape="rect" href="classscc_1_1sc__out__opt.html" title=" " alt="" coords="539,221,690,262"/>
+<area shape="rect" href="classscc_1_1sc__inout__opt.html" title=" " alt="" coords="289,239,460,265"/>
+<area shape="rect" title=" " alt="" coords="13,217,221,287"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -101,14 +106,6 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>payload_type</b> = t
 <tr class="memitem:a4d973831b73163c2739e9a4094ec0737"><td class="memItemLeft" align="right" valign="top"><a id="a4d973831b73163c2739e9a4094ec0737"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>phase_type</b> = tlm::tlm_base_protocol_types::tlm_phase_type</td></tr>
 <tr class="separator:a4d973831b73163c2739e9a4094ec0737"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6d25b0a9b6394f35242c9b025cc2c8c"><td class="memTemplParams" colspan="2"><a id="ae6d25b0a9b6394f35242c9b025cc2c8c"></a>
-template&lt;unsigned WIDTH = 0, typename TYPE  = sc_dt::sc_uint&lt;WIDTH&gt;, int N = 1&gt; </td></tr>
-<tr class="memitem:ae6d25b0a9b6394f35242c9b025cc2c8c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>sc_in_opt</b> = sc_core::sc_port&lt; sc_core::sc_signal_in_if&lt; TYPE &gt;, N, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</td></tr>
-<tr class="separator:ae6d25b0a9b6394f35242c9b025cc2c8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5b51baacf39a9c7f52067617c8c035a"><td class="memTemplParams" colspan="2"><a id="aa5b51baacf39a9c7f52067617c8c035a"></a>
-template&lt;unsigned WIDTH = 0, typename TYPE  = sc_dt::sc_uint&lt;WIDTH&gt;, int N = 1&gt; </td></tr>
-<tr class="memitem:aa5b51baacf39a9c7f52067617c8c035a"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>sc_out_opt</b> = sc_core::sc_port&lt; sc_core::sc_signal_write_if&lt; TYPE &gt;, N, sc_core::SC_ZERO_OR_MORE_BOUND &gt;</td></tr>
-<tr class="separator:aa5b51baacf39a9c7f52067617c8c035a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -151,15 +148,15 @@ sc_core::sc_in&lt; sc_dt::sc_uint&lt; DATA_WIDTH/8 &gt; &gt;&#160;</td><td class
 <tr class="memitem:a504daff9b7b3c2ede59c909ab1c3002f"><td class="memItemLeft" align="right" valign="top"><a id="a504daff9b7b3c2ede59c909ab1c3002f"></a>
 sc_core::sc_in&lt; sc_dt::sc_uint&lt; DATA_WIDTH &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>wdata_i</b> {&quot;wdata_i&quot;}</td></tr>
 <tr class="separator:a504daff9b7b3c2ede59c909ab1c3002f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a863f48e0a005612fb334bae8691219cb"><td class="memItemLeft" align="right" valign="top"><a id="a863f48e0a005612fb334bae8691219cb"></a>
-sc_in_opt&lt; USER_WIDTH &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>auser_i</b> {&quot;auser_i&quot;}</td></tr>
-<tr class="separator:a863f48e0a005612fb334bae8691219cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34688faac6207c67147af849fe856e50"><td class="memItemLeft" align="right" valign="top"><a id="a34688faac6207c67147af849fe856e50"></a>
-sc_in_opt&lt; USER_WIDTH &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>wuser_i</b> {&quot;wuser_i&quot;}</td></tr>
-<tr class="separator:a34688faac6207c67147af849fe856e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f01ca8c27a378067737db577535a135"><td class="memItemLeft" align="right" valign="top"><a id="a8f01ca8c27a378067737db577535a135"></a>
-sc_in_opt&lt; ID_WIDTH &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>aid_i</b> {&quot;aid_i&quot;}</td></tr>
-<tr class="separator:a8f01ca8c27a378067737db577535a135"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7a243e6222038f646901b9eb1dede85"><td class="memItemLeft" align="right" valign="top"><a id="af7a243e6222038f646901b9eb1dede85"></a>
+<a class="el" href="classscc_1_1sc__in__opt.html">scc::sc_in_opt</a>&lt; sc_dt::sc_uint&lt; USER_WIDTH &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>auser_i</b> {&quot;auser_i&quot;}</td></tr>
+<tr class="separator:af7a243e6222038f646901b9eb1dede85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30ca4e204a8b3ffaf462502b34ef7c3a"><td class="memItemLeft" align="right" valign="top"><a id="a30ca4e204a8b3ffaf462502b34ef7c3a"></a>
+<a class="el" href="classscc_1_1sc__in__opt.html">scc::sc_in_opt</a>&lt; sc_dt::sc_uint&lt; USER_WIDTH &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>wuser_i</b> {&quot;wuser_i&quot;}</td></tr>
+<tr class="separator:a30ca4e204a8b3ffaf462502b34ef7c3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a279c35b813b15c7af7351078f5e5c4"><td class="memItemLeft" align="right" valign="top"><a id="a4a279c35b813b15c7af7351078f5e5c4"></a>
+<a class="el" href="classscc_1_1sc__in__opt.html">scc::sc_in_opt</a>&lt; sc_dt::sc_uint&lt; ID_WIDTH &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>aid_i</b> {&quot;aid_i&quot;}</td></tr>
+<tr class="separator:a4a279c35b813b15c7af7351078f5e5c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad37cd9d0d5038bd2905b9db9fa3714fe"><td class="memItemLeft" align="right" valign="top"><a id="ad37cd9d0d5038bd2905b9db9fa3714fe"></a>
 sc_core::sc_out&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rvalid_o</b> {&quot;rvalid_o&quot;}</td></tr>
 <tr class="separator:ad37cd9d0d5038bd2905b9db9fa3714fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -172,12 +169,12 @@ sc_core::sc_out&lt; sc_dt::sc_uint&lt; DATA_WIDTH &gt; &gt;&#160;</td><td class=
 <tr class="memitem:ad5dc6f80cf16e500d7c18b803e3ff6c2"><td class="memItemLeft" align="right" valign="top"><a id="ad5dc6f80cf16e500d7c18b803e3ff6c2"></a>
 sc_core::sc_out&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>err_o</b> {&quot;err_o&quot;}</td></tr>
 <tr class="separator:ad5dc6f80cf16e500d7c18b803e3ff6c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa21fb864d04b3484479d46fc315cf4ab"><td class="memItemLeft" align="right" valign="top"><a id="aa21fb864d04b3484479d46fc315cf4ab"></a>
-sc_out_opt&lt; USER_WIDTH &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ruser_o</b> {&quot;ruser_o&quot;}</td></tr>
-<tr class="separator:aa21fb864d04b3484479d46fc315cf4ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a842f5e3bec53bb9ed01e51aecf60a7b6"><td class="memItemLeft" align="right" valign="top"><a id="a842f5e3bec53bb9ed01e51aecf60a7b6"></a>
-sc_out_opt&lt; ID_WIDTH &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>r_id_o</b> {&quot;r_id_o&quot;}</td></tr>
-<tr class="separator:a842f5e3bec53bb9ed01e51aecf60a7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb2ea34232e19f9851bf8590542edc4e"><td class="memItemLeft" align="right" valign="top"><a id="adb2ea34232e19f9851bf8590542edc4e"></a>
+<a class="el" href="classscc_1_1sc__out__opt.html">scc::sc_out_opt</a>&lt; sc_dt::sc_uint&lt; USER_WIDTH &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ruser_o</b> {&quot;ruser_o&quot;}</td></tr>
+<tr class="separator:adb2ea34232e19f9851bf8590542edc4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa36aea073df2793f5599766a8914f195"><td class="memItemLeft" align="right" valign="top"><a id="aa36aea073df2793f5599766a8914f195"></a>
+<a class="el" href="classscc_1_1sc__out__opt.html">scc::sc_out_opt</a>&lt; sc_dt::sc_uint&lt; ID_WIDTH &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>r_id_o</b> {&quot;r_id_o&quot;}</td></tr>
+<tr class="separator:aa36aea073df2793f5599766a8914f195"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8539d455d1695d85fbea0205252b7dd"><td class="memItemLeft" align="right" valign="top"><a id="aa8539d455d1695d85fbea0205252b7dd"></a>
 cci::cci_param&lt; sc_core::sc_time &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sample_delay</b> {&quot;sample_delay&quot;, 0_ns}</td></tr>
 <tr class="separator:aa8539d455d1695d85fbea0205252b7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,7 +192,7 @@ class obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;</h3
 
 <p class="definition">Definition at line <a class="el" href="obi_2pin_2target_8h_source.html#l00041">41</a> of file <a class="el" href="obi_2pin_2target_8h_source.html">target.h</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/eyck/git/scc/develop/src/bus_interfaces/obi/pin/<a class="el" href="obi_2pin_2target_8h_source.html">target.h</a></li>
+<li>/home/eyck/git/SystemC-Components/src/bus_interfaces/obi/pin/<a class="el" href="obi_2pin_2target_8h_source.html">target.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

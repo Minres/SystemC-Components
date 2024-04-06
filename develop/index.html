@@ -65,7 +65,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="title">SystemC-Components (SCC) </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md__home_eyck_git_scc_develop_README"></a></p>
+<div class="textblock"><p><a class="anchor" id="md__home_eyck_git_SystemC_Components_README"></a></p>
 <p>SCC is supposed to be a light weight productivity library for SystemC and TLM 2.0 based modeling tasks using C++11.</p>
 <p>Here is a short list of features.</p>
 <ul>
@@ -115,8 +115,8 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </ul>
 <p>The full documentation can be found at the <a href="https://minres.github.io/SystemC-Components/">Github pages</a></p>
 <h1><a class="anchor" id="autotoc_md6"></a>
-Build instructions</h1>
-<p>The repo is cmake based and uses conan. Make sure that you have at least cmake 3.16 and conan version 1.59.0 installed. There known issues with conan 2.x. Other combinations may work, but are not tested.</p>
+Build instructions using conan</h1>
+<p>The repo is cmake based and (preferably) uses conan. Make sure that you have at least cmake 3.20 and conan version &lt;2.0 installed. There are known issues with conan 2.x. Other combinations may work, but are not tested.</p>
 <p>The suggested build steps are:</p>
 <ul>
 <li>create a build directory and enter into it</li>
@@ -134,6 +134,13 @@ Build instructions</h1>
 <div class="line">make test</div>
 <div class="line">./examples/ace-axi/ace_axi_example</div>
 <div class="line">./examples/axi-axi/axi_axi_example</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
+Build instructions using install script</h1>
+<p>SCC comes with an install script which installs SCC and all needed libraries incl. Boost and SystemC in one go:</p>
+<div class="fragment"><div class="line">curl -s https://raw.githubusercontent.com/Minres/SystemC-Components/develop/contrib/install_wo_conan.sh | INSTALL_ROOT=&lt;install dir&gt; bash</div>
+</div><!-- fragment --><p>The script can also be downloaded and run with the install dir as argument:</p>
+<div class="fragment"><div class="line">curl https://raw.githubusercontent.com/Minres/SystemC-Components/develop/contrib/install_wo_conan.sh &gt;install_wo_conan.sh</div>
+<div class="line">bash install_wo_conan.sh &lt;install dir&gt;</div>
 </div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

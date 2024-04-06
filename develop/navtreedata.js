@@ -26,7 +26,8 @@ var NAVTREE =
 [
   [ "scc", "index.html", [
     [ "SystemC-Components (SCC)", "index.html", [
-      [ "Build instructions", "index.html#autotoc_md6", null ]
+      [ "Build instructions using conan", "index.html#autotoc_md6", null ],
+      [ "Build instructions using install script", "index.html#autotoc_md7", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
@@ -61,23 +62,26 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"ace__lwtr_8h.html#a1824786c6e65da97a6de030f9f91bee6",
-"classapb_1_1pe_1_1apb__target__b.html#a534cab311d2f65b6d360e32405e617a0",
-"classaxi_1_1pe_1_1axi__target__pe.html#aa7034031387d50a220a4d96a6667a837",
-"classaxi_1_1scv_1_1axi__recorder.html#a028def3e50510882d6be5b87a604c24c",
-"classscc_1_1bitfield__register.html#a2d1bc4059c09327a21d9539dca879a07",
-"classscc_1_1resource__access__if.html#a43d5c525222211b9b7a586a352282cdc",
-"classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__gp__data_01_4.html#aa45f62e88056adb070fcf3ed42a49769",
-"classtlm_1_1scc_1_1target__mixin.html#ae696d376a3fb9b77947f73e36105df0b",
-"fst__trace_8cpp_source.html",
-"namespacechi.html#a00a01c88bf9f85800ad627f7ff98ef77a676fa22e7408517f2e41d113d636141a",
-"namespacescc.html#a1f2e06684f1c077649c1b054b2009bab",
-"resource__access__if_8h_source.html",
-"structaxi_1_1axi__target__socket.html#af422ead2ce6d18fc2da1d8f90170caae",
-"structaxi_1_1response.html#ad5f07d05631cd7d87dc19d3fbbd294a8",
-"structchi_1_1response.html#a3304ad432c1672a29fcd962ce3c914d9",
-"structscc_1_1sc__variable.html#ad452b3d302565857309bb61dfbc6b490",
-"structtlm_1_1scc_1_1tlm__gp__mm.html#a1b461d84f0aa19ad298e6cce9e4f7d63"
+"",
+"classapb_1_1pe_1_1apb__initiator__b.html#a8187f95358ce14fe59d0cbeac56900c0",
+"classaxi_1_1pe_1_1axi__initiator__b.html#a6aba53099cdc5a0bf0fbf588609ab865",
+"classaxi_1_1pe_1_1tx__reorderer.html#a089f7096bcf7a4fb137383a5e52af6fe",
+"classchi_1_1scv_1_1chi__trx__recorder.html#ad36625a7cded51df300fa849456ddb66",
+"classscc_1_1impl_1_1sc__register.html#a2b88d767e6aebb0e484dee4f0262aba5",
+"classscc_1_1sc__in__opt_3_01sc__dt_1_1sc__logic_01_4.html#ad67da1e8d326326a173e9daa609b840a",
+"classscc_1_1tracer.html#a5df99939fbd165eda9a8e6c71b6316f9",
+"classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket.html#ac7f9f7f75a9a942cf4c4f96ac34e2748",
+"classutil_1_1range__lut.html#ae15b0076effece78d601899869b92525",
+"namespaceaxi.html#a54bdd4e158af6b6d86a26fcf03bb4edb",
+"namespacechi.html#aa0ce11c7b275a471aada8f3fc79c84a9",
+"namespacescv__tr.html#a1f92621f5a413a86a2528ff9d43cf42e",
+"structahb_1_1ahb__extension.html",
+"structaxi_1_1b__axi.html#a2f0552ce13ab10650d258017b9f6d499",
+"structaxi_1_1request.html#a66a14fb9aafefec408910a0bef54375a",
+"structchi_1_1lwtr_1_1nb__chi__rec__entry.html#a90987ba08bfd9987b25ff6fd8fb0af02",
+"structscc_1_1observer.html#ac76bc66df98165844a2c613ebacc894c",
+"structscc_1_1trace_1_1vcd__trace.html#a60d95d7118d5510aa84923131b2a88ce",
+"structutil_1_1thread__pool.html#a4b912eec56828575120d304c93eb6149"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

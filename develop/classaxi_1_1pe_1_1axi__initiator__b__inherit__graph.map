@@ -1,11 +1,13 @@
 <map id="axi::pe::axi_initiator_b" name="axi::pe::axi_initiator_b">
-<area shape="rect" id="node1" title=" " alt="" coords="707,78,873,105"/>
-<area shape="rect" id="node7" href="$classaxi_1_1pe_1_1ace__initiator.html" title=" " alt="" coords="921,5,1144,47"/>
-<area shape="rect" id="node8" href="$classaxi_1_1pe_1_1ace__lite__initiator.html" title=" " alt="" coords="921,71,1144,112"/>
-<area shape="rect" id="node9" href="$classaxi_1_1pe_1_1axi__initiator.html" title=" " alt="" coords="921,136,1144,177"/>
-<area shape="rect" id="node2" title=" " alt="" coords="501,45,651,71"/>
-<area shape="rect" id="node3" href="$classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="493,95,659,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="245,58,412,114"/>
-<area shape="rect" id="node5" href="$classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="212,139,445,180"/>
-<area shape="rect" id="node6" title=" " alt="" coords="5,146,164,173"/>
+<area shape="rect" id="node1" title=" " alt="" coords="713,93,880,120"/>
+<area shape="rect" id="node9" href="$classaxi_1_1pe_1_1ace__initiator.html" title=" " alt="" coords="928,21,1151,62"/>
+<area shape="rect" id="node10" href="$classaxi_1_1pe_1_1ace__lite__initiator.html" title=" " alt="" coords="928,86,1151,127"/>
+<area shape="rect" id="node11" href="$classaxi_1_1pe_1_1axi__initiator.html" title=" " alt="" coords="928,151,1151,193"/>
+<area shape="rect" id="node2" title=" " alt="" coords="505,28,654,55"/>
+<area shape="rect" id="node3" href="$classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="497,79,662,135"/>
+<area shape="rect" id="node4" title=" " alt="" coords="245,5,412,61"/>
+<area shape="rect" id="node5" href="$classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="212,86,445,127"/>
+<area shape="rect" id="node6" title=" " alt="" coords="5,127,164,153"/>
+<area shape="rect" id="node8" href="$structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="261,151,396,193"/>
+<area shape="rect" id="node7" href="$structtlm_1_1scc_1_1pe_1_1intor__fw__b.html" title=" " alt="" coords="493,159,665,185"/>
 </map>

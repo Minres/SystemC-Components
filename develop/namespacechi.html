@@ -132,6 +132,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structchi_1_1enable__for__enum_3_01rsp__resptype__e_01_4.html">enable_for_enum&lt; rsp_resptype_e &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structchi_1_1enable__for__enum_3_01rsp__resperrtype__e_01_4.html">enable_for_enum&lt; rsp_resperrtype_e &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -325,18 +327,18 @@ Enumerations</h2></td></tr>
 <tr class="separator:a493738eef328965145b1b40ddea8b822"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2b4b81131e640d80b4665f165b3ff1d"><td class="memItemLeft" align="right" valign="top"><a id="ab2b4b81131e640d80b4665f165b3ff1d"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>dat_resptype_e</b> : uint8_t { <br />
 &#160;&#160;<b>CompData_I</b> = 0b000
-, <b>DataSepResp_I</b> = 0b000
-, <b>RespSepData_I</b> = 0b000
-, <b>CompData_UC</b> = 0b010
-, <br />
-&#160;&#160;<b>DataSepResp_UC</b> = 0b010
-, <b>RespSepData_UC</b> = 0b010
 , <b>CompData_SC</b> = 0b001
-, <b>DataSepResp_SC</b> = 0b001
-, <br />
-&#160;&#160;<b>RespSepData_SC</b> = 0b001
+, <b>CompData_UC</b> = 0b010
 , <b>CompData_UD_PD</b> = 0b110
-, <b>CompData_SD_PD</b> = 0b111
+, <br />
+&#160;&#160;<b>CompData_SD_PD</b> = 0b111
+, <b>DataSepResp_I</b> = 0b000
+, <b>DataSepResp_SC</b> = 0b001
+, <b>DataSepResp_UC</b> = 0b010
+, <br />
+&#160;&#160;<b>RespSepData_I</b> = 0b000
+, <b>RespSepData_SC</b> = 0b001
+, <b>RespSepData_UC</b> = 0b010
 , <b>SnpRespData_I</b> = 0b000
 , <br />
 &#160;&#160;<b>SnpRespData_UC</b> = 0b010
@@ -402,15 +404,53 @@ Enumerations</h2></td></tr>
 , <b>Comp_I</b> = 0b000
 , <b>Comp_UC</b> = 0b010
 , <b>Comp_SC</b> = 0b001
+, <br />
+&#160;&#160;<b>Comp_UD_PD</b> = 0b110
+, <b>SnpRespData_I</b> = 0b000
+, <b>SnpRespData_UC</b> = 0b010
+, <b>SnpRespData_UD</b> = 0b010
+, <br />
+&#160;&#160;<b>SnpRespData_SC</b> = 0b001
+, <b>SnpRespData_SD</b> = 0b011
+, <b>SnpRespData_I_PD</b> = 0b100
+, <b>SnpRespData_UC_PD</b> = 0b110
+, <br />
+&#160;&#160;<b>SnpRespData_SC_PD</b> = 0b101
+, <b>SnpRespDataPtl_I_PD</b> = 0b100
+, <b>SnpRespDataPtl_UD</b> = 0b010
 <br />
  }</td></tr>
 <tr class="separator:a9640ccb9c6b8f04797a7303dd4c09710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67b178187fe0e784935961d1891e7742"><td class="memItemLeft" align="right" valign="top"><a id="a67b178187fe0e784935961d1891e7742"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>rsp_resperrtype_e</b> : uint8_t { <b>OK</b> = 0b00
+, <b>EXOK</b> = 0b01
+, <b>DERR</b> = 0b10
+, <b>NDERR</b> = 0b11
+ }</td></tr>
+<tr class="separator:a67b178187fe0e784935961d1891e7742"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8306db787ecf59cdb8d27649b21b81e6"><td class="memItemLeft" align="right" valign="top"><a id="a8306db787ecf59cdb8d27649b21b81e6"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>credit_type_e</b> : uint8_t { <b>LINK</b>
 , <b>REQ</b>
 , <b>RESP</b>
 , <b>DATA</b>
  }</td></tr>
 <tr class="separator:a8306db787ecf59cdb8d27649b21b81e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a205a6cb55a8e8744e83c7274e05d9287"><td class="memItemLeft" align="right" valign="top"><a id="a205a6cb55a8e8744e83c7274e05d9287"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>dvm_e</b> { <br />
+&#160;&#160;<b>DVMOpSize</b> = 0x3
+, <b>PacketNumShift</b> = 3
+, <b>TLBI</b> = 0x0
+, <b>BranchPredictorInvalidate</b> = 0x1
+, <br />
+&#160;&#160;<b>PICI</b> = 0x2
+, <b>VICI</b> = 0x3
+, <b>Sync</b> = 0x4
+, <b>AddressBits</b> = 37
+, <br />
+&#160;&#160;<b>DVMOpMask</b> = 0x7
+, <b>DVMOpShift</b> = 11
+, <b>DVMVAValidMask</b> = 0x1
+, <b>DVMVAValidShift</b> = 4
+<br />
+ }</td></tr>
+<tr class="separator:a205a6cb55a8e8744e83c7274e05d9287"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -438,6 +478,10 @@ template&lt;&gt; </td></tr>
 template&lt;&gt; </td></tr>
 <tr class="memitem:a60020bb6dd62dc990f557a8ab6d9a5b3"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>to_char&lt; rsp_resptype_e &gt;</b> (rsp_resptype_e v)</td></tr>
 <tr class="separator:a60020bb6dd62dc990f557a8ab6d9a5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1372f7f3fb8477e94534e571d383df41"><td class="memItemLeft" align="right" valign="top"><a id="a1372f7f3fb8477e94534e571d383df41"></a>
+template&lt;&gt; </td></tr>
+<tr class="memitem:a1372f7f3fb8477e94534e571d383df41"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>to_char&lt; rsp_resperrtype_e &gt;</b> (rsp_resperrtype_e v)</td></tr>
+<tr class="separator:a1372f7f3fb8477e94534e571d383df41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c479bd0cdafc6b3d4043d6a1e38088e"><td class="memItemLeft" align="right" valign="top"><a id="a2c479bd0cdafc6b3d4043d6a1e38088e"></a>
 template&lt;&gt; </td></tr>
 <tr class="memitem:a2c479bd0cdafc6b3d4043d6a1e38088e"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>to_char&lt; credit_type_e &gt;</b> (credit_type_e v)</td></tr>
@@ -483,6 +527,12 @@ template&lt;typename EXT &gt; </td></tr>
 <tr class="memitem:af5fa8ebd8a13b396ca431df51ab6ea90"><td class="memItemLeft" align="right" valign="top"><a id="af5fa8ebd8a13b396ca431df51ab6ea90"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_dataless</b> (const <a class="el" href="structchi_1_1chi__ctrl__extension.html">chi::chi_ctrl_extension</a> *req_e)</td></tr>
 <tr class="separator:af5fa8ebd8a13b396ca431df51ab6ea90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1cb2b4afb0ec1b8a1de2083e9cf438f"><td class="memItemLeft" align="right" valign="top"><a id="ab1cb2b4afb0ec1b8a1de2083e9cf438f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_atomic</b> (const <a class="el" href="structchi_1_1chi__ctrl__extension.html">chi::chi_ctrl_extension</a> *req_e)</td></tr>
+<tr class="separator:ab1cb2b4afb0ec1b8a1de2083e9cf438f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0ce11c7b275a471aada8f3fc79c84a9"><td class="memItemLeft" align="right" valign="top"><a id="aa0ce11c7b275a471aada8f3fc79c84a9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_request_order</b> (const <a class="el" href="structchi_1_1chi__ctrl__extension.html">chi::chi_ctrl_extension</a> *req_e)</td></tr>
+<tr class="separator:aa0ce11c7b275a471aada8f3fc79c84a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8280af89b7e10570366e68ecfb8cec7"><td class="memItemLeft" align="right" valign="top"><a id="ad8280af89b7e10570366e68ecfb8cec7"></a>
 template&lt;&gt; </td></tr>
 <tr class="memitem:ad8280af89b7e10570366e68ecfb8cec7"><td class="memTemplItemLeft" align="right" valign="top">req_optype_e&#160;</td><td class="memTemplItemRight" valign="bottom"><b>into&lt; req_optype_e &gt;</b> (typename std::underlying_type&lt; req_optype_e &gt;::type t)</td></tr>
@@ -507,6 +557,10 @@ template&lt;&gt; </td></tr>
 template&lt;&gt; </td></tr>
 <tr class="memitem:a50000aef300ba582472b35533ac38342"><td class="memTemplItemLeft" align="right" valign="top">rsp_resptype_e&#160;</td><td class="memTemplItemRight" valign="bottom"><b>into&lt; rsp_resptype_e &gt;</b> (typename std::underlying_type&lt; rsp_resptype_e &gt;::type t)</td></tr>
 <tr class="separator:a50000aef300ba582472b35533ac38342"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39c0d27abe0cc4849e277690168da8c9"><td class="memItemLeft" align="right" valign="top"><a id="a39c0d27abe0cc4849e277690168da8c9"></a>
+template&lt;&gt; </td></tr>
+<tr class="memitem:a39c0d27abe0cc4849e277690168da8c9"><td class="memTemplItemLeft" align="right" valign="top">rsp_resperrtype_e&#160;</td><td class="memTemplItemRight" valign="bottom"><b>into&lt; rsp_resperrtype_e &gt;</b> (typename std::underlying_type&lt; rsp_resperrtype_e &gt;::type t)</td></tr>
+<tr class="separator:a39c0d27abe0cc4849e277690168da8c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>

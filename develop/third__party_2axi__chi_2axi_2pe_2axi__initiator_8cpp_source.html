@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/develop/third_party/axi_chi/axi/pe/axi_initiator.cpp Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/third_party/axi_chi/axi/pe/axi_initiator.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -93,18 +93,18 @@ $(document).ready(function(){initNavTree('third__party_2axi__chi_2axi_2pe_2axi__
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using</span> <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html">sem_lock</a> = <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html">scc::ordered_semaphore::lock</a>;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceaxi.html">axi</a> {</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespaceaxi_1_1pe.html">   29</a></span>&#160;<span class="keyword">namespace </span>pe {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>pe {</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>{</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;uint8_t log2n(uint8_t siz) { <span class="keywordflow">return</span> ((siz &gt; 1) ? 1 + log2n(siz &gt;&gt; 1) : 0); }</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;} <span class="comment">// anonymous namespace</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;SC_HAS_PROCESS(<a class="code" href="classaxi_1_1pe_1_1axi__initiator__b.html">axi_initiator_b</a>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;SC_HAS_PROCESS(axi_initiator_b);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;axi_initiator_b::axi_initiator_b(sc_core::sc_module_name nm,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                 sc_core::sc_port_b&lt;<a class="code" href="namespaceaxi.html#ac83624429793c39523c6c89199e5ab26">axi::axi_fw_transport_if&lt;axi_protocol_types&gt;</a>&gt;&amp; port,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                 <span class="keywordtype">size_t</span> transfer_width, flavor_e flavor)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        sc_core::sc_port_b&lt;<a class="code" href="namespaceaxi.html#ac83624429793c39523c6c89199e5ab26">axi::axi_fw_transport_if&lt;axi_protocol_types&gt;</a>&gt;&amp; port,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">size_t</span> transfer_width, flavor_e flavor)</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;: sc_module(nm)</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;, socket_fw(port)</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;, transfer_width_in_bytes(transfer_width / 8)</div>
@@ -118,7 +118,7 @@ $(document).ready(function(){initNavTree('third__party_2axi__chi_2axi_2pe_2axi__
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    add_attribute(ba);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    add_attribute(rla);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    add_attribute(enable_id_serializing);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    fw_i.bind(*<span class="keyword">this</span>);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    SC_METHOD(clk_counter);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    sensitive &lt;&lt; clk_i.pos();</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
@@ -140,22 +140,22 @@ $(document).ready(function(){initNavTree('third__party_2axi__chi_2axi_2pe_2axi__
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span> axi_initiator_b::b_snoop(payload_type&amp; trans, sc_core::sc_time&amp; t) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">if</span>(snoop_cb) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">auto</span> latency = (*snoop_cb)(trans);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">if</span>(bw_o.get_interface()) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">auto</span> latency = bw_o-&gt;transport(trans);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">if</span>(latency &lt; std::numeric_limits&lt;unsigned&gt;::max())</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            t += latency * clk_period;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;tlm::tlm_sync_enum axi_initiator_b::nb_transport_bw(payload_type&amp; trans, phase_type&amp; phase, sc_core::sc_time&amp; t) {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;received &quot;</span> &lt;&lt; trans &lt;&lt; <span class="stringliteral">&quot; with phase &quot;</span> &lt;&lt; phase;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span>(phase == tlm::BEGIN_REQ) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    SCCTRACE(SCMOD) &lt;&lt; __FUNCTION__ &lt;&lt; <span class="stringliteral">&quot; received with phase &quot;</span> &lt;&lt; phase &lt;&lt; <span class="stringliteral">&quot; with delay = &quot;</span> &lt;&lt; t &lt;&lt;  <span class="stringliteral">&quot; with trans &quot;</span> &lt;&lt; trans;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span>(phase == tlm::BEGIN_REQ) {   <span class="comment">// snoop</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        snp_peq.notify(trans, t);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == END_PARTIAL_RESP || phase == tlm::END_RESP) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(phase == END_PARTIAL_RESP || phase == tlm::END_RESP) {  <span class="comment">//snoop</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">auto</span> it = snp_state_by_id.find(&amp;trans);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        sc_assert(it != snp_state_by_id.end());</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        it-&gt;second-&gt;peq.notify(std::make_tuple(&amp;trans, phase), t);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    } <span class="keywordflow">else</span> {  <span class="comment">// read/write</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">auto</span> it = tx_state_by_tx.find(&amp;trans);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        sc_assert(it != tx_state_by_tx.end());</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">auto</span> txs = it-&gt;second;</div>
@@ -166,7 +166,7 @@ $(document).ready(function(){initNavTree('third__party_2axi__chi_2axi_2pe_2axi__
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">void</span> axi_initiator_b::invalidate_direct_mem_ptr(sc_dt::uint64 start_range, sc_dt::uint64 end_range) {}</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;tlm::tlm_phase axi_initiator_b::send(payload_type&amp; trans, <a class="code" href="structaxi_1_1pe_1_1axi__initiator__b_1_1tx__state.html">axi_initiator_b::tx_state</a>* txs, tlm::tlm_phase phase) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;tlm::tlm_phase axi_initiator_b::send(payload_type&amp; trans, axi_initiator_b::tx_state* txs, tlm::tlm_phase phase) {</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    sc_core::sc_time delay;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;Send &quot;</span> &lt;&lt; phase &lt;&lt; <span class="stringliteral">&quot; of &quot;</span> &lt;&lt; trans;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    tlm::tlm_sync_enum ret = socket_fw-&gt;nb_transport_fw(trans, phase, delay);</div>
@@ -175,18 +175,18 @@ $(document).ready(function(){initNavTree('third__party_2axi__chi_2axi_2pe_2axi__
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;Received &quot;</span> &lt;&lt; phase &lt;&lt; <span class="stringliteral">&quot; for &quot;</span> &lt;&lt; trans;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">return</span> phase;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">auto</span> waiting = txs-&gt;peq.<a class="code" href="structscc_1_1peq.html#a4512c9aad5ce21efcd53575a9609b012">has_next</a>();</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keyword">auto</span> entry = txs-&gt;peq.<a class="code" href="structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed">get</a>();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">auto</span> waiting = txs-&gt;peq.has_next();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keyword">auto</span> entry = txs-&gt;peq.get();</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">if</span>(waiting)</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            SCCFATAL(SCMOD) &lt;&lt; <span class="stringliteral">&quot;there is a waiting &quot;</span> &lt;&lt; std::get&lt;0&gt;(entry) &lt;&lt; <span class="stringliteral">&quot; with phase &quot;</span> &lt;&lt; std::get&lt;1&gt;(entry);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        sc_assert(!txs-&gt;peq.<a class="code" href="structscc_1_1peq.html#a4512c9aad5ce21efcd53575a9609b012">has_next</a>());</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        sc_assert(!txs-&gt;peq.has_next());</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        sc_assert(std::get&lt;0&gt;(entry) == &amp;trans);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;Received &quot;</span> &lt;&lt; std::get&lt;1&gt;(entry) &lt;&lt; <span class="stringliteral">&quot; for &quot;</span> &lt;&lt; trans;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;in send() Received &quot;</span> &lt;&lt; std::get&lt;1&gt;(entry) &lt;&lt; <span class="stringliteral">&quot; for &quot;</span> &lt;&lt; trans;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span> std::get&lt;1&gt;(entry);</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="classaxi_1_1pe_1_1axi__initiator__b.html#a88cf9399784d9b4910afb08a62902f6f">  122</a></span>&#160;<span class="keywordtype">void</span> axi_initiator_b::transport(payload_type&amp; trans, <span class="keywordtype">bool</span> blocking) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="classaxi_1_1pe_1_1axi__initiator__b.html#ac469a8a1013930bc3fd6fed14478a4f7">  122</a></span>&#160;<span class="keywordtype">void</span> axi_initiator_b::transport(payload_type&amp; trans, <span class="keywordtype">bool</span> blocking) {</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">auto</span> axi_id = get_axi_id(trans);</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">if</span>(flavor == flavor_e::AXI) {</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span>(!trans.get_extension&lt;<a class="code" href="structaxi_1_1axi4__extension.html">axi::axi4_extension</a>&gt;() &amp;&amp; !trans.get_extension&lt;<a class="code" href="structaxi_1_1axi3__extension.html">axi::axi3_extension</a>&gt;()) {</div>
@@ -240,191 +240,231 @@ $(document).ready(function(){initNavTree('third__party_2axi__chi_2axi_2pe_2axi__
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                }</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;starting &quot;</span> &lt;&lt; burst_length &lt;&lt; <span class="stringliteral">&quot; write beats of &quot;</span> &lt;&lt; trans;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; burst_length - 1; ++i) {</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    <span class="keyword">auto</span> res = send(trans, txs, axi::BEGIN_PARTIAL_REQ);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    <span class="keywordflow">if</span>(axi::END_PARTIAL_REQ != res)</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                        SCCFATAL(SCMOD) &lt;&lt; <span class="stringliteral">&quot;target responded with &quot;</span> &lt;&lt; res &lt;&lt; <span class="stringliteral">&quot; for the &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;th beat of &quot;</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                                        &lt;&lt; burst_length &lt;&lt; <span class="stringliteral">&quot; beats  in transaction &quot;</span> &lt;&lt; trans;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; (timing_e ? timing_e-&gt;wbv : wbv.value); ++i)</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                        wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                }</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                <span class="keyword">auto</span> res = send(trans, txs, tlm::BEGIN_REQ);</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                <span class="keywordflow">if</span>(res == axi::BEGIN_PARTIAL_RESP || res == tlm::BEGIN_RESP)</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                    next_phase = res;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(res != tlm::END_REQ)</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    SCCERR(SCMOD) &lt;&lt; <span class="stringliteral">&quot;target did not repsond with END_REQ to a BEGIN_REQ&quot;</span>;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            } <span class="keywordflow">else</span> { <span class="comment">// AXI3 allows data interleaving and there may be support for AXI3 in Symphony</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;starting &quot;</span> &lt;&lt; burst_length &lt;&lt; <span class="stringliteral">&quot; write beats of &quot;</span> &lt;&lt; trans;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; burst_length - 1; ++i) {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html">sem_lock</a> lck(wr_chnl);</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    <span class="keywordflow">if</span>(i == 0)</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 1; i &lt; (timing_e ? timing_e-&gt;awtv : awtv.value); ++i)</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                            wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                    <span class="keyword">auto</span> res = send(trans, txs, axi::BEGIN_PARTIAL_REQ);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                    sc_assert(axi::END_PARTIAL_REQ == res);</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 1; i &lt; (timing_e ? timing_e-&gt;wbv : wbv.value); ++i)</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                        wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                }</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html">sem_lock</a> lck(wr_chnl);</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="keyword">auto</span> res = send(trans, txs, tlm::BEGIN_REQ);</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                <span class="keywordflow">if</span>(res == axi::BEGIN_PARTIAL_RESP || res == tlm::BEGIN_RESP)</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                    next_phase = res;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(res != tlm::END_REQ)</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                    SCCERR(SCMOD) &lt;&lt; <span class="stringliteral">&quot;target did not repsond with END_REQ to a BEGIN_REQ&quot;</span>;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html">sem_lock</a> lck(rd_chnl);</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 1; i &lt; (timing_e ? timing_e-&gt;artv : artv.value); ++i)</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    <span class="keywordflow">if</span>(protocol_cb[axi::fsm::BegPartReqE])</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                        protocol_cb[axi::fsm::BegPartReqE](trans, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    <span class="keyword">auto</span> res = send(trans, txs, axi::BEGIN_PARTIAL_REQ);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                    <span class="keywordflow">if</span>(axi::END_PARTIAL_REQ != res)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        SCCFATAL(SCMOD) &lt;&lt; <span class="stringliteral">&quot;target responded with &quot;</span> &lt;&lt; res &lt;&lt; <span class="stringliteral">&quot; for the &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;th beat of &quot;</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                        &lt;&lt; burst_length &lt;&lt; <span class="stringliteral">&quot; beats  in transaction &quot;</span> &lt;&lt; trans;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; (timing_e ? timing_e-&gt;wbv : wbv.value); ++i)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                        wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                    <span class="keywordflow">if</span>(protocol_cb[axi::fsm::EndPartReqE])</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                        protocol_cb[axi::fsm::EndPartReqE](trans, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                <span class="keyword">auto</span> res = send(trans, txs, tlm::BEGIN_REQ);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                <span class="keywordflow">if</span>(res == axi::BEGIN_PARTIAL_RESP || res == tlm::BEGIN_RESP)</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    next_phase = res;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(res != tlm::END_REQ)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    SCCERR(SCMOD) &lt;&lt; <span class="stringliteral">&quot;target did not repsond with END_REQ to a BEGIN_REQ&quot;</span>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            } <span class="keywordflow">else</span> { <span class="comment">// AXI3 allows data interleaving and there may be support for AXI3 in Symphony</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;starting &quot;</span> &lt;&lt; burst_length &lt;&lt; <span class="stringliteral">&quot; write beats of &quot;</span> &lt;&lt; trans;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; burst_length - 1; ++i) {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html">sem_lock</a> lck(wr_chnl);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                    <span class="keywordflow">if</span>(i == 0)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 1; i &lt; (timing_e ? timing_e-&gt;awtv : awtv.value); ++i)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                            wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    <span class="keyword">auto</span> res = send(trans, txs, axi::BEGIN_PARTIAL_REQ);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                    sc_assert(axi::END_PARTIAL_REQ == res);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 1; i &lt; (timing_e ? timing_e-&gt;wbv : wbv.value); ++i)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                        wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html">sem_lock</a> lck(wr_chnl);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                <span class="keywordflow">if</span>(protocol_cb[axi::fsm::BegReqE])</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                    protocol_cb[axi::fsm::BegReqE](trans, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                <span class="keyword">auto</span> res = send(trans, txs, tlm::BEGIN_REQ);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                <span class="keywordflow">if</span>(res == axi::BEGIN_PARTIAL_RESP || res == tlm::BEGIN_RESP)</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                    next_phase = res;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(res != tlm::END_REQ)</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                    SCCERR(SCMOD) &lt;&lt; <span class="stringliteral">&quot;target did not repsond with END_REQ to a BEGIN_REQ&quot;</span>;</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;starting address phase of &quot;</span> &lt;&lt; trans;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="keyword">auto</span> res = send(trans, txs, tlm::BEGIN_REQ);</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">if</span>(res == axi::BEGIN_PARTIAL_RESP || res == tlm::BEGIN_RESP)</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                next_phase = res;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(res != tlm::END_REQ)</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                SCCERR(SCMOD) &lt;&lt; <span class="stringliteral">&quot;target did not repsond with END_REQ to a BEGIN_REQ&quot;</span>;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keyword">auto</span> finished = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keywordflow">if</span>(!trans.is_read() || !trans.get_data_length())</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            burst_length = 1;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> exp_burst_length = burst_length;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="comment">// waiting for response</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="keyword">auto</span> entry = next_phase == tlm::UNINITIALIZED_PHASE ? txs-&gt;peq.<a class="code" href="structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed">get</a>() : std::make_tuple(&amp;trans, next_phase);</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            next_phase = tlm::UNINITIALIZED_PHASE;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="comment">// Handle optional CRESP response</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordflow">if</span>(std::get&lt;0&gt;(entry) == &amp;trans &amp;&amp; std::get&lt;1&gt;(entry) == tlm::BEGIN_RESP) {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;received last beat of &quot;</span> &lt;&lt; trans;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                <span class="keyword">auto</span> delay_in_cycles = timing_e ? (trans.is_read() ? timing_e-&gt;rbr : timing_e-&gt;br) : br.value;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; delay_in_cycles; ++i)</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                    wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                burst_length--;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                tlm::tlm_phase phase = tlm::END_RESP;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                sc_time delay = clk_if ? clk_if-&gt;period() - 1_ps : SC_ZERO_TIME;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                socket_fw-&gt;nb_transport_fw(trans, phase, delay);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                <span class="keywordflow">if</span>(burst_length)</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                    SCCWARN(SCMOD) &lt;&lt; <span class="stringliteral">&quot;got wrong number of burst beats, expected &quot;</span> &lt;&lt; exp_burst_length &lt;&lt; <span class="stringliteral">&quot;, got &quot;</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                                   &lt;&lt; exp_burst_length - burst_length;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                finished = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(std::get&lt;0&gt;(entry) == &amp;trans &amp;&amp;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                      std::get&lt;1&gt;(entry) == axi::BEGIN_PARTIAL_RESP) { <span class="comment">// RDAT without CRESP case</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;received beat of &quot;</span> &lt;&lt; trans;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keyword">auto</span> delay_in_cycles = timing_e ? timing_e-&gt;rbr : rbr.value;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; delay_in_cycles; ++i)</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                    wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                burst_length--;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                tlm::tlm_phase phase = axi::END_PARTIAL_RESP;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                sc_time delay = clk_if ? clk_if-&gt;period() - 1_ps : SC_ZERO_TIME;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                <span class="keyword">auto</span> res = socket_fw-&gt;nb_transport_fw(trans, phase, delay);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                <span class="keywordflow">if</span>(res == tlm::TLM_UPDATED) {</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                    next_phase = phase;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                    wait(delay);</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                }</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            }</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        } <span class="keywordflow">while</span>(!finished);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keywordflow">if</span>(flavor == flavor_e::ACE) {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            <span class="keywordflow">if</span>(trans.is_read() &amp;&amp; rla.value != std::numeric_limits&lt;unsigned&gt;::max()) {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; rla.value; ++i)</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                    wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                tlm::tlm_phase phase = axi::ACK;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                sc_time delay = SC_ZERO_TIME;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                socket_fw-&gt;nb_transport_fw(trans, phase, delay);</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(trans.is_write() &amp;&amp; ba.value != std::numeric_limits&lt;unsigned&gt;::max()) {</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; ba.value; ++i)</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                    wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                tlm::tlm_phase phase = axi::ACK;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                sc_time delay = SC_ZERO_TIME;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                socket_fw-&gt;nb_transport_fw(trans, phase, delay);</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            }</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        }</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;finished non-blocking protocol&quot;</span>;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keywordflow">if</span>(enable_id_serializing.value) {</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            id_mtx[axi_id]-&gt;post();</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        }</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        txs-&gt;active_tx = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        any_tx_finished.notify(SC_ZERO_TIME);</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    }</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;finished transport req for &quot;</span> &lt;&lt; trans;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;}</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">// This process handles the SNOOP request received</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="keywordtype">void</span> axi_initiator_b::snoop_thread() {</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm::scc::tlm_gp_shared_ptr</a> trans{<span class="keyword">nullptr</span>};</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="keywordflow">while</span>(!(trans = snp_peq.get_next_transaction())) {</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            wait(snp_peq.get_event());</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        }</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        snoops_in_flight++;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        SCCDEBUG(SCMOD) &lt;&lt; <span class="stringliteral">&quot;start snoop #&quot;</span> &lt;&lt; snoops_in_flight;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <span class="keyword">auto</span> req_ext = trans-&gt;get_extension&lt;ace_extension&gt;();</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        sc_assert(req_ext != <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keyword">auto</span> it = snp_state_by_id.find(&amp;trans);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordflow">if</span>(it == snp_state_by_id.end()) {</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <span class="keywordtype">bool</span> success;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            std::tie(it, success) = snp_state_by_id.insert(std::make_pair(trans.get(), <span class="keyword">new</span> tx_state()));</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        }</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        sc_time delay = clk_if ? clk_if-&gt;period() - 1_ps : SC_ZERO_TIME;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        tlm::tlm_phase phase = tlm::END_REQ;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        socket_fw-&gt;nb_transport_fw(*trans, phase, delay);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <span class="keyword">auto</span> cycles = 0U;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">if</span>(snoop_cb)</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            cycles = (*snoop_cb)(*trans);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="keywordflow">if</span>(cycles &lt; std::numeric_limits&lt;unsigned&gt;::max()) {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <span class="comment">// we handle the snoop access ourselfs</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt;= cycles; ++i)</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            snoop_resp(*trans);</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        }</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        snoops_in_flight--;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    }</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;}</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                <span class="keywordflow">if</span>(protocol_cb[axi::fsm::EndReqE])</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                    protocol_cb[axi::fsm::EndReqE](trans, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html">sem_lock</a> lck(rd_chnl);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 1; i &lt; (timing_e ? timing_e-&gt;artv : artv.value); ++i)</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;starting address phase of &quot;</span> &lt;&lt; trans;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">if</span>(protocol_cb[axi::fsm::BegPartReqE])</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                protocol_cb[axi::fsm::BegPartReqE](trans, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="keyword">auto</span> res = send(trans, txs, tlm::BEGIN_REQ);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="keywordflow">if</span>(res == axi::BEGIN_PARTIAL_RESP || res == tlm::BEGIN_RESP)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                next_phase = res;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(res != tlm::END_REQ)</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                SCCERR(SCMOD) &lt;&lt; <span class="stringliteral">&quot;target did not repsond with END_REQ to a BEGIN_REQ&quot;</span>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordflow">if</span>(protocol_cb[axi::fsm::EndReqE])</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                protocol_cb[axi::fsm::EndReqE](trans, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keyword">auto</span> finished = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="keywordflow">if</span>(!trans.is_read() || !trans.get_data_length())</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            burst_length = 1;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> exp_burst_length = burst_length;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="comment">// waiting for response</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <span class="keyword">auto</span> entry = next_phase == tlm::UNINITIALIZED_PHASE ? txs-&gt;peq.get() : std::make_tuple(&amp;trans, next_phase);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            next_phase = tlm::UNINITIALIZED_PHASE;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="comment">// Handle optional CRESP response</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">if</span>(std::get&lt;0&gt;(entry) == &amp;trans &amp;&amp; std::get&lt;1&gt;(entry) == tlm::BEGIN_RESP) {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                <span class="keywordflow">if</span>(protocol_cb[axi::fsm::BegRespE])</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                    protocol_cb[axi::fsm::BegRespE](trans, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;received last beat of &quot;</span> &lt;&lt; trans;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                <span class="keyword">auto</span> delay_in_cycles = timing_e ? (trans.is_read() ? timing_e-&gt;rbr : timing_e-&gt;br) : br.value;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; delay_in_cycles; ++i)</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                    wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                burst_length--;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                tlm::tlm_phase phase = tlm::END_RESP;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                sc_time delay = clk_if ? clk_if-&gt;period() - 1_ps : SC_ZERO_TIME;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                socket_fw-&gt;nb_transport_fw(trans, phase, delay);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                <span class="keywordflow">if</span>(burst_length)</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                    SCCWARN(SCMOD) &lt;&lt; <span class="stringliteral">&quot;got wrong number of burst beats, expected &quot;</span> &lt;&lt; exp_burst_length &lt;&lt; <span class="stringliteral">&quot;, got &quot;</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                    &lt;&lt; exp_burst_length - burst_length;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                <span class="keywordflow">if</span>(protocol_cb[axi::fsm::EndRespE])</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                    protocol_cb[axi::fsm::EndRespE](trans, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                finished = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(std::get&lt;0&gt;(entry) == &amp;trans &amp;&amp;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                    std::get&lt;1&gt;(entry) == axi::BEGIN_PARTIAL_RESP) { <span class="comment">// RDAT without CRESP case</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;received beat = &quot;</span>&lt;&lt; burst_length&lt;&lt;<span class="stringliteral">&quot; with trans &quot;</span> &lt;&lt; trans;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                <span class="keyword">auto</span> delay_in_cycles = timing_e ? timing_e-&gt;rbr : rbr.value;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; delay_in_cycles; ++i)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                    wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                burst_length--;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                <span class="keywordflow">if</span>(protocol_cb[axi::fsm::BegPartRespE])</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                    protocol_cb[axi::fsm::BegPartRespE](trans, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                tlm::tlm_phase phase = axi::END_PARTIAL_RESP;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                sc_time delay = clk_if ? clk_if-&gt;period() - 1_ps : SC_ZERO_TIME;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                <span class="keyword">auto</span> res = socket_fw-&gt;nb_transport_fw(trans, phase, delay);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                <span class="keywordflow">if</span>(res == tlm::TLM_UPDATED) {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                    next_phase = phase;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                    wait(delay);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                <span class="keywordflow">if</span>(protocol_cb[axi::fsm::EndPartRespE])</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                    protocol_cb[axi::fsm::EndPartRespE](trans, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;          }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        } <span class="keywordflow">while</span>(!finished);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keywordflow">if</span>(flavor == flavor_e::ACE) {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            <span class="keywordflow">if</span>(trans.is_read() &amp;&amp; rla.value != std::numeric_limits&lt;unsigned&gt;::max()) {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; rla.value; ++i)</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                    wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                tlm::tlm_phase phase = axi::ACK;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                sc_time delay = SC_ZERO_TIME;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                socket_fw-&gt;nb_transport_fw(trans, phase, delay);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(trans.is_write() &amp;&amp; ba.value != std::numeric_limits&lt;unsigned&gt;::max()) {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; ba.value; ++i)</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                    wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                tlm::tlm_phase phase = axi::ACK;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                sc_time delay = SC_ZERO_TIME;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                socket_fw-&gt;nb_transport_fw(trans, phase, delay);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;finished non-blocking protocol&quot;</span>;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordflow">if</span>(enable_id_serializing.value) {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            id_mtx[axi_id]-&gt;post();</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        txs-&gt;active_tx = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        any_tx_finished.notify(SC_ZERO_TIME);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    }</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;finished transport req for &quot;</span> &lt;&lt; trans;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;}</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="comment">// This process handles the SNOOP request received</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="keywordtype">void</span> axi_initiator_b::snoop_thread() {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm::scc::tlm_gp_shared_ptr</a> trans{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordflow">while</span>(!(trans = snp_peq.get_next_transaction())) {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            wait(snp_peq.get_event());</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        }</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        snoops_in_flight++;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        SCCDEBUG(SCMOD) &lt;&lt; <span class="stringliteral">&quot;start snoop #&quot;</span> &lt;&lt; snoops_in_flight;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="keyword">auto</span> req_ext = trans-&gt;get_extension&lt;ace_extension&gt;();</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        sc_assert(req_ext != <span class="keyword">nullptr</span>);</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno"><a class="line" href="classaxi_1_1pe_1_1axi__initiator__b.html#ab6bb0632be12de367c1ab262d5ec1bc1">  323</a></span>&#160;<span class="keywordtype">void</span> axi_initiator_b::snoop_resp(payload_type&amp; trans, <span class="keywordtype">bool</span> sync) {</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keyword">auto</span> it = snp_state_by_id.find(&amp;trans);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    sc_assert(it != snp_state_by_id.end());</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keyword">auto</span>&amp; txs = it-&gt;second;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keyword">auto</span> data_len=trans.get_data_length();</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keyword">auto</span> burst_length = data_len/transfer_width_in_bytes;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keywordflow">if</span>(burst_length&lt;1)</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        burst_length=1;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    tlm::tlm_phase next_phase{tlm::UNINITIALIZED_PHASE};</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keyword">auto</span> delay_in_cycles = wbv.value;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html">sem_lock</a> lck(sresp_chnl);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;starting snoop resp with &quot;</span> &lt;&lt; burst_length &lt;&lt; <span class="stringliteral">&quot; beats of &quot;</span> &lt;&lt; trans;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; burst_length - 1; ++i) {</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="keyword">auto</span> res = send(trans, txs, axi::BEGIN_PARTIAL_RESP);</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        sc_assert(axi::END_PARTIAL_RESP == res);</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 1; i &lt; delay_in_cycles; ++i)</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    }</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keyword">auto</span> res = send(trans, txs, tlm::BEGIN_RESP);</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordflow">if</span>(res != tlm::END_RESP)</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        SCCERR(SCMOD) &lt;&lt; <span class="stringliteral">&quot;target did not respond with END_RESP to a BEGIN_RESP&quot;</span>;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    wait(clk_i.posedge_event());</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;}</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;} <span class="comment">// namespace pe</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;} <span class="comment">// namespace axi</span></div>
-<div class="ttc" id="aclassaxi_1_1pe_1_1axi__initiator__b_html"><div class="ttname"><a href="classaxi_1_1pe_1_1axi__initiator__b.html">axi::pe::axi_initiator_b</a></div><div class="ttdef"><b>Definition:</b> <a href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html#l00030">axi_initiator.h:30</a></div></div>
-<div class="ttc" id="aclassscc_1_1ordered__semaphore_html"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html">scc::ordered_semaphore</a></div><div class="ttdoc">The ordered_semaphore primitive channel class.</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00043">ordered_semaphore.h:43</a></div></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="keyword">auto</span> it = snp_state_by_id.find(&amp;trans);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="keywordflow">if</span>(it == snp_state_by_id.end()) {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            <span class="keywordtype">bool</span> success;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            std::tie(it, success) = snp_state_by_id.insert(std::make_pair(trans.get(), <span class="keyword">new</span> tx_state()));</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        sc_time delay = clk_if ? clk_if-&gt;period() - 1_ps : SC_ZERO_TIME;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        tlm::tlm_phase phase = tlm::END_REQ;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="comment">// here delay is not used in nb_fw of following module</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="comment">// therefore one cycle delay between BEG_REQ and END_REQ should be explicitly called here??</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <span class="keywordflow">if</span>(protocol_cb[axi::fsm::BegReqE])</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            protocol_cb[axi::fsm::BegReqE](*trans, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        socket_fw-&gt;nb_transport_fw(*trans, phase, delay);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="keyword">auto</span> cycles = 0U;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <span class="keywordflow">if</span>(bw_o.get_interface())</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            cycles = bw_o-&gt;transport(*trans);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        <span class="keywordflow">if</span>(protocol_cb[axi::fsm::EndReqE])</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            protocol_cb[axi::fsm::EndReqE](*trans, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <span class="keywordflow">if</span>(cycles &lt; std::numeric_limits&lt;unsigned&gt;::max()) {</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            <span class="comment">// we handle the snoop access ourselfs</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt;= cycles; ++i)</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            snoop_resp(*trans);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        }</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <span class="comment">// finish snoop response, should release tlm gp_shared_ptr</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        SCCTRACE(SCMOD)&lt;&lt;<span class="stringliteral">&quot; finish snoop response, release gp_shared_ptr&quot;</span>;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        snoops_in_flight--;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        trans=<span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    }</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;}</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00354"></a><span class="lineno"><a class="line" href="classaxi_1_1pe_1_1axi__initiator__b.html#a2ae6017e57f886c5877710c6144bc221">  354</a></span>&#160;<span class="keywordtype">void</span> axi_initiator_b::snoop_resp(payload_type&amp; trans, <span class="keywordtype">bool</span> sync) {</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keyword">auto</span> it = snp_state_by_id.find(&amp;trans);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    sc_assert(it != snp_state_by_id.end());</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keyword">auto</span>&amp; txs = it-&gt;second;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keyword">auto</span> data_len=trans.get_data_length();</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keyword">auto</span> burst_length = data_len/transfer_width_in_bytes;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keywordflow">if</span>(burst_length&lt;1)</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        burst_length=1;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    tlm::tlm_phase next_phase{tlm::UNINITIALIZED_PHASE};</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keyword">auto</span> delay_in_cycles = wbv.value;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <a class="code" href="structscc_1_1ordered__semaphore_1_1lock.html">sem_lock</a> lck(sresp_chnl);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="comment">     * here according to spec, ccresp should first be checked to see whether there is data transfer( decided by TC)</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">     * if there is data to transfer, start cache data transfer, otherwise only crresp</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="comment">     * */</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    SCCTRACE(SCMOD) &lt;&lt; <span class="stringliteral">&quot;starting snoop resp with &quot;</span> &lt;&lt; burst_length &lt;&lt; <span class="stringliteral">&quot; beats of &quot;</span> &lt;&lt; trans;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; burst_length - 1; ++i) {</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keywordflow">if</span>(protocol_cb[axi::fsm::BegPartRespE])</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            protocol_cb[axi::fsm::BegPartRespE](trans, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <span class="keyword">auto</span> res = send(trans, txs, axi::BEGIN_PARTIAL_RESP);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        sc_assert(axi::END_PARTIAL_RESP == res);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <span class="keywordflow">if</span>(protocol_cb[axi::fsm::EndPartRespE])</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            protocol_cb[axi::fsm::EndPartRespE](trans, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 1; i &lt; delay_in_cycles; ++i)</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <span class="keywordflow">if</span>(protocol_cb[axi::fsm::BegRespE])</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        protocol_cb[axi::fsm::BegRespE](trans, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="keyword">auto</span> res = send(trans, txs, tlm::BEGIN_RESP);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordflow">if</span>(res != tlm::END_RESP)</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        SCCERR(SCMOD) &lt;&lt; <span class="stringliteral">&quot;target did not respond with END_RESP to a BEGIN_RESP&quot;</span>;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    wait(clk_i.posedge_event());</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordflow">if</span>(protocol_cb[axi::fsm::EndRespE])</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        protocol_cb[axi::fsm::EndRespE](trans, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;}</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;} <span class="comment">// namespace pe</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;} <span class="comment">// namespace axi</span></div>
+<div class="ttc" id="aclassscc_1_1ordered__semaphore_html"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html">scc::ordered_semaphore</a></div><div class="ttdoc">The ordered_semaphore primitive channel class.</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00044">ordered_semaphore.h:44</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1tlm__gp__shared__ptr_html"><div class="ttname"><a href="classtlm_1_1scc_1_1tlm__gp__shared__ptr.html">tlm::scc::tlm_gp_shared_ptr</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__gp__shared_8h_source.html#l00027">tlm_gp_shared.h:27</a></div></div>
 <div class="ttc" id="anamespaceaxi_html"><div class="ttname"><a href="namespaceaxi.html">axi</a></div><div class="ttdoc">TLM2.0 components modeling AHB.</div><div class="ttdef"><b>Definition:</b> <a href="src_2bus__interfaces_2axi_2axi__initiator_8h_source.html#l00030">axi_initiator.h:30</a></div></div>
-<div class="ttc" id="anamespaceaxi_html_ac83624429793c39523c6c89199e5ab26"><div class="ttname"><a href="namespaceaxi.html#ac83624429793c39523c6c89199e5ab26">axi::axi_fw_transport_if</a></div><div class="ttdeci">tlm::tlm_fw_transport_if&lt; TYPES &gt; axi_fw_transport_if</div><div class="ttdoc">alias declaration for the forward interface</div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00913">axi_tlm.h:913</a></div></div>
-<div class="ttc" id="astructaxi_1_1ace__extension_html"><div class="ttname"><a href="structaxi_1_1ace__extension.html">axi::ace_extension</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00858">axi_tlm.h:858</a></div></div>
-<div class="ttc" id="astructaxi_1_1ace_html"><div class="ttname"><a href="structaxi_1_1ace.html">axi::ace</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00539">axi_tlm.h:539</a></div></div>
-<div class="ttc" id="astructaxi_1_1axi3__extension_html"><div class="ttname"><a href="structaxi_1_1axi3__extension.html">axi::axi3_extension</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00808">axi_tlm.h:808</a></div></div>
-<div class="ttc" id="astructaxi_1_1axi4__extension_html"><div class="ttname"><a href="structaxi_1_1axi4__extension.html">axi::axi4_extension</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00833">axi_tlm.h:833</a></div></div>
-<div class="ttc" id="astructaxi_1_1axi4_html"><div class="ttname"><a href="structaxi_1_1axi4.html">axi::axi4</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00475">axi_tlm.h:475</a></div></div>
-<div class="ttc" id="astructaxi_1_1common_html"><div class="ttname"><a href="structaxi_1_1common.html">axi::common</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00157">axi_tlm.h:157</a></div></div>
-<div class="ttc" id="astructaxi_1_1pe_1_1axi__initiator__b_1_1tx__state_html"><div class="ttname"><a href="structaxi_1_1pe_1_1axi__initiator__b_1_1tx__state.html">axi::pe::axi_initiator_b::tx_state</a></div><div class="ttdef"><b>Definition:</b> <a href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html#l00131">axi_initiator.h:131</a></div></div>
-<div class="ttc" id="astructscc_1_1ordered__semaphore_1_1lock_html"><div class="ttname"><a href="structscc_1_1ordered__semaphore_1_1lock.html">scc::ordered_semaphore::lock</a></div><div class="ttdoc">a lock for the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00128">ordered_semaphore.h:128</a></div></div>
-<div class="ttc" id="astructscc_1_1peq_html_a4512c9aad5ce21efcd53575a9609b012"><div class="ttname"><a href="structscc_1_1peq.html#a4512c9aad5ce21efcd53575a9609b012">scc::peq::has_next</a></div><div class="ttdeci">bool has_next()</div><div class="ttdoc">check if value is available at current time</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00144">peq.h:144</a></div></div>
-<div class="ttc" id="astructscc_1_1peq_html_a86fe01b84c045c7b8d0090f1dc588bed"><div class="ttname"><a href="structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed">scc::peq::get</a></div><div class="ttdeci">TYPE get()</div><div class="ttdoc">blocking get</div><div class="ttdef"><b>Definition:</b> <a href="peq_8h_source.html#l00116">peq.h:116</a></div></div>
+<div class="ttc" id="anamespaceaxi_html_ac83624429793c39523c6c89199e5ab26"><div class="ttname"><a href="namespaceaxi.html#ac83624429793c39523c6c89199e5ab26">axi::axi_fw_transport_if</a></div><div class="ttdeci">tlm::tlm_fw_transport_if&lt; TYPES &gt; axi_fw_transport_if</div><div class="ttdoc">alias declaration for the forward interface</div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00916">axi_tlm.h:916</a></div></div>
+<div class="ttc" id="astructaxi_1_1ace__extension_html"><div class="ttname"><a href="structaxi_1_1ace__extension.html">axi::ace_extension</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00861">axi_tlm.h:861</a></div></div>
+<div class="ttc" id="astructaxi_1_1ace_html"><div class="ttname"><a href="structaxi_1_1ace.html">axi::ace</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00542">axi_tlm.h:542</a></div></div>
+<div class="ttc" id="astructaxi_1_1axi3__extension_html"><div class="ttname"><a href="structaxi_1_1axi3__extension.html">axi::axi3_extension</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00811">axi_tlm.h:811</a></div></div>
+<div class="ttc" id="astructaxi_1_1axi4__extension_html"><div class="ttname"><a href="structaxi_1_1axi4__extension.html">axi::axi4_extension</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00836">axi_tlm.h:836</a></div></div>
+<div class="ttc" id="astructaxi_1_1axi4_html"><div class="ttname"><a href="structaxi_1_1axi4.html">axi::axi4</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00478">axi_tlm.h:478</a></div></div>
+<div class="ttc" id="astructaxi_1_1common_html"><div class="ttname"><a href="structaxi_1_1common.html">axi::common</a></div><div class="ttdef"><b>Definition:</b> <a href="axi__tlm_8h_source.html#l00160">axi_tlm.h:160</a></div></div>
+<div class="ttc" id="astructaxi_1_1pe_1_1axi__initiator__b_1_1tx__state_html"><div class="ttname"><a href="structaxi_1_1pe_1_1axi__initiator__b_1_1tx__state.html">axi::pe::axi_initiator_b::tx_state</a></div><div class="ttdef"><b>Definition:</b> <a href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html#l00140">axi_initiator.h:140</a></div></div>
+<div class="ttc" id="astructscc_1_1ordered__semaphore_1_1lock_html"><div class="ttname"><a href="structscc_1_1ordered__semaphore_1_1lock.html">scc::ordered_semaphore::lock</a></div><div class="ttdoc">a lock for the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00144">ordered_semaphore.h:144</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -2,6 +2,7 @@ var namespaceahb =
 [
     [ "pe", "namespaceahb_1_1pe.html", "namespaceahb_1_1pe" ],
     [ "pin", "namespaceahb_1_1pin.html", "namespaceahb_1_1pin" ],
+    [ "enable_for_enum", "structahb_1_1enable__for__enum.html", null ],
     [ "ahb_extension", "structahb_1_1ahb__extension.html", "structahb_1_1ahb__extension" ],
     [ "burst_e", "namespaceahb.html#aa5283d41e153c6f8085d871bd41d33f8", [
       [ "SINGLE", "namespaceahb.html#aa5283d41e153c6f8085d871bd41d33f8a0679273e201afd0bf57af3961f8a23b8", null ],
@@ -30,6 +31,11 @@ var namespaceahb =
       [ "NONSEQ", "namespaceahb.html#a08df7812ac70b210c84b19ea00d4e75ba9cf24c3c41e725a8bc70f559eef10863", null ],
       [ "SEQ", "namespaceahb.html#a08df7812ac70b210c84b19ea00d4e75ba5826d2990481dd71b3e258ddf8435676", null ]
     ] ],
-    [ "DECLARE_EXTENDED_PHASE", "namespaceahb.html#a64917a4cc2c9690ee36d6a4e7e0ec3c8", null ],
-    [ "DECLARE_EXTENDED_PHASE", "namespaceahb.html#a453beb0a24dfb525536726b1daf300b7", null ]
+    [ "into", "namespaceahb.html#abe1b176036c3ac1a7db5ab387cce529c", null ],
+    [ "operator<<", "namespaceahb.html#a0b5a8be06fb50a66b1e37312dc37ffa1", null ],
+    [ "operator<<", "namespaceahb.html#a7525653abc910e79bd949acd247c2af4", null ],
+    [ "to_char", "namespaceahb.html#aacc09e8dbf4a47e212d271ea27a10822", null ],
+    [ "to_char< burst_e >", "namespaceahb.html#a0d86a5a9ea68031ec07d75fbd22102b1", null ],
+    [ "to_char< resp_e >", "namespaceahb.html#aacbeb83572052e2212e3332b69c31407", null ],
+    [ "to_int", "namespaceahb.html#a76ac0692d61cadc07f51519ff681bb56", null ]
 ];

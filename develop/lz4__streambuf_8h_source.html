@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/develop/src/common/util/lz4_streambuf.h Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/src/common/util/lz4_streambuf.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -77,17 +77,17 @@ $(document).ready(function(){initNavTree('lz4__streambuf_8h_source.html',''); in
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef _UTIL_LZ4_STREAMBUF_H_</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define _UTIL_LZ4_STREAMBUF_H_</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;lz4frame.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;istream&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;ostream&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;streambuf&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;lz4frame.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;ostream&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;streambuf&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceutil.html">util</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classutil_1_1lz4c__steambuf.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="classutil_1_1lz4c__steambuf.html">lz4c_steambuf</a>: <span class="keyword">public</span> std::streambuf {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classutil_1_1lz4c__steambuf.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="classutil_1_1lz4c__steambuf.html">lz4c_steambuf</a> : <span class="keyword">public</span> std::streambuf {</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classutil_1_1lz4c__steambuf.html">lz4c_steambuf</a>(std::ostream &amp;sink, <span class="keywordtype">size_t</span> buf_size);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classutil_1_1lz4c__steambuf.html">lz4c_steambuf</a>(std::ostream&amp; sink, <span class="keywordtype">size_t</span> buf_size);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    ~<a class="code" href="classutil_1_1lz4c__steambuf.html">lz4c_steambuf</a>();</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
@@ -97,24 +97,24 @@ $(document).ready(function(){initNavTree('lz4__streambuf_8h_source.html',''); in
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classutil_1_1lz4c__steambuf.html">lz4c_steambuf</a>(<a class="code" href="classutil_1_1lz4c__steambuf.html">lz4c_steambuf</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classutil_1_1lz4c__steambuf.html">lz4c_steambuf</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classutil_1_1lz4c__steambuf.html">lz4c_steambuf</a>&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classutil_1_1lz4c__steambuf.html">lz4c_steambuf</a>&amp; operator=(<a class="code" href="classutil_1_1lz4c__steambuf.html">lz4c_steambuf</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    int_type overflow(int_type ch) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    int_type sync() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> compress_and_write();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    std::ostream &amp;sink;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::vector&lt;char&gt; src_buf;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::vector&lt;char&gt; dest_buf;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    LZ4F_compressionContext_t ctx{ <span class="keyword">nullptr</span> };</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">bool</span> closed{ <span class="keyword">false</span> };</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    int_type overflow(int_type ch) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    int_type sync() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> compress_and_write();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::ostream&amp; sink;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::vector&lt;char&gt; src_buf;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    std::vector&lt;char&gt; dest_buf;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    LZ4F_compressionContext_t ctx{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">bool</span> closed{<span class="keyword">false</span>};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classutil_1_1lz4d__streambuf.html">   48</a></span>&#160;<span class="keyword">class </span><a class="code" href="classutil_1_1lz4d__streambuf.html">lz4d_streambuf</a>: <span class="keyword">public</span> std::streambuf {</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classutil_1_1lz4d__streambuf.html">   48</a></span>&#160;<span class="keyword">class </span><a class="code" href="classutil_1_1lz4d__streambuf.html">lz4d_streambuf</a> : <span class="keyword">public</span> std::streambuf {</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="classutil_1_1lz4d__streambuf.html">lz4d_streambuf</a>(std::istream &amp;source, <span class="keywordtype">size_t</span> buf_size);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="classutil_1_1lz4d__streambuf.html">lz4d_streambuf</a>(std::istream&amp; source, <span class="keywordtype">size_t</span> buf_size);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    ~<a class="code" href="classutil_1_1lz4d__streambuf.html">lz4d_streambuf</a>();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
@@ -124,18 +124,19 @@ $(document).ready(function(){initNavTree('lz4__streambuf_8h_source.html',''); in
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classutil_1_1lz4d__streambuf.html">lz4d_streambuf</a>(<a class="code" href="classutil_1_1lz4d__streambuf.html">lz4d_streambuf</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classutil_1_1lz4d__streambuf.html">lz4d_streambuf</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classutil_1_1lz4d__streambuf.html">lz4d_streambuf</a>&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classutil_1_1lz4d__streambuf.html">lz4d_streambuf</a>&amp; operator=(<a class="code" href="classutil_1_1lz4d__streambuf.html">lz4d_streambuf</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::istream &amp;src_str;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::vector&lt;char&gt; src_buf;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::vector&lt;char&gt; dest_buf;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">size_t</span> offset{ 0 };</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">size_t</span> src_buf_size{ 0 };</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    LZ4F_decompressionContext_t ctx{ <span class="keyword">nullptr</span> };</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;};</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _UTIL_LZ4_STREAMBUF_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::istream&amp; src_str;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::vector&lt;char&gt; src_buf;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::vector&lt;char&gt; dest_buf;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">size_t</span> offset{0};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">size_t</span> src_buf_size{0};</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    LZ4F_decompressionContext_t ctx{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;} <span class="comment">// namespace util</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _UTIL_LZ4_STREAMBUF_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassutil_1_1lz4c__steambuf_html"><div class="ttname"><a href="classutil_1_1lz4c__steambuf.html">util::lz4c_steambuf</a></div><div class="ttdef"><b>Definition:</b> <a href="lz4__streambuf_8h_source.html#l00021">lz4_streambuf.h:21</a></div></div>
 <div class="ttc" id="aclassutil_1_1lz4d__streambuf_html"><div class="ttname"><a href="classutil_1_1lz4d__streambuf.html">util::lz4d_streambuf</a></div><div class="ttdef"><b>Definition:</b> <a href="lz4__streambuf_8h_source.html#l00048">lz4_streambuf.h:48</a></div></div>
 <div class="ttc" id="anamespaceutil_html"><div class="ttname"><a href="namespaceutil.html">util</a></div><div class="ttdoc">SCC common utilities.</div><div class="ttdef"><b>Definition:</b> <a href="bit__field_8h_source.html#l00030">bit_field.h:30</a></div></div>

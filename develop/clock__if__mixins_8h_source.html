@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/develop/src/components/scc/clock_if_mixins.h Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/src/components/scc/clock_if_mixins.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -120,31 +120,29 @@ $(document).ready(function(){initNavTree('clock__if__mixins_8h_source.html','');
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        BASE::end_of_elaboration();</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#ifdef CWR_SYSTEMC</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> handle_clock_parameters_updated(scml_clock_if* clk_if)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        this-&gt;set_clock_period(clk_if-&gt;get_period());</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> handle_clock_deleted(scml_clock_if*)<span class="keyword"> override</span>{};</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classscc_1_1tickless__clock.html">   63</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> BASE&gt; <span class="keyword">class </span><a class="code" href="classscc_1_1tickless__clock.html">tickless_clock</a> : <span class="keyword">public</span> BASE {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    sc_core::sc_in&lt;sc_core::sc_time&gt; clk_i;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="classscc_1_1tickless__clock.html">tickless_clock</a>(sc_core::sc_module_name <span class="keyword">const</span>&amp; nm)</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    : BASE(nm) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        SC_HAS_PROCESS(<a class="code" href="classscc_1_1tickless__clock.html">tickless_clock&lt;BASE&gt;</a>);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        SC_METHOD(clock_cb);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        this-&gt;sensitive &lt;&lt; clk_i;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> clock_cb() { this-&gt;set_clock_period(clk_i.read()); }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// _SYSC_CLOCK_IF_MIXINS_H_</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> handle_clock_parameters_updated(scml_clock_if* clk_if)<span class="keyword"> override </span>{ this-&gt;set_clock_period(clk_if-&gt;get_period()); }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> handle_clock_deleted(scml_clock_if*)<span class="keyword"> override</span>{};</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classscc_1_1tickless__clock.html">   61</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> BASE&gt; <span class="keyword">class </span><a class="code" href="classscc_1_1tickless__clock.html">tickless_clock</a> : <span class="keyword">public</span> BASE {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    sc_core::sc_in&lt;sc_core::sc_time&gt; clk_i;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="classscc_1_1tickless__clock.html">tickless_clock</a>(sc_core::sc_module_name <span class="keyword">const</span>&amp; nm)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    : BASE(nm) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        SC_HAS_PROCESS(<a class="code" href="classscc_1_1tickless__clock.html">tickless_clock&lt;BASE&gt;</a>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        SC_METHOD(clock_cb);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        this-&gt;sensitive &lt;&lt; clk_i;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> clock_cb() { this-&gt;set_clock_period(clk_i.read()); }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;};</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// _SYSC_CLOCK_IF_MIXINS_H_</span></div>
 <div class="ttc" id="aclassscc_1_1ticking__clock_html"><div class="ttname"><a href="classscc_1_1ticking__clock.html">scc::ticking_clock</a></div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00028">clock_if_mixins.h:33</a></div></div>
-<div class="ttc" id="aclassscc_1_1tickless__clock_html"><div class="ttname"><a href="classscc_1_1tickless__clock.html">scc::tickless_clock</a></div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00063">clock_if_mixins.h:63</a></div></div>
+<div class="ttc" id="aclassscc_1_1tickless__clock_html"><div class="ttname"><a href="classscc_1_1tickless__clock.html">scc::tickless_clock</a></div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00061">clock_if_mixins.h:61</a></div></div>
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

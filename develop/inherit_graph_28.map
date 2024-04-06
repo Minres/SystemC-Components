@@ -1,3 +1,11 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structaxi_1_1lite__slave__types.html" title=" " alt="" coords="5,5,161,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,175,145,217"/>
+<area shape="rect" id="node2" href="$structaxi_1_1fsm_1_1ATrans.html" title="special state to map AWREADY/WDATA of SNPS to AXI protocol" alt="" coords="228,5,353,32"/>
+<area shape="rect" id="node3" href="$structaxi_1_1fsm_1_1Idle.html" title="the idle state" alt="" coords="237,56,344,83"/>
+<area shape="rect" id="node4" href="$structaxi_1_1fsm_1_1PartialRequest.html" title="a burst beat" alt="" coords="202,107,379,133"/>
+<area shape="rect" id="node5" href="$structaxi_1_1fsm_1_1PartialResponse.html" title="the beat of a burst response" alt="" coords="197,157,384,184"/>
+<area shape="rect" id="node6" href="$structaxi_1_1fsm_1_1Request.html" title="the request, either the last beat of a write or the address phase of a read" alt="" coords="223,208,359,235"/>
+<area shape="rect" id="node7" href="$structaxi_1_1fsm_1_1Response.html" title="the write response or the last read response (beat)" alt="" coords="217,259,364,285"/>
+<area shape="rect" id="node8" href="$structaxi_1_1fsm_1_1WaitAck.html" title="waiting for ack in case of ACE access" alt="" coords="223,309,359,336"/>
+<area shape="rect" id="node9" href="$structaxi_1_1fsm_1_1WaitForResponse.html" title="the operation state where the target can do it&#39;s stuff" alt="" coords="193,360,388,387"/>
 </map>

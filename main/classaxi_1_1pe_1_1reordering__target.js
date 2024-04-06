@@ -8,6 +8,7 @@ var classaxi_1_1pe_1_1reordering__target =
     [ "reordering_target", "classaxi_1_1pe_1_1reordering__target.html#ad2f267f3f7273b85b7194c911435b08a", null ],
     [ "reordering_target", "classaxi_1_1pe_1_1reordering__target.html#af3e943c7ef0c8434df3e2cb166f19fcc", null ],
     [ "end_of_elaboration", "classaxi_1_1pe_1_1reordering__target.html#a301b7cb7c2448a633f6fe0467449408f", null ],
+    [ "get_outstanding_tx_count", "classaxi_1_1pe_1_1reordering__target.html#ad0fc4589cd63b309f7d4c912796fdcbd", null ],
     [ "operator=", "classaxi_1_1pe_1_1reordering__target.html#a25e3154e8ed6ba45f9ef3fb9e8d05c21", null ],
     [ "operator=", "classaxi_1_1pe_1_1reordering__target.html#ad4ecfcfb26b8bbf0db287dcd6fcaa6b9", null ],
     [ "clk_i", "classaxi_1_1pe_1_1reordering__target.html#a8482b2dfa3dfacce27d030271be0595d", null ],

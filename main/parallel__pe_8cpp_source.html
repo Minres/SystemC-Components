@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/main/src/sysc/tlm/scc/pe/parallel_pe.cpp Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/src/sysc/tlm/scc/pe/parallel_pe.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -108,31 +108,32 @@ $(document).ready(function(){initNavTree('parallel__pe_8cpp_source.html',''); in
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <span class="keyword">auto</span>&amp; tu = threads[id];</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    fw_o-&gt;transport(*tu.gp, tu.lt_transport);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    bw_o-&gt;transport(*tu.gp);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    <span class="keywordflow">if</span>(tu.gp-&gt;has_mm())</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                        tu.gp-&gt;release();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    tu.gp = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    waiting_ids.push_back(<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    wait(tu.evt);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    assert(tu.gp);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            },</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;execute&quot;</span>));</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        tu.gp = &amp;payload;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">auto</span>&amp; tu = threads[waiting_ids.front()];</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        waiting_ids.pop_front();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        tu.gp = &amp;payload;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        tu.lt_transport = lt_transport;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        tu.evt.notify();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span>(payload.has_mm())</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        payload.acquire();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <span class="comment">/* namespace pe */</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;} <span class="comment">/* namespace tlm */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    <span class="keywordflow">if</span>(bw_o.get_interface())</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                        bw_o-&gt;transport(*tu.gp);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    <span class="keywordflow">if</span>(tu.gp-&gt;has_mm())</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                        tu.gp-&gt;release();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    tu.gp = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    waiting_ids.push_back(<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    wait(tu.evt);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    assert(tu.gp);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            },</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;execute&quot;</span>));</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        tu.gp = &amp;payload;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">auto</span>&amp; tu = threads[waiting_ids.front()];</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        waiting_ids.pop_front();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        tu.gp = &amp;payload;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        tu.lt_transport = lt_transport;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        tu.evt.notify();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span>(payload.has_mm())</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        payload.acquire();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">/* namespace pe */</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;} <span class="comment">/* namespace tlm */</span></div>
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 <div class="ttc" id="anamespacetlm_html"><div class="ttname"><a href="namespacetlm.html">tlm</a></div><div class="ttdoc">SystemC TLM.</div><div class="ttdef"><b>Definition:</b> <a href="initiator__mixin_8h_source.html#l00026">initiator_mixin.h:26</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/develop/src/sysc/scp/tlm_extensions/path_trace.h Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/src/sysc/scp/tlm_extensions/path_trace.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -87,44 +87,43 @@ $(document).ready(function(){initNavTree('path__trace_8h_source.html',''); initR
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;systemc&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;tlm&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>scp::tlm_extensions {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classscp_1_1tlm__extensions_1_1path__trace.html">   34</a></span>&#160;<span class="keyword">class </span><a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html">path_trace</a> : <span class="keyword">public</span> tlm::tlm_extension&lt;path_trace&gt;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>scp {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>tlm_extensions {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classscp_1_1tlm__extensions_1_1path__trace.html">   35</a></span>&#160;<span class="keyword">class </span><a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html">path_trace</a> : <span class="keyword">public</span> tlm::tlm_extension&lt;path_trace&gt; {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    std::vector&lt;sc_core::sc_object*&gt; m_path;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html">path_trace</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html">path_trace</a>(<span class="keyword">const</span> <a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html">path_trace</a>&amp;) = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">virtual</span> tlm_extension_base* clone()<span class="keyword"> const override </span>{</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html">path_trace</a>(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> copy_from(<span class="keyword">const</span> tlm_extension_base&amp; ext)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">const</span> <a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html">path_trace</a>&amp; other = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html">path_trace</a>&amp;<span class="keyword">&gt;</span>(ext);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        *<span class="keyword">this</span> = other;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classscp_1_1tlm__extensions_1_1path__trace.html#a2d1ab081a3ecb5983baff3c6a605edf1">   55</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html#a2d1ab081a3ecb5983baff3c6a605edf1">stamp</a>(sc_core::sc_object* obj) { m_path.push_back(obj); }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classscp_1_1tlm__extensions_1_1path__trace.html#a04c06735a52d74a0c9cbbf4944aaa613">   61</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html#a04c06735a52d74a0c9cbbf4944aaa613">reset</a>() { m_path.clear(); }</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classscp_1_1tlm__extensions_1_1path__trace.html#a2b07cb91e87487055b4f43bf9279bdfc">   68</a></span>&#160;    std::string <a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html#a2b07cb91e87487055b4f43bf9279bdfc">to_string</a>(std::string separator = <span class="stringliteral">&quot;-&gt;&quot;</span>) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        std::stringstream info;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        std::string s;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> o : m_path) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            info &lt;&lt; s &lt;&lt; o-&gt;name();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            s = separator;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> info.str();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;} <span class="comment">// namespace scp::tlm_extensions</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassscp_1_1tlm__extensions_1_1path__trace_html"><div class="ttname"><a href="classscp_1_1tlm__extensions_1_1path__trace.html">scp::tlm_extensions::path_trace</a></div><div class="ttdef"><b>Definition:</b> <a href="path__trace_8h_source.html#l00034">path_trace.h:35</a></div></div>
-<div class="ttc" id="aclassscp_1_1tlm__extensions_1_1path__trace_html_a04c06735a52d74a0c9cbbf4944aaa613"><div class="ttname"><a href="classscp_1_1tlm__extensions_1_1path__trace.html#a04c06735a52d74a0c9cbbf4944aaa613">scp::tlm_extensions::path_trace::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Convenience function to clear vector (eg. before returning to a pool)</div><div class="ttdef"><b>Definition:</b> <a href="path__trace_8h_source.html#l00061">path_trace.h:61</a></div></div>
-<div class="ttc" id="aclassscp_1_1tlm__extensions_1_1path__trace_html_a2b07cb91e87487055b4f43bf9279bdfc"><div class="ttname"><a href="classscp_1_1tlm__extensions_1_1path__trace.html#a2b07cb91e87487055b4f43bf9279bdfc">scp::tlm_extensions::path_trace::to_string</a></div><div class="ttdeci">std::string to_string(std::string separator=&quot;-&gt;&quot;)</div><div class="ttdoc">convert extension to a string</div><div class="ttdef"><b>Definition:</b> <a href="path__trace_8h_source.html#l00068">path_trace.h:68</a></div></div>
-<div class="ttc" id="aclassscp_1_1tlm__extensions_1_1path__trace_html_a2d1ab081a3ecb5983baff3c6a605edf1"><div class="ttname"><a href="classscp_1_1tlm__extensions_1_1path__trace.html#a2d1ab081a3ecb5983baff3c6a605edf1">scp::tlm_extensions::path_trace::stamp</a></div><div class="ttdeci">void stamp(sc_core::sc_object *obj)</div><div class="ttdoc">Stamp object into the PathTrace.</div><div class="ttdef"><b>Definition:</b> <a href="path__trace_8h_source.html#l00055">path_trace.h:55</a></div></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">virtual</span> tlm_extension_base* clone()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html">path_trace</a>(*<span class="keyword">this</span>); }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> copy_from(<span class="keyword">const</span> tlm_extension_base&amp; ext)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">const</span> <a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html">path_trace</a>&amp; other = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html">path_trace</a>&amp;<span class="keyword">&gt;</span>(ext);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        *<span class="keyword">this</span> = other;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classscp_1_1tlm__extensions_1_1path__trace.html#a2d1ab081a3ecb5983baff3c6a605edf1">   53</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html#a2d1ab081a3ecb5983baff3c6a605edf1">stamp</a>(sc_core::sc_object* obj) { m_path.push_back(obj); }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classscp_1_1tlm__extensions_1_1path__trace.html#a04c06735a52d74a0c9cbbf4944aaa613">   59</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html#a04c06735a52d74a0c9cbbf4944aaa613">reset</a>() { m_path.clear(); }</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classscp_1_1tlm__extensions_1_1path__trace.html#a2b07cb91e87487055b4f43bf9279bdfc">   66</a></span>&#160;    std::string <a class="code" href="classscp_1_1tlm__extensions_1_1path__trace.html#a2b07cb91e87487055b4f43bf9279bdfc">to_string</a>(std::string separator = <span class="stringliteral">&quot;-&gt;&quot;</span>) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        std::stringstream info;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        std::string s;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> o : m_path) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            info &lt;&lt; s &lt;&lt; o-&gt;name();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            s = separator;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> info.str();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;} <span class="comment">// namespace tlm_extensions</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;} <span class="comment">// namespace scp</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassscp_1_1tlm__extensions_1_1path__trace_html"><div class="ttname"><a href="classscp_1_1tlm__extensions_1_1path__trace.html">scp::tlm_extensions::path_trace</a></div><div class="ttdef"><b>Definition:</b> <a href="path__trace_8h_source.html#l00035">path_trace.h:35</a></div></div>
+<div class="ttc" id="aclassscp_1_1tlm__extensions_1_1path__trace_html_a04c06735a52d74a0c9cbbf4944aaa613"><div class="ttname"><a href="classscp_1_1tlm__extensions_1_1path__trace.html#a04c06735a52d74a0c9cbbf4944aaa613">scp::tlm_extensions::path_trace::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Convenience function to clear vector (eg. before returning to a pool)</div><div class="ttdef"><b>Definition:</b> <a href="path__trace_8h_source.html#l00059">path_trace.h:59</a></div></div>
+<div class="ttc" id="aclassscp_1_1tlm__extensions_1_1path__trace_html_a2b07cb91e87487055b4f43bf9279bdfc"><div class="ttname"><a href="classscp_1_1tlm__extensions_1_1path__trace.html#a2b07cb91e87487055b4f43bf9279bdfc">scp::tlm_extensions::path_trace::to_string</a></div><div class="ttdeci">std::string to_string(std::string separator=&quot;-&gt;&quot;)</div><div class="ttdoc">convert extension to a string</div><div class="ttdef"><b>Definition:</b> <a href="path__trace_8h_source.html#l00066">path_trace.h:66</a></div></div>
+<div class="ttc" id="aclassscp_1_1tlm__extensions_1_1path__trace_html_a2d1ab081a3ecb5983baff3c6a605edf1"><div class="ttname"><a href="classscp_1_1tlm__extensions_1_1path__trace.html#a2d1ab081a3ecb5983baff3c6a605edf1">scp::tlm_extensions::path_trace::stamp</a></div><div class="ttdeci">void stamp(sc_core::sc_object *obj)</div><div class="ttdoc">Stamp object into the PathTrace.</div><div class="ttdef"><b>Definition:</b> <a href="path__trace_8h_source.html#l00053">path_trace.h:53</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -1,8 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,133,175,160"/>
-<area shape="rect" id="node2" href="$classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket.html" title=" " alt="" coords="235,13,423,54"/>
-<area shape="rect" id="node4" href="$classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="237,79,421,135"/>
-<area shape="rect" id="node5" href="$classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="237,159,421,215"/>
-<area shape="rect" id="node6" href="$classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket.html" title=" " alt="" coords="223,239,435,295"/>
-<area shape="rect" id="node3" href="$classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="483,5,659,61"/>
+<area shape="rect" id="node1" href="$classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if.html" title=" " alt="" coords="5,97,183,153"/>
+<area shape="rect" id="node2" href="$classaxi_1_1lwtr_1_1ace__ext__recording.html" title=" " alt="" coords="239,5,374,47"/>
+<area shape="rect" id="node3" href="$classaxi_1_1lwtr_1_1axi3__ext__recording.html" title=" " alt="" coords="237,71,376,112"/>
+<area shape="rect" id="node4" href="$classaxi_1_1lwtr_1_1axi4__ext__recording.html" title=" " alt="" coords="237,136,376,177"/>
+<area shape="rect" id="node5" href="$classaxi_1_1lwtr_1_1tlm__id__ext__recording.html" title=" " alt="" coords="231,201,383,243"/>
 </map>

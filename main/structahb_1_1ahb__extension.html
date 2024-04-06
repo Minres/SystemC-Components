@@ -119,6 +119,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_locked</b> () cons
 <tr class="memitem:aa633d98a1820c747d41edda743bd0a37"><td class="memItemLeft" align="right" valign="top"><a id="aa633d98a1820c747d41edda743bd0a37"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_locked</b> (bool=true)</td></tr>
 <tr class="separator:aa633d98a1820c747d41edda743bd0a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04657b7079c01707a2cb87fe785c0a48"><td class="memItemLeft" align="right" valign="top"><a id="a04657b7079c01707a2cb87fe785c0a48"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_seq</b> () const</td></tr>
+<tr class="separator:a04657b7079c01707a2cb87fe785c0a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e1aabe03b7821bc5662ad95f784d62d"><td class="memItemLeft" align="right" valign="top"><a id="a7e1aabe03b7821bc5662ad95f784d62d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_seq</b> (bool=true)</td></tr>
+<tr class="separator:a7e1aabe03b7821bc5662ad95f784d62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a720f5ab7899a8e3c0dd5b5140d437d64"><td class="memItemLeft" align="right" valign="top"><a id="a720f5ab7899a8e3c0dd5b5140d437d64"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_protection</b> () const</td></tr>
 <tr class="separator:a720f5ab7899a8e3c0dd5b5140d437d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,6 +137,12 @@ burst_e&#160;</td><td class="memItemRight" valign="bottom"><b>get_burst</b> () c
 <tr class="memitem:a8e7208fbd3a1b8a9c8bd2d77a9679a75"><td class="memItemLeft" align="right" valign="top"><a id="a8e7208fbd3a1b8a9c8bd2d77a9679a75"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_burst</b> (burst_e)</td></tr>
 <tr class="separator:a8e7208fbd3a1b8a9c8bd2d77a9679a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7c56a68b99fcc6efcc83f2ebf41ee91"><td class="memItemLeft" align="right" valign="top"><a id="af7c56a68b99fcc6efcc83f2ebf41ee91"></a>
+resp_e&#160;</td><td class="memItemRight" valign="bottom"><b>get_resp</b> () const</td></tr>
+<tr class="separator:af7c56a68b99fcc6efcc83f2ebf41ee91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a634e3642a28b81900846c488adcf9804"><td class="memItemLeft" align="right" valign="top"><a id="a634e3642a28b81900846c488adcf9804"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_resp</b> (resp_e)</td></tr>
+<tr class="separator:a634e3642a28b81900846c488adcf9804"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55ef94813d8fe4cc189ae7501aaee00d"><td class="memItemLeft" align="right" valign="top"><a id="a55ef94813d8fe4cc189ae7501aaee00d"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ahb_extension</b> (const <a class="el" href="structahb_1_1ahb__extension.html">ahb_extension</a> &amp;o)=default</td></tr>
 <tr class="separator:a55ef94813d8fe4cc189ae7501aaee00d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,7 +155,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_burst</b> (burst_
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ahb__tlm_8h_source.html#l00043">43</a> of file <a class="el" href="ahb__tlm_8h_source.html">ahb_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ahb__tlm_8h_source.html#l00075">75</a> of file <a class="el" href="ahb__tlm_8h_source.html">ahb_tlm.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a364ccc294670ae6a48da1d7fc0c801cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a364ccc294670ae6a48da1d7fc0c801cf">&#9670;&nbsp;</a></span>clone()</h2>
@@ -171,7 +183,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_burst</b> (burst_
 <p>the clone function to create deep copies of </p>
 <dl class="section return"><dt>Returns</dt><dd>pointer to heap-allocated extension </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ahb__tlm_8h_source.html#l00145">145</a> of file <a class="el" href="ahb__tlm_8h_source.html">ahb_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ahb__tlm_8h_source.html#l00182">182</a> of file <a class="el" href="ahb__tlm_8h_source.html">ahb_tlm.h</a>.</p>
 
 </div>
 </div>
@@ -207,12 +219,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_burst</b> (burst_
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ahb__tlm_8h_source.html#l00147">147</a> of file <a class="el" href="ahb__tlm_8h_source.html">ahb_tlm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ahb__tlm_8h_source.html#l00188">188</a> of file <a class="el" href="ahb__tlm_8h_source.html">ahb_tlm.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/home/eyck/git/scc/main/src/bus_interfaces/ahb/<a class="el" href="ahb__tlm_8h_source.html">ahb_tlm.h</a></li>
+<li>/home/eyck/git/SystemC-Components/src/bus_interfaces/ahb/<a class="el" href="ahb__tlm_8h_source.html">ahb_tlm.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

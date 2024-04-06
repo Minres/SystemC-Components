@@ -106,9 +106,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>this_type</b> = <a c
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a724b69b0f9f457ffe633c164bcc94f4f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tlm__target.html#a724b69b0f9f457ffe633c164bcc94f4f">tlm_target</a> (sc_core::sc_time &amp;clock)</td></tr>
-<tr class="memdesc:a724b69b0f9f457ffe633c164bcc94f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the constructor  <a href="classscc_1_1tlm__target.html#a724b69b0f9f457ffe633c164bcc94f4f">More...</a><br /></td></tr>
-<tr class="separator:a724b69b0f9f457ffe633c164bcc94f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51b1c40282cfa6a0334179206e25a70e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tlm__target.html#a51b1c40282cfa6a0334179206e25a70e">tlm_target</a> (sc_core::sc_time &amp;clock, const char *socket_name=&quot;socket&quot;)</td></tr>
+<tr class="memdesc:a51b1c40282cfa6a0334179206e25a70e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the constructor  <a href="classscc_1_1tlm__target.html#a51b1c40282cfa6a0334179206e25a70e">More...</a><br /></td></tr>
+<tr class="separator:a51b1c40282cfa6a0334179206e25a70e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadef39dddc0260c3c4ec3299fdf8c148"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tlm__target.html#aadef39dddc0260c3c4ec3299fdf8c148">b_tranport_cb</a> (tlm::tlm_generic_payload &amp;gp, sc_core::sc_time &amp;d)</td></tr>
 <tr class="memdesc:aadef39dddc0260c3c4ec3299fdf8c148"><td class="mdescLeft">&#160;</td><td class="mdescRight">the blocking transport callback  <a href="classscc_1_1tlm__target.html#aadef39dddc0260c3c4ec3299fdf8c148">More...</a><br /></td></tr>
 <tr class="separator:aadef39dddc0260c3c4ec3299fdf8c148"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,8 +150,8 @@ class scc::tlm_target&lt; BUSWIDTH, ADDR_UNIT_WIDTH &gt;</h3>
 
 <p class="definition">Definition at line <a class="el" href="tlm__target_8h_source.html#l00044">44</a> of file <a class="el" href="tlm__target_8h_source.html">tlm_target.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a724b69b0f9f457ffe633c164bcc94f4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a724b69b0f9f457ffe633c164bcc94f4f">&#9670;&nbsp;</a></span>tlm_target()</h2>
+<a id="a51b1c40282cfa6a0334179206e25a70e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51b1c40282cfa6a0334179206e25a70e">&#9670;&nbsp;</a></span>tlm_target()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,8 +165,18 @@ template&lt;unsigned int BUSWIDTH, unsigned int ADDR_UNIT_WIDTH&gt; </div>
           <td class="memname"><a class="el" href="classscc_1_1tlm__target.html">scc::tlm_target</a>&lt; BUSWIDTH, ADDR_UNIT_WIDTH &gt;::<a class="el" href="classscc_1_1tlm__target.html">tlm_target</a> </td>
           <td>(</td>
           <td class="paramtype">sc_core::sc_time &amp;&#160;</td>
-          <td class="paramname"><em>clock</em></td><td>)</td>
+          <td class="paramname"><em>clock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>socket_name</em> = <code>&quot;socket&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -180,11 +190,12 @@ template&lt;unsigned int BUSWIDTH, unsigned int ADDR_UNIT_WIDTH&gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">clock</td><td>the clock period of the component </td></tr>
+    <tr><td class="paramname">socket_name</td><td>optional name of the internal socket </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target_8h_source.html#l00128">128</a> of file <a class="el" href="tlm__target_8h_source.html">tlm_target.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target_8h_source.html#l00129">129</a> of file <a class="el" href="tlm__target_8h_source.html">tlm_target.h</a>.</p>
 
 </div>
 </div>
@@ -283,7 +294,7 @@ template&lt;unsigned int BUSWIDTH = LT, unsigned int ADDR_UNIT_WIDTH = 8&gt; </d
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="tlm__target_8h_source.html#l00079">79</a> of file <a class="el" href="tlm__target_8h_source.html">tlm_target.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tlm__target_8h_source.html#l00080">80</a> of file <a class="el" href="tlm__target_8h_source.html">tlm_target.h</a>.</p>
 
 </div>
 </div>
@@ -360,7 +371,7 @@ template&lt;unsigned int BUSWIDTH, unsigned int ADDR_UNIT_WIDTH&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/eyck/git/scc/develop/src/components/scc/<a class="el" href="tlm__target_8h_source.html">tlm_target.h</a></li>
+<li>/home/eyck/git/SystemC-Components/src/components/scc/<a class="el" href="tlm__target_8h_source.html">tlm_target.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

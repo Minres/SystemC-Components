@@ -10,7 +10,7 @@ var classutil_1_1stl__pool__allocator =
     [ "value_type", "classutil_1_1stl__pool__allocator.html#a7bbac3c8dafee7e48bc69bbbcd8ca3f4", null ],
     [ "stl_pool_allocator", "classutil_1_1stl__pool__allocator.html#a3c9441eaa43e96b6520758596660d861", null ],
     [ "stl_pool_allocator", "classutil_1_1stl__pool__allocator.html#a7cbd990be93a8086958842fea83de12b", null ],
-    [ "~stl_pool_allocator", "classutil_1_1stl__pool__allocator.html#a31fe1e6272331d5837324a87b683ff05", null ],
+    [ "~stl_pool_allocator", "classutil_1_1stl__pool__allocator.html#a9f70631bf1127e965800fa91b006bdff", null ],
     [ "address", "classutil_1_1stl__pool__allocator.html#ac92f833585ec198d02006026fff9e850", null ],
     [ "address", "classutil_1_1stl__pool__allocator.html#a76bbb19b722f0897fafb69202cd2b711", null ],
     [ "allocate", "classutil_1_1stl__pool__allocator.html#abdf953315e0a87df725b5645e1304b76", null ],

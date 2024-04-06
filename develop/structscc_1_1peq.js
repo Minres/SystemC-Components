@@ -11,6 +11,7 @@ var structscc_1_1peq =
     [ "get", "structscc_1_1peq.html#a86fe01b84c045c7b8d0090f1dc588bed", null ],
     [ "get_next", "structscc_1_1peq.html#a96f03772cd30574ba45a4b50f39c76c8", null ],
     [ "has_next", "structscc_1_1peq.html#a4512c9aad5ce21efcd53575a9609b012", null ],
-    [ "notify", "structscc_1_1peq.html#a09d6429bda7be3ea01e2a14222b32e64", null ],
-    [ "notify", "structscc_1_1peq.html#a7e3a34f0fe967ee1c3424904b82ff67a", null ]
+    [ "notify", "structscc_1_1peq.html#a7e3a34f0fe967ee1c3424904b82ff67a", null ],
+    [ "notify", "structscc_1_1peq.html#a5cb02388bf7b16ae5a314cb83938bd1f", null ],
+    [ "notify", "structscc_1_1peq.html#a39d453a7ca6fb4529e2c2445ed034741", null ]
 ];

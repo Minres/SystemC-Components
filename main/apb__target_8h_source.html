@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/main/src/bus_interfaces/apb/pe/apb_target.h Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/src/bus_interfaces/apb/pe/apb_target.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -110,68 +110,67 @@ $(document).ready(function(){initNavTree('apb__target_8h_source.html',''); initR
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">protected</span>:</div>
 <div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classapb_1_1pe_1_1apb__target__b.html#a8f9a978d8ca6cddd0583e904e94b3c47">   67</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classapb_1_1pe_1_1apb__target__b.html#a8f9a978d8ca6cddd0583e904e94b3c47">apb_target_b</a>(<span class="keyword">const</span> sc_core::sc_module_name&amp; nm,</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                          sc_core::sc_port_b&lt;tlm::tlm_bw_transport_if&lt;tlm::tlm_base_protocol_types&gt;&gt;&amp; port,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                          <span class="keywordtype">size_t</span> transfer_width);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>() = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>(<a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a> <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>(<a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>&amp; operator=(<a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a> <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>&amp; operator=(<a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    tlm::tlm_generic_payload* active_tx{<span class="keyword">nullptr</span>};</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> response();</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    sc_core::sc_port_b&lt;tlm::tlm_bw_transport_if&lt;tlm::tlm_base_protocol_types&gt;&gt;&amp; socket_bw;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::function&lt;unsigned(payload_type&amp; trans)&gt; operation_cb;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    sc_core::sc_clock* clk_if{<span class="keyword">nullptr</span>};</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> end_of_elaboration() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    sc_core::sc_process_handle mhndl;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;};</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BUSWIDTH = 32, <span class="keyword">typename</span> TYPES = tlm::tlm_base_protocol_types, <span class="keywordtype">int</span> N = 1,</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;          sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND&gt;</div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classapb_1_1pe_1_1apb__target.html">   95</a></span>&#160;<span class="keyword">class </span><a class="code" href="classapb_1_1pe_1_1apb__target.html">apb_target</a> : <span class="keyword">public</span> <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a> {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">using</span> <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">base</a> = <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keyword">using</span> payload_type = base::payload_type;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">using</span> phase_type = base::phase_type;</div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classapb_1_1pe_1_1apb__target.html#adb0e4e90568d28c784c449ce4fb18e4d">  104</a></span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target.html#adb0e4e90568d28c784c449ce4fb18e4d">apb_target</a>(tlm::tlm_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt;&amp; socket)</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    : <span class="comment">// @suppress(&quot;Class members should be properly initialized&quot;)</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <a class="code" href="classapb_1_1pe_1_1apb__target.html">apb_target</a>(sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;simple_target&quot;</span>), socket) {}</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target.html">apb_target</a>(<span class="keyword">const</span> sc_core::sc_module_name&amp; nm, tlm::tlm_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt;&amp; socket)</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    : <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>(nm, socket.get_base_port(), BUSWIDTH)</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    , socket(socket) {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        socket(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    apb_target() = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    apb_target(apb_target <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    apb_target(apb_target&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    apb_target&amp; operator=(apb_target <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    apb_target&amp; operator=(apb_target&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    tlm::tlm_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt;&amp; socket;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;};</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;} <span class="comment">// namespace pe</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;} <span class="comment">// namespace apb</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*_BUS_APB_PE_APB_TARGET_H_*/</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                          sc_core::sc_port_b&lt;tlm::tlm_bw_transport_if&lt;tlm::tlm_base_protocol_types&gt;&gt;&amp; port, <span class="keywordtype">size_t</span> transfer_width);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>(<a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a> <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>(<a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>&amp; operator=(<a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a> <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>&amp; operator=(<a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    tlm::tlm_generic_payload* active_tx{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> response();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    sc_core::sc_port_b&lt;tlm::tlm_bw_transport_if&lt;tlm::tlm_base_protocol_types&gt;&gt;&amp; socket_bw;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    std::function&lt;unsigned(payload_type&amp; trans)&gt; operation_cb;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    sc_core::sc_clock* clk_if{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> end_of_elaboration() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    sc_core::sc_process_handle mhndl;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BUSWIDTH = 32, <span class="keyword">typename</span> TYPES = tlm::tlm_base_protocol_types, <span class="keywordtype">int</span> N = 1,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;          sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND&gt;</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classapb_1_1pe_1_1apb__target.html">   94</a></span>&#160;<span class="keyword">class </span><a class="code" href="classapb_1_1pe_1_1apb__target.html">apb_target</a> : <span class="keyword">public</span> <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a> {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">using</span> <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">base</a> = <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">using</span> payload_type = base::payload_type;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keyword">using</span> phase_type = base::phase_type;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classapb_1_1pe_1_1apb__target.html#adb0e4e90568d28c784c449ce4fb18e4d">  103</a></span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target.html#adb0e4e90568d28c784c449ce4fb18e4d">apb_target</a>(tlm::tlm_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt;&amp; socket)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    : <span class="comment">// @suppress(&quot;Class members should be properly initialized&quot;)</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <a class="code" href="classapb_1_1pe_1_1apb__target.html">apb_target</a>(sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;simple_target&quot;</span>), socket) {}</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="classapb_1_1pe_1_1apb__target.html">apb_target</a>(<span class="keyword">const</span> sc_core::sc_module_name&amp; nm, tlm::tlm_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt;&amp; socket)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    : <a class="code" href="classapb_1_1pe_1_1apb__target__b.html">apb_target_b</a>(nm, socket.get_base_port(), BUSWIDTH)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    , socket(socket) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        socket(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    apb_target() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    apb_target(apb_target <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    apb_target(apb_target&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    apb_target&amp; operator=(apb_target <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    apb_target&amp; operator=(apb_target&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    tlm::tlm_target_socket&lt;BUSWIDTH, TYPES, N, POL&gt;&amp; socket;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;};</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;} <span class="comment">// namespace pe</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;} <span class="comment">// namespace apb</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*_BUS_APB_PE_APB_TARGET_H_*/</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassapb_1_1pe_1_1apb__target__b_html"><div class="ttname"><a href="classapb_1_1pe_1_1apb__target__b.html">apb::pe::apb_target_b</a></div><div class="ttdef"><b>Definition:</b> <a href="apb__target_8h_source.html#l00031">apb_target.h:31</a></div></div>
 <div class="ttc" id="aclassapb_1_1pe_1_1apb__target__b_html_a8f9a978d8ca6cddd0583e904e94b3c47"><div class="ttname"><a href="classapb_1_1pe_1_1apb__target__b.html#a8f9a978d8ca6cddd0583e904e94b3c47">apb::pe::apb_target_b::apb_target_b</a></div><div class="ttdeci">apb_target_b(const sc_core::sc_module_name &amp;nm, sc_core::sc_port_b&lt; tlm::tlm_bw_transport_if&lt; tlm::tlm_base_protocol_types &gt;&gt; &amp;port, size_t transfer_width)</div></div>
 <div class="ttc" id="aclassapb_1_1pe_1_1apb__target__b_html_aaeae28bc8b7e56cfc3157132323f609e"><div class="ttname"><a href="classapb_1_1pe_1_1apb__target__b.html#aaeae28bc8b7e56cfc3157132323f609e">apb::pe::apb_target_b::set_operation_cb</a></div><div class="ttdeci">void set_operation_cb(std::function&lt; unsigned(payload_type &amp;trans)&gt; cb)</div><div class="ttdoc">Set the operation callback function.</div><div class="ttdef"><b>Definition:</b> <a href="apb__target_8h_source.html#l00057">apb_target.h:57</a></div></div>
-<div class="ttc" id="aclassapb_1_1pe_1_1apb__target_html"><div class="ttname"><a href="classapb_1_1pe_1_1apb__target.html">apb::pe::apb_target</a></div><div class="ttdef"><b>Definition:</b> <a href="apb__target_8h_source.html#l00095">apb_target.h:95</a></div></div>
-<div class="ttc" id="aclassapb_1_1pe_1_1apb__target_html_adb0e4e90568d28c784c449ce4fb18e4d"><div class="ttname"><a href="classapb_1_1pe_1_1apb__target.html#adb0e4e90568d28c784c449ce4fb18e4d">apb::pe::apb_target::apb_target</a></div><div class="ttdeci">apb_target(tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;socket)</div><div class="ttdoc">the constructor</div><div class="ttdef"><b>Definition:</b> <a href="apb__target_8h_source.html#l00104">apb_target.h:104</a></div></div>
+<div class="ttc" id="aclassapb_1_1pe_1_1apb__target_html"><div class="ttname"><a href="classapb_1_1pe_1_1apb__target.html">apb::pe::apb_target</a></div><div class="ttdef"><b>Definition:</b> <a href="apb__target_8h_source.html#l00094">apb_target.h:94</a></div></div>
+<div class="ttc" id="aclassapb_1_1pe_1_1apb__target_html_adb0e4e90568d28c784c449ce4fb18e4d"><div class="ttname"><a href="classapb_1_1pe_1_1apb__target.html#adb0e4e90568d28c784c449ce4fb18e4d">apb::pe::apb_target::apb_target</a></div><div class="ttdeci">apb_target(tlm::tlm_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt; &amp;socket)</div><div class="ttdoc">the constructor</div><div class="ttdef"><b>Definition:</b> <a href="apb__target_8h_source.html#l00103">apb_target.h:103</a></div></div>
 <div class="ttc" id="anamespaceapb_html"><div class="ttname"><a href="namespaceapb.html">apb</a></div><div class="ttdoc">TLM2.0 components modeling APB.</div><div class="ttdef"><b>Definition:</b> <a href="apb__initiator_8h_source.html#l00025">apb_initiator.h:25</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -89,11 +89,13 @@ Collaboration diagram for scc::memory&lt; SIZE, BUSWIDTH &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classscc_1_1memory__coll__graph.png" border="0" usemap="#ascc_1_1memory_3_01SIZE_00_01BUSWIDTH_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="ascc_1_1memory_3_01SIZE_00_01BUSWIDTH_01_4_coll__map" id="ascc_1_1memory_3_01SIZE_00_01BUSWIDTH_01_4_coll__map">
-<area shape="rect" title="simple TLM2.0 LT memory model" alt="" coords="500,57,655,98"/>
-<area shape="rect" title=" " alt="" coords="241,5,391,32"/>
-<area shape="rect" href="classutil_1_1sparse__array.html" title=" " alt="" coords="249,57,383,98"/>
-<area shape="rect" href="classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="224,123,408,179"/>
-<area shape="rect" title=" " alt="" coords="5,130,175,171"/>
+<area shape="rect" title="simple TLM2.0 LT memory model" alt="" coords="516,81,671,122"/>
+<area shape="rect" title=" " alt="" coords="257,5,407,32"/>
+<area shape="rect" href="classutil_1_1sparse__array.html" title=" " alt="" coords="265,57,399,98"/>
+<area shape="rect" href="classscc_1_1sc__in__opt.html" title=" " alt="" coords="261,122,403,163"/>
+<area shape="rect" title=" " alt="" coords="5,96,191,181"/>
+<area shape="rect" href="classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="240,195,424,251"/>
+<area shape="rect" title=" " alt="" coords="13,206,183,247"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -126,10 +128,18 @@ Public Attributes</h2></td></tr>
 <a class="el" href="classtlm_1_1scc_1_1target__mixin.html">tlm::scc::target_mixin</a>&lt; tlm::tlm_target_socket&lt; BUSWIDTH &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1memory.html#aa0488cabf0c8cbcaf772d6aa9f735891">target</a> {&quot;ts&quot;}</td></tr>
 <tr class="memdesc:aa0488cabf0c8cbcaf772d6aa9f735891"><td class="mdescLeft">&#160;</td><td class="mdescRight">the target socket to connect to TLM <br /></td></tr>
 <tr class="separator:aa0488cabf0c8cbcaf772d6aa9f735891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0115edd0ac499955760a1367bed9d331"><td class="memItemLeft" align="right" valign="top"><a id="a0115edd0ac499955760a1367bed9d331"></a>
+<a class="el" href="classscc_1_1sc__in__opt.html">scc::sc_in_opt</a>&lt; sc_core::sc_time &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1memory.html#a0115edd0ac499955760a1367bed9d331">clk_i</a> {&quot;clk_i&quot;}</td></tr>
+<tr class="memdesc:a0115edd0ac499955760a1367bed9d331"><td class="mdescLeft">&#160;</td><td class="mdescRight">the optional clock pin to calculate clock based delays <br /></td></tr>
+<tr class="separator:a0115edd0ac499955760a1367bed9d331"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a6f509f0be16f264a72eab0b7f7df31"><td class="memItemLeft" align="right" valign="top">cci::cci_param&lt; sc_core::sc_time &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1memory.html#a7a6f509f0be16f264a72eab0b7f7df31">rd_resp_delay</a> {&quot;rd_resp_delay&quot;, sc_core::SC_ZERO_TIME}</td></tr>
 <tr class="separator:a7a6f509f0be16f264a72eab0b7f7df31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0ef3f3adf400d3445da9fbe53b9ed18"><td class="memItemLeft" align="right" valign="top">cci::cci_param&lt; sc_core::sc_time &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1memory.html#ab0ef3f3adf400d3445da9fbe53b9ed18">wr_resp_delay</a> {&quot;wr_resp_delay&quot;, sc_core::SC_ZERO_TIME}</td></tr>
 <tr class="separator:ab0ef3f3adf400d3445da9fbe53b9ed18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99ad64e05dccf53629b20fb9e0b49357"><td class="memItemLeft" align="right" valign="top">cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1memory.html#a99ad64e05dccf53629b20fb9e0b49357">rd_resp_clk_delay</a> {&quot;rd_resp_clk_delay&quot;, 0}</td></tr>
+<tr class="separator:a99ad64e05dccf53629b20fb9e0b49357"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89178e1d2540ca6dfc636e0c7bf63e45"><td class="memItemLeft" align="right" valign="top">cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1memory.html#a89178e1d2540ca6dfc636e0c7bf63e45">wr_resp_clk_delay</a> {&quot;wr_resp_clk_delay&quot;, 0}</td></tr>
+<tr class="separator:a89178e1d2540ca6dfc636e0c7bf63e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a5e41843245c6f01825d4cbcff32849"><td class="memItemLeft" align="right" valign="top"><a id="a1a5e41843245c6f01825d4cbcff32849"></a>
 std::function&lt; int(<a class="el" href="classscc_1_1memory.html">memory</a>&lt; SIZE, BUSWIDTH &gt; &amp;, tlm::tlm_generic_payload &amp;, sc_core::sc_time &amp;delay)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>operation_cb</b></td></tr>
 <tr class="separator:a1a5e41843245c6f01825d4cbcff32849"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,7 +169,7 @@ class scc::memory&lt; SIZE, BUSWIDTH &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00047">47</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00048">48</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1a0459bb58ab21cecd80e704bceaa5b9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1a0459bb58ab21cecd80e704bceaa5b9">&#9670;&nbsp;</a></span>memory()</h2>
@@ -186,7 +196,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00104">104</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00113">113</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -225,7 +235,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00079">79</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00081">81</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -263,11 +273,30 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00069">69</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00072">72</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a99ad64e05dccf53629b20fb9e0b49357"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99ad64e05dccf53629b20fb9e0b49357">&#9670;&nbsp;</a></span>rd_resp_clk_delay</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">cci::cci_param&lt;unsigned&gt; <a class="el" href="classscc_1_1memory.html">scc::memory</a>&lt; SIZE, BUSWIDTH &gt;::rd_resp_clk_delay {&quot;rd_resp_clk_delay&quot;, 0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>read response delay in clock cycles </p>
+
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00093">93</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+
+</div>
+</div>
 <a id="a7a6f509f0be16f264a72eab0b7f7df31"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7a6f509f0be16f264a72eab0b7f7df31">&#9670;&nbsp;</a></span>rd_resp_delay</h2>
 
@@ -284,6 +313,25 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT&gt; </div>
 <p>read response delay </p>
 
 <p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00085">85</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
+
+</div>
+</div>
+<a id="a89178e1d2540ca6dfc636e0c7bf63e45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89178e1d2540ca6dfc636e0c7bf63e45">&#9670;&nbsp;</a></span>wr_resp_clk_delay</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">cci::cci_param&lt;unsigned&gt; <a class="el" href="classscc_1_1memory.html">scc::memory</a>&lt; SIZE, BUSWIDTH &gt;::wr_resp_clk_delay {&quot;wr_resp_clk_delay&quot;, 0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>write response delay in clock cycles </p>
+
+<p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00097">97</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 
 </div>
 </div>
@@ -307,7 +355,7 @@ template&lt;unsigned long long SIZE, unsigned BUSWIDTH = LT&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/eyck/git/scc/develop/src/components/scc/<a class="el" href="memory_8h_source.html">memory.h</a></li>
+<li>/home/eyck/git/SystemC-Components/src/components/scc/<a class="el" href="memory_8h_source.html">memory.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

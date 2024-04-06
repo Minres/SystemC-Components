@@ -80,16 +80,22 @@ Inheritance diagram for axi::fsm::base:</div>
 <div class="dyncontent">
 <div class="center"><img src="structaxi_1_1fsm_1_1base__inherit__graph.png" border="0" usemap="#aaxi_1_1fsm_1_1base_inherit__map" alt="Inheritance graph"/></div>
 <map name="aaxi_1_1fsm_1_1base_inherit__map" id="aaxi_1_1fsm_1_1base_inherit__map">
-<area shape="rect" title="base class of all AXITLM based adapters and interfaces." alt="" coords="5,210,120,237"/>
-<area shape="rect" href="classaxi_1_1pe_1_1axi__target__pe.html" title=" " alt="" coords="182,78,345,105"/>
-<area shape="rect" href="classaxi_1_1pe_1_1simple__initiator__b.html" title=" " alt="" coords="168,181,359,207"/>
-<area shape="rect" href="structaxi_1_1pin_1_1axi4__initiator.html" title=" " alt="" coords="181,232,345,273"/>
-<area shape="rect" href="structaxi_1_1pin_1_1axi4__target.html" title=" " alt="" coords="187,297,339,339"/>
-<area shape="rect" href="classaxi_1_1pe_1_1simple__target.html" title=" " alt="" coords="436,5,600,47"/>
-<area shape="rect" href="classaxi_1_1pe_1_1simple__target.html" title=" " alt="" coords="407,71,629,112"/>
-<area shape="rect" href="classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="445,136,591,177"/>
-<area shape="rect" href="classaxi_1_1pe_1_1simple__ace__initiator.html" title=" " alt="" coords="433,202,603,258"/>
-<area shape="rect" href="classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="433,282,603,338"/>
+<area shape="rect" title="base class of all AXITLM based adapters and interfaces." alt="" coords="5,348,120,375"/>
+<area shape="rect" href="classaxi_1_1pe_1_1ace__target__pe.html" title=" " alt="" coords="180,64,347,91"/>
+<area shape="rect" href="classaxi_1_1pe_1_1axi__target__pe.html" title=" " alt="" coords="182,159,345,185"/>
+<area shape="rect" href="classaxi_1_1pe_1_1simple__initiator__b.html" title=" " alt="" coords="168,224,359,251"/>
+<area shape="rect" href="structaxi_1_1pin_1_1ace__initiator.html" title=" " alt="" coords="184,275,343,317"/>
+<area shape="rect" href="structaxi_1_1pin_1_1ace__lite__initiator.html" title=" " alt="" coords="195,341,332,382"/>
+<area shape="rect" href="structaxi_1_1pin_1_1ace__lite__target.html" title=" " alt="" coords="199,406,328,447"/>
+<area shape="rect" href="structaxi_1_1pin_1_1ace__target.html" title=" " alt="" coords="190,471,337,513"/>
+<area shape="rect" href="structaxi_1_1pin_1_1axi4__initiator.html" title=" " alt="" coords="181,537,345,578"/>
+<area shape="rect" href="structaxi_1_1pin_1_1axi4__target.html" title=" " alt="" coords="187,602,339,643"/>
+<area shape="rect" href="classaxi_1_1pe_1_1simple__ace__target.html" title=" " alt="" coords="415,5,621,61"/>
+<area shape="rect" href="classaxi_1_1pe_1_1simple__target.html" title=" " alt="" coords="436,86,600,127"/>
+<area shape="rect" href="classaxi_1_1pe_1_1simple__target.html" title=" " alt="" coords="407,151,629,193"/>
+<area shape="rect" href="classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="445,217,591,258"/>
+<area shape="rect" href="classaxi_1_1pe_1_1simple__ace__initiator.html" title=" " alt="" coords="433,283,603,339"/>
+<area shape="rect" href="classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="433,363,603,419"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -284,7 +290,7 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>finish_e
 <p>function to create a <a class="el" href="structaxi_1_1fsm_1_1fsm__handle.html">fsm_handle</a>. Needs to be implemented by the derived class </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p>Implemented in <a class="el" href="classaxi_1_1pe_1_1simple__initiator__b.html#a60862673e77795fa935abdce552597cd">axi::pe::simple_initiator_b</a>, and <a class="el" href="classaxi_1_1pe_1_1axi__target__pe.html#a65b2ed868c9138f2daf58ff98e227362">axi::pe::axi_target_pe</a>.</p>
+<p>Implemented in <a class="el" href="classaxi_1_1pe_1_1simple__initiator__b.html#a60862673e77795fa935abdce552597cd">axi::pe::simple_initiator_b</a>, <a class="el" href="classaxi_1_1pe_1_1axi__target__pe.html#a65b2ed868c9138f2daf58ff98e227362">axi::pe::axi_target_pe</a>, and <a class="el" href="classaxi_1_1pe_1_1ace__target__pe.html#a3ea7193538db51859e6389130e185686">axi::pe::ace_target_pe</a>.</p>
 
 </div>
 </div>
@@ -371,7 +377,7 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>finish_e
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the sync enum denoting if the transaction has been updated or just accepted </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="base_8cpp_source.html#l00233">233</a> of file <a class="el" href="base_8cpp_source.html">base.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base_8cpp_source.html#l00235">235</a> of file <a class="el" href="base_8cpp_source.html">base.cpp</a>.</p>
 
 </div>
 </div>
@@ -418,7 +424,7 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>finish_e
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the sync enum denoting if the transaction has been updated or just accepted </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="base_8cpp_source.html#l00188">188</a> of file <a class="el" href="base_8cpp_source.html">base.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base_8cpp_source.html#l00190">190</a> of file <a class="el" href="base_8cpp_source.html">base.cpp</a>.</p>
 
 </div>
 </div>
@@ -501,13 +507,13 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>finish_e
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classaxi_1_1pe_1_1axi__target__pe.html#ad04a28ca7bc14793d87243ab5d187f73">axi::pe::axi_target_pe</a>, and <a class="el" href="classaxi_1_1pe_1_1simple__initiator__b.html#a05d04cf8381f6c221197f012cf944e05">axi::pe::simple_initiator_b</a>.</p>
+<p>Implemented in <a class="el" href="classaxi_1_1pe_1_1axi__target__pe.html#ad04a28ca7bc14793d87243ab5d187f73">axi::pe::axi_target_pe</a>, <a class="el" href="classaxi_1_1pe_1_1ace__target__pe.html#ac9b5d454f505690180c63254a5bb96f7">axi::pe::ace_target_pe</a>, and <a class="el" href="classaxi_1_1pe_1_1simple__initiator__b.html#a05d04cf8381f6c221197f012cf944e05">axi::pe::simple_initiator_b</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li>/home/eyck/git/scc/develop/third_party/axi_chi/axi/fsm/<a class="el" href="base_8h_source.html">base.h</a></li>
-<li>/home/eyck/git/scc/develop/third_party/axi_chi/axi/fsm/<a class="el" href="base_8cpp_source.html">base.cpp</a></li>
+<li>/home/eyck/git/SystemC-Components/third_party/axi_chi/axi/fsm/<a class="el" href="base_8h_source.html">base.h</a></li>
+<li>/home/eyck/git/SystemC-Components/third_party/axi_chi/axi/fsm/<a class="el" href="base_8cpp_source.html">base.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

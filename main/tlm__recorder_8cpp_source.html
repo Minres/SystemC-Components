@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: /home/eyck/git/scc/main/src/sysc/tlm/scc/scv/tlm_recorder.cpp Source File</title>
+<title>scc: /home/eyck/git/SystemC-Components/src/sysc/tlm/scc/scv/tlm_recorder.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -97,77 +97,74 @@ $(document).ready(function(){initNavTree('tlm__recorder_8cpp_source.html',''); i
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {<span class="stringliteral">&quot;OK&quot;</span>, <span class="stringliteral">&quot;INCOMPLETE&quot;</span>, <span class="stringliteral">&quot;GENERIC_ERROR&quot;</span>, <span class="stringliteral">&quot;ADDRESS_ERROR&quot;</span>, <span class="stringliteral">&quot;COMMAND_ERROR&quot;</span>, <span class="stringliteral">&quot;BURST_ERROR&quot;</span>, <span class="stringliteral">&quot;BYTE_ENABLE_ERROR&quot;</span>}};</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">const</span> std::array&lt;std::string, 3&gt; gp_option2char{{<span class="stringliteral">&quot;MIN_PAYLOAD&quot;</span>, <span class="stringliteral">&quot;FULL_PAYLOAD&quot;</span>, <span class="stringliteral">&quot;FULL_PAYLOAD_ACCEPTED&quot;</span>}};</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">const</span> std::array&lt;std::string, 5&gt; phase2char{{<span class="stringliteral">&quot;UNINITIALIZED_PHASE&quot;</span>, <span class="stringliteral">&quot;BEGIN_REQ&quot;</span>, <span class="stringliteral">&quot;END_REQ&quot;</span>, <span class="stringliteral">&quot;BEGIN_RESP&quot;</span>, <span class="stringliteral">&quot;END_RESP&quot;</span>}};</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">const</span> std::array&lt;std::string, 4&gt; dmi2char{</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {<span class="stringliteral">&quot;DMI_ACCESS_NONE&quot;</span>, <span class="stringliteral">&quot;DMI_ACCESS_READ&quot;</span>, <span class="stringliteral">&quot;DMI_ACCESS_WRITE&quot;</span>, <span class="stringliteral">&quot;DMI_ACCESS_READ_WRITE&quot;</span>}};</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">const</span> std::array&lt;std::string, 3&gt; sync2char{{<span class="stringliteral">&quot;ACCEPTED&quot;</span>, <span class="stringliteral">&quot;UPDATED&quot;</span>, <span class="stringliteral">&quot;COMPLETED&quot;</span>}};</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;} <span class="comment">// namespace</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> record(SCVNS scv_tr_handle&amp; handle, tlm::tlm_generic_payload&amp; o) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.ptr&quot;</span>, <span class="keyword">reinterpret_cast&lt;</span>uintptr_t<span class="keyword">&gt;</span>(&amp;o));</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.address&quot;</span>, o.get_address());</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.cmd&quot;</span>, cmd2char.at(o.get_command()));</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.data_ptr&quot;</span>, o.get_data_ptr());</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.data_length&quot;</span>, o.get_data_length());</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.response&quot;</span>, resp2char.at(1 - o.get_response_status()));</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.dmi_allowed&quot;</span>, o.is_dmi_allowed());</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.byte_enable&quot;</span>, o.get_byte_enable_ptr());</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.byte_enable_length&quot;</span>, o.get_byte_enable_length());</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.streaming_width&quot;</span>, o.get_streaming_width());</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.gp_option&quot;</span>, gp_option2char.at(o.get_gp_option()));</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span>(o.get_data_length() &lt; 8 &amp;&amp; o.get_data_ptr()) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        uint64_t buf = 0;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="comment">// FIXME: this is endianess dependent</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; o.get_data_length(); i++)</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            buf += (*o.get_data_ptr()) &lt;&lt; i * 8;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        handle.record_attribute(<span class="stringliteral">&quot;trans.data_value&quot;</span>, buf);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> record(SCVNS scv_tr_handle&amp; handle, tlm::tlm_phase&amp; o) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">id</span> = o;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span>(<span class="keywordtype">id</span> &lt; phase2char.size())</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        handle.record_attribute(<span class="stringliteral">&quot;phase&quot;</span>, phase2char[<span class="keywordtype">id</span>]);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        handle.record_attribute(<span class="stringliteral">&quot;phase_id&quot;</span>, <span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> record(SCVNS scv_tr_handle&amp; handle, tlm::tlm_sync_enum o) { handle.record_attribute(<span class="stringliteral">&quot;tlm_sync&quot;</span>, sync2char.at(o)); }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> record(SCVNS scv_tr_handle&amp; handle, tlm::tlm_dmi&amp; o) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.dmi_ptr&quot;</span>, o.get_dmi_ptr());</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.start_address&quot;</span>, o.get_start_address());</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.end_address&quot;</span>, o.get_end_address());</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.granted_access&quot;</span>, dmi2char.at(o.get_granted_access()));</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.read_latency&quot;</span>, o.get_read_latency().to_string());</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.write_latency&quot;</span>, o.get_write_latency().to_string());</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording.html">   75</a></span>&#160;<span class="keyword">class </span><a class="code" href="classtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording.html">tlm_id_ext_recording</a> : <span class="keyword">public</span> <a class="code" href="classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html">tlm_extensions_recording_if</a>&lt;tlm::tlm_base_protocol_types&gt; {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> recordBeginTx(SCVNS scv_tr_handle&amp; handle, tlm::tlm_base_protocol_types::tlm_payload_type&amp; trans)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">if</span>(<span class="keyword">auto</span> ext = trans.get_extension&lt;<a class="code" href="structtlm_1_1scc_1_1tlm__id__extension.html">tlm_id_extension</a>&gt;()) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            handle.record_attribute(<span class="stringliteral">&quot;trans.uid&quot;</span>, ext-&gt;id);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> recordEndTx(SCVNS scv_tr_handle&amp; handle, tlm::tlm_base_protocol_types::tlm_payload_type&amp; trans)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;};</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacetlm_1_1scc_1_1scv.html">tlm::scc::scv</a>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#if defined(__GNUG__)</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;__attribute__((constructor))</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">bool</span> register_extensions() {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="structtlm_1_1scc_1_1tlm__id__extension.html">tlm::scc::tlm_id_extension</a> ext(<span class="keyword">nullptr</span>); <span class="comment">// NOLINT</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html">tlm_extension_recording_registry&lt;tlm::tlm_base_protocol_types&gt;::inst</a>().register_ext_rec(</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        ext.ID, <span class="keyword">new</span> <a class="code" href="classtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording.html">tlm_id_ext_recording</a>()); <span class="comment">// NOLINT</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;                             <span class="comment">// NOLINT</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">bool</span> registered = register_extensions();</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;} <span class="comment">// namespace scv</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;} <span class="comment">// namespace tlm</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">const</span> std::array&lt;std::string, 4&gt; dmi2char{{<span class="stringliteral">&quot;DMI_ACCESS_NONE&quot;</span>, <span class="stringliteral">&quot;DMI_ACCESS_READ&quot;</span>, <span class="stringliteral">&quot;DMI_ACCESS_WRITE&quot;</span>, <span class="stringliteral">&quot;DMI_ACCESS_READ_WRITE&quot;</span>}};</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">const</span> std::array&lt;std::string, 3&gt; sync2char{{<span class="stringliteral">&quot;ACCEPTED&quot;</span>, <span class="stringliteral">&quot;UPDATED&quot;</span>, <span class="stringliteral">&quot;COMPLETED&quot;</span>}};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;} <span class="comment">// namespace</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> record(SCVNS scv_tr_handle&amp; handle, tlm::tlm_generic_payload&amp; o) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.ptr&quot;</span>, <span class="keyword">reinterpret_cast&lt;</span>uintptr_t<span class="keyword">&gt;</span>(&amp;o));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.address&quot;</span>, o.get_address());</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.cmd&quot;</span>, cmd2char.at(o.get_command()));</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.data_ptr&quot;</span>, o.get_data_ptr());</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.data_length&quot;</span>, o.get_data_length());</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.response&quot;</span>, resp2char.at(1 - o.get_response_status()));</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.dmi_allowed&quot;</span>, o.is_dmi_allowed());</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.byte_enable&quot;</span>, o.get_byte_enable_ptr());</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.byte_enable_length&quot;</span>, o.get_byte_enable_length());</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.streaming_width&quot;</span>, o.get_streaming_width());</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.gp_option&quot;</span>, gp_option2char.at(o.get_gp_option()));</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">if</span>(o.get_data_length() &lt; 8 &amp;&amp; o.get_data_ptr()) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        uint64_t buf = 0;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="comment">// FIXME: this is endianess dependent</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; o.get_data_length(); i++)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            buf += (*o.get_data_ptr()) &lt;&lt; i * 8;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        handle.record_attribute(<span class="stringliteral">&quot;trans.data_value&quot;</span>, buf);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> record(SCVNS scv_tr_handle&amp; handle, tlm::tlm_phase&amp; o) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">id</span> = o;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span>(<span class="keywordtype">id</span> &lt; phase2char.size())</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        handle.record_attribute(<span class="stringliteral">&quot;phase&quot;</span>, phase2char[<span class="keywordtype">id</span>]);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        handle.record_attribute(<span class="stringliteral">&quot;phase_id&quot;</span>, <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> record(SCVNS scv_tr_handle&amp; handle, tlm::tlm_sync_enum o) { handle.record_attribute(<span class="stringliteral">&quot;tlm_sync&quot;</span>, sync2char.at(o)); }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> record(SCVNS scv_tr_handle&amp; handle, tlm::tlm_dmi&amp; o) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.dmi_ptr&quot;</span>, o.get_dmi_ptr());</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.start_address&quot;</span>, o.get_start_address());</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.end_address&quot;</span>, o.get_end_address());</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.granted_access&quot;</span>, dmi2char.at(o.get_granted_access()));</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.read_latency&quot;</span>, o.get_read_latency().to_string());</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    handle.record_attribute(<span class="stringliteral">&quot;trans.write_latency&quot;</span>, o.get_write_latency().to_string());</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording.html">   74</a></span>&#160;<span class="keyword">class </span><a class="code" href="classtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording.html">tlm_id_ext_recording</a> : <span class="keyword">public</span> <a class="code" href="classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html">tlm_extensions_recording_if</a>&lt;tlm::tlm_base_protocol_types&gt; {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> recordBeginTx(SCVNS scv_tr_handle&amp; handle, tlm::tlm_base_protocol_types::tlm_payload_type&amp; trans)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span>(<span class="keyword">auto</span> ext = trans.get_extension&lt;<a class="code" href="structtlm_1_1scc_1_1tlm__id__extension.html">tlm_id_extension</a>&gt;()) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            handle.record_attribute(<span class="stringliteral">&quot;trans.uid&quot;</span>, ext-&gt;id);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> recordEndTx(SCVNS scv_tr_handle&amp; handle, tlm::tlm_base_protocol_types::tlm_payload_type&amp; trans)<span class="keyword"> override </span>{}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacetlm_1_1scc_1_1scv.html">tlm::scc::scv</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#if defined(__GNUG__)</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;__attribute__((constructor))</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keywordtype">bool</span> register_extensions() {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="structtlm_1_1scc_1_1tlm__id__extension.html">tlm::scc::tlm_id_extension</a> ext(<span class="keyword">nullptr</span>);                                                                                     <span class="comment">// NOLINT</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html">tlm_extension_recording_registry&lt;tlm::tlm_base_protocol_types&gt;::inst</a>().register_ext_rec(ext.ID, <span class="keyword">new</span> <a class="code" href="classtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording.html">tlm_id_ext_recording</a>()); <span class="comment">// NOLINT</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;                                                                                                                 <span class="comment">// NOLINT</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">bool</span> registered = register_extensions();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;} <span class="comment">// namespace scv</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;} <span class="comment">// namespace tlm</span></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry_html"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__extension__recording__registry.html">tlm::scc::scv::tlm_extension_recording_registry</a></div><div class="ttdoc">The TLM transaction extensions recorder registry.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__extension__recording__registry_8h_source.html#l00068">tlm_extension_recording_registry.h:68</a></div></div>
 <div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if_html"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html">tlm::scc::scv::tlm_extensions_recording_if</a></div><div class="ttdoc">The TLM transaction extensions recorder interface.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__extension__recording__registry_8h_source.html#l00045">tlm_extension_recording_registry.h:45</a></div></div>
-<div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__id__ext__recording_html"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording.html">tlm::scc::scv::tlm_id_ext_recording</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__recorder_8cpp_source.html#l00075">tlm_recorder.cpp:75</a></div></div>
+<div class="ttc" id="aclasstlm_1_1scc_1_1scv_1_1tlm__id__ext__recording_html"><div class="ttname"><a href="classtlm_1_1scc_1_1scv_1_1tlm__id__ext__recording.html">tlm::scc::scv::tlm_id_ext_recording</a></div><div class="ttdef"><b>Definition:</b> <a href="tlm__recorder_8cpp_source.html#l00074">tlm_recorder.cpp:74</a></div></div>
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 <div class="ttc" id="anamespacetlm_1_1scc_1_1scv_html"><div class="ttname"><a href="namespacetlm_1_1scc_1_1scv.html">tlm::scc::scv</a></div><div class="ttdoc">SCC SCV4TLM classes and functions.</div><div class="ttdef"><b>Definition:</b> <a href="tlm__extension__recording__registry_8h_source.html#l00038">tlm_extension_recording_registry.h:38</a></div></div>
 <div class="ttc" id="anamespacetlm_html"><div class="ttname"><a href="namespacetlm.html">tlm</a></div><div class="ttdoc">SystemC TLM.</div><div class="ttdef"><b>Definition:</b> <a href="initiator__mixin_8h_source.html#l00026">initiator_mixin.h:26</a></div></div>

@@ -27,7 +27,6 @@ var classahb_1_1pe_1_1ahb__initiator__b =
     [ "coherent", "classahb_1_1pe_1_1ahb__initiator__b.html#a13bdaecaa87c53bc7115c8d3fcbc2f60", null ],
     [ "data_chnl", "classahb_1_1pe_1_1ahb__initiator__b.html#a753ba225e1812608ba356708dceee9b0", null ],
     [ "rbr", "classahb_1_1pe_1_1ahb__initiator__b.html#adda5c39ee3fca86dfb3139817c2aa7ba", null ],
-    [ "snoop_cb", "classahb_1_1pe_1_1ahb__initiator__b.html#a43723a01f2442c0f5c4a92d2add83199", null ],
     [ "socket_fw", "classahb_1_1pe_1_1ahb__initiator__b.html#a8824d2d2caab0b6ef30fbe69ed27c09c", null ],
     [ "transfer_width_in_bytes", "classahb_1_1pe_1_1ahb__initiator__b.html#a9b4e137018747621b328f061601aadd7", null ],
     [ "tx_state_by_id", "classahb_1_1pe_1_1ahb__initiator__b.html#a25468f42fc4ba0542987c2d8f2b03027", null ],
