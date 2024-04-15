@@ -68,6 +68,7 @@ public:
         SC_METHOD(clock_cb);
         this->sensitive << clk_i;
     }
+    virtual ~tickless_clock() = default;
 
 private:
     void clock_cb() { this->set_clock_period(clk_i.read()); }
