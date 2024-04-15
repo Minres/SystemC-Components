@@ -2,6 +2,8 @@ project(scv-tr VERSION 0.0.1 LANGUAGES CXX)
 
 include(GNUInstallDirs)
 
+find_package(fmt)
+
 add_library(${PROJECT_NAME} 
 	scv-tr/scv_introspection.cpp
 	scv-tr/scv_report.cpp
@@ -13,10 +15,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
 )
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/fmt_8.0)
-target_compile_definitions(${PROJECT_NAME} PRIVATE FMT_HEADER_ONLY)
-
-target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
+target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
 if(TARGET SystemC::systemc)
 	if(USE_CWR_SYSTEMC)
 		get_target_property(INCLS SystemC::systemc INTERFACE_INCLUDE_DIRECTORIES)

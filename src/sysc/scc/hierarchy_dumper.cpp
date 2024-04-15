@@ -36,11 +36,7 @@
 #include <tlm>
 #include <unordered_map>
 #include <unordered_set>
-#ifdef FMT_SPDLOG_INTERNAL
-#include <fmt/fmt.h>
-#else
 #include <fmt/format.h>
-#endif
 
 #include <string>
 #include <typeinfo>

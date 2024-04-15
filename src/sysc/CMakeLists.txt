@@ -148,7 +148,6 @@ endif()
 if(TARGET lz4::lz4)
     target_link_libraries(${PROJECT_NAME} PRIVATE lz4::lz4)
 endif()
-target_compile_definitions(${PROJECT_NAME} PRIVATE FMT_HEADER_ONLY)
 target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt fstapi Threads::Threads ${CMAKE_DL_LIBS})
 
 if(CLANG_TIDY_EXE)

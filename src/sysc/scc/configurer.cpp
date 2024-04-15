@@ -18,11 +18,7 @@
 #include "rapidjson/document.h"
 #include "rapidjson/error/en.h"
 #include "report.h"
-#ifdef FMT_SPDLOG_INTERNAL
-#include <fmt/fmt.h>
-#else
 #include <fmt/format.h>
-#endif
 #include <cci_configuration>
 #include <cci_utils/broker.h>
 #include <cstring>
