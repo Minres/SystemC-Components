@@ -25,6 +25,9 @@
 #include <sysc/kernel/sc_time.h>
 #include <sysc/utils/sc_report.h>
 #include <util/ities.h>
+#include <unordered_map>
+#include <stdexcept>
+#include <cci_core/cci_value_converter.h>
 
 #if defined(_MSC_VER) && defined(ERROR)
 #undef ERROR
@@ -41,29 +44,29 @@ replacing SystemC standard handler. Both can be used independently.
 The frontend consist of a set of macros which provide a std::ostream to log a message. The execution of the
 logging code is dependend on the loglevel thus not impacting performance if the message is not logged.
 
-The macros take an optional argument which becomes the message type. If not is provided, the default 'SystemC'
- is being used. The following table outlines how the scp::log level map to the SystemC logging parameter.
+The macros take an optional argument which becomes the message type. If not provided, the default 'SystemC'
+ is being used. The following table outlines how the scc::log level map to the SystemC logging parameter.
 
-| SCP log level | SystemC severity | SystemC verbosity |
+| SCC log level | SystemC severity | SystemC verbosity |
 |---------------|------------------|-------------------|
-| SCCFATAL      | SC_FATAL         | -- |
-| SCCERR        | SC_ERROR         | -- |
-| SCCWARN       | SC_WARNING       | -- |
-| SCCINFO       | SC_INFO          | SC_MEDIUM |
-| SCCDEBUG      | SC_INFO          | SC_HIGH |
-| SCCTRACE      | SC_INFO          | SC_FULL |
-| SCCTRACEALL   | SC_INFO |         SC_DEBUG |
+| SCCFATAL      | SC_FATAL         | --                |
+| SCCERR        | SC_ERROR         | --                |
+| SCCWARN       | SC_WARNING       | --                |
+| SCCINFO       | SC_INFO          | SC_MEDIUM         |
+| SCCDEBUG      | SC_INFO          | SC_HIGH           |
+| SCCTRACE      | SC_INFO          | SC_FULL           |
+| SCCTRACEALL   | SC_INFO          | SC_DEBUG          |
 
 ## Reporting backend
 
 The backend is initialized using the short form:
 
-    scp::init_logging(scp::log::INFO);
+    scc::init_logging(scc::log::INFO);
 
 or the long form
 
-    scp::init_logging(scp::LogConfig()
-        .logLevel(scp::log::DEBUG) // set log level to debug
+    scc::init_logging(scc::LogConfig()
+        .logLevel(scc::log::DEBUG) // set log level to debug
         .msgTypeFieldWidth(10));   // make the msg type column a bit tighter
 
 which allows more configurability. For detail please check the header file report.h
@@ -78,10 +81,21 @@ writing. By default spdlog logs asyncronously to keep the performance impact low
 /**@{*/
 //! @brief SCC SystemC utilities
 namespace scc {
-//! \brief array holding string representations of log levels
-static std::array<const char* const, 8> buffer = {{"NONE", "FATAL", "ERROR", "WARNING", "INFO", "DEBUG", "TRACE", "TRACEALL"}};
 //! \brief enum defining the log levels
 enum class log { NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE, TRACEALL, DBGTRACE = TRACEALL };
+namespace {
+//! \brief array holding string representations of log levels
+static std::array<const char* const, 8> log_level_names = {{"NONE", "FATAL", "ERROR", "WARNING", "INFO", "DEBUG", "TRACE", "TRACEALL"}};
+static const std::unordered_map<std::string, scc::log> log_level_lut = {
+        {"NONE", scc::log::NONE},
+        {"FATAL", scc::log::FATAL},
+        {"ERROR", scc::log::ERROR},
+        {"WARNING", scc::log::WARNING},
+        {"INFO", scc::log::INFO},
+        {"DEBUG", scc::log::DEBUG},
+        {"TRACE", scc::log::TRACE},
+        {"TRACEALL", scc::log::TRACEALL}};
+}
 /**
  * @fn log as_log(int)
  * @brief safely convert an integer into a log level
@@ -105,12 +119,10 @@ inline log as_log(int logLevel) {
 inline std::istream& operator>>(std::istream& is, log& val) {
     std::string buf;
     is >> buf;
-    for(auto i = 0U; i <= static_cast<unsigned>(log::TRACEALL); ++i) {
-        if(std::strcmp(buf.c_str(), buffer[i]) == 0) {
-            val = as_log(i);
-            return is;
-        }
-    }
+    auto it = scc::log_level_lut.find(buf);
+    if(it == std::end(scc::log_level_lut))
+        throw std::out_of_range(std::string("Illegal log level value: ")+buf);
+    val = it->second;
     return is;
 }
 /**
@@ -122,7 +134,7 @@ inline std::istream& operator>>(std::istream& is, log& val) {
  * @return reference to the stream for chaining
  */
 inline std::ostream& operator<<(std::ostream& os, log const& val) {
-    os << buffer[static_cast<unsigned>(val)];
+    os << log_level_names[static_cast<unsigned>(val)];
     return os;
 }
 /**
@@ -501,4 +513,20 @@ protected:
 
 } // namespace scc
 /** @} */ // end of scc-sysc
+
+template<> inline bool cci::cci_value_converter<scc::log>::pack(cci_value::reference dst, scc::log const &src) {
+    dst.set_string(scc::log_level_names[static_cast<unsigned>(src)]);
+    return true;
+}
+template<> inline bool cci::cci_value_converter<scc::log>::unpack(scc::log &dst, cci_value::const_reference src) {
+    // Highly defensive unpacker; probably could check less
+    if (!src.is_string()) return false;
+    auto it = scc::log_level_lut.find(src.get_string());
+    if (it != std::end(scc::log_level_lut)) {
+        dst = it->second;
+        return true;
+    }
+    return false;
+}
+
 #endif    /* _SCC_REPORT_H_ */

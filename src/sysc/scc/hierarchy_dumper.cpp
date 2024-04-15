@@ -100,7 +100,7 @@ struct Module {
     std::string const type;
     Module* const parent;
     std::string const id{fmt::format("{}", ++object_counter)};
-    std::deque<Module> submodules;
+    std::deque<std::unique_ptr<Module>> submodules;
     std::deque<Port> ports;
 
     Module(std::string const& fullname, std::string const& name, std::string const& type, Module& parent)
@@ -163,7 +163,7 @@ std::vector<std::string> scan_object(sc_core::sc_object const* obj, Module& curr
     SCCDEBUG() << indent * level << obj->name() << "(" << obj->kind() << "), id=" << (object_counter + 1);
     std::string kind{obj->kind()};
     if(auto const* mod = dynamic_cast<sc_core::sc_module const*>(obj)) {
-        currentModule.submodules.push_back(Module(obj->name(), name, type(*obj), currentModule));
+        currentModule.submodules.emplace_back(new Module(obj->name(), name, type(*obj), currentModule));
         std::unordered_set<std::string> keep_outs;
         for(auto* child : mod->get_child_objects()) {
             const std::string child_name{child->basename()};
@@ -176,16 +176,16 @@ std::vector<std::string> scan_object(sc_core::sc_object const* obj, Module& curr
                 if(it != std::end(keep_outs))
                     continue;
             }
-            auto ks = scan_object(child, currentModule.submodules.back(), level + 1);
+            auto ks = scan_object(child, *currentModule.submodules.back(), level + 1);
             if(ks.size())
                 for(auto& s : ks)
                     keep_outs.insert(s);
         }
     } else if(kind == "sc_clock") {
         sc_core::sc_prim_channel const* prim_chan = dynamic_cast<sc_core::sc_prim_channel const*>(obj);
-        currentModule.submodules.push_back(Module(obj->name(), name, type(*obj), currentModule));
-        currentModule.submodules.back().ports.push_back(Port(std::string(obj->name()) + "." + name, name, prim_chan, false, obj->kind(),
-                                                             currentModule.submodules.back(), obj->basename()));
+        currentModule.submodules.emplace_back(new Module(obj->name(), name, type(*obj), currentModule));
+        currentModule.submodules.back()->ports.push_back(Port(std::string(obj->name()) + "." + name, name, prim_chan, false, obj->kind(),
+                                                             *currentModule.submodules.back(), obj->basename()));
 #ifndef NO_TLM_EXTRACT
 #ifndef NCSC
     } else if(auto const* tptr = dynamic_cast<tlm::tlm_base_socket_if const*>(obj)) {
@@ -227,7 +227,7 @@ void collect_ports_rec(Module& m, registry_t& registry) {
     for(auto& port : m.ports)
         registry[port.port_if].emplace_back(&port);
     for(auto& child : m.submodules)
-        collect_ports_rec(child, registry);
+        collect_ports_rec(*child, registry);
 }
 
 using breadcrumb_t = std::tuple<Module*, bool>;
@@ -240,7 +240,7 @@ bool get_path_to(Module const* i, std::vector<breadcrumb_t>& bread_crumb, std::u
         return false;
     visited.insert(current_mod);
     for(auto& c : current_mod->submodules) {
-        bread_crumb.emplace_back(&c, false);
+        bread_crumb.emplace_back(c.get(), false);
         if(get_path_to(i, bread_crumb, visited))
             return true;
         bread_crumb.pop_back();
@@ -318,12 +318,12 @@ void generate_elk(std::ostream& e, Module const& module, unsigned level = 0) {
     }
 
     for(auto& m : module.submodules)
-        generate_elk(e, m, level);
+        generate_elk(e, *m, level);
     // Draw edges module <-> submodule:
     for(auto& srcport : module.ports) {
         if(srcport.port_if)
             for(auto& tgtmod : module.submodules) {
-                for(auto& tgtport : tgtmod.ports) {
+                for(auto& tgtport : tgtmod->ports) {
                     if(tgtport.port_if == srcport.port_if)
                         e << indent * level << "edge " << srcport.fullname << " -> " << tgtport.fullname << "\n";
                 }
@@ -331,11 +331,11 @@ void generate_elk(std::ostream& e, Module const& module, unsigned level = 0) {
     }
     // Draw edges submodule -> submodule:
     for(auto& srcmod : module.submodules) {
-        for(auto& srcport : srcmod.ports) {
+        for(auto& srcport : srcmod->ports) {
             if(!srcport.input && srcport.port_if)
                 for(auto& tgtmod : module.submodules) {
-                    for(auto& tgtport : tgtmod.ports) {
-                        if(srcmod.fullname == tgtmod.fullname && tgtport.fullname == srcport.fullname)
+                    for(auto& tgtport : tgtmod->ports) {
+                        if(srcmod->fullname == tgtmod->fullname && tgtport.fullname == srcport.fullname)
                             continue;
                         if(tgtport.port_if == srcport.port_if && tgtport.input)
                             e << indent * level << "edge " << srcport.fullname << " -> " << tgtport.fullname << "\n";
@@ -495,7 +495,7 @@ void generate_mod_json(writer_type& writer, hierarchy_dumper::file_type type, Mo
         writer.StartArray();
         {
             for(auto& c : module.submodules)
-                generate_mod_json(writer, type, c, level * 1);
+                generate_mod_json(writer, type, *c, level * 1);
         }
         writer.EndArray();
         // process connections
@@ -509,10 +509,10 @@ void generate_mod_json(writer_type& writer, hierarchy_dumper::file_type type, Mo
             for(auto& srcport : module.ports) {
                 if(srcport.port_if) {
                     for(auto& tgtmod : module.submodules) {
-                        for(auto& tgtport : tgtmod.ports) {
+                        for(auto& tgtport : tgtmod->ports) {
                             if(tgtport.port_if == srcport.port_if)
                                 if(type == hierarchy_dumper::D3JSON)
-                                    generate_edge_d3_json(writer, module, srcport, tgtmod, tgtport);
+                                    generate_edge_d3_json(writer, module, srcport, *tgtmod, tgtport);
                                 else
                                     generate_edge_json(writer, srcport, tgtport);
                         }
@@ -521,15 +521,15 @@ void generate_mod_json(writer_type& writer, hierarchy_dumper::file_type type, Mo
             }
             // Draw edges submodule -> submodule:
             for(auto& srcmod : module.submodules) {
-                for(auto& srcport : srcmod.ports) {
+                for(auto& srcport : srcmod->ports) {
                     if(!srcport.input && srcport.port_if) {
                         for(auto& tgtmod : module.submodules) {
-                            for(auto& tgtport : tgtmod.ports) {
-                                if(srcmod.fullname == tgtmod.fullname && tgtport.fullname == srcport.fullname)
+                            for(auto& tgtport : tgtmod->ports) {
+                                if(srcmod->fullname == tgtmod->fullname && tgtport.fullname == srcport.fullname)
                                     continue;
                                 if(tgtport.port_if == srcport.port_if && tgtport.input)
                                     if(type == hierarchy_dumper::D3JSON)
-                                        generate_edge_d3_json(writer, srcmod, srcport, tgtmod, tgtport);
+                                        generate_edge_d3_json(writer, *srcmod, srcport, *tgtmod, tgtport);
                                     else
                                         generate_edge_json(writer, srcport, tgtport);
                             }
