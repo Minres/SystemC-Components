@@ -72,6 +72,22 @@ function build_yamlcpp {
 ############################################################################################
 #
 ############################################################################################
+function build_lz4 {
+	if [ ! -d lz4 ]; then
+	    if [ ! -f lz4_1.9.4.tar.gz ]; then
+		git clone --depth 1 --branch v1.9.4 -c advice.detachedHead=false https://github.com/lz4/lz4.git
+		tar czf lz4_1.9.4.tar.gz yaml-cpp --exclude=.git
+	    else
+		tar xzf lz4_1.9.4.tar.gz
+	    fi
+	fi
+	make -C lz4 clean all || exit 1
+	make -C lz4 install PREFIX=${SCC_INSTALL} LIBDIR=${SCC_INSTALL}/lib64 || exit 2
+	export PKG_CONFIG_PATH=${SCC_INSTALL}/lib64/pkgconfig
+}
+############################################################################################
+#
+############################################################################################
 function build_systemc {
 	if [ ! -d systemc ]; then
 	    if [ ! -f systemc_2.3.4.tar.gz ]; then
@@ -81,7 +97,7 @@ function build_systemc {
 		tar xzf systemc_2.3.4.tar.gz
 	    fi
 	fi
-	cmake -S systemc -B build/systemc -DCMAKE_BUILD_TYPE=${RelWithDebInfo} \
+	cmake -S systemc -B build/systemc -DCMAKE_BUILD_TYPE=${RelWithDebInfo} -DENABLE_PHASE_CALLBACKS_TRACING=OFF \
 		-DCMAKE_INSTALL_PREFIX=${SYSTEMC_HOME} -DCMAKE_CXX_STANDARD=${CXX_STD} || exit 1
 	cmake --build build/systemc -j 10 --target install || exit 2
 	rm  -rf ~/.cmake/packages/SystemC*
