@@ -513,12 +513,12 @@ protected:
 
 } // namespace scc
 /** @} */ // end of scc-sysc
-
-template<> inline bool cci::cci_value_converter<scc::log>::pack(cci_value::reference dst, scc::log const &src) {
+namespace cci {
+template<> inline bool cci_value_converter<scc::log>::pack(cci_value::reference dst, scc::log const &src) {
     dst.set_string(scc::log_level_names[static_cast<unsigned>(src)]);
     return true;
 }
-template<> inline bool cci::cci_value_converter<scc::log>::unpack(scc::log &dst, cci_value::const_reference src) {
+template<> inline bool cci_value_converter<scc::log>::unpack(scc::log &dst, cci_value::const_reference src) {
     // Highly defensive unpacker; probably could check less
     if (!src.is_string()) return false;
     auto it = scc::log_level_lut.find(src.get_string());
@@ -528,5 +528,5 @@ template<> inline bool cci::cci_value_converter<scc::log>::unpack(scc::log &dst,
     }
     return false;
 }
-
+}
 #endif    /* _SCC_REPORT_H_ */
