@@ -214,8 +214,8 @@ template <typename T, cci::cci_param_mutable_type TM = cci::CCI_MUTABLE_PARAM> s
                          const cci::cci_originator& originator = sc_core::sc_get_current_object() ? cci::cci_originator()
                                                                                                   : cci::cci_originator("sc_main"))
     : cci::cci_param<T, TM>(name, default_value, desc, name_type, originator) {
-        this->template register_pre_write_callback(restr);
-        this->template reset();
+        this->register_pre_write_callback(restr);
+        this->reset();
     }
 
     /**
@@ -236,8 +236,8 @@ template <typename T, cci::cci_param_mutable_type TM = cci::CCI_MUTABLE_PARAM> s
                          const cci::cci_originator& originator = sc_core::sc_get_current_object() ? cci::cci_originator()
                                                                                                   : cci::cci_originator("sc_main"))
     : cci::cci_param<T, TM>(name, default_value, desc, name_type, originator) {
-        this->template register_pre_write_callback(restr);
-        this->template reset();
+        this->register_pre_write_callback(restr);
+        this->reset();
     }
     //@}
 };
