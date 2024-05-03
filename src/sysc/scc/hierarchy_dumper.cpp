@@ -23,6 +23,7 @@
 #include "report.h"
 #include "tracer.h"
 #include <deque>
+#include <fmt/format.h>
 #include <fstream>
 #include <iostream>
 #include <memory>
@@ -36,7 +37,6 @@
 #include <tlm>
 #include <unordered_map>
 #include <unordered_set>
-#include <fmt/format.h>
 
 #include <string>
 #include <typeinfo>
@@ -181,7 +181,7 @@ std::vector<std::string> scan_object(sc_core::sc_object const* obj, Module& curr
         sc_core::sc_prim_channel const* prim_chan = dynamic_cast<sc_core::sc_prim_channel const*>(obj);
         currentModule.submodules.emplace_back(new Module(obj->name(), name, type(*obj), currentModule));
         currentModule.submodules.back()->ports.push_back(Port(std::string(obj->name()) + "." + name, name, prim_chan, false, obj->kind(),
-                                                             *currentModule.submodules.back(), obj->basename()));
+                                                              *currentModule.submodules.back(), obj->basename()));
 #ifndef NO_TLM_EXTRACT
 #ifndef NCSC
     } else if(auto const* tptr = dynamic_cast<tlm::tlm_base_socket_if const*>(obj)) {
@@ -506,11 +506,13 @@ void generate_mod_json(writer_type& writer, hierarchy_dumper::file_type type, Mo
                 if(srcport.port_if) {
                     for(auto& tgtmod : module.submodules) {
                         for(auto& tgtport : tgtmod->ports) {
-                            if(tgtport.port_if == srcport.port_if)
-                                if(type == hierarchy_dumper::D3JSON)
+                            if(tgtport.port_if == srcport.port_if) {
+                                if(type == hierarchy_dumper::D3JSON) {
                                     generate_edge_d3_json(writer, module, srcport, *tgtmod, tgtport);
-                                else
+                                } else {
                                     generate_edge_json(writer, srcport, tgtport);
+                                }
+                            }
                         }
                     }
                 }
@@ -521,13 +523,16 @@ void generate_mod_json(writer_type& writer, hierarchy_dumper::file_type type, Mo
                     if(!srcport.input && srcport.port_if) {
                         for(auto& tgtmod : module.submodules) {
                             for(auto& tgtport : tgtmod->ports) {
-                                if(srcmod->fullname == tgtmod->fullname && tgtport.fullname == srcport.fullname)
+                                if(srcmod->fullname == tgtmod->fullname && tgtport.fullname == srcport.fullname) {
                                     continue;
-                                if(tgtport.port_if == srcport.port_if && tgtport.input)
-                                    if(type == hierarchy_dumper::D3JSON)
+                                }
+                                if(tgtport.port_if == srcport.port_if && tgtport.input) {
+                                    if(type == hierarchy_dumper::D3JSON) {
                                         generate_edge_d3_json(writer, *srcmod, srcport, *tgtmod, tgtport);
-                                    else
+                                    } else {
                                         generate_edge_json(writer, srcport, tgtport);
+                                    }
+                                }
                             }
                         }
                     }

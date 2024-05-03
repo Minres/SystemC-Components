@@ -18,16 +18,16 @@
 #define _SCC_REPORT_H_
 
 #include "utilities.h"
+#include <cci_core/cci_value_converter.h>
 #include <cstring>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
 #include <sysc/kernel/sc_time.h>
 #include <sysc/utils/sc_report.h>
-#include <util/ities.h>
 #include <unordered_map>
-#include <stdexcept>
-#include <cci_core/cci_value_converter.h>
+#include <util/ities.h>
 
 #if defined(_MSC_VER) && defined(ERROR)
 #undef ERROR
@@ -87,15 +87,9 @@ namespace {
 //! \brief array holding string representations of log levels
 static std::array<const char* const, 8> log_level_names = {{"NONE", "FATAL", "ERROR", "WARNING", "INFO", "DEBUG", "TRACE", "TRACEALL"}};
 static const std::unordered_map<std::string, scc::log> log_level_lut = {
-        {"NONE", scc::log::NONE},
-        {"FATAL", scc::log::FATAL},
-        {"ERROR", scc::log::ERROR},
-        {"WARNING", scc::log::WARNING},
-        {"INFO", scc::log::INFO},
-        {"DEBUG", scc::log::DEBUG},
-        {"TRACE", scc::log::TRACE},
-        {"TRACEALL", scc::log::TRACEALL}};
-}
+    {"NONE", scc::log::NONE}, {"FATAL", scc::log::FATAL}, {"ERROR", scc::log::ERROR}, {"WARNING", scc::log::WARNING},
+    {"INFO", scc::log::INFO}, {"DEBUG", scc::log::DEBUG}, {"TRACE", scc::log::TRACE}, {"TRACEALL", scc::log::TRACEALL}};
+} // namespace
 /**
  * @fn log as_log(int)
  * @brief safely convert an integer into a log level
@@ -121,7 +115,7 @@ inline std::istream& operator>>(std::istream& is, log& val) {
     is >> buf;
     auto it = scc::log_level_lut.find(buf);
     if(it == std::end(scc::log_level_lut))
-        throw std::out_of_range(std::string("Illegal log level value: ")+buf);
+        throw std::out_of_range(std::string("Illegal log level value: ") + buf);
     val = it->second;
     return is;
 }
@@ -514,19 +508,20 @@ protected:
 } // namespace scc
 /** @} */ // end of scc-sysc
 namespace cci {
-template<> inline bool cci_value_converter<scc::log>::pack(cci_value::reference dst, scc::log const &src) {
+template <> inline bool cci_value_converter<scc::log>::pack(cci_value::reference dst, scc::log const& src) {
     dst.set_string(scc::log_level_names[static_cast<unsigned>(src)]);
     return true;
 }
-template<> inline bool cci_value_converter<scc::log>::unpack(scc::log &dst, cci_value::const_reference src) {
+template <> inline bool cci_value_converter<scc::log>::unpack(scc::log& dst, cci_value::const_reference src) {
     // Highly defensive unpacker; probably could check less
-    if (!src.is_string()) return false;
+    if(!src.is_string())
+        return false;
     auto it = scc::log_level_lut.find(src.get_string());
-    if (it != std::end(scc::log_level_lut)) {
+    if(it != std::end(scc::log_level_lut)) {
         dst = it->second;
         return true;
     }
     return false;
 }
-}
-#endif    /* _SCC_REPORT_H_ */
+} // namespace cci
+#endif /* _SCC_REPORT_H_ */
