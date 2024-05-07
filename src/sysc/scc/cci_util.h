@@ -65,22 +65,24 @@
     }
 
 #define DEFINE_NS_ENUM4CCI(ns_name, name, val_seq)                                                                                         \
-    namespace ns_name { enum class name { BOOST_PP_SEQ_ENUM(BOOST_PP_SEQ_TRANSFORM(DEFINE_ENUM_DECL_VAL, name, val_seq)) };}               \
+    namespace ns_name {                                                                                                                    \
+    enum class name { BOOST_PP_SEQ_ENUM(BOOST_PP_SEQ_TRANSFORM(DEFINE_ENUM_DECL_VAL, name, val_seq)) };                                    \
+    }                                                                                                                                      \
     namespace cci {                                                                                                                        \
     namespace {                                                                                                                            \
-    std::unordered_map<std::string, ns_name::name> ns_name##_##name##_lut_init() {                                                                              \
-        std::unordered_map<std::string, ns_name::name> lut;                                                                                         \
-        CONCAT(BOOST_PP_SEQ_TRANSFORM(ASSIGN_ENUM_MAP_ENTRY, ns_name::name, val_seq))                                                               \
+    std::unordered_map<std::string, ns_name::name> ns_name##_##name##_lut_init() {                                                         \
+        std::unordered_map<std::string, ns_name::name> lut;                                                                                \
+        CONCAT(BOOST_PP_SEQ_TRANSFORM(ASSIGN_ENUM_MAP_ENTRY, ns_name::name, val_seq))                                                      \
         return lut;                                                                                                                        \
     }                                                                                                                                      \
     }                                                                                                                                      \
-    template <> inline bool cci_value_converter<ns_name::name>::pack(cci_value::reference dst, ns_name::name const& src) {                                   \
+    template <> inline bool cci_value_converter<ns_name::name>::pack(cci_value::reference dst, ns_name::name const& src) {                 \
         static const char* str_val[] = {BOOST_PP_SEQ_ENUM(BOOST_PP_SEQ_TRANSFORM(DEFINE_ENUM_VAL_STR, name, val_seq))};                    \
         dst.set_string(str_val[static_cast<unsigned>(src)]);                                                                               \
         return true;                                                                                                                       \
     }                                                                                                                                      \
-    template <> inline bool cci_value_converter<ns_name::name>::unpack(ns_name::name& dst, cci::cci_value::const_reference src) {                            \
-        static const std::unordered_map<std::string, ns_name::name> lut = ns_name##_##name##_lut_init();                                                        \
+    template <> inline bool cci_value_converter<ns_name::name>::unpack(ns_name::name& dst, cci::cci_value::const_reference src) {          \
+        static const std::unordered_map<std::string, ns_name::name> lut = ns_name##_##name##_lut_init();                                   \
         if(!src.is_string())                                                                                                               \
             return false;                                                                                                                  \
         auto it = lut.find(src.get_string());                                                                                              \
