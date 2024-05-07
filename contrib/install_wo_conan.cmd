@@ -8,6 +8,7 @@ IF "%1"=="" GOTO endparse
 set INSTALL_DIR=%1
 :endparse
 
+set SC_VERSION=2.3.4
 set CXX_STD=14
 set SCC_HOME=%INSTALL_DIR%\scc
 set SYSTEMC_HOME=%INSTALL_DIR%\systemc
@@ -49,9 +50,15 @@ cmake --build build\zlib -j 10 --config Release --target install
 @REM ############################################################################################
 @REM build_systemc
 @REM ############################################################################################
-if NOT EXIST "systemc" tar xzvf systemc_2.3.4.tar.gz
+if NOT EXIST "systemc" tar xzvf systemc_%SC_VERSION%.tar.gz
 cmake -S systemc -B build\systemc %CMAKE_OPTS% -DENABLE_PHASE_CALLBACKS_TRACING=OFF -DCMAKE_INSTALL_PREFIX=%SYSTEMC_HOME%
 cmake --build build\systemc -j 10 --config Release --target install
+@REM ############################################################################################
+@REM build_systemc_ams
+@REM ############################################################################################
+if NOT EXIST "systemc-ams-%SC_VERSION%" tar xzvf systemc-ams-%SC_VERSION%.tar.gz
+cmake -S systemc-ams-%SC_VERSION% -B build/systemcams %CMAKE_OPTS% -DCMAKE_INSTALL_PREFIX=%SYSTEMC_HOME% 
+cmake --build build/systemcams -j 10 --config Release --target install
 @REM ############################################################################################
 @REM build_scc
 @REM ############################################################################################
