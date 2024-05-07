@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef SYSC_SCC_CCI_UTIL_H_
+#ifndef _SYSC_SCC_CCI_UTIL_H_
 #define _SYSC_SCC_CCI_UTIL_H_
 
 
