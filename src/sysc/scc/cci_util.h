@@ -18,6 +18,7 @@
 #define _SYSC_SCC_CCI_UTIL_H_
 
 #include <boost/preprocessor.hpp>
+#include <cci_core/cci_value_converter.h>
 
 #define DEFINE_ENUM_DECL_VAL(r, name, val) val // BOOST_PP_CAT(name, BOOST_PP_CAT(_, val))
 #define DEFINE_ENUM_VAL_STR(r, name, val) BOOST_PP_STRINGIZE(val)
