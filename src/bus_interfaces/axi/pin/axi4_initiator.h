@@ -279,7 +279,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::setup_callbac
         if(fsm_hndl->beat_count == 0) {
             aw_fifo.push_back({fsm_hndl->trans.get(), false});
         }
-        wdata_fifo.push_back({fsm_hndl->trans.get(), false, wdata_fifo.num_avail(), fsm_hndl->beat_count});
+        wdata_fifo.push_back({fsm_hndl->trans.get(), false, wdata_fifo.num_avail()>0, fsm_hndl->beat_count});
         if(pipelined_wrreq && !wdata_fifo.num_avail())
             schedule(EndPartReqE, fsm_hndl->trans, sc_core::SC_ZERO_TIME);
     };
@@ -298,7 +298,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::setup_callbac
             if(fsm_hndl->beat_count == 0) {
                 aw_fifo.push_back({fsm_hndl->trans.get(), false});
             }
-            wdata_fifo.push_back({fsm_hndl->trans.get(), true, wdata_fifo.num_avail(), fsm_hndl->beat_count});
+            wdata_fifo.push_back({fsm_hndl->trans.get(), true, wdata_fifo.num_avail()>0, fsm_hndl->beat_count});
             if(pipelined_wrreq && !wdata_fifo.num_avail())
                 schedule(EndReqE, fsm_hndl->trans, sc_core::SC_ZERO_TIME);
         }
