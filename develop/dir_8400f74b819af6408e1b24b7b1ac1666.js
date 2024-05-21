@@ -5,6 +5,7 @@ var dir_8400f74b819af6408e1b24b7b1ac1666 =
     [ "cci_broker.cpp", "cci__broker_8cpp_source.html", null ],
     [ "cci_broker.h", "cci__broker_8h_source.html", null ],
     [ "cci_param_restricted.h", "cci__param__restricted_8h_source.html", null ],
+    [ "cci_util.h", "cci__util_8h_source.html", null ],
     [ "configurable_tracer.cpp", "configurable__tracer_8cpp_source.html", null ],
     [ "configurable_tracer.h", "configurable__tracer_8h_source.html", null ],
     [ "configurer.cpp", "configurer_8cpp_source.html", null ],

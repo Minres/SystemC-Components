@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scc: Member List</title>
+<title>scc: DEFINE_ENUM4CCI</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">scc
-   &#160;<span id="projectnumber">2022.4.0</span>
+   &#160;<span id="projectnumber">2024.03</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -56,22 +56,26 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('structscc_1_1__min__excl__restriction.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('DEFINE_ENUM4CCI-example.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">scc::_min_excl_restriction&lt; T &gt; Member List</div>  </div>
+<div class="title">DEFINE_ENUM4CCI</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>This is the complete list of members for <a class="el" href="structscc_1_1__min__excl__restriction.html">scc::_min_excl_restriction&lt; T &gt;</a>, including all inherited members.</p>
-<table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>_min_excl_restriction</b>(T min) (defined in <a class="el" href="structscc_1_1__min__excl__restriction.html">scc::_min_excl_restriction&lt; T &gt;</a>)</td><td class="entry"><a class="el" href="structscc_1_1__min__excl__restriction.html">scc::_min_excl_restriction&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>min</b> (defined in <a class="el" href="structscc_1_1__min__excl__restriction.html">scc::_min_excl_restriction&lt; T &gt;</a>)</td><td class="entry"><a class="el" href="structscc_1_1__min__excl__restriction.html">scc::_min_excl_restriction&lt; T &gt;</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator()</b>(cci::cci_param_write_event&lt; T &gt; const &amp;ev) const (defined in <a class="el" href="structscc_1_1__min__excl__restriction.html">scc::_min_excl_restriction&lt; T &gt;</a>)</td><td class="entry"><a class="el" href="structscc_1_1__min__excl__restriction.html">scc::_min_excl_restriction&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-</table></div><!-- contents -->
+<p>Generates the declaration of an enum class including cci pack/unpack converter functions.</p><dl class="section note"><dt>Note</dt><dd>This cannot be used inside name spaces!</dd></dl>
+<p>(log_lvl, (NONE)(LOW)(MEDIUM)(HIGH)(FULL))</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>name of the enum class. </td></tr>
+    <tr><td class="paramname">val_seq</td><td>sequence of the enum class values </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>code declaring the enum class.</dd></dl>
+<div class="fragment"> </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -1,9 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,192,132,219"/>
-<area shape="rect" id="node2" href="$classscv__tr_1_1scv__extensions_3_01tlm_1_1scc_1_1scv_1_1tlm__phase__enum_01_4.html" title=" " alt="" coords="201,5,394,61"/>
-<area shape="rect" id="node3" href="$classscv__tr_1_1scv__extensions_3_01tlm_1_1tlm__command_01_4.html" title=" " alt="" coords="209,86,385,127"/>
-<area shape="rect" id="node4" href="$classscv__tr_1_1scv__extensions_3_01tlm_1_1tlm__dmi_1_1dmi__access__e_01_4.html" title=" " alt="" coords="180,151,415,193"/>
-<area shape="rect" id="node5" href="$classscv__tr_1_1scv__extensions_3_01tlm_1_1tlm__gp__option_01_4.html" title=" " alt="" coords="210,217,385,258"/>
-<area shape="rect" id="node6" href="$classscv__tr_1_1scv__extensions_3_01tlm_1_1tlm__response__status_01_4.html" title=" " alt="" coords="189,282,406,323"/>
-<area shape="rect" id="node7" href="$classscv__tr_1_1scv__extensions_3_01tlm_1_1tlm__sync__enum_01_4.html" title=" " alt="" coords="205,347,390,389"/>
+<area shape="rect" id="node1" href="$classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if.html" title=" " alt="" coords="5,97,183,153"/>
+<area shape="rect" id="node2" href="$classaxi_1_1lwtr_1_1ace__ext__recording.html" title=" " alt="" coords="239,5,374,47"/>
+<area shape="rect" id="node3" href="$classaxi_1_1lwtr_1_1axi3__ext__recording.html" title=" " alt="" coords="237,71,376,112"/>
+<area shape="rect" id="node4" href="$classaxi_1_1lwtr_1_1axi4__ext__recording.html" title=" " alt="" coords="237,136,376,177"/>
+<area shape="rect" id="node5" href="$classaxi_1_1lwtr_1_1tlm__id__ext__recording.html" title=" " alt="" coords="231,201,383,243"/>
 </map>

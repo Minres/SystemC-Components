@@ -1,12 +1,5 @@
 var hierarchy =
 [
-    [ "scc::_discrete_restriction< T >", "structscc_1_1__discrete__restriction.html", null ],
-    [ "scc::_max_excl_restriction< T >", "structscc_1_1__max__excl__restriction.html", null ],
-    [ "scc::_max_restriction< T >", "structscc_1_1__max__restriction.html", null ],
-    [ "scc::_min_excl_restriction< T >", "structscc_1_1__min__excl__restriction.html", null ],
-    [ "scc::_min_max_excl_restriction< T >", "structscc_1_1__min__max__excl__restriction.html", null ],
-    [ "scc::_min_max_restriction< T >", "structscc_1_1__min__max__restriction.html", null ],
-    [ "scc::_min_restriction< T >", "structscc_1_1__min__restriction.html", null ],
     [ "scc::abstract_bitfield< datatype_t >", "classscc_1_1abstract__bitfield.html", [
       [ "scc::bitfield< datatype_t >", "classscc_1_1bitfield.html", null ]
     ] ],
@@ -551,6 +544,7 @@ var hierarchy =
       [ "scc::fifo_w_cb< std::tuple< payload_type *, unsigned > >", "classscc_1_1fifo__w__cb.html", null ],
       [ "scc::fifo_w_cb< std::tuple< tlm::tlm_generic_payload *, unsigned > >", "classscc_1_1fifo__w__cb.html", null ],
       [ "scc::fifo_w_cb< std::tuple< axi::fsm::protocol_time_point_e, payload_type *, unsigned > >", "classscc_1_1fifo__w__cb.html", null ],
+      [ "scc::fifo_w_cb< fifo_entry >", "classscc_1_1fifo__w__cb.html", null ],
       [ "scc::fifo_w_cb< T >", "classscc_1_1fifo__w__cb.html", null ]
     ] ],
     [ "sc_core::sc_semaphore_if", null, [

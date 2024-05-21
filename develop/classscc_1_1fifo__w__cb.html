@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">scc
-   &#160;<span id="projectnumber">2022.4.0</span>
+   &#160;<span id="projectnumber">2024.03</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -105,6 +105,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>push_back</b> (T &amp
 <tr class="memitem:aa09198b16eff92d8ac66fa3118ba02e9"><td class="memItemLeft" align="right" valign="top"><a id="aa09198b16eff92d8ac66fa3118ba02e9"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>push_back</b> (const T &amp;t)</td></tr>
 <tr class="separator:aa09198b16eff92d8ac66fa3118ba02e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c1a2240c34748008485baad5ddc7948"><td class="memItemLeft" align="right" valign="top"><a id="a4c1a2240c34748008485baad5ddc7948"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>push_back</b> (T &amp;&amp;t)</td></tr>
+<tr class="separator:a4c1a2240c34748008485baad5ddc7948"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5473c15b67d5e53447094f20998bfdb"><td class="memItemLeft" align="right" valign="top"><a id="aa5473c15b67d5e53447094f20998bfdb"></a>
 T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>back</b> ()</td></tr>
 <tr class="separator:aa5473c15b67d5e53447094f20998bfdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,6 +123,9 @@ T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>front</b> ()</td><
 <tr class="memitem:a83bce8e999ad0acbe7e52c447696bca0"><td class="memItemLeft" align="right" valign="top"><a id="a83bce8e999ad0acbe7e52c447696bca0"></a>
 const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>front</b> () const</td></tr>
 <tr class="separator:a83bce8e999ad0acbe7e52c447696bca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b56f74fdf30872e8a18cd0084d4732"><td class="memItemLeft" align="right" valign="top"><a id="a31b56f74fdf30872e8a18cd0084d4732"></a>
+T&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> ()</td></tr>
+<tr class="separator:a31b56f74fdf30872e8a18cd0084d4732"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b7b924cba8af3c20252f69089c972f3"><td class="memItemLeft" align="right" valign="top"><a id="a3b7b924cba8af3c20252f69089c972f3"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>avail</b> () const</td></tr>
 <tr class="separator:a3b7b924cba8af3c20252f69089c972f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,6 +141,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_empty_cb</b> (std
 <tr class="memitem:a743398fae10227807190bf6959db859b"><td class="memItemLeft" align="right" valign="top"><a id="a743398fae10227807190bf6959db859b"></a>
 sc_core::sc_event const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>data_written_event</b> () const</td></tr>
 <tr class="separator:a743398fae10227807190bf6959db859b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fe71d60cb5cdff2ac3f01c38a6a3ce0"><td class="memItemLeft" align="right" valign="top"><a id="a7fe71d60cb5cdff2ac3f01c38a6a3ce0"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>num_avail</b> ()</td></tr>
+<tr class="separator:a7fe71d60cb5cdff2ac3f01c38a6a3ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade720fb63d9a8a4de87917c9cdd06578"><td class="memItemLeft" align="right" valign="top"><a id="ade720fb63d9a8a4de87917c9cdd06578"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>num_written</b> ()</td></tr>
+<tr class="separator:ade720fb63d9a8a4de87917c9cdd06578"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -156,6 +168,12 @@ std::function&lt; void(void)&gt;&#160;</td><td class="memItemRight" valign="bott
 <tr class="memitem:a859e4555a5b650077f93a58b046e7968"><td class="memItemLeft" align="right" valign="top"><a id="a859e4555a5b650077f93a58b046e7968"></a>
 std::function&lt; void(void)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>empty_cb</b> {}</td></tr>
 <tr class="separator:a859e4555a5b650077f93a58b046e7968"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a065a85c77c7140627fbb4193784707af"><td class="memItemLeft" align="right" valign="top"><a id="a065a85c77c7140627fbb4193784707af"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>available</b> = 0</td></tr>
+<tr class="separator:a065a85c77c7140627fbb4193784707af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d98157e2bb7319c863f6c6e000daad9"><td class="memItemLeft" align="right" valign="top"><a id="a1d98157e2bb7319c863f6c6e000daad9"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>written</b> = 0</td></tr>
+<tr class="separator:a1d98157e2bb7319c863f6c6e000daad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae60b38c1a97620e1f3d2a3c96666f23a"><td class="memItemLeft" align="right" valign="top"><a id="ae60b38c1a97620e1f3d2a3c96666f23a"></a>
 sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>data_written_evt</b> {}</td></tr>
 <tr class="separator:ae60b38c1a97620e1f3d2a3c96666f23a"><td class="memSeparator" colspan="2">&#160;</td></tr>

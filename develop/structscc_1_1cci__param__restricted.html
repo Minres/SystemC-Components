@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">scc
-   &#160;<span id="projectnumber">2022.4.0</span>
+   &#160;<span id="projectnumber">2024.03</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -94,18 +94,27 @@ Collaboration diagram for scc::cci_param_restricted&lt; T, TM &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Constructors</div></td></tr>
-<tr class="memitem:a6b7f0b6ac7677e10cc8ad1a0fd3e3629"><td class="memTemplParams" colspan="2">template&lt;typename RESTR &gt; </td></tr>
-<tr class="memitem:a6b7f0b6ac7677e10cc8ad1a0fd3e3629"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structscc_1_1cci__param__restricted.html#a6b7f0b6ac7677e10cc8ad1a0fd3e3629">cci_param_restricted</a> (const std::string &amp;name, const T &amp;default_value, RESTR const &amp;restr, const std::string &amp;desc=&quot;&quot;, cci::cci_name_type name_type=cci::CCI_RELATIVE_NAME, const cci::cci_originator &amp;originator=cci::cci_originator())</td></tr>
-<tr class="separator:a6b7f0b6ac7677e10cc8ad1a0fd3e3629"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeafefd5891fb058a13d6dd40f9325ac4"><td class="memTemplParams" colspan="2">template&lt;typename RESTR &gt; </td></tr>
-<tr class="memitem:aeafefd5891fb058a13d6dd40f9325ac4"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structscc_1_1cci__param__restricted.html#aeafefd5891fb058a13d6dd40f9325ac4">cci_param_restricted</a> (const std::string &amp;name, const T &amp;default_value, RESTR const &amp;restr, cci::cci_broker_handle private_broker, const std::string &amp;desc=&quot;&quot;, cci::cci_name_type name_type=cci::CCI_RELATIVE_NAME, const cci::cci_originator &amp;originator=cci::cci_originator())</td></tr>
-<tr class="separator:aeafefd5891fb058a13d6dd40f9325ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a966b92a6e7f3adf56c3533985cecc878"><td class="memTemplParams" colspan="2">template&lt;typename RESTR &gt; </td></tr>
+<tr class="memitem:a966b92a6e7f3adf56c3533985cecc878"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structscc_1_1cci__param__restricted.html#a966b92a6e7f3adf56c3533985cecc878">cci_param_restricted</a> (const std::string &amp;name, const T &amp;default_value, RESTR const &amp;restr, const std::string &amp;desc=&quot;&quot;, cci::cci_name_type name_type=cci::CCI_RELATIVE_NAME, const cci::cci_originator &amp;originator=sc_core::sc_get_current_object() ? cci::cci_originator() :cci::cci_originator(&quot;sc_main&quot;))</td></tr>
+<tr class="separator:a966b92a6e7f3adf56c3533985cecc878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bfb0b712c768ba24fdcde092b7467f4"><td class="memTemplParams" colspan="2">template&lt;typename RESTR &gt; </td></tr>
+<tr class="memitem:a4bfb0b712c768ba24fdcde092b7467f4"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structscc_1_1cci__param__restricted.html#a4bfb0b712c768ba24fdcde092b7467f4">cci_param_restricted</a> (const std::string &amp;name, const T &amp;default_value, RESTR const &amp;restr, cci::cci_broker_handle private_broker, const std::string &amp;desc=&quot;&quot;, cci::cci_name_type name_type=cci::CCI_RELATIVE_NAME, const cci::cci_originator &amp;originator=sc_core::sc_get_current_object() ? cci::cci_originator() :cci::cci_originator(&quot;sc_main&quot;))</td></tr>
+<tr class="separator:a4bfb0b712c768ba24fdcde092b7467f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T, cci::cci_param_mutable_type TM = cci::CCI_MUTABLE_PARAM&gt;<br />
 struct scc::cci_param_restricted&lt; T, TM &gt;</h3>
 
 <p>extension of cci_param&lt;T, TM&gt; which automatically registeres a callback to restrict the valid values given to the parameter. </p>
+<p>The parameter can be use with a restriction created by:</p><ul>
+<li><a class="el" href="namespacescc.html#a44cd5ca4e4d3c05f4a7ce9d5de8b9280" title="creates a min/max restriction with including the limits">min_max_restriction(T min, T max)</a></li>
+<li><a class="el" href="namespacescc.html#ae72ee46bcb2d2e459f540c990b285f5c" title="creates a min/max restriction with excluding the limits">min_max_excl_restriction(T min, T max)</a></li>
+<li><a class="el" href="namespacescc.html#a9299adafc6dae4c181fc4fa5dda94798" title="creates a minimum restriction including the minimum value">min_restriction(T min)</a>, <a class="el" href="namespacescc.html#a4411c2d71c6eb576460a03c7c09fac9d" title="alias for min_restriction(T min)">gte_restriction(T min)</a></li>
+<li><a class="el" href="namespacescc.html#ab09e0dbecbf3b6b40a3c1d575f78ec7c" title="creates a minimum restriction excluding the minimum value">min_excl_restriction(T min)</a>, gt_excl_restriction(T min)</li>
+<li><a class="el" href="namespacescc.html#a33f3f2ee941fa0d95fbc1cb85b780ace" title="creates a maximum restriction including the maximum value">max_restriction(T max)</a>, <a class="el" href="namespacescc.html#ae01638f4d6c10df113593d39dc78fcb0" title="alias for max_restriction(T max)">lte_restriction(T max)</a></li>
+<li><a class="el" href="namespacescc.html#a2bbad29339d5d98d90222b388c567ea2" title="creates a maximum restriction excluding the maximum value">max_excl_restriction(T max)</a>, <a class="el" href="namespacescc.html#ab486bd357ee181779b237662d07c0688" title="alias for max_excl_restriction(T max)">lt_excl_restriction(T max)</a></li>
+<li><a class="el" href="namespacescc.html#a838d1d43bbf1a9afde3a93587898f258" title="creates a restriction for a discrete values set">discrete_restriction(std::initializer_list&lt;T&gt; values)</a>, <a class="el" href="namespacescc.html#a6778557e9aa5bb1458e00d3eafb85012" title="creates a restriction for a discrete values set">discrete_restriction(std::array&lt;T, SZ&gt; values)</a>, <a class="el" href="namespacescc.html#a29c48ac5ec75e542dc76add400e50e87" title="creates a restriction for a discrete values set">discrete_restriction(std::vector&lt;T&gt; values)</a></li>
+</ul>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>type of the parameter value </td></tr>
@@ -114,10 +123,10 @@ struct scc::cci_param_restricted&lt; T, TM &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00180">180</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00196">196</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a6b7f0b6ac7677e10cc8ad1a0fd3e3629"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b7f0b6ac7677e10cc8ad1a0fd3e3629">&#9670;&nbsp;</a></span>cci_param_restricted() <span class="overload">[1/2]</span></h2>
+<a id="a966b92a6e7f3adf56c3533985cecc878"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a966b92a6e7f3adf56c3533985cecc878">&#9670;&nbsp;</a></span>cci_param_restricted() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,7 +172,7 @@ template&lt;typename RESTR &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const cci::cci_originator &amp;&#160;</td>
-          <td class="paramname"><em>originator</em> = <code>cci::cci_originator()</code>&#160;</td>
+          <td class="paramname"><em>originator</em> = <code>sc_core::sc_get_current_object()&#160;?&#160;cci::cci_originator()&#160;:&#160;cci::cci_originator(&quot;sc_main&quot;)</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -190,12 +199,12 @@ template&lt;typename RESTR &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00196">196</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00212">212</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 
 </div>
 </div>
-<a id="aeafefd5891fb058a13d6dd40f9325ac4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeafefd5891fb058a13d6dd40f9325ac4">&#9670;&nbsp;</a></span>cci_param_restricted() <span class="overload">[2/2]</span></h2>
+<a id="a4bfb0b712c768ba24fdcde092b7467f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bfb0b712c768ba24fdcde092b7467f4">&#9670;&nbsp;</a></span>cci_param_restricted() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -247,7 +256,7 @@ template&lt;typename RESTR &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const cci::cci_originator &amp;&#160;</td>
-          <td class="paramname"><em>originator</em> = <code>cci::cci_originator()</code>&#160;</td>
+          <td class="paramname"><em>originator</em> = <code>sc_core::sc_get_current_object()&#160;?&#160;cci::cci_originator()&#160;:&#160;cci::cci_originator(&quot;sc_main&quot;)</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -275,7 +284,7 @@ template&lt;typename RESTR &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00217">217</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00234">234</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 
 </div>
 </div>

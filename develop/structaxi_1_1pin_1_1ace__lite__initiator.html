@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">scc
-   &#160;<span id="projectnumber">2022.4.0</span>
+   &#160;<span id="projectnumber">2024.03</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -62,6 +62,7 @@ $(document).ready(function(){initNavTree('structaxi_1_1pin_1_1ace__lite__initiat
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
@@ -123,9 +124,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7c2961050fea91c88fb82be819816823"><td class="memItemLeft" align="right" valign="top"><a id="a7c2961050fea91c88fb82be819816823"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SC_HAS_PROCESS</b> (<a class="el" href="structaxi_1_1pin_1_1ace__lite__initiator.html">ace_lite_initiator</a>)</td></tr>
 <tr class="separator:a7c2961050fea91c88fb82be819816823"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af18b263b5032f4ec3c3447e25b637aec"><td class="memItemLeft" align="right" valign="top"><a id="af18b263b5032f4ec3c3447e25b637aec"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ace_lite_initiator</b> (sc_core::sc_module_name const &amp;nm)</td></tr>
-<tr class="separator:af18b263b5032f4ec3c3447e25b637aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ec73f826e3790269a9830029c60e587"><td class="memItemLeft" align="right" valign="top"><a id="a7ec73f826e3790269a9830029c60e587"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ace_lite_initiator</b> (sc_core::sc_module_name const &amp;nm, bool pipelined_wrreq=false)</td></tr>
+<tr class="separator:a7ec73f826e3790269a9830029c60e587"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_structaxi_1_1aw__ace"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_structaxi_1_1aw__ace')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="structaxi_1_1aw__ace.html">axi::aw_ace&lt; CFG, TYPES &gt;</a></td></tr>
 <tr class="memitem:a11230182f78eaf3f14a076742c761bd5 inherit pub_methods_structaxi_1_1aw__ace"><td class="memItemLeft" align="right" valign="top"><a id="a11230182f78eaf3f14a076742c761bd5"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>aw_ace</b> (const char *prefix)</td></tr>
@@ -203,6 +204,9 @@ sc_core::sc_in&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom">
 <tr class="memitem:a78f346ce1a33dcb8672ea86509439c0e"><td class="memItemLeft" align="right" valign="top"><a id="a78f346ce1a33dcb8672ea86509439c0e"></a>
 <a class="el" href="structaxi_1_1axi__target__socket.html">axi::axi_target_socket</a>&lt; CFG::BUSWIDTH &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>tsckt</b> {&quot;tsckt&quot;}</td></tr>
 <tr class="separator:a78f346ce1a33dcb8672ea86509439c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe9c24a6104c41767989d93d9e952782"><td class="memItemLeft" align="right" valign="top"><a id="abe9c24a6104c41767989d93d9e952782"></a>
+cci::cci_param&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pipelined_wrreq</b> {&quot;pipelined_wrreq&quot;, false}</td></tr>
+<tr class="separator:abe9c24a6104c41767989d93d9e952782"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_structaxi_1_1aw__ace"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_structaxi_1_1aw__ace')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="structaxi_1_1aw__ace.html">axi::aw_ace&lt; CFG, TYPES &gt;</a></td></tr>
 <tr class="memitem:a6e6e4bdea813509885c202405576425a inherit pub_attribs_structaxi_1_1aw__ace"><td class="memItemLeft" align="right" valign="top"><a id="a6e6e4bdea813509885c202405576425a"></a>
 TYPES::template m2s_full_t&lt; sc_dt::sc_uint&lt; CFG::IDWIDTH &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>aw_id</b> {&quot;aw_id&quot;}</td></tr>
@@ -499,7 +503,7 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>finish_e
 struct axi::pin::ace_lite_initiator&lt; CFG &gt;</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="ace__lite__initiator_8h_source.html#l00034">34</a> of file <a class="el" href="ace__lite__initiator_8h_source.html">ace_lite_initiator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ace__lite__initiator_8h_source.html#l00038">38</a> of file <a class="el" href="ace__lite__initiator_8h_source.html">ace_lite_initiator.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/home/eyck/git/SystemC-Components/src/bus_interfaces/axi/pin/<a class="el" href="ace__lite__initiator_8h_source.html">ace_lite_initiator.h</a></li>
 </ul>

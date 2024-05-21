@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">scc
-   &#160;<span id="projectnumber">2022.4.0</span>
+   &#160;<span id="projectnumber">2024.03</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -170,7 +170,7 @@ $(document).ready(function(){initNavTree('simple__initiator_8cpp_source.html',''
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">if</span>(ret == tlm::TLM_UPDATED) {</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            schedule(EndPartReqE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, t, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">if</span>(protocol_cb[BegPartReqE])</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">if</span>((<span class="keywordtype">bool</span>)protocol_cb[BegPartReqE])</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            cbpeq.notify(std::make_tuple(BegPartReqE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a>), sc_core::SC_ZERO_TIME);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    };</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;cb[EndPartReqE] = [<span class="keyword">this</span>, fsm_hndl]() -&gt; <span class="keywordtype">void</span> {</div>
@@ -184,7 +184,7 @@ $(document).ready(function(){initNavTree('simple__initiator_8cpp_source.html',''
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            schedule(BegReqE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, ::scc::get_value(wr_data_beat_delay) - 1);</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            schedule(BegReqE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, 0);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">if</span>(protocol_cb[EndPartReqE])</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">if</span>((<span class="keywordtype">bool</span>)protocol_cb[EndPartReqE])</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            cbpeq.notify(std::make_tuple(EndPartReqE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a>), sc_core::SC_ZERO_TIME);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    };</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;cb[BegReqE] = [<span class="keyword">this</span>, fsm_hndl]() -&gt; <span class="keywordtype">void</span> {</div>
@@ -198,7 +198,7 @@ $(document).ready(function(){initNavTree('simple__initiator_8cpp_source.html',''
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                schedule(EndReqE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, t, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            }</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">if</span>(protocol_cb[BegReqE])</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">if</span>((<span class="keywordtype">bool</span>)protocol_cb[BegReqE])</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            cbpeq.notify(std::make_tuple(BegReqE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a>), sc_core::SC_ZERO_TIME);</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    };</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;cb[EndReqE] = [<span class="keyword">this</span>, fsm_hndl]() -&gt; <span class="keywordtype">void</span> {</div>
@@ -258,7 +258,7 @@ $(document).ready(function(){initNavTree('simple__initiator_8cpp_source.html',''
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                rd.post();</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        }</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordflow">if</span>(protocol_cb[EndReqE])</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordflow">if</span>((<span class="keywordtype">bool</span>)protocol_cb[EndReqE])</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            cbpeq.notify(std::make_tuple(EndReqE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a>), sc_core::SC_ZERO_TIME);</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    };</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;cb[BegPartRespE] = [<span class="keyword">this</span>, fsm_hndl]() -&gt; <span class="keywordtype">void</span> {</div>
@@ -272,7 +272,7 @@ $(document).ready(function(){initNavTree('simple__initiator_8cpp_source.html',''
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                schedule(EndPartRespE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, SC_ZERO_TIME);</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        }</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">if</span>(protocol_cb[BegPartRespE])</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">if</span>((<span class="keywordtype">bool</span>)protocol_cb[BegPartRespE])</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            cbpeq.notify(std::make_tuple(BegPartRespE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a>), sc_core::SC_ZERO_TIME);</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    };</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;cb[EndPartRespE] = [<span class="keyword">this</span>, fsm_hndl]() -&gt; <span class="keywordtype">void</span> {</div>
@@ -286,7 +286,7 @@ $(document).ready(function(){initNavTree('simple__initiator_8cpp_source.html',''
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="keyword">auto</span> ret = socket_fw-&gt;nb_transport_fw(*fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, phase, t);</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a7c7367afac927398add8c4ec3856d85f">beat_count</a>++;</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        }</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">if</span>(protocol_cb[EndPartRespE])</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">if</span>((<span class="keywordtype">bool</span>)protocol_cb[EndPartRespE])</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            cbpeq.notify(std::make_tuple(EndPartRespE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a>), sc_core::SC_ZERO_TIME);</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    };</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;cb[BegRespE] = [<span class="keyword">this</span>, fsm_hndl]() -&gt; <span class="keywordtype">void</span> {</div>
@@ -302,7 +302,7 @@ $(document).ready(function(){initNavTree('simple__initiator_8cpp_source.html',''
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                schedule(EndRespE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, SC_ZERO_TIME);</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        }</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">if</span>(protocol_cb[BegRespE])</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">if</span>((<span class="keywordtype">bool</span>)protocol_cb[BegRespE])</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            cbpeq.notify(std::make_tuple(BegRespE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a>), sc_core::SC_ZERO_TIME);</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    };</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;cb[EndRespE] = [<span class="keyword">this</span>, fsm_hndl]() -&gt; <span class="keywordtype">void</span> {</div>
@@ -317,7 +317,7 @@ $(document).ready(function(){initNavTree('simple__initiator_8cpp_source.html',''
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            } <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a492c1c639c3ce74f9ffd917372a43c4a">finish</a>.notify(sc_core::SC_ZERO_TIME);</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        }</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">if</span>(protocol_cb[EndRespE])</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">if</span>((<span class="keywordtype">bool</span>)protocol_cb[EndRespE])</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            cbpeq.notify(std::make_tuple(EndRespE, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a>), sc_core::SC_ZERO_TIME);</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    };</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#aae572170fa8ec0379aa6118c504e6266">fsm</a>-&gt;cb[Ack] = [<span class="keyword">this</span>, fsm_hndl]() -&gt; <span class="keywordtype">void</span> {</div>
@@ -325,7 +325,7 @@ $(document).ready(function(){initNavTree('simple__initiator_8cpp_source.html',''
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        tlm::tlm_phase phase = axi::ACK;</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="keyword">auto</span> ret = socket_fw-&gt;nb_transport_fw(*fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, phase, t);</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a492c1c639c3ce74f9ffd917372a43c4a">finish</a>.notify(sc_core::SC_ZERO_TIME);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordflow">if</span>(protocol_cb[Ack])</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordflow">if</span>((<span class="keywordtype">bool</span>)protocol_cb[Ack])</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            cbpeq.notify(std::make_tuple(Ack, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#a4198e085c0adb0dcfafc623aa9890d8b">trans</a>, fsm_hndl-&gt;<a class="code" href="structaxi_1_1fsm_1_1fsm__handle.html#abdff7e6de49b857153d99cafbc31c634">is_snoop</a>), sc_core::SC_ZERO_TIME);</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    };</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>

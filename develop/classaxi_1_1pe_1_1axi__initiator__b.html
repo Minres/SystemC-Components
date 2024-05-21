@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">scc
-   &#160;<span id="projectnumber">2022.4.0</span>
+   &#160;<span id="projectnumber">2024.03</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -96,18 +96,20 @@ Collaboration diagram for axi::pe::axi_initiator_b:</div>
 <div class="dyncontent">
 <div class="center"><img src="classaxi_1_1pe_1_1axi__initiator__b__coll__graph.png" border="0" usemap="#aaxi_1_1pe_1_1axi__initiator__b_coll__map" alt="Collaboration graph"/></div>
 <map name="aaxi_1_1pe_1_1axi__initiator__b_coll__map" id="aaxi_1_1pe_1_1axi__initiator__b_coll__map">
-<area shape="rect" title=" " alt="" coords="795,127,961,153"/>
-<area shape="rect" title=" " alt="" coords="512,28,661,55"/>
-<area shape="rect" href="classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="504,79,669,135"/>
-<area shape="rect" title=" " alt="" coords="247,5,413,61"/>
-<area shape="rect" href="classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="213,86,447,127"/>
-<area shape="rect" title=" " alt="" coords="5,127,164,153"/>
-<area shape="rect" href="structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="263,151,397,193"/>
-<area shape="rect" href="structtlm_1_1scc_1_1pe_1_1intor__fw__b.html" title=" " alt="" coords="501,159,673,185"/>
-<area shape="rect" href="classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="496,243,677,269"/>
-<area shape="rect" title=" " alt="" coords="235,217,425,244"/>
-<area shape="rect" title=" " alt="" coords="260,268,400,295"/>
-<area shape="rect" href="classscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="274,319,386,345"/>
+<area shape="rect" title=" " alt="" coords="891,151,1057,178"/>
+<area shape="rect" title=" " alt="" coords="559,21,709,47"/>
+<area shape="rect" href="classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="551,71,717,127"/>
+<area shape="rect" title=" " alt="" coords="277,71,444,127"/>
+<area shape="rect" href="classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="244,5,477,47"/>
+<area shape="rect" title=" " alt="" coords="21,123,179,150"/>
+<area shape="rect" href="structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="293,152,428,193"/>
+<area shape="rect" href="structtlm_1_1scc_1_1pe_1_1intor__fw__b.html" title=" " alt="" coords="548,151,720,178"/>
+<area shape="rect" href="classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="270,233,451,259"/>
+<area shape="rect" title=" " alt="" coords="5,182,195,209"/>
+<area shape="rect" title=" " alt="" coords="30,291,170,318"/>
+<area shape="rect" href="structscc_1_1sc__variable__b.html" title=" " alt="" coords="291,302,431,329"/>
+<area shape="rect" href="classscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="44,233,156,259"/>
+<area shape="rect" href="structscc_1_1sc__variable.html" title=" " alt="" coords="527,310,741,337"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -179,45 +181,45 @@ sc_core::sc_export&lt; <a class="el" href="structtlm_1_1scc_1_1pe_1_1intor__fw__
 <tr class="memitem:aac3d07e27bafee5cd9d1b0a127ac9e91"><td class="memItemLeft" align="right" valign="top"><a id="aac3d07e27bafee5cd9d1b0a127ac9e91"></a>
 sc_core::sc_port&lt; <a class="el" href="structtlm_1_1scc_1_1pe_1_1intor__bw__b.html">tlm::scc::pe::intor_bw_b</a>, 1, sc_core::SC_ZERO_OR_MORE_BOUND &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bw_o</b> {&quot;bw_o&quot;}</td></tr>
 <tr class="separator:aac3d07e27bafee5cd9d1b0a127ac9e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a272de5bd1429425db81a02af8a72688d"><td class="memItemLeft" align="right" valign="top"><a id="a272de5bd1429425db81a02af8a72688d"></a>
-sc_core::sc_attribute&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>data_interleaving</b> {&quot;data_interleaving&quot;, false}</td></tr>
-<tr class="separator:a272de5bd1429425db81a02af8a72688d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d237e6fb9666501f9f1cdbdfa175507"><td class="memItemLeft" align="right" valign="top"><a id="a1d237e6fb9666501f9f1cdbdfa175507"></a>
-sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a1d237e6fb9666501f9f1cdbdfa175507">artv</a> {&quot;artv&quot;, 1}</td></tr>
-<tr class="memdesc:a1d237e6fb9666501f9f1cdbdfa175507"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read address valid to next read address valid. <br /></td></tr>
-<tr class="separator:a1d237e6fb9666501f9f1cdbdfa175507"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d264fa28e82d273eb0eae38f7643f72"><td class="memItemLeft" align="right" valign="top"><a id="a6d264fa28e82d273eb0eae38f7643f72"></a>
-sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a6d264fa28e82d273eb0eae38f7643f72">awtv</a> {&quot;awtv&quot;, 1}</td></tr>
-<tr class="memdesc:a6d264fa28e82d273eb0eae38f7643f72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write address valid to next write address valid. <br /></td></tr>
-<tr class="separator:a6d264fa28e82d273eb0eae38f7643f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f063800aadb28cd7338ff63037119b2"><td class="memItemLeft" align="right" valign="top"><a id="a9f063800aadb28cd7338ff63037119b2"></a>
-sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a9f063800aadb28cd7338ff63037119b2">wbv</a> {&quot;wbv&quot;, 1}</td></tr>
-<tr class="memdesc:a9f063800aadb28cd7338ff63037119b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write data handshake to next beat valid. <br /></td></tr>
-<tr class="separator:a9f063800aadb28cd7338ff63037119b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a6d863d1388dee723b9a96aa3d779ec"><td class="memItemLeft" align="right" valign="top"><a id="a3a6d863d1388dee723b9a96aa3d779ec"></a>
-sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a3a6d863d1388dee723b9a96aa3d779ec">rbr</a> {&quot;rbr&quot;, 0}</td></tr>
-<tr class="memdesc:a3a6d863d1388dee723b9a96aa3d779ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data valid to same beat ready. <br /></td></tr>
-<tr class="separator:a3a6d863d1388dee723b9a96aa3d779ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c368e705a7de51622e7295c78ea22aa"><td class="memItemLeft" align="right" valign="top"><a id="a8c368e705a7de51622e7295c78ea22aa"></a>
-sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a8c368e705a7de51622e7295c78ea22aa">br</a> {&quot;br&quot;, 0}</td></tr>
-<tr class="memdesc:a8c368e705a7de51622e7295c78ea22aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write response valid to ready. <br /></td></tr>
-<tr class="separator:a8c368e705a7de51622e7295c78ea22aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66e028e305400fdf2f42e6ba895addaa"><td class="memItemLeft" align="right" valign="top"><a id="a66e028e305400fdf2f42e6ba895addaa"></a>
-sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a66e028e305400fdf2f42e6ba895addaa">rla</a> {&quot;rla&quot;, 1}</td></tr>
-<tr class="memdesc:a66e028e305400fdf2f42e6ba895addaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read last data handshake to acknowledge. <br /></td></tr>
-<tr class="separator:a66e028e305400fdf2f42e6ba895addaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a533b3c0de316636c983469d4f4f71775"><td class="memItemLeft" align="right" valign="top"><a id="a533b3c0de316636c983469d4f4f71775"></a>
-sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a533b3c0de316636c983469d4f4f71775">ba</a> {&quot;ba&quot;, 1}</td></tr>
-<tr class="memdesc:a533b3c0de316636c983469d4f4f71775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write response handshake to acknowledge. <br /></td></tr>
-<tr class="separator:a533b3c0de316636c983469d4f4f71775"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75e4bddddd3ffc0100122852ff06e414"><td class="memItemLeft" align="right" valign="top"><a id="a75e4bddddd3ffc0100122852ff06e414"></a>
-sc_core::sc_attribute&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a75e4bddddd3ffc0100122852ff06e414">enable_id_serializing</a> {&quot;enable_id_serializing&quot;, false}</td></tr>
-<tr class="memdesc:a75e4bddddd3ffc0100122852ff06e414"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quirks enable. <br /></td></tr>
-<tr class="separator:a75e4bddddd3ffc0100122852ff06e414"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd0925591c396866d94763febf0ca51d"><td class="memItemLeft" align="right" valign="top"><a id="acd0925591c396866d94763febf0ca51d"></a>
-sc_core::sc_attribute&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#acd0925591c396866d94763febf0ca51d">outstanding_snoops</a> {&quot;outstanding_snoops&quot;, 8}</td></tr>
-<tr class="memdesc:acd0925591c396866d94763febf0ca51d"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of snoops which can be handled <br /></td></tr>
-<tr class="separator:acd0925591c396866d94763febf0ca51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26a6220ee3b90687cb04a36d09f7d129"><td class="memItemLeft" align="right" valign="top"><a id="a26a6220ee3b90687cb04a36d09f7d129"></a>
+cci::cci_param&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>data_interleaving</b> {&quot;data_interleaving&quot;, false}</td></tr>
+<tr class="separator:a26a6220ee3b90687cb04a36d09f7d129"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d69266d3ff86e23b792d7991205198c"><td class="memItemLeft" align="right" valign="top"><a id="a9d69266d3ff86e23b792d7991205198c"></a>
+cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a9d69266d3ff86e23b792d7991205198c">artv</a> {&quot;artv&quot;, 1}</td></tr>
+<tr class="memdesc:a9d69266d3ff86e23b792d7991205198c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read address valid to next read address valid. <br /></td></tr>
+<tr class="separator:a9d69266d3ff86e23b792d7991205198c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0044e9da5769782ec7412d7cb4ddf69"><td class="memItemLeft" align="right" valign="top"><a id="ad0044e9da5769782ec7412d7cb4ddf69"></a>
+cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#ad0044e9da5769782ec7412d7cb4ddf69">awtv</a> {&quot;awtv&quot;, 1}</td></tr>
+<tr class="memdesc:ad0044e9da5769782ec7412d7cb4ddf69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write address valid to next write address valid. <br /></td></tr>
+<tr class="separator:ad0044e9da5769782ec7412d7cb4ddf69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0140d5f7a3951321751aaf22665c80bd"><td class="memItemLeft" align="right" valign="top"><a id="a0140d5f7a3951321751aaf22665c80bd"></a>
+cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a0140d5f7a3951321751aaf22665c80bd">wbv</a> {&quot;wbv&quot;, 1}</td></tr>
+<tr class="memdesc:a0140d5f7a3951321751aaf22665c80bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write data handshake to next beat valid. <br /></td></tr>
+<tr class="separator:a0140d5f7a3951321751aaf22665c80bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81f66f3a05bf48d7a71c7e85eaa7468e"><td class="memItemLeft" align="right" valign="top"><a id="a81f66f3a05bf48d7a71c7e85eaa7468e"></a>
+cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a81f66f3a05bf48d7a71c7e85eaa7468e">rbr</a> {&quot;rbr&quot;, 0}</td></tr>
+<tr class="memdesc:a81f66f3a05bf48d7a71c7e85eaa7468e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data valid to same beat ready. <br /></td></tr>
+<tr class="separator:a81f66f3a05bf48d7a71c7e85eaa7468e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a275f6f209f354bd5289567e777d57566"><td class="memItemLeft" align="right" valign="top"><a id="a275f6f209f354bd5289567e777d57566"></a>
+cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a275f6f209f354bd5289567e777d57566">br</a> {&quot;br&quot;, 0}</td></tr>
+<tr class="memdesc:a275f6f209f354bd5289567e777d57566"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write response valid to ready. <br /></td></tr>
+<tr class="separator:a275f6f209f354bd5289567e777d57566"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0125bdea6010f1fae41e7615dda6a32f"><td class="memItemLeft" align="right" valign="top"><a id="a0125bdea6010f1fae41e7615dda6a32f"></a>
+cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a0125bdea6010f1fae41e7615dda6a32f">rla</a> {&quot;rla&quot;, 1}</td></tr>
+<tr class="memdesc:a0125bdea6010f1fae41e7615dda6a32f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read last data handshake to acknowledge. <br /></td></tr>
+<tr class="separator:a0125bdea6010f1fae41e7615dda6a32f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4866014b77d6c60043a0f90614982bfd"><td class="memItemLeft" align="right" valign="top"><a id="a4866014b77d6c60043a0f90614982bfd"></a>
+cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a4866014b77d6c60043a0f90614982bfd">ba</a> {&quot;ba&quot;, 1}</td></tr>
+<tr class="memdesc:a4866014b77d6c60043a0f90614982bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write response handshake to acknowledge. <br /></td></tr>
+<tr class="separator:a4866014b77d6c60043a0f90614982bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad34dbc64f4e93f4d013085824d0c1c22"><td class="memItemLeft" align="right" valign="top"><a id="ad34dbc64f4e93f4d013085824d0c1c22"></a>
+cci::cci_param&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#ad34dbc64f4e93f4d013085824d0c1c22">enable_id_serializing</a> {&quot;enable_id_serializing&quot;, false}</td></tr>
+<tr class="memdesc:ad34dbc64f4e93f4d013085824d0c1c22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quirks enable. <br /></td></tr>
+<tr class="separator:ad34dbc64f4e93f4d013085824d0c1c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31f9fd4e952c9b4c510e9cd93266e70f"><td class="memItemLeft" align="right" valign="top"><a id="a31f9fd4e952c9b4c510e9cd93266e70f"></a>
+cci::cci_param&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaxi_1_1pe_1_1axi__initiator__b.html#a31f9fd4e952c9b4c510e9cd93266e70f">outstanding_snoops</a> {&quot;outstanding_snoops&quot;, 8}</td></tr>
+<tr class="memdesc:a31f9fd4e952c9b4c510e9cd93266e70f"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of snoops which can be handled <br /></td></tr>
+<tr class="separator:a31f9fd4e952c9b4c510e9cd93266e70f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -266,10 +268,22 @@ sc_core::sc_event&#160;</td><td class="memItemRight" valign="bottom"><b>any_tx_f
 <tr class="memitem:a900600b22eaa72eca6f50bcc74445344"><td class="memItemLeft" align="right" valign="top"><a id="a900600b22eaa72eca6f50bcc74445344"></a>
 sc_core::sc_time&#160;</td><td class="memItemRight" valign="bottom"><b>clk_period</b> {10, sc_core::SC_NS}</td></tr>
 <tr class="separator:a900600b22eaa72eca6f50bcc74445344"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee0a965a88a902339d2507876191c4b8"><td class="memItemLeft" align="right" valign="top"><a id="aee0a965a88a902339d2507876191c4b8"></a>
+<a class="el" href="structscc_1_1sc__variable.html">scc::sc_variable</a>&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rd_waiting</b> {&quot;RdWaiting&quot;, 0}</td></tr>
+<tr class="separator:aee0a965a88a902339d2507876191c4b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae55775e1bd889fbf0762624d3022f00b"><td class="memItemLeft" align="right" valign="top"><a id="ae55775e1bd889fbf0762624d3022f00b"></a>
+<a class="el" href="structscc_1_1sc__variable.html">scc::sc_variable</a>&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>wr_waiting</b> {&quot;WrWaiting&quot;, 0}</td></tr>
+<tr class="separator:ae55775e1bd889fbf0762624d3022f00b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6400887331cc6ea37e005144824c9fbf"><td class="memItemLeft" align="right" valign="top"><a id="a6400887331cc6ea37e005144824c9fbf"></a>
+<a class="el" href="structscc_1_1sc__variable.html">scc::sc_variable</a>&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rd_outstanding</b> {&quot;RdOutstanding&quot;, 0}</td></tr>
+<tr class="separator:a6400887331cc6ea37e005144824c9fbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae41a4189207c24366242961d3bb915dc"><td class="memItemLeft" align="right" valign="top"><a id="ae41a4189207c24366242961d3bb915dc"></a>
+<a class="el" href="structscc_1_1sc__variable.html">scc::sc_variable</a>&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>wr_outstanding</b> {&quot;WrOutstanding&quot;, 0}</td></tr>
+<tr class="separator:ae41a4189207c24366242961d3bb915dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html#l00032">32</a> of file <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html">axi_initiator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html#l00034">34</a> of file <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html">axi_initiator.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3ea5106266b46f83fd4004a849f65b59"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3ea5106266b46f83fd4004a849f65b59">&#9670;&nbsp;</a></span>add_protocol_cb()</h2>
@@ -315,7 +329,7 @@ sc_core::sc_time&#160;</td><td class="memItemRight" valign="bottom"><b>clk_perio
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html#l00120">120</a> of file <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html">axi_initiator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html#l00122">122</a> of file <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8h_source.html">axi_initiator.h</a>.</p>
 
 </div>
 </div>
@@ -364,7 +378,7 @@ sc_core::sc_time&#160;</td><td class="memItemRight" valign="bottom"><b>clk_perio
 
 <p>Implements <a class="el" href="structtlm_1_1scc_1_1pe_1_1intor__fw.html#a1e85d9861b52f3ec31c17e107ccd852b">tlm::scc::pe::intor_fw&lt; type::BL &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8cpp_source.html#l00354">354</a> of file <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8cpp_source.html">axi_initiator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8cpp_source.html#l00359">359</a> of file <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8cpp_source.html">axi_initiator.cpp</a>.</p>
 
 </div>
 </div>
@@ -417,7 +431,7 @@ sc_core::sc_time&#160;</td><td class="memItemRight" valign="bottom"><b>clk_perio
 
 <p>Implements <a class="el" href="structtlm_1_1scc_1_1pe_1_1intor__fw.html#a69f17795eabb5192d5388dd6b67e4109">tlm::scc::pe::intor_fw&lt; type::BL &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8cpp_source.html#l00122">122</a> of file <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8cpp_source.html">axi_initiator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8cpp_source.html#l00113">113</a> of file <a class="el" href="third__party_2axi__chi_2axi_2pe_2axi__initiator_8cpp_source.html">axi_initiator.cpp</a>.</p>
 
 </div>
 </div>

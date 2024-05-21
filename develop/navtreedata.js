@@ -56,32 +56,33 @@ var NAVTREE =
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ]
-    ] ]
+    ] ],
+    [ "Examples", "examples.html", "examples" ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"",
-"classapb_1_1pe_1_1apb__initiator__b.html#a8187f95358ce14fe59d0cbeac56900c0",
-"classaxi_1_1pe_1_1axi__initiator__b.html#a6aba53099cdc5a0bf0fbf588609ab865",
-"classaxi_1_1pe_1_1tx__reorderer.html#a089f7096bcf7a4fb137383a5e52af6fe",
-"classchi_1_1scv_1_1chi__trx__recorder.html#ad36625a7cded51df300fa849456ddb66",
-"classscc_1_1impl_1_1sc__register.html#a2b88d767e6aebb0e484dee4f0262aba5",
-"classscc_1_1sc__in__opt_3_01sc__dt_1_1sc__logic_01_4.html#ad67da1e8d326326a173e9daa609b840a",
-"classscc_1_1tracer.html#a5df99939fbd165eda9a8e6c71b6316f9",
-"classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket.html#ac7f9f7f75a9a942cf4c4f96ac34e2748",
-"classutil_1_1range__lut.html#ae15b0076effece78d601899869b92525",
-"namespaceaxi.html#a54bdd4e158af6b6d86a26fcf03bb4edb",
-"namespacechi.html#aa0ce11c7b275a471aada8f3fc79c84a9",
-"namespacescv__tr.html#a1f92621f5a413a86a2528ff9d43cf42e",
-"structahb_1_1ahb__extension.html",
-"structaxi_1_1b__axi.html#a2f0552ce13ab10650d258017b9f6d499",
-"structaxi_1_1request.html#a66a14fb9aafefec408910a0bef54375a",
-"structchi_1_1lwtr_1_1nb__chi__rec__entry.html#a90987ba08bfd9987b25ff6fd8fb0af02",
-"structscc_1_1observer.html#ac76bc66df98165844a2c613ebacc894c",
-"structscc_1_1trace_1_1vcd__trace.html#a60d95d7118d5510aa84923131b2a88ce",
-"structutil_1_1thread__pool.html#a4b912eec56828575120d304c93eb6149"
+"DEFINE_ENUM4CCI-example.html",
+"classapb_1_1pe_1_1apb__target.html#adb0e4e90568d28c784c449ce4fb18e4d",
+"classaxi_1_1pe_1_1axi__initiator__b.html#ac8553d7b47ddceb68ab773521a6e284c",
+"classaxi_1_1pe_1_1tx__reorderer.html#acc07c5f049c45e43615232b3f085de56",
+"classchi_1_1scv_1_1impl_1_1chi__recording__payload.html",
+"classscc_1_1impl_1_1sc__register.html#a5327b5a419a0355cd1a91badcb184a83",
+"classscc_1_1sc__inout__opt.html#a016fa8a6fc5e187aa52fb609f14889a3",
+"classscc_1_1tracer.html#a8ba2e352a1b382212c1411fef82613cea113eceefb55f242f9f83304380f71ce3",
+"classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket.html#af7666af4473c7f7f1b740dba95659141",
+"classutil_1_1range__lut.html#afaae1bf453a7ca473691dfd8d5d38e6d",
+"namespaceaxi.html#a6318752e2d4bb1398307086ebc1421f7",
+"namespacechi.html#ab2b4b81131e640d80b4665f165b3ff1da01af6f06eae06e41b1e05ad01c0f9ed7",
+"namespacescv__tr.html#a32f06dd92b69fc5b665b63172dd62e31",
+"structahb_1_1ahb__extension.html#a04657b7079c01707a2cb87fe785c0a48",
+"structaxi_1_1b__axi.html#a5384501b6dd4d2fd4ad9a22120b89b4e",
+"structaxi_1_1request.html#a5ab8299febf67f2cc3a6cd2add4a9b16",
+"structchi_1_1lwtr_1_1nb__chi__rec__entry.html",
+"structscc_1_1peq.html#a8d49bf3f9d005c870ec4ef4ff3c6cf7d",
+"structscc_1_1vcd__push__trace__file.html#a35669d395badbefd0f09cd5fc73f3a49",
+"tlm__mm_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
