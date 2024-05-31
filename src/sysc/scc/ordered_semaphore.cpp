@@ -82,7 +82,7 @@ ordered_semaphore::ordered_semaphore(const char* name_, unsigned init_value_, bo
         report_error(sc_core::SC_ID_INVALID_SEMAPHORE_VALUE_);
     }
     if(value_traceable)
-        value_ref.reset(new scc::sc_ref_variable<int>(basename(), value, true));
+        value_ref.reset(new scc::sc_ref_variable<int>(std::string(basename())+"_count", value, true));
 }
 
 // interface methods
