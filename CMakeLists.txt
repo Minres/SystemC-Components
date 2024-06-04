@@ -193,15 +193,16 @@ if(SystemC_FOUND)
         PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
     )
 
-	#set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")
-	add_library(scc_shared SHARED $<TARGET_OBJECTS:scc-util>
-                                  $<TARGET_OBJECTS:scc-sysc>
-                                  $<TARGET_OBJECTS:busses>
-                                  $<TARGET_OBJECTS:scv-tr>
-                                  )
-    set_target_properties(scc_shared PROPERTIES CXX_VISIBILITY_PRESET hidden)
-    add_library(scc::scc_shared ALIAS scc_shared)
-
+	if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+		#set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")
+		add_library(scc_shared SHARED $<TARGET_OBJECTS:scc-util>
+	                                  $<TARGET_OBJECTS:scc-sysc>
+	                                  $<TARGET_OBJECTS:busses>
+	                                  $<TARGET_OBJECTS:scv-tr>
+	                                  )
+	    set_target_properties(scc_shared PROPERTIES CXX_VISIBILITY_PRESET hidden)
+	    add_library(scc::scc_shared ALIAS scc_shared)
+	endif()
     install(TARGETS scc
         EXPORT scc-targets
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -214,19 +215,20 @@ if(SystemC_FOUND)
         DESTINATION ${SCC_CMAKE_CONFIG_DIR}
         NAMESPACE scc::
         )
-    install(TARGETS scc_shared
-        EXPORT scc_shared-targets
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        )
-    install(EXPORT scc_shared-targets 
-        FILE scc_shared-targets.cmake
-        DESTINATION ${SCC_CMAKE_CONFIG_DIR}
-        NAMESPACE scc::
-        )
-
+	if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+	    install(TARGETS scc_shared
+	        EXPORT scc_shared-targets
+	        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+	        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
+	        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
+	        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+	        )
+	    install(EXPORT scc_shared-targets 
+	        FILE scc_shared-targets.cmake
+	        DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+	        NAMESPACE scc::
+	        )
+	endif()
     include(CMakePackageConfigHelpers)
     write_basic_package_version_file(
         ${CMAKE_CURRENT_BINARY_DIR}/scc-config-version.cmake
