@@ -210,7 +210,7 @@ template <typename T> struct sc_variable : public sc_variable_b {
         return value;
     }
     T operator-=(const T other) {
-        value += other;
+        value -= other;
         for(auto h : hndl)
             h->notify();
         return value;
@@ -433,9 +433,11 @@ template <typename T> struct sc_ref_variable : public sc_variable_b {
      * @param name the name
      * @param value the variable reference to be wrapped
      */
-    sc_ref_variable(const std::string& name, const T& value)
+    sc_ref_variable(const std::string& name, const T& value, bool active_notification=false)
     : sc_variable_b(name.c_str())
-    , value(value) {}
+    , value(value)
+    , active_notification(active_notification){}
+
     virtual ~sc_ref_variable() = default;
     /**
      * @fn std::string to_string()const
@@ -454,9 +456,26 @@ template <typename T> struct sc_ref_variable : public sc_variable_b {
      *
      * @param tf
      */
-    void trace(sc_core::sc_trace_file* tf) const override { sc_core::sc_trace(tf, value, name()); }
+    void trace(sc_core::sc_trace_file* tf) const override {
+        if(active_notification)
+            if(auto* obs = dynamic_cast<observer*>(tf)) {
+                hndl.push_back(observe(obs, value, name()));
+                return;
+            }
+        sc_core::sc_trace(tf, value, name());
+    }
 
-    void trace(observer* obs) const override {}
+    void trace(observer* obs) const override { hndl.push_back(observe(obs, value, name())); }
+
+    void notify() const {
+        for(auto h : hndl)
+            h->notify();
+    }
+
+private:
+    const bool active_notification;
+    //! the observer handle
+    mutable std::vector<observer::notification_handle*> hndl;
 };
 template <> struct sc_ref_variable<sc_core::sc_event> : public sc_variable_b {
     const sc_core::sc_event& value;

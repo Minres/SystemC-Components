@@ -21,6 +21,8 @@
 #include <axi/fsm/base.h>
 #include <axi/fsm/protocol_fsm.h>
 #include <axi/signal_if.h>
+#include <cci_cfg/cci_param_typed.h>
+#include <scc/fifo_w_cb.h>
 #include <systemc>
 #include <tlm/scc/tlm_mm.h>
 #include <tlm_utils/peq_with_cb_and_phase.h>
@@ -57,10 +59,13 @@ struct ace_initiator : public sc_core::sc_module,
 
     axi::ace_target_socket<CFG::BUSWIDTH> tsckt{"tsckt"};
 
-    ace_initiator(sc_core::sc_module_name const& nm)
+    cci::cci_param<bool> pipelined_wrreq{"pipelined_wrreq", false};
+
+    ace_initiator(sc_core::sc_module_name const& nm, bool pipelined_wrreq = false)
     : sc_core::sc_module(nm)
     // coherent= true
-    , base(CFG::BUSWIDTH, true) {
+    , base(CFG::BUSWIDTH, true)
+    , pipelined_wrreq("pipelined_wrreq", pipelined_wrreq) {
         instance_name = name();
         tsckt(*this);
         SC_METHOD(clk_delay);
@@ -137,19 +142,60 @@ private:
     std::array<fsm_handle*, 3> active_resp{nullptr, nullptr, nullptr};
     std::array<fsm_handle*, 4> active_resp_beat{nullptr, nullptr, nullptr};
     sc_core::sc_clock* clk_if{nullptr};
-    sc_core::sc_event clk_delayed, clk_self, r_end_resp_evt, w_end_resp_evt, aw_evt, ar_evt, ac_end_req_evt;
+    sc_core::sc_event clk_delayed, clk_self, r_end_resp_evt, w_end_resp_evt, ac_end_req_evt;
     void nb_fw(payload_type& trans, const phase_type& phase) {
         auto t = sc_core::SC_ZERO_TIME;
         base::nb_fw(trans, phase, t);
     }
     tlm_utils::peq_with_cb_and_phase<ace_initiator> fw_peq{this, &ace_initiator::nb_fw};
     std::unordered_map<unsigned, std::deque<fsm_handle*>> rd_resp_by_id, wr_resp_by_id;
-    sc_core::sc_buffer<uint8_t> wdata_vl;
+    struct fifo_entry {
+        tlm::tlm_generic_payload* gp = nullptr;
+        bool last = false;
+        bool needs_end_req = false;
+        size_t beat_num = 0;
+        fifo_entry(tlm::tlm_generic_payload* gp, bool last, bool needs_end_req, size_t beat_num)
+        : gp(gp)
+        , last(last)
+        , needs_end_req(needs_end_req)
+        , beat_num(beat_num) {
+            if(gp->has_mm())
+                gp->acquire();
+        }
+        fifo_entry(tlm::tlm_generic_payload* gp, bool needs_end_req)
+        : gp(gp)
+        , needs_end_req(needs_end_req) {
+            if(gp->has_mm())
+                gp->acquire();
+        }
+        fifo_entry(fifo_entry const& o)
+        : gp(o.gp)
+        , last(o.last)
+        , needs_end_req(o.needs_end_req)
+        , beat_num(o.beat_num) {
+            if(gp && gp->has_mm())
+                gp->acquire();
+        }
+        fifo_entry& operator=(const fifo_entry& o) {
+            gp = o.gp;
+            last = o.last;
+            needs_end_req = o.needs_end_req;
+            beat_num = o.beat_num;
+            return *this;
+        }
+        ~fifo_entry() {
+            if(gp && gp->has_mm())
+                gp->release();
+        }
+    };
+    scc::fifo_w_cb<fifo_entry> ar_fifo{"ar_fifo"};
+    scc::fifo_w_cb<fifo_entry> aw_fifo{"aw_fifo"};
+    scc::fifo_w_cb<fifo_entry> wdata_fifo{"wdata_fifo"};
     sc_core::sc_event rack_vl;
     sc_core::sc_event wack_vl;
     void write_ar(tlm::tlm_generic_payload& trans);
     void write_aw(tlm::tlm_generic_payload& trans);
-    void write_wdata(tlm::tlm_generic_payload& trans, unsigned beat, bool last = false);
+    void write_wdata(tlm::tlm_generic_payload& trans, unsigned beat);
 };
 
 } // namespace pin
@@ -202,7 +248,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::write_aw(tlm::
 }
 
 // FIXME: strb not yet correct
-template <typename CFG> inline void axi::pin::ace_initiator<CFG>::write_wdata(tlm::tlm_generic_payload& trans, unsigned beat, bool last) {
+template <typename CFG> inline void axi::pin::ace_initiator<CFG>::write_wdata(tlm::tlm_generic_payload& trans, unsigned beat) {
     typename CFG::data_t data{0};
     sc_dt::sc_uint<CFG::BUSWIDTH / 8> strb{0};
     auto ext = trans.get_extension<axi::ace_extension>();
@@ -311,45 +357,37 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
     fsm_hndl->fsm->cb[BegPartReqE] = [this, fsm_hndl]() -> void {
         sc_assert(fsm_hndl->trans->is_write());
         if(fsm_hndl->beat_count == 0) {
-            write_aw(*fsm_hndl->trans);
-            aw_evt.notify(sc_core::SC_ZERO_TIME);
+            aw_fifo.push_back({fsm_hndl->trans.get(), false});
         }
-        write_wdata(*fsm_hndl->trans, fsm_hndl->beat_count);
-        active_req[tlm::TLM_WRITE_COMMAND] = fsm_hndl;
-        wdata_vl.write(0x1);
+        wdata_fifo.push_back({fsm_hndl->trans.get(), false, wdata_fifo.num_avail()>0, fsm_hndl->beat_count});
+        if(pipelined_wrreq && !wdata_fifo.num_avail())
+            schedule(EndPartReqE, fsm_hndl->trans, sc_core::SC_ZERO_TIME);
     };
     fsm_hndl->fsm->cb[EndPartReqE] = [this, fsm_hndl]() -> void {
-        active_req[tlm::TLM_WRITE_COMMAND] = nullptr;
         tlm::tlm_phase phase = axi::END_PARTIAL_REQ;
-        sc_core::sc_time t = (clk_if ? clk_if->period() - axi::CLK_DELAY - 1_ps : sc_core::SC_ZERO_TIME);
+        sc_core::sc_time t(clk_if ? ::scc::time_to_next_posedge(clk_if) - 1_ps : sc_core::SC_ZERO_TIME);
         auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
         fsm_hndl->beat_count++;
     };
     fsm_hndl->fsm->cb[BegReqE] = [this, fsm_hndl]() -> void {
         if(fsm_hndl->is_snoop) {
-            SCCTRACE(SCMOD) << " BegReq of setup_cb";
             sc_core::sc_time t(sc_core::SC_ZERO_TIME);
             tlm::tlm_phase phase = tlm::BEGIN_REQ;
             auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
         } else {
             switch(fsm_hndl->trans->get_command()) {
             case tlm::TLM_READ_COMMAND:
-                active_req[tlm::TLM_READ_COMMAND] = fsm_hndl;
-                write_ar(*fsm_hndl->trans);
-                ar_evt.notify(sc_core::SC_ZERO_TIME);
+                ar_fifo.push_back({fsm_hndl->trans.get(), false});
                 break;
             case tlm::TLM_WRITE_COMMAND:
-                SCCTRACE(SCMOD) << "in BegReqE for trans " << *fsm_hndl->trans;
-                active_req[tlm::TLM_WRITE_COMMAND] = fsm_hndl;
                 if(fsm_hndl->beat_count == 0) {
-                    write_aw(*fsm_hndl->trans);
-                    aw_evt.notify(sc_core::SC_ZERO_TIME);
+                    aw_fifo.push_back({fsm_hndl->trans.get(), false});
                 }
                 /* for Evict Trans, only addr on aw_t, response on b_t() */
-                auto ext = fsm_hndl->trans->get_extension<ace_extension>();
-                if(!axi::is_dataless(ext)) {
-                    write_wdata(*fsm_hndl->trans, fsm_hndl->beat_count, true);
-                    wdata_vl.write(0x3);
+                if(!axi::is_dataless(fsm_hndl->trans->get_extension<ace_extension>())) {
+                    wdata_fifo.push_back({fsm_hndl->trans.get(), true, wdata_fifo.num_avail()>0, fsm_hndl->beat_count});
+                    if(pipelined_wrreq && !wdata_fifo.num_avail())
+                        schedule(EndReqE, fsm_hndl->trans, sc_core::SC_ZERO_TIME);
                 }
             }
         }
@@ -359,20 +397,17 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
             active_req[SNOOP] = nullptr;
             ac_end_req_evt.notify(); // if snoop
         } else {
+            auto id = axi::get_axi_id(*fsm_hndl->trans);
             switch(fsm_hndl->trans->get_command()) {
             case tlm::TLM_READ_COMMAND:
-                rd_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].push_back(fsm_hndl);
-                active_req[tlm::TLM_READ_COMMAND] = nullptr;
+                rd_resp_by_id[id].push_back(fsm_hndl);
                 break;
             case tlm::TLM_WRITE_COMMAND:
-                SCCTRACE(SCMOD) << "in EndReq for trans " << *fsm_hndl->trans;
-                wr_resp_by_id[axi::get_axi_id(*fsm_hndl->trans)].push_back(fsm_hndl);
-                active_req[tlm::TLM_WRITE_COMMAND] = nullptr;
+                wr_resp_by_id[id].push_back(fsm_hndl);
                 fsm_hndl->beat_count++;
             }
             tlm::tlm_phase phase = tlm::END_REQ;
-            sc_core::sc_time t = (sc_core::SC_ZERO_TIME); // (clk_if?clk_if->period()-ace::CLK_DELAY-1_ps:sc_core::SC_ZERO_TIME);
-            SCCTRACE(SCMOD) << " in EndReq before set_resp";
+            sc_core::sc_time t(clk_if ? ::scc::time_to_next_posedge(clk_if) - 1_ps : sc_core::SC_ZERO_TIME);
             auto ret = tsckt->nb_transport_bw(*fsm_hndl->trans, phase, t);
             fsm_hndl->trans->set_response_status(tlm::TLM_OK_RESPONSE);
         }
@@ -391,7 +426,6 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
         }
     };
     fsm_hndl->fsm->cb[EndPartRespE] = [this, fsm_hndl]() -> void {
-        SCCTRACE(SCMOD) << "in EndPartRespE of setup_cb ";
         if(fsm_hndl->is_snoop) {
             tlm::tlm_phase phase = axi::END_PARTIAL_RESP;
             sc_core::sc_time t(sc_core::SC_ZERO_TIME);
@@ -405,7 +439,6 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
         }
     };
     fsm_hndl->fsm->cb[BegRespE] = [this, fsm_hndl]() -> void {
-        SCCTRACE(SCMOD) << "in setup_cb, processing event BegRespE for trans " << *fsm_hndl->trans;
         if(fsm_hndl->is_snoop) {
             active_resp_beat[SNOOP] = fsm_hndl;
             cd_vl.notify({3, fsm_hndl}); // TBD??
@@ -419,7 +452,6 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
         }
     };
     fsm_hndl->fsm->cb[EndRespE] = [this, fsm_hndl]() -> void {
-        SCCTRACE(SCMOD) << "in EndResp of setup_cb for trans" << *fsm_hndl->trans;
         if(fsm_hndl->is_snoop) {
             sc_core::sc_time t(sc_core::SC_ZERO_TIME);
             tlm::tlm_phase phase = tlm::END_RESP;
@@ -474,12 +506,13 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::ar_t() {
     this->ar_valid.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        wait(ar_evt);
+        auto val = ar_fifo.read();
+        write_ar(*val.gp);
         this->ar_valid.write(true);
         do {
             wait(this->ar_ready.posedge_event() | clk_delayed);
             if(this->ar_ready.read())
-                react(axi::fsm::protocol_time_point_e::EndReqE, active_req[tlm::TLM_READ_COMMAND]);
+                react(axi::fsm::protocol_time_point_e::EndReqE, val.gp);
         } while(!this->ar_ready.read());
         wait(clk_i.posedge_event());
         this->ar_valid.write(false);
@@ -490,15 +523,17 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::r_t() {
     this->r_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        wait(this->r_valid.posedge_event() | clk_delayed);
+        if(!this->r_valid.read())
+            wait(this->r_valid.posedge_event());
+        else
+            wait(clk_delayed);
         if(this->r_valid.event() || (!active_resp[tlm::TLM_READ_COMMAND] && this->r_valid.read())) {
             wait(sc_core::SC_ZERO_TIME);
             auto id = CFG::IS_LITE ? 0U : this->r_id->read().to_uint();
             auto data = this->r_data.read();
             auto resp = this->r_resp.read();
-            SCCTRACE(SCMOD) << " r_t() get r_resp = " << resp;
             auto& q = rd_resp_by_id[id];
-            sc_assert(q.size());
+            sc_assert(q.size() && "No transaction found for received id");
             auto* fsm_hndl = q.front();
             auto beat_count = fsm_hndl->beat_count;
             auto size = axi::get_burst_size(*fsm_hndl->trans);
@@ -545,7 +580,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::r_t() {
                 react(tp, fsm_hndl);
             }
             wait(r_end_resp_evt);
-            this->r_ready->write(true);
+            this->r_ready.write(true);
             wait(clk_i.posedge_event());
             this->r_ready.write(false);
         }
@@ -556,15 +591,14 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::aw_t() {
     this->aw_valid.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        wait(aw_evt);
+        auto val = aw_fifo.read();
+        write_aw(*val.gp);
         this->aw_valid.write(true);
-        SCCTRACE(SCMOD) << " aw_t() write aw_valid ";
         do {
             wait(this->aw_ready.posedge_event() | clk_delayed);
         } while(!this->aw_ready.read());
-        auto* fsm_hndl = active_req[tlm::TLM_WRITE_COMMAND];
-        if(axi::is_dataless(fsm_hndl->trans->get_extension<axi::ace_extension>()))
-            react(axi::fsm::protocol_time_point_e::EndReqE, fsm_hndl);
+        if(axi::is_dataless(val.gp->template get_extension<axi::ace_extension>()))
+            schedule(axi::fsm::protocol_time_point_e::EndReqE, val.gp, sc_core::SC_ZERO_TIME);
         wait(clk_i.posedge_event());
         this->aw_valid.write(false);
     }
@@ -576,19 +610,28 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::wdata_t() {
     while(true) {
         if(!CFG::IS_LITE)
             this->w_last->write(false);
-        wait(wdata_vl.default_event());
-        auto val = wdata_vl.read();
-        SCCTRACE(SCMOD) << "wdata_t() with wdata_vl = " << (uint16_t)val;
-        this->w_valid.write(val & 0x1);
+        if(pipelined_wrreq) {
+            while(!wdata_fifo.num_avail()) {
+                wait(clk_i.posedge_event());
+            }
+        } else {
+            wait(wdata_fifo.data_written_event());
+        }
+        auto val = wdata_fifo.front();
+        wdata_fifo.pop_front();
+        write_wdata(*val.gp, val.beat_num);
+        if(pipelined_wrreq && val.needs_end_req) {
+            auto evt = CFG::IS_LITE || (val.last) ? axi::fsm::protocol_time_point_e::EndReqE : axi::fsm::protocol_time_point_e::EndPartReqE;
+            schedule(evt, val.gp, sc_core::SC_ZERO_TIME);
+        }
+        this->w_valid.write(true);
         if(!CFG::IS_LITE)
-            this->w_last->write(val & 0x2);
+            this->w_last->write(val.last);
         do {
             wait(this->w_ready.posedge_event() | clk_delayed);
-            // SCCTRACE(SCMOD) << "wdata_t() received w_ready for " << *active_req[tlm::TLM_WRITE_COMMAND]->trans;
-            if(this->w_ready.read()) {
-                auto evt =
-                    CFG::IS_LITE || (val & 0x2) ? axi::fsm::protocol_time_point_e::EndReqE : axi::fsm::protocol_time_point_e::EndPartReqE;
-                react(evt, active_req[tlm::TLM_WRITE_COMMAND]);
+            if(!pipelined_wrreq && this->w_ready.read()) {
+                auto evt = val.last ? axi::fsm::protocol_time_point_e::EndReqE : axi::fsm::protocol_time_point_e::EndPartReqE;
+                schedule(evt, val.gp, sc_core::SC_ZERO_TIME);
             }
         } while(!this->w_ready.read());
         wait(clk_i.posedge_event());
@@ -611,7 +654,6 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::b_t() {
             fsm_hndl->trans->get_extension(e);
             e->set_resp(axi::into<axi::resp_e>(resp));
             react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
-            // r_end_req_evt notified in EndResp
             wait(w_end_resp_evt);
             this->b_ready.write(true);
             wait(clk_i.posedge_event());

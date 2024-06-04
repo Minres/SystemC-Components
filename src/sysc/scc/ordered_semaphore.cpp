@@ -50,7 +50,11 @@ void ordered_semaphore::set_capacity(unsigned c) {
     }
 }
 
-void ordered_semaphore::trace(sc_core::sc_trace_file* tf) const { sc_core::sc_trace(tf, value, name()); }
+void ordered_semaphore::trace(sc_core::sc_trace_file* tf) const {
+    if(value_traceable) {
+        value_ref->trace(tf);
+    }
+}
 
 void ordered_semaphore::report_error(const char* id, const char* add_msg) const {
     auto msg = add_msg ? util::strprintf("semaphore '%s'", name()) : util::strprintf("%s: semaphore '%s'", add_msg, name());
@@ -58,7 +62,6 @@ void ordered_semaphore::report_error(const char* id, const char* add_msg) const 
 }
 
 // constructors
-
 ordered_semaphore::ordered_semaphore(unsigned init_value_)
 : sc_core::sc_object(sc_core::sc_gen_unique_name("semaphore"))
 , free_evt(gen_unique_event_name("free_event").c_str())
@@ -74,7 +77,13 @@ ordered_semaphore::ordered_semaphore(const char* name_, unsigned init_value_, bo
 , free_evt(gen_unique_event_name("free_event").c_str())
 , value(init_value_)
 , capacity(init_value_)
-, value_traceable(value_traceable) {}
+, value_traceable(value_traceable) {
+    if(value < 0) {
+        report_error(sc_core::SC_ID_INVALID_SEMAPHORE_VALUE_);
+    }
+    if(value_traceable)
+        value_ref.reset(new scc::sc_ref_variable<int>(std::string(basename())+"_count", value, true));
+}
 
 // interface methods
 
@@ -85,6 +94,7 @@ auto ordered_semaphore::wait(unsigned priority) -> int {
         sc_core::wait(free_evt);
     }
     --value;
+    if(value_ref) value_ref->notify();
     return value;
 }
 
@@ -95,6 +105,7 @@ auto ordered_semaphore::trywait() -> int {
         return -1;
     }
     --value;
+    if(value_ref) value_ref->notify();
     return value;
 }
 
@@ -103,8 +114,10 @@ auto ordered_semaphore::trywait() -> int {
 auto ordered_semaphore::post() -> int {
     if(capacity && value == capacity) {
         SCCWARN(SCMOD) << "post() called on entirely free semaphore!";
-    } else
+    } else {
         ++value;
+        if(value_ref) value_ref->notify();
+    }
     if(value > 0)
         free_evt.notify(sc_core::SC_ZERO_TIME);
     return value;

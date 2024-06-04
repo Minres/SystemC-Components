@@ -18,14 +18,10 @@
 #include "rapidjson/document.h"
 #include "rapidjson/error/en.h"
 #include "report.h"
-#ifdef FMT_SPDLOG_INTERNAL
-#include <fmt/fmt.h>
-#else
-#include <fmt/format.h>
-#endif
 #include <cci_configuration>
 #include <cci_utils/broker.h>
 #include <cstring>
+#include <fmt/format.h>
 #include <fstream>
 #include <rapidjson/istreamwrapper.h>
 #include <rapidjson/ostreamwrapper.h>
@@ -315,6 +311,7 @@ struct yaml_config_dumper {
     configurer::broker_t const& broker;
     bool with_description{false};
     std::unordered_map<std::string, std::vector<cci::cci_param_untyped_handle>> lut;
+    std::vector<cci::cci_param_untyped_handle> tl_lut;
     yaml_config_dumper(configurer::broker_t const& broker, bool with_description)
     : broker(broker)
     , with_description(with_description) {
@@ -322,8 +319,19 @@ struct yaml_config_dumper {
             auto value = h.get_cci_value();
             std::string paramname{h.name()};
             auto sep = paramname.rfind('.');
-            auto basename = paramname.substr(0, sep);
-            lut[basename].push_back(h);
+            if(sep == std::string::npos) {
+                tl_lut.push_back(h);
+            } else {
+                auto basename = paramname.substr(0, sep);
+                lut[basename].push_back(h);
+            }
+        }
+    }
+
+    void dump_config(YAML::Node& base_node) {
+        copy2yaml(tl_lut, base_node);
+        for(auto* o : sc_core::sc_get_top_level_objects()) {
+            dump_config(o, base_node);
         }
     }
 
@@ -336,36 +344,7 @@ struct yaml_config_dumper {
         auto it = lut.find(obj->name());
         YAML::Node this_node;
         if(it != lut.end())
-            for(auto& h : it->second) {
-                auto value = h.get_cci_value();
-                std::string paramname{h.name()};
-                auto basename = paramname.substr(paramname.rfind('.') + 1);
-                if(basename == SCC_LOG_LEVEL_PARAM_NAME)
-                    log_lvl_set = true;
-                auto descr = h.get_description();
-                if(with_description && descr.size()) {
-                    auto descr_name = fmt::format("{}::descr", basename);
-                    this_node[descr_name] = descr;
-                    this_node[descr_name].SetTag("desc");
-                }
-                sc_core::sc_time t;
-                if(value.is_bool())
-                    this_node[basename] = (bool)value.get_bool();
-                else if(value.is_int())
-                    this_node[basename] = (int)value.get_int();
-                else if(value.is_int64())
-                    this_node[basename] = static_cast<int64_t>(value.get_int64());
-                else if(value.is_uint())
-                    this_node[basename] = value.get_uint();
-                else if(value.is_uint64())
-                    this_node[basename] = static_cast<uint64_t>(value.get_uint64());
-                else if(value.is_double())
-                    this_node[basename] = value.get_double();
-                else if(value.is_string())
-                    this_node[basename] = value.get_string().c_str();
-                else if(value.try_get(t))
-                    this_node[basename] = t.to_string();
-            }
+            log_lvl_set |= copy2yaml(it->second, this_node);
         auto mod = dynamic_cast<sc_core::sc_module*>(obj);
         if(!log_lvl_set && mod) {
             auto val = broker.get_preset_cci_value(fmt::format("{}.{}", obj->name(), SCC_LOG_LEVEL_PARAM_NAME));
@@ -378,6 +357,43 @@ struct yaml_config_dumper {
         }
         if(this_node.size())
             base_node[obj->basename()] = this_node;
+    }
+
+private:
+    bool copy2yaml(const std::vector<cci::cci_param_untyped_handle>& params, YAML::Node& this_node) {
+        bool log_lvl_set = false;
+        for(auto& h : params) {
+            auto value = h.get_cci_value();
+            std::string paramname{h.name()};
+            auto basename = paramname.substr(paramname.rfind('.') + 1);
+            if(basename == SCC_LOG_LEVEL_PARAM_NAME)
+                log_lvl_set = true;
+
+            auto descr = h.get_description();
+            if(with_description && descr.size()) {
+                auto descr_name = fmt::format("{}::descr", basename);
+                this_node[descr_name] = descr;
+                this_node[descr_name].SetTag("desc");
+            }
+            sc_core::sc_time t;
+            if(value.is_bool())
+                this_node[basename] = (bool)(value.get_bool());
+            else if(value.is_int())
+                this_node[basename] = (int)(value.get_int());
+            else if(value.is_int64())
+                this_node[basename] = static_cast<int64_t>(value.get_int64());
+            else if(value.is_uint())
+                this_node[basename] = value.get_uint();
+            else if(value.is_uint64())
+                this_node[basename] = static_cast<uint64_t>(value.get_uint64());
+            else if(value.is_double())
+                this_node[basename] = value.get_double();
+            else if(value.is_string())
+                this_node[basename] = value.get_string().c_str();
+            else if(value.try_get(t))
+                this_node[basename] = t.to_string();
+        }
+        return log_lvl_set;
     }
 };
 
@@ -460,13 +476,13 @@ struct yaml_config_reader : public config_reader {
                         } else {
                             if(auto res = YAML::as_if<bool, optional<bool>>(val)()) {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-                            } else if(auto res = YAML::as_if<unsigned, optional<unsigned>>(val)()) {
-                                broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
-                            } else if(auto res = YAML::as_if<uint64_t, optional<uint64_t>>(val)()) {
-                                broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
                             } else if(auto res = YAML::as_if<int, optional<int>>(val)()) {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
                             } else if(auto res = YAML::as_if<int64_t, optional<int64_t>>(val)()) {
+                                broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+                            } else if(auto res = YAML::as_if<unsigned, optional<unsigned>>(val)()) {
+                                broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+                            } else if(auto res = YAML::as_if<uint64_t, optional<uint64_t>>(val)()) {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
                             } else if(auto res = YAML::as_if<double, optional<double>>(val)()) {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
@@ -663,9 +679,12 @@ void configurer::dump_configuration(std::ostream& os, bool as_yaml, bool with_de
     if(as_yaml) {
         YAML::Node root; // starts out as null
         yaml_config_dumper dumper(cci_broker, with_description);
-        for(auto* o : get_sc_objects(obj)) {
-            dumper.dump_config(o, root);
-        }
+        if(obj)
+            for(auto* o : obj->get_child_objects()) {
+                dumper.dump_config(o, root);
+            }
+        else
+            dumper.dump_config(root);
         os << root;
         return;
     }

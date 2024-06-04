@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_CURRENT_BINARY_DIR}) # project specific cmake dir
 cmake_policy(SET CMP0077 NEW)
 
-project(scc VERSION 2022.4.0 LANGUAGES CXX C)
+project(scc VERSION 2024.03 LANGUAGES CXX C)
 
 option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
@@ -19,6 +19,8 @@ include(Common)
 
 if(CMAKE_PROJECT_NAME STREQUAL "scc")
     message(STATUS "Building SCC in standalone mode")
+    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
     include(GNUInstallDirs)
     if(ENABLE_CONAN)
         include(ConanInline)
@@ -42,12 +44,12 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
         if(BUILD_SCC_DOCUMENTATION)
             list(APPEND CONAN_PACKAGE_LIST doxygen/1.9.2)
         endif()
-        set(CONAN_PACKAGE_OPTIONS fmt:header_only=True spdlog:header_only=True boost:without_stacktrace=True boost:shared=False boost:header_only=False)
+        set(CONAN_PACKAGE_OPTIONS fmt:header_only=True spdlog:header_only=True boost:without_stacktrace=True boost:fPIC=True boost:shared=False boost:header_only=False)
         if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
             list(APPEND CONAN_PACKAGE_OPTIONS boost:fPIC=True)
         endif()
         if(NOT USE_CWR_SYSTEMC AND NOT USE_NCSC_SYSTEMC AND NOT DEFINED ENV{SYSTEMC_HOME})
-            set(CONAN_PACKAGE_LIST ${CONAN_PACKAGE_LIST} systemc/2.3.3 systemc-cci/1.0.0)
+            set(CONAN_PACKAGE_LIST ${CONAN_PACKAGE_LIST} systemc/2.3.4 systemc-cci/1.0.0)
             set(CONAN_PACKAGE_OPTIONS ${CONAN_PACKAGE_OPTIONS} systemc-cci:shared=False)
         endif()
         conan_configure(REQUIRES ${CONAN_PACKAGE_LIST} GENERATORS cmake_find_package OPTIONS ${CONAN_PACKAGE_OPTIONS})
@@ -191,6 +193,16 @@ if(SystemC_FOUND)
         PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
     )
 
+	if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+		#set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")
+		add_library(scc_shared SHARED $<TARGET_OBJECTS:scc-util>
+	                                  $<TARGET_OBJECTS:scc-sysc>
+	                                  $<TARGET_OBJECTS:busses>
+	                                  $<TARGET_OBJECTS:scv-tr>
+	                                  )
+	    set_target_properties(scc_shared PROPERTIES CXX_VISIBILITY_PRESET hidden)
+	    add_library(scc::scc_shared ALIAS scc_shared)
+	endif()
     install(TARGETS scc
         EXPORT scc-targets
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -203,7 +215,20 @@ if(SystemC_FOUND)
         DESTINATION ${SCC_CMAKE_CONFIG_DIR}
         NAMESPACE scc::
         )
-
+	if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+	    install(TARGETS scc_shared
+	        EXPORT scc_shared-targets
+	        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+	        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
+	        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
+	        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+	        )
+	    install(EXPORT scc_shared-targets 
+	        FILE scc_shared-targets.cmake
+	        DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+	        NAMESPACE scc::
+	        )
+	endif()
     include(CMakePackageConfigHelpers)
     write_basic_package_version_file(
         ${CMAKE_CURRENT_BINARY_DIR}/scc-config-version.cmake

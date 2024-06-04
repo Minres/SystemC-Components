@@ -16,9 +16,10 @@
 
 #pragma once
 
-#include "sysc/communication/sc_semaphore_if.h"
-#include "sysc/kernel/sc_event.h"
-#include "sysc/kernel/sc_object.h"
+#include <sysc/communication/sc_semaphore_if.h>
+#include <sysc/kernel/sc_event.h>
+#include <sysc/kernel/sc_object.h>
+#include "sc_variable.h"
 #include "traceable.h"
 #include <array>
 #include <deque>
@@ -205,6 +206,7 @@ protected:
     int value;                  // current value of the semaphore
     unsigned capacity;
     bool value_traceable = false;
+    std::unique_ptr<scc::sc_ref_variable<int>> value_ref;
     std::array<std::deque<sc_core::sc_process_handle>, 2> queue;
 };
 

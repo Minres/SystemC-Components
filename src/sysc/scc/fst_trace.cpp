@@ -445,9 +445,8 @@ void fst_trace_file::init() {
 void fst_trace_file::cycle(bool delta_cycle) {
     if(delta_cycle)
         return;
-    if(last_emitted_ts == std::numeric_limits<uint64_t>::max())
-        init();
     if(last_emitted_ts == std::numeric_limits<uint64_t>::max()) {
+        init();
         uint64_t time_stamp = sc_core::sc_time_stamp().value() / (1_ps).value();
         fstWriterEmitTimeChange(m_fst, time_stamp);
         for(auto& e : all_traces)

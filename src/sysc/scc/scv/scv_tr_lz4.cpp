@@ -19,6 +19,7 @@
 #include <cstdio>
 #include <cstring>
 #include <fcntl.h>
+#include <fmt/format.h>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -26,13 +27,8 @@
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
-#include <vector>
-#ifdef FMT_SPDLOG_INTERNAL
-#include <fmt/fmt.h>
-#else
-#include <fmt/format.h>
-#endif
 #include <util/lz4_streambuf.h>
+#include <vector>
 // clang-format off
 #ifdef HAS_SCV
 #include <scv.h>
