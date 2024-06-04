@@ -433,10 +433,10 @@ template <typename T> struct sc_ref_variable : public sc_variable_b {
      * @param name the name
      * @param value the variable reference to be wrapped
      */
-    sc_ref_variable(const std::string& name, const T& value, bool active_notification=false)
+    sc_ref_variable(const std::string& name, const T& value, bool active_notification = false)
     : sc_variable_b(name.c_str())
     , value(value)
-    , active_notification(active_notification){}
+    , active_notification(active_notification) {}
 
     virtual ~sc_ref_variable() = default;
     /**

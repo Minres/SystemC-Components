@@ -359,7 +359,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
         if(fsm_hndl->beat_count == 0) {
             aw_fifo.push_back({fsm_hndl->trans.get(), false});
         }
-        wdata_fifo.push_back({fsm_hndl->trans.get(), false, wdata_fifo.num_avail()>0, fsm_hndl->beat_count});
+        wdata_fifo.push_back({fsm_hndl->trans.get(), false, wdata_fifo.num_avail() > 0, fsm_hndl->beat_count});
         if(pipelined_wrreq && !wdata_fifo.num_avail())
             schedule(EndPartReqE, fsm_hndl->trans, sc_core::SC_ZERO_TIME);
     };
@@ -385,7 +385,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
                 }
                 /* for Evict Trans, only addr on aw_t, response on b_t() */
                 if(!axi::is_dataless(fsm_hndl->trans->get_extension<ace_extension>())) {
-                    wdata_fifo.push_back({fsm_hndl->trans.get(), true, wdata_fifo.num_avail()>0, fsm_hndl->beat_count});
+                    wdata_fifo.push_back({fsm_hndl->trans.get(), true, wdata_fifo.num_avail() > 0, fsm_hndl->beat_count});
                     if(pipelined_wrreq && !wdata_fifo.num_avail())
                         schedule(EndReqE, fsm_hndl->trans, sc_core::SC_ZERO_TIME);
                 }

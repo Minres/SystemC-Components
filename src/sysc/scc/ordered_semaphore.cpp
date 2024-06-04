@@ -82,7 +82,7 @@ ordered_semaphore::ordered_semaphore(const char* name_, unsigned init_value_, bo
         report_error(sc_core::SC_ID_INVALID_SEMAPHORE_VALUE_);
     }
     if(value_traceable)
-        value_ref.reset(new scc::sc_ref_variable<int>(std::string(basename())+"_count", value, true));
+        value_ref.reset(new scc::sc_ref_variable<int>(std::string(basename()) + "_count", value, true));
 }
 
 // interface methods
@@ -94,7 +94,8 @@ auto ordered_semaphore::wait(unsigned priority) -> int {
         sc_core::wait(free_evt);
     }
     --value;
-    if(value_ref) value_ref->notify();
+    if(value_ref)
+        value_ref->notify();
     return value;
 }
 
@@ -105,7 +106,8 @@ auto ordered_semaphore::trywait() -> int {
         return -1;
     }
     --value;
-    if(value_ref) value_ref->notify();
+    if(value_ref)
+        value_ref->notify();
     return value;
 }
 
@@ -116,7 +118,8 @@ auto ordered_semaphore::post() -> int {
         SCCWARN(SCMOD) << "post() called on entirely free semaphore!";
     } else {
         ++value;
-        if(value_ref) value_ref->notify();
+        if(value_ref)
+            value_ref->notify();
     }
     if(value > 0)
         free_evt.notify(sc_core::SC_ZERO_TIME);

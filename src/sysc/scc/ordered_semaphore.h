@@ -16,13 +16,13 @@
 
 #pragma once
 
-#include <sysc/communication/sc_semaphore_if.h>
-#include <sysc/kernel/sc_event.h>
-#include <sysc/kernel/sc_object.h>
 #include "sc_variable.h"
 #include "traceable.h"
 #include <array>
 #include <deque>
+#include <sysc/communication/sc_semaphore_if.h>
+#include <sysc/kernel/sc_event.h>
+#include <sysc/kernel/sc_object.h>
 #include <sysc/kernel/sc_process_handle.h>
 
 #ifndef SC_API
