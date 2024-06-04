@@ -423,9 +423,7 @@ static void configure_logging() {
     }
 }
 
-void scc::reinit_logging() {
-    reinit_logging(log_cfg.level);
-}
+void scc::reinit_logging() { reinit_logging(log_cfg.level); }
 
 void scc::reinit_logging(scc::log level) {
     if(log_cfg.install_handler)
