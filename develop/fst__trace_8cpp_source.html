@@ -512,56 +512,55 @@ $(document).ready(function(){initNavTree('fst__trace_8cpp_source.html',''); init
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="keywordtype">void</span> fst_trace_file::cycle(<span class="keywordtype">bool</span> delta_cycle) {</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="keywordflow">if</span>(delta_cycle)</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    <span class="keywordflow">if</span>(last_emitted_ts == std::numeric_limits&lt;uint64_t&gt;::max())</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    <span class="keywordflow">if</span>(last_emitted_ts == std::numeric_limits&lt;uint64_t&gt;::max()) {</div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        init();</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    <span class="keywordflow">if</span>(last_emitted_ts == std::numeric_limits&lt;uint64_t&gt;::max()) {</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        uint64_t time_stamp = sc_core::sc_time_stamp().value() / (1_ps).value();</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        fstWriterEmitTimeChange(m_fst, time_stamp);</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; e : all_traces)</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;            <span class="keywordflow">if</span>(!e.trc-&gt;is_alias)</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;                e.trc-&gt;update_and_record(m_fst);</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        last_emitted_ts = time_stamp;</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        <span class="keywordflow">if</span>(check_enabled &amp;&amp; !check_enabled())</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> e : pull_traces) {</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            <span class="keywordflow">if</span>(e-&gt;compare_and_update(e-&gt;trc))</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;                changed_traces.push_back(e-&gt;trc);</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        }</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        <span class="keywordflow">if</span>(triggered_traces.size() || changed_traces.size()) {</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            uint64_t time_stamp = sc_core::sc_time_stamp().value() / (1_ps).value();</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            <span class="keywordflow">if</span>(last_emitted_ts &lt; time_stamp)</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                fstWriterEmitTimeChange(m_fst, time_stamp);</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            <span class="keywordflow">if</span>(triggered_traces.size()) {</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                <span class="keyword">auto</span> end = std::unique(std::begin(triggered_traces), std::end(triggered_traces));</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                triggered_traces.erase(end, triggered_traces.end());</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                <span class="keywordflow">for</span>(<span class="keyword">auto</span> t : triggered_traces)</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                    t-&gt;record(m_fst);</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;                triggered_traces.clear();</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            }</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            <span class="keywordflow">if</span>(changed_traces.size()) {</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                <span class="keywordflow">for</span>(<span class="keyword">auto</span> t : changed_traces)</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                    t-&gt;record(m_fst);</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;                changed_traces.clear();</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            }</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;            last_emitted_ts = time_stamp;</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        }</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    }</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;}</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160; </div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="keywordtype">void</span> fst_trace_file::set_time_unit(<span class="keywordtype">double</span> v, sc_core::sc_time_unit tu) {}</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="preprocessor">#ifdef NCSC</span></div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="keywordtype">void</span> fst_trace_file::set_time_unit(<span class="keywordtype">int</span> exponent10_seconds) {}</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
-<div class="line"><a name="l00490"></a><span class="lineno"><a class="line" href="namespacescc.html#a05a96856c671cf9bf95c50d4b98c1fdb">  490</a></span>&#160;sc_core::sc_trace_file* <a class="code" href="namespacescc.html#a05a96856c671cf9bf95c50d4b98c1fdb">create_fst_trace_file</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name, std::function&lt;<span class="keywordtype">bool</span>()&gt; enable) { <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="structscc_1_1fst__trace__file.html">fst_trace_file</a>(name, enable); }</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160; </div>
-<div class="line"><a name="l00492"></a><span class="lineno"><a class="line" href="namespacescc.html#a6f2f10f7cabec89e2db77888c3962998">  492</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacescc.html#a6f2f10f7cabec89e2db77888c3962998">close_fst_trace_file</a>(sc_core::sc_trace_file* tf) { <span class="keyword">delete</span> <span class="keyword">static_cast&lt;</span><a class="code" href="structscc_1_1fst__trace__file.html">fst_trace_file</a>*<span class="keyword">&gt;</span>(tf); }</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160; </div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        uint64_t time_stamp = sc_core::sc_time_stamp().value() / (1_ps).value();</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        fstWriterEmitTimeChange(m_fst, time_stamp);</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; e : all_traces)</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            <span class="keywordflow">if</span>(!e.trc-&gt;is_alias)</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                e.trc-&gt;update_and_record(m_fst);</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;        last_emitted_ts = time_stamp;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        <span class="keywordflow">if</span>(check_enabled &amp;&amp; !check_enabled())</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> e : pull_traces) {</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            <span class="keywordflow">if</span>(e-&gt;compare_and_update(e-&gt;trc))</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;                changed_traces.push_back(e-&gt;trc);</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;        }</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        <span class="keywordflow">if</span>(triggered_traces.size() || changed_traces.size()) {</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            uint64_t time_stamp = sc_core::sc_time_stamp().value() / (1_ps).value();</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            <span class="keywordflow">if</span>(last_emitted_ts &lt; time_stamp)</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                fstWriterEmitTimeChange(m_fst, time_stamp);</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;            <span class="keywordflow">if</span>(triggered_traces.size()) {</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                <span class="keyword">auto</span> end = std::unique(std::begin(triggered_traces), std::end(triggered_traces));</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                triggered_traces.erase(end, triggered_traces.end());</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                <span class="keywordflow">for</span>(<span class="keyword">auto</span> t : triggered_traces)</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                    t-&gt;record(m_fst);</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                triggered_traces.clear();</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            }</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            <span class="keywordflow">if</span>(changed_traces.size()) {</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                <span class="keywordflow">for</span>(<span class="keyword">auto</span> t : changed_traces)</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                    t-&gt;record(m_fst);</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                changed_traces.clear();</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            }</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            last_emitted_ts = time_stamp;</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        }</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    }</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;}</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160; </div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="keywordtype">void</span> fst_trace_file::set_time_unit(<span class="keywordtype">double</span> v, sc_core::sc_time_unit tu) {}</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="preprocessor">#ifdef NCSC</span></div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="keywordtype">void</span> fst_trace_file::set_time_unit(<span class="keywordtype">int</span> exponent10_seconds) {}</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160; </div>
+<div class="line"><a name="l00489"></a><span class="lineno"><a class="line" href="namespacescc.html#a05a96856c671cf9bf95c50d4b98c1fdb">  489</a></span>&#160;sc_core::sc_trace_file* <a class="code" href="namespacescc.html#a05a96856c671cf9bf95c50d4b98c1fdb">create_fst_trace_file</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name, std::function&lt;<span class="keywordtype">bool</span>()&gt; enable) { <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="structscc_1_1fst__trace__file.html">fst_trace_file</a>(name, enable); }</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160; </div>
+<div class="line"><a name="l00491"></a><span class="lineno"><a class="line" href="namespacescc.html#a6f2f10f7cabec89e2db77888c3962998">  491</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacescc.html#a6f2f10f7cabec89e2db77888c3962998">close_fst_trace_file</a>(sc_core::sc_trace_file* tf) { <span class="keyword">delete</span> <span class="keyword">static_cast&lt;</span><a class="code" href="structscc_1_1fst__trace__file.html">fst_trace_file</a>*<span class="keyword">&gt;</span>(tf); }</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;} <span class="comment">// namespace scc</span></div>
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
-<div class="ttc" id="anamespacescc_html_a05a96856c671cf9bf95c50d4b98c1fdb"><div class="ttname"><a href="namespacescc.html#a05a96856c671cf9bf95c50d4b98c1fdb">scc::create_fst_trace_file</a></div><div class="ttdeci">sc_core::sc_trace_file * create_fst_trace_file(const char *name, std::function&lt; bool()&gt; enable)</div><div class="ttdoc">create FST file which uses pull mechanism</div><div class="ttdef"><b>Definition:</b> <a href="fst__trace_8cpp_source.html#l00490">fst_trace.cpp:490</a></div></div>
-<div class="ttc" id="anamespacescc_html_a6f2f10f7cabec89e2db77888c3962998"><div class="ttname"><a href="namespacescc.html#a6f2f10f7cabec89e2db77888c3962998">scc::close_fst_trace_file</a></div><div class="ttdeci">void close_fst_trace_file(sc_core::sc_trace_file *tf)</div><div class="ttdoc">close the FST file</div><div class="ttdef"><b>Definition:</b> <a href="fst__trace_8cpp_source.html#l00492">fst_trace.cpp:492</a></div></div>
+<div class="ttc" id="anamespacescc_html_a05a96856c671cf9bf95c50d4b98c1fdb"><div class="ttname"><a href="namespacescc.html#a05a96856c671cf9bf95c50d4b98c1fdb">scc::create_fst_trace_file</a></div><div class="ttdeci">sc_core::sc_trace_file * create_fst_trace_file(const char *name, std::function&lt; bool()&gt; enable)</div><div class="ttdoc">create FST file which uses pull mechanism</div><div class="ttdef"><b>Definition:</b> <a href="fst__trace_8cpp_source.html#l00489">fst_trace.cpp:489</a></div></div>
+<div class="ttc" id="anamespacescc_html_a6f2f10f7cabec89e2db77888c3962998"><div class="ttname"><a href="namespacescc.html#a6f2f10f7cabec89e2db77888c3962998">scc::close_fst_trace_file</a></div><div class="ttdeci">void close_fst_trace_file(sc_core::sc_trace_file *tf)</div><div class="ttdoc">close the FST file</div><div class="ttdef"><b>Definition:</b> <a href="fst__trace_8cpp_source.html#l00491">fst_trace.cpp:491</a></div></div>
 <div class="ttc" id="anamespaceutil_html_aa22e7291ae32401fbcb10a7f8fbf5359"><div class="ttname"><a href="namespaceutil.html#aa22e7291ae32401fbcb10a7f8fbf5359">util::split</a></div><div class="ttdeci">std::vector&lt; std::string &gt; split(const std::string &amp;s, char separator)</div><div class="ttdef"><b>Definition:</b> <a href="ities_8h_source.html#l00192">ities.h:192</a></div></div>
 <div class="ttc" id="astructscc_1_1fst__trace__file_html"><div class="ttname"><a href="structscc_1_1fst__trace__file.html">scc::fst_trace_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fst__trace_8hh_source.html#l00041">fst_trace.hh:41</a></div></div>
 <div class="ttc" id="astructscc_1_1trace_1_1fst__trace__enum_html"><div class="ttname"><a href="structscc_1_1trace_1_1fst__trace__enum.html">scc::trace::fst_trace_enum</a></div><div class="ttdef"><b>Definition:</b> <a href="fst__trace_8cpp_source.html#l00071">fst_trace.cpp:71</a></div></div>

@@ -21,5 +21,6 @@ var classscc_1_1ordered__semaphore =
     [ "free_evt", "classscc_1_1ordered__semaphore.html#a93a10c2de33733607d2e30ea64201d22", null ],
     [ "queue", "classscc_1_1ordered__semaphore.html#a1aff3cb70b21ae6273284c047bae09ca", null ],
     [ "value", "classscc_1_1ordered__semaphore.html#a2a94e261331c4d50eeac82a45093aa4e", null ],
+    [ "value_ref", "classscc_1_1ordered__semaphore.html#a7fe32c3f57cf9d9e3a0d53992efc37bf", null ],
     [ "value_traceable", "classscc_1_1ordered__semaphore.html#a1b9cf94120fb46c30d8b4ee1dce6a48b", null ]
 ];

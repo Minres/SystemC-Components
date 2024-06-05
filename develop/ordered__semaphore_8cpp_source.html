@@ -117,77 +117,94 @@ $(document).ready(function(){initNavTree('ordered__semaphore_8cpp_source.html','
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classscc_1_1ordered__semaphore.html#a162261494413599f21e91af268a4b876">   53</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1ordered__semaphore.html#a162261494413599f21e91af268a4b876">ordered_semaphore::trace</a>(sc_core::sc_trace_file* tf)<span class="keyword"> const </span>{ sc_core::sc_trace(tf, value, name()); }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> ordered_semaphore::report_error(<span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keywordtype">id</span>, <span class="keyword">const</span> <span class="keywordtype">char</span>* add_msg)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">auto</span> msg = add_msg ? <a class="code" href="namespaceutil.html#a21daaf5c20308c280a887f7a5cc91a79">util::strprintf</a>(<span class="stringliteral">&quot;semaphore &#39;%s&#39;&quot;</span>, name()) : <a class="code" href="namespaceutil.html">util</a>::strprintf(<span class="stringliteral">&quot;%s: semaphore &#39;%s&#39;&quot;</span>, add_msg, name());</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    SC_REPORT_ERROR(<span class="keywordtype">id</span>, msg.c_str());</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">// constructors</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classscc_1_1ordered__semaphore.html#af3377d313bb7b109ef9bb5a0f1fd34d0">   62</a></span>&#160;<a class="code" href="classscc_1_1ordered__semaphore.html#af3377d313bb7b109ef9bb5a0f1fd34d0">ordered_semaphore::ordered_semaphore</a>(<span class="keywordtype">unsigned</span> init_value_)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;: sc_core::sc_object(sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;semaphore&quot;</span>))</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;, free_evt(gen_unique_event_name(<span class="stringliteral">&quot;free_event&quot;</span>).c_str())</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;, value(init_value_)</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;, capacity(init_value_) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span>(value &lt; 0) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        report_error(sc_core::SC_ID_INVALID_SEMAPHORE_VALUE_);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<a class="code" href="classscc_1_1ordered__semaphore.html#af3377d313bb7b109ef9bb5a0f1fd34d0">ordered_semaphore::ordered_semaphore</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name_, <span class="keywordtype">unsigned</span> init_value_, <span class="keywordtype">bool</span> value_traceable)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;: sc_object(name_)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;, free_evt(gen_unique_event_name(<span class="stringliteral">&quot;free_event&quot;</span>).c_str())</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;, value(init_value_)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;, capacity(init_value_)</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;, value_traceable(value_traceable) {}</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">// interface methods</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">// lock (take) the semaphore, block if not available</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">auto</span> <a class="code" href="classscc_1_1ordered__semaphore.html#aa670dc99df7070d0702cb6de079f077a">ordered_semaphore::wait</a>(<span class="keywordtype">unsigned</span> priority) -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    queue.at(priority).push_back(sc_core::sc_get_current_process_handle());</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">while</span>(in_use()) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        sc_core::wait(free_evt);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    --value;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> value;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">// lock (take) the semaphore, return -1 if not available</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classscc_1_1ordered__semaphore.html#aff2675fc0211e17d08aa8015f0943672">   93</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="classscc_1_1ordered__semaphore.html#aff2675fc0211e17d08aa8015f0943672">ordered_semaphore::trywait</a>() -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">if</span>(in_use()) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    --value;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> value;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">// unlock (give) the semaphore</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">  103</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">ordered_semaphore::post</a>() -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">if</span>(capacity &amp;&amp; value == capacity) {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        SCCWARN(SCMOD) &lt;&lt; <span class="stringliteral">&quot;post() called on entirely free semaphore!&quot;</span>;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        ++value;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">if</span>(value &gt; 0)</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        free_evt.notify(sc_core::SC_ZERO_TIME);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">return</span> value;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;} <span class="comment">// namespace scc</span></div>
-<div class="ttc" id="aclassscc_1_1ordered__semaphore_html"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html">scc::ordered_semaphore</a></div><div class="ttdoc">The ordered_semaphore primitive channel class.</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00044">ordered_semaphore.h:44</a></div></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classscc_1_1ordered__semaphore.html#a162261494413599f21e91af268a4b876">   53</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classscc_1_1ordered__semaphore.html#a162261494413599f21e91af268a4b876">ordered_semaphore::trace</a>(sc_core::sc_trace_file* tf)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">if</span>(value_traceable) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        value_ref-&gt;trace(tf);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">void</span> ordered_semaphore::report_error(<span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keywordtype">id</span>, <span class="keyword">const</span> <span class="keywordtype">char</span>* add_msg)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">auto</span> msg = add_msg ? <a class="code" href="namespaceutil.html#a21daaf5c20308c280a887f7a5cc91a79">util::strprintf</a>(<span class="stringliteral">&quot;semaphore &#39;%s&#39;&quot;</span>, name()) : <a class="code" href="namespaceutil.html">util</a>::strprintf(<span class="stringliteral">&quot;%s: semaphore &#39;%s&#39;&quot;</span>, add_msg, name());</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    SC_REPORT_ERROR(<span class="keywordtype">id</span>, msg.c_str());</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">// constructors</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classscc_1_1ordered__semaphore.html#af3377d313bb7b109ef9bb5a0f1fd34d0">   65</a></span>&#160;<a class="code" href="classscc_1_1ordered__semaphore.html#af3377d313bb7b109ef9bb5a0f1fd34d0">ordered_semaphore::ordered_semaphore</a>(<span class="keywordtype">unsigned</span> init_value_)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;: sc_core::sc_object(sc_core::sc_gen_unique_name(<span class="stringliteral">&quot;semaphore&quot;</span>))</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;, free_evt(gen_unique_event_name(<span class="stringliteral">&quot;free_event&quot;</span>).c_str())</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;, value(init_value_)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;, capacity(init_value_) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">if</span>(value &lt; 0) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        report_error(sc_core::SC_ID_INVALID_SEMAPHORE_VALUE_);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<a class="code" href="classscc_1_1ordered__semaphore.html#af3377d313bb7b109ef9bb5a0f1fd34d0">ordered_semaphore::ordered_semaphore</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name_, <span class="keywordtype">unsigned</span> init_value_, <span class="keywordtype">bool</span> value_traceable)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;: sc_object(name_)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;, free_evt(gen_unique_event_name(<span class="stringliteral">&quot;free_event&quot;</span>).c_str())</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;, value(init_value_)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;, capacity(init_value_)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;, value_traceable(value_traceable) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span>(value &lt; 0) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        report_error(sc_core::SC_ID_INVALID_SEMAPHORE_VALUE_);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">if</span>(value_traceable)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        value_ref.reset(<span class="keyword">new</span> <a class="code" href="structscc_1_1sc__ref__variable.html">scc::sc_ref_variable&lt;int&gt;</a>(std::string(basename()) + <span class="stringliteral">&quot;_count&quot;</span>, value, <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">// interface methods</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">// lock (take) the semaphore, block if not available</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">auto</span> <a class="code" href="classscc_1_1ordered__semaphore.html#aa670dc99df7070d0702cb6de079f077a">ordered_semaphore::wait</a>(<span class="keywordtype">unsigned</span> priority) -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    queue.at(priority).push_back(sc_core::sc_get_current_process_handle());</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">while</span>(in_use()) {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        sc_core::wait(free_evt);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    --value;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span>(value_ref)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        value_ref-&gt;notify();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">// lock (take) the semaphore, return -1 if not available</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classscc_1_1ordered__semaphore.html#aff2675fc0211e17d08aa8015f0943672">  104</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="classscc_1_1ordered__semaphore.html#aff2675fc0211e17d08aa8015f0943672">ordered_semaphore::trywait</a>() -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">if</span>(in_use()) {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    --value;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">if</span>(value_ref)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        value_ref-&gt;notify();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">// unlock (give) the semaphore</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">  116</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">ordered_semaphore::post</a>() -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">if</span>(capacity &amp;&amp; value == capacity) {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        SCCWARN(SCMOD) &lt;&lt; <span class="stringliteral">&quot;post() called on entirely free semaphore!&quot;</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        ++value;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">if</span>(value_ref)</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            value_ref-&gt;notify();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">if</span>(value &gt; 0)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        free_evt.notify(sc_core::SC_ZERO_TIME);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;} <span class="comment">// namespace scc</span></div>
+<div class="ttc" id="aclassscc_1_1ordered__semaphore_html"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html">scc::ordered_semaphore</a></div><div class="ttdoc">The ordered_semaphore primitive channel class.</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00045">ordered_semaphore.h:45</a></div></div>
 <div class="ttc" id="aclassscc_1_1ordered__semaphore_html_a162261494413599f21e91af268a4b876"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#a162261494413599f21e91af268a4b876">scc::ordered_semaphore::trace</a></div><div class="ttdeci">void trace(sc_core::sc_trace_file *tf) const override</div><div class="ttdoc">adds internal variables to trace</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00053">ordered_semaphore.cpp:53</a></div></div>
-<div class="ttc" id="aclassscc_1_1ordered__semaphore_html_a5f3fd55d5fb2c9ab687952c1a2c7f6bc"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">scc::ordered_semaphore::post</a></div><div class="ttdeci">int post() override</div><div class="ttdoc">unlock (give) the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00103">ordered_semaphore.cpp:103</a></div></div>
-<div class="ttc" id="aclassscc_1_1ordered__semaphore_html_aa670dc99df7070d0702cb6de079f077a"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#aa670dc99df7070d0702cb6de079f077a">scc::ordered_semaphore::wait</a></div><div class="ttdeci">int wait() override</div><div class="ttdoc">lock (take) the semaphore, block if not available</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00074">ordered_semaphore.h:74</a></div></div>
+<div class="ttc" id="aclassscc_1_1ordered__semaphore_html_a5f3fd55d5fb2c9ab687952c1a2c7f6bc"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#a5f3fd55d5fb2c9ab687952c1a2c7f6bc">scc::ordered_semaphore::post</a></div><div class="ttdeci">int post() override</div><div class="ttdoc">unlock (give) the semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00116">ordered_semaphore.cpp:116</a></div></div>
+<div class="ttc" id="aclassscc_1_1ordered__semaphore_html_aa670dc99df7070d0702cb6de079f077a"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#aa670dc99df7070d0702cb6de079f077a">scc::ordered_semaphore::wait</a></div><div class="ttdeci">int wait() override</div><div class="ttdoc">lock (take) the semaphore, block if not available</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8h_source.html#l00075">ordered_semaphore.h:75</a></div></div>
 <div class="ttc" id="aclassscc_1_1ordered__semaphore_html_ae08b3a4596e0be22bb517a89a362e1e3"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#ae08b3a4596e0be22bb517a89a362e1e3">scc::ordered_semaphore::set_capacity</a></div><div class="ttdeci">void set_capacity(unsigned capacity)</div><div class="ttdoc">change the capacity</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00041">ordered_semaphore.cpp:41</a></div></div>
-<div class="ttc" id="aclassscc_1_1ordered__semaphore_html_af3377d313bb7b109ef9bb5a0f1fd34d0"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#af3377d313bb7b109ef9bb5a0f1fd34d0">scc::ordered_semaphore::ordered_semaphore</a></div><div class="ttdeci">ordered_semaphore(unsigned init_value=1)</div><div class="ttdoc">constructor of an un-named semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00062">ordered_semaphore.cpp:62</a></div></div>
-<div class="ttc" id="aclassscc_1_1ordered__semaphore_html_aff2675fc0211e17d08aa8015f0943672"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#aff2675fc0211e17d08aa8015f0943672">scc::ordered_semaphore::trywait</a></div><div class="ttdeci">int trywait() override</div><div class="ttdoc">lock (take) the semaphore, return -1 if not available</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00093">ordered_semaphore.cpp:93</a></div></div>
+<div class="ttc" id="aclassscc_1_1ordered__semaphore_html_af3377d313bb7b109ef9bb5a0f1fd34d0"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#af3377d313bb7b109ef9bb5a0f1fd34d0">scc::ordered_semaphore::ordered_semaphore</a></div><div class="ttdeci">ordered_semaphore(unsigned init_value=1)</div><div class="ttdoc">constructor of an un-named semaphore</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00065">ordered_semaphore.cpp:65</a></div></div>
+<div class="ttc" id="aclassscc_1_1ordered__semaphore_html_aff2675fc0211e17d08aa8015f0943672"><div class="ttname"><a href="classscc_1_1ordered__semaphore.html#aff2675fc0211e17d08aa8015f0943672">scc::ordered_semaphore::trywait</a></div><div class="ttdeci">int trywait() override</div><div class="ttdoc">lock (take) the semaphore, return -1 if not available</div><div class="ttdef"><b>Definition:</b> <a href="ordered__semaphore_8cpp_source.html#l00104">ordered_semaphore.cpp:104</a></div></div>
 <div class="ttc" id="anamespacescc_html"><div class="ttname"><a href="namespacescc.html">scc</a></div><div class="ttdoc">SCC SystemC utilities.</div><div class="ttdef"><b>Definition:</b> <a href="clock__if__mixins_8h_source.html#l00025">clock_if_mixins.h:25</a></div></div>
 <div class="ttc" id="anamespaceutil_html"><div class="ttname"><a href="namespaceutil.html">util</a></div><div class="ttdoc">SCC common utilities.</div><div class="ttdef"><b>Definition:</b> <a href="bit__field_8h_source.html#l00030">bit_field.h:30</a></div></div>
 <div class="ttc" id="anamespaceutil_html_a21daaf5c20308c280a887f7a5cc91a79"><div class="ttname"><a href="namespaceutil.html#a21daaf5c20308c280a887f7a5cc91a79">util::strprintf</a></div><div class="ttdeci">std::string strprintf(const std::string format,...)</div><div class="ttdoc">allocate and print to a string buffer</div><div class="ttdef"><b>Definition:</b> <a href="strprintf_8h_source.html#l00035">strprintf.h:35</a></div></div>
+<div class="ttc" id="astructscc_1_1sc__ref__variable_html"><div class="ttname"><a href="structscc_1_1sc__ref__variable.html">scc::sc_ref_variable</a></div><div class="ttdoc">the sc_ref_variable for a particular plain data type. This marks an existing C++ variable as discover...</div><div class="ttdef"><b>Definition:</b> <a href="sc__variable_8h_source.html#l00419">sc_variable.h:419</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -1,7 +1,8 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html" title=" " alt="" coords="5,83,196,139"/>
-<area shape="rect" id="node2" href="$classaxi_1_1scv_1_1ace__ext__recording.html" title=" " alt="" coords="244,5,443,32"/>
-<area shape="rect" id="node3" href="$classaxi_1_1scv_1_1axi3__ext__recording.html" title=" " alt="" coords="276,57,411,98"/>
-<area shape="rect" id="node4" href="$classaxi_1_1scv_1_1axi4__ext__recording.html" title=" " alt="" coords="276,122,411,163"/>
-<area shape="rect" id="node5" href="$classaxi_1_1scv_1_1tlm__id__ext__recording.html" title=" " alt="" coords="269,187,417,229"/>
+<area shape="rect" id="node1" href="$classtlm_1_1scc_1_1lwtr_1_1lwtr4tlm2__extension__registry__if.html" title=" " alt="" coords="5,129,183,185"/>
+<area shape="rect" id="node2" href="$classchi_1_1lwtr_1_1chi__ctrl__ext__recording.html" title=" " alt="" coords="241,5,371,47"/>
+<area shape="rect" id="node3" href="$classchi_1_1lwtr_1_1chi__data__ext__recording.html" title=" " alt="" coords="237,71,375,112"/>
+<area shape="rect" id="node4" href="$classchi_1_1lwtr_1_1chi__link__ext__recording.html" title=" " alt="" coords="240,136,372,177"/>
+<area shape="rect" id="node5" href="$classchi_1_1lwtr_1_1chi__snp__ext__recording.html" title=" " alt="" coords="241,201,371,243"/>
+<area shape="rect" id="node6" href="$classchi_1_1lwtr_1_1tlm__id__ext__recording.html" title=" " alt="" coords="231,267,381,308"/>
 </map>

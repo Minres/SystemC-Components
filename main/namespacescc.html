@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">scc
-   &#160;<span id="projectnumber">2024.03</span>
+   &#160;<span id="projectnumber">2022.4.0</span>
    </div>
    <div id="projectbrief">SystemC components library</div>
   </td>
@@ -136,6 +136,20 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1tlm__target__bfs__register__base.html">tlm_target_bfs_register_base</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscc_1_1cci__broker.html">cci_broker</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1__min__max__restriction.html">_min_max_restriction</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1__min__max__excl__restriction.html">_min_max_excl_restriction</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1__min__restriction.html">_min_restriction</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1__min__excl__restriction.html">_min_excl_restriction</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1__max__restriction.html">_max_restriction</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1__max__excl__restriction.html">_max_excl_restriction</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1__discrete__restriction.html">_discrete_restriction</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscc_1_1cci__param__restricted.html">cci_param_restricted</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">extension of cci_param&lt;T, TM&gt; which automatically registeres a callback to restrict the valid values given to the parameter.  <a href="structscc_1_1cci__param__restricted.html#details">More...</a><br /></td></tr>
@@ -326,59 +340,59 @@ Functions</h2></td></tr>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>init_cci</b> (std::string name)</td></tr>
 <tr class="separator:a03eb872bb1271b74892a6c2ddff59044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44cd5ca4e4d3c05f4a7ce9d5de8b9280"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a44cd5ca4e4d3c05f4a7ce9d5de8b9280"><td class="memTemplItemLeft" align="right" valign="top">_min_max_restriction&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a44cd5ca4e4d3c05f4a7ce9d5de8b9280">min_max_restriction</a> (T min, T max)</td></tr>
+<tr class="memitem:a44cd5ca4e4d3c05f4a7ce9d5de8b9280"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscc_1_1__min__max__restriction.html">_min_max_restriction</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a44cd5ca4e4d3c05f4a7ce9d5de8b9280">min_max_restriction</a> (T min, T max)</td></tr>
 <tr class="memdesc:a44cd5ca4e4d3c05f4a7ce9d5de8b9280"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a min/max restriction with including the limits  <a href="namespacescc.html#a44cd5ca4e4d3c05f4a7ce9d5de8b9280">More...</a><br /></td></tr>
 <tr class="separator:a44cd5ca4e4d3c05f4a7ce9d5de8b9280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae72ee46bcb2d2e459f540c990b285f5c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ae72ee46bcb2d2e459f540c990b285f5c"><td class="memTemplItemLeft" align="right" valign="top">_min_max_excl_restriction&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#ae72ee46bcb2d2e459f540c990b285f5c">min_max_excl_restriction</a> (T min, T max)</td></tr>
+<tr class="memitem:ae72ee46bcb2d2e459f540c990b285f5c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscc_1_1__min__max__excl__restriction.html">_min_max_excl_restriction</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#ae72ee46bcb2d2e459f540c990b285f5c">min_max_excl_restriction</a> (T min, T max)</td></tr>
 <tr class="memdesc:ae72ee46bcb2d2e459f540c990b285f5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a min/max restriction with excluding the limits  <a href="namespacescc.html#ae72ee46bcb2d2e459f540c990b285f5c">More...</a><br /></td></tr>
 <tr class="separator:ae72ee46bcb2d2e459f540c990b285f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9299adafc6dae4c181fc4fa5dda94798"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a9299adafc6dae4c181fc4fa5dda94798"><td class="memTemplItemLeft" align="right" valign="top">_min_restriction&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a9299adafc6dae4c181fc4fa5dda94798">min_restriction</a> (T min)</td></tr>
+<tr class="memitem:a9299adafc6dae4c181fc4fa5dda94798"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscc_1_1__min__restriction.html">_min_restriction</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a9299adafc6dae4c181fc4fa5dda94798">min_restriction</a> (T min)</td></tr>
 <tr class="memdesc:a9299adafc6dae4c181fc4fa5dda94798"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a minimum restriction including the minimum value  <a href="namespacescc.html#a9299adafc6dae4c181fc4fa5dda94798">More...</a><br /></td></tr>
 <tr class="separator:a9299adafc6dae4c181fc4fa5dda94798"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4411c2d71c6eb576460a03c7c09fac9d"><td class="memTemplParams" colspan="2"><a id="a4411c2d71c6eb576460a03c7c09fac9d"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a4411c2d71c6eb576460a03c7c09fac9d"><td class="memTemplItemLeft" align="right" valign="top">_min_restriction&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a4411c2d71c6eb576460a03c7c09fac9d">gte_restriction</a> (T min)</td></tr>
+<tr class="memitem:a4411c2d71c6eb576460a03c7c09fac9d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscc_1_1__min__restriction.html">_min_restriction</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a4411c2d71c6eb576460a03c7c09fac9d">gte_restriction</a> (T min)</td></tr>
 <tr class="memdesc:a4411c2d71c6eb576460a03c7c09fac9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">alias for <a class="el" href="namespacescc.html#a9299adafc6dae4c181fc4fa5dda94798" title="creates a minimum restriction including the minimum value">min_restriction(T min)</a> <br /></td></tr>
 <tr class="separator:a4411c2d71c6eb576460a03c7c09fac9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab09e0dbecbf3b6b40a3c1d575f78ec7c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ab09e0dbecbf3b6b40a3c1d575f78ec7c"><td class="memTemplItemLeft" align="right" valign="top">_min_excl_restriction&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#ab09e0dbecbf3b6b40a3c1d575f78ec7c">min_excl_restriction</a> (T min)</td></tr>
+<tr class="memitem:ab09e0dbecbf3b6b40a3c1d575f78ec7c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscc_1_1__min__excl__restriction.html">_min_excl_restriction</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#ab09e0dbecbf3b6b40a3c1d575f78ec7c">min_excl_restriction</a> (T min)</td></tr>
 <tr class="memdesc:ab09e0dbecbf3b6b40a3c1d575f78ec7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a minimum restriction excluding the minimum value  <a href="namespacescc.html#ab09e0dbecbf3b6b40a3c1d575f78ec7c">More...</a><br /></td></tr>
 <tr class="separator:ab09e0dbecbf3b6b40a3c1d575f78ec7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d20ec80953d81636a1c17b302e62b58"><td class="memTemplParams" colspan="2"><a id="a5d20ec80953d81636a1c17b302e62b58"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a5d20ec80953d81636a1c17b302e62b58"><td class="memTemplItemLeft" align="right" valign="top">_min_excl_restriction&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a5d20ec80953d81636a1c17b302e62b58">gt_excl_restriction</a> (T min)</td></tr>
+<tr class="memitem:a5d20ec80953d81636a1c17b302e62b58"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscc_1_1__min__excl__restriction.html">_min_excl_restriction</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a5d20ec80953d81636a1c17b302e62b58">gt_excl_restriction</a> (T min)</td></tr>
 <tr class="memdesc:a5d20ec80953d81636a1c17b302e62b58"><td class="mdescLeft">&#160;</td><td class="mdescRight">alias for <a class="el" href="namespacescc.html#ab09e0dbecbf3b6b40a3c1d575f78ec7c" title="creates a minimum restriction excluding the minimum value">min_excl_restriction(T min)</a> <br /></td></tr>
 <tr class="separator:a5d20ec80953d81636a1c17b302e62b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33f3f2ee941fa0d95fbc1cb85b780ace"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a33f3f2ee941fa0d95fbc1cb85b780ace"><td class="memTemplItemLeft" align="right" valign="top">_max_restriction&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a33f3f2ee941fa0d95fbc1cb85b780ace">max_restriction</a> (T max)</td></tr>
+<tr class="memitem:a33f3f2ee941fa0d95fbc1cb85b780ace"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscc_1_1__max__restriction.html">_max_restriction</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a33f3f2ee941fa0d95fbc1cb85b780ace">max_restriction</a> (T max)</td></tr>
 <tr class="memdesc:a33f3f2ee941fa0d95fbc1cb85b780ace"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a maximum restriction including the maximum value  <a href="namespacescc.html#a33f3f2ee941fa0d95fbc1cb85b780ace">More...</a><br /></td></tr>
 <tr class="separator:a33f3f2ee941fa0d95fbc1cb85b780ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae01638f4d6c10df113593d39dc78fcb0"><td class="memTemplParams" colspan="2"><a id="ae01638f4d6c10df113593d39dc78fcb0"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ae01638f4d6c10df113593d39dc78fcb0"><td class="memTemplItemLeft" align="right" valign="top">_max_restriction&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#ae01638f4d6c10df113593d39dc78fcb0">lte_restriction</a> (T max)</td></tr>
+<tr class="memitem:ae01638f4d6c10df113593d39dc78fcb0"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscc_1_1__max__restriction.html">_max_restriction</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#ae01638f4d6c10df113593d39dc78fcb0">lte_restriction</a> (T max)</td></tr>
 <tr class="memdesc:ae01638f4d6c10df113593d39dc78fcb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">alias for <a class="el" href="namespacescc.html#a33f3f2ee941fa0d95fbc1cb85b780ace" title="creates a maximum restriction including the maximum value">max_restriction(T max)</a> <br /></td></tr>
 <tr class="separator:ae01638f4d6c10df113593d39dc78fcb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bbad29339d5d98d90222b388c567ea2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a2bbad29339d5d98d90222b388c567ea2"><td class="memTemplItemLeft" align="right" valign="top">_max_excl_restriction&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a2bbad29339d5d98d90222b388c567ea2">max_excl_restriction</a> (T max)</td></tr>
+<tr class="memitem:a2bbad29339d5d98d90222b388c567ea2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscc_1_1__max__excl__restriction.html">_max_excl_restriction</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a2bbad29339d5d98d90222b388c567ea2">max_excl_restriction</a> (T max)</td></tr>
 <tr class="memdesc:a2bbad29339d5d98d90222b388c567ea2"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a maximum restriction excluding the maximum value  <a href="namespacescc.html#a2bbad29339d5d98d90222b388c567ea2">More...</a><br /></td></tr>
 <tr class="separator:a2bbad29339d5d98d90222b388c567ea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab486bd357ee181779b237662d07c0688"><td class="memTemplParams" colspan="2"><a id="ab486bd357ee181779b237662d07c0688"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ab486bd357ee181779b237662d07c0688"><td class="memTemplItemLeft" align="right" valign="top">_max_excl_restriction&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#ab486bd357ee181779b237662d07c0688">lt_excl_restriction</a> (T max)</td></tr>
+<tr class="memitem:ab486bd357ee181779b237662d07c0688"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscc_1_1__max__excl__restriction.html">_max_excl_restriction</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#ab486bd357ee181779b237662d07c0688">lt_excl_restriction</a> (T max)</td></tr>
 <tr class="memdesc:ab486bd357ee181779b237662d07c0688"><td class="mdescLeft">&#160;</td><td class="mdescRight">alias for <a class="el" href="namespacescc.html#a2bbad29339d5d98d90222b388c567ea2" title="creates a maximum restriction excluding the maximum value">max_excl_restriction(T max)</a> <br /></td></tr>
 <tr class="separator:ab486bd357ee181779b237662d07c0688"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a838d1d43bbf1a9afde3a93587898f258"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a838d1d43bbf1a9afde3a93587898f258"><td class="memTemplItemLeft" align="right" valign="top">_discrete_restriction&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a838d1d43bbf1a9afde3a93587898f258">discrete_restriction</a> (std::initializer_list&lt; T &gt; values)</td></tr>
+<tr class="memitem:a838d1d43bbf1a9afde3a93587898f258"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscc_1_1__discrete__restriction.html">_discrete_restriction</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a838d1d43bbf1a9afde3a93587898f258">discrete_restriction</a> (std::initializer_list&lt; T &gt; values)</td></tr>
 <tr class="memdesc:a838d1d43bbf1a9afde3a93587898f258"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a restriction for a discrete values set  <a href="namespacescc.html#a838d1d43bbf1a9afde3a93587898f258">More...</a><br /></td></tr>
 <tr class="separator:a838d1d43bbf1a9afde3a93587898f258"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6778557e9aa5bb1458e00d3eafb85012"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t SZ&gt; </td></tr>
-<tr class="memitem:a6778557e9aa5bb1458e00d3eafb85012"><td class="memTemplItemLeft" align="right" valign="top">_discrete_restriction&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a6778557e9aa5bb1458e00d3eafb85012">discrete_restriction</a> (std::array&lt; T, SZ &gt; values)</td></tr>
+<tr class="memitem:a6778557e9aa5bb1458e00d3eafb85012"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscc_1_1__discrete__restriction.html">_discrete_restriction</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a6778557e9aa5bb1458e00d3eafb85012">discrete_restriction</a> (std::array&lt; T, SZ &gt; values)</td></tr>
 <tr class="memdesc:a6778557e9aa5bb1458e00d3eafb85012"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a restriction for a discrete values set  <a href="namespacescc.html#a6778557e9aa5bb1458e00d3eafb85012">More...</a><br /></td></tr>
 <tr class="separator:a6778557e9aa5bb1458e00d3eafb85012"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29c48ac5ec75e542dc76add400e50e87"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a29c48ac5ec75e542dc76add400e50e87"><td class="memTemplItemLeft" align="right" valign="top">_discrete_restriction&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a29c48ac5ec75e542dc76add400e50e87">discrete_restriction</a> (std::vector&lt; T &gt; values)</td></tr>
+<tr class="memitem:a29c48ac5ec75e542dc76add400e50e87"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscc_1_1__discrete__restriction.html">_discrete_restriction</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescc.html#a29c48ac5ec75e542dc76add400e50e87">discrete_restriction</a> (std::vector&lt; T &gt; values)</td></tr>
 <tr class="memdesc:a29c48ac5ec75e542dc76add400e50e87"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a restriction for a discrete values set  <a href="namespacescc.html#a29c48ac5ec75e542dc76add400e50e87">More...</a><br /></td></tr>
 <tr class="separator:a29c48ac5ec75e542dc76add400e50e87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a268df8cbb9b18bfb572ee6c1751f5ba8"><td class="memItemLeft" align="right" valign="top"><a id="a268df8cbb9b18bfb572ee6c1751f5ba8"></a>
@@ -696,7 +710,7 @@ template&lt;typename T , size_t SZ&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">_discrete_restriction&lt;T&gt; scc::discrete_restriction </td>
+          <td class="memname"><a class="el" href="structscc_1_1__discrete__restriction.html">_discrete_restriction</a>&lt;T&gt; scc::discrete_restriction </td>
           <td>(</td>
           <td class="paramtype">std::array&lt; T, SZ &gt;&#160;</td>
           <td class="paramname"><em>values</em></td><td>)</td>
@@ -726,7 +740,7 @@ template&lt;typename T , size_t SZ&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>_discrete_restriction&lt;T&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00163">163</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00161">161</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 
 </div>
 </div>
@@ -742,7 +756,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">_discrete_restriction&lt;T&gt; scc::discrete_restriction </td>
+          <td class="memname"><a class="el" href="structscc_1_1__discrete__restriction.html">_discrete_restriction</a>&lt;T&gt; scc::discrete_restriction </td>
           <td>(</td>
           <td class="paramtype">std::initializer_list&lt; T &gt;&#160;</td>
           <td class="paramname"><em>values</em></td><td>)</td>
@@ -771,7 +785,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>_discrete_restriction&lt;T&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00152">152</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00150">150</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 
 </div>
 </div>
@@ -787,7 +801,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">_discrete_restriction&lt;T&gt; scc::discrete_restriction </td>
+          <td class="memname"><a class="el" href="structscc_1_1__discrete__restriction.html">_discrete_restriction</a>&lt;T&gt; scc::discrete_restriction </td>
           <td>(</td>
           <td class="paramtype">std::vector&lt; T &gt;&#160;</td>
           <td class="paramname"><em>values</em></td><td>)</td>
@@ -816,7 +830,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>_discrete_restriction&lt;T&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00173">173</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00171">171</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 
 </div>
 </div>
@@ -1057,7 +1071,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">_max_excl_restriction&lt;T&gt; scc::max_excl_restriction </td>
+          <td class="memname"><a class="el" href="structscc_1_1__max__excl__restriction.html">_max_excl_restriction</a>&lt;T&gt; scc::max_excl_restriction </td>
           <td>(</td>
           <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>max</em></td><td>)</td>
@@ -1086,7 +1100,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>_max_excl_restriction&lt;T&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00142">142</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00140">140</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 
 </div>
 </div>
@@ -1102,7 +1116,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">_max_restriction&lt;T&gt; scc::max_restriction </td>
+          <td class="memname"><a class="el" href="structscc_1_1__max__restriction.html">_max_restriction</a>&lt;T&gt; scc::max_restriction </td>
           <td>(</td>
           <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>max</em></td><td>)</td>
@@ -1131,7 +1145,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>_max_restriction&lt;T&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00132">132</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00130">130</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 
 </div>
 </div>
@@ -1147,7 +1161,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">_min_excl_restriction&lt;T&gt; scc::min_excl_restriction </td>
+          <td class="memname"><a class="el" href="structscc_1_1__min__excl__restriction.html">_min_excl_restriction</a>&lt;T&gt; scc::min_excl_restriction </td>
           <td>(</td>
           <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>min</em></td><td>)</td>
@@ -1176,7 +1190,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>_min_excl_restriction&lt;T&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00122">122</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00120">120</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 
 </div>
 </div>
@@ -1192,7 +1206,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">_min_max_excl_restriction&lt;T&gt; scc::min_max_excl_restriction </td>
+          <td class="memname"><a class="el" href="structscc_1_1__min__max__excl__restriction.html">_min_max_excl_restriction</a>&lt;T&gt; scc::min_max_excl_restriction </td>
           <td>(</td>
           <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>min</em>, </td>
@@ -1232,7 +1246,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>_min_max_excl_restriction&lt;T&gt; instance of the restriction functor </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00102">102</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00100">100</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 
 </div>
 </div>
@@ -1248,7 +1262,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">_min_max_restriction&lt;T&gt; scc::min_max_restriction </td>
+          <td class="memname"><a class="el" href="structscc_1_1__min__max__restriction.html">_min_max_restriction</a>&lt;T&gt; scc::min_max_restriction </td>
           <td>(</td>
           <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>min</em>, </td>
@@ -1288,7 +1302,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>_min_max_restriction&lt;T&gt; instance of the restriction functor </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00093">93</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00091">91</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 
 </div>
 </div>
@@ -1304,7 +1318,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">_min_restriction&lt;T&gt; scc::min_restriction </td>
+          <td class="memname"><a class="el" href="structscc_1_1__min__restriction.html">_min_restriction</a>&lt;T&gt; scc::min_restriction </td>
           <td>(</td>
           <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>min</em></td><td>)</td>
@@ -1333,7 +1347,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>_min_restriction&lt;T&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00112">112</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cci__param__restricted_8h_source.html#l00110">110</a> of file <a class="el" href="cci__param__restricted_8h_source.html">cci_param_restricted.h</a>.</p>
 
 </div>
 </div>

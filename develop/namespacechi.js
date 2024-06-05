@@ -19,7 +19,16 @@ var namespacechi =
     ] ],
     [ "pe", null, [
       [ "chi_rn_initiator_b", "classchi_1_1pe_1_1chi__rn__initiator__b.html", "classchi_1_1pe_1_1chi__rn__initiator__b" ],
-      [ "chi_rn_initiator", "classchi_1_1pe_1_1chi__rn__initiator.html", "classchi_1_1pe_1_1chi__rn__initiator" ]
+      [ "chi_rn_initiator", "classchi_1_1pe_1_1chi__rn__initiator.html", "classchi_1_1pe_1_1chi__rn__initiator" ],
+      [ "channel_e", "chi__rn__initiator_8h.html#a006b6f0cc0369b1fc52e11f62985f1bd", [
+        [ "REQ", "chi__rn__initiator_8h.html#a006b6f0cc0369b1fc52e11f62985f1bda941c130d545fb68757a9b919f773de1c", null ],
+        [ "WDAT", "chi__rn__initiator_8h.html#a006b6f0cc0369b1fc52e11f62985f1bdaec9881d132c4d4610bb95a322cc65bc9", null ],
+        [ "SRSP", "chi__rn__initiator_8h.html#a006b6f0cc0369b1fc52e11f62985f1bdac4819c5d333af88143fae2612d3cb887", null ],
+        [ "CRSP", "chi__rn__initiator_8h.html#a006b6f0cc0369b1fc52e11f62985f1bda4a28c0b7c2c0926985429264da92ca13", null ],
+        [ "RDAT", "chi__rn__initiator_8h.html#a006b6f0cc0369b1fc52e11f62985f1bda3c670f100c4cd5f413a19c774de0df99", null ],
+        [ "SNP", "chi__rn__initiator_8h.html#a006b6f0cc0369b1fc52e11f62985f1bda23bed8889fa9ac905c735d498deb4cc8", null ],
+        [ "CH_CNT", "chi__rn__initiator_8h.html#a006b6f0cc0369b1fc52e11f62985f1bdab0a32c7fadb5217d1f01397601cb50e1", null ]
+      ] ]
     ] ],
     [ "scv", null, [
       [ "impl", null, [

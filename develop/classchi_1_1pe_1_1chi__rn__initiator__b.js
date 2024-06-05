@@ -1,6 +1,7 @@
 var classchi_1_1pe_1_1chi__rn__initiator__b =
 [
     [ "tx_state", "structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state.html", "structchi_1_1pe_1_1chi__rn__initiator__b_1_1tx__state" ],
+    [ "cb_function_t", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a36b389c51df449d1000bf45e0a6c8ada", null ],
     [ "payload_type", "classchi_1_1pe_1_1chi__rn__initiator__b.html#ab656f8e286c97b5b74533b85c8b41ebf", null ],
     [ "phase_type", "classchi_1_1pe_1_1chi__rn__initiator__b.html#abae3e06b73aab6ff9772d5bdaef3156c", null ],
     [ "chi_rn_initiator_b", "classchi_1_1pe_1_1chi__rn__initiator__b.html#abb46def08088f21f7e933adb2ef0da3c", null ],
@@ -8,6 +9,7 @@ var classchi_1_1pe_1_1chi__rn__initiator__b =
     [ "chi_rn_initiator_b", "classchi_1_1pe_1_1chi__rn__initiator__b.html#aea54106a9dcf3ed7aa1b9e93dcf6de15", null ],
     [ "chi_rn_initiator_b", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a1c93a26312d65df7966d8de8c90666d8", null ],
     [ "chi_rn_initiator_b", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a58c569efb04e28b712136a7a81985f9c", null ],
+    [ "add_protocol_cb", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a618ca75e346d107f00c8bbdec40692ee", null ],
     [ "b_snoop", "classchi_1_1pe_1_1chi__rn__initiator__b.html#ad90883b4c3aafa84b670184b6d71474c", null ],
     [ "calculate_beats", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a6a0cf79256269a221b37e2368177cb77", null ],
     [ "end_of_elaboration", "classchi_1_1pe_1_1chi__rn__initiator__b.html#a8c235126e77aa5a089226890e8beaffd", null ],

@@ -1,5 +1,12 @@
 var hierarchy =
 [
+    [ "scc::_discrete_restriction< T >", "structscc_1_1__discrete__restriction.html", null ],
+    [ "scc::_max_excl_restriction< T >", "structscc_1_1__max__excl__restriction.html", null ],
+    [ "scc::_max_restriction< T >", "structscc_1_1__max__restriction.html", null ],
+    [ "scc::_min_excl_restriction< T >", "structscc_1_1__min__excl__restriction.html", null ],
+    [ "scc::_min_max_excl_restriction< T >", "structscc_1_1__min__max__excl__restriction.html", null ],
+    [ "scc::_min_max_restriction< T >", "structscc_1_1__min__max__restriction.html", null ],
+    [ "scc::_min_restriction< T >", "structscc_1_1__min__restriction.html", null ],
     [ "scc::abstract_bitfield< datatype_t >", "classscc_1_1abstract__bitfield.html", [
       [ "scc::bitfield< datatype_t >", "classscc_1_1bitfield.html", null ]
     ] ],
@@ -121,15 +128,15 @@ var hierarchy =
       [ "scc::ticking_clock< BASE >", "classscc_1_1ticking__clock.html", null ],
       [ "scc::tickless_clock< BASE >", "classscc_1_1tickless__clock.html", null ]
     ] ],
+    [ "base_type", null, [
+      [ "tlm::scc::tagged_target_mixin< base_type, TYPES >", "classtlm_1_1scc_1_1tagged__target__mixin.html", null ]
+    ] ],
     [ "BASE_TYPE", null, [
       [ "tlm::scc::initiator_mixin< BASE_TYPE, TYPES >", "classtlm_1_1scc_1_1initiator__mixin.html", null ],
       [ "tlm::scc::signal_initiator_mixin< BASE_TYPE >", "classtlm_1_1scc_1_1signal__initiator__mixin.html", null ],
       [ "tlm::scc::signal_target_mixin< BASE_TYPE >", "classtlm_1_1scc_1_1signal__target__mixin.html", null ],
       [ "tlm::scc::tagged_initiator_mixin< BASE_TYPE, TYPES >", "classtlm_1_1scc_1_1tagged__initiator__mixin.html", null ],
       [ "tlm::scc::target_mixin< BASE_TYPE, TYPES >", "classtlm_1_1scc_1_1target__mixin.html", null ]
-    ] ],
-    [ "base_type", null, [
-      [ "tlm::scc::tagged_target_mixin< base_type, TYPES >", "classtlm_1_1scc_1_1tagged__target__mixin.html", null ]
     ] ],
     [ "util::BitFieldArray< T, BaseOffset, BitsPerItem, NumItems >", "classutil_1_1BitFieldArray.html", null ],
     [ "util::BitFieldMember< T, Offset, Bits >", "structutil_1_1BitFieldMember.html", null ],
