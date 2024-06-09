@@ -58,9 +58,12 @@ Here is a short list of features.
 The full documentation can be found at the [Github pages](https://minres.github.io/SystemC-Components/)
 
 Build instructions using conan
-==============================
+=======================================
 
 The repo is cmake based and (preferably) uses conan. Make sure that you have at least cmake 3.20 and conan version <2.0 installed. There are known issues with conan 2.x. Other combinations may work, but are not tested.
+
+On Linux
+=======================================
 
 The suggested build steps are:
 
@@ -74,15 +77,22 @@ For example:
 
 ```
 
-    mkdir build
-    cd build
-    cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=<some install path> ..
-    make 
-    make install
-    make test
+    cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=<some install path>
+    cmake --build build -j16 
+    cmake --build build --target  test
+    cmake --build build --target install
     ./examples/ace-axi/ace_axi_example
     ./examples/axi-axi/axi_axi_example
 
+```
+
+On Windows
+=======================================
+
+```
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=<some install path>
+cmake --build build --config Release
+cmake --build build --config Release --target install
 ```
 
 Build instructions using install script

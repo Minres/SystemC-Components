@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_CURRENT_BINARY_DIR}) # project specific cmake dir
 cmake_policy(SET CMP0077 NEW)
 
-project(scc VERSION 2024.03 LANGUAGES CXX C)
+project(scc VERSION 2024.06 LANGUAGES CXX C)
 
 option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
@@ -138,7 +138,7 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
         endif()
     endif()
     if(MSVC)
-        add_compile_options(/vmg /MP /W3 /wd4244 /wd4267 /wd4996 -DNOMINMAX /EHsc)
+        add_compile_options(/vmg /MP /W3 /wd4244 /wd4267 /wd4996  -DNOMINMAX /EHsc)
         link_directories(${Boost_LIBRARY_DIRS})
     endif()
 
