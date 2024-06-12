@@ -253,7 +253,7 @@ template <bool COMPRESSED> struct tx_db {
 template <bool COMPRESSED> ftr_writer<COMPRESSED>* tx_db<COMPRESSED>::db{nullptr};
 } // namespace
 // ----------------------------------------------------------------------------
-void scv_tr_cbor_init(bool compressed) {
+void scv_tr_ftr_init(bool compressed) {
     if(compressed) {
         scv_tr_db::register_class_cb(tx_db<true>::dbCb);
         scv_tr_stream::register_class_cb(tx_db<true>::streamCb);

@@ -306,11 +306,11 @@ int sc_main(int argc, char* argv[]) {
     auto start = std::chrono::system_clock::now();
     scc::init_logging(scc::LogConfig().logLevel(scc::log::DEBUG));
 #if defined(CFTR)
-    scv_tr_cbor_init(true);
+    scv_tr_ftr_init(true);
     scv_tr_db db("my_db");
     sc_trace_file* tf = scc::create_fst_trace_file("my_db");
 #elif defined(FTR)
-    scv_tr_cbor_init(false);
+    scv_tr_ftr_init(false);
     scv_tr_db db("my_db");
     sc_trace_file* tf = scc::create_fst_trace_file("my_db");
 #else

@@ -125,10 +125,10 @@ void tracer::init_tx_db(file_type type, std::string const&& name) {
             break;
 #endif
         case FTR:
-            SCVNS scv_tr_cbor_init(false);
+            SCVNS scv_tr_ftr_init(false);
             break;
         case CFTR:
-            SCVNS scv_tr_cbor_init(true);
+            SCVNS scv_tr_ftr_init(true);
             break;
         case LWFTR:
             lwtr::tx_ftr_init(false);
