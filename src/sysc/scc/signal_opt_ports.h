@@ -93,7 +93,7 @@ public:
 
     SCC_VIRT void bind(const in_if_type& interface_) { sc_core::sc_port_base::bind(const_cast<in_if_type&>(interface_)); }
 
-    SCC_VIRT void bind(in_if_type& interface_) { this->bind(const_cast<const in_if_type&>(interface_)); }
+    SCC_VIRT void bind(in_if_type& interface_) override { this->bind(const_cast<const in_if_type&>(interface_)); }
 
     void operator()(const in_if_type& interface_) { this->bind(interface_); }
 
@@ -115,7 +115,7 @@ public:
 
     bool event() const { return (*this)->event(); }
 
-    virtual const char* kind() const { return "sc_in"; }
+    virtual const char* kind() const override { return "sc_in"; }
 };
 
 template <typename T>::std::ostream& operator<<(::std::ostream& os, const sc_in_opt<T>& a) { return os << a->read(); }
@@ -181,7 +181,7 @@ public:
 
     SCC_VIRT void bind(const in_if_type& interface_) { sc_port_base::bind(const_cast<in_if_type&>(interface_)); }
 
-    SCC_VIRT void bind(in_if_type& interface_) { this->bind(const_cast<const in_if_type&>(interface_)); }
+    SCC_VIRT void bind(in_if_type& interface_) override { this->bind(const_cast<const in_if_type&>(interface_)); }
 
     void operator()(const in_if_type& interface_) { this->bind(interface_); }
 
@@ -211,7 +211,7 @@ public:
 
     bool negedge() const { return (*this)->negedge(); }
 
-    virtual const char* kind() const { return "sc_in"; }
+    virtual const char* kind() const override { return "sc_in"; }
 };
 
 } // namespace scc
@@ -278,7 +278,7 @@ public:
 
     SCC_VIRT void bind(const in_if_type& interface_) { sc_port_base::bind(const_cast<in_if_type&>(interface_)); }
 
-    SCC_VIRT void bind(in_if_type& interface_) { this->bind(const_cast<const in_if_type&>(interface_)); }
+    SCC_VIRT void bind(in_if_type& interface_) override { this->bind(const_cast<const in_if_type&>(interface_)); }
 
     void operator()(const in_if_type& interface_) { this->bind(interface_); }
 
@@ -308,7 +308,7 @@ public:
 
     bool negedge() const { return (*this)->negedge(); }
 
-    virtual const char* kind() const { return "sc_in"; }
+    virtual const char* kind() const override { return "sc_in"; }
 };
 
 template <class T> class sc_inout_opt : public sc_core::sc_port<sc_core::sc_signal_inout_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND> {
@@ -404,7 +404,7 @@ public:
 
     void end_of_elaboration() override;
 
-    virtual const char* kind() const { return "sc_inout"; }
+    virtual const char* kind() const override { return "sc_inout"; }
 
 protected:
     data_type* m_init_val;
@@ -544,7 +544,7 @@ public:
         }
     }
 
-    virtual const char* kind() const { return "sc_inout"; }
+    virtual const char* kind() const override { return "sc_inout"; }
 
 protected:
     data_type* m_init_val;
@@ -664,7 +664,7 @@ public:
         }
     }
 
-    virtual const char* kind() const { return "sc_inout"; }
+    virtual const char* kind() const override { return "sc_inout"; }
 
 protected:
     data_type* m_init_val;
@@ -734,7 +734,7 @@ public:
         return *this;
     }
 
-    virtual const char* kind() const { return "sc_out"; }
+    virtual const char* kind() const override{ return "sc_out"; }
 
 private:
     sc_out_opt(const this_type&) = delete;
