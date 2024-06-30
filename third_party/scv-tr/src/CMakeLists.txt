@@ -15,7 +15,11 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
 )
-target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
+if(TARGET fmt::fmt-header-only)
+	target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt-header-only)
+else()
+	target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
+endif()
 if(TARGET SystemC::systemc)
 	if(USE_CWR_SYSTEMC)
 		get_target_property(INCLS SystemC::systemc INTERFACE_INCLUDE_DIRECTORIES)

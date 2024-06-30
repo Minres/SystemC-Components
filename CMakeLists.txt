@@ -159,6 +159,7 @@ endif()
 ###############################################################################
 add_subdirectory(src/common)
 if(SystemC_FOUND)
+find_package(spdlog)
     add_subdirectory(src/bus_interfaces)
     add_subdirectory(src/components)
     add_subdirectory(src/sysc)
