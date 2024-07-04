@@ -13,8 +13,7 @@ if(TARGET ZLIB::ZLIB)
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
 	)
-	target_include_directories(fstapi PUBLIC ${ZLIB_INCLUDE_DIRS})
-	target_link_libraries(fstapi PRIVATE ${ZLIB_LIBRARIES})
+	target_link_libraries(fstapi PRIVATE ZLIB::ZLIB)
 	if(TARGET lz4::lz4)
 	     target_link_libraries(fstapi PRIVATE lz4::lz4)
 	endif()

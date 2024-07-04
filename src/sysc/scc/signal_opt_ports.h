@@ -22,11 +22,7 @@
 #ifndef _SYSC_SCC_OPT_SIGNAL_PORTS_H_
 #define _SYSC_SCC_OPT_SIGNAL_PORTS_H_
 
-#include "sysc/communication/sc_event_finder.h"
-#include "sysc/communication/sc_port.h"
-#include "sysc/communication/sc_signal_ifs.h"
-#include "sysc/datatypes/bit/sc_logic.h"
-#include "sysc/tracing/sc_trace.h"
+#include <systemc>
 
 #if !defined(SC_DISABLE_VIRTUAL_BIND)
 #define SCC_VIRT virtual
@@ -433,7 +429,9 @@ template <class T> inline void sc_inout_opt<T>::end_of_elaboration() {
 }
 } // namespace scc
 
+#ifndef CWR_SYSTEMC
 SC_API_TEMPLATE_DECL_ sc_core::sc_port<sc_core::sc_signal_inout_if<bool>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+#endif
 
 namespace scc {
 template <>
@@ -551,7 +549,9 @@ protected:
 };
 } // namespace scc
 
+#ifndef CWR_SYSTEMC
 SC_API_TEMPLATE_DECL_ sc_core::sc_port<sc_core::sc_signal_inout_if<sc_dt::sc_logic>, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+#endif
 
 namespace scc {
 template <>

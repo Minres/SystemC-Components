@@ -153,6 +153,11 @@ if(SLSSystemC_FOUND)
   set(SystemC_DEFINITIONS ${PC_SystemC_CFLAGS_OTHER})
 endif()
 
+message("SystemC_DEFINITIONS=[${SystemC_DEFINITIONS}]")
+message("SystemC_INCLUDE_DIRS=[${SystemC_INCLUDE_DIRS}]")
+message("SystemC_LIBRARY_DIRS=[${SystemC_LIBRARY_DIRS}]")
+message("SystemC_LIBRARIES=[${SystemC_LIBRARIES}]")
+
 if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
   add_library(SystemC::systemc UNKNOWN IMPORTED)
   set_target_properties(SystemC::systemc PROPERTIES
