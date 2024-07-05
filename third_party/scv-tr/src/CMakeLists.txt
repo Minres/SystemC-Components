@@ -15,11 +15,10 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
 )
-if(TARGET fmt::fmt-header-only)
+if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux" AND TARGET fmt::fmt-header-only)
 	target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt-header-only)
 else()
-	target_compile_definitions(${PROJECT_NAME} PRIVATE FMT_HEADER_ONLY)
-	target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
+    target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
 endif()
 if(TARGET SystemC::systemc)
 	if(USE_CWR_SYSTEMC)
