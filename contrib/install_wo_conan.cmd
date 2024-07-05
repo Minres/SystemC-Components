@@ -1,158 +1,85 @@
-#!/bin/bash
-##
+@REM call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\VsDevCmd.bat"
+@REM call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"
 
-export CXX_STD=14
-export CC=$(type -p gcc)
-export CXX=$(type -p g++)
-[ -z "${BUILD_TYPE}" ] && BUILD_TYPE=RelWithDebInfo
-if [ -z "${INSTALL_ROOT}" ]; then
-	if [ -z "${1}" ]; then
-		echo "Missing install dir argument"
-		exit 1
-	fi
-	export INSTALL_ROOT=$1
-fi
-export SC_VERSION=2.3.4
-export SYSTEMC_HOME=${INSTALL_ROOT}/systemc
-export SYSTEMCAMS_HOME=${INSTALL_ROOT}/systemc
-export SCC_INSTALL=${INSTALL_ROOT}/scc
-DISTRO=$(lsb_release -i -s)
-[ "$DISTRO" == "Ubuntu" ] || BOOST_LIBDIR=--libdir=${SCC_INSTALL}/lib64
-[ "$DISTRO" == "Ubuntu" ] || YAML_LIBDIR=-DLIB_SUFFIX=64
-CMAKE_COMMON_SETTINGS="-DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DBUILD_SHARED_LIBS=OFF -DCMAKE_CXX_STANDARD=${CXX_STD}"
-BOOST_SETTINGS="link=static cxxflags='-std=c++${CXX_STD}'"
-############################################################################################
-#
-############################################################################################
-function build_boost {
-	export BOOST_LIB_EXCLUDE=contract,fiber,graph,graph_parallel,iostreams,json,locale,log,math,mpi,nowide,python,random,stacktrace,test,timer,wave
+set CURR_LOC=%cd%
+set INSTALL_DIR=%CURR_LOC%\..\SCC-Install
+:parse
+IF "%1"=="" GOTO endparse
+set INSTALL_DIR=%1
+:endparse
 
-	if [ ! -d boost_1_80_0 ]; then
-	    [ -f boost_1_80_0.tar.bz2 ] || wget https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.bz2
-	    tar xjf boost_1_80_0.tar.bz2
-	fi
-	(cd boost_1_80_0; \
-	  ./bootstrap.sh --prefix=${SCC_INSTALL} ${BOOST_LIBDIR} --without-libraries=${BOOST_LIB_EXCLUDE};\
-	  ./b2 ${BOOST_SETTINGS} install) || exit 2
-}
-############################################################################################
-#
-############################################################################################
-function build_fmt {
-	if [ ! -d fmt ]; then
-	    if [ ! -f fmt_8.0.1.tar.gz ]; then
-		git clone --depth 1 --branch 8.0.1 -c advice.detachedHead=false https://github.com/fmtlib/fmt.git
-		tar czf fmt_8.0.1.tar.gz fmt --exclude=.git
-	    else
-		tar xzf fmt_8.0.1.tar.gz
-	    fi
-	fi
-	cmake -S fmt -B build/fmt ${CMAKE_COMMON_SETTINGS} -DCMAKE_INSTALL_PREFIX=${SCC_INSTALL} || exit 1
-	cmake --build build/fmt -j 10 --target install || exit 2
-}
-############################################################################################
-#
-############################################################################################
-function build_spdlog {
-	if [ ! -d spdlog ]; then
-	    if [ ! -f spdlog_1.9.2.tar.gz ]; then
-		git clone --depth 1 --branch v1.9.2 -c advice.detachedHead=false https://github.com/gabime/spdlog.git
-		tar czf spdlog_1.9.2.tar.gz spdlog --exclude=.git
-	    else
-		tar xzf spdlog_1.9.2.tar.gz
-	    fi
-	fi
-	cmake -S spdlog -B build/spdlog ${CMAKE_COMMON_SETTINGS} -DCMAKE_INSTALL_PREFIX=${SCC_INSTALL} || exit 1
-	cmake --build build/spdlog -j 10 --target install || exit 2
-}
-############################################################################################
-#
-############################################################################################
-function build_yamlcpp {
-	if [ ! -d yaml-cpp ]; then
-	    if [ ! -f yaml-cpp_0.6.3.tar.gz ]; then
-		git clone --depth 1 --branch yaml-cpp-0.6.3 -c advice.detachedHead=false https://github.com/jbeder/yaml-cpp.git
-		tar czf yaml-cpp_0.6.3.tar.gz yaml-cpp --exclude=.git
-	    else
-		tar xzf yaml-cpp_0.6.3.tar.gz
-	    fi
-	fi
-	cmake -S yaml-cpp -B build/yaml-cpp ${CMAKE_COMMON_SETTINGS} -DCMAKE_INSTALL_PREFIX=${SCC_INSTALL} \
-		-DYAML_CPP_BUILD_TESTS=OFF -DYAML_CPP_BUILD_TOOLS=OFF ${YAML_LIBDIR} || exit 1
-	cmake --build build/yaml-cpp -j 10 --target install || exit 2
-	rm  -rf ~/.cmake/packages/yaml-cpp
-}
-############################################################################################
-#
-############################################################################################
-function build_lz4 {
-	if [ ! -d lz4 ]; then
-	    if [ ! -f lz4_1.9.4.tar.gz ]; then
-		git clone --depth 1 --branch v1.9.4 -c advice.detachedHead=false https://github.com/lz4/lz4.git
-		tar czf lz4_1.9.4.tar.gz yaml-cpp --exclude=.git
-	    else
-		tar xzf lz4_1.9.4.tar.gz
-	    fi
-	fi
-	make -C lz4 clean all || exit 1
-	make -C lz4 install PREFIX=${SCC_INSTALL} LIBDIR=${SCC_INSTALL}/lib64 || exit 2
-	export PKG_CONFIG_PATH=${SCC_INSTALL}/lib64/pkgconfig
-}
-############################################################################################
-#
-############################################################################################
-function build_systemc {
-	if [ ! -d systemc ]; then
-	    if [ ! -f systemc_${SC_VERSION}.tar.gz ]; then
-		git clone --depth 1 --branch 2.3.4 -c advice.detachedHead=false https://github.com/accellera-official/systemc.git
-		tar czf systemc_${SC_VERSION}.tar.gz systemc --exclude=.git
-	    else
-		tar xzf systemc_${SC_VERSION}.tar.gz
-	    fi
-	fi
-	cmake -S systemc -B build/systemc ${CMAKE_COMMON_SETTINGS} -DCMAKE_INSTALL_PREFIX=${SYSTEMC_HOME} -DENABLE_PHASE_CALLBACKS_TRACING=OFF || exit 1
-	cmake --build build/systemc -j 10 --target install || exit 2
-	rm  -rf ~/.cmake/packages/SystemC*
-}
-############################################################################################
-#
-############################################################################################
-function build_systemc_ams {
-	if [ ! -d systemc-ams-${SC_VERSION} ]; then
-	    if [ ! -f systemc-ams-${SC_VERSION}.tar.gz ]; then
-		echo "systemc-ams-${SC_VERSION}.tar.gz missing!"
-		exit 2
-            fi
-	    tar xzf systemc-ams-${SC_VERSION}.tar.gz
-	fi
-	cmake -S systemc-ams-${SC_VERSION} -B build/systemc-ams ${CMAKE_COMMON_SETTINGS} -DCMAKE_INSTALL_PREFIX=${SYSTEMCAMS_HOME} || exit 1
-	cmake --build build/systemc-ams -j 10 --target install || exit 2
-	rm  -rf ~/.cmake/packages/SystemC*
-}
-############################################################################################
-#
-############################################################################################
-function build_scc {
-	if [ ! -d scc ]; then
-	    if [ ! -f scc.tar.gz ]; then
-		git clone --recursive --branch develop -c advice.detachedHead=false https://github.com/Minres/SystemC-Components.git scc
-		tar czf scc.tar.gz scc --exclude=.git
-	    else
-		tar xzf scc.tar.gz
-	    fi
-        elif [ ! -f scc.tar.gz ]; then
-            (cd scc; git pull; git submodule update --recrusive)
-            tar czf scc.tar.gz scc --exclude=.git
-	fi
-	cmake -S scc -B build/scc -Wno-dev ${CMAKE_COMMON_SETTINGS} -DCMAKE_INSTALL_PREFIX=${SCC_INSTALL} -DENABLE_CONAN=OFF \
-		-DBoost_NO_SYSTEM_PATHS=TRUE -DBOOST_ROOT=${SCC_INSTALL} -DBoost_NO_WARN_NEW_VERSIONS=ON || exit 1
-	cmake --build build/scc -j 10 --target install || exit 2
-}
+set SC_VERSION=2.3.4
+set CXX_STD=14
+set SCC_HOME=%INSTALL_DIR%\scc
+set SYSTEMC_HOME=%INSTALL_DIR%\systemc
 
-build_boost
-build_fmt
-build_spdlog
-build_yamlcpp
-build_systemc
-build_systemc_ams
-build_scc
+If "%VisualStudioVersion%" equ "17.0" goto seventeen
+If "%VisualStudioVersion%" equ "16.0" goto sixteen
+If "%VisualStudioVersion%" equ "15.0" goto fifteen
+echo No valid VisualStudioVersion found, did you load envvars?
+EXIT /B 1
+:fifteen:
+set GENERATOR=Visual Studio 15 2017
+set TOOLSET=msvc-14.1
+goto start_build
+:sixteen:
+set GENERATOR=Visual Studio 16 2019
+set TOOLSET=msvc-14.2
+goto start_build
+:seventeen:
+set GENERATOR=Visual Studio 17 2022
+set TOOLSET=msvc-14.3
+:start_build:
+
+set CMAKE_OPTS=-G "%GENERATOR%" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_CXX_STANDARD=%CXX_STD%
+set BOOST_LIB_EXCLUDE=--without-contract --without-fiber --without-graph --without-graph_parallel --without-iostreams --without-json --without-locale --without-log --without-math --without-mpi --without-nowide --without-python --without-random --without-stacktrace --without-test --without-timer --without-wave
+@REM ############################################################################################
+@REM build_boost
+@REM ############################################################################################
+if NOT EXIST "boost_1_85_0" tar xjvf boost_1_85_0.tar.bz2
+pushd boost_1_85_0
+@call .\bootstrap.bat
+b2 -j8 toolset=%TOOLSET% address-model=64 architecture=x86 link=static threading=multi runtime-link=shared --build-type=minimal --build-dir=..\build\boost --stagedir=..\build\boost --prefix=%SCC_HOME% %BOOST_LIB_EXCLUDE% install
+popd
+@REM ############################################################################################
+@REM build_fmt
+@REM ############################################################################################
+if NOT EXIST "fmt" tar xzvf fmt_8.0.1.tar.gz
+cmake -S fmt -B build\fmt %CMAKE_OPTS% -DCMAKE_INSTALL_PREFIX=%SCC_HOME% -DBUILD_SHARED_LIBS=ON
+cmake --build build\fmt -j 10 --target install
+@REM ############################################################################################
+@REM build_spdlog
+@REM ############################################################################################
+if NOT EXIST "spdlog" tar xzvf spdlog_1.9.2.tar.gz
+cmake -S spdlog -B build\spdlog %CMAKE_OPTS% -DCMAKE_INSTALL_PREFIX=%SCC_HOME% -DSPDLOG_FMT_EXTERNAL=ON
+cmake --build build\spdlog -j 10 --config Release --target install
+@REM ############################################################################################
+@REM build_yamlcpp
+@REM ############################################################################################
+if NOT EXIST "yaml-cpp" tar xzvf yaml-cpp_0.6.3.tar.gz
+cmake -S yaml-cpp -B build\yaml-cpp %CMAKE_OPTS% -DCMAKE_INSTALL_PREFIX=%SCC_HOME% -DYAML_CPP_BUILD_TESTS=OFF -DYAML_CPP_BUILD_TOOLS=OFF
+cmake --build build\yaml-cpp -j 10 --config Release --target install
+@REM ############################################################################################
+@REM build_zlib
+@REM ############################################################################################
+if NOT EXIST "zlib-1.3.1" tar xzvf zlib-1.3.1.tar.gz
+cmake -S zlib-1.3.1 -B build\zlib %CMAKE_OPTS% -DCMAKE_INSTALL_PREFIX=%SCC_HOME%
+cmake --build build\zlib -j 10 --config Release --target install
+@REM ############################################################################################
+@REM build_systemc
+@REM ############################################################################################
+if NOT EXIST "systemc" tar xzvf systemc_%SC_VERSION%.tar.gz
+cmake -S systemc -B build\systemc %CMAKE_OPTS% -DENABLE_PHASE_CALLBACKS_TRACING=OFF -DCMAKE_INSTALL_PREFIX=%SYSTEMC_HOME%
+cmake --build build\systemc -j 10 --config Release --target install
+@REM ############################################################################################
+@REM build_systemc_ams
+@REM ############################################################################################
+if NOT EXIST "systemc-ams-%SC_VERSION%" tar xzvf systemc-ams-%SC_VERSION%.tar.gz
+cmake -S systemc-ams-%SC_VERSION% -B build/systemcams %CMAKE_OPTS% -DCMAKE_INSTALL_PREFIX=%SYSTEMC_HOME% 
+cmake --build build/systemcams -j 10 --config Release --target install
+@REM ############################################################################################
+@REM build_scc
+@REM ############################################################################################
+if NOT EXIST "scc" tar xzvf scc.tar.gz
+cmake -S scc -B build\scc -Wno-dev %CMAKE_OPTS% -DCMAKE_INSTALL_PREFIX=%SCC_HOME% -DENABLE_CONAN=OFF -DBoost_NO_SYSTEM_PATHS=TRUE -DBOOST_ROOT=%SCC_HOME% -DBOOST_INCLUDEDIR=%SCC_HOME%\include\boost-1_80 -DBoost_NO_WARN_NEW_VERSIONS=ON -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DBoost_USE_STATIC_RUNTIME=OFF
+cmake --build build\scc -j 10 --config Release --target install
