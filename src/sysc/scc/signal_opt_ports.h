@@ -35,12 +35,12 @@ namespace scc {
 template <class T> class sc_in_opt : public sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND> {
 public:
     using data_type = T;
-    using if_type = sc_core::sc_signal_in_if<data_type> ;
-    using base_type = sc_core::sc_port<if_type, 1, sc_core::SC_ZERO_OR_MORE_BOUND> ;
-    using this_type = sc_in_opt<data_type> ;
-    using base_port_type = typename base_type::port_type ;
+    using if_type = sc_core::sc_signal_in_if<data_type>;
+    using base_type = sc_core::sc_port<if_type, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
+    using this_type = sc_in_opt<data_type>;
+    using base_port_type = typename base_type::port_type;
 
-    using in_if_type = if_type ;
+    using in_if_type = if_type;
     using in_port_type = base_type;
     using inout_if_type = sc_core::sc_signal_inout_if<data_type>;
     using inout_port_type = sc_core::sc_port<inout_if_type, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
@@ -96,7 +96,7 @@ public:
 
     void operator()(in_port_type& parent_) { this->bind(parent_); }
 
-    SCC_VIRT void bind(sc_core::sc_port<if_type, 1, sc_core::SC_ONE_OR_MORE_BOUND>& parent_){ sc_core::sc_port_base::bind(parent_); }
+    SCC_VIRT void bind(sc_core::sc_port<if_type, 1, sc_core::SC_ONE_OR_MORE_BOUND>& parent_) { sc_core::sc_port_base::bind(parent_); }
 
     void operator()(sc_core::sc_port<if_type, 1, sc_core::SC_ONE_OR_MORE_BOUND>& parent_) { this->bind(parent_); }
 
@@ -741,7 +741,7 @@ public:
         return *this;
     }
 
-    virtual const char* kind() const override{ return "sc_out"; }
+    virtual const char* kind() const override { return "sc_out"; }
 
 private:
     sc_out_opt(const this_type&) = delete;
