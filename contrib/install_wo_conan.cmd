@@ -75,11 +75,11 @@ cmake --build build\systemc -j 10 --config Release --target install
 @REM build_systemc_ams
 @REM ############################################################################################
 if NOT EXIST "systemc-ams-%SC_VERSION%" tar xzvf systemc-ams-%SC_VERSION%.tar.gz
-cmake -S systemc-ams-%SC_VERSION% -B build/systemcams %CMAKE_OPTS% -DCMAKE_INSTALL_PREFIX=%SYSTEMC_HOME% 
+cmake -S systemc-ams-%SC_VERSION% -B build/systemcams %CMAKE_OPTS% -DCMAKE_INSTALL_PREFIX=%SYSTEMC_HOME% -DCMAKE_CXX_FLAGS="/vmg"
 cmake --build build/systemcams -j 10 --config Release --target install
 @REM ############################################################################################
 @REM build_scc
 @REM ############################################################################################
 if NOT EXIST "scc" tar xzvf scc.tar.gz
-cmake -S scc -B build\scc -Wno-dev %CMAKE_OPTS% -DCMAKE_INSTALL_PREFIX=%SCC_HOME% -DENABLE_CONAN=OFF -DBoost_NO_SYSTEM_PATHS=TRUE -DBOOST_ROOT=%SCC_HOME% -DBOOST_INCLUDEDIR=%SCC_HOME%\include\boost-1_80 -DBoost_NO_WARN_NEW_VERSIONS=ON -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DBoost_USE_STATIC_RUNTIME=OFF
+cmake -S scc -B build\scc -Wno-dev %CMAKE_OPTS% -DCMAKE_INSTALL_PREFIX=%SCC_HOME% -DENABLE_CONAN=OFF -DBoost_NO_SYSTEM_PATHS=TRUE -DBOOST_ROOT=%SCC_HOME% -DBOOST_INCLUDEDIR=%SCC_HOME%\include\boost-1_85 -DBoost_NO_WARN_NEW_VERSIONS=ON -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DBoost_USE_STATIC_RUNTIME=OFF
 cmake --build build\scc -j 10 --config Release --target install
