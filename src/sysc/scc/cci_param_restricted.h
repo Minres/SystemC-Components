@@ -16,7 +16,7 @@
 #ifndef _SCC_CCI_PARAM_RESTRICTED_H_
 #define _SCC_CCI_PARAM_RESTRICTED_H_
 
-#include <cci_cfg/cci_param_typed.h>
+#include <cci_configuration>
 #include <unordered_set>
 
 namespace scc {

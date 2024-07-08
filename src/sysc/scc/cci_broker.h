@@ -17,7 +17,10 @@
 #ifndef _SYSC_SCC_CCI_BROKER_H_
 #define _SYSC_SCC_CCI_BROKER_H_
 
-#include <cci_utils/broker.h>
+#include <cci_configuration>
+#if CCI_VERSION_MAJOR == 1 && CCI_VERSION_MINOR == 0 && CCI_VERSION_PATCH == 0
+#include <cci_utils/consuming_broker.h>
+#endif
 #include <regex>
 #include <string>
 #include <unordered_map>

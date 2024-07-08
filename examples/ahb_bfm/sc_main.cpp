@@ -1,6 +1,6 @@
 #include <ahb/pin/initiator.h>
 #include <ahb/pin/target.h>
-#include <cci_utils/broker.h>
+#include <cci_configuration>
 #include <fstream>
 #include <scc/configurable_tracer.h>
 #include <scc/configurer.h>

@@ -1,0 +1,11 @@
+H_FILES += \
+	utils/broker.h \
+	utils/consuming_broker.h
+	
+CXX_FILES += \
+	utils/broker.cpp \
+	utils/consuming_broker.cpp
+
+INCDIRS += utils
+
+## Taf!

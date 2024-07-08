@@ -1,0 +1,23 @@
+H_FILES += \
+	core/cci_callback_impl.h \
+	core/cci_callback.h \
+	core/cci_cmnhdr.h \
+	core/cci_core_types.h \
+	core/cci_filtered_range.h \
+	core/cci_meta.h \
+	core/cci_name_gen.h \
+	core/cci_value_converter.h \
+	core/cci_value_iterator.h \
+	core/cci_value.h \
+	core/cci_version.h \
+	core/rapidjson.h \
+	core/systemc.h
+
+CXX_FILES += \
+	core/cci_name_gen.cpp \
+	core/cci_value_converter.cpp \
+	core/cci_value.cpp
+
+INCDIRS += core
+
+## Taf!

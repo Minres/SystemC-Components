@@ -19,7 +19,6 @@
 #include "rapidjson/error/en.h"
 #include "report.h"
 #include <cci_configuration>
-#include <cci_utils/broker.h>
 #include <cstring>
 #include <fmt/format.h>
 #include <fstream>

@@ -21,7 +21,7 @@
 #include <axi/fsm/base.h>
 #include <axi/fsm/protocol_fsm.h>
 #include <axi/signal_if.h>
-#include <cci_cfg/cci_param_typed.h>
+#include <cci_configuration>
 #include <scc/fifo_w_cb.h>
 #include <systemc>
 #include <tlm/scc/tlm_mm.h>

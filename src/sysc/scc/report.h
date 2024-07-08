@@ -18,7 +18,7 @@
 #define _SCC_REPORT_H_
 
 #include "utilities.h"
-#include <cci_core/cci_value_converter.h>
+#include <cci_configuration>
 #include <cstring>
 #include <iomanip>
 #include <iostream>

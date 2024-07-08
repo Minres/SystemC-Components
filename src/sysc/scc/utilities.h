@@ -32,7 +32,7 @@
 #pragma GCC diagnostic pop
 #endif
 
-#include <cci_cfg/cci_param_typed.h>
+#include <cci_configuration>
 #include <locale>
 
 /** \ingroup scc-sysc
