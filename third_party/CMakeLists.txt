@@ -1,5 +1,7 @@
 add_subdirectory(fst)
-add_subdirectory(rapidjson-1.1)
+if(NOT RapidJSON_FOUND)
+    add_subdirectory(rapidjson-1.1)
+endif()
 ###############################################################################
 # build tlm-interfaces
 ###############################################################################
