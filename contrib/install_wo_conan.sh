@@ -142,7 +142,7 @@ function build_scc {
         fi
     elif [ ! -f scc.tar.gz ]; then
         (cd scc; git pull; git submodule update --recursive)
-        tar czf --exclude=.git scc.tar.gz scc 
+        tar czf scc.tar.gz --exclude=.git scc 
     fi
     cmake -S scc -B build/scc -Wno-dev ${CMAKE_COMMON_SETTINGS} -DCMAKE_INSTALL_PREFIX=${SCC_INSTALL} -DENABLE_CONAN=OFF \
         -DBoost_NO_SYSTEM_PATHS=TRUE -DBOOST_ROOT=${SCC_INSTALL} -DBoost_NO_WARN_NEW_VERSIONS=ON || exit 1
