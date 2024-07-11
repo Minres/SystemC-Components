@@ -27,7 +27,7 @@
 #else
 #error "Cannot compile file because of an unknown method to retrieve OS time."
 #endif
-#if !defined(WIN32) and !defined( __APPLE__)
+#if !defined(WIN32) and !defined(__APPLE__)
 #include <malloc.h>
 #endif
 
@@ -85,7 +85,7 @@ void perf_estimator::beat() {
     if(sc_time_stamp().value())
         SCCINFO("perf_estimator") << "Heart beat, rss mem: " << get_memory() << "kB";
     next_trigger(beat_delay);
-#if !defined(WIN32) and !defined( __APPLE__)
+#if !defined(WIN32) and !defined(__APPLE__)
     malloc_trim(0);
 #endif
 }

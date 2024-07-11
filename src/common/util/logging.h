@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include <array>
 #include <atomic>
 #include <cassert>
 #include <cstdio>
@@ -26,7 +27,6 @@
 #include <mutex>
 #include <sstream>
 #include <string>
-#include <array>
 #include <vector>
 #if defined(WIN32)
 #include <array>
