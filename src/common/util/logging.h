@@ -28,6 +28,12 @@
 #include <string>
 #include <array>
 #include <vector>
+#if defined(WIN32)
+#include <array>
+#include <windows.h>
+#else
+#include <sys/time.h>
+#endif
 
 //! log level definitions
 #define LEVELS(L) L(NONE) L(FATAL) L(ERR) L(WARN) L(INFO) L(DEBUG) L(TRACE) L(TRACEALL)
@@ -263,10 +269,6 @@ class DEFAULT {};
     LOGGER(CATEGORY)().get(::logging::LEVEL, #CATEGORY)
 #endif
 #if defined(WIN32)
-
-#include <array>
-#include <windows.h>
-
 inline std::string now_time() {
     const int MAX_LEN = 200;
     char buffer[MAX_LEN];
@@ -277,11 +279,7 @@ inline std::string now_time() {
     std::sprintf(result, "%s.%03ld", buffer, (long)(GetTickCount() - first) % 1000);
     return result;
 }
-
 #else
-
-#include <sys/time.h>
-
 inline std::string now_time() {
     static std::mutex mtx;
     static std::array<char, 11> buffer;
@@ -297,7 +295,6 @@ inline std::string now_time() {
     sprintf(result.data(), "%s.%03ld", buffer.data(), (long)tv.tv_usec / 1000);
     return result.data();
 }
-
 #endif // WIN32
 //! a print function for a vector
 template <typename T> std::ostream& operator<<(std::ostream& stream, const std::vector<T>& vector) {

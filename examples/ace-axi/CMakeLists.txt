@@ -1,8 +1,12 @@
 project (ace_axi_example)
 
-add_executable(ace_axi_example sc_main.cpp)
-target_include_directories(ace_axi_example PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries (ace_axi_example PUBLIC tlm-interfaces)
-target_link_libraries (ace_axi_example PUBLIC scc)
-target_link_libraries (ace_axi_example LINK_PUBLIC ${CMAKE_THREAD_LIBS_INIT})
-target_link_libraries (ace_axi_example LINK_PUBLIC ${CMAKE_DL_LIBS})
+add_executable(${PROJECT_NAME} sc_main.cpp)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries (${PROJECT_NAME} PUBLIC tlm-interfaces)
+target_link_libraries (${PROJECT_NAME} PUBLIC scc)
+target_link_libraries (${PROJECT_NAME} LINK_PUBLIC ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries (${PROJECT_NAME} LINK_PUBLIC ${CMAKE_DL_LIBS})
+if(APPLE)
+    set_target_properties (${PROJECT_NAME} PROPERTIES LINK_FLAGS
+        -Wl,-U,_sc_main,-U,___sanitizer_start_switch_fiber,-U,___sanitizer_finish_switch_fiber)
+endif()

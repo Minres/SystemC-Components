@@ -34,7 +34,7 @@ public:
     sc_core::sc_signal<bool> HSEL{"HSEL"};
 
     ahb::pin::target<WIDTH, 32> target{"target"};
-    tlm::scc::target_mixin<tlm::tlm_target_socket<0>> tsck{"tsck"};
+    tlm::scc::target_mixin<tlm::tlm_target_socket<scc::LT>> tsck{"tsck"};
 
     testbench(sc_module_name nm)
     : sc_module(nm) {
