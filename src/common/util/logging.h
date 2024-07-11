@@ -26,9 +26,6 @@
 #include <mutex>
 #include <sstream>
 #include <string>
-#ifdef __unix__
-#include <sys/time.h>
-#endif
 #include <array>
 #include <vector>
 
@@ -282,6 +279,8 @@ inline std::string now_time() {
 }
 
 #else
+
+#include <sys/time.h>
 
 inline std::string now_time() {
     static std::mutex mtx;

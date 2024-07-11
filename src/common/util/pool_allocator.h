@@ -27,7 +27,7 @@
 #include <cstdlib>
 #endif
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) || defined(__APPLE__)
 #define NOEXCEPT
 #else
 #define NOEXCEPT _GLIBCXX_USE_NOEXCEPT
