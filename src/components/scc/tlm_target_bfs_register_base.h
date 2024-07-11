@@ -97,7 +97,7 @@ public:
      *                 be overridden in bitfields or the read callback.
      */
     bitfield_register(sc_core::sc_module_name name, size_t offset, datatype_t resetValue = 0, datatype_t writeMask = -1,
-                                datatype_t readMask = -1)
+                      datatype_t readMask = -1)
     : sc_core::sc_object{name}
     , offset{offset}
     , resetValue{resetValue}
