@@ -56,7 +56,7 @@ namespace scc {
  */
 template <typename datatype_t> class abstract_bitfield {
 public:
-    constexpr abstract_bitfield(std::string name, size_t bitOffset, size_t bitSize, std::string urid)
+    abstract_bitfield(std::string name, size_t bitOffset, size_t bitSize, std::string urid)
     : bitOffset{bitOffset}
     , bitSize{bitSize}
     , name{std::move(name)}
@@ -96,7 +96,7 @@ public:
      * @param readMask Bits that are cleared in this field always read as 0. Can
      *                 be overridden in bitfields or the read callback.
      */
-    constexpr bitfield_register(sc_core::sc_module_name name, size_t offset, datatype_t resetValue = 0, datatype_t writeMask = -1,
+    bitfield_register(sc_core::sc_module_name name, size_t offset, datatype_t resetValue = 0, datatype_t writeMask = -1,
                                 datatype_t readMask = -1)
     : sc_core::sc_object{name}
     , offset{offset}

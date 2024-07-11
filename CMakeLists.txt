@@ -19,7 +19,9 @@ include(Common)
 
 if(CMAKE_PROJECT_NAME STREQUAL "scc")
     message(STATUS "Building SCC in standalone mode")
-    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+	set(CMAKE_CXX_STANDARD_REQUIRED ON)
+	set(CMAKE_CXX_EXTENSIONS OFF)
+	set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
     include(GNUInstallDirs)
     if(ENABLE_CONAN)

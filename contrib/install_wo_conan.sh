@@ -145,7 +145,7 @@ function build_scc {
         tar czf scc.tar.gz --exclude=.git scc 
     fi
     cmake -S scc -B build/scc -Wno-dev ${CMAKE_COMMON_SETTINGS} -DCMAKE_INSTALL_PREFIX=${SCC_INSTALL} -DENABLE_CONAN=OFF \
-        -DBoost_NO_SYSTEM_PATHS=TRUE -DBOOST_ROOT=${SCC_INSTALL} -DBoost_NO_WARN_NEW_VERSIONS=ON || exit 1
+        -DBoost_NO_SYSTEM_PATHS=TRUE -DBOOST_ROOT=${SCC_INSTALL} -DBoost_NO_WARN_NEW_VERSIONS=ON -DSCC_LIB_ONLY=ON || exit 1
     cmake --build build/scc -j 10 --target install || exit 2
 }
 
