@@ -149,19 +149,19 @@ template <typename CFG, typename TYPES = master_types> struct aw_axi {
 
     aw_axi() = default;
     aw_axi(const char* prefix)
-    : aw_id{concat(prefix, "aw_id").c_str()}
-    , aw_addr{concat(prefix, "aw_addr").c_str()}
-    , aw_ready{concat(prefix, "aw_ready").c_str()}
-    , aw_lock{concat(prefix, "aw_lock").c_str()}
-    , aw_valid{concat(prefix, "aw_valid").c_str()}
-    , aw_prot{concat(prefix, "aw_prot").c_str()}
-    , aw_size{concat(prefix, "aw_size").c_str()}
-    , aw_cache{concat(prefix, "aw_cache").c_str()}
-    , aw_burst{concat(prefix, "aw_burst").c_str()}
-    , aw_qos{concat(prefix, "aw_qos").c_str()}
-    , aw_region{concat(prefix, "aw_region").c_str()}
-    , aw_len{concat(prefix, "aw_len").c_str()}
-    , aw_user{concat(prefix, "aw_user").c_str()} {}
+    : aw_id{concat(prefix, "_id").c_str()}
+    , aw_addr{concat(prefix, "_addr").c_str()}
+    , aw_ready{concat(prefix, "_ready").c_str()}
+    , aw_lock{concat(prefix, "_lock").c_str()}
+    , aw_valid{concat(prefix, "_valid").c_str()}
+    , aw_prot{concat(prefix, "_prot").c_str()}
+    , aw_size{concat(prefix, "_size").c_str()}
+    , aw_cache{concat(prefix, "_cache").c_str()}
+    , aw_burst{concat(prefix, "_burst").c_str()}
+    , aw_qos{concat(prefix, "_qos").c_str()}
+    , aw_region{concat(prefix, "_region").c_str()}
+    , aw_len{concat(prefix, "_len").c_str()}
+    , aw_user{concat(prefix, "_user").c_str()} {}
 
     template <typename OTYPES> void bind_aw(aw_axi<CFG, OTYPES>& o) {
         aw_id.bind(o.aw_id);
@@ -196,15 +196,15 @@ template <typename CFG, typename TYPES = master_types> struct wdata_axi {
 
     wdata_axi() = default;
     wdata_axi(const char* prefix)
-    : w_id{concat(prefix, "w_id").c_str()}
-    , w_data{concat(prefix, "w_data").c_str()}
-    , w_strb{concat(prefix, "w_strb").c_str()}
-    , w_last{concat(prefix, "w_last").c_str()}
-    , w_valid{concat(prefix, "w_valid").c_str()}
-    , w_ready{concat(prefix, "w_ready").c_str()}
-    , w_user{concat(prefix, "w_user").c_str()}
-    , w_ack{concat(prefix, "w_ack").c_str()} // only ACE
-    , w_trace{concat(prefix, "w_trace").c_str()} {}
+    : w_id{concat(prefix, "_id").c_str()}
+    , w_data{concat(prefix, "_data").c_str()}
+    , w_strb{concat(prefix, "_strb").c_str()}
+    , w_last{concat(prefix, "_last").c_str()}
+    , w_valid{concat(prefix, "_valid").c_str()}
+    , w_ready{concat(prefix, "_ready").c_str()}
+    , w_user{concat(prefix, "_user").c_str()}
+    , w_ack{concat(prefix, "_ack").c_str()} // only ACE
+    , w_trace{concat(prefix, "_trace").c_str()} {}
 
     template <typename OTYPES> void bind_w(wdata_axi<CFG, OTYPES>& o) {
         w_id.bind(o.w_id);
@@ -234,12 +234,12 @@ template <typename CFG, typename TYPES = master_types> struct b_axi {
 
     b_axi() = default;
     b_axi(const char* prefix)
-    : b_valid{concat(prefix, "b_valid").c_str()}
-    , b_ready{concat(prefix, "b_ready").c_str()}
-    , b_id{concat(prefix, "b_id").c_str()}
-    , b_resp{concat(prefix, "b_resp").c_str()}
-    , b_user{concat(prefix, "b_user").c_str()}
-    , b_trace{concat(prefix, "b_trace").c_str()} {}
+    : b_valid{concat(prefix, "_valid").c_str()}
+    , b_ready{concat(prefix, "_ready").c_str()}
+    , b_id{concat(prefix, "_id").c_str()}
+    , b_resp{concat(prefix, "_resp").c_str()}
+    , b_user{concat(prefix, "_user").c_str()}
+    , b_trace{concat(prefix, "_trace").c_str()} {}
 
     template <typename OTYPES> void bind_b(b_axi<CFG, OTYPES>& o) {
         b_valid.bind(o.b_valid);
@@ -271,19 +271,19 @@ template <typename CFG, typename TYPES = master_types> struct ar_axi {
 
     ar_axi() = default;
     ar_axi(const char* prefix)
-    : ar_id{concat(prefix, "ar_id").c_str()}
-    , ar_addr{concat(prefix, "ar_addr").c_str()}
-    , ar_len{concat(prefix, "ar_len").c_str()}
-    , ar_size{concat(prefix, "ar_size").c_str()}
-    , ar_burst{concat(prefix, "ar_burst").c_str()}
-    , ar_lock{concat(prefix, "ar_lock").c_str()} // only AXI3
-    , ar_cache{concat(prefix, "ar_cache").c_str()}
-    , ar_prot{concat(prefix, "ar_prot").c_str()}
-    , ar_qos{concat(prefix, "ar_qos").c_str()}
-    , ar_region{concat(prefix, "ar_region").c_str()}
-    , ar_valid{concat(prefix, "ar_valid").c_str()}
-    , ar_ready{concat(prefix, "ar_ready").c_str()}
-    , ar_user{concat(prefix, "ar_user").c_str()} {}
+    : ar_id{concat(prefix, "r_id").c_str()}
+    , ar_addr{concat(prefix, "r_addr").c_str()}
+    , ar_len{concat(prefix, "r_len").c_str()}
+    , ar_size{concat(prefix, "r_size").c_str()}
+    , ar_burst{concat(prefix, "r_burst").c_str()}
+    , ar_lock{concat(prefix, "r_lock").c_str()} // only AXI3
+    , ar_cache{concat(prefix, "r_cache").c_str()}
+    , ar_prot{concat(prefix, "r_prot").c_str()}
+    , ar_qos{concat(prefix, "r_qos").c_str()}
+    , ar_region{concat(prefix, "r_region").c_str()}
+    , ar_valid{concat(prefix, "r_valid").c_str()}
+    , ar_ready{concat(prefix, "r_ready").c_str()}
+    , ar_user{concat(prefix, "r_user").c_str()} {}
 
     template <typename OTYPES> void bind_ar(ar_axi<CFG, OTYPES>& o) {
         ar_id.bind(o.ar_id);
@@ -317,14 +317,14 @@ template <typename CFG, typename TYPES = master_types> struct rresp_axi {
 
     rresp_axi() = default;
     rresp_axi(const char* prefix)
-    : r_id{concat(prefix, "r_id").c_str()}
-    , r_data{concat(prefix, "r_data").c_str()}
-    , r_resp{concat(prefix, "r_resp").c_str()}
-    , r_last{concat(prefix, "r_last").c_str()}
-    , r_valid{concat(prefix, "r_valid").c_str()}
-    , r_ready{concat(prefix, "r_ready").c_str()}
-    , r_user{concat(prefix, "r_user").c_str()}
-    , r_trace{concat(prefix, "r_trace").c_str()} {}
+    : r_id{concat(prefix, "_id").c_str()}
+    , r_data{concat(prefix, "_data").c_str()}
+    , r_resp{concat(prefix, "_resp").c_str()}
+    , r_last{concat(prefix, "_last").c_str()}
+    , r_valid{concat(prefix, "_valid").c_str()}
+    , r_ready{concat(prefix, "_ready").c_str()}
+    , r_user{concat(prefix, "_user").c_str()}
+    , r_trace{concat(prefix, "_trace").c_str()} {}
 
     template <typename OTYPES> void bind_r(rresp_axi<CFG, OTYPES>& o) {
         r_id.bind(o.r_id);
@@ -354,15 +354,15 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ace {
 
     rresp_ace() = default;
     rresp_ace(const char* prefix)
-    : r_id{concat(prefix, "r_id").c_str()}
-    , r_data{concat(prefix, "r_data").c_str()}
-    , r_resp{concat(prefix, "r_resp").c_str()}
-    , r_last{concat(prefix, "r_last").c_str()}
-    , r_valid{concat(prefix, "r_valid").c_str()}
-    , r_ready{concat(prefix, "r_ready").c_str()}
-    , r_user{concat(prefix, "r_user").c_str()}
-    , r_trace{concat(prefix, "r_trace").c_str()}
-    , r_ack{concat(prefix, "r_ack").c_str()} {}
+    : r_id{concat(prefix, "_id").c_str()}
+    , r_data{concat(prefix, "_data").c_str()}
+    , r_resp{concat(prefix, "_resp").c_str()}
+    , r_last{concat(prefix, "_last").c_str()}
+    , r_valid{concat(prefix, "_valid").c_str()}
+    , r_ready{concat(prefix, "_ready").c_str()}
+    , r_user{concat(prefix, "_user").c_str()}
+    , r_trace{concat(prefix, "_trace").c_str()}
+    , r_ack{concat(prefix, "_ack").c_str()} {}
 
     template <typename OTYPES> void bind_r(rresp_ace<CFG, OTYPES>& o) {
         r_id.bind(o.r_id);
@@ -387,10 +387,10 @@ template <typename CFG, typename TYPES> struct aw_axi_lite {
 
     aw_axi_lite() = default;
     aw_axi_lite(const char* prefix)
-    : aw_addr{concat(prefix, "aw_addr").c_str()}
-    , aw_ready{concat(prefix, "aw_ready").c_str()}
-    , aw_valid{concat(prefix, "aw_valid").c_str()}
-    , aw_prot{concat(prefix, "aw_prot").c_str()} {}
+    : aw_addr{concat(prefix, "_addr").c_str()}
+    , aw_ready{concat(prefix, "_ready").c_str()}
+    , aw_valid{concat(prefix, "_valid").c_str()}
+    , aw_prot{concat(prefix, "_prot").c_str()} {}
 
     template <typename OTYPES> void bind_aw(aw_axi<CFG, OTYPES>& o) {
         aw_addr.bind(o.aw_addr);
@@ -409,10 +409,10 @@ template <typename CFG, typename TYPES> struct wdata_axi_lite {
 
     wdata_axi_lite() = default;
     wdata_axi_lite(const char* prefix)
-    : w_data{concat(prefix, "w_data").c_str()}
-    , w_strb{concat(prefix, "w_strb").c_str()}
-    , w_valid{concat(prefix, "w_valid").c_str()}
-    , w_ready{concat(prefix, "w_ready").c_str()} {}
+    : w_data{concat(prefix, "_data").c_str()}
+    , w_strb{concat(prefix, "_strb").c_str()}
+    , w_valid{concat(prefix, "_valid").c_str()}
+    , w_ready{concat(prefix, "_ready").c_str()} {}
 
     template <typename OTYPES> void bind_w(wdata_axi<CFG, OTYPES>& o) {
         w_data.bind(o.w_data);
@@ -430,9 +430,9 @@ template <typename CFG, typename TYPES> struct b_axi_lite {
 
     b_axi_lite() = default;
     b_axi_lite(const char* prefix)
-    : b_valid{concat(prefix, "b_valid").c_str()}
-    , b_ready{concat(prefix, "b_ready").c_str()}
-    , b_resp{concat(prefix, "b_resp").c_str()} {}
+    : b_valid{concat(prefix, "_valid").c_str()}
+    , b_ready{concat(prefix, "_ready").c_str()}
+    , b_resp{concat(prefix, "_resp").c_str()} {}
 
     template <typename OTYPES> void bind_b(b_axi<CFG, OTYPES>& o) {
         b_valid.bind(o.b_valid);
@@ -450,10 +450,10 @@ template <typename CFG, typename TYPES> struct ar_axi_lite {
 
     ar_axi_lite() = default;
     ar_axi_lite(const char* prefix)
-    : ar_addr{concat(prefix, "ar_addr").c_str()}
-    , ar_prot{concat(prefix, "ar_prot").c_str()}
-    , ar_valid{concat(prefix, "ar_valid").c_str()}
-    , ar_ready{concat(prefix, "ar_ready").c_str()} {}
+    : ar_addr{concat(prefix, "_addr").c_str()}
+    , ar_prot{concat(prefix, "_prot").c_str()}
+    , ar_valid{concat(prefix, "_valid").c_str()}
+    , ar_ready{concat(prefix, "_ready").c_str()} {}
 
     template <typename OTYPES> void bind_ar(ar_axi<CFG, OTYPES>& o) {
         ar_addr.bind(o.ar_addr);
@@ -472,10 +472,10 @@ template <typename CFG, typename TYPES> struct rresp_axi_lite {
 
     rresp_axi_lite() = default;
     rresp_axi_lite(const char* prefix)
-    : r_data{concat(prefix, "r_data").c_str()}
-    , r_resp{concat(prefix, "r_resp").c_str()}
-    , r_valid{concat(prefix, "r_valid").c_str()}
-    , r_ready{concat(prefix, "r_ready").c_str()} {}
+    : r_data{concat(prefix, "_data").c_str()}
+    , r_resp{concat(prefix, "_resp").c_str()}
+    , r_valid{concat(prefix, "_valid").c_str()}
+    , r_ready{concat(prefix, "_ready").c_str()} {}
 
     template <typename OTYPES> void bind_r(rresp_axi<CFG, OTYPES>& o) {
         r_data.bind(o.r_data);
@@ -507,24 +507,24 @@ template <typename CFG, typename TYPES = master_types> struct ar_ace {
 
     ar_ace() = default;
     ar_ace(const char* prefix)
-    : ar_id{concat(prefix, "ar_id").c_str()}
-    , ar_addr{concat(prefix, "ar_addr").c_str()}
-    , ar_len{concat(prefix, "ar_len").c_str()}
-    , ar_size{concat(prefix, "ar_size").c_str()}
-    , ar_burst{concat(prefix, "ar_burst").c_str()}
-    , ar_lock{concat(prefix, "ar_lock").c_str()} // only AXI3
-    , ar_cache{concat(prefix, "ar_cache").c_str()}
-    , ar_prot{concat(prefix, "ar_prot").c_str()}
-    , ar_qos{concat(prefix, "ar_qos").c_str()}
-    , ar_region{concat(prefix, "ar_region").c_str()}
-    , ar_valid{concat(prefix, "ar_valid").c_str()}
-    , ar_ready{concat(prefix, "ar_ready").c_str()}
-    , ar_domain{concat(prefix, "ar_domain").c_str()}
-    , ar_snoop{concat(prefix, "ar_snoop").c_str()}
-    , ar_bar{concat(prefix, "ar_bar").c_str()}
-    , ar_user{concat(prefix, "ar_user").c_str()}
-    , ar_trace{concat(prefix, "ar_trace").c_str()}
-    , ar_vmidext{concat(prefix, "ar_vmidext").c_str()} {}
+    : ar_id{concat(prefix, "_id").c_str()}
+    , ar_addr{concat(prefix, "_addr").c_str()}
+    , ar_len{concat(prefix, "_len").c_str()}
+    , ar_size{concat(prefix, "_size").c_str()}
+    , ar_burst{concat(prefix, "_burst").c_str()}
+    , ar_lock{concat(prefix, "_lock").c_str()} // only AXI3
+    , ar_cache{concat(prefix, "_cache").c_str()}
+    , ar_prot{concat(prefix, "_prot").c_str()}
+    , ar_qos{concat(prefix, "_qos").c_str()}
+    , ar_region{concat(prefix, "_region").c_str()}
+    , ar_valid{concat(prefix, "_valid").c_str()}
+    , ar_ready{concat(prefix, "_ready").c_str()}
+    , ar_domain{concat(prefix, "_domain").c_str()}
+    , ar_snoop{concat(prefix, "_snoop").c_str()}
+    , ar_bar{concat(prefix, "_bar").c_str()}
+    , ar_user{concat(prefix, "_user").c_str()}
+    , ar_trace{concat(prefix, "_trace").c_str()}
+    , ar_vmidext{concat(prefix, "_vmidext").c_str()} {}
 
     template <typename OTYPES> void bind_ar(ar_ace<CFG, OTYPES>& o) {
         ar_id.bind(o.ar_id);
@@ -574,29 +574,29 @@ template <typename CFG, typename TYPES = master_types> struct aw_ace {
 
     aw_ace() = default;
     aw_ace(const char* prefix)
-    : aw_id{concat(prefix, "aw_id").c_str()}
-    , aw_addr{concat(prefix, "aw_addr").c_str()}
-    , aw_ready{concat(prefix, "aw_ready").c_str()}
-    , aw_lock{concat(prefix, "aw_lock").c_str()}
-    , aw_valid{concat(prefix, "aw_valid").c_str()}
-    , aw_prot{concat(prefix, "aw_prot").c_str()}
-    , aw_size{concat(prefix, "aw_size").c_str()}
-    , aw_cache{concat(prefix, "aw_cache").c_str()}
-    , aw_burst{concat(prefix, "aw_burst").c_str()}
-    , aw_qos{concat(prefix, "aw_qos").c_str()}
-    , aw_region{concat(prefix, "aw_region").c_str()}
-    , aw_len{concat(prefix, "aw_len").c_str()}
-    , aw_domain{concat(prefix, "aw_domain").c_str()}
-    , aw_snoop{concat(prefix, "aw_snoop").c_str()}
-    , aw_bar{concat(prefix, "aw_bar").c_str()}
-    , aw_unique{concat(prefix, "aw_unique").c_str()}
-    , aw_user{concat(prefix, "aw_user").c_str()}
-    , aw_stashniden{concat(prefix, "aw_stashniden").c_str()}
-    , aw_stashnid{concat(prefix, "aw_stashnid").c_str()}
-    , aw_stashlpiden{concat(prefix, "aw_stashlpiden").c_str()}
-    , aw_stashlpid{concat(prefix, "aw_stashlpid").c_str()}
-    , aw_atop{concat(prefix, "aw_atop").c_str()}
-    , aw_trace{concat(prefix, "aw_trace").c_str()} {}
+    : aw_id{concat(prefix, "_id").c_str()}
+    , aw_addr{concat(prefix, "_addr").c_str()}
+    , aw_ready{concat(prefix, "_ready").c_str()}
+    , aw_lock{concat(prefix, "_lock").c_str()}
+    , aw_valid{concat(prefix, "_valid").c_str()}
+    , aw_prot{concat(prefix, "_prot").c_str()}
+    , aw_size{concat(prefix, "_size").c_str()}
+    , aw_cache{concat(prefix, "_cache").c_str()}
+    , aw_burst{concat(prefix, "_burst").c_str()}
+    , aw_qos{concat(prefix, "_qos").c_str()}
+    , aw_region{concat(prefix, "_region").c_str()}
+    , aw_len{concat(prefix, "_len").c_str()}
+    , aw_domain{concat(prefix, "_domain").c_str()}
+    , aw_snoop{concat(prefix, "_snoop").c_str()}
+    , aw_bar{concat(prefix, "_bar").c_str()}
+    , aw_unique{concat(prefix, "_unique").c_str()}
+    , aw_user{concat(prefix, "_user").c_str()}
+    , aw_stashniden{concat(prefix, "_stashniden").c_str()}
+    , aw_stashnid{concat(prefix, "_stashnid").c_str()}
+    , aw_stashlpiden{concat(prefix, "_stashlpiden").c_str()}
+    , aw_stashlpid{concat(prefix, "_stashlpid").c_str()}
+    , aw_atop{concat(prefix, "_atop").c_str()}
+    , aw_trace{concat(prefix, "_trace").c_str()} {}
 
     template <typename OTYPES> void bind_aw(aw_ace<CFG, OTYPES>& o) {
         aw_id.bind(o.aw_id);
@@ -637,13 +637,13 @@ template <typename CFG, typename TYPES = master_types> struct ac_ace {
 
     ac_ace() = default;
     ac_ace(const char* prefix)
-    : ac_valid{concat(prefix, "ac_valid").c_str()}
-    , ac_ready{concat(prefix, "ac_ready").c_str()}
-    , ac_addr{concat(prefix, "ac_addr").c_str()}
-    , ac_snoop{concat(prefix, "ac_snoop").c_str()}
-    , ac_prot{concat(prefix, "ac_prot").c_str()}
-    , ac_vmidext{concat(prefix, "ac_vmidext").c_str()}
-    , ac_trace{concat(prefix, "ac_trace").c_str()} {}
+    : ac_valid{concat(prefix, "_valid").c_str()}
+    , ac_ready{concat(prefix, "_ready").c_str()}
+    , ac_addr{concat(prefix, "_addr").c_str()}
+    , ac_snoop{concat(prefix, "_snoop").c_str()}
+    , ac_prot{concat(prefix, "_prot").c_str()}
+    , ac_vmidext{concat(prefix, "avmidext").c_str()}
+    , ac_trace{concat(prefix, "_trace").c_str()} {}
 
     template <typename OTYPES> void bind_ac(ac_ace<CFG, OTYPES>& o) {
         ac_valid.bind(o.ac_valid);
@@ -663,10 +663,10 @@ template <typename CFG, typename TYPES = master_types> struct cd_ace {
 
     cd_ace() = default;
     cd_ace(const char* prefix)
-    : cd_valid{concat(prefix, "cd_valid").c_str()}
-    , cd_ready{concat(prefix, "cd_ready").c_str()}
-    , cd_data{concat(prefix, "cd_data").c_str()}
-    , cd_last{concat(prefix, "cd_last").c_str()} {}
+    : cd_valid{concat(prefix, "_valid").c_str()}
+    , cd_ready{concat(prefix, "_ready").c_str()}
+    , cd_data{concat(prefix, "_data").c_str()}
+    , cd_last{concat(prefix, "_last").c_str()} {}
 
     template <typename OTYPES> void bind_cd(cd_ace<CFG, OTYPES>& o) {
         cd_valid.bind(o.cd_valid);
@@ -685,10 +685,10 @@ template <typename CFG, typename TYPES = master_types> struct cr_ace {
 
     cr_ace() = default;
     cr_ace(const char* prefix)
-    : cr_valid{concat(prefix, "cr_valid").c_str()}
-    , cr_ready{concat(prefix, "cr_ready").c_str()}
-    , cr_resp{concat(prefix, "cr_resp").c_str()}
-    , cr_trace{concat(prefix, "cr_trace").c_str()} {}
+    : cr_valid{concat(prefix, "_valid").c_str()}
+    , cr_ready{concat(prefix, "_ready").c_str()}
+    , cr_resp{concat(prefix, "_resp").c_str()}
+    , cr_trace{concat(prefix, "_trace").c_str()} {}
 
     template <typename OTYPES> void bind_cr(cr_ace<CFG, OTYPES>& o) {
         cr_valid.bind(o.cr_valid);

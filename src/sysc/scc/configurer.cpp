@@ -726,10 +726,10 @@ void configurer::set_value(const std::string& hier_name, cci::cci_value value) {
         cci::cci_param_handle param_handle = cci_broker.get_param_handle(hier_name);
         if(param_handle.is_valid()) {
             param_handle.set_cci_value(value);
-        } else {
-            cci_broker.set_preset_cci_value(hier_name, value);
+            return;
         }
     }
+    cci_broker.set_preset_cci_value(hier_name, value);
 }
 
 void configurer::config_check() {
