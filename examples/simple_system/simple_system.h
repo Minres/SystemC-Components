@@ -32,6 +32,7 @@
 #include <array>
 #include <scc/router.h>
 #include <sysc/kernel/sc_module.h>
+#include <scc/socket_width_adapter.h>
 
 namespace sysc {
 
@@ -40,6 +41,7 @@ public:
     SC_HAS_PROCESS(simple_system);
 
     test_initiator i_master;
+    scc::socket_width_adapter<32, scc::LT> adapt{"adapt"};
     scc::router<> i_router;
     uart i_uart;
     spi i_spi;

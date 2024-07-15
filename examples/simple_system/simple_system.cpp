@@ -40,7 +40,8 @@ simple_system::simple_system(sc_core::sc_module_name nm)
     // todo: discuss naming conventions (s_<signal> vs. <port>_i/_o) --> covnert into _s
 
     // bus connections
-    i_master.intor(i_router.target[0]);
+    i_master.intor(adapt.tsck);
+    adapt.isck(i_router.target[0]);
     i_router.bind_target(i_plic.socket, 0, "plic");
     i_router.bind_target(i_uart.socket, 1, "uart");
     i_router.bind_target(i_spi.socket, 2, "spi");

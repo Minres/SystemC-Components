@@ -32,7 +32,6 @@
 #include <util/sparse_array.h>
 
 namespace scc {
-
 /**
  * @class memory
  * @brief simple TLM2.0 LT memory model

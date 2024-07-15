@@ -31,7 +31,7 @@ namespace sysc {
 class test_initiator : public sc_core::sc_module {
 public:
     SC_HAS_PROCESS(test_initiator);
-    tlm_utils::simple_initiator_socket<test_initiator, scc::LT> intor;
+    tlm_utils::simple_initiator_socket<test_initiator, 32> intor;
     sc_core::sc_vector<sc_core::sc_out<bool>> global_interrupts_o;
     sc_core::sc_in<bool> core_interrupt_i;
     sc_core::sc_in<bool> rst_i;
