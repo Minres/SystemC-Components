@@ -85,9 +85,10 @@ public:
      *
      * @param file_name the output stream, std::cout by default
      */
-    void dump_configuration(std::string const& file_name, bool with_description = false) {
+    void dump_configuration(std::string const& file_name, bool with_description = false, std::vector<std::string> stop_list = std::vector<std::string>{}) {
         dump_file_name = file_name;
         this->with_description = with_description;
+        this->stop_list = stop_list;
     }
     /**
      * set a value of some property (sc_attribute or cci_param) from programmatically
@@ -123,6 +124,7 @@ protected:
     unsigned const config_phases;
     std::string dump_file_name{""};
     bool with_description{false};
+    std::vector<std::string> stop_list{};
     configurer(std::string const& filename, unsigned sc_attr_config_phases, sc_core::sc_module_name nm);
     void config_check();
     void before_end_of_elaboration() override {

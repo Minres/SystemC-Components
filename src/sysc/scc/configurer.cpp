@@ -148,9 +148,11 @@ inline bool start_object(writer_type& writer, char const* key, bool started) {
 
 struct json_config_dumper {
     configurer::broker_t const& broker;
+    std::vector<std::string> const& stop_list;
     std::unordered_map<std::string, std::vector<cci::cci_param_untyped_handle>> lut;
-    json_config_dumper(configurer::broker_t const& broker)
-    : broker(broker) {
+    json_config_dumper(configurer::broker_t const& broker, std::vector<std::string> const& stop_list)
+    : broker(broker)
+    , stop_list(stop_list){
         for(auto& h : broker.get_param_handles()) {
             auto value = h.get_cci_value();
             std::string paramname{h.name()};
@@ -162,7 +164,7 @@ struct json_config_dumper {
 
     void dump_config(sc_core::sc_object* obj, writer_type& writer) {
         auto basename = std::string(obj->basename());
-        if(basename.substr(0, 3) == "$$$")
+        if(basename.substr(0, 3) == "$$$" || std::find(std::begin(stop_list), std::end(stop_list), obj->name())!=std::end(stop_list))
             return;
         auto obj_started = false;
         auto log_lvl_set = false;
@@ -309,11 +311,13 @@ struct json_config_reader : public config_reader {
 struct yaml_config_dumper {
     configurer::broker_t const& broker;
     bool with_description{false};
+    std::vector<std::string> const& stop_list;
     std::unordered_map<std::string, std::vector<cci::cci_param_untyped_handle>> lut;
     std::vector<cci::cci_param_untyped_handle> tl_lut;
-    yaml_config_dumper(configurer::broker_t const& broker, bool with_description)
+    yaml_config_dumper(configurer::broker_t const& broker, bool with_description, std::vector<std::string> const& stop_list)
     : broker(broker)
-    , with_description(with_description) {
+    , with_description(with_description)
+    , stop_list(stop_list){
         for(auto& h : broker.get_param_handles()) {
             auto value = h.get_cci_value();
             std::string paramname{h.name()};
@@ -336,7 +340,7 @@ struct yaml_config_dumper {
 
     void dump_config(sc_core::sc_object* obj, YAML::Node& base_node) {
         auto basename = std::string(obj->basename());
-        if(basename.substr(0, 3) == "$$$")
+        if(basename.substr(0, 3) == "$$$" || std::find(std::begin(stop_list), std::end(stop_list), obj->name())!=std::end(stop_list))
             return;
         auto obj_started = false;
         auto log_lvl_set = false;
@@ -677,7 +681,7 @@ void configurer::dump_configuration(std::ostream& os, bool as_yaml, bool with_de
 #ifdef HAS_YAMPCPP
     if(as_yaml) {
         YAML::Node root; // starts out as null
-        yaml_config_dumper dumper(cci_broker, with_description);
+        yaml_config_dumper dumper(cci_broker, with_description, stop_list);
         if(obj)
             for(auto* o : obj->get_child_objects()) {
                 dumper.dump_config(o, root);
@@ -691,7 +695,7 @@ void configurer::dump_configuration(std::ostream& os, bool as_yaml, bool with_de
     OStreamWrapper stream(os);
     writer_type writer(stream);
     writer.StartObject();
-    json_config_dumper dumper(cci_broker);
+    json_config_dumper dumper(cci_broker, stop_list);
     for(auto* o : get_sc_objects(obj)) {
         dumper.dump_config(o, writer);
     }

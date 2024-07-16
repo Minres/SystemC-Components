@@ -34,7 +34,7 @@ if(EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
     include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 endif()
 find_program(VERILATOR_EXECUTABLE 
-    NAMES verilator_bin verilator_bin_dbg
+    NAMES verilator verilator_bin verilator_bin_dbg
     HINTS ${CONAN_VERILATOR_ROOT} ENV VERILATOR_ROOT
     PATH_SUFFIXES bin
     REQUIRED
