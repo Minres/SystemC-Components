@@ -234,7 +234,7 @@ public:
     }
 };
 //! the default logging category
-class DEFAULT {};
+struct DEFAULT {constexpr static char const* name = "default";};
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)
 #if defined(BUILDING_FILELOG_DLL)
@@ -252,21 +252,24 @@ class DEFAULT {};
 #define FILELOG_MAX_LEVEL ::logging::TRACE
 #endif
 
-#define LOGGER(CATEGORY) ::logging::Log<::logging::Output2FILE<::logging::CATEGORY>>
-#define LOG_OUTPUT(CATEGORY) ::logging::Output2FILE<::logging::CATEGORY>
+#define _LOGGER(CATEGORY) ::logging::Log<::logging::Output2FILE<CATEGORY>>
+#define LOGGER(CATEGORY) _LOGGER(::logging::CATEGORY)
+#define _LOG_OUTPUT(CATEGORY) ::logging::Output2FILE<CATEGORY>
+#define LOG_OUTPUT(CATEGORY) _LOG_OUTPUT(::logging::CATEGORY)
 
 #ifndef LOG
 #define LOG(LEVEL)                                                                                                                         \
     if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                                        \
-    LOGGER(DEFAULT)().get(::logging::LEVEL)
+        LOGGER(DEFAULT)().get(::logging::LEVEL)
 #endif
 #define CPPLOG(LEVEL)                                                                                                                      \
     if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                                        \
-    LOGGER(DEFAULT)().get(::logging::LEVEL)
+        LOGGER(DEFAULT)().get(::logging::LEVEL)
 #ifndef CLOG
-#define CLOG(LEVEL, CATEGORY)                                                                                                              \
-    if(::logging::LEVEL <= LOGGER(CATEGORY)::get_reporting_level() && LOG_OUTPUT(CATEGORY)::stream())                                      \
-    LOGGER(CATEGORY)().get(::logging::LEVEL, #CATEGORY)
+#define NSCLOG(LEVEL, CATEGORY)                                                                                                              \
+    if(::logging::LEVEL <= _LOGGER(CATEGORY)::get_reporting_level() && _LOG_OUTPUT(CATEGORY)::stream())                                      \
+        _LOGGER(CATEGORY)().get(::logging::LEVEL, CATEGORY::name)
+#define CLOG(LEVEL, CATEGORY) NSCLOG(LEVEL, ::logging::CATEGORY)
 #endif
 #if defined(WIN32)
 inline std::string now_time() {
