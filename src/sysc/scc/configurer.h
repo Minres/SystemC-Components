@@ -85,7 +85,8 @@ public:
      *
      * @param file_name the output stream, std::cout by default
      */
-    void dump_configuration(std::string const& file_name, bool with_description = false, std::vector<std::string> stop_list = std::vector<std::string>{}) {
+    void dump_configuration(std::string const& file_name, bool with_description = false,
+                            std::vector<std::string> stop_list = std::vector<std::string>{}) {
         dump_file_name = file_name;
         this->with_description = with_description;
         this->stop_list = stop_list;

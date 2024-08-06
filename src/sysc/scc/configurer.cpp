@@ -152,7 +152,7 @@ struct json_config_dumper {
     std::unordered_map<std::string, std::vector<cci::cci_param_untyped_handle>> lut;
     json_config_dumper(configurer::broker_t const& broker, std::vector<std::string> const& stop_list)
     : broker(broker)
-    , stop_list(stop_list){
+    , stop_list(stop_list) {
         for(auto& h : broker.get_param_handles()) {
             auto value = h.get_cci_value();
             std::string paramname{h.name()};
@@ -164,7 +164,7 @@ struct json_config_dumper {
 
     void dump_config(sc_core::sc_object* obj, writer_type& writer) {
         auto basename = std::string(obj->basename());
-        if(basename.substr(0, 3) == "$$$" || std::find(std::begin(stop_list), std::end(stop_list), obj->name())!=std::end(stop_list))
+        if(basename.substr(0, 3) == "$$$" || std::find(std::begin(stop_list), std::end(stop_list), obj->name()) != std::end(stop_list))
             return;
         auto obj_started = false;
         auto log_lvl_set = false;
@@ -317,7 +317,7 @@ struct yaml_config_dumper {
     yaml_config_dumper(configurer::broker_t const& broker, bool with_description, std::vector<std::string> const& stop_list)
     : broker(broker)
     , with_description(with_description)
-    , stop_list(stop_list){
+    , stop_list(stop_list) {
         for(auto& h : broker.get_param_handles()) {
             auto value = h.get_cci_value();
             std::string paramname{h.name()};
@@ -340,7 +340,7 @@ struct yaml_config_dumper {
 
     void dump_config(sc_core::sc_object* obj, YAML::Node& base_node) {
         auto basename = std::string(obj->basename());
-        if(basename.substr(0, 3) == "$$$" || std::find(std::begin(stop_list), std::end(stop_list), obj->name())!=std::end(stop_list))
+        if(basename.substr(0, 3) == "$$$" || std::find(std::begin(stop_list), std::end(stop_list), obj->name()) != std::end(stop_list))
             return;
         auto obj_started = false;
         auto log_lvl_set = false;

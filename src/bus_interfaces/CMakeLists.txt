@@ -1,9 +1,8 @@
 project(busses VERSION 0.0.1 LANGUAGES CXX)
 
 set(LIB_SOURCES
+	apb/apb_tlm.cpp
 	ahb/ahb_tlm.cpp
-    ahb/pin/initiator.cpp
-    ahb/pin/target.cpp
     ahb/pe/ahb_initiator.cpp
     ahb/pe/ahb_target.cpp
     apb/pe/apb_initiator.cpp

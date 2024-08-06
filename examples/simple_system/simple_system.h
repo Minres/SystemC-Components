@@ -31,8 +31,8 @@
 #include "test_initiator.h"
 #include <array>
 #include <scc/router.h>
-#include <sysc/kernel/sc_module.h>
 #include <scc/socket_width_adapter.h>
+#include <sysc/kernel/sc_module.h>
 
 namespace sysc {
 

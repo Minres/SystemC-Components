@@ -234,7 +234,9 @@ public:
     }
 };
 //! the default logging category
-struct DEFAULT {constexpr static char const* name = "default";};
+struct DEFAULT {
+    constexpr static char const* name = "default";
+};
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)
 #if defined(BUILDING_FILELOG_DLL)
@@ -260,15 +262,15 @@ struct DEFAULT {constexpr static char const* name = "default";};
 #ifndef LOG
 #define LOG(LEVEL)                                                                                                                         \
     if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                                        \
-        LOGGER(DEFAULT)().get(::logging::LEVEL)
+    LOGGER(DEFAULT)().get(::logging::LEVEL)
 #endif
 #define CPPLOG(LEVEL)                                                                                                                      \
     if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                                        \
-        LOGGER(DEFAULT)().get(::logging::LEVEL)
+    LOGGER(DEFAULT)().get(::logging::LEVEL)
 #ifndef CLOG
-#define NSCLOG(LEVEL, CATEGORY)                                                                                                              \
-    if(::logging::LEVEL <= _LOGGER(CATEGORY)::get_reporting_level() && _LOG_OUTPUT(CATEGORY)::stream())                                      \
-        _LOGGER(CATEGORY)().get(::logging::LEVEL, CATEGORY::name)
+#define NSCLOG(LEVEL, CATEGORY)                                                                                                            \
+    if(::logging::LEVEL <= _LOGGER(CATEGORY)::get_reporting_level() && _LOG_OUTPUT(CATEGORY)::stream())                                    \
+    _LOGGER(CATEGORY)().get(::logging::LEVEL, CATEGORY::name)
 #define CLOG(LEVEL, CATEGORY) NSCLOG(LEVEL, ::logging::CATEGORY)
 #endif
 #if defined(WIN32)

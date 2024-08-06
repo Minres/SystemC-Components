@@ -14,7 +14,6 @@
  * limitations under the License.
  *******************************************************************************/
 
-
 #ifndef _SCC_SOCKET_WIDTH_ADAPTER_H_
 #define _SCC_SOCKET_WIDTH_ADAPTER_H_
 
@@ -23,13 +22,10 @@
 //! @brief SCC TLM utilities
 namespace scc {
 
-template <unsigned int TGT_WIDTH= 32, unsigned int INTOR_BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types, int N = 1,
+template <unsigned int TGT_WIDTH = 32, unsigned int INTOR_BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types, int N = 1,
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND>
-class socket_width_adapter : public sc_core::sc_module,
-                                  public tlm::tlm_fw_transport_if<TYPES>,
-                                  public tlm::tlm_bw_transport_if<TYPES> {
+class socket_width_adapter : public sc_core::sc_module, public tlm::tlm_fw_transport_if<TYPES>, public tlm::tlm_bw_transport_if<TYPES> {
 public:
-
     using tlm_payload_type = typename TYPES::tlm_payload_type;
     using tlm_phase_type = typename TYPES::tlm_phase_type;
     using target_socket_type = tlm::tlm_target_socket<TGT_WIDTH, TYPES, N, POL>;
@@ -58,17 +54,11 @@ private:
         return isck->nb_transport_fw(trans, phase, t);
     };
 
-    void b_transport(tlm_payload_type& trans, sc_core::sc_time& t) override {
-        isck->b_transport(trans, t);
-    }
+    void b_transport(tlm_payload_type& trans, sc_core::sc_time& t) override { isck->b_transport(trans, t); }
 
-    bool get_direct_mem_ptr(tlm_payload_type& trans, tlm::tlm_dmi& dmi_data) override {
-        return isck->get_direct_mem_ptr(trans, dmi_data);
-    }
+    bool get_direct_mem_ptr(tlm_payload_type& trans, tlm::tlm_dmi& dmi_data) override { return isck->get_direct_mem_ptr(trans, dmi_data); }
 
-    unsigned int transport_dbg(tlm_payload_type& trans) override {
-        return isck->transport_dbg(trans);
-    }
+    unsigned int transport_dbg(tlm_payload_type& trans) override { return isck->transport_dbg(trans); }
 
     tlm::tlm_sync_enum nb_transport_bw(tlm_payload_type& trans, tlm_phase_type& phase, sc_core::sc_time& t) override {
         return tsck->nb_transport_bw(trans, phase, t);
@@ -78,5 +68,5 @@ private:
         tsck->invalidate_direct_mem_ptr(start_range, end_range);
     }
 };
-}
+} // namespace scc
 #endif // _SCC_SOCKET_WIDTH_ADAPTER_H_
