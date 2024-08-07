@@ -55,7 +55,7 @@ tracer::tracer(std::string const&& name, file_type tx_type, file_type sig_type, 
     if(sig_type == ENABLE)
         sig_type = static_cast<file_type>(sig_trace_type.get_value());
     if(sig_type != NONE) {
-        switch(tx_type) {
+        switch(sig_type) {
         default:
             trf = sc_create_vcd_trace_file(name.c_str());
             break;
