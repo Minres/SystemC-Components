@@ -127,6 +127,11 @@ private:
 /*****************************************************************************
  * Implementation details
  *****************************************************************************/
+template <> struct enable_for_enum<lock_e> { static const bool enable = true; };
+template <> struct enable_for_enum<resp_e> { static const bool enable = true; };
+template <> struct enable_for_enum<trans_e> { static const bool enable = true; };
+template <> struct enable_for_enum<burst_e> { static const bool enable = true; };
+
 inline bool ahb_extension::is_instruction() const { return prot & INSTR; }
 
 inline void ahb_extension::set_instruction(bool instr) {
