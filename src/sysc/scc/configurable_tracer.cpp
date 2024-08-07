@@ -35,6 +35,12 @@ configurable_tracer::configurable_tracer(std::string const&& name, file_type typ
     default_trace_enable = default_enable;
 }
 
+configurable_tracer::configurable_tracer(std::string const&& name, file_type tx_type, file_type sig_type, bool default_enable,
+                                         sc_core::sc_object* top)
+: tracer(std::move(name), tx_type, sig_type, top) {
+    default_trace_enable = default_enable;
+}
+
 configurable_tracer::configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, bool default_enable,
                                          sc_core::sc_object* top)
 : tracer(std::move(name), type, tf, top) {
