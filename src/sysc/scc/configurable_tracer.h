@@ -38,7 +38,7 @@ public:
      * constructs a tracer object
      *
      * @param name basename of the trace file(s)
-     * @param enable_tx enables transaction teacing
+     * @param enable_tx enables transaction tracing
      * @param enable_vcd enable VCD (signal based) tracing
      * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
@@ -48,7 +48,7 @@ public:
      * constructs a tracer object
      *
      * @param name basename of the trace file(s)
-     * @param enable_tx enables transaction teacing
+     * @param enable_tx enables transaction tracing
      * @param enable_vcd enable VCD (signal based) tracing
      * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
@@ -76,6 +76,19 @@ public:
     configurable_tracer(std::string const& name, file_type type, bool enable_vcd = true, bool default_enable = false,
                         sc_core::sc_object* top = nullptr)
     : configurable_tracer(std::string(name), type, enable_vcd, default_enable, top) {}
+    /**
+     * constructs a tracer object
+     *
+     * @param name basename of the trace file(s)
+     * @param tx_type type of trace file for transactions
+     * @param sig_type type of trace file for signals
+     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
+     */
+    configurable_tracer(std::string const&& name, file_type tx_type, file_type sig_type, bool default_enable = false,
+                        sc_core::sc_object* top = nullptr);
+    configurable_tracer(std::string const& name, file_type tx_type, file_type sig_type, bool default_enable = false,
+                        sc_core::sc_object* top = nullptr)
+    : configurable_tracer(std::string(name), tx_type, sig_type, default_enable, top) {}
     /**
      * constructs a tracer object
      *
