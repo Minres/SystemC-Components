@@ -53,6 +53,7 @@ vcd_pull_trace_file::vcd_pull_trace_file(const char* name, std::function<bool()>
 , check_enabled(enable) {
     vcd_out = fopen(fmt::format("{}.vcd", name).c_str(), "w");
 
+#if SC_VERSION_MAJOR<3
 #if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
     sc_object::detach();
@@ -60,6 +61,7 @@ vcd_pull_trace_file::vcd_pull_trace_file(const char* name, std::function<bool()>
     sc_object::register_simulation_phase_callback(SC_BEFORE_TIMESTEP);
 #else // explicitly register with simcontext
     sc_core::sc_get_curr_simcontext()->add_trace_file(this);
+#endif
 #endif
 }
 

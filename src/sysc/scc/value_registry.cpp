@@ -56,7 +56,28 @@ public:
         } while(pos > 0 && mod == nullptr);
         return mod;
     }
+#if SC_VERSION_MAJOR>2
 #define DECL_TRACE_METHOD_A(tp)                                                                                                            \
+void trace(const tp& object, const std::string& name) OVERRIDE {                                                                       \
+    if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                                             \
+        if(sc_module* mod = get_mod4name(name)) {                                                                                      \
+            auto* o = new sc_ref_variable<tp>(name, object);                                                                           \
+            holder[name] = o;                                                                                                          \
+        }                                                                                                                              \
+    }                                                                                                                                  \
+}
+#define DECL_TRACE_METHOD_B(tp)                                                                                                            \
+void trace(const tp& object, const std::string& name, int width) OVERRIDE {                                                            \
+    if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                                             \
+        if(sc_module* mod = get_mod4name(name)) {                                                                                      \
+            auto* o = new sc_ref_variable_masked<tp>(name, object, width);                                                             \
+            holder[name] = o;                                                                                                          \
+        }                                                                                                                              \
+    }                                                                                                                                  \
+}                                                                                                                                      \
+void trace(const tp& object, const std::string& name) { trace(object, name, sizeof(tp) * 8); }
+#else
+    #define DECL_TRACE_METHOD_A(tp)                                                                                                            \
     void trace(const tp& object, const std::string& name) OVERRIDE {                                                                       \
         if(sc_core::sc_find_object(name.c_str()) != nullptr) {                                                                             \
             if(sc_module* mod = get_mod4name(name)) {                                                                                      \
@@ -79,13 +100,18 @@ public:
         }                                                                                                                                  \
     }                                                                                                                                      \
     void trace(const tp& object, const std::string& name) { trace(object, name, sizeof(tp) * 8); }
+#endif
 
     void trace(const bool& object, const std::string& name) override {
         if(sc_core::sc_find_object(name.c_str()) == nullptr) {
             if(sc_module* mod = get_mod4name(name)) {
+#if SC_VERSION_MAJOR<3
                 sc_get_curr_simcontext()->hierarchy_push(mod);
+#endif
                 auto* o = new sc_ref_variable<bool>(name.substr(strlen(mod->name()) + 1), object);
+#if SC_VERSION_MAJOR<3
                 sc_get_curr_simcontext()->hierarchy_pop();
+#endif
                 holder[name] = o;
             }
         }

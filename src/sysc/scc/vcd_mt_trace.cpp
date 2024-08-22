@@ -46,6 +46,7 @@ vcd_mt_trace_file::vcd_mt_trace_file(const char* name, std::function<bool()>& en
 , check_enabled(enable) {
     vcd_out = scc::make_unique<trace::gz_writer>(fmt::format("{}.vcd.gz", name));
 
+#if SC_VERSION_MAJOR<3
 #if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
     sc_object::detach();
@@ -53,6 +54,7 @@ vcd_mt_trace_file::vcd_mt_trace_file(const char* name, std::function<bool()>& en
     sc_object::register_simulation_phase_callback(SC_BEFORE_TIMESTEP);
 #else // explicitly register with simcontext
     sc_core::sc_get_curr_simcontext()->add_trace_file(this);
+#endif
 #endif
 }
 

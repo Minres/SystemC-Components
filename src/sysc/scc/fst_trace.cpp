@@ -234,6 +234,7 @@ fst_trace_file::fst_trace_file(const char* name, std::function<bool()>& enable)
     strftime(tbuf, 199, "%b %d, %Y\t%H:%M:%S", p_tm);
     fstWriterSetDate(m_fst, tbuf);
     // fstWriterSetFileType(m_fst, FST_FT_VERILOG);
+#if SC_VERSION_MAJOR<3
 #if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
     sc_object::detach();
@@ -241,6 +242,7 @@ fst_trace_file::fst_trace_file(const char* name, std::function<bool()>& enable)
     sc_object::register_simulation_phase_callback(SC_BEFORE_TIMESTEP);
 #else // explicitly register with simcontext
     sc_core::sc_get_curr_simcontext()->add_trace_file(this);
+#endif
 #endif
 }
 
