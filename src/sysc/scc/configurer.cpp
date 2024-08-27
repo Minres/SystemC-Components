@@ -311,12 +311,14 @@ struct json_config_reader : public config_reader {
 struct yaml_config_dumper {
     configurer::broker_t const& broker;
     bool with_description{false};
+    bool complete{true};
     std::vector<std::string> const& stop_list;
     std::unordered_map<std::string, std::vector<cci::cci_param_untyped_handle>> lut;
     std::vector<cci::cci_param_untyped_handle> tl_lut;
-    yaml_config_dumper(configurer::broker_t const& broker, bool with_description, std::vector<std::string> const& stop_list)
+    yaml_config_dumper(configurer::broker_t const& broker, bool with_description, bool complete, std::vector<std::string> const& stop_list)
     : broker(broker)
     , with_description(with_description)
+    , complete(complete)
     , stop_list(stop_list) {
         for(auto& h : broker.get_param_handles()) {
             auto value = h.get_cci_value();
@@ -349,7 +351,7 @@ struct yaml_config_dumper {
         if(it != lut.end())
             log_lvl_set |= copy2yaml(it->second, this_node);
         auto mod = dynamic_cast<sc_core::sc_module*>(obj);
-        if(!log_lvl_set && mod) {
+        if(!log_lvl_set && mod && complete) {
             auto val = broker.get_preset_cci_value(fmt::format("{}.{}", obj->name(), SCC_LOG_LEVEL_PARAM_NAME));
             auto global_verb = static_cast<int>(get_logging_level());
             if(basename.substr(0, 11) != "scc_tracer")
@@ -677,11 +679,11 @@ void configurer::read_input_file(const std::string& filename) {
     }
 }
 
-void configurer::dump_configuration(std::ostream& os, bool as_yaml, bool with_description, sc_core::sc_object* obj) {
+void configurer::dump_configuration(std::ostream& os, bool as_yaml, bool with_description, bool complete, sc_core::sc_object* obj) {
 #ifdef HAS_YAMPCPP
     if(as_yaml) {
         YAML::Node root; // starts out as null
-        yaml_config_dumper dumper(cci_broker, with_description, stop_list);
+        yaml_config_dumper dumper(cci_broker, with_description, complete, stop_list);
         if(obj)
             for(auto* o : obj->get_child_objects()) {
                 dumper.dump_config(o, root);
@@ -768,7 +770,7 @@ void configurer::start_of_simulation() {
         std::ofstream of{dump_file_name};
         if(of.is_open()) {
             mirror_sc_attributes(cci_broker, cci2sc_attr, cci_originator, nullptr, true);
-            dump_configuration(of, !as_json, with_description);
+            dump_configuration(of, !as_json, with_description, complete);
         }
     }
 }
