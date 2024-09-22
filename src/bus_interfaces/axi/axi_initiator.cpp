@@ -28,7 +28,7 @@ axi_initiator_base::axi_initiator_base(const sc_core::sc_module_name& nm, axi::p
 , buswidth(width) {
     SC_HAS_PROCESS(axi_initiator_base);
     // Register callback for incoming b_transport interface method call
-    b_tsck.register_b_transport(this, &axi_initiator_base::b_transport);
+    tsck.register_b_transport(this, &axi_initiator_base::b_transport);
     setup_cb = [this](tlm::tlm_generic_payload& p) {
         auto len = p.get_data_length();
         auto* ext = p.get_extension<axi::axi4_extension>();
