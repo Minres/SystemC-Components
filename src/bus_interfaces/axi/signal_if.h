@@ -271,19 +271,19 @@ template <typename CFG, typename TYPES = master_types> struct ar_axi {
 
     ar_axi() = default;
     ar_axi(const char* prefix)
-    : ar_id{concat(prefix, "r_id").c_str()}
-    , ar_addr{concat(prefix, "r_addr").c_str()}
-    , ar_len{concat(prefix, "r_len").c_str()}
-    , ar_size{concat(prefix, "r_size").c_str()}
-    , ar_burst{concat(prefix, "r_burst").c_str()}
-    , ar_lock{concat(prefix, "r_lock").c_str()} // only AXI3
-    , ar_cache{concat(prefix, "r_cache").c_str()}
-    , ar_prot{concat(prefix, "r_prot").c_str()}
-    , ar_qos{concat(prefix, "r_qos").c_str()}
-    , ar_region{concat(prefix, "r_region").c_str()}
-    , ar_valid{concat(prefix, "r_valid").c_str()}
-    , ar_ready{concat(prefix, "r_ready").c_str()}
-    , ar_user{concat(prefix, "r_user").c_str()} {}
+    : ar_id{concat(prefix, "_id").c_str()}
+    , ar_addr{concat(prefix, "_addr").c_str()}
+    , ar_len{concat(prefix, "_len").c_str()}
+    , ar_size{concat(prefix, "_size").c_str()}
+    , ar_burst{concat(prefix, "_burst").c_str()}
+    , ar_lock{concat(prefix, "_lock").c_str()} // only AXI3
+    , ar_cache{concat(prefix, "_cache").c_str()}
+    , ar_prot{concat(prefix, "_prot").c_str()}
+    , ar_qos{concat(prefix, "_qos").c_str()}
+    , ar_region{concat(prefix, "_region").c_str()}
+    , ar_valid{concat(prefix, "_valid").c_str()}
+    , ar_ready{concat(prefix, "_ready").c_str()}
+    , ar_user{concat(prefix, "_user").c_str()} {}
 
     template <typename OTYPES> void bind_ar(ar_axi<CFG, OTYPES>& o) {
         ar_id.bind(o.ar_id);
