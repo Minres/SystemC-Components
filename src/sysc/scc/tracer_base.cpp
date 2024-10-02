@@ -13,12 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * tracer.cpp
- *
- *  Created on: Nov 9, 2016
- *      Author: developer
- */
 
 #include "tracer_base.h"
 #include "observer.h"
@@ -162,7 +156,7 @@ void tracer_base::try_trace(sc_trace_file* trace_file, const sc_object* object, 
     if(ForLoop<1024>::iterate<sc_lv_tester>(trace_file, object, types_to_trace))
         return;
 #else
-    if(ForLoop<17>::iterate<sc_uint_tester>(trace_file, object, types_to_trace))
+    if(ForLoop<31>::iterate<sc_uint_tester>(trace_file, object, types_to_trace))
         return;
     if(try_trace_obj<sc_uint<32>>(trace_file, object, types_to_trace))
         return;
@@ -175,7 +169,7 @@ void tracer_base::try_trace(sc_trace_file* trace_file, const sc_object* object, 
     if(try_trace_obj<sc_uint<64>>(trace_file, object, types_to_trace))
         return;
 
-    if(ForLoop<17>::iterate<sc_int_tester>(trace_file, object, types_to_trace))
+    if(ForLoop<31>::iterate<sc_int_tester>(trace_file, object, types_to_trace))
         return;
     if(try_trace_obj<sc_int<32>>(trace_file, object, types_to_trace))
         return;
@@ -218,7 +212,7 @@ void tracer_base::try_trace(sc_trace_file* trace_file, const sc_object* object, 
     if(try_trace_obj<sc_bigint<1024>>(trace_file, object, types_to_trace))
         return;
 
-    if(ForLoop<17>::iterate<sc_bv_tester>(trace_file, object, types_to_trace))
+    if(ForLoop<31>::iterate<sc_bv_tester>(trace_file, object, types_to_trace))
         return;
     if(try_trace_obj<sc_bv<32>>(trace_file, object, types_to_trace))
         return;
@@ -241,7 +235,7 @@ void tracer_base::try_trace(sc_trace_file* trace_file, const sc_object* object, 
     if(try_trace_obj<sc_bv<1024>>(trace_file, object, types_to_trace))
         return;
 
-    if(ForLoop<17>::iterate<sc_lv_tester>(trace_file, object, types_to_trace))
+    if(ForLoop<31>::iterate<sc_lv_tester>(trace_file, object, types_to_trace))
         return;
     if(try_trace_obj<sc_lv<32>>(trace_file, object, types_to_trace))
         return;
