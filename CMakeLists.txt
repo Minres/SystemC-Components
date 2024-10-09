@@ -182,7 +182,7 @@ if(SystemC_FOUND)
         target_link_libraries(scc INTERFACE ${Boost_datetime_LIBRARY})
     endif()
     target_link_libraries(scc INTERFACE scc-util scc-sysc components busses scv-tr)
-    target_link_libraries(scc INTERFACE ${FMT_TARGET} spdlog::spdlog)
+    target_link_libraries(scc INTERFACE ${FMT_TARGET})
     
     set_target_properties(scc PROPERTIES
         PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
