@@ -47,7 +47,7 @@ public:
     : sc_core::sc_module(nm) {
         SC_THREAD(run);
         intor.clk_i(clk);
-        top_isck(intor.b_tsck);
+        top_isck(intor.isck);
         tgt.clk_i(clk);
         intor.isck(intor_rec.tsckt);
         intor_rec.isckt(tgt.tsck);
