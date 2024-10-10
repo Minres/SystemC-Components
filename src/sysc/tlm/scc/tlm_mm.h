@@ -239,11 +239,11 @@ template <typename TYPES, bool CLEANUP_DATA> void tlm_mm<TYPES, CLEANUP_DATA>::f
     if(CLEANUP_DATA && !trans->get_extension<tlm_gp_mm>()) {
         if(trans->get_data_ptr())
             delete[] trans->get_data_ptr();
-        trans->set_data_ptr(nullptr);
         if(trans->get_byte_enable_ptr())
             delete[] trans->get_byte_enable_ptr();
-        trans->set_byte_enable_ptr(nullptr);
     }
+    trans->set_data_ptr(nullptr);
+    trans->set_byte_enable_ptr(nullptr);
     trans->reset();
     trans->~tlm_generic_payload();
     allocator.free(trans);
