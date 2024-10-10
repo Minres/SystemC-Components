@@ -46,7 +46,7 @@ vcd_mt_trace_file::vcd_mt_trace_file(const char* name, std::function<bool()>& en
 , check_enabled(enable) {
     vcd_out = scc::make_unique<trace::gz_writer>(fmt::format("{}.vcd.gz", name));
 
-#if SC_VERSION_MAJOR<3
+#if SC_VERSION_MAJOR < 3
 #if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
     sc_object::detach();

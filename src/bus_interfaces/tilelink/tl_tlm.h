@@ -26,22 +26,20 @@ namespace tilelink {
 /**
  * helper function to allow SFINAE
  */
-template<typename Enum> struct enable_for_enum {
-    static const bool value = false;
-};
+template <typename Enum> struct enable_for_enum { static const bool value = false; };
 /**
  * helper function to convert integer into class enums
  * @param t
  * @return
  */
-template<typename E> inline E into(typename std::underlying_type<E>::type t);
+template <typename E> inline E into(typename std::underlying_type<E>::type t);
 /**
  * helper function to convert class enums into integer
  * @param t
  * @return
  */
-template<typename E, typename ULT = typename std::underlying_type<E>::type, typename X = typename std::enable_if<
-        std::is_enum<E>::value && !std::is_convertible<E, ULT>::value, bool>::type>
+template <typename E, typename ULT = typename std::underlying_type<E>::type,
+          typename X = typename std::enable_if<std::is_enum<E>::value && !std::is_convertible<E, ULT>::value, bool>::type>
 inline constexpr ULT to_int(E t) {
     return static_cast<typename std::underlying_type<E>::type>(t);
 }
@@ -50,20 +48,20 @@ inline constexpr ULT to_int(E t) {
  * @param t
  * @return
  */
-template<typename E> const char* to_char(E t);
+template <typename E> const char* to_char(E t);
 /**
  *
  * @param os
  * @param e
  * @return
  */
-template<typename E, typename std::enable_if<enable_for_enum<E>::value, bool>::type>
-inline std::ostream& operator<<(std::ostream &os, E e) {
+template <typename E, typename std::enable_if<enable_for_enum<E>::value, bool>::type>
+inline std::ostream& operator<<(std::ostream& os, E e) {
     os << to_char(e);
     return os;
 }
 
-std::ostream& operator<<(std::ostream &os, tlm::tlm_generic_payload const & t);
+std::ostream& operator<<(std::ostream& os, tlm::tlm_generic_payload const& t);
 
 //! opcodes of Tilelink.. The encode the opcode (opcode_e[2:0]) and the applicable channels (opcode_e[8] -> A ... opcode_e[4] -> E)
 enum class opcode_e : uint8_t {
@@ -123,6 +121,7 @@ struct tilelink_extension : public tlm::tlm_extension<tilelink_extension> {
      * @param ext
      */
     void copy_from(tlm::tlm_extension_base const& ext) override;
+
 private:
     uint64_t source{0};
     uint64_t sink{0};
@@ -149,8 +148,7 @@ DECLARE_EXTENDED_PHASE(ACK);
 /**
  * interface definition for the blocking backward interface. This is need to allow snoop accesses in blocking mode
  */
-template <typename TRANS = tlm::tlm_generic_payload>
-class bw_blocking_transport_if : public virtual sc_core::sc_interface {
+template <typename TRANS = tlm::tlm_generic_payload> class bw_blocking_transport_if : public virtual sc_core::sc_interface {
 public:
     /**
      * @brief snoop access to a snooped master
@@ -180,8 +178,7 @@ template <unsigned int BUSWIDTH = 32, typename TYPES = tl_protocol_types, int N 
 struct tlu_initiator_socket
 : public tlm::tlm_base_initiator_socket<BUSWIDTH, tlu_fw_transport_if<TYPES>, tlu_bw_transport_if<TYPES>, N, POL> {
     //! base type alias
-    using base_type =
-        tlm::tlm_base_initiator_socket<BUSWIDTH, tlu_fw_transport_if<TYPES>, tlu_bw_transport_if<TYPES>, N, POL>;
+    using base_type = tlm::tlm_base_initiator_socket<BUSWIDTH, tlu_fw_transport_if<TYPES>, tlu_bw_transport_if<TYPES>, N, POL>;
     /**
      * @brief default constructor using a generated instance name
      */
@@ -209,11 +206,9 @@ struct tlu_initiator_socket
  */
 template <unsigned int BUSWIDTH = 32, typename TYPES = tl_protocol_types, int N = 1,
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND>
-struct tlu_target_socket
-: public tlm::tlm_base_target_socket<BUSWIDTH, tlu_fw_transport_if<TYPES>, tlu_bw_transport_if<TYPES>, N, POL> {
+struct tlu_target_socket : public tlm::tlm_base_target_socket<BUSWIDTH, tlu_fw_transport_if<TYPES>, tlu_bw_transport_if<TYPES>, N, POL> {
     //! base type alias
-    using base_type =
-        tlm::tlm_base_target_socket<BUSWIDTH, tlu_fw_transport_if<TYPES>, tlu_bw_transport_if<TYPES>, N, POL>;
+    using base_type = tlm::tlm_base_target_socket<BUSWIDTH, tlu_fw_transport_if<TYPES>, tlu_bw_transport_if<TYPES>, N, POL>;
     /**
      * @brief default constructor using a generated instance name
      */
@@ -244,8 +239,7 @@ template <unsigned int BUSWIDTH = 32, typename TYPES = tl_protocol_types, int N 
 struct tlc_initiator_socket
 : public tlm::tlm_base_initiator_socket<BUSWIDTH, tlc_fw_transport_if<TYPES>, tlc_bw_transport_if<TYPES>, N, POL> {
     //! base type alias
-    using base_type =
-        tlm::tlm_base_initiator_socket<BUSWIDTH, tlc_fw_transport_if<TYPES>, tlc_bw_transport_if<TYPES>, N, POL>;
+    using base_type = tlm::tlm_base_initiator_socket<BUSWIDTH, tlc_fw_transport_if<TYPES>, tlc_bw_transport_if<TYPES>, N, POL>;
     /**
      * @brief default constructor using a generated instance name
      */
@@ -275,11 +269,9 @@ struct tlc_initiator_socket
  */
 template <unsigned int BUSWIDTH = 32, typename TYPES = tl_protocol_types, int N = 1,
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND>
-struct tlc_target_socket
-: public tlm::tlm_base_target_socket<BUSWIDTH, tlc_fw_transport_if<TYPES>, tlc_bw_transport_if<TYPES>, N, POL> {
+struct tlc_target_socket : public tlm::tlm_base_target_socket<BUSWIDTH, tlc_fw_transport_if<TYPES>, tlc_bw_transport_if<TYPES>, N, POL> {
     //! base type alias
-    using base_type =
-        tlm::tlm_base_target_socket<BUSWIDTH, tlc_fw_transport_if<TYPES>, tlc_bw_transport_if<TYPES>, N, POL>;
+    using base_type = tlm::tlm_base_target_socket<BUSWIDTH, tlc_fw_transport_if<TYPES>, tlc_bw_transport_if<TYPES>, N, POL>;
     /**
      * @brief default constructor using a generated instance name
      */
@@ -313,64 +305,37 @@ struct tlc_target_socket
  *****************************************************************************/
 template <> struct enable_for_enum<opcode_e> { static const bool enable = true; };
 
-inline opcode_e tilelink_extension::get_opcode() const {
-    return opcode;
-}
+inline opcode_e tilelink_extension::get_opcode() const { return opcode; }
 
-inline void tilelink_extension::set_opcode(opcode_e opcode) {
-    this->opcode=opcode;
-}
+inline void tilelink_extension::set_opcode(opcode_e opcode) { this->opcode = opcode; }
 
-inline uint8_t tilelink_extension::get_param() const {
-    return param;
-}
+inline uint8_t tilelink_extension::get_param() const { return param; }
 
-inline void tilelink_extension::set_param(uint8_t param) {
-    this->param=param;
-}
+inline void tilelink_extension::set_param(uint8_t param) { this->param = param; }
 
-inline uint64_t tilelink_extension::get_source() const {
-    return source;
-}
+inline uint64_t tilelink_extension::get_source() const { return source; }
 
-inline void tilelink_extension::set_source(uint64_t source) {
-    this->source=source;
-}
+inline void tilelink_extension::set_source(uint64_t source) { this->source = source; }
 
-inline uint64_t tilelink_extension::get_sink() const {
-    return sink;
-}
+inline uint64_t tilelink_extension::get_sink() const { return sink; }
 
-inline void tilelink_extension::set_sink(uint64_t sink) {
-    this->sink=sink;
-}
+inline void tilelink_extension::set_sink(uint64_t sink) { this->sink = sink; }
 
-inline bool tilelink_extension::is_corrupt() const {
-    return corrupt;
-}
+inline bool tilelink_extension::is_corrupt() const { return corrupt; }
 
-inline void tilelink_extension::set_corrupt(bool corrupt) {
-    this->corrupt=corrupt;
-}
+inline void tilelink_extension::set_corrupt(bool corrupt) { this->corrupt = corrupt; }
 
-inline bool tilelink_extension::is_denied() const {
-    return denied;
-}
+inline bool tilelink_extension::is_denied() const { return denied; }
 
-inline void tilelink_extension::set_denied(bool denied) {
-    this->denied=denied;
-}
+inline void tilelink_extension::set_denied(bool denied) { this->denied = denied; }
 
-inline tlm::tlm_extension_base* tilelink_extension::clone() const {
-    return new tilelink_extension(this);
-}
+inline tlm::tlm_extension_base* tilelink_extension::clone() const { return new tilelink_extension(this); }
 
-inline void tilelink_extension::copy_from(const tlm::tlm_extension_base &ext) {
+inline void tilelink_extension::copy_from(const tlm::tlm_extension_base& ext) {
     auto const* tl_ext = dynamic_cast<const tilelink_extension*>(&ext);
     assert(tl_ext);
     (*this) = *tl_ext;
 }
-} // namespace } // namespace apb
-
+} // namespace tilelink
 
 #endif /* _TILELINK_TL_TLM_H_ */

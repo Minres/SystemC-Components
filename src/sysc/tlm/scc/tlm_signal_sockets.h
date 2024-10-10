@@ -54,10 +54,10 @@ struct tlm_signal_bw_transport_if : public virtual sc_core::sc_interface {
     virtual ::tlm::tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type&, ::tlm::tlm_phase&, sc_core::sc_time&) = 0;
 };
 
-#if SC_VERSION_MAJOR<3
-    using type_index = sc_core::sc_type_index;
+#if SC_VERSION_MAJOR < 3
+using type_index = sc_core::sc_type_index;
 #else
-    using type_index = std::type_index;
+using type_index = std::type_index;
 #endif
 
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>, int N = 1,

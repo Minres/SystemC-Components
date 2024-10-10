@@ -64,9 +64,7 @@ template <class T, class S> struct select_if<true, T, S> { typedef T type; };
  * @tparam O: Number of bits needed to disambiguate per-link master sources.
  * @tparam I: cacheline size in Bytes, defaults value is 64 bytes
  */
-template <unsigned int W = 32, unsigned int A = 32, unsigned int Z = 32, unsigned int O = 1,
-          unsigned int I = 3>
-struct tl_cfg {
+template <unsigned int W = 32, unsigned int A = 32, unsigned int Z = 32, unsigned int O = 1, unsigned int I = 3> struct tl_cfg {
 
     static_assert(W > 0, "W shall be larger than 0");
     static_assert(W <= 4096, "W shall be less than or equal 4096");
@@ -79,7 +77,7 @@ struct tl_cfg {
     static_assert(O <= 64, "O shall be less than or equal 64");
     static_assert(I >= 0, "I shall be larger than or equal 0");
     static_assert(I <= 64, "I shall be less than or equal 64");
-    constexpr static unsigned int BUSWIDTH = 8*W;
+    constexpr static unsigned int BUSWIDTH = 8 * W;
     constexpr static unsigned int MASKWIDTH = W;
     constexpr static unsigned int ADDRWIDTH = A;
     constexpr static unsigned int SZWIDTH = Z;
@@ -87,7 +85,7 @@ struct tl_cfg {
     constexpr static unsigned int SIDWIDTH = I;
     using addr_t = typename select_if<A <= 64, sc_dt::sc_uint<ADDRWIDTH>, sc_dt::sc_biguint<ADDRWIDTH>>::type;
     using mask_t = typename select_if<W <= 64, sc_dt::sc_uint<MASKWIDTH>, sc_dt::sc_biguint<MASKWIDTH>>::type;
-    using data_t = typename select_if<(8*W) <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
+    using data_t = typename select_if<(8 * W) <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
     using slave_types = ::tilelink::slave_types;
     using master_types = ::tilelink::master_types;
 };
@@ -270,28 +268,35 @@ template <typename CFG, typename TYPES = master_types> struct ch_e {
     }
 };
 
-template <typename CFG, typename TYPES = master_types> struct tl_ul: public ch_a<CFG, TYPES>, public ch_d<CFG, TYPES> {
-    tl_ul(): ch_a<CFG, TYPES>("a_"), ch_d<CFG, TYPES>("d_"){}
+template <typename CFG, typename TYPES = master_types> struct tl_ul : public ch_a<CFG, TYPES>, public ch_d<CFG, TYPES> {
+    tl_ul()
+    : ch_a<CFG, TYPES>("a_")
+    , ch_d<CFG, TYPES>("d_") {}
     tl_ul(const char* prefix)
-    : ch_a<CFG, TYPES>(concat(prefix, "_a_").c_str()), ch_d<CFG, TYPES>(concat(prefix, "_d_").c_str()) {}
+    : ch_a<CFG, TYPES>(concat(prefix, "_a_").c_str())
+    , ch_d<CFG, TYPES>(concat(prefix, "_d_").c_str()) {}
     template <typename OTYPES> void bind(tl_ul<CFG, OTYPES>& o) {
         bind_a(o);
         bind_d(o);
     }
 };
 
-template <typename CFG, typename TYPES = master_types>
-using tl_uh = tl_ul<CFG, TYPES>;
+template <typename CFG, typename TYPES = master_types> using tl_uh = tl_ul<CFG, TYPES>;
 
-template <typename CFG, typename TYPES = master_types> struct tl_c: public ch_a<CFG, TYPES>, public ch_b<CFG, TYPES>, public ch_c<CFG, TYPES>, public ch_d<CFG, TYPES>, public ch_e<CFG, TYPES> {
-    tl_c(): ch_a<CFG, TYPES>("a_"), ch_b<CFG, TYPES>("b_"), ch_c<CFG, TYPES>("c_"), ch_d<CFG, TYPES>("d_"), ch_e<CFG, TYPES>("e_"){}
+template <typename CFG, typename TYPES = master_types>
+struct tl_c : public ch_a<CFG, TYPES>, public ch_b<CFG, TYPES>, public ch_c<CFG, TYPES>, public ch_d<CFG, TYPES>, public ch_e<CFG, TYPES> {
+    tl_c()
+    : ch_a<CFG, TYPES>("a_")
+    , ch_b<CFG, TYPES>("b_")
+    , ch_c<CFG, TYPES>("c_")
+    , ch_d<CFG, TYPES>("d_")
+    , ch_e<CFG, TYPES>("e_") {}
     tl_c(const char* prefix)
     : ch_a<CFG, TYPES>(concat(prefix, "_a_").c_str())
     , ch_b<CFG, TYPES>(concat(prefix, "_b_").c_str())
     , ch_c<CFG, TYPES>(concat(prefix, "_c_").c_str())
     , ch_d<CFG, TYPES>(concat(prefix, "_d_").c_str())
-    , ch_e<CFG, TYPES>(concat(prefix, "_e_").c_str())
-      {}
+    , ch_e<CFG, TYPES>(concat(prefix, "_e_").c_str()) {}
     template <typename OTYPES> void bind(tl_c<CFG, OTYPES>& o) {
         bind_a(o);
         bind_b(o);
@@ -301,5 +306,5 @@ template <typename CFG, typename TYPES = master_types> struct tl_c: public ch_a<
     }
 };
 
-} // namespace tl
+} // namespace tilelink
 #endif /* _BUS_TILELINK_SIGNAL_IF_H_ */

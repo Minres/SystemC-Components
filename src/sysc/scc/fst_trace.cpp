@@ -235,7 +235,7 @@ fst_trace_file::fst_trace_file(const char* name, std::function<bool()>& enable)
     strftime(tbuf, 199, "%b %d, %Y\t%H:%M:%S", p_tm);
     fstWriterSetDate(m_fst, tbuf);
     // fstWriterSetFileType(m_fst, FST_FT_VERILOG);
-#if SC_VERSION_MAJOR<3
+#if SC_VERSION_MAJOR < 3
 #if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
     sc_object::detach();

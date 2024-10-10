@@ -52,7 +52,7 @@ vcd_push_trace_file::vcd_push_trace_file(const char* name, std::function<bool()>
 , check_enabled(enable) {
     vcd_out = fopen(fmt::format("{}.vcd", name).c_str(), "w");
 
-#if SC_VERSION_MAJOR<3
+#if SC_VERSION_MAJOR < 3
 #if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
     sc_object::detach();
