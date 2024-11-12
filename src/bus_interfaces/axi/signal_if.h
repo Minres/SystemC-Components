@@ -82,6 +82,8 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int ID
     constexpr static unsigned int IDWIDTH = IDWDTH;
     constexpr static unsigned int USERWIDTH = USERWDTH;
     using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
+    using user_t = typename select_if<USERWIDTH <= 64, sc_dt::sc_uint<USERWIDTH>, sc_dt::sc_biguint<USERWIDTH>>::type;
+    using strb_t = typename select_if<(BUSWDTH/8) <= 64, sc_dt::sc_uint<BUSWIDTH/8>, sc_dt::sc_biguint<BUSWIDTH/8>>::type;
     using slave_types = ::axi::slave_types;
     using master_types = ::axi::master_types;
 };
@@ -95,6 +97,8 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
     constexpr static unsigned int IDWIDTH = 0;
     constexpr static unsigned int USERWIDTH = 1;
     using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
+    using user_t = typename select_if<USERWIDTH <= 64, sc_dt::sc_uint<USERWIDTH>, sc_dt::sc_biguint<USERWIDTH>>::type;
+    using strb_t = typename select_if<(BUSWDTH/8) <= 64, sc_dt::sc_uint<BUSWIDTH/8>, sc_dt::sc_biguint<BUSWIDTH/8>>::type;
     using slave_types = ::axi::lite_slave_types;
     using master_types = ::axi::lite_master_types;
 };
@@ -124,6 +128,8 @@ struct ace_cfg {
     constexpr static unsigned int AWSNOOPWIDTH = AWSNOOPWDTH;
     constexpr static unsigned int RESPWIDTH = RESPWDTH;
     using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
+    using user_t = typename select_if<USERWIDTH <= 64, sc_dt::sc_uint<USERWIDTH>, sc_dt::sc_biguint<USERWIDTH>>::type;
+    using strb_t = typename select_if<(BUSWDTH/8) <= 64, sc_dt::sc_uint<BUSWIDTH/8>, sc_dt::sc_biguint<BUSWIDTH/8>>::type;
     using slave_types = ::axi::slave_types;
     using master_types = ::axi::master_types;
 };
@@ -145,7 +151,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_axi {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> aw_qos{"aw_qos"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> aw_region{"aw_region"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<8>> aw_len{"aw_len"};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> aw_user{"aw_user"};
+    typename TYPES::template m2s_opt_t<typename CFG::user_t> aw_user{"aw_user"};
 
     aw_axi() = default;
     aw_axi(const char* prefix)
@@ -186,11 +192,11 @@ template <typename CFG, typename TYPES = master_types> struct wdata_axi_lite;
 template <typename CFG, typename TYPES = master_types> struct wdata_axi {
     typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::IDWIDTH>> w_id{"w_id"};
     typename TYPES::template m2s_t<typename CFG::data_t> w_data{"w_data"};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::BUSWIDTH / 8>> w_strb{"w_strb"};
+    typename TYPES::template m2s_t<typename CFG::strb_t> w_strb{"w_strb"};
     typename TYPES::template m2s_full_t<bool> w_last{"w_last"};
     typename TYPES::template m2s_t<bool> w_valid{"w_valid"};
     typename TYPES::template s2m_t<bool> w_ready{"w_ready"};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> w_user{"w_user"};
+    typename TYPES::template m2s_opt_t<typename CFG::user_t> w_user{"w_user"};
     typename TYPES::template m2s_full_t<bool> w_ack{"w_ack"}; // only ACE
     typename TYPES::template m2s_opt_t<bool> w_trace{"w_trace"};
 
@@ -229,7 +235,7 @@ template <typename CFG, typename TYPES = master_types> struct b_axi {
     typename TYPES::template m2s_t<bool> b_ready{"b_ready"};
     typename TYPES::template s2m_full_t<sc_dt::sc_uint<CFG::IDWIDTH>> b_id{"b_id"};
     typename TYPES::template s2m_t<sc_dt::sc_uint<2>> b_resp{"b_resp"};
-    typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> b_user{"b_user"};
+    typename TYPES::template s2m_opt_t<typename CFG::user_t> b_user{"b_user"};
     typename TYPES::template s2m_opt_t<bool> b_trace{"b_trace"};
 
     b_axi() = default;
@@ -267,7 +273,7 @@ template <typename CFG, typename TYPES = master_types> struct ar_axi {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> ar_region{"ar_region"};
     typename TYPES::template m2s_t<bool> ar_valid{"ar_valid"};
     typename TYPES::template s2m_t<bool> ar_ready{"ar_ready"};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> ar_user{"ar_user"};
+    typename TYPES::template m2s_opt_t<typename CFG::user_t> ar_user{"ar_user"};
 
     ar_axi() = default;
     ar_axi(const char* prefix)
@@ -312,7 +318,7 @@ template <typename CFG, typename TYPES = master_types> struct rresp_axi {
     typename TYPES::template s2m_full_t<bool> r_last{"r_last"};
     typename TYPES::template s2m_t<bool> r_valid{"r_valid"};
     typename TYPES::template m2s_t<bool> r_ready{"r_ready"};
-    typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> r_user{"r_user"};
+    typename TYPES::template s2m_opt_t<typename CFG::user_t> r_user{"r_user"};
     typename TYPES::template s2m_opt_t<bool> r_trace{"r_trace"};
 
     rresp_axi() = default;
@@ -348,7 +354,7 @@ template <typename CFG, typename TYPES = master_types> struct rresp_ace {
     typename TYPES::template s2m_full_t<bool> r_last{"r_last"};
     typename TYPES::template s2m_t<bool> r_valid{"r_valid"};
     typename TYPES::template m2s_t<bool> r_ready{"r_ready"};
-    typename TYPES::template s2m_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> r_user{"r_user"};
+    typename TYPES::template s2m_opt_t<typename CFG::user_t> r_user{"r_user"};
     typename TYPES::template s2m_opt_t<bool> r_trace{"r_trace"}; // ACE5
     typename TYPES::template m2s_t<bool> r_ack{"r_ack"};         // only ACE
 
@@ -403,7 +409,7 @@ template <typename CFG, typename TYPES> struct aw_axi_lite {
 //! write data channel signals
 template <typename CFG, typename TYPES> struct wdata_axi_lite {
     typename TYPES::template m2s_t<typename CFG::data_t> w_data{"w_data"};
-    typename TYPES::template m2s_t<sc_dt::sc_uint<CFG::BUSWIDTH / 8>> w_strb{"w_strb"};
+    typename TYPES::template m2s_t<typename CFG::strb_t> w_strb{"w_strb"};
     typename TYPES::template m2s_t<bool> w_valid{"w_valid"};
     typename TYPES::template s2m_t<bool> w_ready{"w_ready"};
 
@@ -501,7 +507,7 @@ template <typename CFG, typename TYPES = master_types> struct ar_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> ar_domain{"ar_domain"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<4>> ar_snoop{"ar_snoop"};
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> ar_bar{"ar_bar"};
-    typename TYPES::template m2s_opt_t<sc_dt::sc_uint<CFG::USERWIDTH>> ar_user{"ar_user"};
+    typename TYPES::template m2s_opt_t<typename CFG::user_t> ar_user{"ar_user"};
     typename TYPES::template m2s_opt_t<bool> ar_trace{"ar_trace"};
     typename TYPES::template m2s_opt_t<sc_dt::sc_uint<4>> ar_vmidext{"ar_vmidext"}; // ACE5
 
@@ -564,7 +570,7 @@ template <typename CFG, typename TYPES = master_types> struct aw_ace {
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::AWSNOOPWIDTH>> aw_snoop{"aw_snoop"}; // ace5-lite has 4 bits
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<2>> aw_bar{"aw_bar"};                     // ace
     typename TYPES::template m2s_t<bool> aw_unique{"aw_unique"};                                 // ace, not for lite
-    typename TYPES::template m2s_full_t<sc_dt::sc_uint<CFG::USERWIDTH>> aw_user{"aw_user"};
+    typename TYPES::template m2s_full_t<typename CFG::user_t> aw_user{"aw_user"};
     typename TYPES::template m2s_t<bool> aw_stashniden{"aw_stashniden"}; // stash only for ACE5L
     typename TYPES::template m2s_full_t<sc_dt::sc_uint<11>> aw_stashnid{"aw_stashnid"};
     typename TYPES::template m2s_t<bool> aw_stashlpiden{"aw_stashlpiden"};

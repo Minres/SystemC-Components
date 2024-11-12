@@ -462,7 +462,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::bresp_t() {
         this->b_valid.write(true);
         if(!CFG::IS_LITE)
             this->b_id->write(ext->get_id());
-        SCCTRACE(SCMOD) << "got write response";
+        SCCTRACE(SCMOD) << "got write response for b_id= "<< this->b_id;
         do {
             wait(this->b_ready.posedge_event() | clk_delayed);
             if(this->b_ready.read()) {

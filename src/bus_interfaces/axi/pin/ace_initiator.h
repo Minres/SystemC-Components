@@ -250,7 +250,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::write_aw(tlm::
 // FIXME: strb not yet correct
 template <typename CFG> inline void axi::pin::ace_initiator<CFG>::write_wdata(tlm::tlm_generic_payload& trans, unsigned beat) {
     typename CFG::data_t data{0};
-    sc_dt::sc_uint<CFG::BUSWIDTH / 8> strb{0};
+    typename CFG::strb_t strb{0};
     auto ext = trans.get_extension<axi::ace_extension>();
     auto size = 1u << ext->get_size();
     auto byte_offset = beat * size;
