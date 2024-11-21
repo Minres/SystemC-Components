@@ -25,6 +25,7 @@
 
 #include <scc/utilities.h>
 #include <tlm_utils/simple_initiator_socket.h>
+#include <cstdint>
 
 namespace sysc {
 
