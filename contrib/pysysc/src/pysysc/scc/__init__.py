@@ -22,10 +22,12 @@ def load_lib(project_dir):
     if os.path.exists(os.path.join(project_dir, 'scc/')):
         logging.debug("Loading SC-Components build dir libs")
         pysysc.add_include_path(os.path.join(project_dir, 'scc/src/common'))
-        pysysc.add_include_path(os.path.join(project_dir, 'scc/third_party'))
+        pysysc.add_include_path(os.path.join(project_dir, "scc/third_party/cci-1.0.0"))
         pysysc.add_include_path(os.path.join(project_dir, 'scc/third_party/scv-tr/src'))
+        pysysc.add_include_path(os.path.join(project_dir, 'scc/third_party/axi_chi'))
         pysysc.add_include_path(os.path.join(project_dir, 'scc/src/sysc'))
         pysysc.add_include_path(os.path.join(project_dir, 'scc/src/components'))
+        pysysc.add_include_path(os.path.join(project_dir, 'scc/src/bus_interfaces'))
     elif os.path.exists(os.path.join(project_dir, 'include/')):
         logging.debug("Loading SC-Components installed libs")
         pysysc.add_include_path(os.path.join(project_dir, 'include'))
