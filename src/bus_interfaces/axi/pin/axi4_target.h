@@ -329,7 +329,9 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
     const auto awsize = util::ilog2(CFG::BUSWIDTH / 8);
     while(true) {
         wait(this->aw_valid.posedge_event() | clk_delayed);
-        if(this->aw_valid.event() || (!active_req_beat[tlm::TLM_IGNORE_COMMAND] && this->aw_valid.read())) {
+        if(this->aw_valid.event() || this->aw_valid.read()) {
+            wait(1_ps);
+            if(this->aw_valid.read()) {
             SCCTRACE(SCMOD) << "AWVALID detected for 0x" << std::hex << this->aw_addr.read();
             // clang-format off
             aw_data awd = {CFG::IS_LITE ? 0U : this->aw_id->read().to_uint(),
@@ -348,6 +350,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
             this->aw_ready.write(true);
             wait(clk_i.posedge_event());
             this->aw_ready.write(false);
+            }
         }
     }
 }
