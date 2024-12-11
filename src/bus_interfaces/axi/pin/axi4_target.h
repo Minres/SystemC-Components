@@ -332,9 +332,9 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
         if(this->aw_valid.event() || this->aw_valid.read()) {
             wait(1_ps);
             if(this->aw_valid.read()) {
-            SCCTRACE(SCMOD) << "AWVALID detected for 0x" << std::hex << this->aw_addr.read();
-            // clang-format off
-            aw_data awd = {CFG::IS_LITE ? 0U : this->aw_id->read().to_uint(),
+                SCCTRACE(SCMOD) << "AWVALID detected for 0x" << std::hex << this->aw_addr.read();
+                // clang-format off
+                aw_data awd = {CFG::IS_LITE ? 0U : this->aw_id->read().to_uint(),
                     this->aw_addr.read().to_uint64(),
                     this->aw_prot.read().to_uint(),
                     CFG::IS_LITE ? awsize : this->aw_size->read().to_uint(),
@@ -345,11 +345,11 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
                     CFG::IS_LITE ? 0U : this->aw_len->read().to_uint(),
                     CFG::IS_LITE ? false : this->aw_lock->read(),
                     0};
-            // clang-format on
-            aw_que.notify(std::move(awd));
-            this->aw_ready.write(true);
-            wait(clk_i.posedge_event());
-            this->aw_ready.write(false);
+                // clang-format on
+                aw_que.notify(std::move(awd));
+                this->aw_ready.write(true);
+                wait(clk_i.posedge_event());
+                this->aw_ready.write(false);
             }
         }
     }
@@ -465,7 +465,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::bresp_t() {
         this->b_valid.write(true);
         if(!CFG::IS_LITE)
             this->b_id->write(ext->get_id());
-        SCCTRACE(SCMOD) << "got write response for b_id= "<< this->b_id;
+        SCCTRACE(SCMOD) << "got write response for b_id= " << this->b_id;
         do {
             wait(this->b_ready.posedge_event() | clk_delayed);
             if(this->b_ready.read()) {

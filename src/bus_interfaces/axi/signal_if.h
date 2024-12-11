@@ -83,7 +83,7 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int ID
     constexpr static unsigned int USERWIDTH = USERWDTH;
     using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
     using user_t = typename select_if<USERWIDTH <= 64, sc_dt::sc_uint<USERWIDTH>, sc_dt::sc_biguint<USERWIDTH>>::type;
-    using strb_t = typename select_if<(BUSWDTH/8) <= 64, sc_dt::sc_uint<BUSWIDTH/8>, sc_dt::sc_biguint<BUSWIDTH/8>>::type;
+    using strb_t = typename select_if<(BUSWDTH / 8) <= 64, sc_dt::sc_uint<BUSWIDTH / 8>, sc_dt::sc_biguint<BUSWIDTH / 8>>::type;
     using slave_types = ::axi::slave_types;
     using master_types = ::axi::master_types;
 };
@@ -98,7 +98,7 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lit
     constexpr static unsigned int USERWIDTH = 1;
     using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
     using user_t = typename select_if<USERWIDTH <= 64, sc_dt::sc_uint<USERWIDTH>, sc_dt::sc_biguint<USERWIDTH>>::type;
-    using strb_t = typename select_if<(BUSWDTH/8) <= 64, sc_dt::sc_uint<BUSWIDTH/8>, sc_dt::sc_biguint<BUSWIDTH/8>>::type;
+    using strb_t = typename select_if<(BUSWDTH / 8) <= 64, sc_dt::sc_uint<BUSWIDTH / 8>, sc_dt::sc_biguint<BUSWIDTH / 8>>::type;
     using slave_types = ::axi::lite_slave_types;
     using master_types = ::axi::lite_master_types;
 };
@@ -129,7 +129,7 @@ struct ace_cfg {
     constexpr static unsigned int RESPWIDTH = RESPWDTH;
     using data_t = typename select_if<BUSWDTH <= 64, sc_dt::sc_uint<BUSWIDTH>, sc_dt::sc_biguint<BUSWIDTH>>::type;
     using user_t = typename select_if<USERWIDTH <= 64, sc_dt::sc_uint<USERWIDTH>, sc_dt::sc_biguint<USERWIDTH>>::type;
-    using strb_t = typename select_if<(BUSWDTH/8) <= 64, sc_dt::sc_uint<BUSWIDTH/8>, sc_dt::sc_biguint<BUSWIDTH/8>>::type;
+    using strb_t = typename select_if<(BUSWDTH / 8) <= 64, sc_dt::sc_uint<BUSWIDTH / 8>, sc_dt::sc_biguint<BUSWIDTH / 8>>::type;
     using slave_types = ::axi::slave_types;
     using master_types = ::axi::master_types;
 };

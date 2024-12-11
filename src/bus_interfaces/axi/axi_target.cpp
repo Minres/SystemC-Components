@@ -22,7 +22,8 @@
 using namespace axi;
 
 inline unsigned get_cci_randomized_value(cci::cci_param<int> const& p) {
-    if(p.get_value()<0) return scc::MT19937::uniform(0, -p.get_value());
+    if(p.get_value() < 0)
+        return scc::MT19937::uniform(0, -p.get_value());
     return p.get_value();
 }
 
@@ -43,6 +44,7 @@ void axi_target_base::trans_queue() {
     while(true) {
         tlm::scc::tlm_gp_shared_ptr trans = peq.get();
         isck->b_transport(*trans, delay);
-        pe.operation_resp(*trans, trans->is_write() ? get_cci_randomized_value(pe.wr_resp_delay) : get_cci_randomized_value(pe.rd_resp_delay));
+        pe.operation_resp(*trans,
+                          trans->is_write() ? get_cci_randomized_value(pe.wr_resp_delay) : get_cci_randomized_value(pe.rd_resp_delay));
     }
 }

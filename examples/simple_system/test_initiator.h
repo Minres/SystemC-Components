@@ -23,9 +23,9 @@
 #ifndef _TEST_INITIATOR_H_
 #define _TEST_INITIATOR_H_
 
+#include <cstdint>
 #include <scc/utilities.h>
 #include <tlm_utils/simple_initiator_socket.h>
-#include <cstdint>
 
 namespace sysc {
 
