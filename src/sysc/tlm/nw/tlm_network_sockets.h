@@ -48,10 +48,9 @@ DECLARE_EXTENDED_PHASE(INDICATION);
 DECLARE_EXTENDED_PHASE(RESPONSE);
 
 template <typename TYPES = tlm_network_baseprotocol_types>
-struct tlm_network_fw_transport_if :
-        public virtual tlm::tlm_blocking_transport_if<typename TYPES::tlm_payload_type>,
-        public virtual tlm::tlm_fw_nonblocking_transport_if<typename TYPES::tlm_payload_type>,
-        public virtual tlm::tlm_transport_dbg_if<typename TYPES::tlm_payload_type> {
+struct tlm_network_fw_transport_if : public virtual tlm::tlm_blocking_transport_if<typename TYPES::tlm_payload_type>,
+                                     public virtual tlm::tlm_fw_nonblocking_transport_if<typename TYPES::tlm_payload_type>,
+                                     public virtual tlm::tlm_transport_dbg_if<typename TYPES::tlm_payload_type> {
     typedef TYPES protocol_types;
 };
 
@@ -105,7 +104,7 @@ struct tlm_network_target_socket
 
     virtual type_index get_protocol_types() const { return typeid(TYPES); }
 };
-} // namespace scc
+} // namespace nw
 } // namespace tlm
 
 #endif /* _TLM_NW_TLM_NETWORK_SOCKETS_H_ */

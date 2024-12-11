@@ -329,6 +329,6 @@ inline void tlm_network_payload_base::copy_extensions_from(const tlm_network_pay
 }
 
 inline void tlm_network_payload_base::resize_extensions() { m_extensions.expand(max_num_extensions()); }
-} // namespace scc
+} // namespace nw
 } // namespace tlm
 #endif /* _TLM_NW_TLM_NETWROK_GP_H_ */

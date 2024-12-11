@@ -18,8 +18,8 @@
 #define _TLM_TLM_MM_H_
 
 #include <tlm>
-#include <util/pool_allocator.h>
 #include <type_traits>
+#include <util/pool_allocator.h>
 
 //#if defined(MSVC)
 #define ATTR_UNUSED
@@ -152,9 +152,7 @@ protected:
     tlm_ext_mm(Args... args)
     : EXT(args...) {}
 };
-template<typename TYPES> struct tlm_mm_traits {
-    using mm_if_type = tlm::tlm_mm_interface;
-};
+template <typename TYPES> struct tlm_mm_traits { using mm_if_type = tlm::tlm_mm_interface; };
 /**
  * @class tlm_mm
  * @brief a tlm memory manager
@@ -247,9 +245,7 @@ public:
      * @brief get a plain tlm_payload_type without extensions but initialized data and byte enable
      * @return the tlm_payload_type
      */
-    payload_type* allocate(size_t sz, bool be = false) {
-        return sz ? tlm_gp_mm::add_data_ptr(sz, allocate(), be) : allocate();
-    }
+    payload_type* allocate(size_t sz, bool be = false) { return sz ? tlm_gp_mm::add_data_ptr(sz, allocate(), be) : allocate(); }
     /**
      * @brief get a tlm_payload_type with registered extension and initialize data pointer
      *
@@ -282,11 +278,11 @@ private:
     util::pool_allocator<sizeof(payload_type)>& allocator;
 };
 
-template <typename TYPES = tlm_base_protocol_types, bool CLEANUP_DATA=true>
-struct tlm_mm: public tlm_mm_t<TYPES, CLEANUP_DATA, typename std::conditional<
-    std::is_base_of<tlm::tlm_generic_payload, typename TYPES::tlm_payload_type>::value,
-    tlm::tlm_mm_interface,
-    typename tlm_mm_traits<TYPES>::mm_if_type>::type> {
+template <typename TYPES = tlm_base_protocol_types, bool CLEANUP_DATA = true>
+struct tlm_mm
+: public tlm_mm_t<TYPES, CLEANUP_DATA,
+                  typename std::conditional<std::is_base_of<tlm::tlm_generic_payload, typename TYPES::tlm_payload_type>::value,
+                                            tlm::tlm_mm_interface, typename tlm_mm_traits<TYPES>::mm_if_type>::type> {
     /**
      * @brief accessor function of the singleton
      * @return
@@ -294,8 +290,7 @@ struct tlm_mm: public tlm_mm_t<TYPES, CLEANUP_DATA, typename std::conditional<
     static tlm_mm& get();
 };
 
-template <typename TYPES, bool CLEANUP_DATA>
-inline tlm_mm<TYPES, CLEANUP_DATA>& tlm_mm<TYPES, CLEANUP_DATA>::get() {
+template <typename TYPES, bool CLEANUP_DATA> inline tlm_mm<TYPES, CLEANUP_DATA>& tlm_mm<TYPES, CLEANUP_DATA>::get() {
     static tlm_mm<TYPES, CLEANUP_DATA> mm;
     return mm;
 }

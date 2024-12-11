@@ -24,8 +24,7 @@ namespace tlm {
 //! @brief SCC TLM utilities
 namespace scc {
 
-template<typename T>
-class tlm_payload_shared_ptr {
+template <typename T> class tlm_payload_shared_ptr {
     T* ptr{nullptr};
 
 public:
@@ -94,22 +93,22 @@ public:
     inline operator bool() const noexcept { return ptr != nullptr; }
 };
 
-template<typename T>
-inline std::ostream& operator<<(std::ostream& os, tlm_payload_shared_ptr<T> const& p) {
+template <typename T> inline std::ostream& operator<<(std::ostream& os, tlm_payload_shared_ptr<T> const& p) {
     os << p.get();
     return os;
 }
 
-template<typename T>
-inline bool operator==(tlm_payload_shared_ptr<T> const& x, tlm_payload_shared_ptr<T> const& y) noexcept { return x.get() == y.get(); }
+template <typename T> inline bool operator==(tlm_payload_shared_ptr<T> const& x, tlm_payload_shared_ptr<T> const& y) noexcept {
+    return x.get() == y.get();
+}
 
-template<typename T>
-inline bool operator==(tlm_payload_shared_ptr<T> const& x, T* y) noexcept { return x.get() == y; }
+template <typename T> inline bool operator==(tlm_payload_shared_ptr<T> const& x, T* y) noexcept { return x.get() == y; }
 
-template<typename T>
-inline bool operator!=(tlm_payload_shared_ptr<T> const& x, tlm_payload_shared_ptr<T> const& y) noexcept { return x.get() != y.get(); }
+template <typename T> inline bool operator!=(tlm_payload_shared_ptr<T> const& x, tlm_payload_shared_ptr<T> const& y) noexcept {
+    return x.get() != y.get();
+}
 
-using tlm_gp_shared_ptr =tlm_payload_shared_ptr<tlm::tlm_generic_payload>;
+using tlm_gp_shared_ptr = tlm_payload_shared_ptr<tlm::tlm_generic_payload>;
 } // namespace scc
 } // namespace tlm
 #endif /* _SYSC_TLM_TLM_GP_SHARED_H_ */
