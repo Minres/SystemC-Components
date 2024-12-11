@@ -19,6 +19,7 @@
 
 #include <tlm>
 #include <util/pool_allocator.h>
+#include <type_traits>
 
 //#if defined(MSVC)
 #define ATTR_UNUSED
@@ -151,6 +152,9 @@ protected:
     tlm_ext_mm(Args... args)
     : EXT(args...) {}
 };
+template<typename TYPES> struct tlm_mm_traits {
+    using mm_if_type = tlm::tlm_mm_interface;
+};
 /**
  * @class tlm_mm
  * @brief a tlm memory manager
@@ -158,33 +162,78 @@ protected:
  * This memory manager can be used as singleton or as local memory manager. It uses the pool_allocator
  * as singleton to maximize reuse
  */
-template <typename TYPES = tlm_base_protocol_types, bool CLEANUP_DATA = true> class tlm_mm : public tlm::tlm_mm_interface {
+template <typename TYPES, bool CLEANUP_DATA, typename BASE> class tlm_mm_t : public BASE {
     using payload_type = typename TYPES::tlm_payload_type;
+    using payload_base = typename tlm_mm_traits<TYPES>::payload_base;
+    static_assert(!std::is_base_of<tlm::tlm_generic_payload, typename TYPES::tlm_payload_type>::value, "Using cxs::tlm_network_cxs_types");
 
 public:
-    /**
-     * @brief accessor function of the singleton
-     * @return
-     */
-    static tlm_mm& get();
-
-    tlm_mm()
+    tlm_mm_t()
     : allocator(util::pool_allocator<sizeof(payload_type)>::get()) {}
 
-    tlm_mm(const tlm_mm&) = delete;
+    tlm_mm_t(const tlm_mm_t&) = delete;
 
-    tlm_mm(tlm_mm&&) = delete;
+    tlm_mm_t(tlm_mm_t&&) = delete;
 
-    tlm_mm& operator=(const tlm_mm& other) = delete;
+    tlm_mm_t& operator=(const tlm_mm_t& other) = delete;
 
-    tlm_mm& operator=(tlm_mm&& other) = delete;
+    tlm_mm_t& operator=(tlm_mm_t&& other) = delete;
 
-    ~tlm_mm() = default;
+    ~tlm_mm_t() = default;
     /**
      * @brief get a plain tlm_payload_type without extensions
      * @return the tlm_payload_type
      */
-    payload_type* allocate();
+    payload_type* allocate() {
+        auto* ptr = allocator.allocate(sc_core::sc_time_stamp().value());
+        return new(ptr) payload_type(this);
+    }
+    /**
+     * @brief get a tlm_payload_type with registered extension
+     * @return the tlm_payload_type
+     */
+    template <typename PEXT> payload_type* allocate() {
+        auto* ptr = allocate();
+        ptr->set_auto_extension(new PEXT);
+        return ptr;
+    }
+    /**
+     * @brief return the extension into the memory pool (removing the extensions)
+     * @param trans the returning transaction
+     */
+    void free(payload_base* trans) {
+        trans->~payload_base();
+        allocator.free(trans);
+    }
+
+private:
+    util::pool_allocator<sizeof(payload_type)>& allocator;
+};
+
+template <typename TYPES, bool CLEANUP_DATA> class tlm_mm_t<TYPES, CLEANUP_DATA, tlm::tlm_mm_interface> : public tlm::tlm_mm_interface {
+    using payload_type = typename TYPES::tlm_payload_type;
+
+public:
+    tlm_mm_t()
+    : allocator(util::pool_allocator<sizeof(payload_type)>::get()) {}
+
+    tlm_mm_t(const tlm_mm_t&) = delete;
+
+    tlm_mm_t(tlm_mm_t&&) = delete;
+
+    tlm_mm_t& operator=(const tlm_mm_t& other) = delete;
+
+    tlm_mm_t& operator=(tlm_mm_t&& other) = delete;
+
+    ~tlm_mm_t() = default;
+    /**
+     * @brief get a plain tlm_payload_type without extensions
+     * @return the tlm_payload_type
+     */
+    payload_type* allocate() {
+        auto* ptr = allocator.allocate(sc_core::sc_time_stamp().value());
+        return new(ptr) payload_type(this);
+    }
     /**
      * @brief get a tlm_payload_type with registered extension
      * @return the tlm_payload_type
@@ -198,7 +247,9 @@ public:
      * @brief get a plain tlm_payload_type without extensions but initialized data and byte enable
      * @return the tlm_payload_type
      */
-    payload_type* allocate(size_t sz, bool be = false);
+    payload_type* allocate(size_t sz, bool be = false) {
+        return sz ? tlm_gp_mm::add_data_ptr(sz, allocate(), be) : allocate();
+    }
     /**
      * @brief get a tlm_payload_type with registered extension and initialize data pointer
      *
@@ -213,42 +264,41 @@ public:
      * @brief return the extension into the memory pool (removing the extensions)
      * @param trans the returning transaction
      */
-    void free(tlm::tlm_generic_payload* trans) override;
+    void free(tlm::tlm_generic_payload* trans) {
+        if(CLEANUP_DATA && !trans->get_extension<tlm_gp_mm>()) {
+            if(trans->get_data_ptr())
+                delete[] trans->get_data_ptr();
+            if(trans->get_byte_enable_ptr())
+                delete[] trans->get_byte_enable_ptr();
+        }
+        trans->set_data_ptr(nullptr);
+        trans->set_byte_enable_ptr(nullptr);
+        trans->reset();
+        trans->~tlm_generic_payload();
+        allocator.free(trans);
+    }
 
 private:
     util::pool_allocator<sizeof(payload_type)>& allocator;
 };
 
-template <typename TYPES, bool CLEANUP_DATA> inline tlm_mm<TYPES, CLEANUP_DATA>& tlm_mm<TYPES, CLEANUP_DATA>::get() {
+template <typename TYPES = tlm_base_protocol_types, bool CLEANUP_DATA=true>
+struct tlm_mm: public tlm_mm_t<TYPES, CLEANUP_DATA, typename std::conditional<
+    std::is_base_of<tlm::tlm_generic_payload, typename TYPES::tlm_payload_type>::value,
+    tlm::tlm_mm_interface,
+    typename tlm_mm_traits<TYPES>::mm_if_type>::type> {
+    /**
+     * @brief accessor function of the singleton
+     * @return
+     */
+    static tlm_mm& get();
+};
+
+template <typename TYPES, bool CLEANUP_DATA>
+inline tlm_mm<TYPES, CLEANUP_DATA>& tlm_mm<TYPES, CLEANUP_DATA>::get() {
     static tlm_mm<TYPES, CLEANUP_DATA> mm;
     return mm;
 }
-
-template <typename TYPES, bool CLEANUP_DATA>
-inline typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP_DATA>::allocate() {
-    auto* ptr = allocator.allocate(sc_core::sc_time_stamp().value());
-    return new(ptr) payload_type(this);
-}
-
-template <typename TYPES, bool CLEANUP_DATA>
-inline typename tlm_mm<TYPES, CLEANUP_DATA>::payload_type* tlm_mm<TYPES, CLEANUP_DATA>::allocate(size_t sz, bool be) {
-    return sz ? tlm_gp_mm::add_data_ptr(sz, allocate(), be) : allocate();
-}
-
-template <typename TYPES, bool CLEANUP_DATA> void tlm_mm<TYPES, CLEANUP_DATA>::free(tlm::tlm_generic_payload* trans) {
-    if(CLEANUP_DATA && !trans->get_extension<tlm_gp_mm>()) {
-        if(trans->get_data_ptr())
-            delete[] trans->get_data_ptr();
-        if(trans->get_byte_enable_ptr())
-            delete[] trans->get_byte_enable_ptr();
-    }
-    trans->set_data_ptr(nullptr);
-    trans->set_byte_enable_ptr(nullptr);
-    trans->reset();
-    trans->~tlm_generic_payload();
-    allocator.free(trans);
-}
-
 } // namespace scc
 } // namespace tlm
 
