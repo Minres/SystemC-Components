@@ -51,8 +51,13 @@ struct signal_types {
     template <typename T> using s2m_opt_t = sc_core::sc_signal<T>;
 };
 
-template <bool Cond, class T, class S> struct select_if { typedef S type; };
-template <class T, class S> struct select_if<true, T, S> { typedef T type; };
+template <bool Cond, class T, class S> struct select_if {
+    typedef S type;
+};
+
+template <class T, class S> struct select_if<true, T, S> {
+    typedef T type;
+};
 
 /**
  * @struct tl_cfg

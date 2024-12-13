@@ -101,7 +101,9 @@ public:
     typedef std::size_t size_type;
     typedef std::ptrdiff_t difference_type;
     //    convert an allocator<T> to allocator<U> e.g. for std::map from A to _Node<A>
-    template <typename U> struct rebind { typedef stl_pool_allocator<U> other; };
+    template <typename U> struct rebind {
+        typedef stl_pool_allocator<U> other;
+    };
 
     stl_pool_allocator(const stl_pool_allocator&) noexcept {}
 

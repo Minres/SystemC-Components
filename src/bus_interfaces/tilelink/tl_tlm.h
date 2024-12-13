@@ -26,7 +26,9 @@ namespace tilelink {
 /**
  * helper function to allow SFINAE
  */
-template <typename Enum> struct enable_for_enum { static const bool value = false; };
+template <typename Enum> struct enable_for_enum {
+    static const bool value = false;
+};
 /**
  * helper function to convert integer into class enums
  * @param t
@@ -303,7 +305,9 @@ struct tlc_target_socket : public tlm::tlm_base_target_socket<BUSWIDTH, tlc_fw_t
 /*****************************************************************************
  * Implementation details
  *****************************************************************************/
-template <> struct enable_for_enum<opcode_e> { static const bool enable = true; };
+template <> struct enable_for_enum<opcode_e> {
+    static const bool enable = true;
+};
 
 inline opcode_e tilelink_extension::get_opcode() const { return opcode; }
 

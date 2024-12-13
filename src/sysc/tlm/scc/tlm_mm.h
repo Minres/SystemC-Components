@@ -21,11 +21,11 @@
 #include <type_traits>
 #include <util/pool_allocator.h>
 
-//#if defined(MSVC)
+// #if defined(MSVC)
 #define ATTR_UNUSED
-//#else
-//#define ATTR_UNUSED __attribute__((unused))
-//#endif
+// #else
+// #define ATTR_UNUSED __attribute__((unused))
+// #endif
 //! @brief SystemC TLM
 namespace tlm {
 //! @brief SCC TLM utilities
@@ -152,7 +152,9 @@ protected:
     tlm_ext_mm(Args... args)
     : EXT(args...) {}
 };
-template <typename TYPES> struct tlm_mm_traits { using mm_if_type = tlm::tlm_mm_interface; };
+template <typename TYPES> struct tlm_mm_traits {
+    using mm_if_type = tlm::tlm_mm_interface;
+};
 /**
  * @class tlm_mm
  * @brief a tlm memory manager
