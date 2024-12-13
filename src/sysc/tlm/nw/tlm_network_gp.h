@@ -163,6 +163,7 @@ template <typename CMDENUM> struct tlm_network_payload : public tlm_network_payl
     void set_command(const CMDENUM command) { m_command = command; }
 
     std::vector<uint8_t> const& get_data() const { return m_data; }
+    std::vector<uint8_t>& get_data() { return m_data; }
     void set_data(std::vector<uint8_t> const& value) { m_data = value; }
 
     // Response status related methods
@@ -211,13 +212,13 @@ public:
 template <typename CMDENUM>
 inline tlm_network_payload<CMDENUM>::tlm_network_payload()
 : tlm_network_payload_base()
-, m_command()
+, m_command(static_cast<CMDENUM>(0))
 , m_response_status(TLM_OK_RESPONSE) {}
 
 template <typename CMDENUM>
 inline tlm_network_payload<CMDENUM>::tlm_network_payload(tlm_base_mm_interface* mm)
 : tlm_network_payload_base(mm)
-, m_command()
+, m_command(static_cast<CMDENUM>(0))
 , m_response_status(TLM_OK_RESPONSE) {}
 
 inline void tlm_network_payload_base::free_all_extensions() {
