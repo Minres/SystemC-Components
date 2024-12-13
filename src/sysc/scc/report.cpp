@@ -33,6 +33,7 @@
 #include <thread>
 #include <tuple>
 #include <unordered_map>
+#include <util/logging.h>
 #ifdef __GNUC__
 #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 #if GCC_VERSION < 40900
@@ -170,6 +171,8 @@ auto compose_message(const sc_report& rep, const scc::LogConfig& cfg) -> const s
     if(rep.get_severity() > SC_INFO || cfg.log_filter_regex.length() == 0 || rep.get_verbosity() == sc_core::SC_MEDIUM ||
        log_cfg.match(rep.get_msg_type())) {
         stringstream os;
+        if(unlikely(cfg.print_sys_time))
+            os << "<" << logging::now_time() << ">";
         if(likely(cfg.print_sim_time)) {
             if(unlikely(log_cfg.cycle_base.value())) {
                 if(unlikely(cfg.print_delta))
