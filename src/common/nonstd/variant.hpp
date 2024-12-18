@@ -437,16 +437,10 @@ using std::tr1::add_pointer;
 
 #else
 
-template <class T> struct remove_reference {
-    typedef T type;
-};
-template <class T> struct remove_reference<T&> {
-    typedef T type;
-};
+template <class T> struct remove_reference { typedef T type; };
+template <class T> struct remove_reference<T&> { typedef T type; };
 
-template <class T> struct add_pointer {
-    typedef typename remove_reference<T>::type* type;
-};
+template <class T> struct add_pointer { typedef typename remove_reference<T>::type* type; };
 
 #endif // variant_HAVE_STD_ADD_POINTER
 
@@ -456,23 +450,13 @@ using std::remove_cv;
 
 #else
 
-template <class T> struct remove_const {
-    typedef T type;
-};
-template <class T> struct remove_const<const T> {
-    typedef T type;
-};
+template <class T> struct remove_const { typedef T type; };
+template <class T> struct remove_const<const T> { typedef T type; };
 
-template <class T> struct remove_volatile {
-    typedef T type;
-};
-template <class T> struct remove_volatile<volatile T> {
-    typedef T type;
-};
+template <class T> struct remove_volatile { typedef T type; };
+template <class T> struct remove_volatile<volatile T> { typedef T type; };
 
-template <class T> struct remove_cv {
-    typedef typename remove_volatile<typename remove_const<T>::type>::type type;
-};
+template <class T> struct remove_cv { typedef typename remove_volatile<typename remove_const<T>::type>::type type; };
 
 #endif // variant_HAVE_REMOVE_CV
 
@@ -484,13 +468,9 @@ using std::conditional;
 
 template <bool Cond, class Then, class Else> struct conditional;
 
-template <class Then, class Else> struct conditional<true, Then, Else> {
-    typedef Then type;
-};
+template <class Then, class Else> struct conditional<true, Then, Else> { typedef Then type; };
 
-template <class Then, class Else> struct conditional<false, Then, Else> {
-    typedef Else type;
-};
+template <class Then, class Else> struct conditional<false, Then, Else> { typedef Else type; };
 
 #endif // variant_HAVE_CONDITIONAL
 
@@ -502,9 +482,7 @@ using std::enable_if;
 
 template <bool B, class T = void> struct enable_if {};
 
-template <class T> struct enable_if<true, T> {
-    typedef T type;
-};
+template <class T> struct enable_if<true, T> { typedef T type; };
 
 #endif // variant_HAVE_ENABLE_IF
 
@@ -814,9 +792,7 @@ public:
 
 template <class List, std::size_t i> struct typelist_type_at;
 
-template <class Head, class Tail> struct typelist_type_at<typelist<Head, Tail>, 0> {
-    typedef Head type;
-};
+template <class Head, class Tail> struct typelist_type_at<typelist<Head, Tail>, 0> { typedef Head type; };
 
 template <class Head, class Tail, std::size_t i> struct typelist_type_at<typelist<Head, Tail>, i> {
     typedef typename typelist_type_at<Tail, i - 1>::type type;
@@ -854,9 +830,7 @@ template <class List, class T> struct typelist_contains_unique_type : typelist_t
     type variant_UNIQUE(_t);                                                                                                               \
     struct_t<type> variant_UNIQUE(_st)
 
-template <class T> struct struct_t {
-    T _;
-};
+template <class T> struct struct_t { T _; };
 
 union max_align_t {
     variant_ALIGN_TYPE(char);
@@ -929,13 +903,9 @@ template <typename List, size_t N> struct type_of_size {
                                         typename type_of_size<typename List::tail, N>::type>::type type;
 };
 
-template <size_t N> struct type_of_size<nulltype, N> {
-    typedef variant_CONFIG_ALIGN_AS_FALLBACK type;
-};
+template <size_t N> struct type_of_size<nulltype, N> { typedef variant_CONFIG_ALIGN_AS_FALLBACK type; };
 
-template <typename T> struct struct_t {
-    T _;
-};
+template <typename T> struct struct_t { T _; };
 
 #define variant_ALIGN_TYPE(type) typelist < type, typelist < struct_t<type>
 

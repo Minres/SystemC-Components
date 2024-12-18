@@ -27,9 +27,7 @@ namespace ahb {
 /**
  * helper function to allow SFINAE
  */
-template <typename Enum> struct enable_for_enum {
-    static const bool value = false;
-};
+template <typename Enum> struct enable_for_enum { static const bool value = false; };
 /**
  * helper function to convert integer into class enums
  * @param t
@@ -129,18 +127,10 @@ private:
 /*****************************************************************************
  * Implementation details
  *****************************************************************************/
-template <> struct enable_for_enum<lock_e> {
-    static const bool enable = true;
-};
-template <> struct enable_for_enum<resp_e> {
-    static const bool enable = true;
-};
-template <> struct enable_for_enum<trans_e> {
-    static const bool enable = true;
-};
-template <> struct enable_for_enum<burst_e> {
-    static const bool enable = true;
-};
+template <> struct enable_for_enum<lock_e> { static const bool enable = true; };
+template <> struct enable_for_enum<resp_e> { static const bool enable = true; };
+template <> struct enable_for_enum<trans_e> { static const bool enable = true; };
+template <> struct enable_for_enum<burst_e> { static const bool enable = true; };
 
 inline bool ahb_extension::is_instruction() const { return prot & INSTR; }
 
