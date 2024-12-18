@@ -130,7 +130,7 @@ private:
 private:
     bw_transport_if bw_if;
 };
-} // namespace scc
+} // namespace nw
 } // namespace tlm
 
 #endif //_TLM_SCC_INITIATOR_MIXIN_H__

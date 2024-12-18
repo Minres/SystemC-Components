@@ -485,7 +485,7 @@ private:
     sc_core::sc_event m_end_request;
     transaction_type* m_current_transaction;
 };
-} // namespace scc
+} // namespace nw
 } // namespace tlm
 
 #endif //__TARGET_MIXIN_H__
