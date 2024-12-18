@@ -80,6 +80,8 @@ struct tlm_network_initiator_socket
     explicit tlm_network_initiator_socket(const char* name)
     : tlm_base_initiator_socket<0, tlm_network_fw_transport_if<TYPES>, tlm_network_bw_transport_if<TYPES>, N, POL>(name) {}
 
+    virtual ~tlm_network_initiator_socket() = default;
+
     virtual const char* kind() const { return "tlm_network_initiator_socket"; }
 
     virtual type_index get_protocol_types() const { return typeid(TYPES); }
