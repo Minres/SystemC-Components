@@ -72,7 +72,7 @@ public:
     }
 
     /// @brief raw pointer assignment operator.
-    tlm_payload_shared_ptr& operator=(tlm::tlm_generic_payload* p) noexcept {
+    tlm_payload_shared_ptr& operator=(T* p) noexcept {
         if(ptr && ptr->has_mm())
             ptr->release();
         ptr = p;
