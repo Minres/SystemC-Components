@@ -198,7 +198,7 @@ private:
             }
             const auto remaining_bytes = trans->get_data().size() - transfered_pkt_bytes;
             const auto remaining_buckets = (CXSMAXPKTPERFLIT - next_bucket);
-            const auto bucketed_size = (remaining_bytes + 1) / BUCKET_SIZE;
+            const auto bucketed_size = (remaining_bytes + BUCKET_SIZE -1) / BUCKET_SIZE;
             if(bucketed_size > remaining_buckets) {
                 // packet exceeds current flit, so sen the flit
                 transfered_pkt_bytes += remaining_buckets * BUCKET_SIZE;
@@ -207,7 +207,7 @@ private:
             } else {
                 // packet fits into current flit length
                 ptr->end |= 1u << end_ptr_idx;
-                ptr->end_ptr[end_ptr_idx] = (next_bucket * BUCKET_SIZE + remaining_bytes + 1) / 4 - 1; // end pointer is 4 byte aligned
+                ptr->end_ptr[end_ptr_idx++] = (next_bucket * BUCKET_SIZE + remaining_bytes + 1) / 4 - 1; // end pointer is 4 byte aligned
                 ptr->last = true;
                 next_bucket += bucketed_size;
                 ext->orig_ext.push_back(trans);
