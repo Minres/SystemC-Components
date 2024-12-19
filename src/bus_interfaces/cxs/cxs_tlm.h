@@ -120,6 +120,8 @@ struct cxs_transmitter : public sc_core::sc_module,
 
     sc_core::sc_in<bool> clk_i{"clk_i"};
 
+    sc_core::sc_in<bool> rst_i{"rst_i"};
+
     cxs_pkt_target_socket<> tsck{"tsck"};
 
     cxs_flit_initiator_socket<PHITWIDTH> isck{"isck"};
@@ -135,6 +137,9 @@ struct cxs_transmitter : public sc_core::sc_module,
         SC_HAS_PROCESS(cxs_transmitter);
         SC_METHOD(clock);
         sensitive << clk_i.pos();
+        SC_METHOD(reset);
+        sensitive << rst_i;
+        dont_initialize();
     }
 
 private:
@@ -178,7 +183,8 @@ private:
 
     void clock() {
         if((!pending_pkt && !pkt_peq.has_next()) ||                      // there are no packets to send
-           (received_credits < burst_len.get_value() && !burst_credits)) // we do not have enough credits to send them as burst
+           (received_credits < burst_len.get_value() && !burst_credits) ||
+           rst_i.read()) // we do not have enough credits to send them as burst
             return;
         auto* ptr = cxs_flit_mm::get().allocate();
         auto ext = ptr->get_extension<orig_pkt_extension>();
@@ -224,6 +230,14 @@ private:
         burst_credits--;
     }
 
+    void reset() {
+        if(rst_i.read()) {
+            received_credits=0;
+            pkt_peq.clear();
+            pending_pkt=nullptr;
+        }
+    }
+
     scc::peq<cxs_pkt_shared_ptr> pkt_peq;
     cxs_pkt_shared_ptr pending_pkt;
     unsigned transfered_pkt_bytes{0};
@@ -262,14 +276,14 @@ struct cxs_receiver : public sc_core::sc_module,
         tsck(*this);
         isck(*this);
         SC_HAS_PROCESS(cxs_receiver);
+        SC_METHOD(clock);
+        sensitive << clk_i.pos();
+        dont_initialize();
         SC_METHOD(reset);
-        sensitive << rst_i.neg();
+        sensitive << rst_i;
         dont_initialize();
         SC_METHOD(send_credit);
         sensitive << credit_returned.data_written_event();
-        dont_initialize();
-        SC_METHOD(clock);
-        sensitive << clk_i.pos();
         dont_initialize();
     }
 
@@ -316,7 +330,7 @@ private:
     }
 
     void reset() {
-        if(!rst_i.read()) {
+        if(rst_i.read()) {
             credit_returned.push_back(max_credit.get_value());
         }
     }
@@ -328,6 +342,8 @@ private:
     }
 
     void clock() {
+        if(rst_i.read())
+            return;
         if(available_credits > 0) {
             auto* ptr = cxs_flit_mm::get().allocate();
             ptr->set_command(cxs::CXS_CMD::CREDIT);
