@@ -182,7 +182,7 @@ private:
     }
 
     void clock() {
-        if((!pending_pkt && !pkt_peq.has_next()) ||                      // there are no packets to send
+        if((!pending_pkt && !pkt_peq.has_next()) || // there are no packets to send
            (received_credits < burst_len.get_value() && !burst_credits) ||
            rst_i.read()) // we do not have enough credits to send them as burst
             return;
@@ -232,9 +232,9 @@ private:
 
     void reset() {
         if(rst_i.read()) {
-            received_credits=0;
+            received_credits = 0;
             pkt_peq.clear();
-            pending_pkt=nullptr;
+            pending_pkt = nullptr;
         }
     }
 
