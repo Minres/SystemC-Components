@@ -9,6 +9,7 @@ set(LIB_SOURCES
     apb/pe/apb_target.cpp
     axi/axi_initiator.cpp
     axi/axi_target.cpp
+	ocp/ocp_tlm.cpp
 )
 
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
