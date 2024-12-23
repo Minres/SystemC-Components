@@ -31,7 +31,7 @@ namespace ocp {
 //! pin level adapters
 namespace pin {
 
-#define OCP_CLK_DELAY 10_ps
+#define OCP_CLK_DELAY 1_ps
 
 template <unsigned DATA_WIDTH, unsigned ADDR_WIDTH, unsigned BUSWIDTH=DATA_WIDTH>
 struct target : public sc_core::sc_module,
