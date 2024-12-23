@@ -31,12 +31,16 @@ using sc_object = sc_core::sc_object;
 template <typename T> inline auto try_trace_obj(sc_trace_file* trace_file, const sc_object* object, trace_types types_to_trace) -> bool {
     if((types_to_trace & trace_types::PORTS) == trace_types::PORTS) {
         if(auto const* ptr = dynamic_cast<sc_core::sc_in<T> const*>(object)) {
-            SC_TRACE_NS sc_trace(trace_file, *ptr->get_interface(0), object->name());
-            return true;
+            if(auto* if_ptr = ptr->get_interface(0)) {
+                SC_TRACE_NS sc_trace(trace_file, *if_ptr, object->name());
+                return true;
+            }
         }
         if(auto const* ptr = dynamic_cast<sc_core::sc_inout<T> const*>(object)) {
-            SC_TRACE_NS sc_trace(trace_file, *ptr->get_interface(0), object->name());
-            return true;
+            if(auto* if_ptr = ptr->get_interface(0)) {
+                SC_TRACE_NS sc_trace(trace_file, *if_ptr, object->name());
+                return true;
+            }
         }
     }
     if((types_to_trace & trace_types::SIGNALS) == trace_types::SIGNALS) {
