@@ -55,7 +55,7 @@ struct axi4_initiator : public sc_core::sc_module,
 
     axi4_initiator(sc_core::sc_module_name const& nm, bool pipelined_wrreq = false)
     : sc_core::sc_module(nm)
-    , base(CFG::BUSWIDTH)
+    , base(CFG::BUSWIDTH, CFG::IDWIDTH)
     , pipelined_wrreq("pipelined_wrreq", pipelined_wrreq) {
         instance_name = name();
         tsckt(*this);

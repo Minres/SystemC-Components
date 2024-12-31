@@ -22,10 +22,11 @@
 
 using namespace axi;
 
-axi_initiator_base::axi_initiator_base(const sc_core::sc_module_name& nm, axi::pe::simple_initiator_b& pe, uint32_t width)
+axi_initiator_base::axi_initiator_base(const sc_core::sc_module_name& nm, axi::pe::simple_initiator_b& pe, uint32_t bus_width, uint32_t id_width)
 : sc_module(nm)
 , pe(pe)
-, buswidth(width) {
+, buswidth(bus_width)
+, id_cnt_max(1 << id_width) {
     SC_HAS_PROCESS(axi_initiator_base);
     // Register callback for incoming b_transport interface method call
     tsck.register_b_transport(this, &axi_initiator_base::b_transport);
@@ -36,7 +37,7 @@ axi_initiator_base::axi_initiator_base(const sc_core::sc_module_name& nm, axi::p
         sc_assert(len < (buswidth / 8) || len % (buswidth / 8) == 0);
         ext->set_length((len * 8 - 1) / buswidth);
         ext->set_burst(axi::burst_e::INCR);
-        ext->set_id(id);
+        ext->set_id(id % id_cnt_max);
     };
 }
 

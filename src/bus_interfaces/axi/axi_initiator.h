@@ -46,7 +46,7 @@ public:
 
     void b_transport(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay);
 
-    axi_initiator_base(const sc_core::sc_module_name& nm, axi::pe::simple_initiator_b& pe, uint32_t width);
+    axi_initiator_base(const sc_core::sc_module_name& nm, axi::pe::simple_initiator_b& pe, uint32_t bus_width, uint32_t id_width);
 
     virtual ~axi_initiator_base() {}
 
@@ -55,16 +55,17 @@ public:
 private:
     axi::pe::simple_initiator_b& pe;
     uint32_t buswidth{0};
+    uint32_t id_cnt_max{0};
     unsigned id{0};
     std::function<void(tlm::tlm_generic_payload& p)> setup_cb;
 };
 
-template <unsigned int BUSWIDTH = 32> class axi_initiator : public axi_initiator_base {
+template <unsigned int BUSWIDTH = 32, unsigned int IDWIDTH=16> class axi_initiator : public axi_initiator_base {
 public:
     axi::axi_initiator_socket<BUSWIDTH> isck{"isck"};
 
     axi_initiator(sc_core::sc_module_name nm)
-    : axi_initiator_base(nm, pe, BUSWIDTH) {
+    : axi_initiator_base(nm, pe, BUSWIDTH, IDWIDTH) {
         pe.clk_i(clk_i);
     };
 
