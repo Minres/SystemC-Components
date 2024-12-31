@@ -372,7 +372,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::r_t() {
             wait(this->r_valid.posedge_event());
         else
             wait(clk_delayed);
-        if(this->r_valid.event() || (!active_resp[tlm::TLM_READ_COMMAND] && this->r_valid.read())) {
+        if((this->r_valid.event() || !active_resp[tlm::TLM_READ_COMMAND]) && this->r_valid.read()) {
             wait(sc_core::SC_ZERO_TIME);
             auto id = CFG::IS_LITE ? 0U : this->r_id->read().to_uint();
             auto data = this->r_data.read();
@@ -478,7 +478,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::b_t() {
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
         wait(this->b_valid.posedge_event() | clk_delayed);
-        if(this->b_valid.event() || (!active_resp[tlm::TLM_WRITE_COMMAND] && this->b_valid.read())) {
+        if((this->b_valid.event() || !active_resp[tlm::TLM_WRITE_COMMAND]) && this->b_valid.read()) {
             auto id = !CFG::IS_LITE ? this->b_id->read().to_uint() : 0U;
             auto resp = this->b_resp.read();
             auto& q = wr_resp_by_id[id];
