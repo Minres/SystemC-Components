@@ -53,6 +53,8 @@ struct axi4_initiator : public sc_core::sc_module,
 
     cci::cci_param<bool> pipelined_wrreq{"pipelined_wrreq", false};
 
+    cci::cci_param<bool> mask_axi_id{"mask_axi_id", false};
+
     axi4_initiator(sc_core::sc_module_name const& nm, bool pipelined_wrreq = false)
     : sc_core::sc_module(nm)
     , base(CFG::BUSWIDTH)
@@ -102,7 +104,6 @@ private:
     void wdata_t();
     void b_t();
     std::array<unsigned, 3> outstanding_cnt{0, 0, 0};
-    std::array<fsm_handle*, 3> active_resp{nullptr, nullptr, nullptr};
     sc_core::sc_clock* clk_if{nullptr};
     sc_core::sc_event clk_delayed, clk_self, r_end_resp_evt, w_end_resp_evt;
     void nb_fw(payload_type& trans, const phase_type& phase) {
@@ -168,14 +169,13 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::write_ar(tlm:
         this->ar_prot.write(ext->get_prot());
         if(!CFG::IS_LITE) {
             auto id = ext->get_id();
-            if(id >= (1 << CFG::IDWIDTH))
+            if(!mask_axi_id.get_value() && id >= (1 << CFG::IDWIDTH))
                 SCCERR(SCMOD) << "ARID value larger that signal arid with width=" << CFG::IDWIDTH << " can carry";
             this->ar_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(id));
             this->ar_len->write(sc_dt::sc_uint<8>(ext->get_length()));
             this->ar_size->write(sc_dt::sc_uint<3>(ext->get_size()));
             this->ar_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
-            if(ext->is_exclusive())
-                this->ar_lock->write(true);
+            this->ar_lock->write(ext->is_exclusive());
             this->ar_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
             this->ar_qos->write(ext->get_qos());
             if(this->ar_user.get_interface())
@@ -191,7 +191,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::write_aw(tlm:
         this->aw_prot.write(ext->get_prot());
         if(!CFG::IS_LITE) {
             auto id = ext->get_id();
-            if(id >= (1 << CFG::IDWIDTH))
+            if(!mask_axi_id.get_value() && id >= (1 << CFG::IDWIDTH))
                 SCCERR(SCMOD) << "AWID value larger than signal awid with width=" << CFG::IDWIDTH << " can carry";
             this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(id));
             this->aw_len->write(sc_dt::sc_uint<8>(ext->get_length()));
@@ -199,8 +199,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::write_aw(tlm:
             this->aw_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
             this->aw_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
             this->aw_qos->write(ext->get_qos());
-            if(ext->is_exclusive())
-                this->aw_lock->write(true);
+            this->aw_lock->write(ext->is_exclusive());
             if(this->aw_user.get_interface())
                 this->aw_user->write(ext->get_user(axi::common::id_type::CTRL));
         }
@@ -219,40 +218,43 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::write_wdata(t
     if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
         if(beat == 0) {
             auto dptr = trans.get_data_ptr();
-            for(size_t i = offset; i < size; ++i, ++dptr) {
-                auto bit_offs = i * 8;
-                data(bit_offs + 7, bit_offs) = *dptr;
-                if(beptr) {
-                    strb[i] = *beptr == 0xff;
-                    ++beptr;
-                } else
-                    strb[i] = true;
-            }
+            if(dptr)
+                for(size_t i = offset; i < size; ++i, ++dptr) {
+                    auto bit_offs = i * 8;
+                    data(bit_offs + 7, bit_offs) = *dptr;
+                    if(beptr) {
+                        strb[i] = *beptr == 0xff;
+                        ++beptr;
+                    } else
+                        strb[i] = true;
+                }
         } else {
             auto beat_start_idx = byte_offset - offset;
             auto data_len = trans.get_data_length();
             auto dptr = trans.get_data_ptr() + beat_start_idx;
-            for(size_t i = 0; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
-                auto bit_offs = i * 8;
-                data(bit_offs + 7, bit_offs) = *dptr;
-                if(beptr) {
-                    strb[i] = *beptr == 0xff;
-                    ++beptr;
-                } else
-                    strb[i] = true;
-            }
+            if(dptr)
+                for(size_t i = 0; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
+                    auto bit_offs = i * 8;
+                    data(bit_offs + 7, bit_offs) = *dptr;
+                    if(beptr) {
+                        strb[i] = *beptr == 0xff;
+                        ++beptr;
+                    } else
+                        strb[i] = true;
+                }
         }
     } else { // aligned or single beat access
         auto dptr = trans.get_data_ptr() + byte_offset;
-        for(size_t i = 0; i < size; ++i, ++dptr) {
-            auto bit_offs = (offset + i) * 8;
-            data(bit_offs + 7, bit_offs) = *dptr;
-            if(beptr) {
-                strb[offset + i] = *beptr == 0xff;
-                ++beptr;
-            } else
-                strb[offset + i] = true;
-        }
+        if(dptr)
+            for(size_t i = 0; i < size; ++i, ++dptr) {
+                auto bit_offs = (offset + i) * 8;
+                data(bit_offs + 7, bit_offs) = *dptr;
+                if(beptr) {
+                    strb[offset + i] = *beptr == 0xff;
+                    ++beptr;
+                } else
+                    strb[offset + i] = true;
+            }
     }
     this->w_data.write(data);
     this->w_strb.write(strb);
@@ -368,57 +370,58 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::r_t() {
     this->r_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        if(!this->r_valid.read())
+        wait(clk_delayed);
+        while(!this->r_valid.read()) {
             wait(this->r_valid.posedge_event());
-        else
-            wait(clk_delayed);
-        if(this->r_valid.event() || (!active_resp[tlm::TLM_READ_COMMAND] && this->r_valid.read())) {
-            wait(sc_core::SC_ZERO_TIME);
-            auto id = CFG::IS_LITE ? 0U : this->r_id->read().to_uint();
-            auto data = this->r_data.read();
-            auto resp = this->r_resp.read();
-            auto& q = rd_resp_by_id[id];
-            sc_assert(q.size() && "No transaction found for received id");
-            auto* fsm_hndl = q.front();
-            auto beat_count = fsm_hndl->beat_count;
-            auto size = axi::get_burst_size(*fsm_hndl->trans);
-            auto byte_offset = beat_count * size;
-            auto offset = (fsm_hndl->trans->get_address() + byte_offset) & (CFG::BUSWIDTH / 8 - 1);
-            if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
-                if(beat_count == 0) {
-                    auto dptr = fsm_hndl->trans->get_data_ptr();
+            wait(CLK_DELAY); // verilator might create spurious events
+        }
+        auto id = CFG::IS_LITE ? 0U : this->r_id->read().to_uint();
+        auto data = this->r_data.read();
+        auto resp = this->r_resp.read();
+        auto& q = rd_resp_by_id[id];
+        sc_assert(q.size() && "No transaction found for received id");
+        auto* fsm_hndl = q.front();
+        auto beat_count = fsm_hndl->beat_count;
+        auto size = axi::get_burst_size(*fsm_hndl->trans);
+        auto byte_offset = beat_count * size;
+        auto offset = (fsm_hndl->trans->get_address() + byte_offset) & (CFG::BUSWIDTH / 8 - 1);
+        if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
+            if(beat_count == 0) {
+                auto dptr = fsm_hndl->trans->get_data_ptr();
+                if(dptr)
                     for(size_t i = offset; i < size; ++i, ++dptr) {
                         auto bit_offs = i * 8;
                         *dptr = data(bit_offs + 7, bit_offs).to_uint();
                     }
-                } else {
-                    auto beat_start_idx = beat_count * size - offset;
-                    auto data_len = fsm_hndl->trans->get_data_length();
-                    auto dptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
+            } else {
+                auto beat_start_idx = beat_count * size - offset;
+                auto data_len = fsm_hndl->trans->get_data_length();
+                auto dptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
+                if(dptr)
                     for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
                         auto bit_offs = i * 8;
                         *dptr = data(bit_offs + 7, bit_offs).to_uint();
                     }
-                }
-            } else { // aligned or single beat access
-                auto dptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
+            }
+        } else { // aligned or single beat access
+            auto dptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
+            if(dptr)
                 for(size_t i = 0; i < size; ++i, ++dptr) {
                     auto bit_offs = (offset + i) * 8;
                     *dptr = data(bit_offs + 7, bit_offs).to_uint();
                 }
-            }
-            axi::axi4_extension* e;
-            fsm_hndl->trans->get_extension(e);
-            e->set_resp(axi::into<axi::resp_e>(resp));
-            e->add_to_response_array(*e);
-            auto tp = CFG::IS_LITE || this->r_last->read() ? axi::fsm::protocol_time_point_e::BegRespE
-                                                           : axi::fsm::protocol_time_point_e::BegPartRespE;
-            react(tp, fsm_hndl);
-            wait(r_end_resp_evt);
-            this->r_ready.write(true);
-            wait(clk_i.posedge_event());
-            this->r_ready.write(false);
         }
+        axi::axi4_extension* e;
+        fsm_hndl->trans->get_extension(e);
+        e->set_resp(axi::into<axi::resp_e>(resp));
+        e->add_to_response_array(*e);
+        auto tp = CFG::IS_LITE || this->r_last->read() ? axi::fsm::protocol_time_point_e::BegRespE
+                                                       : axi::fsm::protocol_time_point_e::BegPartRespE;
+        react(tp, fsm_hndl);
+        wait(r_end_resp_evt);
+        this->r_ready.write(true);
+        wait(clk_i.posedge_event());
+        this->r_ready.write(false);
     }
 }
 
@@ -477,22 +480,24 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::b_t() {
     this->b_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        wait(this->b_valid.posedge_event() | clk_delayed);
-        if(this->b_valid.event() || (!active_resp[tlm::TLM_WRITE_COMMAND] && this->b_valid.read())) {
-            auto id = !CFG::IS_LITE ? this->b_id->read().to_uint() : 0U;
-            auto resp = this->b_resp.read();
-            auto& q = wr_resp_by_id[id];
-            sc_assert(q.size());
-            auto* fsm_hndl = q.front();
-            axi::axi4_extension* e;
-            fsm_hndl->trans->get_extension(e);
-            e->set_resp(axi::into<axi::resp_e>(resp));
-            react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
-            wait(w_end_resp_evt);
-            this->b_ready.write(true);
-            wait(clk_i.posedge_event());
-            this->b_ready.write(false);
+        wait(clk_delayed);
+        while(!this->b_valid.read()) {
+            wait(this->b_valid.posedge_event());
+            wait(CLK_DELAY); // verilator might create spurious events
         }
+        auto id = !CFG::IS_LITE ? this->b_id->read().to_uint() : 0U;
+        auto resp = this->b_resp.read();
+        auto& q = wr_resp_by_id[id];
+        sc_assert(q.size());
+        auto* fsm_hndl = q.front();
+        axi::axi4_extension* e;
+        fsm_hndl->trans->get_extension(e);
+        e->set_resp(axi::into<axi::resp_e>(resp));
+        react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
+        wait(w_end_resp_evt);
+        this->b_ready.write(true);
+        wait(clk_i.posedge_event());
+        this->b_ready.write(false);
     }
 }
 

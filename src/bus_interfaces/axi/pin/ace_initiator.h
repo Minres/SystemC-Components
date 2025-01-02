@@ -61,6 +61,8 @@ struct ace_initiator : public sc_core::sc_module,
 
     cci::cci_param<bool> pipelined_wrreq{"pipelined_wrreq", false};
 
+    cci::cci_param<bool> mask_axi_id{"mask_axi_id", false};
+
     ace_initiator(sc_core::sc_module_name const& nm, bool pipelined_wrreq = false)
     : sc_core::sc_module(nm)
     // coherent= true
@@ -139,7 +141,6 @@ private:
     scc::peq<std::tuple<uint8_t, fsm_handle*>> cr_resp_vl;
     std::array<unsigned, 3> outstanding_cnt{0, 0, 0};
     std::array<fsm_handle*, 3> active_req{nullptr, nullptr, nullptr};
-    std::array<fsm_handle*, 3> active_resp{nullptr, nullptr, nullptr};
     std::array<fsm_handle*, 4> active_resp_beat{nullptr, nullptr, nullptr};
     sc_core::sc_clock* clk_if{nullptr};
     sc_core::sc_event clk_delayed, clk_self, r_end_resp_evt, w_end_resp_evt, ac_end_req_evt;
@@ -207,12 +208,14 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::write_ar(tlm::
     if(auto ext = trans.get_extension<axi::ace_extension>()) {
         this->ar_prot.write(ext->get_prot());
         if(!CFG::IS_LITE) {
-            this->ar_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
+            auto id = ext->get_id();
+            if(!mask_axi_id.get_value() && id >= (1 << CFG::IDWIDTH))
+                SCCERR(SCMOD) << "AWID value larger than signal awid with width=" << CFG::IDWIDTH << " can carry";
+            this->ar_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(id));
             this->ar_len->write(sc_dt::sc_uint<8>(ext->get_length()));
             this->ar_size->write(sc_dt::sc_uint<3>(ext->get_size()));
             this->ar_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
-            if(ext->is_exclusive())
-                this->ar_lock->write(true);
+            this->ar_lock->write(ext->is_exclusive());
             this->ar_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
             this->ar_prot.write(ext->get_prot());
             this->ar_qos->write(ext->get_qos());
@@ -229,10 +232,11 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::write_aw(tlm::
     this->aw_addr.write(addr);
     if(auto ext = trans.get_extension<axi::ace_extension>()) {
         this->aw_prot.write(ext->get_prot());
-        if(ext->is_exclusive())
-            this->aw_lock->write(true);
-        if(this->aw_id.get_interface())
-            this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(ext->get_id()));
+        this->aw_lock->write(ext->is_exclusive());
+        auto id = ext->get_id();
+        if(!mask_axi_id.get_value() && id >= (1 << CFG::IDWIDTH))
+            SCCERR(SCMOD) << "AWID value larger than signal awid with width=" << CFG::IDWIDTH << " can carry";
+        this->aw_id->write(sc_dt::sc_uint<CFG::IDWIDTH>(id));
         this->aw_len->write(sc_dt::sc_uint<8>(ext->get_length()));
         this->aw_size->write(sc_dt::sc_uint<3>(ext->get_size()));
         this->aw_burst->write(sc_dt::sc_uint<2>(axi::to_int(ext->get_burst())));
@@ -523,67 +527,65 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::r_t() {
     this->r_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        if(!this->r_valid.read())
+        wait(clk_delayed);
+        while(!this->r_valid.read()) {
             wait(this->r_valid.posedge_event());
-        else
-            wait(clk_delayed);
-        if(this->r_valid.event() || (!active_resp[tlm::TLM_READ_COMMAND] && this->r_valid.read())) {
-            wait(sc_core::SC_ZERO_TIME);
-            auto id = CFG::IS_LITE ? 0U : this->r_id->read().to_uint();
-            auto data = this->r_data.read();
-            auto resp = this->r_resp.read();
-            auto& q = rd_resp_by_id[id];
-            sc_assert(q.size() && "No transaction found for received id");
-            auto* fsm_hndl = q.front();
-            auto beat_count = fsm_hndl->beat_count;
-            auto size = axi::get_burst_size(*fsm_hndl->trans);
-            auto byte_offset = beat_count * size;
-            auto offset = (fsm_hndl->trans->get_address() + byte_offset) & (CFG::BUSWIDTH / 8 - 1);
-            if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
-                if(beat_count == 0) {
-                    auto dptr = fsm_hndl->trans->get_data_ptr();
-                    if(dptr)
-                        for(size_t i = offset; i < size; ++i, ++dptr) {
-                            auto bit_offs = i * 8;
-                            *dptr = data(bit_offs + 7, bit_offs).to_uint();
-                        }
-                } else {
-                    auto beat_start_idx = beat_count * size - offset;
-                    auto data_len = fsm_hndl->trans->get_data_length();
-                    auto dptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
-                    if(dptr)
-                        for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
-                            auto bit_offs = i * 8;
-                            *dptr = data(bit_offs + 7, bit_offs).to_uint();
-                        }
-                }
-            } else { // aligned or single beat access
-                auto dptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
+            wait(CLK_DELAY); // verilator might create spurious events
+        }
+        auto id = CFG::IS_LITE ? 0U : this->r_id->read().to_uint();
+        auto data = this->r_data.read();
+        auto resp = this->r_resp.read();
+        auto& q = rd_resp_by_id[id];
+        sc_assert(q.size() && "No transaction found for received id");
+        auto* fsm_hndl = q.front();
+        auto beat_count = fsm_hndl->beat_count;
+        auto size = axi::get_burst_size(*fsm_hndl->trans);
+        auto byte_offset = beat_count * size;
+        auto offset = (fsm_hndl->trans->get_address() + byte_offset) & (CFG::BUSWIDTH / 8 - 1);
+        if(offset && (size + offset) > (CFG::BUSWIDTH / 8)) { // un-aligned multi-beat access
+            if(beat_count == 0) {
+                auto dptr = fsm_hndl->trans->get_data_ptr();
                 if(dptr)
-                    for(size_t i = 0; i < size; ++i, ++dptr) {
-                        auto bit_offs = (offset + i) * 8;
+                    for(size_t i = offset; i < size; ++i, ++dptr) {
+                        auto bit_offs = i * 8;
+                        *dptr = data(bit_offs + 7, bit_offs).to_uint();
+                    }
+            } else {
+                auto beat_start_idx = beat_count * size - offset;
+                auto data_len = fsm_hndl->trans->get_data_length();
+                auto dptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
+                if(dptr)
+                    for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
+                        auto bit_offs = i * 8;
                         *dptr = data(bit_offs + 7, bit_offs).to_uint();
                     }
             }
-            axi::ace_extension* e;
-            fsm_hndl->trans->get_extension(e);
-            e->set_cresp(resp);
-            e->add_to_response_array(*e);
-            /* for Make Trans, Clean Trans and Read barrier Trans, no  read data transfer on r_t, only response on r_t
-             *  */
-            if(axi::is_dataless(e)) {
-                SCCTRACE(SCMOD) << " r_t() for Make/Clean/Barrier Trans" << *fsm_hndl->trans;
-                react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
-            } else {
-                auto tp = CFG::IS_LITE || this->r_last->read() ? axi::fsm::protocol_time_point_e::BegRespE
-                                                               : axi::fsm::protocol_time_point_e::BegPartRespE;
-                react(tp, fsm_hndl);
-            }
-            wait(r_end_resp_evt);
-            this->r_ready.write(true);
-            wait(clk_i.posedge_event());
-            this->r_ready.write(false);
+        } else { // aligned or single beat access
+            auto dptr = fsm_hndl->trans->get_data_ptr() + beat_count * size;
+            if(dptr)
+                for(size_t i = 0; i < size; ++i, ++dptr) {
+                    auto bit_offs = (offset + i) * 8;
+                    *dptr = data(bit_offs + 7, bit_offs).to_uint();
+                }
         }
+        axi::ace_extension* e;
+        fsm_hndl->trans->get_extension(e);
+        e->set_cresp(resp);
+        e->add_to_response_array(*e);
+        /* for Make Trans, Clean Trans and Read barrier Trans, no  read data transfer on r_t, only response on r_t
+         *  */
+        if(axi::is_dataless(e)) {
+            SCCTRACE(SCMOD) << " r_t() for Make/Clean/Barrier Trans" << *fsm_hndl->trans;
+            react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
+        } else {
+            auto tp = CFG::IS_LITE || this->r_last->read() ? axi::fsm::protocol_time_point_e::BegRespE
+                                                           : axi::fsm::protocol_time_point_e::BegPartRespE;
+            react(tp, fsm_hndl);
+        }
+        wait(r_end_resp_evt);
+        this->r_ready.write(true);
+        wait(clk_i.posedge_event());
+        this->r_ready.write(false);
     }
 }
 
@@ -643,24 +645,27 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::b_t() {
     this->b_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        wait(this->b_valid.posedge_event() | clk_delayed);
-        if(this->b_valid.event() || (!active_resp[tlm::TLM_WRITE_COMMAND] && this->b_valid.read())) {
-            auto id = !CFG::IS_LITE ? this->b_id->read().to_uint() : 0U;
-            auto resp = this->b_resp.read();
-            auto& q = wr_resp_by_id[id];
-            sc_assert(q.size());
-            auto* fsm_hndl = q.front();
-            axi::ace_extension* e;
-            fsm_hndl->trans->get_extension(e);
-            e->set_resp(axi::into<axi::resp_e>(resp));
-            react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
-            wait(w_end_resp_evt);
-            this->b_ready.write(true);
-            wait(clk_i.posedge_event());
-            this->b_ready.write(false);
+        wait(clk_delayed);
+        while(!this->b_valid.read()) {
+            wait(this->b_valid.posedge_event());
+            wait(CLK_DELAY); // verilator might create spurious events
         }
+        auto id = !CFG::IS_LITE ? this->b_id->read().to_uint() : 0U;
+        auto resp = this->b_resp.read();
+        auto& q = wr_resp_by_id[id];
+        sc_assert(q.size());
+        auto* fsm_hndl = q.front();
+        axi::ace_extension* e;
+        fsm_hndl->trans->get_extension(e);
+        e->set_resp(axi::into<axi::resp_e>(resp));
+        react(axi::fsm::protocol_time_point_e::BegRespE, fsm_hndl);
+        wait(w_end_resp_evt);
+        this->b_ready.write(true);
+        wait(clk_i.posedge_event());
+        this->b_ready.write(false);
     }
 }
+
 template <typename CFG> inline void axi::pin::ace_initiator<CFG>::ac_t() {
     this->ac_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
@@ -672,38 +677,41 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::ac_t() {
     // here +1 because last beat in Resp transmitted
     auto data_len = (1 << arsize) * (arlen + 1);
     while(true) {
-        wait(this->ac_valid.posedge_event() | clk_delayed);
-        if(this->ac_valid.read()) {
-            SCCTRACE(SCMOD) << "ACVALID detected, for address 0x" << std::hex << this->ac_addr.read();
-            SCCTRACE(SCMOD) << "in ac_t(), create snoop trans with data_len= " << data_len;
-            auto gp = tlm::scc::tlm_mm<>::get().allocate<axi::ace_extension>(data_len, true);
-            gp->set_address(this->ac_addr.read());
-            gp->set_command(tlm::TLM_READ_COMMAND); // snoop command
-            gp->set_streaming_width(data_len);
-            axi::ace_extension* ext;
-            gp->get_extension(ext);
-            // if cacheline smaller than buswidth, beat num=1
-            if(data_len == (CFG::BUSWIDTH / 8))
-                arlen = 1;
-            ext->set_length(arlen);
-            ext->set_size(arsize);
-            ext->set_snoop(axi::into<axi::snoop_e>(this->ac_snoop->read()));
-            ext->set_prot(this->ac_prot->read());
-            /*snoop transaction of burst length greater than one must be of burst type WRAP.
-             * A snoop transaction of burst length one must be of burst type INCR
-             */
-            ext->set_burst((CACHELINE_SZ * 8) > CFG::BUSWIDTH ? axi::burst_e::WRAP : axi::burst_e::INCR);
-            active_req[SNOOP] = find_or_create(gp, true);
-            active_req[SNOOP]->is_snoop = true;
-            react(axi::fsm::protocol_time_point_e::RequestPhaseBeg, active_req[SNOOP]);
-            // ac_end_req_evt notified in EndReqE
-            wait(ac_end_req_evt);
-            this->ac_ready.write(true);
-            wait(clk_i.posedge_event());
-            this->ac_ready.write(false);
+        wait(clk_delayed);
+        while(!this->ac_valid.read()) {
+            wait(this->ac_valid.posedge_event());
+            wait(CLK_DELAY); // verilator might create spurious events
         }
+        SCCTRACE(SCMOD) << "ACVALID detected, for address 0x" << std::hex << this->ac_addr.read();
+        SCCTRACE(SCMOD) << "in ac_t(), create snoop trans with data_len= " << data_len;
+        auto gp = tlm::scc::tlm_mm<>::get().allocate<axi::ace_extension>(data_len, true);
+        gp->set_address(this->ac_addr.read());
+        gp->set_command(tlm::TLM_READ_COMMAND); // snoop command
+        gp->set_streaming_width(data_len);
+        axi::ace_extension* ext;
+        gp->get_extension(ext);
+        // if cacheline smaller than buswidth, beat num=1
+        if(data_len == (CFG::BUSWIDTH / 8))
+            arlen = 1;
+        ext->set_length(arlen);
+        ext->set_size(arsize);
+        ext->set_snoop(axi::into<axi::snoop_e>(this->ac_snoop->read()));
+        ext->set_prot(this->ac_prot->read());
+        /*snoop transaction of burst length greater than one must be of burst type WRAP.
+         * A snoop transaction of burst length one must be of burst type INCR
+         */
+        ext->set_burst((CACHELINE_SZ * 8) > CFG::BUSWIDTH ? axi::burst_e::WRAP : axi::burst_e::INCR);
+        active_req[SNOOP] = find_or_create(gp, true);
+        active_req[SNOOP]->is_snoop = true;
+        react(axi::fsm::protocol_time_point_e::RequestPhaseBeg, active_req[SNOOP]);
+        // ac_end_req_evt notified in EndReqE
+        wait(ac_end_req_evt);
+        this->ac_ready.write(true);
+        wait(clk_i.posedge_event());
+        this->ac_ready.write(false);
     }
 }
+
 template <typename CFG> inline void axi::pin::ace_initiator<CFG>::cd_t() {
     this->cd_valid.write(false);
     wait(sc_core::SC_ZERO_TIME);
