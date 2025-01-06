@@ -371,7 +371,7 @@ template <typename CFG> inline void axi::pin::ace_lite_initiator<CFG>::setup_cal
     fsm_hndl->fsm->cb[EndReqE] = [this, fsm_hndl]() -> void {
         auto id = axi::get_axi_id(*fsm_hndl->trans);
         if(mask_axi_id.get_value())
-            id &= (1UL<<CFG::IDWIDTH)-1;
+            id &= (1UL << CFG::IDWIDTH) - 1;
         switch(fsm_hndl->trans->get_command()) {
         case tlm::TLM_READ_COMMAND:
             rd_resp_by_id[id].push_back(fsm_hndl);

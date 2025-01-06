@@ -403,7 +403,7 @@ template <typename CFG> inline void axi::pin::ace_initiator<CFG>::setup_callback
         } else {
             auto id = axi::get_axi_id(*fsm_hndl->trans);
             if(mask_axi_id.get_value())
-                id &= (1UL<<CFG::IDWIDTH)-1;
+                id &= (1UL << CFG::IDWIDTH) - 1;
             switch(fsm_hndl->trans->get_command()) {
             case tlm::TLM_READ_COMMAND:
                 rd_resp_by_id[id].push_back(fsm_hndl);
