@@ -328,30 +328,29 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
     wait(sc_core::SC_ZERO_TIME);
     const auto awsize = util::ilog2(CFG::BUSWIDTH / 8);
     while(true) {
-        wait(this->aw_valid.posedge_event() | clk_delayed);
-        if(this->aw_valid.event() || this->aw_valid.read()) {
-            wait(1_ps);
-            if(this->aw_valid.read()) {
-                SCCTRACE(SCMOD) << "AWVALID detected for 0x" << std::hex << this->aw_addr.read();
-                // clang-format off
-                aw_data awd = {CFG::IS_LITE ? 0U : this->aw_id->read().to_uint(),
-                    this->aw_addr.read().to_uint64(),
-                    this->aw_prot.read().to_uint(),
-                    CFG::IS_LITE ? awsize : this->aw_size->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_cache->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_burst->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_qos->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_region->read().to_uint(),
-                    CFG::IS_LITE ? 0U : this->aw_len->read().to_uint(),
-                    CFG::IS_LITE ? false : this->aw_lock->read(),
-                    0};
-                // clang-format on
-                aw_que.notify(std::move(awd));
-                this->aw_ready.write(true);
-                wait(clk_i.posedge_event());
-                this->aw_ready.write(false);
-            }
+        wait(clk_delayed);
+        while(!this->aw_valid.read()) {
+            wait(this->aw_valid.posedge_event());
+            wait(CLK_DELAY); // verilator might create spurious events
         }
+        SCCTRACE(SCMOD) << "AWVALID detected for 0x" << std::hex << this->aw_addr.read();
+        // clang-format off
+        aw_data awd = {CFG::IS_LITE ? 0U : this->aw_id->read().to_uint(),
+            this->aw_addr.read().to_uint64(),
+            this->aw_prot.read().to_uint(),
+            CFG::IS_LITE ? awsize : this->aw_size->read().to_uint(),
+            CFG::IS_LITE ? 0U : this->aw_cache->read().to_uint(),
+            CFG::IS_LITE ? 0U : this->aw_burst->read().to_uint(),
+            CFG::IS_LITE ? 0U : this->aw_qos->read().to_uint(),
+            CFG::IS_LITE ? 0U : this->aw_region->read().to_uint(),
+            CFG::IS_LITE ? 0U : this->aw_len->read().to_uint(),
+            CFG::IS_LITE ? false : this->aw_lock->read(),
+            0};
+        // clang-format on
+        aw_que.notify(std::move(awd));
+        this->aw_ready.write(true);
+        wait(clk_i.posedge_event());
+        this->aw_ready.write(false);
     }
 }
 
@@ -359,9 +358,8 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
     this->w_ready.write(false);
     wait(sc_core::SC_ZERO_TIME);
     while(true) {
-        wait(this->w_valid.posedge_event() | clk_delayed);
-        this->w_ready.write(false);
-        if(this->w_valid.event() || (!active_req_beat[tlm::TLM_WRITE_COMMAND] && this->w_valid.read())) {
+        wait(this->w_valid.read() ? clk_delayed : this->w_valid.posedge_event());
+        if(this->w_valid.read()) {
             if(!active_req[tlm::TLM_WRITE_COMMAND]) {
                 if(!aw_que.has_next())
                     wait(aw_que.event());
