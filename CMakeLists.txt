@@ -11,7 +11,7 @@ option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentat
 option(FULL_TRACE_TYPE_LIST "Test for extended set of templated datatypes" OFF)
 #Note: this needs to match the SystemC kernel build options
 option(SC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase callbacks" OFF)
-option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse callbacks for tracing. It needs to match the SystemC build configuration" OFF)
+option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with phase callbacks for tracing. It needs to match the SystemC build configuration" OFF)
 set(SCC_ARCHIVE_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
 set(SCC_LIBRARY_DIR_MODIFIER "" CACHE STRING "additional directory levels to store libraries") 
 
