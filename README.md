@@ -57,6 +57,11 @@ Here is a short list of features.
 
 The full documentation can be found at the [Github pages](https://minres.github.io/SystemC-Components/)
 
+Build notes
+=======================================
+
+If SystemC is build using cmake with `SC_WITH_PHASE_CALLBACK_TRACING=ON` (which is the default for SystemC 2.3.4), tracing will not work. Either SystemC is being installed with SC_WITH_PHASE_CALLBACK_TRACING=ON (which is the prefered way as this setting is in sync with the automake configure configuration, see https://github.com/accellera-official/systemc/issues/24) or the SCC is being build using `SC_WITH_PHASE_CALLBACK_TRACING=ON`.
+
 Build instructions using conan
 =======================================
 
