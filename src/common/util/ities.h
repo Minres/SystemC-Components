@@ -66,10 +66,10 @@ CONSTEXPR typename std::enable_if<std::is_signed<T>::value, T>::type bit_sub(T v
     return amount;
 }
 
-template<unsigned offset, typename R, typename T>
-R _bit_comb(T v) { return v<<offset; }
-template<unsigned offset, typename R, typename T, typename... Args>
-R _bit_comb(T first, Args... args) { return (first<<offset) + _bit_comb<offset+8, R>(args...); }
+template <unsigned offset, typename R, typename T> R _bit_comb(T v) { return v << offset; }
+template <unsigned offset, typename R, typename T, typename... Args> R _bit_comb(T first, Args... args) {
+    return (first << offset) + _bit_comb<offset + 8, R>(args...);
+}
 /**
  * combines the integer arguments into a large integer in an platform independent way, the first argument is the least significant byte
  * @tparam R the return type of the function
@@ -79,9 +79,7 @@ R _bit_comb(T first, Args... args) { return (first<<offset) + _bit_comb<offset+8
  * @param args the remaining parameters
  * @return the resulting integer value
  */
-template<typename R, typename T, typename... Args>
-R bit_comb(T first, Args... args) { return first + _bit_comb<8, R>(args...); }
-
+template <typename R, typename T, typename... Args> R bit_comb(T first, Args... args) { return first + _bit_comb<8, R>(args...); }
 
 /**
  * @brief sign-extend a given value

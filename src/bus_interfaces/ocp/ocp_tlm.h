@@ -46,21 +46,13 @@ struct ocp_extension : public tlm::tlm_extension<ocp_extension> {
      */
     void copy_from(tlm::tlm_extension_base const& ext) override;
 
-    cmd_e get_mcmd() const {
-        return mcmd;
-    }
+    cmd_e get_mcmd() const { return mcmd; }
 
-    void set_mcmd(cmd_e mCmd) {
-        mcmd = mCmd;
-    }
+    void set_mcmd(cmd_e mCmd) { mcmd = mCmd; }
 
-    resp_e get_sresp() const {
-        return sresp;
-    }
+    resp_e get_sresp() const { return sresp; }
 
-    void set_sresp(resp_e sres) {
-        this->sresp = sresp;
-    }
+    void set_sresp(resp_e sres) { this->sresp = sresp; }
 
 private:
     cmd_e mcmd{cmd_e::IDLE};
@@ -75,11 +67,10 @@ inline void ocp_extension::copy_from(const tlm::tlm_extension_base& ext) {
     (*this) = *ocp_ext;
 }
 
-//inline unsigned get_ocp_id(tlm::tlm_generic_payload& trans) {
-//    auto* ext = trans.get_extension<ocp::ocp_extension>();
-//    assert(ext && "No ocp extension found");
-//    return ext->get_id();
-//}
+// inline unsigned get_ocp_id(tlm::tlm_generic_payload& trans) {
+//     auto* ext = trans.get_extension<ocp::ocp_extension>();
+//     assert(ext && "No ocp extension found");
+//     return ext->get_id();
+// }
 } // namespace ocp
 #endif // _BUS_OCP_TLM_H_
-

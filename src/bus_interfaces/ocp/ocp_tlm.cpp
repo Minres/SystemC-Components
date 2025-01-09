@@ -32,4 +32,4 @@ std::ostream& operator<<(std::ostream& os, const tlm::tlm_generic_payload& t) {
     return os;
 }
 
-} // namespace apb
+} // namespace ocp
