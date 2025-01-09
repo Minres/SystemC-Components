@@ -432,11 +432,6 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
             auto strobe = strb.to_uint();
             if(last) {
                 auto act_data_len = CFG::IS_LITE ? util::bit_count(strobe) : fsm_hndl->aux.i32.i0;
-                //            if(CFG::IS_LITE && act_data_len<CFG::BUSWIDTH/8) {
-                //                std::fill(gp->get_byte_enable_ptr(), gp->get_byte_enable_ptr() + act_data_len, 0xff);
-                //                std::fill(gp->get_byte_enable_ptr() + act_data_len, gp->get_byte_enable_ptr() +
-                //                gp->get_byte_enable_length(), 0x0);
-                //            }
                 gp->set_data_length(act_data_len);
                 gp->set_byte_enable_length(act_data_len);
                 gp->set_streaming_width(act_data_len);

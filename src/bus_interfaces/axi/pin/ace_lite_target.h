@@ -161,7 +161,7 @@ template <typename CFG> typename CFG::data_t axi::pin::ace_lite_target<CFG>::get
             auto beat_start_idx = byte_offset - offset;
             auto data_len = fsm_hndl->trans->get_data_length();
             auto dptr = fsm_hndl->trans->get_data_ptr() + beat_start_idx;
-            for(size_t i = offset; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
+            for(size_t i = 0; i < size && (beat_start_idx + i) < data_len; ++i, ++dptr) {
                 auto bit_offs = i * 8;
                 data(bit_offs + 7, bit_offs) = *dptr;
             }
@@ -316,23 +316,19 @@ template <typename CFG> inline void axi::pin::ace_lite_target<CFG>::rresp_t() {
         this->r_data.write(get_read_data_for_beat(fsm_hndl));
         this->r_resp.write(ext->get_cresp());
         this->r_valid.write(val & 0x1);
-        if(!CFG::IS_LITE) {
-            this->r_id->write(ext->get_id());
-            this->r_last->write(val & 0x2);
-        }
+        this->r_id->write(ext->get_id());
+        this->r_last->write(val & 0x2);
         do {
             wait(this->r_ready.posedge_event() | clk_delayed);
             if(this->r_ready.read()) {
-                auto evt =
-                    CFG::IS_LITE || (val & 0x2) ? axi::fsm::protocol_time_point_e::EndRespE : axi::fsm::protocol_time_point_e::EndPartRespE;
+                auto evt = (val & 0x2) ? axi::fsm::protocol_time_point_e::EndRespE : axi::fsm::protocol_time_point_e::EndPartRespE;
                 react(evt, active_resp_beat[tlm::TLM_READ_COMMAND]);
             }
         } while(!this->r_ready.read());
         SCCTRACE(SCMOD) << "finished read response beat of trans [" << fsm_hndl->trans << "]";
         wait(clk_i.posedge_event());
         this->r_valid.write(false);
-        if(!CFG::IS_LITE)
-            this->r_last->write(false);
+        this->r_last->write(false);
     }
 }
 
@@ -348,7 +344,7 @@ template <typename CFG> inline void axi::pin::ace_lite_target<CFG>::aw_t() {
         }
         SCCTRACE(SCMOD) << "AWVALID detected for 0x" << std::hex << this->aw_addr.read();
         // clang-format off
-            aw_data awd = {CFG::IS_LITE ? 0U : this->aw_id->read().to_uint(),
+            aw_data awd = { this->aw_id->read().to_uint(),
                     this->aw_addr.read().to_uint64(),
                     this->aw_prot.read().to_uint(),
                     this->aw_size->read().to_uint(),
@@ -407,6 +403,7 @@ template <typename CFG> inline void axi::pin::ace_lite_target<CFG>::wdata_t() {
                     ext->set_user(axi::common::id_type::CTRL, awd.user);
                 active_req_beat[tlm::TLM_WRITE_COMMAND] = find_or_create(gp);
                 active_req[tlm::TLM_WRITE_COMMAND] = active_req_beat[tlm::TLM_WRITE_COMMAND];
+                active_req_beat[tlm::TLM_WRITE_COMMAND]->aux.i32.i0 = 0;
             }
             auto* fsm_hndl = active_req[tlm::TLM_WRITE_COMMAND];
             SCCTRACE(SCMOD) << "WDATA detected for 0x" << std::hex << this->ar_addr.read();
@@ -426,6 +423,7 @@ template <typename CFG> inline void axi::pin::ace_lite_target<CFG>::wdata_t() {
                         auto bit_offs = i * 8;
                         *dptr = data(bit_offs + 7, bit_offs).to_uint();
                         *beptr = strb[i] ? 0xff : 0;
+                        fsm_hndl->aux.i32.i0 += strb[i] ? 1 : 0;
                     }
                 } else {
                     auto beat_start_idx = byte_offset - offset;
@@ -436,6 +434,7 @@ template <typename CFG> inline void axi::pin::ace_lite_target<CFG>::wdata_t() {
                         auto bit_offs = i * 8;
                         *dptr = data(bit_offs + 7, bit_offs).to_uint();
                         *beptr = strb[i] ? 0xff : 0;
+                        fsm_hndl->aux.i32.i0 += strb[i] ? 1 : 0;
                     }
                 }
             } else { // aligned or single beat access
@@ -445,17 +444,13 @@ template <typename CFG> inline void axi::pin::ace_lite_target<CFG>::wdata_t() {
                     auto bit_offs = (offset + i) * 8;
                     *dptr = data(bit_offs + 7, bit_offs).to_uint();
                     *beptr = strb[offset + i] ? 0xff : 0;
+                    fsm_hndl->aux.i32.i0 += strb[offset + i] ? 1 : 0;
                 }
             }
             // TODO: assuming consecutive write (not scattered)
             auto strobe = strb.to_uint();
             if(last) {
-                auto act_data_len = CFG::IS_LITE ? util::bit_count(strobe) : (beat_count + 1) * size;
-                //            if(CFG::IS_LITE && act_data_len<CFG::BUSWIDTH/8) {
-                //                std::fill(gp->get_byte_enable_ptr(), gp->get_byte_enable_ptr() + act_data_len, 0xff);
-                //                std::fill(gp->get_byte_enable_ptr() + act_data_len, gp->get_byte_enable_ptr() +
-                //                gp->get_byte_enable_length(), 0x0);
-                //            }
+                auto act_data_len = fsm_hndl->aux.i32.i0;
                 gp->set_data_length(act_data_len);
                 gp->set_byte_enable_length(act_data_len);
                 gp->set_streaming_width(act_data_len);
@@ -484,8 +479,7 @@ template <typename CFG> inline void axi::pin::ace_lite_target<CFG>::bresp_t() {
         auto ext = fsm_hndl->trans->get_extension<axi::ace_extension>();
         this->b_resp.write(axi::to_int(ext->get_resp()));
         this->b_valid.write(true);
-        if(!CFG::IS_LITE)
-            this->b_id->write(ext->get_id());
+        this->b_id->write(ext->get_id());
         SCCTRACE(SCMOD) << "got write response";
         do {
             wait(this->b_ready.posedge_event() | clk_delayed);
