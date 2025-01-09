@@ -123,7 +123,7 @@ private:
 template <typename CFG>
 inline tlm::tlm_sync_enum axi::pin::axi4_target<CFG>::nb_transport_bw(payload_type& trans, phase_type& phase, sc_core::sc_time& t) {
     auto ret = tlm::TLM_ACCEPTED;
-    sc_core::sc_time delay = t < clk_if->period() ? sc_core::SC_ZERO_TIME : t; // FIXME: calculate correct time
+    sc_core::sc_time delay = (clk_if && t < clk_if->period()) ? sc_core::SC_ZERO_TIME : t; // FIXME: calculate correct time
     SCCTRACE(SCMOD) << "nb_transport_bw " << phase << " of trans " << trans;
     if(phase == axi::END_PARTIAL_REQ || phase == tlm::END_REQ) { // read/write
         schedule(phase == tlm::END_REQ ? EndReqE : EndPartReqE, &trans, delay, false);
@@ -384,6 +384,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
 
                 active_req_beat[tlm::TLM_WRITE_COMMAND] = find_or_create(gp);
                 active_req[tlm::TLM_WRITE_COMMAND] = active_req_beat[tlm::TLM_WRITE_COMMAND];
+                active_req_beat[tlm::TLM_WRITE_COMMAND]->aux.i32.i0 = 0;
             }
             auto* fsm_hndl = active_req[tlm::TLM_WRITE_COMMAND];
             SCCTRACE(SCMOD) << "WDATA detected for 0x" << std::hex << this->ar_addr.read();
@@ -403,6 +404,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
                         auto bit_offs = i * 8;
                         *dptr = data(bit_offs + 7, bit_offs).to_uint();
                         *beptr = strb[i] ? 0xff : 0;
+                        fsm_hndl->aux.i32.i0 += strb[i] ? 1 : 0;
                     }
                 } else {
                     auto beat_start_idx = byte_offset - offset;
@@ -413,6 +415,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
                         auto bit_offs = i * 8;
                         *dptr = data(bit_offs + 7, bit_offs).to_uint();
                         *beptr = strb[i] ? 0xff : 0;
+                        fsm_hndl->aux.i32.i0 += strb[i] ? 1 : 0;
                     }
                 }
             } else { // aligned or single beat access
@@ -422,12 +425,13 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
                     auto bit_offs = (offset + i) * 8;
                     *dptr = data(bit_offs + 7, bit_offs).to_uint();
                     *beptr = strb[offset + i] ? 0xff : 0;
+                    fsm_hndl->aux.i32.i0 += strb[i] ? 1 : 0;
                 }
             }
             // TODO: assuming consecutive write (not scattered)
             auto strobe = strb.to_uint();
             if(last) {
-                auto act_data_len = CFG::IS_LITE ? util::bit_count(strobe) : (beat_count + 1) * size;
+                auto act_data_len = CFG::IS_LITE ? util::bit_count(strobe) : fsm_hndl->aux.i32.i0;
                 //            if(CFG::IS_LITE && act_data_len<CFG::BUSWIDTH/8) {
                 //                std::fill(gp->get_byte_enable_ptr(), gp->get_byte_enable_ptr() + act_data_len, 0xff);
                 //                std::fill(gp->get_byte_enable_ptr() + act_data_len, gp->get_byte_enable_ptr() +
