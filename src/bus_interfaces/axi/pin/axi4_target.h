@@ -425,7 +425,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
                     auto bit_offs = (offset + i) * 8;
                     *dptr = data(bit_offs + 7, bit_offs).to_uint();
                     *beptr = strb[offset + i] ? 0xff : 0;
-                    fsm_hndl->aux.i32.i0 += strb[i] ? 1 : 0;
+                    fsm_hndl->aux.i32.i0 += strb[offset + i] ? 1 : 0;
                 }
             }
             // TODO: assuming consecutive write (not scattered)
