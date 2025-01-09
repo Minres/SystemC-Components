@@ -19,7 +19,7 @@ Here is a short list of features.
   
 * Various optimized trace file implementations   
   * compressed VCD
-  * FST (used by [GTKWave](http://gtkwave.sourceforge.net/))
+  * FST (used by [GTKWave](http://gtkwave.sourceforge.net/) and [Surfer](https://surfer-project.org/))
 
 * Tracing TLM2 Sockets
 
