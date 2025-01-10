@@ -672,7 +672,7 @@ void configurer::read_input_file(const std::string& filename) {
             root->parse(is);
             if(!root->valid) {
                 SCCERR() << "Could not parse input file " << filename << ", " << root->get_error_msg();
-            } else if(!root->empty){
+            } else if(!root->empty) {
                 root->configure_cci();
             }
         } catch(std::runtime_error& e) {
