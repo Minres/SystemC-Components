@@ -212,6 +212,7 @@ struct json_config_reader : public config_reader {
     configurer::broker_t& broker;
     Document document;
     bool valid{false};
+    bool empty{false};
 
     json_config_reader(configurer::broker_t& broker)
     : broker(broker) {}
@@ -220,6 +221,7 @@ struct json_config_reader : public config_reader {
         IStreamWrapper stream(is);
         document.ParseStream(stream);
         valid = !document.HasParseError();
+        empty = document.IsNull();
     }
     std::string get_error_msg() {
         std::ostringstream os;
@@ -406,6 +408,7 @@ struct yaml_config_reader : public config_reader {
     configurer::broker_t& broker;
     YAML::Node document;
     bool valid{false};
+    bool empty{true};
 
     yaml_config_reader(configurer::broker_t& broker)
     : broker(broker) {}
@@ -413,7 +416,8 @@ struct yaml_config_reader : public config_reader {
     void parse(std::istream& is) {
         std::string buf((std::istreambuf_iterator<char>(is)), std::istreambuf_iterator<char>());
         document = YAML::Load(buf);
-        valid = document.IsDefined() && document.IsMap();
+        valid = document.IsDefined() && (document.IsMap() || document.IsNull());
+        empty = document.IsNull();
     }
 
     std::string get_error_msg() { return "YAML file does not start with a map"; }
@@ -668,7 +672,7 @@ void configurer::read_input_file(const std::string& filename) {
             root->parse(is);
             if(!root->valid) {
                 SCCERR() << "Could not parse input file " << filename << ", " << root->get_error_msg();
-            } else {
+            } else if(!root->empty){
                 root->configure_cci();
             }
         } catch(std::runtime_error& e) {
