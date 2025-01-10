@@ -35,8 +35,11 @@ namespace axi {
 class axi_initiator_base : public sc_core::sc_module {
 public:
     sc_core::sc_in<bool> clk_i{"clk_i"};
-    tlm_utils::simple_target_socket<axi_initiator_base, 0> tsck{"tsck"};
-
+#ifdef CWR_SYSTEMC
+    tlm_utils::simple_target_socket<axi_initiator_base, 32> tsck{"tsck"};
+#else
+    tlm_utils::simple_target_socket<axi_initiator_base, scc::LT> tsck{"tsck"};
+#endif
     /**
      * Create and attach AXI extension.
      * AXI protocol engine expects the incoming transactions to be controlled by a memory manager.
