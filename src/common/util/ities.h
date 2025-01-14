@@ -52,19 +52,57 @@
  */
 template <unsigned int bit, unsigned int width, typename T>
 CONSTEXPR typename std::enable_if<std::is_unsigned<T>::value, T>::type bit_sub(T v) {
-    static_assert((bit + width) <= 8 * sizeof(T));
-    T res = (v >> bit) & ((T(1) << width) - 1);
-    return res;
+    static_assert((bit + width) <= 8 * sizeof(T), "Accessed slice out of bounds");
+    static_assert(width > 0, "Width needs to be >0");
+    return (v >> bit) & ((T(1) << width) - 1);
 }
 
 template <unsigned int bit, unsigned int width, typename T>
 CONSTEXPR typename std::enable_if<std::is_signed<T>::value, T>::type bit_sub(T v) {
-    static_assert((bit + width) <= 8 * sizeof(T));
-    static_assert(width > 0);
+    static_assert((bit + width) <= 8 * sizeof(T), "Accessed slice out of bounds");
+    static_assert(width > 0, "Width needs to be >0");
     auto field = v >> bit;
-    auto amount = (field & ~(~T(1) << (width - 1) << 1)) - (field & (T(1) << (width - 1)) << 1);
-    return amount;
+    return (field & ~(~T(1) << (width - 1) << 1)) - (field & (T(1) << (width - 1)) << 1);
 }
+
+template <typename T> typename std::enable_if<std::is_unsigned<T>::value, T>::type bit_sub(T v, unsigned int bit, unsigned int width) {
+    assert((bit + width) <= 8 * sizeof(T) && "Accessed slice out of bounds");
+    assert(width > 0 && "Width needs to be >0");
+    return (v >> bit) & ((T(1) << width) - 1);
+}
+
+template <typename T> typename std::enable_if<std::is_signed<T>::value, T>::type bit_sub(T v, unsigned int bit, unsigned int width) {
+    assert((bit + width) <= 8 * sizeof(T) && "Accessed slice out of bounds");
+    assert(width > 0 && "Width needs to be >0");
+    auto field = v >> bit;
+    return (field & ~(~T(1) << (width - 1) << 1)) - (field & (T(1) << (width - 1)) << 1);
+}
+
+template <typename T> struct bit_slice {
+    T& value;
+    unsigned base, width;
+    explicit bit_slice(T& value, unsigned base, unsigned width)
+    : value(value)
+    , base(base)
+    , width(width){};
+    explicit bit_slice(T& value, unsigned index)
+    : value(value)
+    , base(index)
+    , width(1){};
+    operator T() const { return bit_sub(value, base, width); }
+
+    bit_slice<T>& operator=(T v) {
+        T mask = ((T(1) << width) - 1);
+        value = (value & ~(mask << base)) | ((v & mask) << base);
+        return *this;
+    }
+    bit_slice<T>& operator=(bit_slice<T> const& _v) {
+        T v = static_cast<T>(_v);
+        T mask = ((T(1) << width) - 1);
+        value = (value & ~(mask << base)) | ((v & mask) << base);
+        return *this;
+    }
+};
 
 template <unsigned offset, typename R, typename T> R _bit_comb(T v) { return v << offset; }
 template <unsigned offset, typename R, typename T, typename... Args> R _bit_comb(T first, Args... args) {
