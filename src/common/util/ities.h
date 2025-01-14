@@ -24,6 +24,7 @@
 #include <cctype>
 #include <climits>
 #include <iterator>
+#include <limits>
 #include <memory>
 #include <sstream>
 #include <sys/stat.h>
@@ -54,6 +55,7 @@ template <unsigned int bit, unsigned int width, typename T>
 CONSTEXPR typename std::enable_if<std::is_unsigned<T>::value, T>::type bit_sub(T v) {
     static_assert((bit + width) <= 8 * sizeof(T), "Accessed slice out of bounds");
     static_assert(width > 0, "Width needs to be >0");
+    static_assert(width < sizeof(T) * 8, "");
     return (v >> bit) & ((T(1) << width) - 1);
 }
 
@@ -68,7 +70,8 @@ CONSTEXPR typename std::enable_if<std::is_signed<T>::value, T>::type bit_sub(T v
 template <typename T> typename std::enable_if<std::is_unsigned<T>::value, T>::type bit_sub(T v, unsigned int bit, unsigned int width) {
     assert((bit + width) <= 8 * sizeof(T) && "Accessed slice out of bounds");
     assert(width > 0 && "Width needs to be >0");
-    return (v >> bit) & ((T(1) << width) - 1);
+    T mask = width < sizeof(T) * 8 ? (T(1) << width) - 1 : std::numeric_limits<T>::max();
+    return (v >> bit) & mask;
 }
 
 template <typename T> typename std::enable_if<std::is_signed<T>::value, T>::type bit_sub(T v, unsigned int bit, unsigned int width) {
