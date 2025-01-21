@@ -9,6 +9,8 @@ option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentat
 
 option(BUILD_STAND_ALONE "Do a standalone build and do not rely on a parent project providing needed libraries" FALSE)
 
+option(BUILD_SCC_LIB_ONLY "" OFF)
+
 include(Common)
 include(GNUInstallDirs)
 if(BUILD_STAND_ALONE)
@@ -275,7 +277,9 @@ install(
 ###############################################################################
 add_subdirectory(axi_chi)
 if(NOT HAS_PCT)
-    add_subdirectory(examples)
+	if(NOT BUILD_SCC_LIB_ONLY)
+    	add_subdirectory(examples)
+	endif()
 endif()
 endif(SystemC_FOUND)
 

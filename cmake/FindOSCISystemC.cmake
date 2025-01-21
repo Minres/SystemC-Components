@@ -97,11 +97,11 @@ FIND_FILE(_SCV_HEADER_FILE
   PATHS ${_COMMON_PATHS}
 )
 
-FIND_FILE(_CCI_HEADER_FILE
-  NAMES cci_configuration
-  HINTS ${_CCI_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
+#FIND_FILE(_CCI_HEADER_FILE
+#  NAMES cci_configuration
+#  HINTS ${_CCI_HINTS}
+#  PATHS ${_COMMON_PATHS}
+#)
 
 if(NOT _SYSTEMC_HEADER_FILE STREQUAL _SYSTEMC_HEADER_FILE-NOTFOUND)
   set(SystemC_FOUND TRUE)
@@ -113,9 +113,9 @@ if(NOT _SCV_HEADER_FILE STREQUAL _SCV_HEADER_FILE-NOTFOUND)
 endif()
 endif()
 
-if(NOT _CCI_HEADER_FILE STREQUAL _CCI_HEADER_FILE-NOTFOUND)
-  set(CCI_FOUND TRUE)
-endif()
+#if(NOT _CCI_HEADER_FILE STREQUAL _CCI_HEADER_FILE-NOTFOUND)
+#  set(CCI_FOUND TRUE)
+#endif()
 
 FIND_PATH(SystemC_INCLUDE_DIRS
   NAMES systemc.h
@@ -141,24 +141,24 @@ FIND_PATH(SCV_LIBRARY_DIRS
   PATHS ${_SCV_PATHS}
 )
 
-FIND_PATH(CCI_INCLUDE_DIRS
-  NAMES cci_configuration
-  HINTS ${_CCI_HINTS}
-  PATHS ${_CCI_PATHS}
-)
-
-FIND_PATH(CCI_LIBRARY_DIRS
-  NAMES libcciapi.a libcciapi.so
-  HINTS ${_CCI_HINTS}
-  PATHS ${_CCI_PATHS}
-)
+#FIND_PATH(CCI_INCLUDE_DIRS
+#  NAMES cci_configuration
+#  HINTS ${_CCI_HINTS}
+#  PATHS ${_CCI_PATHS}
+#)
+#
+#FIND_PATH(CCI_LIBRARY_DIRS
+#  NAMES libcciapi.a libcciapi.so
+#  HINTS ${_CCI_HINTS}
+#  PATHS ${_CCI_PATHS}
+#)
 
 if(SystemC_FOUND)
         set(SystemC_LIBRARIES systemc)
         if(SCV_FOUND)
             set(SCV_LIBRARIES scv)
         endif(SCV_FOUND)
-        if(CCI_FOUND)
-            set(CCI_LIBRARIES cciapi)
-        endif()
+#        if(CCI_FOUND)
+#            set(CCI_LIBRARIES cciapi)
+#        endif()
 endif(SystemC_FOUND)
