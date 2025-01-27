@@ -214,17 +214,13 @@ auto compose_message(const sc_report& rep, const scc::LogConfig& cfg) -> const s
         return "";
 }
 
-inline auto get_verbosity(const sc_report& rep) -> int {
-    return rep.get_verbosity() > sc_core::SC_NONE && rep.get_verbosity() < sc_core::SC_LOW ? rep.get_verbosity() * 10 : rep.get_verbosity();
-}
-
 inline void log2logger(spdlog::logger& logger, const sc_report& rep, const scc::LogConfig& cfg) {
     auto msg = compose_message(rep, cfg);
     if(!msg.size())
         return;
     switch(rep.get_severity()) {
     case SC_INFO:
-        switch(get_verbosity(rep)) {
+        switch(rep.get_verbosity()) {
         case SC_DEBUG:
         case SC_FULL:
             logger.trace(msg);
@@ -282,7 +278,7 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
     if(actions & SC_DO_NOTHING)
         return;
     if(rep.get_severity() == sc_core::SC_INFO || !log_cfg.report_only_first_error || sc_report_handler::get_count(SC_ERROR) < 2) {
-        if((actions & SC_DISPLAY) && (!log_cfg.file_logger || get_verbosity(rep) < SC_HIGH))
+        if((actions & SC_DISPLAY) && (!log_cfg.file_logger || rep.get_verbosity() < SC_HIGH))
             log2logger(*log_cfg.console_logger, rep, log_cfg);
         if((actions & SC_LOG) && log_cfg.file_logger) {
             scc::LogConfig lcfg(log_cfg);
