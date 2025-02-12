@@ -111,10 +111,9 @@ inline void ocp::pin::target<DATA_WIDTH, ADDR_WIDTH, BUSWIDTH>::req() {
             wait(this->MCmd.default_event());
         }
         auto cmd = static_cast<ocp::cmd_e>(this->MCmd.read().to_uint());
-        auto gp = tlm::scc::tlm_mm<>::get().allocate<ocp::ocp_extension>(DATA_WIDTH / 8, true);
+        auto gp = tlm::scc::tlm_mm<>::get().allocate<ocp::ocp_extension>(DATA_WIDTH / 8);
         gp->set_streaming_width(DATA_WIDTH / 8);
         gp->set_data_length(DATA_WIDTH / 8);
-        gp->set_byte_enable_length(DATA_WIDTH / 8);
         auto addr = this->MAddr.read().to_uint64();
         gp->set_address(addr);
         switch(cmd) {
@@ -125,17 +124,25 @@ inline void ocp::pin::target<DATA_WIDTH, ADDR_WIDTH, BUSWIDTH>::req() {
             auto data = this->MData.read();
             auto strb = this->MByteEn.read();
             auto dptr = gp->get_data_ptr();
-            auto beptr = gp->get_byte_enable_ptr();
-            for(size_t i = 0; i < DATA_WIDTH / 8; ++i, ++dptr, ++beptr) {
-                *dptr = data((i << 3) + 7, i << 3).to_uint();
-                *beptr = strb[i] ? 0xff : 0;
+            auto len = 0;
+            for(size_t i = 0; i < DATA_WIDTH / 8; ++i) {
+                auto be = strb[i] ? 0xff : 0;
+                if(!len && !be) {
+                    addr++;
+                } else if(be) {
+                    *dptr = data((i << 3) + 7, i << 3).to_uint();
+                    ++dptr;
+                    ++len;
+                }
             }
+            gp->set_address(addr);
+            gp->set_streaming_width(len);
+            gp->set_data_length(len);
         } break;
         case cmd_e::READ:
         case cmd_e::READEX:
         case cmd_e::READ_LINKED:
             gp->set_command(tlm::TLM_READ_COMMAND);
-            std::fill(gp->get_byte_enable_ptr(), gp->get_byte_enable_ptr() + DATA_WIDTH / 8, 0xff);
             break;
         default:
             SCCFATAL(SCMOD) << "not supported";
