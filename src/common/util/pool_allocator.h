@@ -23,6 +23,7 @@
 #include <mutex>
 #include <unordered_map>
 #include <vector>
+#include "ities.h"
 #ifdef HAVE_GETENV
 #include <cstdlib>
 #endif
@@ -103,9 +104,11 @@ public:
     //    convert an allocator<T> to allocator<U> e.g. for std::map from A to _Node<A>
     template <typename U> struct rebind { typedef stl_pool_allocator<U> other; };
 
-    stl_pool_allocator(const stl_pool_allocator&) noexcept {}
+    stl_pool_allocator() = default;
 
-    template <typename T2> stl_pool_allocator(const stl_pool_allocator<T2>&) noexcept {}
+    stl_pool_allocator(stl_pool_allocator const &) noexcept {}
+
+    template <typename T2> stl_pool_allocator(stl_pool_allocator<T2> const&) noexcept {}
 
     ~stl_pool_allocator() NOEXCEPT {}
 
@@ -114,54 +117,49 @@ public:
     const_pointer address(const_reference r) { return std::addressof(r); }
 
     pointer allocate(size_type n, const void* = 0) {
-        size_type value = 16;
-        while(value < n)
-            value <<= 2;
-        switch(n) {
-        case 16:
-            return static_cast<T*>(util::pool_allocator<16 * sizeof(T), 65536>::get().allocate());
-        case 64:
-            return static_cast<T*>(util::pool_allocator<64 * sizeof(T), 16384>::get().allocate());
-        case 256:
-            return static_cast<T*>(util::pool_allocator<256 * sizeof(T), 4096>::get().allocate());
-        case 1024:
-            return static_cast<T*>(util::pool_allocator<1024 * sizeof(T), 1024>::get().allocate());
-        case 4096:
-            return static_cast<T*>(util::pool_allocator<4096 * sizeof(T), 256>::get().allocate());
-        case 16384:
-            return static_cast<T*>(util::pool_allocator<16384 * sizeof(T), 64>::get().allocate());
+        if (n > std::numeric_limits<std::size_t>::max() / sizeof(value_type))
+            throw std::bad_array_new_length();
+        switch(util::ilog2(n)) {
+        case 0: return static_cast<value_type*>(util::pool_allocator<sizeof(value_type)>::get().allocate());
+        case 1: return static_cast<value_type*>(util::pool_allocator<sizeof(value_type)*2>::get().allocate());
+        case 2: return static_cast<value_type*>(util::pool_allocator<sizeof(value_type)*4>::get().allocate());
+        case 3: return static_cast<value_type*>(util::pool_allocator<sizeof(value_type)*8>::get().allocate());
+        case 4: return static_cast<value_type*>(util::pool_allocator<sizeof(value_type)*16>::get().allocate());
+        case 5: return static_cast<value_type*>(util::pool_allocator<sizeof(value_type)*32>::get().allocate());
+        case 6: return static_cast<value_type*>(util::pool_allocator<sizeof(value_type)*64>::get().allocate());
+        case 7: return static_cast<value_type*>(util::pool_allocator<sizeof(value_type)*128>::get().allocate());
+        case 8: return static_cast<value_type*>(util::pool_allocator<sizeof(value_type)*256>::get().allocate());
+        case 9: return static_cast<value_type*>(util::pool_allocator<sizeof(value_type)*512, 2048>::get().allocate());
+        case 10:return static_cast<value_type*>(util::pool_allocator<sizeof(value_type)*1024, 1024>::get().allocate());
+        case 11:return static_cast<value_type*>(util::pool_allocator<sizeof(value_type)*2048, 512>::get().allocate());
+        case 12:return static_cast<value_type*>(util::pool_allocator<sizeof(value_type)*4096, 256>::get().allocate());
         default:
-            return static_cast<T*>(::operator new(n * sizeof(T)));
+            if (auto p = static_cast<value_type*>(std::malloc(n * sizeof(value_type))))
+                return p;
+            throw std::bad_alloc();
         }
     }
 
     void deallocate(T* p, size_type n) noexcept {
-        size_type value = 16;
-        while(value < n)
-            value <<= 2;
-        switch(n) {
-        case 16:
-            util::pool_allocator<16 * sizeof(T), 65536>::get().free(p);
-            break;
-        case 64:
-            util::pool_allocator<64 * sizeof(T), 16384>::get().free(p);
-            break;
-        case 256:
-            util::pool_allocator<256 * sizeof(T), 4096>::get().free(p);
-            break;
-        case 1024:
-            util::pool_allocator<1024 * sizeof(T), 1024>::get().free(p);
-            break;
-        case 4096:
-            util::pool_allocator<4096 * sizeof(T), 256>::get().free(p);
-            break;
-        case 16384:
-            util::pool_allocator<16384 * sizeof(T), 64>::get().free(p);
-            break;
+        switch(util::ilog2(n)) {
+        case 0: return util::pool_allocator<sizeof(value_type)>::get().free(p);
+        case 1: return util::pool_allocator<sizeof(value_type)*2>::get().free(p);
+        case 2: return util::pool_allocator<sizeof(value_type)*4>::get().free(p);
+        case 3: return util::pool_allocator<sizeof(value_type)*8>::get().free(p);
+        case 4: return util::pool_allocator<sizeof(value_type)*16>::get().free(p);
+        case 5: return util::pool_allocator<sizeof(value_type)*32>::get().free(p);
+        case 6: return util::pool_allocator<sizeof(value_type)*64>::get().free(p);
+        case 7: return util::pool_allocator<sizeof(value_type)*128>::get().free(p);
+        case 8: return util::pool_allocator<sizeof(value_type)*256>::get().free(p);
+        case 9: return util::pool_allocator<sizeof(value_type)*512>::get().free(p);
+        case 10:return util::pool_allocator<sizeof(value_type)*1024>::get().free(p);
+        case 11:return util::pool_allocator<sizeof(value_type)*2048>::get().free(p);
+        case 12:return util::pool_allocator<sizeof(value_type)*4096>::get().free(p);
         default:
-            ::operator delete(p);
+            std::free(p);
         }
     }
+
     size_type max_size() const noexcept { return std::numeric_limits<size_type>::max() / sizeof(T); }
 
     bool operator==(stl_pool_allocator const&) { return true; }
