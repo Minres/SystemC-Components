@@ -23,7 +23,6 @@
 #ifndef _SYSC_UTILITIES_H_
 #define _SYSC_UTILITIES_H_
 
-#include "sc_variable.h"
 #include <array>
 #include <limits>
 #include <memory>
