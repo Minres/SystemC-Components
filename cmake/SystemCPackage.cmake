@@ -13,6 +13,8 @@ if(NOT SystemC_FOUND)
         find_package(MTISystemC REQUIRED)
         set(SystemC_LIBRARIES SystemC::systemc)
     else()
+    	set(CMAKE_FIND_USE_PACKAGE_REGISTRY FALSE)
+    	set(CMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY TRUE)
         find_package(SystemCLanguage QUIET)
         if(TARGET SystemC::systemc) # conan find_package_generator or the cmake of an SystemC installation
             set(SystemC_FOUND true)
