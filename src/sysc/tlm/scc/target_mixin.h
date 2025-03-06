@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-#ifndef __TARGET_MIXIN_H__
-#define __TARGET_MIXIN_H__
+#ifndef _TLM_SCC_TARGET_MIXIN_H_
+#define _TLM_SCC_TARGET_MIXIN_H_
 
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES // needed for sc_spawn
 #define SC_INCLUDE_DYNAMIC_PROCESSES
@@ -492,4 +492,4 @@ private:
 } // namespace scc
 } // namespace tlm
 
-#endif //__TARGET_MIXIN_H__
+#endif //_TLM_SCC_TARGET_MIXIN_H_
