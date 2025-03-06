@@ -19,6 +19,7 @@
 
 #include <array>
 #include <cassert>
+#include "ities.h"
 
 /**
  * \ingroup scc-common
