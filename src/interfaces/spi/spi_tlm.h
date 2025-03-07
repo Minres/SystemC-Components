@@ -92,9 +92,14 @@ struct spi_channel : public sc_core::sc_module,
     , isck{"isckt", slave_count}{
         for(auto& is:isck) is(*this);
         tsck(*this);
-        SC_HAS_PROCESS(spi_channel);
-        SC_METHOD(fw);
-        SC_METHOD(bw);
+    }
+
+    spi_pkt_target_socket<>& operator()() {
+        return tsck;
+    }
+
+    spi_pkt_initiator_socket<>& operator()(size_t idx) {
+        return isck.at(idx);
     }
 
     void b_transport(transaction_type& trans, sc_core::sc_time& t) override {
@@ -104,69 +109,34 @@ struct spi_channel : public sc_core::sc_module,
 
     tlm::tlm_sync_enum nb_transport_fw(transaction_type& trans, phase_type& phase, sc_core::sc_time& t) override {
         SCCTRACE(SCMOD) << "Received non-blocking transaction in fw path with phase " << phase.get_name();
-        if(phase == tlm::nw::REQUEST) {
-            fw_peq.notify(spi_pkt_shared_ptr(&trans), channel_delay.get_value());
-            phase = tlm::nw::CONFIRM;
-            return tlm::TLM_UPDATED;
-        } else if(phase == tlm::nw::RESPONSE) { // a credit response
-            bw_resp.notify(sc_core::SC_ZERO_TIME);
-            return tlm::TLM_ACCEPTED;
+        if(phase== tlm::nw::REQUEST) {
+            auto idx = trans.get_target_id();
+            if(idx<isck.size()) {
+                phase_type ph = tlm::nw::INDICATION;
+                auto ret = isck.at(idx)->nb_transport_fw(trans, ph, t);
+                if(ph==tlm::nw::RESPONSE)
+                    phase = tlm::nw::CONFIRM;
+                return ret;
+            } else {
+                trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
+                phase=tlm::nw::CONFIRM;
+                return tlm::TLM_COMPLETED;
+            }
         }
-        throw std::runtime_error("illegal request in forward path");
+        return tlm::TLM_ACCEPTED;
     }
 
     tlm::tlm_sync_enum nb_transport_bw(transaction_type& trans, phase_type& phase, sc_core::sc_time& t) override {
         SCCTRACE(SCMOD) << "Received non-blocking transaction in bw path with phase " << phase.get_name();
-        if(phase == tlm::nw::REQUEST) { // this is a credit
-            SCCDEBUG(SCMOD) << "Forwarding " << static_cast<unsigned>(trans.get_data()[0]) << " credit(s)";
-            bw_peq.notify(spi_pkt_shared_ptr(&trans), channel_delay.get_value());
-            phase = tlm::nw::CONFIRM;
-            return tlm::TLM_UPDATED;
-        } else if(phase == tlm::nw::RESPONSE) { // a data transfer completion
-            fw_resp.notify(sc_core::SC_ZERO_TIME);
-            return tlm::TLM_ACCEPTED;
+        if(phase== tlm::nw::RESPONSE) {
+            phase_type ph = tlm::nw::CONFIRM;
+            return tsck->nb_transport_bw(trans, ph, t);
         }
-        throw std::runtime_error("illegal response in backward path");
+        return tlm::TLM_ACCEPTED;
     }
 
     unsigned int transport_dbg(transaction_type& trans) override { return isck.at(trans.get_target_id())->transport_dbg(trans); }
 
-private:
-    void fw() {
-        while(fw_peq.has_next()) {
-            auto ptr = fw_peq.get();
-            auto phase = tlm::nw::INDICATION;
-            auto t = sc_core::SC_ZERO_TIME;
-            auto sync = isck.at(ptr->get_target_id())->nb_transport_fw(*ptr, phase, t);
-            if(sync == tlm::TLM_ACCEPTED) {
-                next_trigger(fw_resp);
-                return;
-            } else {
-                sc_assert(sync == tlm::TLM_UPDATED || sync == tlm::TLM_COMPLETED);
-            }
-        }
-        next_trigger(fw_peq.event());
-    }
-
-    void bw() {
-        while(bw_peq.has_next()) {
-            auto ptr = bw_peq.get();
-            auto ph{tlm::nw::REQUEST};
-            sc_core::sc_time d;
-            auto sync = tsck->nb_transport_bw(*ptr, ph, d);
-            if(sync == tlm::TLM_ACCEPTED) {
-                next_trigger(bw_resp);
-                return;
-            } else {
-                sc_assert(sync == tlm::TLM_UPDATED || sync == tlm::TLM_COMPLETED);
-            }
-        }
-        next_trigger(bw_peq.event());
-    }
-
-    scc::peq<spi_pkt_shared_ptr> fw_peq;
-    scc::peq<spi_pkt_shared_ptr> bw_peq;
-    sc_core::sc_event fw_resp, bw_resp;
 };
 } // namespace spi
 #endif // _SPI_SPI_TLM_H_
