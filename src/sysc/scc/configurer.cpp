@@ -742,6 +742,44 @@ void configurer::set_value(const std::string& hier_name, cci::cci_value value) {
     cci_broker.set_preset_cci_value(hier_name, value);
 }
 
+void configurer::set_value_from_str(const std::string &hier_name, const std::string &value) {
+    try {
+        auto i = std::stoi(value);
+        set_value(hier_name, i);
+        return;
+    } catch (...) {}
+    try {
+        auto l = std::stol(value);
+        set_value(hier_name, l);
+        return;
+    } catch (...) {}
+    try {
+        auto ll = std::stoll(value);
+        set_value(hier_name, ll);
+        return;
+    } catch (...) {}
+    try {
+        auto f = std::stof(value);
+        set_value(hier_name, f);
+        return;
+    } catch (...) {}
+    try {
+        auto d = std::stod(value);
+        set_value(hier_name, d);
+        return;
+    } catch (...) { }
+    auto lower_value = util::str_tolower(value);
+    if(lower_value == "true"){
+        set_value(hier_name, true);
+        return;
+    }
+    if(lower_value == "false"){
+        set_value(hier_name, false);
+        return;
+    }
+    set_value(hier_name, value);
+}
+
 void configurer::config_check() {
     try {
         cci_broker.ignore_unconsumed_preset_values(&cci_name_ignore);
