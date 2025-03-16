@@ -154,7 +154,7 @@ endif()
 ###############################################################################
 add_subdirectory(src/common)
 if(SystemC_FOUND)
-    add_subdirectory(src/bus_interfaces)
+    add_subdirectory(src/interfaces)
     add_subdirectory(src/components)
     add_subdirectory(src/sysc)
     add_subdirectory(third_party)
@@ -181,7 +181,7 @@ if(SystemC_FOUND)
         target_include_directories(scc INTERFACE ${Boost_INCLUDE_DIRS})
         target_link_libraries(scc INTERFACE ${Boost_datetime_LIBRARY})
     endif()
-    target_link_libraries(scc INTERFACE scc-util scc-sysc components busses scv-tr)
+    target_link_libraries(scc INTERFACE scc-util scc-sysc components interfaces scv-tr)
     target_link_libraries(scc INTERFACE ${FMT_TARGET} spdlog::spdlog)
     
     set_target_properties(scc PROPERTIES
@@ -192,7 +192,7 @@ if(SystemC_FOUND)
 		#set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")
 		add_library(scc_shared SHARED $<TARGET_OBJECTS:scc-util>
 	                                  $<TARGET_OBJECTS:scc-sysc>
-	                                  $<TARGET_OBJECTS:busses>
+	                                  $<TARGET_OBJECTS:interfaces>
 	                                  $<TARGET_OBJECTS:scv-tr>
 	                                  )
 	    set_target_properties(scc_shared PROPERTIES CXX_VISIBILITY_PRESET hidden)

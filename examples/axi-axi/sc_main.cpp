@@ -6,9 +6,9 @@
  */
 
 #include <array>
-#include <axi/axi_initiator.h>
-#include <axi/axi_target.h>
 #include <axi/scv/recorder_modules.h>
+#include <interfaces/axi/axi_initiator.h>
+#include <interfaces/axi/axi_target.h>
 #include <scc.h>
 #include <scc/configurable_tracer.h>
 #include <scc/hierarchy_dumper.h>

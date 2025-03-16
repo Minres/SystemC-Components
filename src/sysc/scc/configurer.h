@@ -93,7 +93,7 @@ public:
         this->complete = complete;
     }
     /**
-     * set a value of some property (sc_attribute or cci_param) from programmatically
+     * set a value of some property (sc_attribute or cci_param) directly
      *
      * In case the configurer is being used without CCI the function can only be called after
      * the simulation objects are instantiated since the sc_attributes have to exist.
@@ -102,6 +102,18 @@ public:
      * @param value the value to put
      */
     template <typename T> void set_value(std::string const& hier_name, T value) { set_value(hier_name, cci::cci_value(value)); }
+    /**
+     * set a value of some property (sc_attribute or cci_param) directly
+     *
+     * this version automatically converts the string into the needed target data type
+     *
+     * In case the configurer is being used without CCI the function can only be called after
+     * the simulation objects are instantiated since the sc_attributes have to exist.
+     *
+     * @param hier_name the hierarchical name of the property
+     * @param value the value to put
+     */
+    void set_value_from_str(const std::string &hier_name, const std::string &value);
     /**
      * set a value of an sc_attribute from given configuration. This is being used by the scc::ext_attribute
      * which allows to use config values during construction

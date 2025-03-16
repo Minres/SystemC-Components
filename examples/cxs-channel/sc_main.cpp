@@ -1,6 +1,6 @@
 
 #define SC_INCLUDE_FX
-#include <cxs/cxs_tlm.h>
+#include <interfaces/cxs/cxs_tlm.h>
 #include <scc/cci_util.h>
 #include <scc/configurer.h>
 #include <scc/observer.h>

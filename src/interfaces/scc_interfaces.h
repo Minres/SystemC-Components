@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2018, 2019, 2020, 2021 MINRES Technologies GmbH
+ * Copyright 2021 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,14 @@
 
 #pragma once
 
-// clang-format off
-#include "scc_interfaces.h"
-#include "scc_util.h"
-#include "scc_sysc.h"
-#include "scc_components.h"
-// clang-format on
+#include <interfaces/ahb/ahb_tlm.h>
+#include <interfaces/ahb/pe/ahb_initiator.h>
+#include <interfaces/ahb/pe/ahb_target.h>
+#include <interfaces/ahb/pin/initiator.h>
+#include <interfaces/ahb/pin/target.h>
+#include <interfaces/apb/pe/apb_initiator.h>
+#include <interfaces/apb/pe/apb_target.h>
+#include <interfaces/axi/axi_initiator.h>
+#include <interfaces/axi/axi_target.h>
+#include "atp/timing_params.h"
+

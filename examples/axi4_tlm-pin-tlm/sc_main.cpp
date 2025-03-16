@@ -8,9 +8,9 @@
 #include <array>
 #include <axi/pe/axi_initiator.h>
 #include <axi/pe/simple_target.h>
-#include <axi/pin/axi4_initiator.h>
-#include <axi/pin/axi4_target.h>
 #include <axi/scv/recorder_modules.h>
+#include <interfaces/axi/pin/axi4_initiator.h>
+#include <interfaces/axi/pin/axi4_target.h>
 #include <csetjmp>
 #include <csignal>
 #include <scc.h>

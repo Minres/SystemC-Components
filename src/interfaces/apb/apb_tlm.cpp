@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2018, 2019, 2020, 2021 MINRES Technologies GmbH
+ * Copyright 2019-2024 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,23 @@
  * limitations under the License.
  *******************************************************************************/
 
-#pragma once
+#include "../../interfaces/apb/apb_tlm.h"
 
-// clang-format off
-#include "scc_interfaces.h"
-#include "scc_util.h"
-#include "scc_sysc.h"
-#include "scc_components.h"
-// clang-format on
+#include <array>
+
+namespace apb {
+namespace {
+const std::array<std::string, 3> cmd_str{"R", "W", "I"};
+}
+std::ostream& operator<<(std::ostream& os, const tlm::tlm_generic_payload& t) {
+    os << "CMD:" << cmd_str[t.get_command()] << ", "
+       << "ADDR:0x" << std::hex << t.get_address() << ", TXLEN:0x" << t.get_data_length();
+    if(auto e = t.get_extension<apb::apb_extension>()) {
+        os << ", "
+           << "PROT:0x" << std::hex << static_cast<unsigned>(e->get_protection()) << "NSE:" << (e->is_nse() ? "True" : "False");
+    }
+    os << " [ptr:" << &t << "]";
+    return os;
+}
+
+} // namespace apb

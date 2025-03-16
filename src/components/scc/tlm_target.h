@@ -94,6 +94,13 @@ public:
         }
     }
 
+    size_t get_size() {
+        size_t res = 0;
+        for(auto& e: socket_map){
+            res = std::max<size_t>(res, e.first+e.second.index.second);
+        }
+        return res;
+    }
 private:
     sc_core::sc_time& clk;
 

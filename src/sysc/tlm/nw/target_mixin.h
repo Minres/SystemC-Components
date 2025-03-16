@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-#ifndef __TARGET_MIXIN_H__
-#define __TARGET_MIXIN_H__
+#ifndef _TLM_NW_TARGET_MIXIN_H_
+#define _TLM_NW_TARGET_MIXIN_H_
 
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES // needed for sc_spawn
 #define SC_INCLUDE_DYNAMIC_PROCESSES
@@ -33,7 +33,7 @@ namespace nw {
 /**
  * an target socket mixin adding default implementation of callback functions similar to tlm::simple_target_socket
  */
-template <typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types> class target_mixin : public BASE_TYPE {
+template <typename BASE_TYPE, typename TYPES = typename BASE_TYPE::protocol_types> class target_mixin : public BASE_TYPE {
     //    friend class fw_process;
     //    friend class bw_process;
 
@@ -488,4 +488,4 @@ private:
 } // namespace nw
 } // namespace tlm
 
-#endif //__TARGET_MIXIN_H__
+#endif //_TLM_NW_TARGET_MIXIN_H_

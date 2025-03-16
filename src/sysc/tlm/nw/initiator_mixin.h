@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _TLM_SCC_INITIATOR_MIXIN_H__
-#define _TLM_SCC_INITIATOR_MIXIN_H__
+#ifndef _TLM_NW_INITIATOR_MIXIN_H_
+#define _TLM_NW_INITIATOR_MIXIN_H_
 
 #include "scc/utilities.h"
 #include <functional>
@@ -35,7 +35,7 @@ namespace nw {
  * @tparam BASE_TYPE
  * @tparam TYPES
  */
-template <typename BASE_TYPE, typename TYPES = tlm::tlm_base_protocol_types> class initiator_mixin : public BASE_TYPE {
+template <typename BASE_TYPE, typename TYPES = typename BASE_TYPE::protocol_types> class initiator_mixin : public BASE_TYPE {
 public:
     using transaction_type = typename TYPES::tlm_payload_type;
     using phase_type = typename TYPES::tlm_phase_type;
@@ -133,4 +133,4 @@ private:
 } // namespace nw
 } // namespace tlm
 
-#endif //_TLM_SCC_INITIATOR_MIXIN_H__
+#endif //_TLM_NW_INITIATOR_MIXIN_H_
