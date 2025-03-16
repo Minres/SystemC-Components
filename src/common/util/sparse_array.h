@@ -17,9 +17,9 @@
 #ifndef _SPARSE_ARRAY_H_
 #define _SPARSE_ARRAY_H_
 
+#include "ities.h"
 #include <array>
 #include <cassert>
-#include "ities.h"
 
 /**
  * \ingroup scc-common

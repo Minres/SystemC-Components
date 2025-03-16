@@ -110,11 +110,8 @@ public:
     std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> dmi_cb;
 };
 
-template <unsigned long long SIZE, unsigned BUSWIDTH = LT>
-using memory_tl = tickless_clock<memory<SIZE, BUSWIDTH>>;
-template <unsigned long long SIZE, unsigned BUSWIDTH = LT>
-using memory_tc = ticking_clock<memory<SIZE, BUSWIDTH>>;
-
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT> using memory_tl = tickless_clock<memory<SIZE, BUSWIDTH>>;
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT> using memory_tc = ticking_clock<memory<SIZE, BUSWIDTH>>;
 
 template <unsigned long long SIZE, unsigned BUSWIDTH>
 memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)

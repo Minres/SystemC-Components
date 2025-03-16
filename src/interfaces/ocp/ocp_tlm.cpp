@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
+#include <apb/apb_tlm.h>
 #include <array>
-#include "../../interfaces/apb/apb_tlm.h"
 
 namespace ocp {
 namespace {

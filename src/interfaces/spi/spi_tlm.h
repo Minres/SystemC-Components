@@ -34,21 +34,21 @@ enum class SPI_PKT { DATA };
 struct spi_packet_payload : public tlm::nw::tlm_network_payload<SPI_PKT> {
     spi_packet_payload() = default;
 
-    spi_packet_payload(unsigned target_id):target_id(target_id) {}
+    spi_packet_payload(unsigned target_id)
+    : target_id(target_id) {}
 
     explicit spi_packet_payload(tlm::nw::tlm_base_mm_interface* mm)
     : tlm::nw::tlm_network_payload<SPI_PKT>(mm) {}
 
     explicit spi_packet_payload(tlm::nw::tlm_base_mm_interface* mm, unsigned target_id)
-    : tlm::nw::tlm_network_payload<SPI_PKT>(mm),target_id(target_id) {}
+    : tlm::nw::tlm_network_payload<SPI_PKT>(mm)
+    , target_id(target_id) {}
 
-    unsigned get_target_id() const {
-        return target_id;
-    }
+    unsigned get_target_id() const { return target_id; }
 
 private:
     unsigned target_id{0};
-    sc_core::sc_time  sender_clk_period{sc_core::SC_ZERO_TIME};
+    sc_core::sc_time sender_clk_period{sc_core::SC_ZERO_TIME};
 };
 
 struct spi_packet_types {
@@ -89,18 +89,15 @@ struct spi_channel : public sc_core::sc_module,
 
     spi_channel(sc_core::sc_module_name const& nm, size_t slave_count)
     : sc_core::sc_module(nm)
-    , isck{"isckt", slave_count}{
-        for(auto& is:isck) is(*this);
+    , isck{"isckt", slave_count} {
+        for(auto& is : isck)
+            is(*this);
         tsck(*this);
     }
 
-    spi_pkt_target_socket<>& operator()() {
-        return tsck;
-    }
+    spi_pkt_target_socket<>& operator()() { return tsck; }
 
-    spi_pkt_initiator_socket<>& operator()(size_t idx) {
-        return isck.at(idx);
-    }
+    spi_pkt_initiator_socket<>& operator()(size_t idx) { return isck.at(idx); }
 
     void b_transport(transaction_type& trans, sc_core::sc_time& t) override {
         t += channel_delay;
@@ -109,17 +106,17 @@ struct spi_channel : public sc_core::sc_module,
 
     tlm::tlm_sync_enum nb_transport_fw(transaction_type& trans, phase_type& phase, sc_core::sc_time& t) override {
         SCCTRACE(SCMOD) << "Received non-blocking transaction in fw path with phase " << phase.get_name();
-        if(phase== tlm::nw::REQUEST) {
+        if(phase == tlm::nw::REQUEST) {
             auto idx = trans.get_target_id();
-            if(idx<isck.size()) {
+            if(idx < isck.size()) {
                 phase_type ph = tlm::nw::INDICATION;
                 auto ret = isck.at(idx)->nb_transport_fw(trans, ph, t);
-                if(ph==tlm::nw::RESPONSE)
+                if(ph == tlm::nw::RESPONSE)
                     phase = tlm::nw::CONFIRM;
                 return ret;
             } else {
                 trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
-                phase=tlm::nw::CONFIRM;
+                phase = tlm::nw::CONFIRM;
                 return tlm::TLM_COMPLETED;
             }
         }
@@ -128,7 +125,7 @@ struct spi_channel : public sc_core::sc_module,
 
     tlm::tlm_sync_enum nb_transport_bw(transaction_type& trans, phase_type& phase, sc_core::sc_time& t) override {
         SCCTRACE(SCMOD) << "Received non-blocking transaction in bw path with phase " << phase.get_name();
-        if(phase== tlm::nw::RESPONSE) {
+        if(phase == tlm::nw::RESPONSE) {
             phase_type ph = tlm::nw::CONFIRM;
             return tsck->nb_transport_bw(trans, ph, t);
         }
@@ -136,7 +133,6 @@ struct spi_channel : public sc_core::sc_module,
     }
 
     unsigned int transport_dbg(transaction_type& trans) override { return isck.at(trans.get_target_id())->transport_dbg(trans); }
-
 };
 } // namespace spi
 #endif // _SPI_SPI_TLM_H_

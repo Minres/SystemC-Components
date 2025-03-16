@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include "atp/timing_params.h"
 #include <interfaces/ahb/ahb_tlm.h>
 #include <interfaces/ahb/pe/ahb_initiator.h>
 #include <interfaces/ahb/pe/ahb_target.h>
@@ -25,5 +26,3 @@
 #include <interfaces/apb/pe/apb_target.h>
 #include <interfaces/axi/axi_initiator.h>
 #include <interfaces/axi/axi_target.h>
-#include "atp/timing_params.h"
-

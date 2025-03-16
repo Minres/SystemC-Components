@@ -113,7 +113,7 @@ public:
      * @param hier_name the hierarchical name of the property
      * @param value the value to put
      */
-    void set_value_from_str(const std::string &hier_name, const std::string &value);
+    void set_value_from_str(const std::string& hier_name, const std::string& value);
     /**
      * set a value of an sc_attribute from given configuration. This is being used by the scc::ext_attribute
      * which allows to use config values during construction

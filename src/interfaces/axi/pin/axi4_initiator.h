@@ -20,8 +20,8 @@
 #include <axi/axi_tlm.h>
 #include <axi/fsm/base.h>
 #include <axi/fsm/protocol_fsm.h>
-#include <interfaces/axi/signal_if.h>
 #include <cci_configuration>
+#include <interfaces/axi/signal_if.h>
 #include <scc/fifo_w_cb.h>
 #include <systemc>
 #include <tlm_utils/peq_with_cb_and_phase.h>

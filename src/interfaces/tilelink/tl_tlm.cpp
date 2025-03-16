@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include <interfaces/tilelink/tl_tlm.h>
 #include <array>
+#include <interfaces/tilelink/tl_tlm.h>
 
 namespace tilelink {
 namespace {
