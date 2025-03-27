@@ -29,7 +29,7 @@ endif()
 set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${PROJECT_VERSION}
     FRAMEWORK FALSE
-    PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/scc_bus_interfaces.h
+    PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/scc_interfaces.h
 )
 
 install(TARGETS ${PROJECT_NAME} COMPONENT busses EXPORT ${PROJECT_NAME}-targets
