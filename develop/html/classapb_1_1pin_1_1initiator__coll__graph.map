@@ -1,0 +1,13 @@
+<map id="apb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;" name="apb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="824,129,1060,170"/>
+<area shape="rect" id="node2" title=" " alt="" coords="527,5,677,32"/>
+<area shape="rect" id="node3" href="$classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="510,56,694,112"/>
+<area shape="rect" id="node4" title=" " alt="" coords="289,63,458,105"/>
+<area shape="rect" id="node5" href="$classscc_1_1sc__out__opt.html" title=" " alt="" coords="513,136,691,163"/>
+<area shape="rect" id="node6" href="$classscc_1_1sc__inout__opt_3_01bool_01_4.html" title=" " alt="" coords="301,129,445,170"/>
+<area shape="rect" id="node7" title=" " alt="" coords="5,114,239,185"/>
+<area shape="rect" id="node8" href="$classscc_1_1sc__out__opt.html" title=" " alt="" coords="508,187,696,213"/>
+<area shape="rect" id="node9" href="$classscc_1_1sc__inout__opt.html" title=" " alt="" coords="288,235,459,261"/>
+<area shape="rect" id="node11" href="$classscc_1_1sc__out__opt.html" title=" " alt="" coords="527,238,677,279"/>
+<area shape="rect" id="node10" title=" " alt="" coords="18,213,226,283"/>
+</map>

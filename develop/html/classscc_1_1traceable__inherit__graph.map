@@ -1,0 +1,8 @@
+<map id="scc::traceable" name="scc::traceable">
+<area shape="rect" id="node1" title="interface defining a traceable component" alt="" coords="5,49,117,75"/>
+<area shape="rect" id="node2" href="$classscc_1_1impl_1_1sc__register.html" title="a simple register implementation" alt="" coords="177,9,335,51"/>
+<area shape="rect" id="node4" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="165,78,347,105"/>
+<area shape="rect" id="node3" href="$classscc_1_1sc__register__masked.html" title=" " alt="" coords="395,5,645,47"/>
+<area shape="rect" id="node5" href="$structscc_1_1ordered__semaphore__t.html" title=" " alt="" coords="429,71,611,112"/>
+<area shape="rect" id="node6" href="$structscc_1_1ordered__semaphore__t.html" title=" " alt="" coords="429,136,611,177"/>
+</map>

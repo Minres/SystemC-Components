@@ -1,0 +1,11 @@
+<map id="axi::pin::axi4_target&lt; CFG &gt;" name="axi::pin::axi4_target&lt; CFG &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="227,221,379,262"/>
+<area shape="rect" id="node2" title=" " alt="" coords="17,5,167,32"/>
+<area shape="rect" id="node3" href="$structaxi_1_1aw__axi.html" title=" " alt="" coords="5,57,179,98"/>
+<area shape="rect" id="node4" href="$structaxi_1_1wdata__axi.html" title=" " alt="" coords="11,122,173,163"/>
+<area shape="rect" id="node5" href="$structaxi_1_1b__axi.html" title=" " alt="" coords="11,187,173,229"/>
+<area shape="rect" id="node6" href="$structaxi_1_1ar__axi.html" title=" " alt="" coords="9,253,175,294"/>
+<area shape="rect" id="node7" href="$structaxi_1_1rresp__axi.html" title=" " alt="" coords="14,318,170,359"/>
+<area shape="rect" id="node8" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="35,384,149,411"/>
+<area shape="rect" id="node9" title=" " alt="" coords="11,435,173,491"/>
+</map>

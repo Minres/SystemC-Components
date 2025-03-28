@@ -1,0 +1,11 @@
+<map id="axi::lwtr::axi_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;" name="axi::lwtr::axi_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="587,124,761,180"/>
+<area shape="rect" id="node2" title=" " alt="" coords="317,37,466,64"/>
+<area shape="rect" id="node3" href="$classaxi_1_1lwtr_1_1axi__lwtr.html" title=" " alt="" coords="319,88,464,144"/>
+<area shape="rect" id="node4" title=" " alt="" coords="28,5,189,61"/>
+<area shape="rect" id="node5" title=" " alt="" coords="27,85,190,141"/>
+<area shape="rect" id="node6" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="261,175,521,246"/>
+<area shape="rect" id="node7" title=" " alt="" coords="5,165,212,265"/>
+<area shape="rect" id="node8" href="$structaxi_1_1axi__target__socket.html" title=" " alt="" coords="292,291,491,362"/>
+<area shape="rect" id="node9" title=" " alt="" coords="5,289,212,389"/>
+</map>

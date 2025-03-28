@@ -1,0 +1,4 @@
+<map id="scc::tlm_target&lt; BUSWIDTH, ADDR_UNIT_WIDTH &gt;" name="scc::tlm_target&lt; BUSWIDTH, ADDR_UNIT_WIDTH &gt;">
+<area shape="rect" id="node1" title="a simple access&#45;width based bus interface (no DMI support)" alt="" coords="5,5,216,47"/>
+<area shape="rect" id="node2" href="$classscc_1_1tlm__target__bfs.html" title="Peripheral base class using scc::tlm_target." alt="" coords="35,95,187,136"/>
+</map>
