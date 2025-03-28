@@ -87,6 +87,13 @@ template <typename T> struct sc_variable : public sc_variable_b {
      */
     const T& operator*() { return value; }
     /**
+     * @fn const T& operator *()
+     * @brief get a reference to the wrapped value
+     *
+     * @return
+     */
+    const T* operator->() { return &value; }
+    /**
      * @fn  sc_variable(const std::string&, const T&)
      * @brief constructor taking a name and a reference of the variable to be wrapped
      *

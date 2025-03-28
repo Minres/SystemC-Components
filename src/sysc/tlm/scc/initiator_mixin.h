@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef _TLM_SCC_INITIATOR_MIXIN_H__
-#define _TLM_SCC_INITIATOR_MIXIN_H__
+#ifndef _TLM_SCC_INITIATOR_MIXIN_H_
+#define _TLM_SCC_INITIATOR_MIXIN_H_
 
 #include "scc/utilities.h"
 #include <functional>

@@ -181,12 +181,6 @@ inline sc_core::sc_time operator"" _fs(long double val) { return sc_core::sc_tim
  * @return
  */
 inline sc_core::sc_time operator"" _fs(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_FS); }
-//! UDL for kilobyte
-inline constexpr uint64_t operator"" _kB(unsigned long long val) { return val * 1 << 10; }
-//! UDL for megabyte
-inline constexpr uint64_t operator"" _MB(unsigned long long val) { return val * 1 << 20; }
-//! UDL for gigabyte
-inline constexpr uint64_t operator"" _GB(unsigned long long val) { return val * 1 << 30; }
 
 namespace scc {
 

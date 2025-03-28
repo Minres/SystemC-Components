@@ -173,6 +173,7 @@ public:
         }                                                                                                                                  \
         operator T&() { return backing.val; }                                                                                              \
         operator T() const { return backing.val; }                                                                                         \
+        T operator()() const { return backing.val; }                                                                                       \
         using StorageType = T;
 
 #define BF_FIELD(memberName, offset, bits) util::BitFieldMember<StorageType, offset, bits> memberName;

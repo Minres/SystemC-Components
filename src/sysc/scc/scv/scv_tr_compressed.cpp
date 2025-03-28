@@ -97,7 +97,7 @@ namespace scv_tr {
 #define scv_tr_TEXT_LLX "%llx"
 #endif
 
-//#define scv_tr_TRACE
+// #define scv_tr_TRACE
 
 // ----------------------------------------------------------------------------
 
@@ -156,7 +156,7 @@ static void scv_tr_stream_cbf(const scv_tr_stream& s, scv_tr_stream::callback_re
 
 // ----------------------------------------------------------------------------
 
-//#define TRACE_DO_ATTRIBUTES
+// #define TRACE_DO_ATTRIBUTES
 
 static void do_attributes(bool declare_attributes, // If false then print the values
                           bool undefined_values, bool is_record_attribute, std::string& prefix_name, const std::string& exts_kind,

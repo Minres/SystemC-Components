@@ -65,6 +65,22 @@ CONSTEXPR typename std::enable_if<std::is_signed<T>::value, T>::type bit_sub(T v
     auto amount = (field & ~(~T(1) << (width - 1) << 1)) - (field & (T(1) << (width - 1)) << 1);
     return amount;
 }
+
+template <unsigned offset, typename R, typename T> R _bit_comb(T v) { return v << offset; }
+template <unsigned offset, typename R, typename T, typename... Args> R _bit_comb(T first, Args... args) {
+    return (first << offset) + _bit_comb<offset + 8, R>(args...);
+}
+/**
+ * combines the integer arguments into a large integer in an platform independent way, the first argument is the least significant byte
+ * @tparam R the return type of the function
+ * @tparam T the type of the first parameter of the function
+ * @tparam Args the remainign parameter pack
+ * @param v first first argument of type T
+ * @param args the remaining parameters
+ * @return the resulting integer value
+ */
+template <typename R, typename T, typename... Args> R bit_comb(T first, Args... args) { return first + _bit_comb<8, R>(args...); }
+
 /**
  * @brief sign-extend a given value
  *
@@ -101,6 +117,21 @@ template <unsigned int bit, unsigned int width, typename T> inline constexpr typ
     return ret;
 #endif
 }
+
+//! UDL for kilobyte
+inline constexpr uint64_t operator"" _kB(unsigned long long val) { return val * 1 << 10; }
+//! UDL for megabyte
+inline constexpr uint64_t operator"" _MB(unsigned long long val) { return val * 1 << 20; }
+//! UDL for gigabyte
+inline constexpr uint64_t operator"" _GB(unsigned long long val) { return val * 1 << 30; }
+
+inline constexpr uint64_t operator"" _KiB(unsigned long long val) { return val * 1 << 10; }
+//! UDL for megabyte
+inline constexpr uint64_t operator"" _MiB(unsigned long long val) { return val * 1 << 20; }
+//! UDL for gigabyte
+inline constexpr uint64_t operator"" _GiB(unsigned long long val) { return val * 1 << 30; }
+//! UDL for gigabyte
+inline constexpr uint64_t operator"" _TiB(unsigned long long val) { return val * 1 << 40; }
 
 //! @brief SCC common utilities
 namespace util {

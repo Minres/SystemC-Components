@@ -20,7 +20,6 @@
 #include <scc/report.h>
 #include <scc/scv/scv_tr_db.h>
 #include <scc/trace.h>
-#include <scc/value_registry.h>
 #include <scv-tr.h>
 
 using namespace sc_core;
@@ -327,7 +326,6 @@ int sc_main(int argc, char* argv[]) {
     sc_signal<bool> data_rdy;
     sc_signal<sc_uint<8>> bus_data;
 
-    scc::value_registry registry;
     // create modules/channels
     test t("t");
     rw_pipelined_transactor tr("tr");

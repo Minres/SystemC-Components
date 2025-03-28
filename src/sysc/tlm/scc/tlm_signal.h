@@ -93,7 +93,7 @@ template <typename SIG, typename TYPES, int N>
 tlm_sync_enum tlm_signal<SIG, TYPES, N>::nb_transport_fw(payload_type& gp, phase_type& phase, sc_core::sc_time& delay) {
     que.notify(gp.get_value(), delay);
     auto& p = out.get_base_port();
-    for(size_t i = 0; i < p.size(); ++i) {
+    for(auto i = 0; i < p.size(); ++i) {
         p.get_interface(i)->nb_transport_fw(gp, phase, delay);
     }
     return TLM_COMPLETED;
@@ -102,7 +102,7 @@ tlm_sync_enum tlm_signal<SIG, TYPES, N>::nb_transport_fw(payload_type& gp, phase
 template <typename SIG, typename TYPES, int N>
 tlm_sync_enum tlm_signal<SIG, TYPES, N>::nb_transport_bw(payload_type& gp, phase_type& phase, sc_core::sc_time& delay) {
     auto& p = in.get_base_port();
-    for(size_t i = 0; i < p.size(); ++i) {
+    for(auto i = 0; i < p.size(); ++i) {
         p.get_interface(i)->nb_transport_bw(gp, phase, delay);
     }
     return TLM_COMPLETED;

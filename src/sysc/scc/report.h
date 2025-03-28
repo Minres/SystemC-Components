@@ -430,7 +430,7 @@ protected:
  * logging macros
  */
 //! macro for log output
-#define SCCLOG(lvl, ...) ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, lvl / 10).type(__VA_ARGS__).get()
+#define SCCLOG(lvl, ...) ::scc::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, lvl).type(__VA_ARGS__).get()
 //! macro for debug trace level output
 #define SCCTRACEALL(...)                                                                                                                   \
     if(::scc::get_log_verbosity(__VA_ARGS__) >= sc_core::SC_DEBUG)                                                                         \

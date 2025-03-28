@@ -17,8 +17,8 @@
 #pragma once
 
 // clang-format off
+#include "scc_interfaces.h"
 #include "scc_util.h"
 #include "scc_sysc.h"
 #include "scc_components.h"
-#include "scc_bus_interfaces.h"
 // clang-format on

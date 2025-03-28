@@ -6,9 +6,9 @@
  */
 
 #include <array>
-#include <axi/axi_initiator.h>
-#include <axi/axi_target.h>
 #include <axi/scv/recorder_modules.h>
+#include <interfaces/axi/axi_initiator.h>
+#include <interfaces/axi/axi_target.h>
 #include <scc.h>
 #include <scc/configurable_tracer.h>
 #include <scc/hierarchy_dumper.h>
@@ -33,7 +33,7 @@ public:
     axi::axi_target<SOCKET_WIDTH> tgt{"tgt"};
 
 private:
-    tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<>> top_isck{"top_isck"};
+    tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<scc::LT>> top_isck{"top_isck"};
     scc::memory<1_GB, 0> mem{"mem"};
 
     unsigned id{0};
@@ -47,7 +47,7 @@ public:
     : sc_core::sc_module(nm) {
         SC_THREAD(run);
         intor.clk_i(clk);
-        top_isck(intor.b_tsck);
+        top_isck(intor.tsck);
         tgt.clk_i(clk);
         intor.isck(intor_rec.tsckt);
         intor_rec.isckt(tgt.tsck);

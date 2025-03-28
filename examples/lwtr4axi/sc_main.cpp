@@ -7,10 +7,10 @@
 
 #include "ace_axi_adapt.h"
 #include <array>
-#include <axi/axi_initiator.h>
-#include <axi/axi_target.h>
 #include <axi/lwtr/ace_lwtr.h>
 #include <axi/lwtr/axi_lwtr.h>
+#include <interfaces/axi/axi_initiator.h>
+#include <interfaces/axi/axi_target.h>
 #include <scc.h>
 #include <scc/configurable_tracer.h>
 #include <scc/hierarchy_dumper.h>

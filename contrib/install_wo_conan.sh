@@ -89,7 +89,7 @@ function build_lz4 {
     if [ ! -d lz4 ]; then
         if [ ! -f lz4_1.9.4.tar.gz ]; then
             git clone --depth 1 --branch v1.9.4 -c advice.detachedHead=false https://github.com/lz4/lz4.git
-            tar czf lz4_1.9.4.tar.gz yaml-cpp --exclude=.git
+            tar czf lz4_1.9.4.tar.gz lz4 --exclude=.git
         else
             tar xzf lz4_1.9.4.tar.gz
         fi
@@ -145,7 +145,7 @@ function build_scc {
         tar czf scc.tar.gz --exclude=.git scc 
     fi
     cmake -S scc -B build/scc -Wno-dev ${CMAKE_COMMON_SETTINGS} -DCMAKE_INSTALL_PREFIX=${SCC_INSTALL} -DENABLE_CONAN=OFF \
-        -DBoost_NO_SYSTEM_PATHS=TRUE -DBOOST_ROOT=${SCC_INSTALL} -DBoost_NO_WARN_NEW_VERSIONS=ON -DSCC_LIB_ONLY=ON || exit 1
+        -DBoost_NO_SYSTEM_PATHS=TRUE -DBOOST_ROOT=${SCC_INSTALL} -DBoost_NO_WARN_NEW_VERSIONS=ON -DBUILD_SCC_LIB_ONLY=ON || exit 1
     cmake --build build/scc -j 10 --target install || exit 2
 }
 

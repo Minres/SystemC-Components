@@ -212,6 +212,7 @@ struct json_config_reader : public config_reader {
     configurer::broker_t& broker;
     Document document;
     bool valid{false};
+    bool empty{false};
 
     json_config_reader(configurer::broker_t& broker)
     : broker(broker) {}
@@ -220,6 +221,7 @@ struct json_config_reader : public config_reader {
         IStreamWrapper stream(is);
         document.ParseStream(stream);
         valid = !document.HasParseError();
+        empty = document.IsNull();
     }
     std::string get_error_msg() {
         std::ostringstream os;
@@ -311,12 +313,14 @@ struct json_config_reader : public config_reader {
 struct yaml_config_dumper {
     configurer::broker_t const& broker;
     bool with_description{false};
+    bool complete{true};
     std::vector<std::string> const& stop_list;
     std::unordered_map<std::string, std::vector<cci::cci_param_untyped_handle>> lut;
     std::vector<cci::cci_param_untyped_handle> tl_lut;
-    yaml_config_dumper(configurer::broker_t const& broker, bool with_description, std::vector<std::string> const& stop_list)
+    yaml_config_dumper(configurer::broker_t const& broker, bool with_description, bool complete, std::vector<std::string> const& stop_list)
     : broker(broker)
     , with_description(with_description)
+    , complete(complete)
     , stop_list(stop_list) {
         for(auto& h : broker.get_param_handles()) {
             auto value = h.get_cci_value();
@@ -349,7 +353,7 @@ struct yaml_config_dumper {
         if(it != lut.end())
             log_lvl_set |= copy2yaml(it->second, this_node);
         auto mod = dynamic_cast<sc_core::sc_module*>(obj);
-        if(!log_lvl_set && mod) {
+        if(!log_lvl_set && mod && complete) {
             auto val = broker.get_preset_cci_value(fmt::format("{}.{}", obj->name(), SCC_LOG_LEVEL_PARAM_NAME));
             auto global_verb = static_cast<int>(get_logging_level());
             if(basename.substr(0, 11) != "scc_tracer")
@@ -404,6 +408,7 @@ struct yaml_config_reader : public config_reader {
     configurer::broker_t& broker;
     YAML::Node document;
     bool valid{false};
+    bool empty{true};
 
     yaml_config_reader(configurer::broker_t& broker)
     : broker(broker) {}
@@ -411,7 +416,8 @@ struct yaml_config_reader : public config_reader {
     void parse(std::istream& is) {
         std::string buf((std::istreambuf_iterator<char>(is)), std::istreambuf_iterator<char>());
         document = YAML::Load(buf);
-        valid = document.IsDefined() && document.IsMap();
+        valid = document.IsDefined() && (document.IsMap() || document.IsNull());
+        empty = document.IsNull();
     }
 
     std::string get_error_msg() { return "YAML file does not start with a map"; }
@@ -666,7 +672,7 @@ void configurer::read_input_file(const std::string& filename) {
             root->parse(is);
             if(!root->valid) {
                 SCCERR() << "Could not parse input file " << filename << ", " << root->get_error_msg();
-            } else {
+            } else if(!root->empty) {
                 root->configure_cci();
             }
         } catch(std::runtime_error& e) {
@@ -677,11 +683,11 @@ void configurer::read_input_file(const std::string& filename) {
     }
 }
 
-void configurer::dump_configuration(std::ostream& os, bool as_yaml, bool with_description, sc_core::sc_object* obj) {
+void configurer::dump_configuration(std::ostream& os, bool as_yaml, bool with_description, bool complete, sc_core::sc_object* obj) {
 #ifdef HAS_YAMPCPP
     if(as_yaml) {
         YAML::Node root; // starts out as null
-        yaml_config_dumper dumper(cci_broker, with_description, stop_list);
+        yaml_config_dumper dumper(cci_broker, with_description, complete, stop_list);
         if(obj)
             for(auto* o : obj->get_child_objects()) {
                 dumper.dump_config(o, root);
@@ -736,6 +742,49 @@ void configurer::set_value(const std::string& hier_name, cci::cci_value value) {
     cci_broker.set_preset_cci_value(hier_name, value);
 }
 
+void configurer::set_value_from_str(const std::string& hier_name, const std::string& value) {
+    try {
+        auto i = std::stoi(value);
+        set_value(hier_name, i);
+        return;
+    } catch(...) {
+    }
+    try {
+        auto l = std::stol(value);
+        set_value(hier_name, l);
+        return;
+    } catch(...) {
+    }
+    try {
+        auto ll = std::stoll(value);
+        set_value(hier_name, ll);
+        return;
+    } catch(...) {
+    }
+    try {
+        auto f = std::stof(value);
+        set_value(hier_name, f);
+        return;
+    } catch(...) {
+    }
+    try {
+        auto d = std::stod(value);
+        set_value(hier_name, d);
+        return;
+    } catch(...) {
+    }
+    auto lower_value = util::str_tolower(value);
+    if(lower_value == "true") {
+        set_value(hier_name, true);
+        return;
+    }
+    if(lower_value == "false") {
+        set_value(hier_name, false);
+        return;
+    }
+    set_value(hier_name, value);
+}
+
 void configurer::config_check() {
     try {
         cci_broker.ignore_unconsumed_preset_values(&cci_name_ignore);
@@ -768,7 +817,7 @@ void configurer::start_of_simulation() {
         std::ofstream of{dump_file_name};
         if(of.is_open()) {
             mirror_sc_attributes(cci_broker, cci2sc_attr, cci_originator, nullptr, true);
-            dump_configuration(of, !as_json, with_description);
+            dump_configuration(of, !as_json, with_description, complete);
         }
     }
 }

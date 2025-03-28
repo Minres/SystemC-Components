@@ -22,6 +22,7 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif
 
+#include "clock_if_mixins.h"
 #include <numeric>
 #include <scc/mt19937_rng.h>
 #include <scc/report.h>
@@ -48,8 +49,6 @@ template <unsigned long long SIZE, unsigned BUSWIDTH = LT> class memory : public
 public:
     //! the target socket to connect to TLM
     tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
-    //! the optional clock pin to calculate clock based delays
-    scc::sc_in_opt<sc_core::sc_time> clk_i{"clk_i"};
     /**
      * constructor with explicit instance name
      *
@@ -99,6 +98,9 @@ protected:
     //! the real memory structure
     util::sparse_array<uint8_t, SIZE> mem;
 
+    void set_clock_period(sc_core::sc_time period) { clk_period = period; }
+    sc_core::sc_time clk_period;
+
 public:
     //!! handle the memory operation independent on interface function used
     int handle_operation(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay);
@@ -107,6 +109,9 @@ public:
     std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, sc_core::sc_time& delay)> operation_cb;
     std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> dmi_cb;
 };
+
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT> using memory_tl = tickless_clock<memory<SIZE, BUSWIDTH>>;
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT> using memory_tc = ticking_clock<memory<SIZE, BUSWIDTH>>;
 
 template <unsigned long long SIZE, unsigned BUSWIDTH>
 memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
@@ -156,7 +161,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
     tlm::tlm_command cmd = trans.get_command();
     SCCTRACE(SCMOD) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr;
     if(cmd == tlm::TLM_READ_COMMAND) {
-        delay += clk_i.get_interface() ? clk_i->read() * rd_resp_clk_delay : rd_resp_delay;
+        delay += clk_period.value() ? clk_period * rd_resp_clk_delay : rd_resp_delay;
         if(mem.is_allocated(adr)) {
             const auto& p = mem(adr / mem.page_size);
             auto offs = adr & mem.page_addr_mask;
@@ -174,7 +179,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
                 ptr[i] = scc::MT19937::uniform() % 256;
         }
     } else if(cmd == tlm::TLM_WRITE_COMMAND) {
-        delay += clk_i.get_interface() ? clk_i->read() * wr_resp_clk_delay : wr_resp_delay;
+        delay += clk_period.value() ? clk_period * wr_resp_clk_delay : wr_resp_delay;
         auto& p = mem(adr / mem.page_size);
         auto offs = adr & mem.page_addr_mask;
         if((offs + len) > mem.page_size) {
@@ -199,8 +204,8 @@ inline bool memory<SIZE, BUSWIDTH>::handle_dmi(tlm::tlm_generic_payload& gp, tlm
     dmi_data.set_end_address(dmi_data.get_start_address() + mem.page_size - 1);
     dmi_data.set_dmi_ptr(p.data());
     dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);
-    dmi_data.set_read_latency(clk_i.get_interface() ? clk_i->read() * rd_resp_clk_delay : rd_resp_delay);
-    dmi_data.set_write_latency(clk_i.get_interface() ? clk_i->read() * wr_resp_clk_delay : wr_resp_delay);
+    dmi_data.set_read_latency(clk_period.value() ? clk_period * rd_resp_clk_delay : rd_resp_delay);
+    dmi_data.set_write_latency(clk_period.value() ? clk_period * wr_resp_clk_delay : wr_resp_delay);
     return true;
 }
 

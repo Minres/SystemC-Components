@@ -1,7 +1,7 @@
-#include <ahb/pin/initiator.h>
-#include <ahb/pin/target.h>
 #include <cci_configuration>
 #include <fstream>
+#include <interfaces/ahb/pin/initiator.h>
+#include <interfaces/ahb/pin/target.h>
 #include <scc/configurable_tracer.h>
 #include <scc/configurer.h>
 #include <scc/report.h>

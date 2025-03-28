@@ -11,7 +11,7 @@ option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentat
 option(FULL_TRACE_TYPE_LIST "Test for extended set of templated datatypes" OFF)
 #Note: this needs to match the SystemC kernel build options
 option(SC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase callbacks" OFF)
-option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with pahse callbacks for tracing. It needs to match the SystemC build configuration" OFF)
+option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with phase callbacks for tracing. It needs to match the SystemC build configuration" OFF)
 set(SCC_ARCHIVE_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
 set(SCC_LIBRARY_DIR_MODIFIER "" CACHE STRING "additional directory levels to store libraries") 
 
@@ -67,8 +67,11 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
     option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" OFF)
     option(INSTALL_DEPENDENCIES "Should dependencies be installed when installing SCC" OFF)
+	set(CLANG_FORMAT_EXCLUDE_PATTERNS "third_party/")
+	find_package(ClangFormat)
 else()
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" ON)
+	set(CLANG_FORMAT_EXCLUDE_PATTERNS ${CLANG_FORMAT_EXCLUDE_PATTERNS} "/third_party/" PARENT_SCOPE)
 endif()
 
 if(BUILD_SCC_DOCUMENTATION)
@@ -137,9 +140,6 @@ if(MSVC)
 endif()
 include(SystemCPackage)
 	
-set(CLANG_FORMAT_EXCLUDE_PATTERNS "third_party/")
-find_package(ClangFormat)
-
 include(CheckSymbolExists)
 # Check for function getenv()
 check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)
@@ -154,11 +154,11 @@ endif()
 ###############################################################################
 add_subdirectory(src/common)
 if(SystemC_FOUND)
-    add_subdirectory(src/bus_interfaces)
+    add_subdirectory(src/interfaces)
     add_subdirectory(src/components)
     add_subdirectory(src/sysc)
     add_subdirectory(third_party)
-    if(NOT SCC_LIB_ONLY)
+    if(NOT BUILD_SCC_LIB_ONLY)
         if (NOT (DEFINED CMAKE_CXX_CLANG_TIDY OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
             add_subdirectory(examples)
         endif()
@@ -181,7 +181,7 @@ if(SystemC_FOUND)
         target_include_directories(scc INTERFACE ${Boost_INCLUDE_DIRS})
         target_link_libraries(scc INTERFACE ${Boost_datetime_LIBRARY})
     endif()
-    target_link_libraries(scc INTERFACE scc-util scc-sysc components busses scv-tr)
+    target_link_libraries(scc INTERFACE scc-util scc-sysc components interfaces scv-tr)
     target_link_libraries(scc INTERFACE ${FMT_TARGET} spdlog::spdlog)
     
     set_target_properties(scc PROPERTIES
@@ -192,7 +192,7 @@ if(SystemC_FOUND)
 		#set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")
 		add_library(scc_shared SHARED $<TARGET_OBJECTS:scc-util>
 	                                  $<TARGET_OBJECTS:scc-sysc>
-	                                  $<TARGET_OBJECTS:busses>
+	                                  $<TARGET_OBJECTS:interfaces>
 	                                  $<TARGET_OBJECTS:scv-tr>
 	                                  )
 	    set_target_properties(scc_shared PROPERTIES CXX_VISIBILITY_PRESET hidden)

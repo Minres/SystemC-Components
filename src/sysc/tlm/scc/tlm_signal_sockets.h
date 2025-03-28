@@ -54,6 +54,12 @@ struct tlm_signal_bw_transport_if : public virtual sc_core::sc_interface {
     virtual ::tlm::tlm_sync_enum nb_transport_bw(typename TYPES::tlm_payload_type&, ::tlm::tlm_phase&, sc_core::sc_time&) = 0;
 };
 
+#if SC_VERSION_MAJOR < 3
+using type_index = sc_core::sc_type_index;
+#else
+using type_index = std::type_index;
+#endif
+
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>, int N = 1,
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND>
 struct tlm_signal_initiator_socket
@@ -71,7 +77,7 @@ struct tlm_signal_initiator_socket
 
     virtual const char* kind() const { return "tlm_signal_initiator_socket"; }
 
-    virtual sc_core::sc_type_index get_protocol_types() const { return typeid(TYPES); }
+    virtual type_index get_protocol_types() const { return typeid(TYPES); }
 };
 
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>, int N = 1>
@@ -94,7 +100,7 @@ struct tlm_signal_target_socket
 
     virtual const char* kind() const { return "tlm_signal_target_socket"; }
 
-    virtual sc_core::sc_type_index get_protocol_types() const { return typeid(TYPES); }
+    virtual type_index get_protocol_types() const { return typeid(TYPES); }
 };
 
 template <typename SIG = bool, typename TYPES = tlm_signal_baseprotocol_types<SIG>, int N = 1>

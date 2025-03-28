@@ -35,7 +35,7 @@
 #define variant_HAVE_TWEAK_HEADER 1
 #else
 #define variant_HAVE_TWEAK_HEADER 0
-//# pragma message("variant.hpp: Note: Tweak header not supported.")
+// # pragma message("variant.hpp: Note: Tweak header not supported.")
 #endif
 
 // variant selection and configuration:

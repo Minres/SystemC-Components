@@ -14,7 +14,9 @@ target_include_directories(${PROJECT_NAME} INTERFACE
 if(CMAKE_CXX_CPPCHECK)
     target_compile_definitions(${PROJECT_NAME} INTERFACE RAPIDJSON_ENDIAN=RAPIDJSON_LITTLEENDIAN)
 endif()
-	
+
+add_library(RapidJSON::RapidJSON ALIAS ${PROJECT_NAME})
+
 set_target_properties(RapidJSON PROPERTIES
     VERSION ${PROJECT_VERSION}
     FRAMEWORK FALSE

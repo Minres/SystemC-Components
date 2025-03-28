@@ -36,7 +36,7 @@
 #define nssv_HAVE_TWEAK_HEADER 1
 #else
 #define nssv_HAVE_TWEAK_HEADER 0
-//# pragma message("string_view.hpp: Note: Tweak header not supported.")
+// # pragma message("string_view.hpp: Note: Tweak header not supported.")
 #endif
 
 // string_view selection and configuration:
@@ -389,13 +389,13 @@ using std::operator<<;
 #define nssv_noexcept /*noexcept*/
 #endif
 
-//#if nssv_HAVE_REF_QUALIFIER
-//# define nssv_ref_qual  &
-//# define nssv_refref_qual  &&
-//#else
-//# define nssv_ref_qual  /*&*/
-//# define nssv_refref_qual  /*&&*/
-//#endif
+// #if nssv_HAVE_REF_QUALIFIER
+// # define nssv_ref_qual  &
+// # define nssv_refref_qual  &&
+// #else
+// # define nssv_ref_qual  /*&*/
+// # define nssv_refref_qual  /*&&*/
+// #endif
 
 #if nssv_HAVE_NULLPTR
 #define nssv_nullptr nullptr

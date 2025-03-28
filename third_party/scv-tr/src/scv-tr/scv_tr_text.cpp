@@ -321,7 +321,7 @@ static void do_attributes(bool declare_attributes, // If false then print the va
         }
     } break;
     default: {
-        std::string s = fmt::format(FMT_STRING("Unsupported attribute type = {0}."), my_exts_p->get_type());
+        std::string s = fmt::format(FMT_STRING("Unsupported attribute type = {0}."), static_cast<int>(my_exts_p->get_type()));
         _scv_message::message(_scv_message::TRANSACTION_RECORDING_INTERNAL, s.c_str());
     }
     }

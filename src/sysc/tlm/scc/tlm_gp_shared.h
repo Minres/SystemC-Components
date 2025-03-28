@@ -24,37 +24,37 @@ namespace tlm {
 //! @brief SCC TLM utilities
 namespace scc {
 
-class tlm_gp_shared_ptr {
-    tlm::tlm_generic_payload* ptr{nullptr};
+template <typename T> class tlm_payload_shared_ptr {
+    T* ptr{nullptr};
 
 public:
     /// @brief Default constructor, creates a unique_ptr that owns nothing.
-    tlm_gp_shared_ptr() noexcept = default;
+    tlm_payload_shared_ptr() noexcept = default;
 
     /// @brief Takes ownership of the pointer.
-    inline tlm_gp_shared_ptr(tlm::tlm_generic_payload* p) noexcept
+    inline tlm_payload_shared_ptr(T* p) noexcept
     : ptr(p) {
         if(ptr && ptr->has_mm())
             ptr->acquire();
     }
     /// @brief Copy constructor.
-    inline tlm_gp_shared_ptr(tlm_gp_shared_ptr const& p) noexcept
+    inline tlm_payload_shared_ptr(tlm_payload_shared_ptr const& p) noexcept
     : ptr(p.ptr) {
         if(ptr && ptr->has_mm())
             ptr->acquire();
     }
     /// @brief Move constructor.´
-    inline tlm_gp_shared_ptr(tlm_gp_shared_ptr&& p) noexcept
+    inline tlm_payload_shared_ptr(tlm_payload_shared_ptr&& p) noexcept
     : ptr(std::move(p.ptr)) {
         p.ptr = nullptr;
     }
     /// @brief destructor
-    ~tlm_gp_shared_ptr() {
+    ~tlm_payload_shared_ptr() {
         if(ptr && ptr->has_mm())
             ptr->release();
     }
     /// @brief Copy assignment operator.
-    tlm_gp_shared_ptr& operator=(tlm_gp_shared_ptr const& p) noexcept {
+    tlm_payload_shared_ptr& operator=(tlm_payload_shared_ptr const& p) noexcept {
         if(ptr && ptr->has_mm())
             ptr->release();
         ptr = p.ptr;
@@ -63,7 +63,7 @@ public:
         return *this;
     }
     /// @brief Move assignment operator.
-    tlm_gp_shared_ptr& operator=(tlm_gp_shared_ptr&& p) noexcept {
+    tlm_payload_shared_ptr& operator=(tlm_payload_shared_ptr&& p) noexcept {
         if(ptr && ptr->has_mm())
             ptr->release();
         ptr = p.ptr;
@@ -72,7 +72,7 @@ public:
     }
 
     /// @brief raw pointer assignment operator.
-    tlm_gp_shared_ptr& operator=(tlm::tlm_generic_payload* p) noexcept {
+    tlm_payload_shared_ptr& operator=(T* p) noexcept {
         if(ptr && ptr->has_mm())
             ptr->release();
         ptr = p;
@@ -82,25 +82,33 @@ public:
     }
 
     /// Dereference the stored pointer.
-    inline tlm::tlm_generic_payload& operator*() const noexcept { return *ptr; }
+    inline T& operator*() const noexcept { return *ptr; }
 
     /// Return the stored pointer.
-    inline tlm::tlm_generic_payload* operator->() const noexcept { return ptr; }
+    inline T* operator->() const noexcept { return ptr; }
 
     /// Return the stored pointer.
-    inline tlm::tlm_generic_payload* get() const noexcept { return ptr; }
+    inline T* get() const noexcept { return ptr; }
 
     inline operator bool() const noexcept { return ptr != nullptr; }
 };
-inline std::ostream& operator<<(std::ostream& os, tlm_gp_shared_ptr const& p) {
+
+template <typename T> inline std::ostream& operator<<(std::ostream& os, tlm_payload_shared_ptr<T> const& p) {
     os << p.get();
     return os;
 }
-inline bool operator==(tlm_gp_shared_ptr const& x, tlm_gp_shared_ptr const& y) noexcept { return x.get() == y.get(); }
 
-inline bool operator==(tlm_gp_shared_ptr const& x, tlm::tlm_generic_payload* y) noexcept { return x.get() == y; }
+template <typename T> inline bool operator==(tlm_payload_shared_ptr<T> const& x, tlm_payload_shared_ptr<T> const& y) noexcept {
+    return x.get() == y.get();
+}
 
-inline bool operator!=(tlm_gp_shared_ptr const& x, tlm_gp_shared_ptr const& y) noexcept { return x.get() != y.get(); }
+template <typename T> inline bool operator==(tlm_payload_shared_ptr<T> const& x, T* y) noexcept { return x.get() == y; }
+
+template <typename T> inline bool operator!=(tlm_payload_shared_ptr<T> const& x, tlm_payload_shared_ptr<T> const& y) noexcept {
+    return x.get() != y.get();
+}
+
+using tlm_gp_shared_ptr = tlm_payload_shared_ptr<tlm::tlm_generic_payload>;
 } // namespace scc
 } // namespace tlm
 #endif /* _SYSC_TLM_TLM_GP_SHARED_H_ */

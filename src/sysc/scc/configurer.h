@@ -77,7 +77,7 @@ public:
      * @param os the output stream, std::cout by default
      * @param obj if not null specifies the root object of the dump
      */
-    void dump_configuration(std::ostream& os = std::cout, bool as_yaml = true, bool with_description = false,
+    void dump_configuration(std::ostream& os = std::cout, bool as_yaml = true, bool with_description = false, bool complete = true,
                             sc_core::sc_object* obj = nullptr);
     /**
      * schedule the dump the parameters of a design hierarchy to a file
@@ -85,14 +85,15 @@ public:
      *
      * @param file_name the output stream, std::cout by default
      */
-    void dump_configuration(std::string const& file_name, bool with_description = false,
+    void dump_configuration(std::string const& file_name, bool with_description = false, bool complete = true,
                             std::vector<std::string> stop_list = std::vector<std::string>{}) {
         dump_file_name = file_name;
         this->with_description = with_description;
         this->stop_list = stop_list;
+        this->complete = complete;
     }
     /**
-     * set a value of some property (sc_attribute or cci_param) from programmatically
+     * set a value of some property (sc_attribute or cci_param) directly
      *
      * In case the configurer is being used without CCI the function can only be called after
      * the simulation objects are instantiated since the sc_attributes have to exist.
@@ -101,6 +102,18 @@ public:
      * @param value the value to put
      */
     template <typename T> void set_value(std::string const& hier_name, T value) { set_value(hier_name, cci::cci_value(value)); }
+    /**
+     * set a value of some property (sc_attribute or cci_param) directly
+     *
+     * this version automatically converts the string into the needed target data type
+     *
+     * In case the configurer is being used without CCI the function can only be called after
+     * the simulation objects are instantiated since the sc_attributes have to exist.
+     *
+     * @param hier_name the hierarchical name of the property
+     * @param value the value to put
+     */
+    void set_value_from_str(const std::string& hier_name, const std::string& value);
     /**
      * set a value of an sc_attribute from given configuration. This is being used by the scc::ext_attribute
      * which allows to use config values during construction
@@ -125,6 +138,7 @@ protected:
     unsigned const config_phases;
     std::string dump_file_name{""};
     bool with_description{false};
+    bool complete{true};
     std::vector<std::string> stop_list{};
     configurer(std::string const& filename, unsigned sc_attr_config_phases, sc_core::sc_module_name nm);
     void config_check();

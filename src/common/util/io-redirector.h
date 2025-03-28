@@ -20,6 +20,7 @@
 #include <fcntl.h>
 #include <mutex>
 #include <stdio.h>
+#include <string>
 
 /**
  * \ingroup scc-common

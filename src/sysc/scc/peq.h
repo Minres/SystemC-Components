@@ -153,22 +153,14 @@ template <class TYPE> struct peq : public sc_core::sc_object {
      *
      * @return true if data is available for \ref get()
      */
-    bool has_next() {
-        if(m_scheduled_events.empty())
-            return false;
-        sc_core::sc_time now = sc_core::sc_time_stamp();
-        if(!m_scheduled_events.size() || m_scheduled_events.begin()->first > now) {
-            if(m_scheduled_events.size())
-                m_event.notify(m_scheduled_events.begin()->first - now);
-            return false;
-        } else {
-            return true;
-        }
-    }
+    bool has_next() { return !(m_scheduled_events.empty() || m_scheduled_events.begin()->first > sc_core::sc_time_stamp()); }
 
     void clear() {
         while(!m_scheduled_events.empty()) {
-            get_entry();
+            auto queue = m_scheduled_events.begin()->second;
+            queue->clear();
+            free_pool.push_back(queue);
+            m_scheduled_events.erase(m_scheduled_events.begin());
         }
     }
 

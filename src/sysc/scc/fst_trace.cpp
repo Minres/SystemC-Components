@@ -187,7 +187,8 @@ template <> void fst_trace_t<sc_dt::sc_fxval_fast, sc_dt::sc_fxval_fast>::record
     fstWriterEmitValueChange(m_fst, fst_hndl, &val);
 }
 template <> void fst_trace_t<sc_dt::sc_fxnum, sc_dt::sc_fxval>::record(void* m_fst) {
-    fstWriterEmitValueChange32(m_fst, fst_hndl, 64, *reinterpret_cast<uint64_t*>(&old_val));
+    auto val = old_val.to_double();
+    fstWriterEmitValueChange(m_fst, fst_hndl, &val);
 }
 template <> void fst_trace_t<sc_dt::sc_fxnum_fast, sc_dt::sc_fxval_fast>::record(void* m_fst) {
     auto val = old_val.to_double();
@@ -234,6 +235,7 @@ fst_trace_file::fst_trace_file(const char* name, std::function<bool()>& enable)
     strftime(tbuf, 199, "%b %d, %Y\t%H:%M:%S", p_tm);
     fstWriterSetDate(m_fst, tbuf);
     // fstWriterSetFileType(m_fst, FST_FT_VERILOG);
+#if SC_VERSION_MAJOR < 3
 #if defined(WITH_SC_TRACING_PHASE_CALLBACKS)
     // remove from hierarchy
     sc_object::detach();
@@ -241,6 +243,7 @@ fst_trace_file::fst_trace_file(const char* name, std::function<bool()>& enable)
     sc_object::register_simulation_phase_callback(SC_BEFORE_TIMESTEP);
 #else // explicitly register with simcontext
     sc_core::sc_get_curr_simcontext()->add_trace_file(this);
+#endif
 #endif
 }
 

@@ -182,11 +182,11 @@ public:
     }
 
 private:
-    friend class ::std::hash<delegate>;
+    friend struct ::std::hash<delegate>;
 
     using deleter_type = void (*)(void*);
 
-    void* object_ptr_{};
+    void* object_ptr_{nullptr};
     stub_ptr_type stub_ptr_{};
 
     deleter_type deleter_{};
@@ -212,13 +212,13 @@ private:
         return (static_cast<C const*>(object_ptr)->*method_ptr)(::std::forward<A>(args)...);
     }
 
-    template <typename> class is_member_pair : std::false_type {};
+    template <typename> struct is_member_pair : std::false_type {};
 
-    template <class C> class is_member_pair<::std::pair<C* const, R (C::*const)(A...)>> : std::true_type {};
+    template <class C> struct is_member_pair<::std::pair<C* const, R (C::*const)(A...)>> : std::true_type {};
 
-    template <typename> class is_const_member_pair : std::false_type {};
+    template <typename> struct is_const_member_pair : std::false_type {};
 
-    template <class C> class is_const_member_pair<::std::pair<C const* const, R (C::*const)(A...) const>> : std::true_type {};
+    template <class C> struct is_const_member_pair<::std::pair<C const* const, R (C::*const)(A...) const>> : std::true_type {};
 
     template <typename T>
     static typename ::std::enable_if<!(is_member_pair<T>{} || is_const_member_pair<T>{}), R>::type functor_stub(void* const object_ptr,
@@ -236,9 +236,7 @@ private:
 /**@}*/
 
 namespace std {
-//! the hash overload for delegate<T, A...>
-template <typename R, typename... A> class hash<util::delegate<R(A...)>> {
-public:
+template <typename R, typename... A> struct hash<util::delegate<R(A...)>> {
     size_t operator()(util::delegate<R(A...)> const& d) const noexcept {
         auto const seed(hash<void*>()(d.object_ptr_));
 
