@@ -29,7 +29,6 @@ set(LIB_SOURCES
     scc/sc_logic_7.cpp
     scc/report.cpp
     scc/ordered_semaphore.cpp
-    scc/value_registry.cpp
     scc/mt19937_rng.cpp
     scc/time_n_tick.cpp
     #scc/scv/scv_tr_binary.cpp

@@ -44,7 +44,6 @@
 #include "scc/tracer.h"
 #include "scc/tracer_base.h"
 #include "scc/utilities.h"
-#include "scc/value_registry.h"
 #include "scc/vcd_push_trace.hh"
 #include "tlm/scc/scv/tlm_extension_recording_registry.h"
 #include "tlm/scc/scv/tlm_gp_data.h"
