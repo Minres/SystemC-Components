@@ -46,6 +46,7 @@ set(LIB_SOURCES
     scc/sc_thread_pool.cpp
     scc/signal_opt_ports.cpp
     tlm/scc/lwtr/tlm2_lwtr.cpp
+    scp/report.cc
 )
 
 if(ZLIB_FOUND)
