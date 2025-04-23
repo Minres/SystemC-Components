@@ -75,7 +75,7 @@ struct char_hash {
         return hash;
     }
 };
-thread_local struct {
+static struct {
     std::unordered_map<char const*, sc_core::sc_verbosity, char_hash, char_equal_to> table;
     std::vector<std::string> cache;
     void insert(char const* key, sc_core::sc_verbosity verb) {
@@ -86,6 +86,7 @@ thread_local struct {
         table.clear();
         cache.clear();
     }
+    std::mutex mtx;
 } lut;
 #ifdef MTI_SYSTEMC
 static const cci::cci_originator originator;
@@ -98,7 +99,7 @@ bool& inst_based_logging() {
     return active;
 }
 
-struct ExtLogConfig : public scc::LogConfig {
+static struct ExtLogConfig : public scc::LogConfig {
     shared_ptr<spdlog::logger> file_logger;
     shared_ptr<spdlog::logger> console_logger;
 #ifdef USE_C_REGEX
@@ -119,9 +120,8 @@ struct ExtLogConfig : public scc::LogConfig {
 #endif
     }
     bool initialized{false};
-};
-
-thread_local ExtLogConfig log_cfg;
+    std::mutex mtx;
+} log_cfg;
 
 auto get_tuple(const sc_time& t) -> tuple<sc_time::value_type, sc_time_unit> {
     auto val = t.value();
@@ -189,8 +189,7 @@ auto compose_message(const sc_report& rep, const scc::LogConfig& cfg) -> const s
             }
         }
         if(unlikely(rep.get_id() >= 0))
-            os << "("
-               << "IWEF"[rep.get_severity()] << rep.get_id() << ") " << rep.get_msg_type() << ": ";
+            os << "(" << "IWEF"[rep.get_severity()] << rep.get_id() << ") " << rep.get_msg_type() << ": ";
         else if(cfg.msg_type_field_width) {
             if(cfg.msg_type_field_width == std::numeric_limits<unsigned>::max())
                 os << rep.get_msg_type() << ": ";
@@ -366,9 +365,8 @@ auto scc::stream_redirection::sync() -> int {
     return 0; // Success
 }
 
-static std::mutex cfg_guard;
 static void configure_logging() {
-    std::lock_guard<mutex> lock(cfg_guard);
+    std::lock_guard<mutex> lock(log_cfg.mtx);
     static bool spdlog_initialized = false;
     if(!log_cfg.dont_create_broker)
         scc::init_cci("SCCBroker");
@@ -542,12 +540,14 @@ auto scc::LogConfig::installHandler(bool v) -> scc::LogConfig& {
 
 auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
     if(inst_based_logging()) {
+        std::unique_lock lock(lut.mtx);
         auto it = lut.table.find(str);
         if(it != lut.table.end())
             return it->second;
-        if(strchr(str, '.') == nullptr || sc_core::sc_get_current_object()) {
+        auto* curr_object = sc_core::sc_get_current_object();
+        if(strchr(str, '.') == nullptr || curr_object) {
             string current_name = std::string(str);
-            auto broker = sc_core::sc_get_current_object() ? cci::cci_get_broker() : cci::cci_get_global_broker(originator);
+            auto broker = curr_object ? cci::cci_get_broker() : cci::cci_get_global_broker(originator);
             while(true) {
                 string param_name = (current_name.empty()) ? SCC_LOG_LEVEL_PARAM_NAME : current_name + "." SCC_LOG_LEVEL_PARAM_NAME;
                 auto h = broker.get_param_handle(param_name);
