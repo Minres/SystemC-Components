@@ -27,7 +27,9 @@ axi_initiator_base::axi_initiator_base(const sc_core::sc_module_name& nm, axi::p
 : sc_module(nm)
 , pe(pe)
 , buswidth(width) {
+#if SYSTEMC_VERSION < 20250221
     SC_HAS_PROCESS(axi_initiator_base);
+#endif
     // Register callback for incoming b_transport interface method call
     tsck.register_b_transport(this, &axi_initiator_base::b_transport);
     setup_cb = [this](tlm::tlm_generic_payload& p) {

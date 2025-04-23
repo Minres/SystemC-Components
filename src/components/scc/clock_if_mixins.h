@@ -54,7 +54,7 @@ protected:
     }
 #ifdef CWR_SYSTEMC
     void handle_clock_parameters_updated(scml_clock_if* clk_if) override { this->set_clock_period(clk_if->get_period()); }
-    void handle_clock_deleted(scml_clock_if*) override{};
+    void handle_clock_deleted(scml_clock_if*) override {};
 #endif
 };
 
@@ -64,7 +64,9 @@ public:
 
     tickless_clock(sc_core::sc_module_name const& nm)
     : BASE(nm) {
+#if SYSTEMC_VERSION < 20250221
         SC_HAS_PROCESS(tickless_clock<BASE>);
+#endif
         SC_METHOD(clock_cb);
         this->sensitive << clk_i;
     }
