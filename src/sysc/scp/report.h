@@ -281,7 +281,7 @@ public:
 #endif
 
 #define SCP_LOG(lvl, ...)                                                                                                                  \
-    ::scp::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, lvl / 10).type(SCP_GET_FEATURES(__VA_ARGS__)).get() << _SCP_FMT_EMPTY_STR
+    ::scp::ScLogger<::sc_core::SC_INFO>(__FILE__, __LINE__, lvl).type(SCP_GET_FEATURES(__VA_ARGS__)).get() << _SCP_FMT_EMPTY_STR
 /*** End HELPER Macros *******/
 
 //! macro for debug trace level output
