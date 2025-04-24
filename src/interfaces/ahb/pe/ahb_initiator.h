@@ -32,8 +32,9 @@ namespace pe {
 
 class ahb_initiator_b : public sc_core::sc_module, public tlm::tlm_bw_transport_if<tlm::tlm_base_protocol_types> {
 public:
+#if SYSTEMC_VERSION < 20250221
     SC_HAS_PROCESS(ahb_initiator_b);
-
+#endif
     using payload_type = tlm::tlm_generic_payload;
     using phase_type = tlm::tlm_phase;
 

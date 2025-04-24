@@ -53,7 +53,7 @@ public:
      * @param slave_cnt number of slaves to be connected
      * @param master_cnt number of masters to be connected
      */
-    router(const sc_core::sc_module_name& nm, unsigned slave_cnt = 1, unsigned master_cnt = 1);
+    router(const sc_core::sc_module_name& nm, size_t slave_cnt = 1, size_t master_cnt = 1);
 
     ~router() = default;
     /**
@@ -183,7 +183,7 @@ protected:
 };
 
 template <unsigned BUSWIDTH>
-router<BUSWIDTH>::router(const sc_core::sc_module_name& nm, unsigned slave_cnt, unsigned master_cnt)
+router<BUSWIDTH>::router(const sc_core::sc_module_name& nm, size_t slave_cnt, size_t master_cnt)
 : sc_module(nm)
 , target("target", master_cnt)
 , initiator("intor", slave_cnt)
