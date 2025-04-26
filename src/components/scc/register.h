@@ -456,8 +456,8 @@ private:
     sc_core::sc_vector<value_type> _reg_field;
     std::function<bool(size_t, sc_register<DATATYPE>&, DATATYPE const&)> wr_cb;
     std::function<bool(size_t, sc_register<DATATYPE>&, DATATYPE const&, sc_core::sc_time&)> wr_time_cb;
-    std::function<bool(size_t, sc_register<DATATYPE> const&, DATATYPE const&)> rd_cb;
-    std::function<bool(size_t, sc_register<DATATYPE> const&, DATATYPE const&, sc_core::sc_time&)> rd_time_cb;
+    std::function<bool(size_t, sc_register<DATATYPE> const&, DATATYPE&)> rd_cb;
+    std::function<bool(size_t, sc_register<DATATYPE> const&, DATATYPE&, sc_core::sc_time&)> rd_time_cb;
 };
 /**
  * alias class to map template argument read an write mask to constructor arguments
