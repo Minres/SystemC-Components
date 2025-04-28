@@ -455,10 +455,12 @@ endfunction()
 
 function(conan_install)
     cmake_parse_arguments(ARGS conan_args ${ARGN})
+    detect_compiler(compiler compiler_version compiler_runtime compiler_runtime_type)
+    
     if(CMAKE_BUILD_TYPE)
-    	set(conan_output_folder ${CMAKE_BINARY_DIR}/../conan/${CMAKE_BUILD_TYPE})
+    	set(conan_output_folder ${CMAKE_BINARY_DIR}/../conan/${CMAKE_BUILD_TYPE}/${compiler}-${compiler_version})
     else()
-    	set(conan_output_folder ${CMAKE_BINARY_DIR}/../conan/Default)
+    	set(conan_output_folder ${CMAKE_BINARY_DIR}/../conan/Default/${compiler}-${compiler_version})
     endif()
     
     # Invoke "conan install" with the provided arguments
