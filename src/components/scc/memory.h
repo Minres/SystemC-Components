@@ -200,8 +200,8 @@ template <unsigned long long SIZE, unsigned BUSWIDTH>
 inline bool memory<SIZE, BUSWIDTH>::handle_dmi(tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data) {
     auto& p = mem(gp.get_address() / mem.page_size);
     dmi_data.set_start_address(gp.get_address() & ~mem.page_addr_mask);
-    // TODO: fix to provide the correct end address
-    dmi_data.set_end_address(dmi_data.get_start_address() + mem.page_size - 1);
+    auto end_address = mem.page_size > SIZE ? SIZE : mem.page_size;
+    dmi_data.set_end_address(dmi_data.get_start_address() + end_address - 1);
     dmi_data.set_dmi_ptr(p.data());
     dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);
     dmi_data.set_read_latency(clk_period.value() ? clk_period * rd_resp_clk_delay : rd_resp_delay);
