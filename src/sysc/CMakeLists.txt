@@ -1,7 +1,7 @@
 project(scc-sysc VERSION 0.0.1 LANGUAGES CXX)
 
 find_package(Threads)
-find_package(Boost REQUIRED COMPONENTS date_time filesystem)
+find_package(Boost REQUIRED QUIET COMPONENTS date_time filesystem)
 find_package(ZLIB)
 
 option(ENABLE_SQLITE "Enable SQLite backend for SCV" ON)
