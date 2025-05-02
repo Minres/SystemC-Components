@@ -540,7 +540,7 @@ auto scc::LogConfig::installHandler(bool v) -> scc::LogConfig& {
 
 auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
     if(inst_based_logging()) {
-        std::unique_lock lock(lut.mtx);
+        std::unique_lock<std::mutex> lock(lut.mtx);
         auto it = lut.table.find(str);
         if(it != lut.table.end())
             return it->second;
