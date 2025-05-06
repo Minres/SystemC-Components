@@ -743,20 +743,31 @@ void configurer::set_value(const std::string& hier_name, cci::cci_value value) {
 }
 
 void configurer::set_value_from_str(const std::string& hier_name, const std::string& value) {
+    std::string int_str = value;
+    int int_base = 10;
+    if(value[0] == '0') {
+        if(value[1] == 'x' || value[1] == 'X') {
+            int_base = 16;
+            int_str = value.substr(2);
+        } else {
+            int_base = 8;
+            int_str = value.substr(1);
+        }
+    }
     try {
-        auto i = std::stoi(value);
+        auto i = std::stoi(int_str, nullptr, int_base);
         set_value(hier_name, i);
         return;
     } catch(...) {
     }
     try {
-        auto l = std::stol(value);
+        auto l = std::stol(int_str, nullptr, int_base);
         set_value(hier_name, l);
         return;
     } catch(...) {
     }
     try {
-        auto ll = std::stoll(value);
+        auto ll = std::stoll(int_str, nullptr, int_base);
         set_value(hier_name, ll);
         return;
     } catch(...) {
