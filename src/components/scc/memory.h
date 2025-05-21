@@ -31,6 +31,7 @@
 #include <tlm.h>
 #include <tlm/scc/target_mixin.h>
 #include <util/sparse_array.h>
+#include <cci_configuration>
 
 namespace scc {
 /**
@@ -49,6 +50,8 @@ template <unsigned long long SIZE, unsigned BUSWIDTH = LT> class memory : public
 public:
     //! the target socket to connect to TLM
     tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
+    //! CCI parameter to configure if DMI is allowd
+    cci::cci_param<bool> allow_dmi{"", true, "Allow DMI accesses to this memory if set"};
     /**
      * constructor with explicit instance name
      *
@@ -192,21 +195,23 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
         }
     }
     trans.set_response_status(tlm::TLM_OK_RESPONSE);
-    trans.set_dmi_allowed(true);
+    trans.set_dmi_allowed(allow_dmi.get_value());
     return len;
 }
 
 template <unsigned long long SIZE, unsigned BUSWIDTH>
 inline bool memory<SIZE, BUSWIDTH>::handle_dmi(tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data) {
-    auto& p = mem(gp.get_address() / mem.page_size);
-    dmi_data.set_start_address(gp.get_address() & ~mem.page_addr_mask);
-    auto end_address = mem.page_size > SIZE ? SIZE : mem.page_size;
-    dmi_data.set_end_address(dmi_data.get_start_address() + end_address - 1);
-    dmi_data.set_dmi_ptr(p.data());
-    dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);
-    dmi_data.set_read_latency(clk_period.value() ? clk_period * rd_resp_clk_delay : rd_resp_delay);
-    dmi_data.set_write_latency(clk_period.value() ? clk_period * wr_resp_clk_delay : wr_resp_delay);
-    return true;
+    if(allow_dmi.get_value()) {
+        auto& p = mem(gp.get_address() / mem.page_size);
+        dmi_data.set_start_address(gp.get_address() & ~mem.page_addr_mask);
+        auto end_address = mem.page_size > SIZE ? SIZE : mem.page_size;
+        dmi_data.set_end_address(dmi_data.get_start_address() + end_address - 1);
+        dmi_data.set_dmi_ptr(p.data());
+        dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);
+        dmi_data.set_read_latency(clk_period.value() ? clk_period * rd_resp_clk_delay : rd_resp_delay);
+        dmi_data.set_write_latency(clk_period.value() ? clk_period * wr_resp_clk_delay : wr_resp_delay);
+    }
+    return allow_dmi.get_value();
 }
 
 } // namespace scc

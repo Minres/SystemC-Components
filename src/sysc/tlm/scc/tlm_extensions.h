@@ -22,6 +22,7 @@
 #else
 #include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 #endif
+#include "tlm_gp_shared.h"
 
 //! @brief SystemC TLM
 namespace tlm {
@@ -107,6 +108,20 @@ struct data_buffer : public tlm::tlm_extension<data_buffer> {
 
 private:
     std::vector<unsigned char> buffer_;
+};
+
+struct tlm_payload_extension : public tlm::tlm_extension<tlm_payload_extension> {
+
+    tlm_extension_base* clone() const override {
+        tlm_payload_extension* ext = new tlm_payload_extension(*this);
+        return ext;
+    }
+
+    void copy_from(tlm_extension_base const& from) override {
+        gp = static_cast<tlm_payload_extension const&>(from).gp;
+    }
+
+    tlm::scc::tlm_gp_shared_ptr gp;
 };
 
 } // namespace scc
