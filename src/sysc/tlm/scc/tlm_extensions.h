@@ -117,9 +117,7 @@ struct tlm_payload_extension : public tlm::tlm_extension<tlm_payload_extension> 
         return ext;
     }
 
-    void copy_from(tlm_extension_base const& from) override {
-        gp = static_cast<tlm_payload_extension const&>(from).gp;
-    }
+    void copy_from(tlm_extension_base const& from) override { gp = static_cast<tlm_payload_extension const&>(from).gp; }
 
     tlm::scc::tlm_gp_shared_ptr gp;
 };

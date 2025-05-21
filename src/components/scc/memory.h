@@ -23,6 +23,7 @@
 #endif
 
 #include "clock_if_mixins.h"
+#include <cci_configuration>
 #include <numeric>
 #include <scc/mt19937_rng.h>
 #include <scc/report.h>
@@ -31,7 +32,6 @@
 #include <tlm.h>
 #include <tlm/scc/target_mixin.h>
 #include <util/sparse_array.h>
-#include <cci_configuration>
 
 namespace scc {
 /**

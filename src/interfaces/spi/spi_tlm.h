@@ -46,17 +46,11 @@ struct spi_packet_payload : public tlm::nw::tlm_network_payload<SPI_PKT> {
 
     unsigned get_target_id() const { return target_id; }
 
-    const sc_core::sc_time& get_sender_clk_period() const {
-        return sender_clk_period;
-    }
+    const sc_core::sc_time& get_sender_clk_period() const { return sender_clk_period; }
 
-    void set_sender_clk_period(sc_core::sc_time period) {
-        this->sender_clk_period = sender_clk_period;
-    }
+    void set_sender_clk_period(sc_core::sc_time period) { this->sender_clk_period = sender_clk_period; }
 
-    void set_target_id(unsigned id) {
-        target_id = id;
-    }
+    void set_target_id(unsigned id) { target_id = id; }
 
 private:
     unsigned target_id{0};
