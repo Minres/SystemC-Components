@@ -75,8 +75,10 @@ inline trace_types operator&(trace_types lhs, trace_types rhs) {
  * @brief base class for automatic tracer
  *
  */
-class tracer_base : public sc_core::sc_module {
-public:
+struct tracer_base : public sc_core::sc_module {
+    //! the default for tracing if no attribute is configured
+    cci::cci_param<bool> default_trace_enable{"scc_tracer.default_trace_enable", true,
+                                              "the default for tracing if no attribute is configured", cci::CCI_ABSOLUTE_NAME};
     /**
      * @fn  tracer_base(const sc_core::sc_module_name&)
      * @brief named constructor
@@ -132,11 +134,9 @@ public:
      */
     void set_trace_file(sc_core::sc_trace_file* trf) { this->trf = trf; }
 
+    static bool get_default_trace_enable();
 protected:
     static std::string get_name();
-
-    //! the default for tracing if no attribute is configured
-    bool default_trace_enable{true};
 
     virtual void descend(const sc_core::sc_object*, bool trace_all);
 

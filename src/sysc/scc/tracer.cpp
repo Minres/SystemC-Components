@@ -154,12 +154,8 @@ void tracer::init_tx_db(file_type type, std::string const&& name) {
 
 void tracer::end_of_elaboration() {
     if(trf) {
-        if(top) {
-            descend(top, trf);
-        } else {
-            for(auto o : sc_get_top_level_objects())
-                descend(o, default_trace_enable);
-        }
+        for(auto o : sc_get_top_level_objects())
+            descend(o, default_trace_enable.get_value());
     }
 }
 

@@ -29,8 +29,7 @@ namespace scc {
  *
  * This overlaps with the trace function of sc_core::sc_object. In fact it serves as a signaling interface
  */
-class traceable {
-public:
+struct traceable {
     traceable() = default;
 
     virtual ~traceable() = default;

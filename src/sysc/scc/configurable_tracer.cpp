@@ -23,28 +23,24 @@ using namespace scc;
 
 #define EN_TRACING_STR "enableTracing"
 
-configurable_tracer::configurable_tracer(std::string const&& name, bool enable_tx, bool enable_vcd, bool default_enable,
+configurable_tracer::configurable_tracer(std::string const&& name, bool enable_tx, bool enable_vcd,
                                          sc_core::sc_object* top)
 : tracer(std::move(name), enable_tx ? ENABLE : NONE, enable_vcd ? ENABLE : NONE, top) {
-    default_trace_enable = default_enable;
 }
 
-configurable_tracer::configurable_tracer(std::string const&& name, file_type type, bool enable_vcd, bool default_enable,
+configurable_tracer::configurable_tracer(std::string const&& name, file_type type, bool enable_vcd,
                                          sc_core::sc_object* top)
 : tracer(std::move(name), type, enable_vcd ? ENABLE : NONE, top) {
-    default_trace_enable = default_enable;
 }
 
-configurable_tracer::configurable_tracer(std::string const&& name, file_type tx_type, file_type sig_type, bool default_enable,
+configurable_tracer::configurable_tracer(std::string const&& name, file_type tx_type, file_type sig_type,
                                          sc_core::sc_object* top)
 : tracer(std::move(name), tx_type, sig_type, top) {
-    default_trace_enable = default_enable;
 }
 
-configurable_tracer::configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, bool default_enable,
+configurable_tracer::configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf,
                                          sc_core::sc_object* top)
 : tracer(std::move(name), type, tf, top) {
-    default_trace_enable = default_enable;
 }
 
 scc::configurable_tracer::~configurable_tracer() {
@@ -67,7 +63,7 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
                 descend(o, trace);
         return;
     } else if(kind == "sc_module") {
-        auto trace_enable = get_trace_enabled(obj, default_trace_enable);
+        auto trace_enable = get_trace_enabled(obj, default_trace_enable.get_value());
         if(trace_enable)
             obj->trace(trf);
         for(auto o : obj->get_child_objects())
@@ -105,25 +101,25 @@ auto scc::configurable_tracer::get_trace_enabled(const sc_core::sc_object* obj, 
     return fall_back;
 }
 
-void configurable_tracer::augment_object_hierarchical(sc_core::sc_object* obj) {
+void configurable_tracer::augment_object_hierarchical(sc_core::sc_object* obj, bool trace_enable) {
     if(dynamic_cast<sc_core::sc_module*>(obj) != nullptr || dynamic_cast<scc::traceable*>(obj) != nullptr) {
         auto* attr = obj->get_attribute(EN_TRACING_STR);
         if(attr == nullptr || dynamic_cast<const sc_core::sc_attribute<bool>*>(attr) == nullptr) { // check if we have no sc_attribute
             std::string hier_name{obj->name()};
-            if(hier_name.substr(0, 11) != "scc_tracer") {
+            if(hier_name.substr(0, 3) != "$$$") {
                 hier_name += "." EN_TRACING_STR;
                 auto h = cci_broker.get_param_handle(hier_name);
                 if(!h.is_valid()) // we have no cci_param so create one
-                    params.push_back(new cci::cci_param<bool>(hier_name, default_trace_enable, cci_broker, "", cci::CCI_ABSOLUTE_NAME,
+                    params.push_back(new cci::cci_param<bool>(hier_name, trace_enable, cci_broker, "", cci::CCI_ABSOLUTE_NAME,
                                                               cci_broker.get_originator()));
                 else
-                    h.set_cci_value(cci::cci_value{default_trace_enable});
+                    h.set_cci_value(cci::cci_value{default_trace_enable.get_value()});
             }
         } else if(auto battr = dynamic_cast<sc_core::sc_attribute<bool>*>(attr)) {
-            battr->value = default_trace_enable;
+            battr->value = default_trace_enable.get_value();
         }
         for(auto* o : obj->get_child_objects())
-            augment_object_hierarchical(o);
+            augment_object_hierarchical(o, trace_enable);
     }
 }
 
