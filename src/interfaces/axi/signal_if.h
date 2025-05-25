@@ -90,7 +90,7 @@ template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int ID
 };
 
 template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32, unsigned int IDWDTH = 32, unsigned int USERWDTH = 1>
-using axi5_cfg = axi4_cfg <BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH>;
+using axi5_cfg = axi4_cfg<BUSWDTH, ADDRWDTH, IDWDTH, USERWDTH>;
 
 template <unsigned int BUSWDTH = 32, unsigned int ADDRWDTH = 32> struct axi4_lite_cfg {
     static_assert(BUSWDTH > 0, "BUSWIDTH shall be larger than 0");
@@ -158,7 +158,6 @@ template <typename CFG, typename TYPES = master_types> struct aw_axi {
     typename TYPES::template m2s_opt_t<typename CFG::user_t> aw_user{"aw_user"};
     typename TYPES::template m2s_opt_t<sc_dt::sc_uint<6>> aw_atop{"aw_atop"}; // only for (PCIe)AXI5
 
-
     aw_axi() = default;
     aw_axi(const char* prefix)
     : aw_id{concat(prefix, "_id").c_str()}
@@ -173,9 +172,8 @@ template <typename CFG, typename TYPES = master_types> struct aw_axi {
     , aw_qos{concat(prefix, "_qos").c_str()}
     , aw_region{concat(prefix, "_region").c_str()}
     , aw_len{concat(prefix, "_len").c_str()}
-    , aw_atop{concat(prefix,"_atop").c_str()}
+    , aw_atop{concat(prefix, "_atop").c_str()}
     , aw_user{concat(prefix, "_user").c_str()} {}
-
 
     template <typename OTYPES> void bind_aw(aw_axi<CFG, OTYPES>& o) {
         aw_id.bind(o.aw_id);

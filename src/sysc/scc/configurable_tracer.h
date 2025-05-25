@@ -42,8 +42,7 @@ public:
      * @param enable_vcd enable VCD (signal based) tracing
      * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const&& name, bool enable_tx = true, bool enable_vcd = true,
-                        sc_core::sc_object* top = nullptr);
+    configurable_tracer(std::string const&& name, bool enable_tx = true, bool enable_vcd = true, sc_core::sc_object* top = nullptr);
     /**
      * constructs a tracer object
      *
@@ -52,8 +51,7 @@ public:
      * @param enable_vcd enable VCD (signal based) tracing
      * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const& name, bool enable_tx = true, bool enable_vcd = true,
-                        sc_core::sc_object* top = nullptr)
+    configurable_tracer(std::string const& name, bool enable_tx = true, bool enable_vcd = true, sc_core::sc_object* top = nullptr)
     : configurable_tracer(std::string(name), enable_tx, enable_vcd, top) {}
     /**
      * constructs a tracer object
@@ -63,8 +61,7 @@ public:
      * @param enable enable VCD (signal based) tracing
      * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const&& name, file_type type, bool enable_vcd = true,
-                        sc_core::sc_object* top = nullptr);
+    configurable_tracer(std::string const&& name, file_type type, bool enable_vcd = true, sc_core::sc_object* top = nullptr);
     /**
      * constructs a tracer object
      *
@@ -73,8 +70,7 @@ public:
      * @param enable_vcd enable VCD (signal based) tracing
      * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const& name, file_type type, bool enable_vcd = true,
-                        sc_core::sc_object* top = nullptr)
+    configurable_tracer(std::string const& name, file_type type, bool enable_vcd = true, sc_core::sc_object* top = nullptr)
     : configurable_tracer(std::string(name), type, enable_vcd, top) {}
     /**
      * constructs a tracer object
@@ -84,10 +80,8 @@ public:
      * @param sig_type type of trace file for signals
      * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const&& name, file_type tx_type, file_type sig_type,
-                        sc_core::sc_object* top = nullptr);
-    configurable_tracer(std::string const& name, file_type tx_type, file_type sig_type,
-                        sc_core::sc_object* top = nullptr)
+    configurable_tracer(std::string const&& name, file_type tx_type, file_type sig_type, sc_core::sc_object* top = nullptr);
+    configurable_tracer(std::string const& name, file_type tx_type, file_type sig_type, sc_core::sc_object* top = nullptr)
     : configurable_tracer(std::string(name), tx_type, sig_type, top) {}
     /**
      * constructs a tracer object
@@ -97,8 +91,7 @@ public:
      * @param tf the trace file to use for signal and POD tracing
      * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf = nullptr,
-                        sc_core::sc_object* top = nullptr);
+    configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf = nullptr, sc_core::sc_object* top = nullptr);
     /**
      * constructs a tracer object
      *
@@ -107,8 +100,7 @@ public:
      * @param tf the trace file to use for signal and POD tracing
      * @param default_enable value of parameter enableTracing if not defined by module or CCIs
      */
-    configurable_tracer(std::string const& name, file_type type, sc_core::sc_trace_file* tf = nullptr,
-                        sc_core::sc_object* top = nullptr)
+    configurable_tracer(std::string const& name, file_type type, sc_core::sc_trace_file* tf = nullptr, sc_core::sc_object* top = nullptr)
     : configurable_tracer(std::string(name), type, tf, top) {}
     /**
      * destructor
@@ -117,9 +109,7 @@ public:
     /**
      * adds default trace control attribute of name 'enableTracing' to each sc_module in a design hierarchy
      */
-    void add_control() {
-        add_control(default_trace_enable.get_value());
-    }
+    void add_control() { add_control(default_trace_enable.get_value()); }
     /**
      * adds default trace control attribute of name 'enableTracing' to each sc_module in a design hierarchy
      *

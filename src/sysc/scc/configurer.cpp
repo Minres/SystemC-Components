@@ -745,9 +745,9 @@ void configurer::set_value(const std::string& hier_name, cci::cci_value value) {
 void configurer::set_value_from_str(const std::string& hier_name, const std::string& value) {
     auto mul = 1;
     std::string int_str = value;
-    if(value[0]=='-') {
-        mul=-1;
-        int_str=value.substr(1);
+    if(value[0] == '-') {
+        mul = -1;
+        int_str = value.substr(1);
     }
     int int_base = 10;
     if(int_str[0] == '0') {
@@ -761,19 +761,19 @@ void configurer::set_value_from_str(const std::string& hier_name, const std::str
     }
     try {
         auto i = std::stoi(int_str, nullptr, int_base);
-        set_value(hier_name, mul*i);
+        set_value(hier_name, mul * i);
         return;
     } catch(...) {
     }
     try {
         auto l = std::stol(int_str, nullptr, int_base);
-        set_value(hier_name, mul*l);
+        set_value(hier_name, mul * l);
         return;
     } catch(...) {
     }
     try {
         auto ll = std::stoll(int_str, nullptr, int_base);
-        set_value(hier_name, mul*ll);
+        set_value(hier_name, mul * ll);
         return;
     } catch(...) {
     }

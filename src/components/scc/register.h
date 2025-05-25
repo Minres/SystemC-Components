@@ -21,10 +21,10 @@
 
 #include "resetable.h"
 #include "resource_access_if.h"
+#include <cci_configuration>
 #include <scc/traceable.h>
 #include <scc/tracer_base.h>
 #include <scc/utilities.h>
-#include <cci_configuration>
 #ifdef _MSC_VER
 #include <functional>
 #else
@@ -92,7 +92,8 @@ public:
     sc_register(sc_core::sc_module_name nm, DATATYPE& storage, const DATATYPE reset_val, resetable& owner,
                 DATATYPE rdmask = get_max_uval<DATATYPE>(), DATATYPE wrmask = get_max_uval<DATATYPE>())
     : sc_core::sc_object(nm)
-    , enable_tracing{std::string(name())+".enableTracing", scc::tracer_base::get_default_trace_enable(), "enables tracing of this register", cci::CCI_ABSOLUTE_NAME}
+    , enable_tracing{std::string(name()) + ".enableTracing", scc::tracer_base::get_default_trace_enable(),
+                     "enables tracing of this register", cci::CCI_ABSOLUTE_NAME}
     , res_val(reset_val)
     , rdmask(rdmask)
     , wrmask(wrmask)

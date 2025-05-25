@@ -23,25 +23,17 @@ using namespace scc;
 
 #define EN_TRACING_STR "enableTracing"
 
-configurable_tracer::configurable_tracer(std::string const&& name, bool enable_tx, bool enable_vcd,
-                                         sc_core::sc_object* top)
-: tracer(std::move(name), enable_tx ? ENABLE : NONE, enable_vcd ? ENABLE : NONE, top) {
-}
+configurable_tracer::configurable_tracer(std::string const&& name, bool enable_tx, bool enable_vcd, sc_core::sc_object* top)
+: tracer(std::move(name), enable_tx ? ENABLE : NONE, enable_vcd ? ENABLE : NONE, top) {}
 
-configurable_tracer::configurable_tracer(std::string const&& name, file_type type, bool enable_vcd,
-                                         sc_core::sc_object* top)
-: tracer(std::move(name), type, enable_vcd ? ENABLE : NONE, top) {
-}
+configurable_tracer::configurable_tracer(std::string const&& name, file_type type, bool enable_vcd, sc_core::sc_object* top)
+: tracer(std::move(name), type, enable_vcd ? ENABLE : NONE, top) {}
 
-configurable_tracer::configurable_tracer(std::string const&& name, file_type tx_type, file_type sig_type,
-                                         sc_core::sc_object* top)
-: tracer(std::move(name), tx_type, sig_type, top) {
-}
+configurable_tracer::configurable_tracer(std::string const&& name, file_type tx_type, file_type sig_type, sc_core::sc_object* top)
+: tracer(std::move(name), tx_type, sig_type, top) {}
 
-configurable_tracer::configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf,
-                                         sc_core::sc_object* top)
-: tracer(std::move(name), type, tf, top) {
-}
+configurable_tracer::configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf, sc_core::sc_object* top)
+: tracer(std::move(name), type, tf, top) {}
 
 scc::configurable_tracer::~configurable_tracer() {
     for(auto ptr : params)

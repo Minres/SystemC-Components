@@ -17,9 +17,9 @@
 #ifndef _UTIL_IHEX_PARSER_H_
 #define _UTIL_IHEX_PARSER_H_
 
+#include <cstdint>
 #include <functional>
 #include <iostream>
-#include <cstdint>
 /**
  * \ingroup scc-common
  */
@@ -27,9 +27,9 @@
 namespace util {
 struct ihex_parser {
 
-    enum {IHEX_DATA_SIZE    =      255};
+    enum { IHEX_DATA_SIZE = 255 };
 
     static bool parse(std::istream&, std::function<bool(uint64_t, uint64_t, const uint8_t*)>);
 };
-}
+} // namespace util
 #endif

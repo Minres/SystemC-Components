@@ -293,16 +293,16 @@ void tracer_base::descend(const sc_object* obj, bool trace_all) {
 }
 
 namespace {
-tracer_base* find_tracer_base(sc_core::sc_object* obj){
+tracer_base* find_tracer_base(sc_core::sc_object* obj) {
     if(auto p = dynamic_cast<tracer_base*>(obj))
         return p;
-    for(auto* o: obj->get_child_objects()) {
+    for(auto* o : obj->get_child_objects()) {
         if(auto p = find_tracer_base(o))
             return p;
     }
     return nullptr;
 }
-}
+} // namespace
 
 bool tracer_base::get_default_trace_enable() {
     static tracer_base* trb = nullptr;
@@ -310,11 +310,12 @@ bool tracer_base::get_default_trace_enable() {
     if(uninitialized) {
         for(auto* o : sc_core::sc_get_top_level_objects()) {
             trb = find_tracer_base(o);
-            if(trb) break;
+            if(trb)
+                break;
         }
-        uninitialized=false;
+        uninitialized = false;
     }
-    return trb?trb->default_trace_enable.get_value() : true;
+    return trb ? trb->default_trace_enable.get_value() : true;
 }
 
 } // namespace scc

@@ -115,8 +115,7 @@ int sc_main(int argc, char* argv[]) {
 #endif
     scc::configurable_tracer trace("axi_axi_test",
                                    scc::tracer::file_type::TEXT, // define the kind of transaction trace
-                                   trc,                          // enables vcd
-                                   true);
+                                   trc);                         // enables vcd
     testbench tb("tb");
     scc::hierarchy_dumper d("axi_axi_test.json", scc::hierarchy_dumper::D3JSON);
     //scc::hierarchy_dumper d("axi_axi_test.elkt", scc::hierarchy_dumper::ELKT);

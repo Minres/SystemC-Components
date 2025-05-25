@@ -135,6 +135,7 @@ struct tracer_base : public sc_core::sc_module {
     void set_trace_file(sc_core::sc_trace_file* trf) { this->trf = trf; }
 
     static bool get_default_trace_enable();
+
 protected:
     static std::string get_name();
 

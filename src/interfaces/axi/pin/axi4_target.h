@@ -107,7 +107,6 @@ private:
         bool lock;
         uint64_t user;
         unsigned atop;
-
     };
     sc_core::sc_clock* clk_if{nullptr};
     sc_core::sc_event clk_delayed, clk_self, ar_end_req_evt, wdata_end_req_evt;
