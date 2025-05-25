@@ -49,7 +49,7 @@ public:
      *
      * @param null_entry the entry to be used for empty slots
      */
-    range_lut(T null_entry)
+    range_lut(T const& null_entry)
     : null_entry(null_entry) {}
     /**
      * add an T to the lut covering the range starting at base_addr until
@@ -59,7 +59,7 @@ public:
      * @param base_addr the base address
      * @param size the size of the occupied range
      */
-    void addEntry(T i, uint64_t base_addr, uint64_t size);
+    void addEntry(T const& i, uint64_t base_addr, uint64_t size);
     /**
      * remove an entry with value i of type T
      *
@@ -87,6 +87,8 @@ public:
      * @return the entry belonging to the address
      */
     inline T getEntry(uint64_t addr) const {
+        if(!m_size)
+            return null_entry;
         auto iter = m_lut.lower_bound(addr);
         return (iter != m_lut.end() && (iter->second.type == END_RANGE || iter->first == addr)) ? iter->second.index : null_entry;
     }
@@ -128,7 +130,7 @@ template <typename T> std::ostream& operator<<(std::ostream& os, range_lut<T>& l
     return os;
 }
 
-template <typename T> inline void range_lut<T>::addEntry(T i, uint64_t base_addr, uint64_t size) {
+template <typename T> inline void range_lut<T>::addEntry(T const& i, uint64_t base_addr, uint64_t size) {
     auto iter = m_lut.find(base_addr);
     if(iter != m_lut.end() && iter->second.index != null_entry)
         throw std::runtime_error("range already mapped");

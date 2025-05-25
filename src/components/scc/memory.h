@@ -24,6 +24,7 @@
 
 #include "clock_if_mixins.h"
 #include <cci_configuration>
+#include <cstdint>
 #include <numeric>
 #include <scc/mt19937_rng.h>
 #include <scc/report.h>
@@ -31,6 +32,7 @@
 #include <scc/utilities.h>
 #include <tlm.h>
 #include <tlm/scc/target_mixin.h>
+#include <util/range_lut.h>
 #include <util/sparse_array.h>
 
 namespace scc {
@@ -39,7 +41,9 @@ namespace scc {
  * @brief simple TLM2.0 LT memory model
  *
  * This model uses the \ref util::sparse_array as backing store. Therefore it can have an arbitrary size since only
- * pages for accessed addresses are allocated.
+ * pages for accessed addresses are allocated. it is possible to map specific host memory ranges to a target memory range.
+ * For this the @ref scc::host_mem_map_extension hs to be used in conjunction with the TLM_IGNORE_COMMAND. The extension
+ * carries the pointer to the host memory to be used while the generic payload address and length indicate the size of the memory block
  *
  * TODO: add some more attributes/parameters to configure access time and type (DMI allowed, read only, etc)
  *
@@ -96,10 +100,45 @@ public:
      * write response delay in clock cycles
      */
     cci::cci_param<unsigned> wr_resp_clk_delay{"wr_resp_clk_delay", 0};
+    /**
+     * @fn void map_host_memory(uint64_t, uint64_t, uint8_t*)
+     * @brief maps a given memory into the address range of the TLM memory
+     *
+     * @param base base address where the memory shall be mapped
+     * @param size size of the memory range to map
+     * @param ptr pointer to the mapped host memory
+     */
+    void map_host_memory(uint64_t base, uint64_t size, uint8_t* ptr) {
+        try {
+            host_mem_lut.addEntry(host_map_entry{ptr, base, size}, base, size);
+        } catch(std::runtime_error& e) {
+            SCCERR(SCMOD) << "Cannot map memory to address=0x" << std::hex << base << " with size=0x" << size << " because: " << e.what();
+        }
+    }
+    /**
+     * @fn void unmap_host_memory(uint64_t, uint64_t, uint8_t*)
+     * @brief unmpas a host memory mapped into the address range of the TLM memory
+     *
+     * @param base base address where the memory shall be mapped
+     * @param size size of the memory range to map
+     */
+    void unmap_host_memory(uint64_t base, uint64_t size) {
+        if(!host_mem_lut.removeEntry(host_map_entry{nullptr, base, size})) {
+            SCCERR(SCMOD) << "Cannot unmap memory at address=0x" << std::hex << base << " with size=0x" << size;
+        }
+    }
 
 protected:
     //! the real memory structure
     util::sparse_array<uint8_t, SIZE> mem;
+    struct host_map_entry {
+        uint8_t* ptr;
+        uint64_t base;
+        uint64_t size;
+        bool operator==(host_map_entry const& o) { return base == o.base && size == o.size; }
+        bool operator!=(host_map_entry const& o) { return !operator==(o); }
+    };
+    util::range_lut<host_map_entry> host_mem_lut{host_map_entry{nullptr, 0, 0}};
 
     void set_clock_period(sc_core::sc_time period) { clk_period = period; }
     sc_core::sc_time clk_period;
@@ -116,6 +155,22 @@ public:
 template <unsigned long long SIZE, unsigned BUSWIDTH = LT> using memory_tl = tickless_clock<memory<SIZE, BUSWIDTH>>;
 template <unsigned long long SIZE, unsigned BUSWIDTH = LT> using memory_tc = ticking_clock<memory<SIZE, BUSWIDTH>>;
 
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT>
+int handle_operation(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, sc_core::sc_time& delay);
+
+struct host_mem_map_extension : public tlm::tlm_extension<host_mem_map_extension> {
+    tlm_extension_base* clone() const override { return nullptr; }
+    void copy_from(tlm_extension_base const& ext) override {}
+    host_mem_map_extension(uint8_t* ptr)
+    : ptr(ptr) {}
+    host_mem_map_extension() = default;
+    ~host_mem_map_extension() {}
+    uint8_t* ptr{nullptr};
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// implementation details
+/// ///////////////////////////////////////////////////////////////////////////
 template <unsigned long long SIZE, unsigned BUSWIDTH>
 memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
 : sc_module(nm) {
@@ -125,6 +180,12 @@ memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
     });
     target.register_transport_dbg([this](tlm::tlm_generic_payload& gp) -> unsigned {
         sc_core::sc_time z = sc_core::SC_ZERO_TIME;
+        if(auto ext = gp.get_extension<host_mem_map_extension>()) {
+            if(ext->ptr)
+                map_host_memory(gp.get_address(), gp.get_data_length(), ext->ptr);
+            else
+                unmap_host_memory(gp.get_address(), gp.get_data_length());
+        }
         return operation_cb ? operation_cb(*this, gp, z) : handle_operation(gp, z);
     });
     target.register_get_direct_mem_ptr([this](tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data) -> bool {
@@ -134,7 +195,7 @@ memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
 
 template <unsigned long long SIZE, unsigned BUSWIDTH>
 int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
-    ::sc_dt::uint64 adr = trans.get_address();
+    uint64_t adr = trans.get_address();
     uint8_t* ptr = trans.get_data_ptr();
     unsigned len = trans.get_data_length();
     uint8_t* byt = trans.get_byte_enable_ptr();
@@ -163,38 +224,62 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
     }
     tlm::tlm_command cmd = trans.get_command();
     SCCTRACE(SCMOD) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr;
+    trans.set_response_status(tlm::TLM_OK_RESPONSE);
+    auto hm_entry = host_mem_lut.getEntry(adr);
     if(cmd == tlm::TLM_READ_COMMAND) {
         delay += clk_period.value() ? clk_period * rd_resp_clk_delay : rd_resp_delay;
-        if(mem.is_allocated(adr)) {
-            const auto& p = mem(adr / mem.page_size);
-            auto offs = adr & mem.page_addr_mask;
-            if((offs + len) > mem.page_size) {
-                auto first_part = mem.page_size - offs;
-                std::copy(p.data() + offs, p.data() + offs + first_part, ptr);
-                const auto& p2 = mem((adr / mem.page_size) + 1);
-                std::copy(p2.data(), p2.data() + len - first_part, ptr + first_part);
+        if(hm_entry.ptr) {
+            auto hm_start_offs = adr - hm_entry.base;
+            auto hm_end_offs = adr + len - hm_entry.base;
+            auto hm_ptr = hm_entry.ptr + hm_start_offs;
+            if(hm_end_offs > SIZE) {
+                auto transfer_length = hm_end_offs - hm_start_offs;
+                std::copy(hm_ptr, hm_ptr + transfer_length, ptr);
+                for(size_t i = transfer_length; i < len; i++)
+                    ptr[i] = scc::MT19937::uniform() % 256;
+
             } else {
-                std::copy(p.data() + offs, p.data() + offs + len, ptr);
+                std::copy(hm_ptr, hm_ptr + len, ptr);
             }
         } else {
-            // no allocated page so return randomized data
-            for(size_t i = 0; i < len; i++)
-                ptr[i] = scc::MT19937::uniform() % 256;
+            if(mem.is_allocated(adr)) {
+                const auto& p = mem(adr / mem.page_size);
+                auto offs = adr & mem.page_addr_mask;
+                if((offs + len) > mem.page_size) {
+                    auto first_part = mem.page_size - offs;
+                    std::copy(p.data() + offs, p.data() + offs + first_part, ptr);
+                    const auto& p2 = mem((adr / mem.page_size) + 1);
+                    std::copy(p2.data(), p2.data() + len - first_part, ptr + first_part);
+                } else {
+                    std::copy(p.data() + offs, p.data() + offs + len, ptr);
+                }
+            } else {
+                // no allocated page so return randomized data
+                for(size_t i = 0; i < len; i++)
+                    ptr[i] = scc::MT19937::uniform() % 256;
+            }
         }
     } else if(cmd == tlm::TLM_WRITE_COMMAND) {
         delay += clk_period.value() ? clk_period * wr_resp_clk_delay : wr_resp_delay;
-        auto& p = mem(adr / mem.page_size);
-        auto offs = adr & mem.page_addr_mask;
-        if((offs + len) > mem.page_size) {
-            auto first_part = mem.page_size - offs;
-            std::copy(ptr, ptr + first_part, p.data() + offs);
-            auto& p2 = mem((adr / mem.page_size) + 1);
-            std::copy(ptr + first_part, ptr + len, p2.data());
+        if(hm_entry.ptr) {
+            auto hm_start_offs = adr - hm_entry.base;
+            auto hm_end_offs = adr + len - hm_entry.base;
+            auto hm_ptr = hm_entry.ptr + hm_start_offs;
+            auto transfer_length = hm_end_offs > SIZE ? hm_end_offs - hm_start_offs : len;
+            std::copy(ptr, ptr + transfer_length, hm_ptr);
         } else {
-            std::copy(ptr, ptr + len, p.data() + offs);
+            auto& p = mem(adr / mem.page_size);
+            auto offs = adr & mem.page_addr_mask;
+            if((offs + len) > mem.page_size) {
+                auto first_part = mem.page_size - offs;
+                std::copy(ptr, ptr + first_part, p.data() + offs);
+                auto& p2 = mem((adr / mem.page_size) + 1);
+                std::copy(ptr + first_part, ptr + len, p2.data());
+            } else {
+                std::copy(ptr, ptr + len, p.data() + offs);
+            }
         }
     }
-    trans.set_response_status(tlm::TLM_OK_RESPONSE);
     trans.set_dmi_allowed(allow_dmi.get_value());
     return len;
 }

@@ -15,6 +15,7 @@ set(LIB_SOURCES
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
 add_library(scc::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 add_library(busses ALIAS ${PROJECT_NAME})
+#TODO: remove alias
 add_library(scc::busses ALIAS ${PROJECT_NAME})
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
