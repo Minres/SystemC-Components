@@ -17,7 +17,7 @@
 #ifndef _RANGE_LUT_H_
 #define _RANGE_LUT_H_
 
-#include <exception>
+#include <cstdint>
 #include <iomanip>
 #include <iostream>
 #include <map>
@@ -111,6 +111,8 @@ public:
     const_iterator begin() const { return m_lut.begin(); }
 
     const_iterator end() const { return m_lut.end(); }
+
+    const_iterator lower_bound(uint64_t base) const { return m_lut.lower_bound(base); }
 
 protected:
     // Loki::AssocVector<uint64_t, lut_entry> m_lut;
