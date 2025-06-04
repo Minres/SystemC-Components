@@ -90,7 +90,7 @@ struct axis_channel : public sc_core::sc_module,
 
     axis_pkt_target_socket<>& operator()() { return tsck; }
 
-    axis_pkt_initiator_socket<>& operator()(size_t idx) { return isck.at(idx); }
+    axis_pkt_initiator_socket<>& operator()() { return isck; }
 
     void b_transport(transaction_type& trans, sc_core::sc_time& t) override {
         t += channel_delay;
