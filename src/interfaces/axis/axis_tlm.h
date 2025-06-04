@@ -81,7 +81,7 @@ struct axis_channel : public sc_core::sc_module,
 
     cci::cci_param<sc_core::sc_time> channel_delay{"channel_delay", sc_core::SC_ZERO_TIME, "delay of the AXIS channel"};
 
-    axis_channel(sc_core::sc_module_name const& nm, size_t slave_count)
+    axis_channel(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm) {
         isck(*this);
         tsck(*this);
