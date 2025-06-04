@@ -83,14 +83,9 @@ struct axis_channel : public sc_core::sc_module,
 
     axis_channel(sc_core::sc_module_name const& nm, size_t slave_count)
     : sc_core::sc_module(nm) {
-        for(auto& is : isck)
-            is(*this);
+        isck(*this);
         tsck(*this);
     }
-
-    axis_pkt_target_socket<>& operator()() { return tsck; }
-
-    axis_pkt_initiator_socket<>& operator()() { return isck; }
 
     void b_transport(transaction_type& trans, sc_core::sc_time& t) override {
         t += channel_delay;
