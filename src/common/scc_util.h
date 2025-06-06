@@ -36,5 +36,5 @@
 #include "util/strprintf.h"
 #include "util/thread_syncronizer.h"
 #include "util/watchdog.h"
-#include <util/sccassert.h>
+#include "util/sccassert.h"
 /**@}*/
