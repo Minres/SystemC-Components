@@ -54,13 +54,13 @@ protected:
     }
 #ifdef CWR_SYSTEMC
     void handle_clock_parameters_updated(scml_clock_if* clk_if) override { this->set_clock_period(clk_if->get_period()); }
-    void handle_clock_deleted(scml_clock_if*) override{};
+    void handle_clock_deleted(scml_clock_if*) override {};
 #endif
 };
 
 template <typename BASE> class tickless_clock : public BASE {
 public:
-    sc_core::sc_in<sc_core::sc_time> clk_i;
+    sc_core::sc_in<sc_core::sc_time> clk_i{"clk_i"};
 
     tickless_clock(sc_core::sc_module_name const& nm)
     : BASE(nm) {
