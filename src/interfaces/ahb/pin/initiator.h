@@ -21,7 +21,7 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif
 
-#include <interfaces/ahb/ahb_tlm.h>
+#include <ahb/ahb_tlm.h>
 #include <scc/report.h>
 #include <scc/utilities.h>
 #include <tlm/scc/target_mixin.h>

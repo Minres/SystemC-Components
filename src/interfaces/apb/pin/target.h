@@ -17,7 +17,7 @@
 #ifndef _BUS_APB_PIN_TARGET_H_
 #define _BUS_APB_PIN_TARGET_H_
 
-#include <interfaces/apb/apb_tlm.h>
+#include <apb/apb_tlm.h>
 #include <scc/peq.h>
 #include <scc/report.h>
 #include <scc/signal_opt_ports.h>

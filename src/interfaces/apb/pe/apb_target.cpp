@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "../../../interfaces/apb/pe/apb_target.h"
+#include "apb_target.h"
 
 #include <scc/report.h>
 #include <systemc>

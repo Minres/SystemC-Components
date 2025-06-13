@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "../../interfaces/axi/axi_target.h"
+#include "axi_target.h"
 
 #include <scc/mt19937_rng.h>
 #include <scc/report.h>

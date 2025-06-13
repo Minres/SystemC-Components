@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "../../interfaces/apb/apb_tlm.h"
+#include "apb_tlm.h"
 
 #include <array>
 

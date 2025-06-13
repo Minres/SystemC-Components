@@ -21,7 +21,7 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif
 
-#include <interfaces/apb/apb_tlm.h>
+#include <apb/apb_tlm.h>
 #include <scc/report.h>
 #include <scc/signal_opt_ports.h>
 #include <scc/utilities.h>

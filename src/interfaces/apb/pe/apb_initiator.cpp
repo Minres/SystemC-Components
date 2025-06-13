@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "../../../interfaces/apb/pe/apb_initiator.h"
+#include "apb_initiator.h"
 
 #include <scc/report.h>
 

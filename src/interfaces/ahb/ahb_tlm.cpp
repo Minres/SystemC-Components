@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "../../interfaces/ahb/ahb_tlm.h"
+#include "ahb_tlm.h"
 
 namespace ahb {
 namespace {

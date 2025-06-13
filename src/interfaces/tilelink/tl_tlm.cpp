@@ -15,7 +15,7 @@
  *******************************************************************************/
 
 #include <array>
-#include <interfaces/tilelink/tl_tlm.h>
+#include <tilelink/tl_tlm.h>
 
 namespace tilelink {
 namespace {

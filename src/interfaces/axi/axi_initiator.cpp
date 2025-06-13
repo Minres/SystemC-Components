@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "../../interfaces/axi/axi_initiator.h"
+#include "axi_initiator.h"
 
 #include <scc/report.h>
 #include <tlm/scc/tlm_gp_shared.h>
