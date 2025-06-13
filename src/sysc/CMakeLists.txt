@@ -1,7 +1,7 @@
 project(scc-sysc VERSION 0.0.1 LANGUAGES CXX)
 
 find_package(Threads)
-find_package(Boost REQUIRED QUIET COMPONENTS date_time filesystem)
+find_package(Boost REQUIRED QUIET COMPONENTS date_time filesystem stacktrace_backtrace)
 find_package(ZLIB)
 
 option(ENABLE_SQLITE "Enable SQLite backend for SCV" ON)
@@ -98,7 +98,11 @@ if(ENABLE_SQLITE)
 endif()
 
 target_link_libraries(${PROJECT_NAME} PUBLIC Boost::date_time)
-
+if(TARGET Boost::stacktrace_backtrace)
+    message(STATUS "scc-sysc: using stacktrace_backtrace for reporting")
+    target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_STACKTRACE BOOST_STACKTRACE_LINK BOOST_STACKTRACE_USE_BACKTRACE)
+    target_link_libraries(${PROJECT_NAME} PUBLIC Boost::stacktrace_backtrace dl)
+endif()
 find_package(yaml-cpp QUIET)
 if(TARGET yaml-cpp::yaml-cpp)
     target_compile_definitions(${PROJECT_NAME} PUBLIC -DHAS_YAMPCPP)

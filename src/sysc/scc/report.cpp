@@ -23,17 +23,19 @@
 #include "report.h"
 #include "configurer.h"
 #include <array>
-#include <chrono>
 #include <fstream>
 #include <mutex>
 #include <spdlog/async.h>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
-#include <thread>
 #include <tuple>
 #include <unordered_map>
 #include <util/logging.h>
+#ifdef WITH_STACKTRACE
+#include <boost/stacktrace.hpp>
+#endif
+#include <cstdlib>
 #ifdef __GNUC__
 #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 #if GCC_VERSION < 40900
@@ -189,8 +191,7 @@ auto compose_message(const sc_report& rep, const scc::LogConfig& cfg) -> const s
             }
         }
         if(unlikely(rep.get_id() >= 0))
-            os << "("
-               << "IWEF"[rep.get_severity()] << rep.get_id() << ") " << rep.get_msg_type() << ": ";
+            os << "(" << "IWEF"[rep.get_severity()] << rep.get_id() << ") " << rep.get_msg_type() << ": ";
         else if(cfg.msg_type_field_width) {
             if(cfg.msg_type_field_width == std::numeric_limits<unsigned>::max())
                 os << rep.get_msg_type() << ": ";
@@ -238,39 +239,27 @@ inline void log2logger(spdlog::logger& logger, const sc_report& rep, const scc::
         break;
     case SC_ERROR:
         logger.error(msg);
+#ifdef WITH_STACKTRACE
+        if(getenv("SCC_PRINT_STACK_ON_ERROR"))
+            logger.error(boost::stacktrace::to_string(boost::stacktrace::stacktrace()));
+#endif
         break;
     case SC_FATAL:
         logger.critical(msg);
+#ifdef WITH_STACKTRACE
+        if(getenv("SCC_PRINT_STACK_ON_ERROR"))
+            logger.error(boost::stacktrace::to_string(boost::stacktrace::stacktrace()));
+#endif
         break;
     default:
         break;
     }
 }
 
-inline void log2logger(spdlog::logger& logger, scc::log lvl, const string& msg) {
-    switch(lvl) {
-    case scc::log::DBGTRACE:
-    case scc::log::TRACE:
-        logger.trace(msg);
-        return;
-    case scc::log::DEBUG:
-        logger.debug(msg);
-        return;
-    case scc::log::INFO:
-        logger.info(msg);
-        return;
-    case scc::log::WARNING:
-        logger.warn(msg);
-        return;
-    case scc::log::ERROR:
-        logger.error(msg);
-        return;
-    case scc::log::FATAL:
-        logger.critical(msg);
-        return;
-    default:
-        break;
-    }
+inline void flush_loggers() {
+    log_cfg.console_logger->flush();
+    if(log_cfg.file_logger)
+        log_cfg.file_logger->flush();
 }
 
 void report_handler(const sc_report& rep, const sc_actions& actions) {
@@ -289,25 +278,23 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
         }
     }
     if(actions & SC_STOP) {
-        this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 10));
+        flush_loggers();
         if(sc_is_running() && !sc_stop_called) {
             sc_stop();
             sc_stop_called = true;
         }
     }
     if(actions & SC_ABORT) {
-        this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 20));
+        flush_loggers();
+        spdlog::shutdown();
         abort();
     }
     if(actions & SC_THROW) {
-        this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 20));
+        flush_loggers();
         throw rep;
     }
     if(sc_time_stamp().value() && !sc_is_running()) {
-        log_cfg.console_logger->flush();
-        if(log_cfg.file_logger)
-            log_cfg.file_logger->flush();
-        this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 10));
+        flush_loggers();
     }
 }
 } // namespace
@@ -388,7 +375,7 @@ static void configure_logging() {
                 log_cfg.console_logger->set_pattern(os.str());
             } else
                 log_cfg.console_logger->set_pattern("[%L] %v");
-            log_cfg.console_logger->flush_on(spdlog::level::warn);
+            log_cfg.console_logger->flush_on(spdlog::level::err);
             log_cfg.console_logger->set_level(spdlog::level::level_enum::trace);
             if(log_cfg.log_file_name.size()) {
                 {
@@ -402,7 +389,7 @@ static void configure_logging() {
                     log_cfg.file_logger->set_pattern("[%8l] %v");
                 else
                     log_cfg.file_logger->set_pattern("%v");
-                log_cfg.file_logger->flush_on(spdlog::level::warn);
+                log_cfg.file_logger->flush_on(spdlog::level::err);
                 log_cfg.file_logger->set_level(spdlog::level::level_enum::trace);
             }
             spdlog_initialized = true;
