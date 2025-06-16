@@ -26,7 +26,9 @@ namespace tilelink {
 /**
  * helper function to allow SFINAE
  */
-template <typename Enum> struct enable_for_enum { static const bool value = false; };
+template <typename Enum> struct enable_for_enum {
+    static const bool value = false;
+};
 /**
  * helper function to convert integer into class enums
  * @param t
@@ -64,7 +66,7 @@ inline std::ostream& operator<<(std::ostream& os, E e) {
 std::ostream& operator<<(std::ostream& os, tlm::tlm_generic_payload const& t);
 
 //! opcodes of Tilelink.. The encode the opcode (opcode_e[2:0]) and the applicable channels (opcode_e[8] -> A ... opcode_e[4] -> E)
-enum class opcode_e : uint8_t {
+enum class opcode_e {
     Get = 0x184,
     AccessAckData = 0x061,
     PutFullData = 0x180,
@@ -196,8 +198,11 @@ struct tlu_initiator_socket
      */
     const char* kind() const override { return "tlu_initiator_socket"; }
     // not the right version but we assume TLM is always bundled with SystemC
-#if SYSTEMC_VERSION >= 20181013 // ((TLM_VERSION_MAJOR > 2) || (TLM_VERSION==2 && TLM_VERSION_MINOR>0) ||(TLM_VERSION==2
-                                // && TLM_VERSION_MINOR>0 && TLM_VERSION_PATCH>4))
+#if SYSTEMC_VERSION >= 20181013 && SYSTEMC_VERSION < 20241015 // not the right version but we assume TLM is always bundled with SystemC
+    /**
+     * @brief get the type of protocol
+     * @return the kind typeid
+     */
     sc_core::sc_type_index get_protocol_types() const override { return typeid(TYPES); }
 #endif
 };
@@ -226,8 +231,11 @@ struct tlu_target_socket : public tlm::tlm_base_target_socket<BUSWIDTH, tlu_fw_t
      */
     const char* kind() const override { return "tlu_target_socket"; }
     // not the right version but we assume TLM is always bundled with SystemC
-#if SYSTEMC_VERSION >= 20181013 // ((TLM_VERSION_MAJOR > 2) || (TLM_VERSION==2 && TLM_VERSION_MINOR>0) ||(TLM_VERSION==2
-                                // && TLM_VERSION_MINOR>0 && TLM_VERSION_PATCH>4))
+#if SYSTEMC_VERSION >= 20181013 && SYSTEMC_VERSION < 20241015 // not the right version but we assume TLM is always bundled with SystemC
+    /**
+     * @brief get the type of protocol
+     * @return the kind typeid
+     */
     sc_core::sc_type_index get_protocol_types() const override { return typeid(TYPES); }
 #endif
 };
@@ -256,7 +264,7 @@ struct tlc_initiator_socket
      * @return the kind string
      */
     const char* kind() const override { return "tlc_initiator_socket"; }
-#if SYSTEMC_VERSION >= 20181013 // not the right version but we assume TLM is always bundled with SystemC
+#if SYSTEMC_VERSION >= 20181013 && SYSTEMC_VERSION < 20241015 // not the right version but we assume TLM is always bundled with SystemC
     /**
      * @brief get the type of protocol
      * @return the kind typeid
@@ -289,7 +297,7 @@ struct tlc_target_socket : public tlm::tlm_base_target_socket<BUSWIDTH, tlc_fw_t
      */
     const char* kind() const override { return "tlc_target_socket"; }
     // not the right version but we assume TLM is always bundled with SystemC
-#if SYSTEMC_VERSION >= 20181013 // not the right version but we assume TLM is always bundled with SystemC
+#if SYSTEMC_VERSION >= 20181013 && SYSTEMC_VERSION < 20241015 // not the right version but we assume TLM is always bundled with SystemC
     /**
      * @brief get the type of protocol
      * @return the kind typeid
@@ -303,7 +311,9 @@ struct tlc_target_socket : public tlm::tlm_base_target_socket<BUSWIDTH, tlc_fw_t
 /*****************************************************************************
  * Implementation details
  *****************************************************************************/
-template <> struct enable_for_enum<opcode_e> { static const bool enable = true; };
+template <> struct enable_for_enum<opcode_e> {
+    static const bool enable = true;
+};
 
 inline opcode_e tilelink_extension::get_opcode() const { return opcode; }
 
@@ -329,7 +339,7 @@ inline bool tilelink_extension::is_denied() const { return denied; }
 
 inline void tilelink_extension::set_denied(bool denied) { this->denied = denied; }
 
-inline tlm::tlm_extension_base* tilelink_extension::clone() const { return new tilelink_extension(this); }
+inline tlm::tlm_extension_base* tilelink_extension::clone() const { return new tilelink_extension(*this); }
 
 inline void tilelink_extension::copy_from(const tlm::tlm_extension_base& ext) {
     auto const* tl_ext = dynamic_cast<const tilelink_extension*>(&ext);
