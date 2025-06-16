@@ -194,6 +194,9 @@ if(SystemC_FOUND)
 	                                  $<TARGET_OBJECTS:scv-tr>
 	                                  )
 	    set_target_properties(scc_shared PROPERTIES CXX_VISIBILITY_PRESET hidden)
+		if(TARGET Boost::stacktrace_backtrace)
+		    target_link_libraries(scc_shared PUBLIC Boost::stacktrace_backtrace dl)
+		endif()
 	    add_library(scc::scc_shared ALIAS scc_shared)
 	endif()
     install(TARGETS scc
