@@ -18,6 +18,7 @@
 #define _SYSC_MEMORY_H_
 
 // Needed for the simple_target_socket
+#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 #endif
@@ -185,6 +186,8 @@ memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
                 map_host_memory(gp.get_address(), gp.get_data_length(), ext->ptr);
             else
                 unmap_host_memory(gp.get_address(), gp.get_data_length());
+            if(gp.get_command() == tlm::TLM_IGNORE_COMMAND)
+                return 0;
         }
         return operation_cb ? operation_cb(*this, gp, z) : handle_operation(gp, z);
     });
@@ -230,16 +233,15 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
         delay += clk_period.value() ? clk_period * rd_resp_clk_delay : rd_resp_delay;
         if(hm_entry.ptr) {
             auto hm_start_offs = adr - hm_entry.base;
-            auto hm_end_offs = adr + len - hm_entry.base;
+            auto hm_end_offs = hm_start_offs + len;
             auto hm_ptr = hm_entry.ptr + hm_start_offs;
-            if(hm_end_offs > SIZE) {
+            if(hm_end_offs < hm_entry.size) {
+                std::copy(hm_ptr, hm_ptr + len, ptr);
+            } else {
                 auto transfer_length = hm_end_offs - hm_start_offs;
                 std::copy(hm_ptr, hm_ptr + transfer_length, ptr);
                 for(size_t i = transfer_length; i < len; i++)
                     ptr[i] = scc::MT19937::uniform() % 256;
-
-            } else {
-                std::copy(hm_ptr, hm_ptr + len, ptr);
             }
         } else {
             if(mem.is_allocated(adr)) {
@@ -265,7 +267,7 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
             auto hm_start_offs = adr - hm_entry.base;
             auto hm_end_offs = adr + len - hm_entry.base;
             auto hm_ptr = hm_entry.ptr + hm_start_offs;
-            auto transfer_length = hm_end_offs > SIZE ? hm_end_offs - hm_start_offs : len;
+            auto transfer_length = hm_end_offs < hm_entry.size ? len : hm_end_offs - hm_start_offs;
             std::copy(ptr, ptr + transfer_length, hm_ptr);
         } else {
             auto& p = mem(adr / mem.page_size);
@@ -287,11 +289,18 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
 template <unsigned long long SIZE, unsigned BUSWIDTH>
 inline bool memory<SIZE, BUSWIDTH>::handle_dmi(tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data) {
     if(allow_dmi.get_value()) {
-        auto& p = mem(gp.get_address() / mem.page_size);
-        dmi_data.set_start_address(gp.get_address() & ~mem.page_addr_mask);
-        auto end_address = mem.page_size > SIZE ? SIZE : mem.page_size;
-        dmi_data.set_end_address(dmi_data.get_start_address() + end_address - 1);
-        dmi_data.set_dmi_ptr(p.data());
+        auto hm_entry = host_mem_lut.getEntry(gp.get_address());
+        if(hm_entry.ptr) {
+            dmi_data.set_start_address(hm_entry.base);
+            dmi_data.set_end_address(hm_entry.base + hm_entry.size - 1);
+            dmi_data.set_dmi_ptr(hm_entry.ptr);
+        } else {
+            auto& p = mem(gp.get_address() / mem.page_size);
+            auto size = mem.page_size > SIZE ? SIZE : mem.page_size;
+            dmi_data.set_start_address(gp.get_address() & ~mem.page_addr_mask);
+            dmi_data.set_end_address(dmi_data.get_start_address() + size - 1);
+            dmi_data.set_dmi_ptr(p.data());
+        }
         dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);
         dmi_data.set_read_latency(clk_period.value() ? clk_period * rd_resp_clk_delay : rd_resp_delay);
         dmi_data.set_write_latency(clk_period.value() ? clk_period * wr_resp_clk_delay : wr_resp_delay);
