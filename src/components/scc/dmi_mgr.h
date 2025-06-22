@@ -14,36 +14,32 @@
 #include <scc/report.h>
 #include <scv-tr/scv_tr.h>
 
+namespace tlm {
+bool operator==(tlm_dmi const& o1, tlm_dmi const& o1) const {
+    return o1.get_granted_access() == o2.get_granted_access() && o1.get_start_address() == o2.get_start_address() &&
+           o1.get_end_address() == o2.get_end_address();
+}
+bool operator!=(tlm_dmi const& o1, tlm_dmi const& o2) const { return !operator==(o1, o2); }
+}
 namespace scc {
 
 template <typename TYPES = tlm::tlm_base_protocol_types>
 struct dmi_mgr: public sc_core::sc_object {
-    struct tlm_dmi_ext : public tlm::tlm_dmi {
-        bool operator==(const tlm_dmi_ext& o) const {
-            return this->get_granted_access() == o.get_granted_access() && this->get_start_address() == o.get_start_address() &&
-                   this->get_end_address() == o.get_end_address();
-        }
-
-        bool operator!=(const tlm_dmi_ext& o) const { return !operator==(o); }
-    };
 
     cci::cci_param<bool> disable_dmi{"disable_dmi", false};
 
-    dmi_mgr(std::string const& name, tlm::tlm_fw_transport_if<TYPES>& fw_if): sc_core::sc_object(name.c_str()), fw_if(fw_if) {
-    }
+    cci::cci_param<sc_core::sc_time> clk_period{"clk_period", sc_core::SC_ZERO_TIME};
+
+    dmi_mgr(std::string const& name, tlm::tlm_fw_transport_if<TYPES>& fw_if): sc_core::sc_object(name.c_str()), fw_if(fw_if) { }
 
     virtual ~dmi_mgr() = default;
 
-    template <unsigned int BUSWIDTH> bool read_mem(uint64_t addr, unsigned length, uint8_t* const data, bool is_fetch) {
-        auto& dmi_lut = is_fetch ? fetch_lut : read_lut;
-        auto lut_entry = dmi_lut.getEntry(addr);
+    template <unsigned int BUSWIDTH> bool read_mem(uint64_t addr, unsigned length, uint8_t* const data) {
+        auto lut_entry = read_lut.getEntry(addr);
         if(lut_entry.get_granted_access() != tlm::tlm_dmi::DMI_ACCESS_NONE && addr + length <= lut_entry.get_end_address() + 1) {
             auto offset = addr - lut_entry.get_start_address();
             std::copy(lut_entry.get_dmi_ptr() + offset, lut_entry.get_dmi_ptr() + offset + length, data);
-            if(is_fetch)
-                ibus_inc += lut_entry.get_read_latency() / curr_clk;
-            else
-                dbus_inc += lut_entry.get_read_latency() / curr_clk;
+            bus_clk_sycles += lut_entry.get_read_latency() / clk_period.get_value();
             return true;
         } else {
             tlm::tlm_generic_payload gp;
@@ -58,11 +54,8 @@ struct dmi_mgr: public sc_core::sc_object {
             if(pre_delay > delay) {
                 quantum_keeper.reset();
             } else {
-                auto incr = (delay - quantum_keeper.get_local_time()) / curr_clk;
-                if(is_fetch)
-                    ibus_inc += incr;
-                else
-                    dbus_inc += incr;
+                auto incr = (delay - quantum_keeper.get_local_time()) / clk_period.get_value();
+                bus_clk_sycles += incr;
             }
             SCCTRACE(this->name()) << "[local time: " << delay << "]: finish read_mem(0x" << std::hex << addr << ") : 0x"
                                    << (length == 4   ? *(uint32_t*)data
@@ -74,10 +67,10 @@ struct dmi_mgr: public sc_core::sc_object {
             if(gp.is_dmi_allowed() && !disable_dmi.get_value()) {
                 gp.set_command(tlm::TLM_READ_COMMAND);
                 gp.set_address(addr);
-                tlm_dmi_ext dmi_data;
-                if(dbus->get_direct_mem_ptr(gp, dmi_data)) {
+                tlm::tlm_dmi dmi_data;
+                if(fw_if->get_direct_mem_ptr(gp, dmi_data)) {
                     if(dmi_data.is_read_allowed())
-                        dmi_lut.addEntry(dmi_data, dmi_data.get_start_address(), dmi_data.get_end_address() - dmi_data.get_start_address() + 1);
+                        read_lut.addEntry(dmi_data, dmi_data.get_start_address(), dmi_data.get_end_address() - dmi_data.get_start_address() + 1);
                 }
             }
             return true;
@@ -89,7 +82,7 @@ struct dmi_mgr: public sc_core::sc_object {
         if(lut_entry.get_granted_access() != tlm::tlm_dmi::DMI_ACCESS_NONE && addr + length <= lut_entry.get_end_address() + 1) {
             auto offset = addr - lut_entry.get_start_address();
             std::copy(data, data + length, lut_entry.get_dmi_ptr() + offset);
-            dbus_inc += lut_entry.get_write_latency() / curr_clk;
+            bus_clk_sycles += lut_entry.get_write_latency() / clk_period.get_value();
             return true;
         } else {
             write_buf.resize(length);
@@ -106,7 +99,7 @@ struct dmi_mgr: public sc_core::sc_object {
             if(pre_delay > delay)
                 quantum_keeper.reset();
             else
-                dbus_inc += (delay - quantum_keeper.get_local_time()) / curr_clk;
+                bus_clk_sycles += (delay - quantum_keeper.get_local_time()) / clk_period.get_value();
             SCCTRACE() << "[local time: " << delay << "]: finish write_mem(0x" << std::hex << addr << ") : 0x"
                        << (length == 4   ? *(uint32_t*)data
                            : length == 2 ? *(uint16_t*)data
@@ -115,9 +108,9 @@ struct dmi_mgr: public sc_core::sc_object {
                 return false;
             }
             if(gp.is_dmi_allowed() && !disable_dmi.get_value()) {
-                gp.set_command(tlm::TLM_READ_COMMAND);
+                gp.set_command(tlm::TLM_WRITE_COMMAND);
                 gp.set_address(addr);
-                tlm_dmi_ext dmi_data;
+                tlm::tlm_dmi dmi_data;
                 if(fw_if->get_direct_mem_ptr(gp, dmi_data)) {
                     if(dmi_data.is_write_allowed())
                         write_lut.addEntry(dmi_data, dmi_data.get_start_address(),
@@ -129,11 +122,10 @@ struct dmi_mgr: public sc_core::sc_object {
     }
 private:
     tlm::tlm_fw_transport_if<TYPES>& fw_if;
-    util::range_lut<tlm_dmi_ext> fetch_lut, read_lut, write_lut;
+    util::range_lut<tlm::tlm_dmi> fetch_lut, read_lut, write_lut;
     std::vector<uint8_t> write_buf;
     tlm_utils::tlm_quantumkeeper quantum_keeper;
-    sc_core::sc_signal<sc_core::sc_time> curr_clk;
-    uint64_t ibus_inc{0}, dbus_inc{0};
+    uint64_t bus_clk_sycles{0};
 };
 
 } /* namespace scc */
