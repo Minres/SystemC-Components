@@ -8,33 +8,37 @@
 #ifndef SCC_SRC_COMPONENTS_SCC_DMI_MGR_H_
 #define SCC_SRC_COMPONENTS_SCC_DMI_MGR_H_
 
-#include <tlm>
-#include <util/range_lut.h>
-#include <tlm_utils/tlm_quantumkeeper.h>
 #include <scc/report.h>
 #include <scv-tr/scv_tr.h>
+#include <sysc/communication/sc_port.h>
+#include <tlm>
+#include <tlm_core/tlm_2/tlm_2_interfaces/tlm_dmi.h>
+#include <tlm_utils/tlm_quantumkeeper.h>
+#include <util/range_lut.h>
 
 namespace tlm {
-bool operator==(tlm_dmi const& o1, tlm_dmi const& o1) const {
+inline bool operator==(tlm_dmi const& o1, tlm_dmi const& o2) {
     return o1.get_granted_access() == o2.get_granted_access() && o1.get_start_address() == o2.get_start_address() &&
            o1.get_end_address() == o2.get_end_address();
 }
-bool operator!=(tlm_dmi const& o1, tlm_dmi const& o2) const { return !operator==(o1, o2); }
-}
+inline bool operator!=(tlm_dmi const& o1, tlm_dmi const& o2) { return !operator==(o1, o2); }
+} // namespace tlm
+
 namespace scc {
 
-template <typename TYPES = tlm::tlm_base_protocol_types>
-struct dmi_mgr: public sc_core::sc_object {
+template <typename TYPES = tlm::tlm_base_protocol_types> struct dmi_mgr : public sc_core::sc_object {
 
     cci::cci_param<bool> disable_dmi{"disable_dmi", false};
 
     cci::cci_param<sc_core::sc_time> clk_period{"clk_period", sc_core::SC_ZERO_TIME};
 
-    dmi_mgr(std::string const& name, tlm::tlm_fw_transport_if<TYPES>& fw_if): sc_core::sc_object(name.c_str()), fw_if(fw_if) { }
+    dmi_mgr(std::string const& name, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_if)
+    : sc_core::sc_object(name.c_str())
+    , fw_if(fw_if) {}
 
     virtual ~dmi_mgr() = default;
 
-    template <unsigned int BUSWIDTH> bool read_mem(uint64_t addr, unsigned length, uint8_t* const data) {
+    bool read(uint64_t addr, unsigned length, uint8_t* const data) {
         auto lut_entry = read_lut.getEntry(addr);
         if(lut_entry.get_granted_access() != tlm::tlm_dmi::DMI_ACCESS_NONE && addr + length <= lut_entry.get_end_address() + 1) {
             auto offset = addr - lut_entry.get_start_address();
@@ -70,14 +74,15 @@ struct dmi_mgr: public sc_core::sc_object {
                 tlm::tlm_dmi dmi_data;
                 if(fw_if->get_direct_mem_ptr(gp, dmi_data)) {
                     if(dmi_data.is_read_allowed())
-                        read_lut.addEntry(dmi_data, dmi_data.get_start_address(), dmi_data.get_end_address() - dmi_data.get_start_address() + 1);
+                        read_lut.addEntry(dmi_data, dmi_data.get_start_address(),
+                                          dmi_data.get_end_address() - dmi_data.get_start_address() + 1);
                 }
             }
             return true;
         }
     }
 
-    template <unsigned int BUSWIDTH> bool write_mem(uint64_t addr, unsigned length, const uint8_t* const data) {
+    bool write(uint64_t addr, unsigned length, const uint8_t* const data) {
         auto lut_entry = write_lut.getEntry(addr);
         if(lut_entry.get_granted_access() != tlm::tlm_dmi::DMI_ACCESS_NONE && addr + length <= lut_entry.get_end_address() + 1) {
             auto offset = addr - lut_entry.get_start_address();
@@ -120,9 +125,10 @@ struct dmi_mgr: public sc_core::sc_object {
             return true;
         }
     }
+
 private:
-    tlm::tlm_fw_transport_if<TYPES>& fw_if;
-    util::range_lut<tlm::tlm_dmi> fetch_lut, read_lut, write_lut;
+    sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_if;
+    util::range_lut<tlm::tlm_dmi> read_lut{tlm::tlm_dmi{}}, write_lut{tlm::tlm_dmi{}};
     std::vector<uint8_t> write_buf;
     tlm_utils::tlm_quantumkeeper quantum_keeper;
     uint64_t bus_clk_sycles{0};
