@@ -56,7 +56,7 @@ public:
     //! the target socket to connect to TLM
     tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
     //! CCI parameter to configure if DMI is allowd
-    cci::cci_param<bool> allow_dmi{"", true, "Allow DMI accesses to this memory if set"};
+    cci::cci_param<bool> allow_dmi{"allow_dmi", true, "Allow DMI accesses to this memory if set"};
     /**
      * constructor with explicit instance name
      *
