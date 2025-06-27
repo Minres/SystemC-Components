@@ -10,6 +10,7 @@ set(LIB_SOURCES
     axi/axi_initiator.cpp
     axi/axi_target.cpp
 	ocp/ocp_tlm.cpp
+    tilelink/tl_tlm.cpp
 )
 
 add_library(${PROJECT_NAME} ${LIB_SOURCES})

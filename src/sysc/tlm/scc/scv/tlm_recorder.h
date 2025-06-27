@@ -360,6 +360,7 @@ template <typename TYPES> void tlm_recorder<TYPES>::b_transport(typename TYPES::
         b_timed_peq.notify(*req, tlm::BEGIN_REQ, delay);
     }
 
+    auto addr = trans.get_address();
     for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
             extensionRecording->recordBeginTx(h, trans);
@@ -387,6 +388,7 @@ template <typename TYPES> void tlm_recorder<TYPES>::b_transport(typename TYPES::
     } else {
         preExt->txHandle = preTx;
     }
+    trans.set_address(addr);
     record(h, trans);
     for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
         if(extensionRecording)
