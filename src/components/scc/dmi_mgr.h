@@ -26,6 +26,9 @@ inline bool operator!=(tlm_dmi const& o1, tlm_dmi const& o2) { return !operator=
 
 namespace scc {
 
+enum dmi_status { ERROR = 0, OK = 1, DMI_RD = 2, DMI_WR = 4, DMI_ALL = 6 };
+inline dmi_status operator|=(dmi_status s1, dmi_status s2) { return static_cast<dmi_status>(s1 | s2); }
+
 template <typename TYPES = tlm::tlm_base_protocol_types> struct dmi_mgr : public sc_core::sc_object {
 
     cci::cci_param<bool> disable_dmi{"disable_dmi", false};
@@ -38,13 +41,13 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct dmi_mgr : public
 
     virtual ~dmi_mgr() = default;
 
-    bool read(uint64_t addr, unsigned length, uint8_t* const data) {
+    dmi_status read(uint64_t addr, unsigned length, uint8_t* const data) {
         auto lut_entry = read_lut.getEntry(addr);
         if(lut_entry.get_granted_access() != tlm::tlm_dmi::DMI_ACCESS_NONE && addr + length <= lut_entry.get_end_address() + 1) {
             auto offset = addr - lut_entry.get_start_address();
             std::copy(lut_entry.get_dmi_ptr() + offset, lut_entry.get_dmi_ptr() + offset + length, data);
             bus_clk_sycles += lut_entry.get_read_latency() / clk_period.get_value();
-            return true;
+            return DMI_RD;
         } else {
             tlm::tlm_generic_payload gp;
             gp.set_command(tlm::TLM_READ_COMMAND);
@@ -61,34 +64,43 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct dmi_mgr : public
                 auto incr = (delay - quantum_keeper.get_local_time()) / clk_period.get_value();
                 bus_clk_sycles += incr;
             }
-            SCCTRACE(this->name()) << "[local time: " << delay << "]: finish read_mem(0x" << std::hex << addr << ") : 0x"
+            SCCTRACE(this->name()) << "[local time: " << delay << "]: finish read(0x" << std::hex << addr << ") : 0x"
                                    << (length == 4   ? *(uint32_t*)data
                                        : length == 2 ? *(uint16_t*)data
                                                      : (unsigned)*data);
             if(gp.get_response_status() != tlm::TLM_OK_RESPONSE) {
-                return false;
+                return ERROR;
             }
             if(gp.is_dmi_allowed() && !disable_dmi.get_value()) {
                 gp.set_command(tlm::TLM_READ_COMMAND);
                 gp.set_address(addr);
                 tlm::tlm_dmi dmi_data;
                 if(fw_if->get_direct_mem_ptr(gp, dmi_data)) {
-                    if(dmi_data.is_read_allowed())
+                    dmi_status res = ERROR;
+                    if(dmi_data.is_read_allowed()) {
                         read_lut.addEntry(dmi_data, dmi_data.get_start_address(),
                                           dmi_data.get_end_address() - dmi_data.get_start_address() + 1);
+                        res |= DMI_RD;
+                    }
+                    if(dmi_data.is_write_allowed()) {
+                        write_lut.addEntry(dmi_data, dmi_data.get_start_address(),
+                                           dmi_data.get_end_address() - dmi_data.get_start_address() + 1);
+                        res |= DMI_WR;
+                    }
+                    return res;
                 }
             }
-            return true;
+            return OK;
         }
     }
 
-    bool write(uint64_t addr, unsigned length, const uint8_t* const data) {
+    dmi_status write(uint64_t addr, unsigned length, const uint8_t* const data) {
         auto lut_entry = write_lut.getEntry(addr);
         if(lut_entry.get_granted_access() != tlm::tlm_dmi::DMI_ACCESS_NONE && addr + length <= lut_entry.get_end_address() + 1) {
             auto offset = addr - lut_entry.get_start_address();
             std::copy(data, data + length, lut_entry.get_dmi_ptr() + offset);
             bus_clk_sycles += lut_entry.get_write_latency() / clk_period.get_value();
-            return true;
+            return DMI_WR;
         } else {
             write_buf.resize(length);
             std::copy(data, data + length, write_buf.begin()); // need to copy as TLM does not guarantee data integrity
@@ -105,24 +117,33 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct dmi_mgr : public
                 quantum_keeper.reset();
             else
                 bus_clk_sycles += (delay - quantum_keeper.get_local_time()) / clk_period.get_value();
-            SCCTRACE() << "[local time: " << delay << "]: finish write_mem(0x" << std::hex << addr << ") : 0x"
+            SCCTRACE() << "[local time: " << delay << "]: finish write(0x" << std::hex << addr << ") : 0x"
                        << (length == 4   ? *(uint32_t*)data
                            : length == 2 ? *(uint16_t*)data
                                          : (unsigned)*data);
             if(gp.get_response_status() != tlm::TLM_OK_RESPONSE) {
-                return false;
+                return ERROR;
             }
             if(gp.is_dmi_allowed() && !disable_dmi.get_value()) {
                 gp.set_command(tlm::TLM_WRITE_COMMAND);
                 gp.set_address(addr);
                 tlm::tlm_dmi dmi_data;
                 if(fw_if->get_direct_mem_ptr(gp, dmi_data)) {
-                    if(dmi_data.is_write_allowed())
+                    dmi_status res = ERROR;
+                    if(dmi_data.is_write_allowed()) {
                         write_lut.addEntry(dmi_data, dmi_data.get_start_address(),
                                            dmi_data.get_end_address() - dmi_data.get_start_address() + 1);
+                        res |= DMI_WR;
+                    }
+                    if(dmi_data.is_read_allowed()) {
+                        read_lut.addEntry(dmi_data, dmi_data.get_start_address(),
+                                          dmi_data.get_end_address() - dmi_data.get_start_address() + 1);
+                        res |= DMI_RD;
+                    }
+                    return res;
                 }
             }
-            return true;
+            return OK;
         }
     }
 
