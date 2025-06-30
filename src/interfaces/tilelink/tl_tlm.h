@@ -91,12 +91,32 @@ enum class opcode_e {
     ILLEGAL = 0xf
 };
 
+enum param_e {
+    // *N*one, *B*ranch, *T*runk
+    // cap params
+    CAP_2T = 0x0,
+    CAP_2B = 0x1,
+    CAP_2N = 0x2,
+    // grow params
+    GROW_N2B = 0x10,
+    GROW_N2T = 0x11,
+    GROW_B2T = 0x12,
+    // prune params
+    PRUNE_T2B = 0x20,
+    PRUNE_T2N = 0x21,
+    PRUNE_B2N = 0x22,
+    // report params
+    REP_T2T = 0x3,
+    REP_B2B = 0x4,
+    REP_N2N = 0x5
+};
+
 struct tilelink_extension : public tlm::tlm_extension<tilelink_extension> {
     opcode_e get_opcode() const;
     void set_opcode(opcode_e);
 
-    uint8_t get_param() const;
-    void set_param(uint8_t);
+    param_e get_param() const;
+    void set_param(param_e);
 
     uint64_t get_source() const;
     void set_source(uint64_t);
@@ -111,6 +131,10 @@ struct tilelink_extension : public tlm::tlm_extension<tilelink_extension> {
     void set_denied(bool = true);
 
     tilelink_extension() = default;
+
+    tilelink_extension(opcode_e opc, param_e p)
+    : opcode(opc)
+    , param(p) {}
 
     tilelink_extension(const tilelink_extension& o) = default;
     /**
@@ -129,7 +153,7 @@ private:
     uint64_t sink{0};
     bool corrupt{false};
     bool denied{false};
-    uint8_t param{0};
+    param_e param{CAP_2T};
     opcode_e opcode{opcode_e::ILLEGAL};
 };
 //! aliases for payload and phase types
@@ -319,9 +343,9 @@ inline opcode_e tilelink_extension::get_opcode() const { return opcode; }
 
 inline void tilelink_extension::set_opcode(opcode_e opcode) { this->opcode = opcode; }
 
-inline uint8_t tilelink_extension::get_param() const { return param; }
+inline param_e tilelink_extension::get_param() const { return param; }
 
-inline void tilelink_extension::set_param(uint8_t param) { this->param = param; }
+inline void tilelink_extension::set_param(param_e param) { this->param = param; }
 
 inline uint64_t tilelink_extension::get_source() const { return source; }
 
