@@ -3252,8 +3252,8 @@ public:
 // ----------------------------------------
 template <typename T> class scv_extensions<scv_extensions<T>> : public scv_extensions<T> {
 public:
-    scv_extensions<scv_extensions<T>>() {}
-    scv_extensions<scv_extensions<T>>(const scv_extensions<T>& rhs)
+    scv_extensions() {}
+    scv_extensions(const scv_extensions<T>& rhs)
     : scv_extensions<T>(rhs) {}
     virtual ~scv_extensions() {}
     scv_extensions& operator=(const scv_extensions<T>& rhs) { return scv_extensions<T>::operator=(rhs); }
