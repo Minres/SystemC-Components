@@ -37,10 +37,9 @@ namespace scc {
  *
  * @tparam BUSWIDTH the width of the bus
  */
-template <unsigned BUSWIDTH = LT> class router : sc_core::sc_module {
-public:
+template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_socket<BUSWIDTH>> struct router : sc_core::sc_module {
     using intor_sckt = tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<BUSWIDTH>>;
-    using target_sckt = tlm::scc::target_mixin<tlm::scc::scv::tlm_rec_target_socket<BUSWIDTH>>;
+    using target_sckt = tlm::scc::target_mixin<TARGET_SOCKET_TYPE>;
     //! \brief the array of target sockets
     sc_core::sc_vector<target_sckt> target;
     //! \brief  the array of initiator sockets
@@ -182,8 +181,8 @@ protected:
     std::unordered_map<std::string, size_t> target_name_lut;
 };
 
-template <unsigned BUSWIDTH>
-router<BUSWIDTH>::router(const sc_core::sc_module_name& nm, size_t slave_cnt, size_t master_cnt)
+template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
+router<BUSWIDTH, TARGET_SOCKET_TYPE>::router(const sc_core::sc_module_name& nm, size_t slave_cnt, size_t master_cnt)
 : sc_module(nm)
 , target("target", master_cnt)
 , initiator("intor", slave_cnt)
@@ -209,14 +208,16 @@ router<BUSWIDTH>::router(const sc_core::sc_module_name& nm, size_t slave_cnt, si
     }
 }
 
-template <unsigned BUSWIDTH> void router<BUSWIDTH>::set_target_range(size_t idx, uint64_t base, uint64_t size, bool remap) {
+template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
+void router<BUSWIDTH, TARGET_SOCKET_TYPE>::set_target_range(size_t idx, uint64_t base, uint64_t size, bool remap) {
     tranges[idx].base = base;
     tranges[idx].size = size;
     tranges[idx].remap = remap;
     addr_decoder.addEntry(idx, base, size);
 }
 
-template <unsigned BUSWIDTH> void router<BUSWIDTH>::add_target_range(std::string name, uint64_t base, uint64_t size, bool remap) {
+template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
+void router<BUSWIDTH, TARGET_SOCKET_TYPE>::add_target_range(std::string name, uint64_t base, uint64_t size, bool remap) {
     auto it = target_name_lut.find(name);
 #ifndef NDEBUG
 #if(SYSTEMC_VERSION >= 20171012)
@@ -236,7 +237,8 @@ template <unsigned BUSWIDTH> void router<BUSWIDTH>::add_target_range(std::string
     addr_decoder.addEntry(idx, base, size);
 }
 
-template <unsigned BUSWIDTH> void router<BUSWIDTH>::b_transport(int i, tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
+template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
+void router<BUSWIDTH, TARGET_SOCKET_TYPE>::b_transport(int i, tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
     ::sc_dt::uint64 address = trans.get_address();
     if(ibases[i]) {
         address += ibases[i];
@@ -258,7 +260,8 @@ template <unsigned BUSWIDTH> void router<BUSWIDTH>::b_transport(int i, tlm::tlm_
     initiator[idx]->b_transport(trans, delay);
     mutexes[idx].unlock();
 }
-template <unsigned BUSWIDTH> bool router<BUSWIDTH>::get_direct_mem_ptr(int i, tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) {
+template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
+bool router<BUSWIDTH, TARGET_SOCKET_TYPE>::get_direct_mem_ptr(int i, tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) {
     ::sc_dt::uint64 address = trans.get_address();
     if(ibases[i]) {
         address += ibases[i];
@@ -282,7 +285,8 @@ template <unsigned BUSWIDTH> bool router<BUSWIDTH>::get_direct_mem_ptr(int i, tl
     dmi_data.set_end_address(dmi_data.get_end_address() - ibases[i] + offset);
     return status;
 }
-template <unsigned BUSWIDTH> unsigned router<BUSWIDTH>::transport_dbg(int i, tlm::tlm_generic_payload& trans) {
+template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
+unsigned router<BUSWIDTH, TARGET_SOCKET_TYPE>::transport_dbg(int i, tlm::tlm_generic_payload& trans) {
     ::sc_dt::uint64 address = trans.get_address();
     if(ibases[i]) {
         address += ibases[i];
@@ -302,8 +306,8 @@ template <unsigned BUSWIDTH> unsigned router<BUSWIDTH>::transport_dbg(int i, tlm
     // Forward debug transaction to appropriate target
     return initiator[idx]->transport_dbg(trans);
 }
-template <unsigned BUSWIDTH>
-void router<BUSWIDTH>::invalidate_direct_mem_ptr(int id, ::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) {
+template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
+void router<BUSWIDTH, TARGET_SOCKET_TYPE>::invalidate_direct_mem_ptr(int id, ::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) {
     // Reconstruct address range in system memory map
     ::sc_dt::uint64 bw_start_range = start_range;
     if(tranges[id].remap)
