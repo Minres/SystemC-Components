@@ -31,6 +31,14 @@
  * @author Enrico Galli, Intel
  * @author Guillaume Delbergue, GreenSocs / Ericsson
  */
+
+#if defined(__clang__) || \
+   (defined(__GNUC__) && ((__GNUC__ * 1000 + __GNUC_MINOR__) >= 4006))
+// ignore warning about hidden "register_post_read_callback()" overloads
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Woverloaded-virtual"
+#endif
+
 CCI_OPEN_NAMESPACE_
 
 // Forward declaration
@@ -988,4 +996,10 @@ template <typename T, cci_param_mutable_type TM = CCI_MUTABLE_PARAM>
 using cci_param = cci_param_typed<T,TM>;
 
 CCI_CLOSE_NAMESPACE_
+
+#if defined(__clang__) || \
+   (defined(__GNUC__) && ((__GNUC__ * 1000 + __GNUC_MINOR__) >= 4006))
+#pragma GCC diagnostic pop
+#endif
+
 #endif //CCI_CFG_CCI_PARAM_TYPED_H_INCLUDED_

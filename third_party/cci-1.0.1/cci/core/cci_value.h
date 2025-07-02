@@ -764,7 +764,7 @@ class cci_value_map_elem_cref
   template<typename U> friend class cci_impl::value_iterator_impl;
   typedef cci_impl::value_ptr<cci_value_map_elem_cref> proxy_ptr;
 
-  typedef void value_type; // TODO: add  explicit value_type 
+  using value_type = cci_value_map_elem_cref;
 public:
   typedef cci_value_map_elem_cref const_reference;
   typedef cci_value_map_elem_ref  reference;
@@ -791,7 +791,7 @@ class cci_value_map_elem_ref
 {
   template<typename U> friend class cci_impl::value_iterator_impl;
   typedef cci_impl::value_ptr<cci_value_map_elem_ref> proxy_ptr;
-  typedef void value_type; // TODO: add  explicit value_type
+  using value_type = cci_value_map_elem_ref;
 public:
   typedef cci_value_map_elem_cref const_reference;
   typedef cci_value_map_elem_ref  reference;
