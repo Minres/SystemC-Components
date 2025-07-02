@@ -315,7 +315,7 @@ bool tracer_base::get_default_trace_enable() {
         }
         uninitialized = false;
     }
-    return trb ? trb->default_trace_enable.get_value() : true;
+    return trb ? default_trace_enable().get_value() : true;
 }
 
 } // namespace scc

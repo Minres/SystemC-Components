@@ -53,7 +53,7 @@ tracer::tracer(std::string const&& name, file_type tx_type, file_type sig_type, 
 , lwtr_db(nullptr)
 , owned{sig_type != NONE} {
     if(sig_type == ENABLE)
-        sig_type = static_cast<file_type>(sig_trace_type.get_value());
+        sig_type = static_cast<file_type>(sig_trace_type().get_value());
     if(sig_type != NONE) {
         switch(sig_type) {
         default:
@@ -72,7 +72,7 @@ tracer::tracer(std::string const&& name, file_type tx_type, file_type sig_type, 
     }
     if(trf)
         trf->set_time_unit(1, SC_PS);
-    init_tx_db(tx_type == ENABLE ? static_cast<file_type>(tx_trace_type.get_value()) : tx_type, std::move(name));
+    init_tx_db(tx_type == ENABLE ? static_cast<file_type>(tx_trace_type().get_value()) : tx_type, std::move(name));
 }
 
 tracer::tracer(std::string const&& name, file_type tx_type, sc_core::sc_trace_file* tf, sc_core::sc_object* top,
@@ -83,7 +83,7 @@ tracer::tracer(std::string const&& name, file_type tx_type, sc_core::sc_trace_fi
 , lwtr_db(nullptr)
 , owned{false} {
     trf = tf;
-    init_tx_db(tx_type == ENABLE ? static_cast<file_type>(tx_trace_type.get_value()) : tx_type, std::move(name));
+    init_tx_db(tx_type == ENABLE ? static_cast<file_type>(tx_trace_type().get_value()) : tx_type, std::move(name));
 }
 
 tracer::~tracer() {
@@ -155,12 +155,12 @@ void tracer::init_tx_db(file_type type, std::string const&& name) {
 void tracer::end_of_elaboration() {
     if(trf) {
         for(auto o : sc_get_top_level_objects())
-            descend(o, default_trace_enable.get_value());
+            descend(o, default_trace_enable().get_value());
     }
 }
 
 void tracer::end_of_simulation() {
-    if(close_db_in_eos.get_value()) {
+    if(close_db_in_eos().get_value()) {
         delete txdb;
         txdb = nullptr;
         delete lwtr_db;

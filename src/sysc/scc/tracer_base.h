@@ -62,6 +62,7 @@ inline trace_types operator|(trace_types lhs, trace_types rhs) {
 inline trace_types operator&(trace_types lhs, trace_types rhs) {
     return static_cast<trace_types>(static_cast<unsigned>(lhs) & static_cast<unsigned>(rhs));
 }
+
 /**
  * @class tracer_base
  *
@@ -76,9 +77,15 @@ inline trace_types operator&(trace_types lhs, trace_types rhs) {
  *
  */
 struct tracer_base : public sc_core::sc_module {
-    //! the default for tracing if no attribute is configured
-    cci::cci_param<bool> default_trace_enable{"scc_tracer.default_trace_enable", true,
-                                              "the default for tracing if no attribute is configured", cci::CCI_ABSOLUTE_NAME};
+    /**
+     * cci parameter to determine if the tracing is enabled if not specified explicitly
+     */
+    static cci::cci_param<bool>& default_trace_enable() {
+        static cci::cci_param<bool> default_trace_enable{"scc_tracer.default_trace_enable", true,
+                                                         "the default for tracing if no attribute is configured", cci::CCI_ABSOLUTE_NAME};
+        return default_trace_enable;
+    }
+
     /**
      * @fn  tracer_base(const sc_core::sc_module_name&)
      * @brief named constructor
