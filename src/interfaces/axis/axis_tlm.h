@@ -63,14 +63,14 @@ template <> struct tlm_mm_traits<axis::axis_packet_types> {
 } // namespace tlm
 
 namespace axis {
-template <int N = 1> using axis_pkt_initiator_socket = tlm::nw::tlm_network_initiator_socket<1, AXIS_PKT, axis_packet_types, N>;
-template <int N = 1> using axis_pkt_target_socket = tlm::nw::tlm_network_target_socket<1, AXIS_PKT, axis_packet_types, N>;
+template <int N = 32> using axis_pkt_initiator_socket = tlm::nw::tlm_network_initiator_socket<N, AXIS_PKT, axis_packet_types, N>;
+template <int N = 32> using axis_pkt_target_socket = tlm::nw::tlm_network_target_socket<N, AXIS_PKT, axis_packet_types, N>;
 using axis_pkt_shared_ptr = tlm::scc::tlm_payload_shared_ptr<axis_packet_payload>;
 using axis_pkt_mm = tlm::scc::tlm_mm<axis_packet_types, false>;
 
 struct axis_channel : public sc_core::sc_module,
-                     public tlm::nw::tlm_network_fw_transport_if<axis_packet_types>,
-                     public tlm::nw::tlm_network_bw_transport_if<axis_packet_types> {
+                      public tlm::nw::tlm_network_fw_transport_if<axis_packet_types>,
+                      public tlm::nw::tlm_network_bw_transport_if<axis_packet_types> {
 
     using transaction_type = axis_packet_types::tlm_payload_type;
     using phase_type = axis_packet_types::tlm_phase_type;

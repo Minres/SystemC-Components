@@ -17,8 +17,7 @@
 #ifndef _TLM_NW_TLM_NETWORK_SOCKETS_H_
 #define _TLM_NW_TLM_NETWORK_SOCKETS_H_
 
-#include "scc/report.h"
-
+#include "tlm_network_gp.h"
 #include <sysc/kernel/sc_object.h>
 #ifdef CWR_SYSTEMC
 #include <tlm_h/tlm_sockets/tlm_initiator_socket.h>
@@ -73,6 +72,14 @@ struct tlm_network_initiator_socket
     using protocol_types = TYPES;
     using transaction_type = typename TYPES::tlm_payload_type;
     using phase_type = typename TYPES::tlm_phase_type;
+
+    using base_class = tlm_base_initiator_socket<0, tlm_network_fw_transport_if<TYPES>, tlm_network_bw_transport_if<TYPES>, N, POL>;
+
+    using fw_interface_type = tlm_network_fw_transport_if<TYPES>;
+    using bw_interface_type = tlm_network_bw_transport_if<TYPES>;
+
+    using port_type = sc_core::sc_port<fw_interface_type, N, POL>;
+    using export_type = sc_core::sc_export<bw_interface_type>;
 
     tlm_network_initiator_socket()
     : tlm_base_initiator_socket<0, tlm_network_fw_transport_if<TYPES>, tlm_network_bw_transport_if<TYPES>, N, POL>() {}
