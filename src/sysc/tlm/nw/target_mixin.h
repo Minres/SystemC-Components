@@ -21,6 +21,7 @@
 #endif
 
 #include "scc/utilities.h"
+#include "tlm_network_sockets.h"
 #include <functional>
 #include <sstream>
 #include <tlm>
@@ -33,7 +34,8 @@ namespace nw {
 /**
  * an target socket mixin adding default implementation of callback functions similar to tlm::simple_target_socket
  */
-template <typename BASE_TYPE, typename TYPES = typename BASE_TYPE::protocol_types> class target_mixin : public BASE_TYPE {
+template <typename BASE_TYPE, bool REQUESTOR = true, typename TYPES = typename BASE_TYPE::protocol_types>
+class target_mixin : public BASE_TYPE {
     //    friend class fw_process;
     //    friend class bw_process;
 
@@ -128,25 +130,13 @@ private:
                 return m_owner->bw_nb_transport(trans, phase, t);
 
             } else {
-                if(phase == tlm::END_REQ) {
+                if(phase == tlm::nw::CONFIRM || phase == tlm::nw::RESPONSE) {
                     m_owner->m_end_request.notify(sc_core::SC_ZERO_TIME);
                     return tlm::TLM_ACCEPTED;
-
-                } else if(phase == tlm::BEGIN_RESP) {
-                    if(m_owner->m_current_transaction == &trans) {
-                        m_owner->m_end_request.notify(sc_core::SC_ZERO_TIME);
-                    }
-                    // TODO: add response-accept delay?
-                    it->second->notify(t);
-                    m_owner->m_pending_trans.erase(it);
-                    return tlm::TLM_COMPLETED;
-
                 } else {
                     assert(false);
                     exit(1);
                 }
-
-                //        return tlm::TLM_COMPLETED;  //Should not reach here
             }
         }
 
@@ -168,8 +158,7 @@ private:
         , m_b_transport_ptr(0)
         , m_transport_dbg_ptr(0)
         , m_get_direct_mem_ptr(0)
-        , m_peq(sc_core::sc_gen_unique_name("m_peq"))
-        , m_response_in_progress(false) {
+        , m_peq(sc_core::sc_gen_unique_name("m_peq")) {
             sc_core::sc_spawn_options opts;
             opts.set_sensitivity(&m_peq.get_event());
             sc_core::sc_spawn(sc_bind(&fw_process::b2nb_thread, this), sc_core::sc_gen_unique_name("b2nb_thread"), &opts);
@@ -220,12 +209,12 @@ private:
                 // forward call
                 return m_nb_transport_ptr(trans, phase, t);
             } else if(m_b_transport_ptr) {
-                if(phase == tlm::BEGIN_REQ) {
+                if(phase == tlm::nw::REQUEST || phase == tlm::nw::INDICATION) {
                     // prepare thread to do blocking call
-                    process_handle_class* ph = m_process_handle.get_handle(&trans);
+                    process_handle_class* ph = m_process_handle.get_handle(&trans, phase);
 
                     if(!ph) { // create new dynamic process
-                        ph = new process_handle_class(&trans);
+                        ph = new process_handle_class(&trans, phase);
                         m_process_handle.put_handle(ph);
 
                         sc_core::sc_spawn_options opts;
@@ -234,12 +223,7 @@ private:
                         sc_core::sc_spawn(sc_bind(&fw_process::nb2b_thread, this, ph), sc_core::sc_gen_unique_name("nb2b_thread"), &opts);
                     }
                     ph->m_e.notify(t);
-                    phase = tlm::END_REQ;
-                    return tlm::TLM_UPDATED;
-                } else if(phase == tlm::END_RESP) {
-                    m_response_in_progress = false;
-                    m_end_response.notify(t);
-                    return tlm::TLM_COMPLETED;
+                    return tlm::TLM_ACCEPTED;
                 } else {
                     assert(false);
                     exit(1);
@@ -321,11 +305,13 @@ private:
 
         class process_handle_class {
         public:
-            explicit process_handle_class(transaction_type* trans)
+            explicit process_handle_class(transaction_type* trans, phase_type phase)
             : m_trans(trans)
+            , m_phase(phase)
             , m_suspend(false) {}
 
             transaction_type* m_trans;
+            phase_type m_phase;
             sc_core::sc_event m_e;
             bool m_suspend;
         };
@@ -339,12 +325,13 @@ private:
                     delete *it;
             }
 
-            process_handle_class* get_handle(transaction_type* trans) {
+            process_handle_class* get_handle(transaction_type* trans, phase_type phase) {
                 typename std::vector<process_handle_class*>::iterator it;
 
                 for(it = v.begin(); it != v.end(); it++) {
                     if((*it)->m_suspend) {      // found suspended dynamic process, re-use it
                         (*it)->m_trans = trans; // replace to new one
+                        (*it)->m_phase = phase;
                         (*it)->m_suspend = false;
                         return *it;
                     }
@@ -361,27 +348,17 @@ private:
         process_handle_list m_process_handle;
 
         void nb2b_thread(process_handle_class* h) {
-
             while(true) {
                 transaction_type* trans = h->m_trans;
                 sc_core::sc_time t = sc_core::SC_ZERO_TIME;
-
                 // forward call
                 m_b_transport_ptr(*trans, t);
-
                 sc_core::wait(t);
-
-                // return path
-                while(m_response_in_progress) {
-                    sc_core::wait(m_end_response);
-                }
                 t = sc_core::SC_ZERO_TIME;
-                phase_type phase = tlm::BEGIN_RESP;
+                phase_type phase = tlm::nw::RESPONSE;
+                if(h->m_phase == tlm::nw::REQUEST)
+                    phase = tlm::nw::CONFIRM;
                 sync_enum_type sync = m_owner->bw_nb_transport(*trans, phase, t);
-                if(!(sync == tlm::TLM_COMPLETED || (sync == tlm::TLM_UPDATED && phase == tlm::END_RESP))) {
-                    m_response_in_progress = true;
-                }
-
                 // suspend until next transaction
                 h->m_suspend = true;
                 sc_core::wait();
@@ -391,15 +368,17 @@ private:
         void b2nb_thread() {
             while(true) {
                 sc_core::wait(m_peq.get_event());
-
                 transaction_type* trans;
                 while((trans = m_peq.get_next_transaction()) != 0) {
                     assert(m_nb_transport_ptr);
-                    phase_type phase = tlm::BEGIN_REQ;
+                    phase_type phase = tlm::nw::REQUEST;
+                    if(REQUESTOR)
+                        phase = tlm::nw::INDICATION;
                     sc_core::sc_time t = sc_core::SC_ZERO_TIME;
 
                     switch(m_nb_transport_ptr(*trans, phase, t)) {
                     case tlm::TLM_COMPLETED: {
+                        assert(phase == tlm::nw::CONFIRM || phase == tlm::nw::RESPONSE);
                         // notify transaction is finished
                         typename std::map<transaction_type*, sc_core::sc_event*>::iterator it = m_owner->m_pending_trans.find(trans);
                         assert(it != m_owner->m_pending_trans.end());
@@ -407,42 +386,19 @@ private:
                         m_owner->m_pending_trans.erase(it);
                         break;
                     }
-
                     case tlm::TLM_ACCEPTED:
                     case tlm::TLM_UPDATED:
-                        switch(phase) {
-                        case tlm::BEGIN_REQ:
+                        if(phase == tlm::nw::REQUEST || phase == tlm::nw::INDICATION) {
                             m_owner->m_current_transaction = trans;
                             sc_core::wait(m_owner->m_end_request);
                             m_owner->m_current_transaction = 0;
-                            break;
-
-                        case tlm::END_REQ:
+                        } else if(phase == tlm::nw::CONFIRM || phase == tlm::nw::RESPONSE) {
                             sc_core::wait(t);
-                            break;
-
-                        case tlm::BEGIN_RESP: {
-                            phase = tlm::END_RESP;
-                            sc_core::wait(t); // This line is a bug fix added in TLM-2.0.2
-                            t = sc_core::SC_ZERO_TIME;
-                            m_nb_transport_ptr(*trans, phase, t);
-
-                            // notify transaction is finished
-                            typename std::map<transaction_type*, sc_core::sc_event*>::iterator it = m_owner->m_pending_trans.find(trans);
-                            assert(it != m_owner->m_pending_trans.end());
-                            it->second->notify(t);
-                            m_owner->m_pending_trans.erase(it);
-                            break;
-                        }
-
-                        default:
-                            assert(false);
-                            exit(1);
-                        };
+                        } else
+                            assert(false && "Illegal phase received");
                         break;
-
                     default:
-                        assert(false);
+                        assert(false && "Illegate sync enum received");
                         exit(1);
                     };
                 }
@@ -466,7 +422,6 @@ private:
             sc_core::sc_event done;
         };
 
-    private:
         const std::string m_name;
         target_mixin* m_owner;
         NBTransportPtr m_nb_transport_ptr;
@@ -474,8 +429,6 @@ private:
         TransportDbgPtr m_transport_dbg_ptr;
         GetDirectMemPtr m_get_direct_mem_ptr;
         tlm_utils::peq_with_get<transaction_type> m_peq;
-        bool m_response_in_progress;
-        sc_core::sc_event m_end_response;
     };
 
 private:
