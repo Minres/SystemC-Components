@@ -37,6 +37,10 @@ public:
     ticking_clock(sc_core::sc_module_name const& nm)
     : BASE(nm) {}
 
+    template <typename... Args>
+    ticking_clock(sc_core::sc_module_name const& nm, Args&&... args)
+    : BASE(nm, std::forward<Args>(args)...) {}
+
 protected:
     void end_of_elaboration() override {
 #ifdef CWR_SYSTEMC
@@ -64,6 +68,16 @@ public:
 
     tickless_clock(sc_core::sc_module_name const& nm)
     : BASE(nm) {
+#if SYSTEMC_VERSION < 20250221
+        SC_HAS_PROCESS(tickless_clock<BASE>);
+#endif
+        SC_METHOD(clock_cb);
+        this->sensitive << clk_i;
+    }
+
+    template <typename... Args>
+    tickless_clock(sc_core::sc_module_name const& nm, Args&&... args)
+    : BASE(nm, std::forward<Args>(args)...) {
 #if SYSTEMC_VERSION < 20250221
         SC_HAS_PROCESS(tickless_clock<BASE>);
 #endif
