@@ -148,7 +148,6 @@ struct tlm_network_target_socket
      */
     tlm_network_target_socket()
     : tlm_base_target_socket<0, tlm_network_fw_transport_if<TYPES>, tlm_network_bw_transport_if<TYPES>, N, POL>() {}
-    transport_if<TYPES>, N, POL > () {}
     /**
      * @brief Constructor with name.
      *
@@ -168,10 +167,6 @@ struct tlm_network_target_socket
      * Returns the type index of the protocol types associated with this socket.
      */
     virtual type_index get_protocol_types() const { return typeid(TYPES); }
-};
-
-template <typename TYPES = tlm_network_baseprotocol_types> eid(TYPES);
-}
 };
 } // namespace nw
 } // namespace tlm
