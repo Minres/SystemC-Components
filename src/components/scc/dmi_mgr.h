@@ -25,22 +25,64 @@ inline bool operator!=(tlm_dmi const& o1, tlm_dmi const& o2) { return !operator=
 } // namespace tlm
 
 namespace scc {
-
+/**
+ * @brief The dmi_status enum represents the status of DMI transactions.
+ *
+ * The dmi_status enum is used to indicate the success or failure of DMI read and write operations.
+ * It provides a clear and concise way to communicate the status of the transactions.
+ *
+ * @note The dmi_status enum is a part of the SystemC Component (SCC) library.
+ */
 enum dmi_status { ERROR = 0, OK = 1, DMI_RD = 2, DMI_WR = 4, DMI_ALL = 6 };
 inline dmi_status operator|=(dmi_status s1, dmi_status s2) { return static_cast<dmi_status>(s1 | s2); }
-
-template <typename TYPES = tlm::tlm_base_protocol_types> struct dmi_mgr : public sc_core::sc_object {
-
+/**
+ * @brief The dmi_mgr class manages Direct Memory Interface (DMI) transactions.
+ *
+ * The dmi_mgr class is a template class that provides DMI management functionality.
+ * It interacts with the TLM (Transaction Level Modeling) framework to handle DMI transactions.
+ *
+ * @tparam TYPES The TLM protocol types.
+ *
+ * @note The dmi_mgr class is a part of the SystemC Component (SCC) library.
+ */
+templtemplate<typename TYPES = tlm::tlm_base_protocol_types> struct dmi_mgr : public sc_core::sc_object {
+    /**
+     * @brief A CCI parameter to disable DMI transactions.
+     *
+     * This parameter allows the user to disable DMI transactions if needed.
+     * By default, DMI transactions are enabled.
+     */
     cci::cci_param<bool> disable_dmi{"disable_dmi", false};
-
+    /**
+     * @brief A CCI parameter to specify the clock period for delay calculations.
+     *
+     * This parameter allows the user to set the clock period for the DMI transactions.
+     * By default, the clock period is set to SC_ZERO_TIME.
+     */
     cci::cci_param<sc_core::sc_time> clk_period{"clk_period", sc_core::SC_ZERO_TIME};
+    /**
+     * @brief Constructor for the dmi_mgr class.
+     *
+     * @param name The name of the dmi_mgr instance.
+     * @param fw_if The TLM (Transaction Level Modeling) forward transport interface.
+     */
 
     dmi_mgr(std::string const& name, sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& fw_if)
     : sc_core::sc_object(name.c_str())
     , fw_if(fw_if) {}
-
+    /**
+     * @brief Virtual destructor for the dmi_mgr class.
+     */
     virtual ~dmi_mgr() = default;
-
+    /**
+     * @brief Performs a read operation on the DMI interface.
+     *
+     * @param addr The address to read from.
+     * @param length The length of the data to read.
+     * @param data A pointer to the buffer where the read data will be stored.
+     *
+     * @return The status of the read operation.
+     */
     dmi_status read(uint64_t addr, unsigned length, uint8_t* const data) {
         auto lut_entry = read_lut.getEntry(addr);
         if(lut_entry.get_granted_access() != tlm::tlm_dmi::DMI_ACCESS_NONE && addr + length <= lut_entry.get_end_address() + 1) {
@@ -93,7 +135,15 @@ template <typename TYPES = tlm::tlm_base_protocol_types> struct dmi_mgr : public
             return OK;
         }
     }
-
+    /**
+     * @brief Performs a write operation on the DMI interface.
+     *
+     * @param addr The address to write to.
+     * @param length The length of the data to write.
+     * @param data A pointer to the buffer containing the data to write.
+     *
+     * @return The status of the write operation.
+     */
     dmi_status write(uint64_t addr, unsigned length, const uint8_t* const data) {
         auto lut_entry = write_lut.getEntry(addr);
         if(lut_entry.get_granted_access() != tlm::tlm_dmi::DMI_ACCESS_NONE && addr + length <= lut_entry.get_end_address() + 1) {

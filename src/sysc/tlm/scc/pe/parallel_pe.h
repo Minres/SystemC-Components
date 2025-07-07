@@ -26,7 +26,14 @@ namespace tlm {
 namespace scc {
 //! @brief SCC protocol engines
 namespace pe {
-
+/*!
+ * Parallel Protocol Engine
+ *
+ * This module implements a parallel protocol engine that can handle multiple
+ * transactions in parallel.
+ *
+ * @note This implementation assumes that the provided interfaces are compatible
+ */
 class parallel_pe : public sc_core::sc_module, public intor_fw_nb {
     template <class IF> using sc_port_opt = sc_core::sc_port<IF, 1, sc_core::SC_ZERO_OR_MORE_BOUND>;
 
@@ -43,14 +50,36 @@ class parallel_pe : public sc_core::sc_module, public intor_fw_nb {
     };
 
 public:
+    /*!
+     * upstream forward interface
+     *
+     * This interface is used to connect the protocol engine to the upstream forward port
+     */
     sc_core::sc_export<intor_fw_nb> fw_i{"fw_i"};
-
+    /*!
+     * upstream backward interface
+     *
+     * This interface is used to connect the protocol engine to the upstream backward export
+     */
     sc_port_opt<intor_bw_nb> bw_o{"bw_o"};
-
+    /*!
+     * downstream forward interface
+     *
+     * This interface is used to connect the protocol engine to the downstream forward export
+     */
     sc_core::sc_port<intor_fw_b> fw_o{"fw_o"};
-
+    /*!
+     * Constructor
+     *
+     * @param nm Name of the module
+     *
+     * @note This constructor is private and should only be called from the
+     * sc_module constructor.
+     */
     parallel_pe(sc_core::sc_module_name const& nm);
-
+    /*!
+     * virtual destructor
+     */
     virtual ~parallel_pe();
 
 private:

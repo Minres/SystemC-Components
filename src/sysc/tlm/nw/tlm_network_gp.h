@@ -27,9 +27,12 @@
 #endif
 #include <cstdint>
 
-//! @brief SystemC TLM
-namespace tlm {
-//! @brief Network TLM utilities
+/**
+ * @brief The SystemC Transaction Level Model (TLM) Network TLM utilities.
+ *
+ * @ingroup tlm-nw
+ */
+/**@{*/ namespace tlm {
 namespace nw {
 
 struct tlm_network_payload_base;
@@ -39,35 +42,75 @@ public:
     virtual void free(tlm_network_payload_base*) = 0;
     virtual ~tlm_base_mm_interface() {}
 };
-
+/**
+ * \brief A base class for TLM network payloads.
+ *
+ * The tlm_network_payload_base class provides a foundation for creating custom TLM network payloads.
+ * It includes methods for managing extensions, memory management, and response status.
+ *
+ */
 struct tlm_network_payload_base {
+    /**
+     * \brief Default constructor.
+     *
+     * Initializes the tlm_network_payload_base object with default values.
+     */
     tlm_network_payload_base()
     : tlm_network_payload_base(nullptr) {}
-
+    /**
+     * \brief Constructor with memory management interface.
+     *
+     * Initializes the tlm_network_payload_base object with a specified memory management interface.
+     *
+     * @param mm The memory management interface.
+     */
     explicit tlm_network_payload_base(tlm_base_mm_interface* mm)
     : m_extensions(max_num_extensions())
     , m_mm(mm)
-    , m_ref_count(0){};
-
+    , m_ref_count(0) {};
+    /**
+     * virtual destructor.
+     */
     virtual ~tlm_network_payload_base() {
         for(unsigned int i = 0; i < m_extensions.size(); i++)
             if(m_extensions[i])
                 m_extensions[i]->free();
     }
-
+    /**
+     * \brief Constructor with memory management interface.
+     *
+     * Initializes the tlm_network_payload_base object with a specified memory management interface.
+     *
+     * @param mm The memory management interface.
+     */
     void reset() { m_extensions.free_entire_cache(); }
-
+    /**
+     * \brief Acquires a reference to the payload.
+     *
+     * Increments the reference count of the payload, indicating that it is being used.
+     */
     void acquire() {
         sc_assert(m_mm != 0);
         m_ref_count++;
     }
-
+    /**
+     * \brief Releases a reference to the payload.
+     *
+     * Decrements the reference count of the payload, indicating that it is no longer being used.
+     * If the reference count reaches 0, the payload is freed using the memory management interface.
+     */
     void release() {
         sc_assert(m_mm != 0 && m_ref_count > 0);
         if(--m_ref_count == 0)
             m_mm->free(this);
     }
-
+    /**
+     * \brief Gets the reference count of the payload.
+     *
+     * Returns the current reference count of the payload.
+     *
+     * @return The reference count.
+     */
     int get_ref_count() const { return m_ref_count; }
 
     void set_mm(tlm_base_mm_interface* mm) { m_mm = mm; }
@@ -140,37 +183,128 @@ private:
     tlm_base_mm_interface* m_mm;
     unsigned int m_ref_count;
 };
-
+/**
+ * \brief A class for TLM network payloads with support for extensions and memory management.
+ *
+ * The tlm_network_payload class provides a foundation for creating custom TLM network payloads.
+ * It includes methods for managing extensions, memory management, and response status.
+ *
+ * @tparam CMDENUM The type of command enumeration used by the payload.
+ *
+ * @author Your Name
+ * @date YYYY-MM-DD
+ */
 template <typename CMDENUM> struct tlm_network_payload : public tlm_network_payload_base {
-
+    /**
+     * \brief Default constructor.
+     *
+     * Initializes the tlm_network_payload object with default values.
+     */
     tlm_network_payload();
-
+    /**
+     * \brief Constructor with memory management interface.
+     *
+     * Initializes the tlm_network_payload object with a specified memory management interface.
+     *
+     * @param mm The memory management interface.
+     */
     explicit tlm_network_payload(tlm_base_mm_interface* mm);
 
     tlm_network_payload(const tlm_network_payload<CMDENUM>& x) = delete;
 
     tlm_network_payload<CMDENUM>& operator=(const tlm_network_payload<CMDENUM>& x) = delete;
 
-    //--------------
-    // Destructor
-    //--------------
+    /**
+     * virtual destructor.
+     */
     virtual ~tlm_network_payload() = default;
-    // non-virtual deep-copying of the object
-
+    /**
+     * \brief Non-virtual deep-copying of the object.
+     *
+     * Performs a deep copy of the object, including copying the command, response status, data, and extensions.
+     *
+     * @param other The object to copy from.
+     */
     void deep_copy_from(const tlm_network_payload& other);
-
+    /**
+     * \brief Gets the command from the payload.
+     *
+     * Returns the command stored in the payload.
+     *
+     * @return The command.
+     */
     CMDENUM get_command() const { return m_command; }
+    /**
+     * \brief Sets the command in the payload.
+     *
+     * Updates the command stored in the payload.
+     *
+     * @param command The new command.
+     */
     void set_command(const CMDENUM command) { m_command = command; }
-
+    /**
+     * \brief Gets the data from the payload.
+     *
+     * Returns a reference to the data stored in the payload.
+     *
+     * @return A reference to the data.
+     */
     std::vector<uint8_t> const& get_data() const { return m_data; }
+    /**
+     * \brief Gets the data from the payload.
+     *
+     * Returns a reference to the data stored in the payload.
+     *
+     * @return A reference to the data.
+     */
     std::vector<uint8_t>& get_data() { return m_data; }
+    /**
+     * \brief Sets the data in the payload.
+     *
+     * Updates the data stored in the payload.
+     *
+     * @param value The new data.
+     */
     void set_data(std::vector<uint8_t> const& value) { m_data = value; }
-
-    // Response status related methods
+    /**
+     * \brief Checks if the response status is OK.
+     *
+     * Returns true if the response status is OK, indicating a successful transaction.
+     *
+     * @return True if the response status is OK, false otherwise.
+     */
     bool is_response_ok() const { return (m_response_status > 0); }
+    /**
+     * \brief Checks if the response status is an error.
+     *
+     * Returns true if the response status is an error, indicating an unsuccessful transaction.
+     *
+     * @return True if the response status is an error, false otherwise.
+     */
     bool is_response_error() const { return (m_response_status <= 0); }
+    /**
+     * \brief Gets the response status from the payload.
+     *
+     * Returns the response status stored in the payload.
+     *
+     * @return The response status.
+     */
     tlm_response_status get_response_status() const { return m_response_status; }
+    /**
+     * \brief Sets the response status in the payload.
+     *
+     * Updates the response status stored in the payload.
+     *
+     * @param response_status The new response status.
+     */
     void set_response_status(const tlm_response_status response_status) { m_response_status = response_status; }
+    /**
+     * \brief Gets the response status as a string.
+     *
+     * Returns the response status stored in the payload as a string.
+     *
+     * @return The response status as a string.
+     */
     std::string get_response_string() const;
 
     struct gp_mm : public tlm_base_mm_interface {
@@ -195,7 +329,13 @@ template <typename CMDENUM> struct tlm_network_payload : public tlm_network_payl
     private:
         std::deque<tlm_network_payload<CMDENUM>*> pool;
     };
-
+    /**
+     * \brief Creates a new instance of the tlm_network_payload using a thread-local memory manager.
+     *
+     * Returns a new instance of the tlm_network_payload, using a thread-local memory manager to allocate the object.
+     *
+     * @return A new instance of the tlm_network_payload.
+     */
     static tlm_network_payload<CMDENUM>* create() {
         static thread_local gp_mm mm;
         return mm.create();

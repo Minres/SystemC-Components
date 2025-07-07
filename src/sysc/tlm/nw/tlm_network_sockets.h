@@ -25,10 +25,20 @@
 #else
 #include <tlm>
 #endif
+/**
+ * @file tlm_network_sockets.h
+ *
+ * @brief The SystemC Transaction Level Model (TLM) Network TLM utilities.
+ *
+ * @ingroup tlm-nw
+ */
 
-//! @brief SystemC TLM
+/**
+ * @brief The SystemC Transaction Level Model (TLM) Network TLM utilities.
+ *
+ * @namespace tlm::nw
+ */
 namespace tlm {
-//! @brief SCC TLM utilities
 namespace nw {
 
 template <typename SIG> class tlm_network_gp;
@@ -39,7 +49,7 @@ struct tlm_network_baseprotocol_types {
 };
 
 /**
- * definition of the additional protocol phases
+ * @brief Definition of the additional protocol phases.
  */
 DECLARE_EXTENDED_PHASE(REQUEST);
 DECLARE_EXTENDED_PHASE(CONFIRM);
@@ -64,6 +74,13 @@ using type_index = sc_core::sc_type_index;
 using type_index = std::type_index;
 #endif
 
+/**
+ * @brief Definition of the tlm_network_initiator_socket class.
+ *
+ * This socket is used to initiate transactions to a target.
+ *
+ * @ingroup tlm-nw
+ */
 template <unsigned PHITWIDTH, typename CMDENUM, typename TYPES = tlm_network_baseprotocol_types, int N = 1,
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND>
 struct tlm_network_initiator_socket
@@ -80,20 +97,42 @@ struct tlm_network_initiator_socket
 
     using port_type = sc_core::sc_port<fw_interface_type, N, POL>;
     using export_type = sc_core::sc_export<bw_interface_type>;
-
+    /**
+     * @brief Constructor with default name.
+     *
+     * Initializes the tlm_network_initiator_socket object with a default name.
+     */
     tlm_network_initiator_socket()
     : tlm_base_initiator_socket<0, tlm_network_fw_transport_if<TYPES>, tlm_network_bw_transport_if<TYPES>, N, POL>() {}
-
+    /**
+     * @brief Constructor with specified name.
+     *
+     * Initializes the tlm_network_initiator_socket object with a specified name.
+     *
+     * @param name The name of the socket.
+     */
     explicit tlm_network_initiator_socket(const char* name)
     : tlm_base_initiator_socket<0, tlm_network_fw_transport_if<TYPES>, tlm_network_bw_transport_if<TYPES>, N, POL>(name) {}
-
+    /**
+     * virtual destructor of the tlm_network_initiator_socket.
+     */
     virtual ~tlm_network_initiator_socket() = default;
-
+    /**
+     * Provides the kind() method to retrieve the socket's kind as string.
+     */
     virtual const char* kind() const { return "tlm_network_initiator_socket"; }
-
+    /**
+     * Returns the type index of the protocol types associated with this socket.
+     */
     virtual type_index get_protocol_types() const { return typeid(TYPES); }
 };
-
+/**
+ * @brief Definition of the tlm_network_target_socket class.
+ *
+ * This socket is used to accept transactions from an initiator.
+ *
+ * @ingroup tlm-nw
+ */
 template <unsigned PHITWIDTH, typename CMDENUM, typename TYPES = tlm_network_baseprotocol_types, int N = 1,
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND>
 struct tlm_network_target_socket
@@ -102,16 +141,37 @@ struct tlm_network_target_socket
     using protocol_types = TYPES;
     using transaction_type = typename TYPES::tlm_payload_type;
     using phase_type = typename TYPES::tlm_phase_type;
-
+    /**
+     * @brief Constructor with default name.
+     *
+     * Initializes the tlm_network_target_socket object with a default name.
+     */
     tlm_network_target_socket()
     : tlm_base_target_socket<0, tlm_network_fw_transport_if<TYPES>, tlm_network_bw_transport_if<TYPES>, N, POL>() {}
-
+    transport_if<TYPES>, N, POL > () {}
+    /**
+     * @brief Constructor with name.
+     *
+     * Initializes the tlm_network_target_socket object with a default name.
+     */
     explicit tlm_network_target_socket(const char* name)
     : tlm_base_target_socket<0, tlm_network_fw_transport_if<TYPES>, tlm_network_bw_transport_if<TYPES>, N, POL>(name) {}
-
+    /**
+     * virtual destructor of the tlm_network_target_socket.
+     */
+    virtual ~tlm_network_target_socket() = default;
+    /**
+     * Provides the kind() method to retrieve the socket's kind as string.
+     */
     virtual const char* kind() const { return "tlm_network_target_socket"; }
-
+    /**
+     * Returns the type index of the protocol types associated with this socket.
+     */
     virtual type_index get_protocol_types() const { return typeid(TYPES); }
+};
+
+template <typename TYPES = tlm_network_baseprotocol_types> eid(TYPES);
+}
 };
 } // namespace nw
 } // namespace tlm

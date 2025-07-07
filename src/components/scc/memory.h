@@ -46,7 +46,7 @@ namespace scc {
  * For this the @ref scc::host_mem_map_extension hs to be used in conjunction with the TLM_IGNORE_COMMAND. The extension
  * carries the pointer to the host memory to be used while the generic payload address and length indicate the size of the memory block
  *
- * TODO: add some more attributes/parameters to configure access time and type (DMI allowed, read only, etc)
+ * TODO: add some more parameters to configure allowed access types (rw, read only)
  *
  * @tparam SIZE size of the memery
  * @tparam BUSWIDTH bus width of the socket
