@@ -71,11 +71,11 @@ template<typename T> class value_iterator_impl
 {
 public:
   // std::iterator_traits types
-  typedef T reference;  // return by value!
-  typedef value_ptr<T> pointer;    // return proxy pointer
-  typedef typename T::value_type value_type; // "real" value type
-  typedef std::ptrdiff_t difference_type;
-  typedef std::random_access_iterator_tag iterator_category;
+  using reference           = T;    // return by value!
+  using pointer             = value_ptr<T>; // return proxy pointer
+  using value_type          = typename T::value_type;   // "real" value type
+  using difference_type     = std::ptrdiff_t;
+  using iterator_category   = std::random_access_iterator_tag;
 
 protected:
   typedef void* impl_type; //  type-punned pointer for now
@@ -130,11 +130,11 @@ private:
 public:
   /// @name C++ standard iterator types
   ///@{
-  typedef typename impl::value_type        value_type;
-  typedef typename impl::pointer           pointer;
-  typedef typename impl::reference         reference;
-  typedef typename impl::difference_type   difference_type;
-  typedef typename impl::iterator_category iterator_category;
+  using value_type          = typename impl::value_type;
+  using pointer             = typename impl::pointer;
+  using reference           = typename impl::reference;
+  using difference_type     = typename impl::difference_type;
+  using iterator_category   = typename impl::iterator_category;
   ///@}
 
   /// constructs an invalid iterator (non-dereferencable, non-incrementable)
