@@ -72,24 +72,37 @@ public:
         PUSH_VCD = SQLITE,
         FST
     };
+
     /**
      * cci parameter to determine the file type being used to trace transaction if not specified explicitly
      */
-    cci::cci_param<unsigned> tx_trace_type{"scc_tracer.tx_trace_type", CFTR,
-                                           "Type of TX trace file used for recording. See also scc::tracer::file_type",
-                                           cci::CCI_ABSOLUTE_NAME};
+    static cci::cci_param<unsigned>& tx_trace_type() {
+        static cci::cci_param<unsigned> tx_trace_type{"scc_tracer.tx_trace_type", CFTR,
+                                                      "Type of TX trace file used for recording. See also scc::tracer::file_type",
+                                                      cci::CCI_ABSOLUTE_NAME};
+        return tx_trace_type;
+    }
+
     /**
      * cci parameter to determine the file type being used to trace signals if not specified explicitly
      */
-    cci::cci_param<unsigned> sig_trace_type{"scc_tracer.sig_trace_type", FST,
-                                            "Type of signal trace file used for recording. See also scc::tracer::wave_type",
-                                            cci::CCI_ABSOLUTE_NAME};
+    static cci::cci_param<unsigned>& sig_trace_type() {
+        static cci::cci_param<unsigned> sig_trace_type{"scc_tracer.sig_trace_type", FST,
+                                                       "Type of signal trace file used for recording. See also scc::tracer::wave_type",
+                                                       cci::CCI_ABSOLUTE_NAME};
+        return sig_trace_type;
+    }
+
     /**
      * cci parameter to determine the file type being used to trace signals if not specified explicitly
      */
-    cci::cci_param<bool> close_db_in_eos{"scc_tracer.close_db_in_eos", false,
-                                         "Close the waveform/transaction tracing databases during end_of_simulation",
-                                         cci::CCI_ABSOLUTE_NAME};
+    static cci::cci_param<bool>& close_db_in_eos() {
+        static cci::cci_param<bool> close_db_in_eos{"scc_tracer.close_db_in_eos", false,
+                                                    "Close the waveform/transaction tracing databases during end_of_simulation",
+                                                    cci::CCI_ABSOLUTE_NAME};
+        return close_db_in_eos;
+    }
+
     /**
      * @fn  tracer(const std::string&&, file_type, bool=true)
      * @brief the constructor

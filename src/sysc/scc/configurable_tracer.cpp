@@ -55,7 +55,7 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
                 descend(o, trace);
         return;
     } else if(kind == "sc_module") {
-        auto trace_enable = get_trace_enabled(obj, default_trace_enable.get_value());
+        auto trace_enable = get_trace_enabled(obj, default_trace_enable().get_value());
         if(trace_enable)
             obj->trace(trf);
         for(auto o : obj->get_child_objects())
@@ -105,10 +105,10 @@ void configurable_tracer::augment_object_hierarchical(sc_core::sc_object* obj, b
                     params.push_back(new cci::cci_param<bool>(hier_name, trace_enable, cci_broker, "", cci::CCI_ABSOLUTE_NAME,
                                                               cci_broker.get_originator()));
                 else
-                    h.set_cci_value(cci::cci_value{default_trace_enable.get_value()});
+                    h.set_cci_value(cci::cci_value{default_trace_enable().get_value()});
             }
         } else if(auto battr = dynamic_cast<sc_core::sc_attribute<bool>*>(attr)) {
-            battr->value = default_trace_enable.get_value();
+            battr->value = default_trace_enable().get_value();
         }
         for(auto* o : obj->get_child_objects())
             augment_object_hierarchical(o, trace_enable);
