@@ -31,7 +31,14 @@
 #endif
 
 namespace scc {
-
+/**
+ * \brief A template class for an optional input port with optimized binding.
+ *
+ * The sc_in_opt class is a specialization of sc_core::sc_in that allows optional binding of 1 part or signal at max.
+ *
+ * @tparam T The data type of the input port.
+ *
+ */
 template <class T> class sc_in_opt : public sc_core::sc_port<sc_core::sc_signal_in_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND> {
 public:
     using data_type = T;
@@ -313,7 +320,14 @@ public:
 
     virtual const char* kind() const override { return "sc_in"; }
 };
-
+/**
+ * \brief A template class for an optional input port with optimized binding.
+ *
+ * The sc_inout_opt class is a specialization of sc_core::sc_inout that allows optional binding of 1 port or signal at max.
+ *
+ * @tparam T The data type of the input port.
+ *
+ */
 template <class T> class sc_inout_opt : public sc_core::sc_port<sc_core::sc_signal_inout_if<T>, 1, sc_core::SC_ZERO_OR_MORE_BOUND> {
 public:
     typedef T data_type;
@@ -676,7 +690,14 @@ public:
 protected:
     data_type* m_init_val;
 };
-
+/**
+ * \brief A template class for an optional input port with optimized binding.
+ *
+ * The sc_out_opt class is a specialization of sc_core::sc_out that allows optional binding of 1 port or signal at max.
+ *
+ * @tparam T The data type of the input port.
+ *
+ */
 template <class T> class sc_out_opt : public sc_inout_opt<T> {
 public:
     typedef T data_type;

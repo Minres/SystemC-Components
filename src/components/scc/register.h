@@ -481,6 +481,111 @@ public:
     sc_register_masked(sc_core::sc_module_name nm, DATATYPE& storage, const DATATYPE reset_val, resetable& owner)
     : sc_register<DATATYPE>(nm, storage, reset_val, owner, RDMASK, WRMASK) {}
 };
+
+/**
+ * an indexed register aka a register file of a certain type
+ */
+template <typename DATATYPE, size_t SIZE, size_t START = 0> class sc_register_mem : public indexed_resource_access_if {
+    struct mem_wrapper: public resource_access_if {
+    	~mem_wrapper() = default;
+    	std::size_t size() const override {return sizeof(DATATYPE);};
+    	void reset() override {elem=0;};
+    	bool write(const uint8_t* data, std::size_t length, uint64_t offset, sc_core::sc_time& d) override {
+	        assert("Access out of range" && offset + length <= sizeof(DATATYPE));
+	        auto beg = reinterpret_cast<uint8_t*>(&elem) + offset;
+	        std::copy(data, data + length, beg);
+	        return true;
+		};
+    	bool read(uint8_t* data, std::size_t length, uint64_t offset, sc_core::sc_time& d) const override {
+	        assert("Access out of range" && offset + length <= sizeof(DATATYPE));
+	        auto beg = reinterpret_cast<uint8_t*>(&elem) + offset;
+	        std::copy(beg, beg + length, data);
+	        return true;
+		};
+    	bool write_dbg(const uint8_t* data, std::size_t length, uint64_t offset = 0) override {
+	        assert("Offset out of range" && offset == 0);
+	        if(length != sizeof(DATATYPE))
+	            return false;
+	        elem = *reinterpret_cast<const DATATYPE*>(data);
+	        return true;
+		};
+    	bool read_dbg(uint8_t* data, std::size_t length, uint64_t offset = 0) const override {
+	        assert("Offset out of range" && offset == 0);
+	        if(length != sizeof(DATATYPE))
+	            return false;
+	        *reinterpret_cast<DATATYPE*>(data) = elem;
+	        return true;			
+		};
+    	mem_wrapper(DATATYPE& e):elem{e} {}
+    	DATATYPE& elem;
+	};
+public:
+	
+    /**
+     * the constructor
+     *
+     * @param nm
+     * @param storage
+     * @param reset_val
+     * @param owner
+     * @param rdmask
+     * @param wrmask
+     */
+    sc_register_mem(
+        sc_core::sc_module_name nm, std::array<DATATYPE, SIZE>& storage, const DATATYPE reset_val, resetable& owner) {
+         _reg_field.init(SIZE, [&storage](const char* name, size_t idx) -> pointer {
+            return new mem_wrapper(storage[idx]);
+        });
+   }
+
+    /**
+     * the destructor
+     */
+    ~sc_register_mem() override {}
+    /**
+     * get the size of the register file
+     *
+     * @return the size
+     */
+    size_t size() override { return SIZE; };
+    /**
+     * Element access operator
+     *
+     * @param idx the index
+     * @return the data reference at the index
+     */
+    reference operator[](size_t idx) noexcept override { return _reg_field[idx]; }
+    /**
+     * const element access operator
+     *
+     * @param idx
+     * @return the data reference at the index
+     */
+     const_reference  operator[](size_t idx) const noexcept override { return _reg_field[idx]; }
+    /**
+     * Element access operator
+     *
+     * @param idx the index
+     * @return the data reference at the index
+     */
+    reference at(size_t idx) override {
+        assert("access out of bound" && idx < SIZE);
+        return _reg_field[idx];
+    }
+    /**
+     * const element access operator
+     *
+     * @param idx
+     * @return the data reference at the index
+     */
+    const_reference const at(size_t idx) const override {
+        assert("access out of bound" && idx < SIZE);
+        return _reg_field[idx]; 
+    }
+
+private:
+    sc_core::sc_vector<value_type> _reg_field;
+};
 } // namespace scc
 
 #endif /* _SYSC_REGISTER_H_ */

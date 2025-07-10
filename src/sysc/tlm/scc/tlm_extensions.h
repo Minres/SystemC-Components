@@ -28,7 +28,13 @@
 namespace tlm {
 //! @brief SCC TLM utilities
 namespace scc {
-
+/*!
+ * \brief A unmanaged extension for TLM transactions.
+ *
+ * This class provides a basic implementation of an unmanaged  TLM extension.
+ *
+ * \tparam T The type of the extension.
+ */
 template <typename T> struct tlm_unmanaged_extension : public tlm_extension<T> {
     using type = T;
 
@@ -37,9 +43,15 @@ template <typename T> struct tlm_unmanaged_extension : public tlm_extension<T> {
     void copy_from(tlm_extension_base const& other) override { this->operator=(static_cast<const type&>(other)); }
 
 protected:
-    tlm_unmanaged_extension(){};
+    tlm_unmanaged_extension() {};
 };
-
+/*!
+ * \brief A managed extension for TLM transactions.
+ *
+ * This class provides a basic implementation of a managed TLM extension.
+ *
+ * \tparam T The type of the extension.
+ */
 template <typename T> struct tlm_managed_extension {
 
     using type = T;
@@ -94,7 +106,14 @@ protected:
 private:
     bool is_pooled{false};
 };
-
+/*!
+ * \brief Extension for data buffering.
+ *
+ * This class provides an extension for a data buffer. It can be used to populate a generic payloads data pointer with automatic memory
+ * management as the extension is deleted once the payload is deleted or returned to the memory manager.
+ *
+ * \note This extension is unmanaged and must be freed manually.
+ */
 struct data_buffer : public tlm::tlm_extension<data_buffer> {
 
     tlm_extension_base* clone() const override {
@@ -109,7 +128,13 @@ struct data_buffer : public tlm::tlm_extension<data_buffer> {
 private:
     std::vector<unsigned char> buffer_;
 };
-
+/*!
+ * \brief Extension for a TLM payload.
+ *
+ * This class provides an extension for a TLM payload. It holds a shared pointer to another TLM payload.
+ *
+ * \note This extension is unmanaged and must be freed automatically.
+ */
 struct tlm_payload_extension : public tlm::tlm_extension<tlm_payload_extension> {
 
     tlm_extension_base* clone() const override {

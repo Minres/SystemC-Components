@@ -27,13 +27,25 @@
 #include <utility>
 
 /**
+ * @brief The SystemC Components library (SCC) common utilities.
+ *
  * \ingroup scc-common
  */
 /**@{*/
 //! @brief SCC common utilities
 namespace util {
 template <typename T> class delegate;
-//! a fast alternative to std::function
+/**
+ * @brief A fast alternative to std::function with improved performance.
+ *
+ * The delegate class is a template class that allows to call functions, member functions, and lambda expressions as delegates.
+ * It does not provide ownership handling and lifetime management. The using function needs to make sure that the object and method pointers
+ * are valid.
+ *
+ * @tparam R The return type of the delegate.
+ * @tparam A The argument types of the delegate.
+ *
+ */
 template <class R, class... A> class delegate<R(A...)> {
     using stub_ptr_type = R (*)(void*, A&&...);
 

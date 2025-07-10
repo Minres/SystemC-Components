@@ -27,12 +27,30 @@
 //! @brief SCC SystemC utilities
 namespace scc {
 /**
- * \brief A clock source with construction time configurable start delay
+ * \brief A clock source with construction time configurable start delay.
+ *
+ * The sc_clock_ext class extends the sc_core::sc_clock class to provide additional functionality, such as configuration via CCI.
+ * It allows users to specify the period, duty cycle, and start time of the generated clock .
+ *
  */
 struct sc_clock_ext : public sc_core::sc_clock {
-
+    /**
+     * \brief The period of the generated clock.
+     *
+     * This parameter allows users to specify the period of the generated clock.
+     */
     cci::cci_param<sc_core::sc_time> period;
+    /**
+     * \brief The duty cycle of the generated clock.
+     *
+     * This parameter allows users to specify the duty cycle of the generated clock.
+     */
     cci::cci_param<double> duty_cycle;
+    /**
+     * \brief The start time of the generated clock.
+     *
+     * This parameter allows users to specify the start time of the generated clock.
+     */
     cci::cci_param<sc_core::sc_time> initial_delay;
 
     sc_clock_ext(const char* name_, const sc_core::sc_time& period_, double duty_cycle_ = 0.5,

@@ -25,7 +25,14 @@
 namespace tlm {
 //! @brief SCC TLM utilities
 namespace scc {
-
+/*!
+ * @brief A simple target adapter that splits incoming requests into AV and PV requests.
+ *
+ * This adapter can be used to connect a TLM2_PV_AV initiator to a TLM2_AV and/or TLM2_PV target. It splits incoming
+ * requests into AV and PV requests based on the access type (blocking/non-blocking).
+ *
+ * @tparam BUSWIDTH The width of the data bus in bits.
+ */
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm_base_protocol_types, int N = 1,
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND,
           typename TSOCKET_TYPE = tlm::tlm_target_socket<BUSWIDTH, TYPES, N, POL>,
@@ -38,29 +45,46 @@ public:
     using tlm_phase_type = typename TYPES::tlm_phase_type;
     using target_socket_type = TSOCKET_TYPE;
     using initiator_socket_type = ISOCKET_TYPE;
-
+    /*!
+     * the TLM2 target socket
+     */
     target_socket_type tsck{"tsck"};
-
+    /*!
+     * Constructor with default name.
+     *
+     */
     tlm2_pv_av_target_adapter()
     : tlm2_pv_av_target_adapter(sc_core::sc_gen_unique_name("tlm_pv_av_split")) {}
-
+    /*!
+     * Constructor.
+     *
+     * @param nm The name of the module.
+     */
     tlm2_pv_av_target_adapter(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm) {
         tsck.bind(*this);
     }
-
+    /*!
+     * Binds the pv initiator socket of the adapter to the given target socket.
+     * @param tsck The target socket to bind to.
+     */
     void bind_pv(target_socket_type& tsck) {
         pv_isck = util::make_unique<initiator_socket_type>(sc_core::sc_gen_unique_name("pv_isck"));
         pv_isck->bind(*this);
         pv_isck->bind(tsck);
     }
-
+    /*!
+     * Binds the av initiator socket of adapter to the given target socket.
+     * @param tsck The target socket to bind to.
+     */
     void bind_av(TSOCKET_TYPE& tsck) {
         av_isck = util::make_unique<initiator_socket_type>(sc_core::sc_gen_unique_name("av_isck"));
         av_isck->bind(*this);
         av_isck->bind(tsck);
     }
-
+    /*!
+     * virtual destructor.
+     */
     virtual ~tlm2_pv_av_target_adapter() = default;
 
 private:
@@ -104,6 +128,14 @@ private:
     std::unique_ptr<initiator_socket_type> pv_isck;
     std::unique_ptr<initiator_socket_type> av_isck;
 };
+/*!
+ * @brief A simple adapter that combines incoming AV and PV requests into mixed requests.
+ *
+ * This adapter can be used to connect a TLM2_AV and/or TLM2_PV initiator to a TLM2_PV_AV target. It combines incoming
+ *  AV and PV requests into one TLM2 socket request.
+ *
+ * @tparam BUSWIDTH The width of the data bus in bits.
+ */
 
 template <unsigned int BUSWIDTH = 32, typename TYPES = tlm_base_protocol_types, int N = 1,
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND,
@@ -117,29 +149,46 @@ public:
     using tlm_phase_type = typename TYPES::tlm_phase_type;
     using target_socket_type = TSOCKET_TYPE;
     using initiator_socket_type = ISOCKET_TYPE;
-
+    /*!
+     * the TLM2 initiator socket
+     */
     initiator_socket_type isck{"isck"};
-
+    /*!
+     * Constructor with default name.
+     *
+     */
     tlm2_pv_av_initiator_adapter()
     : tlm2_pv_av_initiator_adapter(sc_core::sc_gen_unique_name("tlm_pv_av_split")) {}
-
+    /*!
+     * Constructor.
+     *
+     * @param nm The name of the module.
+     */
     tlm2_pv_av_initiator_adapter(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm) {
         isck.bind(*this);
     }
-
+    /*!
+     * Binds the pv target socket of the adapter to the given initiator socket.
+     * @param tsck The initiator socket to bind to.
+     */
     void bind_pv(initiator_socket_type& isck) {
         pv_tsck = util::make_unique<target_socket_type>(sc_core::sc_gen_unique_name("pv_tsck"));
         pv_tsck->bind(*this);
         isck(*pv_tsck);
     }
-
+    /*!
+     * Binds the av target socket of the adapter to the given initiator socket.
+     * @param tsck The initiator socket to bind to.
+     */
     void bind_av(initiator_socket_type& isck) {
         av_tsck = util::make_unique<target_socket_type>(sc_core::sc_gen_unique_name("av_tsck"));
         av_tsck->bind(*this);
         isck(*av_tsck);
     }
-
+    /*!
+     * virtual destructor.
+     */
     virtual ~tlm2_pv_av_initiator_adapter() = default;
 
 private:
