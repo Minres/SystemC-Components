@@ -245,7 +245,6 @@ public:
         return *this;
     }
     /**
-     * @fn this_type& operator |=(DATATYPE)
      * @brief unary or
      *
      * @param other the other value
@@ -256,7 +255,6 @@ public:
         return *this;
     }
     /**
-     * @fn this_type& operator &=(DATATYPE)
      * @brief unary and
      *
      * @param other the other value
@@ -267,7 +265,6 @@ public:
         return *this;
     }
     /**
-     * @fn void set_read_cb(std::function<bool (const this_type&, DATATYPE&)>)
      * @brief set the read callback
      *
      * The read callback is triggered upon a read request without forwarding the annotated time
@@ -279,7 +276,6 @@ public:
         rd_cb = [read_cb](const this_type& reg, DATATYPE& data, sc_core::sc_time& delay) { return read_cb(reg, data); };
     }
     /**
-     * @fn void set_read_cb(std::function<bool (const this_type&, DATATYPE&, sc_core::sc_time)>)
      * @brief set the read callback
      *
      * The read callback functor triggered upon a read request.
@@ -288,7 +284,6 @@ public:
      */
     void set_read_cb(std::function<bool(const this_type&, DATATYPE&, sc_core::sc_time&)> read_cb) { rd_cb = read_cb; }
     /**
-     * @fn void set_write_cb(std::function<bool (this_type&, const DATATYPE&)>)
      * @brief set the write callback
      *
      * The write callback functor is triggered upon a write request without forwarding the annotated time
@@ -300,17 +295,11 @@ public:
         wr_cb = [write_cb](this_type& reg, DATATYPE& data, sc_core::sc_time& delay) { return write_cb(reg, data); };
     }
     /**
-     * @fn void set_write_cb(std::function<bool (this_type&, const DATATYPE&, sc_core::sc_time)>)
-     * @brief set the write callback
+     * @brief set the write callback triggered upon a write request
      *
      * The write callback functor is triggered upon a write request.
      *
      * @param write_cb the callback functor
-     */
-    /**
-     * set the write callback triggered upon a write request
-     *
-     * @param write_cb
      */
     void set_write_cb(std::function<bool(this_type&, const DATATYPE&, sc_core::sc_time&)> write_cb) { wr_cb = write_cb; }
     /**
@@ -485,42 +474,58 @@ public:
 /**
  * an indexed register aka a register file of a certain type
  */
-template <typename DATATYPE, size_t SIZE, size_t START = 0> class sc_register_mem : public indexed_resource_access_if {
-    struct mem_wrapper: public resource_access_if {
-    	~mem_wrapper() = default;
-    	std::size_t size() const override {return sizeof(DATATYPE);};
-    	void reset() override {elem=0;};
-    	bool write(const uint8_t* data, std::size_t length, uint64_t offset, sc_core::sc_time& d) override {
-	        assert("Access out of range" && offset + length <= sizeof(DATATYPE));
-	        auto beg = reinterpret_cast<uint8_t*>(&elem) + offset;
-	        std::copy(data, data + length, beg);
-	        return true;
-		};
-    	bool read(uint8_t* data, std::size_t length, uint64_t offset, sc_core::sc_time& d) const override {
-	        assert("Access out of range" && offset + length <= sizeof(DATATYPE));
-	        auto beg = reinterpret_cast<uint8_t*>(&elem) + offset;
-	        std::copy(beg, beg + length, data);
-	        return true;
-		};
-    	bool write_dbg(const uint8_t* data, std::size_t length, uint64_t offset = 0) override {
-	        assert("Offset out of range" && offset == 0);
-	        if(length != sizeof(DATATYPE))
-	            return false;
-	        elem = *reinterpret_cast<const DATATYPE*>(data);
-	        return true;
-		};
-    	bool read_dbg(uint8_t* data, std::size_t length, uint64_t offset = 0) const override {
-	        assert("Offset out of range" && offset == 0);
-	        if(length != sizeof(DATATYPE))
-	            return false;
-	        *reinterpret_cast<DATATYPE*>(data) = elem;
-	        return true;			
-		};
-    	mem_wrapper(DATATYPE& e):elem{e} {}
-    	DATATYPE& elem;
-	};
+template <typename DATATYPE, size_t SIZE> struct sc_register_mem : public indexed_resource_access_if {
+    using this_type = sc_register_mem<DATATYPE, SIZE>;
+
+private:
+    struct mem_wrapper : public resource_access_if {
+        ~mem_wrapper() = default;
+        std::size_t size() const override { return sizeof(DATATYPE); };
+        void reset() override { elem = 0; };
+        bool write(const uint8_t* data, std::size_t length, uint64_t offset, sc_core::sc_time& d) override {
+            assert("Access out of range" && offset + length <= sizeof(DATATYPE));
+            auto temp(elem);
+            auto beg = reinterpret_cast<uint8_t*>(&temp) + offset;
+            std::copy(data, data + length, beg);
+            if(owner.wr_cb)
+                return owner.wr_cb(owner, offset, temp, d);
+            return true;
+        };
+        bool read(uint8_t* data, std::size_t length, uint64_t offset, sc_core::sc_time& d) const override {
+            assert("Access out of range" && offset + length <= sizeof(DATATYPE));
+            auto temp(elem);
+            if(owner.rd_cb) {
+                if(!owner.rd_cb(owner, offset, temp, d))
+                    return false;
+            }
+            auto beg = reinterpret_cast<uint8_t*>(&temp) + offset;
+            std::copy(beg, beg + length, data);
+            return true;
+        };
+        bool write_dbg(const uint8_t* data, std::size_t length, uint64_t offset = 0) override {
+            assert("Offset out of range" && offset == 0);
+            if(length != sizeof(DATATYPE))
+                return false;
+            elem = *reinterpret_cast<const DATATYPE*>(data);
+            return true;
+        };
+        bool read_dbg(uint8_t* data, std::size_t length, uint64_t offset = 0) const override {
+            assert("Offset out of range" && offset == 0);
+            if(length != sizeof(DATATYPE))
+                return false;
+            *reinterpret_cast<DATATYPE*>(data) = elem;
+            return true;
+        };
+
+        mem_wrapper(sc_register_mem& owner, DATATYPE& e)
+        : owner(owner)
+        , elem{e} {}
+
+        sc_register_mem& owner;
+        DATATYPE& elem;
+    };
+
 public:
-	
     /**
      * the constructor
      *
@@ -531,13 +536,9 @@ public:
      * @param rdmask
      * @param wrmask
      */
-    sc_register_mem(
-        sc_core::sc_module_name nm, std::array<DATATYPE, SIZE>& storage, const DATATYPE reset_val, resetable& owner) {
-         _reg_field.init(SIZE, [&storage](const char* name, size_t idx) -> pointer {
-            return new mem_wrapper(storage[idx]);
-        });
-   }
-
+    sc_register_mem(sc_core::sc_module_name nm, std::array<DATATYPE, SIZE>& storage, const DATATYPE reset_val, resetable& owner) {
+        _reg_field.init(SIZE, [this, &storage](const char* name, size_t idx) -> pointer { return new mem_wrapper(*this, storage[idx]); });
+    }
     /**
      * the destructor
      */
@@ -561,7 +562,7 @@ public:
      * @param idx
      * @return the data reference at the index
      */
-     const_reference  operator[](size_t idx) const noexcept override { return _reg_field[idx]; }
+    const_reference operator[](size_t idx) const noexcept override { return _reg_field[idx]; }
     /**
      * Element access operator
      *
@@ -580,11 +581,29 @@ public:
      */
     const_reference const at(size_t idx) const override {
         assert("access out of bound" && idx < SIZE);
-        return _reg_field[idx]; 
+        return _reg_field[idx];
     }
+    /**
+     * @brief set the read callback
+     *
+     * The read callback functor triggered upon a read request.
+     *
+     * @param read_cb the callback functor
+     */
+    void set_read_cb(std::function<bool(const this_type&, size_t offset, DATATYPE&, sc_core::sc_time&)> read_cb) { rd_cb = read_cb; }
+    /**
+     * @brief set the write callback triggered upon a write request
+     *
+     * The write callback functor is triggered upon a write request.
+     *
+     * @param write_cb the callback functor
+     */
+    void set_write_cb(std::function<bool(this_type&, size_t offset, const DATATYPE&, sc_core::sc_time&)> write_cb) { wr_cb = write_cb; }
 
 private:
     sc_core::sc_vector<value_type> _reg_field;
+    std::function<bool(const this_type&, size_t offset, DATATYPE&, sc_core::sc_time&)> rd_cb;
+    std::function<bool(this_type&, size_t offset, DATATYPE&, sc_core::sc_time&)> wr_cb;
 };
 } // namespace scc
 
