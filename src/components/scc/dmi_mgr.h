@@ -45,7 +45,7 @@ inline dmi_status operator|=(dmi_status s1, dmi_status s2) { return static_cast<
  *
  * @note The dmi_mgr class is a part of the SystemC Component (SCC) library.
  */
-templtemplate<typename TYPES = tlm::tlm_base_protocol_types> struct dmi_mgr : public sc_core::sc_object {
+template <typename TYPES = tlm::tlm_base_protocol_types> struct dmi_mgr : public sc_core::sc_object {
     /**
      * @brief A CCI parameter to disable DMI transactions.
      *
