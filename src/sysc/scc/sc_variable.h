@@ -54,6 +54,13 @@ struct sc_variable_b : sc_core::sc_object {
      */
     sc_variable_b(const char* name)
     : sc_core::sc_object(name) {}
+    // Rule of 5 - non-copyable, non-assignable
+    sc_variable_b() = delete;
+    sc_variable_b(sc_variable_b const&) = delete;
+    sc_variable_b(sc_variable_b&&) = delete;
+    sc_variable_b& operator=(const sc_variable_b& other) = delete;
+    sc_variable_b& operator=(sc_variable_b&& other) = delete;
+
     /**
      * @fn const char* kind()const
      * @brief get the kind of this sc_object
@@ -104,6 +111,12 @@ template <typename T> struct sc_variable : public sc_variable_b {
     : sc_variable_b(name.c_str())
     , value(value)
     , hndl{} {}
+    // Rule of 5 - non-copyable, non-assignable
+    sc_variable() = delete;
+    sc_variable(sc_variable<T> const&) = delete;
+    sc_variable(sc_variable<T>&&) = delete;
+    sc_variable& operator=(sc_variable<T> const& other) = delete;
+    sc_variable& operator=(sc_variable<T>&& other) = delete;
 
     virtual ~sc_variable() = default;
     /**
@@ -134,7 +147,14 @@ template <typename T> struct sc_variable : public sc_variable_b {
      */
     operator T() const { return value; }
     // assignment operator overload
-    sc_variable& operator=(const T other) {
+    sc_variable& operator=(T other) {
+        value = other;
+        for(auto h : hndl)
+            h->notify();
+        return *this;
+    }
+
+    sc_variable& operator=(const T& other) {
         value = other;
         for(auto h : hndl)
             h->notify();
