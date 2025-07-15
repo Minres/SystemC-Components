@@ -115,7 +115,6 @@ template <typename T> struct sc_variable : public sc_variable_b {
     sc_variable() = delete;
     sc_variable(sc_variable<T> const&) = delete;
     sc_variable(sc_variable<T>&&) = delete;
-    sc_variable& operator=(sc_variable<T> const& other) = delete;
     sc_variable& operator=(sc_variable<T>&& other) = delete;
 
     virtual ~sc_variable() = default;
@@ -154,8 +153,8 @@ template <typename T> struct sc_variable : public sc_variable_b {
         return *this;
     }
 
-    sc_variable& operator=(const T& other) {
-        value = other;
+    sc_variable& operator=(const sc_variable<T>& other) {
+        value = other.value;
         for(auto h : hndl)
             h->notify();
         return *this;
@@ -317,6 +316,10 @@ template <> struct sc_variable<bool> : public sc_variable_b {
     : sc_variable_b(name.c_str())
     , value(value)
     , hndl{} {}
+    sc_variable() = delete;
+    sc_variable(sc_variable<bool> const&) = delete;
+    sc_variable(sc_variable<bool>&&) = delete;
+    sc_variable& operator=(sc_variable<bool>&& other) = delete;
     virtual ~sc_variable() = default;
     std::string to_string() const override {
         std::stringstream ss;
@@ -327,6 +330,12 @@ template <> struct sc_variable<bool> : public sc_variable_b {
     operator bool() const { return value; }
     sc_variable& operator=(const bool other) {
         value = other;
+        for(auto h : hndl)
+            h->notify();
+        return *this;
+    }
+    sc_variable& operator=(const sc_variable<bool>& other) {
+        value = other.value;
         for(auto h : hndl)
             h->notify();
         return *this;
