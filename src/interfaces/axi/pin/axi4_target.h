@@ -20,7 +20,7 @@
 #include <axi/axi_tlm.h>
 #include <axi/fsm/base.h>
 #include <axi/fsm/protocol_fsm.h>
-#include <interfaces/axi/signal_if.h>
+#include <axi/signal_if.h>
 #include <scc/utilities.h>
 #include <systemc>
 #include <tlm/scc/tlm_mm.h>
