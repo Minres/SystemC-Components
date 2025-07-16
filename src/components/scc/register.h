@@ -17,6 +17,7 @@
 #ifndef _SYSC_REGISTER_H_
 #define _SYSC_REGISTER_H_
 
+#include <cstddef>
 #include <memory>
 
 #include "resetable.h"
@@ -476,6 +477,7 @@ public:
  */
 template <typename DATATYPE, size_t SIZE> struct sc_register_mem : public indexed_resource_access_if {
     using this_type = sc_register_mem<DATATYPE, SIZE>;
+    using store_t = DATATYPE;
 
 private:
     struct mem_wrapper : public resource_access_if {
@@ -488,14 +490,15 @@ private:
             auto beg = reinterpret_cast<uint8_t*>(&temp) + offset;
             std::copy(data, data + length, beg);
             if(owner.wr_cb)
-                return owner.wr_cb(owner, offset, temp, d);
+                return owner.wr_cb(owner, this->offset + offset, temp, d);
+            elem = temp;
             return true;
         };
         bool read(uint8_t* data, std::size_t length, uint64_t offset, sc_core::sc_time& d) const override {
             assert("Access out of range" && offset + length <= sizeof(DATATYPE));
             auto temp(elem);
             if(owner.rd_cb) {
-                if(!owner.rd_cb(owner, offset, temp, d))
+                if(!owner.rd_cb(owner, this->offset + offset, temp, d))
                     return false;
             }
             auto beg = reinterpret_cast<uint8_t*>(&temp) + offset;
@@ -517,12 +520,14 @@ private:
             return true;
         };
 
-        mem_wrapper(sc_register_mem& owner, DATATYPE& e)
+        mem_wrapper(sc_register_mem& owner, DATATYPE& e, size_t of)
         : owner(owner)
-        , elem{e} {}
+        , elem{e}
+        , offset(of) {}
 
         sc_register_mem& owner;
         DATATYPE& elem;
+        size_t offset;
     };
 
 public:
@@ -537,7 +542,8 @@ public:
      * @param wrmask
      */
     sc_register_mem(sc_core::sc_module_name nm, std::array<DATATYPE, SIZE>& storage, const DATATYPE reset_val, resetable& owner) {
-        _reg_field.init(SIZE, [this, &storage](const char* name, size_t idx) -> pointer { return new mem_wrapper(*this, storage[idx]); });
+        _reg_field.init(SIZE,
+                        [this, &storage](const char* name, size_t idx) -> pointer { return new mem_wrapper(*this, storage[idx], idx); });
     }
     /**
      * the destructor
