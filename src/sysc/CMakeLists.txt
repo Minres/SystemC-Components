@@ -48,9 +48,6 @@ set(LIB_SOURCES
     tlm/scc/lwtr/tlm2_lwtr.cpp
 )
 
-if(NOT ${CMAKE_CXX_STANDARD} OR ${CMAKE_CXX_STANDARD} GREATER 11)
-	list(APPEND LIB_SOURCES scp/report.cc)
-endif()
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
     list(APPEND LIB_SOURCES  

@@ -14,6 +14,7 @@ option(SC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase c
 option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with phase callbacks for tracing. It needs to match the SystemC build configuration" OFF)
 set(SCC_ARCHIVE_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
 set(SCC_LIBRARY_DIR_MODIFIER "" CACHE STRING "additional directory levels to store libraries") 
+option(WITH_SCP4SCC "adds SCP compatibility layer for SCC, cannot be used together with a copy of SCP" OFF)
 
 include(Common)
 
