@@ -276,12 +276,6 @@ template <typename T> struct sc_variable : public sc_variable_b {
 
     void trace(observer* obs) const override { hndl.push_back(observe(obs, value, name())); }
 
-    static sc_variable<T> create(const char* n, size_t i, T default_val) {
-        std::ostringstream os;
-        os << n << "[" << i << "];";
-        return scc::sc_variable<T>(os.str(), default_val);
-    }
-
     struct creator {
         creator(T const& default_val)
         : default_val{default_val} {}
@@ -349,11 +343,6 @@ template <> struct sc_variable<bool> : public sc_variable_b {
             sc_core::sc_trace(tf, value, name());
     }
     void trace(observer* obs) const override { hndl.push_back(observe(obs, value, name())); }
-    static scc::sc_variable<bool> create(const char* n, size_t i, bool default_val) {
-        std::ostringstream os;
-        os << n << "[" << i << "];";
-        return sc_variable<bool>(os.str(), default_val);
-    }
 
     struct creator {
         creator(bool const& default_val)
