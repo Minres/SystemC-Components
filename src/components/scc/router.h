@@ -192,14 +192,15 @@ router<BUSWIDTH, TARGET_SOCKET_TYPE>::router(const sc_core::sc_module_name& nm, 
 , addr_decoder(std::numeric_limits<unsigned>::max()) {
     for(size_t i = 0; i < target.size(); ++i) {
         target[i].register_b_transport(
-            [=](tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) -> void { this->b_transport(i, trans, delay); });
-        target[i].register_get_direct_mem_ptr(
-            [=](tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) -> bool { return this->get_direct_mem_ptr(i, trans, dmi_data); });
-        target[i].register_transport_dbg([=](tlm::tlm_generic_payload& trans) -> unsigned { return this->transport_dbg(i, trans); });
+            [this, i](tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) -> void { this->b_transport(i, trans, delay); });
+        target[i].register_get_direct_mem_ptr([this, i](tlm::tlm_generic_payload& trans, tlm::tlm_dmi& dmi_data) -> bool {
+            return this->get_direct_mem_ptr(i, trans, dmi_data);
+        });
+        target[i].register_transport_dbg([this, i](tlm::tlm_generic_payload& trans) -> unsigned { return this->transport_dbg(i, trans); });
         ibases[i] = 0ULL;
     }
     for(size_t i = 0; i < initiator.size(); ++i) {
-        initiator[i].register_invalidate_direct_mem_ptr([=](::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) -> void {
+        initiator[i].register_invalidate_direct_mem_ptr([this, i](::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range) -> void {
             this->invalidate_direct_mem_ptr(i, start_range, end_range);
         });
         tranges[i].base = 0ULL;

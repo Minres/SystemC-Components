@@ -113,19 +113,19 @@ class cci_value_cref
   template<typename U> friend class cci_impl::value_iterator_impl;
   friend bool operator==( cci_value_cref const &, cci_value_cref const & );
   friend std::ostream& operator<<( std::ostream&, cci_value_cref const & );
-  typedef cci_value_cref this_type;
+  using this_type = cci_value_cref ;
 
 protected:
-  typedef void* impl_type; // use type-punned pointer for now
-  typedef cci_impl::value_ptr<cci_value_cref> proxy_ptr;
+  using impl_type = void* ; // use type-punned pointer for now
+  using proxy_ptr = cci_impl::value_ptr<cci_value_cref> ;
 
   explicit cci_value_cref(impl_type i = NULL)
     : pimpl_(i) {}
 
 public:
-  typedef cci_value      value_type;
-  typedef cci_value_cref const_reference;
-  typedef cci_value_ref  reference;
+  using value_type = cci_value      ;
+  using const_reference = cci_value_cref ;
+  using reference = cci_value_ref  ;
 
   cci_value_cref( this_type const & ) = default;
 
@@ -233,7 +233,7 @@ template<typename T>
 CCI_VALUE_REQUIRES_CONVERTER_(T,bool)
 cci_value_cref::try_get( T& dst ) const
 {
-  typedef cci_value_converter<T> conv;
+  using conv = cci_value_converter<T> ;
   return conv::unpack( dst, *this );
 }
 
@@ -259,10 +259,10 @@ class cci_value_ref
   friend class cci_value_map_elem_ref;
   template<typename U> friend class cci_impl::value_iterator_impl;
   friend std::istream& operator>>( std::istream&, cci_value_ref );
-  typedef cci_value_cref base_type;
-  typedef cci_value_ref  this_type;
+  using base_type = cci_value_cref ;
+  using this_type = cci_value_ref  ;
 
-  typedef cci_impl::value_ptr<this_type> proxy_ptr;
+  using proxy_ptr = cci_impl::value_ptr<this_type> ;
 protected:
   explicit cci_value_ref(impl_type i = NULL)
     : cci_value_cref(i) {}
@@ -363,7 +363,7 @@ template<typename T>
 CCI_VALUE_REQUIRES_CONVERTER_(T,bool)
 cci_value_ref::try_set( T const & src )
 {
-  typedef cci_value_converter<T> conv;
+  using conv = cci_value_converter<T> ;
   return conv::pack( *this, src );
 }
 
@@ -386,16 +386,16 @@ class cci_value_string_cref
   friend class cci_value_cref;
   friend class cci_value_map_elem_cref;
   friend class cci_value_map_elem_ref;
-  typedef cci_value_cref        base_type;
-  typedef cci_value_string_cref this_type;
-  typedef cci_impl::value_ptr<this_type> proxy_ptr;
+  using base_type = cci_value_cref        ;
+  using this_type = cci_value_string_cref ;
+  using proxy_ptr = cci_impl::value_ptr<this_type> ;
 
 protected:
   explicit cci_value_string_cref(impl_type i = NULL)
     : base_type(i) {}
 
 public:
-  typedef size_t size_type;
+  using size_type = size_t ;
 
   cci_value_string_cref( this_type const& ) = default;
 
@@ -459,9 +459,9 @@ class cci_value_string_ref
   : public cci_value_string_cref
 {
   friend class cci_value_ref;
-  typedef cci_value_string_cref base_type;
-  typedef cci_value_string_ref  this_type;
-  typedef cci_impl::value_ptr<this_type> proxy_ptr;
+  using base_type = cci_value_string_cref ;
+  using this_type = cci_value_string_ref  ;
+  using proxy_ptr = cci_impl::value_ptr<this_type> ;
 
 protected:
   explicit cci_value_string_ref(impl_type i = NULL)
@@ -538,20 +538,20 @@ class cci_value_list_cref
   : public cci_value_cref
 {
   friend class cci_value_cref;
-  typedef cci_value_cref      base_type;
-  typedef cci_value_list_cref this_type;
-  typedef cci_impl::value_ptr<this_type> proxy_ptr;
+  using base_type = cci_value_cref      ;
+  using this_type = cci_value_list_cref ;
+  using proxy_ptr = cci_impl::value_ptr<this_type> ;
 
 protected:
   explicit cci_value_list_cref(impl_type i = NULL)
     : base_type(i) {}
 
 public:
-  typedef size_t size_type;
-  typedef cci_value_iterator<reference>         iterator;
-  typedef cci_value_iterator<const_reference>   const_iterator;
-  typedef std::reverse_iterator<iterator>       reverse_iterator;
-  typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+  using size_type = size_t ;
+  using iterator = cci_value_iterator<reference>         ;
+  using const_iterator = cci_value_iterator<const_reference>   ;
+  using reverse_iterator = std::reverse_iterator<iterator>       ;
+  using const_reverse_iterator = std::reverse_iterator<const_iterator> ;
 
   cci_value_list_cref( this_type const& ) = default;
 
@@ -635,9 +635,9 @@ class cci_value_list_ref
   : public cci_value_list_cref
 {
   friend class cci_value_ref;
-  typedef cci_value_list_cref base_type;
-  typedef cci_value_list_ref  this_type;
-  typedef cci_impl::value_ptr<this_type> proxy_ptr;
+  using base_type = cci_value_list_cref ;
+  using this_type = cci_value_list_ref  ;
+  using proxy_ptr = cci_impl::value_ptr<this_type> ;
 
 protected:
   explicit cci_value_list_ref(impl_type i = NULL)
@@ -762,12 +762,12 @@ cci_value_ref::get_list()
 class cci_value_map_elem_cref
 {
   template<typename U> friend class cci_impl::value_iterator_impl;
-  typedef cci_impl::value_ptr<cci_value_map_elem_cref> proxy_ptr;
+  using proxy_ptr = cci_impl::value_ptr<cci_value_map_elem_cref> ;
 
-  typedef void value_type; // TODO: add  explicit value_type 
+  using value_type = void* ; // TODO: add  explicit value_type 
 public:
-  typedef cci_value_map_elem_cref const_reference;
-  typedef cci_value_map_elem_ref  reference;
+  using const_reference = cci_value_map_elem_cref ;
+  using reference = cci_value_map_elem_ref  ;
 
   /// constant reference to the element's key
   cci_value_string_cref key;
@@ -781,7 +781,7 @@ public:
   bool is_same(cci_value_map_elem_cref that) const { return pimpl_ == that.pimpl_; }
 
 protected:
-  typedef void* impl_type; // use type-punned pointer for now
+  using impl_type = void* ; // use type-punned pointer for now
   impl_type pimpl_;
   cci_value_map_elem_cref(impl_type i = NULL);
 };
@@ -790,11 +790,11 @@ protected:
 class cci_value_map_elem_ref
 {
   template<typename U> friend class cci_impl::value_iterator_impl;
-  typedef cci_impl::value_ptr<cci_value_map_elem_ref> proxy_ptr;
-  typedef void value_type; // TODO: add  explicit value_type
+  using proxy_ptr = cci_impl::value_ptr<cci_value_map_elem_ref> ;
+  using value_type = void* ; // TODO: add  explicit value_type
 public:
-  typedef cci_value_map_elem_cref const_reference;
-  typedef cci_value_map_elem_ref  reference;
+  using const_reference = cci_value_map_elem_cref ;
+  using reference = cci_value_map_elem_ref  ;
 
   /// constant reference to the element's key
   cci_value_string_cref key;
@@ -805,7 +805,7 @@ public:
   proxy_ptr operator&() const { return proxy_ptr(*this); }
 
 protected:
-  typedef void* impl_type; // use type-punned pointer for now
+  using impl_type = void* ; // use type-punned pointer for now
   impl_type pimpl_;
   cci_value_map_elem_ref(impl_type i = NULL);
 };
@@ -825,22 +825,22 @@ class cci_value_map_cref
   : public cci_value_cref
 {
   friend class cci_value_cref;
-  typedef cci_value_cref     base_type;
-  typedef cci_value_map_cref this_type;
-  typedef cci_impl::value_ptr<this_type> proxy_ptr;
+  using base_type = cci_value_cref     ;
+  using this_type = cci_value_map_cref ;
+  using proxy_ptr = cci_impl::value_ptr<this_type> ;
 
 protected:
   explicit cci_value_map_cref(impl_type i = NULL)
     : base_type(i) {}
 
 public:
-  typedef size_t size_type;
-  typedef cci_value_map_elem_ref  element_reference;
-  typedef cci_value_map_elem_cref const_element_reference;
-  typedef cci_value_iterator<element_reference>       iterator;
-  typedef cci_value_iterator<const_element_reference> const_iterator;
-  typedef std::reverse_iterator<iterator>             reverse_iterator;
-  typedef std::reverse_iterator<const_iterator>       const_reverse_iterator;
+  using size_type = size_t ;
+  using element_reference = cci_value_map_elem_ref  ;
+  using const_element_reference = cci_value_map_elem_cref ;
+  using iterator = cci_value_iterator<element_reference>       ;
+  using const_iterator = cci_value_iterator<const_element_reference> ;
+  using reverse_iterator = std::reverse_iterator<iterator>             ;
+  using const_reverse_iterator = std::reverse_iterator<const_iterator>       ;
 
   cci_value_map_cref( this_type const& ) = default;
 
@@ -949,9 +949,9 @@ class cci_value_map_ref
   : public cci_value_map_cref
 {
   friend class cci_value_ref;
-  typedef cci_value_map_cref base_type;
-  typedef cci_value_map_ref  this_type;
-  typedef cci_impl::value_ptr<this_type> proxy_ptr;
+  using base_type = cci_value_map_cref ;
+  using this_type = cci_value_map_ref  ;
+  using proxy_ptr = cci_impl::value_ptr<this_type> ;
 protected:
   explicit cci_value_map_ref(impl_type i = NULL)
     : base_type(i) {}
@@ -1128,26 +1128,26 @@ cci_value_ref::get_map()
 class cci_value
   : public cci_value_ref
 {
-  typedef cci_value this_type;
+  using this_type = cci_value ;
   friend class cci_value_ref;
   friend class cci_value_string_ref;
 public:
   /// reference to a constant value
-  typedef cci_value_cref        const_reference;
+  using const_reference = cci_value_cref        ;
   /// reference to a mutable value
-  typedef cci_value_ref         reference;
+  using reference = cci_value_ref         ;
   /// reference to a constant string value
-  typedef cci_value_string_cref const_string_reference;
+  using const_string_reference = cci_value_string_cref ;
   /// reference to a mutable string value
-  typedef cci_value_string_ref  string_reference;
+  using string_reference = cci_value_string_ref  ;
   /// reference to a constant list value
-  typedef cci_value_list_cref   const_list_reference;
+  using const_list_reference = cci_value_list_cref   ;
   /// reference to a mutable list value
-  typedef cci_value_list_ref    list_reference;
+  using list_reference = cci_value_list_ref    ;
   /// reference to a constant map value
-  typedef cci_value_map_cref    const_map_reference;
+  using const_map_reference = cci_value_map_cref    ;
   /// reference to a mutable map value
-  typedef cci_value_map_ref     map_reference;
+  using map_reference = cci_value_map_ref     ;
 
   /// default constructor
   cci_value()
@@ -1347,10 +1347,10 @@ class cci_value_list
   : public cci_value_list_ref
 {
   friend class cci_value;
-  typedef cci_value_list this_type;
+  using this_type = cci_value_list ;
 public:
-  typedef cci_value_list_cref const_reference;
-  typedef cci_value_list_ref  reference;
+  using const_reference = cci_value_list_cref ;
+  using reference = cci_value_list_ref  ;
 
   cci_value_list();
 
@@ -1423,10 +1423,10 @@ class cci_value_map
   : public cci_value_map_ref
 {
   friend class cci_value;
-  typedef cci_value_map this_type;
+  using this_type = cci_value_map ;
 public:
-  typedef cci_value_map_cref const_reference;
-  typedef cci_value_map_ref  reference;
+  using const_reference = cci_value_map_cref ;
+  using reference = cci_value_map_ref  ;
 
   cci_value_map();
 

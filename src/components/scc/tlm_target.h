@@ -138,8 +138,8 @@ inline scc::tlm_target<BUSWIDTH, ADDR_UNIT_BITWIDTH>::tlm_target(sc_core::sc_tim
 : socket(socket_name)
 , clk(clock)
 , socket_map(std::make_pair(nullptr, 0)) {
-    socket.register_b_transport([=](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void { this->b_tranport_cb(gp, delay); });
-    socket.register_transport_dbg([=](tlm::tlm_generic_payload& gp) -> unsigned { return this->tranport_dbg_cb(gp); });
+    socket.register_b_transport([this](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void { this->b_tranport_cb(gp, delay); });
+    socket.register_transport_dbg([this](tlm::tlm_generic_payload& gp) -> unsigned { return this->tranport_dbg_cb(gp); });
 }
 
 template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_BITWIDTH>

@@ -55,7 +55,6 @@
 #include <memory>
 #include <string>
 
-
 //! @brief SystemC Verification Library (SCV) Transaction Recording
 namespace scv_tr {
 
@@ -265,16 +264,16 @@ class scv_extensions_if : public scv_extension_rw_if {};
 // ----------------------------------------
 // macro for common inlined check for _is_dynamic()
 // ----------------------------------------
-#define _SCV_CHECK_DYNAMIC(feature, return_statement)                                                                  \
-    if(!this->_is_dynamic()) {                                                                                         \
-        _scv_message::message(_scv_message::INTROSPECTION_INVALID_DYNAMIC_EXTENSIONS, #feature);                       \
-        return_statement;                                                                                              \
+#define _SCV_CHECK_DYNAMIC(feature, return_statement)                                                                                      \
+    if(!this->_is_dynamic()) {                                                                                                             \
+        _scv_message::message(_scv_message::INTROSPECTION_INVALID_DYNAMIC_EXTENSIONS, #feature);                                           \
+        return_statement;                                                                                                                  \
     }
 
 // ----------------------------------------
 // error message
 // ----------------------------------------
-#define _SCV_RW_ERROR(feature, type, obj)                                                                              \
+#define _SCV_RW_ERROR(feature, type, obj)                                                                                                  \
     _scv_message::message(_scv_message::INTROSPECTION_INVALID_READ_WRITE, #feature, #type, #obj, this->get_name())
 
 // ----------------------------------------
@@ -304,20 +303,20 @@ inline const char* _scv_ext_util_get_name(const char* format, const char* name) 
 // others
 // ----------------------------------------
 #if defined(SYSTEMC_INCLUDED) || defined(IEEE_1666_SYSTEMC)
-#define _SCV_SYSTEMC_BASIC_TYPE_SPECIALIZATION()                                                                       \
-    _SCV_COMPONENT_1(sc_dt::sc_bit);                                                                                   \
-    _SCV_COMPONENT_1(sc_dt::sc_logic);                                                                                 \
-    _SCV_COMPONENT_N(sc_dt::sc_int);                                                                                   \
-    _SCV_COMPONENT_N(sc_dt::sc_uint);                                                                                  \
-    _SCV_COMPONENT_N(sc_dt::sc_bigint);                                                                                \
-    _SCV_COMPONENT_N(sc_dt::sc_biguint);                                                                               \
-    _SCV_COMPONENT_N(sc_dt::sc_bv);                                                                                    \
-    _SCV_COMPONENT_N(sc_dt::sc_lv);                                                                                    \
-    _SCV_COMPONENT(sc_dt::sc_signed);                                                                                  \
-    _SCV_COMPONENT(sc_dt::sc_unsigned);                                                                                \
-    _SCV_COMPONENT(sc_dt::sc_int_base);                                                                                \
-    _SCV_COMPONENT(sc_dt::sc_uint_base);                                                                               \
-    _SCV_COMPONENT(sc_dt::sc_lv_base);                                                                                 \
+#define _SCV_SYSTEMC_BASIC_TYPE_SPECIALIZATION()                                                                                           \
+    _SCV_COMPONENT_1(sc_dt::sc_bit);                                                                                                       \
+    _SCV_COMPONENT_1(sc_dt::sc_logic);                                                                                                     \
+    _SCV_COMPONENT_N(sc_dt::sc_int);                                                                                                       \
+    _SCV_COMPONENT_N(sc_dt::sc_uint);                                                                                                      \
+    _SCV_COMPONENT_N(sc_dt::sc_bigint);                                                                                                    \
+    _SCV_COMPONENT_N(sc_dt::sc_biguint);                                                                                                   \
+    _SCV_COMPONENT_N(sc_dt::sc_bv);                                                                                                        \
+    _SCV_COMPONENT_N(sc_dt::sc_lv);                                                                                                        \
+    _SCV_COMPONENT(sc_dt::sc_signed);                                                                                                      \
+    _SCV_COMPONENT(sc_dt::sc_unsigned);                                                                                                    \
+    _SCV_COMPONENT(sc_dt::sc_int_base);                                                                                                    \
+    _SCV_COMPONENT(sc_dt::sc_uint_base);                                                                                                   \
+    _SCV_COMPONENT(sc_dt::sc_lv_base);                                                                                                     \
     _SCV_COMPONENT(sc_dt::sc_bv_base);
 
 // SCV_COMPONENT_N(tag,sc_fixed);
@@ -327,22 +326,22 @@ inline const char* _scv_ext_util_get_name(const char* format, const char* name) 
 #define _SCV_SYSTEMC_BASIC_TYPE_SPECIALIZATION()
 #endif
 
-#define _SCV_BASIC_TYPE_SPECIALIZATION()                                                                               \
-    _SCV_COMPONENT(bool);                                                                                              \
-    _SCV_COMPONENT(char);                                                                                              \
-    _SCV_COMPONENT(unsigned char);                                                                                     \
-    _SCV_COMPONENT(short);                                                                                             \
-    _SCV_COMPONENT(unsigned short);                                                                                    \
-    _SCV_COMPONENT(int);                                                                                               \
-    _SCV_COMPONENT(unsigned int);                                                                                      \
-    _SCV_COMPONENT(long);                                                                                              \
-    _SCV_COMPONENT(unsigned long);                                                                                     \
-    _SCV_COMPONENT(long long);                                                                                         \
-    _SCV_COMPONENT(unsigned long long);                                                                                \
-    _SCV_COMPONENT(float);                                                                                             \
-    _SCV_COMPONENT(double);                                                                                            \
-    _SCV_COMPONENT(std::string);                                                                                       \
-    _SCV_COMPONENT_N(test_uint);                                                                                       \
+#define _SCV_BASIC_TYPE_SPECIALIZATION()                                                                                                   \
+    _SCV_COMPONENT(bool);                                                                                                                  \
+    _SCV_COMPONENT(char);                                                                                                                  \
+    _SCV_COMPONENT(unsigned char);                                                                                                         \
+    _SCV_COMPONENT(short);                                                                                                                 \
+    _SCV_COMPONENT(unsigned short);                                                                                                        \
+    _SCV_COMPONENT(int);                                                                                                                   \
+    _SCV_COMPONENT(unsigned int);                                                                                                          \
+    _SCV_COMPONENT(long);                                                                                                                  \
+    _SCV_COMPONENT(unsigned long);                                                                                                         \
+    _SCV_COMPONENT(long long);                                                                                                             \
+    _SCV_COMPONENT(unsigned long long);                                                                                                    \
+    _SCV_COMPONENT(float);                                                                                                                 \
+    _SCV_COMPONENT(double);                                                                                                                \
+    _SCV_COMPONENT(std::string);                                                                                                           \
+    _SCV_COMPONENT_N(test_uint);                                                                                                           \
     _SCV_SYSTEMC_BASIC_TYPE_SPECIALIZATION()
 
 // implementation details
@@ -3247,12 +3246,13 @@ public:
 
 #undef _SCV_INTEGER_INTERFACE
 
+#if __cplusplus < 202002L
 // ----------------------------------------
 // special extension class to handle getting an extension from an extension
 // ----------------------------------------
 template <typename T> class scv_extensions<scv_extensions<T>> : public scv_extensions<T> {
 public:
-    scv_extensions<scv_extensions<T>>() {}
+    scv_extensions<scv_extensions<T>>() = default;
     scv_extensions<scv_extensions<T>>(const scv_extensions<T>& rhs)
     : scv_extensions<T>(rhs) {}
     virtual ~scv_extensions() {}
@@ -3263,7 +3263,7 @@ public:
     virtual void _set_instance(T* i) { scv_extensions<T>::_set_instance(i); }
     virtual void _set_instance(scv_extensions<T>* i) { scv_extensions<T>::_set_instance(i->_get_instance()); }
 };
-
+#endif
 // ----------------------------------------
 // specialization for array
 // ----------------------------------------
