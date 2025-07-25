@@ -141,24 +141,24 @@ FIND_PATH(SCV_LIBRARY_DIRS
   PATHS ${_SCV_PATHS}
 )
 
-#FIND_PATH(CCI_INCLUDE_DIRS
-#  NAMES cci_configuration
-#  HINTS ${_CCI_HINTS}
-#  PATHS ${_CCI_PATHS}
-#)
-#
-#FIND_PATH(CCI_LIBRARY_DIRS
-#  NAMES libcciapi.a libcciapi.so
-#  HINTS ${_CCI_HINTS}
-#  PATHS ${_CCI_PATHS}
-#)
+FIND_PATH(CCI_INCLUDE_DIRS
+  NAMES cci_configuration
+  HINTS ${_CCI_HINTS}
+  PATHS ${_CCI_PATHS}
+)
+
+FIND_PATH(CCI_LIBRARY_DIRS
+  NAMES libcciapi.a libcciapi.so
+  HINTS ${_CCI_HINTS}
+  PATHS ${_CCI_PATHS}
+)
 
 if(SystemC_FOUND)
         set(SystemC_LIBRARIES systemc)
         if(SCV_FOUND)
             set(SCV_LIBRARIES scv)
         endif(SCV_FOUND)
-#        if(CCI_FOUND)
-#            set(CCI_LIBRARIES cciapi)
-#        endif()
+        if(CCI_FOUND)
+            set(CCI_LIBRARIES cciapi)
+        endif()
 endif(SystemC_FOUND)
