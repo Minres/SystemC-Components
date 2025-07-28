@@ -13,12 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * report.cpp
- *
- *  Created on: 19.09.2017
- *      Author: ubuntu
- */
 
 #include "report.h"
 #include "configurer.h"
@@ -342,6 +336,14 @@ static const array<sc_verbosity, 8> verbosity = {SC_NONE,   // scc::log::NONE
 auto scc::stream_redirection::sync() -> int {
     if(level <= log_cfg.level) {
         auto timestr = time2string(sc_time_stamp());
+        std::string category = "SystemC";
+        auto category_begin = str().find_first_of('[');
+        if(category_begin != std::string::npos) {
+            auto category_end = str().find_first_of(']');
+            if(category_end != std::string::npos) {
+                category = str().substr(category_begin, category_end - category_begin);
+            }
+        }
         istringstream buf(str());
         string line;
         while(getline(buf, line)) {

@@ -97,7 +97,7 @@ public:
      * @brief the destructor
      *
      */
-    virtual ~Log() {
+    virtual ~Log() noexcept(false) {
         os << std::endl;
         T::output(os.str());
         // TODO: use a more specific exception
