@@ -34,6 +34,7 @@
 #else
 #include <sys/time.h>
 #endif
+#include <functional>
 
 //! log level definitions
 #define LEVELS(L) L(NONE) L(FATAL) L(ERR) L(WARN) L(INFO) L(DEBUG) L(TRACE) L(TRACEALL)
@@ -82,6 +83,18 @@ inline std::istream& operator>>(std::istream& is, log_level& val) {
  * @return
  */
 inline std::string now_time();
+
+struct LoggerCallbacks {
+    using log_cb = std::function<void(std::string const&, std::string const&)>;
+    static void set_output_cb(unsigned level, log_cb cb) { get_output_cb().at(level) = cb; }
+    static log_cb& get_output_cb(unsigned level) { return get_output_cb().at(level); }
+
+private:
+    static std::array<log_cb, 8>& get_output_cb() {
+        static std::array<log_cb, 8> cbs;
+        return cbs;
+    }
+};
 /**
  * the logger class
  */
@@ -98,6 +111,11 @@ public:
      *
      */
     virtual ~Log() noexcept(false) {
+        log_level lvl = get_last_log_level().load();
+        if(LoggerCallbacks::get_output_cb(lvl)) {
+            LoggerCallbacks::get_output_cb(lvl)(cat, os.str());
+            return;
+        }
         os << std::endl;
         T::output(os.str());
         // TODO: use a more specific exception
@@ -112,13 +130,17 @@ public:
      * @return the underlying output stream
      */
     std::ostream& get(log_level level = INFO, const char* category = "") {
-        if(print_time())
-            os << "- " << now_time() << " ";
-        if(print_severity()) {
-            os << std::setw(7) << std::left << to_string(level);
-            if(strlen(category))
-                os << "[" << category << "]";
-            os << ": " << std::internal;
+        if(LoggerCallbacks::get_output_cb(level)) {
+            cat = category;
+        } else {
+            if(print_time())
+                os << "- " << now_time() << " ";
+            if(print_severity()) {
+                os << std::setw(7) << std::left << to_string(level);
+                if(strlen(category))
+                    os << "[" << category << "]";
+                os << ": " << std::internal;
+            }
         }
         get_last_log_level() = level;
         return os;
@@ -192,6 +214,7 @@ protected:
         return level;
     }
     static const char* const* get_log_level_cstr() { return buffer.data(); };
+    std::string cat;
     std::ostringstream os;
 };
 /**
@@ -264,9 +287,21 @@ struct DEFAULT {
     if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                                        \
     LOGGER(DEFAULT)().get(::logging::LEVEL)
 #endif
-#define CPPLOG(LEVEL)                                                                                                                      \
+
+// next few lines are tricky, its macro overloading
+// the one argument version
+#define CPPLOG1(LEVEL)                                                                                                                     \
     if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                                        \
-    LOGGER(DEFAULT)().get(::logging::LEVEL)
+    LOGGER(DEFAULT)().get(::logging::LEVEL, __FUNCTION__)
+// the two argument version
+#define CPPLOG2(LEVEL, TYPE)                                                                                                               \
+    if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                                        \
+    LOGGER(DEFAULT)().get(::logging::LEVEL, TYPE)
+// This macro extracts the third argument (NAME) based on how many arguments are passed. It is used to route to the correct implementation.
+#define GET_CPPLOG_MACRO(_1, _2, NAME, ...) NAME
+// call the respective macro
+#define CPPLOG(...) GET_CPPLOG_MACRO(__VA_ARGS__, CPPLOG2, CPPLOG1)(__VA_ARGS__)
+
 #ifndef CLOG
 #define NSCLOG(LEVEL, CATEGORY)                                                                                                            \
     if(::logging::LEVEL <= _LOGGER(CATEGORY)::get_reporting_level() && _LOG_OUTPUT(CATEGORY)::stream())                                    \
