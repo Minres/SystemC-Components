@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-
 #include "report.h"
 #include "configurer.h"
 #include <array>
@@ -185,12 +184,12 @@ auto compose_message(const sc_report& rep, const scc::LogConfig& cfg) -> const s
             }
         }
         if(unlikely(rep.get_id() >= 0))
-            os << "(" << "IWEF"[rep.get_severity()] << rep.get_id() << ") " << rep.get_msg_type() << ": ";
+            os << " (" << "IWEF"[rep.get_severity()] << rep.get_id() << ") " << rep.get_msg_type() << ": ";
         else if(cfg.msg_type_field_width) {
             if(cfg.msg_type_field_width == std::numeric_limits<unsigned>::max())
-                os << rep.get_msg_type() << ": ";
+                os << " " << rep.get_msg_type() << ": ";
             else
-                os << util::padded(rep.get_msg_type(), cfg.msg_type_field_width) << ": ";
+                os << " " << util::padded(rep.get_msg_type(), cfg.msg_type_field_width) << ": ";
         }
         if(*rep.get_msg())
             os << rep.get_msg();
@@ -336,14 +335,6 @@ static const array<sc_verbosity, 8> verbosity = {SC_NONE,   // scc::log::NONE
 auto scc::stream_redirection::sync() -> int {
     if(level <= log_cfg.level) {
         auto timestr = time2string(sc_time_stamp());
-        std::string category = "SystemC";
-        auto category_begin = str().find_first_of('[');
-        if(category_begin != std::string::npos) {
-            auto category_end = str().find_first_of(']');
-            if(category_end != std::string::npos) {
-                category = str().substr(category_begin, category_end - category_begin);
-            }
-        }
         istringstream buf(str());
         string line;
         while(getline(buf, line)) {
@@ -407,6 +398,47 @@ static void configure_logging() {
             log_cfg.reg_ex = regex(log_cfg.log_filter_regex, regex::extended | regex::icase);
 #endif
         }
+        logging::LoggerCallbacks::set_output_cb(logging::FATAL, [](std::string const& msg_type, std::string const& msg) {
+            ::scc ::ScLogger<::sc_core ::SC_FATAL>("", 0, sc_core ::SC_MEDIUM).type(msg_type.size() ? msg_type : std::string("C++")).get()
+                << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::ERR, [](std::string const& msg_type, std::string const& msg) {
+            ::scc ::ScLogger<::sc_core ::SC_ERROR>("", 0, sc_core ::SC_MEDIUM).type(msg_type.size() ? msg_type : std::string("C++")).get()
+                << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::WARN, [](std::string const& msg_type, std::string const& msg) {
+            if(::scc ::get_log_verbosity(msg_type) >= sc_core ::SC_LOW)
+                ::scc ::ScLogger<::sc_core ::SC_WARNING>("", 0, sc_core ::SC_MEDIUM)
+                        .type(msg_type.size() ? msg_type : std::string("C++"))
+                        .get()
+                    << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::INFO, [](std::string const& msg_type, std::string const& msg) {
+            if(::scc ::get_log_verbosity(msg_type) >= sc_core ::SC_MEDIUM)
+                ::scc ::ScLogger<::sc_core ::SC_INFO>("", 0, sc_core ::SC_MEDIUM)
+                        .type(msg_type.size() ? msg_type : std::string("C++"))
+                        .get()
+                    << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::DEBUG, [](std::string const& msg_type, std::string const& msg) {
+            if(::scc ::get_log_verbosity(msg_type) >= sc_core ::SC_HIGH)
+                ::scc ::ScLogger<::sc_core ::SC_INFO>("", 0, sc_core ::SC_HIGH).type(msg_type.size() ? msg_type : std::string("C++")).get()
+                    << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::TRACE, [](std::string const& msg_type, std::string const& msg) {
+            if(::scc ::get_log_verbosity(msg_type) >= sc_core ::SC_FULL)
+                ::scc ::ScLogger<::sc_core ::SC_INFO>("", 0, sc_core ::SC_FULL).type(msg_type).get() << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::TRACEALL, [](std::string const& msg_type, std::string const& msg) {
+            if(::scc ::get_log_verbosity(msg_type) >= sc_core ::SC_DEBUG)
+                ::scc ::ScLogger<::sc_core ::SC_INFO>("", 0, sc_core ::SC_DEBUG).type(msg_type.size() ? msg_type : std::string("C++")).get()
+                    << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::DBGTRACE, [](std::string const& msg_type, std::string const& msg) {
+            if(::scc ::get_log_verbosity(msg_type) >= sc_core ::SC_DEBUG)
+                ::scc ::ScLogger<::sc_core ::SC_INFO>("", 0, sc_core ::SC_DEBUG).type(msg_type.size() ? msg_type : std::string("C++")).get()
+                    << msg;
+        });
     }
 }
 
