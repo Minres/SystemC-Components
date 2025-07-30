@@ -19,6 +19,7 @@
 
 #include "tracer_base.h"
 #include <cci_configuration>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -74,35 +75,19 @@ public:
     };
 
     /**
-     * cci parameter to determine the file type being used to trace transaction if not specified explicitly
+     * cci parameter handle to determine the file type being used to trace transaction if not specified explicitly
      */
-    static cci::cci_param<unsigned>& tx_trace_type() {
-        static cci::cci_param<unsigned> tx_trace_type{"scc_tracer.tx_trace_type", CFTR,
-                                                      "Type of TX trace file used for recording. See also scc::tracer::file_type",
-                                                      cci::CCI_ABSOLUTE_NAME};
-        return tx_trace_type;
-    }
+    cci::cci_param_handle tx_trace_type_handle;
 
     /**
-     * cci parameter to determine the file type being used to trace signals if not specified explicitly
+     * cci parameter handle to determine the file type being used to trace signals if not specified explicitly
      */
-    static cci::cci_param<unsigned>& sig_trace_type() {
-        static cci::cci_param<unsigned> sig_trace_type{"scc_tracer.sig_trace_type", FST,
-                                                       "Type of signal trace file used for recording. See also scc::tracer::wave_type",
-                                                       cci::CCI_ABSOLUTE_NAME};
-        return sig_trace_type;
-    }
+    cci::cci_param_handle sig_trace_type_handle;
 
     /**
-     * cci parameter to determine the file type being used to trace signals if not specified explicitly
+     * cci parameter handle to determine the file type being used to trace signals if not specified explicitly
      */
-    static cci::cci_param<bool>& close_db_in_eos() {
-        static cci::cci_param<bool> close_db_in_eos{"scc_tracer.close_db_in_eos", false,
-                                                    "Close the waveform/transaction tracing databases during end_of_simulation",
-                                                    cci::CCI_ABSOLUTE_NAME};
-        return close_db_in_eos;
-    }
-
+    cci::cci_param_handle close_db_in_eos_handle;
     /**
      * @fn  tracer(const std::string&&, file_type, bool=true)
      * @brief the constructor
@@ -183,6 +168,9 @@ protected:
     lwtr::tx_db* lwtr_db{nullptr};
     //! the cci broker
     cci::cci_broker_handle cci_broker;
+    std::unique_ptr<cci::cci_param<unsigned>> tx_trace_type;
+    std::unique_ptr<cci::cci_param<unsigned>> sig_trace_type;
+    std::unique_ptr<cci::cci_param<bool>> close_db_in_eos;
 
 private:
     void init_tx_db(file_type type, std::string const&& name);

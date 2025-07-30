@@ -304,18 +304,26 @@ tracer_base* find_tracer_base(sc_core::sc_object* obj) {
 }
 } // namespace
 
-bool tracer_base::get_default_trace_enable() {
-    static tracer_base* trb = nullptr;
-    static bool uninitialized{true};
-    if(uninitialized) {
-        for(auto* o : sc_core::sc_get_top_level_objects()) {
-            trb = find_tracer_base(o);
-            if(trb)
-                break;
-        }
-        uninitialized = false;
+static char const* const default_trace_enable_name = "scc_tracer.default_trace_enable";
+tracer_base::tracer_base(const sc_core::sc_module_name& nm, sc_core::sc_trace_file* tf, bool owned)
+: sc_core::sc_module(nm)
+, trf(tf) {
+    auto cci_broker = cci::cci_get_broker();
+    default_trace_enable_handle = cci_broker.get_param_handle(default_trace_enable_name);
+    if(!default_trace_enable_handle.is_valid()) {
+        default_trace_enable = scc::make_unique<cci::cci_param<bool>>(
+            default_trace_enable_name, false, "the default for tracing if no attribute is configured", cci::CCI_ABSOLUTE_NAME);
+        default_trace_enable_handle = cci_broker.get_param_handle(default_trace_enable_name);
     }
-    return trb ? default_trace_enable().get_value() : true;
+}
+
+bool tracer_base::get_default_trace_enable() {
+    auto cci_broker = cci::cci_get_broker();
+    auto default_trace_enable_handle = cci_broker.get_param_handle(default_trace_enable_name);
+    if(default_trace_enable_handle.is_valid())
+        return default_trace_enable_handle.get_cci_value().get<bool>();
+    else
+        return false; // if the parameter does not exist, no tracer has been instantiated
 }
 
 } // namespace scc

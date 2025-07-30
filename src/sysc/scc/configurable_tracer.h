@@ -109,7 +109,7 @@ public:
     /**
      * adds default trace control attribute of name 'enableTracing' to each sc_module in a design hierarchy
      */
-    void add_control() { add_control(default_trace_enable().get_value()); }
+    void add_control() { add_control(default_trace_enable_handle.get_cci_value().get<bool>()); }
     /**
      * adds default trace control attribute of name 'enableTracing' to each sc_module in a design hierarchy
      *

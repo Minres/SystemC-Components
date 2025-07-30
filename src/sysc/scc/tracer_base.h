@@ -78,14 +78,9 @@ inline trace_types operator&(trace_types lhs, trace_types rhs) {
  */
 struct tracer_base : public sc_core::sc_module {
     /**
-     * cci parameter to determine if the tracing is enabled if not specified explicitly
+     * cci parameter handle to determine if the tracing is enabled if not specified explicitly
      */
-    static cci::cci_param<bool>& default_trace_enable() {
-        static cci::cci_param<bool> default_trace_enable{"scc_tracer.default_trace_enable", true,
-                                                         "the default for tracing if no attribute is configured", cci::CCI_ABSOLUTE_NAME};
-        return default_trace_enable;
-    }
-
+    cci::cci_param_handle default_trace_enable_handle;
     /**
      * @fn  tracer_base(const sc_core::sc_module_name&)
      * @brief named constructor
@@ -93,7 +88,7 @@ struct tracer_base : public sc_core::sc_module {
      * @param nm the instance name
      */
     tracer_base(const sc_core::sc_module_name& nm)
-    : sc_core::sc_module(nm) {}
+    : tracer_base(nm, nullptr, false) {}
     /**
      * @fn  tracer_base(const sc_core::sc_module_name&, sc_core::sc_trace_file*, bool=true)
      * @brief named constructor with trace file
@@ -102,9 +97,7 @@ struct tracer_base : public sc_core::sc_module {
      * @param tf the trace file
      * @param owned if true the tracefile is owned by the tracer and closed upon simulation end
      */
-    tracer_base(const sc_core::sc_module_name& nm, sc_core::sc_trace_file* tf, bool owned = true)
-    : sc_core::sc_module(nm)
-    , trf(tf) {}
+    tracer_base(const sc_core::sc_module_name& nm, sc_core::sc_trace_file* tf, bool owned = true);
     /**
      * @fn  ~tracer_base()
      * @brief destructor
@@ -153,6 +146,8 @@ protected:
     sc_core::sc_trace_file* trf{nullptr};
 
     trace_types types_to_trace{trace_types::ALL};
+
+    std::unique_ptr<cci::cci_param<bool>> default_trace_enable;
 };
 
 } // namespace scc
