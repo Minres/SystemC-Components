@@ -174,6 +174,7 @@ protected:
 
 private:
     void init_tx_db(file_type type, std::string const&& name);
+    void init_cci_handles();
     bool owned{false};
 };
 

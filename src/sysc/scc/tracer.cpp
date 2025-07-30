@@ -56,26 +56,7 @@ tracer::tracer(std::string const&& name, file_type tx_type, file_type sig_type, 
 , txdb(nullptr)
 , lwtr_db(nullptr)
 , owned{sig_type != NONE} {
-    tx_trace_type_handle = cci_broker.get_param_handle(tx_trace_type_name);
-    if(!tx_trace_type_handle.is_valid()) {
-        tx_trace_type = scc::make_unique<cci::cci_param<unsigned>>(
-            tx_trace_type_name, CFTR, "Type of TX trace file used for recording. See also scc::tracer::file_type", cci::CCI_ABSOLUTE_NAME);
-        tx_trace_type_handle = cci_broker.get_param_handle(tx_trace_type_name);
-    }
-    sig_trace_type_handle = cci_broker.get_param_handle(sig_trace_type_name);
-    if(!sig_trace_type_handle.is_valid()) {
-        sig_trace_type = scc::make_unique<cci::cci_param<unsigned>>(
-            sig_trace_type_name, FST, "Type of signal trace file used for recording. See also scc::tracer::wave_type",
-            cci::CCI_ABSOLUTE_NAME);
-        sig_trace_type_handle = cci_broker.get_param_handle(sig_trace_type_name);
-    }
-    close_db_in_eos_handle = cci_broker.get_param_handle(close_db_in_eos_name);
-    if(!close_db_in_eos_handle.is_valid()) {
-        close_db_in_eos = scc::make_unique<cci::cci_param<bool>>(
-            close_db_in_eos_name, false, "Close the waveform/transaction tracing databases during end_of_simulation",
-            cci::CCI_ABSOLUTE_NAME);
-        close_db_in_eos_handle = cci_broker.get_param_handle(close_db_in_eos_name);
-    }
+    init_cci_handles();
     if(sig_type == ENABLE)
         sig_type = static_cast<file_type>(sig_trace_type_handle.get_cci_value().get<unsigned>());
     if(sig_type != NONE) {
@@ -106,6 +87,7 @@ tracer::tracer(std::string const&& name, file_type tx_type, sc_core::sc_trace_fi
 , txdb(nullptr)
 , lwtr_db(nullptr)
 , owned{false} {
+    init_cci_handles();
     trf = tf;
     init_tx_db(tx_type == ENABLE ? static_cast<file_type>(tx_trace_type_handle.get_cci_value().get<unsigned>()) : tx_type, std::move(name));
 }
@@ -193,5 +175,29 @@ void tracer::end_of_simulation() {
             scc_close_vcd_trace_file(trf);
             trf = nullptr;
         }
+    }
+}
+
+void tracer::init_cci_handles() {
+    tx_trace_type_handle = cci_broker.get_param_handle(tx_trace_type_name);
+    if(!tx_trace_type_handle.is_valid()) {
+        tx_trace_type = scc::make_unique<cci::cci_param<unsigned>>(
+            tx_trace_type_name, CFTR, "Type of TX trace file used for recording. See also scc::tracer::file_type", cci::CCI_ABSOLUTE_NAME);
+        tx_trace_type_handle = cci_broker.get_param_handle(tx_trace_type_name);
+    }
+    sig_trace_type_handle = cci_broker.get_param_handle(sig_trace_type_name);
+    if(!sig_trace_type_handle.is_valid()) {
+        sig_trace_type = scc::make_unique<cci::cci_param<unsigned>>(
+            sig_trace_type_name, FST, "Type of signal trace file used for recording. See also scc::tracer::wave_type",
+            cci::CCI_ABSOLUTE_NAME);
+        sig_trace_type_handle = cci_broker.get_param_handle(sig_trace_type_name);
+    }
+    close_db_in_eos_handle = cci_broker.get_param_handle(close_db_in_eos_name);
+    if(!close_db_in_eos_handle.is_valid()) {
+      
+        close_db_in_eos = scc::make_unique<cci::cci_param<bool>>(
+            close_db_in_eos_name, false, "Close the waveform/transaction tracing databases during end_of_simulation",
+            cci::CCI_ABSOLUTE_NAME);
+        close_db_in_eos_handle = cci_broker.get_param_handle(close_db_in_eos_name);
     }
 }
