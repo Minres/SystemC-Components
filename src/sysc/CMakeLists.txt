@@ -5,6 +5,7 @@ find_package(Boost REQUIRED QUIET COMPONENTS date_time filesystem stacktrace_bac
 find_package(ZLIB)
 
 option(ENABLE_SQLITE "Enable SQLite backend for SCV" ON)
+option(ENABLE_PYTHON4SC "Enable Python interpreter integration" OFF)
 
 if (MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
@@ -48,6 +49,21 @@ set(LIB_SOURCES
     tlm/scc/lwtr/tlm2_lwtr.cpp
 )
 
+if(ENABLE_PYTHON4SC)
+    #find_package(pybind11)
+    set(PYBIND11_INSTALL ON)
+    include(FetchContent)
+    FetchContent_Declare(
+        pybind11
+        GIT_REPOSITORY https://github.com/pybind/pybind11.git
+        GIT_TAG        stable
+    )
+    FetchContent_MakeAvailable(pybind11)
+    list(APPEND LIB_SOURCES  
+        scc/python4sc.cpp
+        )
+endif()
+
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
     list(APPEND LIB_SOURCES  
@@ -73,12 +89,15 @@ endif()
 if(SC_WITH_PHASE_CALLBACK_TRACING)
     target_compile_definitions(${PROJECT_NAME} PUBLIC WITH_SC_TRACING_PHASE_CALLBACKS)
 endif()
-
 target_include_directories (${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
 )
 target_link_libraries(${PROJECT_NAME} PUBLIC scc-util RapidJSON::RapidJSON lwtr)
+if(ENABLE_PYTHON4SC)
+    target_compile_options(${PROJECT_NAME} PRIVATE -fvisibility=hidden)
+    target_link_libraries(${PROJECT_NAME} PUBLIC pybind11::embed) #pybind11::headers)
+endif()
 if(TARGET fmt::fmt-header-only)
 	target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt-header-only)
 else()
