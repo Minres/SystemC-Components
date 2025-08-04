@@ -96,3 +96,4 @@ void python4sc::run() {
     }
     return;
 }
+} // namespace scc
