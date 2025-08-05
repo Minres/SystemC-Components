@@ -16,6 +16,8 @@ This module provides the following imported targets, if found:
   The SystemC Verification library
 ``SystemC::cci``
   The SystemC CCI library
+``SystemC::ftblocks``
+  The SNPS FTBlocks library
 
 Result Variables
 ^^^^^^^^^^^^^^^^
@@ -75,6 +77,12 @@ SET(_SCV_HINTS
   )
 
 SET(_CCI_HINTS
+  ${_COMMON_HINTS}
+  )
+
+SET(_FTB_HINTS
+  $ENV{SNPS_VP_HOME}/IP_common/FT_blocks/include
+  $ENV{SNPS_VP_HOME}/IP_common/FT_blocks/lib/linux.$ENV{SNPS_VP_COMPILER}-64
   ${_COMMON_HINTS}
   )
 
@@ -182,9 +190,23 @@ FIND_LIBRARY(SCV_LIBRARY
   PATHS ${_COMMON_PATHS}
 )
 
+FIND_PATH(FTB_INCLUDE_DIR
+  NAMES snps_port_handler.h
+  HINTS ${_FTB_HINTS}
+  PATHS ${_COMMON_PATHS}
+)
+
+FIND_LIBRARY(FTB_LIBRARY
+  NAMES ftblocks
+  HINTS ${_FTB_HINTS}
+  PATHS ${_COMMON_PATHS}
+)
+
 mark_as_advanced(
   SCV_INCLUDE_DIR
   SCV_LIBRARY
+  FTB_INCLUDE_DIR
+  FTB_LIBRARY
 )
 
 find_package_handle_standard_args(SCV
@@ -208,6 +230,30 @@ if(SCV_FOUND AND NOT TARGET SystemC::scv)
     IMPORTED_LOCATION "${SCV_LIBRARY}"
     INTERFACE_COMPILE_OPTIONS "${PC_SCV_CFLAGS_OTHER}"
     INTERFACE_INCLUDE_DIRECTORIES "${SCV_INCLUDE_DIR}"
+  )
+endif()
+
+find_package_handle_standard_args(FTB
+  FOUND_VAR FTB_FOUND
+  REQUIRED_VARS
+    FTB_LIBRARY
+    FTB_INCLUDE_DIR
+  VERSION_VAR 2.0.1
+)
+
+if(FTB_FOUND)
+  set(FTB_LIBRARIES ${FTB_LIBRARY})
+  set(FTB_INCLUDE_DIRS ${FTB_INCLUDE_DIR})
+  set(FTB_DEFINITIONS ${PC_FTB_CFLAGS_OTHER})
+endif()
+
+if(FTB_FOUND AND NOT TARGET SystemC::ftblocks)
+  add_library(SystemC::ftblocks UNKNOWN IMPORTED)
+  
+  set_target_properties(SystemC::ftblocks PROPERTIES
+    IMPORTED_LOCATION "${FTB_LIBRARY}"
+    INTERFACE_COMPILE_OPTIONS "${PC_FTB_CFLAGS_OTHER}"
+    INTERFACE_INCLUDE_DIRECTORIES "${FTB_INCLUDE_DIR}"
   )
 endif()
 
