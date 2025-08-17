@@ -21,7 +21,6 @@
 #include <cci_configuration>
 #include <memory>
 #include <string>
-#include <vector>
 
 #ifdef HAS_SCV
 class scv_tr_db;
