@@ -84,7 +84,7 @@ public:
      *
      * @param cb the callback function or functor
      */
-    void set_dmi_callback(std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> cb) { dmi_cb = cb; }
+    void set_dmi_callback(std::function<bool(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> cb) { dmi_cb = cb; }
     /**
      * read response delay
      */
@@ -150,7 +150,7 @@ public:
     //! handle the dmi functionality
     bool handle_dmi(tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data);
     std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, sc_core::sc_time& delay)> operation_cb;
-    std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> dmi_cb;
+    std::function<bool(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> dmi_cb;
 };
 
 template <unsigned long long SIZE, unsigned BUSWIDTH = LT> using memory_tl = tickless_clock<memory<SIZE, BUSWIDTH>>;
