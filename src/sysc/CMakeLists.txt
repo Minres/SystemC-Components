@@ -50,15 +50,17 @@ set(LIB_SOURCES
 )
 
 if(ENABLE_PYTHON4SC)
-    #find_package(pybind11)
-    set(PYBIND11_INSTALL ON)
-    include(FetchContent)
-    FetchContent_Declare(
-        pybind11
-        GIT_REPOSITORY https://github.com/pybind/pybind11.git
-        GIT_TAG        stable
-    )
-    FetchContent_MakeAvailable(pybind11)
+    find_package(pybind11 QUIET)
+    if(pybind11_NOT_FOUND)
+        set(PYBIND11_INSTALL ON)
+        include(FetchContent)
+        FetchContent_Declare(
+            pybind11
+            GIT_REPOSITORY https://github.com/pybind/pybind11.git
+            GIT_TAG        stable
+        )
+        FetchContent_MakeAvailable(pybind11)
+    endif()
     list(APPEND LIB_SOURCES  
         scc/python4sc.cpp
         )
