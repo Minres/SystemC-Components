@@ -20,7 +20,7 @@ target_include_directories(cciapi PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
 )
-if(USE_CWR_SYSTEMC)
+if(USE_CWR_SYSTEMC OR USE_NCSC_SYSTEMC)
 	get_target_property(SC_COMPILE_OPTIONS ${SystemC_LIBRARIES} INTERFACE_COMPILE_OPTIONS)
 	if(SC_COMPILE_OPTIONS) 
 	    target_compile_definitions(cciapi PUBLIC ${SC_COMPILE_OPTIONS})

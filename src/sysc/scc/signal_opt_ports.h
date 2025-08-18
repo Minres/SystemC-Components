@@ -30,6 +30,10 @@
 #define SCC_VIRT /* non-virtual */
 #endif
 
+#ifdef NCSC
+#define SC_API_TEMPLATE_DECL_ _TEMPLATE_DECL_
+#endif
+
 namespace scc {
 /**
  * \brief A template class for an optional input port with optimized binding.
