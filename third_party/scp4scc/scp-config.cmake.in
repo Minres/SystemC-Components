@@ -1,9 +1,0 @@
-@PACKAGE_INIT@
-include(CMakeFindDependencyMacro)
-
-if(NOT TARGET cciapi::cciapi)
-    include("${CMAKE_CURRENT_LIST_DIR}/scp-targets.cmake")
-endif()
-
-set(scp_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include")
-set(scp_lIBRARIES scp::reporting)
