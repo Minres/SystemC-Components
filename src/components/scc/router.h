@@ -275,13 +275,15 @@ bool router<BUSWIDTH, TARGET_SOCKET_TYPE>::get_direct_mem_ptr(int i, tlm::tlm_ge
             return false;
         }
         idx = default_idx;
-    } else {
-        // Modify address within transaction
-        trans.set_address(address - (tranges[idx].remap ? tranges[idx].base : 0));
     }
-    bool status = initiator[idx]->get_direct_mem_ptr(trans, dmi_data);
-    // Calculate DMI address of target in system address space
+    // Modify address within transaction
     auto offset = tranges[idx].remap ? tranges[idx].base : 0;
+    trans.set_address(address - offset);
+    bool status = initiator[idx]->get_direct_mem_ptr(trans, dmi_data);
+    // make sure end address does not exceed size
+    if(dmi_data.get_end_address() > (offset + tranges[idx].size))
+        dmi_data.set_end_address(offset + tranges[idx].size);
+    // Calculate DMI address of target in system address space
     dmi_data.set_start_address(dmi_data.get_start_address() - ibases[i] + offset);
     dmi_data.set_end_address(dmi_data.get_end_address() - ibases[i] + offset);
     return status;
