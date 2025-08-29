@@ -276,9 +276,9 @@ template <typename T, typename OT = T> bool changed(trace::fst_trace* trace) {
         all_traces.emplace_back(this, &changed<tp, tpo>, new trace::fst_trace_t<tp, tpo>(object, name));                                   \
     }
 
-#if(SYSTEMC_VERSION >= 20171012)
-void fst_trace_file::trace(const sc_core::sc_event& object, const std::string& name) {}
-void fst_trace_file::trace(const sc_core::sc_time& object, const std::string& name) {}
+#if (SYSTEMC_VERSION >= 20171012) || defined(NCSC)
+ void fst_trace_file::trace(const sc_core::sc_event& object, const std::string& name) {}
+ void fst_trace_file::trace(const sc_core::sc_time& object, const std::string& name) {}
 #endif
 DECL_TRACE_METHOD_A(bool)
 DECL_TRACE_METHOD_A(sc_dt::sc_bit)
@@ -332,6 +332,7 @@ void fst_trace_file::trace(const unsigned int& object, const std::string& name, 
         all_traces.back().trc->is_triggered = true;                                                                                        \
         return &all_traces.back();                                                                                                         \
     }
+ 
 #if(SYSTEMC_VERSION >= 20171012)
 observer::notification_handle* fst_trace_file::observe(const sc_core::sc_event& object, const std::string& name) { return nullptr; }
 observer::notification_handle* fst_trace_file::observe(const sc_core::sc_time& object, const std::string& name) { return nullptr; }
@@ -485,9 +486,6 @@ void fst_trace_file::cycle(bool delta_cycle) {
 }
 
 void fst_trace_file::set_time_unit(double v, sc_core::sc_time_unit tu) {}
-#ifdef NCSC
-void fst_trace_file::set_time_unit(int exponent10_seconds) {}
-#endif
 
 sc_core::sc_trace_file* create_fst_trace_file(const char* name, std::function<bool()> enable) { return new fst_trace_file(name, enable); }
 
