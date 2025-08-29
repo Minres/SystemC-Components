@@ -32,9 +32,9 @@
 #include "util/mt19937_rng.h"
 #include "util/pool_allocator.h"
 #include "util/range_lut.h"
+#include "util/sccassert.h"
 #include "util/sparse_array.h"
 #include "util/strprintf.h"
 #include "util/thread_syncronizer.h"
 #include "util/watchdog.h"
-#include "util/sccassert.h"
 /**@}*/

@@ -377,7 +377,9 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
      * @brief the destructor generating the SystemC report
      *
      */
-    virtual ~ScLogger() noexcept(false) { ::sc_core::sc_report_handler::report(SEVERITY, t ? t : "SystemC", os.str().c_str(), level, file, line); }
+    virtual ~ScLogger() noexcept(false) {
+        ::sc_core::sc_report_handler::report(SEVERITY, t ? t : "SystemC", os.str().c_str(), level, file, line);
+    }
     /**
      * @fn ScLogger& type()
      * @brief reset the category of the log entry

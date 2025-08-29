@@ -297,7 +297,7 @@ inline bool memory<SIZE, BUSWIDTH>::handle_dmi(tlm::tlm_generic_payload& gp, tlm
         } else {
             auto& p = mem(gp.get_address() / mem.page_size);
             auto start_address = gp.get_address() & ~mem.page_addr_mask;
-            auto end_address = std::min<uint64_t>(start_address +mem.page_size, SIZE);
+            auto end_address = std::min<uint64_t>(start_address + mem.page_size, SIZE);
             dmi_data.set_start_address(start_address);
             dmi_data.set_end_address(end_address - 1);
             dmi_data.set_dmi_ptr(p.data());

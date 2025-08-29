@@ -283,7 +283,7 @@ bool router<BUSWIDTH, TARGET_SOCKET_TYPE>::get_direct_mem_ptr(int i, tlm::tlm_ge
     // make sure end address does not exceed size
     auto remap_end = (tranges[idx].remap ? 0 : tranges[idx].base) + tranges[idx].size;
     if(dmi_data.get_end_address() >= remap_end)
-        dmi_data.set_end_address(remap_end-1);
+        dmi_data.set_end_address(remap_end - 1);
     // Calculate DMI address of target in system address space
     dmi_data.set_start_address(dmi_data.get_start_address() - ibases[i] + offset);
     dmi_data.set_end_address(dmi_data.get_end_address() - ibases[i] + offset);

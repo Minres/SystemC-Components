@@ -194,7 +194,7 @@ void tracer::init_cci_handles() {
     }
     close_db_in_eos_handle = cci_broker.get_param_handle(close_db_in_eos_name);
     if(!close_db_in_eos_handle.is_valid()) {
-      
+
         close_db_in_eos = scc::make_unique<cci::cci_param<bool>>(
             close_db_in_eos_name, false, "Close the waveform/transaction tracing databases during end_of_simulation",
             cci::CCI_ABSOLUTE_NAME);
