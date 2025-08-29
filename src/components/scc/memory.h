@@ -296,9 +296,10 @@ inline bool memory<SIZE, BUSWIDTH>::handle_dmi(tlm::tlm_generic_payload& gp, tlm
             dmi_data.set_dmi_ptr(hm_entry.ptr);
         } else {
             auto& p = mem(gp.get_address() / mem.page_size);
-            auto size = mem.page_size > SIZE ? SIZE : mem.page_size;
-            dmi_data.set_start_address(gp.get_address() & ~mem.page_addr_mask);
-            dmi_data.set_end_address(dmi_data.get_start_address() + size - 1);
+            auto start_address = gp.get_address() & ~mem.page_addr_mask;
+            auto end_address = std::min<uint64_t>(start_address +mem.page_size, SIZE);
+            dmi_data.set_start_address(start_address);
+            dmi_data.set_end_address(end_address - 1);
             dmi_data.set_dmi_ptr(p.data());
         }
         dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);
