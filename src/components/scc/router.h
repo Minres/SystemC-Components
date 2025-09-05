@@ -68,6 +68,7 @@ template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_
      */
     template <typename TYPE> void bind_target(TYPE& socket, size_t idx, uint64_t base, uint64_t size, bool remap = true) {
         set_target_range(idx, base, size, remap);
+        set_target_name(idx, socket.basename());
         initiator[idx].bind(socket);
     }
     /**
@@ -282,7 +283,7 @@ bool router<BUSWIDTH, TARGET_SOCKET_TYPE>::get_direct_mem_ptr(int i, tlm::tlm_ge
     bool status = initiator[idx]->get_direct_mem_ptr(trans, dmi_data);
     // make sure end address does not exceed size
     auto remap_end = (tranges[idx].remap ? 0 : tranges[idx].base) + tranges[idx].size;
-    if(dmi_data.get_end_address() >= remap_end)
+    if(tranges[idx].size && dmi_data.get_end_address() >= remap_end)
         dmi_data.set_end_address(remap_end - 1);
     // Calculate DMI address of target in system address space
     dmi_data.set_start_address(dmi_data.get_start_address() - ibases[i] + offset);
