@@ -16,7 +16,6 @@
 
 #include "configurable_tracer.h"
 #include "traceable.h"
-#include <unordered_set>
 
 using namespace sc_core;
 using namespace scc;

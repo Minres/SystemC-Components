@@ -40,7 +40,7 @@ public:
      * @param name basename of the trace file(s)
      * @param enable_tx enables transaction tracing
      * @param enable_vcd enable VCD (signal based) tracing
-     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
+     * @param top the topleve to use to trace variables
      */
     configurable_tracer(std::string const&& name, bool enable_tx = true, bool enable_vcd = true, sc_core::sc_object* top = nullptr);
     /**
@@ -49,7 +49,7 @@ public:
      * @param name basename of the trace file(s)
      * @param enable_tx enables transaction tracing
      * @param enable_vcd enable VCD (signal based) tracing
-     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
+     * @param top the topleve to use to trace variables
      */
     configurable_tracer(std::string const& name, bool enable_tx = true, bool enable_vcd = true, sc_core::sc_object* top = nullptr)
     : configurable_tracer(std::string(name), enable_tx, enable_vcd, top) {}
@@ -59,7 +59,7 @@ public:
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
      * @param enable enable VCD (signal based) tracing
-     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
+     * @param top the topleve to use to trace variables
      */
     configurable_tracer(std::string const&& name, file_type type, bool enable_vcd = true, sc_core::sc_object* top = nullptr);
     /**
@@ -68,7 +68,7 @@ public:
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
      * @param enable_vcd enable VCD (signal based) tracing
-     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
+     * @param top the topleve to use to trace variables
      */
     configurable_tracer(std::string const& name, file_type type, bool enable_vcd = true, sc_core::sc_object* top = nullptr)
     : configurable_tracer(std::string(name), type, enable_vcd, top) {}
@@ -78,7 +78,7 @@ public:
      * @param name basename of the trace file(s)
      * @param tx_type type of trace file for transactions
      * @param sig_type type of trace file for signals
-     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
+     * @param top the topleve to use to trace variables
      */
     configurable_tracer(std::string const&& name, file_type tx_type, file_type sig_type, sc_core::sc_object* top = nullptr);
     configurable_tracer(std::string const& name, file_type tx_type, file_type sig_type, sc_core::sc_object* top = nullptr)
@@ -89,7 +89,7 @@ public:
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
      * @param tf the trace file to use for signal and POD tracing
-     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
+     * @param top the topleve to use to trace variables
      */
     configurable_tracer(std::string const&& name, file_type type, sc_core::sc_trace_file* tf = nullptr, sc_core::sc_object* top = nullptr);
     /**
@@ -98,7 +98,7 @@ public:
      * @param name basename of the trace file(s)
      * @param type type of trace file for transactions
      * @param tf the trace file to use for signal and POD tracing
-     * @param default_enable value of parameter enableTracing if not defined by module or CCIs
+     * @param top the topleve to use to trace variables
      */
     configurable_tracer(std::string const& name, file_type type, sc_core::sc_trace_file* tf = nullptr, sc_core::sc_object* top = nullptr)
     : configurable_tracer(std::string(name), type, tf, top) {}
