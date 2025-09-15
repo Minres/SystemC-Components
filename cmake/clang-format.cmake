@@ -6,6 +6,7 @@ file(GLOB_RECURSE ALL_SOURCE_FILES ${CLANG_FORMAT_CXX_FILE_EXTENSIONS})
 # Don't include some common build folders
 set(CLANG_FORMAT_EXCLUDE_PATTERNS ${CLANG_FORMAT_EXCLUDE_PATTERNS} "/CMakeFiles/" "cmake")
 
+message(STATUS "Enumerating files for clang-format")
 # get all project files file
 foreach (SOURCE_FILE ${ALL_SOURCE_FILES}) 
     foreach (EXCLUDE_PATTERN ${CLANG_FORMAT_EXCLUDE_PATTERNS})
@@ -15,6 +16,7 @@ foreach (SOURCE_FILE ${ALL_SOURCE_FILES})
         endif () 
     endforeach ()
 endforeach ()
+message(STATUS "Done enumerating files for clang-format")
 
 set(FORMAT_TARGET_NAME format)
 if(NOT CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
