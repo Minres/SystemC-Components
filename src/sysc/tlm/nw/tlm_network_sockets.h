@@ -19,6 +19,7 @@
 
 #include "tlm_network_gp.h"
 #include <sysc/kernel/sc_object.h>
+#include <tlm/scc/tlm_mm.h>
 #ifdef CWR_SYSTEMC
 #include <tlm_h/tlm_sockets/tlm_initiator_socket.h>
 #include <tlm_h/tlm_sockets/tlm_target_socket.h>
@@ -169,6 +170,13 @@ struct tlm_network_target_socket
     virtual type_index get_protocol_types() const { return typeid(TYPES); }
 };
 } // namespace nw
+namespace scc {
+template <> struct tlm_mm_traits<tlm::nw::tlm_network_baseprotocol_types> {
+    using mm_if_type = tlm::nw::tlm_base_mm_interface;
+    using payload_base = tlm::nw::tlm_network_payload_base;
+};
+
+} // namespace scc
 } // namespace tlm
 
 #endif /* _TLM_NW_TLM_NETWORK_SOCKETS_H_ */

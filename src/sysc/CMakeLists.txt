@@ -38,14 +38,14 @@ set(LIB_SOURCES
     scc/scv/scv_tr_ftr.cpp
     scc/vcd_pull_trace.cpp
     scc/vcd_push_trace.cpp
-    tlm/scc/scv/tlm_recorder.cpp
-    tlm/scc/pe/parallel_pe.cpp
     scc/hierarchy_dumper.cpp
     scc/cci_broker.cpp
     scc/configurer.cpp
     scc/configurable_tracer.cpp
     scc/sc_thread_pool.cpp
     scc/signal_opt_ports.cpp
+    tlm/scc/scv/tlm_recorder.cpp
+    tlm/scc/pe/parallel_pe.cpp
     tlm/scc/lwtr/tlm2_lwtr.cpp
 )
 

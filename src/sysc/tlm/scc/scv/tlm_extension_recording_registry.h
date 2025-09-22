@@ -82,6 +82,15 @@ public:
         ext_rec[id] = ext;
     }
 
+    bool is_ext_registered(size_t id) {
+        if(id == 0)
+            return true;
+        if(id >= ext_rec.size())
+            return false;
+        if(ext_rec[id])
+            return true;
+        return false;
+    }
     const std::vector<tlm_extensions_recording_if<TYPES>*>& get() { return ext_rec; }
 
     inline void recordBeginTx(size_t id, SCVNS scv_tr_handle& handle, typename TYPES::tlm_payload_type& trans) {

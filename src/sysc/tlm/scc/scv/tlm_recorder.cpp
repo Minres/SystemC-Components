@@ -34,7 +34,7 @@ const std::array<std::string, 4> dmi2char{{"DMI_ACCESS_NONE", "DMI_ACCESS_READ",
 const std::array<std::string, 3> sync2char{{"ACCEPTED", "UPDATED", "COMPLETED"}};
 
 } // namespace
-void record(SCVNS scv_tr_handle& handle, tlm::tlm_generic_payload& o) {
+void record(SCVNS scv_tr_handle& handle, tlm::tlm_generic_payload const& o) {
     handle.record_attribute("trans.ptr", reinterpret_cast<uintptr_t>(&o));
     handle.record_attribute("trans.address", o.get_address());
     handle.record_attribute("trans.cmd", cmd2char.at(o.get_command()));
@@ -52,7 +52,7 @@ void record(SCVNS scv_tr_handle& handle, tlm::tlm_generic_payload& o) {
         handle.record_attribute("trans.data_value", buf);
     }
 }
-void record(SCVNS scv_tr_handle& handle, tlm::tlm_phase& o) {
+void record(SCVNS scv_tr_handle& handle, tlm::tlm_phase const& o) {
     unsigned id = o;
     if(id < phase2char.size())
         handle.record_attribute("phase", phase2char[id]);
@@ -60,7 +60,7 @@ void record(SCVNS scv_tr_handle& handle, tlm::tlm_phase& o) {
         handle.record_attribute("phase_id", id);
 }
 void record(SCVNS scv_tr_handle& handle, tlm::tlm_sync_enum o) { handle.record_attribute("tlm_sync", sync2char.at(o)); }
-void record(SCVNS scv_tr_handle& handle, tlm::tlm_dmi& o) {
+void record(SCVNS scv_tr_handle& handle, tlm::tlm_dmi const& o) {
     handle.record_attribute("trans.dmi_ptr", o.get_dmi_ptr());
     handle.record_attribute("trans.start_address", o.get_start_address());
     handle.record_attribute("trans.end_address", o.get_end_address());

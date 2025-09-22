@@ -67,7 +67,7 @@ struct tlm_network_payload_base {
     explicit tlm_network_payload_base(tlm_base_mm_interface* mm)
     : m_extensions(max_num_extensions())
     , m_mm(mm)
-    , m_ref_count(0){};
+    , m_ref_count(0) {};
     /**
      * virtual destructor.
      */
@@ -164,6 +164,8 @@ struct tlm_network_payload_base {
     // recommended use: when not sure there is no MM
     template <typename T> void release_extension() { release_extension(T::ID); }
 
+    size_t get_extension_count() { return m_extensions.size(); }
+
 private:
     // Non-templatized version with manual index
     void clear_extension(unsigned int index);
@@ -211,8 +213,6 @@ template <typename CMDENUM> struct tlm_network_payload : public tlm_network_payl
     explicit tlm_network_payload(tlm_base_mm_interface* mm);
 
     tlm_network_payload(const tlm_network_payload<CMDENUM>& x) = delete;
-
-    tlm_network_payload<CMDENUM>& operator=(const tlm_network_payload<CMDENUM>& x) = delete;
 
     /**
      * virtual destructor.
@@ -342,11 +342,15 @@ template <typename CMDENUM> struct tlm_network_payload : public tlm_network_payl
     }
 
 protected:
+    tlm_network_payload<CMDENUM>& operator=(const tlm_network_payload<CMDENUM>& x) {
+        m_command = x.m_command;
+        m_data = x.m_data;
+        m_response_status = x.m_response_status;
+        return *this;
+    }
     CMDENUM m_command;
     std::vector<uint8_t> m_data;
     tlm_response_status m_response_status;
-
-public:
 };
 
 template <typename CMDENUM>
