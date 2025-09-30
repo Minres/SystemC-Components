@@ -21,20 +21,48 @@
 
 //! @brief SCC TLM utilities
 namespace scc {
-
-template <unsigned int TGT_WIDTH = 32, unsigned int INTOR_BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types, int N = 1,
+/**
+ * @brief The socket_width_adapter class is a TLM (Transaction-Level Modeling) socket width adapter.
+ *
+ * The socket_width_adapter class is a template class that adapts the width of a TLM socket.
+ * It allows the connection of modules with different bus widths by converting the data width between the initiator and target sockets.
+ *
+ * @tparam TGT_WIDTH The width of the target socket.
+ * @tparam INTOR_BUSWIDTH The width of the initiator socket.
+ * @tparam TYPES The TLM protocol types.
+ * @tparam N The number of socket instances.
+ * @tparam POL The port binding policy.
+ *
+ * @note The socket_width_adapter class is a part of the SystemC Component (SCC) library.
+ *
+ * @author Your Name
+ * @date YYYY-MM-DD
+ */
+template <unsigned int TGT_BUSWIDTH = 32, unsigned int INTOR_BUSWIDTH = 32, typename TYPES = tlm::tlm_base_protocol_types, int N = 1,
           sc_core::sc_port_policy POL = sc_core::SC_ONE_OR_MORE_BOUND>
 class socket_width_adapter : public sc_core::sc_module, public tlm::tlm_fw_transport_if<TYPES>, public tlm::tlm_bw_transport_if<TYPES> {
 public:
     using tlm_payload_type = typename TYPES::tlm_payload_type;
     using tlm_phase_type = typename TYPES::tlm_phase_type;
-    using target_socket_type = tlm::tlm_target_socket<TGT_WIDTH, TYPES, N, POL>;
+    using target_socket_type = tlm::tlm_target_socket<TGT_BUSWIDTH, TYPES, N, POL>;
     using initiator_socket_type = tlm::tlm_initiator_socket<INTOR_BUSWIDTH, TYPES, N, POL>;
-
+    /**
+     * @brief The target socket for the adapter.
+     *
+     * This socket is used to connect the target module with the adapter.
+     */
     target_socket_type tsck{"tsck"};
-
+    /**
+     * @brief The initiator socket for the adapter.
+     *
+     * This socket is used to connect the initiator module with the adapter.
+     */
     initiator_socket_type isck{"isck"};
-
+    /**
+     * @brief Constructor for the socket_width_adapter class.
+     *
+     * @param nm The name of the socket_width_adapter instance.
+     */
     socket_width_adapter(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm) {
         tsck.bind(*this);
@@ -46,7 +74,9 @@ public:
     socket_width_adapter(socket_width_adapter const&) = delete;
 
     socket_width_adapter(socket_width_adapter&&) = delete;
-
+    /**
+     * @brief Virtual destructor for the socket_width_adapter class.
+     */
     virtual ~socket_width_adapter() = default;
 
 private:

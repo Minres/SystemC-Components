@@ -29,7 +29,11 @@
 #include <tlm/scc/tlm_mm.h>
 #include <unordered_map>
 
-//! @brief LWTR components for TLM2
+/**
+ * LWTR components for TLM2
+ *
+ * @ingroup lwtr_components
+ */
 namespace tlm {
 namespace scc {
 namespace lwtr {
@@ -41,27 +45,60 @@ using tx_handle = ::lwtr::tx_handle;
 using mm = tlm::scc::tlm_mm<>;
 
 extern bool registered;
+/**
+ * The relationship between transactions
+ *
+ * This enum represents the relationship between transactions in the LWTR
+ * transaction stream.
+ *
+ * - PARENT_CHILD: indicates parent-child relationship.
+ * - PREDECESSOR_SUCCESSOR: indicates predecessor successor relationship.
+ */
 enum tx_rel {
     PARENT_CHILD = 0,     /*!< indicates parent child relationship */
     PREDECESSOR_SUCCESSOR /*!< indicates predecessor successor relationship */
 };
-
+/**
+ * The transaction extension for recording link relationships
+ *
+ * This extension records the relationship between transactions in the LWTR
+ * transaction stream.
+ *
+ * - txHandle: the handle of the recorded transaction
+ * - creator: the creator of the recorded transaction
+ */
 struct link_pred_ext : public tlm::tlm_extension<link_pred_ext> {
+    /**
+     * \brief Clone the extension
+     *
+     * This method creates a copy of the current extension.
+     *
+     * \return a pointer to the cloned extension
+     */
     tlm_extension_base* clone() const override {
         link_pred_ext* t = new link_pred_ext(this->txHandle, this->creator);
         return t;
     }
+    /**
+     * \brief Copy data from another extension
+     */
     void copy_from(tlm_extension_base const& from) override {
         txHandle = static_cast<link_pred_ext const&>(from).txHandle;
         creator = static_cast<link_pred_ext const&>(from).creator;
     }
+    /**
+     * \brief Constructor
+     */
     link_pred_ext(tx_handle handle, void const* creator_)
     : txHandle(handle)
     , creator(creator_) {}
     tx_handle txHandle;
     void const* creator;
 };
-
+/**
+ * The transaction extension for recording non-blocking transaction information
+ *
+ */
 struct nb_rec_entry {
     tlm::scc::tlm_gp_shared_ptr tr;
     tlm::tlm_phase const ph;

@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "../../../interfaces/ahb/pe/ahb_initiator.h"
+#include "ahb_initiator.h"
 
 #include <atp/timing_params.h>
 #include <scc/report.h>

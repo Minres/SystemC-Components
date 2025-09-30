@@ -23,7 +23,14 @@
 #endif
 
 namespace scc {
-
+/**
+ * @brief The ticking_clock class is a mixin that provides ticking clock functionality.
+ *
+ * The ticking_clock class is a template class that inherits from a base class.
+ * It adds ticking clock functionality to the base class by monitoring an input clock signal.
+ *
+ * @tparam BASE The base class to which the ticking clock functionality will be added.
+ */
 template <typename BASE>
 class ticking_clock : public BASE
 #ifdef CWR_SYSTEMC
@@ -32,12 +39,39 @@ class ticking_clock : public BASE
 #endif
 {
 public:
+    /**
+     * @brief An input port for the clock signal.
+     *
+     * This input port is used to monitor the clock signal and provide ticking clock functionality.
+     */
     sc_core::sc_in<bool> clk_i{"clk_i"};
-
+    /**
+     * @brief Constructor for the ticking_clock class.
+     *
+     * @param nm The name of the ticking_clock instance.
+     */
     ticking_clock(sc_core::sc_module_name const& nm)
     : BASE(nm) {}
+    /**
+     * @brief Constructor for the ticking_clock class with variable number of arguments.
+     *
+     * @param nm The name of the ticking_clock instance.
+     * @param args Template arguments for the base class constructor.
+     */
+    template <typename... Args>
+    ticking_clock(sc_core::sc_module_name const& nm, Args&&... args)
+    : BASE(nm, std::forward<Args>(args)...) {}
+    /**
+     * @brief Virtual destructor for the tickless_clock class.
+     */
+    virtual ~ticking_clock() = default;
 
 protected:
+    /**
+     * @brief Method called at the end of elaboration.
+     *
+     * This method is responsible for setting the clock period based on the input clock signal.
+     */
     void end_of_elaboration() override {
 #ifdef CWR_SYSTEMC
         if(auto scml_clk_if = scml2::get_scml_clock(clk_i)) {
@@ -57,20 +91,61 @@ protected:
     void handle_clock_deleted(scml_clock_if*) override{};
 #endif
 };
-
+/**
+ * @brief The tickless_clock class is a mixin that provides tickless clock functionality.
+ *
+ * The tickless_clock class is a template class that inherits from a base class.
+ * It adds tickless clock functionality to the base class by monitoring an input clock signal.
+ *
+ * @tparam BASE The base class to which the tickless clock functionality will be added.
+ */
 template <typename BASE> class tickless_clock : public BASE {
 public:
-    sc_core::sc_in<sc_core::sc_time> clk_i;
-
+    /**
+     * @brief An input port for the clock signal.
+     *
+     * This input port is used to monitor the clock signal and provide tickless clock functionality.
+     */
+    sc_core::sc_in<sc_core::sc_time> clk_i{"clk_i"};
+    /**
+     * @brief Constructor for the tickless_clock class.
+     *
+     * @param nm The name of the tickless_clock instance.
+     */
     tickless_clock(sc_core::sc_module_name const& nm)
     : BASE(nm) {
+#if SYSTEMC_VERSION < 20250221
         SC_HAS_PROCESS(tickless_clock<BASE>);
+#endif
         SC_METHOD(clock_cb);
         this->sensitive << clk_i;
     }
+    /**
+     * @brief Constructor for the tickless_clock class with template arguments.
+     *
+     * @param nm The name of the tickless_clock instance.
+     * @param args Template arguments for the base class constructor.
+     */
+    template <typename... Args>
+    tickless_clock(sc_core::sc_module_name const& nm, Args&&... args)
+    : BASE(nm, std::forward<Args>(args)...) {
+#if SYSTEMC_VERSION < 20250221
+        SC_HAS_PROCESS(tickless_clock<BASE>);
+#endif
+        SC_METHOD(clock_cb);
+        this->sensitive << clk_i;
+    }
+    /**
+     * @brief Virtual destructor for the tickless_clock class.
+     */
     virtual ~tickless_clock() = default;
 
 private:
+    /**
+     * @brief Method called when the clock signal changes.
+     *
+     * This method is responsible for setting the clock period based on the input clock signal.
+     */
     void clock_cb() { this->set_clock_period(clk_i.read()); }
 };
 } // namespace scc

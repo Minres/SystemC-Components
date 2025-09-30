@@ -62,6 +62,7 @@ inline trace_types operator|(trace_types lhs, trace_types rhs) {
 inline trace_types operator&(trace_types lhs, trace_types rhs) {
     return static_cast<trace_types>(static_cast<unsigned>(lhs) & static_cast<unsigned>(rhs));
 }
+
 /**
  * @class tracer_base
  *
@@ -75,8 +76,11 @@ inline trace_types operator&(trace_types lhs, trace_types rhs) {
  * @brief base class for automatic tracer
  *
  */
-class tracer_base : public sc_core::sc_module {
-public:
+struct tracer_base : public sc_core::sc_module {
+    /**
+     * cci parameter handle to determine if the tracing is enabled if not specified explicitly
+     */
+    cci::cci_param_handle default_trace_enable_handle;
     /**
      * @fn  tracer_base(const sc_core::sc_module_name&)
      * @brief named constructor
@@ -84,7 +88,7 @@ public:
      * @param nm the instance name
      */
     tracer_base(const sc_core::sc_module_name& nm)
-    : sc_core::sc_module(nm) {}
+    : tracer_base(nm, nullptr, false) {}
     /**
      * @fn  tracer_base(const sc_core::sc_module_name&, sc_core::sc_trace_file*, bool=true)
      * @brief named constructor with trace file
@@ -93,9 +97,7 @@ public:
      * @param tf the trace file
      * @param owned if true the tracefile is owned by the tracer and closed upon simulation end
      */
-    tracer_base(const sc_core::sc_module_name& nm, sc_core::sc_trace_file* tf, bool owned = true)
-    : sc_core::sc_module(nm)
-    , trf(tf) {}
+    tracer_base(const sc_core::sc_module_name& nm, sc_core::sc_trace_file* tf, bool owned = true);
     /**
      * @fn  ~tracer_base()
      * @brief destructor
@@ -132,11 +134,12 @@ public:
      */
     void set_trace_file(sc_core::sc_trace_file* trf) { this->trf = trf; }
 
+    static void set_default_trace_enable(bool);
+
+    static bool get_default_trace_enable();
+
 protected:
     static std::string get_name();
-
-    //! the default for tracing if no attribute is configured
-    bool default_trace_enable{true};
 
     virtual void descend(const sc_core::sc_object*, bool trace_all);
 
@@ -145,6 +148,8 @@ protected:
     sc_core::sc_trace_file* trf{nullptr};
 
     trace_types types_to_trace{trace_types::ALL};
+
+    std::unique_ptr<cci::cci_param<bool>> default_trace_enable;
 };
 
 } // namespace scc

@@ -15,9 +15,9 @@ Here is a short list of features.
   
 * Automatic tracer
 
-  The tracer(s) allow to automatically discover signals and sc_variables (see below) and register them with the trace file. If the configurer is being used the tracing can be controlled on an per-instance base 
+  The tracer(s) allow to automatically discover signals and sc_variables (see below) and register them with the trace file. If the configurer is being used the tracing can be controlled on an per-instance base
   
-* Various optimized trace file implementations   
+* Various optimized trace file implementations
   * compressed VCD
   * FST (used by [GTKWave](http://gtkwave.sourceforge.net/) and [Surfer](https://surfer-project.org/))
 
@@ -60,7 +60,7 @@ The full documentation can be found at the [Github pages](https://minres.github.
 Build notes
 =======================================
 
-If SystemC is build using cmake with `SC_WITH_PHASE_CALLBACK_TRACING=ON` (which is the default for SystemC 2.3.4), tracing will not work. Either SystemC is being installed with SC_WITH_PHASE_CALLBACK_TRACING=ON (which is the prefered way as this setting is in sync with the automake configure configuration, see https://github.com/accellera-official/systemc/issues/24) or the SCC is being build using `SC_WITH_PHASE_CALLBACK_TRACING=ON`.
+If SystemC is build using cmake with `SC_WITH_PHASE_CALLBACK_TRACING=ON` (which is the default for SystemC 2.3.4), tracing will not work. Either SystemC is being installed with SC_WITH_PHASE_CALLBACK_TRACING=ON (which is the prefered way as this setting is in sync with the automake configure configuration, see <https://github.com/accellera-official/systemc/issues/24>) or the SCC is being build using `SC_WITH_PHASE_CALLBACK_TRACING=ON`.
 
 Build instructions using conan
 =======================================
@@ -72,11 +72,11 @@ On Linux
 
 The suggested build steps are:
 
-- create a build directory and enter into it
-- execute cmake with applicable options 
-- execute build
-- install build
-- run tests
+* create a build directory and enter into it
+* execute cmake with applicable options
+* execute build
+* install build
+* run tests
 
 For example:
 
@@ -90,6 +90,9 @@ For example:
     ./examples/axi-axi/axi_axi_example
 
 ```
+
+> **_NOTE:_**  **Do not install SCC in the same installation directory as SystemC.**
+SCC follows the convention of mapping C++ namespaces directly into the directory hierarchy. As many SCC components are related to TLM 2.0, a significant portion of the SCC code resides in the `tlm` namespace, which results in the creation of a `tlm` directory under SCC's `include` folder. The SystemC itself also provides a `tlm` header file (or directory) in its own include path. If SCC and SystemC are installed into the same prefix, this results in a clash to create a directory where a file or another directory already exists—causing installation errors. Install SCC and SystemC into separate directories.
 
 On Windows
 =======================================

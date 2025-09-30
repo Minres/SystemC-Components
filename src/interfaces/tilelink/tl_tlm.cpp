@@ -14,8 +14,9 @@
  * limitations under the License.
  *******************************************************************************/
 
+#include "tlm/scc/scv/tlm_extension_recording_registry.h"
 #include <array>
-#include <interfaces/tilelink/tl_tlm.h>
+#include <tilelink/tl_tlm.h>
 
 namespace tilelink {
 namespace {
@@ -71,15 +72,78 @@ template <> const char* to_char<opcode_e>(opcode_e v) {
     }
 }
 
+template <> const char* to_char<param_e>(param_e v) {
+    switch(v) {
+    case param_e::CAP_2T:
+        return "Cap:2T (0)";
+    case param_e::CAP_2B:
+        return "Cap:2B (1)";
+    case param_e::CAP_2N:
+        return "Cap:2N (2)";
+    case param_e::GROW_N2B:
+        return "Grow:N2B (0)";
+    case param_e::GROW_N2T:
+        return "Grow:N2T (1)";
+    case param_e::GROW_B2T:
+        return "Grow:B2T (2)";
+    case param_e::PRUNE_T2B:
+        return "Prune:T2B (0)";
+    case param_e::PRUNE_T2N:
+        return "Prune:T2N (1)";
+    case param_e::PRUNE_B2N:
+        return "Prune:B2N (2)";
+    case param_e::REP_T2T:
+        return "Report:T2T (0)";
+    case param_e::REP_B2B:
+        return "Report:B2B (1)";
+    case param_e::REP_N2N:
+        return "Report:N2N (2)";
+    default:
+        return "UNKNOWN";
+    }
+}
+
 std::ostream& operator<<(std::ostream& os, const tlm::tlm_generic_payload& t) {
     os << "CMD:" << cmd_str[t.get_command()] << ", "
        << "ADDR:0x" << std::hex << t.get_address() << ", TXLEN:0x" << t.get_data_length();
     if(auto e = t.get_extension<tilelink::tilelink_extension>()) {
         os << ", "
-           << "PROT:0x" << std::hex << static_cast<unsigned>(e->get_protection()) << "NSE:" << (e->is_nse() ? "True" : "False");
+           << "OPC:0x" << std::hex << static_cast<unsigned>(e->get_opcode()) << "PARAM:" << e->get_param();
     }
     os << " [ptr:" << &t << "]";
     return os;
 }
 
+using namespace tlm::scc::scv;
+
+class tlc_ext_recording : public tlm_extensions_recording_if<tl_protocol_types> {
+
+    void recordBeginTx(SCVNS scv_tr_handle& handle, tl_protocol_types::tlm_payload_type& trans) override {
+        auto ext = trans.get_extension<tilelink_extension>();
+        if(ext) {
+            handle.record_attribute("trans.tl.opcode", std::string(to_char(ext->get_opcode())));
+            handle.record_attribute("trans.tl.param", std::string(to_char(ext->get_param())));
+            handle.record_attribute("trans.tl.source", ext->get_source());
+            handle.record_attribute("trans.tl.sink", ext->get_sink());
+            handle.record_attribute("trans.tl.corrupt", ext->is_corrupt());
+            handle.record_attribute("trans.tl.denied", ext->is_denied());
+        }
+    }
+
+    void recordEndTx(SCVNS scv_tr_handle& handle, tl_protocol_types::tlm_payload_type& trans) override {}
+};
+
+namespace scv {
+using namespace tlm::scc::scv;
+#if defined(__GNUG__)
+__attribute__((constructor))
+#endif
+bool register_extensions() {
+    tilelink::tilelink_extension ext; // NOLINT
+    tlm::scc::scv::tlm_extension_recording_registry<tilelink::tl_protocol_types>::inst().register_ext_rec(
+        ext.ID, new tlc_ext_recording()); // NOLINT
+    return true;                          // NOLINT
+}
+bool registered = register_extensions();
+} // namespace scv
 } // namespace tilelink

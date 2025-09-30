@@ -27,15 +27,41 @@
 /**@{*/
 //! @brief SCC SystemC utilities
 namespace scc {
-
+/**
+ * \brief A thread pool for executing tasks concurrently.
+ *
+ * The sc_thread_pool class provides a mechanism for executing SystemC tasks concurrently using a pool of worker SC_THREADs.
+ * It allows users to specify the maximum number of concurrent threads and provides a simple interface for submitting tasks to be executed.
+ *
+ * @author Your Name
+ * @date YYYY-MM-DD
+ */
 class sc_thread_pool : sc_core::sc_object {
 public:
-    sc_thread_pool();
-    virtual ~sc_thread_pool();
-
-    void execute(std::function<void(void)> fct);
-
+    /**
+     * \brief The maximum number of concurrent threads in the thread pool.
+     *
+     * This parameter allows users to specify the maximum number of concurrent threads that can be active in the thread pool at any given
+     * time. By default, the maximum number of concurrent threads is set to 16.
+     */
     cci::cci_param<unsigned> max_concurrent_threads{"max_concurrent_threads", 16};
+    /**
+     * \brief Constructor for the sc_thread_pool class.
+     */
+    sc_thread_pool();
+    /**
+     * \brief Destructor for the sc_thread_pool class.
+     */
+    virtual ~sc_thread_pool();
+    /**
+     * \brief Execute the given function in a separate SC_THREAD.
+     *
+     * This method submits the given function to be executed in a separate thread.
+     * The function will be executed concurrently with other tasks submitted to the thread pool.
+     *
+     * @param fct The function to be executed.
+     */
+    void execute(std::function<void(void)> fct);
 
 private:
     scc::peq<std::function<void(void)>> dispatch_queue{"dispatch_queue"};

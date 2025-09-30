@@ -1,10 +1,11 @@
 project(scc-sysc VERSION 0.0.1 LANGUAGES CXX)
 
 find_package(Threads)
-find_package(Boost REQUIRED COMPONENTS date_time filesystem)
+find_package(Boost REQUIRED QUIET COMPONENTS date_time filesystem stacktrace_backtrace)
 find_package(ZLIB)
 
 option(ENABLE_SQLITE "Enable SQLite backend for SCV" ON)
+option(ENABLE_PYTHON4SC "Enable Python interpreter integration" OFF)
 
 if (MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
@@ -37,16 +38,33 @@ set(LIB_SOURCES
     scc/scv/scv_tr_ftr.cpp
     scc/vcd_pull_trace.cpp
     scc/vcd_push_trace.cpp
-    tlm/scc/scv/tlm_recorder.cpp
-    tlm/scc/pe/parallel_pe.cpp
     scc/hierarchy_dumper.cpp
     scc/cci_broker.cpp
     scc/configurer.cpp
     scc/configurable_tracer.cpp
     scc/sc_thread_pool.cpp
     scc/signal_opt_ports.cpp
+    tlm/scc/scv/tlm_recorder.cpp
+    tlm/scc/pe/parallel_pe.cpp
     tlm/scc/lwtr/tlm2_lwtr.cpp
 )
+
+if(ENABLE_PYTHON4SC)
+    find_package(pybind11 QUIET)
+    if(pybind11_NOT_FOUND)
+        set(PYBIND11_INSTALL ON)
+        include(FetchContent)
+        FetchContent_Declare(
+            pybind11
+            GIT_REPOSITORY https://github.com/pybind/pybind11.git
+            GIT_TAG        stable
+        )
+        FetchContent_MakeAvailable(pybind11)
+    endif()
+    list(APPEND LIB_SOURCES  
+        scc/python4sc.cpp
+        )
+endif()
 
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
@@ -73,19 +91,36 @@ endif()
 if(SC_WITH_PHASE_CALLBACK_TRACING)
     target_compile_definitions(${PROJECT_NAME} PUBLIC WITH_SC_TRACING_PHASE_CALLBACKS)
 endif()
-
 target_include_directories (${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
 )
-target_link_libraries(${PROJECT_NAME} PUBLIC scc-util RapidJSON::RapidJSON spdlog::spdlog lwtr)
+target_link_libraries(${PROJECT_NAME} PUBLIC scc-util RapidJSON::RapidJSON lwtr)
+if(ENABLE_PYTHON4SC)
+    target_compile_options(${PROJECT_NAME} PRIVATE -fvisibility=hidden)
+    target_link_libraries(${PROJECT_NAME} PUBLIC pybind11::embed) #pybind11::headers)
+endif()
+if(TARGET fmt::fmt-header-only)
+	target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt-header-only)
+else()
+    target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
+endif()
+if(TARGET spdlog::spdlog_header_only)
+	target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog_header_only)
+else()
+	target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog)
+endif()
 if(ENABLE_SQLITE)
     target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SQLITE)
     target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../third_party/sqlite3)
 endif()
 
 target_link_libraries(${PROJECT_NAME} PUBLIC Boost::date_time)
-
+if(TARGET Boost::stacktrace_backtrace)
+    message(STATUS "scc-sysc: using stacktrace_backtrace for reporting")
+    target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_STACKTRACE BOOST_STACKTRACE_LINK BOOST_STACKTRACE_USE_BACKTRACE)
+    target_link_libraries(${PROJECT_NAME} PUBLIC Boost::stacktrace_backtrace dl)
+endif()
 find_package(yaml-cpp QUIET)
 if(TARGET yaml-cpp::yaml-cpp)
     target_compile_definitions(${PROJECT_NAME} PUBLIC -DHAS_YAMPCPP)
@@ -119,11 +154,11 @@ endif()
 target_compile_definitions(${PROJECT_NAME} PUBLIC SC_INCLUDE_DYNAMIC_PROCESSES)
 if(TARGET SystemC::systemc)
     message(STATUS "${PROJECT_NAME}: link with SystemC::systemc")
-    if(USE_CWR_SYSTEMC)
+    if(USE_CWR_SYSTEMC OR USE_NCSC_SYSTEMC)
         get_target_property(INCLS SystemC::systemc INTERFACE_INCLUDE_DIRECTORIES)
         get_target_property(DIRS SystemC::systemc INTERFACE_LINK_DIRECTORIES)
         get_target_property(LIBS SystemC::systemc INTERFACE_LINK_LIBRARIES)
-        target_include_directories (${PROJECT_NAME} PUBLIC ${INCLS})    
+        target_include_directories (${PROJECT_NAME} PUBLIC ${INCLS})
         target_link_directories(${PROJECT_NAME} PUBLIC ${DIRS})
         target_link_libraries(${PROJECT_NAME} PUBLIC ${LIBS})
     else()
@@ -145,6 +180,7 @@ endif()
 if(TARGET lz4::lz4)
     target_link_libraries(${PROJECT_NAME} PRIVATE lz4::lz4)
 endif()
+target_compile_definitions(${PROJECT_NAME} PUBLIC FMT_SHARED)
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux" AND TARGET fmt::fmt-header-only)
 	target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt-header-only)
 else()

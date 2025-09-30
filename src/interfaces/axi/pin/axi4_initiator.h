@@ -20,8 +20,8 @@
 #include <axi/axi_tlm.h>
 #include <axi/fsm/base.h>
 #include <axi/fsm/protocol_fsm.h>
+#include <axi/signal_if.h>
 #include <cci_configuration>
-#include <interfaces/axi/signal_if.h>
 #include <scc/fifo_w_cb.h>
 #include <systemc>
 #include <tlm_utils/peq_with_cb_and_phase.h>
@@ -159,6 +159,8 @@ private:
     void write_wdata(tlm::tlm_generic_payload& trans, unsigned beat);
 };
 
+template <typename CFG> using axi5_initiator = axi4_initiator<CFG>;
+
 } // namespace pin
 } // namespace axi
 
@@ -200,6 +202,7 @@ template <typename CFG> inline void axi::pin::axi4_initiator<CFG>::write_aw(tlm:
             this->aw_cache->write(sc_dt::sc_uint<4>(ext->get_cache()));
             this->aw_qos->write(ext->get_qos());
             this->aw_lock->write(ext->is_exclusive());
+            this->aw_atop->write(ext->get_atop());
             if(this->aw_user.get_interface())
                 this->aw_user->write(ext->get_user(axi::common::id_type::CTRL));
         }

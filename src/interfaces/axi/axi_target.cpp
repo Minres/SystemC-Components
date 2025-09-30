@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "../../interfaces/axi/axi_target.h"
+#include "axi_target.h"
 
 #include <scc/mt19937_rng.h>
 #include <scc/report.h>
@@ -31,7 +31,9 @@ inline unsigned get_cci_randomized_value(cci::cci_param<int> const& p) {
 axi_target_base::axi_target_base(const sc_core::sc_module_name& nm, axi::pe::axi_target_pe& pe)
 : sc_module(nm)
 , pe(pe) {
+#if SYSTEMC_VERSION < 20250221
     SC_HAS_PROCESS(axi_target_base);
+#endif
     SC_THREAD(trans_queue);
 }
 

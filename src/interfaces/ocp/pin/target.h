@@ -17,7 +17,7 @@
 #ifndef _BUS_TLM_PIN_OCP_TARGET_H_
 #define _BUS_TLM_PIN_OCP_TARGET_H_
 
-#include <interfaces/ocp/ocp_tlm.h>
+#include <ocp/ocp_tlm.h>
 #include <scc/peq.h>
 #include <scc/report.h>
 #include <scc/utilities.h>

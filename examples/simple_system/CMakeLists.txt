@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 project (simple_system)
 
-find_package(Boost COMPONENTS program_options REQUIRED)
+find_package(Boost COMPONENTS program_options REQUIRED QUIET)
 
 add_executable (${PROJECT_NAME} 
     plic.cpp

@@ -377,7 +377,9 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
      * @brief the destructor generating the SystemC report
      *
      */
-    virtual ~ScLogger() { ::sc_core::sc_report_handler::report(SEVERITY, t ? t : "SystemC", os.str().c_str(), level, file, line); }
+    virtual ~ScLogger() noexcept(false) {
+        ::sc_core::sc_report_handler::report(SEVERITY, t ? t : "SystemC", os.str().c_str(), level, file, line);
+    }
     /**
      * @fn ScLogger& type()
      * @brief reset the category of the log entry
@@ -462,7 +464,9 @@ protected:
 #define SCC_ASSERT(expr) ((void)((expr) ? 0 : (SC_REPORT_FATAL(::sc_core::SC_ID_ASSERTION_FAILED_, #expr), 0)))
 #endif
 //! get the name of the sc_object/sc_module
+#ifndef SCMOD
 #define SCMOD this->name()
+#endif
 /**
  * @class stream_redirection
  * @brief stream redirector

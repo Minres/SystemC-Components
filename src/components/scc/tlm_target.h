@@ -38,12 +38,12 @@ struct addr_range {
  * @class tlm_target
  * @brief a simple access-width based bus interface (no DMI support)
  *
- * @tparam BUSWIDTH
- * @tparam ADDR_UNIT_WIDTH
+ * @tparam BUSWIDTH The width of the target socket.
+ * @tparam ADDR_UNIT_BITWIDTH The size of the minimum addressable unit in bits.
  */
-template <unsigned int BUSWIDTH = LT, unsigned int ADDR_UNIT_WIDTH = 8> class tlm_target {
+template <unsigned int BUSWIDTH = LT, unsigned int ADDR_UNIT_BITWIDTH = 8> class tlm_target {
 public:
-    using this_type = tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>;
+    using this_type = tlm_target<BUSWIDTH, ADDR_UNIT_BITWIDTH>;
     /**
      * @fn  tlm_target(sc_core::sc_time&)
      * @brief the constructor
@@ -78,7 +78,7 @@ public:
      * @param base_addr the offset of the resource (from address 0)
      */
     void addResource(resource_access_if& rai, uint64_t base_addr) {
-        socket_map.addEntry(std::make_pair(&rai, base_addr), base_addr, std::max<size_t>(1, rai.size() / (ADDR_UNIT_WIDTH / 8)));
+        socket_map.addEntry(std::make_pair(&rai, base_addr), base_addr, std::max<size_t>(1, rai.size() / (ADDR_UNIT_BITWIDTH / 8)));
     }
     /**
      * @fn void addResource(indexed_resource_access_if&, uint64_t)
@@ -88,7 +88,7 @@ public:
      */
     void addResource(indexed_resource_access_if& irai, uint64_t base_addr) {
         for(size_t idx = 0; idx < irai.size(); ++idx) {
-            auto irai_size = std::max<size_t>(1, irai[idx].size() / (ADDR_UNIT_WIDTH / 8));
+            auto irai_size = std::max<size_t>(1, irai[idx].size() / (ADDR_UNIT_BITWIDTH / 8));
             socket_map.addEntry(std::make_pair(&irai[idx], base_addr), base_addr, irai_size);
             base_addr += irai_size;
         }
@@ -124,26 +124,26 @@ template <unsigned BUSWIDTH = LT> struct target_name_map_entry {
     ::sc_dt::uint64 start;
     ::sc_dt::uint64 size;
 };
-template <unsigned int BUSWIDTH = LT, unsigned int ADDR_UNIT_WIDTH = 8>
-struct tlm_target_mod : sc_core::sc_module, public tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH> {
+template <unsigned int BUSWIDTH = LT, unsigned int ADDR_UNIT_BITWIDTH = 8>
+struct tlm_target_mod : sc_core::sc_module, public tlm_target<BUSWIDTH, ADDR_UNIT_BITWIDTH> {
     tlm_target_mod(sc_core::sc_module_name nm, sc_core::sc_time& clk_period)
     : sc_module(nm)
-    , tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>(clk_period) {}
+    , tlm_target<BUSWIDTH, ADDR_UNIT_BITWIDTH>(clk_period) {}
 };
 
 } /* namespace scc */
 
-template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_WIDTH>
-inline scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::tlm_target(sc_core::sc_time& clock, const char* socket_name)
+template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_BITWIDTH>
+inline scc::tlm_target<BUSWIDTH, ADDR_UNIT_BITWIDTH>::tlm_target(sc_core::sc_time& clock, const char* socket_name)
 : socket(socket_name)
 , clk(clock)
 , socket_map(std::make_pair(nullptr, 0)) {
-    socket.register_b_transport([=](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void { this->b_tranport_cb(gp, delay); });
-    socket.register_transport_dbg([=](tlm::tlm_generic_payload& gp) -> unsigned { return this->tranport_dbg_cb(gp); });
+    socket.register_b_transport([this](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void { this->b_tranport_cb(gp, delay); });
+    socket.register_transport_dbg([this](tlm::tlm_generic_payload& gp) -> unsigned { return this->tranport_dbg_cb(gp); });
 }
 
-template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_WIDTH>
-void scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::b_tranport_cb(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) {
+template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_BITWIDTH>
+void scc::tlm_target<BUSWIDTH, ADDR_UNIT_BITWIDTH>::b_tranport_cb(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) {
     resource_access_if* ra = nullptr;
     uint64_t base = 0;
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());
@@ -209,8 +209,8 @@ void scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::b_tranport_cb(tlm::tlm_generic_
     delay += clk;
 }
 
-template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_WIDTH>
-unsigned int scc::tlm_target<BUSWIDTH, ADDR_UNIT_WIDTH>::tranport_dbg_cb(tlm::tlm_generic_payload& gp) {
+template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_BITWIDTH>
+unsigned int scc::tlm_target<BUSWIDTH, ADDR_UNIT_BITWIDTH>::tranport_dbg_cb(tlm::tlm_generic_payload& gp) {
     resource_access_if* ra = nullptr;
     uint64_t base = 0;
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());

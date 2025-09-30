@@ -19,7 +19,7 @@
 
 #include <cci_configuration>
 #include <cstdint>
-#include <scc/fifo_w_cb.h>
+#include <scc/cci_param_restricted.h>
 #include <scc/peq.h>
 #include <scc/report.h>
 #include <scc/sc_variable.h>
@@ -44,6 +44,16 @@ struct cxs_flit_payload : public tlm::nw::tlm_network_payload<CXS_CMD> {
     uint8_t end{0};
     uint8_t end_error{0};
     bool last{false};
+
+    cxs_flit_payload& operator=(const cxs_flit_payload& x) {
+        tlm::nw::tlm_network_payload<CXS_CMD>::operator=(x);
+        start_ptr = x.start_ptr;
+        end_ptr = x.end_ptr;
+        end = x.end;
+        end_error = x.end_error;
+        last = x.last;
+        return (*this);
+    }
 };
 
 struct cxs_flit_types {
@@ -63,6 +73,9 @@ struct cxs_packet_types {
     using tlm_payload_type = cxs_packet_payload;
     using tlm_phase_type = ::tlm::tlm_phase;
 };
+
+bool register_extensions();
+extern bool registered;
 
 } // namespace cxs
 
@@ -128,17 +141,19 @@ struct cxs_transmitter : public sc_core::sc_module,
 
     cci::cci_param<sc_core::sc_time> clock_period{"clock_period", sc_core::SC_ZERO_TIME, "clock period of the CXS transmitter"};
 
-    cci::cci_param<unsigned> burst_len{"burst_len", 1, "minimum amount of credits to start transmitting flits"};
+    scc::cci_param_restricted<unsigned> burst_len{"burst_len", 1, scc::min_restriction(1u),
+                                                  "minimum amount of credits to start transmitting flits, shall be larger than 0"};
 
     cxs_transmitter(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm) {
+        register_extensions();
         tsck(*this);
         isck(*this);
         SC_HAS_PROCESS(cxs_transmitter);
         SC_METHOD(clock);
         sensitive << clk_i.pos();
-        SC_METHOD(reset);
-        sensitive << rst_i;
+        SC_METHOD(handle_received_credits);
+        sensitive << received_credits.event();
         dont_initialize();
     }
 
@@ -158,9 +173,11 @@ private:
     }
 
     tlm::tlm_sync_enum nb_transport_fw(pkt_tx_type& trans, pkt_phase_type& phase, sc_core::sc_time& t) override {
-        SCCTRACE(SCMOD) << "Forwarding CXS packet with size " << trans.get_data().size() << "bytes";
+        SCCTRACEALL(SCMOD) << "Forwarding CXS packet with size " << trans.get_data().size() << "bytes";
         if(phase == tlm::nw::REQUEST) {
             pkt_peq.notify(cxs_pkt_shared_ptr(&trans), t);
+            if(clock_period.get_value() != sc_core::SC_ZERO_TIME)
+                t += clock_period.get_value() - 1_ps;
             phase = tlm::nw::CONFIRM;
             return tlm::TLM_UPDATED;
         }
@@ -170,21 +187,35 @@ private:
     unsigned int transport_dbg(pkt_tx_type& trans) override { return 0; }
 
     tlm::tlm_sync_enum nb_transport_bw(flit_tx_type& trans, flit_phase_type& phase, sc_core::sc_time& t) override {
-        SCCTRACE(SCMOD) << "Received non-blocking transaction in bw path with phase " << phase.get_name();
-        if(phase == tlm::nw::REQUEST) {
-            received_credits += trans.get_data()[0];
-            SCCDEBUG(SCMOD) << "Received " << static_cast<unsigned>(trans.get_data()[0]) << " credit(s), " << received_credits.get()
+        SCCTRACEALL(SCMOD) << "Received non-blocking transaction in bw path with phase " << phase.get_name();
+        if(phase == tlm::nw::REQUEST && trans.get_command() == cxs::CXS_CMD::CREDIT) {
+            received_credits.notify(trans.get_data()[0], sc_core::SC_ZERO_TIME);
+            SCCTRACE(SCMOD) << "Received " << static_cast<unsigned>(trans.get_data()[0]) << " credit(s), " << available_credits.get()
                             << " credit(s) in total";
+            if(clock_period.get_value() > sc_core::SC_ZERO_TIME)
+                t += clock_period - 1_ps;
             phase = tlm::nw::CONFIRM;
             return tlm::TLM_UPDATED;
         }
         throw std::runtime_error("illegal request in backward path");
     }
 
+    void handle_received_credits() {
+        while(received_credits.has_next()) {
+            auto crd = received_credits.get();
+            available_credits += crd;
+        }
+    }
+
     void clock() {
-        if((!pending_pkt && !pkt_peq.has_next()) || // there are no packets to send
-           (received_credits < burst_len.get_value() && !burst_credits) ||
-           rst_i.read()) // we do not have enough credits to send them as burst
+        if(rst_i.read()) {
+            available_credits = 0;
+            pkt_peq.clear();
+            pending_pkt = nullptr;
+            return;
+        }
+        if((!pending_pkt && !pkt_peq.has_next()) ||                         // there are no packets to send
+           (!burst_credits && (available_credits < burst_len.get_value()))) // we do not have enough credits to burst-send flits
             return;
         auto* ptr = cxs_flit_mm::get().allocate();
         auto ext = ptr->get_extension<orig_pkt_extension>();
@@ -225,24 +256,18 @@ private:
         isck->nb_transport_fw(*ptr, phase, t);
         if(!burst_credits) {
             burst_credits = burst_len.get_value();
-            received_credits -= burst_credits;
+            available_credits -= burst_credits;
         }
         burst_credits--;
-    }
-
-    void reset() {
-        if(rst_i.read()) {
-            received_credits = 0;
-            pkt_peq.clear();
-            pending_pkt = nullptr;
-        }
+        SCCTRACE(SCMOD) << "Transmitted one flit, " << available_credits.get() << " credit(s) in total";
     }
 
     scc::peq<cxs_pkt_shared_ptr> pkt_peq;
     cxs_pkt_shared_ptr pending_pkt;
     unsigned transfered_pkt_bytes{0};
 
-    scc::sc_variable<unsigned> received_credits{"received_credits", 0};
+    scc::peq<unsigned> received_credits;
+    scc::sc_variable<unsigned> available_credits{"available_credits", 0};
     unsigned burst_credits{0};
 };
 
@@ -269,21 +294,20 @@ struct cxs_receiver : public sc_core::sc_module,
 
     cci::cci_param<sc_core::sc_time> clock_period{"clock_period", sc_core::SC_ZERO_TIME, "clock period of the CXS receiver"};
 
-    cci::cci_param<unsigned> max_credit{"max_credits", 1, "CXS_MAX_CREDIT property"};
+    scc::cci_param_restricted<unsigned> max_credit{"max_credits", 1, scc::min_restriction(1u),
+                                                   "CXS_MAX_CREDIT property, shall be larger than 0"};
 
     cxs_receiver(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm) {
+        register_extensions();
         tsck(*this);
         isck(*this);
         SC_HAS_PROCESS(cxs_receiver);
         SC_METHOD(clock);
         sensitive << clk_i.pos();
         dont_initialize();
-        SC_METHOD(reset);
-        sensitive << rst_i;
-        dont_initialize();
-        SC_METHOD(send_credit);
-        sensitive << credit_returned.data_written_event();
+        SC_METHOD(handle_received_credits);
+        sensitive << returned_credits.event();
         dont_initialize();
     }
 
@@ -302,49 +326,44 @@ private:
     }
 
     tlm::tlm_sync_enum nb_transport_fw(flit_tx_type& trans, flit_phase_type& phase, sc_core::sc_time& t) override {
-        SCCTRACE(SCMOD) << "Received non-blocking transaction in fw path with phase " << phase.get_name();
-        credit_returned.push_back(1);
+        SCCTRACEALL(SCMOD) << "Received non-blocking transaction in fw path with phase " << phase.get_name();
+        returned_credits.notify(1, sc_core::SC_ZERO_TIME);
         if(trans.end) {
             auto ext = trans.get_extension<cxs::orig_pkt_extension>();
             for(auto& orig_ptr : ext->orig_ext) {
                 auto ph = tlm::nw::REQUEST;
                 auto d = sc_core::SC_ZERO_TIME;
-                SCCTRACE(SCMOD) << "Forwarding CXS pkt with size " << orig_ptr->get_data().size() << "bytes";
+                SCCDEBUG(SCMOD) << "Forwarding CXS pkt with size " << orig_ptr->get_data().size() << "bytes";
                 auto status = isck->nb_transport_fw(*orig_ptr, ph, t);
                 sc_assert(status == tlm::TLM_UPDATED);
             }
         }
-        phase = tlm::nw::RESPONSE;
         if(clock_period.get_value() != sc_core::SC_ZERO_TIME)
             t += clock_period.get_value() - 1_ps;
+        phase = tlm::nw::RESPONSE;
         return tlm::TLM_UPDATED;
     }
 
     unsigned int transport_dbg(flit_tx_type& trans) override { return 0; }
 
     tlm::tlm_sync_enum nb_transport_bw(pkt_tx_type& trans, flit_phase_type& phase, sc_core::sc_time& t) override {
-        SCCTRACE(SCMOD) << "Received non-blocking transaction in bw path with phase " << phase.get_name();
+        SCCTRACEALL(SCMOD) << "Received non-blocking transaction in bw path with phase " << phase.get_name();
         if(phase == tlm::nw::CONFIRM)
             return tlm::TLM_ACCEPTED;
         throw std::runtime_error("illegal request in backward path");
     }
 
-    void reset() {
-        if(rst_i.read()) {
-            credit_returned.push_back(max_credit.get_value());
+    void handle_received_credits() {
+        while(returned_credits.has_next()) {
+            auto crd = returned_credits.get();
+            available_credits += crd;
         }
     }
 
-    void send_credit() {
-        auto amount = credit_returned.front();
-        credit_returned.pop_front();
-        available_credits += amount;
-    }
-
     void clock() {
-        if(rst_i.read())
-            return;
-        if(available_credits > 0) {
+        if(rst_i.read()) {
+            available_credits = max_credit.get_value();
+        } else if(available_credits > 0) {
             auto* ptr = cxs_flit_mm::get().allocate();
             ptr->set_command(cxs::CXS_CMD::CREDIT);
             ptr->set_data({1});
@@ -356,7 +375,7 @@ private:
         }
     }
     scc::sc_variable<unsigned> available_credits{"available_credits", 0};
-    scc::fifo_w_cb<unsigned char> credit_returned;
+    scc::peq<unsigned> returned_credits;
 };
 
 template <unsigned PHITWIDTH = 64>
@@ -367,7 +386,11 @@ struct cxs_channel : public sc_core::sc_module,
     using transaction_type = cxs_flit_types::tlm_payload_type;
     using phase_type = cxs_flit_types::tlm_phase_type;
 
+    sc_core::sc_in<bool> tx_clk_i{"tx_clk_i"};
+
     cxs_flit_target_socket<PHITWIDTH> tsck{"tsck"};
+
+    sc_core::sc_in<bool> rx_clk_i{"rx_clk_i"};
 
     cxs_flit_initiator_socket<PHITWIDTH> isck{"isck"};
 
@@ -394,7 +417,7 @@ struct cxs_channel : public sc_core::sc_module,
     }
 
     tlm::tlm_sync_enum nb_transport_fw(transaction_type& trans, phase_type& phase, sc_core::sc_time& t) override {
-        SCCTRACE(SCMOD) << "Received non-blocking transaction in fw path with phase " << phase.get_name();
+        SCCTRACEALL(SCMOD) << "Received non-blocking transaction in fw path with phase " << phase.get_name();
         if(phase == tlm::nw::REQUEST) {
             if(trans.get_data().size() > PHITWIDTH / 8) {
                 SCCERR(SCMOD) << "A CXS flit can be maximal " << PHITWIDTH / 8 << " bytes long, current data length is "
@@ -413,9 +436,9 @@ struct cxs_channel : public sc_core::sc_module,
     }
 
     tlm::tlm_sync_enum nb_transport_bw(transaction_type& trans, phase_type& phase, sc_core::sc_time& t) override {
-        SCCTRACE(SCMOD) << "Received non-blocking transaction in bw path with phase " << phase.get_name();
+        SCCTRACEALL(SCMOD) << "Received non-blocking transaction in bw path with phase " << phase.get_name();
         if(phase == tlm::nw::REQUEST) { // this is a credit
-            SCCDEBUG(SCMOD) << "Forwarding " << static_cast<unsigned>(trans.get_data()[0]) << " credit(s)";
+            SCCTRACE(SCMOD) << "Forwarding " << static_cast<unsigned>(trans.get_data()[0]) << " credit(s)";
             bw_peq.notify(cxs_flit_shared_ptr(&trans), channel_delay.get_value());
             if(tx_clock_period.get_value() > sc_core::SC_ZERO_TIME)
                 t += tx_clock_period - 1_ps;
@@ -431,6 +454,15 @@ struct cxs_channel : public sc_core::sc_module,
     unsigned int transport_dbg(transaction_type& trans) override { return isck->transport_dbg(trans); }
 
 private:
+    void start_of_simulation() override {
+        if(tx_clock_period.get_value() == sc_core::SC_ZERO_TIME)
+            if(auto clk_if = dynamic_cast<sc_core::sc_clock*>(tx_clk_i.get_interface()))
+                tx_clock_period.set_value(clk_if->period());
+        if(rx_clock_period.get_value() == sc_core::SC_ZERO_TIME)
+            if(auto clk_if = dynamic_cast<sc_core::sc_clock*>(rx_clk_i.get_interface()))
+                rx_clock_period.set_value(clk_if->period());
+    }
+
     void fw() {
         while(fw_peq.has_next()) {
             auto ptr = fw_peq.get();
@@ -467,5 +499,6 @@ private:
     scc::peq<cxs_flit_shared_ptr> bw_peq;
     sc_core::sc_event fw_resp, bw_resp;
 };
+
 } // namespace cxs
 #endif // _CXS_CXS_TLM_H_

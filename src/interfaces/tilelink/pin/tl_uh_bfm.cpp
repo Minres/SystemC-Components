@@ -29,8 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  *******************************************************************************/
-
-#include <interfaces/tilelink/pin/tl_uh_bfm.h>
+#include "tl_uh_bfm.h"
 #include <scc/report.h>
 #include <scc/utilities.h>
 

@@ -10,11 +10,14 @@ set(LIB_SOURCES
     axi/axi_initiator.cpp
     axi/axi_target.cpp
 	ocp/ocp_tlm.cpp
+    tilelink/tl_tlm.cpp
+    cxs/cxs_tlm.cpp
 )
 
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
 add_library(scc::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 add_library(busses ALIAS ${PROJECT_NAME})
+#TODO: remove alias
 add_library(scc::busses ALIAS ${PROJECT_NAME})
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
@@ -44,7 +47,7 @@ install(EXPORT ${PROJECT_NAME}-targets
         NAMESPACE scc::
         )
 
-foreach(dir IN ITEMS ahb apb atp axi)
+foreach(dir IN ITEMS ahb apb axi cxs obi ocp spi tilelink)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${dir} COMPONENT busses
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
         FILES_MATCHING # install only matched files

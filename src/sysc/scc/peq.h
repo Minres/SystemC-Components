@@ -164,6 +164,8 @@ template <class TYPE> struct peq : public sc_core::sc_object {
         }
     }
 
+    size_t size() const { return m_scheduled_events.size(); }
+
 private:
     map_type m_scheduled_events;
     std::deque<std::deque<TYPE>*> free_pool;

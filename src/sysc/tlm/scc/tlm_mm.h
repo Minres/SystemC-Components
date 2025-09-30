@@ -30,7 +30,14 @@
 namespace tlm {
 //! @brief SCC TLM utilities
 namespace scc {
-
+/*!
+ * \brief Memory management for TLM generic payload data.
+ *
+ * This extension is used for memory handling for tlm generic payload data. It is
+ * designed to be used as an extension for the tlm_payload_base class.
+ *
+ * \note This extension is used internally by the tlm_gp_shared class, which is
+ */
 struct tlm_gp_mm : public tlm_extension<tlm_gp_mm> {
     virtual ~tlm_gp_mm() {}
 
@@ -60,13 +67,23 @@ protected:
     , data_ptr(data_ptr)
     , be_ptr(be_ptr) {}
 };
-
+/*!
+ * \brief Creates a new tlm_gp_mm object with fixed size.
+ *
+ * \param sz The size of the data to be handled.
+ * \param be If true, the data is byte-swapped.
+ * \return A new tlm_gp_mm object.
+ */
 template <size_t SZ, bool BE = false> struct tlm_gp_mm_t : public tlm_gp_mm {
 
     friend tlm_gp_mm;
-
+    /*!
+     * virtual destructor
+     */
     virtual ~tlm_gp_mm_t() {}
-
+    /*!
+     * frees the extension by returning it to the memory manager
+     */
     void free() override { util::pool_allocator<sizeof(tlm_gp_mm_t<SZ, BE>)>::get().free(this); }
 
 protected:
@@ -86,7 +103,14 @@ protected:
     tlm_gp_mm_v(size_t sz)
     : tlm_gp_mm(sz, new uint8_t[sz], nullptr) {}
 };
-
+/*!
+ * \brief Creates a new tlm_gp_mm object with a dynamically allocated buffer.
+ *
+ * \param sz The size of the data to be handled.
+ * \param be If true, the extension will also provide a byte-enable array.
+ * \return A new tlm_gp_mm object.
+ *  @ingroup tlm_extensions
+ */
 inline tlm_gp_mm* tlm::scc::tlm_gp_mm::create(size_t sz, bool be) {
     if(sz > 4096) {
         return new tlm_gp_mm_v(sz);
@@ -120,7 +144,14 @@ inline tlm_gp_mm* tlm::scc::tlm_gp_mm::create(size_t sz, bool be) {
         return new(util::pool_allocator<sizeof(tlm_gp_mm_t<16, false>)>::get().allocate()) tlm_gp_mm_t<16, false>(sz);
     }
 }
-
+/*!
+ * \brief Adds a data pointer to a tlm_gp_mm object.
+ *
+ * \param sz The size of the data.
+ * \param gp The tlm_generic_payload object to add the data pointer to.
+ * \param be If true, the byte-enable pointer will be populated.
+ * \return The tlm_generic_payload object with the data pointer added.
+ */
 template <typename TYPES>
 inline typename TYPES::tlm_payload_type* tlm::scc::tlm_gp_mm::add_data_ptr(size_t sz, typename TYPES::tlm_payload_type* gp, bool be) {
     auto* ext = create(sz, be);
@@ -132,7 +163,9 @@ inline typename TYPES::tlm_payload_type* tlm::scc::tlm_gp_mm::add_data_ptr(size_
         gp->set_byte_enable_length(sz);
     return gp;
 }
-
+/*!
++ Class tlm_ext_mm prides a memory manager for TLM extension
+*/
 template <typename EXT> struct tlm_ext_mm : public EXT {
 
     friend tlm_gp_mm;
@@ -207,7 +240,13 @@ public:
 private:
     util::pool_allocator<sizeof(payload_type)>& allocator;
 };
-
+/*!
+ * @class tlm_mm_t
+ * @brief a tlm payload memory manager
+ *
+ * This memory manager can be used as singleton or as local memory manager. It uses the pool_allocator
+ * as singleton to maximize reuse
+ */
 template <typename TYPES, bool CLEANUP_DATA> class tlm_mm_t<TYPES, CLEANUP_DATA, tlm::tlm_mm_interface> : public tlm::tlm_mm_interface {
     using payload_type = typename TYPES::tlm_payload_type;
 
@@ -277,7 +316,13 @@ public:
 private:
     util::pool_allocator<sizeof(payload_type)>& allocator;
 };
-
+/*!
+ * @class tlm_mm
+ * @brief a tlm payload memory manager as singleton
+ *
+ * This memory manager can be used as singleton. It uses the pool_allocator
+ * as singleton to maximize reuse
+ */
 template <typename TYPES = tlm_base_protocol_types, bool CLEANUP_DATA = true>
 struct tlm_mm
 : public tlm_mm_t<TYPES, CLEANUP_DATA,

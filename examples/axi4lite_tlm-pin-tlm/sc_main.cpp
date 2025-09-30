@@ -261,8 +261,7 @@ int sc_main(int argc, char* argv[]) {
     scc::configurer cfg(argc == 2 ? argv[1] : "");
     scc::configurable_tracer trace("axi4lite_tlm_pin_tlm",
                                    true,  // enables TX recording
-                                   true,  // enables signal tracing
-                                   true); // all units by default traced
+                                   true); // enables signal tracing
     if(setjmp(env) == 0) {
         testbench tb("tb");
         cfg.configure();

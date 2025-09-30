@@ -73,7 +73,7 @@ plic::plic(sc_core::sc_module_name nm)
 plic::~plic() = default;
 
 void plic::init_callbacks() {
-    m_claim_complete_write_cb = [=](scc::sc_register<uint32_t> reg, uint32_t v) -> bool {
+    m_claim_complete_write_cb = [=](scc::sc_register<uint32_t>& reg, uint32_t v) -> bool {
         reg.put(v);
         reset_pending_int(v);
         // std::cout << "Value of register: 0x" << std::hex << reg << std::endl;

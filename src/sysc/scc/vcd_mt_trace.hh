@@ -48,7 +48,7 @@ struct vcd_mt_trace_file : public sc_core::sc_trace_file, public observer {
 protected:
 #define DECL_TRACE_METHOD_A(tp) void trace(const tp& object, const std::string& name) override;
 #define DECL_TRACE_METHOD_B(tp) void trace(const tp& object, const std::string& name, int width) override;
-#if (SYSTEMC_VERSION >= 20171012)
+#if (SYSTEMC_VERSION >= 20171012) || defined(NCSC)
     DECL_TRACE_METHOD_A( sc_core::sc_event )
     DECL_TRACE_METHOD_A( sc_core::sc_time )
 #endif
@@ -130,9 +130,6 @@ protected:
     void cycle(bool delta_cycle) override;
 
     void set_time_unit( double v, sc_core::sc_time_unit tu ) override;
-#ifdef NCSC
-    void set_time_unit( int exponent10_seconds ) override;
-#endif
 
 private:
 #if WITH_SC_TRACING_PHASE_CALLBACKS

@@ -94,7 +94,7 @@ template <typename T, typename OT = T> bool changed(trace::vcd_trace* trace) {
         all_traces.emplace_back(&changed<tp, tpo>, new trace::vcd_trace_t<tp, tpo>(object, name));                                         \
     }
 
-#if(SYSTEMC_VERSION >= 20171012)
+#if(SYSTEMC_VERSION >= 20171012) || defined(NCSC)
 void vcd_pull_trace_file::trace(const sc_core::sc_event& object, const std::string& name) {}
 // void vcd_pull_trace_file::trace(const sc_core::sc_time& object, const std::string& name){}
 DECL_TRACE_METHOD_A(sc_core::sc_time)
@@ -257,9 +257,6 @@ void vcd_pull_trace_file::cycle(bool delta_cycle) {
 }
 
 void vcd_pull_trace_file::set_time_unit(double v, sc_core::sc_time_unit tu) {}
-#ifdef NCSC
-void vcd_pull_trace_file::set_time_unit(int exponent10_seconds) {}
-#endif
 
 sc_core::sc_trace_file* create_vcd_pull_trace_file(const char* name, std::function<bool()> enable) {
     return new vcd_pull_trace_file(name, enable);

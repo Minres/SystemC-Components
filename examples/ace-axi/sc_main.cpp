@@ -132,8 +132,7 @@ int sc_main(int argc, char* argv[]) {
     // clang-format on
     scc::configurable_tracer trace("ace_axi_test",
                                    true,  // enables TX recording
-                                   true,  // enables signal tracing
-                                   true); // all units by default traced
+                                   true); // enables signal tracing
     testbench mstr("master");
     try {
         sc_core::sc_start(10_ms);

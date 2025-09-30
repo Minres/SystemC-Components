@@ -54,6 +54,13 @@ struct sc_variable_b : sc_core::sc_object {
      */
     sc_variable_b(const char* name)
     : sc_core::sc_object(name) {}
+    // Rule of 5 - non-copyable, non-assignable
+    sc_variable_b() = delete;
+    sc_variable_b(sc_variable_b const&) = delete;
+    sc_variable_b(sc_variable_b&&) = delete;
+    sc_variable_b& operator=(const sc_variable_b& other) = delete;
+    sc_variable_b& operator=(sc_variable_b&& other) = delete;
+
     /**
      * @fn const char* kind()const
      * @brief get the kind of this sc_object
@@ -104,6 +111,11 @@ template <typename T> struct sc_variable : public sc_variable_b {
     : sc_variable_b(name.c_str())
     , value(value)
     , hndl{} {}
+    // Rule of 5 - non-copyable, non-assignable
+    sc_variable() = delete;
+    sc_variable(sc_variable<T> const&) = delete;
+    sc_variable(sc_variable<T>&&) = delete;
+    sc_variable& operator=(sc_variable<T>&& other) = delete;
 
     virtual ~sc_variable() = default;
     /**
@@ -134,8 +146,15 @@ template <typename T> struct sc_variable : public sc_variable_b {
      */
     operator T() const { return value; }
     // assignment operator overload
-    sc_variable& operator=(const T other) {
+    sc_variable& operator=(T other) {
         value = other;
+        for(auto h : hndl)
+            h->notify();
+        return *this;
+    }
+
+    sc_variable& operator=(const sc_variable<T>& other) {
+        value = other.value;
         for(auto h : hndl)
             h->notify();
         return *this;
@@ -257,12 +276,6 @@ template <typename T> struct sc_variable : public sc_variable_b {
 
     void trace(observer* obs) const override { hndl.push_back(observe(obs, value, name())); }
 
-    static sc_variable<T> create(const char* n, size_t i, T default_val) {
-        std::ostringstream os;
-        os << n << "[" << i << "];";
-        return scc::sc_variable<T>(os.str(), default_val);
-    }
-
     struct creator {
         creator(T const& default_val)
         : default_val{default_val} {}
@@ -297,6 +310,10 @@ template <> struct sc_variable<bool> : public sc_variable_b {
     : sc_variable_b(name.c_str())
     , value(value)
     , hndl{} {}
+    sc_variable() = delete;
+    sc_variable(sc_variable<bool> const&) = delete;
+    sc_variable(sc_variable<bool>&&) = delete;
+    sc_variable& operator=(sc_variable<bool>&& other) = delete;
     virtual ~sc_variable() = default;
     std::string to_string() const override {
         std::stringstream ss;
@@ -311,6 +328,12 @@ template <> struct sc_variable<bool> : public sc_variable_b {
             h->notify();
         return *this;
     }
+    sc_variable& operator=(const sc_variable<bool>& other) {
+        value = other.value;
+        for(auto h : hndl)
+            h->notify();
+        return *this;
+    }
     bool operator==(bool other) const { return value == other; }
     bool operator!=(bool other) const { return value != other; }
     void trace(sc_core::sc_trace_file* tf) const override {
@@ -320,11 +343,6 @@ template <> struct sc_variable<bool> : public sc_variable_b {
             sc_core::sc_trace(tf, value, name());
     }
     void trace(observer* obs) const override { hndl.push_back(observe(obs, value, name())); }
-    static scc::sc_variable<bool> create(const char* n, size_t i, bool default_val) {
-        std::ostringstream os;
-        os << n << "[" << i << "];";
-        return sc_variable<bool>(os.str(), default_val);
-    }
 
     struct creator {
         creator(bool const& default_val)

@@ -49,7 +49,7 @@ protected:
     void clear_core_interrupt();
     sc_core::sc_time clk;
     std::unique_ptr<plic_regs> regs;
-    std::function<bool(scc::sc_register<uint32_t>, uint32_t)> m_claim_complete_write_cb;
+    std::function<bool(scc::sc_register<uint32_t>&, uint32_t)> m_claim_complete_write_cb;
 };
 
 } /* namespace sysc */

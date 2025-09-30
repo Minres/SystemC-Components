@@ -64,7 +64,7 @@ inline std::ostream& operator<<(std::ostream& os, E e) {
 std::ostream& operator<<(std::ostream& os, tlm::tlm_generic_payload const& t);
 
 //! opcodes of Tilelink.. The encode the opcode (opcode_e[2:0]) and the applicable channels (opcode_e[8] -> A ... opcode_e[4] -> E)
-enum class opcode_e : uint8_t {
+enum class opcode_e {
     Get = 0x184,
     AccessAckData = 0x061,
     PutFullData = 0x180,
@@ -89,12 +89,32 @@ enum class opcode_e : uint8_t {
     ILLEGAL = 0xf
 };
 
+enum param_e {
+    // *N*one, *B*ranch, *T*runk
+    // cap params
+    CAP_2T = 0x0,
+    CAP_2B = 0x1,
+    CAP_2N = 0x2,
+    // grow params
+    GROW_N2B = 0x10,
+    GROW_N2T = 0x11,
+    GROW_B2T = 0x12,
+    // prune params
+    PRUNE_T2B = 0x20,
+    PRUNE_T2N = 0x21,
+    PRUNE_B2N = 0x22,
+    // report params
+    REP_T2T = 0x3,
+    REP_B2B = 0x4,
+    REP_N2N = 0x5
+};
+
 struct tilelink_extension : public tlm::tlm_extension<tilelink_extension> {
     opcode_e get_opcode() const;
     void set_opcode(opcode_e);
 
-    uint8_t get_param() const;
-    void set_param(uint8_t);
+    param_e get_param() const;
+    void set_param(param_e);
 
     uint64_t get_source() const;
     void set_source(uint64_t);
@@ -109,6 +129,10 @@ struct tilelink_extension : public tlm::tlm_extension<tilelink_extension> {
     void set_denied(bool = true);
 
     tilelink_extension() = default;
+
+    tilelink_extension(opcode_e opc, param_e p)
+    : opcode(opc)
+    , param(p) {}
 
     tilelink_extension(const tilelink_extension& o) = default;
     /**
@@ -127,7 +151,7 @@ private:
     uint64_t sink{0};
     bool corrupt{false};
     bool denied{false};
-    uint8_t param{0};
+    param_e param{CAP_2T};
     opcode_e opcode{opcode_e::ILLEGAL};
 };
 //! aliases for payload and phase types
@@ -196,8 +220,11 @@ struct tlu_initiator_socket
      */
     const char* kind() const override { return "tlu_initiator_socket"; }
     // not the right version but we assume TLM is always bundled with SystemC
-#if SYSTEMC_VERSION >= 20181013 // ((TLM_VERSION_MAJOR > 2) || (TLM_VERSION==2 && TLM_VERSION_MINOR>0) ||(TLM_VERSION==2
-                                // && TLM_VERSION_MINOR>0 && TLM_VERSION_PATCH>4))
+#if SYSTEMC_VERSION >= 20181013 && SYSTEMC_VERSION < 20241015 // not the right version but we assume TLM is always bundled with SystemC
+    /**
+     * @brief get the type of protocol
+     * @return the kind typeid
+     */
     sc_core::sc_type_index get_protocol_types() const override { return typeid(TYPES); }
 #endif
 };
@@ -226,8 +253,11 @@ struct tlu_target_socket : public tlm::tlm_base_target_socket<BUSWIDTH, tlu_fw_t
      */
     const char* kind() const override { return "tlu_target_socket"; }
     // not the right version but we assume TLM is always bundled with SystemC
-#if SYSTEMC_VERSION >= 20181013 // ((TLM_VERSION_MAJOR > 2) || (TLM_VERSION==2 && TLM_VERSION_MINOR>0) ||(TLM_VERSION==2
-                                // && TLM_VERSION_MINOR>0 && TLM_VERSION_PATCH>4))
+#if SYSTEMC_VERSION >= 20181013 && SYSTEMC_VERSION < 20241015 // not the right version but we assume TLM is always bundled with SystemC
+    /**
+     * @brief get the type of protocol
+     * @return the kind typeid
+     */
     sc_core::sc_type_index get_protocol_types() const override { return typeid(TYPES); }
 #endif
 };
@@ -256,7 +286,7 @@ struct tlc_initiator_socket
      * @return the kind string
      */
     const char* kind() const override { return "tlc_initiator_socket"; }
-#if SYSTEMC_VERSION >= 20181013 // not the right version but we assume TLM is always bundled with SystemC
+#if SYSTEMC_VERSION >= 20181013 && SYSTEMC_VERSION < 20241015 // not the right version but we assume TLM is always bundled with SystemC
     /**
      * @brief get the type of protocol
      * @return the kind typeid
@@ -289,7 +319,7 @@ struct tlc_target_socket : public tlm::tlm_base_target_socket<BUSWIDTH, tlc_fw_t
      */
     const char* kind() const override { return "tlc_target_socket"; }
     // not the right version but we assume TLM is always bundled with SystemC
-#if SYSTEMC_VERSION >= 20181013 // not the right version but we assume TLM is always bundled with SystemC
+#if SYSTEMC_VERSION >= 20181013 && SYSTEMC_VERSION < 20241015 // not the right version but we assume TLM is always bundled with SystemC
     /**
      * @brief get the type of protocol
      * @return the kind typeid
@@ -309,9 +339,9 @@ inline opcode_e tilelink_extension::get_opcode() const { return opcode; }
 
 inline void tilelink_extension::set_opcode(opcode_e opcode) { this->opcode = opcode; }
 
-inline uint8_t tilelink_extension::get_param() const { return param; }
+inline param_e tilelink_extension::get_param() const { return param; }
 
-inline void tilelink_extension::set_param(uint8_t param) { this->param = param; }
+inline void tilelink_extension::set_param(param_e param) { this->param = param; }
 
 inline uint64_t tilelink_extension::get_source() const { return source; }
 
@@ -329,7 +359,7 @@ inline bool tilelink_extension::is_denied() const { return denied; }
 
 inline void tilelink_extension::set_denied(bool denied) { this->denied = denied; }
 
-inline tlm::tlm_extension_base* tilelink_extension::clone() const { return new tilelink_extension(this); }
+inline tlm::tlm_extension_base* tilelink_extension::clone() const { return new tilelink_extension(*this); }
 
 inline void tilelink_extension::copy_from(const tlm::tlm_extension_base& ext) {
     auto const* tl_ext = dynamic_cast<const tilelink_extension*>(&ext);

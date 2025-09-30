@@ -1,6 +1,6 @@
 project(scc-util VERSION 0.0.1 LANGUAGES CXX)
 
-set(SRC util/io-redirector.cpp util/watchdog.cpp)
+set(SRC util/io-redirector.cpp util/watchdog.cpp util/ihex_parser.cpp)
 if(TARGET lz4::lz4)
     list(APPEND SRC util/lz4_streambuf.cpp)
 endif()

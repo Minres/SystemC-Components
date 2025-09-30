@@ -48,7 +48,7 @@ namespace cci_impl {
 /// helper class to avoid dangling pointers to cci_value reference objects
 template<typename T> struct value_ptr
 {
-  typedef T element_type;
+  using element_type = T ;
 
   explicit value_ptr(const T& ref) : ref_(ref) {}
 
@@ -78,7 +78,7 @@ public:
   using iterator_category   = std::random_access_iterator_tag;
 
 protected:
-  typedef void* impl_type; //  type-punned pointer for now
+  using impl_type = void* ; //  type-punned pointer for now
 
   value_iterator_impl(impl_type r = NULL)
     : impl_(r) {}
@@ -113,9 +113,9 @@ template<typename T>
 class cci_value_iterator
   : protected cci_impl::value_iterator_impl<T>
 {
-  typedef cci_impl::value_iterator_impl<T> impl;
-  typedef cci_value_iterator<typename T::const_reference> const_type;
-  typedef cci_value_iterator<typename T::reference>       nonconst_type;
+  using impl = cci_impl::value_iterator_impl<T> ;
+  using const_type = cci_value_iterator<typename T::const_reference> ;
+  using nonconst_type = cci_value_iterator<typename T::reference>       ;
 
   friend class cci_value_list_cref;
   friend class cci_value_list_ref;

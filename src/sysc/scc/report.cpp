@@ -13,27 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/*
- * report.cpp
- *
- *  Created on: 19.09.2017
- *      Author: ubuntu
- */
-
 #include "report.h"
 #include "configurer.h"
 #include <array>
-#include <chrono>
 #include <fstream>
 #include <mutex>
 #include <spdlog/async.h>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
-#include <thread>
 #include <tuple>
 #include <unordered_map>
 #include <util/logging.h>
+#ifdef WITH_STACKTRACE
+#include <boost/stacktrace.hpp>
+#endif
+#include <cstdlib>
 #ifdef __GNUC__
 #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 #if GCC_VERSION < 40900
@@ -75,7 +70,7 @@ struct char_hash {
         return hash;
     }
 };
-thread_local struct {
+static struct {
     std::unordered_map<char const*, sc_core::sc_verbosity, char_hash, char_equal_to> table;
     std::vector<std::string> cache;
     void insert(char const* key, sc_core::sc_verbosity verb) {
@@ -86,6 +81,7 @@ thread_local struct {
         table.clear();
         cache.clear();
     }
+    std::mutex mtx;
 } lut;
 #ifdef MTI_SYSTEMC
 static const cci::cci_originator originator;
@@ -98,7 +94,7 @@ bool& inst_based_logging() {
     return active;
 }
 
-struct ExtLogConfig : public scc::LogConfig {
+static struct ExtLogConfig : public scc::LogConfig {
     shared_ptr<spdlog::logger> file_logger;
     shared_ptr<spdlog::logger> console_logger;
 #ifdef USE_C_REGEX
@@ -119,9 +115,8 @@ struct ExtLogConfig : public scc::LogConfig {
 #endif
     }
     bool initialized{false};
-};
-
-thread_local ExtLogConfig log_cfg;
+    std::mutex mtx;
+} log_cfg;
 
 auto get_tuple(const sc_time& t) -> tuple<sc_time::value_type, sc_time_unit> {
     auto val = t.value();
@@ -189,13 +184,13 @@ auto compose_message(const sc_report& rep, const scc::LogConfig& cfg) -> const s
             }
         }
         if(unlikely(rep.get_id() >= 0))
-            os << "("
+            os << " ("
                << "IWEF"[rep.get_severity()] << rep.get_id() << ") " << rep.get_msg_type() << ": ";
         else if(cfg.msg_type_field_width) {
             if(cfg.msg_type_field_width == std::numeric_limits<unsigned>::max())
-                os << rep.get_msg_type() << ": ";
+                os << " " << rep.get_msg_type() << ": ";
             else
-                os << util::padded(rep.get_msg_type(), cfg.msg_type_field_width) << ": ";
+                os << " " << util::padded(rep.get_msg_type(), cfg.msg_type_field_width) << ": ";
         }
         if(*rep.get_msg())
             os << rep.get_msg();
@@ -238,39 +233,27 @@ inline void log2logger(spdlog::logger& logger, const sc_report& rep, const scc::
         break;
     case SC_ERROR:
         logger.error(msg);
+#ifdef WITH_STACKTRACE
+        if(getenv("SCC_PRINT_STACK_ON_ERROR"))
+            logger.error(boost::stacktrace::to_string(boost::stacktrace::stacktrace()));
+#endif
         break;
     case SC_FATAL:
         logger.critical(msg);
+#ifdef WITH_STACKTRACE
+        if(getenv("SCC_PRINT_STACK_ON_ERROR"))
+            logger.error(boost::stacktrace::to_string(boost::stacktrace::stacktrace()));
+#endif
         break;
     default:
         break;
     }
 }
 
-inline void log2logger(spdlog::logger& logger, scc::log lvl, const string& msg) {
-    switch(lvl) {
-    case scc::log::DBGTRACE:
-    case scc::log::TRACE:
-        logger.trace(msg);
-        return;
-    case scc::log::DEBUG:
-        logger.debug(msg);
-        return;
-    case scc::log::INFO:
-        logger.info(msg);
-        return;
-    case scc::log::WARNING:
-        logger.warn(msg);
-        return;
-    case scc::log::ERROR:
-        logger.error(msg);
-        return;
-    case scc::log::FATAL:
-        logger.critical(msg);
-        return;
-    default:
-        break;
-    }
+inline void flush_loggers() {
+    log_cfg.console_logger->flush();
+    if(log_cfg.file_logger)
+        log_cfg.file_logger->flush();
 }
 
 void report_handler(const sc_report& rep, const sc_actions& actions) {
@@ -289,25 +272,23 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
         }
     }
     if(actions & SC_STOP) {
-        this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 10));
+        flush_loggers();
         if(sc_is_running() && !sc_stop_called) {
             sc_stop();
             sc_stop_called = true;
         }
     }
     if(actions & SC_ABORT) {
-        this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 20));
+        flush_loggers();
+        spdlog::shutdown();
         abort();
     }
     if(actions & SC_THROW) {
-        this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 20));
+        flush_loggers();
         throw rep;
     }
     if(sc_time_stamp().value() && !sc_is_running()) {
-        log_cfg.console_logger->flush();
-        if(log_cfg.file_logger)
-            log_cfg.file_logger->flush();
-        this_thread::sleep_for(chrono::milliseconds(static_cast<unsigned>(log_cfg.level) * 10));
+        flush_loggers();
     }
 }
 } // namespace
@@ -366,9 +347,8 @@ auto scc::stream_redirection::sync() -> int {
     return 0; // Success
 }
 
-static std::mutex cfg_guard;
 static void configure_logging() {
-    std::lock_guard<mutex> lock(cfg_guard);
+    std::lock_guard<mutex> lock(log_cfg.mtx);
     static bool spdlog_initialized = false;
     if(!log_cfg.dont_create_broker)
         scc::init_cci("SCCBroker");
@@ -389,7 +369,7 @@ static void configure_logging() {
                 log_cfg.console_logger->set_pattern(os.str());
             } else
                 log_cfg.console_logger->set_pattern("[%L] %v");
-            log_cfg.console_logger->flush_on(spdlog::level::warn);
+            log_cfg.console_logger->flush_on(spdlog::level::err);
             log_cfg.console_logger->set_level(spdlog::level::level_enum::trace);
             if(log_cfg.log_file_name.size()) {
                 {
@@ -403,7 +383,7 @@ static void configure_logging() {
                     log_cfg.file_logger->set_pattern("[%8l] %v");
                 else
                     log_cfg.file_logger->set_pattern("%v");
-                log_cfg.file_logger->flush_on(spdlog::level::warn);
+                log_cfg.file_logger->flush_on(spdlog::level::err);
                 log_cfg.file_logger->set_level(spdlog::level::level_enum::trace);
             }
             spdlog_initialized = true;
@@ -419,6 +399,47 @@ static void configure_logging() {
             log_cfg.reg_ex = regex(log_cfg.log_filter_regex, regex::extended | regex::icase);
 #endif
         }
+        logging::LoggerCallbacks::set_output_cb(logging::FATAL, [](std::string const& msg_type, std::string const& msg) {
+            ::scc ::ScLogger<::sc_core ::SC_FATAL>("", 0, sc_core ::SC_MEDIUM).type(msg_type.size() ? msg_type : std::string("C++")).get()
+                << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::ERR, [](std::string const& msg_type, std::string const& msg) {
+            ::scc ::ScLogger<::sc_core ::SC_ERROR>("", 0, sc_core ::SC_MEDIUM).type(msg_type.size() ? msg_type : std::string("C++")).get()
+                << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::WARN, [](std::string const& msg_type, std::string const& msg) {
+            if(::scc ::get_log_verbosity(msg_type) >= sc_core ::SC_LOW)
+                ::scc ::ScLogger<::sc_core ::SC_WARNING>("", 0, sc_core ::SC_MEDIUM)
+                        .type(msg_type.size() ? msg_type : std::string("C++"))
+                        .get()
+                    << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::INFO, [](std::string const& msg_type, std::string const& msg) {
+            if(::scc ::get_log_verbosity(msg_type) >= sc_core ::SC_MEDIUM)
+                ::scc ::ScLogger<::sc_core ::SC_INFO>("", 0, sc_core ::SC_MEDIUM)
+                        .type(msg_type.size() ? msg_type : std::string("C++"))
+                        .get()
+                    << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::DEBUG, [](std::string const& msg_type, std::string const& msg) {
+            if(::scc ::get_log_verbosity(msg_type) >= sc_core ::SC_HIGH)
+                ::scc ::ScLogger<::sc_core ::SC_INFO>("", 0, sc_core ::SC_HIGH).type(msg_type.size() ? msg_type : std::string("C++")).get()
+                    << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::TRACE, [](std::string const& msg_type, std::string const& msg) {
+            if(::scc ::get_log_verbosity(msg_type) >= sc_core ::SC_FULL)
+                ::scc ::ScLogger<::sc_core ::SC_INFO>("", 0, sc_core ::SC_FULL).type(msg_type).get() << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::TRACEALL, [](std::string const& msg_type, std::string const& msg) {
+            if(::scc ::get_log_verbosity(msg_type) >= sc_core ::SC_DEBUG)
+                ::scc ::ScLogger<::sc_core ::SC_INFO>("", 0, sc_core ::SC_DEBUG).type(msg_type.size() ? msg_type : std::string("C++")).get()
+                    << msg;
+        });
+        logging::LoggerCallbacks::set_output_cb(logging::DBGTRACE, [](std::string const& msg_type, std::string const& msg) {
+            if(::scc ::get_log_verbosity(msg_type) >= sc_core ::SC_DEBUG)
+                ::scc ::ScLogger<::sc_core ::SC_INFO>("", 0, sc_core ::SC_DEBUG).type(msg_type.size() ? msg_type : std::string("C++")).get()
+                    << msg;
+        });
     }
 }
 
@@ -542,12 +563,14 @@ auto scc::LogConfig::installHandler(bool v) -> scc::LogConfig& {
 
 auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
     if(inst_based_logging()) {
+        std::unique_lock<std::mutex> lock(lut.mtx);
         auto it = lut.table.find(str);
         if(it != lut.table.end())
             return it->second;
-        if(strchr(str, '.') == nullptr || sc_core::sc_get_current_object()) {
+        auto* curr_object = sc_core::sc_get_current_object();
+        if(strchr(str, '.') == nullptr || curr_object) {
             string current_name = std::string(str);
-            auto broker = sc_core::sc_get_current_object() ? cci::cci_get_broker() : cci::cci_get_global_broker(originator);
+            auto broker = curr_object ? cci::cci_get_broker() : cci::cci_get_global_broker(originator);
             while(true) {
                 string param_name = (current_name.empty()) ? SCC_LOG_LEVEL_PARAM_NAME : current_name + "." SCC_LOG_LEVEL_PARAM_NAME;
                 auto h = broker.get_param_handle(param_name);

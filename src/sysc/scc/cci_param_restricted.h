@@ -203,7 +203,7 @@ template <typename T, cci::cci_param_mutable_type TM = cci::CCI_MUTABLE_PARAM> s
      *
      * @param name Name of the parameter
      * @param default_value Default value of the parameter (Typed value)
-     * @param restr Restriction to apply, will be checked befor every write
+     * @param restr Restriction to apply, will be checked before every write
      * @param desc Description of the parameter
      * @param name_type Either the name should be absolute or relative
      * @param originator Originator of the parameter

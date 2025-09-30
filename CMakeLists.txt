@@ -14,6 +14,7 @@ option(SC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase c
 option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with phase callbacks for tracing. It needs to match the SystemC build configuration" OFF)
 set(SCC_ARCHIVE_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
 set(SCC_LIBRARY_DIR_MODIFIER "" CACHE STRING "additional directory levels to store libraries") 
+option(WITH_SCP4SCC "adds SCP compatibility layer for SCC, cannot be used together with a copy of SCP" OFF)
 
 include(Common)
 
@@ -120,7 +121,7 @@ if (ENABLE_CLANG_TIDY)
     endif()
 endif()
 
-find_package(Boost 1.70 REQUIRED COMPONENTS system date_time) # header only libraries must not be added here
+find_package(Boost REQUIRED QUIET COMPONENTS system date_time) # header only libraries must not be added here
 find_package(lz4 QUIET)
 if(NOT ${lz4_FOUND})
     find_package(PkgConfig QUIET)
@@ -182,8 +183,6 @@ if(SystemC_FOUND)
         target_link_libraries(scc INTERFACE ${Boost_datetime_LIBRARY})
     endif()
     target_link_libraries(scc INTERFACE scc-util scc-sysc components interfaces scv-tr)
-    target_link_libraries(scc INTERFACE ${FMT_TARGET} spdlog::spdlog)
-    
     set_target_properties(scc PROPERTIES
         PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
     )
@@ -196,6 +195,9 @@ if(SystemC_FOUND)
 	                                  $<TARGET_OBJECTS:scv-tr>
 	                                  )
 	    set_target_properties(scc_shared PROPERTIES CXX_VISIBILITY_PRESET hidden)
+		if(TARGET Boost::stacktrace_backtrace)
+		    target_link_libraries(scc_shared PUBLIC Boost::stacktrace_backtrace dl)
+		endif()
 	    add_library(scc::scc_shared ALIAS scc_shared)
 	endif()
     install(TARGETS scc

@@ -17,7 +17,7 @@
 #ifndef _BUS_AHB_PIN_TARGET_H_
 #define _BUS_AHB_PIN_TARGET_H_
 
-#include <interfaces/ahb/ahb_tlm.h>
+#include <ahb/ahb_tlm.h>
 #include <scc/peq.h>
 #include <scc/report.h>
 #include <scc/utilities.h>

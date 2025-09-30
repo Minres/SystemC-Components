@@ -20,7 +20,7 @@
 #include <axi/axi_tlm.h>
 #include <axi/fsm/base.h>
 #include <axi/fsm/protocol_fsm.h>
-#include <interfaces/axi/signal_if.h>
+#include <axi/signal_if.h>
 #include <scc/utilities.h>
 #include <systemc>
 #include <tlm/scc/tlm_mm.h>
@@ -106,6 +106,7 @@ private:
         unsigned len;
         bool lock;
         uint64_t user;
+        unsigned atop;
     };
     sc_core::sc_clock* clk_if{nullptr};
     sc_core::sc_event clk_delayed, clk_self, ar_end_req_evt, wdata_end_req_evt;
@@ -116,6 +117,8 @@ private:
     scc::peq<std::tuple<uint8_t, fsm_handle*>> rresp_vl;
     scc::peq<std::tuple<uint8_t, fsm_handle*>> wresp_vl;
 };
+
+template <typename CFG> using axi5_target = axi4_target<CFG>;
 
 } // namespace pin
 } // namespace axi
@@ -345,7 +348,9 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::aw_t() {
             CFG::IS_LITE ? 0U : this->aw_region->read().to_uint(),
             CFG::IS_LITE ? 0U : this->aw_len->read().to_uint(),
             CFG::IS_LITE ? false : this->aw_lock->read(),
-            0};
+            0,   // aw_user
+            CFG::IS_LITE ? 0U : this->aw_atop->read().to_uint()
+        };
         // clang-format on
         aw_que.notify(std::move(awd));
         this->aw_ready.write(true);
@@ -379,6 +384,7 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
                 ext->set_cache(awd.cache);
                 ext->set_region(awd.region);
                 ext->set_exclusive(awd.lock);
+                ext->set_atop(awd.atop);
                 if(CFG::USERWIDTH)
                     ext->set_user(axi::common::id_type::CTRL, awd.user);
 
@@ -431,10 +437,16 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
             // TODO: assuming consecutive write (not scattered)
             auto strobe = strb.to_uint();
             if(last) {
-                auto act_data_len = CFG::IS_LITE ? util::bit_count(strobe) : fsm_hndl->aux.i32.i0;
+                // If it is axi lite, number of strobes define the size, for axi4 aligned accesses, axsize & axburst determine size,
+                // for unaligned accesses strobe count determines size
+                auto act_data_len = CFG::IS_LITE ? util::bit_count(strobe) : offset == 0 ? (beat_count + 1) * size : fsm_hndl->aux.i32.i0;
                 gp->set_data_length(act_data_len);
-                gp->set_byte_enable_length(act_data_len);
                 gp->set_streaming_width(act_data_len);
+                if(fsm_hndl->aux.i32.i0 == act_data_len) {
+                    gp->set_byte_enable_length(0);
+                } else {
+                    gp->set_byte_enable_length(act_data_len);
+                }
             }
             auto tp = CFG::IS_LITE || this->w_last->read() ? axi::fsm::protocol_time_point_e::BegReqE
                                                            : axi::fsm::protocol_time_point_e::BegPartReqE;

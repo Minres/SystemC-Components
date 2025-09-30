@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "../../../interfaces/ahb/pe/ahb_target.h"
+#include "ahb_target.h"
 
 #include <scc/report.h>
 #include <systemc>

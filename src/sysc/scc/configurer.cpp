@@ -19,9 +19,12 @@
 #include "rapidjson/error/en.h"
 #include "report.h"
 #include <cci_configuration>
+#include <cerrno>
+#include <cstdlib>
 #include <cstring>
 #include <fmt/format.h>
 #include <fstream>
+#include <limits>
 #include <rapidjson/istreamwrapper.h>
 #include <rapidjson/ostreamwrapper.h>
 #include <rapidjson/prettywriter.h>
@@ -499,6 +502,18 @@ struct yaml_config_reader : public config_reader {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
                             }
                         }
+                    } else if(tag.size() && tag[0] == '!') {
+                        auto param_handle = broker.get_param_handle(hier_name);
+                        if(param_handle.is_valid()) {
+                            auto param = param_handle.get_cci_value();
+                            if(param.is_string()) {
+                                param.set_string(val.as<std::string>());
+                            }
+                        } else {
+                            if(auto res = YAML::as_if<std::string, optional<std::string>>(val)()) {
+                                broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
+                            }
+                        }
                     }
                 }
             }
@@ -743,35 +758,80 @@ void configurer::set_value(const std::string& hier_name, cci::cci_value value) {
 }
 
 void configurer::set_value_from_str(const std::string& hier_name, const std::string& value) {
-    try {
-        auto i = std::stoi(value);
-        set_value(hier_name, i);
-        return;
-    } catch(...) {
+    auto sign = 1;
+    std::string int_str = value;
+    if(value[0] == '-') {
+        sign = -1;
+        int_str = value.substr(1);
     }
-    try {
-        auto l = std::stol(value);
-        set_value(hier_name, l);
-        return;
-    } catch(...) {
+    int int_base = 10;
+    if(int_str[0] == '0') {
+        if(int_str[1] == 'x' || int_str[1] == 'X') {
+            int_base = 16;
+            int_str = int_str.substr(2);
+        } else {
+            int_base = 8;
+            int_str = int_str.substr(1);
+        }
     }
-    try {
-        auto ll = std::stoll(value);
-        set_value(hier_name, ll);
-        return;
-    } catch(...) {
+
+    char* end_str;
+    errno = 0;
+    auto ull = std::strtoull(int_str.c_str(), &end_str, int_base);
+    if((end_str - int_str.c_str()) == int_str.length() && !errno) {
+        if(sign < 0) {
+            if(ull <= std::numeric_limits<int64_t>::max()) {
+                int64_t ll = sign * ull;
+                if(ll >= std::numeric_limits<int>::min()) {
+                    set_value(hier_name, static_cast<int>(ll));
+                    return;
+                }
+                if(ll >= std::numeric_limits<long>::min()) {
+                    set_value(hier_name, static_cast<long>(ll));
+                    return;
+                }
+                if(ll >= std::numeric_limits<long long>::min()) {
+                    set_value(hier_name, static_cast<long long>(ll));
+                    return;
+                }
+            }
+        } else {
+            if(ull <= std::numeric_limits<int>::max()) {
+                set_value(hier_name, static_cast<int>(ull));
+                return;
+            }
+            if(ull <= std::numeric_limits<unsigned int>::max()) {
+                set_value(hier_name, static_cast<unsigned int>(ull));
+                return;
+            }
+            if(ull <= std::numeric_limits<long>::max()) {
+                set_value(hier_name, static_cast<long>(ull));
+                return;
+            }
+            if(ull <= std::numeric_limits<unsigned long>::max()) {
+                set_value(hier_name, static_cast<unsigned long>(ull));
+                return;
+            }
+            if(ull <= std::numeric_limits<long long>::max()) {
+                set_value(hier_name, static_cast<long long>(ull));
+                return;
+            }
+            if(ull <= std::numeric_limits<unsigned long long>::max()) {
+                set_value(hier_name, static_cast<unsigned long long>(ull));
+                return;
+            }
+        }
     }
-    try {
-        auto f = std::stof(value);
+    errno = 0;
+    auto f = std::strtof(int_str.c_str(), &end_str);
+    if(!errno && (end_str - int_str.c_str()) == int_str.length()) {
         set_value(hier_name, f);
         return;
-    } catch(...) {
     }
-    try {
-        auto d = std::stod(value);
+    auto d = std::strtod(int_str.c_str(), &end_str);
+    if(!errno && (end_str - int_str.c_str()) == int_str.length()) {
         set_value(hier_name, d);
         return;
-    } catch(...) {
     }
     auto lower_value = util::str_tolower(value);
     if(lower_value == "true") {

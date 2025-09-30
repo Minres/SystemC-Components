@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <interfaces/obi/obi_tlm.h>
+#include <obi/obi_tlm.h>
 #include <scc/mt19937_rng.h>
 #include <scc/peq.h>
 #include <scc/report.h>
