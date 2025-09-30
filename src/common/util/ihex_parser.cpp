@@ -1,5 +1,6 @@
 
 #include "ihex_parser.h"
+#include <array>
 #include <cstring>
 #include <stdbool.h>
 #include <stdint.h>
