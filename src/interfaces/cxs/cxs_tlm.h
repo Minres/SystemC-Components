@@ -19,7 +19,7 @@
 
 #include <cci_configuration>
 #include <cstdint>
-#include <scc/fifo_w_cb.h>
+#include <scc/cci_param_restricted.h>
 #include <scc/peq.h>
 #include <scc/report.h>
 #include <scc/sc_variable.h>
@@ -141,7 +141,7 @@ struct cxs_transmitter : public sc_core::sc_module,
 
     cci::cci_param<sc_core::sc_time> clock_period{"clock_period", sc_core::SC_ZERO_TIME, "clock period of the CXS transmitter"};
 
-    cci::cci_param<unsigned> burst_len{"burst_len", 1, "minimum amount of credits to start transmitting flits"};
+    scc::cci_param_restricted<unsigned> burst_len{"burst_len", 1, scc::min_restriction(1u), "minimum amount of credits to start transmitting flits, shall be larger than 0"};
 
     cxs_transmitter(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm) {
@@ -151,8 +151,8 @@ struct cxs_transmitter : public sc_core::sc_module,
         SC_HAS_PROCESS(cxs_transmitter);
         SC_METHOD(clock);
         sensitive << clk_i.pos();
-        SC_METHOD(reset);
-        sensitive << rst_i;
+        SC_METHOD(handle_received_credits);
+        sensitive<<received_credits.event();
         dont_initialize();
     }
 
@@ -188,8 +188,8 @@ private:
     tlm::tlm_sync_enum nb_transport_bw(flit_tx_type& trans, flit_phase_type& phase, sc_core::sc_time& t) override {
         SCCTRACEALL(SCMOD) << "Received non-blocking transaction in bw path with phase " << phase.get_name();
         if(phase == tlm::nw::REQUEST && trans.get_command() == cxs::CXS_CMD::CREDIT) {
-            received_credits += trans.get_data()[0];
-            SCCTRACE(SCMOD) << "Received " << static_cast<unsigned>(trans.get_data()[0]) << " credit(s), " << received_credits.get()
+            received_credits.notify(trans.get_data()[0], sc_core::SC_ZERO_TIME);
+            SCCTRACE(SCMOD) << "Received " << static_cast<unsigned>(trans.get_data()[0]) << " credit(s), " << available_credits.get()
                             << " credit(s) in total";
             if(clock_period.get_value() > sc_core::SC_ZERO_TIME)
                 t += clock_period - 1_ps;
@@ -199,10 +199,22 @@ private:
         throw std::runtime_error("illegal request in backward path");
     }
 
+    void handle_received_credits(){
+        while(received_credits.has_next()) {
+            auto crd = received_credits.get();
+            available_credits += crd;
+        }
+    }
+
     void clock() {
-        if((!pending_pkt && !pkt_peq.has_next()) || // there are no packets to send
-           (received_credits < burst_len.get_value() && !burst_credits) ||
-           rst_i.read()) // we do not have enough credits to send them as burst
+        if(rst_i.read()) {
+            available_credits = 0;
+            pkt_peq.clear();
+            pending_pkt = nullptr;
+            return;
+        }
+        if((!pending_pkt && !pkt_peq.has_next()) ||                      // there are no packets to send
+           (!burst_credits && (available_credits < burst_len.get_value()))) // we do not have enough credits to burst-send flits
             return;
         auto* ptr = cxs_flit_mm::get().allocate();
         auto ext = ptr->get_extension<orig_pkt_extension>();
@@ -243,25 +255,18 @@ private:
         isck->nb_transport_fw(*ptr, phase, t);
         if(!burst_credits) {
             burst_credits = burst_len.get_value();
-            received_credits -= burst_credits;
+            available_credits -= burst_credits;
         }
         burst_credits--;
-        SCCTRACE(SCMOD) << "Transmitted one flit, " << received_credits.get() << " credit(s) in total";
-    }
-
-    void reset() {
-        if(rst_i.read()) {
-            received_credits = 0;
-            pkt_peq.clear();
-            pending_pkt = nullptr;
-        }
+        SCCTRACE(SCMOD) << "Transmitted one flit, " << available_credits.get() << " credit(s) in total";
     }
 
     scc::peq<cxs_pkt_shared_ptr> pkt_peq;
     cxs_pkt_shared_ptr pending_pkt;
     unsigned transfered_pkt_bytes{0};
 
-    scc::sc_variable<unsigned> received_credits{"received_credits", 0};
+    scc::peq<unsigned> received_credits;
+    scc::sc_variable<unsigned> available_credits{"available_credits", 0};
     unsigned burst_credits{0};
 };
 
@@ -288,7 +293,7 @@ struct cxs_receiver : public sc_core::sc_module,
 
     cci::cci_param<sc_core::sc_time> clock_period{"clock_period", sc_core::SC_ZERO_TIME, "clock period of the CXS receiver"};
 
-    cci::cci_param<unsigned> max_credit{"max_credits", 1, "CXS_MAX_CREDIT property"};
+    scc::cci_param_restricted<unsigned> max_credit{"max_credits", 1, scc::min_restriction(1u), "CXS_MAX_CREDIT property, shall be larger than 0"};
 
     cxs_receiver(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm) {
@@ -299,11 +304,8 @@ struct cxs_receiver : public sc_core::sc_module,
         SC_METHOD(clock);
         sensitive << clk_i.pos();
         dont_initialize();
-        SC_METHOD(reset);
-        sensitive << rst_i;
-        dont_initialize();
-        SC_METHOD(send_credit);
-        sensitive << credit_returned.data_written_event();
+        SC_METHOD(handle_received_credits);
+        sensitive<<returned_credits.event();
         dont_initialize();
     }
 
@@ -323,7 +325,7 @@ private:
 
     tlm::tlm_sync_enum nb_transport_fw(flit_tx_type& trans, flit_phase_type& phase, sc_core::sc_time& t) override {
         SCCTRACEALL(SCMOD) << "Received non-blocking transaction in fw path with phase " << phase.get_name();
-        credit_returned.push_back(1);
+        returned_credits.notify(1, sc_core::SC_ZERO_TIME);
         if(trans.end) {
             auto ext = trans.get_extension<cxs::orig_pkt_extension>();
             for(auto& orig_ptr : ext->orig_ext) {
@@ -349,22 +351,17 @@ private:
         throw std::runtime_error("illegal request in backward path");
     }
 
-    void reset() {
-        if(rst_i.read()) {
-            credit_returned.push_back(max_credit.get_value());
+    void handle_received_credits() {
+        while(returned_credits.has_next()) {
+            auto crd = returned_credits.get();
+            available_credits += crd;
         }
     }
 
-    void send_credit() {
-        auto amount = credit_returned.front();
-        credit_returned.pop_front();
-        available_credits += amount;
-    }
-
     void clock() {
-        if(rst_i.read())
-            return;
-        if(available_credits > 0) {
+        if(rst_i.read()) {
+            available_credits = max_credit.get_value();
+        } else if(available_credits > 0) {
             auto* ptr = cxs_flit_mm::get().allocate();
             ptr->set_command(cxs::CXS_CMD::CREDIT);
             ptr->set_data({1});
@@ -376,7 +373,7 @@ private:
         }
     }
     scc::sc_variable<unsigned> available_credits{"available_credits", 0};
-    scc::fifo_w_cb<unsigned char> credit_returned;
+    scc::peq<unsigned> returned_credits;
 };
 
 template <unsigned PHITWIDTH = 64>
