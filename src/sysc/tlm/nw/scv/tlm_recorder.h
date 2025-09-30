@@ -581,7 +581,6 @@ template <typename TYPES> void tlm_recorder<TYPES>::nbtx_cb(tlm_recording_payloa
     SCVNS scv_tr_handle h;
     std::unordered_map<uint64_t, SCVNS scv_tr_handle>::iterator it;
     auto cmd = static_cast<unsigned>(rec_parts.get_command());
-    SCCTRACEALL(fixed_basename) << "Receive timed tx with phase " << phase.get_name() << " and id 0x" << rec_parts.id << " and cmd " << cmd;
     if(phase == tlm::nw::REQUEST) {
         h = nb_trTimedHandle[REQ]->begin_transaction(rel_str(tlm::scc::scv::PARENT_CHILD), rec_parts.parent);
         record(h, rec_parts);
