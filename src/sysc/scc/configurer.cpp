@@ -502,7 +502,7 @@ struct yaml_config_reader : public config_reader {
                                 broker.set_preset_cci_value(hier_name, cci::cci_value(res.value()));
                             }
                         }
-                    } else if (tag.size() && tag[0] == '!') {
+                    } else if(tag.size() && tag[0] == '!') {
                         auto param_handle = broker.get_param_handle(hier_name);
                         if(param_handle.is_valid()) {
                             auto param = param_handle.get_cci_value();

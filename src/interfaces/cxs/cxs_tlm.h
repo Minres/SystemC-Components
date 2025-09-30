@@ -141,7 +141,8 @@ struct cxs_transmitter : public sc_core::sc_module,
 
     cci::cci_param<sc_core::sc_time> clock_period{"clock_period", sc_core::SC_ZERO_TIME, "clock period of the CXS transmitter"};
 
-    scc::cci_param_restricted<unsigned> burst_len{"burst_len", 1, scc::min_restriction(1u), "minimum amount of credits to start transmitting flits, shall be larger than 0"};
+    scc::cci_param_restricted<unsigned> burst_len{"burst_len", 1, scc::min_restriction(1u),
+                                                  "minimum amount of credits to start transmitting flits, shall be larger than 0"};
 
     cxs_transmitter(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm) {
@@ -152,7 +153,7 @@ struct cxs_transmitter : public sc_core::sc_module,
         SC_METHOD(clock);
         sensitive << clk_i.pos();
         SC_METHOD(handle_received_credits);
-        sensitive<<received_credits.event();
+        sensitive << received_credits.event();
         dont_initialize();
     }
 
@@ -199,7 +200,7 @@ private:
         throw std::runtime_error("illegal request in backward path");
     }
 
-    void handle_received_credits(){
+    void handle_received_credits() {
         while(received_credits.has_next()) {
             auto crd = received_credits.get();
             available_credits += crd;
@@ -213,7 +214,7 @@ private:
             pending_pkt = nullptr;
             return;
         }
-        if((!pending_pkt && !pkt_peq.has_next()) ||                      // there are no packets to send
+        if((!pending_pkt && !pkt_peq.has_next()) ||                         // there are no packets to send
            (!burst_credits && (available_credits < burst_len.get_value()))) // we do not have enough credits to burst-send flits
             return;
         auto* ptr = cxs_flit_mm::get().allocate();
@@ -293,7 +294,8 @@ struct cxs_receiver : public sc_core::sc_module,
 
     cci::cci_param<sc_core::sc_time> clock_period{"clock_period", sc_core::SC_ZERO_TIME, "clock period of the CXS receiver"};
 
-    scc::cci_param_restricted<unsigned> max_credit{"max_credits", 1, scc::min_restriction(1u), "CXS_MAX_CREDIT property, shall be larger than 0"};
+    scc::cci_param_restricted<unsigned> max_credit{"max_credits", 1, scc::min_restriction(1u),
+                                                   "CXS_MAX_CREDIT property, shall be larger than 0"};
 
     cxs_receiver(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm) {
@@ -305,7 +307,7 @@ struct cxs_receiver : public sc_core::sc_module,
         sensitive << clk_i.pos();
         dont_initialize();
         SC_METHOD(handle_received_credits);
-        sensitive<<returned_credits.event();
+        sensitive << returned_credits.event();
         dont_initialize();
     }
 
