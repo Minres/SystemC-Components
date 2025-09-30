@@ -437,10 +437,14 @@ template <typename CFG> inline void axi::pin::axi4_target<CFG>::wdata_t() {
             // TODO: assuming consecutive write (not scattered)
             auto strobe = strb.to_uint();
             if(last) {
-                auto act_data_len = CFG::IS_LITE ? util::bit_count(strobe) : fsm_hndl->aux.i32.i0;
+                auto act_data_len = CFG::IS_LITE ? util::bit_count(strobe) : (beat_count + 1) * size;
                 gp->set_data_length(act_data_len);
-                gp->set_byte_enable_length(act_data_len);
                 gp->set_streaming_width(act_data_len);
+                if (fsm_hndl->aux.i32.i0 == act_data_len) {
+                    gp->set_byte_enable_length(0);
+                } else {
+                    gp->set_byte_enable_length(act_data_len);
+                }
             }
             auto tp = CFG::IS_LITE || this->w_last->read() ? axi::fsm::protocol_time_point_e::BegReqE
                                                            : axi::fsm::protocol_time_point_e::BegPartReqE;

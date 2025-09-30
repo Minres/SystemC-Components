@@ -1,0 +1,44 @@
+name: CI Transaction Recording
+
+on:
+  push:
+    paths:
+      - '**.cpp'
+      - '**.h'
+      - '**CMakeLists.txt'
+      - '.github/workflows/**'
+  pull_request:
+    paths:
+      - '**.cpp'
+      - '**.h'
+      - '**CMakeLists.txt'
+      - '.github/workflows/**'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cpp_std: [11, 14, 17, 20]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update submodules
+        run: git submodule update --init --recursive
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ python3-pip
+          pip3 install "conan<2.0"
+
+      - name: Configure
+        run: >
+          cmake -S . -B build
+          -DCMAKE_CXX_STANDARD=${{ matrix.cpp_std }}
+
+      - name: Build
+        run: cmake --build build -j
+
+      - name: Run transaction_recording
+        run: ./build/examples/transaction_recording/transaction_recording
