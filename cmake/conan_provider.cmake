@@ -50,6 +50,9 @@ function(detect_os os os_api_level os_sdk os_subsystem os_version)
         elseif(CMAKE_SYSTEM_NAME MATCHES "^MSYS")
             set(${os} Windows PARENT_SCOPE)
             set(${os_subsystem} msys2 PARENT_SCOPE)
+        elseif(CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
+            # https://github.com/emscripten-core/emscripten/blob/4.0.6/cmake/Modules/Platform/Emscripten.cmake#L17C1-L17C34
+            set(${os} Emscripten PARENT_SCOPE)
         else()
             set(${os} ${CMAKE_SYSTEM_NAME} PARENT_SCOPE)
         endif()
@@ -122,6 +125,10 @@ function(detect_arch arch)
         set(_arch x86)
     elseif(host_arch MATCHES "AMD64|amd64|x86_64|x64")
         set(_arch x86_64)
+    endif()
+    if(EMSCRIPTEN)
+        # https://github.com/emscripten-core/emscripten/blob/4.0.6/cmake/Modules/Platform/Emscripten.cmake#L294C1-L294C80
+        set(_arch wasm)
     endif()
     message(STATUS "CMake-Conan: cmake_system_processor=${_arch}")
     set(${arch} ${_arch} PARENT_SCOPE)
@@ -268,15 +275,15 @@ function(detect_compiler compiler compiler_version compiler_runtime compiler_run
 
     elseif(_compiler MATCHES AppleClang)
         set(_compiler "apple-clang")
-        string(REPLACE "." ";" VERSION_LIST ${CMAKE_CXX_COMPILER_VERSION})
+        string(REPLACE "." ";" VERSION_LIST ${_compiler_version})
         list(GET VERSION_LIST 0 _compiler_version)
     elseif(_compiler MATCHES Clang)
         set(_compiler "clang")
-        string(REPLACE "." ";" VERSION_LIST ${CMAKE_CXX_COMPILER_VERSION})
+        string(REPLACE "." ";" VERSION_LIST ${_compiler_version})
         list(GET VERSION_LIST 0 _compiler_version)
     elseif(_compiler MATCHES GNU)
         set(_compiler "gcc")
-        string(REPLACE "." ";" VERSION_LIST ${CMAKE_CXX_COMPILER_VERSION})
+        string(REPLACE "." ";" VERSION_LIST ${_compiler_version})
         list(GET VERSION_LIST 0 _compiler_version)
     endif()
 
@@ -454,15 +461,12 @@ endfunction()
 
 
 function(conan_install)
-    cmake_parse_arguments(ARGS conan_args ${ARGN})
-    detect_compiler(compiler compiler_version compiler_runtime compiler_runtime_type)
-    
     if(CMAKE_BUILD_TYPE)
     	set(conan_output_folder ${CMAKE_BINARY_DIR}/../conan/${CMAKE_BUILD_TYPE}/${compiler}-${compiler_version})
     else()
     	set(conan_output_folder ${CMAKE_BINARY_DIR}/../conan/Default/${compiler}-${compiler_version})
     endif()
-    
+
     # Invoke "conan install" with the provided arguments
     set(conan_args ${conan_args} -of=${conan_output_folder})
     message(STATUS "CMake-Conan: conan install ${CMAKE_SOURCE_DIR} ${conan_args} ${ARGN}")
