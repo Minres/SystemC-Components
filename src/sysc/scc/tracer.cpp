@@ -52,7 +52,6 @@ static char const* const close_db_in_eos_name = "scc_tracer.close_db_in_eos";
 
 tracer::tracer(std::string const&& name, file_type tx_type, file_type sig_type, sc_core::sc_object* top, sc_core::sc_module_name const& nm)
 : tracer_base(nm)
-, cci_broker(cci::cci_get_broker())
 , txdb(nullptr)
 , lwtr_db(nullptr)
 , owned{sig_type != NONE} {
@@ -83,7 +82,6 @@ tracer::tracer(std::string const&& name, file_type tx_type, file_type sig_type, 
 tracer::tracer(std::string const&& name, file_type tx_type, sc_core::sc_trace_file* tf, sc_core::sc_object* top,
                sc_core::sc_module_name const& nm)
 : tracer_base(nm)
-, cci_broker(cci::cci_get_broker())
 , txdb(nullptr)
 , lwtr_db(nullptr)
 , owned{false} {
