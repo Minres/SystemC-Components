@@ -88,14 +88,13 @@ initiator<DATA_WIDTH, ADDR_WIDTH>::initiator(const sc_core::sc_module_name& nm)
 }
 
 template <unsigned DATA_WIDTH, unsigned ADDR_WIDTH> inline void initiator<DATA_WIDTH, ADDR_WIDTH>::bus_task() {
-    auto& hready = PREADY_i.read();
     while(true) {
         wait(inqueue.get_event());
         while(auto trans = inqueue.get_next_transaction()) {
             auto addr_offset = trans->get_address() & (DATA_WIDTH / 8 - 1);
             auto upper = addr_offset + trans->get_data_length();
-            if(!PSTRB_o.get_interface() && addr_offset && upper != (DATA_WIDTH / 8)) {
-                SCCERR(SCMOD) << "Narrow accesses are not supported as there is no PSTRB signal! Skipping " << *trans;
+            if(!PSTRB_o.get_interface() && (addr_offset || upper != (DATA_WIDTH / 8))) {
+                SCCERR(SCMOD) << "Narrow accesses are not supported before APB4 as there is no PSTRB signal! Skipping " << *trans;
                 tlm::tlm_phase phase{tlm::END_RESP};
                 sc_core::sc_time delay;
                 trans->set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
@@ -108,43 +107,51 @@ template <unsigned DATA_WIDTH, unsigned ADDR_WIDTH> inline void initiator<DATA_W
                 tsckt->nb_transport_bw(*trans, phase, delay);
             } else {
                 SCCDEBUG(SCMOD) << "Recv beg req for read to addr 0x" << std::hex << trans->get_address() << ", starting APB setup phase, ";
-                auto bytes_exp = scc::ilog2(trans->get_data_length());
-                auto width_exp = scc::ilog2(DATA_WIDTH / 8);
-                size_t size = 0;
-                for(; size < bytes_exp; ++size)
-                    if(trans->get_address() & (1 << size))
-                        break; // i contains the first bit not being 0
                 auto* ext = trans->template get_extension<apb_extension>();
                 if(trans->is_write()) {
-                    if(upper <= DATA_WIDTH / 8) {
-                        data_t data{0};
-                        strb_t strb{0};
+                    data_t data{0};
+                    strb_t strb{0};
+                    // Handle TLM byte enables if present
+                    if(trans->get_byte_enable_ptr() && trans->get_byte_enable_length() > 0) {
+                        for(size_t i = 0; i < DATA_WIDTH / 8; ++i) {
+                            if(i >= addr_offset && i < upper) {
+                                auto be_idx = (i - addr_offset) % trans->get_byte_enable_length();
+                                if(trans->get_byte_enable_ptr()[be_idx] != 0) {
+                                    data.range(i * 8 + 7, i * 8) = *(trans->get_data_ptr() + i - addr_offset);
+                                    strb[i] = 1;
+                                }
+                            }
+                        }
+                    } else {
+                        // No byte enables, write contiguous data
                         for(size_t i = 0; i < upper; ++i) {
                             if(i >= addr_offset) {
                                 data.range(i * 8 + 7, i * 8) = *(trans->get_data_ptr() + i - addr_offset);
                                 strb[i] = 1;
                             }
                         }
-                        PWDATA_o.write(data);
-                        if(PSTRB_o.get_interface())
-                            PSTRB_o.write(strb);
                     }
+                    PWDATA_o.write(data);
+                    if(PSTRB_o.get_interface())
+                        PSTRB_o.write(strb);
+                } else if(PSTRB_o.get_interface()) {
+                    // From spec : For read transfers the bus master must drive all bits of PSTRB LOW
+                    PSTRB_o.write(0);
                 }
                 PWRITE_o.write(trans->is_write());
                 PADDR_o.write(trans->get_address() - addr_offset); // adjust address to be aligned
                 PSELx_o.write(true);
-                if(PPROT_o.get_interface() && ext)
-                    PPROT_o.write(ext ? ext->get_protection() : 0);
+                if(PPROT_o.get_interface())
+                    PPROT_o.write(ext ? ext->get_protection() : false);
                 if(PNSE_o.get_interface())
                     PNSE_o.write(ext ? ext->is_nse() : false);
                 wait(PCLK_i.posedge_event());
                 SCCDEBUG(SCMOD) << "APB setup phase finished, sending end req for access to addr 0x" << std::hex << trans->get_address();
                 tlm::tlm_phase phase{tlm::END_REQ};
                 sc_core::sc_time delay;
-                auto res = tsckt->nb_transport_bw(*trans, phase, delay);
+                tsckt->nb_transport_bw(*trans, phase, delay);
                 SCCDEBUG(SCMOD) << "Starting APB access phase";
                 PENABLE_o.write(true);
-                wait(1_ps);
                 while(!PREADY_i.read())
                     wait(PREADY_i.value_changed_event());
                 wait(PCLK_i.posedge_event());
@@ -157,10 +164,12 @@ template <unsigned DATA_WIDTH, unsigned ADDR_WIDTH> inline void initiator<DATA_W
                 phase = tlm::BEGIN_RESP;
                 delay = sc_core::SC_ZERO_TIME;
                 SCCDEBUG(SCMOD) << "Sending beg resp for access to addr 0x" << std::hex << trans->get_address();
-                res = tsckt->nb_transport_bw(*trans, phase, delay);
+                tsckt->nb_transport_bw(*trans, phase, delay);
                 SCCDEBUG(SCMOD) << "APB access phase finished";
                 PENABLE_o.write(false);
                 PSELx_o.write(false);
+                if(trans->has_mm())
+                    trans->release();
             }
         }
     }
