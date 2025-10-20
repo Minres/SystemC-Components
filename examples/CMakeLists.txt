@@ -1,6 +1,7 @@
 if(NOT USE_CWR_SYSTEMC)
 	add_subdirectory(ace-axi)
 	add_subdirectory(ace-ace)
+	add_subdirectory(apb_bfm)
 	add_subdirectory(axi-axi)
     add_subdirectory(axi4_tlm-pin-tlm)
     add_subdirectory(axi4lite_tlm-pin-tlm)
