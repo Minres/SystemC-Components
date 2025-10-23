@@ -4,10 +4,13 @@
 #include "rigtorp/SPSCQueue.h"
 #include "scc/report.h"
 #include "sysc/kernel/sc_wait.h"
+#include "util/logging.h"
 #include <atomic>
+#include <chrono>
 #include <condition_variable>
 #include <cstdint>
 #include <deque>
+#include <future>
 #include <limits>
 #include <mutex>
 #include <numeric>
@@ -24,6 +27,9 @@
 
 namespace tlm {
 namespace scc {
+
+// #define LOGTID << "[" << std::this_thread::get_id() << "]"
+#define LOGTID
 
 struct quantumkeeper : public tlm_utils::tlm_quantumkeeper {
     using base = tlm_utils::tlm_quantumkeeper;
@@ -74,6 +80,8 @@ private:
 
 struct global_time_keeper : sc_core::sc_stage_callback_if {
 
+    const sc_core::sc_time sc_time_step = 1_ms;
+
     static global_time_keeper& get() {
         static global_time_keeper keeper;
         return keeper;
@@ -82,7 +90,7 @@ struct global_time_keeper : sc_core::sc_stage_callback_if {
     size_t get_index() {
         std::unique_lock<std::mutex> lock{init_mtx};
         thread_local_times.enlarge();
-        local_times.emplace_back(std::numeric_limits<uint64_t>::max());
+        local_times.emplace_back(0); // std::numeric_limits<uint64_t>::max());
         return local_times.size() - 1;
     }
 
@@ -100,7 +108,7 @@ struct global_time_keeper : sc_core::sc_stage_callback_if {
 
     sc_core::sc_time get_min_time() { return sc_core::sc_time::from_value(get_min_time_ticks()); }
 
-    uint64_t get_sc_kernel_time_ticks() { return kernel_time_keeper.act_kernel_time.load(std::memory_order_relaxed); }
+    uint64_t get_sc_kernel_time_ticks() { return sc_kernel_time.load(std::memory_order_relaxed); }
 
     sc_core::sc_time get_sc_kernel_time() { return sc_core::sc_time::from_value(get_sc_kernel_time_ticks()); }
 
@@ -116,6 +124,7 @@ struct global_time_keeper : sc_core::sc_stage_callback_if {
 private:
     global_time_keeper()
     : t1{&global_time_keeper::run, this} {
+        t1.detach();
         sc_core::sc_register_stage_callback(*this, sc_core::SC_PRE_TIMESTEP);
         auto idx = get_index(); // assigns idx 0 to the systemc kernel
         assert(idx == 0);
@@ -123,12 +132,16 @@ private:
         opt.spawn_method();
 
         sc_core::sc_spawn(
-            []() {
-                SCCINFO(sc_core::sc_get_curr_simcontext()->get_curr_proc_info()->process_handle->basename()) << "Triggered method";
+            [this]() {
                 if(sc_core::sc_get_curr_simcontext()->pending_activity_at_current_time())
                     sc_core::next_trigger(sc_core::SC_ZERO_TIME);
                 else {
-                    sc_core::next_trigger(sc_core::sc_time_to_pending_activity(sc_core::sc_get_curr_simcontext()));
+                    auto t = sc_core::sc_time_to_pending_activity(sc_core::sc_get_curr_simcontext());
+                    auto min_time = get_min_time();
+                    auto delay = std::min(t, min_time - sc_core::sc_time_stamp());
+                    if(!delay.value()) // slow down if there is nothing to do
+                        std::this_thread::sleep_for(std::chrono::microseconds(10));
+                    sc_core::next_trigger(delay);
                 }
             },
             nullptr, &opt);
@@ -138,25 +151,52 @@ private:
 
     global_time_keeper(global_time_keeper&&) = delete;
 
+    ~global_time_keeper() {
+        stop_it.store(true, std::memory_order_acq_rel);
+        update.notify_all();
+    }
+
     void run() {
-        while(!stop_it.load(std::memory_order_relaxed)) {
-            std::unique_lock<std::mutex> lock{init_mtx};
-            update.wait(lock, [this]() -> bool { return update_it.load(std::memory_order_relaxed); });
-            bool sc_freerunning = false;
-            for(auto i = 1u; i < thread_local_times.size(); ++i) {
+        std::unique_lock<std::mutex> lock{init_mtx};
+        while(true) {
+            update.wait_for(lock, std::chrono::milliseconds(1), [this]() -> bool {
+                return update_it.load(std::memory_order_relaxed) || stop_it.load(std::memory_order_relaxed);
+            });
+            if(stop_it.load(std::memory_order_relaxed))
+                break;
+            bool sc_freerunning = true;
+            uint64_t min_local_time = std::numeric_limits<uint64_t>::max();
+            for(auto i = 0u; i < thread_local_times.size(); ++i) {
                 if(auto res = thread_local_times[i].front()) {
                     local_times[i] = *res;
                     thread_local_times[i].pop();
                 }
-                sc_freerunning &= local_times[i] == std::numeric_limits<uint64_t>::max();
+                if(i) {
+                    sc_freerunning &= local_times[i] == std::numeric_limits<uint64_t>::max();
+                    min_local_time = std::min(local_times[i], min_local_time);
+                }
             }
-            auto t = sc_freerunning ? min_time.load(std::memory_order_relaxed) + tlm::tlm_global_quantum::instance().get().value()
-                                    : *std::min_element(std::begin(local_times), std::end(local_times));
+            auto t = sc_freerunning ? min_time.load(std::memory_order_relaxed) +
+                                          std::max(tlm::tlm_global_quantum::instance().get().value(), sc_time_step.value())
+                                    : min_local_time;
             if(t < std::numeric_limits<uint64_t>::max()) {
                 min_time.store(t);
                 max_time.store(t + tlm::tlm_global_quantum::instance().get().value());
             }
             update_it.store(false, std::memory_order_acq_rel);
+        }
+    }
+
+    // will be called from SystemC thread
+    void stage_callback(const sc_core::sc_stage& stage) override {
+        sc_core::sc_time next_time;
+        if(sc_core::sc_get_curr_simcontext()->next_time(next_time)) {
+            SCCTRACEALL(__PRETTY_FUNCTION__) LOGTID << "updating sc_kernel_time " << next_time;
+            sc_kernel_time.store(next_time.value());
+            update_time_ticks(0, next_time.value());
+            while(get_min_time() < next_time) { // slow down systemc execution to be the slowest
+                std::this_thread::sleep_for(std::chrono::microseconds{1});
+            }
         }
     }
 
@@ -169,21 +209,7 @@ private:
     time_queue_array thread_local_times;
     std::vector<uint64_t> local_times;
     std::thread t1;
-    struct {
-        sc_core::sc_time local_absolute_time;
-        std::atomic<uint64_t> act_kernel_time{0};
-    } kernel_time_keeper;
-    // will be called from SystemC thread
-    void stage_callback(const sc_core::sc_stage& stage) override {
-        sc_core::sc_time next_time;
-        if(sc_core::sc_get_curr_simcontext()->next_time(next_time)) {
-            kernel_time_keeper.act_kernel_time.store(next_time.value());
-            update_time_ticks(0, next_time.value());
-            while(get_min_time() < next_time) {
-                std::this_thread::sleep_for(std::chrono::microseconds{3});
-            }
-        }
-    }
+    std::atomic<uint64_t> sc_kernel_time{0};
     std::atomic<uint64_t> sc_time{0};
 };
 
@@ -209,8 +235,8 @@ struct quantumkeeper_mt {
         assert(tid != std::this_thread::get_id());
         local_absolute_time += core_inc;
         global_time_keeper::get().update_time_ticks(gtk_idx, local_absolute_time.value());
-        // wait until the SystemC thread advanced to the same time then we are
-        while(local_absolute_time > global_time_keeper::get().get_sc_kernel_time()) {
+        // wait until the SystemC thread advanced to the same time then we are minus the global quantum
+        while(local_absolute_time > (global_time_keeper::get().get_sc_kernel_time() + tlm::tlm_global_quantum::instance().get())) {
             std::this_thread::yield(); // should do the same than __builtin_ia32_pause() or _mm_pause() on MSVC
         }
     }
