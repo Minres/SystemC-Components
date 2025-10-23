@@ -186,7 +186,7 @@ public:
         for(unsigned int i = NONE; i <= TRACE; i++)
             if(!strncasecmp(level.c_str(), (const char*)(get_log_level_cstr() + i), strlen((const char*)get_log_level_cstr() + i)))
                 return static_cast<log_level>(i);
-        Log<T>().Get(WARN) << "Unknown logging level '" << level << "'. Using INFO level as default.";
+        Log<T>().get(WARN) << "Unknown logging level '" << level << "'. Using INFO level as default.";
         return INFO;
     }
     /**

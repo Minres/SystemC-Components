@@ -18,6 +18,7 @@
 #define _SCC_TRACER_BASE_H_
 
 #include "utilities.h"
+#include <cci_configuration>
 #include <sysc/tracing/sc_trace.h>
 #include <type_traits>
 
@@ -149,6 +150,11 @@ protected:
 
     trace_types types_to_trace{trace_types::ALL};
 
+    /**
+     * The broker used by all tracer classes.
+     */
+    cci::cci_broker_handle cci_broker;
+  
     std::unique_ptr<cci::cci_param<bool>> default_trace_enable;
 };
 

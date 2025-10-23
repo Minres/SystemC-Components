@@ -165,8 +165,6 @@ protected:
     scv_tr::scv_tr_db* txdb{nullptr};
 #endif
     lwtr::tx_db* lwtr_db{nullptr};
-    //! the cci broker
-    cci::cci_broker_handle cci_broker;
     std::unique_ptr<cci::cci_param<unsigned>> tx_trace_type;
     std::unique_ptr<cci::cci_param<unsigned>> sig_trace_type;
     std::unique_ptr<cci::cci_param<bool>> close_db_in_eos;

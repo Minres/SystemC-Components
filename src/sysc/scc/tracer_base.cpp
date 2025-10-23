@@ -23,7 +23,9 @@
 
 #define SC_TRACE_NS ::scc::
 
+using namespace sc_core;
 using namespace sc_dt;
+
 namespace scc {
 using sc_trace_file = sc_core::sc_trace_file;
 using sc_object = sc_core::sc_object;
@@ -306,9 +308,9 @@ tracer_base* find_tracer_base(sc_core::sc_object* obj) {
 
 static char const* const default_trace_enable_name = "scc_tracer.default_trace_enable";
 tracer_base::tracer_base(const sc_core::sc_module_name& nm, sc_core::sc_trace_file* tf, bool owned)
-: sc_core::sc_module(nm)
-, trf(tf) {
-    auto cci_broker = cci::cci_get_broker();
+  : sc_core::sc_module(nm)
+  , cci_broker(cci::cci_get_broker())
+  , trf(tf) {
     default_trace_enable_handle = cci_broker.get_param_handle(default_trace_enable_name);
     if(!default_trace_enable_handle.is_valid()) {
         default_trace_enable = scc::make_unique<cci::cci_param<bool>>(
