@@ -186,6 +186,10 @@ struct quantumkeeper_mt {
         }
     }
 
+    inline bool execute_on_sysc(std::packaged_task<bool(void)>&& task, sc_core::sc_time when) {
+        return global_time_keeper::get().execute_on_sysc(gtk_idx, std::move(task), when);
+    }
+
     sc_core::sc_time get_local_time() const {
         assert(tid != std::this_thread::get_id());
         return sc_core::SC_ZERO_TIME;
