@@ -40,7 +40,7 @@ namespace scc {
  */
 template <class TYPE> struct peq : public sc_core::sc_object {
 
-    static_assert(std::is_copy_constructible<TYPE>::value, "TYPE needs to be copy-constructible");
+    // static_assert(std::is_copy_constructible<TYPE>::value, "TYPE needs to be copy-constructible");
 
     using pair_type = std::pair<const sc_core::sc_time, TYPE>;
     using map_type = std::map<const sc_core::sc_time, std::deque<TYPE>*>;
@@ -74,8 +74,21 @@ template <class TYPE> struct peq : public sc_core::sc_object {
      * @param entry the value to insert
      * @param t the delay for calling get
      */
-    void notify(const TYPE& entry, const sc_core::sc_time& t) {
+    void notify(TYPE const& entry, const sc_core::sc_time& t) {
         insert_entry(entry, t + sc_core::sc_time_stamp());
+        m_event.notify(m_scheduled_events.begin()->first - sc_core::sc_time_stamp());
+    }
+    /**
+     * @fn void notify(const TYPE&, const sc_core::sc_time&)
+     * @brief non-blocking push.
+     *
+     * Inserts entry into the queue with time based notification
+     *
+     * @param entry the value to insert
+     * @param t the delay for calling get
+     */
+    void notify(TYPE&& entry, const sc_core::sc_time& t) {
+        insert_entry(std::move(entry), t + sc_core::sc_time_stamp());
         m_event.notify(m_scheduled_events.begin()->first - sc_core::sc_time_stamp());
     }
     /**
@@ -87,7 +100,7 @@ template <class TYPE> struct peq : public sc_core::sc_object {
      * @param entry the value to insert
      */
     void notify(TYPE&& entry) {
-        insert_entry(entry, sc_core::sc_time_stamp());
+        insert_entry(std::move(entry), sc_core::sc_time_stamp());
         m_event.notify(); // immediate notification
     }
     /**
@@ -192,18 +205,18 @@ private:
             if(free_pool.size()) {
                 auto r = m_scheduled_events.insert(std::make_pair(abs_time, free_pool.front()));
                 free_pool.pop_front();
-                r.first->second->push_back(entry);
+                r.first->second->push_back(std::move(entry));
             } else {
                 auto r = m_scheduled_events.insert(std::make_pair(abs_time, new std::deque<TYPE>()));
-                r.first->second->push_back(entry);
+                r.first->second->push_back(std::move(entry));
             }
         } else
-            it->second->push_back(entry);
+            it->second->push_back(std::move(entry));
     }
 
     TYPE get_entry() {
         auto entry = m_scheduled_events.begin()->second;
-        auto ret = entry->front();
+        auto ret = std::move(entry->front());
         entry->pop_front();
         if(!entry->size()) {
             free_pool.push_back(entry);
