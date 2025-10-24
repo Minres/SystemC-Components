@@ -48,6 +48,7 @@ set(LIB_SOURCES
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp
     tlm/scc/lwtr/tlm2_lwtr.cpp
+    tlm/scc/quantum_keeper.cpp
 )
 
 if(ENABLE_PYTHON4SC)
