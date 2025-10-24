@@ -14,10 +14,12 @@
  * limitations under the License.
  *******************************************************************************/
 #include "report.h"
+#include "cci/cfg/cci_broker_handle.h"
 #include "configurer.h"
 #include <array>
 #include <fstream>
 #include <mutex>
+#include <optional>
 #include <spdlog/async.h>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
@@ -116,6 +118,7 @@ static struct ExtLogConfig : public scc::LogConfig {
     }
     bool initialized{false};
     std::mutex mtx;
+    std::optional<cci::cci_broker_handle> broker;
 } log_cfg;
 
 auto get_tuple(const sc_time& t) -> tuple<sc_time::value_type, sc_time_unit> {
@@ -367,6 +370,7 @@ static void configure_logging() {
     static bool spdlog_initialized = false;
     if(!log_cfg.dont_create_broker)
         scc::init_cci("SCCBroker");
+    log_cfg.broker = cci::cci_get_global_broker(originator);
     if(log_cfg.install_handler) {
         if(!log_cfg.instance_based_log_levels || getenv("SCC_DISABLE_INSTANCE_BASED_LOGGING"))
             inst_based_logging() = false;
@@ -594,7 +598,9 @@ auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
         auto* curr_object = sc_core::sc_get_current_object();
         if(strchr(str, '.') == nullptr || curr_object) {
             string current_name = std::string(str);
-            auto broker = curr_object ? cci::cci_get_broker() : cci::cci_get_global_broker(originator);
+            cci::cci_broker_handle broker = log_cfg.broker ? log_cfg.broker.value()
+                                            : curr_object  ? cci::cci_get_broker()
+                                                           : cci::cci_get_global_broker(originator);
             while(true) {
                 string param_name = (current_name.empty()) ? SCC_LOG_LEVEL_PARAM_NAME : current_name + "." SCC_LOG_LEVEL_PARAM_NAME;
                 auto h = broker.get_param_handle(param_name);
