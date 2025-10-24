@@ -51,8 +51,9 @@ template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_
      * @param nm the component name
      * @param slave_cnt number of slaves to be connected
      * @param master_cnt number of masters to be connected
+     * @param check_overlap_on_add_target if true this enables validation of overlaps when adding or setting the target range.
      */
-    router(const sc_core::sc_module_name& nm, size_t slave_cnt = 1, size_t master_cnt = 1);
+    router(const sc_core::sc_module_name& nm, size_t slave_cnt = 1, size_t master_cnt = 1, bool check_overlap_on_add_target = false);
 
     ~router() = default;
     /**
@@ -167,6 +168,12 @@ template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_
      */
     void invalidate_direct_mem_ptr(int id, ::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range);
 
+    /**
+     * @fn void end_of_elaboration()
+     * @brief tagged end of elaboration callback.
+     */
+    void end_of_elaboration() override;
+
 protected:
     struct range_entry {
         uint64_t base, size;
@@ -178,17 +185,19 @@ protected:
     std::vector<sc_core::sc_mutex> mutexes;
     util::range_lut<unsigned> addr_decoder;
     std::unordered_map<std::string, size_t> target_name_lut;
+    bool check_overlap_on_add_target;
 };
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
-router<BUSWIDTH, TARGET_SOCKET_TYPE>::router(const sc_core::sc_module_name& nm, size_t slave_cnt, size_t master_cnt)
+router<BUSWIDTH, TARGET_SOCKET_TYPE>::router(const sc_core::sc_module_name& nm, size_t slave_cnt, size_t master_cnt, bool check_overlap_on_add_target)
 : sc_module(nm)
 , target("target", master_cnt)
 , initiator("intor", slave_cnt)
 , ibases(master_cnt)
 , tranges(slave_cnt)
 , mutexes(slave_cnt)
-, addr_decoder(std::numeric_limits<unsigned>::max()) {
+, addr_decoder(std::numeric_limits<unsigned>::max())
+, check_overlap_on_add_target(check_overlap_on_add_target) {
     for(size_t i = 0; i < target.size(); ++i) {
         target[i].register_b_transport(
             [this, i](tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) -> void { this->b_transport(i, trans, delay); });
@@ -214,6 +223,8 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::set_target_range(size_t idx, uint64_t
     tranges[idx].size = size;
     tranges[idx].remap = remap;
     addr_decoder.addEntry(idx, base, size);
+    if(check_overlap_on_add_target)
+        addr_decoder.validate();
 }
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
@@ -235,6 +246,8 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::add_target_range(std::string name, ui
     tranges[idx].size = size;
     tranges[idx].remap = remap;
     addr_decoder.addEntry(idx, base, size);
+    if(check_overlap_on_add_target)
+        addr_decoder.validate();
 }
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
@@ -321,6 +334,10 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::invalidate_direct_mem_ptr(int id, ::s
     for(size_t i = 0; i < target.size(); ++i) {
         target[i]->invalidate_direct_mem_ptr(bw_start_range - ibases[i], bw_end_range - ibases[i]);
     }
+}
+template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
+void router<BUSWIDTH, TARGET_SOCKET_TYPE>::end_of_elaboration() {
+    addr_decoder.validate();
 }
 
 } // namespace scc
