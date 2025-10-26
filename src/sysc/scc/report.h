@@ -469,6 +469,9 @@ protected:
 #ifndef SCMOD
 #define SCMOD this->name()
 #endif
+#ifndef SCOBJ
+#define SCOBJ this->name()
+#endif
 /**
  * @class stream_redirection
  * @brief stream redirector
