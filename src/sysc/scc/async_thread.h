@@ -37,7 +37,7 @@ private:
         auto end_time = sc_core::sc_time::from_value(finish_time.load());
         finish_event.notify(end_time > sc_core::sc_time_stamp() ? end_time - sc_core::sc_time_stamp() : sc_core::SC_ZERO_TIME);
         active = false;
-        SCCTRACE(__PRETTY_FUNCTION__) << "Finished execution of thread";
+        SCCTRACEALL(SCOBJ) << "Finished execution of thread";
     }
     std::thread t1;
     sc_core::sc_event finish_event;
