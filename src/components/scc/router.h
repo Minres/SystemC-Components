@@ -68,7 +68,6 @@ template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_
      */
     template <typename TYPE> void bind_target(TYPE& socket, size_t idx, uint64_t base, uint64_t size, bool remap = true) {
         set_target_range(idx, base, size, remap);
-        set_target_name(idx, socket.basename());
         initiator[idx].bind(socket);
     }
     /**
@@ -81,7 +80,6 @@ template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_
      * @param name of the binding
      */
     template <typename TYPE> void bind_target(TYPE& socket, size_t idx, std::string name) {
-        set_target_name(idx, name);
         initiator[idx].bind(socket);
     }
     /**
