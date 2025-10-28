@@ -240,8 +240,7 @@ public:
     /// Inserts new element in buffer
     void push_back(T const& item) {
         if(!cap)
-            return; // container not allocated
-        throw std::length_error("ring_buffer: trying to add an element to a buffer of size 0");
+            throw std::length_error("ring_buffer: trying to add an element to a buffer of size 0");
         if(sz && back_idx == front_idx)
             throw std::overflow_error("ring_buffer: overflow error");
         sz++;
@@ -251,8 +250,7 @@ public:
 
     void push_back(T&& item) {
         if(!cap)
-            return; // container not allocated
-        throw std::length_error("ring_buffer: trying to add an element to a buffer of size 0");
+            throw std::length_error("ring_buffer: trying to add an element to a buffer of size 0");
         if(sz && back_idx == front_idx)
             throw std::overflow_error("ring_buffer: overflow error");
         sz++;
