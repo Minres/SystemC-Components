@@ -72,15 +72,7 @@ public:
      */
     void configure();
     /**
-     * dump the parameters of a design hierarchy to output stream immediately
-     *
-     * @param os the output stream, std::cout by default
-     * @param obj if not null specifies the root object of the dump
-     */
-    void dump_configuration(std::ostream& os = std::cout, bool as_yaml = true, bool with_description = false, bool complete = true,
-                            sc_core::sc_object* obj = nullptr);
-    /**
-     * schedule the dump the parameters of a design hierarchy to a file
+     * Schedule the dump of the parameters of a design hierarchy to a file
      * during start_of_simulation()
      *
      * @param file_name the output stream, std::cout by default
@@ -92,6 +84,16 @@ public:
         this->stop_list = stop_list;
         this->complete = complete;
     }
+    /**
+     * Immediately dumps the parameters of a design hierarchy to the given output stream
+     * As this dumps the parameters immediately it should only be called during start_of_simulation since
+     * many parameters are created during before_end_of_elaboration or end_of_elaboration.
+     *
+     * @param os the output stream, std::cout by default
+     * @param obj if not null specifies the root object of the dump
+     */
+    void dump_configuration(std::ostream& os = std::cout, bool as_yaml = true, bool with_description = false, bool complete = true,
+                            sc_core::sc_object* obj = nullptr);
     /**
      * set a value of some property (sc_attribute or cci_param) directly
      *
