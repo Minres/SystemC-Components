@@ -76,6 +76,10 @@ public:
      * during start_of_simulation()
      *
      * @param file_name the output stream, std::cout by default
+     * @param with_description if dumped to YAML write also the description of cci param as comments
+     * @param complete includes unused cci preset values liek log_level
+     * @param stop_list a list of hierarchy paths where dumping should stop
+     *
      */
     void dump_configuration(std::string const& file_name, bool with_description = false, bool complete = true,
                             std::vector<std::string> stop_list = std::vector<std::string>{}) {
@@ -90,6 +94,9 @@ public:
      * many parameters are created during before_end_of_elaboration or end_of_elaboration.
      *
      * @param os the output stream, std::cout by default
+     * @param as_yaml write in YAML format instead of JSON
+     * @param with_description if dumped to YAML write also the description of cci param as comments
+     * @param complete includes unused cci preset values liek log_level
      * @param obj if not null specifies the root object of the dump
      */
     void dump_configuration(std::ostream& os = std::cout, bool as_yaml = true, bool with_description = false, bool complete = true,
