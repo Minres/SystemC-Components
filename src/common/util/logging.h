@@ -85,14 +85,14 @@ inline std::istream& operator>>(std::istream& is, log_level& val) {
 inline std::string now_time();
 
 struct LoggerCallbacks {
-    using log_cb = std::function<void(std::string const&, std::string const&)>;
-    static void set_output_cb(unsigned level, log_cb cb) { get_output_cb().at(level) = cb; }
-    static log_cb& get_output_cb(unsigned level) { return get_output_cb().at(level); }
+    using log_cb = std::function<void(log_level, std::string const&, std::string const&)>;
+    static void set_output_cb(log_cb cb) { _get_output_cb() = cb; }
+    static log_cb& get_output_cb() { return _get_output_cb(); }
 
 private:
-    static std::array<log_cb, 8>& get_output_cb() {
-        static std::array<log_cb, 8> cbs;
-        return cbs;
+    static log_cb& _get_output_cb() {
+        static log_cb cb;
+        return cb;
     }
 };
 /**
@@ -112,13 +112,12 @@ public:
      */
     virtual ~Log() noexcept(false) {
         log_level lvl = get_last_log_level().load();
-        if(LoggerCallbacks::get_output_cb(lvl)) {
-            LoggerCallbacks::get_output_cb(lvl)(cat, os.str());
+        if(LoggerCallbacks::get_output_cb()) {
+            LoggerCallbacks::get_output_cb()(lvl, cat, os.str());
             return;
         }
         os << std::endl;
         T::output(os.str());
-        // TODO: use a more specific exception
         if(get_last_log_level() == FATAL && abort_on_fatal())
             abort();
     }
@@ -130,7 +129,7 @@ public:
      * @return the underlying output stream
      */
     std::ostream& get(log_level level = INFO, const char* category = "") {
-        if(LoggerCallbacks::get_output_cb(level)) {
+        if(LoggerCallbacks::get_output_cb()) {
             cat = category;
         } else {
             if(print_time())
