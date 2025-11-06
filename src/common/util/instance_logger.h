@@ -82,5 +82,8 @@ private:
 };
 } // namespace util
 
-#define ILOG(LOGGER, LEVEL, MSG) LOGGER.log(LEVEL, MSG, __LINE__, __FILE__)
+#define ILOG(LOGGER, LEVEL, MSG)                                                                                                           \
+    if(LEVEL <= this->LOGGER.get_log_level()) {                                                                                            \
+        this->LOGGER.log(LEVEL, MSG, __LINE__, __FILE__);                                                                                  \
+    }
 #endif // _ISS_LOGGER_H_
