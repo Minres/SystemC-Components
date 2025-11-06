@@ -38,6 +38,12 @@
 
 namespace util {
 
+struct LoggerDelegate {
+    using delegate_fn = void(logging::log_level, std::string const&, std::string const&, unsigned, char const*);
+    util::delegate<delegate_fn> log;
+    logging::log_level level;
+};
+
 /**
  * @brief InstanceLogger -  an instance based logger facade which falls back to the logging based global c++ logger
  *
@@ -68,12 +74,6 @@ public:
                 ::logging::Log<::logging::Output2FILE<CATEGORY>>().get(level, CATEGORY::name) << message;
         }
     }
-
-    struct LoggerDelegate {
-        using delegate_fn = void(logging::log_level, std::string const&, std::string const&, unsigned, char const*);
-        util::delegate<delegate_fn> log;
-        logging::log_level level;
-    };
 
     void set_logger(LoggerDelegate& logger) { this->logger = &logger; }
 
