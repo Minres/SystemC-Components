@@ -149,16 +149,13 @@ public:
      *
      * @return the logging level
      */
-    static std::atomic<log_level>& reporting_level() {
-        static std::atomic<log_level> reportingLevel{WARN};
-        return reportingLevel;
-    }
+    static log_level get_reporting_level() { return reporting_level().load(std::memory_order_relaxed); }
     /**
      * get a reference to the configured logging level
      *
      * @return the logging level
      */
-    static log_level get_reporting_level() { return reporting_level().load(std::memory_order_relaxed); }
+    static void set_reporting_level(log_level lvl) { reporting_level().store(lvl, std::memory_order_seq_cst); }
     /**
      * get a reference to the abort on fatal flag
      *
@@ -208,6 +205,15 @@ public:
     }
 
 protected:
+    /**
+     * get a reference to the configured logging level
+     *
+     * @return the logging level
+     */
+    static std::atomic<log_level>& reporting_level() {
+        static std::atomic<log_level> reportingLevel{WARN};
+        return reportingLevel;
+    }
     std::atomic<log_level>& get_last_log_level() {
         static std::atomic<log_level> level{TRACE};
         return level;
