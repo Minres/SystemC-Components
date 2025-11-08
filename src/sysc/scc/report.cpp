@@ -588,6 +588,39 @@ auto scc::LogConfig::installHandler(bool v) -> scc::LogConfig& {
     this->install_handler = v;
     return *this;
 }
+namespace {
+sc_core::sc_verbosity __get_log_verbosity(string current_name, char const* str, cci::cci_broker_handle const& broker) {
+    while(true) {
+        string param_name = (current_name.empty()) ? SCC_LOG_LEVEL_PARAM_NAME : current_name + "." SCC_LOG_LEVEL_PARAM_NAME;
+        auto h = broker.get_param_handle(param_name);
+        if(h.is_valid()) {
+            sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_cci_value().get_int(), verbosity.size() - 1));
+            lut.insert(str, ret);
+            return ret;
+        } else {
+            auto val = broker.get_preset_cci_value(param_name);
+            if(val.is_int()) {
+                sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size() - 1));
+                lut.insert(str, ret);
+                return ret;
+            } else {
+                if(current_name.empty()) {
+                    sc_core::sc_verbosity ret = static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
+                    lut.insert(str, ret);
+                    return ret;
+                }
+                auto pos = current_name.rfind(".");
+                if(pos == std::string::npos) {
+                    current_name = "";
+                } else {
+                    current_name = current_name.substr(0, pos);
+                }
+            }
+        }
+        return static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
+    }
+}
+} // namespace
 
 auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
     if(inst_based_logging()) {
@@ -598,37 +631,10 @@ auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
         auto* curr_object = sc_core::sc_get_current_object();
         if(strchr(str, '.') == nullptr || curr_object) {
             string current_name = std::string(str);
-            cci::cci_broker_handle broker = log_cfg.broker ? log_cfg.broker.value()
-                                            : curr_object  ? cci::cci_get_broker()
-                                                           : cci::cci_get_global_broker(originator);
-            while(true) {
-                string param_name = (current_name.empty()) ? SCC_LOG_LEVEL_PARAM_NAME : current_name + "." SCC_LOG_LEVEL_PARAM_NAME;
-                auto h = broker.get_param_handle(param_name);
-                if(h.is_valid()) {
-                    sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(h.get_cci_value().get_int(), verbosity.size() - 1));
-                    lut.insert(str, ret);
-                    return ret;
-                } else {
-                    auto val = broker.get_preset_cci_value(param_name);
-                    if(val.is_int()) {
-                        sc_core::sc_verbosity ret = verbosity.at(std::min<unsigned>(val.get_int(), verbosity.size() - 1));
-                        lut.insert(str, ret);
-                        return ret;
-                    } else {
-                        if(current_name.empty()) {
-                            sc_core::sc_verbosity ret =
-                                static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
-                            lut.insert(str, ret);
-                            return ret;
-                        }
-                        auto pos = current_name.rfind(".");
-                        if(pos == std::string::npos) {
-                            current_name = "";
-                        } else {
-                            current_name = current_name.substr(0, pos);
-                        }
-                    }
-                }
+            if(log_cfg.broker)
+                return __get_log_verbosity(current_name, str, log_cfg.broker.value());
+            else {
+                return __get_log_verbosity(current_name, str, curr_object ? cci::cci_get_broker() : cci::cci_get_global_broker(originator));
             }
         }
     }

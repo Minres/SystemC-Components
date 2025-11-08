@@ -21,7 +21,7 @@ struct async_thread : sc_core::sc_prim_channel {
     }
 
     void start(std::function<sc_core::sc_time()> const& f) {
-        SCCTRACE(__PRETTY_FUNCTION__) << "Starting new thread";
+        SCCTRACE(SCMOD) << "Starting new thread";
         t1 = std::move(std::thread([this, f]() {
             finish_time.store(f().value(), std::memory_order_acq_rel);
             async_request_update();
