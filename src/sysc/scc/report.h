@@ -361,7 +361,7 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
     : t(nullptr)
     , file(file)
     , line(line)
-    , level(verbosity) {};
+    , level(verbosity){};
 
     ScLogger() = delete;
 
