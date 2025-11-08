@@ -3,29 +3,37 @@
 #include <cstdint>
 #include <limits>
 #include <scc/report.h>
+#include <stdexcept>
 #include <sysc/kernel/sc_object.h>
 #include <sysc/kernel/sc_simcontext.h>
+#include <sysc/kernel/sc_stage_callback_if.h>
 #include <sysc/kernel/sc_time.h>
 #include <thread>
 
 namespace tlm {
 namespace scc {
-global_time_keeper::global_time_keeper()
-: t1{&global_time_keeper::sync_local_times, this} {
-    t1.detach();
-}
+///////////////////////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////////////////////
+global_time_keeper::global_time_keeper() = default;
 
 global_time_keeper::~global_time_keeper() {
+    // shutting down time keeper thread
     stop_it.store(true, std::memory_order_acq_rel);
     update.notify_all();
 }
-
+// this function will be called from the systemc thread
+void global_time_keeper::start() {
+    std::thread t{&global_time_keeper::sync_local_times, this};
+    t.detach();
+    started = true;
+}
+// this function will be called from the systemc thread
 size_t global_time_keeper::get_channel_index() {
-    std::unique_lock<std::mutex> lock{init_mtx};
-    client_coms_channels.emplace_back(client_coms_channels.size(), 3);
-    auto idx = client_coms_channels.size() - 1;
-    // the lambda will run in SystemC thread
-    return idx;
+    if(started)
+        throw std::runtime_error("global_time_keeper already started");
+    client_coms_channels.emplace_back(client_coms_channels.size());
+    return client_coms_channels.size() - 1;
 }
 
 // runs in a background thread
@@ -53,8 +61,6 @@ void global_time_keeper::sync_local_times() {
                         pending_tasks.emplace(client_coms_channel.my_id, res->time_tick, std::move(res->task));
                     }
                     client_coms_channel.client2time_keeper.pop();
-                    // if(res->task.valid())
-                    //     break;
                 }
                 all_threads_blocked &= client_coms_channel.thread_blocked;
                 min_local_time = std::min(client_coms_channel.thread_local_time, min_local_time);
@@ -83,22 +89,24 @@ void global_time_keeper::sync_local_times() {
     SCCTRACEALL("global_time_keeper::sync_local_times") << "exiting loop";
 #endif
 }
-
+///////////////////////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////////////////////
 sc_time_syncronizer::sc_time_syncronizer(global_time_keeper& gtk)
 : sc_core::sc_object("sc_time_syncronizer")
 , gtk(gtk) {
-    sc_core::sc_register_stage_callback(*this, sc_core::SC_PRE_TIMESTEP);
+    sc_core::sc_register_stage_callback(*this, sc_core::SC_PRE_TIMESTEP | sc_core::SC_POST_END_OF_ELABORATION);
     sc_core::sc_spawn_options opt;
     opt.spawn_method();
     sc_core::sc_spawn([this]() { method_callback(); }, nullptr, &opt);
 }
 
 void sc_time_syncronizer::method_callback() {
-    auto res = this->gtk.get_sc_max_time_ticks();
+    auto res = this->gtk.get_max_sc_time_ticks();
     if(res != std::numeric_limits<uint64_t>::max()) {
         sc_max_time.store(res, std::memory_order_seq_cst);
     }
-    auto& pending_tasks = this->gtk.get_pending_tasks_que();
+    auto& pending_tasks = this->gtk.pending_tasks;
     if(pending_tasks.size()) {
 #ifdef DEBUG_MT_SCHDULING
         SCCTRACEALL(__PRETTY_FUNCTION__) << "updating pending tasks";
@@ -127,26 +135,29 @@ void sc_time_syncronizer::method_callback() {
 #endif
         sc_core::next_trigger(sc_core::SC_ZERO_TIME);
     } else {
-        auto t = sc_core::sc_time_to_pending_activity(sc_core::sc_get_curr_simcontext());
-        auto next_time = t + sc_core::sc_time_stamp();
+        auto time_to_next_evt = sc_core::sc_time_to_pending_activity(sc_core::sc_get_curr_simcontext());
         auto min_time = get_min_time();
         if(!this->gtk.all_threads_blocked.load()) {
-            if(min_time < next_time) {
+            auto abs_time_to_next_evt = time_to_next_evt + sc_core::sc_time_stamp();
+            if(min_time < abs_time_to_next_evt) {
                 if(min_time > sc_core::sc_time_stamp()) {
                     sc_core::next_trigger(min_time - sc_core::sc_time_stamp());
                 } else {
-                    // slow down systemc execution to be the slowest
-                    std::this_thread::sleep_for(std::chrono::microseconds{1});
+                    // slow down systemc execution to be the slower than client threads
+                    std::this_thread::yield();
+                    // std::this_thread::sleep_for(std::chrono::microseconds{1});
                     sc_core::next_trigger(sc_core::SC_ZERO_TIME); // play it again, Sam
                 }
             } else {
 #ifdef DEBUG_MT_SCHDULING
                 SCCTRACEALL(__PRETTY_FUNCTION__) << "advancing SC time lockstepped to " << t;
 #endif
-                sc_core::next_trigger(t);
+                sc_core::next_trigger(time_to_next_evt);
             }
         } else {
-            auto delay = std::min(t, min_time - sc_core::sc_time_stamp());
+            // all threads are blocked by SystemC, so we can run freely but to avoid starving the kernel we only proceed to the
+            // time of the slowest client thread as this one is waiting to be served
+            auto delay = std::min(time_to_next_evt, min_time - sc_core::sc_time_stamp());
             if(!delay.value()) { // slow down if there is nothing to do
                 std::this_thread::yield();
                 // std::this_thread::sleep_for(std::chrono::microseconds(10));
@@ -155,15 +166,23 @@ void sc_time_syncronizer::method_callback() {
         }
     }
 }
-// will be called from SystemC thread
+
 void sc_time_syncronizer::stage_callback(const sc_core::sc_stage& stage) {
-    sc_core::sc_time next_time;
-    if(sc_core::sc_get_curr_simcontext()->next_time(next_time)) {
+    switch(stage) {
+    case sc_core::SC_PRE_TIMESTEP: {
+        sc_core::sc_time next_time;
+        if(sc_core::sc_get_curr_simcontext()->next_time(next_time)) {
+            gtk.update_sc_time_ticks(next_time.value());
+        }
         SCCTRACEALL("global_time_keeper::stage_callback")
-            << "intended update of sc_kernel_time to " << next_time << ", get_min_time()=" << get_min_time();
-        gtk.update_sc_time_ticks(next_time.value());
+            << "advancing SystemC kernel time to " << next_time << ", get_min_time()=" << get_min_time();
+    } break;
+    case sc_core::SC_POST_END_OF_ELABORATION:
+        gtk.start();
+        break;
+    default:
+        break;
     }
-    SCCTRACEALL("global_time_keeper::stage_callback") << "advancing SystemC kernel time to " << next_time;
 }
 
 } // namespace scc
