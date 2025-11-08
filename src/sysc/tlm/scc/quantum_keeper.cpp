@@ -174,8 +174,7 @@ void sc_time_syncronizer::stage_callback(const sc_core::sc_stage& stage) {
         if(sc_core::sc_get_curr_simcontext()->next_time(next_time)) {
             gtk.update_sc_time_ticks(next_time.value());
         }
-        SCCTRACEALL("global_time_keeper::stage_callback")
-            << "advancing SystemC kernel time to " << next_time << ", get_min_time()=" << get_min_time();
+        SCCTRACEALL(SCMOD) << "advancing SystemC kernel time to " << next_time << ", get_min_time()=" << get_min_time();
     } break;
     case sc_core::SC_POST_END_OF_ELABORATION:
         gtk.start();
