@@ -361,7 +361,7 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
     : t(nullptr)
     , file(file)
     , line(line)
-    , level(verbosity){};
+    , level(verbosity) {};
 
     ScLogger() = delete;
 
@@ -378,7 +378,7 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
      *
      */
     virtual ~ScLogger() noexcept(false) {
-        auto verb = ::sc_core::sc_report_handler::set_verbosity_level(1000);
+        auto verb = ::sc_core::sc_report_handler::set_verbosity_level(sc_core::SC_DEBUG);
         ::sc_core::sc_report_handler::report(SEVERITY, t ? t : "SystemC", os.str().c_str(), level, file, line);
         ::sc_core::sc_report_handler::set_verbosity_level(verb);
     }
