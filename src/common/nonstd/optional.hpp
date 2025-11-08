@@ -34,23 +34,23 @@ using std::optional;
 #include <type_traits>
 #include <utility>
 
-#if (defined(_MSC_VER) && _MSC_VER == 1900)
+#if(defined(_MSC_VER) && _MSC_VER == 1900)
 #define TL_OPTIONAL_MSVC2015
 #endif
 
-#if (defined(__GNUC__) && __GNUC__ == 4 && __GNUC_MINOR__ <= 9 && !defined(__clang__))
+#if(defined(__GNUC__) && __GNUC__ == 4 && __GNUC_MINOR__ <= 9 && !defined(__clang__))
 #define TL_OPTIONAL_GCC49
 #endif
 
-#if (defined(__GNUC__) && __GNUC__ == 5 && __GNUC_MINOR__ <= 4 && !defined(__clang__))
+#if(defined(__GNUC__) && __GNUC__ == 5 && __GNUC_MINOR__ <= 4 && !defined(__clang__))
 #define TL_OPTIONAL_GCC54
 #endif
 
-#if (defined(__GNUC__) && __GNUC__ == 5 && __GNUC_MINOR__ <= 5 && !defined(__clang__))
+#if(defined(__GNUC__) && __GNUC__ == 5 && __GNUC_MINOR__ <= 5 && !defined(__clang__))
 #define TL_OPTIONAL_GCC55
 #endif
 
-#if (defined(__GNUC__) && __GNUC__ == 4 && __GNUC_MINOR__ <= 9 && !defined(__clang__))
+#if(defined(__GNUC__) && __GNUC__ == 4 && __GNUC_MINOR__ <= 9 && !defined(__clang__))
 // GCC < 5 doesn't support overloading on const&& for member functions
 #define TL_OPTIONAL_NO_CONSTRR
 
@@ -63,7 +63,7 @@ using std::optional;
 
 // GCC 5 < v < 8 has a bug in is_trivially_copy_constructible which breaks std::vector
 // for non-copyable types
-#elif (defined(__GNUC__) && __GNUC__ < 8 && !defined(__clang__))
+#elif(defined(__GNUC__) && __GNUC__ < 8 && !defined(__clang__))
 #ifndef TL_GCC_LESS_8_TRIVIALLY_COPY_CONSTRUCTIBLE_MUTEX
 #define TL_GCC_LESS_8_TRIVIALLY_COPY_CONSTRUCTIBLE_MUTEX
 namespace nonstd {
@@ -90,7 +90,7 @@ template <class T, class A> struct is_trivially_copy_constructible<std::vector<T
 #endif
 
 // constexpr implies const in C++11, not C++14
-#if (__cplusplus == 201103L || defined(TL_OPTIONAL_MSVC2015) || defined(TL_OPTIONAL_GCC49))
+#if(__cplusplus == 201103L || defined(TL_OPTIONAL_MSVC2015) || defined(TL_OPTIONAL_GCC49))
 #define TL_OPTIONAL_11_CONSTEXPR
 #else
 #define TL_OPTIONAL_11_CONSTEXPR constexpr
@@ -137,7 +137,7 @@ template <class B, class... Bs> struct conjunction<B, Bs...> : std::conditional<
 #ifdef TL_TRAITS_LIBCXX_MEM_FN_WORKAROUND
 template <class T> struct is_pointer_to_non_const_member_func : std::false_type {};
 template <class T, class Ret, class... Args> struct is_pointer_to_non_const_member_func<Ret (T::*)(Args...)> : std::true_type {};
-template <class T, class Ret, class... Args> struct is_pointer_to_non_const_member_func<Ret (T::*)(Args...) &> : std::true_type {};
+template <class T, class Ret, class... Args> struct is_pointer_to_non_const_member_func<Ret (T::*)(Args...)&> : std::true_type {};
 template <class T, class Ret, class... Args> struct is_pointer_to_non_const_member_func<Ret (T::*)(Args...) &&> : std::true_type {};
 template <class T, class Ret, class... Args> struct is_pointer_to_non_const_member_func<Ret (T::*)(Args...) volatile> : std::true_type {};
 template <class T, class Ret, class... Args> struct is_pointer_to_non_const_member_func<Ret (T::*)(Args...) volatile&> : std::true_type {};
@@ -231,9 +231,7 @@ struct is_nothrow_swappable
 #endif
 
 // std::void_t from C++17
-template <class...> struct voider {
-    using type = void;
-};
+template <class...> struct voider { using type = void; };
 template <class... Ts> using void_t = typename voider<Ts...>::type;
 
 // Trait for checking if a type is a tl::optional
@@ -456,8 +454,8 @@ template <class T> struct optional_copy_assign_base<T, false> : optional_move_ba
 // to make do with a non-trivial move assignment operator even if T is trivially
 // move assignable
 #ifndef TL_OPTIONAL_GCC49
-template <class T, bool = std::is_trivially_destructible<T>::value && std::is_trivially_move_constructible<T>::value &&
-                          std::is_trivially_move_assignable<T>::value>
+template <class T, bool = std::is_trivially_destructible<T>::value&& std::is_trivially_move_constructible<T>::value&&
+                       std::is_trivially_move_assignable<T>::value>
 struct optional_move_assign_base : optional_copy_assign_base<T> {
     using optional_copy_assign_base<T>::optional_copy_assign_base;
 };
@@ -475,8 +473,8 @@ template <class T> struct optional_move_assign_base<T, false> : optional_copy_as
 
     optional_move_assign_base& operator=(const optional_move_assign_base& rhs) = default;
 
-    optional_move_assign_base& operator=(optional_move_assign_base&& rhs) noexcept(std::is_nothrow_move_constructible<T>::value &&
-                                                                                   std::is_nothrow_move_assignable<T>::value) {
+    optional_move_assign_base& operator=(optional_move_assign_base&& rhs) noexcept(
+        std::is_nothrow_move_constructible<T>::value&& std::is_nothrow_move_assignable<T>::value) {
         this->assign(std::move(rhs));
         return *this;
     }
@@ -1020,7 +1018,7 @@ public:
     /// If both have a value, the values are swapped.
     /// If one has a value, it is moved to the other and the movee is left
     /// valueless.
-    void swap(optional& rhs) noexcept(std::is_nothrow_move_constructible<T>::value && detail::is_nothrow_swappable<T>::value) {
+    void swap(optional& rhs) noexcept(std::is_nothrow_move_constructible<T>::value&& detail::is_nothrow_swappable<T>::value) {
         using std::swap;
         if(has_value()) {
             if(rhs.has_value()) {

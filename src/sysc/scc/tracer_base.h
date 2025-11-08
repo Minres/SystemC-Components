@@ -154,7 +154,7 @@ protected:
      * The broker used by all tracer classes.
      */
     cci::cci_broker_handle cci_broker;
-  
+
     std::unique_ptr<cci::cci_param<bool>> default_trace_enable;
 };
 

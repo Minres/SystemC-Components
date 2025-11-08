@@ -187,7 +187,8 @@ private:
     unsigned int transport_dbg(pkt_tx_type& trans) override { return 0; }
 
     tlm::tlm_sync_enum nb_transport_bw(flit_tx_type& trans, flit_phase_type& phase, sc_core::sc_time& t) override {
-        SCCTRACEALL(SCMOD) << "Received non-blocking transaction in bw path with phase " << phase.get_name() << " and command " << static_cast<unsigned>(trans.get_command());
+        SCCTRACEALL(SCMOD) << "Received non-blocking transaction in bw path with phase " << phase.get_name() << " and command "
+                           << static_cast<unsigned>(trans.get_command());
         if(phase == tlm::nw::REQUEST && trans.get_command() == cxs::CXS_CMD::CREDIT) {
             received_credits.notify(trans.get_data()[0], sc_core::SC_ZERO_TIME);
             SCCTRACE(SCMOD) << "Received " << static_cast<unsigned>(trans.get_data()[0]) << " credit(s), " << available_credits.get()
