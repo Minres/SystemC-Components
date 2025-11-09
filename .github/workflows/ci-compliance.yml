@@ -7,12 +7,14 @@ on:
       - '**.h'
       - '**CMakeLists.txt'
       - '.github/workflows/**'
+      - 'conanfile.py'
   pull_request:
     paths:
       - '**.cpp'
       - '**.h'
       - '**CMakeLists.txt'
       - '.github/workflows/**'
+      - 'conanfile.py'
 
 jobs:
   build-and-test:
