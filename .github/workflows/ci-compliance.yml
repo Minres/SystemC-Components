@@ -29,11 +29,9 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y g++ python3-pip
-          sudo -E add-apt-repository -y ppa:george-edison55/cmake-3.x
-          sudo -E apt-get update
-          sudo apt-get install cmake
+          sudo apt-get install -y g++ python3-pip cmake
           pip3 install conan
+          cmake --version
 
       - name: Configure
         run: >
