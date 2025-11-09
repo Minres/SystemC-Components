@@ -6,9 +6,7 @@ import os
 
 class Pkg(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    generators = (
-        "CMakeDeps"
-    )
+    generators = "CMakeDeps"
     default_options = {
         "systemc/*:shared": "True",
         "boost/*:fPIC": "True",
@@ -35,7 +33,7 @@ class Pkg(ConanFile):
     }
 
     def requirements(self):
-        if self.info.settings.compiler.cppstd and self.info.settings.compiler.cppstd<17:
+        if self.settings.compiler.cppstd and self.settings.compiler.cppstd < 17:
             self.requires("systemc/2.3.4")
         else:
             self.requires("systemc/3.0.1")
@@ -53,9 +51,8 @@ class Pkg(ConanFile):
 
     def layout(self):
         cmake_layout(self)
-    
+
     def generate(self):
         tc = CMakeToolchain(self)
         tc.user_presets_path = False
         tc.generate()
-        
