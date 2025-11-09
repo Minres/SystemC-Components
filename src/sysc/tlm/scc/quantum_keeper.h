@@ -26,6 +26,9 @@
 #include <tlm_core/tlm_2/tlm_quantum/tlm_global_quantum.h>
 #include <tlm_utils/tlm_quantumkeeper.h>
 
+#if SC_VERSION_MAJOR < 3
+#error "Multithreaded quantum keeper is only supported with SystemC 3.0 and newer"
+#else
 // #define DEBUG_MT_SCHDULING
 
 namespace tlm {
@@ -391,4 +394,5 @@ protected:
 };
 } // namespace scc
 } // namespace tlm
+#endif
 #endif

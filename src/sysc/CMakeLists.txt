@@ -48,9 +48,11 @@ set(LIB_SOURCES
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp
     tlm/scc/lwtr/tlm2_lwtr.cpp
-    tlm/scc/quantum_keeper.cpp
 )
 
+if(DEFINED  SC_VERSION_MAJOR AND SC_VERSION_MAJOR GREATER 2)
+    list(APPEND LIB_SOURCES tlm/scc/quantum_keeper.cpp)
+endif()
 if(ENABLE_PYTHON4SC)
     find_package(pybind11 QUIET)
     if(pybind11_NOT_FOUND)
