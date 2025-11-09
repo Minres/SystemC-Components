@@ -22,6 +22,7 @@
 #include <cstring>
 #include <iomanip>
 #include <iostream>
+#include <mutex>
 #include <sstream>
 #include <stdexcept>
 #include <sysc/kernel/sc_time.h>
@@ -310,6 +311,11 @@ log get_logging_level();
  */
 void set_cycle_base(sc_core::sc_time period);
 /**
+ * @brief a mutex needed to syncronize verbosity manipulations
+ *
+ */
+extern std::mutex verbosity_mtx;
+/**
  * @fn sc_core::sc_verbosity get_log_verbosity()
  * @brief get the global verbosity level
  *
@@ -378,6 +384,7 @@ template <sc_core::sc_severity SEVERITY> struct ScLogger {
      *
      */
     virtual ~ScLogger() noexcept(false) {
+        std::lock_guard<std::mutex> lock(verbosity_mtx);
         auto verb = ::sc_core::sc_report_handler::set_verbosity_level(sc_core::SC_DEBUG);
         ::sc_core::sc_report_handler::report(SEVERITY, t ? t : "SystemC", os.str().c_str(), level, file, line);
         ::sc_core::sc_report_handler::set_verbosity_level(verb);
