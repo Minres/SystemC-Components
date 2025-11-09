@@ -98,7 +98,7 @@ struct thread_comms_channel {
     , client2time_keeper(o.client2time_keeper.capacity())
     , time_keeper2client(o.time_keeper2client.capacity())
     , thread_local_time(o.thread_local_time)
-    , thread_blocked(o.thread_blocked) {
+    , thread_blocked(o.thread_blocked.load()) {
         assert(o.client2time_keeper.size() == 0);
         assert(o.time_keeper2client.size() == 0);
     };
@@ -108,7 +108,7 @@ struct thread_comms_channel {
 
     const uint64_t my_id;
     uint64_t thread_local_time;
-    bool thread_blocked;
+    std::atomic_bool thread_blocked;
 };
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -167,6 +167,7 @@ struct global_time_keeper {
     inline void update_time_ticks(size_t idx, uint64_t tick) {
         client_coms_channels[idx].client2time_keeper.push(std::move(comms_entry{tick, std::move(callback_task())}));
         update_it.store(true);
+        std::unique_lock<std::mutex> lk(upd_mtx);
         update.notify_all();
     }
     /**
@@ -179,6 +180,7 @@ struct global_time_keeper {
     inline void update_time_ticks(size_t idx, uint64_t tick, std::packaged_task<sc_core::sc_time(void)>&& task) {
         client_coms_channels[idx].client2time_keeper.push(std::move(comms_entry{tick, std::move(task)}));
         update_it.store(true);
+        std::unique_lock<std::mutex> lk(upd_mtx);
         update.notify_all();
     }
     /**
@@ -205,6 +207,7 @@ struct global_time_keeper {
         SCCTRACEALL("global_time_keeper::update_sc_time_ticks") << "sc_time=" << sc_core::sc_time::from_value(tick);
 #endif
         update_it.store(true);
+        std::unique_lock<std::mutex> lk(upd_mtx);
         update.notify_all();
     }
 

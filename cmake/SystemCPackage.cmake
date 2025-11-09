@@ -79,8 +79,11 @@ int sc_main(int argc, char* argv[]) {
         list(GET OUTPUT_LINES 2 SC_VERSION_PATCH)
         message(STATUS "Detected SystemC version ${SC_VERSION_MAJOR}.${SC_VERSION_MINOR}.${SC_VERSION_PATCH}")
     else()
-        #message(STATUS "COMPILE_OUTPUT:\n${COMPILE_OUTPUT}")
-        #message(STATUS "RUN_OUTPUT:\n${RUN_OUTPUT}")
+        if(NOT COMPILE_RESULT EQUAL 0)
+            message(STATUS "COMPILE_OUTPUT:\n${COMPILE_OUTPUT}")
+        elseif(NOT RUN_RESULT EQUAL 0)
+            message(STATUS "RUN_OUTPUT:\n${RUN_OUTPUT}")
+        endif()
         message(FATAL_ERROR "❌ SystemC does not compile correctly, pls check your setup or report at https://github.com/Minres/SystemC-Components/issues.")
     endif()
 ###############################################################################
