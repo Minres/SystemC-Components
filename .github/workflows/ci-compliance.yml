@@ -30,11 +30,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y cmake g++ python3-pip
-          pip3 install "conan<2.0"
+          pip3 install conan
 
       - name: Configure
         run: >
-          cmake -S . -B build
+          cmake --prefix Debug -B build
           -DCMAKE_CXX_STANDARD=${{ matrix.cpp_std }}
 
       - name: Build
