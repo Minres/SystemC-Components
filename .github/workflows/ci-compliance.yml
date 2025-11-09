@@ -1,4 +1,4 @@
-name: CI Transaction Recording
+name: CI C++ Std compliance
 
 on:
   push:
