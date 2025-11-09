@@ -35,7 +35,10 @@ class Pkg(ConanFile):
     }
 
     def requirements(self):
-        self.requires("systemc/3.0.1")
+        if self.info.settings.compiler.cppstd and self.info.settings.compiler.cppstd<17:
+            self.requires("systemc/2.3.4")
+        else:
+            self.requires("systemc/3.0.1")
         self.requires("fmt/8.0.1")
         self.requires("spdlog/1.9.2")
         self.requires("boost/1.85.0")
