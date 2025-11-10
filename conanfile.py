@@ -35,7 +35,7 @@ class Pkg(ConanFile):
     def requirements(self):
         if self.settings.compiler.cppstd:
             cppstd = str(self.settings.compiler.cppstd).replace("gnu", "")
-            if cppstd == "11" or cppstd == "14":
+            if cppstd == "11":
                 self.requires("systemc/2.3.4")
                 self.requires("catch2/3.1.0")
             elif cppstd == "14":
