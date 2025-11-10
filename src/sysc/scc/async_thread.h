@@ -1,6 +1,7 @@
 #pragma once
 
 #include <atomic>
+#include <future>
 #include <scc/report.h>
 #include <sysc/communication/sc_prim_channel.h>
 #include <sysc/kernel/sc_simcontext.h>
@@ -23,8 +24,11 @@ struct async_thread : sc_core::sc_prim_channel {
     void start(std::function<sc_core::sc_time()> const& f) {
         SCCTRACE(SCMOD) << "Starting new thread";
         t1 = std::move(std::thread([this, f]() {
-            finish_time.store(f().value(), std::memory_order_acq_rel);
-            async_request_update();
+            try {
+                finish_time.store(f().value(), std::memory_order_acq_rel);
+                async_request_update();
+            } catch(std::future_error& e) {
+            }
         }));
         active = true;
     }

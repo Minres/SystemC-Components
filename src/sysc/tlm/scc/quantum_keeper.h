@@ -244,6 +244,7 @@ protected:
  *the SystemC time keeper, a singleton in the SystemC thread
  */
 struct sc_time_syncronizer : sc_core::sc_object, sc_core::sc_stage_callback_if, sc_core::sc_process_host {
+    ~sc_time_syncronizer() = default;
     /**
      * @brief the singleton getter
      *
@@ -313,7 +314,7 @@ struct quantumkeeper_mt {
      * @brief Destroy the quantumkeeper mt object
      *
      */
-    virtual ~quantumkeeper_mt() {}
+    virtual ~quantumkeeper_mt() = default;
     /**
      * @brief increments the local time and updates the global time keeper with the new time
      *
