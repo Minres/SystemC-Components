@@ -37,14 +37,15 @@ class Pkg(ConanFile):
             cppstd = str(self.settings.compiler.cppstd).replace("gnu", "")
             if cppstd == "11" or cppstd == "14":
                 self.requires("systemc/2.3.4")
+                self.requires("catch2/3.1.0")
             else:
                 self.requires("systemc/3.0.1")
+                self.requires("catch2/3.11.0")
         else:
             self.requires("systemc/2.3.4")
         self.requires("fmt/8.0.1")
         self.requires("spdlog/1.9.2")
         self.requires("boost/1.85.0")
-        self.requires("catch2/3.11.0")
         self.requires("lz4/1.9.4")
         self.requires("yaml-cpp/0.7.0")
         self.requires("jsoncpp/1.9.5")
