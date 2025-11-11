@@ -459,7 +459,7 @@ template <typename TYPES> void tlc_recorder<TYPES>::b_transport(typename TYPES::
 template <typename TYPES> void tlc_recorder<TYPES>::b_snoop(typename TYPES::tlm_payload_type& trans, sc_core::sc_time& delay) {
     tlm_recording_payload* req{nullptr};
     if(!b_streamHandleTimed) {
-        get_fw_if()->b_transport(trans, delay);
+        get_bw_if()->b_snoop(trans, delay);
         return;
     }
     // Get a handle for the new transaction
