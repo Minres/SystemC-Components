@@ -1023,8 +1023,7 @@ void scv_tr_generator_base::_end_transaction(const scv_tr_handle& t, const scv_e
         return;
 
     if(t._scv_tr_handle_core_p->is_active == false) {
-        std::cout << "Error in scv_tr_generator_base::end_transaction, transaction "
-                     "is not active.\n";
+        SC_REPORT_WARNING("scv_tr", "Error in scv_tr_generator_base::end_transaction, transaction is not active.");
         return;
     }
 

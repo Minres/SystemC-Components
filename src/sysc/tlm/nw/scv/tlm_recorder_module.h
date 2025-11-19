@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016, 2017 MINRES Technologies GmbH
+ * Copyright 2016, 2025 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef TLM2_RECORDER_MODULE_H_
-#define TLM2_RECORDER_MODULE_H_
-
+#ifndef TLM_NW_SCV_TLM_RECORDER_MODULE_H
+#define TLM_NW_SCV_TLM_RECORDER_MODULE_H
 #include "tlm/nw/tlm_network_sockets.h"
 #include "tlm_recorder.h"
 #include <tlm_utils/simple_initiator_socket.h>
@@ -77,4 +76,4 @@ private:
 } // namespace nw
 } // namespace tlm
 
-#endif /* TLM2_RECORDER_MODULE_H_ */
+#endif /* TLM_NW_SCV_TLM_RECORDER_MODULE_H */
