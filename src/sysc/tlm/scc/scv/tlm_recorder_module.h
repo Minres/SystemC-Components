@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef TLM2_RECORDER_MODULE_H_
-#define TLM2_RECORDER_MODULE_H_
+#ifndef TLM_SCC_SCV_RECORDER_MODULE_H_
+#define TLM_SCC_SCV_RECORDER_MODULE_H_
 
 #include <tlm/scc/scv/tlm_recorder.h>
 #include <tlm_utils/simple_initiator_socket.h>
@@ -80,4 +80,4 @@ private:
 } // namespace scc
 } // namespace tlm
 
-#endif /* TLM2_RECORDER_MODULE_H_ */
+#endif /* TLM_SCC_SCV_RECORDER_MODULE_H_ */

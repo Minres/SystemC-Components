@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016-2022 MINRES Technologies GmbH
+ * Copyright 2016-2025 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef TLM_CXS_RECORDER_H_
-#define TLM_CXS_RECORDER_H_
+#ifndef _CXS_SCV_RECORDER_H_
+#define _CXS_SCV_RECORDER_H_
 
 #include <cxs/cxs_tlm.h>
 #include <tlm/nw/scv/tlm_recorder.h>
@@ -28,7 +28,6 @@
 #define SCVNS ::scv_tr::
 #endif
 #endif
-
 //! @brief SystemC TLM
 namespace tlm {
 //! @brief SCC TLM utilities
@@ -36,7 +35,7 @@ namespace nw {
 //! @brief SCC SCV4TLM classes and functions
 namespace scv {
 
-template <> void record(SCVNS scv_tr_handle& handle, cxs::cxs_flit_payload const& o) {
+template <> inline void record(SCVNS scv_tr_handle& handle, cxs::cxs_flit_payload const& o) {
     static const std::array<std::string, 3> cmd2char{{"FLIT", "CREDIT", "CRDRTN"}};
     handle.record_attribute("flit.ptr", reinterpret_cast<uintptr_t>(&o));
     handle.record_attribute("flit.type", cmd2char.at(static_cast<unsigned>(o.get_command())));
@@ -47,8 +46,11 @@ template <> void record(SCVNS scv_tr_handle& handle, cxs::cxs_flit_payload const
     handle.record_attribute("flit.end_error", o.end_error);
     handle.record_attribute("flit.last", o.last);
 }
+
+template <> inline void record(SCVNS scv_tr_handle& handle, ::cxs::cxs_packet_payload const& o) {
+}
 } // namespace scv
 } // namespace nw
 } // namespace tlm
 
-#endif /* TLM2_RECORDER_H_ */
+#endif /* _CXS_SCV_RECORDER_H_ */
