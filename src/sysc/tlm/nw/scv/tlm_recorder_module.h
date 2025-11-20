@@ -54,23 +54,20 @@ public:
      * scv_tr_db::set_default_db() ) recording is disabled.
      */
     tlm_recorder_module(sc_core::sc_module_name name, bool recording_enabled = true,
-                        SCVNS scv_tr_db* tr_db = SCVNS scv_tr_db::get_default_db())
-    : sc_module(name) {
-        recorder.reset(
-            new tlm_recorder<TYPES>(sc_core::sc_object::name(), is.get_base_port(), ts.get_base_port(), recording_enabled, tr_db));
+            SCVNS scv_tr_db* tr_db = SCVNS scv_tr_db::get_default_db())
+    : sc_module(name)
+    , recorder(sc_core::sc_object::name(), is.get_base_port(), ts.get_base_port(), recording_enabled, tr_db){
         // bind the sockets to the module
-        is.bind(*recorder);
-        ts.bind(*recorder);
+        is.bind(recorder);
+        ts.bind(recorder);
     }
-
-    sc_core::sc_attribute<bool> enableTimedTracing() { return recorder->enableBlTracing; }
 
     virtual ~tlm_recorder_module() {}
 
-    std::unique_ptr<tlm_recorder<TYPES>> recorder;
+    tlm_recorder<TYPES> recorder;
 
 private:
-    void start_of_simulation() override { recorder->initialize_streams(); }
+    void start_of_simulation() override { recorder.initialize_streams(); }
 };
 } // namespace scv
 } // namespace nw
