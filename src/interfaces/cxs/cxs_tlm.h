@@ -386,18 +386,18 @@ struct cxs_channel : public sc_core::sc_module,
     using transaction_type = cxs_flit_types::tlm_payload_type;
     using phase_type = cxs_flit_types::tlm_phase_type;
 
-    sc_core::sc_in<bool> tx_clk_i{"tx_clk_i"};
+    sc_core::sc_in<bool> rx_clk_i{"rx_clk_i"};
 
     cxs_flit_target_socket<PHITWIDTH> tsck{"tsck"};
 
-    sc_core::sc_in<bool> rx_clk_i{"rx_clk_i"};
+    sc_core::sc_in<bool> tx_clk_i{"tx_clk_i"};
 
     cxs_flit_initiator_socket<PHITWIDTH> isck{"isck"};
 
     cci::cci_param<sc_core::sc_time> channel_delay{"channel_delay", sc_core::SC_ZERO_TIME, "delay of the CXS channel"};
 
     cci::cci_param<sc_core::sc_time> tx_clock_period{"tx_clock_period", sc_core::SC_ZERO_TIME,
-                                                     "receiver side clock period of the CXS channel"};
+                                                     "transmitter side clock period of the CXS channel"};
 
     cci::cci_param<sc_core::sc_time> rx_clock_period{"rx_clock_period", sc_core::SC_ZERO_TIME,
                                                      "receiver side clock period of the CXS channel"};
@@ -423,7 +423,11 @@ struct cxs_channel : public sc_core::sc_module,
                 SCCERR(SCMOD) << "A CXS flit can be maximal " << PHITWIDTH / 8 << " bytes long, current data length is "
                               << trans.get_data().size() << " bytes";
             }
-            fw_peq.notify(cxs_flit_shared_ptr(&trans), channel_delay.get_value());
+            if(tx_clock_period.get_value().value()) {
+                auto exit_cycle = (sc_core::sc_time_stamp().value()+channel_delay.get_value().value())/tx_clock_period.get_value().value() + 1;
+                fw_peq.notify(cxs_flit_shared_ptr(&trans), tx_clock_period.get_value()*exit_cycle-sc_core::sc_time_stamp());
+            } else
+                fw_peq.notify(cxs_flit_shared_ptr(&trans), channel_delay.get_value());
             if(rx_clock_period.get_value() > sc_core::SC_ZERO_TIME)
                 t += rx_clock_period - 1_ps;
             phase = tlm::nw::CONFIRM;
@@ -439,7 +443,11 @@ struct cxs_channel : public sc_core::sc_module,
         SCCTRACEALL(SCMOD) << "Received non-blocking transaction in bw path with phase " << phase.get_name();
         if(phase == tlm::nw::REQUEST) { // this is a credit
             SCCTRACE(SCMOD) << "Forwarding " << static_cast<unsigned>(trans.get_data()[0]) << " credit(s)";
-            bw_peq.notify(cxs_flit_shared_ptr(&trans), channel_delay.get_value());
+            if(rx_clock_period.get_value().value()) {
+                auto exit_cycle = (sc_core::sc_time_stamp().value()+channel_delay.get_value().value())/rx_clock_period.get_value().value() + 1;
+                bw_peq.notify(cxs_flit_shared_ptr(&trans), rx_clock_period.get_value()*exit_cycle-sc_core::sc_time_stamp());
+            } else
+                bw_peq.notify(cxs_flit_shared_ptr(&trans), channel_delay.get_value());
             if(tx_clock_period.get_value() > sc_core::SC_ZERO_TIME)
                 t += tx_clock_period - 1_ps;
             phase = tlm::nw::CONFIRM;
@@ -464,6 +472,12 @@ private:
     }
 
     void fw() {
+        auto cur_cycle = sc_core::sc_time_stamp()/tx_clock_period.get_value();
+        if(fw_resp.triggered() && tx_clock_period.get_value().value()) {
+            auto next_cycle = sc_core::sc_time_stamp().value()/tx_clock_period.get_value().value() + 1;
+            next_trigger(tx_clock_period.get_value()*next_cycle-sc_core::sc_time_stamp());
+            return;
+        }
         while(fw_peq.has_next()) {
             auto ptr = fw_peq.get();
             auto phase = tlm::nw::INDICATION;
@@ -474,12 +488,19 @@ private:
                 return;
             } else {
                 sc_assert(sync == tlm::TLM_UPDATED || sync == tlm::TLM_COMPLETED);
+                next_trigger(tx_clock_period.get_value());
+                return;
             }
         }
         next_trigger(fw_peq.event());
     }
 
     void bw() {
+        if(bw_resp.triggered() && rx_clock_period.get_value().value()) {
+            auto next_cycle = sc_core::sc_time_stamp().value()/rx_clock_period.get_value().value() + 1;
+            next_trigger(rx_clock_period.get_value()*next_cycle-sc_core::sc_time_stamp());
+            return;
+        }
         while(bw_peq.has_next()) {
             auto ptr = bw_peq.get();
             auto ph{tlm::nw::REQUEST};
@@ -490,6 +511,8 @@ private:
                 return;
             } else {
                 sc_assert(sync == tlm::TLM_UPDATED || sync == tlm::TLM_COMPLETED);
+                next_trigger(rx_clock_period.get_value());
+                return;
             }
         }
         next_trigger(bw_peq.event());
@@ -501,4 +524,26 @@ private:
 };
 
 } // namespace cxs
+
+#ifdef HAS_SCV
+#include <scv.h>
+#ifndef SCVNS
+#define SCVNS
+#endif
+#else
+#include <scv-tr.h>
+#ifndef SCVNS
+#define SCVNS ::scv_tr::
+#endif
+#endif
+namespace tlm {
+//! @brief SCC TLM utilities
+namespace nw {
+//! @brief SCC SCV4TLM classes and functions
+namespace scv {
+
+void record(SCVNS scv_tr_handle& handle, cxs::cxs_flit_payload const& o);
+}
+}
+}
 #endif // _CXS_CXS_TLM_H_
