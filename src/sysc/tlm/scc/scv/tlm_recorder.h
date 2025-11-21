@@ -28,6 +28,14 @@
 #include <tlm>
 #include <tlm_utils/peq_with_cb_and_phase.h>
 #include <unordered_map>
+#ifdef HAS_SCV
+#include <scv.h>
+#else
+#include <scv-tr.h>
+#ifndef SCVNS
+#define SCVNS ::scv_tr::
+#endif
+#endif
 
 //! @brief SystemC TLM
 namespace tlm {
