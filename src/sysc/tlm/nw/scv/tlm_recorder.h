@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef TLM_NW_RECORDER_H_
-#define TLM_NW_RECORDER_H_
+#ifndef _TLM_NW_SCV_RECORDER_H_
+#define _TLM_NW_SCV_RECORDER_H_
 
 #include "tlm/scc/scv/tlm_recorder.h"
 #include <cci/cfg/cci_param_typed.h>
@@ -28,14 +28,6 @@
 #include <tlm/scc/scv/tlm_recording_extension.h>
 #include <tlm/scc/tlm_mm.h>
 #include <tlm_utils/peq_with_cb_and_phase.h>
-#ifdef HAS_SCV
-#include <scv.h>
-#else
-#include <scv-tr.h>
-#ifndef SCVNS
-#define SCVNS ::scv_tr::
-#endif
-#endif
 
 //! @brief SystemC TLM
 namespace tlm {
@@ -44,9 +36,10 @@ namespace nw {
 //! @brief SCC SCV4TLM classes and functions
 namespace scv {
 
-template <typename T> void record(SCVNS scv_tr_handle&, T const&) {}
+//template <typename T> void record(SCVNS scv_tr_handle&, T const&) {}
 inline void record(SCVNS scv_tr_handle& h, tlm::tlm_phase const& e) { ::tlm::scc::scv::record(h, e); }
 inline void record(SCVNS scv_tr_handle& h, tlm::tlm_sync_enum e) { ::tlm::scc::scv::record(h, e); }
+void record(SCVNS scv_tr_handle& handle, tlm::nw::tlm_network_payload_base& o);
 
 namespace impl {
 template <typename TYPES> class tlm_recording_payload : public TYPES::tlm_payload_type {
@@ -556,4 +549,4 @@ template <typename TYPES> unsigned int tlm_recorder<TYPES>::transport_dbg(payloa
 } // namespace nw
 } // namespace tlm
 
-#endif /* TLM2_RECORDER_H_ */
+#endif /* _TLM_NW_SCV_RECORDER_H_ */

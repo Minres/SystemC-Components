@@ -35,7 +35,7 @@ namespace nw {
 //! @brief SCC SCV4TLM classes and functions
 namespace scv {
 
-void record(SCVNS scv_tr_handle& handle, cxs::cxs_flit_payload const& o) {
+inline void record(SCVNS scv_tr_handle& handle, cxs::cxs_flit_payload const& o) {
     static const std::array<std::string, 3> cmd2char{{"FLIT", "CREDIT", "CRDRTN"}};
     handle.record_attribute("flit.ptr", reinterpret_cast<uintptr_t>(&o));
     handle.record_attribute("flit.type", cmd2char.at(static_cast<unsigned>(o.get_command())));
@@ -47,7 +47,7 @@ void record(SCVNS scv_tr_handle& handle, cxs::cxs_flit_payload const& o) {
     handle.record_attribute("flit.last", o.last);
 }
 
-template <> inline void record(SCVNS scv_tr_handle& handle, ::cxs::cxs_packet_payload const& o) {
+inline void record(SCVNS scv_tr_handle& handle, ::cxs::cxs_packet_payload const& o) {
 }
 } // namespace scv
 } // namespace nw
