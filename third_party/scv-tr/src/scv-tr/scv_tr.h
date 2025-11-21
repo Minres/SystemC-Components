@@ -341,6 +341,8 @@ public:
     //
     void end_transaction() { this->_end_transaction(NULL, sc_core::sc_time_stamp()); }
 
+    void end_transaction(sc_core::sc_time t) { this->_end_transaction(NULL, t); }
+
     // End this transaction at the current simulation time, and specify the
     // values of the end attributes.
     //
