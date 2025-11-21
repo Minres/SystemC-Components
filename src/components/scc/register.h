@@ -22,6 +22,7 @@
 
 #include "resetable.h"
 #include "resource_access_if.h"
+#include "scc/report.h"
 #include <cci_configuration>
 #include <scc/traceable.h>
 #include <scc/tracer_base.h>
@@ -146,7 +147,7 @@ public:
      * @return true if access is successful
      */
     bool write(const uint8_t* data, size_t length, uint64_t offset, sc_core::sc_time& d) override {
-        assert("Access out of range" && offset + length <= sizeof(DATATYPE));
+        SCC_ASSERT("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
         auto beg = reinterpret_cast<uint8_t*>(&temp) + offset;
         std::copy(data, data + length, beg);
@@ -167,7 +168,7 @@ public:
      * @return true if access is successful
      */
     bool read(uint8_t* data, size_t length, uint64_t offset, sc_core::sc_time& d) const override {
-        assert("Access out of range" && offset + length <= sizeof(DATATYPE));
+        SCC_ASSERT("Access out of range" && offset + length <= sizeof(DATATYPE));
         auto temp(storage);
         if(rd_cb) {
             if(!rd_cb(*this, temp, d))
@@ -190,7 +191,7 @@ public:
      * @return true if access is successful
      */
     bool write_dbg(const uint8_t* data, size_t length, uint64_t offset = 0) override {
-        assert("Offset out of range" && offset == 0);
+        SCC_ASSERT("Offset out of range" && offset == 0);
         if(length != sizeof(DATATYPE))
             return false;
         storage = *reinterpret_cast<const DATATYPE*>(data);
@@ -208,7 +209,7 @@ public:
      * @return true if access is successful
      */
     bool read_dbg(uint8_t* data, size_t length, uint64_t offset = 0) const override {
-        assert("Offset out of range" && offset == 0);
+        SCC_ASSERT("Offset out of range" && offset == 0);
         if(length != sizeof(DATATYPE))
             return false;
         *reinterpret_cast<DATATYPE*>(data) = storage;
