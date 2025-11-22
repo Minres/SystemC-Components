@@ -262,7 +262,10 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
         return;
     if(rep.get_severity() == sc_core::SC_INFO || !log_cfg.report_only_first_error || sc_report_handler::get_count(SC_ERROR) < 2) {
         if((actions & SC_DISPLAY) && (!log_cfg.file_logger || rep.get_verbosity() < SC_HIGH))
-            log2logger(*log_cfg.console_logger, rep, log_cfg);
+            try {
+                log2logger(*log_cfg.console_logger, rep, log_cfg);
+            } catch(spdlog::spdlog_ex e) {
+            }
         if((actions & SC_LOG) && log_cfg.file_logger) {
             scc::LogConfig lcfg(log_cfg);
             lcfg.print_sim_time = true;
@@ -272,23 +275,35 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
         }
     }
     if(actions & SC_STOP) {
-        flush_loggers();
+        try {
+            flush_loggers();
+        } catch(spdlog::spdlog_ex e) {
+        }
         if(sc_is_running() && !sc_stop_called) {
             sc_stop();
             sc_stop_called = true;
         }
     }
     if(actions & SC_ABORT) {
-        flush_loggers();
+        try {
+            flush_loggers();
+        } catch(spdlog::spdlog_ex e) {
+        }
         spdlog::shutdown();
         abort();
     }
     if(actions & SC_THROW) {
-        flush_loggers();
+        try {
+            flush_loggers();
+        } catch(spdlog::spdlog_ex e) {
+        }
         throw rep;
     }
     if(sc_time_stamp().value() && !sc_is_running()) {
-        flush_loggers();
+        try {
+            flush_loggers();
+        } catch(spdlog::spdlog_ex e) {
+        }
     }
 }
 } // namespace
