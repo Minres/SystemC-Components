@@ -388,7 +388,13 @@ struct quantumkeeper_mt {
      * @brief resets the local time of this thread to the SystemC kernel time
      *
      */
-    void reset() { local_absolute_time = get_current_sc_time(); }
+    void reset() { reset(get_current_sc_time()); }
+    /**
+     * @brief esets the local time of this thread to the given absolute time
+     *
+     * @param abs_time the absolute time to set
+     */
+    void reset(sc_core::sc_time abs_time) { local_absolute_time = abs_time; }
 
 protected:
     size_t gtk_idx;
