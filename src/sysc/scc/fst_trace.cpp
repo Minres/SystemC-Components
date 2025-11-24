@@ -448,7 +448,9 @@ void fst_trace_file::init() {
     triggered_traces.reserve(all_traces.size());
 }
 
+#if SC_VERSION_MAJOR >= 3
 void fst_trace_file::stage_callback(const sc_core::sc_stage& stage) { cycle(false); }
+#endif
 
 void fst_trace_file::cycle(bool delta_cycle) {
     if(delta_cycle)
