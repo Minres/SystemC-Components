@@ -79,7 +79,7 @@ static class {
 
 public:
     std::tuple<bool, sc_core::sc_verbosity> get(char const* key) {
-        std::scoped_lock<std::mutex> lock(mtx);
+        std::lock_guard<std::mutex> lock(mtx);
         auto it = table.find(key);
         if(it != table.end())
             return {true, it->second};
@@ -87,12 +87,12 @@ public:
             return {false, sc_core::SC_DEBUG};
     }
     void insert(char const* key, sc_core::sc_verbosity verb) {
-        std::scoped_lock<std::mutex> lock(mtx);
+        std::lock_guard<std::mutex> lock(mtx);
         cache.push_back(key);
         table.insert({cache.back().c_str(), verb});
     }
     void clear() {
-        std::scoped_lock<std::mutex> lock(mtx);
+        std::lock_guard<std::mutex> lock(mtx);
         table.clear();
         cache.clear();
     }
