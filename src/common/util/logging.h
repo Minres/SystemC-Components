@@ -297,7 +297,7 @@ struct DEFAULT {
 // the one argument version
 #define CPPLOG1(LEVEL)                                                                                                                     \
     if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                                        \
-    LOGGER(DEFAULT)().get(::logging::LEVEL, __FUNCTION__)
+    LOGGER(DEFAULT)().get(::logging::LEVEL, __PRETTY_FUNCTION__)
 // the two argument version
 #define CPPLOG2(LEVEL, TYPE)                                                                                                               \
     if(::logging::LEVEL <= LOGGER(DEFAULT)::get_reporting_level() && LOG_OUTPUT(DEFAULT)::stream())                                        \

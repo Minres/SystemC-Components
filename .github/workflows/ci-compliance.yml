@@ -1,4 +1,4 @@
-name: CI Transaction Recording
+name: CI C++ Std compliance
 
 on:
   push:
@@ -7,12 +7,14 @@ on:
       - '**.h'
       - '**CMakeLists.txt'
       - '.github/workflows/**'
+      - 'conanfile.py'
   pull_request:
     paths:
       - '**.cpp'
       - '**.h'
       - '**CMakeLists.txt'
       - '.github/workflows/**'
+      - 'conanfile.py'
 
 jobs:
   build-and-test:
@@ -29,12 +31,13 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake g++ python3-pip
-          pip3 install "conan<2.0"
+          sudo apt-get install -y g++ python3-pip cmake
+          pip3 install conan
+          cmake --version
 
       - name: Configure
         run: >
-          cmake -S . -B build
+          cmake --preset Debug -B build
           -DCMAKE_CXX_STANDARD=${{ matrix.cpp_std }}
 
       - name: Build
