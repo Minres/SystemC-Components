@@ -36,7 +36,7 @@ namespace nw {
 //! @brief SCC SCV4TLM classes and functions
 namespace scv {
 
-//template <typename T> void record(SCVNS scv_tr_handle&, T const&) {}
+// template <typename T> void record(SCVNS scv_tr_handle&, T const&) {}
 inline void record(SCVNS scv_tr_handle& h, tlm::tlm_phase const& e) { ::tlm::scc::scv::record(h, e); }
 inline void record(SCVNS scv_tr_handle& h, tlm::tlm_sync_enum e) { ::tlm::scc::scv::record(h, e); }
 void record(SCVNS scv_tr_handle& handle, tlm::nw::tlm_network_payload_base& o);
@@ -354,7 +354,7 @@ template <typename TYPES> void tlm_recorder<TYPES>::b_transport(payload_type& tr
     // and now the stuff for the timed tx
     if(b_streamHandleTimed) {
         record(bh, trans);
-        b_trTimedHandle[static_cast<unsigned>(trans.get_command())]->end_transaction(bh, sc_core::sc_time_stamp()+ delay);
+        b_trTimedHandle[static_cast<unsigned>(trans.get_command())]->end_transaction(bh, sc_core::sc_time_stamp() + delay);
     }
 }
 
@@ -429,14 +429,15 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(payload_type& trans, typ
         if(nb_streamHandleTimed) {
             if(trans.get_command() == cxs::CXS_CMD::FLIT) {
                 record(bh, trans);
-                nb_trTimedHandle[static_cast<unsigned>(trans.get_command())]->end_transaction(bh, sc_core::sc_time_stamp()+ delay);
+                nb_trTimedHandle[static_cast<unsigned>(trans.get_command())]->end_transaction(bh, sc_core::sc_time_stamp() + delay);
             } else {
                 auto it = pending_fw_resp.find(&trans);
-                if(it!=pending_fw_resp.end()) {
-                    nb_trTimedHandle[static_cast<unsigned>(trans.get_command())]->end_transaction(it->second, sc_core::sc_time_stamp()+ delay);
+                if(it != pending_fw_resp.end()) {
+                    nb_trTimedHandle[static_cast<unsigned>(trans.get_command())]->end_transaction(it->second,
+                                                                                                  sc_core::sc_time_stamp() + delay);
                     pending_fw_resp.erase(it);
                 } else {
-                    SCCWARN(fixed_basename.c_str())<<"Could not find entry in pending_bw_resp";
+                    SCCWARN(fixed_basename.c_str()) << "Could not find entry in pending_bw_resp";
                 }
             }
         }
@@ -516,14 +517,15 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(payload_type& trans, typ
         if(nb_streamHandleTimed) {
             if(trans.get_command() != cxs::CXS_CMD::FLIT) {
                 record(bh, trans);
-                nb_trTimedHandle[static_cast<unsigned>(trans.get_command())]->end_transaction(bh, sc_core::sc_time_stamp()+ delay);
+                nb_trTimedHandle[static_cast<unsigned>(trans.get_command())]->end_transaction(bh, sc_core::sc_time_stamp() + delay);
             } else {
                 auto it = pending_bw_resp.find(&trans);
-                if(it!=pending_bw_resp.end()) {
-                    nb_trTimedHandle[static_cast<unsigned>(trans.get_command())]->end_transaction(it->second, sc_core::sc_time_stamp()+ delay);
+                if(it != pending_bw_resp.end()) {
+                    nb_trTimedHandle[static_cast<unsigned>(trans.get_command())]->end_transaction(it->second,
+                                                                                                  sc_core::sc_time_stamp() + delay);
                     pending_bw_resp.erase(it);
                 } else {
-                    SCCWARN(fixed_basename.c_str())<<"Could not find entry in pending_bw_resp";
+                    SCCWARN(fixed_basename.c_str()) << "Could not find entry in pending_bw_resp";
                 }
             }
         }

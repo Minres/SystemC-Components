@@ -425,8 +425,9 @@ struct cxs_channel : public sc_core::sc_module,
                               << trans.get_data().size() << " bytes";
             }
             if(tx_clock_period.get_value().value()) {
-                auto exit_cycle = (sc_core::sc_time_stamp().value()+channel_delay.get_value().value())/tx_clock_period.get_value().value() + 1;
-                fw_peq.notify(cxs_flit_shared_ptr(&trans), tx_clock_period.get_value()*exit_cycle-sc_core::sc_time_stamp());
+                auto exit_cycle =
+                    (sc_core::sc_time_stamp().value() + channel_delay.get_value().value()) / tx_clock_period.get_value().value() + 1;
+                fw_peq.notify(cxs_flit_shared_ptr(&trans), tx_clock_period.get_value() * exit_cycle - sc_core::sc_time_stamp());
             } else
                 fw_peq.notify(cxs_flit_shared_ptr(&trans), channel_delay.get_value());
             if(rx_clock_period.get_value() > sc_core::SC_ZERO_TIME)
@@ -445,8 +446,9 @@ struct cxs_channel : public sc_core::sc_module,
         if(phase == tlm::nw::REQUEST) { // this is a credit
             SCCTRACE(SCMOD) << "Forwarding " << static_cast<unsigned>(trans.get_data()[0]) << " credit(s)";
             if(rx_clock_period.get_value().value()) {
-                auto exit_cycle = (sc_core::sc_time_stamp().value()+channel_delay.get_value().value())/rx_clock_period.get_value().value() + 1;
-                bw_peq.notify(cxs_flit_shared_ptr(&trans), rx_clock_period.get_value()*exit_cycle-sc_core::sc_time_stamp());
+                auto exit_cycle =
+                    (sc_core::sc_time_stamp().value() + channel_delay.get_value().value()) / rx_clock_period.get_value().value() + 1;
+                bw_peq.notify(cxs_flit_shared_ptr(&trans), rx_clock_period.get_value() * exit_cycle - sc_core::sc_time_stamp());
             } else
                 bw_peq.notify(cxs_flit_shared_ptr(&trans), channel_delay.get_value());
             if(tx_clock_period.get_value() > sc_core::SC_ZERO_TIME)
@@ -473,10 +475,10 @@ private:
     }
 
     void fw() {
-        auto cur_cycle = sc_core::sc_time_stamp()/tx_clock_period.get_value();
+        auto cur_cycle = sc_core::sc_time_stamp() / tx_clock_period.get_value();
         if(fw_resp.triggered() && tx_clock_period.get_value().value()) {
-            auto next_cycle = sc_core::sc_time_stamp().value()/tx_clock_period.get_value().value() + 1;
-            next_trigger(tx_clock_period.get_value()*next_cycle-sc_core::sc_time_stamp());
+            auto next_cycle = sc_core::sc_time_stamp().value() / tx_clock_period.get_value().value() + 1;
+            next_trigger(tx_clock_period.get_value() * next_cycle - sc_core::sc_time_stamp());
             return;
         }
         while(fw_peq.has_next()) {
@@ -498,8 +500,8 @@ private:
 
     void bw() {
         if(bw_resp.triggered() && rx_clock_period.get_value().value()) {
-            auto next_cycle = sc_core::sc_time_stamp().value()/rx_clock_period.get_value().value() + 1;
-            next_trigger(rx_clock_period.get_value()*next_cycle-sc_core::sc_time_stamp());
+            auto next_cycle = sc_core::sc_time_stamp().value() / rx_clock_period.get_value().value() + 1;
+            next_trigger(rx_clock_period.get_value() * next_cycle - sc_core::sc_time_stamp());
             return;
         }
         while(bw_peq.has_next()) {
@@ -545,6 +547,6 @@ namespace scv {
 
 void record(SCVNS scv_tr_handle& handle, cxs::cxs_flit_payload const& o);
 }
-}
-}
+} // namespace nw
+} // namespace tlm
 #endif // _CXS_CXS_TLM_H_

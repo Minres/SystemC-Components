@@ -16,15 +16,15 @@
 
 #ifndef CXS_SCV_TLM_RECORDER_MODULE_H
 #define CXS_SCV_TLM_RECORDER_MODULE_H
-#include <cxs/cxs_tlm.h>
 #include "tlm/nw/scv/tlm_recorder_module.h"
 #include "tlm_recording.h"
+#include <cxs/cxs_tlm.h>
 //! @brief CXS
 namespace cxs {
 //! @brief SCC CXS SCV classes and functions
 namespace scv {
 template <unsigned int FLIT_WITH>
-using  csx_recorder_module = typename  tlm::nw::scv::tlm_recorder_module<cxs::CXS_CMD, FLIT_WITH, cxs::cxs_flit_types>;
+using csx_recorder_module = typename tlm::nw::scv::tlm_recorder_module<cxs::CXS_CMD, FLIT_WITH, cxs::cxs_flit_types>;
 } // namespace scv
 } // namespace cxs
 

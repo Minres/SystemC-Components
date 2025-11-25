@@ -14,9 +14,9 @@
  * limitations under the License.
  *******************************************************************************/
 #include "report.h"
-#include <cci_configuration>
 #include "configurer.h"
 #include <array>
+#include <cci_configuration>
 #include <fstream>
 #include <mutex>
 #include <nonstd/optional.hpp>

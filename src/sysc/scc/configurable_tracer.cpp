@@ -101,8 +101,9 @@ void configurable_tracer::augment_object_hierarchical(sc_core::sc_object* obj, b
                 hier_name += "." EN_TRACING_STR;
                 auto h = cci_broker.get_param_handle(hier_name);
                 if(!h.is_valid()) // we have no cci_param so create one
-                    params.push_back(new cci::cci_param<bool>(hier_name, trace_enable,
-                            cci_broker, "Enables the signal tracing of this module", cci::CCI_ABSOLUTE_NAME, cci_broker.get_originator()));
+                    params.push_back(new cci::cci_param<bool>(hier_name, trace_enable, cci_broker,
+                                                              "Enables the signal tracing of this module", cci::CCI_ABSOLUTE_NAME,
+                                                              cci_broker.get_originator()));
                 else
                     h.set_cci_value(cci::cci_value{default_trace_enable_handle.get_cci_value().get<bool>()});
             }
