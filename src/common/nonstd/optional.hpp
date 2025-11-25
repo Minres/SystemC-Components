@@ -76,7 +76,7 @@ template <class T, class A> struct is_trivially_copy_constructible<std::vector<T
 } // namespace nonstd
 #endif
 
-#define TL_OPTIONAL_IS_TRIVIALLY_COPY_CONSTRUCTIBLE(T) tl::detail::is_trivially_copy_constructible<T>::value
+#define TL_OPTIONAL_IS_TRIVIALLY_COPY_CONSTRUCTIBLE(T) nonstd::detail::is_trivially_copy_constructible<T>::value
 #define TL_OPTIONAL_IS_TRIVIALLY_COPY_ASSIGNABLE(T) std::is_trivially_copy_assignable<T>::value
 #define TL_OPTIONAL_IS_TRIVIALLY_DESTRUCTIBLE(T) std::is_trivially_destructible<T>::value
 #else
@@ -236,12 +236,12 @@ template <class...> struct voider {
 };
 template <class... Ts> using void_t = typename voider<Ts...>::type;
 
-// Trait for checking if a type is a tl::optional
+// Trait for checking if a type is a nonstd::optional
 template <class T> struct is_optional_impl : std::false_type {};
 template <class T> struct is_optional_impl<optional<T>> : std::true_type {};
 template <class T> using is_optional = is_optional_impl<decay_t<T>>;
 
-// Change void to tl::monostate
+// Change void to nonstd::monostate
 template <class U> using fixup_void = conditional_t<std::is_void<U>::value, monostate, U>;
 
 template <class F, class U, class = invoke_result_t<F, U>> using get_map_return = optional<fixup_void<invoke_result_t<F, U>>>;
