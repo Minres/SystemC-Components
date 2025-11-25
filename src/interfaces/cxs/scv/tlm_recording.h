@@ -47,8 +47,7 @@ inline void record(SCVNS scv_tr_handle& handle, cxs::cxs_flit_payload const& o) 
     handle.record_attribute("flit.last", o.last);
 }
 
-inline void record(SCVNS scv_tr_handle& handle, ::cxs::cxs_packet_payload const& o) {
-}
+inline void record(SCVNS scv_tr_handle& handle, ::cxs::cxs_packet_payload const& o) {}
 } // namespace scv
 } // namespace nw
 } // namespace tlm

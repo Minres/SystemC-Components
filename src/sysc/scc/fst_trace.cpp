@@ -58,7 +58,7 @@ struct fst_trace {
 
     virtual uintptr_t get_hash() = 0;
 
-    virtual ~fst_trace() {};
+    virtual ~fst_trace(){};
 
     const std::string name;
     fstHandle fst_hndl{0};
@@ -278,7 +278,7 @@ template <typename T, typename OT = T> bool changed(trace::fst_trace* trace) {
         all_traces.emplace_back(this, &changed<tp, tpo>, new trace::fst_trace_t<tp, tpo>(object, name));                                   \
     }
 
-#if (SYSTEMC_VERSION >= 20171012) || defined(NCSC)
+#if(SYSTEMC_VERSION >= 20171012) || defined(NCSC)
 void fst_trace_file::trace(const sc_core::sc_event& object, const std::string& name) {}
 void fst_trace_file::trace(const sc_core::sc_time& object, const std::string& name) {}
 #endif
@@ -335,7 +335,7 @@ void fst_trace_file::trace(const unsigned int& object, const std::string& name, 
         return &all_traces.back();                                                                                                         \
     }
 
-#if (SYSTEMC_VERSION >= 20171012)
+#if(SYSTEMC_VERSION >= 20171012)
 observer::notification_handle* fst_trace_file::observe(const sc_core::sc_event& object, const std::string& name) { return nullptr; }
 observer::notification_handle* fst_trace_file::observe(const sc_core::sc_time& object, const std::string& name) { return nullptr; }
 #endif
