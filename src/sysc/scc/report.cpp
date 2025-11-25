@@ -14,7 +14,7 @@
  * limitations under the License.
  *******************************************************************************/
 #include "report.h"
-#include "cci/cfg/cci_broker_handle.h"
+#include <cci_configuration>
 #include "configurer.h"
 #include <array>
 #include <fstream>
