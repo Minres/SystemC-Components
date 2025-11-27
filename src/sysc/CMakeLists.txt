@@ -95,6 +95,8 @@ endif()
 if(SC_WITH_PHASE_CALLBACK_TRACING)
     target_compile_definitions(${PROJECT_NAME} PUBLIC WITH_SC_TRACING_PHASE_CALLBACKS)
 endif()
+# rigtorp/SPSCQueue.h uses std::hardware_destructive_interference_size which is HW dependend. GCC>14  warns about it
+target_compile_options(${PROJECT_NAME} PUBLIC -Wno-interference-size)
 target_include_directories (${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
