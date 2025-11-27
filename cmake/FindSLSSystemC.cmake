@@ -176,6 +176,7 @@ if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
     INTERFACE_LINK_DIRECTORIES "${SystemC_LIBRARY_DIRS}"
     INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARIES}"
   )
+  message("Added SystemC::systemc library")
 endif()
 
 FIND_PATH(SCV_INCLUDE_DIR
@@ -245,15 +246,14 @@ if(FTB_FOUND)
   set(FTB_LIBRARIES ${FTB_LIBRARY})
   set(FTB_INCLUDE_DIRS ${FTB_INCLUDE_DIR})
   set(FTB_DEFINITIONS ${PC_FTB_CFLAGS_OTHER})
-endif()
 
-if(FTB_FOUND AND NOT TARGET SystemC::ftblocks)
-  add_library(SystemC::ftblocks UNKNOWN IMPORTED)
-  
-  set_target_properties(SystemC::ftblocks PROPERTIES
-    IMPORTED_LOCATION "${FTB_LIBRARY}"
-    INTERFACE_COMPILE_OPTIONS "${PC_FTB_CFLAGS_OTHER}"
-    INTERFACE_INCLUDE_DIRECTORIES "${FTB_INCLUDE_DIR}"
-  )
+	if(NOT TARGET SystemC::ftblocks)
+	  add_library(SystemC::ftblocks UNKNOWN IMPORTED)
+	  
+	  set_target_properties(SystemC::ftblocks PROPERTIES
+	    IMPORTED_LOCATION "${FTB_LIBRARY}"
+	    INTERFACE_COMPILE_OPTIONS "${PC_FTB_CFLAGS_OTHER}"
+	    INTERFACE_INCLUDE_DIRECTORIES "${FTB_INCLUDE_DIR}"
+	  )
+	endif()
 endif()
-
