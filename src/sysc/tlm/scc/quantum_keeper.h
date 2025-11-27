@@ -23,7 +23,7 @@
 #include <sysc/kernel/sc_time.h>
 #include <systemc>
 #include <thread>
-#include <tlm_core/tlm_2/tlm_quantum/tlm_global_quantum.h>
+#include <tlm>
 #include <tlm_utils/tlm_quantumkeeper.h>
 
 #if SC_VERSION_MAJOR < 3
