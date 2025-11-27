@@ -25,7 +25,7 @@ struct async_thread : sc_core::sc_prim_channel {
         SCCTRACE(SCMOD) << "Starting new thread";
         t1 = std::move(std::thread([this, f]() {
             try {
-                finish_time.store(f().value(), std::memory_order_acq_rel);
+                finish_time.store(f().value());
                 async_request_update();
             } catch(std::future_error& e) {
             }

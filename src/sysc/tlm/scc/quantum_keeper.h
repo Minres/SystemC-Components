@@ -12,9 +12,11 @@
 #include <limits>
 #include <mutex>
 #include <nonstd/optional.hpp>
+#include <scc/async_thread.h>
 #include <scc/peq.h>
 #include <scc/report.h>
 #include <scc/utilities.h>
+#include <string>
 #include <sysc/kernel/sc_object.h>
 #include <sysc/kernel/sc_process.h>
 #include <sysc/kernel/sc_simcontext.h>
@@ -59,6 +61,23 @@ struct quantumkeeper : public tlm_utils::tlm_quantumkeeper {
         }
     }
     sc_core::sc_time get_local_absolute_time() const { return base::get_current_time(); }
+    /**
+     * @brief execute the given function in the SystemC thread
+     *
+     * @param fct the function to execute
+     */
+    inline void execute_on_sysc(std::function<void(void)> fct) { execute_on_sysc(fct, sc_core::sc_time_stamp()); }
+    /**
+     * @brief execute the given function in the SystemC thread at a given point in time
+     *
+     * @param fct the function to execute
+     * @param when the time at which simulation time to execute the function in absolute time ticks
+     */
+    inline void execute_on_sysc(std::function<void(void)>& fct, sc_core::sc_time when) {
+        if(when > sc_core::SC_ZERO_TIME)
+            wait(when);
+        fct();
+    }
 };
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -87,7 +106,7 @@ struct thread_comms_channel {
     thread_comms_channel(uint64_t my_id)
     : my_id(my_id)
     , client2time_keeper(7)
-    , time_keeper2client(127) {}
+    , time_keeper2client(0) {}
     /**
      * @brief Construct a new thread comms channel object
      *
@@ -96,19 +115,16 @@ struct thread_comms_channel {
     thread_comms_channel(thread_comms_channel const& o)
     : my_id(o.my_id)
     , client2time_keeper(o.client2time_keeper.capacity())
-    , time_keeper2client(o.time_keeper2client.capacity())
-    , thread_local_time(o.thread_local_time)
-    , thread_blocked(o.thread_blocked.load()) {
+    , time_keeper2client(0)
+    , thread_local_time(o.thread_local_time) {
         assert(o.client2time_keeper.size() == 0);
-        assert(o.time_keeper2client.size() == 0);
     };
 
     rigtorp::SPSCQueue<comms_entry> client2time_keeper;
-    rigtorp::SPSCQueue<uint64_t> time_keeper2client;
+    std::atomic<uint64_t> time_keeper2client;
 
     const uint64_t my_id;
     uint64_t thread_local_time;
-    std::atomic_bool thread_blocked;
 };
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -150,14 +166,7 @@ struct global_time_keeper {
      * @param idx the id of the client thread, to be obtained using get_channel_index()
      * @return uint64_t the absolute number of maximum ticks, if no new information it returns -1
      */
-    inline uint64_t get_max_time_ticks(size_t idx) {
-        uint64_t res = -1;
-        while(auto e = client_coms_channels[idx].time_keeper2client.front()) {
-            res = *e;
-            client_coms_channels[idx].time_keeper2client.pop();
-        }
-        return res;
-    }
+    inline uint64_t get_max_time_ticks(size_t idx) { return client_coms_channels[idx].time_keeper2client.load(); }
     /**
      * @brief updates the global time keeper with the local time ticks of a clinet thread
      *
@@ -177,8 +186,8 @@ struct global_time_keeper {
      * @param tick  the absolute number of actual ticks
      * @param task the task to be executed in the SystemC kernel. It shall return the time it used for execution
      */
-    inline void update_time_ticks(size_t idx, uint64_t tick, std::packaged_task<sc_core::sc_time(void)>&& task) {
-        client_coms_channels[idx].client2time_keeper.push(std::move(comms_entry{tick, std::move(task)}));
+    inline void schedule_task(size_t idx, std::packaged_task<sc_core::sc_time(void)>&& task, uint64_t when) {
+        client_coms_channels[idx].client2time_keeper.push(std::move(comms_entry{when, std::move(task)}));
         update_it.store(true);
         std::unique_lock<std::mutex> lk(upd_mtx);
         update.notify_all();
@@ -188,14 +197,7 @@ struct global_time_keeper {
      *
      * @return uint64_t  the absolute number of ticks
      */
-    inline uint64_t get_max_sc_time_ticks() {
-        uint64_t res = -1;
-        while(auto e = sc_coms_channel.time_keeper2client.front()) {
-            res = *e;
-            sc_coms_channel.time_keeper2client.pop();
-        }
-        return res;
-    }
+    inline uint64_t get_max_sc_time_ticks() { return sc_coms_channel.time_keeper2client.load(); }
     /**
      * @brief updates the global time keeper with the local time ticks of the SystemC thread
      *
@@ -228,7 +230,7 @@ protected:
 
     std::atomic<bool> stop_it{false};
     std::atomic<bool> update_it{false};
-    std::atomic_bool all_threads_blocked{false};
+    std::atomic_bool all_threads_blocked{true};
     std::atomic_uint64_t window_min_time;
     std::mutex upd_mtx;
     std::condition_variable update;
@@ -264,6 +266,7 @@ struct sc_time_syncronizer : sc_core::sc_object, sc_core::sc_stage_callback_if, 
     size_t get_channel_index() {
         auto res = gtk.get_channel_index();
         sc_task_que.emplace_back();
+        blocked_channels.emplace_back(true);
         auto& sctq = sc_task_que[sc_task_que.size() - 1];
         sc_core::sc_spawn(
             [this, &sctq]() {
@@ -283,6 +286,12 @@ struct sc_time_syncronizer : sc_core::sc_object, sc_core::sc_stage_callback_if, 
      */
     inline sc_core::sc_time get_sc_kernel_time() { return sc_core::sc_time::from_value(sc_max_time.load(std::memory_order_seq_cst)); }
 
+    inline void notify_channel_blocked(size_t idx, bool is_blocked) {
+        assert(idx < blocked_channels.size());
+        blocked_channels[idx] = is_blocked;
+        sc_is_free_running = !std::any_of(std::begin(blocked_channels), std::end(blocked_channels), [](bool b) { return !b; });
+    }
+
 private:
     sc_time_syncronizer(global_time_keeper& gtk);
     void method_callback();
@@ -292,6 +301,8 @@ private:
     sc_core::sc_vector<::scc::peq<callback_task>> sc_task_que;
     std::atomic_int64_t sc_max_time{0};
     sc_core::sc_process_handle method_handle;
+    std::vector<bool> blocked_channels;
+    bool sc_is_free_running{true};
 };
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -315,12 +326,18 @@ struct quantumkeeper_mt {
      *
      */
     virtual ~quantumkeeper_mt() = default;
+
+    void run_thread(std::function<sc_core::sc_time()> f) {
+        sc_time_syncronizer::get().notify_channel_blocked(gtk_idx, false);
+        thread_executor.start(f);
+        wait(thread_executor.thread_finish_event());
+    }
     /**
      * @brief increments the local time and updates the global time keeper with the new time
      *
      * @param core_inc the amount to increment the local time
      */
-    inline void inc(sc_core::sc_time core_inc) {
+    inline void inc(sc_core::sc_time const& core_inc) {
         local_absolute_time += core_inc;
         auto res = global_time_keeper::get().get_max_time_ticks(gtk_idx);
         if(res != std::numeric_limits<uint64_t>::max())
@@ -331,7 +348,7 @@ struct quantumkeeper_mt {
      *
      * @param core_inc the amount to increment the local time
      */
-    inline void check_and_sync(sc_core::sc_time core_inc) {
+    inline void check_and_sync(sc_core::sc_time const& core_inc) {
         inc(core_inc);
         global_time_keeper::get().update_time_ticks(gtk_idx, local_absolute_time.value());
         // wait until the SystemC thread advanced to the same time then we are minus the global quantum
@@ -355,16 +372,17 @@ struct quantumkeeper_mt {
      * @param when the time at which simulation time to execute the function in absolute time ticks
      */
     inline void execute_on_sysc(std::function<void(void)>& fct, sc_core::sc_time when) {
-        callback_task task([&fct]() {
+        callback_task task([this, &fct]() {
+            sc_time_syncronizer::get().notify_channel_blocked(gtk_idx, true);
             auto t0 = sc_core::sc_time_stamp();
             fct();
+            sc_time_syncronizer::get().notify_channel_blocked(gtk_idx, false);
             return t0 - sc_core::sc_time_stamp();
         });
         auto ret = task.get_future();
-        global_time_keeper::get().update_time_ticks(gtk_idx, when.value(), std::move(task));
+        global_time_keeper::get().schedule_task(gtk_idx, std::move(task), when.value());
         auto duration = ret.get();
-        if(duration.value())
-            check_and_sync(duration);
+        check_and_sync(duration);
     }
     /**
      * @brief Get the local time of this thread
@@ -394,10 +412,13 @@ struct quantumkeeper_mt {
      *
      * @param abs_time the absolute time to set
      */
-    void reset(sc_core::sc_time abs_time) { local_absolute_time = abs_time; }
+    void reset(sc_core::sc_time abs_time) { local_absolute_time = sc_core::sc_time_stamp(); }
+
+    void unblock_thread() { global_time_keeper::get().update_time_ticks(gtk_idx, local_absolute_time.value()); }
 
 protected:
     size_t gtk_idx;
+    ::scc::async_thread thread_executor;
     sc_core::sc_event keep_alive;
     sc_core::sc_time local_absolute_time;
     uint64_t local_time_ticks_limit{0};
