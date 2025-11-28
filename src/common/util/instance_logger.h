@@ -59,6 +59,13 @@ public:
 
     InstanceLogger& operator=(const InstanceLogger&) = delete;
 
+    void set_log_level(logging::log_level l) {
+        if(logger) {
+            logger->level = l;
+        } else {
+            ::logging ::Log<::logging ::Output2FILE<CATEGORY>>::set_reporting_level(l);
+        }
+    }
     logging::log_level get_log_level() {
         if(logger) {
             return logger->level;
