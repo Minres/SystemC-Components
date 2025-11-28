@@ -19,15 +19,9 @@
 #include <cstdio>
 #include <cstring>
 #include <fcntl.h>
-#include <fstream>
 #include <ftr/ftr_writer.h>
-#include <iostream>
-#include <sstream>
 #include <stdexcept>
 #include <string>
-#include <unordered_map>
-#include <unordered_set>
-#include <vector>
 // clang-format off
 #ifdef HAS_SCV
 #include <scv.h>
