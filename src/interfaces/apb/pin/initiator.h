@@ -159,6 +159,8 @@ template <unsigned DATA_WIDTH, unsigned ADDR_WIDTH> inline void initiator<DATA_W
                 SCCDEBUG(SCMOD) << "Sending beg resp for access to addr 0x" << std::hex << trans->get_address();
                 res = tsckt->nb_transport_bw(*trans, phase, delay);
                 SCCDEBUG(SCMOD) << "APB access phase finished";
+                if (trans->has_mm())
+                    trans->release();
                 PENABLE_o.write(false);
                 PSELx_o.write(false);
             }
