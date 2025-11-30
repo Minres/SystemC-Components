@@ -187,6 +187,13 @@ template <unsigned DATA_WIDTH, unsigned ADDR_WIDTH> void target<DATA_WIDTH, ADDR
             SCCDEBUG(SCMOD) << "Send end resp for " << (gp->is_write() ? "write to" : "read from") << " addr 0x" << std::hex
                             << gp->get_address();
             res = isckt->nb_transport_fw(*gp, phase, delay);
+            if(gp->is_response_error()) {
+                HREADY_o.write(false);
+                HRESP_o.write(true);
+            } else {
+                HREADY_o.write(true);
+                HRESP_o.write(false);
+            }
             gp->release();
             HREADY_o.write(true);
             wait(HCLK_i.posedge_event());
