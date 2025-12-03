@@ -1,0 +1,53 @@
+name: CI Unit Tests
+
+on:
+  push:
+    paths:
+      - '**.cpp'
+      - '**.h'
+      - '**CMakeLists.txt'
+      - '.github/workflows/**'
+      - 'conanfile.py'
+  pull_request:
+    paths:
+      - '**.cpp'
+      - '**.h'
+      - '**CMakeLists.txt'
+      - '.github/workflows/**'
+      - 'conanfile.py'
+
+jobs:
+  unit-tests:
+    name: unit-tests (C++20)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Conan
+        uses: actions/cache@v4
+        with:
+          path: ~/.conan
+          key: conan-${{ runner.os }}-unit-cpp20-${{ hashFiles('conanfile.txt') }}
+
+      - name: Update submodules
+        run: git submodule update --init --recursive
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ python3-pip cmake ninja-build
+          pip3 install conan --break-system-packages
+          cmake --version
+
+      - name: Configure
+        run: >
+          cmake --preset Debug -B build
+          -DBUILD_TESTING=ON
+          -DCMAKE_CXX_STANDARD=20
+
+      - name: Build
+        run: cmake --build build -j
+
+      - name: Run unit tests
+        run: ctest --output-on-failure
+        working-directory: build
