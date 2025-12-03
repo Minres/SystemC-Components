@@ -251,7 +251,8 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
                     auto first_part = mem.page_size - offs;
                     std::copy(p.data() + offs, p.data() + offs + first_part, ptr);
                     const auto& p2 = mem((adr / mem.page_size) + 1);
-                    std::copy(p2.data(), p2.data() + len, ptr + first_part);
+                    auto second_part = len - first_part;
+                    std::copy(p2.data(), p2.data() + second_part, ptr + first_part);
                 } else {
                     std::copy(p.data() + offs, p.data() + offs + len, ptr);
                 }
