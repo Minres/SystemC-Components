@@ -8,12 +8,12 @@
 #ifndef _SCC_TRACE_GZ_WRITER_HH_
 #define _SCC_TRACE_GZ_WRITER_HH_
 
-#include <boost/atomic.hpp>
-#include <boost/lockfree/spsc_queue.hpp>
+#include <atomic>
 #include <chrono>
 #include <cstring>
 #include <deque>
 #include <mutex>
+#include <rigtorp/SPSCQueue.h>
 #include <string>
 #include <thread>
 #include <zlib.h>
@@ -25,7 +25,7 @@ class gz_writer {
     static const size_t queue_size = 16 * 1024;
     std::deque<char*> pool;
     std::deque<char*> write_queue;
-    boost::atomic<bool> done{false};
+    std::atomic<bool> done{false};
     std::condition_variable cond;
 
     std::deque<char*> pool_buffer;

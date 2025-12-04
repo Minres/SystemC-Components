@@ -15,7 +15,6 @@
  *******************************************************************************/
 
 #include "vcd_push_trace.hh"
-#include "sc_vcd_trace.h"
 #include "trace/vcd_trace.hh"
 #include "utilities.h"
 #include <cmath>
@@ -23,11 +22,9 @@
 #include <cstdlib>
 #include <cstring>
 #include <deque>
-#include <iomanip>
 #include <limits>
 #include <map>
 #include <sstream>
-#include <stdexcept>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -93,7 +90,7 @@ template <typename T, typename OT = T> bool changed(trace::vcd_trace* trace) {
         all_traces.emplace_back(this, &changed<tp, tpo>, new trace::vcd_trace_t<tp, tpo>(object, name));                                   \
     }
 
-#if(SYSTEMC_VERSION >= 20171012) || defined(NCSC)
+#if (SYSTEMC_VERSION >= 20171012) || defined(NCSC)
 void vcd_push_trace_file::trace(const sc_core::sc_event& object, const std::string& name) {}
 void vcd_push_trace_file::trace(const sc_core::sc_time& object, const std::string& name) {}
 #endif
@@ -149,7 +146,7 @@ void vcd_push_trace_file::trace(const unsigned int& object, const std::string& n
         all_traces.back().trc->is_triggered = true;                                                                                        \
         return &all_traces.back();                                                                                                         \
     }
-#if(SYSTEMC_VERSION >= 20171012)
+#if (SYSTEMC_VERSION >= 20171012)
 observer::notification_handle* vcd_push_trace_file::observe(const sc_core::sc_event& object, const std::string& name) { return nullptr; }
 observer::notification_handle* vcd_push_trace_file::observe(const sc_core::sc_time& object, const std::string& name) { return nullptr; }
 #endif
