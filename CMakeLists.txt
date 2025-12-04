@@ -85,7 +85,7 @@ if (ENABLE_CLANG_TIDY)
     endif()
 endif()
 
-find_package(Boost REQUIRED QUIET COMPONENTS system date_time) # header only libraries must not be added here
+find_package(Boost REQUIRED QUIET COMPONENTS date_time) # header only libraries must not be added here
 find_package(lz4 QUIET)
 if(NOT ${lz4_FOUND})
     find_package(PkgConfig QUIET)
