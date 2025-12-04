@@ -90,7 +90,7 @@ template <typename T, typename OT = T> bool changed(trace::vcd_trace* trace) {
         all_traces.emplace_back(&changed<tp, tpo>, new trace::vcd_trace_t<tp, tpo>(object, name));                                         \
     }
 
-#if (SYSTEMC_VERSION >= 20171012) || defined(NCSC)
+#if(SYSTEMC_VERSION >= 20171012) || defined(NCSC)
 void vcd_pull_trace_file::trace(const sc_core::sc_event& object, const std::string& name) {}
 // void vcd_pull_trace_file::trace(const sc_core::sc_time& object, const std::string& name){}
 DECL_TRACE_METHOD_A(sc_core::sc_time)
