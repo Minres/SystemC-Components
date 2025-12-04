@@ -15,6 +15,7 @@ option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with phase call
 set(SCC_ARCHIVE_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
 set(SCC_LIBRARY_DIR_MODIFIER "" CACHE STRING "additional directory levels to store libraries") 
 option(WITH_SCP4SCC "adds SCP compatibility layer for SCC, cannot be used together with a copy of SCP" OFF)
+option(ENABLE_CLANG_FORMAT "Enable clang-format targets" OFF)
 
 include(Common)
 
@@ -31,7 +32,9 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" OFF)
     option(INSTALL_DEPENDENCIES "Should dependencies be installed when installing SCC" OFF)
 	set(CLANG_FORMAT_EXCLUDE_PATTERNS "third_party/")
-	find_package(ClangFormat)
+    if(ENABLE_CLANG_FORMAT)
+	    find_package(ClangFormat)
+    endif()
 else()
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" ON)
 	set(CLANG_FORMAT_EXCLUDE_PATTERNS ${CLANG_FORMAT_EXCLUDE_PATTERNS} "/third_party/" PARENT_SCOPE)
