@@ -26,6 +26,11 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
 
     include(GNUInstallDirs)
     
+    if (APPLE)
+        # From systemc CMakeLists.txt: "It's OK that _sc_main, __sanitizer_start_switch_fiber, and
+        # __sanitizer_finish_switch_fiber are undefined symbols."
+        set(CMAKE_EXE_LINKER_FLAGS "-Wl,-U,_sc_main,-U,___sanitizer_start_switch_fiber,-U,___sanitizer_finish_switch_fiber" CACHE INTERNAL "" FORCE)
+    endif(APPLE)
     set(Boost_NO_BOOST_CMAKE ON) #  Don't do a find_package in config mode before searching for a regular boost install.
     option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" OFF)
