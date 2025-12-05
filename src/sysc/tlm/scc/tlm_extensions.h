@@ -43,7 +43,7 @@ template <typename T> struct tlm_unmanaged_extension : public tlm_extension<T> {
     void copy_from(tlm_extension_base const& other) override { this->operator=(static_cast<const type&>(other)); }
 
 protected:
-    tlm_unmanaged_extension() {};
+    tlm_unmanaged_extension(){};
 };
 /*!
  * \brief A managed extension for TLM transactions.
