@@ -15,6 +15,7 @@ option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with phase call
 set(SCC_ARCHIVE_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
 set(SCC_LIBRARY_DIR_MODIFIER "" CACHE STRING "additional directory levels to store libraries") 
 option(WITH_SCP4SCC "adds SCP compatibility layer for SCC, cannot be used together with a copy of SCP" OFF)
+option(ENABLE_CLANG_FORMAT "Enable clang-format targets" OFF)
 
 include(Common)
 
@@ -26,12 +27,19 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
 
     include(GNUInstallDirs)
     
+    if (APPLE)
+        # From systemc CMakeLists.txt: "It's OK that _sc_main, __sanitizer_start_switch_fiber, and
+        # __sanitizer_finish_switch_fiber are undefined symbols."
+        set(CMAKE_EXE_LINKER_FLAGS "-Wl,-U,_sc_main,-U,___sanitizer_start_switch_fiber,-U,___sanitizer_finish_switch_fiber" CACHE INTERNAL "" FORCE)
+    endif(APPLE)
     set(Boost_NO_BOOST_CMAKE ON) #  Don't do a find_package in config mode before searching for a regular boost install.
     option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" OFF)
     option(INSTALL_DEPENDENCIES "Should dependencies be installed when installing SCC" OFF)
-	set(CLANG_FORMAT_EXCLUDE_PATTERNS "third_party/")
-	find_package(ClangFormat)
+	set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "/build/" ".direnv")
+    if(ENABLE_CLANG_FORMAT)
+	    find_package(ClangFormat)
+    endif()
 else()
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" ON)
 	set(CLANG_FORMAT_EXCLUDE_PATTERNS ${CLANG_FORMAT_EXCLUDE_PATTERNS} "/third_party/" PARENT_SCOPE)
@@ -83,7 +91,7 @@ if (ENABLE_CLANG_TIDY)
     endif()
 endif()
 
-find_package(Boost REQUIRED QUIET COMPONENTS system date_time) # header only libraries must not be added here
+find_package(Boost REQUIRED QUIET COMPONENTS date_time) # header only libraries must not be added here
 find_package(lz4 QUIET)
 if(NOT ${lz4_FOUND})
     find_package(PkgConfig QUIET)

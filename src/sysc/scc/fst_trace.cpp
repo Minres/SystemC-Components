@@ -22,11 +22,9 @@
 #include <cstdlib>
 #include <cstring>
 #include <deque>
-#include <iomanip>
 #include <limits>
 #include <map>
 #include <sstream>
-#include <stdexcept>
 #include <unordered_map>
 #include <util/ities.h>
 #include <vector>

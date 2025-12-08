@@ -52,7 +52,7 @@ protected:
  *
  * \tparam T The type of the extension.
  */
-template <typename T> struct tlm_managed_extension {
+template <typename T> struct tlm_managed_extension : public tlm_extension<T> {
 
     using type = T;
 

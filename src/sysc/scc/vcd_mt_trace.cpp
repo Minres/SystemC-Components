@@ -18,18 +18,14 @@
 #include "trace/gz_writer.hh"
 #define FWRITE(BUF, SZ, LEN, FP) FP->write(BUF, SZ* LEN)
 #define FPTR gz_writer*
-#include "sc_vcd_trace.h"
 #include "trace/vcd_trace.hh"
 #include "utilities.h"
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
 #include <deque>
-#include <iomanip>
-#include <limits>
 #include <map>
 #include <sstream>
-#include <stdexcept>
 #include <string>
 #include <unordered_map>
 #include <vector>
