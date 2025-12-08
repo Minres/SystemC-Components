@@ -18,8 +18,8 @@
 #define _SYSC_ROUTER_H_
 
 #include <limits>
-#include <scc/utilities.h>
 #include <scc/report.h>
+#include <scc/utilities.h>
 #include <sysc/utils/sc_vector.h>
 #include <tlm.h>
 #include <tlm/scc/initiator_mixin.h>
@@ -82,6 +82,7 @@ template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_
      * @param name of the binding
      */
     template <typename TYPE> void bind_target(TYPE& socket, size_t idx, std::string name) {
+        set_target_name(idx, name);
         initiator[idx].bind(socket);
     }
     /**
@@ -198,7 +199,8 @@ protected:
 };
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
-router<BUSWIDTH, TARGET_SOCKET_TYPE>::router(const sc_core::sc_module_name& nm, size_t slave_cnt, size_t master_cnt, bool check_overlap_on_add_target)
+router<BUSWIDTH, TARGET_SOCKET_TYPE>::router(const sc_core::sc_module_name& nm, size_t slave_cnt, size_t master_cnt,
+                                             bool check_overlap_on_add_target)
 : sc_module(nm)
 , target("target", master_cnt)
 , initiator("intor", slave_cnt)
@@ -240,7 +242,7 @@ template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
 void router<BUSWIDTH, TARGET_SOCKET_TYPE>::add_target_range(std::string name, uint64_t base, uint64_t size, bool remap) {
     auto it = target_name_lut.find(name);
 #ifndef NDEBUG
-#if(SYSTEMC_VERSION >= 20171012)
+#if (SYSTEMC_VERSION >= 20171012)
     if(it == target_name_lut.end()) {
         std::stringstream ss;
         ss << "No target index entry for '" << name << "' found ";
@@ -270,7 +272,8 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::b_transport(int i, tlm::tlm_generic_p
     if(idx == addr_decoder.null_entry) {
         if(default_idx == std::numeric_limits<size_t>::max()) {
             if(warn_on_address_error) {
-                SCCWARN(SCMOD) << "target address=0x" << std::hex << address << " not found for " << (trans.get_command() == tlm::TLM_READ_COMMAND ? "read" : "write") << " transaction.";
+                SCCWARN(SCMOD) << "target address=0x" << std::hex << address << " not found for "
+                               << (trans.get_command() == tlm::TLM_READ_COMMAND ? "read" : "write") << " transaction.";
             }
             trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
             return;
@@ -296,7 +299,8 @@ bool router<BUSWIDTH, TARGET_SOCKET_TYPE>::get_direct_mem_ptr(int i, tlm::tlm_ge
     if(idx == addr_decoder.null_entry) {
         if(default_idx == std::numeric_limits<size_t>::max()) {
             if(warn_on_address_error) {
-                SCCWARN(SCMOD) << "target address=0x" << std::hex << address << " not found for " << (trans.get_command() == tlm::TLM_READ_COMMAND ? "read" : "write") << " transaction.";
+                SCCWARN(SCMOD) << "target address=0x" << std::hex << address << " not found for "
+                               << (trans.get_command() == tlm::TLM_READ_COMMAND ? "read" : "write") << " transaction.";
             }
             trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
             return false;
@@ -327,7 +331,8 @@ unsigned router<BUSWIDTH, TARGET_SOCKET_TYPE>::transport_dbg(int i, tlm::tlm_gen
     if(idx == addr_decoder.null_entry) {
         if(default_idx == std::numeric_limits<size_t>::max()) {
             if(warn_on_address_error) {
-                SCCWARN(SCMOD) << "target address=0x" << std::hex << address << " not found for " << (trans.get_command() == tlm::TLM_READ_COMMAND ? "read" : "write") << " transaction.";
+                SCCWARN(SCMOD) << "target address=0x" << std::hex << address << " not found for "
+                               << (trans.get_command() == tlm::TLM_READ_COMMAND ? "read" : "write") << " transaction.";
             }
             trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
             return 0;
@@ -353,8 +358,7 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::invalidate_direct_mem_ptr(int id, ::s
         target[i]->invalidate_direct_mem_ptr(bw_start_range - ibases[i], bw_end_range - ibases[i]);
     }
 }
-template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
-void router<BUSWIDTH, TARGET_SOCKET_TYPE>::end_of_elaboration() {
+template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, TARGET_SOCKET_TYPE>::end_of_elaboration() {
     addr_decoder.validate();
 }
 
