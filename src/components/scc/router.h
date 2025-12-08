@@ -19,6 +19,7 @@
 
 #include <limits>
 #include <scc/utilities.h>
+#include <scc/report.h>
 #include <sysc/utils/sc_vector.h>
 #include <tlm.h>
 #include <tlm/scc/initiator_mixin.h>
@@ -51,8 +52,9 @@ template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_
      * @param nm the component name
      * @param slave_cnt number of slaves to be connected
      * @param master_cnt number of masters to be connected
+     * @param check_overlap_on_add_target if true this enables validation of overlaps when adding or setting the target range.
      */
-    router(const sc_core::sc_module_name& nm, size_t slave_cnt = 1, size_t master_cnt = 1);
+    router(const sc_core::sc_module_name& nm, size_t slave_cnt = 1, size_t master_cnt = 1, bool check_overlap_on_add_target = false);
 
     ~router() = default;
     /**
@@ -68,7 +70,6 @@ template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_
      */
     template <typename TYPE> void bind_target(TYPE& socket, size_t idx, uint64_t base, uint64_t size, bool remap = true) {
         set_target_range(idx, base, size, remap);
-        set_target_name(idx, socket.basename());
         initiator[idx].bind(socket);
     }
     /**
@@ -81,7 +82,6 @@ template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_
      * @param name of the binding
      */
     template <typename TYPE> void bind_target(TYPE& socket, size_t idx, std::string name) {
-        set_target_name(idx, name);
         initiator[idx].bind(socket);
     }
     /**
@@ -133,6 +133,13 @@ template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_
      */
     void set_target_range(size_t idx, uint64_t base, uint64_t size, bool remap = true);
     /**
+     * @fn void set_warn_on_address_error(bool)
+     * @brief enable warning message on address not found error
+     *
+     * @param enable if true enable warning message
+     */
+    void set_warn_on_address_error(bool enable) { warn_on_address_error = enable; }
+    /**
      * @fn void b_transport(int, tlm::tlm_generic_payload&, sc_core::sc_time&)
      * @brief tagged blocking transport method
      *
@@ -169,6 +176,12 @@ template <unsigned BUSWIDTH = LT, typename TARGET_SOCKET_TYPE = tlm::tlm_target_
      */
     void invalidate_direct_mem_ptr(int id, ::sc_dt::uint64 start_range, ::sc_dt::uint64 end_range);
 
+    /**
+     * @fn void end_of_elaboration()
+     * @brief tagged end of elaboration callback.
+     */
+    void end_of_elaboration() override;
+
 protected:
     struct range_entry {
         uint64_t base, size;
@@ -180,17 +193,20 @@ protected:
     std::vector<sc_core::sc_mutex> mutexes;
     util::range_lut<unsigned> addr_decoder;
     std::unordered_map<std::string, size_t> target_name_lut;
+    bool check_overlap_on_add_target;
+    bool warn_on_address_error{false};
 };
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
-router<BUSWIDTH, TARGET_SOCKET_TYPE>::router(const sc_core::sc_module_name& nm, size_t slave_cnt, size_t master_cnt)
+router<BUSWIDTH, TARGET_SOCKET_TYPE>::router(const sc_core::sc_module_name& nm, size_t slave_cnt, size_t master_cnt, bool check_overlap_on_add_target)
 : sc_module(nm)
 , target("target", master_cnt)
 , initiator("intor", slave_cnt)
 , ibases(master_cnt)
 , tranges(slave_cnt)
 , mutexes(slave_cnt)
-, addr_decoder(std::numeric_limits<unsigned>::max()) {
+, addr_decoder(std::numeric_limits<unsigned>::max())
+, check_overlap_on_add_target(check_overlap_on_add_target) {
     for(size_t i = 0; i < target.size(); ++i) {
         target[i].register_b_transport(
             [this, i](tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) -> void { this->b_transport(i, trans, delay); });
@@ -216,6 +232,8 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::set_target_range(size_t idx, uint64_t
     tranges[idx].size = size;
     tranges[idx].remap = remap;
     addr_decoder.addEntry(idx, base, size);
+    if(check_overlap_on_add_target)
+        addr_decoder.validate();
 }
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
@@ -237,6 +255,8 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::add_target_range(std::string name, ui
     tranges[idx].size = size;
     tranges[idx].remap = remap;
     addr_decoder.addEntry(idx, base, size);
+    if(check_overlap_on_add_target)
+        addr_decoder.validate();
 }
 
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
@@ -249,6 +269,9 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::b_transport(int i, tlm::tlm_generic_p
     size_t idx = addr_decoder.getEntry(address);
     if(idx == addr_decoder.null_entry) {
         if(default_idx == std::numeric_limits<size_t>::max()) {
+            if(warn_on_address_error) {
+                SCCWARN(SCMOD) << "target address=0x" << std::hex << address << " not found for " << (trans.get_command() == tlm::TLM_READ_COMMAND ? "read" : "write") << " transaction.";
+            }
             trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
             return;
         }
@@ -272,6 +295,9 @@ bool router<BUSWIDTH, TARGET_SOCKET_TYPE>::get_direct_mem_ptr(int i, tlm::tlm_ge
     size_t idx = addr_decoder.getEntry(address);
     if(idx == addr_decoder.null_entry) {
         if(default_idx == std::numeric_limits<size_t>::max()) {
+            if(warn_on_address_error) {
+                SCCWARN(SCMOD) << "target address=0x" << std::hex << address << " not found for " << (trans.get_command() == tlm::TLM_READ_COMMAND ? "read" : "write") << " transaction.";
+            }
             trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
             return false;
         }
@@ -300,6 +326,9 @@ unsigned router<BUSWIDTH, TARGET_SOCKET_TYPE>::transport_dbg(int i, tlm::tlm_gen
     size_t idx = addr_decoder.getEntry(address);
     if(idx == addr_decoder.null_entry) {
         if(default_idx == std::numeric_limits<size_t>::max()) {
+            if(warn_on_address_error) {
+                SCCWARN(SCMOD) << "target address=0x" << std::hex << address << " not found for " << (trans.get_command() == tlm::TLM_READ_COMMAND ? "read" : "write") << " transaction.";
+            }
             trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
             return 0;
         }
@@ -323,6 +352,10 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::invalidate_direct_mem_ptr(int id, ::s
     for(size_t i = 0; i < target.size(); ++i) {
         target[i]->invalidate_direct_mem_ptr(bw_start_range - ibases[i], bw_end_range - ibases[i]);
     }
+}
+template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
+void router<BUSWIDTH, TARGET_SOCKET_TYPE>::end_of_elaboration() {
+    addr_decoder.validate();
 }
 
 } // namespace scc
