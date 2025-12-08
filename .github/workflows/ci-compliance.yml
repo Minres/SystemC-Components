@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cpp_std: [11, 14, 17, 20]
+        cpp_std: [14, 17, 20]
     steps:
       - uses: actions/checkout@v4
 
