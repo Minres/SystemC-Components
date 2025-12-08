@@ -51,8 +51,10 @@ namespace scc {
  * @tparam SIZE size of the memery
  * @tparam BUSWIDTH bus width of the socket
  */
-template <unsigned long long SIZE, unsigned BUSWIDTH = LT> class memory : public sc_core::sc_module {
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24> class memory : public sc_core::sc_module {
 public:
+    static constexpr uint64_t page_size = (1 << PAGE_ADDR_BITS);
+
     //! the target socket to connect to TLM
     tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
     //! CCI parameter to configure if DMI is allowd
@@ -131,7 +133,7 @@ public:
 
 protected:
     //! the real memory structure
-    util::sparse_array<uint8_t, SIZE> mem;
+    util::sparse_array<uint8_t, SIZE, PAGE_ADDR_BITS> mem;
     struct host_map_entry {
         uint8_t* ptr;
         uint64_t base;
@@ -172,8 +174,8 @@ struct host_mem_map_extension : public tlm::tlm_extension<host_mem_map_extension
 ///////////////////////////////////////////////////////////////////////////////
 /// implementation details
 /// ///////////////////////////////////////////////////////////////////////////
-template <unsigned long long SIZE, unsigned BUSWIDTH>
-memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
+template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS>
+memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS>::memory(const sc_core::sc_module_name& nm)
 : sc_module(nm) {
     // Register callback for incoming b_transport interface method call
     target.register_b_transport([this](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void {
@@ -196,8 +198,8 @@ memory<SIZE, BUSWIDTH>::memory(const sc_core::sc_module_name& nm)
     });
 }
 
-template <unsigned long long SIZE, unsigned BUSWIDTH>
-int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
+template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS>
+int memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS>::handle_operation(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
     uint64_t adr = trans.get_address();
     uint8_t* ptr = trans.get_data_ptr();
     unsigned len = trans.get_data_length();
@@ -287,8 +289,8 @@ int memory<SIZE, BUSWIDTH>::handle_operation(tlm::tlm_generic_payload& trans, sc
     return len;
 }
 
-template <unsigned long long SIZE, unsigned BUSWIDTH>
-inline bool memory<SIZE, BUSWIDTH>::handle_dmi(tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data) {
+template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS>
+inline bool memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS>::handle_dmi(tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data) {
     if(allow_dmi.get_value()) {
         auto hm_entry = host_mem_lut.getEntry(gp.get_address());
         if(hm_entry.ptr) {

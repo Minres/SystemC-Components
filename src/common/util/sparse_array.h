@@ -38,13 +38,13 @@ template <typename T, uint64_t SIZE, unsigned PAGE_ADDR_BITS = 24> class sparse_
 public:
     static_assert(SIZE > 0, "sparse_array size must be greater than 0");
 
-    const uint64_t page_addr_mask = (1 << PAGE_ADDR_BITS) - 1;
+    static constexpr uint64_t page_addr_mask = (1 << PAGE_ADDR_BITS) - 1;
 
-    const uint64_t page_size = (1 << PAGE_ADDR_BITS);
+    static constexpr uint64_t page_size = (1 << PAGE_ADDR_BITS);
 
-    const unsigned page_count = (SIZE + page_size - 1) / page_size;
+    static constexpr unsigned page_count = (SIZE + page_size - 1) / page_size;
 
-    const uint64_t page_addr_width = PAGE_ADDR_BITS;
+    static constexpr uint64_t page_addr_width = PAGE_ADDR_BITS;
 
     using page_type = std::array<T, 1 << PAGE_ADDR_BITS>;
     /**
