@@ -39,8 +39,13 @@ class Pkg(ConanFile):
                 self.requires("systemc/2.3.4")
             else:
                 self.requires("systemc/3.0.1")
+            if cppstd == "11":
+                self.requires("gtest/1.10.0")
+            else:
+                self.requires("gtest/1.14.0")
         else:
             self.requires("systemc/2.3.4")
+        self.requires("gtest/1.14.0")
         self.requires("spdlog/1.16.0")
         self.requires("boost/1.89.0")
         self.requires("lz4/1.10.0")

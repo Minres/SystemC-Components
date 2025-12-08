@@ -1,4 +1,4 @@
-name: CI C++ Std compliance
+name: CI Unit Tests
 
 on:
   push:
@@ -17,13 +17,17 @@ on:
       - 'conanfile.py'
 
 jobs:
-  build-and-test:
+  unit-tests:
+    name: unit-tests (C++20)
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        cpp_std: [11, 14, 17, 20]
     steps:
       - uses: actions/checkout@v4
+
+      - name: Cache Conan
+        uses: actions/cache@v4
+        with:
+          path: ~/.conan
+          key: conan-${{ runner.os }}-unit-cpp20-${{ hashFiles('conanfile.txt') }}
 
       - name: Update submodules
         run: git submodule update --init --recursive
@@ -38,10 +42,12 @@ jobs:
       - name: Configure
         run: >
           cmake --preset Debug -B build
-          -DCMAKE_CXX_STANDARD=${{ matrix.cpp_std }}
+          -DBUILD_TESTING=ON
+          -DCMAKE_CXX_STANDARD=20
 
       - name: Build
         run: cmake --build build -j
 
-      - name: Run transaction_recording
-        run: ./build/examples/transaction_recording/transaction_recording
+      - name: Run unit tests
+        run: ctest --output-on-failure
+        working-directory: build
