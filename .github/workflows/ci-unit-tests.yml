@@ -35,11 +35,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y g++ python3-pip cmake ninja-build
-          pip3 install conan --break-system-packages
-          cmake --version
+          pip3 install -r requirements.txt
 
       - name: Configure
-        run: cmake --preset Debug -B build -DCMAKE_CXX_STANDARD=20
+        run: cmake --preset Debug -B build -DCMAKE_CXX_STANDARD=20  -DENABLE_CLANG_FORMAT=ON
+
+      - name: Build
+        run: cmake --build build --target format-check
 
       - name: Build
         run: cmake --build build -j
