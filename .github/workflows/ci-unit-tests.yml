@@ -22,15 +22,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+        with:
+          repository: Minres/SystemC-Components-Test
+      - uses: actions/checkout@v4
+        with:
+          path: scc
+          submodules: true
       - name: Cache Conan
         uses: actions/cache@v4
         with:
           path: ~/.conan
           key: conan-${{ runner.os }}-unit-cpp20-${{ hashFiles('conanfile.txt') }}
-
-      - name: Update submodules
-        run: git submodule update --init --recursive
 
       - name: Install dependencies
         run: |
@@ -44,10 +46,11 @@ jobs:
           cmake --preset Debug -B build
           -DBUILD_TESTING=ON
           -DCMAKE_CXX_STANDARD=20
+        working-directory: scc
 
       - name: Build
-        run: cmake --build build -j
-
+        run: cd scc; cmake --build build -j
+        working-directory: scc
       - name: Run unit tests
         run: ctest --output-on-failure
-        working-directory: build
+        working-directory: scc/build
