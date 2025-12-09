@@ -23,22 +23,25 @@ jobs:
       matrix:
         cpp_std: [14, 17, 20]
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout SystemC-Components
+        uses: actions/checkout@v6
+        with:
+          submodules: true
 
-      - name: Update submodules
-        run: git submodule update --init --recursive
+      - name: Cache Conan
+        uses: actions/cache@v4
+        with:
+          path: ~/.conan2
+          key: conan-${{ runner.os }}-unit-cpp${{ matrix.cpp_std }}-${{ hashFiles('conanfile.py') }}
 
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y g++ python3-pip cmake ninja-build
-          pip3 install conan --break-system-packages
-          cmake --version
+          pip3 install -r requirements.txt
 
       - name: Configure
-        run: >
-          cmake --preset Debug -B build
-          -DCMAKE_CXX_STANDARD=${{ matrix.cpp_std }}
+        run: cmake --preset Debug -B build -DCMAKE_CXX_STANDARD=${{ matrix.cpp_std }}
 
       - name: Build
         run: cmake --build build -j
