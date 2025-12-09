@@ -1,0 +1,11 @@
+int_param0: 1
+int_param1: -1
+int64_param0: 2 
+int64_param1: -2
+unsigned_param: 3
+uint64_param: 4
+float_param: 5.0
+double_param: 6
+string_param: test entry
+sc_time_param: 10 ns
+trace_lvl_param: MEDIUM

@@ -47,6 +47,7 @@ class Pkg(ConanFile):
         self.requires("yaml-cpp/0.8.0")
         self.requires("jsoncpp/1.9.6")
         self.requires("zlib/1.3.1")
+        self.requires("catch2/3.11.0")
 
     def build_requirements(self):
         pass

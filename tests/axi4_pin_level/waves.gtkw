@@ -1,0 +1,116 @@
+[*]
+[*] GTKWave Analyzer v3.3.118 (w)1999-2023 BSI
+[*] Wed Jan  8 16:33:12 2025
+[*]
+[dumpfile] "/scratch/eyck/workarea/MINRES/SystemC-Components-Test/axi4_pin_level.fst"
+[dumpfile_mtime] "Wed Jan  8 16:32:32 2025"
+[dumpfile_size] 7261
+[savefile] "/scratch/eyck/workarea/MINRES/SystemC-Components-Test/tests/axi4_pin_level/waves.gtkw"
+[timestart] 0
+[size] 2560 1288
+[pos] -1 -1
+*-20.062529 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] testbench.
+[sst_width] 304
+[signals_width] 243
+[sst_expanded] 1
+[sst_vpaned_height] 396
+@28
+testbench.clk
+testbench.rst
+@800200
+-ar
+@28
+testbench.ar_valid
+testbench.ar_ready
+@22
+testbench.ar_addr[31:0]
+@28
+testbench.ar_burst[1:0]
+@22
+testbench.ar_cache[3:0]
+testbench.ar_id[3:0]
+testbench.ar_len[7:0]
+@28
+testbench.ar_lock
+testbench.ar_prot[2:0]
+@22
+testbench.ar_qos[3:0]
+testbench.ar_region[3:0]
+@28
+testbench.ar_size[2:0]
+testbench.ar_user
+@1000200
+-ar
+@800200
+-r
+@28
+testbench.r_valid
+testbench.r_ready
+testbench.r_last
+@22
+testbench.r_data[63:0]
+testbench.r_id[3:0]
+@28
+testbench.r_resp[1:0]
+testbench.r_trace
+testbench.r_user
+@1000200
+-r
+@800200
+-aw
+@28
+testbench.aw_valid
+testbench.aw_ready
+@22
+testbench.aw_id[3:0]
+testbench.aw_addr[31:0]
+@28
+testbench.aw_burst[1:0]
+@22
+testbench.aw_cache[3:0]
+testbench.aw_len[7:0]
+@28
+testbench.aw_lock
+testbench.aw_prot[2:0]
+@22
+testbench.aw_qos[3:0]
+testbench.aw_region[3:0]
+@28
+testbench.aw_size[2:0]
+testbench.aw_user
+@1000200
+-aw
+@800200
+-w
+@29
+testbench.w_valid
+testbench.w_ready
+testbench.w_ack
+@23
+testbench.w_data[63:0]
+testbench.w_id[3:0]
+@29
+testbench.w_last
+@23
+testbench.w_strb[7:0]
+@29
+testbench.w_trace
+testbench.w_user
+@1000200
+-w
+@800200
+-b
+@28
+testbench.b_valid
+testbench.b_ready
+@22
+testbench.b_id[3:0]
+@28
+testbench.b_resp[1:0]
+testbench.b_trace
+testbench.b_user
+@1000200
+-b
+[pattern_trace] 1
+[pattern_trace] 0

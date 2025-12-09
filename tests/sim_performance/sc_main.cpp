@@ -1,0 +1,106 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright 2017 eyck@minres.com
+//
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License.  You may obtain a copy
+// of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+// License for the specific language governing permissions and limitations under
+// the License.
+////////////////////////////////////////////////////////////////////////////////
+/*
+ * sc_main.cpp
+ *
+ *  Created on: 17.09.2017
+ *      Author: eyck@minres.com
+ */
+
+#include "top.h"
+#include <boost/program_options.hpp>
+#include <scc/perf_estimator.h>
+#include <scc/report.h>
+#include <scc/tracer.h>
+
+using namespace scc;
+namespace po = boost::program_options;
+
+namespace {
+const size_t ERROR_IN_COMMAND_LINE = 1;
+const size_t SUCCESS = 0;
+const size_t ERROR_UNHANDLED_EXCEPTION = 2;
+} // namespace
+
+int sc_main(int argc, char* argv[]) {
+    sc_core::sc_report_handler::set_actions("/IEEE_Std_1666/deprecated", sc_core::SC_DO_NOTHING);
+    sc_core::sc_report_handler::set_actions(sc_core::SC_ID_MORE_THAN_ONE_SIGNAL_DRIVER_, sc_core::SC_DO_NOTHING);
+    ///////////////////////////////////////////////////////////////////////////
+    // CLI argument parsing
+    ///////////////////////////////////////////////////////////////////////////
+    po::options_description desc("Options");
+    // clang-format off
+    desc.add_options()
+    		("help,h",  "Print help message")
+			("debug,d", "set debug level")
+			("trace,t", "trace SystemC signals")
+			("dim",     po::value<unsigned>()->default_value(16))
+			("count",   po::value<unsigned>()->default_value(16384));
+    // clang-format on
+    po::variables_map vm;
+    try {
+        po::store(po::parse_command_line(argc, argv, desc), vm); // can throw
+        // --help option
+        if(vm.count("help")) {
+            std::cout << "JIT-ISS simulator for AVR" << std::endl << desc << std::endl;
+            return SUCCESS;
+        }
+        po::notify(vm); // throws on error, so do after help in case
+        // there are any problems
+    } catch(po::error& e) {
+        std::cerr << "ERROR: " << e.what() << std::endl << std::endl;
+        std::cerr << desc << std::endl;
+        return ERROR_IN_COMMAND_LINE;
+    }
+    ///////////////////////////////////////////////////////////////////////////
+    // configure logging
+    ///////////////////////////////////////////////////////////////////////////
+    scc::init_logging(vm.count("debug") ? scc::log::DEBUG : scc::log::INFO);
+    ///////////////////////////////////////////////////////////////////////////
+    // set up tracing & transaction recording
+    ///////////////////////////////////////////////////////////////////////////
+    // tracer trace("simple_system", tracer::TEXT, vm.count("trace"));
+    //  todo: fix displayed clock period in VCD
+    try {
+        ///////////////////////////////////////////////////////////////////////////
+        // instantiate top level
+        ///////////////////////////////////////////////////////////////////////////
+        perf_estimator estimator;
+        auto const count = vm["count"].as<unsigned>();
+        auto const dim = vm["dim"].as<unsigned>();
+        SCCINFO() << "Instantiating " << (unsigned)dim << "x" << (unsigned)dim << " matrix and executing " << count << " accesses";
+        top i_top("i_top", dim, count);
+        ///////////////////////////////////////////////////////////////////////////
+        // run simulation
+        ///////////////////////////////////////////////////////////////////////////
+        sc_start(sc_core::sc_time(1, sc_core::SC_MS));
+        if(sc_core::sc_is_running()) {
+            SCCERR() << "simulation timed out"; // calls sc_stop
+            sc_core::sc_stop();
+        }
+    } catch(sc_core::sc_report& e) {
+        SCCERR() << "Caught sc_report exception during simulation: " << e.what() << ":" << e.get_msg();
+    } catch(std::exception& e) {
+        SCCERR() << "Caught exception during simulation: " << e.what();
+    } catch(...) {
+        SCCERR() << "Caught unspecified exception during simulation";
+    }
+    auto errcnt = sc_core::sc_report_handler::get_count(sc_core::SC_ERROR);
+    auto warncnt = sc_core::sc_report_handler::get_count(sc_core::SC_WARNING);
+    SCCINFO() << "simulation finished, " << errcnt << " error" << (errcnt == 1 ? "" : "s") << " and " << warncnt << " warning"
+              << (warncnt == 1 ? "" : "s");
+    return errcnt + warncnt;
+}
