@@ -40,7 +40,7 @@ jobs:
       - name: Configure
         run: cmake --preset Debug -B build -DCMAKE_CXX_STANDARD=20  -DENABLE_CLANG_FORMAT=ON
 
-      - name: Build
+      - name: Check Format
         run: cmake --build build --target format-check
 
       - name: Build
