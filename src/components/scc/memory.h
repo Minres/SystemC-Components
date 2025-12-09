@@ -53,8 +53,6 @@ namespace scc {
  */
 template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24> class memory : public sc_core::sc_module {
 public:
-    static constexpr uint64_t page_size = (1 << PAGE_ADDR_BITS);
-
     //! the target socket to connect to TLM
     tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
     //! CCI parameter to configure if DMI is allowd
@@ -70,7 +68,13 @@ public:
      * @brief return the size of the array
      *
      */
-    constexpr unsigned long long getSize() const { return SIZE; }
+    static constexpr unsigned long long getPageSize() { return 1 << PAGE_ADDR_BITS; }
+    /**
+     * @fn unsigned long long getSize()const
+     * @brief return the size of the array
+     *
+     */
+    static constexpr unsigned long long getSize() { return SIZE; }
     /**
      * @fn void set_operation_callback(std::function<int (memory<SIZE,BUSWIDTH>&, tlm::tlm_generic_payload&)>)
      * @brief allows to register a callback or functor being invoked upon an access to the memory
