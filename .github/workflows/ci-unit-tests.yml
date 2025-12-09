@@ -21,15 +21,9 @@ jobs:
     name: unit-tests (C++20)
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout SystemC-Components-Test
-        uses: actions/checkout@v6
-        with:
-          repository: Minres/SystemC-Components-Test
-          submodules: true
       - name: Checkout SystemC-Components
         uses: actions/checkout@v6
         with:
-          path: scc
           submodules: true
       - name: Cache Conan
         uses: actions/cache@v4
@@ -45,10 +39,7 @@ jobs:
           cmake --version
 
       - name: Configure
-        run: >
-          cmake --preset Debug -B build
-          -DBUILD_TESTING=ON
-          -DCMAKE_CXX_STANDARD=20
+        run: cmake --preset Debug -B build -DCMAKE_CXX_STANDARD=20
 
       - name: Build
         run: cmake --build build -j

@@ -104,6 +104,8 @@ endif()
 find_package(fmt REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(yaml-cpp REQUIRED)
+find_package(Catch2 QUIET)
+
 if(MSVC)
     add_compile_options(/vmg /MP /W3 /wd4244 /wd4267 /wd4996  -DNOMINMAX /EHsc)
     link_directories(${Boost_LIBRARY_DIRS})
@@ -124,6 +126,8 @@ endif()
 ###############################################################################
 add_subdirectory(src/common)
 if(SystemC_FOUND)
+    enable_testing()
+
     add_subdirectory(src/interfaces)
     add_subdirectory(src/components)
     add_subdirectory(src/sysc)
@@ -169,6 +173,14 @@ if(SystemC_FOUND)
 		endif()
 	    add_library(scc::scc_shared ALIAS scc_shared)
 	endif()
+
+    if(Catch2_FOUND)
+        message(STATUS "SCC: Including Catch2 based tests")
+        include(Catch)
+        set(WITH_SCP4SCC ON)
+        add_subdirectory(tests)
+    endif()
+
     install(TARGETS scc
         EXPORT scc-targets
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

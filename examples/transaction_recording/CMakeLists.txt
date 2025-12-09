@@ -25,6 +25,6 @@ if(APPLE)
 endif()
 
 
-add_test(NAME tx_rec_test COMMAND transaction_recording)
-add_test(NAME tx_rec_ftr_test COMMAND transaction_recording_ftr)
-add_test(NAME tx_rec_cftr_test COMMAND transaction_recording_cftr)
+add_test(NAME tx_rec_example COMMAND transaction_recording)
+add_test(NAME tx_rec_ftr_example COMMAND transaction_recording_ftr)
+add_test(NAME tx_rec_cftr_example COMMAND transaction_recording_cftr)

@@ -8,4 +8,4 @@ if(APPLE)
         -Wl,-U,_sc_main,-U,___sanitizer_start_switch_fiber,-U,___sanitizer_finish_switch_fiber)
 endif()
 
-add_test(NAME lwtr_example_test COMMAND ${PROJECT_NAME})
+add_test(NAME lwtr_example COMMAND ${PROJECT_NAME})

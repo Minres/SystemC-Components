@@ -1,0 +1,5 @@
+if(SC_VERSION_MAJOR GREATER 2)
+    add_executable (quantum_keeper_mt sc_main.cpp)
+    target_link_libraries (quantum_keeper_mt LINK_PUBLIC scc::components)
+    add_test(NAME quantum_keeper_mt COMMAND quantum_keeper_mt)
+endif()
