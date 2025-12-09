@@ -48,11 +48,10 @@ jobs:
           cmake --preset Debug -B build
           -DBUILD_TESTING=ON
           -DCMAKE_CXX_STANDARD=20
-        working-directory: scc
 
       - name: Build
         run: cmake --build build -j
-        working-directory: scc
+
       - name: Run unit tests
         run: ctest --output-on-failure
-        working-directory: scc/build
+        working-directory: build
