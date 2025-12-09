@@ -6,7 +6,6 @@ project(scc VERSION 2025.09 LANGUAGES CXX C)
 
 option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
-option(BUILD_TESTING "Enable building tests" OFF)
 option(BUILD_SCC_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" OFF)
 option(FULL_TRACE_TYPE_LIST "Test for extended set of templated datatypes" OFF)
 #Note: this needs to match the SystemC kernel build options
@@ -115,10 +114,6 @@ include(CheckSymbolExists)
 # Check for function getenv()
 check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)
 
-if(BUILD_TESTING)
-    include(CTest)
-endif()
-
 if(NOT TARGET lz4::lz4)
     message(STATUS "${PROJECT_NAME}: using built-in version of lz4")
     add_subdirectory(third_party/lz4-1.9.4)
@@ -137,10 +132,6 @@ if(SystemC_FOUND)
         if (NOT (DEFINED CMAKE_CXX_CLANG_TIDY OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
             add_subdirectory(examples)
         endif()
-    endif()
-
-    if(BUILD_TESTING)
-        add_subdirectory(tests)
     endif()
 
     # Define the scc library
