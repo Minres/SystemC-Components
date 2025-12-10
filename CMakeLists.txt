@@ -136,6 +136,12 @@ if(SystemC_FOUND)
         if (NOT (DEFINED CMAKE_CXX_CLANG_TIDY OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
             add_subdirectory(examples)
         endif()
+	    if(Catch2_FOUND)
+	        message(STATUS "SCC: Including Catch2 based tests")
+	        include(Catch)
+	        set(WITH_SCP4SCC ON)
+	        add_subdirectory(tests)
+	    endif()
     endif()
 
     # Define the scc library
@@ -173,13 +179,6 @@ if(SystemC_FOUND)
 		endif()
 	    add_library(scc::scc_shared ALIAS scc_shared)
 	endif()
-
-    if(Catch2_FOUND)
-        message(STATUS "SCC: Including Catch2 based tests")
-        include(Catch)
-        set(WITH_SCP4SCC ON)
-        add_subdirectory(tests)
-    endif()
 
     install(TARGETS scc
         EXPORT scc-targets
