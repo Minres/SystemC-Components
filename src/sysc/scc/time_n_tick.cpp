@@ -63,7 +63,7 @@ void tick2time::handle_clock_parameters_updated(scml_clock_if* clk_if) {
 void tick2time::handle_clock_deleted(scml_clock_if*){};
 #endif
 
-inline void time2tick::clocker() {
+void time2tick::clocker() {
     while(true) {
         auto t = clk_i.read();
         if(t == sc_core::SC_ZERO_TIME) {
