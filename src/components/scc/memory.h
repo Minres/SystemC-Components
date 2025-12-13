@@ -33,10 +33,25 @@
 #include <scc/utilities.h>
 #include <tlm.h>
 #include <tlm/scc/target_mixin.h>
+#include <type_traits>
 #include <util/range_lut.h>
 #include <util/sparse_array.h>
 
 namespace scc {
+template <bool USE_CYCLES> struct delay_spec_type;
+
+template <> struct delay_spec_type<true> {
+    using type = unsigned;
+    static inline unsigned get_default_val() { return 0; };
+    static inline sc_core::sc_time get_effective_value(unsigned cycles, sc_core::sc_time period) { return cycles * period; }
+};
+
+template <> struct delay_spec_type<false> {
+    using type = sc_core::sc_time;
+    static inline sc_core::sc_time get_default_val() { return sc_core::SC_ZERO_TIME; };
+    static inline sc_core::sc_time get_effective_value(sc_core::sc_time delay, sc_core::sc_time period) { return delay; }
+};
+
 /**
  * @class memory
  * @brief simple TLM2.0 LT memory model
@@ -51,12 +66,13 @@ namespace scc {
  * @tparam SIZE size of the memery
  * @tparam BUSWIDTH bus width of the socket
  */
-template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24> class memory : public sc_core::sc_module {
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24, bool USE_CYCLES = false>
+class memory : public sc_core::sc_module {
 public:
+    using delay_type = typename delay_spec_type<USE_CYCLES>::type;
+
     //! the target socket to connect to TLM
     tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
-    //! CCI parameter to configure if DMI is allowd
-    cci::cci_param<bool> allow_dmi{"allow_dmi", true, "Allow DMI accesses to this memory if set"};
     /**
      * constructor with explicit instance name
      *
@@ -92,21 +108,18 @@ public:
      */
     void set_dmi_callback(std::function<bool(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> cb) { dmi_cb = cb; }
     /**
-     * read response delay
+     * @brief allow DMI accesses
+     *
      */
-    cci::cci_param<sc_core::sc_time> rd_resp_delay{"rd_resp_delay", sc_core::SC_ZERO_TIME};
+    cci::cci_param<bool> allow_dmi{"allow_dmi", true, "Allow DMI accesses to this memory if set"};
     /**
-     * write response delay
+     * @brief read response delay in cycles if USE_CYCLES==true else in sc_core::sc_time
      */
-    cci::cci_param<sc_core::sc_time> wr_resp_delay{"wr_resp_delay", sc_core::SC_ZERO_TIME};
+    cci::cci_param<delay_type> rd_resp_delay{"rd_resp_delay", delay_spec_type<USE_CYCLES>::get_default_val()};
     /**
-     * read response delay in clock cycles
+     * @brief write response delay in cycles if USE_CYCLES==true else in sc_core::sc_time
      */
-    cci::cci_param<unsigned> rd_resp_clk_delay{"rd_resp_clk_delay", 0};
-    /**
-     * write response delay in clock cycles
-     */
-    cci::cci_param<unsigned> wr_resp_clk_delay{"wr_resp_clk_delay", 0};
+    cci::cci_param<delay_type> wr_resp_delay{"wr_resp_delay", delay_spec_type<USE_CYCLES>::get_default_val()};
     /**
      * @fn void map_host_memory(uint64_t, uint64_t, uint8_t*)
      * @brief maps a given memory into the address range of the TLM memory
@@ -159,8 +172,10 @@ public:
     std::function<bool(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> dmi_cb;
 };
 
-template <unsigned long long SIZE, unsigned BUSWIDTH = LT> using memory_tl = tickless_clock<memory<SIZE, BUSWIDTH>>;
-template <unsigned long long SIZE, unsigned BUSWIDTH = LT> using memory_tc = ticking_clock<memory<SIZE, BUSWIDTH>>;
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24>
+using memory_tl = tickless_clock<memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, false>>;
+template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24>
+using memory_tc = ticking_clock<memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, true>>;
 
 template <unsigned long long SIZE, unsigned BUSWIDTH = LT>
 int handle_operation(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, sc_core::sc_time& delay);
@@ -178,8 +193,8 @@ struct host_mem_map_extension : public tlm::tlm_extension<host_mem_map_extension
 ///////////////////////////////////////////////////////////////////////////////
 /// implementation details
 /// ///////////////////////////////////////////////////////////////////////////
-template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS>
-memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS>::memory(const sc_core::sc_module_name& nm)
+template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS, bool USE_CYCLES>
+memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::memory(const sc_core::sc_module_name& nm)
 : sc_module(nm) {
     // Register callback for incoming b_transport interface method call
     target.register_b_transport([this](tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) -> void {
@@ -202,8 +217,8 @@ memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS>::memory(const sc_core::sc_module_name& nm
     });
 }
 
-template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS>
-int memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS>::handle_operation(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
+template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS, bool USE_CYCLES>
+int memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::handle_operation(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay) {
     uint64_t adr = trans.get_address();
     uint8_t* ptr = trans.get_data_ptr();
     unsigned len = trans.get_data_length();
@@ -236,7 +251,7 @@ int memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS>::handle_operation(tlm::tlm_generic_pa
     trans.set_response_status(tlm::TLM_OK_RESPONSE);
     auto hm_entry = host_mem_lut.getEntry(adr);
     if(cmd == tlm::TLM_READ_COMMAND) {
-        delay += clk_period.value() ? clk_period * rd_resp_clk_delay : rd_resp_delay;
+        delay += delay_spec_type<USE_CYCLES>::get_effective_value(rd_resp_delay, clk_period);
         if(hm_entry.ptr) {
             auto hm_start_offs = adr - hm_entry.base;
             auto hm_end_offs = hm_start_offs + len;
@@ -269,7 +284,7 @@ int memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS>::handle_operation(tlm::tlm_generic_pa
             }
         }
     } else if(cmd == tlm::TLM_WRITE_COMMAND) {
-        delay += clk_period.value() ? clk_period * wr_resp_clk_delay : wr_resp_delay;
+        delay += delay_spec_type<USE_CYCLES>::get_effective_value(clk_period, wr_resp_delay);
         if(hm_entry.ptr) {
             auto hm_start_offs = adr - hm_entry.base;
             auto hm_end_offs = adr + len - hm_entry.base;
@@ -293,8 +308,8 @@ int memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS>::handle_operation(tlm::tlm_generic_pa
     return len;
 }
 
-template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS>
-inline bool memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS>::handle_dmi(tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data) {
+template <unsigned long long SIZE, unsigned BUSWIDTH, unsigned PAGE_ADDR_BITS, bool USE_CYCLES>
+inline bool memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::handle_dmi(tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data) {
     if(allow_dmi.get_value()) {
         auto hm_entry = host_mem_lut.getEntry(gp.get_address());
         if(hm_entry.ptr) {
@@ -310,8 +325,8 @@ inline bool memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS>::handle_dmi(tlm::tlm_generic_
             dmi_data.set_dmi_ptr(p.data());
         }
         dmi_data.set_granted_access(tlm::tlm_dmi::DMI_ACCESS_READ_WRITE);
-        dmi_data.set_read_latency(clk_period.value() ? clk_period * rd_resp_clk_delay : rd_resp_delay);
-        dmi_data.set_write_latency(clk_period.value() ? clk_period * wr_resp_clk_delay : wr_resp_delay);
+        dmi_data.set_read_latency(delay_spec_type<USE_CYCLES>::get_effective_value(clk_period, rd_resp_delay));
+        dmi_data.set_write_latency(delay_spec_type<USE_CYCLES>::get_effective_value(clk_period, wr_resp_delay));
     }
     return allow_dmi.get_value();
 }
