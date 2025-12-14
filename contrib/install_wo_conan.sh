@@ -74,7 +74,7 @@ fi
 #
 ############################################################################################
 function build_boost {
-    export BOOST_LIB_EXCLUDE=contract,fiber,graph,graph_parallel,iostreams,json,locale,log,math,mpi,nowide,python,random,stacktrace,test,timer,wave
+    export BOOST_LIB_EXCLUDE=contract,fiber,graph,graph_parallel,iostreams,json,locale,log,math,mpi,nowide,python,random,test,timer,wave
 
     if [ ! -d boost_1_89_0 ]; then
         [ -f boost_1_89_0.tar.bz2 ] || wget https://archives.boost.io/release/1.89.0/source/boost_1_89_0.tar.bz2
