@@ -34,7 +34,7 @@ set TOOLSET=msvc-14.3
 
 @REM we need to keep CMAKE_POLICY_VERSION_MINIMUM=3.5 unless yaml-cpp, SystemC & SystemC-AMS have fixed their build system
 set CMAKE_OPTS=-G "%GENERATOR%" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_CXX_STANDARD=%CXX_STD% -DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=ON -DCMAKE_PREFIX_PATH=%SCC_HOME% -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-set BOOST_LIB_EXCLUDE=--without-contract --without-fiber --without-graph --without-graph_parallel --without-iostreams --without-json --without-locale --without-log --without-math --without-mpi --without-nowide --without-python --without-random --without-stacktrace --without-test --without-timer --without-wave
+set BOOST_LIB_EXCLUDE=--without-contract --without-fiber --without-graph --without-graph_parallel --without-iostreams --without-json --without-locale --without-log --without-math --without-mpi --without-nowide --without-python --without-random --without-test --without-timer --without-wave
 set BOOST_CMAKE_OPTS=-DBoost_NO_SYSTEM_PATHS=TRUE -DBOOST_ROOT=%SCC_HOME% -DBOOST_INCLUDEDIR=%SCC_HOME%\include\boost-1_89 -DBoost_NO_WARN_NEW_VERSIONS=ON -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DBoost_USE_STATIC_RUNTIME=OFF
 @REM ############################################################################################
 @REM build_boost

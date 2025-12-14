@@ -48,8 +48,11 @@ if(BUILD_SCC_DOCUMENTATION)
     add_subdirectory(doc)
 endif()
 set(SCC_CMAKE_CONFIG_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/scc)
-
-
+if(BUILD_SCC_LIB_ONLY)
+	message(STATUS "SCC: Building only library")
+else()
+	message(STATUS "SCC: Building library, tests, and examples")
+endif()
 ###############################################################################
 # build the SCC
 ###############################################################################
