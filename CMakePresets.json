@@ -20,7 +20,7 @@
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
                 "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "cmake/conan_provider.cmake",
                 "CONAN_HOST_PROFILE": "auto-cmake",
-                "CONAN_BUILD_PROFILE": "${sourceDir}/build/${presetName}/conan_host_profile"
+                "CONAN_BUILD_PROFILE": "conan_host_profile"
             }
         },
         {
