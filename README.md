@@ -1,3 +1,5 @@
+[![CI C++ Std compliance](https://github.com/Minres/SystemC-Components/actions/workflows/ci-compliance.yml/badge.svg)](https://github.com/Minres/SystemC-Components/actions/workflows/ci-compliance.yml) [![CI Unit Tests](https://github.com/Minres/SystemC-Components/actions/workflows/ci-unit-tests.yml/badge.svg)](https://github.com/Minres/SystemC-Components/actions/workflows/ci-unit-tests.yml)
+
 SystemC-Components (SCC)
 ========================
 
@@ -15,7 +17,7 @@ Here is a short list of features.
   
 * Automatic tracer
 
-  The tracer(s) allow to automatically discover signals and sc_variables (see below) and register them with the trace file. If the configurer is being used the tracing can be controlled on an per-instance base
+  The tracer(s) allow to automatically discover signals and sc_variables (see below) and register them with the trace file. If the configurer is being used the tracing can be controlled on an per-instance basis
   
 * Various optimized trace file implementations
   * compressed VCD
@@ -31,7 +33,7 @@ Here is a short list of features.
 
 * Extended and optimized transaction recording database(s)
 
-  Aside of the SCV text file format SCC comes with other file format writer. scv_tr_sqlite is a SQLite based database back-end for the SystemC Verification library (SCV) transaction recording infrastructure while scv_tr_compressed is a text base database back-end with compression to reduce the file size. These format are also supporte by the [SCViewer](https://minres.github.io/SCViewer/).
+  Aside of the SCV text file format SCC comes with other file format writers. scv_tr_sqlite is a SQLite based database back-end for the SystemC Verification library (SCV) transaction recording infrastructure while scv_tr_compressed is a text base database back-end with compression to reduce the file size. Last but not least there is a highly compressed streaming data format called '**F**ast **T**ransaction **R**ecording (FTR)' (see also [LWTR2SC](https://github.com/Minres/LWTR4SC)). These formats are also supporte by the [SCViewer](https://minres.github.io/SCViewer/).
 
 * sysc::sc_variable
 
@@ -48,12 +50,27 @@ Here is a short list of features.
 * sysc::router
 
   A simple component to route TLM2.0 accesses of a set of masters to a set of targets based on generic payload addresses
-  
-* various TLM2.0 AT and pin-level adapters for common bus protocols like
+
+* a set of bus and network protocols at the AT level:
   * APB
   * AHB
   * AXI/ACE
+  * CHI
   * OBI
+  * OCP
+  * TileLink
+  * SPI
+  * UART
+  * AXIStream
+  * CXS
+
+* various TLM2.0 AT <-> pin-level adapters for common bus protocols like
+  * APB
+  * AHB
+  * AXI/ACE/ACE-Lite
+  * OBI (target)
+  * OCP (target)
+  * TileLink UH (initiator)
 
 The full documentation can be found at the [Github pages](https://minres.github.io/SystemC-Components/)
 
@@ -65,7 +82,7 @@ If SystemC is build using cmake with `SC_WITH_PHASE_CALLBACK_TRACING=ON` (which 
 Build instructions using conan
 =======================================
 
-The repo is cmake based and (preferably) uses conan. Make sure that you have at least cmake 3.20 and conan version <2.0 installed. There are known issues with conan 2.x. Other combinations may work, but are not tested.
+The repo is cmake based and (preferably) uses conan. Make sure that you have at least cmake 3.24 and conan version >2.0 installed. Other combinations may work, but are not tested.
 
 On Linux
 =======================================
@@ -82,12 +99,12 @@ For example:
 
 ```
 
-    cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=<some install path>
-    cmake --build build -j16 
-    cmake --build build --target  test
-    cmake --build build --target install
-    ./examples/ace-axi/ace_axi_example
-    ./examples/axi-axi/axi_axi_example
+    cmake --preset Release -DCMAKE_INSTALL_PREFIX=<some install path>
+    cmake --build build/Release -j16 
+    cmake --build build/Release --target  test
+    cmake --build build/Release --target install
+    build//Release/examples/ace-axi/ace_axi_example
+    build//Release/examples/axi-axi/axi_axi_example
 
 ```
 
@@ -98,9 +115,9 @@ On Windows
 =======================================
 
 ```
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=<some install path>
-cmake --build build --config Release
-cmake --build build --config Release --target install
+cmake --preset Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=<some install path>
+cmake --build build/Release --config Release
+cmake --build build/Release --config Release --target install
 ```
 
 Build instructions using install script
