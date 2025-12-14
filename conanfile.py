@@ -50,7 +50,7 @@ class Pkg(ConanFile):
         self.requires("catch2/3.11.0")
 
     def build_requirements(self):
-        pass
+        self.tool_requires("doxygen/1.15.0")
 
     def layout(self):
         cmake_layout(self)

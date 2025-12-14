@@ -15,12 +15,12 @@
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_POLICY_DEFAULT_CMP0091": "NEW",
-                "CMAKE_CXX_STANDARD": "20",
+                "CMAKE_CXX_STANDARD": "17",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
                 "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "cmake/conan_provider.cmake",
                 "CONAN_HOST_PROFILE": "auto-cmake",
-                "CONAN_BUILD_PROFILE": "conan_host_profile"
+                "CONAN_BUILD_PROFILE": "${sourceDir}/build/${presetName}/conan_host_profile"
             }
         },
         {
@@ -30,14 +30,14 @@
                 "CMAKE_BUILD_TYPE": "Debug"
             }
         },
-		{
-		    "name": "DebugCXX20",
-		    "inherits": "Base",
-		    "cacheVariables": {
-				"CMAKE_CXX_STANDARD": "20",
-		        "CMAKE_BUILD_TYPE": "Debug"
-		    }
-		},
+        {
+            "name": "DebugCXX20",
+            "inherits": "Base",
+            "cacheVariables": {
+                "CMAKE_CXX_STANDARD": "20",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
         {
             "name": "RelWithDebInfo",
             "inherits": "Base",
@@ -49,7 +49,8 @@
             "name": "Release",
             "inherits": "Base",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
+                "CMAKE_BUILD_TYPE": "Release",
+                "BUILD_SCC_DOCUMENTATION": "ON"
             }
         }
     ],

@@ -7,4 +7,6 @@
 /.cproject
 /.venv
 /conan/
-.direnv
+/.direnv
+/.cache
+/install

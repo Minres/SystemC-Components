@@ -6,7 +6,7 @@ set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in)
 configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
 
 set(DOXYGEN_PROJECT_BRIEF "SystemC components library")
-set(DOXYGEN_USE_MDFILE_AS_MAINPAGE  README.md)
+set(DOXYGEN_USE_MDFILE_AS_MAINPAGE  ${PROJECT_SOURCE_DIR}/README.md)
 # exclude json code
 # doxygen settings can be set here, prefixed with "DOXYGEN_"
 set(DOXYGEN_SOURCE_BROWSER YES)

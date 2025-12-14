@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_CURRENT_BINARY_DIR}) # project specific cmake dir
 cmake_policy(SET CMP0077 NEW)
 
-project(scc VERSION 2025.09 LANGUAGES CXX C)
+project(scc VERSION 2025.12 LANGUAGES CXX C)
 
 option(USE_CWR_SYSTEMC "Use Synopsys Virtualizer SystemC" OFF)
 option(USE_NCSC_SYSTEMC "Cadence Xcelium SystemC" OFF)
@@ -44,9 +44,6 @@ else()
 	set(CLANG_FORMAT_EXCLUDE_PATTERNS ${CLANG_FORMAT_EXCLUDE_PATTERNS} "/third_party/" PARENT_SCOPE)
 endif()
 
-if(BUILD_SCC_DOCUMENTATION)
-    add_subdirectory(doc)
-endif()
 set(SCC_CMAKE_CONFIG_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/scc)
 if(BUILD_SCC_LIB_ONLY)
 	message(STATUS "SCC: Building only library")
@@ -228,6 +225,13 @@ if(SystemC_FOUND)
         DESTINATION ${SCC_CMAKE_CONFIG_DIR})
 else()
     add_subdirectory(third_party)
+endif()
+if(BUILD_SCC_DOCUMENTATION)
+    get_property(GENERATORS_FOLDER GLOBAL PROPERTY CONAN_GENERATORS_FOLDER )
+    if(EXISTS "${GENERATORS_FOLDER}/conan_toolchain.cmake")
+        include(${GENERATORS_FOLDER}/conan_toolchain.cmake)
+    endif()
+    add_subdirectory(doc)
 endif()
 ###############################################################################
 # install dependend libs
