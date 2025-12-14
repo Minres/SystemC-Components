@@ -25,6 +25,12 @@
 var NAVTREE =
 [
   [ "scc", "index.html", [
+    [ "SystemC-Components (SCC)", "index.html#autotoc_md6", null ],
+    [ "Build notes", "index.html#autotoc_md7", null ],
+    [ "Build instructions using conan", "index.html#autotoc_md8", null ],
+    [ "On Linux", "index.html#autotoc_md9", null ],
+    [ "On Windows", "index.html#autotoc_md10", null ],
+    [ "Build instructions using install script", "index.html#autotoc_md11", null ],
     [ "Todo List", "todo.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Topics", "topics.html", "topics" ],
@@ -68,13 +74,13 @@ var NAVTREEINDEX =
 "classtlm_1_1scc_1_1scv_1_1tlm__recorder.html#a4dce159d9d7a3649441fc832637a1d8c",
 "classutil_1_1ring__buffer.html#a59e8741eb81d021ea9356bbac9374bff",
 "group__scc-common.html#gaf80fd6c5d795233c91425d97070f5edf",
-"scc_2initiator__mixin_8h_source.html",
-"structaxi_1_1axi4__extension.html#a85b0a5945b9e8d65b27df0e60ff51531",
-"structaxi_1_1rresp__axi.html",
-"structnonstd_1_1variants_1_1detail_1_1S5.html",
-"structscc_1_1router.html#a5a4001baef601f280e103718dac4a64c",
-"structtilelink_1_1tl__c.html",
-"tlm2__pv__av_8h_source.html"
+"sc__logic__7_8h_source.html",
+"structaxi_1_1axi4__extension.html",
+"structaxi_1_1response.html#aca030a28fd36e54836c12e2ca8bd3304",
+"structnonstd_1_1variants_1_1detail_1_1S13.html",
+"structscc_1_1router.html#a4c5d4657273941220741aa55752c9df0",
+"structtilelink_1_1tilelink__extension.html",
+"tl__tlm_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
