@@ -1,0 +1,5 @@
+<map id="scc::hierarchy_dumper" name="scc::hierarchy_dumper">
+<area shape="rect" id="Node000001" title="A SystemC module for dumping the hierarchy of objects in a specified format." alt="" coords="5,79,160,104"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="13,5,152,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,44,85,79,80,79,80,44"/>
+</map>

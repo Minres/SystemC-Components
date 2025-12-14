@@ -1,0 +1,10 @@
+<map id="nonstd::detail::optional_copy_base&lt; T, false &gt;" name="nonstd::detail::optional_copy_base&lt; T, false &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="11,309,170,349"/>
+<area shape="rect" id="Node000002" href="$structnonstd_1_1detail_1_1optional__operations__base.html" title=" " alt="" coords="13,220,169,260"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,273,86,309,80,309,79,274"/>
+<area shape="poly" id="edge4_Node000001_Node000002" title=" " alt="" coords="102,274,101,309,96,309,97,273"/>
+<area shape="rect" id="Node000003" href="$structnonstd_1_1detail_1_1optional__storage__base.html" title=" " alt="" coords="5,131,176,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="93,185,93,220,88,220,88,185"/>
+<area shape="rect" id="Node000004" href="$structnonstd_1_1detail_1_1optional__storage__base_1_1dummy.html" title=" " alt="" coords="11,5,170,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="93,74,93,130,88,130,88,74"/>
+</map>

@@ -1,0 +1,19 @@
+<map id="scc::sc_variable_b" name="scc::sc_variable_b">
+<area shape="rect" id="Node000001" title=" " alt="" coords="185,119,316,145"/>
+<area shape="rect" id="Node000003" href="$structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4.html" title=" " alt="" coords="384,5,536,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="292,109,363,67,423,43,425,48,365,72,294,114"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="268,107,310,74,363,43,382,34,385,39,365,48,313,79,272,111"/>
+<area shape="rect" id="Node000004" href="$structscc_1_1sc__variable.html" title=" " alt="" coords="364,70,556,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="318,114,405,93,406,98,319,119"/>
+<area shape="rect" id="Node000005" href="$structscc_1_1sc__variable_3_01bool_01_4.html" title=" " alt="" coords="378,119,542,145"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="330,138,378,138,378,143,330,143"/>
+<area shape="poly" id="edge9_Node000001_Node000005" title=" " alt="" coords="330,121,378,121,378,126,330,126"/>
+<area shape="rect" id="Node000006" href="$structscc_1_1sc__ref__variable.html" title="the sc_ref_variable for a particular plain data type. This marks an existing C++ variable as discover..." alt="" coords="375,169,545,194"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="319,145,406,166,405,171,318,150"/>
+<area shape="rect" id="Node000007" href="$structscc_1_1sc__ref__variable__masked.html" title="the sc_variable for a particular plain data type with limited bit width" alt="" coords="391,219,529,259"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="281,151,320,178,365,204,393,216,391,221,363,209,317,183,278,155"/>
+<area shape="rect" id="Node000008" href="$structscc_1_1sc__variable.html" title="SystemC variable." alt="" coords="386,283,534,309"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="268,155,307,213,334,243,365,268,391,281,389,286,363,273,330,247,303,216,263,158"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,119,137,145"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,129,185,129,185,135,151,135"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="scc::tlm_target_bfs_register_base&lt; derived_t, use_URID &gt;" name="scc::tlm_target_bfs_register_base&lt; derived_t, use_URID &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="62,79,222,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,137,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,40,123,77,118,80,87,43"/>
+<area shape="rect" id="Node000003" href="$classscc_1_1resetable.html" title="base class for components having a reset" alt="" coords="162,5,266,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="198,43,166,80,162,77,194,39"/>
+</map>

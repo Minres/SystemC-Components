@@ -1,0 +1,49 @@
+<map id="axi::axi_target&lt; BUSWIDTH &gt;" name="axi::axi_target&lt; BUSWIDTH &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1649,99,1849,124"/>
+<area shape="rect" id="Node000002" href="$classaxi_1_1axi__target__base.html" title="axi_target class instantiates the AXI Protocol Engine. It accesses the Protocol Engine with access() ..." alt="" coords="1252,19,1393,44"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1407,42,1626,81,1696,96,1694,101,1625,86,1406,47"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="639,5,777,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="791,17,1252,27,1252,32,791,22"/>
+<area shape="rect" id="Node000007" href="$classaxi_1_1pe_1_1axi__target__pe.html" title=" " alt="" coords="1024,191,1173,216"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="785,31,885,55,925,67,947,77,956,90,960,102,960,126,960,149,963,160,971,171,996,187,1024,197,1023,202,993,192,967,175,958,163,954,150,955,126,955,103,951,92,944,81,923,72,884,60,784,36"/>
+<area shape="rect" id="Node000004" href="$structaxi_1_1axi__target__socket.html" title=" " alt="" coords="1417,91,1568,131"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1581,109,1649,109,1649,114,1581,114"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="969,62,1228,161"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1241,109,1417,109,1417,114,1241,114"/>
+<area shape="rect" id="Node000006" href="$classaxi_1_1pe_1_1simple__target.html" title=" " alt="" coords="1419,211,1567,251"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1548,203,1720,122,1722,127,1550,208"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1187,207,1418,223,1418,229,1187,212"/>
+<area shape="rect" id="Node000008" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="655,225,761,251"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="775,228,828,223,1023,207,1024,212,828,229,776,234"/>
+<area shape="rect" id="Node000009" href="$structscc_1_1peq.html" title=" " alt="" coords="245,281,401,350"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="414,295,654,246,655,251,415,300"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="27,303,159,328"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="172,313,245,313,245,318,172,318"/>
+<area shape="rect" id="Node000015" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="241,375,406,400"/>
+<area shape="poly" id="edge18_Node000015_Node000010" title=" " alt="" coords="143,330,230,359,274,372,273,377,229,365,141,335"/>
+<area shape="rect" id="Node000019" href="$structscc_1_1sc__variable__b.html" title=" " alt="" coords="258,231,389,256"/>
+<area shape="poly" id="edge22_Node000019_Node000010" title=" " alt="" coords="141,296,229,266,273,253,274,259,230,271,143,301"/>
+<area shape="rect" id="Node000011" href="$classscc_1_1fifo__w__cb.html" title=" " alt="" coords="229,137,417,206"/>
+<area shape="poly" id="edge11_Node000008_Node000011" title=" " alt="" coords="431,187,655,226,654,232,431,193"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="5,105,180,131"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="163,131,230,147,228,152,161,137"/>
+<area shape="rect" id="Node000014" href="$classscc_1_1fifo__w__cb.html" title=" " alt="" coords="441,72,588,127"/>
+<area shape="poly" id="edge15_Node000014_Node000012" title=" " alt="" coords="194,111,441,100,441,105,194,116"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="635,147,781,201"/>
+<area shape="poly" id="edge13_Node000007_Node000013" title=" " alt="" coords="795,178,1024,195,1023,200,795,183"/>
+<area shape="poly" id="edge14_Node000007_Node000014" title=" " alt="" coords="602,104,700,116,805,131,1045,188,1044,193,803,137,699,121,602,110"/>
+<area shape="poly" id="edge16_Node000007_Node000015" title=" " alt="" coords="420,391,502,394,599,393,702,387,804,373,882,361,912,348,943,322,951,310,954,299,954,275,954,251,958,239,968,227,993,210,1023,201,1024,206,996,215,971,231,963,241,959,252,959,275,960,299,956,312,947,325,915,353,883,366,804,378,702,392,599,399,502,399,419,397"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="5,373,180,399"/>
+<area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="194,384,241,384,241,390,194,389"/>
+<area shape="rect" id="Node000017" href="$structscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="41,423,145,448"/>
+<area shape="poly" id="edge19_Node000015_Node000017" title=" " alt="" coords="158,419,261,397,262,403,159,424"/>
+<area shape="rect" id="Node000018" href="$structscc_1_1sc__variable.html" title=" " alt="" coords="612,275,804,300"/>
+<area shape="poly" id="edge20_Node000007_Node000018" title=" " alt="" coords="757,301,801,311,850,316,899,311,922,304,944,292,954,278,955,262,957,244,967,227,994,211,1023,202,1025,208,996,216,971,231,962,246,961,262,959,280,947,296,925,309,900,317,850,322,800,317,756,307"/>
+<area shape="poly" id="edge21_Node000018_Node000019" title=" " alt="" coords="403,250,612,274,612,279,402,255"/>
+<area shape="rect" id="Node000020" href="$classaxi_1_1pe_1_1target__info__if.html" title=" " alt="" coords="1026,240,1171,265"/>
+<area shape="poly" id="edge23_Node000006_Node000020" title=" " alt="" coords="1185,245,1418,233,1418,238,1185,251"/>
+<area shape="rect" id="Node000021" href="$structaxi_1_1axi__target__socket.html" title=" " alt="" coords="994,374,1203,443"/>
+<area shape="poly" id="edge24_Node000006_Node000021" title=" " alt="" coords="1188,366,1446,249,1448,254,1191,371"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="613,435,803,534"/>
+<area shape="poly" id="edge25_Node000021_Node000022" title=" " alt="" coords="817,461,993,426,994,432,818,466"/>
+</map>

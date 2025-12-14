@@ -1,0 +1,16 @@
+<map id="nonstd::detail::optional_move_assign_base&lt; T, false &gt;" name="nonstd::detail::optional_move_assign_base&lt; T, false &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,577,212,617"/>
+<area shape="rect" id="Node000002" href="$structnonstd_1_1detail_1_1optional__copy__assign__base.html" title=" " alt="" coords="9,488,209,528"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,541,104,577,98,577,97,542"/>
+<area shape="poly" id="edge7_Node000001_Node000002" title=" " alt="" coords="120,542,119,577,114,577,115,541"/>
+<area shape="rect" id="Node000003" href="$structnonstd_1_1detail_1_1optional__move__base.html" title=" " alt="" coords="29,399,188,439"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="111,453,111,488,106,488,106,453"/>
+<area shape="rect" id="Node000004" href="$structnonstd_1_1detail_1_1optional__copy__base.html" title=" " alt="" coords="31,309,186,349"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="111,363,111,399,106,399,106,363"/>
+<area shape="rect" id="Node000005" href="$structnonstd_1_1detail_1_1optional__operations__base.html" title=" " alt="" coords="31,220,187,260"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="111,274,111,309,106,309,106,274"/>
+<area shape="rect" id="Node000006" href="$structnonstd_1_1detail_1_1optional__storage__base.html" title=" " alt="" coords="23,131,194,171"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="111,185,111,220,106,220,106,185"/>
+<area shape="rect" id="Node000007" href="$structnonstd_1_1detail_1_1optional__storage__base_1_1dummy.html" title=" " alt="" coords="29,5,188,60"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="111,74,111,130,106,130,106,74"/>
+</map>

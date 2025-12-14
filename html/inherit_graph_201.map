@@ -1,0 +1,43 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,402,125,427"/>
+<area shape="rect" id="Node000001" href="$classscc_1_1sc__in__opt.html" title=" " alt="" coords="184,5,328,45"/>
+<area shape="poly" id="edge466_Node000000_Node000001" title=" " alt="" coords="64,388,69,322,85,234,99,187,117,140,141,95,171,55,186,43,190,48,175,59,145,98,122,142,104,188,90,235,75,323,70,388"/>
+<area shape="rect" id="Node000002" href="$classscc_1_1sc__in__opt.html" title=" " alt="" coords="189,69,323,109"/>
+<area shape="poly" id="edge467_Node000000_Node000002" title=" " alt="" coords="66,388,75,333,93,261,124,186,145,151,171,119,188,107,191,111,175,123,150,154,129,189,98,263,80,334,72,388"/>
+<area shape="rect" id="Node000003" href="$classscc_1_1sc__in__opt.html" title=" " alt="" coords="173,134,339,159"/>
+<area shape="poly" id="edge468_Node000000_Node000003" title=" " alt="" coords="68,388,79,341,98,283,128,222,148,195,172,170,192,157,195,162,175,174,152,198,133,225,103,285,84,343,73,389"/>
+<area shape="rect" id="Node000004" href="$classscc_1_1sc__in__opt.html" title=" " alt="" coords="189,184,323,224"/>
+<area shape="poly" id="edge469_Node000000_Node000004" title=" " alt="" coords="73,388,109,313,137,271,172,234,190,222,192,226,175,238,141,274,114,315,78,390"/>
+<area shape="rect" id="Node000005" href="$classscc_1_1sc__in__opt_3_01bool_01_4.html" title=" " alt="" coords="179,249,333,274"/>
+<area shape="poly" id="edge470_Node000000_Node000005" title=" " alt="" coords="79,389,116,336,142,308,172,284,197,272,200,277,175,289,146,312,121,340,83,392"/>
+<area shape="rect" id="Node000006" href="$classscc_1_1sc__in__opt_3_01sc__dt_1_1sc__logic_01_4.html" title=" " alt="" coords="189,299,323,339"/>
+<area shape="poly" id="edge471_Node000000_Node000006" title=" " alt="" coords="96,392,172,348,199,336,201,341,175,353,98,397"/>
+<area shape="rect" id="Node000007" href="$classscc_1_1sc__inout__opt.html" title=" " alt="" coords="189,363,323,403"/>
+<area shape="poly" id="edge472_Node000000_Node000007" title=" " alt="" coords="139,400,188,391,189,397,140,405"/>
+<area shape="rect" id="Node000009" href="$classscc_1_1sc__inout__opt.html" title=" " alt="" coords="181,427,331,467"/>
+<area shape="poly" id="edge474_Node000000_Node000009" title=" " alt="" coords="139,424,181,431,180,437,138,430"/>
+<area shape="rect" id="Node000011" href="$classscc_1_1sc__inout__opt.html" title=" " alt="" coords="189,491,323,531"/>
+<area shape="poly" id="edge476_Node000000_Node000011" title=" " alt="" coords="98,432,175,476,201,488,199,493,172,481,96,437"/>
+<area shape="rect" id="Node000013" href="$classscc_1_1sc__inout__opt.html" title=" " alt="" coords="181,555,331,595"/>
+<area shape="poly" id="edge478_Node000000_Node000013" title=" " alt="" coords="84,437,121,489,147,516,175,540,195,552,192,557,172,545,143,520,117,492,79,441"/>
+<area shape="rect" id="Node000015" href="$classscc_1_1sc__inout__opt_3_01bool_01_4.html" title=" " alt="" coords="189,619,323,659"/>
+<area shape="poly" id="edge480_Node000000_Node000015" title=" " alt="" coords="77,440,91,476,112,520,140,565,175,605,192,616,189,621,172,609,135,568,107,523,86,478,72,441"/>
+<area shape="rect" id="Node000017" href="$classscc_1_1sc__inout__opt_3_01sc__dt_1_1sc__logic_01_4.html" title=" " alt="" coords="189,683,323,723"/>
+<area shape="poly" id="edge482_Node000000_Node000017" title=" " alt="" coords="73,440,84,489,103,550,133,613,152,643,175,669,191,680,188,685,172,673,148,646,128,616,98,551,79,490,68,442"/>
+<area shape="rect" id="Node000018" href="$classscc_1_1sc__in__opt.html" title="A template class for an optional input port with optimized binding." alt="" coords="187,747,325,773"/>
+<area shape="poly" id="edge483_Node000000_Node000018" title=" " alt="" coords="70,441,77,501,93,579,106,621,124,661,147,699,175,733,193,745,190,749,172,737,143,702,120,664,101,623,88,581,71,502,65,442"/>
+<area shape="rect" id="Node000019" href="$classscc_1_1sc__inout__opt.html" title="A template class for an optional input port with optimized binding." alt="" coords="177,797,335,822"/>
+<area shape="poly" id="edge484_Node000000_Node000019" title=" " alt="" coords="69,441,72,510,86,602,99,651,118,699,143,744,175,783,190,794,187,799,171,787,139,747,113,701,94,652,81,603,67,510,63,441"/>
+<area shape="rect" id="Node000008" href="$classscc_1_1sc__out__opt.html" title=" " alt="" coords="397,363,549,403"/>
+<area shape="poly" id="edge473_Node000007_Node000008" title=" " alt="" coords="336,380,397,380,397,385,336,385"/>
+<area shape="rect" id="Node000010" href="$classscc_1_1sc__out__opt.html" title=" " alt="" coords="403,427,544,467"/>
+<area shape="poly" id="edge475_Node000009_Node000010" title=" " alt="" coords="345,444,402,444,402,449,345,449"/>
+<area shape="rect" id="Node000012" href="$classscc_1_1sc__out__opt.html" title=" " alt="" coords="387,498,560,523"/>
+<area shape="poly" id="edge477_Node000011_Node000012" title=" " alt="" coords="336,508,387,508,387,513,336,513"/>
+<area shape="rect" id="Node000014" href="$classscc_1_1sc__out__opt.html" title=" " alt="" coords="403,555,544,595"/>
+<area shape="poly" id="edge479_Node000013_Node000014" title=" " alt="" coords="345,572,402,572,402,577,345,577"/>
+<area shape="rect" id="Node000016" href="$classscc_1_1sc__out__opt.html" title=" " alt="" coords="392,626,555,651"/>
+<area shape="poly" id="edge481_Node000015_Node000016" title=" " alt="" coords="336,636,392,636,392,641,336,641"/>
+<area shape="rect" id="Node000020" href="$classscc_1_1sc__out__opt.html" title="A template class for an optional input port with optimized binding." alt="" coords="400,797,547,822"/>
+<area shape="poly" id="edge485_Node000019_Node000020" title=" " alt="" coords="348,807,400,807,400,812,348,812"/>
+</map>

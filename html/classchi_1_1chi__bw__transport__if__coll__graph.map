@@ -1,0 +1,9 @@
+<map id="chi::chi_bw_transport_if&lt; TYPES &gt;" name="chi::chi_bw_transport_if&lt; TYPES &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="432,53,579,93"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="218,5,367,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="381,47,432,56,431,62,380,52"/>
+<area shape="rect" id="Node000003" href="$classchi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="201,84,384,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="397,90,431,83,432,89,398,95"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,99,153,124"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="167,109,201,109,201,114,167,114"/>
+</map>

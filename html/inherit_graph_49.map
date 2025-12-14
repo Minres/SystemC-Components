@@ -1,0 +1,17 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,221,104,246"/>
+<area shape="rect" id="Node000001" href="$classtlm_1_1nw_1_1initiator__mixin.html" title="initiator socket mixin" alt="" coords="152,5,363,45"/>
+<area shape="poly" id="edge392_Node000000_Node000001" title=" " alt="" coords="61,207,73,173,91,132,117,91,150,55,169,43,172,48,154,59,121,94,96,134,78,175,66,209"/>
+<area shape="rect" id="Node000002" href="$classtlm_1_1nw_1_1target__mixin.html" title=" " alt="" coords="154,70,361,125"/>
+<area shape="poly" id="edge393_Node000000_Node000002" title=" " alt="" coords="73,208,107,171,150,135,173,123,176,127,154,140,110,175,77,212"/>
+<area shape="rect" id="Node000003" href="$classtlm_1_1scc_1_1initiator__mixin.html" title="initiator socket mixin" alt="" coords="152,149,363,189"/>
+<area shape="poly" id="edge394_Node000000_Node000003" title=" " alt="" coords="106,214,151,199,189,187,191,192,153,204,108,219"/>
+<area shape="rect" id="Node000004" href="$classtlm_1_1scc_1_1signal__initiator__mixin.html" title=" " alt="" coords="177,213,338,253"/>
+<area shape="poly" id="edge395_Node000000_Node000004" title=" " alt="" coords="118,231,176,231,176,236,118,236"/>
+<area shape="rect" id="Node000005" href="$classtlm_1_1scc_1_1signal__target__mixin.html" title=" " alt="" coords="177,277,338,317"/>
+<area shape="poly" id="edge396_Node000000_Node000005" title=" " alt="" coords="108,248,153,263,191,275,189,280,151,268,106,253"/>
+<area shape="rect" id="Node000006" href="$classtlm_1_1scc_1_1tagged__initiator__mixin.html" title=" " alt="" coords="152,341,363,381"/>
+<area shape="poly" id="edge397_Node000000_Node000006" title=" " alt="" coords="76,256,110,293,153,327,178,339,175,344,151,332,106,296,72,259"/>
+<area shape="rect" id="Node000007" href="$classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="171,405,344,445"/>
+<area shape="poly" id="edge398_Node000000_Node000007" title=" " alt="" coords="67,258,99,325,123,361,154,391,172,403,170,407,150,395,119,364,94,328,62,260"/>
+</map>

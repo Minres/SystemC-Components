@@ -1,0 +1,7 @@
+<map id="TCB_SPAN_NAMESPACE_NAME::detail::is_container_element_type_compatible&lt; T, E, typename std::enable_if&lt;!std::is_same&lt; typename std::remove_cv&lt; decltype(detail::data(std::declval&lt; T &gt;()))&gt;::type, void &gt;::value &amp;&amp;std::is_convertible&lt; remove_pointer_t&lt; decltype(detail::data(std::declval&lt; T &gt;()))&gt;(*)[], E(*)[]&gt;::value &gt;::type &gt;" name="TCB_SPAN_NAMESPACE_NAME::detail::is_container_element_type_compatible&lt; T, E, typename std::enable_if&lt;!std::is_same&lt; typename std::remove_cv&lt; decltype(detail::data(std::declval&lt; T &gt;()))&gt;::type, void &gt;::value &amp;&amp;std::is_convertible&lt; remove_pointer_t&lt; decltype(detail::data(std::declval&lt; T &gt;()))&gt;(*)[], E(*)[]&gt;::value &gt;::type &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,79,243,251"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="6,5,114,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,42,89,77,84,79,68,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="138,5,241,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="181,45,165,79,160,77,176,42"/>
+</map>

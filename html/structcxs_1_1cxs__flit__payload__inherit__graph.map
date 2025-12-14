@@ -1,0 +1,7 @@
+<map id="cxs::cxs_flit_payload" name="cxs::cxs_flit_payload">
+<area shape="rect" id="Node000001" title=" " alt="" coords="15,181,160,207"/>
+<area shape="rect" id="Node000002" href="$structtlm_1_1nw_1_1tlm__network__payload.html" title=" " alt="" coords="5,93,169,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,147,90,181,85,181,85,147"/>
+<area shape="rect" id="Node000003" href="$structtlm_1_1nw_1_1tlm__network__payload__base.html" title="A base class for TLM network payloads." alt="" coords="16,5,159,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="90,59,90,93,85,93,85,59"/>
+</map>

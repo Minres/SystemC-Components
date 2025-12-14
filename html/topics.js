@@ -1,0 +1,5 @@
+var topics =
+[
+    [ "Common utilities", "group__scc-common.html", "group__scc-common" ],
+    [ "SystemC utilities", "group__scc-sysc.html", "group__scc-sysc" ]
+];

@@ -1,0 +1,19 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,179,85,204"/>
+<area shape="rect" id="Node000001" href="$structaxi_1_1fsm_1_1ATrans.html" title="special state to map AWREADY/WDATA of SNPS to AXI protocol" alt="" coords="165,5,283,31"/>
+<area shape="poly" id="edge413_Node000000_Node000001" title=" " alt="" coords="52,164,80,102,103,68,132,40,163,24,166,29,135,44,107,72,85,104,57,167"/>
+<area shape="rect" id="Node000002" href="$structaxi_1_1fsm_1_1Idle.html" title="the idle state" alt="" coords="175,55,273,80"/>
+<area shape="poly" id="edge414_Node000000_Node000002" title=" " alt="" coords="59,165,90,126,110,106,132,89,174,72,176,77,135,94,113,110,94,130,64,169"/>
+<area shape="rect" id="Node000003" href="$structaxi_1_1fsm_1_1PartialRequest.html" title="a burst beat" alt="" coords="142,104,306,129"/>
+<area shape="poly" id="edge415_Node000000_Node000003" title=" " alt="" coords="75,169,132,138,165,127,167,132,134,143,78,173"/>
+<area shape="rect" id="Node000004" href="$structaxi_1_1fsm_1_1PartialResponse.html" title="the beat of a burst response" alt="" coords="137,153,311,179"/>
+<area shape="poly" id="edge416_Node000000_Node000004" title=" " alt="" coords="99,181,136,176,137,181,99,186"/>
+<area shape="rect" id="Node000005" href="$structaxi_1_1fsm_1_1Request.html" title="the request, either the last beat of a write or the address phase of a read" alt="" coords="161,203,287,228"/>
+<area shape="poly" id="edge417_Node000000_Node000005" title=" " alt="" coords="100,196,161,204,160,210,99,201"/>
+<area shape="rect" id="Node000006" href="$structaxi_1_1fsm_1_1Response.html" title="the write response or the last read response (beat)" alt="" coords="156,252,292,277"/>
+<area shape="poly" id="edge418_Node000000_Node000006" title=" " alt="" coords="79,209,134,237,171,249,169,254,132,242,77,213"/>
+<area shape="rect" id="Node000007" href="$structaxi_1_1fsm_1_1WaitAck.html" title="waiting for ack in case of ACE access" alt="" coords="161,301,287,327"/>
+<area shape="poly" id="edge419_Node000000_Node000007" title=" " alt="" coords="64,214,94,251,113,270,135,286,162,299,160,304,132,291,110,274,90,255,60,217"/>
+<area shape="rect" id="Node000008" href="$structaxi_1_1fsm_1_1WaitForResponse.html" title="the operation state where the target can do it&#39;s stuff" alt="" coords="133,351,315,376"/>
+<area shape="poly" id="edge420_Node000000_Node000008" title=" " alt="" coords="57,216,86,277,108,309,135,336,157,348,155,353,132,340,104,312,81,279,53,218"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="tlm::scc::tlm_signal_target_socket&lt; SIG, TYPES, N, POL &gt;" name="tlm::scc::tlm_signal_target_socket&lt; SIG, TYPES, N, POL &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="372,124,519,179"/>
+<area shape="rect" id="Node000003" href="$classtlm_1_1scc_1_1signal__target__mixin.html" title=" " alt="" coords="577,5,747,60"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="494,114,565,69,588,58,591,63,568,74,497,118"/>
+<area shape="rect" id="Node000004" href="$classtlm_1_1scc_1_1signal__target__mixin.html" title=" " alt="" coords="567,84,757,139"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="532,133,566,126,567,132,533,138"/>
+<area shape="rect" id="Node000005" href="$classtlm_1_1scc_1_1signal__target__mixin.html" title=" " alt="" coords="579,163,745,217"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="533,164,579,173,578,178,532,169"/>
+<area shape="rect" id="Node000006" href="$classtlm_1_1scc_1_1signal__target__mixin.html" title=" " alt="" coords="583,242,741,311"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="499,184,568,228,590,240,587,244,565,232,496,189"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,87,324,215"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="338,149,372,149,372,154,338,154"/>
+</map>

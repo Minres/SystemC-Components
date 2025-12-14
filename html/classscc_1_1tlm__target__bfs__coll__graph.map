@@ -1,0 +1,27 @@
+<map id="scc::tlm_target_bfs&lt; regs_t, owner_t &gt;" name="scc::tlm_target_bfs&lt; regs_t, owner_t &gt;">
+<area shape="rect" id="Node000001" title="Peripheral base class using scc::tlm_target." alt="" coords="1381,79,1516,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="1112,5,1251,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1247,32,1279,41,1391,77,1389,82,1278,46,1245,37"/>
+<area shape="rect" id="Node000003" href="$classscc_1_1tlm__target__bfs__base.html" title=" " alt="" coords="1114,55,1249,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1263,80,1381,91,1381,96,1262,85"/>
+<area shape="rect" id="Node000004" href="$structscc_1_1tlm__target__bfs__params.html" title=" " alt="" coords="804,47,939,87"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="953,67,1114,71,1114,76,953,72"/>
+<area shape="rect" id="Node000005" href="$classscc_1_1tlm__target.html" title="a simple access&#45;width based bus interface (no DMI support)" alt="" coords="1084,119,1279,159"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1292,120,1381,107,1382,112,1293,125"/>
+<area shape="rect" id="Node000006" href="$classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="791,112,951,167"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="965,137,1084,137,1084,142,965,142"/>
+<area shape="rect" id="Node000007" href="$classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket.html" title=" " alt="" coords="565,119,736,159"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="750,137,791,137,791,142,750,142"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="235,62,461,131"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="475,112,565,125,565,130,474,117"/>
+<area shape="rect" id="Node000009" href="$classtlm_1_1scc_1_1scv_1_1tlm__recorder.html" title=" " alt="" coords="267,156,429,211"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="442,167,565,149,566,154,443,172"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="5,116,185,171"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="199,157,268,168,267,173,198,162"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="5,195,185,249"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="198,204,267,193,268,198,199,209"/>
+<area shape="rect" id="Node000012" href="$classutil_1_1range__lut.html" title=" " alt="" coords="785,191,957,245"/>
+<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="970,190,1101,157,1102,162,971,196"/>
+<area shape="rect" id="Node000013" href="$classscc_1_1tlm__target__bfs_1_1socket__accessor.html" title=" " alt="" coords="1114,184,1249,239"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="1261,184,1356,146,1413,117,1415,122,1358,151,1262,188"/>
+</map>

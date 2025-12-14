@@ -1,0 +1,9 @@
+<map id="tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;" name="tlm::scc::tlm2_pv_av_target_adapter&lt; BUSWIDTH, TYPES, N, POL, TSOCKET_TYPE, ISOCKET_TYPE &gt;">
+<area shape="rect" id="Node000001" title="A simple target adapter that splits incoming requests into AV and PV requests." alt="" coords="208,47,407,117"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="13,5,152,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,32,208,51,207,56,140,37"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,55,160,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="174,79,208,79,208,85,174,85"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,133,160,188"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="172,127,207,114,209,119,174,132"/>
+</map>

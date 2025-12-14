@@ -1,0 +1,13 @@
+<map id="tilelink::scv::tlc_recorder&lt; TYPES &gt;" name="tilelink::scv::tlc_recorder&lt; TYPES &gt;">
+<area shape="rect" id="Node000001" title="The TLM2 transaction recorder." alt="" coords="615,53,757,93"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="405,5,565,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="579,49,615,56,614,61,578,54"/>
+<area shape="rect" id="Node000003" href="$classtilelink_1_1tlc__bw__transport__if.html" title=" " alt="" coords="404,84,567,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="580,90,614,84,615,89,581,96"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="203,40,355,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="369,84,404,91,403,97,367,89"/>
+<area shape="rect" id="Node000005" href="$classtilelink_1_1bw__blocking__transport__if.html" title=" " alt="" coords="201,119,356,189"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="369,133,403,125,405,131,370,138"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,141,153,167"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="167,151,201,151,201,157,167,157"/>
+</map>

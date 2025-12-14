@@ -1,0 +1,11 @@
+<map id="tlm::scc::lwtr::tlm2_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;" name="tlm::scc::lwtr::tlm2_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="423,23,613,77"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="235,5,373,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="387,28,423,33,422,38,386,33"/>
+<area shape="rect" id="Node000003" href="$classtlm_1_1scc_1_1lwtr_1_1tlm2__lwtr.html" title=" " alt="" coords="233,55,375,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="388,67,422,62,423,67,389,72"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,15,185,69"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="199,59,234,66,233,71,198,64"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,93,185,148"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="199,99,233,92,234,98,200,104"/>
+</map>

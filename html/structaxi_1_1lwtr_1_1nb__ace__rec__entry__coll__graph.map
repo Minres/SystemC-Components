@@ -1,0 +1,7 @@
+<map id="axi::lwtr::nb_ace_rec_entry" name="axi::lwtr::nb_ace_rec_entry">
+<area shape="rect" id="Node000001" title=" " alt="" coords="7,220,151,260"/>
+<area shape="rect" id="Node000002" href="$structtlm_1_1scc_1_1lwtr_1_1nb__rec__entry.html" title=" " alt="" coords="19,131,139,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,185,81,220,76,220,76,185"/>
+<area shape="rect" id="Node000003" href="$classtlm_1_1scc_1_1tlm__payload__shared__ptr.html" title=" " alt="" coords="5,5,152,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="81,74,81,130,76,130,76,74"/>
+</map>

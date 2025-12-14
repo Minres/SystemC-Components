@@ -1,0 +1,17 @@
+<map id="sysc::tl_uh_bfm" name="sysc::tl_uh_bfm">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1040,38,1153,63"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="796,6,935,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="949,28,1040,40,1039,46,949,33"/>
+<area shape="rect" id="Node000003" href="$classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="785,55,945,110"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="959,73,1016,65,1041,61,1042,66,1016,71,959,78"/>
+<area shape="rect" id="Node000004" href="$classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket.html" title=" " alt="" coords="565,63,736,103"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="750,80,785,80,785,85,750,85"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="235,5,461,75"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="475,55,565,68,565,73,474,60"/>
+<area shape="rect" id="Node000006" href="$classtlm_1_1scc_1_1scv_1_1tlm__recorder.html" title=" " alt="" coords="267,99,429,154"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="442,110,565,92,566,98,443,116"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="5,59,185,114"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="199,100,268,111,267,117,198,106"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,138,185,193"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="198,147,267,136,268,142,199,152"/>
+</map>

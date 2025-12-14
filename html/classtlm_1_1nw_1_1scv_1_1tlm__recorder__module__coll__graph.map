@@ -1,0 +1,13 @@
+<map id="tlm::nw::scv::tlm_recorder_module&lt; CMDENUM, FLIT_WITH, TYPES &gt;" name="tlm::nw::scv::tlm_recorder_module&lt; CMDENUM, FLIT_WITH, TYPES &gt;">
+<area shape="rect" id="Node000001" title="The TLM2 transaction recorder." alt="" coords="524,55,755,109"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="285,5,424,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="426,31,524,53,523,59,425,36"/>
+<area shape="rect" id="Node000003" href="$structtlm_1_1nw_1_1tlm__network__target__socket.html" title=" " alt="" coords="253,55,456,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="470,79,524,79,524,85,470,85"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,22,204,121"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="218,73,253,75,253,80,217,79"/>
+<area shape="rect" id="Node000005" href="$structtlm_1_1nw_1_1tlm__network__initiator__socket.html" title=" " alt="" coords="253,155,456,209"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="445,147,560,107,562,112,447,153"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,145,204,243"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="217,186,253,184,253,190,218,191"/>
+</map>

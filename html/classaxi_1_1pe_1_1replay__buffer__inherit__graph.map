@@ -1,0 +1,11 @@
+<map id="axi::pe::replay_buffer" name="axi::pe::replay_buffer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="80,255,224,280"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,174,144,199"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,207,142,253,139,256,94,211"/>
+<area shape="rect" id="Node000003" href="$structtlm_1_1scc_1_1pe_1_1intor__fw__nb.html" title=" " alt="" coords="169,167,293,207"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,218,166,256,162,252,200,215"/>
+<area shape="rect" id="Node000004" href="$structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="169,79,293,119"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="233,133,233,166,228,166,228,133"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="157,5,305,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="233,44,233,79,228,79,228,44"/>
+</map>

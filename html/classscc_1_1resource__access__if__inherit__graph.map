@@ -1,0 +1,11 @@
+<map id="scc::resource_access_if" name="scc::resource_access_if">
+<area shape="rect" id="Node000001" title="interface defining access to a resource e.g. a register" alt="" coords="5,92,169,117"/>
+<area shape="rect" id="Node000002" href="$classscc_1_1impl_1_1sc__register.html" title=" " alt="" coords="217,5,380,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,85,217,57,219,63,139,90"/>
+<area shape="rect" id="Node000003" href="$classscc_1_1bitfield__register.html" title="Register that can contain bitfields." alt="" coords="229,85,368,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,102,229,102,229,107,183,107"/>
+<area shape="rect" id="Node000004" href="$classscc_1_1impl_1_1sc__register.html" title="a simple register implementation" alt="" coords="225,149,372,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="144,119,233,146,231,151,142,124"/>
+<area shape="rect" id="Node000005" href="$classscc_1_1sc__register__masked.html" title=" " alt="" coords="428,149,673,189"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="385,166,428,166,428,171,385,171"/>
+</map>

@@ -1,4 +1,0 @@
-<map id="axi::fsm::Request" name="axi::fsm::Request">
-<area shape="rect" id="node1" title="the request, either the last beat of a write or the address phase of a read" alt="" coords="40,109,176,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,211,61"/>
-</map>

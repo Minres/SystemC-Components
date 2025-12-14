@@ -1,0 +1,20 @@
+<map id="apb::pe::apb_initiator_b" name="apb::pe::apb_initiator_b">
+<area shape="rect" id="Node000001" title=" " alt="" coords="851,107,1008,132"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="610,5,749,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="748,32,770,40,846,73,907,104,904,109,844,78,768,44,747,37"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="589,55,769,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="784,95,851,105,850,110,783,100"/>
+<area shape="rect" id="Node000004" href="$structscc_1_1peq.html" title=" " alt="" coords="419,131,565,185"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="579,153,769,141,854,129,854,135,770,146,579,158"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="27,155,159,180"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="172,163,418,157,419,162,173,168"/>
+<area shape="rect" id="Node000007" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="229,212,395,237"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="156,181,263,209,262,215,155,186"/>
+<area shape="rect" id="Node000006" href="$structscc_1_1ordered__semaphore__t.html" title=" " alt="" coords="597,205,762,245"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="775,212,826,196,852,181,876,164,914,130,917,134,880,168,855,186,828,200,776,217"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="408,222,596,222,596,227,408,227"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,212,180,237"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="194,222,229,222,229,227,194,227"/>
+<area shape="rect" id="Node000009" href="$structscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="41,261,145,287"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="157,257,254,235,255,240,159,262"/>
+</map>

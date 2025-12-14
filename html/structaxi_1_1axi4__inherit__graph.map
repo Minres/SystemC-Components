@@ -1,0 +1,15 @@
+<map id="axi::axi4" name="axi::axi4">
+<area shape="rect" id="Node000001" title=" " alt="" coords="121,79,194,104"/>
+<area shape="rect" id="Node000003" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="31,152,161,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="142,116,113,153,109,150,138,113"/>
+<area shape="rect" id="Node000005" href="$structaxi_1_1ace.html" title=" " alt="" coords="197,159,267,185"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="180,112,223,157,219,161,176,116"/>
+<area shape="rect" id="Node000002" href="$structaxi_1_1request.html" title=" " alt="" coords="112,5,203,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,44,160,79,155,79,155,44"/>
+<area shape="rect" id="Node000004" href="$structaxi_1_1axi4__extension.html" title=" " alt="" coords="5,247,141,273"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="90,206,79,248,74,246,85,205"/>
+<area shape="rect" id="Node000006" href="$structaxi_1_1axi__extension.html" title=" " alt="" coords="166,240,322,280"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="238,198,244,239,239,240,233,199"/>
+<area shape="rect" id="Node000007" href="$structaxi_1_1ace__extension.html" title=" " alt="" coords="178,328,310,353"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="247,294,247,328,241,328,241,294"/>
+</map>

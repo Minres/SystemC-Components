@@ -1,0 +1,15 @@
+<map id="scc::traceable" name="scc::traceable">
+<area shape="rect" id="Node000001" title="interface defining a traceable component" alt="" coords="5,92,109,117"/>
+<area shape="rect" id="Node000002" href="$classscc_1_1impl_1_1sc__register.html" title=" " alt="" coords="159,5,321,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,84,169,58,171,62,104,89"/>
+<area shape="rect" id="Node000003" href="$classscc_1_1impl_1_1sc__register.html" title="a simple register implementation" alt="" coords="167,85,313,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="123,102,167,102,167,107,123,107"/>
+<area shape="rect" id="Node000005" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="157,152,323,177"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="110,119,201,149,200,154,109,124"/>
+<area shape="rect" id="Node000004" href="$classscc_1_1sc__register__masked.html" title=" " alt="" coords="371,81,616,121"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="327,101,370,100,370,105,327,106"/>
+<area shape="rect" id="Node000006" href="$structscc_1_1ordered__semaphore__t.html" title=" " alt="" coords="411,145,576,185"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="336,162,411,162,411,167,336,167"/>
+<area shape="rect" id="Node000007" href="$structscc_1_1ordered__semaphore__t.html" title=" " alt="" coords="411,209,576,249"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="305,178,414,206,413,211,304,183"/>
+</map>

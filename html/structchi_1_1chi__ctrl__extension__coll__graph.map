@@ -1,0 +1,11 @@
+<map id="chi::chi_ctrl_extension" name="chi::chi_ctrl_extension">
+<area shape="rect" id="Node000001" title=" " alt="" coords="211,116,363,141"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,156,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,49,265,114,263,118,130,54"/>
+<area shape="rect" id="Node000003" href="$structchi_1_1common.html" title=" " alt="" coords="180,13,277,38"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="244,48,283,115,278,117,240,51"/>
+<area shape="rect" id="Node000004" href="$structchi_1_1request.html" title=" " alt="" coords="302,13,393,38"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="336,51,296,117,292,115,331,48"/>
+<area shape="rect" id="Node000005" href="$structchi_1_1response.html" title=" " alt="" coords="417,13,517,38"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="437,47,354,94,310,118,307,114,351,90,434,43"/>
+</map>

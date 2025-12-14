@@ -1,0 +1,27 @@
+<map id="tlm::scc::pe::intor_fw_b" name="tlm::scc::pe::intor_fw_b">
+<area shape="rect" id="Node000001" title=" " alt="" coords="373,277,532,302"/>
+<area shape="rect" id="Node000004" href="$classaxi_1_1pe_1_1axi__initiator__b.html" title=" " alt="" coords="590,109,741,134"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="479,266,646,132,650,136,483,270"/>
+<area shape="rect" id="Node000008" href="$classaxi_1_1pe_1_1simple__initiator__b.html" title=" " alt="" coords="580,277,751,302"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="546,287,580,287,580,292,546,292"/>
+<area shape="rect" id="Node000012" href="$classchi_1_1pe_1_1chi__rn__initiator__b.html" title=" " alt="" coords="582,377,749,402"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="494,306,638,374,636,379,492,310"/>
+<area shape="rect" id="Node000002" href="$structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="201,269,325,309"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="339,287,373,287,373,292,339,292"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,277,153,302"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="167,287,201,287,201,292,167,292"/>
+<area shape="rect" id="Node000005" href="$classaxi_1_1pe_1_1ace__initiator.html" title=" " alt="" coords="799,5,1017,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="701,100,798,55,832,43,834,48,800,60,703,105"/>
+<area shape="rect" id="Node000006" href="$classaxi_1_1pe_1_1ace__lite__initiator.html" title=" " alt="" coords="799,69,1017,109"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="754,107,798,101,799,106,755,112"/>
+<area shape="rect" id="Node000007" href="$classaxi_1_1pe_1_1axi__initiator.html" title=" " alt="" coords="799,133,1017,173"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="755,130,799,136,798,142,754,136"/>
+<area shape="rect" id="Node000009" href="$classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="841,197,975,237"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="721,270,840,234,842,240,723,275"/>
+<area shape="rect" id="Node000010" href="$classaxi_1_1pe_1_1simple__ace__initiator.html" title=" " alt="" coords="829,262,987,317"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="765,287,829,287,829,292,765,292"/>
+<area shape="rect" id="Node000011" href="$classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="829,341,987,395"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="719,304,830,340,828,345,718,309"/>
+<area shape="rect" id="Node000013" href="$classchi_1_1pe_1_1chi__rn__initiator.html" title=" " alt="" coords="799,420,1017,460"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="741,402,812,417,811,423,740,408"/>
+</map>

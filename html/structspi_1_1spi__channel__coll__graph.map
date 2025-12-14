@@ -1,0 +1,21 @@
+<map id="spi::spi_channel" name="spi::spi_channel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="564,208,680,233"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="317,113,455,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="461,140,484,148,548,177,601,205,598,210,546,182,482,152,459,145"/>
+<area shape="rect" id="Node000003" href="$structtlm_1_1nw_1_1tlm__network__fw__transport__if.html" title=" " alt="" coords="313,163,459,217"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="473,199,564,211,563,216,472,204"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="33,5,213,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="226,59,242,69,259,89,268,109,275,129,291,148,315,164,312,168,288,152,271,131,263,111,255,92,238,73,223,63"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="31,84,214,139"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="228,140,314,166,312,171,226,145"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="31,163,214,217"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="228,187,313,187,313,193,228,193"/>
+<area shape="rect" id="Node000007" href="$structtlm_1_1nw_1_1tlm__network__bw__transport__if.html" title=" " alt="" coords="312,241,460,296"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="473,248,563,230,564,235,474,254"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="31,241,214,296"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="228,266,312,266,312,271,228,271"/>
+<area shape="rect" id="Node000009" href="$structtlm_1_1nw_1_1tlm__network__target__socket.html" title=" " alt="" coords="289,331,483,385"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="451,322,481,305,539,269,599,231,602,236,541,274,484,310,454,327"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="5,321,240,419"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="254,361,289,360,289,365,254,367"/>
+</map>

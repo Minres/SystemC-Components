@@ -1,0 +1,5 @@
+<map id="tilelink::ch_a&lt; CFG, TYPES &gt;" name="tilelink::ch_a&lt; CFG, TYPES &gt;">
+<area shape="rect" id="Node000001" title="A channel signals." alt="" coords="5,5,144,45"/>
+<area shape="rect" id="Node000002" href="$structtilelink_1_1tl__ul.html" title=" " alt="" coords="7,93,142,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,59,77,93,72,93,72,59"/>
+</map>

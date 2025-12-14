@@ -1,0 +1,19 @@
+<map id="axi::pin::ace_lite_initiator&lt; CFG &gt;" name="axi::pin::ace_lite_initiator&lt; CFG &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="220,215,343,255"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="19,5,158,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,35,174,41,213,83,243,131,264,177,277,214,272,216,259,179,238,133,208,86,170,45,161,39"/>
+<area shape="rect" id="Node000003" href="$structaxi_1_1aw__ace.html" title=" " alt="" coords="5,55,172,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,100,174,105,204,131,231,161,270,214,266,217,227,164,200,135,170,109,163,104"/>
+<area shape="rect" id="Node000004" href="$structaxi_1_1wdata__axi.html" title=" " alt="" coords="12,119,165,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="159,162,173,169,250,213,248,218,171,174,156,167"/>
+<area shape="rect" id="Node000005" href="$structaxi_1_1b__axi.html" title=" " alt="" coords="10,183,167,223"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="182,216,220,223,219,228,181,221"/>
+<area shape="rect" id="Node000006" href="$structaxi_1_1ar__ace.html" title=" " alt="" coords="8,247,169,287"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="182,249,219,243,220,248,183,254"/>
+<area shape="rect" id="Node000007" href="$structaxi_1_1rresp__axi.html" title=" " alt="" coords="12,311,165,351"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="156,304,171,297,248,253,250,258,173,302,159,308"/>
+<area shape="rect" id="Node000008" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="35,376,142,401"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="154,370,171,361,201,337,228,308,266,254,270,257,232,311,205,340,173,366,156,375"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="14,425,163,480"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="165,415,170,411,205,372,233,329,270,254,275,257,238,331,209,375,174,415,168,419"/>
+</map>

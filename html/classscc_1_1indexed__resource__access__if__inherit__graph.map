@@ -1,0 +1,7 @@
+<map id="scc::indexed_resource_access_if" name="scc::indexed_resource_access_if">
+<area shape="rect" id="Node000001" title="interface defining access to an indexed resource e.g. register file" alt="" coords="5,37,157,77"/>
+<area shape="rect" id="Node000002" href="$classscc_1_1sc__register__indexed.html" title=" " alt="" coords="205,5,404,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,42,205,37,206,42,171,47"/>
+<area shape="rect" id="Node000003" href="$structscc_1_1sc__register__mem.html" title=" " alt="" coords="229,69,380,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="171,67,229,76,229,81,170,73"/>
+</map>

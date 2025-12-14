@@ -1,0 +1,9 @@
+<map id="tlm::nw::tlm_network_fw_transport_if&lt; TYPES &gt;" name="tlm::nw::tlm_network_fw_transport_if&lt; TYPES &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="253,99,436,139"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,205,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,62,289,97,288,102,193,67"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="16,85,195,154"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="208,117,253,117,253,122,208,122"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="30,178,181,247"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="192,176,292,137,294,142,194,181"/>
+</map>

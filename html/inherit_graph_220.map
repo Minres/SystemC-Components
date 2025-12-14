@@ -1,0 +1,15 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$structscc_1_1observer.html" title="The interface defining an observer." alt="" coords="30,55,131,80"/>
+<area shape="rect" id="Node000001" href="$structscc_1_1fst__trace__file.html" title=" " alt="" coords="224,5,351,31"/>
+<area shape="poly" id="edge490_Node000000_Node000001" title=" " alt="" coords="144,50,233,28,234,33,145,55"/>
+<area shape="rect" id="Node000003" href="$structscc_1_1vcd__mt__trace__file.html" title=" " alt="" coords="211,55,364,80"/>
+<area shape="poly" id="edge491_Node000000_Node000003" title=" " alt="" coords="145,65,210,65,210,70,145,70"/>
+<area shape="rect" id="Node000005" href="$structscc_1_1vcd__push__trace__file.html" title=" " alt="" coords="204,104,371,129"/>
+<area shape="poly" id="edge492_Node000000_Node000005" title=" " alt="" coords="145,80,234,101,233,107,144,85"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,104,156,129"/>
+<area shape="poly" id="edge493_Node000002_Node000001" title=" " alt="" coords="141,96,154,89,169,77,178,65,187,52,203,40,227,28,229,33,205,44,191,56,182,68,173,81,158,94,144,101"/>
+<area shape="poly" id="edge494_Node000002_Node000003" title=" " alt="" coords="147,98,233,77,234,83,148,103"/>
+<area shape="poly" id="edge496_Node000002_Node000005" title=" " alt="" coords="170,114,204,114,204,119,170,119"/>
+<area shape="rect" id="Node000004" href="$structscc_1_1vcd__pull__trace__file.html" title=" " alt="" coords="208,153,367,179"/>
+<area shape="poly" id="edge495_Node000002_Node000004" title=" " alt="" coords="148,130,234,151,233,156,147,135"/>
+</map>

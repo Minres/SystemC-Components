@@ -1,0 +1,35 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$structnonstd_1_1detail_1_1optional__delete__assign__base.html" title=" " alt="" coords="1119,5,1305,60"/>
+<area shape="rect" id="Node000001" href="$classnonstd_1_1optional.html" title=" " alt="" coords="1377,20,1531,75"/>
+<area shape="poly" id="edge427_Node000000_Node000001" title=" " alt="" coords="1319,36,1377,40,1376,45,1319,42"/>
+<area shape="rect" id="Node000003" href="$classnonstd_1_1optional_3_01T_01_6_01_4.html" title=" " alt="" coords="1375,99,1533,124"/>
+<area shape="poly" id="edge428_Node000000_Node000003" title=" " alt="" coords="1310,62,1375,83,1414,96,1413,101,1374,89,1308,67"/>
+<area shape="rect" id="Node000005" href="$classnonstd_1_1optional.html" title=" " alt="" coords="1381,148,1527,173"/>
+<area shape="poly" id="edge429_Node000000_Node000005" title=" " alt="" coords="1319,63,1328,69,1344,86,1353,102,1361,118,1376,133,1400,146,1397,150,1373,137,1357,121,1348,105,1340,89,1325,73,1316,68"/>
+<area shape="rect" id="Node000002" href="$structnonstd_1_1detail_1_1optional__delete__ctor__base.html" title=" " alt="" coords="1097,84,1327,139"/>
+<area shape="poly" id="edge430_Node000002_Node000001" title=" " alt="" coords="1328,78,1376,65,1377,70,1329,83"/>
+<area shape="poly" id="edge431_Node000002_Node000003" title=" " alt="" coords="1340,109,1375,109,1375,114,1340,114"/>
+<area shape="poly" id="edge432_Node000002_Node000005" title=" " alt="" coords="1341,135,1392,145,1391,151,1340,140"/>
+<area shape="rect" id="Node000014" href="$structnonstd_1_1detail_1_1optional__storage__base.html" title=" " alt="" coords="5,291,176,331"/>
+<area shape="rect" id="Node000012" href="$structnonstd_1_1detail_1_1optional__operations__base.html" title=" " alt="" coords="224,291,380,331"/>
+<area shape="poly" id="edge433_Node000014_Node000012" title=" " alt="" coords="190,309,224,309,224,314,190,314"/>
+<area shape="rect" id="Node000013" href="$structnonstd_1_1detail_1_1optional__copy__base_3_01T_00_01false_01_4.html" title=" " alt="" coords="428,323,587,363"/>
+<area shape="poly" id="edge434_Node000012_Node000013" title=" " alt="" coords="394,323,428,328,427,334,393,328"/>
+<area shape="rect" id="Node000010" href="$structnonstd_1_1detail_1_1optional__copy__base.html" title=" " alt="" coords="430,259,585,299"/>
+<area shape="poly" id="edge435_Node000012_Node000010" title=" " alt="" coords="393,294,429,289,430,294,394,300"/>
+<area shape="rect" id="Node000011" href="$structnonstd_1_1detail_1_1optional__move__base_3_01T_00_01false_01_4.html" title=" " alt="" coords="635,291,797,331"/>
+<area shape="poly" id="edge436_Node000010_Node000011" title=" " alt="" coords="599,291,635,296,634,301,598,296"/>
+<area shape="rect" id="Node000008" href="$structnonstd_1_1detail_1_1optional__move__base.html" title=" " alt="" coords="637,227,795,267"/>
+<area shape="poly" id="edge437_Node000010_Node000008" title=" " alt="" coords="598,263,636,257,637,262,598,268"/>
+<area shape="rect" id="Node000009" href="$structnonstd_1_1detail_1_1optional__copy__assign__base_3_01T_00_01false_01_4.html" title=" " alt="" coords="845,259,1049,299"/>
+<area shape="poly" id="edge438_Node000008_Node000009" title=" " alt="" coords="809,257,846,263,845,268,808,263"/>
+<area shape="rect" id="Node000006" href="$structnonstd_1_1detail_1_1optional__copy__assign__base.html" title=" " alt="" coords="847,195,1047,235"/>
+<area shape="poly" id="edge439_Node000008_Node000006" title=" " alt="" coords="809,232,847,227,848,232,809,237"/>
+<area shape="rect" id="Node000007" href="$structnonstd_1_1detail_1_1optional__move__assign__base_3_01T_00_01false_01_4.html" title=" " alt="" coords="1109,227,1315,267"/>
+<area shape="poly" id="edge440_Node000006_Node000007" title=" " alt="" coords="1061,226,1109,232,1108,238,1060,232"/>
+<area shape="rect" id="Node000004" href="$structnonstd_1_1detail_1_1optional__move__assign__base.html" title=" " alt="" coords="1111,163,1313,203"/>
+<area shape="poly" id="edge441_Node000006_Node000004" title=" " alt="" coords="1061,199,1110,193,1111,198,1061,204"/>
+<area shape="poly" id="edge442_Node000004_Node000001" title=" " alt="" coords="1313,155,1325,148,1341,133,1349,118,1358,101,1373,84,1389,73,1392,77,1376,88,1362,104,1354,120,1345,136,1328,152,1316,160"/>
+<area shape="poly" id="edge443_Node000004_Node000003" title=" " alt="" coords="1294,157,1326,147,1411,122,1412,127,1327,153,1296,162"/>
+<area shape="poly" id="edge444_Node000004_Node000005" title=" " alt="" coords="1326,170,1380,165,1381,170,1327,175"/>
+</map>

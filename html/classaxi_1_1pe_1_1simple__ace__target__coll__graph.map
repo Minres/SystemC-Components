@@ -1,0 +1,36 @@
+<map id="axi::pe::simple_ace_target&lt; BUSWIDTH, TYPES, N, POL &gt;" name="axi::pe::simple_ace_target&lt; BUSWIDTH, TYPES, N, POL &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1235,367,1433,422"/>
+<area shape="rect" id="Node000002" href="$classaxi_1_1pe_1_1ace__target__pe.html" title=" " alt="" coords="967,261,1119,286"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1089,289,1269,365,1267,370,1087,294"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="673,99,811,125"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="800,127,838,142,895,171,948,203,1027,258,1024,263,945,208,892,175,836,146,799,132"/>
+<area shape="rect" id="Node000004" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="689,261,795,286"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="809,271,967,271,967,276,809,276"/>
+<area shape="rect" id="Node000005" href="$structscc_1_1peq.html" title=" " alt="" coords="281,239,437,308"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="451,271,688,271,688,276,451,276"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="27,247,159,273"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="172,261,281,267,281,272,172,267"/>
+<area shape="rect" id="Node000013" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="276,189,441,214"/>
+<area shape="poly" id="edge14_Node000013_Node000006" title=" " alt="" coords="156,241,229,224,290,211,291,217,230,229,157,247"/>
+<area shape="rect" id="Node000007" href="$classscc_1_1fifo__w__cb.html" title=" " alt="" coords="265,332,453,401"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="466,338,688,283,689,289,467,343"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,354,180,379"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="194,364,265,364,265,369,194,369"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="667,310,817,365"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="830,316,982,283,983,289,831,321"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="667,389,817,443"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="823,381,836,375,937,325,1017,284,1020,288,940,330,838,380,825,386"/>
+<area shape="rect" id="Node000011" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="685,35,799,75"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="813,73,839,84,902,127,958,177,1004,224,1034,258,1030,262,1000,227,955,180,899,131,836,89,811,77"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="229,5,488,104"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="502,52,685,52,685,57,502,57"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="456,206,670,225,923,252,967,258,967,264,922,257,669,230,455,211"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="5,141,180,166"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="177,166,288,186,287,191,176,171"/>
+<area shape="rect" id="Node000015" href="$structscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="41,190,145,215"/>
+<area shape="poly" id="edge15_Node000013_Node000015" title=" " alt="" coords="158,200,276,199,276,204,158,205"/>
+<area shape="rect" id="Node000016" href="$structaxi_1_1ace__target__socket.html" title=" " alt="" coords="947,396,1140,465"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="1153,414,1234,404,1235,410,1154,420"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="647,468,837,567"/>
+<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="850,484,946,456,947,461,851,489"/>
+</map>

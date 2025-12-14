@@ -1,0 +1,7 @@
+<map id="TCB_SPAN_NAMESPACE_NAME::detail::has_size_and_data&lt; T, void_t&lt; decltype(detail::size(std::declval&lt; T &gt;())), decltype(detail::data(std::declval&lt; T &gt;()))&gt; &gt;" name="TCB_SPAN_NAMESPACE_NAME::detail::has_size_and_data&lt; T, void_t&lt; decltype(detail::size(std::declval&lt; T &gt;())), decltype(detail::data(std::declval&lt; T &gt;()))&gt; &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="21,79,225,177"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,113,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,41,97,77,92,80,71,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="137,5,240,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,44,155,80,150,77,172,41"/>
+</map>

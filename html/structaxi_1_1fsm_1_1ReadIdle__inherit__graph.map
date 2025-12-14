@@ -1,0 +1,5 @@
+<map id="axi::fsm::ReadIdle" name="axi::fsm::ReadIdle">
+<area shape="rect" id="Node000001" title="the phase between 2 read burst response beats" alt="" coords="36,93,165,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,196,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,59,103,93,98,93,98,59"/>
+</map>

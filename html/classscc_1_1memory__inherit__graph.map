@@ -1,0 +1,9 @@
+<map id="scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;" name="scc::memory&lt; SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES &gt;">
+<area shape="rect" id="Node000001" title="simple TLM2.0 LT memory model" alt="" coords="192,45,377,100"/>
+<area shape="rect" id="Node000003" href="$classscc_1_1ticking__clock.html" title=" " alt="" coords="425,5,631,60"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="390,53,425,47,426,52,391,58"/>
+<area shape="rect" id="Node000004" href="$classscc_1_1tickless__clock.html" title=" " alt="" coords="425,84,631,139"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="391,87,426,92,425,98,390,92"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,60,144,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,70,192,70,192,75,158,75"/>
+</map>

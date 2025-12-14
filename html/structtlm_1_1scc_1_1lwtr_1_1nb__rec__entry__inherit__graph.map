@@ -1,0 +1,7 @@
+<map id="tlm::scc::lwtr::nb_rec_entry" name="tlm::scc::lwtr::nb_rec_entry">
+<area shape="rect" id="Node000001" title=" " alt="" coords="100,5,220,45"/>
+<area shape="rect" id="Node000002" href="$structaxi_1_1lwtr_1_1nb__ace__rec__entry.html" title=" " alt="" coords="5,93,149,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,57,98,95,94,91,130,54"/>
+<area shape="rect" id="Node000003" href="$structchi_1_1lwtr_1_1nb__chi__rec__entry.html" title=" " alt="" coords="173,93,312,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="190,54,226,91,222,95,186,57"/>
+</map>

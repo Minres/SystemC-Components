@@ -1,0 +1,19 @@
+<map id="axi::lwtr::axi_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;" name="axi::lwtr::axi_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="572,124,735,179"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="305,39,444,64"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="458,60,505,73,559,96,608,121,606,126,557,100,503,78,456,65"/>
+<area shape="rect" id="Node000003" href="$classaxi_1_1lwtr_1_1axi__lwtr.html" title=" " alt="" coords="309,88,440,143"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="454,123,572,138,571,143,453,128"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="27,5,174,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="188,56,310,93,308,98,187,61"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="26,84,175,139"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="189,110,309,112,309,117,189,115"/>
+<area shape="rect" id="Node000006" href="$structaxi_1_1axi__target__socket.html" title=" " alt="" coords="278,174,471,243"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="484,184,571,165,572,171,485,189"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="5,163,196,262"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="210,208,278,207,278,213,210,214"/>
+<area shape="rect" id="Node000008" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="245,289,504,358"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="456,280,503,253,614,177,617,181,505,258,459,284"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="5,286,196,385"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="209,328,245,326,245,332,210,333"/>
+</map>

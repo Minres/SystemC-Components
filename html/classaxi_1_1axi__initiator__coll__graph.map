@@ -1,0 +1,45 @@
+<map id="axi::axi_initiator&lt; BUSWIDTH &gt;" name="axi::axi_initiator&lt; BUSWIDTH &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1524,85,1640,125"/>
+<area shape="rect" id="Node000002" href="$classaxi_1_1axi__initiator__base.html" title="axi_initiator class provides an input_socket for incoming TLM transactions. It attaches AXI extension..." alt="" coords="1135,13,1285,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1300,35,1397,51,1501,74,1528,82,1526,87,1499,79,1396,57,1299,40"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="654,5,793,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="807,17,1134,22,1134,27,807,22"/>
+<area shape="rect" id="Node000007" href="$classaxi_1_1pe_1_1simple__initiator__b.html" title=" " alt="" coords="896,179,1067,204"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="785,35,805,48,821,71,831,99,836,119,838,135,842,150,854,164,874,177,897,185,895,190,871,182,850,168,838,152,833,136,831,120,825,100,816,74,801,52,782,39"/>
+<area shape="rect" id="Node000004" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="1319,85,1433,125"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1447,102,1524,102,1524,107,1447,107"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="852,55,1111,154"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1125,102,1318,102,1318,107,1125,107"/>
+<area shape="rect" id="Node000006" href="$classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="1309,171,1443,211"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1436,164,1532,122,1534,127,1438,168"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1080,189,1309,189,1309,194,1080,194"/>
+<area shape="rect" id="Node000008" href="$structtlm_1_1scc_1_1pe_1_1intor__fw__b.html" title=" " alt="" coords="644,167,803,192"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="817,181,896,185,895,190,817,186"/>
+<area shape="rect" id="Node000009" href="$structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="261,154,385,194"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="399,172,644,176,644,181,399,178"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="19,161,167,187"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="180,171,261,171,261,177,180,177"/>
+<area shape="rect" id="Node000011" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="670,305,777,331"/>
+<area shape="poly" id="edge11_Node000007_Node000011" title=" " alt="" coords="767,297,798,279,826,256,833,246,837,235,841,225,850,215,872,203,895,195,897,200,874,208,854,219,845,228,842,237,838,248,830,260,801,283,769,301"/>
+<area shape="rect" id="Node000012" href="$structscc_1_1peq.html" title=" " alt="" coords="245,281,401,350"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="416,320,441,321,531,322,620,321,669,319,670,324,620,326,531,328,441,326,415,325"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="27,228,159,253"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="147,255,246,288,244,293,145,260"/>
+<area shape="rect" id="Node000016" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="241,104,406,129"/>
+<area shape="poly" id="edge18_Node000016_Node000013" title=" " alt="" coords="140,220,178,197,193,183,202,168,211,154,228,140,255,127,257,132,231,144,215,157,206,171,197,186,182,201,142,225"/>
+<area shape="rect" id="Node000019" href="$structscc_1_1peq.html" title=" " alt="" coords="441,190,620,289"/>
+<area shape="poly" id="edge22_Node000019_Node000013" title=" " alt="" coords="172,238,441,237,441,242,172,243"/>
+<area shape="rect" id="Node000014" href="$classscc_1_1fifo__w__cb.html" title=" " alt="" coords="229,375,417,445"/>
+<area shape="poly" id="edge20_Node000007_Node000014" title=" " alt="" coords="431,430,520,438,568,438,618,435,668,427,716,413,760,392,801,364,809,353,815,336,825,291,834,246,841,228,850,215,871,201,895,193,897,198,874,206,854,219,846,230,840,247,830,292,820,337,814,355,805,368,763,397,717,418,669,432,619,440,569,444,519,443,431,435"/>
+<area shape="poly" id="edge14_Node000011_Node000014" title=" " alt="" coords="431,390,523,373,619,350,688,328,689,333,621,355,524,378,432,396"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="5,397,180,423"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="194,407,229,407,229,413,194,413"/>
+<area shape="poly" id="edge16_Node000007_Node000016" title=" " alt="" coords="420,118,598,130,803,153,853,163,915,176,914,181,851,169,802,158,598,135,420,123"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="5,108,180,133"/>
+<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="194,116,241,115,241,121,194,122"/>
+<area shape="rect" id="Node000018" href="$structscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="41,59,145,84"/>
+<area shape="poly" id="edge19_Node000016_Node000018" title=" " alt="" coords="159,82,258,101,257,107,158,87"/>
+<area shape="poly" id="edge21_Node000007_Node000019" title=" " alt="" coords="633,236,716,233,802,225,851,214,914,201,915,207,853,219,803,230,716,238,634,242"/>
+<area shape="rect" id="Node000020" title=" " alt="" coords="907,228,1056,283"/>
+<area shape="poly" id="edge23_Node000006_Node000020" title=" " alt="" coords="1070,238,1309,199,1310,205,1070,244"/>
+</map>

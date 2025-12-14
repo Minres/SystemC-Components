@@ -1,0 +1,20 @@
+<map id="axi::pe::ace_lite_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;" name="axi::pe::ace_lite_initiator&lt; BUSWIDTH, TYPES, N, POL &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="839,91,1057,131"/>
+<area shape="rect" id="Node000002" href="$classaxi_1_1pe_1_1axi__initiator__b.html" title=" " alt="" coords="640,99,791,124"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="804,109,838,109,838,114,804,114"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="443,35,582,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="569,61,593,69,676,96,675,101,591,74,568,67"/>
+<area shape="rect" id="Node000004" href="$classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="437,84,589,139"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="602,109,640,109,640,114,602,114"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="219,5,368,60"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="382,61,437,82,436,87,380,66"/>
+<area shape="rect" id="Node000006" href="$classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="201,84,385,139"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="399,109,437,109,437,114,399,114"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="5,135,153,160"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="166,130,201,124,202,129,167,135"/>
+<area shape="rect" id="Node000009" href="$structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="231,163,355,203"/>
+<area shape="poly" id="edge9_Node000009_Node000007" title=" " alt="" coords="167,159,232,170,231,176,166,165"/>
+<area shape="rect" id="Node000008" href="$structtlm_1_1scc_1_1pe_1_1intor__fw__b.html" title=" " alt="" coords="433,167,592,192"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="564,160,676,122,677,127,565,165"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="369,179,433,178,433,183,370,185"/>
+</map>

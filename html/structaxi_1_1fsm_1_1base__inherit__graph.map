@@ -1,0 +1,33 @@
+<map id="axi::fsm::base" name="axi::fsm::base">
+<area shape="rect" id="Node000001" title="base class of all AXITLM based adapters and interfaces." alt="" coords="5,341,112,367"/>
+<area shape="rect" id="Node000002" href="$classaxi_1_1pe_1_1ace__target__pe.html" title=" " alt="" coords="169,64,321,89"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,327,99,241,126,190,158,142,189,111,221,87,224,92,193,115,162,145,130,192,104,243,71,329"/>
+<area shape="rect" id="Node000004" href="$classaxi_1_1pe_1_1axi__target__pe.html" title=" " alt="" coords="171,156,320,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="69,328,104,268,129,235,158,205,180,190,204,179,206,184,183,195,162,209,133,238,109,271,74,331"/>
+<area shape="rect" id="Node000007" href="$classaxi_1_1pe_1_1simple__initiator__b.html" title=" " alt="" coords="160,220,331,245"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="77,329,112,291,159,256,187,243,189,248,161,260,116,295,81,332"/>
+<area shape="rect" id="Node000011" href="$structaxi_1_1pin_1_1ace__initiator.html" title=" " alt="" coords="174,270,317,310"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="109,334,185,308,187,313,110,339"/>
+<area shape="rect" id="Node000012" href="$structaxi_1_1pin_1_1ace__lite__initiator.html" title=" " alt="" coords="184,334,307,374"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="126,351,184,351,184,357,126,357"/>
+<area shape="rect" id="Node000013" href="$structaxi_1_1pin_1_1ace__lite__target.html" title=" " alt="" coords="186,398,305,438"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="110,369,187,395,185,400,109,374"/>
+<area shape="rect" id="Node000014" href="$structaxi_1_1pin_1_1ace__target.html" title=" " alt="" coords="178,462,313,502"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="81,375,116,412,161,448,184,460,181,464,159,452,113,416,77,379"/>
+<area shape="rect" id="Node000015" href="$structaxi_1_1pin_1_1axi4__initiator.html" title=" " alt="" coords="172,526,319,566"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="72,378,106,445,131,481,162,512,180,524,177,528,158,516,127,484,101,447,67,381"/>
+<area shape="rect" id="Node000016" href="$structaxi_1_1pin_1_1axi4__target.html" title=" " alt="" coords="176,590,315,630"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="67,380,78,422,97,475,124,529,142,554,162,576,178,588,175,592,158,580,137,557,119,532,92,477,73,424,62,381"/>
+<area shape="rect" id="Node000003" href="$classaxi_1_1pe_1_1simple__ace__target.html" title=" " alt="" coords="389,5,587,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="329,59,388,48,389,53,330,64"/>
+<area shape="rect" id="Node000005" href="$classaxi_1_1pe_1_1simple__target.html" title=" " alt="" coords="414,85,562,125"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="307,150,413,122,414,127,309,155"/>
+<area shape="rect" id="Node000006" href="$classaxi_1_1pe_1_1simple__target.html" title=" " alt="" coords="379,149,597,189"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="334,166,379,166,379,171,334,171"/>
+<area shape="rect" id="Node000008" href="$classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="421,213,555,253"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="344,230,421,230,421,235,344,235"/>
+<area shape="rect" id="Node000009" href="$classaxi_1_1pe_1_1simple__ace__initiator.html" title=" " alt="" coords="409,277,567,332"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="303,247,410,279,408,284,301,252"/>
+<area shape="rect" id="Node000010" href="$classaxi_1_1pe_1_1simple__axi__initiator.html" title=" " alt="" coords="409,356,567,411"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="323,249,332,256,350,278,357,300,364,322,380,343,411,361,408,366,377,347,359,324,352,302,346,280,329,260,320,254"/>
+</map>

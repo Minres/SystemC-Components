@@ -1,0 +1,28 @@
+<map id="apb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;" name="apb::pin::initiator&lt; DATA_WIDTH, ADDR_WIDTH &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="799,131,1025,171"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="505,8,644,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="658,29,717,41,776,61,837,94,887,129,884,133,835,98,774,66,715,47,657,34"/>
+<area shape="rect" id="Node000003" href="$classscc_1_1sc__out__opt.html" title=" " alt="" coords="504,58,645,98"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="659,84,775,105,856,129,855,134,774,110,658,90"/>
+<area shape="rect" id="Node000004" href="$classscc_1_1sc__inout__opt.html" title=" " alt="" coords="288,35,439,75"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="453,62,504,68,504,73,452,68"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="29,5,215,89"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="229,48,288,50,288,56,229,54"/>
+<area shape="rect" id="Node000006" href="$classscc_1_1sc__out__opt.html" title=" " alt="" coords="493,137,656,163"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="670,148,798,148,798,154,670,153"/>
+<area shape="rect" id="Node000007" href="$classscc_1_1sc__inout__opt_3_01bool_01_4.html" title=" " alt="" coords="297,129,430,169"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="444,147,493,147,493,152,443,152"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,114,239,183"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="252,155,296,154,296,159,252,160"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="252,137,296,138,296,143,252,142"/>
+<area shape="rect" id="Node000009" href="$classscc_1_1sc__out__opt.html" title=" " alt="" coords="488,195,661,220"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="675,192,774,177,817,169,818,174,775,182,676,197"/>
+<area shape="rect" id="Node000010" href="$classscc_1_1sc__inout__opt.html" title=" " alt="" coords="297,193,430,233"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="444,208,488,207,488,212,444,213"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="5,207,239,277"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="252,224,296,218,297,223,253,229"/>
+<area shape="rect" id="Node000012" href="$classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="493,244,656,299"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="669,250,721,237,774,220,829,195,876,169,879,174,831,200,776,224,723,242,670,256"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="288,257,439,297"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="452,272,493,271,493,276,452,277"/>
+</map>

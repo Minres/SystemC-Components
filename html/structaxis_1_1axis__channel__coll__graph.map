@@ -1,0 +1,25 @@
+<map id="axis::axis_channel" name="axis::axis_channel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="596,256,728,281"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="345,113,483,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="498,140,516,148,558,173,596,202,651,254,647,258,592,206,555,177,513,152,495,145"/>
+<area shape="rect" id="Node000003" href="$structtlm_1_1nw_1_1tlm__network__fw__transport__if.html" title=" " alt="" coords="337,163,491,217"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="505,216,622,253,620,258,503,221"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="45,5,225,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="238,53,266,69,283,89,292,109,299,129,315,148,339,163,336,168,312,152,295,131,287,111,279,92,262,73,236,58"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="43,84,226,139"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="240,138,338,166,336,171,239,143"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="43,163,226,217"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="240,187,337,187,337,193,240,193"/>
+<area shape="rect" id="Node000007" href="$structtlm_1_1nw_1_1tlm__network__bw__transport__if.html" title=" " alt="" coords="336,241,492,296"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="506,266,596,266,596,271,506,271"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="43,241,226,296"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="240,266,336,266,336,271,240,271"/>
+<area shape="rect" id="Node000009" href="$structtlm_1_1nw_1_1tlm__network__target__socket.html" title=" " alt="" coords="313,335,515,389"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="499,327,626,279,628,284,501,332"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="31,320,239,433"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="253,368,313,365,313,370,253,373"/>
+<area shape="rect" id="Node000011" href="$structtlm_1_1nw_1_1tlm__network__initiator__socket.html" title=" " alt="" coords="331,450,497,519"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="466,439,513,399,645,280,648,284,516,403,469,443"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="5,458,264,557"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="278,493,330,489,331,494,278,498"/>
+</map>

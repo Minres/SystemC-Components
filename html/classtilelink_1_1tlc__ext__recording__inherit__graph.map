@@ -1,0 +1,5 @@
+<map id="tilelink::tlc_ext_recording" name="tilelink::tlc_ext_recording">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,108,171,133"/>
+<area shape="rect" id="Node000002" href="$classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html" title=" " alt="" coords="9,5,167,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,74,91,108,85,108,85,74"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,131,56"/>
+<area shape="rect" id="Node000001" href="$structaxi_1_1fsm_1_1ReadIdle.html" title="the phase between 2 read burst response beats" alt="" coords="179,5,308,31"/>
+<area shape="poly" id="edge411_Node000000_Node000001" title=" " alt="" coords="144,30,178,25,179,30,144,35"/>
+<area shape="rect" id="Node000002" href="$structaxi_1_1fsm_1_1WriteIdle.html" title="the phase between 2 burst beats, should keep the link locked" alt="" coords="179,55,308,80"/>
+<area shape="poly" id="edge412_Node000000_Node000002" title=" " alt="" coords="144,51,179,56,178,61,144,56"/>
+</map>

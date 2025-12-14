@@ -1,0 +1,5 @@
+<map id="obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;" name="obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,79,196,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="31,5,170,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,44,103,79,98,79,98,44"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="scc::sc_out_opt&lt; T &gt;" name="scc::sc_out_opt&lt; T &gt;">
+<area shape="rect" id="Node000001" title="A template class for an optional input port with optimized binding." alt="" coords="465,27,612,53"/>
+<area shape="rect" id="Node000002" href="$classscc_1_1sc__inout__opt.html" title="A template class for an optional input port with optimized binding." alt="" coords="260,27,417,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="431,37,465,37,465,43,431,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,212,75"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="226,37,260,37,260,43,226,43"/>
+</map>

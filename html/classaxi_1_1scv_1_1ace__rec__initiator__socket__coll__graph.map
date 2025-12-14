@@ -1,0 +1,19 @@
+<map id="axi::scv::ace_rec_initiator_socket&lt; BUSWIDTH, TYPES, N, POL &gt;" name="axi::scv::ace_rec_initiator_socket&lt; BUSWIDTH, TYPES, N, POL &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1039,78,1241,133"/>
+<area shape="rect" id="Node000002" href="$structaxi_1_1ace__initiator__socket.html" title=" " alt="" coords="676,27,935,96"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="949,77,1039,89,1038,95,948,83"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="436,5,627,104"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="640,55,676,56,676,61,640,60"/>
+<area shape="rect" id="Node000004" href="$classaxi_1_1scv_1_1ace__recorder.html" title=" " alt="" coords="714,136,897,176"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="910,138,1038,118,1039,123,911,143"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="457,129,606,183"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="620,153,714,153,714,159,620,159"/>
+<area shape="rect" id="Node000006" href="$classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="455,207,607,262"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="620,207,734,173,736,179,621,212"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="220,167,369,222"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="384,207,456,219,455,225,383,212"/>
+<area shape="rect" id="Node000008" href="$classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="203,246,387,301"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="400,253,455,244,456,250,401,259"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="5,261,153,286"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="167,271,202,271,202,276,167,276"/>
+</map>

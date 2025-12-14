@@ -1,0 +1,15 @@
+<map id="nonstd::variants::detail::TypedVisitorUnwrapper&lt; 4, R, Visitor, T2, T3, T4 &gt;" name="nonstd::variants::detail::TypedVisitorUnwrapper&lt; 4, R, Visitor, T2, T3, T4 &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="465,62,651,117"/>
+<area shape="rect" id="Node000002" href="$structnonstd_1_1variants_1_1detail_1_1TX.html" title=" " alt="" coords="232,5,385,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="399,46,466,63,465,68,398,51"/>
+<area shape="rect" id="Node000003" href="$structnonstd_1_1variants_1_1detail_1_1S2.html" title=" " alt="" coords="5,13,183,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="196,23,232,23,232,28,196,28"/>
+<area shape="rect" id="Node000004" href="$structnonstd_1_1variants_1_1detail_1_1TX.html" title=" " alt="" coords="232,69,385,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="399,87,465,87,465,92,399,92"/>
+<area shape="rect" id="Node000005" href="$structnonstd_1_1variants_1_1detail_1_1S3.html" title=" " alt="" coords="5,77,183,102"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="196,87,232,87,232,92,196,92"/>
+<area shape="rect" id="Node000006" href="$structnonstd_1_1variants_1_1detail_1_1TX.html" title=" " alt="" coords="232,133,385,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="398,128,465,110,466,116,399,133"/>
+<area shape="rect" id="Node000007" href="$structnonstd_1_1variants_1_1detail_1_1S4.html" title=" " alt="" coords="5,141,183,166"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="196,151,232,151,232,156,196,156"/>
+</map>

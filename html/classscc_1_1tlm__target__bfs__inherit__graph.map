@@ -1,0 +1,9 @@
+<map id="scc::tlm_target_bfs&lt; regs_t, owner_t &gt;" name="scc::tlm_target_bfs&lt; regs_t, owner_t &gt;">
+<area shape="rect" id="Node000001" title="Peripheral base class using scc::tlm_target." alt="" coords="248,55,383,95"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="33,5,172,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,32,201,41,248,54,247,59,199,46,165,37"/>
+<area shape="rect" id="Node000003" href="$classscc_1_1tlm__target__bfs__base.html" title=" " alt="" coords="35,55,170,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,73,248,73,248,78,184,78"/>
+<area shape="rect" id="Node000004" href="$classscc_1_1tlm__target.html" title="a simple access&#45;width based bus interface (no DMI support)" alt="" coords="5,119,200,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="182,113,248,93,249,98,184,118"/>
+</map>

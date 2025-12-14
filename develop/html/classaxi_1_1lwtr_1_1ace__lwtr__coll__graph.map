@@ -1,8 +1,0 @@
-<map id="axi::lwtr::ace_lwtr&lt; TYPES &gt;" name="axi::lwtr::ace_lwtr&lt; TYPES &gt;">
-<area shape="rect" id="node1" title="The TLM2 transaction recorder." alt="" coords="707,53,845,94"/>
-<area shape="rect" id="node2" title=" " alt="" coords="495,5,657,61"/>
-<area shape="rect" id="node3" href="$classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="493,85,659,141"/>
-<area shape="rect" id="node4" title=" " alt="" coords="245,48,412,104"/>
-<area shape="rect" id="node5" href="$classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="212,129,445,170"/>
-<area shape="rect" id="node6" title=" " alt="" coords="5,136,164,163"/>
-</map>

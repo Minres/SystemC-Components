@@ -1,0 +1,17 @@
+<map id="scc::tlm_target&lt; BUSWIDTH, ADDR_UNIT_BITWIDTH &gt;" name="scc::tlm_target&lt; BUSWIDTH, ADDR_UNIT_BITWIDTH &gt;">
+<area shape="rect" id="Node000001" title="a simple access&#45;width based bus interface (no DMI support)" alt="" coords="1084,115,1279,155"/>
+<area shape="rect" id="Node000002" href="$classtlm_1_1scc_1_1target__mixin.html" title=" " alt="" coords="791,55,951,110"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="965,96,1084,116,1083,121,965,101"/>
+<area shape="rect" id="Node000003" href="$classtlm_1_1scc_1_1scv_1_1tlm__rec__target__socket.html" title=" " alt="" coords="565,63,736,103"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="750,80,791,80,791,85,750,85"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="235,5,461,75"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="475,55,565,68,565,73,474,60"/>
+<area shape="rect" id="Node000005" href="$classtlm_1_1scc_1_1scv_1_1tlm__recorder.html" title=" " alt="" coords="267,99,429,154"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="442,110,565,92,566,98,443,116"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,59,185,114"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="199,100,268,111,267,117,198,106"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="5,138,185,193"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="198,147,267,136,268,142,199,152"/>
+<area shape="rect" id="Node000008" href="$classutil_1_1range__lut.html" title=" " alt="" coords="785,134,957,189"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="971,152,1060,145,1083,143,1084,148,1060,151,971,158"/>
+</map>

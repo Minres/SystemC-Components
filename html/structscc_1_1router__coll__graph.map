@@ -1,0 +1,7 @@
+<map id="scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;" name="scc::router&lt; BUSWIDTH, TARGET_SOCKET_TYPE &gt;">
+<area shape="rect" id="Node000001" title="a TLM2.0 router for loosly&#45;timed (LT) models" alt="" coords="69,101,261,141"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,144,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,39,150,99,146,103,92,43"/>
+<area shape="rect" id="Node000003" href="$classutil_1_1range__lut.html" title=" " alt="" coords="168,5,344,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,43,184,103,180,99,235,39"/>
+</map>

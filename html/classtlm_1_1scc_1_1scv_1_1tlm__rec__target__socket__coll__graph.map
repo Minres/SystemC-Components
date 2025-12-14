@@ -1,0 +1,11 @@
+<map id="tlm::scc::scv::tlm_rec_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt;" name="tlm::scc::scv::tlm_rec_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="532,55,743,110"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="235,5,428,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="442,53,532,65,532,71,441,58"/>
+<area shape="rect" id="Node000003" href="$classtlm_1_1scc_1_1scv_1_1tlm__recorder.html" title=" " alt="" coords="251,99,412,154"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="426,111,531,95,532,100,426,116"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,59,185,114"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="199,102,251,110,250,116,198,107"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,138,185,193"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="198,146,250,137,251,142,199,151"/>
+</map>

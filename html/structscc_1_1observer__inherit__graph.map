@@ -1,0 +1,9 @@
+<map id="scc::observer" name="scc::observer">
+<area shape="rect" id="Node000001" title="The interface defining an observer." alt="" coords="182,5,283,31"/>
+<area shape="rect" id="Node000002" href="$structscc_1_1fst__trace__file.html" title=" " alt="" coords="5,79,132,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,39,97,81,94,76,193,34"/>
+<area shape="rect" id="Node000003" href="$structscc_1_1vcd__mt__trace__file.html" title=" " alt="" coords="156,79,309,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="235,44,235,79,230,79,230,44"/>
+<area shape="rect" id="Node000004" href="$structscc_1_1vcd__push__trace__file.html" title=" " alt="" coords="333,79,500,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="276,33,388,76,386,81,274,38"/>
+</map>

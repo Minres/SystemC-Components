@@ -1,0 +1,27 @@
+<map id="obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;" name="obi::pin::target&lt; DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1067,119,1257,173"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="813,16,951,41"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="942,43,966,52,1042,84,1109,116,1107,121,1039,89,964,56,940,48"/>
+<area shape="rect" id="Node000003" href="$classtlm_1_1scc_1_1initiator__mixin.html" title=" " alt="" coords="799,66,965,135"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="979,114,1067,128,1066,133,978,119"/>
+<area shape="rect" id="Node000004" href="$classtlm_1_1scc_1_1scv_1_1tlm__rec__initiator__socket.html" title=" " alt="" coords="569,81,741,121"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="755,98,798,98,798,103,755,103"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="235,5,457,89"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="472,66,570,83,569,89,471,71"/>
+<area shape="rect" id="Node000006" href="$classtlm_1_1scc_1_1scv_1_1tlm__recorder.html" title=" " alt="" coords="265,113,427,168"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="440,126,569,109,569,114,441,131"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="5,75,185,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="199,115,266,126,265,131,199,121"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,153,185,208"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="199,162,265,151,266,156,199,167"/>
+<area shape="rect" id="Node000009" href="$classscc_1_1sc__in__opt.html" title=" " alt="" coords="815,173,949,213"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="963,198,1002,198,1042,193,1075,184,1106,171,1108,176,1077,189,1043,198,1003,203,963,203"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="561,148,749,232"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="763,189,815,189,815,195,763,194"/>
+<area shape="rect" id="Node000011" href="$classscc_1_1sc__out__opt.html" title=" " alt="" coords="811,250,953,290"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="966,266,1004,260,1042,248,1069,232,1095,212,1136,172,1140,176,1098,217,1072,236,1044,252,1006,265,967,272"/>
+<area shape="rect" id="Node000012" href="$classscc_1_1sc__inout__opt.html" title=" " alt="" coords="580,257,731,297"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="745,271,811,269,811,275,745,277"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="253,235,439,319"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="452,274,580,274,580,279,452,279"/>
+</map>

@@ -1,4 +1,0 @@
-<map id="axi::fsm::ATrans" name="axi::fsm::ATrans">
-<area shape="rect" id="node1" title="special state to map AWREADY/WDATA of SNPS to AXI protocol" alt="" coords="16,95,141,121"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,152,47"/>
-</map>

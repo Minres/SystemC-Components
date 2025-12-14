@@ -1,0 +1,7 @@
+<map id="axi::scv::axi_recorder&lt; TYPES &gt;" name="axi::scv::axi_recorder&lt; TYPES &gt;">
+<area shape="rect" id="Node000001" title="The TLM2 transaction recorder." alt="" coords="203,53,351,93"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="7,5,153,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,48,203,55,202,60,166,53"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,84,155,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,91,202,85,203,90,169,97"/>
+</map>

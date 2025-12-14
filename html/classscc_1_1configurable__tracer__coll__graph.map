@@ -1,0 +1,9 @@
+<map id="scc::configurable_tracer" name="scc::configurable_tracer">
+<area shape="rect" id="Node000001" title="configurable tracer for automatic port and signal tracing" alt="" coords="5,225,167,251"/>
+<area shape="rect" id="Node000002" href="$classscc_1_1tracer.html" title="a component traversing the SystemC object hierarchy and tracing the objects" alt="" coords="44,152,128,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,191,89,225,83,225,83,191"/>
+<area shape="rect" id="Node000003" href="$structscc_1_1tracer__base.html" title="base class for automatic tracer" alt="" coords="27,79,145,104"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="89,118,89,152,83,152,83,118"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="17,5,155,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="89,44,89,79,83,79,83,44"/>
+</map>

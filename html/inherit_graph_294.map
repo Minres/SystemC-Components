@@ -1,0 +1,13 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classtlm_1_1scc_1_1scv_1_1tlm__extensions__recording__if.html" title=" " alt="" coords="5,105,175,159"/>
+<area shape="rect" id="Node000001" href="$classchi_1_1chi__credit__ext__recording.html" title=" " alt="" coords="249,5,377,45"/>
+<area shape="poly" id="edge599_Node000000_Node000001" title=" " alt="" coords="146,95,222,55,250,43,252,48,224,60,148,100"/>
+<area shape="rect" id="Node000002" href="$classchi_1_1chi__ctrl__ext__recording.html" title=" " alt="" coords="226,70,401,95"/>
+<area shape="poly" id="edge600_Node000000_Node000002" title=" " alt="" coords="188,108,255,93,256,98,189,113"/>
+<area shape="rect" id="Node000003" href="$classchi_1_1chi__data__ext__recording.html" title=" " alt="" coords="223,119,404,145"/>
+<area shape="poly" id="edge601_Node000000_Node000003" title=" " alt="" coords="188,129,223,129,223,135,188,135"/>
+<area shape="rect" id="Node000004" href="$classchi_1_1chi__snp__ext__recording.html" title=" " alt="" coords="225,169,402,194"/>
+<area shape="poly" id="edge602_Node000000_Node000004" title=" " alt="" coords="189,151,256,166,255,171,188,156"/>
+<area shape="rect" id="Node000005" href="$classchi_1_1tlm__id__ext__recording.html" title=" " alt="" coords="230,218,397,243"/>
+<area shape="poly" id="edge603_Node000000_Node000005" title=" " alt="" coords="147,164,224,203,260,215,258,220,222,208,145,169"/>
+</map>

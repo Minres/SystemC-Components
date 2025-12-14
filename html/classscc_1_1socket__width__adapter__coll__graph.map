@@ -1,0 +1,9 @@
+<map id="scc::socket_width_adapter&lt; TGT_BUSWIDTH, INTOR_BUSWIDTH, TYPES, N, POL &gt;" name="scc::socket_width_adapter&lt; TGT_BUSWIDTH, INTOR_BUSWIDTH, TYPES, N, POL &gt;">
+<area shape="rect" id="Node000001" title="The socket_width_adapter class is a TLM (Transaction&#45;Level Modeling) socket width adapter." alt="" coords="233,55,500,109"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="26,5,165,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,31,251,52,249,57,163,37"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,55,185,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,79,233,79,233,85,199,85"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,133,185,188"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="198,128,271,107,272,112,199,133"/>
+</map>

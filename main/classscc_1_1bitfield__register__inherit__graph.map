@@ -1,5 +1,0 @@
-<map id="scc::bitfield_register&lt; datatype_t &gt;" name="scc::bitfield_register&lt; datatype_t &gt;">
-<area shape="rect" id="node1" title="Register that can contain bitfields." alt="" coords="89,80,243,121"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,145,32"/>
-<area shape="rect" id="node3" href="$classscc_1_1resource__access__if.html" title="interface defining access to a resource e.g. a register" alt="" coords="169,5,344,32"/>
-</map>

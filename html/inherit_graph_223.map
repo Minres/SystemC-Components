@@ -1,0 +1,81 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classscc_1_1resetable.html" title="base class for components having a reset" alt="" coords="41,20,145,45"/>
+<area shape="rect" id="Node000001" href="$classscc_1_1tlm__target__bfs__register__base.html" title=" " alt="" coords="247,5,407,60"/>
+<area shape="poly" id="edge497_Node000000_Node000001" title=" " alt="" coords="158,30,247,30,247,35,158,35"/>
+<area shape="rect" id="Node000004" href="$classscc_1_1resource__access__if.html" title="interface defining access to a resource e.g. a register" alt="" coords="11,156,175,181"/>
+<area shape="rect" id="Node000003" href="$classscc_1_1impl_1_1sc__register.html" title=" " alt="" coords="246,213,409,268"/>
+<area shape="poly" id="edge498_Node000004_Node000003" title=" " alt="" coords="149,183,246,213,245,218,147,188"/>
+<area shape="rect" id="Node000005" href="$classscc_1_1bitfield__register.html" title="Register that can contain bitfields." alt="" coords="258,149,397,189"/>
+<area shape="poly" id="edge499_Node000004_Node000005" title=" " alt="" coords="189,166,258,166,258,171,189,171"/>
+<area shape="rect" id="Node000006" href="$classscc_1_1impl_1_1sc__register.html" title="a simple register implementation" alt="" coords="254,85,401,125"/>
+<area shape="poly" id="edge500_Node000004_Node000006" title=" " alt="" coords="153,150,253,122,254,127,154,155"/>
+<area shape="rect" id="Node000007" href="$classscc_1_1sc__register__masked.html" title=" " alt="" coords="475,85,720,125"/>
+<area shape="poly" id="edge501_Node000006_Node000007" title=" " alt="" coords="415,102,475,102,475,107,415,107"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="27,861,159,887"/>
+<area shape="poly" id="edge533_Node000002_Node000001" title=" " alt="" coords="95,847,164,415,203,181,226,71,245,54,249,58,230,74,208,182,169,415,101,848"/>
+<area shape="poly" id="edge502_Node000002_Node000003" title=" " alt="" coords="94,847,109,727,135,557,153,470,175,390,199,324,226,278,244,262,248,266,230,281,203,326,180,392,159,471,141,558,114,728,99,848"/>
+<area shape="poly" id="edge518_Node000002_Node000005" title=" " alt="" coords="95,847,116,703,150,498,189,306,208,237,226,199,240,187,256,178,259,183,243,191,230,202,213,239,194,307,155,499,121,704,100,848"/>
+<area shape="poly" id="edge520_Node000002_Node000006" title=" " alt="" coords="95,847,159,454,198,241,214,169,226,135,252,116,255,120,230,138,219,171,203,242,164,455,101,848"/>
+<area shape="rect" id="Node000013" href="$structscc_1_1peq.html" title=" " alt="" coords="254,1378,401,1418"/>
+<area shape="poly" id="edge503_Node000002_Node000013" title=" " alt="" coords="96,900,98,988,104,1047,114,1112,131,1179,154,1246,187,1309,230,1364,255,1381,252,1386,226,1368,183,1312,150,1248,125,1181,109,1113,98,1048,93,988,90,900"/>
+<area shape="rect" id="Node000014" href="$structscc_1_1peq.html" title=" " alt="" coords="254,1442,401,1482"/>
+<area shape="poly" id="edge504_Node000002_Node000014" title=" " alt="" coords="100,900,115,1014,142,1172,160,1253,181,1327,204,1387,230,1428,255,1446,252,1450,226,1432,199,1390,176,1329,155,1254,137,1173,109,1015,94,901"/>
+<area shape="rect" id="Node000015" href="$structscc_1_1peq.html" title=" " alt="" coords="256,1506,399,1546"/>
+<area shape="poly" id="edge505_Node000002_Node000015" title=" " alt="" coords="99,900,112,1025,138,1203,156,1294,177,1377,202,1446,215,1472,230,1492,257,1511,254,1515,226,1496,211,1475,197,1448,172,1379,150,1295,132,1204,107,1026,94,901"/>
+<area shape="rect" id="Node000016" href="$structscc_1_1peq.html" title=" " alt="" coords="254,1571,401,1625"/>
+<area shape="poly" id="edge506_Node000002_Node000016" title=" " alt="" coords="99,900,111,1036,136,1232,153,1333,175,1426,201,1503,215,1533,230,1556,256,1576,252,1581,226,1560,210,1536,196,1505,170,1428,148,1334,130,1233,105,1036,93,901"/>
+<area shape="rect" id="Node000017" href="$structscc_1_1peq.html" title=" " alt="" coords="255,342,399,382"/>
+<area shape="poly" id="edge507_Node000002_Node000017" title=" " alt="" coords="91,847,94,761,100,703,110,640,127,574,151,508,184,447,226,392,254,373,257,378,230,396,188,450,156,510,132,575,116,641,105,704,99,762,96,847"/>
+<area shape="rect" id="Node000018" href="$structscc_1_1peq.html" title=" " alt="" coords="249,406,405,475"/>
+<area shape="poly" id="edge508_Node000002_Node000018" title=" " alt="" coords="94,848,103,778,126,682,143,631,165,579,192,530,226,485,247,468,251,472,230,489,197,533,170,581,148,632,131,684,109,779,99,848"/>
+<area shape="rect" id="Node000019" href="$structscc_1_1peq.html" title=" " alt="" coords="238,499,417,598"/>
+<area shape="poly" id="edge509_Node000002_Node000019" title=" " alt="" coords="99,847,117,799,144,736,180,670,226,608,238,596,242,600,230,612,185,672,148,739,122,801,104,849"/>
+<area shape="rect" id="Node000020" href="$structscc_1_1peq.html" title=" " alt="" coords="258,623,397,677"/>
+<area shape="poly" id="edge510_Node000002_Node000020" title=" " alt="" coords="104,848,151,769,185,725,226,687,257,669,259,673,230,691,189,729,155,773,108,850"/>
+<area shape="rect" id="Node000021" href="$structscc_1_1peq.html" title=" " alt="" coords="255,701,400,727"/>
+<area shape="poly" id="edge511_Node000002_Node000021" title=" " alt="" coords="109,849,157,791,190,761,227,736,254,724,256,729,229,740,193,765,161,795,113,852"/>
+<area shape="rect" id="Node000022" href="$structscc_1_1peq.html" title=" " alt="" coords="240,751,415,805"/>
+<area shape="poly" id="edge512_Node000002_Node000022" title=" " alt="" coords="135,853,227,814,255,803,257,808,229,819,137,858"/>
+<area shape="rect" id="Node000023" href="$structscc_1_1peq.html" title=" " alt="" coords="253,829,401,855"/>
+<area shape="poly" id="edge513_Node000002_Node000023" title=" " alt="" coords="172,861,253,849,253,855,173,866"/>
+<area shape="rect" id="Node000024" href="$structscc_1_1peq.html" title=" " alt="" coords="228,879,427,933"/>
+<area shape="poly" id="edge514_Node000002_Node000024" title=" " alt="" coords="173,882,228,890,228,895,172,887"/>
+<area shape="rect" id="Node000025" href="$structscc_1_1peq.html" title=" " alt="" coords="253,958,402,1027"/>
+<area shape="poly" id="edge515_Node000002_Node000025" title=" " alt="" coords="131,891,229,942,255,955,253,960,227,947,128,895"/>
+<area shape="rect" id="Node000026" href="$structscc_1_1peq.html" title=" " alt="" coords="249,1051,405,1091"/>
+<area shape="poly" id="edge516_Node000002_Node000026" title=" " alt="" coords="110,897,157,967,191,1005,230,1037,251,1049,248,1054,226,1042,187,1008,153,970,105,900"/>
+<area shape="rect" id="Node000027" href="$structscc_1_1peq.html" title=" " alt="" coords="256,1115,399,1155"/>
+<area shape="poly" id="edge517_Node000002_Node000027" title=" " alt="" coords="105,899,122,943,148,997,184,1053,205,1079,230,1101,257,1117,254,1122,226,1105,202,1082,180,1056,143,1000,117,945,100,901"/>
+<area shape="rect" id="Node000028" href="$structscc_1_1dmi__mgr.html" title="The dmi_mgr class manages Direct Memory Interface (DMI) transactions." alt="" coords="244,1180,411,1205"/>
+<area shape="poly" id="edge519_Node000002_Node000028" title=" " alt="" coords="101,900,114,956,138,1028,155,1065,175,1102,200,1136,230,1165,250,1178,247,1182,226,1169,196,1139,171,1105,150,1068,133,1030,108,957,96,901"/>
+<area shape="rect" id="Node000009" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="245,292,410,317"/>
+<area shape="poly" id="edge521_Node000002_Node000009" title=" " alt="" coords="94,847,109,736,136,580,154,500,175,428,199,369,226,328,244,315,247,320,230,332,204,371,180,430,159,502,141,581,114,736,100,848"/>
+<area shape="rect" id="Node000029" href="$structscc_1_1peq.html" title="priority event queue" alt="" coords="262,1229,393,1255"/>
+<area shape="poly" id="edge524_Node000002_Node000029" title=" " alt="" coords="99,900,109,964,131,1049,148,1094,170,1139,197,1179,230,1215,245,1225,263,1232,261,1237,242,1230,226,1219,193,1183,165,1141,143,1097,126,1051,104,965,94,901"/>
+<area shape="rect" id="Node000030" href="$classscc_1_1sc__thread__pool.html" title="A thread pool for executing tasks concurrently." alt="" coords="258,1279,397,1304"/>
+<area shape="poly" id="edge525_Node000002_Node000030" title=" " alt="" coords="97,900,104,972,124,1071,141,1123,164,1175,193,1222,230,1264,259,1281,256,1285,226,1268,189,1226,159,1177,136,1125,119,1072,99,973,92,900"/>
+<area shape="rect" id="Node000031" href="$structscc_1_1sc__variable__b.html" title=" " alt="" coords="262,1328,393,1353"/>
+<area shape="poly" id="edge526_Node000002_Node000031" title=" " alt="" coords="96,900,100,981,107,1034,118,1092,135,1152,158,1211,190,1266,230,1313,245,1324,263,1331,261,1336,242,1329,226,1317,185,1269,153,1213,130,1154,113,1093,102,1035,95,981,91,900"/>
+<area shape="rect" id="Node000010" href="$structscc_1_1ordered__semaphore__t.html" title=" " alt="" coords="515,317,680,357"/>
+<area shape="poly" id="edge522_Node000009_Node000010" title=" " alt="" coords="424,313,515,324,514,330,423,319"/>
+<area shape="rect" id="Node000011" href="$structscc_1_1ordered__semaphore__t.html" title=" " alt="" coords="515,253,680,293"/>
+<area shape="poly" id="edge523_Node000009_Node000011" title=" " alt="" coords="423,291,514,280,515,285,424,296"/>
+<area shape="rect" id="Node000032" href="$structscc_1_1sc__ref__variable_3_01sc__core_1_1sc__event_01_4.html" title=" " alt="" coords="521,1350,673,1390"/>
+<area shape="poly" id="edge527_Node000031_Node000032" title=" " alt="" coords="406,1347,521,1359,521,1364,406,1352"/>
+<area shape="rect" id="Node000033" href="$structscc_1_1sc__variable.html" title=" " alt="" coords="501,1415,693,1440"/>
+<area shape="poly" id="edge528_Node000031_Node000033" title=" " alt="" coords="407,1355,428,1364,443,1373,452,1382,462,1391,476,1400,512,1412,510,1417,474,1404,459,1395,449,1386,439,1377,425,1368,405,1360"/>
+<area shape="rect" id="Node000034" href="$structscc_1_1sc__variable_3_01bool_01_4.html" title=" " alt="" coords="515,1464,679,1489"/>
+<area shape="poly" id="edge529_Node000031_Node000034" title=" " alt="" coords="407,1352,428,1364,446,1386,453,1409,459,1431,476,1451,495,1461,516,1468,514,1473,493,1466,473,1455,455,1433,448,1410,441,1389,425,1368,404,1356"/>
+<area shape="rect" id="Node000035" href="$structscc_1_1sc__ref__variable.html" title="the sc_ref_variable for a particular plain data type. This marks an existing C++ variable as discover..." alt="" coords="512,1185,683,1211"/>
+<area shape="poly" id="edge530_Node000031_Node000035" title=" " alt="" coords="404,1325,425,1313,435,1303,442,1292,448,1268,454,1244,461,1232,473,1221,491,1210,511,1203,512,1208,493,1215,476,1225,466,1236,459,1246,453,1270,447,1294,440,1306,428,1317,407,1330"/>
+<area shape="rect" id="Node000036" href="$structscc_1_1sc__ref__variable__masked.html" title="the sc_variable for a particular plain data type with limited bit width" alt="" coords="528,1235,667,1275"/>
+<area shape="poly" id="edge531_Node000031_Node000036" title=" " alt="" coords="401,1322,426,1313,449,1299,474,1285,527,1267,528,1272,476,1290,452,1304,428,1318,403,1327"/>
+<area shape="rect" id="Node000037" href="$structscc_1_1sc__variable.html" title="SystemC variable." alt="" coords="523,1300,671,1325"/>
+<area shape="poly" id="edge532_Node000031_Node000037" title=" " alt="" coords="406,1330,523,1318,523,1323,407,1335"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="5,292,180,317"/>
+<area shape="poly" id="edge534_Node000012_Node000009" title=" " alt="" coords="194,302,245,302,245,307,194,307"/>
+<area shape="rect" id="Node000008" href="$structscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="41,228,145,253"/>
+<area shape="poly" id="edge535_Node000008_Node000003" title=" " alt="" coords="159,238,246,238,246,243,159,243"/>
+<area shape="poly" id="edge536_Node000008_Node000006" title=" " alt="" coords="133,219,178,191,192,176,201,162,211,148,226,134,253,121,255,126,230,139,215,152,206,165,196,179,182,195,136,224"/>
+<area shape="poly" id="edge537_Node000008_Node000009" title=" " alt="" coords="150,255,229,277,276,289,275,294,227,282,149,260"/>
+</map>

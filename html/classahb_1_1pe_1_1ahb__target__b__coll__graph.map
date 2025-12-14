@@ -1,0 +1,15 @@
+<map id="ahb::pe::ahb_target_b" name="ahb::pe::ahb_target_b">
+<area shape="rect" id="Node000001" title=" " alt="" coords="512,69,660,95"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="250,5,389,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="388,31,533,67,531,72,386,37"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="229,55,409,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="423,79,512,79,512,85,423,85"/>
+<area shape="rect" id="Node000004" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="237,133,402,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="415,140,487,127,528,111,563,92,566,97,531,116,489,133,416,146"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,84,180,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="166,110,261,131,260,136,164,115"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="27,133,159,159"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="172,143,237,143,237,149,172,149"/>
+<area shape="rect" id="Node000007" href="$structscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="41,183,145,208"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="158,179,260,156,261,161,159,184"/>
+</map>

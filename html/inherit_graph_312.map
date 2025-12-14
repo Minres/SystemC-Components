@@ -1,0 +1,67 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,1029,156,1069"/>
+<area shape="rect" id="Node000001" href="$structaxi_1_1ace__initiator__socket.html" title=" " alt="" coords="232,5,435,60"/>
+<area shape="poly" id="edge610_Node000000_Node000001" title=" " alt="" coords="79,1015,80,823,84,688,93,541,108,395,130,260,144,200,161,148,180,105,202,71,230,49,234,53,206,74,185,107,166,150,149,202,135,261,113,395,99,541,90,688,85,824,84,1015"/>
+<area shape="rect" id="Node000002" href="$structaxi_1_1ace__initiator__socket.html" title=" " alt="" coords="204,85,463,154"/>
+<area shape="poly" id="edge611_Node000000_Node000002" title=" " alt="" coords="79,1015,84,840,100,587,116,455,137,334,165,234,182,195,202,164,214,153,217,156,206,168,187,197,170,236,142,336,121,456,106,587,89,841,85,1015"/>
+<area shape="rect" id="Node000004" href="$structaxi_1_1ace__initiator__socket.html" title=" " alt="" coords="235,178,432,218"/>
+<area shape="poly" id="edge613_Node000000_Node000004" title=" " alt="" coords="80,1015,84,850,101,614,116,493,137,382,166,291,183,255,202,228,216,216,233,207,235,212,219,220,206,232,187,258,171,293,143,383,121,494,106,615,90,850,85,1015"/>
+<area shape="rect" id="Node000005" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="232,243,435,297"/>
+<area shape="poly" id="edge614_Node000000_Node000005" title=" " alt="" coords="80,1015,88,865,107,654,123,546,144,447,170,365,185,333,202,308,230,287,233,291,206,312,190,336,175,367,149,448,128,547,113,654,93,865,86,1015"/>
+<area shape="rect" id="Node000006" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="204,322,463,391"/>
+<area shape="poly" id="edge615_Node000000_Node000006" title=" " alt="" coords="81,1015,92,882,114,699,130,606,150,521,174,451,187,423,202,402,214,390,218,393,206,405,192,426,179,453,155,523,136,607,120,700,98,882,87,1015"/>
+<area shape="rect" id="Node000008" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="276,415,391,455"/>
+<area shape="poly" id="edge617_Node000000_Node000008" title=" " alt="" coords="82,1014,93,893,116,728,132,645,152,570,175,508,188,484,202,465,218,453,236,443,275,434,276,439,238,448,221,457,206,469,192,487,180,510,157,572,137,647,121,729,99,893,87,1015"/>
+<area shape="rect" id="Node000009" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="245,480,422,564"/>
+<area shape="poly" id="edge618_Node000000_Node000009" title=" " alt="" coords="78,1015,82,929,87,873,98,813,113,750,135,687,164,628,202,575,221,558,243,544,246,549,224,562,206,578,169,631,140,690,118,751,103,814,93,874,87,929,84,1015"/>
+<area shape="rect" id="Node000010" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="276,589,391,629"/>
+<area shape="poly" id="edge619_Node000000_Node000010" title=" " alt="" coords="79,1015,83,938,100,837,116,783,137,730,166,682,202,639,218,627,237,618,275,608,276,613,239,623,221,631,206,643,170,685,142,733,121,785,105,838,89,939,84,1015"/>
+<area shape="rect" id="Node000011" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="235,653,432,693"/>
+<area shape="poly" id="edge620_Node000000_Node000011" title=" " alt="" coords="81,1014,89,948,109,864,125,820,145,777,171,738,202,703,233,684,236,688,206,707,175,741,150,780,129,822,114,866,95,949,86,1015"/>
+<area shape="rect" id="Node000012" href="$structchi_1_1chi__initiator__socket.html" title=" " alt="" coords="232,717,435,772"/>
+<area shape="poly" id="edge621_Node000000_Node000012" title=" " alt="" coords="86,1015,99,964,122,901,155,838,177,808,202,783,230,764,233,769,206,787,181,812,160,841,127,903,104,965,91,1016"/>
+<area shape="rect" id="Node000013" href="$structchi_1_1chi__initiator__socket.html" title=" " alt="" coords="204,797,463,866"/>
+<area shape="poly" id="edge622_Node000000_Node000013" title=" " alt="" coords="95,1014,138,945,168,908,202,876,221,864,224,868,206,880,171,912,142,948,100,1017"/>
+<area shape="rect" id="Node000014" href="$structtilelink_1_1tlc__initiator__socket.html" title=" " alt="" coords="232,891,435,945"/>
+<area shape="poly" id="edge623_Node000000_Node000014" title=" " alt="" coords="113,1017,155,985,203,956,231,943,234,948,205,960,158,990,117,1021"/>
+<area shape="rect" id="Node000015" href="$structtlm_1_1nw_1_1tlm__network__initiator__socket.html" title=" " alt="" coords="250,970,417,1039"/>
+<area shape="poly" id="edge624_Node000000_Node000015" title=" " alt="" coords="169,1031,249,1017,250,1022,170,1036"/>
+<area shape="rect" id="Node000016" href="$structtlm_1_1nw_1_1tlm__network__initiator__socket.html" title=" " alt="" coords="228,1064,439,1119"/>
+<area shape="poly" id="edge625_Node000000_Node000016" title=" " alt="" coords="170,1061,228,1071,227,1076,169,1066"/>
+<area shape="rect" id="Node000017" href="$structtlm_1_1nw_1_1tlm__network__initiator__socket.html" title=" " alt="" coords="219,1143,448,1197"/>
+<area shape="poly" id="edge626_Node000000_Node000017" title=" " alt="" coords="120,1075,160,1102,205,1128,235,1140,233,1145,203,1132,157,1107,117,1079"/>
+<area shape="rect" id="Node000018" href="$structtlm_1_1nw_1_1tlm__network__initiator__socket.html" title=" " alt="" coords="224,1221,443,1276"/>
+<area shape="poly" id="edge627_Node000000_Node000018" title=" " alt="" coords="101,1079,143,1144,172,1178,206,1206,227,1219,224,1223,202,1211,168,1182,139,1147,96,1082"/>
+<area shape="rect" id="Node000019" href="$structtlm_1_1nw_1_1tlm__network__initiator__socket.html" title=" " alt="" coords="232,1300,435,1355"/>
+<area shape="poly" id="edge628_Node000000_Node000019" title=" " alt="" coords="93,1081,107,1127,130,1182,163,1238,183,1263,206,1285,233,1302,230,1307,202,1289,179,1267,159,1241,126,1185,102,1129,88,1083"/>
+<area shape="rect" id="Node000020" href="$structtlm_1_1scc_1_1tlm__signal__initiator__socket.html" title=" " alt="" coords="246,1379,421,1419"/>
+<area shape="poly" id="edge629_Node000000_Node000020" title=" " alt="" coords="88,1082,97,1143,118,1219,133,1259,153,1297,177,1333,206,1364,225,1377,247,1386,245,1391,222,1382,202,1368,173,1336,148,1300,128,1261,113,1221,92,1144,82,1083"/>
+<area shape="rect" id="Node000021" href="$structtlm_1_1scc_1_1tlm__signal__initiator__socket.html" title=" " alt="" coords="259,1443,408,1513"/>
+<area shape="poly" id="edge630_Node000000_Node000021" title=" " alt="" coords="86,1082,93,1153,112,1246,127,1295,148,1344,174,1389,206,1429,231,1448,259,1461,257,1466,228,1453,202,1433,169,1392,143,1346,122,1297,107,1248,88,1154,81,1083"/>
+<area shape="rect" id="Node000022" href="$structaxi_1_1ace__initiator__socket.html" title=" " alt="" coords="232,1537,435,1592"/>
+<area shape="poly" id="edge631_Node000000_Node000022" title=" " alt="" coords="89,1082,104,1183,130,1315,146,1381,164,1441,184,1490,206,1523,233,1543,230,1547,202,1527,179,1492,159,1443,141,1383,124,1317,99,1184,84,1083"/>
+<area shape="rect" id="Node000023" href="$structaxi_1_1axi__initiator__socket.html" title=" " alt="" coords="232,1616,435,1671"/>
+<area shape="poly" id="edge632_Node000000_Node000023" title=" " alt="" coords="88,1082,101,1198,124,1354,140,1432,159,1504,181,1562,206,1602,233,1622,230,1626,202,1605,176,1564,154,1505,135,1433,119,1355,95,1199,82,1083"/>
+<area shape="rect" id="Node000024" href="$structchi_1_1chi__initiator__socket.html" title=" " alt="" coords="232,1695,435,1749"/>
+<area shape="poly" id="edge633_Node000000_Node000024" title=" " alt="" coords="87,1082,97,1213,119,1392,135,1483,155,1566,178,1634,192,1660,206,1680,233,1701,230,1705,202,1684,187,1663,173,1636,150,1567,130,1484,114,1393,92,1213,81,1083"/>
+<area shape="rect" id="Node000025" href="$structtilelink_1_1tlc__initiator__socket.html" title=" " alt="" coords="232,1773,435,1828"/>
+<area shape="poly" id="edge634_Node000000_Node000025" title=" " alt="" coords="86,1082,94,1227,114,1430,130,1534,150,1628,176,1706,190,1736,206,1759,233,1780,230,1784,202,1763,185,1739,171,1708,145,1630,125,1535,109,1431,89,1228,81,1083"/>
+<area shape="rect" id="Node000026" href="$structtilelink_1_1tlu__initiator__socket.html" title=" " alt="" coords="232,1852,435,1907"/>
+<area shape="poly" id="edge635_Node000000_Node000026" title=" " alt="" coords="85,1082,91,1242,110,1468,125,1584,146,1690,173,1778,188,1812,206,1838,233,1858,230,1863,202,1841,184,1814,168,1780,141,1692,120,1585,104,1469,86,1242,80,1083"/>
+<area shape="rect" id="Node000027" href="$structtlm_1_1nw_1_1tlm__network__initiator__socket.html" title="Definition of the tlm_network_initiator_socket class." alt="" coords="228,1931,439,1985"/>
+<area shape="poly" id="edge636_Node000000_Node000027" title=" " alt="" coords="85,1083,89,1256,95,1377,105,1507,120,1636,141,1754,170,1851,187,1889,206,1918,229,1936,226,1940,202,1921,182,1892,165,1853,136,1755,114,1636,99,1507,89,1377,83,1256,79,1083"/>
+<area shape="rect" id="Node000028" href="$structtlm_1_1scc_1_1tlm__signal__initiator__socket.html" title=" " alt="" coords="256,2009,411,2064"/>
+<area shape="poly" id="edge637_Node000000_Node000028" title=" " alt="" coords="84,1083,86,1270,91,1402,100,1544,115,1686,137,1816,151,1873,167,1923,185,1965,206,1996,229,2015,257,2026,255,2031,226,2019,202,2000,180,1967,162,1925,145,1875,131,1817,109,1687,95,1545,85,1402,81,1270,79,1083"/>
+<area shape="rect" id="Node000003" href="$classaxi_1_1scv_1_1ace__rec__initiator__socket.html" title=" " alt="" coords="512,92,715,147"/>
+<area shape="poly" id="edge612_Node000002_Node000003" title=" " alt="" coords="476,117,512,117,512,122,476,122"/>
+<area shape="rect" id="Node000007" href="$classaxi_1_1scv_1_1axi__rec__initiator__socket.html" title=" " alt="" coords="512,329,715,384"/>
+<area shape="poly" id="edge616_Node000006_Node000007" title=" " alt="" coords="476,354,512,354,512,359,476,359"/>
+<area shape="rect" id="Node000029" href="$classtlm_1_1scc_1_1signal__initiator__mixin.html" title=" " alt="" coords="523,1891,703,1945"/>
+<area shape="poly" id="edge638_Node000028_Node000029" title=" " alt="" coords="423,2012,461,1996,485,1976,509,1956,534,1943,536,1948,512,1960,489,1980,464,2000,425,2017"/>
+<area shape="rect" id="Node000030" href="$classtlm_1_1scc_1_1signal__initiator__mixin.html" title=" " alt="" coords="518,1969,709,2024"/>
+<area shape="poly" id="edge639_Node000028_Node000030" title=" " alt="" coords="424,2021,517,2008,518,2013,425,2026"/>
+<area shape="rect" id="Node000031" href="$classtlm_1_1scc_1_1signal__initiator__mixin.html" title=" " alt="" coords="511,2048,716,2103"/>
+<area shape="poly" id="edge640_Node000028_Node000031" title=" " alt="" coords="424,2046,511,2059,510,2064,424,2052"/>
+<area shape="rect" id="Node000032" href="$classtlm_1_1scc_1_1signal__initiator__mixin.html" title=" " alt="" coords="511,2127,716,2181"/>
+<area shape="poly" id="edge641_Node000028_Node000032" title=" " alt="" coords="407,2067,512,2113,540,2124,538,2129,510,2118,405,2072"/>
+</map>

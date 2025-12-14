@@ -1,0 +1,7 @@
+<map id="scc::tracer" name="scc::tracer">
+<area shape="rect" id="Node000001" title="a component traversing the SystemC object hierarchy and tracing the objects" alt="" coords="33,152,117,177"/>
+<area shape="rect" id="Node000002" href="$structscc_1_1tracer__base.html" title="base class for automatic tracer" alt="" coords="15,79,134,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,118,77,152,72,152,72,118"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,144,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="77,44,77,79,72,79,72,44"/>
+</map>

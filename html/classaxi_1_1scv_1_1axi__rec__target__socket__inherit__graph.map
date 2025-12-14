@@ -1,0 +1,7 @@
+<map id="axi::scv::axi_rec_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt;" name="axi::scv::axi_rec_target_socket&lt; BUSWIDTH, TYPES, N, POL &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="485,27,688,82"/>
+<area shape="rect" id="Node000002" href="$structaxi_1_1axi__target__socket.html" title=" " alt="" coords="244,20,437,89"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="451,52,485,52,485,57,451,57"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,196,104"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="210,52,244,52,244,57,210,57"/>
+</map>

@@ -1,8 +1,0 @@
-<map id="axi::pe::ace_target_pe" name="axi::pe::ace_target_pe">
-<area shape="rect" id="node1" title=" " alt="" coords="216,89,383,116"/>
-<area shape="rect" id="node6" href="$classaxi_1_1pe_1_1simple__ace__target.html" title=" " alt="" coords="431,75,637,131"/>
-<area shape="rect" id="node2" title=" " alt="" coords="12,5,161,32"/>
-<area shape="rect" id="node3" href="$structaxi_1_1fsm_1_1base.html" title="base class of all AXITLM based adapters and interfaces." alt="" coords="29,56,144,83"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,107,168,163"/>
-<area shape="rect" id="node5" title=" " alt="" coords="6,187,167,243"/>
-</map>

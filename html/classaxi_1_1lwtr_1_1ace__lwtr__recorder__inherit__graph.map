@@ -1,0 +1,17 @@
+<map id="axi::lwtr::ace_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;" name="axi::lwtr::ace_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="820,23,983,77"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="633,5,772,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="786,29,820,34,820,40,785,34"/>
+<area shape="rect" id="Node000003" href="$classaxi_1_1lwtr_1_1ace__lwtr.html" title=" " alt="" coords="637,55,768,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="781,67,819,60,820,66,782,72"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="435,15,584,69"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="598,58,638,66,637,71,597,63"/>
+<area shape="rect" id="Node000005" href="$classaxi_1_1ace__bw__transport__if.html" title=" " alt="" coords="433,93,585,148"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="598,100,637,92,638,98,599,105"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="219,53,368,108"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="382,94,433,104,433,109,381,100"/>
+<area shape="rect" id="Node000007" href="$classaxi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="201,132,385,187"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="399,138,433,132,434,137,400,143"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,147,153,172"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="167,157,201,157,201,162,167,162"/>
+</map>

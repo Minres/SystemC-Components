@@ -1,0 +1,21 @@
+<map id="tlm::nw::tlm_network_payload_base" name="tlm::nw::tlm_network_payload_base">
+<area shape="rect" id="Node000001" title="A base class for TLM network payloads." alt="" coords="5,133,148,173"/>
+<area shape="rect" id="Node000002" href="$structtlm_1_1nw_1_1tlm__network__payload.html" title=" " alt="" coords="199,5,361,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,121,147,88,195,55,219,43,221,48,197,60,151,92,111,126"/>
+<area shape="rect" id="Node000004" href="$structtlm_1_1nw_1_1tlm__network__payload.html" title=" " alt="" coords="198,69,362,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="153,127,215,107,217,112,155,132"/>
+<area shape="rect" id="Node000006" href="$structtlm_1_1nw_1_1tlm__network__payload.html" title=" " alt="" coords="201,133,359,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="162,151,201,151,201,156,162,156"/>
+<area shape="rect" id="Node000008" href="$structtlm_1_1nw_1_1tlm__network__payload.html" title=" " alt="" coords="204,197,356,237"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="155,175,217,195,215,200,153,180"/>
+<area shape="rect" id="Node000010" href="$structtlm_1_1nw_1_1tlm__network__payload.html" title="A class for TLM network payloads with support for extensions and memory management." alt="" coords="196,261,364,301"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="111,181,151,215,197,247,221,259,219,264,195,252,147,219,107,185"/>
+<area shape="rect" id="Node000003" href="$structaxis_1_1axis__packet__payload.html" title=" " alt="" coords="412,13,589,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="375,23,412,23,412,28,375,28"/>
+<area shape="rect" id="Node000005" href="$structcxs_1_1cxs__flit__payload.html" title=" " alt="" coords="428,77,573,102"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="376,87,428,87,428,92,376,92"/>
+<area shape="rect" id="Node000007" href="$structcxs_1_1cxs__packet__payload.html" title=" " alt="" coords="416,141,585,166"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="373,151,416,151,416,156,373,156"/>
+<area shape="rect" id="Node000009" href="$structspi_1_1spi__packet__payload.html" title=" " alt="" coords="420,205,581,230"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="370,215,420,215,420,220,370,220"/>
+</map>

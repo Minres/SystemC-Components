@@ -1,0 +1,9 @@
+<map id="scc::impl::sc_register&lt; DATATYPE &gt;" name="scc::impl::sc_register&lt; DATATYPE &gt;">
+<area shape="rect" id="Node000001" title="a simple register implementation" alt="" coords="170,79,317,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,137,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,34,203,76,201,81,107,39"/>
+<area shape="rect" id="Node000003" href="$classscc_1_1resource__access__if.html" title="interface defining access to a resource e.g. a register" alt="" coords="161,5,325,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,44,246,79,241,79,241,44"/>
+<area shape="rect" id="Node000004" href="$structscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="350,5,454,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="368,39,283,81,281,76,365,34"/>
+</map>

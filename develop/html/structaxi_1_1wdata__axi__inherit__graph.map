@@ -1,7 +1,0 @@
-<map id="axi::wdata_axi&lt; CFG, TYPES &gt;" name="axi::wdata_axi&lt; CFG, TYPES &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,104,168,145"/>
-<area shape="rect" id="node2" href="$structaxi_1_1pin_1_1ace__initiator.html" title=" " alt="" coords="216,5,375,47"/>
-<area shape="rect" id="node3" href="$structaxi_1_1pin_1_1ace__lite__initiator.html" title=" " alt="" coords="227,71,364,112"/>
-<area shape="rect" id="node4" href="$structaxi_1_1pin_1_1ace__lite__target.html" title=" " alt="" coords="231,136,360,177"/>
-<area shape="rect" id="node5" href="$structaxi_1_1pin_1_1ace__target.html" title=" " alt="" coords="222,201,369,243"/>
-</map>

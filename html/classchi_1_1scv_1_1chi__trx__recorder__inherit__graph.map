@@ -1,0 +1,15 @@
+<map id="chi::scv::chi_trx_recorder&lt; TYPES &gt;" name="chi::scv::chi_trx_recorder&lt; TYPES &gt;">
+<area shape="rect" id="Node000001" title="The TLM2 transaction recorder." alt="" coords="627,53,796,93"/>
+<area shape="rect" id="Node000007" href="$classchi_1_1scv_1_1chitlm__recorder__module.html" title=" " alt="" coords="844,31,1051,115"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="810,70,844,70,844,75,810,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="433,5,577,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="592,47,627,54,626,59,591,52"/>
+<area shape="rect" id="Node000003" href="$classchi_1_1chi__bw__transport__if.html" title=" " alt="" coords="432,84,579,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="592,92,626,86,627,91,593,98"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="218,44,367,99"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="381,85,432,95,431,100,380,90"/>
+<area shape="rect" id="Node000005" href="$classchi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="201,123,384,177"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="397,128,431,122,432,127,398,134"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,137,153,163"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="167,147,201,147,201,153,167,153"/>
+</map>

@@ -1,0 +1,25 @@
+<map id="chi::lwtr::chi_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;" name="chi::lwtr::chi_lwtr_recorder&lt; BUSWIDTH, TYPES, N, POL &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1001,124,1164,179"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="735,43,873,68"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="888,65,934,77,987,98,1035,122,1032,126,985,103,933,82,887,70"/>
+<area shape="rect" id="Node000003" href="$classchi_1_1lwtr_1_1chi__lwtr.html" title=" " alt="" coords="739,92,869,147"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="883,126,1001,139,1001,145,882,131"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="458,5,602,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="616,58,675,77,740,97,738,102,674,82,615,63"/>
+<area shape="rect" id="Node000005" href="$classchi_1_1chi__bw__transport__if.html" title=" " alt="" coords="457,84,603,139"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="617,111,739,115,739,120,617,117"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="219,56,369,111"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="383,91,457,100,456,105,382,96"/>
+<area shape="rect" id="Node000007" href="$classchi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="203,135,385,189"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="398,137,456,124,457,130,399,142"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,149,153,175"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="167,159,202,159,202,165,167,165"/>
+<area shape="rect" id="Node000009" href="$structchi_1_1chi__target__socket.html" title=" " alt="" coords="707,174,901,243"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="913,184,1001,165,1002,171,914,189"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="435,163,625,262"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="639,208,707,207,707,213,639,214"/>
+<area shape="rect" id="Node000011" href="$structchi_1_1chi__initiator__socket.html" title=" " alt="" coords="675,282,933,351"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="894,273,932,253,992,214,1044,177,1048,181,995,219,935,258,897,278"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="435,286,625,385"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="639,325,674,323,674,328,639,331"/>
+</map>

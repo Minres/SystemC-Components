@@ -1,0 +1,31 @@
+<map id="chi::pe::chi_rn_initiator_b" name="chi::pe::chi_rn_initiator_b">
+<area shape="rect" id="Node000001" title=" " alt="" coords="803,163,969,188"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="488,35,627,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="629,61,654,69,772,117,861,160,859,165,769,121,652,74,628,66"/>
+<area shape="rect" id="Node000003" href="$classchi_1_1chi__bw__transport__if.html" title=" " alt="" coords="484,84,631,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="645,126,820,160,819,165,644,131"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="246,84,395,139"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="409,109,484,109,484,114,409,114"/>
+<area shape="rect" id="Node000005" href="$classchi_1_1bw__blocking__transport__if.html" title=" " alt="" coords="229,5,412,60"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="418,62,485,85,483,90,416,67"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="19,125,167,151"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="130,117,228,69,253,58,255,63,230,74,132,122"/>
+<area shape="rect" id="Node000008" href="$structtlm_1_1scc_1_1pe_1_1intor__fw.html" title=" " alt="" coords="259,163,383,203"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="171,151,259,168,258,174,170,156"/>
+<area shape="rect" id="Node000007" href="$structtlm_1_1scc_1_1pe_1_1intor__fw__b.html" title=" " alt="" coords="478,163,637,188"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="651,173,802,173,802,178,651,178"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="396,178,478,175,478,181,397,183"/>
+<area shape="rect" id="Node000009" href="$classscc_1_1ordered__semaphore.html" title="The ordered_semaphore primitive channel class." alt="" coords="238,363,403,388"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="417,384,472,386,532,384,593,376,652,359,689,343,725,322,789,272,840,223,872,186,876,190,843,227,792,276,728,326,692,347,654,365,595,381,533,390,472,392,417,390"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="5,312,180,337"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="165,338,263,360,262,365,164,343"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="27,419,159,444"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="158,413,267,385,269,391,159,418"/>
+<area shape="rect" id="Node000014" href="$structscc_1_1sc__variable__b.html" title=" " alt="" coords="255,428,386,453"/>
+<area shape="poly" id="edge15_Node000014_Node000011" title=" " alt="" coords="173,432,255,435,255,441,172,437"/>
+<area shape="rect" id="Node000012" href="$structscc_1_1traceable.html" title="interface defining a traceable component" alt="" coords="41,361,145,387"/>
+<area shape="poly" id="edge12_Node000009_Node000012" title=" " alt="" coords="159,372,238,372,238,378,159,377"/>
+<area shape="rect" id="Node000013" href="$structscc_1_1sc__variable.html" title=" " alt="" coords="461,427,653,452"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="616,452,655,458,697,459,739,452,777,434,806,409,829,377,847,342,861,306,876,237,881,188,887,188,881,238,866,307,852,344,834,380,810,412,780,439,741,457,698,464,655,463,616,458"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="400,438,461,437,461,443,400,443"/>
+</map>
