@@ -108,7 +108,7 @@ private:
 
 protected:
     util::range_lut<std::pair<resource_access_if*, uint64_t>> socket_map;
-    template <typename T> T* get_payload_extendsion() {
+    template <typename T> T* get_payload_extension() {
         if(current_payload)
             return current_payload->get_extension<T>();
         return nullptr;
