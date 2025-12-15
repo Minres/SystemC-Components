@@ -104,9 +104,15 @@ public:
 
 private:
     sc_core::sc_time& clk;
+    tlm::tlm_generic_payload* current_payload{nullptr};
 
 protected:
     util::range_lut<std::pair<resource_access_if*, uint64_t>> socket_map;
+    template <typename T> T* get_payload_extendsion() {
+        if(current_payload)
+            return current_payload->get_extension<T>();
+        return nullptr;
+    }
 };
 /**
  * helper structure to define a address range for a socket
@@ -192,6 +198,7 @@ void scc::tlm_target<BUSWIDTH, ADDR_UNIT_BITWIDTH>::b_tranport_cb(tlm::tlm_gener
             gp.set_response_status(tlm::TLM_BYTE_ENABLE_ERROR_RESPONSE);
         } else {
             gp.set_response_status(tlm::TLM_COMMAND_ERROR_RESPONSE);
+            current_payload = &gp;
             switch(gp.get_command()) {
             case tlm::TLM_READ_COMMAND:
                 if(ra->read(gp.get_data_ptr() + offset, len, (gp.get_address() - base + offset), delay))
@@ -201,7 +208,10 @@ void scc::tlm_target<BUSWIDTH, ADDR_UNIT_BITWIDTH>::b_tranport_cb(tlm::tlm_gener
                 if(ra->write(gp.get_data_ptr() + offset, len, (gp.get_address() - base + offset), delay))
                     gp.set_response_status(tlm::TLM_OK_RESPONSE);
                 break;
+            case tlm::TLM_IGNORE_COMMAND:
+                break;
             }
+            current_payload = nullptr;
         }
     } else {
         gp.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
@@ -216,6 +226,7 @@ unsigned int scc::tlm_target<BUSWIDTH, ADDR_UNIT_BITWIDTH>::tranport_dbg_cb(tlm:
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());
     if(ra) {
         if(gp.get_data_length() == ra->size() && gp.get_byte_enable_ptr() == nullptr && gp.get_data_length() == gp.get_streaming_width()) {
+            current_payload = &gp;
             if(gp.get_command() == tlm::TLM_READ_COMMAND) {
                 if(ra->read_dbg(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra->size()))
                     return gp.get_data_length();
@@ -223,6 +234,7 @@ unsigned int scc::tlm_target<BUSWIDTH, ADDR_UNIT_BITWIDTH>::tranport_dbg_cb(tlm:
                 if(ra->write_dbg(gp.get_data_ptr(), gp.get_data_length(), (gp.get_address() - base) / ra->size()))
                     return gp.get_data_length();
             }
+            current_payload = nullptr;
         }
     }
     return 0;
