@@ -26,7 +26,7 @@ namespace scc {
 
 struct tlm_id_extension : public tlm_extension<tlm_id_extension> {
     virtual tlm_extension_base* clone() const {
-        tlm_id_extension* t = new tlm_id_extension(this->id);
+        auto* t = new tlm_id_extension(this->id);
         return t;
     }
     virtual void copy_from(tlm_extension_base const& from) { id = static_cast<tlm_id_extension const&>(from).id; }
@@ -63,5 +63,17 @@ inline void setId(tlm::tlm_generic_payload& gp, uintptr_t id) {
     else
         gp.set_extension(new tlm_id_extension(id));
 }
+
+struct initiator_id_extension : public tlm_extension<tlm_id_extension> {
+    virtual tlm_extension_base* clone() const {
+        auto* t = new initiator_id_extension(this->id);
+        return t;
+    }
+    virtual void copy_from(tlm_extension_base const& from) {}
+    initiator_id_extension(uint64_t i)
+    : id(i) {}
+    const uint64_t id;
+};
+
 } // namespace scc
 } // namespace tlm
