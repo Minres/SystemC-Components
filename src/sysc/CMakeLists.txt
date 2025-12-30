@@ -51,7 +51,10 @@ set(LIB_SOURCES
 )
 
 if(DEFINED  SC_VERSION_MAJOR AND SC_VERSION_MAJOR GREATER 2)
-    list(APPEND LIB_SOURCES tlm/scc/quantum_keeper.cpp)
+    list(APPEND LIB_SOURCES
+        tlm/scc/qk/global_time_keeper.cpp
+        tlm/scc/qk/sc_time_syncronizer.cpp
+    )
 endif()
 if(ENABLE_PYTHON4SC)
     find_package(pybind11 QUIET)
