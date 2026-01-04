@@ -19,6 +19,7 @@
 
 #include <boost/optional.hpp>
 #include <deque>
+#include <limits>
 #include <map>
 #include <systemc>
 #include <type_traits>
@@ -167,6 +168,11 @@ template <class TYPE> struct peq : public sc_core::sc_object {
      * @return true if data is available for \ref get()
      */
     bool has_next() { return !(m_scheduled_events.empty() || m_scheduled_events.begin()->first > sc_core::sc_time_stamp()); }
+
+    sc_core::sc_time get_next_time_stamp() {
+        return m_scheduled_events.empty() ? sc_core::sc_time::from_value(std::numeric_limits<sc_core::sc_time::value_type>::max())
+                                          : m_scheduled_events.begin()->first;
+    }
 
     void clear() {
         while(!m_scheduled_events.empty()) {
