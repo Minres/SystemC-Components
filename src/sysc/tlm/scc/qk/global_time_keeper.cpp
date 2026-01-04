@@ -1,4 +1,5 @@
 #include "global_time_keeper.h"
+#include <limits>
 #include <tlm_utils/tlm_quantumkeeper.h>
 
 namespace tlm {
@@ -11,7 +12,7 @@ global_time_keeper::global_time_keeper() = default;
 
 global_time_keeper::~global_time_keeper() {
     // shutting down time keeper thread
-    stop_it.store(true, std::memory_order_acq_rel);
+    stop_it.store(true);
     update.notify_all();
 }
 // this function will be called from the systemc thread
@@ -39,12 +40,11 @@ void global_time_keeper::sync_local_times() {
 #ifdef DEBUG_MT_SCHEDULING
             SCCTRACEALL("global_time_keeper::sync_local_times") << "update loop";
 #endif
-            uint64_t min_local_time = std::numeric_limits<uint64_t>::max();
-            bool tail = false;
             while(auto res = sc_coms_channel.client2time_keeper.front()) {
                 sc_coms_channel.thread_local_time = res->time_tick;
                 sc_coms_channel.client2time_keeper.pop();
             }
+            uint64_t min_local_time = std::numeric_limits<uint64_t>::max();
             for(size_t i = 0; i < client_coms_channels.size(); ++i) {
                 auto& client_coms_channel = client_coms_channels[i];
                 bool has_task = false;
@@ -74,14 +74,15 @@ void global_time_keeper::sync_local_times() {
                 }
 #endif
             }
-            window_min_time = min_local_time;
-            sc_coms_channel.time_keeper2client.store(min_local_time);
-            auto window_max_time = min_local_time + std::max(tlm::tlm_global_quantum::instance().get().value(), sc_time_step.value());
-            for(auto& client_coms_channel : client_coms_channels) {
-                client_coms_channel.time_keeper2client.store(window_max_time);
-            }
+            // if all threads are blocked by SystemC use SystemC time as minimum time
+            if(min_local_time == std::numeric_limits<uint64_t>::max())
+                min_local_time = sc_coms_channel.thread_local_time;
+            client_min_time = min_local_time;
+            // client_max_time = max_local_time;
+            client_max_time = min_local_time + std::max(tlm::tlm_global_quantum::instance().get().value(), sc_time_step.value());
+            sc_kernel_time = sc_coms_channel.thread_local_time;
 #ifdef DEBUG_MT_SCHEDULING
-            SCCTRACEALL("global_time_keeper::sync_local_times") << "window_min_time=" << window_min_time;
+            SCCTRACEALL("global_time_keeper::sync_local_times") << "window_min_time=" << client_min_time;
 #endif
         } else if(stop_it.load()) {
             break;
