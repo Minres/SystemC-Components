@@ -5,6 +5,8 @@
 #include <rigtorp/SPSCQueue.h>
 #include <scc/report.h>
 
+// #define DEBUG_MT_SCHEDULING
+
 namespace tlm {
 namespace scc {
 namespace qk {
@@ -38,8 +40,7 @@ struct thread_comms_channel {
      * @param my_id
      */
     thread_comms_channel(uint64_t my_id)
-    : time_keeper2client(0)
-    , client2time_keeper(7)
+    : client2time_keeper(7)
     , my_id(my_id) {}
     /**
      * @brief Construct a new thread comms channel object
@@ -47,19 +48,17 @@ struct thread_comms_channel {
      * @param o
      */
     thread_comms_channel(thread_comms_channel const& o)
-    : my_id(o.my_id)
-    , client2time_keeper(o.client2time_keeper.capacity())
-    , time_keeper2client(0)
+    : client2time_keeper(o.client2time_keeper.capacity())
+    , my_id(o.my_id)
     , thread_local_time(o.thread_local_time) {
         assert(o.client2time_keeper.size() == 0);
     };
 
-    alignas(64) std::atomic<uint64_t> time_keeper2client;
     rigtorp::SPSCQueue<comms_entry> client2time_keeper;
 
     const uint64_t my_id;
-    bool waiting4sc;
-    uint64_t thread_local_time;
+    bool waiting4sc{true};
+    uint64_t thread_local_time{0};
 };
 } // namespace qk
 } // namespace scc
