@@ -381,6 +381,7 @@ auto scc::stream_redirection::sync() -> int {
 
 static void configure_logging() {
     std::lock_guard<mutex> lock(log_cfg.mtx);
+    std::lock_guard<mutex> lock2(verbosity_mtx);
     static bool spdlog_initialized = false;
     if(!log_cfg.dont_create_broker)
         scc::init_cci("SCCBroker");
@@ -514,6 +515,7 @@ void scc::init_logging(const scc::LogConfig& log_config) {
 }
 
 void scc::set_logging_level(scc::log level) {
+    std::lock_guard<mutex> lock(verbosity_mtx);
     log_cfg.level = level;
     sc_report_handler::set_verbosity_level(verbosity[static_cast<unsigned>(level)]);
     log_cfg.console_logger->set_level(
@@ -604,8 +606,8 @@ auto scc::LogConfig::installHandler(bool v) -> scc::LogConfig& {
 }
 namespace {
 std::mutex mtx;
-sc_core::sc_verbosity __get_log_verbosity(string current_name, char const* str, cci::cci_broker_handle const& broker,
-                                          sc_core::sc_verbosity verb) {
+auto get_log_verbosity_from_broker(string current_name, char const* str, cci::cci_broker_handle const& broker, sc_core::sc_verbosity verb)
+    -> sc_core::sc_verbosity {
     std::lock_guard<std::mutex> lk(mtx);
     while(true) {
         string param_name = (current_name.empty()) ? SCC_LOG_LEVEL_PARAM_NAME : current_name + "." SCC_LOG_LEVEL_PARAM_NAME;
@@ -633,15 +635,13 @@ sc_core::sc_verbosity __get_log_verbosity(string current_name, char const* str, 
                 }
             }
         }
-        return verb;
     }
+    return verb;
 }
 } // namespace
 
 auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
-    std::unique_lock<std::mutex> lock(verbosity_mtx);
-    auto global_verb = static_cast<sc_core::sc_verbosity>(::sc_core::sc_report_handler::get_verbosity_level());
-    lock.unlock();
+    auto global_verb = verbosity[static_cast<unsigned>(log_cfg.level)];
     if(inst_based_logging()) {
         auto res = lut.get(str);
         if(std::get<0>(res))
@@ -650,10 +650,10 @@ auto scc::get_log_verbosity(char const* str) -> sc_core::sc_verbosity {
         if(strchr(str, '.') == nullptr || curr_object) {
             string current_name = std::string(str);
             if(log_cfg.broker)
-                return __get_log_verbosity(current_name, str, log_cfg.broker.value(), global_verb);
+                return get_log_verbosity_from_broker(current_name, str, log_cfg.broker.value(), global_verb);
             else {
-                return __get_log_verbosity(current_name, str, curr_object ? cci::cci_get_broker() : cci::cci_get_global_broker(originator),
-                                           global_verb);
+                return get_log_verbosity_from_broker(
+                    current_name, str, curr_object ? cci::cci_get_broker() : cci::cci_get_global_broker(originator), global_verb);
             }
         }
     }
