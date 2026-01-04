@@ -11,7 +11,6 @@ using quantumkeeper_mt = quantumkeeper_st;
 } // namespace tlm
 #else
 #include "quantum_keeper_mt.h"
-#define DEBUG_MT_SCHEDULING
 #endif
 namespace tlm {
 namespace scc {
