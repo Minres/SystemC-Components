@@ -40,21 +40,21 @@ struct global_time_keeper {
      *
      * @return uint64_t the absolute number of ticks
      */
-    inline uint64_t get_min_time_ticks() { return window_min_time; }
+    inline uint64_t get_client_min_time_ticks() { return client_min_time; }
     /**
      * @brief Get the maximum time ticks a client thread is allowed to advance
      *
      * @param idx the id of the client thread, to be obtained using get_channel_index()
      * @return uint64_t the absolute number of maximum ticks, if no new information it returns -1
      */
-    inline uint64_t get_max_time_ticks(size_t idx) { return client_coms_channels[idx].time_keeper2client.load(); }
+    inline uint64_t get_client_max_time_ticks(size_t idx) { return client_max_time; }
     /**
      * @brief updates the global time keeper with the local time ticks of a clinet thread
      *
      * @param idx the id of the client thread, to be obtained using get_channel_index()
      * @param tick the absolute number of actual ticks
      */
-    inline void update_time_ticks(size_t idx, uint64_t tick) {
+    inline void update_client_time_ticks(size_t idx, uint64_t tick) {
         client_coms_channels[idx].client2time_keeper.push(std::move(comms_entry{tick, std::move(callback_task())}));
         update_it.store(true);
         std::unique_lock<std::mutex> lk(upd_mtx);
@@ -78,7 +78,7 @@ struct global_time_keeper {
      *
      * @return uint64_t  the absolute number of ticks
      */
-    inline uint64_t get_max_sc_time_ticks() { return sc_coms_channel.time_keeper2client.load(); }
+    inline uint64_t get_sc_time_ticks() { return sc_kernel_time.load(); }
     /**
      * @brief updates the global time keeper with the local time ticks of the SystemC thread
      *
@@ -86,9 +86,6 @@ struct global_time_keeper {
      */
     inline void update_sc_time_ticks(uint64_t tick) {
         sc_coms_channel.client2time_keeper.push(std::move(comms_entry{tick, std::move(callback_task())}));
-#ifdef DEBUG_MT_SCHEDULING
-        SCCTRACEALL("global_time_keeper::update_sc_time_ticks") << "sc_time=" << sc_core::sc_time::from_value(tick);
-#endif
         update_it.store(true);
         std::unique_lock<std::mutex> lk(upd_mtx);
         update.notify_all();
@@ -111,7 +108,9 @@ protected:
 
     std::atomic<bool> stop_it{false};
     std::atomic<bool> update_it{false};
-    std::atomic_uint64_t window_min_time;
+    std::atomic_uint64_t client_min_time;
+    std::atomic_uint64_t client_max_time;
+    std::atomic_uint64_t sc_kernel_time;
     std::mutex upd_mtx;
     std::condition_variable update;
     thread_comms_channel sc_coms_channel{-1ULL};
