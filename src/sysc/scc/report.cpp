@@ -24,6 +24,7 @@
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
+#include <sysc/kernel/sc_status.h>
 #include <tuple>
 #include <unordered_map>
 #include <util/logging.h>
@@ -294,7 +295,7 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
             flush_loggers();
         } catch(spdlog::spdlog_ex e) {
         }
-        if(sc_is_running() && !sc_stop_called) {
+        if((sc_get_status() & (sc_core::SC_START_OF_SIMULATION | SC_RUNNING | SC_PAUSED | SC_SUSPENDED)) && !sc_stop_called) {
             sc_stop();
             sc_stop_called = true;
         }
