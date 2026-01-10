@@ -295,7 +295,12 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
             flush_loggers();
         } catch(spdlog::spdlog_ex e) {
         }
-        if((sc_get_status() & (sc_core::SC_START_OF_SIMULATION | SC_RUNNING | SC_PAUSED | SC_SUSPENDED)) && !sc_stop_called) {
+#if SYSTEMC_VERSION < 20241015
+        static const int stop_expr = sc_core::SC_START_OF_SIMULATION | SC_RUNNING | SC_PAUSED;
+#else
+        static constexpr int stop_expr = sc_core::SC_START_OF_SIMULATION | SC_RUNNING | SC_PAUSED | SC_SUSPENDED;
+#endif
+        if((sc_get_status() & stop_expr) && !sc_stop_called) {
             sc_stop();
             sc_stop_called = true;
         }
