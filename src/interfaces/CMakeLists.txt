@@ -12,6 +12,7 @@ set(LIB_SOURCES
 	ocp/ocp_tlm.cpp
     tilelink/tl_tlm.cpp
     cxs/cxs_tlm.cpp
+    eth/eth_tlm.cpp
 )
 
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
