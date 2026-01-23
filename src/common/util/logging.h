@@ -349,7 +349,6 @@ template <typename T> std::ostream& operator<<(std::ostream& stream, const std::
 } // namespace logging
 /** @} */
 #undef LEVELS
-#undef CAT
 
 #ifndef NDEBUG
 //! check only in debug mode
