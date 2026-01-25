@@ -195,18 +195,6 @@ public:
     /// Copy constructor
     ring_buffer(ring_buffer&& other) = delete;
 
-    /// Initializer list constructor
-    ring_buffer(std::initializer_list<T> il)
-    : buf(std::unique_ptr<T[]>(new T[il.size()]))
-    , cap(il.size())
-    , front_idx(0)
-    , back_idx(0)
-    , sz(il.size()) {
-        size_t i = 0;
-        for(const auto v : il)
-            buf[i++] = std::move(v);
-    }
-
     /// Assignment operator
     ring_buffer& operator=(ring_buffer const& rhs) = delete;
 
