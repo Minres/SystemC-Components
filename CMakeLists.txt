@@ -105,6 +105,7 @@ find_package(fmt REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(yaml-cpp REQUIRED)
 find_package(Catch2 QUIET)
+find_package(Threads REQUIRED)
 
 if(MSVC)
     add_compile_options(/vmg /MP /W3 /wd4244 /wd4267 /wd4996  -DNOMINMAX /EHsc)
@@ -168,16 +169,47 @@ if(SystemC_FOUND)
 
 	if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
 		#set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")
-		add_library(scc_shared SHARED $<TARGET_OBJECTS:scc-util>
+		add_library(scc-shared SHARED $<TARGET_OBJECTS:scc-util>
 	                                  $<TARGET_OBJECTS:scc-sysc>
 	                                  $<TARGET_OBJECTS:interfaces>
 	                                  $<TARGET_OBJECTS:scv-tr>
+	                                  $<TARGET_OBJECTS:tlm-interfaces>
 	                                  )
-	    set_target_properties(scc_shared PROPERTIES CXX_VISIBILITY_PRESET hidden)
+		target_include_directories(scc-shared INTERFACE $<TARGET_PROPERTY:scc-util,INTERFACE_INCLUDE_DIRECTORIES>
+	                                  $<TARGET_PROPERTY:scc-sysc,INTERFACE_INCLUDE_DIRECTORIES>
+	                                  $<TARGET_PROPERTY:interfaces,INTERFACE_INCLUDE_DIRECTORIES>
+	                                  $<TARGET_PROPERTY:scv-tr,INTERFACE_INCLUDE_DIRECTORIES>
+	                                  $<TARGET_PROPERTY:tlm-interfaces,INTERFACE_INCLUDE_DIRECTORIES>
+	                                  )
+	    set_target_properties(scc-shared PROPERTIES CXX_VISIBILITY_PRESET hidden)
+	    target_link_libraries(scc-shared PUBLIC $<TARGET_PROPERTY:scc-util,LINK_LIBRARIES>
+	                                  $<TARGET_PROPERTY:scc-sysc,LINK_LIBRARIES>
+	                                  $<TARGET_PROPERTY:interfaces,LINK_LIBRARIES>
+	                                  $<TARGET_PROPERTY:scv-tr,LINK_LIBRARIES>
+	                                  $<TARGET_PROPERTY:tlm-interfaces,LINK_LIBRARIES>
+	                                  )
+#		set(LIB_LIST $<TARGET_PROPERTY:scc-util,INTERFACE_LINK_LIBRARIES>
+#	                                  $<TARGET_PROPERTY:scc-sysc,INTERFACE_LINK_LIBRARIES>
+#	                                  $<TARGET_PROPERTY:interfaces,INTERFACE_LINK_LIBRARIES>
+#	                                  $<TARGET_PROPERTY:scv-tr,INTERFACE_LINK_LIBRARIES>
+#	                                  $<TARGET_PROPERTY:tlm-interfaces,INTERFACE_LINK_LIBRARIES>
+#	                                  )
+#	                                  message("LIB_LIST=${LIB_LIST}")
+#		 add_library(scc-shared SHARED src/scc.h)
+#		 target_link_libraries(scc-shared PUBLIC
+#		 -Wl,--whole-archive 
+#									scc-util
+#	                                scc-sysc
+#	                                interfaces
+#	                                scv-tr
+#	                                tlm-interfaces
+#	                                -Wl,--no-whole-archive
+#	                                )
+#	                                  
 		if(TARGET Boost::stacktrace_backtrace)
-		    target_link_libraries(scc_shared PUBLIC Boost::stacktrace_backtrace dl)
+		    target_link_libraries(scc-shared PUBLIC Boost::stacktrace_backtrace dl)
 		endif()
-	    add_library(scc::scc_shared ALIAS scc_shared)
+	    add_library(scc::scc-shared ALIAS scc-shared)
 	endif()
 
     install(TARGETS scc
@@ -193,15 +225,15 @@ if(SystemC_FOUND)
         NAMESPACE scc::
         )
 	if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
-	    install(TARGETS scc_shared
-	        EXPORT scc_shared-targets
+	    install(TARGETS scc-shared
+	        EXPORT scc-shared-targets
 	        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 	        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
 	        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
 	        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 	        )
-	    install(EXPORT scc_shared-targets 
-	        FILE scc_shared-targets.cmake
+	    install(EXPORT scc-shared-targets 
+	        FILE scc-shared-targets.cmake
 	        DESTINATION ${SCC_CMAKE_CONFIG_DIR}
 	        NAMESPACE scc::
 	        )
