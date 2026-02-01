@@ -243,7 +243,7 @@ template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
 void router<BUSWIDTH, TARGET_SOCKET_TYPE>::add_target_range(std::string name, uint64_t base, uint64_t size, bool remap) {
     auto it = target_name_lut.find(name);
 #ifndef NDEBUG
-#if(SYSTEMC_VERSION >= 20171012)
+#if (SYSTEMC_VERSION >= 20171012)
     if(it == target_name_lut.end()) {
         std::stringstream ss;
         ss << "No target index entry for '" << name << "' found ";
@@ -388,7 +388,6 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::invalidate_direct_mem_ptr(int id, ::s
 }
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, TARGET_SOCKET_TYPE>::end_of_elaboration() {
     addr_decoder.validate();
-    SCCDEBUG(SCOBJ) << "address map\n" << addr_decoder.toString();
 }
 
 } // namespace scc
