@@ -18,11 +18,11 @@
 #define _SYSC_TLM_TARGET_H_
 
 #include "resource_access_if.h"
-#include <array>
-#include <numeric>
 #include <scc/utilities.h>
+#include <tlm/scc/memory_map_collector.h>
 #include <tlm/scc/scv/tlm_rec_target_socket.h>
 #include <tlm/scc/target_mixin.h>
+#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 #include <util/range_lut.h>
 
 namespace scc {
@@ -107,7 +107,8 @@ private:
     tlm::tlm_generic_payload* current_payload{nullptr};
 
 protected:
-    util::range_lut<std::pair<resource_access_if*, uint64_t>> socket_map;
+    using resource_access_t = std::pair<resource_access_if*, uint64_t>;
+    util::range_lut<resource_access_t> socket_map;
     template <typename T> T* get_payload_extension() {
         if(current_payload)
             return current_payload->get_extension<T>();
@@ -221,6 +222,29 @@ void scc::tlm_target<BUSWIDTH, ADDR_UNIT_BITWIDTH>::b_tranport_cb(tlm::tlm_gener
 
 template <unsigned int BUSWIDTH, unsigned int ADDR_UNIT_BITWIDTH>
 unsigned int scc::tlm_target<BUSWIDTH, ADDR_UNIT_BITWIDTH>::tranport_dbg_cb(tlm::tlm_generic_payload& gp) {
+    if(gp.get_command() == tlm::TLM_IGNORE_COMMAND)
+        if(auto ext = gp.get_extension<tlm::scc::memory_map_extension>()) {
+            std::string name = socket.name();
+            ext->node.name = name.substr(0, name.length() - strlen(socket.basename()) - 1);
+            auto start_addr = ext->node.start;
+            for(auto e : socket_map) {
+                auto addr = ext->offset + e.first;
+                auto entry = e.second;
+                switch(entry.type) {
+                case util::range_lut<resource_access_t>::BEGIN_RANGE:
+                    start_addr = addr;
+                    break;
+                case util::range_lut<resource_access_t>::SINGLE_BYTE_RANGE:
+                    start_addr = addr;
+                case util::range_lut<resource_access_t>::END_RANGE: {
+                    ext->node.elemets.emplace_back(start_addr, ext->offset + addr);
+                    ext->node.elemets.back().name = entry.index.first->full_name();
+                    break;
+                }
+                }
+            }
+            return 0;
+        }
     resource_access_if* ra = nullptr;
     uint64_t base = 0;
     std::tie(ra, base) = socket_map.getEntry(gp.get_address());

@@ -31,7 +31,12 @@ class resource_access_if {
 public:
     virtual ~resource_access_if() = default;
     /**
-     * @fn std::size_t size()const =0
+     * @brief return the name of the resource
+     *
+     * @return the name
+     */
+    virtual char const* full_name() const = 0;
+    /**
      * @brief return the size of the resource
      *
      * @return the size

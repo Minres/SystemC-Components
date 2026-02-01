@@ -21,11 +21,12 @@
 #include <scc/report.h>
 #include <scc/utilities.h>
 #include <sysc/utils/sc_vector.h>
-#include <tlm.h>
 #include <tlm/scc/initiator_mixin.h>
+#include <tlm/scc/memory_map_collector.h>
 #include <tlm/scc/scv/tlm_rec_initiator_socket.h>
 #include <tlm/scc/scv/tlm_rec_target_socket.h>
 #include <tlm/scc/target_mixin.h>
+#include <tlm>
 #include <unordered_map>
 #include <util/range_lut.h>
 
@@ -242,7 +243,7 @@ template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
 void router<BUSWIDTH, TARGET_SOCKET_TYPE>::add_target_range(std::string name, uint64_t base, uint64_t size, bool remap) {
     auto it = target_name_lut.find(name);
 #ifndef NDEBUG
-#if(SYSTEMC_VERSION >= 20171012)
+#if (SYSTEMC_VERSION >= 20171012)
     if(it == target_name_lut.end()) {
         std::stringstream ss;
         ss << "No target index entry for '" << name << "' found ";
@@ -322,6 +323,33 @@ bool router<BUSWIDTH, TARGET_SOCKET_TYPE>::get_direct_mem_ptr(int i, tlm::tlm_ge
 }
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE>
 unsigned router<BUSWIDTH, TARGET_SOCKET_TYPE>::transport_dbg(int i, tlm::tlm_generic_payload& trans) {
+    if(trans.get_command() == tlm::TLM_IGNORE_COMMAND) {
+        if(auto ext = trans.get_extension<tlm::scc::memory_map_extension>()) {
+            ext->node.name = name();
+            auto start_addr = ext->node.start;
+            for(auto e : addr_decoder) {
+                auto addr = ext->offset + e.first;
+                auto entry = e.second;
+                switch(entry.type) {
+                case util::range_lut<unsigned>::BEGIN_RANGE:
+                    start_addr = addr;
+                    break;
+                case util::range_lut<unsigned>::SINGLE_BYTE_RANGE:
+                    start_addr = addr;
+                case util::range_lut<unsigned>::END_RANGE: {
+                    ext->node.elemets.emplace_back(start_addr, ext->offset + addr);
+                    auto new_ext = tlm::scc::memory_map_extension(ext->node.elemets.back());
+                    new_ext.offset = start_addr;
+                    trans.set_extension(&new_ext);
+                    initiator[entry.index]->transport_dbg(trans);
+                    trans.set_extension(ext);
+                    break;
+                }
+                }
+            }
+            return 0;
+        }
+    }
     ::sc_dt::uint64 address = trans.get_address();
     if(ibases[i]) {
         address += ibases[i];
@@ -360,6 +388,7 @@ void router<BUSWIDTH, TARGET_SOCKET_TYPE>::invalidate_direct_mem_ptr(int id, ::s
 }
 template <unsigned BUSWIDTH, typename TARGET_SOCKET_TYPE> void router<BUSWIDTH, TARGET_SOCKET_TYPE>::end_of_elaboration() {
     addr_decoder.validate();
+    SCCDEBUG(SCOBJ) << "address map\n" << addr_decoder.toString();
 }
 
 } // namespace scc
