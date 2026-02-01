@@ -205,7 +205,7 @@ template <typename T> inline std::string range_lut<T>::toString() const {
             break;
         case END_RANGE:
             buf << " to 0x" << std::setw(sizeof(uint64_t) * 2) << std::setfill('0') << std::uppercase << std::hex << iter->first << std::dec
-                << " as " << iter->second->index << std::endl;
+                << " as " << iter->second.index << std::endl;
         }
     }
     return buf.str();

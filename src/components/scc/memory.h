@@ -18,6 +18,7 @@
 #define _SYSC_MEMORY_H_
 
 // Needed for the simple_target_socket
+#include <tlm/scc/memory_map_collector.h>
 #include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
@@ -201,6 +202,11 @@ memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::memory(const sc_core::sc_mod
         operation_cb ? operation_cb(*this, gp, delay) : handle_operation(gp, delay);
     });
     target.register_transport_dbg([this](tlm::tlm_generic_payload& gp) -> unsigned {
+        if(gp.get_command() == tlm::TLM_IGNORE_COMMAND)
+            if(auto ext = gp.get_extension<tlm::scc::memory_map_extension>()) {
+                ext->node.name = name();
+                return 0;
+            }
         sc_core::sc_time z = sc_core::SC_ZERO_TIME;
         if(auto ext = gp.get_extension<host_mem_map_extension>()) {
             if(ext->ptr)

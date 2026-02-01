@@ -27,6 +27,7 @@
 #include <scc/traceable.h>
 #include <scc/tracer_base.h>
 #include <scc/utilities.h>
+#include <sysc/kernel/sc_object.h>
 #ifdef _MSC_VER
 #include <functional>
 #else
@@ -115,6 +116,12 @@ public:
      * @return true if this component shall be traced
      */
     bool is_trace_enabled() const override { return enable_tracing.get_value(); }
+    /**
+     * @brief return the name of the resource
+     *
+     * @return the name
+     */
+    char const* full_name() const override { return name(); };
     /**
      * @fn size_t size()const
      * @brief get the size of this register in bytes
@@ -483,6 +490,7 @@ template <typename DATATYPE, size_t SIZE> struct sc_register_mem : public indexe
 private:
     struct mem_wrapper : public resource_access_if {
         ~mem_wrapper() = default;
+        char const* full_name() const override { return "memory"; };
         std::size_t size() const override { return sizeof(DATATYPE); };
         void reset() override { elem = 0; };
         bool write(const uint8_t* data, std::size_t length, uint64_t offset, sc_core::sc_time& d) override {
