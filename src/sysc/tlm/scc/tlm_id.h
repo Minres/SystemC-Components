@@ -25,11 +25,8 @@ namespace tlm {
 namespace scc {
 
 struct tlm_id_extension : public tlm_extension<tlm_id_extension> {
-    virtual tlm_extension_base* clone() const {
-        auto* t = new tlm_id_extension(this->id);
-        return t;
-    }
-    virtual void copy_from(tlm_extension_base const& from) { id = static_cast<tlm_id_extension const&>(from).id; }
+    tlm_extension_base* clone() const override { return new tlm_id_extension(this->id); }
+    void copy_from(tlm_extension_base const& from) override { id = static_cast<tlm_id_extension const&>(from).id; }
     tlm_id_extension(tlm_gp_shared_ptr& i)
     : tlm_id_extension(reinterpret_cast<uintptr_t>(i.get())) {}
     tlm_id_extension(void* i)
@@ -65,13 +62,17 @@ inline void setId(tlm::tlm_generic_payload& gp, uintptr_t id) {
 }
 
 struct initiator_id_extension : public tlm_extension<tlm_id_extension> {
-    virtual tlm_extension_base* clone() const {
-        auto* t = new initiator_id_extension(this->id);
-        return t;
-    }
-    virtual void copy_from(tlm_extension_base const& from) {}
+    tlm_extension_base* clone() const override { return new initiator_id_extension(*this); }
+    void copy_from(tlm_extension_base const& from) override {}
+
     initiator_id_extension(uint64_t i)
     : id(i) {}
+
+    initiator_id_extension(initiator_id_extension const& o)
+    : id(o.id) {}
+
+    virtual ~initiator_id_extension() = default;
+
     const uint64_t id;
 };
 
