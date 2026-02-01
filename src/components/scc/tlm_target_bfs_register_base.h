@@ -105,9 +105,13 @@ public:
     , readMask{readMask} {}
 
     /**
+     * @return the name
+     */
+    char const* full_name() const override { return name(); };
+    /**
      * @return The size of the register in bytes
      */
-    constexpr size_t size() const noexcept override { return sizeof(datatype_t); }
+    size_t size() const noexcept override { return sizeof(datatype_t); }
 
     void reset() override { storage = resetValue; }
 
