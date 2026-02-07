@@ -107,6 +107,7 @@ find_package(yaml-cpp REQUIRED)
 find_package(Catch2 QUIET)
 find_package(Threads REQUIRED)
 find_package(ZLIB REQUIRED)
+find_package(elfio QUIET)
 
 if(MSVC)
     add_compile_options(/vmg /MP /W3 /wd4244 /wd4267 /wd4996  -DNOMINMAX /EHsc)
