@@ -17,6 +17,7 @@
 #ifndef _UTIL_IHEX_PARSER_H_
 #define _UTIL_IHEX_PARSER_H_
 
+#include "nonstd/span.h"
 #include <cstdint>
 #include <functional>
 #include <iostream>
@@ -36,21 +37,24 @@ namespace util {
  * @author Your Name
  * @date YYYY-MM-DD
  */
-struct ihex_parser {
-    /**
-     * @brief The maximum size of data in a single IHEX record.
-     */
-    enum { IHEX_DATA_SIZE = 255 };
-    /**
-     * @brief Parses an IHEX file from the given input stream and invokes a callback function for each data record found.
-     *
-     * @param input The input stream containing the IHEX file.
-     * @param callback A function object that will be invoked for each data record found in the IHEX file.
-     * The callback function should return true to continue parsing, or false to stop parsing.
-     *
-     * @return True if the parsing was successful, false otherwise.
-     */
-    static bool parse(std::istream&, std::function<bool(uint64_t, uint64_t, const uint8_t*)>);
-};
+namespace ihex {
+/**
+ * @brief The maximum size of data in a single IHEX record.
+ */
+enum { IHEX_DATA_SIZE = 255 };
+/**
+ * @brief Parses an IHEX file from the given input stream and invokes a callback function for each data record found.
+ *
+ * @param input The input stream containing the IHEX file.
+ * @param callback A function object that will be invoked for each data record found in the IHEX file.
+ * The callback function takes the address, the length and the data as parameter and should return
+ * true to continue parsing, or false to stop parsing.
+ *
+ * @return True if the parsing was successful, false otherwise.
+ */
+bool parse(std::istream&, std::function<bool(uint64_t, uint64_t, const uint8_t*)>);
+
+void dump(std::ostream&, nonstd::span<uint8_t> const&, uint32_t = 0, uint32_t = 16);
+}; // namespace ihex
 } // namespace util
 #endif
