@@ -17,8 +17,10 @@
 #ifndef _ETH_ETH_TLM_H_
 #define _ETH_ETH_TLM_H_
 
+#include <atomic>
 #include <cci_configuration>
 #include <cstdint>
+#include <mutex>
 #include <nonstd/span.h>
 #include <scc/fifo_w_cb.h>
 #include <scc/peq.h>
@@ -82,8 +84,15 @@ struct eth_packet_payload : public tlm::nw::tlm_network_payload<ETH> {
 
     void set_sender_clk_period(sc_core::sc_time period) { this->sender_clk_period = period; }
 
+    const uint64_t unique_id{get_id()};
+
 private:
     sc_core::sc_time sender_clk_period{sc_core::SC_ZERO_TIME};
+
+    static uint64_t get_id() {
+        static std::atomic_uint64_t id = 0;
+        return id.fetch_add(1);
+    }
 };
 
 struct eth_packet_types {
@@ -120,7 +129,7 @@ struct eth_channel : public sc_core::sc_module,
 
     eth_pkt_initiator_socket<> isck{"isck"};
 
-    cci::cci_param<sc_core::sc_time> channel_delay{"channel_delay", sc_core::SC_ZERO_TIME, "delay of the SPI channel"};
+    cci::cci_param<sc_core::sc_time> channel_delay{"channel_delay", sc_core::SC_ZERO_TIME, "delay of the ETH channel"};
 
     eth_channel(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm)
@@ -130,10 +139,10 @@ struct eth_channel : public sc_core::sc_module,
     }
 
     void b_transport(transaction_type& trans, sc_core::sc_time& t) override {
-        t += channel_delay;
+        t += trans.get_data().size() * 8 * trans.get_sender_clk_period() + channel_delay.get_value();
         isck->b_transport(trans, t);
     }
-
+    // TODO: fix non-blocking channel timing
     tlm::tlm_sync_enum nb_transport_fw(transaction_type& trans, phase_type& phase, sc_core::sc_time& t) override {
         SCCTRACE(SCMOD) << "Received non-blocking transaction in fw path with phase " << phase.get_name();
         if(phase == tlm::nw::REQUEST) {
