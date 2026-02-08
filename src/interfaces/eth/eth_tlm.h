@@ -90,7 +90,7 @@ private:
     sc_core::sc_time sender_clk_period{sc_core::SC_ZERO_TIME};
 
     static uint64_t get_id() {
-        static std::atomic_uint64_t id = 0;
+        static std::atomic_uint64_t id{0};
         return id.fetch_add(1);
     }
 };
