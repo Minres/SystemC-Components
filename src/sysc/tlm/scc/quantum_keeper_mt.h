@@ -6,7 +6,7 @@
 #include <sysc/kernel/sc_simcontext.h>
 
 #if SC_VERSION_MAJOR < 3
-#error "Multithreaded quantum keeper is only supported with SystemC 3.0 and newer"
+#warning "Multithreaded quantum keeper is only supported with SystemC 3.0 and newer"
 #else
 #define DEBUG_MT_SCHEDULING
 
