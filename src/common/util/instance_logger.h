@@ -85,7 +85,7 @@ public:
     void set_logger(LoggerDelegate& logger) { this->logger = &logger; }
 
 private:
-    LoggerDelegate* logger;
+    LoggerDelegate* logger{nullptr};
 };
 } // namespace util
 
