@@ -27,6 +27,8 @@ if (VERILATOR_FOUND)
     return()
 endif()
 
+cmake_policy(SET CMP0144 OLD)
+
 find_package(PackageHandleStandardArgs REQUIRED)
 
 include(SystemCPackage)
@@ -35,7 +37,7 @@ if(EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 endif()
 find_program(VERILATOR_EXECUTABLE 
     NAMES verilator verilator_bin verilator_bin_dbg
-    HINTS ${CONAN_VERILATOR_ROOT} ENV VERILATOR_ROOT
+    HINTS ${VERILATOR_ROOT} ENV VERILATOR_ROOT
     PATH_SUFFIXES bin
     REQUIRED
     DOC "Path to the Verilator executable"
