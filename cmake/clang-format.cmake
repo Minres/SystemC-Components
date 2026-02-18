@@ -32,11 +32,5 @@ add_custom_target(${FORMAT_TARGET_NAME}
 
 add_custom_target(${FORMAT_TARGET_NAME}-check
     COMMENT "Checking clang-format changes"
-    # Use ! to negate the result for correct output
-    COMMAND !
-    ${CLANG_FORMAT_BIN}
-    -style=file
-    -output-replacements-xml
-    ${ALL_SOURCE_FILES}
-    | tee replacements.xml | grep -q "replacement offset" 
+    COMMAND ${CLANG_FORMAT_BIN} -style=file --dry-run -Werror ${ALL_SOURCE_FILES}
 )
