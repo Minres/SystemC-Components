@@ -38,5 +38,5 @@ add_custom_target(${FORMAT_TARGET_NAME}-check
     -style=file
     -output-replacements-xml
     ${ALL_SOURCE_FILES}
-    | grep -q "replacement offset" 
+    | tee replacements.xml | grep -q "replacement offset" 
 )
