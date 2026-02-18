@@ -3,7 +3,9 @@
 
 #include "quantum_keeper_st.h"
 #if SC_VERSION_MAJOR < 3
+#ifndef NO_MTQK
 #warning "Multithreaded quantum keeper is only supported with SystemC 3.0 and newer"
+#endif
 namespace tlm {
 namespace scc {
 using quantumkeeper_mt = quantumkeeper_st;
