@@ -36,7 +36,7 @@ struct memory_node {
     : start(start)
     , end(end) {}
     memory_node() = default;
-    std::string to_string(const std::string &prefix = "") const;
+    std::string to_string(const std::string& prefix = "") const;
 };
 
 struct memory_map_extension : tlm::tlm_extension<memory_map_extension> {
