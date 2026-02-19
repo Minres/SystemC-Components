@@ -49,6 +49,7 @@ set(LIB_SOURCES
     tlm/scc/scv/tlm_recorder.cpp
     tlm/scc/pe/parallel_pe.cpp
     tlm/scc/lwtr/tlm2_lwtr.cpp
+    tlm/scc/memory_map_collector.cpp
 )
 
 if(DEFINED  SC_VERSION_MAJOR AND SC_VERSION_MAJOR GREATER 2)
