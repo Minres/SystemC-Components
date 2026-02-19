@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016, 2018 MINRES Technologies GmbH
+ * Copyright 2026 MINRES Technologies GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@
 #define _TLM_SCC_MEMORY_MAP_COLLECTOR_H_
 
 #include <cstdint>
-#include <fmt/format.h>
 #include <limits>
 #include <sstream>
 #include <stdexcept>
@@ -38,14 +37,7 @@ struct memory_node {
     : start(start)
     , end(end) {}
     memory_node() = default;
-    std::string to_string(std::string const& prefix = "") const {
-        std::ostringstream os;
-        std::string filler(16 - prefix.length(), ' ');
-        os << fmt::format("{} 0x{:016x}:0x{:016x}{}{}\n", prefix, start, end, filler, name);
-        for(auto e : elemets)
-            os << e.to_string(prefix + "  ");
-        return os.str();
-    }
+    std::string to_string(const std::string &prefix = "") const;
 };
 
 struct memory_map_extension : tlm::tlm_extension<memory_map_extension> {
@@ -70,6 +62,7 @@ memory_node gather_memory(sc_core::sc_port_b<tlm::tlm_fw_transport_if<TYPES>>& p
     trans.set_extension<memory_map_extension>(nullptr);
     return std::move(root);
 }
+
 } // namespace scc
 } // namespace tlm
 #endif // _TLM_SCC_MEMORY_MAP_COLLECTOR_H_
