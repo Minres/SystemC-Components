@@ -170,7 +170,7 @@ target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::target::nb_transport_bw(pa
 
 template <unsigned int DATA_WIDTH, unsigned int ADDR_WIDTH, unsigned int ID_WIDTH, unsigned int USER_WIDTH>
 inline void target<DATA_WIDTH, ADDR_WIDTH, ID_WIDTH, USER_WIDTH>::achannel_req_t() {
-    wait(SC_ZERO_TIME);
+    wait(sc_core::SC_ZERO_TIME);
     wait(clk_i.posedge_event());
     while(true) {
         while(resetn_i.read() == false)
