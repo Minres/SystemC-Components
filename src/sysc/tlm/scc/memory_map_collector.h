@@ -22,7 +22,6 @@
 #include <sstream>
 #include <stdexcept>
 #include <tlm>
-#include <tlm_core/tlm_2/tlm_2_interfaces/tlm_fw_bw_ifs.h>
 
 //! @brief SystemC TLM
 namespace tlm {
