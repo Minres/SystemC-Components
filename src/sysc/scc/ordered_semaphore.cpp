@@ -102,7 +102,7 @@ auto ordered_semaphore::wait(unsigned priority) -> int {
 // lock (take) the semaphore, return -1 if not available
 
 auto ordered_semaphore::trywait() -> int {
-    if(in_use()) {
+    if(value == 0) {
         return -1;
     }
     --value;
