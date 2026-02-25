@@ -48,6 +48,9 @@ class Pkg(ConanFile):
         self.requires("jsoncpp/1.9.6")
         self.requires("zlib/1.3.1")
         self.requires("catch2/3.11.0")
+        self.requires("bzip2/1.0.8")
+        self.requires("zstd/1.5.7")
+        self.requires("xz_utils/5.8.1")
 
     def build_requirements(self):
         if self.settings.compiler.cppstd:

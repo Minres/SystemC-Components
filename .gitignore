@@ -10,3 +10,4 @@
 /.direnv
 /.cache
 /install
+/*.zst

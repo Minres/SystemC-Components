@@ -23,6 +23,7 @@
 #include <bitset>
 #include <cctype>
 #include <climits>
+#include <fstream>
 #include <iterator>
 #include <limits>
 #include <memory>
@@ -524,6 +525,34 @@ inline std::string glob_to_regex(std::string val) {
     }
     oss << "$";
     return oss.str();
+}
+
+// ============================================================
+// File type detection
+// ============================================================
+
+enum class file_type_e { Plain, Gzip, Bzip2, Xz, Zstd };
+
+inline file_type_e detect_file_type(const std::string& path) {
+    std::ifstream file(path, std::ios::binary);
+    if(!file)
+        throw std::runtime_error("Cannot open file for detection");
+
+    unsigned char magic[6] = {0};
+    file.read(reinterpret_cast<char*>(magic), sizeof(magic));
+
+    if(magic[0] == 0x1F && magic[1] == 0x8B)
+        return file_type_e::Gzip;
+
+    if(magic[0] == 0x42 && magic[1] == 0x5A && magic[2] == 0x68)
+        return file_type_e::Bzip2;
+
+    if(magic[0] == 0xFD && magic[1] == 0x37 && magic[2] == 0x7A && magic[3] == 0x58 && magic[4] == 0x5A && magic[5] == 0x00)
+        return file_type_e::Xz;
+
+    if(magic[0] == 0x28 && magic[1] == 0xB5 && magic[2] == 0x2F && magic[3] == 0xFD)
+        return file_type_e::Zstd;
+    return file_type_e::Plain;
 }
 
 } // namespace util
