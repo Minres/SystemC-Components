@@ -14,17 +14,16 @@
  * limitations under the License.
  *******************************************************************************/
 
-
 #include "memory_map_collector.h"
 #include <fmt/format.h>
 
 namespace tlm {
 namespace scc {
-std::string memory_node::to_string(const std::string &prefix) const {
+std::string memory_node::to_string(const std::string& prefix) const {
     std::ostringstream os;
     std::string filler(16 - prefix.length(), ' ');
     os << fmt::format("{} 0x{:016x}:0x{:016x}{}{}\n", prefix, start, end, filler, name);
-    for (auto e : elemets)
+    for(auto e : elemets)
         os << e.to_string(prefix + "  ");
     return os.str();
 }
