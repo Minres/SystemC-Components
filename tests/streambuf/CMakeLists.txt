@@ -1,4 +1,4 @@
-project (io_redirector)
+project (streambuf)
 if(TARGET Catch2::Catch2WithMain)
 	add_executable (${PROJECT_NAME}	test.cpp)
 	target_link_libraries (${PROJECT_NAME} LINK_PUBLIC scc-util Catch2::Catch2WithMain)
