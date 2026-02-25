@@ -531,28 +531,28 @@ inline std::string glob_to_regex(std::string val) {
 // File type detection
 // ============================================================
 
-enum class file_type_e { Plain, Gzip, Bzip2, Xz, Zstd };
+enum class file_type_e { PLAIN, GZIP, BZIP2, XZ, ZSTD };
 
 inline file_type_e detect_file_type(const std::string& path) {
     std::ifstream file(path, std::ios::binary);
     if(!file)
-        throw std::runtime_error("Cannot open file for detection");
+        throw std::runtime_error("cannot open file");
 
     unsigned char magic[6] = {0};
     file.read(reinterpret_cast<char*>(magic), sizeof(magic));
 
     if(magic[0] == 0x1F && magic[1] == 0x8B)
-        return file_type_e::Gzip;
+        return file_type_e::GZIP;
 
     if(magic[0] == 0x42 && magic[1] == 0x5A && magic[2] == 0x68)
-        return file_type_e::Bzip2;
+        return file_type_e::BZIP2;
 
     if(magic[0] == 0xFD && magic[1] == 0x37 && magic[2] == 0x7A && magic[3] == 0x58 && magic[4] == 0x5A && magic[5] == 0x00)
-        return file_type_e::Xz;
+        return file_type_e::XZ;
 
     if(magic[0] == 0x28 && magic[1] == 0xB5 && magic[2] == 0x2F && magic[3] == 0xFD)
-        return file_type_e::Zstd;
-    return file_type_e::Plain;
+        return file_type_e::ZSTD;
+    return file_type_e::PLAIN;
 }
 
 } // namespace util
