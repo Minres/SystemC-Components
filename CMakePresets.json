@@ -24,6 +24,15 @@
             }
         },
         {
+            "name": "Config",
+            "inherits": "Release",
+            "displayName": "Config build",
+            "cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug",
+               "ENABLE_CLANG_FORMAT": "ON"
+            }
+        },
+        {
             "name": "Debug",
             "inherits": "Base",
             "cacheVariables": {
