@@ -11,8 +11,8 @@ option(FULL_TRACE_TYPE_LIST "Test for extended set of templated datatypes" OFF)
 #Note: this needs to match the SystemC kernel build options
 option(SC_WITH_PHASE_CALLBACKS "Whether SystemC is built with simulation phase callbacks" OFF)
 option(SC_WITH_PHASE_CALLBACK_TRACING "whether SystemC was build with phase callbacks for tracing. It needs to match the SystemC build configuration" OFF)
-set(SCC_ARCHIVE_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives") 
-set(SCC_LIBRARY_DIR_MODIFIER "" CACHE STRING "additional directory levels to store libraries") 
+set(SCC_ARCHIVE_DIR_MODIFIER "" CACHE STRING "additional directory levels to store static library archives")
+set(SCC_LIBRARY_DIR_MODIFIER "" CACHE STRING "additional directory levels to store libraries")
 option(WITH_SCP4SCC "adds SCP compatibility layer for SCC, cannot be used together with a copy of SCP" OFF)
 option(ENABLE_CLANG_FORMAT "Enable clang-format targets" OFF)
 
@@ -20,13 +20,13 @@ include(Common)
 
 if(CMAKE_PROJECT_NAME STREQUAL "scc")
     message(STATUS "Building SCC in standalone mode")
-	set(CMAKE_CXX_STANDARD_REQUIRED ON)
-	set(CMAKE_CXX_EXTENSIONS OFF)
-	set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+    set(CMAKE_CXX_STANDARD_REQUIRED ON)
+    set(CMAKE_CXX_EXTENSIONS OFF)
+    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
     include(GNUInstallDirs)
-    
-    if (APPLE)
+
+    if(APPLE)
         # From systemc CMakeLists.txt: "It's OK that _sc_main, __sanitizer_start_switch_fiber, and
         # __sanitizer_finish_switch_fiber are undefined symbols."
         set(CMAKE_EXE_LINKER_FLAGS "-Wl,-U,_sc_main,-U,___sanitizer_start_switch_fiber,-U,___sanitizer_finish_switch_fiber" CACHE INTERNAL "" FORCE)
@@ -35,27 +35,27 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
     option(ENABLE_CLANG_TIDY "Add clang-tidy automatically to builds" OFF)
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" OFF)
     option(INSTALL_DEPENDENCIES "Should dependencies be installed when installing SCC" OFF)
-	set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "/build/" ".direnv")
+    set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "/build/" ".direnv")
     if(ENABLE_CLANG_FORMAT)
-	    find_package(ClangFormat)
+        find_package(ClangFormat)
     endif()
 else()
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples" ON)
-	set(CLANG_FORMAT_EXCLUDE_PATTERNS ${CLANG_FORMAT_EXCLUDE_PATTERNS} "/third_party/" PARENT_SCOPE)
+    set(CLANG_FORMAT_EXCLUDE_PATTERNS ${CLANG_FORMAT_EXCLUDE_PATTERNS} "/third_party/" PARENT_SCOPE)
 endif()
 
 set(SCC_CMAKE_CONFIG_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/scc)
 if(BUILD_SCC_LIB_ONLY)
-	message(STATUS "SCC: Building only library")
+    message(STATUS "SCC: Building only library")
 else()
-	message(STATUS "SCC: Building library, tests, and examples")
+    message(STATUS "SCC: Building library, tests, and examples")
 endif()
 ###############################################################################
 # build the SCC
 ###############################################################################
-if (ENABLE_CLANG_TIDY)
-    find_program (CLANG_TIDY_EXE NAMES "clang-tidy" PATHS /usr/bin )
-    if (CLANG_TIDY_EXE)
+if(ENABLE_CLANG_TIDY)
+    find_program(CLANG_TIDY_EXE NAMES "clang-tidy" PATHS /usr/bin)
+    if(CLANG_TIDY_EXE)
         message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
         set(CLANG_TIDY_CHECKS "-*")
         set(CLANG_TIDY_CHECKS "${CLANG_TIDY_CHECKS},modernize-avoid-bind.PermissiveParameterList")
@@ -114,11 +114,11 @@ endif()
 find_package(Catch2 QUIET)
 
 if(MSVC)
-    add_compile_options(/vmg /MP /W3 /wd4244 /wd4267 /wd4996  -DNOMINMAX /EHsc)
+    add_compile_options(/vmg /MP /W3 /wd4244 /wd4267 /wd4996 -DNOMINMAX /EHsc)
     link_directories(${Boost_LIBRARY_DIRS})
 endif()
 include(SystemCPackage)
-	
+
 include(CheckSymbolExists)
 # Check for function getenv()
 check_symbol_exists(getenv "stdlib.h" HAVE_GETENV)
@@ -140,15 +140,15 @@ if(SystemC_FOUND)
     add_subdirectory(src/sysc)
     add_subdirectory(third_party)
     if(NOT BUILD_SCC_LIB_ONLY)
-        if (NOT (DEFINED CMAKE_CXX_CLANG_TIDY OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
+        if(NOT (DEFINED CMAKE_CXX_CLANG_TIDY OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
             add_subdirectory(examples)
         endif()
-	    if(Catch2_FOUND)
-	        message(STATUS "SCC: Including Catch2 based tests")
-	        include(Catch)
-	        set(WITH_SCP4SCC ON)
-	        add_subdirectory(tests)
-	    endif()
+        if(Catch2_FOUND)
+            message(STATUS "SCC: Including Catch2 based tests")
+            include(Catch)
+            set(WITH_SCP4SCC ON)
+            add_subdirectory(tests)
+        endif()
     endif()
 
     # Define the scc library
@@ -157,8 +157,8 @@ if(SystemC_FOUND)
     if(HAVE_GETENV)
         target_compile_definitions(scc INTERFACE HAVE_GETENV)
     endif()
-    
-    target_include_directories(scc INTERFACE 
+
+    target_include_directories(scc INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
     )
@@ -173,50 +173,62 @@ if(SystemC_FOUND)
         PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/scc.h
     )
 
-	if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
-		#set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")
-		add_library(scc-shared SHARED $<TARGET_OBJECTS:scc-util>
-	                                  $<TARGET_OBJECTS:scc-sysc>
-	                                  $<TARGET_OBJECTS:interfaces>
-	                                  $<TARGET_OBJECTS:scv-tr>
-	                                  $<TARGET_OBJECTS:tlm-interfaces>
-	                                  )
-		target_include_directories(scc-shared INTERFACE $<TARGET_PROPERTY:scc-util,INTERFACE_INCLUDE_DIRECTORIES>
-	                                  $<TARGET_PROPERTY:scc-sysc,INTERFACE_INCLUDE_DIRECTORIES>
-	                                  $<TARGET_PROPERTY:interfaces,INTERFACE_INCLUDE_DIRECTORIES>
-	                                  $<TARGET_PROPERTY:scv-tr,INTERFACE_INCLUDE_DIRECTORIES>
-	                                  $<TARGET_PROPERTY:tlm-interfaces,INTERFACE_INCLUDE_DIRECTORIES>
-	                                  )
-	    set_target_properties(scc-shared PROPERTIES CXX_VISIBILITY_PRESET hidden)
-	    target_link_libraries(scc-shared PUBLIC $<TARGET_PROPERTY:scc-util,LINK_LIBRARIES>
-	                                  $<TARGET_PROPERTY:scc-sysc,LINK_LIBRARIES>
-	                                  $<TARGET_PROPERTY:interfaces,LINK_LIBRARIES>
-	                                  $<TARGET_PROPERTY:scv-tr,LINK_LIBRARIES>
-	                                  $<TARGET_PROPERTY:tlm-interfaces,LINK_LIBRARIES>
-	                                  )
-#		set(LIB_LIST $<TARGET_PROPERTY:scc-util,INTERFACE_LINK_LIBRARIES>
-#	                                  $<TARGET_PROPERTY:scc-sysc,INTERFACE_LINK_LIBRARIES>
-#	                                  $<TARGET_PROPERTY:interfaces,INTERFACE_LINK_LIBRARIES>
-#	                                  $<TARGET_PROPERTY:scv-tr,INTERFACE_LINK_LIBRARIES>
-#	                                  $<TARGET_PROPERTY:tlm-interfaces,INTERFACE_LINK_LIBRARIES>
-#	                                  )
-#	                                  message("LIB_LIST=${LIB_LIST}")
-#		 add_library(scc-shared SHARED src/scc.h)
-#		 target_link_libraries(scc-shared PUBLIC
-#		 -Wl,--whole-archive 
-#									scc-util
-#	                                scc-sysc
-#	                                interfaces
-#	                                scv-tr
-#	                                tlm-interfaces
-#	                                -Wl,--no-whole-archive
-#	                                )
-#	                                  
-		if(TARGET Boost::stacktrace_backtrace)
-		    target_link_libraries(scc-shared PUBLIC Boost::stacktrace_backtrace dl)
-		endif()
-	    add_library(scc::scc-shared ALIAS scc-shared)
-	endif()
+    include(Versioning)
+    scc_configure_version(
+        TARGET scc
+        NAMESPACE SCC
+        OUTPUT_HEADER ${CMAKE_BINARY_DIR}/generated/scc_ver.h
+        ABI_VERSION 5
+        USE_GIT
+        # RELEASE_ENFORCE_TAG
+        REPRODUCIBLE
+        INSTALL_HEADER
+    )
+
+    if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+        #set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")
+        add_library(scc-shared SHARED $<TARGET_OBJECTS:scc-util>
+            $<TARGET_OBJECTS:scc-sysc>
+            $<TARGET_OBJECTS:interfaces>
+            $<TARGET_OBJECTS:scv-tr>
+            $<TARGET_OBJECTS:tlm-interfaces>
+        )
+        target_include_directories(scc-shared INTERFACE $<TARGET_PROPERTY:scc-util,INTERFACE_INCLUDE_DIRECTORIES>
+            $<TARGET_PROPERTY:scc-sysc,INTERFACE_INCLUDE_DIRECTORIES>
+            $<TARGET_PROPERTY:interfaces,INTERFACE_INCLUDE_DIRECTORIES>
+            $<TARGET_PROPERTY:scv-tr,INTERFACE_INCLUDE_DIRECTORIES>
+            $<TARGET_PROPERTY:tlm-interfaces,INTERFACE_INCLUDE_DIRECTORIES>
+        )
+        set_target_properties(scc-shared PROPERTIES CXX_VISIBILITY_PRESET hidden)
+        target_link_libraries(scc-shared PUBLIC $<TARGET_PROPERTY:scc-util,LINK_LIBRARIES>
+            $<TARGET_PROPERTY:scc-sysc,LINK_LIBRARIES>
+            $<TARGET_PROPERTY:interfaces,LINK_LIBRARIES>
+            $<TARGET_PROPERTY:scv-tr,LINK_LIBRARIES>
+            $<TARGET_PROPERTY:tlm-interfaces,LINK_LIBRARIES>
+        )
+        #		set(LIB_LIST $<TARGET_PROPERTY:scc-util,INTERFACE_LINK_LIBRARIES>
+        #	                                  $<TARGET_PROPERTY:scc-sysc,INTERFACE_LINK_LIBRARIES>
+        #	                                  $<TARGET_PROPERTY:interfaces,INTERFACE_LINK_LIBRARIES>
+        #	                                  $<TARGET_PROPERTY:scv-tr,INTERFACE_LINK_LIBRARIES>
+        #	                                  $<TARGET_PROPERTY:tlm-interfaces,INTERFACE_LINK_LIBRARIES>
+        #	                                  )
+        #	                                  message("LIB_LIST=${LIB_LIST}")
+        #		 add_library(scc-shared SHARED src/scc.h)
+        #		 target_link_libraries(scc-shared PUBLIC
+        #		 -Wl,--whole-archive 
+        #									scc-util
+        #	                                scc-sysc
+        #	                                interfaces
+        #	                                scv-tr
+        #	                                tlm-interfaces
+        #	                                -Wl,--no-whole-archive
+        #	                                )
+        #	                                  
+        if(TARGET Boost::stacktrace_backtrace)
+            target_link_libraries(scc-shared PUBLIC Boost::stacktrace_backtrace dl)
+        endif()
+        add_library(scc::scc-shared ALIAS scc-shared)
+    endif()
 
     install(TARGETS scc
         EXPORT scc-targets
@@ -224,33 +236,33 @@ if(SystemC_FOUND)
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        )
-    install(EXPORT scc-targets 
+    )
+    install(EXPORT scc-targets
         FILE scc-targets.cmake
         DESTINATION ${SCC_CMAKE_CONFIG_DIR}
         NAMESPACE scc::
+    )
+    if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+        install(TARGETS scc-shared
+            EXPORT scc-shared-targets
+            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
+            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
+            PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
-	if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
-	    install(TARGETS scc-shared
-	        EXPORT scc-shared-targets
-	        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-	        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
-	        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
-	        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-	        )
-	    install(EXPORT scc-shared-targets 
-	        FILE scc-shared-targets.cmake
-	        DESTINATION ${SCC_CMAKE_CONFIG_DIR}
-	        NAMESPACE scc::
-	        )
-	endif()
+        install(EXPORT scc-shared-targets
+            FILE scc-shared-targets.cmake
+            DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+            NAMESPACE scc::
+        )
+    endif()
     include(CMakePackageConfigHelpers)
     write_basic_package_version_file(
         ${CMAKE_CURRENT_BINARY_DIR}/scc-config-version.cmake
         VERSION ${PROJECT_VERSION}
         COMPATIBILITY AnyNewerVersion
     )
-    
+
     configure_package_config_file(
         ${CMAKE_CURRENT_LIST_DIR}/cmake/scc-config.cmake.in
         ${CMAKE_CURRENT_BINARY_DIR}/scc-config.cmake
@@ -265,7 +277,7 @@ else()
     add_subdirectory(third_party)
 endif()
 if(BUILD_SCC_DOCUMENTATION)
-    get_property(GENERATORS_FOLDER GLOBAL PROPERTY CONAN_GENERATORS_FOLDER )
+    get_property(GENERATORS_FOLDER GLOBAL PROPERTY CONAN_GENERATORS_FOLDER)
     if(EXISTS "${GENERATORS_FOLDER}/conan_toolchain.cmake")
         include(${GENERATORS_FOLDER}/conan_toolchain.cmake)
     endif()
@@ -276,13 +288,13 @@ endif()
 ###############################################################################
 install(DIRECTORY contrib/pysysc contrib/d3-hwschematic
     DESTINATION share
-    PATTERN ".gitignore" EXCLUDE 
+    PATTERN ".gitignore" EXCLUDE
     PATTERN "PySysC_SCC.egg*" EXCLUDE
     PATTERN "build" EXCLUDE
-    )
+)
 install(DIRECTORY cmake
     DESTINATION share
-    )
+)
 if(CMAKE_PROJECT_NAME STREQUAL "scc")
     if(INSTALL_DEPENDENCIES)
         install(CODE "set(CMAKE_INSTALL_LIBDIR \"${CMAKE_INSTALL_LIBDIR}\")")
