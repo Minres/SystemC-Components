@@ -41,9 +41,12 @@ target_link_libraries(cciapi PUBLIC RapidJSON)
 if(NOT TARGET systemc-cci::systemc-cci)
     add_library(systemc-cci::systemc-cci ALIAS cciapi)
 endif()
+add_library (cci ALIAS cciapi)
+add_library (SystemC::cci ALIAS cciapi)
 
 set_target_properties(cciapi PROPERTIES
     VERSION ${PROJECT_VERSION}
+    # SOVERSION 2
     FRAMEWORK FALSE
     PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/cci_configuration
     CXX_CLANG_TIDY ""

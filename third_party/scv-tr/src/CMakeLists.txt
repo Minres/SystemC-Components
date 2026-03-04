@@ -1,4 +1,4 @@
-project(scv-tr VERSION 0.0.1 LANGUAGES CXX)
+project(scv-tr VERSION 1.0.0 LANGUAGES CXX)
 
 include(GNUInstallDirs)
 
