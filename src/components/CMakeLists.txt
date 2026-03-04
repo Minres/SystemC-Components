@@ -1,4 +1,4 @@
-project(components VERSION 0.0.1 LANGUAGES CXX)
+project(components VERSION ${scc_VERSION} LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} INTERFACE)
 add_library(scc::${PROJECT_NAME} ALIAS ${PROJECT_NAME})

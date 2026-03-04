@@ -1,4 +1,4 @@
-project(SystemC-CCI VERSION "1.1.0" LANGUAGES CXX)
+project(SystemC-CCI VERSION "1.0.0" LANGUAGES CXX)
 
 add_library(cciapi 
 ${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_broker_handle.cpp
@@ -13,6 +13,8 @@ ${CMAKE_CURRENT_SOURCE_DIR}/cci_core/cci_value.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/cci_core/cci_value_converter.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/cci_utils/broker.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/cci_utils/consuming_broker.cpp)
+#set_target_properties(cciapi PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION 1)
+
 if(USE_NCSC_SYSTEMC OR USE_CWR_SYSTEMC)
 	target_compile_definitions(cciapi PUBLIC SC_VERSION_CODE=200301)
 endif()

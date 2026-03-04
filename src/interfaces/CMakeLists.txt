@@ -1,4 +1,4 @@
-project(interfaces VERSION 0.0.1 LANGUAGES CXX)
+project(interfaces VERSION ${scc_VERSION} LANGUAGES CXX)
 
 set(LIB_SOURCES
 	apb/apb_tlm.cpp
