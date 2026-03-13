@@ -63,7 +63,7 @@ public:
      * @param args the arguments to pass to the functor
      * @return the result of the function
      */
-    template <class F, class... Args> typename std::result_of<F(Args...)>::type enqueue_and_wait(F&& f, Args&&... args) {
+    template <class F, class... Args> typename std::invoke_result_t<F, Args...> enqueue_and_wait(F&& f, Args&&... args) {
         auto res = enqueue(f, args...);
         res.wait();
         return res.get();
@@ -75,7 +75,7 @@ public:
      * @param args the arguments to pass to the functor
      * @return the future holding the result of the execution
      */
-    template <class F, class... Args> auto enqueue(F&& f, Args&&... args) -> std::future<typename std::result_of<F(Args...)>::type> {
+    template <class F, class... Args> auto enqueue(F&& f, Args&&... args) -> std::future<typename std::invoke_result_t<F, Args...>> {
         using return_type = typename std::result_of<F(Args...)>::type;
         auto task = std::make_shared<std::packaged_task<return_type()>>(std::bind(std::forward<F>(f), std::forward<Args>(args)...));
 
@@ -117,7 +117,7 @@ public:
         // Wait on condition variable while the task is empty
         std::unique_lock<std::mutex> lock(mutex_);
         while(tasks_.empty() && ready.load(std::memory_order_acquire)) {
-            condition_.wait_for(lock, std::chrono::milliseconds(10));
+            condition_.wait_for(lock, std::chrono::milliseconds(10), []() { return true; });
         }
         lock.unlock();
         execute();
