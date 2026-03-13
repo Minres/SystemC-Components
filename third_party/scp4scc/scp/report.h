@@ -266,13 +266,13 @@ public:
 #define SCP_VBSTY_CHECK_UNCACHED(lvl, ...) (::scp::get_log_verbosity(__VA_ARGS__) >= lvl)
 
 #define SCP_VBSTY_CHECK(lvl, ...)                                                                                                          \
-    IIF(IS_PAREN(FIRST_ARG(__VA_ARGS__)))(                                                                                                 \
-        SCP_VBSTY_CHECK_CACHED(lvl, FIRST_ARG(__VA_ARGS__), SCP_LOGGER_NAME(EXPAND(FIRST_ARG FIRST_ARG(__VA_ARGS__)))),                    \
-        SCP_VBSTY_CHECK_UNCACHED(lvl, ##__VA_ARGS__))
+    IIF(IS_PAREN(FIRST_ARG(__VA_ARGS__)))                                                                                                  \
+    (SCP_VBSTY_CHECK_CACHED(lvl, FIRST_ARG(__VA_ARGS__), SCP_LOGGER_NAME(EXPAND(FIRST_ARG FIRST_ARG(__VA_ARGS__)))),                       \
+     SCP_VBSTY_CHECK_UNCACHED(lvl, ##__VA_ARGS__))
 
 #define SCP_GET_FEATURES(...)                                                                                                              \
-    IIF(IS_PAREN(FIRST_ARG(__VA_ARGS__)))(                                                                                                 \
-        FIRST_ARG EXPAND((POP_ARG(__VA_ARGS__, SCP_LOGGER_NAME(EXPAND(FIRST_ARG FIRST_ARG(__VA_ARGS__))).type))), __VA_ARGS__)
+    IIF(IS_PAREN(FIRST_ARG(__VA_ARGS__)))                                                                                                  \
+    (FIRST_ARG EXPAND((POP_ARG(__VA_ARGS__, SCP_LOGGER_NAME(EXPAND(FIRST_ARG FIRST_ARG(__VA_ARGS__))).type))), __VA_ARGS__)
 
 #ifdef FMT_SHARED
 #define _SCP_FMT_EMPTY_STR(...) fmt::format(__VA_ARGS__)
