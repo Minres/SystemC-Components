@@ -19,8 +19,7 @@
 
 #include <cctype>
 #include <climits>
-#include <fstream>
-#include <stdexcept>
+#include <iostream>
 #include <string>
 #include <sys/stat.h>
 #include <vector>
