@@ -17,12 +17,10 @@
 #ifndef _UTIL_XZ_STREAMBUF_H_
 #define _UTIL_XZ_STREAMBUF_H_
 
-#include <bzlib.h>
 #include <cctype>
 #include <climits>
-#include <fstream>
+#include <iostream>
 #include <lzma.h>
-#include <stdexcept>
 #include <string>
 #include <sys/stat.h>
 #include <vector>
