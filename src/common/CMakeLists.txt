@@ -1,4 +1,4 @@
-project(scc-util VERSION 0.0.1 LANGUAGES CXX)
+project(scc-util VERSION ${scc_VERSION} LANGUAGES CXX)
 
 set(SRC util/io-redirector.cpp util/watchdog.cpp util/ihex.cpp)
 if(TARGET lz4::lz4)

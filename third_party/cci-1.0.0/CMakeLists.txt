@@ -1,18 +1,20 @@
-project(SystemC-CCI VERSION "1.1.0" LANGUAGES CXX)
+project(SystemC-CCI VERSION "1.0.0" LANGUAGES CXX)
 
 add_library(cciapi 
-                        cci/core/cci_value_converter.cpp
-                        cci/core/cci_name_gen.cpp
-                        cci/core/cci_value.cpp
-                        cci/utils/consuming_broker.cpp
-                        cci/utils/broker.cpp
-                        cci/cfg/cci_report_handler.cpp
-                        cci/cfg/cci_param_if.cpp
-                        cci/cfg/cci_broker_manager.cpp
-                        cci/cfg/cci_param_untyped.cpp
-                        cci/cfg/cci_param_untyped_handle.cpp
-                        cci/cfg/cci_originator.cpp
-                        cci/cfg/cci_broker_handle.cpp)
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_broker_handle.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_broker_manager.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_originator.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_param_if.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_param_untyped.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_param_untyped_handle.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_cfg/cci_report_handler.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_core/cci_name_gen.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_core/cci_value.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_core/cci_value_converter.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_utils/broker.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/cci_utils/consuming_broker.cpp)
+#set_target_properties(cciapi PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION 1)
+
 if(USE_NCSC_SYSTEMC OR USE_CWR_SYSTEMC)
 	target_compile_definitions(cciapi PUBLIC SC_VERSION_CODE=200301)
 endif()
@@ -20,7 +22,7 @@ target_include_directories(cciapi PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
 )
-if(USE_CWR_SYSTEMC OR USE_NCSC_SYSTEMC)
+if(USE_CWR_SYSTEMC)
 	get_target_property(SC_COMPILE_OPTIONS ${SystemC_LIBRARIES} INTERFACE_COMPILE_OPTIONS)
 	if(SC_COMPILE_OPTIONS) 
 	    target_compile_definitions(cciapi PUBLIC ${SC_COMPILE_OPTIONS})
@@ -41,12 +43,9 @@ target_link_libraries(cciapi PUBLIC RapidJSON)
 if(NOT TARGET systemc-cci::systemc-cci)
     add_library(systemc-cci::systemc-cci ALIAS cciapi)
 endif()
-add_library (cci ALIAS cciapi)
-add_library (SystemC::cci ALIAS cciapi)
 
 set_target_properties(cciapi PROPERTIES
     VERSION ${PROJECT_VERSION}
-    # SOVERSION 2
     FRAMEWORK FALSE
     PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/cci_configuration
     CXX_CLANG_TIDY ""

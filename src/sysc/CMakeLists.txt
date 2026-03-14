@@ -1,4 +1,4 @@
-project(scc-sysc VERSION 0.0.1 LANGUAGES CXX)
+project(scc-sysc VERSION ${scc_VERSION} LANGUAGES CXX)
 
 find_package(Threads REQUIRED)
 find_package(Boost REQUIRED QUIET COMPONENTS date_time filesystem)
