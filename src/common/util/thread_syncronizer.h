@@ -20,8 +20,10 @@
 #include <atomic>
 #include <functional>
 #include <future>
-#include <queue>
+#include <rigtorp/SPSCQueue.h>
 #include <stdexcept>
+#include <thread>
+
 //! @brief SCC common utilities
 /**
  * \ingroup scc-common
@@ -33,22 +35,26 @@ namespace util {
  */
 class thread_syncronizer {
 private:
-    std::queue<std::function<void()>> tasks_;
-    std::atomic<bool> ready;
-    std::mutex mutex_;
-    std::condition_variable condition_;
+    static constexpr size_t default_queue_capacity = 1024;
+
+    using task_type = std::function<void()>;
+
+    rigtorp::SPSCQueue<task_type> tasks_;
+    std::atomic<bool> ready{false};
+    std::atomic<bool> running{true};
 
 public:
     /**
      * the constructor.
      */
-    thread_syncronizer() = default;
+    explicit thread_syncronizer(size_t queue_capacity = default_queue_capacity)
+    : tasks_(queue_capacity) {}
     /**
      * the destructor
      */
     ~thread_syncronizer() {
-        // Set running flag to false then notify all threads.
-        condition_.notify_all();
+        ready.store(false, std::memory_order_release);
+        running.store(false, std::memory_order_release);
     }
     /**
      * check if the synchronizer can handle functions
@@ -80,29 +86,23 @@ public:
         auto task = std::make_shared<std::packaged_task<return_type()>>(std::bind(std::forward<F>(f), std::forward<Args>(args)...));
 
         std::future<return_type> res = task->get_future();
-        {
-            std::unique_lock<std::mutex> lock(mutex_);
-            tasks_.emplace([task]() { (*task)(); });
+        while(running.load(std::memory_order_acquire)) {
+            if(tasks_.try_emplace([task]() { (*task)(); })) {
+                return res;
+            }
+            std::this_thread::yield();
         }
-        condition_.notify_one();
-        return res;
+        throw std::runtime_error("thread_syncronizer is shutting down");
     }
     /**
      * execute the next task in queue but do not wait for the next one
      */
     void execute() {
-        if(tasks_.empty())
-            return;
-        {
-            std::unique_lock<std::mutex> lock(mutex_);
-            // Copy task locally and remove from the queue. This is done within
-            // its own scope so that the task object is destructed immediately
-            // after running the task.  This is useful in the event that the
-            // function contains shared_ptr arguments bound via bind.
-            std::function<void()> functor = tasks_.front();
+        if(auto* pending = tasks_.front()) {
+            // Move the task out before popping so the queue slot can be released
+            // immediately after the callback has been taken over locally.
+            task_type functor = std::move(*pending);
             tasks_.pop();
-            lock.unlock();
-            // Run the task.
             try {
                 functor();
             } catch(...) {
@@ -114,13 +114,13 @@ public:
      */
     void executeNext() {
         ready.store(true, std::memory_order_release);
-        // Wait on condition variable while the task is empty
-        std::unique_lock<std::mutex> lock(mutex_);
-        while(tasks_.empty() && ready.load(std::memory_order_acquire)) {
-            condition_.wait_for(lock, std::chrono::milliseconds(10), []() { return true; });
+        while(running.load(std::memory_order_acquire) && ready.load(std::memory_order_acquire)) {
+            if(tasks_.front()) {
+                execute();
+                break;
+            }
+            std::this_thread::yield();
         }
-        lock.unlock();
-        execute();
         ready.store(false, std::memory_order_release);
     }
 };
