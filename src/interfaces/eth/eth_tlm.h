@@ -125,29 +125,29 @@ struct eth_channel : public sc_core::sc_module,
     using transaction_type = eth_packet_types::tlm_payload_type;
     using phase_type = eth_packet_types::tlm_phase_type;
 
-    eth_pkt_target_socket<> tsck{"tsck"};
+    eth_pkt_target_socket<> rx{"rx"};
 
-    eth_pkt_initiator_socket<> isck{"isck"};
+    eth_pkt_initiator_socket<> tx{"tx"};
 
     cci::cci_param<sc_core::sc_time> channel_delay{"channel_delay", sc_core::SC_ZERO_TIME, "delay of the ETH channel"};
 
     eth_channel(sc_core::sc_module_name const& nm)
     : sc_core::sc_module(nm)
-    , isck{"isckt"} {
-        isck(*this);
-        tsck(*this);
+    , tx{"isckt"} {
+        tx(*this);
+        rx(*this);
     }
 
     void b_transport(transaction_type& trans, sc_core::sc_time& t) override {
         t += trans.get_data().size() * 8 * trans.get_sender_clk_period() + channel_delay.get_value();
-        isck->b_transport(trans, t);
+        tx->b_transport(trans, t);
     }
     // TODO: fix non-blocking channel timing
     tlm::tlm_sync_enum nb_transport_fw(transaction_type& trans, phase_type& phase, sc_core::sc_time& t) override {
         SCCTRACE(SCMOD) << "Received non-blocking transaction in fw path with phase " << phase.get_name();
         if(phase == tlm::nw::REQUEST) {
             phase_type ph = tlm::nw::INDICATION;
-            auto ret = isck->nb_transport_fw(trans, ph, t);
+            auto ret = tx->nb_transport_fw(trans, ph, t);
             if(ph == tlm::nw::RESPONSE)
                 phase = tlm::nw::CONFIRM;
             return ret;
@@ -159,12 +159,12 @@ struct eth_channel : public sc_core::sc_module,
         SCCTRACE(SCMOD) << "Received non-blocking transaction in bw path with phase " << phase.get_name();
         if(phase == tlm::nw::RESPONSE) {
             phase_type ph = tlm::nw::CONFIRM;
-            return tsck->nb_transport_bw(trans, ph, t);
+            return rx->nb_transport_bw(trans, ph, t);
         }
         return tlm::TLM_ACCEPTED;
     }
 
-    unsigned int transport_dbg(transaction_type& trans) override { return isck->transport_dbg(trans); }
+    unsigned int transport_dbg(transaction_type& trans) override { return tx->transport_dbg(trans); }
 };
 } // namespace eth
 #endif // _ETH_ETH_TLM_H_
