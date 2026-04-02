@@ -67,7 +67,7 @@ struct tlm_network_payload_base {
     explicit tlm_network_payload_base(tlm_base_mm_interface* mm)
     : m_extensions(max_num_extensions())
     , m_mm(mm)
-    , m_ref_count(0){};
+    , m_ref_count(0) {};
     /**
      * virtual destructor.
      */
@@ -266,6 +266,14 @@ template <typename CMDENUM> struct tlm_network_payload : public tlm_network_payl
      * @param value The new data.
      */
     void set_data(std::vector<uint8_t> const& value) { m_data = value; }
+    /**
+     * \brief Sets the data in the payload.
+     *
+     * Updates the data stored in the payload.
+     *
+     * @param value The new data.
+     */
+    void set_data(std::vector<uint8_t>&& value) { m_data = std::move(value); }
     /**
      * \brief Checks if the response status is OK.
      *
