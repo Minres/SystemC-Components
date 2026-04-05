@@ -21,6 +21,7 @@ template <typename T> struct async_queue : sc_core::sc_prim_channel, async_sourc
 
     void push(T const& v) {
         que.push(v);
+        pending_update.store(true, std::memory_order_release);
         async_request_update();
     }
 
