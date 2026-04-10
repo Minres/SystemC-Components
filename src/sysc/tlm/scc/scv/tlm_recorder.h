@@ -54,6 +54,7 @@ template <typename TYPES = tlm::tlm_base_protocol_types> class tlm_recording_pay
 public:
     SCVNS scv_tr_handle parent;
     uint64_t id;
+    tlm::tlm_sync_enum sync{tlm::TLM_ACCEPTED};
     tlm_recording_payload& operator=(const typename TYPES::tlm_payload_type& x) {
         id = reinterpret_cast<uintptr_t>(&x);
         this->set_command(x.get_command());
@@ -502,10 +503,11 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
          * do the timed notification if req. finished here
          *************************************************************************/
         if(nb_streamHandleTimed) {
-            tlm_recording_payload* req = mm::get().allocate();
+            auto* req = mm::get().allocate();
             req->acquire();
             (*req) = trans;
             req->parent = h;
+            req->sync = status;
             tlm::tlm_phase end_resp = tlm::END_RESP;
             nb_timed_peq.notify(*req, (status == tlm::TLM_COMPLETED && phase == tlm::BEGIN_REQ) ? end_resp : phase, delay);
         }
@@ -514,6 +516,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
         req->acquire();
         (*req) = trans;
         req->parent = h;
+        req->sync = status;
         nb_timed_peq.notify(*req, phase, delay);
     }
     // End the transaction
@@ -588,6 +591,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
             req->acquire();
             (*req) = trans;
             req->parent = h;
+            req->sync = status;
             nb_timed_peq.notify(*req, phase, delay);
         }
     }
@@ -640,6 +644,14 @@ template <typename TYPES> void tlm_recorder<TYPES>::nbtx_cb(tlm_recording_payloa
     default:
         // sc_assert(!"phase not supported!");
         break;
+    }
+    if(rec_parts.sync == tlm_sync_enum::TLM_COMPLETED && phase != tlm::END_RESP) {
+        it = nbtx_req_handle_map.find(rec_parts.id);
+        if(it != nbtx_req_handle_map.end()) {
+            h = it->second;
+            nbtx_req_handle_map.erase(it);
+            h.end_transaction();
+        }
     }
     rec_parts.release();
     return;
