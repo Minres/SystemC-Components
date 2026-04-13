@@ -104,6 +104,19 @@ TEST_CASE("scattered_access", "[memory][tlm-level]") {
     f(kPageSize - 2);
 }
 
+TEST_CASE("dmi_high_range_wrap_regression", "[memory][tlm-level]") {
+    auto& dut = factory::get<testbench>();
+    tlm::tlm_generic_payload gp;
+    tlm::tlm_dmi dmi;
+
+    gp.set_address(testbench::high_range_base);
+    auto res = dut.isck0->get_direct_mem_ptr(gp, dmi);
+
+    REQUIRE(res == true);
+    REQUIRE(dmi.get_start_address() == testbench::high_range_base);
+    REQUIRE(dmi.get_end_address() == testbench::high_range_base + dmi_probe_target::window_size - 1);
+}
+
 TEST_CASE("page_boundary_check", "[memory][tlm-level]") {
     auto& dut = factory::get<testbench>();
     constexpr uint64_t kPageSize = dut.mem3.getPageSize();
