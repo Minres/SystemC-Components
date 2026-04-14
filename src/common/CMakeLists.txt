@@ -78,3 +78,14 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/util COMPONENT util
         FILES_MATCHING # install only matched files
         PATTERN "*.h" # select header files
         )
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/nonstd COMPONENT util
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
+        FILES_MATCHING # install only matched files
+        PATTERN "*.h" # select header files
+        )
+        install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/rigtorp COMPONENT util
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
+        FILES_MATCHING # install only matched files
+        PATTERN "*.h" # select header files
+        )
+        
