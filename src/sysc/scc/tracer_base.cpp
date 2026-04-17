@@ -332,7 +332,7 @@ void tracer_base::set_default_trace_enable(bool v) {
     auto cci_broker = cci::cci_get_broker();
     auto default_trace_enable_handle = cci_broker.get_param_handle(default_trace_enable_name);
     if(default_trace_enable_handle.is_valid())
-        default_trace_enable_handle.get_cci_value().set<bool>(v);
+        default_trace_enable_handle.set_cci_value(cci::cci_value(v));
 }
 
 } // namespace scc
