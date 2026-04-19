@@ -28,8 +28,8 @@
             "inherits": "Release",
             "displayName": "Config build",
             "cacheVariables": {
-				"CMAKE_BUILD_TYPE": "Debug",
-               "ENABLE_CLANG_FORMAT": "ON"
+                "CMAKE_BUILD_TYPE": "Debug",
+                "ENABLE_CLANG_FORMAT": "ON"
             }
         },
         {
