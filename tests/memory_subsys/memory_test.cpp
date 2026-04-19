@@ -67,6 +67,43 @@ TEST_CASE("dmi_access", "[memory][tlm-level]") {
     sc_start(dut.clk.read());
 }
 
+TEST_CASE("scattered_access", "[memory][tlm-level]") {
+    auto& dut = factory::get<testbench>();
+
+    auto f = [&dut](uint64_t addr) {
+        sc_core::sc_time delay = sc_core::SC_ZERO_TIME;
+
+        tlm::tlm_generic_payload init;
+        prepare_trans(init, tlm::TLM_WRITE_COMMAND, addr, 16);
+        for(size_t i = 0; i < 16; ++i)
+            *(init.get_data_ptr() + i) = 0;
+        dut.mem3.handle_operation(init, delay);
+
+        std::array<uint8_t, 4> write_data{{0xAAu, 0xBBu, 0xCC, 0xDD}};
+        std::array<uint8_t, 4> be_data{{0xFFu, 0x00u, 0xFF, 0x00}};
+        tlm::tlm_generic_payload write;
+        prepare_trans(write, tlm::TLM_WRITE_COMMAND, addr, 4);
+        std::copy(write_data.begin(), write_data.end(), write.get_data_ptr());
+        write.set_byte_enable_length(be_data.size());
+        write.set_byte_enable_ptr(be_data.data());
+        dut.mem3.handle_operation(write, delay);
+
+        std::array<uint8_t, 4> read_buf{{0xEEu, 0x00u, 0x00u, 0xEEu}};
+        tlm::tlm_generic_payload read;
+        prepare_trans(read, tlm::TLM_READ_COMMAND, addr, 4);
+        dut.mem3.handle_operation(read, delay);
+        std::copy(read.get_data_ptr(), read.get_data_ptr() + read.get_data_length(), read_buf.begin());
+
+        REQUIRE(read_buf[0] == write_data[0]);
+        REQUIRE(read_buf[1] == 0x00u);
+        REQUIRE(read_buf[2] == write_data[2]);
+        REQUIRE(read_buf[3] == 0x00u);
+    };
+    f(0x100);
+    constexpr uint64_t kPageSize = dut.mem3.getPageSize();
+    f(kPageSize - 2);
+}
+
 TEST_CASE("page_boundary_check", "[memory][tlm-level]") {
     auto& dut = factory::get<testbench>();
     constexpr uint64_t kPageSize = dut.mem3.getPageSize();
