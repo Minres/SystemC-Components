@@ -18,6 +18,7 @@
 #define _SYSC_MEMORY_H_
 
 // Needed for the simple_target_socket
+#include "util/ities.h"
 #include <tlm/scc/memory_map_collector.h>
 #include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES
@@ -244,16 +245,11 @@ int memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::handle_operation(tlm::tl
         trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
         return 0;
     }
-    if(byt) {
-        auto res = std::accumulate(byt, byt + trans.get_byte_enable_length(), 0xff, [](uint8_t a, uint8_t b) { return a | b; });
-        if(trans.get_byte_enable_length() != len || res != 0xff) {
-            SC_REPORT_ERROR("TLM-2", "generic payload transaction with scattered byte enable not supported");
-            trans.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
-            return 0;
-        }
-    }
+    auto scattered =
+        byt ? std::accumulate(byt, byt + trans.get_byte_enable_length(), 0xff, [](uint8_t a, uint8_t b) { return a & b; }) != 0xff : false;
     tlm::tlm_command cmd = trans.get_command();
     SCCTRACE(SCMOD) << (cmd == tlm::TLM_READ_COMMAND ? "read" : "write") << " access to addr 0x" << std::hex << adr;
+    trans.set_dmi_allowed(allow_dmi.get_value());
     trans.set_response_status(tlm::TLM_OK_RESPONSE);
     auto hm_entry = host_mem_lut.getEntry(adr);
     if(cmd == tlm::TLM_READ_COMMAND) {
@@ -291,26 +287,45 @@ int memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::handle_operation(tlm::tl
         }
     } else if(cmd == tlm::TLM_WRITE_COMMAND) {
         delay += delay_spec_type<USE_CYCLES>::get_effective_value(clk_period, wr_resp_delay);
-        if(hm_entry.ptr) {
+        if(UNLIKELY(hm_entry.ptr)) {
             auto hm_start_offs = adr - hm_entry.base;
             auto hm_end_offs = adr + len - hm_entry.base;
             auto hm_ptr = hm_entry.ptr + hm_start_offs;
             auto transfer_length = hm_end_offs < hm_entry.size ? len : hm_end_offs - hm_start_offs;
-            std::copy(ptr, ptr + transfer_length, hm_ptr);
+            if(scattered) {
+                for(size_t i = 0; i < transfer_length; ++i)
+                    if(byt[i] == 0xff)
+                        *(hm_ptr + i) = *(ptr + i);
+            } else
+                std::copy(ptr, ptr + transfer_length, hm_ptr);
         } else {
             auto& p = mem(adr / mem.page_size);
             auto offs = adr & mem.page_addr_mask;
-            if((offs + len) > mem.page_size) {
+            if(UNLIKELY((offs + len) > mem.page_size)) { // we cross a page of the memory
                 auto first_part = mem.page_size - offs;
-                std::copy(ptr, ptr + first_part, p.data() + offs);
+                if(scattered) {
+                    for(size_t i = 0; i < first_part; ++i)
+                        if(byt[i] == 0xff)
+                            *(p.data() + offs + i) = *(ptr + i);
+                } else
+                    std::copy(ptr, ptr + first_part, p.data() + offs);
                 auto& p2 = mem((adr / mem.page_size) + 1);
-                std::copy(ptr + first_part, ptr + len, p2.data());
-            } else {
-                std::copy(ptr, ptr + len, p.data() + offs);
+                if(scattered) {
+                    for(size_t i = 0, j = first_part; j < len; ++i, ++j)
+                        if(byt[j] == 0xff)
+                            *(p2.data() + i) = *(ptr + j);
+                } else
+                    std::copy(ptr + first_part, ptr + len, p2.data());
+            } else { // we stay within a page of the memory
+                if(scattered) {
+                    for(size_t i = 0; i < len; ++i)
+                        if(byt[i] == 0xff)
+                            *(p.data() + offs + i) = *(ptr + i);
+                } else
+                    std::copy(ptr, ptr + len, p.data() + offs);
             }
         }
     }
-    trans.set_dmi_allowed(allow_dmi.get_value());
     return len;
 }
 
