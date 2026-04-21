@@ -313,8 +313,11 @@ bool router<BUSWIDTH, TARGET_SOCKET_TYPE>::get_direct_mem_ptr(int i, tlm::tlm_ge
     trans.set_address(address - offset);
     bool status = initiator[idx]->get_direct_mem_ptr(trans, dmi_data);
     // make sure end address does not exceed size
-    auto remap_end = (tranges[idx].remap ? 0 : tranges[idx].base) + tranges[idx].size;
-    if(tranges[idx].size && dmi_data.get_end_address() >= remap_end)
+    auto const remap_base = tranges[idx].remap ? 0 : tranges[idx].base;
+    auto const remap_size = tranges[idx].size;
+    auto const remap_end = remap_base + remap_size;
+    auto const remap_end_overflow = remap_end < remap_base;
+    if(remap_size && !remap_end_overflow && dmi_data.get_end_address() >= remap_end)
         dmi_data.set_end_address(remap_end - 1);
     // Calculate DMI address of target in system address space
     dmi_data.set_start_address(dmi_data.get_start_address() - ibases[i] + offset);
