@@ -1,10 +1,11 @@
 # Running Tests
 
-This repository has a GoogleTest-based suite (see `tests/`). The tests target the CMake option `BUILD_TESTING=ON` and require the same dependencies as the main build plus GoogleTest (fetched automatically via `FetchContent`).
+This repository has a Catch2 based test suite (see `tests/`).
+The tests target the CMake option `BUILD_TESTING=ON` and require the same dependencies as the main build plus Catch2.
 
 ## Prerequisites
 
-- CMake ≥ 3.20
+- CMake ≥ 3.24
 - A C++ compiler (GCC/Clang) with C++17 or later
 - Ninja build system
 - Python 3 with `conan` installed. A virtual environment is recommended:

@@ -1,8 +1,10 @@
 @PACKAGE_INIT@
+include(CMakeFindDependencyMacro)
 
 if(NOT TARGET scv-tr)
+    find_dependency(fmt)
     include("${CMAKE_CURRENT_LIST_DIR}/scv-tr-targets.cmake")
 endif()
 
-set(tlm-interfaces_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include")
-set(tlm-interfaces_lIBRARIES lwtr::lwtr)
+set(scv-tr_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include")
+set(scv-tr_LIBRARIES scv-tr)

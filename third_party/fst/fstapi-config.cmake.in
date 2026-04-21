@@ -4,9 +4,9 @@ include(CMakeFindDependencyMacro)
 find_dependency(lz4)
 find_dependency(ZLIB)
 
-if(NOT TARGET scc::scc)
+if(NOT TARGET fstapi)
     include("${CMAKE_CURRENT_LIST_DIR}/fstapi-targets.cmake")
 endif()
 
-set(fst_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include")
-set(fst_lIBRARIES fst::fst)
+set(fstapi_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include")
+set(fstapi_LIBRARIES fstapi)
