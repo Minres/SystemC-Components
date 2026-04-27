@@ -643,13 +643,18 @@ void mirror_sc_attributes(configurer::broker_t& broker, configurer::cci_param_cl
 }
 
 bool cci_name_ignore(std::pair<std::string, cci::cci_value> const& preset_value) {
-    std::string ending(SCC_LOG_LEVEL_PARAM_NAME);
     auto& name = preset_value.first;
-    if(name.length() >= ending.length()) {
-        return (0 == name.compare(name.length() - ending.length(), ending.length(), ending));
-    } else {
+    if(name.length() < SCC_LOG_LEVEL_PARAM_NAME_LEN) // name is to short to hold the log level
         return false;
-    }
+    size_t dot = name.find_last_of(".");
+    if (dot == std::string::npos)
+        return name == SCC_LOG_LEVEL_PARAM_NAME;
+    if(name.substr(dot, name.size() - dot).compare(SCC_LOG_LEVEL_PARAM_NAME)!=0)
+        // the parameter name is not SCC_LOG_LEVEL_PARAM_NAME
+        return false;
+    std::string module_name = name.substr(0, dot);
+    // ignore the SCC_LOG_LEVEL_PARAM_NAME preset if module exists
+    return sc_core::sc_find_object(name.c_str())!=nullptr;
 }
 } // namespace
 #ifdef HAS_YAMPCPP
