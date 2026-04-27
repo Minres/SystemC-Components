@@ -76,6 +76,8 @@ writing. By default spdlog logs asyncronously to keep the performance impact low
  */
 //! the name of the CCI property to attach to modules to control logging of this module
 #define SCC_LOG_LEVEL_PARAM_NAME "log_level"
+#define SCC_LOG_LEVEL_PARAM_NAME_LEN 9
+
 /** \ingroup scc-sysc
  *  @{
  */
