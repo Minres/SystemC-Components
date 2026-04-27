@@ -16,7 +16,8 @@
 
 #include "configurable_tracer.h"
 #include "traceable.h"
-
+#include <cstdio>
+#include <fmt/format.h>
 using namespace sc_core;
 using namespace scc;
 
@@ -54,14 +55,19 @@ void configurable_tracer::descend(const sc_core::sc_object* obj, bool trace) {
                 descend(o, trace);
         return;
     } else if(kind == "sc_module") {
+        auto module_name = obj->name();
         auto trace_enable = get_trace_enabled(obj, default_trace_enable_handle.get_cci_value().get<bool>());
+        printf(fmt::format("{}: {}\n", module_name, trace_enable).c_str());
         if(trace_enable)
             obj->trace(trf);
         for(auto o : obj->get_child_objects())
             descend(o, trace_enable);
     } else if(kind == "sc_variable") {
-        if(trace && (types_to_trace & trace_types::VARIABLES) == trace_types::VARIABLES)
+        if(trace && (types_to_trace & trace_types::VARIABLES) == trace_types::VARIABLES) {
+            printf(fmt::format("tracing {}\n", obj->name()).c_str());
             obj->trace(trf);
+        } else
+            printf(fmt::format("not tracing {}\n", obj->name()).c_str());
     } else if(kind == "sc_signal" || kind == "sc_clock" || kind == "sc_buffer" || kind == "sc_signal_rv") {
         if(trace && (types_to_trace & trace_types::SIGNALS) == trace_types::SIGNALS)
             try_trace(trf, obj, types_to_trace);
