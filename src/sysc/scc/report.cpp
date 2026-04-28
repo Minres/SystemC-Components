@@ -75,7 +75,7 @@ struct char_hash {
 };
 static class {
     std::unordered_map<char const*, sc_core::sc_verbosity, char_hash, char_equal_to> table;
-    std::vector<std::string> cache;
+    std::deque<std::string> cache;
     std::mutex mtx;
 
 public:
@@ -89,7 +89,7 @@ public:
     }
     void insert(char const* key, sc_core::sc_verbosity verb) {
         std::lock_guard<std::mutex> lock(mtx);
-        cache.push_back(key);
+        cache.emplace_back(key);
         table.insert({cache.back().c_str(), verb});
     }
     void clear() {
