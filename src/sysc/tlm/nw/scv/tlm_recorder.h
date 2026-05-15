@@ -317,7 +317,7 @@ template <typename TYPES> void tlm_recorder<TYPES>::b_transport(payload_type& tr
     }
 
     if(trans.get_extension_count())
-        for(auto& extensionRecording : tlm::scc::scv::tlm_extension_recording_registry<TYPES>::inst().get())
+        for(auto& extensionRecording : tlm::scc::scv::tlm_extension_recording_registry<TYPES>::get())
             if(extensionRecording)
                 extensionRecording->recordBeginTx(h, trans);
     tlm::scc::scv::tlm_recording_extension* preExt = nullptr;
@@ -346,7 +346,7 @@ template <typename TYPES> void tlm_recorder<TYPES>::b_transport(payload_type& tr
     }
     record(h, trans);
     if(trans.get_extension_count())
-        for(auto& extensionRecording : tlm::scc::scv::tlm_extension_recording_registry<TYPES>::inst().get())
+        for(auto& extensionRecording : tlm::scc::scv::tlm_extension_recording_registry<TYPES>::get())
             if(extensionRecording)
                 extensionRecording->recordEndTx(h, trans);
     // End the transaction
@@ -387,7 +387,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(payload_type& trans, typ
         preExt->txHandle = h;
     h.record_attribute("delay", delay.to_string());
     if(trans.get_extension_count())
-        for(auto& extensionRecording : tlm::scc::scv::tlm_extension_recording_registry<TYPES>::inst().get())
+        for(auto& extensionRecording : tlm::scc::scv::tlm_extension_recording_registry<TYPES>::get())
             if(extensionRecording)
                 extensionRecording->recordBeginTx(h, trans);
     /*************************************************************************
@@ -411,7 +411,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(payload_type& trans, typ
     h.record_attribute("delay[return_path]", delay.to_string());
     record(h, trans);
     if(trans.get_extension_count())
-        for(auto& extensionRecording : tlm::scc::scv::tlm_extension_recording_registry<TYPES>::inst().get())
+        for(auto& extensionRecording : tlm::scc::scv::tlm_extension_recording_registry<TYPES>::get())
             if(extensionRecording)
                 extensionRecording->recordEndTx(h, trans);
     // get the extension and free the memory if it was mine
@@ -473,7 +473,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(payload_type& trans, typ
     }
     h.record_attribute("delay", delay.to_string());
     if(trans.get_extension_count())
-        for(auto& extensionRecording : tlm::scc::scv::tlm_extension_recording_registry<TYPES>::inst().get())
+        for(auto& extensionRecording : tlm::scc::scv::tlm_extension_recording_registry<TYPES>::get())
             if(extensionRecording)
                 extensionRecording->recordBeginTx(h, trans);
     /*************************************************************************
@@ -497,7 +497,7 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(payload_type& trans, typ
     h.record_attribute("delay[return_path]", delay.to_string());
     record(h, trans);
     if(trans.get_extension_count())
-        for(auto& extensionRecording : tlm::scc::scv::tlm_extension_recording_registry<TYPES>::inst().get())
+        for(auto& extensionRecording : tlm::scc::scv::tlm_extension_recording_registry<TYPES>::get())
             if(extensionRecording)
                 extensionRecording->recordEndTx(h, trans);
     // End the transaction

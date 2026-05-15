@@ -1,0 +1,28 @@
+{
+    "files.associations": {
+        "platform.h": "c"
+    },
+    "debug.allowBreakpointsEverywhere": true,
+    "editor.rulers": [
+        {
+            "column": 140,
+            "comment": "clang-format"
+        }
+    ],
+    "editor.formatOnSave": true,
+    "clangd.arguments": [
+        "--pretty",
+        "--background-index",
+        "--compile-commands-dir=${workspaceFolder}/build"
+    ],
+    "cmake.copyCompileCommands": "${workspaceFolder}/build/compile_commands.json",
+    "cmake.options.statusBarVisibility": "hidden",
+    "cmake.options.advanced": {
+        "configure": {
+            "projectStatusVisibility": "visible"
+        },
+        "build": {
+            "statusBarVisibility": "visible"
+        }
+    }
+}
