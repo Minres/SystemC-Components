@@ -15,39 +15,52 @@
  */
 
 #include "cxs/cxs_tlm.h"
+#include "util/ities.h"
 #include <fmt/format.h>
 #include <tlm/scc/scv/tlm_extension_recording_registry.h>
 #include <tlm/scc/tlm_id.h>
 
 namespace cxs {
+using namespace tlm::scc::scv;
 
-class cxs_ext_recording : public tlm::scc::scv::tlm_extensions_recording_if<cxs_flit_types> {
+struct cxs_ext_record : public tlm_extension_record_if {
 
-    void recordBeginTx(SCVNS scv_tr_handle& h, cxs_flit_types::tlm_payload_type& trans) override {
-        if(auto ext = trans.get_extension<orig_pkt_extension>()) { // CTRL, DATA, RESP
+    cxs_ext_record() { recordBegin = &recordBeginTx; }
+
+    static void recordBeginTx(SCVNS scv_tr_handle& handle, tlm::tlm_extension_base* e, std::string const& prefix) {
+        if(auto ext = dynamic_cast<orig_pkt_extension*>(e)) {
             auto idx = 0U;
-            for(auto& pkt : ext->orig_ext) {
-                h.record_attribute(fmt::format("flit.packet{}.size", idx++).c_str(), pkt->get_data().size());
-                if(pkt->get_extension_count())
-                    for(auto& extensionRecording : tlm::scc::scv::tlm_extension_recording_registry<cxs_packet_types>::inst().get())
-                        if(extensionRecording)
-                            extensionRecording->recordBeginTx(h, *pkt);
+            for(auto const& pkt : ext->orig_ext) {
+                handle.record_attribute(fmt::format("{}flit.packet{}.size", prefix, idx++).c_str(), pkt->get_data().size());
+                if(pkt->get_extension_count()) {
+                    auto prf = fmt::format("{}flit.packet{}.size", prefix, idx++);
+                    auto size = tlm_extension_record_registry::get().size();
+                    for(auto i = 0u; i < size; ++i)
+                        tlm_extension_record_registry::get().recordBeginTx(i, handle, pkt->get_extension(i), prf);
+                }
             }
         }
     }
+};
 
-    void recordEndTx(SCVNS scv_tr_handle& handle, cxs_flit_types::tlm_payload_type& trans) override {}
+struct cxs_ext_recording : public tlm_extensions_recording_if<cxs_flit_types> {
+
+    cxs_ext_recording() { recordBegin = &recordBeginTx; }
+
+    static void recordBeginTx(SCVNS scv_tr_handle& h, cxs_flit_types::tlm_payload_type& trans) {
+        tlm_extension_record_registry::get().recordBeginTx(orig_pkt_extension::ID, h, trans.get_extension<orig_pkt_extension>());
+    }
 };
 #if defined(__GNUG__)
 __attribute__((constructor))
 #endif
 bool register_extensions() {
     cxs::orig_pkt_extension ext; // NOLINT
-    if(!tlm::scc::scv::tlm_extension_recording_registry<cxs::cxs_flit_types>::inst().is_ext_registered(ext.ID))
-        tlm::scc::scv::tlm_extension_recording_registry<cxs::cxs_flit_types>::inst().register_ext_rec(
+    if(!tlm_extension_recording_registry<cxs::cxs_flit_types>::get().is_ext_registered(ext.ID))
+        tlm_extension_recording_registry<cxs::cxs_flit_types>::get().register_ext_rec(
             ext.ID,
-            new cxs::cxs_ext_recording()); // NOLINT
-    return true;                           // NOLINT
+            util::make_unique<cxs::cxs_ext_recording>()); // NOLINT
+    return true;                                          // NOLINT
 }
 bool registered = register_extensions();
 } // namespace cxs
