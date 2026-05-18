@@ -106,16 +106,16 @@ template <int N = 1> using cxs_pkt_target_socket = tlm::nw::tlm_network_target_s
 using cxs_pkt_shared_ptr = tlm::scc::tlm_payload_shared_ptr<cxs_packet_payload>;
 using cxs_pkt_mm = tlm::scc::tlm_mm<cxs_packet_types, false>;
 
-struct orig_pkt_extension : public tlm::tlm_extension<orig_pkt_extension> {
+struct cxs_packet_extension : public tlm::tlm_extension<cxs_packet_extension> {
     virtual tlm_extension_base* clone() const override {
-        auto ret = new orig_pkt_extension();
+        auto ret = new cxs_packet_extension();
         *ret = *this;
         return ret;
     }
-    void copy_from(tlm_extension_base const& ext) override { *this = dynamic_cast<orig_pkt_extension const&>(ext); }
-    virtual ~orig_pkt_extension() = default;
+    void copy_from(tlm_extension_base const& ext) override { *this = dynamic_cast<cxs_packet_extension const&>(ext); }
+    virtual ~cxs_packet_extension() = default;
 
-    std::vector<cxs_pkt_shared_ptr> orig_ext;
+    std::vector<cxs_pkt_shared_ptr> packets;
 };
 
 template <unsigned PHITWIDTH = 256, unsigned CXSMAXPKTPERFLIT = 2>
@@ -166,9 +166,9 @@ private:
 
     void b_transport(pkt_tx_type& trans, sc_core::sc_time& t) override {
         flit_tx_type tx;
-        auto ext = new orig_pkt_extension();
+        auto ext = new cxs_packet_extension();
         tx.set_extension(ext);
-        ext->orig_ext.emplace_back(&trans);
+        ext->packets.emplace_back(&trans);
         isck->b_transport(tx, t);
     }
 
@@ -219,9 +219,9 @@ private:
            (!burst_credits && (available_credits < burst_len.get_value()))) // we do not have enough credits to burst-send flits
             return;
         auto* ptr = cxs_flit_mm::get().allocate();
-        auto ext = ptr->get_extension<orig_pkt_extension>();
+        auto ext = ptr->get_extension<cxs_packet_extension>();
         if(!ext) {
-            ext = new orig_pkt_extension();
+            ext = new cxs_packet_extension();
             ptr->set_auto_extension(ext);
         }
         auto next_bucket = 0U;
@@ -248,7 +248,7 @@ private:
                 ptr->end_ptr[end_ptr_idx++] = (next_bucket * BUCKET_SIZE + remaining_bytes + 1) / 4 - 1; // end pointer is 4 byte aligned
                 ptr->last = true;
                 next_bucket += bucketed_size;
-                ext->orig_ext.push_back(trans);
+                ext->packets.push_back(trans);
                 transfered_pkt_bytes = 0;
             }
         }
@@ -320,9 +320,9 @@ private:
     }
 
     void b_transport(flit_tx_type& trans, sc_core::sc_time& t) override {
-        auto ext = trans.get_extension<orig_pkt_extension>();
+        auto ext = trans.get_extension<cxs_packet_extension>();
         sc_assert(ext);
-        auto tx = ext->orig_ext.front();
+        auto tx = ext->packets.front();
         isck->b_transport(*tx, t);
     }
 
@@ -330,8 +330,8 @@ private:
         SCCTRACEALL(SCMOD) << "Received non-blocking transaction in fw path with phase " << phase.get_name();
         returned_credits.notify(1, sc_core::SC_ZERO_TIME);
         if(trans.end) {
-            auto ext = trans.get_extension<cxs::orig_pkt_extension>();
-            for(auto& orig_ptr : ext->orig_ext) {
+            auto ext = trans.get_extension<cxs::cxs_packet_extension>();
+            for(auto& orig_ptr : ext->packets) {
                 auto ph = tlm::nw::REQUEST;
                 auto d = sc_core::SC_ZERO_TIME;
                 SCCDEBUG(SCMOD) << "Forwarding CXS pkt with size " << orig_ptr->get_data().size() << "bytes";

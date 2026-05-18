@@ -21,6 +21,7 @@
 #include "tlm_extension_recording_registry.h"
 #include "tlm_recorder.h"
 #include <tlm/scc/tlm_id.h>
+#include <fmt/format.h>
 
 namespace tlm {
 namespace scc {
@@ -76,7 +77,7 @@ struct tlm_id_ext_record : public tlm_extension_record_if {
 
     static void recordBeginTx(SCVNS scv_tr_handle& handle, tlm::tlm_extension_base* e, std::string const& prefix) {
         if(auto ext = dynamic_cast<tlm_id_extension*>(e)) {
-            handle.record_attribute((prefix + "trans.uid").c_str(), ext->id);
+            handle.record_attribute(fmt::format("{}uid", prefix).c_str(), ext->id);
         }
     }
 };
@@ -86,7 +87,7 @@ struct tlm_id_ext_recording : public tlm_extensions_recording_if<tlm::tlm_base_p
     tlm_id_ext_recording() { recordBegin = &recordBeginTx; }
 
     static void recordBeginTx(SCVNS scv_tr_handle& handle, tlm::tlm_base_protocol_types::tlm_payload_type& trans) {
-        tlm_extension_record_registry::get().recordBeginTx(tlm_id_extension::ID, handle, trans.get_extension<tlm_id_extension>());
+        tlm_extension_record_registry::get().recordBeginTx(tlm_id_extension::ID, handle, trans.get_extension<tlm_id_extension>(), "trans.");
     }
 };
 
