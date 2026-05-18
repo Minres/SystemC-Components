@@ -28,15 +28,16 @@ struct cxs_ext_record : public tlm_extension_record_if {
     cxs_ext_record() { recordBegin = &recordBeginTx; }
 
     static void recordBeginTx(SCVNS scv_tr_handle& handle, tlm::tlm_extension_base* e, std::string const& prefix) {
-        if(auto ext = dynamic_cast<orig_pkt_extension*>(e)) {
+        if(auto ext = dynamic_cast<cxs_packet_extension*>(e)) {
             auto idx = 0U;
-            for(auto const& pkt : ext->orig_ext) {
-                handle.record_attribute(fmt::format("{}flit.packet{}.size", prefix, idx++).c_str(), pkt->get_data().size());
+            for(auto const& pkt : ext->packets) {
+                auto prf = fmt::format("{}packet{}.", prefix, idx++);
+                handle.record_attribute(fmt::format("{}size", prf).c_str(), pkt->get_data().size());
                 if(pkt->get_extension_count()) {
-                    auto prf = fmt::format("{}flit.packet{}.size", prefix, idx++);
                     auto size = tlm_extension_record_registry::get().size();
                     for(auto i = 0u; i < size; ++i)
-                        tlm_extension_record_registry::get().recordBeginTx(i, handle, pkt->get_extension(i), prf);
+                        if(auto orig_ext = pkt->get_extension(i))
+                            tlm_extension_record_registry::get().recordBeginTx(i, handle, orig_ext, prf);
                 }
             }
         }
@@ -48,18 +49,20 @@ struct cxs_ext_recording : public tlm_extensions_recording_if<cxs_flit_types> {
     cxs_ext_recording() { recordBegin = &recordBeginTx; }
 
     static void recordBeginTx(SCVNS scv_tr_handle& h, cxs_flit_types::tlm_payload_type& trans) {
-        tlm_extension_record_registry::get().recordBeginTx(orig_pkt_extension::ID, h, trans.get_extension<orig_pkt_extension>());
+        tlm_extension_record_registry::get().recordBeginTx(cxs_packet_extension::ID, h, trans.get_extension<cxs_packet_extension>(), "flit.");
     }
 };
 #if defined(__GNUG__)
 __attribute__((constructor))
 #endif
 bool register_extensions() {
-    cxs::orig_pkt_extension ext; // NOLINT
+    cxs::cxs_packet_extension ext; // NOLINT
     if(!tlm_extension_recording_registry<cxs::cxs_flit_types>::get().is_ext_registered(ext.ID))
         tlm_extension_recording_registry<cxs::cxs_flit_types>::get().register_ext_rec(
             ext.ID,
             util::make_unique<cxs::cxs_ext_recording>()); // NOLINT
+    if(!tlm_extension_record_registry::get().is_ext_registered(ext.ID))
+        tlm_extension_record_registry::get().register_ext_rec(ext.ID, util::make_unique<cxs_ext_record>()); // NOLINT
     return true;                                          // NOLINT
 }
 bool registered = register_extensions();
