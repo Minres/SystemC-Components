@@ -253,7 +253,7 @@ template <typename T> struct sc_variable : public sc_variable_b {
             h->notify();
         return value;
     }
-    T operator+(const T other) const { return value - other; }
+    T operator+(const T other) const { return value + other; }
     T operator-(const T other) const { return value - other; }
     T operator*(const T other) const { return value * other; }
     T operator/(const T other) const { return value / other; }
