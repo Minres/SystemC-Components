@@ -18,7 +18,7 @@
 #define TLM_RECORDER_REGISTRY_H_
 
 #include <memory>
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
+#include <tlm>
 #include <unordered_set>
 #include <util/delegate.h>
 #ifdef HAS_SCV

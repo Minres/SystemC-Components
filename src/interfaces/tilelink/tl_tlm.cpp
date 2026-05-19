@@ -15,10 +15,10 @@
  *******************************************************************************/
 
 #include <array>
+#include <fmt/format.h>
 #include <tilelink/tl_tlm.h>
 #include <tlm/scc/scv/tlm_extension_recording_registry.h>
 #include <util/ities.h>
-#include <fmt/format.h>
 
 namespace tilelink {
 namespace {
@@ -139,7 +139,8 @@ struct tlc_ext_recording : public tlm_extensions_recording_if<tl_protocol_types>
     tlc_ext_recording() { recordBegin = &tlc_ext_recording::recordBeginTx; }
 
     static void recordBeginTx(SCVNS scv_tr_handle& handle, tl_protocol_types::tlm_payload_type& trans) {
-        tlm_extension_record_registry::get().recordBeginTx(tilelink_extension::ID, handle, trans.get_extension<tilelink_extension>(), "trans.tl.");
+        tlm_extension_record_registry::get().recordBeginTx(tilelink_extension::ID, handle, trans.get_extension<tilelink_extension>(),
+                                                           "trans.tl.");
     }
 };
 
