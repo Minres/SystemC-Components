@@ -154,13 +154,11 @@ public:
     , enableNbTracing("enableNbTracing", recording_enabled)
     , fw_port(fw_port)
     , bw_port(bw_port)
-    , b_timed_peq(this, &tlm_recorder::btx_cb)
     , nb_timed_peq(this, &tlm_recorder::nbtx_cb)
     , m_db(tr_db)
     , fixed_basename(name) {}
 
     virtual ~tlm_recorder() override {
-        btx_handle_map.clear();
         nbtx_req_handle_map.clear();
         nbtx_last_req_handle_map.clear();
         delete b_streamHandle;
@@ -251,15 +249,8 @@ public:
     inline bool isRecordingNonBlockingTxEnabled() const { return m_db && enableNbTracing.value; }
 
 private:
-    //! event queue to hold time points of blocking transactions
-    tlm_utils::peq_with_cb_and_phase<tlm_recorder, recording_types> b_timed_peq;
     //! event queue to hold time points of non-blocking transactions
     tlm_utils::peq_with_cb_and_phase<tlm_recorder, recording_types> nb_timed_peq;
-    /*! \brief The thread processing the blocking accesses with their annotated
-     * times
-     *  to generate the timed view of blocking tx
-     */
-    void btx_cb(tlm_recording_payload& rec_parts, const typename TYPES::tlm_phase_type& phase);
     /*! \brief The thread processing the non-blocking requests with their
      * annotated times
      * to generate the timed view of non-blocking tx
@@ -276,7 +267,6 @@ private:
     //! transaction generator handle for blocking transactions with annotated
     //! delays
     std::array<SCVNS scv_tr_generator<>*, 3> b_trTimedHandle{{nullptr, nullptr, nullptr}};
-    std::unordered_map<uint64_t, SCVNS scv_tr_handle> btx_handle_map;
 
     enum DIR { FW, BW, REQ = FW, RESP = BW };
     //! non-blocking transaction recording stream handle
@@ -360,20 +350,15 @@ template <typename TYPES> void tlm_recorder<TYPES>::b_transport(typename TYPES::
     /*************************************************************************
      * do the timed notification
      *************************************************************************/
+    SCVNS scv_tr_handle ht;
     if(b_streamHandleTimed) {
-        req = mm::get().allocate();
-        req->acquire();
-        (*req) = trans;
-        req->parent = h;
-        req->id = h.get_id();
-        tlm::tlm_phase begin_req = tlm::BEGIN_REQ;
-        b_timed_peq.notify(*req, begin_req, delay);
+        ht = b_trTimedHandle[trans.get_command()]->begin_transaction(delay);
+        h.add_relation(rel_str(PARENT_CHILD), h);
     }
 
     auto addr = trans.get_address();
-    for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
-        if(extensionRecording)
-            extensionRecording->recordBeginTx(h, trans);
+    for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::get())
+        extensionRecording->recordBeginTx(h, trans);
     tlm_recording_extension* preExt = nullptr;
 
     trans.get_extension(preExt);
@@ -400,40 +385,15 @@ template <typename TYPES> void tlm_recorder<TYPES>::b_transport(typename TYPES::
     }
     trans.set_address(addr);
     record(h, trans);
-    for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
-        if(extensionRecording)
-            extensionRecording->recordEndTx(h, trans);
+    for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::get())
+        extensionRecording->recordEndTx(h, trans);
     // End the transaction
     b_trHandle[trans.get_command()]->end_transaction(h, delay.value(), sc_core::sc_time_stamp());
     // and now the stuff for the timed tx
-    if(b_streamHandleTimed) {
-        tlm::tlm_phase end_resp = tlm::END_RESP;
-        b_timed_peq.notify(*req, end_resp, delay);
+    if(ht.is_valid() && ht.is_active()) {
+        record(ht, trans);
+        ht.end_transaction(delay);
     }
-}
-
-template <typename TYPES> void tlm_recorder<TYPES>::btx_cb(tlm_recording_payload& rec_parts, const typename TYPES::tlm_phase_type& phase) {
-    SCVNS scv_tr_handle h;
-    // Now process outstanding recordings
-    switch(phase) {
-    case tlm::BEGIN_REQ: {
-        h = b_trTimedHandle[rec_parts.get_command()]->begin_transaction();
-        h.add_relation(rel_str(PARENT_CHILD), rec_parts.parent);
-        btx_handle_map[rec_parts.id] = h;
-    } break;
-    case tlm::END_RESP: {
-        auto it = btx_handle_map.find(rec_parts.id);
-        sc_assert(it != btx_handle_map.end());
-        h = it->second;
-        btx_handle_map.erase(it);
-        record(h, rec_parts);
-        h.end_transaction();
-        rec_parts.release();
-    } break;
-    default:
-        sc_assert(!"phase not supported!");
-    }
-    return;
 }
 
 template <typename TYPES>
@@ -464,9 +424,8 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
     if(preExt)
         preExt->txHandle = h;
     h.record_attribute("delay", delay.to_string());
-    for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
-        if(extensionRecording)
-            extensionRecording->recordBeginTx(h, trans);
+    for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::get())
+        extensionRecording->recordBeginTx(h, trans);
     /*************************************************************************
      * do the timed notification
      *************************************************************************/
@@ -487,9 +446,8 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_fw(typename TYPES::tlm_payl
     record(h, status);
     h.record_attribute("delay[return_path]", delay.to_string());
     record(h, trans);
-    for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
-        if(extensionRecording)
-            extensionRecording->recordEndTx(h, trans);
+    for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::get())
+        extensionRecording->recordEndTx(h, trans);
     // get the extension and free the memory if it was mine
     if(status == tlm::TLM_COMPLETED || (status == tlm::TLM_ACCEPTED && phase == tlm::END_RESP)) {
         trans.get_extension(preExt);
@@ -546,9 +504,8 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
         preExt->txHandle = h;
     }
     h.record_attribute("delay", delay.to_string());
-    for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
-        if(extensionRecording)
-            extensionRecording->recordBeginTx(h, trans);
+    for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::get())
+        extensionRecording->recordBeginTx(h, trans);
     /*************************************************************************
      * do the timed notification
      *************************************************************************/
@@ -569,9 +526,8 @@ tlm::tlm_sync_enum tlm_recorder<TYPES>::nb_transport_bw(typename TYPES::tlm_payl
     record(h, status);
     h.record_attribute("delay[return_path]", delay.to_string());
     record(h, trans);
-    for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::inst().get())
-        if(extensionRecording)
-            extensionRecording->recordEndTx(h, trans);
+    for(auto& extensionRecording : tlm_extension_recording_registry<TYPES>::get())
+        extensionRecording->recordEndTx(h, trans);
     // End the transaction
     nb_trHandle[BW]->end_transaction(h, phase2string(phase));
     if(status == tlm::TLM_COMPLETED || (status == tlm::TLM_UPDATED && phase == tlm::END_RESP)) {

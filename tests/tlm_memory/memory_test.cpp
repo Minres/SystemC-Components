@@ -1,5 +1,6 @@
 
 #include "testbench.h"
+#include "tlm/scc/tlm_id.h"
 #include <factory.h>
 #include <tlm/scc/tlm_gp_shared.h>
 #undef CHECK
@@ -43,6 +44,8 @@ TEST_CASE("simple_read_write_with host memory map", "[memory][tlm-level]") {
     sc_start(dut.clk.read());
     {
         tlm::tlm_generic_payload gp;
+        tlm::scc::tlm_id_extension ext(&gp);
+        gp.set_extension(&ext);
         sc_core::sc_time t;
         for(uint64_t addr = 0; addr < 1024; addr += sizeof(uint64_t)) {
             prepare_trans(gp, tlm::TLM_WRITE_COMMAND, addr, 123456789ULL);
@@ -50,6 +53,7 @@ TEST_CASE("simple_read_write_with host memory map", "[memory][tlm-level]") {
             delete gp.get_data_ptr();
             sc_start(dut.clk.read());
         }
+        gp.set_extension<tlm::scc::tlm_id_extension>(nullptr);
     }
     {
         tlm::tlm_generic_payload gp;

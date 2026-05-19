@@ -1,6 +1,7 @@
 #ifndef _TESTBENCH_H_
 #define _TESTBENCH_H_
 
+#include "tlm/scc/scv/tlm_recorder_module.h"
 #include <cxs/cxs_tlm.h>
 #include <scc/cci_util.h>
 #include <scc/configurer.h>
@@ -26,6 +27,7 @@ struct testbench : public sc_core::sc_module {
     sc_core::sc_signal<sc_core::sc_time> clk{"clk"};
     sc_core::sc_signal<bool> rst{"rst"};
     tlm::scc::initiator_mixin<tlm::tlm_initiator_socket<scc::LT>> isck{"isck"};
+    tlm::scc::scv::tlm_recorder_module<scc::LT> rec{"rec"};
     scc::memory_tl<1_kB, scc::LT> mem{"mem"};
 
     testbench()
@@ -33,7 +35,8 @@ struct testbench : public sc_core::sc_module {
 
     testbench(sc_core::sc_module_name const& nm)
     : sc_module(nm) {
-        isck(mem.target);
+        isck(rec.ts);
+        rec.is(mem.target);
         mem.clk_i(clk);
     }
     void start_of_simulation() { clk = 10_ns; }

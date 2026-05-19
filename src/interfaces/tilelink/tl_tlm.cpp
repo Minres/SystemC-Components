@@ -14,9 +14,11 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include "tlm/scc/scv/tlm_extension_recording_registry.h"
 #include <array>
+#include <fmt/format.h>
 #include <tilelink/tl_tlm.h>
+#include <tlm/scc/scv/tlm_extension_recording_registry.h>
+#include <util/ities.h>
 
 namespace tilelink {
 namespace {
@@ -116,21 +118,30 @@ std::ostream& operator<<(std::ostream& os, const tlm::tlm_generic_payload& t) {
 
 using namespace tlm::scc::scv;
 
-class tlc_ext_recording : public tlm_extensions_recording_if<tl_protocol_types> {
+struct tlc_ext_record : public tlm_extension_record_if {
 
-    void recordBeginTx(SCVNS scv_tr_handle& handle, tl_protocol_types::tlm_payload_type& trans) override {
-        auto ext = trans.get_extension<tilelink_extension>();
-        if(ext) {
-            handle.record_attribute("trans.tl.opcode", std::string(to_char(ext->get_opcode())));
-            handle.record_attribute("trans.tl.param", std::string(to_char(ext->get_param())));
-            handle.record_attribute("trans.tl.source", ext->get_source());
-            handle.record_attribute("trans.tl.sink", ext->get_sink());
-            handle.record_attribute("trans.tl.corrupt", ext->is_corrupt());
-            handle.record_attribute("trans.tl.denied", ext->is_denied());
+    tlc_ext_record() { recordBegin = &tlc_ext_record::recordBeginTx; }
+
+    static void recordBeginTx(SCVNS scv_tr_handle& handle, tlm::tlm_extension_base* e, std::string const& prefix) {
+        if(auto ext = dynamic_cast<tilelink_extension*>(e)) {
+            handle.record_attribute(fmt::format("{}opcode", prefix).c_str(), std::string(to_char(ext->get_opcode())));
+            handle.record_attribute(fmt::format("{}param", prefix).c_str(), std::string(to_char(ext->get_param())));
+            handle.record_attribute(fmt::format("{}source", prefix).c_str(), ext->get_source());
+            handle.record_attribute(fmt::format("{}sink", prefix).c_str(), ext->get_sink());
+            handle.record_attribute(fmt::format("{}corrupt", prefix).c_str(), ext->is_corrupt());
+            handle.record_attribute(fmt::format("{}denied", prefix).c_str(), ext->is_denied());
         }
     }
+};
 
-    void recordEndTx(SCVNS scv_tr_handle& handle, tl_protocol_types::tlm_payload_type& trans) override {}
+struct tlc_ext_recording : public tlm_extensions_recording_if<tl_protocol_types> {
+
+    tlc_ext_recording() { recordBegin = &tlc_ext_recording::recordBeginTx; }
+
+    static void recordBeginTx(SCVNS scv_tr_handle& handle, tl_protocol_types::tlm_payload_type& trans) {
+        tlm_extension_record_registry::get().recordBeginTx(tilelink_extension::ID, handle, trans.get_extension<tilelink_extension>(),
+                                                           "trans.tl.");
+    }
 };
 
 namespace scv {
@@ -140,9 +151,10 @@ __attribute__((constructor))
 #endif
 bool register_extensions() {
     tilelink::tilelink_extension ext; // NOLINT
-    tlm::scc::scv::tlm_extension_recording_registry<tilelink::tl_protocol_types>::inst().register_ext_rec(
-        ext.ID, new tlc_ext_recording()); // NOLINT
-    return true;                          // NOLINT
+    tlm_extension_recording_registry<tilelink::tl_protocol_types>::get().register_ext_rec(ext.ID,
+                                                                                          util::make_unique<tlc_ext_recording>()); // NOLINT
+    tlm_extension_record_registry::get().register_ext_rec(ext.ID, util::make_unique<tlc_ext_record>());                            // NOLINT
+    return true;                                                                                                                   // NOLINT
 }
 bool registered = register_extensions();
 } // namespace scv

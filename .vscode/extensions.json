@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "ms-vscode.cpptools-extension-pack",
+        "llvm-vs-code-extensions.vscode-clangd",
+        "eclipse-cdt.cdt-gdb-vscode",
+        "eclipse-cdt.memory-inspector",
+        "eclipse-cdt.peripheral-inspector",
+    ]
+}

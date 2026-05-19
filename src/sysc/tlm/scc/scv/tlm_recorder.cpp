@@ -16,9 +16,11 @@
 
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
+#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 #endif
-#include "tlm_recorder.h"
 #include "tlm_extension_recording_registry.h"
+#include "tlm_recorder.h"
+#include <fmt/format.h>
 #include <tlm/scc/tlm_id.h>
 
 namespace tlm {
@@ -69,24 +71,39 @@ void record(SCVNS scv_tr_handle& handle, tlm::tlm_dmi const& o) {
     handle.record_attribute("trans.write_latency", o.get_write_latency().to_string());
 }
 
-class tlm_id_ext_recording : public tlm_extensions_recording_if<tlm::tlm_base_protocol_types> {
+struct tlm_id_ext_record : public tlm_extension_record_if {
 
-    void recordBeginTx(SCVNS scv_tr_handle& handle, tlm::tlm_base_protocol_types::tlm_payload_type& trans) override {
-        if(auto ext = trans.get_extension<tlm_id_extension>()) {
-            handle.record_attribute("trans.uid", ext->id);
+    tlm_id_ext_record() { recordBegin = &tlm_id_ext_record::recordBeginTx; }
+
+    static void recordBeginTx(SCVNS scv_tr_handle& handle, tlm::tlm_extension_base* e, std::string const& prefix) {
+        if(auto ext = dynamic_cast<tlm_id_extension*>(e)) {
+            handle.record_attribute(fmt::format("{}uid", prefix).c_str(), ext->id);
         }
     }
-
-    void recordEndTx(SCVNS scv_tr_handle& handle, tlm::tlm_base_protocol_types::tlm_payload_type& trans) override {}
 };
+
+struct tlm_id_ext_recording : public tlm_extensions_recording_if<tlm::tlm_base_protocol_types> {
+
+    tlm_id_ext_recording() { recordBegin = &recordBeginTx; }
+
+    static void recordBeginTx(SCVNS scv_tr_handle& handle, tlm::tlm_base_protocol_types::tlm_payload_type& trans) {
+        tlm_extension_record_registry::get().recordBeginTx(tlm_id_extension::ID, handle, trans.get_extension<tlm_id_extension>(), "trans.");
+    }
+};
+
 using namespace tlm::scc::scv;
 #if defined(__GNUG__)
 __attribute__((constructor))
 #endif
 bool register_extensions() {
-    tlm::scc::tlm_id_extension ext(nullptr);                                                                                     // NOLINT
-    tlm_extension_recording_registry<tlm::tlm_base_protocol_types>::inst().register_ext_rec(ext.ID, new tlm_id_ext_recording()); // NOLINT
-    return true;                                                                                                                 // NOLINT
+    tlm::scc::tlm_id_extension ext(nullptr);
+    if(!tlm_extension_recording_registry<tlm::tlm_base_protocol_types>::get().is_ext_registered(ext.ID)) // NOLINT
+        tlm_extension_recording_registry<tlm::tlm_base_protocol_types>::get().register_ext_rec(
+            ext.ID,
+            util::make_unique<tlm_id_ext_recording>()); // NOLINT
+    if(!tlm_extension_record_registry::get().is_ext_registered(ext.ID))
+        tlm_extension_record_registry::get().register_ext_rec(ext.ID, util::make_unique<tlm_id_ext_record>()); // NOLINT
+    return true;                                                                                               // NOLINT
 }
 bool registered = register_extensions();
 
