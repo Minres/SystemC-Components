@@ -49,7 +49,8 @@ struct cxs_ext_recording : public tlm_extensions_recording_if<cxs_flit_types> {
     cxs_ext_recording() { recordBegin = &recordBeginTx; }
 
     static void recordBeginTx(SCVNS scv_tr_handle& h, cxs_flit_types::tlm_payload_type& trans) {
-        tlm_extension_record_registry::get().recordBeginTx(cxs_packet_extension::ID, h, trans.get_extension<cxs_packet_extension>(), "flit.");
+        tlm_extension_record_registry::get().recordBeginTx(cxs_packet_extension::ID, h, trans.get_extension<cxs_packet_extension>(),
+                                                           "flit.");
     }
 };
 #if defined(__GNUG__)
@@ -63,7 +64,7 @@ bool register_extensions() {
             util::make_unique<cxs::cxs_ext_recording>()); // NOLINT
     if(!tlm_extension_record_registry::get().is_ext_registered(ext.ID))
         tlm_extension_record_registry::get().register_ext_rec(ext.ID, util::make_unique<cxs_ext_record>()); // NOLINT
-    return true;                                          // NOLINT
+    return true;                                                                                            // NOLINT
 }
 bool registered = register_extensions();
 } // namespace cxs

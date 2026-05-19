@@ -20,8 +20,8 @@
 #endif
 #include "tlm_extension_recording_registry.h"
 #include "tlm_recorder.h"
-#include <tlm/scc/tlm_id.h>
 #include <fmt/format.h>
+#include <tlm/scc/tlm_id.h>
 
 namespace tlm {
 namespace scc {
