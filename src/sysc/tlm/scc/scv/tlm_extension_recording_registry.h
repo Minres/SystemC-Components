@@ -80,7 +80,7 @@ struct tlm_extension_record_registry {
 
     tlm_extension_record_if* operator[](size_t n) {
 #ifdef NDEBUG
-        return ext_rec.[n].get();
+        return ext_rec[n].get();
 #else
         return ext_rec.at(n).get();
 #endif
