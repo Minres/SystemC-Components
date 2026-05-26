@@ -186,8 +186,10 @@ int handle_operation(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, sc_core
 struct host_mem_map_extension : public tlm::tlm_extension<host_mem_map_extension> {
     tlm_extension_base* clone() const override { return nullptr; }
     void copy_from(tlm_extension_base const& ext) override {}
-    host_mem_map_extension(uint8_t* base, size_t size)
-    : range(base, base + size) {}
+    host_mem_map_extension(uint8_t* data, size_t size)
+    : range(data, data + size) {}
+    host_mem_map_extension(size_t size)
+    : range(nullptr, size) {}
     host_mem_map_extension() = default;
     ~host_mem_map_extension() {}
     nonstd::span<uint8_t> range;
@@ -211,10 +213,10 @@ memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>::memory(const sc_core::sc_mod
             }
         sc_core::sc_time z = sc_core::SC_ZERO_TIME;
         if(auto ext = gp.get_extension<host_mem_map_extension>()) {
-            if(ext->range.size())
+            if(ext->range.data())
                 map_host_memory(gp.get_address(), ext->range.size(), ext->range.data());
             else
-                unmap_host_memory(gp.get_address(), gp.get_data_length());
+                unmap_host_memory(gp.get_address(), ext->range.size());
             if(gp.get_command() == tlm::TLM_IGNORE_COMMAND)
                 return 0;
         }
