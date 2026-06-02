@@ -649,7 +649,7 @@ bool cci_name_ignore(std::pair<std::string, cci::cci_value> const& preset_value)
     size_t dot = name.find_last_of(".");
     if(dot == std::string::npos)
         return name == SCC_LOG_LEVEL_PARAM_NAME;
-    if(name.substr(dot+1, name.size() - dot-1).compare(SCC_LOG_LEVEL_PARAM_NAME) != 0)
+    if(name.substr(dot + 1, name.size() - dot - 1).compare(SCC_LOG_LEVEL_PARAM_NAME) != 0)
         // the parameter name is not SCC_LOG_LEVEL_PARAM_NAME
         return false;
     std::string module_name = name.substr(0, dot);
