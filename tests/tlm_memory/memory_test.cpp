@@ -1,14 +1,13 @@
 
 #include "testbench.h"
-#include "tlm/scc/tlm_id.h"
 #include <factory.h>
+#include <scc/memory.h>
 #include <tlm/scc/tlm_gp_shared.h>
+#include <tlm/scc/tlm_id.h>
 #undef CHECK
 #include <array>
 #include <catch2/catch_all.hpp>
 #include <cstdint>
-#include <deque>
-#include <unordered_map>
 
 using namespace sc_core;
 namespace scc {
@@ -32,7 +31,7 @@ template <typename T> void prepare_trans(tlm::tlm_generic_payload& trans, tlm::t
     trans.set_response_status(tlm::TLM_INCOMPLETE_RESPONSE);
 }
 
-TEST_CASE("simple_read_write_with host memory map", "[memory][tlm-level]") {
+TEST_CASE("simple_read_write_with_host_memory-map", "[memory][tlm-level]") {
     auto& dut = factory::get<testbench>();
     std::array<unsigned char, 256> ref_data;
     auto val = 256;
@@ -71,10 +70,10 @@ TEST_CASE("simple_read_write_with host memory map", "[memory][tlm-level]") {
         gp.set_command(tlm::TLM_IGNORE_COMMAND);
         gp.set_address(256);
         gp.set_data_ptr(nullptr);
-        gp.set_data_length(256);
-        gp.set_streaming_width(256);
+        gp.set_data_length(0);
+        gp.set_streaming_width(0);
         gp.set_response_status(tlm::TLM_INCOMPLETE_RESPONSE);
-        auto ext = new scc::host_mem_map_extension(ref_data.data());
+        auto ext = new scc::host_mem_map_extension(ref_data.data(), 256);
         gp.set_extension(ext);
         dut.isck->transport_dbg(gp);
     }
@@ -106,10 +105,10 @@ TEST_CASE("simple_read_write_with host memory map", "[memory][tlm-level]") {
         gp.set_command(tlm::TLM_IGNORE_COMMAND);
         gp.set_address(256);
         gp.set_data_ptr(nullptr);
-        gp.set_data_length(256);
-        gp.set_streaming_width(256);
+        gp.set_data_length(0);
+        gp.set_streaming_width(0);
         gp.set_response_status(tlm::TLM_INCOMPLETE_RESPONSE);
-        auto ext = new scc::host_mem_map_extension(nullptr);
+        auto ext = new scc::host_mem_map_extension(256);
         gp.set_extension(ext);
         dut.isck->transport_dbg(gp);
     }
