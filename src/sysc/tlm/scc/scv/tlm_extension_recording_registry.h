@@ -90,7 +90,7 @@ struct tlm_extension_record_registry {
      */
     inline void recordBeginTx(size_t id, SCVNS scv_tr_handle& handle, tlm::tlm_extension_base* ext, std::string const& prefix = "") {
         assert(ext_rec.size() > id);
-        if(ext && ext_rec[id])
+        if(ext && ext_rec[id] && ext_rec[id]->recordBegin)
             ext_rec[id]->recordBegin(handle, ext, prefix);
     }
     /*! \brief recording attributes in extensions at the end
@@ -98,7 +98,7 @@ struct tlm_extension_record_registry {
      */
     inline void recordEndTx(size_t id, SCVNS scv_tr_handle& handle, tlm::tlm_extension_base* ext, std::string const& prefix = "") {
         assert(ext_rec.size() > id);
-        if(ext && ext_rec[id])
+        if(ext && ext_rec[id] && ext_rec[id]->recordEnd)
             ext_rec[id]->recordEnd(handle, ext, prefix);
     }
 
