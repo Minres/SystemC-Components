@@ -80,6 +80,7 @@ public:
     using this_type = sc_register<DATATYPE>;
 
     cci::cci_param<bool> enable_tracing;
+    cci::cci_param<bool> enable_side_effect;
     /**
      * @fn  sc_register(sc_core::sc_module_name, DATATYPE&, const DATATYPE, resetable&,
      * DATATYPE=get_max_uval<DATATYPE>(), DATATYPE=get_max_uval<DATATYPE>())
@@ -97,6 +98,8 @@ public:
     : sc_core::sc_object(nm)
     , enable_tracing{std::string(name()) + ".enableTracing", scc::tracer_base::get_default_trace_enable(),
                      "enables tracing of this register", cci::CCI_ABSOLUTE_NAME}
+    , enable_side_effect{std::string(name()) + ".enableSideEffect", true, "enables side effect in debug read/write operations",
+                         cci::CCI_ABSOLUTE_NAME}
     , res_val(reset_val)
     , rdmask(rdmask)
     , wrmask(wrmask)
@@ -190,14 +193,17 @@ public:
      * @fn bool write_dbg(const uint8_t*, size_t, uint64_t=0)
      * @brief debug write function from resource_access_if
      *
-     * This access should not cause any side effect!
-     *
      * @param data to be written
      * @param length of data to be written in bytes
      * @param offset of the write to the baseaddress of the register
      * @return true if access is successful
      */
     bool write_dbg(const uint8_t* data, size_t length, uint64_t offset = 0) override {
+        if(enable_side_effect.get_value()) {
+            sc_core::sc_time d;
+            return write(data, length, offset, d);
+        }
+
         SCC_ASSERT("Offset out of range" && offset == 0);
         if(length != sizeof(DATATYPE))
             return false;
@@ -208,14 +214,17 @@ public:
      * @fn bool read_dbg(uint8_t*, size_t, uint64_t=0)const
      * @brief debug read function from resource_access_if
      *
-     * This access should not cause any side effect!
-     *
      * @param data to be read
      * @param length of data to be written in bytes
      * @param offset of the write to the baseaddress of the register
      * @return true if access is successful
      */
     bool read_dbg(uint8_t* data, size_t length, uint64_t offset = 0) const override {
+        if(enable_side_effect.get_value()) {
+            sc_core::sc_time d;
+            return read(data, length, offset, d);
+        }
+
         SCC_ASSERT("Offset out of range" && offset == 0);
         if(length != sizeof(DATATYPE))
             return false;
