@@ -20,11 +20,16 @@
 #include <scc/report.h>
 #include <scc/scv/scv_tr_db.h>
 #include <scc/trace.h>
+#ifdef HAS_SCV
+#include <scv.h>
+#define SCVNS
+#else
 #include <scv-tr.h>
+#define SCVNS ::scv_tr::
+#endif
 
 using namespace sc_core;
 using namespace sc_dt;
-using namespace scv_tr;
 
 // hack to fake a true fifo_mutex
 #define fifo_mutex sc_mutex
@@ -91,14 +96,14 @@ class rw_pipelined_transactor : public rw_task_if, public pipelined_bus_ports {
     fifo_mutex addr_phase;
     fifo_mutex data_phase;
 
-    scv_tr_stream pipelined_stream;
-    scv_tr_stream addr_stream;
-    scv_tr_stream data_stream;
-    scv_tr_generator<sc_uint<8>, sc_uint<8>> read_gen;
-    scv_tr_generator<write_t> write_gen;
-    scv_tr_generator<sc_uint<8>> addr_gen;
-    scv_tr_generator<_scv_tr_generator_default_data, sc_uint<8>> rdata_gen;
-    scv_tr_generator<sc_uint<8>> wdata_gen;
+    SCVNS scv_tr_stream pipelined_stream;
+    SCVNS scv_tr_stream addr_stream;
+    SCVNS scv_tr_stream data_stream;
+    SCVNS scv_tr_generator<sc_uint<8>, sc_uint<8>> read_gen;
+    SCVNS scv_tr_generator<write_t> write_gen;
+    SCVNS scv_tr_generator<sc_uint<8>> addr_gen;
+    SCVNS scv_tr_generator<SCVNS _scv_tr_generator_default_data, sc_uint<8>> rdata_gen;
+    SCVNS scv_tr_generator<sc_uint<8>> wdata_gen;
 
 public:
     rw_pipelined_transactor(sc_module_name nm)
@@ -119,9 +124,9 @@ public:
 
 rw_task_if::data_t rw_pipelined_transactor::read(const addr_t* addr) {
     addr_phase.lock();
-    scv_tr_handle h = read_gen.begin_transaction(*addr);
+    SCVNS scv_tr_handle h = read_gen.begin_transaction(*addr);
     h.record_attribute("data_size", sizeof(data_t));
-    scv_tr_handle h1 = addr_gen.begin_transaction(*addr, "addr_phase", h);
+    SCVNS scv_tr_handle h1 = addr_gen.begin_transaction(*addr, "addr_phase", h);
     wait(clk->posedge_event());
     bus_addr = *addr;
     rw = false;
@@ -134,7 +139,7 @@ rw_task_if::data_t rw_pipelined_transactor::read(const addr_t* addr) {
     addr_phase.unlock();
 
     data_phase.lock();
-    scv_tr_handle h2 = rdata_gen.begin_transaction("data_phase", h);
+    SCVNS scv_tr_handle h2 = rdata_gen.begin_transaction("data_phase", h);
     wait(data_rdy->posedge_event());
     data_t data = bus_data.read();
     wait(data_rdy->negedge_event());
@@ -147,9 +152,9 @@ rw_task_if::data_t rw_pipelined_transactor::read(const addr_t* addr) {
 
 void rw_pipelined_transactor::write(const write_t* req) {
     addr_phase.lock();
-    scv_tr_handle h = write_gen.begin_transaction(*req);
+    SCVNS scv_tr_handle h = write_gen.begin_transaction(*req);
     h.record_attribute("data_size", sizeof(data_t));
-    scv_tr_handle h1 = addr_gen.begin_transaction(req->addr, "addr_phase", h);
+    SCVNS scv_tr_handle h1 = addr_gen.begin_transaction(req->addr, "addr_phase", h);
     wait(clk->posedge_event());
     bus_addr = req->addr;
     rw = true;
@@ -162,7 +167,7 @@ void rw_pipelined_transactor::write(const write_t* req) {
     addr_phase.unlock();
 
     data_phase.lock();
-    scv_tr_handle h2 = wdata_gen.begin_transaction(req->data, "data_phase", h);
+    SCVNS scv_tr_handle h2 = wdata_gen.begin_transaction(req->data, "data_phase", h);
     bus_data = req->data;
     wait(data_rdy->posedge_event());
     wait(data_rdy->negedge_event());
@@ -305,16 +310,16 @@ int sc_main(int argc, char* argv[]) {
     auto start = std::chrono::system_clock::now();
     scc::init_logging(scc::LogConfig().logLevel(scc::log::DEBUG));
 #if defined(CFTR)
-    scv_tr_ftr_init(true);
-    scv_tr_db db("my_db");
+    SCVNS scv_tr_ftr_init(true);
+    SCVNS scv_tr_db db("my_db");
     sc_trace_file* tf = scc::create_fst_trace_file("my_db");
 #elif defined(FTR)
-    scv_tr_ftr_init(false);
-    scv_tr_db db("my_db");
+    SCVNS scv_tr_ftr_init(false);
+    SCVNS scv_tr_db db("my_db");
     sc_trace_file* tf = scc::create_fst_trace_file("my_db");
 #else
     scv_tr::scv_tr_text_init();
-    scv_tr_db db("my_db.txlog");
+    SCVNS scv_tr_db db("my_db.txlog");
     sc_trace_file* tf = sc_core::sc_create_vcd_trace_file("my_db");
 #endif
     // create signals
@@ -354,7 +359,11 @@ int sc_main(int argc, char* argv[]) {
 
     // run the simulation
     sc_start(10.0, SC_US);
+#if defined(FTR)
     scc::close_fst_trace_file(tf);
+#else
+    sc_core::sc_close_vcd_trace_file(tf);
+#endif
     auto int_us = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now() - start);
     SCCINFO() << "simulation duration " << int_us.count() << "µs";
     return 0;

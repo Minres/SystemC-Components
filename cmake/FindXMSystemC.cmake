@@ -40,9 +40,7 @@ This will define the following variables:
   Libraries needed to link to SCV.
 
 #]=======================================================================]
-set(NCSC_LIBS systemc_sh xmscCoSim_sh xmscCoroutines_sh)
-#set(NCSC_LIBS systemc_sh xmscCoroutines_sh ovm scBootstrap_sh)
-
+# find install location and version of XCelium
 find_program(ncroot_EXECUTABLE ncroot) 
 if(NOT ncroot_EXECUTABLE)
 	message(FATAL_ERROR "No ncroot in PATH")
@@ -50,87 +48,79 @@ endif()
 
 execute_process(
 	COMMAND ${ncroot_EXECUTABLE}
-	OUTPUT_VARIABLE NCROOT_PATH
+	OUTPUT_VARIABLE CDSROOT_PATH
 	)
-string(STRIP ${NCROOT_PATH} NCROOT_PATH)
-message("Using Xcelium at ${NCROOT_PATH}")
+string(STRIP ${CDSROOT_PATH} CDSROOT_PATH)
 
+find_program(ncsc_EXECUTABLE ncsc) 
+if(NOT ncsc_EXECUTABLE)
+	message(FATAL_ERROR "No ncsc in PATH")
+endif()
 
-SET(_COMMON_HINTS
-	${NCROOT_PATH}/tools/systemc/include
-	${NCROOT_PATH}/tools/systemc/lib/64bit
-  	)
-
-SET(_SYSTEMC_HINTS
-  	${_COMMON_HINTS}
-    )
-
-SET(_TLM_HINTS
- 	${NCROOT_PATH}/tools/systemc/include/tlm2
-  	${_COMMON_HINTS}
-    )
-
-SET(_SCV_HINTS
-  	${_COMMON_HINTS}
-    )
-
-SET(_COMMON_PATHS
-	${NCROOT_PATH}/tools/systemc/include
-	${NCROOT_PATH}/tools/systemc/lib
-  	/usr/include
-  	/usr/lib
-  	)
-  
-FIND_PATH(SystemC_INCLUDE_DIR
-  NAMES systemc
-  HINTS ${_SYSTEMC_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-FIND_PATH(TLM_INCLUDE_DIR
-  NAMES tlm
-  HINTS ${_TLM_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
+execute_process(
+	COMMAND ${ncsc_EXECUTABLE} -version
+	OUTPUT_VARIABLE NCSC_OUTPUT
+	)
+separate_arguments(NCSC_OUTPUT_LIST NATIVE_COMMAND ${NCSC_OUTPUT})
+list(GET NCSC_OUTPUT_LIST 2 NCSC_VERSION_STRING)
+string(SUBSTRING ${NCSC_VERSION_STRING} 0 2 NCSC_VERSION_MAJOR)
+string(SUBSTRING ${NCSC_VERSION_STRING} 3 2 NCSC_VERSION_MINOR)
+set(NCSC_VERSION ${NCSC_VERSION_MAJOR}${NCSC_VERSION_MINOR})
+message(STATUS "Xcelium is at ${CDSROOT_PATH}, version is ${NCSC_VERSION_MAJOR}.${NCSC_VERSION_MINOR}")
+# if we reach here we found Xcelium
+set(XMSystemC_FOUND True)
+# check if we build 32 or 64bit
+file(WRITE "${CMAKE_BINARY_DIR}/test_arch_size.cpp" "
+#include <cstdlib>
+int main( int argc, char** argv ){
+  return  sizeof(void*);
+}")
+set(CMAKE_TRY_COMPILE_CONFIGURATION  ${CMAKE_BUILD_TYPE})
+TRY_RUN(RUN_RESULT_VAR COMPILE_RESULT_VAR
+  ${CMAKE_BINARY_DIR}
+  ${CMAKE_BINARY_DIR}/test_arch_size.cpp
+  RUN_OUTPUT_VARIABLE IS_64_SYSTEM)
+if(${RUN_RESULT_VAR} EQUAL 8)
+  set(BITS_MOD 64bit)
+  set(LIB_MOD 64)
+endif()
+# set default values of variables
+set(NCSC_ROOT_PATH ${CDSROOT_PATH}/tools.lnx86/systemc)
+set(NCSC_LIBS systemc_sh scBootstrap_sh xmscCoroutines_sh)
+set(NCSC_LIB_PATHS ${CDSROOT_PATH}/tools.lnx86/systemc/lib/${BITS_MOD}/gnu)
+set(GCC_LIB_PATH ${CDSROOT_PATH}/tools.lnx86/cdsgcc/gcc/install/lib${LIB_MOD})
+# check if there is and will be used SystemC 3
+if(NCSC_VERSION GREATER_EQUAL 2603 AND USE_NCSC_SYSTEMC3)
+  set(SystemC_VERSION 3.0.1)
+  set(NCSC_ROOT_PATH ${CDSROOT_PATH}/tools.lnx86/systemc_301)
+  set(NCSC_LIB_PATHS ${CDSROOT_PATH}/tools.lnx86/systemc_301/lib/${BITS_MOD}/gnu)
+else()
+  set(SystemC_VERSION 2.3.4 CACHE STRING "SystemC Version")
+endif()
+# seed the include directories
+set(NCSC_SystemC_INCLUDE_DIRS ${NCSC_ROOT_PATH}/include;${CDSROOT_PATH}/tools.lnx86/tbsc/include;${CDSROOT_PATH}/tools.lnx86/vic/include;${NCSC_ROOT_PATH}/include/factory;${NCSC_ROOT_PATH}/include/tlm2)
+# find needed libraries
 foreach(LIB_NAME ${NCSC_LIBS})
 	FIND_LIBRARY(${LIB_NAME}_LIBRARY
 	  NAMES ${LIB_NAME} 
-	  HINTS ${_SYSTEMC_HINTS}
-	  PATHS ${_COMMON_PATHS}
+	  HINTS ${NCSC_LIB_PATHS}
+	  PATHS ${NCSC_LIB_PATHS}
 	)
-	set(LIB_FILE_NAMES ${LIB_FILE_NAMES} ${${LIB_NAME}_LIBRARY})
-	set(LIB_VAR_NAMES ${LIB_VAR_NAMES} ${LIB_NAME}_LIBRARY)
+	list(APPEND LIB_FILE_NAMES ${${LIB_NAME}_LIBRARY})
+	list(APPEND LIB_VAR_NAMES ${LIB_NAME}_LIBRARY)
 endforeach()
 
 mark_as_advanced(
-  	SystemC_INCLUDE_DIR
-  	SystemC_LIBRARY
+  	NCSC_SystemC_INCLUDE_DIRS
+  	NCSC_SystemC_LIBRARIES
 	${LIB_VAR_NAMES}
 )
-
-if (SystemC_INCLUDE_DIR)
-  file(STRINGS "${SystemC_INCLUDE_DIR}/sysc/cosim/xmsc_ver.h" version-file
-    REGEX "#define[ \t]SC_VERSION_(MAJOR|MINOR|PATCH).*")
-  if (NOT version-file)
-    message(AUTHOR_WARNING "SystemC_INCLUDE_DIR found, but xmsc_ver.h is missing")
-  endif()
-  list(GET version-file 0 major-line)
-  list(GET version-file 1 minor-line)
-  list(GET version-file 2 patch-line)
-  string(REGEX REPLACE "^#define[ \t]+SC_VERSION_MAJOR[ \t]+([0-9]+)$" "\\1" SC_VERSION_MAJOR ${major-line})
-  string(REGEX REPLACE "^#define[ \t]+SC_VERSION_MINOR[ \t]+([0-9]+)$" "\\1" SC_VERSION_MINOR ${minor-line})
-  string(REGEX REPLACE "^#define[ \t]+SC_VERSION_PATCH[ \t]+([0-9]+)$" "\\1" SC_VERSION_PATCH ${patch-line})
-  set(SystemC_VERSION ${SC_VERSION_MAJOR}.${SC_VERSION_MINOR}.${SC_VERSION_PATCH} CACHE STRING "SystemC Version")
-endif()
-
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(XMSystemC
   REQUIRED_VARS
     ${LIB_VAR_NAMES}
-    SystemC_INCLUDE_DIR
-    TLM_INCLUDE_DIR
+    NCSC_SystemC_INCLUDE_DIRS
   VERSION_VAR SystemC_VERSION
 )
 
@@ -138,62 +128,28 @@ if(XMSystemC_FOUND)
   set(SystemC_FOUND True)
   get_filename_component(NCSC_LIB_DIR ${systemc_sh_LIBRARY} DIRECTORY)
   set(SystemC_LIBRARY_DIRS ${NCSC_LIB_DIR})
-  set(SystemC_LIBRARIES ${NCSC_LIBS} ${NCROOT_PATH}/tools/lib/64bit/libudm.so)     
-  set(SystemC_INCLUDE_DIRS ${TLM_INCLUDE_DIR} ${SystemC_INCLUDE_DIR})
-  set(SystemC_DEFINITIONS ${PC_SystemC_CFLAGS_OTHER} NCSC)
+  set(SystemC_LIBRARIES ${NCSC_LIBS})     
+  set(SystemC_INCLUDE_DIRS ${NCSC_SystemC_INCLUDE_DIRS})
+  set(SystemC_DEFINITIONS NCSC)
 endif()
+
 
 if(SystemC_FOUND AND NOT TARGET SystemC::systemc)
   add_library(SystemC::systemc UNKNOWN IMPORTED)
   set_target_properties(SystemC::systemc PROPERTIES
     IMPORTED_LOCATION ${systemc_sh_LIBRARY}
     INTERFACE_COMPILE_DEFINITIONS "${SystemC_DEFINITIONS}"
-    # INTERFACE_COMPILE_OPTIONS "${SystemC_OPTIONS}"
     INTERFACE_INCLUDE_DIRECTORIES "${SystemC_INCLUDE_DIRS}"
-    INTERFACE_LINK_DIRECTORIES "${SystemC_LIBRARY_DIRS}"
+    INTERFACE_LINK_DIRECTORIES "${SystemC_LIBRARY_DIRS};${GCC_LIB_PATH}"
     INTERFACE_LINK_LIBRARIES "${SystemC_LIBRARIES}"
   )
+  if(UNIX)
+    set_target_properties(SystemC::systemc PROPERTIES
+      INTERFACE_LINK_OPTIONS "LINKER:-rpath,${NCSC_LIB_PATHS}:${GCC_LIB_PATH}"
+    )
+  if(NCSC_VERSION GREATER_EQUAL 2509)
+    #target_compile_options(SystemC::systemc PUBLIC -Wno-free-nonheap-object)
+    add_compile_options(-Wno-free-nonheap-object)
+  endif()
+  endif()
 endif()
-
-FIND_PATH(SCV_INCLUDE_DIR
-  NAMES scv.h
-  HINTS ${_SCV_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-FIND_LIBRARY(SCV_LIBRARY
-  NAMES scv
-  HINTS ${_SCV_HINTS}
-  PATHS ${_COMMON_PATHS}
-)
-
-mark_as_advanced(
-  SCV_INCLUDE_DIR
-  SCV_LIBRARY
-)
-
-if(NOT SCV_INCLUDE_DIR MATCHES "SCV_INCLUDE_DIR-NOTFOUND")
-	find_package_handle_standard_args(SCV
-	  FOUND_VAR SCV_FOUND
-	  REQUIRED_VARS
-	    SCV_LIBRARY
-	    SCV_INCLUDE_DIR
-	  VERSION_VAR 2.0.1
-	)
-	
-	if(SCV_FOUND)
-	  set(SCV_LIBRARIES ${SCV_LIBRARY})
-	  set(SCV_INCLUDE_DIRS ${SCV_INCLUDE_DIR})
-	  set(SCV_DEFINITIONS ${PC_SCV_CFLAGS_OTHER})
-	endif()
-	
-	if(SCV_FOUND AND NOT TARGET SystemC::scv)
-	  add_library(SystemC::scv UNKNOWN IMPORTED)
-	  set_target_properties(SystemC::scv PROPERTIES
-	    IMPORTED_LOCATION "${SCV_LIBRARY}"
-	    INTERFACE_COMPILE_OPTIONS "${PC_SCV_CFLAGS_OTHER}"
-	    INTERFACE_INCLUDE_DIRECTORIES "${SCV_INCLUDE_DIR}"
-	  )
-	endif()
-endif()
-
