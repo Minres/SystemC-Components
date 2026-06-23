@@ -24,6 +24,30 @@ else()
     message(FATAL_ERROR "No usable SystemC installation found")
 endif()
 
+set(CMAKE_TRY_COMPILE_CONFIGURATION  ${CMAKE_BUILD_TYPE})
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+try_compile(COMPILE_RESULT
+    #SOURCES "${CMAKE_BINARY_DIR}/test_mylib.cpp"
+    SOURCE_FROM_CONTENT
+    test_mylib.cpp
+    "
+    #include <systemc>
+    int sc_main(int argc, char* argv[]) {
+        auto t1 = sc_core::SC_POST_END_OF_ELABORATION;
+        return 0;
+    }
+    "
+    LINK_LIBRARIES SystemC::systemc
+    OUTPUT_VARIABLE COMPILE_OUTPUT
+    NO_LOG
+)
+if(${COMPILE_RESULT})
+    set(HAVE_STAGE_CALLBACKS ON)
+    message(STATUS "${PROJECT_NAME}: building with stage callbacks")
+else()
+    message(STATUS "${PROJECT_NAME}: building without stage callbacks")
+endif()
+
 set(LIB_SOURCES
     scc/utilities.cpp 
     scc/tracer_base.cpp
@@ -52,7 +76,7 @@ set(LIB_SOURCES
     tlm/scc/memory_map_collector.cpp
 )
 
-if(DEFINED  SC_VERSION_MAJOR AND SC_VERSION_MAJOR GREATER 2)
+if(HAVE_STAGE_CALLBACKS)
     list(APPEND LIB_SOURCES
         tlm/scc/qk/global_time_keeper.cpp
         tlm/scc/qk/sc_time_syncronizer.cpp
@@ -79,10 +103,13 @@ if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
     list(APPEND LIB_SOURCES  
         scc/scv/scv_tr_compressed.cpp
-        scc/fst_trace.cpp
-        # scc/vcd_mt_trace.cpp
         )
-    set(WITH_FST ON)
+    if(HAVE_STAGE_CALLBACKS) 
+        list(APPEND LIB_SOURCES  
+            scc/fst_trace.cpp
+            )
+        set(WITH_FST ON)
+    endif()
 endif()
 
 if(ENABLE_SQLITE)

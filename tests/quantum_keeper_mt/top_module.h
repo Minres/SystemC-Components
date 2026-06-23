@@ -8,10 +8,7 @@
 #include <scc/async_thread.h>
 #include <scc/report.h>
 #include <scc/router.h>
-#include <sysc/kernel/sc_initializer_function.h>
-#include <sysc/kernel/sc_module.h>
-#include <sysc/kernel/sc_simcontext.h>
-#include <sysc/kernel/sc_time.h>
+#include <systemc>
 #include <thread>
 #include <tlm/scc/quantum_keeper.h>
 #include <tlm>

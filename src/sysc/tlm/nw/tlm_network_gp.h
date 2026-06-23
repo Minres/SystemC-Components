@@ -17,12 +17,12 @@
 #ifndef _TLM_NW_TLM_NETWROK_GP_H_
 #define _TLM_NW_TLM_NETWROK_GP_H_
 
+#include "tlm_array.h"
 #include <deque>
 #include <vector>
 #ifdef CWR_SYSTEMC
 #include <tlm_h/tlm_generic_payload/tlm_gp.h>
 #else
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_array.h>
 #include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
 #endif
 #include <cstdint>
@@ -67,7 +67,7 @@ struct tlm_network_payload_base {
     explicit tlm_network_payload_base(tlm_base_mm_interface* mm)
     : m_extensions(max_num_extensions())
     , m_mm(mm)
-    , m_ref_count(0){};
+    , m_ref_count(0) {};
     /**
      * virtual destructor.
      */
@@ -181,7 +181,7 @@ public:
     void resize_extensions();
 
 private:
-    tlm::tlm_array<tlm_extension_base*> m_extensions;
+    tlm::nw::tlm_array<tlm_extension_base*> m_extensions;
     tlm_base_mm_interface* m_mm;
     unsigned int m_ref_count;
 };

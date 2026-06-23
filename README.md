@@ -77,12 +77,15 @@ The full documentation can be found at the [Github pages](https://minres.github.
 Build notes
 =======================================
 
-If SystemC is build using cmake with `SC_WITH_PHASE_CALLBACK_TRACING=ON` (which is the default for SystemC 2.3.4), tracing will not work. Either SystemC is being installed with SC_WITH_PHASE_CALLBACK_TRACING=ON (which is the prefered way as this setting is in sync with the automake configure configuration, see <https://github.com/accellera-official/systemc/issues/24>) or the SCC is being build using `SC_WITH_PHASE_CALLBACK_TRACING=ON`.
+If SystemC 2.x is build using cmake with `SC_WITH_PHASE_CALLBACK_TRACING=ON` (which is the default for SystemC 2.3.4), tracing will not work.
+Either SystemC is being installed with SC_WITH_PHASE_CALLBACK_TRACING=OFF (which is the prefered way as this setting is in sync with the automake configure configuration, see <https://github.com/accellera-official/systemc/issues/24>) or the SCC is being build using `SC_WITH_PHASE_CALLBACK_TRACING=ON`.
 
 Build instructions using conan
 =======================================
 
-The repo is cmake based and (preferably) uses conan. Make sure that you have at least cmake 3.24 and conan version >2.0 installed. Other combinations may work, but are not tested.
+The repo is cmake based and (preferably) uses conan.
+Make sure that you have at least cmake 3.24 and conan version >2.0 installed.
+Other combinations may work, but are not tested.
 
 On Linux
 =======================================
@@ -101,22 +104,25 @@ For example:
 
     cmake --preset Release -DCMAKE_INSTALL_PREFIX=<some install path>
     cmake --build build/Release -j16 
-    cmake --build build/Release --target  test
+    cmake --build build/Release --target test
     cmake --build build/Release --target install
-    build//Release/examples/ace-axi/ace_axi_example
-    build//Release/examples/axi-axi/axi_axi_example
+    build/Release/examples/ace-axi/ace_axi_example
+    build/Release/examples/axi-axi/axi_axi_example
 
 ```
 
 > **_NOTE:_**  **Do not install SCC in the same installation directory as SystemC.**
-SCC follows the convention of mapping C++ namespaces directly into the directory hierarchy. As many SCC components are related to TLM 2.0, a significant portion of the SCC code resides in the `tlm` namespace, which results in the creation of a `tlm` directory under SCC's `include` folder. The SystemC itself also provides a `tlm` header file (or directory) in its own include path. If SCC and SystemC are installed into the same prefix, this results in a clash to create a directory where a file or another directory already exists—causing installation errors. Install SCC and SystemC into separate directories.
+SCC follows the convention of mapping C++ namespaces directly into the directory hierarchy.
+As many SCC components are related to TLM 2.0, a significant portion of the SCC code resides in the `tlm` namespace, which results in the creation of a `tlm` directory under SCC's `include` folder.
+The SystemC itself also provides a `tlm` header file (or directory) in its own include path.
+If SCC and SystemC are installed into the same prefix, this results in a clash to create a directory where a file or another directory already exists—causing installation errors.
+Install SCC and SystemC into separate directories.
 
 On Windows
 =======================================
 
 ```
 cmake --preset Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=<some install path>
-cmake --build build/Release --config Release
 cmake --build build/Release --config Release --target install
 ```
 
@@ -135,3 +141,31 @@ The script can also be downloaded and run with the install dir as argument:
 curl https://raw.githubusercontent.com/Minres/SystemC-Components/develop/contrib/install_wo_conan.sh >install_wo_conan.sh
 bash install_wo_conan.sh <install dir>
 ```
+
+Building and installing SCC for Cadence Xcelium
+===============================================
+
+You need to setup your environment and make Xcelium available. This means ncroot and ncsc need to be found by the shell.
+
+```
+cmake --preset NCSC_RelWithDebInfo -DCMAKE_INSTALL_PREFIX=<some install path>
+cmake --build build/NCSC_RelWithDebInfo --parallel --target install
+```
+
+If the used version of Xcelium supports SystemC 3.x the commands become:
+
+```
+cmake --preset NCSC3_RelWithDebInfo -DCMAKE_INSTALL_PREFIX=<some install path>
+cmake --build build/NCSC3_RelWithDebInfo --parallel --target install
+```
+
+Building the library for 32bit (the Xcelium default - sic!) works atm only for a standalone build as there is no mechanism to tell conan to build in 32bit. The following commands might help in non-conan builds:
+
+```
+CXXFLAGS="-m32" CFLAGS="-m32" LDFLAGS="-m32" \
+  cmake -S . -B build/NCSC_RelWithDebInfo -Wno-dev -DCMAKE_INSTALL_PREFIX=<scc install dir> \
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_SHARED_LIBS=OFF -DBUILD_SCC_LIB_ONLY=ON -DCMAKE_CXX_STANDARD=17 \
+  -DBoost_NO_SYSTEM_PATHS=TRUE -DBOOST_ROOT=<boost install dir> -DBoost_NO_WARN_NEW_VERSIONS=ON 
+cmake --build build/NCSC_RelWithDebInfo --parallel --target install
+```
+

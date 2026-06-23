@@ -1,10 +1,6 @@
 #include "sc_time_syncronizer.h"
 #include "global_time_keeper.h"
 #include <atomic>
-#include <sysc/kernel/sc_simcontext.h>
-#include <sysc/kernel/sc_stage_callback_if.h>
-#include <sysc/kernel/sc_time.h>
-#include <sysc/kernel/sc_wait.h>
 #include <systemc>
 #include <tlm_utils/tlm_quantumkeeper.h>
 
@@ -54,7 +50,11 @@ void sc_time_syncronizer::sc_method() {
     }
     if(state == sync_state::INITIAL)
         state = sync_state::PROCESSING;
+#ifdef NCSC
+    auto time_to_next_evt = sc_core::sc_time_to_pending_activity();
+#else
     auto time_to_next_evt = sc_core::sc_time_to_pending_activity(sc_core::sc_get_curr_simcontext());
+#endif
     if(sc_core::sc_get_curr_simcontext()->pending_activity_at_current_time()) {
 #ifdef DEBUG_MT_SCHEDULING
         SCCTRACEALL(__PRETTY_FUNCTION__) << "yield to next delta cycle (pending activity time: " << time_to_next_evt << ")";

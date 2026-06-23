@@ -14,7 +14,6 @@
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
-                "CMAKE_POLICY_DEFAULT_CMP0091": "NEW",
                 "CMAKE_CXX_STANDARD": "17",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
@@ -60,6 +59,26 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
                 "BUILD_SCC_DOCUMENTATION": "ON"
+            }
+        },
+        {
+            "name": "NCSC_RelWithDebInfo",
+            "inherits": "Base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "USE_NCSC_SYSTEMC": "ON",
+                "NCSC_LINK_CHECK": "ON",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
+            }
+        },
+        {
+            "name": "NCSC3_RelWithDebInfo",
+            "inherits": "Base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "USE_NCSC_SYSTEMC3": "ON",
+                "NCSC_LINK_CHECK": "ON",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
             }
         }
     ],
