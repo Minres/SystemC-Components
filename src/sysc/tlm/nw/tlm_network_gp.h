@@ -67,7 +67,7 @@ struct tlm_network_payload_base {
     explicit tlm_network_payload_base(tlm_base_mm_interface* mm)
     : m_extensions(max_num_extensions())
     , m_mm(mm)
-    , m_ref_count(0) {};
+    , m_ref_count(0){};
     /**
      * virtual destructor.
      */
