@@ -85,18 +85,24 @@ if(${RUN_RESULT_VAR} EQUAL 8)
   set(LIB_MOD 64)
 endif()
 # set default values of variables
-set(NCSC_ROOT_PATH ${CDSROOT_PATH}/tools.lnx86/systemc)
 set(NCSC_LIBS systemc_sh scBootstrap_sh xmscCoroutines_sh)
-set(NCSC_LIB_PATHS ${CDSROOT_PATH}/tools.lnx86/systemc/lib/${BITS_MOD}/gnu)
 set(GCC_LIB_PATH ${CDSROOT_PATH}/tools.lnx86/cdsgcc/gcc/install/lib${LIB_MOD})
+set(NCSC_ROOT_PATH ${CDSROOT_PATH}/tools.lnx86/systemc)
+set(NCSC_LIB_PATHS ${CDSROOT_PATH}/tools.lnx86/systemc/lib/${BITS_MOD}/gnu)
 # check if there is and will be used SystemC 3
 if(NCSC_VERSION GREATER_EQUAL 2603 AND USE_NCSC_SYSTEMC3)
-  set(SystemC_VERSION 3.0.1)
   set(NCSC_ROOT_PATH ${CDSROOT_PATH}/tools.lnx86/systemc_301)
   set(NCSC_LIB_PATHS ${CDSROOT_PATH}/tools.lnx86/systemc_301/lib/${BITS_MOD}/gnu)
+  set(SC_VERSION_MAJOR 3)
+  set(SC_VERSION_MINOR 0)
+  set(SC_VERSION_PATCH 1)
 else()
-  set(SystemC_VERSION 2.3.4 CACHE STRING "SystemC Version")
+  set(SC_VERSION_MAJOR 2)
+  set(SC_VERSION_MINOR 3)
+  set(SC_VERSION_PATCH 4)
 endif()
+set(SystemC_VERSION ${SC_VERSION_MAJOR}.${SC_VERSION_MINOR}.${SC_VERSION_PATCH} CACHE STRING "SystemC Version")
+
 # seed the include directories
 set(NCSC_SystemC_INCLUDE_DIRS ${NCSC_ROOT_PATH}/include;${CDSROOT_PATH}/tools.lnx86/tbsc/include;${CDSROOT_PATH}/tools.lnx86/vic/include;${NCSC_ROOT_PATH}/include/factory;${NCSC_ROOT_PATH}/include/tlm2)
 # find needed libraries

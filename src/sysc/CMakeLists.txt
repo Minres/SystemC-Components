@@ -101,15 +101,11 @@ endif()
 
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
+    set(WITH_FST ON)
     list(APPEND LIB_SOURCES  
         scc/scv/scv_tr_compressed.cpp
-        )
-    if(HAVE_STAGE_CALLBACKS) 
-        list(APPEND LIB_SOURCES  
-            scc/fst_trace.cpp
-            )
-        set(WITH_FST ON)
-    endif()
+        scc/fst_trace.cpp
+    )
 endif()
 
 if(ENABLE_SQLITE)
