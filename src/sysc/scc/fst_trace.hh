@@ -39,7 +39,7 @@ class fst_trace;
 }
 struct fst_trace_file : public sc_core::sc_trace_file,
                         public observer
-#if SC_VERSION_MAJOR >= 3
+#if IEEE_1666_SYSTEMC >= 202301L
 ,
                         public sc_core::sc_stage_callback_if
 #endif
@@ -138,8 +138,8 @@ private:
     // avoid hidden overload warnings
     virtual void trace(sc_trace_file*) const;
 #endif
-#if SC_VERSION_MAJOR >= 3
-    void stage_callback(const sc_core::sc_stage& stage);
+#if IEEE_1666_SYSTEMC >= 202301L
+    void stage_callback(const sc_core::sc_stage& stage) override;
 #endif
     void init();
     std::function<bool()> check_enabled;
