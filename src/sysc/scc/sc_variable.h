@@ -370,42 +370,42 @@ template <typename T> struct sc_variable_vector {
 
     sc_variable_vector(std::string const& name, size_t size)
     : name(name)
-    , values(size, nullptr)
+    , values(size)
     , creator{} {}
 
     sc_variable_vector(std::string const& name, size_t size, T const& def_val)
-    : name(name)
-    , values(size, nullptr) {
+    : name(name)   {
         resize(size, def_val);
     }
 
     sc_variable_vector(std::string const& name, size_t size, std::function<sc_variable<T>*(char const*, size_t)> creator)
     : name(name)
-    , values(size, nullptr)
-    , creator(creator) {}
+    , values(size)
+    , creator(std::move(creator)) {}
 
-    size_t size() { return values.size(); }
+    size_t size() const { return values.size(); }
 
     void resize(size_t sz) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
         values.resize(sz);
     }
 
-    void resize(size_t sz, T def_val) {
+    void resize(size_t sz, T const& def_val) {
         assert(!sc_core::sc_get_curr_simcontext()->elaboration_done());
+        auto old_size = values.size();
         values.resize(sz);
         auto idx = 0U;
-        for(auto& e : values) {
+        for (size_t i = old_size; i < sz; ++i){
             std::stringstream ss;
-            ss << name << "(" << idx++ << ")";
-            e = new sc_variable<T>(ss.str().c_str(), def_val);
+            ss << name << "(" << i << ")";
+            values[i] = std::make_unique<sc_variable<T>>(ss.str().c_str(), def_val);
         }
     }
 
     bool is_valid(size_t idx) const { return values.size() > idx && values.at(idx) != nullptr; }
 
     sc_variable<T>& operator[](size_t idx) {
-        auto ret = values.at(idx);
+        auto& ret = values.at(idx);
         if(!ret) {
             if(sc_core::sc_get_curr_simcontext()->elaboration_done())
                 SCCFATAL(sc_core::sc_get_current_object()->name()) << "Trying to create a sc_variable vector entry in " << name
@@ -414,7 +414,7 @@ template <typename T> struct sc_variable_vector {
             assert(creator);
             std::stringstream ss;
             ss << name << "(" << idx << ")";
-            ret = values.at(idx) = creator(ss.str().c_str(), idx);
+            ret.reset(creator(ss.str().c_str(), idx));
         }
         return *ret;
     }
@@ -423,14 +423,10 @@ template <typename T> struct sc_variable_vector {
         assert(values.at(idx) && "No initialized value in sc_variable_vector position");
         return *values.at(idx);
     }
-    ~sc_variable_vector() {
-        for(auto p : values)
-            delete p;
-    }
 
 private:
     std::string name{};
-    std::vector<sc_variable<T>*> values;
+    std::vector<std::unique_ptr<sc_variable<T>>> values;
     std::function<sc_variable<T>*(char const*, size_t)> creator;
 };
 /**
