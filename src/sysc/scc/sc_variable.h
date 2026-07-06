@@ -374,7 +374,7 @@ template <typename T> struct sc_variable_vector {
     , creator{} {}
 
     sc_variable_vector(std::string const& name, size_t size, T const& def_val)
-    : name(name)   {
+    : name(name) {
         resize(size, def_val);
     }
 
@@ -395,7 +395,7 @@ template <typename T> struct sc_variable_vector {
         auto old_size = values.size();
         values.resize(sz);
         auto idx = 0U;
-        for (size_t i = old_size; i < sz; ++i){
+        for(size_t i = old_size; i < sz; ++i) {
             std::stringstream ss;
             ss << name << "(" << i << ")";
             values[i] = std::make_unique<sc_variable<T>>(ss.str().c_str(), def_val);
