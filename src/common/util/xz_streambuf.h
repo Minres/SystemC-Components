@@ -50,7 +50,8 @@ class xz_stream : public std::istream {
 public:
     xz_stream() = delete;
     explicit xz_stream(const std::string& path)
-    : buf_(path) {
+    : std::istream(&buf_)
+    , buf_(path) {
         rdbuf(&buf_);
     }
 

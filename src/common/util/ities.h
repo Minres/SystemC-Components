@@ -104,11 +104,11 @@ template <typename T> struct bit_slice {
     explicit bit_slice(T& value, unsigned base, unsigned width)
     : value(value)
     , base(base)
-    , width(width){};
+    , width(width) {};
     explicit bit_slice(T& value, unsigned index)
     : value(value)
     , base(index)
-    , width(1){};
+    , width(1) {};
     operator T() const { return bit_sub(value, base, width); }
 
     bit_slice<T>& operator=(T v) {
@@ -177,19 +177,19 @@ template <unsigned int bit, unsigned int width, typename T> inline constexpr typ
 }
 
 //! UDL for kilobyte
-inline constexpr uint64_t operator"" _kB(unsigned long long val) { return val * 1 << 10; }
+inline constexpr uint64_t operator""_kB(unsigned long long val) { return val * 1 << 10; }
 //! UDL for megabyte
-inline constexpr uint64_t operator"" _MB(unsigned long long val) { return val * 1 << 20; }
+inline constexpr uint64_t operator""_MB(unsigned long long val) { return val * 1 << 20; }
 //! UDL for gigabyte
-inline constexpr uint64_t operator"" _GB(unsigned long long val) { return val * 1 << 30; }
+inline constexpr uint64_t operator""_GB(unsigned long long val) { return val * 1 << 30; }
 
-inline constexpr uint64_t operator"" _KiB(unsigned long long val) { return val * 1 << 10; }
+inline constexpr uint64_t operator""_KiB(unsigned long long val) { return val * 1 << 10; }
 //! UDL for megabyte
-inline constexpr uint64_t operator"" _MiB(unsigned long long val) { return val * 1 << 20; }
+inline constexpr uint64_t operator""_MiB(unsigned long long val) { return val * 1 << 20; }
 //! UDL for gigabyte
-inline constexpr uint64_t operator"" _GiB(unsigned long long val) { return val * 1 << 30; }
+inline constexpr uint64_t operator""_GiB(unsigned long long val) { return val * 1 << 30; }
 //! UDL for gigabyte
-inline constexpr uint64_t operator"" _TiB(unsigned long long val) { return val * 1 << 40; }
+inline constexpr uint64_t operator""_TiB(unsigned long long val) { return val * 1 << 40; }
 
 //! @brief SCC common utilities
 namespace util {
@@ -429,7 +429,7 @@ inline std::string padded(std::string str, size_t width, bool show_ellipsis = tr
  * @return true if file exists and can be opened
  */
 inline bool file_exists(const std::string& name) {
-    struct stat buffer {};
+    struct stat buffer{};
     return (stat(name.c_str(), &buffer) == 0);
 }
 /**

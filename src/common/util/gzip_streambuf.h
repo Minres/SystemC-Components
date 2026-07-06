@@ -20,6 +20,7 @@
 #include <cctype>
 #include <climits>
 #include <fstream>
+#include <istream>
 #include <stdexcept>
 #include <string>
 #include <sys/stat.h>
@@ -49,7 +50,8 @@ class gzip_stream : public std::istream {
 public:
     gzip_stream() = delete;
     explicit gzip_stream(const std::string& path)
-    : buf_(path) {
+    : std::istream(&buf_)
+    , buf_(path) {
         rdbuf(&buf_);
     }
 
