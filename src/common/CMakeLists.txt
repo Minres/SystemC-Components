@@ -26,7 +26,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
 )
-if( NOT MSVC)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     # rigtorp/SPSCQueue.h uses std::hardware_destructive_interference_size which is HW dependend. GCC>14  warns about it
     target_compile_options(${PROJECT_NAME} PUBLIC $<$<COMPILE_LANGUAGE:CXX>:-Wno-interference-size>)
 endif()
@@ -50,43 +50,43 @@ if(TARGET LibLZMA::LibLZMA)
 endif()
 
 if(CLANG_TIDY_EXE)
-    set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}" )
-endif() 
+    set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}")
+endif()
 set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${PROJECT_VERSION}
     FRAMEWORK FALSE
     PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/scc_util.h
 )
 install(TARGETS ${PROJECT_NAME} COMPONENT util EXPORT ${PROJECT_NAME}-targets
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        )
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
 
 if(NOT DEFINED SCC_CMAKE_CONFIG_DIR)
     set(SCC_CMAKE_CONFIG_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/scc)
 endif()
 
 install(EXPORT ${PROJECT_NAME}-targets
-        DESTINATION ${SCC_CMAKE_CONFIG_DIR}
-        NAMESPACE scc::
-        )
+    DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+    NAMESPACE scc::
+)
 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/util COMPONENT util
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
-        FILES_MATCHING # install only matched files
-        PATTERN "*.h" # select header files
-        )
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
+    FILES_MATCHING # install only matched files
+    PATTERN "*.h" # select header files
+)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/nonstd COMPONENT util
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
-        FILES_MATCHING # install only matched files
-        PATTERN "*.h" # select header files
-        PATTERN "*.hpp" # select header files
-        )
-        install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/rigtorp COMPONENT util
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
-        FILES_MATCHING # install only matched files
-        PATTERN "*.h" # select header files
-        )
-        
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
+    FILES_MATCHING # install only matched files
+    PATTERN "*.h" # select header files
+    PATTERN "*.hpp" # select header files
+)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/rigtorp COMPONENT util
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
+    FILES_MATCHING # install only matched files
+    PATTERN "*.h" # select header files
+)
+
