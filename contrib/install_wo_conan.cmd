@@ -33,17 +33,17 @@ set TOOLSET=msvc-14.3
 :start_build:
 
 @REM we need to keep CMAKE_POLICY_VERSION_MINIMUM=3.5 unless yaml-cpp, SystemC & SystemC-AMS have fixed their build system
-set CMAKE_OPTS=-G "%GENERATOR%" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_CXX_STANDARD=%CXX_STD% -DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=ON -DCMAKE_PREFIX_PATH=%SCC_HOME% -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-set BOOST_LIB_EXCLUDE=--without-contract --without-fiber --without-graph --without-graph_parallel --without-iostreams --without-json --without-locale --without-log --without-math --without-mpi --without-nowide --without-python --without-random --without-test --without-timer --without-wave
+set CMAKE_OPTS=-G "%GENERATOR%" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_CXX_STANDARD=%CXX_STD% -DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=ON -DCMAKE_PREFIX_PATH=%SCC_HOME% -DCMAKE_POLICY_VERSION_MINIMUM=3.24
+set BOOST_LIB_EXCLUDE=--without-contract --without-fiber --without-graph --without-graph_parallel --without-iostreams --without-json --without-locale --without-log --without-math --without-mpi --without-nowide --without-python --without-random --without-stacktrace --without-test --without-timer --without-wave
 set BOOST_CMAKE_OPTS=-DBoost_NO_SYSTEM_PATHS=TRUE -DBOOST_ROOT=%SCC_HOME% -DBOOST_INCLUDEDIR=%SCC_HOME%\include\boost-1_89 -DBoost_NO_WARN_NEW_VERSIONS=ON -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DBoost_USE_STATIC_RUNTIME=OFF
 @REM ############################################################################################
 @REM build_boost
 @REM ############################################################################################
 if NOT EXIST "boost_1_89_0" tar xjvf boost_1_89_0.tar.bz2
-pushd boost_1_89_0
+cd boost_1_89_0
 @call .\bootstrap.bat
 b2 -j8 toolset=%TOOLSET% address-model=64 architecture=x86 link=static threading=multi runtime-link=shared --build-type=minimal --build-dir=..\build\boost --stagedir=..\build\boost --prefix=%SCC_HOME% %BOOST_LIB_EXCLUDE% install
-popd
+cd ..
 @REM ############################################################################################
 @REM build_fmt
 @REM ############################################################################################
@@ -67,6 +67,12 @@ cmake --build build\yaml-cpp -j 10 --config Release --target install
 @REM ############################################################################################
 if NOT EXIST "zlib-1.3.1" tar xzvf zlib-1.3.1.tar.gz
 cmake -S zlib-1.3.1 -B build\zlib %CMAKE_OPTS% -DCMAKE_INSTALL_PREFIX=%SCC_HOME%
+cmake --build build\zlib -j 10 --config Release --target install
+@REM ############################################################################################
+@REM build_zstd
+@REM ############################################################################################
+if NOT EXIST "zstd-1.5.7" tar xzvf zstd-1.5.7.tar.gz
+cmake -S zlib\build\cmake -B build\zlib %CMAKE_OPTS% -DCMAKE_INSTALL_PREFIX=%SCC_HOME%
 cmake --build build\zlib -j 10 --config Release --target install
 @REM ############################################################################################
 @REM build_systemc
