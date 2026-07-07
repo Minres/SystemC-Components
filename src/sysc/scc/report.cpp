@@ -17,6 +17,7 @@
 #include "configurer.h"
 #include <array>
 #include <cci_configuration>
+#include <deque>
 #include <fstream>
 #include <mutex>
 #include <nonstd/optional.hpp>
