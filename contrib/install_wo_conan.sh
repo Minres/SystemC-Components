@@ -8,16 +8,25 @@ SCRIPTDIR=`dirname "$SCRIPT"`
 SCRIPTNAME=`basename "$SCRIPT"`
 
 function print_help {
-    echo "Usage: $SCRIPTNAME [-h] [-c] <install dir>"
+    echo "Usage: $SCRIPTNAME [-h] [-c] [--deps_only] <install dir>"
     echo "Build SCC installation from tar files"
     echo "Optional cli arguments:"
     echo "  -h              print help"
     echo "  -c              clean build and install directory before building"
+    echo "  --deps_only     build only third-party dependencies, not SystemC or SCC"
 }
 
 CLEAN=0
+DEPS_ONLY=0
 
 while [ $# -gt 0 ]; do
+    case "$1" in
+        --deps_only)
+            DEPS_ONLY=1
+            shift
+            continue
+            ;;
+    esac
     unset OPTIND
     unset OPTARG
     while getopts hc  options; do
@@ -218,6 +227,8 @@ build_fmt
 build_spdlog
 build_yamlcpp
 build_zstd
-build_systemc
-build_systemc_ams
-build_scc
+if [ ${DEPS_ONLY} -eq 0 ]; then
+    build_systemc
+    build_systemc_ams
+    build_scc
+fi

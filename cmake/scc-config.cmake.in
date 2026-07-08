@@ -1,10 +1,12 @@
 @PACKAGE_INIT@
 include(CMakeFindDependencyMacro)
 
-find_dependency(SystemCLanguage)
+list(APPEND CMAKE_MODULE_PATH "${PACKAGE_PREFIX_DIR}/share/cmake")
+@SCC_SYSTEMC_DEP@
 find_dependency(RapidJSON)
 find_dependency(lwtr)
 find_dependency(fstapi)
+@SCC_OPTIONAL_DEPS@
 find_dependency(Boost COMPONENTS date_time filesystem)
 find_dependency(spdlog)
 find_dependency(lz4)
