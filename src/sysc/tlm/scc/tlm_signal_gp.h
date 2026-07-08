@@ -265,7 +265,11 @@ inline tlm_extension_base* tlm_generic_payload_base::set_auto_extension(unsigned
     tlm_extension_base* tmp = m_extensions[index];
     m_extensions[index] = ext;
     if(!tmp)
+#ifdef NCSC
+        m_extensions.insert_in_cache(index);
+#else
         m_extensions.insert_in_cache(&m_extensions[index]);
+#endif
     sc_assert(m_mm != 0);
     return tmp;
 }
@@ -283,7 +287,11 @@ inline void tlm_generic_payload_base::clear_extension(unsigned int index) {
 inline void tlm_generic_payload_base::release_extension(unsigned int index) {
     sc_assert(index < m_extensions.size());
     if(m_mm) {
+#ifdef NCSC
+        m_extensions.insert_in_cache(index);
+#else
         m_extensions.insert_in_cache(&m_extensions[index]);
+#endif
     } else {
         m_extensions[index]->free();
         m_extensions[index] = static_cast<tlm_extension_base*>(0);

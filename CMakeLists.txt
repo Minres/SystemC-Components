@@ -267,6 +267,34 @@ if(SystemC_FOUND)
         COMPATIBILITY AnyNewerVersion
     )
 
+    if(USE_NCSC_SYSTEMC3)
+        set(SCC_SYSTEMC_DEP "set(USE_NCSC_SYSTEMC ON)\nset(USE_NCSC_SYSTEMC3 ON)\nfind_dependency(XMSystemC)\n")
+    elseif(USE_NCSC_SYSTEMC)
+        set(SCC_SYSTEMC_DEP "set(USE_NCSC_SYSTEMC ON)\nfind_dependency(XMSystemC)\n")
+    elseif(USE_CWR_SYSTEMC)
+        set(SCC_SYSTEMC_DEP "find_dependency(SLSSystemC)\n")
+    elseif(USE_VCS_SYSTEMC)
+        set(SCC_SYSTEMC_DEP "find_dependency(VCSSystemC)\n")
+    elseif(USE_MTI_SYSTEMC)
+        set(SCC_SYSTEMC_DEP "find_dependency(MTISystemC)\n")
+    else()
+        set(SCC_SYSTEMC_DEP "find_dependency(SystemCLanguage)\n")
+    endif()
+
+    set(SCC_OPTIONAL_DEPS "")
+    if(TARGET ZLIB::ZLIB)
+        string(APPEND SCC_OPTIONAL_DEPS "find_dependency(ZLIB)\n")
+    endif()
+    if(TARGET BZip2::BZip2)
+        string(APPEND SCC_OPTIONAL_DEPS "find_dependency(BZip2)\n")
+    endif()
+    if(TARGET LibLZMA::LibLZMA)
+        string(APPEND SCC_OPTIONAL_DEPS "find_dependency(LibLZMA)\n")
+    endif()
+    if(TARGET zstd::libzstd_static)
+        string(APPEND SCC_OPTIONAL_DEPS "find_dependency(zstd CONFIG)\n")
+    endif()
+
     configure_package_config_file(
         ${CMAKE_CURRENT_LIST_DIR}/cmake/scc-config.cmake.in
         ${CMAKE_CURRENT_BINARY_DIR}/scc-config.cmake
