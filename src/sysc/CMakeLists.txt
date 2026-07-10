@@ -74,6 +74,7 @@ set(LIB_SOURCES
     tlm/scc/pe/parallel_pe.cpp
     tlm/scc/lwtr/tlm2_lwtr.cpp
     tlm/scc/memory_map_collector.cpp
+    tlm/scc/tcp/bridge.cpp
 )
 
 if(HAVE_STAGE_CALLBACKS)
