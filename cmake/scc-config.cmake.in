@@ -7,7 +7,7 @@ find_dependency(RapidJSON)
 find_dependency(lwtr)
 find_dependency(fstapi)
 @SCC_OPTIONAL_DEPS@
-find_dependency(Boost COMPONENTS date_time filesystem)
+find_dependency(Boost COMPONENTS date_time filesystem serialization thread chrono)
 find_dependency(spdlog)
 find_dependency(lz4)
 find_dependency(fmt)

@@ -9,7 +9,7 @@ option(ENABLE_SQLITE "Enable SQLite backend for SCV" ON)
 option(ENABLE_PYTHON4SC "Enable Python interpreter integration" OFF)
 option(DISABLE_QKD_WARNING "Disbale the warning about multi-threaded quantum keeper when using SystemC 2.3.4" OFF)
 
-if (MSVC)
+if(MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
 endif()
 
@@ -24,7 +24,7 @@ else()
     message(FATAL_ERROR "No usable SystemC installation found")
 endif()
 
-set(CMAKE_TRY_COMPILE_CONFIGURATION  ${CMAKE_BUILD_TYPE})
+set(CMAKE_TRY_COMPILE_CONFIGURATION ${CMAKE_BUILD_TYPE})
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 try_compile(COMPILE_RESULT
     #SOURCES "${CMAKE_BINARY_DIR}/test_mylib.cpp"
@@ -39,7 +39,6 @@ try_compile(COMPILE_RESULT
     "
     LINK_LIBRARIES SystemC::systemc
     OUTPUT_VARIABLE COMPILE_OUTPUT
-    NO_LOG
 )
 if(${COMPILE_RESULT})
     set(HAVE_STAGE_CALLBACKS ON)
@@ -49,7 +48,7 @@ else()
 endif()
 
 set(LIB_SOURCES
-    scc/utilities.cpp 
+    scc/utilities.cpp
     scc/tracer_base.cpp
     scc/tracer.cpp
     scc/perf_estimator.cpp
@@ -74,7 +73,6 @@ set(LIB_SOURCES
     tlm/scc/pe/parallel_pe.cpp
     tlm/scc/lwtr/tlm2_lwtr.cpp
     tlm/scc/memory_map_collector.cpp
-    tlm/scc/tcp/bridge.cpp
 )
 
 if(HAVE_STAGE_CALLBACKS)
@@ -91,26 +89,26 @@ if(ENABLE_PYTHON4SC)
         FetchContent_Declare(
             pybind11
             GIT_REPOSITORY https://github.com/pybind/pybind11.git
-            GIT_TAG        stable
+            GIT_TAG stable
         )
         FetchContent_MakeAvailable(pybind11)
     endif()
-    list(APPEND LIB_SOURCES  
+    list(APPEND LIB_SOURCES
         scc/python4sc.cpp
-        )
+    )
 endif()
 
 if(ZLIB_FOUND)
     message(STATUS "${PROJECT_NAME}: building zlib based parts")
     set(WITH_FST ON)
-    list(APPEND LIB_SOURCES  
+    list(APPEND LIB_SOURCES
         scc/scv/scv_tr_compressed.cpp
         scc/fst_trace.cpp
     )
 endif()
 
 if(ENABLE_SQLITE)
-    list(APPEND LIB_SOURCES  scc/scv/scv_tr_sqlite.cpp ../../third_party/sqlite3/sqlite3.c )
+    list(APPEND LIB_SOURCES scc/scv/scv_tr_sqlite.cpp ../../third_party/sqlite3/sqlite3.c)
 endif()
 
 add_library(${PROJECT_NAME} ${LIB_SOURCES})
@@ -127,7 +125,7 @@ endif()
 if(SC_WITH_PHASE_CALLBACK_TRACING)
     target_compile_definitions(${PROJECT_NAME} PUBLIC WITH_SC_TRACING_PHASE_CALLBACKS)
 endif()
-target_include_directories (${PROJECT_NAME} PUBLIC
+target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
 )
@@ -137,14 +135,14 @@ if(ENABLE_PYTHON4SC)
     target_link_libraries(${PROJECT_NAME} PUBLIC pybind11::embed) #pybind11::headers)
 endif()
 if(TARGET fmt::fmt-header-only)
-	target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt-header-only)
+    target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt-header-only)
 else()
     target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
 endif()
 if(TARGET spdlog::spdlog_header_only)
-	target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog_header_only)
+    target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog_header_only)
 else()
-	target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog)
+    target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog)
 endif()
 if(ENABLE_SQLITE)
     target_compile_definitions(${PROJECT_NAME} PRIVATE WITH_SQLITE)
@@ -168,8 +166,8 @@ endif()
 if(CCI_FOUND)
     message(STATUS "${PROJECT_NAME}: building with external CCI: ${CCI_LIBRARIES}")
     target_compile_definitions(${PROJECT_NAME} PUBLIC ${CCI_DEFINITIONS})
-    target_include_directories (${PROJECT_NAME} PUBLIC ${CCI_INCLUDE_DIRS})    
-    target_link_libraries(${PROJECT_NAME} PUBLIC ${CCI_LIBRARIES} )
+    target_include_directories(${PROJECT_NAME} PUBLIC ${CCI_INCLUDE_DIRS})
+    target_link_libraries(${PROJECT_NAME} PUBLIC ${CCI_LIBRARIES})
 else()
     target_link_libraries(${PROJECT_NAME} PUBLIC systemc-cci::systemc-cci)
 endif()
@@ -180,11 +178,11 @@ if(ENABLE_SCV AND TARGET SystemC::scv)
 elseif(ENABLE_SCV AND SCV_FOUND)
     message(STATUS "${PROJECT_NAME}: building with SCV support")
     target_compile_definitions(${PROJECT_NAME} PUBLIC ${SCVDEFINITIONS} -DHAS_SCV)
-    target_include_directories (${PROJECT_NAME} PUBLIC ${SCV_INCLUDE_DIRS})    
-    target_link_libraries(${PROJECT_NAME} PUBLIC ${SCV_LIBRARIES} )
-else()   
+    target_include_directories(${PROJECT_NAME} PUBLIC ${SCV_INCLUDE_DIRS})
+    target_link_libraries(${PROJECT_NAME} PUBLIC ${SCV_LIBRARIES})
+else()
     message(STATUS "${PROJECT_NAME}: building with SCV-TR support")
-    target_link_libraries (${PROJECT_NAME} PUBLIC scv-tr)
+    target_link_libraries(${PROJECT_NAME} PUBLIC scv-tr)
 endif()
 # make sure dynamic processes get includes since CCI uses them
 target_compile_definitions(${PROJECT_NAME} PUBLIC SC_INCLUDE_DYNAMIC_PROCESSES)
@@ -194,7 +192,7 @@ if(TARGET SystemC::systemc)
         get_target_property(INCLS SystemC::systemc INTERFACE_INCLUDE_DIRECTORIES)
         get_target_property(DIRS SystemC::systemc INTERFACE_LINK_DIRECTORIES)
         get_target_property(LIBS SystemC::systemc INTERFACE_LINK_LIBRARIES)
-        target_include_directories (${PROJECT_NAME} PUBLIC ${INCLS})
+        target_include_directories(${PROJECT_NAME} PUBLIC ${INCLS})
         target_link_directories(${PROJECT_NAME} PUBLIC ${DIRS})
         target_link_libraries(${PROJECT_NAME} PUBLIC ${LIBS})
     else()
@@ -203,8 +201,8 @@ if(TARGET SystemC::systemc)
 else()
     message(STATUS "${PROJECT_NAME}: link with ${SystemC_INCLUDE_DIRS}, ${SystemC_DEFINITIONS}, and ${SystemC_LIBRARIES}")
     target_compile_definitions(${PROJECT_NAME} PUBLIC ${SystemC_DEFINITIONS})
-    target_include_directories (${PROJECT_NAME} PUBLIC ${SystemC_INCLUDE_DIRS})    
-    target_link_libraries(${PROJECT_NAME} PUBLIC ${SystemC_LIBRARIES} )
+    target_include_directories(${PROJECT_NAME} PUBLIC ${SystemC_INCLUDE_DIRS})
+    target_link_libraries(${PROJECT_NAME} PUBLIC ${SystemC_LIBRARIES})
 endif()
 if(ZLIB_FOUND)
     target_link_libraries(${PROJECT_NAME} PUBLIC ZLIB::ZLIB)
@@ -218,15 +216,15 @@ if(TARGET lz4::lz4)
 endif()
 target_compile_definitions(${PROJECT_NAME} PUBLIC FMT_SHARED)
 if(TARGET fmt::fmt-header-only)
-	target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt-header-only)
+    target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt-header-only)
 else()
     target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
 endif()
 target_link_libraries(${PROJECT_NAME} PUBLIC fstapi Threads::Threads ${CMAKE_DL_LIBS})
 
 if(CLANG_TIDY_EXE)
-    set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}" )
-endif() 
+    set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}")
+endif()
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${PROJECT_VERSION}
@@ -235,30 +233,30 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 )
 
 install(TARGETS ${PROJECT_NAME} COMPONENT sysc EXPORT ${PROJECT_NAME}-targets
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        )
-        
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
 install(EXPORT ${PROJECT_NAME}-targets
-        DESTINATION ${SCC_CMAKE_CONFIG_DIR}
-        NAMESPACE scc::
-        )
+    DESTINATION ${SCC_CMAKE_CONFIG_DIR}
+    NAMESPACE scc::
+)
 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scc COMPONENT sysc
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
-        FILES_MATCHING # install only matched files
-        PATTERN "*.h" # select header files
-        )
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
+    FILES_MATCHING # install only matched files
+    PATTERN "*.h" # select header files
+)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scc COMPONENT sysc
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
-        FILES_MATCHING # install only matched files
-        PATTERN "*.hh" # select header files
-        )
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
+    FILES_MATCHING # install only matched files
+    PATTERN "*.hh" # select header files
+)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tlm COMPONENT sysc
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
-        FILES_MATCHING # install only matched files
-        PATTERN "*.h" # select header files
-        )
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
+    FILES_MATCHING # install only matched files
+    PATTERN "*.h" # select header files
+)
 

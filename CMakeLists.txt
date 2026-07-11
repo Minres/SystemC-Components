@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.25)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_CURRENT_BINARY_DIR}) # project specific cmake dir
 cmake_policy(SET CMP0077 NEW)
 
@@ -37,7 +37,8 @@ if(CMAKE_PROJECT_NAME STREQUAL "scc")
     option(BUILD_SCC_LIB_ONLY "Build only the library (no examples, no tests)" OFF)
     option(INSTALL_DEPENDENCIES "Should dependencies be installed when installing SCC" OFF)
     option(NCSC_LINK_CHECK "If NCSC is used, check if the libraries veing built link in an example" OFF)
-    set(CLANG_FORMAT_EXCLUDE_PATTERNS "/third_party/" "/build/" ".direnv")
+
+    set(CLANG_FORMAT_EXCLUDE_PATTERNS "third_party" "build" ".direnv" ".git" ".github" ".vscode")
     if(ENABLE_CLANG_FORMAT)
         find_package(ClangFormat)
     endif()

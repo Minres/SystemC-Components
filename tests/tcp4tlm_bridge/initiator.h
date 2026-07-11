@@ -14,27 +14,31 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef TLM_SCC_TCP_DETAIL_ISERVER_H_
-#define TLM_SCC_TCP_DETAIL_ISERVER_H_
+#ifndef TLM_SCC_TCP_INITIATOR_H_
+#define TLM_SCC_TCP_INITIATOR_H_
 
-#include "serialized_connection.h"
-#include <boost/asio.hpp>
+#include <scc/utilities.h>
+#include <systemc>
+#include <tlm_utils/simple_initiator_socket.h>
+#include <tlm_utils/simple_target_socket.h>
+
 namespace tlm {
 namespace scc {
 namespace tcp {
-namespace impl {
 
-template <typename REQ, typename RESP> struct IServer {
+class initiator : public sc_core::sc_module {
+public:
+    tlm_utils::simple_initiator_socket<initiator, ::scc::LT> isckt{"isckt"};
+    SC_HAS_PROCESS(initiator);
 
-    virtual ~IServer() {}
-    virtual boost::asio::io_context& getIoService() = 0;
-    virtual void serverSendCompleted(boost::shared_ptr<connection<RESP, REQ>>& con, bool established = false) = 0;
-    virtual void serverReceiveCompleted(boost::shared_ptr<connection<RESP, REQ>>& con, const REQ* const result) = 0;
-    virtual bool isShutdownRequested() { return false; }
+    initiator(sc_core::sc_module_name mn);
+    virtual ~initiator();
+
+protected:
+    void main_thread();
 };
-} // namespace impl
 } // namespace tcp
 } // namespace scc
 } // namespace tlm
 
-#endif // TLM_SCC_TCP_DETAIL_ISERVER_H_
+#endif // TLM_SCC_TCP_INITIATOR_H_

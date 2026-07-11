@@ -1,18 +1,31 @@
 project(components VERSION ${scc_VERSION} LANGUAGES CXX)
 
-add_library(${PROJECT_NAME} INTERFACE)
+find_package(Boost REQUIRED QUIET COMPONENTS serialization thread chrono)
+
+add_library(${PROJECT_NAME}
+        scc/tcp4tlm_bridge.cpp
+)
 add_library(scc::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
-target_include_directories(${PROJECT_NAME} INTERFACE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
-    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
+target_include_directories(${PROJECT_NAME} PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
 )
-target_link_libraries(${PROJECT_NAME} INTERFACE scc-sysc)
+target_link_libraries(${PROJECT_NAME} PUBLIC scc-sysc scc-util)
+if(TARGET Boost::serialization)
+        target_link_libraries(${PROJECT_NAME} PUBLIC Boost::serialization Boost::thread Boost::chrono)
+else()
+        target_link_libraries(${PROJECT_NAME} PUBLIC
+                ${Boost_SERIALIZATION_LIBRARY}
+                ${Boost_THREAD_LIBRARY}
+                ${Boost_CHRONO_LIBRARY}
+        )
+endif()
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
-    # VERSION ${PROJECT_VERSION}
-    # FRAMEWORK FALSE
-    PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/scc_components.h
+        # VERSION ${PROJECT_VERSION}
+        # FRAMEWORK FALSE
+        PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/scc_components.h
 )
 
 install(TARGETS ${PROJECT_NAME} COMPONENT components EXPORT ${PROJECT_NAME}-targets
@@ -20,16 +33,15 @@ install(TARGETS ${PROJECT_NAME} COMPONENT components EXPORT ${PROJECT_NAME}-targ
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}${SCC_LIBRARY_DIR_MODIFIER}${SCC_ARCHIVE_DIR_MODIFIER}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        )
-        
+)
+
 install(EXPORT ${PROJECT_NAME}-targets
         DESTINATION ${SCC_CMAKE_CONFIG_DIR}
         NAMESPACE scc::
-        )
+)
 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scc COMPONENT components
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # target directory
         FILES_MATCHING # install only matched files
         PATTERN "*.h" # select header files
-        )
-        
+)

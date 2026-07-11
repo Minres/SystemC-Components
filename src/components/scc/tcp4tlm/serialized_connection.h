@@ -43,10 +43,8 @@ typedef boost::archive::text_oarchive oarchive_type;
 typedef boost::archive::text_iarchive iarchive_type;
 #endif
 
-namespace tlm {
 namespace scc {
-namespace tcp {
-namespace impl {
+namespace tcp4tlm {
 
 /// The connection class provides serialization primitives on top of a socket.
 /**
@@ -225,12 +223,12 @@ public:
         buffers.push_back(boost::asio::buffer(outbound_header_));
         buffers.push_back(boost::asio::buffer(outbound_data_));
 #ifdef GENERATE_STATISTICS
-        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &getTStamp());
+        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &get_t_stamp());
 #endif
         boost::asio::write(socket_, buffers);
     }
 
-    bool read_data_avail() {
+    bool read_data_available() {
         boost::asio::socket_base::bytes_readable command(true);
         socket_.io_control(command);
         std::size_t bytes_readable = command.get();
@@ -275,7 +273,7 @@ public:
         return;
     }
 #ifdef GENERATE_STATISTICS
-    static timespec& getTStamp() {
+    static timespec& get_t_stamp() {
         static timespec tstamp;
         return tstamp;
     }
@@ -297,9 +295,7 @@ private:
 
     boost::shared_ptr<async_listener> listener;
 };
-} // namespace impl
-} // namespace tcp
+} // namespace tcp4tlm
 } // namespace scc
-} // namespace tlm
 
 #endif // TLM_SCC_TCP_DETAIL_SERIALIZATION_CONNECTION_HPP
