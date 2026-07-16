@@ -14,16 +14,20 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef TLM_SCC_TCP_BRIDGE_H_
-#define TLM_SCC_TCP_BRIDGE_H_
+#ifndef TLM_SCC_TCP4TLM_BRIDGE_H_
+#define TLM_SCC_TCP4TLM_BRIDGE_H_
 
+#include "rigtorp/SPSCQueue.h"
+#include "scc/async_event.h"
+#include "scc/async_queue.h"
+#include "scc/peq.h"
 #include "tcp4tlm/client.h"
 #include "tcp4tlm/messages.h"
 #include "tcp4tlm/server.h"
+#include "tlm/scc/tlm_gp_shared.h"
+#include "tlm/scc/tlm_mm.h"
+#include <atomic>
 #include <boost/asio.hpp>
-#include <boost/atomic.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/thread.hpp>
 #include <cci_configuration>
 #include <scc/report.h>
 #include <scc/utilities.h>
@@ -32,99 +36,99 @@
 #include <tlm_utils/simple_initiator_socket.h>
 #include <tlm_utils/simple_target_socket.h>
 #include <tlm_utils/tlm_quantumkeeper.h>
+#include <vector>
 
 namespace scc {
 
 struct tcp4tlm_bridge : public sc_core::sc_module,
-                        protected tcp4tlm::server<request_message, response_message>,
-                        protected tcp4tlm::client<request_message, response_message> {
+                        protected tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message>,
+                        protected tcp4tlm::client<tcp4tlm::request_message, tcp4tlm::response_message> {
     SC_HAS_PROCESS(tcp4tlm_bridge);
 
-    cci::cci_param<bool> is_connection_master{"is_connection_master", false};
+    /*! this governs the sequence of connection:
+     * - if false: it first starts the server, connects to remote and sends a NotifyEndpointMsg
+     * - if true:  it starts the server, waits for a NotifyEndpointMsg and then connects the client
+     */
+    cci::cci_param<bool> is_connection_server{"is_connection_server", false};
     cci::cci_param<std::string> other_host_name{"other_host_name", ""};
     cci::cci_param<unsigned> other_host_port{"other_host_port", 0};
     cci::cci_param<unsigned> this_host_port{"this_host_port", 0};
-    cci::cci_param<bool> limit_simulation_speed{"limit_simulation_speed", true};
+    cci::cci_param<bool> wall_time_simulation_speed{"wall_time_simulation_speed", false};
     cci::cci_param<bool> write_no_response{"write_no_response", false};
     cci::cci_param<bool> no_systemc_sync{"no_systemc_sync", false};
 
     tlm_utils::simple_target_socket<tcp4tlm_bridge, ::scc::LT> tsckt;
+
     tlm_utils::simple_initiator_socket<tcp4tlm_bridge, ::scc::LT> isckt;
 
-    sc_core::sc_vector<sc_core::sc_out<bool>> signals;
+    sc_core::sc_vector<sc_core::sc_out<bool>> signals{"signals"};
 
-    tcp4tlm_bridge(sc_core::sc_module_name name, size_t noOfPorts = 0);
+    tcp4tlm_bridge(sc_core::sc_module_name name, size_t no_of_ports = 0);
 
     virtual ~tcp4tlm_bridge();
 
-    typedef tcp4tlm::connection<response_message, request_message> connection_type;
-    typedef boost::shared_ptr<connection_type> con_ptr;
+    typedef tcp4tlm::connection<tcp4tlm::response_message, tcp4tlm::request_message> connection_type;
+    typedef std::shared_ptr<connection_type> con_ptr;
 
-    virtual void server_send_completed(con_ptr& con, bool established = false) {
+    void server_send_completed(con_ptr& con, bool established = false) override {
         if(established) {
             con->async_read();
         }
     }
 
-    virtual void server_receive_completed(con_ptr& con, const request_message* const result);
+    void server_receive_completed(con_ptr& con, const tcp4tlm::request_message* const result) override;
 
-    void initiate_connection(unsigned short retry_count = 0);
+    bool wait4connection() {
+        using namespace std::chrono_literals;
+        start_server(this_host_port.get_value());
+        std::unique_lock<std::mutex> lock(con_est_mtx);
+        con_est_sig.wait_for(lock, 100ms, [this]() { return con_est.load(); });
+        return con_est.load();
+    }
 
     bool is_connection_established() { return con_est; }
 
-    void wait4connection() {
-        if(!con_est)
-            LOG(TRACE) << "waiting for connection";
-        boost::unique_lock<boost::mutex> lock(con_est_mtx);
-        while(!con_est) {
-            con_est_sig.wait(lock);
-        }
-    }
-
-    void wait4command() {
-        SCCTRACE(SCMOD) << "waiting for command";
-        boost::unique_lock<boost::mutex> lock(cmd_rec_mxt);
-        cmd_rec_sig.wait(lock);
-    }
-
-    void wait4sync() {
-        SCCTRACE(SCMOD) << "waiting for sync";
-        boost::unique_lock<boost::mutex> lock(sync_mtx);
-        sync_sig.wait(lock);
-    }
-
     void end_connection();
 
+    sc_core::sc_event const& get_shutdown_event() const { return shutdown_evt; }
+
 protected:
-    sc_core::sc_event request_bus_access;
-    boost::mutex gp_mtx, con_est_mtx, cmd_rec_mxt, sync_mtx;
-    boost::condition_variable gp_sig, con_est_sig, cmd_rec_sig, sync_sig;
-    tlm::tlm_generic_payload gp;
-    sc_core::sc_time gp_timestamp, gp_timeoffset;
-    bool con_est;
+    using callback_task = std::packaged_task<bool(void)>;
+    struct timed_task {
+        callback_task t;
+        sc_core::sc_time timepoint;
+    };
+    scc::async_queue<timed_task> task_que;
+    scc::peq<callback_task> timed_task_que;
+    std::mutex con_est_mtx; //, gp_mtx, sync_mtx;
+    std::condition_variable con_est_sig;
+    std::atomic<bool> con_est{false};
+    sc_core::sc_event shutdown_evt;
+    rigtorp::SPSCQueue<sc_core::sc_time> next_time_stamp;
     unsigned long long sync;
     void btransport_cb(tlm::tlm_generic_payload&, sc_core::sc_time&);
     unsigned transport_dbg_cb(tlm::tlm_generic_payload&);
     virtual void do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay, bool debug = false);
-    void main_thread();
     void timing_thread();
-    virtual void end_of_elaboration();
-    virtual void start_of_simulation();
-    virtual void end_of_simulation();
-    boost::shared_ptr<response_message> resp_msg;
-    boost::atomic_bool notifyMsgReceived;
+    void process_task_que();
+    void process_timed_task_que();
+    void end_of_elaboration() override;
+    void start_of_simulation() override;
+    void end_of_simulation() override;
+    std::shared_ptr<tcp4tlm::response_message> resp_msg;
     tlm_utils::tlm_quantumkeeper quantumkeeper;
+    tlm::scc::tlm_mm<tlm::tlm_base_protocol_types, false> mm;
 
 private:
-    void init_gp(const bus_op_msg* const msg);
+    tlm::scc::tlm_gp_shared_ptr init_gp(const tcp4tlm::BusOpMsg* const msg);
 #ifdef BOOST_ASIO_HAS_LOCAL_SOCKETS
-    notify_endpoint_msg get_notify_endpoint_msg(boost::asio::local::stream_protocol::endpoint& ep) {
-        return notify_endpoint_msg(ep.path(), 0);
+    tcp4tlm::request_message get_notify_endpoint_msg(boost::asio::local::stream_protocol::endpoint& ep) {
+        return tcp4tlm::make_notify_endpoint_msg(ep.path(), 0);
     };
 #endif
-    notify_endpoint_msg get_notify_endpoint_msg(boost::asio::ip::tcp::endpoint& ep) {
+    tcp4tlm::request_message get_notify_endpoint_msg(boost::asio::ip::tcp::endpoint& ep) {
         boost::asio::ip::address addr = ep.address();
-        return notify_endpoint_msg(addr.is_unspecified() ? boost::asio::ip::host_name() : addr.to_string(), ep.port());
+        return tcp4tlm::make_notify_endpoint_msg(addr.is_unspecified() ? boost::asio::ip::host_name() : addr.to_string(), ep.port());
     }
 #ifdef GENERATE_STATISTICS
     std::vector<unsigned long> rtto, txt, rxt;
@@ -163,18 +167,17 @@ inline ostream& operator<<(ostream& os, const tcp4tlm_bridge::statistics& stat) 
 #endif
 
 inline void tcp4tlm_bridge::end_connection() {
-    SCCINFO(SCMOD) << "Server ends the connection to Client";
-    if(is_client_connected()) {
-        sync_msg smsg(sc_core::sc_time_stamp().value());
+    SCCINFO(SCMOD) << "Sending shutdown message";
+    if(is_remote_connected()) {
+        auto smsg = tcp4tlm::make_sync_msg(sc_core::sc_time_stamp().value());
         client_connection().write_data(smsg);
-        response_message* resp;
+        std::shared_ptr<tcp4tlm::response_message> resp;
         client_connection().read_data(resp);
-        notify_shutdown_msg msg;
+        auto msg = tcp4tlm::make_notify_shutdown_msg();
         client_connection().write_data(msg);
     }
-    request_shutdown();
 }
 
 } // namespace scc
 
-#endif // TLM_SCC_TCP_BRIDGE_H_
+#endif // TLM_SCC_TCP4TLM_BRIDGE_H_

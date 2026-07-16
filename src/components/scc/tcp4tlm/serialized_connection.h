@@ -14,46 +14,28 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef TLM_SCC_TCP_DETAIL_SERIALIZED_CONNECTION_H_
-#define TLM_SCC_TCP_DETAIL_SERIALIZED_CONNECTION_H_
+#ifndef TLM_SCC_TCP4TLM_SERIALIZED_CONNECTION_H_
+#define TLM_SCC_TCP4TLM_SERIALIZED_CONNECTION_H_
 
 #include <boost/asio.hpp>
-#ifdef BINARY_ARCHIVE
-#include <boost/archive/binary_iarchive.hpp>
-#include <boost/archive/binary_oarchive.hpp>
-#else
-#include <boost/archive/text_iarchive.hpp>
-#include <boost/archive/text_oarchive.hpp>
-#endif
-#include <boost/enable_shared_from_this.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/tuple/tuple.hpp>
-#include <functional>
+#include <cstdint>
 #include <iomanip>
 #include <sstream>
 #include <string>
 #include <util/logging.h>
 #include <vector>
 
-#ifdef BINARY_ARCHIVE
-typedef boost::archive::binary_oarchive oarchive_type;
-typedef boost::archive::binary_iarchive iarchive_type;
-#else
-typedef boost::archive::text_oarchive oarchive_type;
-typedef boost::archive::text_iarchive iarchive_type;
-#endif
-
 namespace scc {
 namespace tcp4tlm {
 
-/// The connection class provides serialization primitives on top of a socket.
+/// The connection class provides FlatBuffers framing primitives on top of a socket.
 /**
  * Each message sent using this class consists of:
  * @li An 8-byte header containing the length of the serialized data in
  * hexadecimal.
- * @li The serialized data.
+ * @li The serialized FlatBuffer payload.
  */
-template <typename TSEND, typename TREC> class connection : public boost::enable_shared_from_this<connection<TSEND, TREC>> {
+template <typename TSEND, typename TREC> class connection : public std::enable_shared_from_this<connection<TSEND, TREC>> {
 public:
 #if defined(BOOST_ASIO_HAS_LOCAL_SOCKETS) && defined(USE_UDS)
 #warning "This build uses stream sockets and will not work across the network"
@@ -68,45 +50,29 @@ public:
     typedef boost::asio::ip::tcp::endpoint endpoint_t;
     typedef boost::asio::ip::tcp::acceptor acceptor_t;
 #endif
-    typedef boost::shared_ptr<connection<TSEND, TREC>> ptr;
+    typedef std::shared_ptr<connection<TSEND, TREC>> ptr;
 
-    struct async_listener : public boost::enable_shared_from_this<async_listener> {
+    struct async_listener : public std::enable_shared_from_this<async_listener> {
         virtual void send_completed(const boost::system::error_code& error) = 0;
         virtual void receive_completed(const boost::system::error_code& error, const TREC* const result) = 0;
     };
-    /// Constructor.
+
     connection(boost::asio::io_context& io_context)
     : socket_(io_context) {}
-    /// Get the underlying socket. Used for making a connection or for accepting
-    /// an incoming connection.
+
     socket_t& socket() { return socket_; }
-    ///
-    void add_listener(boost::shared_ptr<async_listener> l) { listener = l; }
-    /// Asynchronously write a data structure to the socket.
+    void add_listener(std::shared_ptr<async_listener> l) { listener = l; }
+
     void async_write(TSEND& t) { async_write(&t); }
-    /// Asynchronously write a data structure to the socket.
+
     void async_write(TSEND* t) {
-        // Serialize the data first so we know how large it is.
-        std::ostringstream archive_stream;
-        oarchive_type archive(archive_stream);
-        archive << t;
-        outbound_data_ = archive_stream.str();
-#ifdef TRACE_COMMUNICATION
-        LOG(TRACE) << "outbound async data (" << outbound_data_.size() << "):[" << outbound_data_ << "]" << std::endl;
-#endif
-        // Format the header.
-        std::ostringstream header_stream;
-        header_stream << std::setw(header_length) << std::hex << std::setfill('0') << outbound_data_.size();
-        if(!header_stream || header_stream.str().size() != header_length) {
-            // Something went wrong, inform the caller.
+        if(!prepare_outbound_data(t)) {
             boost::system::error_code err(boost::asio::error::invalid_argument);
             if(listener)
                 listener->send_completed(err);
             return;
         }
-        outbound_header_ = header_stream.str();
-        // Write the serialized data to the socket. We use "gather-write" to send
-        // both the header and the data in a single write operation.
+
         std::vector<boost::asio::const_buffer> buffers;
         buffers.push_back(boost::asio::buffer(outbound_header_));
         buffers.push_back(boost::asio::buffer(outbound_data_));
@@ -117,41 +83,34 @@ public:
     }
 
 protected:
-    /// notify the listener about the finish of the send process
     void handle_async_write(const boost::system::error_code& err, size_t /*bytes_transferred*/) {
         if(listener != NULL)
             listener->send_completed(err);
     }
 
 public:
-    /// Asynchronously read a data structure from the socket.
     void async_read() {
-        // Issue a read operation to read exactly the number of bytes in a header.
         auto self = this->shared_from_this();
         boost::asio::async_read(socket_, boost::asio::buffer(inbound_header_),
                                 [self](const boost::system::error_code& error, std::size_t) { self->async_read_header(error); });
     }
 
 protected:
-    /// Handle a completed read of a message header.
     void async_read_header(const boost::system::error_code& e) {
         if(e) {
             if(listener)
                 listener->receive_completed(e, NULL);
         } else {
-            // Determine the length of the serialized data.
             std::string header(inbound_header_, header_length);
             std::istringstream is(header);
             std::size_t inbound_data_size = 0;
             is >> std::hex >> inbound_data_size;
             if(inbound_data_size == 0) {
-                // Header doesn't seem to be valid. Inform the caller.
                 boost::system::error_code error(boost::asio::error::invalid_argument);
                 if(listener)
-                    listener->receive_completed(e, NULL);
+                    listener->receive_completed(error, NULL);
                 return;
             }
-            // Start an asynchronous call to receive the data.
             inbound_data_.resize(inbound_data_size);
             auto self = this->shared_from_this();
             boost::asio::async_read(socket_, boost::asio::buffer(inbound_data_),
@@ -159,38 +118,30 @@ protected:
         }
     }
 
-    /// Handle a completed read of message data.
     void async_read_data(const boost::system::error_code& e) {
         if(e) {
             if(listener)
                 listener->receive_completed(e, NULL);
         } else {
-            // Extract the data structure from the data just received.
-            try {
-                std::string archive_data(&inbound_data_[0], inbound_data_.size());
-#ifdef TRACE_COMMUNICATION
-                LOG(TRACE) << "inbound async data (" << inbound_data_.size() << "):[" << archive_data << "]" << std::endl;
-#endif
-                std::istringstream archive_stream(archive_data);
-                iarchive_type archive(archive_stream);
-                TREC* t;
-                archive >> t;
-                if(listener)
-                    listener->receive_completed(e, t);
-                delete t;
-            } catch(std::exception& /* unnamed */) {
-                // Unable to decode data.
+            if(!TREC::verify(inbound_data_.data(), inbound_data_.size())) {
                 boost::system::error_code err(boost::asio::error::invalid_argument);
                 if(listener)
                     listener->receive_completed(err, NULL);
+                return;
             }
-            return;
+#ifdef TRACE_COMMUNICATION
+            std::string raw_data(reinterpret_cast<const char*>(inbound_data_.data()), inbound_data_.size());
+            CPPLOG(TRACE, "tcp4tlm") << "inbound async data (" << inbound_data_.size() << "):[" << raw_data << "]" << std::endl;
+#endif
+            TREC* t = new TREC(std::move(inbound_data_));
+            if(listener)
+                listener->receive_completed(e, t);
+            delete t;
         }
     }
 
 public:
-    ///
-    void write_data(boost::shared_ptr<TSEND>& t) { write_data(t.get()); }
+    void write_data(std::shared_ptr<TSEND>& t) { write_data(t.get()); }
 
     void write_data(TSEND& t) { write_data(&t); }
 
@@ -201,30 +152,16 @@ public:
     }
 
     void write_data(TSEND* t, boost::system::error_code& ec) {
-        // Serialize the data first so we know how large it is.
-        std::ostringstream archive_stream;
-        oarchive_type archive(archive_stream);
-        archive << t;
-        outbound_data_ = archive_stream.str();
-#ifdef TRACE_COMMUNICATION
-        LOG(TRACE) << "outbound sync data (" << outbound_data_.size() << "):[" << outbound_data_ << "]" << std::endl;
-#endif // Format the header.
-        std::ostringstream header_stream;
-        header_stream << std::setw(header_length) << std::hex << std::setfill('0') << outbound_data_.size();
-        if(!header_stream || header_stream.str().size() != header_length) {
-            // Something went wrong, inform the caller.
+        if(!prepare_outbound_data(t)) {
             ec.assign(boost::asio::error::invalid_argument, boost::asio::error::get_system_category());
             return;
         }
-        outbound_header_ = header_stream.str();
-        // Write the serialized data to the socket. We use "gather-write" to send
-        // both the header and the data in a single write operation.
-        std::vector<boost::asio::const_buffer> buffers;
-        buffers.push_back(boost::asio::buffer(outbound_header_));
-        buffers.push_back(boost::asio::buffer(outbound_data_));
 #ifdef GENERATE_STATISTICS
         clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &get_t_stamp());
 #endif
+        std::vector<boost::asio::const_buffer> buffers;
+        buffers.push_back(boost::asio::buffer(outbound_header_));
+        buffers.push_back(boost::asio::buffer(outbound_data_));
         boost::asio::write(socket_, buffers);
     }
 
@@ -235,8 +172,8 @@ public:
         return bytes_readable > 0;
     }
 
-    void read_data(boost::shared_ptr<TREC>& msg) {
-        TREC* m;
+    void read_data(std::shared_ptr<TREC>& msg) {
+        TREC* m = nullptr;
         read_data(m);
         msg.reset(m);
     }
@@ -248,30 +185,29 @@ public:
     }
 
     void read_data(TREC*& t, boost::system::error_code& ec) {
-        boost::asio::transfer_at_least(23);
         boost::asio::read(socket_, boost::asio::buffer(inbound_header_, header_length), boost::asio::transfer_exactly(header_length));
-        // Determine the length of the serialized data.
         std::string header(inbound_header_, header_length);
         std::istringstream is(header);
         std::size_t inbound_data_size = 0;
         is >> std::hex >> inbound_data_size;
         if(inbound_data_size == 0) {
-            // Header doesn't seem to be valid. Inform the caller.
             ec.assign(boost::asio::error::invalid_argument, boost::asio::error::get_system_category());
             return;
         }
-        // Start an synchronous call to receive the data.
+
         inbound_data_.resize(inbound_data_size);
         boost::asio::read(socket_, boost::asio::buffer(inbound_data_, inbound_data_size), boost::asio::transfer_exactly(inbound_data_size));
-        std::string archive_data(&inbound_data_[0], inbound_data_.size());
+        if(!TREC::verify(inbound_data_.data(), inbound_data_.size())) {
+            ec.assign(boost::asio::error::invalid_argument, boost::asio::error::get_system_category());
+            return;
+        }
 #ifdef TRACE_COMMUNICATION
-        LOG(TRACE) << "inbound sync data (" << inbound_data_.size() << "):[" << archive_data << "]" << std::endl;
+        std::string raw_data(reinterpret_cast<const char*>(inbound_data_.data()), inbound_data_.size());
+        CPPLOG(TRACE, "tcp4tlm") << "inbound sync data (" << inbound_data_.size() << "):[" << raw_data << "]" << std::endl;
 #endif
-        std::istringstream archive_stream(archive_data);
-        iarchive_type archive(archive_stream);
-        archive >> t;
-        return;
+        t = new TREC(std::move(inbound_data_));
     }
+
 #ifdef GENERATE_STATISTICS
     static timespec& get_t_stamp() {
         static timespec tstamp;
@@ -280,22 +216,34 @@ public:
 #endif
 
 private:
-    /// The underlying socket.
-    socket_t socket_;
-    /// The size of a fixed length header.
-    enum { header_length = 8 };
-    /// Holds an outbound header.
-    std::string outbound_header_;
-    /// Holds the outbound data.
-    std::string outbound_data_;
-    /// Holds an inbound header.
-    char inbound_header_[header_length];
-    /// Holds the inbound data.
-    std::vector<char> inbound_data_;
+    bool prepare_outbound_data(TSEND* t) {
+        if(t == nullptr || !(*t) || t->size() == 0) {
+            return false;
+        }
 
-    boost::shared_ptr<async_listener> listener;
+        outbound_data_.assign(reinterpret_cast<const char*>(t->data()), reinterpret_cast<const char*>(t->data()) + t->size());
+#ifdef TRACE_COMMUNICATION
+        CPPLOG(TRACE, "tcp4tlm") << "outbound data (" << outbound_data_.size() << "):[" << outbound_data_ << "]" << std::endl;
+#endif
+        std::ostringstream header_stream;
+        header_stream << std::setw(header_length) << std::hex << std::setfill('0') << outbound_data_.size();
+        if(!header_stream || header_stream.str().size() != header_length) {
+            return false;
+        }
+        outbound_header_ = header_stream.str();
+        return true;
+    }
+
+    socket_t socket_;
+    enum { header_length = 8 };
+    std::string outbound_header_;
+    std::string outbound_data_;
+    char inbound_header_[header_length];
+    std::vector<uint8_t> inbound_data_;
+    std::shared_ptr<async_listener> listener;
 };
+
 } // namespace tcp4tlm
 } // namespace scc
 
-#endif // TLM_SCC_TCP_DETAIL_SERIALIZATION_CONNECTION_HPP
+#endif // TLM_SCC_TCP4TLM_SERIALIZED_CONNECTION_H_

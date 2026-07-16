@@ -6,61 +6,63 @@
  */
 
 #include "scc/report.h"
-#include "top.h"
+#include "top_client.h"
+#include "top_server.h"
 #include <boost/asio.hpp>
-#include <boost/lexical_cast.hpp>
+#include <boost/program_options.hpp>
 #include <cstdlib>
-#include <sstream>
+#include <memory>
+#include <sysc/kernel/sc_module.h>
 #include <systemc.h>
 #include <util/logging.h>
 
-#ifdef USE_THREADS
-#include <HSSTop.h>
-
-int main(int argc, char* argv[]) {
-    /*
-    int pid = fork();
-    if(pid==0){
-        sleep(2);
-        exit(hss_main(argc, argv));
-    } else {
-        return sc_core::sc_elab_and_sim(argc, argv);
-    }
-    */
-    boost::thread_group tg;
-    tg.add_thread(new boost::thread(boost::bind(&hss_main, argc, argv)));
-    tg.add_thread(new boost::thread(boost::bind(&sc_core::sc_elab_and_sim, argc, argv)));
-    tg.join_all();
-    return 0;
-}
-#endif
+namespace po = boost::program_options;
 
 int sc_main(int argc, char* argv[]) {
-    unsigned portNr = 1024;
-    bool noClientAccess = false, noSync = false;
+    unsigned port_nr = 1024;
+    unsigned other_port_nr = 0;
+    std::string other_host_name;
 
-    for(int i = 1; i < argc; ++i) {
-        if(strncmp(argv[i], "--tlm2Client", 12) == 0 || strncmp(argv[i], "--pythonClient", 14) == 0) {
-            noClientAccess = true;
-        } else if(strncmp(argv[i], "--noSystemcSync", 15) == 0) {
-            noSync = true;
-        } else {
-            portNr = boost::lexical_cast<unsigned short>(argv[1]);
+    po::options_description desc("Options");
+    // clang-format off
+    desc.add_options()
+        ("help,h", "Print help message")
+        ("no-systemc-sync", "Disable SystemC synchronization")
+        ("remote-host", po::value<std::string>(&other_host_name), "Host name to connect to")
+        ("remote-port", po::value<unsigned>(&other_port_nr), "Port to connect to")
+        ("local-port", po::value<unsigned>(&port_nr)->default_value(port_nr), "Local host port");
+    // clang-format on
+
+    po::variables_map vm;
+    try {
+        po::store(po::command_line_parser(argc, argv).options(desc).run(), vm);
+        if(vm.count("help")) {
+            std::cout << desc << std::endl;
+            return EXIT_SUCCESS;
         }
+        po::notify(vm);
+    } catch(const po::error& e) {
+        std::cerr << "ERROR: " << e.what() << std::endl << std::endl;
+        std::cerr << desc << std::endl;
+        return EXIT_FAILURE;
     }
+    scc::init_logging(scc::log::TRACEALL);
+    LOGGER(DEFAULT)::set_reporting_level(logging::TRACEALL);
 
-    top tb("tb");
-    LOGGER(DEFAULT)::set_reporting_level(logging::TRACE);
-    tb.bridge.thisHostPort.set_value(portNr);
-    tb.bridge.isConnectionMaster.set_value(true);
-    tb.bridge.writeNoResponse.set_value(false);
-    tb.bridge.noSystemcSync.set_value(noSync);
-
-    if(noClientAccess) {
-        tb.tg.gotFinalAcc();
-        tb.tg.gotIrq();
+    std::unique_ptr<sc_core::sc_module> tb;
+    if(other_host_name.empty()) {
+        auto* srv = new tcp4tlm_bridge::top_server("top_srv");
+        srv->bridge.this_host_port.set_value(port_nr);
+        tb.reset(srv);
+    } else {
+        auto* client = new tcp4tlm_bridge::top_client("top_client");
+        client->bridge.this_host_port.set_value(port_nr);
+        client->bridge.other_host_name.set_value(other_host_name);
+        if(other_port_nr) {
+            client->bridge.other_host_port.set_value(other_port_nr);
+        }
+        tb.reset(client);
     }
-
     try {
         sc_start(SC_ZERO_TIME);
     } catch(std::exception& e) {
@@ -72,7 +74,7 @@ int sc_main(int argc, char* argv[]) {
     } catch(std::exception& e) {
         SCCERR() << e.what();
     }
-    // call sc_Stop if time is exhausted
+    // call sc_stop if time is exhausted
     if(sc_get_status() != sc_core::SC_STOPPED) {
         sc_stop();
         SCCINFO() << "time out occured @" << sc_time_stamp() << "sec!";

@@ -43,7 +43,7 @@ template <typename T> struct tlm_unmanaged_extension : public tlm_extension<T> {
     void copy_from(tlm_extension_base const& other) override { this->operator=(static_cast<const type&>(other)); }
 
 protected:
-    tlm_unmanaged_extension(){};
+    tlm_unmanaged_extension() {};
 };
 /*!
  * \brief A managed extension for TLM transactions.
@@ -118,10 +118,12 @@ struct data_buffer : public tlm::tlm_extension<data_buffer> {
 
     tlm_extension_base* clone() const override {
         data_buffer* ext = new data_buffer;
+        ext->buffer_ = buffer_;
         return ext;
     }
     void copy_from(tlm_extension_base const& from) override { buffer_ = static_cast<data_buffer const&>(from).buffer_; }
 
+    std::vector<unsigned char> const& data() const { return buffer_; }
     void set_size(uint32_t size) { buffer_.resize(size); }
     unsigned char* get_buf_ptr() { return buffer_.data(); }
 

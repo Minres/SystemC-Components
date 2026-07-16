@@ -51,6 +51,7 @@ class Pkg(ConanFile):
         self.requires("bzip2/1.0.8")
         self.requires("zstd/1.5.7")
         self.requires("xz_utils/5.8.1")
+        self.requires("flatbuffers/25.9.23")
 
     def build_requirements(self):
         if self.settings.compiler.cppstd:
@@ -59,6 +60,7 @@ class Pkg(ConanFile):
                 self.tool_requires("doxygen/1.15.0")
         else:
             self.tool_requires("doxygen/1.15.0")
+        self.tool_requires("flatbuffers/25.9.23")
 
     def layout(self):
         cmake_layout(self)

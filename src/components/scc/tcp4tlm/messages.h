@@ -14,267 +14,202 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef TLM_SCC_TCP_DETAIL_MESSAGES_H_
-#define TLM_SCC_TCP_DETAIL_MESSAGES_H_
+#ifndef TLM_SCC_TCP4TLM_MESSAGES_H_
+#define TLM_SCC_TCP4TLM_MESSAGES_H_
 
-#include <boost/serialization/export.hpp>
-#include <boost/serialization/serialization.hpp>
-#include <boost/serialization/vector.hpp>
-#include <boost/serialization/version.hpp>
+#include "messages_generated.h"
+#include <atomic>
+#include <cstdint>
 #include <string>
+#include <utility>
+#include <vector>
 
-#ifdef ERROR
-#undef ERROR
-#endif
+namespace scc {
+namespace tcp4tlm {
 
-#define MSG_VERSION 1
-
-#ifdef DEFINE_EXPORTS_HERE
-#define EXPORT_CLASS(X)                                                                                                                    \
-    BOOST_CLASS_EXPORT(X);                                                                                                                 \
-    BOOST_CLASS_VERSION(X, MSG_VERSION);
-#endif
-
-#ifndef EXPORT_CLASS
-#define EXPORT_CLASS(X) ;
-#endif
-
-enum response_status { ok, accepted, delayed, declined, failure };
-static const char* response_names[] = {"OK", "ACCEPTED", "DELAYED", "DECLINED", "FAILURE"};
-enum bus_access_type { normal_acc, debug_acc };
-
-class request_message {
+template <typename Root> class message_buffer {
 public:
-    request_message()
-    : id(next_id()) {}
+    message_buffer() = default;
 
-    virtual ~request_message(){};
+    explicit message_buffer(std::vector<uint8_t> storage)
+    : storage_(std::move(storage))
+    , root_(nullptr) {
+        refresh_root();
+    }
 
-    const uint32_t get_id() const { return id; }
+    const Root* root() const { return root_; }
+    const Root* operator->() const { return root_; }
+    explicit operator bool() const { return root_ != nullptr; }
 
-    virtual bool operator==(const request_message& o) const { return id == o.id; }
+    const uint8_t* data() const { return storage_.empty() ? nullptr : storage_.data(); }
+    std::size_t size() const { return storage_.size(); }
 
-protected:
-    uint32_t id;
-    friend class ::boost::serialization::access;
-
-    template <typename Archive> void serialize(Archive& ar, const uint32_t version) { ar& id; }
+    static bool verify(const uint8_t* data, std::size_t size) {
+        if(data == nullptr || size == 0) {
+            return false;
+        }
+        flatbuffers::Verifier verifier(data, size);
+        return verifier.VerifyBuffer<Root>(nullptr);
+    }
 
 private:
-    uint32_t next_id() {
-        static uint32_t id_counter;
-        return id_counter++;
-    }
+    void refresh_root() { root_ = verify(data(), size()) ? flatbuffers::GetRoot<Root>(data()) : nullptr; }
+
+    std::vector<uint8_t> storage_;
+    const Root* root_;
 };
-EXPORT_CLASS(request_message);
 
-class response_message {
-public:
-    response_message()
-    : status(ok)
-    , req_id(0) {}
+using request_message = message_buffer<RequestEnvelope>;
+using response_message = message_buffer<ResponseEnvelope>;
+using response_status = ResponseStatus;
+using bus_access_type = BusAccessType;
 
-    response_message(const request_message* const req, response_status status = ok)
-    : status(status)
-    , req_id(req->get_id()) {}
+constexpr response_status ok = ResponseStatus_OK;
+constexpr response_status accepted = ResponseStatus_ACCEPTED;
+constexpr response_status delayed = ResponseStatus_DELAYED;
+constexpr response_status declined = ResponseStatus_DECLINED;
+constexpr response_status failure = ResponseStatus_FAILURE;
 
-    virtual ~response_message(){};
+constexpr bus_access_type normal_acc = BusAccessType_NORMAL_ACC;
+constexpr bus_access_type debug_acc = BusAccessType_DEBUG_ACC;
 
-    response_status get_status() const { return status; }
+inline const char* get_status_str(response_status status) { return EnumNameResponseStatus(status); }
 
-    const char* get_status_str() const { return response_names[status]; }
+inline uint32_t next_request_id() {
+    static std::atomic<uint32_t> id_counter{0};
+    return id_counter++;
+}
 
-    void set_status(response_status resp) { status = resp; }
+template <typename Root> inline message_buffer<Root> make_message(flatbuffers::FlatBufferBuilder& builder) {
+    auto detached = builder.Release();
+    return message_buffer<Root>(std::vector<uint8_t>(detached.data(), detached.data() + detached.size()));
+}
 
-    bool belongs_to(const request_message* req) { return req->get_id() == req_id; }
+inline request_message make_request(RequestPayload payload_type, flatbuffers::Offset<void> payload,
+                                    flatbuffers::FlatBufferBuilder& builder) {
+    auto envelope = CreateRequestEnvelope(builder, payload_type, payload);
+    builder.Finish(envelope);
+    return make_message<RequestEnvelope>(builder);
+}
 
-    virtual bool operator==(const response_message& o) const { return status == o.status && req_id == o.req_id; }
+inline response_message make_response_message(ResponsePayload payload_type, flatbuffers::Offset<void> payload,
+                                              flatbuffers::FlatBufferBuilder& builder) {
+    auto envelope = CreateResponseEnvelope(builder, payload_type, payload);
+    builder.Finish(envelope);
+    return make_message<ResponseEnvelope>(builder);
+}
 
-protected:
-    response_status status;
-    uint32_t req_id;
-    friend class ::boost::serialization::access;
+inline request_message make_notify_endpoint_msg(const std::string& hostname, uint16_t port, uint32_t id = next_request_id()) {
+    flatbuffers::FlatBufferBuilder builder;
+    auto payload = CreateNotifyEndpointMsgDirect(builder, id, hostname.c_str(), port);
+    return make_request(RequestPayload_NotifyEndpointMsg, payload.Union(), builder);
+}
 
-    template <typename Archive> void serialize(Archive& ar, const uint32_t version) { ar& status& req_id; }
-};
-EXPORT_CLASS(response_message);
+inline request_message make_notify_shutdown_msg(uint32_t id = next_request_id()) {
+    flatbuffers::FlatBufferBuilder builder;
+    auto payload = CreateNotifyShutdownMsg(builder, id);
+    return make_request(RequestPayload_NotifyShutdownMsg, payload.Union(), builder);
+}
 
-class notify_endpoint_msg : public request_message {
-public:
-    notify_endpoint_msg()
-    : request_message()
-    , hostname("")
-    , port(0) {}
+inline request_message make_sync_msg(uint64_t time_stamp, uint32_t id = next_request_id()) {
+    flatbuffers::FlatBufferBuilder builder;
+    auto payload = CreateSyncMsg(builder, id, time_stamp);
+    return make_request(RequestPayload_SyncMsg, payload.Union(), builder);
+}
 
-    notify_endpoint_msg(std::string hostname_, uint16_t port)
-    : request_message()
-    , hostname(hostname_)
-    , port(port) {}
+inline request_message make_bus_op_msg(uint64_t time_stamp, uint64_t time_offset, bus_access_type type, uint32_t index, uint64_t address,
+                                       uint32_t size, bool no_response, const std::vector<uint8_t>& data,
+                                       const std::vector<uint8_t>& byte_enable, uint32_t id = next_request_id()) {
+    flatbuffers::FlatBufferBuilder builder;
+    auto payload = CreateBusOpMsgDirect(builder, id, time_stamp, time_offset, type, index, address, size, no_response, &data, &byte_enable);
+    return make_request(RequestPayload_BusOpMsg, payload.Union(), builder);
+}
 
-    virtual ~notify_endpoint_msg(){};
+inline request_message make_sig_op_msg(uint64_t time_stamp, uint32_t index, uint8_t value, uint32_t id = next_request_id()) {
+    flatbuffers::FlatBufferBuilder builder;
+    auto payload = CreateSigOpMsg(builder, id, time_stamp, index, value);
+    return make_request(RequestPayload_SigOpMsg, payload.Union(), builder);
+}
 
-    std::string hostname;
-    uint16_t port;
+inline request_message make_log_msg(const std::string& msg, uint32_t id = next_request_id()) {
+    flatbuffers::FlatBufferBuilder builder;
+    auto payload = CreateLogMsgDirect(builder, id, msg.c_str());
+    return make_request(RequestPayload_LogMsg, payload.Union(), builder);
+}
 
-    bool operator==(const notify_endpoint_msg& o) const {
-        return request_message::operator==(o) && hostname == o.hostname && port == o.port;
+inline uint32_t get_request_id(const RequestEnvelope* req) {
+    if(req == nullptr) {
+        return 0;
     }
-
-protected:
-    friend class ::boost::serialization::access;
-
-    template <typename Archive> void serialize(Archive& ar, const uint32_t version) {
-        ar& BOOST_SERIALIZATION_BASE_OBJECT_NVP(request_message) & hostname& port;
+    switch(req->payload_type()) {
+    case RequestPayload_NotifyEndpointMsg:
+        return req->payload_as_NotifyEndpointMsg()->id();
+    case RequestPayload_NotifyShutdownMsg:
+        return req->payload_as_NotifyShutdownMsg()->id();
+    case RequestPayload_SyncMsg:
+        return req->payload_as_SyncMsg()->id();
+    case RequestPayload_BusOpMsg:
+        return req->payload_as_BusOpMsg()->id();
+    case RequestPayload_SigOpMsg:
+        return req->payload_as_SigOpMsg()->id();
+    case RequestPayload_LogMsg:
+        return req->payload_as_LogMsg()->id();
+    default:
+        return 0;
     }
-};
-EXPORT_CLASS(notify_endpoint_msg);
+}
 
-class notify_shutdown_msg : public request_message {
-public:
-    notify_shutdown_msg()
-    : request_message() {}
-
-    virtual ~notify_shutdown_msg(){};
-
-    bool operator==(const notify_shutdown_msg& o) const { return request_message::operator==(o); }
-
-protected:
-    friend class ::boost::serialization::access;
-
-    template <typename Archive> void serialize(Archive& ar, const uint32_t version) {
-        ar& BOOST_SERIALIZATION_BASE_OBJECT_NVP(request_message);
+inline response_status get_status(const ResponseEnvelope* resp) {
+    if(resp == nullptr) {
+        return failure;
     }
-};
-EXPORT_CLASS(notify_shutdown_msg);
-
-class sync_msg : public request_message {
-public:
-    sync_msg()
-    : request_message()
-    , time_stamp(0ULL) {}
-
-    sync_msg(uint64_t timestamp)
-    : request_message()
-    , time_stamp(timestamp) {}
-
-    virtual ~sync_msg(){};
-
-    uint64_t time_stamp;
-
-    bool operator==(const sync_msg& o) const { return request_message::operator==(o) && time_stamp == o.time_stamp; }
-
-protected:
-    friend class ::boost::serialization::access;
-
-    template <typename Archive> void serialize(Archive& ar, const uint32_t version) {
-        ar& ::boost::serialization::base_object<request_message>(*this) & time_stamp;
+    switch(resp->payload_type()) {
+    case ResponsePayload_ResponseMsg:
+        return resp->payload_as_ResponseMsg()->status();
+    case ResponsePayload_BusDataMsg:
+        return resp->payload_as_BusDataMsg()->status();
+    default:
+        return failure;
     }
-};
-EXPORT_CLASS(sync_msg);
+}
 
-class bus_op_msg : public sync_msg {
-public:
-    bus_op_msg()
-    : sync_msg()
-    , time_offset(0ULL)
-    , type(normal_acc)
-    , index(0)
-    , address(0)
-    , size(0)
-    , no_response(false)
-    , data(0) {}
-
-    virtual ~bus_op_msg(){};
-
-    uint64_t time_offset;
-    bus_access_type type;
-    uint32_t index;
-    uint64_t address;
-    uint32_t size;
-    bool no_response;
-    std::vector<uint8_t> data;
-    std::vector<uint8_t> byte_enable;
-
-    bool operator==(const bus_op_msg& o) const {
-        return sync_msg::operator==(o) && time_offset == o.time_offset && index == o.index && address == o.address && size == o.size &&
-               data.size() == o.data.size() && no_response == o.no_response;
+inline uint32_t get_req_id(const ResponseEnvelope* resp) {
+    if(resp == nullptr) {
+        return 0;
     }
-
-protected:
-    friend class ::boost::serialization::access;
-
-    template <typename Archive> void serialize(Archive& ar, const uint32_t version) {
-        ar& ::boost::serialization::base_object<sync_msg>(*this) & time_offset& index& address& size& data& no_response;
+    switch(resp->payload_type()) {
+    case ResponsePayload_ResponseMsg:
+        return resp->payload_as_ResponseMsg()->req_id();
+    case ResponsePayload_BusDataMsg:
+        return resp->payload_as_BusDataMsg()->req_id();
+    default:
+        return 0;
     }
-};
-EXPORT_CLASS(bus_op_msg);
+}
 
-class bus_data_msg : public response_message {
-public:
-    bus_data_msg()
-    : response_message()
-    , data(0) {}
+inline bool belongs_to(const ResponseEnvelope* resp, const RequestEnvelope* req) { return get_req_id(resp) == get_request_id(req); }
 
-    bus_data_msg(const request_message* const req, response_status status = ok)
-    : response_message(req, status)
-    , data(0) {}
+inline response_message make_response(uint32_t req_id, response_status status = ok) {
+    flatbuffers::FlatBufferBuilder builder;
+    auto payload = CreateResponseMsg(builder, status, req_id);
+    return make_response_message(ResponsePayload_ResponseMsg, payload.Union(), builder);
+}
 
-    virtual ~bus_data_msg(){};
+inline response_message make_response(const RequestEnvelope* req, response_status status = ok) {
+    return make_response(get_request_id(req), status);
+}
 
-    std::vector<uint8_t> data;
+inline response_message make_bus_data_msg(uint32_t req_id, const std::vector<uint8_t>& data, response_status status = ok) {
+    flatbuffers::FlatBufferBuilder builder;
+    auto payload = CreateBusDataMsgDirect(builder, status, req_id, &data);
+    return make_response_message(ResponsePayload_BusDataMsg, payload.Union(), builder);
+}
 
-    virtual bool operator==(const bus_data_msg& o) const { return response_message::operator==(o) && data == o.data; }
+inline response_message make_bus_data_msg(const RequestEnvelope* req, const std::vector<uint8_t>& data, response_status status = ok) {
+    return make_bus_data_msg(get_request_id(req), data, status);
+}
 
-protected:
-    friend class ::boost::serialization::access;
+} // namespace tcp4tlm
+} // namespace scc
 
-    template <typename Archive> void serialize(Archive& ar, const uint32_t version) {
-        ar& ::boost::serialization::base_object<response_message>(*this) & data;
-    }
-};
-EXPORT_CLASS(bus_data_msg);
-
-class sig_op_msg : public sync_msg {
-public:
-    sig_op_msg()
-    : sync_msg()
-    , index(0)
-    , value(0) {}
-
-    virtual ~sig_op_msg(){};
-
-    uint32_t index;
-    uint8_t value;
-
-    bool operator==(const sig_op_msg& o) const { return sync_msg::operator==(o) && index == o.index && value == o.value; }
-
-protected:
-    friend class ::boost::serialization::access;
-
-    template <typename Archive> void serialize(Archive& ar, const uint32_t version) {
-        ar& ::boost::serialization::base_object<sync_msg>(*this) & index& value;
-    }
-};
-EXPORT_CLASS(sig_op_msg);
-
-class log_msg : public request_message {
-public:
-    log_msg()
-    : request_message()
-    , msg("") {}
-
-    virtual ~log_msg(){};
-
-    std::string msg;
-
-    bool operator==(const log_msg& o) const { return request_message::operator==(o) && msg == o.msg; }
-
-protected:
-    friend class ::boost::serialization::access;
-
-    template <typename Archive> void serialize(Archive& ar, const uint32_t version) {
-        ar& ::boost::serialization::base_object<request_message>(*this) & msg;
-    }
-};
-EXPORT_CLASS(log_msg);
 #endif // TLM_SCC_TCP_DETAIL_MESSAGES_H_

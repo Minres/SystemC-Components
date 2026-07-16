@@ -15,37 +15,36 @@
  *******************************************************************************/
 
 #include "initiator.h"
+#include <scc/report.h>
 #include <sstream>
-namespace tlm {
-namespace scc {
-namespace tcp {
+
+namespace tcp4tlm_bridge {
 
 initiator::initiator(sc_core::sc_module_name mn)
 : sc_module(mn) {
     SC_THREAD(main_thread);
 };
 
-initiator::~initiator(){};
+initiator::~initiator() {};
 
 void initiator::main_thread() {
-    unsigned int NrOfTrans = 5;
-    unsigned int StartAddress = 0;
-    unsigned int DataLength = 4;
+    unsigned int nr_of_trans = 5;
+    unsigned int start_address = 0;
+    unsigned int data_length = 4;
     std::stringstream buf;
     tlm::tlm_generic_payload trans;
-    trans.set_address(StartAddress);
-    trans.set_data_length(DataLength);
-    unsigned char* Data = new unsigned char[DataLength];
-    trans.set_data_ptr(&Data[0]);
+    trans.set_address(start_address);
+    trans.set_data_length(data_length);
+    unsigned char* data = new unsigned char[data_length];
+    trans.set_data_ptr(&data[0]);
     // trans.set_command          ( tlm::TLM_WRITE_COMMAND );
     trans.set_command(tlm::TLM_READ_COMMAND);
     sc_core::sc_time delay;
     wait(1.0, sc_core::SC_US);
 
-    for(unsigned int i = 0; i < NrOfTrans; ++i) {
-        buf << "Info: start sending transfer on address " << trans.get_address() << " command type is " << trans.get_command()
-            << " at time " << sc_core::sc_time_stamp() << std::endl;
-        SC_REPORT_INFO("slave", buf.str().c_str());
+    for(unsigned int i = 0; i < nr_of_trans; ++i) {
+        SCCINFO(SCMOD) << "Info: start sending transfer on address " << trans.get_address() << " command type is " << trans.get_command()
+                       << " at time " << sc_core::sc_time_stamp();
         isckt->b_transport(trans, delay);
         wait(1, sc_core::SC_US);
         trans.set_address(0x4 * i);
@@ -53,6 +52,4 @@ void initiator::main_thread() {
     wait(1, sc_core::SC_US);
     sc_core::sc_stop();
 };
-} // namespace tcp
-} // namespace scc
-} // namespace tlm
+} // namespace tcp4tlm_bridge

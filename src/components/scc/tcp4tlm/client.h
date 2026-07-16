@@ -20,7 +20,7 @@
 #include "serialized_connection.h"
 #include <boost/asio.hpp>
 #include <boost/lexical_cast.hpp>
-#include <boost/thread.hpp>
+#include <thread>
 
 namespace scc {
 namespace tcp4tlm {
@@ -37,13 +37,13 @@ public:
 
     void connect();
 
-    bool is_client_connected() { return is_connected; }
+    bool is_remote_connected() { return is_connected; }
 
     connection<REQ, RESP>& client_connection(unsigned short retry_count = 0) {
         if(!is_connected)
             connect();
         while(!is_connected && retry_count > 0) {
-            LOG(INFO) << "retrying connection for " << retry_count-- << " times";
+            CPPLOG(INFO, "tcp4tlm") << "retrying connection for " << retry_count-- << " times";
             connect();
         }
         if(!is_connected)
@@ -57,7 +57,7 @@ protected:
     unsigned short retry_count;
     boost::asio::io_context io_service;
     typename connection<REQ, RESP>::ptr trace_conn;
-    bool is_connected;
+    std::atomic<bool> is_connected;
     bool local_connection;
 
 #ifdef BOOST_ASIO_HAS_LOCAL_SOCKETS
@@ -116,7 +116,7 @@ template <typename REQ, typename RESP> client<REQ, RESP>::~client() {
 }
 
 template <typename REQ, typename RESP> void client<REQ, RESP>::connect() {
-    LOG(INFO) << "connect for port " << port << " on host '" << host << "'";
+    CPPLOG(INFO, "tcp4tlm") << "connect for port " << port << " on host '" << host << "'";
     typename connection<REQ, RESP>::endpoint_t ep;
     typename connection<REQ, RESP>::socket_t& socket = trace_conn->socket();
     setup_endpoint(ep);
@@ -126,9 +126,9 @@ template <typename REQ, typename RESP> void client<REQ, RESP>::connect() {
         if(!ec)
             break;
         if(i % 10 == 0) {
-            LOG(INFO) << "retrying connection for " << i << " times with code " << ec;
+            CPPLOG(INFO, "tcp4tlm") << "retrying connection for " << i << " times with code " << ec;
         }
-        boost::this_thread::sleep_for(boost::chrono::milliseconds(250));
+        std::this_thread::sleep_for(std::chrono::milliseconds(250));
     }
     if(ec) {
         is_connected = false;

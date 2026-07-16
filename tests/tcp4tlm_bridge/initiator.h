@@ -20,11 +20,8 @@
 #include <scc/utilities.h>
 #include <systemc>
 #include <tlm_utils/simple_initiator_socket.h>
-#include <tlm_utils/simple_target_socket.h>
 
-namespace tlm {
-namespace scc {
-namespace tcp {
+namespace tcp4tlm_bridge {
 
 class initiator : public sc_core::sc_module {
 public:
@@ -37,8 +34,6 @@ public:
 protected:
     void main_thread();
 };
-} // namespace tcp
-} // namespace scc
-} // namespace tlm
+} // namespace tcp4tlm_bridge
 
 #endif // TLM_SCC_TCP_INITIATOR_H_

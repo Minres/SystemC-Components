@@ -14,36 +14,44 @@
  * limitations under the License.
  *******************************************************************************/
 
-#include <boost/asio.hpp>
-#include <boost/thread/thread.hpp>
-
-#include <time.h>
-#define DEFINE_EXPORTS_HERE
 #include "tcp4tlm_bridge.h"
+#include "scc/report.h"
+#include "scc/tcp4tlm/messages.h"
+#include "tlm/scc/tlm_extensions.h"
+#include "tlm/scc/tlm_gp_shared.h"
+#include <algorithm>
+#include <boost/asio.hpp>
+#include <chrono>
+#include <cstdint>
+#include <cstring>
+#include <ctime>
+#include <mutex>
+#include <sysc/kernel/sc_module.h>
+#include <sysc/kernel/sc_simcontext.h>
+#include <sysc/kernel/sc_time.h>
+#include <thread>
 
 #define GETCLOCK(X) clock_gettime(CLOCK_REALTIME, X)
 namespace scc {
 
-tcp4tlm_bridge::tcp4tlm_bridge(sc_core::sc_module_name name, size_t noOfPorts)
+using namespace std::chrono_literals;
+
+tcp4tlm_bridge::tcp4tlm_bridge(sc_core::sc_module_name name, size_t no_of_ports)
 : sc_core::sc_module(name)
-, tcp4tlm::server<request_message, response_message>()
-, signals("sig_o")
-, con_est(false)
-, notifyMsgReceived(false)
+, tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message>(2)
+, signals{"signals", no_of_ports}
+, next_time_stamp(16)
 #ifdef GENERATE_STATISTICS
 , rtto()
 , txt()
 , rxt()
 #endif
 {
-    if(noOfPorts) {
-        signals.init(noOfPorts);
-    }
-
     tsckt.register_b_transport(this, &tcp4tlm_bridge::btransport_cb);
     tsckt.register_transport_dbg(this, &tcp4tlm_bridge::transport_dbg_cb);
-    SC_THREAD(main_thread);
     SC_THREAD(timing_thread);
+    SC_THREAD(process_task_que);
+    SC_THREAD(process_timed_task_que);
 #ifdef GENERATE_STATISTICS
     rtto.reserve(100000);
     txt.reserve(100000);
@@ -65,9 +73,9 @@ void tcp4tlm_bridge::statistics::updateStat(unsigned long rt) {
     int idx = indexer.getIndexFromAddr(rt);
 
     if(idx < 0) {
-        LOG(ERR) << "Could not find index for " << rt;
+        SCCERR(SCMOD) << "Could not find index for " << rt;
     } else {
-        if(histogram.size() <= (unsigned)idx) {
+        if(histogram.size() <= static_cast<unsigned>(idx)) {
             histogram.resize(idx + 1);
         }
 
@@ -79,18 +87,75 @@ void tcp4tlm_bridge::statistics::updateStat(unsigned long rt) {
 #endif
 
 tcp4tlm_bridge::~tcp4tlm_bridge() {
-    if(is_server_running() && is_connection_master.get_value() && !is_shutdown_requested()) {
+    if(is_server_running() && is_connection_server.get_value() && !is_shutdown_requested()) {
         end_connection();
     }
-
     shutdown_server();
 }
 
+void tcp4tlm_bridge::end_of_elaboration() {
+    client::host = other_host_name.get_value();
+    client::port = other_host_port.get_value();
+}
+
 void tcp4tlm_bridge::start_of_simulation() {
-    if(is_connection_master.get_value()) {
-        LOG(INFO) << "starting server on port " << this_host_port.get_value();
+    if(is_connection_server.get_value()) {
+        SCCINFO(SCMOD) << "starting server on port " << this_host_port.get_value();
         start_server(this_host_port.get_value());
-    };
+    } else {
+        connect();
+        start_server(this_host_port.get_value());
+        tcp4tlm::connection<tcp4tlm::request_message, tcp4tlm::response_message>::endpoint_t lep = get_acceptor().local_endpoint();
+        auto msg = get_notify_endpoint_msg(lep);
+        const auto* endpoint = msg.root()->payload_as_NotifyEndpointMsg();
+        SCCTRACE(SCMOD) << "sending coordinates downstream '" << (endpoint->hostname() ? endpoint->hostname()->str() : std::string{}) << ":"
+                        << endpoint->port() << "' to " << host << ":" << port;
+        client_connection().write_data(msg);
+        std::shared_ptr<tcp4tlm::response_message> resp;
+        client_connection().read_data(resp);
+        if(tcp4tlm::get_status(resp ? resp->root() : nullptr) != tcp4tlm::ok) {
+            throw std::exception();
+        }
+    }
+}
+
+void tcp4tlm_bridge::end_of_simulation() {
+    if(is_server_running()) {
+        if(is_connection_server.get_value() && is_connected) {
+            end_connection();
+        }
+        request_shutdown();
+    }
+#ifdef GENERATE_STATISTICS
+    const char* stream_type = typeid(get_acceptor()) == typeid(boost::asio::ip::tcp::acceptor) ? "tcp" : "stream";
+    util::range_lut indexer;
+    for(size_t idx = 0; idx < 10; ++idx) {
+        indexer.setTargetRange(idx, idx * 10000, 10000);
+    }
+    for(size_t idx = 10; idx < 20; ++idx) {
+        indexer.setTargetRange(idx, 100000 * (idx - 9), 100000);
+    }
+    for(size_t idx = 20; idx < 30; ++idx) {
+        indexer.setTargetRange(idx, 1000000 * (idx - 19), 1000000);
+    }
+    for(size_t idx = 30; idx < 40; ++idx) {
+        indexer.setTargetRange(idx, 10000000 * (idx - 29), 10000000);
+    }
+    statistics stat_tx(indexer, 40, txt[0]), stat_send(indexer, 40, rtto[0]), stat_rx(indexer, 30, rxt[0]);
+    for(size_t i = 0; i < txt.size(); ++i) {
+        stat_tx.updateStat(txt[i]);
+        stat_send.updateStat(rtto[i]);
+        stat_rx.updateStat(rxt[i]);
+    }
+    cout << "Statistics for " << stream_type << " socket based communication" << endl;
+    cout << "Send times for " << txt.size() << " transactions in ns for writing (min,avg,max):     " << stat_tx << endl;
+    cout << "Transmit times for " << txt.size() << " transactions in ns for writing (min,avg,max): " << stat_send << endl;
+    cout << "Receive times for " << txt.size() << " transactions in ns for reading (min,avg,max):  " << stat_rx << endl;
+    stat_tx.print_histogram = true;
+    cout << "Send times histogram:" << endl << stat_tx;
+    stat_rx.print_histogram = true;
+    cout << "Receive times histogram:" << endl << stat_rx;
+#endif
 }
 
 unsigned tcp4tlm_bridge::transport_dbg_cb(tlm::tlm_generic_payload& gp) {
@@ -102,27 +167,11 @@ unsigned tcp4tlm_bridge::transport_dbg_cb(tlm::tlm_generic_payload& gp) {
 void tcp4tlm_bridge::btransport_cb(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay) { do_access(gp, delay); }
 
 void tcp4tlm_bridge::do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& delay, bool debug) {
-    if(!is_connection_master.get_value()) {
-        gp.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
-        return;
-    }
-
 #ifdef GENERATE_STATISTICS
     static timespec tstart, twser, tmid, tend;
 #endif
-
-    if(!is_client_connected()) {
-        if(is_connection_master.get_value()) {
-            tcp4tlm::connection<request_message, response_message>::endpoint_t lep = get_acceptor().local_endpoint();
-            notify_endpoint_msg msg = get_notify_endpoint_msg(lep);
-            client_connection().write_data(msg);
-        } else {
-            while(notifyMsgReceived.load(boost::memory_order_relaxed) != true) {
-                boost::this_thread::sleep_for(boost::chrono::milliseconds(100));
-            }
-        }
-    }
-
+    if(!is_remote_connected())
+        SCCFATAL(SCMOD) << "No remote connected";
     gp.set_dmi_allowed(false);
 #ifdef GENERATE_STATISTICS
 #define TIMEDIFF(X, Y) X.tv_nsec >= Y.tv_nsec ? X.tv_nsec - Y.tv_nsec : 1000000000 + X.tv_nsec - Y.tv_nsec
@@ -130,169 +179,66 @@ void tcp4tlm_bridge::do_access(tlm::tlm_generic_payload& gp, sc_core::sc_time& d
     GETCLOCK(&connection_type::get_t_stamp());
 #endif
     gp.set_response_status(tlm::TLM_GENERIC_ERROR_RESPONSE);
-    bus_op_msg bmsg;
-    bmsg.index = 0;
-    bmsg.time_stamp = sc_core::sc_time_stamp().value();
-    bmsg.time_offset = delay.value();
-    bmsg.address = gp.get_address();
-    bmsg.size = gp.get_data_length();
-    bmsg.type = debug ? debug_acc : normal_acc;
-
+    std::vector<uint8_t> byte_enable;
     if(gp.get_byte_enable_ptr()) {
-        bmsg.byte_enable.resize(gp.get_byte_enable_length());
-        std::copy(gp.get_byte_enable_ptr(), gp.get_byte_enable_ptr() + gp.get_byte_enable_length(), bmsg.byte_enable.begin());
-    } else {
-        bmsg.byte_enable.resize(0);
+        byte_enable.resize(gp.get_byte_enable_length());
+        std::copy(gp.get_byte_enable_ptr(), gp.get_byte_enable_ptr() + gp.get_byte_enable_length(), byte_enable.begin());
     }
-
     switch(gp.get_command()) {
     case tlm::TLM_READ_COMMAND: {
-        LOG(TRACE) << "Requesting a read @" << sc_core::sc_time_stamp();
+        SCCTRACE(SCMOD) << "Requesting a read @" << sc_core::sc_time_stamp();
+        auto bmsg =
+            tcp4tlm::make_bus_op_msg(sc_core::sc_time_stamp().value(), delay.value(), debug ? tcp4tlm::debug_acc : tcp4tlm::normal_acc, 0,
+                                     gp.get_address(), gp.get_data_length(), false, {}, byte_enable);
         client_connection().write_data(bmsg);
 #ifdef GENERATE_STATISTICS
         twser = connection_type::get_t_stamp();
         GETCLOCK(&tmid);
 #endif
         client_connection().read_data(resp_msg);
-
-        if(resp_msg->get_status() != ok || !resp_msg->belongs_to(&bmsg)) {
+        const auto* response = resp_msg ? resp_msg->root() : nullptr;
+        if(tcp4tlm::get_status(response) != tcp4tlm::ok || !tcp4tlm::belongs_to(response, bmsg.root())) {
             break;
         }
-
-        bus_data_msg* mresp = dynamic_cast<bus_data_msg*>(resp_msg.get());
-
-        if(mresp == NULL || mresp->data.size() != gp.get_data_length()) {
+        const auto* mresp = response->payload_as_BusDataMsg();
+        if(mresp == nullptr || mresp->data() == nullptr || mresp->data()->size() != gp.get_data_length()) {
             break;
         }
-
-        unsigned char* end = std::copy(mresp->data.begin(), mresp->data.end(), gp.get_data_ptr());
-        assert((unsigned)(end - gp.get_data_ptr()) == gp.get_data_length());
+        unsigned char* end = std::copy(mresp->data()->begin(), mresp->data()->end(), gp.get_data_ptr());
+        assert(static_cast<unsigned>(end - gp.get_data_ptr()) == gp.get_data_length());
         gp.set_response_status(tlm::TLM_OK_RESPONSE);
     } break;
     case tlm::TLM_WRITE_COMMAND: {
-        LOG(TRACE) << "Requesting a write @" << sc_core::sc_time_stamp();
-        bmsg.data.resize(gp.get_data_length());
-        bmsg.no_response = write_no_response.get_value();
-        std::copy(gp.get_data_ptr(), gp.get_data_ptr() + gp.get_data_length(), bmsg.data.begin());
+        SCCTRACE(SCMOD) << "Requesting a write @" << sc_core::sc_time_stamp();
+        std::vector<uint8_t> data(gp.get_data_length());
+        std::copy(gp.get_data_ptr(), gp.get_data_ptr() + gp.get_data_length(), data.begin());
+        auto bmsg =
+            tcp4tlm::make_bus_op_msg(sc_core::sc_time_stamp().value(), delay.value(), debug ? tcp4tlm::debug_acc : tcp4tlm::normal_acc, 0,
+                                     gp.get_address(), gp.get_data_length(), write_no_response.get_value(), data, byte_enable);
         client_connection().write_data(bmsg);
 #ifdef GENERATE_STATISTICS
         twser = connection_type::get_t_stamp();
         GETCLOCK(&tmid);
 #endif
 
-        if(bmsg.no_response) {
+        if(write_no_response.get_value()) {
             gp.set_response_status(tlm::TLM_OK_RESPONSE);
         } else {
             client_connection().read_data(resp_msg);
-            gp.set_response_status((resp_msg->get_status() == ok && resp_msg->belongs_to(&bmsg)) ? tlm::TLM_OK_RESPONSE
-                                                                                                 : tlm::TLM_GENERIC_ERROR_RESPONSE);
+            const auto* response = resp_msg ? resp_msg->root() : nullptr;
+            gp.set_response_status((tcp4tlm::get_status(response) == tcp4tlm::ok && tcp4tlm::belongs_to(response, bmsg.root()))
+                                       ? tlm::TLM_OK_RESPONSE
+                                       : tlm::TLM_GENERIC_ERROR_RESPONSE);
         }
     } break;
     default:
         break;
     }
-
 #ifdef GENERATE_STATISTICS
     GETCLOCK(&tend);
     txt.push_back(TIMEDIFF(tmid, tstart));
     rtto.push_back(TIMEDIFF(tmid, twser));
     rxt.push_back(TIMEDIFF(tend, tmid));
-#endif
-}
-
-void tcp4tlm_bridge::end_of_elaboration() {
-    host = other_host_name.get_value();
-    port = other_host_port.get_value();
-}
-
-void tcp4tlm_bridge::main_thread() {
-    if(!no_systemc_sync.get_value()) {
-        if(is_connection_master.get_value()) {
-            wait4connection();
-
-            while(true) {
-                wait(request_bus_access);
-                {
-                    sc_core::sc_time delay(sc_core::SC_ZERO_TIME);
-                    boost::unique_lock<boost::mutex> lock(gp_mtx);
-                    isckt->b_transport(gp, delay);
-                    gp_sig.notify_all();
-                }
-            }
-        } else {
-            wait4connection();
-
-            while(true) {
-                wait4command();
-
-                if(is_shutdown_requested()) {
-                    break;
-                }
-
-                if(sc_core::sc_time_stamp() < gp_timestamp) {
-                    quantumkeeper.set(gp_timestamp - sc_core::sc_time_stamp());
-                    quantumkeeper.sync();
-                }
-
-                boost::unique_lock<boost::mutex> lock(gp_mtx);
-
-                if(gp.get_command() != tlm::TLM_IGNORE_COMMAND) {
-                    isckt->b_transport(gp, gp_timeoffset);
-                }
-
-                gp_sig.notify_all();
-            }
-
-            sc_core::sc_stop();
-        }
-    }
-}
-
-void tcp4tlm_bridge::end_of_simulation() {
-    if(is_server_running()) {
-        if(is_connection_master.get_value()) {
-            end_connection();
-        } else {
-            request_shutdown();
-        }
-    }
-
-#ifdef GENERATE_STATISTICS
-    const char* stream_type = typeid(get_acceptor()) == typeid(boost::asio::ip::tcp::acceptor) ? "tcp" : "stream";
-    tlm_genip::addr_decoder indexer;
-
-    for(size_t idx = 0; idx < 10; ++idx) {
-        indexer.setTargetRange(idx, idx * 10000, 10000);
-    }
-
-    for(size_t idx = 10; idx < 20; ++idx) {
-        indexer.setTargetRange(idx, 100000 * (idx - 9), 100000);
-    }
-
-    for(size_t idx = 20; idx < 30; ++idx) {
-        indexer.setTargetRange(idx, 1000000 * (idx - 19), 1000000);
-    }
-
-    for(size_t idx = 30; idx < 40; ++idx) {
-        indexer.setTargetRange(idx, 10000000 * (idx - 29), 10000000);
-    }
-
-    statistics stat_tx(indexer, 40, txt[0]), stat_send(indexer, 40, rtto[0]), stat_rx(indexer, 30, rxt[0]);
-
-    for(size_t i = 0; i < txt.size(); ++i) {
-        stat_tx.updateStat(txt[i]);
-        stat_send.updateStat(rtto[i]);
-        stat_rx.updateStat(rxt[i]);
-    }
-
-    cout << "Statistics for " << stream_type << " socket based communication" << endl;
-    cout << "Send times for " << txt.size() << " transactions in ns for writing (min,avg,max):     " << stat_tx << endl;
-    cout << "Transmit times for " << txt.size() << " transactions in ns for writing (min,avg,max): " << stat_send << endl;
-    cout << "Receive times for " << txt.size() << " transactions in ns for reading (min,avg,max):  " << stat_rx << endl;
-    stat_tx.print_histogram = true;
-    cout << "Send times histogram:" << endl << stat_tx;
-    stat_rx.print_histogram = true;
-    cout << "Receive times histogram:" << endl << stat_rx;
 #endif
 }
 
@@ -307,212 +253,216 @@ inline long long int get_time_of_day_us() {
 }
 
 void tcp4tlm_bridge::timing_thread() {
-    const unsigned long usecsToSleep = 1000;
     wait(sc_core::SC_ZERO_TIME);
-    wait4connection();
+    // wait until the client connects. We cannot do this in start_of_simulation as we
+    // would (potentially) block the server start of other bridges
+    if(is_connection_server.get_value()) {
+        std::unique_lock<std::mutex> lock(con_est_mtx);
+        while(!con_est.load()) {
+            con_est_sig.wait_for(lock, 100ms, [this]() { return con_est.load(); });
+        }
+    }
+    // now deal with the timing
+    const auto usecs_to_sleep = 1000LL;
 #if defined __x86_64__
-    long long int checkpointUs, actUs;
-    checkpointUs = get_time_of_day_us();
-    long long int duration = usecsToSleep;
-
-    while(is_connection_master.get_value() && limit_simulation_speed.get_value()) {
-        wait(usecsToSleep, sc_core::SC_US);
-        actUs = get_time_of_day_us();
-        long long int consumed = actUs - checkpointUs;
-
-        if(consumed > 0 && duration > consumed) {
-            struct timespec tv;
-            tv.tv_sec = (time_t)(duration - consumed) / 1000000;
-            tv.tv_nsec = (long)((duration - consumed) * 1000);
-            nanosleep(&tv, &tv);
+    if(!is_connection_server.get_value())
+        return;
+    if(wall_time_simulation_speed.get_value()) {
+        SCCDEBUG(SCMOD) << "Running in wall time mode";
+        auto duration = usecs_to_sleep;
+        auto checkpoint_us = get_time_of_day_us();
+        while(true) {
+            wait(usecs_to_sleep, sc_core::SC_US);
+            auto act_us = get_time_of_day_us();
+            auto consumed = act_us - checkpoint_us;
+            if(consumed > 0 && duration > consumed) {
+                struct timespec tv;
+                tv.tv_sec = static_cast<time_t>(duration - consumed) / 1000000;
+                tv.tv_nsec = static_cast<decltype(tv.tv_nsec)>((duration - consumed) * 1000);
+                nanosleep(&tv, &tv);
+            }
+            checkpoint_us = get_time_of_day_us();
         }
-
-        checkpointUs = get_time_of_day_us();
+    } else {
+        SCCDEBUG(SCMOD) << "Running in simulated time mode";
+        while(true) {
+            while(next_time_stamp.empty()) {
+                wait(sc_core::SC_ZERO_TIME);
+                std::this_thread::yield();
+            }
+            auto next = *next_time_stamp.front();
+            SCCTRACEALL(SCMOD) << "Got time stamp, advancing to " << next;
+            next_time_stamp.pop();
+            if(next > sc_core::sc_time_stamp()) {
+                wait(next - sc_core::sc_time_stamp());
+            }
+        }
     }
-
 #else
-    boost::posix_time::ptime checkpoint = boost::posix_time::microsec_clock::local_time();
-    boost::posix_time::time_duration duration = boost::posix_time::microsec(usecsToSleep);
-
-    while(isConnectionMaster.get_value() && limitSimulationSpeed.get_value()) {
+    std::posix_time::ptime checkpoint = std::posix_time::microsec_clock::local_time();
+    std::posix_time::time_duration duration = std::posix_time::microsec(usecsToSleep);
+    if(!is_connection_server.get_value() || !limit_simulation_speed.get_value())
+        return;
+    while(true) {
         wait(usecsToSleep, sc_core::SC_US);
-        boost::posix_time::time_duration consumed = boost::posix_time::microsec_clock::local_time() - checkpoint;
-
+        std::posix_time::time_duration consumed = std::posix_time::microsec_clock::local_time() - checkpoint;
         if(duration > consumed) {
-            boost::this_thread::sleep(duration - consumed);
+            std::this_thread::sleep(duration - consumed);
         }
-
-        checkpoint = boost::posix_time::microsec_clock::local_time();
+        checkpoint = std::posix_time::microsec_clock::local_time();
     }
-
 #endif
 }
 
-void tcp4tlm_bridge::init_gp(const bus_op_msg* const msg) {
-    gp.set_response_status(tlm::TLM_INCOMPLETE_RESPONSE);
-    gp.set_address(msg->address);
-    gp.set_streaming_width(msg->size);
-    gp.set_data_length(msg->size);
+tlm::scc::tlm_gp_shared_ptr tcp4tlm_bridge::init_gp(const tcp4tlm::BusOpMsg* const msg) {
+    tlm::scc::tlm_gp_shared_ptr gp = mm.get().allocate<tlm::scc::data_buffer>();
+    auto ext = gp->get_extension<tlm::scc::data_buffer>();
+    gp->set_response_status(tlm::TLM_INCOMPLETE_RESPONSE);
+    gp->set_address(msg->address());
+    gp->set_streaming_width(msg->size());
+    gp->set_data_length(msg->size());
+    ext->set_size(msg->size());
+    gp->set_data_ptr(ext->get_buf_ptr());
+    if(msg->data() == nullptr || msg->data()->size() == 0) {
+        gp->set_command(tlm::TLM_READ_COMMAND);
+    } else {
+        gp->set_command(tlm::TLM_WRITE_COMMAND);
+        std::memcpy(gp->get_data_ptr(), msg->data()->Data(), gp->get_data_length());
+    }
+    return gp;
 }
 
-void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const request_message* const result) {
-    response_message okmsg(result);
-
-    if(typeid(*result) == typeid(notify_endpoint_msg)) {
-        LOG(TRACE) << "Got notify_endpoint_msg";
-        const notify_endpoint_msg* const msg = dynamic_cast<const notify_endpoint_msg* const>(result);
-
-        if(msg->hostname == "0.0.0.0") {
+void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::request_message* const result) {
+    const auto* request = result ? result->root() : nullptr;
+    if(request == nullptr) {
+        auto msg = tcp4tlm::make_response(uint32_t{0}, tcp4tlm::declined);
+        con->async_write(msg);
+        con->async_read();
+        return;
+    }
+    auto okmsg = tcp4tlm::make_response(request);
+    switch(request->payload_type()) {
+    case tcp4tlm::RequestPayload_NotifyEndpointMsg: {
+        SCCTRACE(SCMOD) << "Got notify_endpoint_msg";
+        const auto* msg = request->payload_as_NotifyEndpointMsg();
+        if(msg->hostname() != nullptr && msg->hostname()->str() == "0.0.0.0") {
             host = "localhost";
         } else {
-            host = msg->hostname;
+            host = msg->hostname() ? msg->hostname()->str() : std::string{};
         }
-
-        port = msg->port;
-        notifyMsgReceived.store(true, boost::memory_order_relaxed);
+        port = msg->port();
         con->write_data(okmsg);
         client_connection();
-        {
-            boost::mutex::scoped_lock lock(con_est_mtx);
-            con_est = true;
-            con_est_sig.notify_all();
-        }
-    } else if(typeid(*result) == typeid(bus_op_msg)) {
-        boost::unique_lock<boost::mutex> lock(gp_mtx);
-        {
-            boost::mutex::scoped_lock lock(cmd_rec_mxt);
-            cmd_rec_sig.notify_all();
-        }
-        const bus_op_msg* const msg = dynamic_cast<const bus_op_msg* const>(result);
-
-        if(msg->data.size() == 0) {
-            LOG(TRACE) << "Got bus_op_msg read";
-            init_gp(msg);
-            gp.set_command(tlm::TLM_READ_COMMAND);
-            bus_data_msg dmsg(msg);
-            dmsg.data.resize(msg->size);
-            gp.set_data_ptr(&(dmsg.data[0]));
-
-            if(no_systemc_sync.get_value()) {
-                sc_core::sc_time delay(sc_core::SC_ZERO_TIME);
-                isckt->b_transport(gp, delay);
-            } else {
-                gp_timestamp = sc_core::sc_time((sc_dt::uint64)msg->time_stamp, false);
-                gp_timeoffset = sc_core::sc_time((sc_dt::uint64)msg->time_offset, false);
-                request_bus_access.notify(sc_core::SC_ZERO_TIME);
-
-                while(gp.get_response_status() == tlm::TLM_INCOMPLETE_RESPONSE) {
-                    gp_sig.wait(lock);
-                }
-            }
-
-            if(gp.get_response_status() == tlm::TLM_OK_RESPONSE) {
+        con_est = true;
+        con_est_sig.notify_all();
+    } break;
+    case tcp4tlm::RequestPayload_BusOpMsg: {
+        const auto* msg = request->payload_as_BusOpMsg();
+        auto time_point = sc_core::sc_time::from_value(msg->time_stamp());
+        callback_task task([this, msg, con]() {
+            auto gp = init_gp(msg);
+            auto delay = sc_core::sc_time::from_value(msg->time_offset());
+            isckt->b_transport(*gp, delay);
+            if(gp->is_read()) {
+                auto* ext = gp->get_extension<tlm::scc::data_buffer>();
+                auto dmsg = tcp4tlm::make_bus_data_msg(msg->id(), ext->data(),
+                                                       gp->get_response_status() == tlm::TLM_OK_RESPONSE ? tcp4tlm::ok : tcp4tlm::failure);
                 con->async_write(dmsg);
-            } else {
-                response_message failmsg(result, failure);
+            } else if(gp->get_response_status() != tlm::TLM_OK_RESPONSE) {
+                auto failmsg = tcp4tlm::make_response(msg->id(), tcp4tlm::failure);
                 con->async_write(failmsg);
+            } else if(!msg->no_response()) {
+                auto okmsg = tcp4tlm::make_response(msg->id());
+                con->async_write(okmsg);
             }
-        } else {
-            LOG(TRACE) << "Got bus_op_msg write";
-            init_gp(msg);
-            gp.set_command(tlm::TLM_WRITE_COMMAND);
-            gp.set_data_ptr(const_cast<unsigned char*>(&(msg->data[0])));
-
-            if(no_systemc_sync.get_value()) {
-                sc_core::sc_time delay(sc_core::SC_ZERO_TIME);
-                isckt->b_transport(gp, delay);
-            } else {
-                gp_timestamp = sc_core::sc_time((sc_dt::uint64)msg->time_stamp, false);
-                gp_timeoffset = sc_core::sc_time((sc_dt::uint64)msg->time_offset, false);
-                request_bus_access.notify(sc_core::SC_ZERO_TIME);
-
-                while(gp.get_response_status() == tlm::TLM_INCOMPLETE_RESPONSE) {
-                    gp_sig.wait(lock);
-                }
-            }
-
-            if(!msg->no_response) {
-                if(gp.get_response_status() == tlm::TLM_OK_RESPONSE) {
-                    con->async_write(okmsg);
-                } else {
-                    response_message failmsg(result, failure);
-                    con->async_write(failmsg);
-                }
-            }
+            return true;
+        });
+        std::future<bool> fut = task.get_future();
+        timed_task tup{std::move(task), time_point};
+        task_que.emplace(std::move(tup));
+        next_time_stamp.push(time_point);
+        fut.wait();
+        fut.get();
+    } break;
+    case tcp4tlm::RequestPayload_SyncMsg: {
+        SCCTRACE(SCMOD) << "Got sync_msg";
+        // TODO: checkif this is correct
+        if(!is_connection_server.get_value()) {
+            const auto* msg = request->payload_as_SyncMsg();
+            auto time_point = sc_core::sc_time::from_value(msg->time_stamp());
+            next_time_stamp.push(time_point);
         }
-    } else if(typeid(*result) == typeid(sync_msg)) {
-        LOG(TRACE) << "Got sync_msg";
-
-        if(!is_connection_master.get_value()) {
-            boost::unique_lock<boost::mutex> lock(gp_mtx);
-            {
-                boost::mutex::scoped_lock lock(cmd_rec_mxt);
-                cmd_rec_sig.notify_all();
-            }
-            gp.set_command(tlm::TLM_IGNORE_COMMAND);
-            gp_timestamp = sc_core::sc_time((sc_dt::uint64) dynamic_cast<const sync_msg* const>(result)->time_stamp, false);
-            request_bus_access.notify(sc_core::SC_ZERO_TIME);
-
-            while(gp.get_response_status() == tlm::TLM_INCOMPLETE_RESPONSE) {
-                gp_sig.wait(lock);
-            }
-        }
-
         con->async_write(okmsg);
-    } else if(typeid(*result) == typeid(sig_op_msg)) {
-        LOG(TRACE) << "Got sig_op_msg";
-        const sig_op_msg* const msg = dynamic_cast<const sig_op_msg* const>(result);
-
-        if(signals.size() > msg->index) {
-            signals[msg->index] = msg->value;
+    } break;
+    case tcp4tlm::RequestPayload_SigOpMsg: {
+        SCCTRACE(SCMOD) << "Got sig_op_msg";
+        const auto* msg = request->payload_as_SigOpMsg();
+        if(signals.size() > msg->index()) {
+            callback_task task([this, &msg]() {
+                signals[msg->index()] = msg->value();
+                return true;
+            });
+            std::future<bool> fut = task.get_future();
+            timed_task tup{std::move(task), sc_core::SC_ZERO_TIME};
+            task_que.emplace(std::move(tup));
+            fut.wait();
+            fut.get();
             con->async_write(okmsg);
         } else {
-            response_message msg(result, declined);
-            con->async_write(msg);
+            auto declined_msg = tcp4tlm::make_response(request, tcp4tlm::declined);
+            con->async_write(declined_msg);
         }
-    } else if(typeid(*result) == typeid(notify_shutdown_msg)) {
-        LOG(TRACE) << "Got notify_shutdown_msg";
-
-        if(!is_connection_master.get_value()) {
-            client_connection().socket().close();
-
-            if(is_server_running()) {
-                request_shutdown();
-            }
-
-            cmd_rec_sig.notify_all();
+    } break;
+    case tcp4tlm::RequestPayload_NotifyShutdownMsg: {
+        SCCTRACE(SCMOD) << "Got notify_shutdown_msg";
+        client_connection().socket().close();
+        is_connected = false;
+        if(is_server_running()) {
+            request_shutdown();
         }
-
+        callback_task task([this]() {
+            this->shutdown_evt.notify(sc_core::SC_ZERO_TIME);
+            return true;
+        });
+        std::future<bool> fut = task.get_future();
+        timed_task tup{std::move(task), sc_core::SC_ZERO_TIME};
+        task_que.emplace(std::move(tup));
+        fut.wait();
+        fut.get();
         return;
-    } else {
-        LOG(WARN) << "Got an unknown message";
-        response_message msg(result, declined);
-        con->async_write(msg);
     }
-
+    default: {
+        SCCWARN(SCMOD) << "Got an unhandled message";
+        auto msg = tcp4tlm::make_response(request, tcp4tlm::declined);
+        con->async_write(msg);
+    } break;
+    }
     con->async_read();
 }
 
-void tcp4tlm_bridge::initiate_connection(unsigned short retry_count) {
-    if(!is_server_running()) {
-        connect();
-        start_server(this_host_port.get_value());
-        tcp4tlm::connection<request_message, response_message>::endpoint_t lep = get_acceptor().local_endpoint();
-        notify_endpoint_msg msg = get_notify_endpoint_msg(lep);
-        LOG(INFO) << "sending coordinates downstream '" << msg.hostname << ":" << msg.port << "' to " << host << ":" << port;
-        client_connection().write_data(msg);
-        response_message* resp;
-        client_connection().read_data(resp);
-
-        if(resp->get_status() != ok) {
-            throw std::exception();
+void tcp4tlm_bridge::process_task_que() {
+    timed_task res;
+    while(true) {
+        wait(task_que.data_event());
+        auto success = task_que.try_get(res);
+        if(success) {
+            SCCTRACEALL(SCMOD) << "Got a task @" << res.timepoint;
+            if(no_systemc_sync.get_value() || sc_core::sc_time_stamp() > res.timepoint) {
+                res.t();
+            } else {
+                auto time_point = res.timepoint - sc_core::sc_time_stamp();
+                timed_task_que.notify(std::move(res.t), time_point);
+            }
         }
+    }
+}
 
-        {
-            boost::mutex::scoped_lock lock(con_est_mtx);
-            con_est = true;
-            con_est_sig.notify_all();
-        }
+void tcp4tlm_bridge::process_timed_task_que() {
+    while(true) {
+        wait(timed_task_que.event());
+        auto task = timed_task_que.get();
+        SCCTRACEALL(SCMOD) << "Executing a task";
+        task();
     }
 }
 

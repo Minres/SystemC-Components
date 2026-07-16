@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef TLM_SCC_TCP_DETAIL_I_SERVER_H_
-#define TLM_SCC_TCP_DETAIL_I_SERVER_H_
+#ifndef TLM_SCC_TCP4TLM_I_SERVER_H_
+#define TLM_SCC_TCP4TLM_I_SERVER_H_
 
 #include "serialized_connection.h"
 #include <boost/asio.hpp>
@@ -26,12 +26,12 @@ namespace tcp4tlm {
 template <typename REQ, typename RESP> struct i_server {
     virtual ~i_server() {}
     virtual boost::asio::io_context& get_io_service() = 0;
-    virtual void server_send_completed(boost::shared_ptr<connection<RESP, REQ>>& con, bool established = false) = 0;
-    virtual void server_receive_completed(boost::shared_ptr<connection<RESP, REQ>>& con, const REQ* const result) = 0;
+    virtual void server_send_completed(std::shared_ptr<connection<RESP, REQ>>& con, bool established = false) = 0;
+    virtual void server_receive_completed(std::shared_ptr<connection<RESP, REQ>>& con, const REQ* const result) = 0;
     virtual bool is_shutdown_requested() { return false; }
 };
 
 } // namespace tcp4tlm
 } // namespace scc
 
-#endif // TLM_SCC_TCP_DETAIL_I_SERVER_H_
+#endif // TLM_SCC_TCP4TLM_I_SERVER_H_

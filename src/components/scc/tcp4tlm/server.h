@@ -14,21 +14,19 @@
  * limitations under the License.
  *******************************************************************************/
 
-#ifndef TLM_SCC_TCP_DETAIL_SERVER_H
-#define TLM_SCC_TCP_DETAIL_SERVER_H
+#ifndef TLM_SCC_TCP4TLM_SERVER
+#define TLM_SCC_TCP4TLM_SERVER
 
 #include "i_server.h"
-#include <boost/enable_shared_from_this.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/thread.hpp>
-#include <functional>
 #include <util/logging.h>
 
 namespace scc {
 namespace tcp4tlm {
 
 template <typename REQ, typename RESP> class server : public i_server<REQ, RESP> {
-    typedef typename boost::shared_ptr<connection<RESP, REQ>> con_ptr;
+    typedef typename std::shared_ptr<connection<RESP, REQ>> con_ptr;
     typedef typename connection<RESP, REQ>::async_listener con_listener;
 
     struct forward_session : public con_listener {
@@ -41,20 +39,20 @@ template <typename REQ, typename RESP> class server : public i_server<REQ, RESP>
         con_ptr& get_connection() { return conn_shptr; }
 
         bool start() {
-            boost::shared_ptr<con_listener> ptr = boost::enable_shared_from_this<con_listener>::shared_from_this();
+            std::shared_ptr<con_listener> ptr = std::enable_shared_from_this<con_listener>::shared_from_this();
             conn_shptr->add_listener(ptr);
             typename connection<RESP, REQ>::endpoint_t endpoint = conn_shptr->socket().remote_endpoint();
-            LOG(DEBUG) << "forward_session::start(), got connected";
+            CPPLOG(TRACE, "tcp4tlm") << "forward_session::start(), got connected";
             server_instance->server_send_completed(conn_shptr, true);
             return server_instance->is_shutdown_requested();
         }
 
         void receive_completed(const boost::system::error_code& e, const REQ* const data) {
             if(e.value() == 2) {
-                LOG(WARN) << "Client closed connection (" << e.message() << ")";
+                CPPLOG(WARN, "tcp4tlm") << "Client closed connection (" << e.message() << ")";
                 return;
             } else if(e) {
-                LOG(ERR) << "Communication error (" << e.message() << ")";
+                CPPLOG(ERR, "tcp4tlm") << "Communication error (" << e.message() << ")";
                 return;
             }
             server_instance->server_receive_completed(conn_shptr, data);
@@ -64,7 +62,7 @@ template <typename REQ, typename RESP> class server : public i_server<REQ, RESP>
             if(!e) {
                 server_instance->server_send_completed(conn_shptr);
             } else {
-                LOG(ERR) << e.message() << "(" << e << ")";
+                CPPLOG(ERR, "tcp4tlm") << e.message() << "(" << e << ")";
             }
         }
 
@@ -87,15 +85,17 @@ public:
     virtual ~server() {}
 
 #ifdef BOOST_ASIO_HAS_LOCAL_SOCKETS
-    long set_acceptor_endpoint(boost::shared_ptr<boost::asio::local::stream_protocol::acceptor>& a, unsigned short port);
+    long set_acceptor_endpoint(std::shared_ptr<boost::asio::local::stream_protocol::acceptor>& a, unsigned short port);
 #endif
-    long set_acceptor_endpoint(boost::shared_ptr<boost::asio::ip::tcp::acceptor>& a, unsigned short port);
+    long set_acceptor_endpoint(std::shared_ptr<boost::asio::ip::tcp::acceptor>& a, unsigned short port);
 
     void start_server(unsigned short port, char* name = NULL);
 
     void request_shutdown() {
-        shutdown_requested = true;
-        io_service.stop();
+        if(!shutdown_requested) {
+            shutdown_requested = true;
+            io_service.stop();
+        }
     }
 
     bool is_shutdown_requested() { return shutdown_requested; }
@@ -107,7 +107,7 @@ public:
     bool is_server_running() { return server_running; }
 
     void create_new_session() {
-        boost::shared_ptr<forward_session> forward_session_ptr(new forward_session(this));
+        std::shared_ptr<forward_session> forward_session_ptr(new forward_session(this));
         acceptor->async_accept(
             forward_session_ptr->get_connection()->socket(),
             [this, forward_session_ptr](const boost::system::error_code& error) { handle_accept(error, forward_session_ptr); });
@@ -117,19 +117,19 @@ protected:
     const typename connection<RESP, REQ>::acceptor_t& get_acceptor() { return *acceptor; };
 
 private:
-    void handle_accept(const boost::system::error_code& e, boost::shared_ptr<forward_session> session) {
+    void handle_accept(const boost::system::error_code& e, std::shared_ptr<forward_session> session) {
         if(!e) {
             if(!session->start())
                 create_new_session();
         } else {
-            LOG(ERR) << e.message();
+            CPPLOG(ERR, "tcp4tlm") << e.message();
         }
     }
 
     std::size_t thread_pool_size;
     boost::asio::io_context io_service;
-    boost::shared_ptr<boost::asio::executor_work_guard<boost::asio::io_context::executor_type>> io_service_work;
-    boost::shared_ptr<typename connection<RESP, REQ>::acceptor_t> acceptor;
+    std::shared_ptr<boost::asio::executor_work_guard<boost::asio::io_context::executor_type>> io_service_work;
+    std::shared_ptr<typename connection<RESP, REQ>::acceptor_t> acceptor;
     boost::thread_group threads;
     bool server_running;
     bool shutdown_requested;
@@ -137,7 +137,7 @@ private:
 
 #ifdef BOOST_ASIO_HAS_LOCAL_SOCKETS
 template <typename REQ, typename RESP>
-long server<REQ, RESP>::set_acceptor_endpoint(boost::shared_ptr<boost::asio::local::stream_protocol::acceptor>& a, unsigned short port) {
+long server<REQ, RESP>::set_acceptor_endpoint(std::shared_ptr<boost::asio::local::stream_protocol::acceptor>& a, unsigned short port) {
     std::string s("/tmp/server");
     s += boost::lexical_cast<std::string>(port ? port : getpid());
     boost::asio::local::stream_protocol::endpoint endpoint(s);
@@ -150,7 +150,7 @@ long server<REQ, RESP>::set_acceptor_endpoint(boost::shared_ptr<boost::asio::loc
 #endif
 
 template <typename REQ, typename RESP>
-long server<REQ, RESP>::set_acceptor_endpoint(boost::shared_ptr<boost::asio::ip::tcp::acceptor>& a, unsigned short port) {
+long server<REQ, RESP>::set_acceptor_endpoint(std::shared_ptr<boost::asio::ip::tcp::acceptor>& a, unsigned short port) {
     unsigned short retry_count = 128;
     bool connected = false;
     do {
@@ -165,14 +165,16 @@ long server<REQ, RESP>::set_acceptor_endpoint(boost::shared_ptr<boost::asio::ip:
         } catch(std::exception& ex) {
             port++;
             retry_count--;
-            LOG(DEBUG) << "Got '" << ex.what() << "', retrying with port " << port;
+            CPPLOG(DEBUG, "tcp4tlm") << "Got '" << ex.what() << "', retrying with port " << port;
         }
     } while(!connected && retry_count > 0 && port <= 0xffff);
     return connected ? port : -1;
 }
 
 template <typename REQ, typename RESP> void server<REQ, RESP>::start_server(unsigned short port, char* name) {
-    LOG(INFO) << "starting tcp server listening on port " << port;
+    if(server_running)
+        return;
+    CPPLOG(INFO, "tcp4tlm") << "starting tcp server listening on port " << port;
     io_service_work.reset(new boost::asio::executor_work_guard<boost::asio::io_context::executor_type>(io_service.get_executor()));
     for(std::size_t i = 0; i < thread_pool_size; ++i) {
         threads.create_thread([this]() { io_service.run(); });
@@ -181,19 +183,19 @@ template <typename REQ, typename RESP> void server<REQ, RESP>::start_server(unsi
     if(actual_port < 0)
         throw new std::runtime_error(std::string("Could not open socket!"));
     if(actual_port != (long)port) {
-        LOG(WARN) << "starting the listening acceptor on " << boost::asio::ip::host_name() << ":" << actual_port << " (instead of port "
-                  << port << ")";
+        CPPLOG(TRACE, "tcp4tlm") << "starting the listening acceptor on " << boost::asio::ip::host_name() << ":" << actual_port
+                                 << " (instead of port " << port << ")";
     } else {
-        LOG(INFO) << "starting the listening acceptor on " << boost::asio::ip::host_name() << ":" << port;
+        CPPLOG(DEBUG, "tcp4tlm") << "starting the listening acceptor on " << boost::asio::ip::host_name() << ":" << port;
     }
     acceptor->listen();
-    LOG(INFO) << "create_new_session";
+    CPPLOG(TRACE, "tcp4tlm") << "create_new_session";
     create_new_session();
     server_running = true;
 }
 
 template <typename REQ, typename RESP> void server<REQ, RESP>::shutdown_server() {
-    LOG(INFO) << "shutting down tcp server";
+    CPPLOG(TRACE, "tcp4tlm") << "shutting down tcp server";
     io_service.stop();
     io_service_work.reset();
     threads.interrupt_all();
@@ -204,4 +206,4 @@ template <typename REQ, typename RESP> void server<REQ, RESP>::shutdown_server()
 } // namespace tcp4tlm
 } // namespace scc
 
-#endif // TLM_SCC_TCP_DETAIL_SERVER
+#endif // TLM_SCC_TCP4TLM_SERVER
