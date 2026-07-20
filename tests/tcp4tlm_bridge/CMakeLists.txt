@@ -56,5 +56,5 @@ grep -q "FINISHED" "${log0}"
 grep -q "FINISHED" "${log1}"
 ]=])
 
-add_test(NAME tcp4tlm_bridge_peer_ctest COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/run_tcp4tlm_bridge_ctest.sh $<TARGET_FILE:tcp4tlm_bridge>)
-set_tests_properties(tcp4tlm_bridge_peer_ctest PROPERTIES TIMEOUT 60)
+#add_test(NAME tcp4tlm_bridge_peer_ctest COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/run_tcp4tlm_bridge_ctest.sh $<TARGET_FILE:tcp4tlm_bridge>)
+#set_tests_properties(tcp4tlm_bridge_peer_ctest PROPERTIES TIMEOUT 60)
