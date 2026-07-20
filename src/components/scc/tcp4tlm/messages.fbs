@@ -1,0 +1,91 @@
+namespace scc.tcp4tlm;
+
+// FlatBuffers does not support table inheritance, so the fields from
+// request_message, response_message, and sync_msg are repeated in each
+// derived table.
+
+enum ResponseStatus : ubyte {
+  OK = 0,
+  ACCEPTED = 1,
+  DELAYED = 2,
+  DECLINED = 3,
+  FAILURE = 4
+}
+
+enum BusAccessType : ubyte {
+  NORMAL_ACC = 0,
+  DEBUG_ACC = 1
+}
+
+table NotifyEndpointMsg {
+  id:uint;
+  hostname:string;
+  port:ushort;
+}
+
+table NotifyShutdownMsg {
+  id:uint;
+}
+
+table SyncMsg {
+  id:uint;
+  time_stamp:ulong;
+}
+
+table BusOpMsg {
+  id:uint;
+  time_stamp:ulong;
+  time_offset:ulong;
+  type:BusAccessType = NORMAL_ACC;
+  index:uint;
+  address:ulong;
+  size:uint;
+  no_response:bool = false;
+  data:[ubyte];
+  byte_enable:[ubyte];
+}
+
+table ResponseMsg {
+  status:ResponseStatus = OK;
+  req_id:uint;
+}
+
+table BusDataMsg {
+  status:ResponseStatus = OK;
+  req_id:uint;
+  data:[ubyte];
+}
+
+table SigOpMsg {
+  id:uint;
+  time_stamp:ulong;
+  index:uint;
+  value:ubyte;
+}
+
+table LogMsg {
+  id:uint;
+  msg:string;
+}
+
+union RequestPayload {
+  NotifyEndpointMsg,
+  NotifyShutdownMsg,
+  SyncMsg,
+  BusOpMsg,
+  SigOpMsg,
+  LogMsg
+}
+
+union ResponsePayload {
+  ResponseMsg,
+  BusDataMsg
+}
+
+table RequestEnvelope {
+  payload:RequestPayload;
+}
+
+table ResponseEnvelope {
+  payload:ResponsePayload;
+}
