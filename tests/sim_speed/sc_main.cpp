@@ -5,7 +5,7 @@
 using namespace sc_core;
 
 int sc_main(int argc, char* argv[]) {
-    const uint64_t NS_VAL = 100000000;
+    constexpr auto NS_VAL = 100000000.0;
 
     sc_clock clk("clk", 1, SC_NS);
     sc_time run_time(NS_VAL, SC_NS);

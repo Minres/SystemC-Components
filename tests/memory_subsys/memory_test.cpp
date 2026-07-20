@@ -100,7 +100,7 @@ TEST_CASE("scattered_access", "[memory][tlm-level]") {
         REQUIRE(read_buf[3] == 0x00u);
     };
     f(0x100);
-    constexpr uint64_t kPageSize = dut.mem3.getPageSize();
+    const uint64_t kPageSize = dut.mem3.getPageSize();
     f(kPageSize - 2);
 }
 
@@ -119,7 +119,7 @@ TEST_CASE("dmi_high_range_wrap_regression", "[memory][tlm-level]") {
 
 TEST_CASE("page_boundary_check", "[memory][tlm-level]") {
     auto& dut = factory::get<testbench>();
-    constexpr uint64_t kPageSize = dut.mem3.getPageSize();
+    const uint64_t kPageSize = dut.mem3.getPageSize();
 
     std::array<uint8_t, 2> write_data{{0xAAu, 0xBBu}};
     tlm::tlm_generic_payload write;

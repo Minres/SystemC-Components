@@ -103,84 +103,84 @@ template <> void sc_trace(sc_trace_file* tf, const sc_inout<sc_time>& value, con
  * @param val
  * @return
  */
-inline sc_core::sc_time operator"" _sec(long double val) { return sc_core::sc_time(val, sc_core::SC_SEC); }
+inline sc_core::sc_time operator""_sec(long double val) { return sc_core::sc_time(val, sc_core::SC_SEC); }
 /**
  * UDL for second
  *
  * @param val
  * @return
  */
-inline sc_core::sc_time operator"" _sec(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_SEC); }
+inline sc_core::sc_time operator""_sec(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_SEC); }
 /**
  * UDL for millisecond
  *
  * @param val
  * @return
  */
-inline sc_core::sc_time operator"" _ms(long double val) { return sc_core::sc_time(val, sc_core::SC_MS); }
+inline sc_core::sc_time operator""_ms(long double val) { return sc_core::sc_time(val, sc_core::SC_MS); }
 /**
  * UDL for millisecond
  *
  * @param val
  * @return
  */
-inline sc_core::sc_time operator"" _ms(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_MS); }
+inline sc_core::sc_time operator""_ms(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_MS); }
 /**
  * UDL for microsecond
  *
  * @param val
  * @return
  */
-inline sc_core::sc_time operator"" _us(long double val) { return sc_core::sc_time(val, sc_core::SC_US); }
+inline sc_core::sc_time operator""_us(long double val) { return sc_core::sc_time(val, sc_core::SC_US); }
 /**
  * UDL for microsecond
  *
  * @param val
  * @return
  */
-inline sc_core::sc_time operator"" _us(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_US); }
+inline sc_core::sc_time operator""_us(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_US); }
 /**
  * UDL for nanosecond
  *
  * @param val
  * @return
  */
-inline sc_core::sc_time operator"" _ns(long double val) { return sc_core::sc_time(val, sc_core::SC_NS); }
+inline sc_core::sc_time operator""_ns(long double val) { return sc_core::sc_time(val, sc_core::SC_NS); }
 /**
  * UDL for nanosecond
  *
  * @param val
  * @return
  */
-inline sc_core::sc_time operator"" _ns(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_NS); }
+inline sc_core::sc_time operator""_ns(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_NS); }
 /**
  * UDL for picosecond
  *
  * @param val
  * @return
  */
-inline sc_core::sc_time operator"" _ps(long double val) { return sc_core::sc_time(val, sc_core::SC_PS); }
+inline sc_core::sc_time operator""_ps(long double val) { return sc_core::sc_time(val, sc_core::SC_PS); }
 /**
  * UDL for picosecond
  *
  * @param val
  * @return
  */
-inline sc_core::sc_time operator"" _ps(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_PS); }
+inline sc_core::sc_time operator""_ps(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_PS); }
 /**
  * UDL for femtosecond
  *
  * @param val
  * @return
  */
-inline sc_core::sc_time operator"" _fs(long double val) { return sc_core::sc_time(val, sc_core::SC_FS); }
+inline sc_core::sc_time operator""_fs(long double val) { return sc_core::sc_time(val, sc_core::SC_FS); }
 /**
  * UDL for femtosecond
  *
  * @param val
  * @return
  */
-inline sc_core::sc_time operator"" _fs(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_FS); }
+inline sc_core::sc_time operator""_fs(unsigned long long val) { return sc_core::sc_time(double(val), sc_core::SC_FS); }
 
 namespace scc {
 

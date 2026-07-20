@@ -49,7 +49,8 @@ class bzip2_stream : public std::istream {
 public:
     bzip2_stream() = delete;
     explicit bzip2_stream(const std::string& path)
-    : buf_(path) {
+    : std::istream(&buf_)
+    , buf_(path) {
         rdbuf(&buf_);
     }
 

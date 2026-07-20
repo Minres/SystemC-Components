@@ -90,7 +90,7 @@ struct top_module : ::sc_core ::sc_module {
 
     void b_transport(tlm::tlm_generic_payload& gp, sc_core::sc_time& t) {
         SCCDEBUG(SCMOD) << "Received b_transport call at local time " << t;
-        auto cycles = rng.uniform(0, 5);
+        double cycles = rng.uniform(0, 5);
         t += sc_core::sc_time(cycles, sc_core::SC_US);
         gp.set_response_status(tlm::TLM_OK_RESPONSE);
     }

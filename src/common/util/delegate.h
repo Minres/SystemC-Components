@@ -84,13 +84,9 @@ public:
     : store_(operator new(sizeof(typename ::std::decay<T>::type)), functor_deleter<typename ::std::decay<T>::type>)
     , store_size_(sizeof(typename ::std::decay<T>::type)) {
         using functor_type = typename ::std::decay<T>::type;
-
         new(store_.get()) functor_type(::std::forward<T>(f));
-
         object_ptr_ = store_.get();
-
         stub_ptr_ = functor_stub<functor_type>;
-
         deleter_ = deleter_stub<functor_type>;
     }
 
@@ -106,9 +102,8 @@ public:
     delegate& operator=(T&& f) {
         using functor_type = typename ::std::decay<T>::type;
 
-        if((sizeof(functor_type) > store_size_) || !store_.unique()) {
+        if((sizeof(functor_type) > store_size_) || store_.use_count() != 1) {
             store_.reset(operator new(sizeof(functor_type)), functor_deleter<functor_type>);
-
             store_size_ = sizeof(functor_type);
         } else {
             deleter_(store_.get());

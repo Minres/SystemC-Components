@@ -177,19 +177,19 @@ template <unsigned int bit, unsigned int width, typename T> inline constexpr typ
 }
 
 //! UDL for kilobyte
-inline constexpr uint64_t operator"" _kB(unsigned long long val) { return val * 1 << 10; }
+inline constexpr uint64_t operator""_kB(unsigned long long val) { return val * 1 << 10; }
 //! UDL for megabyte
-inline constexpr uint64_t operator"" _MB(unsigned long long val) { return val * 1 << 20; }
+inline constexpr uint64_t operator""_MB(unsigned long long val) { return val * 1 << 20; }
 //! UDL for gigabyte
-inline constexpr uint64_t operator"" _GB(unsigned long long val) { return val * 1 << 30; }
+inline constexpr uint64_t operator""_GB(unsigned long long val) { return val * 1 << 30; }
 
-inline constexpr uint64_t operator"" _KiB(unsigned long long val) { return val * 1 << 10; }
+inline constexpr uint64_t operator""_KiB(unsigned long long val) { return val * 1 << 10; }
 //! UDL for megabyte
-inline constexpr uint64_t operator"" _MiB(unsigned long long val) { return val * 1 << 20; }
+inline constexpr uint64_t operator""_MiB(unsigned long long val) { return val * 1 << 20; }
 //! UDL for gigabyte
-inline constexpr uint64_t operator"" _GiB(unsigned long long val) { return val * 1 << 30; }
+inline constexpr uint64_t operator""_GiB(unsigned long long val) { return val * 1 << 30; }
 //! UDL for gigabyte
-inline constexpr uint64_t operator"" _TiB(unsigned long long val) { return val * 1 << 40; }
+inline constexpr uint64_t operator""_TiB(unsigned long long val) { return val * 1 << 40; }
 
 //! @brief SCC common utilities
 namespace util {

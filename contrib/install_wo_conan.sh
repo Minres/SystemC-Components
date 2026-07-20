@@ -8,16 +8,25 @@ SCRIPTDIR=`dirname "$SCRIPT"`
 SCRIPTNAME=`basename "$SCRIPT"`
 
 function print_help {
-    echo "Usage: $SCRIPTNAME [-h] [-c] <install dir>"
+    echo "Usage: $SCRIPTNAME [-h] [-c] [--deps_only] <install dir>"
     echo "Build SCC installation from tar files"
     echo "Optional cli arguments:"
     echo "  -h              print help"
     echo "  -c              clean build and install directory before building"
+    echo "  --deps_only     build only third-party dependencies, not SystemC or SCC"
 }
 
 CLEAN=0
+DEPS_ONLY=0
 
 while [ $# -gt 0 ]; do
+    case "$1" in
+        --deps_only)
+            DEPS_ONLY=1
+            shift
+            continue
+            ;;
+    esac
     unset OPTIND
     unset OPTARG
     while getopts hc  options; do
@@ -60,7 +69,7 @@ else
     YAML_LIBDIR=-DLIB_SUFFIX=64
 fi
 # we need to keep CMAKE_POLICY_VERSION_MINIMUM=3.5 unless yaml-cpp, SystemC & SystemC-AMS have fixed their build system
-CMAKE_COMMON_SETTINGS="-DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DBUILD_SHARED_LIBS=OFF -DCMAKE_CXX_STANDARD=${CXX_STD} -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+CMAKE_COMMON_SETTINGS="-DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DBUILD_SHARED_LIBS=OFF -DCMAKE_CXX_STANDARD=${CXX_STD} -DCMAKE_POLICY_VERSION_MINIMUM=3.24 -DCMAKE_POSITION_INDEPENDENT_CODE=ON"
 BOOST_SETTINGS="link=static cxxflags='-std=c++${CXX_STD}'"
 set -eup -o pipefail
 ############################################################################################
@@ -74,7 +83,7 @@ fi
 #
 ############################################################################################
 function build_boost {
-    export BOOST_LIB_EXCLUDE=contract,fiber,graph,graph_parallel,iostreams,json,locale,log,math,mpi,nowide,python,random,test,timer,wave
+    export BOOST_LIB_EXCLUDE=contract,fiber,graph,graph_parallel,iostreams,json,locale,log,math,mpi,nowide,python,random,stacktrace,test,timer,wave
 
     if [ ! -d boost_1_89_0 ]; then
         [ -f boost_1_89_0.tar.bz2 ] || wget https://archives.boost.io/release/1.89.0/source/boost_1_89_0.tar.bz2
@@ -148,6 +157,21 @@ function build_lz4 {
     export PKG_CONFIG_PATH=${SCC_INSTALL}/lib64/pkgconfig
 }
 ############################################################################################
+# zstd-1.5.7.tar.gz
+############################################################################################
+function build_zstd {
+    if [ ! -d zstd ]; then
+        if [ ! -f zstd-1.5.7.tar.gz ]; then
+            git clone --depth 1 --branch v1.5.7 -c advice.detachedHead=false https://github.com/facebook/zstd.git
+            tar czf zstd-1.5.7.tar.gz --exclude=.git zstd
+        else
+            tar xzf zstd-1.5.7.tar.gz
+        fi
+    fi
+    cmake -S zstd/build/cmake -B build/zstd ${CMAKE_COMMON_SETTINGS} -DCMAKE_INSTALL_PREFIX=${SCC_INSTALL} || exit 1
+    cmake --build build/zstd -j 10 --target install || exit 2
+}
+############################################################################################
 #
 ############################################################################################
 function build_systemc {
@@ -202,6 +226,9 @@ build_boost
 build_fmt
 build_spdlog
 build_yamlcpp
-build_systemc
-build_systemc_ams
-build_scc
+build_zstd
+if [ ${DEPS_ONLY} -eq 0 ]; then
+    build_systemc
+    build_systemc_ams
+    build_scc
+fi
