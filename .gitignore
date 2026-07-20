@@ -11,3 +11,5 @@
 /.cache
 /install
 /*.zst
+/tmp
+*.log
