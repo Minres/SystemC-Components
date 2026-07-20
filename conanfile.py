@@ -54,13 +54,14 @@ class Pkg(ConanFile):
         self.requires("flatbuffers/25.9.23")
 
     def build_requirements(self):
-        if self.settings.compiler.cppstd:
-            cppstd = str(self.settings.compiler.cppstd).replace("gnu", "")
-            if int(cppstd) > 14:
+        if 'USE_DOXYGEN_FROM_CONAN' in os.environ:
+            if self.settings.compiler.cppstd:
+                cppstd = str(self.settings.compiler.cppstd).replace("gnu", "")
+                if int(cppstd) > 14:
+                    self.tool_requires("doxygen/1.15.0")
+            else:
                 self.tool_requires("doxygen/1.15.0")
-        else:
-            self.tool_requires("doxygen/1.15.0")
-        self.tool_requires("flatbuffers/25.9.23")
+            self.tool_requires("flatbuffers/25.9.23")
 
     def layout(self):
         cmake_layout(self)
