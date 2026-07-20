@@ -26,8 +26,6 @@ namespace tcp4tlm_bridge {
 class initiator : public sc_core::sc_module {
 public:
     tlm_utils::simple_initiator_socket<initiator, ::scc::LT> isckt{"isckt"};
-    SC_HAS_PROCESS(initiator);
-
     initiator(sc_core::sc_module_name mn);
     virtual ~initiator();
 

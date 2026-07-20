@@ -9,6 +9,7 @@ namespace tcp4tlm_bridge {
 struct top_server : public sc_core::sc_module {
     scc::tcp4tlm_bridge bridge{"bridge"};
     scc::memory<16_MB> target{"target"};
+    SC_HAS_PROCESS(top_server);
 
     top_server(sc_core::sc_module_name name)
     : sc_module(name) {

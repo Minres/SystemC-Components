@@ -20,12 +20,13 @@
 
 namespace tcp4tlm_bridge {
 
+SC_HAS_PROCESS(initiator);
 initiator::initiator(sc_core::sc_module_name mn)
 : sc_module(mn) {
     SC_THREAD(main_thread);
 };
 
-initiator::~initiator(){};
+initiator::~initiator() {};
 
 void initiator::main_thread() {
     unsigned int nr_of_trans = 5;
