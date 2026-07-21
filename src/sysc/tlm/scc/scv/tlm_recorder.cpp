@@ -16,7 +16,7 @@
 
 #ifndef SC_INCLUDE_DYNAMIC_PROCESSES
 #define SC_INCLUDE_DYNAMIC_PROCESSES
-#include <tlm_core/tlm_2/tlm_generic_payload/tlm_gp.h>
+#include <tlm>
 #endif
 #include "tlm_extension_recording_registry.h"
 #include "tlm_recorder.h"
