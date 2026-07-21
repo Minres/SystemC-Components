@@ -19,6 +19,7 @@
 
 #include "observer.h"
 #include "report.h"
+#include "utilities.h"
 #include <array>
 #include <functional>
 #include <sstream>
@@ -398,7 +399,7 @@ template <typename T> struct sc_variable_vector {
         for(size_t i = old_size; i < sz; ++i) {
             std::stringstream ss;
             ss << name << "(" << i << ")";
-            values[i] = std::make_unique<sc_variable<T>>(ss.str().c_str(), def_val);
+            values[i] = scc::make_unique<sc_variable<T>>(ss.str().c_str(), def_val);
         }
     }
 
