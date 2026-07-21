@@ -281,7 +281,7 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
         if((actions & SC_DISPLAY) && (!log_cfg.file_logger || rep.get_verbosity() < SC_HIGH))
             try {
                 log2logger(*log_cfg.console_logger, rep, log_cfg);
-            } catch(spdlog::spdlog_ex e) {
+            } catch(const spdlog::spdlog_ex& e) {
             }
         if((actions & SC_LOG) && log_cfg.file_logger) {
             scc::LogConfig lcfg(log_cfg);
@@ -294,7 +294,7 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
     if(actions & SC_STOP) {
         try {
             flush_loggers();
-        } catch(spdlog::spdlog_ex e) {
+        } catch(const spdlog::spdlog_ex& e) {
         }
 #if SYSTEMC_VERSION < 20241015
         static const int stop_expr = sc_core::SC_START_OF_SIMULATION | SC_RUNNING | SC_PAUSED;
@@ -309,7 +309,7 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
     if(actions & SC_ABORT) {
         try {
             flush_loggers();
-        } catch(spdlog::spdlog_ex e) {
+        } catch(const spdlog::spdlog_ex& e) {
         }
         spdlog::shutdown();
         abort();
@@ -317,14 +317,14 @@ void report_handler(const sc_report& rep, const sc_actions& actions) {
     if(actions & SC_THROW) {
         try {
             flush_loggers();
-        } catch(spdlog::spdlog_ex e) {
+        } catch(const spdlog::spdlog_ex& e) {
         }
         throw rep;
     }
     if(sc_time_stamp().value() && !sc_is_running()) {
         try {
             flush_loggers();
-        } catch(spdlog::spdlog_ex e) {
+        } catch(const spdlog::spdlog_ex& e) {
         }
     }
 }
