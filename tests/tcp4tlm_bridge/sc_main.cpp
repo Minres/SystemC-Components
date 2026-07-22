@@ -19,7 +19,7 @@
 namespace po = boost::program_options;
 
 int sc_main(int argc, char* argv[]) {
-    unsigned port_nr = 1024;
+    unsigned port_nr = 32000;
     unsigned num_clients = 1;
     unsigned other_port_nr = 0;
     size_t base_addr = 0;

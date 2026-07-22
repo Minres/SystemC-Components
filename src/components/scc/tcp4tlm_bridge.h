@@ -51,7 +51,7 @@ struct tcp4tlm_bridge : public sc_core::sc_module,
     cci::cci_param<bool> is_connection_server{"is_connection_server", false};
     cci::cci_param<std::string> other_host_name{"other_host_name", ""};
     cci::cci_param<unsigned> other_host_port{"other_host_port", 0};
-    cci::cci_param<unsigned> this_host_port{"this_host_port", 0};
+    cci::cci_param<unsigned> this_host_port{"this_host_port", 32000u};
     cci::cci_param<bool> wall_time_simulation_speed{"wall_time_simulation_speed", false};
     cci::cci_param<bool> write_no_response{"write_no_response", false};
     cci::cci_param<bool> no_systemc_sync{"no_systemc_sync", false};
