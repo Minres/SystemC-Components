@@ -11,7 +11,7 @@ if(TARGET flatbuffers::flatbuffers)
         set(FB_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}/fbs/")
         # This is an utilitary function that is available in flatbuffer cmake integration
         # fbschemas is a new target that will be created with the generated file
-        build_flatbuffers("${FB_SCHEMA}" "" fbschemas "" "${FB_OUTDIR}" "" "")
+        build_flatbuffers("${FB_SCHEMA}" "" scc_fbschemas "" "${FB_OUTDIR}" "" "")
 
         add_library(${PROJECT_NAME} scc/tcp4tlm_bridge.cpp)
         add_library(scc::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
@@ -19,7 +19,7 @@ if(TARGET flatbuffers::flatbuffers)
                 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
                 $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> # for client in install mode
         )
-        target_include_directories(${PROJECT_NAME} PRIVATE 
+        target_include_directories(${PROJECT_NAME} PRIVATE
                 $<BUILD_INTERFACE:${flatbuffers_INCLUDE_DIR}> # for headers when building
                 $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR})
         target_link_libraries(${PROJECT_NAME} PUBLIC scc-sysc scc-util)
