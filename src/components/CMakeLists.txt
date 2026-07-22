@@ -13,7 +13,7 @@ if(TARGET flatbuffers::flatbuffers)
         # fbschemas is a new target that will be created with the generated file
         build_flatbuffers("${FB_SCHEMA}" "" scc_fbschemas "" "${FB_OUTDIR}" "" "")
 
-        add_library(${PROJECT_NAME} scc/tcp4tlm_bridge.cpp)
+        add_library(${PROJECT_NAME} scc/tcp4tlm_bridge.cpp scc/tcp4tlm_server.cpp scc/tcp4tlm_client.cpp)
         add_library(scc::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
         target_include_directories(${PROJECT_NAME} PUBLIC
                 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # for headers when building
