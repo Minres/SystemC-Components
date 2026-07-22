@@ -36,7 +36,6 @@
 #include <tlm_utils/simple_initiator_socket.h>
 #include <tlm_utils/simple_target_socket.h>
 #include <tlm_utils/tlm_quantumkeeper.h>
-#include <vector>
 
 namespace scc {
 
@@ -78,12 +77,17 @@ struct tcp4tlm_bridge : public sc_core::sc_module,
 
     void server_receive_completed(con_ptr& con, const tcp4tlm::request_message* const result) override;
 
-    bool wait4connection() {
+    void start_server() {
         using namespace std::chrono_literals;
-        start_server(this_host_port.get_value());
+        server::start_server(this_host_port.get_value());
+    }
+
+    void wait4connection() {
+        using namespace std::chrono_literals;
+        // wait until con_ext becomes true. To mitigate lost notifications the wait_for wuns in a loop
         std::unique_lock<std::mutex> lock(con_est_mtx);
-        con_est_sig.wait_for(lock, 100ms, [this]() { return con_est.load(); });
-        return con_est.load();
+        while(!con_est.load())
+            con_est_sig.wait_for(lock, 100ms, [this]() { return con_est.load(); });
     }
 
     bool is_connection_established() { return con_est; }
@@ -171,8 +175,6 @@ inline void tcp4tlm_bridge::end_connection() {
     if(is_remote_connected()) {
         auto smsg = tcp4tlm::make_sync_msg(sc_core::sc_time_stamp().value());
         client_connection().write_data(smsg);
-        std::shared_ptr<tcp4tlm::response_message> resp;
-        client_connection().read_data(resp);
         auto msg = tcp4tlm::make_notify_shutdown_msg();
         client_connection().write_data(msg);
     }

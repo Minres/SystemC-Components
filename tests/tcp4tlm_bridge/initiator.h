@@ -17,6 +17,7 @@
 #ifndef TLM_SCC_TCP_INITIATOR_H_
 #define TLM_SCC_TCP_INITIATOR_H_
 
+#include "cci/cfg/cci_param_typed.h"
 #include <scc/utilities.h>
 #include <systemc>
 #include <tlm_utils/simple_initiator_socket.h>
@@ -26,7 +27,8 @@ namespace tcp4tlm_bridge {
 class initiator : public sc_core::sc_module {
 public:
     tlm_utils::simple_initiator_socket<initiator, ::scc::LT> isckt{"isckt"};
-    initiator(sc_core::sc_module_name mn);
+    cci::cci_param<size_t> base_addr;
+    initiator(sc_core::sc_module_name mn, size_t base_addr);
     virtual ~initiator();
 
 protected:
