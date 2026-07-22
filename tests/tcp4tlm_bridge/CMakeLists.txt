@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
+option(ENABLE_TCP4TLM_TESTS "Include tcp4tlm test" OFF)
+
 find_package(fmt)
 find_package(Boost COMPONENTS program_options REQUIRED)
 add_executable (tcp4tlm_bridge 
@@ -56,5 +58,7 @@ grep -q "FINISHED" "${log0}"
 grep -q "FINISHED" "${log1}"
 ]=])
 
-#add_test(NAME tcp4tlm_bridge_peer_ctest COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/run_tcp4tlm_bridge_ctest.sh $<TARGET_FILE:tcp4tlm_bridge>)
-#set_tests_properties(tcp4tlm_bridge_peer_ctest PROPERTIES TIMEOUT 60)
+if(ENABLE_TCP4TLM_TESTS)
+    add_test(NAME tcp4tlm_bridge_peer_ctest COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/run_tcp4tlm_bridge_ctest.sh $<TARGET_FILE:tcp4tlm_bridge>)
+    set_tests_properties(tcp4tlm_bridge_peer_ctest PROPERTIES TIMEOUT 60)
+endif()
