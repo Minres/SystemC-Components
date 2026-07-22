@@ -27,7 +27,7 @@ initiator::initiator(sc_core::sc_module_name mn, size_t base_addr)
     SC_THREAD(main_thread);
 };
 
-initiator::~initiator() {};
+initiator::~initiator() = default;
 
 void initiator::main_thread() {
     unsigned int nr_of_trans = 5;
