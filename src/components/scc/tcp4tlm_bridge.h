@@ -39,6 +39,33 @@
 
 namespace scc {
 
+/**
+ * @brief Bidirectional bridge for tunneling loosely timed TLM traffic over a TCP connection.
+ *
+ * The bridge is both a SystemC/TLM component and a TCP endpoint. Its target
+ * socket accepts local TLM generic payloads and serializes them into tcp4tlm
+ * FlatBuffer messages which are sent to a peer bridge. Conversely, incoming
+ * BusOpMsg requests are converted back into TLM generic payloads, scheduled in
+ * SystemC time, and forwarded through the initiator socket to the local model.
+ *
+ * Two bridge instances form a bidirectional connection. Depending on the
+ * is_connection_server parameter, an instance either waits for a peer endpoint
+ * notification or actively connects to the configured peer and sends its own
+ * listening endpoint via NotifyEndpointMsg. Once connected, the bridge exchanges
+ * BusOpMsg, BusDataMsg, response, SyncMsg, SigOpMsg, and NotifyShutdownMsg
+ * messages to carry bus accesses, read data, status responses, simulation time
+ * synchronization, signal updates, and orderly shutdown.
+ *
+ * TLM reads wait for a BusDataMsg response and copy the returned data into the
+ * original payload. TLM writes send the payload data and either wait for a
+ * status response or complete immediately when write_no_response is enabled.
+ * Debug transport is represented as a BusOpMsg with debug access type.
+ *
+ * The timing threads coordinate message execution with SystemC simulation time.
+ * In simulated-time mode, remote timestamps drive local advancement. In
+ * wall-time mode, the bridge can pace simulation against elapsed wall clock
+ * time. The no_systemc_sync parameter bypasses timestamp-based task scheduling.
+ */
 struct tcp4tlm_bridge : public sc_core::sc_module,
                         protected tcp4tlm::server<tcp4tlm::request_message, tcp4tlm::response_message>,
                         protected tcp4tlm::client<tcp4tlm::request_message, tcp4tlm::response_message> {
