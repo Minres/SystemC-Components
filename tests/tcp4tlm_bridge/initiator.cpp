@@ -21,12 +21,13 @@
 namespace tcp4tlm_bridge {
 
 SC_HAS_PROCESS(initiator);
-initiator::initiator(sc_core::sc_module_name mn)
-: sc_module(mn) {
+initiator::initiator(sc_core::sc_module_name mn, size_t base_addr)
+: sc_module(mn)
+, base_addr("base_addr", base_addr) {
     SC_THREAD(main_thread);
 };
 
-initiator::~initiator(){};
+initiator::~initiator() = default;
 
 void initiator::main_thread() {
     unsigned int nr_of_trans = 5;
@@ -34,7 +35,7 @@ void initiator::main_thread() {
     unsigned int data_length = 4;
     std::stringstream buf;
     tlm::tlm_generic_payload trans;
-    trans.set_address(start_address);
+    trans.set_address(base_addr.get_value() + start_address);
     trans.set_data_length(data_length);
     unsigned char* data = new unsigned char[data_length];
     trans.set_data_ptr(&data[0]);
@@ -48,7 +49,15 @@ void initiator::main_thread() {
                        << " at time " << sc_core::sc_time_stamp();
         isckt->b_transport(trans, delay);
         wait(1, sc_core::SC_US);
-        trans.set_address(0x4 * i);
+        trans.set_address(base_addr.get_value() + 0x4 * i);
+    };
+    wait(3, sc_core::SC_MS);
+    for(unsigned int i = 0; i < nr_of_trans; ++i) {
+        SCCINFO(SCMOD) << "Info: start sending transfer on address " << trans.get_address() << " command type is " << trans.get_command()
+                       << " at time " << sc_core::sc_time_stamp();
+        isckt->b_transport(trans, delay);
+        wait(1, sc_core::SC_US);
+        trans.set_address(base_addr.get_value() + 0x4 * i);
     };
     wait(1, sc_core::SC_US);
     sc_core::sc_stop();

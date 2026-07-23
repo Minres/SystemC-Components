@@ -7,7 +7,7 @@
 namespace tcp4tlm_bridge {
 struct top_client : public sc_core::sc_module {
     scc::tcp4tlm_bridge bridge{"bridge"};
-    initiator intor{"intor"};
+    initiator intor{"intor", 0};
 
     top_client(sc_core::sc_module_name name)
     : sc_module(name) {

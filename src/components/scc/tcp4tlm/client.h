@@ -43,7 +43,7 @@ public:
         if(!is_connected)
             connect();
         while(!is_connected && retry_count > 0) {
-            CPPLOG(INFO, "tcp4tlm") << "retrying connection for " << retry_count-- << " times";
+            CPPLOG(INFO, "tcp4tlm::client") << "retrying connection for " << retry_count-- << " times";
             connect();
         }
         if(!is_connected)
@@ -116,7 +116,7 @@ template <typename REQ, typename RESP> client<REQ, RESP>::~client() {
 }
 
 template <typename REQ, typename RESP> void client<REQ, RESP>::connect() {
-    CPPLOG(INFO, "tcp4tlm") << "connect for port " << port << " on host '" << host << "'";
+    CPPLOG(INFO, "tcp4tlm::client") << "connect for port " << port << " on host '" << host << "'";
     typename connection<REQ, RESP>::endpoint_t ep;
     typename connection<REQ, RESP>::socket_t& socket = trace_conn->socket();
     setup_endpoint(ep);
@@ -126,7 +126,7 @@ template <typename REQ, typename RESP> void client<REQ, RESP>::connect() {
         if(!ec)
             break;
         if(i % 10 == 0) {
-            CPPLOG(INFO, "tcp4tlm") << "retrying connection for " << i << " times with code " << ec;
+            CPPLOG(INFO, "tcp4tlm::client") << "retrying connection for " << i << " times with code " << ec;
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(250));
     }

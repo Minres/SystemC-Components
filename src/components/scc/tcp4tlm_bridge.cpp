@@ -20,6 +20,7 @@
 #include "tlm/scc/tlm_extensions.h"
 #include "tlm/scc/tlm_gp_shared.h"
 #include <algorithm>
+#include <atomic>
 #include <boost/asio.hpp>
 #include <chrono>
 #include <cstdint>
@@ -101,10 +102,10 @@ void tcp4tlm_bridge::end_of_elaboration() {
 void tcp4tlm_bridge::start_of_simulation() {
     if(is_connection_server.get_value()) {
         SCCINFO(SCMOD) << "starting server on port " << this_host_port.get_value();
-        start_server(this_host_port.get_value());
+        server::start_server(this_host_port.get_value());
     } else {
         connect();
-        start_server(this_host_port.get_value());
+        server::start_server(this_host_port.get_value());
         tcp4tlm::connection<tcp4tlm::request_message, tcp4tlm::response_message>::endpoint_t lep = get_acceptor().local_endpoint();
         auto msg = get_notify_endpoint_msg(lep);
         const auto* endpoint = msg.root()->payload_as_NotifyEndpointMsg();
@@ -113,6 +114,7 @@ void tcp4tlm_bridge::start_of_simulation() {
         client_connection().write_data(msg);
         std::shared_ptr<tcp4tlm::response_message> resp;
         client_connection().read_data(resp);
+        SCCTRACE(SCMOD) << "got response, start simulating";
         if(tcp4tlm::get_status(resp ? resp->root() : nullptr) != tcp4tlm::ok) {
             throw std::exception();
         }
@@ -256,18 +258,18 @@ void tcp4tlm_bridge::timing_thread() {
     wait(sc_core::SC_ZERO_TIME);
     // wait until the client connects. We cannot do this in start_of_simulation as we
     // would (potentially) block the server start of other bridges
-    if(is_connection_server.get_value()) {
-        std::unique_lock<std::mutex> lock(con_est_mtx);
-        while(!con_est.load()) {
-            con_est_sig.wait_for(lock, 100ms, [this]() { return con_est.load(); });
-        }
-    }
+    if(is_connection_server.get_value())
+        wait4connection();
     // now deal with the timing
     const auto usecs_to_sleep = 1000LL;
 #if defined __x86_64__
-    if(!is_connection_server.get_value())
-        return;
-    if(wall_time_simulation_speed.get_value()) {
+    if(!is_connection_server.get_value()) {
+        while(true) {
+            wait(1_ms);
+            auto smsg = tcp4tlm::make_sync_msg(sc_core::sc_time_stamp().value());
+            client_connection().write_data(smsg);
+        }
+    } else if(wall_time_simulation_speed.get_value()) {
         SCCDEBUG(SCMOD) << "Running in wall time mode";
         auto duration = usecs_to_sleep;
         auto checkpoint_us = get_time_of_day_us();
@@ -343,7 +345,7 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
     auto okmsg = tcp4tlm::make_response(request);
     switch(request->payload_type()) {
     case tcp4tlm::RequestPayload_NotifyEndpointMsg: {
-        SCCTRACE(SCMOD) << "Got notify_endpoint_msg";
+        SCCTRACE(SCMOD) << "Got NotifyEndpointMsg";
         const auto* msg = request->payload_as_NotifyEndpointMsg();
         if(msg->hostname() != nullptr && msg->hostname()->str() == "0.0.0.0") {
             host = "localhost";
@@ -351,12 +353,19 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
             host = msg->hostname() ? msg->hostname()->str() : std::string{};
         }
         port = msg->port();
-        con->write_data(okmsg);
         client_connection();
-        con_est = true;
+        callback_task task([this, msg, con]() {
+            auto okmsg = tcp4tlm::make_response(msg->id());
+            con->async_write(okmsg);
+            return true;
+        });
+        timed_task tup{std::move(task), sc_core::SC_ZERO_TIME};
+        task_que.emplace(std::move(tup));
+        con_est.store(true, std::memory_order_acq_rel);
         con_est_sig.notify_all();
     } break;
     case tcp4tlm::RequestPayload_BusOpMsg: {
+        SCCTRACE(SCMOD) << "Got BusOpMsg";
         const auto* msg = request->payload_as_BusOpMsg();
         auto time_point = sc_core::sc_time::from_value(msg->time_stamp());
         callback_task task([this, msg, con]() {
@@ -385,17 +394,16 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
         fut.get();
     } break;
     case tcp4tlm::RequestPayload_SyncMsg: {
-        SCCTRACE(SCMOD) << "Got sync_msg";
-        // TODO: checkif this is correct
-        if(!is_connection_server.get_value()) {
+        SCCTRACE(SCMOD) << "Got SyncMsg";
+        if(is_connection_server.get_value()) {
             const auto* msg = request->payload_as_SyncMsg();
             auto time_point = sc_core::sc_time::from_value(msg->time_stamp());
             next_time_stamp.push(time_point);
         }
-        con->async_write(okmsg);
+        // con->async_write(okmsg);
     } break;
     case tcp4tlm::RequestPayload_SigOpMsg: {
-        SCCTRACE(SCMOD) << "Got sig_op_msg";
+        SCCTRACE(SCMOD) << "Got SigOpMsg";
         const auto* msg = request->payload_as_SigOpMsg();
         if(signals.size() > msg->index()) {
             callback_task task([this, &msg]() {
@@ -414,7 +422,7 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
         }
     } break;
     case tcp4tlm::RequestPayload_NotifyShutdownMsg: {
-        SCCTRACE(SCMOD) << "Got notify_shutdown_msg";
+        SCCTRACE(SCMOD) << "Got NotifyShutdownMsg";
         client_connection().socket().close();
         is_connected = false;
         if(is_server_running()) {
@@ -443,9 +451,7 @@ void tcp4tlm_bridge::server_receive_completed(con_ptr& con, const tcp4tlm::reque
 void tcp4tlm_bridge::process_task_que() {
     timed_task res;
     while(true) {
-        wait(task_que.data_event());
-        auto success = task_que.try_get(res);
-        if(success) {
+        while(task_que.try_get(res)) {
             SCCTRACEALL(SCMOD) << "Got a task @" << res.timepoint;
             if(no_systemc_sync.get_value() || sc_core::sc_time_stamp() > res.timepoint) {
                 res.t();
@@ -454,6 +460,7 @@ void tcp4tlm_bridge::process_task_que() {
                 timed_task_que.notify(std::move(res.t), time_point);
             }
         }
+        wait(task_que.data_event());
     }
 }
 
