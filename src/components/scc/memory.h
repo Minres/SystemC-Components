@@ -73,6 +73,7 @@ template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BI
 class memory : public sc_core::sc_module {
 public:
     using delay_type = typename delay_spec_type<USE_CYCLES>::type;
+    using this_class = memory<SIZE, BUSWIDTH, PAGE_ADDR_BITS, USE_CYCLES>;
 
     //! the target socket to connect to TLM
     tlm::scc::target_mixin<tlm::tlm_target_socket<BUSWIDTH>> target{"ts"};
@@ -171,8 +172,8 @@ public:
     int handle_operation(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay);
     //! handle the dmi functionality
     bool handle_dmi(tlm::tlm_generic_payload& gp, tlm::tlm_dmi& dmi_data);
-    std::function<int(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, sc_core::sc_time& delay)> operation_cb;
-    std::function<bool(memory<SIZE, BUSWIDTH>&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> dmi_cb;
+    std::function<int(this_class&, tlm::tlm_generic_payload&, sc_core::sc_time& delay)> operation_cb;
+    std::function<bool(this_class&, tlm::tlm_generic_payload&, tlm::tlm_dmi&)> dmi_cb;
 };
 
 template <unsigned long long SIZE, unsigned BUSWIDTH = LT, unsigned PAGE_ADDR_BITS = 24>
