@@ -88,10 +88,14 @@ void tcp4tlm_bridge::statistics::updateStat(unsigned long rt) {
 #endif
 
 tcp4tlm_bridge::~tcp4tlm_bridge() {
-    if(is_server_running() && is_connection_server.get_value() && !is_shutdown_requested()) {
-        end_connection();
+    if(is_server_running()) {
+        if(!is_connection_server.get_value() && !is_shutdown_requested()) {
+            SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] shutting down connection";
+            end_connection();
+        }
+        SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] shutting down server";
+        shutdown_server();
     }
-    shutdown_server();
 }
 
 void tcp4tlm_bridge::end_of_elaboration() {
@@ -123,9 +127,11 @@ void tcp4tlm_bridge::start_of_simulation() {
 
 void tcp4tlm_bridge::end_of_simulation() {
     if(is_server_running()) {
-        if(is_connection_server.get_value() && is_connected) {
+        if(!is_connection_server.get_value() && is_connected) {
+            SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] shutting down connection";
             end_connection();
         }
+        SCCTRACE(SCMOD) << "[" << __FUNCTION__ << "] shutting down server";
         request_shutdown();
     }
 #ifdef GENERATE_STATISTICS
